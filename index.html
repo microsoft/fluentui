@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Office UI Fabric React Examples</title>
+
+    <link rel="stylesheet" type="text/css" href="/dist/fabric.css">
+    <link rel="stylesheet" type="text/css" href="/dist/fabric.components.css">
+
+    <script type="text/javascript" src="/dist/system.src.js"></script>
+    <script type="text/javascript">
+    window.require = System.amdRequire;
+    window.define = System.amdDefine;
+
+    System.config({
+      map: {
+        'app': 'dist/demo.bundle.js',
+        'office-ui-fabric-react': '/dist/office-ui-fabric-react.js',
+        'react': '/dist/react.js',
+        'react-dom': '/dist/react-dom.js'
+      }
+    });
+
+    System.import('app');
+    </script>
+  </head>
+  <body>
+    <div id="content"></div>
+  </body>
+</html>

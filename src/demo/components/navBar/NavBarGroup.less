@@ -1,0 +1,53 @@
+.NavBarGroup {
+  position: relative;
+  display: block;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 40px;
+  border-bottom: 1px solid #EEE;
+  margin: 5px 0;
+  text-transform: uppercase;
+
+  cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:visited {
+    color: black;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+  }
+}
+
+.NavBarGroup-chevron {
+  position: absolute;
+  left: 15px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 15px;
+  transform: rotate(-90deg);
+}
+
+.NavBarGroup--isExpanded .NavBarGroup-chevron {
+  transform: rotate(0);
+}
+
+.NavBarGroup:hover:before {
+  background: #EAEAEA;
+}
+
+.NavBarGroup--isFocused.NavBarGroup--isActive:before {
+  border: 1px solid #0078d7;
+}
