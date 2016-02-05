@@ -9,11 +9,13 @@ export interface ILabelProps {
 
 export default class Label extends React.Component<ILabelProps, any> {
     render() {
+        let {disabled, required, children} = this.props;
+        
         return (<label 
             className={
                 "ms-Label" + 
-                (this.props.disabled ? " is-disabled" : "") +
-                (this.props.required ? " is-required" : "")
-            }>{this.props.children}</label>);
+                (disabled ? " is-disabled" : "") +
+                (required ? " is-required" : "")
+            }>{children}</label>);
     }
 }

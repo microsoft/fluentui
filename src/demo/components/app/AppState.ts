@@ -127,7 +127,7 @@ export default {
         },
         {
           name: 'TextField',
-          page: null
+          url: '#/examples/textfield'
         },
         {
           name: 'Toggle',
