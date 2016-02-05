@@ -6,8 +6,7 @@ module.exports = {
   },
   build: {
     paths: {
-      lessMatch: [ 'src/**/*.less' ],
-      sassMatch: [ 'src/**/*.scss' ]
+      staticsMatch: [ 'src/**/*.scss' ]
     },
     copyTo: {
       'dist': [
@@ -26,6 +25,7 @@ module.exports = {
     entries: [
       {
         useWebpack: true,
+        outputPath: 'dist',
         webpackConfig: require('./webpack.config')
       }
     ]

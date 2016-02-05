@@ -5,7 +5,10 @@ import * as ReactDOM from 'react-dom';
 import App from './components/app/App';
 import { Router, Route } from '../utilities/router';
 import ToggleExample from './pages/examples/ToggleExample';
+import LabelExample from './pages/examples/LabelExample';
 import GettingStarted from './pages/GettingStarted';
+
+import "./index.scss";
 
 let rootElement;
 
@@ -16,6 +19,7 @@ function onLoad() {
     <Router>
       <Route component={ App }>
         <Route path='#/examples/toggle' component={ ToggleExample } />
+        <Route path='#/examples/label' component={ LabelExample } />
         <Route component={ GettingStarted } />
       </Route>
     </Router>,

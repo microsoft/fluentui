@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './Toggle.css';
+import './Toggle.scss';
 
 export interface IToggleProps {
   label: string;

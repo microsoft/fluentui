@@ -63,7 +63,7 @@ export default {
         },
         {
           name: 'Label',
-          page: null
+          url: '#/examples/label'
         },
         {
           name: 'Link',

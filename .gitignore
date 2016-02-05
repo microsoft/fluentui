@@ -32,6 +32,8 @@ $RECYCLE.BIN/
 .Spotlight-V100
 .Trashes
 
+.bin
+dist.stats.json
 bower_components
 node_modules
 temp
