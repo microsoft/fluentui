@@ -6,14 +6,17 @@ module.exports = {
   context: __dirname + '/lib',
 
   entry: {
-    app: './demo/index.js'
+//    'office-ui-fabric-react': './index.js',
+    'demo-app': './demo/index.js'
   },
 
   output: {
     libraryTarget: 'umd',
     path: __dirname + '/dist',
-    filename: "demo.bundle.js"
+    filename: '[name].js'
   },
+
+  devtool: 'source-map',
 
   devServer: {
     stats: 'none'
@@ -22,19 +25,25 @@ module.exports = {
   externals: [
     {
       'react': {
-        umd: 'react'
+        amd: 'react',
+        commonjs: 'react'
       }
     },
     {
       'react-dom': {
-        umd: 'react-dom'
+        amd: 'react-dom',
+        commonjs: 'react-dom'
       }
     },
     {
       'office-ui-fabric-react': {
-        umd: 'office-ui-fabric-react'
+        amd: 'office-ui-fabric-react',
+        commonjs: 'office-ui-fabric-react'
       }
     }
-  ]
+  ],
+
+  plugins: []
 
 };
+

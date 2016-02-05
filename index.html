@@ -16,11 +16,11 @@
     window.define = System.amdDefine;
 
     System.config({
-      map: {
-        'app': 'dist/demo.bundle.js',
-        'office-ui-fabric-react': '/dist/office-ui-fabric-react.js',
-        'react': '/dist/react.js',
-        'react-dom': '/dist/react-dom.js'
+      paths: {
+        'app': 'dist/demo-app.js',
+        'office-ui-fabric-react': 'dist/office-ui-fabric-react.js',
+        'react-dom': '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.min.js',
+        'react': '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.min.js'
       }
     });
 

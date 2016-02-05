@@ -3,7 +3,7 @@ import * as React from 'react';
 // Arg! I can't get TypeScript to like this, until they support path mappings.
 //import { Toggle } from 'office-ui-fabric-react';
 
-import { Toggle } from '../../../index';
+import Toggle from '../../../components/toggle/Toggle';
 
 export default class ToggleExample extends React.Component<any, any> {
   constructor() {

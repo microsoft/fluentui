@@ -25,18 +25,8 @@ module.exports = {
   bundle: {
     entries: [
       {
-        entry: './lib/index.js',
-        outputPath: 'dist/office-ui-fabric-react.js',
-        exclude: [ 'react', 'react-dom' ],
-        isStandalone: true,
-        useWebpack: true
-      },
-      {
-        entry: './lib/demo/index.js',
-        outputPath: 'dist/demo.bundle.js',
-        exclude: [ 'react', 'react-dom', 'office-ui-fabric-react' ],
-        isStandalone: true,
-        useWebpack: true
+        useWebpack: true,
+        webpackConfig: require('./webpack.config')
       }
     ]
   }

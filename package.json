@@ -10,7 +10,7 @@
   },
   "license": "UNLICENSED",
   "devDependencies": {
-    "@ms/ms-core-build": "^0.3.0",
+    "@ms/ms-core-build": "^0.3.28",
     "chai": "^3.4.1",
     "gulp": "^3.9.0",
     "gutil": "^1.6.4",
