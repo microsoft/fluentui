@@ -19,7 +19,10 @@ export default class NavBarLink extends React.Component<INavBarLinkProps, any> {
   };
 
   public render() {
-    let { item, isActive, isFocused, isSelected } = this.props;
+    let { item, isActive, isFocused } = this.props;
+
+    let isSelected = location.hash === item.url;
+
     let rootClass = 'NavBarLink' +
       (isFocused ? ' NavBarLink--isFocused' : '') +
       (isSelected ? ' NavBarLink--isSelected' : '') +

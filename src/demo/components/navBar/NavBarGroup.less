@@ -1,11 +1,15 @@
 .NavBarGroup {
   position: relative;
   display: block;
-  height: 30px;
-  line-height: 30px;
-  padding: 0 40px;
-  border-bottom: 1px solid #EEE;
+  width: 100%;
+  height: 40px;
+  text-align: left;
+  line-height: 40px;
   margin: 5px 0;
+  padding: 0 40px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #EEE;
   text-transform: uppercase;
 
   cursor: default;
@@ -34,8 +38,8 @@
 .NavBarGroup-chevron {
   position: absolute;
   left: 15px;
-  height: 30px;
-  line-height: 30px;
+  height: 40px;
+  line-height: 40px;
   font-size: 15px;
   transform: rotate(-90deg);
 }
@@ -48,6 +52,6 @@
   background: #EAEAEA;
 }
 
-.NavBarGroup--isFocused.NavBarGroup--isActive:before {
+.NavBarGroup:focus:before {
   border: 1px solid #0078d7;
 }

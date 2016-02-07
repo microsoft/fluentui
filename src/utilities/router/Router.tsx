@@ -47,7 +47,7 @@ function _getComponent(matchPath, children) {
       let component = currentChild.props.component;
       let childComponent = _getComponent(matchPath, currentChild.props.children);
 
-      return React.createElement(component, null, childComponent ? [ childComponent ] : null);
+      return React.createElement(component, null, childComponent);
     }
   }
 
@@ -55,13 +55,17 @@ function _getComponent(matchPath, children) {
 }
 
 function _match(currentPath, child): boolean {
-  let { path } = child.props;
+  if (child.props) {
+    let { path } = child.props;
 
-  path = path || '';
-  currentPath = currentPath || '';
+    path = path || '';
+    currentPath = currentPath || '';
 
-  return (
-    (!path) ||
-    (path.toLowerCase() === currentPath.toLowerCase())
-  );
+    return (
+      (!path) ||
+      (path.toLowerCase() === currentPath.toLowerCase())
+    );
+  }
+
+  return false;
 }

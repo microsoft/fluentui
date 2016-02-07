@@ -1,7 +1,7 @@
 import EventGroup from '../eventGroup/EventGroup';
 import ISelection from './ISelection';
 import ISelectionLayout from './ISelectionLayout';
-import KeyCodes from './KeyCodes';
+import KeyCodes from '../KeyCodes';
 
 // Selection definitions:
 //

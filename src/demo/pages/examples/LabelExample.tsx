@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Label } from '../../../index';
+import Label from '../../../components/label/Label';
 
 export default class LabelExample extends React.Component<any, any> {
   public render() {

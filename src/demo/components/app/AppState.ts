@@ -1,24 +1,42 @@
+import * as React from 'react';
 
-export default {
+import ToggleExample from '../../pages/examples/ToggleExample';
+import LabelExample from '../../pages/examples/LabelExample';
+import TextFieldExample from '../../pages/examples/TextFieldExample';
+
+export interface ILink {
+  name: string;
+  url: string;
+  component?: any;
+}
+
+export interface ILinkGroup {
+  name: string;
+  links: ILink[];
+}
+
+export interface IAppState {
+  appTitle: string;
+  headerLinks: ILink[];
+  examplePages: ILinkGroup[];
+}
+
+const AppState: IAppState = {
   appTitle: 'Office UI Fabric - React components',
 
   headerLinks: [
     {
-      name: 'GETTING STARTED',
-      url: '#'
+      name: 'Getting started',
+      url: '#/'
     },
     {
-      name: 'SAMPLES',
-      url: '#page=samples'
+      name: 'Fabric',
+      url: 'http://dev.office.com/fabric'
     },
     {
-      name: 'GITHUB',
-      url: '#page=github'
+      name: 'Github',
+      url: 'http://www.github.com/officedev'
     }
-  ],
-
-  gettingStarted: [
-
   ],
 
   examplePages: [
@@ -27,111 +45,114 @@ export default {
       links: [
         {
           name: 'Breadcrumb',
-          page: '#page=breadcrumb'
+          url: '#/examples/breadcrumb'
         },
         {
           name: 'Button',
-          page: '#/page=button'
+          url: '#/page=button'
         },
         {
           name: 'Callout',
-          page: null
+          url: '#/examples/callout'
         },
         {
           name: 'ChoiceField',
-          page: null
+          url: '#/examples/choicefield'
         },
         {
           name: 'CommandBar',
-          page: null
+          url: '#/examples/commandbar'
         },
         {
           name: 'ContextualMenu',
-          page: null
+          url: '#/examples/contextmenu'
         },
         {
           name: 'DatePicker',
-          page: null
+          url: '#/examples/datepicker'
         },
         {
           name: 'Dialog',
-          page: null
+          url: '#/examples/dialog'
         },
         {
           name: 'Dropdown',
-          page: null
+          url: '#/examples/dropdown'
         },
         {
           name: 'Label',
-          url: '#/examples/label'
+          url: '#/examples/label',
+          component: LabelExample
         },
         {
           name: 'Link',
-          page: null
+          url: '#/examples/link'
         },
         {
           name: 'List',
-          page: null
+          url: '#/examples/list'
         },
         {
           name: 'ListItem',
-          page: null
+          url: '#/examples/listitem'
         },
         {
           name: 'NavBar',
-          page: null
+          url: '#/examples/navbar'
         },
         {
           name: 'OrgChart',
-          page: null
+          url: '#/examples/orgchart'
         },
         {
           name: 'Overlay',
-          page: null
+          url: '#/examples/overlay'
         },
         {
           name: 'Panel',
-          page: null
+          url: '#/examples/panel'
         },
         {
           name: 'PeoplePicker',
-          page: null
+          url: '#/examples/peoplepicker'
         },
         {
           name: 'Persona',
-          page: null
+          url: '#/examples/persona'
         },
         {
           name: 'PersonaCard',
-          page: null
+          url: '#/examples/personacard'
         },
         {
           name: 'Pivot',
-          page: null
+          url: '#/examples/pivot'
         },
         {
           name: 'ProgresIndicator',
-          page: null
+          url: '#/examples/progressindicator'
         },
         {
           name: 'SearchBox',
-          page: null
+          url: '#/examples/searchbox'
         },
         {
           name: 'Spinner',
-          page: null
+          url: '#/examples/spinner'
         },
         {
           name: 'Table',
-          page: null
+          url: '#/examples/table'
         },
         {
           name: 'TextField',
-          url: '#/examples/textfield'
+          url: '#/examples/textfield',
+          component: TextFieldExample
         },
         {
           name: 'Toggle',
-          url: '#/examples/toggle'
+          url: '#/examples/toggle',
+          component: ToggleExample
         }
       ]
     },
@@ -139,10 +160,20 @@ export default {
       name: 'Utilities',
       links: [
         {
+          name: 'Event groups',
+          url: '#examples/eventgroup'
+        },
+        {
+          name: 'Focus zones',
+          url: '#examples/focuszone'
+        },
+        {
           name: 'Selection management',
-          url: '#page=selectionManagement'
+          url: '#examples/selectionManagement'
         }
       ]
     }
   ]
 };
+
+export default AppState;

@@ -44,10 +44,11 @@
   background: rgb(212, 232, 248);
 }
 
-.NavBarLink--isFocused.NavBarLink--isActive:before {
+.NavBarLink:focus:before {
   border: 1px solid #0078d7;
 }
 
-.NavBarLink--isSelected.NavBarLink--isFocused.NavBarLink--isActive:before {
+.NavBarLink--isSelected:before,
+.NavBarLink.NavBarLink--isSelected:focus:before {
   border-left: 4px solid #0078d7;
 }

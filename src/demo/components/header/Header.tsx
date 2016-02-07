@@ -18,8 +18,8 @@ export default class Header extends React.Component<IHeaderProps, any> {
           { title }
         </div>
         <div className='Header-buttons'>
-          { sideLinks.map(link => (
-            <a className='Header-button ms-fontColor-white' href={ link.url }>{ link.name }</a>
+          { sideLinks.map((link, linkIndex) => (
+            <a key={ linkIndex } className='Header-button ms-fontColor-white' href={ link.url }>{ link.name }</a>
           )) }
         </div>
       </div>

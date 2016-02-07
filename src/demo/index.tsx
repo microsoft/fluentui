@@ -4,35 +4,45 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from './components/app/App';
 import { Router, Route } from '../utilities/router';
-
-// Examples
-import LabelExample from './pages/examples/LabelExample';
-import TextFieldExample from './pages/examples/TextFieldExample';
-import ToggleExample from './pages/examples/ToggleExample';
-
-// Getting Started
+import AppState from './Components/app/AppState';
 import GettingStarted from './pages/GettingStarted';
-
 import "./index.scss";
 
 let rootElement;
 
-function onLoad() {
+function _onLoad() {
   rootElement = rootElement || document.getElementById('content');
+  let exampleRoutes = _getAppRoutes();
 
   ReactDOM.render(
     <Router>
       <Route component={ App }>
-        <Route path='#/examples/label' component={ LabelExample } />
-        <Route path='#/examples/textfield' component={ TextFieldExample } />
-        <Route path='#/examples/toggle' component={ ToggleExample } />
-        <Route component={ GettingStarted } />
+        { _getAppRoutes() }
       </Route>
     </Router>,
     rootElement);
 }
 
-function onUnload() {
+function _getAppRoutes() {
+  let routes = [];
+
+  AppState.examplePages.forEach(group => {
+    group.links
+      .filter(link => !!link.component)
+      .forEach((link, linkIndex) => {
+        routes.push(<Route key={ linkIndex } path={ link.url } component={ link.component } />);
+      });
+  });
+
+  // Default route.
+  routes.push(
+    <Route key='gettingstarted' component={ GettingStarted } />
+  );
+
+  return routes;
+}
+
+function _onUnload() {
   console.log('unloading');
   if (rootElement) {
     ReactDOM.unmountComponentAtNode(rootElement);
@@ -42,10 +52,10 @@ function onUnload() {
 let isReady = document.readyState === 'interactive' || document.readyState === 'complete';
 
 if (isReady) {
-  onLoad();
+  _onLoad();
 } else {
-  window.onload = onLoad;
+  window.onload = _onLoad;
 }
 
-window.onunload = onUnload;
+window.onunload = _onUnload;
 

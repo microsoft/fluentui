@@ -6,7 +6,7 @@ module.exports = {
   context: __dirname + '/lib',
 
   entry: {
-//    'office-ui-fabric-react': './index.js',
+    'office-ui-fabric-react': './index.js',
     'demo-app': './demo/index.js'
   },
 
