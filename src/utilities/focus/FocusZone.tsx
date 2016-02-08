@@ -15,6 +15,7 @@ export interface IFocusZoneProps {
   className?: string;
   style?: { [key: string]: string };
   direction?: FocusZoneDirection;
+  ref?: string;
 }
 
 export interface IFocusZoneState {
@@ -63,8 +64,6 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
     let index = 0;
     let focusElements = [];
     let { activeIndex } = this.state;
-
-    let isEnabled = true;
 
     function _mapChild(child) {
       let previousIsEnabled = isEnabled;
@@ -217,42 +216,6 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
   }
 
 }
-
-
-function _processChildren(children: any, state: IFocusZoneState, currentIndex = 0) {
-  let nodes = _getFocusableChildren(children);
-
-  // Update the latest focusElements in state.
-  state.focusElements = nodes;
-
-  // Update each focus element's tabIndex.
-  nodes.forEach((node, index) => {
-    node.props = Object.assign({}, node.props, {
-      tabIndex: (state.activeIndex === index) ? 0 : -1
-    });
-  });
-
-  return children;
-}
-
-function _getFocusableChildren(element: any, children = []) {
-  let tabbableTypes = ['a', 'button', 'input', 'textarea'];
-
-  if (Array.isArray(element)) {
-    element.forEach(el => _getFocusableChildren(el, children));
-  } else {
-    if (element) {
-      if (tabbableTypes.indexOf(element.type) > -1) {
-      children.push(element);
-      }
-      if (element.props && element.props.children) {
-        _getFocusableChildren(element.props.children, children);
-      }
-    }
-  }
-  return children;
-}
-
 
 function _isInputElement(element: HTMLElement) {
   return !!element && (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA');

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export interface IChoiceFieldProps {
   text: string;
-  isSelected: boolean;
+  isSelected?: boolean;
   isEnabled?: boolean;
 }
 
@@ -35,7 +35,7 @@ export default class ChoiceField extends React.Component<IChoiceFieldProps, ICho
     return (
       <div className={ rootClass }>
         <input id={ id } className='ms-ChoiceField-input' type='radio' checked={ isSelected } disabled={ !isEnabled } />
-        <label for={ id } className='ms-ChoiceField-field'>
+        <label htmlFor={ id } className='ms-ChoiceField-field'>
           <span className='ms-Label'>{ text }</span>
         </label>
       </div>

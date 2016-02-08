@@ -24,16 +24,21 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
     options: []
   }
 
-  public refs: {
-    dropdownZone: FocusZone
-  }
+  constructor(props?: IDropdownProps) {
+    super(props);
 
-  constructor(props) {
-    super();
+    let selectedIndex = 0;
+
+    for (let i = 0; i < props.options.length; i++) {
+      if (props.options[i].isSelected) {
+        selectedIndex = i;
+        break;
+      }
+    }
 
     this.state = {
       isOpen: false,
-      selectedIndex: props.options.findIndex(option => option.isSelected )
+      selectedIndex: selectedIndex
     };
 
     this._toggleOpen = this._toggleOpen.bind(this);
@@ -72,9 +77,9 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
       let { options } = this.props;
       if (this.state.isOpen && options.length) {
 
-        let selectedOption = options[this.props.selectedIndex];
+        let selectedOption = options[this.state.selectedIndex];
 
-        this.refs.dropdownZone.focus();
+        (this.refs as any).dropdownZone.focus();
       }
     });
 
