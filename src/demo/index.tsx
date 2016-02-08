@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from './components/app/App';
 import { Router, Route } from '../utilities/router';
-import AppState from './Components/app/AppState';
+import AppState from './components/app/AppState';
 import GettingStarted from './pages/GettingStarted';
 import "./index.scss";
 
