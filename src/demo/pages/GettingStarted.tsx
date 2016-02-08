@@ -11,7 +11,7 @@ export default class GettingStarted extends React.Component<any, any> {
             <ul>
               <li>
                 <a href="#">Microsoft</a>
-                <div data-is-focusable={ true }>I want to play too.</div>
+                <div data-is-focusable={ true }>I am also a tab stop.</div>
               </li>
               <li>
                 <a href="#">Microsoft</a>

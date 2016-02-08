@@ -10,6 +10,7 @@ export enum FocusZoneDirection {
 }
 
 export interface IFocusZoneProps {
+  isEnabled?: boolean;
   children?: React.ReactElement<any>[];
   className?: string;
   style?: { [key: string]: string };
@@ -23,6 +24,7 @@ export interface IFocusZoneState {
 
 export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZoneState> {
   public static defaultProps = {
+    isEnabled: true,
     direction: FocusZoneDirection.vertical
   };
 
@@ -57,7 +59,7 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
   }
 
   public render() {
-    let { className, style } = this.props;
+    let { className, style, isEnabled } = this.props;
     let index = 0;
     let focusElements = [];
     let { activeIndex } = this.state;
@@ -100,7 +102,6 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
 
       return child;
     }
-
     function _mapChildren(children) {
       if (children && typeof(children) !== 'string') {
         return React.Children.map(children, child => _mapChild(child));
@@ -109,10 +110,10 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
       }
     }
 
-    let newChildren = _mapChildren(this.props.children);
+    let newChildren = isEnabled ? _mapChildren(this.props.children) : this.props.children;
 
     // Assign the new state.
-    this.state ={
+    this.state = {
       activeIndex: Math.max(0, Math.min(focusElements.length - 1, activeIndex)),
       focusElements: focusElements
     };
@@ -122,6 +123,14 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
         { newChildren }
       </div>
     );
+  }
+
+  public focus() {
+    if (this.state.activeIndex >= 0) {
+      let el = ReactDOM.findDOMNode(this.refs[ this.state.activeIndex ]) as HTMLElement;
+
+      el.focus();
+    }
   }
 
   private _onFocus(ev) {
@@ -145,48 +154,35 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
     let isInput = _isInputElement(eventTarget);
     let { direction } = this.props;
     let { activeIndex, focusElements } = this.state;
+    let newActiveIndex = -1;
 
     // Ignore keyboard events if originating from INPUT elements or TEXTAREAs.
     if (isInput) {
       return true;
     }
 
-    let isHandled = false;
-
     switch (ev.which) {
       case KeyCodes.up:
         if (direction === FocusZoneDirection.vertical) {
-          this.setState({
-            activeIndex: Math.max(0, activeIndex - 1)
-          });
-          isHandled = true;
+          newActiveIndex = Math.max(0, activeIndex - 1);
         }
         break;
 
       case KeyCodes.down:
         if (direction === FocusZoneDirection.vertical) {
-          this.setState({
-            activeIndex: Math.min(focusElements.length - 1, activeIndex + 1)
-          });
-          isHandled = true;
+          newActiveIndex = Math.min(focusElements.length - 1, activeIndex + 1);
         }
         break;
 
       case KeyCodes.left:
         if (direction === FocusZoneDirection.horizontal) {
-          this.setState({
-            activeIndex: Math.max(0, activeIndex - 1)
-          });
-          isHandled = true;
+          newActiveIndex: Math.max(0, activeIndex - 1);
         }
         break;
 
       case KeyCodes.right:
         if (direction === FocusZoneDirection.horizontal) {
-          this.setState({
-            activeIndex: Math.min(focusElements.length - 1, activeIndex + 1)
-          });
-          isHandled = true;
+          newActiveIndex: Math.min(focusElements.length - 1, activeIndex + 1);
         }
         break;
 
@@ -197,17 +193,11 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
         break;
 
       case KeyCodes.home:
-        this.setState({
-          activeIndex: 0
-        });
-        isHandled = true;
+        newActiveIndex = 0;
         break;
 
       case KeyCodes.end:
-        this.setState({
-          activeIndex: focusElements.length - 1
-        });
-        isHandled = true;
+        newActiveIndex = focusElements.length - 1;
         break;
 
       default:
@@ -215,14 +205,15 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
         return;
     }
 
-    let el = ReactDOM.findDOMNode(this.refs[ this.state.activeIndex ]) as HTMLElement;
+    if (newActiveIndex >= 0) {
+      this.setState({
+        activeIndex: newActiveIndex
+      }, () => this.focus());
 
-    el.focus();
-
-    if (isHandled) {
       ev.stopPropagation();
       ev.preventDefault();
     }
+
   }
 
 }

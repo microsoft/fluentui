@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export interface IChoiceFieldProps {
-  name: string;
+  text: string;
   isSelected: boolean;
   isEnabled?: boolean;
 }
