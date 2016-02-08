@@ -1,9 +1,10 @@
 'use strict';
 
 let webpack = require('webpack');
+let path = require('path');
 
 module.exports = {
-  context: __dirname + '/lib',
+  context: path.join(__dirname, '/lib'),
 
   entry: {
     'office-ui-fabric-react': './index.js',
@@ -12,7 +13,7 @@ module.exports = {
 
   output: {
     libraryTarget: 'umd',
-    path: __dirname + '/dist',
+    path: path.join(__dirname, '/dist'),
     filename: '[name].js'
   },
 

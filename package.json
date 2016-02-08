@@ -14,16 +14,16 @@
     "chai": "^3.4.1",
     "gulp": "^3.9.0",
     "gutil": "^1.6.4",
-    "react-addons-test-utils": "^0.14.3"
+    "react-addons-test-utils": "^0.14.3",
+    "sass-loader": "^3.1.2",
+    "style-loader": "^0.13.0",
+    "css-loader": "^0.23.1"
   },
   "dependencies": {
-    "css-loader": "^0.23.1",
     "load-styles": "^2.0.0",
     "node-sass": "^3.4.2",
     "office-ui-fabric": "^2.0.0",
     "react": "^0.14.3",
-    "react-dom": "^0.14.3",
-    "sass-loader": "^3.1.2",
-    "style-loader": "^0.13.0"
+    "react-dom": "^0.14.3"
   }
 }
