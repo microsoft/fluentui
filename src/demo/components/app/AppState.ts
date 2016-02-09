@@ -28,10 +28,18 @@ import TableExample from '../../pages/examples/TableExample';
 import TextFieldExample from '../../pages/examples/TextFieldExample';
 import ToggleExample from '../../pages/examples/ToggleExample';
 
+export enum ExampleStatus {
+  placeholder,
+  started,
+  beta,
+  release
+}
+
 export interface ILink {
   name: string;
   url: string;
   component?: any;
+  status?: ExampleStatus
 }
 
 export interface ILinkGroup {
@@ -70,137 +78,164 @@ const AppState: IAppState = {
         {
           name: 'Breadcrumb',
           url: '#/examples/breadcrumb',
-          component: BreadcrumbExample
+          component: BreadcrumbExample,
+          status: ExampleStatus.placeholder
         },
         {
           name: 'Button',
           url: '#/page=button',
-          component: ButtonExample
+          component: ButtonExample,
+          status: ExampleStatus.started
         },
         {
           name: 'Callout',
           url: '#/examples/callout',
-          component: CalloutExample
+          component: CalloutExample,
+          status: ExampleStatus.started
         },
         {
           name: 'ChoiceField',
           url: '#/examples/choicefield',
-          component: ChoiceFieldExample
+          component: ChoiceFieldExample,
+          status: ExampleStatus.started
         },
         {
           name: 'CommandBar',
           url: '#/examples/commandbar',
-          component: CommandBarExample
+          component: CommandBarExample,
+          status: ExampleStatus.placeholder
         },
         {
           name: 'ContextualMenu',
           url: '#/examples/contextmenu',
-          component: ContextualMenuExample
+          component: ContextualMenuExample,
+          status: ExampleStatus.placeholder
         },
         {
           name: 'DatePicker',
           url: '#/examples/datepicker',
-          component: DatePickerExample
+          component: DatePickerExample,
+          status: ExampleStatus.placeholder
         },
         {
           name: 'Dialog',
           url: '#/examples/dialog',
-          component: DialogExample
+          component: DialogExample,
+          status: ExampleStatus.placeholder
         },
         {
           name: 'Dropdown',
           url: '#/examples/dropdown',
-          component: DropdownExample
+          component: DropdownExample,
+          status: ExampleStatus.started
         },
         {
           name: 'Label',
           url: '#/examples/label',
-          component: LabelExample
+          component: LabelExample,
+          status: ExampleStatus.started
         },
         {
           name: 'Link',
           url: '#/examples/link',
-          component: LinkExample
+          component: LinkExample,
+          status: ExampleStatus.placeholder
         },
         {
           name: 'List',
           url: '#/examples/list',
-          component: ListExample
+          component: ListExample,
+          status: ExampleStatus.placeholder
         },
         {
           name: 'ListItem',
           url: '#/examples/listitem',
-          component: ListItemExample
+          component: ListItemExample,
+          status: ExampleStatus.placeholder
         },
         {
           name: 'NavBar',
           url: '#/examples/navbar',
-          component: NavBarExample
+          component: NavBarExample,
+          status: ExampleStatus.placeholder
         },
         {
           name: 'OrgChart',
           url: '#/examples/orgchart',
-          component: OrgChartExample
+          component: OrgChartExample,
+          status: ExampleStatus.placeholder
         },
         {
           name: 'Overlay',
           url: '#/examples/overlay',
-          component: OverlayExample
+          component: OverlayExample,
+          status: ExampleStatus.placeholder
         },
         {
           name: 'Panel',
           url: '#/examples/panel',
-          component: PanelExample
+          component: PanelExample,
+          status: ExampleStatus.placeholder
         },
         {
           name: 'PeoplePicker',
           url: '#/examples/peoplepicker',
-          component: PeoplePickerExample
+          component: PeoplePickerExample,
+          status: ExampleStatus.placeholder
         },
         {
           name: 'Persona',
           url: '#/examples/persona',
-          component: PersonaExample
+          component: PersonaExample,
+          status: ExampleStatus.placeholder
         },
         {
           name: 'PersonaCard',
           url: '#/examples/personacard',
-          component: PersonaCardExample
+          component: PersonaCardExample,
+          status: ExampleStatus.placeholder
         },
         {
           name: 'Pivot',
           url: '#/examples/pivot',
-          component: PivotExample
+          component: PivotExample,
+          status: ExampleStatus.placeholder
         },
         {
           name: 'ProgresIndicator',
           url: '#/examples/progressindicator',
-          component: ProgressIndicatorExample
+          component: ProgressIndicatorExample,
+          status: ExampleStatus.placeholder
         },
         {
           name: 'SearchBox',
           url: '#/examples/searchbox',
-          component: SearchBoxExample
+          component: SearchBoxExample,
+          status: ExampleStatus.placeholder
         },
         {
           name: 'Spinner',
           url: '#/examples/spinner',
-          component: SpinnerExample
+          component: SpinnerExample,
+          status: ExampleStatus.placeholder
         },
         {
           name: 'Table',
           url: '#/examples/table',
-          component: TableExample
+          component: TableExample,
+          status: ExampleStatus.placeholder
         },
         {
           name: 'TextField',
           url: '#/examples/textfield',
-          component: TextFieldExample
+          component: TextFieldExample,
+          status: ExampleStatus.started
         },
         {
           name: 'Toggle',
           url: '#/examples/toggle',
-          component: ToggleExample
+          component: ToggleExample,
+          status: ExampleStatus.started
         }
       ]
     },
