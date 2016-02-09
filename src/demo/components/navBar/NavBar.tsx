@@ -3,6 +3,7 @@ import * as React from 'react';
 import FocusZone from '../../../utilities/focus/FocusZone';
 import KeyCodes from '../../../utilities/KeyCodes';
 import './NavBar.css';
+import { ExampleStatus } from '../app/AppState';
 
 export interface INavBarProps {
   groups: {
@@ -12,6 +13,7 @@ export interface INavBarProps {
     links?: {
       name?: string;
       url?: string;
+      status?: ExampleStatus
     }[];
   }[];
 }
@@ -56,7 +58,10 @@ export default class NavBar extends React.Component<INavBarProps, INavBarState> 
             className={'NavBarLink' + (this._isSelected(link) ? ' NavBarLink--isSelected' : '')}
             href={ link.url }
           >
-            { link.name }
+            <span className='NavBarLink-text'>{ link.name }</span>
+            { link.status !== undefined ? (
+            <span className={ 'NavBarLink-flair ' + 'NavBarLink-flair' + link.status } >{ ExampleStatus[link.status] }</span>
+            ) : ( null ) }
           </a>
         )) }
         </div>
@@ -71,7 +76,6 @@ export default class NavBar extends React.Component<INavBarProps, INavBarState> 
       </FocusZone>
     );
   }
-
   private _onGroupHeaderClicked(ev) {
     let groupIndex = Number(ev.currentTarget.attributes['data-group-index'].value);
 
