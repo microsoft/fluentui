@@ -12,11 +12,10 @@ export default class TextFieldExample extends React.Component<any, any> {
         <TextField label="Some Label" />
 
         <h2>Placeholder</h2>
-        <TextField label="Now I am a Placeholder" placeholder />
+        <TextField placeholder="Now I am a Placeholder" />
 
         <h2>Placeholder with Label</h2>
-        <Label>A Label</Label>
-        <TextField label="A Placeholder" placeholder />
+        <TextField placeholder="A Placeholder" label="A Label" />
 
         <h2>Multiline</h2>
         <TextField label="Label" multiline />

@@ -1,13 +1,15 @@
 {
   "compilerOptions": {
-    "target": "ES5",
+    "target": "es5",
     "module": "commonjs",
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
     "experimentalDecorators": true,
-    "paths": {
-      "office-ui-fabric-react": "lib/index"
-    }
-  }
+    "noEmitOnError": true
+  },
+  "exclude": [
+      "node_modules",
+      "dist"
+  ]
 }

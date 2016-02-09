@@ -12,12 +12,13 @@
   "devDependencies": {
     "@ms/ms-core-build": "^0.3.28",
     "chai": "^3.4.1",
+    "css-loader": "^0.23.1",
     "gulp": "^3.9.0",
     "gutil": "^1.6.4",
     "react-addons-test-utils": "^0.14.3",
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
-    "css-loader": "^0.23.1"
+    "webpack-notifier": "^1.2.1"
   },
   "dependencies": {
     "load-styles": "^2.0.0",

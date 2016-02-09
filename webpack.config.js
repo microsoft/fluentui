@@ -2,6 +2,7 @@
 
 let webpack = require('webpack');
 let path = require('path');
+let WebpackNotifierPlugin = require('webpack-notifier');
 
 module.exports = {
   context: path.join(__dirname, '/lib'),
@@ -53,6 +54,8 @@ module.exports = {
     ]
   },
 
-  plugins: []
+  plugins: [
+      new WebpackNotifierPlugin()
+  ]
 };
 

@@ -2,16 +2,17 @@ import * as React from 'react';
 import Label from '../label/Label';
 import './TextField.scss';
 
-export interface ITextFieldProps {
+export interface ITextFieldProps extends React.DOMAttributes {
     children?: any;
     disabled?: boolean;
     required?: boolean;
     multiline?: boolean;
     underlined?: boolean;
-    placeholder?: boolean;
+    placeholder?: string;
     label?: string;
     description?: string;
     iconClass?: string;
+    value?: string;
 }
 
 export default class TextField extends React.Component<ITextFieldProps, any> {
@@ -23,20 +24,21 @@ export default class TextField extends React.Component<ITextFieldProps, any> {
     }
     
     render() {
-        let {disabled, required, multiline, placeholder, underlined, label, description, iconClass} = this.props;
+        let {disabled, required, multiline, placeholder, underlined, label, description, iconClass, value} = this.props;
         
         return (
-            <div className={
+            <div 
+                {...this.props} 
+                className={
                     "ms-TextField" +
                     (required ? " is-required" : "") +
                     (disabled ? " is-disabled" : "") +
                     (multiline ? " ms-TextField--multiline" : "") +
-                    (placeholder ? " ms-TextField--placeholder" : "") +
                     (underlined ? " ms-TextField--underlined" : "")
                 }>
-                <Label>{label}</Label>
+                {label ? <Label>{label}</Label> : null}
                 {iconClass ? <i className={iconClass}></i> : null}
-                {multiline ? <textarea className="ms-TextField-field"></textarea> : <input className="ms-TextField-field" /> }
+                {multiline ? <textarea className="ms-TextField-field">{value}</textarea> : <input placeholder={placeholder} className="ms-TextField-field" value={value} /> }
                 {description ? <span className="ms-TextField-description">{description}</span> : null}
                 {this.props.children}
             </div>
