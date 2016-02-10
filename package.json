@@ -23,7 +23,7 @@
   "dependencies": {
     "load-styles": "^2.0.0",
     "node-sass": "^3.4.2",
-    "office-ui-fabric": "^2.0.0",
+    "office-ui-fabric": "^2.0.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3"
   }
