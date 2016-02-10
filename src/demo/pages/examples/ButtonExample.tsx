@@ -2,6 +2,8 @@ import * as React from 'react';
 import Button from '../../../components/button/Button';
 import Link from '../../../components/link/Link';
 
+let Highlight = require('react-highlight');
+
 export default class ButtonExample extends React.Component<any, any> {
   public render() {
     return (
@@ -17,6 +19,10 @@ export default class ButtonExample extends React.Component<any, any> {
         <h2 className='ms-font-xl'>Code</h2>
 
         <div>TODO</div>
+
+        <Highlight className='typescript'>
+        { `import * as React from 'react';` }
+        </Highlight>
 
         <h2 className='ms-font-xl'>Properties</h2>
 
