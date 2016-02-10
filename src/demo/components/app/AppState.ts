@@ -3,6 +3,7 @@ import * as React from 'react';
 import BreadcrumbExample from '../../pages/examples/BreadcrumbExample';
 import ButtonExample from '../../pages/examples/ButtonExample';
 import CalloutExample from '../../pages/examples/CalloutExample';
+import CheckboxExample from '../../pages/examples/CheckboxExample';
 import ChoiceFieldExample from '../../pages/examples/ChoiceFieldExample';
 import CommandBarExample from '../../pages/examples/CommandBarExample';
 import ContextualMenuExample from '../../pages/examples/ContextualMenuExample';
@@ -91,6 +92,12 @@ const AppState: IAppState = {
           name: 'Callout',
           url: '#/examples/callout',
           component: CalloutExample,
+          status: ExampleStatus.started
+        },
+        {
+          name: 'Checkbox',
+          url: '#/examples/checkbox',
+          component: CheckboxExample,
           status: ExampleStatus.started
         },
         {
