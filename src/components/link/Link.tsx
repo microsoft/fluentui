@@ -1,15 +1,18 @@
 import * as React from 'react';
+import './Link.scss';
 
 export interface IListItemProps {
+  text: string;
+  url: string;
+
 }
 
 export default class ListItem extends React.Component<IListItemProps, any> {
   render() {
-    let rootClass = 'ms-ListItem';
+    let { text, url } = this.props;
 
     return (
-      <div className={ rootClass }>
-      </div>
+      <a href={ url } className='ms-Link'>{ text }</a>
     );
   }
 }

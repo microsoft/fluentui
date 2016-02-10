@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './Breadcrumb.scss';
 
 export interface IBreadcrumbProps {
 }
