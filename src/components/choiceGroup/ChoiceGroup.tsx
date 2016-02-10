@@ -41,7 +41,7 @@ export default class ChoiceGroup extends React.Component<IChoiceGroupProps, any>
       
     	{ options.map(option => (
         <div className="ms-ChoiceField">
-          <input id={ id + '-' + option.key } className="ms-ChoiceField-input" type="radio" name={ id } disabled={ option.disabled } checked={ option.checked } />
+          <input id={ id + '-' + option.key } className="ms-ChoiceField-input" type="radio" name={ id } disabled={ option.disabled } defaultChecked={ option.checked } />
           <label htmlFor={ id + '-' + option.key } className="ms-ChoiceField-field">
             <span className="ms-Label">{ option.text }</span>
           </label>

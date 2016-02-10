@@ -35,7 +35,7 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
 
     return (
       <div className={ rootClass }>
-        <input id={ id } className='ms-ChoiceField-input' type='checkbox' checked={ isSelected } disabled={ !isEnabled } />
+        <input id={ id } className='ms-ChoiceField-input' type='checkbox' defaultChecked={ isSelected } disabled={ !isEnabled } />
         <label htmlFor={ id } className='ms-ChoiceField-field'>
           <span className='ms-Label'>{ text }</span>
         </label>
