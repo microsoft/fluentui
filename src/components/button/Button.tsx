@@ -1,21 +1,31 @@
 import * as React from 'react';
 
 export interface IButtonProps {
-  isPrimary?: boolean;
   children?: any;
+  type?: string;
+  description?: string;
 }
 
 export default class Button extends React.Component<IButtonProps, any> {
   render() {
-    let { isPrimary, children } = this.props;
-    let rootClass = 'ms-Button' + (isPrimary ? ' ms-Button--primary' : '');
+    let { type, children, description } = this.props;
+    let rootClass = 'ms-Button' + (type ? ' ms-Button--' + type : '');
+
+    let iconSpan;
+    if (type === 'command' || type === 'hero') {
+      iconSpan = <span className="ms-Button-icon"><i className="ms-Icon ms-Icon--plus"></i></span>;
+    }   
+
+    let descriptionSpan;
+    if (type === 'compound') {
+      descriptionSpan = <span className="ms-Button-description">{ description }</span>;
+    }
 
     return (
       <button className={ rootClass }>
-
-        <span className="ms-Button-icon"><i className="ms-Icon ms-Icon--plus"></i></span>
+        { iconSpan }
         <span className="ms-Button-label">{ children }</span>
-        <span className="ms-Button-description"></span>
+        { descriptionSpan }
       </button>
     );
   }
