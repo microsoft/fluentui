@@ -1,23 +1,19 @@
 import * as React from 'react';
 
-export interface IChoiceGroupProps {
+export interface IChoiceGroupOption {
+  key: string;
   text: string;
-  isSelected?: boolean;
-  isEnabled?: boolean;
-  isMultipleSelect?: boolean;
 }
 
-export interface IChoiceGroupState {
-  id: string;
+export interface IChoiceGroupProps {
+  options: IChoiceGroupOption[];
 }
 
 let _instance = 0;
 
-export default class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroupState> {
-  public static defaultProps = {
-    isSelected: false,
-    isEnabled: true,
-    isMultipleSelect: false
+export default class ChoiceGroup extends React.Component<IChoiceGroupProps, any> {
+  static defaultProps = {
+    options: []
   };
 
   private _instanceId: string;
@@ -30,18 +26,30 @@ export default class ChoiceGroup extends React.Component<IChoiceGroupProps, ICho
     };
   }
   render() {
-    let { text, isSelected, isEnabled } = this.props;
     let { id } = this.state;
-    let rootClass = 'ms-ChoiceField';
-    let inputType = this.props.isMultipleSelect ? 'checkbox' : 'radio';
+    let { options } = this.props;
+    let rootClass = 'ms-ChoiceFieldGroup';
 
     return (
-      <div className={ rootClass }>
-        <input id={ id } className='ms-ChoiceField-input' type={ inputType } checked={ isSelected } disabled={ !isEnabled } />
-        <label htmlFor={ id } className='ms-ChoiceField-field'>
-          <span className='ms-Label'>{ text }</span>
-        </label>
+      
+    <div className={ rootClass }>
+      <div className="ms-ChoiceFieldGroup-title">
+        <label className="ms-Label is-required">Pick one</label>
       </div>
+      
+    	{ options.map(option => (
+        <div className="ms-ChoiceField">
+          <input id={ id + '-' + option.key } className="ms-ChoiceField-input" type="radio" name={ id } />
+          <label htmlFor={ id + '-' + option.key } className="ms-ChoiceField-field">
+            <span className="ms-Label">{ option.text }</span>
+          </label>
+        </div>
+      )) }
+      
+
+    </div>
+      
+      
     );
   }
 }
