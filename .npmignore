@@ -1,0 +1,6 @@
+src
+node_modules
+.gitignore
+.gitattributes
+.editorconfig
+gulpfile.js
