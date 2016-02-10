@@ -115,7 +115,7 @@ const AppState: IAppState = {
           name: 'DatePicker',
           url: '#/examples/datepicker',
           component: DatePickerExample,
-          status: ExampleStatus.placeholder
+          status: ExampleStatus.started
         },
         {
           name: 'Dialog',
@@ -139,7 +139,7 @@ const AppState: IAppState = {
           name: 'Link',
           url: '#/examples/link',
           component: LinkExample,
-          status: ExampleStatus.placeholder
+          status: ExampleStatus.beta
         },
         {
           name: 'List',

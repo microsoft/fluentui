@@ -1,0 +1,6 @@
+@import "~office-ui-fabric/src/sass/Fabric.Common";
+@import "~office-ui-fabric/src/components/Link/Link";
+
+.ms-Link:focus {
+  outline: 1px solid $ms-color-themeDarker;
+}
