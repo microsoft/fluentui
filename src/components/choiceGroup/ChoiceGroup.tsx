@@ -1,19 +1,19 @@
 import * as React from 'react';
 
-export interface IChoiceFieldProps {
+export interface IChoiceGroupProps {
   text: string;
   isSelected?: boolean;
   isEnabled?: boolean;
   isMultipleSelect?: boolean;
 }
 
-export interface IChoiceFieldState {
+export interface IChoiceGroupState {
   id: string;
 }
 
 let _instance = 0;
 
-export default class ChoiceField extends React.Component<IChoiceFieldProps, IChoiceFieldState> {
+export default class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroupState> {
   public static defaultProps = {
     isSelected: false,
     isEnabled: true,
@@ -26,7 +26,7 @@ export default class ChoiceField extends React.Component<IChoiceFieldProps, ICho
     super();
 
     this.state = {
-      id: `ChoiceField-${ _instance++ }`
+      id: `ChoiceGroup-${ _instance++ }`
     };
   }
   render() {
