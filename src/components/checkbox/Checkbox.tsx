@@ -6,13 +6,13 @@ export interface ICheckboxProps {
   isEnabled?: boolean;
 }
 
-export interface IChoiceFieldState {
+export interface ICheckboxState {
   id: string;
 }
 
 let _instance = 0;
 
-export default class ChoiceField extends React.Component<ICheckboxProps, IChoiceFieldState> {
+export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
   public static defaultProps = {
     isSelected: false,
     isEnabled: true
