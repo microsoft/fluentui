@@ -116,7 +116,7 @@ const AppState: IAppState = {
           name: 'ContextualMenu',
           url: '#/examples/contextmenu',
           component: ContextualMenuExample,
-          status: ExampleStatus.placeholder
+          status: ExampleStatus.started
         },
         {
           name: 'DatePicker',
