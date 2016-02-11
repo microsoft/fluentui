@@ -1,23 +1,36 @@
 import * as React from 'react';
 
+export enum ButtonType {
+  Default,
+  Primary,
+  Hero,
+  Compound,
+  Command
+}
+
 export interface IButtonProps {
   children?: any;
-  type?: string;
+  type?: ButtonType;
   description?: string;
 }
 
 export default class Button extends React.Component<IButtonProps, any> {
-  render() {
+
+  render() {  
     let { type, children, description } = this.props;
-    let rootClass = 'ms-Button' + (type ? ' ms-Button--' + type : '');
+    let rootClass = 'ms-Button'
+      + (type === ButtonType.Primary ? ' ms-Button--primary' : '')
+      + (type === ButtonType.Hero ? ' ms-Button--hero' : '')
+      + (type === ButtonType.Compound ? ' ms-Button--compound' : '')
+      + (type === ButtonType.Command ? ' ms-Button--command' : '');
 
     let iconSpan;
-    if (type === 'command' || type === 'hero') {
+    if (type === ButtonType.Command || type === ButtonType.Hero) {
       iconSpan = <span className="ms-Button-icon"><i className="ms-Icon ms-Icon--plus"></i></span>;
     }   
 
     let descriptionSpan;
-    if (type === 'compound') {
+    if (ButtonType.Compound) {
       descriptionSpan = <span className="ms-Button-description">{ description }</span>;
     }
 
@@ -29,4 +42,5 @@ export default class Button extends React.Component<IButtonProps, any> {
       </button>
     );
   }
+  
 }
