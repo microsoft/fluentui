@@ -12,12 +12,17 @@ export interface IButtonProps {
   children?: any;
   type?: ButtonType;
   description?: string;
+  onClick?: (ev?: any) => void;
 }
 
-export default class Button extends React.Component<IButtonProps, any> {
+export const ButtonProps = [
+  { name: 'isPrimary', type: 'boolean', defaultValue: 'false', description: 'If the button should be themed as the primary button.' },
+  { name: 'children', type: 'node', defaultValue: '', description: 'Children to be rendered within the button.' }
+];
 
-  render() {  
-    let { type, children, description } = this.props;
+export default class Button extends React.Component<IButtonProps, any> {
+  render() {
+    let { type, children, description, onClick } = this.props;
     let rootClass = 'ms-Button'
       + (type === ButtonType.Primary ? ' ms-Button--primary' : '')
       + (type === ButtonType.Hero ? ' ms-Button--hero' : '')
@@ -27,7 +32,7 @@ export default class Button extends React.Component<IButtonProps, any> {
     let iconSpan;
     if (type === ButtonType.Command || type === ButtonType.Hero) {
       iconSpan = <span className="ms-Button-icon"><i className="ms-Icon ms-Icon--plus"></i></span>;
-    }   
+    }
 
     let descriptionSpan;
     if (ButtonType.Compound) {
@@ -35,12 +40,12 @@ export default class Button extends React.Component<IButtonProps, any> {
     }
 
     return (
-      <button className={ rootClass }>
+      <button className={ rootClass } onClick={ onClick }>
         { iconSpan }
         <span className="ms-Button-label">{ children }</span>
         { descriptionSpan }
       </button>
     );
   }
-  
+
 }

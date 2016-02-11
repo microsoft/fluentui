@@ -7,6 +7,7 @@ import { Router, Route } from '../utilities/router';
 import AppState from './components/app/AppState';
 import GettingStarted from './pages/GettingStarted';
 import "./index.scss";
+import "./ColorStyles.scss";
 
 let rootElement;
 
