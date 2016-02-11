@@ -9,6 +9,7 @@ export interface IChoiceGroupOption {
 
 export interface IChoiceGroupProps {
   options: IChoiceGroupOption[];
+  onChanged: any;
 }
 
 let _instance = 0;
@@ -25,9 +26,10 @@ export default class ChoiceGroup extends React.Component<IChoiceGroupProps, any>
       id: `ChoiceGroup-${ _instance++ }`
     };
   }
+  
   render() {
     let { id } = this.state;
-    let { options } = this.props;
+    let { options, onChanged } = this.props;
     let rootClass = 'ms-ChoiceFieldGroup';
 
     return (
@@ -39,17 +41,15 @@ export default class ChoiceGroup extends React.Component<IChoiceGroupProps, any>
       
     	{ options.map(option => (
         <div className="ms-ChoiceField">
-          <input id={ id + '-' + option.key } className="ms-ChoiceField-input" type="radio" name={ id } disabled={ option.isDisabled } defaultChecked={ option.isChecked } />
+          <input id={ id + '-' + option.key } className="ms-ChoiceField-input" type="radio" name={ id } disabled={ option.isDisabled } defaultChecked={ option.isChecked } onChange={ function() { onChanged(); } } />
           <label htmlFor={ id + '-' + option.key } className="ms-ChoiceField-field">
             <span className="ms-Label">{ option.text }</span>
           </label>
         </div>
       )) }
       
-
     </div>
-      
-      
+
     );
   }
 }

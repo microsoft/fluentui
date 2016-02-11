@@ -19,12 +19,16 @@ export default class ChoiceGroupExample extends React.Component<any, any> {
     }
   ]
   
+  private onChangeCallback() {
+    console.log('The option has been changed.');
+  }
+  
   public render() {
     return (
       <div className='ChoiceGroupExample'>
         <h1>ChoiceGroup</h1>
         
-        <ChoiceGroup options={ this.choiceGroupOptions } />
+        <ChoiceGroup options={ this.choiceGroupOptions } onChanged={ this.onChangeCallback } />
       </div>
     );
   }
