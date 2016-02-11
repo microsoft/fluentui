@@ -4,3 +4,7 @@ node_modules
 .gitattributes
 .editorconfig
 gulpfile.js
+config.js
+tsconfig.json
+jsconfig.json
+webpack.config.js
