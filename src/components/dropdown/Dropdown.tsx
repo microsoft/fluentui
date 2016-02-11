@@ -41,7 +41,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
     };
 
     this._toggleOpen = this._toggleOpen.bind(this);
-    this._selectOption = this._selectOption.bind(this);
+    this._onItemClick = this._onItemClick.bind(this);
   }
 
   render() {
@@ -60,7 +60,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
           <FocusZone isEnabled={ isOpen } ref='dropdownZone'>
             <ul className="ms-Dropdown-items">
               { options.map(option => (
-              <li className={ 'ms-Dropdown-item' + ((selectedOption === option) ? ' is-selected' : '') } data-is-focusable={ true } onClick={ this._selectOption.bind(this, option) }>{ option.text }</li>
+              <li className={ 'ms-Dropdown-item' + ((selectedOption === option) ? ' is-selected' : '') } data-is-focusable={ true } onClick={ this._onItemClick.bind(this, option) }>{ option.text }</li>
               )) }
             </ul>
           </FocusZone>
@@ -84,7 +84,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
     });
   }
   
-  private _selectOption(option) {
+  private _onItemClick(option) {
     let selectedOptionKey = option.key;
     let selectedOptionIndex;
     
