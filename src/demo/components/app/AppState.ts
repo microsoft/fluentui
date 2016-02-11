@@ -3,7 +3,8 @@ import * as React from 'react';
 import BreadcrumbExample from '../../pages/examples/BreadcrumbExample';
 import ButtonExample from '../../pages/examples/ButtonExample';
 import CalloutExample from '../../pages/examples/CalloutExample';
-import ChoiceFieldExample from '../../pages/examples/ChoiceFieldExample';
+import CheckboxExample from '../../pages/examples/CheckboxExample';
+import ChoiceGroupExample from '../../pages/examples/ChoiceGroupExample';
 import CommandBarExample from '../../pages/examples/CommandBarExample';
 import ContextualMenuExample from '../../pages/examples/ContextualMenuExample';
 import DatePickerExample from '../../pages/examples/DatePickerExample';
@@ -94,9 +95,15 @@ const AppState: IAppState = {
           status: ExampleStatus.started
         },
         {
-          name: 'ChoiceField',
-          url: '#/examples/choicefield',
-          component: ChoiceFieldExample,
+          name: 'Checkbox',
+          url: '#/examples/checkbox',
+          component: CheckboxExample,
+          status: ExampleStatus.started
+        },
+        {
+          name: 'ChoiceGroup',
+          url: '#/examples/ChoiceGroup',
+          component: ChoiceGroupExample,
           status: ExampleStatus.started
         },
         {
