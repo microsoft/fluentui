@@ -83,7 +83,7 @@ const AppState: IAppState = {
         },
         {
           name: 'Button',
-          url: '#/page=button',
+          url: '#/examples/button',
           component: ButtonExample,
           status: ExampleStatus.started
         },
