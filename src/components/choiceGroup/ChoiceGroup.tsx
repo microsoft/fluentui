@@ -18,8 +18,6 @@ export default class ChoiceGroup extends React.Component<IChoiceGroupProps, any>
     options: []
   };
 
-  private _instanceId: string;
-
   constructor() {
     super();
 
