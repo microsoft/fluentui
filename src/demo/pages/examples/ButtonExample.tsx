@@ -5,7 +5,7 @@ import ExampleCard from '../../components/exampleCard/ExampleCard';
 import PropertiesTable from '../../components/propertiesTable/PropertiesTable';
 let Highlight = require('react-highlight');
 
-let DefaultButtonExample = require('./ButtonExample.Default.txt');
+let NormalButtonExample = require('./ButtonExample.Normal.txt');
 let PrimaryButtonExample = require('./ButtonExample.Primary.txt');
 let HeroButtonExample = require('./ButtonExample.Hero.txt');
 let CompoundButtonExample = require('./ButtonExample.Compound.txt');
@@ -21,8 +21,8 @@ export default class ButtonExample extends React.Component<any, any> {
         <h2 className='ms-font-xl'>Examples</h2>
 
         <ExampleCard
-          title='Example: Default button'
-          code={ DefaultButtonExample }
+          title='Example: Normal button'
+          code={ NormalButtonExample }
         >
           <Button>Create account</Button>
         </ExampleCard>
@@ -31,29 +31,28 @@ export default class ButtonExample extends React.Component<any, any> {
           title='Example: Primary button'
           code={ PrimaryButtonExample }
         >
-          <Button type={ ButtonType.Primary }>Create account</Button>
+          <Button type={ ButtonType.normal }>Create account</Button>
         </ExampleCard>
 
         <ExampleCard
           title='Example: Hero button'
           code={ HeroButtonExample }
         >
-          <Button type={ ButtonType.Hero }>Create account</Button>
+          <Button type={ ButtonType.hero }>Create account</Button>
         </ExampleCard>
 
         <ExampleCard
           title='Example: Compound button'
           code={ CompoundButtonExample }
         >
-
-      <Button type={ ButtonType.Compound }>Create account</Button>
+          <Button type={ ButtonType.compound }>Create account</Button>
         </ExampleCard>
 
         <ExampleCard
           title='Example: Command button'
           code={ CommandButtonExample }
         >
-          <Button type={ ButtonType.Command } description='Description of the action this button takes'>Create account</Button>
+          <Button type={ ButtonType.command } description='Description of the action this button takes'>Create account</Button>
         </ExampleCard>
 
         <PropertiesTable properties={ ButtonProps } />

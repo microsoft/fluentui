@@ -1,11 +1,11 @@
 import * as React from 'react';
 
 export enum ButtonType {
-  Default,
-  Primary,
-  Hero,
-  Compound,
-  Command
+  normal,
+  primary,
+  hero,
+  compound,
+  command
 }
 
 export interface IButtonProps {
@@ -16,26 +16,32 @@ export interface IButtonProps {
 }
 
 export const ButtonProps = [
-  { name: 'isPrimary', type: 'boolean', defaultValue: 'false', description: 'If the button should be themed as the primary button.' },
-  { name: 'children', type: 'node', defaultValue: '', description: 'Children to be rendered within the button.' }
+  { name: 'children', type: 'node', defaultValue: '', description: 'Children to be rendered within the button.' },
+  { name: 'type', type: 'ButtonType', defaultValue: 'ButtonType.normal', description: 'The type of the button to render. { normal, primary, hero, compound, command }' },
+  { name: 'description', type: 'node', defaultValue: '', description: 'TODO' },
+  { name: 'onClick', type: 'function ()', defaultValue: '', description: 'Function to call when the button is clicked.' }
 ];
 
 export default class Button extends React.Component<IButtonProps, any> {
-  render() {
+  public static defaultProps: IButtonProps = {
+    type: ButtonType.normal
+  };
+
+  public render() {
     let { type, children, description, onClick } = this.props;
     let rootClass = 'ms-Button'
-      + (type === ButtonType.Primary ? ' ms-Button--primary' : '')
-      + (type === ButtonType.Hero ? ' ms-Button--hero' : '')
-      + (type === ButtonType.Compound ? ' ms-Button--compound' : '')
-      + (type === ButtonType.Command ? ' ms-Button--command' : '');
+      + (type === ButtonType.primary ? ' ms-Button--primary' : '')
+      + (type === ButtonType.hero ? ' ms-Button--hero' : '')
+      + (type === ButtonType.compound ? ' ms-Button--compound' : '')
+      + (type === ButtonType.command ? ' ms-Button--command' : '');
 
     let iconSpan;
-    if (type === ButtonType.Command || type === ButtonType.Hero) {
+    if (type === ButtonType.command || type === ButtonType.hero) {
       iconSpan = <span className="ms-Button-icon"><i className="ms-Icon ms-Icon--plus"></i></span>;
     }
 
     let descriptionSpan;
-    if (ButtonType.Compound) {
+    if (ButtonType.compound) {
       descriptionSpan = <span className="ms-Button-description">{ description }</span>;
     }
 

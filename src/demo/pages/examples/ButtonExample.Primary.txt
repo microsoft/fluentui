@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Button } from 'office-ui-fabric-react/lib/button';
+import { default as Button, ButtonType } from 'office-ui-fabric-react/lib/button';
 
 export default const ButtonExample = () => (
   <div>
-    <Button type={ ButtonType.Primary }>Create account</Button>
+    <Button type={ ButtonType.primary }>Create account</Button>
   </div>
 );

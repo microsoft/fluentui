@@ -47,7 +47,7 @@ export default class ExampleCard extends React.Component<IExampleCardProps, IExa
           <span className='ExampleCard-title ms-font-l'>{ title }</span>
           { (code ? (
           <span className='ExampleCard-toggleCode ms-font-l'>
-            <Button type={ ButtonType.Primary } onClick={ this._onToggleCodeClick }>{ this.state.isCodeVisible ? 'Hide code' : 'Show code' }</Button>
+            <Button type={ ButtonType.primary } onClick={ this._onToggleCodeClick }>{ this.state.isCodeVisible ? 'Hide code' : 'Show code' }</Button>
           </span>
           ) : null) }
         </div>
