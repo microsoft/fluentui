@@ -21,35 +21,35 @@ export default class ButtonExample extends React.Component<any, any> {
         <h2 className='ms-font-xl'>Examples</h2>
 
         <ExampleCard
-          title='Example: Normal button'
+          title='Normal button'
           code={ NormalButtonExample }
         >
           <Button>Create account</Button>
         </ExampleCard>
 
         <ExampleCard
-          title='Example: Primary button'
+          title='Primary button'
           code={ PrimaryButtonExample }
         >
           <Button type={ ButtonType.normal }>Create account</Button>
         </ExampleCard>
 
         <ExampleCard
-          title='Example: Hero button'
+          title='Hero button'
           code={ HeroButtonExample }
         >
           <Button type={ ButtonType.hero }>Create account</Button>
         </ExampleCard>
 
         <ExampleCard
-          title='Example: Compound button'
+          title='Compound button'
           code={ CompoundButtonExample }
         >
           <Button type={ ButtonType.compound }>Create account</Button>
         </ExampleCard>
 
         <ExampleCard
-          title='Example: Command button'
+          title='Command button'
           code={ CommandButtonExample }
         >
           <Button type={ ButtonType.command } description='Description of the action this button takes'>Create account</Button>
