@@ -3,8 +3,8 @@ import * as React from 'react';
 export interface IChoiceGroupOption {
   key: string;
   text: string;
-  disabled?: boolean;
-  checked?: boolean;
+  isDisabled?: boolean;
+  isChecked?: boolean;
 }
 
 export interface IChoiceGroupProps {
@@ -39,7 +39,7 @@ export default class ChoiceGroup extends React.Component<IChoiceGroupProps, any>
       
     	{ options.map(option => (
         <div className="ms-ChoiceField">
-          <input id={ id + '-' + option.key } className="ms-ChoiceField-input" type="radio" name={ id } disabled={ option.disabled } defaultChecked={ option.checked } />
+          <input id={ id + '-' + option.key } className="ms-ChoiceField-input" type="radio" name={ id } disabled={ option.isDisabled } defaultChecked={ option.isChecked } />
           <label htmlFor={ id + '-' + option.key } className="ms-ChoiceField-field">
             <span className="ms-Label">{ option.text }</span>
           </label>

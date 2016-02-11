@@ -10,12 +10,12 @@ export default class ChoiceGroupExample extends React.Component<any, any> {
     {
       key: 'B',
       text: 'Option B',
-      checked: true
+      isChecked: true
     },
     {
       key: 'C',
       text: 'Option C',
-      disabled: true
+      isDisabled: true
     }
   ]
   
