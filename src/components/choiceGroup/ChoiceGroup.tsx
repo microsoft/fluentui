@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './ChoiceGroup.scss';
 
 export interface IChoiceGroupOption {
   key: string;

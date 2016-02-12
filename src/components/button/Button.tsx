@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './Button.scss';
 
 export enum ButtonType {
   normal,

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import FocusZone from '../../utilities/focus/FocusZone';
+import './ContextualMenu.scss';
 
 export interface IContextualMenuItem {
   key: string;

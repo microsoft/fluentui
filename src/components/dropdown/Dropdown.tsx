@@ -1,5 +1,6 @@
 import * as React from 'react';
 import FocusZone from '../../utilities/focus/FocusZone';
+import './Dropdown.scss';
 
 export interface IDropdownOption {
   key: string;

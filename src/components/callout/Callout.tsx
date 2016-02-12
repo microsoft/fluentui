@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './Callout.scss';
 
 export enum ArrowDirection {
   left,
