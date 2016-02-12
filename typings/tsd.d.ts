@@ -7,3 +7,4 @@
 /// <reference path="webpack/webpack.d.ts" />
 /// <reference path="react-router/history.d.ts" />
 /// <reference path="react-router/react-router.d.ts" />
+/// <reference path="node/node.d.ts" />

@@ -1,0 +1,32 @@
+.ExampleCard {
+  margin-bottom: 20px;
+}
+
+.ExampleCard-header {
+  background: #F0F0F0;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 10px;
+}
+
+.ExampleCard-toggleCode {
+  float: right;
+
+  .ms-Button {
+    margin: 10px 0;
+    height: 30px;
+  }
+}
+
+.ExampleCard-content {
+  padding: 20px;
+  border: 1px solid #F0F0F0;
+}
+
+.ExampleCard-code {
+  display: none;
+}
+
+.ExampleCard.is-codeVisible .ExampleCard-code {
+  display: block;
+}

@@ -1,6 +1,15 @@
 import * as React from 'react';
-import Button from '../../../components/button/Button';
+import { default as Button, ButtonType, ButtonProps } from '../../../components/button/Button';
 import Link from '../../../components/link/Link';
+import ExampleCard from '../../components/exampleCard/ExampleCard';
+import PropertiesTable from '../../components/propertiesTable/PropertiesTable';
+let Highlight = require('react-highlight');
+
+let NormalButtonExample = require('./ButtonExample.Normal.txt');
+let PrimaryButtonExample = require('./ButtonExample.Primary.txt');
+let HeroButtonExample = require('./ButtonExample.Hero.txt');
+let CompoundButtonExample = require('./ButtonExample.Compound.txt');
+let CommandButtonExample = require('./ButtonExample.Command.txt');
 
 export default class ButtonExample extends React.Component<any, any> {
   public render() {
@@ -11,17 +20,42 @@ export default class ButtonExample extends React.Component<any, any> {
 
         <h2 className='ms-font-xl'>Examples</h2>
 
-        <Button>Create account</Button>
-        <Button isPrimary={ true }>Create account</Button>
+        <ExampleCard
+          title='Normal button'
+          code={ NormalButtonExample }
+        >
+          <Button>Create account</Button>
+        </ExampleCard>
 
-        <h2 className='ms-font-xl'>Code</h2>
+        <ExampleCard
+          title='Primary button'
+          code={ PrimaryButtonExample }
+        >
+          <Button type={ ButtonType.normal }>Create account</Button>
+        </ExampleCard>
 
-        <div>TODO</div>
+        <ExampleCard
+          title='Hero button'
+          code={ HeroButtonExample }
+        >
+          <Button type={ ButtonType.hero }>Create account</Button>
+        </ExampleCard>
 
-        <h2 className='ms-font-xl'>Properties</h2>
+        <ExampleCard
+          title='Compound button'
+          code={ CompoundButtonExample }
+        >
+          <Button type={ ButtonType.compound }>Create account</Button>
+        </ExampleCard>
 
-        <div>TODO</div>
+        <ExampleCard
+          title='Command button'
+          code={ CommandButtonExample }
+        >
+          <Button type={ ButtonType.command } description='Description of the action this button takes'>Create account</Button>
+        </ExampleCard>
 
+        <PropertiesTable properties={ ButtonProps } />
       </div>
     );
   }

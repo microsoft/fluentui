@@ -1,23 +1,22 @@
 import * as React from 'react';
 
-export interface IChoiceFieldProps {
+export interface ICheckboxProps {
   text: string;
   isSelected?: boolean;
   isEnabled?: boolean;
-  isMultipleSelect?: boolean;
+  onChanged?: any;
 }
 
-export interface IChoiceFieldState {
+export interface ICheckboxState {
   id: string;
 }
 
 let _instance = 0;
 
-export default class ChoiceField extends React.Component<IChoiceFieldProps, IChoiceFieldState> {
+export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
   public static defaultProps = {
     isSelected: false,
-    isEnabled: true,
-    isMultipleSelect: false
+    isEnabled: true
   };
 
   private _instanceId: string;
@@ -26,22 +25,23 @@ export default class ChoiceField extends React.Component<IChoiceFieldProps, ICho
     super();
 
     this.state = {
-      id: `ChoiceField-${ _instance++ }`
+      id: `Checkbox-${ _instance++ }`
     };
   }
+  
   render() {
-    let { text, isSelected, isEnabled } = this.props;
+    let { text, isSelected, isEnabled, onChanged } = this.props;
     let { id } = this.state;
     let rootClass = 'ms-ChoiceField';
-    let inputType = this.props.isMultipleSelect ? 'checkbox' : 'radio';
 
     return (
       <div className={ rootClass }>
-        <input id={ id } className='ms-ChoiceField-input' type={ inputType } checked={ isSelected } disabled={ !isEnabled } />
+        <input id={ id } className='ms-ChoiceField-input' type='checkbox' defaultChecked={ isSelected } disabled={ !isEnabled } onChange={ function() { onChanged(); } } />
         <label htmlFor={ id } className='ms-ChoiceField-field'>
           <span className='ms-Label'>{ text }</span>
         </label>
       </div>
     );
   }
+
 }

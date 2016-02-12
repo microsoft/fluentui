@@ -22,11 +22,12 @@ export default class ToggleExample extends React.Component<any, any> {
       <h1>I'm a toggle</h1>
 
        <Toggle
-            isToggled={ this.state.isToggled }
-            onToggled={ this._handleToggled }
-            label='Indoor lighting'
-            onText='On'
-            offText='Off' />
+          isToggled={ this.state.isToggled }
+          onToggled={ this._handleToggled }
+          label='Indoor lighting'
+          onText='On'
+          offText='Off' />
+
       </div>
     );
   }

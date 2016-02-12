@@ -6,7 +6,8 @@ module.exports = {
   },
   build: {
     paths: {
-      staticsMatch: [ 'src/**/*.scss' ]
+      staticsMatch: [ 'src/**/*.scss' ],
+      templateMatch: [ 'src/**/*.txt' ]
     },
     copyTo: {
       'dist': [
