@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './ExampleCard.scss';
-import { default as Button, ButtonType } from '../../../components/button/Button';
+import { default as Button, ButtonType } from '../../../components/Button';
 
 let Highlight = require('react-highlight');
 

@@ -175,13 +175,13 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
 
       case KeyCodes.left:
         if (direction === FocusZoneDirection.horizontal) {
-          newActiveIndex: Math.max(0, activeIndex - 1);
+          newActiveIndex = Math.max(0, activeIndex - 1);
         }
         break;
 
       case KeyCodes.right:
         if (direction === FocusZoneDirection.horizontal) {
-          newActiveIndex: Math.min(focusElements.length - 1, activeIndex + 1);
+          newActiveIndex = Math.min(focusElements.length - 1, activeIndex + 1);
         }
         break;
 

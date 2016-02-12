@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Label from '../label/Label';
+import Label from '../Label';
 import './TextField.scss';
 
 export interface ITextFieldProps extends React.DOMAttributes {
@@ -16,19 +16,19 @@ export interface ITextFieldProps extends React.DOMAttributes {
 }
 
 export default class TextField extends React.Component<ITextFieldProps, any> {
-    public static initialProps: ITextFieldProps = { 
+    public static initialProps: ITextFieldProps = {
         disabled: false,
         required: false,
         multiline: false,
         underlined: false
     }
-    
+
     render() {
         let {disabled, required, multiline, placeholder, underlined, label, description, iconClass, value} = this.props;
-        
+
         return (
-            <div 
-                {...this.props} 
+            <div
+                {...this.props}
                 className={
                     "ms-TextField" +
                     (required ? " is-required" : "") +

@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import AppState from './AppState';
-import Header from '../header/Header';
-import NavBar from '../navBar/NavBar';
+import Header from '../Header';
+import NavBar from '../NavBar';
 import './App.css';
 
 export default class App extends React.Component<any, any> {

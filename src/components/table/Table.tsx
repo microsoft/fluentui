@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-export interface IOrgChartProps {
+export interface ITableProps {
 }
 
-export default class OrgChart extends React.Component<IOrgChartProps, any> {
+export default class Table extends React.Component<ITableProps, any> {
   render() {
-    let rootClass = 'ms-OrgChart';
+    let rootClass = 'ms-Table';
 
     return (
       <div className={ rootClass }>

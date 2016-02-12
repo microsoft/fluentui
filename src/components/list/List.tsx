@@ -1,14 +1,18 @@
 import * as React from 'react';
 
-export interface IDropdownProps {
+export interface IListProps {
+  items?: any[];
+  layoutData?: any[];
+  pageSize?: number;
 }
 
-export default class Dropdown extends React.Component<IDropdownProps, any> {
-  render() {
-    let rootClass = 'ms-Dropdown';
+export default class List extends React.Component<IListProps, any> {
+  public render() {
+    let rootClass = 'ms-List';
 
     return (
       <div className={ rootClass }>
+
       </div>
     );
   }
