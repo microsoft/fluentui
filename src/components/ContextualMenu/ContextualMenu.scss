@@ -1,2 +1,7 @@
 @import "~office-ui-fabric/src/sass/Fabric.Common";
 @import "~office-ui-fabric/src/components/ContextualMenu/ContextualMenu";
+
+.ms-ContextualMenu,
+.ms-ContextualMenu.is-open {
+  position: relative;
+}

@@ -1,5 +1,8 @@
 import * as React from 'react';
 import ChoiceGroup from '../../../../components/ChoiceGroup';
+import Link from '../../../../components/Link';
+import ExampleCard from '../../../components/ExampleCard';
+import PropertiesTable from '../../../components/PropertiesTable';
 
 export default class ChoiceGroupExample extends React.Component<any, any> {
   private choiceGroupOptions = [
@@ -26,9 +29,17 @@ export default class ChoiceGroupExample extends React.Component<any, any> {
   public render() {
     return (
       <div className='ChoiceGroupExample'>
-        <h1>ChoiceGroup</h1>
+        <h1 className='ms-font-xxl'>ChoiceGroup</h1>
+        <div><Link text='ChoiceGroups' url='http://dev.office.com/fabric/components/choiceGroup' /> allow the user to choose one of many options.</div>
 
-        <ChoiceGroup options={ this.choiceGroupOptions } onChanged={ this.onChangeCallback } />
+        <PropertiesTable properties={ [] } />
+
+        <h2 className='ms-font-xl'>Examples</h2>
+
+        <ExampleCard title='ChoiceGroups'>
+          <ChoiceGroup options={ this.choiceGroupOptions } onChanged={ this.onChangeCallback } />
+        </ExampleCard>
+
       </div>
     );
   }

@@ -32,7 +32,7 @@ export default class ButtonExample extends React.Component<any, any> {
           title='Primary button'
           code={ PrimaryButtonExample }
         >
-          <Button type={ ButtonType.normal }>Create account</Button>
+          <Button type={ ButtonType.primary }>Create account</Button>
         </ExampleCard>
 
         <ExampleCard
