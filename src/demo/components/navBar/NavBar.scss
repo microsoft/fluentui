@@ -1,3 +1,5 @@
+@import "~office-ui-fabric/src/sass/Fabric.Common";
+
 .NavBar {
   position: absolute;
   top: 0;
@@ -27,7 +29,7 @@
   padding: 0 40px;
   background: none;
   border: none;
-  border-bottom: 1px solid #EEE;
+  border-bottom: 1px solid $ms-color-neutralLight;
   text-transform: uppercase;
 
   cursor: default;
@@ -67,14 +69,18 @@
 }
 
 .NavBar-groupButton:hover:before {
-  background: #EAEAEA;
+  background: $ms-color-neutralLight;
 }
 
-.NavBar-groupButton:focus:before {
-  border: 1px solid #0078d7;
+.NavBar-groupButton:focus {
+  outline: transparent;
 }
 
-.NavBarLink {
+.ms-Fabric.is-focusVisible .NavBar-groupButton:focus:before {
+  border: 1px solid $ms-color-themePrimary;
+}
+
+.NavBar-link {
   position: relative;
   display: block;
   height: 40px;
@@ -84,12 +90,12 @@
   color: black;
   cursor: default;
 
-  /* TODO: this need sto be browser specific */
+  /* TODO: this needs to be browser specific */
   user-select: none;
   -webkit-user-select: none;
 
   &:focus {
-    outline: none;
+    outline: transparent;
   }
 
   &:visited {
@@ -107,34 +113,35 @@
   }
 }
 
-.NavBarLink.is-selected:before {
-  border-left: 4px solid #0078d7;
-  background: #EAEAEA;
+.ms-Fabric.is-focusVisible .NavBar-link:focus:before {
+  border: 1px solid $ms-color-themePrimary;
 }
 
-.NavBarLink:hover:before {
-  background: #EAEAEA;
+.NavBar-link.is-selected:before,
+.ms-Fabric.is-focusVisible .NavBar-link.is-selected:focus:before {
+  border-left: 4px solid $ms-color-themePrimary;
+  background: $ms-color-neutralLight;
 }
 
-.NavBarLink.is-selected:hover:before {
-  background: rgb(212, 232, 248);
+.NavBar-link:hover:before {
+  background: $ms-color-neutralLight;
 }
 
-.NavBarLink:focus:before {
-  border: 1px solid #0078d7;
+.NavBar-link.is-selected:hover:before {
+  background: $ms-color-themeLighter;
 }
 
 .is-selected:before,
-.NavBarLink.is-selected:focus:before {
-  border-left: 4px solid #0078d7;
+.NavBar-link.is-selected:focus:before {
+  border-left: 4px solid $ms-color-themePrimary;
 }
 
-.NavBarLink-flair {
+.NavBar-linkFlair {
     font-size: 10px;
     text-transform: uppercase;
     float: right;
-    background: #CCC;
-    color: white;
+    background: $ms-color-neutralTertiaryAlt;
+    color: $ms-color-white;
     line-height: normal;
     display: inline;
     vertical-align: middle;
@@ -146,13 +153,13 @@
     border-radius: 2px;
 }
 
-.NavBarLink-flair.NavBarLink-flair1 {
-    background: #ECDC14;
-    color: black;
+.NavBar-linkFlair.is-state1 {
+    background: $ms-color-yellowLight;
+    color: $ms-color-black;
 }
-.NavBarLink-flair.NavBarLink-flair2 {
-    background: #8EB31D;
+.NavBar-linkFlair.is-state2 {
+    background: $ms-color-greenLight;
 }
-.NavBarLink-flair.NavBarLink-flair3 {
-    background: green;
+.NavBar-linkFlair.is-state3 {
+    background: $ms-color-green;
 }

@@ -17,7 +17,9 @@ export * from './DatePicker';
 export { default as Dialog } from './Dialog';
 export * from './Dialog';
 export { default as Dropdown } from './Dropdown';
-export * from './Dropdown';
+export * from './Dropdown'
+export { default as Fabric } from './Fabric';
+export * from './Fabric';
 export { default as Label } from './Label';
 export * from './Label';
 export { default as Link } from './Link';

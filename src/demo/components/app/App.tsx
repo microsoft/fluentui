@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import Fabric from '../../../components/Fabric';
 import AppState from './AppState';
 import Header from '../Header';
 import NavBar from '../NavBar';
@@ -9,7 +9,7 @@ export default class App extends React.Component<any, any> {
 
   public render() {
     return (
-      <div className='App ms-font-m'>
+      <Fabric className='App'>
 
         <div className='App-header'>
           <Header title={ AppState.appTitle } sideLinks={ AppState.headerLinks } />
@@ -23,7 +23,7 @@ export default class App extends React.Component<any, any> {
           { this.props.children }
         </div>
 
-      </div>
+      </Fabric>
     );
   }
 

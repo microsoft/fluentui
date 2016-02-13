@@ -29,9 +29,9 @@ export default class PropertiesTable extends React.Component<IPropertiesTablePro
               <td className='ms-Table-cell'>Default</td>
               <td className='ms-Table-cell'>Description</td>
             </tr>
-            { properties.map(property => (
+            { properties.sort((a, b) => (a.name < b.name) ? -1 : 1).map(property => (
             <tr className='ms-Table-row' key={ property.name }>
-              <td className='ms-Table-cell'>{ property.name }</td>
+              <td className='ms-Table-cell PropertiesTable-nameCell'>{ property.name }</td>
               <td className='ms-Table-cell'>{ property.type }</td>
               <td className='ms-Table-cell'>{ property.defaultValue }</td>
               <td className='ms-Table-cell'>{ property.description }</td>

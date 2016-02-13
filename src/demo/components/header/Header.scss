@@ -1,8 +1,10 @@
+@import "~office-ui-fabric/src/sass/Fabric.Common";
+
 .Header {
   height: 50px;
   line-height: 50px;
   padding: 0 20px;
-  background: #004175;
+  background: $ms-color-themeDark;
 }
 .Header-title,
 .Header-buttons,
@@ -29,10 +31,14 @@
   text-transform: uppercase;
 
   &:hover {
-    background: #0688EF;
+    background: $ms-color-themePrimary;
   }
 
   &:focus {
-    outline: 1px solid white;
+    outline: 1px solid transparent;
   }
+}
+
+.ms-Fabric.is-focusVisible .Header-button:focus {
+  outline: 1px solid $ms-color-themeLight;
 }

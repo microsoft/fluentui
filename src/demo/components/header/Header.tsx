@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './Header.css';
+import './Header.scss';
 import { FocusZone, FocusZoneDirection } from '../../../utilities/focus';
 
 export interface IHeaderProps {

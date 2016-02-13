@@ -38,9 +38,9 @@ export default class NavBar extends React.Component<INavBarProps, INavBarState> 
     let { groups } = this.props;
 
     let groupElements = groups.map((group, groupIndex) => {
-      let isGroupExpanded = this.state.isGroupExpanded[groupIndex] !== false;
+    let isGroupExpanded = this.state.isGroupExpanded[groupIndex] !== false;
 
-      return (
+    return (
       <div key={ groupIndex } className={ 'NavBar-group' + (isGroupExpanded ? ' is-expanded' : '') }>
         <button
           className='NavBar-groupButton'
@@ -55,12 +55,12 @@ export default class NavBar extends React.Component<INavBarProps, INavBarState> 
         { group.links.map((link, linkIndex) => (
           <a
             key={ `${ groupIndex }:${ linkIndex }` }
-            className={'NavBarLink' + (this._isSelected(link) ? ' is-selected' : '')}
+            className={'NavBar-link' + (this._isSelected(link) ? ' is-selected' : '')}
             href={ link.url }
           >
-            <span className='NavBarLink-text'>{ link.name }</span>
+            <span className='NavBar-linkText'>{ link.name }</span>
             { link.status !== undefined ? (
-            <span className={ 'NavBarLink-flair ' + 'NavBarLink-flair' + link.status } >{ ExampleStatus[link.status] }</span>
+            <span className={ 'NavBar-linkFlair ' + 'is-state' + link.status } >{ ExampleStatus[link.status] }</span>
             ) : ( null ) }
           </a>
         )) }

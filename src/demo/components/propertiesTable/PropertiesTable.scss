@@ -5,6 +5,10 @@
   margin-bottom: 20px;
 }
 .PropertiesTable-noProperties {
-  background: #ECDC14;
+  background: $ms-color-yellow;
   padding: 10px;
+}
+
+.PropertiesTable-nameCell {
+  color: $ms-color-themePrimary;
 }
