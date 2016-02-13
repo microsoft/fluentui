@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import FocusZone from '../../../utilities/focus/FocusZone';
 import KeyCodes from '../../../utilities/KeyCodes';
-import './NavBar.css';
+import './NavBar.scss';
 import { ExampleStatus } from '../app/AppState';
 
 export interface INavBarProps {
@@ -41,21 +41,21 @@ export default class NavBar extends React.Component<INavBarProps, INavBarState> 
       let isGroupExpanded = this.state.isGroupExpanded[groupIndex] !== false;
 
       return (
-      <div key={ groupIndex } className={ 'NavBar-group' + (isGroupExpanded ? ' NavBar-group--isExpanded' : '') }>
+      <div key={ groupIndex } className={ 'NavBar-group' + (isGroupExpanded ? ' is-expanded' : '') }>
         <button
-          className='NavBarGroup'
+          className='NavBar-groupButton'
           data-group-index={ groupIndex }
           onClick={ this._onGroupHeaderClicked }
         >
-          <i className='NavBarGroup-chevron ms-Icon ms-Icon--chevronDown'/>
+          <i className='NavBar-groupChevron ms-Icon ms-Icon--chevronDown'/>
           { group.name }
         </button>
 
-        <div className='NavBar-groupContent' data-focus-zone-enabled={ isGroupExpanded }>
+        <div className='NavBar-groupContent ms-u-slideDownIn20' data-focus-zone-enabled={ isGroupExpanded }>
         { group.links.map((link, linkIndex) => (
           <a
             key={ `${ groupIndex }:${ linkIndex }` }
-            className={'NavBarLink' + (this._isSelected(link) ? ' NavBarLink--isSelected' : '')}
+            className={'NavBarLink' + (this._isSelected(link) ? ' is-selected' : '')}
             href={ link.url }
           >
             <span className='NavBarLink-text'>{ link.name }</span>

@@ -12,11 +12,11 @@
   margin-bottom: 40px;
 }
 
-.NavBar-group--isExpanded .NavBar-groupContent {
+.NavBar-group.is-expanded .NavBar-groupContent {
   display: block;
 }
 
-.NavBarGroup {
+.NavBar-groupButton {
   position: relative;
   display: block;
   width: 100%;
@@ -53,24 +53,24 @@
   }
 }
 
-.NavBarGroup-chevron {
+.NavBar-groupChevron.ms-Icon {
   position: absolute;
   left: 15px;
   height: 40px;
   line-height: 40px;
   font-size: 15px;
-  transform: rotate(-90deg);
+  transition: transform .1s linear;
 }
 
-.NavBarGroup--isExpanded .NavBarGroup-chevron {
-  transform: rotate(0);
+.NavBar-group.is-expanded .NavBar-groupChevron {
+  transform: rotate(-180deg);
 }
 
-.NavBarGroup:hover:before {
+.NavBar-groupButton:hover:before {
   background: #EAEAEA;
 }
 
-.NavBarGroup:focus:before {
+.NavBar-groupButton:focus:before {
   border: 1px solid #0078d7;
 }
 
@@ -84,6 +84,7 @@
   color: black;
   cursor: default;
 
+  /* TODO: this need sto be browser specific */
   user-select: none;
   -webkit-user-select: none;
 
@@ -106,7 +107,7 @@
   }
 }
 
-.NavBarLink--isSelected:before {
+.NavBarLink.is-selected:before {
   border-left: 4px solid #0078d7;
   background: #EAEAEA;
 }
@@ -115,7 +116,7 @@
   background: #EAEAEA;
 }
 
-.NavBarLink.NavBarLink--isSelected:hover:before {
+.NavBarLink.is-selected:hover:before {
   background: rgb(212, 232, 248);
 }
 
@@ -123,8 +124,8 @@
   border: 1px solid #0078d7;
 }
 
-.NavBarLink--isSelected:before,
-.NavBarLink.NavBarLink--isSelected:focus:before {
+.is-selected:before,
+.NavBarLink.is-selected:focus:before {
   border-left: 4px solid #0078d7;
 }
 
