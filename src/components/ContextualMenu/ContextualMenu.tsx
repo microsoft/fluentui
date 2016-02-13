@@ -9,7 +9,7 @@ export interface IContextualMenuItem {
 }
 
 export interface IContextualMenuProps {
-  items: IContextualMenuItem[];  
+  items: IContextualMenuItem[];
 }
 
 export default class ContextualMenu extends React.Component<IContextualMenuProps, any> {
@@ -18,9 +18,9 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
       <FocusZone>
         <ul className="ms-ContextualMenu is-open">
           { this.props.items.map(item => (
-          <li className="ms-ContextualMenu-item">
+          <li key={ item.key } className="ms-ContextualMenu-item">
               <a className="ms-ContextualMenu-link" onClick={ (item.onClick ? item.onClick : null) }>{ item.name }</a>
-          </li>          
+          </li>
           )) }
         </ul>
       </FocusZone>

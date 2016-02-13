@@ -1,27 +1,41 @@
 import * as React from 'react';
 import TextField from '../../../../components/TextField';
 import Label from '../../../../components/Label';
+import Link from '../../../../components/Link';
+import ExampleCard from '../../../components/ExampleCard';
+import PropertiesTable from '../../../components/PropertiesTable';
 
 export default class TextFieldExample extends React.Component<any, any> {
   public render() {
     return (
       <div className='TextFieldExample'>
-        <h1>TextField</h1>
+        <h1 className='ms-font-xxl'>Table</h1>
+        <div><Link text='TextFields' url='http://dev.office.com/fabric/components/textfields' /> allow the user to enter text.</div>
 
-        <h2>Default text field</h2>
-        <TextField label="Some Label" />
+        <PropertiesTable properties={ [] } />
 
-        <h2>Placeholder</h2>
-        <TextField placeholder="Now I am a Placeholder" />
+        <h2 className='ms-font-xl'>Examples</h2>
 
-        <h2>Placeholder with Label</h2>
-        <TextField placeholder="A Placeholder" label="A Label" />
+        <ExampleCard title='Default text field'>
+          <TextField label="Some Label" />
+        </ExampleCard>
 
-        <h2>Multiline</h2>
-        <TextField label="Label" multiline />
+        <ExampleCard title='Placeholder'>
+          <TextField placeholder="Now I am a Placeholder" />
+        </ExampleCard>
 
-        <h2>Underlined</h2>
-        <TextField label="Label" underlined />
+        <ExampleCard title='Placeholder'>
+          <TextField placeholder="A Placeholder" label="A Label" />
+        </ExampleCard>
+
+        <ExampleCard title='Multiline'>
+          <TextField label="Label" multiline />
+        </ExampleCard>
+
+        <ExampleCard title='Underlined'>
+          <TextField label="Label" underlined />
+        </ExampleCard>
+
       </div>
     );
   }

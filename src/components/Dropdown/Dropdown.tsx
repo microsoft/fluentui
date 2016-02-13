@@ -61,7 +61,11 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
           <FocusZone isEnabled={ isOpen } ref='dropdownZone'>
             <ul className="ms-Dropdown-items">
               { options.map(option => (
-              <li className={ 'ms-Dropdown-item' + ((selectedOption === option) ? ' is-selected' : '') } data-is-focusable={ true } onClick={ this._onItemClick.bind(this, option) }>{ option.text }</li>
+              <li
+                key={ option.key }
+                className={ 'ms-Dropdown-item' + ((selectedOption === option) ? ' is-selected' : '') }
+                data-is-focusable={ true }
+                onClick={ this._onItemClick.bind(this, option) }>{ option.text }</li>
               )) }
             </ul>
           </FocusZone>
@@ -84,20 +88,20 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
       }
     });
   }
-  
+
   private _onItemClick(option) {
     let selectedOptionKey = option.key;
     let selectedOptionIndex;
-    
+
     // Iterate through all of the options, finding the one the matches they selected key.
     for(let i = 0; i < this.props.options.length; i++) {
       if(option.key === this.props.options[i].key) {
         selectedOptionIndex = i;
       }
     }
-    
+
     // Set the selected index to the matching option.
     this.setState({ selectedIndex: selectedOptionIndex });
   }
-  
+
 }

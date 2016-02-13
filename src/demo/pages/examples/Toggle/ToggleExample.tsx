@@ -4,6 +4,9 @@ import * as React from 'react';
 //import { Toggle } from 'office-ui-fabric-react';
 
 import Toggle from '../../../../components/Toggle';
+import Link from '../../../../components/Link';
+import ExampleCard from '../../../components/ExampleCard';
+import PropertiesTable from '../../../components/PropertiesTable';
 
 export default class ToggleExample extends React.Component<any, any> {
   constructor() {
@@ -13,26 +16,32 @@ export default class ToggleExample extends React.Component<any, any> {
       isToggled: true
     };
 
-    this._handleToggled = this._handleToggled.bind(this);
+    this._onToggled = this._onToggled.bind(this);
   }
 
   public render() {
     return (
       <div className='ToggleExample'>
-      <h1>I'm a toggle</h1>
+        <h1 className='ms-font-xxl'>Toggle</h1>
+        <div><Link text='Toggles' url='http://dev.office.com/fabric/components/Toggle' /> provide a ui indicator for progress.</div>
 
-       <Toggle
-          isToggled={ this.state.isToggled }
-          onToggled={ this._handleToggled }
-          label='Indoor lighting'
-          onText='On'
-          offText='Off' />
+        <PropertiesTable properties={ [] } />
 
+        <h2 className='ms-font-xl'>Examples</h2>
+
+        <ExampleCard title='Toggle'>
+          <Toggle
+              isToggled={ this.state.isToggled }
+              onToggled={ this._onToggled }
+              label='Indoor lighting'
+              onText='On'
+              offText='Off' />
+        </ExampleCard>
       </div>
     );
   }
 
-  private _handleToggled(isToggled: boolean) {
+  private _onToggled(isToggled: boolean) {
     this.setState({
       isToggled: isToggled
     });

@@ -15,7 +15,7 @@ export default class CommandBarExample extends React.Component<any, any> {
 
         <h2 className='ms-font-xl'>Examples</h2>
 
-        <ExampleCard title='ChoiceGroups'>
+        <ExampleCard title='CommandBar'>
           <CommandBar />
         </ExampleCard>
 
