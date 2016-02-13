@@ -28,6 +28,7 @@ export default class ExampleCard extends React.Component<IExampleCardProps, IExa
 
   public render() {
     const { title, code, children } = this.props;
+    const { isCodeVisible } = this.state;
     let rootClass = 'ExampleCard' + (this.state.isCodeVisible ? ' is-codeVisible' : '');
     let codeExample;
 
@@ -47,11 +48,11 @@ export default class ExampleCard extends React.Component<IExampleCardProps, IExa
           <span className='ExampleCard-title ms-font-l'>{ title }</span>
           { (code ? (
           <span className='ExampleCard-toggleCode ms-font-l'>
-            <Button type={ ButtonType.primary } onClick={ this._onToggleCodeClick }>{ this.state.isCodeVisible ? 'Hide code' : 'Show code' }</Button>
+            <Button type={ ButtonType.primary } onClick={ this._onToggleCodeClick }>{ isCodeVisible ? 'Hide code' : 'Show code' }</Button>
           </span>
           ) : null) }
         </div>
-        <div className='ExampleCard-content'>
+        <div className={ 'ExampleCard-content' + (isCodeVisible ? ' ms-u-slideDownIn20' : '') }>
           { codeExample }
           <div className='ExampleCard-example'>
             { children }

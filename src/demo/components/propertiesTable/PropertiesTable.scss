@@ -1,0 +1,10 @@
+@import "~office-ui-fabric/src/sass/Fabric.Common";
+@import "~office-ui-fabric/src/components/Table/Table";
+
+.PropertiesTable {
+  margin-bottom: 20px;
+}
+.PropertiesTable-noProperties {
+  background: #ECDC14;
+  padding: 10px;
+}

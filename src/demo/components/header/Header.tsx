@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './Header.css';
+import { FocusZone, FocusZoneDirection } from '../../../utilities/focus';
 
 export interface IHeaderProps {
   title: string;
@@ -18,9 +19,11 @@ export default class Header extends React.Component<IHeaderProps, any> {
           { title }
         </div>
         <div className='Header-buttons'>
-          { sideLinks.map((link, linkIndex) => (
-            <a key={ linkIndex } className='Header-button ms-fontColor-white' href={ link.url }>{ link.name }</a>
-          )) }
+          <FocusZone direction={ FocusZoneDirection.horizontal }>
+            { sideLinks.map((link, linkIndex) => (
+              <a key={ linkIndex } className='Header-button ms-fontColor-white' href={ link.url }>{ link.name }</a>
+            )) }
+          </FocusZone>
         </div>
       </div>
     );

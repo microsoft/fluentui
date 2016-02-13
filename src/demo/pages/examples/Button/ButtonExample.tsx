@@ -3,7 +3,6 @@ import { default as Button, ButtonType, ButtonProps } from '../../../../componen
 import Link from '../../../../components/Link';
 import ExampleCard from '../../../components/ExampleCard';
 import PropertiesTable from '../../../components/PropertiesTable';
-let Highlight = require('react-highlight');
 
 let NormalButtonExample = require('./ButtonExample.Normal.txt');
 let PrimaryButtonExample = require('./ButtonExample.Primary.txt');
@@ -17,6 +16,8 @@ export default class ButtonExample extends React.Component<any, any> {
       <div className='ButtonExample'>
         <h1 className='ms-font-xxl'>Button</h1>
         <div><Link text='Buttons' url='http://dev.office.com/fabric/components/button' /> are used typically in dialogs and for starting an operation.</div>
+
+        <PropertiesTable properties={ ButtonProps } />
 
         <h2 className='ms-font-xl'>Examples</h2>
 
@@ -55,7 +56,6 @@ export default class ButtonExample extends React.Component<any, any> {
           <Button type={ ButtonType.command } description='Description of the action this button takes'>Create account</Button>
         </ExampleCard>
 
-        <PropertiesTable properties={ ButtonProps } />
       </div>
     );
   }

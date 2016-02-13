@@ -78,8 +78,9 @@ export default class NavBar extends React.Component<INavBarProps, INavBarState> 
   }
   private _onGroupHeaderClicked(ev) {
     let groupIndex = Number(ev.currentTarget.attributes['data-group-index'].value);
+    let currentState = this.state.isGroupExpanded[groupIndex] !== false;
 
-    this.state.isGroupExpanded[groupIndex] = !this.state.isGroupExpanded[groupIndex];
+    this.state.isGroupExpanded[groupIndex] = !currentState;
     this.forceUpdate();
   }
 
