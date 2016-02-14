@@ -9,7 +9,7 @@ export default class PersonaCardExample extends React.Component<any, any> {
     return (
       <div className='PersonaCardExample'>
         <h1 className='ms-font-xxl'>PersonaCard</h1>
-        <div><Link text='PersonaCards' url='http://dev.office.com/fabric/components/PersonaCard' /> render a details for an individual.</div>
+        <div><Link target='_blank' text='PersonaCards' url='http://dev.office.com/fabric/components/PersonaCard' /> render a details for an individual.</div>
 
         <PropertiesTable properties={ [] } />
 

@@ -9,14 +9,73 @@ export default class CommandBarExample extends React.Component<any, any> {
     return (
       <div className='CommandBarExample'>
         <h1 className='ms-font-xxl'>CommandBar</h1>
-        <div><Link text='CommandBars' url='http://dev.office.com/fabric/components/commandBar' /> provide a menu system for commands to exist.</div>
+        <div><Link target='_blank' text='CommandBars' url='http://dev.office.com/fabric/components/commandBar' /> provide a menu system for commands to exist.</div>
 
         <PropertiesTable properties={ [] } />
 
         <h2 className='ms-font-xl'>Examples</h2>
 
-        <ExampleCard title='CommandBar'>
-          <CommandBar />
+        <ExampleCard title='CommandBar with search box and overflowing menu items'>
+          <CommandBar
+            isSearchBoxVisible={ true }
+            searchPlaceholderText='Search...'
+            items={
+              [
+                {
+                  icon: 'circlePlus',
+                  name: 'New'
+                },
+                {
+                  icon: 'upload',
+                  name: 'Upload'
+                },
+                {
+                  icon: 'share',
+                  name: 'Share'
+                },
+                {
+                  icon: 'download',
+                  name: 'Download'
+                },
+                {
+                  icon: 'folderMove',
+                  name: 'Move to...'
+                },
+                {
+                  icon: 'copy',
+                  name: 'Copy to...'
+                },
+                {
+                  icon: 'editBox',
+                  name: 'Rename...'
+                },
+                {
+                  icon: 'picture',
+                  name: 'Create album from folder'
+                },
+                {
+                  icon: 'embed',
+                  name: 'Embed...'
+                }
+              ]
+            }
+            farItems={
+              [
+                {
+                  icon: 'sortLines',
+                  name: 'Sort'
+                },
+                {
+                  icon: 'tile',
+                  name: 'Grid view'
+                },
+                {
+                  icon: 'circleInfo',
+                  name: 'Info'
+                }
+              ]
+            }
+          />
         </ExampleCard>
 
       </div>

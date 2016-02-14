@@ -23,7 +23,7 @@ export default class ToggleExample extends React.Component<any, any> {
     return (
       <div className='ToggleExample'>
         <h1 className='ms-font-xxl'>Toggle</h1>
-        <div><Link text='Toggles' url='http://dev.office.com/fabric/components/Toggle' /> provide a ui indicator for progress.</div>
+        <div><Link target='_blank' text='Toggles' url='http://dev.office.com/fabric/components/Toggle' /> provide a ui indicator for progress.</div>
 
         <PropertiesTable properties={ [] } />
 

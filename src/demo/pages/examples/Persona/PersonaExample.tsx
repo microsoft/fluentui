@@ -9,7 +9,7 @@ export default class PersonaExample extends React.Component<any, any> {
     return (
       <div className='PersonaExample'>
         <h1 className='ms-font-xxl'>Persona</h1>
-        <div><Link text='Personas' url='http://dev.office.com/fabric/components/persona' /> are to render a thumbnail for an individual.</div>
+        <div><Link target='_blank' text='Personas' url='http://dev.office.com/fabric/components/persona' /> are to render a thumbnail for an individual.</div>
 
         <PropertiesTable properties={ [] } />
 

@@ -9,7 +9,7 @@ export default class LabelExample extends React.Component<any, any> {
     return (
       <div className='LabelExample'>
         <h1 className='ms-font-xxl'>Label</h1>
-        <div><Link text='Labels' url='http://dev.office.com/fabric/components/label' /> render a text string.</div>
+        <div><Link target='_blank' text='Labels' url='http://dev.office.com/fabric/components/label' /> render a text string.</div>
 
         <PropertiesTable properties={ [] } />
 

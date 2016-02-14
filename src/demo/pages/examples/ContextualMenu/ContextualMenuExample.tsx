@@ -9,7 +9,7 @@ export default class ContextualMenuExample extends React.Component<any, any> {
     return (
       <div className='ContextualMenuExample'>
         <h1 className='ms-font-xxl'>ContextualMenu</h1>
-        <div><Link text='ContextualMenus' url='http://dev.office.com/fabric/components/contextualMenu' /> provide a menu for use in context menus and dropdowns.</div>
+        <div><Link target='_blank' text='ContextualMenus' url='http://dev.office.com/fabric/components/contextualMenu' /> provide a menu for use in context menus and dropdowns.</div>
 
         <PropertiesTable properties={ [] } />
 

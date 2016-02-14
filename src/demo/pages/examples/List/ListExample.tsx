@@ -9,7 +9,7 @@ export default class ListExample extends React.Component<any, any> {
     return (
       <div className='ListExample'>
         <h1 className='ms-font-xxl'>List</h1>
-        <div><Link text='Lists' url='http://dev.office.com/fabric/components/List' /> are ...TODO</div>
+        <div><Link target='_blank' text='Lists' url='http://dev.office.com/fabric/components/List' /> are ...TODO</div>
 
         <PropertiesTable properties={ [] } />
 

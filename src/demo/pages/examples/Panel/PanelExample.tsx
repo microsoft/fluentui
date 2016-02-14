@@ -9,7 +9,7 @@ export default class PanelExample extends React.Component<any, any> {
     return (
       <div className='PanelExample'>
         <h1 className='ms-font-xxl'>Panel</h1>
-        <div><Link text='Panels' url='http://dev.office.com/fabric/components/panel' /> are used to render an org chart.</div>
+        <div><Link target='_blank' text='Panels' url='http://dev.office.com/fabric/components/panel' /> are used to render an org chart.</div>
 
         <PropertiesTable properties={ [] } />
 

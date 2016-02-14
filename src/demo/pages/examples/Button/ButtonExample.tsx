@@ -15,7 +15,7 @@ export default class ButtonExample extends React.Component<any, any> {
     return (
       <div className='ButtonExample'>
         <h1 className='ms-font-xxl'>Button</h1>
-        <div><Link text='Buttons' url='http://dev.office.com/fabric/components/button' /> are used typically in dialogs and for starting an operation.</div>
+        <div><Link  target='_blank' text='Buttons' url='http://dev.office.com/fabric/components/button' /> are used typically in dialogs and for starting an operation.</div>
 
         <PropertiesTable properties={ ButtonProps } />
 

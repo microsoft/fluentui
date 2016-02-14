@@ -9,7 +9,7 @@ export default class OverlayExample extends React.Component<any, any> {
     return (
       <div className='OverlayExample'>
         <h1 className='ms-font-xxl'>Overlay</h1>
-        <div><Link text='Overlays' url='http://dev.office.com/fabric/components/Overlay' /> are used to render an org chart.</div>
+        <div><Link target='_blank' text='Overlays' url='http://dev.office.com/fabric/components/Overlay' /> are used to render an org chart.</div>
 
         <PropertiesTable properties={ [] } />
 

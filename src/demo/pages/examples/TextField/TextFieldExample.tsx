@@ -10,7 +10,7 @@ export default class TextFieldExample extends React.Component<any, any> {
     return (
       <div className='TextFieldExample'>
         <h1 className='ms-font-xxl'>Table</h1>
-        <div><Link text='TextFields' url='http://dev.office.com/fabric/components/textfields' /> allow the user to enter text.</div>
+        <div><Link target='_blank' text='TextFields' url='http://dev.office.com/fabric/components/textfields' /> allow the user to enter text.</div>
 
         <PropertiesTable properties={ [] } />
 

@@ -9,7 +9,7 @@ export default class TableExample extends React.Component<any, any> {
     return (
       <div className='TableExample'>
         <h1 className='ms-font-xxl'>Table</h1>
-        <div><Link text='Tables' url='http://dev.office.com/fabric/components/table' /> render data in a grid, and provide callbacks for common behaviors.</div>
+        <div><Link target='_blank' text='Tables' url='http://dev.office.com/fabric/components/table' /> render data in a grid, and provide callbacks for common behaviors.</div>
 
         <PropertiesTable properties={ [] } />
 

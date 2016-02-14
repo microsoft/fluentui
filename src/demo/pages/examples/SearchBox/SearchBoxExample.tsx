@@ -9,7 +9,7 @@ export default class SearchBoxExample extends React.Component<any, any> {
     return (
       <div className='SearchBoxExample'>
         <h1 className='ms-font-xxl'>SearchBox</h1>
-        <div><Link text='SearchBoxes' url='http://dev.office.com/fabric/components/SearchBox' /> provide a box for searching, complete with auto complete callbacks and suggestions.</div>
+        <div><Link target='_blank' text='SearchBoxes' url='http://dev.office.com/fabric/components/SearchBox' /> provide a box for searching, complete with auto complete callbacks and suggestions.</div>
 
         <PropertiesTable properties={ [] } />
 

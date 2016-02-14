@@ -9,7 +9,7 @@ export default class DialogExample extends React.Component<any, any> {
     return (
       <div className='DialogExample'>
         <h1 className='ms-font-xxl'>Dialog</h1>
-        <div><Link text='Dialogs' url='http://dev.office.com/fabric/components/dialog' /> are used to render a modal window.</div>
+        <div><Link target='_blank' text='Dialogs' url='http://dev.office.com/fabric/components/dialog' /> are used to render a modal window.</div>
 
         <PropertiesTable properties={ [] } />
 

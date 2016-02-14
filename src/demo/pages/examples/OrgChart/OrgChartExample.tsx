@@ -9,7 +9,7 @@ export default class OrgChartExample extends React.Component<any, any> {
     return (
       <div className='OrgChartExample'>
         <h1 className='ms-font-xxl'>OrgChart</h1>
-        <div><Link text='OrgCharts' url='http://dev.office.com/fabric/components/OrgChart' /> are used to render an org chart.</div>
+        <div><Link target='_blank' text='OrgCharts' url='http://dev.office.com/fabric/components/OrgChart' /> are used to render an org chart.</div>
 
         <PropertiesTable properties={ [] } />
 

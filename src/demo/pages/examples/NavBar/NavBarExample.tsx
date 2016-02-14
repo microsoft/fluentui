@@ -9,7 +9,7 @@ export default class NavBarExample extends React.Component<any, any> {
     return (
       <div className='NavBarExample'>
         <h1 className='ms-font-xxl'>NavBar</h1>
-        <div><Link text='NavBars' url='http://dev.office.com/fabric/components/NavBar' /> are ...TODO</div>
+        <div><Link target='_blank' text='NavBars' url='http://dev.office.com/fabric/components/NavBar' /> are ...TODO</div>
 
         <PropertiesTable properties={ [] } />
 

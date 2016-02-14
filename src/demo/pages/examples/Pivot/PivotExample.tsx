@@ -9,7 +9,7 @@ export default class PivotExample extends React.Component<any, any> {
     return (
       <div className='PivotExample'>
         <h1 className='ms-font-xxl'>Pivot</h1>
-        <div><Link text='Pivots' url='http://dev.office.com/fabric/components/Pivot' /> are ...TODO</div>
+        <div><Link target='_blank' text='Pivots' url='http://dev.office.com/fabric/components/Pivot' /> are ...TODO</div>
 
         <PropertiesTable properties={ [] } />
 

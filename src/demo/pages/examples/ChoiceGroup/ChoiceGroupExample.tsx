@@ -30,7 +30,7 @@ export default class ChoiceGroupExample extends React.Component<any, any> {
     return (
       <div className='ChoiceGroupExample'>
         <h1 className='ms-font-xxl'>ChoiceGroup</h1>
-        <div><Link text='ChoiceGroups' url='http://dev.office.com/fabric/components/choiceGroup' /> allow the user to choose one of many options.</div>
+        <div><Link target='_blank' text='ChoiceGroups' url='http://dev.office.com/fabric/components/choiceGroup' /> allow the user to choose one of many options.</div>
 
         <PropertiesTable properties={ [] } />
 
