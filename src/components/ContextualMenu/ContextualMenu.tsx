@@ -53,7 +53,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
 
     return (
       <FocusZone ref='focusZone' onLostFocus={ this._onBlur }>
-        <ul className="ms-ContextualMenu is-open" onKeyDown={ this._onKeyDown }>
+        <ul className="ms-ContextualMenu is-open ms-u-slideDownIn10" onKeyDown={ this._onKeyDown }>
           { items.map(item => (
           <li key={ item.key } className="ms-ContextualMenu-item">
               <button className="ms-ContextualMenu-link" onClick={ (ev) => { this._onClick(ev, item) } }>{ item.name }</button>
