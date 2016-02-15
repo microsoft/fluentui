@@ -3,7 +3,13 @@
 
 .PropertiesTable {
   margin-bottom: 20px;
+  overflow-x: auto;
+
+  .ms-Table {
+    min-width: 600px;
+  }
 }
+
 .PropertiesTable-noProperties {
   background: $ms-color-yellow;
   padding: 10px;

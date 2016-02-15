@@ -7,12 +7,13 @@
 // --------------------------------------------------
 // Contextual Menu styles
 
+
 .ms-ContextualMenu {
   @include ms-font-m;
   @include ms-u-normalize;
-  @include drop-shadow;
+  @include drop-shadow(0,0, 15px, -5px);
 
-  border: 1px solid $ms-color-neutralTertiaryAlt;
+  border: 1px solid $ms-color-neutralLight;
   position: relative;
   display: inline-block;
 }
@@ -188,12 +189,15 @@
 }
 
 .ms-ContextualMenu-beak {
+  @include drop-shadow(0,0, 15px, -5px);
+
   position: absolute;
   width: 16px;
   height: 16px;
   z-index: -1;
   background: #fff;
-  box-shadow: 0 0 5px 0 rgba(0,0,0,.4);
+  border: 1px solid $ms-color-neutralLight;
+  box-sizing: border-box;
   top: -6px;
   display: none;
   -webkit-transform: rotate(45deg);
