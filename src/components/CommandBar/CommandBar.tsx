@@ -112,7 +112,7 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
             ] : []) }
           </div>
         </FocusZone>
-        <ContextualMenuHost items={ contextualMenuItems } targetElement={ contextualMenuTarget } onDismiss={ this._onContextMenuDismiss }/>
+        <ContextualMenuHost className='ms-CommandBar-menuHost' items={ contextualMenuItems } targetElement={ contextualMenuTarget } onDismiss={ this._onContextMenuDismiss }/>
       </div>
     );
   }
@@ -158,7 +158,9 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
 
     this.setState({
       renderedItems: renderedItems,
-      renderedOverflowItems: renderedOverflowItems
+      renderedOverflowItems: renderedOverflowItems,
+      contextualMenuItems: null,
+      contextualMenuTarget: null
     });
   }
 

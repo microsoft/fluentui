@@ -80,13 +80,13 @@ const AppState: IAppState = {
           name: 'Breadcrumb',
           url: '#/examples/breadcrumb',
           component: BreadcrumbExample,
-          status: ExampleStatus.placeholder
+          status: ExampleStatus.started
         },
         {
           name: 'Button',
           url: '#/examples/button',
           component: ButtonExample,
-          status: ExampleStatus.started
+          status: ExampleStatus.beta
         },
         {
           name: 'Callout',

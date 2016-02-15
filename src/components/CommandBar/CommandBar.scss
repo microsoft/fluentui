@@ -313,3 +313,7 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
 .ms-CommandBarSearch-input::-webkit-input-placeholder {
   font-style: italic;
 }
+
+.ms-CommandBar-menuHost {
+  margin-top: 10px;
+}

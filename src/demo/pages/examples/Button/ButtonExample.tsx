@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { default as Button, ButtonType, ButtonProps } from '../../../../components/Button';
+import { default as Button, ButtonType } from '../../../../components/Button';
 import Link from '../../../../components/Link';
 import ExampleCard from '../../../components/ExampleCard';
 import PropertiesTable from '../../../components/PropertiesTable';
+import ButtonProperties from './ButtonProperties';
 
 let NormalButtonExample = require('./ButtonExample.Normal.txt');
 let PrimaryButtonExample = require('./ButtonExample.Primary.txt');
@@ -17,7 +18,7 @@ export default class ButtonExample extends React.Component<any, any> {
         <h1 className='ms-font-xxl'>Button</h1>
         <div><Link  target='_blank' text='Buttons' url='http://dev.office.com/fabric/components/button' /> are used typically in dialogs and for starting an operation.</div>
 
-        <PropertiesTable properties={ ButtonProps } />
+        <PropertiesTable properties={ ButtonProperties } />
 
         <h2 className='ms-font-xl'>Examples</h2>
 
