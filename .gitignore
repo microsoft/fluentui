@@ -76,7 +76,6 @@ _Deploy
 
 # Commit meta data
 commit.txt
-/.vscode/settings.json
 
 # Webpart typings
 typings/webpart-framework
