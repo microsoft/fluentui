@@ -17,7 +17,7 @@ export default class ContextualMenuExample extends React.Component<any, any> {
 
         <ExampleCard title='ContextualMenu'>
           <ContextualMenu
-            supressInitialFocus={ true }
+            shouldFocusOnMount={ false }
             items={
               [
                 { name: 'Item 1', key: '1' },

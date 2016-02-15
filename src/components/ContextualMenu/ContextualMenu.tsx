@@ -11,12 +11,16 @@ export interface IContextualMenuItem {
 
 export interface IContextualMenuProps {
   items: IContextualMenuItem[];
-  supressInitialFocus?: boolean;
+  shouldFocusOnMount?: boolean;
   topBeakStyle?: { [ key: string ]: any };
   onDismiss?: () => void;
 }
 
 export default class ContextualMenu extends React.Component<IContextualMenuProps, any> {
+  public static defaultProps = {
+    shouldFocusOnMount: true
+  };
+
   private _previousActiveElement: HTMLElement;
 
   constructor() {
@@ -36,7 +40,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   }
 
   public componentDidMount() {
-    if (!this.props.supressInitialFocus) {
+    if (this.props.shouldFocusOnMount) {
       let focusZone = this.refs['focusZone'] as FocusZone;
 
       focusZone.focus();
