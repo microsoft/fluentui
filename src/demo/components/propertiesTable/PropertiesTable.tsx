@@ -9,17 +9,21 @@ export interface IProperty {
 }
 
 export interface IPropertiesTableProps {
+  title?: string;
   properties: IProperty[];
 }
 
 export default class PropertiesTable extends React.Component<IPropertiesTableProps, any> {
+  public static defaultProps = {
+    title: 'Properties'
+  };
 
   public render() {
-    let { properties } = this.props;
+    let { title, properties } = this.props;
 
     return (
       <div className='PropertiesTable'>
-        <h2 className='ms-font-xl'>Properties</h2>
+        <h2 className='ms-font-xl'>{ title }</h2>
         { (properties && properties.length) ? (
         <table className='ms-Table'>
           <tbody>

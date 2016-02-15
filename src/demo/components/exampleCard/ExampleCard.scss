@@ -4,8 +4,11 @@
 
 .ExampleCard-header {
   background: #F0F0F0;
-  height: 50px;
+  min-height: 50px;
   line-height: 50px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
   padding: 0 10px;
 }
 

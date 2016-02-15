@@ -3,6 +3,10 @@ import CommandBar from '../../../../components/CommandBar';
 import Link from '../../../../components/Link';
 import ExampleCard from '../../../components/ExampleCard';
 import PropertiesTable from '../../../components/PropertiesTable';
+import {CommandBarProps, ICommandBarItemProps } from './CommandBarProps';
+
+
+let CommandBarExampleBasic = require('./CommandBarExample.Basic.txt');
 
 export default class CommandBarExample extends React.Component<any, any> {
   public render() {
@@ -11,11 +15,9 @@ export default class CommandBarExample extends React.Component<any, any> {
         <h1 className='ms-font-xxl'>CommandBar</h1>
         <div><Link target='_blank' text='CommandBars' url='http://dev.office.com/fabric/components/commandBar' /> provide a menu control to expose application commands. Command bars typically are rendered just below the header.</div>
 
-        <PropertiesTable properties={ [] } />
+        <h2 className='ms-font-xl'>Demo</h2>
 
-        <h2 className='ms-font-xl'>Examples</h2>
-
-        <ExampleCard title='CommandBar with search box and overflowing menu items'>
+        <ExampleCard title='CommandBar with search box and overflowing menu items' code={ CommandBarExampleBasic }>
           <CommandBar
             isSearchBoxVisible={ true }
             searchPlaceholderText='Search...'
@@ -91,6 +93,10 @@ export default class CommandBarExample extends React.Component<any, any> {
             }
           />
         </ExampleCard>
+
+        <PropertiesTable properties={ CommandBarProps } />
+
+        <PropertiesTable title='ICommandBarItem Properties' properties={ ICommandBarItemProps } />
 
       </div>
     );

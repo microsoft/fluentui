@@ -10,6 +10,8 @@ export interface IContextualMenuHostProps {
   className?: string;
 }
 
+const BEAK_WIDTH = 16;
+
 export default class ContextualMenuHost extends React.Component<IContextualMenuHostProps, any> {
 
   public render() {
@@ -48,10 +50,10 @@ export default class ContextualMenuHost extends React.Component<IContextualMenuH
 
       if (isLeftAligned) {
         position['left'] = targetRect.left - hostRect.left;
-        beakPosition['left'] = (targetRect.width / 2) - 8;
+        beakPosition['left'] = (targetRect.width / 2) - (BEAK_WIDTH / 2);
       } else {
         position['right'] = hostRect.width - (targetRect.left - hostRect.left) - targetRect.width;
-        beakPosition['right'] = (targetRect.width / 2) - 8;
+        beakPosition['right'] = (targetRect.width / 2) - (BEAK_WIDTH / 2);
       }
 
     }
