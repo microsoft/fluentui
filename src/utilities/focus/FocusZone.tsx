@@ -10,12 +10,14 @@ export enum FocusZoneDirection {
 }
 
 export interface IFocusZoneProps {
-  isEnabled?: boolean;
-  children?: React.ReactElement<any>[];
-  className?: string;
-  style?: { [key: string]: string };
   direction?: FocusZoneDirection;
+  isEnabled?: boolean;
+  onLostFocus?: (ev: React.FocusEvent) => void;
+
+  style?: { [key: string]: string };
+  className?: string;
   ref?: string;
+  children?: React.ReactElement<any>[];
 }
 
 export interface IFocusZoneState {
@@ -101,6 +103,7 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
 
       return child;
     }
+
     function _mapChildren(children) {
       if (children && typeof(children) !== 'string') {
         return React.Children.map(children, child => _mapChild(child));
@@ -141,7 +144,9 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
   }
 
   private _onBlur(ev) {
-
+    if (this.props.onLostFocus) {
+      this.props.onLostFocus(ev);
+    }
   }
 
   private _onClick() {

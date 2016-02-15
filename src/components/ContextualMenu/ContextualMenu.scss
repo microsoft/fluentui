@@ -5,3 +5,29 @@
 .ms-ContextualMenu.is-open {
   position: relative;
 }
+
+.ms-ContextualMenu-link,
+.ms-ContextualMenu-link:active {
+  position: relative;
+  background: none;
+  border: none;
+  display: block;
+  width: 100%;
+  text-align: left;
+  @include ms-font-m;
+}
+
+.ms-ContextualMenu-link:focus {
+  outline: transparent;
+  background: $ms-color-themeLighter;
+}
+
+.ms-Fabric.is-focusVisible .ms-ContextualMenu-link:focus:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border: 1px solid $ms-color-themePrimary;
+}

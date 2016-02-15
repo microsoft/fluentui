@@ -9,7 +9,7 @@ export default class CommandBarExample extends React.Component<any, any> {
     return (
       <div className='CommandBarExample'>
         <h1 className='ms-font-xxl'>CommandBar</h1>
-        <div><Link target='_blank' text='CommandBars' url='http://dev.office.com/fabric/components/commandBar' /> provide a menu system for commands to exist.</div>
+        <div><Link target='_blank' text='CommandBars' url='http://dev.office.com/fabric/components/commandBar' /> provide a menu control to expose application commands. Command bars typically are rendered just below the header.</div>
 
         <PropertiesTable properties={ [] } />
 
@@ -22,56 +22,70 @@ export default class CommandBarExample extends React.Component<any, any> {
             items={
               [
                 {
+                  key: 'newItem',
+                  name: 'New',
                   icon: 'circlePlus',
-                  name: 'New'
+                  items: [
+                    {
+                      key: 'emailMessage',
+                      name: 'Email message',
+                      icon: 'mail'
+                    },
+                    {
+                      key: 'calendarEvent',
+                      name: 'Calendar event',
+                      icon: 'calendar'
+                    }
+                  ]
                 },
                 {
-                  icon: 'upload',
-                  name: 'Upload'
+                  key: 'upload',
+                  name: 'Upload',
+                  icon: 'upload'
                 },
                 {
-                  icon: 'share',
-                  name: 'Share'
+                  key: 'share',
+                  name: 'Share',
+                  icon: 'share'
                 },
                 {
-                  icon: 'download',
-                  name: 'Download'
+                  key: 'download',
+                  name: 'Download',
+                  icon: 'download'
                 },
                 {
-                  icon: 'folderMove',
-                  name: 'Move to...'
+                  key: 'move',
+                  name: 'Move to...',
+                  icon: 'folderMove'
                 },
                 {
-                  icon: 'copy',
-                  name: 'Copy to...'
+                  key: 'copy',
+                  name: 'Copy to...',
+                  icon: 'copy'
                 },
                 {
-                  icon: 'editBox',
-                  name: 'Rename...'
-                },
-                {
-                  icon: 'picture',
-                  name: 'Create album from folder'
-                },
-                {
-                  icon: 'embed',
-                  name: 'Embed...'
+                  key: 'rename',
+                  name: 'Rename...',
+                  icon: 'editBox'
                 }
               ]
             }
             farItems={
               [
                 {
-                  icon: 'sortLines',
-                  name: 'Sort'
+                  key: 'sort',
+                  name: 'Sort',
+                  icon: 'sortLines'
                 },
                 {
-                  icon: 'tile',
-                  name: 'Grid view'
+                  key: 'tile',
+                  name: 'Grid view',
+                  icon: 'tile'
                 },
                 {
-                  icon: 'circleInfo',
-                  name: 'Info'
+                  key: 'info',
+                  name: 'Info',
+                  icon: 'circleInfo'
                 }
               ]
             }

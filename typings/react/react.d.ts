@@ -349,6 +349,7 @@ declare namespace __React {
         // Focus Events
         onFocus?: FocusEventHandler;
         onBlur?: FocusEventHandler;
+        onBlurCapture?: FocusEventHandler;
 
         // Form Events
         onChange?: FormEventHandler;
@@ -516,7 +517,7 @@ declare namespace __React {
         backgroundBlendMode?: any;
 
         backgroundColor?: any;
-        
+
         backgroundComposite?: any;
 
         /**
@@ -1357,7 +1358,7 @@ declare namespace __React {
         textAlignLast?: any;
 
         /**
-         * The text-decoration CSS property is used to set the text formatting to underline, overline, line-through or blink. 
+         * The text-decoration CSS property is used to set the text formatting to underline, overline, line-through or blink.
          * underline and overline decorations are positioned under the text, line-through over it.
          */
         textDecoration?: any;

@@ -16,12 +16,15 @@ export default class ContextualMenuExample extends React.Component<any, any> {
         <h2 className='ms-font-xl'>Examples</h2>
 
         <ExampleCard title='ContextualMenu'>
-          <ContextualMenu items={
-            [
-              { name: 'Item 1', key: '1' },
-              { name: 'Item 2', key: '2' }
-            ]
-          } />
+          <ContextualMenu
+            supressInitialFocus={ true }
+            items={
+              [
+                { name: 'Item 1', key: '1' },
+                { name: 'Item 2', key: '2' }
+              ]
+            }
+          />
         </ExampleCard>
 
       </div>

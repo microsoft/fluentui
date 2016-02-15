@@ -110,7 +110,7 @@ const AppState: IAppState = {
           name: 'CommandBar',
           url: '#/examples/commandbar',
           component: CommandBarExample,
-          status: ExampleStatus.placeholder
+          status: ExampleStatus.started
         },
         {
           name: 'ContextualMenu',
