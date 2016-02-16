@@ -29,6 +29,21 @@ export default class DropdownExample extends React.Component<any, any> {
           />
         </ExampleCard>
 
+        <ExampleCard title='Dropdown (disabled)'>
+          <Dropdown
+            label='Test values:'
+            options={
+              [
+                { key: 'A', text: 'Option a' },
+                { key: 'B', text: 'Option b', isSelected: true },
+                { key: 'C', text: 'Option c' },
+                { key: 'D', text: 'Option d' },
+              ]
+            }
+            isDisabled={ true }
+          />
+        </ExampleCard>
+
       </div>
     );
   }
