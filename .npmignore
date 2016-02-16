@@ -8,3 +8,5 @@ config.js
 tsconfig.json
 jsconfig.json
 webpack.config.js
+typings
+
