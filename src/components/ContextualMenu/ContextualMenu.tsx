@@ -30,8 +30,10 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   }
 
   public dismiss() {
-    if (this.props.onDismiss) {
-      this.props.onDismiss();
+    let { onDismiss } = this.props;
+
+    if (onDismiss) {
+      onDismiss();
     }
   }
 
@@ -61,8 +63,8 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
         <div className='ms-ContextualMenu-beak' style={ topBeakStyle } />
         <ul className='ms-ContextualMenu-list is-open ' onKeyDown={ this._onKeyDown }>
           { items.map(item => (
-          <li key={ item.key } className="ms-ContextualMenu-item">
-              <button className="ms-ContextualMenu-link" onClick={ (ev) => { this._onClick(ev, item) } }>{ item.name }</button>
+          <li key={ item.key } className='ms-ContextualMenu-item'>
+            <button className='ms-ContextualMenu-link' onClick={ (ev) => { this._onClick(ev, item) } }>{ item.name }</button>
           </li>
           )) }
         </ul>
