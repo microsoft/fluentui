@@ -13,7 +13,7 @@ export interface IContextualMenuProps {
   items: IContextualMenuItem[];
   shouldFocusOnMount?: boolean;
   topBeakStyle?: { [ key: string ]: any };
-  onDismiss?: () => void;
+  onDismiss?: (ev?: any) => void;
 }
 
 export default class ContextualMenu extends React.Component<IContextualMenuProps, any> {
@@ -22,6 +22,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   };
 
   private _previousActiveElement: HTMLElement;
+  private _isFocusingPreviousElement = false;
 
   constructor() {
     super();
@@ -29,11 +30,11 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     this._onBlur = this._onBlur.bind(this);
   }
 
-  public dismiss() {
+  public dismiss(ev?: any) {
     let { onDismiss } = this.props;
 
     if (onDismiss) {
-      onDismiss();
+      onDismiss(ev);
     }
   }
 
@@ -50,7 +51,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   }
 
   public componentWillUnmount() {
-    if (this._previousActiveElement) {
+    if (this._isFocusingPreviousElement && this._previousActiveElement) {
       this._previousActiveElement.focus();
     }
   }
@@ -74,8 +75,9 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
 
   private _onKeyDown(ev: React.KeyboardEvent) {
     if (ev.which === KeyCodes.escape) {
-      ev.stopPropagation();
-      ev.preventDefault();
+
+      // When a user presses escape, we will try to refocus the previous focused element.
+      this._isFocusingPreviousElement = true;
       this.dismiss();
     }
   }
@@ -84,12 +86,16 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     if (item.onClick) {
       item.onClick(ev);
     }
+
+    // When a user clicks on an item, we will try to refocus the previous focused element.
+    this._isFocusingPreviousElement = true;
     this.dismiss();
   }
 
   private _onBlur(ev: React.FocusEvent) {
     if (!(ev.currentTarget as HTMLElement).contains(ev.relatedTarget as HTMLElement)) {
-      this.dismiss();
+      // When the user clicks on something unrelated, we won't make an attempt to reset focus back to the originating focused element.
+      this.dismiss(ev);
     }
   }
 

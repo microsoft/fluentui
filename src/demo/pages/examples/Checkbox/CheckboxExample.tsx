@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Checkbox from '../../../../components/Checkbox';
-import Link from '../../../../components/Link';
-import ExampleCard from '../../../components/ExampleCard';
-import PropertiesTable from '../../../components/PropertiesTable';
+import Checkbox from '../../../../components/Checkbox/index';
+import Link from '../../../../components/Link/index';
+import ExampleCard from '../../../components/ExampleCard/index';
+import PropertiesTable from '../../../components/PropertiesTable/index';
 
 export default class CheckboxExample extends React.Component<any, any> {
 
