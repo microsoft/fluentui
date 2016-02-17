@@ -22,6 +22,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   };
 
   private _previousActiveElement: HTMLElement;
+  private _isFocusingPreviousElement = false;
 
   constructor() {
     super();
@@ -50,7 +51,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   }
 
   public componentWillUnmount() {
-    if (this._previousActiveElement) {
+    if (this._isFocusingPreviousElement && this._previousActiveElement) {
       this._previousActiveElement.focus();
     }
   }
@@ -74,6 +75,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
 
   private _onKeyDown(ev: React.KeyboardEvent) {
     if (ev.which === KeyCodes.escape) {
+      this._isFocusingPreviousElement = true;
       ev.stopPropagation();
       ev.preventDefault();
       this.dismiss();

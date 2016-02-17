@@ -120,7 +120,7 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
             ] : []) }
           </div>
         </FocusZone>
-        <ContextualMenuHost className='ms-CommandBar-menuHost' items={ contextualMenuItems } targetElement={ contextualMenuTarget } onDismiss={ this._onContextMenuDismiss }/>
+        <ContextualMenuHost menuKey={ expandedMenuItemKey } className='ms-CommandBar-menuHost' items={ contextualMenuItems } targetElement={ contextualMenuTarget } onDismiss={ this._onContextMenuDismiss }/>
       </div>
     );
   }
@@ -181,9 +181,9 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
   private _onItemClick(ev) {
     let item = this.state.renderedItems[Number(ev.currentTarget.getAttribute('data-command-key'))];
 
-    if (item.key === this.state.expandedMenuItemKey) {
+    if (item.key === this.state.expandedMenuItemKey || !item.items || !item.items.length) {
       this._onContextMenuDismiss();
-    } else if (item.items) {
+    } else {
       this.setState({
         expandedMenuItemKey: item.key,
         contextualMenuItems: item.items,
@@ -205,12 +205,15 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
   }
 
   private _onContextMenuDismiss(ev?: any) {
-    if (!ev || !(this.refs['commandSurface'] as HTMLElement).contains(ev.relatedTarget as HTMLElement)) {
+    if (!ev || !ev.relatedTarget || !(this.refs['commandSurface'] as HTMLElement).contains(ev.relatedTarget as HTMLElement)) {
       this.setState({
         expandedMenuItemKey: null,
         contextualMenuItems: null,
         contextualMenuTarget: null
       });
+    } else {
+      ev.stopPropagation();
+      ev.preventDefault();
     }
   }
 
