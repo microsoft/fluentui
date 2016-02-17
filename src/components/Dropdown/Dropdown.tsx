@@ -1,6 +1,7 @@
 import * as React from 'react';
 import FocusZone from '../../utilities/focus/FocusZone';
 import './Dropdown.scss';
+import { css } from '../../utilities/index';
 
 export interface IDropdownOption {
   key: string;
@@ -12,16 +13,19 @@ export interface IDropdownProps {
   label: string;
   options: IDropdownOption[];
   onChange?: (option: IDropdownOption) => void;
+  isDisabled?: boolean;
 }
 
 export interface IDropdownState {
   isOpen: boolean;
   selectedIndex: number;
+  isDisabled: boolean;
 }
 
 export default class Dropdown extends React.Component<IDropdownProps, any> {
   static defaultProps = {
-    options: []
+    options: [],
+    isDisabled: false
   }
 
   constructor(props?: IDropdownProps) {
@@ -38,7 +42,8 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
 
     this.state = {
       isOpen: false,
-      selectedIndex: selectedIndex
+      selectedIndex: selectedIndex,
+      isDisabled: this.props.isDisabled
     };
 
     this._toggleOpen = this._toggleOpen.bind(this);
@@ -48,14 +53,13 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
   render() {
     let rootClass = 'ms-Dropdown';
     let { label, options } = this.props;
-    let { isOpen, selectedIndex } = this.state;
+    let { isOpen, selectedIndex, isDisabled } = this.state;
     let selectedOption = options[selectedIndex];
 
     return (
       <div>
         <span className="ms-Label">{ label }</span>
-
-        <div className={ 'ms-Dropdown' + (isOpen ? ' is-open ' : '') } tabIndex={ 0 } onClick={ this._toggleOpen }>
+        <div className={ css('ms-Dropdown', { 'is-open': isOpen, 'is-disabled': isDisabled }) } tabIndex={ 0 } onClick={ this._toggleOpen }>
           <i className="ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown"></i>
           <span className="ms-Dropdown-title">{ selectedOption ? selectedOption.text : '' }</span>
           <FocusZone isEnabled={ isOpen } ref='dropdownZone'>
@@ -76,17 +80,19 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
   }
 
   private _toggleOpen() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    }, () => {
-      let { options } = this.props;
-      if (this.state.isOpen && options.length) {
+    let { isDisabled, isOpen, selectedIndex } = this.state;
+    let { options } = this.props;
 
-        let selectedOption = options[this.state.selectedIndex];
-
-        (this.refs as any).dropdownZone.focus();
-      }
-    });
+    if (!isDisabled) {
+      this.setState({
+        isOpen: !isOpen
+      }, () => {
+        if (isOpen && options.length) {
+          let selectedOption = options[selectedIndex];
+          (this.refs as any).dropdownZone.focus();
+        }
+      });
+    }
   }
 
   private _onItemClick(option) {
@@ -94,8 +100,8 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
     let selectedOptionIndex;
 
     // Iterate through all of the options, finding the one the matches they selected key.
-    for(let i = 0; i < this.props.options.length; i++) {
-      if(option.key === this.props.options[i].key) {
+    for (let i = 0; i < this.props.options.length; i++) {
+      if (option.key === this.props.options[i].key) {
         selectedOptionIndex = i;
       }
     }
