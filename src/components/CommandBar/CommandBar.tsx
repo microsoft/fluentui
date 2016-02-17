@@ -138,13 +138,18 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
     let renderedOverflowItems = overflowItems;
     let availableWidth = commandSurface.getBoundingClientRect().width;
     let consumedWidth = 0;
+    let isOverflowVisible = overflowItems && overflowItems.length;
+
+    if (isOverflowVisible) {
+      availableWidth -= this._overflowWidth;
+    }
 
     for (let i = 0; i < renderedItems.length; i++) {
       let item = renderedItems[i];
       let itemWidth = this._commandItemWidths[item.key];
 
       if ((consumedWidth + itemWidth) >= availableWidth) {
-        if ((availableWidth - consumedWidth) < this._overflowWidth) {
+        if (i > 0 && !isOverflowVisible && (availableWidth - consumedWidth) < this._overflowWidth) {
           i--;
         }
 

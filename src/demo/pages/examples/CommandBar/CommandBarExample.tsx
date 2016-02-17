@@ -94,6 +94,87 @@ export default class CommandBarExample extends React.Component<any, any> {
           />
         </ExampleCard>
 
+        <ExampleCard title='CommandBar with no search box and fixed overflow items' code={ CommandBarExampleBasic }>
+          <CommandBar
+            isSearchBoxVisible={ false }
+            items={
+              [
+                {
+                  key: 'newItem',
+                  name: 'New',
+                  icon: 'circlePlus',
+                  items: [
+                    {
+                      key: 'emailMessage',
+                      name: 'Email message',
+                      icon: 'mail'
+                    },
+                    {
+                      key: 'calendarEvent',
+                      name: 'Calendar event',
+                      icon: 'calendar'
+                    }
+                  ]
+                },
+                {
+                  key: 'upload',
+                  name: 'Upload',
+                  icon: 'upload'
+                },
+                {
+                  key: 'share',
+                  name: 'Share',
+                  icon: 'share'
+                },
+                {
+                  key: 'download',
+                  name: 'Download',
+                  icon: 'download'
+                }
+              ]
+            }
+            overflowItems={
+              [
+
+                {
+                  key: 'move',
+                  name: 'Move to...',
+                  icon: 'folderMove'
+                },
+                {
+                  key: 'copy',
+                  name: 'Copy to...',
+                  icon: 'copy'
+                },
+                {
+                  key: 'rename',
+                  name: 'Rename...',
+                  icon: 'editBox'
+                }
+              ]
+            }
+            farItems={
+              [
+                {
+                  key: 'sort',
+                  name: 'Sort',
+                  icon: 'sortLines'
+                },
+                {
+                  key: 'tile',
+                  name: 'Grid view',
+                  icon: 'tile'
+                },
+                {
+                  key: 'info',
+                  name: 'Info',
+                  icon: 'circleInfo'
+                }
+              ]
+            }
+          />
+        </ExampleCard>
+
         <PropertiesTable properties={ CommandBarProps } />
 
         <PropertiesTable title='ICommandBarItem Properties' properties={ ICommandBarItemProps } />
