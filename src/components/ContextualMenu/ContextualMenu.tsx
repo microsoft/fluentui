@@ -75,9 +75,9 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
 
   private _onKeyDown(ev: React.KeyboardEvent) {
     if (ev.which === KeyCodes.escape) {
+
+      // When a user presses escape, we will try to refocus the previous focused element.
       this._isFocusingPreviousElement = true;
-      ev.stopPropagation();
-      ev.preventDefault();
       this.dismiss();
     }
   }
@@ -86,11 +86,15 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     if (item.onClick) {
       item.onClick(ev);
     }
+
+    // When a user clicks on an item, we will try to refocus the previous focused element.
+    this._isFocusingPreviousElement = true;
     this.dismiss();
   }
 
   private _onBlur(ev: React.FocusEvent) {
     if (!(ev.currentTarget as HTMLElement).contains(ev.relatedTarget as HTMLElement)) {
+      // When the user clicks on something unrelated, we won't make an attempt to reset focus back to the originating focused element.
       this.dismiss(ev);
     }
   }
