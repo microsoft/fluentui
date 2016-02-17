@@ -80,15 +80,15 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
   }
 
   private _toggleOpen() {
-    if (!this.state.isDisabled) {
+    let { isDisabled, isOpen, selectedIndex } = this.state;
+    let { options } = this.props;
+
+    if (!isDisabled) {
       this.setState({
-        isOpen: !this.state.isOpen
+        isOpen: !isOpen
       }, () => {
-        let { options } = this.props;
-        if (this.state.isOpen && options.length) {
-
-          let selectedOption = options[this.state.selectedIndex];
-
+        if (isOpen && options.length) {
+          let selectedOption = options[selectedIndex];
           (this.refs as any).dropdownZone.focus();
         }
       });
