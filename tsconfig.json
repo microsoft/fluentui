@@ -10,6 +10,8 @@
   },
   "exclude": [
       "node_modules",
-      "dist"
+      "dist",
+      "lib",
+      "lib-amd"
   ]
 }

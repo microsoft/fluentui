@@ -5,6 +5,7 @@ import { css } from '../../utilities/index';
 
 export interface IContextualMenuHostProps {
   menuKey?: string;
+  labelElementId?: string;
   items?: IContextualMenuItem[];
   targetElement?: HTMLElement;
   onDismiss?: (ev?: any) => void;
@@ -16,7 +17,7 @@ const BEAK_WIDTH = 16;
 export default class ContextualMenuHost extends React.Component<IContextualMenuHostProps, any> {
 
   public render() {
-    let { menuKey, items, targetElement, onDismiss, className } = this.props;
+    let { menuKey, labelElementId, items, targetElement, onDismiss, className } = this.props;
     let left = 0;
     let position = this._getRelativePositions();
 
@@ -24,7 +25,7 @@ export default class ContextualMenuHost extends React.Component<IContextualMenuH
       <div className={ css('ms-ContextualMenuHost', className) } ref='host'>
       { (items && items.length) ? (
         <div key={ menuKey } className='ms-ContextualMenuHost-menu' style={ position.menu }>
-          <ContextualMenu items={ items } onDismiss={ onDismiss } topBeakStyle={ position.beak } />
+          <ContextualMenu labelElementId={ labelElementId } items={ items } onDismiss={ onDismiss } topBeakStyle={ position.beak } />
         </div>
       ) : (
         null

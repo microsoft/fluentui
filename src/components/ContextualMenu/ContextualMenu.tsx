@@ -11,6 +11,7 @@ export interface IContextualMenuItem {
 
 export interface IContextualMenuProps {
   items: IContextualMenuItem[];
+  labelElementId?: string;
   shouldFocusOnMount?: boolean;
   topBeakStyle?: { [ key: string ]: any };
   onDismiss?: (ev?: any) => void;
@@ -57,15 +58,21 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   }
 
   public render() {
-    let { items, topBeakStyle } = this.props;
+    let { items, topBeakStyle, labelElementId } = this.props;
 
     return (
-      <FocusZone className='ms-ContextualMenu is-open ms-u-slideDownIn10' ref='focusZone' onLostFocus={ this._onBlur }>
+      <FocusZone
+        className='ms-ContextualMenu is-open ms-u-slideDownIn10'
+        ref='focusZone'
+        onLostFocus={ this._onBlur }
+        role='menu'
+        ariaLabelledBy={ labelElementId }
+      >
         <div className='ms-ContextualMenu-beak' style={ topBeakStyle } />
         <ul className='ms-ContextualMenu-list is-open ' onKeyDown={ this._onKeyDown }>
           { items.map(item => (
           <li key={ item.key } className='ms-ContextualMenu-item'>
-            <button className='ms-ContextualMenu-link' onClick={ (ev) => { this._onClick(ev, item) } }>{ item.name }</button>
+            <button className='ms-ContextualMenu-link' onClick={ (ev) => { this._onClick(ev, item) } } role='menuitem'>{ item.name }</button>
           </li>
           )) }
         </ul>

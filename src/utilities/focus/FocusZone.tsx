@@ -18,6 +18,8 @@ export interface IFocusZoneProps {
   className?: string;
   ref?: string;
   children?: React.ReactElement<any>[];
+  role?: string;
+  ariaLabelledBy?: string;
 }
 
 export interface IFocusZoneState {
@@ -62,7 +64,7 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
   }
 
   public render() {
-    let { className, style, isEnabled } = this.props;
+    let { className, style, isEnabled, role, ariaLabelledBy } = this.props;
     let index = 0;
     let focusElements = [];
     let { activeIndex } = this.state;
@@ -121,7 +123,7 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
     };
 
     return (
-      <div ref='root' className={ className } style={ style }>
+      <div ref='root' className={ className } style={ style } role={ role } aria-labelled-by={ ariaLabelledBy }>
         { newChildren }
       </div>
     );
