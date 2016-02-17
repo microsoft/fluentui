@@ -1,6 +1,7 @@
 import * as React from 'react';
 import FocusZone from '../../utilities/focus/FocusZone';
 import './Dropdown.scss';
+import { css } from '../../utilities/index';
 
 export interface IDropdownOption {
   key: string;
@@ -58,8 +59,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
     return (
       <div>
         <span className="ms-Label">{ label }</span>
-
-        <div className={ 'ms-Dropdown' + (isOpen ? ' is-open ' : '') + (isDisabled ? ' is-disabled' : '') } tabIndex={ 0 } onClick={ this._toggleOpen }>
+        <div className={ css('ms-Dropdown', { 'is-open': isOpen, 'is-disabled': isDisabled }) } tabIndex={ 0 } onClick={ this._toggleOpen }>
           <i className="ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown"></i>
           <span className="ms-Dropdown-title">{ selectedOption ? selectedOption.text : '' }</span>
           <FocusZone isEnabled={ isOpen } ref='dropdownZone'>
