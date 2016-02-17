@@ -80,7 +80,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
   }
 
   private _toggleOpen() {
-    if(!this.state.isDisabled) {
+    if (!this.state.isDisabled) {
       this.setState({
         isOpen: !this.state.isOpen
       }, () => {
@@ -100,8 +100,8 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
     let selectedOptionIndex;
 
     // Iterate through all of the options, finding the one the matches they selected key.
-    for(let i = 0; i < this.props.options.length; i++) {
-      if(option.key === this.props.options[i].key) {
+    for (let i = 0; i < this.props.options.length; i++) {
+      if (option.key === this.props.options[i].key) {
         selectedOptionIndex = i;
       }
     }
