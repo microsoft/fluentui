@@ -1,8 +1,8 @@
 import * as React from 'react';
-import ProgressIndicator from '../../../../components/ProgressIndicator';
-import Link from '../../../../components/Link';
-import ExampleCard from '../../../components/ExampleCard';
-import PropertiesTable from '../../../components/PropertiesTable';
+import ProgressIndicator from '../../../../components/ProgressIndicator/index';
+import Link from '../../../../components/Link/index';
+import ExampleCard from '../../../components/ExampleCard/index';
+import PropertiesTable from '../../../components/PropertiesTable/index';
 
 export default class ProgressIndicatorExample extends React.Component<any, any> {
   public render() {

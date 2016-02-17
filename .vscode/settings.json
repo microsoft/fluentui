@@ -6,5 +6,5 @@
   "files.trimTrailingWhitespace": true,
 
   // Controls whether the editor should render whitespace characters
-  "editor.renderWhitespace": false
+  "editor.renderWhitespace": true
 }

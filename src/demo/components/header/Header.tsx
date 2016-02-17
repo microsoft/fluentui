@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './Header.scss';
-import { FocusZone, FocusZoneDirection } from '../../../utilities/focus';
+import { FocusZone, FocusZoneDirection } from '../../../utilities/focus/index';
 
 export interface IHeaderProps {
   title: string;

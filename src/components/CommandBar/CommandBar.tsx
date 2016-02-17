@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './CommandBar.scss';
-import { FocusZone, FocusZoneDirection } from '../../utilities/focus';
+import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
 import ContextualMenuHost from '../ContextualMenu/ContextualMenuHost';
 

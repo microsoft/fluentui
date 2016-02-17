@@ -3,7 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import * as ReactDOM from 'react-dom';
 import App from './components/app/App';
-import { Router, Route } from '../utilities/router';
+import { Router, Route } from '../utilities/router/index';
 import AppState from './components/app/AppState';
 import GettingStarted from './pages/GettingStarted';
 import "./index.scss";

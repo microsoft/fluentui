@@ -1,8 +1,8 @@
 import * as React from 'react';
-import CommandBar from '../../../../components/CommandBar';
-import Link from '../../../../components/Link';
-import ExampleCard from '../../../components/ExampleCard';
-import PropertiesTable from '../../../components/PropertiesTable';
+import CommandBar from '../../../../components/CommandBar/index';
+import Link from '../../../../components/Link/index';
+import ExampleCard from '../../../components/ExampleCard/index';
+import PropertiesTable from '../../../components/PropertiesTable/index';
 import {CommandBarProps, ICommandBarItemProps } from './CommandBarProps';
 
 

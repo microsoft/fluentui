@@ -1,9 +1,9 @@
 import * as React from 'react';
-import TextField from '../../../../components/TextField';
-import Label from '../../../../components/Label';
-import Link from '../../../../components/Link';
-import ExampleCard from '../../../components/ExampleCard';
-import PropertiesTable from '../../../components/PropertiesTable';
+import TextField from '../../../../components/TextField/index';
+import Label from '../../../../components/Label/index';
+import Link from '../../../../components/Link/index';
+import ExampleCard from '../../../components/ExampleCard/index';
+import PropertiesTable from '../../../components/PropertiesTable/index';
 
 export default class TextFieldExample extends React.Component<any, any> {
   public render() {

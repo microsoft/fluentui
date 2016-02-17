@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { default as Button, ButtonType } from '../../../../components/Button';
-import Link from '../../../../components/Link';
-import ExampleCard from '../../../components/ExampleCard';
-import PropertiesTable from '../../../components/PropertiesTable';
+import { default as Button, ButtonType } from '../../../../components/Button/index';
+import Link from '../../../../components/Link/index';
+import ExampleCard from '../../../components/ExampleCard/index';
+import PropertiesTable from '../../../components/PropertiesTable/index';
 import ButtonProperties from './ButtonProperties';
 
 let NormalButtonExample = require('./ButtonExample.Normal.txt');

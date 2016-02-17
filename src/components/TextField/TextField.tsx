@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Label from '../Label';
+import Label from '../Label/index';
 import './TextField.scss';
 
 export interface ITextFieldProps extends React.DOMAttributes {
