@@ -3,6 +3,9 @@ import './CommandBar.scss';
 import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
 import ContextualMenuHost from '../ContextualMenu/ContextualMenuHost';
+import { css } from '../../utilities/css';
+
+const OVERFLOW_KEY = 'overflow';
 
 export interface ICommandBarItem {
   key: string;
@@ -26,6 +29,7 @@ export interface ICommandBarProps {
 export interface ICommandBarState {
   renderedItems?: ICommandBarItem[];
   renderedOverflowItems?: ICommandBarItem[];
+  expandedMenuItemKey?: string;
   contextualMenuItems?: ICommandBarItem[];
   contextualMenuTarget?: HTMLElement;
 }
@@ -71,7 +75,7 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
 
   public render() {
     const { isSearchBoxVisible, searchPlaceholderText, items, farItems } = this.props;
-    const { renderedItems, contextualMenuItems, renderedOverflowItems, contextualMenuTarget } = this.state;
+    const { renderedItems, contextualMenuItems, expandedMenuItemKey, renderedOverflowItems, contextualMenuTarget } = this.state;
     let searchBox;
 
     if (isSearchBoxVisible) {
@@ -94,8 +98,12 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           <div className='ms-CommandBar-primaryCommands' ref='commandSurface'>
             { renderedItems.map((item, index) => (
-            <div className={'ms-CommandBarItem' } key={ item.key } ref={ item.key }>
-              <button className='ms-CommandBarItem-link' onClick={ this._onItemClick } data-command-key={ index } >
+            <div className='ms-CommandBarItem' key={ item.key } ref={ item.key }>
+              <button
+                className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === item.key) }) }
+                onClick={ this._onItemClick }
+                data-command-key={ index }
+              >
                 <span className={ `ms-CommandBarItem-icon ms-Icon ms-Icon--${ item.icon }` }></span>
                 <span className='ms-CommandBarItem-commandText ms-font-m ms-font-weight-regular'>{ item.name }</span>
                 { (item.items && item.items.length) ? (
@@ -104,8 +112,8 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
               </button>
             </div>
             )).concat((!renderedOverflowItems || renderedOverflowItems.length) ? [
-            <div className='ms-CommandBarItem' key={ 'overflow' } ref={ 'overflow' }>
-              <button className='ms-CommandBarItem-link' onClick={ this._onOverflowClick }>
+            <div className='ms-CommandBarItem' key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
+              <button className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === OVERFLOW_KEY) }) } onClick={ this._onOverflowClick }>
                 <i className='ms-CommandBarItem-overflow ms-Icon ms-Icon--ellipsis' />
               </button>
             </div>
@@ -118,7 +126,7 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
   }
 
   private _updateItemMeasurements() {
-    this._overflowWidth = (this.refs['overflow'] as HTMLElement).getBoundingClientRect().width;
+    this._overflowWidth = (this.refs[OVERFLOW_KEY] as HTMLElement).getBoundingClientRect().width;
 
     for (let i = 0; i < this.props.items.length; i++) {
       let item = this.props.items[i];
@@ -164,6 +172,7 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
     this.setState({
       renderedItems: renderedItems,
       renderedOverflowItems: renderedOverflowItems,
+      expandedMenuItemKey: null,
       contextualMenuItems: null,
       contextualMenuTarget: null
     });
@@ -172,8 +181,11 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
   private _onItemClick(ev) {
     let item = this.state.renderedItems[Number(ev.currentTarget.getAttribute('data-command-key'))];
 
-    if (item.items) {
+    if (item.key === this.state.expandedMenuItemKey) {
+      this._onContextMenuDismiss();
+    } else if (item.items) {
       this.setState({
+        expandedMenuItemKey: item.key,
         contextualMenuItems: item.items,
         contextualMenuTarget: ev.currentTarget
       });
@@ -181,18 +193,25 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
   }
 
   private _onOverflowClick(ev) {
-    this.setState({
-      contextualMenuItems: this.state.renderedOverflowItems,
-      contextualMenuTarget: ev.currentTarget
-    });
-
+    if (this.state.expandedMenuItemKey === OVERFLOW_KEY) {
+      this._onContextMenuDismiss();
+    } else {
+      this.setState({
+        expandedMenuItemKey: OVERFLOW_KEY,
+        contextualMenuItems: this.state.renderedOverflowItems,
+        contextualMenuTarget: ev.currentTarget
+      });
+    }
   }
 
-  private _onContextMenuDismiss() {
-    this.setState({
-      contextualMenuItems: null,
-      contextualMenuTarget: null
-    });
+  private _onContextMenuDismiss(ev?: any) {
+    if (!ev || !(this.refs['commandSurface'] as HTMLElement).contains(ev.relatedTarget as HTMLElement)) {
+      this.setState({
+        expandedMenuItemKey: null,
+        contextualMenuItems: null,
+        contextualMenuTarget: null
+      });
+    }
   }
 
 }

@@ -13,7 +13,7 @@ export interface IContextualMenuProps {
   items: IContextualMenuItem[];
   shouldFocusOnMount?: boolean;
   topBeakStyle?: { [ key: string ]: any };
-  onDismiss?: () => void;
+  onDismiss?: (ev?: any) => void;
 }
 
 export default class ContextualMenu extends React.Component<IContextualMenuProps, any> {
@@ -29,11 +29,11 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     this._onBlur = this._onBlur.bind(this);
   }
 
-  public dismiss() {
+  public dismiss(ev?: any) {
     let { onDismiss } = this.props;
 
     if (onDismiss) {
-      onDismiss();
+      onDismiss(ev);
     }
   }
 
@@ -89,7 +89,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
 
   private _onBlur(ev: React.FocusEvent) {
     if (!(ev.currentTarget as HTMLElement).contains(ev.relatedTarget as HTMLElement)) {
-      this.dismiss();
+      this.dismiss(ev);
     }
   }
 

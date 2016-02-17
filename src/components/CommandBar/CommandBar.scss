@@ -114,7 +114,8 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
   height: 100%;
   outline: transparent;
 
-  &:hover {
+  &:hover,
+  &.is-expanded {
     background-color: $ms-color-themeLight;
     color: $ms-color-themePrimary;
 

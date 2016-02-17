@@ -6,7 +6,7 @@ import { css } from '../../utilities/index';
 export interface IContextualMenuHostProps {
   items?: IContextualMenuItem[];
   targetElement?: HTMLElement;
-  onDismiss?: () => void;
+  onDismiss?: (ev?: any) => void;
   className?: string;
 }
 
