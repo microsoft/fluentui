@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Dropdown from '../../../../components/Dropdown';
-import Link from '../../../../components/Link';
-import ExampleCard from '../../../components/ExampleCard';
-import PropertiesTable from '../../../components/PropertiesTable';
+import Dropdown from '../../../../components/Dropdown/index';
+import Link from '../../../../components/Link/index';
+import ExampleCard from '../../../components/ExampleCard/index';
+import PropertiesTable from '../../../components/PropertiesTable/index';
 
 export default class DropdownExample extends React.Component<any, any> {
   public render() {

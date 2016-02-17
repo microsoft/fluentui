@@ -1,8 +1,8 @@
 import * as React from 'react';
-import OrgChart from '../../../../components/OrgChart';
-import Link from '../../../../components/Link';
-import ExampleCard from '../../../components/ExampleCard';
-import PropertiesTable from '../../../components/PropertiesTable';
+import OrgChart from '../../../../components/OrgChart/index';
+import Link from '../../../../components/Link/index';
+import ExampleCard from '../../../components/ExampleCard/index';
+import PropertiesTable from '../../../components/PropertiesTable/index';
 
 export default class OrgChartExample extends React.Component<any, any> {
   public render() {

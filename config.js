@@ -7,7 +7,8 @@ module.exports = {
   build: {
     paths: {
       staticsMatch: [ 'src/**/*.scss' ],
-      templateMatch: [ 'src/**/*.txt' ]
+      templateMatch: [ 'src/**/*.txt' ],
+      amdLibFolder: 'lib-amd'
     },
     copyTo: {
       'dist': [
@@ -15,7 +16,7 @@ module.exports = {
         'node_modules/react-dom/dist/react-dom.js',
         'node_modules/systemjs/dist/system.src.js'
       ]
-    }
+    },
   },
   test: {
     include: [ 'lib/tests.js' ]

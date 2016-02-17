@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Dialog from '../../../../components/Dialog';
-import Link from '../../../../components/Link';
-import ExampleCard from '../../../components/ExampleCard';
-import PropertiesTable from '../../../components/PropertiesTable';
+import Dialog from '../../../../components/Dialog/index';
+import Link from '../../../../components/Link/index';
+import ExampleCard from '../../../components/ExampleCard/index';
+import PropertiesTable from '../../../components/PropertiesTable/index';
 
 export default class DialogExample extends React.Component<any, any> {
   public render() {

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Persona from '../../../../components/Persona';
-import Link from '../../../../components/Link';
-import ExampleCard from '../../../components/ExampleCard';
-import PropertiesTable from '../../../components/PropertiesTable';
+import Persona from '../../../../components/Persona/index';
+import Link from '../../../../components/Link/index';
+import ExampleCard from '../../../components/ExampleCard/index';
+import PropertiesTable from '../../../components/PropertiesTable/index';
 
 export default class PersonaExample extends React.Component<any, any> {
   public render() {

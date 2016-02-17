@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IContextualMenuItem, default as ContextualMenu } from './ContextualMenu';
 import './ContextualMenuHost.scss';
-import { css } from '../../utilities';
+import { css } from '../../utilities/index';
 
 export interface IContextualMenuHostProps {
   items?: IContextualMenuItem[];

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import Table from '../../../../components/Table';
-import Link from '../../../../components/Link';
-import ExampleCard from '../../../components/ExampleCard';
-import PropertiesTable from '../../../components/PropertiesTable';
+import Table from '../../../../components/Table/index';
+import Link from '../../../../components/Link/index';
+import ExampleCard from '../../../components/ExampleCard/index';
+import PropertiesTable from '../../../components/PropertiesTable/index';
 
 export default class TableExample extends React.Component<any, any> {
   public render() {
