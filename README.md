@@ -1,8 +1,10 @@
 # Office UI Fabric for React
 
-#### The office-ui-fabric-react repo uses internal NPM to consume private packages. To get this working, you need to follow the below instructions to access @ms scoped npm packages.
+#### Getting Started
 
-Once you have set these up, the repo can be tested like this:
+The office-ui-fabric-react repo uses internal NPM to consume private packages. To get this working, you need to follow the below instructions to access @ms scoped npm packages.
+
+Once you have set these up, the repo Is tested like this:
 
 ```
 git clone https://onedrive.visualstudio.com/DefaultCollection/Design/_git/office-ui-fabric-react
@@ -15,7 +17,7 @@ gulp serve
 ```
 **Email dzearing@microsoft.com if you have issues**
 
-### Private NPM access instructions
+#### Private NPM access instructions
 
 **NOTE:** this assumes that you have installed NPM and can access it on the command line. These
 
