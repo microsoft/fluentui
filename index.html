@@ -13,6 +13,11 @@
     window.define = System.amdDefine;
 
     System.config({
+      meta: {
+        "*": {
+          scriptLoad: true
+        }
+      },
       paths: {
         'app': 'dist/demo-app.js',
         'office-ui-fabric-react': 'dist/office-ui-fabric-react.js',

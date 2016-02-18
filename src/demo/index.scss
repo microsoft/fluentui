@@ -1,2 +1,5 @@
 @import "~office-ui-fabric/src/sass/Fabric";
 
+html, body {
+  -webkit-tap-highlight-color: transparent;
+}

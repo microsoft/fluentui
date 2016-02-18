@@ -1,0 +1,24 @@
+.ListExample-itemCell {
+  min-height: 54px;
+  padding: 10px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #CCC;
+  position: relative;
+}
+
+.ListExample-itemCell:hover {
+  background: #EEE;
+}
+.ListExample-itemName {
+  position: absolute;
+  left: 10px;;
+  top: 10px;
+  bottom: 10x;
+  width: 110px;
+  white-space: nowrap;
+}
+
+.ListExample-itemDesc {
+  margin-left:  130px;
+}
+

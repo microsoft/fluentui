@@ -152,7 +152,7 @@ const AppState: IAppState = {
           name: 'List',
           url: '#/examples/list',
           component: ListExample,
-          status: ExampleStatus.placeholder
+          status: ExampleStatus.started
         },
         {
           name: 'ListItem',
