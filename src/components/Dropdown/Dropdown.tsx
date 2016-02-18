@@ -87,7 +87,8 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
       this.setState({
         isOpen: !isOpen
       }, () => {
-        if (isOpen && options.length) {
+        // This is an async callback. Check the current state.
+        if (this.state.isOpen && this.props.options.length) {
           let selectedOption = options[selectedIndex];
           (this.refs as any).dropdownZone.focus();
         }

@@ -3,7 +3,7 @@ import Fabric from '../../../components/Fabric/index';
 import AppState from './AppState';
 import Header from '../Header/index';
 import NavBar from '../NavBar/index';
-import './App.css';
+import './App.scss';
 
 export default class App extends React.Component<any, any> {
 

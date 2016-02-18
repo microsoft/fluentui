@@ -5,7 +5,10 @@
   line-height: 50px;
   padding: 0 20px;
   background: $ms-color-themeDark;
+  overflow: hidden;
+  white-space: no-wrap;
 }
+
 .Header-title,
 .Header-buttons,
 .Header-button {
