@@ -16,7 +16,7 @@ build.initializeTasks(
 
 gulp.task('deploy', ['bundle'],  function() {
   return git.branch(function(branch) {
-    currentbranch = os.hostname().split()[0] + '-' + branch.replace('/', '-');
+    currentbranch = os.hostname().split('.')[0] + '-' + branch.replace('/', '-');
     let ftpConnection = ftp.create({
       host: 'waws-prod-bay-049.ftp.azurewebsites.windows.net',
       user: "odsp-ext\\designdev",
