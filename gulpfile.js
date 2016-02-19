@@ -19,7 +19,7 @@ gulp.task('deploy', ['bundle'],  function() {
     currentbranch = os.hostname().split('.')[0] + '-' + branch.replace('/', '-');
     let ftpConnection = ftp.create({
       host: 'waws-prod-bay-049.ftp.azurewebsites.windows.net',
-      user: "odsp-ext\\designdev",
+      user: "odsp-int\\designdev",
       pass: 'RealHumanBeans13',
       parallel: 10,
       secure: true
@@ -33,7 +33,7 @@ gulp.task('deploy', ['bundle'],  function() {
       .pipe(ftpConnection.dest( '/site/wwwroot/fabric-react/' + currentbranch ))
       .pipe(debug({title: "Moving File to Azure"}));
 
-    gutil.log('http://odsp-ext.azurewebsites.net/fabric-react/' + currentbranch + '/');
+    gutil.log('http://odsp-int.azurewebsites.net/fabric-react/' + currentbranch + '/');
     return stream;
   });
 });
