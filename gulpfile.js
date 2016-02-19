@@ -6,6 +6,7 @@ let ftp = require('vinyl-ftp');
 let git = require('git-rev');
 let debug = require('gulp-debug');
 let gutil = require('gulp-util');
+let os = require('os');
 let currentbranch;
 
 build.initializeTasks(
@@ -13,9 +14,9 @@ build.initializeTasks(
   require('./config')
 );
 
-gulp.task('deploy',  function() {
+gulp.task('deploy', ['bundle'],  function() {
   return git.branch(function(branch) {
-    currentbranch = branch.replace('/', '-');
+    currentbranch = os.hostname().split()[0] + '-' + branch.replace('/', '-');
     let ftpConnection = ftp.create({
       host: 'waws-prod-bay-049.ftp.azurewebsites.windows.net',
       user: "odsp-ext\\designdev",
