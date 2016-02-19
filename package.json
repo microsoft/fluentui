@@ -13,11 +13,15 @@
     "@ms/ms-core-build": "^0.3.32",
     "chai": "^3.4.1",
     "css-loader": "^0.23.1",
+    "git-rev": "^0.2.1",
     "gulp": "^3.9.0",
+    "gulp-debug": "^2.1.2",
+    "gulp-util": "^3.0.7",
     "gutil": "^1.6.4",
     "react-addons-test-utils": "^0.14.3",
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
+    "vinyl-ftp": "^0.4.5",
     "webpack-notifier": "^1.2.1"
   },
   "dependencies": {
