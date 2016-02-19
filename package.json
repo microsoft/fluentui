@@ -16,7 +16,6 @@
     "git-rev": "^0.2.1",
     "gulp": "^3.9.0",
     "gulp-debug": "^2.1.2",
-    "gulp-ftp": "^1.1.0",
     "gulp-util": "^3.0.7",
     "gutil": "^1.6.4",
     "react-addons-test-utils": "^0.14.3",
