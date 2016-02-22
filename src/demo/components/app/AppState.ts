@@ -206,10 +206,10 @@ const AppState: IAppState = {
           name: 'Pivot',
           url: '#/examples/pivot',
           component: PivotExample,
-          status: ExampleStatus.placeholder
+          status: ExampleStatus.started
         },
         {
-          name: 'ProgresIndicator',
+          name: 'ProgressIndicator',
           url: '#/examples/progressindicator',
           component: ProgressIndicatorExample,
           status: ExampleStatus.placeholder

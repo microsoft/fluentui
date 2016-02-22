@@ -16,7 +16,36 @@ export default class PivotExample extends React.Component<any, any> {
         <h2 className='ms-font-xl'>Examples</h2>
 
         <ExampleCard title='Pivot'>
-          <Pivot />
+
+          <Pivot
+            items={
+              [
+                { key: 'A', text: 'Item 1' },
+                { key: 'B', text: 'Item 2' },
+                { key: 'C', text: 'Item 3', selected: true },
+                { key: 'D', text: 'Item 4' },
+                { key: 'E', text: 'Item 5' }
+              ]
+            }
+          />
+
+        </ExampleCard>
+
+        <ExampleCard title='Pivot Large'>
+
+          <Pivot
+            largeformat
+            items={
+              [
+                { key: 'A', text: 'Item 1' },
+                { key: 'B', text: 'Item 2' },
+                { key: 'C', text: 'Item 3', selected: true },
+                { key: 'D', text: 'Item 4' },
+                { key: 'E', text: 'Item 5' }
+              ]
+            }
+          />
+
         </ExampleCard>
       </div>
     );
