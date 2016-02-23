@@ -68,7 +68,7 @@ export default class ContextualMenuExample extends React.Component<any, any> {
                   key: 'print',
                   name: 'Print',
                   icon: 'print'
-                },
+                }
               ]
             }
           />

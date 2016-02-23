@@ -1,5 +1,4 @@
 import * as React from 'react';
-import './Pivot.scss';
 
 export interface IPivotItem {
   key: string;

@@ -33,7 +33,7 @@ export interface IContextualMenuProps {
   verticalAlignmentHint?: DirectionalHint;
   labelElementId?: string;
   shouldFocusOnMount?: boolean;
-  hasBeak?: boolean;
+  isBeakVisible?: boolean;
   onDismiss?: (ev?: any) => void;
   description?: string;
   className?: string;
@@ -53,7 +53,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   public static defaultProps = {
     items: [],
     shouldFocusOnMount: true,
-    hasBeak: false,
+    isBeakVisible: false,
     horizontalAlignmentHint: DirectionalHint.right,
     verticalAlignmentHint: DirectionalHint.top
   };
@@ -130,7 +130,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   }
 
   public render() {
-    let { className, menuKey, items, hasBeak, labelElementId, targetElement, horizontalAlignmentHint, verticalAlignmentHint } = this.props;
+    let { className, menuKey, items, isBeakVisible, labelElementId, targetElement, horizontalAlignmentHint, verticalAlignmentHint } = this.props;
     let { contextualMenuItems, expandedMenuItemKey, contextualMenuTarget, submenuProps, positions } = this.state;
     let left = 0;
 
@@ -151,7 +151,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
           ariaLabelledBy={ labelElementId }
           style={ positions.menu }
         >
-        { hasBeak ? (<div className='ms-ContextualMenu-beak'  style={ positions.beak } />) : (null)}
+        { isBeakVisible ? (<div className='ms-ContextualMenu-beak'  style={ positions.beak } />) : (null)}
         <ul className='ms-ContextualMenu-list is-open ' onKeyDown={ this._onKeyDown } >
           { items.map((item, index) => (
             //If the item name is equal to '-', a divider will be generated.
@@ -166,7 +166,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
                 role='menuitem'
               >
                 <span className={ `ms-ContextualMenu-icon ms-Icon ms-Icon--${ item.icon }` }></span>
-                <span className='ms-ContextualMenu-item ms-font-m ms-font-weight-regular'>{ item.name }</span>
+                <span className='ms-ContextualMenu-itemText ms-font-m ms-font-weight-regular'>{ item.name }</span>
                 { (item.items && item.items.length) ? (
                 <i className='ms-ContextualMenu-chevronRight ms-Icon ms-Icon--chevronRight' />
                 ) : ( null ) }

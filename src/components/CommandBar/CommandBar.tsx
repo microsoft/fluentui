@@ -133,7 +133,7 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
           items={ contextualMenuItems }
           targetElement={ contextualMenuTarget }
           onDismiss={ this._onContextMenuDismiss }
-          hasBeak={ true }
+          isBeakVisible={ true }
           horizontalAlignmentHint={DirectionalHint.left}
           verticalAlignmentHint={DirectionalHint.bottom}
         />

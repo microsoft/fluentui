@@ -57,6 +57,12 @@
   padding: 0 18px;
 }
 
+.ms-ContextualMenu-itemText.ms-font-m.ms-font-weight-regular {
+    display: inline-block;
+    margin-right: 16px;
+    top: 0;
+}
+
 .ms-ContextualMenu-link {
   text-decoration: none;
   color: $ms-color-neutralPrimary;
@@ -203,12 +209,21 @@
   transform: rotate(45deg);
 }
 
-.ms-ContextualMenu-chevronRight {
-  position: absolute;
-  right: 5%;
-  top: 40%;
+.ms-ContextualMenu-chevronRight.ms-Icon {
+    top: 0;
+    position: absolute;
+    right: 0;
+    vertical-align: middle;
+    line-height: 39px;
+    width: 34px;
+    text-align: center;
 }
 
 .ms-ContextualMenu-icon {
   padding-right: 10px;
 }
+
+.ExampleCard-example > .ms-ContextualMenu-container > .ms-ContextualMenu {
+  position: relative;
+}
+
