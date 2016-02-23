@@ -1,6 +1,9 @@
 import { IObjectWithKey, ISelection } from './ISelection';
+import EventGroup from '../eventGroup/EventGroup';
 
-export default class Selection implements ISelection {
+export const SELECTION_CHANGE = 'change';
+
+export class Selection implements ISelection {
   public count: number;
 
   private _items: IObjectWithKey[];
@@ -17,8 +20,8 @@ export default class Selection implements ISelection {
 
   constructor(onSelectionChanged?: () => void) {
     this._exemptedCount = 0;
-    this._anchoredIndex = -1;
-    this._focusedIndex = -1;
+    this._anchoredIndex = 0;
+    this._focusedIndex = 0;
     this.setItems([], true);
 
     this._areChangeEventsEnabled = true;
@@ -64,7 +67,7 @@ export default class Selection implements ISelection {
         if (lastFocusedKey) {
           this._focusedIndex = newKeyToIndexMap[lastFocusedKey];
         } else {
-          this._focusedIndex = -1;
+          this._focusedIndex = 0;
         }
       }
       // TODO: re-evaluate selection
@@ -104,11 +107,11 @@ export default class Selection implements ISelection {
   }
 
   public getFocusedIndex(): number {
-    return (this.count >= 0) ? this._focusedIndex : -1;
+    return (this._items && this._items.length) ? (this._focusedIndex || 0) : -1;
   }
 
   public getFocusedKey(): string {
-    let focusedItem = this._items[this._focusedIndex];
+    let focusedItem = this._items[this.getFocusedIndex()];
 
     return focusedItem ? focusedItem.key : null;
   }
@@ -232,6 +235,9 @@ export default class Selection implements ISelection {
 
   private _change() {
     if (this._areChangeEventsEnabled) {
+
+      EventGroup.raise(this, SELECTION_CHANGE);
+
       if (this._onSelectionChanged) {
         this._onSelectionChanged();
       }
@@ -241,3 +247,5 @@ export default class Selection implements ISelection {
   }
 
 }
+
+export default Selection;

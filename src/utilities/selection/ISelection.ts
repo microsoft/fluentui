@@ -1,10 +1,18 @@
+export enum SelectionMode {
+  none,
+  single,
+  multiple
+}
 export interface IObjectWithKey {
   key: string;
 }
 
+
 export interface ISelection {
-  // Obesrvable.
   count: number;
+
+  // Obesrvable methods.
+  setChangeEvents(isEnabled: boolean, suppressChange?: boolean);
 
   // Initialization methods.
 

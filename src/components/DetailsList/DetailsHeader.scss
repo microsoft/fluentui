@@ -1,0 +1,183 @@
+@import '../../common';
+
+$rowHeight: 36px;
+$selectedColor: #d7eaf9;
+$selectedHoverColor: #beddf4;
+$unselectedHoverColor: #e6f2fb;
+
+.DetailsHeader {
+  min-width: 100%;
+  height: $rowHeight;
+  line-height: $rowHeight;
+  white-space: nowrap;
+  padding-bottom: 1px;
+  border-bottom: 1px solid $ms-color-neutralLight;
+  margin-bottom: 1px;
+  cursor: default;
+
+  @include user-select(none);
+
+  &.is-singleSelect {
+    padding-left: 40px;
+  }
+
+  &.is-resizingColumn .DetailsHeader-sizerCover {
+    background: transparent;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100000;
+    cursor: col-resize;
+  }
+}
+
+.DetailsHeader-checkClip {
+  position: relative;
+  overflow: hidden;
+  width: 20px;
+  height: 20px;
+}
+
+
+.DetailsHeader-checkImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+}
+
+.DetailsHeader-cell.is-check:hover .DetailsHeader-checkImage {
+  left: -40px;
+}
+
+.DetailsHeader.is-allSelected .DetailsHeader-cell.is-check:hover .DetailsHeader-checkImage {
+  left: -20px;
+}
+
+.DetailsHeader.is-allSelected  .DetailsHeader-cell.is-check:hover .DetailsHeader-checkImage,
+.DetailsHeader.is-allSelected  .DetailsHeader-checkImage {
+  left: -60px;
+}
+
+.DetailsHeader-cellWrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.DetailsHeader-cellSizeWrapper {
+  display: inline-block;
+  margin-right: 16px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.DetailsHeader-cell {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0 8px;
+  color: $ms-color-neutralTertiary;
+  border: none;
+  background: none;
+  border: none;
+  line-height: inherit;
+  margin: 0;
+  font-size: inherit;
+  font-family: inherit;
+  text-align: left;
+  height: $rowHeight;
+
+  &.is-check {
+    position: relative;
+    padding: 8px 10px;
+    vertical-align: top;
+    margin: 0;
+  }
+
+  &:focus {
+    outline: transparent;
+  }
+
+  &.is-sortable {
+    color: $ms-color-black;
+    cursor: default;
+
+    &:hover {
+      background-color: $ms-color-neutralLight;
+    }
+  }
+
+  &.is-filter {
+    position: absolute;
+    right: 0;
+    width: 20px;
+    top: 0;
+    bottom: 0;
+    padding: 0;
+    text-align: center;
+    color: $ms-color-black;
+
+    &:hover {
+      background-color: $ms-color-neutralLight;
+    }
+  }
+
+  &.is-filter:before {
+    content: '';
+    position: absolute;
+    border-left: 1px solid $ms-color-neutralTertiary;
+    top: 10px;
+    bottom: 10px;
+    left: 0;
+  }
+
+  &.is-sizer {
+    position: absolute;
+    width: 16px;
+    cursor: col-resize;
+    bottom: 0;
+    top: 0;
+    height: inherit;
+    z-index: 999;
+  }
+
+  &.is-sorted .DetailsHeader-sortArrow {
+    visibility: visible;
+  }
+
+  &is-sortedDescending .DetailsHeader-sortArrow {
+    transform: rotate(180deg);
+  }
+}
+
+.DetailsHeader-cell.is-resizing.is-sizer:after,
+.DetailsHeader-cell.is-sizer:hover:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #EAEAEA;
+}
+
+.ms-Fabric.is-focusVisible .DetailsHeader-cell:focus:before {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid $ms-color-neutralTertiary;
+}
+
+.DetailsHeader-sortArrow {
+  font-size: 12px;
+  margin-left: 4px;
+  visibility: hidden;
+  color: $ms-color-neutralTertiary;
+}

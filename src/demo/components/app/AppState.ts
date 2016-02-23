@@ -8,6 +8,7 @@ import ChoiceGroupExample from '../../pages/examples/ChoiceGroup/ChoiceGroupExam
 import CommandBarExample from '../../pages/examples/CommandBar/CommandBarExample';
 import ContextualMenuExample from '../../pages/examples/ContextualMenu/ContextualMenuExample';
 import DatePickerExample from '../../pages/examples/DatePicker/DatePickerExample';
+import DetailsListExample from '../../pages/examples/DetailsList/DetailsListExample';
 import DialogExample from '../../pages/examples/Dialog/DialogExample';
 import DropdownExample from '../../pages/examples/Dropdown/DropdownExample';
 import LabelExample from '../../pages/examples/Label/LabelExample';
@@ -122,6 +123,12 @@ const AppState: IAppState = {
           name: 'DatePicker',
           url: '#/examples/datepicker',
           component: DatePickerExample,
+          status: ExampleStatus.started
+        },
+        {
+          name: 'DetailsList',
+          url: '#/examples/detailslist',
+          component: DetailsListExample,
           status: ExampleStatus.started
         },
         {

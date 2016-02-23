@@ -8,6 +8,9 @@ import AppState from './components/app/AppState';
 import GettingStarted from './pages/GettingStarted';
 import "./index.scss";
 import "./ColorStyles.scss";
+import { setBaseUrl } from '../utilities/resources';
+
+setBaseUrl('./dist/');
 
 let rootElement;
 

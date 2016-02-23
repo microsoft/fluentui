@@ -1,0 +1,117 @@
+@import '../../common';
+
+$rowHeight: 36px;
+$focusedBorderColor: #3F97DB;
+$selectedColor: #d7eaf9;
+$selectedHoverColor: #beddf4;
+$unselectedHoverColor: #e6f2fb;
+
+.DetailsRow {
+  position: relative;
+  display: inline-block;
+  min-width: 100%;
+  min-height: $rowHeight;
+  vertical-align: top;
+  white-space: nowrap;
+  padding: 10px 0;
+
+  @include user-select(none);
+
+  cursor: default;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: transparent;
+  }
+
+  &.DetailsRow--isSelected {
+    background: $selectedColor;
+  }
+}
+
+.ms-Fabric.is-stationary .DetailsRow:hover {
+  background: $unselectedHoverColor;
+}
+
+.ms-Fabric.is-stationary .DetailsRow--isSelected:hover {
+  background: $selectedHoverColor;
+}
+
+.DetailsRow-cell {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0 8px;
+  vertical-align: top;
+  overflow: hidden;
+  white-space: normal;
+  margin-right: 16px;
+}
+
+.DetailsRow-cell:last-child {
+  margin-right: 0;
+}
+
+.DetailsRow-check {
+  display: inline-block;
+  cursor: default;
+  padding: 10px;
+  margin: -10px 0;
+  box-sizing: border-box;
+  vertical-align: top;
+  background: none;
+  border: none;
+
+  &:focus {
+   outline: transparent;
+  }
+}
+
+.DetailsRow-checkClip {
+  position: relative;
+  overflow: hidden;
+  width: 20px;
+  height: 20px;
+}
+
+.DetailsRow-checkImage {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  height: 20px;
+}
+
+.ms-Fabric.is-stationary .DetailsRow:hover .DetailsRow-checkImage {
+  left: -20px;
+}
+
+.ms-Fabric.is-stationary .DetailsRow-check:hover .DetailsRow-checkImage {
+  left: -40px;
+}
+
+.DetailsRow--isSelected .DetailsRow-checkImage,
+.ms-Fabric.is-stationary .DetailsRow.DetailsRow--isSelected:hover .DetailsRow-checkImage,
+.ms-Fabric.is-stationary .DetailsRow.DetailsRow--isSelected .DetailsRow-check:hover .DetailsRow-checkImage {
+  left: -60px;
+}
+
+.ms-Fabric.is-focusVisible .DetailsRow:focus .DetailsRow-focusBox {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border: 1px solid $focusedBorderColor;
+}
+
+// TODO: delete?
+.aFileTypeIconRenderer {
+  height: 36px;
+  line-height: 36px;
+  vertical-align: top;
+}
+
+.FileTypeIconRenderer > img {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+}

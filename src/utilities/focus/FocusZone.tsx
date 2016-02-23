@@ -130,6 +130,16 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
     );
   }
 
+  public setActiveIndex(index: number) {
+    console.log(index);
+
+    if (index >= 0 && index < this.state.focusElements.length && index !== this.state.activeIndex) {
+      this.setState({
+        activeIndex: index
+      });
+    }
+  }
+
   public focus() {
     if (this.state.activeIndex >= 0) {
       let el = ReactDOM.findDOMNode(this.refs[ this.state.activeIndex ]) as HTMLElement;

@@ -1,0 +1,9 @@
+@import '../../common';
+
+.ms-DetailsList {
+  position: relative;
+}
+
+.ms-DetailsList.is-fixed {
+  overflow-x: auto;
+}

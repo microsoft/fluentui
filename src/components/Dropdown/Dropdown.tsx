@@ -1,7 +1,8 @@
 import * as React from 'react';
-import FocusZone from '../../utilities/focus/FocusZone';
 import './Dropdown.scss';
-import { css } from '../../utilities/index';
+import { css } from '../../utilities/css';
+import { findIndex } from '../../utilities/array';
+import KeyCodes from '../../utilities/KeyCodes';
 
 export interface IDropdownOption {
   key: string;
@@ -12,7 +13,7 @@ export interface IDropdownOption {
 export interface IDropdownProps {
   label: string;
   options: IDropdownOption[];
-  onChange?: (option: IDropdownOption) => void;
+  onChange?: (option: IDropdownOption, index?: number) => void;
   isDisabled?: boolean;
 }
 
@@ -31,26 +32,18 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
   constructor(props?: IDropdownProps) {
     super(props);
 
-    let selectedIndex = 0;
-
-    for (let i = 0; i < props.options.length; i++) {
-      if (props.options[i].isSelected) {
-        selectedIndex = i;
-        break;
-      }
-    }
-
     this.state = {
       isOpen: false,
-      selectedIndex: selectedIndex,
+      selectedIndex: findIndex(props.options, (option => option.isSelected)),
       isDisabled: this.props.isDisabled
     };
 
-    this._toggleOpen = this._toggleOpen.bind(this);
-    this._onItemClick = this._onItemClick.bind(this);
+    this._onDropdownKeyDown = this._onDropdownKeyDown.bind(this);
+    this._onDropdownClick = this._onDropdownClick.bind(this);
+    this._onDropdownBlur = this._onDropdownBlur.bind(this);
   }
 
-  render() {
+  public render() {
     let rootClass = 'ms-Dropdown';
     let { label, options } = this.props;
     let { isOpen, selectedIndex, isDisabled } = this.state;
@@ -59,56 +52,108 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
     return (
       <div>
         <span className="ms-Label">{ label }</span>
-        <div className={ css('ms-Dropdown', { 'is-open': isOpen, 'is-disabled': isDisabled }) } tabIndex={ 0 } onClick={ this._toggleOpen }>
+        <div
+          className={ css('ms-Dropdown', {
+            'is-open': isOpen, 'is-disabled': isDisabled
+            }) }
+          tabIndex={ 0 }
+          onKeyDown={ this._onDropdownKeyDown }
+          onClick={ this._onDropdownClick }
+          onBlur={ this._onDropdownBlur }
+        >
           <i className="ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown"></i>
           <span className="ms-Dropdown-title">{ selectedOption ? selectedOption.text : '' }</span>
-          <FocusZone isEnabled={ isOpen } ref='dropdownZone'>
-            <ul className="ms-Dropdown-items">
-              { options.map(option => (
-              <li
-                key={ option.key }
-                className={ 'ms-Dropdown-item' + ((selectedOption === option) ? ' is-selected' : '') }
-                data-is-focusable={ true }
-                onClick={ this._onItemClick.bind(this, option) }>{ option.text }</li>
-              )) }
-            </ul>
-          </FocusZone>
+          <ul className="ms-Dropdown-items">
+            { options.map((option, optionIndex) => (
+            <li key={ option.key }
+                className={ css('ms-Dropdown-item', { 'is-selected': selectedIndex === optionIndex }) }
+                onClick={ this.setSelectedIndex.bind(this, optionIndex) }
+              >
+                { option.text }
+            </li>
+            )) }
+          </ul>
         </div>
 
       </div>
     );
   }
 
-  private _toggleOpen() {
-    let { isDisabled, isOpen, selectedIndex } = this.state;
+  public setSelectedIndex(index: number) {
+    let { onChange, options } = this.props;
+    let { selectedIndex } = this.state;
+
+    index = Math.max(0, Math.min(options.length - 1, index));
+
+    if (index !== selectedIndex) {
+      // Set the selected option.
+      this.setState({
+        selectedIndex: index
+      });
+
+      if (onChange) {
+        onChange(options[index], index);
+      }
+    }
+  }
+
+  private _onDropdownKeyDown(ev: React.KeyboardEvent) {
+    switch (ev.which) {
+      case KeyCodes.enter: {
+	       this.setState({
+           isOpen: !this.state.isOpen
+         });
+         break;
+      }
+      case KeyCodes.escape: {
+        this.setState({
+          isOpen: false
+        });
+        break;
+      }
+      case KeyCodes.up: {
+        this.setSelectedIndex(this.state.selectedIndex - 1);
+        break;
+      }
+      case KeyCodes.down: {
+        this.setSelectedIndex(this.state.selectedIndex + 1);
+        break;
+      }
+      case KeyCodes.home: {
+        this.setSelectedIndex(0);
+        break;
+      }
+      case KeyCodes.end: {
+        this.setSelectedIndex(this.props.options.length - 1);
+        break;
+      }
+      default:
+        return;
+    }
+
+    ev.stopPropagation();
+    ev.preventDefault();
+  }
+
+  private _onDropdownClick() {
+    let { isDisabled, isOpen } = this.state;
     let { options } = this.props;
 
     if (!isDisabled) {
       this.setState({
         isOpen: !isOpen
-      }, () => {
-        // This is an async callback. Check the current state.
-        if (this.state.isOpen && this.props.options.length) {
-          let selectedOption = options[selectedIndex];
-          (this.refs as any).dropdownZone.focus();
-        }
       });
     }
   }
 
-  private _onItemClick(option) {
-    let selectedOptionKey = option.key;
-    let selectedOptionIndex;
-
-    // Iterate through all of the options, finding the one the matches they selected key.
-    for (let i = 0; i < this.props.options.length; i++) {
-      if (option.key === this.props.options[i].key) {
-        selectedOptionIndex = i;
-      }
+  private _onDropdownBlur() {
+    if (this.state.isOpen) {
+      this.setState({
+        isOpen: false
+      });
     }
-
-    // Set the selected index to the matching option.
-    this.setState({ selectedIndex: selectedOptionIndex });
   }
 
 }
+
+
