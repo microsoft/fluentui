@@ -6,7 +6,6 @@ import ExampleCard from '../../../components/ExampleCard/index';
 import PropertiesTable from '../../../components/PropertiesTable/index';
 
 let ContextualMenuExampleCode = require('./ContextualMenuExampleCode.txt');
-let ContextualMenuExampleMultiselect = require('./ContextualMenuExample.Multiselect.txt');
 
 export default class ContextualMenuExample extends React.Component<any, any> {
   public render() {
