@@ -2,7 +2,7 @@ import * as React from 'react';
 import './CommandBar.scss';
 import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
-import ContextualMenuHost from '../ContextualMenu/ContextualMenuHost';
+import { default as ContextualMenu, DirectionalHint } from '../ContextualMenu/index';
 import { css } from '../../utilities/css';
 
 const OVERFLOW_KEY = 'overflow';
@@ -125,7 +125,19 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
             ] : []) }
           </div>
         </FocusZone>
-        <ContextualMenuHost menuKey={ expandedMenuItemKey } labelElementId={ expandedMenuId } className='ms-CommandBar-menuHost' items={ contextualMenuItems } targetElement={ contextualMenuTarget } onDismiss={ this._onContextMenuDismiss }/>
+        { (contextualMenuItems) ?
+        (<ContextualMenu
+          menuKey={ expandedMenuItemKey }
+          labelElementId={ expandedMenuId }
+          className='ms-CommandBar-menuHost'
+          items={ contextualMenuItems }
+          targetElement={ contextualMenuTarget }
+          onDismiss={ this._onContextMenuDismiss }
+          hasBeak={ true }
+          horizontalAlignmentHint={DirectionalHint.left}
+          verticalAlignmentHint={DirectionalHint.bottom}
+        />
+        ) : (null)}
       </div>
     );
   }
@@ -202,12 +214,14 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
     if (this.state.expandedMenuItemKey === OVERFLOW_KEY) {
       this._onContextMenuDismiss();
     } else {
+
       this.setState({
         expandedMenuId: ev.currentTarget.id,
         expandedMenuItemKey: OVERFLOW_KEY,
         contextualMenuItems: this.state.renderedOverflowItems,
         contextualMenuTarget: ev.currentTarget
       });
+
     }
   }
 

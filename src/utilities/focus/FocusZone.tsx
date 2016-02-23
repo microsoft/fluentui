@@ -20,6 +20,7 @@ export interface IFocusZoneProps {
   children?: React.ReactElement<any>[];
   role?: string;
   ariaLabelledBy?: string;
+  key?: string;
 }
 
 export interface IFocusZoneState {

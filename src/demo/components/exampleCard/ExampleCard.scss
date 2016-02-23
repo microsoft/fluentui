@@ -33,3 +33,7 @@
 .ExampleCard.is-codeVisible .ExampleCard-code {
   display: block;
 }
+
+.ExampleCard-example > .ms-ContextualMenu-container > .ms-ContextualMenu {
+  position: relative;
+}

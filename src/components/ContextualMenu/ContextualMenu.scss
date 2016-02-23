@@ -7,6 +7,9 @@
 // --------------------------------------------------
 // Contextual Menu styles
 
+.ms-ContextualMenu-container {
+  position: relative;
+}
 
 .ms-ContextualMenu {
   @include ms-font-m;
@@ -14,7 +17,8 @@
   @include drop-shadow(0,0, 15px, -5px);
 
   border: 1px solid $ms-color-neutralLight;
-  position: relative;
+  z-index: $ms-zIndex-ContextualMenu;
+  position: absolute;
   display: inline-block;
 }
 
@@ -157,12 +161,6 @@
   }
 }
 
-
-.ms-ContextualMenu,
-.ms-ContextualMenu.is-open {
-  position: relative;
-}
-
 .ms-ContextualMenu-link,
 .ms-ContextualMenu-link:active {
   position: relative;
@@ -203,4 +201,14 @@
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+.ms-ContextualMenu-chevronRight {
+  position: absolute;
+  right: 5%;
+  top: 40%;
+}
+
+.ms-ContextualMenu-icon {
+  padding-right: 10px;
 }
