@@ -12,6 +12,11 @@
     window.require = System.amdRequire;
     window.define = System.amdDefine;
 
+    // Once the build machine is updated to build with the --production flag, we can use minified builds.
+    // var isProduction = (location.pathname.indexOf('/fabric-react/master') !== -1);
+
+    var isProduction = false;
+
     System.config({
       meta: {
         "*": {
@@ -19,10 +24,10 @@
         }
       },
       paths: {
-        'app': 'dist/demo-app.js',
-        'office-ui-fabric-react': 'dist/office-ui-fabric-react.js',
-        'react-dom': '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.min.js',
-        'react': '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js'
+        'app': `dist/demo-app${ isProduction ? '.min' : '' }.js`,
+        'office-ui-fabric-react': `dist/office-ui-fabric-react${ isProduction ? '.min' : '' }.js`,
+        'react-dom': `//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom${ isProduction ? '.min' : '' }.js`,
+        'react': `//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react${ isProduction ? '.min' : '' }.js`
       }
     });
 

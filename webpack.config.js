@@ -3,8 +3,9 @@
 let webpack = require('webpack');
 let path = require('path');
 let WebpackNotifierPlugin = require('webpack-notifier');
+let isProduction = process.argv.indexOf('--production') > -1;
 
-module.exports = {
+let webpackConfig = {
   context: path.join(__dirname, '/lib'),
 
   entry: {
@@ -15,7 +16,7 @@ module.exports = {
   output: {
     libraryTarget: 'umd',
     path: path.join(__dirname, '/dist'),
-    filename: '[name].js'
+    filename: `[name]${ isProduction ? '.min' : '' }.js`
   },
 
   devtool: 'source-map',
@@ -44,7 +45,7 @@ module.exports = {
       }
     }
   ],
-  
+
   module: {
     loaders: [
       {
@@ -59,3 +60,13 @@ module.exports = {
   ]
 };
 
+if (isProduction) {
+  webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({
+    minimize: true,
+    compress: {
+      warnings: false
+    }
+  }));
+}
+
+module.exports = webpackConfig;
