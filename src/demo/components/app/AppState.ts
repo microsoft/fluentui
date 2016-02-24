@@ -212,7 +212,7 @@ const AppState: IAppState = {
           name: 'ProgressIndicator',
           url: '#/examples/progressindicator',
           component: ProgressIndicatorExample,
-          status: ExampleStatus.placeholder
+          status: ExampleStatus.started
         },
         {
           name: 'SearchBox',
