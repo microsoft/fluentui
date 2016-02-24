@@ -33,7 +33,7 @@ gulp.task('deploy', ['bundle'],  function() {
       .pipe(ftpConnection.dest( '/site/wwwroot/fabric-react/' + currentbranch ))
       .pipe(debug({title: "Moving File to Azure"}));
     if (process.env.masterBuildLink) {
-      currentBranch = 'master';
+      currentbranch = 'master';
     }
     gutil.log('http://odsp-int.azurewebsites.net/fabric-react/' + currentbranch + '/');
     return stream;
