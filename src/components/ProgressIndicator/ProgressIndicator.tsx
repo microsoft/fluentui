@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-export interface IOrgChartProps {
+export interface IProgressIndicatorProps {
 }
 
-export default class OrgChart extends React.Component<IOrgChartProps, any> {
+export default class ProgressIndicator extends React.Component<IProgressIndicatorProps, any> {
   render() {
-    let rootClass = 'ms-OrgChart';
+    let rootClass = 'ms-ProgressIndicator';
 
     return (
       <div className={ rootClass }>

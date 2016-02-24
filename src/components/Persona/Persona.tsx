@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-export interface IOrgChartProps {
+export interface IPersonaProps {
 }
 
-export default class OrgChart extends React.Component<IOrgChartProps, any> {
+export default class Persona extends React.Component<IPersonaProps, any> {
   render() {
-    let rootClass = 'ms-OrgChart';
+    let rootClass = 'ms-Persona';
 
     return (
       <div className={ rootClass }>

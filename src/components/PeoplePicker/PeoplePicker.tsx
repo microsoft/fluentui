@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-export interface IOrgChartProps {
+export interface IPeoplePickerProps {
 }
 
-export default class OrgChart extends React.Component<IOrgChartProps, any> {
+export default class PeoplePicker extends React.Component<IPeoplePickerProps, any> {
   render() {
-    let rootClass = 'ms-OrgChart';
+    let rootClass = 'ms-PeoplePicker';
 
     return (
       <div className={ rootClass }>

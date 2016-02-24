@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-export interface IOrgChartProps {
+export interface ISearchBoxProps {
 }
 
-export default class OrgChart extends React.Component<IOrgChartProps, any> {
+export default class SearchBox extends React.Component<ISearchBoxProps, any> {
   render() {
-    let rootClass = 'ms-OrgChart';
+    let rootClass = 'ms-SearchBox';
 
     return (
       <div className={ rootClass }>

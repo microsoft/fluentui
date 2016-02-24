@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-export interface IOrgChartProps {
+export interface IPanelProps {
 }
 
-export default class OrgChart extends React.Component<IOrgChartProps, any> {
+export default class Panel extends React.Component<IPanelProps, any> {
   render() {
-    let rootClass = 'ms-OrgChart';
+    let rootClass = 'ms-Panel';
 
     return (
       <div className={ rootClass }>

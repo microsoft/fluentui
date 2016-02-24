@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-export interface IOrgChartProps {
+export interface ISpinnerProps {
 }
 
-export default class OrgChart extends React.Component<IOrgChartProps, any> {
+export default class Spinner extends React.Component<ISpinnerProps, any> {
   render() {
-    let rootClass = 'ms-OrgChart';
+    let rootClass = 'ms-Spinner';
 
     return (
       <div className={ rootClass }>
