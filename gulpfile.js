@@ -28,13 +28,13 @@ gulp.task('deploy', ['bundle'],  function() {
       './index.html',
       './dist/**/*'
     ];
+    if (process.env.masterBuildLink) {
+      currentbranch = 'master';
+    }
     let stream = gulp.src( globs, { base: '.', buffer: false })
       .pipe(ftpConnection.newer( './' ) ) // only upload newer files
       .pipe(ftpConnection.dest( '/site/wwwroot/fabric-react/' + currentbranch ))
       .pipe(debug({title: "Moving File to Azure"}));
-    if (process.env.masterBuildLink) {
-      currentbranch = 'master';
-    }
     gutil.log('http://odsp-int.azurewebsites.net/fabric-react/' + currentbranch + '/');
     return stream;
   });
