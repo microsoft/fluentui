@@ -20,6 +20,7 @@ export interface IFocusZoneProps {
   children?: React.ReactElement<any>[];
   role?: string;
   ariaLabelledBy?: string;
+  key?: string;
 }
 
 export interface IFocusZoneState {
@@ -127,6 +128,16 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
         { newChildren }
       </div>
     );
+  }
+
+  public setActiveIndex(index: number) {
+    console.log(index);
+
+    if (index >= 0 && index < this.state.focusElements.length && index !== this.state.activeIndex) {
+      this.setState({
+        activeIndex: index
+      });
+    }
   }
 
   public focus() {

@@ -1,2 +1,14 @@
-@import "~office-ui-fabric/src/sass/Fabric.Common";
+@import '../../common';
 @import "~office-ui-fabric/src/components/Dropdown/Dropdown";
+
+.ms-Dropdown {
+  @include user-select(none);
+}
+
+.ms-Dropdown-items {
+  box-shadow: 0 0px 15px -5px rgba(0, 0, 0, 0.4);
+}
+
+.ms-Dropdown-item.is-selected {
+  line-height: 38px;
+}

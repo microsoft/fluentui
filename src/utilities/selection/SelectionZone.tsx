@@ -1,6 +1,8 @@
+import * as React from 'react';
 import EventGroup from '../eventGroup/EventGroup';
-import ISelection from './ISelection';
+import { ISelection, SelectionMode } from './ISelection';
 import ISelectionLayout from './ISelectionLayout';
+import { default as SelectionLayout, SelectionDirection } from './SelectionLayout';
 import KeyCodes from '../KeyCodes';
 
 // Selection definitions:
@@ -18,30 +20,38 @@ import KeyCodes from '../KeyCodes';
 // If you click index 8
 //    The anchor and focus are set to 8.
 
-export default class SelectionBinding {
-  private _element: HTMLElement;
+const SELECTION_KEY_ATTRIBUTE_NAME = 'data-selection-key';
+const SELECTION_TOGGLE_ATTRIBUTE_NAME = 'data-selection-toggle';
+
+export interface ISelectionZoneProps extends React.Props<SelectionZone> {
+  selection: ISelection;
+  layout?: ISelectionLayout;
+  selectionMode: SelectionMode;
+  isSelectedOnFocus?: boolean;
+}
+
+export default class SelectionZone extends React.Component<ISelectionZoneProps, any> {
+  public static defaultProps = {
+    layout: new SelectionLayout(SelectionDirection.vertical),
+    isMultiSelectEnabled: true,
+    isSelectedOnFocus: true
+  };
+
+  public refs: {
+    [ key: string]: React.ReactInstance,
+    root: HTMLElement
+  };
+
   private _events: EventGroup;
-  private _selection: ISelection;
-  private _layout: ISelectionLayout;
-  private _isMultiSelectEnabled: boolean;
-  private _isSelectedOnFocus: boolean;
-  private _onIsActiveChanged: (isActiveChanged: boolean) => void;
 
-  constructor(
-    element: HTMLElement,
-    selection: ISelection,
-    layout: ISelectionLayout,
-    isMultiSelectEnabled: boolean,
-    isSelectedOnFocus: boolean,
-    onIsActiveChanged?: (isActive: boolean) => void) {
+  constructor() {
+    super();
 
-    this._element = element;
     this._events = new EventGroup(this);
-    this._selection = selection;
-    this._layout = layout;
-    this._isMultiSelectEnabled = isMultiSelectEnabled;
-    this._onIsActiveChanged = onIsActiveChanged;
-    this._isSelectedOnFocus = isSelectedOnFocus;
+  }
+
+  public componentDidMount() {
+    let element = this.refs.root;
 
     this._events.onAll(element, {
       'click': this._onClick,
@@ -52,24 +62,43 @@ export default class SelectionBinding {
     this._events.on(element, 'blur', this._onBlur, true);
   }
 
-  public dispose() {
+  public componentWillUnmount() {
     this._events.dispose();
   }
 
+  public render() {
+    return (
+      <div
+        className='ms-SelectionZone'
+        ref='root'
+      >
+        {this.props.children }
+      </div>
+    );
+  }
+
   private _onFocus() {
+    /*
     if (this._onIsActiveChanged) {
       this._onIsActiveChanged(true);
     }
+    */
   }
 
   private _onBlur() {
+    /*
     if (this._onIsActiveChanged) {
       this._onIsActiveChanged(false);
     }
+    */
   }
 
   private _onKeyDown(ev: KeyboardEvent) {
-    let eventTarget = <HTMLElement>ev.target;
+    let { selection, layout, selectionMode, isSelectedOnFocus } = this.props;
+
+    let element = this.refs.root;
+    let items = selection.getItems();
+    let eventTarget = ev.target as HTMLElement;
     let isInput = this._isInputElement(eventTarget);
 
     // Ignore selection events if originating from INPUT elements or TEXTAREAs.
@@ -77,8 +106,6 @@ export default class SelectionBinding {
       return true;
     }
 
-    let selection = this._selection;
-    let layout = this._layout;
     let focusIndex = selection.getFocusedIndex();
     let indexToSelect = -1;
     let isShiftPressed = !!ev.shiftKey;
@@ -88,22 +115,22 @@ export default class SelectionBinding {
 
     switch (ev.which) {
       case KeyCodes.up:
-        indexToSelect = layout.getItemIndexAbove(focusIndex);
+        indexToSelect = layout.getItemIndexAbove(focusIndex, items);
         isHandled = indexToSelect !== focusIndex;
         break;
 
       case KeyCodes.down:
-        indexToSelect = layout.getItemIndexBelow(focusIndex);
+        indexToSelect = layout.getItemIndexBelow(focusIndex, items);
         isHandled = indexToSelect !== focusIndex;
         break;
 
       case KeyCodes.left:
-        indexToSelect = layout.getItemIndexLeft(focusIndex);
+        indexToSelect = layout.getItemIndexLeft(focusIndex, items);
         isHandled = indexToSelect !== focusIndex;
         break;
 
       case KeyCodes.right:
-        indexToSelect = layout.getItemIndexRight(focusIndex);
+        indexToSelect = layout.getItemIndexRight(focusIndex, items);
         isHandled = indexToSelect !== focusIndex;
         break;
 
@@ -114,17 +141,17 @@ export default class SelectionBinding {
       case KeyCodes.end:
         indexToSelect = selection.getItems().length - 1;
         break;
-
+/*
       case KeyCodes.space:
         if (this._isButtonElement(eventTarget)) {
           return true;
         }
 
-        selection.toggleIndexSelected(focusIndex);
+        selection.toggleIndexSelected(focusIndex, items);
         break;
 
       case KeyCodes.enter:
-        if (this._isButtonElement(eventTarget) || !this._element.contains(eventTarget)) {
+        if (this._isButtonElement(eventTarget) || !element.contains(eventTarget)) {
           return true;
         }
         selection.setAllSelected(false);
@@ -132,6 +159,7 @@ export default class SelectionBinding {
 
         return;
       // return selection.invokeFocusedItem(ev);
+*/
 
       case KeyCodes.escape:
         if (selection.getSelectedCount() > 0) {
@@ -142,7 +170,7 @@ export default class SelectionBinding {
         return;
 
       case KeyCodes.a:
-        if (isCtrlPressed || isMetaPressed) {
+        if (selectionMode === SelectionMode.multiple && (isCtrlPressed || isMetaPressed)) {
           selection.setAllSelected(true);
           ev.stopPropagation();
           ev.preventDefault();
@@ -155,9 +183,12 @@ export default class SelectionBinding {
     }
 
     if (isHandled) {
-      // transaction(() => {
+      selection.setChangeEvents(false);
+
       if (indexToSelect >= 0 && indexToSelect !== focusIndex) {
-        if (isShiftPressed && this._isMultiSelectEnabled) {
+        if (selectionMode === SelectionMode.none) {
+          selection.setIndexFocused(indexToSelect);
+        } else if (isShiftPressed && selectionMode === SelectionMode.multiple) {
           if (!isCtrlPressed && !isMetaPressed) {
             selection.setAllSelected(false);
           }
@@ -166,7 +197,7 @@ export default class SelectionBinding {
           // selection.setIndexFocus(indexToSelect);
           selection.setIndexSelected(indexToSelect, selection.isIndexSelected(indexToSelect), true, true);
         } else {
-          if (this._isSelectedOnFocus) {
+          if (isSelectedOnFocus) {
             selection.setAllSelected(false);
             selection.setIndexSelected(indexToSelect, true, true, true);
           } else {
@@ -174,7 +205,8 @@ export default class SelectionBinding {
           }
         }
       }
-      // });
+
+      selection.setChangeEvents(true);
     }
 
     // If we didn't return early, it means we handled the event so we cancel it.
@@ -182,18 +214,24 @@ export default class SelectionBinding {
   }
 
   private _onClick(ev: MouseEvent) {
+    let { selection, selectionMode } = this.props;
+
+    if (selectionMode === SelectionMode.none) {
+      return;
+    }
+
     let target = ev.target as HTMLElement;
     let key = this._getKeyFromElement(target);
 
     if (key) {
-      let selection = this._selection;
       let isShiftPressed = !!ev.shiftKey;
       let isMetaPressed = !!ev.metaKey;
       let isCtrlPressed = !!ev.ctrlKey;
       let isToggleElement = this._isToggleElement(target);
 
-      // transaction(() => {
-      if (isShiftPressed && this._isMultiSelectEnabled) {
+      selection.setChangeEvents(false);
+
+      if (isShiftPressed && selectionMode === SelectionMode.multiple) {
         if (!isCtrlPressed) {
           selection.setAllSelected(false);
         }
@@ -208,7 +246,8 @@ export default class SelectionBinding {
           selection.setKeySelected(key, true, true, true);
         }
       }
-      // });
+
+      selection.setChangeEvents(true);
 
       // ev.stopPropagation();
       // ev.preventDefault();
@@ -219,7 +258,7 @@ export default class SelectionBinding {
     let isToggle = false;
 
     while (!isToggle && element !== document.body) {
-      isToggle = element.getAttribute('data-selection-toggle') === 'true';
+      isToggle = element.getAttribute(SELECTION_TOGGLE_ATTRIBUTE_NAME) === 'true';
       element = element.parentElement;
     }
 
@@ -237,14 +276,14 @@ export default class SelectionBinding {
   private _getKeyFromElement(element: HTMLElement): string {
     element = this._getSelectionElement(element);
 
-    return element ? element.getAttribute('data-selection-key') : null;
+    return element ? element.getAttribute(SELECTION_KEY_ATTRIBUTE_NAME) : null;
   }
 
   private _getSelectionElement(element: HTMLElement): HTMLElement {
     let key;
 
     while (!key && element) {
-      key = element.getAttribute('data-selection-key');
+      key = element.getAttribute(SELECTION_KEY_ATTRIBUTE_NAME);
 
       if (!key) {
         element = element.parentElement;

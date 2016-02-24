@@ -8,6 +8,7 @@ import ChoiceGroupExample from '../../pages/examples/ChoiceGroup/ChoiceGroupExam
 import CommandBarExample from '../../pages/examples/CommandBar/CommandBarExample';
 import ContextualMenuExample from '../../pages/examples/ContextualMenu/ContextualMenuExample';
 import DatePickerExample from '../../pages/examples/DatePicker/DatePickerExample';
+import DetailsListExample from '../../pages/examples/DetailsList/DetailsListExample';
 import DialogExample from '../../pages/examples/Dialog/DialogExample';
 import DropdownExample from '../../pages/examples/Dropdown/DropdownExample';
 import LabelExample from '../../pages/examples/Label/LabelExample';
@@ -125,6 +126,12 @@ const AppState: IAppState = {
           status: ExampleStatus.started
         },
         {
+          name: 'DetailsList',
+          url: '#/examples/detailslist',
+          component: DetailsListExample,
+          status: ExampleStatus.started
+        },
+        {
           name: 'Dialog',
           url: '#/examples/dialog',
           component: DialogExample,
@@ -206,10 +213,10 @@ const AppState: IAppState = {
           name: 'Pivot',
           url: '#/examples/pivot',
           component: PivotExample,
-          status: ExampleStatus.placeholder
+          status: ExampleStatus.started
         },
         {
-          name: 'ProgresIndicator',
+          name: 'ProgressIndicator',
           url: '#/examples/progressindicator',
           component: ProgressIndicatorExample,
           status: ExampleStatus.placeholder

@@ -1,5 +1,7 @@
 import * as React from 'react';
 import './PropertiesTable.scss';
+import { DetailsList, DetailsListLayoutMode, SelectionMode, IColumn } from '../../../components/DetailsList/index';
+import { assign } from '../../../utilities/object';
 
 export interface IProperty {
   name: string;
@@ -13,36 +15,69 @@ export interface IPropertiesTableProps {
   properties: IProperty[];
 }
 
+const DEFAULT_COLUMNS: IColumn[] = [
+  {
+    key: 'name',
+    name: 'Name',
+    fieldName: 'name',
+    minWidth: 150,
+    maxWidth: 250,
+    isCollapsable: false,
+  },
+  {
+    key: 'type',
+    name: 'Type',
+    fieldName: 'type',
+    minWidth: 130,
+    maxWidth: 150,
+    isCollapsable: false
+  },
+  {
+    key: 'defaultValue',
+    name: 'Default value',
+    fieldName: 'defaultValue',
+    minWidth: 130,
+    maxWidth: 150,
+    isCollapsable: false
+  }, {
+    key: 'description',
+    name: 'Description',
+    fieldName: 'description',
+    minWidth: 300,
+    maxWidth: 400,
+    isCollapsable: false
+  }
+];
+
 export default class PropertiesTable extends React.Component<IPropertiesTableProps, any> {
   public static defaultProps = {
     title: 'Properties'
   };
 
+  constructor(props: IPropertiesTableProps) {
+    super(props);
+
+    this.state = {
+      properties: props.properties
+        .map((prop, index) => assign({ key: index }, prop))
+        .sort((a, b) => (a.name < b.name) ? -1 : 1)
+    };
+  }
+
   public render() {
-    let { title, properties } = this.props;
+    let { title } = this.props;
+    let { properties } = this.state;
 
     return (
       <div className='PropertiesTable'>
         <h2 className='ms-font-xl'>{ title }</h2>
         { (properties && properties.length) ? (
-        <table className='ms-Table'>
-          <tbody>
-            <tr className='ms-Table-row'>
-              <td className='ms-Table-cell'>Name</td>
-              <td className='ms-Table-cell'>Type</td>
-              <td className='ms-Table-cell'>Default</td>
-              <td className='ms-Table-cell'>Description</td>
-            </tr>
-            { properties.sort((a, b) => (a.name < b.name) ? -1 : 1).map(property => (
-            <tr className='ms-Table-row' key={ property.name }>
-              <td className='ms-Table-cell PropertiesTable-nameCell'>{ property.name }</td>
-              <td className='ms-Table-cell'>{ property.type }</td>
-              <td className='ms-Table-cell'>{ property.defaultValue }</td>
-              <td className='ms-Table-cell'>{ property.description }</td>
-            </tr>
-              )) }
-            </tbody>
-        </table>
+        <DetailsList
+          selectionMode={ SelectionMode.none }
+          layoutMode={ DetailsListLayoutMode.justified }
+          items={ properties.sort((a, b) => (a.name < b.name) ? -1 : 1) }
+          columns={ DEFAULT_COLUMNS }
+         />
         ) : (
         <div className='PropertiesTable-noProperties'>This component is missing properties. Please provide properties or remove the table from the example.</div>
         ) }

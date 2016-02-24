@@ -1,0 +1,11 @@
+@import '../../../../common';
+@import '~office-ui-fabric/src/components/ListItem/ListItem.scss';
+
+.MailList {
+}
+
+.MailTile {
+  margin-bottom: 5px;
+  padding: 10px;
+  background: red;
+}

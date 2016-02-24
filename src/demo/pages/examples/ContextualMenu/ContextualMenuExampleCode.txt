@@ -1,25 +1,13 @@
 import * as React from 'react';
-import ContextualMenu from '../../../../components/ContextualMenu/index';
-import ContextualMenuProps from './ContextualMenuProperties'
-import Link from '../../../../components/Link/index';
-import ExampleCard from '../../../components/ExampleCard/index';
-import PropertiesTable from '../../../components/PropertiesTable/index';
+import {default as ContextualMenu, ContextualMenuType } from '../../../../components/ContextualMenu/index';
 
-let ContextualMenuExampleCode = require('./ContextualMenuExampleCode.txt');
 
 export default class ContextualMenuExample extends React.Component<any, any> {
   public render() {
     return (
       <div className='ContextualMenuExample'>
-        <h1 className='ms-font-xxl'>ContextualMenu</h1>
-        <div><Link target='_blank' text='ContextualMenus' url='http://dev.office.com/fabric/components/contextualMenu' /> provide a menu for use in context menus and dropdowns.</div>
-
-        <PropertiesTable properties={ ContextualMenuProps } />
-
-        <h2 className='ms-font-xl'>Examples</h2>
-
-        <ExampleCard title='ContextualMenu' code= { ContextualMenuExampleCode }>
-         <ContextualMenu
+          <ContextualMenu
+            type = { ContextualMenuType.submenu }
             shouldFocusOnMount={ false }
             items={
               [
@@ -80,11 +68,10 @@ export default class ContextualMenuExample extends React.Component<any, any> {
                   key: 'print',
                   name: 'Print',
                   icon: 'print'
-                },
+                }
               ]
             }
           />
-        </ExampleCard>
 
       </div>
     );

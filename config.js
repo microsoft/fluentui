@@ -12,6 +12,7 @@ module.exports = {
     },
     copyTo: {
       'dist': [
+        'src/**/*.png',
         'node_modules/react/dist/react.js',
         'node_modules/react-dom/dist/react-dom.js',
         'node_modules/systemjs/dist/system.src.js'

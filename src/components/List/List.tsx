@@ -1,12 +1,16 @@
 import * as React from 'react';
 import ContextualMenu from '../ContextualMenu/index';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
+import withContainsFocus from '../../utilities/decorators/withContainsFocus';
 
 export interface IListProps {
   items?: any[];
-  layoutData?: any[];
-  onRenderCell?: (item?: any, index?: number, layoutData?: any) => any;
+  onRenderCell?: (item?: any, index?: number, containsFocus?: boolean) => any;
   itemsPerPage?: number;
+
+  containsFocus?: boolean;
+
+  ref?: string;
 }
 
 export interface IListState {
@@ -14,10 +18,11 @@ export interface IListState {
   surfaceStyle?: { [ key: string ]: any };
 }
 
+@withContainsFocus
 export default class List extends React.Component<IListProps, any> {
   public static defaultProps = {
     itemsPerPage: 10,
-    onRenderCell: (item, index, layoutData) => (<div>{ item.name }</div>)
+    onRenderCell: (item, index, containsFocus) => (<div>{ item.name }</div>)
   };
 
   private _estimatedItemHeight: number;
@@ -43,17 +48,13 @@ export default class List extends React.Component<IListProps, any> {
      this._events.on(window, 'resize', this._updatePages);
   }
 
-  public componentDidUpdate() {
-     //this._updatePages();
-  }
-
   public componentWillUnmount() {
     this._events.dispose();
   }
 
   public render() {
     let rootClass = 'ms-List';
-    let { layoutData, onRenderCell } = this.props;
+    let { onRenderCell, containsFocus } = this.props;
     let { pages, surfaceStyle } = this.state;
 
     return (
@@ -63,7 +64,7 @@ export default class List extends React.Component<IListProps, any> {
           <div className='ms-List-page' key={ page.key } ref={ page.key } style={ page.style }>
           { page.items ? page.items.map((item, itemIndex) => (
             <div className='ms-List-cell' key={ item.key }>
-              { onRenderCell(item, itemIndex, layoutData) }
+              { onRenderCell(item, itemIndex, containsFocus) }
             </div>
           )) : null }
           </div>
@@ -71,6 +72,21 @@ export default class List extends React.Component<IListProps, any> {
         </div>
       </div>
     );
+  }
+
+  public scrollTo(index: number) {
+    let { pages } = this.state;
+
+    if (pages && pages.length > 2) {
+      let firstPage = pages[0];
+      let lastPage = pages[1];
+
+      if (firstPage.startIndex <= index && lastPage.endIndex) {
+        return;
+      }
+    }
+
+    console.log('scroll to ' + index);
   }
 
   private _updatePages() {
@@ -122,7 +138,6 @@ export default class List extends React.Component<IListProps, any> {
   }
 
   private _buildPages(): any[] {
-
     let containerRect = this._getScrollableContainerRect();
     let { items } = this.props;
     let startHeight = 0;
@@ -138,7 +153,7 @@ export default class List extends React.Component<IListProps, any> {
     let pageTop = 0;
 
     for (let itemIndex = 0; itemIndex < items.length; itemIndex += itemsPerPage) {
-      itemsPerPage = this._getItemCountForPage(0);
+      itemsPerPage = this._getItemCountForPage(itemIndex);
 
       let pageBottom = pageTop + this._getPageHeight(itemIndex, itemsPerPage) - 1;
 
@@ -148,7 +163,7 @@ export default class List extends React.Component<IListProps, any> {
       } else {
         let spacer = (pages.length === 1) ? startSpacer : endSpacer;
 
-        spacer.style.height = pageBottom + 1;
+        spacer.style.height = (spacer.style.height || 0) + (pageBottom - pageTop) + 1;
         spacer.itemCount += itemsPerPage;
       }
       pageTop += (pageBottom - pageTop + 1);
@@ -179,15 +194,24 @@ export default class List extends React.Component<IListProps, any> {
     return this.props.itemsPerPage;
   }
 
+  private _getMaterializedCotainerRect() {
+    return {
+      top: -window.innerHeight,
+      left: 0,
+      width: window.innerWidth,
+      height: window.innerHeight * 3
+    };
+  }
+
   private _getScrollableContainerRect() {
     // If we are using body scroll, 0 to window.innerHeight is the constraint;
     // Otherwise, it's relative to the scrollable container which needs to be found.
 
     return {
-      top: 0,
+      top: -window.innerHeight,
       left: 0,
       width: window.innerWidth,
-      height: window.innerHeight
+      height: window.innerHeight * 3
     };
   }
 

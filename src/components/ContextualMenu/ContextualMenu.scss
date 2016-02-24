@@ -7,6 +7,9 @@
 // --------------------------------------------------
 // Contextual Menu styles
 
+.ms-ContextualMenu-container {
+  position: relative;
+}
 
 .ms-ContextualMenu {
   @include ms-font-m;
@@ -14,7 +17,8 @@
   @include drop-shadow(0,0, 15px, -5px);
 
   border: 1px solid $ms-color-neutralLight;
-  position: relative;
+  z-index: $ms-zIndex-ContextualMenu;
+  position: absolute;
   display: inline-block;
 }
 
@@ -51,6 +55,12 @@
   height: 40px;
   line-height: 40px;
   padding: 0 18px;
+}
+
+.ms-ContextualMenu-itemText.ms-font-m.ms-font-weight-regular {
+    display: inline-block;
+    margin-right: 16px;
+    top: 0;
 }
 
 .ms-ContextualMenu-link {
@@ -157,12 +167,6 @@
   }
 }
 
-
-.ms-ContextualMenu,
-.ms-ContextualMenu.is-open {
-  position: relative;
-}
-
 .ms-ContextualMenu-link,
 .ms-ContextualMenu-link:active {
   position: relative;
@@ -204,3 +208,22 @@
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
+.ms-ContextualMenu-chevronRight.ms-Icon {
+    top: 0;
+    position: absolute;
+    right: 0;
+    vertical-align: middle;
+    line-height: 39px;
+    width: 34px;
+    text-align: center;
+}
+
+.ms-ContextualMenu-icon {
+  padding-right: 10px;
+}
+
+.ExampleCard-example > .ms-ContextualMenu-container > .ms-ContextualMenu {
+  position: relative;
+}
+
