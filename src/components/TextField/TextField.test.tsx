@@ -15,9 +15,8 @@ describe('TextField', () => {
       <TextField>test</TextField>
     );
     let renderedDOM = ReactDOM.findDOMNode(component);
-    let labelElement = renderedDOM.querySelector('.ms-TextField');
 
-    expect(labelElement.textContent).to.equal('test');
+    expect(renderedDOM.textContent).to.equal('test');
   });
 
 });

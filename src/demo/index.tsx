@@ -6,9 +6,9 @@ import App from './components/app/App';
 import { Router, Route } from '../utilities/router/index';
 import AppState from './components/app/AppState';
 import GettingStarted from './pages/GettingStarted';
-import "./index.scss";
-import "./ColorStyles.scss";
 import { setBaseUrl } from '../utilities/resources';
+import './index.scss';
+import './ColorStyles.scss';
 
 setBaseUrl('./dist/');
 

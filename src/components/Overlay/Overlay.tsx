@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-export interface IOrgChartProps {
+export interface IOverlayProps {
 }
 
-export default class OrgChart extends React.Component<IOrgChartProps, any> {
+export default class Overlay extends React.Component<IOverlayProps, any> {
   render() {
-    let rootClass = 'ms-OrgChart';
+    let rootClass = 'ms-Overlay';
 
     return (
       <div className={ rootClass }>

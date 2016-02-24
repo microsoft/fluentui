@@ -15,9 +15,8 @@ describe('Label', () => {
       <Label>test</Label>
     );
     let renderedDOM = ReactDOM.findDOMNode(component);
-    let labelElement = renderedDOM.querySelector('.ms-Label');
 
-    expect(labelElement.textContent).to.equal('test');
+    expect(renderedDOM.textContent).to.equal('test');
   });
 
 });

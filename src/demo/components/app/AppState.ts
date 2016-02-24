@@ -14,7 +14,6 @@ import DropdownExample from '../../pages/examples/Dropdown/DropdownExample';
 import LabelExample from '../../pages/examples/Label/LabelExample';
 import LinkExample from '../../pages/examples/Link/LinkExample';
 import ListExample from '../../pages/examples/List/ListExample';
-import ListItemExample from '../../pages/examples/ListItem/ListItemExample';
 import NavBarExample from '../../pages/examples/NavBar/NavBarExample';
 import OrgChartExample from '../../pages/examples/OrgChart/OrgChartExample';
 import OverlayExample from '../../pages/examples/Overlay/OverlayExample';
@@ -160,12 +159,6 @@ const AppState: IAppState = {
           url: '#/examples/list',
           component: ListExample,
           status: ExampleStatus.started
-        },
-        {
-          name: 'ListItem',
-          url: '#/examples/listitem',
-          component: ListItemExample,
-          status: ExampleStatus.placeholder
         },
         {
           name: 'NavBar',

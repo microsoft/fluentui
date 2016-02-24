@@ -26,8 +26,6 @@ export { default as Link } from './Link/index';
 export * from './Link/index';
 export { default as List } from './List/index';
 export * from './List/index';
-export { default as ListItem } from './ListItem/index';
-export * from './ListItem/index';
 export { default as NavBar } from './NavBar/index';
 export * from './NavBar/index';
 export { default as OrgChart } from './OrgChart/index';
