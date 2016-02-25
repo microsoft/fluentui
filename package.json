@@ -1,6 +1,6 @@
 {
   "name": "@ms/office-ui-fabric-react",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "This is a repo for building out React cotrols skinned with Fabric.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -11,7 +11,7 @@
   "license": "UNLICENSED",
   "devDependencies": {
     "@ms/ms-core-build": "^0.3.34",
-    "@ms/ms-core-build-sass": "0.0.1",
+    "@ms/ms-core-build-sass": "0.0.2",
     "chai": "^3.4.1",
     "css-loader": "^0.23.1",
     "git-rev": "^0.2.1",
