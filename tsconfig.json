@@ -6,7 +6,8 @@
     "declaration": true,
     "sourceMap": true,
     "experimentalDecorators": true,
-    "noEmitOnError": true
+    "noEmitOnError": true,
+    "moduleResolution": "node"
   },
   "exclude": [
       "node_modules",
