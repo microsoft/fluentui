@@ -1,6 +1,8 @@
 'use strict';
 
 let build = require('@ms/ms-core-build');
+let sass = require('@ms/ms-core-build-sass');
+
 let gulp = require('gulp');
 let ftp = require('vinyl-ftp');
 let git = require('git-rev');
@@ -11,7 +13,8 @@ let currentbranch;
 
 build.initializeTasks(
   gulp,
-  require('./config')
+  require('./config'),
+  [ sass ]
 );
 
 gulp.task('deploy', ['bundle'],  function() {
@@ -34,7 +37,7 @@ gulp.task('deploy', ['bundle'],  function() {
     let stream = gulp.src( globs, { base: '.', buffer: false })
       .pipe(ftpConnection.newer( './' ) ) // only upload newer files
       .pipe(ftpConnection.dest( '/site/wwwroot/fabric-react/' + currentbranch ))
-      .pipe(debug({title: "Moving File to Azure"}));
+      .pipe(debug({ title: 'Copying file to Azure' }));
     gutil.log('http://odsp-int.azurewebsites.net/fabric-react/' + currentbranch + '/');
     return stream;
   });

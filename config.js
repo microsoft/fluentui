@@ -6,7 +6,6 @@ module.exports = {
   },
   build: {
     paths: {
-      staticsMatch: [ 'src/**/*.scss' ],
       templateMatch: [ 'src/**/*.txt' ],
       amdLibFolder: 'lib-amd'
     },

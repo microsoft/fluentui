@@ -11,6 +11,7 @@
   "license": "UNLICENSED",
   "devDependencies": {
     "@ms/ms-core-build": "^0.3.32",
+    "@ms/ms-core-build-sass": "0.0.1",
     "chai": "^3.4.1",
     "css-loader": "^0.23.1",
     "git-rev": "^0.2.1",
@@ -26,7 +27,7 @@
   },
   "dependencies": {
     "highlight.js": "^8.4.0",
-    "load-styles": "^2.0.0",
+    "load-themed-styles": "^1.0.1",
     "node-sass": "^3.4.2",
     "office-ui-fabric": "^2.0.1",
     "react": "^0.14.3",

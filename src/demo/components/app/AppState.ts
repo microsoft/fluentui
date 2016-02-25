@@ -28,6 +28,7 @@ import SpinnerExample from '../../pages/examples/Spinner/SpinnerExample';
 import TableExample from '../../pages/examples/Table/TableExample';
 import TextFieldExample from '../../pages/examples/TextField/TextFieldExample';
 import ToggleExample from '../../pages/examples/Toggle/ToggleExample';
+import Themes from '../../pages/Themes';
 
 export enum ExampleStatus {
   placeholder,
@@ -260,6 +261,11 @@ const AppState: IAppState = {
         {
           name: 'Selection management',
           url: '#examples/selectionManagement'
+        },
+        {
+          name: 'Themes',
+          url: '#examples/themes',
+          component: Themes
         }
       ]
     }

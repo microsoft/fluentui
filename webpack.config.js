@@ -48,10 +48,6 @@ let webpackConfig = {
 
   module: {
     loaders: [
-      {
-        test: /\.scss$/,
-        loaders: ["style", "css", "sass"]
-      },
     ]
   },
 
