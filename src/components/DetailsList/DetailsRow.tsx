@@ -1,12 +1,14 @@
 import * as React from 'react';
 import IColumn from './IColumn';
 import { ISelection, SelectionMode } from '../../utilities/selection/ISelection';
-import './DetailsRow.scss';
 import { getResourceUrl } from '../../utilities/resources';
 import { shallowCompare } from '../../utilities/object';
+import { css } from '../../utilities/css';
+import './DetailsRow.scss';
 
 export interface IDetailsRowProps {
   item: any;
+  itemIndex: number;
   columns: IColumn[];
   selectionMode: SelectionMode;
   isSelected: boolean;
@@ -50,21 +52,14 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, any> {
   }
 
   public render() {
-    let { selectionMode, columns, item, isSelected, isFocused, isFocusable, onSelectionChanged } = this.props;
-
-    let cells = columns.map(column => (
-        <div key={ column.key } className='DetailsRow-cell' style={ { width: column.calculatedWidth } }>
-          { column.getCellContent ? column.getCellContent(item) : (String(item[column.fieldName]) || '') }
-        </div>
-    ));
-
-    let rootClass =  'DetailsRow' +
-      (isSelected ? ' DetailsRow--isSelected' : '');
+    let { selectionMode, columns, item, itemIndex, isSelected, isFocused, isFocusable, onSelectionChanged } = this.props;
 
     return (
       <div
         ref='root'
-        className={ rootClass }
+        className={ css('DetailsRow', {
+          'is-selected': isSelected
+        }) }
         data-selection-key={ item.key }
         tabIndex={ isFocusable ? 0 : -1 }
       >
@@ -80,7 +75,13 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, any> {
             </div>
           </button>
           ) : null }
-          { cells }
+          { columns.map(column => (
+          <div key={ column.key } className={ css('DetailsRow-cell', {
+            'is-clipped': column.isClipped
+          }) } style={ { width: column.calculatedWidth } }>
+            { column.getCellContent ? column.getCellContent(item, itemIndex) : (String(item[column.fieldName]) || '') }
+          </div>
+          )) }
         </div>
     );
   }

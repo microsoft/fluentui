@@ -56,7 +56,7 @@ export interface IAppState {
 }
 
 const AppState: IAppState = {
-  appTitle: 'Office UI Fabric - React components',
+  appTitle: 'Fabric - React',
 
   headerLinks: [
     {

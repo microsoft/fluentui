@@ -14,6 +14,7 @@ export interface ITextFieldProps extends React.DOMAttributes {
   description?: string;
   iconClass?: string;
   value?: string;
+  className?: string;
 }
 
 export default class TextField extends React.Component<ITextFieldProps, any> {
@@ -25,13 +26,13 @@ export default class TextField extends React.Component<ITextFieldProps, any> {
   }
 
   render() {
-    let {disabled, required, multiline, placeholder, underlined, label, description, iconClass, value} = this.props;
+    let {disabled, required, multiline, placeholder, underlined, label, description, iconClass, value, className } = this.props;
 
     return (
       <div
         {...this.props}
         className={
-        css('ms-TextField', {
+        css('ms-TextField', className, {
           'is-required': required,
           'is-disabled': disabled,
           'ms-TextField--multiline': multiline,

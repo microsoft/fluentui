@@ -106,6 +106,7 @@ export default class DetailsList extends React.Component<IDetailsListProps, IDet
             onRenderCell={ (item: any, index: number, containsFocus: boolean) => (
               <DetailsRow
                 item={ item }
+                itemIndex={ index }
                 columns={ adjustedColumns }
                 selectionMode={ selectionMode }
                 isSelected={ selection.isKeySelected(item.key) }
@@ -219,7 +220,6 @@ export default class DetailsList extends React.Component<IDetailsListProps, IDet
   }
 
   private _onColumnResized(column: IColumn, newWidth: number) {
-    console.log(`${ column.name } resized to ${ newWidth}px`);
     let { columnOverrides } = this.state;
     let overrides = columnOverrides[column.key] = columnOverrides[column.key] || {} as IColumn;
 
@@ -245,6 +245,7 @@ export default class DetailsList extends React.Component<IDetailsListProps, IDet
             minWidth: 220,
             maxWidth: 300,
             isCollapsable: !!columns.length,
+            isClipped: true,
             isSortable: true,
             isSorted: (columns.length === 0),
             isSortedDescending: false,
