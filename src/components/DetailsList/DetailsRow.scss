@@ -1,10 +1,10 @@
 @import '../../common';
 
 $rowHeight: 36px;
-$focusedBorderColor: #3F97DB;
-$selectedColor: #d7eaf9;
-$selectedHoverColor: #beddf4;
-$unselectedHoverColor: #e6f2fb;
+$focusedBorderColor: $ms-color-neutralTertiary;
+$selectedColor: $ms-color-themeLighter;
+$selectedHoverColor: $ms-color-themeLight;
+$unselectedHoverColor: $ms-color-themeLighterAlt;
 
 .DetailsRow {
   position: relative;
