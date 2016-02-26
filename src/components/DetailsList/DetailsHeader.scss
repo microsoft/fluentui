@@ -1,9 +1,9 @@
 @import '../../common';
 
 $rowHeight: 36px;
-$selectedColor: #d7eaf9;
-$selectedHoverColor: #beddf4;
-$unselectedHoverColor: #e6f2fb;
+$selectedColor: $ms-color-themeLighter;
+$selectedHoverColor: $ms-color-themeLight;
+$unselectedHoverColor: $ms-color-neutralLight;
 
 .DetailsHeader {
   min-width: 100%;
@@ -28,7 +28,7 @@ $unselectedHoverColor: #e6f2fb;
     top: 0;
     right: 0;
     bottom: 0;
-    z-index: 100000;
+    z-index: 99;
     cursor: col-resize;
   }
 }
@@ -141,7 +141,7 @@ $unselectedHoverColor: #e6f2fb;
     bottom: 0;
     top: 0;
     height: inherit;
-    z-index: 999;
+    z-index: 99;
   }
 
   &.is-sorted .DetailsHeader-sortArrow {
@@ -161,7 +161,7 @@ $unselectedHoverColor: #e6f2fb;
   top: 0;
   bottom: 0;
   width: 1px;
-  background: #EAEAEA;
+  background: $ms-color-neutralLight;
 }
 
 .ms-Fabric.is-focusVisible .DetailsHeader-cell:focus:before {

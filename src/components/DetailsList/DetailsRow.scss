@@ -1,10 +1,10 @@
 @import '../../common';
 
 $rowHeight: 36px;
-$focusedBorderColor: #3F97DB;
-$selectedColor: #d7eaf9;
-$selectedHoverColor: #beddf4;
-$unselectedHoverColor: #e6f2fb;
+$focusedBorderColor: $ms-color-neutralTertiary;
+$selectedColor: $ms-color-themeLighter;
+$selectedHoverColor: $ms-color-themeLight;
+$unselectedHoverColor: $ms-color-themeLighterAlt;
 
 .DetailsRow {
   position: relative;
@@ -24,7 +24,7 @@ $unselectedHoverColor: #e6f2fb;
     outline: transparent;
   }
 
-  &.DetailsRow--isSelected {
+  &.DetailsRow.is-selected {
     background: $selectedColor;
   }
 }
@@ -33,7 +33,7 @@ $unselectedHoverColor: #e6f2fb;
   background: $unselectedHoverColor;
 }
 
-.ms-Fabric.is-stationary .DetailsRow--isSelected:hover {
+.ms-Fabric.is-stationary .DetailsRow.is-selected:hover {
   background: $selectedHoverColor;
 }
 
@@ -42,9 +42,12 @@ $unselectedHoverColor: #e6f2fb;
   box-sizing: border-box;
   padding: 0 8px;
   vertical-align: top;
-  overflow: hidden;
   white-space: normal;
   margin-right: 16px;
+
+  &.is-clipped {
+    overflow: hidden;
+  }
 }
 
 .DetailsRow-cell:last-child {
@@ -88,9 +91,9 @@ $unselectedHoverColor: #e6f2fb;
   left: -40px;
 }
 
-.DetailsRow--isSelected .DetailsRow-checkImage,
-.ms-Fabric.is-stationary .DetailsRow.DetailsRow--isSelected:hover .DetailsRow-checkImage,
-.ms-Fabric.is-stationary .DetailsRow.DetailsRow--isSelected .DetailsRow-check:hover .DetailsRow-checkImage {
+.DetailsRow.is-selected .DetailsRow-checkImage,
+.ms-Fabric.is-stationary .DetailsRow.DetailsRow.is-selected:hover .DetailsRow-checkImage,
+.ms-Fabric.is-stationary .DetailsRow.DetailsRow.is-selected .DetailsRow-check:hover .DetailsRow-checkImage {
   left: -60px;
 }
 

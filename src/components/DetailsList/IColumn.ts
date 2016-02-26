@@ -8,7 +8,8 @@ interface IColumn {
   isSortable?: boolean;
   isSorted?: boolean;
   isSortedDescending?: boolean;
-  getCellContent?: (item) => any;
+  isClipped?: boolean;
+  getCellContent?: (item: any, index?: number) => any;
   calculatedWidth?: number;
   isFilterable?: boolean;
 

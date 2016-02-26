@@ -1,4 +1,11 @@
-@import "~office-ui-fabric/src/sass/Fabric.Common";
+@import '../../../common';
+
+$focusedBorderColor: $ms-color-neutralTertiary;
+$selectedColor: $ms-color-themeLighter;
+$selectedHoverColor: $ms-color-themeLight;
+$unselectedHoverColor: $ms-color-themeLighterAlt;
+$selectedHighlightColor: $ms-color-themePrimary;
+$groupBorderColor: $ms-color-neutralLight;
 
 .NavBar {
   position: absolute;
@@ -8,6 +15,8 @@
   bottom: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+
+  @include user-select(none);
 }
 
 .NavBar-groupContent {
@@ -30,15 +39,13 @@
   padding: 0 40px;
   background: none;
   border: none;
-  border-bottom: 1px solid $ms-color-neutralLight;
+  border-bottom: 1px solid $groupBorderColor;
   text-transform: uppercase;
 
   cursor: default;
-  user-select: none;
-  -webkit-user-select: none;
 
   &:focus {
-    outline: none;
+    outline: transparent;
   }
 
   &:visited {
@@ -70,7 +77,7 @@
 }
 
 .NavBar-groupButton:hover:before {
-  background: $ms-color-neutralLight;
+  background: $unselectedHoverColor;
 }
 
 .NavBar-groupButton:focus {
@@ -78,7 +85,7 @@
 }
 
 .ms-Fabric.is-focusVisible .NavBar-groupButton:focus:before {
-  border: 1px solid $ms-color-themePrimary;
+  border: 1px solid $focusedBorderColor;
 }
 
 .NavBar-link {
@@ -90,10 +97,6 @@
   padding: 0 40px;
   color: black;
   cursor: default;
-
-  /* TODO: this needs to be browser specific */
-  user-select: none;
-  -webkit-user-select: none;
 
   &:focus {
     outline: transparent;
@@ -115,26 +118,26 @@
 }
 
 .ms-Fabric.is-focusVisible .NavBar-link:focus:before {
-  border: 1px solid $ms-color-neutralTertiary;
+  border: 1px solid $focusedBorderColor;
 }
 
 .NavBar-link.is-selected:before,
 .ms-Fabric.is-focusVisible .NavBar-link.is-selected:focus:before {
-  border-left: 4px solid $ms-color-themePrimary;
-  background: $ms-color-neutralLight;
+  border-left: 4px solid $selectedHighlightColor;
+  background: $selectedColor;
 }
 
 .NavBar-link:hover:before {
-  background: $ms-color-neutralLight;
+  background: $unselectedHoverColor;
 }
 
 .NavBar-link.is-selected:hover:before {
-  background: $ms-color-themeLighter;
+  background: $selectedHoverColor;
 }
 
 .is-selected:before,
 .NavBar-link.is-selected:focus:before {
-  border-left: 4px solid $ms-color-themePrimary;
+  border-left: 4px solid $selectedHighlightColor;
 }
 
 .NavBar-linkFlair {

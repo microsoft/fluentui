@@ -64,7 +64,7 @@ export default class List extends React.Component<IListProps, any> {
           <div className='ms-List-page' key={ page.key } ref={ page.key } style={ page.style }>
           { page.items ? page.items.map((item, itemIndex) => (
             <div className='ms-List-cell' key={ item.key }>
-              { onRenderCell(item, itemIndex, containsFocus) }
+              { onRenderCell(item, page.startIndex + itemIndex, containsFocus) }
             </div>
           )) : null }
           </div>

@@ -52,8 +52,7 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
   height: $CommandBar-height;
   white-space: nowrap;
 
-  user-select: none;
-  -webkit-user-select: none;
+  @include user-select(none);
 }
 
 .ms-CommandBar-primaryCommands {
