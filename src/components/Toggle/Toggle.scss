@@ -1,2 +1,6 @@
 @import '../../common';
 @import "~office-ui-fabric/src/components/Toggle/Toggle";
+
+.ms-Toggle {
+  @include user-select(none);
+}
