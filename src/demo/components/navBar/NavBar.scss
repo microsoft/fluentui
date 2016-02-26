@@ -15,6 +15,8 @@ $groupBorderColor: $ms-color-neutralLight;
   bottom: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+
+  @include user-select(none);
 }
 
 .NavBar-groupContent {
@@ -41,11 +43,9 @@ $groupBorderColor: $ms-color-neutralLight;
   text-transform: uppercase;
 
   cursor: default;
-  user-select: none;
-  -webkit-user-select: none;
 
   &:focus {
-    outline: none;
+    outline: transparent;
   }
 
   &:visited {
@@ -97,10 +97,6 @@ $groupBorderColor: $ms-color-neutralLight;
   padding: 0 40px;
   color: black;
   cursor: default;
-
-  /* TODO: this needs to be browser specific */
-  user-select: none;
-  -webkit-user-select: none;
 
   &:focus {
     outline: transparent;
