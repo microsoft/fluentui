@@ -20,7 +20,8 @@ export interface IContextualMenuItem {
   icon?: string;
   isEnabled?: boolean;
   shortCut?: string;
-  checkMark?: boolean;
+  canCheck?: boolean;
+  isChecked?: boolean;
   onClick?: (ev: React.MouseEvent) => void;
   items?: IContextualMenuItem[];
 }
@@ -97,7 +98,6 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     });
   }
 
-
   //Invoked when a component is receiving new props.
   public componentWillReceiveProps(newProps: IContextualMenuProps) {
     if (newProps.targetElement !== this.props.targetElement) {
@@ -133,6 +133,9 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     let { contextualMenuItems, expandedMenuItemKey, contextualMenuTarget, submenuProps, positions } = this.state;
     let left = 0;
 
+    let areAnyIconsVisible = items.some(item => !!item.icon);
+    let areAnyCheckmarksVisible = items.some(item => !!item.canCheck);
+
     if (!positions) {
       return (
         <div ref='host' className={ css('ms-ContextualMenu-container', className) } />
@@ -164,7 +167,11 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
                 data-command-key={ index }
                 role='menuitem'
               >
-                <span className={ `ms-ContextualMenu-icon ms-Icon ms-Icon--${ item.icon }` }></span>
+                { (areAnyIconsVisible) ? (
+                <span className={ 'ms-ContextualMenu-icon' +
+                  ((item.icon) ? ` ms-Icon ms-Icon--${ item.icon }` : ' no-icon')}>
+                </span>
+                ) : (null) }
                 <span className='ms-ContextualMenu-itemText ms-font-m ms-font-weight-regular'>{ item.name }</span>
                 { (item.items && item.items.length) ? (
                 <i className='ms-ContextualMenu-chevronRight ms-Icon ms-Icon--chevronRight' />
@@ -220,6 +227,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
         this._onContextMenuDismiss();
       } else { // This has a collapsed sub menu. Expand it.
         this.setState({
+          expandedMenuItemKey: item.key,
           submenuProps: {
             items: item.items,
             targetElement: ev.currentTarget,
@@ -234,6 +242,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   private _onContextMenuDismiss(ev?: any) {
     if (!ev || !ev.relatedTarget || !(this.refs['host'] as HTMLElement).contains(ev.relatedTarget as HTMLElement)) {
       this.setState({
+        expandedMenuItemKey: null,
         submenuProps: null
       });
     } else {

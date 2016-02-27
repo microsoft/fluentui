@@ -100,6 +100,16 @@
     }
   }
 
+  &.is-expanded {
+    background-color: $ms-color-themeLight;
+    color: $ms-color-black;
+    font-family: $ms-font-family-semibold;
+
+    &:hover {
+      background-color: $ms-color-themeLight;
+    }
+  }
+
   &.is-disabled {
     background-color: $ms-color-white;
     color: $ms-color-neutralTertiary;
@@ -221,6 +231,10 @@
 
 .ms-ContextualMenu-icon {
   padding-right: 10px;
+}
+
+.ms-ContextualMenu-icon.no-icon {
+  padding-right: 24px;
 }
 
 .ExampleCard-example > .ms-ContextualMenu-container > .ms-ContextualMenu {

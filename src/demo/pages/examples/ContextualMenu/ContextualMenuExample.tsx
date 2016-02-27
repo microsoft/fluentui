@@ -31,12 +31,10 @@ export default class ContextualMenuExample extends React.Component<any, any> {
                     {
                       key: 'emailMessage',
                       name: 'Email message',
-                      icon: 'mail'
                     },
                     {
                       key: 'calendarEvent',
                       name: 'Calendar event',
-                      icon: 'calendar'
                     }
                   ]
                 },
@@ -48,7 +46,6 @@ export default class ContextualMenuExample extends React.Component<any, any> {
                 {
                   key: 'rename',
                   name: 'Rename',
-                  icon: 'editBox'
                 },
                 {
                   key: '-',
@@ -67,7 +64,6 @@ export default class ContextualMenuExample extends React.Component<any, any> {
                     {
                       key: 'sharetofacebook',
                       name: 'Share to Facebook',
-                      icon: 'circleInfo'
                     },
                     {
                       key: 'sharetotwitter',
