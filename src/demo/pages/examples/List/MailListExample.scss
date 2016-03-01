@@ -2,6 +2,8 @@
 @import '~office-ui-fabric/src/components/ListItem/ListItem.scss';
 
 .MailList {
+  overflow-y: auto;
+  max-height: 500px;
 }
 
 .MailTile {

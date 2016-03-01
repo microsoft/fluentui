@@ -25,8 +25,15 @@ export default class List extends React.Component<IListProps, any> {
     onRenderCell: (item, index, containsFocus) => (<div>{ item.name }</div>)
   };
 
+  public refs: {
+    [key: string]: React.ReactInstance,
+    root: HTMLElement,
+    surface: HTMLElement
+  };
+
   private _estimatedItemHeight: number;
   private _cachedPageHeights: { [key: string]: number };
+  private _scrollableElement: HTMLElement;
   private _events: EventGroup;
 
   constructor() {
@@ -42,9 +49,15 @@ export default class List extends React.Component<IListProps, any> {
   }
 
   public componentDidMount() {
+     var scrollableElement = this._scrollableElement = this._getScrollableElement();
+
      this._updatePages();
 
-     this._events.on(window, 'scroll', this._updatePages);
+     if (scrollableElement === document.body) {
+       scrollableElement = window as any;
+     }
+
+     this._events.on(scrollableElement, 'scroll', this._updatePages);
      this._events.on(window, 'resize', this._updatePages);
   }
 
@@ -58,7 +71,7 @@ export default class List extends React.Component<IListProps, any> {
     let { pages, surfaceStyle } = this.state;
 
     return (
-      <div className={ rootClass }>
+      <div ref='root' className={ rootClass }>
         <div ref='surface' className='ms-List-surface' style={ surfaceStyle }>
         { pages.map(page => (
           <div className='ms-List-page' key={ page.key } ref={ page.key } style={ page.style }>
@@ -201,6 +214,22 @@ export default class List extends React.Component<IListProps, any> {
       width: window.innerWidth,
       height: window.innerHeight * 3
     };
+  }
+
+  private _getScrollableElement() {
+    let el = this.refs.root;
+
+    do {
+      let style = getComputedStyle(el);
+
+      if (style.overflowY == 'auto' || style.overflowY == 'scroll') {
+        break;
+      }
+
+      el = el.parentElement;
+    } while (el !== document.body);
+
+    return el;
   }
 
   private _getScrollableContainerRect() {

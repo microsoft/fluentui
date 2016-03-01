@@ -1,11 +1,12 @@
 import * as React from 'react';
 import IColumn from './IColumn';
-import './DetailsHeader.scss';
 import { css } from '../../utilities/css';
 import { getResourceUrl } from '../../utilities/resources';
 import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
 import { SelectionMode } from '../../utilities/selection/ISelection';
 import DetailsListLayoutMode from './DetailsListLayoutMode';
+import Check from './Check';
+import './DetailsHeader.scss';
 
 export interface IDetailsHeaderProps {
   columns: IColumn[];
@@ -54,7 +55,7 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
 
     return (
       <div
-        className={ css('DetailsHeader ms-font-s', {
+        className={ css('ms-DetailsHeader ms-font-s', {
           'is-allSelected': isAllSelected,
           'is-singleSelect': selectionMode === SelectionMode.single,
           'is-resizingColumn': !!columnResizeDetails
@@ -62,21 +63,19 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           { (selectionMode === SelectionMode.multiple) ? (
           <button
-            className='DetailsHeader-cell is-check'
+            className='ms-DetailsHeader-cell is-check'
             onClick={ this._handleSelectAllClick.bind(this) }
           >
-            <div className='DetailsHeader-checkClip'>
-              <img className="DetailsHeader-checkImage" src={ getResourceUrl('check.png') } />
-            </div>
+            <Check isChecked={ isAllSelected } />
           </button>
           ) : (null) }
           { columns.map((column, columnIndex) => (
-          <div key={ column.key } className='DetailsHeader-cellSizeWrapper'>
-            <div className='DetailsHeader-cellWrapper'>
+          <div key={ column.key } className='ms-DetailsHeader-cellSizeWrapper'>
+            <div className='ms-DetailsHeader-cellWrapper'>
               <button
                 key={ column.fieldName }
                 disabled={ !column.isSortable }
-                className={ css('DetailsHeader-cell', {
+                className={ css('ms-DetailsHeader-cell', {
                   'is-sortable': column.isSortable,
                   'is-sorted': column.isSorted,
                   'is-sortedDescending': column.isSortedDescending
@@ -84,18 +83,18 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
                 style={ { width: column.calculatedWidth } }
                 onClick={ (ev) => (onSort ? onSort(column) : null) }
               >
+                <span className="ms-DetailsHeader-sortArrow ms-Icon ms-Icon--arrowUp2" />
                 { column.name }
-                <span className="DetailsHeader-sortArrow ms-Icon ms-Icon--arrowUp2" />
               </button>
               { column.isFilterable ? (
-                <button className='DetailsHeader-cell is-filter'>
+                <button className='ms-DetailsHeader-cell is-filter'>
                   <i className='ms-Icon ms-Icon--chevronDown' />
                 </button>
               ) : (null)}
             </div>
             { (layoutMode === DetailsListLayoutMode.fixedColumns) ? (
             <button
-              className={ css('DetailsHeader-cell is-sizer', {
+              className={ css('ms-DetailsHeader-cell is-sizer', {
                 'is-resizing': columnResizeDetails && columnResizeDetails.columnIndex === columnIndex
               }) }
               onMouseDown={ this._onSizerDown.bind(this, columnIndex) }
@@ -104,7 +103,7 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
           </div>
           ))}
         </FocusZone>
-        <div className='DetailsHeader-sizerCover' onMouseMove={ this._onSizerMove } onMouseUp={ this._onSizerUp } />
+        <div className='ms-DetailsHeader-sizerCover' onMouseMove={ this._onSizerMove } onMouseUp={ this._onSizerUp } />
       </div>
     );
   }

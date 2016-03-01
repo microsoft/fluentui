@@ -11,8 +11,8 @@ import IObjectWithKey from '../../utilities/selection/IObjectWithKey';
 import {Selection, SELECTION_CHANGE } from '../../utilities/selection/Selection';
 import SelectionZone from '../../utilities/selection/SelectionZone';
 import DetailsListLayoutMode from './DetailsListLayoutMode';
-import './DetailsList.scss';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
+import './DetailsList.scss';
 
 export interface IDetailsListProps {
   items: any[];
@@ -21,6 +21,8 @@ export interface IDetailsListProps {
   layoutMode?: DetailsListLayoutMode;
   columns?: IColumn[];
   viewport?: IViewport;
+
+  className?: string;
 }
 
 export interface IDetailsListState {
@@ -37,7 +39,7 @@ export interface IDetailsListViewData {
 }
 
 @withViewport
-export default class DetailsList extends React.Component<IDetailsListProps, IDetailsListState> {
+export class DetailsList extends React.Component<IDetailsListProps, IDetailsListState> {
   public static defaultProps = {
     layoutMode: DetailsListLayoutMode.justified,
     selectionMode: SelectionMode.multiple
@@ -83,12 +85,12 @@ export default class DetailsList extends React.Component<IDetailsListProps, IDet
   }
 
   public render() {
-    let { items, viewport, layoutMode, selectionMode } = this.props;
+    let { className, items, viewport, layoutMode, selectionMode } = this.props;
     let { adjustedColumns } = this.state;
     let { _selection:selection } = this;
 
     return (
-      <div className={css('ms-DetailsList', {
+      <div className={css('ms-DetailsList', className, {
         'is-fixed': layoutMode === DetailsListLayoutMode.fixedColumns
       })}>
         <DetailsHeader
@@ -235,6 +237,7 @@ export default class DetailsList extends React.Component<IDetailsListProps, IDet
     if (items && items.length) {
       let firstItem = items[0];
       let totalStringLength = 0;
+      let isFirstColumn = true;
 
       for (let propName in firstItem) {
         if (firstItem.hasOwnProperty(propName)) {
@@ -247,10 +250,12 @@ export default class DetailsList extends React.Component<IDetailsListProps, IDet
             isCollapsable: !!columns.length,
             isClipped: true,
             isSortable: true,
-            isSorted: (columns.length === 0),
+            isSorted: isFirstColumn,
             isSortedDescending: false,
-            isFilterable: true
+            isFilterable: isFirstColumn
           });
+
+          isFirstColumn = false;
         }
       }
     }
@@ -259,3 +264,5 @@ export default class DetailsList extends React.Component<IDetailsListProps, IDet
   }
 
 }
+
+export default DetailsList;

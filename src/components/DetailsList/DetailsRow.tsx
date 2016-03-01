@@ -1,6 +1,7 @@
 import * as React from 'react';
 import IColumn from './IColumn';
 import { ISelection, SelectionMode } from '../../utilities/selection/ISelection';
+import Check from './Check';
 import { getResourceUrl } from '../../utilities/resources';
 import { shallowCompare } from '../../utilities/object';
 import { css } from '../../utilities/css';
@@ -57,26 +58,24 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, any> {
     return (
       <div
         ref='root'
-        className={ css('DetailsRow', {
+        className={ css('ms-DetailsRow ms-font-s', {
           'is-selected': isSelected
         }) }
         data-selection-key={ item.key }
         tabIndex={ isFocusable ? 0 : -1 }
       >
-        <div className='DetailsRow-focusBox' />
+        <div className='ms-DetailsRow-focusBox' />
           { (selectionMode !== SelectionMode.none) ? (
           <button
             tabIndex={ -1 }
-            className='DetailsRow-check'
+            className='ms-DetailsRow-check'
             data-selection-toggle={ true }
           >
-            <div className='DetailsRow-checkClip'>
-              <img className="DetailsRow-checkImage" src={ getResourceUrl('check.png') } />
-            </div>
+            <Check isChecked={ isSelected } />
           </button>
           ) : null }
           { columns.map(column => (
-          <div key={ column.key } className={ css('DetailsRow-cell', {
+          <div key={ column.key } className={ css('ms-DetailsRow-cell', {
             'is-clipped': column.isClipped
           }) } style={ { width: column.calculatedWidth } }>
             { column.getCellContent ? column.getCellContent(item, itemIndex) : (String(item[column.fieldName]) || '') }
