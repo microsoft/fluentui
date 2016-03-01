@@ -2,7 +2,6 @@ import * as React from 'react';
 import Link from '../../../../components/Link/index';
 import ExampleCard from '../../../components/ExampleCard/index';
 import PropertiesTable from '../../../components/PropertiesTable/index';
-import './DetailsListExample.scss';
 
 import BasicExample from './examples/Basic.Example';
 let BasicExampleCode = require('./examples/Basic.Example.tsx');
