@@ -26,3 +26,4 @@ export default class DetailsListExample extends React.Component<any, any> {
     );
   }
 }
+

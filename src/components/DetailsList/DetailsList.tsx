@@ -6,9 +6,9 @@ import { css } from '../../utilities/css';
 import DetailsHeader from './DetailsHeader';
 import DetailsRow from './DetailsRow';
 import IColumn from './IColumn';
-import { ISelection, SelectionMode } from '../../utilities/selection/ISelection';
+import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/ISelection';
 import IObjectWithKey from '../../utilities/selection/IObjectWithKey';
-import {Selection, SELECTION_CHANGE } from '../../utilities/selection/Selection';
+import {Selection } from '../../utilities/selection/Selection';
 import SelectionZone from '../../utilities/selection/SelectionZone';
 import DetailsListLayoutMode from './DetailsListLayoutMode';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
@@ -47,6 +47,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
   public refs: {
     [key: string]: React.ReactInstance,
+    header: DetailsHeader,
     list: List
   }
 
@@ -54,7 +55,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   private _selection: ISelection;
 
   public componentDidMount() {
-	   this._events.on(this._selection, SELECTION_CHANGE, this._onSelectionChanged);
   }
 
   public componentWillUnmount() {
@@ -69,8 +69,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     super(props);
 
     this._onColumnResized = this._onColumnResized.bind(this);
-    this._onSelectionChanged = this._onSelectionChanged.bind(this);
-    this._onRowSelectionChanged = this._onRowSelectionChanged.bind(this);
     this._onAllSelectedChanged = this._onAllSelectedChanged.bind(this);
 
     this.state = {
@@ -93,15 +91,15 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       <div className={css('ms-DetailsList', className, {
         'is-fixed': layoutMode === DetailsListLayoutMode.fixedColumns
       })}>
-        <DetailsHeader
-          selectionMode={ selectionMode }
-          layoutMode={ layoutMode }
-          isAllSelected={ this._selection.isAllSelected() }
-          onIsAllSelectedChanged={ this._onAllSelectedChanged }
-          columns={ adjustedColumns }
-          onColumnResized={ this._onColumnResized }
-        />
         <SelectionZone selection={ this._selection } selectionMode={ selectionMode }>
+          <DetailsHeader
+            ref='header'
+            selectionMode={ selectionMode }
+            layoutMode={ layoutMode }
+            selection={ selection }
+            columns={ adjustedColumns }
+            onColumnResized={ this._onColumnResized }
+          />
           <List
             ref='list'
             items={ items }
@@ -111,10 +109,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                 itemIndex={ index }
                 columns={ adjustedColumns }
                 selectionMode={ selectionMode }
-                isSelected={ selection.isKeySelected(item.key) }
-                isFocused={ containsFocus && this._selection.getFocusedKey() === item.key }
-                isFocusable={ this._selection.getFocusedKey() === item.key }
-                onSelectionChanged={ this._onRowSelectionChanged }
+                selection={ selection }
+                shouldSetFocus={ containsFocus }
               />
               ) }
           />
@@ -125,18 +121,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
   private _previousFocusIndex: number;
 
-  private _onSelectionChanged() {
-    let list = this.refs.list;
-
-    this.forceUpdate();
-  }
-
   private _onAllSelectedChanged() {
     this._selection.toggleAllSelected();
-  }
-
-  private _onRowSelectionChanged(item: any, isSelected: boolean) {
-    this._selection.toggleKeySelected(item.key);
   }
 
   private _adjustColumns(newProps: IDetailsListProps, forceUpdate?: boolean) {
@@ -149,6 +135,10 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
         lastSelectionMode: selectionMode,
         lastWidth: viewportWidth
       });
+    }
+
+    if (forceUpdate) {
+      this.refs.list.forceUpdate();
     }
   }
 

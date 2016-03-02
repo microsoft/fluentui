@@ -3,20 +3,27 @@ import IColumn from './IColumn';
 import { css } from '../../utilities/css';
 import { getResourceUrl } from '../../utilities/resources';
 import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
-import { SelectionMode } from '../../utilities/selection/ISelection';
+import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/ISelection';
 import DetailsListLayoutMode from './DetailsListLayoutMode';
 import Check from './Check';
 import './DetailsHeader.scss';
+import EventGroup from '../../utilities/eventGroup/EventGroup';
 
 export interface IDetailsHeaderProps {
   columns: IColumn[];
+  selection: ISelection;
   selectionMode: SelectionMode;
   layoutMode: DetailsListLayoutMode;
-  isAllSelected: boolean;
   onSort?: (column: IColumn) => void;
   onColumnIsSizingChanged?: (column: IColumn, isSizing: boolean) => void;
   onColumnResized?: (column: IColumn, newWidth: number) => void;
-  onIsAllSelectedChanged?: (isAllSelected: boolean) => void;
+
+  ref?: string;
+}
+
+export interface IDetailsHeaderState {
+  columnResizeDetails?: IColumnResizeDetails;
+  isAllSelected?: boolean;
 }
 
 export interface IFilterItem {
@@ -30,13 +37,15 @@ export interface IColumnResizeDetails {
   columnMinWidth: number;
 }
 
-export interface IDetailsHeaderState {
-  columnResizeDetails: IColumnResizeDetails;
-}
+
 
 export default class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetailsHeaderState> {
+  private _events: EventGroup;
+
   constructor() {
     super();
+
+    this._events = new EventGroup(this);
 
     this.state = {
       columnResizeDetails: null
@@ -49,8 +58,19 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
   public componentWillReceiveProps(newProps) {
   }
 
+  public componentDidMount() {
+    let { selection } = this.props;
+
+    this._events.on(selection, SELECTION_CHANGE, this._onSelectionChanged);
+  }
+
+  public componentWillUnmount() {
+    this._events.dispose();
+  }
+
   public render() {
-    let { selectionMode, layoutMode, columns, onSort, isAllSelected } = this.props;
+    let { selectionMode, layoutMode, columns, onSort } = this.props;
+    let { isAllSelected } = this.state;
     let { columnResizeDetails } = this.state;
 
     return (
@@ -64,7 +84,7 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
           { (selectionMode === SelectionMode.multiple) ? (
           <button
             className='ms-DetailsHeader-cell is-check'
-            onClick={ this._handleSelectAllClick.bind(this) }
+            data-selection-all-toggle='true'
           >
             <Check isChecked={ isAllSelected } />
           </button>
@@ -124,6 +144,13 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
      }
   }
 
+
+  private _onSelectionChanged() {
+    this.setState({
+      isAllSelected: this.props.selection.isAllSelected()
+    });
+  }
+
   private _onSizerMove(ev: React.MouseEvent) {
     let { onColumnResized, columns } = this.props;
 
@@ -148,14 +175,6 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
      if (onColumnIsSizingChanged) {
        onColumnIsSizingChanged(columns[columnResizeDetails.columnIndex], false);
      }
-  }
-
-  private _handleSelectAllClick() {
-    let { isAllSelected, onIsAllSelectedChanged } = this.props;
-
-    if (onIsAllSelectedChanged) {
-      onIsAllSelectedChanged(!isAllSelected);
-    }
   }
 
   private _handleColumnClick(column) {

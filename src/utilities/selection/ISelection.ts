@@ -1,3 +1,5 @@
+export const SELECTION_CHANGE = 'change';
+
 export enum SelectionMode {
   none,
   single,

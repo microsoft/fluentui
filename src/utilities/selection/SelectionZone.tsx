@@ -22,6 +22,7 @@ import KeyCodes from '../KeyCodes';
 
 const SELECTION_KEY_ATTRIBUTE_NAME = 'data-selection-key';
 const SELECTION_TOGGLE_ATTRIBUTE_NAME = 'data-selection-toggle';
+const SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME = 'data-selection-all-toggle';
 
 export interface ISelectionZoneProps extends React.Props<SelectionZone> {
   selection: ISelection;
@@ -222,12 +223,13 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
 
     let target = ev.target as HTMLElement;
     let key = this._getKeyFromElement(target);
+    let isToggleElement = this._isToggleElement(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);
+    let isToggleAllElement = !isToggleElement && this._isToggleElement(target, SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME);
 
-    if (key) {
+    if (key || isToggleAllElement) {
       let isShiftPressed = !!ev.shiftKey;
       let isMetaPressed = !!ev.metaKey;
       let isCtrlPressed = !!ev.ctrlKey;
-      let isToggleElement = this._isToggleElement(target);
 
       selection.setChangeEvents(false);
 
@@ -240,6 +242,8 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
         selection.setKeySelected(key, true, true, true);
       } else if (isToggleElement) {
         selection.toggleKeySelected(key);
+      } else if (isToggleAllElement) {
+        selection.toggleAllSelected();
       } else {
         if (!selection.isKeySelected(key) || selection.getSelectedCount() > 1) {
           selection.setAllSelected(false);
@@ -254,11 +258,11 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
     }
   }
 
-  private _isToggleElement(element: HTMLElement) {
+  private _isToggleElement(element: HTMLElement, attributeName: string) {
     let isToggle = false;
 
     while (!isToggle && element !== document.body) {
-      isToggle = element.getAttribute(SELECTION_TOGGLE_ATTRIBUTE_NAME) === 'true';
+      isToggle = element.getAttribute(attributeName) === 'true';
       element = element.parentElement;
     }
 

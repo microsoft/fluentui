@@ -1,7 +1,8 @@
 import * as React from 'react';
 import IColumn from './IColumn';
-import { ISelection, SelectionMode } from '../../utilities/selection/ISelection';
+import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/ISelection';
 import Check from './Check';
+import EventGroup from '../../utilities/eventGroup/EventGroup';
 import { getResourceUrl } from '../../utilities/resources';
 import { shallowCompare } from '../../utilities/object';
 import { css } from '../../utilities/css';
@@ -12,48 +13,63 @@ export interface IDetailsRowProps {
   itemIndex: number;
   columns: IColumn[];
   selectionMode: SelectionMode;
+  selection: ISelection;
+  shouldSetFocus?: boolean;
+}
+
+export interface IDetailsRowState {
   isSelected: boolean;
   isFocused: boolean;
   isFocusable: boolean;
-  onSelectionChanged?: (item: any, isSelected: boolean) => void;
 }
 
-export default class DetailsRow extends React.Component<IDetailsRowProps, any> {
+export default class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowState> {
   public refs: {
     [key: string]: React.ReactInstance,
     root: HTMLElement
   }
-  constructor() {
-    super();
-    this._onSelectClick = this._onSelectClick.bind(this);
-  }
 
-  public shouldComponentUpdate(nextProps): boolean {
-    return !shallowCompare(this.props, nextProps);
+  private _events: EventGroup;
+
+  constructor(props) {
+    super(props);
+
+
+    this.state = this._getSelectionState(props);
+
+    this._events = new EventGroup(this);
   }
 
   public componentDidMount() {
-    if (this.props.isFocused) {
-      this.setFocus();
-    }
+    this._events.on(this.props.selection, SELECTION_CHANGE, this._onSelectionChanged);
+
+    this.setFocus();
+  }
+
+  public componentDidUpdate() {
+    this.setFocus();
+  }
+
+  public componentWillUnmount() {
+    this._events.dispose();
   }
 
   public setFocus() {
-    setTimeout(()=> {
-      if (this.props.isFocused && this.refs.root) {
-        this.refs.root.focus();
-      }
-    }, 0);
-  }
+    let { shouldSetFocus, selection, item } = this.props;
+    let isFocused = shouldSetFocus && selection.getFocusedKey() === item.key;
 
-  public componentWillReceiveProps(newProps) {
-    if (!this.props.isFocused && newProps.isFocused && newProps.isFocusable) {
-      this.setFocus();
+    if (isFocused && this.refs.root) {
+      this.refs.root.focus();
     }
   }
 
+  public componentWillReceiveProps(newProps) {
+    this.setState(this._getSelectionState(newProps));
+  }
+
   public render() {
-    let { selectionMode, columns, item, itemIndex, isSelected, isFocused, isFocusable, onSelectionChanged } = this.props;
+    let { selection, selectionMode, columns, item, itemIndex, shouldSetFocus } = this.props;
+    let { isSelected, isFocused, isFocusable } = this.state;
 
     return (
       <div
@@ -85,11 +101,21 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, any> {
     );
   }
 
-  private _onSelectClick() {
-    let { item, onSelectionChanged } = this.props;
+  private _getSelectionState(props: IDetailsRowProps): IDetailsRowState {
+    let { item, shouldSetFocus, selection } = props;
 
-    if (onSelectionChanged) {
-      onSelectionChanged(item, !this.props.isSelected);
+    return {
+      isSelected: selection.isKeySelected(item.key),
+      isFocused: shouldSetFocus && selection.getFocusedKey() === item.key,
+      isFocusable: selection.getFocusedKey() === item.key
+    };
+  }
+
+  private _onSelectionChanged() {
+    let selectionState = this._getSelectionState(this.props);
+
+    if (!shallowCompare(selectionState, this.state)) {
+      this.setState(selectionState);
     }
   }
 
