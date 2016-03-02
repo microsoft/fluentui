@@ -52,7 +52,7 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
     );
   }
 
-  private _onInputChanged(ev) {
+  private _onInputChanged(ev: React.FormEvent) {
     let { onChanged } = this.props;
 
     if (onChanged) {

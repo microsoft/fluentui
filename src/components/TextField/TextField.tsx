@@ -27,7 +27,20 @@ export default class TextField extends React.Component<ITextFieldProps, any> {
     underlined: false
   }
 
-  render() {
+  public constructor() {
+    super();
+
+    this._onMultilineTextChange = this._onMultilineTextChange.bind(this);
+    this._onSinglelineTextChange = this._onSinglelineTextChange.bind(this);
+  }
+
+  public refs: {
+    [key: string]: React.ReactInstance;
+    multilineText: HTMLInputElement;
+    singlelineText: HTMLInputElement;
+  }
+
+  public render() {
     let {disabled, required, multiline, placeholder, underlined, label, description, iconClass, value, className } = this.props;
 
     return (
@@ -43,15 +56,26 @@ export default class TextField extends React.Component<ITextFieldProps, any> {
         >
         { label ? <Label>{label}</Label> : null }
         {iconClass ? <i className={iconClass}></i> : null}
-        {multiline ? <textarea className="ms-TextField-field" onChange={ this._onTextChange.bind(this) }>{value}</textarea> : <input placeholder={placeholder} className="ms-TextField-field" value={value} onChange={ this._onTextChange.bind(this) } /> }
-        {description ? <span className="ms-TextField-description">{description}</span> : null}
+        {multiline ?
+          <textarea className='ms-TextField-field' ref='multilineText' onChange={ this._onMultilineTextChange }>{value}</textarea> :
+          <input placeholder={placeholder} ref='singlelineText' className='ms-TextField-field' value={value} onChange={ this._onSinglelineTextChange } /> }
+        {description ? <span className='ms-TextField-description'>{description}</span> : null}
         {this.props.children}
       </div>
     );
   }
 
-  private _onTextChange(ev: React.KeyboardEvent): void {
-    let newVal = (ev.currentTarget as HTMLInputElement).value;
-    this.props.onTextChange(newVal);
+  private _onMultilineTextChange(ev: React.KeyboardEvent): void {
+    this._onTextChange(this.refs.multilineText.value);
+  }
+
+  private _onSinglelineTextChange(ev: React.KeyboardEvent): void {
+    this._onTextChange(this.refs.singlelineText.value);
+  }
+
+  private _onTextChange(newValue: string): void {
+    let { onTextChange } = this.props;
+
+    onTextChange(newValue);
   }
 }
