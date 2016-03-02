@@ -5,7 +5,7 @@ $selectedColor: $ms-color-themeLighter;
 $selectedHoverColor: $ms-color-themeLight;
 $unselectedHoverColor: $ms-color-neutralLight;
 
-.DetailsHeader {
+.ms-DetailsHeader {
   min-width: 100%;
   height: $rowHeight;
   line-height: $rowHeight;
@@ -21,7 +21,7 @@ $unselectedHoverColor: $ms-color-neutralLight;
     padding-left: 40px;
   }
 
-  &.is-resizingColumn .DetailsHeader-sizerCover {
+  &.is-resizingColumn .ms-DetailsHeader-sizerCover {
     background: transparent;
     position: fixed;
     left: 0;
@@ -33,41 +33,35 @@ $unselectedHoverColor: $ms-color-neutralLight;
   }
 }
 
-.DetailsHeader-checkClip {
-  position: relative;
-  overflow: hidden;
-  width: 20px;
-  height: 20px;
+.ms-DetailsHeader .ms-Check-circle {
+  visibility: hidden;
 }
 
-
-.DetailsHeader-checkImage {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 20px;
+.ms-DetailsHeader:hover .ms-Check-circle,
+.ms-DetailsHeader.is-allSelected .ms-Check-circle {
+  visibility: visible;
 }
-
-.DetailsHeader-cell.is-check:hover .DetailsHeader-checkImage {
+.ms-DetailsHeader-cell.is-check:hover .ms-DetailsHeader-checkImage {
   left: -40px;
 }
 
-.DetailsHeader.is-allSelected .DetailsHeader-cell.is-check:hover .DetailsHeader-checkImage {
+.ms-DetailsHeader.is-allSelected .ms-DetailsHeader-cell.is-check:hover .ms-DetailsHeader-checkImage {
   left: -20px;
 }
 
-.DetailsHeader.is-allSelected  .DetailsHeader-cell.is-check:hover .DetailsHeader-checkImage,
-.DetailsHeader.is-allSelected  .DetailsHeader-checkImage {
+.ms-DetailsHeader.is-allSelected .ms-DetailsHeader-cell.is-check:hover .ms-DetailsHeader-checkImage,
+.ms-DetailsHeader.is-allSelected  .ms-DetailsHeader-checkImage {
   left: -60px;
 }
 
-.DetailsHeader-cellWrapper {
+.ms-DetailsHeader-cellWrapper {
   display: inline-block;
   position: relative;
 }
 
-.DetailsHeader-cellSizeWrapper {
+.ms-DetailsHeader-cellSizeWrapper {
   display: inline-block;
+  vertical-align: top;
   margin-right: 16px;
 
   &:last-child {
@@ -75,7 +69,7 @@ $unselectedHoverColor: $ms-color-neutralLight;
   }
 }
 
-.DetailsHeader-cell {
+.ms-DetailsHeader-cell {
   display: inline-block;
   box-sizing: border-box;
   padding: 0 8px;
@@ -144,17 +138,17 @@ $unselectedHoverColor: $ms-color-neutralLight;
     z-index: 99;
   }
 
-  &.is-sorted .DetailsHeader-sortArrow {
-    visibility: visible;
+  &.is-sorted.is-sortable .ms-DetailsHeader-sortArrow {
+    display: inline;
   }
 
-  &is-sortedDescending .DetailsHeader-sortArrow {
+  &is-sortedDescending .ms-DetailsHeader-sortArrow {
     transform: rotate(180deg);
   }
 }
 
-.DetailsHeader-cell.is-resizing.is-sizer:after,
-.DetailsHeader-cell.is-sizer:hover:after {
+.ms-DetailsHeader-cell.is-resizing.is-sizer:after,
+.ms-DetailsHeader-cell.is-sizer:hover:after {
   content: '';
   position: absolute;
   left: 50%;
@@ -164,7 +158,7 @@ $unselectedHoverColor: $ms-color-neutralLight;
   background: $ms-color-neutralLight;
 }
 
-.ms-Fabric.is-focusVisible .DetailsHeader-cell:focus:before {
+.ms-Fabric.is-focusVisible .ms-DetailsHeader-cell:focus:before {
   content: '';
   pointer-events: none;
   position: absolute;
@@ -175,9 +169,9 @@ $unselectedHoverColor: $ms-color-neutralLight;
   border: 1px solid $ms-color-neutralTertiary;
 }
 
-.DetailsHeader-sortArrow {
+.ms-DetailsHeader-sortArrow.ms-Icon {
   font-size: 12px;
-  margin-left: 4px;
-  visibility: hidden;
+  margin-right: 4px;
+  display: none;
   color: $ms-color-neutralTertiary;
 }

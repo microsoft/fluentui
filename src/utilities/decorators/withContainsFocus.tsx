@@ -4,6 +4,10 @@ import Async from '../Async/Async';
 export default function withContainsFocus<P, S>(ComposedComponent: any): any {
 
   return class WithContainsFocusComponent extends React.Component<P, any> {
+    public refs: {
+      [key: string]: React.ReactInstance,
+      composed: any
+    }
     private _async: Async;
     private _newContainsFocus: boolean;
 
@@ -28,10 +32,14 @@ export default function withContainsFocus<P, S>(ComposedComponent: any): any {
       let { containsFocus } = this.state;
 
       return (
-        <div ref="root" onFocus={ this._handleFocus.bind(this) } onBlur={ this._handleBlur.bind(this) }>
-          <ComposedComponent containsFocus={ containsFocus } {...this.props} />
+        <div ref='root' onFocus={ this._handleFocus.bind(this) } onBlur={ this._handleBlur.bind(this) }>
+          <ComposedComponent ref='composed' containsFocus={ containsFocus } {...this.props} />
         </div>
       );
+    }
+
+    public forceUpdate() {
+      this.refs.composed.forceUpdate();
     }
 
     private _handleFocus(ev) {

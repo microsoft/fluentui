@@ -6,13 +6,13 @@ import { css } from '../../utilities/css';
 import DetailsHeader from './DetailsHeader';
 import DetailsRow from './DetailsRow';
 import IColumn from './IColumn';
-import { ISelection, SelectionMode } from '../../utilities/selection/ISelection';
+import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/ISelection';
 import IObjectWithKey from '../../utilities/selection/IObjectWithKey';
-import {Selection, SELECTION_CHANGE } from '../../utilities/selection/Selection';
+import {Selection } from '../../utilities/selection/Selection';
 import SelectionZone from '../../utilities/selection/SelectionZone';
 import DetailsListLayoutMode from './DetailsListLayoutMode';
-import './DetailsList.scss';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
+import './DetailsList.scss';
 
 export interface IDetailsListProps {
   items: any[];
@@ -21,6 +21,8 @@ export interface IDetailsListProps {
   layoutMode?: DetailsListLayoutMode;
   columns?: IColumn[];
   viewport?: IViewport;
+
+  className?: string;
 }
 
 export interface IDetailsListState {
@@ -37,7 +39,7 @@ export interface IDetailsListViewData {
 }
 
 @withViewport
-export default class DetailsList extends React.Component<IDetailsListProps, IDetailsListState> {
+export class DetailsList extends React.Component<IDetailsListProps, IDetailsListState> {
   public static defaultProps = {
     layoutMode: DetailsListLayoutMode.justified,
     selectionMode: SelectionMode.multiple
@@ -45,6 +47,7 @@ export default class DetailsList extends React.Component<IDetailsListProps, IDet
 
   public refs: {
     [key: string]: React.ReactInstance,
+    header: DetailsHeader,
     list: List
   }
 
@@ -52,7 +55,6 @@ export default class DetailsList extends React.Component<IDetailsListProps, IDet
   private _selection: ISelection;
 
   public componentDidMount() {
-	   this._events.on(this._selection, SELECTION_CHANGE, this._onSelectionChanged);
   }
 
   public componentWillUnmount() {
@@ -67,8 +69,6 @@ export default class DetailsList extends React.Component<IDetailsListProps, IDet
     super(props);
 
     this._onColumnResized = this._onColumnResized.bind(this);
-    this._onSelectionChanged = this._onSelectionChanged.bind(this);
-    this._onRowSelectionChanged = this._onRowSelectionChanged.bind(this);
     this._onAllSelectedChanged = this._onAllSelectedChanged.bind(this);
 
     this.state = {
@@ -83,23 +83,23 @@ export default class DetailsList extends React.Component<IDetailsListProps, IDet
   }
 
   public render() {
-    let { items, viewport, layoutMode, selectionMode } = this.props;
+    let { className, items, viewport, layoutMode, selectionMode } = this.props;
     let { adjustedColumns } = this.state;
     let { _selection:selection } = this;
 
     return (
-      <div className={css('ms-DetailsList', {
+      <div className={css('ms-DetailsList', className, {
         'is-fixed': layoutMode === DetailsListLayoutMode.fixedColumns
       })}>
-        <DetailsHeader
-          selectionMode={ selectionMode }
-          layoutMode={ layoutMode }
-          isAllSelected={ this._selection.isAllSelected() }
-          onIsAllSelectedChanged={ this._onAllSelectedChanged }
-          columns={ adjustedColumns }
-          onColumnResized={ this._onColumnResized }
-        />
         <SelectionZone selection={ this._selection } selectionMode={ selectionMode }>
+          <DetailsHeader
+            ref='header'
+            selectionMode={ selectionMode }
+            layoutMode={ layoutMode }
+            selection={ selection }
+            columns={ adjustedColumns }
+            onColumnResized={ this._onColumnResized }
+          />
           <List
             ref='list'
             items={ items }
@@ -109,10 +109,8 @@ export default class DetailsList extends React.Component<IDetailsListProps, IDet
                 itemIndex={ index }
                 columns={ adjustedColumns }
                 selectionMode={ selectionMode }
-                isSelected={ selection.isKeySelected(item.key) }
-                isFocused={ containsFocus && this._selection.getFocusedKey() === item.key }
-                isFocusable={ this._selection.getFocusedKey() === item.key }
-                onSelectionChanged={ this._onRowSelectionChanged }
+                selection={ selection }
+                shouldSetFocus={ containsFocus }
               />
               ) }
           />
@@ -123,18 +121,8 @@ export default class DetailsList extends React.Component<IDetailsListProps, IDet
 
   private _previousFocusIndex: number;
 
-  private _onSelectionChanged() {
-    let list = this.refs.list;
-
-    this.forceUpdate();
-  }
-
   private _onAllSelectedChanged() {
     this._selection.toggleAllSelected();
-  }
-
-  private _onRowSelectionChanged(item: any, isSelected: boolean) {
-    this._selection.toggleKeySelected(item.key);
   }
 
   private _adjustColumns(newProps: IDetailsListProps, forceUpdate?: boolean) {
@@ -147,6 +135,10 @@ export default class DetailsList extends React.Component<IDetailsListProps, IDet
         lastSelectionMode: selectionMode,
         lastWidth: viewportWidth
       });
+    }
+
+    if (forceUpdate) {
+      this.refs.list.forceUpdate();
     }
   }
 
@@ -235,6 +227,7 @@ export default class DetailsList extends React.Component<IDetailsListProps, IDet
     if (items && items.length) {
       let firstItem = items[0];
       let totalStringLength = 0;
+      let isFirstColumn = true;
 
       for (let propName in firstItem) {
         if (firstItem.hasOwnProperty(propName)) {
@@ -247,10 +240,12 @@ export default class DetailsList extends React.Component<IDetailsListProps, IDet
             isCollapsable: !!columns.length,
             isClipped: true,
             isSortable: true,
-            isSorted: (columns.length === 0),
+            isSorted: isFirstColumn,
             isSortedDescending: false,
-            isFilterable: true
+            isFilterable: isFirstColumn
           });
+
+          isFirstColumn = false;
         }
       }
     }
@@ -259,3 +254,5 @@ export default class DetailsList extends React.Component<IDetailsListProps, IDet
   }
 
 }
+
+export default DetailsList;

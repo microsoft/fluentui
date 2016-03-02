@@ -1,7 +1,5 @@
-import { IObjectWithKey, ISelection } from './ISelection';
+import { IObjectWithKey, ISelection, SELECTION_CHANGE } from './ISelection';
 import EventGroup from '../eventGroup/EventGroup';
-
-export const SELECTION_CHANGE = 'change';
 
 export class Selection implements ISelection {
   public count: number;

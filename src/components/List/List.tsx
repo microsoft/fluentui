@@ -15,7 +15,14 @@ export interface IListProps {
 
 export interface IListState {
   pages?: any[];
-  surfaceStyle?: { [ key: string ]: any };
+  containerRect?: IRect;
+}
+
+export interface IRect {
+  top: number;
+  left: number;
+  width: number;
+  height: number;
 }
 
 @withContainsFocus
@@ -25,8 +32,15 @@ export default class List extends React.Component<IListProps, any> {
     onRenderCell: (item, index, containsFocus) => (<div>{ item.name }</div>)
   };
 
+  public refs: {
+    [key: string]: React.ReactInstance,
+    root: HTMLElement,
+    surface: HTMLElement
+  };
+
   private _estimatedItemHeight: number;
   private _cachedPageHeights: { [key: string]: number };
+  private _scrollableElement: HTMLElement;
   private _events: EventGroup;
 
   constructor() {
@@ -41,15 +55,48 @@ export default class List extends React.Component<IListProps, any> {
     this._estimatedItemHeight = 30;
   }
 
+
   public componentDidMount() {
+     var scrollableElement = this._scrollableElement = this._getScrollableElement();
+
      this._updatePages();
 
-     this._events.on(window, 'scroll', this._updatePages);
+     if (scrollableElement === document.body) {
+       scrollableElement = window as any;
+     }
+
+     this._events.on(scrollableElement, 'scroll', this._updatePages);
      this._events.on(window, 'resize', this._updatePages);
   }
 
   public componentWillUnmount() {
     this._events.dispose();
+  }
+
+
+  public shouldComponentUpdate(newProps: IListProps, newState: IListState) {
+    let { pages:oldPages, containerRect:oldContainerRect } = this.state;
+    let { pages:newPages, containerRect:newContainerRect } = newState;
+    let shouldComponentUpdate = false;
+
+    if (newProps.containsFocus === this.props.containsFocus &&
+      oldPages.length === newPages.length &&
+      areEqualSize(oldContainerRect, newContainerRect)) {
+      for (let i = 0; i < oldPages.length; i++) {
+        let oldPage = oldPages[i];
+        let newPage = newPages[i];
+
+        if ((oldPage.startIndex !== newPage.startIndex ||
+            oldPage.itemCount !== newPage.itemCount)) {
+          shouldComponentUpdate = true;
+          break;
+        }
+      }
+    } else {
+      shouldComponentUpdate = true;
+    }
+
+    return shouldComponentUpdate;
   }
 
   public render() {
@@ -58,7 +105,7 @@ export default class List extends React.Component<IListProps, any> {
     let { pages, surfaceStyle } = this.state;
 
     return (
-      <div className={ rootClass }>
+      <div ref='root' className={ rootClass }>
         <div ref='surface' className='ms-List-surface' style={ surfaceStyle }>
         { pages.map(page => (
           <div className='ms-List-page' key={ page.key } ref={ page.key } style={ page.style }>
@@ -93,7 +140,7 @@ export default class List extends React.Component<IListProps, any> {
     let { items, itemsPerPage } = this.props;
     let { pages, surfaceStyle } = this.state;
     let hasUpdatedState = false;
-
+    let containerRect = this._getScrollableContainerRect();
     // If no items, no-op.
     if (!items || !items.length) {
       return;
@@ -102,16 +149,12 @@ export default class List extends React.Component<IListProps, any> {
     // Rebuild pages.
     this._updatePageMeasurements();
 
-    pages = this._buildPages();
+    pages = this._buildPages(containerRect);
 
-    if (true /* hasUpdatedState */) {
-      surfaceStyle = {};
-
-      this.setState({
-        pages: pages,
-        surfaceStyle: surfaceStyle
-      });
-    }
+    this.setState({
+      pages: pages,
+      containerRect: containerRect
+    });
   }
 
   private _updatePageMeasurements() {
@@ -137,9 +180,9 @@ export default class List extends React.Component<IListProps, any> {
       }
   }
 
-  private _buildPages(): any[] {
-    let containerRect = this._getScrollableContainerRect();
+  private _buildPages(containerRect: any): any[] {
     let { items } = this.props;
+    let { pages:currentPages } = this.state;
     let startHeight = 0;
     let endHeight = 0;
     let surfaceElement = this.refs['surface'] as HTMLElement;
@@ -203,6 +246,22 @@ export default class List extends React.Component<IListProps, any> {
     };
   }
 
+  private _getScrollableElement() {
+    let el = this.refs.root;
+
+    do {
+      let style = getComputedStyle(el);
+
+      if (style.overflowY == 'auto' || style.overflowY == 'scroll') {
+        break;
+      }
+
+      el = el.parentElement;
+    } while (el !== document.body);
+
+    return el;
+  }
+
   private _getScrollableContainerRect() {
     // If we are using body scroll, 0 to window.innerHeight is the constraint;
     // Otherwise, it's relative to the scrollable container which needs to be found.
@@ -228,4 +287,8 @@ export default class List extends React.Component<IListProps, any> {
     };
   }
 
+}
+
+function areEqualSize(rect1: IRect, rect2: IRect) {
+  return !!(rect1 && rect2 && rect1.width == rect2.width && rect1.height == rect2.height);
 }

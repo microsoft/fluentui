@@ -14,6 +14,8 @@ export { default as ContextualMenu } from './ContextualMenu/index';
 export * from './ContextualMenu/index';
 export { default as DatePicker } from './DatePicker/index';
 export * from './DatePicker/index';
+export { default as DetailsList } from './DetailsList/index';
+export * from './DetailsList/index';
 export { default as Dialog } from './Dialog/index';
 export * from './Dialog/index';
 export { default as Dropdown } from './Dropdown/index';

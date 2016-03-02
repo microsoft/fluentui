@@ -6,7 +6,7 @@ $selectedColor: $ms-color-themeLighter;
 $selectedHoverColor: $ms-color-themeLight;
 $unselectedHoverColor: $ms-color-themeLighterAlt;
 
-.DetailsRow {
+.ms-DetailsRow {
   position: relative;
   display: inline-block;
   min-width: 100%;
@@ -24,20 +24,20 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
     outline: transparent;
   }
 
-  &.DetailsRow.is-selected {
+  &.ms-DetailsRow.is-selected {
     background: $selectedColor;
   }
 }
 
-.ms-Fabric.is-stationary .DetailsRow:hover {
+.ms-Fabric.is-stationary .ms-DetailsRow:hover {
   background: $unselectedHoverColor;
 }
 
-.ms-Fabric.is-stationary .DetailsRow.is-selected:hover {
+.ms-Fabric.is-stationary .ms-DetailsRow.is-selected:hover {
   background: $selectedHoverColor;
 }
 
-.DetailsRow-cell {
+.ms-DetailsRow-cell {
   display: inline-block;
   box-sizing: border-box;
   padding: 0 8px;
@@ -50,11 +50,11 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
   }
 }
 
-.DetailsRow-cell:last-child {
+.ms-DetailsRow-cell:last-child {
   margin-right: 0;
 }
 
-.DetailsRow-check {
+.ms-DetailsRow-check {
   display: inline-block;
   cursor: default;
   padding: 10px;
@@ -69,35 +69,16 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
   }
 }
 
-.DetailsRow-checkClip {
-  position: relative;
-  overflow: hidden;
-  width: 20px;
-  height: 20px;
+.ms-DetailsRow-check {
+  visibility: hidden;
 }
 
-.DetailsRow-checkImage {
-  position: absolute;
-  top: 0;
-  left: 20px;
-  height: 20px;
+.ms-Fabric.is-stationary .ms-DetailsRow:hover .ms-DetailsRow-check,
+.ms-DetailsRow.is-selected .ms-DetailsRow-check {
+  visibility: visible;
 }
 
-.ms-Fabric.is-stationary .DetailsRow:hover .DetailsRow-checkImage {
-  left: -20px;
-}
-
-.ms-Fabric.is-stationary .DetailsRow-check:hover .DetailsRow-checkImage {
-  left: -40px;
-}
-
-.DetailsRow.is-selected .DetailsRow-checkImage,
-.ms-Fabric.is-stationary .DetailsRow.DetailsRow.is-selected:hover .DetailsRow-checkImage,
-.ms-Fabric.is-stationary .DetailsRow.DetailsRow.is-selected .DetailsRow-check:hover .DetailsRow-checkImage {
-  left: -60px;
-}
-
-.ms-Fabric.is-focusVisible .DetailsRow:focus .DetailsRow-focusBox {
+.ms-Fabric.is-focusVisible .ms-DetailsRow:focus .ms-DetailsRow-focusBox {
   position: absolute;
   left: 0;
   right: 0;

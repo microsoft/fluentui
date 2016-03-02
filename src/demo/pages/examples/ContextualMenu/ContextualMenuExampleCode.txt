@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {default as ContextualMenu, ContextualMenuType } from '../../../../components/ContextualMenu/index';
+import ContextualMenu from '../../../../components/ContextualMenu/index';
+import ContextualMenuProps from './ContextualMenuProperties'
 
 
 export default class ContextualMenuExample extends React.Component<any, any> {
@@ -7,7 +8,6 @@ export default class ContextualMenuExample extends React.Component<any, any> {
     return (
       <div className='ContextualMenuExample'>
           <ContextualMenu
-            type = { ContextualMenuType.submenu }
             shouldFocusOnMount={ false }
             items={
               [
@@ -19,12 +19,10 @@ export default class ContextualMenuExample extends React.Component<any, any> {
                     {
                       key: 'emailMessage',
                       name: 'Email message',
-                      icon: 'mail'
                     },
                     {
                       key: 'calendarEvent',
                       name: 'Calendar event',
-                      icon: 'calendar'
                     }
                   ]
                 },
@@ -36,7 +34,6 @@ export default class ContextualMenuExample extends React.Component<any, any> {
                 {
                   key: 'rename',
                   name: 'Rename',
-                  icon: 'editBox'
                 },
                 {
                   key: '-',
@@ -55,7 +52,6 @@ export default class ContextualMenuExample extends React.Component<any, any> {
                     {
                       key: 'sharetofacebook',
                       name: 'Share to Facebook',
-                      icon: 'circleInfo'
                     },
                     {
                       key: 'sharetotwitter',
@@ -68,13 +64,11 @@ export default class ContextualMenuExample extends React.Component<any, any> {
                   key: 'print',
                   name: 'Print',
                   icon: 'print'
-                }
+                },
               ]
             }
           />
-
       </div>
     );
   }
-
 }

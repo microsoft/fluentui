@@ -6,7 +6,7 @@ module.exports = {
   },
   build: {
     paths: {
-      templateMatch: [ 'src/**/*.txt' ],
+      templateMatch: [ 'src/**/*.txt', 'src/**/*.Example.tsx' ],
       amdLibFolder: 'lib-amd'
     },
     copyTo: {
@@ -19,7 +19,8 @@ module.exports = {
     },
   },
   test: {
-    include: [ 'lib/tests.js' ]
+    include: [ 'lib/tests.js' ],
+    useWebpack: true
   },
   bundle: {
     entries: [

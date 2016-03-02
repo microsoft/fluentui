@@ -20,7 +20,8 @@ export interface IContextualMenuItem {
   icon?: string;
   isEnabled?: boolean;
   shortCut?: string;
-  checkMark?: boolean;
+  canCheck?: boolean;
+  isChecked?: boolean;
   onClick?: (ev: React.MouseEvent) => void;
   items?: IContextualMenuItem[];
 }
@@ -74,7 +75,6 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
 
     this._onKeyDown = this._onKeyDown.bind(this);
     this._onBlur = this._onBlur.bind(this);
-    this._onItemClick = this._onItemClick.bind(this);
     this._onContextMenuDismiss = this._onContextMenuDismiss.bind(this);
   }
 
@@ -97,7 +97,6 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
       positions: this._getRelativePositions(this.props)
     });
   }
-
 
   //Invoked when a component is receiving new props.
   public componentWillReceiveProps(newProps: IContextualMenuProps) {
@@ -134,6 +133,9 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     let { contextualMenuItems, expandedMenuItemKey, contextualMenuTarget, submenuProps, positions } = this.state;
     let left = 0;
 
+    let areAnyIconsVisible = items.some(item => !!item.icon);
+    let areAnyCheckmarksVisible = items.some(item => !!item.canCheck);
+
     if (!positions) {
       return (
         <div ref='host' className={ css('ms-ContextualMenu-container', className) } />
@@ -161,11 +163,15 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
             <li key={ item.key || index } className='ms-ContextualMenu-item' ref={ item.key }>
               <button
                 className={ css('ms-ContextualMenu-link', { 'is-expanded': (expandedMenuItemKey === item.key) }) }
-                onClick={ this._onItemClick }
+                onClick={ this._onItemClick.bind(this, item) }
                 data-command-key={ index }
                 role='menuitem'
               >
-                <span className={ `ms-ContextualMenu-icon ms-Icon ms-Icon--${ item.icon }` }></span>
+                { (areAnyIconsVisible) ? (
+                <span className={ 'ms-ContextualMenu-icon' +
+                  ((item.icon) ? ` ms-Icon ms-Icon--${ item.icon }` : ' no-icon')}>
+                </span>
+                ) : (null) }
                 <span className='ms-ContextualMenu-itemText ms-font-m ms-font-weight-regular'>{ item.name }</span>
                 { (item.items && item.items.length) ? (
                 <i className='ms-ContextualMenu-chevronRight ms-Icon ms-Icon--chevronRight' />
@@ -210,26 +216,33 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     }
   }
 
-  private _onItemClick(ev) {
-    let item = this.props.items[Number(ev.currentTarget.getAttribute('data-command-key'))];
-
-    if (item.key === this.state.expandedMenuItemKey || !item.items || !item.items.length) {
-      this._onContextMenuDismiss();
+  private _onItemClick(item: any, ev) {
+    if (!item.items || !item.items.length) { // This is an item without a menu. Click it.
+      if (item.onClick) {
+        item.onClick(item);
+        this._onContextMenuDismiss();
+      }
     } else {
-      this.setState({
-        submenuProps: {
-          items: item.items,
-          targetElement: ev.currentTarget,
-          menuKey: item.key,
-          onDismiss: this._onContextMenuDismiss
-        }
-      });
+      if (item.key === this.state.expandedMenuItemKey) { // This has an expanded sub menu. collapse it.
+        this._onContextMenuDismiss();
+      } else { // This has a collapsed sub menu. Expand it.
+        this.setState({
+          expandedMenuItemKey: item.key,
+          submenuProps: {
+            items: item.items,
+            targetElement: ev.currentTarget,
+            menuKey: item.key,
+            onDismiss: this._onContextMenuDismiss
+          }
+        });
+      }
     }
   }
 
   private _onContextMenuDismiss(ev?: any) {
     if (!ev || !ev.relatedTarget || !(this.refs['host'] as HTMLElement).contains(ev.relatedTarget as HTMLElement)) {
       this.setState({
+        expandedMenuItemKey: null,
         submenuProps: null
       });
     } else {
