@@ -146,9 +146,13 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
 
 
   private _onSelectionChanged() {
-    this.setState({
-      isAllSelected: this.props.selection.isAllSelected()
-    });
+    let isAllSelected = this.props.selection.isAllSelected();
+
+    if (this.state.isAllSelected !== isAllSelected) {
+      this.setState({
+        isAllSelected: isAllSelected
+      });
+    }
   }
 
   private _onSizerMove(ev: React.MouseEvent) {

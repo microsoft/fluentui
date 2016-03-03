@@ -99,7 +99,7 @@ const AppState: IAppState = {
           name: 'Checkbox',
           url: '#/examples/checkbox',
           component: CheckboxExample,
-          status: ExampleStatus.started
+          status: ExampleStatus.beta
         },
         {
           name: 'ChoiceGroup',
@@ -129,7 +129,7 @@ const AppState: IAppState = {
           name: 'DetailsList',
           url: '#/examples/detailslist',
           component: DetailsListExample,
-          status: ExampleStatus.started
+          status: ExampleStatus.beta
         },
         {
           name: 'Dialog',
@@ -141,7 +141,7 @@ const AppState: IAppState = {
           name: 'Dropdown',
           url: '#/examples/dropdown',
           component: DropdownExample,
-          status: ExampleStatus.started
+          status: ExampleStatus.beta
         },
         {
           name: 'Label',
@@ -159,7 +159,7 @@ const AppState: IAppState = {
           name: 'List',
           url: '#/examples/list',
           component: ListExample,
-          status: ExampleStatus.started
+          status: ExampleStatus.beta
         },
         {
           name: 'NavBar',

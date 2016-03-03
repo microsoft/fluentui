@@ -83,11 +83,11 @@ $unselectedHoverColor: $ms-color-neutralLight;
   font-family: inherit;
   text-align: left;
   height: $rowHeight;
+  vertical-align: top;
 
   &.is-check {
     position: relative;
     padding: 8px 10px;
-    vertical-align: top;
     margin: 0;
   }
 
