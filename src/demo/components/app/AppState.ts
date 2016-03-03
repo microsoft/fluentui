@@ -195,7 +195,7 @@ const AppState: IAppState = {
           name: 'Persona',
           url: '#/examples/persona',
           component: PersonaExample,
-          status: ExampleStatus.placeholder
+          status: ExampleStatus.beta
         },
         {
           name: 'PersonaCard',
