@@ -21,6 +21,9 @@ export class BasicButtonsExample extends React.Component<any, any> {
 
         <Label>Command button</Label>
         <Button type={ ButtonType.command } icon='personAdd' description='Description of the action this button takes'>Create account</Button>
+
+        <Label>Icon button</Label>
+        <Button type={ ButtonType.command } icon='star' title='Star' description='Take a star' />
       </div>
     );
   }

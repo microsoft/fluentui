@@ -13,6 +13,7 @@ export interface IButtonProps {
   children?: any;
   type?: ButtonType;
   icon?: string;
+  title?: string;
   description?: string;
   onClick?: (ev?: any) => void;
 }
@@ -23,7 +24,7 @@ export default class Button extends React.Component<IButtonProps, any> {
   };
 
   public render() {
-    let { type, children, icon, description, onClick } = this.props;
+    let { type, children, icon, title, description, onClick } = this.props;
     let rootClass = 'ms-Button'
       + (type === ButtonType.primary ? ' ms-Button--primary' : '')
       + (type === ButtonType.hero ? ' ms-Button--hero' : '')
@@ -40,7 +41,7 @@ export default class Button extends React.Component<IButtonProps, any> {
     }
 
     return (
-      <button className={ rootClass } onClick={ onClick }>
+      <button className={ rootClass } onClick={ onClick } title={ title }>
         { iconSpan }
         <span className="ms-Button-label">{ children }</span>
         { descriptionSpan }
