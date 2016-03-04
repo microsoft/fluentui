@@ -107,7 +107,7 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
               <button
                 id={ this._instanceId + item.key }
                 className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === item.key) }) }
-                onClick={ this._onItemClick }
+                onClick={ this._onItemClick.bind(this, item) }
                 data-command-key={ index }
                 aria-haspopup={ !!(item.items && item.items.length) }
               >
@@ -132,7 +132,7 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
               <button
                 id={ this._instanceId + item.key }
                 className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === item.key) }) }
-                onClick={ this._onItemClick }
+                onClick={ this._onItemClick.bind(this, item) }
                 data-command-key={ index }
                 aria-haspopup={ !!(item.items && item.items.length) }
               >
@@ -228,9 +228,7 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
     });
   }
 
-  private _onItemClick(ev) {
-    let item = this.state.renderedItems[Number(ev.currentTarget.getAttribute('data-command-key'))];
-
+  private _onItemClick(item, ev) {
     if (item.key === this.state.expandedMenuItemKey || !item.items || !item.items.length) {
       this._onContextMenuDismiss();
     } else {
