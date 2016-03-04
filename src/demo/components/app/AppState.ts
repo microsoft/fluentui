@@ -11,6 +11,7 @@ import DatePickerExample from '../../pages/examples/DatePicker/DatePickerExample
 import DetailsListExample from '../../pages/examples/DetailsList/DetailsListExample';
 import DialogExample from '../../pages/examples/Dialog/DialogExample';
 import DropdownExample from '../../pages/examples/Dropdown/DropdownExample';
+import FocusZoneExample from '../../pages/examples/FocusZone/FocusZoneExample';
 import LabelExample from '../../pages/examples/Label/LabelExample';
 import LinkExample from '../../pages/examples/Link/LinkExample';
 import ListExample from '../../pages/examples/List/ListExample';
@@ -256,7 +257,9 @@ const AppState: IAppState = {
         },
         {
           name: 'Focus zones',
-          url: '#examples/focuszone'
+          url: '#examples/focuszone',
+          component: FocusZoneExample,
+          status: ExampleStatus.started
         },
         {
           name: 'Selection management',

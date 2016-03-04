@@ -12,6 +12,8 @@ export enum FocusZoneDirection {
 export interface IFocusZoneProps {
   direction?: FocusZoneDirection;
   isEnabled?: boolean;
+  isCircularNavigation?: boolean;
+  isChildZone?: boolean;
   onLostFocus?: (ev: React.FocusEvent) => void;
 
   style?: { [key: string]: string };
@@ -20,18 +22,21 @@ export interface IFocusZoneProps {
   children?: React.ReactElement<any>[];
   role?: string;
   ariaLabelledBy?: string;
+  focusNamespace?: string;
   key?: string;
 }
 
 export interface IFocusZoneState {
   activeIndex: number;
-  focusElements?: any[]
 }
 
 export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZoneState> {
   public static defaultProps = {
     isEnabled: true,
-    direction: FocusZoneDirection.vertical
+    isCircularNavigation: false,
+    isChildZone: false,
+    direction: FocusZoneDirection.vertical,
+    focusNamespace: undefined
   };
 
   private _events: EventGroup;
@@ -41,7 +46,6 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
 
     this.state = {
       activeIndex: 0,
-      focusElements: []
     };
 
     this._events = new EventGroup(this);
@@ -65,9 +69,8 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
   }
 
   public render() {
-    let { className, style, isEnabled, role, ariaLabelledBy } = this.props;
+    let { className, style, isEnabled, role, ariaLabelledBy, focusNamespace, isChildZone } = this.props;
     let index = 0;
-    let focusElements = [];
     let { activeIndex } = this.state;
 
     function _mapChild(child) {
@@ -77,27 +80,41 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
         isEnabled = child.props['data-focus-zone-enabled'];
       }
 
-      if (isEnabled && child && typeof child !== 'string') {
-        if (
-          child.type === 'a' ||
-          child.type === 'button' ||
-          (child.props && child.props['data-is-focusable'])) {
-
-          // Create a cloned version with a ref and tabIndex.
+      // if there are nested components with focusable subcomponents
+      if (child && child.props && child.props['data-contains-focusable-subcomponents'] !== undefined){
+        if(child.props['data-contains-focusable-subcomponents'] === true) {
+          // Create a cloned version passing the current focusNamespace to the child
           let focusableElement = React.cloneElement(child, {
-            ref: index,
-            'data-focus-zone': index,
-            tabIndex: (index++ === activeIndex) ? 0 : -1,
+            ref: child.ref || index,
+            focusNamespace: child.focusNamespace || focusNamespace
           }, _mapChildren(child.props.children));
 
-          // Push it to the collection to track.
-          focusElements.push(focusableElement);
-
           // Return it to the map.
+          index++;
           child = focusableElement;
         }
-        else {
-          // If we don'e return a clone, our potential sub element updates won't be noticed.
+      }
+
+      // if the child element exists and is an object
+      if (isEnabled && child && typeof child !== 'string') {
+        // if the child should be focusable
+        if (child.type === 'a' || child.type === 'button' || child.props['data-is-focusable']) {
+          // if the focusable child element belongs to this focus zone
+          if ((!focusNamespace && !child.props['data-focusable-context']) ||
+          ((focusNamespace !== undefined && child.props['data-focusable-context']) &&
+          (focusNamespace == child.props['data-focusable-context']))) {
+            // Create a cloned version with a ref and tabIndex.
+            let focusableElement = React.cloneElement(child, {
+              ref: index,
+              'data-focus-zone': index,
+              tabIndex: (index++ === activeIndex) ? 0 : -1,
+            }, _mapChildren(child.props.children));
+
+            // Return it to the map.
+            child = focusableElement;
+          }
+        } else {
+          // If we don't return a clone, our potential sub element updates won't be noticed.
           child = React.cloneElement(child, null, _mapChildren(child.props.children));
         }
       }
@@ -115,12 +132,12 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
       }
     }
 
+    // Get the children to be rendered
     let newChildren = isEnabled ? _mapChildren(this.props.children) : this.props.children;
 
     // Assign the new state.
     this.state = {
-      activeIndex: Math.max(0, Math.min(focusElements.length - 1, activeIndex)),
-      focusElements: focusElements
+      activeIndex: Math.max(0, Math.min(this.getRefsCount() - 1, activeIndex))
     };
 
     return (
@@ -130,30 +147,66 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
     );
   }
 
-  public setActiveIndex(index: number) {
-    console.log(index);
+  public focus(activeIndex?) {
+    let ai = (activeIndex >= 0) ? activeIndex : this.state.activeIndex;
+    let el = ReactDOM.findDOMNode(this.refs[ai]) as HTMLElement;
 
-    if (index >= 0 && index < this.state.focusElements.length && index !== this.state.activeIndex) {
+    function _getFocusableInChildren(element) {
+      for (var child in element.children) {
+        if (element.children[child].getAttribute('data-is-focusable')|| el.tagName == "A" || el.tagName == "BUTTON") {
+          return element.children[child];
+        } else {
+          _getFocusableInChildren(element.children[child]);
+        }
+      }
+      return element;
+    }
+
+    if (!(el.getAttribute('data-is-focusable') || el.tagName == "A" || el.tagName == "BUTTON")) {
+      el = _getFocusableInChildren(el);
+    }
+
+    el.focus();
+
+    this.state = {
+      activeIndex: ai
+    };
+  }
+
+  private _onFocus(ev) {
+    let { focusNamespace } = this.props;
+    let index = 0;
+
+    function _scanInRefChildren(element) {
+      for (var child in element.children) {
+        if (element.children[child] === ev.target) {
+          return true;
+        } else {
+          _scanInRefChildren(element.children[child]);
+        }
+      }
+      return false;
+    }
+
+    if ((!focusNamespace && !ev.target.getAttribute('data-focusable-context')) ||
+    ((focusNamespace !== undefined && ev.target.getAttribute('data-focusable-context')) &&
+    (focusNamespace == ev.target.getAttribute('data-focusable-context')))) {
+      for (var ref in this.refs){
+        var actualRef = ReactDOM.findDOMNode(this.refs[ref]) as HTMLElement;
+
+        if (actualRef === ev.target) {
+          break;
+        } else if (_scanInRefChildren(actualRef)) {
+          break;
+        }
+
+        index++;
+      }
+
       this.setState({
         activeIndex: index
       });
     }
-  }
-
-  public focus() {
-    if (this.state.activeIndex >= 0) {
-      let el = ReactDOM.findDOMNode(this.refs[ this.state.activeIndex ]) as HTMLElement;
-
-      el.focus();
-    }
-  }
-
-  private _onFocus(ev) {
-    let index = Number(ev.target.attributes['data-focus-zone'].value);
-
-    this.setState({
-      activeIndex: index
-    });
   }
 
   private _onBlur(ev) {
@@ -166,11 +219,47 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
 
   }
 
+  private getRefsCount() {
+    let count = 0;
+    for (var ref in this.refs) {
+      count++;
+    }
+
+    return count -1;
+  }
+
+  private previousElement() {
+    let { activeIndex } = this.state;
+
+    if (this.props.isCircularNavigation && activeIndex === 0)
+    {
+      return this.props.isChildZone ? -1 : this.getRefsCount() -1;
+    }
+    else
+    {
+      return Math.max(0, activeIndex - 1);
+    }
+  }
+
+  private nextElement() {
+    let { activeIndex } = this.state;
+    let childCount = this.getRefsCount();
+
+    if (this.props.isCircularNavigation && activeIndex === childCount - 1)
+    {
+      return this.props.isChildZone ? -1 : 0;
+    }
+    else
+    {
+      return Math.min(childCount - 1, activeIndex + 1);
+    }
+  }
+
   private _onKeyDown(ev: KeyboardEvent) {
     let eventTarget = ev.target as HTMLElement;
     let isInput = _isInputElement(eventTarget);
     let { direction } = this.props;
-    let { activeIndex, focusElements } = this.state;
+    let { activeIndex } = this.state;
     let newActiveIndex = -1;
 
     // Ignore keyboard events if originating from INPUT elements or TEXTAREAs.
@@ -181,25 +270,25 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
     switch (ev.which) {
       case KeyCodes.up:
         if (direction === FocusZoneDirection.vertical) {
-          newActiveIndex = Math.max(0, activeIndex - 1);
+          newActiveIndex = this.previousElement();
         }
         break;
 
       case KeyCodes.down:
         if (direction === FocusZoneDirection.vertical) {
-          newActiveIndex = Math.min(focusElements.length - 1, activeIndex + 1);
+          newActiveIndex = this.nextElement();
         }
         break;
 
       case KeyCodes.left:
         if (direction === FocusZoneDirection.horizontal) {
-          newActiveIndex = Math.max(0, activeIndex - 1);
+          newActiveIndex = this.previousElement();
         }
         break;
 
       case KeyCodes.right:
         if (direction === FocusZoneDirection.horizontal) {
-          newActiveIndex = Math.min(focusElements.length - 1, activeIndex + 1);
+          newActiveIndex = this.nextElement();
         }
         break;
 
@@ -214,7 +303,7 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
         break;
 
       case KeyCodes.end:
-        newActiveIndex = focusElements.length - 1;
+        newActiveIndex = this.getRefsCount() - 1;
         break;
 
       default:
@@ -223,10 +312,7 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
     }
 
     if (newActiveIndex >= 0) {
-      this.setState({
-        activeIndex: newActiveIndex
-      }, () => this.focus());
-
+      this.focus(newActiveIndex);
       ev.stopPropagation();
       ev.preventDefault();
     }
