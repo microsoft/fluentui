@@ -2,7 +2,7 @@
 
 .ms-CommandBarItem-icon {
   margin-right: 5px;
-  width: 17px;
+  min-width: 17px;
 }
 
 
@@ -57,14 +57,14 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
 
 .ms-CommandBar-primaryCommands {
   overflow-x: hidden;
-  display: block;
+  display: inline;
   margin: 0 24px;
 }
 
 .ms-CommandBar-sideCommands {
   float: right;
   text-align: right;
-  margin-right: 8px;
+  padding-right: 24px;
 }
 
 // Command Bar Item
@@ -161,7 +161,6 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
   position: relative;
   box-sizing: border-box;
   border-color: transparent; // give a base state for animation
-  margin-right: 24px;
 
   @media screen and (-ms-high-contrast: active) {
     border-right: 1px solid $ms-color-white;

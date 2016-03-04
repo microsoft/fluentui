@@ -33,6 +33,7 @@ export interface ICommandBarState {
   expandedMenuId?: string;
   contextualMenuItems?: ICommandBarItem[];
   contextualMenuTarget?: HTMLElement;
+  renderedFarItems?: ICommandBarItem[];
 }
 
 export default class CommandBar extends React.Component<ICommandBarProps, ICommandBarState> {
@@ -53,7 +54,8 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
     this.state = {
       renderedItems: props.items || [],
       renderedOverflowItems: null,
-      contextualMenuItems: null
+      contextualMenuItems: null,
+      renderedFarItems: props.farItems || null,
     };
 
     this._instanceId = 'CommandBar-' + (_instance++) + '-';
@@ -78,12 +80,12 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
 
   public render() {
     const { isSearchBoxVisible, searchPlaceholderText, items, farItems } = this.props;
-    const { renderedItems, contextualMenuItems, expandedMenuItemKey, expandedMenuId, renderedOverflowItems, contextualMenuTarget } = this.state;
+    const { renderedItems, contextualMenuItems, expandedMenuItemKey, expandedMenuId, renderedOverflowItems, contextualMenuTarget, renderedFarItems } = this.state;
     let searchBox;
 
     if (isSearchBoxVisible) {
       searchBox = (
-        <div className='ms-CommandBarSearch'>
+        <div className='ms-CommandBarSearch' ref='searchSurface'>
           <input className='ms-CommandBarSearch-input' type='text' placeholder={ searchPlaceholderText } />
           <div className='ms-CommandBarSearch-iconWrapper ms-CommandBarSearch-iconSearchWrapper'>
             <i className='ms-Icon ms-Icon--search'></i>
@@ -96,7 +98,7 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
     }
 
     return (
-      <div className='ms-CommandBar'>
+      <div className='ms-CommandBar' ref='commandBarRegion'>
         { searchBox }
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           <div className='ms-CommandBar-primaryCommands' ref='commandSurface'>
@@ -124,6 +126,25 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
             </div>
             ] : []) }
           </div>
+          <div className='ms-CommandBar-sideCommands' ref='farCommandSurface'>
+            { renderedFarItems.map((item, index) => (
+            <div className='ms-CommandBarItem' key={ item.key } ref={ item.key }>
+              <button
+                id={ this._instanceId + item.key }
+                className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === item.key) }) }
+                onClick={ this._onItemClick }
+                data-command-key={ index }
+                aria-haspopup={ !!(item.items && item.items.length) }
+              >
+                <span className={ `ms-CommandBarItem-icon ms-Icon ms-Icon--${ item.icon }` }></span>
+                <span className='ms-CommandBarItem-commandText ms-font-m ms-font-weight-regular'>{ item.name }</span>
+                { (item.items && item.items.length) ? (
+                <i className='ms-CommandBarItem-chevronDown ms-Icon ms-Icon--chevronDown' />
+                )  : ( null ) }
+              </button>
+            </div>
+            )) }
+          </div>
         </FocusZone>
         { (contextualMenuItems) ?
         (<ContextualMenu
@@ -143,7 +164,8 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
   }
 
   private _updateItemMeasurements() {
-    this._overflowWidth = (this.refs[OVERFLOW_KEY] as HTMLElement).getBoundingClientRect().width;
+    // the generated width for overflow is 35 in chrome, 38 in IE, but the actual value is 41.5
+    this._overflowWidth = (this.refs[OVERFLOW_KEY] as HTMLElement).getBoundingClientRect().width + 6.5;
 
     for (let i = 0; i < this.props.items.length; i++) {
       let item = this.props.items[i];
@@ -159,11 +181,22 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
   private _updateRenderedItems() {
     let { items, overflowItems } = this.props;
     let commandSurface = this.refs['commandSurface'] as HTMLElement;
+    let farCommandSurface = this.refs['farCommandSurface'] as HTMLElement;
+    let commandBarRegion = this.refs['commandBarRegion'] as HTMLElement;
+    let searchSurface = this.refs['searchSurface'] as HTMLElement;
     let renderedItems = [].concat(items);
     let renderedOverflowItems = overflowItems;
-    let availableWidth = commandSurface.getBoundingClientRect().width;
     let consumedWidth = 0;
     let isOverflowVisible = overflowItems && overflowItems.length;
+
+    let style = window.getComputedStyle(commandSurface);
+    let availableWidth = commandBarRegion.clientWidth - parseInt(style.marginLeft) - parseInt(style.marginRight);
+    if (searchSurface) {
+      availableWidth -= searchSurface.getBoundingClientRect().width;
+    }
+    if (farCommandSurface) {
+      availableWidth -= farCommandSurface.getBoundingClientRect().width;
+    }
 
     if (isOverflowVisible) {
       availableWidth -= this._overflowWidth;
