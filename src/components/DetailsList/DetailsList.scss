@@ -6,4 +6,11 @@
 
 .ms-DetailsList.is-fixed {
   overflow-x: auto;
+  overflow-y: inherit;
 }
+
+.ms-DetailsList-cell {
+    word-break: break-word;
+}
+
+

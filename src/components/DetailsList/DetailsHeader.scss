@@ -6,6 +6,7 @@ $selectedHoverColor: $ms-color-themeLight;
 $unselectedHoverColor: $ms-color-neutralLight;
 
 .ms-DetailsHeader {
+  display: inline-block;
   min-width: 100%;
   height: $rowHeight;
   line-height: $rowHeight;
@@ -33,25 +34,13 @@ $unselectedHoverColor: $ms-color-neutralLight;
   }
 }
 
-.ms-DetailsHeader .ms-Check-circle {
+.ms-DetailsHeader-cell.is-check .ms-Check-circle {
   visibility: hidden;
 }
 
-.ms-DetailsHeader:hover .ms-Check-circle,
+.ms-DetailsHeader-cell.is-check:hover .ms-Check-circle,
 .ms-DetailsHeader.is-allSelected .ms-Check-circle {
   visibility: visible;
-}
-.ms-DetailsHeader-cell.is-check:hover .ms-DetailsHeader-checkImage {
-  left: -40px;
-}
-
-.ms-DetailsHeader.is-allSelected .ms-DetailsHeader-cell.is-check:hover .ms-DetailsHeader-checkImage {
-  left: -20px;
-}
-
-.ms-DetailsHeader.is-allSelected .ms-DetailsHeader-cell.is-check:hover .ms-DetailsHeader-checkImage,
-.ms-DetailsHeader.is-allSelected  .ms-DetailsHeader-checkImage {
-  left: -60px;
 }
 
 .ms-DetailsHeader-cellWrapper {
@@ -67,6 +56,12 @@ $unselectedHoverColor: $ms-color-neutralLight;
   &:last-child {
     margin-right: 0;
   }
+}
+
+.ms-DetailsHeader-filterChevron.ms-Icon {
+  color: $ms-color-neutralTertiary;
+  padding-left: 4px;
+  vertical-align: middle;
 }
 
 .ms-DetailsHeader-cell {

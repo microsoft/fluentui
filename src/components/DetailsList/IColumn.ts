@@ -7,6 +7,7 @@ interface IColumn {
   isCollapsable?: boolean;
   isSortable?: boolean;
   isSorted?: boolean;
+  isResizable?: boolean;
   isSortedDescending?: boolean;
   isClipped?: boolean;
   getCellContent?: (item: any, index?: number) => any;

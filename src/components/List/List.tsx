@@ -57,16 +57,17 @@ export default class List extends React.Component<IListProps, any> {
 
 
   public componentDidMount() {
-     var scrollableElement = this._scrollableElement = this._getScrollableElement();
+    let scrollableElements = this._getScrollableElements();
 
-     this._updatePages();
+    this._scrollableElement = scrollableElements[0];
 
-     if (scrollableElement === document.body) {
-       scrollableElement = window as any;
-     }
+    this._updatePages();
 
-     this._events.on(scrollableElement, 'scroll', this._updatePages);
-     this._events.on(window, 'resize', this._updatePages);
+    for (let el of scrollableElements) {
+      this._events.on(el, 'scroll', this._updatePages);
+    }
+    this._events.on(window, 'scroll', this._updatePages);
+    this._events.on(window, 'resize', this._updatePages);
   }
 
   public componentWillUnmount() {
@@ -75,8 +76,8 @@ export default class List extends React.Component<IListProps, any> {
 
 
   public shouldComponentUpdate(newProps: IListProps, newState: IListState) {
-    let { pages:oldPages, containerRect:oldContainerRect } = this.state;
-    let { pages:newPages, containerRect:newContainerRect } = newState;
+    let { pages: oldPages, containerRect: oldContainerRect } = this.state;
+    let { pages: newPages, containerRect: newContainerRect } = newState;
     let shouldComponentUpdate = false;
 
     if (newProps.containsFocus === this.props.containsFocus &&
@@ -87,7 +88,7 @@ export default class List extends React.Component<IListProps, any> {
         let newPage = newPages[i];
 
         if ((oldPage.startIndex !== newPage.startIndex ||
-            oldPage.itemCount !== newPage.itemCount)) {
+          oldPage.itemCount !== newPage.itemCount)) {
           shouldComponentUpdate = true;
           break;
         }
@@ -112,12 +113,12 @@ export default class List extends React.Component<IListProps, any> {
           { page.items ? page.items.map((item, itemIndex) => (
             <div className='ms-List-cell' key={ item.key }>
               { onRenderCell(item, page.startIndex + itemIndex, containsFocus) }
-            </div>
+              </div>
           )) : null }
-          </div>
+            </div>
         )) }
+          </div>
         </div>
-      </div>
     );
   }
 
@@ -162,27 +163,27 @@ export default class List extends React.Component<IListProps, any> {
     let totalHeight = 0;
     let renderedItemCount = 0;
 
-      for (let page of pages) {
-        if (page.items) {
-          let pageElement = this.refs[page.key] as HTMLElement;
+    for (let page of pages) {
+      if (page.items) {
+        let pageElement = this.refs[page.key] as HTMLElement;
 
-          if (pageElement) {
-            page.clientRect = pageElement.getBoundingClientRect();
-            totalHeight += page.clientRect.height;
-            renderedItemCount += page.itemCount;
-            this._cachedPageHeights[page.startIndex] = page.clientRect.height;
-          }
+        if (pageElement) {
+          page.clientRect = pageElement.getBoundingClientRect();
+          totalHeight += page.clientRect.height;
+          renderedItemCount += page.itemCount;
+          this._cachedPageHeights[page.startIndex] = page.clientRect.height;
         }
       }
+    }
 
-      if (!this._estimatedItemHeight) {
-        this._estimatedItemHeight = totalHeight / renderedItemCount;
-      }
+    if (!this._estimatedItemHeight) {
+      this._estimatedItemHeight = totalHeight / renderedItemCount;
+    }
   }
 
   private _buildPages(containerRect: any): any[] {
     let { items } = this.props;
-    let { pages:currentPages } = this.state;
+    let { pages: currentPages } = this.state;
     let startHeight = 0;
     let endHeight = 0;
     let surfaceElement = this.refs['surface'] as HTMLElement;
@@ -192,7 +193,7 @@ export default class List extends React.Component<IListProps, any> {
     let itemsPerPage = 1;
     let startSpacer = this._createPage('startSpacer', null, 0, 0);
     let endSpacer = this._createPage('endSpacer', null, 0, 0);
-    let pages = [ startSpacer ];
+    let pages = [startSpacer];
     let pageTop = 0;
 
     for (let itemIndex = 0; itemIndex < items.length; itemIndex += itemsPerPage) {
@@ -246,20 +247,21 @@ export default class List extends React.Component<IListProps, any> {
     };
   }
 
-  private _getScrollableElement() {
+  private _getScrollableElements() {
     let el = this.refs.root;
+    let elements = [];
 
-    do {
+    while (el !== document.body) {
       let style = getComputedStyle(el);
 
       if (style.overflowY == 'auto' || style.overflowY == 'scroll') {
-        break;
+        elements.push(el);
       }
 
       el = el.parentElement;
-    } while (el !== document.body);
+    }
 
-    return el;
+    return elements;
   }
 
   private _getScrollableContainerRect() {

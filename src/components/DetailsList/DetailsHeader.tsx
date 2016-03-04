@@ -105,14 +105,12 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
               >
                 <span className="ms-DetailsHeader-sortArrow ms-Icon ms-Icon--arrowUp2" />
                 { column.name }
+                { column.isFilterable ? (
+                  <i className='ms-DetailsHeader-filterChevron ms-Icon ms-Icon--chevronDown' />
+                ) : (null)}
               </button>
-              { column.isFilterable ? (
-                <button className='ms-DetailsHeader-cell is-filter'>
-                  <i className='ms-Icon ms-Icon--chevronDown' />
-                </button>
-              ) : (null)}
             </div>
-            { (layoutMode === DetailsListLayoutMode.fixedColumns) ? (
+            { (column.isResizable) ? (
             <button
               className={ css('ms-DetailsHeader-cell is-sizer', {
                 'is-resizing': columnResizeDetails && columnResizeDetails.columnIndex === columnIndex
