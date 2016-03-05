@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css } from '../../utilities/css';
-
+import Image from '../Image/Image';
 import './Persona.scss';
 
 export enum PersonaSize {
@@ -67,7 +67,7 @@ export class Persona extends React.Component<IPersonaProps, any> {
         { size !== PersonaSize.tiny ? (
         <div className='ms-Persona-imageArea'>
           <div className='ms-Persona-initials ms-Persona-initials--blue'>{ imageInitials }</div>
-          <img className='ms-Persona-image' src={ imageUrl } />
+          <Image className='ms-Persona-image' src={ imageUrl } />
         </div>
         ) : (null) }
         <div className='ms-Persona-presence'></div>

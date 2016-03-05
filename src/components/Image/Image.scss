@@ -1,0 +1,10 @@
+@import '../../common';
+
+.ms-Image {
+  opacity: 0;
+
+  &.is-loaded {
+    opacity: 1;
+  }
+}
+

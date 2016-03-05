@@ -38,6 +38,7 @@
   display: inline-block;
   vertical-align: top;
   box-sizing: border-box;
+  position: relative;
 
   .ms-Icon {
     font-size: 18px;
@@ -52,6 +53,12 @@
   }
 }
 
-.ms-Fabric.is-focusVisible .Header-button:focus {
-  outline: 1px solid $ms-color-themeLight;
+.ms-Fabric.is-focusVisible .Header-button:focus:before {
+  position: absolute;
+  content: '';
+  left: 2px;
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+  border: 1px solid $ms-color-themeLight;
 }
