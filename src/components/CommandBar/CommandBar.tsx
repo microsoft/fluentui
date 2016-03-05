@@ -36,7 +36,7 @@ export interface ICommandBarState {
   renderedFarItems?: ICommandBarItem[];
 }
 
-export default class CommandBar extends React.Component<ICommandBarProps, ICommandBarState> {
+export class CommandBar extends React.Component<ICommandBarProps, ICommandBarState> {
   public static defaultProps = {
     items: [],
     overflowItems: [],
@@ -268,5 +268,6 @@ export default class CommandBar extends React.Component<ICommandBarProps, IComma
       ev.preventDefault();
     }
   }
-
 }
+
+export default CommandBar;
