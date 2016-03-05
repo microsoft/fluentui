@@ -6,7 +6,11 @@ export interface IRouterProps {
   children?: React.ReactElement<any>[];
 }
 
-export default class Router extends React.Component<IRouterProps, any> {
+export interface IRouterState {
+  path: string;
+}
+
+export default class Router extends React.Component<IRouterProps, IRouterState> {
   private _events: EventGroup;
 
   constructor() {
@@ -18,13 +22,19 @@ export default class Router extends React.Component<IRouterProps, any> {
     this._events = new EventGroup(this);
   }
 
+  public componentDidUpdate(prevProps: IRouterProps, prevState: IRouterState) {
+    if (this.state.path !== prevState.path) {
+      window.scrollTo(0, 0);
+    }
+  }
+
   public render() {
     return _getComponent(this.state.path, this.props.children);
   }
 
   public componentDidMount() {
     this._events.on(window, 'hashchange', () => {
-      if (this.state.hash !== location.hash) {
+      if (this.state.path !== location.hash) {
         this.setState({ path: location.hash })
       }
     });
