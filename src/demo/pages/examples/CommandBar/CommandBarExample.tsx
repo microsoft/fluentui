@@ -8,7 +8,7 @@ import BasicCommandBarExample from './examples/Basic.Example';
 let BasicCommandBarExampleCode = require('./examples/Basic.Example.tsx');
 
 import FixedOverflowCommandBarExample from './examples/FixedOverflow.Example';
-import FixedOverflowCommandBarExampleCode = require('./examples/FixedOverflow.Example.tsx');
+let FixedOverflowCommandBarExampleCode = require('./examples/FixedOverflow.Example.tsx');
 
 export default class CommandBarExample extends React.Component<any, any> {
   public render() {
