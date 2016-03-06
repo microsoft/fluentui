@@ -73,6 +73,7 @@
   line-height: 40px;
   padding: 0 18px;
   position: relative;
+  white-space: nowrap;
 
   // Shorten the first and last items to maintain baseline alignment.
   &:first-child,

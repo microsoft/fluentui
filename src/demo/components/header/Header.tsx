@@ -59,8 +59,10 @@ export default class Header extends React.Component<IHeaderProps, any> {
           items={ contextMenu.items }
           isBeakVisible={ true }
           targetElement={ contextMenu.target }
-          horizontalAlignmentHint={ DirectionalHint.right }
+          typeAlignmentHint={ DirectionalHint.vertical }
+          horizontalAlignmentHint={ DirectionalHint.auto }
           verticalAlignmentHint={ DirectionalHint.bottom }
+          gapSpace={ 5 }
           onDismiss={ this._onDismiss } />
         ) : (null) }
       </div>

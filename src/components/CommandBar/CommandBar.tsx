@@ -155,7 +155,9 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
           targetElement={ contextualMenuTarget }
           onDismiss={ this._onContextMenuDismiss }
           isBeakVisible={ true }
-          horizontalAlignmentHint={DirectionalHint.left}
+          gapSpace={ 8 }
+          typeAlignmentHint={DirectionalHint.vertical}
+          horizontalAlignmentHint={DirectionalHint.auto}
           verticalAlignmentHint={DirectionalHint.bottom}
         />
         ) : (null)}
