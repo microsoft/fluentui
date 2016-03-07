@@ -86,7 +86,7 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
           // Create a cloned version passing the current focusNamespace to the child
           let focusableElement = React.cloneElement(child, {
             ref: child.ref || index,
-            focusNamespace: child.focusNamespace || focusNamespace
+            focusNamespace: child.props['focusNamespace'] || focusNamespace
           }, _mapChildren(child.props.children));
 
           // Return it to the map.
@@ -98,11 +98,9 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
       // if the child element exists and is an object
       if (isEnabled && child && typeof child !== 'string') {
         // if the child should be focusable
-        if (child.type === 'a' || child.type === 'button' || child.props['data-is-focusable']) {
+        if (_isFocusableElement(child)) {
           // if the focusable child element belongs to this focus zone
-          if ((!focusNamespace && !child.props['data-focusable-context']) ||
-          ((focusNamespace !== undefined && child.props['data-focusable-context']) &&
-          (focusNamespace == child.props['data-focusable-context']))) {
+          if (_belongsToFocusZone(focusNamespace, child)) {
             // Create a cloned version with a ref and tabIndex.
             let focusableElement = React.cloneElement(child, {
               ref: index,
@@ -153,7 +151,7 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
 
     function _getFocusableInChildren(element) {
       for (var child in element.children) {
-        if (element.children[child].getAttribute('data-is-focusable')|| el.tagName == "A" || el.tagName == "BUTTON") {
+        if (_isFocusableElement(element.children[child])) {
           return element.children[child];
         } else {
           _getFocusableInChildren(element.children[child]);
@@ -162,15 +160,15 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
       return element;
     }
 
-    if (!(el.getAttribute('data-is-focusable') || el.tagName == "A" || el.tagName == "BUTTON")) {
+    if (!_isFocusableElement(el)) {
       el = _getFocusableInChildren(el);
     }
 
     el.focus();
 
-    this.state = {
+    this.setState({
       activeIndex: ai
-    };
+    });
   }
 
   private _onFocus(ev) {
@@ -188,9 +186,7 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
       return false;
     }
 
-    if ((!focusNamespace && !ev.target.getAttribute('data-focusable-context')) ||
-    ((focusNamespace !== undefined && ev.target.getAttribute('data-focusable-context')) &&
-    (focusNamespace == ev.target.getAttribute('data-focusable-context')))) {
+    if (_belongsToFocusZone(focusNamespace, ev.target)) {
       for (var ref in this.refs){
         var actualRef = ReactDOM.findDOMNode(this.refs[ref]) as HTMLElement;
 
@@ -258,7 +254,7 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
   private _onKeyDown(ev: KeyboardEvent) {
     let eventTarget = ev.target as HTMLElement;
     let isInput = _isInputElement(eventTarget);
-    let { direction } = this.props;
+    let { direction, isChildZone } = this.props;
     let { activeIndex } = this.state;
     let newActiveIndex = -1;
 
@@ -311,7 +307,7 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
         return;
     }
 
-    if (newActiveIndex >= 0) {
+    if (newActiveIndex >= 0 && !isChildZone) {
       this.focus(newActiveIndex);
       ev.stopPropagation();
       ev.preventDefault();
@@ -323,4 +319,30 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
 
 function _isInputElement(element: HTMLElement) {
   return !!element && (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA');
+}
+
+function _isFocusableElement(element) {
+  // Element is HTMLElement
+  if (element.tagName) {
+    return element.getAttribute('data-is-focusable') ||
+           element.tagName == "BUTTON" ||
+           element.tagName == "A";
+  }
+  // Element is ReactElement
+  return element.props['data-is-focusable'] ||
+         element.type === 'button' ||
+         element.type === 'a';
+}
+
+function _belongsToFocusZone(focusNamespace: string, element) {
+  // Element is HTMLElement
+  if (element.tagName){
+    return (!focusNamespace && !element.target.getAttribute('data-focusable-context')) ||
+      ((focusNamespace !== undefined && element.target.getAttribute('data-focusable-context')) &&
+      (focusNamespace == element.target.getAttribute('data-focusable-context')));
+  }
+  // Element is ReactElement
+  return (!focusNamespace && !element.props['data-focusable-context']) ||
+    ((focusNamespace !== undefined && element.props['data-focusable-context']) &&
+    (focusNamespace == element.props['data-focusable-context']));
 }

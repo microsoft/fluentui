@@ -3,7 +3,9 @@ import Link from '../../../../components/Link/index';
 import ExampleCard from '../../../components/ExampleCard/index';
 import PropertiesTable from '../../../components/PropertiesTable/index';
 import CardExample from './examples/Card.Example';
+import ListExample from './examples/List.Example';
 let cardExampleCode = require('./examples/Card.Example.tsx');
+let listExampleCode = require('./examples/List.Example.tsx');
 
 export default class FocusZoneExample extends React.Component<any, any> {
   public render() {
@@ -18,6 +20,10 @@ export default class FocusZoneExample extends React.Component<any, any> {
 
         <ExampleCard title='Nested FocusZones' code={ cardExampleCode }>
           <CardExample />
+        </ExampleCard>
+
+        <ExampleCard title='List FocusZones' code={ listExampleCode }>
+          <ListExample />
         </ExampleCard>
 
       </div>
