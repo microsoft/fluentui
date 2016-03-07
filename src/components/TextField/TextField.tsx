@@ -15,7 +15,7 @@ export interface ITextFieldProps extends React.DOMAttributes {
   description?: string;
   iconClass?: string;
   value?: string;
-  onTextChange?: (newValue: any) => void;
+  onChange?: (newValue: any) => void;
   className?: string;
 }
 
@@ -66,16 +66,16 @@ export default class TextField extends React.Component<ITextFieldProps, any> {
   }
 
   private _onMultilineTextChange(ev: React.KeyboardEvent): void {
-    this._onTextChange(this.refs.multilineText.value);
+    this._onChange(this.refs.multilineText.value);
   }
 
   private _onSinglelineTextChange(ev: React.KeyboardEvent): void {
-    this._onTextChange(this.refs.singlelineText.value);
+    this._onChange(this.refs.singlelineText.value);
   }
 
-  private _onTextChange(newValue: string): void {
-    let { onTextChange } = this.props;
+  private _onChange(newValue: string): void {
+    let { onChange } = this.props;
 
-    onTextChange(newValue);
+    onChange(newValue);
   }
 }
