@@ -6,7 +6,7 @@ export interface IToggleProps {
   isToggled?: boolean;
   onText?: string;
   offText?: string;
-  onToggled?: (isChecked: boolean) => void;
+  onChange?: (isToggled: boolean) => void;
 }
 
 export default class Toggle extends React.Component<IToggleProps, any> {
@@ -40,8 +40,8 @@ export default class Toggle extends React.Component<IToggleProps, any> {
   }
 
   private _handleClick(ev: React.MouseEvent) {
-    if (this.props.onToggled) {
-      this.props.onToggled(!this.props.isToggled);
+    if (this.props.onChange) {
+      this.props.onChange(!this.props.isToggled);
     }
   }
 }

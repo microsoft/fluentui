@@ -17,7 +17,7 @@ export default class TextFieldExample extends React.Component<any, any> {
         <h2 className='ms-font-xl'>Examples</h2>
 
         <ExampleCard title='Default text field'>
-          <TextField label="Some Label" />
+          <TextField label="Some Label"/>
         </ExampleCard>
 
         <ExampleCard title='Placeholder'>
@@ -39,5 +39,4 @@ export default class TextFieldExample extends React.Component<any, any> {
       </div>
     );
   }
-
 }

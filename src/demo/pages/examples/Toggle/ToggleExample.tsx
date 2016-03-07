@@ -32,7 +32,7 @@ export default class ToggleExample extends React.Component<any, any> {
         <ExampleCard title='Toggle'>
           <Toggle
               isToggled={ this.state.isToggled }
-              onToggled={ this._onToggled }
+              onChange={ this._onToggled }
               label='Indoor lighting'
               onText='On'
               offText='Off' />

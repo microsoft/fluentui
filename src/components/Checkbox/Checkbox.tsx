@@ -5,7 +5,7 @@ export interface ICheckboxProps {
   text: string;
   isChecked?: boolean;
   isEnabled?: boolean;
-  onChanged?: (isChecked: boolean) => void;
+  onChange?: (isChecked: boolean) => void;
 }
 
 export interface ICheckboxState {
@@ -38,13 +38,13 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
   }
 
   render() {
-    let { text, isChecked, isEnabled, onChanged } = this.props;
+    let { text, isChecked, isEnabled, onChange } = this.props;
     let { id } = this.state;
     let rootClass = 'ms-ChoiceField';
 
     return (
       <div className={ rootClass }>
-        <input ref='input' id={ id } className='ms-ChoiceField-input' type='checkbox' defaultChecked={ isChecked } disabled={ !isEnabled } onChange={ this._onInputChanged } />
+        <input ref='input' id={ id } className='ms-ChoiceField-input' type='checkbox' checked={ isChecked } disabled={ !isEnabled } onChange={ this._onInputChanged } />
         <label htmlFor={ id } className='ms-ChoiceField-field'>
           <span className='ms-Label'>{ text }</span>
         </label>
@@ -52,11 +52,11 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
     );
   }
 
-  private _onInputChanged(ev) {
-    let { onChanged } = this.props;
+  private _onInputChanged(ev: React.FormEvent) {
+    let { onChange } = this.props;
 
-    if (onChanged) {
-      onChanged(this.refs.input.checked);
+    if (onChange) {
+      onChange(this.refs.input.checked);
     }
   }
 
