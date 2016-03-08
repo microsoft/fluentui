@@ -30,7 +30,7 @@ describe('Toggle', () => {
     let component = ReactTestUtils.renderIntoDocument(
       <Toggle
         label='Label'
-        onChange={ callback }
+        onChanged={ callback }
       />
     );
     let renderedDOM = ReactDOM.findDOMNode(component);

@@ -17,8 +17,8 @@ export default class CheckboxExample extends React.Component<any, any> {
         <h2 className='ms-font-xl'>Examples</h2>
 
         <ExampleCard title='Checkboxes'>
-          <Checkbox text='Unselected item' onChange={ this._onChangeCallback } />
-          <Checkbox text='Selected item' onChange={ this._onChangeCallback } isChecked={ true } />
+          <Checkbox text='Unselected item' onChanged={ this._onChangeCallback } />
+          <Checkbox text='Selected item' onChanged={ this._onChangeCallback } isChecked={ true } />
           <Checkbox text='Disabled item' isEnabled={ false } />
         </ExampleCard>
 
