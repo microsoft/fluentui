@@ -3,6 +3,11 @@ import * as ReactDOM from 'react-dom';
 import EventGroup from '../eventGroup/EventGroup';
 import KeyCodes from '../KeyCodes';
 
+const FOCUSABLE_ZONE_ENABLED_ATTRIBUTE = 'data-focus-zone-enabled';
+const CONTAINS_FOCUSABLE_SUBCOMPONENT_ATTRIBUTE = 'data-contains-focusable-subcomponents';
+const FOCUSABLE_CONTEXT_ATTRIBUTE = 'data-focusable-context';
+const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
+
 export enum FocusZoneDirection {
   vertical,
   horizontal,
@@ -76,13 +81,13 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
     function _mapChild(child) {
       let previousIsEnabled = isEnabled;
 
-      if (child && child.props && child.props['data-focus-zone-enabled'] !== undefined) {
-        isEnabled = child.props['data-focus-zone-enabled'];
+      if (child && child.props && child.props[FOCUSABLE_ZONE_ENABLED_ATTRIBUTE] !== undefined) {
+        isEnabled = child.props[FOCUSABLE_ZONE_ENABLED_ATTRIBUTE];
       }
 
       // if there are nested components with focusable subcomponents
-      if (child && child.props && child.props['data-contains-focusable-subcomponents'] !== undefined){
-        if(child.props['data-contains-focusable-subcomponents'] === true) {
+      if (child && child.props && child.props[CONTAINS_FOCUSABLE_SUBCOMPONENT_ATTRIBUTE] !== undefined){
+        if(child.props[CONTAINS_FOCUSABLE_SUBCOMPONENT_ATTRIBUTE] === true) {
           // Create a cloned version passing the current focusNamespace to the child
           let focusableElement = React.cloneElement(child, {
             ref: child.ref || index,
@@ -324,12 +329,12 @@ function _isInputElement(element: HTMLElement) {
 function _isFocusableElement(element) {
   // Element is HTMLElement
   if (element.tagName) {
-    return element.getAttribute('data-is-focusable') ||
+    return element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) ||
            element.tagName == "BUTTON" ||
            element.tagName == "A";
   }
   // Element is ReactElement
-  return element.props['data-is-focusable'] ||
+  return element.props[IS_FOCUSABLE_ATTRIBUTE] ||
          element.type === 'button' ||
          element.type === 'a';
 }
@@ -337,12 +342,12 @@ function _isFocusableElement(element) {
 function _belongsToFocusZone(focusNamespace: string, element) {
   // Element is HTMLElement
   if (element.tagName){
-    return (!focusNamespace && !element.target.getAttribute('data-focusable-context')) ||
-      ((focusNamespace !== undefined && element.target.getAttribute('data-focusable-context')) &&
-      (focusNamespace == element.target.getAttribute('data-focusable-context')));
+    return (!focusNamespace && !element.getAttribute(FOCUSABLE_CONTEXT_ATTRIBUTE)) ||
+      ((focusNamespace !== undefined && element.getAttribute(FOCUSABLE_CONTEXT_ATTRIBUTE)) &&
+      (focusNamespace == element.getAttribute(FOCUSABLE_CONTEXT_ATTRIBUTE)));
   }
   // Element is ReactElement
-  return (!focusNamespace && !element.props['data-focusable-context']) ||
-    ((focusNamespace !== undefined && element.props['data-focusable-context']) &&
-    (focusNamespace == element.props['data-focusable-context']));
+  return (!focusNamespace && !element.props[FOCUSABLE_CONTEXT_ATTRIBUTE]) ||
+    ((focusNamespace !== undefined && element.props[FOCUSABLE_CONTEXT_ATTRIBUTE]) &&
+    (focusNamespace == element.props[FOCUSABLE_CONTEXT_ATTRIBUTE]));
 }
