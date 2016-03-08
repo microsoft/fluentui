@@ -13,7 +13,7 @@ export interface IDropdownOption {
 export interface IDropdownProps {
   label: string;
   options: IDropdownOption[];
-  onChange?: (option: IDropdownOption, index?: number) => void;
+  onChanged?: (option: IDropdownOption, index?: number) => void;
   isDisabled?: boolean;
 }
 
@@ -80,7 +80,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
   }
 
   public setSelectedIndex(index: number) {
-    let { onChange, options } = this.props;
+    let { onChanged, options } = this.props;
     let { selectedIndex } = this.state;
 
     index = Math.max(0, Math.min(options.length - 1, index));
@@ -91,8 +91,8 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
         selectedIndex: index
       });
 
-      if (onChange) {
-        onChange(options[index], index);
+      if (onChanged) {
+        onChanged(options[index], index);
       }
     }
   }
