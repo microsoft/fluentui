@@ -36,14 +36,14 @@ export default class ScrollableDivExample extends React.Component<any, any> {
     return (
       <div className='ScrollableDivExample'>
         <div className='ScrollableDivExample-configPanel'>
-          <Dropdown label='Layout mode' onChange={ this._onLayoutChanged } options={
+          <Dropdown label='Layout mode' onChanged={ this._onLayoutChanged } options={
             Object.keys(DetailsListLayoutMode)
               .filter(key => !isNaN(Number(key)))
               .map(propName => (
                 { key: propName, text: DetailsListLayoutMode[propName], isSelected: layoutMode === Number(propName) }
               ))
           } />
-          <Dropdown label='Selection mode' onChange={ this._onSelectionChanged } options={
+          <Dropdown label='Selection mode' onChanged={ this._onSelectionChanged } options={
             Object.keys(SelectionMode)
               .filter(key => !isNaN(Number(key)))
               .map(propName => (
