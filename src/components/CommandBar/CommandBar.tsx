@@ -6,6 +6,7 @@ import { default as ContextualMenu, DirectionalHint } from '../ContextualMenu/in
 import { css } from '../../utilities/css';
 
 const OVERFLOW_KEY = 'overflow';
+const OVERFLOW_WIDTH = 41.5;
 
 let _instance = 0;
 
@@ -51,16 +52,10 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
   constructor(props: ICommandBarProps) {
     super(props);
 
-    this.state = {
-      renderedItems: props.items || [],
-      renderedOverflowItems: null,
-      contextualMenuItems: null,
-      renderedFarItems: props.farItems || null,
-    };
+    this.state = this._getStateFromProps(props);
 
     this._instanceId = 'CommandBar-' + (_instance++) + '-';
     this._events = new EventGroup(this);
-    this._commandItemWidths = {};
 
     this._onItemClick = this._onItemClick.bind(this);
     this._onOverflowClick = this._onOverflowClick.bind(this);
@@ -76,6 +71,18 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
 
   public componentWillUnmount() {
     this._events.dispose();
+  }
+
+  public componentWillReceiveProps(nextProps: ICommandBarProps) {
+    this.setState(this._getStateFromProps(nextProps));
+    this._commandItemWidths = null;
+  }
+
+  public componentDidUpdate(prevProps: ICommandBarProps, prevStates: ICommandBarState) {
+    if (!this._commandItemWidths) {
+      this._updateItemMeasurements();
+      this._updateRenderedItems();
+    }
   }
 
   public render() {
@@ -118,7 +125,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
                 ) : ( null ) }
               </button>
             </div>
-            )).concat((!renderedOverflowItems || renderedOverflowItems.length) ? [
+            )).concat((renderedOverflowItems && renderedOverflowItems.length) ? [
             <div className='ms-CommandBarItem' key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
               <button id={ this._instanceId + OVERFLOW_KEY } className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === OVERFLOW_KEY) }) } onClick={ this._onOverflowClick }>
                 <i className='ms-CommandBarItem-overflow ms-Icon ms-Icon--ellipsis' />
@@ -131,7 +138,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
             <div className='ms-CommandBarItem' key={ item.key } ref={ item.key }>
               <button
                 id={ this._instanceId + item.key }
-                className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === item.key) }) }
+                className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === item.key) }, {'is-static': (!item.onClick && !item.items)}) }
                 onClick={ this._onItemClick.bind(this, item) }
                 data-command-key={ index }
                 aria-haspopup={ !!(item.items && item.items.length) }
@@ -167,7 +174,15 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
 
   private _updateItemMeasurements() {
     // the generated width for overflow is 35 in chrome, 38 in IE, but the actual value is 41.5
-    this._overflowWidth = (this.refs[OVERFLOW_KEY] as HTMLElement).getBoundingClientRect().width + 6.5;
+    if (this.refs[OVERFLOW_KEY] || (this.props.overflowItems && this.props.overflowItems.length)) {
+      this._overflowWidth = OVERFLOW_WIDTH;
+    } else {
+      this._overflowWidth = 0;
+    }
+
+    if (!this._commandItemWidths) {
+      this._commandItemWidths = {};
+    }
 
     for (let i = 0; i < this.props.items.length; i++) {
       let item = this.props.items[i];
@@ -209,7 +224,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
       let itemWidth = this._commandItemWidths[item.key];
 
       if ((consumedWidth + itemWidth) >= availableWidth) {
-        if (i > 0 && !isOverflowVisible && (availableWidth - consumedWidth) < this._overflowWidth) {
+        if (i > 0 && !isOverflowVisible && (availableWidth - consumedWidth) < OVERFLOW_WIDTH) {
           i--;
         }
 
@@ -241,6 +256,9 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
         contextualMenuTarget: ev.currentTarget
       });
     }
+    if (item.onClick) {
+      item.onClick();
+    }
   }
 
   private _onOverflowClick(ev) {
@@ -269,6 +287,15 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
       ev.stopPropagation();
       ev.preventDefault();
     }
+  }
+
+  private _getStateFromProps(nextProps: ICommandBarProps) {
+    return {
+      renderedItems: nextProps.items || [],
+      renderedOverflowItems: null,
+      contextualMenuItems: null,
+      renderedFarItems: nextProps.farItems || null
+    };
   }
 }
 

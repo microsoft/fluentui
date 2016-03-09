@@ -10,6 +10,9 @@ let BasicCommandBarExampleCode = require('./examples/Basic.Example.tsx');
 import FixedOverflowCommandBarExample from './examples/FixedOverflow.Example';
 let FixedOverflowCommandBarExampleCode = require('./examples/FixedOverflow.Example.tsx');
 
+import ChangingItemsCommandBarExample from './examples/ChangingItems.Example';
+let ChangingItemsCommandBarExampleCode = require('./examples/ChangingItems.Example.tsx');
+
 export default class CommandBarExample extends React.Component<any, any> {
   public render() {
     return (
@@ -25,6 +28,10 @@ export default class CommandBarExample extends React.Component<any, any> {
 
         <ExampleCard title='CommandBar with no search box and fixed overflow items' code={ FixedOverflowCommandBarExampleCode }>
           <FixedOverflowCommandBarExample />
+        </ExampleCard>
+
+        <ExampleCard title='CommandBar with no search box and dynamically updated items' code={ ChangingItemsCommandBarExampleCode }>
+          <ChangingItemsCommandBarExample />
         </ExampleCard>
 
         <PropertiesTable properties={ CommandBarProps } />
