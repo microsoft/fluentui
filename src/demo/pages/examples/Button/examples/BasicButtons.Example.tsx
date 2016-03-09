@@ -20,7 +20,10 @@ export class BasicButtonsExample extends React.Component<any, any> {
         <Button type={ ButtonType.compound }>Create account</Button>
 
         <Label>Command button</Label>
-        <Button type={ ButtonType.command } description='Description of the action this button takes'>Create account</Button>
+        <Button type={ ButtonType.command } icon='personAdd' description='Description of the action this button takes'>Create account</Button>
+
+        <Label>Icon button</Label>
+        <Button type={ ButtonType.command } icon='star' title='Star' description='Take a star' />
       </div>
     );
   }
