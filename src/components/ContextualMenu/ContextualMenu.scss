@@ -1,4 +1,5 @@
 @import '../../common';
+@import '~office-ui-fabric/src/sass/Fabric.Animations';
 
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
 
@@ -6,6 +7,40 @@
 // Office UI Fabric
 // --------------------------------------------------
 // Contextual Menu styles
+
+// slideRightIn20
+@mixin ms-u-slideRightIn20 {
+    @include animationMix((fadeIn, slideRightIn20), $ms-duration3, $ms-ease1);
+}
+
+.ms-u-slideRightIn20 {
+    @include ms-u-slideRightIn20;
+}
+@-webkit-keyframes slideRightIn20 {
+    from { -webkit-transform:translate3d(-20px, 0px, 0px); }
+    to { -webkit-transform:translate3d(0px, 0px, 0px); }
+}
+@keyframes slideRightIn20 {
+    from { transform:translate3d(-20px, 0px, 0px); }
+    to { transform:translate3d(0px, 0px, 0px); }
+}
+
+// slideLeftIn20
+@mixin ms-u-slideLeftIn20 {
+    @include animationMix((fadeIn, slideLeftIn20), $ms-duration3, $ms-ease1);
+}
+
+.ms-u-slideLeftIn20 {
+    @include ms-u-slideLeftIn20;
+}
+@-webkit-keyframes slideLeftIn20 {
+    from { -webkit-transform:translate3d(20px, 0px, 0px); }
+    to { -webkit-transform:translate3d(0px, 0px, 0px); }
+}
+@keyframes slideLeftIn20 {
+    from { transform:translate3d(20px, 0px, 0px); }
+    to { transform:translate3d(0px, 0px, 0px); }
+}
 
 .ms-ContextualMenu-container {
   position: relative;

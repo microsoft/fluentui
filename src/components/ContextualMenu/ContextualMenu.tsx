@@ -10,6 +10,12 @@ const BEAK_WIDTH = 16;
 const BEAK_OFFSET = 6;
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 const OFF_SCREEN_POSITION = { top: 0, left: -9999 };
+const SLIDE_ANIMATIONS = {
+  up: 'slideUpIn20',
+  down: 'slideDownIn20',
+  left: 'slideLeftIn20',
+  right: 'slideRightIn20'
+};
 
 export enum DirectionalHint {
   auto,
@@ -57,6 +63,7 @@ export interface IContextualMenuState {
   beakStyle?: any;
   submenuProps?: IContextualMenuProps;
   positions?: any;
+  slideDirectionalClassName?: string;
 }
 
 export default class ContextualMenu extends React.Component<IContextualMenuProps, IContextualMenuState> {
@@ -151,7 +158,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
 
   public render() {
     let { className, menuKey, items, isBeakVisible, labelElementId, targetElement, horizontalAlignmentHint, verticalAlignmentHint } = this.props;
-    let { contextualMenuItems, expandedMenuItemKey, contextualMenuTarget, submenuProps, positions } = this.state;
+    let { contextualMenuItems, expandedMenuItemKey, contextualMenuTarget, submenuProps, positions, slideDirectionalClassName } = this.state;
     let left = 0;
 
     let areAnyIconsVisible = items.some(item => !!item.icon);
@@ -161,7 +168,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
       <div ref='host' className={ css('ms-ContextualMenu-container', className) }>
         { (items && items.length) ? (
         <FocusZone
-          className='ms-ContextualMenu is-open ms-u-slideDownIn10'
+          className={ 'ms-ContextualMenu is-open'+ ((slideDirectionalClassName) ? (` ms-u-${ slideDirectionalClassName }`) : (null)) }
           key={ menuKey }
           ref='focusZone' onLostFocus={ this._onBlur }
           role='menu'
@@ -268,10 +275,11 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
 
   private _getRelativePositions(props: IContextualMenuProps, state: IContextualMenuState) {
     let { targetElement, typeAlignmentHint, horizontalAlignmentHint, verticalAlignmentHint, gapSpace } = props;
-    let { positions } = state;
+    let { positions, slideDirectionalClassName } = state;
     let hostElement = this.refs.host;
     let menuElement = this.refs.menu;
-    let windowSize: {width: number, height: number} = {width: window.innerWidth, height: window.innerHeight};
+    let windowSize: { width: number, height: number } = { width: window.innerWidth, height: window.innerHeight };
+    let directionalClassName: string;
 
     let position = {
       top: 0,
@@ -368,8 +376,11 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
         if(actualVerticalDirection == DirectionalHint.top){
           position.top = targetRect.top - hostRect.top - gapSpace - menuRect.height;
           beakPosition.top = menuRect.height - BEAK_WIDTH / 2;
+          directionalClassName = SLIDE_ANIMATIONS.up;
         } else {
           position.top = targetRect.bottom - hostRect.top + gapSpace;
+          // Beak vertical position is in default position
+          directionalClassName = SLIDE_ANIMATIONS.down;
         }
 
       // ContextualMenu submenu render type: horizontal
@@ -430,9 +441,11 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
         if (actualHorizontalDirection == DirectionalHint.left) {
           position.left = targetRect.left - hostRect.left - gapSpace - menuRect.width;
           beakPosition.left = menuRect.width - 2 * BEAK_OFFSET;
+          directionalClassName = SLIDE_ANIMATIONS.left;
         } else {
           position.left = targetRect.right - hostRect.left + gapSpace;
           beakPosition.left = -BEAK_OFFSET;
+          directionalClassName = SLIDE_ANIMATIONS.right;
         }
 
         // Calculate vertical position based on actualVerticalDirection
@@ -458,6 +471,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
             menu: newPositions.menu,
             beak: newPositions.beak
         },
+        slideDirectionalClassName: directionalClassName,
       });
     }
   }
