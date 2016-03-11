@@ -5,12 +5,12 @@
       "name": "Launch",
       "type": "node",
       "request": "launch",
-      "program": "node_modules/gulp/bin/gulp.js",
+      "program": "${workspaceRoot}/node_modules/gulp/bin/gulp.js",
       "stopOnEntry": false,
       "args": [
         "serve"
       ],
-      "cwd": ".",
+      "cwd": "${workspaceRoot}",
       "runtimeExecutable": null,
       "runtimeArgs": [
         "--nolazy",

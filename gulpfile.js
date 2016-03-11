@@ -1,23 +1,34 @@
 'use strict';
 
-let build = require('@ms/ms-core-build');
-let sass = require('@ms/ms-core-build-sass');
-
+let build = require('web-library-build');
 let gulp = require('gulp');
-let ftp = require('vinyl-ftp');
-let git = require('git-rev');
-let debug = require('gulp-debug');
-let gutil = require('gulp-util');
-let os = require('os');
-let currentbranch;
 
-build.initializeTasks(
-  gulp,
-  require('./config'),
-  [ sass ]
-);
+/** @todo: disable lint config. */
+build.tasks.tslint.config({ lintConfig: null });
 
+// process *.Example.tsx as text.
+build.tasks.text.config({ textMatch: [ 'src/**/*.txt', 'src/**/*.Example.tsx' ] });
+build.tasks.serve.config({ root });
+
+// configure amd libraries to be built when the production flag is present.
+if (process.argv.indexOf('--production') >= 0) {
+  build.config({
+    libAMDFolder: 'lib-amd'
+  });
+}
+
+// initialize tasks.
+build.initialize(gulp);
+
+/** @todo: This probably be deleted before we ship... RealHumanBeans13... yeah... */
 gulp.task('deploy', ['bundle'],  function() {
+  let ftp = require('vinyl-ftp');
+  let git = require('git-rev');
+  let debug = require('gulp-debug');
+  let gutil = require('gulp-util');
+  let os = require('os');
+  let currentbranch;
+
   return git.branch(function(branch) {
     currentbranch = os.hostname().split('.')[0] + '-' + branch.replace('/', '-');
     let ftpConnection = ftp.create({
