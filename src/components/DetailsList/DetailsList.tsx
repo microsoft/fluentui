@@ -29,7 +29,7 @@ export interface IDetailsListState {
   lastWidth?: number;
   lastSelectionMode?: SelectionMode;
   adjustedColumns?: IColumn[];
-  columnOverrides?: { [ key: string ]: IColumn }
+  columnOverrides?: { [key: string]: IColumn }
 }
 
 export interface IDetailsListViewData {
@@ -53,6 +53,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
   private _events: EventGroup;
   private _selection: ISelection;
+  private _previousFocusIndex: number;
 
   public componentDidMount() {
   }
@@ -85,12 +86,12 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   public render() {
     let { className, items, viewport, layoutMode, selectionMode } = this.props;
     let { adjustedColumns } = this.state;
-    let { _selection:selection } = this;
+    let { _selection: selection } = this;
 
     return (
       <div className={css('ms-DetailsList', className, {
         'is-fixed': layoutMode === DetailsListLayoutMode.fixedColumns
-      })}>
+      }) }>
         <SelectionZone selection={ this._selection } selectionMode={ selectionMode }>
           <DetailsHeader
             ref='header'
@@ -99,7 +100,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
             selection={ selection }
             columns={ adjustedColumns }
             onColumnResized={ this._onColumnResized }
-          />
+            />
           <List
             ref='list'
             items={ items }
@@ -111,15 +112,13 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                 selectionMode={ selectionMode }
                 selection={ selection }
                 shouldSetFocus={ containsFocus }
-              />
-              ) }
-          />
+                />
+            ) }
+            />
         </SelectionZone>
       </div>
     );
   }
-
-  private _previousFocusIndex: number;
 
   private _onAllSelectedChanged() {
     this._selection.toggleAllSelected();
@@ -145,22 +144,22 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   private _getAdjustedColumns(newProps: IDetailsListProps, forceUpdate?: boolean): IColumn[] {
     let { columns: newColumns, viewport: { width: viewportWidth }, selectionMode, layoutMode } = newProps;
     let columns = this.props ? this.props.columns : [];
-	  let lastWidth = this.state ? this.state.lastWidth : -1;
+    let lastWidth = this.state ? this.state.lastWidth : -1;
     let lastSelectionMode = this.state ? this.state.lastSelectionMode : undefined;
     let columnOverrides = this.state ? this.state.columnOverrides : {};
 
     if (viewportWidth !== undefined) {
       if (!forceUpdate &&
-          lastWidth === viewportWidth &&
-          lastSelectionMode === selectionMode &&
-          (!columns || newColumns === columns)) {
+        lastWidth === viewportWidth &&
+        lastSelectionMode === selectionMode &&
+        (!columns || newColumns === columns)) {
         return;
       }
     } else {
       viewportWidth = this.props.viewport.width;
     }
 
-    columns = columns || this._buildColumns(this.props.items);
+    newColumns = newColumns || buildColumns(this.props.items);
 
     let adjustedColumns = [];
     let outerPadding = 0;
@@ -177,8 +176,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     }
 
     // First, add all of the minimum widths, noting the lastColumn the fits within viewport width.
-    for (let i = 0; i < columns.length; i++) {
-      let column = assign({}, columns[i], columnOverrides[columns[i].key]);
+    for (let i = 0; i < newColumns.length; i++) {
+      let column = assign({}, newColumns[i], columnOverrides[newColumns[i].key]);
       let padding = (i > 0 ? innerPadding : 0);
       let minWidth = column.minWidth || column.maxWidth || 150;
 
@@ -220,39 +219,38 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
     this._adjustColumns(this.props, true);
   }
+}
 
-  private _buildColumns(items) {
-    let columns:IColumn[] = [];
+export function buildColumns(items) {
+  let columns: IColumn[] = [];
 
-    if (items && items.length) {
-      let firstItem = items[0];
-      let totalStringLength = 0;
-      let isFirstColumn = true;
+  if (items && items.length) {
+    let firstItem = items[0];
+    let totalStringLength = 0;
+    let isFirstColumn = true;
 
-      for (let propName in firstItem) {
-        if (firstItem.hasOwnProperty(propName)) {
-          columns.push({
-            key: propName,
-            name: propName,
-            fieldName: propName,
-            minWidth: 220,
-            maxWidth: 300,
-            isCollapsable: !!columns.length,
-            isClipped: true,
-            isSortable: true,
-            isSorted: isFirstColumn,
-            isSortedDescending: false,
-            isFilterable: isFirstColumn
-          });
+    for (let propName in firstItem) {
+      if (firstItem.hasOwnProperty(propName)) {
+        columns.push({
+          key: propName,
+          name: propName,
+          fieldName: propName,
+          minWidth: 220,
+          maxWidth: 300,
+          isCollapsable: !!columns.length,
+          isClipped: true,
+          isSortable: true,
+          isSorted: isFirstColumn,
+          isSortedDescending: false,
+          isFilterable: isFirstColumn
+        });
 
-          isFirstColumn = false;
-        }
+        isFirstColumn = false;
       }
     }
-
-    return columns;
   }
 
+  return columns;
 }
 
 export default DetailsList;

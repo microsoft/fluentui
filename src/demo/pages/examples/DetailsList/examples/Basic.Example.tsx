@@ -1,11 +1,14 @@
 import * as React from 'react';
 
 import {
+  IColumn,
   DetailsList,
+  buildColumns,
   DetailsListLayoutMode,
   SelectionMode,
   Link,
-  Dropdown
+  Dropdown,
+  Checkbox
 } from '../../../../../components/index';
 
 import { createListItems } from './data';
@@ -13,7 +16,14 @@ import './Basic.Example.scss';
 
 let _items;
 
-export default class ScrollableDivExample extends React.Component<any, any> {
+export interface IDetailsListBasicExampleState {
+  layoutMode?: DetailsListLayoutMode,
+  selectionMode?: SelectionMode,
+  canResizeColumns?: boolean,
+  columns?: IColumn[]
+}
+
+export default class DetailsListBasicExample extends React.Component<any, IDetailsListBasicExampleState> {
   constructor() {;
     super();
 
@@ -21,21 +31,24 @@ export default class ScrollableDivExample extends React.Component<any, any> {
       _items = createListItems(10000);
     }
 
+    this._onResizeChanged = this._onResizeChanged.bind(this);
     this._onLayoutChanged = this._onLayoutChanged.bind(this);
     this._onSelectionChanged = this._onSelectionChanged.bind(this);
 
     this.state = {
       layoutMode: DetailsListLayoutMode.justified,
-      selectionMode: SelectionMode.multiple
+      selectionMode: SelectionMode.multiple,
+      canResizeColumns: false,
+      columns: this._getColumns(_items, false)
     };
   }
 
   public render() {
-    let { layoutMode, selectionMode } = this.state;
+    let { layoutMode, selectionMode, canResizeColumns, columns } = this.state;
 
     return (
-      <div className='ScrollableDivExample'>
-        <div className='ScrollableDivExample-configPanel'>
+      <div className='DetailsListBasicExample'>
+        <div className='DetailsListBasicExample-configPane'>
           <Dropdown label='Layout mode' onChanged={ this._onLayoutChanged } options={
             Object.keys(DetailsListLayoutMode)
               .filter(key => !isNaN(Number(key)))
@@ -51,13 +64,26 @@ export default class ScrollableDivExample extends React.Component<any, any> {
               ))
           } />
         </div>
+
+        <div className='DetailsListBasicExample-configPane'>
+          <Checkbox text='Allow column resizing' isChecked={ canResizeColumns } onChanged={ this._onResizeChanged } />
+        </div>
+
         <DetailsList
           items={ _items }
+          columns={ columns }
           layoutMode={ layoutMode }
           selectionMode={ selectionMode }
         />
       </div>
     );
+  }
+
+  private _onResizeChanged(isChecked) {
+    this.setState({
+      canResizeColumns: isChecked,
+      columns: this._getColumns(_items, isChecked)
+    });
   }
 
   private _onLayoutChanged(option) {
@@ -70,6 +96,14 @@ export default class ScrollableDivExample extends React.Component<any, any> {
     this.setState({
       selectionMode: Number(option.key)
     });
+  }
+
+  private _getColumns(items: any[], canResizeColumns: boolean) {
+    let columns = buildColumns(items);
+
+    columns.forEach(column => column.isResizable = canResizeColumns);
+
+    return columns;
   }
 
 }
