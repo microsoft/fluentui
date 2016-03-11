@@ -1,0 +1,31 @@
+@import "~office-ui-fabric/src/sass/Fabric.Common";
+@import "~office-ui-fabric/src/components/Spinner/Spinner";
+
+$animationSpeed: 750ms;
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  100% {
+     opacity: 0;
+  }
+}
+
+.ms-Spinner-circle {
+  position: absolute;
+  border-radius: 100px;
+  background-color: $ms-color-themePrimary;
+  opacity: 0;
+  animation-name: pulse;
+  animation-duration: $animationSpeed;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@for $i from 1 to 8 {
+  .ms-Spinner-circle:nth-child(#{$i}) {
+    opacity: 1 - ($i / 8);
+    animation-delay: ($i / 8) * $animationSpeed;
+  }
+}

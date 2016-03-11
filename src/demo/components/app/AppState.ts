@@ -226,7 +226,7 @@ const AppState: IAppState = {
           name: 'Spinner',
           url: '#/examples/spinner',
           component: SpinnerExample,
-          status: ExampleStatus.placeholder
+          status: ExampleStatus.beta
         },
         {
           name: 'Table',
