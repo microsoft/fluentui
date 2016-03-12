@@ -16,7 +16,7 @@ export interface IExampleCardState {
   isExampleShown?: boolean;
 }
 
-export default class ExampleCard extends React.Component<IExampleCardProps, IExampleCardState> {
+export class ExampleCard extends React.Component<IExampleCardProps, IExampleCardState> {
 
   constructor(props: IExampleCardProps) {
     super(props);
@@ -50,22 +50,23 @@ export default class ExampleCard extends React.Component<IExampleCardProps, IExa
       <div className={ rootClass }>
         <div className='ExampleCard-header'>
           <span className='ExampleCard-title ms-font-l'>{ title }</span>
-          { (code ? (
-          <span className='ExampleCard-toggleCode ms-font-l'>
+          <span className='ExampleCard-toggleButtons ms-font-l'>
+            <Button type={ ButtonType.primary } onClick={ this._onShowExampleClick }>{ isExampleShown ? 'Hide example' : 'Show example' }</Button>
+            { code ? (
             <Button type={ ButtonType.primary } onClick={ this._onToggleCodeClick }>{ isCodeVisible ? 'Hide code' : 'Show code' }</Button>
+            ) : ( null ) }
           </span>
-          ) : null) }
         </div>
+        { (isExampleShown || isCodeVisible) ? (
         <div className={ 'ExampleCard-content' + (isCodeVisible ? ' ms-u-slideDownIn20' : '') }>
           { codeExample }
             { isExampleShown ? (
             <div className='ExampleCard-example'>
               { children }
             </div>
-            ) : (
-            <Button type={ ButtonType.primary } onClick={ this._onShowExampleClick }>Show example</Button>
-            ) }
+            ) : ( null ) }
         </div>
+        ) : (null) }
       </div>
     );
   }

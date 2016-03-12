@@ -49,7 +49,7 @@ const DEFAULT_COLUMNS: IColumn[] = [
   }
 ];
 
-export default class PropertiesTable extends React.Component<IPropertiesTableProps, any> {
+export class PropertiesTable extends React.Component<IPropertiesTableProps, any> {
   public static defaultProps = {
     title: 'Properties'
   };
@@ -84,5 +84,4 @@ export default class PropertiesTable extends React.Component<IPropertiesTablePro
       </div>
     );
   }
-
 }

@@ -1,34 +1,34 @@
 import * as React from 'react';
 
-import BreadcrumbExample from '../../pages/examples/Breadcrumb/BreadcrumbExample';
-import ButtonExample from '../../pages/examples/Button/ButtonExample';
-import CalloutExample from '../../pages/examples/Callout/CalloutExample';
-import CheckboxExample from '../../pages/examples/Checkbox/CheckboxExample';
-import ChoiceGroupExample from '../../pages/examples/ChoiceGroup/ChoiceGroupExample';
-import CommandBarExample from '../../pages/examples/CommandBar/CommandBarExample';
-import ContextualMenuExample from '../../pages/examples/ContextualMenu/ContextualMenuExample';
-import DatePickerExample from '../../pages/examples/DatePicker/DatePickerExample';
-import DetailsListExample from '../../pages/examples/DetailsList/DetailsListExample';
-import DialogExample from '../../pages/examples/Dialog/DialogExample';
-import DropdownExample from '../../pages/examples/Dropdown/DropdownExample';
-import FocusZoneExample from '../../pages/examples/FocusZone/FocusZoneExample';
-import LabelExample from '../../pages/examples/Label/LabelExample';
-import LinkExample from '../../pages/examples/Link/LinkExample';
-import ListExample from '../../pages/examples/List/ListExample';
-import NavBarExample from '../../pages/examples/NavBar/NavBarExample';
-import OrgChartExample from '../../pages/examples/OrgChart/OrgChartExample';
-import OverlayExample from '../../pages/examples/Overlay/OverlayExample';
-import PanelExample from '../../pages/examples/Panel/PanelExample';
-import PeoplePickerExample from '../../pages/examples/PeoplePicker/PeoplePickerExample';
-import PersonaCardExample from '../../pages/examples/PersonaCard/PersonaCardExample';
-import PersonaExample from '../../pages/examples/Persona/PersonaExample';
-import PivotExample from '../../pages/examples/Pivot/PivotExample';
-import ProgressIndicatorExample from '../../pages/examples/ProgressIndicator/ProgressIndicatorExample';
-import SearchBoxExample from '../../pages/examples/SearchBox/SearchBoxExample';
-import SpinnerExample from '../../pages/examples/Spinner/SpinnerExample';
-import TableExample from '../../pages/examples/Table/TableExample';
-import TextFieldExample from '../../pages/examples/TextField/TextFieldExample';
-import ToggleExample from '../../pages/examples/Toggle/ToggleExample';
+import BreadcrumbPage from '../../pages/BreadcrumbPage/BreadcrumbPage';
+import ButtonPage from '../../pages/ButtonPage/ButtonPage';
+import CalloutPage from '../../pages/CalloutPage/CalloutPage';
+import CheckboxPage from '../../pages/CheckboxPage/CheckboxPage';
+import ChoiceGroupPage from '../../pages/ChoiceGroupPage/ChoiceGroupPage';
+import CommandBarPage from '../../pages/CommandBarPage/CommandBarPage';
+import ContextualMenuPage from '../../pages/ContextualMenuPage/ContextualMenuPage';
+import DatePickerPage from '../../pages/DatePickerPage/DatePickerPage';
+import DetailsListPage from '../../pages/DetailsListPage/DetailsListPage';
+import DialogPage from '../../pages/DialogPage/DialogPage';
+import DropdownPage from '../../pages/DropdownPage/DropdownPage';
+import FocusZonePage from '../../pages/FocusZonePage/FocusZonePage';
+import LabelPage from '../../pages/LabelPage/LabelPage';
+import LinkPage from '../../pages/LinkPage/LinkPage';
+import ListPage from '../../pages/ListPage/ListPage';
+import NavBarPage from '../../pages/NavBarPage/NavBarPage';
+import OrgChartPage from '../../pages/OrgChartPage/OrgChartPage';
+import OverlayPage from '../../pages/OverlayPage/OverlayPage';
+import PanelPage from '../../pages/PanelPage/PanelPage';
+import PeoplePickerPage from '../../pages/PeoplePickerPage/PeoplePickerPage';
+import PersonaCardPage from '../../pages/PersonaCardPage/PersonaCardPage';
+import PersonaPage from '../../pages/PersonaPage/PersonaPage';
+import PivotPage from '../../pages/PivotPage/PivotPage';
+import ProgressIndicatorPage from '../../pages/ProgressIndicatorPage/ProgressIndicatorPage';
+import SearchBoxPage from '../../pages/SearchBoxPage/SearchBoxPage';
+import SpinnerPage from '../../pages/SpinnerPage/SpinnerPage';
+import TablePage from '../../pages/TablePage/TablePage';
+import TextFieldPage from '../../pages/TextFieldPage/TextFieldPage';
+import TogglePage from '../../pages/TogglePage/TogglePage';
 import Themes from '../../pages/Themes';
 
 export enum ExampleStatus {
@@ -56,7 +56,7 @@ export interface IAppState {
   examplePages: ILinkGroup[];
 }
 
-const AppState: IAppState = {
+export const AppState: IAppState = {
   appTitle: 'Fabric - React',
 
   headerLinks: [
@@ -81,169 +81,169 @@ const AppState: IAppState = {
         {
           name: 'Breadcrumb',
           url: '#/examples/breadcrumb',
-          component: BreadcrumbExample,
+          component: BreadcrumbPage,
           status: ExampleStatus.started
         },
         {
           name: 'Button',
           url: '#/examples/button',
-          component: ButtonExample,
+          component: ButtonPage,
           status: ExampleStatus.beta
         },
         {
           name: 'Callout',
           url: '#/examples/callout',
-          component: CalloutExample,
+          component: CalloutPage,
           status: ExampleStatus.started
         },
         {
           name: 'Checkbox',
           url: '#/examples/checkbox',
-          component: CheckboxExample,
+          component: CheckboxPage,
           status: ExampleStatus.beta
         },
         {
           name: 'ChoiceGroup',
           url: '#/examples/ChoiceGroup',
-          component: ChoiceGroupExample,
+          component: ChoiceGroupPage,
           status: ExampleStatus.started
         },
         {
           name: 'CommandBar',
           url: '#/examples/commandbar',
-          component: CommandBarExample,
+          component: CommandBarPage,
           status: ExampleStatus.beta
         },
         {
           name: 'ContextualMenu',
           url: '#/examples/contextmenu',
-          component: ContextualMenuExample,
+          component: ContextualMenuPage,
           status: ExampleStatus.started
         },
         {
           name: 'DatePicker',
           url: '#/examples/datepicker',
-          component: DatePickerExample,
+          component: DatePickerPage,
           status: ExampleStatus.started
         },
         {
           name: 'DetailsList',
           url: '#/examples/detailslist',
-          component: DetailsListExample,
+          component: DetailsListPage,
           status: ExampleStatus.beta
         },
         {
           name: 'Dialog',
           url: '#/examples/dialog',
-          component: DialogExample,
+          component: DialogPage,
           status: ExampleStatus.placeholder
         },
         {
           name: 'Dropdown',
           url: '#/examples/dropdown',
-          component: DropdownExample,
+          component: DropdownPage,
           status: ExampleStatus.beta
         },
         {
           name: 'Label',
           url: '#/examples/label',
-          component: LabelExample,
+          component: LabelPage,
           status: ExampleStatus.started
         },
         {
           name: 'Link',
           url: '#/examples/link',
-          component: LinkExample,
+          component: LinkPage,
           status: ExampleStatus.started
         },
         {
           name: 'List',
           url: '#/examples/list',
-          component: ListExample,
+          component: ListPage,
           status: ExampleStatus.started
         },
         {
           name: 'NavBar',
           url: '#/examples/navbar',
-          component: NavBarExample,
+          component: NavBarPage,
           status: ExampleStatus.placeholder
         },
         {
           name: 'OrgChart',
           url: '#/examples/orgchart',
-          component: OrgChartExample,
+          component: OrgChartPage,
           status: ExampleStatus.placeholder
         },
         {
           name: 'Overlay',
           url: '#/examples/overlay',
-          component: OverlayExample,
+          component: OverlayPage,
           status: ExampleStatus.placeholder
         },
         {
           name: 'Panel',
           url: '#/examples/panel',
-          component: PanelExample,
+          component: PanelPage,
           status: ExampleStatus.placeholder
         },
         {
           name: 'PeoplePicker',
           url: '#/examples/peoplepicker',
-          component: PeoplePickerExample,
+          component: PeoplePickerPage,
           status: ExampleStatus.placeholder
         },
         {
           name: 'Persona',
           url: '#/examples/persona',
-          component: PersonaExample,
+          component: PersonaPage,
           status: ExampleStatus.beta
         },
         {
           name: 'PersonaCard',
           url: '#/examples/personacard',
-          component: PersonaCardExample,
+          component: PersonaCardPage,
           status: ExampleStatus.placeholder
         },
         {
           name: 'Pivot',
           url: '#/examples/pivot',
-          component: PivotExample,
+          component: PivotPage,
           status: ExampleStatus.started
         },
         {
           name: 'ProgressIndicator',
           url: '#/examples/progressindicator',
-          component: ProgressIndicatorExample,
+          component: ProgressIndicatorPage,
           status: ExampleStatus.beta
         },
         {
           name: 'SearchBox',
           url: '#/examples/searchbox',
-          component: SearchBoxExample,
+          component: SearchBoxPage,
           status: ExampleStatus.placeholder
         },
         {
           name: 'Spinner',
           url: '#/examples/spinner',
-          component: SpinnerExample,
+          component: SpinnerPage,
           status: ExampleStatus.beta
         },
         {
           name: 'Table',
           url: '#/examples/table',
-          component: TableExample,
+          component: TablePage,
           status: ExampleStatus.placeholder
         },
         {
           name: 'TextField',
           url: '#/examples/textfield',
-          component: TextFieldExample,
+          component: TextFieldPage,
           status: ExampleStatus.started
         },
         {
           name: 'Toggle',
           url: '#/examples/toggle',
-          component: ToggleExample,
+          component: TogglePage,
           status: ExampleStatus.beta
         }
       ]
@@ -258,7 +258,7 @@ const AppState: IAppState = {
         {
           name: 'Focus zones',
           url: '#examples/focuszone',
-          component: FocusZoneExample,
+          component: FocusZonePage,
           status: ExampleStatus.started
         },
         {

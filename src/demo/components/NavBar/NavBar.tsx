@@ -3,7 +3,7 @@ import * as React from 'react';
 import FocusZone from '../../../utilities/focus/FocusZone';
 import KeyCodes from '../../../utilities/KeyCodes';
 import './NavBar.scss';
-import { ExampleStatus } from '../app/AppState';
+import { ExampleStatus } from '../App/AppState';
 
 export interface INavBarProps {
   groups: {
@@ -22,7 +22,7 @@ export interface INavBarState {
   isGroupExpanded: boolean[]
 }
 
-export default class NavBar extends React.Component<INavBarProps, INavBarState> {
+export class NavBar extends React.Component<INavBarProps, INavBarState> {
 
   constructor() {
     super();

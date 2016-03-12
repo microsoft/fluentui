@@ -16,7 +16,7 @@ export interface IHeaderState {
   isRTLEnabled: boolean;
 }
 
-export default class Header extends React.Component<IHeaderProps, any> {
+export class Header extends React.Component<IHeaderProps, any> {
   constructor() {
     super();
 

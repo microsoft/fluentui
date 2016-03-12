@@ -1,9 +1,11 @@
+@import '../../../common';
+
 .ExampleCard {
   margin-bottom: 20px;
 }
 
 .ExampleCard-header {
-  background: #F0F0F0;
+  background: $ms-color-neutralLight;
   min-height: 50px;
   line-height: 50px;
   white-space: nowrap;
@@ -12,24 +14,29 @@
   padding: 0 10px;
 }
 
-.ExampleCard-toggleCode {
+.ExampleCard-toggleButtons {
   float: right;
+  position: relative;
+  left: 5px;
 
   .ms-Button {
-    margin: 10px 0;
+    margin: 10px 5px;
     height: 30px;
   }
 }
 
 .ExampleCard-content {
   padding: 20px;
-  border: 1px solid #F0F0F0;
+  border: 1px solid $ms-color-neutralLight;
 }
 
 .ExampleCard-code {
   display: none;
+
 }
 
 .ExampleCard.is-codeVisible .ExampleCard-code {
   display: block;
+  border-bottom: 1px solid $ms-color-neutralLight;
+  margin-bottom: 20px;
 }

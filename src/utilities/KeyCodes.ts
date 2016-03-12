@@ -1,4 +1,4 @@
-export default {
+export const KeyCodes = {
   tab: 9,
   enter: 13,
   escape: 27,
@@ -13,3 +13,5 @@ export default {
   down: 40,
   a: 65
 };
+
+export default KeyCodes;

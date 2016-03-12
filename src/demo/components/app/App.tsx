@@ -1,9 +1,13 @@
 import * as React from 'react';
-import Fabric from '../../../components/Fabric/index';
-import AppState from './AppState';
-import Header from '../Header/index';
-import NavBar from '../NavBar/index';
+import {
+  Fabric
+} from '../../../components/index';
+import {
+  Header,
+  NavBar
+} from '../index';
 import './App.scss';
+import AppState from './AppState';
 
 export default class App extends React.Component<any, any> {
 

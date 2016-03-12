@@ -12,7 +12,8 @@ export interface IDropdownOption {
 
 export interface IDropdownProps {
   label: string;
-  options: IDropdownOption[];
+  selectedKey?: string;
+  options?: IDropdownOption[];
   onChanged?: (option: IDropdownOption, index?: number) => void;
   isDisabled?: boolean;
 }
@@ -34,13 +35,23 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
 
     this.state = {
       isOpen: false,
-      selectedIndex: findIndex(props.options, (option => option.isSelected)),
+      selectedIndex: this._getSelectedIndex(props.options, props.selectedKey),
       isDisabled: this.props.isDisabled
     };
 
     this._onDropdownKeyDown = this._onDropdownKeyDown.bind(this);
     this._onDropdownClick = this._onDropdownClick.bind(this);
     this._onDropdownBlur = this._onDropdownBlur.bind(this);
+  }
+
+  private _getSelectedIndex(options: IDropdownOption[], selectedKey: string) {
+    return findIndex(options, (option => (option.isSelected || selectedKey && option.key === selectedKey)));
+  }
+
+  public componentWillReceiveProps(newProps: IDropdownProps) {
+    this.setState({
+      selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey)
+    });
   }
 
   public render() {

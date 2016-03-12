@@ -1,0 +1,23 @@
+.ms-ListBasicExample-itemCell {
+  min-height: 54px;
+  padding: 10px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #CCC;
+  position: relative;
+}
+
+.ms-ListBasicExample-itemCell:hover {
+  background: #EEE;
+}
+.ms-ListBasicExample-itemName {
+  position: absolute;
+  width: 110px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ms-ListBasicExample-itemDesc {
+  margin-left: 120px;
+}
+

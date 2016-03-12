@@ -47,6 +47,7 @@ function createConfig(isProduction) {
     ],
 
     module: {
+      noParse: [/autoit.js/],
       loaders: [
       ]
     },
