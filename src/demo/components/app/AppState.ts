@@ -244,7 +244,7 @@ const AppState: IAppState = {
           name: 'Toggle',
           url: '#/examples/toggle',
           component: ToggleExample,
-          status: ExampleStatus.started
+          status: ExampleStatus.beta
         }
       ]
     },
