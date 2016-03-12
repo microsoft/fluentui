@@ -1,6 +1,6 @@
 {
   "name": "@ms/office-ui-fabric-react",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "This is a repo for building out React controls skinned with Fabric.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -23,7 +23,8 @@
     "vinyl-ftp": "^0.4.5",
     "web-library-build": "^0.0.6",
     "webpack": "^1.12.14",
-    "webpack-notifier": "^1.2.1"
+    "webpack-notifier": "^1.2.1",
+    "webpack-split-by-path": "0.0.8"
   },
   "dependencies": {
     "color-functions": "^1.1.0",

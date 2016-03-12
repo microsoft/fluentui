@@ -8,35 +8,34 @@
     <title>Office UI Fabric React Examples</title>
 
     <link rel="stylesheet" href="//appsforoffice.microsoft.com/fabric/1.2.1/fabric.min.css">
-
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.20/system.js"></script>
-    <script type="text/javascript">
-    window.require = System.amdRequire;
-    window.define = System.amdDefine;
-
-    // Once the build machine is updated to build with the --production flag, we can use minified builds.
-    // var isProduction = (location.pathname.indexOf('/fabric-react/master') !== -1);
-
-    var isProduction = false;
-
-    System.config({
-      meta: {
-        "*": {
-          scriptLoad: true
-        }
-      },
-      paths: {
-        'app': 'dist/demo-app' + ( isProduction ? '.min' : '') + '.js',
-        'office-ui-fabric-react': 'dist/office-ui-fabric-react' + (isProduction ? '.min' : '') + '.js',
-        'react-dom': '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom' + (isProduction ? '.min' : '') + '.js',
-        'react': '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react' + (isProduction ? '.min' : '') + '.js'
-      }
-    });
-
-    System.import('app');
-    </script>
   </head>
   <body>
     <div id="content"></div>
+
+    <script type="text/javascript">
+    var isProduction = (location.pathname === '/fabric-react/master/');
+
+    function loadScript(n) {
+      for (var i = 0; i < n.length; i++) {
+        var s = document.createElement('script');
+        s.src = n[i];
+        s.async = false;
+        document.body.appendChild(s);
+      }
+    }
+    loadScript(isProduction ? [
+      '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.min.js',
+      '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.min.js',
+      'dist/demo-vendor.min.js',
+      'dist/demo-components.min.js',
+      'dist/demo-app.min.js'
+    ] : [
+      '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js',
+      '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js',
+      'dist/demo-vendor.js',
+      'dist/demo-components.js',
+      'dist/demo-app.js'
+    ]);
+    </script>
   </body>
 </html>
