@@ -154,13 +154,13 @@ const AppState: IAppState = {
           name: 'Link',
           url: '#/examples/link',
           component: LinkExample,
-          status: ExampleStatus.beta
+          status: ExampleStatus.started
         },
         {
           name: 'List',
           url: '#/examples/list',
           component: ListExample,
-          status: ExampleStatus.beta
+          status: ExampleStatus.started
         },
         {
           name: 'NavBar',
@@ -214,7 +214,7 @@ const AppState: IAppState = {
           name: 'ProgressIndicator',
           url: '#/examples/progressindicator',
           component: ProgressIndicatorExample,
-          status: ExampleStatus.started
+          status: ExampleStatus.beta
         },
         {
           name: 'SearchBox',
