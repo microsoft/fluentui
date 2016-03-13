@@ -22,7 +22,7 @@
     "react-addons-test-utils": "^0.14.3",
     "react-dom": "^0.14.7",
     "vinyl-ftp": "^0.4.5",
-    "web-library-build": "^0.0.6",
+    "web-library-build": "^0.0.8",
     "webpack": "^1.12.14",
     "webpack-notifier": "^1.2.1",
     "webpack-split-by-path": "0.0.8"

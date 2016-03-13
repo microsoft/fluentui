@@ -66,13 +66,6 @@ export default class ContextualMenuDirectionalExample extends React.Component<an
           selectedKey={ DirectionalHint[verticalAlignmentHint] }
           options={ VERTICAL_DIRECTION_OPTIONS }
           onChanged={ this._onVerticalChanged } />
-
-        <Dropdown
-          label='Vertical direction'
-          selectedKey={ DirectionalHint[verticalAlignmentHint] }
-          options={ VERTICAL_DIRECTION_OPTIONS }
-          onChanged={ this._onVerticalChanged } />
-
         <div ref='menuButton' style={ { display: 'inline-block' } }>
           <Button onClick={ this._onShowMenuClicked }>Show context menu</Button>
         </div>
