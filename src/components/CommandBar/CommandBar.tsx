@@ -11,7 +11,7 @@ const OVERFLOW_WIDTH = 41.5;
 let _instance = 0;
 
 export interface ICommandBarItem {
-  key: string;
+  key?: string;
   name: string;
   icon?: string;
   onClick?: (ev: React.MouseEvent) => void;
@@ -143,7 +143,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
           </div>
           <div className='ms-CommandBar-sideCommands' ref='farCommandSurface'>
             { renderedFarItems.map((item, index) => (
-            <div className='ms-CommandBarItem' key={ item.key } ref={ item.key }>
+            <div className='ms-CommandBarItem' key={ item.key || String(index) } ref={ item.key || String(index) }>
               <button
                 id={ this._instanceId + item.key }
                 className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === item.key) }, {'is-static': (!item.onClick && !item.items)}) }

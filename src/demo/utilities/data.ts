@@ -6,9 +6,9 @@ const LOREM_IPSUM = ('Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
 
 export function createListItems(count: number): any {
   return Array.apply(null, Array(count)).map((item, index) => ({
-    description: lorem(10 + Math.round(Math.random() * 50)),
     key: 'item-' + index,
-    name: lorem(2)
+    name: lorem(2),
+    description: lorem(10 + Math.round(Math.random() * 50))
   }));
 }
 

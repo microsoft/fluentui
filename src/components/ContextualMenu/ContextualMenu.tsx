@@ -29,7 +29,7 @@ export enum DirectionalHint {
 };
 
 export interface IContextualMenuItem {
-  key: string;
+  key?: string;
   name: string;
   icon?: string;
   isEnabled?: boolean;
