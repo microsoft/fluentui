@@ -2,9 +2,10 @@
 
 let build = require('web-library-build');
 let gulp = require('gulp');
+let merge = require('lodash.merge');
 
 /** @todo: disable lint config. */
-build.tasks.tslint.config({ lintConfig: null });
+build.tasks.tslint.config({ lintConfig: merge({}, build.tasks.tslint.taskConfig.lintConfig, require('./tslint.json')) });
 
 // process *.Example.tsx as text.
 build.tasks.text.config({ textMatch: [ 'src/**/*.txt', 'src/**/*.Example.tsx' ] });

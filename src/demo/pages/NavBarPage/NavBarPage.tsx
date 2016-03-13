@@ -21,7 +21,7 @@ export default class NavBarPage extends React.Component<any, any> {
         <ExampleCard title='NavBar' code={ NavBarBasicExampleCode }>
           <NavBarBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ [] } />
+        <PropertiesTable properties={ NavBarProps } />
       </div>
     );
   }

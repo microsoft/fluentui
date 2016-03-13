@@ -7,7 +7,8 @@ export default function withContainsFocus<P, S>(ComposedComponent: any): any {
     public refs: {
       [key: string]: React.ReactInstance,
       composed: any
-    }
+    };
+
     private _async: Async;
     private _newContainsFocus: boolean;
 
@@ -24,7 +25,7 @@ export default function withContainsFocus<P, S>(ComposedComponent: any): any {
       this._delayedSetContainsFocus = this._async.debounce(this._setContainsFocus, 20);
     }
 
-    componentWillUnmount() {
+    public componentWillUnmount() {
       this._async.dispose();
     }
 
@@ -43,27 +44,21 @@ export default function withContainsFocus<P, S>(ComposedComponent: any): any {
     }
 
     private _handleFocus(ev) {
-      //console.log('got focus', ev.target);
-
       this._newContainsFocus = true;
       this._delayedSetContainsFocus();
     }
 
     private _handleBlur(ev) {
-      //console.log('got blur', ev.target);
-
       this._newContainsFocus = false;
       this._delayedSetContainsFocus();
     }
 
     private _setContainsFocus() {
-      //console.log(this.state.containsFocus, this._newContainsFocus);
-
       if (this.state.containsFocus !== this._newContainsFocus) {
         this.setState({ containsFocus: this._newContainsFocus });
       }
     }
 
-  }
+  };
 
 }

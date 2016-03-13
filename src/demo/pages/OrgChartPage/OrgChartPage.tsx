@@ -17,14 +17,11 @@ export default class OrgChartPage extends React.Component<any, any> {
       <div>
         <h1 className='ms-font-xxl'>OrgChart</h1>
         <div><Link target='_blank' text='OrgCharts' url='http://dev.office.com/fabric/components/OrgChart' /> are used to render an org chart.</div>
-
-        <PropertiesTable properties={ [] } />
-
         <h2 className='ms-font-xl'>Examples</h2>
-
         <ExampleCard title='OrgChart' code={ OrgChartBasicExampleCode }>
           <OrgChartBasicExample />
         </ExampleCard>
+        <PropertiesTable properties={ OrgChartProps } />
       </div>
     );
   }

@@ -35,7 +35,7 @@ export default class ListPage extends React.Component<any, any> {
         <ExampleCard title='Fixed list of 20000 email tiles' isOptIn={ true } code={ ListMailExampleCode }>
           <ListMailExample />
         </ExampleCard>
-        <PropertiesTable properties={ [] } />
+        <PropertiesTable properties={ ListProps } />
       </div>
     );
   }

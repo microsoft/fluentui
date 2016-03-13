@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import BreadcrumbPage from '../../pages/BreadcrumbPage/BreadcrumbPage';
 import ButtonPage from '../../pages/ButtonPage/ButtonPage';
 import CalloutPage from '../../pages/CalloutPage/CalloutPage';
@@ -42,22 +40,222 @@ export interface ILink {
   name: string;
   url: string;
   component?: any;
-  status?: ExampleStatus
+  status?: ExampleStatus;
 }
 
 export interface ILinkGroup {
-  name: string;
   links: ILink[];
+  name: string;
 }
 
 export interface IAppState {
   appTitle: string;
-  headerLinks: ILink[];
   examplePages: ILinkGroup[];
+  headerLinks: ILink[];
 }
 
 export const AppState: IAppState = {
   appTitle: 'Fabric - React',
+
+  examplePages: [
+    {
+      links: [
+        {
+          component: BreadcrumbPage,
+          name: 'Breadcrumb',
+          status: ExampleStatus.started,
+          url: '#/examples/breadcrumb'
+        },
+        {
+          component: ButtonPage,
+          name: 'Button',
+          status: ExampleStatus.beta,
+          url: '#/examples/button'
+        },
+        {
+          component: CalloutPage,
+          name: 'Callout',
+          status: ExampleStatus.started,
+          url: '#/examples/callout'
+        },
+        {
+          component: CheckboxPage,
+          name: 'Checkbox',
+          status: ExampleStatus.beta,
+          url: '#/examples/checkbox'
+        },
+        {
+          component: ChoiceGroupPage,
+          name: 'ChoiceGroup',
+          status: ExampleStatus.started,
+          url: '#/examples/ChoiceGroup'
+        },
+        {
+          component: CommandBarPage,
+          name: 'CommandBar',
+          status: ExampleStatus.beta,
+          url: '#/examples/commandbar'
+        },
+        {
+          component: ContextualMenuPage,
+          name: 'ContextualMenu',
+          status: ExampleStatus.started,
+          url: '#/examples/contextmenu'
+        },
+        {
+          name: 'DatePicker',
+          component: DatePickerPage,
+          status: ExampleStatus.started,
+          url: '#/examples/datepicker'
+        },
+        {
+          component: DetailsListPage,
+          name: 'DetailsList',
+          status: ExampleStatus.beta,
+          url: '#/examples/detailslist'
+        },
+        {
+          component: DialogPage,
+          name: 'Dialog',
+          status: ExampleStatus.placeholder,
+          url: '#/examples/dialog'
+        },
+        {
+          component: DropdownPage,
+          name: 'Dropdown',
+          status: ExampleStatus.beta,
+          url: '#/examples/dropdown'
+        },
+        {
+          component: LabelPage,
+          name: 'Label',
+          status: ExampleStatus.started,
+          url: '#/examples/label'
+        },
+        {
+          component: LinkPage,
+          name: 'Link',
+          status: ExampleStatus.started,
+          url: '#/examples/link'
+        },
+        {
+          component: ListPage,
+          name: 'List',
+          status: ExampleStatus.started,
+          url: '#/examples/list'
+        },
+        {
+          component: NavBarPage,
+          name: 'NavBar',
+          status: ExampleStatus.placeholder,
+          url: '#/examples/navbar'
+        },
+        {
+          component: OrgChartPage,
+          name: 'OrgChart',
+          status: ExampleStatus.placeholder,
+          url: '#/examples/orgchart'
+        },
+        {
+          component: OverlayPage,
+          name: 'Overlay',
+          status: ExampleStatus.placeholder,
+          url: '#/examples/overlay'
+        },
+        {
+          component: PanelPage,
+          name: 'Panel',
+          status: ExampleStatus.placeholder,
+          url: '#/examples/panel'
+        },
+        {
+          component: PeoplePickerPage,
+          name: 'PeoplePicker',
+          status: ExampleStatus.placeholder,
+          url: '#/examples/peoplepicker'
+        },
+        {
+          component: PersonaPage,
+          name: 'Persona',
+          status: ExampleStatus.beta,
+          url: '#/examples/persona'
+        },
+        {
+          component: PersonaCardPage,
+          name: 'PersonaCard',
+          status: ExampleStatus.placeholder,
+          url: '#/examples/personacard'
+        },
+        {
+          component: PivotPage,
+          name: 'Pivot',
+          status: ExampleStatus.started,
+          url: '#/examples/pivot'
+        },
+        {
+          component: ProgressIndicatorPage,
+          name: 'ProgressIndicator',
+          status: ExampleStatus.beta,
+          url: '#/examples/progressindicator'
+        },
+        {
+          component: SearchBoxPage,
+          name: 'SearchBox',
+          status: ExampleStatus.placeholder,
+          url: '#/examples/searchbox'
+        },
+        {
+          component: SpinnerPage,
+          name: 'Spinner',
+          status: ExampleStatus.beta,
+          url: '#/examples/spinner'
+        },
+        {
+          component: TablePage,
+          name: 'Table',
+          status: ExampleStatus.placeholder,
+          url: '#/examples/table'
+        },
+        {
+          component: TextFieldPage,
+          name: 'TextField',
+          status: ExampleStatus.started,
+          url: '#/examples/textfield'
+        },
+        {
+          component: TogglePage,
+          name: 'Toggle',
+          status: ExampleStatus.beta,
+          url: '#/examples/toggle'
+        }
+      ],
+      name: 'Basic components'
+    },
+    {
+      links: [
+        {
+          name: 'Event groups',
+          url: '#examples/eventgroup'
+        },
+        {
+          component: FocusZonePage,
+          name: 'Focus zones',
+          status: ExampleStatus.started,
+          url: '#examples/focuszone'
+        },
+        {
+          name: 'Selection management',
+          url: '#examples/selectionManagement'
+        },
+        {
+          component: Themes,
+          name: 'Themes',
+          url: '#examples/themes'
+        }
+      ],
+      name: 'Utilities'
+    }
+  ],
 
   headerLinks: [
     {
@@ -72,207 +270,8 @@ export const AppState: IAppState = {
       name: 'Github',
       url: 'http://www.github.com/officedev'
     }
-  ],
-
-  examplePages: [
-    {
-      name: 'Basic components',
-      links: [
-        {
-          name: 'Breadcrumb',
-          url: '#/examples/breadcrumb',
-          component: BreadcrumbPage,
-          status: ExampleStatus.started
-        },
-        {
-          name: 'Button',
-          url: '#/examples/button',
-          component: ButtonPage,
-          status: ExampleStatus.beta
-        },
-        {
-          name: 'Callout',
-          url: '#/examples/callout',
-          component: CalloutPage,
-          status: ExampleStatus.started
-        },
-        {
-          name: 'Checkbox',
-          url: '#/examples/checkbox',
-          component: CheckboxPage,
-          status: ExampleStatus.beta
-        },
-        {
-          name: 'ChoiceGroup',
-          url: '#/examples/ChoiceGroup',
-          component: ChoiceGroupPage,
-          status: ExampleStatus.started
-        },
-        {
-          name: 'CommandBar',
-          url: '#/examples/commandbar',
-          component: CommandBarPage,
-          status: ExampleStatus.beta
-        },
-        {
-          name: 'ContextualMenu',
-          url: '#/examples/contextmenu',
-          component: ContextualMenuPage,
-          status: ExampleStatus.started
-        },
-        {
-          name: 'DatePicker',
-          url: '#/examples/datepicker',
-          component: DatePickerPage,
-          status: ExampleStatus.started
-        },
-        {
-          name: 'DetailsList',
-          url: '#/examples/detailslist',
-          component: DetailsListPage,
-          status: ExampleStatus.beta
-        },
-        {
-          name: 'Dialog',
-          url: '#/examples/dialog',
-          component: DialogPage,
-          status: ExampleStatus.placeholder
-        },
-        {
-          name: 'Dropdown',
-          url: '#/examples/dropdown',
-          component: DropdownPage,
-          status: ExampleStatus.beta
-        },
-        {
-          name: 'Label',
-          url: '#/examples/label',
-          component: LabelPage,
-          status: ExampleStatus.started
-        },
-        {
-          name: 'Link',
-          url: '#/examples/link',
-          component: LinkPage,
-          status: ExampleStatus.started
-        },
-        {
-          name: 'List',
-          url: '#/examples/list',
-          component: ListPage,
-          status: ExampleStatus.started
-        },
-        {
-          name: 'NavBar',
-          url: '#/examples/navbar',
-          component: NavBarPage,
-          status: ExampleStatus.placeholder
-        },
-        {
-          name: 'OrgChart',
-          url: '#/examples/orgchart',
-          component: OrgChartPage,
-          status: ExampleStatus.placeholder
-        },
-        {
-          name: 'Overlay',
-          url: '#/examples/overlay',
-          component: OverlayPage,
-          status: ExampleStatus.placeholder
-        },
-        {
-          name: 'Panel',
-          url: '#/examples/panel',
-          component: PanelPage,
-          status: ExampleStatus.placeholder
-        },
-        {
-          name: 'PeoplePicker',
-          url: '#/examples/peoplepicker',
-          component: PeoplePickerPage,
-          status: ExampleStatus.placeholder
-        },
-        {
-          name: 'Persona',
-          url: '#/examples/persona',
-          component: PersonaPage,
-          status: ExampleStatus.beta
-        },
-        {
-          name: 'PersonaCard',
-          url: '#/examples/personacard',
-          component: PersonaCardPage,
-          status: ExampleStatus.placeholder
-        },
-        {
-          name: 'Pivot',
-          url: '#/examples/pivot',
-          component: PivotPage,
-          status: ExampleStatus.started
-        },
-        {
-          name: 'ProgressIndicator',
-          url: '#/examples/progressindicator',
-          component: ProgressIndicatorPage,
-          status: ExampleStatus.beta
-        },
-        {
-          name: 'SearchBox',
-          url: '#/examples/searchbox',
-          component: SearchBoxPage,
-          status: ExampleStatus.placeholder
-        },
-        {
-          name: 'Spinner',
-          url: '#/examples/spinner',
-          component: SpinnerPage,
-          status: ExampleStatus.beta
-        },
-        {
-          name: 'Table',
-          url: '#/examples/table',
-          component: TablePage,
-          status: ExampleStatus.placeholder
-        },
-        {
-          name: 'TextField',
-          url: '#/examples/textfield',
-          component: TextFieldPage,
-          status: ExampleStatus.started
-        },
-        {
-          name: 'Toggle',
-          url: '#/examples/toggle',
-          component: TogglePage,
-          status: ExampleStatus.beta
-        }
-      ]
-    },
-    {
-      name: 'Utilities',
-      links: [
-        {
-          name: 'Event groups',
-          url: '#examples/eventgroup'
-        },
-        {
-          name: 'Focus zones',
-          url: '#examples/focuszone',
-          component: FocusZonePage,
-          status: ExampleStatus.started
-        },
-        {
-          name: 'Selection management',
-          url: '#examples/selectionManagement'
-        },
-        {
-          name: 'Themes',
-          url: '#examples/themes',
-          component: Themes
-        }
-      ]
-    }
   ]
+
 };
 
 export default AppState;

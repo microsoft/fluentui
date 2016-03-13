@@ -3,7 +3,6 @@ import IColumn from './IColumn';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/ISelection';
 import Check from './Check';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
-import { getResourceUrl } from '../../utilities/resources';
 import { shallowCompare } from '../../utilities/object';
 import { css } from '../../utilities/css';
 import './DetailsRow.scss';
@@ -27,13 +26,12 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
   public refs: {
     [key: string]: React.ReactInstance,
     root: HTMLElement
-  }
+  };
 
   private _events: EventGroup;
 
   constructor(props) {
     super(props);
-
 
     this.state = this._getSelectionState(props);
 
@@ -68,8 +66,8 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
   }
 
   public render() {
-    let { selection, selectionMode, columns, item, itemIndex, shouldSetFocus } = this.props;
-    let { isSelected, isFocused, isFocusable } = this.state;
+    let { selectionMode, columns, item, itemIndex } = this.props;
+    let { isSelected, isFocusable } = this.state;
 
     return (
       <div

@@ -4,7 +4,7 @@ export interface IPanelProps {
 }
 
 export default class Panel extends React.Component<IPanelProps, any> {
-  render() {
+  public render() {
     let rootClass = 'ms-Panel';
 
     return (

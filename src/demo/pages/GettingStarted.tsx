@@ -1,5 +1,4 @@
 import * as React from 'react';
-import FocusZone from '../../utilities/focus/FocusZone';
 
 export default class GettingStarted extends React.Component<any, any> {
   public render() {

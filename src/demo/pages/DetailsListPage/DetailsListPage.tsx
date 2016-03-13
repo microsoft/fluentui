@@ -24,7 +24,7 @@ export default class DetailsListPage extends React.Component<any, any> {
         <ExampleCard title='DetailsList of 20000 items, variable row heights' isOptIn={ true } code={ DetailsListBasicExampleCode }>
           <DetailsListBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ [] } />
+        <PropertiesTable properties={ DetailsListProps } />
       </div>
     );
   }

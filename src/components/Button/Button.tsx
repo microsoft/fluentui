@@ -32,18 +32,18 @@ export default class Button extends React.Component<IButtonProps, any> {
       + (type === ButtonType.command ? ' ms-Button--command' : '');
 
     const iconSpan = icon && (type === ButtonType.command || type === ButtonType.hero)
-      ? <span className="ms-Button-icon"><i className={`ms-Icon ms-Icon--${icon}`}></i></span>
+      ? <span className='ms-Button-icon'><i className={`ms-Icon ms-Icon--${icon}`}></i></span>
       : null;
 
     let descriptionSpan;
     if (ButtonType.compound) {
-      descriptionSpan = <span className="ms-Button-description">{ description }</span>;
+      descriptionSpan = <span className='ms-Button-description'>{ description }</span>;
     }
 
     return (
       <button className={ rootClass } onClick={ onClick } title={ title }>
         { iconSpan }
-        <span className="ms-Button-label">{ children }</span>
+        <span className='ms-Button-label'>{ children }</span>
         { descriptionSpan }
       </button>
     );

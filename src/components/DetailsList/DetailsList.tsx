@@ -6,7 +6,7 @@ import { css } from '../../utilities/css';
 import DetailsHeader from './DetailsHeader';
 import DetailsRow from './DetailsRow';
 import IColumn from './IColumn';
-import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/ISelection';
+import { ISelection, SelectionMode } from '../../utilities/selection/ISelection';
 import IObjectWithKey from '../../utilities/selection/IObjectWithKey';
 import {Selection } from '../../utilities/selection/Selection';
 import SelectionZone from '../../utilities/selection/SelectionZone';
@@ -29,7 +29,7 @@ export interface IDetailsListState {
   lastWidth?: number;
   lastSelectionMode?: SelectionMode;
   adjustedColumns?: IColumn[];
-  columnOverrides?: { [key: string]: IColumn }
+  columnOverrides?: { [key: string]: IColumn };
 }
 
 export interface IDetailsListViewData {
@@ -49,14 +49,10 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     [key: string]: React.ReactInstance,
     header: DetailsHeader,
     list: List
-  }
+  };
 
   private _events: EventGroup;
   private _selection: ISelection;
-  private _previousFocusIndex: number;
-
-  public componentDidMount() {
-  }
 
   public componentWillUnmount() {
     this._events.dispose();
@@ -84,7 +80,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   }
 
   public render() {
-    let { className, items, viewport, layoutMode, selectionMode } = this.props;
+    let { className, items, layoutMode, selectionMode } = this.props;
     let { adjustedColumns } = this.state;
     let { _selection: selection } = this;
 
@@ -167,9 +163,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     let rowCheckWidth = (selectionMode === SelectionMode.none) ? 0 : 40;
 
     let totalWidth = 0; // offset because we have one less inner padding.
-    let lastColumn: number;
     let availableWidth = viewportWidth - (outerPadding * 2) - rowCheckWidth;
-    let hasHiddenColumns = false;
 
     if (layoutMode === DetailsListLayoutMode.fixedColumns) {
       availableWidth = Number.MAX_VALUE;
@@ -226,7 +220,6 @@ export function buildColumns(items) {
 
   if (items && items.length) {
     let firstItem = items[0];
-    let totalStringLength = 0;
     let isFirstColumn = true;
 
     for (let propName in firstItem) {

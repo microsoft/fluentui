@@ -21,7 +21,7 @@ export default class PivotPage extends React.Component<any, any> {
         <ExampleCard title='Pivot' code={ PivotBasicExampleCode }>
           <PivotBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ [] } />
+        <PropertiesTable properties={ PivotProps } />
       </div>
     );
   }

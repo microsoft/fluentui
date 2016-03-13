@@ -10,7 +10,6 @@ export default class ContextualMenuBasicExample extends React.Component<any, any
           [
             {
               key: 'newItem',
-              name: 'New',
               icon: 'circlePlus',
               items: [
                 {
@@ -21,16 +20,17 @@ export default class ContextualMenuBasicExample extends React.Component<any, any
                   key: 'calendarEvent',
                   name: 'Calendar event',
                 }
-              ]
+              ],
+              name: 'New'
             },
             {
               key: 'upload',
-              name: 'Upload',
-              icon: 'upload'
+              icon: 'upload',
+              name: 'Upload'
             },
             {
               key: 'rename',
-              name: 'Rename',
+              name: 'Rename'
             },
             {
               key: '-',
@@ -38,7 +38,6 @@ export default class ContextualMenuBasicExample extends React.Component<any, any
             },
             {
               key: 'share',
-              name: 'Share',
               icon: 'share',
               items: [
                 {
@@ -55,12 +54,13 @@ export default class ContextualMenuBasicExample extends React.Component<any, any
                   name: 'Share to Twitter',
                   icon: 'share'
                 },
-              ]
+              ],
+              name: 'Share'
             },
             {
               key: 'print',
-              name: 'Print',
-              icon: 'print'
+              icon: 'print',
+              name: 'Print'
             },
           ]
         }

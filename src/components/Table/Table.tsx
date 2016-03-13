@@ -4,7 +4,7 @@ export interface ITableProps {
 }
 
 export default class Table extends React.Component<ITableProps, any> {
-  render() {
+  public render() {
     let rootClass = 'ms-Table';
 
     return (

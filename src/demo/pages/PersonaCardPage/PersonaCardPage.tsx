@@ -21,7 +21,7 @@ export default class PersonaCardPage extends React.Component<any, any> {
         <ExampleCard title='PersonaCard' code={ PersonaCardBasicExampleCode }>
           <PersonaCardBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ [] } />
+        <PropertiesTable properties={ PersonaCardProps } />
       </div>
     );
   }

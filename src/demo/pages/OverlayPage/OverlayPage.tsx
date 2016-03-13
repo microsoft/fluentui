@@ -21,7 +21,7 @@ export default class OverlayPage extends React.Component<any, any> {
         <ExampleCard title='Overlay' code={ OverlayBasicExampleCode }>
           <OverlayBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ [] } />
+        <PropertiesTable properties={ OverlayProps } />
       </div>
     );
   }

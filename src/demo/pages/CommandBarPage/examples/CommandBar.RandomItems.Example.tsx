@@ -3,6 +3,7 @@ import {
   CommandBar,
   ICommandBarItem
 } from '../../../../components/index';
+import { items, farItems } from './data';
 
 export interface IChangingItemsCommandBarState {
   items?: ICommandBarItem[];
@@ -16,72 +17,11 @@ export default class CommandBarRandomItemsExample extends React.Component<any, I
     super();
 
     this.state = {
-      items: [
-       {
-          key: 'newItem',
-          name: 'New',
-          icon: 'circlePlus',
-          items: [
-            {
-              key: 'emailMessage',
-              name: 'Email message',
-              icon: 'mail'
-            },
-            {
-              key: 'calendarEvent',
-              name: 'Calendar event',
-              icon: 'calendar'
-            }
-          ]
-        },
-        {
-          key: 'upload',
-          name: 'Upload',
-          icon: 'upload'
-        },
-        {
-          key: 'share',
-          name: 'Share',
-          icon: 'share'
-        },
-        {
-          key: 'download',
-          name: 'Download',
-          icon: 'download'
-        },
-        {
-          key: 'move',
-          name: 'Move to...',
-          icon: 'folderMove'
-          },
-        {
-          key: 'copy',
-          name: 'Copy to...',
-          icon: 'copy'
-        },
-        {
-          key: 'rename',
-          name: 'Rename...',
-          icon: 'editBox'
-        }
-      ],
-      farItems: [    {
-        key: 'sort',
-        name: 'Sort',
-        icon: 'sortLines'
-      },
-      {
-        key: 'tile',
-        name: 'Grid view',
-        icon: 'tile'
-      },
-      {
-        key: 'info',
-        name: 'Info',
-        icon: 'circleInfo'
-      }
-    ]}
-  }
+      items: items,
+      farItems: farItems
+    };
+
+  };
 
   public componentDidMount() {
     this._changeTimerId = window.setInterval(this._updateItems.bind(this), 5000);
@@ -100,22 +40,27 @@ export default class CommandBarRandomItemsExample extends React.Component<any, I
         <CommandBar
           items={ this.state.items }
           farItems={ this.state.farItems }
-        />
+          />
       </div>
     );
   }
 
   private _updateItems() {
-    let renderedItems = this.state.items;
-    let renderedFarItems = this.state.farItems;
-
-    renderedItems.push(renderedItems.shift());
-    renderedFarItems.push(renderedFarItems.shift());
-
     this.setState({
-      items: renderedItems,
-      farItems: renderedFarItems
+      items: _getRandomizedArray(items, 2),
+      farItems: _getRandomizedArray(farItems, 1)
     });
   }
+}
 
+function _getRandomizedArray(array: any[], min: number) {
+  let count = min + Math.round(Math.random() * (array.length - min));
+  let itemsLeft = [].concat(array);
+  let newArray = [];
+
+  for (let i = 0; i < count; i++) {
+    newArray = newArray.concat(itemsLeft.splice(Math.floor(Math.random() * itemsLeft.length), 1));
+  }
+
+  return newArray;
 }

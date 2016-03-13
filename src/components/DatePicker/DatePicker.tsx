@@ -2,6 +2,7 @@ import * as React from 'react';
 import TextField from '../TextField/index';
 import DatePickerDay from './DatePickerDay';
 import DatePickerMonth from './DatePickerMonth';
+import { css } from '../../utilities/css';
 
 import './DatePicker.scss';
 
@@ -76,17 +77,15 @@ export interface IDatePickerState {
 }
 
 export default class DatePicker extends React.Component<IDatePickerProps, IDatePickerState> {
-  static defaultProps: IDatePickerProps = {
+  public static defaultProps: IDatePickerProps = {
     format: function(date: Date) {
-      console.log(date);
-
       if (date) {
         return date.toDateString();
       }
 
       return null;
     }
-  }
+  };
 
   constructor(props: IDatePickerProps) {
     super();
@@ -96,68 +95,70 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
       isDatePickerShown: false,
       isFocused: false,
       value: props.value ? props.value : null
-    }
+    };
   }
 
-  setDate(date: Date) {
+  public setDate(date: Date) {
     this.setState({ selectedDate: date, value: date });
+
     if (this.props.onSelectDate) {
       this.props.onSelectDate(date);
     }
   }
 
-  onSelectDate = (date: Date) => {
+  public onSelectDate = (date: Date) => {
     this.setDate(date);
-  }
+  };
 
   // TODO: need proper date math logic
-  onSelectNextMonth = () => {
+  public onSelectNextMonth = () => {
     let date = this.state.selectedDate;
     this.setDate(new Date(date.getFullYear(), date.getMonth() + 1, 1));
-  }
+  };
 
   // TODO: need proper date math logic
-  onSelectPrevMonth = () => {
+  public onSelectPrevMonth = () => {
     let date = this.state.selectedDate;
     this.setDate(new Date(date.getFullYear(), date.getMonth() - 1, 1));
-  }
+  };
 
   // TODO: need proper date math logic
-  onSelectNextYear = () => {
+  public onSelectNextYear = () => {
     let date = this.state.selectedDate;
     this.setDate(new Date(date.getFullYear() + 1, date.getMonth(), 1));
-  }
+  };
 
   // TODO: need proper date math logic
-  onSelectPrevYear = () => {
+  public onSelectPrevYear = () => {
     let date = this.state.selectedDate;
     this.setDate(new Date(date.getFullYear() - 1, date.getMonth(), 1));
-  }
+  };
 
-  onSelectMonth = (month: number) => {
+  public onSelectMonth = (month: number) => {
     let date = this.state.selectedDate;
     this.setDate(new Date(date.getFullYear(), month, 1));
-  }
+  };
 
-  onSelectYear = (year: number) => {
+  public onSelectYear = (year: number) => {
     let date = this.state.selectedDate;
     this.setDate(new Date(year, date.getMonth(), 1));
-  }
+  };
 
-  onGotoToday = () => {
+  public onGotoToday = () => {
     this.setDate(new Date());
-  }
+  };
 
-  onClick: React.MouseEventHandler = (evt) => {
+  public onClick: React.MouseEventHandler = (evt) => {
     this.setState({ isDatePickerShown: true, isFocused: true });
-  }
+  };
 
-  onClickOverlay: React.MouseEventHandler = (evt) => {
+  public onClickOverlay: React.MouseEventHandler = (evt) => {
     this.setState({ isDatePickerShown: false, isFocused: false });
-  }
+  };
 
-  render() {
+  public render() {
     let rootClass = 'ms-DatePicker';
+    let { isFocused, isDatePickerShown } = this.state;
 
     return (
       <div className={ rootClass }>
@@ -165,23 +166,24 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
           onClick={this.onClick}
           label={this.props.label}
           placeholder={this.props.placeholder}
-          iconClass="ms-DatePicker-event ms-Icon ms-Icon--event"
+          iconClass='ms-DatePicker-event ms-Icon ms-Icon--event'
           value={this.props.format && this.state.value ? this.props.format(this.state.value) : null}>
-            {this.state.isDatePickerShown ? (
-              <div className={
-                "ms-DatePicker-picker" +
-                (this.state.isFocused ? " ms-DatePicker-picker--focused" : "") +
-                " ms-DatePicker-picker--opened"}>
-                <div className="ms-DatePicker-holder" onClick={this.onClickOverlay}>
-                  <div className="ms-DatePicker-frame">
-                    <div className="ms-DatePicker-wrap">
+            {isDatePickerShown ? (
+              <div className={ css('ms-DatePicker-picker', {
+                'ms-DatePicker-picker--focused': isFocused
+              })}>
+                (isFocused ? ' ms-DatePicker-picker--focused' : "') +
+                ' ms-DatePicker-picker--opened'}>
+                <div className='ms-DatePicker-holder' onClick={this.onClickOverlay}>
+                  <div className='ms-DatePicker-frame'>
+                    <div className='ms-DatePicker-wrap'>
                       <DatePickerDay
                         selectedDate={ this.state.selectedDate }
                         onSelectDate={ this.onSelectDate }
                         onSelectPrevMonth={ this.onSelectPrevMonth }
                         onSelectNextMonth={ this.onSelectNextMonth }
                         strings={DayPickerStrings}></DatePickerDay>
-                      <span className="ms-DatePicker-goToday js-goToday"
+                      <span className='ms-DatePicker-goToday js-goToday'
                         onClick={ this.onGotoToday }>{DayPickerStrings.goToToday}</span>
                       <DatePickerMonth
                         selectedDate={ this.state.selectedDate }
@@ -195,7 +197,7 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
               </div>
             ) : null}
           </TextField>
-        {this.state.isDatePickerShown ? (<div onClick={this.onClickOverlay} style={overlayStyles}></div>) : null}
+        { isDatePickerShown ? (<div onClick={this.onClickOverlay} style={overlayStyles}></div>) : null}
       </div>
     );
   }

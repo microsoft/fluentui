@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './Pivot.scss';
+import { css } from '../../utilities/css';
 
 export interface IPivotItem {
   key: string;
@@ -18,9 +19,9 @@ export interface IPivotState {
 }
 
 export default class Pivot extends React.Component<IPivotProps, any> {
-  static defaultProps = {
+  public static defaultProps = {
     items: []
-  }
+  };
 
   constructor(props?: IPivotProps) {
     super(props);
@@ -41,18 +42,22 @@ export default class Pivot extends React.Component<IPivotProps, any> {
     this._onItemClick = this._onItemClick.bind(this);
   }
 
-  render() {
+  public render() {
     let { items, largeformat } = this.props;
     let { selectedIndex } = this.state;
     let selectedOption = items[selectedIndex];
 
     return (
-      <ul className={ 'ms-Pivot' + (largeformat ? " ms-Pivot--large" : "") }>
+      <ul className={ css('ms-Pivot', {
+        'ms-Pivot--large': largeformat
+        })}>
           { items.map(item => (
             <li
               key={ item.key }
               onClick={ this._onItemClick.bind(this, item) }
-              className={ 'ms-Pivot-link' + ((selectedOption === item) ? ' is-selected' : '')}>
+              className={ css('ms-Pivot-link', {
+                'is-selected': !!selectedOption
+              })}>
                 { item.text }
             </li>
           )) }
@@ -65,12 +70,11 @@ export default class Pivot extends React.Component<IPivotProps, any> {
   }
 
   private _onItemClick(item) {
-    let selectedOptionKey = item.key;
     let selectedOptionIndex;
 
     // Iterate through all of the Pivot items, finding the one the matches they selected key.
-    for(let i = 0; i < this.props.items.length; i++) {
-      if(item.key === this.props.items[i].key) {
+    for (let i = 0; i < this.props.items.length; i++) {
+      if (item.key === this.props.items[i].key) {
         selectedOptionIndex = i;
       }
     }

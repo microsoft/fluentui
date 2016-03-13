@@ -1,6 +1,6 @@
 export enum DetailsListLayoutMode {
-  justified,
-  fixedColumns
+  fixedColumns,
+  justified
 }
 
 export default DetailsListLayoutMode;

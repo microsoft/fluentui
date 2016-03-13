@@ -21,7 +21,7 @@ export default class LinkPage extends React.Component<any, any> {
         <ExampleCard title='Link' code={ LinkBasicExampleCode }>
           <LinkBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ [] } />
+        <PropertiesTable properties={ LinkProps } />
       </div>
     );
   }

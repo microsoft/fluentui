@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { assign } from '../../utilities/object';
 import { css } from '../../utilities/css';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
 
@@ -58,7 +57,7 @@ export default class ColorSlider extends React.Component<IColorSliderProps, ICol
   }
 
   public render() {
-    let { className, thumbColor, minValue, maxValue, overlayStyle } = this.props;
+    let { className, minValue, maxValue, overlayStyle } = this.props;
     let { currentValue, isAdjusting } = this.state;
 
     let currentPercentage = 100 * (currentValue - minValue) / (maxValue - minValue);
@@ -85,7 +84,6 @@ export default class ColorSlider extends React.Component<IColorSliderProps, ICol
 
   private _onMouseMove(ev: React.MouseEvent) {
     let { onChanged, minValue, maxValue } = this.props;
-    let { origin } = this.state;
     let rectSize = this.refs.root.getBoundingClientRect();
 
     let currentPercentage = (ev.clientX - rectSize.left) / rectSize.width;

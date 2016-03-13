@@ -21,7 +21,7 @@ export default class LabelPage extends React.Component<any, any> {
         <ExampleCard title='Label' code={ LabelBasicExampleCode }>
           <LabelBasicExample/>
         </ExampleCard>
-        <PropertiesTable properties={ [] } />
+        <PropertiesTable properties={ LabelProps } />
       </div>
     );
   }

@@ -4,7 +4,7 @@ export interface INavBarProps {
 }
 
 export default class NavBar extends React.Component<INavBarProps, any> {
-  render() {
+  public render() {
     let rootClass = 'ms-NavBar';
 
     return (

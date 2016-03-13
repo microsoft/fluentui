@@ -1,7 +1,6 @@
 import * as React from 'react';
 import IColumn from './IColumn';
 import { css } from '../../utilities/css';
-import { getResourceUrl } from '../../utilities/resources';
 import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/ISelection';
 import DetailsListLayoutMode from './DetailsListLayoutMode';
@@ -37,8 +36,6 @@ export interface IColumnResizeDetails {
   columnMinWidth: number;
 }
 
-
-
 export default class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetailsHeaderState> {
   private _events: EventGroup;
 
@@ -55,9 +52,6 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
     this._onSizerUp = this._onSizerUp.bind(this);
   }
 
-  public componentWillReceiveProps(newProps) {
-  }
-
   public componentDidMount() {
     let { selection } = this.props;
 
@@ -69,7 +63,7 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
   }
 
   public render() {
-    let { selectionMode, layoutMode, columns, onSort } = this.props;
+    let { selectionMode, columns } = this.props;
     let { isAllSelected } = this.state;
     let { columnResizeDetails } = this.state;
 
@@ -101,9 +95,9 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
                   'is-sortedDescending': column.isSortedDescending
                 }) }
                 style={ { width: column.calculatedWidth } }
-                onClick={ (ev) => (onSort ? onSort(column) : null) }
+                onClick={ this._onColumnClick.bind(this, column) }
               >
-                <span className="ms-DetailsHeader-sortArrow ms-Icon ms-Icon--arrowUp2" />
+                <span className='ms-DetailsHeader-sortArrow ms-Icon ms-Icon--arrowUp2' />
                 { column.name }
                 { column.isFilterable ? (
                   <i className='ms-DetailsHeader-filterChevron ms-Icon ms-Icon--chevronDown' />
@@ -142,7 +136,6 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
      }
   }
 
-
   private _onSelectionChanged() {
     let isAllSelected = this.props.selection.isAllSelected();
 
@@ -179,7 +172,7 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
      }
   }
 
-  private _handleColumnClick(column) {
+  private _onColumnClick(column) {
     let { onSort } = this.props;
 
     if (onSort && column.isSortable) {

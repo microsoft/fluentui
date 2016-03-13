@@ -13,12 +13,13 @@ export default class Async {
   private _animationFrameIds: { [id: number]: boolean } = null;
   private _isDisposed = false;
   private _parent: any;
-  private _noop: any = () => { /* do nothing */ };
   private _onErrorHandler: (e: Error) => void;
+  private _noop: any;
 
   constructor(parent?: any, onError?: (e: Error) => void) {
     this._parent = parent || null;
     this._onErrorHandler = onError;
+    this._noop = () => { /* do nothing */ };
   }
 
   /**

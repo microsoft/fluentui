@@ -83,7 +83,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     focusZone: FocusZone;
     host: HTMLElement;
     menu: HTMLElement;
-  }
+  };
 
   private _previousActiveElement: HTMLElement;
   private _isFocusingPreviousElement: boolean;
@@ -157,57 +157,54 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   }
 
   public render() {
-    let { className, menuKey, items, isBeakVisible, labelElementId, targetElement, horizontalAlignmentHint, verticalAlignmentHint } = this.props;
-    let { contextualMenuItems, expandedMenuItemKey, contextualMenuTarget, submenuProps, positions, slideDirectionalClassName } = this.state;
-    let left = 0;
-
+    let { className, menuKey, items, isBeakVisible, labelElementId, targetElement } = this.props;
+    let { expandedMenuItemKey, submenuProps, positions, slideDirectionalClassName } = this.state;
     let areAnyIconsVisible = items.some(item => !!item.icon);
-    let areAnyCheckmarksVisible = items.some(item => !!item.canCheck);
 
     return (
       <div ref='host' className={ css('ms-ContextualMenu-container', className) }>
         { (items && items.length) ? (
-        <FocusZone
-          className={ 'ms-ContextualMenu is-open'+ ((slideDirectionalClassName) ? (` ms-u-${ slideDirectionalClassName }`) : (null)) }
-          key={ menuKey }
-          ref='focusZone' onLostFocus={ this._onBlur }
-          role='menu'
-          ariaLabelledBy={ labelElementId }
-          style={ ((positions) ? positions.menu : OFF_SCREEN_POSITION) }
-        >
-          { isBeakVisible && targetElement ? (<div className='ms-ContextualMenu-beak'  style={ ((positions) ? positions.beak : BEAK_ORIGIN_POSITION) } />) : (null)}
-          <ul className='ms-ContextualMenu-list is-open ' onKeyDown={ this._onKeyDown }  ref='menu'>
-            { items.map((item, index) => (
-              // If the item name is equal to '-', a divider will be generated.
-              item.name === '-' ? (
-              <li key={ item.key || index } className='ms-ContextualMenu-item ms-ContextualMenu-item--divider'></li>
-              ) : (
-              <li key={ item.key || index } className='ms-ContextualMenu-item' ref={ item.key }>
-                <button
-                  className={ css('ms-ContextualMenu-link', { 'is-expanded': (expandedMenuItemKey === item.key) }) }
-                  onClick={ this._onItemClick.bind(this, item) }
-                  data-command-key={ index }
-                  role='menuitem'
-                >
-                  { (areAnyIconsVisible) ? (
-                  <span className={ 'ms-ContextualMenu-icon' +
-                    ((item.icon) ? ` ms-Icon ms-Icon--${ item.icon }` : ' no-icon')}>
-                  </span>
-                  ) : (null) }
-                  <span className='ms-ContextualMenu-itemText ms-font-m ms-font-weight-regular'>{ item.name }</span>
-                  { (item.items && item.items.length) ? (
-                  <i className='ms-ContextualMenu-chevronRight ms-Icon ms-Icon--chevronRight' />
-                  ) : ( null ) }
-                </button>
-              </li>
-              )
+          <FocusZone
+            className={ 'ms-ContextualMenu is-open' + ((slideDirectionalClassName) ? (` ms-u-${slideDirectionalClassName}`) : (null)) }
+            key={ menuKey }
+            ref='focusZone' onLostFocus={ this._onBlur }
+            role='menu'
+            ariaLabelledBy={ labelElementId }
+            style={ ((positions) ? positions.menu : OFF_SCREEN_POSITION) }
+            >
+            { isBeakVisible && targetElement ? (<div className='ms-ContextualMenu-beak'  style={ ((positions) ? positions.beak : BEAK_ORIGIN_POSITION) } />) : (null) }
+            <ul className='ms-ContextualMenu-list is-open ' onKeyDown={ this._onKeyDown }  ref='menu'>
+              { items.map((item, index) => (
+                // If the item name is equal to '-', a divider will be generated.
+                item.name === '-' ? (
+                  <li key={ item.key || index } className='ms-ContextualMenu-item ms-ContextualMenu-item--divider'></li>
+                ) : (
+                    <li key={ item.key || index } className='ms-ContextualMenu-item' ref={ item.key }>
+                      <button
+                        className={ css('ms-ContextualMenu-link', { 'is-expanded': (expandedMenuItemKey === item.key) }) }
+                        onClick={ this._onItemClick.bind(this, item) }
+                        data-command-key={ index }
+                        role='menuitem'
+                        >
+                        { (areAnyIconsVisible) ? (
+                          <span className={ 'ms-ContextualMenu-icon' +
+                            ((item.icon) ? ` ms-Icon ms-Icon--${item.icon}` : ' no-icon') }>
+                          </span>
+                        ) : (null) }
+                        <span className='ms-ContextualMenu-itemText ms-font-m ms-font-weight-regular'>{ item.name }</span>
+                        { (item.items && item.items.length) ? (
+                          <i className='ms-ContextualMenu-chevronRight ms-Icon ms-Icon--chevronRight' />
+                        ) : (null) }
+                      </button>
+                    </li>
+                  )
               )) }
             </ul>
           </FocusZone>
-          ) : ( null ) }
+        ) : (null) }
         { submenuProps ? ( // If a submenu properities exists, the submenu will be rendered.
-        <ContextualMenu { ...submenuProps } />
-        ) : ( null ) }
+          <ContextualMenu { ...submenuProps } />
+        ) : (null) }
       </div>
     );
   }
@@ -219,16 +216,6 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
       this._isFocusingPreviousElement = true;
       this.dismiss();
     }
-  }
-
-  private _onClick(ev: React.MouseEvent, item: IContextualMenuItem) {
-    if (item.onClick) {
-      item.onClick(ev);
-    }
-
-    // When a user clicks on an item, we will try to refocus the previous focused element.
-    this._isFocusingPreviousElement = true;
-    this.dismiss();
   }
 
   private _onBlur(ev: React.FocusEvent) {
@@ -275,7 +262,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
 
   private _getRelativePositions(props: IContextualMenuProps, state: IContextualMenuState) {
     let { targetElement, typeAlignmentHint, horizontalAlignmentHint, verticalAlignmentHint, gapSpace } = props;
-    let { positions, slideDirectionalClassName } = state;
+    let { positions } = state;
     let hostElement = this.refs.host;
     let menuElement = this.refs.menu;
     let windowSize: { width: number, height: number } = { width: window.innerWidth, height: window.innerHeight };
@@ -298,12 +285,12 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
       let menuRect = menuElement.getBoundingClientRect();
 
       // ContextualMenu submenu render type: vertical
-      if (typeAlignmentHint == DirectionalHint.vertical) {
+      if (typeAlignmentHint === DirectionalHint.vertical) {
         let actualHorizontalDirection: DirectionalHint;
         let actualVerticalDirection: DirectionalHint;
 
         // Set actualHorizontalDirection based on window space
-        if (horizontalAlignmentHint == DirectionalHint.left) {
+        if (horizontalAlignmentHint === DirectionalHint.left) {
           let hasEnoughSpace = windowSize.width - targetRect.left > menuRect.width + BUFFER_ZONE;
 
           if (hasEnoughSpace) {
@@ -311,7 +298,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
           } else {
             actualHorizontalDirection = DirectionalHint.right;
           }
-        } else if (horizontalAlignmentHint == DirectionalHint.center) {
+        } else if (horizontalAlignmentHint === DirectionalHint.center) {
           let hasEnoughSpaceLeft = targetRect.left > (menuRect.width / 2) - (targetRect.width / 2) + BUFFER_ZONE;
           let hasEnoughSpaceRight = windowSize.width - targetRect.right > (menuRect.width / 2) - (targetRect.width / 2) + BUFFER_ZONE;
 
@@ -322,15 +309,15 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
           } else {
             actualHorizontalDirection = DirectionalHint.right;
           }
-        } else if (horizontalAlignmentHint == DirectionalHint.right) {
+        } else if (horizontalAlignmentHint === DirectionalHint.right) {
           let hasEnoughSpace = targetRect.right > menuRect.width + BUFFER_ZONE;
 
-          if (hasEnoughSpace){
+          if (hasEnoughSpace) {
             actualHorizontalDirection = DirectionalHint.right;
           } else {
             actualHorizontalDirection = DirectionalHint.left;
           }
-        } else if (horizontalAlignmentHint == DirectionalHint.auto) {
+        } else if (horizontalAlignmentHint === DirectionalHint.auto) {
           let isLeftAligned = (targetRect.left - hostRect.left + (targetRect.width / 2)) < (hostRect.width / 2);
           if (isLeftAligned) {
             actualHorizontalDirection = DirectionalHint.left;
@@ -341,7 +328,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
         }
 
         // Set the actualVerticalDirection based on the window space
-        if (verticalAlignmentHint == DirectionalHint.bottom) {
+        if (verticalAlignmentHint === DirectionalHint.bottom) {
           let hasEnoughSpace = (windowSize.height - targetRect.bottom) > menuRect.height + gapSpace + BUFFER_ZONE;
 
           if (hasEnoughSpace) {
@@ -349,7 +336,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
           } else {
             actualVerticalDirection = DirectionalHint.top;
           }
-        } else if (verticalAlignmentHint == DirectionalHint.top) {
+        } else if (verticalAlignmentHint === DirectionalHint.top) {
           let hasEnoughSpace = targetRect.top > menuRect.height + gapSpace + BUFFER_ZONE;
 
           if (hasEnoughSpace) {
@@ -360,10 +347,10 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
         }
 
         // Calculate the horizontal position based on actualHorizontalDirection
-        if (actualHorizontalDirection == DirectionalHint.left) {
+        if (actualHorizontalDirection === DirectionalHint.left) {
           position.left = targetRect.left - hostRect.left;
           beakPosition.left = (targetRect.width / 2) - (BEAK_WIDTH / 2);
-        } else if (actualHorizontalDirection == DirectionalHint.center) {
+        } else if (actualHorizontalDirection === DirectionalHint.center) {
           let targetCenter = targetRect.left - hostRect.left + (targetRect.width / 2);
           position.left = targetCenter - menuRect.width / 2;
           beakPosition.left = (menuRect.width / 2) - (BEAK_WIDTH / 2);
@@ -373,7 +360,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
         }
 
         // Calculate the vertical position based on actualVerticalDirection
-        if(actualVerticalDirection == DirectionalHint.top){
+        if (actualVerticalDirection === DirectionalHint.top) {
           position.top = targetRect.top - hostRect.top - gapSpace - menuRect.height;
           beakPosition.top = menuRect.height - BEAK_WIDTH / 2;
           directionalClassName = SLIDE_ANIMATIONS.up;
@@ -383,13 +370,13 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
           directionalClassName = SLIDE_ANIMATIONS.down;
         }
 
-      // ContextualMenu submenu render type: horizontal
-      } else if (typeAlignmentHint == DirectionalHint.horizontal) {
+        // ContextualMenu submenu render type: horizontal
+      } else if (typeAlignmentHint === DirectionalHint.horizontal) {
         let actualHorizontalDirection: DirectionalHint;
         let actualVerticalDirection: DirectionalHint;
 
         // Set actualHorizontalDirection based on window space
-        if (horizontalAlignmentHint == DirectionalHint.right) {
+        if (horizontalAlignmentHint === DirectionalHint.right) {
           let hasEnoughSpace = (windowSize.width - targetRect.right) > menuRect.width + gapSpace + BUFFER_ZONE;
 
           if (hasEnoughSpace) {
@@ -397,7 +384,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
           } else {
             actualHorizontalDirection = DirectionalHint.left;
           }
-        } else if (horizontalAlignmentHint == DirectionalHint.left) {
+        } else if (horizontalAlignmentHint === DirectionalHint.left) {
           let hasEnoughSpace = targetRect.left > menuRect.width + gapSpace + BUFFER_ZONE;
 
           if (hasEnoughSpace) {
@@ -408,7 +395,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
         }
 
         // Set actualVerticalDirection based on window space
-        if (verticalAlignmentHint == DirectionalHint.top) {
+        if (verticalAlignmentHint === DirectionalHint.top) {
           let hasEnoughSpace = targetRect.bottom > menuRect.height + BUFFER_ZONE;
 
           if (hasEnoughSpace) {
@@ -416,7 +403,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
           } else {
             actualVerticalDirection = DirectionalHint.bottom;
           }
-        } else if (verticalAlignmentHint == DirectionalHint.center) {
+        } else if (verticalAlignmentHint === DirectionalHint.center) {
           let hasEnoughSpaceTop = targetRect.top + targetRect.height / 2 > menuRect.height / 2 + BUFFER_ZONE;
           let hasEnoughSpaceBottom = windowSize.height - targetRect.top - targetRect.height / 2 > menuRect.height / 2 + BUFFER_ZONE;
 
@@ -427,10 +414,10 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
           } else {
             actualVerticalDirection = DirectionalHint.top;
           }
-        } else if (verticalAlignmentHint == DirectionalHint.bottom) {
+        } else if (verticalAlignmentHint === DirectionalHint.bottom) {
           let hasEnoughSpace = windowSize.height - targetRect.top > menuRect.height + BUFFER_ZONE;
 
-          if (hasEnoughSpace){
+          if (hasEnoughSpace) {
             actualVerticalDirection = DirectionalHint.bottom;
           } else {
             actualVerticalDirection = DirectionalHint.top;
@@ -438,7 +425,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
         }
 
         // Calculate horizontal position based on actualHorizontalDirection
-        if (actualHorizontalDirection == DirectionalHint.left) {
+        if (actualHorizontalDirection === DirectionalHint.left) {
           position.left = targetRect.left - hostRect.left - gapSpace - menuRect.width;
           beakPosition.left = menuRect.width - 2 * BEAK_OFFSET;
           directionalClassName = SLIDE_ANIMATIONS.left;
@@ -449,10 +436,10 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
         }
 
         // Calculate vertical position based on actualVerticalDirection
-        if (actualVerticalDirection == DirectionalHint.top) {
+        if (actualVerticalDirection === DirectionalHint.top) {
           position.top = targetRect.bottom - hostRect.top - menuRect.height;
           beakPosition.top = menuRect.height - (targetRect.height / 2) - (BEAK_WIDTH / 2);
-        } else if (actualVerticalDirection == DirectionalHint.center) {
+        } else if (actualVerticalDirection === DirectionalHint.center) {
           position.top = targetRect.bottom - hostRect.top + (menuRect.height / 2 - targetRect.height / 2) - menuRect.height;
           beakPosition.top = (menuRect.height / 2) - (BEAK_WIDTH / 2);
         } else {
@@ -462,14 +449,18 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
       }
     }
 
-    let newPositions = {menu: position, beak: beakPosition}
+    let newPositions = {
+      menu: position,
+      beak: beakPosition
+    };
+
     // Set the new position only when the positions are not exists or one of the newPositions are different
     if ((!positions && newPositions) ||
-    (positions && newPositions && (positions.menu.top != newPositions.menu.top || positions.menu.left != newPositions.menu.left))) {
-        this.setState({
-          positions:{
-            menu: newPositions.menu,
-            beak: newPositions.beak
+      (positions && newPositions && (positions.menu.top !== newPositions.menu.top || positions.menu.left !== newPositions.menu.left))) {
+      this.setState({
+        positions: {
+          menu: newPositions.menu,
+          beak: newPositions.beak
         },
         slideDirectionalClassName: directionalClassName,
       });

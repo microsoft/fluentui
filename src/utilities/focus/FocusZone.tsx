@@ -60,11 +60,10 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
     let element = (this.refs as any).root;
 
     this._events.onAll(element, {
-      'click': this._onClick,
       'keydown': this._onKeyDown
     });
 
-    // Need to register these separately to use "capture" boolean.
+    // Need to register these separately to use 'capture' boolean.
     this._events.on(element, 'focus', this._onFocus, true);
     this._events.on(element, 'blur', this._onBlur, true);
   }
@@ -74,7 +73,7 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
   }
 
   public render() {
-    let { className, style, isEnabled, role, ariaLabelledBy, focusNamespace, isChildZone } = this.props;
+    let { className, style, isEnabled, role, ariaLabelledBy, focusNamespace } = this.props;
     let index = 0;
     let { activeIndex } = this.state;
 
@@ -86,12 +85,12 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
       }
 
       // if there are nested components with focusable subcomponents
-      if (child && child.props && child.props[CONTAINS_FOCUSABLE_SUBCOMPONENT_ATTRIBUTE] !== undefined){
-        if(child.props[CONTAINS_FOCUSABLE_SUBCOMPONENT_ATTRIBUTE] === true) {
+      if (child && child.props && child.props[CONTAINS_FOCUSABLE_SUBCOMPONENT_ATTRIBUTE] !== undefined) {
+        if (child.props[CONTAINS_FOCUSABLE_SUBCOMPONENT_ATTRIBUTE] === true) {
           // Create a cloned version passing the current focusNamespace to the child
           let focusableElement = React.cloneElement(child, {
             ref: child.ref || index,
-            focusNamespace: child.props['focusNamespace'] || focusNamespace
+            focusNamespace: (child.props as any).focusNamespace || focusNamespace
           }, _mapChildren(child.props.children));
 
           // Return it to the map.
@@ -155,11 +154,13 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
     let el = ReactDOM.findDOMNode(this.refs[ai]) as HTMLElement;
 
     function _getFocusableInChildren(element) {
-      for (var child in element.children) {
-        if (_isFocusableElement(element.children[child])) {
-          return element.children[child];
-        } else {
-          _getFocusableInChildren(element.children[child]);
+      for (let child in element.children) {
+        if (element.hasOwnProperty(child)) {
+          if (_isFocusableElement(element.children[child])) {
+            return element.children[child];
+          } else {
+            _getFocusableInChildren(element.children[child]);
+          }
         }
       }
       return element;
@@ -181,7 +182,7 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
     let index = 0;
 
     function _scanInRefChildren(element) {
-      for (var child in element.children) {
+      for (let child in element.children) {
         if (element.children[child] === ev.target) {
           return true;
         } else {
@@ -192,16 +193,18 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
     }
 
     if (_belongsToFocusZone(focusNamespace, ev.target)) {
-      for (var ref in this.refs){
-        var actualRef = ReactDOM.findDOMNode(this.refs[ref]) as HTMLElement;
+      for (let ref in this.refs) {
+        if (this.refs.hasOwnProperty(ref)) {
+          let actualRef = ReactDOM.findDOMNode(this.refs[ref]) as HTMLElement;
 
-        if (actualRef === ev.target) {
-          break;
-        } else if (_scanInRefChildren(actualRef)) {
-          break;
+          if (actualRef === ev.target) {
+            break;
+          } else if (_scanInRefChildren(actualRef)) {
+            break;
+          }
+
+          index++;
         }
-
-        index++;
       }
 
       this.setState({
@@ -216,28 +219,23 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
     }
   }
 
-  private _onClick() {
-
-  }
-
   private getRefsCount() {
     let count = 0;
-    for (var ref in this.refs) {
-      count++;
+    for (let ref in this.refs) {
+      if (this.refs.hasOwnProperty(ref)) {
+        count++;
+      }
     }
 
-    return count -1;
+    return count - 1;
   }
 
   private previousElement() {
     let { activeIndex } = this.state;
 
-    if (this.props.isCircularNavigation && activeIndex === 0)
-    {
-      return this.props.isChildZone ? -1 : this.getRefsCount() -1;
-    }
-    else
-    {
+    if (this.props.isCircularNavigation && activeIndex === 0) {
+      return this.props.isChildZone ? -1 : this.getRefsCount() - 1;
+    } else {
       return Math.max(0, activeIndex - 1);
     }
   }
@@ -246,12 +244,9 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
     let { activeIndex } = this.state;
     let childCount = this.getRefsCount();
 
-    if (this.props.isCircularNavigation && activeIndex === childCount - 1)
-    {
+    if (this.props.isCircularNavigation && activeIndex === childCount - 1) {
       return this.props.isChildZone ? -1 : 0;
-    }
-    else
-    {
+    } else {
       return Math.min(childCount - 1, activeIndex + 1);
     }
   }
@@ -260,7 +255,6 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
     let eventTarget = ev.target as HTMLElement;
     let isInput = _isInputElement(eventTarget);
     let { direction, isChildZone } = this.props;
-    let { activeIndex } = this.state;
     let newActiveIndex = -1;
 
     // Ignore keyboard events if originating from INPUT elements or TEXTAREAs.
@@ -330,8 +324,8 @@ function _isFocusableElement(element) {
   // Element is HTMLElement
   if (element.tagName) {
     return element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) ||
-           element.tagName == "BUTTON" ||
-           element.tagName == "A";
+           element.tagName === 'BUTTON' ||
+           element.tagName === 'A';
   }
   // Element is ReactElement
   return element.props[IS_FOCUSABLE_ATTRIBUTE] ||
@@ -341,13 +335,13 @@ function _isFocusableElement(element) {
 
 function _belongsToFocusZone(focusNamespace: string, element) {
   // Element is HTMLElement
-  if (element.tagName){
+  if (element.tagName) {
     return (!focusNamespace && !element.getAttribute(FOCUSABLE_CONTEXT_ATTRIBUTE)) ||
       ((focusNamespace !== undefined && element.getAttribute(FOCUSABLE_CONTEXT_ATTRIBUTE)) &&
-      (focusNamespace == element.getAttribute(FOCUSABLE_CONTEXT_ATTRIBUTE)));
+      (focusNamespace === element.getAttribute(FOCUSABLE_CONTEXT_ATTRIBUTE)));
   }
   // Element is ReactElement
   return (!focusNamespace && !element.props[FOCUSABLE_CONTEXT_ATTRIBUTE]) ||
     ((focusNamespace !== undefined && element.props[FOCUSABLE_CONTEXT_ATTRIBUTE]) &&
-    (focusNamespace == element.props[FOCUSABLE_CONTEXT_ATTRIBUTE]));
+    (focusNamespace === element.props[FOCUSABLE_CONTEXT_ATTRIBUTE]));
 }

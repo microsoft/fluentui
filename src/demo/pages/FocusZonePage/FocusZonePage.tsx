@@ -28,7 +28,7 @@ export default class FocusZonePage extends React.Component<any, any> {
         <ExampleCard title='List FocusZones' code={ FocusZoneListExampleCode }>
           <FocusZoneListExample />
         </ExampleCard>
-        <PropertiesTable properties={ [] } />
+        <PropertiesTable properties={ FocusZoneProps } />
       </div>
     );
   }

@@ -4,11 +4,9 @@ export interface IPeoplePickerProps {
 }
 
 export default class PeoplePicker extends React.Component<IPeoplePickerProps, any> {
-  render() {
-    let rootClass = 'ms-PeoplePicker';
-
+  public render() {
     return (
-      <div className={ rootClass }>
+      <div className='ms-PeoplePicker'>
       </div>
     );
   }

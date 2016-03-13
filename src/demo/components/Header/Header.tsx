@@ -29,8 +29,6 @@ export class Header extends React.Component<IHeaderProps, any> {
     };
   }
 
-
-
   public render() {
     let { title, sideLinks } = this.props;
     let { contextMenu } = this.state;

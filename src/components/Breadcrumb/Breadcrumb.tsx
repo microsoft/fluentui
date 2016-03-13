@@ -6,7 +6,7 @@ export interface IBreadcrumbProps {
 }
 
 export default class Breadcrumb extends React.Component<IBreadcrumbProps, any> {
-    render() {
+    public render() {
       return (
         <div className='ms-Breadcrumb'>
           <div className='ms-Breadcrumb-overflow'>

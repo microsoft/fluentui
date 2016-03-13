@@ -21,7 +21,7 @@ export default class PanelPage extends React.Component<any, any> {
         <ExampleCard title='Panel' code={ PanelBasicExampleCode }>
           <PanelBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ [] } />
+        <PropertiesTable properties={ PanelProps } />
       </div>
     );
   }

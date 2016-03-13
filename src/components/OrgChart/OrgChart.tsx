@@ -4,7 +4,7 @@ export interface IOrgChartProps {
 }
 
 export default class OrgChart extends React.Component<IOrgChartProps, any> {
-  render() {
+  public render() {
     let rootClass = 'ms-OrgChart';
 
     return (

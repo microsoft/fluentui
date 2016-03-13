@@ -97,7 +97,6 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
   private _onKeyDown(ev: KeyboardEvent) {
     let { selection, layout, selectionMode, isSelectedOnFocus } = this.props;
 
-    let element = this.refs.root;
     let items = selection.getItems();
     let eventTarget = ev.target as HTMLElement;
     let isInput = this._isInputElement(eventTarget);
@@ -142,25 +141,6 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
       case KeyCodes.end:
         indexToSelect = selection.getItems().length - 1;
         break;
-/*
-      case KeyCodes.space:
-        if (this._isButtonElement(eventTarget)) {
-          return true;
-        }
-
-        selection.toggleIndexSelected(focusIndex, items);
-        break;
-
-      case KeyCodes.enter:
-        if (this._isButtonElement(eventTarget) || !element.contains(eventTarget)) {
-          return true;
-        }
-        selection.setAllSelected(false);
-        selection.setIndexSelected(focusIndex, true, true, true);
-
-        return;
-      // return selection.invokeFocusedItem(ev);
-*/
 
       case KeyCodes.escape:
         if (selection.getSelectedCount() > 0) {
@@ -252,9 +232,6 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
       }
 
       selection.setChangeEvents(true);
-
-      // ev.stopPropagation();
-      // ev.preventDefault();
     }
   }
 
@@ -271,10 +248,6 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
 
   private _isInputElement(element: HTMLElement) {
     return element.tagName === 'INPUT' || element.tagName === 'TEXTAREA';
-  }
-
-  private _isButtonElement(element: HTMLElement) {
-    return element.tagName === 'BUTTON';
   }
 
   private _getKeyFromElement(element: HTMLElement): string {

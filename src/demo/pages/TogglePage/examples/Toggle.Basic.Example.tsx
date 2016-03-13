@@ -24,7 +24,7 @@ export default class ToggleBasicExample extends React.Component<any, IToggleBasi
 
     return (
       <Toggle
-        isToggled={ this.state.isToggled }
+        isToggled={ isToggled }
         onChanged={ this._onToggleChanged }
         label='Indoor lighting'
         onText='On'

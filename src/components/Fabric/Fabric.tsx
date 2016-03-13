@@ -65,7 +65,7 @@ export default class Fabric extends React.Component<IFabricProps, IFabricState> 
 
     return (
       <div className={ rootClass }>
-        { this.props.children }
+        { children }
       </div>
     );
   }

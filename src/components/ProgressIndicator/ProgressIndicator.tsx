@@ -13,9 +13,9 @@ export default class ProgressIndicator extends React.Component<IProgressIndicato
     title: '',
     description: '',
     percentComplete: 0
-  }
+  };
 
-  render() {
+  public render() {
     let { title, description, percentComplete } = this.props;
 
     percentComplete = Math.min(100, Math.max(0, percentComplete * 100));

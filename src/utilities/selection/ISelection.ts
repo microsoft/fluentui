@@ -9,7 +9,6 @@ export interface IObjectWithKey {
   key: string;
 }
 
-
 export interface ISelection {
   count: number;
 

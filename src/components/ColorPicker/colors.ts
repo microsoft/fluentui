@@ -12,31 +12,31 @@ export const MAX_COLOR_HUE = 359;
 export const MAX_COLOR_VALUE = 100;
 
 export interface IColor {
-  r: number;
-  g: number;
-  b: number;
   a: number;
+  b: number;
+  g: number;
   h: number;
-  s: number;
-  v: number;
   hex: string;
+  r: number;
+  s: number;
   str: string;
+  v: number;
 }
 
 export function getColorFromString(color: string): IColor {
-  let { r, g, b, a } = cssColor(color);
+  let { a, b, g, r } = cssColor(color);
   let { h, s, v } = rgb2hsv(r, g, b);
 
   return {
-    r: r,
-    g: g,
-    b: b,
     a: a,
+    b: b,
+    g: g,
     h: h,
-    s: s,
-    v: v,
     hex: rgb2hex(r, g, b),
-    str: color
+    r: r,
+    s: s,
+    str: color,
+    v: v
   };
 
 }
@@ -45,21 +45,20 @@ export function getFullColorString(color: IColor): string {
   return `#${ hsv2hex(color.h, MAX_COLOR_SATURATION, MAX_COLOR_VALUE) }`;
 }
 
-
 export function updateSV(color: IColor, s: number, v: number): IColor {
   let { r, g, b } = hsv2rgb(color.h, s, v);
   let hex = rgb2hex(r, g, b);
 
   return {
-    r: r,
-    g: g,
-    b: b,
     a: color.a,
+    b: b,
+    g: g,
     h: color.h,
-    s: s,
-    v: v,
     hex: hex,
-    str: (color.a === 100) ? `#${ hex }` : `rgba(${r}, ${g}, ${b}, ${color.a / 100})`
+    r: r,
+    s: s,
+    str: (color.a === 100) ? `#${ hex }` : `rgba(${r}, ${g}, ${b}, ${color.a / 100})`,
+    v: v
    };
 }
 
@@ -68,15 +67,15 @@ export function updateH(color: IColor, h: number): IColor {
   let hex = rgb2hex(r, g, b);
 
   return {
-    r: r,
-    g: g,
-    b: b,
     a: color.a,
+    b: b,
+    g: g,
     h: h,
-    s: color.s,
-    v: color.v,
     hex: hex,
-    str: (color.a === 100) ? `#${ hex }` : `rgba(${r}, ${g}, ${b}, ${color.a / 100})`
+    r: r,
+    s: color.s,
+    str: (color.a === 100) ? `#${ hex }` : `rgba(${r}, ${g}, ${b}, ${color.a / 100})`,
+    v: color.v
    };
 }
 

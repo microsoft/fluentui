@@ -4,7 +4,7 @@ export interface ISearchBoxProps {
 }
 
 export default class SearchBox extends React.Component<ISearchBoxProps, any> {
-  render() {
+  public render() {
     let rootClass = 'ms-SearchBox';
 
     return (

@@ -21,7 +21,7 @@ export default class DialogPage extends React.Component<any, any> {
         <ExampleCard title='Dialog' code={ DialogBasicExampleCode }>
           <DialogBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ [] } />
+        <PropertiesTable properties={ DialogProps } />
       </div>
     );
   }

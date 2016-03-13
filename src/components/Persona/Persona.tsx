@@ -50,7 +50,7 @@ const PERSONA_PRESENCE = {
   [PersonaPresence.away]: 'ms-Persona--away',
   [PersonaPresence.dnd]: 'ms-Persona--dnd',
   [PersonaPresence.blocked]: 'ms-Persona--blocked'
-}
+};
 
 export class Persona extends React.Component<IPersonaProps, any> {
   public static defaultProps: IPersonaProps = {

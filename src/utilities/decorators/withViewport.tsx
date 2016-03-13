@@ -3,11 +3,11 @@ import EventGroup from '../eventGroup/EventGroup';
 
 export interface IViewport {
   width: number;
-  height: number
+  height: number;
 }
 
 export interface IWithViewportState {
-  viewport?: IViewport
+  viewport?: IViewport;
 }
 
 export function withViewport<P, S>(ComposedComponent: any): any {
@@ -32,7 +32,7 @@ export function withViewport<P, S>(ComposedComponent: any): any {
       let { viewport } = this.state;
 
       return (
-        <div className="Viewport" ref="root" >
+        <div className='Viewport' ref='root' >
           <ComposedComponent viewport={ viewport } { ...this.props } />
         </div>
       );
@@ -76,6 +76,6 @@ export function withViewport<P, S>(ComposedComponent: any): any {
 
       return rootElement;
     }
-  }
+  };
 
 }

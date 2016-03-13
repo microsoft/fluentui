@@ -44,6 +44,14 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     farItems: []
   };
 
+  public refs: {
+    [key: string]: React.ReactInstance;
+    commandSurface: HTMLElement;
+    farCommandSurface: HTMLElement;
+    commandBarRegion: HTMLElement;
+    searchSurface: HTMLElement;
+  };
+
   private _instanceId: string;
   private _overflowWidth: number;
   private _commandItemWidths: { [key: string]: number };
@@ -86,7 +94,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
   }
 
   public render() {
-    const { isSearchBoxVisible, searchPlaceholderText, items, farItems } = this.props;
+    const { isSearchBoxVisible, searchPlaceholderText } = this.props;
     const { renderedItems, contextualMenuItems, expandedMenuItemKey, expandedMenuId, renderedOverflowItems, contextualMenuTarget, renderedFarItems } = this.state;
     let searchBox;
 
@@ -163,9 +171,9 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
           onDismiss={ this._onContextMenuDismiss }
           isBeakVisible={ true }
           gapSpace={ 8 }
-          typeAlignmentHint={DirectionalHint.vertical}
-          horizontalAlignmentHint={DirectionalHint.auto}
-          verticalAlignmentHint={DirectionalHint.bottom}
+          typeAlignmentHint={ DirectionalHint.vertical }
+          horizontalAlignmentHint={ DirectionalHint.auto }
+          verticalAlignmentHint={ DirectionalHint.bottom }
         />
         ) : (null)}
       </div>
@@ -197,17 +205,17 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
 
   private _updateRenderedItems() {
     let { items, overflowItems } = this.props;
-    let commandSurface = this.refs['commandSurface'] as HTMLElement;
-    let farCommandSurface = this.refs['farCommandSurface'] as HTMLElement;
-    let commandBarRegion = this.refs['commandBarRegion'] as HTMLElement;
-    let searchSurface = this.refs['searchSurface'] as HTMLElement;
+    let commandSurface = this.refs.commandSurface;
+    let farCommandSurface = this.refs.farCommandSurface;
+    let commandBarRegion = this.refs.commandBarRegion;
+    let searchSurface = this.refs.searchSurface;
     let renderedItems = [].concat(items);
     let renderedOverflowItems = overflowItems;
     let consumedWidth = 0;
     let isOverflowVisible = overflowItems && overflowItems.length;
 
     let style = window.getComputedStyle(commandSurface);
-    let availableWidth = commandBarRegion.clientWidth - parseInt(style.marginLeft) - parseInt(style.marginRight);
+    let availableWidth = commandBarRegion.clientWidth - parseInt(style.marginLeft, 10) - parseInt(style.marginRight, 10);
     if (searchSurface) {
       availableWidth -= searchSurface.getBoundingClientRect().width;
     }
@@ -265,19 +273,17 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     if (this.state.expandedMenuItemKey === OVERFLOW_KEY) {
       this._onContextMenuDismiss();
     } else {
-
       this.setState({
         expandedMenuId: ev.currentTarget.id,
         expandedMenuItemKey: OVERFLOW_KEY,
         contextualMenuItems: this.state.renderedOverflowItems,
         contextualMenuTarget: ev.currentTarget
       });
-
     }
   }
 
   private _onContextMenuDismiss(ev?: any) {
-    if (!ev || !ev.relatedTarget || !(this.refs['commandSurface'] as HTMLElement).contains(ev.relatedTarget as HTMLElement)) {
+    if (!ev || !ev.relatedTarget || !this.refs.commandSurface.contains(ev.relatedTarget as HTMLElement)) {
       this.setState({
         expandedMenuItemKey: null,
         contextualMenuItems: null,

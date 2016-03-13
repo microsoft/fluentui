@@ -21,7 +21,7 @@ export default class DatePickerExample extends React.Component<any, any> {
         <ExampleCard title='DatePicker' code={ DatePickerBasicExampleCode }>
           <DatePickerBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ [] } />
+        <PropertiesTable properties={ DatePickerProps } />
       </div>
     );
   }

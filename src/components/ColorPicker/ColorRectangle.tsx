@@ -1,13 +1,11 @@
 import * as React from 'react';
 import {
   IColor,
-  MAX_COLOR_HUE,
   MAX_COLOR_SATURATION,
   MAX_COLOR_VALUE,
   getFullColorString
  } from './colors';
 import { assign } from '../../utilities/object';
-import { css } from '../../utilities/css';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
 
 let hsv2hex = require('color-functions/lib/hsv2hex');
@@ -66,12 +64,12 @@ export default class ColorPicker extends React.Component<IColorRectangleProps, I
     this.setState({
       color: color,
       fullColorString: getFullColorString(color)
-    })
+    });
   }
 
   public render() {
     let { size } = this.props;
-    let { color, isAdjusting, fullColorString } = this.state;
+    let { color, fullColorString } = this.state;
 
     return (
       <div ref='root' className='ms-ColorPicker-colorRect' style={ { width: size, height: size, backgroundColor: fullColorString } } onMouseDown={ this._onMouseDown }>
@@ -91,7 +89,6 @@ export default class ColorPicker extends React.Component<IColorRectangleProps, I
 
   private _onMouseMove(ev: React.MouseEvent) {
     let { color, onSVChanged } = this.props;
-    let { origin } = this.state;
     let rectSize = this.refs.root.getBoundingClientRect();
 
     let sPercentage = (ev.clientX - rectSize.left) / rectSize.width;

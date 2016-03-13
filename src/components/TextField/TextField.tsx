@@ -2,7 +2,6 @@ import * as React from 'react';
 import Label from '../Label/index';
 import './TextField.scss';
 import { css } from '../../utilities/css';
-import KeyCodes from '../../utilities/KeyCodes';
 
 export interface ITextFieldProps extends React.DOMAttributes {
   children?: any;
@@ -25,19 +24,19 @@ export default class TextField extends React.Component<ITextFieldProps, any> {
     required: false,
     multiline: false,
     underlined: false
-  }
+  };
+
+  public refs: {
+    [key: string]: React.ReactInstance;
+    multilineText: HTMLInputElement;
+    singlelineText: HTMLInputElement;
+  };
 
   public constructor() {
     super();
 
     this._onMultilineTextChanged = this._onMultilineTextChanged.bind(this);
     this._onSinglelineTextChanged = this._onSinglelineTextChanged.bind(this);
-  }
-
-  public refs: {
-    [key: string]: React.ReactInstance;
-    multilineText: HTMLInputElement;
-    singlelineText: HTMLInputElement;
   }
 
   public render() {

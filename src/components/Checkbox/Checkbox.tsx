@@ -31,8 +31,6 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
     input: HTMLInputElement;
   };
 
-  private _instanceId: string;
-
   constructor(props: ICheckboxProps) {
     super(props);
 

@@ -25,10 +25,10 @@ export interface IDropdownState {
 }
 
 export default class Dropdown extends React.Component<IDropdownProps, any> {
-  static defaultProps = {
+  public static defaultProps = {
     options: [],
     isDisabled: false
-  }
+  };
 
   constructor(props?: IDropdownProps) {
     super(props);
@@ -44,10 +44,6 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
     this._onDropdownBlur = this._onDropdownBlur.bind(this);
   }
 
-  private _getSelectedIndex(options: IDropdownOption[], selectedKey: string) {
-    return findIndex(options, (option => (option.isSelected || selectedKey && option.key === selectedKey)));
-  }
-
   public componentWillReceiveProps(newProps: IDropdownProps) {
     this.setState({
       selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey)
@@ -55,33 +51,32 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
   }
 
   public render() {
-    let rootClass = 'ms-Dropdown';
     let { label, options } = this.props;
     let { isOpen, selectedIndex, isDisabled } = this.state;
     let selectedOption = options[selectedIndex];
 
     return (
       <div>
-        <span className="ms-Label">{ label }</span>
+        <span className='ms-Label'>{ label }</span>
         <div
           className={ css('ms-Dropdown', {
             'is-open': isOpen, 'is-disabled': isDisabled
-            }) }
+          }) }
           tabIndex={ 0 }
           onKeyDown={ this._onDropdownKeyDown }
           onClick={ this._onDropdownClick }
           onBlur={ this._onDropdownBlur }
-        >
-          <i className="ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown"></i>
-          <span className="ms-Dropdown-title">{ selectedOption ? selectedOption.text : '' }</span>
-          <ul className="ms-Dropdown-items">
+          >
+          <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown'></i>
+          <span className='ms-Dropdown-title'>{ selectedOption ? selectedOption.text : '' }</span>
+          <ul className='ms-Dropdown-items'>
             { options.map((option, optionIndex) => (
-            <li key={ option.key }
+              <li key={ option.key }
                 className={ css('ms-Dropdown-item', { 'is-selected': selectedIndex === optionIndex }) }
                 onClick={ this.setSelectedIndex.bind(this, optionIndex) }
-              >
+                >
                 { option.text }
-            </li>
+              </li>
             )) }
           </ul>
         </div>
@@ -108,36 +103,40 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
     }
   }
 
+  private _getSelectedIndex(options: IDropdownOption[], selectedKey: string) {
+    return findIndex(options, (option => (option.isSelected || selectedKey && option.key === selectedKey)));
+  }
+
   private _onDropdownKeyDown(ev: React.KeyboardEvent) {
     switch (ev.which) {
-      case KeyCodes.enter: {
-	       this.setState({
-           isOpen: !this.state.isOpen
-         });
-         break;
-      }
-      case KeyCodes.escape: {
+      case KeyCodes.enter:
+        this.setState({
+          isOpen: !this.state.isOpen
+        });
+        break;
+
+      case KeyCodes.escape:
         this.setState({
           isOpen: false
         });
         break;
-      }
-      case KeyCodes.up: {
+
+      case KeyCodes.up:
         this.setSelectedIndex(this.state.selectedIndex - 1);
         break;
-      }
-      case KeyCodes.down: {
+
+      case KeyCodes.down:
         this.setSelectedIndex(this.state.selectedIndex + 1);
         break;
-      }
-      case KeyCodes.home: {
+
+      case KeyCodes.home:
         this.setSelectedIndex(0);
         break;
-      }
-      case KeyCodes.end: {
+
+      case KeyCodes.end:
         this.setSelectedIndex(this.props.options.length - 1);
         break;
-      }
+
       default:
         return;
     }
@@ -148,7 +147,6 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
 
   private _onDropdownClick() {
     let { isDisabled, isOpen } = this.state;
-    let { options } = this.props;
 
     if (!isDisabled) {
       this.setState({
@@ -166,5 +164,3 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
   }
 
 }
-
-

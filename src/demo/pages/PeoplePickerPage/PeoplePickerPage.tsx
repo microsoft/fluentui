@@ -21,7 +21,7 @@ export default class PeoplePickerExample extends React.Component<any, any> {
         <ExampleCard title='PeoplePicker' code={ PeoplePickerBasicExampleCode }>
           <PeoplePickerBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ [] } />
+        <PropertiesTable properties={ PeoplePickerProps } />
       </div>
     );
   }

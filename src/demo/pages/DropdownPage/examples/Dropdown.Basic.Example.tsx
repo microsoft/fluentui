@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
-  Dropdown,
-  Label
+  Dropdown
 } from '../../../../components/index';
 import './Dropdown.Basic.Example.scss';
 

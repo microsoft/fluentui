@@ -8,7 +8,7 @@ export interface ILinkProps {
 }
 
 export default class Link extends React.Component<ILinkProps, any> {
-  render() {
+  public render() {
     let { text, url, target } = this.props;
 
     return (

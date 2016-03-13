@@ -1,5 +1,4 @@
 import * as React from 'react';
-import ContextualMenu from '../ContextualMenu/index';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
 import withContainsFocus from '../../utilities/decorators/withContainsFocus';
 
@@ -55,7 +54,6 @@ export default class List extends React.Component<IListProps, any> {
     this._estimatedItemHeight = 30;
   }
 
-
   public componentDidMount() {
     let scrollableElements = this._getScrollableElements();
 
@@ -73,7 +71,6 @@ export default class List extends React.Component<IListProps, any> {
   public componentWillUnmount() {
     this._events.dispose();
   }
-
 
   public shouldComponentUpdate(newProps: IListProps, newState: IListState) {
     let { pages: oldPages, containerRect: oldContainerRect } = this.state;
@@ -138,10 +135,10 @@ export default class List extends React.Component<IListProps, any> {
   }
 
   private _updatePages() {
-    let { items, itemsPerPage } = this.props;
-    let { pages, surfaceStyle } = this.state;
-    let hasUpdatedState = false;
+    let { items } = this.props;
+    let { pages } = this.state;
     let containerRect = this._getScrollableContainerRect();
+
     // If no items, no-op.
     if (!items || !items.length) {
       return;
@@ -183,10 +180,7 @@ export default class List extends React.Component<IListProps, any> {
 
   private _buildPages(containerRect: any): any[] {
     let { items } = this.props;
-    let { pages: currentPages } = this.state;
-    let startHeight = 0;
-    let endHeight = 0;
-    let surfaceElement = this.refs['surface'] as HTMLElement;
+    let surfaceElement = this.refs.surface;
     let surfaceRect = surfaceElement.getBoundingClientRect();
     let visibleTop = containerRect.top - surfaceRect.top;
     let visibleBottom = visibleTop + containerRect.height;
@@ -215,12 +209,7 @@ export default class List extends React.Component<IListProps, any> {
 
     pages.push(endSpacer);
 
-
     return pages;
-  }
-
-  private _getCellStyle(itemIndex: number) {
-    return null;
   }
 
   private _getPageHeight(itemIndex: number, itemsPerPage: number) {
@@ -238,15 +227,6 @@ export default class List extends React.Component<IListProps, any> {
     return this.props.itemsPerPage;
   }
 
-  private _getMaterializedCotainerRect() {
-    return {
-      top: -window.innerHeight,
-      left: 0,
-      width: window.innerWidth,
-      height: window.innerHeight * 3
-    };
-  }
-
   private _getScrollableElements() {
     let el = this.refs.root;
     let elements = [];
@@ -254,7 +234,7 @@ export default class List extends React.Component<IListProps, any> {
     while (el !== document.body) {
       let style = getComputedStyle(el);
 
-      if (style.overflowY == 'auto' || style.overflowY == 'scroll') {
+      if (style.overflowY === 'auto' || style.overflowY === 'scroll') {
         elements.push(el);
       }
 
@@ -292,5 +272,5 @@ export default class List extends React.Component<IListProps, any> {
 }
 
 function areEqualSize(rect1: IRect, rect2: IRect) {
-  return !!(rect1 && rect2 && rect1.width == rect2.width && rect1.height == rect2.height);
+  return !!(rect1 && rect2 && rect1.width === rect2.width && rect1.height === rect2.height);
 }

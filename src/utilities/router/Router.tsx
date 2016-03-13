@@ -35,7 +35,7 @@ export default class Router extends React.Component<IRouterProps, IRouterState> 
   public componentDidMount() {
     this._events.on(window, 'hashchange', () => {
       if (this.state.path !== location.hash) {
-        this.setState({ path: location.hash })
+        this.setState({ path: location.hash });
       }
     });
   }

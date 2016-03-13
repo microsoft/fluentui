@@ -3,10 +3,10 @@ import { FocusZone } from '../../../../index';
 import Row from './List/Row';
 
 export default class ListExample extends React.Component<any, any> {
-  render() {
+  public render() {
     return (
-      <FocusZone focusNamespace="List">
-        <ul className="FocusList">
+      <FocusZone focusNamespace='List'>
+        <ul className='FocusList'>
           { this._list.map(this._renderItem) }
         </ul>
       </FocusZone>

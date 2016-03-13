@@ -5,7 +5,6 @@ import {
   buildColumns,
   DetailsListLayoutMode,
   SelectionMode,
-  Link,
   Dropdown,
   Checkbox
 } from '../../../../components/index';
@@ -15,10 +14,10 @@ import './DetailsList.Basic.Example.scss';
 let _items;
 
 export interface IDetailsListBasicExampleState {
-  layoutMode?: DetailsListLayoutMode,
-  selectionMode?: SelectionMode,
-  canResizeColumns?: boolean,
-  columns?: IColumn[]
+  layoutMode?: DetailsListLayoutMode;
+  selectionMode?: SelectionMode;
+  canResizeColumns?: boolean;
+  columns?: IColumn[];
 }
 
 export default class DetailsListBasicExample extends React.Component<any, IDetailsListBasicExampleState> {

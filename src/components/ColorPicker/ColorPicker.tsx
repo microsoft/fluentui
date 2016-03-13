@@ -2,22 +2,15 @@ import * as React from 'react';
 import TextField from '../TextField';
 import ColorRectangle from './ColorRectangle';
 import ColorSlider from './ColorSlider';
-import { assign } from '../../utilities/object';
 import {
   IColor,
   MAX_COLOR_HUE,
-  MAX_COLOR_SATURATION,
-  MAX_COLOR_VALUE,
   getColorFromString,
   updateA,
   updateH,
   updateSV
 } from './colors';
 import './ColorPicker.scss';
-
-let cssColor = require('color-functions/lib/css-color');
-let rgb2hex = require('color-functions/lib/rgb2hex');
-let rgb2hsv = require('color-functions/lib/rgb2hsv');
 
 export interface IColorPickerProps {
   color: string;

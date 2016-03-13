@@ -4,7 +4,7 @@ export interface IPersonaCardProps {
 }
 
 export default class PersonaCard extends React.Component<IPersonaCardProps, any> {
-  render() {
+  public render() {
     let rootClass = 'ms-PersonaCard';
 
     return (

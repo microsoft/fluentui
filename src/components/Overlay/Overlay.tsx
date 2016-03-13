@@ -4,7 +4,7 @@ export interface IOverlayProps {
 }
 
 export default class Overlay extends React.Component<IOverlayProps, any> {
-  render() {
+  public render() {
     let rootClass = 'ms-Overlay';
 
     return (

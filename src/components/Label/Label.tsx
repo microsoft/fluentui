@@ -1,21 +1,25 @@
 import * as React from 'react';
 import './Label.scss';
+import { css } from '../../utilities/css';
 
 export interface ILabelProps {
-    children?: any;
-    disabled?: boolean;
-    required?: boolean;
+  children?: any;
+  isDisabled?: boolean;
+  isRequired?: boolean;
 }
 
 export default class Label extends React.Component<ILabelProps, any> {
-    render() {
-        let {disabled, required, children} = this.props;
-        
-        return (<label 
-            className={
-                "ms-Label" + 
-                (disabled ? " is-disabled" : "") +
-                (required ? " is-required" : "")
-            }>{children}</label>);
-    }
+  public render() {
+    let {isDisabled, isRequired, children} = this.props;
+
+    return (
+      <label
+        className={ css('ms-Label', {
+          'is-disabled': isDisabled,
+          'is-required': isRequired
+        }) }>
+        {children}
+      </label>
+    );
+  }
 }

@@ -5,7 +5,7 @@ export interface IDialogProps {
 }
 
 export default class Dialog extends React.Component<IDialogProps, any> {
-  render() {
+  public render() {
 
     return (
       <div className='{ rootClass }'>

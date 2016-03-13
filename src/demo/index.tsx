@@ -16,7 +16,6 @@ let rootElement;
 
 function _onLoad() {
   rootElement = rootElement || document.getElementById('content');
-  let exampleRoutes = _getAppRoutes();
 
   ReactDOM.render(
     <Router>

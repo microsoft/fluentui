@@ -80,6 +80,6 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
   private _onShowExampleClick() {
     this.setState({
       isExampleShown: !this.state.isExampleShown
-    })
+    });
   }
 }
