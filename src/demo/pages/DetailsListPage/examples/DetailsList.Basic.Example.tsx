@@ -20,7 +20,7 @@ export interface IDetailsListBasicExampleState {
 }
 
 export default class DetailsListBasicExample extends React.Component<any, IDetailsListBasicExampleState> {
-  constructor() {;
+  constructor() {
     super();
 
     if (!_items) {
