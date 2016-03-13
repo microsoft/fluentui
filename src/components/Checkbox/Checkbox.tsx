@@ -42,7 +42,7 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
     };
   }
 
-  public onComponentDidReceiveProps(newProps: ICheckboxProps) {
+  public componentWillReceiveProps(newProps: ICheckboxProps) {
     if (newProps.isChecked !== this.state.isChecked) {
       this.setState({
         isChecked: newProps.isChecked
@@ -57,7 +57,7 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
 
     return (
       <div className={ css('ms-ChoiceField', className) }>
-        <input ref='input' id={ id } className='ms-ChoiceField-input' type='checkbox' defaultChecked={ isChecked } disabled={ !isEnabled } onChange={ this._onInputChanged } />
+        <input ref='input' id={ id } className='ms-ChoiceField-input' type='checkbox' checked={ isChecked } disabled={ !isEnabled } onChange={ this._onInputChanged } />
         <label htmlFor={ id } className='ms-ChoiceField-field'>
           <span className='ms-Label'>{ text }</span>
         </label>

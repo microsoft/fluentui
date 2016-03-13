@@ -40,7 +40,7 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
   }
 
   public render() {
-    let { layoutMode, selectionMode, canResizeColumns, columns } = this.state;
+    let { layoutMode, selectionMode, columns } = this.state;
 
     return (
       <div className='ms-DetailsListBasicExample'>
