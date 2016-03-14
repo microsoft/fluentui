@@ -12,7 +12,7 @@ build.tasks.text.setConfig({ textMatch: [ 'src/**/*.txt', 'src/**/*.Example.tsx'
 
 // configure amd libraries to be built when the production flag is present.
 if (process.argv.indexOf('--production') >= 0) {
-  build.config({
+  build.setConfig({
     libAMDFolder: 'lib-amd'
   });
 }
