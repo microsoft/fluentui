@@ -30,6 +30,7 @@ export interface IDetailsListState {
   lastSelectionMode?: SelectionMode;
   adjustedColumns?: IColumn[];
   columnOverrides?: { [key: string]: IColumn };
+  layoutMode?: DetailsListLayoutMode;
 }
 
 export interface IDetailsListViewData {
@@ -53,25 +54,23 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
   private _events: EventGroup;
   private _selection: ISelection;
-
-  public componentWillUnmount() {
-    this._events.dispose();
-  }
-
-  public componentWillReceiveProps(newProps) {
-    this._adjustColumns(newProps, true);
-  }
+  private _activeRows: { [key: string]: DetailsRow };
 
   constructor(props: IDetailsListProps) {
     super(props);
 
+    this._activeRows = {};
     this._onColumnResized = this._onColumnResized.bind(this);
+    this._onColumnAutoResized = this._onColumnAutoResized.bind(this);
     this._onAllSelectedChanged = this._onAllSelectedChanged.bind(this);
+    this._onRowDidMount = this._onRowDidMount.bind(this);
+    this._onRowWillUnmount = this._onRowWillUnmount.bind(this);
 
     this.state = {
       lastWidth: 0,
       columnOverrides: {} as { [key: string]: IColumn },
-      adjustedColumns: this._getAdjustedColumns(props)
+      adjustedColumns: this._getAdjustedColumns(props),
+      layoutMode: this.props.layoutMode,
     };
 
     this._events = new EventGroup(this);
@@ -79,9 +78,21 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     this._selection.setItems(props.items as IObjectWithKey[], false);
   }
 
+  public componentWillUnmount() {
+    this._events.dispose();
+  }
+
+  public componentWillReceiveProps(newProps) {
+    if (newProps.layoutMode) {
+      this.setState({ layoutMode: newProps.layoutMode });
+    }
+
+    this._adjustColumns(newProps, true);
+  }
+
   public render() {
-    let { className, items, layoutMode, selectionMode } = this.props;
-    let { adjustedColumns } = this.state;
+    let { className, items, selectionMode } = this.props;
+    let { adjustedColumns, layoutMode } = this.state;
     let { _selection: selection } = this;
 
     return (
@@ -96,6 +107,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
             selection={ selection }
             columns={ adjustedColumns }
             onColumnResized={ this._onColumnResized }
+            onColumnAutoResized={ this._onColumnAutoResized }
             />
           <List
             ref='list'
@@ -108,6 +120,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                 selectionMode={ selectionMode }
                 selection={ selection }
                 shouldSetFocus={ containsFocus }
+                onDidMount={ this._onRowDidMount }
+                onWillUnmount={ this._onRowWillUnmount }
                 />
             ) }
             />
@@ -116,12 +130,20 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     );
   }
 
+  private _onRowDidMount(row) {
+    this._activeRows[row.props.itemIndex] = row;
+  }
+
+  private _onRowWillUnmount(row) {
+    delete this._activeRows[row.props.itemIndex];
+  }
+
   private _onAllSelectedChanged() {
     this._selection.toggleAllSelected();
   }
 
-  private _adjustColumns(newProps: IDetailsListProps, forceUpdate?: boolean) {
-    let adjustedColumns = this._getAdjustedColumns(newProps, forceUpdate);
+  private _adjustColumns(newProps: IDetailsListProps, forceUpdate?: boolean, layoutMode?: DetailsListLayoutMode) {
+    let adjustedColumns = this._getAdjustedColumns(newProps, forceUpdate, layoutMode);
     let { viewport: { width: viewportWidth }, selectionMode } = this.props;
 
     if (adjustedColumns) {
@@ -137,8 +159,12 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     }
   }
 
-  private _getAdjustedColumns(newProps: IDetailsListProps, forceUpdate?: boolean): IColumn[] {
-    let { columns: newColumns, viewport: { width: viewportWidth }, selectionMode, layoutMode } = newProps;
+  private _getAdjustedColumns(newProps: IDetailsListProps, forceUpdate?: boolean, layoutMode?: DetailsListLayoutMode): IColumn[] {
+    let { columns: newColumns, viewport: { width: viewportWidth }, selectionMode } = newProps;
+    if (layoutMode  === undefined) {
+      layoutMode = newProps.layoutMode;
+    }
+
     let columns = this.props ? this.props.columns : [];
     let lastWidth = this.state ? this.state.lastWidth : -1;
     let lastSelectionMode = this.state ? this.state.lastSelectionMode : undefined;
@@ -204,14 +230,57 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     return adjustedColumns;
   }
 
-  private _onColumnResized(column: IColumn, newWidth: number) {
+  private _onColumnResized(resizingColumn: IColumn, newWidth: number) {
     let { columnOverrides } = this.state;
-    let overrides = columnOverrides[column.key] = columnOverrides[column.key] || {} as IColumn;
 
-    overrides.minWidth = overrides.maxWidth = newWidth;
-    overrides.isCollapsable = false;
+    const MINWIDTH = 100; // this is the global min width
 
-    this._adjustColumns(this.props, true);
+    // update column override based on the input width
+    function _resizeColumn(column: IColumn, width: number) {
+      let overrides = columnOverrides[column.key] = columnOverrides[column.key] || {} as IColumn;
+      overrides.minWidth = overrides.maxWidth = Math.max(width, MINWIDTH);
+      overrides.isCollapsable = false;
+    }
+
+    if (this.state.layoutMode === DetailsListLayoutMode.justified) {
+      // for justified layout, locked column width using current calculated width
+      for (let adjustedColumn of this.state.adjustedColumns) {
+        _resizeColumn(adjustedColumn, adjustedColumn.calculatedWidth);
+      }
+       this.setState({ layoutMode: DetailsListLayoutMode.fixedColumns }); // once column is resized, we need to change to fix column mode
+    }
+
+    _resizeColumn(resizingColumn, newWidth);
+    this._adjustColumns(this.props, true, DetailsListLayoutMode.fixedColumns);
+  }
+
+  /**
+   * Call back function when double clicked on the details header column resizer
+   * which will measure the double clicked column cells of all the active rows.
+   * and resize the column to the max cell width
+   *
+   * @private
+   * @param {IColumn} column (double clicked column defifinition)
+   * @param {number} columnIndex (double clicked column index)
+   * @todo min width 100 should be changed to const value and should be consistent with the value used on _onSizerMove method in DetailsHeader
+   */
+  private _onColumnAutoResized(column: IColumn, columnIndex: number) {
+    let max = 0;
+    let count = 0;
+    let totalCount = Object.keys(this._activeRows).length;
+
+    for (let key in this._activeRows) {
+      if (this._activeRows.hasOwnProperty(key)) {
+        let currentRow = this._activeRows[key];
+        currentRow.measureCell(columnIndex, (width: number) => {
+          max = Math.max(max, width);
+          count++;
+          if (count === totalCount) {
+            this._onColumnResized(column, max);
+          }
+        });
+      }
+    }
   }
 }
 

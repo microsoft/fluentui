@@ -99,3 +99,10 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
   height: 16px;
   vertical-align: middle;
 }
+
+.ms-DetailsRow-cellMeasurer {
+  position: absolute;
+  visibility: hidden;
+  white-space: nowrap;
+  top: -1000000000;
+}

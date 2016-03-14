@@ -14,18 +14,25 @@ export interface IDetailsRowProps {
   selectionMode: SelectionMode;
   selection: ISelection;
   shouldSetFocus?: boolean;
+  onWillUnmount?: any;
+  onDidMount?: any;
 }
 
 export interface IDetailsRowState {
   isSelected: boolean;
   isFocused: boolean;
   isFocusable: boolean;
+  columnMeasureInfo?: {
+    index: number;
+    onMeasureDone: (measuredWidth: number) => void;
+  };
 }
 
 export default class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowState> {
   public refs: {
     [key: string]: React.ReactInstance,
-    root: HTMLElement
+    root: HTMLElement,
+    cellMeasurer: HTMLElement
   };
 
   private _events: EventGroup;
@@ -34,6 +41,7 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
     super(props);
 
     this.state = this._getSelectionState(props);
+    this.state.columnMeasureInfo = null;
 
     this._events = new EventGroup(this);
   }
@@ -41,15 +49,34 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
   public componentDidMount() {
     this._events.on(this.props.selection, SELECTION_CHANGE, this._onSelectionChanged);
 
+    if (this.props.onDidMount) {
+      this.props.onDidMount(this);
+    }
+
     this.setFocus();
   }
 
   public componentDidUpdate() {
+    let state = this.state;
+    let { columnMeasureInfo } = state;
+    if (columnMeasureInfo) {
+      let { columns } = this.props;
+      this.refs.cellMeasurer.innerHTML = this._getCellContent(columns[columnMeasureInfo.index], columnMeasureInfo.index);
+      let newWidth = this.refs.cellMeasurer.getBoundingClientRect().width;
+      columnMeasureInfo.onMeasureDone(newWidth);
+
+      state.columnMeasureInfo = null;
+      this.setState(state);
+    }
     this.setFocus();
   }
 
   public componentWillUnmount() {
     this._events.dispose();
+
+    if (this.props.onWillUnmount) {
+      this.props.onWillUnmount(this);
+    }
   }
 
   public setFocus() {
@@ -67,7 +94,7 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
 
   public render() {
     let { selectionMode, columns, item, itemIndex } = this.props;
-    let { isSelected, isFocusable } = this.state;
+    let { isSelected, isFocusable, columnMeasureInfo } = this.state;
 
     return (
       <div
@@ -79,24 +106,44 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
         tabIndex={ isFocusable ? 0 : -1 }
       >
         <div className='ms-DetailsRow-focusBox' />
-          { (selectionMode !== SelectionMode.none) ? (
-          <button
-            tabIndex={ -1 }
-            className='ms-DetailsRow-check'
-            data-selection-toggle={ true }
-          >
-            <Check isChecked={ isSelected } />
-          </button>
-          ) : null }
-          { columns.map(column => (
-          <div key={ column.key } className={ css('ms-DetailsRow-cell', {
-            'is-clipped': column.isClipped
-          }) } style={ { width: column.calculatedWidth } }>
-            { column.getCellContent ? column.getCellContent(item, itemIndex) : (String(item[column.fieldName]) || '') }
-          </div>
-          )) }
+        { (selectionMode !== SelectionMode.none) ? (
+        <button
+          tabIndex={ -1 }
+          className='ms-DetailsRow-check'
+          data-selection-toggle={ true }
+        >
+          <Check isChecked={ isSelected } />
+        </button>
+        ) : null }
+        { columns.map(column => (
+        <div key={ column.key } className={ css('ms-DetailsRow-cell', {
+          'is-clipped': column.isClipped
+        }) } style={ { width: column.calculatedWidth } }>
+          { this._getCellContent(column, itemIndex) }
         </div>
+        )) }
+        { (columnMeasureInfo) ? (
+        <span className='ms-DetailsRow-cellMeasurer ms-DetailsRow-cell' ref='cellMeasurer'/>
+        ) : (null) }
+      </div>
     );
+  }
+
+  /**
+   * measure cell at index. and call the call back with the measured cell width when finish measure
+   *
+   * @param {number} index (the cell index)
+   * @param {(width: number) => void} onMeasureDone (the call back function when finish measure)
+   */
+  public measureCell(index: number, onMeasureDone: (width: number) => void) {
+    let state = this.state;
+    state.columnMeasureInfo = { index: index, onMeasureDone: onMeasureDone };
+    this.setState(state);
+  }
+
+  private _getCellContent(column: IColumn, index: number): string {
+    let { item } = this.props;
+    return column.getCellContent ? column.getCellContent(item, index) : (String(item[column.fieldName]) || '');
   }
 
   private _getSelectionState(props: IDetailsRowProps): IDetailsRowState {

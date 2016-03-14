@@ -13,9 +13,6 @@ interface IColumn {
   getCellContent?: (item: any, index?: number) => any;
   calculatedWidth?: number;
   isFilterable?: boolean;
-
-  // Internal state when a column is resizing.
-  isSizing?: boolean;
 }
 
 export default IColumn;

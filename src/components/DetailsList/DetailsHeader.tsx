@@ -16,6 +16,7 @@ export interface IDetailsHeaderProps {
   onSort?: (column: IColumn) => void;
   onColumnIsSizingChanged?: (column: IColumn, isSizing: boolean) => void;
   onColumnResized?: (column: IColumn, newWidth: number) => void;
+  onColumnAutoResized?: (column: IColumn, columnIndex: number) => void;
 
   ref?: string;
 }
@@ -23,6 +24,7 @@ export interface IDetailsHeaderProps {
 export interface IDetailsHeaderState {
   columnResizeDetails?: IColumnResizeDetails;
   isAllSelected?: boolean;
+  isSizing?: boolean;
 }
 
 export interface IFilterItem {
@@ -64,16 +66,18 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
 
   public render() {
     let { selectionMode, columns } = this.props;
-    let { isAllSelected } = this.state;
-    let { columnResizeDetails } = this.state;
+    let { isAllSelected, columnResizeDetails, isSizing } = this.state;
 
     return (
       <div
         className={ css('ms-DetailsHeader ms-font-s', {
           'is-allSelected': isAllSelected,
           'is-singleSelect': selectionMode === SelectionMode.single,
-          'is-resizingColumn': !!columnResizeDetails
-        }) } ref='root'>
+          'is-resizingColumn': !!columnResizeDetails && isSizing
+            }) }
+        onMouseMove={ this._onMove.bind(this) }
+        onMouseUp={ this._onUp.bind(this) }
+        ref='root'>
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           { (selectionMode === SelectionMode.multiple) ? (
           <button
@@ -107,9 +111,10 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
             { (column.isResizable) ? (
             <button
               className={ css('ms-DetailsHeader-cell is-sizer', {
-                'is-resizing': columnResizeDetails && columnResizeDetails.columnIndex === columnIndex
+                'is-resizing': columnResizeDetails && columnResizeDetails.columnIndex === columnIndex && isSizing
               }) }
               onMouseDown={ this._onSizerDown.bind(this, columnIndex) }
+              onDoubleClick={ this._onSizerDoubleClick.bind(this, columnIndex) }
             />
             ) : (null) }
           </div>
@@ -118,6 +123,52 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
         <div className='ms-DetailsHeader-sizerCover' onMouseMove={ this._onSizerMove } onMouseUp={ this._onSizerUp } />
       </div>
     );
+  }
+
+  /**
+   * double click on the column sizer will auto ajust column width
+   * to fit the longest content among current rendered rows.
+   *
+   * @private
+   * @param {number} columnIndex (index of the column user double clicked)
+   * @param {React.MouseEvent} ev (mouse double click event)
+   */
+  private _onSizerDoubleClick(columnIndex: number, ev: React.MouseEvent) {
+    let { onColumnAutoResized, columns } = this.props;
+    if (onColumnAutoResized) {
+      onColumnAutoResized(columns[columnIndex], columnIndex);
+    }
+  }
+
+  /**
+   * mouse move event handler in the header
+   * it will set isSizing state to true when user clicked on the sizer and move the mouse.
+   *
+   * @private
+   * @param {React.MouseEvent} ev (mouse move event)
+   */
+  private _onMove(ev: React.MouseEvent) {
+    let { columnResizeDetails, isSizing } = this.state;
+
+    if (columnResizeDetails && !isSizing && ev.clientX !== columnResizeDetails.originX) {
+      isSizing = true;
+      this.setState({ isSizing: isSizing });
+    }
+  }
+
+  /**
+   * mouse up event handler in the header
+   * clear the resize related state.
+   * This is to ensure we can catch double click event
+   *
+   * @private
+   * @param {React.MouseEvent} ev (mouse up event)
+   */
+  private _onUp(ev: React.MouseEvent) {
+    this.setState({
+      columnResizeDetails: null,
+      isSizing: false
+    });
   }
 
   private _onSizerDown(columnIndex: number, ev: React.MouseEvent) {
@@ -154,7 +205,7 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
 
       onColumnResized(
         columns[columnResizeDetails.columnIndex],
-        Math.max(100, columnResizeDetails.columnMinWidth + (ev.clientX - columnResizeDetails.originX))
+        columnResizeDetails.columnMinWidth + (ev.clientX - columnResizeDetails.originX)
       );
     }
   }
@@ -164,7 +215,8 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
     let { columnResizeDetails } = this.state;
 
     this.setState({
-      columnResizeDetails: null
+        columnResizeDetails: null,
+        isSizing: false
     });
 
      if (onColumnIsSizingChanged) {
