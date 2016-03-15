@@ -8,6 +8,9 @@ import Check from './Check';
 import './DetailsHeader.scss';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
 
+const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
+const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
+
 export interface IDetailsHeaderProps {
   columns: IColumn[];
   selection: ISelection;
@@ -148,6 +151,18 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
    * @param {React.MouseEvent} ev (mouse move event)
    */
   private _onMove(ev: React.MouseEvent) {
+    let {
+      // use buttons property here since ev.button in some edge case is not upding well during the move.
+      // but firefox doesn't support it, so we set the default value when it is not defined.
+      buttons = MOUSEMOVE_PRIMARY_BUTTON
+    } = ev;
+
+    if (buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
+      // cancel mouse down event and return early when the primary button is not pressed
+      this._onUp(ev);
+      return;
+    }
+
     let { columnResizeDetails, isSizing } = this.state;
 
     if (columnResizeDetails && !isSizing && ev.clientX !== columnResizeDetails.originX) {
@@ -172,6 +187,11 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
   }
 
   private _onSizerDown(columnIndex: number, ev: React.MouseEvent) {
+    if (ev.button !== MOUSEDOWN_PRIMARY_BUTTON) {
+      // Ignore anything except the primary button.
+      return;
+    }
+
     let { columns, onColumnIsSizingChanged } = this.props;
 
     this.setState({
@@ -198,6 +218,18 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
   }
 
   private _onSizerMove(ev: React.MouseEvent) {
+    let {
+      // use buttons property here since ev.button in some edge case is not upding well during the move.
+      // but firefox doesn't support it, so we set the default value when it is not defined.
+      buttons = MOUSEMOVE_PRIMARY_BUTTON
+    } = ev;
+
+    if (buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
+      // cancel mouse down event and return early when the primary button is not pressed
+      this._onSizerUp();
+      return;
+    }
+
     let { onColumnResized, columns } = this.props;
 
     if (onColumnResized) {
