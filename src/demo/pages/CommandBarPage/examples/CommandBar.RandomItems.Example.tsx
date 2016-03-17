@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {
   CommandBar,
-  ICommandBarItem
+  IContextualMenuItem
 } from '../../../../components/index';
 import { items, farItems } from './data';
 
 export interface IChangingItemsCommandBarState {
-  items?: ICommandBarItem[];
-  farItems?: ICommandBarItem[];
+  items?: IContextualMenuItem[];
+  farItems?: IContextualMenuItem[];
 }
 
 export default class CommandBarRandomItemsExample extends React.Component<any, IChangingItemsCommandBarState> {

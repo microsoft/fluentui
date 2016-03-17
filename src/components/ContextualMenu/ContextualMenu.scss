@@ -267,10 +267,17 @@
 
 .ms-ContextualMenu-icon {
   padding-right: 10px;
+
+  &.no-icon {
+    padding-right: 24px;
+  }
 }
 
-.ms-ContextualMenu-icon.no-icon {
-  padding-right: 24px;
+.ms-ContextualMenu-checkmark {
+  padding-right: 10px;
+  &.not-selected {
+    padding-right: 24px;
+  }
 }
 
 .ExampleCard-example > .ms-ContextualMenu-container > .ms-ContextualMenu {

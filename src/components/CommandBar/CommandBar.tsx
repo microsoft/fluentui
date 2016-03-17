@@ -2,39 +2,32 @@ import * as React from 'react';
 import './CommandBar.scss';
 import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
-import { default as ContextualMenu, DirectionalHint } from '../ContextualMenu/index';
+import { default as ContextualMenu, DirectionalHints } from '../ContextualMenu/index';
 import { css } from '../../utilities/css';
+import { IContextualMenuItem } from '../index';
 
 const OVERFLOW_KEY = 'overflow';
 const OVERFLOW_WIDTH = 41.5;
 
 let _instance = 0;
 
-export interface ICommandBarItem {
-  key?: string;
-  name: string;
-  icon?: string;
-  onClick?: (ev: React.MouseEvent) => void;
-  items?: ICommandBarItem[];
-}
-
 export interface ICommandBarProps {
   isSearchBoxVisible?: boolean;
   searchPlaceholderText?: string;
 
-  items: ICommandBarItem[];
-  overflowItems?: ICommandBarItem[];
-  farItems?: ICommandBarItem[];
+  items: IContextualMenuItem[];
+  overflowItems?: IContextualMenuItem[];
+  farItems?: IContextualMenuItem[];
 }
 
 export interface ICommandBarState {
-  renderedItems?: ICommandBarItem[];
-  renderedOverflowItems?: ICommandBarItem[];
+  renderedItems?: IContextualMenuItem[];
+  renderedOverflowItems?: IContextualMenuItem[];
   expandedMenuItemKey?: string;
   expandedMenuId?: string;
-  contextualMenuItems?: ICommandBarItem[];
+  contextualMenuItems?: IContextualMenuItem[];
   contextualMenuTarget?: HTMLElement;
-  renderedFarItems?: ICommandBarItem[];
+  renderedFarItems?: IContextualMenuItem[];
 }
 
 export class CommandBar extends React.Component<ICommandBarProps, ICommandBarState> {
@@ -171,9 +164,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
           onDismiss={ this._onContextMenuDismiss }
           isBeakVisible={ true }
           gapSpace={ 8 }
-          typeAlignmentHint={ DirectionalHint.vertical }
-          horizontalAlignmentHint={ DirectionalHint.auto }
-          verticalAlignmentHint={ DirectionalHint.bottom }
+          directionalHint={ DirectionalHints.bottomAutoEdge }
         />
         ) : (null)}
       </div>

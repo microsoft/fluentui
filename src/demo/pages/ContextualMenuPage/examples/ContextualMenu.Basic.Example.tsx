@@ -62,6 +62,11 @@ export default class ContextualMenuBasicExample extends React.Component<any, any
               icon: 'print',
               name: 'Print'
             },
+            {
+              key: 'music',
+              icon: 'music',
+              name: 'Music',
+            },
           ]
         }
       />

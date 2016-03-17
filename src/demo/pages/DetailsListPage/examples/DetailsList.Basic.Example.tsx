@@ -40,7 +40,7 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
   }
 
   public render() {
-    let { layoutMode, selectionMode, columns } = this.state;
+    let { layoutMode, selectionMode, columns, canResizeColumns } = this.state;
 
     return (
       <div className='ms-DetailsListBasicExample'>
@@ -54,6 +54,8 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
                 {
                   key: 'resizing',
                   name: 'Allow column resizing',
+                  canCheck: true,
+                  isChecked: canResizeColumns,
                   onClick: this._onToggleResizing
                 },
                 {
@@ -66,11 +68,15 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
                     {
                       key: LayoutMode[LayoutMode.fixedColumns],
                       name: 'Fixed columns',
+                      canCheck: true,
+                      isChecked: layoutMode === LayoutMode.fixedColumns,
                       onClick: this._onLayoutChanged.bind(this, LayoutMode.fixedColumns)
                     },
                     {
                       key: LayoutMode[LayoutMode.justified],
                       name: 'Justified columns',
+                      canCheck: true,
+                      isChecked: layoutMode === LayoutMode.justified,
                       onClick: this._onLayoutChanged.bind(this, LayoutMode.justified)
                     }
                   ]
@@ -82,16 +88,22 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
                     {
                       key: SelectionMode[SelectionMode.none],
                       name: 'None',
+                      canCheck: true,
+                      isChecked: selectionMode === SelectionMode.none,
                       onClick: this._onSelectionChanged.bind(this, SelectionMode.none)
                     },
                     {
                       key: SelectionMode[SelectionMode.single],
                       name: 'Single select',
+                      canCheck: true,
+                      isChecked: selectionMode === SelectionMode.single,
                       onClick: this._onSelectionChanged.bind(this, SelectionMode.single)
                     },
                     {
                       key: SelectionMode[SelectionMode.multiple],
                       name: 'Multi select',
+                      canCheck: true,
+                      isChecked: selectionMode === SelectionMode.multiple,
                       onClick: this._onSelectionChanged.bind(this, SelectionMode.multiple)
                     },
                   ]

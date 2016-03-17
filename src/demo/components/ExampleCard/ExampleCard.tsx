@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './ExampleCard.scss';
 import { default as Button, ButtonType } from '../../../components/Button/index';
+import { css } from '../../../utilities/css';
 
 let Highlight = require('react-highlight');
 
@@ -9,6 +10,7 @@ export interface IExampleCardProps {
   isOptIn?: boolean;
   code?: string;
   children?: any;
+  isRightAligned?: boolean;
 }
 
 export interface IExampleCardState {
@@ -31,7 +33,7 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
   }
 
   public render() {
-    const { title, code, children } = this.props;
+    const { title, code, children, isRightAligned } = this.props;
     const { isCodeVisible, isExampleShown } = this.state;
     let rootClass = 'ExampleCard' + (this.state.isCodeVisible ? ' is-codeVisible' : '');
     let codeExample;
@@ -58,10 +60,10 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
           </span>
         </div>
         { (isExampleShown || isCodeVisible) ? (
-        <div className={ 'ExampleCard-content' + (isCodeVisible ? ' ms-u-slideDownIn20' : '') }>
+        <div className={ css('ExampleCard-content', { ' ms-u-slideDownIn20': (isCodeVisible) }) }>
           { codeExample }
             { isExampleShown ? (
-            <div className='ExampleCard-example'>
+            <div className={ css('ExampleCard-example', { ' is-right-aligned': (isRightAligned) }) }>
               { children }
             </div>
             ) : ( null ) }

@@ -3,35 +3,43 @@ import {
   Button,
   Checkbox,
   ContextualMenu,
-  DirectionalHint,
+  DirectionalHints,
   Dropdown,
+  TextField,
   IDropdownOption
  } from '../../../../components/index';
 import './ContextualMenuExample.scss';
 
 export interface IContextualMenuDirectionalExampleState {
   isContextualMenuVisible?: boolean;
-  horizontalAlignmentHint?: DirectionalHint;
-  verticalAlignmentHint?: DirectionalHint;
+  directionalHint?: DirectionalHints;
   isBeakVisible?: boolean;
+  inputValue?: string;
+  gapSpace?: number;
 }
 
-const HORIZONTAL_DIRECTION_OPTIONS = [
-  { key: DirectionalHint[DirectionalHint.left], text: 'Left' },
-  { key: DirectionalHint[DirectionalHint.center], text: 'Center' },
-  { key: DirectionalHint[DirectionalHint.right], text: 'Right' }
-];
-
-const VERTICAL_DIRECTION_OPTIONS = [
-  { key: DirectionalHint[DirectionalHint.top], text: 'Top' },
-  { key: DirectionalHint[DirectionalHint.center], text: 'Center' },
-  { key: DirectionalHint[DirectionalHint.bottom], text: 'Bottom' }
+const DIRECTION_OPTIONS = [
+  { key: DirectionalHints[DirectionalHints.topLeftEdge], text: 'Top Left Edge' },
+  { key: DirectionalHints[DirectionalHints.topCenter], text: 'Top Center' },
+  { key: DirectionalHints[DirectionalHints.topRightEdge], text: 'Top Right Edge' },
+  { key: DirectionalHints[DirectionalHints.topAutoEdge], text: 'Top Auto Edge' },
+  { key: DirectionalHints[DirectionalHints.bottomLeftEdge], text: 'Bottom Left Edge' },
+  { key: DirectionalHints[DirectionalHints.bottomCenter], text: 'Bottom Center' },
+  { key: DirectionalHints[DirectionalHints.bottomRightEdge], text: 'Bottom Right Edge' },
+  { key: DirectionalHints[DirectionalHints.bottomAutoEdge], text: 'Bottom Auto Edge' },
+  { key: DirectionalHints[DirectionalHints.leftTopEdge], text: 'Left Top Edge' },
+  { key: DirectionalHints[DirectionalHints.leftCenter], text: 'Left Center' },
+  { key: DirectionalHints[DirectionalHints.leftBottomEdge], text: 'Left Bottom Edge' },
+  { key: DirectionalHints[DirectionalHints.rightTopEdge], text: 'Right Top Edge' },
+  { key: DirectionalHints[DirectionalHints.rightCenter], text: 'Right Center' },
+  { key: DirectionalHints[DirectionalHints.rightBottomEdge], text: 'Right Bottom Edge' },
 ];
 
 export default class ContextualMenuDirectionalExample extends React.Component<any, IContextualMenuDirectionalExampleState> {
   public refs: {
     [key: string]: React.ReactInstance;
     menuButton: HTMLElement;
+    gapSize: TextField;
   };
 
   public constructor() {
@@ -39,33 +47,31 @@ export default class ContextualMenuDirectionalExample extends React.Component<an
 
     this._onShowMenuClicked = this._onShowMenuClicked.bind(this);
     this._onShowBeakChanged = this._onShowBeakChanged.bind(this);
-    this._onHorizontalChanged = this._onHorizontalChanged.bind(this);
-    this._onVerticalChanged = this._onVerticalChanged.bind(this);
+    this._onDirectionalChanged = this._onDirectionalChanged.bind(this);
+    this._onChangeGapSizeClicked = this._onChangeGapSizeClicked.bind(this);
 
     this.state = {
       isContextualMenuVisible: false,
       isBeakVisible: false,
-      horizontalAlignmentHint: DirectionalHint.center,
-      verticalAlignmentHint: DirectionalHint.bottom
+      directionalHint: DirectionalHints.bottomLeftEdge,
+      inputValue: '0',
+      gapSpace: 0
     };
   }
 
   public render() {
-    let { isContextualMenuVisible, isBeakVisible, horizontalAlignmentHint, verticalAlignmentHint } = this.state;
+    let { isContextualMenuVisible, isBeakVisible, directionalHint, gapSpace } = this.state;
 
     return (
       <div className='ms-ContextualMenuDirectionalExample'>
         <Checkbox text='Show beak' isChecked={ isBeakVisible } onChanged={ this._onShowBeakChanged } />
+        <TextField ref='gapSize' label='Gap Space' placeholder='Type in the gap space' />
+        <Button onClick={ this._onChangeGapSizeClicked }>Submit</Button>
         <Dropdown
           label='Horizontal direction'
-          selectedKey={ DirectionalHint[horizontalAlignmentHint] }
-          options={ HORIZONTAL_DIRECTION_OPTIONS }
-          onChanged={ this._onHorizontalChanged } />
-        <Dropdown
-          label='Vertical direction'
-          selectedKey={ DirectionalHint[verticalAlignmentHint] }
-          options={ VERTICAL_DIRECTION_OPTIONS }
-          onChanged={ this._onVerticalChanged } />
+          selectedKey={ DirectionalHints[directionalHint] }
+          options={ DIRECTION_OPTIONS }
+          onChanged={ this._onDirectionalChanged } />
         <div ref='menuButton' style={ { display: 'inline-block' } }>
           <Button onClick={ this._onShowMenuClicked }>Show context menu</Button>
         </div>
@@ -73,8 +79,8 @@ export default class ContextualMenuDirectionalExample extends React.Component<an
         <ContextualMenu
           targetElement={ this.refs.menuButton }
           isBeakVisible={ isBeakVisible }
-          horizontalAlignmentHint={ horizontalAlignmentHint }
-          verticalAlignmentHint={ verticalAlignmentHint }
+          directionalHint={ directionalHint }
+          gapSpace={ gapSpace }
           items={
             [
               {
@@ -151,14 +157,16 @@ export default class ContextualMenuDirectionalExample extends React.Component<an
     });
   }
 
-  private _onHorizontalChanged(option: IDropdownOption) {
+  private _onDirectionalChanged(option: IDropdownOption) {
     this.setState({
-      horizontalAlignmentHint: DirectionalHint[option.key]
+      directionalHint: DirectionalHints[option.key]
     });
   }
-  private _onVerticalChanged(option: IDropdownOption) {
+
+  private _onChangeGapSizeClicked() {
     this.setState({
-      verticalAlignmentHint: DirectionalHint[option.key]
+      gapSpace: parseInt(this.refs.gapSize.state.value, 10)
     });
   }
+
 }

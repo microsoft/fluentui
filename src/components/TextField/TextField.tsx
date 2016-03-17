@@ -18,7 +18,11 @@ export interface ITextFieldProps extends React.DOMAttributes {
   className?: string;
 }
 
-export default class TextField extends React.Component<ITextFieldProps, any> {
+export interface ITextFieldState {
+  value: string;
+}
+
+export default class TextField extends React.Component<ITextFieldProps, ITextFieldState> {
   public static initialProps: ITextFieldProps = {
     disabled: false,
     required: false,
@@ -32,15 +36,27 @@ export default class TextField extends React.Component<ITextFieldProps, any> {
     singlelineText: HTMLInputElement;
   };
 
-  public constructor() {
-    super();
+  public constructor(props: ITextFieldProps) {
+    super(props);
 
+    this.state = {
+      value: props.value
+    };
     this._onMultilineTextChanged = this._onMultilineTextChanged.bind(this);
     this._onSinglelineTextChanged = this._onSinglelineTextChanged.bind(this);
   }
 
+  public componentWillReceiveProps(newProps: ITextFieldProps) {
+    if (newProps.value !== undefined) {
+      this.setState({
+        value: newProps.value
+      });
+    }
+  }
+
   public render() {
-    let {disabled, required, multiline, placeholder, underlined, label, description, iconClass, value, className } = this.props;
+    let {disabled, required, multiline, placeholder, underlined, label, description, iconClass, className } = this.props;
+    let { value } = this.state;
 
     return (
       <div
@@ -66,10 +82,17 @@ export default class TextField extends React.Component<ITextFieldProps, any> {
   }
 
   private _onMultilineTextChanged(ev: React.KeyboardEvent): void {
+    this.setState({
+      value: this.refs.multilineText.value
+    });
+
     this._onChanged(this.refs.multilineText.value);
   }
 
   private _onSinglelineTextChanged(ev: React.KeyboardEvent): void {
+    this.setState({
+      value: this.refs.singlelineText.value
+    });
     this._onChanged(this.refs.singlelineText.value);
   }
 

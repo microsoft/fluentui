@@ -36,5 +36,4 @@ export default class ContextualMenuPage extends React.Component<any, any> {
       </div>
     );
   }
-
 }

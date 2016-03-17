@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FocusZone, FocusZoneDirection } from '../../../utilities/focus/index';
-import { default as ContextualMenu, IContextualMenuItem, DirectionalHint } from '../../../components/ContextualMenu/index';
+import { default as ContextualMenu, IContextualMenuItem, DirectionalHints } from '../../../components/ContextualMenu/index';
 import './Header.scss';
 
 export interface IHeaderProps {
@@ -57,9 +57,7 @@ export class Header extends React.Component<IHeaderProps, any> {
           items={ contextMenu.items }
           isBeakVisible={ true }
           targetElement={ contextMenu.target }
-          typeAlignmentHint={ DirectionalHint.vertical }
-          horizontalAlignmentHint={ DirectionalHint.auto }
-          verticalAlignmentHint={ DirectionalHint.bottom }
+          directionalHint={ DirectionalHints.bottomRightEdge }
           gapSpace={ 5 }
           onDismiss={ this._onDismiss } />
         ) : (null) }
