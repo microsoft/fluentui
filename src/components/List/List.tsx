@@ -62,14 +62,18 @@ export default class List extends React.Component<IListProps, any> {
     this._updatePages();
 
     for (let el of scrollableElements) {
-      this._events.on(el, 'scroll', this._updatePages);
+      this._events.on(el, 'scroll', this._onScrollOrResize);
     }
-    this._events.on(window, 'scroll', this._updatePages);
-    this._events.on(window, 'resize', this._updatePages);
+    this._events.on(window, 'scroll', this._onScrollOrResize);
+    this._events.on(window, 'resize', this._onScrollOrResize);
   }
 
   public componentWillUnmount() {
     this._events.dispose();
+  }
+
+  public componentWillReceiveProps(newProps: IListProps) {
+    this._updatePages(newProps.items);
   }
 
   public shouldComponentUpdate(newProps: IListProps, newState: IListState) {
@@ -77,7 +81,9 @@ export default class List extends React.Component<IListProps, any> {
     let { pages: newPages, containerRect: newContainerRect } = newState;
     let shouldComponentUpdate = false;
 
-    if (newProps.containsFocus === this.props.containsFocus &&
+    if (
+      newProps.items === this.props.items &&
+      newProps.containsFocus === this.props.containsFocus &&
       oldPages.length === newPages.length &&
       areEqualSize(oldContainerRect, newContainerRect)) {
       for (let i = 0; i < oldPages.length; i++) {
@@ -130,27 +136,24 @@ export default class List extends React.Component<IListProps, any> {
         return;
       }
     }
-
-    console.log('scroll to ' + index);
   }
 
-  private _updatePages() {
-    let { items } = this.props;
-    let { pages } = this.state;
+  private _onScrollOrResize() {
+    this._updatePages();
+  }
+
+  private _updatePages(items?: any[]) {
     let containerRect = this._getScrollableContainerRect();
 
-    // If no items, no-op.
-    if (!items || !items.length) {
-      return;
-    }
+    items = items || this.props.items;
 
     // Rebuild pages.
     this._updatePageMeasurements();
 
-    pages = this._buildPages(containerRect);
+    this._buildPages(containerRect, items);
 
     this.setState({
-      pages: pages,
+      pages: this._buildPages(containerRect, items),
       containerRect: containerRect
     });
   }
@@ -178,8 +181,7 @@ export default class List extends React.Component<IListProps, any> {
     }
   }
 
-  private _buildPages(containerRect: any): any[] {
-    let { items } = this.props;
+  private _buildPages(containerRect: any, items: any[]): any[] {
     let surfaceElement = this.refs.surface;
     let surfaceRect = surfaceElement.getBoundingClientRect();
     let visibleTop = containerRect.top - surfaceRect.top;

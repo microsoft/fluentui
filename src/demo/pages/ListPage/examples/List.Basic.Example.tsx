@@ -1,30 +1,53 @@
 import * as React from 'react';
 import {
+  TextField,
   List
 } from '../../../../components/index';
 import { createListItems } from '../../../utilities/data';
 import './List.Basic.Example.scss';
 
-let _cachedData;
+export interface IListBasicExampleState {
+  items?: any[];
+  filterText?: string;
+}
 
 export default class ListBasicExample extends React.Component<any, any> {
   constructor() {
     super();
 
-    _cachedData = _cachedData || createListItems(30);
+    this._onFilterChanged = this._onFilterChanged.bind(this);
+
+    this.state = {
+      filterText: '',
+      items: createListItems(5000)
+    };
   }
 
   public render() {
+    let { filterText, items } = this.state;
+    let filteredItems = filterText ?
+      items.filter(item => item.name.toLowerCase().indexOf(filterText.toLowerCase()) >= 0) :
+      items;
+
     return (
-      <List
-        items={ _cachedData }
-        onRenderCell={ (item, index) => (
-          <div className='ms-ListBasicExample-itemCell'>
-            <div className='ms-ListBasicExample-itemName ms-font-xl'>{ item.name }</div>
-            <div className='ms-ListBasicExample-itemDesc ms-font-s'>{ item.description }</div>
-          </div>
-        ) }
-      />
+      <div>
+        <TextField label='Filter by name' onChanged={ this._onFilterChanged } />
+        <List
+          items={ filteredItems }
+          onRenderCell={ (item, index) => (
+            <div className='ms-ListBasicExample-itemCell'>
+              <div className='ms-ListBasicExample-itemName ms-font-xl'>{ item.name }</div>
+              <div className='ms-ListBasicExample-itemDesc ms-font-s'>{ item.description }</div>
+            </div>
+          ) }
+        />
+      </div>
     );
+  }
+
+  private _onFilterChanged(text: string) {
+    this.setState({
+      filterText: text
+    });
   }
 }
