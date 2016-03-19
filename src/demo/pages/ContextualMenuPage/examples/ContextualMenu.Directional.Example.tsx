@@ -14,7 +14,6 @@ export interface IContextualMenuDirectionalExampleState {
   isContextualMenuVisible?: boolean;
   directionalHint?: DirectionalHints;
   isBeakVisible?: boolean;
-  inputValue?: string;
   gapSpace?: number;
 }
 
@@ -54,7 +53,6 @@ export default class ContextualMenuDirectionalExample extends React.Component<an
       isContextualMenuVisible: false,
       isBeakVisible: false,
       directionalHint: DirectionalHints.bottomLeftEdge,
-      inputValue: '0',
       gapSpace: 0
     };
   }
@@ -64,16 +62,18 @@ export default class ContextualMenuDirectionalExample extends React.Component<an
 
     return (
       <div className='ms-ContextualMenuDirectionalExample'>
-        <Checkbox text='Show beak' isChecked={ isBeakVisible } onChanged={ this._onShowBeakChanged } />
-        <TextField ref='gapSize' label='Gap Space' placeholder='Type in the gap space' />
-        <Button onClick={ this._onChangeGapSizeClicked }>Submit</Button>
-        <Dropdown
-          label='Horizontal direction'
-          selectedKey={ DirectionalHints[directionalHint] }
-          options={ DIRECTION_OPTIONS }
-          onChanged={ this._onDirectionalChanged } />
-        <div ref='menuButton' style={ { display: 'inline-block' } }>
-          <Button onClick={ this._onShowMenuClicked }>Show context menu</Button>
+        <div className='ms-ContextualMenuDirectionalExample-configArea'>
+          <Checkbox text='Show beak' isChecked={ isBeakVisible } onChanged={ this._onShowBeakChanged } />
+          <TextField ref='gapSize' label='Gap Space' placeholder='Type in the gap space' />
+          <Button onClick={ this._onChangeGapSizeClicked }>Submit</Button>
+          <Dropdown
+            label='Directional hint'
+            selectedKey={ DirectionalHints[directionalHint] }
+            options={ DIRECTION_OPTIONS }
+            onChanged={ this._onDirectionalChanged } />
+        </div>
+        <div className='ms-ContextualMenuDirectionalExample-buttonArea' ref='menuButton'>
+          <Button onClick={ this._onShowMenuClicked }>{ isContextualMenuVisible ? 'Hide context menu' : 'Show context menu'}</Button>
         </div>
         { isContextualMenuVisible ? (
         <ContextualMenu

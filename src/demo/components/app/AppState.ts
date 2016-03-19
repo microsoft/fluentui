@@ -99,7 +99,7 @@ export const AppState: IAppState = {
         {
           component: ContextualMenuPage,
           name: 'ContextualMenu',
-          status: ExampleStatus.started,
+          status: ExampleStatus.beta,
           url: '#/examples/contextmenu'
         },
         {

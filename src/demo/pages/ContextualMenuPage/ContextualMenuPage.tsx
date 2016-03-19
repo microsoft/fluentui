@@ -11,6 +11,9 @@ import ContextualMenuProps from './ContextualMenuProps';
 import ContextualMenuBasicExample from './examples/ContextualMenu.Basic.Example';
 let ContextualMenuBasicExampleCode = require('./examples/ContextualMenu.Basic.Example.tsx');
 
+import ContextualMenuCheckmarksExample from './examples/ContextualMenu.Checkmarks.Example';
+let ContextualMenuCheckmarksExampleCode = require('./examples/ContextualMenu.Checkmarks.Example.tsx');
+
 import ContextualMenuDirectionalExample from './examples/ContextualMenu.Directional.Example';
 let ContextualMenuDirectionalExampleCode = require('./examples/ContextualMenu.Directional.Example.tsx');
 
@@ -25,6 +28,10 @@ export default class ContextualMenuPage extends React.Component<any, any> {
 
         <ExampleCard title='ContextualMenu' code= { ContextualMenuBasicExampleCode }>
           <ContextualMenuBasicExample />
+        </ExampleCard>
+
+        <ExampleCard title='ContextualMenu checked menus example' code= { ContextualMenuCheckmarksExampleCode }>
+          <ContextualMenuCheckmarksExample />
         </ExampleCard>
 
         <ExampleCard title='ContextualMenu beak/direction test' code= { ContextualMenuDirectionalExampleCode }>

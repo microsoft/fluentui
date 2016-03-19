@@ -85,7 +85,7 @@ export class Header extends React.Component<IHeaderProps, any> {
     }];
   }
 
-  private _onRTLToggled(ev: React.MouseEvent) {
+  private _onRTLToggled(item, ev: React.MouseEvent) {
     let { isRTLEnabled } = this.state;
     let { documentElement } = document;
 

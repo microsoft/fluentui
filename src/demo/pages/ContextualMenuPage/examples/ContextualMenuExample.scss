@@ -1,3 +1,24 @@
 .ms-ContextualMenuDirectionalExample {
-  max-width: 300px;
+  position: relative;
+}
+
+.ms-ContextualMenuDirectionalExample-configArea,
+.ms-ContextualMenuDirectionalExample-buttonArea {
+  display: inline-block;
+  min-width: 300px;
+}
+
+.ms-ContextualMenuDirectionalExample-buttonArea {
+    position: absolute;
+    vertical-align: top;
+    width: 300px;
+    top: 85px;
+    margin: 0 100px;
+    text-align: center;
+}
+
+.ms-ContextualMenuDirectionalExample-buttonArea .ms-Button {
+    top: 80px;
+    text-align: center;
+    width: 100%;
 }

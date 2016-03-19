@@ -104,7 +104,7 @@ export interface IContextualMenuItem {
   shortCut?: string;
   canCheck?: boolean;
   isChecked?: boolean;
-  onClick?: (ev: React.MouseEvent) => void;
+  onClick?: (item?: IContextualMenuItem, ev?: React.MouseEvent) => void;
   items?: IContextualMenuItem[];
 }
 
@@ -275,10 +275,10 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     }
   }
 
-  private _onItemClick(item: any, ev) {
+  private _onItemClick(item: any, ev: MouseEvent) {
     if (!item.items || !item.items.length) { // This is an item without a menu. Click it.
       if (item.onClick) {
-        item.onClick(item);
+        item.onClick(item, ev);
       }
       this._onContextMenuDismiss();
     } else {
@@ -289,7 +289,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
           expandedMenuItemKey: item.key,
           submenuProps: {
             items: item.items,
-            targetElement: ev.currentTarget,
+            targetElement: ev.currentTarget as HTMLElement,
             menuKey: item.key,
             onDismiss: this._onContextMenuDismiss
           }
