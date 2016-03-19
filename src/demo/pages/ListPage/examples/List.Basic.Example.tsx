@@ -28,10 +28,11 @@ export default class ListBasicExample extends React.Component<any, any> {
     let filteredItems = filterText ?
       items.filter(item => item.name.toLowerCase().indexOf(filterText.toLowerCase()) >= 0) :
       items;
+    let resultCountText = filteredItems.length === items.length ? '' : ` (${ filteredItems.length } of ${ items.length } shown)`;
 
     return (
       <div>
-        <TextField label='Filter by name' onChanged={ this._onFilterChanged } />
+        <TextField label={ 'Filter by name' + resultCountText } onChanged={ this._onFilterChanged } />
         <List
           items={ filteredItems }
           onRenderCell={ (item, index) => (
