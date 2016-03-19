@@ -150,8 +150,6 @@ export default class List extends React.Component<IListProps, any> {
     // Rebuild pages.
     this._updatePageMeasurements();
 
-    this._buildPages(containerRect, items);
-
     this.setState({
       pages: this._buildPages(containerRect, items),
       containerRect: containerRect

@@ -169,11 +169,9 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
           iconClass='ms-DatePicker-event ms-Icon ms-Icon--event'
           value={this.props.format && this.state.value ? this.props.format(this.state.value) : null}>
             {isDatePickerShown ? (
-              <div className={ css('ms-DatePicker-picker', {
+              <div className={ css('ms-DatePicker-picker ms-DatePicker-picker--opened', {
                 'ms-DatePicker-picker--focused': isFocused
               })}>
-                (isFocused ? ' ms-DatePicker-picker--focused' : "') +
-                ' ms-DatePicker-picker--opened'}>
                 <div className='ms-DatePicker-holder' onClick={this.onClickOverlay}>
                   <div className='ms-DatePicker-frame'>
                     <div className='ms-DatePicker-wrap'>

@@ -141,9 +141,17 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
     this.setState(state);
   }
 
-  private _getCellContent(column: IColumn, index: number): string {
+  private _getCellContent(column: IColumn, index: number): any {
     let { item } = this.props;
-    return column.getCellContent ? column.getCellContent(item, index) : (String(item[column.fieldName]) || '');
+    let cellContent;
+
+    try {
+      cellContent = column.getCellContent ? column.getCellContent(item, index) : (String(item[column.fieldName]) || '');
+    } catch (e) {
+      cellContent = `{ Exception: ${ e.message }}`;
+    }
+
+    return cellContent;
   }
 
   private _getSelectionState(props: IDetailsRowProps): IDetailsRowState {
