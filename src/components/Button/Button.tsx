@@ -1,5 +1,6 @@
 import * as React from 'react';
 import './Button.scss';
+import { css } from '../../utilities/css';
 
 export enum ButtonType {
   normal,
@@ -9,29 +10,28 @@ export enum ButtonType {
   command
 }
 
-export interface IButtonProps {
-  children?: any;
-  type?: ButtonType;
+export interface IButtonProps extends React.HTMLProps<HTMLButtonElement> {
+  buttonType?: ButtonType;
   icon?: string;
-  title?: string;
   description?: string;
-  onClick?: (ev?: any) => void;
 }
 
 export default class Button extends React.Component<IButtonProps, any> {
   public static defaultProps: IButtonProps = {
-    type: ButtonType.normal
+    buttonType: ButtonType.normal
   };
 
   public render() {
-    let { type, children, icon, title, description, onClick } = this.props;
-    let rootClass = 'ms-Button'
-      + (type === ButtonType.primary ? ' ms-Button--primary' : '')
-      + (type === ButtonType.hero ? ' ms-Button--hero' : '')
-      + (type === ButtonType.compound ? ' ms-Button--compound' : '')
-      + (type === ButtonType.command ? ' ms-Button--command' : '');
+    let { buttonType, children, icon, description } = this.props;
 
-    const iconSpan = icon && (type === ButtonType.command || type === ButtonType.hero)
+    const className = css(this.props.className, 'ms-Button', {
+      'ms-Button--primary': buttonType === ButtonType.primary,
+      'ms-Button--hero': buttonType === ButtonType.hero,
+      'ms-Button--compound': buttonType === ButtonType.compound,
+      'ms-Button--command': buttonType === ButtonType.command
+    });
+
+    const iconSpan = icon && (buttonType === ButtonType.command || buttonType === ButtonType.hero)
       ? <span className='ms-Button-icon'><i className={`ms-Icon ms-Icon--${icon}`}></i></span>
       : null;
 
@@ -41,7 +41,7 @@ export default class Button extends React.Component<IButtonProps, any> {
     }
 
     return (
-      <button className={ rootClass } onClick={ onClick } title={ title }>
+      <button { ...this.props } className={ className }>
         { iconSpan }
         <span className='ms-Button-label'>{ children }</span>
         { descriptionSpan }

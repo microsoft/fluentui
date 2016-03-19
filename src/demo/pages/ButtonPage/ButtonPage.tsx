@@ -27,6 +27,7 @@ export default class ButtonPage extends React.Component<any, any> {
         </ExampleCard>
 
         <PropertiesTable properties={ ButtonProps } />
+        <p>Besides the above properties, the <code>Button</code> component accepts all properties that the React <code>button</code> component accepts.</p>
       </div>
     );
   }
