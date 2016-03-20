@@ -81,7 +81,9 @@ export class Header extends React.Component<IHeaderProps, any> {
       key: 'isRTL',
       name: 'Render in RTL',
       icon: 'gear',
-      onClick: this._onRTLToggled
+      onClick: this._onRTLToggled,
+      canCheck: true,
+      isChecked: this.state.isRTLEnabled
     }];
   }
 
