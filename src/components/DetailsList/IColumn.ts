@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 interface IColumn {
   key: string;
   name: string;
@@ -13,6 +15,7 @@ interface IColumn {
   getCellContent?: (item: any, index?: number) => any;
   calculatedWidth?: number;
   isFilterable?: boolean;
+  onColumnClick?: (column: IColumn, ev: React.MouseEvent) => any;
 }
 
 export default IColumn;

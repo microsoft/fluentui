@@ -8,6 +8,8 @@ import { css } from '../../utilities/css';
 const BUFFER_ZONE = 5;
 const BEAK_WIDTH = 16;
 const BEAK_OFFSET = 6;
+const BEAK_PADDING = 5;
+
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 const OFF_SCREEN_POSITION = { top: 0, left: -9999 };
 const SLIDE_ANIMATIONS = {
@@ -20,14 +22,12 @@ const SLIDE_ANIMATIONS = {
 export interface IContextualMenuProps {
   items: IContextualMenuItem[];
   targetElement?: HTMLElement;
-  menuKey?: string;
-  directionalHint?: DirectionalHints;
+  directionalHint?: DirectionalHint;
   gapSpace?: number;
   labelElementId?: string;
   shouldFocusOnMount?: boolean;
   isBeakVisible?: boolean;
   onDismiss?: (ev?: any) => void;
-  description?: string;
   className?: string;
 }
 
@@ -41,25 +41,7 @@ export interface IContextualMenuState {
   slideDirectionalClassName?: string;
 }
 
-export enum ContextualMenuTypes {
-  vertical,
-  horizontal
-}
-
-export enum HorizontalAlignmentHints {
-  auto,
-  left,
-  center,
-  right
-}
-
-export enum VerticalAlignmentHints {
-  top,
-  center,
-  bottom
-}
-
-export enum DirectionalHints {
+export enum DirectionalHint {
   topLeftEdge,
   topCenter,
   topRightEdge,
@@ -76,24 +58,51 @@ export enum DirectionalHints {
   rightBottomEdge
 };
 
-export interface IMenuSizeWindowSizeInfo {
-  hostRect: any;
-  targetRect: any;
-  menuRect: any;
+enum ContextualMenuType {
+  vertical,
+  horizontal
+}
+
+enum HorizontalAlignmentHint {
+  auto,
+  left,
+  center,
+  right
+}
+
+enum VerticalAlignmentHint {
+  top,
+  center,
+  bottom
+}
+
+interface IMenuSizeWindowSizeInfo {
+  hostRect: IRect;
+  targetRect: IRect;
+  menuRect: IRect;
   windowSize: any;
   gapSpace: number;
 }
 
-export interface IPositionInfo {
+interface IRect {
+  left: number;
+  top: number;
+  right: number;
+  bottom: number;
+  width: number;
+  height: number;
+}
+
+interface IPositionInfo {
   menuPosition: any;
   beakPosition: any;
   directionalClassName: string;
 }
 
-export interface IParsedDirectionalHints {
-  contextualMenuType: ContextualMenuTypes;
-  horizontalAlignmentHint: HorizontalAlignmentHints;
-  verticalAlignmentHint: VerticalAlignmentHints;
+interface IParsedDirectionalHint {
+  contextualMenuType: ContextualMenuType;
+  horizontalAlignmentHint: HorizontalAlignmentHint;
+  verticalAlignmentHint: VerticalAlignmentHint;
 };
 
 export interface IContextualMenuItem {
@@ -115,7 +124,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     shouldFocusOnMount: true,
     isBeakVisible: false,
     gapSpace: 0,
-    directionalHint: DirectionalHints.rightBottomEdge
+    directionalHint: DirectionalHint.rightBottomEdge
   };
 
   public refs: {
@@ -141,10 +150,11 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     this._didSetInitialFocus = false;
     this._events = new EventGroup(this);
 
+    this.dismiss = this.dismiss.bind(this);
     this._onKeyDown = this._onKeyDown.bind(this);
     this._onBlur = this._onBlur.bind(this);
     this._onItemClick = this._onItemClick.bind(this);
-    this._onContextMenuDismiss = this._onContextMenuDismiss.bind(this);
+    this._onSubMenuDismiss = this._onSubMenuDismiss.bind(this);
     this._getRelativePositions = this._getRelativePositions.bind(this);
   }
 
@@ -164,8 +174,8 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount() {
     this._getRelativePositions(this.props, this.state);
-    this._events.on(window, 'scroll', this._onContextMenuDismiss);
-    this._events.on(window, 'resize', this._onContextMenuDismiss);
+    this._events.on(window, 'scroll', this.dismiss);
+    this._events.on(window, 'resize', this.dismiss);
   }
 
   // Invoked when a component is receiving new props.
@@ -197,19 +207,18 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   }
 
   public render() {
-    let { className, menuKey, items, isBeakVisible, labelElementId, targetElement } = this.props;
+    let { className, items, isBeakVisible, labelElementId, targetElement } = this.props;
     let { expandedMenuItemKey, submenuProps, positions, slideDirectionalClassName } = this.state;
 
     let hasIcons = items.some(item => !!item.icon);
     let hasCheckmarks = items.some(item => !!item.canCheck);
 
     return (
-      <div ref='host' className={ css('ms-ContextualMenu-container', className) }>
+      <div ref='host' className={ css('ms-ContextualMenu-container', className) } onBlurCapture={ this._onBlur }>
         { (items && items.length) ? (
           <FocusZone
             className={ 'ms-ContextualMenu is-open' + ((slideDirectionalClassName) ? (` ms-u-${slideDirectionalClassName}`) : (null)) }
-            key={ menuKey }
-            ref='focusZone' onLostFocus={ this._onBlur }
+            ref='focusZone'
             role='menu'
             ariaLabelledBy={ labelElementId }
             style={ ((positions) ? positions.menu : OFF_SCREEN_POSITION) }
@@ -231,7 +240,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
                         { (hasCheckmarks) ? (
                           <span
                             className={ 'ms-ContextualMenu-checkmark' +
-                            ((item.isChecked) ? ' ms-Icon ms-Icon--check' : ' not-selected') }
+                              ((item.isChecked) ? ' ms-Icon ms-Icon--check' : ' not-selected') }
                             onClick={ this._onItemClick.bind(this, item) }
                             >
                           </span>
@@ -269,7 +278,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   }
 
   private _onBlur(ev: React.FocusEvent) {
-    if (!this.state.submenuProps && !(ev.currentTarget as HTMLElement).contains(ev.relatedTarget as HTMLElement)) {
+    if (!this.refs.host.contains(ev.relatedTarget as HTMLElement)) {
       // When the user clicks on something unrelated, we won't make an attempt to reset focus back to the originating focused element.
       this.dismiss(ev);
     }
@@ -280,34 +289,30 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
       if (item.onClick) {
         item.onClick(item, ev);
       }
-      this._onContextMenuDismiss();
+
+      this.dismiss();
+
     } else {
       if (item.key === this.state.expandedMenuItemKey) { // This has an expanded sub menu. collapse it.
-        this._onContextMenuDismiss();
+        this._onSubMenuDismiss();
       } else { // This has a collapsed sub menu. Expand it.
         this.setState({
           expandedMenuItemKey: item.key,
           submenuProps: {
             items: item.items,
             targetElement: ev.currentTarget as HTMLElement,
-            menuKey: item.key,
-            onDismiss: this._onContextMenuDismiss
+            onDismiss: this._onSubMenuDismiss
           }
         });
       }
     }
   }
 
-  private _onContextMenuDismiss(ev?: any) {
-    if (!ev || !ev.relatedTarget || !this.refs.host.contains(ev.relatedTarget as HTMLElement)) {
-      this.setState({
-        expandedMenuItemKey: null,
-        submenuProps: null
-      });
-    } else {
-      ev.stopPropagation();
-      ev.preventDefault();
-    }
+  private _onSubMenuDismiss(ev?: any) {
+    this.setState({
+      expandedMenuItemKey: null,
+      submenuProps: null
+    });
   }
 
   private _getRelativePositions(props: IContextualMenuProps, state: IContextualMenuState) {
@@ -317,8 +322,8 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     let menuElement = this.refs.menu;
     let windowSize: { width: number, height: number } = { width: window.innerWidth, height: window.innerHeight };
     let directionalClassName: string;
-    let parsedDirectionalHints: IParsedDirectionalHints = this._getDirectionalHint(directionalHint);
-    let { contextualMenuType, horizontalAlignmentHint, verticalAlignmentHint } = parsedDirectionalHints;
+    let parsedDirectionalHint: IParsedDirectionalHint = this._getDirectionalHint(directionalHint);
+    let { contextualMenuType, horizontalAlignmentHint, verticalAlignmentHint } = parsedDirectionalHint;
 
     let menuPosition = {
       top: 0,
@@ -341,8 +346,8 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
       let hostRect = hostElement.getBoundingClientRect();
       let targetRect = targetElement.getBoundingClientRect();
       let menuRect = menuElement.getBoundingClientRect();
-      let actualHorizontalDirection: HorizontalAlignmentHints;
-      let actualVerticalDirection: VerticalAlignmentHints;
+      let actualHorizontalDirection: HorizontalAlignmentHint;
+      let actualVerticalDirection: VerticalAlignmentHint;
 
       let menuSizeWindowSizeInfo: IMenuSizeWindowSizeInfo = {
         hostRect: hostRect,
@@ -353,7 +358,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
       };
 
       // ContextualMenu submenu render type: vertical
-      if (contextualMenuType === ContextualMenuTypes.vertical) {
+      if (contextualMenuType === ContextualMenuType.vertical) {
         // Set actualHorizontalDirection based on window space and menu size
         actualHorizontalDirection = this._getActualHorizontalDirectionforVerticalContextualMenu(horizontalAlignmentHint, menuSizeWindowSizeInfo);
 
@@ -361,10 +366,10 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
         actualVerticalDirection = this._getActualVerticalDirectionforVerticalContextualMenu(verticalAlignmentHint, menuSizeWindowSizeInfo);
 
         // Calculate position based on actualHorizontalDirection and actualVerticalDirection
-        positionInfo = this._calculatePositionsforVerticalContextualMenu( actualVerticalDirection, actualHorizontalDirection, menuSizeWindowSizeInfo, positionInfo);
+        positionInfo = this._calculatePositionsforVerticalContextualMenu(actualVerticalDirection, actualHorizontalDirection, menuSizeWindowSizeInfo, positionInfo);
 
-      // ContextualMenu submenu render type: horizontal
-      } else if (contextualMenuType === ContextualMenuTypes.horizontal) {
+        // ContextualMenu submenu render type: horizontal
+      } else if (contextualMenuType === ContextualMenuType.horizontal) {
         // Set actualHorizontalDirection based on window space
         actualHorizontalDirection = this._getActualHorizontalDirectionforHorizontalContextualMenu(horizontalAlignmentHint, menuSizeWindowSizeInfo);
 
@@ -372,7 +377,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
         actualVerticalDirection = this._getActualVerticalDirectionforHorizontalContextualMenu(verticalAlignmentHint, menuSizeWindowSizeInfo);
 
         // Calculate position based on actualHorizontalDirection and actualVerticalDirection
-        positionInfo = this._calculatePositionsforHorizontalContextualMenu( actualVerticalDirection, actualHorizontalDirection, menuSizeWindowSizeInfo, positionInfo);
+        positionInfo = this._calculatePositionsforHorizontalContextualMenu(actualVerticalDirection, actualHorizontalDirection, menuSizeWindowSizeInfo, positionInfo);
       }
     }
 
@@ -390,98 +395,98 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   }
 
   // Get the three parameter directional hint, which include contextual menu type, horizontal alignment hint and verticalAlignmentHint
-  private _getDirectionalHint(directionalHint: DirectionalHints) {
+  private _getDirectionalHint(directionalHint: DirectionalHint) {
 
-    let parsedDirectionalHints: IParsedDirectionalHints = {
+    let parsedDirectionalHint: IParsedDirectionalHint = {
       contextualMenuType: null,
       horizontalAlignmentHint: null,
       verticalAlignmentHint: null
     };
-    let { contextualMenuType, horizontalAlignmentHint, verticalAlignmentHint } = parsedDirectionalHints;
+    let { contextualMenuType, horizontalAlignmentHint, verticalAlignmentHint } = parsedDirectionalHint;
 
     // Get the contextual menu type, vertical means the submenu will be display on the top or bottom of host menu. While horizontal means
     // the submenuw will be display on the left or right edge of host menu.
-    if (directionalHint === DirectionalHints.topCenter || directionalHint === DirectionalHints.topLeftEdge ||
-    directionalHint === DirectionalHints.topRightEdge || directionalHint === DirectionalHints.bottomCenter ||
-    directionalHint === DirectionalHints.bottomLeftEdge || directionalHint === DirectionalHints.bottomRightEdge ||
-    directionalHint === DirectionalHints.topAutoEdge || directionalHint === DirectionalHints.bottomAutoEdge) {
-      contextualMenuType = ContextualMenuTypes.vertical;
+    if (directionalHint === DirectionalHint.topCenter || directionalHint === DirectionalHint.topLeftEdge ||
+      directionalHint === DirectionalHint.topRightEdge || directionalHint === DirectionalHint.bottomCenter ||
+      directionalHint === DirectionalHint.bottomLeftEdge || directionalHint === DirectionalHint.bottomRightEdge ||
+      directionalHint === DirectionalHint.topAutoEdge || directionalHint === DirectionalHint.bottomAutoEdge) {
+      contextualMenuType = ContextualMenuType.vertical;
     } else {
-      contextualMenuType = ContextualMenuTypes.horizontal;
+      contextualMenuType = ContextualMenuType.horizontal;
     }
 
-    // Get the horizontalAlignmentHints, for horizontal contextual menu, it will only be either left or right; for vertical contextual menu, center and auto is also an option.
+    // Get the horizontalAlignmentHint, for horizontal contextual menu, it will only be either left or right; for vertical contextual menu, center and auto is also an option.
     // auto means taht if the target is in the left half of host, the submenu will be align to left edge, if the target is in the right half of host, the submenu will be
     // align to right edge.
-    if (directionalHint === DirectionalHints.bottomLeftEdge || directionalHint === DirectionalHints.leftBottomEdge ||
-    directionalHint === DirectionalHints.leftCenter || directionalHint === DirectionalHints.leftTopEdge ||
-    directionalHint === DirectionalHints.topLeftEdge) {
-      horizontalAlignmentHint = HorizontalAlignmentHints.left;
-    } else if (contextualMenuType === ContextualMenuTypes.vertical && (directionalHint === DirectionalHints.topCenter ||
-    directionalHint === DirectionalHints.bottomCenter)) {
-      horizontalAlignmentHint = HorizontalAlignmentHints.center;
-    } else if (contextualMenuType === ContextualMenuTypes.vertical && (directionalHint === DirectionalHints.topAutoEdge ||
-    directionalHint === DirectionalHints.bottomAutoEdge)) {
-      horizontalAlignmentHint = HorizontalAlignmentHints.auto;
+    if (directionalHint === DirectionalHint.bottomLeftEdge || directionalHint === DirectionalHint.leftBottomEdge ||
+      directionalHint === DirectionalHint.leftCenter || directionalHint === DirectionalHint.leftTopEdge ||
+      directionalHint === DirectionalHint.topLeftEdge) {
+      horizontalAlignmentHint = HorizontalAlignmentHint.left;
+    } else if (contextualMenuType === ContextualMenuType.vertical && (directionalHint === DirectionalHint.topCenter ||
+      directionalHint === DirectionalHint.bottomCenter)) {
+      horizontalAlignmentHint = HorizontalAlignmentHint.center;
+    } else if (contextualMenuType === ContextualMenuType.vertical && (directionalHint === DirectionalHint.topAutoEdge ||
+      directionalHint === DirectionalHint.bottomAutoEdge)) {
+      horizontalAlignmentHint = HorizontalAlignmentHint.auto;
     } else {
-      horizontalAlignmentHint = HorizontalAlignmentHints.right;
+      horizontalAlignmentHint = HorizontalAlignmentHint.right;
     }
 
-    // Get the verticalAlignmentHints, for vertical contextual menu, it will only be either top or buttom; for horizontal contextual menu, center is also an option.
-    if (directionalHint === DirectionalHints.leftTopEdge || directionalHint === DirectionalHints.rightTopEdge ||
-    directionalHint === DirectionalHints.topCenter || directionalHint === DirectionalHints.topLeftEdge ||
-    directionalHint === DirectionalHints.topRightEdge || directionalHint === DirectionalHints.topAutoEdge) {
-      verticalAlignmentHint = VerticalAlignmentHints.top;
-    } else if (contextualMenuType === ContextualMenuTypes.horizontal && (directionalHint === DirectionalHints.leftCenter ||
-    directionalHint === DirectionalHints.rightCenter)) {
-      verticalAlignmentHint = VerticalAlignmentHints.center;
+    // Get the verticalAlignmentHint, for vertical contextual menu, it will only be either top or buttom; for horizontal contextual menu, center is also an option.
+    if (directionalHint === DirectionalHint.leftTopEdge || directionalHint === DirectionalHint.rightTopEdge ||
+      directionalHint === DirectionalHint.topCenter || directionalHint === DirectionalHint.topLeftEdge ||
+      directionalHint === DirectionalHint.topRightEdge || directionalHint === DirectionalHint.topAutoEdge) {
+      verticalAlignmentHint = VerticalAlignmentHint.top;
+    } else if (contextualMenuType === ContextualMenuType.horizontal && (directionalHint === DirectionalHint.leftCenter ||
+      directionalHint === DirectionalHint.rightCenter)) {
+      verticalAlignmentHint = VerticalAlignmentHint.center;
     } else {
-      verticalAlignmentHint = VerticalAlignmentHints.bottom;
+      verticalAlignmentHint = VerticalAlignmentHint.bottom;
     }
 
-    parsedDirectionalHints = { contextualMenuType, horizontalAlignmentHint, verticalAlignmentHint };
+    parsedDirectionalHint = { contextualMenuType, horizontalAlignmentHint, verticalAlignmentHint };
 
-    return parsedDirectionalHints;
+    return parsedDirectionalHint;
   }
 
   // Get actualHorizontalDirection for vertical contextual menu based on window space and menu size
-  private _getActualHorizontalDirectionforVerticalContextualMenu(horizontalAlignmentHint: HorizontalAlignmentHints, menuSizeWindowSizeInfo: IMenuSizeWindowSizeInfo) {
+  private _getActualHorizontalDirectionforVerticalContextualMenu(horizontalAlignmentHint: HorizontalAlignmentHint, menuSizeWindowSizeInfo: IMenuSizeWindowSizeInfo) {
     let { hostRect, targetRect: targetRect, menuRect, windowSize } = menuSizeWindowSizeInfo;
-    let actualHorizontalDirection: HorizontalAlignmentHints;
+    let actualHorizontalDirection: HorizontalAlignmentHint;
 
-    if (horizontalAlignmentHint === HorizontalAlignmentHints.left) {
+    if (horizontalAlignmentHint === HorizontalAlignmentHint.left) {
       let hasEnoughSpace = (windowSize.width - targetRect.left) > (menuRect.width + BUFFER_ZONE);
 
       if (hasEnoughSpace) {
-        actualHorizontalDirection = HorizontalAlignmentHints.left;
+        actualHorizontalDirection = HorizontalAlignmentHint.left;
       } else {
-        actualHorizontalDirection = HorizontalAlignmentHints.right;
+        actualHorizontalDirection = HorizontalAlignmentHint.right;
       }
-    } else if (horizontalAlignmentHint === HorizontalAlignmentHints.center) {
+    } else if (horizontalAlignmentHint === HorizontalAlignmentHint.center) {
       let hasEnoughSpaceLeft = targetRect.left > ((menuRect.width / 2) - (targetRect.width / 2) + BUFFER_ZONE);
       let hasEnoughSpaceRight = (windowSize.width - targetRect.right) > ((menuRect.width / 2) - (targetRect.width / 2) + BUFFER_ZONE);
 
       if (hasEnoughSpaceLeft && hasEnoughSpaceRight) {
-        actualHorizontalDirection = HorizontalAlignmentHints.center;
+        actualHorizontalDirection = HorizontalAlignmentHint.center;
       } else if (!hasEnoughSpaceLeft) {
-        actualHorizontalDirection = HorizontalAlignmentHints.left;
+        actualHorizontalDirection = HorizontalAlignmentHint.left;
       } else {
-        actualHorizontalDirection = HorizontalAlignmentHints.right;
+        actualHorizontalDirection = HorizontalAlignmentHint.right;
       }
-    } else if (horizontalAlignmentHint === HorizontalAlignmentHints.right) {
+    } else if (horizontalAlignmentHint === HorizontalAlignmentHint.right) {
       let hasEnoughSpace = targetRect.right > (menuRect.width + BUFFER_ZONE);
 
       if (hasEnoughSpace) {
-        actualHorizontalDirection = HorizontalAlignmentHints.right;
+        actualHorizontalDirection = HorizontalAlignmentHint.right;
       } else {
-        actualHorizontalDirection = HorizontalAlignmentHints.left;
+        actualHorizontalDirection = HorizontalAlignmentHint.left;
       }
-    } else if (horizontalAlignmentHint === HorizontalAlignmentHints.auto) {
+    } else if (horizontalAlignmentHint === HorizontalAlignmentHint.auto) {
       let isLeftAligned = (targetRect.left - hostRect.left + (targetRect.width / 2)) < (hostRect.width / 2);
       if (isLeftAligned) {
-        actualHorizontalDirection = HorizontalAlignmentHints.left;
+        actualHorizontalDirection = HorizontalAlignmentHint.left;
       } else {
-        actualHorizontalDirection = HorizontalAlignmentHints.right;
+        actualHorizontalDirection = HorizontalAlignmentHint.right;
       }
     }
 
@@ -489,35 +494,35 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   }
 
   // Get actualVerticalDirection for vertical contextual menu based on window space and menu size
-  private _getActualVerticalDirectionforVerticalContextualMenu(verticalAlignmentHint: VerticalAlignmentHints, menuSizeWindowSizeInfo: IMenuSizeWindowSizeInfo) {
+  private _getActualVerticalDirectionforVerticalContextualMenu(verticalAlignmentHint: VerticalAlignmentHint, menuSizeWindowSizeInfo: IMenuSizeWindowSizeInfo) {
     let { targetRect: targetRect, menuRect, windowSize, gapSpace } = menuSizeWindowSizeInfo;
-    let actualVerticalDirection: VerticalAlignmentHints;
+    let actualVerticalDirection: VerticalAlignmentHint;
 
-    if (verticalAlignmentHint === VerticalAlignmentHints.bottom) {
+    if (verticalAlignmentHint === VerticalAlignmentHint.bottom) {
       let hasEnoughSpace = (windowSize.height - targetRect.bottom) > (menuRect.height + gapSpace + BUFFER_ZONE);
 
-        if (hasEnoughSpace) {
-          actualVerticalDirection = VerticalAlignmentHints.bottom;
-        } else {
-          actualVerticalDirection = VerticalAlignmentHints.top;
-        }
-      } else if (verticalAlignmentHint === VerticalAlignmentHints.top) {
-        let hasEnoughSpace = targetRect.top > (menuRect.height + gapSpace + BUFFER_ZONE);
-
-        if (hasEnoughSpace) {
-          actualVerticalDirection = VerticalAlignmentHints.top;
-        } else {
-          actualVerticalDirection = VerticalAlignmentHints.bottom;
-        }
+      if (hasEnoughSpace) {
+        actualVerticalDirection = VerticalAlignmentHint.bottom;
+      } else {
+        actualVerticalDirection = VerticalAlignmentHint.top;
       }
+    } else if (verticalAlignmentHint === VerticalAlignmentHint.top) {
+      let hasEnoughSpace = targetRect.top > (menuRect.height + gapSpace + BUFFER_ZONE);
+
+      if (hasEnoughSpace) {
+        actualVerticalDirection = VerticalAlignmentHint.top;
+      } else {
+        actualVerticalDirection = VerticalAlignmentHint.bottom;
+      }
+    }
 
     return actualVerticalDirection;
   }
 
   // Calculate positions based on actualHorizontalDirection and actualVerticalDirection for vertical contextual menu
   private _calculatePositionsforVerticalContextualMenu(
-    actualVerticalDirection: VerticalAlignmentHints,
-    actualHorizontalDirection: HorizontalAlignmentHints,
+    actualVerticalDirection: VerticalAlignmentHint,
+    actualHorizontalDirection: HorizontalAlignmentHint,
     menuSizeWindowSizeInfo: IMenuSizeWindowSizeInfo,
     positionInfo: IPositionInfo
   ) {
@@ -525,20 +530,30 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     let { menuPosition, beakPosition, directionalClassName } = positionInfo;
 
     // Calculate the horizontal position based on actualHorizontalDirection
-    if (actualHorizontalDirection === HorizontalAlignmentHints.left) {
+    if (actualHorizontalDirection === HorizontalAlignmentHint.left) {
       menuPosition.left = targetRect.left - hostRect.left;
-      beakPosition.left = (targetRect.width / 2) - (BEAK_WIDTH / 2);
-    } else if (actualHorizontalDirection === HorizontalAlignmentHints.center) {
+      beakPosition.left = Math.max(
+        BEAK_PADDING,
+        Math.min(
+          menuRect.width - BEAK_PADDING - BEAK_WIDTH,
+          (targetRect.width / 2) - (BEAK_WIDTH / 2)
+        ));
+    } else if (actualHorizontalDirection === HorizontalAlignmentHint.center) {
       let targetCenter = targetRect.left - hostRect.left + (targetRect.width / 2);
       menuPosition.left = targetCenter - menuRect.width / 2;
       beakPosition.left = (menuRect.width / 2) - (BEAK_WIDTH / 2);
     } else {
       menuPosition.left = targetRect.right - hostRect.left - menuRect.width;
-      beakPosition.left = menuRect.width - (targetRect.width / 2) - (BEAK_WIDTH / 2);
+      beakPosition.left = Math.max(
+        BEAK_PADDING,
+        Math.min(
+          menuRect.width - BEAK_PADDING - BEAK_WIDTH,
+          menuRect.width - (targetRect.width / 2) - (BEAK_WIDTH / 2)
+        ));
     }
 
     // Calculate the vertical position based on actualVerticalDirection
-    if (actualVerticalDirection === VerticalAlignmentHints.top) {
+    if (actualVerticalDirection === VerticalAlignmentHint.top) {
       menuPosition.top = targetRect.top - hostRect.top - gapSpace - menuRect.height;
       beakPosition.top = menuRect.height - BEAK_WIDTH / 2;
       directionalClassName = SLIDE_ANIMATIONS.up;
@@ -554,25 +569,25 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   }
 
   // Get actualHorizontalDirection for horizontal contextual menu based on window space and menu size
-  private _getActualHorizontalDirectionforHorizontalContextualMenu(horizontalAlignmentHint: HorizontalAlignmentHints, menuSizeWindowSizeInfo: IMenuSizeWindowSizeInfo) {
+  private _getActualHorizontalDirectionforHorizontalContextualMenu(horizontalAlignmentHint: HorizontalAlignmentHint, menuSizeWindowSizeInfo: IMenuSizeWindowSizeInfo) {
     let { targetRect: targetRect, menuRect, windowSize, gapSpace } = menuSizeWindowSizeInfo;
-    let actualHorizontalDirection: HorizontalAlignmentHints;
+    let actualHorizontalDirection: HorizontalAlignmentHint;
 
-    if (horizontalAlignmentHint === HorizontalAlignmentHints.right) {
+    if (horizontalAlignmentHint === HorizontalAlignmentHint.right) {
       let hasEnoughSpace = (windowSize.width - targetRect.right) > (menuRect.width + gapSpace + BUFFER_ZONE);
 
       if (hasEnoughSpace) {
-        actualHorizontalDirection = HorizontalAlignmentHints.right;
+        actualHorizontalDirection = HorizontalAlignmentHint.right;
       } else {
-        actualHorizontalDirection = HorizontalAlignmentHints.left;
+        actualHorizontalDirection = HorizontalAlignmentHint.left;
       }
-    } else if (horizontalAlignmentHint === HorizontalAlignmentHints.left) {
+    } else if (horizontalAlignmentHint === HorizontalAlignmentHint.left) {
       let hasEnoughSpace = targetRect.left > menuRect.width + gapSpace + BUFFER_ZONE;
 
       if (hasEnoughSpace) {
-        actualHorizontalDirection = HorizontalAlignmentHints.left;
+        actualHorizontalDirection = HorizontalAlignmentHint.left;
       } else {
-        actualHorizontalDirection = HorizontalAlignmentHints.right;
+        actualHorizontalDirection = HorizontalAlignmentHint.right;
       }
     }
 
@@ -580,36 +595,36 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   }
 
   // Get actualVerticalDirection for horizontal contextual menu based on window space and menu size
-  private _getActualVerticalDirectionforHorizontalContextualMenu(verticalAlignmentHint: VerticalAlignmentHints,  menuSizeWindowSizeInfo: IMenuSizeWindowSizeInfo) {
+  private _getActualVerticalDirectionforHorizontalContextualMenu(verticalAlignmentHint: VerticalAlignmentHint, menuSizeWindowSizeInfo: IMenuSizeWindowSizeInfo) {
     let { targetRect: targetRect, menuRect, windowSize } = menuSizeWindowSizeInfo;
-    let actualVerticalDirection: VerticalAlignmentHints;
+    let actualVerticalDirection: VerticalAlignmentHint;
 
-    if (verticalAlignmentHint === VerticalAlignmentHints.top) {
+    if (verticalAlignmentHint === VerticalAlignmentHint.top) {
       let hasEnoughSpace = targetRect.bottom > (menuRect.height + BUFFER_ZONE);
 
       if (hasEnoughSpace) {
-        actualVerticalDirection = VerticalAlignmentHints.top;
+        actualVerticalDirection = VerticalAlignmentHint.top;
       } else {
-        actualVerticalDirection = VerticalAlignmentHints.bottom;
+        actualVerticalDirection = VerticalAlignmentHint.bottom;
       }
-    } else if (verticalAlignmentHint === VerticalAlignmentHints.center) {
+    } else if (verticalAlignmentHint === VerticalAlignmentHint.center) {
       let hasEnoughSpaceTop = (targetRect.top + targetRect.height / 2) > (menuRect.height / 2 + BUFFER_ZONE);
       let hasEnoughSpaceBottom = (windowSize.height - targetRect.top - targetRect.height / 2) > (menuRect.height / 2 + BUFFER_ZONE);
 
       if (hasEnoughSpaceTop && hasEnoughSpaceBottom) {
-        actualVerticalDirection = VerticalAlignmentHints.center;
+        actualVerticalDirection = VerticalAlignmentHint.center;
       } else if (!hasEnoughSpaceTop) {
-        actualVerticalDirection = VerticalAlignmentHints.bottom;
+        actualVerticalDirection = VerticalAlignmentHint.bottom;
       } else {
-        actualVerticalDirection = VerticalAlignmentHints.top;
+        actualVerticalDirection = VerticalAlignmentHint.top;
       }
-    } else if (verticalAlignmentHint === VerticalAlignmentHints.bottom) {
+    } else if (verticalAlignmentHint === VerticalAlignmentHint.bottom) {
       let hasEnoughSpace = (windowSize.height - targetRect.top) > (menuRect.height + BUFFER_ZONE);
 
       if (hasEnoughSpace) {
-        actualVerticalDirection = VerticalAlignmentHints.bottom;
+        actualVerticalDirection = VerticalAlignmentHint.bottom;
       } else {
-        actualVerticalDirection = VerticalAlignmentHints.top;
+        actualVerticalDirection = VerticalAlignmentHint.top;
       }
     }
 
@@ -618,8 +633,8 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
 
   // Calculate positions based on actualHorizontalDirection and actualVerticalDirection for horizontal contextual menu
   private _calculatePositionsforHorizontalContextualMenu(
-    actualVerticalDirection: VerticalAlignmentHints,
-    actualHorizontalDirection: HorizontalAlignmentHints,
+    actualVerticalDirection: VerticalAlignmentHint,
+    actualHorizontalDirection: HorizontalAlignmentHint,
     menuSizeWindowSizeInfo: IMenuSizeWindowSizeInfo,
     positionInfo: IPositionInfo
   ) {
@@ -627,7 +642,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     let { menuPosition, beakPosition, directionalClassName } = positionInfo;
 
     // Calculate horizontal position based on actualHorizontalDirection
-    if (actualHorizontalDirection === HorizontalAlignmentHints.left) {
+    if (actualHorizontalDirection === HorizontalAlignmentHint.left) {
       menuPosition.left = targetRect.left - hostRect.left - gapSpace - menuRect.width;
       beakPosition.left = menuRect.width - 2 * BEAK_OFFSET;
       directionalClassName = SLIDE_ANIMATIONS.left;
@@ -638,10 +653,10 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     }
 
     // Calculate vertical position based on actualVerticalDirection
-    if (actualVerticalDirection === VerticalAlignmentHints.top) {
+    if (actualVerticalDirection === VerticalAlignmentHint.top) {
       menuPosition.top = targetRect.bottom - hostRect.top - menuRect.height;
       beakPosition.top = menuRect.height - (targetRect.height / 2) - (BEAK_WIDTH / 2);
-    } else if (actualVerticalDirection === VerticalAlignmentHints.center) {
+    } else if (actualVerticalDirection === VerticalAlignmentHint.center) {
       menuPosition.top = targetRect.bottom - hostRect.top + (menuRect.height / 2 - targetRect.height / 2) - menuRect.height;
       beakPosition.top = (menuRect.height / 2) - (BEAK_WIDTH / 2);
     } else {

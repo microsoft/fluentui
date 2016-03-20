@@ -2,11 +2,11 @@ import * as React from 'react';
 import { css } from '../../utilities/css';
 import './Check.scss';
 
-export interface ICheckProps extends React.Props<any> {
+export interface ICheckProps extends React.Props<Check> {
   isChecked?: boolean;
 }
 
-export class Check extends React.Component<ICheckProps, any> {
+export class Check extends React.Component<ICheckProps, {}> {
   public static defaultProps = {
     isChecked: false
   };

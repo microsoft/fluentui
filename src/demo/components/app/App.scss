@@ -1,3 +1,5 @@
+@import '../../../common';
+
 body {
   padding: 0;
   margin: 0;
@@ -14,15 +16,17 @@ body {
 
 .App-navBar {
   position: fixed;
-  left: 0;
+  @include left(0);
   width: 300px;
   top: 50px;
   bottom: 0;
   border-right: 1px solid #EEE;
+  background: white;
+  z-index: 10000;
 }
 
 .App-content {
-  margin-left: 300px;
+  @include margin-left(300px);
   margin-top: 50px;
   padding: 20px;
 }

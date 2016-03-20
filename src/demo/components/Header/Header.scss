@@ -18,10 +18,10 @@
 }
 
 .Header-title .ms-Icon {
-  padding-right: 8px;
+  @include padding-right(8px);
 }
 .Header-buttons {
-  float: right;
+  @include float(right);
 }
 
 .Header-button {

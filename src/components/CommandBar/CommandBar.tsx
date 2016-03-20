@@ -2,7 +2,7 @@ import * as React from 'react';
 import './CommandBar.scss';
 import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
-import { default as ContextualMenu, DirectionalHints } from '../ContextualMenu/index';
+import { default as ContextualMenu, DirectionalHint } from '../ContextualMenu/index';
 import { css } from '../../utilities/css';
 import { IContextualMenuItem } from '../index';
 
@@ -156,7 +156,6 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
         </FocusZone>
         { (contextualMenuItems) ?
         (<ContextualMenu
-          menuKey={ expandedMenuItemKey }
           labelElementId={ expandedMenuId }
           className='ms-CommandBar-menuHost'
           items={ contextualMenuItems }
@@ -164,7 +163,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
           onDismiss={ this._onContextMenuDismiss }
           isBeakVisible={ true }
           gapSpace={ 8 }
-          directionalHint={ DirectionalHints.bottomAutoEdge }
+          directionalHint={ DirectionalHint.bottomAutoEdge }
         />
         ) : (null)}
       </div>

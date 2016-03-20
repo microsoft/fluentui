@@ -17,11 +17,14 @@ export interface IDetailsRowProps {
   onWillUnmount?: any;
   onDidMount?: any;
 }
-
-export interface IDetailsRowState {
+export interface IDetailsRowSelectionState {
   isSelected: boolean;
   isFocused: boolean;
   isFocusable: boolean;
+}
+
+export interface IDetailsRowState {
+  selectionState: IDetailsRowSelectionState;
   columnMeasureInfo?: {
     index: number;
     onMeasureDone: (measuredWidth: number) => void;
@@ -40,8 +43,10 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
   constructor(props) {
     super(props);
 
-    this.state = this._getSelectionState(props);
-    this.state.columnMeasureInfo = null;
+    this.state = {
+      selectionState: this._getSelectionState(props),
+      columnMeasureInfo: null
+    };
 
     this._events = new EventGroup(this);
   }
@@ -89,12 +94,14 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
   }
 
   public componentWillReceiveProps(newProps) {
-    this.setState(this._getSelectionState(newProps));
+    this.setState({
+      selectionState: this._getSelectionState(newProps)
+    });
   }
 
   public render() {
     let { selectionMode, columns, item, itemIndex } = this.props;
-    let { isSelected, isFocusable, columnMeasureInfo } = this.state;
+    let { selectionState: { isSelected, isFocusable }, columnMeasureInfo } = this.state;
 
     return (
       <div
@@ -104,26 +111,26 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
         }) }
         data-selection-key={ item.key }
         tabIndex={ isFocusable ? 0 : -1 }
-      >
+        >
         <div className='ms-DetailsRow-focusBox' />
         { (selectionMode !== SelectionMode.none) ? (
-        <button
-          tabIndex={ -1 }
-          className='ms-DetailsRow-check'
-          data-selection-toggle={ true }
-        >
-          <Check isChecked={ isSelected } />
-        </button>
+          <button
+            tabIndex={ -1 }
+            className='ms-DetailsRow-check'
+            data-selection-toggle={ true }
+            >
+            <Check isChecked={ isSelected } />
+          </button>
         ) : null }
         { columns.map(column => (
-        <div key={ column.key } className={ css('ms-DetailsRow-cell', {
-          'is-clipped': column.isClipped
-        }) } style={ { width: column.calculatedWidth } }>
-          { this._getCellContent(column, itemIndex) }
-        </div>
+          <div key={ column.key } className={ css('ms-DetailsRow-cell', {
+            'is-clipped': column.isClipped
+          }) } style={ { width: column.calculatedWidth } }>
+            { this._getCellContent(column, itemIndex) }
+          </div>
         )) }
         { (columnMeasureInfo) ? (
-        <span className='ms-DetailsRow-cellMeasurer ms-DetailsRow-cell' ref='cellMeasurer'/>
+          <span className='ms-DetailsRow-cellMeasurer ms-DetailsRow-cell' ref='cellMeasurer'/>
         ) : (null) }
       </div>
     );
@@ -148,13 +155,13 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
     try {
       cellContent = column.getCellContent ? column.getCellContent(item, index) : (String(item[column.fieldName]) || '');
     } catch (e) {
-      cellContent = `{ Exception: ${ e.message }}`;
+      cellContent = `{ Exception: ${e.message}}`;
     }
 
     return cellContent;
   }
 
-  private _getSelectionState(props: IDetailsRowProps): IDetailsRowState {
+  private _getSelectionState(props: IDetailsRowProps): IDetailsRowSelectionState {
     let { item, shouldSetFocus, selection } = props;
 
     return {
@@ -167,8 +174,10 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
   private _onSelectionChanged() {
     let selectionState = this._getSelectionState(this.props);
 
-    if (!shallowCompare(selectionState, this.state)) {
-      this.setState(selectionState);
+    if (!shallowCompare(selectionState, this.state.selectionState)) {
+      this.setState({
+        selectionState: selectionState
+      });
     }
   }
 

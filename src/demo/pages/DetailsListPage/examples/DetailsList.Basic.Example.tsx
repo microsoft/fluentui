@@ -5,7 +5,10 @@ import {
   DetailsList,
   buildColumns,
   DetailsListLayoutMode as LayoutMode,
-  SelectionMode
+  SelectionMode,
+  ContextualMenu,
+  DirectionalHint,
+  IContextualMenuProps
 } from '../../../../components/index';
 import { createListItems } from '../../../utilities/data';
 import './DetailsList.Basic.Example.scss';
@@ -13,10 +16,14 @@ import './DetailsList.Basic.Example.scss';
 let _items;
 
 export interface IDetailsListBasicExampleState {
+  items?: any[];
   layoutMode?: LayoutMode;
   selectionMode?: SelectionMode;
   canResizeColumns?: boolean;
   columns?: IColumn[];
+  sortedColumnKey?: string;
+  isSortedDescending?: boolean;
+  contextualMenuProps?: IContextualMenuProps;
 }
 
 export default class DetailsListBasicExample extends React.Component<any, IDetailsListBasicExampleState> {
@@ -30,17 +37,21 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
     this._onToggleResizing = this._onToggleResizing.bind(this);
     this._onLayoutChanged = this._onLayoutChanged.bind(this);
     this._onSelectionChanged = this._onSelectionChanged.bind(this);
+    this._onColumnClick = this._onColumnClick.bind(this);
+    this._onContextualMenuDismissed = this._onContextualMenuDismissed.bind(this);
 
     this.state = {
+      items: _items,
       layoutMode: LayoutMode.justified,
       selectionMode: SelectionMode.multiple,
       canResizeColumns: true,
-      columns: this._getColumns(_items, true)
+      columns: buildColumns(_items, true, this._onColumnClick, ''),
+      contextualMenuProps: null
     };
   }
 
   public render() {
-    let { layoutMode, selectionMode, columns, canResizeColumns } = this.state;
+    let { items, layoutMode, selectionMode, columns, canResizeColumns, contextualMenuProps } = this.state;
 
     return (
       <div className='ms-DetailsListBasicExample'>
@@ -111,24 +122,30 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
               ]
             }
           ]
-        } />
+          } />
 
         <DetailsList
-          items={ _items }
+          items={ items }
           columns={ columns }
           layoutMode={ layoutMode }
           selectionMode={ selectionMode }
-        />
+          />
+
+        { contextualMenuProps && (
+          <ContextualMenu { ...contextualMenuProps } />
+        ) }
       </div>
     );
   }
 
   private _onToggleResizing() {
-    let canResizeColumns = !this.state.canResizeColumns;
+    let { items, canResizeColumns, sortedColumnKey, isSortedDescending } = this.state;
+
+    canResizeColumns = !canResizeColumns;
 
     this.setState({
       canResizeColumns: canResizeColumns,
-      columns: this._getColumns(_items, canResizeColumns)
+      columns: buildColumns(items, canResizeColumns, this._onColumnClick, sortedColumnKey, isSortedDescending)
     });
   }
 
@@ -144,13 +161,55 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
     });
   }
 
-  private _getColumns(items: any[], canResizeColumns: boolean) {
-    let columns = buildColumns(items);
-
-    columns.forEach(column => column.isResizable = canResizeColumns);
-
-    return columns;
+  private _getContextualMenuProps(column: IColumn, ev: React.MouseEvent): IContextualMenuProps {
+    return {
+      items: [
+        {
+          key: 'aToZ',
+          name: 'A to Z',
+          icon: 'arrowUp2',
+          canCheck: true,
+          isChecked: column.isSorted && !column.isSortedDescending,
+          onClick: () => this._onSortColumn(column, false)
+        },
+        {
+          key: 'zToA',
+          name: 'Z to A',
+          icon: 'arrowDown2',
+          canCheck: true,
+          isChecked: column.isSorted && column.isSortedDescending,
+          onClick: () => this._onSortColumn(column, true)
+        }
+      ],
+      targetElement: ev.currentTarget as HTMLElement,
+      directionalHint: DirectionalHint.bottomLeftEdge,
+      gapSpace: 10,
+      isBeakVisible: true,
+      onDismiss: this._onContextualMenuDismissed
+    };
   }
 
-}
+  private _onColumnClick(column: IColumn, ev: React.MouseEvent) {
+    this.setState({
+      contextualMenuProps: this._getContextualMenuProps(column, ev)
+    });
+  }
 
+  private _onContextualMenuDismissed() {
+    this.setState({
+      contextualMenuProps: null
+    });
+  }
+
+  private _onSortColumn(column: IColumn, isSortedDescending: boolean) {
+    let { key } = column;
+    let sortedItems = _items.slice(0).sort((a, b) => (isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1);
+
+    this.setState({
+      items: sortedItems,
+      columns: buildColumns(sortedItems, true, this._onColumnClick, column.key, isSortedDescending),
+      isSortedDescending: isSortedDescending,
+      sortedColumnKey: column.key
+    });
+  }
+}

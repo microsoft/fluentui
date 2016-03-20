@@ -16,7 +16,6 @@ export interface IDetailsHeaderProps {
   selection: ISelection;
   selectionMode: SelectionMode;
   layoutMode: DetailsListLayoutMode;
-  onSort?: (column: IColumn) => void;
   onColumnIsSizingChanged?: (column: IColumn, isSizing: boolean) => void;
   onColumnResized?: (column: IColumn, newWidth: number) => void;
   onColumnAutoResized?: (column: IColumn, columnIndex: number) => void;
@@ -98,13 +97,17 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
                 disabled={ !column.isSortable }
                 className={ css('ms-DetailsHeader-cell', {
                   'is-sortable': column.isSortable,
-                  'is-sorted': column.isSorted,
-                  'is-sortedDescending': column.isSortedDescending
+                  'is-sorted': column.isSorted
                 }) }
                 style={ { width: column.calculatedWidth } }
                 onClick={ this._onColumnClick.bind(this, column) }
               >
-                <span className='ms-DetailsHeader-sortArrow ms-Icon ms-Icon--arrowUp2' />
+                <span
+                  className={ css('ms-DetailsHeader-sortArrow ms-Icon', {
+                    'ms-Icon--arrowUp2': !column.isSortedDescending,
+                    'ms-Icon--arrowDown2': column.isSortedDescending
+                  }) }
+                />
                 { column.name }
                 { column.isFilterable ? (
                   <i className='ms-DetailsHeader-filterChevron ms-Icon ms-Icon--chevronDown' />
@@ -112,7 +115,7 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
               </button>
             </div>
             { (column.isResizable) ? (
-            <button
+            <div
               className={ css('ms-DetailsHeader-cell is-sizer', {
                 'is-resizing': columnResizeDetails && columnResizeDetails.columnIndex === columnIndex && isSizing
               }) }
@@ -256,11 +259,10 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
      }
   }
 
-  private _onColumnClick(column) {
-    let { onSort } = this.props;
-
-    if (onSort && column.isSortable) {
-      onSort(column);
+  private _onColumnClick(column, ev) {
+    if (column.onColumnClick) {
+      column.onColumnClick(column, ev);
     }
   }
+
 }

@@ -33,7 +33,7 @@ $groupBorderColor: $ms-color-neutralLight;
   display: block;
   width: 100%;
   height: 40px;
-  text-align: left;
+  @include text-align(left);
   line-height: 40px;
   margin: 5px 0;
   padding: 0 40px;
@@ -65,7 +65,7 @@ $groupBorderColor: $ms-color-neutralLight;
 
 .NavBar-groupChevron.ms-Icon {
   position: absolute;
-  left: 15px;
+  @include left(15px);
   height: 40px;
   line-height: 40px;
   font-size: 15px;
@@ -123,7 +123,7 @@ $groupBorderColor: $ms-color-neutralLight;
 
 .NavBar-link.is-selected:before,
 .ms-Fabric.is-focusVisible .NavBar-link.is-selected:focus:before {
-  border-left: 4px solid $selectedHighlightColor;
+  @include border-left(4px, solid, $selectedHighlightColor);
   background: $selectedColor;
 }
 
@@ -137,24 +137,24 @@ $groupBorderColor: $ms-color-neutralLight;
 
 .is-selected:before,
 .NavBar-link.is-selected:focus:before {
-  border-left: 4px solid $selectedHighlightColor;
+  @include border-left(4px, solid, $selectedHighlightColor);
 }
 
 .NavBar-linkFlair {
-    font-size: 10px;
-    text-transform: uppercase;
-    float: right;
-    background: $ms-color-neutralTertiaryAlt;
-    color: $ms-color-white;
-    line-height: normal;
-    display: inline;
-    vertical-align: middle;
-    transform: translateY(-50%);
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    padding: 2px 6px;
-    border-radius: 2px;
+  font-size: 10px;
+  text-transform: uppercase;
+  @include float(right);
+  background: $ms-color-neutralTertiaryAlt;
+  color: $ms-color-white;
+  line-height: normal;
+  display: inline;
+  vertical-align: middle;
+  transform: translateY(-50%);
+  position: absolute;
+  @include right(20px);
+  top: 50%;
+  padding: 2px 6px;
+  border-radius: 2px;
 }
 
 .NavBar-linkFlair.is-state1 {

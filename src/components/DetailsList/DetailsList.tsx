@@ -83,11 +83,18 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   }
 
   public componentWillReceiveProps(newProps) {
-    if (newProps.layoutMode) {
-      this.setState({ layoutMode: newProps.layoutMode });
+    let { layoutMode } = this.state;
+
+    if (newProps.layoutMode !== this.props.layoutMode) {
+      layoutMode = newProps.layoutMode;
+      this.setState({ layoutMode: layoutMode });
     }
 
-    this._adjustColumns(newProps, true);
+    if (newProps.items !== this.props.items) {
+      this._selection.setItems(newProps.items, true);
+    }
+
+    this._adjustColumns(newProps, true, layoutMode);
   }
 
   public render() {
@@ -144,12 +151,11 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
   private _adjustColumns(newProps: IDetailsListProps, forceUpdate?: boolean, layoutMode?: DetailsListLayoutMode) {
     let adjustedColumns = this._getAdjustedColumns(newProps, forceUpdate, layoutMode);
-    let { viewport: { width: viewportWidth }, selectionMode } = this.props;
+    let { viewport: { width: viewportWidth } } = this.props;
 
     if (adjustedColumns) {
       this.setState({
         adjustedColumns: adjustedColumns,
-        lastSelectionMode: selectionMode,
         lastWidth: viewportWidth
       });
     }
@@ -161,7 +167,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
   private _getAdjustedColumns(newProps: IDetailsListProps, forceUpdate?: boolean, layoutMode?: DetailsListLayoutMode): IColumn[] {
     let { columns: newColumns, viewport: { width: viewportWidth }, selectionMode } = newProps;
-    if (layoutMode  === undefined) {
+    if (layoutMode === undefined) {
       layoutMode = newProps.layoutMode;
     }
 
@@ -260,7 +266,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
    * and resize the column to the max cell width
    *
    * @private
-   * @param {IColumn} column (double clicked column defifinition)
+   * @param {IColumn} column (double clicked column definition)
    * @param {number} columnIndex (double clicked column index)
    * @todo min width 100 should be changed to const value and should be consistent with the value used on _onSizerMove method in DetailsHeader
    */
@@ -284,7 +290,12 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   }
 }
 
-export function buildColumns(items) {
+export function buildColumns(
+  items: any[],
+  canResizeColumns?: boolean,
+  onColumnClick?: (column: IColumn, ev: React.MouseEvent) => any,
+  sortedColumnKey?: string,
+  isSortedDescending?: boolean) {
   let columns: IColumn[] = [];
 
   if (items && items.length) {
@@ -301,10 +312,12 @@ export function buildColumns(items) {
           maxWidth: 300,
           isCollapsable: !!columns.length,
           isClipped: true,
-          isSortable: true,
-          isSorted: isFirstColumn,
-          isSortedDescending: false,
-          isFilterable: isFirstColumn
+          isSortable: sortedColumnKey !== undefined,
+          isSorted: sortedColumnKey === propName,
+          isSortedDescending: !!isSortedDescending,
+          isFilterable: false,
+          isResizable: canResizeColumns,
+          onColumnClick: onColumnClick
         });
 
         isFirstColumn = false;
