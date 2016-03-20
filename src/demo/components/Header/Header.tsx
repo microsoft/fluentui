@@ -79,11 +79,9 @@ export class Header extends React.Component<IHeaderProps, any> {
   private _getOptionMenuItems(): IContextualMenuItem[] {
     return [{
       key: 'isRTL',
-      name: 'Render in RTL',
+      name: `Render in ${ this.state.isRTLEnabled ? 'LTR' : 'RTL' }`,
       icon: 'gear',
-      onClick: this._onRTLToggled,
-      canCheck: true,
-      isChecked: this.state.isRTLEnabled
+      onClick: this._onRTLToggled
     }];
   }
 

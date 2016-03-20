@@ -5,12 +5,11 @@ import { assign } from '../../utilities/object';
 import { css } from '../../utilities/css';
 import DetailsHeader from './DetailsHeader';
 import DetailsRow from './DetailsRow';
-import IColumn from './IColumn';
+import { IColumn, DetailsListLayoutMode, ConstrainMode } from './interfaces';
 import { ISelection, SelectionMode } from '../../utilities/selection/ISelection';
 import IObjectWithKey from '../../utilities/selection/IObjectWithKey';
 import {Selection } from '../../utilities/selection/Selection';
 import SelectionZone from '../../utilities/selection/SelectionZone';
-import DetailsListLayoutMode from './DetailsListLayoutMode';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
 import './DetailsList.scss';
 
@@ -21,7 +20,7 @@ export interface IDetailsListProps {
   layoutMode?: DetailsListLayoutMode;
   columns?: IColumn[];
   viewport?: IViewport;
-
+  constrainMode?: ConstrainMode;
   className?: string;
 }
 
@@ -43,7 +42,8 @@ export interface IDetailsListViewData {
 export class DetailsList extends React.Component<IDetailsListProps, IDetailsListState> {
   public static defaultProps = {
     layoutMode: DetailsListLayoutMode.justified,
-    selectionMode: SelectionMode.multiple
+    selectionMode: SelectionMode.multiple,
+    constrainMode: ConstrainMode.horizontalConstrained
   };
 
   public refs: {
@@ -98,13 +98,14 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   }
 
   public render() {
-    let { className, items, selectionMode } = this.props;
+    let { className, items, selectionMode, constrainMode } = this.props;
     let { adjustedColumns, layoutMode } = this.state;
     let { _selection: selection } = this;
 
     return (
       <div className={css('ms-DetailsList', className, {
-        'is-fixed': layoutMode === DetailsListLayoutMode.fixedColumns
+        'is-fixed': layoutMode === DetailsListLayoutMode.fixedColumns,
+        'is-horizontalConstrained': constrainMode === ConstrainMode.horizontalConstrained
       }) }>
         <SelectionZone selection={ this._selection } selectionMode={ selectionMode }>
           <DetailsHeader

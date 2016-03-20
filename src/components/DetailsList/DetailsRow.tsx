@@ -1,5 +1,5 @@
 import * as React from 'react';
-import IColumn from './IColumn';
+import { IColumn } from './interfaces';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/ISelection';
 import Check from './Check';
 import EventGroup from '../../utilities/eventGroup/EventGroup';

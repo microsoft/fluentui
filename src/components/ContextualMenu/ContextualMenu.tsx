@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { IContextualMenuItem, DirectionalHint } from './interfaces';
 import FocusZone from '../../utilities/focus/FocusZone';
 import './ContextualMenu.scss';
 import KeyCodes from '../../utilities/KeyCodes';
@@ -40,23 +41,6 @@ export interface IContextualMenuState {
   positions?: any;
   slideDirectionalClassName?: string;
 }
-
-export enum DirectionalHint {
-  topLeftEdge,
-  topCenter,
-  topRightEdge,
-  topAutoEdge,
-  bottomLeftEdge,
-  bottomCenter,
-  bottomRightEdge,
-  bottomAutoEdge,
-  leftTopEdge,
-  leftCenter,
-  leftBottomEdge,
-  rightTopEdge,
-  rightCenter,
-  rightBottomEdge
-};
 
 enum ContextualMenuType {
   vertical,
@@ -104,18 +88,6 @@ interface IParsedDirectionalHint {
   horizontalAlignmentHint: HorizontalAlignmentHint;
   verticalAlignmentHint: VerticalAlignmentHint;
 };
-
-export interface IContextualMenuItem {
-  key?: string;
-  name: string;
-  icon?: string;
-  isEnabled?: boolean;
-  shortCut?: string;
-  canCheck?: boolean;
-  isChecked?: boolean;
-  onClick?: (item?: IContextualMenuItem, ev?: React.MouseEvent) => void;
-  items?: IContextualMenuItem[];
-}
 
 export default class ContextualMenu extends React.Component<IContextualMenuProps, IContextualMenuState> {
   // The default ContextualMenu properities have no items and beak, the default submenu direction is right and top.

@@ -1,9 +1,8 @@
 import * as React from 'react';
-import IColumn from './IColumn';
+import { IColumn, DetailsListLayoutMode } from './interfaces';
 import { css } from '../../utilities/css';
 import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/ISelection';
-import DetailsListLayoutMode from './DetailsListLayoutMode';
 import Check from './Check';
 import './DetailsHeader.scss';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
@@ -27,11 +26,6 @@ export interface IDetailsHeaderState {
   columnResizeDetails?: IColumnResizeDetails;
   isAllSelected?: boolean;
   isSizing?: boolean;
-}
-
-export interface IFilterItem {
-  name: string;
-  key: string;
 }
 
 export interface IColumnResizeDetails {

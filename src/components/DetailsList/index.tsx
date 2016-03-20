@@ -1,6 +1,5 @@
 export * from './DetailsList';
-export { default as DetailsList } from './DetailsList';
-export { default as DetailsListLayoutMode } from './DetailsListLayoutMode';
-export { default as IColumn } from './IColumn';
+export * from './interfaces';
 export { SelectionMode } from '../../utilities/selection/ISelection';
+export { default as DetailsList } from './DetailsList';
 export { default as default } from './DetailsList';

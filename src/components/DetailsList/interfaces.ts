@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-interface IColumn {
+export interface IColumn {
   key: string;
   name: string;
   fieldName: string;
@@ -18,5 +18,12 @@ interface IColumn {
   onColumnClick?: (column: IColumn, ev: React.MouseEvent) => any;
 }
 
-export default IColumn;
+export enum ConstrainMode {
+  unconstrained = 0,
+  horizontalConstrained
+}
 
+export enum DetailsListLayoutMode {
+  fixedColumns,
+  justified
+}

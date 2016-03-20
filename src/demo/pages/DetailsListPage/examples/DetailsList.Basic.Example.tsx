@@ -2,11 +2,13 @@ import * as React from 'react';
 import {
   CommandBar,
   IColumn,
+  ConstrainMode,
   DetailsList,
   buildColumns,
   DetailsListLayoutMode as LayoutMode,
   SelectionMode,
   ContextualMenu,
+  IContextualMenuItem,
   DirectionalHint,
   IContextualMenuProps
 } from '../../../../components/index';
@@ -18,6 +20,7 @@ let _items;
 export interface IDetailsListBasicExampleState {
   items?: any[];
   layoutMode?: LayoutMode;
+  constrainMode?: ConstrainMode;
   selectionMode?: SelectionMode;
   canResizeColumns?: boolean;
   columns?: IColumn[];
@@ -36,6 +39,7 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
 
     this._onToggleResizing = this._onToggleResizing.bind(this);
     this._onLayoutChanged = this._onLayoutChanged.bind(this);
+    this._onConstrainModeChanged = this._onConstrainModeChanged.bind(this);
     this._onSelectionChanged = this._onSelectionChanged.bind(this);
     this._onColumnClick = this._onColumnClick.bind(this);
     this._onContextualMenuDismissed = this._onContextualMenuDismissed.bind(this);
@@ -43,6 +47,7 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
     this.state = {
       items: _items,
       layoutMode: LayoutMode.justified,
+      constrainMode: ConstrainMode.horizontalConstrained,
       selectionMode: SelectionMode.multiple,
       canResizeColumns: true,
       columns: buildColumns(_items, true, this._onColumnClick, ''),
@@ -51,84 +56,18 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
   }
 
   public render() {
-    let { items, layoutMode, selectionMode, columns, canResizeColumns, contextualMenuProps } = this.state;
+    let { items, layoutMode, constrainMode, selectionMode, columns, contextualMenuProps } = this.state;
 
     return (
       <div className='ms-DetailsListBasicExample'>
-        <CommandBar
-          items={[
-            {
-              key: 'configure',
-              name: 'Configure',
-              icon: 'gear',
-              items: [
-                {
-                  key: 'resizing',
-                  name: 'Allow column resizing',
-                  canCheck: true,
-                  isChecked: canResizeColumns,
-                  onClick: this._onToggleResizing
-                },
-                {
-                  name: '-'
-                },
-                {
-                  key: 'layoutMode',
-                  name: 'Layout mode',
-                  items: [
-                    {
-                      key: LayoutMode[LayoutMode.fixedColumns],
-                      name: 'Fixed columns',
-                      canCheck: true,
-                      isChecked: layoutMode === LayoutMode.fixedColumns,
-                      onClick: this._onLayoutChanged.bind(this, LayoutMode.fixedColumns)
-                    },
-                    {
-                      key: LayoutMode[LayoutMode.justified],
-                      name: 'Justified columns',
-                      canCheck: true,
-                      isChecked: layoutMode === LayoutMode.justified,
-                      onClick: this._onLayoutChanged.bind(this, LayoutMode.justified)
-                    }
-                  ]
-                },
-                {
-                  key: 'selectionMode',
-                  name: 'Selection mode',
-                  items: [
-                    {
-                      key: SelectionMode[SelectionMode.none],
-                      name: 'None',
-                      canCheck: true,
-                      isChecked: selectionMode === SelectionMode.none,
-                      onClick: this._onSelectionChanged.bind(this, SelectionMode.none)
-                    },
-                    {
-                      key: SelectionMode[SelectionMode.single],
-                      name: 'Single select',
-                      canCheck: true,
-                      isChecked: selectionMode === SelectionMode.single,
-                      onClick: this._onSelectionChanged.bind(this, SelectionMode.single)
-                    },
-                    {
-                      key: SelectionMode[SelectionMode.multiple],
-                      name: 'Multi select',
-                      canCheck: true,
-                      isChecked: selectionMode === SelectionMode.multiple,
-                      onClick: this._onSelectionChanged.bind(this, SelectionMode.multiple)
-                    },
-                  ]
-                }
-              ]
-            }
-          ]
-          } />
+        <CommandBar items={ this._getCommandItems() } />
 
         <DetailsList
           items={ items }
           columns={ columns }
           layoutMode={ layoutMode }
           selectionMode={ selectionMode }
+          constrainMode={ constrainMode }
           />
 
         { contextualMenuProps && (
@@ -149,16 +88,121 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
     });
   }
 
-  private _onLayoutChanged(layoutMode: LayoutMode) {
+  private _onLayoutChanged(menuItem: IContextualMenuItem) {
     this.setState({
-      layoutMode: layoutMode
+      layoutMode: menuItem.data
     });
   }
 
-  private _onSelectionChanged(selectionMode: SelectionMode) {
+  private _onConstrainModeChanged(menuItem: IContextualMenuItem) {
     this.setState({
-      selectionMode: selectionMode
+      constrainMode: menuItem.data
     });
+  }
+
+  private _onSelectionChanged(menuItem: IContextualMenuItem) {
+    this.setState({
+      selectionMode: menuItem.data
+    });
+  }
+
+  private _getCommandItems() {
+    let { layoutMode, constrainMode, selectionMode, canResizeColumns } = this.state;
+
+    return [
+      {
+        key: 'configure',
+        name: 'Configure',
+        icon: 'gear',
+        items: [
+          {
+            key: 'resizing',
+            name: 'Allow column resizing',
+            canCheck: true,
+            isChecked: canResizeColumns,
+            onClick: this._onToggleResizing
+          },
+          {
+            name: '-'
+          },
+          {
+            key: 'layoutMode',
+            name: 'Layout mode',
+            items: [
+              {
+                key: LayoutMode[LayoutMode.fixedColumns],
+                name: 'Fixed columns',
+                canCheck: true,
+                isChecked: layoutMode === LayoutMode.fixedColumns,
+                onClick: this._onLayoutChanged,
+                data: LayoutMode.fixedColumns
+              },
+              {
+                key: LayoutMode[LayoutMode.justified],
+                name: 'Justified columns',
+                canCheck: true,
+                isChecked: layoutMode === LayoutMode.justified,
+                onClick: this._onLayoutChanged,
+                data: LayoutMode.justified
+              }
+            ]
+          },
+          {
+            key: 'selectionMode',
+            name: 'Selection mode',
+            items: [
+              {
+                key: SelectionMode[SelectionMode.none],
+                name: 'None',
+                canCheck: true,
+                isChecked: selectionMode === SelectionMode.none,
+                onClick: this._onSelectionChanged,
+                data: SelectionMode.none
+
+              },
+              {
+                key: SelectionMode[SelectionMode.single],
+                name: 'Single select',
+                canCheck: true,
+                isChecked: selectionMode === SelectionMode.single,
+                onClick: this._onSelectionChanged,
+                data: SelectionMode.single
+              },
+              {
+                key: SelectionMode[SelectionMode.multiple],
+                name: 'Multi select',
+                canCheck: true,
+                isChecked: selectionMode === SelectionMode.multiple,
+                onClick: this._onSelectionChanged,
+                data: SelectionMode.multiple
+              },
+            ]
+          },
+          {
+            key: 'constrainMode',
+            name: 'Constrain mode',
+            items: [
+              {
+                key: ConstrainMode[ConstrainMode.unconstrained],
+                name: 'Unconstrained',
+                canCheck: true,
+                isChecked: constrainMode === ConstrainMode.unconstrained,
+                onClick: this._onConstrainModeChanged,
+                data: ConstrainMode.unconstrained
+              },
+              {
+                key: ConstrainMode[ConstrainMode.horizontalConstrained],
+                name: 'Horizontal constrained',
+                canCheck: true,
+                isChecked: constrainMode === ConstrainMode.horizontalConstrained,
+                onClick: this._onConstrainModeChanged,
+                data: ConstrainMode.horizontalConstrained
+              }
+            ]
+          }
+        ]
+      }
+    ];
   }
 
   private _getContextualMenuProps(column: IColumn, ev: React.MouseEvent): IContextualMenuProps {
