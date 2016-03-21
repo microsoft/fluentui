@@ -22,6 +22,7 @@ export interface IDetailsListProps {
   viewport?: IViewport;
   constrainMode?: ConstrainMode;
   className?: string;
+  onDidUpdate?: (detailsList?: DetailsList) => any;
 }
 
 export interface IDetailsListState {
@@ -80,6 +81,12 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
   public componentWillUnmount() {
     this._events.dispose();
+  }
+
+  public componentDidUpdate(prevProps: any, prevState: any) {
+    if (this.props.onDidUpdate) {
+      this.props.onDidUpdate(this);
+    }
   }
 
   public componentWillReceiveProps(newProps) {

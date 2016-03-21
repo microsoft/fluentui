@@ -43,7 +43,8 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
     this._events = new EventGroup(this);
 
     this.state = {
-      columnResizeDetails: null
+      columnResizeDetails: null,
+      isSizing: false
     };
 
     this._onSizerMove = this._onSizerMove.bind(this);
@@ -154,17 +155,19 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
       buttons = MOUSEMOVE_PRIMARY_BUTTON
     } = ev;
 
-    if (buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
-      // cancel mouse down event and return early when the primary button is not pressed
-      this._onUp(ev);
-      return;
-    }
-
     let { columnResizeDetails, isSizing } = this.state;
 
-    if (columnResizeDetails && !isSizing && ev.clientX !== columnResizeDetails.originX) {
-      isSizing = true;
-      this.setState({ isSizing: isSizing });
+    if (columnResizeDetails) {
+      if (buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
+        // cancel mouse down event and return early when the primary button is not pressed
+        this._onUp(ev);
+        return;
+      }
+
+      if (!isSizing && ev.clientX !== columnResizeDetails.originX) {
+        isSizing = true;
+        this.setState({ isSizing: isSizing });
+      }
     }
   }
 
@@ -221,21 +224,23 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
       buttons = MOUSEMOVE_PRIMARY_BUTTON
     } = ev;
 
-    if (buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
-      // cancel mouse down event and return early when the primary button is not pressed
-      this._onSizerUp();
-      return;
-    }
+    let { columnResizeDetails } = this.state;
 
-    let { onColumnResized, columns } = this.props;
+    if (columnResizeDetails) {
+      if (buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
+        // cancel mouse down event and return early when the primary button is not pressed
+        this._onSizerUp();
+        return;
+      }
 
-    if (onColumnResized) {
-      let { columnResizeDetails } = this.state;
+      let { onColumnResized, columns } = this.props;
 
-      onColumnResized(
-        columns[columnResizeDetails.columnIndex],
-        columnResizeDetails.columnMinWidth + (ev.clientX - columnResizeDetails.originX)
-      );
+      if (onColumnResized) {
+        onColumnResized(
+          columns[columnResizeDetails.columnIndex],
+          columnResizeDetails.columnMinWidth + (ev.clientX - columnResizeDetails.originX)
+        );
+      }
     }
   }
 
