@@ -33,8 +33,8 @@ gulp.task('deploy', ['bundle'],  function() {
     currentbranch = os.hostname().split('.')[0] + '-' + branch.replace('/', '-');
     let ftpConnection = ftp.create({
       host: 'waws-prod-bay-049.ftp.azurewebsites.windows.net',
-      user: "odsp-int\\designdev",
-      pass: 'RealHumanBeans13',
+      user: "fabricreact\\FabricReactControls",
+      pass: 'Po1ntBarrow',
       parallel: 10,
       secure: true
     });
@@ -49,7 +49,7 @@ gulp.task('deploy', ['bundle'],  function() {
       .pipe(ftpConnection.newer( './' ) ) // only upload newer files
       .pipe(ftpConnection.dest( '/site/wwwroot/fabric-react/' + currentbranch ))
       .pipe(debug({ title: 'Copying file to Azure' }));
-    gutil.log('http://odsp-int.azurewebsites.net/fabric-react/' + currentbranch + '/');
+    gutil.log('http://fabricreact.azurewebsites.net/fabric-react/' + currentbranch + '/');
     return stream;
   });
 });
