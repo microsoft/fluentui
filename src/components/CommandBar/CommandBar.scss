@@ -48,21 +48,24 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
 }
 
 .ms-CommandBar {
+  position: relative;
   background-color: $ms-color-themeLighterAlt;
   height: $CommandBar-height;
   white-space: nowrap;
-
+  
   @include user-select(none);
 }
 
 .ms-CommandBar-primaryCommands {
+  position: absolute;
   overflow-x: hidden;
   display: inline;
   margin: 0 24px;
 }
 
 .ms-CommandBar-sideCommands {
-  float: right;
+  position: absolute;
+  right: 0px;
   text-align: right;
   padding-right: 24px;
 }
