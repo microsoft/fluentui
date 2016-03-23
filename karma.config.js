@@ -4,7 +4,7 @@
 // Generated on Thu Oct 08 2015 18:13:05 GMT-0700 (PDT)
 
 let path = require('path');
-let configResources = require('web-library-build').plugins.karma.configResources;
+let configResources = require('web-library-build').karma.resources;
 let bindPolyfillPath = configResources.bindPolyfillPath;
 let debugRun = (process.argv.indexOf('--debug') > -1);
 
@@ -20,7 +20,7 @@ module.exports = function(config) {
 
 
     // list of files / patterns to load in the browser
-      files: [bindPolyfillPath].concat(['lib/tests.js']),
+    files: [bindPolyfillPath].concat(['lib/tests.js']),
 
 
     // list of files to exclude

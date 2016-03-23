@@ -8,30 +8,27 @@
     "type": "git",
     "url": "https://onedrive.visualstudio.com/DefaultCollection/Design/_git/office-ui-fabric-react"
   },
-  "license": "UNLICENSED",
+  "license": "MIT",
   "devDependencies": {
-    "chai": "^3.4.1",
+    "color-functions": "^1.1.0",
     "git-rev": "^0.2.1",
     "gulp": "^3.9.0",
     "gulp-debug": "^2.1.2",
     "gulp-util": "^3.0.7",
     "gutil": "^1.6.4",
-    "karma": "0.13.9",
+    "highlight.js": "^8.4.0",
+    "load-themed-styles": "^1.0.3",
     "lodash.merge": "^4.3.2",
+    "office-ui-fabric": "^2.0.1",
     "react": "^0.14.7",
     "react-addons-test-utils": "^0.14.3",
     "react-dom": "^0.14.7",
+    "react-highlight": "^0.6.1",
     "vinyl-ftp": "^0.4.5",
-    "web-library-build": "^0.0.8",
-    "webpack": "^1.12.14",
+    "web-library-build": "^0.0.11",
     "webpack-notifier": "^1.2.1",
     "webpack-split-by-path": "0.0.8"
   },
   "dependencies": {
-    "color-functions": "^1.1.0",
-    "highlight.js": "^8.4.0",
-    "load-themed-styles": "^1.0.3",
-    "office-ui-fabric": "^2.0.1",
-    "react-highlight": "^0.6.1"
   }
 }

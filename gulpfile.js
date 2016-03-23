@@ -5,10 +5,10 @@ let gulp = require('gulp');
 let merge = require('lodash.merge');
 
 /** @todo: disable lint config. */
-build.tasks.tslint.setConfig({ lintConfig: require('./tslint.json') });
+build.tslint.setConfig({ lintConfig: require('./tslint.json') });
 
 // process *.Example.tsx as text.
-build.tasks.text.setConfig({ textMatch: [ 'src/**/*.txt', 'src/**/*.Example.tsx' ] });
+build.text.setConfig({ textMatch: [ 'src/**/*.txt', 'src/**/*.Example.tsx' ] });
 
 // configure amd libraries to be built when the production flag is present.
 if (process.argv.indexOf('--production') >= 0) {
