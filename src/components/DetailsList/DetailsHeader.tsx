@@ -71,55 +71,55 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
           'is-allSelected': isAllSelected,
           'is-singleSelect': selectionMode === SelectionMode.single,
           'is-resizingColumn': !!columnResizeDetails && isSizing
-            }) }
+        }) }
         onMouseMove={ this._onMove.bind(this) }
         onMouseUp={ this._onUp.bind(this) }
         ref='root'>
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           { (selectionMode === SelectionMode.multiple) ? (
-          <button
-            className='ms-DetailsHeader-cell is-check'
-            data-selection-all-toggle='true'
-          >
-            <Check isChecked={ isAllSelected } />
-          </button>
+            <button
+              className='ms-DetailsHeader-cell is-check'
+              data-selection-all-toggle='true'
+              >
+              <Check isChecked={ isAllSelected } />
+            </button>
           ) : (null) }
           { columns.map((column, columnIndex) => (
-          <div key={ column.key } className='ms-DetailsHeader-cellSizeWrapper'>
-            <div className='ms-DetailsHeader-cellWrapper'>
-              <button
-                key={ column.fieldName }
-                disabled={ !column.isSortable }
-                className={ css('ms-DetailsHeader-cell', {
-                  'is-sortable': column.isSortable,
-                  'is-sorted': column.isSorted
-                }) }
-                style={ { width: column.calculatedWidth } }
-                onClick={ this._onColumnClick.bind(this, column) }
-              >
-                <span
-                  className={ css('ms-DetailsHeader-sortArrow ms-Icon', {
-                    'ms-Icon--arrowUp2': !column.isSortedDescending,
-                    'ms-Icon--arrowDown2': column.isSortedDescending
+            <div key={ column.key } className='ms-DetailsHeader-cellSizeWrapper'>
+              <div className='ms-DetailsHeader-cellWrapper'>
+                <button
+                  key={ column.fieldName }
+                  disabled={ !column.isSortable }
+                  className={ css('ms-DetailsHeader-cell', {
+                    'is-sortable': column.isSortable,
+                    'is-sorted': column.isSorted
                   }) }
-                />
-                { column.name }
-                { column.isFilterable ? (
-                  <i className='ms-DetailsHeader-filterChevron ms-Icon ms-Icon--chevronDown' />
-                ) : (null)}
-              </button>
+                  style={ { width: column.calculatedWidth } }
+                  onClick={ this._onColumnClick.bind(this, column) }
+                  >
+                  <span
+                    className={ css('ms-DetailsHeader-sortArrow ms-Icon', {
+                      'ms-Icon--arrowUp2': !column.isSortedDescending,
+                      'ms-Icon--arrowDown2': column.isSortedDescending
+                    }) }
+                    />
+                  { column.name }
+                  { column.isFilterable ? (
+                    <i className='ms-DetailsHeader-filterChevron ms-Icon ms-Icon--chevronDown' />
+                  ) : (null) }
+                </button>
+              </div>
+              { (column.isResizable) ? (
+                <div
+                  className={ css('ms-DetailsHeader-cell is-sizer', {
+                    'is-resizing': columnResizeDetails && columnResizeDetails.columnIndex === columnIndex && isSizing
+                  }) }
+                  onMouseDown={ this._onSizerDown.bind(this, columnIndex) }
+                  onDoubleClick={ this._onSizerDoubleClick.bind(this, columnIndex) }
+                  />
+              ) : (null) }
             </div>
-            { (column.isResizable) ? (
-            <div
-              className={ css('ms-DetailsHeader-cell is-sizer', {
-                'is-resizing': columnResizeDetails && columnResizeDetails.columnIndex === columnIndex && isSizing
-              }) }
-              onMouseDown={ this._onSizerDown.bind(this, columnIndex) }
-              onDoubleClick={ this._onSizerDoubleClick.bind(this, columnIndex) }
-            />
-            ) : (null) }
-          </div>
-          ))}
+          )) }
         </FocusZone>
         <div className='ms-DetailsHeader-sizerCover' onMouseMove={ this._onSizerMove } onMouseUp={ this._onSizerUp } />
       </div>
@@ -158,17 +158,17 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
     let { columnResizeDetails, isSizing } = this.state;
 
     if (columnResizeDetails) {
-    if (buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
-      // cancel mouse down event and return early when the primary button is not pressed
-      this._onUp(ev);
-      return;
-    }
+      if (buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
+        // cancel mouse down event and return early when the primary button is not pressed
+        this._onUp(ev);
+        return;
+      }
 
       if (!isSizing && ev.clientX !== columnResizeDetails.originX) {
-      isSizing = true;
-      this.setState({ isSizing: isSizing });
+        isSizing = true;
+        this.setState({ isSizing: isSizing });
+      }
     }
-  }
   }
 
   /**
@@ -195,16 +195,16 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
     let { columns, onColumnIsSizingChanged } = this.props;
 
     this.setState({
-       columnResizeDetails: {
-         columnIndex: columnIndex,
-         columnMinWidth: columns[columnIndex].calculatedWidth,
-         originX: ev.clientX
-       }
-     });
+      columnResizeDetails: {
+        columnIndex: columnIndex,
+        columnMinWidth: columns[columnIndex].calculatedWidth,
+        originX: ev.clientX
+      }
+    });
 
-     if (onColumnIsSizingChanged) {
-       onColumnIsSizingChanged(columns[columnIndex], true);
-     }
+    if (onColumnIsSizingChanged) {
+      onColumnIsSizingChanged(columns[columnIndex], true);
+    }
   }
 
   private _onSelectionChanged() {
@@ -227,26 +227,26 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
     let { columnResizeDetails } = this.state;
 
     if (columnResizeDetails) {
-    if (buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
-      // cancel mouse down event and return early when the primary button is not pressed
-      this._onSizerUp();
-      return;
-    }
-
-    let { onColumnResized, columns } = this.props;
-
-    if (onColumnResized) {
-      let { columnResizeDetails } = this.state;
-      let movement = ev.clientX - columnResizeDetails.originX;
-
-      if (getRTL()) {
-        movement = -movement;
+      if (buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
+        // cancel mouse down event and return early when the primary button is not pressed
+        this._onSizerUp();
+        return;
       }
 
-      onColumnResized(
-        columns[columnResizeDetails.columnIndex],
-        columnResizeDetails.columnMinWidth + movement
-      );
+      let { onColumnResized, columns } = this.props;
+
+      if (onColumnResized) {
+        let movement = ev.clientX - columnResizeDetails.originX;
+
+        if (getRTL()) {
+          movement = -movement;
+        }
+
+        onColumnResized(
+          columns[columnResizeDetails.columnIndex],
+          columnResizeDetails.columnMinWidth + movement
+        );
+      }
     }
   }
 
@@ -255,13 +255,13 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
     let { columnResizeDetails } = this.state;
 
     this.setState({
-        columnResizeDetails: null,
-        isSizing: false
+      columnResizeDetails: null,
+      isSizing: false
     });
 
-     if (onColumnIsSizingChanged) {
-       onColumnIsSizingChanged(columns[columnResizeDetails.columnIndex], false);
-     }
+    if (onColumnIsSizingChanged) {
+      onColumnIsSizingChanged(columns[columnResizeDetails.columnIndex], false);
+    }
   }
 
   private _onColumnClick(column, ev) {
