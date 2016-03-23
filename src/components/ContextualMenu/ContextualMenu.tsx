@@ -8,7 +8,6 @@ import { css } from '../../utilities/css';
 
 const BUFFER_ZONE = 5;
 const BEAK_WIDTH = 16;
-const BEAK_OFFSET = 6;
 const BEAK_PADDING = 5;
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
@@ -305,7 +304,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     let beakPosition = {
       display: 'block',
       left: 0,
-      top: -BEAK_OFFSET,
+      top: - (BEAK_WIDTH / 2),
     };
 
     let positionInfo: IPositionInfo = {
@@ -616,11 +615,11 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     // Calculate horizontal position based on actualHorizontalDirection
     if (actualHorizontalDirection === HorizontalAlignmentHint.left) {
       menuPosition.left = targetRect.left - hostRect.left - gapSpace - menuRect.width;
-      beakPosition.left = menuRect.width - 2 * BEAK_OFFSET;
+      beakPosition.left = menuRect.width - (BEAK_WIDTH / 2);
       directionalClassName = SLIDE_ANIMATIONS.left;
     } else {
       menuPosition.left = targetRect.right - hostRect.left + gapSpace;
-      beakPosition.left = -BEAK_OFFSET;
+      beakPosition.left = - (BEAK_WIDTH / 2);
       directionalClassName = SLIDE_ANIMATIONS.right;
     }
 
