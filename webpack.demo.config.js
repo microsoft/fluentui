@@ -1,6 +1,9 @@
 'use strict';
 
-let webpack = require('webpack');
+/** Note: this require may need to be fixed to point to the build that exports the gulp-core-build-webpack instance. */
+let webpackTaskResources = require('web-library-build').webpack.resources;
+let webpack = webpackTaskResources.webpack;
+
 let path = require('path');
 let WebpackNotifierPlugin = require('webpack-notifier');
 var SplitByPathPlugin = require('webpack-split-by-path');
