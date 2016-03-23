@@ -23,6 +23,8 @@ export interface IDetailsListProps {
   constrainMode?: ConstrainMode;
   className?: string;
   onDidUpdate?: (detailsList?: DetailsList) => any;
+  onRowDidMount?: (index?: number) => void;
+  onRowWillUnmount?: (index?: number) => void;
   onRenderMissingItem?: (index?: number, containsFocus?: boolean) => React.ReactNode;
 }
 
@@ -167,12 +169,24 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     return result;
   }
 
-  private _onRowDidMount(row) {
-    this._activeRows[row.props.itemIndex] = row;
+  private _onRowDidMount(row: DetailsRow) {
+    let { onRowDidMount } = this.props;
+    let index = row.props.itemIndex;
+
+    this._activeRows[index] = row;
+    if (onRowDidMount) {
+      onRowDidMount(index);
+    }
   }
 
-  private _onRowWillUnmount(row) {
-    delete this._activeRows[row.props.itemIndex];
+  private _onRowWillUnmount(row: DetailsRow) {
+    let { onRowWillUnmount } = this.props;
+    let index = row.props.itemIndex;
+
+    delete this._activeRows[index];
+    if (onRowWillUnmount) {
+      onRowWillUnmount(index);
+    }
   }
 
   private _onAllSelectedChanged() {

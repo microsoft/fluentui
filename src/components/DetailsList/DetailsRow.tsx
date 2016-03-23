@@ -14,8 +14,8 @@ export interface IDetailsRowProps {
   selectionMode: SelectionMode;
   selection: ISelection;
   shouldSetFocus?: boolean;
-  onWillUnmount?: any;
-  onDidMount?: any;
+  onWillUnmount?: (row?: DetailsRow) => void;
+  onDidMount?: (row?: DetailsRow) => void;
 }
 export interface IDetailsRowSelectionState {
   isSelected: boolean;
