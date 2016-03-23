@@ -4,7 +4,8 @@ import * as React from 'react';
 
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
-import { expect } from 'chai';
+
+let { expect } = chai;
 
 import Label from './Label';
 

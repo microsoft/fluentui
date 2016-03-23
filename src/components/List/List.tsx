@@ -4,7 +4,7 @@ import withContainsFocus from '../../utilities/decorators/withContainsFocus';
 
 export interface IListProps {
   items?: any[];
-  onRenderCell?: (item?: any, index?: number, containsFocus?: boolean) => any;
+  onRenderCell?: (item?: any, index?: number, containsFocus?: boolean) => React.ReactNode;
   itemsPerPage?: number;
 
   containsFocus?: boolean;

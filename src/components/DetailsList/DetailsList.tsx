@@ -23,6 +23,7 @@ export interface IDetailsListProps {
   constrainMode?: ConstrainMode;
   className?: string;
   onDidUpdate?: (detailsList?: DetailsList) => any;
+  onRenderMissingItem?: (index?: number, containsFocus?: boolean) => React.ReactNode;
 }
 
 export interface IDetailsListState {
@@ -66,6 +67,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     this._onAllSelectedChanged = this._onAllSelectedChanged.bind(this);
     this._onRowDidMount = this._onRowDidMount.bind(this);
     this._onRowWillUnmount = this._onRowWillUnmount.bind(this);
+    this._onRenderCell = this._onRenderCell.bind(this);
 
     this.state = {
       lastWidth: 0,
@@ -127,22 +129,42 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           <List
             ref='list'
             items={ items }
-            onRenderCell={ (item: any, index: number, containsFocus: boolean) => (
-              <DetailsRow
-                item={ item }
-                itemIndex={ index }
-                columns={ adjustedColumns }
-                selectionMode={ selectionMode }
-                selection={ selection }
-                shouldSetFocus={ containsFocus }
-                onDidMount={ this._onRowDidMount }
-                onWillUnmount={ this._onRowWillUnmount }
-                />
-            ) }
+            onRenderCell={ this._onRenderCell }
             />
         </SelectionZone>
       </div>
     );
+  }
+
+  private _onRenderCell(item: any, index: number, containsFocus: boolean): React.ReactNode {
+    let result = null;
+
+    if (item) {
+      let { selectionMode } = this.props;
+      let { adjustedColumns } = this.state;
+      let { _selection: selection } = this;
+
+      result = (
+        <DetailsRow
+          item={ item }
+          itemIndex={ index }
+          columns={ adjustedColumns }
+          selectionMode={ selectionMode }
+          selection={ selection }
+          shouldSetFocus={ containsFocus }
+          onDidMount={ this._onRowDidMount }
+          onWillUnmount={ this._onRowWillUnmount }
+          />
+      );
+    } else {
+      let { onRenderMissingItem } = this.props;
+
+      if (onRenderMissingItem) {
+        result = onRenderMissingItem(index, containsFocus);
+      }
+    }
+
+    return result;
   }
 
   private _onRowDidMount(row) {
@@ -261,7 +283,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       for (let adjustedColumn of this.state.adjustedColumns) {
         _resizeColumn(adjustedColumn, adjustedColumn.calculatedWidth);
       }
-       this.setState({ layoutMode: DetailsListLayoutMode.fixedColumns }); // once column is resized, we need to change to fix column mode
+      this.setState({ layoutMode: DetailsListLayoutMode.fixedColumns }); // once column is resized, we need to change to fix column mode
     }
 
     _resizeColumn(resizingColumn, newWidth);
