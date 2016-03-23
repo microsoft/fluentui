@@ -20,7 +20,7 @@ body {
   width: 300px;
   top: 50px;
   bottom: 0;
-  border-right: 1px solid #EEE;
+  @include border-right(1px, solid, #EEE);
   background: white;
   z-index: 10000;
 }

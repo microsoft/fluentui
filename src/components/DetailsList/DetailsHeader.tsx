@@ -4,8 +4,9 @@ import { css } from '../../utilities/css';
 import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/ISelection';
 import Check from './Check';
-import './DetailsHeader.scss';
+import { getRTL } from '../../utilities/rtl';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
+import './DetailsHeader.scss';
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
@@ -43,8 +44,7 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
     this._events = new EventGroup(this);
 
     this.state = {
-      columnResizeDetails: null,
-      isSizing: false
+      columnResizeDetails: null
     };
 
     this._onSizerMove = this._onSizerMove.bind(this);
@@ -158,17 +158,17 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
     let { columnResizeDetails, isSizing } = this.state;
 
     if (columnResizeDetails) {
-      if (buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
-        // cancel mouse down event and return early when the primary button is not pressed
-        this._onUp(ev);
-        return;
-      }
+    if (buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
+      // cancel mouse down event and return early when the primary button is not pressed
+      this._onUp(ev);
+      return;
+    }
 
       if (!isSizing && ev.clientX !== columnResizeDetails.originX) {
-        isSizing = true;
-        this.setState({ isSizing: isSizing });
-      }
+      isSizing = true;
+      this.setState({ isSizing: isSizing });
     }
+  }
   }
 
   /**
@@ -227,20 +227,26 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
     let { columnResizeDetails } = this.state;
 
     if (columnResizeDetails) {
-      if (buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
-        // cancel mouse down event and return early when the primary button is not pressed
-        this._onSizerUp();
-        return;
+    if (buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
+      // cancel mouse down event and return early when the primary button is not pressed
+      this._onSizerUp();
+      return;
+    }
+
+    let { onColumnResized, columns } = this.props;
+
+    if (onColumnResized) {
+      let { columnResizeDetails } = this.state;
+      let movement = ev.clientX - columnResizeDetails.originX;
+
+      if (getRTL()) {
+        movement = -movement;
       }
 
-      let { onColumnResized, columns } = this.props;
-
-      if (onColumnResized) {
-        onColumnResized(
-          columns[columnResizeDetails.columnIndex],
-          columnResizeDetails.columnMinWidth + (ev.clientX - columnResizeDetails.originX)
-        );
-      }
+      onColumnResized(
+        columns[columnResizeDetails.columnIndex],
+        columnResizeDetails.columnMinWidth + movement
+      );
     }
   }
 

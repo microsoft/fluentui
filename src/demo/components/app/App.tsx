@@ -16,7 +16,10 @@ export default class App extends React.Component<any, any> {
       <Fabric className='App'>
 
         <div className='App-header'>
-          <Header title={ AppState.appTitle } sideLinks={ AppState.headerLinks } />
+          <Header
+            title={ AppState.appTitle }
+            sideLinks={ AppState.headerLinks }
+            />
         </div>
 
         <div className='App-navBar'>
