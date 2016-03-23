@@ -17,9 +17,7 @@ const DIRECTIONAL_KEY_CODES = [
 
 const STATIONARY_DETECTION_DELAY = 100;
 
-export interface IFabricProps {
-  className?: string;
-  children?: any[];
+export interface IFabricProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 export interface IFabricState {
@@ -55,7 +53,6 @@ export default class Fabric extends React.Component<IFabricProps, IFabricState> 
   }
 
   public render() {
-    const { children } = this.props;
     const { isFocusVisible, isStationary } = this.state;
     const rootClass = css('ms-Fabric ms-font-m', this.props.className, {
       'is-focusVisible': isFocusVisible,
@@ -64,9 +61,7 @@ export default class Fabric extends React.Component<IFabricProps, IFabricState> 
     });
 
     return (
-      <div className={ rootClass }>
-        { children }
-      </div>
+      <div { ...this.props } className={ rootClass } />
     );
   }
 
