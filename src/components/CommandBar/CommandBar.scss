@@ -65,9 +65,9 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
 
 .ms-CommandBar-sideCommands {
   position: absolute;
-  right: 0px;
-  text-align: right;
-  padding-right: 24px;
+  @include right(0px);
+  @include text-align(right);
+  @include padding-right(24px);
 }
 
 // Command Bar Item
