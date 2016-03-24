@@ -3,11 +3,11 @@ import {
   Fabric
 } from '../../../components/index';
 import {
-  Header,
-  NavBar
+  Header
 } from '../index';
+import Nav from '../../../components/Nav/index';
 import './App.scss';
-import AppState from './AppState';
+import AppState, { ExampleStatus } from './AppState';
 
 export default class App extends React.Component<any, any> {
 
@@ -22,8 +22,14 @@ export default class App extends React.Component<any, any> {
             />
         </div>
 
-        <div className='App-navBar'>
-          <NavBar groups={ AppState.examplePages } />
+        <div className='App-Nav'>
+          <Nav groups={ AppState.examplePages } onRenderLink={(link) => ([
+            <span key={ 1 } className='Nav-linkText'>{ link.name }</span>,
+            (link.status !== undefined ?
+              <span key={ 2 } className={ 'Nav-linkFlair ' + 'is-state' + link.status } >{ ExampleStatus[link.status] }</span> :
+              null)
+            ])}
+          />
         </div>
 
         <div className='App-content'>

@@ -10,10 +10,11 @@ import DetailsListPage from '../../pages/DetailsListPage/DetailsListPage';
 import DialogPage from '../../pages/DialogPage/DialogPage';
 import DropdownPage from '../../pages/DropdownPage/DropdownPage';
 import FocusZonePage from '../../pages/FocusZonePage/FocusZonePage';
+import { INavLink, INavLinkGroup } from '../../../components/Nav/index';
 import LabelPage from '../../pages/LabelPage/LabelPage';
 import LinkPage from '../../pages/LinkPage/LinkPage';
 import ListPage from '../../pages/ListPage/ListPage';
-import NavBarPage from '../../pages/NavBarPage/NavBarPage';
+import NavPage from '../../pages/NavPage/NavPage';
 import OrgChartPage from '../../pages/OrgChartPage/OrgChartPage';
 import OverlayPage from '../../pages/OverlayPage/OverlayPage';
 import PanelPage from '../../pages/PanelPage/PanelPage';
@@ -36,22 +37,10 @@ export enum ExampleStatus {
   release
 }
 
-export interface ILink {
-  name: string;
-  url: string;
-  component?: any;
-  status?: ExampleStatus;
-}
-
-export interface ILinkGroup {
-  links: ILink[];
-  name: string;
-}
-
 export interface IAppState {
   appTitle: string;
-  examplePages: ILinkGroup[];
-  headerLinks: ILink[];
+  examplePages: INavLinkGroup[];
+  headerLinks: INavLink[];
 }
 
 export const AppState: IAppState = {
@@ -145,10 +134,10 @@ export const AppState: IAppState = {
           url: '#/examples/list'
         },
         {
-          component: NavBarPage,
-          name: 'NavBar',
-          status: ExampleStatus.placeholder,
-          url: '#/examples/navbar'
+          component: NavPage,
+          name: 'Nav',
+          status: ExampleStatus.started,
+          url: '#/examples/Nav'
         },
         {
           component: OrgChartPage,
