@@ -26,6 +26,11 @@ export interface IFabricState {
 }
 
 export default class Fabric extends React.Component<IFabricProps, IFabricState> {
+  public refs: {
+    [key: string]: React.ReactInstance;
+    root: HTMLElement;
+  };
+
   private _events: EventGroup;
   private _scrollTimerId: number;
 
@@ -45,6 +50,18 @@ export default class Fabric extends React.Component<IFabricProps, IFabricState> 
     this._events.on(document.body, 'mousedown', this._onMouseDown, true);
     this._events.on(document.body, 'keydown', this._onKeyDown, true);
     this._events.on(window, 'scroll', this._onScroll);
+
+    let rootElement = this.refs.root;
+
+    while (rootElement !== document.body) {
+      let style = getComputedStyle(rootElement);
+
+      if (style.overflowX === 'auto' || style.overflowX === 'scroll' || style.overflowY === 'auto' || style.overflowY === 'scroll') {
+        this._events.on(rootElement, 'scroll', this._onScroll);
+      }
+
+      rootElement = rootElement.parentElement;
+    }
   }
 
   public componentWillUnmount() {
@@ -61,7 +78,7 @@ export default class Fabric extends React.Component<IFabricProps, IFabricState> 
     });
 
     return (
-      <div { ...this.props } className={ rootClass } />
+      <div { ...this.props } className={ rootClass } ref='root' />
     );
   }
 

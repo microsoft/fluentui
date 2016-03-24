@@ -42,6 +42,8 @@ export interface IDetailsListViewData {
   rowCheckWidth: number;
 }
 
+const MIN_RESIZABLE_COLUMN_WIDTH = 100; // this is the global min width
+
 @withViewport
 export class DetailsList extends React.Component<IDetailsListProps, IDetailsListState> {
   public static defaultProps = {
@@ -283,12 +285,10 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   private _onColumnResized(resizingColumn: IColumn, newWidth: number) {
     let { columnOverrides } = this.state;
 
-    const MINWIDTH = 100; // this is the global min width
-
     // update column override based on the input width
     function _resizeColumn(column: IColumn, width: number) {
       let overrides = columnOverrides[column.key] = columnOverrides[column.key] || {} as IColumn;
-      overrides.minWidth = overrides.maxWidth = Math.max(width, MINWIDTH);
+      overrides.minWidth = overrides.maxWidth = Math.max(width, column.isResizable ? MIN_RESIZABLE_COLUMN_WIDTH : 0);
       overrides.isCollapsable = false;
     }
 
