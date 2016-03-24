@@ -1,5 +1,5 @@
 import * as React from 'react';
-import AppState, { ExampleStatus } from '../../../components/app/AppState';
+import AppState, { ExampleStatus } from '../../../components/App/AppState';
 import {
   Nav
 } from '../../../../components/index';
