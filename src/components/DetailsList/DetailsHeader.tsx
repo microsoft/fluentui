@@ -19,6 +19,9 @@ export interface IDetailsHeaderProps {
   onColumnIsSizingChanged?: (column: IColumn, isSizing: boolean) => void;
   onColumnResized?: (column: IColumn, newWidth: number) => void;
   onColumnAutoResized?: (column: IColumn, columnIndex: number) => void;
+  isGrouped?: boolean;
+  isAllCollapsed?: boolean;
+  onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
 
   ref?: string;
 }
@@ -27,6 +30,8 @@ export interface IDetailsHeaderState {
   columnResizeDetails?: IColumnResizeDetails;
   isAllSelected?: boolean;
   isSizing?: boolean;
+  isGrouped?: boolean;
+  isAllCollapsed?: boolean;
 }
 
 export interface IColumnResizeDetails {
@@ -38,17 +43,20 @@ export interface IColumnResizeDetails {
 export default class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetailsHeaderState> {
   private _events: EventGroup;
 
-  constructor() {
-    super();
+  constructor(props: IDetailsHeaderProps) {
+    super(props);
 
     this._events = new EventGroup(this);
 
     this.state = {
-      columnResizeDetails: null
+      columnResizeDetails: null,
+      isGrouped: this.props.isGrouped,
+      isAllCollapsed: this.props.isAllCollapsed
     };
 
     this._onSizerMove = this._onSizerMove.bind(this);
     this._onSizerUp = this._onSizerUp.bind(this);
+    this._onToggleCollapseAll = this._onToggleCollapseAll.bind(this);
   }
 
   public componentDidMount() {
@@ -61,9 +69,17 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
     this._events.dispose();
   }
 
+  public componentWillReceiveProps(newProps) {
+    let { isGrouped } = this.state;
+
+    if (newProps.isGrouped !== isGrouped) {
+      this.setState({ isGrouped: newProps.isGrouped });
+    }
+  }
+
   public render() {
     let { selectionMode, columns } = this.props;
-    let { isAllSelected, columnResizeDetails, isSizing } = this.state;
+    let { isAllSelected, columnResizeDetails, isSizing, isGrouped, isAllCollapsed } = this.state;
 
     return (
       <div
@@ -84,14 +100,22 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
               <Check isChecked={ isAllSelected } />
             </button>
           ) : (null) }
+          { isGrouped ? (
+          <span className='ms-DetailsHeader-cell'>
+            <i className={ css('ms-DetailsHeader-collapseButton ms-Icon ms-Icon--chevronDown', {
+              'is-collapsed': isAllCollapsed
+            }) } onClick={ this._onToggleCollapseAll }>
+            </i>
+          </span>
+          ) : (null) }
           { columns.map((column, columnIndex) => (
             <div key={ column.key } className='ms-DetailsHeader-cellSizeWrapper'>
               <div className='ms-DetailsHeader-cellWrapper'>
                 <button
                   key={ column.fieldName }
-                  disabled={ !column.isSortable }
+                  disabled={ !column.isSortable && !column.isGroupable && !column.isFilterable }
                   className={ css('ms-DetailsHeader-cell', {
-                    'is-sortable': column.isSortable,
+                    'is-actionable': column.isSortable || column.isGroupable || column.isFilterable,
                     'is-sorted': column.isSorted
                   }) }
                   style={ { width: column.calculatedWidth } }
@@ -267,6 +291,17 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
   private _onColumnClick(column, ev) {
     if (column.onColumnClick) {
       column.onColumnClick(column, ev);
+    }
+  }
+
+  private _onToggleCollapseAll() {
+    let { onToggleCollapseAll } = this.props;
+    let newCollapsed = !this.state.isAllCollapsed;
+    this.setState({
+      isAllCollapsed: newCollapsed
+    });
+    if (onToggleCollapseAll) {
+      onToggleCollapseAll(newCollapsed);
     }
   }
 

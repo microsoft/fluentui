@@ -5,7 +5,9 @@ import { assign } from '../../utilities/object';
 import { css } from '../../utilities/css';
 import DetailsHeader from './DetailsHeader';
 import DetailsRow from './DetailsRow';
-import { IColumn, DetailsListLayoutMode, ConstrainMode } from './interfaces';
+import { IColumn, DetailsListLayoutMode, ConstrainMode, IGroup } from './interfaces';
+import GroupFooter from './GroupFooter';
+import GroupHeader from './GroupHeader';
 import { ISelection, SelectionMode } from '../../utilities/selection/ISelection';
 import IObjectWithKey from '../../utilities/selection/IObjectWithKey';
 import {Selection } from '../../utilities/selection/Selection';
@@ -13,14 +15,18 @@ import SelectionZone from '../../utilities/selection/SelectionZone';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
 import './DetailsList.scss';
 
+const DEFAULT_GROUP_ITEM_LIMIT = 5;
+
 export interface IDetailsListProps {
   items: any[];
+  groups?: IGroup[];
   selection?: ISelection;
   selectionMode?: SelectionMode;
   layoutMode?: DetailsListLayoutMode;
   columns?: IColumn[];
   viewport?: IViewport;
   constrainMode?: ConstrainMode;
+  groupItemLimit?: number;
   className?: string;
   onDidUpdate?: (detailsList?: DetailsList) => any;
   onRowDidMount?: (index?: number) => void;
@@ -34,6 +40,8 @@ export interface IDetailsListState {
   adjustedColumns?: IColumn[];
   columnOverrides?: { [key: string]: IColumn };
   layoutMode?: DetailsListLayoutMode;
+  groups?: IGroup[];
+  isAllCollapsed?: boolean;
 }
 
 export interface IDetailsListViewData {
@@ -54,8 +62,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
   public refs: {
     [key: string]: React.ReactInstance,
-    header: DetailsHeader,
-    list: List
+    header: DetailsHeader
   };
 
   private _events: EventGroup;
@@ -71,13 +78,20 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     this._onAllSelectedChanged = this._onAllSelectedChanged.bind(this);
     this._onRowDidMount = this._onRowDidMount.bind(this);
     this._onRowWillUnmount = this._onRowWillUnmount.bind(this);
+    this._onToggleCollapse = this._onToggleCollapse.bind(this);
+    this._onToggleCollapseAll = this._onToggleCollapseAll.bind(this);
+    this._onToggleSelectGroup = this._onToggleSelectGroup.bind(this);
     this._onRenderCell = this._onRenderCell.bind(this);
+    this._onShowMore = this._onShowMore.bind(this);
+    this._getItemsToRender = this._getItemsToRender.bind(this);
 
     this.state = {
       lastWidth: 0,
       columnOverrides: {} as { [key: string]: IColumn },
       adjustedColumns: this._getAdjustedColumns(props),
       layoutMode: this.props.layoutMode,
+      groups: this.props.groups,
+      isAllCollapsed: false // assuming expanded groups by default for now
     };
 
     this._events = new EventGroup(this);
@@ -108,12 +122,56 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     }
 
     this._adjustColumns(newProps, true, layoutMode);
+
+    if (newProps.groups !== this.props.groups) {
+      this.setState({ groups: newProps.groups });
+    }
   }
 
   public render() {
-    let { className, items, selectionMode, constrainMode } = this.props;
-    let { adjustedColumns, layoutMode } = this.state;
+    let { className, selectionMode, constrainMode, groupItemLimit } = this.props;
+    let { adjustedColumns, layoutMode, groups, isAllCollapsed } = this.state;
     let { _selection: selection } = this;
+
+    let isGrouped = groups && groups.length > 0;
+    if (!groups) {
+      groups = [ null ];
+    }
+    if (!groupItemLimit) {
+      groupItemLimit = DEFAULT_GROUP_ITEM_LIMIT;
+    }
+
+    let renderedGroups = groups.map((group: IGroup, groupIdx: number) => (
+      <div>
+        <GroupHeader
+          ref={ 'groupHeader_' + groupIdx }
+          group={ group }
+          groupIndex={ groupIdx }
+          onToggleCollapse={ this._onToggleCollapse }
+          onToggleSelectGroup={ this._onToggleSelectGroup }
+        />
+        {
+          group && group.isCollapsed ?
+          null :
+          <List
+              ref={ 'list_' + groupIdx }
+              items={ this._getItemsToRender(group) }
+              onRenderCell={ this._onRenderCell }
+            />
+        }
+        {
+          group && group.isCollapsed && !group.isShowingAll ?
+          null :
+          <GroupFooter
+            ref={ 'groupFooter_' + groupIdx }
+            group={ group }
+            groupIndex={ groupIdx }
+            groupItemLimit={ groupItemLimit }
+            onShowMore={ this._onShowMore }
+          />
+        }
+       </div>
+    ));
 
     return (
       <div className={css('ms-DetailsList', className, {
@@ -129,12 +187,11 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
             columns={ adjustedColumns }
             onColumnResized={ this._onColumnResized }
             onColumnAutoResized={ this._onColumnAutoResized }
+            isGrouped={ isGrouped }
+            isAllCollapsed={ isAllCollapsed }
+            onToggleCollapseAll={ this._onToggleCollapseAll }
             />
-          <List
-            ref='list'
-            items={ items }
-            onRenderCell={ this._onRenderCell }
-            />
+          { renderedGroups }
         </SelectionZone>
       </div>
     );
@@ -145,8 +202,10 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
     if (item) {
       let { selectionMode } = this.props;
-      let { adjustedColumns } = this.state;
+      let { adjustedColumns, groups } = this.state;
       let { _selection: selection } = this;
+
+      let isGrouped = groups && groups.length > 0;
 
       result = (
         <DetailsRow
@@ -158,6 +217,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           shouldSetFocus={ containsFocus }
           onDidMount={ this._onRowDidMount }
           onWillUnmount={ this._onRowWillUnmount }
+          isGrouped={ isGrouped }
           />
       );
     } else {
@@ -191,8 +251,75 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     }
   }
 
+  private _getItemsToRender(group: IGroup) {
+    let { items, groupItemLimit } = this.props;
+
+    if (group) {
+      let start = group.startIndex;
+      let end = group.isShowingAll ?
+        group.startIndex + group.count :
+        group.startIndex + Math.min(group.count, groupItemLimit);
+      return items.slice(start, end);
+    } else {
+      return items;
+    }
+  }
+
   private _onAllSelectedChanged() {
     this._selection.toggleAllSelected();
+  }
+
+  private _onToggleCollapse(groupIdx: number) {
+    let { groups } = this.state;
+    let group = groups ? groups[groupIdx] : null;
+    if (group) {
+      group.isCollapsed = !group.isCollapsed;
+      this.setState({
+        groups: groups
+      });
+    }
+  }
+
+  private _onToggleCollapseAll(isAllCollapsed: boolean) {
+    let { groups } = this.state;
+    groups = groups.map((group: any) => {
+      group.isCollapsed = isAllCollapsed;
+      return group;
+    });
+    this.setState({
+      isAllCollapsed: isAllCollapsed,
+      groups: groups
+    });
+  }
+
+  private _onToggleSelectGroup(groupIdx: number) {
+    let { groups } = this.state;
+    let group = groups ? groups[groupIdx] : null;
+    if (group) {
+      let isSelected = !group.isSelected;
+      let start = group.startIndex;
+      let end = group.startIndex + Math.min(group.count, this.props.groupItemLimit);
+      for (let idx = start; idx <= end; idx++) {
+        this._selection.setIndexSelected(idx, isSelected /* isSelected */, true /*shouldFocus */, false /* shouldAnchor */);
+      }
+      group.isSelected = isSelected;
+
+      this.setState({
+        groups: groups
+      });
+    }
+  }
+
+  private _onShowMore(groupIdx: number) {
+    let { groups } = this.state;
+    let group = groups ? groups[groupIdx] : null;
+    if (group) {
+      group.isShowingAll = true;
+
+      this.setState({
+        groups: groups
+      });
+    }
   }
 
   private _adjustColumns(newProps: IDetailsListProps, forceUpdate?: boolean, layoutMode?: DetailsListLayoutMode) {
@@ -207,7 +334,13 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     }
 
     if (forceUpdate) {
-      this.refs.list.forceUpdate();
+      let groupCount = newProps.groups ? newProps.groups.length : 1;
+      for (let i = 0; i < groupCount; i++) {
+        let list = this.refs['list_' + String(i)] as List;
+        if (list) {
+          list.forceUpdate();
+        }
+      }
     }
   }
 
@@ -339,7 +472,8 @@ export function buildColumns(
   canResizeColumns?: boolean,
   onColumnClick?: (column: IColumn, ev: React.MouseEvent) => any,
   sortedColumnKey?: string,
-  isSortedDescending?: boolean) {
+  isSortedDescending?: boolean,
+  groupedColumnKey?: string) {
   let columns: IColumn[] = [];
 
   if (items && items.length) {
@@ -361,7 +495,8 @@ export function buildColumns(
           isSortedDescending: !!isSortedDescending,
           isFilterable: false,
           isResizable: canResizeColumns,
-          onColumnClick: onColumnClick
+          onColumnClick: onColumnClick,
+          isGrouped: groupedColumnKey === propName
         });
 
         isFirstColumn = false;

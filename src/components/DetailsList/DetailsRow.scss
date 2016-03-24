@@ -108,3 +108,8 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
   white-space: nowrap;
   top: -1000000000;
 }
+
+.ms-DetailsRow-collapseGroupSpacer {
+  display: inline-block;
+  width: 36px;
+}

@@ -89,7 +89,7 @@ $unselectedHoverColor: $ms-color-neutralLight;
     outline: transparent;
   }
 
-  &.is-sortable {
+  &.is-actionable {
     color: $ms-color-black;
     cursor: default;
 
@@ -145,4 +145,16 @@ $unselectedHoverColor: $ms-color-neutralLight;
   @include margin-right(4px);
   display: none;
   color: $ms-color-neutralTertiary;
+}
+
+.ms-DetailsHeader-collapseButton {
+    text-align: center;
+    transform: rotate(-180deg);
+    transform-origin: 50% 50%;
+    width: 20px;
+    outline: 0;
+
+    &.is-collapsed {
+      transform: rotate(0deg);
+    }
 }
