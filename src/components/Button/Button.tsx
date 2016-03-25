@@ -52,7 +52,7 @@ export default class Button extends React.Component<IButtonProps, any> {
 
     return React.createElement(
       tag,
-      assign({ className }, this.props),
+      assign({}, this.props, { className }),
       iconSpan,
       <span className='ms-Button-label'>{ children }</span>,
       descriptionSpan
