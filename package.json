@@ -1,6 +1,6 @@
 {
   "name": "@ms/office-ui-fabric-react",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "This is a repo for building out React controls skinned with Fabric.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -10,29 +10,26 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "color-functions": "^1.1.0",
-    "git-rev": "^0.2.1",
-    "gulp": "^3.9.0",
-    "gulp-debug": "^2.1.2",
-    "gulp-util": "^3.0.7",
-    "gutil": "^1.6.4",
-    "highlight.js": "^8.4.0",
-    "lodash.merge": "^4.3.2",
-    "office-ui-fabric": "^2.0.1",
-    "react": "^0.14.7",
-    "react-addons-test-utils": "^0.14.3",
-    "react-dom": "^0.14.7",
-    "react-highlight": "^0.6.1",
-    "vinyl-ftp": "^0.4.5",
-    "web-library-build": "0.0.12",
-    "webpack-notifier": "^1.2.1",
+    "color-functions": "1.1.0",
+    "git-rev": "0.2.1",
+    "gulp": "~3.9.1",
+    "gulp-debug": "2.1.2",
+    "gulp-util": "3.0.7",
+    "gutil": "1.6.4",
+    "highlight.js": "9.2.0",
+    "office-ui-fabric": "~2.2.0",
+    "react-addons-test-utils": "0.14.7",
+    "react-highlight": "0.7.0",
+    "vinyl-ftp": "0.4.5",
+    "web-library-build": "~0.0.13",
+    "webpack-notifier": "1.3.0",
     "webpack-split-by-path": "0.0.8"
-  },
-  "dependencies": {
-    "load-themed-styles": "^1.0.3"
   },
   "peerDependencies": {
     "react": "^0.14.0",
     "react-dom": "^0.14.0"
+  },
+  "dependencies": {
+    "load-themed-styles": "^1.0.4"
   }
 }

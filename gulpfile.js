@@ -2,7 +2,6 @@
 
 let build = require('web-library-build');
 let gulp = require('gulp');
-let merge = require('lodash.merge');
 
 /** @todo: disable lint config. */
 build.tslint.setConfig({ lintConfig: require('./tslint.json') });
