@@ -36,7 +36,7 @@ body {
 .Nav-linkFlair {
     font-size: 10px;
     text-transform: uppercase;
-    float: right;
+    @include float(right);
     background: $ms-color-neutralTertiaryAlt;
     color: $ms-color-white;
     line-height: normal;
@@ -44,7 +44,7 @@ body {
     vertical-align: middle;
     transform: translateY(-50%);
     position: absolute;
-    right: 20px;
+    @include right(20px);
     top: 50%;
     padding: 2px 6px;
     border-radius: 2px;
