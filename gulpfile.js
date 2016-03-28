@@ -16,6 +16,9 @@ if (process.argv.indexOf('--production') >= 0) {
   });
 }
 
+/** @todo: Enable css modules when ready. */
+// build.sass.setConfig({ useCSSModules: true });
+
 // initialize tasks.
 build.initialize(gulp);
 

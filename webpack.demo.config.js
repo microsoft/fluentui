@@ -51,6 +51,12 @@ function createConfig(isProduction) {
 
     module: {
       noParse: [/autoit.js/],
+      preLoaders: [
+        {
+          test: /\.js$/,
+          loader: "source-map-loader"
+        }
+      ],
       loaders: [
       ]
     },

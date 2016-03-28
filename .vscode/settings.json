@@ -14,13 +14,19 @@
 	// Controls if the editor will insert spaces for tabs. Accepted values:  "auto", true, false. If set to "auto", the value will be guessed when a file is opened.
 	"editor.insertSpaces": true,
 
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+  },
+
   // Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the file.exclude setting.
   "search.exclude": {
     "**/node_modules": true,
     "**/bower_components": true,
     "**/lib": true,
     "**/lib-amd": true,
-    "**/dist": true
+    "**/dist": true,
+    "src/**/*.scss.ts": true
   },
 
   // Controls after how many characters the editor will wrap to the next line. Setting this to 0 turns on viewport width wrapping

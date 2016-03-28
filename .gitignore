@@ -28,6 +28,9 @@ $RECYCLE.BIN/
 # Thumbnails
 ._*
 
+# Generated files
+*.scss.ts
+
 # Files that might appear on external disk
 .Spotlight-V100
 .Trashes
