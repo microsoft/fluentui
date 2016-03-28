@@ -6,6 +6,8 @@ import './Nav.scss';
 export interface INavLink {
   name: string;
   url: string;
+  links?: INavLink[];
+
   [propertyName: string]: any;
 }
 
@@ -17,6 +19,7 @@ export interface INavLinkGroup {
 export interface INavProps {
   groups: INavLinkGroup[];
   onRenderLink?: Function;
+  onLinkClick?: { (e: React.MouseEvent): boolean };
 }
 
 export interface INavState {
@@ -37,7 +40,7 @@ export default class Nav extends React.Component<INavProps, INavState> {
 
   public static defaultProps: INavProps = {
     groups: null,
-    onRenderLink: (link: INavLink) => (<span className='Nav-linkText'>{ link.name }</span>)
+    onRenderLink: (link: INavLink) => (<span className='ms-Nav-linkText'>{ link.name }</span>)
   };
 
   private static isSelected(link: INavLink): boolean {
@@ -45,46 +48,67 @@ export default class Nav extends React.Component<INavProps, INavState> {
   }
 
   public render(): React.ReactElement<{}> {
-    const groups: INavLinkGroup[] = this.props.groups;
-    const onRenderLink: Function = this.props.onRenderLink;
-
-    const groupElements: React.ReactElement<{}>[] = groups.map((group: INavLinkGroup, groupIndex: number) => {
-      const isGroupExpanded: boolean = this.state.isGroupExpanded[groupIndex] !== false;
-
-      return (
-        <div key={ groupIndex } className={ 'Nav-group' + (isGroupExpanded ? ' is-expanded' : '') }>
-          { (group.name ?
-          <button
-            className='Nav-groupButton'
-            data-group-index={ groupIndex }
-            onClick={ this._onGroupHeaderClicked }
-          >
-            <i className='Nav-groupChevron ms-Icon ms-Icon--chevronDown'></i>
-            { group.name }
-          </button> : null)
-          }
-
-          <div className='Nav-groupContent ms-u-slideDownIn20' data-focus-zone-enabled={ isGroupExpanded }>
-          { group.links.map((link, linkIndex) => (
-            <a
-              key={ `${ groupIndex }:${ linkIndex }` }
-              className={'Nav-link' + (Nav.isSelected(link) ? ' is-selected' : '')}
-              href={ link.url }
-            >
-              { onRenderLink(link) }
-            </a>
-          )) }
-          </div>
-        </div>
-      );
-    });
+    const groupElements: React.ReactElement<{}>[] = this.props.groups.map(
+      (group: INavLinkGroup, groupIndex: number) => this.renderGroup(group, groupIndex));
 
     return (
       <FocusZone>
-        <nav role='navigation' className='Nav'>
+        <nav role='navigation' className='ms-Nav'>
           { groupElements }
         </nav>
       </FocusZone>
+    );
+  }
+
+  private renderLink(link: INavLink, linkIndex: number): React.ReactElement<{}> {
+    return (
+      <li key={ linkIndex }>
+        <a
+          className={'ms-Nav-link' + (Nav.isSelected(link) ? ' is-selected' : '')}
+          href={ link.url }
+          onClick={ this.props.onLinkClick }
+        >
+          { this.props.onRenderLink(link) }
+        </a> { this.renderLinks(link.links) }
+      </li>
+    );
+  }
+
+  private renderLinks(links: INavLink[]): React.ReactElement<{}> {
+    if (!links || !links.length) {
+      return null;
+    }
+
+    const linkElements: React.ReactElement<{}>[] = links.map(
+      (link: INavLink, linkIndex: number) => this.renderLink(link, linkIndex));
+
+    return (
+      <ul>
+        { linkElements }
+      </ul>
+    );
+  }
+
+  private renderGroup(group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> {
+    const isGroupExpanded: boolean = this.state.isGroupExpanded[groupIndex] !== false;
+
+    return (
+      <div key={ groupIndex } className={ 'ms-Nav-group' + (isGroupExpanded ? ' is-expanded' : '') }>
+        { (group.name ?
+        <button
+          className='ms-Nav-groupButton'
+          data-group-index={ groupIndex }
+          onClick={ this._onGroupHeaderClicked }
+        >
+          <i className='ms-Nav-groupChevron ms-Icon ms-Icon--chevronDown'></i>
+          { group.name }
+        </button> : null)
+        }
+
+        <div className='ms-Nav-groupContent ms-u-slideDownIn20' data-focus-zone-enabled={ isGroupExpanded }>
+        { this.renderLinks(group.links) }
+        </div>
+      </div>
     );
   }
 
