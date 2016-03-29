@@ -38,33 +38,33 @@ body {
 }
 
 .Nav-linkFlair {
-    font-size: 10px;
-    text-transform: uppercase;
-    @include float(right);
-    background: $ms-color-neutralTertiaryAlt;
-    color: $ms-color-white;
-    line-height: normal;
-    display: inline;
-    vertical-align: middle;
-    transform: translateY(-50%);
-    position: absolute;
-    @include right(20px);
-    top: 50%;
-    padding: 2px 6px;
-    border-radius: 2px;
+  font-size: 10px;
+  text-transform: uppercase;
+  @include float(right);
+  background: $ms-color-neutralTertiaryAlt;
+  color: $ms-color-white;
+  line-height: normal;
+  display: inline;
+  vertical-align: middle;
+  transform: translateY(-50%);
+  position: absolute;
+  @include right(20px);
+  top: 50%;
+  padding: 2px 6px;
+  border-radius: 2px;
 }
 
 .Nav-linkFlair.is-state1 {
-    background: $ms-color-yellowLight;
-    color: $ms-color-black;
+  background: $ms-color-yellowLight;
+  color: $ms-color-black;
 }
 
 .Nav-linkFlair.is-state2 {
-    background: $ms-color-greenLight;
+  background: $ms-color-greenLight;
 }
 
 .Nav-linkFlair.is-state3 {
-    background: $ms-color-green;
+  background: $ms-color-green;
 }
 
 .App-content {
