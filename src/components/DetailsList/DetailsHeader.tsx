@@ -116,15 +116,17 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
                   disabled={ !column.isSortable && !column.isGroupable && !column.isFilterable }
                   className={ css('ms-DetailsHeader-cell', {
                     'is-actionable': column.isSortable || column.isGroupable || column.isFilterable,
-                    'is-sorted': column.isSorted
+                    'is-sorted': column.isSorted,
+                    'is-grouped': column.isGrouped
                   }) }
                   style={ { width: column.calculatedWidth } }
                   onClick={ this._onColumnClick.bind(this, column) }
                   >
                   <span
                     className={ css('ms-DetailsHeader-sortArrow ms-Icon', {
-                      'ms-Icon--arrowUp2': !column.isSortedDescending,
-                      'ms-Icon--arrowDown2': column.isSortedDescending
+                      'ms-Icon--arrowUp2': !column.isGrouped && !column.isSortedDescending,
+                      'ms-Icon--arrowDown2': !column.isGrouped && column.isSortedDescending,
+                      'ms-Icon--listGroup2': column.isGrouped
                     }) }
                     />
                   { column.name }

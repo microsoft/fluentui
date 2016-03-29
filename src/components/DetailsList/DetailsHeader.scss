@@ -107,7 +107,8 @@ $unselectedHoverColor: $ms-color-neutralLight;
     z-index: 99;
   }
 
-  &.is-sorted.is-sortable .ms-DetailsHeader-sortArrow {
+  &.is-sorted.is-actionable .ms-DetailsHeader-sortArrow,
+  &.is-grouped.is-actionable .ms-DetailsHeader-sortArrow {
     display: inline-block;
   }
 
