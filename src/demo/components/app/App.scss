@@ -14,6 +14,10 @@ body {
   z-index: 10000;
 }
 
+.App .ms-Panel {
+  top: 50px;
+}
+
 .App-Nav {
   position: fixed;
   @include left(0);
@@ -54,9 +58,11 @@ body {
     background: $ms-color-yellowLight;
     color: $ms-color-black;
 }
+
 .Nav-linkFlair.is-state2 {
     background: $ms-color-greenLight;
 }
+
 .Nav-linkFlair.is-state3 {
     background: $ms-color-green;
 }
@@ -65,4 +71,11 @@ body {
   @include margin-left(300px);
   margin-top: 50px;
   padding: 20px;
+}
+
+@media (max-width: $ms-screen-md-max) {
+  .App-content {
+    @include margin-left(0);
+    padding: 5px;
+  }
 }

@@ -15,8 +15,7 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
   vertical-align: top;
   white-space: nowrap;
   padding: 10px 0;
-
-  @include user-select(none);
+  user-select: none;
 
   cursor: default;
   box-sizing: border-box;

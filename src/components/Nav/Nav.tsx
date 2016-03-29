@@ -34,8 +34,6 @@ export default class Nav extends React.Component<INavProps, INavState> {
     this.state = {
       isGroupExpanded: []
     };
-
-    this._onGroupHeaderClicked = this._onGroupHeaderClicked.bind(this);
   }
 
   public static defaultProps: INavProps = {
@@ -97,8 +95,7 @@ export default class Nav extends React.Component<INavProps, INavState> {
         { (group.name ?
         <button
           className='ms-Nav-groupButton'
-          data-group-index={ groupIndex }
-          onClick={ this._onGroupHeaderClicked }
+          onClick={ this._onGroupHeaderClicked.bind(this, groupIndex) }
         >
           <i className='ms-Nav-groupChevron ms-Icon ms-Icon--chevronDown'></i>
           { group.name }
@@ -112,11 +109,13 @@ export default class Nav extends React.Component<INavProps, INavState> {
     );
   }
 
-  private _onGroupHeaderClicked(ev): void {
-    const groupIndex: number = Number(ev.currentTarget.attributes['data-group-index'].value);
+  private _onGroupHeaderClicked(groupIndex: number, ev: React.MouseEvent): void {
     const currentState: boolean = this.state.isGroupExpanded[groupIndex] !== false;
 
     this.state.isGroupExpanded[groupIndex] = !currentState;
     this.forceUpdate();
+
+    ev.preventDefault();
+    ev.stopPropagation();
   }
 }

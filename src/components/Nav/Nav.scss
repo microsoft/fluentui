@@ -10,7 +10,7 @@ $groupBorderColor: $ms-color-neutralLight;
 .ms-Nav {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  @include user-select(none);  
+  user-select: none;
 }
 
 .ms-Nav ul {

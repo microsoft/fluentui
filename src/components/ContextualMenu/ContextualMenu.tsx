@@ -181,8 +181,8 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     let { className, items, isBeakVisible, labelElementId, targetElement } = this.props;
     let { expandedMenuItemKey, submenuProps, positions, slideDirectionalClassName } = this.state;
 
-    let hasIcons = items.some(item => !!item.icon);
-    let hasCheckmarks = items.some(item => !!item.canCheck);
+    let hasIcons = !!(items && items.some(item => !!item.icon));
+    let hasCheckmarks = !!(items && items.some(item => !!item.canCheck));
 
     return (
       <div ref='host' className={ css('ms-ContextualMenu-container', className) } onBlurCapture={ this._onBlur }>

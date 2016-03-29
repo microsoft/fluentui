@@ -5,9 +5,6 @@
   min-width: 17px;
 }
 
-
-
-
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
 
 //
@@ -53,7 +50,7 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
   height: $CommandBar-height;
   white-space: nowrap;
 
-  @include user-select(none);
+  user-select: none;
 }
 
 .ms-CommandBar-primaryCommands {

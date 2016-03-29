@@ -2,5 +2,5 @@
 @import '~office-ui-fabric/src/components/ChoiceField/ChoiceField';
 
 .ms-ChoiceField {
-  @include user-select(none);
+  user-select: none;
 }

@@ -14,8 +14,7 @@ $unselectedHoverColor: $ms-color-neutralLight;
   padding-bottom: 1px;
   border-bottom: 1px solid $ms-color-neutralLight;
   cursor: default;
-
-  @include user-select(none);
+  user-select: none;
 
   &.is-singleSelect {
     @include padding-left(40px);
