@@ -22,7 +22,7 @@ export default class DialogBasicExample extends React.Component<any, any> {
 
         { this.state.showDialog === false ? null :
           <Dialog
-            type={ DialogType.normal }
+            type={ DialogType.largeHeader }
             onCloseAction={ this._closeDialog.bind(this) }
             title='All emails together'
             subText='Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'

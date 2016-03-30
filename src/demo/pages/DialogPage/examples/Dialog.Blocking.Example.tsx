@@ -6,7 +6,7 @@ import {
   ChoiceGroup
 } from '../../../../components/index';
 
-export default class DialogBasicExample extends React.Component<any, any> {
+export default class DialogBlockingExample extends React.Component<any, any> {
 
   constructor() {
     super();
@@ -26,7 +26,7 @@ export default class DialogBasicExample extends React.Component<any, any> {
             onCloseAction={ this._closeDialog.bind(this) }
             title='All emails together'
             subText='Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
-            blocking={ false }
+            blocking={ true }
             actions= { [
               {
                 key: 'Save',
@@ -71,11 +71,12 @@ export default class DialogBasicExample extends React.Component<any, any> {
   }
 
   private _closeDialog() {
-    console.log( 'Clsoing dialog' );
+    console.log( 'Closing dialog' );
     this.setState( {showDialog: false } );
   }
 
   private _onChoiceChanged() {
     console.log( 'Choice option change' );
   }
+
 }
