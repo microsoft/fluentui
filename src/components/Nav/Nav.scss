@@ -6,6 +6,7 @@ $selectedHoverColor: $ms-color-themeLight;
 $unselectedHoverColor: $ms-color-themeLighterAlt;
 $selectedHighlightColor: $ms-color-themePrimary;
 $groupBorderColor: $ms-color-neutralLight;
+$linkTextColor: $ms-color-neutralPrimary;
 
 .ms-Nav {
   overflow-y: auto;
@@ -18,7 +19,7 @@ $groupBorderColor: $ms-color-neutralLight;
 }
 
 .ms-Nav ul,
-.ms-Nav ul > li{
+.ms-Nav ul > li {
   padding: 0;
 }
 
@@ -48,15 +49,14 @@ $groupBorderColor: $ms-color-neutralLight;
   border: none;
   border-bottom: 1px solid $groupBorderColor;
   text-transform: uppercase;
-
-  cursor: default;
+  cursor: pointer;
 
   &:focus {
     outline: transparent;
   }
 
   &:visited {
-    color: black;
+    color: inherit;
   }
 
   &:before {
@@ -102,15 +102,15 @@ $groupBorderColor: $ms-color-neutralLight;
   line-height: 40px;
   text-decoration: none;
   padding: 0 40px;
-  color: black;
-  cursor: default;
+  color: $linkTextColor;
+  cursor: pointer;
 
   &:focus {
     outline: transparent;
   }
 
   &:visited {
-    color: black;
+    color: inherit;
   }
 
   &:before {
