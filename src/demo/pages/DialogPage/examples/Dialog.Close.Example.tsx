@@ -2,7 +2,9 @@ import * as React from 'react';
 import {
   Dialog,
   DialogType,
+  DialogFooter,
   Button,
+  ButtonType,
   ChoiceGroup
 } from '../../../../components/index';
 
@@ -23,21 +25,10 @@ export default class DialogBasicExample extends React.Component<any, any> {
         { this.state.showDialog === false ? null :
           <Dialog
             type={ DialogType.close }
-            onCloseAction={ this._closeDialog.bind(this) }
+            onDismiss={ this._closeDialog.bind(this) }
             title='All emails together'
             subText='Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
             blocking={ false }
-            actions= { [
-              {
-                key: 'Save',
-                text: 'Save',
-                isPrimary: true,
-              },
-              {
-                key: 'Cancel',
-                text: 'Cancel'
-              },
-            ] }
           >
             // Create any child elements that you want
             <ChoiceGroup
@@ -58,7 +49,12 @@ export default class DialogBasicExample extends React.Component<any, any> {
                 }
               ] }
               onChanged={ this._onChoiceChanged }
-              />
+            />
+            // Use the Dialog Footer for buttons
+            <DialogFooter>
+              <Button className='ms-Dialog-action' buttonType={ ButtonType.primary } onClick={this._closeDialog.bind(this)}>Save</Button>
+              <Button onClick={this._closeDialog.bind(this)}>Cancel</Button>
+            </DialogFooter>
           </Dialog>
         }
       </div>
@@ -66,17 +62,14 @@ export default class DialogBasicExample extends React.Component<any, any> {
   }
 
   private _showDialog() {
-    console.log( 'Opening dialog' );
     this.setState( {showDialog: true } );
   }
 
   private _closeDialog() {
-    console.log( 'Clsoing dialog' );
     this.setState( {showDialog: false } );
   }
 
   private _onChoiceChanged() {
     console.log( 'Choice option change' );
   }
-
 }
