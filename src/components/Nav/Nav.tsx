@@ -48,7 +48,7 @@ export default class Nav extends React.Component<INavProps, INavState> {
   }
 
   public render(): React.ReactElement<{}> {
-    if (this.props.isVisible === false) {
+    if (this.props.isVisible === false || !this.props.groups) {
       return null;
     }
 
