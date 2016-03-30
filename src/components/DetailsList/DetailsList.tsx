@@ -142,7 +142,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     }
 
     let renderedGroups = groups.map((group: IGroup, groupIdx: number) => (
-      <div>
+      <div key={ groupIdx }>
         <GroupHeader
           ref={ 'groupHeader_' + groupIdx }
           group={ group }

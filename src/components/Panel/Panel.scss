@@ -1,34 +1,11 @@
 @import '../../common';
 @import '~office-ui-fabric/src/components/Panel/Panel';
 
-@keyframes fadeInPanelBackground {
-    from {background-color: rgba(255, 255, 255, 0);}
-    to {background-color: rgba(255, 255, 255, .5);}
-}
-
-@keyframes fadeOutPanelBackground {
-    from { background-color: rgba(255, 255, 255, .5); }
-    to { background-color: rgba(255, 255, 255, 0); }
-}
 .ms-Panel {
-  background-color: rgba(255, 255, 255, .5);
-
   /** bug: panel should not ignore pointer events. */
   pointer-events: inherit;
-
-  /* bug: background isn't showing any dismiss overlay. */
-  transition: background-color 5s linear;
 }
 
-.ms-Panel.is-open.ms-Panel-animateIn {
-  animation-name: fadeInPanelBackground;
-  animation-duration: $ms-duration2;
-}
-
-.ms-Panel.is-open.ms-Panel-animateOut {
-  animation-name: fadeOutPanelBackground;
-  animation-duration: $ms-duration2;
-}
 
 .ms-Panel .ms-Panel-main {
   position: absolute;

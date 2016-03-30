@@ -58,7 +58,7 @@ export default class App extends React.Component<IAppProps, any> {
         </div>
 
         { (responsiveMode > ResponsiveMode.medium) ? (
-          <div className='App-Nav'>
+          <div className='App-nav'>
             { navPanel }
           </div>
         ) : ( null ) }

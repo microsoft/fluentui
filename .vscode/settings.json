@@ -17,12 +17,14 @@
   "files.exclude": {
     "**/.git": true,
     "**/.DS_Store": true,
+    "**/bower_components": true,
+    "**/coverage": true,
+    "**/lib-amd": true
   },
 
   // Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the file.exclude setting.
   "search.exclude": {
     "**/node_modules": true,
-    "**/bower_components": true,
     "**/lib": true,
     "**/lib-amd": true,
     "**/dist": true,

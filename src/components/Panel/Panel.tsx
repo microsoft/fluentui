@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { css } from '../../utilities/css';
 import './Panel.scss';
+import Overlay from '../Overlay/Overlay';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { getRTL } from '../../utilities/rtl';
 
@@ -30,7 +31,7 @@ export default class Panel extends React.Component<IPanelProps, IPanelState> {
 
     this.state = {
       isOpen: !!props.isOpen,
-      isAnimatingOpen: !!props.isOpen,
+      isAnimatingOpen: false,
       isAnimatingClose: false
     };
 
@@ -39,6 +40,14 @@ export default class Panel extends React.Component<IPanelProps, IPanelState> {
 
   public componentDidMount() {
     this._events.on(this.refs.panelMain, 'animationend', this._onAnimationEnd);
+
+    if (this.state.isOpen) {
+      setTimeout(() => {
+      this.setState({
+        isAnimatingOpen: true
+      });
+      }, 2000);
+    }
   }
 
   public componentWillUnmount() {
@@ -70,6 +79,7 @@ export default class Panel extends React.Component<IPanelProps, IPanelState> {
       }) }
         onClick={ this._onPanelClick }
       >
+        <Overlay isDarkThemed={ true } />
         <div className='ms-Panel-main'>
           { children }
         </div>
@@ -92,6 +102,7 @@ export default class Panel extends React.Component<IPanelProps, IPanelState> {
   private _onAnimationEnd(ev: AnimationEvent) {
     if (ev.animationName.indexOf('In') > -1) {
       this.setState({
+        isOpen: true,
         isAnimatingOpen: false
       });
     }
