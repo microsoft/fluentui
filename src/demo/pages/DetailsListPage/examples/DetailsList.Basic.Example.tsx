@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   CommandBar,
   IColumn,
+  IGroup,
   ConstrainMode,
   DetailsList,
   buildColumns,
@@ -10,15 +11,18 @@ import {
   ContextualMenu,
   IContextualMenuItem,
   DirectionalHint,
-  IContextualMenuProps
+  IContextualMenuProps,
+  TextField
 } from '../../../../components/index';
-import { createListItems } from '../../../utilities/data';
+import { createListItems, isGroupable } from '../../../utilities/data';
 import './DetailsList.Basic.Example.scss';
 
+const DEFAULT_ITEM_LIMIT = 5;
 let _items;
 
 export interface IDetailsListBasicExampleState {
   items?: any[];
+  groups?: IGroup[];
   layoutMode?: LayoutMode;
   constrainMode?: ConstrainMode;
   selectionMode?: SelectionMode;
@@ -27,6 +31,7 @@ export interface IDetailsListBasicExampleState {
   sortedColumnKey?: string;
   isSortedDescending?: boolean;
   contextualMenuProps?: IContextualMenuProps;
+  groupItemLimit?: number;
 }
 
 export default class DetailsListBasicExample extends React.Component<any, IDetailsListBasicExampleState> {
@@ -43,31 +48,46 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
     this._onSelectionChanged = this._onSelectionChanged.bind(this);
     this._onColumnClick = this._onColumnClick.bind(this);
     this._onContextualMenuDismissed = this._onContextualMenuDismissed.bind(this);
+    this._onItemLimitChanged = this._onItemLimitChanged.bind(this);
 
     this.state = {
       items: _items,
+      groups: null,
+      groupItemLimit: DEFAULT_ITEM_LIMIT,
       layoutMode: LayoutMode.justified,
       constrainMode: ConstrainMode.horizontalConstrained,
       selectionMode: SelectionMode.multiple,
       canResizeColumns: true,
-      columns: buildColumns(_items, true, this._onColumnClick, ''),
-      contextualMenuProps: null
+      columns: this._buildColumns(_items, true, this._onColumnClick, ''),
+      contextualMenuProps: null,
+      sortedColumnKey: 'name',
+      isSortedDescending: false
     };
   }
 
   public render() {
-    let { items, layoutMode, constrainMode, selectionMode, columns, contextualMenuProps } = this.state;
+    let { items, groups, groupItemLimit, layoutMode, constrainMode, selectionMode, columns, contextualMenuProps } = this.state;
+
+    let isGrouped = groups && groups.length > 0;
 
     return (
       <div className='ms-DetailsListBasicExample'>
         <CommandBar items={ this._getCommandItems() } />
 
+        {
+          (isGrouped) ?
+          <TextField label='Group Item Limit' onChanged={ this._onItemLimitChanged } /> :
+          (null)
+        }
+
         <DetailsList
           items={ items }
+          groups={ groups }
           columns={ columns }
           layoutMode={ layoutMode }
           selectionMode={ selectionMode }
           constrainMode={ constrainMode }
+          groupItemLimit={ groupItemLimit }
           />
 
         { contextualMenuProps && (
@@ -84,7 +104,7 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
 
     this.setState({
       canResizeColumns: canResizeColumns,
-      columns: buildColumns(items, canResizeColumns, this._onColumnClick, sortedColumnKey, isSortedDescending)
+      columns: this._buildColumns(items, canResizeColumns, this._onColumnClick, sortedColumnKey, isSortedDescending)
     });
   }
 
@@ -103,6 +123,16 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
   private _onSelectionChanged(menuItem: IContextualMenuItem) {
     this.setState({
       selectionMode: menuItem.data
+    });
+  }
+
+  private _onItemLimitChanged(value: string) {
+    let newValue = parseInt(value, 10);
+    if (isNaN(newValue)) {
+      newValue = DEFAULT_ITEM_LIMIT;
+    }
+    this.setState({
+      groupItemLimit: newValue
     });
   }
 
@@ -206,15 +236,14 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
   }
 
   private _getContextualMenuProps(column: IColumn, ev: React.MouseEvent): IContextualMenuProps {
-    return {
-      items: [
+    let items = [
         {
           key: 'aToZ',
           name: 'A to Z',
           icon: 'arrowUp2',
           canCheck: true,
           isChecked: column.isSorted && !column.isSortedDescending,
-          onClick: () => this._onSortColumn(column, false)
+          onClick: () => this._onSortColumn(column.key, false)
         },
         {
           key: 'zToA',
@@ -222,9 +251,21 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
           icon: 'arrowDown2',
           canCheck: true,
           isChecked: column.isSorted && column.isSortedDescending,
-          onClick: () => this._onSortColumn(column, true)
+          onClick: () => this._onSortColumn(column.key, true)
         }
-      ],
+    ];
+    if (column.isGroupable) {
+      items.push({
+        key: 'groupBy',
+        name: 'Group By ' + column.name,
+        icon: 'listGroup2',
+        canCheck: true,
+        isChecked: column.isGrouped,
+        onClick: () => this._onGroupByColumn(column)
+      });
+    }
+    return {
+      items: items,
       targetElement: ev.currentTarget as HTMLElement,
       directionalHint: DirectionalHint.bottomLeftEdge,
       gapSpace: 10,
@@ -245,15 +286,65 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
     });
   }
 
-  private _onSortColumn(column: IColumn, isSortedDescending: boolean) {
-    let { key } = column;
+  private _onSortColumn(key: string, isSortedDescending: boolean) {
     let sortedItems = _items.slice(0).sort((a, b) => (isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1);
 
     this.setState({
       items: sortedItems,
-      columns: buildColumns(sortedItems, true, this._onColumnClick, column.key, isSortedDescending),
+      groups: null,
+      columns: this._buildColumns(sortedItems, true, this._onColumnClick, key, isSortedDescending),
       isSortedDescending: isSortedDescending,
-      sortedColumnKey: column.key
+      sortedColumnKey: key
     });
+  }
+
+  private _onGroupByColumn(column: IColumn) {
+    let { key, isGrouped } = column;
+    let { sortedColumnKey, isSortedDescending } = this.state;
+
+    if (isGrouped) { // ungroup
+      this._onSortColumn(sortedColumnKey, isSortedDescending);
+    } else {
+      let groupedItems = _items.slice(0).sort((a, b) => ((a[key] < b[key]) ? -1 : 1));
+
+      let groups = groupedItems.reduce((current, item, index) => {
+        let currentGroup = current[current.length - 1];
+
+        if (!currentGroup || (currentGroup.key !== item[key])) {
+          current.push({
+            key: item[key],
+            name: item[key],
+            fieldSchema: { name: key },
+            startIndex: index,
+            count: 1
+          });
+        } else {
+          currentGroup.count++;
+        }
+        return current;
+      }, []);
+
+      this.setState({
+        items: groupedItems,
+        columns: this._buildColumns(groupedItems, true, this._onColumnClick, sortedColumnKey, isSortedDescending, key),
+        groups: groups
+      });
+    }
+  }
+
+  private _buildColumns(
+    items: any[],
+    canResizeColumns?: boolean,
+    onColumnClick?: (column: IColumn, ev: React.MouseEvent) => any,
+    sortedColumnKey?: string,
+    isSortedDescending?: boolean,
+    groupedColumnKey?: string) {
+    let columns = buildColumns(items, canResizeColumns, onColumnClick, sortedColumnKey, isSortedDescending, groupedColumnKey);
+
+    columns.forEach(column => {
+      column.isGroupable = isGroupable(column.key);
+    });
+
+    return columns;
   }
 }

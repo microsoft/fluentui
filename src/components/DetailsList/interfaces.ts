@@ -16,6 +16,10 @@ export interface IColumn {
   calculatedWidth?: number;
   isFilterable?: boolean;
   onColumnClick?: (column: IColumn, ev: React.MouseEvent) => any;
+  // Internal state when a column is resizing.
+  isSizing?: boolean;
+  isGroupable?: boolean;
+  isGrouped?: boolean;
 }
 
 export enum ConstrainMode {
@@ -26,4 +30,18 @@ export enum ConstrainMode {
 export enum DetailsListLayoutMode {
   fixedColumns,
   justified
+}
+
+export interface IGroup {
+  key: string;
+  name: string;
+  fieldSchema: {
+    name: string;
+  };
+  startIndex: number;
+  count: number;
+
+  isSelected?: boolean;
+  isCollapsed?: boolean;
+  isShowingAll?: boolean;
 }

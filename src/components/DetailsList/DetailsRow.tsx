@@ -14,8 +14,9 @@ export interface IDetailsRowProps {
   selectionMode: SelectionMode;
   selection: ISelection;
   shouldSetFocus?: boolean;
-  onWillUnmount?: any;
-  onDidMount?: any;
+  onWillUnmount?: (row?: DetailsRow) => void;
+  onDidMount?: (row?: DetailsRow) => void;
+  isGrouped?: boolean;
 }
 export interface IDetailsRowSelectionState {
   isSelected: boolean;
@@ -29,6 +30,7 @@ export interface IDetailsRowState {
     index: number;
     onMeasureDone: (measuredWidth: number) => void;
   };
+  isGrouped?: boolean;
 }
 
 export default class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowState> {
@@ -45,7 +47,8 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
 
     this.state = {
       selectionState: this._getSelectionState(props),
-      columnMeasureInfo: null
+      columnMeasureInfo: null,
+      isGrouped: props.isGrouped
     };
 
     this._events = new EventGroup(this);
@@ -95,13 +98,14 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
 
   public componentWillReceiveProps(newProps) {
     this.setState({
-      selectionState: this._getSelectionState(newProps)
+      selectionState: this._getSelectionState(newProps),
+      isGrouped: newProps.isGrouped
     });
   }
 
   public render() {
     let { selectionMode, columns, item, itemIndex } = this.props;
-    let { selectionState: { isSelected, isFocusable }, columnMeasureInfo } = this.state;
+    let { selectionState: { isSelected, isFocusable }, columnMeasureInfo, isGrouped } = this.state;
 
     return (
       <div
@@ -121,6 +125,10 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
             >
             <Check isChecked={ isSelected } />
           </button>
+        ) : null }
+        { isGrouped ? (
+          <span className='ms-DetailsRow-collapseGroupSpacer'>
+          </span>
         ) : null }
         { columns.map(column => (
           <div key={ column.key } className={ css('ms-DetailsRow-cell', {

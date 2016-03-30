@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  Fabric,
   TextField,
   List
 } from '../../../../components/index';
@@ -33,15 +34,17 @@ export default class ListBasicExample extends React.Component<any, any> {
     return (
       <div>
         <TextField label={ 'Filter by name' + resultCountText } onChanged={ this._onFilterChanged } />
-        <List
-          items={ filteredItems }
-          onRenderCell={ (item, index) => (
-            <div className='ms-ListBasicExample-itemCell'>
-              <div className='ms-ListBasicExample-itemName ms-font-xl'>{ item.name }</div>
-              <div className='ms-ListBasicExample-itemDesc ms-font-s'>{ item.description }</div>
-            </div>
-          ) }
-        />
+        <Fabric>
+          <List
+            items={ filteredItems }
+            onRenderCell={ (item, index) => (
+              <div className='ms-ListBasicExample-itemCell'>
+                <div className='ms-ListBasicExample-itemName ms-font-xl'>{ item.name }</div>
+                <div className='ms-ListBasicExample-itemDesc ms-font-s'>{ item.description }</div>
+              </div>
+            ) }
+          />
+        </Fabric>
       </div>
     );
   }

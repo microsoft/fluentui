@@ -2,7 +2,7 @@
 @import "~office-ui-fabric/src/components/Dropdown/Dropdown";
 
 .ms-Dropdown {
-  @include user-select(none);
+  user-select: none;
 }
 
 .ms-Dropdown-items {

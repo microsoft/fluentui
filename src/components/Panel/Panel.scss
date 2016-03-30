@@ -1,0 +1,16 @@
+@import '../../common';
+@import '~office-ui-fabric/src/components/Panel/Panel';
+
+.ms-Panel {
+  /** bug: panel should not ignore pointer events. */
+  pointer-events: inherit;
+}
+
+
+.ms-Panel .ms-Panel-main {
+  position: absolute;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}

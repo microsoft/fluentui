@@ -1,4 +1,4 @@
-@import '../../../common';
+@import '../../common';
 
 $focusedBorderColor: $ms-color-neutralTertiary;
 $selectedColor: $ms-color-themeLighter;
@@ -6,29 +6,41 @@ $selectedHoverColor: $ms-color-themeLight;
 $unselectedHoverColor: $ms-color-themeLighterAlt;
 $selectedHighlightColor: $ms-color-themePrimary;
 $groupBorderColor: $ms-color-neutralLight;
+$linkTextColor: $ms-color-neutralPrimary;
 
-.NavBar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+.ms-Nav {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-
-  @include user-select(none);
+  user-select: none;
 }
 
-.NavBar-groupContent {
+.ms-Nav.is-onTop {
+  position: absolute;
+}
+
+.ms-Nav ul {
+  list-style-type: none;
+}
+
+.ms-Nav ul,
+.ms-Nav ul > li {
+  padding: 0;
+}
+
+.ms-Nav li > ul {
+  margin: 0 14px;
+}
+
+.ms-Nav-groupContent {
   display: none;
   margin-bottom: 40px;
 }
 
-.NavBar-group.is-expanded .NavBar-groupContent {
+.ms-Nav-group.is-expanded .ms-Nav-groupContent {
   display: block;
 }
 
-.NavBar-groupButton {
+.ms-Nav-groupButton {
   position: relative;
   display: block;
   width: 100%;
@@ -41,15 +53,14 @@ $groupBorderColor: $ms-color-neutralLight;
   border: none;
   border-bottom: 1px solid $groupBorderColor;
   text-transform: uppercase;
-
-  cursor: default;
+  cursor: pointer;
 
   &:focus {
     outline: transparent;
   }
 
   &:visited {
-    color: black;
+    color: inherit;
   }
 
   &:before {
@@ -63,7 +74,7 @@ $groupBorderColor: $ms-color-neutralLight;
   }
 }
 
-.NavBar-groupChevron.ms-Icon {
+.ms-Nav-groupChevron.ms-Icon {
   position: absolute;
   @include left(15px);
   height: 40px;
@@ -72,38 +83,38 @@ $groupBorderColor: $ms-color-neutralLight;
   transition: transform .1s linear;
 }
 
-.NavBar-group.is-expanded .NavBar-groupChevron {
+.ms-Nav-group.is-expanded .ms-Nav-groupChevron {
   transform: rotate(-180deg);
 }
 
-.NavBar-groupButton:hover:before {
+.ms-Nav-groupButton:hover:before {
   background: $unselectedHoverColor;
 }
 
-.NavBar-groupButton:focus {
+.ms-Nav-groupButton:focus {
   outline: transparent;
 }
 
-.ms-Fabric.is-focusVisible .NavBar-groupButton:focus:before {
+.ms-Fabric.is-focusVisible .ms-Nav-groupButton:focus:before {
   border: 1px solid $focusedBorderColor;
 }
 
-.NavBar-link {
+.ms-Nav-link {
   position: relative;
   display: block;
   height: 40px;
   line-height: 40px;
   text-decoration: none;
   padding: 0 40px;
-  color: black;
-  cursor: default;
+  color: $linkTextColor;
+  cursor: pointer;
 
   &:focus {
     outline: transparent;
   }
 
   &:visited {
-    color: black;
+    color: inherit;
   }
 
   &:before {
@@ -117,53 +128,25 @@ $groupBorderColor: $ms-color-neutralLight;
   }
 }
 
-.ms-Fabric.is-focusVisible .NavBar-link:focus:before {
+.ms-Fabric.is-focusVisible .ms-Nav-link:focus:before {
   border: 1px solid $focusedBorderColor;
 }
 
-.NavBar-link.is-selected:before,
-.ms-Fabric.is-focusVisible .NavBar-link.is-selected:focus:before {
+.ms-Nav-link.is-selected:before,
+.ms-Fabric.is-focusVisible .ms-Nav-link.is-selected:focus:before {
   @include border-left(4px, solid, $selectedHighlightColor);
   background: $selectedColor;
 }
 
-.NavBar-link:hover:before {
+.ms-Nav-link:hover:before {
   background: $unselectedHoverColor;
 }
 
-.NavBar-link.is-selected:hover:before {
+.ms-Nav-link.is-selected:hover:before {
   background: $selectedHoverColor;
 }
 
 .is-selected:before,
-.NavBar-link.is-selected:focus:before {
+.ms-Nav-link.is-selected:focus:before {
   @include border-left(4px, solid, $selectedHighlightColor);
-}
-
-.NavBar-linkFlair {
-  font-size: 10px;
-  text-transform: uppercase;
-  @include float(right);
-  background: $ms-color-neutralTertiaryAlt;
-  color: $ms-color-white;
-  line-height: normal;
-  display: inline;
-  vertical-align: middle;
-  transform: translateY(-50%);
-  position: absolute;
-  @include right(20px);
-  top: 50%;
-  padding: 2px 6px;
-  border-radius: 2px;
-}
-
-.NavBar-linkFlair.is-state1 {
-    background: $ms-color-yellowLight;
-    color: $ms-color-black;
-}
-.NavBar-linkFlair.is-state2 {
-    background: $ms-color-greenLight;
-}
-.NavBar-linkFlair.is-state3 {
-    background: $ms-color-green;
 }

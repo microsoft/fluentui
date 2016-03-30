@@ -13,13 +13,11 @@ $unselectedHoverColor: $ms-color-neutralLight;
   white-space: nowrap;
   padding-bottom: 1px;
   border-bottom: 1px solid $ms-color-neutralLight;
-  margin-bottom: 1px;
   cursor: default;
-
-  @include user-select(none);
+  user-select: none;
 
   &.is-singleSelect {
-    padding-left: 40px;
+    @include padding-left(40px);
   }
 
   &.is-resizingColumn .ms-DetailsHeader-sizerCover {
@@ -51,16 +49,16 @@ $unselectedHoverColor: $ms-color-neutralLight;
 .ms-DetailsHeader-cellSizeWrapper {
   display: inline-block;
   vertical-align: top;
-  margin-right: 16px;
+  @include margin-right(16px);
 
   &:last-child {
-    margin-right: 0;
+    @include margin-right(0);
   }
 }
 
 .ms-DetailsHeader-filterChevron.ms-Icon {
   color: $ms-color-neutralTertiary;
-  padding-left: 4px;
+  @include padding-left(4px);
   vertical-align: middle;
 }
 
@@ -76,7 +74,7 @@ $unselectedHoverColor: $ms-color-neutralLight;
   margin: 0;
   font-size: inherit;
   font-family: inherit;
-  text-align: left;
+  @include text-align(left);
   height: $rowHeight;
   vertical-align: top;
 
@@ -90,37 +88,13 @@ $unselectedHoverColor: $ms-color-neutralLight;
     outline: transparent;
   }
 
-  &.is-sortable {
+  &.is-actionable {
     color: $ms-color-black;
     cursor: default;
 
     &:hover {
       background-color: $ms-color-neutralLight;
     }
-  }
-
-  &.is-filter {
-    position: absolute;
-    right: 0;
-    width: 20px;
-    top: 0;
-    bottom: 0;
-    padding: 0;
-    text-align: center;
-    color: $ms-color-black;
-
-    &:hover {
-      background-color: $ms-color-neutralLight;
-    }
-  }
-
-  &.is-filter:before {
-    content: '';
-    position: absolute;
-    border-left: 1px solid $ms-color-neutralTertiary;
-    top: 10px;
-    bottom: 10px;
-    left: 0;
   }
 
   &.is-sizer {
@@ -133,8 +107,9 @@ $unselectedHoverColor: $ms-color-neutralLight;
     z-index: 99;
   }
 
-  &.is-sorted.is-sortable .ms-DetailsHeader-sortArrow {
-    display: inline;
+  &.is-sorted.is-actionable .ms-DetailsHeader-sortArrow,
+  &.is-grouped.is-actionable .ms-DetailsHeader-sortArrow {
+    display: inline-block;
   }
 
   &is-sortedDescending .ms-DetailsHeader-sortArrow {
@@ -167,7 +142,19 @@ $unselectedHoverColor: $ms-color-neutralLight;
 
 .ms-DetailsHeader-sortArrow.ms-Icon {
   font-size: 12px;
-  margin-right: 4px;
+  @include margin-right(4px);
   display: none;
   color: $ms-color-neutralTertiary;
+}
+
+.ms-DetailsHeader-collapseButton {
+    text-align: center;
+    transform: rotate(-180deg);
+    transform-origin: 50% 50%;
+    width: 20px;
+    outline: 0;
+
+    &.is-collapsed {
+      transform: rotate(0deg);
+    }
 }

@@ -1,0 +1,63 @@
+@import '../../common';
+
+$ms-GroupHeader-height: 32px;
+
+.ms-GroupHeader {
+  cursor: default;
+  &:hover {
+    background: $ms-color-themeLighterAlt;
+  }
+  &.is-selected {
+    background: $ms-color-themeLighter;
+  }
+  &.is-selected:hover {
+    background: $ms-color-themeLight;
+  }
+}
+
+.ms-GroupHeader-check {
+  display: inline-block;
+  padding: 10px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  vertical-align: top;
+  background: none;
+  border: none;
+
+  &:focus {
+   outline: transparent;
+  }
+}
+
+.ms-GroupHeader-check {
+  visibility: hidden;
+}
+
+.ms-GroupHeader:hover .ms-GroupHeader-check,
+.ms-GroupHeader.is-selected .ms-GroupHeader-check {
+  visibility: visible;
+}
+
+.ms-GroupHeader-title {
+    padding: 14px 6px;
+    display: inline-block;
+    cursor: pointer;
+    outline: 0;
+}
+
+.ms-GroupHeader-expandButton.ms-Icon {
+    height: $ms-GroupHeader-height;
+    line-height: $ms-GroupHeader-height;
+    text-align: center;
+    transform: rotate(-180deg);
+    transform-origin: 50% 50%;
+    width: $ms-GroupHeader-height;
+    vertical-align: top;
+    padding: 4px 0px;
+    margin-top: 10px;
+    outline: 0;
+
+    &.is-collapsed {
+      transform: rotate(0deg);
+    }
+}

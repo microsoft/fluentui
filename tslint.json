@@ -1,6 +1,5 @@
 {
   "rules": {
-    "object-literal-sort-keys": false,
     "max-line-length": [false, 140]
   }
 }

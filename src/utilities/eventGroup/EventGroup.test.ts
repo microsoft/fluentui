@@ -1,7 +1,6 @@
-import * as chai from 'chai';
 import EventGroup from './EventGroup';
 
-let expect = chai.expect;
+let { expect } = chai;
 
 describe('EventGroup', function() {
   it('can observe an HTML element event', () => {

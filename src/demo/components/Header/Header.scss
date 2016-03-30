@@ -7,19 +7,30 @@
   background: $ms-color-themeDark;
   overflow: hidden;
   white-space: no-wrap;
+  user-select: none;
+}
 
-  @include user-select(none);
+@media (max-width: $ms-screen-md-max) {
+  .Header {
+    padding: 0;
+  }
 }
 
 .Header-title,
 .Header-buttons,
 .Header-button {
   display: inline-block;
+  vertical-align: top;
 }
 
-.Header-title .ms-Icon {
-  @include padding-right(8px);
+.Header-title {
+  line-height: 48px;
+
+  .ms-Icon {
+    @include padding-right(8px);
+  }
 }
+
 .Header-buttons {
   @include float(right);
 }
@@ -31,6 +42,7 @@
   border: none;
   padding: 0;
   padding: 0px 10px;
+  min-width: 50px;
   height: 50px;
   line-height: 50px;
   margin: 0 5px;
@@ -53,7 +65,17 @@
   }
 }
 
-.ms-Fabric.is-focusVisible .Header-button:focus:before {
+@media (max-width: $ms-screen-md-max) {
+  .Header-button {
+    margin: 0;
+
+    &:hover {
+      background: inherit;
+    }
+  }
+}
+
+:global(.ms-Fabric).is-focusVisible .Header-button:focus:before {
   position: absolute;
   content: '';
   left: 2px;

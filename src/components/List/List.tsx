@@ -4,7 +4,7 @@ import withContainsFocus from '../../utilities/decorators/withContainsFocus';
 
 export interface IListProps {
   items?: any[];
-  onRenderCell?: (item?: any, index?: number, containsFocus?: boolean) => any;
+  onRenderCell?: (item?: any, index?: number, containsFocus?: boolean) => React.ReactNode;
   itemsPerPage?: number;
 
   containsFocus?: boolean;
@@ -28,7 +28,7 @@ export interface IRect {
 export default class List extends React.Component<IListProps, any> {
   public static defaultProps = {
     itemsPerPage: 10,
-    onRenderCell: (item, index, containsFocus) => (<div>{ item.name }</div>)
+    onRenderCell: (item, index, containsFocus) => (<div>{ (item && item.name) || '' }</div>)
   };
 
   public refs: {
@@ -64,6 +64,7 @@ export default class List extends React.Component<IListProps, any> {
     for (let el of scrollableElements) {
       this._events.on(el, 'scroll', this._onScrollOrResize);
     }
+
     this._events.on(window, 'scroll', this._onScrollOrResize);
     this._events.on(window, 'resize', this._onScrollOrResize);
   }
@@ -111,17 +112,17 @@ export default class List extends React.Component<IListProps, any> {
     return (
       <div ref='root' className={ rootClass }>
         <div ref='surface' className='ms-List-surface' style={ surfaceStyle }>
-        { pages.map(page => (
-          <div className='ms-List-page' key={ page.key } ref={ page.key } style={ page.style }>
-          { page.items ? page.items.map((item, itemIndex) => (
-            <div className='ms-List-cell' key={ item.key }>
-              { onRenderCell(item, page.startIndex + itemIndex, containsFocus) }
-              </div>
-          )) : null }
+          { pages.map(page => (
+            <div className='ms-List-page' key={ page.key } ref={ page.key } style={ page.style }>
+              { page.items ? page.items.map((item, itemIndex) => (
+                <div className='ms-List-cell' key={ item ? item.key : (page.startIndex + itemIndex) }>
+                  { onRenderCell(item, page.startIndex + itemIndex, containsFocus) }
+                </div>
+              )) : null }
             </div>
-        )) }
-          </div>
+          )) }
         </div>
+      </div>
     );
   }
 
@@ -258,6 +259,13 @@ export default class List extends React.Component<IListProps, any> {
 
   private _createPage(pageKey: string, items: any[], startIndex?: number, count?: number, style?: any) {
     pageKey = pageKey || ('page-' + startIndex);
+
+    // Fill undefined cells because array.map will ignore undefined cells.
+    if (items) {
+      for (let i = 0; i < items.length; i++) {
+        items[i] = items[i] || null;
+      }
+    }
 
     return {
       key: pageKey,

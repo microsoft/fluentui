@@ -6,7 +6,7 @@
   position: relative;
 }
 
-.ms-ListBasicExample-itemCell:hover {
+.ms-Fabric.is-stationary .ms-ListBasicExample-itemCell:hover {
   background: #EEE;
 }
 .ms-ListBasicExample-itemName {
@@ -20,4 +20,3 @@
 .ms-ListBasicExample-itemDesc {
   margin-left: 120px;
 }
-

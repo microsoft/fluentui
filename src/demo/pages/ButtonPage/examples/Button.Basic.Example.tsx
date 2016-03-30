@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   Button,
   ButtonType,
+  ElementType,
   Label
 } from '../../../../components/index';
 import './Button.Basic.Example.scss';
@@ -27,6 +28,9 @@ export class BasicButtonsExample extends React.Component<any, any> {
 
         <Label>Icon button</Label>
         <Button buttonType={ ButtonType.command } icon='star' title='Star' description='Take a star' />
+
+        <Label>Button like anchor</Label>
+        <Button elementType={ ElementType.anchor } buttonType={ ButtonType.primary } href='http://bing.com' target='_blank' title='Let us bing!' description='Navigate to Bing home page.'>Bing</Button>
       </div>
     );
   }

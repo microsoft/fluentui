@@ -9,7 +9,6 @@ export class Selection implements ISelection {
   private _exemptedKeys: { [ key: string ]: boolean };
   private _exemptedCount: number;
   private _keyToIndexMap: { [ key: string ]: number };
-  private _selectedItems: IObjectWithKey[];
   private _anchoredIndex: number;
   private _focusedIndex: number;
   private _onSelectionChanged: () => void;
@@ -82,22 +81,20 @@ export class Selection implements ISelection {
   }
 
   public getSelection(): IObjectWithKey[] {
-    if (!this._selectedItems) {
-      this._selectedItems = [];
+    let selectedItems = [];
 
-      this._items.forEach((item, index) => {
-        let key = item ? item.key : null;
-        let isExempt = !!this._exemptedKeys[key];
+    this._items.forEach((item, index) => {
+      let key = item ? item.key : null;
+      let isExempt = !!this._exemptedKeys[key];
 
-        if ((!key && this._isAllSelected) ||
-          (key && this._isAllSelected && !isExempt) ||
-          (key && !this._isAllSelected && isExempt)) {
-            this._selectedItems.push(item);
-          }
-      });
-    }
+      if ((!key && this._isAllSelected) ||
+        (key && this._isAllSelected && !isExempt) ||
+        (key && !this._isAllSelected && isExempt)) {
+        selectedItems.push(item);
+      }
+    });
 
-    return this._selectedItems;
+    return selectedItems;
   }
 
   public getSelectedCount(): number {

@@ -4,8 +4,9 @@ import { css } from '../../utilities/css';
 import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/ISelection';
 import Check from './Check';
-import './DetailsHeader.scss';
+import { getRTL } from '../../utilities/rtl';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
+import './DetailsHeader.scss';
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
@@ -18,6 +19,9 @@ export interface IDetailsHeaderProps {
   onColumnIsSizingChanged?: (column: IColumn, isSizing: boolean) => void;
   onColumnResized?: (column: IColumn, newWidth: number) => void;
   onColumnAutoResized?: (column: IColumn, columnIndex: number) => void;
+  isGrouped?: boolean;
+  isAllCollapsed?: boolean;
+  onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
 
   ref?: string;
 }
@@ -26,6 +30,8 @@ export interface IDetailsHeaderState {
   columnResizeDetails?: IColumnResizeDetails;
   isAllSelected?: boolean;
   isSizing?: boolean;
+  isGrouped?: boolean;
+  isAllCollapsed?: boolean;
 }
 
 export interface IColumnResizeDetails {
@@ -37,17 +43,20 @@ export interface IColumnResizeDetails {
 export default class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetailsHeaderState> {
   private _events: EventGroup;
 
-  constructor() {
-    super();
+  constructor(props: IDetailsHeaderProps) {
+    super(props);
 
     this._events = new EventGroup(this);
 
     this.state = {
-      columnResizeDetails: null
+      columnResizeDetails: null,
+      isGrouped: this.props.isGrouped,
+      isAllCollapsed: this.props.isAllCollapsed
     };
 
     this._onSizerMove = this._onSizerMove.bind(this);
     this._onSizerUp = this._onSizerUp.bind(this);
+    this._onToggleCollapseAll = this._onToggleCollapseAll.bind(this);
   }
 
   public componentDidMount() {
@@ -60,9 +69,17 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
     this._events.dispose();
   }
 
+  public componentWillReceiveProps(newProps) {
+    let { isGrouped } = this.state;
+
+    if (newProps.isGrouped !== isGrouped) {
+      this.setState({ isGrouped: newProps.isGrouped });
+    }
+  }
+
   public render() {
     let { selectionMode, columns } = this.props;
-    let { isAllSelected, columnResizeDetails, isSizing } = this.state;
+    let { isAllSelected, columnResizeDetails, isSizing, isGrouped, isAllCollapsed } = this.state;
 
     return (
       <div
@@ -70,55 +87,65 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
           'is-allSelected': isAllSelected,
           'is-singleSelect': selectionMode === SelectionMode.single,
           'is-resizingColumn': !!columnResizeDetails && isSizing
-            }) }
+        }) }
         onMouseMove={ this._onMove.bind(this) }
         onMouseUp={ this._onUp.bind(this) }
         ref='root'>
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           { (selectionMode === SelectionMode.multiple) ? (
-          <button
-            className='ms-DetailsHeader-cell is-check'
-            data-selection-all-toggle='true'
-          >
-            <Check isChecked={ isAllSelected } />
-          </button>
+            <button
+              className='ms-DetailsHeader-cell is-check'
+              data-selection-all-toggle='true'
+              >
+              <Check isChecked={ isAllSelected } />
+            </button>
+          ) : (null) }
+          { isGrouped ? (
+          <span className='ms-DetailsHeader-cell'>
+            <i className={ css('ms-DetailsHeader-collapseButton ms-Icon ms-Icon--chevronDown', {
+              'is-collapsed': isAllCollapsed
+            }) } onClick={ this._onToggleCollapseAll }>
+            </i>
+          </span>
           ) : (null) }
           { columns.map((column, columnIndex) => (
-          <div key={ column.key } className='ms-DetailsHeader-cellSizeWrapper'>
-            <div className='ms-DetailsHeader-cellWrapper'>
-              <button
-                key={ column.fieldName }
-                disabled={ !column.isSortable }
-                className={ css('ms-DetailsHeader-cell', {
-                  'is-sortable': column.isSortable,
-                  'is-sorted': column.isSorted
-                }) }
-                style={ { width: column.calculatedWidth } }
-                onClick={ this._onColumnClick.bind(this, column) }
-              >
-                <span
-                  className={ css('ms-DetailsHeader-sortArrow ms-Icon', {
-                    'ms-Icon--arrowUp2': !column.isSortedDescending,
-                    'ms-Icon--arrowDown2': column.isSortedDescending
+            <div key={ column.key } className='ms-DetailsHeader-cellSizeWrapper'>
+              <div className='ms-DetailsHeader-cellWrapper'>
+                <button
+                  key={ column.fieldName }
+                  disabled={ !column.isSortable && !column.isGroupable && !column.isFilterable }
+                  className={ css('ms-DetailsHeader-cell', {
+                    'is-actionable': column.isSortable || column.isGroupable || column.isFilterable,
+                    'is-sorted': column.isSorted,
+                    'is-grouped': column.isGrouped
                   }) }
-                />
-                { column.name }
-                { column.isFilterable ? (
-                  <i className='ms-DetailsHeader-filterChevron ms-Icon ms-Icon--chevronDown' />
-                ) : (null)}
-              </button>
+                  style={ { width: column.calculatedWidth } }
+                  onClick={ this._onColumnClick.bind(this, column) }
+                  >
+                  <span
+                    className={ css('ms-DetailsHeader-sortArrow ms-Icon', {
+                      'ms-Icon--arrowUp2': !column.isGrouped && !column.isSortedDescending,
+                      'ms-Icon--arrowDown2': !column.isGrouped && column.isSortedDescending,
+                      'ms-Icon--listGroup2': column.isGrouped
+                    }) }
+                    />
+                  { column.name }
+                  { column.isFilterable ? (
+                    <i className='ms-DetailsHeader-filterChevron ms-Icon ms-Icon--chevronDown' />
+                  ) : (null) }
+                </button>
+              </div>
+              { (column.isResizable) ? (
+                <div
+                  className={ css('ms-DetailsHeader-cell is-sizer', {
+                    'is-resizing': columnResizeDetails && columnResizeDetails.columnIndex === columnIndex && isSizing
+                  }) }
+                  onMouseDown={ this._onSizerDown.bind(this, columnIndex) }
+                  onDoubleClick={ this._onSizerDoubleClick.bind(this, columnIndex) }
+                  />
+              ) : (null) }
             </div>
-            { (column.isResizable) ? (
-            <div
-              className={ css('ms-DetailsHeader-cell is-sizer', {
-                'is-resizing': columnResizeDetails && columnResizeDetails.columnIndex === columnIndex && isSizing
-              }) }
-              onMouseDown={ this._onSizerDown.bind(this, columnIndex) }
-              onDoubleClick={ this._onSizerDoubleClick.bind(this, columnIndex) }
-            />
-            ) : (null) }
-          </div>
-          ))}
+          )) }
         </FocusZone>
         <div className='ms-DetailsHeader-sizerCover' onMouseMove={ this._onSizerMove } onMouseUp={ this._onSizerUp } />
       </div>
@@ -154,17 +181,19 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
       buttons = MOUSEMOVE_PRIMARY_BUTTON
     } = ev;
 
-    if (buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
-      // cancel mouse down event and return early when the primary button is not pressed
-      this._onUp(ev);
-      return;
-    }
-
     let { columnResizeDetails, isSizing } = this.state;
 
-    if (columnResizeDetails && !isSizing && ev.clientX !== columnResizeDetails.originX) {
-      isSizing = true;
-      this.setState({ isSizing: isSizing });
+    if (columnResizeDetails) {
+      if (buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
+        // cancel mouse down event and return early when the primary button is not pressed
+        this._onUp(ev);
+        return;
+      }
+
+      if (!isSizing && ev.clientX !== columnResizeDetails.originX) {
+        isSizing = true;
+        this.setState({ isSizing: isSizing });
+      }
     }
   }
 
@@ -192,16 +221,16 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
     let { columns, onColumnIsSizingChanged } = this.props;
 
     this.setState({
-       columnResizeDetails: {
-         columnIndex: columnIndex,
-         columnMinWidth: columns[columnIndex].calculatedWidth,
-         originX: ev.clientX
-       }
-     });
+      columnResizeDetails: {
+        columnIndex: columnIndex,
+        columnMinWidth: columns[columnIndex].calculatedWidth,
+        originX: ev.clientX
+      }
+    });
 
-     if (onColumnIsSizingChanged) {
-       onColumnIsSizingChanged(columns[columnIndex], true);
-     }
+    if (onColumnIsSizingChanged) {
+      onColumnIsSizingChanged(columns[columnIndex], true);
+    }
   }
 
   private _onSelectionChanged() {
@@ -221,21 +250,29 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
       buttons = MOUSEMOVE_PRIMARY_BUTTON
     } = ev;
 
-    if (buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
-      // cancel mouse down event and return early when the primary button is not pressed
-      this._onSizerUp();
-      return;
-    }
+    let { columnResizeDetails } = this.state;
 
-    let { onColumnResized, columns } = this.props;
+    if (columnResizeDetails) {
+      if (buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
+        // cancel mouse down event and return early when the primary button is not pressed
+        this._onSizerUp();
+        return;
+      }
 
-    if (onColumnResized) {
-      let { columnResizeDetails } = this.state;
+      let { onColumnResized, columns } = this.props;
 
-      onColumnResized(
-        columns[columnResizeDetails.columnIndex],
-        columnResizeDetails.columnMinWidth + (ev.clientX - columnResizeDetails.originX)
-      );
+      if (onColumnResized) {
+        let movement = ev.clientX - columnResizeDetails.originX;
+
+        if (getRTL()) {
+          movement = -movement;
+        }
+
+        onColumnResized(
+          columns[columnResizeDetails.columnIndex],
+          columnResizeDetails.columnMinWidth + movement
+        );
+      }
     }
   }
 
@@ -244,18 +281,29 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
     let { columnResizeDetails } = this.state;
 
     this.setState({
-        columnResizeDetails: null,
-        isSizing: false
+      columnResizeDetails: null,
+      isSizing: false
     });
 
-     if (onColumnIsSizingChanged) {
-       onColumnIsSizingChanged(columns[columnResizeDetails.columnIndex], false);
-     }
+    if (onColumnIsSizingChanged) {
+      onColumnIsSizingChanged(columns[columnResizeDetails.columnIndex], false);
+    }
   }
 
   private _onColumnClick(column, ev) {
     if (column.onColumnClick) {
       column.onColumnClick(column, ev);
+    }
+  }
+
+  private _onToggleCollapseAll() {
+    let { onToggleCollapseAll } = this.props;
+    let newCollapsed = !this.state.isAllCollapsed;
+    this.setState({
+      isAllCollapsed: newCollapsed
+    });
+    if (onToggleCollapseAll) {
+      onToggleCollapseAll(newCollapsed);
     }
   }
 

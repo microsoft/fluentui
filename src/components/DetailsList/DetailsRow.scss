@@ -11,11 +11,11 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
   display: inline-block;
   min-width: 100%;
   min-height: $rowHeight;
+  margin: 1px 0;
   vertical-align: top;
   white-space: nowrap;
   padding: 10px 0;
-
-  @include user-select(none);
+  user-select: none;
 
   cursor: default;
   box-sizing: border-box;
@@ -106,4 +106,9 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
   visibility: hidden;
   white-space: nowrap;
   top: -1000000000;
+}
+
+.ms-DetailsRow-collapseGroupSpacer {
+  display: inline-block;
+  width: 36px;
 }
