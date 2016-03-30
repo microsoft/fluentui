@@ -20,6 +20,8 @@ export interface INavProps {
   groups: INavLinkGroup[];
   onRenderLink?: Function;
   onLinkClick?: { (e: React.MouseEvent): boolean };
+  isVisible?: boolean;
+  isOnTop?: boolean;
 }
 
 export interface INavState {
@@ -46,12 +48,16 @@ export default class Nav extends React.Component<INavProps, INavState> {
   }
 
   public render(): React.ReactElement<{}> {
+    if (this.props.isVisible === false) {
+      return null;
+    }
+
     const groupElements: React.ReactElement<{}>[] = this.props.groups.map(
       (group: INavLinkGroup, groupIndex: number) => this.renderGroup(group, groupIndex));
 
     return (
       <FocusZone>
-        <nav role='navigation' className='ms-Nav'>
+        <nav role='navigation' className={'ms-Nav' + (this.props.isOnTop ? ' is-onTop' : '')}>
           { groupElements }
         </nav>
       </FocusZone>
@@ -68,7 +74,7 @@ export default class Nav extends React.Component<INavProps, INavState> {
         >
           { this.props.onRenderLink(link) }
         </a> { this.renderLinks(link.links) }
-      </li>
+    </li>
     );
   }
 

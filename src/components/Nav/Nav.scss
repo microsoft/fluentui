@@ -14,6 +14,10 @@ $linkTextColor: $ms-color-neutralPrimary;
   user-select: none;
 }
 
+.ms-Nav.is-onTop {
+  position: absolute;
+}
+
 .ms-Nav ul {
   list-style-type: none;
 }
