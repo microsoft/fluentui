@@ -7,7 +7,7 @@ let gulp = require('gulp');
 build.tslint.setConfig({ lintConfig: require('./tslint.json') });
 
 // process *.Example.tsx as text.
-build.text.setConfig({ textMatch: [ 'src/**/*.txt', 'src/**/*.Example.tsx' ] });
+build.text.setConfig({ textMatch: ['src/**/*.txt', 'src/**/*.Example.tsx', 'src/**/*.Props.ts'] });
 
 // configure amd libraries to be built when the production flag is present.
 if (process.argv.indexOf('--production') >= 0) {

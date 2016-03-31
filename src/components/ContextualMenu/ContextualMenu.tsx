@@ -6,6 +6,8 @@ import KeyCodes from '../../utilities/KeyCodes';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
 import { css } from '../../utilities/css';
 
+import { IContextualMenuProps } from './ContextualMenu.Props';
+
 const BUFFER_ZONE = 5;
 const BEAK_WIDTH = 16;
 const BEAK_PADDING = 5;
@@ -18,18 +20,6 @@ const SLIDE_ANIMATIONS = {
   left: 'slideLeftIn20',
   right: 'slideRightIn20'
 };
-
-export interface IContextualMenuProps {
-  items: IContextualMenuItem[];
-  targetElement?: HTMLElement;
-  directionalHint?: DirectionalHint;
-  gapSpace?: number;
-  labelElementId?: string;
-  shouldFocusOnMount?: boolean;
-  isBeakVisible?: boolean;
-  onDismiss?: (ev?: any) => void;
-  className?: string;
-}
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
