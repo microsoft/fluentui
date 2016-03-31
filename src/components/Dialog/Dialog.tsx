@@ -11,6 +11,7 @@ export enum DialogType {
 }
 
 export interface IDialogProps {
+    open?: boolean;
     type?: DialogType;
     onDismiss?: (ev?: React.MouseEvent) => any;
     title?: string;
@@ -41,15 +42,17 @@ export class DialogFooter extends React.Component<any, any> {
 
 export default class Dialog extends React.Component<IDialogProps, any> {
     public static defaultProps: IDialogProps = {
+        open: false,
         type: DialogType.normal,
         blocking: false
     };
 
     public render() {
-        let { type, onDismiss, title, subText, blocking } = this.props;
+        let { open, type, onDismiss, title, subText, blocking } = this.props;
 
-        console.log('type: ' + type);
-        console.log('blocking: ' + blocking);
+        if (!open) {
+            return null;
+        }
 
         const dialogClassName = css('ms-Dialog', {
             'ms-Dialog--lgHeader': type === DialogType.largeHeader,
