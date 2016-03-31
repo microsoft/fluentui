@@ -1,6 +1,6 @@
 /** @todo: This is a placeholder. Please fill this in and include it in the page. */
 const DialogProps = [
- { name: 'open', type: 'Boolean', defaultValue: 'false', description: 'Whether the dialog is displayed.' },
+ { name: 'open', type: 'boolean', defaultValue: 'false', description: 'Whether the dialog is displayed.' },
  { name: 'type', type: 'DialogType', defaultValue: 'DialogType.normal', description: 'The type of Dialog to display.' },
  { name: 'onDismiss', type: 'React.MouseEvent', defaultValue: '', description: 'A callback function for when the Dialog is dismissed from the close button or light dismiss.' },
  { name: 'title', type: 'string', defaultValue: '', description: 'The title text to display at the top of the dialog.' },
