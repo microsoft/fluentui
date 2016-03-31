@@ -1,8 +1,11 @@
 import * as React from 'react';
 import './Dialog.scss';
 import { css } from '../../utilities/css';
+import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 
 // @TODO - need to add animations, pending Fabric Team + Coulton work
+// @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
+// @TODO - use the overlay setup by thomas michon to project the dialog to the end of the DOM
 
 export enum DialogType {
     normal,
@@ -18,6 +21,7 @@ export interface IDialogProps {
     subText?: string;
     blocking?: boolean;
     children?: any;
+    responsiveMode?: ResponsiveMode;
 }
 
 export class DialogFooter extends React.Component<any, any> {
@@ -40,6 +44,7 @@ export class DialogFooter extends React.Component<any, any> {
     }
 }
 
+@withResponsiveMode
 export default class Dialog extends React.Component<IDialogProps, any> {
     public static defaultProps: IDialogProps = {
         open: false,
@@ -48,7 +53,7 @@ export default class Dialog extends React.Component<IDialogProps, any> {
     };
 
     public render() {
-        let { open, type, onDismiss, title, subText, blocking } = this.props;
+        let { open, type, onDismiss, title, subText, blocking, responsiveMode } = this.props;
 
         if (!open) {
             return null;
