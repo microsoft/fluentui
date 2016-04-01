@@ -4,9 +4,8 @@ import {
 } from '../../../components/index';
 import {
   ExampleCard,
-  PropertiesTable
+  PropertiesTableSet,
 } from '../../components/index';
-import ContextualMenuProps from './ContextualMenuProps';
 
 import ContextualMenuBasicExample from './examples/ContextualMenu.Basic.Example';
 let ContextualMenuBasicExampleCode = require('./examples/ContextualMenu.Basic.Example.tsx');
@@ -38,8 +37,7 @@ export default class ContextualMenuPage extends React.Component<any, any> {
           <ContextualMenuDirectionalExample />
         </ExampleCard>
 
-        <PropertiesTable properties={ ContextualMenuProps } />
-
+        <PropertiesTableSet componentName='ContextualMenu' />
       </div>
     );
   }
