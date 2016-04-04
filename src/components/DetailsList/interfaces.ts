@@ -45,3 +45,11 @@ export interface IGroup {
   isCollapsed?: boolean;
   isShowingAll?: boolean;
 }
+
+export interface IDragDropEvents {
+  canDrop?: (item?: any) => boolean;
+  canDrag?: (item?: any) => boolean;
+  onDragEnter?: (event?: DragEvent, item?: any) => string; // return string is the css classes that will be added to the enterring element.
+  onDragLeave?: (event?: DragEvent, item?: any) => void;
+  onDrop?: (event?: DragEvent, item?: any) => void;
+}
