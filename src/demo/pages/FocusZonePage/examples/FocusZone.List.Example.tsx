@@ -5,7 +5,7 @@ import Row from './List/Row';
 export default class ListExample extends React.Component<any, any> {
   public render() {
     return (
-      <FocusZone focusNamespace='List'>
+      <FocusZone>
         <ul className='FocusList'>
           { this._list.map(this._renderItem) }
         </ul>
