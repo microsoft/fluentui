@@ -6,11 +6,9 @@
 
 .ms-DetailsList.is-horizontalConstrained {
   overflow-x: auto;
-  overflow-y: inherit;
+  overflow-y: visible;
 }
 
 .ms-DetailsList-cell {
     word-break: break-word;
 }
-
-

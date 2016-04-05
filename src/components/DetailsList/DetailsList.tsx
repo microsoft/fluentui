@@ -5,33 +5,69 @@ import { assign } from '../../utilities/object';
 import { css } from '../../utilities/css';
 import DetailsHeader from './DetailsHeader';
 import DetailsRow from './DetailsRow';
-import { IColumn, DetailsListLayoutMode, ConstrainMode, IGroup } from './interfaces';
+import { IColumn, DetailsListLayoutMode, ConstrainMode, IDragDropEvents, IGroup } from './interfaces';
 import GroupFooter from './GroupFooter';
 import GroupHeader from './GroupHeader';
 import { ISelection, SelectionMode } from '../../utilities/selection/ISelection';
 import IObjectWithKey from '../../utilities/selection/IObjectWithKey';
-import {Selection } from '../../utilities/selection/Selection';
+import { Selection } from '../../utilities/selection/Selection';
 import SelectionZone from '../../utilities/selection/SelectionZone';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
 import './DetailsList.scss';
 
 const DEFAULT_GROUP_ITEM_LIMIT = 5;
 
-export interface IDetailsListProps {
+export interface IDetailsListProps extends React.Props<DetailsList> {
+  /** A key that uniquely identifies the given items. If provided, the selection will be reset when the key changes. */
+  setKey?: string;
+
+  /** The items to render. */
   items: any[];
-  groups?: IGroup[];
-  selection?: ISelection;
-  selectionMode?: SelectionMode;
-  layoutMode?: DetailsListLayoutMode;
-  columns?: IColumn[];
-  viewport?: IViewport;
-  constrainMode?: ConstrainMode;
-  groupItemLimit?: number;
+
+  /** Optional class name to add to the root element. */
   className?: string;
+
+  /** Optional grouping instructions. */
+  groups?: IGroup[];
+
+  /** Optional selection model to track selection state.  */
+  selection?: ISelection;
+
+  /** Controls how/if the details list manages selection. */
+  selectionMode?: SelectionMode;
+
+  /** Controls how the columns are adjusted. */
+  layoutMode?: DetailsListLayoutMode;
+
+  /** Given column defitions. If none are provided, default columns will be created based on the item's properties. */
+  columns?: IColumn[];
+
+  /** Controls how the list contrains overflow. */
+  constrainMode?: ConstrainMode;
+
+  /** Grouping item limit. */
+  groupItemLimit?: number;
+
+  /** Event names and corresponding callbacks that will be registered to rendered row elements. */
+  rowElementEventMap?: [{ eventName: string, callback: (item?: any, index?: number, event?: any) => void }];
+
+  /** Callback for when the details list has been updated. Useful for telemetry tracking externally. */
   onDidUpdate?: (detailsList?: DetailsList) => any;
-  onRowDidMount?: (index?: number) => void;
-  onRowWillUnmount?: (index?: number) => void;
-  onRenderMissingItem?: (index?: number, containsFocus?: boolean) => React.ReactNode;
+
+  /** Callback for when a given row has been mounted. Useful for identifying when a row has been rendered on the page. */
+  onRowDidMount?: (item?: any, index?: number) => void;
+
+  /** Callback for when a given row has been mounted. Useful for identifying when a row has been removed from the page. */
+  onRowWillUnmount?: (item?: any, index?: number) => void;
+
+  /** Map of callback functions related to drag and drop functionality. */
+  dragDropEvents?: IDragDropEvents;
+
+    /** Callback for what to render when the item is missing. */
+  onRenderMissingItem?: (index?: number) => React.ReactNode;
+
+  /** Viewport, provided by the withViewport decorator. */
+  viewport?: IViewport;
 }
 
 export interface IDetailsListState {
@@ -50,6 +86,7 @@ export interface IDetailsListViewData {
   rowCheckWidth: number;
 }
 
+const DISTANCE_FOR_DRAG_SQUARED = 25; // the minimum mouse move distance to treat it as drag event
 const MIN_RESIZABLE_COLUMN_WIDTH = 100; // this is the global min width
 
 @withViewport
@@ -57,17 +94,28 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   public static defaultProps = {
     layoutMode: DetailsListLayoutMode.justified,
     selectionMode: SelectionMode.multiple,
-    constrainMode: ConstrainMode.horizontalConstrained
+    constrainMode: ConstrainMode.horizontalConstrained,
+    groupItemLimit: DEFAULT_GROUP_ITEM_LIMIT
   };
 
   public refs: {
     [key: string]: React.ReactInstance,
-    header: DetailsHeader
+    header: DetailsHeader,
+    root: HTMLElement
   };
 
   private _events: EventGroup;
   private _selection: ISelection;
   private _activeRows: { [key: string]: DetailsRow };
+  private _dragging: boolean;
+  private _dragData: {
+    eventTarget: EventTarget;
+    clientX: number;
+    clientY: number;
+    dataTransfer?: DataTransfer;
+    dropTarget?: DetailsRow;
+    dragTarget?: DetailsRow;
+  };
 
   constructor(props: IDetailsListProps) {
     super(props);
@@ -97,6 +145,17 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     this._events = new EventGroup(this);
     this._selection = props.selection || new Selection();
     this._selection.setItems(props.items as IObjectWithKey[], false);
+    this._dragging = false;
+  }
+
+  public componentDidMount() {
+    let { dragDropEvents } = this.props;
+
+    if (dragDropEvents) {
+      // clear drag data when mouse up, use capture event to ensure it will be run
+      this._events.on(document.body, 'mouseup', this._onMouseUp.bind(this), true);
+      this._events.on(document, 'mouseup', this._onDocumentMouseUp.bind(this), true);
+    }
   }
 
   public componentWillUnmount() {
@@ -110,20 +169,22 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   }
 
   public componentWillReceiveProps(newProps) {
+    let { setKey, groups, items } = this.props;
     let { layoutMode } = this.state;
+    let shouldResetSelection = (newProps.setKey !== setKey) || newProps.setKey === undefined;
 
     if (newProps.layoutMode !== this.props.layoutMode) {
       layoutMode = newProps.layoutMode;
       this.setState({ layoutMode: layoutMode });
     }
 
-    if (newProps.items !== this.props.items) {
-      this._selection.setItems(newProps.items, true);
+    if (newProps.items !== items) {
+      this._selection.setItems(newProps.items, shouldResetSelection);
     }
 
     this._adjustColumns(newProps, true, layoutMode);
 
-    if (newProps.groups !== this.props.groups) {
+    if (newProps.groups !== groups) {
       this.setState({ groups: newProps.groups });
     }
   }
@@ -132,8 +193,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     let { className, selectionMode, constrainMode, groupItemLimit } = this.props;
     let { adjustedColumns, layoutMode, groups, isAllCollapsed } = this.state;
     let { _selection: selection } = this;
-
     let isGrouped = groups && groups.length > 0;
+
     if (!groups) {
       groups = [ null ];
     }
@@ -157,6 +218,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
               ref={ 'list_' + groupIdx }
               items={ this._getItemsToRender(group) }
               onRenderCell={ this._onRenderCell }
+              selection={ selection }
             />
         }
         {
@@ -174,11 +236,10 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     ));
 
     return (
-      <div className={css('ms-DetailsList', className, {
+      <div ref='root' className={css('ms-DetailsList', className, {
         'is-fixed': layoutMode === DetailsListLayoutMode.fixedColumns,
         'is-horizontalConstrained': constrainMode === ConstrainMode.horizontalConstrained
       }) }>
-        <SelectionZone selection={ this._selection } selectionMode={ selectionMode }>
           <DetailsHeader
             ref='header'
             selectionMode={ selectionMode }
@@ -191,17 +252,18 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
             isAllCollapsed={ isAllCollapsed }
             onToggleCollapseAll={ this._onToggleCollapseAll }
             />
+        <SelectionZone selection={ this._selection } selectionMode={ selectionMode }>
           { renderedGroups }
         </SelectionZone>
       </div>
     );
   }
 
-  private _onRenderCell(item: any, index: number, containsFocus: boolean): React.ReactNode {
+  private _onRenderCell(item: any, index: number): React.ReactNode {
     let result = null;
 
     if (item) {
-      let { selectionMode } = this.props;
+      let { selectionMode, rowElementEventMap, dragDropEvents } = this.props;
       let { adjustedColumns, groups } = this.state;
       let { _selection: selection } = this;
 
@@ -214,9 +276,10 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           columns={ adjustedColumns }
           selectionMode={ selectionMode }
           selection={ selection }
-          shouldSetFocus={ containsFocus }
           onDidMount={ this._onRowDidMount }
           onWillUnmount={ this._onRowWillUnmount }
+          eventsToRegister={ rowElementEventMap }
+          dragDropEvents={ dragDropEvents }
           isGrouped={ isGrouped }
           />
       );
@@ -224,7 +287,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       let { onRenderMissingItem } = this.props;
 
       if (onRenderMissingItem) {
-        result = onRenderMissingItem(index, containsFocus);
+        result = onRenderMissingItem(index);
       }
     }
 
@@ -235,9 +298,10 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     let { onRowDidMount } = this.props;
     let index = row.props.itemIndex;
 
-    this._activeRows[index] = row;
+    this._activeRows[index] = row; // this is used for column auto resize
+    this._registerDragDropEvents(row);
     if (onRowDidMount) {
-      onRowDidMount(index);
+      onRowDidMount(row.props.item, index);
     }
   }
 
@@ -246,8 +310,9 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     let index = row.props.itemIndex;
 
     delete this._activeRows[index];
+    this._events.off(row.refs.root);
     if (onRowWillUnmount) {
-      onRowWillUnmount(index);
+      onRowWillUnmount(row.props.item, index);
     }
   }
 
@@ -412,6 +477,11 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       totalWidth += increment;
     }
 
+      // Make the last row in justified layout not resizable.
+      if (layoutMode === DetailsListLayoutMode.justified) {
+        adjustedColumns[adjustedColumns.length - 1].isResizable = false;
+      }
+
     return adjustedColumns;
   }
 
@@ -463,6 +533,108 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           }
         });
       }
+    }
+  }
+
+  /**
+   * clear drag data when mouse up on body
+   */
+  private _onMouseUp(event: MouseEvent) {
+    this._dragging = false;
+    if (this._dragData && this._dragData.dropTarget) {
+      // raise dargleave event to let dropTarget know it need to remove dropping style
+      EventGroup.raise(this._dragData.dropTarget.refs.root, 'dragleave');
+    }
+    this._dragData = null;
+  }
+
+  /**
+   * clear drag data when mouse up outside of the document
+   */
+  private _onDocumentMouseUp(event: MouseEvent) {
+    if (event.target === document.documentElement) {
+      this._onMouseUp(event);
+    }
+  }
+
+  /**
+   * Register mouse events to enable drag items in the list and drop to the other item.
+   * when mouse down on a draggable item, we start to track dragdata.
+   * when mouse move over a row while dragging some items, fire dragenter to the row
+   * when mouse leave a row while dragging some items, fire dragleave to the row
+   * details row will handle dragenter and dragleave event to change the style.
+   *
+   * @private
+   * @param {DetailsRow} row
+   */
+  private _registerDragDropEvents(row: DetailsRow) {
+    let { dragDropEvents } = this.props;
+
+    if (dragDropEvents) {
+      this._events.on(row.refs.root, 'mousemove', this._onRowMouseMove.bind(this, row));
+      this._events.on(row.refs.root, 'mouseleave', this._onRowMouseLeave.bind(this, row));
+
+      if (dragDropEvents.canDrag) {
+        this._events.on(row.refs.root, 'mousedown', this._onRowMouseDown.bind(this, row));
+      }
+    }
+  }
+
+  /**
+   * when mouse move over a new row while dragging some items,
+   * fire dragleave on the old row and fire dragenter to the new row
+   * row will handle style change on dragenter and dragleave events.
+   */
+  private _onRowMouseMove(row: DetailsRow, event: MouseEvent) {
+    if (this._dragging) {
+      if (this._dragData.dropTarget && this._dragData.dropTarget.props.itemIndex !== row.props.itemIndex) {
+        EventGroup.raise(this._dragData.dropTarget.refs.root, 'dragleave');
+        this._dragData.dropTarget = null;
+      }
+
+      if (!this._dragData.dropTarget) {
+        EventGroup.raise(row.refs.root, 'dragenter');
+        this._dragData.dropTarget = row;
+      }
+    } else if (this._dragData) {
+      let xDiff = this._dragData.clientX - event.clientX;
+      let yDiff = this._dragData.clientY - event.clientY;
+      if (xDiff * xDiff + yDiff * yDiff >= DISTANCE_FOR_DRAG_SQUARED) {
+        if (this._dragData.dragTarget &&
+          this._selection.isIndexSelected(this._dragData.dragTarget.props.itemIndex)) {
+          this._dragging = true;
+        }
+      }
+    }
+  }
+
+  /**
+   * when mouse leave a row while dragging some items, fire dragleave to the row
+   */
+  private _onRowMouseLeave(row: DetailsRow, event: MouseEvent) {
+    if (this._dragging) {
+      if (this._dragData && this._dragData.dropTarget) {
+        EventGroup.raise(row.refs.root, 'dragleave');
+        this._dragData.dropTarget = null;
+      }
+    }
+  }
+
+  /**
+   * when mouse down on a draggable item, we start to track dragdata.
+   */
+  private _onRowMouseDown(row: DetailsRow, event: MouseEvent) {
+    let { dragDropEvents } = this.props;
+
+    if (dragDropEvents.canDrag(row.props.item)) {
+      this._dragData = {
+        clientX: event.clientX,
+        clientY: event.clientY,
+        eventTarget: event.target,
+        dragTarget: row
+      };
+    } else {
+      this._dragData = null;
     }
   }
 }

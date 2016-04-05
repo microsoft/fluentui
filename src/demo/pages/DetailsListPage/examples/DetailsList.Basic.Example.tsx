@@ -32,9 +32,12 @@ export interface IDetailsListBasicExampleState {
   isSortedDescending?: boolean;
   contextualMenuProps?: IContextualMenuProps;
   groupItemLimit?: number;
+  isLazyLoaded?: boolean;
 }
 
 export default class DetailsListBasicExample extends React.Component<any, IDetailsListBasicExampleState> {
+  private _isFetchingItems: boolean;
+
   constructor() {
     super();
 
@@ -43,6 +46,7 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
     }
 
     this._onToggleResizing = this._onToggleResizing.bind(this);
+    this._onToggleLazyLoad = this._onToggleLazyLoad.bind(this);
     this._onLayoutChanged = this._onLayoutChanged.bind(this);
     this._onConstrainModeChanged = this._onConstrainModeChanged.bind(this);
     this._onSelectionChanged = this._onSelectionChanged.bind(this);
@@ -51,7 +55,7 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
     this._onItemLimitChanged = this._onItemLimitChanged.bind(this);
 
     this.state = {
-      items: _items,
+      items: _items, // createListItems(100).concat(new Array(9900)), // _items,
       groups: null,
       groupItemLimit: DEFAULT_ITEM_LIMIT,
       layoutMode: LayoutMode.justified,
@@ -61,12 +65,22 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
       columns: this._buildColumns(_items, true, this._onColumnClick, ''),
       contextualMenuProps: null,
       sortedColumnKey: 'name',
-      isSortedDescending: false
+      isSortedDescending: false,
+      isLazyLoaded: false
     };
   }
 
   public render() {
-    let { items, groups, groupItemLimit, layoutMode, constrainMode, selectionMode, columns, contextualMenuProps } = this.state;
+    let {
+      items,
+      groups,
+      groupItemLimit,
+      layoutMode,
+      constrainMode,
+      selectionMode,
+      columns,
+      contextualMenuProps
+    } = this.state;
 
     let isGrouped = groups && groups.length > 0;
 
@@ -76,8 +90,8 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
 
         {
           (isGrouped) ?
-          <TextField label='Group Item Limit' onChanged={ this._onItemLimitChanged } /> :
-          (null)
+            <TextField label='Group Item Limit' onChanged={ this._onItemLimitChanged } /> :
+            (null)
         }
 
         <DetailsList
@@ -88,6 +102,10 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
           selectionMode={ selectionMode }
           constrainMode={ constrainMode }
           groupItemLimit={ groupItemLimit }
+          onRenderMissingItem={ (index) => {
+            this._onDataMiss(index);
+            return null;
+          } }
           />
 
         { contextualMenuProps && (
@@ -95,6 +113,38 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
         ) }
       </div>
     );
+  }
+
+  private _onDataMiss(index) {
+    index = Math.floor(index / 100) * 100;
+
+    if (!this._isFetchingItems) {
+
+      this._isFetchingItems = true;
+
+      setTimeout(() => {
+        this._isFetchingItems = false;
+        let itemsCopy = [].concat(this.state.items);
+
+        itemsCopy.splice.apply(itemsCopy, [index, 100].concat(_items.slice(index, index + 100)));
+
+        this.setState({
+          items: itemsCopy
+        });
+
+      }, 1000);
+    }
+  }
+
+  private _onToggleLazyLoad() {
+    let { isLazyLoaded } = this.state;
+
+    isLazyLoaded = !isLazyLoaded;
+
+    this.setState({
+      isLazyLoaded: isLazyLoaded,
+      items: isLazyLoaded ? _items.slice(0, 100).concat(new Array(9900)) : _items
+    });
   }
 
   private _onToggleResizing() {
@@ -137,7 +187,7 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
   }
 
   private _getCommandItems() {
-    let { layoutMode, constrainMode, selectionMode, canResizeColumns } = this.state;
+    let { layoutMode, constrainMode, selectionMode, canResizeColumns, isLazyLoaded } = this.state;
 
     return [
       {
@@ -151,6 +201,13 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
             canCheck: true,
             isChecked: canResizeColumns,
             onClick: this._onToggleResizing
+          },
+          {
+            key: 'lazyload',
+            name: 'Simulate async loading',
+            canCheck: true,
+            isChecked: isLazyLoaded,
+            onClick: this._onToggleLazyLoad
           },
           {
             name: '-'
@@ -237,22 +294,22 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
 
   private _getContextualMenuProps(column: IColumn, ev: React.MouseEvent): IContextualMenuProps {
     let items = [
-        {
-          key: 'aToZ',
-          name: 'A to Z',
-          icon: 'arrowUp2',
-          canCheck: true,
-          isChecked: column.isSorted && !column.isSortedDescending,
-          onClick: () => this._onSortColumn(column.key, false)
-        },
-        {
-          key: 'zToA',
-          name: 'Z to A',
-          icon: 'arrowDown2',
-          canCheck: true,
-          isChecked: column.isSorted && column.isSortedDescending,
-          onClick: () => this._onSortColumn(column.key, true)
-        }
+      {
+        key: 'aToZ',
+        name: 'A to Z',
+        icon: 'arrowUp2',
+        canCheck: true,
+        isChecked: column.isSorted && !column.isSortedDescending,
+        onClick: () => this._onSortColumn(column.key, false)
+      },
+      {
+        key: 'zToA',
+        name: 'Z to A',
+        icon: 'arrowDown2',
+        canCheck: true,
+        isChecked: column.isSorted && column.isSortedDescending,
+        onClick: () => this._onSortColumn(column.key, true)
+      }
     ];
     if (column.isGroupable) {
       items.push({

@@ -29,6 +29,7 @@ export interface ISelection {
   isKeySelected(key: string): boolean;
   isIndexSelected(index: number): boolean;
 
+  getIsFocusActive(): boolean;
   getFocusedKey(): string;
   getFocusedIndex(): number;
 
@@ -38,6 +39,7 @@ export interface ISelection {
   setKeySelected(key: string, isSelected: boolean, shouldFocus: boolean, shouldAnchor: boolean);
   setIndexSelected(index: number, isSelected: boolean, shouldFocus: boolean, shouldAnchor: boolean);
 
+  setIsFocusActive(isFocusActive: boolean);
   setKeyFocused(key: string);
   setIndexFocused(index: number);
 

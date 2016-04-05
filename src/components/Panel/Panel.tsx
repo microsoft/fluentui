@@ -70,7 +70,7 @@ export default class Panel extends React.Component<IPanelProps, IPanelState> {
     let isRTL = getRTL();
 
     return (
-      <div ref='panelMain' className={ css('ms-Panel', {
+      <div ref='panelMain' className={css('ms-Panel', {
         'ms-Panel--left': !isRTL,
         'ms-Panel--right': isRTL,
         'is-open': isOpen,

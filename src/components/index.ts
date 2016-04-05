@@ -24,6 +24,8 @@ export { default as Fabric } from './Fabric/index';
 export * from './Fabric/index';
 export { default as Label } from './Label/index';
 export * from './Label/index';
+export { default as Layer } from './Layer/index';
+export * from './Layer/index';
 export { default as Link } from './Link/index';
 export * from './Link/index';
 export { default as List } from './List/index';

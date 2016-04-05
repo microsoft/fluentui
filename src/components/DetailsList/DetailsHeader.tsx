@@ -57,6 +57,7 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
     this._onSizerMove = this._onSizerMove.bind(this);
     this._onSizerUp = this._onSizerUp.bind(this);
     this._onToggleCollapseAll = this._onToggleCollapseAll.bind(this);
+    this._onSelectAllClicked = this._onSelectAllClicked.bind(this);
   }
 
   public componentDidMount() {
@@ -95,7 +96,7 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
           { (selectionMode === SelectionMode.multiple) ? (
             <button
               className='ms-DetailsHeader-cell is-check'
-              data-selection-all-toggle='true'
+              onClick={ this._onSelectAllClicked }
               >
               <Check isChecked={ isAllSelected } />
             </button>
@@ -165,6 +166,15 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
     if (onColumnAutoResized) {
       onColumnAutoResized(columns[columnIndex], columnIndex);
     }
+  }
+
+  /**
+   * Called when the select all toggle is clicked.
+   */
+  private _onSelectAllClicked() {
+    let { selection } = this.props;
+
+    selection.toggleAllSelected();
   }
 
   /**

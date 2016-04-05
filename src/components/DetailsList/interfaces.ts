@@ -20,6 +20,8 @@ export interface IColumn {
   isSizing?: boolean;
   isGroupable?: boolean;
   isGrouped?: boolean;
+  // Arbitrary data required to be preserved by the caller.
+  data?: any;
 }
 
 export enum ConstrainMode {
@@ -44,4 +46,12 @@ export interface IGroup {
   isSelected?: boolean;
   isCollapsed?: boolean;
   isShowingAll?: boolean;
+}
+
+export interface IDragDropEvents {
+  canDrop?: (item?: any) => boolean;
+  canDrag?: (item?: any) => boolean;
+  onDragEnter?: (event?: DragEvent, item?: any) => string; // return string is the css classes that will be added to the enterring element.
+  onDragLeave?: (event?: DragEvent, item?: any) => void;
+  onDrop?: (event?: DragEvent, item?: any) => void;
 }
