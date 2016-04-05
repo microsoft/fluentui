@@ -13,10 +13,9 @@ export class DialogFooter extends React.Component<any, any> {
   }
 
   private _renderChildrenAsActions() {
-    return this.props.children.map(child => {
-      return React.cloneElement(child, {
-        className: child.className + ' ms-Dialog-action'
-      });
-    });
+    let key = 0;
+    return this.props.children.map(child =>
+      <span key={ key++ } className='ms-Dialog-action'>{ child }</span>
+    );
   }
 }

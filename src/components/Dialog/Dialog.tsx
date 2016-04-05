@@ -10,7 +10,6 @@ import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/w
 
 // @TODO - need to add animations, pending Fabric Team + Coulton work
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
-// @TODO - use the layer component by thomas michon to project the dialog to the end of the DOM
 
 @withResponsiveMode
 export default class Dialog extends React.Component<IDialogProps, any> {
