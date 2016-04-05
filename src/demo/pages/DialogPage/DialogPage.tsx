@@ -4,9 +4,8 @@ import {
 } from '../../../components/index';
 import {
   ExampleCard,
-  PropertiesTable
+  PropertiesTableSet
 } from '../../components/index';
-import DialogProps from './DialogProps';
 
 import DialogBasicExample from './examples/Dialog.Basic.Example';
 let DialogBasicExampleCode = require('./examples/Dialog.Basic.Example.tsx');
@@ -44,7 +43,7 @@ export default class DialogPage extends React.Component<any, any> {
           <DialogBlockingExample />
         </ExampleCard>
 
-        <PropertiesTable properties={ DialogProps } />
+        <PropertiesTableSet componentName='Dialog' />
       </div>
     );
   }

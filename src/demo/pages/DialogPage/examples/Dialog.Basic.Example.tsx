@@ -22,12 +22,12 @@ export default class DialogBasicExample extends React.Component<any, any> {
       <div>
         <Button description='Opens the Sample Dialog' onClick={ this._showDialog.bind(this) }>Open Dialog</Button>
         <Dialog
-          open={ this.state.showDialog }
+          isOpen={ this.state.showDialog }
           type={ DialogType.normal }
           onDismiss={ this._closeDialog.bind(this) }
           title='All emails together'
           subText='Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
-          blocking={ false }
+          isBlocking={ false }
         >
           // Create any child elements that you want
           <ChoiceGroup
