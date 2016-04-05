@@ -4,6 +4,7 @@
 .ms-Panel {
   /** bug: panel should not ignore pointer events. */
   pointer-events: inherit;
+  overflow: hidden;
 }
 
 

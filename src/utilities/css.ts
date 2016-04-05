@@ -1,4 +1,11 @@
-export function css(...args) {
+
+export interface ICssMapping {
+  [className: string]: boolean;
+}
+
+export type ICssInput = string | ICssMapping;
+
+export function css(...args: ICssInput[]) {
   let classes = [];
 
   for (let arg of args) {

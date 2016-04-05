@@ -2,12 +2,14 @@ import * as React from 'react';
 import { css } from '../../utilities/css';
 import './Panel.scss';
 import Overlay from '../Overlay/Overlay';
+import Layer from '../Layer/Layer';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { getRTL } from '../../utilities/rtl';
 
 export interface IPanelProps extends React.Props<Panel> {
   isOpen?: boolean;
   onDismiss?: () => {};
+  className?: string;
 }
 
 export interface IPanelState {
@@ -17,17 +19,13 @@ export interface IPanelState {
 }
 
 export default class Panel extends React.Component<IPanelProps, IPanelState> {
-  public refs: {
-    [ key: string ]: React.ReactInstance;
-    panelMain: HTMLElement
-  };
-
   private _events: EventGroup;
 
   constructor(props: IPanelProps) {
     super(props);
 
     this._onPanelClick = this._onPanelClick.bind(this);
+    this._onPanelRef = this._onPanelRef.bind(this);
 
     this.state = {
       isOpen: !!props.isOpen,
@@ -39,8 +37,6 @@ export default class Panel extends React.Component<IPanelProps, IPanelState> {
   }
 
   public componentDidMount() {
-    this._events.on(this.refs.panelMain, 'animationend', this._onAnimationEnd);
-
     if (this.state.isOpen) {
       setTimeout(() => {
       this.setState({
@@ -65,25 +61,31 @@ export default class Panel extends React.Component<IPanelProps, IPanelState> {
   }
 
   public render() {
-    let { children } = this.props;
+    let { children, className = '' } = this.props;
     let { isOpen, isAnimatingOpen, isAnimatingClose } = this.state;
     let isRTL = getRTL();
 
     return (
-      <div ref='panelMain' className={css('ms-Panel', {
-        'ms-Panel--left': !isRTL,
-        'ms-Panel--right': isRTL,
-        'is-open': isOpen,
-        'ms-Panel-animateIn': isAnimatingOpen,
-        'ms-Panel-animateOut': isAnimatingClose
-      }) }
-        onClick={ this._onPanelClick }
-      >
-        <Overlay isDarkThemed={ true } />
-        <div className='ms-Panel-main'>
-          { children }
+      <Layer>
+        <div
+          ref={ this._onPanelRef }
+          className={
+            css('ms-Panel', className, {
+              'ms-Panel--left': !isRTL,
+              'ms-Panel--right': isRTL,
+              'is-open': isOpen,
+              'ms-Panel-animateIn': isAnimatingOpen,
+              'ms-Panel-animateOut': isAnimatingClose
+            })
+          }
+          onClick={ this._onPanelClick }
+          >
+          <Overlay isDarkThemed={ true } />
+          <div className='ms-Panel-main'>
+            { children }
+          </div>
         </div>
-      </div>
+      </Layer>
     );
   }
 
@@ -97,6 +99,14 @@ export default class Panel extends React.Component<IPanelProps, IPanelState> {
 
   private _onPanelClick() {
     this.dismiss();
+  }
+
+  private _onPanelRef(ref: HTMLDivElement) {
+    if (ref) {
+      this._events.on(ref, 'animationend', this._onAnimationEnd);
+    } else {
+      this._events.off();
+    }
   }
 
   private _onAnimationEnd(ev: AnimationEvent) {
