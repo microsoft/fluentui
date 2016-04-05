@@ -12,6 +12,7 @@ import DropdownPage from '../../pages/DropdownPage/DropdownPage';
 import FocusZonePage from '../../pages/FocusZonePage/FocusZonePage';
 import { INavLink, INavLinkGroup } from '../../../components/Nav/index';
 import LabelPage from '../../pages/LabelPage/LabelPage';
+import LayerPage from '../../pages/LayerPage/LayerPage';
 import LinkPage from '../../pages/LinkPage/LinkPage';
 import ListPage from '../../pages/ListPage/ListPage';
 import NavPage from '../../pages/NavPage/NavPage';
@@ -120,6 +121,12 @@ export const AppState: IAppState = {
           name: 'Label',
           status: ExampleStatus.started,
           url: '#/examples/label'
+        },
+        {
+          component: LayerPage,
+          name: 'Layer',
+          status: ExampleStatus.started,
+          url: '#/examples/layer'
         },
         {
           component: LinkPage,
