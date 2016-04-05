@@ -20,6 +20,8 @@ export interface IColumn {
   isSizing?: boolean;
   isGroupable?: boolean;
   isGrouped?: boolean;
+  // Arbitrary data required to be preserved by the caller.
+  data?: any;
 }
 
 export enum ConstrainMode {

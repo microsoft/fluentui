@@ -75,7 +75,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   public static defaultProps = {
     layoutMode: DetailsListLayoutMode.justified,
     selectionMode: SelectionMode.multiple,
-    constrainMode: ConstrainMode.horizontalConstrained
+    constrainMode: ConstrainMode.horizontalConstrained,
+    groupItemLimit: DEFAULT_GROUP_ITEM_LIMIT
   };
 
   public refs: {
