@@ -10,45 +10,64 @@ import GroupFooter from './GroupFooter';
 import GroupHeader from './GroupHeader';
 import { ISelection, SelectionMode } from '../../utilities/selection/ISelection';
 import IObjectWithKey from '../../utilities/selection/IObjectWithKey';
-import {Selection } from '../../utilities/selection/Selection';
+import { Selection } from '../../utilities/selection/Selection';
 import SelectionZone from '../../utilities/selection/SelectionZone';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
 import './DetailsList.scss';
 
 const DEFAULT_GROUP_ITEM_LIMIT = 5;
 
-export interface IDetailsListProps {
+export interface IDetailsListProps extends React.Props<DetailsList> {
+  /** A key that uniquely identifies the given items. If provided, the selection will be reset when the key changes. */
+  setKey?: string;
+
+  /** The items to render. */
   items: any[];
-  groups?: IGroup[];
-  selection?: ISelection;
-  selectionMode?: SelectionMode;
-  layoutMode?: DetailsListLayoutMode;
-  columns?: IColumn[];
-  viewport?: IViewport;
-  constrainMode?: ConstrainMode;
-  groupItemLimit?: number;
+
+  /** Optional class name to add to the root element. */
   className?: string;
-  /**
-   * event names and corresponding callbacks that will be registered to rendered row elements
-   */
+
+  /** Optional grouping instructions. */
+  groups?: IGroup[];
+
+  /** Optional selection model to track selection state.  */
+  selection?: ISelection;
+
+  /** Controls how/if the details list manages selection. */
+  selectionMode?: SelectionMode;
+
+  /** Controls how the columns are adjusted. */
+  layoutMode?: DetailsListLayoutMode;
+
+  /** Given column defitions. If none are provided, default columns will be created based on the item's properties. */
+  columns?: IColumn[];
+
+  /** Controls how the list contrains overflow. */
+  constrainMode?: ConstrainMode;
+
+  /** Grouping item limit. */
+  groupItemLimit?: number;
+
+  /** Event names and corresponding callbacks that will be registered to rendered row elements. */
   rowElementEventMap?: [{ eventName: string, callback: (item?: any, index?: number, event?: any) => void }];
-  /**
-   * call back function fired after list updated
-   */
+
+  /** Callback for when the details list has been updated. Useful for telemetry tracking externally. */
   onDidUpdate?: (detailsList?: DetailsList) => any;
-  /**
-   * call back function fired after row mounted
-   */
+
+  /** Callback for when a given row has been mounted. Useful for identifying when a row has been rendered on the page. */
   onRowDidMount?: (item?: any, index?: number) => void;
-  /**
-   * call back function fired before row unmount
-   */
+
+  /** Callback for when a given row has been mounted. Useful for identifying when a row has been removed from the page. */
   onRowWillUnmount?: (item?: any, index?: number) => void;
-  /**
-   * functions related to drag and drop
-   */
+
+  /** Map of callback functions related to drag and drop functionality. */
   dragDropEvents?: IDragDropEvents;
-  onRenderMissingItem?: (index?: number, containsFocus?: boolean) => React.ReactNode;
+
+    /** Callback for what to render when the item is missing. */
+  onRenderMissingItem?: (index?: number) => React.ReactNode;
+
+  /** Viewport, provided by the withViewport decorator. */
+  viewport?: IViewport;
 }
 
 export interface IDetailsListState {
@@ -150,20 +169,22 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   }
 
   public componentWillReceiveProps(newProps) {
+    let { setKey, groups, items } = this.props;
     let { layoutMode } = this.state;
+    let shouldResetSelection = (newProps.setKey !== setKey) || newProps.setKey === undefined;
 
     if (newProps.layoutMode !== this.props.layoutMode) {
       layoutMode = newProps.layoutMode;
       this.setState({ layoutMode: layoutMode });
     }
 
-    if (newProps.items !== this.props.items) {
-      this._selection.setItems(newProps.items, true);
+    if (newProps.items !== items) {
+      this._selection.setItems(newProps.items, shouldResetSelection);
     }
 
     this._adjustColumns(newProps, true, layoutMode);
 
-    if (newProps.groups !== this.props.groups) {
+    if (newProps.groups !== groups) {
       this.setState({ groups: newProps.groups });
     }
   }
@@ -197,6 +218,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
               ref={ 'list_' + groupIdx }
               items={ this._getItemsToRender(group) }
               onRenderCell={ this._onRenderCell }
+              selection={ selection }
             />
         }
         {
@@ -218,7 +240,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
         'is-fixed': layoutMode === DetailsListLayoutMode.fixedColumns,
         'is-horizontalConstrained': constrainMode === ConstrainMode.horizontalConstrained
       }) }>
-        <SelectionZone selection={ this._selection } selectionMode={ selectionMode }>
           <DetailsHeader
             ref='header'
             selectionMode={ selectionMode }
@@ -231,13 +252,14 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
             isAllCollapsed={ isAllCollapsed }
             onToggleCollapseAll={ this._onToggleCollapseAll }
             />
+        <SelectionZone selection={ this._selection } selectionMode={ selectionMode }>
           { renderedGroups }
         </SelectionZone>
       </div>
     );
   }
 
-  private _onRenderCell(item: any, index: number, containsFocus: boolean): React.ReactNode {
+  private _onRenderCell(item: any, index: number): React.ReactNode {
     let result = null;
 
     if (item) {
@@ -254,7 +276,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           columns={ adjustedColumns }
           selectionMode={ selectionMode }
           selection={ selection }
-          shouldSetFocus={ containsFocus }
           onDidMount={ this._onRowDidMount }
           onWillUnmount={ this._onRowWillUnmount }
           eventsToRegister={ rowElementEventMap }
@@ -266,7 +287,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       let { onRenderMissingItem } = this.props;
 
       if (onRenderMissingItem) {
-        result = onRenderMissingItem(index, containsFocus);
+        result = onRenderMissingItem(index);
       }
     }
 
@@ -455,6 +476,11 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       column.calculatedWidth += increment;
       totalWidth += increment;
     }
+
+      // Make the last row in justified layout not resizable.
+      if (layoutMode === DetailsListLayoutMode.justified) {
+        adjustedColumns[adjustedColumns.length - 1].isResizable = false;
+      }
 
     return adjustedColumns;
   }

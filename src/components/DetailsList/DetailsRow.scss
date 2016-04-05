@@ -44,15 +44,20 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
   vertical-align: top;
   white-space: normal;
   word-break: break-word;
-  margin-right: 16px;
+  @include margin-right(16px);
 
   &.is-clipped {
     overflow: hidden;
   }
 }
 
+.ms-DetailsRow-fields {
+  display: inline-block;
+}
+
+
 .ms-DetailsRow-cell:last-child {
-  margin-right: 0;
+  @include margin-right(0);
 }
 
 .ms-DetailsRow-check {
@@ -79,7 +84,8 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
   visibility: visible;
 }
 
-.ms-Fabric.is-focusVisible .ms-DetailsRow:focus .ms-DetailsRow-focusBox {
+.ms-Fabric.is-focusVisible .ms-DetailsRow:focus:before {
+  content: '';
   position: absolute;
   left: 0;
   right: 0;

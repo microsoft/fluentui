@@ -19,7 +19,8 @@
     "**/.DS_Store": true,
     "**/bower_components": true,
     "**/coverage": true,
-    "**/lib-amd": true
+    "**/lib-amd": true,
+    "src/**/*.scss.ts": true
   },
 
   // Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the file.exclude setting.

@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom';
 import EventGroup from '../eventGroup/EventGroup';
 import { findIndex } from '../array';
 import KeyCodes from '../KeyCodes';
+import { getRTL } from '../rtl';
 
 const FOCUSABLE_ZONE_ENABLED_ATTRIBUTE = 'data-focus-zone-enabled';
 const CONTAINS_FOCUSABLE_SUBCOMPONENT_ATTRIBUTE = 'data-contains-focusable-subcomponents';
@@ -361,7 +362,18 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
       return true;
     }
 
-    switch (ev.which) {
+    let key = ev.which;
+
+    // Respect RTL.
+    if (getRTL()) {
+      if (key === KeyCodes.left) {
+        key = KeyCodes.right;
+      } else if (key === KeyCodes.right) {
+        key = KeyCodes.left;
+      }
+    }
+
+    switch (key) {
       case KeyCodes.up:
         if (direction === FocusZoneDirection.vertical) {
           newActiveIndex = this.getPreviousElementIndex();

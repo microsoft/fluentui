@@ -1,15 +1,18 @@
 import * as React from 'react';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
-import withContainsFocus from '../../utilities/decorators/withContainsFocus';
+import { ISelection, SELECTION_CHANGE } from '../../utilities/selection/ISelection';
 
-export interface IListProps {
+export interface IListProps extends React.Props<List> {
+  /** Items to render. */
   items?: any[];
-  onRenderCell?: (item?: any, index?: number, containsFocus?: boolean) => React.ReactNode;
+
+  /** Method to call when trying to render an item. */
+  onRenderCell?: (item?: any, index?: number) => React.ReactNode;
+
+  /** How many items to render per page. */
   itemsPerPage?: number;
 
-  containsFocus?: boolean;
-
-  ref?: string;
+  selection?: ISelection;
 }
 
 export interface IListState {
@@ -24,8 +27,7 @@ export interface IRect {
   height: number;
 }
 
-@withContainsFocus
-export default class List extends React.Component<IListProps, any> {
+export default class List extends React.Component<IListProps, IListState> {
   public static defaultProps = {
     itemsPerPage: 10,
     onRenderCell: (item, index, containsFocus) => (<div>{ (item && item.name) || '' }</div>)
@@ -41,17 +43,25 @@ export default class List extends React.Component<IListProps, any> {
   private _cachedPageHeights: { [key: string]: number };
   private _scrollableElement: HTMLElement;
   private _events: EventGroup;
+  private _focusedIndex: number;
+  private _scrollingToIndex: number;
 
-  constructor() {
-    super();
+  constructor(props: IListProps) {
+    super(props);
     this.state = {
-      pages: [],
-      surfaceStyle: {}
+      pages: []
     };
 
     this._events = new EventGroup(this);
     this._cachedPageHeights = {};
     this._estimatedItemHeight = 30;
+    this._focusedIndex = -1;
+    this._scrollingToIndex = -1;
+
+    if (props.selection) {
+      this._events.on(props.selection, SELECTION_CHANGE, this._onSelectionChanged);
+      this._focusedIndex = props.selection.getFocusedIndex();
+    }
   }
 
   public componentDidMount() {
@@ -84,7 +94,6 @@ export default class List extends React.Component<IListProps, any> {
 
     if (
       newProps.items === this.props.items &&
-      newProps.containsFocus === this.props.containsFocus &&
       oldPages.length === newPages.length &&
       areEqualSize(oldContainerRect, newContainerRect)) {
       for (let i = 0; i < oldPages.length; i++) {
@@ -106,17 +115,17 @@ export default class List extends React.Component<IListProps, any> {
 
   public render() {
     let rootClass = 'ms-List';
-    let { onRenderCell, containsFocus } = this.props;
-    let { pages, surfaceStyle } = this.state;
+    let { onRenderCell } = this.props;
+    let { pages } = this.state;
 
     return (
       <div ref='root' className={ rootClass }>
-        <div ref='surface' className='ms-List-surface' style={ surfaceStyle }>
+        <div ref='surface' className='ms-List-surface'>
           { pages.map(page => (
             <div className='ms-List-page' key={ page.key } ref={ page.key } style={ page.style }>
               { page.items ? page.items.map((item, itemIndex) => (
                 <div className='ms-List-cell' key={ item ? item.key : (page.startIndex + itemIndex) }>
-                  { onRenderCell(item, page.startIndex + itemIndex, containsFocus) }
+                  { onRenderCell(item, page.startIndex + itemIndex) }
                 </div>
               )) : null }
             </div>
@@ -125,18 +134,79 @@ export default class List extends React.Component<IListProps, any> {
       </div>
     );
   }
+public componentDidUpdate() {
+  if (this._scrollingToIndex > -1) {
+    if (this._isIndexRendered(this._scrollingToIndex)) {
+      this._focusedIndex = this._scrollingToIndex;
+      this._scrollingToIndex = -1;
+    }
+  }
+}
+  public scrollTo(index: number): boolean {
+    let isIndexRendered = this._isIndexRendered(index);
+    let didScroll = false;
 
-  public scrollTo(index: number) {
-    let { pages } = this.state;
+    if (!isIndexRendered) {
+      // Identify where the page would be.
+      let pageTop = 0;
+      let itemCount = 0;
+      let { items } = this.props;
 
-    if (pages && pages.length > 2) {
-      let firstPage = pages[0];
-      let lastPage = pages[1];
+      for (let itemIndex = 0; items && itemIndex < items.length; itemIndex += itemCount) {
+        itemCount = this._getItemCountForPage(itemIndex);
 
-      if (firstPage.startIndex <= index && lastPage.endIndex) {
-        return;
+        if (itemIndex <= index && (itemIndex + itemCount) > index) {
+          let allScrollables = this._getScrollableElements();
+          let scrollElement = allScrollables[0] || document.body;
+
+          for (let scrollable of allScrollables) {
+            if (scrollable.clientHeight < scrollable.scrollHeight) {
+              scrollElement = scrollable;
+              break;
+            }
+          }
+
+          let surfaceRect = this.refs.surface.getBoundingClientRect();
+          let scrollRect = scrollElement.getBoundingClientRect();
+
+          didScroll = true;
+          scrollElement.scrollTop = surfaceRect.top - scrollRect.top + scrollElement.scrollTop + pageTop;
+          break;
+        }
+
+        pageTop += + this._getPageHeight(itemIndex, itemCount);
       }
     }
+
+    return didScroll;
+  }
+
+  private _onSelectionChanged() {
+    let { selection } = this.props;
+    let focusedIndex = selection.getFocusedIndex();
+    let shouldScroll = !!(this._focusedIndex !== focusedIndex && selection.getIsFocusActive());
+
+    if (shouldScroll) {
+      this._scrollingToIndex = focusedIndex;
+      if (!this.scrollTo(focusedIndex)) {
+        this._focusedIndex = this._scrollingToIndex;
+        this._scrollingToIndex = -1;
+      }
+    }
+  }
+
+  private _isIndexRendered(index: number): boolean {
+    let { pages } = this.state;
+    let isIndexRendered = false;
+
+    for (let page of pages) {
+      if (page.items && page.startIndex <= index && (page.startIndex + page.itemCount) > index) {
+        isIndexRendered = true;
+        break;
+      }
+    }
+
+    return isIndexRendered;
   }
 
   private _onScrollOrResize() {
@@ -144,7 +214,12 @@ export default class List extends React.Component<IListProps, any> {
   }
 
   private _updatePages(items?: any[]) {
-    let containerRect = this._getScrollableContainerRect();
+    let containerRect = {
+      top: -window.innerHeight,
+      left: 0,
+      width: window.innerWidth,
+      height: window.innerHeight * 3
+    };
 
     items = items || this.props.items;
 
@@ -186,29 +261,43 @@ export default class List extends React.Component<IListProps, any> {
     let visibleTop = containerRect.top - surfaceRect.top;
     let visibleBottom = visibleTop + containerRect.height;
     let itemsPerPage = 1;
-    let startSpacer = this._createPage('startSpacer', null, 0, 0);
-    let endSpacer = this._createPage('endSpacer', null, 0, 0);
-    let pages = [startSpacer];
+    let pages = [];
     let pageTop = 0;
+    let currentSpacer = null;
+    let focusedIndex = this._focusedIndex;
 
     for (let itemIndex = 0; itemIndex < items.length; itemIndex += itemsPerPage) {
       itemsPerPage = this._getItemCountForPage(itemIndex);
 
       let pageBottom = pageTop + this._getPageHeight(itemIndex, itemsPerPage) - 1;
+      let pageIsVisible = pageBottom > visibleTop && pageTop < visibleBottom;
+
+      // If the page contains the focusedIndex, render it.
+      if (focusedIndex >= itemIndex && focusedIndex < (itemIndex + itemsPerPage)) {
+        pageIsVisible = true;
+      }
 
       // Only render whats visible
-      if (pageBottom > visibleTop && pageTop < visibleBottom) {
+      if (pageIsVisible) {
+        if (currentSpacer) {
+          pages.push(currentSpacer);
+          currentSpacer = null;
+        }
         pages.push(this._createPage(null, items.slice(itemIndex, itemIndex + itemsPerPage), itemIndex));
       } else {
-        let spacer = (pages.length === 1) ? startSpacer : endSpacer;
-
-        spacer.style.height = (spacer.style.height || 0) + (pageBottom - pageTop) + 1;
-        spacer.itemCount += itemsPerPage;
+        if (!currentSpacer) {
+          currentSpacer = this._createPage('spacer-' + itemIndex, null, itemIndex, 0);
+        }
+        currentSpacer.style.height = (currentSpacer.style.height || 0) + (pageBottom - pageTop) + 1;
+        currentSpacer.itemCount += itemsPerPage;
       }
       pageTop += (pageBottom - pageTop + 1);
     }
 
-    pages.push(endSpacer);
+    if (currentSpacer) {
+      currentSpacer.key = 'spacer-end';
+      pages.push(currentSpacer);
+    }
 
     return pages;
   }
@@ -243,18 +332,6 @@ export default class List extends React.Component<IListProps, any> {
     }
 
     return elements;
-  }
-
-  private _getScrollableContainerRect() {
-    // If we are using body scroll, 0 to window.innerHeight is the constraint;
-    // Otherwise, it's relative to the scrollable container which needs to be found.
-
-    return {
-      top: -window.innerHeight,
-      left: 0,
-      width: window.innerWidth,
-      height: window.innerHeight * 3
-    };
   }
 
   private _createPage(pageKey: string, items: any[], startIndex?: number, count?: number, style?: any) {

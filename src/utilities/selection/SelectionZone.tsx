@@ -39,7 +39,7 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
   };
 
   public refs: {
-    [ key: string]: React.ReactInstance,
+    [key: string]: React.ReactInstance,
     root: HTMLElement
   };
 
@@ -72,26 +72,25 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
       <div
         className='ms-SelectionZone'
         ref='root'
-      >
+        >
         {this.props.children }
       </div>
     );
   }
 
-  private _onFocus() {
-    /*
-    if (this._onIsActiveChanged) {
-      this._onIsActiveChanged(true);
+  private _onFocus(ev: FocusEvent) {
+    this.props.selection.setIsFocusActive(true);
+    let key = this._getKeyFromElement(ev.target as HTMLElement);
+
+    if (key) {
+      this.props.selection.setKeyFocused(key);
     }
-    */
   }
 
-  private _onBlur() {
-    /*
-    if (this._onIsActiveChanged) {
-      this._onIsActiveChanged(false);
+  private _onBlur(ev: FocusEvent) {
+    if (!this.refs.root.contains(ev.relatedTarget as Node)) {
+      this.props.selection.setIsFocusActive(false);
     }
-    */
   }
 
   private _onKeyDown(ev: KeyboardEvent) {
@@ -142,11 +141,17 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
         indexToSelect = selection.getItems().length - 1;
         break;
 
+      case KeyCodes.space:
+        selection.toggleIndexSelected(focusIndex);
+        ev.stopPropagation();
+        ev.preventDefault();
+        break;
+
       case KeyCodes.escape:
         if (selection.getSelectedCount() > 0) {
+          selection.setAllSelected(false);
           ev.stopPropagation();
           ev.preventDefault();
-          selection.setAllSelected(false);
         }
         return;
 
@@ -175,7 +180,6 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
           }
           selection.selectToIndex(indexToSelect);
         } else if (isCtrlPressed || isMetaPressed) {
-          // selection.setIndexFocus(indexToSelect);
           selection.setIndexSelected(indexToSelect, selection.isIndexSelected(indexToSelect), true, true);
         } else {
           if (isSelectedOnFocus) {

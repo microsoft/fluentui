@@ -5,6 +5,7 @@ import Check from './Check';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
 import { shallowCompare } from '../../utilities/object';
 import { css } from '../../utilities/css';
+import DetailsRowFields from './DetailsRowFields';
 import './DetailsRow.scss';
 
 export interface IDetailsRowProps {
@@ -13,13 +14,13 @@ export interface IDetailsRowProps {
   columns: IColumn[];
   selectionMode: SelectionMode;
   selection: ISelection;
-  shouldSetFocus?: boolean;
   eventsToRegister?: [{ eventName: string, callback: (item?: any, index?: number, event?: any) => void }];
   onWillUnmount?: (row?: DetailsRow) => void;
   onDidMount?: (row?: DetailsRow) => void;
   dragDropEvents?: IDragDropEvents;
   isGrouped?: boolean;
 }
+
 export interface IDetailsRowSelectionState {
   isSelected: boolean;
   isFocused: boolean;
@@ -27,7 +28,7 @@ export interface IDetailsRowSelectionState {
 }
 
 export interface IDetailsRowState {
-  selectionState: IDetailsRowSelectionState;
+  selectionState?: IDetailsRowSelectionState;
   columnMeasureInfo?: {
     index: number;
     onMeasureDone: (measuredWidth: number) => void;
@@ -46,6 +47,7 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
   };
 
   private _events: EventGroup;
+  private _hasSetFocus: boolean;
   private _dragEnterCount: number;
   private _droppingCssClasses: string;
 
@@ -58,6 +60,8 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
       isDropping: false,
       isGrouped: props.isGrouped
     };
+
+    this._hasSetFocus = false;
 
     this._events = new EventGroup(this);
     this._dragEnterCount = 0;
@@ -113,15 +117,17 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
   public componentDidUpdate() {
     let state = this.state;
     let { columnMeasureInfo } = state;
+
     if (columnMeasureInfo) {
-      let { columns } = this.props;
-      this.refs.cellMeasurer.innerHTML = this._getCellContent(columns[columnMeasureInfo.index], columnMeasureInfo.index);
       let newWidth = this.refs.cellMeasurer.getBoundingClientRect().width;
+
       columnMeasureInfo.onMeasureDone(newWidth);
 
-      state.columnMeasureInfo = null;
-      this.setState(state);
+      this.setState({
+        columnMeasureInfo: null
+      });
     }
+
     this.setFocus();
   }
 
@@ -134,11 +140,17 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
   }
 
   public setFocus() {
-    let { shouldSetFocus, selection, item } = this.props;
-    let isFocused = shouldSetFocus && selection.getFocusedKey() === item.key;
+    let { selection, item } = this.props;
+    let isFocused = selection.getFocusedKey() === item.key;
+    let shouldSetFocus = !!(isFocused && selection.getIsFocusActive() && this.refs.root);
 
-    if (isFocused && this.refs.root) {
-      this.refs.root.focus();
+    if (shouldSetFocus) {
+      if (!this._hasSetFocus) {
+        this._hasSetFocus = true;
+        this.refs.root.focus();
+      }
+    } else {
+      this._hasSetFocus = false;
     }
   }
 
@@ -165,7 +177,6 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
         data-is-draggable={ isDraggable }
         tabIndex={ isFocusable ? 0 : -1 }
         >
-        <div className='ms-DetailsRow-focusBox' />
         { (selectionMode !== SelectionMode.none) ? (
           <button
             tabIndex={ -1 }
@@ -179,15 +190,13 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
           <span className='ms-DetailsRow-collapseGroupSpacer'>
           </span>
         ) : null }
-        { columns.map(column => (
-          <div key={ column.key } className={ css('ms-DetailsRow-cell', {
-            'is-clipped': column.isClipped
-          }) } style={ { width: column.calculatedWidth } }>
-            { this._getCellContent(column, itemIndex) }
-          </div>
-        )) }
+
+        <DetailsRowFields columns={ columns } item={ item } itemIndex={ itemIndex } />
+
         { (columnMeasureInfo) ? (
-          <span className='ms-DetailsRow-cellMeasurer ms-DetailsRow-cell' ref='cellMeasurer'/>
+          <span className='ms-DetailsRow-cellMeasurer ms-DetailsRow-cell' ref='cellMeasurer'>
+            <DetailsRowFields columns={ [ columns[columnMeasureInfo.index] ] } item={ item } itemIndex={ itemIndex } />
+          </span>
         ) : (null) }
       </div>
     );
@@ -200,30 +209,20 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
    * @param {(width: number) => void} onMeasureDone (the call back function when finish measure)
    */
   public measureCell(index: number, onMeasureDone: (width: number) => void) {
-    let state = this.state;
-    state.columnMeasureInfo = { index: index, onMeasureDone: onMeasureDone };
-    this.setState(state);
-  }
-
-  private _getCellContent(column: IColumn, index: number): any {
-    let { item } = this.props;
-    let cellContent;
-
-    try {
-      cellContent = column.getCellContent ? column.getCellContent(item, index) : (String(item[column.fieldName]) || '');
-    } catch (e) {
-      cellContent = `{ Exception: ${e.message}}`;
-    }
-
-    return cellContent;
+    this.setState({
+      columnMeasureInfo: {
+        index: index,
+        onMeasureDone: onMeasureDone
+      }
+    });
   }
 
   private _getSelectionState(props: IDetailsRowProps): IDetailsRowSelectionState {
-    let { item, shouldSetFocus, selection } = props;
+    let { item, selection } = props;
 
     return {
       isSelected: selection.isKeySelected(item.key),
-      isFocused: shouldSetFocus && selection.getFocusedKey() === item.key,
+      isFocused: selection.getFocusedKey() === item.key,
       isFocusable: selection.getFocusedKey() === item.key
     };
   }

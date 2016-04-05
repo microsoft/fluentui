@@ -9,6 +9,7 @@ export class Selection implements ISelection {
   private _exemptedKeys: { [ key: string ]: boolean };
   private _exemptedCount: number;
   private _keyToIndexMap: { [ key: string ]: number };
+  private _isFocusActive: boolean;
   private _anchoredIndex: number;
   private _focusedIndex: number;
   private _onSelectionChanged: () => void;
@@ -20,6 +21,7 @@ export class Selection implements ISelection {
     this._anchoredIndex = 0;
     this._focusedIndex = 0;
     this.setItems([], true);
+    this._isFocusActive = false;
 
     this._areChangeEventsEnabled = true;
     this._onSelectionChanged = onSelectionChanged;
@@ -101,6 +103,10 @@ export class Selection implements ISelection {
     return this._isAllSelected ? ( this._items.length - this._exemptedCount) : (this._exemptedCount);
   }
 
+  public getIsFocusActive(): boolean {
+    return this._isFocusActive;
+  }
+
   public getFocusedIndex(): number {
     return (this._items && this._items.length) ? (this._focusedIndex || 0) : -1;
   }
@@ -141,12 +147,14 @@ export class Selection implements ISelection {
   public setKeySelected(key: string, isSelected: boolean, shouldFocus: boolean, shouldAnchor: boolean) {
     let isExempt = this._exemptedKeys[key];
     let index = this._keyToIndexMap[key];
+    let hasChanged = false;
 
     // Determine if we need to remove the exemption.
     if (isExempt && (
       (isSelected && this._isAllSelected) ||
       (!isSelected && !this._isAllSelected)
     )) {
+      hasChanged = true;
       delete this._exemptedKeys[key];
       this._exemptedCount--;
     }
@@ -156,19 +164,22 @@ export class Selection implements ISelection {
       (isSelected && !this._isAllSelected) ||
       (!isSelected && this._isAllSelected)
     )) {
+      hasChanged = true;
       this._exemptedKeys[key] = true;
       this._exemptedCount++;
     }
 
     if (shouldFocus) {
-      this._focusedIndex = index;
+      this.setIndexFocused(index);
     }
 
     if (shouldAnchor) {
       this._anchoredIndex = index;
     }
 
-    this._updateCount();
+    if (hasChanged) {
+      this._updateCount();
+    }
   }
 
   public setIndexSelected(index: number, isSelected: boolean, shouldFocus: boolean, shouldAnchor: boolean) {
@@ -178,7 +189,18 @@ export class Selection implements ISelection {
     let item = this._items[index];
     let key = item ? item.key : null;
 
-    this.setKeySelected(key, isSelected, shouldFocus, shouldAnchor);
+    if (shouldFocus) {
+      this.setIndexFocused(index);
+    }
+
+    this.setKeySelected(key, isSelected, false, shouldAnchor);
+  }
+
+  public setIsFocusActive(isFocusActive: boolean) {
+    if (isFocusActive !== this._isFocusActive) {
+      this._isFocusActive = isFocusActive;
+// ///////     this._change();
+    }
   }
 
   public setKeyFocused(key: string) {
@@ -186,9 +208,9 @@ export class Selection implements ISelection {
   }
 
   public setIndexFocused(index: number) {
-    if (index !== undefined && index >= 0 && index < this._items.length) {
+    if (this._focusedIndex !== index && index !== undefined && index >= 0 && index < this._items.length) {
       this._focusedIndex = index;
-      this._updateCount();
+      this._change();
     }
   }
 
