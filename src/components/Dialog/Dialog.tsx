@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './Dialog.scss';
-import Overlay from '../Overlay';
+import Overlay from '../Overlay/Overlay';
+import Layer from '../Layer/Layer';
 import { DialogFooter } from './DialogFooter';
 import { DialogType } from './interfaces';
 import { IDialogProps } from './Dialog.Props';
@@ -38,24 +39,26 @@ export default class Dialog extends React.Component<IDialogProps, any> {
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints
     if (responsiveMode >= ResponsiveMode.small) {
       return (
-        <div className={ dialogClassName }>
-          <Overlay isDarkThemed={ !isBlocking } onClick={ isBlocking ? null : onDismiss}/>
-          <div className='ms-Dialog-main'>
-            <button className='ms-Dialog-button ms-Dialog-button--close' onClick={ onDismiss }>
-              <i className='ms-Icon ms-Icon--x'></i>
-            </button>
-            <div className='ms-Dialog-header'>
-              <p className='ms-Dialog-title'>{ title }</p>
-            </div>
-            <div className='ms-Dialog-inner'>
-              <div className='ms-Dialog-content'>
-                { subTextContent }
-                { this._renderChildrenContent() }
+        <Layer>
+          <div className={ dialogClassName }>
+            <Overlay isDarkThemed={ !isBlocking } onClick={ isBlocking ? null : onDismiss}/>
+            <div className='ms-Dialog-main'>
+              <button className='ms-Dialog-button ms-Dialog-button--close' onClick={ onDismiss }>
+                <i className='ms-Icon ms-Icon--x'></i>
+              </button>
+              <div className='ms-Dialog-header'>
+                <p className='ms-Dialog-title'>{ title }</p>
               </div>
-              { this._renderChildrenButtons() }
+              <div className='ms-Dialog-inner'>
+                <div className='ms-Dialog-content'>
+                  { subTextContent }
+                  { this._renderChildrenContent() }
+                </div>
+                { this._renderChildrenButtons() }
+              </div>
             </div>
           </div>
-        </div>
+        </Layer>
       );
     }
   }
