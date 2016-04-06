@@ -2,26 +2,7 @@ import * as React from 'react';
 import './Button.scss';
 import { css } from '../../utilities/css';
 import { assign } from '../../utilities/object';
-
-export enum ElementType {
-  button,
-  anchor
-}
-
-export enum ButtonType {
-  normal,
-  primary,
-  hero,
-  compound,
-  command
-}
-
-export interface IButtonProps extends React.HTMLProps<HTMLElement> {
-elementType?: ElementType;
-  buttonType?: ButtonType;
-  icon?: string;
-  description?: string;
-}
+import { IButtonProps, ButtonType, ElementType } from './Button.Props';
 
 export default class Button extends React.Component<IButtonProps, any> {
   public static defaultProps: IButtonProps = {

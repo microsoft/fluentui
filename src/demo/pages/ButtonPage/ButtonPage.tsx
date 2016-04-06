@@ -4,9 +4,8 @@ import {
 } from '../../../components/index';
 import {
   ExampleCard,
-  PropertiesTable
+  PropertiesTableSet
 } from '../../components/index';
-import ButtonProps from './ButtonProps';
 
 import ButtonBasicExample from './examples/Button.Basic.Example';
 let ButtonBasicExampleCode = require('./examples/Button.Basic.Example.tsx');
@@ -26,7 +25,7 @@ export default class ButtonPage extends React.Component<any, any> {
           <ButtonBasicExample />
         </ExampleCard>
 
-        <PropertiesTable properties={ ButtonProps } />
+        <PropertiesTableSet componentName='Button' />
         <p>Besides the above properties, the <code>Button</code> component accepts all properties that the React <code>button</code> and <code>a</code> components accept.</p>
       </div>
     );
