@@ -8,6 +8,9 @@ import {
 } from '../../components/index';
 import PersonaProps from './PersonaProps';
 
+import PersonaInitialsExample from './examples/Persona.Initials.Example';
+let PersonaInitialsExampleCode = require('./examples/Persona.Initials.Example.tsx');
+
 import PersonaBasicExample from './examples/Persona.Basic.Example';
 let PersonaBasicExampleCode = require('./examples/Persona.Basic.Example.tsx');
 
@@ -20,6 +23,9 @@ export default class PersonaPage extends React.Component<any, any> {
         <h2 className='ms-font-xl'>Examples</h2>
         <ExampleCard title='Persona in various sizes' code={ PersonaBasicExampleCode }>
           <PersonaBasicExample />
+        </ExampleCard>
+        <ExampleCard title='Persona in initials' code={ PersonaInitialsExampleCode }>
+          <PersonaInitialsExample />
         </ExampleCard>
         <PropertiesTable properties={ PersonaProps } />
       </div>
