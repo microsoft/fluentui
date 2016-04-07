@@ -16,20 +16,24 @@ export default class Dialog extends React.Component<IDialogProps, any> {
   public static defaultProps: IDialogProps = {
     isOpen: false,
     type: DialogType.normal,
+    isDarkOverlay: true,
     isBlocking: false
   };
 
   public render() {
-    let { isOpen, type, onDismiss, title, subText, isBlocking, responsiveMode } = this.props;
+    let { isOpen, type, isDarkOverlay, onDismiss, title, subText, isBlocking, responsiveMode } = this.props;
+
+    // @TODO - the discussion on whether the Dialog contain a property for rendering itself is still being discussed
+    if (!isOpen) {
+      return null;
+    }
+
     let subTextContent;
     const dialogClassName = css('ms-Dialog', {
       'ms-Dialog--lgHeader': type === DialogType.largeHeader,
       'ms-Dialog--close': type === DialogType.close
     });
-
-    if (!isOpen) {
-      return null;
-    }
+    let groupings = this._groupChildren();
 
     if (subText) {
       subTextContent = <p className='ms-Dialog-subText'>{ subText }</p>;
@@ -40,7 +44,7 @@ export default class Dialog extends React.Component<IDialogProps, any> {
       return (
         <Layer>
           <div className={ dialogClassName }>
-            <Overlay isDarkThemed={ !isBlocking } onClick={ isBlocking ? null : onDismiss}/>
+            <Overlay isDarkThemed={ isDarkOverlay } onClick={ isBlocking ? null : onDismiss}/>
             <div className='ms-Dialog-main'>
               <button className='ms-Dialog-button ms-Dialog-button--close' onClick={ onDismiss }>
                 <i className='ms-Icon ms-Icon--x'></i>
@@ -51,9 +55,9 @@ export default class Dialog extends React.Component<IDialogProps, any> {
               <div className='ms-Dialog-inner'>
                 <div className='ms-Dialog-content'>
                   { subTextContent }
-                  { this._renderChildrenContent() }
+                  { groupings.contents }
                 </div>
-                { this._renderChildrenButtons() }
+                { groupings.footers }
               </div>
             </div>
           </div>
@@ -62,11 +66,28 @@ export default class Dialog extends React.Component<IDialogProps, any> {
     }
   }
 
-  private _renderChildrenContent() {
-    return React.Children.map(this.props.children, child => (child instanceof DialogFooter ? null : child));
-  }
+  // @TODO - typing the footers as an array of DialogFooter is difficult because
+  // casing "child as DialogFooter" causes a problem because
+  // "Neither type 'ReactElement<any>' nor type 'DialogFooter' is assignable to the other."
+  private _groupChildren(): { footers: any[]; contents: any[]; } {
 
-  private _renderChildrenButtons() {
-    return React.Children.map(this.props.children, child => (child instanceof DialogFooter ? child : null));
+    let groupings: { footers: any[]; contents: any[]; } = {
+      footers: [],
+      contents: []
+    };
+
+    React.Children.map(this.props.children, child => {
+      console.log( 'checking child: ');
+      console.log( child );
+      let tom = DialogFooter;
+      console.log( tom );
+      if (typeof child === 'object' && child.type === DialogFooter) {
+        groupings.footers.push(child);
+      } else {
+        groupings.contents.push(child);
+      }
+    });
+
+    return groupings;
   }
-};
+}

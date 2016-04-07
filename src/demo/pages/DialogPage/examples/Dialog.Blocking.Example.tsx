@@ -29,7 +29,6 @@ export default class DialogBlockingExample extends React.Component<any, any> {
           subText='Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
           isBlocking={ true }
         >
-          // Create any child elements that you want
           <ChoiceGroup
             options={ [
               {
@@ -49,8 +48,6 @@ export default class DialogBlockingExample extends React.Component<any, any> {
             ] }
             onChanged={ this._onChoiceChanged }
           />
-
-          // Use the Dialog Footer for buttons
           <DialogFooter>
             <Button buttonType={ ButtonType.primary } onClick={this._closeDialog.bind(this)}>Save</Button>
             <Button onClick={this._closeDialog.bind(this)}>Cancel</Button>

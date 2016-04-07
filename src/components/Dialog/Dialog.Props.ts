@@ -17,6 +17,12 @@ export interface IDialogProps extends React.Props<Dialog> {
   type?: DialogType;
 
   /**
+  * Whether the overlay is dark themed.
+  * @default true
+  */
+  isDarkOverlay?: boolean;
+
+  /**
   * A callback function for when the Dialog is dismissed from the close button or light dismiss.
   */
   onDismiss?: (ev?: React.MouseEvent) => any;
