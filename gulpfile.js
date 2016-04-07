@@ -8,9 +8,9 @@ build.tslint.setConfig({ lintConfig: require('./tslint.json') });
 
 // process *.Example.tsx as text.
 build.text.setConfig({ textMatch: ['src/**/*.txt', 'src/**/*.Example.tsx', 'src/**/*.Props.ts'] });
-
+let isProduction = process.argv.indexOf('--production') >= 0;
 // configure amd libraries to be built when the production flag is present.
-if (process.argv.indexOf('--production') >= 0) {
+if (isProduction) {
   build.setConfig({
     libAMDFolder: 'lib-amd'
   });
@@ -29,10 +29,10 @@ gulp.task('deploy', ['bundle'],  function() {
   let debug = require('gulp-debug');
   let gutil = require('gulp-util');
   let os = require('os');
-  let currentbranch;
+  let currentBranch;
 
   return git.branch(function(branch) {
-    currentbranch = os.hostname().split('.')[0] + '-' + branch.replace('/', '-');
+    currentBranch = os.hostname().split('.')[0] + '-' + branch.replace('/', '-');
     let ftpConnection = ftp.create({
       host: 'waws-prod-bay-049.ftp.azurewebsites.windows.net',
       user: "fabricreact\\FabricReactControls",
@@ -44,14 +44,14 @@ gulp.task('deploy', ['bundle'],  function() {
       './index.html',
       './dist/**/*'
     ];
-    if (process.env.masterBuildLink) {
-      currentbranch = 'master';
+    if (process.env.masterBuildLink || isProduction) {
+      currentBranch = 'master';
     }
     let stream = gulp.src( globs, { base: '.', buffer: false })
       .pipe(ftpConnection.newer( './' ) ) // only upload newer files
-      .pipe(ftpConnection.dest( '/site/wwwroot/fabric-react/' + currentbranch ))
+      .pipe(ftpConnection.dest( '/site/wwwroot/fabric-react/' + currentBranch ))
       .pipe(debug({ title: 'Copying file to Azure' }));
-    gutil.log('http://fabricreact.azurewebsites.net/fabric-react/' + currentbranch + '/');
+    gutil.log('http://fabricreact.azurewebsites.net/fabric-react/' + currentBranch + '/');
     return stream;
   });
 });
