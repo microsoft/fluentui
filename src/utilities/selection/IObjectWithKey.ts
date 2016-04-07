@@ -1,5 +1,4 @@
-interface IObjectWithKey {
-  key: string;
+export interface IObjectWithKey {
+  key?: string;
 }
 
-export default IObjectWithKey;

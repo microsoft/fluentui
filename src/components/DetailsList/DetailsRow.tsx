@@ -23,8 +23,7 @@ export interface IDetailsRowProps {
 
 export interface IDetailsRowSelectionState {
   isSelected: boolean;
-  isFocused: boolean;
-  isFocusable: boolean;
+  canFocus: boolean;
 }
 
 export interface IDetailsRowState {
@@ -140,8 +139,8 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
   }
 
   public setFocus() {
-    let { selection, item } = this.props;
-    let isFocused = selection.getFocusedKey() === item.key;
+    let { selection, itemIndex } = this.props;
+    let isFocused = selection.getFocusedIndex() === itemIndex;
     let shouldSetFocus = !!(isFocused && selection.getIsFocusActive() && this.refs.root);
 
     if (shouldSetFocus) {
@@ -154,7 +153,7 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
     }
   }
 
-  public componentWillReceiveProps(newProps) {
+  public componentWillReceiveProps(newProps: IDetailsRowProps) {
     this.setState({
       selectionState: this._getSelectionState(newProps),
       isGrouped: newProps.isGrouped
@@ -163,9 +162,10 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
 
   public render() {
     let { selectionMode, columns, item, itemIndex, dragDropEvents } = this.props;
-    let { selectionState: { isSelected, isFocusable }, columnMeasureInfo, isDropping, isGrouped } = this.state;
+    let { selectionState: { isSelected, canFocus }, columnMeasureInfo, isDropping, isGrouped } = this.state;
     let isDraggable = Boolean(dragDropEvents && dragDropEvents.canDrag && dragDropEvents.canDrag(item));
     let droppingClassName = isDropping ? (this._droppingCssClasses ? this._droppingCssClasses : DEFAULT_DROPPING_CSS_CLASS) : '';
+    let key = item ? item.key : '';
 
     return (
       <div
@@ -173,11 +173,12 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
         className={ css('ms-DetailsRow ms-font-s', droppingClassName, {
           'is-selected': isSelected
         }) }
-        data-selection-key={ item.key }
+        data-selection-key={ key }
+        data-selection-index={ itemIndex }
         data-is-draggable={ isDraggable }
-        tabIndex={ isFocusable ? 0 : -1 }
+        tabIndex={ canFocus ? 0 : -1 }
         >
-        { (selectionMode !== SelectionMode.none) ? (
+        { (selectionMode !== SelectionMode.none) && (
           <button
             tabIndex={ -1 }
             className='ms-DetailsRow-check'
@@ -185,19 +186,21 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
             >
             <Check isChecked={ isSelected } />
           </button>
-        ) : null }
-        { isGrouped ? (
-          <span className='ms-DetailsRow-collapseGroupSpacer'>
-          </span>
-        ) : null }
+        ) }
 
-        <DetailsRowFields columns={ columns } item={ item } itemIndex={ itemIndex } />
+        { isGrouped && (
+          <span className='ms-DetailsRow-collapseGroupSpacer' />
+        ) }
 
-        { (columnMeasureInfo) ? (
+        { item && (
+          <DetailsRowFields columns={ columns } item={ item } itemIndex={ itemIndex } />
+        ) }
+
+        { columnMeasureInfo && (
           <span className='ms-DetailsRow-cellMeasurer ms-DetailsRow-cell' ref='cellMeasurer'>
             <DetailsRowFields columns={ [ columns[columnMeasureInfo.index] ] } item={ item } itemIndex={ itemIndex } />
           </span>
-        ) : (null) }
+        ) }
       </div>
     );
   }
@@ -218,12 +221,11 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
   }
 
   private _getSelectionState(props: IDetailsRowProps): IDetailsRowSelectionState {
-    let { item, selection } = props;
+    let { itemIndex, selection } = props;
 
     return {
-      isSelected: selection.isKeySelected(item.key),
-      isFocused: selection.getFocusedKey() === item.key,
-      isFocusable: selection.getFocusedKey() === item.key
+      isSelected: selection.isIndexSelected(itemIndex),
+      canFocus: selection.getFocusedIndex() === itemIndex
     };
   }
 

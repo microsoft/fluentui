@@ -18,6 +18,10 @@ import { createListItems, isGroupable } from '../../../utilities/data';
 import './DetailsList.Basic.Example.scss';
 
 const DEFAULT_ITEM_LIMIT = 5;
+const PAGING_SIZE = 10;
+const PAGING_DELAY = 5000;
+const ITEMS_COUNT = 10000;
+
 let _items;
 
 export interface IDetailsListBasicExampleState {
@@ -42,7 +46,7 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
     super();
 
     if (!_items) {
-      _items = createListItems(10000);
+      _items = createListItems(ITEMS_COUNT);
     }
 
     this._onToggleResizing = this._onToggleResizing.bind(this);
@@ -95,6 +99,7 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
         }
 
         <DetailsList
+          setKey='items'
           items={ items }
           groups={ groups }
           columns={ columns }
@@ -116,7 +121,7 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
   }
 
   private _onDataMiss(index) {
-    index = Math.floor(index / 100) * 100;
+    index = Math.floor(index / PAGING_SIZE) * PAGING_SIZE;
 
     if (!this._isFetchingItems) {
 
@@ -126,13 +131,12 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
         this._isFetchingItems = false;
         let itemsCopy = [].concat(this.state.items);
 
-        itemsCopy.splice.apply(itemsCopy, [index, 100].concat(_items.slice(index, index + 100)));
+        itemsCopy.splice.apply(itemsCopy, [index, PAGING_SIZE].concat(_items.slice(index, index + PAGING_SIZE)));
 
         this.setState({
           items: itemsCopy
         });
-
-      }, 1000);
+      }, PAGING_DELAY);
     }
   }
 
@@ -143,7 +147,7 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
 
     this.setState({
       isLazyLoaded: isLazyLoaded,
-      items: isLazyLoaded ? _items.slice(0, 100).concat(new Array(9900)) : _items
+      items: isLazyLoaded ? _items.slice(0, PAGING_SIZE).concat(new Array(ITEMS_COUNT - PAGING_SIZE)) : _items
     });
   }
 

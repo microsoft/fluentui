@@ -1,12 +1,10 @@
+import { IObjectWithKey } from './IObjectWithKey';
 export const SELECTION_CHANGE = 'change';
 
 export enum SelectionMode {
   none,
   single,
   multiple
-}
-export interface IObjectWithKey {
-  key: string;
 }
 
 export interface ISelection {

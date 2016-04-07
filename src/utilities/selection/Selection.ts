@@ -1,4 +1,5 @@
-import { IObjectWithKey, ISelection, SELECTION_CHANGE } from './ISelection';
+import { IObjectWithKey } from './IObjectWithKey';
+import { ISelection, SELECTION_CHANGE } from './ISelection';
 import EventGroup from '../eventGroup/EventGroup';
 
 export class Selection implements ISelection {
@@ -6,9 +7,9 @@ export class Selection implements ISelection {
 
   private _items: IObjectWithKey[];
   private _isAllSelected: boolean;
-  private _exemptedKeys: { [ key: string ]: boolean };
+  private _exemptedIndices: { [index: string]: boolean };
   private _exemptedCount: number;
-  private _keyToIndexMap: { [ key: string ]: number };
+  private _keyToIndexMap: { [key: string]: number };
   private _isFocusActive: boolean;
   private _anchoredIndex: number;
   private _focusedIndex: number;
@@ -46,14 +47,16 @@ export class Selection implements ISelection {
    * cleared.
    */
   public setItems(items: IObjectWithKey[], shouldClear = true) {
-    let newKeyToIndexMap: { [ key: string ]: number } = {};
+    let newKeyToIndexMap: { [key: string]: number } = {};
 
     // Build lookup table for quick selection evaluation.
-    items.forEach((item, index) => {
+    for (let i = 0; i < items.length; i++) {
+      let item = items[i];
+
       if (item) {
-        newKeyToIndexMap[item.key] = index;
+        newKeyToIndexMap[item.key] = i;
       }
-    });
+    }
 
     if (shouldClear) {
       this.setAllSelected(false);
@@ -65,13 +68,34 @@ export class Selection implements ISelection {
 
         if (lastFocusedKey) {
           this._focusedIndex = newKeyToIndexMap[lastFocusedKey];
-        } else {
-          this._focusedIndex = 0;
         }
       }
-      // TODO: re-evaluate selection
     }
 
+    // Check the exemption list for discrepencies.
+    let newExemptedIndicies: { [key: string]: boolean } = {};
+
+    for (let index in this._exemptedIndices) {
+      if (this._exemptedIndices.hasOwnProperty(index)) {
+        let item = this._items[index];
+        let exemptKey = item ? item.key : undefined;
+        let newIndex = exemptKey ? newKeyToIndexMap[exemptKey] : index;
+
+        if (newIndex === undefined) {
+          // We don't know the index of the item any more so it's either moved or removed.
+          // In this case we reset the entire selection.
+          newExemptedIndicies = {};
+          this._isAllSelected = false;
+          this._exemptedCount = 0;
+          break;
+        } else {
+          // We know the new index of the item. update the existing exemption table.
+          newExemptedIndicies[newIndex] = true;
+        }
+      }
+    }
+
+    this._exemptedIndices = newExemptedIndicies;
     this._keyToIndexMap = newKeyToIndexMap;
     this._items = items || [];
 
@@ -85,22 +109,23 @@ export class Selection implements ISelection {
   public getSelection(): IObjectWithKey[] {
     let selectedItems = [];
 
-    this._items.forEach((item, index) => {
+    for (let i = 0; i < this._items.length; i++) {
+      let item = this._items[i];
+      let isExempt = !!this._exemptedIndices[i];
       let key = item ? item.key : null;
-      let isExempt = !!this._exemptedKeys[key];
 
       if ((!key && this._isAllSelected) ||
         (key && this._isAllSelected && !isExempt) ||
         (key && !this._isAllSelected && isExempt)) {
         selectedItems.push(item);
       }
-    });
+    }
 
     return selectedItems;
   }
 
   public getSelectedCount(): number {
-    return this._isAllSelected ? ( this._items.length - this._exemptedCount) : (this._exemptedCount);
+    return this._isAllSelected ? (this._items.length - this._exemptedCount) : (this._exemptedCount);
   }
 
   public getIsFocusActive(): boolean {
@@ -125,28 +150,38 @@ export class Selection implements ISelection {
   }
 
   public isKeySelected(key: string): boolean {
-    return !!(
-      (this.count > 0) &&
-      (this._isAllSelected && !this._exemptedKeys[key]) ||
-      (!this._isAllSelected && this._exemptedKeys[key]));
+    let index = this._keyToIndexMap[key];
+
+    return this.isIndexSelected(index);
   }
 
   public isIndexSelected(index: number): boolean {
-    let item = this._items[index];
-
-    return this.isKeySelected(item ? item.key : null);
+    return !!(
+      (this.count > 0) &&
+      (this._isAllSelected && !this._exemptedIndices[index]) ||
+      (!this._isAllSelected && this._exemptedIndices[index]));
   }
 
   public setAllSelected(isAllSelected: boolean) {
-    this._exemptedKeys = {};
+    this._exemptedIndices = {};
     this._exemptedCount = 0;
     this._isAllSelected = isAllSelected;
     this._updateCount();
   }
 
   public setKeySelected(key: string, isSelected: boolean, shouldFocus: boolean, shouldAnchor: boolean) {
-    let isExempt = this._exemptedKeys[key];
     let index = this._keyToIndexMap[key];
+
+    if (index >= 0) {
+      this.setIndexSelected(index, isSelected, shouldFocus, shouldAnchor);
+    }
+  }
+
+  public setIndexSelected(index: number, isSelected: boolean, shouldFocus: boolean, shouldAnchor: boolean) {
+    // Clamp the index.
+    index = Math.min(Math.max(0, index), this._items.length - 1);
+
+    let isExempt = this._exemptedIndices[index];
     let hasChanged = false;
 
     // Determine if we need to remove the exemption.
@@ -155,7 +190,7 @@ export class Selection implements ISelection {
       (!isSelected && !this._isAllSelected)
     )) {
       hasChanged = true;
-      delete this._exemptedKeys[key];
+      delete this._exemptedIndices[index];
       this._exemptedCount--;
     }
 
@@ -165,7 +200,7 @@ export class Selection implements ISelection {
       (!isSelected && this._isAllSelected)
     )) {
       hasChanged = true;
-      this._exemptedKeys[key] = true;
+      this._exemptedIndices[index] = true;
       this._exemptedCount++;
     }
 
@@ -182,24 +217,9 @@ export class Selection implements ISelection {
     }
   }
 
-  public setIndexSelected(index: number, isSelected: boolean, shouldFocus: boolean, shouldAnchor: boolean) {
-    // Clamp the index.
-    index = Math.min(Math.max(0, index), this._items.length - 1);
-
-    let item = this._items[index];
-    let key = item ? item.key : null;
-
-    if (shouldFocus) {
-      this.setIndexFocused(index);
-    }
-
-    this.setKeySelected(key, isSelected, false, shouldAnchor);
-  }
-
   public setIsFocusActive(isFocusActive: boolean) {
     if (isFocusActive !== this._isFocusActive) {
       this._isFocusActive = isFocusActive;
-// ///////     this._change();
     }
   }
 

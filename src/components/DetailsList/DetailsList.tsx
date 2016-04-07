@@ -9,7 +9,7 @@ import { IColumn, DetailsListLayoutMode, ConstrainMode, IDragDropEvents, IGroup 
 import GroupFooter from './GroupFooter';
 import GroupHeader from './GroupHeader';
 import { ISelection, SelectionMode } from '../../utilities/selection/ISelection';
-import IObjectWithKey from '../../utilities/selection/IObjectWithKey';
+import { IObjectWithKey } from '../../utilities/selection/IObjectWithKey';
 import { Selection } from '../../utilities/selection/Selection';
 import SelectionZone from '../../utilities/selection/SelectionZone';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
@@ -261,33 +261,29 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
   private _onRenderCell(item: any, index: number): React.ReactNode {
     let result = null;
+    let { selectionMode, rowElementEventMap, dragDropEvents, onRenderMissingItem } = this.props;
+    let { adjustedColumns, groups } = this.state;
+    let { _selection: selection } = this;
+    let isGrouped = groups && groups.length > 0;
 
-    if (item) {
-      let { selectionMode, rowElementEventMap, dragDropEvents } = this.props;
-      let { adjustedColumns, groups } = this.state;
-      let { _selection: selection } = this;
+    result = (
+      <DetailsRow
+        item={ item }
+        itemIndex={ index }
+        columns={ adjustedColumns }
+        selectionMode={ selectionMode }
+        selection={ selection }
+        onDidMount={ this._onRowDidMount }
+        onWillUnmount={ this._onRowWillUnmount }
+        eventsToRegister={ rowElementEventMap }
+        dragDropEvents={ dragDropEvents }
+        isGrouped={ isGrouped }
+        />
+    );
 
-      let isGrouped = groups && groups.length > 0;
-
-      result = (
-        <DetailsRow
-          item={ item }
-          itemIndex={ index }
-          columns={ adjustedColumns }
-          selectionMode={ selectionMode }
-          selection={ selection }
-          onDidMount={ this._onRowDidMount }
-          onWillUnmount={ this._onRowWillUnmount }
-          eventsToRegister={ rowElementEventMap }
-          dragDropEvents={ dragDropEvents }
-          isGrouped={ isGrouped }
-          />
-      );
-    } else {
-      let { onRenderMissingItem } = this.props;
-
+    if (!item) {
       if (onRenderMissingItem) {
-        result = onRenderMissingItem(index);
+        onRenderMissingItem(index);
       }
     }
 

@@ -95,7 +95,7 @@ export default class List extends React.Component<IListProps, IListState> {
     if (
       newProps.items === this.props.items &&
       oldPages.length === newPages.length &&
-      areEqualSize(oldContainerRect, newContainerRect)) {
+      _areEqualSize(oldContainerRect, newContainerRect)) {
       for (let i = 0; i < oldPages.length; i++) {
         let oldPage = oldPages[i];
         let newPage = newPages[i];
@@ -113,6 +113,15 @@ export default class List extends React.Component<IListProps, IListState> {
     return shouldComponentUpdate;
   }
 
+  public componentDidUpdate() {
+    if (this._scrollingToIndex > -1) {
+      if (this._isIndexRendered(this._scrollingToIndex)) {
+        this._focusedIndex = this._scrollingToIndex;
+        this._scrollingToIndex = -1;
+      }
+    }
+  }
+
   public render() {
     let rootClass = 'ms-List';
     let { onRenderCell } = this.props;
@@ -124,7 +133,7 @@ export default class List extends React.Component<IListProps, IListState> {
           { pages.map(page => (
             <div className='ms-List-page' key={ page.key } ref={ page.key } style={ page.style }>
               { page.items ? page.items.map((item, itemIndex) => (
-                <div className='ms-List-cell' key={ item ? item.key : (page.startIndex + itemIndex) }>
+                <div className='ms-List-cell' key={ (page.startIndex + itemIndex) }>
                   { onRenderCell(item, page.startIndex + itemIndex) }
                 </div>
               )) : null }
@@ -134,14 +143,7 @@ export default class List extends React.Component<IListProps, IListState> {
       </div>
     );
   }
-public componentDidUpdate() {
-  if (this._scrollingToIndex > -1) {
-    if (this._isIndexRendered(this._scrollingToIndex)) {
-      this._focusedIndex = this._scrollingToIndex;
-      this._scrollingToIndex = -1;
-    }
-  }
-}
+
   public scrollTo(index: number): boolean {
     let isIndexRendered = this._isIndexRendered(index);
     let didScroll = false;
@@ -283,7 +285,10 @@ public componentDidUpdate() {
           pages.push(currentSpacer);
           currentSpacer = null;
         }
-        pages.push(this._createPage(null, items.slice(itemIndex, itemIndex + itemsPerPage), itemIndex));
+
+        let itemsInPage = Math.min(itemsPerPage, items.length - itemIndex);
+
+        pages.push(this._createPage(null, _slice(items, itemIndex, itemIndex + itemsInPage, null), itemIndex));
       } else {
         if (!currentSpacer) {
           currentSpacer = this._createPage('spacer-' + itemIndex, null, itemIndex, 0);
@@ -356,6 +361,18 @@ public componentDidUpdate() {
 
 }
 
-function areEqualSize(rect1: IRect, rect2: IRect) {
+function _areEqualSize(rect1: IRect, rect2: IRect) {
   return !!(rect1 && rect2 && rect1.width === rect2.width && rect1.height === rect2.height);
+}
+
+function _slice(array, index, endIndex, defaultValue) {
+  let newArray = [];
+
+  while (index < endIndex) {
+    let val = array[index++];
+
+    newArray.push(val === undefined ? defaultValue : val);
+  }
+
+  return newArray;
 }

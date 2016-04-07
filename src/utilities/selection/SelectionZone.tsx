@@ -20,7 +20,7 @@ import KeyCodes from '../KeyCodes';
 // If you click index 8
 //    The anchor and focus are set to 8.
 
-const SELECTION_KEY_ATTRIBUTE_NAME = 'data-selection-key';
+const SELECTION_INDEX_ATTRIBUTE_NAME = 'data-selection-index';
 const SELECTION_TOGGLE_ATTRIBUTE_NAME = 'data-selection-toggle';
 const SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME = 'data-selection-all-toggle';
 
@@ -80,10 +80,11 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
 
   private _onFocus(ev: FocusEvent) {
     this.props.selection.setIsFocusActive(true);
-    let key = this._getKeyFromElement(ev.target as HTMLElement);
 
-    if (key) {
-      this.props.selection.setKeyFocused(key);
+    let index = this._getIndexFromElement(ev.target as HTMLElement);
+
+    if (index >= 0) {
+      this.props.selection.setIndexFocused(index);
     }
   }
 
@@ -206,11 +207,11 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
     }
 
     let target = ev.target as HTMLElement;
-    let key = this._getKeyFromElement(target);
+    let index = this._getIndexFromElement(target);
     let isToggleElement = this._isToggleElement(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);
     let isToggleAllElement = !isToggleElement && this._isToggleElement(target, SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME);
 
-    if (key || isToggleAllElement) {
+    if (index >= 0 || isToggleAllElement) {
       let isShiftPressed = !!ev.shiftKey;
       let isMetaPressed = !!ev.metaKey;
       let isCtrlPressed = !!ev.ctrlKey;
@@ -221,17 +222,17 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
         if (!isCtrlPressed) {
           selection.setAllSelected(false);
         }
-        selection.selectToKey(key);
+        selection.selectToIndex(index);
       } else if (isCtrlPressed || isMetaPressed) {
-        selection.setKeySelected(key, true, true, true);
+        selection.setIndexSelected(index, true, true, true);
       } else if (isToggleElement) {
-        selection.toggleKeySelected(key);
+        selection.toggleIndexSelected(index);
       } else if (isToggleAllElement) {
         selection.toggleAllSelected();
       } else {
-        if (!selection.isKeySelected(key) || selection.getSelectedCount() > 1) {
+        if (!selection.isIndexSelected(index) || selection.getSelectedCount() > 1) {
           selection.setAllSelected(false);
-          selection.setKeySelected(key, true, true, true);
+          selection.setIndexSelected(index, true, true, true);
         }
       }
 
@@ -254,27 +255,20 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
     return element.tagName === 'INPUT' || element.tagName === 'TEXTAREA';
   }
 
-  private _getKeyFromElement(element: HTMLElement): string {
-    element = this._getSelectionElement(element);
+  private _getIndexFromElement(element: HTMLElement): number {
+    let index = -1;
 
-    return element ? element.getAttribute(SELECTION_KEY_ATTRIBUTE_NAME) : null;
-  }
+    while (index === -1 && element !== document.body) {
+      let indexString = element.getAttribute(SELECTION_INDEX_ATTRIBUTE_NAME);
 
-  private _getSelectionElement(element: HTMLElement): HTMLElement {
-    let key;
-
-    while (!key && element) {
-      key = element.getAttribute(SELECTION_KEY_ATTRIBUTE_NAME);
-
-      if (!key) {
+      if (!indexString) {
         element = element.parentElement;
-      }
-
-      if (element === document.body) {
-        element = null;
+      } else {
+        index = Number(indexString);
       }
     }
 
-    return element;
+    return index;
   }
+
 }
