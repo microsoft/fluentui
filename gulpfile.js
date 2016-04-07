@@ -8,9 +8,9 @@ build.tslint.setConfig({ lintConfig: require('./tslint.json') });
 
 // process *.Example.tsx as text.
 build.text.setConfig({ textMatch: ['src/**/*.txt', 'src/**/*.Example.tsx', 'src/**/*.Props.ts'] });
-
+var args = process.argv;
 // configure amd libraries to be built when the production flag is present.
-if (process.argv.indexOf('--production') >= 0) {
+if (args.indexOf('--production') >= 0) {
   build.setConfig({
     libAMDFolder: 'lib-amd'
   });
@@ -44,7 +44,7 @@ gulp.task('deploy', ['bundle'],  function() {
       './index.html',
       './dist/**/*'
     ];
-    if (process.env.masterBuildLink) {
+    if (process.env.masterBuildLink || args.indexOf('--production') >= 0) {
       currentbranch = 'master';
     }
     let stream = gulp.src( globs, { base: '.', buffer: false })
