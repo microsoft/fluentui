@@ -1,0 +1,21 @@
+@import '../../common';
+@import "~office-ui-fabric/src/components/Label/Label";
+@import "~office-ui-fabric/src/components/SearchBox/SearchBox";
+
+// Fabric was using a mouseover and mouseout events to toggle the ".hover" class
+// [thocon] It's not clear to me why that is, but it seems just applying the styles
+// to a :hover state seems to work just fine
+.ms-SearchBox-field {
+  &:hover {
+    border-color: $ms-color-themePrimary;
+    background-color: transparentize(#0078d7, 0.8);
+
+    & + .ms-SearchBox-label {
+      color: $ms-color-black;
+
+      .ms-Icon {
+      color: $ms-color-neutralPrimary;
+      }
+    }
+  }
+}

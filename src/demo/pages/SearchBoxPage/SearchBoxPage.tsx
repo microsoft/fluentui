@@ -4,9 +4,8 @@ import {
 } from '../../../components/index';
 import {
   ExampleCard,
-  PropertiesTable
+  PropertiesTableSet
 } from '../../components/index';
-import SearchBoxProps from './SearchBoxProps';
 
 import SearchBoxBasicExample from './examples/SearchBox.Basic.Example';
 let SearchBoxBasicExampleCode = require('./examples/SearchBox.Basic.Example.tsx');
@@ -21,7 +20,7 @@ export default class SearchBoxPage extends React.Component<any, any> {
         <ExampleCard title='SearchBox' code={ SearchBoxBasicExampleCode }>
           <SearchBoxBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ SearchBoxProps } />
+        <PropertiesTableSet componentName='SearchBox' />
       </div>
     );
   }
