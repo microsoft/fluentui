@@ -4,9 +4,8 @@ import {
 } from '../../../components/index';
 import {
   ExampleCard,
-  PropertiesTable
+  PropertiesTableSet
 } from '../../components/index';
-import CheckboxProps from './CheckboxProps';
 import CheckboxBasicExample from './examples/Checkbox.Basic.Example';
 let CheckboxBasicExampleCode = require('./examples/Checkbox.Basic.Example.tsx');
 
@@ -23,7 +22,7 @@ export default class CheckboxExample extends React.Component<any, any> {
           <CheckboxBasicExample />
         </ExampleCard>
 
-        <PropertiesTable properties={ CheckboxProps } />
+        <PropertiesTableSet componentName='Checkbox' />
       </div>
     );
   }

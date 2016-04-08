@@ -1,17 +1,7 @@
 import * as React from 'react';
 import './Checkbox.scss';
 import { css } from '../../utilities/css';
-
-export interface ICheckboxProps {
-  text: string;
-  isChecked?: boolean;
-  isEnabled?: boolean;
-  onChanged?: (isChecked: boolean) => void;
-
-  key?: string;
-  ref?: string;
-  className?: string;
-}
+import { ICheckboxProps } from './Checkbox.Props';
 
 export interface ICheckboxState {
   id?: string;
@@ -67,9 +57,14 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
 
   private _onInputChanged(ev: React.FormEvent) {
     let { onChanged } = this.props;
+    let isChecked = this.refs.input.checked;
+
+    this.setState({
+      isChecked: isChecked
+    });
 
     if (onChanged) {
-      onChanged(this.refs.input.checked);
+      onChanged(isChecked);
     }
   }
 
