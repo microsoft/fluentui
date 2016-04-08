@@ -107,7 +107,7 @@ export const AppState: IAppState = {
         {
           component: DialogPage,
           name: 'Dialog',
-          status: ExampleStatus.placeholder,
+          status: ExampleStatus.beta,
           url: '#/examples/dialog'
         },
         {

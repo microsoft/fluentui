@@ -23,7 +23,7 @@ export default class DialogBasicExample extends React.Component<any, any> {
         <Button description='Opens the Sample Dialog' onClick={ this._showDialog.bind(this) }>Open Dialog</Button>
         <Dialog
           isOpen={ this.state.showDialog }
-          type={ DialogType.normal }
+          type={ DialogType.close }
           onDismiss={ this._closeDialog.bind(this) }
           title='All emails together'
           subText='Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'

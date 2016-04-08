@@ -8,7 +8,7 @@ import {
   ChoiceGroup
 } from '../../../../components/index';
 
-export default class DialogBasicExample extends React.Component<any, any> {
+export default class DialogBlockingExample extends React.Component<any, any> {
 
   constructor() {
     super();
@@ -27,7 +27,7 @@ export default class DialogBasicExample extends React.Component<any, any> {
           onDismiss={ this._closeDialog.bind(this) }
           title='All emails together'
           subText='Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
-          isBlocking={ false }
+          isBlocking={ true }
         >
           <ChoiceGroup
             options={ [
