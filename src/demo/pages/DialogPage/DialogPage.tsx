@@ -4,14 +4,23 @@ import {
 } from '../../../components/index';
 import {
   ExampleCard,
-  PropertiesTable
+  PropertiesTableSet
 } from '../../components/index';
-import DialogProps from './DialogProps';
 
 import DialogBasicExample from './examples/Dialog.Basic.Example';
 let DialogBasicExampleCode = require('./examples/Dialog.Basic.Example.tsx');
 
+import DialogLargeHeaderExample from './examples/Dialog.LargeHeader.Example';
+let DialogLargeHeaderExampleCode = require('./examples/Dialog.LargeHeader.Example.tsx');
+
+import DialogCloseExample from './examples/Dialog.Close.Example';
+let DialogCloseExampleCode = require('./examples/Dialog.Close.Example.tsx');
+
+import DialogBlockingExample from './examples/Dialog.Blocking.Example';
+let DialogBlockingExampleCode = require('./examples/Dialog.Blocking.Example.tsx');
+
 export default class DialogPage extends React.Component<any, any> {
+
   public render() {
     return (
       <div className='ms-DialogPage'>
@@ -21,7 +30,20 @@ export default class DialogPage extends React.Component<any, any> {
         <ExampleCard title='Dialog' code={ DialogBasicExampleCode }>
           <DialogBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ DialogProps } />
+
+        <ExampleCard title='Dialog Large Header' code={ DialogLargeHeaderExampleCode }>
+          <DialogLargeHeaderExample />
+        </ExampleCard>
+
+        <ExampleCard title='Dialog Close' code={ DialogCloseExampleCode }>
+          <DialogCloseExample />
+        </ExampleCard>
+
+        <ExampleCard title='Dialog Blocking' code={ DialogBlockingExampleCode }>
+          <DialogBlockingExample />
+        </ExampleCard>
+
+        <PropertiesTableSet componentName='Dialog' />
       </div>
     );
   }
