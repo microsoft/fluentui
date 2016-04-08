@@ -9,6 +9,9 @@ export interface IListProps extends React.Props<List> {
   /** Method to call when trying to render an item. */
   onRenderCell?: (item?: any, index?: number) => React.ReactNode;
 
+  /** Method to call to get how many items to render per page from specified index. */
+  getItemCountForPage?: (itemIndex?: number, surfaceRect?: ClientRect) => number;
+
   /** How many items to render per page. */
   itemsPerPage?: number;
 
@@ -57,6 +60,7 @@ export default class List extends React.Component<IListProps, IListState> {
     this._estimatedItemHeight = 30;
     this._focusedIndex = -1;
     this._scrollingToIndex = -1;
+    this._getItemCountForPage = props.getItemCountForPage || this._getItemCountForPage;
 
     if (props.selection) {
       this._events.on(props.selection, SELECTION_CHANGE, this._onSelectionChanged);
@@ -155,7 +159,9 @@ export default class List extends React.Component<IListProps, IListState> {
       let { items } = this.props;
 
       for (let itemIndex = 0; items && itemIndex < items.length; itemIndex += itemCount) {
-        itemCount = this._getItemCountForPage(itemIndex);
+        let surfaceRect = this.refs.surface.getBoundingClientRect();
+
+        itemCount = this._getItemCountForPage(itemIndex, surfaceRect);
 
         if (itemIndex <= index && (itemIndex + itemCount) > index) {
           let allScrollables = this._getScrollableElements();
@@ -168,7 +174,6 @@ export default class List extends React.Component<IListProps, IListState> {
             }
           }
 
-          let surfaceRect = this.refs.surface.getBoundingClientRect();
           let scrollRect = scrollElement.getBoundingClientRect();
 
           didScroll = true;
@@ -269,7 +274,7 @@ export default class List extends React.Component<IListProps, IListState> {
     let focusedIndex = this._focusedIndex;
 
     for (let itemIndex = 0; itemIndex < items.length; itemIndex += itemsPerPage) {
-      itemsPerPage = this._getItemCountForPage(itemIndex);
+      itemsPerPage = this._getItemCountForPage(itemIndex, surfaceRect);
 
       let pageBottom = pageTop + this._getPageHeight(itemIndex, itemsPerPage) - 1;
       let pageIsVisible = pageBottom > visibleTop && pageTop < visibleBottom;
@@ -318,7 +323,7 @@ export default class List extends React.Component<IListProps, IListState> {
     return pageHeight;
   }
 
-  private _getItemCountForPage(itemIndex: number): number {
+  private _getItemCountForPage(itemIndex: number, surfaceRect: ClientRect): number {
     return this.props.itemsPerPage;
   }
 
