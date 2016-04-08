@@ -29,11 +29,19 @@ export default class ContextualMenuBasicExample extends React.Component<any, any
               name: 'Upload'
             },
             {
+              key: 'divider_1',
+              name: '-',
+            },
+            {
               key: 'rename',
               name: 'Rename'
             },
             {
-              key: '-',
+              key: 'properties',
+              name: 'Properties'
+            },
+            {
+              key: 'divider_2',
               name: '-',
             },
             {

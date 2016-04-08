@@ -178,7 +178,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
       <div ref='host' className={ css('ms-ContextualMenu-container', className) } onBlurCapture={ this._onBlur }>
         { (items && items.length) ? (
           <FocusZone
-            className={ 'ms-ContextualMenu is-open' + ((slideDirectionalClassName) ? (` ms-u-${slideDirectionalClassName}`) : (null)) }
+            className={ 'ms-ContextualMenu is-open' + ((slideDirectionalClassName) ? (` ms-u-${slideDirectionalClassName}`) : '') }
             ref='focusZone'
             role='menu'
             ariaLabelledBy={ labelElementId }
