@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IColumn, IDragDropEvents } from './interfaces';
-import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/ISelection';
+import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import Check from './Check';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
 import { shallowCompare } from '../../utilities/object';

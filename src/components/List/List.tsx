@@ -1,6 +1,6 @@
 import * as React from 'react';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
-import { ISelection, SELECTION_CHANGE } from '../../utilities/selection/ISelection';
+import { ISelection, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 
 export interface IListProps extends React.Props<List> {
   /** Items to render. */

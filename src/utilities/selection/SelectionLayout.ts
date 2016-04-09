@@ -1,11 +1,9 @@
-import ISelectionLayout from './ISelectionLayout';
+import {
+  ISelectionLayout,
+  SelectionDirection
+} from './interfaces';
 
-export enum SelectionDirection {
-  horizontal = 0,
-  vertical = 1
-}
-
-export default class SelectionLayout implements ISelectionLayout {
+export class SelectionLayout implements ISelectionLayout {
   private _direction: SelectionDirection;
 
   constructor(direction: SelectionDirection) {

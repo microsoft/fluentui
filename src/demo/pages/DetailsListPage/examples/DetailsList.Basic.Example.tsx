@@ -7,13 +7,13 @@ import {
   DetailsList,
   buildColumns,
   DetailsListLayoutMode as LayoutMode,
-  SelectionMode,
   ContextualMenu,
   IContextualMenuItem,
   DirectionalHint,
   IContextualMenuProps,
   TextField
 } from '../../../../components/index';
+import { SelectionMode } from '../../../../utilities/selection/interfaces';
 import { createListItems, isGroupable } from '../../../utilities/data';
 import './DetailsList.Basic.Example.scss';
 
@@ -107,6 +107,7 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
           selectionMode={ selectionMode }
           constrainMode={ constrainMode }
           groupItemLimit={ groupItemLimit }
+          onItemInvoked={ this._onItemInvoked }
           onRenderMissingItem={ (index) => {
             this._onDataMiss(index);
             return null;
@@ -333,6 +334,10 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
       isBeakVisible: true,
       onDismiss: this._onContextualMenuDismissed
     };
+  }
+
+  private _onItemInvoked(item: any, index: number) {
+    console.log('Item invoked', item, index);
   }
 
   private _onColumnClick(column: IColumn, ev: React.MouseEvent) {

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './PropertiesTable.scss';
-import { DetailsList, DetailsListLayoutMode, SelectionMode, IColumn } from '../../../components/DetailsList/index';
+import { DetailsList, DetailsListLayoutMode, IColumn } from '../../../components/DetailsList/index';
+import { SelectionMode } from '../../../utilities/selection/interfaces';
 import { assign } from '../../../utilities/object';
 
 export interface IProperty {

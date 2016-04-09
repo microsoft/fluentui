@@ -1,4 +1,7 @@
-import { IObjectWithKey } from './IObjectWithKey';
+export interface IObjectWithKey {
+  key?: string;
+}
+
 export const SELECTION_CHANGE = 'change';
 
 export enum SelectionMode {
@@ -53,4 +56,14 @@ export interface ISelection {
   toggleIndexSelected(index: number);
 }
 
-export default ISelection;
+export interface ISelectionLayout {
+  getItemIndexAbove(focusIndex: number, items: any[]): number;
+  getItemIndexBelow(focusIndex: number, items: any[]): number;
+  getItemIndexLeft(focusIndex: number, items: any[]): number;
+  getItemIndexRight(focusIndex: number, items: any[]): number;
+}
+
+export enum SelectionDirection {
+  horizontal = 0,
+  vertical = 1
+}

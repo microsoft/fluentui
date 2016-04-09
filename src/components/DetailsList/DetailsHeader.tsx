@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IColumn, DetailsListLayoutMode } from './interfaces';
 import { css } from '../../utilities/css';
 import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
-import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/ISelection';
+import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import Check from './Check';
 import { getRTL } from '../../utilities/rtl';
 import EventGroup from '../../utilities/eventGroup/EventGroup';

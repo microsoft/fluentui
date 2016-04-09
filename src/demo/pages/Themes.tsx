@@ -3,9 +3,9 @@ import { defaultTheme } from '../../themes';
 import { loadTheme } from 'load-themed-styles';
 import {
   DetailsList,
-  SelectionMode,
   DetailsListLayoutMode as LayoutMode
 } from '../../components/index';
+import { SelectionMode } from '../../utilities/selection/interfaces';
 import ColorPicker from '../../components/ColorPicker/index';
 
 let Highlight = require('react-highlight');
