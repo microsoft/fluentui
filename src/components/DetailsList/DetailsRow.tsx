@@ -3,7 +3,7 @@ import { IColumn, IDragDropEvents } from './interfaces';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import Check from './Check';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
-import { shallowCompare } from '../../utilities/object';
+import { shallowCompare, assign } from '../../utilities/object';
 import { css } from '../../utilities/css';
 import DetailsRowFields from './DetailsRowFields';
 import './DetailsRow.scss';
@@ -30,6 +30,7 @@ export interface IDetailsRowState {
   selectionState?: IDetailsRowSelectionState;
   columnMeasureInfo?: {
     index: number;
+    column: IColumn;
     onMeasureDone: (measuredWidth: number) => void;
   };
   isDropping?: boolean;
@@ -70,7 +71,7 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
   public componentDidMount() {
     let { eventsToRegister, itemIndex, item, dragDropEvents } = this.props;
 
-    if (dragDropEvents && dragDropEvents.canDrop && dragDropEvents.canDrop(item)) {
+    if (dragDropEvents && item && dragDropEvents.canDrop && dragDropEvents.canDrop(item)) {
       // dragenter and dragleave will be fired when hover to the child element
       // but we only want to change state when enter or leave the current element
       // use the count to ensure it.
@@ -117,7 +118,7 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
     let state = this.state;
     let { columnMeasureInfo } = state;
 
-    if (columnMeasureInfo) {
+    if (columnMeasureInfo && columnMeasureInfo.index >= 0) {
       let newWidth = this.refs.cellMeasurer.getBoundingClientRect().width;
 
       columnMeasureInfo.onMeasureDone(newWidth);
@@ -178,6 +179,7 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
         data-is-draggable={ isDraggable }
         tabIndex={ canFocus ? 0 : -1 }
         >
+
         { (selectionMode !== SelectionMode.none) && (
           <button
             tabIndex={ -1 }
@@ -198,9 +200,10 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
 
         { columnMeasureInfo && (
           <span className='ms-DetailsRow-cellMeasurer ms-DetailsRow-cell' ref='cellMeasurer'>
-            <DetailsRowFields columns={ [ columns[columnMeasureInfo.index] ] } item={ item } itemIndex={ itemIndex } />
+            <DetailsRowFields columns={ [ columnMeasureInfo.column ] } item={ item } itemIndex={ itemIndex } />
           </span>
         ) }
+
       </div>
     );
   }
@@ -212,10 +215,17 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
    * @param {(width: number) => void} onMeasureDone (the call back function when finish measure)
    */
   public measureCell(index: number, onMeasureDone: (width: number) => void) {
+    let column = assign({}, this.props.columns[index]) as IColumn;
+
+    column.minWidth = 0;
+    column.maxWidth = 999999;
+    delete column.calculatedWidth;
+
     this.setState({
       columnMeasureInfo: {
-        index: index,
-        onMeasureDone: onMeasureDone
+        index,
+        column,
+        onMeasureDone
       }
     });
   }

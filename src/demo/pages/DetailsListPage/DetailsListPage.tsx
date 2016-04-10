@@ -4,9 +4,8 @@ import {
 } from '../../../components/index';
 import {
   ExampleCard,
-  PropertiesTable
+  PropertiesTableSet
 } from '../../components/index';
-import DetailsListProps from './DetailsListProps';
 
 import DetailsListBasicExample from './examples/DetailsList.Basic.Example';
 let DetailsListBasicExampleCode = require('./examples/DetailsList.Basic.Example.tsx');
@@ -24,7 +23,7 @@ export default class DetailsListPage extends React.Component<any, any> {
         <ExampleCard title='DetailsList of 20000 items, variable row heights' isOptIn={ false } code={ DetailsListBasicExampleCode }>
           <DetailsListBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ DetailsListProps } />
+        <PropertiesTableSet componentName='DetailsList' />
       </div>
     );
   }
