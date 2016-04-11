@@ -5,7 +5,7 @@ export interface IContextualMenuMultiselectExampleState {
   selection?: { [ key: string]: boolean };
 }
 
-let keys: string[] = [ 'newItem', 'share', 'mobile', 'enablePrint', 'enableMusic' ];
+let keys: string[] = [ 'newItem', 'share', 'mobile', 'enablePrint', 'enableMusic', 'newSub', 'emailMessage', 'calendarEvent' ];
 
 export default class ContextualMenuCheckmarksExample extends React.Component<any, IContextualMenuMultiselectExampleState> {
 
@@ -52,7 +52,7 @@ export default class ContextualMenuCheckmarksExample extends React.Component<any
               onClick: this._onToggleSelect
             },
             {
-              key: '-',
+              key: 'divider_1',
               name: '-',
             },
 
@@ -72,6 +72,27 @@ export default class ContextualMenuCheckmarksExample extends React.Component<any
               isChecked: selection[keys[4]],
               onClick: this._onToggleSelect
             },
+            {
+              key: keys[5],
+              icon: 'circlePlus',
+              items: [
+                {
+                  key: keys[6],
+                  name: 'Email message',
+                  canCheck: true,
+                  isChecked: selection[keys[6]],
+                  onClick: this._onToggleSelect
+                },
+                {
+                  key: keys[7],
+                  name: 'Calendar event',
+                  canCheck: true,
+                  isChecked: selection[keys[7]],
+                  onClick: this._onToggleSelect
+                }
+              ],
+              name: 'New'
+            },
           ]
         }
       />
@@ -79,7 +100,6 @@ export default class ContextualMenuCheckmarksExample extends React.Component<any
   }
 
   private _onToggleSelect(item: IContextualMenuItem) {
-
     let { selection } = this.state;
 
     selection[item.key] = !selection[item.key];

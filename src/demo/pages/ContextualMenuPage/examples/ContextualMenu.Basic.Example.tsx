@@ -60,7 +60,23 @@ export default class ContextualMenuBasicExample extends React.Component<any, any
                 {
                   key: 'sharetotwitter',
                   name: 'Share to Twitter',
-                  icon: 'share'
+                  icon: 'share',
+                  items: [
+                    {
+                      key: 'sharetoemail_1',
+                      name: 'Share to Email',
+                      icon: 'mail'
+                    },
+                    {
+                      key: 'sharetofacebook_1',
+                      name: 'Share to Facebook',
+                    },
+                    {
+                      key: 'sharetotwitter_1',
+                      name: 'Share to Twitter',
+                      icon: 'share'
+                   },
+              ],
                 },
               ],
               name: 'Share'

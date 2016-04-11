@@ -113,7 +113,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
 
     this.dismiss = this.dismiss.bind(this);
     this._onKeyDown = this._onKeyDown.bind(this);
-    this._onBlur = this._onBlur.bind(this);
+    this._onClickCapture = this._onClickCapture.bind(this);
     this._onItemClick = this._onItemClick.bind(this);
     this._onSubMenuDismiss = this._onSubMenuDismiss.bind(this);
     this._getRelativePositions = this._getRelativePositions.bind(this);
@@ -137,6 +137,8 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     this._getRelativePositions(this.props, this.state);
     this._events.on(window, 'scroll', this.dismiss);
     this._events.on(window, 'resize', this.dismiss);
+    this._events.on(window, 'click', this._onClickCapture, true);
+    this._events.on(window, 'touchstart', this._onClickCapture, true);
   }
 
   // Invoked when a component is receiving new props.
@@ -175,7 +177,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     let hasCheckmarks = !!(items && items.some(item => !!item.canCheck));
 
     return (
-      <div ref='host' className={ css('ms-ContextualMenu-container', className) } onBlurCapture={ this._onBlur }>
+      <div ref='host' className={ css('ms-ContextualMenu-container', className) }>
         { (items && items.length) ? (
           <FocusZone
             className={ 'ms-ContextualMenu is-open' + ((slideDirectionalClassName) ? (` ms-u-${slideDirectionalClassName}`) : '') }
@@ -231,17 +233,15 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
 
   private _onKeyDown(ev: React.KeyboardEvent) {
     if (ev.which === KeyCodes.escape) {
-
       // When a user presses escape, we will try to refocus the previous focused element.
       this._isFocusingPreviousElement = true;
       this.dismiss();
     }
   }
 
-  private _onBlur(ev: React.FocusEvent) {
-    if (!this.refs.host.contains(ev.relatedTarget as HTMLElement)) {
-      // When the user clicks on something unrelated, we won't make an attempt to reset focus back to the originating focused element.
-      this.dismiss(ev);
+  private _onClickCapture(ev: React.MouseEvent) {
+    if (!this.refs.host.contains(ev.target as HTMLElement)) {
+      this.dismiss();
     }
   }
 
@@ -249,10 +249,8 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     if (!item.items || !item.items.length) { // This is an item without a menu. Click it.
       if (item.onClick) {
         item.onClick(item, ev);
+        this.dismiss();
       }
-
-      this.dismiss();
-
     } else {
       if (item.key === this.state.expandedMenuItemKey) { // This has an expanded sub menu. collapse it.
         this._onSubMenuDismiss();
@@ -310,13 +308,10 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
       let actualHorizontalDirection: HorizontalAlignmentHint;
       let actualVerticalDirection: VerticalAlignmentHint;
 
-      let menuSizeWindowSizeInfo: IMenuSizeWindowSizeInfo = {
-        hostRect: hostRect,
-        targetRect: targetRect,
-        menuRect: menuRect,
-        windowSize: windowSize,
-        gapSpace: gapSpace
-      };
+      let menuSizeWindowSizeInfo: IMenuSizeWindowSizeInfo = { hostRect, targetRect, menuRect, windowSize, gapSpace };
+
+      // Check if it is necessary to switch contextualMenuType based on the menu size and window size.
+      contextualMenuType = this._switchContextualMenuType(parsedDirectionalHint, menuSizeWindowSizeInfo);
 
       // ContextualMenu submenu render type: vertical
       if (contextualMenuType === ContextualMenuType.vertical) {
@@ -410,9 +405,33 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     return parsedDirectionalHint;
   }
 
+  // Check if it is necessary to switch contextualMenuType based on the menu size and window size. For horizontal contextual menu, if no
+  // enough space on both left and right, then the contextualMenu type will be switch to vertical. For vertical contextual menu, if no
+  // enough space on both top and bottom, then the contextualMenu type will be switch to horizontal.
+  private _switchContextualMenuType(parsedDirectionalHint: IParsedDirectionalHint, menuSizeWindowSizeInfo: IMenuSizeWindowSizeInfo) {
+    let { contextualMenuType } = parsedDirectionalHint;
+    let { targetRect, menuRect, windowSize, gapSpace } = menuSizeWindowSizeInfo;
+
+    if (contextualMenuType === ContextualMenuType.horizontal) {
+      let hasEnoughSpaceLeft = targetRect.left > (menuRect.width + BUFFER_ZONE);
+      let hasEnoughSpaceRight = (windowSize.width - targetRect.right) > (menuRect.width + BUFFER_ZONE);
+      if (!hasEnoughSpaceLeft && !hasEnoughSpaceRight) {
+        contextualMenuType = ContextualMenuType.vertical;
+      }
+    } else {
+      let hasEnoughSpaceTop = targetRect.top > (menuRect.height + BUFFER_ZONE + gapSpace);
+      let hasEnoughSpaceBottom = (windowSize.height - targetRect.bottom) > (menuRect.height + BUFFER_ZONE + gapSpace);
+      if (!hasEnoughSpaceTop && !hasEnoughSpaceBottom) {
+        contextualMenuType = ContextualMenuType.horizontal;
+      }
+    }
+
+    return  contextualMenuType;
+  }
+
   // Get actualHorizontalDirection for vertical contextual menu based on window space and menu size
   private _getActualHorizontalDirectionforVerticalContextualMenu(horizontalAlignmentHint: HorizontalAlignmentHint, menuSizeWindowSizeInfo: IMenuSizeWindowSizeInfo) {
-    let { hostRect, targetRect: targetRect, menuRect, windowSize } = menuSizeWindowSizeInfo;
+    let { hostRect, targetRect, menuRect, windowSize } = menuSizeWindowSizeInfo;
     let actualHorizontalDirection: HorizontalAlignmentHint;
 
     if (horizontalAlignmentHint === HorizontalAlignmentHint.left) {
@@ -456,7 +475,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
 
   // Get actualVerticalDirection for vertical contextual menu based on window space and menu size
   private _getActualVerticalDirectionforVerticalContextualMenu(verticalAlignmentHint: VerticalAlignmentHint, menuSizeWindowSizeInfo: IMenuSizeWindowSizeInfo) {
-    let { targetRect: targetRect, menuRect, windowSize, gapSpace } = menuSizeWindowSizeInfo;
+    let { targetRect, menuRect, windowSize, gapSpace } = menuSizeWindowSizeInfo;
     let actualVerticalDirection: VerticalAlignmentHint;
 
     if (verticalAlignmentHint === VerticalAlignmentHint.bottom) {
@@ -487,7 +506,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     menuSizeWindowSizeInfo: IMenuSizeWindowSizeInfo,
     positionInfo: IPositionInfo
   ) {
-    let { hostRect, targetRect: targetRect, menuRect, gapSpace } = menuSizeWindowSizeInfo;
+    let { hostRect, targetRect, menuRect, gapSpace } = menuSizeWindowSizeInfo;
     let { menuPosition, beakPosition, directionalClassName } = positionInfo;
 
     // Calculate the horizontal position based on actualHorizontalDirection
@@ -531,7 +550,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
 
   // Get actualHorizontalDirection for horizontal contextual menu based on window space and menu size
   private _getActualHorizontalDirectionforHorizontalContextualMenu(horizontalAlignmentHint: HorizontalAlignmentHint, menuSizeWindowSizeInfo: IMenuSizeWindowSizeInfo) {
-    let { targetRect: targetRect, menuRect, windowSize, gapSpace } = menuSizeWindowSizeInfo;
+    let { targetRect, menuRect, windowSize, gapSpace } = menuSizeWindowSizeInfo;
     let actualHorizontalDirection: HorizontalAlignmentHint;
 
     if (horizontalAlignmentHint === HorizontalAlignmentHint.right) {
@@ -557,7 +576,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
 
   // Get actualVerticalDirection for horizontal contextual menu based on window space and menu size
   private _getActualVerticalDirectionforHorizontalContextualMenu(verticalAlignmentHint: VerticalAlignmentHint, menuSizeWindowSizeInfo: IMenuSizeWindowSizeInfo) {
-    let { targetRect: targetRect, menuRect, windowSize } = menuSizeWindowSizeInfo;
+    let { targetRect, menuRect, windowSize } = menuSizeWindowSizeInfo;
     let actualVerticalDirection: VerticalAlignmentHint;
 
     if (verticalAlignmentHint === VerticalAlignmentHint.top) {
@@ -599,7 +618,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     menuSizeWindowSizeInfo: IMenuSizeWindowSizeInfo,
     positionInfo: IPositionInfo
   ) {
-    let { hostRect, targetRect: targetRect, menuRect, gapSpace } = menuSizeWindowSizeInfo;
+    let { hostRect, targetRect, menuRect, gapSpace } = menuSizeWindowSizeInfo;
     let { menuPosition, beakPosition, directionalClassName } = positionInfo;
 
     // Calculate horizontal position based on actualHorizontalDirection

@@ -391,6 +391,7 @@ declare namespace __React {
 
         // MouseEvents
         onClick?: MouseEventHandler;
+        onClickCapture?: MouseEventHandler;
         onContextMenu?: MouseEventHandler;
         onDoubleClick?: MouseEventHandler;
         onDrag?: DragEventHandler;
