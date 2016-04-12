@@ -322,12 +322,18 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   private _onShowMore(groupIdx: number) {
     let { groups } = this.state;
     let group = groups ? groups[groupIdx] : null;
-    if (group) {
-      group.isShowingAll = true;
 
-      this.setState({
-        groups: groups
-      });
+    if (this.props.onShowAll) {
+      this.props.onShowAll(group);
+    } else {
+      // default implementation
+      if (group) {
+        group.isShowingAll = true;
+
+        this.setState({
+          groups: groups
+        });
+      }
     }
   }
 

@@ -67,6 +67,9 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** Viewport, provided by the withViewport decorator. */
   viewport?: IViewport;
+
+  /** Callback for when the "Show All" link in group footer is clicked */
+  onShowAll?: (group: IGroup) => void;
 }
 
 export interface IDetailsListViewData {

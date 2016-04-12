@@ -107,13 +107,14 @@ $unselectedHoverColor: $ms-color-neutralLight;
     z-index: 99;
   }
 
-  &.is-sorted.is-actionable .ms-DetailsHeader-sortArrow,
-  &.is-grouped.is-actionable .ms-DetailsHeader-sortArrow {
-    display: inline-block;
-  }
-
-  &is-sortedDescending .ms-DetailsHeader-sortArrow {
-    transform: rotate(180deg);
+  &.is-icon-visible:before {
+    @include ms-Icon;
+    @include padding-right(4px);
+    color: $ms-color-neutralSecondary;
+    position: relative;
+    top: -1px;
+    font-size: 9px;
+    content: attr(data-glyph);
   }
 }
 
@@ -138,13 +139,6 @@ $unselectedHoverColor: $ms-color-neutralLight;
   right: 0;
   bottom: 0;
   border: 1px solid $ms-color-neutralTertiary;
-}
-
-.ms-DetailsHeader-sortArrow.ms-Icon {
-  font-size: 12px;
-  @include margin-right(4px);
-  display: none;
-  color: $ms-color-neutralTertiary;
 }
 
 .ms-DetailsHeader-collapseButton {

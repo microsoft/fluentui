@@ -15,6 +15,7 @@ export interface IColumn {
   getCellContent?: (item: any, index?: number) => any;
   calculatedWidth?: number;
   isFilterable?: boolean;
+  isFiltered?: boolean;
   onColumnClick?: (column: IColumn, ev: React.MouseEvent) => any;
   // Internal state when a column is resizing.
   isSizing?: boolean;
@@ -46,6 +47,9 @@ export interface IGroup {
   isSelected?: boolean;
   isCollapsed?: boolean;
   isShowingAll?: boolean;
+
+  // Arbitrary data required to be preserved by the caller.
+  data?: any;
 }
 
 export interface IDragDropEvents {
