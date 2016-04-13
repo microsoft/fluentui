@@ -65,7 +65,6 @@ function createConfig(isProduction) {
     },
 
     plugins: [
-      new WebpackNotifierPlugin()
     ]
   };
 

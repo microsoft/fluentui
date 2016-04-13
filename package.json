@@ -23,7 +23,6 @@
     "source-map-loader": "^0.1.5",
     "vinyl-ftp": "0.4.5",
     "web-library-build": "~0.1.1",
-    "webpack-notifier": "1.3.0",
     "webpack-split-by-path": "0.0.8"
   },
   "peerDependencies": {
