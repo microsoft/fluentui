@@ -1,6 +1,6 @@
 {
   "name": "@ms/office-ui-fabric-react",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "This is a repo for building out React controls skinned with Fabric.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -17,7 +17,7 @@
     "gulp-util": "3.0.7",
     "gutil": "1.6.4",
     "highlight.js": "9.2.0",
-    "office-ui-fabric": "~2.2.0",
+    "office-ui-fabric": "~2.3.0",
     "react-addons-test-utils": "^0.14.0 || ^15.0.1",
     "react-highlight": "0.7.0",
     "source-map-loader": "^0.1.5",

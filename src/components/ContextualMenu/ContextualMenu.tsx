@@ -23,6 +23,7 @@ const SLIDE_ANIMATIONS = {
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
+  dismissedMenuItemKey?: string;
   contextualMenuItems?: IContextualMenuItem[];
   contextualMenuTarget?: HTMLElement;
   beakStyle?: any;
@@ -235,13 +236,13 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     if (ev.which === KeyCodes.escape) {
       // When a user presses escape, we will try to refocus the previous focused element.
       this._isFocusingPreviousElement = true;
-      this.dismiss();
+      this.dismiss(ev);
     }
   }
 
   private _onClickCapture(ev: React.MouseEvent) {
     if (!this.refs.host.contains(ev.target as HTMLElement)) {
-      this.dismiss();
+      this.dismiss(ev);
     }
   }
 
@@ -249,11 +250,11 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     if (!item.items || !item.items.length) { // This is an item without a menu. Click it.
       if (item.onClick) {
         item.onClick(item, ev);
-        this.dismiss();
       }
+      this.dismiss(ev);
     } else {
-      if (item.key === this.state.expandedMenuItemKey) { // This has an expanded sub menu. collapse it.
-        this._onSubMenuDismiss();
+      if (item.key === this.state.dismissedMenuItemKey) { // This has an expanded sub menu. collapse it.
+        this._onSubMenuDismiss(ev);
       } else { // This has a collapsed sub menu. Expand it.
         this.setState({
           expandedMenuItemKey: item.key,
@@ -265,10 +266,14 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
         });
       }
     }
+
+    ev.stopPropagation();
+    ev.preventDefault();
   }
 
   private _onSubMenuDismiss(ev?: any) {
     this.setState({
+      dismissedMenuItemKey: this.state.expandedMenuItemKey,
       expandedMenuItemKey: null,
       submenuProps: null
     });
