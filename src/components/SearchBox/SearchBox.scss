@@ -8,7 +8,7 @@
 .ms-SearchBox-field {
   &:hover {
     border-color: $ms-color-themePrimary;
-    background-color: transparentize(#0078d7, 0.8);
+    background-color: $ms-color-primaryTranslucent20;
 
     & + .ms-SearchBox-label {
       color: $ms-color-black;
@@ -18,4 +18,19 @@
       }
     }
   }
+}
+
+// Fabric RTL fixes
+.ms-SearchBox-label {
+  @include padding-left(8px);
+  @include left(0);
+}
+
+.ms-SearchBox-icon {
+  @include margin-right(7px);
+}
+
+.ms-SearchBox-closeButton {
+  @include right(0);
+  @include left(auto);
 }
