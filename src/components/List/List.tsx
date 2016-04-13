@@ -1,6 +1,6 @@
 import * as React from 'react';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
-import Async from '../../utilities/async/Async';
+import Async from '../../utilities/Async/Async';
 import { ISelection, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 
 export interface IListProps extends React.Props<List> {
