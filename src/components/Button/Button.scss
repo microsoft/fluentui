@@ -1,2 +1,24 @@
 @import '../../common';
 @import "~office-ui-fabric/src/components/Button/Button";
+
+.ms-Button--icon {
+  background-color: transparent;
+  padding: 0;
+  min-width: auto;
+  height: auto;
+  border: 0;
+
+  &:hover {
+    background-color: transparent;
+    border-color: transparent;
+    outline-color: transparent;
+  }
+
+  &:focus {
+    background-color: transparent;
+  }
+
+  .ms-Button-icon {
+    display: inline;
+  }
+}

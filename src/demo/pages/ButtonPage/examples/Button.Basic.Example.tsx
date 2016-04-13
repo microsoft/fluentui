@@ -27,7 +27,7 @@ export class BasicButtonsExample extends React.Component<any, any> {
         <Button buttonType={ ButtonType.command } icon='personAdd' description='Description of the action this button takes'>Create account</Button>
 
         <Label>Icon button</Label>
-        <Button buttonType={ ButtonType.command } icon='star' title='Star' description='Take a star' />
+        <Button buttonType={ ButtonType.icon } icon='star' title='Star' description='Take a star' />
 
         <Label>Button like anchor</Label>
         <Button elementType={ ElementType.anchor } buttonType={ ButtonType.primary } href='http://bing.com' target='_blank' title='Let us bing!' description='Navigate to Bing home page.'>Bing</Button>

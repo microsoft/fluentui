@@ -36,5 +36,6 @@ export enum ButtonType {
   primary,
   hero,
   compound,
-  command
+  command,
+  icon
 }

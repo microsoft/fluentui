@@ -19,10 +19,11 @@ export default class Button extends React.Component<IButtonProps, any> {
       'ms-Button--primary': buttonType === ButtonType.primary,
       'ms-Button--hero': buttonType === ButtonType.hero,
       'ms-Button--compound': buttonType === ButtonType.compound,
-      'ms-Button--command': buttonType === ButtonType.command
+      'ms-Button--command': buttonType === ButtonType.command,
+      'ms-Button--icon' : buttonType === ButtonType.icon
     });
 
-    const iconSpan = icon && (buttonType === ButtonType.command || buttonType === ButtonType.hero)
+    const iconSpan = icon && (buttonType === ButtonType.command || buttonType === ButtonType.hero || buttonType === ButtonType.icon)
       ? <span className='ms-Button-icon'><i className={`ms-Icon ms-Icon--${icon}`}></i></span>
       : null;
 
