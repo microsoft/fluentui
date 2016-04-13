@@ -81,8 +81,6 @@ export default class List extends React.Component<IListProps, IListState> {
       this._events.on(props.selection, SELECTION_CHANGE, this._onSelectionChanged);
       this._focusedIndex = props.selection.getFocusedIndex();
     }
-
-
   }
 
   public componentDidMount() {
