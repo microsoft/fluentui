@@ -71,8 +71,7 @@ function createConfig(isProduction) {
           name: 'demo-components',
           path: path.join(__dirname, 'lib', 'components')
         }
-      ]),
-      new WebpackNotifierPlugin()
+      ])
     ]
   };
 

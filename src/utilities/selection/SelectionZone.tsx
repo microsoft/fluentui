@@ -1,9 +1,13 @@
 import * as React from 'react';
 import EventGroup from '../eventGroup/EventGroup';
-import { ISelection, SelectionMode } from './ISelection';
-import ISelectionLayout from './ISelectionLayout';
-import { default as SelectionLayout, SelectionDirection } from './SelectionLayout';
+import { SelectionLayout } from './SelectionLayout';
 import KeyCodes from '../KeyCodes';
+import {
+  ISelection,
+  ISelectionLayout,
+  SelectionDirection,
+  SelectionMode
+} from './interfaces';
 
 // Selection definitions:
 //
@@ -29,6 +33,7 @@ export interface ISelectionZoneProps extends React.Props<SelectionZone> {
   layout?: ISelectionLayout;
   selectionMode: SelectionMode;
   isSelectedOnFocus?: boolean;
+  onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
 }
 
 export default class SelectionZone extends React.Component<ISelectionZoneProps, any> {
@@ -95,7 +100,13 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
   }
 
   private _onKeyDown(ev: KeyboardEvent) {
-    let { selection, layout, selectionMode, isSelectedOnFocus } = this.props;
+    let {
+      selection,
+      layout,
+      selectionMode,
+      isSelectedOnFocus,
+      onItemInvoked
+    } = this.props;
 
     let items = selection.getItems();
     let eventTarget = ev.target as HTMLElement;
@@ -155,6 +166,13 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
           ev.preventDefault();
         }
         return;
+
+      case KeyCodes.enter:
+        if (onItemInvoked) {
+          onItemInvoked(items[focusIndex], focusIndex, ev);
+          return;
+        }
+        break;
 
       case KeyCodes.a:
         if (selectionMode === SelectionMode.multiple && (isCtrlPressed || isMetaPressed)) {

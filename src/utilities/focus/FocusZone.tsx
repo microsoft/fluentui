@@ -239,24 +239,27 @@ export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZo
     let array = [];
 
     function _getChildren(element) {
-      for (let child of element.children) {
-        let e = child;
+      if (element && element.children) {
+        for (let childIndex = 0; childIndex < element.children.length; childIndex++) {
+          let child = element.children[childIndex];
+          let e = child;
 
-        if (e.tagName) {
-          if (_isFocusableElement(e) &&
-            (_belongsToFocusZone(focusNamespace, e) ||
-            _belongsToNestedZone(focusNamespace, e))) {
-            if (array.indexOf(e) === -1) {
-              array.push(e);
+          if (e.tagName) {
+            if (_isFocusableElement(e) &&
+              (_belongsToFocusZone(focusNamespace, e) ||
+              _belongsToNestedZone(focusNamespace, e))) {
+              if (array.indexOf(e) === -1) {
+                array.push(e);
+              }
             }
+            _getChildren(e);
           }
-          _getChildren(e);
         }
       }
     }
 
     for (let ref in this.refs) {
-      if (ref !== 'root') {
+      if (this.refs.hasOwnProperty(ref) && ref !== 'root') {
         let refElement = ReactDOM.findDOMNode(this.refs[ref]) as HTMLElement;
 
         if (refElement && _isFocusableElement(refElement) &&

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
-import { ISelection, SELECTION_CHANGE } from '../../utilities/selection/ISelection';
+import Async from '../../utilities/Async/Async';
+import { ISelection, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 
 export interface IListProps extends React.Props<List> {
   /** Items to render. */
@@ -17,6 +18,9 @@ export interface IListProps extends React.Props<List> {
 
   selection?: ISelection;
 }
+
+const MIN_SCROLL_UPDATE_DELAY = 50;
+const MAX_SCROLL_UPDATE_DELAY = 200;
 
 export interface IListState {
   pages?: any[];
@@ -48,6 +52,7 @@ export default class List extends React.Component<IListProps, IListState> {
   private _events: EventGroup;
   private _focusedIndex: number;
   private _scrollingToIndex: number;
+  private _async: Async;
 
   constructor(props: IListProps) {
     super(props);
@@ -56,6 +61,16 @@ export default class List extends React.Component<IListProps, IListState> {
     };
 
     this._events = new EventGroup(this);
+    this._async = new Async(this);
+
+    // Ensure that scrolls and resizes are lazy updated.
+    this._onScrollOrResize = this._async.debounce(
+      this._onScrollOrResize,
+      MIN_SCROLL_UPDATE_DELAY,
+      {
+        maxWait: MAX_SCROLL_UPDATE_DELAY
+      });
+
     this._cachedPageHeights = {};
     this._estimatedItemHeight = 30;
     this._focusedIndex = -1;
@@ -85,6 +100,7 @@ export default class List extends React.Component<IListProps, IListState> {
 
   public componentWillUnmount() {
     this._events.dispose();
+    this._async.dispose();
   }
 
   public componentWillReceiveProps(newProps: IListProps) {

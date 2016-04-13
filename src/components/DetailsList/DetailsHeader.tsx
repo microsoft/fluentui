@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IColumn, DetailsListLayoutMode } from './interfaces';
 import { css } from '../../utilities/css';
 import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
-import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/ISelection';
+import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import Check from './Check';
 import { getRTL } from '../../utilities/rtl';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
@@ -10,6 +10,12 @@ import './DetailsHeader.scss';
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
+
+// column state glyphs
+const SORT_ASC_GLYPH = '\u{e27a}';
+const SORT_DEC_GLYPH = '\u{e27b}';
+const FILTER_GLYPH = '\u{e11a}';
+const GROUP_GLYPH = '\u{e31d}';
 
 export interface IDetailsHeaderProps {
   columns: IColumn[];
@@ -117,19 +123,14 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
                   disabled={ !column.isSortable && !column.isGroupable && !column.isFilterable }
                   className={ css('ms-DetailsHeader-cell', {
                     'is-actionable': column.isSortable || column.isGroupable || column.isFilterable,
-                    'is-sorted': column.isSorted,
-                    'is-grouped': column.isGrouped
+                    'is-icon-visible': column.isSorted || column.isGrouped || column.isFiltered
                   }) }
+                  data-glyph={ ( column.isGrouped ? GROUP_GLYPH : '') +
+                    ( column.isSorted ? ( column.isSortedDescending ? SORT_DEC_GLYPH : SORT_ASC_GLYPH ) : '' ) +
+                    ( column.isFiltered ? FILTER_GLYPH : '') }
                   style={ { width: column.calculatedWidth } }
                   onClick={ this._onColumnClick.bind(this, column) }
                   >
-                  <span
-                    className={ css('ms-DetailsHeader-sortArrow ms-Icon', {
-                      'ms-Icon--arrowUp2': !column.isGrouped && !column.isSortedDescending,
-                      'ms-Icon--arrowDown2': !column.isGrouped && column.isSortedDescending,
-                      'ms-Icon--listGroup2': column.isGrouped
-                    }) }
-                    />
                   { column.name }
                   { column.isFilterable ? (
                     <i className='ms-DetailsHeader-filterChevron ms-Icon ms-Icon--chevronDown' />

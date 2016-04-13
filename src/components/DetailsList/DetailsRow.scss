@@ -107,11 +107,9 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
   vertical-align: middle;
 }
 
-.ms-DetailsRow-cellMeasurer {
-  position: absolute;
-  visibility: hidden;
+.ms-DetailsRow-cellMeasurer .ms-DetailsRow-cell {
+  overflow: visible;
   white-space: nowrap;
-  top: -1000000000;
 }
 
 .ms-DetailsRow-collapseGroupSpacer {
