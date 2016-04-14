@@ -272,8 +272,14 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   }
 
   private _onSubMenuDismiss(ev?: any) {
+    let itemKey = null;
+    let list = this.refs[this.state.expandedMenuItemKey] as HTMLElement;
+
+    if (list && list.contains(ev.target as HTMLElement)) {
+      itemKey = this.state.expandedMenuItemKey;
+    }
     this.setState({
-      dismissedMenuItemKey: this.state.expandedMenuItemKey,
+      dismissedMenuItemKey: itemKey,
       expandedMenuItemKey: null,
       submenuProps: null
     });
