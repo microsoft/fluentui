@@ -1,22 +1,8 @@
 import * as React from 'react';
 import Label from '../Label/index';
+import {ITextFieldProps} from './TextField.props';
 import './TextField.scss';
 import { css } from '../../utilities/css';
-
-export interface ITextFieldProps extends React.DOMAttributes {
-  children?: any;
-  disabled?: boolean;
-  required?: boolean;
-  multiline?: boolean;
-  underlined?: boolean;
-  placeholder?: string;
-  label?: string;
-  description?: string;
-  iconClass?: string;
-  value?: string;
-  onChanged?: (newValue: any) => void;
-  className?: string;
-}
 
 export interface ITextFieldState {
   value: string;
@@ -60,7 +46,6 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
 
     return (
       <div
-        {...this.props}
         className={
         css('ms-TextField', className, {
           'is-required': required,
@@ -93,6 +78,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
     this.setState({
       value: this.refs.singlelineText.value
     });
+
     this._onChanged(this.refs.singlelineText.value);
   }
 
