@@ -102,12 +102,12 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
             </button>
           ) : (null) }
           { isGrouped ? (
-          <span className='ms-DetailsHeader-cell'>
+          <button className='ms-DetailsHeader-cell'>
             <i className={ css('ms-DetailsHeader-collapseButton ms-Icon ms-Icon--chevronDown', {
               'is-collapsed': isAllCollapsed
             }) } onClick={ this._onToggleCollapseAll }>
             </i>
-          </span>
+          </button>
           ) : (null) }
           { columns.map((column, columnIndex) => (
             <div key={ column.key } className='ms-DetailsHeader-cellSizeWrapper'>

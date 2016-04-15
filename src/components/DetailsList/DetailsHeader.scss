@@ -152,3 +152,7 @@ $unselectedHoverColor: $ms-color-neutralLight;
   color: $ms-color-neutralTertiary;
   @include padding-right(5px);
 }
+
+.ms-DetailsHeader-cell .ms-DetailsHeader-collapseButton.ms-Icon {
+  @include padding-right(0);
+}
