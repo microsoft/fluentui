@@ -77,7 +77,7 @@ export const AppState: IAppState = {
         {
           component: ChoiceGroupPage,
           name: 'ChoiceGroup',
-          status: ExampleStatus.started,
+          status: ExampleStatus.beta,
           url: '#/examples/ChoiceGroup'
         },
         {

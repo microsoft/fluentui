@@ -4,9 +4,9 @@ import {
 } from '../../../components/index';
 import {
   ExampleCard,
-  PropertiesTable
+  PropertiesTableSet
 } from '../../components/index';
-import ChoiceGroupProps from './ChoiceGroupProps';
+
 import ChoiceGroupBasicExample from './examples/ChoiceGroup.Basic.Example';
 let ChoiceGroupBasicExampleCode = require('./examples/ChoiceGroup.Basic.Example.tsx');
 
@@ -20,13 +20,15 @@ export default class ChoiceGroupPage extends React.Component<any, any> {
           <Link
             target='_blank'
             text='ChoiceGroups'
-            url='http://dev.office.com/fabric/components/choiceGroup' />
-             allow the user to choose one of many options.</div>
+            url='http://dev.office.com/fabric/components/choiceGroup'
+          /> allow the user to choose one of many options.</div>
         <h2 className='ms-font-xl'>Examples</h2>
         <ExampleCard title='ChoiceGroups' code={ ChoiceGroupBasicExampleCode }>
           <ChoiceGroupBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ ChoiceGroupProps } />
+
+        <PropertiesTableSet componentName='ChoiceGroup' />
+
       </div>
     );
   }
