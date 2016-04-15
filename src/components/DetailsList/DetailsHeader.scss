@@ -63,6 +63,7 @@ $unselectedHoverColor: $ms-color-neutralLight;
 }
 
 .ms-DetailsHeader-cell {
+  position: relative;
   display: inline-block;
   box-sizing: border-box;
   padding: 0 8px;
