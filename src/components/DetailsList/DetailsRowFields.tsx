@@ -7,6 +7,9 @@ export interface IDetailsRowFieldsProps {
   item: any;
   itemIndex: number;
   columns: IColumn[];
+
+  onDidMount?: (fields: DetailsRowFields) => void;
+  onWillUnmount?: (fields: DetailsRowFields) => void;
 }
 
 export default class DetailsRowFields extends React.Component<IDetailsRowFieldsProps, {}> {
@@ -14,13 +17,25 @@ export default class DetailsRowFields extends React.Component<IDetailsRowFieldsP
     return !shallowCompare(this.props, newProps);
   }
 
+  public componentDidMount() {
+    if (this.props.onDidMount) {
+      this.props.onDidMount(this);
+    }
+  }
+
+  public componentWillUnmount() {
+    if (this.props.onWillUnmount) {
+      this.props.onWillUnmount(this);
+    }
+  }
+
   public render() {
     let { columns, itemIndex } = this.props;
 
     return (
       <div className='ms-DetailsRow-fields'>
-        { columns.map(column => (
-          <div key={ column.key } className={ css('ms-DetailsRow-cell', {
+        { columns.map((column, columnIndex) => (
+          <div key={ columnIndex } className={ css('ms-DetailsRow-cell', {
             'is-clipped': column.isClipped
           }) } style={ { width: column.calculatedWidth } }>
             { this._getCellContent(column, itemIndex) }

@@ -15,8 +15,8 @@ export interface IDetailsRowProps {
   selectionMode: SelectionMode;
   selection: ISelection;
   eventsToRegister?: [{ eventName: string, callback: (item?: any, index?: number, event?: any) => void }];
-  onWillUnmount?: (row?: DetailsRow) => void;
   onDidMount?: (row?: DetailsRow) => void;
+  onWillUnmount?: (row?: DetailsRow) => void;
   dragDropEvents?: IDragDropEvents;
   isGrouped?: boolean;
 }
@@ -60,6 +60,9 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
       isDropping: false,
       isGrouped: props.isGrouped
     };
+
+    this._onFieldsMounted = this._onFieldsMounted.bind(this);
+    this._onFieldsUnmounted = this._onFieldsUnmounted.bind(this);
 
     this._hasSetFocus = false;
 
@@ -195,7 +198,12 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
         ) }
 
         { item && (
-          <DetailsRowFields columns={ columns } item={ item } itemIndex={ itemIndex } />
+          <DetailsRowFields
+            columns={ columns }
+            item={ item }
+            itemIndex={ itemIndex }
+            onDidMount={ this._onFieldsMounted }
+            onWillUnmount={ this._onFieldsUnmounted } />
         ) }
 
         { columnMeasureInfo && (
@@ -228,6 +236,28 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
         onMeasureDone
       }
     });
+  }
+
+  /**
+   * Called when fields are mounted.
+   */
+  private _onFieldsMounted() {
+    let { onDidMount } = this.props;
+
+    if (onDidMount) {
+      onDidMount(this);
+    }
+  }
+
+  /**
+   * Called when fields are unmounted.
+   */
+  private _onFieldsUnmounted() {
+    let { onWillUnmount } = this.props;
+
+    if (onWillUnmount) {
+      onWillUnmount(this);
+    }
   }
 
   private _getSelectionState(props: IDetailsRowProps): IDetailsRowSelectionState {
