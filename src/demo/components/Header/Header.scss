@@ -75,7 +75,7 @@
   }
 }
 
-:global(.ms-Fabric).is-focusVisible .Header-button:focus:before {
+.ms-Fabric.is-focusVisible .Header-button:focus:before {
   position: absolute;
   content: '';
   left: 2px;
