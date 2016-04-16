@@ -5,6 +5,7 @@ import './ContextualMenu.scss';
 import KeyCodes from '../../utilities/KeyCodes';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
 import { css } from '../../utilities/css';
+import { getRTL } from '../../utilities/rtl';
 
 import { IContextualMenuProps } from './ContextualMenu.Props';
 
@@ -198,6 +199,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
                       <button
                         className={ css('ms-ContextualMenu-link', { 'is-expanded': (expandedMenuItemKey === item.key) }) }
                         onClick={ this._onItemClick.bind(this, item) }
+                        onKeyDown={ item.items && item.items.length ? this._onItemKeyDown.bind(this, item) : null }
                         data-command-key={ index }
                         role='menuitem'
                         >
@@ -233,7 +235,9 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   }
 
   private _onKeyDown(ev: React.KeyboardEvent) {
-    if (ev.which === KeyCodes.escape) {
+    let submenuCloseKey = getRTL() ? KeyCodes.right : KeyCodes.left;
+    if (ev.which === KeyCodes.escape
+      || (ev.which == submenuCloseKey && this.props.isSubMenu)) {
       // When a user presses escape, we will try to refocus the previous focused element.
       this._isFocusingPreviousElement = true;
       this.dismiss(ev);
@@ -256,19 +260,31 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
       if (item.key === this.state.dismissedMenuItemKey) { // This has an expanded sub menu. collapse it.
         this._onSubMenuDismiss(ev);
       } else { // This has a collapsed sub menu. Expand it.
-        this.setState({
-          expandedMenuItemKey: item.key,
-          submenuProps: {
-            items: item.items,
-            targetElement: ev.currentTarget as HTMLElement,
-            onDismiss: this._onSubMenuDismiss
-          }
-        });
+        this._onSubMenuExpand(item, ev);
       }
     }
 
     ev.stopPropagation();
     ev.preventDefault();
+  }
+
+  private _onItemKeyDown(item: any, ev: KeyboardEvent) {
+    let openKey = getRTL() ? KeyCodes.left : KeyCodes.right;
+    if(ev.which == openKey) {
+      this._onSubMenuExpand(item, ev);
+    }
+  }
+
+  private _onSubMenuExpand(item: any, ev: UIEvent) {
+    this.setState({
+      expandedMenuItemKey: item.key,
+      submenuProps: {
+        items: item.items,
+        targetElement: ev.currentTarget as HTMLElement,
+        onDismiss: this._onSubMenuDismiss,
+        isSubMenu: true,
+      }
+    });
   }
 
   private _onSubMenuDismiss(ev?: any) {
