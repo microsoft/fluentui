@@ -270,7 +270,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
 
   private _onItemKeyDown(item: any, ev: KeyboardEvent) {
     let openKey = getRTL() ? KeyCodes.left : KeyCodes.right;
-    if (ev.which == openKey) {
+    if (ev.which === openKey) {
       this._onSubMenuExpand(item, ev);
     }
   }
