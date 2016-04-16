@@ -237,7 +237,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   private _onKeyDown(ev: React.KeyboardEvent) {
     let submenuCloseKey = getRTL() ? KeyCodes.right : KeyCodes.left;
     if (ev.which === KeyCodes.escape
-      || (ev.which == submenuCloseKey && this.props.isSubMenu)) {
+      || (ev.which === submenuCloseKey && this.props.isSubMenu)) {
       // When a user presses escape, we will try to refocus the previous focused element.
       this._isFocusingPreviousElement = true;
       this.dismiss(ev);
@@ -270,7 +270,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
 
   private _onItemKeyDown(item: any, ev: KeyboardEvent) {
     let openKey = getRTL() ? KeyCodes.left : KeyCodes.right;
-    if(ev.which == openKey) {
+    if (ev.which == openKey) {
       this._onSubMenuExpand(item, ev);
     }
   }
