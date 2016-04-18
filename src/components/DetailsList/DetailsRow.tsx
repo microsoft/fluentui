@@ -50,6 +50,7 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
   private _hasSetFocus: boolean;
   private _dragEnterCount: number;
   private _droppingCssClasses: string;
+  private _hasMounted: boolean;
 
   constructor(props) {
     super(props);
@@ -60,9 +61,6 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
       isDropping: false,
       isGrouped: props.isGrouped
     };
-
-    this._onFieldsMounted = this._onFieldsMounted.bind(this);
-    this._onFieldsUnmounted = this._onFieldsUnmounted.bind(this);
 
     this._hasSetFocus = false;
 
@@ -110,7 +108,9 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
 
     this._events.on(this.props.selection, SELECTION_CHANGE, this._onSelectionChanged);
 
-    if (this.props.onDidMount) {
+    if (this.props.onDidMount && this.props.item) {
+      // If the item appears later, we should wait for it before calling this method.
+      this._hasMounted = true;
       this.props.onDidMount(this);
     }
 
@@ -119,6 +119,7 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
 
   public componentDidUpdate() {
     let state = this.state;
+    let { item, onDidMount } = this.props;
     let { columnMeasureInfo } = state;
 
     if (columnMeasureInfo && columnMeasureInfo.index >= 0) {
@@ -131,13 +132,19 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
       });
     }
 
+    if (item && onDidMount && !this._hasMounted) {
+      this._hasMounted = true;
+      onDidMount(this);
+    }
+
     this.setFocus();
   }
 
   public componentWillUnmount() {
     this._events.dispose();
 
-    if (this.props.onWillUnmount) {
+    // Only call the onWillUnmount callback if we have an item.
+    if (this.props.onWillUnmount && this.props.item) {
       this.props.onWillUnmount(this);
     }
   }
@@ -201,9 +208,7 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
           <DetailsRowFields
             columns={ columns }
             item={ item }
-            itemIndex={ itemIndex }
-            onDidMount={ this._onFieldsMounted }
-            onWillUnmount={ this._onFieldsUnmounted } />
+            itemIndex={ itemIndex } />
         ) }
 
         { columnMeasureInfo && (
@@ -236,28 +241,6 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
         onMeasureDone
       }
     });
-  }
-
-  /**
-   * Called when fields are mounted.
-   */
-  private _onFieldsMounted() {
-    let { onDidMount } = this.props;
-
-    if (onDidMount) {
-      onDidMount(this);
-    }
-  }
-
-  /**
-   * Called when fields are unmounted.
-   */
-  private _onFieldsUnmounted() {
-    let { onWillUnmount } = this.props;
-
-    if (onWillUnmount) {
-      onWillUnmount(this);
-    }
   }
 
   private _getSelectionState(props: IDetailsRowProps): IDetailsRowSelectionState {

@@ -7,26 +7,11 @@ export interface IDetailsRowFieldsProps {
   item: any;
   itemIndex: number;
   columns: IColumn[];
-
-  onDidMount?: (fields: DetailsRowFields) => void;
-  onWillUnmount?: (fields: DetailsRowFields) => void;
 }
 
 export default class DetailsRowFields extends React.Component<IDetailsRowFieldsProps, {}> {
   public shouldComponentUpdate(newProps: IDetailsRowFieldsProps) {
     return !shallowCompare(this.props, newProps);
-  }
-
-  public componentDidMount() {
-    if (this.props.onDidMount) {
-      this.props.onDidMount(this);
-    }
-  }
-
-  public componentWillUnmount() {
-    if (this.props.onWillUnmount) {
-      this.props.onWillUnmount(this);
-    }
   }
 
   public render() {

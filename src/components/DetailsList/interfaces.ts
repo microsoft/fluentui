@@ -38,9 +38,6 @@ export enum DetailsListLayoutMode {
 export interface IGroup {
   key: string;
   name: string;
-  fieldSchema: {
-    name: string;
-  };
   startIndex: number;
   count: number;
 
