@@ -4,9 +4,8 @@ import {
 } from '../../../components/index';
 import {
   ExampleCard,
-  PropertiesTable
+  PropertiesTableSet
 } from '../../components/index';
-import DropdownProps from './DropdownProps';
 
 import DropdownBasicExample from './examples/Dropdown.Basic.Example';
 let DropdownBasicExampleCode = require('./examples/Dropdown.Basic.Example.tsx');
@@ -24,7 +23,7 @@ export default class DropdownExample extends React.Component<any, any> {
           <DropdownBasicExample />
         </ExampleCard>
 
-        <PropertiesTable properties={ DropdownProps } />
+        <PropertiesTableSet componentName='Dropdown' />
       </div>
     );
   }

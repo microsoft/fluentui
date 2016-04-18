@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { IContextualMenuItem, DirectionalHint } from './interfaces';
 import FocusZone from '../../utilities/focus/FocusZone';
 import './ContextualMenu.scss';
 import KeyCodes from '../../utilities/KeyCodes';
@@ -7,7 +6,7 @@ import EventGroup from '../../utilities/eventGroup/EventGroup';
 import { css } from '../../utilities/css';
 import { getRTL } from '../../utilities/rtl';
 
-import { IContextualMenuProps } from './ContextualMenu.Props';
+import { IContextualMenuProps, IContextualMenuItem, DirectionalHint } from './ContextualMenu.Props';
 
 const BUFFER_ZONE = 5;
 const BEAK_WIDTH = 16;
@@ -200,6 +199,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
                         className={ css('ms-ContextualMenu-link', { 'is-expanded': (expandedMenuItemKey === item.key) }) }
                         onClick={ this._onItemClick.bind(this, item) }
                         onKeyDown={ item.items && item.items.length ? this._onItemKeyDown.bind(this, item) : null }
+                        disabled={ item.isDisabled }
                         data-command-key={ index }
                         role='menuitem'
                         >
