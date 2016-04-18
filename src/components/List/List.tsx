@@ -135,7 +135,7 @@ export default class List extends React.Component<IListProps, IListState> {
   }
 
   public componentDidUpdate() {
-    let { surfaceRect:lastSurfaceRect } = this.state;
+    let { surfaceRect: lastSurfaceRect } = this.state;
 
     if (this._scrollingToIndex > -1) {
       if (this._isIndexRendered(this._scrollingToIndex)) {
