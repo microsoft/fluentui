@@ -4,14 +4,31 @@ import { css } from '../../utilities/css';
 import { assign } from '../../utilities/object';
 import { IButtonProps, ButtonType, ElementType } from './Button.Props';
 
-export default class Button extends React.Component<IButtonProps, any> {
+export interface IButtonState {
+  labelId?: string;
+  descriptionId?: string;
+}
+
+let _instance = 0;
+
+export default class Button extends React.Component<IButtonProps, IButtonState> {
   public static defaultProps: IButtonProps = {
     elementType: ElementType.button,
     buttonType: ButtonType.normal
   };
 
+  constructor(props: IButtonProps) {
+    super(props);
+
+    this.state = {
+      labelId: `Button-${ _instance++ }`,
+      descriptionId: `Button-${ _instance++ }`,
+    };
+  }
+
   public render() {
-    let { buttonType, children, icon, description } = this.props;
+    let { buttonType, children, icon, description, ariaLabel } = this.props;
+    let {labelId, descriptionId } = this.state;
 
     const tag = this.props.elementType === ElementType.button ? 'button' : 'a';
 
@@ -28,15 +45,21 @@ export default class Button extends React.Component<IButtonProps, any> {
       : null;
 
     let descriptionSpan;
-    if (ButtonType.compound) {
-      descriptionSpan = <span className='ms-Button-description'>{ description }</span>;
+    if (buttonType === ButtonType.compound) {
+      descriptionSpan = <span className='ms-Button-description' id={ descriptionId }>{ description }</span>;
     }
 
     return React.createElement(
       tag,
-      assign({}, this.props, { className }),
+      assign({
+        'aria-label': ariaLabel,
+        'aria-labeledby': ariaLabel ? null : labelId,
+        'aria-describedby': buttonType === ButtonType.compound ? descriptionId : null
+        },
+        this.props,
+        { className }),
       iconSpan,
-      <span className='ms-Button-label'>{ children }</span>,
+      <span className='ms-Button-label' id={ labelId } >{ children }</span>,
       descriptionSpan
     );
   }

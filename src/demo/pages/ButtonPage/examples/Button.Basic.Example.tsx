@@ -3,36 +3,62 @@ import {
   Button,
   ButtonType,
   ElementType,
-  Label
+  Label,
+  Checkbox
 } from '../../../../components/index';
 import './Button.Basic.Example.scss';
 
-export class BasicButtonsExample extends React.Component<any, any> {
+export interface IBasicButtonsExampleState {
+  disabled: boolean;
+}
+
+export class BasicButtonsExample extends React.Component<any, IBasicButtonsExampleState> {
+
+  public constructor() {
+    super();
+
+    this._onDisabledChanged = this._onDisabledChanged.bind(this);
+
+    this.state = {
+      disabled: false
+    };
+  }
+
   public render() {
+    let { disabled } = this.state;
+
     return (
       <div className='ms-BasicButtonsExample'>
         <Label>Normal button</Label>
-        <Button>Create account</Button>
+        <Button disabled={ disabled }>Create account</Button>
 
         <Label>Primary button</Label>
-        <Button buttonType={ ButtonType.primary }>Create account</Button>
+        <Button disabled={ disabled } buttonType={ ButtonType.primary }>Create account</Button>
 
         <Label>Hero button</Label>
-        <Button buttonType={ ButtonType.hero }>Create account</Button>
+        <Button disabled={ disabled } buttonType={ ButtonType.hero }>Create account</Button>
 
         <Label>Compound button</Label>
-        <Button buttonType={ ButtonType.compound }>Create account</Button>
+        <Button disabled={ disabled } buttonType={ ButtonType.compound } description='You can create a new account here.'>Create account</Button>
 
         <Label>Command button</Label>
-        <Button buttonType={ ButtonType.command } icon='personAdd' description='Description of the action this button takes'>Create account</Button>
+        <Button disabled={ disabled } buttonType={ ButtonType.command } icon='personAdd' description='Description of the action this button takes'>Create account</Button>
 
         <Label>Icon button</Label>
-        <Button buttonType={ ButtonType.icon } icon='star' title='Star' description='Take a star' />
+        <Button disabled={ disabled } buttonType={ ButtonType.icon } icon='star' title='Star' ariaLabel='Take a star' />
 
         <Label>Button like anchor</Label>
-        <Button elementType={ ElementType.anchor } buttonType={ ButtonType.primary } href='http://bing.com' target='_blank' title='Let us bing!' description='Navigate to Bing home page.'>Bing</Button>
+        <Button disabled={ disabled } elementType={ ElementType.anchor } buttonType={ ButtonType.primary } href='http://bing.com' target='_blank' title='Let us bing!' description='Navigate to Bing home page.'>Bing</Button>
+
+        <Checkbox text='Disable buttons' isChecked={ disabled } onChanged={ this._onDisabledChanged } />
       </div>
     );
+  }
+
+  private _onDisabledChanged(isDisabled: boolean) {
+    this.setState({
+      disabled: isDisabled
+    });
   }
 }
 
