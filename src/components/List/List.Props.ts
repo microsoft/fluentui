@@ -3,6 +3,9 @@ import { ISelection } from '../../utilities/selection/interfaces';
 import List from './List';
 
 export interface IListProps extends React.Props<List> {
+  /** Optional classname to append to root list. */
+  className?: string;
+
   /** Items to render. */
   items?: any[];
 
@@ -14,6 +17,12 @@ export interface IListProps extends React.Props<List> {
 
   /** How many items to render per page. */
   itemsPerPage?: number;
+
+  /** index in items array to start rendering from. Defaults to 0. */
+  startIndex?: number;
+
+  /** number of items to render. Defaults to items.length. */
+  renderCount?: number;
 
   selection?: ISelection;
 }

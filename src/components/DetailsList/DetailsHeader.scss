@@ -136,6 +136,7 @@ $unselectedHoverColor: $ms-color-neutralLight;
   text-align: center;
   transform: rotate(-180deg);
   transform-origin: 50% 50%;
+  transition: transform .1s linear;
   width: 20px;
   outline: 0;
 

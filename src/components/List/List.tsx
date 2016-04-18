@@ -1,12 +1,13 @@
 import * as React from 'react';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
 import { IListProps } from './List.Props';
+import { css } from '../../utilities/css';
 import { assign } from '../../utilities/object';
 import Async from '../../utilities/Async/Async';
 import { SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 
 const MIN_SCROLL_UPDATE_DELAY = 40;
-const MAX_SCROLL_UPDATE_DELAY = 100;
+const MAX_SCROLL_UPDATE_DELAY = 200;
 
 export interface IListState {
   pages?: IPage[];
@@ -34,10 +35,11 @@ const EMPTY_RECT = {
 
 const ITEMS_PER_PAGE = 10;
 const PAGE_BEHIND_COUNT = 1;
-const PAGE_AHEAD_COUNT = 1;
+const PAGE_AHEAD_COUNT = 2;
 
 export default class List extends React.Component<IListProps, IListState> {
   public static defaultProps = {
+    startIndex: 0,
     itemsPerPage: ITEMS_PER_PAGE,
     onRenderCell: (item, index, containsFocus) => (<div>{ (item && item.name) || '' }</div>)
   };
@@ -102,7 +104,7 @@ export default class List extends React.Component<IListProps, IListState> {
   }
 
   public componentWillReceiveProps(newProps: IListProps) {
-    this._updatePages(newProps.items);
+    this._updatePages(newProps.items, newProps.startIndex, newProps.renderCount);
   }
 
   public shouldComponentUpdate(newProps: IListProps, newState: IListState) {
@@ -133,7 +135,7 @@ export default class List extends React.Component<IListProps, IListState> {
   }
 
   public componentDidUpdate() {
-    let { surfaceRect } = this.state;
+    let { surfaceRect:lastSurfaceRect } = this.state;
 
     if (this._scrollingToIndex > -1) {
       if (this._isIndexRendered(this._scrollingToIndex)) {
@@ -145,7 +147,7 @@ export default class List extends React.Component<IListProps, IListState> {
     let newSurfaceRect = this.refs.surface.getBoundingClientRect();
 
     // If the surface height changes after a render, we need to re-evaluate the pages we're rendering.
-    if (newSurfaceRect.height !== surfaceRect.height || newSurfaceRect.top !== surfaceRect.top) {
+    if (lastSurfaceRect.height !== newSurfaceRect.height || lastSurfaceRect.top !== newSurfaceRect.top) {
       this.forceUpdate();
     }
   }
@@ -158,6 +160,7 @@ export default class List extends React.Component<IListProps, IListState> {
   }
 
   public render() {
+    let { className } = this.props;
     let { pages } = this.state;
 
     let pageElements = [];
@@ -167,7 +170,7 @@ export default class List extends React.Component<IListProps, IListState> {
     }
 
     return (
-      <div ref='root' className='ms-List'>
+      <div ref='root' className={ css('ms-List', className) } >
         <div ref='surface' className='ms-List-surface'>
           { pageElements }
         </div>
@@ -237,9 +240,10 @@ export default class List extends React.Component<IListProps, IListState> {
   }
 
   private _onSelectionChanged() {
-    let { selection } = this.props;
+    let { selection, startIndex } = this.props;
     let focusedIndex = selection.getFocusedIndex();
-    let shouldScroll = !!(this._focusedIndex !== focusedIndex && selection.getIsFocusActive());
+    let isIndexOwnedByList = focusedIndex >= startIndex && focusedIndex < (startIndex + this._getRenderCount());
+    let shouldScroll = !!(this._focusedIndex !== focusedIndex && selection.getIsFocusActive()) && isIndexOwnedByList;
 
     if (shouldScroll) {
       this._scrollingToIndex = focusedIndex;
@@ -276,13 +280,15 @@ export default class List extends React.Component<IListProps, IListState> {
     this._updatePages();
   }
 
-  private _updatePages(items?: any[]) {
+  private _updatePages(items?: any[], startIndex?: number, renderCount?: number) {
     items = items || this.props.items;
+    startIndex = startIndex || this.props.startIndex;
+    renderCount = renderCount || this._getRenderCount();
 
     // Rebuild current page measurements.
     this._updatePageMeasurements();
 
-    this.setState(this._buildPages(this._getVisibleRect(), items));
+    this.setState(this._buildPages(this._getVisibleRect(), items, startIndex, renderCount));
   }
 
   private _updatePageMeasurements() {
@@ -342,15 +348,16 @@ export default class List extends React.Component<IListProps, IListState> {
   }
 
   /** Build up the pages that should be rendered. */
-  private _buildPages(visibleRect: ClientRect, items: any[]): IListState {
+  private _buildPages(visibleRect: ClientRect, items: any[], startIndex: number, renderCount: number): IListState {
     let materializedRect = assign({}, EMPTY_RECT) as ClientRect;
     let itemsPerPage = 1;
     let pages = [];
     let pageTop = 0;
     let currentSpacer = null;
     let focusedIndex = this._focusedIndex;
+    let endIndex = startIndex + renderCount;
 
-    for (let itemIndex = 0; itemIndex < items.length; itemIndex += itemsPerPage) {
+    for (let itemIndex = startIndex; itemIndex < endIndex; itemIndex += itemsPerPage) {
       itemsPerPage = this._getItemCountForPage(itemIndex, visibleRect);
 
       let pageBottom = pageTop + this._getPageHeight(itemIndex, itemsPerPage) - 1;
@@ -364,8 +371,9 @@ export default class List extends React.Component<IListProps, IListState> {
           currentSpacer = null;
         }
 
-        let itemsInPage = Math.min(itemsPerPage, items.length - itemIndex);
+        let itemsInPage = Math.min(itemsPerPage, endIndex - itemIndex);
         let newPage = this._createPage(null, _slice(items, itemIndex, itemIndex + itemsInPage, null), itemIndex);
+
         newPage.clientRect = {
           top: pageTop,
           left: visibleRect.left,
@@ -414,6 +422,12 @@ export default class List extends React.Component<IListProps, IListState> {
 
   private _getItemCountForPage(itemIndex: number, surfaceRect: ClientRect): number {
     return this.props.itemsPerPage;
+  }
+
+  private _getRenderCount() {
+    let { items, renderCount, startIndex } = this.props;
+
+    return renderCount || (items ? items.length - startIndex : 0);
   }
 
   private _getScrollableElements() {
