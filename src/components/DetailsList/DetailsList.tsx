@@ -163,7 +163,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           group && group.isCollapsed ?
           null :
           <List
-            className='ms-u-slideDownIn20'
             ref={ 'list_' + groupIndex }
             items={ items }
             startIndex={ group ? group.startIndex : 0 }
