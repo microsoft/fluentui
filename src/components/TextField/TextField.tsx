@@ -51,7 +51,6 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
 
     return (
       <div
-        {...this.props}
         className={
         css('ms-TextField', className, {
           'is-required': required,
@@ -84,6 +83,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
     this.setState({
       value: this.refs.singlelineText.value
     });
+
     this._onChanged(this.refs.singlelineText.value);
   }
 
