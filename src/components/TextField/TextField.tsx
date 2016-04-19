@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Label from '../Label/index';
-import {ITextFieldProps} from './TextField.props';
 import './TextField.scss';
 import { css } from '../../utilities/css';
 import { ITextFieldProps } from './TextField.Props';
