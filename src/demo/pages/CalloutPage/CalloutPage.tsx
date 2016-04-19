@@ -4,9 +4,8 @@ import {
 } from '../../../components/index';
 import {
   ExampleCard,
-  PropertiesTable
+  PropertiesTableSet
 } from '../../components/index';
-import CalloutProps from './CalloutProps';
 import CalloutBasicExample from './examples/Callout.Basic.Example';
 let CalloutBasicExampleCode = require('./examples/Callout.Basic.Example.tsx');
 
@@ -20,7 +19,8 @@ export default class CalloutPage extends React.Component<any, any> {
         <ExampleCard title='Simple callout' code={ CalloutBasicExampleCode }>
           <CalloutBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ CalloutProps } />
+        <PropertiesTableSet componentName='Callout' />
+        <p>Besides the above properties, the <code>Callout</code> component accepts all properties that the React <code>button</code> and <code>a</code> components accept.</p>
       </div>
     );
   }

@@ -75,7 +75,7 @@ const PERSONA_INITIALS_COLOR = {
   [PersonaInitialsColor.lightBlue]: 'ms-Persona-initials--lightBlue',
   [PersonaInitialsColor.blue]: 'ms-Persona-initials--blue',
   [PersonaInitialsColor.darkBlue]: 'ms-Persona-initials--darkBlue',
-  [PersonaInitialsColor.teal]: 'ms-color-Persona--teal',
+  [PersonaInitialsColor.teal]: 'ms-Persona-initials--teal',
   [PersonaInitialsColor.lightGreen]: 'ms-Persona-initials--lightGreen',
   [PersonaInitialsColor.green]: 'ms-Persona-initials--green',
   [PersonaInitialsColor.darkGreen]: 'ms-Persona-initials--darkGreen',

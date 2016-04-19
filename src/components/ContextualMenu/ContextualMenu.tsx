@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { IContextualMenuItem, DirectionalHint } from './interfaces';
 import FocusZone from '../../utilities/focus/FocusZone';
 import './ContextualMenu.scss';
 import KeyCodes from '../../utilities/KeyCodes';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
 import { css } from '../../utilities/css';
+import { getRTL } from '../../utilities/rtl';
 
-import { IContextualMenuProps } from './ContextualMenu.Props';
+import { IContextualMenuProps, IContextualMenuItem, DirectionalHint } from './ContextualMenu.Props';
 
 const BUFFER_ZONE = 5;
 const BEAK_WIDTH = 16;
@@ -198,6 +198,8 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
                       <button
                         className={ css('ms-ContextualMenu-link', { 'is-expanded': (expandedMenuItemKey === item.key) }) }
                         onClick={ this._onItemClick.bind(this, item) }
+                        onKeyDown={ item.items && item.items.length ? this._onItemKeyDown.bind(this, item) : null }
+                        disabled={ item.isDisabled }
                         data-command-key={ index }
                         role='menuitem'
                         >
@@ -216,7 +218,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
                         ) : (null) }
                         <span className='ms-ContextualMenu-itemText ms-font-m ms-font-weight-regular'>{ item.name }</span>
                         { (item.items && item.items.length) ? (
-                          <i className='ms-ContextualMenu-chevronRight ms-Icon ms-Icon--chevronRight' />
+                          <i className={ css('ms-ContextualMenu-chevronRight ms-Icon', getRTL() ? 'ms-Icon--chevronLeft' : 'ms-Icon--chevronRight') } />
                         ) : (null) }
                       </button>
                     </li>
@@ -233,7 +235,9 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   }
 
   private _onKeyDown(ev: React.KeyboardEvent) {
-    if (ev.which === KeyCodes.escape) {
+    let submenuCloseKey = getRTL() ? KeyCodes.right : KeyCodes.left;
+    if (ev.which === KeyCodes.escape
+      || (ev.which === submenuCloseKey && this.props.isSubMenu)) {
       // When a user presses escape, we will try to refocus the previous focused element.
       this._isFocusingPreviousElement = true;
       this.dismiss(ev);
@@ -256,14 +260,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
       if (item.key === this.state.dismissedMenuItemKey) { // This has an expanded sub menu. collapse it.
         this._onSubMenuDismiss(ev);
       } else { // This has a collapsed sub menu. Expand it.
-        this.setState({
-          expandedMenuItemKey: item.key,
-          submenuProps: {
-            items: item.items,
-            targetElement: ev.currentTarget as HTMLElement,
-            onDismiss: this._onSubMenuDismiss
-          }
-        });
+        this._onSubMenuExpand(item, ev);
       }
     }
 
@@ -271,9 +268,34 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     ev.preventDefault();
   }
 
-  private _onSubMenuDismiss(ev?: any) {
+  private _onItemKeyDown(item: any, ev: KeyboardEvent) {
+    let openKey = getRTL() ? KeyCodes.left : KeyCodes.right;
+    if (ev.which === openKey) {
+      this._onSubMenuExpand(item, ev);
+    }
+  }
+
+  private _onSubMenuExpand(item: any, ev: UIEvent) {
     this.setState({
-      dismissedMenuItemKey: this.state.expandedMenuItemKey,
+      expandedMenuItemKey: item.key,
+      submenuProps: {
+        items: item.items,
+        targetElement: ev.currentTarget as HTMLElement,
+        onDismiss: this._onSubMenuDismiss,
+        isSubMenu: true,
+      }
+    });
+  }
+
+  private _onSubMenuDismiss(ev?: any) {
+    let itemKey = null;
+    let list = this.refs[this.state.expandedMenuItemKey] as HTMLElement;
+
+    if (list && list.contains(ev.target as HTMLElement)) {
+      itemKey = this.state.expandedMenuItemKey;
+    }
+    this.setState({
+      dismissedMenuItemKey: itemKey,
       expandedMenuItemKey: null,
       submenuProps: null
     });
@@ -382,7 +404,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     if (directionalHint === DirectionalHint.bottomLeftEdge || directionalHint === DirectionalHint.leftBottomEdge ||
       directionalHint === DirectionalHint.leftCenter || directionalHint === DirectionalHint.leftTopEdge ||
       directionalHint === DirectionalHint.topLeftEdge) {
-      horizontalAlignmentHint = HorizontalAlignmentHint.left;
+      horizontalAlignmentHint = getRTL() ? HorizontalAlignmentHint.right : HorizontalAlignmentHint.left;
     } else if (contextualMenuType === ContextualMenuType.vertical && (directionalHint === DirectionalHint.topCenter ||
       directionalHint === DirectionalHint.bottomCenter)) {
       horizontalAlignmentHint = HorizontalAlignmentHint.center;
@@ -390,7 +412,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
       directionalHint === DirectionalHint.bottomAutoEdge)) {
       horizontalAlignmentHint = HorizontalAlignmentHint.auto;
     } else {
-      horizontalAlignmentHint = HorizontalAlignmentHint.right;
+      horizontalAlignmentHint = getRTL() ? HorizontalAlignmentHint.left : HorizontalAlignmentHint.right;
     }
 
     // Get the verticalAlignmentHint, for vertical contextual menu, it will only be either top or buttom; for horizontal contextual menu, center is also an option.

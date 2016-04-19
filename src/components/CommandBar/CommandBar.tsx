@@ -5,20 +5,12 @@ import EventGroup from '../../utilities/eventGroup/EventGroup';
 import { default as ContextualMenu, DirectionalHint } from '../ContextualMenu/index';
 import { css } from '../../utilities/css';
 import { IContextualMenuItem } from '../index';
+import { ICommandBarProps } from './CommandBar.Props';
 
 const OVERFLOW_KEY = 'overflow';
 const OVERFLOW_WIDTH = 41.5;
 
 let _instance = 0;
-
-export interface ICommandBarProps {
-  isSearchBoxVisible?: boolean;
-  searchPlaceholderText?: string;
-
-  items: IContextualMenuItem[];
-  overflowItems?: IContextualMenuItem[];
-  farItems?: IContextualMenuItem[];
-}
 
 export interface ICommandBarState {
   renderedItems?: IContextualMenuItem[];

@@ -52,8 +52,6 @@ export { default as SearchBox } from './SearchBox/index';
 export * from './SearchBox/index';
 export { default as Spinner } from './Spinner/index';
 export * from './Spinner/index';
-export { default as Table } from './Table/index';
-export * from './Table/index';
 export { default as TextField } from './TextField/index';
 export * from './TextField/index';
 export { default as Toggle } from './Toggle/index';

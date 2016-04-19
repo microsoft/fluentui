@@ -23,7 +23,7 @@ if (isProduction) {
 build.initialize(gulp);
 
 /** @todo: This probably be deleted before we ship... RealHumanBeans13... yeah... */
-gulp.task('deploy', ['bundle'],  function() {
+gulp.task('deploy', ['bundle'],  function(cb) {
   let ftp = require('vinyl-ftp');
   let git = require('git-rev');
   let debug = require('gulp-debug');
@@ -31,14 +31,15 @@ gulp.task('deploy', ['bundle'],  function() {
   let os = require('os');
   let currentBranch;
 
-  return git.branch(function(branch) {
+  git.branch(function(branch) {
     currentBranch = os.hostname().split('.')[0] + '-' + branch.replace('/', '-');
     let ftpConnection = ftp.create({
       host: 'waws-prod-bay-049.ftp.azurewebsites.windows.net',
       user: "fabricreact\\FabricReactControls",
       pass: 'Po1ntBarrow',
       parallel: 10,
-      secure: true
+      secure: true,
+      idleTimeout: 10000
     });
     let globs = [
       './index.html',
@@ -48,10 +49,11 @@ gulp.task('deploy', ['bundle'],  function() {
       currentBranch = 'master';
     }
     let stream = gulp.src( globs, { base: '.', buffer: false })
-      .pipe(ftpConnection.newer( './' ) ) // only upload newer files
+      .pipe(debug({ title: 'Copying file to Azure' }))
       .pipe(ftpConnection.dest( '/site/wwwroot/fabric-react/' + currentBranch ))
-      .pipe(debug({ title: 'Copying file to Azure' }));
-    gutil.log('http://fabricreact.azurewebsites.net/fabric-react/' + currentBranch + '/');
-    return stream;
+      .on("end", function() {
+        gutil.log('http://fabricreact.azurewebsites.net/fabric-react/' + currentBranch + '/');
+        cb();
+      });
   });
 });

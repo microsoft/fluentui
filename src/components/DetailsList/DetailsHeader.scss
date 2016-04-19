@@ -63,6 +63,7 @@ $unselectedHoverColor: $ms-color-neutralLight;
 }
 
 .ms-DetailsHeader-cell {
+  position: relative;
   display: inline-block;
   box-sizing: border-box;
   padding: 0 8px;
@@ -106,16 +107,6 @@ $unselectedHoverColor: $ms-color-neutralLight;
     height: inherit;
     z-index: 99;
   }
-
-  &.is-icon-visible:before {
-    @include ms-Icon;
-    @include padding-right(4px);
-    color: $ms-color-neutralSecondary;
-    position: relative;
-    top: -1px;
-    font-size: 9px;
-    content: attr(data-glyph);
-  }
 }
 
 .ms-DetailsHeader-cell.is-resizing.is-sizer:after,
@@ -142,13 +133,28 @@ $unselectedHoverColor: $ms-color-neutralLight;
 }
 
 .ms-DetailsHeader-collapseButton {
-    text-align: center;
-    transform: rotate(-180deg);
-    transform-origin: 50% 50%;
-    width: 20px;
-    outline: 0;
+  text-align: center;
+  transform: rotate(-180deg);
+  transform-origin: 50% 50%;
+  transition: transform .1s linear;
+  width: 20px;
+  outline: 0;
 
-    &.is-collapsed {
-      transform: rotate(0deg);
-    }
+  &.is-collapsed {
+    transform: rotate(0deg);
+  }
+}
+
+.ms-DetailsHeader-isSortedDescending {
+  transform: rotate(-180deg);
+  transform-origin: 50% 50%;
+}
+
+.ms-DetailsHeader-cell .ms-Icon {
+  color: $ms-color-neutralTertiary;
+  @include padding-right(5px);
+}
+
+.ms-DetailsHeader-cell .ms-DetailsHeader-collapseButton.ms-Icon {
+  @include padding-right(0);
 }

@@ -48,6 +48,7 @@ export default class ContextualMenuDirectionalExample extends React.Component<{}
     this._onShowBeakChanged = this._onShowBeakChanged.bind(this);
     this._onDirectionalChanged = this._onDirectionalChanged.bind(this);
     this._onChangeGapSizeClicked = this._onChangeGapSizeClicked.bind(this);
+    this._onDismissMenu = this._onDismissMenu.bind(this);
 
     this.state = {
       isContextualMenuVisible: false,
@@ -81,6 +82,7 @@ export default class ContextualMenuDirectionalExample extends React.Component<{}
           isBeakVisible={ isBeakVisible }
           directionalHint={ directionalHint }
           gapSpace={ gapSpace }
+          onDismiss={ this._onDismissMenu }
           items={
             [
               {
@@ -154,6 +156,12 @@ export default class ContextualMenuDirectionalExample extends React.Component<{}
   private _onShowMenuClicked() {
     this.setState({
       isContextualMenuVisible: !this.state.isContextualMenuVisible
+    });
+  }
+
+  private _onDismissMenu(ev: any) {
+    this.setState({
+      isContextualMenuVisible: false
     });
   }
 

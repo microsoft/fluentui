@@ -38,9 +38,6 @@ export enum DetailsListLayoutMode {
 export interface IGroup {
   key: string;
   name: string;
-  fieldSchema: {
-    name: string;
-  };
   startIndex: number;
   count: number;
 
@@ -55,7 +52,8 @@ export interface IGroup {
 export interface IDragDropEvents {
   canDrop?: (item?: any) => boolean;
   canDrag?: (item?: any) => boolean;
-  onDragEnter?: (event?: DragEvent, item?: any) => string; // return string is the css classes that will be added to the enterring element.
-  onDragLeave?: (event?: DragEvent, item?: any) => void;
-  onDrop?: (event?: DragEvent, item?: any) => void;
+  onDragEnter?: (item?: any, event?: DragEvent) => string; // return string is the css classes that will be added to the enterring element.
+  onDragLeave?: (item?: any, event?: DragEvent) => void;
+  onDrop?: (item?: any, event?: DragEvent) => void;
+  onDragStart?: (item?: any, selectedItems?: any[], event?: MouseEvent) => void;
 }

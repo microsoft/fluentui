@@ -94,7 +94,7 @@
 
 .ms-ContextualMenu-itemText.ms-font-m.ms-font-weight-regular {
     display: inline-block;
-    margin-right: 16px;
+    @include margin-right(16px);
     top: 0;
 }
 
@@ -162,7 +162,7 @@
 .ms-ContextualMenu-link.ms-ContextualMenu-link--hasMenu ~ .ms-ContextualMenu {
   position: absolute;
   top: -1px;
-  left: 178px; // Move the submenu to the left of the menu item that triggered it
+  @include left(178px); // Move the submenu to the left of the menu item that triggered it
 }
 
 // Right chevron.
@@ -176,7 +176,7 @@
   line-height: 40px;
   position: absolute;
   top: 0;
-  right: 7px;
+  @include right(7px);
   z-index: 1;
   pointer-events: none;
 }
@@ -207,7 +207,7 @@
         height: 39px;
         line-height: 40px;
         position: absolute;
-        left: 10px;
+        @include left(10px);
       }
     }
   }
@@ -220,7 +220,7 @@
   border: none;
   display: block;
   width: 100%;
-  text-align: left;
+  @include text-align(left);
   @include ms-font-m;
 }
 
@@ -231,8 +231,8 @@
 .ms-Fabric.is-focusVisible .ms-ContextualMenu-link:focus:before {
   content: '';
   position: absolute;
-  left: 0;
-  right: 0;
+  @include left(0);
+  @include right(0);
   top: 0;
   bottom: 0;
   border: 1px solid $ms-color-neutralTertiary;
@@ -258,7 +258,7 @@
 .ms-ContextualMenu-chevronRight.ms-Icon {
     top: 0;
     position: absolute;
-    right: 0;
+    @include right(0);
     vertical-align: middle;
     line-height: 39px;
     width: 34px;
@@ -266,17 +266,17 @@
 }
 
 .ms-ContextualMenu-icon {
-  padding-right: 10px;
+  @include padding-right(10px);
 
   &.no-icon {
-    padding-right: 24px;
+    @include padding-right(24px);
   }
 }
 
 .ms-ContextualMenu-checkmark {
-  padding-right: 10px;
+  @include padding-right(10px);
   &.not-selected {
-    padding-right: 24px;
+    @include padding-right(24px);
   }
 }
 

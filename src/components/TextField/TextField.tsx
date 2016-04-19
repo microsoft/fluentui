@@ -3,10 +3,14 @@ import Label from '../Label/index';
 import {ITextFieldProps} from './TextField.props';
 import './TextField.scss';
 import { css } from '../../utilities/css';
+import { ITextFieldProps } from './TextField.Props';
 
 export interface ITextFieldState {
+  id?: string;
   value: string;
 }
+
+let _instance: number = 0;
 
 export default class TextField extends React.Component<ITextFieldProps, ITextFieldState> {
   public static initialProps: ITextFieldProps = {
@@ -26,6 +30,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
     super(props);
 
     this.state = {
+      id: `TextField-${ _instance++ }`,
       value: props.value
     };
     this._onMultilineTextChanged = this._onMultilineTextChanged.bind(this);
@@ -41,8 +46,9 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
   }
 
   public render() {
-    let {disabled, required, multiline, placeholder, underlined, label, description, iconClass, className } = this.props;
+    let { disabled, required, multiline, placeholder, underlined, label, description, iconClass, className } = this.props;
     let { value } = this.state;
+    let { id } = this.state;
 
     return (
       <div
@@ -54,14 +60,14 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
           'ms-TextField--underlined': underlined
         }) }
         >
-        { label ? <Label>{label}</Label> : null }
-        {iconClass ? <i className={iconClass}></i> : null}
-        {multiline ?
-          <textarea className='ms-TextField-field' ref='multilineText' onChange={ this._onMultilineTextChanged }>{value}</textarea>
+        { label ? <Label htmlFor={ id }>{ label }</Label> : null }
+        { iconClass ? <i className={ iconClass }></i> : null }
+        { multiline ?
+          <textarea id={ id } className='ms-TextField-field' ref='multilineText' onChange={ this._onMultilineTextChanged }>{ value }</textarea>
         :
-          <input placeholder={placeholder} ref='singlelineText' className='ms-TextField-field' value={value} onChange={ this._onSinglelineTextChanged } /> }
-        {description ? <span className='ms-TextField-description'>{description}</span> : null}
-        {this.props.children}
+          <input id={ id } placeholder={ placeholder } ref='singlelineText' className='ms-TextField-field' value={ value } onChange={ this._onSinglelineTextChanged } /> }
+        { description ? <span className='ms-TextField-description'>{ description }</span> : null}
+        { this.props.children }
       </div>
     );
   }

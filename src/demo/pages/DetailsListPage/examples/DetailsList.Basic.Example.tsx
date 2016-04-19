@@ -379,8 +379,7 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
         if (!currentGroup || (currentGroup.key !== item[key])) {
           current.push({
             key: item[key],
-            name: item[key],
-            fieldSchema: { name: key },
+            name: key + ': ' + item[key],
             startIndex: index,
             count: 1
           });

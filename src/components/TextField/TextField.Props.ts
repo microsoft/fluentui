@@ -1,43 +1,45 @@
 import * as React from 'react';
 
+/**
+ * TextField component props.
+ */
 export interface ITextFieldProps extends React.DOMAttributes {
-
   /**
-   * Children of the component
+   * children, if any.
    */
   children?: any;
 
   /**
-   * Whether the textfield is diabled
+   * Whether or not the textfield is disabled.
    * @default false
    */
   disabled?: boolean;
 
   /**
-   * Whether the textfield is required
+   * Whether or not the textfield is a required field.
    * @default false
    */
   required?: boolean;
 
   /**
-   * Whether the textfield is multiline
+   * Whether or not the textfield is a multiline textfield.
    * @default false
    */
   multiline?: boolean;
 
   /**
-   * Whether the textfield is underlined
+   * Whether or not the textfield is underlined.
    * @default false
    */
   underlined?: boolean;
 
   /**
-   * The textfield placeholder text
+   * Placeholder text for the textfield.
    */
   placeholder?: string;
 
   /**
-   * The textfield label text
+   * Label for the textfield.
    */
   label?: string;
 
@@ -47,22 +49,22 @@ export interface ITextFieldProps extends React.DOMAttributes {
   description?: string;
 
   /**
-   * An icon to add to the label
+   * CSS class for the icon.
    */
   iconClass?: string;
 
   /**
-   * The input value of the textfield
+   * Default value of the textfield, if any.
    */
   value?: string;
 
   /**
-  * A callback function for when the value of the textfield changes
-  */
+   * Callback for the onChanged event.
+   */
   onChanged?: (newValue: any) => void;
 
   /**
-   * Additional css class that is appended to the existing class
+   * CSS class for the textfield.
    */
   className?: string;
 }

@@ -26,7 +26,6 @@ import PivotPage from '../../pages/PivotPage/PivotPage';
 import ProgressIndicatorPage from '../../pages/ProgressIndicatorPage/ProgressIndicatorPage';
 import SearchBoxPage from '../../pages/SearchBoxPage/SearchBoxPage';
 import SpinnerPage from '../../pages/SpinnerPage/SpinnerPage';
-import TablePage from '../../pages/TablePage/TablePage';
 import TextFieldPage from '../../pages/TextFieldPage/TextFieldPage';
 import TogglePage from '../../pages/TogglePage/TogglePage';
 import Themes from '../../pages/Themes';
@@ -53,7 +52,7 @@ export const AppState: IAppState = {
         {
           component: BreadcrumbPage,
           name: 'Breadcrumb',
-          status: ExampleStatus.started,
+          status: ExampleStatus.beta,
           url: '#/examples/breadcrumb'
         },
         {
@@ -77,7 +76,7 @@ export const AppState: IAppState = {
         {
           component: ChoiceGroupPage,
           name: 'ChoiceGroup',
-          status: ExampleStatus.started,
+          status: ExampleStatus.beta,
           url: '#/examples/ChoiceGroup'
         },
         {
@@ -205,12 +204,6 @@ export const AppState: IAppState = {
           name: 'Spinner',
           status: ExampleStatus.beta,
           url: '#/examples/spinner'
-        },
-        {
-          component: TablePage,
-          name: 'Table',
-          status: ExampleStatus.placeholder,
-          url: '#/examples/table'
         },
         {
           component: TextFieldPage,
