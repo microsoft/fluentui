@@ -218,7 +218,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
                         ) : (null) }
                         <span className='ms-ContextualMenu-itemText ms-font-m ms-font-weight-regular'>{ item.name }</span>
                         { (item.items && item.items.length) ? (
-                          <i className='ms-ContextualMenu-chevronRight ms-Icon ms-Icon--chevronRight' />
+                          <i className={ css('ms-ContextualMenu-chevronRight ms-Icon', getRTL() ? 'ms-Icon--chevronLeft' : 'ms-Icon--chevronRight') } />
                         ) : (null) }
                       </button>
                     </li>
@@ -404,7 +404,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     if (directionalHint === DirectionalHint.bottomLeftEdge || directionalHint === DirectionalHint.leftBottomEdge ||
       directionalHint === DirectionalHint.leftCenter || directionalHint === DirectionalHint.leftTopEdge ||
       directionalHint === DirectionalHint.topLeftEdge) {
-      horizontalAlignmentHint = HorizontalAlignmentHint.left;
+      horizontalAlignmentHint = getRTL() ? HorizontalAlignmentHint.right : HorizontalAlignmentHint.left;
     } else if (contextualMenuType === ContextualMenuType.vertical && (directionalHint === DirectionalHint.topCenter ||
       directionalHint === DirectionalHint.bottomCenter)) {
       horizontalAlignmentHint = HorizontalAlignmentHint.center;
@@ -412,7 +412,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
       directionalHint === DirectionalHint.bottomAutoEdge)) {
       horizontalAlignmentHint = HorizontalAlignmentHint.auto;
     } else {
-      horizontalAlignmentHint = HorizontalAlignmentHint.right;
+      horizontalAlignmentHint = getRTL() ? HorizontalAlignmentHint.left : HorizontalAlignmentHint.right;
     }
 
     // Get the verticalAlignmentHint, for vertical contextual menu, it will only be either top or buttom; for horizontal contextual menu, center is also an option.
