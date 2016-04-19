@@ -1,16 +1,8 @@
 import * as React from 'react';
 import './Spinner.scss';
+import { SpinnerType } from './interfaces';
+import { ISpinnerProps } from './Spinner.Props';
 import { getRTL } from '../../utilities/rtl';
-
-export interface ISpinnerProps {
-  type?: SpinnerType;
-  label?: string;
-}
-
-export enum SpinnerType {
-  normal,
-  large
-}
 
 const CIRCLE_COUNT = 8;
 
@@ -37,7 +29,7 @@ export default class Spinner extends React.Component<ISpinnerProps, any> {
       let x = Math.round(parentSize * 0.5 + radius * Math.cos(angle)) - offset * 0.5;
       let y = Math.round(parentSize * 0.5 + radius * Math.sin(angle)) - offset * 0.5;
       let size = offset + 'px';
-      let style = { left: !isRTL ? x : 'auto', right: !isRTL ? 'auto' : x, top: y, width: size, height: size }
+      let style = { left: !isRTL ? x : 'auto', right: !isRTL ? 'auto' : x, top: y, width: size, height: size };
 
       angle += step;
       circleObjects.push(<div className='ms-Spinner-circle' key={ i } style={ style } /> );

@@ -4,9 +4,8 @@ import {
 } from '../../../components/index';
 import {
   ExampleCard,
-  PropertiesTable
+  PropertiesTableSet
 } from '../../components/index';
-import SpinnerProps from './SpinnerProps';
 
 import SpinnerBasicExample from './examples/Spinner.Basic.Example';
 let SpinnerBasicExampleCode = require('./examples/Spinner.Basic.Example.tsx');
@@ -24,7 +23,7 @@ export default class SpinnerPage extends React.Component<any, any> {
         >
           <SpinnerBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ SpinnerProps } />
+        <PropertiesTableSet componentName='Spinner' />
       </div>
     );
   }
