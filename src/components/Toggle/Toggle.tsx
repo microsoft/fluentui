@@ -1,13 +1,6 @@
 import * as React from 'react';
+import { IToggleProps } from './Toggle.Props';
 import './Toggle.scss';
-
-export interface IToggleProps {
-  label: string;
-  isToggled?: boolean;
-  onText?: string;
-  offText?: string;
-  onChanged?: (isToggled: boolean) => void;
-}
 
 export interface IToggleState {
   id?: string;
@@ -28,7 +21,7 @@ export default class Toggle extends React.Component<IToggleProps, IToggleState> 
     super();
 
     this.state = {
-      id: `toggle-${ _instance++ }`
+      id: `Toggle-${ _instance++ }`
     };
 
     this._handleClick = this._handleClick.bind(this);
