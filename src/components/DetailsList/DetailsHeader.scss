@@ -63,12 +63,12 @@ $unselectedHoverColor: $ms-color-neutralLight;
 }
 
 .ms-DetailsHeader-cell {
-  position: relative;
+  @include focus-border($ms-color-neutralTertiary);
+
   display: inline-block;
   box-sizing: border-box;
   padding: 0 8px;
   color: $ms-color-neutralTertiary;
-  border: none;
   background: none;
   border: none;
   line-height: inherit;
@@ -83,10 +83,6 @@ $unselectedHoverColor: $ms-color-neutralLight;
     position: relative;
     padding: 8px 10px;
     margin: 0;
-  }
-
-  &:focus {
-    outline: transparent;
   }
 
   &.is-actionable {
@@ -119,17 +115,6 @@ $unselectedHoverColor: $ms-color-neutralLight;
   width: 1px;
   background: $ms-color-neutralLight;
   border: 1px solid $ms-color-white;
-}
-
-.ms-Fabric.is-focusVisible .ms-DetailsHeader-cell:focus:before {
-  content: '';
-  pointer-events: none;
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  border: 1px solid $ms-color-neutralTertiary;
 }
 
 .ms-DetailsHeader-collapseButton {

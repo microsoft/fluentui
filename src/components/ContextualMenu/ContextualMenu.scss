@@ -99,6 +99,8 @@
 }
 
 .ms-ContextualMenu-link {
+  @include focus-border($ms-color-neutralTertiary);
+
   text-decoration: none;
   color: $ms-color-neutralPrimary;
   border: 1px solid transparent;
@@ -107,7 +109,6 @@
   height: 40px;
   line-height: 40px;
   padding: 0 18px;
-  position: relative;
   white-space: nowrap;
 
   // Shorten the first and last items to maintain baseline alignment.
@@ -215,27 +216,12 @@
 
 .ms-ContextualMenu-link,
 .ms-ContextualMenu-link:active {
-  position: relative;
   background: none;
   border: none;
   display: block;
   width: 100%;
   @include text-align(left);
   @include ms-font-m;
-}
-
-.ms-ContextualMenu-link:focus {
-  outline: transparent;
-}
-
-.ms-Fabric.is-focusVisible .ms-ContextualMenu-link:focus:before {
-  content: '';
-  position: absolute;
-  @include left(0);
-  @include right(0);
-  top: 0;
-  bottom: 0;
-  border: 1px solid $ms-color-neutralTertiary;
 }
 
 .ms-ContextualMenu-beak {
