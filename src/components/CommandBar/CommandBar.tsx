@@ -5,7 +5,7 @@ import EventGroup from '../../utilities/eventGroup/EventGroup';
 import { default as ContextualMenu, DirectionalHint } from '../ContextualMenu/index';
 import { css } from '../../utilities/css';
 import { IContextualMenuItem } from '../index';
-import { ICommandBarProps } from './CommandBar.Props.ts';
+import { ICommandBarProps } from './CommandBar.Props';
 
 const OVERFLOW_KEY = 'overflow';
 const OVERFLOW_WIDTH = 41.5;
