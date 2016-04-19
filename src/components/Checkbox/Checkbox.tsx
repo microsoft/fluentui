@@ -8,7 +8,7 @@ export interface ICheckboxState {
   isChecked?: boolean;
 }
 
-let _instance = 0;
+let _instance: number = 0;
 
 export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
   public static defaultProps = {
@@ -27,7 +27,7 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
     this._onInputChanged = this._onInputChanged.bind(this);
 
     this.state = {
-      id: `Checkbox-${ _instance++ }`,
+      id: `checkbox-${ _instance++ }`,
       isChecked: props.isChecked
     };
   }
