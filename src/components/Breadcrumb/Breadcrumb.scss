@@ -1,2 +1,6 @@
 @import '../../common';
 @import '~office-ui-fabric/src/components/Breadcrumb/Breadcrumb';
+
+.ms-Breadcrumb-overflow {
+  display: inline-block;
+}

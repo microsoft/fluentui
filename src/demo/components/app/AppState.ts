@@ -52,7 +52,7 @@ export const AppState: IAppState = {
         {
           component: BreadcrumbPage,
           name: 'Breadcrumb',
-          status: ExampleStatus.started,
+          status: ExampleStatus.beta,
           url: '#/examples/breadcrumb'
         },
         {
