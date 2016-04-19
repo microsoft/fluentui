@@ -4,13 +4,11 @@
 .ms-TextField.ms-TextField--underlined {
 
   .ms-Label {
-    @include margin-right(8px);
     @include padding-left(12px);
     @include padding-right(0);
   }
 
   .ms-TextField-field {
-    @include float(left);
     @include text-align(left);
   }
 }
