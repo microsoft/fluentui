@@ -9,26 +9,7 @@ export interface ICardProps {
   title: string;
 }
 
-export interface ICardState {
-  time: string;
-}
-
-export default class Card extends React.Component<ICardProps, ICardState> {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      time: '0',
-    };
-  }
-
-  public componentDidMount() {
-    setInterval(() => {
-      this.setState({ time: (new Date()).toString()});
-    }, 1000);
-  }
-
+export default class Card extends React.Component<ICardProps, any> {
   public render() {
     return (
       <FocusZone
@@ -50,7 +31,6 @@ export default class Card extends React.Component<ICardProps, ICardState> {
                 data-is-focusable={ true }
                 data-focusable-context='TidBit'
                 className='ContainerCard-title'>{ this.props.title }</div>
-              <span className='ContainerCard-timer'>{ this.state.time }</span>
             </div>
             <div className='ContainerCard-Activities'>
               <div className='Activity hasPersona'>
