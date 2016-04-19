@@ -49,7 +49,7 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
   private _events: EventGroup;
   private _hasSetFocus: boolean;
   private _dragEnterCount: number;
-  private _droppingCssClasses: string;
+  private _droppingClassNames: string;
   private _hasMounted: boolean;
 
   constructor(props) {
@@ -66,7 +66,7 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
 
     this._events = new EventGroup(this);
     this._dragEnterCount = 0;
-    this._droppingCssClasses = '';
+    this._droppingClassNames = '';
   }
 
   public componentDidMount() {
@@ -175,7 +175,7 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
     let { selectionMode, columns, item, itemIndex, dragDropEvents } = this.props;
     let { selectionState: { isSelected, canFocus }, columnMeasureInfo, isDropping, isGrouped } = this.state;
     let isDraggable = Boolean(dragDropEvents && dragDropEvents.canDrag && dragDropEvents.canDrag(item));
-    let droppingClassName = isDropping ? (this._droppingCssClasses ? this._droppingCssClasses : DEFAULT_DROPPING_CSS_CLASS) : '';
+    let droppingClassName = isDropping ? (this._droppingClassNames ? this._droppingClassNames : DEFAULT_DROPPING_CSS_CLASS) : '';
     let key = item ? item.key : '';
 
     return (
@@ -281,11 +281,11 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
     if (!newValue) {
       this._dragEnterCount = 0; // reset drag enter counter
       if (dragDropEvents.onDragLeave) {
-        dragDropEvents.onDragLeave(event, item);
+        dragDropEvents.onDragLeave(item, event);
       }
     } else {
       if (dragDropEvents.onDragEnter) {
-        this._droppingCssClasses = dragDropEvents.onDragEnter(event, item);
+        this._droppingClassNames = dragDropEvents.onDragEnter(item, event);
       }
     }
 
