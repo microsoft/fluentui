@@ -1,6 +1,25 @@
 @import "~office-ui-fabric/src/sass/Fabric.Common";
 @import "~office-ui-fabric/src/components/Spinner/Spinner";
 
+/**
+  Change from Fabric - RTL support
+*/
+.ms-Spinner {
+  &.ms-Spinner--large {
+    .ms-Spinner-label {
+      @include left(34px);
+    }
+  }
+}
+
+.ms-Spinner-label {
+  @include left(28px);
+}
+
+/**
+  Change from Fabric - here we are using CSS animations
+  rather than JavaScript driven animations
+*/
 $animationSpeed: 750ms;
 
 @keyframes pulse {
