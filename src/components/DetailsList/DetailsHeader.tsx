@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IColumn, DetailsListLayoutMode } from './interfaces';
+import { IColumn, DetailsListLayoutMode, ColumnActionsMode } from './interfaces';
 import { css } from '../../utilities/css';
 import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
@@ -114,9 +114,9 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
               <div className='ms-DetailsHeader-cellWrapper'>
                 <button
                   key={ column.fieldName }
-                  disabled={ !column.isSortable && !column.isGroupable && !column.isFilterable }
+                  disabled={ column.columnActionsMode === ColumnActionsMode.disabled }
                   className={ css('ms-DetailsHeader-cell', {
-                    'is-actionable': column.isSortable || column.isGroupable || column.isFilterable,
+                    'is-actionable': column.columnActionsMode !== ColumnActionsMode.disabled,
                     'is-icon-visible': column.isSorted || column.isGrouped || column.isFiltered
                   }) }
                   style={ { width: column.calculatedWidth } }
@@ -140,7 +140,7 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
 
                   { column.name }
 
-                  { column.isFilterable && (
+                  { column.columnActionsMode === ColumnActionsMode.hasDropdown && (
                     <i className='ms-DetailsHeader-filterChevron ms-Icon ms-Icon--chevronDown' />
                   ) }
                 </button>

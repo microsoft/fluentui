@@ -6,6 +6,7 @@ export interface IColumn {
   fieldName: string;
   minWidth: number;
   maxWidth?: number;
+  columnActionsMode?: ColumnActionsMode; /** if undefined, then behavior defaults to ColumnActionsMode.clickable */
   isCollapsable?: boolean;
   isSortable?: boolean;
   isSorted?: boolean;
@@ -23,6 +24,17 @@ export interface IColumn {
   isGrouped?: boolean;
   // Arbitrary data required to be preserved by the caller.
   data?: any;
+}
+
+/**
+ * Enum to describe how a particular column header behaves.... This enum is used to
+ * to specify the property IColumn:columnActionsMode. 
+ * If IColumn:columnActionsMode is undefined, then it's equivalent to ColumnActionsMode.clickable
+ */
+export enum ColumnActionsMode {
+  disabled, /** disable the column header */
+  clickable, /** column header is clickable */
+  hasDropdown /** column header is clickable and displays the dropdown cheveron */
 }
 
 export enum ConstrainMode {
