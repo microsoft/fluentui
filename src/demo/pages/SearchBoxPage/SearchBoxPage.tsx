@@ -10,6 +10,9 @@ import {
 import SearchBoxBasicExample from './examples/SearchBox.Basic.Example';
 let SearchBoxBasicExampleCode = require('./examples/SearchBox.Basic.Example.tsx');
 
+import SearchBoxLargeExample from './examples/SearchBox.Large.Example';
+let SearchBoxLargeExampleCode = require('./examples/SearchBox.Large.Example.tsx');
+
 export default class SearchBoxPage extends React.Component<any, any> {
   public render() {
     return (
@@ -19,6 +22,9 @@ export default class SearchBoxPage extends React.Component<any, any> {
         <h2 className='ms-font-xl'>Examples</h2>
         <ExampleCard title='SearchBox' code={ SearchBoxBasicExampleCode }>
           <SearchBoxBasicExample />
+        </ExampleCard>
+        <ExampleCard title='Large SearchBox' code={ SearchBoxLargeExampleCode }>
+          <SearchBoxLargeExample />
         </ExampleCard>
         <PropertiesTableSet componentName='SearchBox' />
       </div>
