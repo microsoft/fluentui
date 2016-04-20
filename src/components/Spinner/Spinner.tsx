@@ -5,6 +5,10 @@ import { ISpinnerProps } from './Spinner.Props';
 import { getRTL } from '../../utilities/rtl';
 
 const CIRCLE_COUNT = 8;
+const PARENT_SIZE_LARGE = 28;
+const PARENT_SIZE_NORMAL = 20;
+const OFFSET_SIZE_LARGE = 0.179;
+const OFFSET_SIZE_NORMAL = 0.2;
 
 export default class Spinner extends React.Component<ISpinnerProps, any> {
   public static defaultProps: ISpinnerProps = {
@@ -14,10 +18,8 @@ export default class Spinner extends React.Component<ISpinnerProps, any> {
   public render() {
     let { type, label } = this.props;
     let isRTL = getRTL();
-
-    let parentSize: number = type === SpinnerType.large ? 28 : 20;
-
-    let offsetSize: number = type === SpinnerType.large ? 0.179 : 0.2;
+    let parentSize: number = type === SpinnerType.large ? PARENT_SIZE_LARGE : PARENT_SIZE_NORMAL;
+    let offsetSize: number = type === SpinnerType.large ? OFFSET_SIZE_LARGE : OFFSET_SIZE_NORMAL;
     let offset = parentSize * offsetSize;
     let step = (2 * Math.PI) / CIRCLE_COUNT;
     let angle = 0;
