@@ -23,12 +23,12 @@ export interface IBreadcrumb {
   text: string;
 
   /**
-   * Arbitrary value associated with the breadcrumb
+   * Arbitrary unique string associated with the breadcrumb
    */
-  key?: any;
+  key: string;
 
   /**
    * Callback issued when the breadcrumb is selected.
    */
-  onclick?: (key?: any) => void;
+  onClick?: (key?: any) => void;
 }
