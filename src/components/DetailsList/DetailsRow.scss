@@ -7,7 +7,8 @@ $selectedHoverColor: $ms-color-themeLight;
 $unselectedHoverColor: $ms-color-themeLighterAlt;
 
 .ms-DetailsRow {
-  position: relative;
+  @include focus-border($focusedBorderColor);
+
   display: inline-block;
   min-width: 100%;
   min-height: $rowHeight;
@@ -19,10 +20,6 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
 
   cursor: default;
   box-sizing: border-box;
-
-  &:focus {
-    outline: transparent;
-  }
 
   &.ms-DetailsRow.is-selected {
     background: $selectedColor;
@@ -82,16 +79,6 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
 .ms-Fabric.is-stationary .ms-DetailsRow:hover .ms-DetailsRow-check,
 .ms-DetailsRow.is-selected .ms-DetailsRow-check {
   visibility: visible;
-}
-
-.ms-Fabric.is-focusVisible .ms-DetailsRow:focus:before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  border: 1px solid $focusedBorderColor;
 }
 
 // TODO: delete?

@@ -1,6 +1,6 @@
 {
   "name": "@ms/office-ui-fabric-react",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "description": "This is a repo for building out React controls skinned with Fabric.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",

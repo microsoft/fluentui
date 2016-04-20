@@ -11,21 +11,25 @@ export interface ITextFieldProps extends React.DOMAttributes {
 
   /**
    * Whether or not the textfield is disabled.
+   * @default false
    */
   disabled?: boolean;
 
   /**
    * Whether or not the textfield is a required field.
+   * @default false
    */
   required?: boolean;
 
   /**
    * Whether or not the textfield is a multiline textfield.
+   * @default false
    */
   multiline?: boolean;
 
   /**
    * Whether or not the textfield is underlined.
+   * @default false
    */
   underlined?: boolean;
 
@@ -35,22 +39,22 @@ export interface ITextFieldProps extends React.DOMAttributes {
   placeholder?: string;
 
   /**
-   * Text for the textfield.
+   * Label for the textfield.
    */
   label?: string;
 
   /**
-   * Description the textfield.
+   * The textfield input description
    */
   description?: string;
 
   /**
-   * Css class for the icon.
+   * CSS class for the icon.
    */
   iconClass?: string;
 
   /**
-   * Defualt value of the textfield, if any.
+   * Default value of the textfield, if any.
    */
   value?: string;
 
@@ -60,7 +64,7 @@ export interface ITextFieldProps extends React.DOMAttributes {
   onChanged?: (newValue: any) => void;
 
   /**
-   * Css class for the textfield.
+   * CSS class for the textfield.
    */
   className?: string;
 }

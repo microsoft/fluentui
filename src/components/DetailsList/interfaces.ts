@@ -40,20 +40,10 @@ export interface IGroup {
   name: string;
   startIndex: number;
   count: number;
-
   isSelected?: boolean;
   isCollapsed?: boolean;
   isShowingAll?: boolean;
-
+  isDropEnabled?: boolean;
   // Arbitrary data required to be preserved by the caller.
   data?: any;
-}
-
-export interface IDragDropEvents {
-  canDrop?: (item?: any) => boolean;
-  canDrag?: (item?: any) => boolean;
-  onDragEnter?: (item?: any, event?: DragEvent) => string; // return string is the css classes that will be added to the enterring element.
-  onDragLeave?: (item?: any, event?: DragEvent) => void;
-  onDrop?: (item?: any, event?: DragEvent) => void;
-  onDragStart?: (item?: any, selectedItems?: any[], event?: MouseEvent) => void;
 }

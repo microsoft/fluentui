@@ -36,6 +36,8 @@
 }
 
 .Header-button {
+  @include focus-border($ms-color-themeLight, 2px);
+
   text-decoration: none;
   background: none;
   color: white;
@@ -50,7 +52,6 @@
   display: inline-block;
   vertical-align: top;
   box-sizing: border-box;
-  position: relative;
 
   .ms-Icon {
     font-size: 18px;
@@ -58,10 +59,6 @@
 
   &:hover {
     background: $ms-color-themePrimary;
-  }
-
-  &:focus {
-    outline: 1px solid transparent;
   }
 }
 
@@ -73,14 +70,4 @@
       background: inherit;
     }
   }
-}
-
-.ms-Fabric.is-focusVisible .Header-button:focus:before {
-  position: absolute;
-  content: '';
-  left: 2px;
-  top: 2px;
-  right: 2px;
-  bottom: 2px;
-  border: 1px solid $ms-color-themeLight;
 }

@@ -4,14 +4,13 @@ import {
 } from '../../../components/index';
 import {
   ExampleCard,
-  PropertiesTable
+  PropertiesTableSet
 } from '../../components/index';
-import TextFieldProps from './TextFieldProps';
 
 import TextFieldBasicExample from './examples/TextField.Basic.Example';
 let TextFieldBasicExampleCode = require('./examples/TextField.Basic.Example.tsx');
 
-export default class TextFieldExample extends React.Component<any, any> {
+export default class TextFieldPage extends React.Component<any, any> {
   public render() {
     return (
       <div className='TextFieldExample'>
@@ -21,7 +20,7 @@ export default class TextFieldExample extends React.Component<any, any> {
         <ExampleCard title='TextField variations' code={ TextFieldBasicExampleCode }>
           <TextFieldBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ TextFieldProps } />
+        <PropertiesTableSet componentName='TextField' />
       </div>
     );
   }

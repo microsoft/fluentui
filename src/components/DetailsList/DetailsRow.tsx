@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IColumn, IDragDropEvents } from './interfaces';
+import { IColumn } from './interfaces';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import Check from './Check';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
@@ -7,8 +7,13 @@ import { shallowCompare, assign } from '../../utilities/object';
 import { css } from '../../utilities/css';
 import DetailsRowFields from './DetailsRowFields';
 import './DetailsRow.scss';
+import {
+  IDragDropHelper,
+  IDragDropEvents,
+  IDragDropOptions
+} from './../../utilities/dragdrop/interfaces';
 
-export interface IDetailsRowProps {
+export interface IDetailsRowProps extends React.Props<DetailsRow> {
   item: any;
   itemIndex: number;
   columns: IColumn[];
@@ -18,6 +23,7 @@ export interface IDetailsRowProps {
   onDidMount?: (row?: DetailsRow) => void;
   onWillUnmount?: (row?: DetailsRow) => void;
   dragDropEvents?: IDragDropEvents;
+  dragDropHelper?: IDragDropHelper;
   isGrouped?: boolean;
 }
 
@@ -48,9 +54,9 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
 
   private _events: EventGroup;
   private _hasSetFocus: boolean;
-  private _dragEnterCount: number;
   private _droppingClassNames: string;
   private _hasMounted: boolean;
+  private _dragDropKey: string;
 
   constructor(props) {
     super(props);
@@ -65,45 +71,14 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
     this._hasSetFocus = false;
 
     this._events = new EventGroup(this);
-    this._dragEnterCount = 0;
     this._droppingClassNames = '';
+    this._updateDroppingState = this._updateDroppingState.bind(this);
   }
 
   public componentDidMount() {
-    let { eventsToRegister, itemIndex, item, dragDropEvents } = this.props;
-
-    if (dragDropEvents && item && dragDropEvents.canDrop && dragDropEvents.canDrop(item)) {
-      // dragenter and dragleave will be fired when hover to the child element
-      // but we only want to change state when enter or leave the current element
-      // use the count to ensure it.
-      this._events.on(this.refs.root, 'dragenter', (event: DragEvent) => {
-        event.preventDefault(); // needed for IE
-        this._dragEnterCount++;
-        if (this._dragEnterCount === 1) {
-          this._updateDroppingState(true, event);
-        }
-      });
-
-      this._events.on(this.refs.root, 'dragleave', (event: DragEvent) => {
-        this._dragEnterCount--;
-        if (this._dragEnterCount === 0) {
-          this._updateDroppingState(false, event);
-        }
-      });
-
-      this._events.on(this.refs.root, 'dragend', (event: DragEvent) => {
-        this._updateDroppingState(false, event);
-      });
-
-      this._events.on(this.refs.root, 'drop', (event: DragEvent) => {
-        this._updateDroppingState(false, event);
-      });
-    }
-
-    if (eventsToRegister) {
-      for (let event of eventsToRegister) {
-        this._events.on(this.refs.root, event.eventName, event.callback.bind(null, item, itemIndex));
-      }
+    let { dragDropHelper } = this.props;
+    if (dragDropHelper) {
+      dragDropHelper.subscribe(this.refs.root, this._events, this._getRowDragDropOptions());
     }
 
     this._events.on(this.props.selection, SELECTION_CHANGE, this._onSelectionChanged);
@@ -141,11 +116,17 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
   }
 
   public componentWillUnmount() {
+    let { item, onWillUnmount, dragDropHelper } = this.props;
+
     this._events.dispose();
 
     // Only call the onWillUnmount callback if we have an item.
-    if (this.props.onWillUnmount && this.props.item) {
-      this.props.onWillUnmount(this);
+    if (onWillUnmount && item) {
+      onWillUnmount(this);
+    }
+
+    if (dragDropHelper) {
+      dragDropHelper.unsubscribe(this.refs.root, this._dragDropKey);
     }
   }
 
@@ -262,6 +243,22 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
     }
   }
 
+  private _getRowDragDropOptions(): IDragDropOptions {
+    let { item, itemIndex, dragDropEvents, eventsToRegister } = this.props;
+    this._dragDropKey = 'row-' + itemIndex;
+    let options = {
+      key: this._dragDropKey,
+      eventMap: eventsToRegister,
+      selectionIndex: itemIndex,
+      context: { data: item, index: itemIndex },
+      canDrag: dragDropEvents.canDrag,
+      canDrop: dragDropEvents.canDrop,
+      onDragStart: dragDropEvents.onDragStart,
+      updateDropState: this._updateDroppingState
+    };
+    return options;
+  }
+
   /**
    * update isDropping state based on the input value, which is used to change style during drag and drop
    *
@@ -279,7 +276,6 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
     let { dragDropEvents, item } = this.props;
 
     if (!newValue) {
-      this._dragEnterCount = 0; // reset drag enter counter
       if (dragDropEvents.onDragLeave) {
         dragDropEvents.onDragLeave(item, event);
       }
