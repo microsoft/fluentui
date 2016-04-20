@@ -1,17 +1,6 @@
 import * as React from 'react';
+import { IChoiceGroupOption, IChoiceGroupProps } from './ChoiceGroup.Props';
 import './ChoiceGroup.scss';
-
-export interface IChoiceGroupOption {
-  key: string;
-  text: string;
-  isDisabled?: boolean;
-  isChecked?: boolean;
-}
-
-export interface IChoiceGroupProps {
-  options: IChoiceGroupOption[];
-  onChanged: any;
-}
 
 let _instance = 0;
 
@@ -58,7 +47,7 @@ export default class ChoiceGroup extends React.Component<IChoiceGroupProps, any>
     );
   }
 
-  private _onChanged(option: IChoiceGroupOption, evt) {
+  private _onChanged(option: IChoiceGroupOption, evt?: React.SyntheticEvent) {
     let { onChanged } = this.props;
 
     if (onChanged) {

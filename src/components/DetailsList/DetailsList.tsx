@@ -1,12 +1,10 @@
 import * as React from 'react';
-import List from '../List/index';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { assign } from '../../utilities/object';
 import { css } from '../../utilities/css';
 import DetailsHeader from './DetailsHeader';
 import DetailsRow from './DetailsRow';
-import GroupFooter from './GroupFooter';
-import GroupHeader from './GroupHeader';
+import DetailsGroup from './DetailsGroup';
 import { Selection } from '../../utilities/selection/Selection';
 import SelectionZone from '../../utilities/selection/SelectionZone';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
@@ -18,6 +16,7 @@ import {
   IColumn,
   IGroup
 } from './interfaces';
+import DragDropHelper from '../../utilities/dragdrop/DragDropHelper';
 import './DetailsList.scss';
 
 export interface IDetailsListState {
@@ -31,8 +30,9 @@ export interface IDetailsListState {
 }
 
 const DEFAULT_GROUP_ITEM_LIMIT = 5;
-const DISTANCE_FOR_DRAG_SQUARED = 25; // the minimum mouse move distance to treat it as drag event
 const MIN_RESIZABLE_COLUMN_WIDTH = 100; // this is the global min width
+const CHECKBOX_WIDTH = 40;
+const GROUP_EXPAND_WIDTH = 36;
 
 @withViewport
 export class DetailsList extends React.Component<IDetailsListProps, IDetailsListState> {
@@ -52,15 +52,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   private _events: EventGroup;
   private _selection: ISelection;
   private _activeRows: { [key: string]: DetailsRow };
-  private _dragging: boolean;
-  private _dragData: {
-    eventTarget: EventTarget;
-    clientX: number;
-    clientY: number;
-    dataTransfer?: DataTransfer;
-    dropTarget?: DetailsRow;
-    dragTarget?: DetailsRow;
-  };
+  private _dragDropHelper: DragDropHelper;
 
   constructor(props: IDetailsListProps) {
     super(props);
@@ -74,9 +66,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     this._onToggleCollapse = this._onToggleCollapse.bind(this);
     this._onToggleCollapseAll = this._onToggleCollapseAll.bind(this);
     this._onToggleSelectGroup = this._onToggleSelectGroup.bind(this);
-    this._onRenderCell = this._onRenderCell.bind(this);
     this._onShowMore = this._onShowMore.bind(this);
-    this._getItemsToRender = this._getItemsToRender.bind(this);
+    this._getGroupKey = this._getGroupKey.bind(this);
 
     this.state = {
       lastWidth: 0,
@@ -90,21 +81,14 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     this._events = new EventGroup(this);
     this._selection = props.selection || new Selection();
     this._selection.setItems(props.items as IObjectWithKey[], false);
-    this._dragging = false;
-  }
-
-  public componentDidMount() {
-    let { dragDropEvents } = this.props;
-
-    if (dragDropEvents) {
-      // clear drag data when mouse up, use capture event to ensure it will be run
-      this._events.on(document.body, 'mouseup', this._onMouseUp.bind(this), true);
-      this._events.on(document, 'mouseup', this._onDocumentMouseUp.bind(this), true);
-    }
+    this._dragDropHelper = props.dragDropEvents ? new DragDropHelper({ selection: this._selection }) : null;
   }
 
   public componentWillUnmount() {
     this._events.dispose();
+    if (this._dragDropHelper) {
+      this._dragDropHelper.dispose();
+    }
   }
 
   public componentDidUpdate(prevProps: any, prevState: any) {
@@ -135,7 +119,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   }
 
   public render() {
-    let { className, selectionMode, constrainMode, groupItemLimit, onItemInvoked } = this.props;
+    let { items, className, selectionMode, constrainMode, groupItemLimit, onItemInvoked, rowElementEventMap,
+      dragDropEvents, onRenderMissingItem } = this.props;
     let { adjustedColumns, layoutMode, groups, isAllCollapsed } = this.state;
     let { _selection: selection } = this;
     let isGrouped = groups && groups.length > 0;
@@ -147,37 +132,29 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       groupItemLimit = DEFAULT_GROUP_ITEM_LIMIT;
     }
 
-    let renderedGroups = groups.map((group: IGroup, groupIdx: number) => (
-      <div key={ groupIdx }>
-        <GroupHeader
-          ref={ 'groupHeader_' + groupIdx }
+    let renderedGroups = groups.map((group: IGroup, groupIndex: number) => (
+      (!group || group.count > 0) ? (
+        <DetailsGroup
+          ref={ 'detailsGroup_' + groupIndex }
+          key={ this._getGroupKey(group, groupIndex) }
+          items={ items }
+          columns={ adjustedColumns }
           group={ group }
-          groupIndex={ groupIdx }
+          groupIndex={ groupIndex }
+          groupItemLimit={ groupItemLimit }
+          selectionMode={ selectionMode }
+          selection={ selection }
+          eventsToRegister={ rowElementEventMap }
+          onRowDidMount={ this._onRowDidMount }
+          onRowWillUnmount={ this._onRowWillUnmount }
+          dragDropEvents={ dragDropEvents }
+          onRenderMissingItem={ onRenderMissingItem }
+          dragDropHelper={ this._dragDropHelper }
           onToggleCollapse={ this._onToggleCollapse }
           onToggleSelectGroup={ this._onToggleSelectGroup }
-        />
-        {
-          group && group.isCollapsed ?
-          null :
-          <List
-              ref={ 'list_' + groupIdx }
-              items={ this._getItemsToRender(group) }
-              onRenderCell={ this._onRenderCell }
-              selection={ selection }
-            />
-        }
-        {
-          group && group.isCollapsed && !group.isShowingAll ?
-          null :
-          <GroupFooter
-            ref={ 'groupFooter_' + groupIdx }
-            group={ group }
-            groupIndex={ groupIdx }
-            groupItemLimit={ groupItemLimit }
-            onShowMore={ this._onShowMore }
+          onShowMore={ this._onShowMore }
           />
-        }
-       </div>
+        ) : null
     ));
 
     return (
@@ -207,35 +184,10 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     );
   }
 
-  private _onRenderCell(item: any, index: number): React.ReactNode {
-    let result = null;
-    let { selectionMode, rowElementEventMap, dragDropEvents, onRenderMissingItem } = this.props;
-    let { adjustedColumns, groups } = this.state;
-    let { _selection: selection } = this;
-    let isGrouped = groups && groups.length > 0;
-
-    result = (
-      <DetailsRow
-        item={ item }
-        itemIndex={ index }
-        columns={ adjustedColumns }
-        selectionMode={ selectionMode }
-        selection={ selection }
-        onDidMount={ this._onRowDidMount }
-        onWillUnmount={ this._onRowWillUnmount }
-        eventsToRegister={ rowElementEventMap }
-        dragDropEvents={ dragDropEvents }
-        isGrouped={ isGrouped }
-        />
-    );
-
-    if (!item) {
-      if (onRenderMissingItem) {
-        onRenderMissingItem(index);
-      }
-    }
-
-    return result;
+  private _getGroupKey(group: IGroup, groupIndex: number): string {
+    return 'group-' + (group ?
+      group.key + '-' + group.count :
+      '');
   }
 
   private _onRowDidMount(row: DetailsRow) {
@@ -243,7 +195,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     let index = row.props.itemIndex;
 
     this._activeRows[index] = row; // this is used for column auto resize
-    this._registerDragDropEvents(row);
     if (onRowDidMount) {
       onRowDidMount(row.props.item, index);
     }
@@ -260,56 +211,42 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     }
   }
 
-  private _getItemsToRender(group: IGroup) {
-    let { items, groupItemLimit } = this.props;
-
-    if (group) {
-      let start = group.startIndex;
-      let end = group.isShowingAll ?
-        group.startIndex + group.count :
-        group.startIndex + Math.min(group.count, groupItemLimit);
-      return items.slice(start, end);
-    } else {
-      return items;
-    }
-  }
-
   private _onAllSelectedChanged() {
     this._selection.toggleAllSelected();
   }
 
-  private _onToggleCollapse(groupIdx: number) {
+  private _onToggleCollapse(groupIndex: number) {
     let { groups } = this.state;
-    let group = groups ? groups[groupIdx] : null;
+    let group = groups ? groups[groupIndex] : null;
+
     if (group) {
       group.isCollapsed = !group.isCollapsed;
-      this.setState({
-        groups: groups
-      });
+      this.forceUpdate();
     }
   }
 
   private _onToggleCollapseAll(isAllCollapsed: boolean) {
     let { groups } = this.state;
-    groups = groups.map((group: any) => {
-      group.isCollapsed = isAllCollapsed;
-      return group;
-    });
-    this.setState({
-      isAllCollapsed: isAllCollapsed,
-      groups: groups
-    });
+
+    if (groups) {
+      for (let groupIndex = 0; groupIndex < groups.length; groupIndex++) {
+        groups[groupIndex].isCollapsed = isAllCollapsed;
+      }
+
+      this.forceUpdate();
+    }
   }
 
-  private _onToggleSelectGroup(groupIdx: number) {
+  private _onToggleSelectGroup(groupIndex: number) {
     let { groups } = this.state;
-    let group = groups ? groups[groupIdx] : null;
+    let group = groups ? groups[groupIndex] : null;
+
     if (group) {
       let isSelected = !group.isSelected;
       let start = group.startIndex;
       let end = group.startIndex + Math.min(group.count, this.props.groupItemLimit);
-      for (let idx = start; idx <= end; idx++) {
-        this._selection.setIndexSelected(idx, isSelected /* isSelected */, true /*shouldFocus */, false /* shouldAnchor */);
+      for (let idx = start; idx < end; idx++) {
+        this._selection.setIndexSelected(idx, isSelected, true /*shouldFocus */, false /* shouldAnchor */);
       }
       group.isSelected = isSelected;
 
@@ -319,9 +256,22 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     }
   }
 
-  private _onShowMore(groupIdx: number) {
+  private _forceListUpdates(groups?: IGroup[]) {
+    groups = groups || this.state.groups;
+
+    let groupCount = groups ? groups.length : 1;
+
+    for (let i = 0; i < groupCount; i++) {
+      let detailsGroup = this.refs['detailsGroup_' + String(i)] as DetailsGroup;
+      if (detailsGroup) {
+        detailsGroup.forceListUpdate();
+      }
+    }
+  }
+
+  private _onShowMore(groupIndex: number) {
     let { groups } = this.state;
-    let group = groups ? groups[groupIdx] : null;
+    let group = groups ? groups[groupIndex] : null;
 
     if (this.props.onShowAll) {
       this.props.onShowAll(group);
@@ -349,18 +299,12 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     }
 
     if (forceUpdate) {
-      let groupCount = newProps.groups ? newProps.groups.length : 1;
-      for (let i = 0; i < groupCount; i++) {
-        let list = this.refs['list_' + String(i)] as List;
-        if (list) {
-          list.forceUpdate();
-        }
-      }
+      this._forceListUpdates(newProps.groups);
     }
   }
 
   private _getAdjustedColumns(newProps: IDetailsListProps, forceUpdate?: boolean, layoutMode?: DetailsListLayoutMode): IColumn[] {
-    let { columns: newColumns, viewport: { width: viewportWidth }, selectionMode } = newProps;
+    let { columns: newColumns, viewport: { width: viewportWidth }, selectionMode, groups } = newProps;
     if (layoutMode === undefined) {
       layoutMode = newProps.layoutMode;
     }
@@ -386,10 +330,11 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     let adjustedColumns = [];
     let outerPadding = 0;
     let innerPadding = 16;
-    let rowCheckWidth = (selectionMode === SelectionMode.none) ? 0 : 40;
+    let rowCheckWidth = (selectionMode !== SelectionMode.none) ? CHECKBOX_WIDTH : 0;
+    let groupExpandWidth = groups ? GROUP_EXPAND_WIDTH : 0;
 
     let totalWidth = 0; // offset because we have one less inner padding.
-    let availableWidth = viewportWidth - (outerPadding * 2) - rowCheckWidth;
+    let availableWidth = viewportWidth - (outerPadding * 2) - rowCheckWidth - groupExpandWidth;
 
     if (layoutMode === DetailsListLayoutMode.fixedColumns) {
       availableWidth = Number.MAX_VALUE;
@@ -483,108 +428,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           }
         });
       }
-    }
-  }
-
-  /**
-   * clear drag data when mouse up on body
-   */
-  private _onMouseUp(event: MouseEvent) {
-    this._dragging = false;
-    if (this._dragData && this._dragData.dropTarget) {
-      // raise dargleave event to let dropTarget know it need to remove dropping style
-      EventGroup.raise(this._dragData.dropTarget.refs.root, 'dragleave');
-    }
-    this._dragData = null;
-  }
-
-  /**
-   * clear drag data when mouse up outside of the document
-   */
-  private _onDocumentMouseUp(event: MouseEvent) {
-    if (event.target === document.documentElement) {
-      this._onMouseUp(event);
-    }
-  }
-
-  /**
-   * Register mouse events to enable drag items in the list and drop to the other item.
-   * when mouse down on a draggable item, we start to track dragdata.
-   * when mouse move over a row while dragging some items, fire dragenter to the row
-   * when mouse leave a row while dragging some items, fire dragleave to the row
-   * details row will handle dragenter and dragleave event to change the style.
-   *
-   * @private
-   * @param {DetailsRow} row
-   */
-  private _registerDragDropEvents(row: DetailsRow) {
-    let { dragDropEvents } = this.props;
-
-    if (dragDropEvents) {
-      this._events.on(row.refs.root, 'mousemove', this._onRowMouseMove.bind(this, row));
-      this._events.on(row.refs.root, 'mouseleave', this._onRowMouseLeave.bind(this, row));
-
-      if (dragDropEvents.canDrag) {
-        this._events.on(row.refs.root, 'mousedown', this._onRowMouseDown.bind(this, row));
-      }
-    }
-  }
-
-  /**
-   * when mouse move over a new row while dragging some items,
-   * fire dragleave on the old row and fire dragenter to the new row
-   * row will handle style change on dragenter and dragleave events.
-   */
-  private _onRowMouseMove(row: DetailsRow, event: MouseEvent) {
-    if (this._dragging) {
-      if (this._dragData.dropTarget && this._dragData.dropTarget.props.itemIndex !== row.props.itemIndex) {
-        EventGroup.raise(this._dragData.dropTarget.refs.root, 'dragleave');
-        this._dragData.dropTarget = null;
-      }
-
-      if (!this._dragData.dropTarget) {
-        EventGroup.raise(row.refs.root, 'dragenter');
-        this._dragData.dropTarget = row;
-      }
-    } else if (this._dragData) {
-      let xDiff = this._dragData.clientX - event.clientX;
-      let yDiff = this._dragData.clientY - event.clientY;
-      if (xDiff * xDiff + yDiff * yDiff >= DISTANCE_FOR_DRAG_SQUARED) {
-        if (this._dragData.dragTarget &&
-          this._selection.isIndexSelected(this._dragData.dragTarget.props.itemIndex)) {
-          this._dragging = true;
-        }
-      }
-    }
-  }
-
-  /**
-   * when mouse leave a row while dragging some items, fire dragleave to the row
-   */
-  private _onRowMouseLeave(row: DetailsRow, event: MouseEvent) {
-    if (this._dragging) {
-      if (this._dragData && this._dragData.dropTarget) {
-        EventGroup.raise(row.refs.root, 'dragleave');
-        this._dragData.dropTarget = null;
-      }
-    }
-  }
-
-  /**
-   * when mouse down on a draggable item, we start to track dragdata.
-   */
-  private _onRowMouseDown(row: DetailsRow, event: MouseEvent) {
-    let { dragDropEvents } = this.props;
-
-    if (dragDropEvents.canDrag(row.props.item)) {
-      this._dragData = {
-        clientX: event.clientX,
-        clientY: event.clientY,
-        eventTarget: event.target,
-        dragTarget: row
-      };
-    } else {
-      this._dragData = null;
     }
   }
 }

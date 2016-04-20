@@ -1,2 +1,14 @@
 @import '../../common';
 @import "~office-ui-fabric/src/components/TextField/TextField";
+
+.ms-TextField.ms-TextField--underlined {
+
+  .ms-Label {
+    @include padding-left(12px);
+    @include padding-right(0);
+  }
+
+  .ms-TextField-field {
+    @include text-align(left);
+  }
+}

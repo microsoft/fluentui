@@ -4,9 +4,8 @@ import {
 } from '../../../components/index';
 import {
   ExampleCard,
-  PropertiesTable
+  PropertiesTableSet
 } from '../../components/index';
-import {CommandBarProps, ICommandBarItemProps } from './CommandBarProps';
 
 import CommandBarBasicExample from './examples/CommandBar.Basic.Example';
 let CommandBarBasicExampleCode = require('./examples/CommandBar.Basic.Example.tsx');
@@ -33,8 +32,7 @@ export default class CommandBarPage extends React.Component<any, any> {
         <ExampleCard title='CommandBar with no search box and dynamically updated items' code={ CommandBarRandomItemsExampleCode }>
           <CommandBarRandomItemsExample />
         </ExampleCard>
-        <PropertiesTable properties={ CommandBarProps } />
-        <PropertiesTable title='ICommandBarItem Properties' properties={ ICommandBarItemProps } />
+        <PropertiesTableSet componentName='CommandBar' />
       </div>
     );
   }

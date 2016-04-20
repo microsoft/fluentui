@@ -2,25 +2,14 @@ import * as React from 'react';
 import Label from '../Label/index';
 import './TextField.scss';
 import { css } from '../../utilities/css';
-
-export interface ITextFieldProps extends React.DOMAttributes {
-  children?: any;
-  disabled?: boolean;
-  required?: boolean;
-  multiline?: boolean;
-  underlined?: boolean;
-  placeholder?: string;
-  label?: string;
-  description?: string;
-  iconClass?: string;
-  value?: string;
-  onChanged?: (newValue: any) => void;
-  className?: string;
-}
+import { ITextFieldProps } from './TextField.Props';
 
 export interface ITextFieldState {
+  id?: string;
   value: string;
 }
+
+let _instance: number = 0;
 
 export default class TextField extends React.Component<ITextFieldProps, ITextFieldState> {
   public static initialProps: ITextFieldProps = {
@@ -40,6 +29,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
     super(props);
 
     this.state = {
+      id: `TextField-${ _instance++ }`,
       value: props.value
     };
     this._onMultilineTextChanged = this._onMultilineTextChanged.bind(this);
@@ -55,12 +45,12 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
   }
 
   public render() {
-    let {disabled, required, multiline, placeholder, underlined, label, description, iconClass, className } = this.props;
+    let { disabled, required, multiline, placeholder, underlined, label, description, iconClass, className } = this.props;
     let { value } = this.state;
+    let { id } = this.state;
 
     return (
       <div
-        {...this.props}
         className={
         css('ms-TextField', className, {
           'is-required': required,
@@ -69,14 +59,14 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
           'ms-TextField--underlined': underlined
         }) }
         >
-        { label ? <Label>{label}</Label> : null }
-        {iconClass ? <i className={iconClass}></i> : null}
-        {multiline ?
-          <textarea className='ms-TextField-field' ref='multilineText' onChange={ this._onMultilineTextChanged }>{value}</textarea>
+        { label ? <Label htmlFor={ id }>{ label }</Label> : null }
+        { iconClass ? <i className={ iconClass }></i> : null }
+        { multiline ?
+          <textarea id={ id } className='ms-TextField-field' ref='multilineText' onChange={ this._onMultilineTextChanged }>{ value }</textarea>
         :
-          <input placeholder={placeholder} ref='singlelineText' className='ms-TextField-field' value={value} onChange={ this._onSinglelineTextChanged } /> }
-        {description ? <span className='ms-TextField-description'>{description}</span> : null}
-        {this.props.children}
+          <input id={ id } placeholder={ placeholder } ref='singlelineText' className='ms-TextField-field' value={ value } onChange={ this._onSinglelineTextChanged } /> }
+        { description ? <span className='ms-TextField-description'>{ description }</span> : null}
+        { this.props.children }
       </div>
     );
   }
@@ -93,6 +83,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
     this.setState({
       value: this.refs.singlelineText.value
     });
+
     this._onChanged(this.refs.singlelineText.value);
   }
 

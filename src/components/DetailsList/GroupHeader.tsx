@@ -28,7 +28,7 @@ export default class GroupHeader extends React.Component<IGroupHeaderProps, IGro
   }
 
   public componentWillReceiveProps(newProps) {
-    if (newProps.group && newProps.state !== this.state.isCollapsed) {
+    if (newProps.group && newProps.group.isCollapsed !== this.state.isCollapsed) {
       this.setState({
         isCollapsed: newProps.group.isCollapsed
       });
@@ -61,7 +61,7 @@ export default class GroupHeader extends React.Component<IGroupHeaderProps, IGro
         <i className={ css('ms-GroupHeader-expandButton ms-Icon ms-Icon--chevronDown', {
           'is-collapsed': isCollapsed
         }) } onClick={ this._onToggleCollapse }></i>
-        <div className='ms-GroupHeader-title'>{ group.fieldSchema.name } : { group.name } ( { group.count } )</div>
+        <div className='ms-GroupHeader-title'>{ group.name } ( { group.count } )</div>
       </div>
     ) :
     null;

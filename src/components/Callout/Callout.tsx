@@ -1,24 +1,6 @@
 import * as React from 'react';
 import './Callout.scss';
-
-export enum ArrowDirection {
-  left,
-  top,
-  right,
-  bottom
-}
-
-export interface ILink {
-  name: string;
-  url: string;
-}
-
-export interface ICalloutProps {
-  title: string;
-  subText: string;
-  arrowDirection?: ArrowDirection;
-  links?: ILink[];
-}
+import { ICalloutProps } from './Callout.Props';
 
 export default class Callout extends React.Component<ICalloutProps, any> {
 

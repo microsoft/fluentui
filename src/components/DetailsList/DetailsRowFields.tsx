@@ -19,8 +19,8 @@ export default class DetailsRowFields extends React.Component<IDetailsRowFieldsP
 
     return (
       <div className='ms-DetailsRow-fields'>
-        { columns.map(column => (
-          <div key={ column.key } className={ css('ms-DetailsRow-cell', {
+        { columns.map((column, columnIndex) => (
+          <div key={ columnIndex } className={ css('ms-DetailsRow-cell', {
             'is-clipped': column.isClipped
           }) } style={ { width: column.calculatedWidth } }>
             { this._getCellContent(column, itemIndex) }

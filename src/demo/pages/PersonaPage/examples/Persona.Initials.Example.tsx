@@ -25,7 +25,7 @@ export default class PersonaInitialsExample extends React.Component<any, any> {
         />
         <Persona
           { ...billMurrayContact }
-          initialsColor={PersonaInitialsColor.darkRed}
+          initialsColor={PersonaInitialsColor.teal}
         />
       </div>
     );

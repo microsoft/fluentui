@@ -1,0 +1,7 @@
+@import '../../common';
+
+.ms-DetailsList-group {
+  &.is-dropping {
+    background-color: $ms-color-neutralLight;
+  }
+}

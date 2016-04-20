@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { css, EventGroup } from '../../utilities/index';
 import KeyCodes from '../../utilities/KeyCodes';
-import './Fabric.scss';
 
 const DIRECTIONAL_KEY_CODES = [
   KeyCodes.up,
@@ -49,19 +48,7 @@ export default class Fabric extends React.Component<IFabricProps, IFabricState> 
   public componentDidMount() {
     this._events.on(document.body, 'mousedown', this._onMouseDown, true);
     this._events.on(document.body, 'keydown', this._onKeyDown, true);
-    this._events.on(window, 'scroll', this._onScroll);
-
-    let rootElement = this.refs.root;
-
-    while (rootElement !== document.body) {
-      let style = getComputedStyle(rootElement);
-
-      if (style.overflowX === 'auto' || style.overflowX === 'scroll' || style.overflowY === 'auto' || style.overflowY === 'scroll') {
-        this._events.on(rootElement, 'scroll', this._onScroll);
-      }
-
-      rootElement = rootElement.parentElement;
-    }
+    this._events.on(window, 'scroll', this._onScroll, true);
   }
 
   public componentWillUnmount() {
@@ -107,6 +94,7 @@ export default class Fabric extends React.Component<IFabricProps, IFabricState> 
         isStationary: false
       });
     }
+
     this._scrollTimerId = setTimeout(this._onScrollEnd, STATIONARY_DETECTION_DELAY);
   }
 

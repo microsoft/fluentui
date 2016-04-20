@@ -3,20 +3,7 @@ import './Dropdown.scss';
 import { css } from '../../utilities/css';
 import { findIndex } from '../../utilities/array';
 import KeyCodes from '../../utilities/KeyCodes';
-
-export interface IDropdownOption {
-  key: string;
-  text: string;
-  isSelected?: boolean;
-}
-
-export interface IDropdownProps {
-  label: string;
-  selectedKey?: string;
-  options?: IDropdownOption[];
-  onChanged?: (option: IDropdownOption, index?: number) => void;
-  isDisabled?: boolean;
-}
+import { IDropdownProps, IDropdownOption } from './Dropdown.Props';
 
 export interface IDropdownState {
   isOpen: boolean;

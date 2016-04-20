@@ -4,9 +4,8 @@ import {
 } from '../../../components/index';
 import {
   ExampleCard,
-  PropertiesTable
+  PropertiesTableSet
 } from '../../components/index';
-import BreadcrumbProps from './BreadcrumbProps';
 import { BreadcrumbBasicExample } from './examples/Breadcrumb.Basic.Example';
 let BreadcrumbBasicExampleCode = require('./examples/Breadcrumb.Basic.Example.tsx');
 
@@ -20,7 +19,7 @@ export default class BreadcrumbExample extends React.Component<any, any> {
         <ExampleCard title='Simple breadcrumb' code={ BreadcrumbBasicExampleCode }>
           <BreadcrumbBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ BreadcrumbProps } />
+        <PropertiesTableSet componentName='Breadcrumb' />
       </div>
     );
   }

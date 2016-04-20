@@ -100,6 +100,8 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
 }
 
 .ms-CommandBarItem-link {
+  @include focus-border($ms-color-neutralTertiary, 2px);
+
   background: none;
   border: none;
   line-height: $CommandBarItem-height - 1;
@@ -107,11 +109,9 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
   height: $CommandBarItem-height;
   min-width: 20px;
   text-align: center;
-  position: relative;
   padding: 0 8px;
   display: block;
   height: 100%;
-  outline: transparent;
 
   &:hover,
   &.is-expanded {
@@ -126,16 +126,6 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
       @include highContrastBorder($ms-color-black);
     }
   }
-}
-
-.ms-Fabric.is-focusVisible .ms-CommandBarItem-link:focus:before {
-  position: absolute;
-  left: 2px;
-  right: 2px;
-  top: 2px;
-  bottom: 2px;
-  border: 1px solid $ms-color-neutralTertiary;
-  content: '';
 }
 
 .ms-CommandBarItem-icon {

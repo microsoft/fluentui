@@ -4,9 +4,8 @@ import {
 } from '../../../components/index';
 import {
   ExampleCard,
-  PropertiesTable
+  PropertiesTableSet
 } from '../../components/index';
-import ListProps from './ListProps';
 
 import ListBasicExample from './examples/List.Basic.Example';
 let ListBasicExampleCode = require('./examples/List.Basic.Example.tsx');
@@ -35,7 +34,7 @@ export default class ListPage extends React.Component<any, any> {
         <ExampleCard title='Fixed list of 20000 email tiles' isOptIn={ true } code={ ListMailExampleCode }>
           <ListMailExample />
         </ExampleCard>
-        <PropertiesTable properties={ ListProps } />
+        <PropertiesTableSet componentName='List' />
       </div>
     );
   }

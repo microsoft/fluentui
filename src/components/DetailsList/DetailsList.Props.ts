@@ -4,13 +4,16 @@ import {
   IGroup,
   DetailsListLayoutMode,
   ConstrainMode,
-  IColumn,
-  IDragDropEvents
+  IColumn
 } from './interfaces';
 import {
   ISelection,
   SelectionMode
 } from '../../utilities/selection/interfaces';
+import {
+  IDragDropEvents,
+  IDragDropContext
+} from './../../utilities/dragdrop/interfaces';
 import { IViewport } from '../../utilities/decorators/withViewport';
 
 export interface IDetailsListProps extends React.Props<DetailsList> {
@@ -45,7 +48,7 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   groupItemLimit?: number;
 
   /** Event names and corresponding callbacks that will be registered to rendered row elements. */
-  rowElementEventMap?: [{ eventName: string, callback: (item?: any, index?: number, event?: any) => void }];
+  rowElementEventMap?: [{ eventName: string, callback: (context: IDragDropContext, event?: any) => void }];
 
   /** Callback for when the details list has been updated. Useful for telemetry tracking externally. */
   onDidUpdate?: (detailsList?: DetailsList) => any;

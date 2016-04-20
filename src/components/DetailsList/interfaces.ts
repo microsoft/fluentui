@@ -38,24 +38,12 @@ export enum DetailsListLayoutMode {
 export interface IGroup {
   key: string;
   name: string;
-  fieldSchema: {
-    name: string;
-  };
   startIndex: number;
   count: number;
-
   isSelected?: boolean;
   isCollapsed?: boolean;
   isShowingAll?: boolean;
-
+  isDropEnabled?: boolean;
   // Arbitrary data required to be preserved by the caller.
   data?: any;
-}
-
-export interface IDragDropEvents {
-  canDrop?: (item?: any) => boolean;
-  canDrag?: (item?: any) => boolean;
-  onDragEnter?: (event?: DragEvent, item?: any) => string; // return string is the css classes that will be added to the enterring element.
-  onDragLeave?: (event?: DragEvent, item?: any) => void;
-  onDrop?: (event?: DragEvent, item?: any) => void;
 }

@@ -41,7 +41,6 @@ $linkTextColor: $ms-color-neutralPrimary;
 }
 
 .ms-Nav-groupButton {
-  position: relative;
   display: block;
   width: 100%;
   height: 40px;
@@ -55,22 +54,8 @@ $linkTextColor: $ms-color-neutralPrimary;
   text-transform: uppercase;
   cursor: pointer;
 
-  &:focus {
-    outline: transparent;
-  }
-
   &:visited {
     color: inherit;
-  }
-
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: -1;
   }
 }
 
@@ -87,20 +72,11 @@ $linkTextColor: $ms-color-neutralPrimary;
   transform: rotate(-180deg);
 }
 
-.ms-Nav-groupButton:hover:before {
+.ms-Nav-groupButton:hover {
   background: $unselectedHoverColor;
 }
 
-.ms-Nav-groupButton:focus {
-  outline: transparent;
-}
-
-.ms-Fabric.is-focusVisible .ms-Nav-groupButton:focus:before {
-  border: 1px solid $focusedBorderColor;
-}
-
 .ms-Nav-link {
-  position: relative;
   display: block;
   height: 40px;
   line-height: 40px;
@@ -109,44 +85,38 @@ $linkTextColor: $ms-color-neutralPrimary;
   color: $linkTextColor;
   cursor: pointer;
 
-  &:focus {
-    outline: transparent;
-  }
-
   &:visited {
     color: inherit;
   }
 
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: -1;
+  &:hover {
+    background: $unselectedHoverColor;
+  }
+
+  &.is-selected {
+    background: $selectedColor;
+
+    &:hover {
+      background: $selectedHoverColor;
+    }
   }
 }
 
-.ms-Fabric.is-focusVisible .ms-Nav-link:focus:before {
-  border: 1px solid $focusedBorderColor;
+.ms-Nav-groupButton, .ms-Nav-link {
+  @include focus-border($focusedBorderColor);
 }
 
-.ms-Nav-link.is-selected:before,
-.ms-Fabric.is-focusVisible .ms-Nav-link.is-selected:focus:before {
-  @include border-left(4px, solid, $selectedHighlightColor);
-  background: $selectedColor;
-}
-
-.ms-Nav-link:hover:before {
-  background: $unselectedHoverColor;
-}
-
-.ms-Nav-link.is-selected:hover:before {
+.ms-Nav-link.is-selected:hover {
   background: $selectedHoverColor;
 }
 
-.is-selected:before,
-.ms-Nav-link.is-selected:focus:before {
+.ms-Nav-link.is-selected:after {
   @include border-left(4px, solid, $selectedHighlightColor);
+
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
