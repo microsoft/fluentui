@@ -8,7 +8,7 @@
 .ms-SearchBox-field {
   &:hover {
     border-color: $ms-color-themePrimary;
-    background-color: $ms-color-primaryTranslucent20;
+    background-color: $ms-color-themeLighter;
 
     & + .ms-SearchBox-label {
       color: $ms-color-black;
