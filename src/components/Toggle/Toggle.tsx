@@ -34,8 +34,13 @@ export default class Toggle extends React.Component<IToggleProps, IToggleState> 
     return (
       <div className='ms-Toggle' onClick={ this._handleClick }>
         <span className='ms-Toggle-description' id={ id }>{ label }</span>
-        <input ref='input' aria-labelledby={ id } type='checkbox' className='ms-Toggle-input' checked={ isToggled }
-          onChange={ this._handleClick } />
+        <input ref='input'
+               aria-labelledby={ id }
+               type='checkbox'
+               className='ms-Toggle-input'
+               checked={ isToggled }
+               aria-pressed={ isToggled }
+               onChange={ this._handleClick } />
         <label className='ms-Toggle-field' title={ label }>
           <span className='ms-Label ms-Label--off'>{ offText }</span>
           <span className='ms-Label ms-Label--on'>{ onText }</span>

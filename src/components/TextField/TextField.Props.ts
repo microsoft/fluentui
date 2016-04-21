@@ -67,4 +67,9 @@ export interface ITextFieldProps extends React.DOMAttributes {
    * CSS class for the textfield.
    */
   className?: string;
+
+  /**
+   * Aria Label for textfield, if any.
+   */
+  ariaLabel?: string;
 }

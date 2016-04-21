@@ -7,6 +7,7 @@ import { ITextFieldProps } from './TextField.Props';
 export interface ITextFieldState {
   id?: string;
   value: string;
+  descriptionId?: string;
 }
 
 let _instance: number = 0;
@@ -30,6 +31,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
 
     this.state = {
       id: `TextField-${ _instance++ }`,
+      descriptionId : `TextFieldDescription-${ _instance++ }`,
       value: props.value
     };
     this._onMultilineTextChanged = this._onMultilineTextChanged.bind(this);
@@ -48,6 +50,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
     let { disabled, required, multiline, placeholder, underlined, label, description, iconClass, className } = this.props;
     let { value } = this.state;
     let { id } = this.state;
+    let { descriptionId } = this.state;
 
     return (
       <div
@@ -64,9 +67,16 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
         { multiline ?
           <textarea id={ id } className='ms-TextField-field' ref='multilineText' onChange={ this._onMultilineTextChanged }>{ value }</textarea>
         :
-          <input id={ id } placeholder={ placeholder } ref='singlelineText' className='ms-TextField-field' value={ value } onChange={ this._onSinglelineTextChanged } /> }
+          <input id={ id }
+                 placeholder={ placeholder }
+                 ref='singlelineText'
+                 className='ms-TextField-field'
+                 value={ value }
+                 onChange={ this._onSinglelineTextChanged }
+                 aria-describedby={ descriptionId }/> }
         { description ? <span className='ms-TextField-description'>{ description }</span> : null}
         { this.props.children }
+        { this.props.ariaLabel ? <span id={ descriptionId } className='ms-TextField-hidden'>{ this.props.ariaLabel }</span> : null}
       </div>
     );
   }
