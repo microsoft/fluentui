@@ -13,6 +13,7 @@ import { ISelection, SelectionMode, IObjectWithKey } from '../../utilities/selec
 import {
   ConstrainMode,
   DetailsListLayoutMode,
+  ColumnActionsMode,
   IColumn,
   IGroup
 } from './interfaces';
@@ -458,6 +459,7 @@ export function buildColumns(
           isSortable: sortedColumnKey !== undefined,
           isSorted: sortedColumnKey === propName,
           isSortedDescending: !!isSortedDescending,
+          columnActionsMode: ColumnActionsMode.hasDropdown,
           isFilterable: false,
           isResizable: canResizeColumns,
           onColumnClick: onColumnClick,
