@@ -1,0 +1,24 @@
+.ms-CalloutBasicExample {
+  position: relative;
+}
+
+.ms-CalloutExample-configArea {
+  min-width: 300px;
+  display: inline-block;
+}
+
+.ms-CalloutExample-buttonArea {
+    position: absolut;
+    vertical-align: top;
+    display: inline-block;
+    min-width: 130px;
+    top: 85px;
+    margin: 0 100px;
+    text-align: center;
+}
+
+.ms-CalloutExample-buttonArea .ms-Button {
+    top: 80px;
+    text-align: center;
+    width: 100%;
+}

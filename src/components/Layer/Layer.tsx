@@ -2,12 +2,9 @@ import * as React from 'react';
 import './Layer.scss';
 import * as ReactDom from 'react-dom';
 import LayerHost from './LayerHost';
+import { ILayerProps } from './Layer.Props';
 
 const LAYER_HOST_ELEMENT_ID = 'ms-layer-host';
-
-export interface ILayerProps extends React.Props<Layer> {
-  // Nothing for the moment.
-}
 
 export default class Layer extends React.Component<ILayerProps, {}> {
   private static _layerHost: LayerHost;
@@ -45,7 +42,7 @@ export default class Layer extends React.Component<ILayerProps, {}> {
     Layer._layerHost.addLayer({
       id: this._id,
       children: this.props.children
-    });
+    }, this.props.onLayerMounted);
   }
 
   public componentWillReceiveProps(props: ILayerProps) {

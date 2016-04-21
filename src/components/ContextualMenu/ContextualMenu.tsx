@@ -5,6 +5,7 @@ import KeyCodes from '../../utilities/KeyCodes';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
 import { css } from '../../utilities/css';
 import { getRTL } from '../../utilities/rtl';
+import Async from '../../utilities/Async/Async';
 
 import { IContextualMenuProps, IContextualMenuItem, DirectionalHint } from './ContextualMenu.Props';
 
@@ -99,7 +100,9 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   private _previousActiveElement: HTMLElement;
   private _isFocusingPreviousElement: boolean;
   private _didSetInitialFocus: boolean;
+  private _enterTimerId: number;
   private _events: EventGroup;
+  private _async: Async;
 
   constructor(props: IContextualMenuProps) {
     super(props);
@@ -110,7 +113,9 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
 
     this._isFocusingPreviousElement = false;
     this._didSetInitialFocus = false;
+    this._enterTimerId = 0;
     this._events = new EventGroup(this);
+    this._async = new Async(this);
 
     this.dismiss = this.dismiss.bind(this);
     this._onKeyDown = this._onKeyDown.bind(this);
@@ -118,6 +123,8 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     this._onItemClick = this._onItemClick.bind(this);
     this._onSubMenuDismiss = this._onSubMenuDismiss.bind(this);
     this._getRelativePositions = this._getRelativePositions.bind(this);
+    this._onMouseEnter = this._onMouseEnter.bind(this);
+    this._onMouseLeave = this._onMouseLeave.bind(this);
   }
 
   public dismiss(ev?: any) {
@@ -168,6 +175,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
       this._previousActiveElement.focus();
     }
     this._events.dispose();
+    this._async.dispose();
   }
 
   public render() {
@@ -188,7 +196,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
             style={ ((positions) ? positions.menu : OFF_SCREEN_POSITION) }
             >
             { isBeakVisible && targetElement ? (<div className='ms-ContextualMenu-beak'  style={ ((positions) ? positions.beak : BEAK_ORIGIN_POSITION) } />) : (null) }
-            <ul className='ms-ContextualMenu-list is-open ' onKeyDown={ this._onKeyDown }  ref='menu'>
+            <ul className='ms-ContextualMenu-list is-open ' onKeyDown={ this._onKeyDown } ref='menu'>
               { items.map((item, index) => (
                 // If the item name is equal to '-', a divider will be generated.
                 item.name === '-' ? (
@@ -199,6 +207,8 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
                         className={ css('ms-ContextualMenu-link', { 'is-expanded': (expandedMenuItemKey === item.key) }) }
                         onClick={ this._onItemClick.bind(this, item) }
                         onKeyDown={ item.items && item.items.length ? this._onItemKeyDown.bind(this, item) : null }
+                        onMouseEnter={ item.items && item.items.length ? this._onMouseEnter.bind(this, item) : null }
+                        onMouseLeave={ this._onMouseLeave }
                         disabled={ item.isDisabled }
                         data-command-key={ index }
                         role='menuitem'
@@ -244,6 +254,16 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     }
   }
 
+  private _onMouseEnter(item: any, ev: React.MouseEvent) {
+    let targetElement = ev.currentTarget as HTMLElement;
+
+    this._enterTimerId = this._async.setTimeout(() => this._onSubMenuExpand(item, targetElement), 500);
+  }
+
+  private _onMouseLeave(ev: React.MouseEvent) {
+    this._async.clearTimeout(this._enterTimerId);
+  }
+
   private _onClickCapture(ev: React.MouseEvent) {
     if (!this.refs.host.contains(ev.target as HTMLElement)) {
       this.dismiss(ev);
@@ -260,7 +280,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
       if (item.key === this.state.dismissedMenuItemKey) { // This has an expanded sub menu. collapse it.
         this._onSubMenuDismiss(ev);
       } else { // This has a collapsed sub menu. Expand it.
-        this._onSubMenuExpand(item, ev);
+        this._onSubMenuExpand(item, ev.currentTarget as HTMLElement);
       }
     }
 
@@ -271,16 +291,16 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   private _onItemKeyDown(item: any, ev: KeyboardEvent) {
     let openKey = getRTL() ? KeyCodes.left : KeyCodes.right;
     if (ev.which === openKey) {
-      this._onSubMenuExpand(item, ev);
+      this._onSubMenuExpand(item, ev.currentTarget as HTMLElement);
     }
   }
 
-  private _onSubMenuExpand(item: any, ev: UIEvent) {
+  private _onSubMenuExpand(item: any, target: HTMLElement) {
     this.setState({
       expandedMenuItemKey: item.key,
       submenuProps: {
         items: item.items,
-        targetElement: ev.currentTarget as HTMLElement,
+        targetElement: target,
         onDismiss: this._onSubMenuDismiss,
         isSubMenu: true,
       }

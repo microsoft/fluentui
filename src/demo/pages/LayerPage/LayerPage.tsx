@@ -1,7 +1,8 @@
 
 import * as React from 'react';
 import {
-  ExampleCard
+  ExampleCard,
+  PropertiesTableSet
 } from '../../components/index';
 import LayerBasicExample from './examples/Layer.Basic.Example';
 import LayerInteractiveExample from './examples/Layer.Interactive.Example';
@@ -25,6 +26,7 @@ export default class LayerPage extends React.Component<any, any> {
         <ExampleCard title='Interactive' code={ LayerInteractiveExampleCode }>
           <LayerInteractiveExample />
         </ExampleCard>
+        <PropertiesTableSet componentName='Layer' />
       </div>
     );
   }

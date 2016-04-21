@@ -1,2 +1,84 @@
 @import '../../common';
 @import "~office-ui-fabric/src/components/Callout/Callout";
+
+// slideRightIn20
+@mixin ms-u-slideRightIn20 {
+    @include animationMix((fadeIn, slideRightIn20), $ms-duration3, $ms-ease1);
+}
+
+.ms-u-slideRightIn20 {
+    @include ms-u-slideRightIn20;
+}
+@-webkit-keyframes slideRightIn20 {
+    from { -webkit-transform:translate3d(-20px, 0px, 0px); }
+    to { -webkit-transform:translate3d(0px, 0px, 0px); }
+}
+@keyframes slideRightIn20 {
+    from { transform:translate3d(-20px, 0px, 0px); }
+    to { transform:translate3d(0px, 0px, 0px); }
+}
+
+// slideLeftIn20
+@mixin ms-u-slideLeftIn20 {
+    @include animationMix((fadeIn, slideLeftIn20), $ms-duration3, $ms-ease1);
+}
+
+.ms-u-slideLeftIn20 {
+    @include ms-u-slideLeftIn20;
+}
+@-webkit-keyframes slideLeftIn20 {
+    from { -webkit-transform:translate3d(20px, 0px, 0px); }
+    to { -webkit-transform:translate3d(0px, 0px, 0px); }
+}
+@keyframes slideLeftIn20 {
+    from { transform:translate3d(20px, 0px, 0px); }
+    to { transform:translate3d(0px, 0px, 0px); }
+}
+
+.ms-Callout-container {
+  position: relative;
+}
+
+.ms-Callout {
+  @include ms-font-m;
+  @include ms-u-normalize;
+  @include drop-shadow(0,0, 15px, -5px);
+
+  border: 1px solid $ms-color-neutralLight;
+  z-index: $ms-zIndex-Callout;
+  position: absolute;
+  display: inline-block;
+}
+
+// Disabled default box shadow.
+.ms-Callout-main {
+  box-shadow: none;
+}
+
+.ms-Callout-beak {
+  @include drop-shadow(0,0, 15px, -5px);
+
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  background: #fff;
+  border: 1px solid $ms-color-neutralLight;
+  box-sizing: border-box;
+  top: -6px;
+  display: none;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.ms-Callout-smallbeak {
+  @extend .ms-Callout-beak;
+
+  width: 16px;
+  height: 16px;
+}
+
+.ExampleCard-example > .ms-Callout-container > .ms-Callout {
+  position: relative;
+}
+

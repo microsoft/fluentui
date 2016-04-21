@@ -1,41 +1,122 @@
 import * as React from 'react';
 import './Callout.scss';
+import { Layer } from '../../components/index';
+import { DirectionalHint, IPositionInfo } from './interfaces';
 import { ICalloutProps } from './Callout.Props';
+import { css } from '../../utilities/css';
+import { CalloutPosition } from './CalloutPosition';
+import EventGroup from '../../utilities/eventGroup/EventGroup';
 
-export default class Callout extends React.Component<ICalloutProps, any> {
+const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
+const OFF_SCREEN_POSITION = { top: 0, left: -9999 };
+
+export interface ICalloutState {
+  positions?: any;
+  slideDirectionalClassName?: string;
+  calloutElementRect?: ClientRect;
+}
+
+export default class Callout extends React.Component<ICalloutProps, ICalloutState> {
+
+  public static defaultProps = {
+    isBeakVisible: true,
+    beakStyle: 'ms-Callout-beak',
+    beakWidth: 28,
+    gapSpace: 0,
+    directionalHint: DirectionalHint.rightCenter
+  };
+
+  private _hostElement: HTMLDivElement;
+  private _calloutElement: HTMLDivElement;
+  private _calloutPosition: CalloutPosition;
+  private _events: EventGroup;
+
+  constructor(props: ICalloutProps) {
+    super(props);
+
+    this.state = {
+      positions: null,
+      slideDirectionalClassName: null,
+      calloutElementRect: null
+    };
+
+    this._calloutPosition = new CalloutPosition();
+    this._events = new EventGroup(this);
+
+    this._updatePosition = this._updatePosition.bind(this);
+  }
+
+  public componentDidUpdate() {
+    this._updatePosition();
+  }
+
+  public componentWillUnmount() {
+    this._events.dispose();
+  }
 
   public render() {
-    let { title, subText, links } = this.props;
+    let { title, subText, links, className, targetElement, isBeakVisible, beakStyle } = this.props;
+    let { positions, slideDirectionalClassName } = this.state;
     let linkElements;
 
     if (links && links.length) {
       linkElements = (
         <div className='ms-Callout-actions'>
           { links.map(link => (
-          <a href={ link.url } className='ms-Callout-link ms-Link ms-Link--hero'>{ link.name }</a>
+            <a href={ link.url } className='ms-Callout-link ms-Link ms-Link--hero'>{ link.name }</a>
           )) }
         </div>
       );
     }
 
     return (
-      <div className='ms-Callout ms-Callout--arrowLeft'>
-        <div className='ms-Callout-main'>
-          <div className='ms-Callout-header'>
-            <p className='ms-Callout-title'>
-              { title }
-            </p>
-          </div>
-          <div className='ms-Callout-inner'>
-            <div className='ms-Callout-content'>
-              <p className='ms-Callout-subText'>
-                { subText }
-              </p>
+      <Layer onLayerMounted={ this._updatePosition }>
+        <div ref={ (host: HTMLDivElement) => this._hostElement = host } className={ css('ms-Callout-container', className) }>
+          <div
+            className= { 'ms-Callout' + ((slideDirectionalClassName) ? (` ms-u-${slideDirectionalClassName}`) : '') }
+            style={ ((positions) ? positions.callout : OFF_SCREEN_POSITION) }
+            >
+            { isBeakVisible && targetElement ? (<div className={ beakStyle }  style={ ((positions) ? positions.beak : BEAK_ORIGIN_POSITION) } />) : (null) }
+            <div className='ms-Callout-main' ref={ (callout: HTMLDivElement) => this._calloutElement = callout }>
+              <div className='ms-Callout-header'>
+                <p className='ms-Callout-title'>
+                  { title }
+                </p>
+              </div>
+              <div className='ms-Callout-inner'>
+                <div className='ms-Callout-content'>
+                  <p className='ms-Callout-subText'>
+                    { subText }
+                  </p>
+                </div>
+                { linkElements }
+              </div>
             </div>
-            { linkElements }
           </div>
         </div>
-      </div>
+      </Layer>
     );
+  }
+
+  private _updatePosition() {
+    let { positions } = this.state;
+    let hostElement: HTMLElement = this._hostElement;
+    let calloutElement: HTMLElement = this._calloutElement;
+
+    if (hostElement && calloutElement) {
+      let positionInfo: IPositionInfo = this._calloutPosition.getRelativePositions(this.props, hostElement, calloutElement);
+
+      // Set the new position only when the positions are not exists or one of the new callout positions are different
+      if ((!positions && positionInfo) ||
+        (positions && positionInfo && (positions.callout.top !== positionInfo.calloutPosition.top || positions.callout.left !== positionInfo.calloutPosition.left))) {
+        this.setState({
+          positions: {
+            callout: positionInfo.calloutPosition,
+            beak: positionInfo.beakPosition,
+          },
+          slideDirectionalClassName: positionInfo.directionalClassName
+        });
+      }
+    }
   }
 }

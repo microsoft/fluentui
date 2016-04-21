@@ -66,7 +66,7 @@ export const AppState: IAppState = {
         {
           component: CalloutPage,
           name: 'Callout',
-          status: ExampleStatus.started,
+          status: ExampleStatus.beta,
           url: '#/examples/callout'
         },
         {

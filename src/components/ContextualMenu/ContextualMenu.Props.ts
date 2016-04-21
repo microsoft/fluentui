@@ -3,7 +3,8 @@ import ContextualMenu from './ContextualMenu';
 
 export interface IContextualMenuProps extends React.Props<ContextualMenu> {
   /**
-   * Collection of menu items
+   * Collection of menu items.
+   * @default []
    */
   items: IContextualMenuItem[];
 
@@ -13,27 +14,32 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
   targetElement?: HTMLElement;
 
   /**
-   * Indicator of how the ContextualMenu should be anchored to its targetElement
+   * Indicator of how the ContextualMenu should be anchored to its targetElement.
+   * @default DirectionalHint.rightBottomEdge
    */
   directionalHint?: DirectionalHint;
 
   /**
-   * TODO: Fill in comment
+   * The gap space between the target element and the callout.
+   * @default 0
    */
   gapSpace?: number;
 
   /**
-   * TODO: Fill in comment
+   * Aria Labelled by labelElementId
+   * @default null
    */
   labelElementId?: string;
 
   /**
-   * Whether to focus on the menu when mounted
+   * Whether to focus on the menu when mounted.
+   * @default true
    */
   shouldFocusOnMount?: boolean;
 
   /**
-   * Whether the beak should be visible
+   * Whether the beak should be visible.
+   * @default false
    */
   isBeakVisible?: boolean;
 
@@ -43,12 +49,13 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
   onDismiss?: (ev?: any) => void;
 
   /**
-   * CSS class to apply to the context menu
+   * CSS class to apply to the context menu.
+   * @default null
    */
   className?: string;
 
   /**
-   * Whether this menu is a submenu of another menu or not
+   * Whether this menu is a submenu of another menu or not.
    */
   isSubMenu?: boolean;
 }

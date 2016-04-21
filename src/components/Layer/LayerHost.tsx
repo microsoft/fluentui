@@ -41,7 +41,7 @@ export default class LayerHost extends React.Component<React.Props<LayerHost>, I
     );
   }
 
-  public addLayer(layerToAdd: ILayer) {
+  public addLayer(layerToAdd: ILayer, onComplete?: () => void) {
     this.setState((state: ILayerHostState) => {
       let layers = state.layers.slice();
 
@@ -50,7 +50,7 @@ export default class LayerHost extends React.Component<React.Props<LayerHost>, I
       return {
         layers: layers
       };
-    });
+    }, onComplete);
   }
 
   public updateLayer(layerToUpdate: ILayer) {
