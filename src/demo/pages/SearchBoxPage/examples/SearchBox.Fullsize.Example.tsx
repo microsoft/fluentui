@@ -3,7 +3,7 @@ import {
   SearchBox
 } from '../../../../components/index';
 
-export default class SearchBoxBasicExample extends React.Component<any, any> {
+export default class SearchBoxFullSizeExample extends React.Component<any, any> {
   public render() {
     return (
       <SearchBox />

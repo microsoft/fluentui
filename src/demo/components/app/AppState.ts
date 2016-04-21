@@ -192,7 +192,7 @@ export const AppState: IAppState = {
         {
           component: SearchBoxPage,
           name: 'SearchBox',
-          status: ExampleStatus.placeholder,
+          status: ExampleStatus.started,
           url: '#/examples/searchbox'
         },
         {
