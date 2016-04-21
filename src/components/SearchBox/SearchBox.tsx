@@ -8,14 +8,9 @@ export interface ISearchBoxState {
   hasFocus?: boolean;
 }
 
-// const DEFAULT_WIDTH: number = 180;
-const DEFAULT_WIDTH: string = '100%';
-
-// @TODO - needs auto complete and suggestions
 export default class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState> {
   public static defaultProps: ISearchBoxProps = {
     labelText: 'Search',
-    width: DEFAULT_WIDTH
   };
 
   public refs: {
@@ -45,17 +40,16 @@ export default class SearchBox extends React.Component<ISearchBoxProps, ISearchB
   }
 
   public render() {
-    let { labelText, width } = this.props;
+    let { labelText, className } = this.props;
     let { value, hasFocus } = this.state;
 
     return (
-      <div className={ css('ms-SearchBox', {
+      <div className={ css('ms-SearchBox', className, {
           'is-active': hasFocus
         })}
-        style={ { width: width } }
       >
-        <input className='ms-SearchBox-field' onFocus={ this._onInputFocus } onBlur={ this._onInputBlur } onChange={ this._onInputChanged } value={value} ref='inputText' />
         { !hasFocus && !value ? <label className='ms-SearchBox-label'><i className='ms-SearchBox-icon ms-Icon ms-Icon--search'></i>{ labelText }</label> : null }
+        <input className='ms-SearchBox-field' onFocus={ this._onInputFocus } onBlur={ this._onInputBlur } onChange={ this._onInputChanged } value={value} ref='inputText' />
         <button className='ms-SearchBox-closeButton' onMouseDown={ this._clearInput }><i className='ms-Icon ms-Icon--x'></i></button>
       </div>
     );
