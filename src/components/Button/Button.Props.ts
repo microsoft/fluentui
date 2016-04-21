@@ -50,3 +50,5 @@ export enum ButtonType {
   command,
   icon
 }
+
+export default ButtonType;

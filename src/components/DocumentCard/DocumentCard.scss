@@ -1,0 +1,14 @@
+@import '../../common';
+
+.ms-DocumentCard {
+  background-color: #fafafa;
+  border: 1px solid $ms-color-neutralTertiaryAlt;
+  box-sizing: border-box;
+  max-width: 320px;
+  min-width: 206px;
+  user-select: none;
+}
+
+.ms-DocumentCard--actionable:hover {
+  cursor: pointer;
+}

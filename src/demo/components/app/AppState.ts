@@ -1,6 +1,7 @@
 import BreadcrumbPage from '../../pages/BreadcrumbPage/BreadcrumbPage';
 import ButtonPage from '../../pages/ButtonPage/ButtonPage';
 import CalloutPage from '../../pages/CalloutPage/CalloutPage';
+import DocumentCardPage from '../../pages/DocumentCardPage/DocumentCardPage';
 import CheckboxPage from '../../pages/CheckboxPage/CheckboxPage';
 import ChoiceGroupPage from '../../pages/ChoiceGroupPage/ChoiceGroupPage';
 import CommandBarPage from '../../pages/CommandBarPage/CommandBarPage';
@@ -92,8 +93,8 @@ export const AppState: IAppState = {
           url: '#/examples/contextmenu'
         },
         {
-          name: 'DatePicker',
           component: DatePickerPage,
+          name: 'DatePicker',
           status: ExampleStatus.started,
           url: '#/examples/datepicker'
         },
@@ -108,6 +109,12 @@ export const AppState: IAppState = {
           name: 'Dialog',
           status: ExampleStatus.beta,
           url: '#/examples/dialog'
+        },
+        {
+          component: DocumentCardPage,
+          name: 'DocumentCard',
+          status: ExampleStatus.beta,
+          url: '#/examples/documentcard'
         },
         {
           component: DropdownPage,

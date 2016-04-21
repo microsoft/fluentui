@@ -1,0 +1,31 @@
+@import '../../common';
+
+.ms-DocumentCard-actions {
+  align-items: center;
+  display: flex;
+  height: 16px;
+  padding: 8px 16px;
+}
+
+.ms-DocumentCard-actions-action {
+  @include float(left);
+  @include margin-right(12px);
+  color: $ms-color-neutralSecondary;
+  cursor: pointer;
+  flex: 0; // Keep as narrow as possible
+  font-size: 16px;
+
+  .ms-Button:hover .ms-Button-icon {
+    color: #1174c3;
+    cursor: pointer;
+  }
+}
+
+.ms-DocumentCard-actions-views {
+  @include text-align(right);
+  flex: 1; // Fill the remaining width
+
+  .ms-Icon {
+    @include margin-right(4px);
+  }
+}
