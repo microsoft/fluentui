@@ -8,7 +8,8 @@ export interface ISearchBoxState {
   hasFocus?: boolean;
 }
 
-const DEFAULT_WIDTH: number = 180;
+// const DEFAULT_WIDTH: number = 180;
+const DEFAULT_WIDTH: string = '100%';
 
 // @TODO - needs auto complete and suggestions
 export default class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState> {
@@ -50,20 +51,22 @@ export default class SearchBox extends React.Component<ISearchBoxProps, ISearchB
     return (
       <div className={ css('ms-SearchBox', {
           'is-active': hasFocus
-        }) }
+        })}
+        style={ { width: width } }
       >
-        <input className='ms-SearchBox-field' style={ { width: width + 'px' } } onFocus={ this._onInputFocus } onBlur={ this._onInputBlur } onChange={ this._onInputChanged } value={value} ref='inputText' />
+        <input className='ms-SearchBox-field' onFocus={ this._onInputFocus } onBlur={ this._onInputBlur } onChange={ this._onInputChanged } value={value} ref='inputText' />
         { !hasFocus && !value ? <label className='ms-SearchBox-label'><i className='ms-SearchBox-icon ms-Icon ms-Icon--search'></i>{ labelText }</label> : null }
-        <button className='ms-SearchBox-closeButton' onClick={ this._clearInput }><i className='ms-Icon ms-Icon--x'></i></button>
+        <button className='ms-SearchBox-closeButton' onMouseDown={ this._clearInput }><i className='ms-Icon ms-Icon--x'></i></button>
       </div>
     );
   }
 
-  private _clearInput() {
-    console.log('clear input!');
+  private _clearInput(ev?: any) {
     this.setState({
       value: undefined
     });
+    ev.stopPropagation();
+    ev.preventDefault();
   }
 
    private _onInputFocus() {

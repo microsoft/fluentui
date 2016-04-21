@@ -2,6 +2,10 @@
 @import "~office-ui-fabric/src/components/Label/Label";
 @import "~office-ui-fabric/src/components/SearchBox/SearchBox";
 
+.ms-SearchBox-field {
+  width: 100%
+}
+
 // Fabric was using a mouseover and mouseout events to toggle the ".hover" class
 // [thocon] It's not clear to me why that is, but it seems just applying the styles
 // to a :hover state seems to work just fine

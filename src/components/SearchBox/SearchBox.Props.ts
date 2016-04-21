@@ -20,8 +20,8 @@ export interface ISearchBoxProps extends React.Props<SearchBox> {
   value?: string;
 
   /**
-  * The width of the SearchBox, in pixels.
-  * @default 180
+  * The width of the SearchBox. Could be pixels or percentage.
+  * @default 100%
   */
-  width?: number;
+  width?: string;
 }
