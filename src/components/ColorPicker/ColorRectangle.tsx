@@ -12,7 +12,7 @@ let hsv2hex = require('color-functions/lib/hsv2hex');
 
 export interface IColorRectangleProps {
   color: IColor;
-  size?: number;
+  minSize?: number;
 
   onSVChanged? (s: number, v: number): void;
 }
@@ -26,7 +26,7 @@ export interface IColorPickerState {
 
 export default class ColorPicker extends React.Component<IColorRectangleProps, IColorPickerState> {
   public static defaultProps = {
-    size: 220
+    minSize: 220
   };
 
   public refs: {
@@ -68,11 +68,11 @@ export default class ColorPicker extends React.Component<IColorRectangleProps, I
   }
 
   public render() {
-    let { size } = this.props;
+    let { minSize } = this.props;
     let { color, fullColorString } = this.state;
 
     return (
-      <div ref='root' className='ms-ColorPicker-colorRect' style={ { width: size, height: size, backgroundColor: fullColorString } } onMouseDown={ this._onMouseDown }>
+      <div ref='root' className='ms-ColorPicker-colorRect' style={ { 'min-width': minSize, 'min-height': minSize, backgroundColor: fullColorString } } onMouseDown={ this._onMouseDown }>
         <div className='ms-ColorPicker-light' />
         <div className='ms-ColorPicker-dark' />
         <div className='ms-ColorPicker-thumb' style={ { left: color.s + '%', top: (MAX_COLOR_VALUE - color.v) + '%', backgroundColor: color.str } }/>

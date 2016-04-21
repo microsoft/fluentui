@@ -1,6 +1,7 @@
 import BreadcrumbPage from '../../pages/BreadcrumbPage/BreadcrumbPage';
 import ButtonPage from '../../pages/ButtonPage/ButtonPage';
 import CalloutPage from '../../pages/CalloutPage/CalloutPage';
+import ColorPickerPage from '../../pages/ColorPickerPage/ColorPickerPage';
 import DocumentCardPage from '../../pages/DocumentCardPage/DocumentCardPage';
 import CheckboxPage from '../../pages/CheckboxPage/CheckboxPage';
 import ChoiceGroupPage from '../../pages/ChoiceGroupPage/ChoiceGroupPage';
@@ -129,12 +130,6 @@ export const AppState: IAppState = {
           url: '#/examples/label'
         },
         {
-          component: LayerPage,
-          name: 'Layer',
-          status: ExampleStatus.started,
-          url: '#/examples/layer'
-        },
-        {
           component: LinkPage,
           name: 'Link',
           status: ExampleStatus.started,
@@ -145,12 +140,6 @@ export const AppState: IAppState = {
           name: 'List',
           status: ExampleStatus.started,
           url: '#/examples/list'
-        },
-        {
-          component: NavPage,
-          name: 'Nav',
-          status: ExampleStatus.started,
-          url: '#/examples/Nav'
         },
         {
           component: OrgChartPage,
@@ -226,6 +215,34 @@ export const AppState: IAppState = {
         }
       ],
       name: 'Basic components'
+    },
+    {
+      links: [
+        {
+          component: ColorPickerPage,
+          name: 'ColorPicker',
+          status: ExampleStatus.started,
+          url: '#/examples/colorpicker'
+        },
+        {
+          name: 'Image',
+          status: ExampleStatus.placeholder,
+          url: '#/examples/image'
+        },
+        {
+          component: LayerPage,
+          name: 'Layer',
+          status: ExampleStatus.started,
+          url: '#/examples/layer'
+        },
+        {
+          component: NavPage,
+          name: 'Nav',
+          status: ExampleStatus.started,
+          url: '#/examples/Nav'
+        },
+      ],
+      name: 'Extended components'
     },
     {
       links: [

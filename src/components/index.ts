@@ -4,6 +4,8 @@ export { default as Button } from './Button/index';
 export * from './Button/index';
 export { default as Callout } from './Callout/index';
 export * from './Callout/index';
+export { default as ColorPicker } from './ColorPicker/index';
+export * from './ColorPicker/index';
 export { default as DocumentCard } from './DocumentCard/index';
 export * from './DocumentCard/index';
 export { default as Checkbox } from './Checkbox/index';

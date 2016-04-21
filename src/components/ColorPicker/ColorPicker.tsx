@@ -11,11 +11,7 @@ import {
   updateSV
 } from './colors';
 import './ColorPicker.scss';
-
-export interface IColorPickerProps {
-  color: string;
-  onColorChanged?: (color: string) => void;
-}
+import { IColorPickerProps } from './ColorPicker.Props';
 
 export interface IColorPickerState {
   isOpen: boolean;
@@ -44,22 +40,15 @@ export default class ColorPicker extends React.Component<IColorPickerProps, any>
     this._onAChanged = this._onAChanged.bind(this);
 
     this.state = {
-      isOpen: false,
       color: getColorFromString(props.color)
     };
   }
 
   public render() {
-    let { isOpen, color } = this.state;
+    let { color } = this.state;
 
     return (
-      <div className='ms-ColorPicker'>
-        <button className='ms-ColorPicker-button' onClick={ this._onPickerClick }>
-          <span className='ms-ColorPicker-swatch' style={ { backgroundColor: color.str } }  />
-          <span className='ms-ColorPicker-buttonText'>{ color.str }</span>
-        </button>
-        { isOpen ? (
-        <div className='ms-ColorPicker-panel ms-u-slideDownIn10'>
+        <div className='ms-ColorPicker-panel'>
           <ColorRectangle color={ color } onSVChanged={ this._onSVChanged }/>
           <ColorSlider
             className='is-hue'
@@ -97,8 +86,6 @@ export default class ColorPicker extends React.Component<IColorPickerProps, any>
             </tbody>
           </table>
         </div>
-        ) : (null) }
-      </div>
     );
   }
 
