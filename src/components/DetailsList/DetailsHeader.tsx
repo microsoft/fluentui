@@ -138,6 +138,10 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
                     <i className='ms-Icon ms-Icon--filter' />
                   ) }
 
+                  { column.iconClassName && (
+                    <i className= {'ms-Icon ' + column.iconClassName} />
+                  ) }
+
                   { column.name }
 
                   { column.columnActionsMode === ColumnActionsMode.hasDropdown && (

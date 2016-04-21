@@ -35,7 +35,7 @@ export default class DetailsRowFields extends React.Component<IDetailsRowFieldsP
     let cellContent;
 
     try {
-      cellContent = column.getCellContent ? column.getCellContent(item, index) : (String(item[column.fieldName]) || '');
+      cellContent = column.getCellContent ? column.getCellContent(item, index) : (String(item[column.fieldName] || ''));
     } catch (e) {
       cellContent = `{ Exception: ${e.message}}`;
     }

@@ -7,6 +7,7 @@ export interface IColumn {
   minWidth: number;
   maxWidth?: number;
   columnActionsMode?: ColumnActionsMode; /** if undefined, then behavior defaults to ColumnActionsMode.clickable */
+  iconClassName?: string; /** CSS class name of an icon to show in addition to the text */
   isCollapsable?: boolean;
   isSortable?: boolean;
   isSorted?: boolean;
