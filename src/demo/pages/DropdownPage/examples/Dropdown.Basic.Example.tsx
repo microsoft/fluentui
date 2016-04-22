@@ -16,6 +16,9 @@ export default class DropdownBasicExample extends React.Component<any, any> {
               { key: 'B', text: 'Option b', isSelected: true },
               { key: 'C', text: 'Option c' },
               { key: 'D', text: 'Option d' },
+              { key: 'E', text: 'Option e' },
+              { key: 'F', text: 'Option f' },
+              { key: 'G', text: 'Option g' },
             ]
           }
         />
@@ -28,6 +31,9 @@ export default class DropdownBasicExample extends React.Component<any, any> {
               { key: 'B', text: 'Option b', isSelected: true },
               { key: 'C', text: 'Option c' },
               { key: 'D', text: 'Option d' },
+              { key: 'E', text: 'Option e' },
+              { key: 'F', text: 'Option f' },
+              { key: 'G', text: 'Option g' },
             ]
           }
           isDisabled={ true }

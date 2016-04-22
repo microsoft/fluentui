@@ -7,6 +7,11 @@
 
 .ms-Dropdown-items {
   box-shadow: 0 0px 15px -5px rgba(0, 0, 0, 0.4);
+  border: 1px solid $ms-color-neutralLight;
+
+  &:before {
+    border: none;
+  }
 }
 
 .ms-Dropdown-item.is-selected {
