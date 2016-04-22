@@ -31,4 +31,9 @@ export interface IBreadcrumb {
    * Callback issued when the breadcrumb is selected.
    */
   onClick?: (key?: any) => void;
+
+  /**
+   * Url to navigate to when this breadcrumb is clicked.
+   */
+  href?: string;
 }

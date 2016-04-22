@@ -12,10 +12,13 @@ export interface IBreadcrumbState {
   overflowAnchor?: HTMLElement;
   renderedItems?: IBreadcrumb[];
   renderedOverflowItems?: IBreadcrumb[];
+  internalId?: string;
 }
 
 const OVERFLOW_KEY = 'overflow';
 const OVERFLOW_WIDTH = 44;
+
+let _instance = 0;
 
 export default class Breadcrumb extends React.Component<IBreadcrumbProps, IBreadcrumbState> {
   public refs: {
@@ -57,7 +60,8 @@ export default class Breadcrumb extends React.Component<IBreadcrumbProps, IBread
   }
 
   public render() {
-    let { isOverflowOpen, overflowAnchor, renderedItems, renderedOverflowItems } = this.state;
+    let { isOverflowOpen, overflowAnchor, renderedItems, renderedOverflowItems, internalId } = this.state;
+    let overflowMenuId = internalId + '-overflow';
 
     return (
       <div className='ms-Breadcrumb' ref='renderingArea'>
@@ -65,14 +69,23 @@ export default class Breadcrumb extends React.Component<IBreadcrumbProps, IBread
           <ul className='ms-Breadcrumb-list'>
           { renderedOverflowItems && renderedOverflowItems.length ? (
             <li className='ms-Breadcrumb-overflow' key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
-              <a className='ms-Breadcrumb-overflowButton ms-Icon ms-Icon--ellipsis' onClick={ this._onOverflowClicked.bind(this) } />
+              <a className='ms-Breadcrumb-overflowButton ms-Icon ms-Icon--ellipsis'
+                  onClick={ this._onOverflowClicked.bind(this) }
+                  role='button'
+                  aria-haspopup='true'
+                  aria-owns={ isOverflowOpen ? overflowMenuId : null }/>
               <i className={ css('ms-Breadcrumb-chevron ms-Icon', getRTL() ? 'ms-Icon--chevronLeft' : 'ms-Icon--chevronRight') }></i>
             </li>
           ) : (null) }
           { renderedItems.map(
                 (item, index) => (
              <li className='ms-Breadcrumb-listItem' key={ item.key || String(index) } ref={ item.key || String(index) } >
-              <a className='ms-Breadcrumb-itemLink' onClick={ this._onBreadcrumbClicked.bind(this, item) }>{ item.text }</a>
+              <a className='ms-Breadcrumb-itemLink'
+                  onClick={ item.onClick ? this._onBreadcrumbClicked.bind(this, item) : null }
+                  href={ item.href }
+                  role={ item.onClick ? 'button' : 'link' }>
+                  { item.text }
+                  </a>
               <i className={ css('ms-Breadcrumb-chevron ms-Icon', getRTL() ? 'ms-Icon--chevronLeft' : 'ms-Icon--chevronRight') }></i>
             </li>
           )) }
@@ -82,8 +95,14 @@ export default class Breadcrumb extends React.Component<IBreadcrumbProps, IBread
           <ContextualMenu
             targetElement={ overflowAnchor }
             items={ renderedOverflowItems.map(
-                (item, index) => ({'name': item.text, 'key': item.key, 'onClick': this._onBreadcrumbClicked.bind(this, item)})
+                (item, index) => ({
+                  name: item.text,
+                  key: item.key,
+                  onClick: this._onBreadcrumbClicked.bind(this, item),
+                  href: item.href
+                })
               ) }
+            id={ overflowMenuId }
             directionalHint={ DirectionalHint.bottomLeftEdge }
             onDismiss={ this._onOverflowDismissed.bind(this) } />
         ) : (null) }
@@ -160,7 +179,7 @@ export default class Breadcrumb extends React.Component<IBreadcrumbProps, IBread
       isOverflowOpen: this.state.isOverflowOpen,
       overflowAnchor: this.state.overflowAnchor,
       renderedItems: renderedItems,
-      renderedOverflowItems: renderedOverflowItems.reverse(),
+      renderedOverflowItems: renderedOverflowItems,
     });
   }
 
@@ -170,6 +189,7 @@ export default class Breadcrumb extends React.Component<IBreadcrumbProps, IBread
       overflowAnchor: null,
       renderedItems: nextProps.breadcrumbs || [],
       renderedOverflowItems: null,
+      internalId: 'Breadcrumb-' + _instance++
     };
   }
 

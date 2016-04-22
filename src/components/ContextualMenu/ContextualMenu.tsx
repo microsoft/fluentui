@@ -31,6 +31,7 @@ export interface IContextualMenuState {
   submenuProps?: IContextualMenuProps;
   positions?: any;
   slideDirectionalClassName?: string;
+  subMenuId?: string;
 }
 
 enum ContextualMenuType {
@@ -80,6 +81,8 @@ interface IParsedDirectionalHint {
   verticalAlignmentHint: VerticalAlignmentHint;
 };
 
+let _instance = 0;
+
 export default class ContextualMenu extends React.Component<IContextualMenuProps, IContextualMenuState> {
   // The default ContextualMenu properities have no items and beak, the default submenu direction is right and top.
   public static defaultProps = {
@@ -108,7 +111,8 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     super(props);
 
     this.state = {
-      contextualMenuItems: null
+      contextualMenuItems: null,
+      subMenuId: 'ContextualMenu-SubMenu-' + _instance++
     };
 
     this._isFocusingPreviousElement = false;
@@ -179,14 +183,14 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   }
 
   public render() {
-    let { className, items, isBeakVisible, labelElementId, targetElement } = this.props;
-    let { expandedMenuItemKey, submenuProps, positions, slideDirectionalClassName } = this.state;
+    let { className, items, isBeakVisible, labelElementId, targetElement, id } = this.props;
+    let { submenuProps, positions, slideDirectionalClassName } = this.state;
 
     let hasIcons = !!(items && items.some(item => !!item.icon));
     let hasCheckmarks = !!(items && items.some(item => !!item.canCheck));
 
     return (
-      <div ref='host' className={ css('ms-ContextualMenu-container', className) }>
+      <div ref='host' id={ id } className={ css('ms-ContextualMenu-container', className) }>
         { (items && items.length) ? (
           <FocusZone
             className={ 'ms-ContextualMenu is-open' + ((slideDirectionalClassName) ? (` ms-u-${slideDirectionalClassName}`) : '') }
@@ -203,34 +207,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
                   <li key={ item.key || index } className='ms-ContextualMenu-item ms-ContextualMenu-item--divider'></li>
                 ) : (
                     <li key={ item.key || index } className='ms-ContextualMenu-item' ref={ item.key }>
-                      <button
-                        className={ css('ms-ContextualMenu-link', { 'is-expanded': (expandedMenuItemKey === item.key) }) }
-                        onClick={ this._onItemClick.bind(this, item) }
-                        onKeyDown={ item.items && item.items.length ? this._onItemKeyDown.bind(this, item) : null }
-                        onMouseEnter={ item.items && item.items.length ? this._onMouseEnter.bind(this, item) : null }
-                        onMouseLeave={ this._onMouseLeave }
-                        disabled={ item.isDisabled }
-                        data-command-key={ index }
-                        role='menuitem'
-                        >
-                        { (hasCheckmarks) ? (
-                          <span
-                            className={ 'ms-ContextualMenu-checkmark' +
-                              ((item.isChecked) ? ' ms-Icon ms-Icon--check' : ' not-selected') }
-                            onClick={ this._onItemClick.bind(this, item) }
-                            >
-                          </span>
-                        ) : (null) }
-                        { (hasIcons) ? (
-                          <span className={ 'ms-ContextualMenu-icon' +
-                            ((item.icon) ? ` ms-Icon ms-Icon--${item.icon}` : ' no-icon') }>
-                          </span>
-                        ) : (null) }
-                        <span className='ms-ContextualMenu-itemText ms-font-m ms-font-weight-regular'>{ item.name }</span>
-                        { (item.items && item.items.length) ? (
-                          <i className={ css('ms-ContextualMenu-chevronRight ms-Icon', getRTL() ? 'ms-Icon--chevronLeft' : 'ms-Icon--chevronRight') } />
-                        ) : (null) }
-                      </button>
+                      { this._renderMenuItem(item, index, hasCheckmarks, hasIcons) }
                     </li>
                   )
               )) }
@@ -242,6 +219,44 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
         ) : (null) }
       </div>
     );
+  }
+
+  private _renderMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
+    let { expandedMenuItemKey, subMenuId } = this.state;
+
+    return React.createElement(
+            item.href ? 'a' : 'button',
+             { className: css('ms-ContextualMenu-link', { 'is-expanded': (expandedMenuItemKey === item.key) }),
+               onClick: item.onClick || (item.items && item.items.length) ? this._onItemClick.bind(this, item) : null,
+               onKeyDown: item.items && item.items.length ? this._onItemKeyDown.bind(this, item) : null,
+               onMouseEnter: item.items && item.items.length ? this._onMouseEnter.bind(this, item) : null,
+               onMouseLeave: this._onMouseLeave,
+               disabled: item.isDisabled,
+               dataCommandKey: index,
+               role: 'menuitem',
+               href: item.href,
+               'aria-haspopup': item.items && item.items.length ? true : null,
+               'aria-owns': item.key === expandedMenuItemKey ? subMenuId : null },
+             this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons));
+  }
+
+  private _renderMenuItemChildren(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
+    return <div>
+            {(hasCheckmarks) ? (
+               <span
+                 className={
+                   css('ms-ContextualMenu-checkmark', {'ms-Icon ms-Icon--check': item.isChecked, 'not-selected': !item.isChecked})
+                  }
+                 onClick={ this._onItemClick.bind(this, item) } />
+             ) : (null) }
+             {(hasIcons) ? (
+               <span className={ 'ms-ContextualMenu-icon' + ((item.icon) ? ` ms-Icon ms-Icon--${item.icon}` : ' no-icon') }/>
+             ) : (null)}
+             <span className='ms-ContextualMenu-itemText ms-font-m ms-font-weight-regular'>{ item.name }</span>
+             {(item.items && item.items.length) ? (
+               <i className={ css('ms-ContextualMenu-chevronRight ms-Icon', getRTL() ? 'ms-Icon--chevronLeft' : 'ms-Icon--chevronRight') } />
+             ) : (null)}
+           </div>;
   }
 
   private _onKeyDown(ev: React.KeyboardEvent) {
@@ -303,6 +318,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
         targetElement: target,
         onDismiss: this._onSubMenuDismiss,
         isSubMenu: true,
+        id: this.state.subMenuId
       }
     });
   }

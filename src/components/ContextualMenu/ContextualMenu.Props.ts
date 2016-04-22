@@ -58,6 +58,12 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
    * Whether this menu is a submenu of another menu or not.
    */
   isSubMenu?: boolean;
+
+  /**
+   * DOM id to tag the ContextualMenu with, for reference.
+   * Should be used for 'aria-owns' and other such uses, rather than direct reference for programmatic purposes.
+   */
+  id?: string;
 }
 
 export enum DirectionalHint {
@@ -125,6 +131,11 @@ export interface IContextualMenuItem {
    * Callback issued when the menu item is invoked
    */
   onClick?: (item?: IContextualMenuItem, ev?: React.MouseEvent) => void;
+
+  /**
+   * An optional URL to navigate to upon selection
+   */
+  href?: string;
 
   /**
    * A collection of submenu items

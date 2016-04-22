@@ -91,6 +91,15 @@ export default class ContextualMenuBasicExample extends React.Component<any, any
               icon: 'music',
               name: 'Music',
             },
+            {
+              key: 'divider_3',
+              name: '-',
+            },
+            {
+              key: 'Bing',
+              name: 'Go to Bing',
+              href: 'http://www.bing.com'
+            },
           ]
         }
       />
