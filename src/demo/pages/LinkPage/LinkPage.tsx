@@ -4,9 +4,8 @@ import {
 } from '../../../components/index';
 import {
   ExampleCard,
-  PropertiesTable
+  PropertiesTableSet
 } from '../../components/index';
-import LinkProps from './LinkProps';
 
 import LinkBasicExample from './examples/Link.Basic.Example';
 let LinkBasicExampleCode = require('./examples/Link.Basic.Example.tsx');
@@ -21,7 +20,7 @@ export default class LinkPage extends React.Component<any, any> {
         <ExampleCard title='Link' code={ LinkBasicExampleCode }>
           <LinkBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ LinkProps } />
+        <PropertiesTableSet componentName='Link' />
       </div>
     );
   }
