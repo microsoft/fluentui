@@ -4,9 +4,8 @@ import {
 } from '../../../components/index';
 import {
   ExampleCard,
-  PropertiesTable
+  PropertiesTableSet
 } from '../../components/index';
-import DatePickerProps from './DatePickerProps';
 
 import DatePickerBasicExample from './examples/DatePicker.Basic.Example';
 let DatePickerBasicExampleCode = require('./examples/DatePicker.Basic.Example.tsx');
@@ -21,7 +20,7 @@ export default class DatePickerExample extends React.Component<any, any> {
         <ExampleCard title='DatePicker' code={ DatePickerBasicExampleCode }>
           <DatePickerBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ DatePickerProps } />
+        <PropertiesTableSet componentName='DatePicker' />
       </div>
     );
   }

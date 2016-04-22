@@ -47,13 +47,14 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
   }
 
   public render() {
-    let { disabled, required, multiline, placeholder, underlined, label, description, iconClass, className } = this.props;
+    let { disabled, required, multiline, placeholder, underlined, label, description, iconClass, className, readOnly } = this.props;
     let { value } = this.state;
     let { id } = this.state;
     let { descriptionId } = this.state;
 
     return (
       <div
+        { ...this.props }
         className={
         css('ms-TextField', className, {
           'is-required': required,
@@ -65,7 +66,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
         { label ? <Label htmlFor={ id }>{ label }</Label> : null }
         { iconClass ? <i className={ iconClass }></i> : null }
         { multiline ?
-          <textarea id={ id } className='ms-TextField-field' ref='multilineText' onChange={ this._onMultilineTextChanged }>{ value }</textarea>
+          <textarea id={ id } className='ms-TextField-field' ref='multilineText' onChange={ this._onMultilineTextChanged } readOnly={ readOnly }>{ value }</textarea>
         :
           <input id={ id }
                  placeholder={ placeholder }
@@ -73,7 +74,8 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
                  className='ms-TextField-field'
                  value={ value }
                  onChange={ this._onSinglelineTextChanged }
-                 aria-describedby={ descriptionId }/> }
+                 aria-describedby={ descriptionId }
+                 readOnly={ readOnly }/> }
         { description ? <span className='ms-TextField-description'>{ description }</span> : null}
         { this.props.children }
         { this.props.ariaLabel ? <span id={ descriptionId } className='ms-TextField-hidden'>{ this.props.ariaLabel }</span> : null}

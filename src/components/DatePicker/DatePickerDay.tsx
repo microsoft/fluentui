@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { css } from '../../utilities/css';
+import { DayOfWeek, IDatePickerStrings } from './DatePicker.Props';
+
+const DAYS_IN_WEEK = 7;
 
 interface IDayInfo {
   key: string;
@@ -10,84 +13,53 @@ interface IDayInfo {
   isSelected: boolean;
 }
 
-function getWeeks(selectedDate: Date): IDayInfo[][] {
-  let date = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1);
-  let today = new Date();
-  let weeks = [];
-  let week;
-
-  // Cycle the date backwards to get to Sunday (the first day of the week.)
-  while (date.getDay() > 0) {
-    date.setDate(date.getDate() - 1);
-  }
-
-  for (let weekIndex = 0; weekIndex < 6; weekIndex++) {
-    week = [];
-
-    // a flag to indicate whether all days of the week are in the month
-    let isAllDaysOfWeekOutOfMonth = true;
-
-    for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
-      let dayInfo = {
-        key: date.toString(),
-        date: date.getDate(),
-        originalDate: new Date(date.toString()),
-        isInMonth: date.getMonth() === selectedDate.getMonth(),
-        isToday: compareDates(today, date),
-        isSelected: compareDates(selectedDate, date)
-      };
-
-      week.push(dayInfo);
-
-      if (dayInfo.isInMonth) {
-        isAllDaysOfWeekOutOfMonth = false;
-      }
-
-      date.setDate(date.getDate() + 1);
-    }
-
-    if (!isAllDaysOfWeekOutOfMonth) {
-      weeks.push(week);
-    }
-  }
-
-  return weeks;
-}
-
-function compareDates(date1: Date, date2: Date) {
-  return (date1.getFullYear() === date2.getFullYear()
-    && date1.getMonth() === date2.getMonth()
-    && date1.getDate() === date2.getDate());
-}
-
 export interface IDatePickerDayProps {
-  strings: any;
+  strings: IDatePickerStrings;
   selectedDate: Date;
   onSelectNextMonth: () => void;
   onSelectPrevMonth: () => void;
   onSelectDate: (date: Date) => void;
+  firstDayOfWeek: DayOfWeek;
 }
 
-export default class DatePickerDay extends React.Component<IDatePickerDayProps, any> {
+export interface IDatePickerDayState {
+  activeDescendantId?: string;
+}
+
+let _instance = 0;
+
+export default class DatePickerDay extends React.Component<IDatePickerDayProps, IDatePickerDayState> {
+  public constructor() {
+    super();
+
+    this.state = {
+      activeDescendantId: 'DatePickerDay-active-' + _instance
+    };
+  }
+
   public render() {
-    let weeks = getWeeks(this.props.selectedDate);
+    let { activeDescendantId } = this.state;
+    let { firstDayOfWeek, strings, selectedDate, onSelectNextMonth, onSelectPrevMonth, onSelectDate } = this.props;
+    let weeks = this._getWeeks(selectedDate);
 
     return (
       <div className='ms-DatePicker-dayPicker'>
         <div className='ms-DatePicker-header'>
-          <div className='ms-DatePicker-month'>{this.props.strings.months[this.props.selectedDate.getMonth()]}</div>
-          <div className='ms-DatePicker-year'>{this.props.selectedDate.getFullYear() }</div>
+          <div className='ms-DatePicker-month'>{strings.months[selectedDate.getMonth()]}</div>
+          <div className='ms-DatePicker-year'>{selectedDate.getFullYear() }</div>
         </div>
         <div className='ms-DatePicker-monthComponents'>
-          <span className='ms-DatePicker-nextMonth js-nextMonth' onClick={() => this.props.onSelectNextMonth() }><i className='ms-Icon ms-Icon--chevronRight'></i></span>
-          <span className='ms-DatePicker-prevMonth js-prevMonth' onClick={() => this.props.onSelectPrevMonth() }><i className='ms-Icon ms-Icon--chevronLeft'></i></span>
+          <span className='ms-DatePicker-nextMonth js-nextMonth' onClick={ onSelectNextMonth }><i className='ms-Icon ms-Icon--chevronRight'></i></span>
+          <span className='ms-DatePicker-prevMonth js-prevMonth' onClick={ onSelectPrevMonth }><i className='ms-Icon ms-Icon--chevronLeft'></i></span>
           <div className='ms-DatePicker-headerToggleView js-showMonthPicker'></div>
         </div>
-        <table className='ms-DatePicker-table' id='P141847190_table' role='grid' aria-components='P141847190'
-          aria-readonly='true'>
+        <table className='ms-DatePicker-table' role='grid' aria-readonly='true' aria-multiselectable='false' aria-activedescendant={ activeDescendantId }>
           <thead>
             <tr>
-              {this.props.strings.days.map((day) => <th className='ms-DatePicker-weekday' scope='col'>{day}</th>) }
+              { strings.shortDays.map((val, index) =>
+                <th className='ms-DatePicker-weekday' scope='col' key={ index } title={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }>
+                  { strings.shortDays[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
+                </th>) }
             </tr>
           </thead>
           <tbody>
@@ -102,9 +74,11 @@ export default class DatePickerDay extends React.Component<IDatePickerDayProps, 
                         'ms-DatePicker-day--today': day.isToday,
                         'ms-DatePicker-day--highlighted': day.isSelected
                       }) }
-                      role='gridcell'
-                      onClick={() => this.props.onSelectDate(day.originalDate) }>
-                      {day.date}
+                        role='gridcell'
+                        onClick={ () => onSelectDate(day.originalDate) }
+                        aria-selected={ day.isSelected }
+                        id={ day.isSelected ? activeDescendantId : null } >
+                          {day.date}
                     </div>
                   </td>
                 ) }
@@ -114,5 +88,58 @@ export default class DatePickerDay extends React.Component<IDatePickerDayProps, 
         </table>
       </div>
     );
+  }
+
+  private _getWeeks(selectedDate: Date): IDayInfo[][] {
+    let { firstDayOfWeek } = this.props;
+    let date = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1);
+    let today = new Date();
+    let weeks = [];
+    let week;
+
+    // Cycle the date backwards to get to Sunday (the first day of the week.)
+    while (date.getDay() !== firstDayOfWeek) {
+      date.setDate(date.getDate() - 1);
+    }
+
+    // a flag to indicate whether all days of the week are in the month
+    let isAllDaysOfWeekOutOfMonth = false;
+
+    for (let weekIndex = 0; !isAllDaysOfWeekOutOfMonth; weekIndex++) {
+      week = [];
+
+      isAllDaysOfWeekOutOfMonth = true;
+
+      for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
+        let dayInfo = {
+          key: date.toString(),
+          date: date.getDate(),
+          originalDate: new Date(date.toString()),
+          isInMonth: date.getMonth() === selectedDate.getMonth(),
+          isToday: this.compareDates(today, date),
+          isSelected: this.compareDates(selectedDate, date)
+        };
+
+        week.push(dayInfo);
+
+        if (dayInfo.isInMonth) {
+          isAllDaysOfWeekOutOfMonth = false;
+        }
+
+        date.setDate(date.getDate() + 1);
+      }
+
+      if (!isAllDaysOfWeekOutOfMonth) {
+        weeks.push(week);
+      }
+    }
+
+    return weeks;
+  }
+
+  private compareDates(date1: Date, date2: Date) {
+    return (date1.getFullYear() === date2.getFullYear()
+      && date1.getMonth() === date2.getMonth()
+      && date1.getDate() === date2.getDate());
   }
 }

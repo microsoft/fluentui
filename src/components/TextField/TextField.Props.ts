@@ -72,4 +72,9 @@ export interface ITextFieldProps extends React.DOMAttributes {
    * Aria Label for textfield, if any.
    */
   ariaLabel?: string;
+
+  /**
+   * Whether the TextField should be read-only or not.
+   */
+  readOnly?: boolean;
 }
