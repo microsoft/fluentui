@@ -39,12 +39,15 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
   box-sizing: border-box;
   padding: 0 8px;
   vertical-align: top;
-  white-space: normal;
-  word-break: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   @include margin-right(16px);
 
-  &.is-clipped {
-    overflow: hidden;
+  &.is-multiline {
+    white-space: normal;
+    word-break: break-word;
+    text-overflow: clip;
   }
 }
 

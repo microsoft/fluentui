@@ -439,7 +439,8 @@ export function buildColumns(
   onColumnClick?: (column: IColumn, ev: React.MouseEvent) => any,
   sortedColumnKey?: string,
   isSortedDescending?: boolean,
-  groupedColumnKey?: string) {
+  groupedColumnKey?: string,
+  isMultiline?: boolean) {
   let columns: IColumn[] = [];
 
   if (items && items.length) {
@@ -455,7 +456,7 @@ export function buildColumns(
           minWidth: 220,
           maxWidth: 300,
           isCollapsable: !!columns.length,
-          isClipped: true,
+          isMultiline: (isMultiline === undefined) ? false : isMultiline,
           isSortable: sortedColumnKey !== undefined,
           isSorted: sortedColumnKey === propName,
           isSortedDescending: !!isSortedDescending,

@@ -408,6 +408,9 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
 
     columns.forEach(column => {
       column.isGroupable = isGroupable(column.key);
+      if (column.key === 'description') {
+        column.isMultiline = true;
+      }
     });
 
     return columns;

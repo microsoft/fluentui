@@ -21,7 +21,7 @@ export default class DetailsRowFields extends React.Component<IDetailsRowFieldsP
       <div className='ms-DetailsRow-fields'>
         { columns.map((column, columnIndex) => (
           <div key={ columnIndex } className={ css('ms-DetailsRow-cell', {
-            'is-clipped': column.isClipped
+            'is-multiline': column.isMultiline
           }) } style={ { width: column.calculatedWidth } }>
             { this._getCellContent(column, itemIndex) }
           </div>

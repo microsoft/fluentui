@@ -14,7 +14,7 @@ export function createListItems(count: number, startIndex = 0): any {
 
   return Array.apply(null, Array(count)).map((item, index) => ({
     key: 'item-' + (index + startIndex),
-    name: lorem(2),
+    name: lorem(4),
     description: lorem(10 + Math.round(Math.random() * 50)),
     color: _pickRandom(DATA.color),
     shape: _pickRandom(DATA.shape),

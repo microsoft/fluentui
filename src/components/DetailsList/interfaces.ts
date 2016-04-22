@@ -13,7 +13,7 @@ export interface IColumn {
   isSorted?: boolean;
   isResizable?: boolean;
   isSortedDescending?: boolean;
-  isClipped?: boolean;
+  isMultiline?: boolean;
   getCellContent?: (item: any, index?: number) => any;
   calculatedWidth?: number;
   isFilterable?: boolean;
@@ -29,7 +29,7 @@ export interface IColumn {
 
 /**
  * Enum to describe how a particular column header behaves.... This enum is used to
- * to specify the property IColumn:columnActionsMode. 
+ * to specify the property IColumn:columnActionsMode.
  * If IColumn:columnActionsMode is undefined, then it's equivalent to ColumnActionsMode.clickable
  */
 export enum ColumnActionsMode {
