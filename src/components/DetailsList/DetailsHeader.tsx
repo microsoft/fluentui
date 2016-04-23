@@ -91,7 +91,7 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
         }) }
         onMouseMove={ this._onMove.bind(this) }
         onMouseUp={ this._onUp.bind(this) }
-        ref='root'>
+        ref='root' data-automationid='DetailsHeader'>
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           { (selectionMode === SelectionMode.multiple) ? (
             <button
@@ -121,6 +121,7 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
                   }) }
                   style={ { width: column.calculatedWidth } }
                   onClick={ this._onColumnClick.bind(this, column) }
+                  data-automationid='ColumnsHeaderColumn'
                   >
 
                   { column.isGrouped && (

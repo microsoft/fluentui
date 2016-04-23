@@ -15,19 +15,21 @@ export default class DetailsRowFields extends React.Component<IDetailsRowFieldsP
   }
 
   public render() {
-    let { columns, itemIndex } = this.props;
+      let { columns, itemIndex } = this.props;
 
-    return (
-      <div className='ms-DetailsRow-fields'>
+      return (
+          <div className='ms-DetailsRow-fields' data-automationid='DetailsRowFields'>
         { columns.map((column, columnIndex) => (
-          <div key={ columnIndex } className={ css('ms-DetailsRow-cell', {
-            'is-multiline': column.isMultiline
-          }) } style={ { width: column.calculatedWidth } }>
+            <div key={ columnIndex } className={ css('ms-DetailsRow-cell', {
+                'is-multiline': column.isMultiline
+            }) } style={ { width: column.calculatedWidth } }
+                data-automationid='DetailsRowCell'
+                data-automation-key={ column.key }>
             { this._getCellContent(column, itemIndex) }
-          </div>
+                </div>
         )) }
-      </div>
-    );
+              </div>
+      );
   }
 
   private _getCellContent(column: IColumn, index: number): any {

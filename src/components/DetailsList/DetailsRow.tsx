@@ -169,6 +169,7 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
         data-selection-index={ itemIndex }
         data-is-draggable={ isDraggable }
         tabIndex={ canFocus ? 0 : -1 }
+        data-automationid='DetailsRow'
         >
 
         { (selectionMode !== SelectionMode.none) && (
@@ -176,6 +177,7 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
             tabIndex={ -1 }
             className='ms-DetailsRow-check'
             data-selection-toggle={ true }
+            data-automationid='DetailsRowCheck'
             >
             <Check isChecked={ isSelected } />
           </button>

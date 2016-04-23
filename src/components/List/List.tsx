@@ -186,7 +186,7 @@ export default class List extends React.Component<IListProps, IListState> {
       let item = page.items[i];
 
       cells.push(
-        <div className='ms-List-cell' key={ (page.startIndex + i) }>
+        <div className='ms-List-cell' key={ (page.startIndex + i) } data-automationid='ListCell'>
           { onRenderCell(item, page.startIndex + i) }
         </div>
       );
