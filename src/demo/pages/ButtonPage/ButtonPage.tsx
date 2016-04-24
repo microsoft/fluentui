@@ -17,7 +17,7 @@ export default class ButtonPage extends React.Component<any, any> {
         <h1 className='ms-font-xxl'>Button</h1>
         <div>
           <Link target='_blank' href='http://dev.office.com/fabric/components/button'>Buttons</Link>
-          are used typically in dialogs and for starting an operation.
+          <span> are used typically in dialogs and for starting an operation.</span>
         </div>
         <h2 className='ms-font-xl'>Examples</h2>
 

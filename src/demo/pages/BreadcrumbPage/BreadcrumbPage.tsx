@@ -16,7 +16,7 @@ export default class BreadcrumbExample extends React.Component<any, any> {
         <h1 className='ms-font-xxl'>Breadcrumb</h1>
         <div>
           <Link target='_blank' href='http://dev.office.com/fabric/components/breadcrumb'>Breadcrumbs</Link>
-          are used to represent a given path.
+          <span> are used to represent a given path.</span>
         </div>
         <h2 className='ms-font-xl'>Examples</h2>
         <ExampleCard title='Simple breadcrumb' code={ BreadcrumbBasicExampleCode }>

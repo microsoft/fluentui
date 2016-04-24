@@ -20,7 +20,7 @@ export default class ListPage extends React.Component<any, any> {
         <h1 className='ms-font-xxl'>List</h1>
         <p>
           <Link target='_blank' href='http://dev.office.com/fabric/components/List'>List</Link>
-          provides a base component for rendering large sets of items. It is agnostic of layout, the tile component used, and selection management. These concerns can be layered separately.
+          <span> provides a base component for rendering large sets of items. It is agnostic of layout, the tile component used, and selection management. These concerns can be layered separately.</span>
         </p>
         <p>
           <b>Performance is important, and DOM content is expensive. Therefore limit what you render.</b> Unlike a simple for loop that renders all items in a set, a List uses ui virtualization. It only renders a subset of items, and as you scroll around, the subset of rendered content is shifted to what you're looking at. This gives a much better experience for large sets, especially when the per-item components are complex/render intensive/network intensive.

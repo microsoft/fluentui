@@ -18,7 +18,7 @@ export default class CalloutPage extends React.Component<any, any> {
         <h1 className='ms-font-xxl'>Callout</h1>
         <div>
           <Link target='_blank' href='http://dev.office.com/fabric/components/callout'>Callouts</Link>
-          are used to notify the user of something special.
+          <span> are used to notify the user of something special.</span>
         </div>
         <h2 className='ms-font-xl'>Examples</h2>
         <ExampleCard title='Simple callout' code={ CalloutBasicExampleCode }>

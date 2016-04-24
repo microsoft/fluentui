@@ -18,7 +18,7 @@ export default class PeoplePickerExample extends React.Component<any, any> {
         <h1 className='ms-font-xxl'>PeoplePicker</h1>
         <div>
           <Link target='_blank' href='http://dev.office.com/fabric/components/peoplepicker'>PeoplePickers</Link>
-          are used to pick recipients.
+          <span> are used to pick recipients.</span>
         </div>
         <h2 className='ms-font-xl'>Examples</h2>
         <ExampleCard title='PeoplePicker' code={ PeoplePickerBasicExampleCode }>

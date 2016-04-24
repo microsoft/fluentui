@@ -18,7 +18,7 @@ export default class ChoiceGroupPage extends React.Component<any, any> {
         <h1 className='ms-font-xxl'>ChoiceGroup</h1>
         <div>
           <Link target='_blank' href='http://dev.office.com/fabric/components/choiceGroup'>ChoiceGroups</Link>
-          allow the user to choose one of many options.
+          <span> allow the user to choose one of many options.</span>
         </div>
         <h2 className='ms-font-xl'>Examples</h2>
         <ExampleCard title='ChoiceGroups' code={ ChoiceGroupBasicExampleCode }>

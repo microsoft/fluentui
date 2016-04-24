@@ -23,7 +23,7 @@ export default class CommandBarPage extends React.Component<any, any> {
         <h1 className='ms-font-xxl'>CommandBar</h1>
         <div>
           <Link target='_blank' href='http://dev.office.com/fabric/components/commandBar'>CommandBars</Link>
-          provide a menu control to expose application commands. Command bars typically are rendered just below the header.
+          <span> provide a menu control to expose application commands. Command bars typically are rendered just below the header.</span>
         </div>
         <h2 className='ms-font-xl'>Examples</h2>
         <ExampleCard title='CommandBar with search box and overflowing menu items' code={ CommandBarBasicExampleCode }>

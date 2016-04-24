@@ -20,7 +20,7 @@ export default class DetailsListPage extends React.Component<any, any> {
           <Link target='_blank' href='http://dev.office.com/fabric/components/DetailsList'>DetailsList</Link>
           is a derivative of
           <Link href='#/examples/list'>List</Link>
-          and provides a sortable, filterable, justified table for rendering large sets of items. This component replaces the Table Component.
+          <span> and provides a sortable, filterable, justified table for rendering large sets of items. This component replaces the Table Component.</span>
         </p>
         <h2 className='ms-font-xl'>Examples</h2>
         <ExampleCard title='DetailsList of 20000 items, variable row heights' isOptIn={ false } code={ DetailsListBasicExampleCode }>

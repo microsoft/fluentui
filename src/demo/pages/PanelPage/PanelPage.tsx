@@ -18,7 +18,7 @@ export default class PanelPage extends React.Component<any, any> {
         <h1 className='ms-font-xxl'>Panel</h1>
         <div>
           <Link target='_blank' href='http://dev.office.com/fabric/components/panel'>Panels</Link>
-          are used to render an org chart.
+          <span> are used to render an org chart.</span>
         </div>
         <h2 className='ms-font-xl'>Examples</h2>
         <ExampleCard title='Panel' code={ PanelBasicExampleCode }>

@@ -16,7 +16,7 @@ export default class CheckboxExample extends React.Component<any, any> {
         <h1 className='ms-font-xxl'>CheckBox</h1>
         <div>
           <Link target='_blank' href='http://dev.office.com/fabric/components/checkbox'>Checkboxes</Link>
-          allow the user to enable or disable a setting.
+          <span> allow the user to enable or disable a setting.</span>
         </div>
 
         <h2 className='ms-font-xl'>Examples</h2>

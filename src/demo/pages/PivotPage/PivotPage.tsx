@@ -18,7 +18,7 @@ export default class PivotPage extends React.Component<any, any> {
         <h1 className='ms-font-xxl'>Pivot</h1>
         <div>
           <Link target='_blank' href='http://dev.office.com/fabric/components/Pivot'>Pivots</Link>
-          are ...TODO
+          <span> are ...TODO</span>
         </div>
         <h2 className='ms-font-xl'>Examples</h2>
         <ExampleCard title='Pivot' code={ PivotBasicExampleCode }>
