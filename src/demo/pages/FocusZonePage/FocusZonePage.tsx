@@ -1,8 +1,5 @@
 import * as React from 'react';
 import {
-  Link
-} from '../../../components/index';
-import {
   ExampleCard,
   PropertiesTable
 } from '../../components/index';
@@ -20,7 +17,7 @@ export default class FocusZonePage extends React.Component<any, any> {
     return (
       <div className='ms-FocusZonePage'>
         <h1 className='ms-font-xxl'>FocusZone</h1>
-        <div><Link target='_blank' text='FocusZones' url='#' /> are used to delimit keyboard navigation behavior.</div>
+        <div>FocusZones are used to delimit keyboard navigation behavior.</div>
         <h2 className='ms-font-xl'>Examples</h2>
         <ExampleCard title='Nested FocusZones' code={ FocusZoneCardExampleCode }>
           <FocusZoneCardExample />

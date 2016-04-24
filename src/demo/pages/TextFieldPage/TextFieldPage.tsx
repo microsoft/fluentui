@@ -15,7 +15,10 @@ export default class TextFieldPage extends React.Component<any, any> {
     return (
       <div className='TextFieldExample'>
         <h1 className='ms-font-xxl'>TextField</h1>
-        <div><Link target='_blank' text='TextFields' url='http://dev.office.com/fabric/components/textfields' /> allow the user to enter text.</div>
+        <div>
+          <Link target='_blank' href='http://dev.office.com/fabric/components/textfields'>TextFields</Link>
+          allow the user to enter text.
+        </div>
         <h2 className='ms-font-xl'>Examples</h2>
         <ExampleCard title='TextField variations' code={ TextFieldBasicExampleCode }>
           <TextFieldBasicExample />

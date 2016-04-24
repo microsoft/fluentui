@@ -21,8 +21,10 @@ export default class ContextualMenuPage extends React.Component<any, any> {
     return (
       <div className='ms-ContextualMenuPage'>
         <h1 className='ms-font-xxl'>ContextualMenu</h1>
-        <div><Link target='_blank' text='ContextualMenus' url='http://dev.office.com/fabric/components/contextualMenu' /> provide a menu for use in context menus and dropdowns.</div>
-
+        <div>
+          <Link target='_blank' href='http://dev.office.com/fabric/components/contextualMenu'>ContextualMenus</Link>
+          provide a menu for use in context menus and dropdowns.
+        </div>
         <h2 className='ms-font-xl'>Examples</h2>
 
         <ExampleCard title='ContextualMenu' code= { ContextualMenuBasicExampleCode }>

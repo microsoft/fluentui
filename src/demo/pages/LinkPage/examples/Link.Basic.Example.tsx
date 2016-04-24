@@ -6,7 +6,7 @@ import {
 export default class LinkBasicExample extends React.Component<any, any> {
   public render() {
     return (
-      <Link text='I am a link' url='http://dev.office.com/fabric/components/link' />
+      <Link href='http://dev.office.com/fabric/components/link'>I am a link.</Link>
     );
   }
 

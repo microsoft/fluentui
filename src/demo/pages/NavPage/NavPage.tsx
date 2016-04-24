@@ -23,7 +23,8 @@ export default class NavPage extends React.Component<any, any> {
         <h1 className='ms-font-xxl'>Nav</h1>
 
         <div>
-          <Link target='_blank' text='Navs' url='http://dev.office.com/fabric/components/Nav' /> provide a navigation control to expose internal and external links. Navigation bars typically are rendered vertically to the side of the page content.
+          <Link target='_blank' href='http://dev.office.com/fabric/components/Nav'>Navs</Link>
+          provide a navigation control to expose internal and external links. Navigation bars typically are rendered vertically to the side of the page content.
         </div>
 
         <h2 className='ms-font-xl'>Examples</h2>

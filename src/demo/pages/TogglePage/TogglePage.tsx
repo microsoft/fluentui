@@ -16,7 +16,10 @@ export default class TogglePage extends React.Component<any, any> {
     return (
       <div>
         <h1 className='ms-font-xxl'>Toggle</h1>
-        <div><Link target='_blank' text='Toggles' url='http://dev.office.com/fabric/components/Toggle' /> provide a ui indicator for progress.</div>
+        <div>
+          <Link target='_blank' href='http://dev.office.com/fabric/components/Toggle'>Toggles</Link>
+          provide a ui indicator for progress.
+        </div>
 
         <h2 className='ms-font-xl'>Examples</h2>
 

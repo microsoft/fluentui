@@ -16,7 +16,10 @@ export default class LabelPage extends React.Component<any, any> {
     return (
       <div className='ms-LabelExample'>
         <h1 className='ms-font-xxl'>Label</h1>
-        <div><Link target='_blank' text='Labels' url='http://dev.office.com/fabric/components/label' /> render a text string.</div>
+        <div>
+          <Link target='_blank' href='http://dev.office.com/fabric/components/label'>Labels</Link>
+          render a text string.
+        </div>
         <h2 className='ms-font-xl'>Examples</h2>
         <ExampleCard title='Label' code={ LabelBasicExampleCode }>
           <LabelBasicExample/>
