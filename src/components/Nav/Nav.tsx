@@ -43,7 +43,7 @@ export default class Nav extends React.Component<INavProps, INavState> {
   };
 
   private static isSelected(link: INavLink): boolean {
-    return location.hash === link.url || location.href === link.url;
+    return link.url && (location.hash === link.url || location.href === link.url);
   }
 
   public render(): React.ReactElement<{}> {
@@ -68,7 +68,7 @@ export default class Nav extends React.Component<INavProps, INavState> {
       <li key={ linkIndex }>
         <a
           className={'ms-Nav-link' + (Nav.isSelected(link) ? ' is-selected' : '')}
-          href={ link.url }
+          href={ link.url || 'javascript://' }
           onClick={ this.props.onLinkClick }
         >
           { this.props.onRenderLink(link) }
