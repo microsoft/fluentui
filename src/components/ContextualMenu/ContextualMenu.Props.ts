@@ -1,5 +1,6 @@
 import * as React from 'react';
 import ContextualMenu from './ContextualMenu';
+import { DirectionalHint } from '../index';
 
 export interface IContextualMenuProps extends React.Props<ContextualMenu> {
   /**
@@ -65,23 +66,6 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
    */
   id?: string;
 }
-
-export enum DirectionalHint {
-  topLeftEdge,
-  topCenter,
-  topRightEdge,
-  topAutoEdge,
-  bottomLeftEdge,
-  bottomCenter,
-  bottomRightEdge,
-  bottomAutoEdge,
-  leftTopEdge,
-  leftCenter,
-  leftBottomEdge,
-  rightTopEdge,
-  rightCenter,
-  rightBottomEdge
-};
 
 export interface IContextualMenuItem {
   /**

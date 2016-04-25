@@ -40,6 +40,7 @@ export default class ContextualMenuPage extends React.Component<any, any> {
         </ExampleCard>
 
         <PropertiesTableSet componentName='ContextualMenu' />
+        <PropertiesTableSet componentName='Callout' renderOnly={ ['DirectionalHint'] } />
       </div>
     );
   }

@@ -1,12 +1,6 @@
 import * as React from 'react';
 import DetailsList from './DetailsList';
 import {
-  IGroup,
-  DetailsListLayoutMode,
-  ConstrainMode,
-  IColumn
-} from './interfaces';
-import {
   ISelection,
   SelectionMode
 } from '../../utilities/selection/interfaces';
@@ -75,8 +69,66 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   onShowAll?: (group: IGroup) => void;
 }
 
-export interface IDetailsListViewData {
-  columns: IColumn[];
-  layoutMode: DetailsListLayoutMode;
-  rowCheckWidth: number;
+export interface IColumn {
+  key: string;
+  name: string;
+  fieldName: string;
+  minWidth: number;
+  maxWidth?: number;
+  columnActionsMode?: ColumnActionsMode; /** if undefined, then behavior defaults to ColumnActionsMode.clickable */
+  iconClassName?: string; /** CSS class name of an icon to show in addition to the text */
+  isCollapsable?: boolean;
+  isSortable?: boolean;
+  isSorted?: boolean;
+  isResizable?: boolean;
+  isSortedDescending?: boolean;
+  isMultiline?: boolean;
+  getCellContent?: (item: any, index?: number) => any;
+  calculatedWidth?: number;
+  isFilterable?: boolean;
+  isFiltered?: boolean;
+  onColumnClick?: (column: IColumn, ev: React.MouseEvent) => any;
+  // Internal state when a column is resizing.
+  isSizing?: boolean;
+  isGroupable?: boolean;
+  isGrouped?: boolean;
+  // Arbitrary data required to be preserved by the caller.
+  data?: any;
+}
+
+/**
+ * Enum to describe how a particular column header behaves.... This enum is used to
+ * to specify the property IColumn:columnActionsMode.
+ * If IColumn:columnActionsMode is undefined, then it's equivalent to ColumnActionsMode.clickable
+ */
+export enum ColumnActionsMode {
+  /** disable the column header */
+  disabled,
+  /** column header is clickable */
+  clickable,
+  /** column header is clickable and displays the dropdown cheveron */
+  hasDropdown
+}
+
+export enum ConstrainMode {
+  unconstrained,
+  horizontalConstrained
+}
+
+export enum DetailsListLayoutMode {
+  fixedColumns,
+  justified
+}
+
+export interface IGroup {
+  key: string;
+  name: string;
+  startIndex: number;
+  count: number;
+  isSelected?: boolean;
+  isCollapsed?: boolean;
+  isShowingAll?: boolean;
+  isDropEnabled?: boolean;
+  // Arbitrary data required to be preserved by the caller.
+  data?: any;
 }

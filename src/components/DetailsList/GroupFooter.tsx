@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './GroupFooter.scss';
-import { IGroup } from './interfaces';
+import { IGroup } from './index';
 
 export interface IGroupFooterProps {
   group: IGroup;

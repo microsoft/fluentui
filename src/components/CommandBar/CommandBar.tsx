@@ -2,10 +2,11 @@ import * as React from 'react';
 import './CommandBar.scss';
 import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
-import { default as ContextualMenu, DirectionalHint } from '../ContextualMenu/index';
+import { default as ContextualMenu } from '../ContextualMenu/index';
 import { css } from '../../utilities/css';
 import { IContextualMenuItem } from '../index';
 import { ICommandBarProps } from './CommandBar.Props';
+import { DirectionalHint } from '../index';
 
 const OVERFLOW_KEY = 'overflow';
 const OVERFLOW_WIDTH = 41.5;

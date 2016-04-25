@@ -4,9 +4,8 @@ import {
 } from '../../../components/index';
 import {
   ExampleCard,
-  PropertiesTable
+  PropertiesTableSet
 } from '../../components/index';
-import PivotProps from './PivotProps';
 
 import PivotBasicExample from './examples/Pivot.Basic.Example';
 let PivotBasicExampleCode = require('./examples/Pivot.Basic.Example.tsx');
@@ -24,7 +23,7 @@ export default class PivotPage extends React.Component<any, any> {
         <ExampleCard title='Pivot' code={ PivotBasicExampleCode }>
           <PivotBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ PivotProps } />
+        <PropertiesTableSet componentName='Pivot' />
       </div>
     );
   }

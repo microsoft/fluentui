@@ -4,9 +4,8 @@ import {
 } from '../../../components/index';
 import {
   ExampleCard,
-  PropertiesTable
+  PropertiesTableSet
 } from '../../components/index';
-import PersonaProps from './PersonaProps';
 
 import PersonaInitialsExample from './examples/Persona.Initials.Example';
 let PersonaInitialsExampleCode = require('./examples/Persona.Initials.Example.tsx');
@@ -30,7 +29,7 @@ export default class PersonaPage extends React.Component<any, any> {
         <ExampleCard title='Persona in initials' code={ PersonaInitialsExampleCode }>
           <PersonaInitialsExample />
         </ExampleCard>
-        <PropertiesTable properties={ PersonaProps } />
+        <PropertiesTableSet componentName='Persona' />
       </div>
     );
   }

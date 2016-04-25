@@ -4,9 +4,8 @@ import {
 } from '../../../components/index';
 import {
   ExampleCard,
-  PropertiesTable
+  PropertiesTableSet
 } from '../../components/index';
-import ProgressIndicatorProps from './ProgressIndicatorProps';
 
 import ProgressIndicatorBasicExample from './examples/ProgressIndicator.Basic.Example';
 let ProgressIndicatorBasicExampleCode = require('./examples/ProgressIndicator.Basic.Example.tsx');
@@ -28,7 +27,7 @@ export default class ProgressIndicatorPage extends React.Component<any, any> {
           <ProgressIndicatorBasicExample />
         </ExampleCard>
 
-        <PropertiesTable properties={ ProgressIndicatorProps } />
+        <PropertiesTableSet componentName='ProgressIndicator' />
       </div>
     );
   }

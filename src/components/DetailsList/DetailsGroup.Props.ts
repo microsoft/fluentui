@@ -3,7 +3,7 @@ import DetailsGroup from './DetailsGroup';
 import {
   IGroup,
   IColumn
-} from './interfaces';
+} from './index';
 import {
   ISelection,
   SelectionMode

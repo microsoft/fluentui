@@ -4,9 +4,8 @@ import {
 } from '../../../components/index';
 import {
   ExampleCard,
-  PropertiesTable
+  PropertiesTableSet
 } from '../../components/index';
-import LabelProps from './LabelProps';
 
 import LabelBasicExample from './examples/Label.Basic.Example';
 let LabelBasicExampleCode = require('./examples/Label.Basic.Example.tsx');
@@ -24,9 +23,8 @@ export default class LabelPage extends React.Component<any, any> {
         <ExampleCard title='Label' code={ LabelBasicExampleCode }>
           <LabelBasicExample/>
         </ExampleCard>
-        <PropertiesTable properties={ LabelProps } />
+        <PropertiesTableSet componentName='Label' />
       </div>
     );
   }
-
 }

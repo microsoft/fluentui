@@ -4,9 +4,8 @@ import {
 } from '../../../components/index';
 import {
   ExampleCard,
-  PropertiesTable
+  PropertiesTableSet
 } from '../../components/index';
-import OverlayProps from './OverlayProps';
 
 import OverlayBasicExample from './examples/Overlay.Basic.Example';
 let OverlayBasicExampleCode = require('./examples/Overlay.Basic.Example.tsx');
@@ -24,7 +23,7 @@ export default class OverlayPage extends React.Component<any, any> {
         <ExampleCard title='Overlay' code={ OverlayBasicExampleCode }>
           <OverlayBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ OverlayProps } />
+        <PropertiesTableSet componentName='Overlay' />
       </div>
     );
   }

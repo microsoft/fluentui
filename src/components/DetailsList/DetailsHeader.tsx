@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IColumn, DetailsListLayoutMode, ColumnActionsMode } from './interfaces';
+import { IColumn, DetailsListLayoutMode, ColumnActionsMode } from './index';
 import { css } from '../../utilities/css';
 import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';

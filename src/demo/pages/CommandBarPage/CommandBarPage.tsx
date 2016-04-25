@@ -36,6 +36,7 @@ export default class CommandBarPage extends React.Component<any, any> {
           <CommandBarRandomItemsExample />
         </ExampleCard>
         <PropertiesTableSet componentName='CommandBar' />
+        <PropertiesTableSet componentName='ContextualMenu' renderOnly={ ['IContextualMenuItem'] } />
       </div>
     );
   }

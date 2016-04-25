@@ -6,8 +6,8 @@ import EventGroup from '../../utilities/eventGroup/EventGroup';
 import { css } from '../../utilities/css';
 import { getRTL } from '../../utilities/rtl';
 import Async from '../../utilities/Async/Async';
-
-import { IContextualMenuProps, IContextualMenuItem, DirectionalHint } from './ContextualMenu.Props';
+import { IContextualMenuProps, IContextualMenuItem } from './ContextualMenu.Props';
+import { DirectionalHint } from '../index';
 
 const BUFFER_ZONE = 5;
 const BEAK_WIDTH = 16;

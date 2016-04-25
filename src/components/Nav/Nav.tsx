@@ -2,26 +2,10 @@ import * as React from 'react';
 
 import FocusZone from '../../utilities/focus/FocusZone';
 import './Nav.scss';
-
-export interface INavLink {
-  name: string;
-  url: string;
-  links?: INavLink[];
-
-  [propertyName: string]: any;
-}
-
-export interface INavLinkGroup {
-  name?: string;
-  links: INavLink[];
-}
-
-export interface INavProps {
-  groups: INavLinkGroup[];
-  onRenderLink?: Function;
-  onLinkClick?: { (e: React.MouseEvent): boolean };
-  isOnTop?: boolean;
-}
+import {
+  INavProps,
+  INavLinkGroup,
+  INavLink } from './Nav.Props';
 
 export interface INavState {
   isGroupExpanded: boolean[];

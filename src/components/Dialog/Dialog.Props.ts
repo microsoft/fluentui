@@ -1,9 +1,8 @@
 import * as React from 'react';
 import Dialog from './Dialog';
-import { DialogType } from './interfaces';
-import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 
-export interface IDialogProps extends React.Props<Dialog> {
+export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeState {
   /**
   * Whether the dialog is displayed.
   * @default false
@@ -42,9 +41,13 @@ export interface IDialogProps extends React.Props<Dialog> {
   * @default false
   */
   isBlocking?: boolean;
+}
 
-  /**
-  * Provided automatically, used to adjust component based on the current viewport.
-  */
-  responsiveMode?: ResponsiveMode;
+export enum DialogType {
+  /** Standard dialog */
+  normal,
+  /** Dialog with large header banner */
+  largeHeader,
+  /** Dialog with an 'x' close button in the upper-right corner */
+  close
 }

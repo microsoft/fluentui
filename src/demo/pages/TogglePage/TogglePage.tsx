@@ -4,9 +4,8 @@ import {
 } from '../../../components/index';
 import {
   ExampleCard,
-  PropertiesTable
+  PropertiesTableSet
 } from '../../components/index';
-import ToggleProps from './ToggleProps';
 
 import ToggleBasicExample from './examples/Toggle.Basic.Example';
 let ToggleBasicExampleCode = require('./examples/Toggle.Basic.Example.tsx');
@@ -26,7 +25,7 @@ export default class TogglePage extends React.Component<any, any> {
         <ExampleCard title='Toggle' code={ ToggleBasicExampleCode }>
           <ToggleBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ ToggleProps } />
+        <PropertiesTableSet componentName='Toggle' />
       </div>
     );
   }

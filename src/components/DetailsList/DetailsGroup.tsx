@@ -5,7 +5,7 @@ import GroupHeader from './GroupHeader';
 import List from '../List/index';
 import {
   IGroup
-} from './interfaces';
+} from './index';
 import {
   IDragDropOptions
 } from './../../utilities/dragdrop/interfaces';

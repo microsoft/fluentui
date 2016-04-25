@@ -1,10 +1,9 @@
 import * as React from 'react';
 import './Callout.scss';
 import { Layer } from '../../components/index';
-import { DirectionalHint, IPositionInfo } from './interfaces';
-import { ICalloutProps } from './Callout.Props';
+import { ICalloutProps, DirectionalHint } from './Callout.Props';
 import { css } from '../../utilities/css';
-import { CalloutPosition } from './CalloutPosition';
+import { CalloutPosition, IPositionInfo } from './CalloutPosition';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };

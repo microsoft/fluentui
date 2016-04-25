@@ -3,8 +3,7 @@ import './Dialog.scss';
 import Overlay from '../Overlay/Overlay';
 import Layer from '../Layer/Layer';
 import { DialogFooter } from './DialogFooter';
-import { DialogType } from './interfaces';
-import { IDialogProps } from './Dialog.Props';
+import { IDialogProps, DialogType } from './Dialog.Props';
 import { css } from '../../utilities/css';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 

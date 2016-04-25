@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IColumn } from './interfaces';
+import { IColumn } from './index';
 import { css } from '../../utilities/css';
 import { shallowCompare } from '../../utilities/object';
 

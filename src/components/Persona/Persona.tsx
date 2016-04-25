@@ -2,57 +2,12 @@ import * as React from 'react';
 import { css } from '../../utilities/css';
 import Image from '../Image/Image';
 import './Persona.scss';
-
-export enum PersonaSize {
-  tiny,
-  extraSmall,
-  small,
-  regular,
-  large,
-  extraLarge
-}
-
-export enum PersonaPresence {
-  offline,
-  online,
-  away,
-  dnd,
-  blocked
-}
-
-export enum PersonaInitialsColor {
-  lightBlue,
-  blue,
-  darkBlue,
-  teal,
-  lightGreen,
-  green,
-  darkGreen,
-  lightPink,
-  pink,
-  magenta,
-  purple,
-  black,
-  orange,
-  red,
-  darkRed
-}
-
-export interface IPersonaProps {
-  primaryText: string;
-  size?: PersonaSize;
-  imageUrl?: string;
-  imageInitials?: string;
-  initialsColor?: PersonaInitialsColor;
-  presence?: PersonaPresence;
-  secondaryText?: string;
-  tertiaryText?: string;
-  optionalText?: string;
-
-  key?: string;
-  ref?: string;
-  className?: string;
-}
+import {
+  IPersonaProps,
+  PersonaInitialsColor,
+  PersonaPresence,
+  PersonaSize
+} from './Persona.Props';
 
 const PERSONA_SIZE = {
   [PersonaSize.tiny]: 'ms-Persona--tiny',

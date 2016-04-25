@@ -8,15 +8,15 @@ import DetailsGroup from './DetailsGroup';
 import { Selection } from '../../utilities/selection/Selection';
 import SelectionZone from '../../utilities/selection/SelectionZone';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
-import { IDetailsListProps } from './DetailsList.Props';
-import { ISelection, SelectionMode, IObjectWithKey } from '../../utilities/selection/interfaces';
 import {
+  IDetailsListProps,
   ConstrainMode,
   DetailsListLayoutMode,
   ColumnActionsMode,
   IColumn,
   IGroup
-} from './interfaces';
+} from './DetailsList.Props';
+import { ISelection, SelectionMode, IObjectWithKey } from '../../utilities/selection/interfaces';
 import DragDropHelper from '../../utilities/dragdrop/DragDropHelper';
 import './DetailsList.scss';
 

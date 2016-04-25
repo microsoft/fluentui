@@ -1,4 +1,4 @@
-import { DirectionalHint, IPositionInfo } from './interfaces';
+import { DirectionalHint } from './index';
 import { ICalloutProps } from './Callout.Props';
 import { getRTL } from '../../utilities/rtl';
 
@@ -53,6 +53,12 @@ interface IParsedDirectionalHint {
   horizontalAlignmentHint: HorizontalAlignmentHint;
   verticalAlignmentHint: VerticalAlignmentHint;
 };
+
+export interface IPositionInfo {
+  calloutPosition: any;
+  beakPosition: any;
+  directionalClassName: string;
+}
 
 export class CalloutPosition {
   public getRelativePositions(props: ICalloutProps, hostElement: HTMLElement, calloutElement: HTMLElement) {

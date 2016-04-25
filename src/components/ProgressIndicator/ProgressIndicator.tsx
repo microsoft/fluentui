@@ -1,11 +1,6 @@
 import * as React from 'react';
 import './ProgressIndicator.scss';
-
-export interface IProgressIndicatorProps {
-  title?: string;
-  description?: string;
-  percentComplete?: number;
-}
+import { IProgressIndicatorProps } from './ProgressIndicator.Props';
 
 export default class ProgressIndicator extends React.Component<IProgressIndicatorProps, any> {
 

@@ -4,9 +4,8 @@ import {
 } from '../../../components/index';
 import {
   ExampleCard,
-  PropertiesTable
+  PropertiesTableSet
 } from '../../components/index';
-import NavProps from './NavProps';
 
 import NavBasicExample from './examples/Nav.Basic.Example';
 import NavFabricDemoAppExample from './examples/Nav.FabricDemoApp.Example';
@@ -41,7 +40,7 @@ export default class NavPage extends React.Component<any, any> {
           <NavNestedExample />
         </ExampleCard>
 
-        <PropertiesTable properties={ NavProps } />
+        <PropertiesTableSet componentName='Nav' />
       </div>
     );
   }

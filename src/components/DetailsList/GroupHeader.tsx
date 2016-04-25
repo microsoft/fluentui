@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './GroupHeader.scss';
 import Check from './Check';
-import { IGroup } from './interfaces';
+import { IGroup } from './index';
 import { css } from '../../utilities/css';
 
 export interface IGroupHeaderProps {

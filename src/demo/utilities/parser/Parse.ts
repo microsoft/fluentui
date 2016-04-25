@@ -20,13 +20,13 @@ import EnumParserHelper from './EnumParserHelper';
 export function parse(source: string, propsInterfaceOrEnumName?: string): Array<IProperty> {
   let props: Array<IProperty> = [];
   let regex: RegExp = null;
+  let parseInfo;
 
   if (propsInterfaceOrEnumName) {
     regex = new RegExp(`export (interface|enum) ${propsInterfaceOrEnumName}(?: extends .*?)? \\{(.*[\\r\\n]*)*?\\}`);
     let regexResult = regex.exec(source);
     if (regexResult && regexResult.length > 0) {
-      let parser = new InterfaceParser(regexResult[0]);
-      let parseInfo = parser.parse();
+      parseInfo = _parseEnumOrInterface(regexResult);
       return [<IProperty>{
         propertyName: propsInterfaceOrEnumName,
         propertyType: regexResult[1] === 'interface' ? PropertyType.interface : PropertyType.enum,
@@ -37,17 +37,8 @@ export function parse(source: string, propsInterfaceOrEnumName?: string): Array<
     regex = new RegExp(`export (interface|enum) (\\S*?)(?: extends .*?)? \\{(.*[\\r\\n]*)*?\\}`, 'g');
     let regexResult: RegExpExecArray;
     let results: Array<IProperty> = [];
-    let parseInfo;
     while ((regexResult = regex.exec(source)) !== null) {
-      if (regexResult[1] === 'interface') {
-        let parser = new InterfaceParser(regexResult[0]);
-        parseInfo = parser.parse();
-        parser = null;
-      } else {
-        let parser = new EnumParserHelper(regexResult[0]);
-        parseInfo = parser.parse();
-        parser = null;
-      }
+      parseInfo = _parseEnumOrInterface(regexResult);
       results.push(<IProperty>{
         propertyName: regexResult[2],
         propertyType: regexResult[1] === 'interface' ? PropertyType.interface : PropertyType.enum,
@@ -59,4 +50,18 @@ export function parse(source: string, propsInterfaceOrEnumName?: string): Array<
   }
 
   return props;
+}
+
+function _parseEnumOrInterface(regexResult: RegExpExecArray) {
+  let parseInfo;
+  if (regexResult[1] === 'interface') {
+    let parser = new InterfaceParser(regexResult[0]);
+    parseInfo = parser.parse();
+    parser = null;
+  } else {
+    let parser = new EnumParserHelper(regexResult[0]);
+    parseInfo = parser.parse();
+    parser = null;
+  }
+  return parseInfo;
 }

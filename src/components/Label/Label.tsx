@@ -1,13 +1,7 @@
 import * as React from 'react';
 import './Label.scss';
 import { css } from '../../utilities/css';
-
-export interface ILabelProps {
-  htmlFor?: string;
-  children?: any;
-  isDisabled?: boolean;
-  isRequired?: boolean;
-}
+import { ILabelProps } from './Label.Props';
 
 export default class Label extends React.Component<ILabelProps, any> {
   public render() {
@@ -15,6 +9,7 @@ export default class Label extends React.Component<ILabelProps, any> {
 
     return (
       <label
+        { ...this.props}
         htmlFor={ htmlFor }
         className={ css('ms-Label', {
           'is-disabled': isDisabled,

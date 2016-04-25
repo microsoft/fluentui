@@ -20,7 +20,7 @@ export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps
 
     if (props.renderOnly) {
       props.renderOnly.forEach((item: string) => {
-        properties.concat(parse(src, item));
+        properties = properties.concat(parse(src, item));
       });
     } else {
       properties = parse(src);
