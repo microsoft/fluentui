@@ -69,6 +69,15 @@ export interface ITextFieldProps extends React.DOMAttributes {
   className?: string;
 
   /**
+   * The method is used to get the validation error message and determine whether the input value is valid or not.
+   *
+   * - If valid, it returns empty string.
+   * - If invalid, it returns the error message string and the text field will
+   *   show a red border and show an error message below the text field.
+   */
+  onGetErrorMessage?: (value: string) => string;
+
+  /**
    * Aria Label for textfield, if any.
    */
   ariaLabel?: string;

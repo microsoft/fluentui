@@ -1,6 +1,30 @@
 @import '../../common';
 @import "~office-ui-fabric/src/components/TextField/TextField";
 
+// @todo: https://github.com/OfficeDev/Office-UI-Fabric/issues/359
+.ms-TextField-errorMessage {
+  @include ms-font-s;
+  @include ms-fontColor-redDark;
+  @include resetMargins;
+}
+
+.ms-TextField-invalid,
+.ms-TextField-invalid:focus,
+.ms-TextField-invalid:hover {
+  @include ms-borderColor-redDark;
+}
+
+.ms-u-screenReaderOnly {
+  position: absolute;
+  text-indent: -9999px;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  border: 0;
+}
+
 .ms-TextField.ms-TextField--underlined {
 
   .ms-Label {
