@@ -20,7 +20,11 @@ export const PhotosExample = () => (
   <FocusZone>
     <ul className='ms-FocusZoneExamples-photoList'>
       { PHOTOS.map((photo, index) => (
-      <div key={ index } className='ms-FocusZoneExamples-photoCell' data-is-focusable={true}>
+      <div
+        key={ index }
+        className='ms-FocusZoneExamples-photoCell'
+        data-is-focusable={true}
+        onClick={ () => console.log('clicked') }>
         <Image src={ photo.url } width={ photo.width } height={ photo.height } />
       </div>
       )) }

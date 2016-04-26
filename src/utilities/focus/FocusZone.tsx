@@ -6,6 +6,7 @@ import { css } from '../css';
 import { IFocusZoneProps, FocusZoneDirection } from './FocusZone.Props';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
+const IS_ENTER_DISABLED_ATTRIBUTE = 'data-disable-click-on-enter';
 const FOCUSZONE_ID_ATTRIBUTE = 'data-focuszone-id';
 const TABINDEX = 'tabindex';
 
@@ -196,6 +197,12 @@ export default class FocusZone extends React.Component<IFocusZoneProps, {}> {
           }
           return;
 
+        case KeyCodes.enter:
+          if (this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {
+            break;
+          }
+          return;
+
         default:
           return;
       }
@@ -203,6 +210,22 @@ export default class FocusZone extends React.Component<IFocusZoneProps, {}> {
 
     ev.preventDefault();
     ev.stopPropagation();
+  }
+
+  /** Walk up the dom try to find a focusable element. */
+  private _tryInvokeClickForFocusable(target: HTMLElement): boolean {
+    do {
+      if (
+        this._isImmediateDescendantOfZone(target) &&
+        target.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true' &&
+        target.getAttribute(IS_ENTER_DISABLED_ATTRIBUTE) !== 'true') {
+        EventGroup.raise(target, 'click', null, true);
+        return true;
+      }
+      target = target.parentElement;
+    } while (target !== this.refs.root);
+
+    return false;
   }
 
   /** Traverse to find first child zone. */
