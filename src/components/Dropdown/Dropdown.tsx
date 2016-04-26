@@ -11,6 +11,8 @@ export interface IDropdownState {
   isDisabled: boolean;
 }
 
+let _instance: number = 0;
+
 export default class Dropdown extends React.Component<IDropdownProps, any> {
   public static defaultProps = {
     options: [],
@@ -21,6 +23,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
     super(props);
 
     this.state = {
+      id: `Dropdown-${_instance++}`,
       isOpen: false,
       selectedIndex: this._getSelectedIndex(props.options, props.selectedKey),
       isDisabled: this.props.isDisabled
@@ -39,13 +42,15 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
 
   public render() {
     let { label, options } = this.props;
-    let { isOpen, selectedIndex, isDisabled } = this.state;
+    let { id, isOpen, selectedIndex, isDisabled } = this.state;
     let selectedOption = options[selectedIndex];
 
+    // Need to assign role application on containing div because JAWS doesnt call OnKeyDown without this role
     return (
       <div>
-        <span className='ms-Label'>{ label }</span>
+        <label id={ id + '-label' } className='ms-Label'>{ label }</label>
         <div
+          id={ id }
           className={ css('ms-Dropdown', {
             'is-open': isOpen, 'is-disabled': isDisabled
           }) }
@@ -53,21 +58,27 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
           onKeyDown={ this._onDropdownKeyDown }
           onClick={ this._onDropdownClick }
           onBlur={ this._onDropdownBlur }
+          aria-expanded={ isOpen ? 'true' : 'false' }
+          role='application'
+          aria-activedescendant={ selectedIndex }
           >
           <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown'></i>
           <span className='ms-Dropdown-title'>{ selectedOption ? selectedOption.text : '' }</span>
-          <ul className='ms-Dropdown-items'>
-            { options.map((option, optionIndex) => (
-              <li key={ option.key }
-                className={ css('ms-Dropdown-item', { 'is-selected': selectedIndex === optionIndex }) }
-                onClick={ this.setSelectedIndex.bind(this, optionIndex) }
+          <ul id={ id + '-list' } className='ms-Dropdown-items' role='listbox' aria-labelledby={ id + '-label' }>
+            { options.map((option, index) => (
+              <li id={ index.toString() }
+                key={ option.key }
+                data-index={ index }
+                className={ css('ms-Dropdown-item', { 'is-selected': selectedIndex === index }) }
+                onClick={ this.setSelectedIndex.bind(this, index) }
+                role='option'
+                aria-selected={ selectedIndex === index ? 'true' : 'false' }
                 >
                 { option.text }
               </li>
             )) }
           </ul>
         </div>
-
       </div>
     );
   }
@@ -149,5 +160,4 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
       });
     }
   }
-
 }

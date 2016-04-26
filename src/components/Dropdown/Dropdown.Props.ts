@@ -5,6 +5,11 @@ export interface IDropdownProps {
   label: string;
 
   /**
+  * Id of the drop down
+  */
+  id?: string;
+
+  /**
    * The key of the initially selected option
    */
   selectedKey?: string;
@@ -35,6 +40,11 @@ export interface IDropdownOption {
    * Text to render for this option
    */
   text: string;
+
+  /**
+   * Index for this option
+   */
+  index?: number;
 
   /**
    * Whether this option is currently selected.
