@@ -96,7 +96,7 @@ export const AppState: IAppState = {
         {
           component: DatePickerPage,
           name: 'DatePicker',
-          status: ExampleStatus.started,
+          status: ExampleStatus.beta,
           url: '#/examples/datepicker'
         },
         {

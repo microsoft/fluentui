@@ -1,2 +1,23 @@
 @import '../../common';
 @import "~office-ui-fabric/src/components/DatePicker/DatePicker";
+
+.ms-DatePicker-wrap span:focus,
+.ms-DatePicker-wrap div:focus {
+  outline: 1px solid $ms-color-themePrimary;
+}
+
+.ms-DatePicker-goToday {
+  width: auto;
+}
+
+.ms-DatePicker-nextMonth,
+.ms-DatePicker-prevMonth,
+.ms-DatePicker-nextYear,
+.ms-DatePicker-prevYear {
+  float: none;
+  display: inline-block;
+}
+
+.ms-DatePicker-navContainer {
+  @include float('right')
+}

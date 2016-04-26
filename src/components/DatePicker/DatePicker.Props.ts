@@ -24,11 +24,13 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
 
   /**
    * Method to format the chosen date to a string to display in the DatePicker
+   * @defaultvalue date.toString()
    */
   format?: (date: Date) => string;
 
   /**
    * The first day of the week for your locale.
+   * @defaultvalue DayOfWeek.Sunday
    */
   firstDayOfWeek?: DayOfWeek;
 

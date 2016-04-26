@@ -124,6 +124,16 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
     );
   }
 
+  public focus() {
+    let { multiline } = this.props;
+
+    if (multiline && this.refs.multilineText) {
+      this.refs.multilineText.focus();
+    } else if (!multiline && this.refs.singlelineText) {
+      this.refs.singlelineText.focus();
+    }
+  }
+
   private _onMultilineTextChanged(ev: React.KeyboardEvent): void {
     this._delayedValidate(this.refs.singlelineText.value);
 

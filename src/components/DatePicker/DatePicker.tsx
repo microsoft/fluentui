@@ -15,7 +15,6 @@ export interface IDatePickerState {
   selectedDate?: Date;
   formattedDate?: string;
   isDatePickerShown?: boolean;
-  isFocused?: boolean;
   value?: Date;
 }
 
@@ -37,10 +36,12 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
     root: HTMLElement;
     textField: TextField;
     picker: HTMLElement;
+    dayPicker: DatePickerDay;
   };
 
   private _events: EventGroup;
   private _preventFocusOpeningPicker: boolean;
+  private _focusOnSelectedDateOnUpdate: boolean;
 
   constructor(props: IDatePickerProps) {
     super();
@@ -51,7 +52,6 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
       selectedDate: new Date(),
       formattedDate: format && value ? format(value) : null,
       isDatePickerShown: false,
-      isFocused: false,
       value: props.value ? props.value : null
     };
 
@@ -65,6 +65,7 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
     this._onSelectPrevYear = this._onSelectPrevYear.bind(this);
     this._onSelectMonth = this._onSelectMonth.bind(this);
     this._onGotoToday = this._onGotoToday.bind(this);
+    this._onGotoTodayKeyDown = this._onGotoTodayKeyDown.bind(this);
     this._onTextFieldFocus = this._onTextFieldFocus.bind(this);
     this._onTextFieldKeyDown = this._onTextFieldKeyDown.bind(this);
     this._onTextFieldClick = this._onTextFieldClick.bind(this);
@@ -81,10 +82,17 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
     this._events.dispose();
   }
 
+  public componentDidUpdate() {
+    if (this._focusOnSelectedDateOnUpdate) {
+      this.refs.dayPicker.focus();
+      this._focusOnSelectedDateOnUpdate = false;
+    }
+  }
+
   public render() {
     let rootClass = 'ms-DatePicker';
     let { firstDayOfWeek, strings } = this.props;
-    let { isFocused, isDatePickerShown, formattedDate } = this.state;
+    let { isDatePickerShown, formattedDate } = this.state;
 
     return (
       <div className={ rootClass } ref='root' key='root'>
@@ -99,9 +107,9 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
           value={ formattedDate }
           ref='textField' key='textField'>
             {isDatePickerShown ? (
-              <div className={ css('ms-DatePicker-picker ms-DatePicker-picker--opened', {
-                'ms-DatePicker-picker--focused': isFocused
-              })} key='picker' ref='picker'>
+              <div
+              className={ css('ms-DatePicker-picker ms-DatePicker-picker--opened', 'ms-DatePicker-picker--focused')}
+              key='picker' ref='picker'>
                 <div className='ms-DatePicker-holder'>
                   <div className='ms-DatePicker-frame'>
                     <div className='ms-DatePicker-wrap'>
@@ -111,16 +119,22 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
                         onSelectPrevMonth={ this._onSelectPrevMonth }
                         onSelectNextMonth={ this._onSelectNextMonth }
                         firstDayOfWeek={ firstDayOfWeek }
-                        strings={ strings }></DatePickerDay>
-                      <span className='ms-DatePicker-goToday js-goToday'
-                        onClick={ this._onGotoToday }>{ strings.goToToday }</span>
+                        strings={ strings }
+                        key='dayPicker' ref='dayPicker' />
                       <DatePickerMonth
                         selectedDate={ this.state.selectedDate }
                         strings={ strings }
                         onSelectPrevYear={ this._onSelectPrevYear }
                         onSelectNextYear={ this._onSelectNextYear }
-                        onSelectMonth={ this._onSelectMonth }></DatePickerMonth>
-                  </div>
+                        onSelectMonth={ this._onSelectMonth } />
+                      <span
+                        className='ms-DatePicker-goToday js-goToday'
+                        onClick={ this._onGotoToday }
+                        onKeyDown={ this._onGotoTodayKeyDown }
+                        tabIndex={ 0 }>
+                        { strings.goToToday }
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -128,6 +142,11 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
           </TextField>
       </div>
     );
+  }
+
+  private _restoreFocusToTextField() {
+    this._preventFocusOpeningPicker = true;
+    this.refs.textField.focus();
   }
 
   private _setDate(date: Date) {
@@ -143,12 +162,10 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
     this._setDate(date);
     this.setState({
       isDatePickerShown: false,
-      isFocused: false,
       formattedDate: format && date ? format(date) : null,
     });
 
-    this._preventFocusOpeningPicker = true;
-    this.refs.textField.refs.singlelineText.focus();
+    this._restoreFocusToTextField();
 
     if (onSelectDate) {
       onSelectDate(date);
@@ -157,12 +174,12 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
 
   private _onSelectNextMonth() {
     let date = this.state.selectedDate;
-    this._onSelectMonth(date.getMonth() + 1);
+    this._selectMonth(date.getMonth() + 1);
   };
 
   private _onSelectPrevMonth() {
     let date = this.state.selectedDate;
-    this._onSelectMonth(date.getMonth() - 1);
+    this._selectMonth(date.getMonth() - 1);
   };
 
   private _onSelectNextYear() {
@@ -186,10 +203,14 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
       newDate = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate() - 1);
     }
     this._setDate(newDate);
-
   }
 
   private _onSelectMonth(newMonth: number) {
+    this._focusOnSelectedDateOnUpdate = true;
+    this._selectMonth(newMonth);
+  }
+
+  private _selectMonth(newMonth: number) {
     let date = this.state.selectedDate;
     let newDate = new Date(date.getFullYear(), newMonth, date.getDate());
 
@@ -203,7 +224,14 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
   };
 
   private _onGotoToday() {
+    this._focusOnSelectedDateOnUpdate = true;
     this._setDate(new Date());
+  };
+
+  private _onGotoTodayKeyDown(ev: React.KeyboardEvent) {
+    if (ev.which === KeyCodes.enter) {
+      this._onGotoToday();
+    }
   };
 
   private _onTextFieldFocus(evt: React.FocusEvent) {
@@ -217,6 +245,9 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
   private _onTextFieldKeyDown(evt: React.KeyboardEvent) {
     if (evt.which === KeyCodes.enter) {
       this._showDatePickerPopup();
+    } else if (evt.which === KeyCodes.escape) {
+      this._restoreFocusToTextField();
+      this._dismissDatePickerPopup();
     }
   };
 
@@ -233,16 +264,19 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
   }
 
   private _showDatePickerPopup() {
-    this.setState({
-      isDatePickerShown: true,
-      isFocused: true
-    });
+    if (!this.state.isDatePickerShown) {
+      this._focusOnSelectedDateOnUpdate = true;
+      this.setState({
+        isDatePickerShown: true
+      });
+    }
   }
 
   private _dismissDatePickerPopup() {
-    this.setState({
-      isDatePickerShown: false,
-      isFocused: false
-    });
+    if (this.state.isDatePickerShown) {
+      this.setState({
+        isDatePickerShown: false
+      });
+    }
   }
 }

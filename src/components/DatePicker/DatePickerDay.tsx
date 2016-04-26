@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { css } from '../../utilities/css';
 import { DayOfWeek, IDatePickerStrings } from './DatePicker.Props';
+import { FocusZone } from '../../utilities/focus/index';
+import KeyCodes from '../../utilities/KeyCodes';
 
 const DAYS_IN_WEEK = 7;
 
@@ -29,6 +31,11 @@ export interface IDatePickerDayState {
 let _instance = 0;
 
 export default class DatePickerDay extends React.Component<IDatePickerDayProps, IDatePickerDayState> {
+  public refs: {
+    [key: string]: React.ReactInstance;
+    selectedDay: HTMLElement;
+  };
+
   public constructor() {
     super();
 
@@ -42,6 +49,10 @@ export default class DatePickerDay extends React.Component<IDatePickerDayProps, 
     let { firstDayOfWeek, strings, selectedDate, onSelectNextMonth, onSelectPrevMonth, onSelectDate } = this.props;
     let weeks = this._getWeeks(selectedDate);
 
+    let selectDayCallbacks = {};
+
+    weeks.map((week, index) => week.map(day => selectDayCallbacks[day.key] = onSelectDate.bind(this, day.originalDate)));
+
     return (
       <div className='ms-DatePicker-dayPicker'>
         <div className='ms-DatePicker-header'>
@@ -49,45 +60,82 @@ export default class DatePickerDay extends React.Component<IDatePickerDayProps, 
           <div className='ms-DatePicker-year'>{selectedDate.getFullYear() }</div>
         </div>
         <div className='ms-DatePicker-monthComponents'>
-          <span className='ms-DatePicker-nextMonth js-nextMonth' onClick={ onSelectNextMonth }><i className='ms-Icon ms-Icon--chevronRight'></i></span>
-          <span className='ms-DatePicker-prevMonth js-prevMonth' onClick={ onSelectPrevMonth }><i className='ms-Icon ms-Icon--chevronLeft'></i></span>
+          <div className='ms-DatePicker-navContainer'>
+            <span
+              className='ms-DatePicker-prevMonth js-prevMonth'
+              onClick={ onSelectPrevMonth }
+              onKeyDown={ this._onKeyDown.bind(this, onSelectPrevMonth) }
+              tabIndex={ 0 }>
+              <i className='ms-Icon ms-Icon--chevronLeft' />
+            </span>
+            <span
+              className='ms-DatePicker-nextMonth js-nextMonth'
+              onClick={ onSelectNextMonth }
+              onKeyDown={ this._onKeyDown.bind(this, onSelectNextMonth) }
+              tabIndex={ 0 }>
+                <i className='ms-Icon ms-Icon--chevronRight' />
+            </span>
+          </div>
           <div className='ms-DatePicker-headerToggleView js-showMonthPicker'></div>
         </div>
-        <table className='ms-DatePicker-table' role='grid' aria-readonly='true' aria-multiselectable='false' aria-activedescendant={ activeDescendantId }>
-          <thead>
-            <tr>
-              { strings.shortDays.map((val, index) =>
-                <th className='ms-DatePicker-weekday' scope='col' key={ index } title={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }>
-                  { strings.shortDays[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
-                </th>) }
-            </tr>
-          </thead>
-          <tbody>
-            {weeks.map((week, index) =>
-              <tr key={index}>
-                {week.map(day =>
-                  <td role='presentation' key={day.key}>
-                    <div
-                      className={ css('ms-DatePicker-day', {
-                        'ms-DatePicker-day--infocus': day.isInMonth,
-                        'ms-DatePicker-day--outfocus': !day.isInMonth,
-                        'ms-DatePicker-day--today': day.isToday,
-                        'ms-DatePicker-day--highlighted': day.isSelected
-                      }) }
-                        role='gridcell'
-                        onClick={ () => onSelectDate(day.originalDate) }
-                        aria-selected={ day.isSelected }
-                        id={ day.isSelected ? activeDescendantId : null } >
-                          {day.date}
-                    </div>
-                  </td>
-                ) }
+        <FocusZone>
+          <table className='ms-DatePicker-table' role='grid' aria-readonly='true' aria-multiselectable='false' aria-activedescendant={ activeDescendantId }>
+            <thead>
+              <tr>
+                { strings.shortDays.map((val, index) =>
+                  <th className='ms-DatePicker-weekday' scope='col' key={ index } title={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }>
+                    { strings.shortDays[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
+                  </th>) }
               </tr>
-            ) }
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+                {weeks.map((week, index) =>
+                  <tr key={index}>
+                    {week.map(day =>
+                      <td role='presentation' key={day.key}>
+                        <div
+                          className={ css('ms-DatePicker-day', {
+                            'ms-DatePicker-day--infocus': day.isInMonth,
+                            'ms-DatePicker-day--outfocus': !day.isInMonth,
+                            'ms-DatePicker-day--today': day.isToday,
+                            'ms-DatePicker-day--highlighted': day.isSelected
+                          }) }
+                            role='gridcell'
+                            onClick={ selectDayCallbacks[day.key] }
+                            onKeyDown={ this._onKeyDown.bind(this, selectDayCallbacks[day.key]) }
+                            aria-selected={ this._isSelectedDay(selectedDate, day) }
+                            id={ this._isSelectedDay(selectedDate, day) ? activeDescendantId : null }
+                            data-is-focusable={ true }
+                            ref={ this._isSelectedDay(selectedDate, day) ? 'selectedDay' : null }
+                            key={ this._isSelectedDay(selectedDate, day) ? 'selectedDay' : null } >
+                              {day.date}
+                        </div>
+                      </td>
+                    ) }
+                  </tr>
+                ) }
+            </tbody>
+          </table>
+        </FocusZone>
       </div>
     );
+  }
+
+  public focus() {
+    if (this.refs.selectedDay) {
+      this.refs.selectedDay.tabIndex = 0;
+      this.refs.selectedDay.focus();
+    }
+  }
+
+  private _isSelectedDay(selectedDate: Date, day: IDayInfo) {
+    return selectedDate ? day.isSelected : day.isToday;
+  }
+
+  private _onKeyDown(callback: () => void, ev: React.KeyboardEvent) {
+    if (ev.which === KeyCodes.enter) {
+      callback();
+    }
   }
 
   private _getWeeks(selectedDate: Date): IDayInfo[][] {
@@ -116,8 +164,8 @@ export default class DatePickerDay extends React.Component<IDatePickerDayProps, 
           date: date.getDate(),
           originalDate: new Date(date.toString()),
           isInMonth: date.getMonth() === selectedDate.getMonth(),
-          isToday: this.compareDates(today, date),
-          isSelected: this.compareDates(selectedDate, date)
+          isToday: this._compareDates(today, date),
+          isSelected: this._compareDates(selectedDate, date)
         };
 
         week.push(dayInfo);
@@ -137,9 +185,7 @@ export default class DatePickerDay extends React.Component<IDatePickerDayProps, 
     return weeks;
   }
 
-  private compareDates(date1: Date, date2: Date) {
-    return (date1.getFullYear() === date2.getFullYear()
-      && date1.getMonth() === date2.getMonth()
-      && date1.getDate() === date2.getDate());
+  private _compareDates(date1: Date, date2: Date) {
+    return date1.getTime() === date2.getTime();
   }
 }
