@@ -91,13 +91,13 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
   }
 
   private _onFocus(ev: FocusEvent) {
-    let { selection } = this.props;
+    let { selection, selectionMode } = this.props;
     let index = this._getIndexFromElement(ev.target as HTMLElement);
 
-    if (index >= 0) {
+    if (index >= 0 && selectionMode !== SelectionMode.none) {
       selection.setChangeEvents(false);
 
-      if (this._isShiftPressed) {
+      if (this._isShiftPressed && selectionMode === SelectionMode.multiple) {
         selection.setAllSelected(false);
         selection.selectToIndex(index);
       } else if (!this._isCtrlPressed && !this._isMetaPressed) {
@@ -111,17 +111,29 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
 
   private _onMouseDown(ev: MouseEvent) {
     let target = ev.target as HTMLElement;
-    let { selection } = this.props;
+    let { selection, selectionMode } = this.props;
     let isToggleElement = this._isToggleElement(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);
     let isToggleAllElement = !isToggleElement && this._isToggleElement(target, SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME);
     let index = this._getIndexFromElement(target, true);
 
-    if (isToggleElement) {
-      selection.toggleIndexSelected(index);
-    } else if (isToggleAllElement) {
-      selection.toggleAllSelected();
-    } else {
-      return;
+    if (index >= 0 && selectionMode !== SelectionMode.none) {
+      let isSelected = selection.isIndexSelected(index);
+
+      if (isToggleElement) {
+        selection.setChangeEvents(false);
+        if (selectionMode === SelectionMode.single) {
+          selection.setAllSelected(false);
+        }
+        selection.setIndexSelected(index, !isSelected, true);
+        selection.setChangeEvents(true);
+      } else if (isToggleAllElement) {
+        selection.toggleAllSelected();
+      } else {
+        return;
+      }
+
+      ev.preventDefault();
+      ev.stopPropagation();
     }
   }
 
@@ -133,30 +145,44 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
 
   private _onKeyDown(ev: KeyboardEvent) {
     let target = ev.target as HTMLElement;
-    let { selection, onItemInvoked } = this.props;
+    let { selection, selectionMode, onItemInvoked } = this.props;
     let isToggleElement = this._isToggleElement(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);
     let isToggleAllElement = !isToggleElement && this._isToggleElement(target, SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME);
     let index = this._getIndexFromElement(target, true);
 
-    if (index >= 0 && !this._isInputElement(target)) {
+    if (index >= 0 && !this._isInputElement(target) && selectionMode !== SelectionMode.none) {
+      let isSelected = selection.isIndexSelected(index);
+
       if (ev.which === KeyCodes.space) {
         if (isToggleAllElement) {
-          selection.toggleAllSelected();
-        } else {
-          selection.toggleIndexSelected(index);
+          if (selectionMode === SelectionMode.multiple) {
+            selection.toggleAllSelected();
+          }
+        } else { // an item
+          selection.setChangeEvents(false);
+          if (selectionMode === SelectionMode.single) {
+            selection.setAllSelected(false);
+          }
+          selection.setIndexSelected(index, !isSelected, true);
+          selection.setChangeEvents(true);
         }
       } else if (ev.which === KeyCodes.enter) {
         if (isToggleAllElement) {
           selection.toggleAllSelected();
         } else if (isToggleElement) {
-          selection.toggleIndexSelected(index);
-        } else if (this._getIndexFromElement(target) >= 0) {
+          selection.setChangeEvents(false);
+          if (selectionMode === SelectionMode.single) {
+            selection.setAllSelected(false);
+          }
+          selection.setIndexSelected(index, !isSelected, true);
+          selection.setChangeEvents(true);
+        } else if (this._getIndexFromElement(target) >= 0 && onItemInvoked) {
           // if the target IS the item, and not a link inside, then call the invoke method.
           onItemInvoked(selection.getItems()[index], index, ev);
         } else {
           return;
         }
-      } else if (ev.which === KeyCodes.a && (ev.ctrlKey || ev.metaKey)) {
+      } else if (ev.which === KeyCodes.a && (ev.ctrlKey || ev.metaKey) && selectionMode === SelectionMode.multiple) {
         selection.setAllSelected(true);
       } else if (ev.which === KeyCodes.escape) {
         selection.setAllSelected(false);
