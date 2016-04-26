@@ -125,4 +125,21 @@ export interface IContextualMenuItem {
    * A collection of submenu items
    */
   items?: IContextualMenuItem[];
+
+  /**
+   * Additional css class to apply to the menu item
+   * @defaultvalue undefined
+   */
+  className?: string;
+
+  /**
+   * Method to custom render this menu item
+   * @defaultvalue undefined
+   */
+  onRender?: (item: any) => React.ReactNode;
+
+  /**
+   * Any additional properties to use when custom rendering menu items.
+   */
+  [propertyName: string]: any;
 }

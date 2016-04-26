@@ -1,3 +1,5 @@
+@import '../../../../common';
+
 .ms-ContextualMenuDirectionalExample {
   position: relative;
 }
@@ -21,4 +23,36 @@
     top: 80px;
     text-align: center;
     width: 100%;
+}
+
+.ms-ContextualMenu-customizationExample-item {
+  display: inline-block;
+  padding: 3px;
+  margin: 2px;
+  @include float(left);
+
+  &:hover {
+    background-color: #eaeaea;
+  }
+
+  &:nth-of-type(7n-5) {
+    @include margin-left(15px);
+  }
+
+  &:nth-of-type(7n+2) {
+    @include clear(left);
+  }
+}
+
+.ms-ContextualMenu-customizationExample-categoriesList {
+  max-height: 200px;
+  overflow-y: auto;
+  margin: 0px;
+  padding: 0;
+  list-style-type: none;
+}
+
+.ms-ContextualMenu-customizationExample-categorySwatch {
+  @include margin-left(-10px);
+  @include margin-right(10px);
 }

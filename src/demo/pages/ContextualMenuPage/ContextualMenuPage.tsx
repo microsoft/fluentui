@@ -16,6 +16,9 @@ let ContextualMenuCheckmarksExampleCode = require('./examples/ContextualMenu.Che
 import ContextualMenuDirectionalExample from './examples/ContextualMenu.Directional.Example';
 let ContextualMenuDirectionalExampleCode = require('./examples/ContextualMenu.Directional.Example.tsx');
 
+import ContextualMenuCustomizationExample from './examples/ContextualMenu.Customization.Example';
+let ContextualMenuCustomizationExampleCode = require('./examples/ContextualMenu.Customization.Example.tsx');
+
 export default class ContextualMenuPage extends React.Component<any, any> {
   public render() {
     return (
@@ -37,6 +40,10 @@ export default class ContextualMenuPage extends React.Component<any, any> {
 
         <ExampleCard title='ContextualMenu beak/direction test' code= { ContextualMenuDirectionalExampleCode }>
           <ContextualMenuDirectionalExample />
+        </ExampleCard>
+
+        <ExampleCard title='ContextualMenu customization example' code= { ContextualMenuCustomizationExampleCode }>
+          <ContextualMenuCustomizationExample />
         </ExampleCard>
 
         <PropertiesTableSet componentName='ContextualMenu' />

@@ -204,10 +204,15 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
               { items.map((item, index) => (
                 // If the item name is equal to '-', a divider will be generated.
                 item.name === '-' ? (
-                  <li key={ item.key || index } className='ms-ContextualMenu-item ms-ContextualMenu-item--divider'></li>
+                  <li
+                    key={ item.key || index }
+                    className={ css('ms-ContextualMenu-item ms-ContextualMenu-item--divider', item.className ) }/>
                 ) : (
-                    <li key={ item.key || index } className='ms-ContextualMenu-item' ref={ item.key }>
-                      { this._renderMenuItem(item, index, hasCheckmarks, hasIcons) }
+                    <li
+                      key={ item.key || index }
+                      className={ css('ms-ContextualMenu-item', item.className ) }
+                      ref={ item.key }>
+                        { this._renderMenuItem(item, index, hasCheckmarks, hasIcons) }
                     </li>
                   )
               )) }
@@ -223,6 +228,10 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
 
   private _renderMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
     let { expandedMenuItemKey, subMenuId } = this.state;
+
+    if (item.onRender) {
+      return item.onRender(item);
+    }
 
     return React.createElement(
             item.href ? 'a' : 'button',
