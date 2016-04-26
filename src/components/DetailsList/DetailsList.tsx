@@ -138,7 +138,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       rowElementEventMap,
       dragDropEvents,
       onRenderMissingItem,
-      isGroupLoading
+      isGroupLoading,
+      loadingText
     } = this.props;
     let { adjustedColumns, layoutMode, groups, isAllCollapsed } = this.state;
     let { _selection: selection } = this;
@@ -171,6 +172,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           onToggleSelectGroup={ this._onToggleSelectGroup }
           onToggleSummarize={ this._onToggleSummarize }
           isGroupLoading={ isGroupLoading }
+          loadingText={ loadingText }
           />
         ) : null
     ));
@@ -247,6 +249,9 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     let group = groups ? groups[groupIndex] : null;
 
     if (group) {
+      if (this.props.onToggleCollapse) {
+        this.props.onToggleCollapse(group);
+      }
       group.isCollapsed = !group.isCollapsed;
       this.forceUpdate();
     }

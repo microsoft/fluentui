@@ -82,6 +82,9 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** Text shown on group headers to indicate the group is being loaded. */
   loadingText?: string;
+
+  /** Callback for when a group is expanded or collapsed. */
+  onToggleCollapse?: (group?: IGroup) => void;
 }
 
 export interface IColumn {
