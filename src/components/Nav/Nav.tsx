@@ -91,7 +91,7 @@ export default class Nav extends React.Component<INavProps, INavState> {
         </button> : null)
         }
 
-        <div className='ms-Nav-groupContent ms-u-slideDownIn20' data-focus-zone-enabled={ isGroupExpanded }>
+        <div className='ms-Nav-groupContent ms-u-slideDownIn20'>
         { this.renderLinks(group.links) }
         </div>
       </div>

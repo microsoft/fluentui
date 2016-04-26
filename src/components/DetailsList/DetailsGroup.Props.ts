@@ -36,6 +36,9 @@ export interface IDetailsGroupProps extends React.Props<DetailsGroup> {
   /** Grouping item limit. */
   groupItemLimit?: number;
 
+  /** Text to display for the group footer show all link. */
+  showAllLinkText?: string;
+
   /** Event names and corresponding callbacks that will be registered to the group and the rendered row elements */
   eventsToRegister?: [{ eventName: string, callback: (context: IDragDropContext, event?: any) => void }];
 
@@ -59,5 +62,5 @@ export interface IDetailsGroupProps extends React.Props<DetailsGroup> {
   onToggleSelectGroup?: (groupIndex: number) => void;
 
   /** Callback for when the "Show All" link in group footer is clicked */
-  onShowMore?: (groupIndex: number) => void;
+  onToggleSummarize?: (groupIndex: number) => void;
 }

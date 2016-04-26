@@ -4,7 +4,6 @@ import { IListProps } from './List.Props';
 import { css } from '../../utilities/css';
 import { assign } from '../../utilities/object';
 import Async from '../../utilities/Async/Async';
-import { SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 
 const MIN_SCROLL_UPDATE_DELAY = 40;
 const MAX_SCROLL_UPDATE_DELAY = 200;
@@ -80,11 +79,6 @@ export default class List extends React.Component<IListProps, IListState> {
     this._focusedIndex = -1;
     this._scrollingToIndex = -1;
     this._getItemCountForPage = props.getItemCountForPage || this._getItemCountForPage;
-
-    if (props.selection) {
-      this._events.on(props.selection, SELECTION_CHANGE, this._onSelectionChanged);
-      this._focusedIndex = props.selection.getFocusedIndex();
-    }
   }
 
   public componentDidMount() {
@@ -96,6 +90,7 @@ export default class List extends React.Component<IListProps, IListState> {
 
     this._events.on(window, 'scroll', this._onScroll, true);
     this._events.on(window, 'resize', this._onResize);
+    this._events.on(this.refs.root, 'focus', this._onFocus, true);
   }
 
   public componentWillUnmount() {
@@ -186,7 +181,7 @@ export default class List extends React.Component<IListProps, IListState> {
       let item = page.items[i];
 
       cells.push(
-        <div className='ms-List-cell' key={ (page.startIndex + i) } data-automationid='ListCell'>
+        <div className='ms-List-cell' key={ (page.startIndex + i) } data-list-index={ i + page.startIndex } data-automationid='ListCell'>
           { onRenderCell(item, page.startIndex + i) }
         </div>
       );
@@ -239,19 +234,19 @@ export default class List extends React.Component<IListProps, IListState> {
     return didScroll;
   }
 
-  private _onSelectionChanged() {
-    let { selection, startIndex } = this.props;
-    let focusedIndex = selection.getFocusedIndex();
-    let isIndexOwnedByList = focusedIndex >= startIndex && focusedIndex < (startIndex + this._getRenderCount());
-    let shouldScroll = !!(this._focusedIndex !== focusedIndex && selection.getIsFocusActive()) && isIndexOwnedByList;
+  /** Track the last item index focused so that we ensure we keep it rendered. */
+  private _onFocus(ev) {
+    let target = ev.target as HTMLElement;
 
-    if (shouldScroll) {
-      this._scrollingToIndex = focusedIndex;
-      if (!this.scrollTo(focusedIndex)) {
-        this._focusedIndex = this._scrollingToIndex;
-        this._scrollingToIndex = -1;
-        this._updatePages();
+    while (target !== this.refs.surface) {
+      let indexString = target.getAttribute('data-list-index');
+
+      if (indexString) {
+        this._focusedIndex = Number(indexString);
+        break;
       }
+
+      target = target.parentElement;
     }
   }
 
@@ -365,7 +360,7 @@ export default class List extends React.Component<IListProps, IListState> {
       let pageIsFocused = focusedIndex >= itemIndex && focusedIndex < (itemIndex + itemsPerPage);
 
       // Only render whats visible
-      if (pageIsVisible || pageIsFocused) {
+      if (pageIsVisible || pageIsFocused || itemIndex === 0) {
         if (currentSpacer) {
           pages.push(currentSpacer);
           currentSpacer = null;

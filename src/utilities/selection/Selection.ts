@@ -9,9 +9,7 @@ export class Selection implements ISelection {
   private _exemptedIndices: { [index: string]: boolean };
   private _exemptedCount: number;
   private _keyToIndexMap: { [key: string]: number };
-  private _isFocusActive: boolean;
   private _anchoredIndex: number;
-  private _focusedIndex: number;
   private _onSelectionChanged: () => void;
   private _areChangeEventsEnabled: boolean;
   private _hasChanged: boolean;
@@ -19,9 +17,7 @@ export class Selection implements ISelection {
   constructor(onSelectionChanged?: () => void) {
     this._exemptedCount = 0;
     this._anchoredIndex = 0;
-    this._focusedIndex = 0;
     this.setItems([], true);
-    this._isFocusActive = false;
 
     this._areChangeEventsEnabled = true;
     this._onSelectionChanged = onSelectionChanged;
@@ -59,16 +55,6 @@ export class Selection implements ISelection {
 
     if (shouldClear) {
       this.setAllSelected(false);
-      this._focusedIndex = 0;
-    } else {
-      if (this._focusedIndex >= 0 && this._items) {
-        let lastFocusedItem = this._items[this._focusedIndex];
-        let lastFocusedKey = lastFocusedItem ? lastFocusedItem.key : '';
-
-        if (lastFocusedKey) {
-          this._focusedIndex = newKeyToIndexMap[lastFocusedKey];
-        }
-      }
     }
 
     // Check the exemption list for discrepencies.
@@ -127,20 +113,6 @@ export class Selection implements ISelection {
     return this._isAllSelected ? (this._items.length - this._exemptedCount) : (this._exemptedCount);
   }
 
-  public getIsFocusActive(): boolean {
-    return this._isFocusActive;
-  }
-
-  public getFocusedIndex(): number {
-    return (this._items && this._items.length) ? (this._focusedIndex || 0) : -1;
-  }
-
-  public getFocusedKey(): string {
-    let focusedItem = this._items[this.getFocusedIndex()];
-
-    return focusedItem ? focusedItem.key : null;
-  }
-
   public isAllSelected(): boolean {
     return (
       (this.count > 0) &&
@@ -168,15 +140,15 @@ export class Selection implements ISelection {
     this._updateCount();
   }
 
-  public setKeySelected(key: string, isSelected: boolean, shouldFocus: boolean, shouldAnchor: boolean) {
+  public setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean) {
     let index = this._keyToIndexMap[key];
 
     if (index >= 0) {
-      this.setIndexSelected(index, isSelected, shouldFocus, shouldAnchor);
+      this.setIndexSelected(index, isSelected, shouldAnchor);
     }
   }
 
-  public setIndexSelected(index: number, isSelected: boolean, shouldFocus: boolean, shouldAnchor: boolean) {
+  public setIndexSelected(index: number, isSelected: boolean, shouldAnchor: boolean) {
     // Clamp the index.
     index = Math.min(Math.max(0, index), this._items.length - 1);
 
@@ -203,33 +175,12 @@ export class Selection implements ISelection {
       this._exemptedCount++;
     }
 
-    if (shouldFocus) {
-      this.setIndexFocused(index);
-    }
-
     if (shouldAnchor) {
       this._anchoredIndex = index;
     }
 
     if (hasChanged) {
       this._updateCount();
-    }
-  }
-
-  public setIsFocusActive(isFocusActive: boolean) {
-    if (isFocusActive !== this._isFocusActive) {
-      this._isFocusActive = isFocusActive;
-    }
-  }
-
-  public setKeyFocused(key: string) {
-    this.setIndexFocused(this._keyToIndexMap[key]);
-  }
-
-  public setIndexFocused(index: number) {
-    if (this._focusedIndex !== index && index !== undefined && index >= 0 && index < this._items.length) {
-      this._focusedIndex = index;
-      this._change();
     }
   }
 
@@ -246,7 +197,7 @@ export class Selection implements ISelection {
     this.setChangeEvents(false);
 
     for (; startIndex <= endIndex; startIndex++) {
-      this.setIndexSelected(startIndex, true, index === startIndex, false);
+      this.setIndexSelected(startIndex, true, false);
     }
 
     this.setChangeEvents(areChangeEventsEnabled);
@@ -257,11 +208,11 @@ export class Selection implements ISelection {
   }
 
   public toggleKeySelected(key: string) {
-    this.setKeySelected(key, !this.isKeySelected(key), true, true);
+    this.setKeySelected(key, !this.isKeySelected(key), true);
   }
 
   public toggleIndexSelected(index: number) {
-    this.setIndexSelected(index, !this.isIndexSelected(index), true, true);
+    this.setIndexSelected(index, !this.isIndexSelected(index), true);
   }
 
   private _updateCount() {

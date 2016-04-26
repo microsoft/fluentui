@@ -62,40 +62,51 @@ export default class DetailsGroup extends React.Component<IDetailsGroupProps, ID
   }
 
   public render() {
-    let { group, groupIndex, groupItemLimit, items, selection, onToggleCollapse, onToggleSelectGroup, onShowMore } = this.props;
+    let {
+      group,
+      groupIndex,
+      groupItemLimit,
+      items,
+      onToggleCollapse,
+      onToggleSelectGroup,
+      onToggleSummarize,
+      selection,
+      showAllLinkText
+    } = this.props;
 
     return (
       <div
         ref='root'
         className={ css('ms-DetailsList-group', this._getDroppingClassName()) }>
         <GroupHeader
-          ref={ 'header' }
           group={ group }
           groupIndex={ groupIndex }
           onToggleCollapse={ onToggleCollapse }
           onToggleSelectGroup={ onToggleSelectGroup }
+          ref={ 'header' }
         />
         {
           group && group.isCollapsed ?
           null :
           <List
-            ref={ 'list' }
             items={ items }
-            startIndex={ group ? group.startIndex : 0 }
-            renderCount={ this._getRenderCount(group) }
             onRenderCell={ this._onRenderCell }
+            ref={ 'list' }
+            renderCount={ this._getRenderCount(group) }
             selection={ selection }
+            startIndex={ group ? group.startIndex : 0 }
           />
         }
         {
           group && group.isCollapsed && !group.isShowingAll ?
           null :
           <GroupFooter
-            ref={ 'footer' }
             group={ group }
             groupIndex={ groupIndex }
             groupItemLimit={ groupItemLimit }
-            onShowMore={ onShowMore }
+            onToggleSummarize={ onToggleSummarize }
+            ref={ 'footer' }
+            showAllLinkText={ showAllLinkText }
           />
         }
        </div>

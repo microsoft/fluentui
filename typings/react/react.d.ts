@@ -329,6 +329,7 @@ declare namespace __React {
     }
 
     interface SVGProps extends SVGAttributes, Props<SVGElement> {
+        focusable?: string;
     }
 
     interface DOMAttributes {
@@ -348,6 +349,7 @@ declare namespace __React {
 
         // Focus Events
         onFocus?: FocusEventHandler;
+        onFocusCapture?: FocusEventHandler;
         onBlur?: FocusEventHandler;
         onBlurCapture?: FocusEventHandler;
 
@@ -362,6 +364,7 @@ declare namespace __React {
 
         // Keyboard Events
         onKeyDown?: KeyboardEventHandler;
+        onKeyDownCapture?: KeyboardEventHandler;
         onKeyPress?: KeyboardEventHandler;
         onKeyUp?: KeyboardEventHandler;
 
@@ -403,12 +406,14 @@ declare namespace __React {
         onDragStart?: DragEventHandler;
         onDrop?: DragEventHandler;
         onMouseDown?: MouseEventHandler;
+        onMouseDownCapture?: MouseEventHandler;
         onMouseEnter?: MouseEventHandler;
         onMouseLeave?: MouseEventHandler;
         onMouseMove?: MouseEventHandler;
         onMouseOut?: MouseEventHandler;
         onMouseOver?: MouseEventHandler;
         onMouseUp?: MouseEventHandler;
+        onMouseUpCapture?: MouseEventHandler;
 
         // Selection Events
         onSelect?: ReactEventHandler;

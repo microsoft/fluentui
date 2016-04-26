@@ -47,7 +47,6 @@ function _getAppRoutes() {
 }
 
 function _onUnload() {
-  console.log('unloading');
   if (rootElement) {
     ReactDOM.unmountComponentAtNode(rootElement);
   }

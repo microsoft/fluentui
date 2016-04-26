@@ -1,17 +1,18 @@
 import * as React from 'react';
 import {
   CommandBar,
-  IColumn,
-  IGroup,
   ConstrainMode,
-  DetailsList,
-  buildColumns,
-  DetailsListLayoutMode as LayoutMode,
   ContextualMenu,
-  IContextualMenuItem,
+  DetailsList,
+  DetailsListLayoutMode as LayoutMode,
   DirectionalHint,
+  IColumn,
+  IContextualMenuItem,
   IContextualMenuProps,
-  TextField
+  IGroup,
+  Link,
+  TextField,
+  buildColumns
 } from '../../../../components/index';
 import { SelectionMode } from '../../../../utilities/selection/interfaces';
 import { createListItems, isGroupable } from '../../../utilities/data';
@@ -104,6 +105,7 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
           groups={ groups }
           columns={ columns }
           layoutMode={ layoutMode }
+          showAllLinkText='Show all'
           selectionMode={ selectionMode }
           constrainMode={ constrainMode }
           groupItemLimit={ groupItemLimit }
@@ -410,6 +412,10 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
       column.isGroupable = isGroupable(column.key);
       if (column.key === 'description') {
         column.isMultiline = true;
+      } else if (column.key === 'name') {
+        column.getCellContent = (item) => (
+          <Link href='#'>{ item.name }</Link>
+        );
       }
     });
 

@@ -3,12 +3,13 @@ import './GroupHeader.scss';
 import Check from './Check';
 import { IGroup } from './index';
 import { css } from '../../utilities/css';
+import { FocusZone, FocusZoneDirection } from '../../utilities/focus';
 
 export interface IGroupHeaderProps {
   group: IGroup;
   groupIndex: number;
-  onToggleCollapse?: (groupIdx: number) => void;
-  onToggleSelectGroup?: (groupIdx: number) => void;
+  onToggleCollapse?: (groupIndex: number) => void;
+  onToggleSelectGroup?: (groupIndex: number) => void;
 }
 
 export interface IGroupHeaderState {
@@ -38,33 +39,41 @@ export default class GroupHeader extends React.Component<IGroupHeaderProps, IGro
   public render() {
     let { group } = this.props;
     let { isCollapsed } = this.state;
-
     let showCheckBox = true;
     let isSelected = group && group.isSelected;
 
-    let checkBox = showCheckBox ? (
-      <button
-        tabIndex={ -1 }
-        className='ms-GroupHeader-check'
-        data-selection-toggle={ true }
-      >
-        <Check isChecked={ isSelected } />
-      </button>
-      ) :
-      null;
-
-    return group ? (
-      <div className={ css('ms-GroupHeader ms-font-xl', {
+    return group && (
+      <div
+        className={ css('ms-GroupHeader', {
           'is-selected': isSelected
-        }) } onClick={ this._onToggleSelectGroup }>
-        { checkBox }
-        <i className={ css('ms-GroupHeader-expandButton ms-Icon ms-Icon--chevronDown', {
-          'is-collapsed': isCollapsed
-        }) } onClick={ this._onToggleCollapse }></i>
-        <div className='ms-GroupHeader-title'>{ group.name } ( { group.count } )</div>
+        }) }
+        onClick={ this._onToggleSelectGroup }
+        data-is-focusable={ true } >
+
+        <FocusZone direction={ FocusZoneDirection.horizontal }>
+
+          { showCheckBox && (
+            <button
+              className='ms-GroupHeader-check'
+              data-selection-toggle={ true } >
+              <Check isChecked={ isSelected } />
+            </button>
+          )}
+
+          <button className='ms-GroupHeader-expand' onClick={ this._onToggleCollapse }>
+            <i className={ css('ms-Icon ms-Icon--chevronDown', {
+              'is-collapsed': isCollapsed
+            })} />
+          </button>
+
+          <div className='ms-GroupHeader-title ms-font-xl'>
+            <span>{ group.name }</span>
+            <span>( {group.count} )</span>
+          </div>
+
+        </FocusZone>
       </div>
-    ) :
-    null;
+    );
   }
 
   private _onToggleCollapse(ev?: any) {

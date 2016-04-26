@@ -1,42 +1,44 @@
 import * as React from 'react';
-import './GroupFooter.scss';
+import Link from '../Link/index';
 import { IGroup } from './index';
+import './GroupFooter.scss';
 
 export interface IGroupFooterProps {
   group: IGroup;
   groupIndex: number;
   groupItemLimit: number;
-  onShowMore?: (groupIndex: number) => void;
+  showAllLinkText?: string;
+  onToggleSummarize?: (groupIndex: number) => void;
 }
 
-export interface IGroupFooterState {
-}
-
-export default class GroupFooter extends React.Component<IGroupFooterProps, IGroupFooterState> {
+export default class GroupFooter extends React.Component<IGroupFooterProps, {}> {
   constructor(props: IGroupFooterProps) {
     super(props);
 
-    this._onShowMore = this._onShowMore.bind(this);
+    this._onToggleSummarize = this._onToggleSummarize.bind(this);
   }
 
   public render() {
-    let { group, groupItemLimit } = this.props;
+    let { group, groupItemLimit, showAllLinkText } = this.props;
 
     let showFooter = group && !group.isShowingAll && group.count > groupItemLimit;
 
     return showFooter ? (
-      <div className='ms-groupFooter ms-font-s' onClick={ this._onShowMore } >
-        Show All
+      <div className='ms-groupFooter'>
+        <Link
+          onClick={ this._onToggleSummarize }>
+          { showAllLinkText }
+        </Link>
       </div>
     ) :
     null;
   }
 
-  private _onShowMore() {
-    let { groupIndex, onShowMore } = this.props;
+  private _onToggleSummarize() {
+    let { groupIndex, onToggleSummarize } = this.props;
 
-    if (onShowMore) {
-      onShowMore(groupIndex);
+    if (onToggleSummarize) {
+      onToggleSummarize(groupIndex);
     }
   }
 }

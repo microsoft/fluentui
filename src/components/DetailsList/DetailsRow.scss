@@ -1,6 +1,7 @@
 @import '../../common';
 
 $rowHeight: 36px;
+$rowVerticalPadding: 10px;
 $focusedBorderColor: $ms-color-neutralTertiary;
 $selectedColor: $ms-color-themeLighter;
 $selectedHoverColor: $ms-color-themeLight;
@@ -15,11 +16,16 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
   margin: 1px 0;
   vertical-align: top;
   white-space: nowrap;
-  padding: 10px 0;
+  padding: $rowVerticalPadding 0;
   user-select: none;
-
   cursor: default;
   box-sizing: border-box;
+
+  background: none;
+  border: none;
+  @include text-align(left);
+  vertical-align: top;
+  line-height: $rowHeight - ($rowVerticalPadding * 2);
 
   &.ms-DetailsRow.is-selected {
     background: $selectedColor;
@@ -61,6 +67,8 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
 }
 
 .ms-DetailsRow-check {
+  @include focus-border($focusedBorderColor);
+
   display: inline-block;
   cursor: default;
   padding: 10px;
@@ -69,19 +77,19 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
   vertical-align: top;
   background: none;
   border: none;
-
-  &:focus {
-   outline: transparent;
-  }
 }
 
 .ms-DetailsRow-check {
-  visibility: hidden;
+  opacity: 0;
+
+  &:focus {
+    opacity: 1;
+  }
 }
 
 .ms-Fabric.is-stationary .ms-DetailsRow:hover .ms-DetailsRow-check,
 .ms-DetailsRow.is-selected .ms-DetailsRow-check {
-  visibility: visible;
+  opacity: 1;
 }
 
 // TODO: delete?

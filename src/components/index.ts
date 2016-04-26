@@ -60,3 +60,5 @@ export { default as TextField } from './TextField/index';
 export * from './TextField/index';
 export { default as Toggle } from './Toggle/index';
 export * from './Toggle/index';
+export { default as Image } from './Image/index';
+export * from './Image/index';

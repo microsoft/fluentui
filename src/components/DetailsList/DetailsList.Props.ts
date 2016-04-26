@@ -41,6 +41,9 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /** Grouping item limit. */
   groupItemLimit?: number;
 
+  /** Text to display for the group footer show all link. */
+  showAllLinkText?: string;
+
   /** Event names and corresponding callbacks that will be registered to rendered row elements. */
   rowElementEventMap?: [{ eventName: string, callback: (context: IDragDropContext, event?: any) => void }];
 

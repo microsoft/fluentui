@@ -6,12 +6,13 @@ import EventGroup from '../../utilities/eventGroup/EventGroup';
 import { shallowCompare, assign } from '../../utilities/object';
 import { css } from '../../utilities/css';
 import DetailsRowFields from './DetailsRowFields';
-import './DetailsRow.scss';
+import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
 import {
   IDragDropHelper,
   IDragDropEvents,
   IDragDropOptions
 } from './../../utilities/dragdrop/interfaces';
+import './DetailsRow.scss';
 
 export interface IDetailsRowProps extends React.Props<DetailsRow> {
   item: any;
@@ -29,7 +30,6 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
 
 export interface IDetailsRowSelectionState {
   isSelected: boolean;
-  canFocus: boolean;
 }
 
 export interface IDetailsRowState {
@@ -88,8 +88,6 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
       this._hasMounted = true;
       this.props.onDidMount(this);
     }
-
-    this.setFocus();
   }
 
   public componentDidUpdate() {
@@ -111,8 +109,6 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
       this._hasMounted = true;
       onDidMount(this);
     }
-
-    this.setFocus();
   }
 
   public componentWillUnmount() {
@@ -130,21 +126,6 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
     }
   }
 
-  public setFocus() {
-    let { selection, itemIndex } = this.props;
-    let isFocused = selection.getFocusedIndex() === itemIndex;
-    let shouldSetFocus = !!(isFocused && selection.getIsFocusActive() && this.refs.root);
-
-    if (shouldSetFocus) {
-      if (!this._hasSetFocus) {
-        this._hasSetFocus = true;
-        this.refs.root.focus();
-      }
-    } else {
-      this._hasSetFocus = false;
-    }
-  }
-
   public componentWillReceiveProps(newProps: IDetailsRowProps) {
     this.setState({
       selectionState: this._getSelectionState(newProps),
@@ -154,7 +135,7 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
 
   public render() {
     let { selectionMode, columns, item, itemIndex, dragDropEvents } = this.props;
-    let { selectionState: { isSelected, canFocus }, columnMeasureInfo, isDropping, isGrouped } = this.state;
+    let { selectionState: { isSelected }, columnMeasureInfo, isDropping, isGrouped } = this.state;
     let isDraggable = Boolean(dragDropEvents && dragDropEvents.canDrag && dragDropEvents.canDrag(item));
     let droppingClassName = isDropping ? (this._droppingClassNames ? this._droppingClassNames : DEFAULT_DROPPING_CSS_CLASS) : '';
     let key = item ? item.key : '';
@@ -165,41 +146,40 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
         className={ css('ms-DetailsRow ms-font-s', droppingClassName, {
           'is-selected': isSelected
         }) }
+        data-is-focusable={ true }
         data-selection-key={ key }
         data-selection-index={ itemIndex }
         data-is-draggable={ isDraggable }
-        tabIndex={ canFocus ? 0 : -1 }
         data-automationid='DetailsRow'
         >
+        <FocusZone direction={ FocusZoneDirection.horizontal }>
+          { (selectionMode !== SelectionMode.none) && (
+            <button
+              className='ms-DetailsRow-check'
+              data-selection-toggle={ true }
+              data-automationid='DetailsRowCheck'
+              >
+              <Check isChecked={ isSelected } />
+            </button>
+          ) }
 
-        { (selectionMode !== SelectionMode.none) && (
-          <button
-            tabIndex={ -1 }
-            className='ms-DetailsRow-check'
-            data-selection-toggle={ true }
-            data-automationid='DetailsRowCheck'
-            >
-            <Check isChecked={ isSelected } />
-          </button>
-        ) }
+          { isGrouped && (
+            <span className='ms-DetailsRow-collapseGroupSpacer' />
+          ) }
 
-        { isGrouped && (
-          <span className='ms-DetailsRow-collapseGroupSpacer' />
-        ) }
+          { item && (
+            <DetailsRowFields
+              columns={ columns }
+              item={ item }
+              itemIndex={ itemIndex } />
+          ) }
 
-        { item && (
-          <DetailsRowFields
-            columns={ columns }
-            item={ item }
-            itemIndex={ itemIndex } />
-        ) }
-
-        { columnMeasureInfo && (
-          <span className='ms-DetailsRow-cellMeasurer ms-DetailsRow-cell' ref='cellMeasurer'>
-            <DetailsRowFields columns={ [ columnMeasureInfo.column ] } item={ item } itemIndex={ itemIndex } />
-          </span>
-        ) }
-
+          { columnMeasureInfo && (
+            <span className='ms-DetailsRow-cellMeasurer ms-DetailsRow-cell' ref='cellMeasurer'>
+              <DetailsRowFields columns={ [ columnMeasureInfo.column ] } item={ item } itemIndex={ itemIndex } />
+            </span>
+          ) }
+        </FocusZone>
       </div>
     );
   }
@@ -230,8 +210,7 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
     let { itemIndex, selection } = props;
 
     return {
-      isSelected: selection.isIndexSelected(itemIndex),
-      canFocus: selection.getFocusedIndex() === itemIndex
+      isSelected: selection.isIndexSelected(itemIndex)
     };
   }
 

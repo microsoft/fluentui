@@ -30,19 +30,11 @@ export interface ISelection {
   isKeySelected(key: string): boolean;
   isIndexSelected(index: number): boolean;
 
-  getIsFocusActive(): boolean;
-  getFocusedKey(): string;
-  getFocusedIndex(): number;
-
   // Write selection methods.
 
   setAllSelected(isAllSelected: boolean);
-  setKeySelected(key: string, isSelected: boolean, shouldFocus: boolean, shouldAnchor: boolean);
-  setIndexSelected(index: number, isSelected: boolean, shouldFocus: boolean, shouldAnchor: boolean);
-
-  setIsFocusActive(isFocusActive: boolean);
-  setKeyFocused(key: string);
-  setIndexFocused(index: number);
+  setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean);
+  setIndexSelected(index: number, isSelected: boolean, shouldAnchor: boolean);
 
   // Write range selection methods.
 
@@ -57,10 +49,10 @@ export interface ISelection {
 }
 
 export interface ISelectionLayout {
-  getItemIndexAbove(focusIndex: number, items: any[]): number;
-  getItemIndexBelow(focusIndex: number, items: any[]): number;
-  getItemIndexLeft(focusIndex: number, items: any[]): number;
-  getItemIndexRight(focusIndex: number, items: any[]): number;
+  getItemIndexAbove(index: number, items: any[]): number;
+  getItemIndexBelow(index: number, items: any[]): number;
+  getItemIndexLeft(index: number, items: any[]): number;
+  getItemIndexRight(index: number, items: any[]): number;
 }
 
 export enum SelectionDirection {

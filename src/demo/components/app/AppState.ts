@@ -114,7 +114,7 @@ export const AppState: IAppState = {
         {
           component: DocumentCardPage,
           name: 'DocumentCard',
-          status: ExampleStatus.beta,
+          status: ExampleStatus.started,
           url: '#/examples/documentcard'
         },
         {
@@ -253,7 +253,7 @@ export const AppState: IAppState = {
         {
           component: FocusZonePage,
           name: 'Focus zones',
-          status: ExampleStatus.started,
+          status: ExampleStatus.beta,
           url: '#examples/focuszone'
         },
         {

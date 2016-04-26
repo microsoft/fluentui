@@ -50,6 +50,10 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
 
   private _events: EventGroup;
 
+  private _isCtrlPressed: boolean;
+  private _isShiftPressed: boolean;
+  private _isMetaPressed: boolean;
+
   constructor() {
     super();
 
@@ -60,12 +64,15 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
     let element = this.refs.root;
 
     this._events.onAll(element, {
-      'click': this._onClick,
-      'keydown': this._onKeyDown
+      'keydown': this._onKeyDown,
+      'mousedown': this._onMouseDown
     });
 
     this._events.on(element, 'focus', this._onFocus, true);
-    this._events.on(element, 'blur', this._onBlur, true);
+
+    // Always know what the state of shift/ctrl/meta are.
+    this._events.on(window, 'keydown', this._onKeyChangeCapture, true);
+    this._events.on(window, 'keyup', this._onKeyChangeCapture, true);
   }
 
   public componentWillUnmount() {
@@ -84,184 +91,90 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
   }
 
   private _onFocus(ev: FocusEvent) {
-    this.props.selection.setIsFocusActive(true);
-
+    let { selection } = this.props;
     let index = this._getIndexFromElement(ev.target as HTMLElement);
 
     if (index >= 0) {
-      this.props.selection.setIndexFocused(index);
+      selection.setChangeEvents(false);
+
+      if (this._isShiftPressed) {
+        selection.setAllSelected(false);
+        selection.selectToIndex(index);
+      } else if (!this._isCtrlPressed && !this._isMetaPressed) {
+        selection.setAllSelected(false);
+        selection.setIndexSelected(index, true, true);
+      }
+
+      selection.setChangeEvents(true);
     }
   }
 
-  private _onBlur(ev: FocusEvent) {
-    if (!this.refs.root.contains(ev.relatedTarget as Node)) {
-      this.props.selection.setIsFocusActive(false);
+  private _onMouseDown(ev: MouseEvent) {
+    let target = ev.target as HTMLElement;
+    let { selection } = this.props;
+    let isToggleElement = this._isToggleElement(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);
+    let isToggleAllElement = !isToggleElement && this._isToggleElement(target, SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME);
+    let index = this._getIndexFromElement(target, true);
+
+    if (isToggleElement) {
+      selection.toggleIndexSelected(index);
+    } else if (isToggleAllElement) {
+      selection.toggleAllSelected();
+    } else {
+      return;
     }
+  }
+
+  private _onKeyChangeCapture(ev: KeyboardEvent) {
+    this._isShiftPressed = ev.shiftKey;
+    this._isCtrlPressed = ev.ctrlKey;
+    this._isMetaPressed = ev.metaKey;
   }
 
   private _onKeyDown(ev: KeyboardEvent) {
-    let {
-      selection,
-      layout,
-      selectionMode,
-      isSelectedOnFocus,
-      onItemInvoked
-    } = this.props;
+    let target = ev.target as HTMLElement;
+    let { selection, onItemInvoked } = this.props;
+    let isToggleElement = this._isToggleElement(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);
+    let isToggleAllElement = !isToggleElement && this._isToggleElement(target, SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME);
+    let index = this._getIndexFromElement(target, true);
 
-    let items = selection.getItems();
-    let eventTarget = ev.target as HTMLElement;
-    let isInput = this._isInputElement(eventTarget);
-
-    // Ignore selection events if originating from INPUT elements or TEXTAREAs.
-    if (isInput) {
-      return true;
-    }
-
-    let focusIndex = selection.getFocusedIndex();
-    let indexToSelect = -1;
-    let isShiftPressed = !!ev.shiftKey;
-    let isMetaPressed = !!ev.metaKey;
-    let isCtrlPressed = !!ev.ctrlKey;
-    let isHandled = true;
-
-    switch (ev.which) {
-      case KeyCodes.up:
-        indexToSelect = layout.getItemIndexAbove(focusIndex, items);
-        isHandled = indexToSelect !== focusIndex;
-        break;
-
-      case KeyCodes.down:
-        indexToSelect = layout.getItemIndexBelow(focusIndex, items);
-        isHandled = indexToSelect !== focusIndex;
-        break;
-
-      case KeyCodes.left:
-        indexToSelect = layout.getItemIndexLeft(focusIndex, items);
-        isHandled = indexToSelect !== focusIndex;
-        break;
-
-      case KeyCodes.right:
-        indexToSelect = layout.getItemIndexRight(focusIndex, items);
-        isHandled = indexToSelect !== focusIndex;
-        break;
-
-      case KeyCodes.home:
-        indexToSelect = 0;
-        break;
-
-      case KeyCodes.end:
-        indexToSelect = selection.getItems().length - 1;
-        break;
-
-      case KeyCodes.space:
-        selection.toggleIndexSelected(focusIndex);
-        ev.stopPropagation();
-        ev.preventDefault();
-        break;
-
-      case KeyCodes.escape:
-        if (selection.getSelectedCount() > 0) {
-          selection.setAllSelected(false);
-          ev.stopPropagation();
-          ev.preventDefault();
+    if (index >= 0 && !this._isInputElement(target)) {
+      if (ev.which === KeyCodes.space) {
+        if (isToggleAllElement) {
+          selection.toggleAllSelected();
+        } else {
+          selection.toggleIndexSelected(index);
         }
-        return;
-
-      case KeyCodes.enter:
-        if (onItemInvoked) {
-          onItemInvoked(items[focusIndex], focusIndex, ev);
+      } else if (ev.which === KeyCodes.enter) {
+        if (isToggleAllElement) {
+          selection.toggleAllSelected();
+        } else if (isToggleElement) {
+          selection.toggleIndexSelected(index);
+        } else if (this._getIndexFromElement(target) >= 0) {
+          // if the target IS the item, and not a link inside, then call the invoke method.
+          onItemInvoked(selection.getItems()[index], index, ev);
+        } else {
           return;
         }
-        break;
-
-      case KeyCodes.a:
-        if (selectionMode === SelectionMode.multiple && (isCtrlPressed || isMetaPressed)) {
-          selection.setAllSelected(true);
-          ev.stopPropagation();
-          ev.preventDefault();
-        }
+      } else if (ev.which === KeyCodes.a && (ev.ctrlKey || ev.metaKey)) {
+        selection.setAllSelected(true);
+      } else if (ev.which === KeyCodes.escape) {
+        selection.setAllSelected(false);
+      } else {
         return;
-
-      default:
-        // Do nothing. Let the event bubble.
-        return;
-    }
-
-    if (isHandled) {
-      selection.setChangeEvents(false);
-
-      if (indexToSelect >= 0 && indexToSelect !== focusIndex) {
-        if (selectionMode === SelectionMode.none) {
-          selection.setIndexFocused(indexToSelect);
-        } else if (isShiftPressed && selectionMode === SelectionMode.multiple) {
-          if (!isCtrlPressed && !isMetaPressed) {
-            selection.setAllSelected(false);
-          }
-          selection.selectToIndex(indexToSelect);
-        } else if (isCtrlPressed || isMetaPressed) {
-          selection.setIndexSelected(indexToSelect, selection.isIndexSelected(indexToSelect), true, true);
-        } else {
-          if (isSelectedOnFocus) {
-            selection.setAllSelected(false);
-            selection.setIndexSelected(indexToSelect, true, true, true);
-          } else {
-            selection.setIndexFocused(indexToSelect);
-          }
-        }
       }
-
-      selection.setChangeEvents(true);
-    }
-
-    // If we didn't return early, it means we handled the event so we cancel it.
-    return !isHandled;
-  }
-
-  private _onClick(ev: MouseEvent) {
-    let { selection, selectionMode } = this.props;
-
-    if (selectionMode === SelectionMode.none) {
+    } else {
       return;
     }
 
-    let target = ev.target as HTMLElement;
-    let index = this._getIndexFromElement(target);
-    let isToggleElement = this._isToggleElement(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);
-    let isToggleAllElement = !isToggleElement && this._isToggleElement(target, SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME);
-
-    if (index >= 0 || isToggleAllElement) {
-      let isShiftPressed = !!ev.shiftKey;
-      let isMetaPressed = !!ev.metaKey;
-      let isCtrlPressed = !!ev.ctrlKey;
-
-      selection.setChangeEvents(false);
-
-      if (isShiftPressed && selectionMode === SelectionMode.multiple) {
-        if (!isCtrlPressed) {
-          selection.setAllSelected(false);
-        }
-        selection.selectToIndex(index);
-      } else if (isCtrlPressed || isMetaPressed) {
-        selection.setIndexSelected(index, true, true, true);
-      } else if (isToggleElement) {
-        selection.toggleIndexSelected(index);
-      } else if (isToggleAllElement) {
-        selection.toggleAllSelected();
-      } else {
-        if (!selection.isIndexSelected(index) || selection.getSelectedCount() > 1) {
-          selection.setAllSelected(false);
-          selection.setIndexSelected(index, true, true, true);
-        }
-      }
-
-      selection.setChangeEvents(true);
-    }
+    ev.preventDefault();
+    ev.stopPropagation();
   }
 
   private _isToggleElement(element: HTMLElement, attributeName: string) {
     let isToggle = false;
 
-    while (!isToggle && element !== document.body) {
+    while (!isToggle && element !== this.refs.root) {
       isToggle = element.getAttribute(attributeName) === 'true';
       element = element.parentElement;
     }
@@ -273,18 +186,18 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
     return element.tagName === 'INPUT' || element.tagName === 'TEXTAREA';
   }
 
-  private _getIndexFromElement(element: HTMLElement): number {
+  private _getIndexFromElement(element: HTMLElement, traverseParents?: boolean): number {
     let index = -1;
 
-    while (index === -1 && element !== document.body) {
+    do {
       let indexString = element.getAttribute(SELECTION_INDEX_ATTRIBUTE_NAME);
 
-      if (!indexString) {
-        element = element.parentElement;
-      } else {
-        index = Number(indexString);
+      if (indexString) {
+          index = Number(indexString);
+          break;
       }
-    }
+      element = element.parentElement;
+    } while (traverseParents && element !== this.refs.root);
 
     return index;
   }

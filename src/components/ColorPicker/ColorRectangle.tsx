@@ -72,7 +72,7 @@ export default class ColorPicker extends React.Component<IColorRectangleProps, I
     let { color, fullColorString } = this.state;
 
     return (
-      <div ref='root' className='ms-ColorPicker-colorRect' style={ { 'min-width': minSize, 'min-height': minSize, backgroundColor: fullColorString } } onMouseDown={ this._onMouseDown }>
+      <div ref='root' className='ms-ColorPicker-colorRect' style={ { minWidth: minSize, minHeight: minSize, backgroundColor: fullColorString } } onMouseDown={ this._onMouseDown }>
         <div className='ms-ColorPicker-light' />
         <div className='ms-ColorPicker-dark' />
         <div className='ms-ColorPicker-thumb' style={ { left: color.s + '%', top: (MAX_COLOR_VALUE - color.v) + '%', backgroundColor: color.str } }/>

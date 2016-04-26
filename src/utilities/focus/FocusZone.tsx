@@ -1,493 +1,584 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import EventGroup from '../eventGroup/EventGroup';
-import { findIndex } from '../array';
 import KeyCodes from '../KeyCodes';
 import { getRTL } from '../rtl';
+import { css } from '../css';
+import { IFocusZoneProps, FocusZoneDirection } from './FocusZone.Props';
 
-const FOCUSABLE_ZONE_ENABLED_ATTRIBUTE = 'data-focus-zone-enabled';
-const CONTAINS_FOCUSABLE_SUBCOMPONENT_ATTRIBUTE = 'data-contains-focusable-subcomponents';
-const FOCUSABLE_CONTEXT_ATTRIBUTE = 'data-focusable-context';
-const NESTED_CONTEXT_ATTRIBUTE = 'data-nested-context';
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
+const FOCUSZONE_ID_ATTRIBUTE = 'data-focuszone-id';
 const TABINDEX = 'tabindex';
 
-export enum FocusZoneDirection {
-  vertical,
-  horizontal,
-  bidirectional
-}
+let _instance = 0;
+let _allInstances: {
+  [key: string]: FocusZone
+} = {};
 
-export interface IFocusZoneProps {
-  direction?: FocusZoneDirection;
-  isEnabled?: boolean;
-  isCircularNavigation?: boolean;
-  isChildZone?: boolean;
-  isNestedZone?: boolean;
-  onLostFocus?: (ev: React.FocusEvent) => void;
+interface IPoint {
+  left: number;
+  top: number;
+};
 
-  style?: { [key: string]: string };
-  className?: string;
-  ref?: string;
-  children?: React.ReactElement<any>[];
-  role?: string;
-  ariaLabelledBy?: string;
-  focusNamespace?: string;
-  nestedFocusNamespace?: string;
-  key?: string;
-}
+export default class FocusZone extends React.Component<IFocusZoneProps, {}> {
 
-export interface IFocusZoneState {
-  activeIndex: number;
-}
-
-export default class FocusZone extends React.Component<IFocusZoneProps, IFocusZoneState> {
-  public static defaultProps = {
-    isEnabled: true,
+  public static defaultProps: IFocusZoneProps = {
     isCircularNavigation: false,
-    isChildZone: false,
-    isNestedZone: false,
-    direction: FocusZoneDirection.vertical
+    direction: FocusZoneDirection.bidirectional
   };
 
+  public refs: {
+    [key: string]: React.ReactInstance,
+    root: HTMLElement
+  };
+
+  private _id: string;
+  private _activeElement: HTMLElement;
   private _events: EventGroup;
-  private _children: HTMLElement[] = undefined;
+  private _focusAlignment: IPoint;
+  private _isInnerZone: boolean;
 
   constructor(props) {
     super(props);
 
-    this.state = {
-      activeIndex: 0,
-    };
+    this._id = String(_instance++);
+    _allInstances[this._id] = this;
 
     this._events = new EventGroup(this);
+    this._onKeyDown = this._onKeyDown.bind(this);
+    this._onFocus = this._onFocus.bind(this);
+    this._onMouseDown = this._onMouseDown.bind(this);
+    this._updateTabIndexes = this._updateTabIndexes.bind(this);
   }
 
   public componentDidMount() {
-    let { isChildZone, isNestedZone } = this.props;
-    let element = (this.refs as any).root;
+    const windowElement = this.refs.root.ownerDocument.defaultView;
 
-    this._events.onAll(element, {
-      'keydown': this._onKeyDown
-    });
+    let parentElement = this.refs.root.parentElement;
 
-    // Need to register these separately to use 'capture' boolean.
-    this._events.on(element, 'focus', this._onFocus, true);
-    this._events.on(element, 'blur', this._onBlur, true);
-
-    if (!isChildZone) {
-      this._children = this.getFocusableChildren();
-      if (!isNestedZone && this.shouldEnableFirstElementForTabbing()) {
-        this._children[0].setAttribute(TABINDEX, '0');
+    while (parentElement && parentElement !== document.body) {
+      if (this._isElementFocusZone(parentElement)) {
+        this._isInnerZone = true;
+        break;
       }
+      parentElement = parentElement.parentElement;
     }
-  }
 
-  public componentDidUpdate() {
-    let { isChildZone, isNestedZone } = this.props;
-
-    if (!isChildZone) {
-      this._children = this.getFocusableChildren();
-      if (!isNestedZone && this.shouldEnableFirstElementForTabbing()) {
-        this._children[0].setAttribute(TABINDEX, '0');
-      }
-    }
+    this._events.on(windowElement, 'keydown', this._onKeyDownCapture, true);
   }
 
   public componentWillUnmount() {
     this._events.dispose();
+
+    delete _allInstances[this._id];
   }
 
   public render() {
-    let { className, style, isEnabled, role, ariaLabelledBy, focusNamespace } = this.props;
-    let index = 0;
-    let { activeIndex } = this.state;
-
-    function _mapChild(child) {
-      let previousIsEnabled = isEnabled;
-
-      if (child && child.props && child.props[FOCUSABLE_ZONE_ENABLED_ATTRIBUTE] !== undefined) {
-        isEnabled = child.props[FOCUSABLE_ZONE_ENABLED_ATTRIBUTE];
-      }
-
-      // if there are nested components with focusable subcomponents
-      if (child && child.props && child.props[CONTAINS_FOCUSABLE_SUBCOMPONENT_ATTRIBUTE] !== undefined) {
-        if (child.props[CONTAINS_FOCUSABLE_SUBCOMPONENT_ATTRIBUTE] === true) {
-          // Create a cloned version passing the current focusNamespace to the child
-          let focusableElement = React.cloneElement(child, {
-            ref: index,
-            focusNamespace: child.props['focus-namespace'] || focusNamespace
-          }, _mapChildren(child.props.children));
-
-          // Return it to the map.
-          index++;
-          child = focusableElement;
-        }
-      }
-
-      // if the child element exists and is an object
-      if (isEnabled && child && typeof child !== 'string') {
-        // if the child should be focusable
-        if (_isFocusableElement(child)) {
-          // if the focusable child element belongs to this focus zone
-          if (_belongsToFocusZone(focusNamespace, child) ||
-            _belongsToNestedZone(focusNamespace, child)) {
-            // Create a cloned version with a ref and tabIndex.
-            let focusableElement = React.cloneElement(child, {
-              ref: index,
-              tabIndex: -1,
-            }, _mapChildren(child.props.children));
-
-            // Return it to the map.
-            index++;
-            child = focusableElement;
-          }
-        } else {
-          // If we don't return a clone, our potential sub element updates won't be noticed.
-          child = React.cloneElement(child, null, _mapChildren(child.props.children));
-        }
-      }
-
-      isEnabled = previousIsEnabled;
-
-      return child;
-    }
-
-    function _mapChildren(children) {
-      if (children && typeof(children) !== 'string') {
-        return React.Children.map(children, child => _mapChild(child));
-      } else {
-        return children;
-      }
-    }
-
-    // Get the children to be rendered
-    let newChildren = isEnabled ? _mapChildren(this.props.children) : this.props.children;
-
-    // Assign the new state.
-    this.state = {
-      activeIndex: Math.max(0, Math.min(this.getFocusableChildrenCount() - 1, activeIndex))
-    };
+    let { className, ariaLabelledBy } = this.props;
 
     return (
-      <div ref='root' className={ className } style={ style } role={ role } aria-labelled-by={ ariaLabelledBy }>
-        { newChildren }
+      <div
+        { ...this.props as any }
+        className={ css('ms-FocusZone', className) }
+        ref='root'
+        data-focuszone-id={ this._id }
+        aria-labelledby={ ariaLabelledBy }
+        onMouseDownCapture={ this._onMouseDown }
+        onKeyDown={ this._onKeyDown }
+        onFocus={ this._onFocus } >
+        { this.props.children }
       </div>
     );
   }
 
-  public focus(activeIndex?, currentElement?) {
-    let ai = (activeIndex >= 0) ? activeIndex : this.state.activeIndex;
-    let elementToFocus = this._children[ai];
+  /** Sets focus to the first tabbable item in the zone. */
+  public focus(): boolean {
+    const firstChild = this.refs.root.firstChild as HTMLElement;
 
-    if (elementToFocus) {
-      this.setState({
-        activeIndex: ai
-      },
-        () => {
-          elementToFocus.focus();
-          if (currentElement) {
-              currentElement.setAttribute(TABINDEX, '-1');
-              if (!this.props.isNestedZone) {
-                let previousIndex = this.getPreviousElementIndex();
-                let nextIndex = this.getNextElementIndex();
-                this._children[previousIndex].setAttribute(TABINDEX, '-1');
-                this._children[nextIndex].setAttribute(TABINDEX, '-1');
-                elementToFocus.setAttribute(TABINDEX, '0');
-              }
-          }
+    return this._focusElement(this._getNextElement(firstChild, true));
+  }
+
+  private _onFocus(ev: React.FocusEvent) {
+    if (this._isImmediateDescendantOfZone(ev.target as HTMLElement)) {
+      this._activeElement = ev.target as HTMLElement;
+      this._setFocusAlignment(this._activeElement);
+    } else {
+      let parentElement = ev.target as HTMLElement;
+
+      while (parentElement && parentElement !== this.refs.root) {
+        if (this._isElementTabbable(parentElement) && this._isImmediateDescendantOfZone(parentElement)) {
+          this._activeElement = parentElement;
+          break;
         }
-      );
-    }
-  }
-
-  private _onFocus(ev) {
-    let { focusNamespace, isChildZone } = this.props;
-    let index = 0;
-
-    if (_belongsToFocusZone(focusNamespace, ev.target) && !isChildZone) {
-      index = findIndex(this._children, (child => child === ev.target ));
-
-      this.setState({
-        activeIndex: index
-      });
-    }
-  }
-
-  private _onBlur(ev) {
-    if (this.props.onLostFocus) {
-      this.props.onLostFocus(ev);
-    }
-  }
-
-  private shouldEnableFirstElementForTabbing() {
-      if (this._children.length === 0) {
-        return false;
-      }
-
-      for (let child of this._children) {
-          if (child.getAttribute(TABINDEX) === '0') {
-              return false;
-          }
-      }
-
-      return true;
-  }
-
-  private getFocusableChildren() {
-    let { focusNamespace } = this.props;
-    let array = [];
-
-    function _getChildren(element) {
-      if (element && element.children) {
-        for (let childIndex = 0; childIndex < element.children.length; childIndex++) {
-          let child = element.children[childIndex];
-          let e = child;
-
-          if (e.tagName) {
-            if (_isFocusableElement(e) &&
-              (_belongsToFocusZone(focusNamespace, e) ||
-              _belongsToNestedZone(focusNamespace, e))) {
-              if (array.indexOf(e) === -1) {
-                array.push(e);
-              }
-            }
-            _getChildren(e);
-          }
-        }
+        parentElement = parentElement.parentElement;
       }
     }
+  }
 
-    for (let ref in this.refs) {
-      if (this.refs.hasOwnProperty(ref) && ref !== 'root') {
-        let refElement = ReactDOM.findDOMNode(this.refs[ref]) as HTMLElement;
+  /** Handle global tab presses so that we can patch tabindexes on the fly. */
+  private _onKeyDownCapture(ev: React.KeyboardEvent) {
+    if (ev.which === KeyCodes.tab) {
+      this._updateTabIndexes();
+    }
+  }
 
-        if (refElement && _isFocusableElement(refElement) &&
-          (_belongsToFocusZone(focusNamespace, refElement) ||
-          _belongsToNestedZone(focusNamespace, refElement))) {
-          if (array.indexOf(refElement) === -1) {
-            array.push(refElement);
+  private _onMouseDown(ev: React.MouseEvent) {
+    let target = ev.target as HTMLElement;
+    const path = [];
+
+    while (target && target !== this.refs.root) {
+      path.push(target);
+      target = target.parentElement;
+    }
+
+    while (path.length) {
+      target = path.pop();
+
+      if (this._isElementFocusZone(target)) {
+        break;
+      } else if (target && this._isElementTabbable(target)) {
+        target.tabIndex = 0;
+        this._setFocusAlignment(target, true, true);
+      }
+    }
+  }
+
+  /** Handle the keystrokes. */
+  private _onKeyDown(ev: React.KeyboardEvent) {
+    const { direction, isInnerZoneKeystroke } = this.props;
+
+    if (
+      isInnerZoneKeystroke &&
+      this._isImmediateDescendantOfZone(ev.target as HTMLElement) &&
+      isInnerZoneKeystroke(ev)) {
+      // Try to focus
+      let innerZone = this._getFirstInnerZone();
+
+      if (!innerZone || !innerZone.focus()) {
+        return;
+      }
+    } else {
+      switch (ev.which) {
+        case KeyCodes.left:
+          if (direction !== FocusZoneDirection.vertical && this._moveFocusLeft()) {
+            break;
           }
-        }
-        if (refElement) {
-          _getChildren(refElement);
-        }
+          return;
+
+        case KeyCodes.right:
+          if (direction !== FocusZoneDirection.vertical && this._moveFocusRight()) {
+            break;
+          }
+          return;
+
+        case KeyCodes.up:
+          if (direction !== FocusZoneDirection.horizontal && this._moveFocusUp()) {
+            break;
+          }
+          return;
+
+        case KeyCodes.down:
+          if (direction !== FocusZoneDirection.horizontal && this._moveFocusDown()) {
+            break;
+          }
+          return;
+
+        case KeyCodes.home:
+          const firstChild = this.refs.root.firstChild as HTMLElement;
+          if (this._focusElement(this._getNextElement(firstChild, true))) {
+            break;
+          }
+          return;
+
+        case KeyCodes.end:
+          const lastChild = this.refs.root.lastChild as HTMLElement;
+          if (this._focusElement(this._getPreviousElement(lastChild, true, true, true))) {
+            break;
+          }
+          return;
+
+        default:
+          return;
       }
     }
 
-    return array;
+    ev.preventDefault();
+    ev.stopPropagation();
   }
 
-  private getFocusableChildrenCount() {
-    if (this._children) {
-        return this._children.length;
+  /** Traverse to find first child zone. */
+  private _getFirstInnerZone(rootElement?: HTMLElement): FocusZone {
+    rootElement = rootElement || this._activeElement || this.refs.root;
+
+    let child: HTMLElement = rootElement.firstElementChild as HTMLElement;
+
+    while (child) {
+      if (this._isElementFocusZone(child)) {
+        return _allInstances[child.getAttribute(FOCUSZONE_ID_ATTRIBUTE)];
+      }
+      let match = this._getFirstInnerZone(child);
+
+      if (match) {
+        return match;
+      }
+
+      child = child.nextElementSibling as HTMLElement;
     }
 
-    return 0;
+    return null;
   }
 
-  private focusFirstNestedChild(currentElement) {
-    let rootElement = (this.refs as any).root;
-    let refElement = ReactDOM.findDOMNode(rootElement) as HTMLElement;
-    let { nestedFocusNamespace } = this.props;
+  /** Traverse to find the previous element. */
+  private _getPreviousElement(
+    currentElement: HTMLElement,
+    checkNode?: boolean,
+    suppressParentTraversal?: boolean,
+    traverseChildren?: boolean): HTMLElement {
 
-    function _getFirstChild(element) {
-      for (let child of element.children) {
-        let e = child;
-
-        if (e.tagName) {
-          if (_isFocusableElement(e) &&
-            _belongsToFocusZone(nestedFocusNamespace, e)) {
-            if (e === currentElement) { continue; }
-            return e;
-          }
-          let tmp = _getFirstChild(e);
-
-          if (tmp) { return tmp; }
-        }
-      }
+    if (!currentElement ||
+      currentElement === this.refs.root) {
       return null;
     }
 
-    let e = _getFirstChild(refElement);
+    let isCurrentElementVisible = this._isElementVisible(currentElement);
 
-    if (e) {
-        e.focus();
-    }
-  }
+    // Check its children.
+    if (traverseChildren && !this._isElementFocusZone(currentElement) && isCurrentElementVisible) {
+      const childMatch = this._getPreviousElement(currentElement.lastElementChild as HTMLElement, true, true, true);
 
-  private findNestedElementInParentZone() {
-    if (!this._children || this._children.length === 0) {
-      return -1;
-    }
-
-    let index = 0;
-
-    for (let child of this._children) {
-      if (child.getAttribute(NESTED_CONTEXT_ATTRIBUTE)) {
-        return index;
+      if (childMatch) {
+        return childMatch;
       }
-      index++;
     }
 
-    return -1;
-  }
-
-  private getPreviousElementIndex(): number {
-    let { activeIndex } = this.state;
-
-    if (this.props.isCircularNavigation && activeIndex === 0) {
-      return this.props.isChildZone ? -1 : this.getFocusableChildrenCount() - 1;
-    } else {
-      return Math.max(0, activeIndex - 1);
+    // Check the current node, if it's not the first traversal.
+    if (checkNode && isCurrentElementVisible && this._isElementTabbable(currentElement)) {
+      return currentElement;
     }
-  }
 
-  private getNextElementIndex(): number {
-    let { activeIndex } = this.state;
-    let childCount = this.getFocusableChildrenCount();
+    // Check its previous sibling.
+    const siblingMatch = this._getPreviousElement(currentElement.previousElementSibling as HTMLElement, true, true, true);
 
-    if (this.props.isCircularNavigation && activeIndex === childCount - 1) {
-      return this.props.isChildZone ? -1 : 0;
-    } else {
-      return Math.min(childCount - 1, activeIndex + 1);
+    if (siblingMatch) {
+      return siblingMatch;
     }
+
+    // Check its parent.
+    if (!suppressParentTraversal) {
+      return this._getPreviousElement(currentElement.parentElement, true, false, false);
+    }
+
+    return null;
   }
 
-  private _onKeyDown(ev: KeyboardEvent) {
-    let eventTarget = ev.target as HTMLElement;
-    let isInput = _isInputElement(eventTarget);
-    let { direction, isChildZone, nestedFocusNamespace, isNestedZone } = this.props;
-    let newActiveIndex = -1;
+  /** Traverse to find the next focusable element. */
+  private _getNextElement(
+    currentElement: HTMLElement,
+    checkNode?: boolean,
+    suppressParentTraversal?: boolean,
+    suppressChildTraversal?: boolean): HTMLElement {
 
-    // Ignore keyboard events if originating from INPUT elements or TEXTAREAs.
-    if (isInput || (isChildZone && !nestedFocusNamespace)) {
+    if (
+      !currentElement ||
+      (currentElement === this.refs.root && suppressChildTraversal)) {
+      return null;
+    }
+
+    let isCurrentElementVisible = this._isElementVisible(currentElement);
+
+    // Check the current node, if it's not the first traversal.
+    if (checkNode && isCurrentElementVisible && this._isElementTabbable(currentElement) ) {
+      return currentElement;
+    }
+
+    // Check its children.
+    if (!suppressChildTraversal && isCurrentElementVisible && !this._isElementFocusZone(currentElement)) {
+      const childMatch = this._getNextElement(currentElement.firstElementChild as HTMLElement, true, true, false);
+
+      if (childMatch) {
+        return childMatch;
+      }
+    }
+
+    if (currentElement === this.refs.root) {
+      return null;
+    }
+
+    // Check its sibling.
+    const siblingMatch = this._getNextElement(currentElement.nextElementSibling as HTMLElement, true, true, false);
+
+    if (siblingMatch) {
+      return siblingMatch;
+    }
+
+    if (!suppressParentTraversal) {
+      return this._getNextElement(currentElement.parentElement, false, false, true);
+    }
+
+    return null;
+  }
+
+  private _moveFocus(
+    isForward: boolean,
+    getDistanceFromCenter: (activeRect: ClientRect, targetRect: ClientRect) => number,
+    ev?: Event): boolean {
+
+    let element = this._activeElement;
+    let startingElement = element;
+    let candidateDistance = -1;
+    let candidateElement: HTMLElement;
+    let changedFocus = false;
+
+    if (!this._activeElement) {
+      return;
+    }
+
+    const activeRect = this._activeElement.getBoundingClientRect();
+
+    do {
+      element = isForward ?
+        this._getNextElement(element) :
+        this._getPreviousElement(element);
+
+      startingElement = startingElement || element;
+
+      if (element) {
+        const targetRect = element.getBoundingClientRect();
+        const elementDistance = getDistanceFromCenter(activeRect, targetRect);
+
+        if (elementDistance > -1 && (candidateDistance === -1 || elementDistance < candidateDistance)) {
+          candidateDistance = elementDistance;
+          candidateElement = element;
+        }
+
+        if (candidateDistance >= 0 && elementDistance < 0) {
+          break;
+        }
+      }
+    } while (element);
+
+    // Focus the closest candidate
+    if (candidateElement && candidateElement !== this._activeElement) {
+      changedFocus = true;
+      this._focusElement(candidateElement);
+    } else if (this.props.isCircularNavigation) {
+      if (isForward) {
+        return this._focusElement(this._getNextElement(this.refs.root.firstElementChild as HTMLElement, true));
+      } else {
+        return this._focusElement(this._getPreviousElement(this.refs.root.lastElementChild as HTMLElement, true, true, true));
+      }
+    }
+
+    return changedFocus;
+  }
+
+  private _moveFocusDown(): boolean {
+    let targetTop = -1;
+    const leftAlignment = this._focusAlignment.left;
+
+    if (this._moveFocus(true, (activeRect: ClientRect, targetRect: ClientRect) => {
+      let distance = -1;
+
+      if ((targetTop === -1 && targetRect.top >= activeRect.bottom) ||
+        (targetRect.top === targetTop)) {
+
+        targetTop = targetRect.top;
+        distance = (leftAlignment >= targetRect.left && leftAlignment <= targetRect.right) ?
+          0 : Math.abs((targetRect.left + (targetRect.width / 2)) - leftAlignment);
+      }
+
+      return distance;
+    })) {
+      this._setFocusAlignment(this._activeElement, false, true);
       return true;
     }
 
-    let key = ev.which;
+    return false;
+  }
 
-    // Respect RTL.
-    if (getRTL()) {
-      if (key === KeyCodes.left) {
-        key = KeyCodes.right;
-      } else if (key === KeyCodes.right) {
-        key = KeyCodes.left;
+  private _moveFocusUp(): boolean {
+    let targetTop = -1;
+    const leftAlignment = this._focusAlignment.left;
+
+    if (this._moveFocus(false, (activeRect: ClientRect, targetRect: ClientRect) => {
+      let distance = -1;
+
+      if ((targetTop === -1 && targetRect.bottom <= activeRect.top) ||
+      (targetRect.top === targetTop)) {
+        targetTop = targetRect.top;
+        distance = (leftAlignment >= targetRect.left && leftAlignment <= targetRect.right) ?
+          0 : Math.abs((targetRect.left + (targetRect.width / 2)) - leftAlignment);
+      }
+
+      return distance;
+    })) {
+      this._setFocusAlignment(this._activeElement, false, true);
+      return true;
+    }
+
+    return false;
+  }
+
+  private _moveFocusLeft(): boolean {
+    let targetTop = -1;
+    const topAlignment = this._focusAlignment.top;
+
+    if (this._moveFocus(getRTL(), (activeRect: ClientRect, targetRect: ClientRect) => {
+      let distance = -1;
+
+      if ((
+        targetTop === -1 &&
+        targetRect.right <= activeRect.left &&
+        (this.props.direction === FocusZoneDirection.horizontal || targetRect.top === activeRect.top)) ||
+        (targetRect.top === targetTop)) {
+
+        targetTop = targetRect.top;
+        distance = (topAlignment >= targetRect.top && topAlignment <= targetRect.bottom) ?
+          0 :  Math.abs((targetRect.top + (targetRect.height / 2)) - topAlignment);
+      }
+
+      return distance;
+    })) {
+      this._setFocusAlignment(this._activeElement, true, false);
+      return true;
+    }
+
+    return false;
+  }
+
+  private _moveFocusRight(): boolean {
+    let targetTop = -1;
+    const topAlignment = this._focusAlignment.top;
+
+    if (this._moveFocus(!getRTL(), (activeRect: ClientRect, targetRect: ClientRect) => {
+      let distance = -1;
+
+      if ((
+        targetTop === -1 &&
+        targetRect.left >= activeRect.right &&
+        (this.props.direction === FocusZoneDirection.horizontal || targetRect.top === activeRect.top)) ||
+        (targetRect.top === targetTop)) {
+
+        targetTop = targetRect.top;
+        distance = (topAlignment >= targetRect.top && topAlignment <= targetRect.bottom) ?
+          0 : Math.abs((targetRect.top + (targetRect.height / 2)) - topAlignment);
+      }
+
+      return distance;
+    })) {
+      this._setFocusAlignment(this._activeElement, true, false);
+      return true;
+    }
+
+    return false;
+  }
+
+  private _focusElement(element: HTMLElement): boolean {
+    if (element) {
+      if (this._activeElement) {
+        this._activeElement.tabIndex = -1;
+      }
+
+      this._activeElement = element;
+
+      if (element) {
+        if (!this._focusAlignment) {
+          this._setFocusAlignment(element, true, true);
+        }
+
+        this._activeElement.tabIndex = 0;
+        element.focus();
+
+        return true;
       }
     }
 
-    switch (key) {
-      case KeyCodes.up:
-        if (direction === FocusZoneDirection.vertical) {
-          newActiveIndex = this.getPreviousElementIndex();
-        }
-        break;
+    return false;
+  }
 
-      case KeyCodes.down:
-        if (direction === FocusZoneDirection.vertical) {
-          newActiveIndex = this.getNextElementIndex();
-        } else if (nestedFocusNamespace) {
-          newActiveIndex = -2;
-          this.focusFirstNestedChild(ev.target);
-        }
-        break;
+  private _setFocusAlignment(element: HTMLElement, isHorizontal?: boolean, isVertical?: boolean) {
+    const rect = element.getBoundingClientRect();
+    const left = rect.left + (rect.width / 2);
+    const top = rect.top + (rect.height / 2);
 
-      case KeyCodes.left:
-        if (direction === FocusZoneDirection.horizontal) {
-          newActiveIndex = this.getPreviousElementIndex();
-        }
-        break;
+    if (!this._focusAlignment) {
+      this._focusAlignment = { left, top };
+    }
 
-      case KeyCodes.right:
-        if (direction === FocusZoneDirection.horizontal) {
-          newActiveIndex = this.getNextElementIndex();
-        } else if (nestedFocusNamespace) {
-          newActiveIndex = -2;
-          this.focusFirstNestedChild(ev.target);
-        }
-        break;
+    if (isHorizontal) {
+      this._focusAlignment.left = left;
+    }
 
-      case KeyCodes.pageUp:
-        break;
+    if (isVertical) {
+      this._focusAlignment.top = top;
+    }
+  }
 
-      case KeyCodes.pageDown:
-        break;
+  private _isElementVisible(element: HTMLElement): boolean {
+    return (
+      !!element &&
+      (element.offsetParent !== null ||
+      (element as any).isVisible === true) // used as a workaround for testing.
+    );
+  }
 
-      case KeyCodes.home:
-        newActiveIndex = 0;
-        break;
+  private _isElementTabbable(element: HTMLElement): boolean {
+    return (
+      !!element &&
+      (element.tagName === 'A' ||
+        (element.tagName === 'BUTTON' && !(element as HTMLButtonElement).disabled) ||
+        (element.getAttribute && element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true')));
+  }
 
-      case KeyCodes.end:
-        newActiveIndex = this.getFocusableChildrenCount() - 1;
-        break;
+  private _isElementFocusZone(element?: HTMLElement): boolean {
+    return element && !!element.getAttribute(FOCUSZONE_ID_ATTRIBUTE);
+  }
 
-      case KeyCodes.tab:
-        if (isNestedZone) {
-          newActiveIndex = this.findNestedElementInParentZone();
-          if (newActiveIndex >= 0) {
-            setTimeout(() => {
-              this._children[newActiveIndex].setAttribute(TABINDEX, '0');
-            }, 300);
+  private _isImmediateDescendantOfZone(element?: HTMLElement): boolean {
+    let parentElement = element.parentElement;
+
+    while (parentElement && parentElement !== this.refs.root && parentElement !== document.body) {
+      if (this._isElementFocusZone(parentElement)) {
+        return false;
+      }
+
+      parentElement = parentElement.parentElement;
+    }
+
+    return true;
+  }
+
+  private _updateTabIndexes(element?: HTMLElement) {
+    if (!element) {
+      element = this.refs.root;
+      if (this._activeElement && !element.contains(this._activeElement)) {
+        this._activeElement = null;
+      }
+    }
+
+    const childNodes = element.children;
+
+    for (let childIndex = 0; childNodes && childIndex < childNodes.length; childIndex++) {
+      const child = childNodes[childIndex] as HTMLElement;
+
+      if (!this._isElementFocusZone(child)) {
+        if (this._isElementTabbable(child)) {
+          if (!this._isInnerZone && (!this._activeElement || this._activeElement === child)) {
+            this._activeElement = child;
+            if (child.getAttribute(TABINDEX) !== '0') {
+              child.setAttribute(TABINDEX, '0');
+            }
+          } else if (child.getAttribute(TABINDEX) !== '-1') {
+            child.setAttribute(TABINDEX, '-1');
           }
+        } else if (child.tagName === 'svg' && child.getAttribute('focusable') !== 'false') {
+          // Disgusting IE hack. Sad face.
+          child.setAttribute('focusable', 'false');
         }
-        return;
 
-      default:
-        // Do nothing. Let the event bubble.
-        return;
-    }
-
-    if (!isChildZone) {
-      if (newActiveIndex >= 0 ) {
-        this.focus(newActiveIndex, ev.target);
+        this._updateTabIndexes(child);
       }
-      if (newActiveIndex !== -1) {
-        ev.stopPropagation();
-      }
-      ev.preventDefault();
     }
 
   }
 
-}
-
-function _isInputElement(element: HTMLElement) {
-  return !!element && (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA');
-}
-
-function _isFocusableElement(element) {
-  // Element is HTMLElement
-  if (element.tagName) {
-    return element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) ||
-           element.tagName === 'BUTTON' ||
-           element.tagName === 'A';
-  }
-  // Element is ReactElement
-  return element.props[IS_FOCUSABLE_ATTRIBUTE] ||
-         element.type === 'button' ||
-         element.type === 'a';
-}
-
-function _belongsToFocusZone(focusNamespace: string, element) {
-  // Element is HTMLElement
-  if (element.tagName) {
-    return (!focusNamespace && !element.getAttribute(FOCUSABLE_CONTEXT_ATTRIBUTE)) ||
-      ((focusNamespace !== undefined && element.getAttribute(FOCUSABLE_CONTEXT_ATTRIBUTE)) &&
-      (focusNamespace === element.getAttribute(FOCUSABLE_CONTEXT_ATTRIBUTE)));
-  }
-  // Element is ReactElement
-  return (!focusNamespace && !element.props[FOCUSABLE_CONTEXT_ATTRIBUTE]) ||
-    ((focusNamespace !== undefined && element.props[FOCUSABLE_CONTEXT_ATTRIBUTE]) &&
-    (focusNamespace === element.props[FOCUSABLE_CONTEXT_ATTRIBUTE]));
-}
-
-function _belongsToNestedZone(focusNamespace: string, element) {
-  // Element is HTMLElement
-  if (element.tagName) {
-    return  ((focusNamespace !== undefined && element.getAttribute(NESTED_CONTEXT_ATTRIBUTE)) &&
-      (focusNamespace === element.getAttribute(NESTED_CONTEXT_ATTRIBUTE)));
-  }
-  // Element is ReactElement
-  return ((focusNamespace !== undefined && element.props[NESTED_CONTEXT_ATTRIBUTE]) &&
-    (focusNamespace === element.props[NESTED_CONTEXT_ATTRIBUTE]));
 }

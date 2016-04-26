@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './Breadcrumb.scss';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
-import { default as FocusZone, FocusZoneDirection } from '../../utilities/focus/FocusZone';
+import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
 import { IBreadcrumbProps, IBreadcrumb } from './Breadcrumb.Props';
 import { ContextualMenu, DirectionalHint } from '../index';
 import { getRTL } from '../../utilities/rtl';

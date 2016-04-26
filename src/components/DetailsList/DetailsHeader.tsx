@@ -84,6 +84,7 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
 
     return (
       <div
+        role='row'
         className={ css('ms-DetailsHeader ms-font-s', {
           'is-allSelected': isAllSelected,
           'is-singleSelect': selectionMode === SelectionMode.single,
@@ -114,6 +115,7 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
               <div className='ms-DetailsHeader-cellWrapper'>
                 <button
                   key={ column.fieldName }
+                  role='columnheader'
                   disabled={ column.columnActionsMode === ColumnActionsMode.disabled }
                   className={ css('ms-DetailsHeader-cell', {
                     'is-actionable': column.columnActionsMode !== ColumnActionsMode.disabled,

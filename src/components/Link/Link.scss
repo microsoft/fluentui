@@ -1,6 +1,18 @@
 @import '../../common';
 @import "~office-ui-fabric/src/components/Link/Link";
 
+.ms-Link {
+  @include focus-border($ms-color-neutralTertiary);
+  border: none;
+  background: none;
+  @include text-align(left);
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+
+/*
 .ms-Fabric.is-focusVisible .ms-Link:focus {
   outline: 1px solid $ms-color-neutralTertiary;
-}
+}*/
+

@@ -1,10 +1,9 @@
 @import '../../common';
 
-$ms-GroupHeader-height: 32px;
-
 .ms-GroupHeader {
   cursor: default;
   user-select: none;
+  @include focus-border($ms-color-neutralTertiary);
 
   &:hover {
     background: $ms-color-themeLighterAlt;
@@ -17,27 +16,32 @@ $ms-GroupHeader-height: 32px;
   }
 }
 
-.ms-GroupHeader-check {
+.ms-GroupHeader-check,
+.ms-GroupHeader-expand {
+  @include focus-border($ms-color-neutralTertiary);
+
   display: inline-block;
+  cursor: default;
   padding: 10px;
-  margin: 10px 0;
+  transform: translateY(50%);
+  margin-top: -10px;
   box-sizing: border-box;
   vertical-align: top;
   background: none;
   border: none;
-
-  &:focus {
-   outline: transparent;
-  }
 }
 
 .ms-GroupHeader-check {
-  visibility: hidden;
+  opacity: 0;
+
+  &:focus {
+    opacity: 1;
+  }
 }
 
 .ms-GroupHeader:hover .ms-GroupHeader-check,
 .ms-GroupHeader.is-selected .ms-GroupHeader-check {
-  visibility: visible;
+  opacity: 1;
 }
 
 .ms-GroupHeader-title {
@@ -47,20 +51,17 @@ $ms-GroupHeader-height: 32px;
   outline: 0;
 }
 
-.ms-GroupHeader-expandButton.ms-Icon {
-  height: $ms-GroupHeader-height;
-  line-height: $ms-GroupHeader-height;
-  text-align: center;
-  transform: rotate(-180deg);
-  transform-origin: 50% 50%;
-  transition: transform .1s linear;
-  width: $ms-GroupHeader-height;
-  vertical-align: top;
-  padding: 4px 2px;
-  margin-top: 10px;
-  outline: 0;
+.ms-GroupHeader-expand {
+  width: 36px;
+  height: 40px;
 
-  &.is-collapsed {
-    transform: rotate(0deg);
+  .ms-Icon {
+    transform: rotate(-180deg);
+    transform-origin: 50% 50%;
+    transition: transform .1s linear;
+
+    &.is-collapsed {
+      transform: rotate(0deg);
+    }
   }
 }
