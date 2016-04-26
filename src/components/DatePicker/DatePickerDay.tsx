@@ -102,7 +102,6 @@ export default class DatePickerDay extends React.Component<IDatePickerDayProps, 
                           }) }
                             role='gridcell'
                             onClick={ selectDayCallbacks[day.key] }
-                            onKeyDown={ this._onKeyDown.bind(this, selectDayCallbacks[day.key]) }
                             aria-selected={ this._isSelectedDay(selectedDate, day) }
                             id={ this._isSelectedDay(selectedDate, day) ? activeDescendantId : null }
                             data-is-focusable={ true }
@@ -186,6 +185,8 @@ export default class DatePickerDay extends React.Component<IDatePickerDayProps, 
   }
 
   private _compareDates(date1: Date, date2: Date) {
-    return date1.getTime() === date2.getTime();
+    return (date1.getFullYear() === date2.getFullYear()
+      && date1.getMonth() === date2.getMonth()
+      && date1.getDate() === date2.getDate());
   }
 }

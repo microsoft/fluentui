@@ -39,7 +39,7 @@ export default class DatePickerMonth extends React.Component<IDatePickerMonthPro
         <FocusZone>
           <div className='ms-DatePicker-optionGrid'>
             { strings.shortMonths.map((month, index) => {
-              return (<span className='ms-DatePicker-monthOption' key={index} onClick={ this._selectMonthCallbacks[index] } onKeyDown={ this._onKeyDown.bind(this, this._selectMonthCallbacks[index]) } data-is-focusable={true}>{month}</span>);
+              return (<span className='ms-DatePicker-monthOption' key={index} onClick={ this._selectMonthCallbacks[index] } data-is-focusable={true}>{month}</span>);
             }) }
           </div>
         </FocusZone>
