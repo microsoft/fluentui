@@ -34,7 +34,7 @@ export interface IDetailsGroupProps extends React.Props<DetailsGroup> {
   selectionMode?: SelectionMode;
 
   /** Grouping item limit. */
-  groupItemLimit?: number;
+  getGroupItemLimit?: (group: IGroup) => number;
 
   /** Text to display for the group footer show all link. */
   showAllLinkText?: string;
@@ -63,4 +63,10 @@ export interface IDetailsGroupProps extends React.Props<DetailsGroup> {
 
   /** Callback for when the "Show All" link in group footer is clicked */
   onToggleSummarize?: (groupIndex: number) => void;
+
+  /** Callback to determine if a group has missing items and needs to load them from the server. */
+  isGroupLoading?: (group: IGroup) => boolean;
+
+  /** Text shown on group headers to indicate the group is being loaded. */
+  loadingText?: string;
 }

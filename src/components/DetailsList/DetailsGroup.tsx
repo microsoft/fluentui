@@ -4,9 +4,6 @@ import DetailsRow from './DetailsRow';
 import GroupHeader from './GroupHeader';
 import List from '../List/index';
 import {
-  IGroup
-} from './index';
-import {
   IDragDropOptions
 } from './../../utilities/dragdrop/interfaces';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
@@ -38,7 +35,6 @@ export default class DetailsGroup extends React.Component<IDetailsGroupProps, ID
     };
 
     this._onRenderCell = this._onRenderCell.bind(this);
-    this._getRenderCount = this._getRenderCount.bind(this);
     this._getGroupDragDropOptions = this._getGroupDragDropOptions.bind(this);
     this._updateDroppingState = this._updateDroppingState.bind(this);
 
@@ -65,26 +61,34 @@ export default class DetailsGroup extends React.Component<IDetailsGroupProps, ID
     let {
       group,
       groupIndex,
-      groupItemLimit,
+      getGroupItemLimit,
       items,
+      isGroupLoading,
+      loadingText,
       onToggleCollapse,
       onToggleSelectGroup,
       onToggleSummarize,
       selection,
       showAllLinkText
     } = this.props;
+    let renderCount = group ? getGroupItemLimit(group) : items.length;
 
     return (
       <div
         ref='root'
         className={ css('ms-DetailsList-group', this._getDroppingClassName()) }>
-        <GroupHeader
-          group={ group }
-          groupIndex={ groupIndex }
-          onToggleCollapse={ onToggleCollapse }
-          onToggleSelectGroup={ onToggleSelectGroup }
-          ref={ 'header' }
-        />
+        { group && group.onRenderHeader ?
+          group.onRenderHeader(group) :
+          <GroupHeader
+            group={ group }
+            groupIndex={ groupIndex }
+            isGroupLoading={ isGroupLoading }
+            loadingText={ loadingText }
+            onToggleCollapse={ onToggleCollapse }
+            onToggleSelectGroup={ onToggleSelectGroup }
+            ref={ 'header' }
+          />
+        }
         {
           group && group.isCollapsed ?
           null :
@@ -92,22 +96,26 @@ export default class DetailsGroup extends React.Component<IDetailsGroupProps, ID
             items={ items }
             onRenderCell={ this._onRenderCell }
             ref={ 'list' }
-            renderCount={ this._getRenderCount(group) }
+            renderCount={ renderCount }
             selection={ selection }
             startIndex={ group ? group.startIndex : 0 }
           />
         }
         {
-          group && group.isCollapsed && !group.isShowingAll ?
-          null :
-          <GroupFooter
-            group={ group }
-            groupIndex={ groupIndex }
-            groupItemLimit={ groupItemLimit }
-            onToggleSummarize={ onToggleSummarize }
-            ref={ 'footer' }
-            showAllLinkText={ showAllLinkText }
-          />
+          group && group.onRenderFooter ?
+          group.onRenderFooter(group) :
+          (
+            group && group.isCollapsed && !group.isShowingAll ?
+            null :
+            <GroupFooter
+              group={ group }
+              groupIndex={ groupIndex }
+              groupItemLimit={ renderCount }
+              onToggleSummarize={ onToggleSummarize }
+              ref={ 'footer' }
+              showAllLinkText={ showAllLinkText }
+            />
+          )
         }
        </div>
     );
@@ -149,16 +157,6 @@ export default class DetailsGroup extends React.Component<IDetailsGroupProps, ID
     }
 
     return result;
-  }
-
-  private _getRenderCount(group: IGroup) : number {
-    let { items, groupItemLimit } = this.props;
-
-    if (group) {
-      return group.isShowingAll ? group.count : Math.min(group.count, groupItemLimit);
-    } else {
-      return items.length;
-    }
   }
 
   /**

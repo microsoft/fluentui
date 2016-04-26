@@ -3,6 +3,7 @@ import './GroupHeader.scss';
 import Check from './Check';
 import { IGroup } from './index';
 import { css } from '../../utilities/css';
+import { default as Spinner } from '../Spinner/index';
 import { FocusZone, FocusZoneDirection } from '../../utilities/focus';
 
 export interface IGroupHeaderProps {
@@ -10,10 +11,13 @@ export interface IGroupHeaderProps {
   groupIndex: number;
   onToggleCollapse?: (groupIndex: number) => void;
   onToggleSelectGroup?: (groupIndex: number) => void;
+  isGroupLoading?: (group: IGroup) => boolean;
+  loadingText?: string;
 }
 
 export interface IGroupHeaderState {
   isCollapsed: boolean;
+  isLoadingVisible: boolean;
 }
 
 export default class GroupHeader extends React.Component<IGroupHeaderProps, IGroupHeaderState> {
@@ -24,21 +28,26 @@ export default class GroupHeader extends React.Component<IGroupHeaderProps, IGro
     this._onToggleSelectGroup = this._onToggleSelectGroup.bind(this);
 
     this.state = {
-      isCollapsed: this.props.group && this.props.group.isCollapsed
+      isCollapsed: this.props.group && this.props.group.isCollapsed,
+      isLoadingVisible: false
     };
   }
 
   public componentWillReceiveProps(newProps) {
-    if (newProps.group && newProps.group.isCollapsed !== this.state.isCollapsed) {
+    if (newProps.group) {
+      let newCollapsed = newProps.group.isCollapsed;
+      let newLoadingVisible = !newCollapsed && newProps.isGroupLoading && newProps.isGroupLoading(newProps.group);
+
       this.setState({
-        isCollapsed: newProps.group.isCollapsed
+        isCollapsed: newCollapsed,
+        isLoadingVisible: newLoadingVisible
       });
     }
   }
 
   public render() {
-    let { group } = this.props;
-    let { isCollapsed } = this.state;
+    let { group, loadingText } = this.props;
+    let { isCollapsed, isLoadingVisible } = this.state;
     let showCheckBox = true;
     let isSelected = group && group.isSelected;
 
@@ -71,15 +80,25 @@ export default class GroupHeader extends React.Component<IGroupHeaderProps, IGro
             <span>( {group.count} )</span>
           </div>
 
+          <div className={ css('ms-GroupHeader-loading', { 'is-loading': isLoadingVisible }) }>
+            <Spinner label={ loadingText } />
+          </div>
+
         </FocusZone>
       </div>
     );
   }
 
   private _onToggleCollapse(ev?: any) {
-    let { onToggleCollapse, groupIndex } = this.props;
+    let { onToggleCollapse, groupIndex, group, isGroupLoading } = this.props;
+    let { isCollapsed } = this.state;
+
+    let newCollapsed = !isCollapsed;
+    let newLoadingVisible = !newCollapsed && isGroupLoading && isGroupLoading(group);
+
     this.setState({
-      isCollapsed: !this.state.isCollapsed
+      isCollapsed: newCollapsed,
+      isLoadingVisible: newLoadingVisible
     });
     if (onToggleCollapse) {
       onToggleCollapse(groupIndex);

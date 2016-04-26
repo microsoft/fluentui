@@ -48,7 +48,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     layoutMode: DetailsListLayoutMode.justified,
     selectionMode: SelectionMode.multiple,
     constrainMode: ConstrainMode.horizontalConstrained,
-    groupItemLimit: DEFAULT_GROUP_ITEM_LIMIT
+    getGroupItemLimit: () => { return DEFAULT_GROUP_ITEM_LIMIT; }
   };
 
   public refs: {
@@ -83,7 +83,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       adjustedColumns: this._getAdjustedColumns(props),
       layoutMode: props.layoutMode,
       groups: props.groups,
-      isAllCollapsed: false // assuming expanded groups by default for now
+      isAllCollapsed: props.isAllGroupsCollapsed
     };
 
     this._events = new EventGroup(this);
@@ -132,12 +132,13 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       className,
       selectionMode,
       constrainMode,
-      groupItemLimit,
+      getGroupItemLimit,
       onItemInvoked,
       showAllLinkText,
       rowElementEventMap,
       dragDropEvents,
-      onRenderMissingItem
+      onRenderMissingItem,
+      isGroupLoading
     } = this.props;
     let { adjustedColumns, layoutMode, groups, isAllCollapsed } = this.state;
     let { _selection: selection } = this;
@@ -145,9 +146,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
     if (!groups) {
       groups = [ null ];
-    }
-    if (!groupItemLimit) {
-      groupItemLimit = DEFAULT_GROUP_ITEM_LIMIT;
     }
 
     let renderedGroups = groups.map((group: IGroup, groupIndex: number) => (
@@ -159,7 +157,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           columns={ adjustedColumns }
           group={ group }
           groupIndex={ groupIndex }
-          groupItemLimit={ groupItemLimit }
+          getGroupItemLimit={ getGroupItemLimit }
           selectionMode={ selectionMode }
           selection={ selection }
           eventsToRegister={ rowElementEventMap }
@@ -172,6 +170,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           onToggleCollapse={ this._onToggleCollapse }
           onToggleSelectGroup={ this._onToggleSelectGroup }
           onToggleSummarize={ this._onToggleSummarize }
+          isGroupLoading={ isGroupLoading }
           />
         ) : null
     ));
@@ -254,14 +253,18 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   }
 
   private _onToggleCollapseAll(isAllCollapsed: boolean) {
-    let { groups } = this.state;
+    if (!isAllCollapsed && this.props.onExpandAll) {
+      this.props.onExpandAll();
+    } else {
+      let { groups } = this.state;
 
-    if (groups) {
-      for (let groupIndex = 0; groupIndex < groups.length; groupIndex++) {
-        groups[groupIndex].isCollapsed = isAllCollapsed;
+      if (groups) {
+        for (let groupIndex = 0; groupIndex < groups.length; groupIndex++) {
+          groups[groupIndex].isCollapsed = isAllCollapsed;
+        }
+
+        this.forceUpdate();
       }
-
-      this.forceUpdate();
     }
   }
 
@@ -272,7 +275,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     if (group) {
       let isSelected = !group.isSelected;
       let start = group.startIndex;
-      let end = group.startIndex + Math.min(group.count, this.props.groupItemLimit);
+      let end = group.startIndex + Math.min(group.count, this.props.getGroupItemLimit(group));
       for (let idx = start; idx < end; idx++) {
         this._selection.setIndexSelected(idx, isSelected, false /* shouldAnchor */);
       }

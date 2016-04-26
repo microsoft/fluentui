@@ -65,3 +65,17 @@
     }
   }
 }
+
+.ms-GroupHeader-loading {
+  display: inline-block;
+  visibility: hidden;
+  opacity: 0;
+  padding: 0px 16px;
+  vertical-align: middle;
+  transition: visibility $ms-duration3, opacity $ms-duration3;
+
+  &.is-loading {
+    visibility: visible;
+    opacity: 1;
+  }
+}

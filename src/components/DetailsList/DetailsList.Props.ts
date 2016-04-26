@@ -39,7 +39,7 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   constrainMode?: ConstrainMode;
 
   /** Grouping item limit. */
-  groupItemLimit?: number;
+  getGroupItemLimit?: (group: IGroup) => number;
 
   /** Text to display for the group footer show all link. */
   showAllLinkText?: string;
@@ -62,7 +62,7 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /** Map of callback functions related to drag and drop functionality. */
   dragDropEvents?: IDragDropEvents;
 
-    /** Callback for what to render when the item is missing. */
+  /** Callback for what to render when the item is missing. */
   onRenderMissingItem?: (index?: number) => React.ReactNode;
 
   /** Viewport, provided by the withViewport decorator. */
@@ -70,6 +70,18 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** Callback for when the "Show All" link in group footer is clicked */
   onShowAll?: (group: IGroup) => void;
+
+  /** Callback for when all groups are expanded. */
+  onExpandAll?: () => void;
+
+  /** Boolean indicating if all groups are in collapsed state. */
+  isAllGroupsCollapsed?: boolean;
+
+  /** Callback to determine if a group has missing items and needs to load them from the server. */
+  isGroupLoading?: (group: IGroup) => boolean;
+
+  /** Text shown on group headers to indicate the group is being loaded. */
+  loadingText?: string;
 }
 
 export interface IColumn {
@@ -134,4 +146,6 @@ export interface IGroup {
   isDropEnabled?: boolean;
   // Arbitrary data required to be preserved by the caller.
   data?: any;
+  onRenderHeader?: (group: IGroup) => React.ReactNode;
+  onRenderFooter?: (group: IGroup) => React.ReactNode;
 }

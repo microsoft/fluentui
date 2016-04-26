@@ -108,7 +108,13 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
           showAllLinkText='Show all'
           selectionMode={ selectionMode }
           constrainMode={ constrainMode }
-          groupItemLimit={ groupItemLimit }
+          getGroupItemLimit={ (group: IGroup) => {
+            if (group) {
+                return group.isShowingAll ? group.count : Math.min(group.count, groupItemLimit);
+            } else {
+                return items.length;
+            }
+          } }
           onItemInvoked={ this._onItemInvoked }
           onRenderMissingItem={ (index) => {
             this._onDataMiss(index);
