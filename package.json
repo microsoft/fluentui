@@ -20,10 +20,11 @@
     "office-ui-fabric": "~2.4.1",
     "react-addons-test-utils": "^0.14.0 || ^15.0.1",
     "react-highlight": "0.7.0",
-    "source-map-loader": "^0.1.5",
+    "source-map-loader": "0.1.5",
     "vinyl-ftp": "0.4.5",
     "web-library-build": "~0.1.1",
-    "webpack-split-by-path": "0.0.8"
+    "webpack-split-by-path": "0.0.8",
+    "webpack-visualizer-plugin": "0.1.5"
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.1",
