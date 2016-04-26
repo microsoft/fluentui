@@ -1,4 +1,4 @@
-import { IContextualMenuItem } from '../index';
+import { IContextualMenuItem } from '../ContextualMenu/index';
 
 export interface ICommandBarProps {
   /**

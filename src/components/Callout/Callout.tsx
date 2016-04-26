@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './Callout.scss';
-import { Layer } from '../../components/index';
+import { default as Layer } from '../Layer/index';
 import { ICalloutProps, DirectionalHint } from './Callout.Props';
 import { css } from '../../utilities/css';
 import { CalloutPosition, IPositionInfo } from './CalloutPosition';

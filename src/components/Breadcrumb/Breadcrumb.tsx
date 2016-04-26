@@ -3,7 +3,8 @@ import './Breadcrumb.scss';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
 import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
 import { IBreadcrumbProps, IBreadcrumb } from './Breadcrumb.Props';
-import { ContextualMenu, DirectionalHint } from '../index';
+import { default as ContextualMenu } from '../ContextualMenu/index';
+import { DirectionalHint } from '../Callout/index';
 import { getRTL } from '../../utilities/rtl';
 import { css } from '../../utilities/css';
 
