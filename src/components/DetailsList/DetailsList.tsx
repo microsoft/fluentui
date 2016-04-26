@@ -11,7 +11,7 @@ import {
   Selection,
   SelectionMode
 } from '../../utilities/selection/index';
-import { FocusZone, FocusZoneDirection } from '../../utilities/focus';
+import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
 import SelectionZone from '../../utilities/selection/SelectionZone';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
 import {

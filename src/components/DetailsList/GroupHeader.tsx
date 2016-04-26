@@ -4,7 +4,7 @@ import Check from './Check';
 import { IGroup } from './index';
 import { css } from '../../utilities/css';
 import { default as Spinner } from '../Spinner/index';
-import { FocusZone, FocusZoneDirection } from '../../utilities/focus';
+import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
 
 export interface IGroupHeaderProps {
   group: IGroup;
