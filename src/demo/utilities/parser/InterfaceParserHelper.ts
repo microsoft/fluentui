@@ -32,7 +32,7 @@ export default class InterfaceParserHelper extends BaseParser {
     let type = '';
     let returnResult = [];
     let defaultValue = '';
-    let noClosingSymbolAsterixPrereq = false;
+    let noClosingSymbolAsteriskPrereq = false;
 
     this.eatUntil(/\{/);
     this.eat('{');
@@ -59,8 +59,8 @@ export default class InterfaceParserHelper extends BaseParser {
         case ParseState.comment:
           {
             // the initial * are always the first * of a comment, and will be treated as decorative
-            let asterix = this.eatWhile('*');
-            if ((noClosingSymbolAsterixPrereq || asterix.length > 0) && this.eat('/')) {
+            let asterisk = this.eatWhile('*');
+            if ((noClosingSymbolAsteriskPrereq || asterisk.length > 0) && this.eat('/')) {
               // encountered closing comment tag
               comment = bank.join('').trim();
               bank = [];
@@ -68,10 +68,10 @@ export default class InterfaceParserHelper extends BaseParser {
               break;
             }
 
-            noClosingSymbolAsterixPrereq = false;
+            noClosingSymbolAsteriskPrereq = false;
 
             let tmp = this.eatUntil(/[\n\*@]/);
-            bank.push(tmp.trim());
+            bank.push(tmp);
 
             if (this.peek() === '*') {
               let tmp = this.eatWhile('*');
@@ -80,7 +80,7 @@ export default class InterfaceParserHelper extends BaseParser {
                 bank.push(tmp);
               } else {
                 // we have already encountered *, and the next symbol is /
-                noClosingSymbolAsterixPrereq = true;
+                noClosingSymbolAsteriskPrereq = true;
               }
             } else if (this.peek() === '\n') {
               // go to next line

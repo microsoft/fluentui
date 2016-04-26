@@ -61,29 +61,29 @@ export interface ICalloutProps extends React.Props<Callout> {
 
 export interface ILink {
   /**
-   * Text to render for the link
+   * Text to render for the link.
    */
   name: string;
 
   /**
-   * URL for the link
+   * URL for the link.
    */
   url: string;
 }
 
 export enum DirectionalHint {
   /**
-   * Appear above the target element, with the left edges of the callout and target aligning
+   * Appear above the target element, with the left edges of the callout and target aligning.
    */
   topLeftEdge,
 
   /**
-   * Appear above the target element, with the centers of the callout and target aligning
+   * Appear above the target element, with the centers of the callout and target aligning.
    */
   topCenter,
 
   /**
-   * Appear above the target element, with the right edges of the callout and target aligning
+   * Appear above the target element, with the right edges of the callout and target aligning.
    */
   topRightEdge,
 
@@ -93,17 +93,17 @@ export enum DirectionalHint {
   topAutoEdge,
 
   /**
-   * Appear below the target element, with the left edges of the callout and target aligning
+   * Appear below the target element, with the left edges of the callout and target aligning.
    */
   bottomLeftEdge,
 
   /**
-   * Appear below the target element, with the centers of the callout and target aligning
+   * Appear below the target element, with the centers of the callout and target aligning.
    */
   bottomCenter,
 
   /**
-   * Appear below the target element, with the right edges of the callout and target aligning
+   * Appear below the target element, with the right edges of the callout and target aligning.
    */
   bottomRightEdge,
 
@@ -113,32 +113,32 @@ export enum DirectionalHint {
   bottomAutoEdge,
 
   /**
-   * Appear to the left of the target element, with the top edges of the callout and target aligning
+   * Appear to the left of the target element, with the top edges of the callout and target aligning.
    */
   leftTopEdge,
 
   /**
-   * Appear to the left of the target element, with the centers of the callout and target aligning
+   * Appear to the left of the target element, with the centers of the callout and target aligning.
    */
   leftCenter,
 
   /**
-   * Appear to the left of the target element, with the bottom edges of the callout and target aligning
+   * Appear to the left of the target element, with the bottom edges of the callout and target aligning.
    */
   leftBottomEdge,
 
   /**
-   * Appear to the right of the target element, with the top edges of the callout and target aligning
+   * Appear to the right of the target element, with the top edges of the callout and target aligning.
    */
   rightTopEdge,
 
   /**
-   * Appear to the right of the target element, with the centers of the callout and target aligning
+   * Appear to the right of the target element, with the centers of the callout and target aligning.
    */
   rightCenter,
 
   /**
-   * Appear to the right of the target element, with the bottom edges of the callout and target aligning
+   * Appear to the right of the target element, with the bottom edges of the callout and target aligning.
    */
   rightBottomEdge
 }
