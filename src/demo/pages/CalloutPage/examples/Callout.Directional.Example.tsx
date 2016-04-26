@@ -80,9 +80,20 @@ export default class CalloutDirectionalExample extends React.Component<any, ICal
           directionalHint={ directionalHint }
           beakStyle={ 'ms-Callout-smallbeak' }
           beakWidth={ 16 }
-          title='All of your favorite people'
-          subText='Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.'
-        />
+         >
+            <div className='ms-Callout-header'>
+              <p className='ms-Callout-title'>
+                All of your favorite people
+              </p>
+            </div>
+            <div className='ms-Callout-inner'>
+              <div className='ms-Callout-content'>
+                <p className='ms-Callout-subText'>
+                  Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
+                </p>
+              </div>
+            </div>
+         </Callout>
         ) : (null) }
       </div>
     );

@@ -2,21 +2,6 @@ import * as React from 'react';
 import Callout from './Callout';
 
 export interface ICalloutProps extends React.Props<Callout> {
-   /**
-   * The title text for the callout.
-   */
-  title: string;
-
-  /**
-   * The subtext for the callout.
-   */
-  subText: string;
-
-  /**
-   *  A list of additional links to render in the callout.
-   */
-  links?: ILink[];
-
   /**
    * Element to anchor the callout to.
    */
