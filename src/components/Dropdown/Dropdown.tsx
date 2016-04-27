@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './Dropdown.scss';
 import { css } from '../../utilities/css';
+import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { findIndex } from '../../utilities/array';
 import KeyCodes from '../../utilities/KeyCodes';
 import { IDropdownProps, IDropdownOption } from './Dropdown.Props';
@@ -24,8 +25,12 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
     root: HTMLElement
   };
 
+  private _events: EventGroup;
+
   constructor(props?: IDropdownProps) {
     super(props);
+
+    this._events = new EventGroup(this);
 
     this.state = {
       id: `Dropdown-${_instance++}`,
@@ -36,13 +41,27 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
 
     this._onDropdownKeyDown = this._onDropdownKeyDown.bind(this);
     this._onDropdownClick = this._onDropdownClick.bind(this);
-    this._onDropdownBlur = this._onDropdownBlur.bind(this);
+    this._onFocusChange = this._onFocusChange.bind(this);
   }
 
   public componentWillReceiveProps(newProps: IDropdownProps) {
     this.setState({
       selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey)
     });
+  }
+
+  public componentWillUpdate(nextProps: IDropdownProps, nextState: IDropdownState) {
+    if (this.state.isOpen !== nextState.isOpen) {
+      if (nextState.isOpen) {
+        this._events.on(window, 'focus', this._onFocusChange, true);
+      } else {
+        this._events.off();
+      }
+    }
+  }
+
+  public componentWillUnmount() {
+    this._events.dispose();
   }
 
   public render() {
@@ -62,7 +81,6 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
           tabIndex={ isDisabled ? -1 : 0 }
           onKeyDown={ this._onDropdownKeyDown }
           onClick={ this._onDropdownClick }
-          onBlur={ this._onDropdownBlur }
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='application'
           aria-activedescendant={ selectedIndex }
@@ -158,8 +176,8 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
     }
   }
 
-  private _onDropdownBlur(ev: React.FocusEvent) {
-    if (this.state.isOpen && !this.refs.root.contains(ev.relatedTarget as HTMLElement)) {
+  private _onFocusChange(ev: React.FocusEvent) {
+    if (this.state.isOpen && !this.refs.root.contains(ev.target as HTMLElement)) {
       let context: Dropdown = this;
 
       context.setState({
