@@ -7,7 +7,7 @@ import AppState from './components/App/AppState';
 import { Router, Route } from '../utilities/router/index';
 import GettingStarted from './pages/GettingStarted';
 import { setBaseUrl } from '../utilities/resources';
-import './index.scss';
+import './app.scss';
 import './ColorStyles.scss';
 
 setBaseUrl('./dist/');
