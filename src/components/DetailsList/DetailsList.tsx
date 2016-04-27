@@ -246,30 +246,35 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
   private _onToggleCollapse(groupIndex: number) {
     let { groups } = this.state;
+    let { onToggleCollapse } = this.props;
     let group = groups ? groups[groupIndex] : null;
 
     if (group) {
-      if (this.props.onToggleCollapse) {
-        this.props.onToggleCollapse(group);
+      if (onToggleCollapse) {
+        onToggleCollapse(group);
       }
       group.isCollapsed = !group.isCollapsed;
       this.forceUpdate();
     }
   }
 
-  private _onToggleCollapseAll(isAllCollapsed: boolean) {
-    if (!isAllCollapsed && this.props.onExpandAll) {
-      this.props.onExpandAll();
-    } else {
-      let { groups } = this.state;
+  private _onToggleCollapseAll(allCollapsed: boolean) {
+    let { groups } = this.state;
+    let { onToggleCollapseAll } = this.props;
 
-      if (groups) {
-        for (let groupIndex = 0; groupIndex < groups.length; groupIndex++) {
-          groups[groupIndex].isCollapsed = isAllCollapsed;
-        }
-
-        this.forceUpdate();
+    if (groups) {
+      if (onToggleCollapseAll) {
+        onToggleCollapseAll(allCollapsed);
       }
+
+      for (let groupIndex = 0; groupIndex < groups.length; groupIndex++) {
+        groups[groupIndex].isCollapsed = allCollapsed;
+      }
+      this.setState({
+        isAllCollapsed: allCollapsed
+      });
+
+      this.forceUpdate();
     }
   }
 

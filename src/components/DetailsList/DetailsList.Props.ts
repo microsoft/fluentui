@@ -71,9 +71,6 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /** Callback for when the "Show All" link in group footer is clicked */
   onShowAll?: (group: IGroup) => void;
 
-  /** Callback for when all groups are expanded. */
-  onExpandAll?: () => void;
-
   /** Boolean indicating if all groups are in collapsed state. */
   isAllGroupsCollapsed?: boolean;
 
@@ -85,6 +82,9 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** Callback for when a group is expanded or collapsed. */
   onToggleCollapse?: (group?: IGroup) => void;
+
+  /** Callback for when all groups are expanded or collapsed. */
+  onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
 }
 
 export interface IColumn {
