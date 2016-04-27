@@ -3,8 +3,8 @@ import './Callout.scss';
 import { default as Layer } from '../Layer/index';
 import { ICalloutProps, DirectionalHint } from './Callout.Props';
 import { css } from '../../utilities/css';
-import { CalloutPosition, IPositionInfo } from './CalloutPosition';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
+import { getRelativePositions, IPositionInfo } from '../../utilities/positioning';
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 const OFF_SCREEN_POSITION = { top: 0, left: -9999 };
@@ -27,7 +27,6 @@ export default class Callout extends React.Component<ICalloutProps, ICalloutStat
 
   private _hostElement: HTMLDivElement;
   private _calloutElement: HTMLDivElement;
-  private _calloutPosition: CalloutPosition;
   private _events: EventGroup;
 
   constructor(props: ICalloutProps) {
@@ -39,7 +38,6 @@ export default class Callout extends React.Component<ICalloutProps, ICalloutStat
       calloutElementRect: null
     };
 
-    this._calloutPosition = new CalloutPosition();
     this._events = new EventGroup(this);
 
     this._updatePosition = this._updatePosition.bind(this);
@@ -80,7 +78,7 @@ export default class Callout extends React.Component<ICalloutProps, ICalloutStat
     let calloutElement: HTMLElement = this._calloutElement;
 
     if (hostElement && calloutElement) {
-      let positionInfo: IPositionInfo = this._calloutPosition.getRelativePositions(this.props, hostElement, calloutElement);
+      let positionInfo: IPositionInfo = getRelativePositions(this.props, hostElement, calloutElement);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different
       if ((!positions && positionInfo) ||

@@ -1,8 +1,9 @@
 import * as React from 'react';
 import ContextualMenu from './ContextualMenu';
+import { IPositionProps } from '../../utilities/positioning';
 import { DirectionalHint } from '../Callout/index';
 
-export interface IContextualMenuProps extends React.Props<ContextualMenu> {
+export interface IContextualMenuProps extends React.Props<ContextualMenu>, IPositionProps {
   /**
    * Collection of menu items.
    * @default []
@@ -65,6 +66,12 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
    * Should be used for 'aria-owns' and other such uses, rather than direct reference for programmatic purposes.
    */
   id?: string;
+
+  /**
+   * The beak width of the ContextualMenu beak.
+   * @default 16
+   */
+  beakWidth?: number;
 }
 
 export interface IContextualMenuItem {
