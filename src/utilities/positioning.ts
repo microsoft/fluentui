@@ -92,7 +92,7 @@ export function getRelativePositions(props: IPositionProps, hostElement: HTMLEle
 
   if (hostElement && targetElement && calloutElement) {
     let hostRect = hostElement.getBoundingClientRect();
-    let targetRect = targetElement.getBoundingClientRect();
+    let targetRect = _getActualTargetRectSize(targetElement, hostRect);
     let calloutRect = calloutElement.getBoundingClientRect();
     let actualHorizontalDirection: HorizontalAlignmentHint;
     let actualVerticalDirection: VerticalAlignmentHint;
@@ -438,4 +438,29 @@ function _calculatePositionsforHorizontalCallout(
   positionInfo = { calloutPosition, beakPosition, directionalClassName };
 
   return positionInfo;
+}
+
+/** Gets the size of the target rectangle within the limits of the boundingRectangle */
+  function _getActualTargetRectSize(target: HTMLElement, boundingRectangle: IRect): IRect {
+  let currentTarget = target.getBoundingClientRect();
+  let actualTarget: IRect = {
+    width: currentTarget.width,
+    right: currentTarget.right,
+    left: currentTarget.left,
+    height: currentTarget.height,
+    bottom: currentTarget.bottom,
+    top: currentTarget.top
+  };
+
+  if (actualTarget.left < boundingRectangle.left) {
+    actualTarget.left = boundingRectangle.left;
+  }
+
+  if (actualTarget.right > boundingRectangle.right) {
+    actualTarget.right = boundingRectangle.right;
+  }
+
+  actualTarget.width = (actualTarget.right - actualTarget.left);
+
+  return actualTarget;
 }

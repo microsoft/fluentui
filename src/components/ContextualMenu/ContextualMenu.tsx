@@ -110,7 +110,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     this._updatePosition = this._updatePosition.bind(this);
     this.dismiss = this.dismiss.bind(this);
     this._onKeyDown = this._onKeyDown.bind(this);
-    this._onClickCapture = this._onClickCapture.bind(this);
+    this._onMouseDownCapture = this._onMouseDownCapture.bind(this);
     this._onItemClick = this._onItemClick.bind(this);
     this._onSubMenuDismiss = this._onSubMenuDismiss.bind(this);
     this._onMouseEnter = this._onMouseEnter.bind(this);
@@ -133,10 +133,10 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount() {
     this._updatePosition();
-    this._events.on(window, 'scroll', this.dismiss);
+    this._events.on(window, 'scroll', this.dismiss, true);
     this._events.on(window, 'resize', this.dismiss);
-    this._events.on(window, 'click', this._onClickCapture, true);
-    this._events.on(window, 'touchstart', this._onClickCapture, true);
+    this._events.on(window, 'mousedown', this._onMouseDownCapture, true);
+    this._events.on(window, 'touchstart', this._onMouseDownCapture, true);
   }
 
   // Invoked when a component is receiving new props.
@@ -274,7 +274,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
     this._async.clearTimeout(this._enterTimerId);
   }
 
-  private _onClickCapture(ev: React.MouseEvent) {
+  private _onMouseDownCapture(ev: React.MouseEvent) {
     if (!this.refs.host.contains(ev.target as HTMLElement)) {
       this.dismiss(ev);
     }
