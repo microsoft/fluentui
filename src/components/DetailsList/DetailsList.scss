@@ -2,6 +2,10 @@
 
 .ms-DetailsList {
   position: relative;
+
+  > .ms-FocusZone {
+    display: inline-block;
+  }
 }
 
 .ms-DetailsList.is-horizontalConstrained {

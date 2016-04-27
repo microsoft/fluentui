@@ -31,14 +31,14 @@ const COLUMNS: IColumn[] = [
     name: 'Link',
     fieldName: 'url',
     minWidth: 100,
-    getCellContent: item => <Link href={ item.url }>{ item.url }</Link>
+    onRender: item => <Link href={ item.url }>{ item.url }</Link>
   },
   {
     key: 'link',
     name: 'Link',
     fieldName: 'url',
     minWidth: 100,
-    getCellContent: item => <Button>{ item.url }</Button>
+    onRender: item => <Button>{ item.url }</Button>
   }
 ];
 

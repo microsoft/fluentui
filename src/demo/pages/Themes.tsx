@@ -57,7 +57,7 @@ export default class Themes extends React.Component<any, any> {
                 name: 'Color',
                 fieldName: 'value',
                 minWidth: 200,
-                getCellContent: (item, index) => (
+                onRender: (item, index) => (
                   <ColorPicker
                     color={ item.value }
                     onColorChanged={ this._onColorChanged.bind(this, item, index) }

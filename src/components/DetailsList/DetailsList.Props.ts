@@ -88,30 +88,101 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 }
 
 export interface IColumn {
+  /**
+   * A unique key for identifying the column.
+   */
   key: string;
+
+  /**
+   * Name to render on the column header.
+   */
   name: string;
+
+  /**
+   * The field to pull the text value from for the column. This can be null if a custom
+   * onRender method is provided.
+   */
   fieldName: string;
+
+  /**
+   * An optional class name to stick on the column cell within each row.
+   */
+  className?: string;
+
+  /**
+   * Minimum width for the column.
+   */
   minWidth: number;
+
+  /**
+   * Maximum width for the column, if stretching is allowed in justified scenarios.
+   */
   maxWidth?: number;
-  columnActionsMode?: ColumnActionsMode; /** if undefined, then behavior defaults to ColumnActionsMode.clickable */
-  iconClassName?: string; /** CSS class name of an icon to show in addition to the text */
+
+  /**
+   * Defines how the column's header should render.
+   * @default ColumnActionsMode.clickable */
+  columnActionsMode?: ColumnActionsMode;
+
+  /**
+   * Icon name to show in addition to the text.
+   */
+  iconClassName?: string;
+
+  /**
+   * If specified will allow the column to be collapsed when rendered in justified layout.
+   */
   isCollapsable?: boolean;
-  isSortable?: boolean;
+
+  /**
+   * Determines if the column is currently sorted. Renders a sort arrow in the column header.
+   */
   isSorted?: boolean;
-  isResizable?: boolean;
+
+  /**
+   * Determines if the arrow is pointed down (descending) or up.
+   */
   isSortedDescending?: boolean;
+
+  /**
+   * Determines if the column can be resized.
+   */
+  isResizable?: boolean;
+
+  /**
+   * Determines if the column can render multi-line text.
+   */
   isMultiline?: boolean;
-  getCellContent?: (item: any, index?: number) => any;
-  calculatedWidth?: number;
-  isFilterable?: boolean;
+
+  /**
+   * If provided uses this method to render custom cell content, rather than the default text rendering.
+   */
+  onRender?: (item: any, index?: number) => any;
+
+  /**
+   * Determines if the column is filtered, and if so shows a filter icon.
+   */
   isFiltered?: boolean;
+
+  /**
+   * If provided, will be executed when the user clicks on the column header.
+   */
   onColumnClick?: (column: IColumn, ev: React.MouseEvent) => any;
-  // Internal state when a column is resizing.
-  isSizing?: boolean;
-  isGroupable?: boolean;
+
+  /**
+   * If set will show a grouped icon next to the column header name.
+   */
   isGrouped?: boolean;
-  // Arbitrary data required to be preserved by the caller.
+
+  /**
+   * Arbitrary data passthrough which can be used by the caller.
+   */
   data?: any;
+
+  /**
+   * Internal only value.
+   */
+  calculatedWidth?: number;
 }
 
 /**
@@ -120,35 +191,98 @@ export interface IColumn {
  * If IColumn:columnActionsMode is undefined, then it's equivalent to ColumnActionsMode.clickable
  */
 export enum ColumnActionsMode {
-  /** disable the column header */
+  /**
+   * Renders the column header as disabled.
+   */
   disabled,
-  /** column header is clickable */
+
+  /**
+   * Renders the column header is clickable.
+   */
   clickable,
-  /** column header is clickable and displays the dropdown cheveron */
+
+  /**
+   * Renders the column header ias clickable and displays the dropdown cheveron.
+   */
   hasDropdown
 }
 
 export enum ConstrainMode {
+  /** If specified, lets the content grow which allows the page to manage scrolling. */
   unconstrained,
+
+  /**
+   * If specified, constrains the list to the given layout space.
+   */
   horizontalConstrained
 }
 
 export enum DetailsListLayoutMode {
+  /**
+   * Lets the user resize columns and makes not attempt to fit them.
+   */
   fixedColumns,
+
+  /**
+   * Manages which columns are visible, tries to size them according to their min/max rules and drops
+   * off columns that can't fit and have isCollapsable set.
+   */
   justified
 }
 
 export interface IGroup {
+  /**
+   * Unique identifier for the group.
+   */
   key: string;
+
+  /**
+   * Display name for the group, rendered on the header.
+   */
   name: string;
+
+  /**
+   * Start index for the group within the given items.
+   */
   startIndex: number;
+
+  /**
+   * How many items should be rendered within the group.
+   */
   count: number;
+
+  /**
+   * If all the items in the group are selected.
+   */
   isSelected?: boolean;
+
+  /**
+   * If all the items in the group are collapsed.
+   */
   isCollapsed?: boolean;
+
+  /**
+   * If the items within the group are summarized or showing all.
+   */
   isShowingAll?: boolean;
+
+  /**
+   * If drag/drop is enabled for the group header.
+   */
   isDropEnabled?: boolean;
-  // Arbitrary data required to be preserved by the caller.
+
+  /**
+   * Arbitrary data required to be preserved by the caller.
+   */
   data?: any;
+
+  /**
+   * Override which allows the caller to provide a custom header.
+   */
   onRenderHeader?: (group: IGroup) => React.ReactNode;
+
+  /**
+   * Override which allows the caller to provider a customer footer.
+   */
   onRenderFooter?: (group: IGroup) => React.ReactNode;
 }

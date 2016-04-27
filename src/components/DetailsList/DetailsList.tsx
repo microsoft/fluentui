@@ -41,6 +41,7 @@ const DEFAULT_GROUP_ITEM_LIMIT = 5;
 const MIN_RESIZABLE_COLUMN_WIDTH = 100; // this is the global min width
 const CHECKBOX_WIDTH = 40;
 const GROUP_EXPAND_WIDTH = 36;
+const DEFAULT_INNER_PADDING = 16;
 
 @withViewport
 export class DetailsList extends React.Component<IDetailsListProps, IDetailsListState> {
@@ -370,7 +371,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
     let adjustedColumns = [];
     let outerPadding = 0;
-    let innerPadding = 16;
     let rowCheckWidth = (selectionMode !== SelectionMode.none) ? CHECKBOX_WIDTH : 0;
     let groupExpandWidth = groups ? GROUP_EXPAND_WIDTH : 0;
 
@@ -384,8 +384,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     // First, add all of the minimum widths, noting the lastColumn the fits within viewport width.
     for (let i = 0; i < newColumns.length; i++) {
       let column = assign({}, newColumns[i], columnOverrides[newColumns[i].key]);
-      let padding = (i > 0 ? innerPadding : 0);
-      let minWidth = column.minWidth || column.maxWidth || 150;
+      let padding = (i > 0 ? DEFAULT_INNER_PADDING : 0);
+      let minWidth = (column.minWidth || column.maxWidth || 150) + DEFAULT_INNER_PADDING;
 
       column.maxWidth = column.maxWidth || column.minWidth;
 
@@ -399,8 +399,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     // Then expand columns starting at the beginning, until we've filled the width.
     for (let i = 0; i < adjustedColumns.length && totalWidth < availableWidth; i++) {
       let column = adjustedColumns[i];
-      let maxWidth = column.maxWidth;
-      let minWidth = column.minWidth || maxWidth;
+      let maxWidth = column.maxWidth + DEFAULT_INNER_PADDING;
+      let minWidth = (column.minWidth || maxWidth) + DEFAULT_INNER_PADDING;
 
       let spaceLeft = availableWidth - totalWidth;
       let increment = Math.min(spaceLeft, maxWidth - minWidth);
@@ -497,11 +497,9 @@ export function buildColumns(
           maxWidth: 300,
           isCollapsable: !!columns.length,
           isMultiline: (isMultiline === undefined) ? false : isMultiline,
-          isSortable: sortedColumnKey !== undefined,
           isSorted: sortedColumnKey === propName,
           isSortedDescending: !!isSortedDescending,
           columnActionsMode: ColumnActionsMode.hasDropdown,
-          isFilterable: false,
           isResizable: canResizeColumns,
           onColumnClick: onColumnClick,
           isGrouped: groupedColumnKey === propName

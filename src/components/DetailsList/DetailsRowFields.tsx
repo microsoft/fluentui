@@ -20,7 +20,7 @@ export default class DetailsRowFields extends React.Component<IDetailsRowFieldsP
       return (
           <div className='ms-DetailsRow-fields' data-automationid='DetailsRowFields'>
         { columns.map((column, columnIndex) => (
-            <div key={ columnIndex } className={ css('ms-DetailsRow-cell', {
+            <div key={ columnIndex } className={ css('ms-DetailsRow-cell', column.className, {
                 'is-multiline': column.isMultiline
             }) } style={ { width: column.calculatedWidth } }
                 data-automationid='DetailsRowCell'
@@ -37,7 +37,7 @@ export default class DetailsRowFields extends React.Component<IDetailsRowFieldsP
     let cellContent;
 
     try {
-      cellContent = column.getCellContent ? column.getCellContent(item, index) : (String(item[column.fieldName] || ''));
+      cellContent = column.onRender ? column.onRender(item, index) : (String(item[column.fieldName] || ''));
     } catch (e) {
       cellContent = `{ Exception: ${e.message}}`;
     }

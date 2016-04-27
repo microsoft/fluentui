@@ -1,3 +1,5 @@
+@import '../../../../common.scss';
+
 .ms-DetailsListBasicExample .ms-CommandBar {
   margin-bottom: 40px;
 }
@@ -6,4 +8,9 @@
   display: inline-block;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.ms-DetailsListBasicExample-icon {
+  font-size: 16px;
+  color: $ms-color-themePrimary;
 }

@@ -42,8 +42,10 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
 
 .ms-DetailsRow-cell {
   display: inline-block;
+  position: relative;
   box-sizing: border-box;
   padding: 0 8px;
+  min-height: 20px;
   vertical-align: top;
   white-space: nowrap;
   overflow: hidden;

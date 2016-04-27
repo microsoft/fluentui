@@ -215,13 +215,19 @@ export default class FocusZone extends React.Component<IFocusZoneProps, {}> {
   /** Walk up the dom try to find a focusable element. */
   private _tryInvokeClickForFocusable(target: HTMLElement): boolean {
     do {
+      if (target.tagName === 'BUTTON' || target.tagName === 'A') {
+        return false;
+      }
+
       if (
         this._isImmediateDescendantOfZone(target) &&
         target.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true' &&
         target.getAttribute(IS_ENTER_DISABLED_ATTRIBUTE) !== 'true') {
         EventGroup.raise(target, 'click', null, true);
+
         return true;
       }
+
       target = target.parentElement;
     } while (target !== this.refs.root);
 
@@ -539,6 +545,7 @@ export default class FocusZone extends React.Component<IFocusZoneProps, {}> {
   private _isElementVisible(element: HTMLElement): boolean {
     return (
       !!element &&
+      element.tagName !== 'svg' &&
       (element.offsetParent !== null ||
       (element as any).isVisible === true) // used as a workaround for testing.
     );

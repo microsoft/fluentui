@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  ColumnActionsMode,
   CommandBar,
   ConstrainMode,
   ContextualMenu,
@@ -324,7 +325,7 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
         onClick: () => this._onSortColumn(column.key, true)
       }
     ];
-    if (column.isGroupable) {
+    if (isGroupable(column.key)) {
       items.push({
         key: 'groupBy',
         name: 'Group By ' + column.name,
@@ -415,14 +416,23 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
     let columns = buildColumns(items, canResizeColumns, onColumnClick, sortedColumnKey, isSortedDescending, groupedColumnKey);
 
     columns.forEach(column => {
-      column.isGroupable = isGroupable(column.key);
       if (column.key === 'description') {
         column.isMultiline = true;
       } else if (column.key === 'name') {
-        column.getCellContent = (item) => (
+        column.onRender = (item) => (
           <Link href='#'>{ item.name }</Link>
         );
       }
+    });
+
+    columns.unshift({
+      key: 'icon',
+      name: 'icon',
+      minWidth: 16,
+      maxWidth: 16,
+      fieldName: null,
+      columnActionsMode: ColumnActionsMode.disabled,
+      onRender: () => <i className='ms-DetailsListBasicExample-icon ms-Icon ms-Icon--folder'/>
     });
 
     return columns;
