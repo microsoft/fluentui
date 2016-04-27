@@ -155,9 +155,20 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
 
   private _onDropdownBlur() {
     if (this.state.isOpen) {
-      this.setState({
-        isOpen: false
-      });
+      let context: Dropdown = this;
+
+      // Below is a temporary fix for IE needed 4/27; a better fix may be needed.
+      //
+      // per David:
+      // This can also cause edge case bugs when the component is unmounted and setstate is called after.
+      // Maybe the handler needs to be hooked on focus of the menu content and unhooked on dismiss.
+
+      // pause the removal of the dropdown list otherwise the selection will not trigger in IE
+      setTimeout((): void => {
+        context.setState({
+          isOpen: false
+        });
+      }, 200);
     }
   }
 }
