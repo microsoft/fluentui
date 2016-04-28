@@ -26,8 +26,24 @@ export default class Nav extends React.Component<INavProps, INavState> {
     onRenderLink: (link: INavLink) => (<span className='ms-Nav-linkText'>{ link.name }</span>)
   };
 
+  // used for resolving URLs - not added to DOM
+  private static urlResolver: HTMLAnchorElement = document.createElement('a');
+
   private static isSelected(link: INavLink): boolean {
-    return link.url && (location.hash === link.url || location.href === link.url);
+    Nav.urlResolver.href = link.url || '';
+    const target: string = Nav.urlResolver.href;
+
+    if (location.href === target) {
+      return true;
+    }
+
+    if (location.hash) {
+      Nav.urlResolver.href = location.hash.substring(1);
+
+      return Nav.urlResolver.href === target;
+    }
+
+    return false;
   }
 
   public render(): React.ReactElement<{}> {
