@@ -32,8 +32,10 @@ export function withViewport<P, S>(ComposedComponent: any): any {
       let { viewport } = this.state;
 
       return (
-        <div className='Viewport' ref='root' >
+        <div className='ms-Viewport' ref='root' style={ { minWidth: 1, minHeight: 1 } }>
+          { this.state.viewport.height > 0 && (
           <ComposedComponent viewport={ viewport } { ...this.props } />
+          )}
         </div>
       );
     }

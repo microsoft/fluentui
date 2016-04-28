@@ -142,7 +142,7 @@ export default class List extends React.Component<IListProps, IListState> {
     let newSurfaceRect = this.refs.surface.getBoundingClientRect();
 
     // If the surface height changes after a render, we need to re-evaluate the pages we're rendering.
-    if (lastSurfaceRect.height !== newSurfaceRect.height || lastSurfaceRect.top !== newSurfaceRect.top) {
+    if (lastSurfaceRect.top !== newSurfaceRect.top) {
       this.forceUpdate();
     }
   }
