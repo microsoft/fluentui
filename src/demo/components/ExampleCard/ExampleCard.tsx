@@ -41,7 +41,7 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
     if (code) {
       codeExample = (
         <div className='ExampleCard-code'>
-          <Highlight className='typescript'>
+          <Highlight className='javascript'>
             { code }
           </Highlight>
         </div>
