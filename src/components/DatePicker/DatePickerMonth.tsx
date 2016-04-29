@@ -2,13 +2,14 @@ import * as React from 'react';
 import { FocusZone } from '../../utilities/focus/index';
 import { IDatePickerStrings } from './DatePicker.Props';
 import KeyCodes from '../../utilities/KeyCodes';
+import DateMath from '../../utilities/dateMath/DateMath';
+import { getRTL } from '../../utilities/rtl';
+import { css } from '../../utilities/css';
 
 export interface IDatePickerMonthProps {
-   selectedDate: Date;
+   navigatedDate: Date;
    strings: IDatePickerStrings;
-   onSelectPrevYear: () => void;
-   onSelectNextYear: () => void;
-   onSelectMonth: (month: number) => void;
+   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
 }
 
 export default class DatePickerMonth extends React.Component<IDatePickerMonthProps, {}> {
@@ -19,22 +20,38 @@ export default class DatePickerMonth extends React.Component<IDatePickerMonthPro
 
     this._selectMonthCallbacks = [];
     props.strings.shortMonths.map((month, index) => {
-      this._selectMonthCallbacks[index] = props.onSelectMonth.bind(this, index);
+      this._selectMonthCallbacks[index] = this._onSelectMonth.bind(this, index);
     });
+
+    this._onSelectNextYear = this._onSelectNextYear.bind(this);
+    this._onSelectPrevYear = this._onSelectPrevYear.bind(this);
+    this._onSelectMonth = this._onSelectMonth.bind(this);
   }
 
   public render() {
 
-    let { onSelectNextYear, onSelectPrevYear, selectedDate, strings } = this.props;
+    let { navigatedDate, strings } = this.props;
 
     return (
       <div className='ms-DatePicker-monthPicker'>
         <div className='ms-DatePicker-header'>
           <div className='ms-DatePicker-yearComponents ms-DatePicker-navContainer'>
-            <span className='ms-DatePicker-prevYear js-prevYear' onClick={ onSelectPrevYear } onKeyDown={ this._onKeyDown.bind(this, onSelectPrevYear) } tabIndex={ 0 }><i className='ms-Icon ms-Icon--chevronLeft'></i></span>
-            <span className='ms-DatePicker-nextYear js-nextYear' onClick={ onSelectNextYear } onKeyDown={ this._onKeyDown.bind(this, onSelectNextYear) } tabIndex={ 0 }><i className='ms-Icon ms-Icon--chevronRight'></i></span>
+            <span
+              className='ms-DatePicker-prevYear js-prevYear'
+              onClick={ this._onSelectPrevYear }
+              onKeyDown={ this._onKeyDown.bind(this, this._onSelectPrevYear) }
+              tabIndex={ 0 }>
+              <i className={ css('ms-Icon', {'ms-Icon--chevronLeft': !getRTL(), 'ms-Icon--chevronRight': getRTL()}) }  />
+            </span>
+            <span
+              className='ms-DatePicker-nextYear js-nextYear'
+              onClick={ this._onSelectNextYear }
+              onKeyDown={ this._onKeyDown.bind(this, this._onSelectNextYear) }
+              tabIndex={ 0 }>
+              <i className={ css('ms-Icon', {'ms-Icon--chevronLeft': getRTL(), 'ms-Icon--chevronRight': !getRTL()}) }  />
+            </span>
           </div>
-          <div className='ms-DatePicker-currentYear js-showYearPicker'>{ selectedDate.getFullYear() }</div>
+          <div className='ms-DatePicker-currentYear js-showYearPicker'>{ navigatedDate.getFullYear() }</div>
         </div>
         <FocusZone>
           <div className='ms-DatePicker-optionGrid'>
@@ -51,5 +68,20 @@ export default class DatePickerMonth extends React.Component<IDatePickerMonthPro
     if (ev.which === KeyCodes.enter) {
       callback();
     }
+  }
+
+  private _onSelectNextYear() {
+    let { navigatedDate, onNavigateDate } = this.props;
+    onNavigateDate(DateMath.addYears(navigatedDate, 1), false);
+  };
+
+  private _onSelectPrevYear() {
+    let { navigatedDate, onNavigateDate } = this.props;
+    onNavigateDate(DateMath.addYears(navigatedDate, -1), false);
+  };
+
+  private _onSelectMonth(newMonth: number) {
+    let { navigatedDate, onNavigateDate } = this.props;
+    onNavigateDate(DateMath.setMonth(navigatedDate, newMonth), true);
   }
 }

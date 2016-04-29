@@ -3,10 +3,12 @@ import { css } from '../../utilities/css';
 import { DayOfWeek, IDatePickerStrings } from './DatePicker.Props';
 import { FocusZone } from '../../utilities/focus/index';
 import KeyCodes from '../../utilities/KeyCodes';
+import DateMath from '../../utilities/dateMath/DateMath';
+import { getRTL, getRTLSafeKeyCode } from '../../utilities/rtl';
 
 const DAYS_IN_WEEK = 7;
 
-interface IDayInfo {
+export interface IDayInfo {
   key: string;
   date: string;
   originalDate: Date;
@@ -18,14 +20,15 @@ interface IDayInfo {
 export interface IDatePickerDayProps {
   strings: IDatePickerStrings;
   selectedDate: Date;
-  onSelectNextMonth: () => void;
-  onSelectPrevMonth: () => void;
+  navigatedDate: Date;
   onSelectDate: (date: Date) => void;
+  onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
   firstDayOfWeek: DayOfWeek;
 }
 
 export interface IDatePickerDayState {
   activeDescendantId?: string;
+  weeks?: IDayInfo[][];
 }
 
 let _instance = 0;
@@ -33,47 +36,55 @@ let _instance = 0;
 export default class DatePickerDay extends React.Component<IDatePickerDayProps, IDatePickerDayState> {
   public refs: {
     [key: string]: React.ReactInstance;
-    selectedDay: HTMLElement;
+    navigatedDay: HTMLElement;
   };
 
-  public constructor() {
-    super();
+  public constructor(props: IDatePickerDayProps) {
+    super(props);
 
     this.state = {
-      activeDescendantId: 'DatePickerDay-active-' + _instance
+      activeDescendantId: 'DatePickerDay-active-' + _instance,
+      weeks: this._getWeeks(props.navigatedDate, props.selectedDate)
     };
+
+    this._onSelectNextMonth = this._onSelectNextMonth.bind(this);
+    this._onSelectPrevMonth = this._onSelectPrevMonth.bind(this);
+  }
+
+  public componentWillReceiveProps (nextProps: IDatePickerDayProps) {
+    this.setState({
+      weeks: this._getWeeks(nextProps.navigatedDate, nextProps.selectedDate)
+    });
   }
 
   public render() {
-    let { activeDescendantId } = this.state;
-    let { firstDayOfWeek, strings, selectedDate, onSelectNextMonth, onSelectPrevMonth, onSelectDate } = this.props;
-    let weeks = this._getWeeks(selectedDate);
+    let { activeDescendantId, weeks } = this.state;
+    let { firstDayOfWeek, strings,  navigatedDate, onSelectDate } = this.props;
 
     let selectDayCallbacks = {};
-
     weeks.map((week, index) => week.map(day => selectDayCallbacks[day.key] = onSelectDate.bind(this, day.originalDate)));
 
     return (
       <div className='ms-DatePicker-dayPicker'>
         <div className='ms-DatePicker-header'>
-          <div className='ms-DatePicker-month'>{strings.months[selectedDate.getMonth()]}</div>
-          <div className='ms-DatePicker-year'>{selectedDate.getFullYear() }</div>
+          <div className='ms-DatePicker-month'>{strings.months[navigatedDate.getMonth()]}</div>
+          <div className='ms-DatePicker-year'>{navigatedDate.getFullYear() }</div>
         </div>
         <div className='ms-DatePicker-monthComponents'>
           <div className='ms-DatePicker-navContainer'>
             <span
               className='ms-DatePicker-prevMonth js-prevMonth'
-              onClick={ onSelectPrevMonth }
-              onKeyDown={ this._onKeyDown.bind(this, onSelectPrevMonth) }
+              onClick={ this._onSelectPrevMonth }
+              onKeyDown={ this._onKeyDown.bind(this, this._onSelectPrevMonth) }
               tabIndex={ 0 }>
-              <i className='ms-Icon ms-Icon--chevronLeft' />
+              <i className={ css('ms-Icon', {'ms-Icon--chevronLeft': !getRTL(), 'ms-Icon--chevronRight': getRTL()}) }  />
             </span>
             <span
               className='ms-DatePicker-nextMonth js-nextMonth'
-              onClick={ onSelectNextMonth }
-              onKeyDown={ this._onKeyDown.bind(this, onSelectNextMonth) }
+              onClick={ this._onSelectNextMonth }
+              onKeyDown={ this._onKeyDown.bind(this, this._onSelectNextMonth) }
               tabIndex={ 0 }>
-                <i className='ms-Icon ms-Icon--chevronRight' />
+              <i className={ css('ms-Icon', {'ms-Icon--chevronLeft': getRTL(), 'ms-Icon--chevronRight': !getRTL()}) }  />
             </span>
           </div>
           <div className='ms-DatePicker-headerToggleView js-showMonthPicker'></div>
@@ -89,9 +100,9 @@ export default class DatePickerDay extends React.Component<IDatePickerDayProps, 
               </tr>
             </thead>
             <tbody>
-                {weeks.map((week, index) =>
-                  <tr key={index}>
-                    {week.map(day =>
+                {weeks.map((week, weekIndex) =>
+                  <tr key={weekIndex}>
+                    {week.map((day, dayIndex) =>
                       <td role='presentation' key={day.key}>
                         <div
                           className={ css('ms-DatePicker-day', {
@@ -102,11 +113,13 @@ export default class DatePickerDay extends React.Component<IDatePickerDayProps, 
                           }) }
                             role='gridcell'
                             onClick={ selectDayCallbacks[day.key] }
-                            aria-selected={ this._isSelectedDay(selectedDate, day) }
-                            id={ this._isSelectedDay(selectedDate, day) ? activeDescendantId : null }
+                            onKeyDown= { (ev: React.KeyboardEvent) =>
+                              this._navigateMonthEdge(ev, day.originalDate, weekIndex, dayIndex)}
+                            aria-selected={ day.isSelected }
+                            id={ DateMath.compareDates(navigatedDate, day.originalDate) ? activeDescendantId : null }
                             data-is-focusable={ true }
-                            ref={ this._isSelectedDay(selectedDate, day) ? 'selectedDay' : null }
-                            key={ this._isSelectedDay(selectedDate, day) ? 'selectedDay' : null } >
+                            ref={ DateMath.compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : null }
+                            key={ DateMath.compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : null } >
                               {day.date}
                         </div>
                       </td>
@@ -121,14 +134,26 @@ export default class DatePickerDay extends React.Component<IDatePickerDayProps, 
   }
 
   public focus() {
-    if (this.refs.selectedDay) {
-      this.refs.selectedDay.tabIndex = 0;
-      this.refs.selectedDay.focus();
+    if (this.refs.navigatedDay) {
+      this.refs.navigatedDay.tabIndex = 0;
+      this.refs.navigatedDay.focus();
     }
   }
 
-  private _isSelectedDay(selectedDate: Date, day: IDayInfo) {
-    return selectedDate ? day.isSelected : day.isToday;
+  private _navigateMonthEdge(ev: React.KeyboardEvent, date: Date, weekIndex: number, dayIndex: number) {
+    if (weekIndex === 0 && ev.which === KeyCodes.up) {
+      this.props.onNavigateDate(DateMath.addWeeks(date, -1), true);
+      ev.preventDefault();
+    } else if (weekIndex === (this.state.weeks.length - 1) && ev.which === KeyCodes.down) {
+      this.props.onNavigateDate(DateMath.addWeeks(date, 1), true);
+      ev.preventDefault();
+    } else if (dayIndex === 0 && ev.which === getRTLSafeKeyCode(KeyCodes.left)) {
+      this.props.onNavigateDate(DateMath.addDays(date, -1), true);
+      ev.preventDefault();
+    } else if (dayIndex === (DAYS_IN_WEEK - 1) && ev.which === getRTLSafeKeyCode(KeyCodes.right)) {
+      this.props.onNavigateDate(DateMath.addDays(date, 1), true);
+      ev.preventDefault();
+    }
   }
 
   private _onKeyDown(callback: () => void, ev: React.KeyboardEvent) {
@@ -137,14 +162,22 @@ export default class DatePickerDay extends React.Component<IDatePickerDayProps, 
     }
   }
 
-  private _getWeeks(selectedDate: Date): IDayInfo[][] {
+  private _onSelectNextMonth() {
+    this.props.onNavigateDate(DateMath.addMonths(this.props.navigatedDate, 1), false);
+  }
+
+  private _onSelectPrevMonth() {
+    this.props.onNavigateDate(DateMath.addMonths(this.props.navigatedDate, -1), false);
+  }
+
+  private _getWeeks(navigatedDate: Date, selectedDate: Date): IDayInfo[][] {
     let { firstDayOfWeek } = this.props;
-    let date = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1);
+    let date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
     let today = new Date();
     let weeks = [];
     let week;
 
-    // Cycle the date backwards to get to Sunday (the first day of the week.)
+    // Cycle the date backwards to get to the first day of the week.
     while (date.getDay() !== firstDayOfWeek) {
       date.setDate(date.getDate() - 1);
     }
@@ -162,9 +195,9 @@ export default class DatePickerDay extends React.Component<IDatePickerDayProps, 
           key: date.toString(),
           date: date.getDate(),
           originalDate: new Date(date.toString()),
-          isInMonth: date.getMonth() === selectedDate.getMonth(),
-          isToday: this._compareDates(today, date),
-          isSelected: this._compareDates(selectedDate, date)
+          isInMonth: date.getMonth() === navigatedDate.getMonth(),
+          isToday: DateMath.compareDates(today, date),
+          isSelected: DateMath.compareDates(selectedDate, date)
         };
 
         week.push(dayInfo);
@@ -182,11 +215,5 @@ export default class DatePickerDay extends React.Component<IDatePickerDayProps, 
     }
 
     return weeks;
-  }
-
-  private _compareDates(date1: Date, date2: Date) {
-    return (date1.getFullYear() === date2.getFullYear()
-      && date1.getMonth() === date2.getMonth()
-      && date1.getDate() === date2.getDate());
   }
 }
