@@ -110,6 +110,10 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
   }
 
   private _onMouseDown(ev: MouseEvent) {
+
+    // We need to reset the key states for ctrl/meta/etc.
+    this._onKeyChangeCapture(ev as any);
+
     let target = ev.target as HTMLElement;
     let { selection, selectionMode } = this.props;
     let isToggleElement = this._isToggleElement(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);
