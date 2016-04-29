@@ -107,17 +107,21 @@ $linkTextColor: $ms-color-neutralPrimary;
   @include focus-border($focusedBorderColor);
 }
 
-.ms-Nav-link.is-selected:hover {
-  background: $selectedHoverColor;
-}
+.ms-Nav-link.is-selected {
+  position: relative;
 
-.ms-Nav-link.is-selected:after {
-  @include border-left(4px, solid, $selectedHighlightColor);
+  &:hover {
+    background: $selectedHoverColor;
+  }
 
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  &:after {
+    @include border-left(4px, solid, $selectedHighlightColor);
+
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
 }

@@ -101,6 +101,7 @@
 .ms-ContextualMenu-link {
   @include focus-border($ms-color-neutralTertiary);
 
+  position: relative;
   text-decoration: none;
   color: $ms-color-neutralPrimary;
   border: 1px solid transparent;

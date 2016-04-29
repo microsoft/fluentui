@@ -38,6 +38,7 @@
 .Header-button {
   @include focus-border($ms-color-themeLight, 2px);
 
+  position: relative;
   text-decoration: none;
   background: none;
   color: white;

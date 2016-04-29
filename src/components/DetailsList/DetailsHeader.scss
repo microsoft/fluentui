@@ -65,6 +65,7 @@ $unselectedHoverColor: $ms-color-neutralLight;
 .ms-DetailsHeader-cell {
   @include focus-border($ms-color-neutralTertiary);
 
+  position: relative;
   display: inline-block;
   box-sizing: border-box;
   padding: 0 8px;

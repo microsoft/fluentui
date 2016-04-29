@@ -102,6 +102,7 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
 .ms-CommandBarItem-link {
   @include focus-border($ms-color-neutralTertiary, 2px);
 
+  position: relative;
   background: none;
   border: none;
   line-height: $CommandBarItem-height - 1;
