@@ -92,7 +92,7 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
 
   private _onFocus(ev: FocusEvent) {
     let { selection, selectionMode } = this.props;
-    let index = this._getIndexFromElement(ev.target as HTMLElement);
+    let index = this._getIndexFromElement(ev.target as HTMLElement, true);
 
     if (index >= 0 && selectionMode !== SelectionMode.none) {
       selection.setChangeEvents(false);

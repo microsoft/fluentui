@@ -1,6 +1,5 @@
-
 import * as React from 'react';
-
+import Fabric from '../Fabric/index';
 export interface ILayer {
   /**
    * The React children of the layer.
@@ -35,9 +34,9 @@ export default class LayerHost extends React.Component<React.Props<LayerHost>, I
     });
 
     return (
-      <div className='ms-LayerHost'>
+      <Fabric className='ms-LayerHost'>
         { layers }
-      </div>
+      </Fabric>
     );
   }
 

@@ -2,7 +2,8 @@ import * as React from 'react';
 import './CalloutExample.scss';
 import {
   Callout,
-  Button
+  Button,
+  Link
 } from '../../../../components/index';
 
 export interface ICalloutBaiscExampleState {
@@ -47,6 +48,7 @@ export default class CalloutBasicExample extends React.Component<any, ICalloutBa
                 </p>
               </div>
             </div>
+            <Link href='http://microsoft.com'>Go to microsoft</Link>
         </Callout>
         ) : (null) }
       </div>

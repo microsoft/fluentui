@@ -420,8 +420,14 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
         column.isMultiline = true;
       } else if (column.key === 'name') {
         column.onRender = (item) => (
-          <Link href='#'>{ item.name }</Link>
+          <Link>{ item.name }</Link>
         );
+      } else if (column.key === 'key') {
+        column.onRender = (item) => (
+          <Link href='#'>{ item.key }</Link>
+        );
+        column.minWidth = 90;
+        column.maxWidth = 90;
       }
     });
 

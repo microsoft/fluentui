@@ -3,6 +3,10 @@
 
 .ms-Link {
   @include focus-border($ms-color-neutralTertiary);
+
+  font-family: $ms-font-family-regular;
+  font-weight: normal;
+
   border: none;
   background: none;
   @include text-align(left);

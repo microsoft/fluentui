@@ -2,6 +2,12 @@
 
 .ms-DetailsList {
   position: relative;
+  font-size: $ms-font-size-s;
+
+  /* Button links should match the default font size; for some reason this isn't specified. */
+  BUTTON.ms-Link {
+    font-size: $ms-font-size-s;
+  }
 
   > .ms-FocusZone {
     display: inline-block;
@@ -9,6 +15,7 @@
     min-width: 1px;
     min-height: 1px;
   }
+
 }
 
 .ms-DetailsList.is-horizontalConstrained {
