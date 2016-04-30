@@ -79,6 +79,9 @@ $unselectedHoverColor: $ms-color-neutralLight;
   @include text-align(left);
   height: $rowHeight;
   vertical-align: top;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 
   &.is-check {
     position: relative;
