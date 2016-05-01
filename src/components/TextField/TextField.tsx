@@ -72,17 +72,17 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
     let { disabled, required, multiline, underlined, label, description, iconClass, className } = this.props;
     let { errorMessage } = this.state;
 
+    const textFieldClassName = css('ms-TextField', className, {
+      'is-required': required,
+      'is-disabled': disabled,
+      'ms-TextField--multiline': multiline,
+      'ms-TextField--underlined': underlined
+    });
+
     return (
       <div
         { ...this.props }
-        className={
-          css('ms-TextField', className, {
-            'is-required': required,
-            'is-disabled': disabled,
-            'ms-TextField--multiline': multiline,
-            'ms-TextField--underlined': underlined
-          })
-        }
+        className={ textFieldClassName }
       >
         { label ? <Label htmlFor={ this._id }>{ label }</Label> : null }
         { iconClass ? <i className={ iconClass }></i> : null }
