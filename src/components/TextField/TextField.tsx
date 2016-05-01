@@ -29,8 +29,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
 
   public refs: {
     [key: string]: React.ReactInstance;
-    multilineText: HTMLInputElement;
-    singlelineText: HTMLInputElement;
+    field: HTMLInputElement;
   };
 
   private _id: string;
@@ -96,12 +95,8 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
   }
 
   public focus() {
-    let { multiline } = this.props;
-
-    if (multiline && this.refs.multilineText) {
-      this.refs.multilineText.focus();
-    } else if (!multiline && this.refs.singlelineText) {
-      this.refs.singlelineText.focus();
+    if (this.refs.field) {
+      this.refs.field.focus();
     }
   }
 
@@ -115,7 +110,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
     return (
       <textarea
         id={ this._id }
-        ref='multilineText'
+        ref='field'
         value={ this.state.value }
         onChange={ this._handleFieldChanged }
         className={ this._fieldClassName }
@@ -130,7 +125,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
         id={ this._id }
         type='text'
         placeholder={ this.props.placeholder }
-        ref='singlelineText'
+        ref='field'
         value={ this.state.value }
         onChange={ this._handleFieldChanged }
         className={ this._fieldClassName }
