@@ -50,8 +50,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
       errorMessage: ''
     };
 
-    this._onMultilineTextChanged = this._onMultilineTextChanged.bind(this);
-    this._onSinglelineTextChanged = this._onSinglelineTextChanged.bind(this);
+    this._handleFieldChanged = this._handleFieldChanged.bind(this);
 
     this._delayedValidate = this._async.debounce(this._validate, 200);
   }
@@ -118,7 +117,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
         id={ this._id }
         ref='multilineText'
         value={ this.state.value }
-        onChange={ this._onMultilineTextChanged }
+        onChange={ this._handleFieldChanged }
         className={ this._fieldClassName }
         readOnly={ this.props.readOnly }
       />
@@ -133,7 +132,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
         placeholder={ this.props.placeholder }
         ref='singlelineText'
         value={ this.state.value }
-        onChange={ this._onSinglelineTextChanged }
+        onChange={ this._handleFieldChanged }
         className={ this._fieldClassName }
         aria-describedby={ this._descriptionId }
         readOnly={ this.props.readOnly }
@@ -141,32 +140,23 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
     );
   }
 
-  private _onMultilineTextChanged(ev: React.KeyboardEvent): void {
-    let { onGetErrorMessage } = this.props;
-
-    if (onGetErrorMessage) {
-      this._delayedValidate(this.refs.multilineText.value);
-    }
+  private _handleFieldChanged(event: React.KeyboardEvent): void {
+    const element: HTMLInputElement = event.target as HTMLInputElement;
+    const value: string = element.value;
+    const { onChanged, onGetErrorMessage } = this.props;
 
     this.setState({
-      value: this.refs.multilineText.value
+      value
     } as ITextFieldState);
 
-    this._onChanged(this.refs.multilineText.value);
-  }
-
-  private _onSinglelineTextChanged(ev: React.KeyboardEvent): void {
-    let { onGetErrorMessage } = this.props;
-
+    // If there is no `onGetErrorMessage` prop, no need to setTimeout to validate.
     if (onGetErrorMessage) {
-      this._delayedValidate(this.refs.singlelineText.value);
+      this._delayedValidate(value);
     }
 
-    this.setState({
-      value: this.refs.singlelineText.value
-    } as ITextFieldState);
-
-    this._onChanged(this.refs.singlelineText.value);
+    if (onChanged) {
+      onChanged(value);
+    }
   }
 
   private _validate(value: string): void {
@@ -175,13 +165,5 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
     this.setState({
       errorMessage: onGetErrorMessage && onGetErrorMessage(value)
     } as ITextFieldState);
-  }
-
-  private _onChanged(newValue: string): void {
-    let { onChanged } = this.props;
-
-    if (onChanged) {
-      onChanged(newValue);
-    }
   }
 }
