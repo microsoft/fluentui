@@ -69,8 +69,8 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
   }
 
   public render() {
-    let { disabled, required, multiline, placeholder, underlined, label, description, iconClass, className, readOnly } = this.props;
-    let { value, errorMessage } = this.state;
+    let { disabled, required, multiline, underlined, label, description, iconClass, className } = this.props;
+    let { errorMessage } = this.state;
 
     return (
       <div
@@ -86,36 +86,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
       >
         { label ? <Label htmlFor={ this._id }>{ label }</Label> : null }
         { iconClass ? <i className={ iconClass }></i> : null }
-        {
-          multiline
-            ? <textarea
-                id={ this._id }
-                ref='multilineText'
-                value={ value }
-                onChange={ this._onMultilineTextChanged }
-                className={
-                  css('ms-TextField-field', {
-                    'ms-TextField-invalid': !!errorMessage
-                  })
-                }
-                readOnly={ readOnly }
-              />
-            : <input
-                id={ this._id }
-                type='text'
-                placeholder={ placeholder }
-                ref='singlelineText'
-                value={ value }
-                onChange={ this._onSinglelineTextChanged }
-                className={
-                  css('ms-TextField-field', {
-                    'ms-TextField-invalid': !!errorMessage
-                  })
-                }
-                aria-describedby={ this._descriptionId }
-                readOnly={ readOnly }
-              />
-        }
+        { multiline ? this._textAreaElement : this._inputElement }
         { errorMessage ? <p className='ms-TextField-errorMessage ms-u-slideDownIn20'>{ errorMessage }</p> : null }
         { errorMessage ? <div aria-live='assertive' className='ms-u-screenReaderOnly'>{ errorMessage }</div> : null }
         { description ? <span className='ms-TextField-description'>{ description }</span> : null }
@@ -133,6 +104,41 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
     } else if (!multiline && this.refs.singlelineText) {
       this.refs.singlelineText.focus();
     }
+  }
+
+  private get _fieldClassName(): string {
+    return css('ms-TextField-field', {
+      'ms-TextField-invalid': !!this.state.errorMessage
+    });
+  }
+
+  private get _textAreaElement(): React.ReactElement<React.HTMLProps<HTMLAreaElement>> {
+    return (
+      <textarea
+        id={ this._id }
+        ref='multilineText'
+        value={ this.state.value }
+        onChange={ this._onMultilineTextChanged }
+        className={ this._fieldClassName }
+        readOnly={ this.props.readOnly }
+      />
+    );
+  }
+
+  private get _inputElement(): React.ReactElement<React.HTMLProps<HTMLInputElement>> {
+    return (
+      <input
+        id={ this._id }
+        type='text'
+        placeholder={ this.props.placeholder }
+        ref='singlelineText'
+        value={ this.state.value }
+        onChange={ this._onSinglelineTextChanged }
+        className={ this._fieldClassName }
+        aria-describedby={ this._descriptionId }
+        readOnly={ this.props.readOnly }
+      />
+    );
   }
 
   private _onMultilineTextChanged(ev: React.KeyboardEvent): void {
