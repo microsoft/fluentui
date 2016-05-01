@@ -15,8 +15,6 @@ export interface ITextFieldState {
    * - If we have done the validation and there is validation error, errorMessage is the validation error message.
    */
   errorMessage: string;
-  id?: string;
-  descriptionId?: string;
 }
 
 let _instance: number = 0;
@@ -35,19 +33,21 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
     singlelineText: HTMLInputElement;
   };
 
+  private _id: string;
+  private _descriptionId: string;
   private _async: Async;
   private _delayedValidate: (value: string) => void;
 
   public constructor(props: ITextFieldProps) {
     super(props);
 
+    this._id = `TextField-${ _instance++ }`;
+    this._descriptionId = `TextFieldDescription-${ _instance++ }`;
     this._async = new Async(this);
 
     this.state = {
       value: props.value || '',
-      id: `TextField-${ _instance++ }`,
-      errorMessage: '',
-      descriptionId : `TextFieldDescription-${ _instance++ }`
+      errorMessage: ''
     };
 
     this._onMultilineTextChanged = this._onMultilineTextChanged.bind(this);
@@ -70,7 +70,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
 
   public render() {
     let { disabled, required, multiline, placeholder, underlined, label, description, iconClass, className, readOnly } = this.props;
-    let { value, id, errorMessage, descriptionId } = this.state;
+    let { value, errorMessage } = this.state;
 
     return (
       <div
@@ -84,12 +84,12 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
           })
         }
       >
-        { label ? <Label htmlFor={ id }>{ label }</Label> : null }
+        { label ? <Label htmlFor={ this._id }>{ label }</Label> : null }
         { iconClass ? <i className={ iconClass }></i> : null }
         {
           multiline
             ? <textarea
-                id={ id }
+                id={ this._id }
                 ref='multilineText'
                 value={ value }
                 onChange={ this._onMultilineTextChanged }
@@ -101,7 +101,8 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
                 readOnly={ readOnly }
               />
             : <input
-                id={ id }
+                id={ this._id }
+                type='text'
                 placeholder={ placeholder }
                 ref='singlelineText'
                 value={ value }
@@ -111,7 +112,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
                     'ms-TextField-invalid': !!errorMessage
                   })
                 }
-                aria-describedby={ descriptionId }
+                aria-describedby={ this._descriptionId }
                 readOnly={ readOnly }
               />
         }
@@ -119,7 +120,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
         { errorMessage ? <div aria-live='assertive' className='ms-u-screenReaderOnly'>{ errorMessage }</div> : null }
         { description ? <span className='ms-TextField-description'>{ description }</span> : null }
         { this.props.children }
-        { this.props.ariaLabel ? <span id={ descriptionId } className='ms-TextField-hidden'>{ this.props.ariaLabel }</span> : null}
+        { this.props.ariaLabel ? <span id={ this._descriptionId } className='ms-TextField-hidden'>{ this.props.ariaLabel }</span> : null}
       </div>
     );
   }
