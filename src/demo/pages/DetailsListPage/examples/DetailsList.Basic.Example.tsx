@@ -423,6 +423,7 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
     columns.forEach(column => {
       if (column.key === 'description') {
         column.isMultiline = true;
+        column.minWidth = 200;
       } else if (column.key === 'name') {
         column.onRender = (item) => (
           <Link>{ item.name }</Link>
@@ -438,7 +439,7 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
 
     columns.unshift({
       key: 'icon',
-      name: 'icon',
+      name: '',
       minWidth: 16,
       maxWidth: 16,
       fieldName: null,

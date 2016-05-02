@@ -23,13 +23,14 @@ export default class Link extends React.Component<React.HTMLProps<HTMLLinkElemen
         { children }
       </a>
       ) : (
-      <button
+      <div
         { ...this.props as any }
         className={ css('ms-Link', className) }
         role='button'
+        data-is-focusable='true'
         onClick={ this._onClick }>
         { children }
-      </button>
+      </div>
       ));
   }
 

@@ -16,7 +16,7 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
   margin: 1px 0;
   vertical-align: top;
   white-space: nowrap;
-  padding: $rowVerticalPadding 0;
+  padding: 0;
   user-select: none;
   cursor: default;
   box-sizing: border-box;
@@ -44,13 +44,12 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
   display: inline-block;
   position: relative;
   box-sizing: border-box;
-  padding: 0 8px;
-  min-height: 20px;
+  padding: $rowVerticalPadding 0;
+  margin: 0 8px;
+  min-height: $rowHeight;
   vertical-align: top;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
-  @include margin-right(16px);
 
   &.is-multiline {
     white-space: normal;
@@ -63,18 +62,12 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
   display: inline-block;
 }
 
-
-.ms-DetailsRow-cell:last-child {
-  @include margin-right(0);
-}
-
 .ms-DetailsRow-check {
   @include focus-border($focusedBorderColor);
 
   display: inline-block;
   cursor: default;
-  padding: 10px;
-  margin: -10px 0;
+  padding: 8px;
   box-sizing: border-box;
   vertical-align: top;
   background: none;

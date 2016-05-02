@@ -33,15 +33,13 @@ export interface IDetailsListState {
   lastWidth?: number;
   lastSelectionMode?: SelectionMode;
   adjustedColumns?: IColumn[];
-  columnOverrides?: { [key: string]: IColumn };
   layoutMode?: DetailsListLayoutMode;
   groups?: IGroup[];
   isAllCollapsed?: boolean;
 }
 
-const DEFAULT_GROUP_ITEM_LIMIT = 5;
-const MIN_RESIZABLE_COLUMN_WIDTH = 100; // this is the global min width
-const CHECKBOX_WIDTH = 40;
+const MIN_COLUMN_WIDTH = 100; // this is the global min width
+const CHECKBOX_WIDTH = 36;
 const GROUP_EXPAND_WIDTH = 36;
 const DEFAULT_INNER_PADDING = 16;
 
@@ -50,8 +48,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   public static defaultProps = {
     layoutMode: DetailsListLayoutMode.justified,
     selectionMode: SelectionMode.multiple,
-    constrainMode: ConstrainMode.horizontalConstrained,
-    getGroupItemLimit: () => { return DEFAULT_GROUP_ITEM_LIMIT; }
+    constrainMode: ConstrainMode.horizontalConstrained
   };
 
   public refs: {
@@ -64,11 +61,15 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   private _selection: ISelection;
   private _activeRows: { [key: string]: DetailsRow };
   private _dragDropHelper: DragDropHelper;
+  private _columnOverrides: {
+    [key: string]: IColumn;
+  };
 
   constructor(props: IDetailsListProps) {
     super(props);
 
     this._activeRows = {};
+    this._columnOverrides = {};
     this._onColumnResized = this._onColumnResized.bind(this);
     this._onColumnAutoResized = this._onColumnAutoResized.bind(this);
     this._onAllSelectedChanged = this._onAllSelectedChanged.bind(this);
@@ -82,7 +83,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
     this.state = {
       lastWidth: 0,
-      columnOverrides: {} as { [key: string]: IColumn },
       adjustedColumns: this._getAdjustedColumns(props),
       layoutMode: props.layoutMode,
       groups: props.groups,
@@ -343,7 +343,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     if (adjustedColumns) {
       this.setState({
         adjustedColumns: adjustedColumns,
-        lastWidth: viewportWidth
+        lastWidth: viewportWidth,
+        layoutMode: layoutMode
       });
     }
 
@@ -353,7 +354,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   }
 
   private _getAdjustedColumns(newProps: IDetailsListProps, forceUpdate?: boolean, layoutMode?: DetailsListLayoutMode): IColumn[] {
-    let { columns: newColumns, viewport: { width: viewportWidth }, selectionMode, groups } = newProps;
+    let { columns: newColumns, viewport: { width: viewportWidth }, selectionMode } = newProps;
+
     if (layoutMode === undefined) {
       layoutMode = newProps.layoutMode;
     }
@@ -361,7 +363,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     let columns = this.props ? this.props.columns : [];
     let lastWidth = this.state ? this.state.lastWidth : -1;
     let lastSelectionMode = this.state ? this.state.lastSelectionMode : undefined;
-    let columnOverrides = this.state ? this.state.columnOverrides : {};
 
     if (viewportWidth !== undefined) {
       if (!forceUpdate &&
@@ -376,78 +377,107 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
     newColumns = newColumns || buildColumns(this.props.items);
 
-    let adjustedColumns = [];
-    let outerPadding = 0;
+    if (layoutMode === DetailsListLayoutMode.fixedColumns) {
+      return this._getFixedColumns(newColumns);
+    } else {
+      return this._getJustifiedColumns(newColumns, viewportWidth);
+    }
+  }
+
+    /** Builds a set of columns based on the given columns mixed with the current overrides. */
+  private _getFixedColumns(newColumns: IColumn[]) {
+    return newColumns.map(column => {
+      let newColumn = assign({}, column, this._columnOverrides[column.key]);
+
+      if (!newColumn.calculatedWidth) {
+        newColumn.calculatedWidth = newColumn.maxWidth || newColumn.minWidth || MIN_COLUMN_WIDTH;
+      }
+
+      return newColumn;
+    });
+  }
+
+  /** Builds a set of columns to fix within the viewport width. */
+  private _getJustifiedColumns(newColumns: IColumn[], viewportWidth: number) {
+    let { selectionMode, groups } = this.props;
+    let outerPadding = DEFAULT_INNER_PADDING;
     let rowCheckWidth = (selectionMode !== SelectionMode.none) ? CHECKBOX_WIDTH : 0;
     let groupExpandWidth = groups ? GROUP_EXPAND_WIDTH : 0;
-
     let totalWidth = 0; // offset because we have one less inner padding.
-    let availableWidth = viewportWidth - (outerPadding * 2) - rowCheckWidth - groupExpandWidth;
+    let availableWidth = viewportWidth - outerPadding - rowCheckWidth - groupExpandWidth;
+    let adjustedColumns: IColumn[] = newColumns.map((column, i) => {
+      let newColumn = assign(
+        {},
+        column,
+        {
+          calculatedWidth: column.minWidth || MIN_COLUMN_WIDTH
+        });
 
-    if (layoutMode === DetailsListLayoutMode.fixedColumns) {
-      availableWidth = Number.MAX_VALUE;
-    }
+        totalWidth += newColumn.calculatedWidth + (i > 0 ? DEFAULT_INNER_PADDING : 0);
 
-    // First, add all of the minimum widths, noting the lastColumn the fits within viewport width.
-    for (let i = 0; i < newColumns.length; i++) {
-      let column = assign({}, newColumns[i], columnOverrides[newColumns[i].key]);
-      let padding = (i > 0 ? DEFAULT_INNER_PADDING : 0);
-      let minWidth = (column.minWidth || column.maxWidth || 150) + DEFAULT_INNER_PADDING;
+        return newColumn;
+    });
 
-      column.maxWidth = column.maxWidth || column.minWidth;
+    let lastIndex = adjustedColumns.length - 1;
 
-      if (!column.isCollapsable || (totalWidth + padding + minWidth) <= availableWidth) {
-        adjustedColumns.push(column);
-        totalWidth += minWidth + padding;
-        column.calculatedWidth = minWidth;
+    // Remove collapsable columns.
+    while (lastIndex > 1 && totalWidth > availableWidth) {
+      let column = adjustedColumns[lastIndex];
+
+      if (column.isCollapsable) {
+        totalWidth -= column.calculatedWidth + DEFAULT_INNER_PADDING;
+        adjustedColumns.splice(lastIndex, 1);
       }
+      lastIndex--;
     }
 
     // Then expand columns starting at the beginning, until we've filled the width.
     for (let i = 0; i < adjustedColumns.length && totalWidth < availableWidth; i++) {
       let column = adjustedColumns[i];
-      let maxWidth = column.maxWidth + DEFAULT_INNER_PADDING;
-      let minWidth = (column.minWidth || maxWidth) + DEFAULT_INNER_PADDING;
-
+      let overrides = this._columnOverrides[column.key] = this._columnOverrides[column.key] || {} as IColumn;
+      let maxWidth = column.maxWidth;
+      let minWidth = column.minWidth || maxWidth || MIN_COLUMN_WIDTH;
       let spaceLeft = availableWidth - totalWidth;
       let increment = Math.min(spaceLeft, maxWidth - minWidth);
 
-      if (layoutMode === DetailsListLayoutMode.justified && i === (adjustedColumns.length - 1)) {
+      // Add remaining space to the last column.
+      if (i === (adjustedColumns.length - 1)) {
         increment = spaceLeft;
       }
 
       column.calculatedWidth += increment;
       totalWidth += increment;
+
+      overrides.calculatedWidth = column.calculatedWidth;
     }
 
-      // Make the last row in justified layout not resizable.
-      if (layoutMode === DetailsListLayoutMode.justified) {
-        adjustedColumns[adjustedColumns.length - 1].isResizable = false;
-      }
+    // Make the last row in justified layout not resizable.
+    adjustedColumns[adjustedColumns.length - 1].isResizable = false;
 
     return adjustedColumns;
   }
 
   private _onColumnResized(resizingColumn: IColumn, newWidth: number) {
-    let { columnOverrides } = this.state;
-
-    // update column override based on the input width
-    function _resizeColumn(column: IColumn, width: number) {
-      let overrides = columnOverrides[column.key] = columnOverrides[column.key] || {} as IColumn;
-      overrides.minWidth = overrides.maxWidth = Math.max(width, column.isResizable ? MIN_RESIZABLE_COLUMN_WIDTH : 0);
-      overrides.isCollapsable = false;
-    }
-
-    if (this.state.layoutMode === DetailsListLayoutMode.justified) {
-      // for justified layout, locked column width using current calculated width
-      for (let adjustedColumn of this.state.adjustedColumns) {
-        _resizeColumn(adjustedColumn, adjustedColumn.calculatedWidth);
-      }
-      this.setState({ layoutMode: DetailsListLayoutMode.fixedColumns }); // once column is resized, we need to change to fix column mode
-    }
-
-    _resizeColumn(resizingColumn, newWidth);
+    this._setColumnLock(true);
+    this._columnOverrides[resizingColumn.key].calculatedWidth = Math.max(
+      resizingColumn.minWidth || MIN_COLUMN_WIDTH,
+      newWidth);
     this._adjustColumns(this.props, true, DetailsListLayoutMode.fixedColumns);
+  }
+
+  private _setColumnLock(isLocked: boolean) {
+    let { columns } = this.props;
+
+    for (let i = 0; i < columns.length; i++) {
+      let column = columns[i];
+      let overrides = this._columnOverrides[column.key] = this._columnOverrides[column.key] || {} as IColumn;
+
+      if (isLocked) {
+        overrides.calculatedWidth = overrides.calculatedWidth || column.maxWidth || column.minWidth;
+      } else {
+        delete overrides.calculatedWidth;
+      }
+    }
   }
 
   /**
@@ -500,7 +530,7 @@ export function buildColumns(
           key: propName,
           name: propName,
           fieldName: propName,
-          minWidth: 220,
+          minWidth: MIN_COLUMN_WIDTH,
           maxWidth: 300,
           isCollapsable: !!columns.length,
           isMultiline: (isMultiline === undefined) ? false : isMultiline,

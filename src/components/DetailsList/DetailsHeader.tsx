@@ -10,6 +10,7 @@ import './DetailsHeader.scss';
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
+const INNER_PADDING = 16;
 
 export interface IDetailsHeaderProps {
   columns: IColumn[];
@@ -121,7 +122,7 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
                     'is-actionable': column.columnActionsMode !== ColumnActionsMode.disabled,
                     'is-icon-visible': column.isSorted || column.isGrouped || column.isFiltered
                   }) }
-                  style={ { width: column.calculatedWidth } }
+                  style={ { width: column.calculatedWidth + INNER_PADDING } }
                   onClick={ this._onColumnClick.bind(this, column) }
                   data-automationid='ColumnsHeaderColumn'
                   >

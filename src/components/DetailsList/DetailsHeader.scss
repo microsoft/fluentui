@@ -49,11 +49,6 @@ $unselectedHoverColor: $ms-color-neutralLight;
 .ms-DetailsHeader-cellSizeWrapper {
   display: inline-block;
   vertical-align: top;
-  @include margin-right(16px);
-
-  &:last-child {
-    @include margin-right(0);
-  }
 }
 
 .ms-DetailsHeader-filterChevron.ms-Icon {
@@ -85,7 +80,7 @@ $unselectedHoverColor: $ms-color-neutralLight;
 
   &.is-check {
     position: relative;
-    padding: 8px 10px;
+    padding: 8px;
     margin: 0;
   }
 
@@ -101,6 +96,7 @@ $unselectedHoverColor: $ms-color-neutralLight;
   &.is-sizer {
     position: absolute;
     width: 16px;
+    @include margin-left(-10px);
     cursor: col-resize;
     bottom: 0;
     top: 0;
