@@ -135,7 +135,11 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
   }
 
   private _onMultilineTextChanged(ev: React.KeyboardEvent): void {
-    this._delayedValidate(this.refs.singlelineText.value);
+    let { onGetErrorMessage } = this.props;
+
+    if (onGetErrorMessage) {
+      this._delayedValidate(this.refs.multilineText.value);
+    }
 
     this.setState({
       value: this.refs.multilineText.value
@@ -145,7 +149,11 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
   }
 
   private _onSinglelineTextChanged(ev: React.KeyboardEvent): void {
-    this._delayedValidate(this.refs.singlelineText.value);
+    let { onGetErrorMessage } = this.props;
+
+    if (onGetErrorMessage) {
+      this._delayedValidate(this.refs.singlelineText.value);
+    }
 
     this.setState({
       value: this.refs.singlelineText.value
