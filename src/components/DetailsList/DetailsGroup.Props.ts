@@ -2,7 +2,9 @@ import * as React from 'react';
 import DetailsGroup from './DetailsGroup';
 import {
   IGroup,
-  IColumn
+  IColumn,
+  IDetailsGroupHeaderProps,
+  IDetailsGroupFooterProps
 } from './index';
 import {
   ISelection,
@@ -36,9 +38,6 @@ export interface IDetailsGroupProps extends React.Props<DetailsGroup> {
   /** Grouping item limit. */
   getGroupItemLimit?: (group: IGroup) => number;
 
-  /** Text to display for the group footer show all link. */
-  showAllLinkText?: string;
-
   /** Event names and corresponding callbacks that will be registered to the group and the rendered row elements */
   eventsToRegister?: [{ eventName: string, callback: (context: IDragDropContext, event?: any) => void }];
 
@@ -57,16 +56,9 @@ export interface IDetailsGroupProps extends React.Props<DetailsGroup> {
   /** helper to manage drag/drop across item rows and groups */
   dragDropHelper?: IDragDropHelper;
 
-  onToggleCollapse?: (groupIndex: number) => void;
+  /** Information to pass in to the group header. */
+  headerProps?: IDetailsGroupHeaderProps;
 
-  onToggleSelectGroup?: (groupIndex: number) => void;
-
-  /** Callback for when the "Show All" link in group footer is clicked */
-  onToggleSummarize?: (groupIndex: number) => void;
-
-  /** Callback to determine if a group has missing items and needs to load them from the server. */
-  isGroupLoading?: (group: IGroup) => boolean;
-
-  /** Text shown on group headers to indicate the group is being loaded. */
-  loadingText?: string;
+  /** Information to pass in to the group footer. */
+  footerProps?: IDetailsGroupFooterProps;
 }

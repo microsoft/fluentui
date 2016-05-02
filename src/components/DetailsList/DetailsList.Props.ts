@@ -23,6 +23,9 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /** Optional grouping instructions. */
   groups?: IGroup[];
 
+  /** Optional override properties to render groups. */
+  groupProps?: IDetailsGroupProps;
+
   /** Optional selection model to track selection state.  */
   selection?: ISelection;
 
@@ -37,12 +40,6 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** Controls how the list contrains overflow. */
   constrainMode?: ConstrainMode;
-
-  /** Grouping item limit. */
-  getGroupItemLimit?: (group: IGroup) => number;
-
-  /** Text to display for the group footer show all link. */
-  showAllLinkText?: string;
 
   /** Event names and corresponding callbacks that will be registered to rendered row elements. */
   rowElementEventMap?: [{ eventName: string, callback: (context: IDragDropContext, event?: any) => void }];
@@ -67,24 +64,6 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** Viewport, provided by the withViewport decorator. */
   viewport?: IViewport;
-
-  /** Callback for when the "Show All" link in group footer is clicked */
-  onShowAll?: (group: IGroup) => void;
-
-  /** Boolean indicating if all groups are in collapsed state. */
-  isAllGroupsCollapsed?: boolean;
-
-  /** Callback to determine if a group has missing items and needs to load them from the server. */
-  isGroupLoading?: (group: IGroup) => boolean;
-
-  /** Text shown on group headers to indicate the group is being loaded. */
-  loadingText?: string;
-
-  /** Callback for when a group is expanded or collapsed. */
-  onToggleCollapse?: (group?: IGroup) => void;
-
-  /** Callback for when all groups are expanded or collapsed. */
-  onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
 }
 
 export interface IColumn {
@@ -286,3 +265,46 @@ export interface IGroup {
    */
   onRenderFooter?: (group: IGroup) => React.ReactNode;
 }
+
+export interface IDetailsGroupProps {
+  /** Boolean indicating if all groups are in collapsed state. */
+  isAllGroupsCollapsed?: boolean;
+
+  /** Grouping item limit. */
+  getGroupItemLimit?: (group: IGroup) => number;
+
+  /** Callback for when all groups are expanded or collapsed. */
+  onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
+
+  /** Information to pass in to the group header. */
+  headerProps?: IDetailsGroupHeaderProps;
+
+  /** Information to pass in to the group footer. */
+  footerProps?: IDetailsGroupFooterProps;
+}
+
+export interface IDetailsGroupHeaderProps {
+  /** Callback to determine if a group has missing items and needs to load them from the server. */
+  isGroupLoading?: (group: IGroup) => boolean;
+
+  /** Text shown on group headers to indicate the group is being loaded. */
+  loadingText?: string;
+
+  /** Callback for when the group header is clicked. */
+  onGroupHeaderClick?: (group: IGroup) => void;
+
+  /** Callback for when the group is expanded or collapsed. */
+  onToggleCollapse?: (group: IGroup) => void;
+
+  /** Callback for when the group is selected. */
+  onToggleSelectGroup?: (group: IGroup) => void;
+}
+
+export interface IDetailsGroupFooterProps {
+  /** Callback for when the "Show All" link in group footer is clicked */
+  onToggleSummarize?: (group: IGroup) => void;
+
+  /** Text to display for the group footer show all link. */
+  showAllLinkText?: string;
+}
+

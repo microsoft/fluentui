@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './GroupHeader.scss';
 import Check from './Check';
-import { IGroup } from './index';
+import { IGroup, IDetailsGroupHeaderProps } from './index';
 import { css } from '../../utilities/css';
 import { default as Spinner } from '../Spinner/index';
 import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
@@ -9,10 +9,7 @@ import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
 export interface IGroupHeaderProps {
   group: IGroup;
   groupIndex: number;
-  onToggleCollapse?: (groupIndex: number) => void;
-  onToggleSelectGroup?: (groupIndex: number) => void;
-  isGroupLoading?: (group: IGroup) => boolean;
-  loadingText?: string;
+  headerProps?: IDetailsGroupHeaderProps;
 }
 
 export interface IGroupHeaderState {
@@ -26,6 +23,7 @@ export default class GroupHeader extends React.Component<IGroupHeaderProps, IGro
 
     this._onToggleCollapse = this._onToggleCollapse.bind(this);
     this._onToggleSelectGroup = this._onToggleSelectGroup.bind(this);
+    this._onHeaderClick = this._onHeaderClick.bind(this);
 
     this.state = {
       isCollapsed: this.props.group && this.props.group.isCollapsed,
@@ -46,17 +44,18 @@ export default class GroupHeader extends React.Component<IGroupHeaderProps, IGro
   }
 
   public render() {
-    let { group, loadingText } = this.props;
+    let { group, headerProps } = this.props;
     let { isCollapsed, isLoadingVisible } = this.state;
     let showCheckBox = true;
     let isSelected = group && group.isSelected;
+    let loadingText = headerProps && headerProps.loadingText;
 
     return group && (
       <div
         className={ css('ms-GroupHeader', {
           'is-selected': isSelected
         }) }
-        onClick={ this._onToggleSelectGroup }
+        onClick={ this._onHeaderClick }
         data-is-focusable={ true } >
 
         <FocusZone direction={ FocusZoneDirection.horizontal }>
@@ -64,7 +63,8 @@ export default class GroupHeader extends React.Component<IGroupHeaderProps, IGro
           { showCheckBox && (
             <button
               className='ms-GroupHeader-check'
-              data-selection-toggle={ true } >
+              data-selection-toggle={ true }
+              onClick={ this._onToggleSelectGroup } >
               <Check isChecked={ isSelected } />
             </button>
           )}
@@ -89,9 +89,11 @@ export default class GroupHeader extends React.Component<IGroupHeaderProps, IGro
     );
   }
 
-  private _onToggleCollapse(ev?: any) {
-    let { onToggleCollapse, groupIndex, group, isGroupLoading } = this.props;
+  private _onToggleCollapse(ev: React.MouseEvent) {
+    let { group, headerProps } = this.props;
     let { isCollapsed } = this.state;
+    let onToggleCollapse = headerProps && headerProps.onToggleCollapse;
+    let isGroupLoading = headerProps && headerProps.isGroupLoading;
 
     let newCollapsed = !isCollapsed;
     let newLoadingVisible = !newCollapsed && isGroupLoading && isGroupLoading(group);
@@ -101,17 +103,35 @@ export default class GroupHeader extends React.Component<IGroupHeaderProps, IGro
       isLoadingVisible: newLoadingVisible
     });
     if (onToggleCollapse) {
-      onToggleCollapse(groupIndex);
+      onToggleCollapse(group);
     }
 
     ev.stopPropagation();
     ev.preventDefault();
   }
 
-  private _onToggleSelectGroup() {
-    let { onToggleSelectGroup, groupIndex } = this.props;
+  private _onToggleSelectGroup(ev: React.MouseEvent) {
+    let { group, headerProps } = this.props;
+    let onToggleSelectGroup = headerProps && headerProps.onToggleSelectGroup;
+
     if (onToggleSelectGroup) {
-      onToggleSelectGroup(groupIndex);
+      onToggleSelectGroup(group);
+    }
+
+    ev.preventDefault();
+    ev.stopPropagation();
+  }
+
+  private _onHeaderClick() {
+    let { group, headerProps } = this.props;
+
+    if (headerProps) {
+      let { onGroupHeaderClick, onToggleSelectGroup } = headerProps;
+      if (onGroupHeaderClick) {
+        onGroupHeaderClick(group);
+      } else if (onToggleSelectGroup) {
+        onToggleSelectGroup(group);
+      }
     }
   }
 }

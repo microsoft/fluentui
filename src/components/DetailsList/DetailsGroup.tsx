@@ -63,15 +63,12 @@ export default class DetailsGroup extends React.Component<IDetailsGroupProps, ID
       groupIndex,
       getGroupItemLimit,
       items,
-      isGroupLoading,
-      loadingText,
-      onToggleCollapse,
-      onToggleSelectGroup,
-      onToggleSummarize,
-      selection,
-      showAllLinkText
+      headerProps,
+      footerProps,
+      selection
     } = this.props;
     let renderCount = group ? getGroupItemLimit(group) : items.length;
+    let isFooterVisible = group && !group.isCollapsed && !group.isShowingAll && group.count > renderCount;
 
     return (
       <div
@@ -82,10 +79,7 @@ export default class DetailsGroup extends React.Component<IDetailsGroupProps, ID
           <GroupHeader
             group={ group }
             groupIndex={ groupIndex }
-            isGroupLoading={ isGroupLoading }
-            loadingText={ loadingText }
-            onToggleCollapse={ onToggleCollapse }
-            onToggleSelectGroup={ onToggleSelectGroup }
+            headerProps={ headerProps }
             ref={ 'header' }
           />
         }
@@ -105,15 +99,12 @@ export default class DetailsGroup extends React.Component<IDetailsGroupProps, ID
           group && group.onRenderFooter ?
           group.onRenderFooter(group) :
           (
-            group && group.isCollapsed && !group.isShowingAll ?
-            null :
+            isFooterVisible &&
             <GroupFooter
               group={ group }
               groupIndex={ groupIndex }
-              groupItemLimit={ renderCount }
-              onToggleSummarize={ onToggleSummarize }
+              footerProps={ footerProps }
               ref={ 'footer' }
-              showAllLinkText={ showAllLinkText }
             />
           )
         }

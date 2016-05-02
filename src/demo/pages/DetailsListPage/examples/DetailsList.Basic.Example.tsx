@@ -89,6 +89,18 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
     } = this.state;
 
     let isGrouped = groups && groups.length > 0;
+    let groupProps = {
+      getGroupItemLimit: (group: IGroup) => {
+        if (group) {
+            return group.isShowingAll ? group.count : Math.min(group.count, groupItemLimit);
+        } else {
+            return items.length;
+        }
+      },
+      footerProps: {
+        showAllLinkText: 'Show all'
+      }
+    };
 
     return (
       <div className='ms-DetailsListBasicExample'>
@@ -106,16 +118,9 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
           groups={ groups }
           columns={ columns }
           layoutMode={ layoutMode }
-          showAllLinkText='Show all'
           selectionMode={ selectionMode }
           constrainMode={ constrainMode }
-          getGroupItemLimit={ (group: IGroup) => {
-            if (group) {
-                return group.isShowingAll ? group.count : Math.min(group.count, groupItemLimit);
-            } else {
-                return items.length;
-            }
-          } }
+          groupProps={ groupProps }
           onItemInvoked={ this._onItemInvoked }
           onRenderMissingItem={ (index) => {
             this._onDataMiss(index);

@@ -20,7 +20,9 @@ import {
   DetailsListLayoutMode,
   IColumn,
   IDetailsListProps,
-  IGroup
+  IGroup,
+  IDetailsGroupHeaderProps,
+  IDetailsGroupFooterProps
 } from './DetailsList.Props';
 import { getRTLSafeKeyCode } from '../../utilities/rtl';
 import { KeyCodes } from '../../utilities/KeyCodes';
@@ -84,7 +86,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       adjustedColumns: this._getAdjustedColumns(props),
       layoutMode: props.layoutMode,
       groups: props.groups,
-      isAllCollapsed: props.isAllGroupsCollapsed
+      isAllCollapsed: props.groupProps && props.groupProps.isAllGroupsCollapsed
     };
 
     this._events = new EventGroup(this);
@@ -133,14 +135,11 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       className,
       selectionMode,
       constrainMode,
-      getGroupItemLimit,
       onItemInvoked,
-      showAllLinkText,
       rowElementEventMap,
       dragDropEvents,
       onRenderMissingItem,
-      isGroupLoading,
-      loadingText
+      groupProps
     } = this.props;
     let { adjustedColumns, layoutMode, groups, isAllCollapsed } = this.state;
     let { _selection: selection } = this;
@@ -149,6 +148,15 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     if (!groups) {
       groups = [ null ];
     }
+
+    // override group header/footer props as needed
+    let headerProps = assign({}, groupProps && groupProps.headerProps ? groupProps.headerProps : {}, {
+      onToggleCollapse: this._onToggleCollapse,
+      onToggleSelectGroup: this._onToggleSelectGroup
+    }) as IDetailsGroupHeaderProps;
+    let footerProps = assign({}, groupProps && groupProps.footerProps ? groupProps.footerProps : {}, {
+      onToggleSummarize: this._onToggleSummarize
+    }) as IDetailsGroupFooterProps;
 
     let renderedGroups = groups.map((group: IGroup, groupIndex: number) => (
       (!group || group.count > 0) ? (
@@ -159,21 +167,17 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           columns={ adjustedColumns }
           group={ group }
           groupIndex={ groupIndex }
-          getGroupItemLimit={ getGroupItemLimit }
+          getGroupItemLimit={ groupProps && groupProps.getGroupItemLimit }
           selectionMode={ selectionMode }
           selection={ selection }
           eventsToRegister={ rowElementEventMap }
-          showAllLinkText = { showAllLinkText }
           onRowDidMount={ this._onRowDidMount }
           onRowWillUnmount={ this._onRowWillUnmount }
           dragDropEvents={ dragDropEvents }
           onRenderMissingItem={ onRenderMissingItem }
           dragDropHelper={ this._dragDropHelper }
-          onToggleCollapse={ this._onToggleCollapse }
-          onToggleSelectGroup={ this._onToggleSelectGroup }
-          onToggleSummarize={ this._onToggleSummarize }
-          isGroupLoading={ isGroupLoading }
-          loadingText={ loadingText }
+          headerProps={ headerProps }
+          footerProps={ footerProps }
           />
         ) : null
     ));
@@ -245,10 +249,9 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     this._selection.toggleAllSelected();
   }
 
-  private _onToggleCollapse(groupIndex: number) {
-    let { groups } = this.state;
-    let { onToggleCollapse } = this.props;
-    let group = groups ? groups[groupIndex] : null;
+  private _onToggleCollapse(group: IGroup) {
+    let { groupProps } = this.props;
+    let onToggleCollapse = groupProps && groupProps.headerProps && groupProps.headerProps.onToggleCollapse;
 
     if (group) {
       if (onToggleCollapse) {
@@ -261,7 +264,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
   private _onToggleCollapseAll(allCollapsed: boolean) {
     let { groups } = this.state;
-    let { onToggleCollapseAll } = this.props;
+    let { groupProps } = this.props;
+    let onToggleCollapseAll = groupProps && groupProps.onToggleCollapseAll;
 
     if (groups) {
       if (onToggleCollapseAll) {
@@ -279,14 +283,17 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     }
   }
 
-  private _onToggleSelectGroup(groupIndex: number) {
+  private _onToggleSelectGroup(group: IGroup) {
     let { groups } = this.state;
-    let group = groups ? groups[groupIndex] : null;
+    let { groupProps, items } = this.props;
+    // let group = groups ? groups[groupIndex] : null;
 
     if (group) {
       let isSelected = !group.isSelected;
+      let getGroupItemLimit = groupProps && groupProps.getGroupItemLimit;
+      let groupItemLimit = getGroupItemLimit ? getGroupItemLimit(group) : items.length;
       let start = group.startIndex;
-      let end = group.startIndex + Math.min(group.count, this.props.getGroupItemLimit(group));
+      let end = group.startIndex + Math.min(group.count, groupItemLimit);
       for (let idx = start; idx < end; idx++) {
         this._selection.setIndexSelected(idx, isSelected, false /* shouldAnchor */);
       }
@@ -311,14 +318,14 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     }
   }
 
-  private _onToggleSummarize(groupIndex: number) {
+  private _onToggleSummarize(group: IGroup) {
     let { groups } = this.state;
-    let group = groups ? groups[groupIndex] : null;
+    let { groupProps } = this.props;
+    let onToggleSummarize = groupProps && groupProps.footerProps && groupProps.footerProps.onToggleSummarize;
 
-    if (this.props.onShowAll) {
-      this.props.onShowAll(group);
+    if (onToggleSummarize) {
+      onToggleSummarize(group);
     } else {
-      // default implementation
       if (group) {
         group.isShowingAll = !group.isShowingAll;
 

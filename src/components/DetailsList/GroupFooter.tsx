@@ -1,14 +1,12 @@
 import * as React from 'react';
 import Link from '../Link/index';
-import { IGroup } from './index';
+import { IGroup, IDetailsGroupFooterProps } from './index';
 import './GroupFooter.scss';
 
 export interface IGroupFooterProps {
   group: IGroup;
   groupIndex: number;
-  groupItemLimit: number;
-  showAllLinkText?: string;
-  onToggleSummarize?: (groupIndex: number) => void;
+  footerProps?: IDetailsGroupFooterProps;
 }
 
 export default class GroupFooter extends React.Component<IGroupFooterProps, {}> {
@@ -19,26 +17,25 @@ export default class GroupFooter extends React.Component<IGroupFooterProps, {}> 
   }
 
   public render() {
-    let { group, groupItemLimit, showAllLinkText } = this.props;
+    let { group, footerProps } = this.props;
+    let showAllLinkText = footerProps && footerProps.showAllLinkText;
 
-    let showFooter = group && !group.isShowingAll && group.count > groupItemLimit;
-
-    return showFooter ? (
+    return group && (
       <div className='ms-groupFooter'>
         <Link
           onClick={ this._onToggleSummarize }>
           { showAllLinkText }
         </Link>
       </div>
-    ) :
-    null;
+    );
   }
 
   private _onToggleSummarize() {
-    let { groupIndex, onToggleSummarize } = this.props;
+    let { group, footerProps } = this.props;
+    let onToggleSummarize = footerProps && footerProps.onToggleSummarize;
 
     if (onToggleSummarize) {
-      onToggleSummarize(groupIndex);
+      onToggleSummarize(group);
     }
   }
 }
