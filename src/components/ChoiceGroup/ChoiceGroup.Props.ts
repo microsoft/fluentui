@@ -10,6 +10,11 @@ export interface IChoiceGroupProps {
    * A callback for receiving a notification when the choice has been changed.
    */
   onChanged?: (option: IChoiceGroupOption, evt?: React.SyntheticEvent) => void;
+
+  /**
+   * Descriptive label for the choice group.
+   */
+  label?: string;
 }
 
 export interface IChoiceGroupOption {

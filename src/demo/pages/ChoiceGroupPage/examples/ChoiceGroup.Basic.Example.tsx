@@ -29,6 +29,7 @@ export default class ChoiceGroupBasicExample extends React.Component<any, any> {
           }
         ] }
         onChanged={ this._onChanged }
+        label='Pick one'
       />
     );
   }
