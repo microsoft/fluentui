@@ -1,0 +1,57 @@
+export interface INavLink {
+  name: string;
+  url: string;
+  links?: INavLink[];
+  target?: string;
+  removalable?: boolean;
+  automationId?: string;
+  altText?: string;
+  engagementName?: string;
+
+  [propertyName: string]: any;
+}
+
+export interface INavLinkGroup {
+  name?: string;
+  links: INavLink[];
+}
+
+export interface INavProps {
+  groups: INavLinkGroup[];
+  onRenderLink?: Function;
+  onLinkClick?: { (e: React.MouseEvent): boolean };
+  isOnTop?: boolean;
+}
+>>>>>>> nav isSelected support
+
+        protected override bool ShouldClientRender(out string manifestName, out string scenarioName)
+        {
+            manifestName = "WOPIEmbedAuth";
+            scenarioName = "SignIn";
+            bool result = false;
+
+            // check if we have the opt-in cookie.
+            HttpContext httpContext = HttpContext.Current;
+            HttpCookie cookie = httpContext.Request.Cookies[SPUtility.SPListNextOptInCookieName];
+
+            if (SPContext.Current != null &&
+                VariantConfiguration.IsExpFeatureToggleEnabled(SPContext.Current, ExpFeatureId.SPEmbedSignIn))
+            {
+                WOPIFrame frame = this;
+                // When WOPI needs to authenticate but has no auth token, it will redirect to wopiframe2 to do the authentication
+                bool isWopiFrame2 = (frame == null);
+                // WopiEmbedFrame does not require login so it has some special behavior.
+                bool isWopiEmbedFrame = frame is WOPIEmbedFrame;
+
+                // Support Team Site recycleBin page to client render
+                result = (
+                        SPContext.Current != null &&
+                        SPContext.Current.Web != null &&
+                        !isWopiFrame2 &&
+                        !isWopiEmbedFrame &&
+
+                        );
+            }
+
+            return result;
+        }

@@ -85,6 +85,10 @@ $linkTextColor: $ms-color-neutralPrimary;
   padding: 0 40px;
   color: $linkTextColor;
   cursor: pointer;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow-x: hidden;
 
   &:visited {
     color: inherit;

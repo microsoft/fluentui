@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import FocusZone from '../../utilities/focus/FocusZone';
 import './Nav.scss';
+
 import {
   INavProps,
   INavLinkGroup,
@@ -33,7 +34,7 @@ export default class Nav extends React.Component<INavProps, INavState> {
     Nav.urlResolver.href = link.url || '';
     const target: string = Nav.urlResolver.href;
 
-    if (location.href === target) {
+    if (location.protocol + '//' + location.host + location.pathname === target) {
       return true;
     }
 
