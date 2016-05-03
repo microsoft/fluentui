@@ -156,7 +156,7 @@ export const AppState: IAppState = {
         {
           component: PanelPage,
           name: 'Panel',
-          status: ExampleStatus.placeholder,
+          status: ExampleStatus.beta,
           url: '#/examples/panel'
         },
         {
