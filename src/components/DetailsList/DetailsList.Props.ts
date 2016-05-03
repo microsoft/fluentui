@@ -65,12 +65,14 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /** Viewport, provided by the withViewport decorator. */
   viewport?: IViewport;
 
+  /** Callback for when an item in the list becomes active by clicking anywhere inside the row or navigating to it with keyboard. */
+  onActiveItemChanged?: (item?: any, index?: number, ev?: React.FocusEvent) => void;
+
   /** The aria-label attribute to stamp out on the list header */
   ariaLabelForListHeader?: string;
 
   /** The aria-label attribute to stamp out on select all checkbox for the list */
   ariaLabelForSelectAllCheckbox?: string;
-
 }
 
 export interface IColumn {

@@ -24,6 +24,12 @@ export interface IFocusZoneProps extends React.HTMLProps<HTMLDivElement> {
    * Sets the aria-labelledby attribute.
    */
   ariaLabelledBy?: string;
+
+  /**
+   * Callback for when one of immediate children elements gets active by getting focused
+   * or by having one of its respective children elements focused.
+   */
+  onActiveElementChanged?: (element?: HTMLElement, ev?: React.FocusEvent) => void;
 }
 
 export enum FocusZoneDirection {
