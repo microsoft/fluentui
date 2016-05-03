@@ -64,6 +64,13 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** Viewport, provided by the withViewport decorator. */
   viewport?: IViewport;
+
+  /** The aria-label attribute to stamp out on the list header */
+  ariaLabelForListHeader?: string;
+
+  /** The aria-label attribute to stamp out on select all checkbox for the list */
+  ariaLabelForSelectAllCheckbox?: string;
+
 }
 
 export interface IColumn {
@@ -92,6 +99,12 @@ export interface IColumn {
    * Minimum width for the column.
    */
   minWidth: number;
+
+  /**
+   * Optional accessibility label (aria-label) attribute that will be stamped on to the element.
+   * If none is specified, the arai-label attribute will contain the column name
+   */
+  ariaLabel?: string;
 
   /**
    * Maximum width for the column, if stretching is allowed in justified scenarios.

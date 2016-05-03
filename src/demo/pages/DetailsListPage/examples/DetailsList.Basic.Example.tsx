@@ -122,6 +122,8 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
           constrainMode={ constrainMode }
           groupProps={ groupProps }
           onItemInvoked={ this._onItemInvoked }
+          ariaLabelForListHeader='Column headers. Use menus to perform column operations like sort and filter'
+          ariaLabelForSelectAllCheckbox='Toggle selection for all items'
           onRenderMissingItem={ (index) => {
             this._onDataMiss(index);
             return null;

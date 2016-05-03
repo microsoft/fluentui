@@ -23,7 +23,10 @@ export interface IDetailsHeaderProps {
   isGrouped?: boolean;
   isAllCollapsed?: boolean;
   onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
-
+  /** ariaLabel for the entire header */
+  ariaLabel?: string;
+  /** ariaLabel for the header checkbox that selects or deselects everything */
+  ariaLabelForSelectAllCheckbox?: string;
   ref?: string;
 }
 
@@ -80,12 +83,13 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
   }
 
   public render() {
-    let { selectionMode, columns } = this.props;
+    let { selectionMode, columns, ariaLabel, ariaLabelForSelectAllCheckbox } = this.props;
     let { isAllSelected, columnResizeDetails, isSizing, isGrouped, isAllCollapsed } = this.state;
 
     return (
       <div
         role='row'
+        aria-label= { ariaLabel }
         className={ css('ms-DetailsHeader ms-font-s', {
           'is-allSelected': isAllSelected,
           'is-singleSelect': selectionMode === SelectionMode.single,
@@ -99,6 +103,8 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
             <button
               className='ms-DetailsHeader-cell is-check'
               onClick={ this._onSelectAllClicked }
+              aria-label={ ariaLabelForSelectAllCheckbox }
+              aria-checked= { isAllSelected }
               >
               <Check isChecked={ isAllSelected } />
             </button>
@@ -124,6 +130,9 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
                   }) }
                   style={ { width: column.calculatedWidth + INNER_PADDING } }
                   onClick={ this._onColumnClick.bind(this, column) }
+                  aria-haspopup = {column.columnActionsMode !== ColumnActionsMode.disabled}
+                  aria-label = { column.ariaLabel || column.name }
+                  aria-sort = {column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none'}
                   data-automationid='ColumnsHeaderColumn'
                   >
 

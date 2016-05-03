@@ -139,7 +139,9 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       rowElementEventMap,
       dragDropEvents,
       onRenderMissingItem,
-      groupProps
+      groupProps,
+      ariaLabelForListHeader,
+      ariaLabelForSelectAllCheckbox
     } = this.props;
     let { adjustedColumns, layoutMode, groups, isAllCollapsed } = this.state;
     let { _selection: selection } = this;
@@ -202,6 +204,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           isGrouped={ isGrouped }
           isAllCollapsed={ isAllCollapsed }
           onToggleCollapseAll={ this._onToggleCollapseAll }
+          ariaLabel={ ariaLabelForListHeader }
+          ariaLabelForSelectAllCheckbox = {ariaLabelForSelectAllCheckbox}
           />
         <FocusZone
           direction={ FocusZoneDirection.vertical }
