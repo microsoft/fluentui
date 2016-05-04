@@ -64,6 +64,18 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** Viewport, provided by the withViewport decorator. */
   viewport?: IViewport;
+
+  /** Callback for when an item in the list becomes active by clicking anywhere inside the row or navigating to it with keyboard. */
+  onActiveItemChanged?: (item?: any, index?: number, ev?: React.FocusEvent) => void;
+
+  /** The aria-label attribute to stamp out on the list header */
+  ariaLabelForListHeader?: string;
+
+  /** The aria-label attribute to stamp out on select all checkbox for the list */
+  ariaLabelForSelectAllCheckbox?: string;
+
+  /** Optional callback to get the item key that will be used in the selection. */
+  getKey?: (item: any, index?: number) => string;
 }
 
 export interface IColumn {
@@ -92,6 +104,12 @@ export interface IColumn {
    * Minimum width for the column.
    */
   minWidth: number;
+
+  /**
+   * Optional accessibility label (aria-label) attribute that will be stamped on to the element.
+   * If none is specified, the arai-label attribute will contain the column name
+   */
+  ariaLabel?: string;
 
   /**
    * Maximum width for the column, if stretching is allowed in justified scenarios.

@@ -7,6 +7,9 @@ import Async from '../../utilities/Async/Async';
 
 const MIN_SCROLL_UPDATE_DELAY = 40;
 const MAX_SCROLL_UPDATE_DELAY = 200;
+const ITEMS_PER_PAGE = 10;
+const PAGE_BEHIND_COUNT = 1;
+const PAGE_AHEAD_COUNT = 2;
 
 export interface IListState {
   pages?: IPage[];
@@ -31,10 +34,6 @@ const EMPTY_RECT = {
   width: 0,
   height: 0
 };
-
-const ITEMS_PER_PAGE = 10;
-const PAGE_BEHIND_COUNT = 1;
-const PAGE_AHEAD_COUNT = 2;
 
 export default class List extends React.Component<IListProps, IListState> {
   public static defaultProps = {

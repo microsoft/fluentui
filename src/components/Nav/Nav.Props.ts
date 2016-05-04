@@ -52,6 +52,21 @@ export interface INavLink {
   links?: INavLink[];
 
   /**
+   * (Optional) The name of the item to be used in logging engagement data
+   */
+  engagementName?: string;
+
+/**
+ * (Optional) The alt text for the item
+**/
+  altText?: string;
+
+  /**
+   *  (Optional) The name to use for functional automation tests
+   **/
+  automationId?: string;
+
+  /**
    * Any additional properties to apply to the rendered links.
    */
   [propertyName: string]: any;

@@ -80,6 +80,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     this._onToggleSelectGroup = this._onToggleSelectGroup.bind(this);
     this._onToggleSummarize = this._onToggleSummarize.bind(this);
     this._getGroupKey = this._getGroupKey.bind(this);
+    this._onActiveRowChanged = this._onActiveRowChanged.bind(this);
 
     this.state = {
       lastWidth: 0,
@@ -90,7 +91,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     };
 
     this._events = new EventGroup(this);
-    this._selection = props.selection || new Selection();
+    this._selection = props.selection || new Selection(null, props.getKey);
     this._selection.setItems(props.items as IObjectWithKey[], false);
     this._dragDropHelper = props.dragDropEvents ? new DragDropHelper({ selection: this._selection }) : null;
   }
@@ -139,7 +140,9 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       rowElementEventMap,
       dragDropEvents,
       onRenderMissingItem,
-      groupProps
+      groupProps,
+      ariaLabelForListHeader,
+      ariaLabelForSelectAllCheckbox
     } = this.props;
     let { adjustedColumns, layoutMode, groups, isAllCollapsed } = this.state;
     let { _selection: selection } = this;
@@ -202,10 +205,13 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           isGrouped={ isGrouped }
           isAllCollapsed={ isAllCollapsed }
           onToggleCollapseAll={ this._onToggleCollapseAll }
+          ariaLabel={ ariaLabelForListHeader }
+          ariaLabelForSelectAllCheckbox = {ariaLabelForSelectAllCheckbox}
           />
         <FocusZone
           direction={ FocusZoneDirection.vertical }
           isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }
+          onActiveElementChanged={ this._onActiveRowChanged }
         >
           <SelectionZone
             selection={ selection }
@@ -452,7 +458,9 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     }
 
     // Make the last row in justified layout not resizable.
+    if (adjustedColumns.length) {
     adjustedColumns[adjustedColumns.length - 1].isResizable = false;
+    }
 
     return adjustedColumns;
   }
@@ -508,6 +516,26 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       }
     }
   }
+
+  /**
+   * Call back function when an element in FocusZone becomes active. It will transalate it into item
+   * and call onActiveItemChanged callback if specified.
+   *
+   * @private
+   * @param {el} row element that became active in Focus Zone
+   * @param {ev} focus event from Focus Zone
+   */
+  private _onActiveRowChanged(el?: HTMLElement, ev?: React.FocusEvent) {
+    let { items, onActiveItemChanged } = this.props;
+
+    if (!onActiveItemChanged || !el) {
+      return;
+    }
+    let index = Number(el.getAttribute('data-selection-index'));
+    if (index >= 0) {
+      onActiveItemChanged(items[index], index, ev);
+    }
+  };
 }
 
 export function buildColumns(

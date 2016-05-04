@@ -1,6 +1,6 @@
 {
   "name": "@ms/office-ui-fabric-react",
-  "version": "0.4.0",
+  "version": "0.5.2",
   "description": "This is a repo for building out React controls skinned with Fabric.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -10,6 +10,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "es6-promise": "3.1.2",
     "git-rev": "0.2.1",
     "gulp": "~3.9.1",
     "gulp-debug": "2.1.2",

@@ -23,7 +23,7 @@ export default class DetailsListPage extends React.Component<any, any> {
           <span> and provides a sortable, filterable, groupable, justified table for rendering large sets of items. This component replaces the Table Component.</span>
         </p>
         <h2 className='ms-font-xl'>Examples</h2>
-        <ExampleCard title='DetailsList of 20000 items, variable row heights' isOptIn={ false } code={ DetailsListBasicExampleCode }>
+        <ExampleCard title='DetailsList of 5000 items, variable row heights' isOptIn={ false } code={ DetailsListBasicExampleCode }>
           <DetailsListBasicExample />
         </ExampleCard>
         <PropertiesTableSet componentName='DetailsList' />

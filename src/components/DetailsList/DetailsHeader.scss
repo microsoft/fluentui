@@ -58,7 +58,7 @@ $unselectedHoverColor: $ms-color-neutralLight;
 }
 
 .ms-DetailsHeader-cell {
-  @include focus-border($ms-color-neutralTertiary);
+  @include focus-border($ms-color-neutralSecondaryAlt);
 
   position: relative;
   display: inline-block;
@@ -69,8 +69,6 @@ $unselectedHoverColor: $ms-color-neutralLight;
   border: none;
   line-height: inherit;
   margin: 0;
-  font-size: inherit;
-  font-family: inherit;
   @include text-align(left);
   height: $rowHeight;
   vertical-align: top;
@@ -89,7 +87,11 @@ $unselectedHoverColor: $ms-color-neutralLight;
     cursor: default;
 
     &:hover {
-      background-color: $ms-color-neutralLight;
+      background-color: $ms-color-themeLighterAlt;
+    }
+
+    &:hover:active {
+      background-color: $ms-color-themeLighter;
     }
   }
 
@@ -113,8 +115,7 @@ $unselectedHoverColor: $ms-color-neutralLight;
   top: 0;
   bottom: 0;
   width: 1px;
-  background: $ms-color-neutralLight;
-  border: 1px solid $ms-color-white;
+  background: $ms-color-neutralTertiary;
 }
 
 .ms-DetailsHeader-collapseButton {

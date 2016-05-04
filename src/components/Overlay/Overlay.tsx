@@ -2,22 +2,19 @@ import * as React from 'react';
 import './Overlay.scss';
 import { IOverlayProps } from './Overlay.props';
 import { css } from '../../utilities/css';
-import { assign } from '../../utilities/object';
 
 export default class Overlay extends React.Component<IOverlayProps, {}> {
   public render() {
-    let { isDarkThemed } = this.props;
-
-    let className = css(
+    let { isDarkThemed, className } = this.props;
+    let modifiedClassName = css(
       'ms-Overlay',
-      this.props.className,
+      className,
       {
-      'ms-Overlay--dark': isDarkThemed
-    });
+        'ms-Overlay--dark': isDarkThemed
+      });
 
-    return React.createElement(
-      'div',
-      assign({}, this.props, { className })
+    return (
+      <div { ...this.props } className={ modifiedClassName } />
     );
   }
 }

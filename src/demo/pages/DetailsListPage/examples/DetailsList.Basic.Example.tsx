@@ -22,7 +22,7 @@ import './DetailsList.Basic.Example.scss';
 const DEFAULT_ITEM_LIMIT = 5;
 const PAGING_SIZE = 10;
 const PAGING_DELAY = 5000;
-const ITEMS_COUNT = 10000;
+const ITEMS_COUNT = 5000;
 
 let _items;
 
@@ -122,6 +122,8 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
           constrainMode={ constrainMode }
           groupProps={ groupProps }
           onItemInvoked={ this._onItemInvoked }
+          ariaLabelForListHeader='Column headers. Use menus to perform column operations like sort and filter'
+          ariaLabelForSelectAllCheckbox='Toggle selection for all items'
           onRenderMissingItem={ (index) => {
             this._onDataMiss(index);
             return null;

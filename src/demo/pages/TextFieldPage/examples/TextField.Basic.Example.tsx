@@ -25,11 +25,11 @@ export default class TextFieldBasicExample extends React.Component<any, any> {
     );
   }
 
-  private _getErrorMessage(value: string): string {
+  private _getErrorMessage(value: string): Promise<any> {
     if (value.length < 3) {
-      return '';
+      return Promise.resolve();
     } else {
-      return 'The length of the input string is greater than or equal to 3.';
+      return Promise.reject(new Error('The length of the input string is greater than or equal to 3.'));
     }
   }
 }

@@ -3,7 +3,7 @@
 .ms-GroupHeader {
   cursor: default;
   user-select: none;
-  @include focus-border($ms-color-neutralTertiary);
+  @include focus-border($ms-color-neutralSecondaryAlt);
 
   &:hover {
     background: $ms-color-themeLighterAlt;
@@ -18,7 +18,7 @@
 
 .ms-GroupHeader-check,
 .ms-GroupHeader-expand {
-  @include focus-border($ms-color-neutralTertiary);
+  @include focus-border($ms-color-neutralSecondaryAlt);
 
   display: inline-block;
   cursor: default;

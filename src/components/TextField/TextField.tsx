@@ -36,6 +36,8 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
   private _descriptionId: string;
   private _async: Async;
   private _delayedValidate: (value: string) => void;
+  private _isMounted: boolean;
+  private _lastValidation: number;
 
   public constructor(props: ITextFieldProps) {
     super(props);
@@ -52,6 +54,11 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
     this._handleFieldChanged = this._handleFieldChanged.bind(this);
 
     this._delayedValidate = this._async.debounce(this._validate, 200);
+    this._lastValidation = 0;
+  }
+
+  public componentDidMount() {
+    this._isMounted = true;
   }
 
   public componentWillReceiveProps(newProps: ITextFieldProps) {
@@ -64,6 +71,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
 
   public componentWillUnmount() {
     this._async.dispose();
+    this._isMounted = false;
   }
 
   public render() {
@@ -157,8 +165,33 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
   private _validate(value: string): void {
     let { onGetErrorMessage } = this.props;
 
-    this.setState({
-      errorMessage: onGetErrorMessage && onGetErrorMessage(value)
-    } as ITextFieldState);
+    if (onGetErrorMessage) {
+      let result: string | Promise<any> = onGetErrorMessage(value);
+
+      if (typeof result === 'string') {
+        this.setState({
+          errorMessage: result
+        } as ITextFieldState);
+      } else {
+        let currentValidation: number = ++this._lastValidation;
+
+        result.then(
+          () => {
+            if (this._isMounted && currentValidation === this._lastValidation) {
+              this.setState({
+                errorMessage: ''
+              } as ITextFieldState);
+            }
+          },
+          (error: any) => {
+            if (this._isMounted && currentValidation === this._lastValidation) {
+              this.setState({
+                errorMessage: error.message
+              } as ITextFieldState);
+            }
+          }
+        );
+      }
+    }
   }
 }

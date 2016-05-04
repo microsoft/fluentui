@@ -99,6 +99,8 @@ export default class FocusZone extends React.Component<IFocusZoneProps, {}> {
   }
 
   private _onFocus(ev: React.FocusEvent) {
+    let { onActiveElementChanged } = this.props;
+
     if (this._isImmediateDescendantOfZone(ev.target as HTMLElement)) {
       this._activeElement = ev.target as HTMLElement;
       this._setFocusAlignment(this._activeElement);
@@ -112,6 +114,9 @@ export default class FocusZone extends React.Component<IFocusZoneProps, {}> {
         }
         parentElement = parentElement.parentElement;
       }
+    }
+    if (onActiveElementChanged) {
+      onActiveElementChanged(this._activeElement, ev);
     }
   }
 

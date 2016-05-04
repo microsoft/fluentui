@@ -3,6 +3,7 @@ import EventGroup from '../eventGroup/EventGroup';
 
 export class Selection implements ISelection {
   public count: number;
+  public getKey: (item: IObjectWithKey, index?: number) => string;
 
   private _items: IObjectWithKey[];
   private _isAllSelected: boolean;
@@ -14,7 +15,9 @@ export class Selection implements ISelection {
   private _areChangeEventsEnabled: boolean;
   private _hasChanged: boolean;
 
-  constructor(onSelectionChanged?: () => void) {
+  constructor(onSelectionChanged?: () => void, getKey?: (item: IObjectWithKey, index?: number) => string) {
+    this.getKey = getKey || ((item: IObjectWithKey, index?: number) => (item ? item.key : String(index)));
+
     this._exemptedCount = 0;
     this._anchoredIndex = 0;
     this.setItems([], true);
@@ -49,7 +52,7 @@ export class Selection implements ISelection {
       let item = items[i];
 
       if (item) {
-        newKeyToIndexMap[item.key] = i;
+        newKeyToIndexMap[this.getKey(item)] = i;
       }
     }
 
@@ -63,7 +66,7 @@ export class Selection implements ISelection {
     for (let index in this._exemptedIndices) {
       if (this._exemptedIndices.hasOwnProperty(index)) {
         let item = this._items[index];
-        let exemptKey = item ? item.key : undefined;
+        let exemptKey = item ? this.getKey(item) : undefined;
         let newIndex = exemptKey ? newKeyToIndexMap[exemptKey] : index;
 
         if (newIndex === undefined) {
@@ -97,7 +100,7 @@ export class Selection implements ISelection {
     for (let i = 0; i < this._items.length; i++) {
       let item = this._items[i];
       let isExempt = !!this._exemptedIndices[i];
-      let key = item ? item.key : null;
+      let key = item ? this.getKey(item) : null;
 
       if ((!key && this._isAllSelected) ||
         (key && this._isAllSelected && !isExempt) ||

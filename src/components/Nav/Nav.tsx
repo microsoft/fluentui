@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import FocusZone from '../../utilities/focus/FocusZone';
 import './Nav.scss';
+
 import {
   INavProps,
   INavLinkGroup,
@@ -26,33 +27,13 @@ export default class Nav extends React.Component<INavProps, INavState> {
     onRenderLink: (link: INavLink) => (<span className='ms-Nav-linkText'>{ link.name }</span>)
   };
 
-  // used for resolving URLs - not added to DOM
-  private static urlResolver: HTMLAnchorElement = document.createElement('a');
-
-  private static isSelected(link: INavLink): boolean {
-    Nav.urlResolver.href = link.url || '';
-    const target: string = Nav.urlResolver.href;
-
-    if (location.href === target) {
-      return true;
-    }
-
-    if (location.hash) {
-      Nav.urlResolver.href = location.hash.substring(1);
-
-      return Nav.urlResolver.href === target;
-    }
-
-    return false;
-  }
-
   public render(): React.ReactElement<{}> {
     if (!this.props.groups) {
       return null;
     }
 
     const groupElements: React.ReactElement<{}>[] = this.props.groups.map(
-      (group: INavLinkGroup, groupIndex: number) => this.renderGroup(group, groupIndex));
+      (group: INavLinkGroup, groupIndex: number) => this._renderGroup(group, groupIndex));
 
     return (
       <FocusZone>
@@ -63,27 +44,27 @@ export default class Nav extends React.Component<INavProps, INavState> {
     );
   }
 
-  private renderLink(link: INavLink, linkIndex: number): React.ReactElement<{}> {
+  private _renderLink(link: INavLink, linkIndex: number): React.ReactElement<{}> {
     return (
       <li key={ linkIndex }>
         <a
-          className={'ms-Nav-link' + (Nav.isSelected(link) ? ' is-selected' : '')}
+          className={'ms-Nav-link' + (_isLinkSelected(link) ? ' is-selected' : '')}
           href={ link.url || 'javascript://' }
           onClick={ this.props.onLinkClick }
         >
           { this.props.onRenderLink(link) }
-        </a> { this.renderLinks(link.links) }
+        </a> { this._renderLinks(link.links) }
     </li>
     );
   }
 
-  private renderLinks(links: INavLink[]): React.ReactElement<{}> {
+  private _renderLinks(links: INavLink[]): React.ReactElement<{}> {
     if (!links || !links.length) {
       return null;
     }
 
     const linkElements: React.ReactElement<{}>[] = links.map(
-      (link: INavLink, linkIndex: number) => this.renderLink(link, linkIndex));
+      (link: INavLink, linkIndex: number) => this._renderLink(link, linkIndex));
 
     return (
       <ul>
@@ -92,7 +73,7 @@ export default class Nav extends React.Component<INavProps, INavState> {
     );
   }
 
-  private renderGroup(group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> {
+  private _renderGroup(group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> {
     const isGroupExpanded: boolean = this.state.isGroupExpanded[groupIndex] !== false;
 
     return (
@@ -108,7 +89,7 @@ export default class Nav extends React.Component<INavProps, INavState> {
         }
 
         <div className='ms-Nav-groupContent ms-u-slideDownIn20'>
-        { this.renderLinks(group.links) }
+        { this._renderLinks(group.links) }
         </div>
       </div>
     );
@@ -124,3 +105,29 @@ export default class Nav extends React.Component<INavProps, INavState> {
     ev.stopPropagation();
   }
 }
+
+// A tag used for resolving links.
+const _urlResolver = document.createElement('a');
+
+function _isLinkSelected(link: INavLink): boolean {
+    _urlResolver.href = link.url || '';
+    const target: string = _urlResolver.href;
+
+    if (location.protocol + '//' + location.host + location.pathname === target) {
+      return true;
+    }
+
+    if (location.hash) {
+      // Match the hash to the url.
+      if (location.hash === link.url) {
+        return true;
+      }
+
+      // Match a rebased url. (e.g. #foo becomes http://hostname/foo)
+      _urlResolver.href = location.hash.substring(1);
+
+      return _urlResolver.href === target;
+    }
+
+    return false;
+  }
