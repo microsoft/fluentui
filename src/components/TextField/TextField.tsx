@@ -176,22 +176,16 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
         let currentValidation: number = ++this._lastValidation;
 
         result.then(
-          () => {
-            if (this._isMounted && currentValidation === this._lastValidation) {
-              this.setState({
-                errorMessage: ''
-              } as ITextFieldState);
-            }
-          },
-          (error: any) => {
-            if (this._isMounted && currentValidation === this._lastValidation) {
-              this.setState({
-                errorMessage: error.message
-              } as ITextFieldState);
-            }
-          }
+          () => this._setErrorMessage(currentValidation, ''),
+          (error: any) => this._setErrorMessage(currentValidation, error.message as string)
         );
       }
+    }
+  }
+
+  private _setErrorMessage(currentValidation: number, errorMessage: string): void {
+    if (this._isMounted && currentValidation === this._lastValidation) {
+      this.setState({ errorMessage } as ITextFieldState);
     }
   }
 }
