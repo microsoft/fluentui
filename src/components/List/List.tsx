@@ -55,6 +55,7 @@ export default class List extends React.Component<IListProps, IListState> {
   private _focusedIndex: number;
   private _scrollingToIndex: number;
   private _async: Async;
+  private _hasCompletedFirstRender: boolean;
 
   constructor(props: IListProps) {
     super(props);
@@ -98,6 +99,10 @@ export default class List extends React.Component<IListProps, IListState> {
   }
 
   public componentWillReceiveProps(newProps: IListProps) {
+    if (newProps.items !== this.props.items) {
+      this._hasCompletedFirstRender = false;
+    }
+
     this._updatePages(newProps.items, newProps.startIndex, newProps.renderCount);
   }
 
@@ -141,8 +146,11 @@ export default class List extends React.Component<IListProps, IListState> {
     let newSurfaceRect = this.refs.surface.getBoundingClientRect();
 
     // If the surface height changes after a render, we need to re-evaluate the pages we're rendering.
-    if (lastSurfaceRect.top !== newSurfaceRect.top) {
+    if (lastSurfaceRect.top !== newSurfaceRect.top ||
+        (this._hasCompletedFirstRender && lastSurfaceRect.height !== newSurfaceRect.height)) {
       this.forceUpdate();
+    } else {
+      this._hasCompletedFirstRender = true;
     }
   }
 
