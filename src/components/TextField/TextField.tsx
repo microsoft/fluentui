@@ -51,7 +51,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
       errorMessage: ''
     };
 
-    this._handleFieldChanged = this._handleFieldChanged.bind(this);
+    this._onInputChange = this._onInputChange.bind(this);
 
     this._delayedValidate = this._async.debounce(this._validate, 200);
     this._lastValidation = 0;
@@ -96,7 +96,6 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
         { errorMessage ? <p className='ms-TextField-errorMessage ms-u-slideDownIn20'>{ errorMessage }</p> : null }
         { errorMessage ? <div aria-live='assertive' className='ms-u-screenReaderOnly'>{ errorMessage }</div> : null }
         { description ? <span className='ms-TextField-description'>{ description }</span> : null }
-        { this.props.children }
         { this.props.ariaLabel ? <span id={ this._descriptionId } className='ms-TextField-hidden'>{ this.props.ariaLabel }</span> : null}
       </div>
     );
@@ -120,7 +119,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
         id={ this._id }
         ref='field'
         value={ this.state.value }
-        onChange={ this._handleFieldChanged }
+        onChange={ this._onInputChange }
         className={ this._fieldClassName }
         readOnly={ this.props.readOnly }
       />
@@ -135,7 +134,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
         placeholder={ this.props.placeholder }
         ref='field'
         value={ this.state.value }
-        onChange={ this._handleFieldChanged }
+        onChange={ this._onInputChange }
         className={ this._fieldClassName }
         aria-describedby={ this._descriptionId }
         readOnly={ this.props.readOnly }
@@ -143,7 +142,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
     );
   }
 
-  private _handleFieldChanged(event: React.KeyboardEvent): void {
+  private _onInputChange(event: React.KeyboardEvent): void {
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
     const { onChanged, onGetErrorMessage } = this.props;

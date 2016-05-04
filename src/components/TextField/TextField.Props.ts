@@ -5,11 +5,6 @@ import * as React from 'react';
  */
 export interface ITextFieldProps extends React.DOMAttributes {
   /**
-   * children, if any.
-   */
-  children?: any;
-
-  /**
    * Whether or not the textfield is disabled.
    * @default false
    */
