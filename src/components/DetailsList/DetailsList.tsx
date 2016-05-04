@@ -91,7 +91,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     };
 
     this._events = new EventGroup(this);
-    this._selection = props.selection || new Selection();
+    this._selection = props.selection || new Selection(null, props.getKey);
     this._selection.setItems(props.items as IObjectWithKey[], false);
     this._dragDropHelper = props.dragDropEvents ? new DragDropHelper({ selection: this._selection }) : null;
   }
