@@ -458,7 +458,9 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     }
 
     // Make the last row in justified layout not resizable.
+    if (adjustedColumns.length) {
     adjustedColumns[adjustedColumns.length - 1].isResizable = false;
+    }
 
     return adjustedColumns;
   }
