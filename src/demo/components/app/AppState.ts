@@ -126,19 +126,19 @@ export const AppState: IAppState = {
         {
           component: LabelPage,
           name: 'Label',
-          status: ExampleStatus.started,
+          status: ExampleStatus.beta,
           url: '#/examples/label'
         },
         {
           component: LinkPage,
           name: 'Link',
-          status: ExampleStatus.started,
+          status: ExampleStatus.beta,
           url: '#/examples/link'
         },
         {
           component: ListPage,
           name: 'List',
-          status: ExampleStatus.started,
+          status: ExampleStatus.beta,
           url: '#/examples/list'
         },
         {
@@ -150,7 +150,7 @@ export const AppState: IAppState = {
         {
           component: OverlayPage,
           name: 'Overlay',
-          status: ExampleStatus.placeholder,
+          status: ExampleStatus.beta,
           url: '#/examples/overlay'
         },
         {

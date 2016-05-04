@@ -65,7 +65,8 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
 
     this._events.onAll(element, {
       'keydown': this._onKeyDown,
-      'mousedown': this._onMouseDown
+      'mousedown': this._onMouseDown,
+      'click': this._onClick
     });
 
     this._events.on(element, 'focus', this._onFocus, true);
@@ -115,26 +116,31 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
     this._onKeyChangeCapture(ev as any);
 
     let target = ev.target as HTMLElement;
-    let { selection, selectionMode } = this.props;
+    let { selectionMode } = this.props;
     let isToggleElement = this._isToggleElement(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);
-    let isToggleAllElement = !isToggleElement && this._isToggleElement(target, SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME);
     let index = this._getIndexFromElement(target, true);
 
-    if (index >= 0 && selectionMode !== SelectionMode.none) {
+    if (index >= 0 && selectionMode !== SelectionMode.none && isToggleElement) {
+      ev.preventDefault();
+      ev.stopPropagation();
+    }
+  }
+
+  private _onClick(ev: MouseEvent) {
+    let target = ev.target as HTMLElement;
+    let { selection, selectionMode } = this.props;
+    let isToggleElement = this._isToggleElement(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);
+    let index = this._getIndexFromElement(target, true);
+
+    if (index >= 0 && selectionMode !== SelectionMode.none && isToggleElement) {
       let isSelected = selection.isIndexSelected(index);
 
-      if (isToggleElement) {
-        selection.setChangeEvents(false);
-        if (selectionMode === SelectionMode.single) {
-          selection.setAllSelected(false);
-        }
-        selection.setIndexSelected(index, !isSelected, true);
-        selection.setChangeEvents(true);
-      } else if (isToggleAllElement) {
-        selection.toggleAllSelected();
-      } else {
-        return;
+      selection.setChangeEvents(false);
+      if (selectionMode === SelectionMode.single) {
+        selection.setAllSelected(false);
       }
+      selection.setIndexSelected(index, !isSelected, true);
+      selection.setChangeEvents(true);
 
       ev.preventDefault();
       ev.stopPropagation();

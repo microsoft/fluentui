@@ -22,7 +22,7 @@ import './DetailsList.Basic.Example.scss';
 const DEFAULT_ITEM_LIMIT = 5;
 const PAGING_SIZE = 10;
 const PAGING_DELAY = 5000;
-const ITEMS_COUNT = 10000;
+const ITEMS_COUNT = 5000;
 
 let _items;
 
