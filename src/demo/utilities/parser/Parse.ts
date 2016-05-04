@@ -22,14 +22,17 @@ export function parse(source: string, propsInterfaceOrEnumName?: string): Array<
   let regex: RegExp = null;
   let parseInfo;
 
+  let propertyNameSuffix = (type: string) => type === 'interface' ? ' Interface' : ' Enum';
+  let propertyType = (type: string) => type === 'interface' ? PropertyType.interface : PropertyType.enum;
+
   if (propsInterfaceOrEnumName) {
     regex = new RegExp(`export (interface|enum) ${propsInterfaceOrEnumName}(?: extends .*?)? \\{(.*[\\r\\n]*)*?\\}`);
     let regexResult = regex.exec(source);
     if (regexResult && regexResult.length > 0) {
       parseInfo = _parseEnumOrInterface(regexResult);
       return [<IProperty>{
-        propertyName: propsInterfaceOrEnumName,
-        propertyType: regexResult[1] === 'interface' ? PropertyType.interface : PropertyType.enum,
+        propertyName: propsInterfaceOrEnumName + propertyNameSuffix(regexResult[1]),
+        propertyType: propertyType(regexResult[1]),
         property: parseInfo
       }];
     }
@@ -40,8 +43,8 @@ export function parse(source: string, propsInterfaceOrEnumName?: string): Array<
     while ((regexResult = regex.exec(source)) !== null) {
       parseInfo = _parseEnumOrInterface(regexResult);
       results.push(<IProperty>{
-        propertyName: regexResult[2],
-        propertyType: regexResult[1] === 'interface' ? PropertyType.interface : PropertyType.enum,
+        propertyName: regexResult[2] + propertyNameSuffix(regexResult[1]),
+        propertyType: propertyType(regexResult[1]),
         property: parseInfo
       });
     }
