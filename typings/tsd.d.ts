@@ -6,3 +6,4 @@
 /// <reference path="react/react-addons-test-utils.d.ts" />
 /// <reference path="webpack/webpack.d.ts" />
 /// <reference path="node/node.d.ts" />
+/// <reference path="es6-promise/es6-promise.d.ts" />
