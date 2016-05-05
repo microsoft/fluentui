@@ -92,7 +92,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
       >
         { label ? <Label htmlFor={ this._id }>{ label }</Label> : null }
         { iconClass ? <i className={ iconClass }></i> : null }
-        { multiline ? this._textAreaElement : this._inputElement }
+        { multiline ? this._renderTextArea() : this._renderInput() }
         { errorMessage ? <p className='ms-TextField-errorMessage ms-u-slideDownIn20'>{ errorMessage }</p> : null }
         { errorMessage ? <div aria-live='assertive' className='ms-u-screenReaderOnly'>{ errorMessage }</div> : null }
         { description ? <span className='ms-TextField-description'>{ description }</span> : null }
@@ -113,7 +113,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
     });
   }
 
-  private get _textAreaElement(): React.ReactElement<React.HTMLProps<HTMLAreaElement>> {
+  private _renderTextArea(): React.ReactElement<React.HTMLProps<HTMLAreaElement>> {
     return (
       <textarea
         id={ this._id }
@@ -126,7 +126,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
     );
   }
 
-  private get _inputElement(): React.ReactElement<React.HTMLProps<HTMLInputElement>> {
+  private _renderInput(): React.ReactElement<React.HTMLProps<HTMLInputElement>> {
     return (
       <input
         id={ this._id }
