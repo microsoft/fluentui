@@ -34,7 +34,8 @@ export default class GroupHeader extends React.Component<IGroupHeaderProps, IGro
   public componentWillReceiveProps(newProps) {
     if (newProps.group) {
       let newCollapsed = newProps.group.isCollapsed;
-      let newLoadingVisible = !newCollapsed && newProps.isGroupLoading && newProps.isGroupLoading(newProps.group);
+      let isGroupLoading = newProps.headerProps && newProps.headerProps.isGroupLoading;
+      let newLoadingVisible = !newCollapsed && isGroupLoading && isGroupLoading(newProps.group);
 
       this.setState({
         isCollapsed: newCollapsed,
