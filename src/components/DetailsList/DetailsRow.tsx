@@ -138,7 +138,6 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
     let { selectionState: { isSelected }, columnMeasureInfo, isDropping, isGrouped } = this.state;
     let isDraggable = Boolean(dragDropEvents && dragDropEvents.canDrag && dragDropEvents.canDrag(item));
     let droppingClassName = isDropping ? (this._droppingClassNames ? this._droppingClassNames : DEFAULT_DROPPING_CSS_CLASS) : '';
-    let key = item ? item.key : '';
 
     return (
       <div
@@ -147,7 +146,6 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
           'is-selected': isSelected
         }) }
         data-is-focusable={ true }
-        data-selection-key={ key }
         data-selection-index={ itemIndex }
         data-is-draggable={ isDraggable }
         data-automationid='DetailsRow'

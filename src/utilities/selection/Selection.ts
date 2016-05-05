@@ -52,7 +52,7 @@ export class Selection implements ISelection {
       let item = items[i];
 
       if (item) {
-        newKeyToIndexMap[this.getKey(item)] = i;
+        newKeyToIndexMap[this.getKey(item, i)] = i;
       }
     }
 
@@ -66,7 +66,7 @@ export class Selection implements ISelection {
     for (let index in this._exemptedIndices) {
       if (this._exemptedIndices.hasOwnProperty(index)) {
         let item = this._items[index];
-        let exemptKey = item ? this.getKey(item) : undefined;
+        let exemptKey = item ? this.getKey(item, Number(index)) : undefined;
         let newIndex = exemptKey ? newKeyToIndexMap[exemptKey] : index;
 
         if (newIndex === undefined) {
@@ -100,7 +100,7 @@ export class Selection implements ISelection {
     for (let i = 0; i < this._items.length; i++) {
       let item = this._items[i];
       let isExempt = !!this._exemptedIndices[i];
-      let key = item ? this.getKey(item) : null;
+      let key = item ? this.getKey(item, i) : null;
 
       if ((!key && this._isAllSelected) ||
         (key && this._isAllSelected && !isExempt) ||
