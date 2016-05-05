@@ -13,11 +13,12 @@ describe('TextField', () => {
 
   it('renders a textfield', () => {
     let component = ReactTestUtils.renderIntoDocument(
-      <TextField>test</TextField>
+      <TextField value='test' />
     );
     let renderedDOM = ReactDOM.findDOMNode(component);
+    let inputDOM = renderedDOM.getElementsByTagName('input')[0];
 
-    expect(renderedDOM.textContent).to.equal('test');
+    expect(inputDOM.value).to.equal('test');
   });
 
 });
