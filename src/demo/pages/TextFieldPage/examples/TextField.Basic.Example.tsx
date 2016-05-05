@@ -14,6 +14,7 @@ export default class TextFieldBasicExample extends React.Component<any, any> {
     return (
       <div>
         <TextField label='Default TextField' />
+        <TextField label='Disabled TextField' disabled />
         <TextField label='TextField with a placeholder' placeholder='Now I am a Placeholder' ariaLabel='Please enter text here' />
         <TextField
           label='TextField with a validator. Hint: the length of the input string must be less than 3.'

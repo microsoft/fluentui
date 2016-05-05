@@ -3,19 +3,7 @@ import * as React from 'react';
 /**
  * TextField component props.
  */
-export interface ITextFieldProps extends React.DOMAttributes {
-  /**
-   * Whether or not the textfield is disabled.
-   * @default false
-   */
-  disabled?: boolean;
-
-  /**
-   * Whether or not the textfield is a required field.
-   * @default false
-   */
-  required?: boolean;
-
+export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement> {
   /**
    * Whether or not the textfield is a multiline textfield.
    * @default false
@@ -27,11 +15,6 @@ export interface ITextFieldProps extends React.DOMAttributes {
    * @default false
    */
   underlined?: boolean;
-
-  /**
-   * Placeholder text for the textfield.
-   */
-  placeholder?: string;
 
   /**
    * Label for the textfield.
@@ -59,11 +42,6 @@ export interface ITextFieldProps extends React.DOMAttributes {
   onChanged?: (newValue: any) => void;
 
   /**
-   * CSS class for the textfield.
-   */
-  className?: string;
-
-  /**
    * The method is used to get the validation error message and determine whether the input value is valid or not.
    *
    *   When it returns string:
@@ -82,9 +60,4 @@ export interface ITextFieldProps extends React.DOMAttributes {
    * Aria Label for textfield, if any.
    */
   ariaLabel?: string;
-
-  /**
-   * Whether the TextField should be read-only or not.
-   */
-  readOnly?: boolean;
 }

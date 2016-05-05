@@ -86,10 +86,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
     });
 
     return (
-      <div
-        { ...this.props }
-        className={ textFieldClassName }
-      >
+      <div className={ textFieldClassName }>
         { label ? <Label htmlFor={ this._id }>{ label }</Label> : null }
         { iconClass ? <i className={ iconClass }></i> : null }
         { multiline ? this._renderTextArea() : this._renderInput() }
@@ -116,6 +113,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
   private _renderTextArea(): React.ReactElement<React.HTMLProps<HTMLAreaElement>> {
     return (
       <textarea
+        { ...this.props }
         id={ this._id }
         ref='field'
         value={ this.state.value }
@@ -129,6 +127,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
   private _renderInput(): React.ReactElement<React.HTMLProps<HTMLInputElement>> {
     return (
       <input
+        { ...this.props }
         id={ this._id }
         type='text'
         placeholder={ this.props.placeholder }
