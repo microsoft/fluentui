@@ -49,12 +49,12 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement> {
    *   - If invalid, it returns the error message string and the text field will
    *     show a red border and show an error message below the text field.
    *
-   *   When it returns Promise<any>:
-   *   - If valid, the promise is fulfilled.
-   *   - If invalid, the promise is rejected with an Error with error message.
+   *   When it returns Promise<string>:
+   *   - The resolved value is display as error message.
+   *   - The rejected, the value is thrown away.
    *
    */
-  onGetErrorMessage?: (value: string) => string | Promise<any>;
+  onGetErrorMessage?: (value: string) => string | Promise<string>;
 
   /**
    * Aria Label for textfield, if any.

@@ -174,8 +174,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
         let currentValidation: number = ++this._lastValidation;
 
         result.then(
-          () => this._setErrorMessage(currentValidation, ''),
-          (error: any) => this._setErrorMessage(currentValidation, error.message as string)
+          (errorMessage: string) => this._setErrorMessage(currentValidation, errorMessage)
         );
       }
     }
