@@ -87,13 +87,13 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
 
     return (
       <div className={ textFieldClassName }>
-        { label ? <Label htmlFor={ this._id }>{ label }</Label> : null }
-        { iconClass ? <i className={ iconClass }></i> : null }
+        { label && <Label htmlFor={ this._id }>{ label }</Label> }
+        { iconClass && <i className={ iconClass }></i> }
         { multiline ? this._renderTextArea() : this._renderInput() }
-        { errorMessage ? <p className='ms-TextField-errorMessage ms-u-slideDownIn20'>{ errorMessage }</p> : null }
-        { errorMessage ? <div aria-live='assertive' className='ms-u-screenReaderOnly'>{ errorMessage }</div> : null }
-        { description ? <span className='ms-TextField-description'>{ description }</span> : null }
-        { this.props.ariaLabel ? <span id={ this._descriptionId } className='ms-TextField-hidden'>{ this.props.ariaLabel }</span> : null}
+        { errorMessage && <p className='ms-TextField-errorMessage ms-u-slideDownIn20'>{ errorMessage }</p> }
+        { errorMessage && <div aria-live='assertive' className='ms-u-screenReaderOnly'>{ errorMessage }</div> }
+        { description && <span className='ms-TextField-description'>{ description }</span> }
+        { this.props.ariaLabel && <span id={ this._descriptionId } className='ms-TextField-hidden'>{ this.props.ariaLabel }</span> }
       </div>
     );
   }
