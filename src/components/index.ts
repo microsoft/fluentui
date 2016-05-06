@@ -62,3 +62,5 @@ export { default as Toggle } from './Toggle/index';
 export * from './Toggle/index';
 export { default as Image } from './Image/index';
 export * from './Image/index';
+export { default as Facepile } from './Facepile/index';
+export * from './Facepile/index';

@@ -11,6 +11,7 @@ import DatePickerPage from '../../pages/DatePickerPage/DatePickerPage';
 import DetailsListPage from '../../pages/DetailsListPage/DetailsListPage';
 import DialogPage from '../../pages/DialogPage/DialogPage';
 import DropdownPage from '../../pages/DropdownPage/DropdownPage';
+import FacepilePage from '../../pages/Facepile/FacepilePage';
 import FocusZonePage from '../../pages/FocusZonePage/FocusZonePage';
 import { INavLink, INavLinkGroup } from '../../../components/Nav/index';
 import LabelPage from '../../pages/LabelPage/LabelPage';
@@ -122,6 +123,12 @@ export const AppState: IAppState = {
           name: 'Dropdown',
           status: ExampleStatus.beta,
           url: '#/examples/dropdown'
+        },
+        {
+          component: FacepilePage,
+          name: 'Facepile',
+          status: ExampleStatus.started,
+          url: '#/examples/Facepile'
         },
         {
           component: LabelPage,

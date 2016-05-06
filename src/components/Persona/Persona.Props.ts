@@ -5,7 +5,7 @@ export interface IPersonaProps extends React.Props<Persona> {
   /**
    * Primary text to display, usually the name of the person.
    */
-  primaryText: string;
+  primaryText?: string;
 
   /**
    * Decides the size of the control.
@@ -49,6 +49,11 @@ export interface IPersonaProps extends React.Props<Persona> {
    * Optional text to display, usually a custom message set.
    */
   optionalText?: string;
+
+  /**
+   * Whether to not render persona details, and just render the persona image/initials.
+   */
+  hidePersonaDetails?: boolean;
 
   /**
    * Additional CSS class(es) to apply to the Persona

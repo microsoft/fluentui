@@ -1,0 +1,21 @@
+@import '../../common';
+
+.ms-Facepile {
+  position: relative;
+  height: 32px;
+  width: auto;
+}
+
+.ms-Facepile-itemBtn {
+  position: relative;
+  height: 32px;
+  width: 32px;
+  line-height: 32px;
+  text-align: center;
+  float: left;
+  padding: 0;
+  margin-right: 4px;
+  outline: transparent;
+  border-radius: 50%;
+  vertical-align: top;
+}
