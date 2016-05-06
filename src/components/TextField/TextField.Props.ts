@@ -3,24 +3,7 @@ import * as React from 'react';
 /**
  * TextField component props.
  */
-export interface ITextFieldProps extends React.DOMAttributes {
-  /**
-   * children, if any.
-   */
-  children?: any;
-
-  /**
-   * Whether or not the textfield is disabled.
-   * @default false
-   */
-  disabled?: boolean;
-
-  /**
-   * Whether or not the textfield is a required field.
-   * @default false
-   */
-  required?: boolean;
-
+export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement> {
   /**
    * Whether or not the textfield is a multiline textfield.
    * @default false
@@ -32,11 +15,6 @@ export interface ITextFieldProps extends React.DOMAttributes {
    * @default false
    */
   underlined?: boolean;
-
-  /**
-   * Placeholder text for the textfield.
-   */
-  placeholder?: string;
 
   /**
    * Label for the textfield.
@@ -64,11 +42,6 @@ export interface ITextFieldProps extends React.DOMAttributes {
   onChanged?: (newValue: any) => void;
 
   /**
-   * CSS class for the textfield.
-   */
-  className?: string;
-
-  /**
    * The method is used to get the validation error message and determine whether the input value is valid or not.
    *
    *   When it returns string:
@@ -76,20 +49,15 @@ export interface ITextFieldProps extends React.DOMAttributes {
    *   - If invalid, it returns the error message string and the text field will
    *     show a red border and show an error message below the text field.
    *
-   *   When it returns Promise<any>:
-   *   - If valid, the promise is fulfilled.
-   *   - If invalid, the promise is rejected with an Error with error message.
+   *   When it returns Promise<string>:
+   *   - The resolved value is display as error message.
+   *   - The rejected, the value is thrown away.
    *
    */
-  onGetErrorMessage?: (value: string) => string | Promise<any>;
+  onGetErrorMessage?: (value: string) => string | Promise<string>;
 
   /**
    * Aria Label for textfield, if any.
    */
   ariaLabel?: string;
-
-  /**
-   * Whether the TextField should be read-only or not.
-   */
-  readOnly?: boolean;
 }

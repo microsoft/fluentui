@@ -11,13 +11,24 @@ import TextField from './TextField';
 
 describe('TextField', () => {
 
-  it('renders a textfield', () => {
+  it('should render the value to input element', () => {
     let component = ReactTestUtils.renderIntoDocument(
-      <TextField>test</TextField>
+      <TextField value='test' />
     );
     let renderedDOM = ReactDOM.findDOMNode(component);
+    let inputDOM = renderedDOM.getElementsByTagName('input')[0];
 
-    expect(renderedDOM.textContent).to.equal('test');
+    expect(inputDOM.value).to.equal('test');
+  });
+
+  it('should render a disabled input element', () => {
+    let component = ReactTestUtils.renderIntoDocument(
+      <TextField disabled />
+    );
+    let renderedDOM = ReactDOM.findDOMNode(component);
+    let inputDOM = renderedDOM.getElementsByTagName('input')[0];
+
+    expect(inputDOM.disabled).to.equal(true);
   });
 
 });
