@@ -30,8 +30,8 @@ export interface IPersonaProps extends React.Props<Persona> {
   initialsColor?: PersonaInitialsColor;
 
   /**
-   * Presence of the person to display.
-   * @defaultvalue PersonaPresence.offline
+   * Presence of the person to display - will not display presence if undefined.
+   * @defaultvalue undefined
    */
   presence?: PersonaPresence;
 

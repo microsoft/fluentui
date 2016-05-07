@@ -5,7 +5,6 @@ import './Persona.scss';
 import {
   IPersonaProps,
   PersonaInitialsColor,
-  PersonaPresence,
   PersonaSize
 } from './Persona.Props';
 import {
@@ -18,12 +17,11 @@ export class Persona extends React.Component<IPersonaProps, any> {
   public static defaultProps: IPersonaProps = {
     primaryText: '',
     size: PersonaSize.regular,
-    presence: PersonaPresence.offline,
     initialsColor: PersonaInitialsColor.blue
   };
 
   public render() {
-    let { className, size, imageUrl, imageInitials, initialsColor, presence, primaryText, secondaryText, tertiaryText, optionalText } = this.props;
+    let { className, size, imageUrl, imageInitials, initialsColor, presence, primaryText, secondaryText, tertiaryText, optionalText, hidePersonaDetails } = this.props;
 
     return (
       <div className={ css('ms-Persona', className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence]) }>
@@ -33,8 +31,8 @@ export class Persona extends React.Component<IPersonaProps, any> {
             <Image className='ms-Persona-image' src={ imageUrl } />
           </div>
         ) : (null) }
-        <div className='ms-Persona-presence'></div>
-        { (!this.props.hidePersonaDetails) && (
+        { presence && <div className='ms-Persona-presence'></div> }
+        { (!hidePersonaDetails) && (
           <div className='ms-Persona-details'>
             <div className='ms-Persona-primaryText'>{ primaryText }</div>
             { secondaryText ? (
