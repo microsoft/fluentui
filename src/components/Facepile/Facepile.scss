@@ -12,9 +12,9 @@
   width: 32px;
   line-height: 32px;
   text-align: center;
-  float: left;
+  @include float(left);
   padding: 0;
-  margin-right: 4px;
+  @include margin-right(4px);
   outline: transparent;
   border-radius: 50%;
   vertical-align: top;
