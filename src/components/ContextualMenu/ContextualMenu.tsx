@@ -64,7 +64,7 @@ interface IParsedDirectionalHint {
   contextualMenuType: ContextualMenuType;
   horizontalAlignmentHint: HorizontalAlignmentHint;
   verticalAlignmentHint: VerticalAlignmentHint;
-};
+}
 
 let _instance = 0;
 

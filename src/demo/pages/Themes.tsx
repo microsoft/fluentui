@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { defaultTheme } from '../../themes';
+import { defaultTheme } from '../../defaultTheme';
 import { loadTheme } from 'load-themed-styles';
 import {
   DetailsList,

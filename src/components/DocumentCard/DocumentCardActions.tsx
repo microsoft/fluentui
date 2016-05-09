@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IDocumentCardActionsProps } from './DocumentCard.Props';
 import './DocumentCardActions.scss';
 import Button from '../Button/Button';
-import ButtonType from '../Button/Button.Props';
+import { ButtonType } from '../Button/Button.Props';
 
 export default class DocumentCardActions extends React.Component<IDocumentCardActionsProps, any> {
   public render() {

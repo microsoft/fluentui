@@ -58,7 +58,7 @@ interface IParsedDirectionalHint {
   calloutType: CalloutType;
   horizontalAlignmentHint: HorizontalAlignmentHint;
   verticalAlignmentHint: VerticalAlignmentHint;
-};
+}
 
 export interface IPositionInfo {
   calloutPosition: any;

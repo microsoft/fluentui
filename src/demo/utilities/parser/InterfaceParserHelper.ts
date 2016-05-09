@@ -9,7 +9,7 @@ const JSDOC_DEFAULTVALUE = '@defaultvalue';
  */
 enum ParseState {
   default, comment, declaration
-};
+}
 
 /**
  * Helper Parser that parses interfaces.

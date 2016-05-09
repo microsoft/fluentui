@@ -1,4 +1,4 @@
-import DateMath from './DateMath';
+import * as DateMath from './DateMath';
 let { expect } = chai;
 
 enum Months {

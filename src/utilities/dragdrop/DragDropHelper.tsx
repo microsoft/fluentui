@@ -237,7 +237,7 @@ export default class DragDropHelper implements IDragDropHelper {
   /**
    * determine whether the child target is a descendant of the parent
    */
-  private _isChild(parent: React.ReactInstance, child: React.ReactInstance) : boolean {
+  private _isChild(parent: React.ReactInstance, child: React.ReactInstance): boolean {
     let parentElement = ReactDOM.findDOMNode(parent);
     let childElement = ReactDOM.findDOMNode(child);
     while (childElement && childElement.parentElement) {

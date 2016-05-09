@@ -27,12 +27,12 @@ export interface IButtonProps extends React.HTMLProps<HTMLElement> {
   /**
    * Whether the button is disabled
    */
-  disabled? : boolean;
+  disabled?: boolean;
 
   /**
    * A description of the button for the benefit of screen readers.
    */
-  ariaLabel? : string;
+  ariaLabel?: string;
 }
 
 export enum ElementType {
@@ -50,5 +50,3 @@ export enum ButtonType {
   command,
   icon
 }
-
-export default ButtonType;

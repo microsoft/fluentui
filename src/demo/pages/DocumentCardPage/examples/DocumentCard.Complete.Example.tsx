@@ -12,7 +12,7 @@ export default class DocumentCardCompleteExample extends React.Component<any, an
   public render() {
     return (
         <DocumentCard
-          onClickFunction={ function() { console.log('You clicked the card.'); } }
+          onClickFunction={ () => { console.log('You clicked the card.'); } }
           width={ 236 }
         >
           <DocumentCardPreview
@@ -34,21 +34,21 @@ export default class DocumentCardCompleteExample extends React.Component<any, an
             actions={
               [
                 { icon: 'share', onClickFunction:
-                  function(ev: any) {
+                  (ev: any) => {
                     console.log('You clicked the share action.');
                     ev.preventDefault();
                     ev.stopPropagation();
                   }
                 },
                 { icon: 'pinLeft', onClickFunction:
-                  function(ev: any) {
+                  (ev: any) => {
                     console.log('You clicked the pin action.');
                     ev.preventDefault();
                     ev.stopPropagation();
                   }
                 },
                 { icon: 'bell', onClickFunction:
-                  function(ev: any) {
+                  (ev: any) => {
                     console.log('You clicked the bell action.');
                     ev.preventDefault();
                     ev.stopPropagation();

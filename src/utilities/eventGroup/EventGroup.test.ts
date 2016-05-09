@@ -2,12 +2,12 @@ import EventGroup from './EventGroup';
 
 let { expect } = chai;
 
-describe('EventGroup', function() {
+describe('EventGroup', () => {
   it('can observe an HTML element event', () => {
     let timesCalled = 0;
     let sourceButton = document.createElement('button');
     let parent = {
-      cb: function() {
+      cb: () => {
         timesCalled++;
       }
     };
@@ -33,7 +33,7 @@ describe('EventGroup', function() {
     let timesCalled = 0;
     let sourceObject = {};
     let parent = {
-      cb: function() {
+      cb: () => {
         timesCalled++;
       }
     };
@@ -71,20 +71,20 @@ describe('EventGroup', function() {
     let grandChildCalled = 0;
     let childResponse = true;
     let root = {
-      cb: function() {
+      cb: () => {
         rootCalled++;
       }
     };
     let child = {
       parent: root,
-      cb: function() {
+      cb: () => {
         childCalled++;
         return childResponse;
       }
     };
     let grandChild = {
       parent: child,
-      cb: function() {
+      cb: () => {
         grandChildCalled++;
       }
     };
@@ -132,10 +132,10 @@ describe('EventGroup', function() {
     let grandChildButton = document.createElement('button');
 
     let parent = {
-      onRootClick: function() {
+      onRootClick: () => {
         rootCalled++;
       },
-      onChildClick: function() {
+      onChildClick: () => {
         childCalled++;
         return childResponse;
       }
@@ -182,10 +182,10 @@ describe('EventGroup', function() {
     let cb2Called = 0;
     let sourceObject = {};
     let parent = {
-      cb1: function() {
+      cb1: () => {
         cb1Called++;
       },
-      cb2: function() {
+      cb2: () => {
         cb2Called++;
       }
     };
@@ -236,7 +236,7 @@ describe('EventGroup', function() {
     let timesCalled = 0;
     let sourceButton = document.createElement('button');
     let parent = {
-      cb: function() {
+      cb: () => {
         timesCalled++;
       }
     };

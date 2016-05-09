@@ -6,7 +6,7 @@ import { IEnumProperty } from '../../components/index';
  */
 enum ParseState {
   default, comment, declaration
-};
+}
 
 /**
  * Helper Parser that parses enums.

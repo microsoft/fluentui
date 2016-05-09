@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FocusZone } from '../../utilities/focus/index';
 import { IDatePickerStrings } from './DatePicker.Props';
 import KeyCodes from '../../utilities/KeyCodes';
-import DateMath from '../../utilities/dateMath/DateMath';
+import { addYears, setMonth } from '../../utilities/dateMath/DateMath';
 import { getRTL } from '../../utilities/rtl';
 import { css } from '../../utilities/css';
 
@@ -72,16 +72,16 @@ export default class DatePickerMonth extends React.Component<IDatePickerMonthPro
 
   private _onSelectNextYear() {
     let { navigatedDate, onNavigateDate } = this.props;
-    onNavigateDate(DateMath.addYears(navigatedDate, 1), false);
+    onNavigateDate(addYears(navigatedDate, 1), false);
   };
 
   private _onSelectPrevYear() {
     let { navigatedDate, onNavigateDate } = this.props;
-    onNavigateDate(DateMath.addYears(navigatedDate, -1), false);
+    onNavigateDate(addYears(navigatedDate, -1), false);
   };
 
   private _onSelectMonth(newMonth: number) {
     let { navigatedDate, onNavigateDate } = this.props;
-    onNavigateDate(DateMath.setMonth(navigatedDate, newMonth), true);
+    onNavigateDate(setMonth(navigatedDate, newMonth), true);
   }
 }

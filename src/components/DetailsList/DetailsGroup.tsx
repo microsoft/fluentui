@@ -280,7 +280,7 @@ export default class DetailsGroup extends React.Component<IDetailsGroupProps, ID
    * Otherwise, return '';
    *
    */
-  private _getDroppingClassName() : string {
+  private _getDroppingClassName(): string {
     let { isDropping } = this.state;
     let { group } = this.props;
 

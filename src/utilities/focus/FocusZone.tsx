@@ -18,7 +18,7 @@ let _allInstances: {
 interface IPoint {
   left: number;
   top: number;
-};
+}
 
 export default class FocusZone extends React.Component<IFocusZoneProps, {}> {
 

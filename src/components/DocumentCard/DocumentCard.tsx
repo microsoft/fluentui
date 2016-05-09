@@ -4,19 +4,14 @@ import { css } from '../../utilities/css';
 import { IDocumentCardProps } from './DocumentCard.Props';
 
 export default class DocumentCard extends React.Component<IDocumentCardProps, any> {
+  constructor(props: IDocumentCardProps) {
+    super(props);
+
+    this._onCardClick = this._onCardClick.bind(this);
+  }
+
   public render() {
     let { width, onClickFunction, onClickURL, children } = this.props;
-
-    // If no onClickFunction was provided and we do have an onClickURL, create a function from it.
-    if (!onClickFunction && onClickURL) {
-      onClickFunction = function () {
-        window.location.href = onClickURL;
-      };
-    }
-
-    let hasOnClickFunction = onClickFunction ? true : false;
-
-    // Set a width for the card if one was provided.
     let style;
 
     if (width !== undefined) {
@@ -31,14 +26,29 @@ export default class DocumentCard extends React.Component<IDocumentCardProps, an
           css(
             'ms-DocumentCard',
             {
-              'ms-DocumentCard--actionable': hasOnClickFunction
+              'ms-DocumentCard--actionable': !!(onClickFunction || onClickURL)
             }
           )
         }
         style={ style }
-        onClick={ onClickFunction }>
+        onClick={ onClickFunction || this._onCardClick }>
         { children }
       </div>
     );
+  }
+
+  private _onCardClick(ev: React.MouseEvent) {
+    // TODO: This inline function should be removed and we should render a card in an A tag if it has an href.
+    // And the props should have an "href" property, not "onClickURL" which is inconsistent from
+    // expectations.
+
+    let { onClickURL } = this.props;
+
+    if (onClickURL) {
+      window.location.href = this.props.onClickURL;
+
+      ev.preventDefault();
+      ev.stopPropagation();
+    }
   }
 }

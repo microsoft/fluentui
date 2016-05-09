@@ -3,7 +3,7 @@ import { css } from '../../utilities/css';
 import { DayOfWeek, IDatePickerStrings } from './DatePicker.Props';
 import { FocusZone } from '../../utilities/focus/index';
 import KeyCodes from '../../utilities/KeyCodes';
-import DateMath from '../../utilities/dateMath/DateMath';
+import { addDays, addWeeks, addMonths, compareDates } from '../../utilities/dateMath/DateMath';
 import { getRTL, getRTLSafeKeyCode } from '../../utilities/rtl';
 
 const DAYS_IN_WEEK = 7;
@@ -116,10 +116,10 @@ export default class DatePickerDay extends React.Component<IDatePickerDayProps, 
                             onKeyDown= { (ev: React.KeyboardEvent) =>
                               this._navigateMonthEdge(ev, day.originalDate, weekIndex, dayIndex)}
                             aria-selected={ day.isSelected }
-                            id={ DateMath.compareDates(navigatedDate, day.originalDate) ? activeDescendantId : null }
+                            id={ compareDates(navigatedDate, day.originalDate) ? activeDescendantId : null }
                             data-is-focusable={ true }
-                            ref={ DateMath.compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : null }
-                            key={ DateMath.compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : null } >
+                            ref={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : null }
+                            key={ compareDates(navigatedDate, day.originalDate) ? 'navigatedDay' : null } >
                               {day.date}
                         </div>
                       </td>
@@ -142,16 +142,16 @@ export default class DatePickerDay extends React.Component<IDatePickerDayProps, 
 
   private _navigateMonthEdge(ev: React.KeyboardEvent, date: Date, weekIndex: number, dayIndex: number) {
     if (weekIndex === 0 && ev.which === KeyCodes.up) {
-      this.props.onNavigateDate(DateMath.addWeeks(date, -1), true);
+      this.props.onNavigateDate(addWeeks(date, -1), true);
       ev.preventDefault();
     } else if (weekIndex === (this.state.weeks.length - 1) && ev.which === KeyCodes.down) {
-      this.props.onNavigateDate(DateMath.addWeeks(date, 1), true);
+      this.props.onNavigateDate(addWeeks(date, 1), true);
       ev.preventDefault();
     } else if (dayIndex === 0 && ev.which === getRTLSafeKeyCode(KeyCodes.left)) {
-      this.props.onNavigateDate(DateMath.addDays(date, -1), true);
+      this.props.onNavigateDate(addDays(date, -1), true);
       ev.preventDefault();
     } else if (dayIndex === (DAYS_IN_WEEK - 1) && ev.which === getRTLSafeKeyCode(KeyCodes.right)) {
-      this.props.onNavigateDate(DateMath.addDays(date, 1), true);
+      this.props.onNavigateDate(addDays(date, 1), true);
       ev.preventDefault();
     }
   }
@@ -163,11 +163,11 @@ export default class DatePickerDay extends React.Component<IDatePickerDayProps, 
   }
 
   private _onSelectNextMonth() {
-    this.props.onNavigateDate(DateMath.addMonths(this.props.navigatedDate, 1), false);
+    this.props.onNavigateDate(addMonths(this.props.navigatedDate, 1), false);
   }
 
   private _onSelectPrevMonth() {
-    this.props.onNavigateDate(DateMath.addMonths(this.props.navigatedDate, -1), false);
+    this.props.onNavigateDate(addMonths(this.props.navigatedDate, -1), false);
   }
 
   private _getWeeks(navigatedDate: Date, selectedDate: Date): IDayInfo[][] {
@@ -196,8 +196,8 @@ export default class DatePickerDay extends React.Component<IDatePickerDayProps, 
           date: date.getDate(),
           originalDate: new Date(date.toString()),
           isInMonth: date.getMonth() === navigatedDate.getMonth(),
-          isToday: DateMath.compareDates(today, date),
-          isSelected: DateMath.compareDates(selectedDate, date)
+          isToday: compareDates(today, date),
+          isSelected: compareDates(selectedDate, date)
         };
 
         week.push(dayInfo);

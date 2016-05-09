@@ -60,7 +60,7 @@ export enum PanelType {
    */
   smallFixedNear,
 
-  /** 
+  /**
    * Renders the panel in 'medium' mode, anchored to the far side (right in LTR mode).
    */
   medium,
@@ -80,5 +80,3 @@ export enum PanelType {
    */
   extraLarge
 }
-
-export default IPanelProps;

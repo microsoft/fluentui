@@ -19,7 +19,7 @@ export interface IDatePickerState {
 
 export default class DatePicker extends React.Component<IDatePickerProps, IDatePickerState> {
   public static defaultProps: IDatePickerProps = {
-    format: function(date: Date) {
+    format: (date: Date) => {
       if (date) {
         return date.toDateString();
       }
