@@ -6,6 +6,13 @@ let gulp = require('gulp');
 /** @todo: disable lint config. */
 build.tslint.setConfig({ lintConfig: require('./tslint.json') });
 
+
+build.postCopy.setConfig({
+  copyTo: {
+    'dist': [ 'src/**/*.png' ]
+  }
+});
+
 // process *.Example.tsx as text.
 build.text.setConfig({ textMatch: ['src/**/*.txt', 'src/**/*.Example.tsx', 'src/**/*.Props.ts'] });
 let isProduction = process.argv.indexOf('--production') >= 0;

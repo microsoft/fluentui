@@ -132,19 +132,25 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
   public render() {
     let {
-      items,
-      className,
-      selectionMode,
-      constrainMode,
-      onItemInvoked,
-      rowElementEventMap,
-      dragDropEvents,
-      onRenderMissingItem,
-      groupProps,
       ariaLabelForListHeader,
-      ariaLabelForSelectAllCheckbox
+      ariaLabelForSelectAllCheckbox,
+      className,
+      constrainMode,
+      dragDropEvents,
+      groupProps,
+      items,
+      onItemInvoked,
+      onRenderMissingItem,
+      rowElementEventMap,
+      selectionMode,
+      viewport
     } = this.props;
-    let { adjustedColumns, layoutMode, groups, isAllCollapsed } = this.state;
+    let {
+      adjustedColumns,
+      groups,
+      isAllCollapsed,
+      layoutMode
+    } = this.state;
     let { _selection: selection } = this;
     let isGrouped = groups && groups.length > 0;
 
@@ -179,6 +185,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           dragDropEvents={ dragDropEvents }
           onRenderMissingItem={ onRenderMissingItem }
           dragDropHelper={ this._dragDropHelper }
+          viewport={ viewport }
           headerProps={ headerProps }
           footerProps={ footerProps }
           />
@@ -359,6 +366,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     }
   }
 
+  /** Returns adjusted columns, given the viewport size and layout mode. */
   private _getAdjustedColumns(newProps: IDetailsListProps, forceUpdate?: boolean, layoutMode?: DetailsListLayoutMode): IColumn[] {
     let { columns: newColumns, viewport: { width: viewportWidth }, selectionMode } = newProps;
 
@@ -383,14 +391,24 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
     newColumns = newColumns || buildColumns(this.props.items);
 
+    let adjustedColumns: IColumn[];
+
     if (layoutMode === DetailsListLayoutMode.fixedColumns) {
-      return this._getFixedColumns(newColumns);
+      adjustedColumns = this._getFixedColumns(newColumns);
     } else {
-      return this._getJustifiedColumns(newColumns, viewportWidth);
+      adjustedColumns = this._getJustifiedColumns(newColumns, viewportWidth);
     }
+
+    // Preserve adjusted column calculated widths.
+    adjustedColumns.forEach(column => {
+      let overrides = this._columnOverrides[column.key] = this._columnOverrides[column.key] || {} as IColumn;
+      overrides.calculatedWidth = column.calculatedWidth;
+    });
+
+    return adjustedColumns;
   }
 
-    /** Builds a set of columns based on the given columns mixed with the current overrides. */
+  /** Builds a set of columns based on the given columns mixed with the current overrides. */
   private _getFixedColumns(newColumns: IColumn[]) {
     return newColumns.map(column => {
       let newColumn = assign({}, column, this._columnOverrides[column.key]);
@@ -440,7 +458,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     // Then expand columns starting at the beginning, until we've filled the width.
     for (let i = 0; i < adjustedColumns.length && totalWidth < availableWidth; i++) {
       let column = adjustedColumns[i];
-      let overrides = this._columnOverrides[column.key] = this._columnOverrides[column.key] || {} as IColumn;
       let maxWidth = column.maxWidth;
       let minWidth = column.minWidth || maxWidth || MIN_COLUMN_WIDTH;
       let spaceLeft = availableWidth - totalWidth;
@@ -453,45 +470,22 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
       column.calculatedWidth += increment;
       totalWidth += increment;
-
-      overrides.calculatedWidth = column.calculatedWidth;
-    }
-
-    // Make the last row in justified layout not resizable.
-    if (adjustedColumns.length) {
-    adjustedColumns[adjustedColumns.length - 1].isResizable = false;
     }
 
     return adjustedColumns;
   }
 
   private _onColumnResized(resizingColumn: IColumn, newWidth: number) {
-    this._setColumnLock(true);
     this._columnOverrides[resizingColumn.key].calculatedWidth = Math.max(
       resizingColumn.minWidth || MIN_COLUMN_WIDTH,
       newWidth);
     this._adjustColumns(this.props, true, DetailsListLayoutMode.fixedColumns);
   }
 
-  private _setColumnLock(isLocked: boolean) {
-    let { columns } = this.props;
-
-    for (let i = 0; i < columns.length; i++) {
-      let column = columns[i];
-      let overrides = this._columnOverrides[column.key] = this._columnOverrides[column.key] || {} as IColumn;
-
-      if (isLocked) {
-        overrides.calculatedWidth = overrides.calculatedWidth || column.maxWidth || column.minWidth;
-      } else {
-        delete overrides.calculatedWidth;
-      }
-    }
-  }
-
   /**
-   * Call back function when double clicked on the details header column resizer
-   * which will measure the double clicked column cells of all the active rows.
-   * and resize the column to the max cell width
+   * Callback function when double clicked on the details header column resizer
+   * which will measure the column cells of all the active rows and resize the
+   * column to the max cell width.
    *
    * @private
    * @param {IColumn} column (double clicked column definition)

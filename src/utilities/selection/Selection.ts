@@ -5,6 +5,7 @@ export class Selection implements ISelection {
   public count: number;
   public getKey: (item: IObjectWithKey, index?: number) => string;
 
+  private _changeEventSuppressionCount: number;
   private _items: IObjectWithKey[];
   private _isAllSelected: boolean;
   private _exemptedIndices: { [index: string]: boolean };
@@ -12,24 +13,23 @@ export class Selection implements ISelection {
   private _keyToIndexMap: { [key: string]: number };
   private _anchoredIndex: number;
   private _onSelectionChanged: () => void;
-  private _areChangeEventsEnabled: boolean;
   private _hasChanged: boolean;
 
   constructor(onSelectionChanged?: () => void, getKey?: (item: IObjectWithKey, index?: number) => string) {
     this.getKey = getKey || ((item: IObjectWithKey, index?: number) => (item ? item.key : String(index)));
 
+    this._changeEventSuppressionCount = 0;
     this._exemptedCount = 0;
     this._anchoredIndex = 0;
     this.setItems([], true);
 
-    this._areChangeEventsEnabled = true;
     this._onSelectionChanged = onSelectionChanged;
   }
 
   public setChangeEvents(isEnabled: boolean, suppressChange?: boolean) {
-    this._areChangeEventsEnabled = isEnabled;
+    this._changeEventSuppressionCount += isEnabled ? -1 : 1;
 
-    if (isEnabled && this._areChangeEventsEnabled && this._hasChanged) {
+    if (this._changeEventSuppressionCount === 0 && this._hasChanged) {
       this._hasChanged = false;
 
       if (!suppressChange) {
@@ -195,7 +195,6 @@ export class Selection implements ISelection {
     let anchorIndex = this._anchoredIndex || 0;
     let startIndex = Math.min(index, anchorIndex);
     let endIndex = Math.max(index, anchorIndex);
-    let areChangeEventsEnabled = this._areChangeEventsEnabled;
 
     this.setChangeEvents(false);
 
@@ -203,7 +202,7 @@ export class Selection implements ISelection {
       this.setIndexSelected(startIndex, true, false);
     }
 
-    this.setChangeEvents(areChangeEventsEnabled);
+    this.setChangeEvents(true);
   }
 
   public toggleAllSelected() {
@@ -224,7 +223,7 @@ export class Selection implements ISelection {
   }
 
   private _change() {
-    if (this._areChangeEventsEnabled) {
+    if (this._changeEventSuppressionCount === 0) {
 
       EventGroup.raise(this, SELECTION_CHANGE);
 

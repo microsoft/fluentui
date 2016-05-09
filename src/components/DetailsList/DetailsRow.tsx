@@ -10,8 +10,9 @@ import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
 import {
   IDragDropHelper,
   IDragDropEvents,
-  IDragDropOptions
+  IDragDropOptions,
 } from './../../utilities/dragdrop/interfaces';
+import { IViewport } from '../../utilities/decorators/withViewport';
 import './DetailsRow.scss';
 
 export interface IDetailsRowProps extends React.Props<DetailsRow> {
@@ -26,6 +27,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   dragDropEvents?: IDragDropEvents;
   dragDropHelper?: IDragDropHelper;
   isGrouped?: boolean;
+  viewport?: IViewport;
 }
 
 export interface IDetailsRowSelectionState {
@@ -134,7 +136,14 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
   }
 
   public render() {
-    let { selectionMode, columns, item, itemIndex, dragDropEvents } = this.props;
+    let {
+      columns,
+      dragDropEvents,
+      item,
+      itemIndex,
+      selectionMode,
+      viewport
+    } = this.props;
     let { selectionState: { isSelected }, columnMeasureInfo, isDropping, isGrouped } = this.state;
     let isDraggable = Boolean(dragDropEvents && dragDropEvents.canDrag && dragDropEvents.canDrag(item));
     let droppingClassName = isDropping ? (this._droppingClassNames ? this._droppingClassNames : DEFAULT_DROPPING_CSS_CLASS) : '';
@@ -149,6 +158,7 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
         data-selection-index={ itemIndex }
         data-is-draggable={ isDraggable }
         data-automationid='DetailsRow'
+        style={ { minWidth: viewport ? viewport.width : 0 } }
         >
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           { (selectionMode !== SelectionMode.none) && (

@@ -36,17 +36,6 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
     const { title, code, children, isRightAligned } = this.props;
     const { isCodeVisible, isExampleShown } = this.state;
     let rootClass = 'ExampleCard' + (this.state.isCodeVisible ? ' is-codeVisible' : '');
-    let codeExample;
-
-    if (code) {
-      codeExample = (
-        <div className='ExampleCard-code'>
-          <Highlight className='javascript'>
-            { code }
-          </Highlight>
-        </div>
-      );
-    }
 
     return (
       <div className={ rootClass }>
@@ -59,16 +48,23 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
             ) : ( null ) }
           </span>
         </div>
-        { (isExampleShown || isCodeVisible) ? (
         <div className={ css('ExampleCard-content', { ' ms-u-slideDownIn20': (isCodeVisible) }) }>
-          { codeExample }
-            { isExampleShown ? (
-            <div className={ css('ExampleCard-example', { ' is-right-aligned': (isRightAligned) }) }>
-              { children }
-            </div>
-            ) : ( null ) }
+
+          { isCodeVisible && (
+          <div className='ExampleCard-code ms-u-slideDownIn20'>
+            <Highlight className='javascript'>
+              { code }
+            </Highlight>
+          </div>
+          ) }
+
+          { isExampleShown && (
+          <div className={ css('ExampleCard-example', { ' is-right-aligned': (isRightAligned) }) }>
+            { children }
+          </div>
+          ) }
+
         </div>
-        ) : (null) }
       </div>
     );
   }

@@ -1,9 +1,6 @@
 @import '../../common';
 
 $rowHeight: 36px;
-$selectedColor: $ms-color-themeLighter;
-$selectedHoverColor: $ms-color-themeLight;
-$unselectedHoverColor: $ms-color-neutralLight;
 
 .ms-DetailsHeader {
   display: inline-block;
@@ -60,6 +57,7 @@ $unselectedHoverColor: $ms-color-neutralLight;
 .ms-DetailsHeader-cell {
   @include focus-border($ms-color-neutralSecondaryAlt);
 
+  font-size: $ms-font-size-xs;
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -87,11 +85,11 @@ $unselectedHoverColor: $ms-color-neutralLight;
     cursor: default;
 
     &:hover {
-      background-color: $ms-color-themeLighterAlt;
+      background-color: $ms-color-neutralLight;
     }
 
     &:hover:active {
-      background-color: $ms-color-themeLighter;
+      background-color: $ms-color-neutralTertiaryAlt;
     }
   }
 

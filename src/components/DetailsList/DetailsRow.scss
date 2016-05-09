@@ -50,6 +50,7 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
   vertical-align: top;
   white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 
   &.is-multiline {
     white-space: normal;

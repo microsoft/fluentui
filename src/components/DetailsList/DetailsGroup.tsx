@@ -8,8 +8,73 @@ import {
 } from './../../utilities/dragdrop/interfaces';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
 import { css } from '../../utilities/css';
-import { IDetailsGroupProps } from './DetailsGroup.Props';
+import {
+  IGroup,
+  IColumn,
+  IDetailsGroupHeaderProps,
+  IDetailsGroupFooterProps
+} from './index';
+import {
+  ISelection,
+  SelectionMode
+} from '../../utilities/selection/interfaces';
+import {
+  IDragDropEvents,
+  IDragDropContext,
+  IDragDropHelper
+} from './../../utilities/dragdrop/interfaces';
+import { IViewport } from '../../utilities/decorators/withViewport';
 import './DetailsGroup.scss';
+
+export interface IDetailsGroupProps extends React.Props<DetailsGroup> {
+  /** The items to render. */
+  items: any[];
+
+  /** Given column definitions */
+  columns?: IColumn[];
+
+  /** Optional grouping instructions. */
+  group?: IGroup;
+
+  /** Optional grouping instructions. */
+  groupIndex?: number;
+
+  /** Optional selection model to track selection state.  */
+  selection?: ISelection;
+
+  /** Controls how/if the details list manages selection. */
+  selectionMode?: SelectionMode;
+
+  /** Grouping item limit. */
+  getGroupItemLimit?: (group: IGroup) => number;
+
+  /** Event names and corresponding callbacks that will be registered to the group and the rendered row elements */
+  eventsToRegister?: [{ eventName: string, callback: (context: IDragDropContext, event?: any) => void }];
+
+  /** Callback for when a given row has been mounted. Useful for identifying when a row has been rendered on the page. */
+  onRowDidMount?: (item?: any, index?: number) => void;
+
+  /** Callback for when a given row has been mounted. Useful for identifying when a row has been removed from the page. */
+  onRowWillUnmount?: (item?: any, index?: number) => void;
+
+  /** Map of callback functions related to drag and drop functionality. */
+  dragDropEvents?: IDragDropEvents;
+
+  /** Callback for what to render when the item is missing. */
+  onRenderMissingItem?: (index?: number) => React.ReactNode;
+
+  /** helper to manage drag/drop across item rows and groups */
+  dragDropHelper?: IDragDropHelper;
+
+  /** Information to pass in to the group header. */
+  headerProps?: IDetailsGroupHeaderProps;
+
+  /** Information to pass in to the group footer. */
+  footerProps?: IDetailsGroupFooterProps;
+
+  /** Viewport, provided by the withViewport decorator. */
+  viewport?: IViewport;
+}
 
 export interface IDetailsGroupState {
   isDropping?: boolean;
@@ -65,7 +130,8 @@ export default class DetailsGroup extends React.Component<IDetailsGroupProps, ID
       items,
       headerProps,
       footerProps,
-      selection
+      selection,
+      viewport
     } = this.props;
     let renderCount = group ? getGroupItemLimit(group) : items.length;
     let isFooterVisible = group && !group.isCollapsed && !group.isShowingAll && group.count > renderCount;
@@ -80,6 +146,7 @@ export default class DetailsGroup extends React.Component<IDetailsGroupProps, ID
             group={ group }
             groupIndex={ groupIndex }
             headerProps={ headerProps }
+            viewport={ viewport }
             ref={ 'header' }
           />
         }
@@ -119,12 +186,30 @@ export default class DetailsGroup extends React.Component<IDetailsGroupProps, ID
   }
 
   private _onRenderCell(item: any, index: number): React.ReactNode {
-    let result = null;
-    let { columns, selection, selectionMode, eventsToRegister, dragDropEvents, onRenderMissingItem,
-      group, onRowDidMount, onRowWillUnmount, dragDropHelper } = this.props;
+    let {
+      columns,
+      dragDropEvents,
+      dragDropHelper,
+      eventsToRegister,
+      group,
+      onRenderMissingItem,
+      onRowDidMount,
+      onRowWillUnmount,
+      selection,
+      selectionMode,
+      viewport
+    } = this.props;
     let rowKey = item ? item.key : index;
 
-    result = (
+    if (!item) {
+      if (onRenderMissingItem) {
+        onRenderMissingItem(index);
+      }
+
+      return null;
+    }
+
+    return (
         <DetailsRow
           key={ rowKey }
           item={ item }
@@ -138,16 +223,9 @@ export default class DetailsGroup extends React.Component<IDetailsGroupProps, ID
           dragDropEvents={ dragDropEvents }
           dragDropHelper={ dragDropHelper }
           isGrouped={ Boolean(group) }
+          viewport={ viewport }
           />
     );
-
-    if (!item) {
-      if (onRenderMissingItem) {
-        onRenderMissingItem(index);
-      }
-    }
-
-    return result;
   }
 
   /**

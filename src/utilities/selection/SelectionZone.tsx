@@ -93,13 +93,15 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
 
   private _onFocus(ev: FocusEvent) {
     let { selection, selectionMode } = this.props;
-    let index = this._getIndexFromElement(ev.target as HTMLElement, true);
+    let index = this._getIndexFromElement(ev.target as HTMLElement);
 
     if (index >= 0 && selectionMode !== SelectionMode.none && !this._hasClickedOnItem) {
       selection.setChangeEvents(false);
 
       if (this._isShiftPressed && selectionMode === SelectionMode.multiple) {
-        selection.setAllSelected(false);
+        if (!this._isCtrlPressed && !this._isMetaPressed) {
+          selection.setAllSelected(false);
+        }
         selection.selectToIndex(index);
       } else if (!this._isCtrlPressed && !this._isMetaPressed) {
         selection.setAllSelected(false);
@@ -118,23 +120,17 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
 
     let target = ev.target as HTMLElement;
     let { selectionMode } = this.props;
-    let isToggleElement = this._isToggleElement(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);
     let index = this._getIndexFromElement(target, true);
 
     if (index >= 0 && selectionMode !== SelectionMode.none) {
       this._hasClickedOnItem = true;
-
-      if (isToggleElement) {
-        ev.preventDefault();
-        ev.stopPropagation();
-      }
     }
   }
 
   private _onClick(ev: MouseEvent) {
     let target = ev.target as HTMLElement;
     let { selection, selectionMode } = this.props;
-    let isToggleElement = this._isToggleElement(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);
+    let isToggleElement = this._isToggleElement(target, SELECTION_TOGGLE_ATTRIBUTE_NAME) || ev.ctrlKey || ev.metaKey;
     let index = this._getIndexFromElement(target, true);
 
     if (index >= 0 && selectionMode !== SelectionMode.none) {
@@ -143,22 +139,21 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
       // Disable change events.
       selection.setChangeEvents(false);
 
-      if (ev.shiftKey) {
+      if (ev.shiftKey && selectionMode === SelectionMode.multiple) {
+        if (!ev.ctrlKey && !ev.metaKey) {
+          selection.setAllSelected(false);
+        }
         selection.selectToIndex(index);
       } else {
         if (selectionMode === SelectionMode.single || !isToggleElement) {
           selection.setAllSelected(false);
         }
 
-        selection.setIndexSelected(index, isToggleElement ? !isSelected : true, true);
-
+        selection.setIndexSelected(index, isToggleElement ? !isSelected : true, !ev.shiftKey);
       }
 
       // Re-enabled change events.
       selection.setChangeEvents(true);
-
-      ev.preventDefault();
-      ev.stopPropagation();
     }
   }
 
@@ -244,8 +239,8 @@ export default class SelectionZone extends React.Component<ISelectionZoneProps, 
       let indexString = element.getAttribute(SELECTION_INDEX_ATTRIBUTE_NAME);
 
       if (indexString) {
-          index = Number(indexString);
-          break;
+        index = Number(indexString);
+        break;
       }
       element = element.parentElement;
     } while (traverseParents && element !== this.refs.root);

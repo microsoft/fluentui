@@ -5,11 +5,13 @@ import { IGroup, IDetailsGroupHeaderProps } from './index';
 import { css } from '../../utilities/css';
 import { default as Spinner } from '../Spinner/index';
 import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
+import { IViewport } from '../../utilities/decorators/withViewport';
 
 export interface IGroupHeaderProps {
   group: IGroup;
   groupIndex: number;
   headerProps?: IDetailsGroupHeaderProps;
+  viewport?: IViewport;
 }
 
 export interface IGroupHeaderState {
@@ -45,7 +47,7 @@ export default class GroupHeader extends React.Component<IGroupHeaderProps, IGro
   }
 
   public render() {
-    let { group, headerProps } = this.props;
+    let { group, headerProps, viewport } = this.props;
     let { isCollapsed, isLoadingVisible } = this.state;
     let showCheckBox = true;
     let isSelected = group && group.isSelected;
@@ -56,6 +58,7 @@ export default class GroupHeader extends React.Component<IGroupHeaderProps, IGro
         className={ css('ms-GroupHeader', {
           'is-selected': isSelected
         }) }
+        style={ { minWidth: viewport.width } }
         onClick={ this._onHeaderClick }
         data-is-focusable={ true } >
 

@@ -5,10 +5,11 @@ import { css } from '../../utilities/css';
 import { assign } from '../../utilities/object';
 import Async from '../../utilities/Async/Async';
 
-const MIN_SCROLL_UPDATE_DELAY = 40;
+const MIN_SCROLL_UPDATE_DELAY = 30;
 const MAX_SCROLL_UPDATE_DELAY = 200;
+const REMEASURE_SURFACE_DELAY = 500;
 const ITEMS_PER_PAGE = 10;
-const PAGE_BEHIND_COUNT = 1;
+const PAGE_BEHIND_COUNT = 2;
 const PAGE_AHEAD_COUNT = 2;
 
 export interface IListState {
@@ -74,6 +75,10 @@ export default class List extends React.Component<IListProps, IListState> {
         maxWait: MAX_SCROLL_UPDATE_DELAY
       });
 
+    this._remeasureSurface = this._async.debounce(
+      this._remeasureSurface,
+      REMEASURE_SURFACE_DELAY);
+
     this._cachedPageHeights = {};
     this._estimatedItemHeight = 30;
     this._focusedIndex = -1;
@@ -134,7 +139,6 @@ export default class List extends React.Component<IListProps, IListState> {
   }
 
   public componentDidUpdate() {
-    let { surfaceRect: lastSurfaceRect } = this.state;
 
     if (this._scrollingToIndex > -1) {
       if (this._isIndexRendered(this._scrollingToIndex)) {
@@ -143,15 +147,8 @@ export default class List extends React.Component<IListProps, IListState> {
       }
     }
 
-    let newSurfaceRect = this.refs.surface.getBoundingClientRect();
-
-    // If the surface height changes after a render, we need to re-evaluate the pages we're rendering.
-    if (lastSurfaceRect.top !== newSurfaceRect.top ||
-        (this._hasCompletedFirstRender && lastSurfaceRect.height !== newSurfaceRect.height)) {
-      this.forceUpdate();
-    } else {
-      this._hasCompletedFirstRender = true;
-    }
+    // Once we've updated, make sure to double check the surface rect in the case it shuffled after updating.
+    this._remeasureSurface();
   }
 
   public forceUpdate() {
@@ -239,6 +236,29 @@ export default class List extends React.Component<IListProps, IListState> {
     }
 
     return didScroll;
+  }
+
+  /**
+   * After an update, we remeasure the surface to identify scenarios where the surface rectangle
+   * changes top or height (e.g. resizing content causes pages to change heights). If that happens
+   * we will need to re-evaluate what we're rendering.
+   *
+   * This function is debounced to ensure it's only done once updates settle.
+   **/
+  private _remeasureSurface() {
+    let { surfaceRect: lastSurfaceRect } = this.state;
+
+    if (this._hasCompletedFirstRender) {
+      let newSurfaceRect = this.refs.surface.getBoundingClientRect();
+
+      // If the surface height changes after a render, we need to re-evaluate the pages we're rendering.
+      if (lastSurfaceRect.top !== newSurfaceRect.top ||
+          (this._hasCompletedFirstRender && lastSurfaceRect.height !== newSurfaceRect.height)) {
+        this.forceUpdate();
+      }
+    }
+
+    this._hasCompletedFirstRender = true;
   }
 
   /** Track the last item index focused so that we ensure we keep it rendered. */
