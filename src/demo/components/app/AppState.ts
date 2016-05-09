@@ -211,7 +211,7 @@ export const AppState: IAppState = {
         {
           component: TextFieldPage,
           name: 'TextField',
-          status: ExampleStatus.started,
+          status: ExampleStatus.beta,
           url: '#/examples/textfield'
         },
         {

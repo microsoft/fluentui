@@ -18,9 +18,10 @@ export default class DocumentCard extends React.Component<IDocumentCardProps, an
 
     // Set a width for the card if one was provided.
     let style;
-    if (width) {
+
+    if (width !== undefined) {
       style = {
-        width: width + 'px'
+        width: width
       };
     }
 

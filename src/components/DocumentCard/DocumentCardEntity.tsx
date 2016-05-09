@@ -7,23 +7,18 @@ export default class DocumentCardEntity extends React.Component<IDocumentCardEnt
   public render() {
     let { imagePath, details } = this.props;
 
-    let detailsOutput = [];
-    details.forEach(function(detail) {
-      detailsOutput.push(
-        <span className={
-          css(
-            'ms-DocumentCard-entity-detail',
-            { 'ms-DocumentCard-entity-detail--bold' : detail.isBold }
-          )
-        }>{ detail.text }</span>
-      );
-    });
-
     return (
       <div className='ms-DocumentCard-entity'>
         <img className='ms-DocumentCard-entity-image' src={ imagePath }/>
         <div className='ms-DocumentCard-entity-details'>
-          { detailsOutput }
+          { details.map((detail, index) => (
+            <span key={ index } className={
+              css(
+                'ms-DocumentCard-entity-detail',
+                { 'ms-DocumentCard-entity-detail--bold' : detail.isBold }
+              )
+            }>{ detail.text }</span>
+          )) }
         </div>
       </div>
     );

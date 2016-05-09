@@ -8,29 +8,27 @@ export default class DocumentCardActions extends React.Component<IDocumentCardAc
   public render() {
     let { actions, views } = this.props;
 
-    let actionsOutput = [];
-    actions.forEach(function(action) {
-      actionsOutput.push(
-        <div className='ms-DocumentCard-actions-action'>
-          <Button buttonType={ ButtonType.icon } icon={ action.icon } title='' description='' onClick={ action.onClickFunction }/>
-        </div>
-      );
-    });
-
-    let viewsOutput;
-    if (views) {
-      viewsOutput = (
-        <div className='ms-DocumentCard-actions-views'>
-          <i className='ms-Icon ms-Icon--eye'></i>
-          { views }
-        </div>
-      );
-    }
-
     return (
       <div className='ms-DocumentCard-actions'>
-        { actionsOutput }
-        { viewsOutput }
+
+        { actions && actions.map((action, index) => (
+        <div className='ms-DocumentCard-actions-action' key={ index }>
+          <Button
+            buttonType={ ButtonType.icon }
+            icon={ action.icon }
+            title=''
+            description=''
+            onClick={ action.onClickFunction } />
+        </div>
+        )) }
+
+        { views && (
+        <div className='ms-DocumentCard-actions-views'>
+          <i className='ms-Icon ms-Icon--eye' />
+          { views }
+        </div>
+        ) }
+
       </div>
     );
   }
