@@ -26,6 +26,16 @@ export default class TextFieldBasicExample extends React.Component<any, any> {
           label='TextField with a Promise-based validator. Hint: the length of the input string must be less than 3.'
           onGetErrorMessage={this._getErrorMessagePromise}
         />
+        <TextField
+          label='TextField with a string-based validator. Hint: the length of the input string must be less than 3.'
+          value='It should show an error message under this error message on render.'
+          onGetErrorMessage={this._getErrorMessage}
+        />
+        <TextField
+          label='TextField with a Promise-based validator. Hint: the length of the input string must be less than 3.'
+          value='It should show an error message under this error message after render about 5 seconds.'
+          onGetErrorMessage={this._getErrorMessagePromise}
+        />
         <TextField label='Multiline TextField' multiline />
         <TextField label='Underlined TextField' underlined />
       </div>

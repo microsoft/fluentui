@@ -20,11 +20,12 @@ export interface ITextFieldState {
 let _instance: number = 0;
 
 export default class TextField extends React.Component<ITextFieldProps, ITextFieldState> {
-  public static initialProps: ITextFieldProps = {
-    disabled: false,
-    required: false,
+  public static defaultProps: ITextFieldProps = {
+    value: '',
     multiline: false,
-    underlined: false
+    underlined: false,
+    onChanged: () => { /* noop */ },
+    onGetErrorMessage: () => ''
   };
 
   public refs: {
@@ -47,7 +48,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
     this._async = new Async(this);
 
     this.state = {
-      value: props.value || '',
+      value: props.value,
       errorMessage: ''
     };
 
@@ -57,12 +58,16 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
     this._lastValidation = 0;
   }
 
+  public componentWillMount() {
+    this._validate(this.state.value);
+  }
+
   public componentDidMount() {
     this._isMounted = true;
   }
 
   public componentWillReceiveProps(newProps: ITextFieldProps) {
-    if (newProps.value !== undefined) {
+    if (newProps.value !== this.state.value) {
       this.setState({
         value: newProps.value
       } as ITextFieldState);
@@ -91,7 +96,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
         { iconClass && <i className={ iconClass }></i> }
         { multiline ? this._renderTextArea() : this._renderInput() }
         { errorMessage && <p className='ms-TextField-errorMessage ms-u-slideDownIn20'>{ errorMessage }</p> }
-        { errorMessage && <div aria-live='assertive' className='ms-u-screenReaderOnly'>{ errorMessage }</div> }
+        { errorMessage && <div aria-live='assertive' className='ms-u-screenReaderOnly' data-automation-id='error-message'>{ errorMessage }</div> }
         { description && <span className='ms-TextField-description'>{ description }</span> }
         { this.props.ariaLabel && <span id={ this._descriptionId } className='ms-TextField-hidden'>{ this.props.ariaLabel }</span> }
       </div>
@@ -119,7 +124,6 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
         value={ this.state.value }
         onChange={ this._onInputChange }
         className={ this._fieldClassName }
-        readOnly={ this.props.readOnly }
       />
     );
   }
@@ -130,13 +134,11 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
         { ...this.props }
         id={ this._id }
         type='text'
-        placeholder={ this.props.placeholder }
         ref='field'
         value={ this.state.value }
         onChange={ this._onInputChange }
         className={ this._fieldClassName }
         aria-describedby={ this._descriptionId }
-        readOnly={ this.props.readOnly }
       />
     );
   }
@@ -144,45 +146,34 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
   private _onInputChange(event: React.KeyboardEvent): void {
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
-    const { onChanged, onGetErrorMessage } = this.props;
+    const { onChanged } = this.props;
 
     this.setState({
       value
     } as ITextFieldState);
 
-    // If there is no `onGetErrorMessage` prop, no need to setTimeout to validate.
-    if (onGetErrorMessage) {
-      this._delayedValidate(value);
-    }
+    this._delayedValidate(value);
 
-    if (onChanged) {
-      onChanged(value);
-    }
+    onChanged(value);
   }
 
   private _validate(value: string): void {
     let { onGetErrorMessage } = this.props;
 
-    if (onGetErrorMessage) {
-      let result: string | PromiseLike<string> = onGetErrorMessage(value);
+    let result: string | PromiseLike<string> = onGetErrorMessage(value);
 
-      if (typeof result === 'string') {
-        this.setState({
-          errorMessage: result
-        } as ITextFieldState);
-      } else {
-        let currentValidation: number = ++this._lastValidation;
+    if (typeof result === 'string') {
+      this.setState({
+        errorMessage: result
+      } as ITextFieldState);
+    } else {
+      let currentValidation: number = ++this._lastValidation;
 
-        result.then(
-          (errorMessage: string) => this._setErrorMessage(currentValidation, errorMessage)
-        );
-      }
-    }
-  }
-
-  private _setErrorMessage(currentValidation: number, errorMessage: string): void {
-    if (this._isMounted && currentValidation === this._lastValidation) {
-      this.setState({ errorMessage } as ITextFieldState);
+      result.then((errorMessage: string) => {
+        if (this._isMounted && currentValidation === this._lastValidation) {
+          this.setState({ errorMessage } as ITextFieldState);
+        }
+      });
     }
   }
 }
