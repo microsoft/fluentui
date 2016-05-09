@@ -164,7 +164,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
     let { onGetErrorMessage } = this.props;
 
     if (onGetErrorMessage) {
-      let result: string | Promise<any> = onGetErrorMessage(value);
+      let result: string | PromiseLike<string> = onGetErrorMessage(value);
 
       if (typeof result === 'string') {
         this.setState({

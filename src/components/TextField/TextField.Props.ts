@@ -54,7 +54,7 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement> {
    *   - The rejected, the value is thrown away.
    *
    */
-  onGetErrorMessage?: (value: string) => string | Promise<string>;
+  onGetErrorMessage?: (value: string) => string | PromiseLike<string>;
 
   /**
    * Aria Label for textfield, if any.
