@@ -26,7 +26,7 @@ describe('DateMath', () => {
     expect(result.getTime(), result.toDateString()).to.be.equal(expected.getTime());
   });
 
-  it('can add days across a month boundry', () => {
+  it('can add days across a month boundary', () => {
     let startDate = new Date(2016, Months.Mar, 30);
     let result = DateMath.addDays(startDate, 5);
     let expected = new Date(2016, Months.Apr, 4);
@@ -34,7 +34,7 @@ describe('DateMath', () => {
     expect(result.getTime(), result.toDateString()).to.be.equal(expected.getTime());
   });
 
-  it('can add days across multiple month boundries', () => {
+  it('can add days across multiple month boundaries', () => {
     let startDate = new Date(2016, Months.Mar, 31);
     let result = DateMath.addDays(startDate, 65);
     let expected = new Date(2016, Months.Jun, 4);
@@ -42,7 +42,7 @@ describe('DateMath', () => {
     expect(result.getTime(), result.toDateString()).to.be.equal(expected.getTime());
   });
 
-  it('can add days across leap day boundries', () => {
+  it('can add days across leap day boundaries', () => {
     let startDate = new Date(2016, Months.Feb, 28);
     let result = DateMath.addDays(startDate, 2);
     let expected = new Date(2016, Months.Mar, 1);
@@ -142,7 +142,7 @@ describe('DateMath', () => {
     expect(result.getTime(), result.toDateString()).to.be.equal(expected.getTime());
   });
 
-  it('can subtract days across multiple month boundries', () => {
+  it('can subtract days across multiple month boundaries', () => {
     let startDate = new Date(2016, Months.Jul, 4);
     let result = DateMath.addDays(startDate, -65);
     let expected = new Date(2016, Months.Apr, 30);
@@ -150,7 +150,7 @@ describe('DateMath', () => {
     expect(result.getTime(), result.toDateString()).to.be.equal(expected.getTime());
   });
 
-  it('can subtract days across leap day boundries', () => {
+  it('can subtract days across leap day boundaries', () => {
     let startDate = new Date(2016, Months.Mar, 1);
     let result = DateMath.addDays(startDate, -2);
     let expected = new Date(2016, Months.Feb, 28);
