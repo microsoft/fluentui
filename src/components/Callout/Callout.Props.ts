@@ -43,6 +43,11 @@ export interface ICalloutProps extends React.Props<Callout>, IPositionProps {
    * @default null
    */
   className?: string;
+
+  /**
+   * Optional callback when the layer content has mounted.
+   */
+  onLayerMounted?: () => void;
 }
 
 export interface ILink {

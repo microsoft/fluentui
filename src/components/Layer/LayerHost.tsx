@@ -41,15 +41,13 @@ export default class LayerHost extends React.Component<React.Props<LayerHost>, I
   }
 
   public addLayer(layerToAdd: ILayer, onComplete?: () => void) {
-    this.setState((state: ILayerHostState) => {
-      let layers = state.layers.slice();
+    let { layers } = this.state;
 
-      layers.push(layerToAdd);
-
-      return {
-        layers: layers
-      };
-    }, onComplete);
+    this.setState({
+      layers: layers.concat(layers, [ layerToAdd ])
+    }, () => {
+      onComplete();
+    });
   }
 
   public updateLayer(layerToUpdate: ILayer) {

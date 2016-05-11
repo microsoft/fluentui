@@ -15,7 +15,7 @@ export interface ICalloutState {
   calloutElementRect?: ClientRect;
 }
 
-export default class Callout extends React.Component<ICalloutProps, ICalloutState> {
+export class Callout extends React.Component<ICalloutProps, ICalloutState> {
 
   public static defaultProps = {
     isBeakVisible: true,
@@ -92,5 +92,11 @@ export default class Callout extends React.Component<ICalloutProps, ICalloutStat
         });
       }
     }
+    if (this.props.onLayerMounted) {
+      this.props.onLayerMounted();
+    }
   }
+
 }
+
+export default Callout;

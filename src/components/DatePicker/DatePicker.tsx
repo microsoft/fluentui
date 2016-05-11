@@ -3,7 +3,6 @@ import TextField from '../TextField/index';
 import DatePickerDay from './DatePickerDay';
 import DatePickerMonth from './DatePickerMonth';
 import KeyCodes from '../../utilities/KeyCodes';
-import { css } from '../../utilities/css';
 import { IDatePickerProps, DayOfWeek } from './DatePicker.Props';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
 
@@ -34,7 +33,7 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
     [key: string]: React.ReactInstance;
     root: HTMLElement;
     textField: TextField;
-    picker: HTMLElement;
+    textFieldContainer: HTMLElement;
     dayPicker: DatePickerDay;
   };
 
@@ -89,49 +88,51 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
     let { isDatePickerShown, formattedDate, selectedDate, navigatedDate } = this.state;
 
     return (
-      <div className={ rootClass } ref='root' key='root'>
-        <TextField
-          onKeyDown={ this._onTextFieldKeyDown }
-          onFocus={ this._onTextFieldFocus }
-          onClick={ this._onTextFieldClick }
-          label={this.props.label}
-          placeholder={this.props.placeholder}
-          iconClass='ms-DatePicker-event ms-Icon ms-Icon--event'
-          readOnly={ true }
-          value={ formattedDate }
-          ref='textField' key='textField'>
-            {isDatePickerShown ? (
-              <div
-              className={ css('ms-DatePicker-picker ms-DatePicker-picker--opened', 'ms-DatePicker-picker--focused')}
-              key='picker' ref='picker'>
-                <div className='ms-DatePicker-holder'>
-                  <div className='ms-DatePicker-frame'>
-                    <div className='ms-DatePicker-wrap'>
-                      <DatePickerDay
-                        selectedDate={ selectedDate }
-                        navigatedDate={ navigatedDate }
-                        onSelectDate={ this._onSelectDate }
-                        onNavigateDate={ this._onNavigateDate }
-                        firstDayOfWeek={ firstDayOfWeek }
-                        strings={ strings }
-                        key='dayPicker' ref='dayPicker' />
-                      <DatePickerMonth
-                        navigatedDate={ navigatedDate }
-                        strings={ strings }
-                        onNavigateDate={ this._onNavigateDate } />
-                      <span
-                        className='ms-DatePicker-goToday js-goToday'
-                        onClick={ this._onGotoToday }
-                        onKeyDown={ this._onGotoTodayKeyDown }
-                        tabIndex={ 0 }>
-                        { strings.goToToday }
-                      </span>
-                    </div>
-                  </div>
+      <div className={ rootClass } ref='root'>
+        <div ref='textFieldContainer'>
+          <TextField
+            onKeyDown={ this._onTextFieldKeyDown }
+            onFocus={ this._onTextFieldFocus }
+            onClick={ this._onTextFieldClick }
+            label={this.props.label}
+            placeholder={this.props.placeholder}
+            iconClass='ms-DatePicker-event ms-Icon ms-Icon--event'
+            readOnly={ true }
+            value={ formattedDate }
+            ref='textField' />
+        </div>
+
+          { isDatePickerShown && (
+          <div
+            className='ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused'
+            >
+            <div className='ms-DatePicker-holder'>
+              <div className='ms-DatePicker-frame'>
+                <div className='ms-DatePicker-wrap'>
+                  <DatePickerDay
+                    selectedDate={ selectedDate }
+                    navigatedDate={ navigatedDate }
+                    onSelectDate={ this._onSelectDate }
+                    onNavigateDate={ this._onNavigateDate }
+                    firstDayOfWeek={ firstDayOfWeek }
+                    strings={ strings }
+                    ref='dayPicker' />
+                  <DatePickerMonth
+                    navigatedDate={ navigatedDate }
+                    strings={ strings }
+                    onNavigateDate={ this._onNavigateDate } />
+                  <span
+                    className='ms-DatePicker-goToday js-goToday'
+                    onClick={ this._onGotoToday }
+                    onKeyDown={ this._onGotoTodayKeyDown }
+                    tabIndex={ 0 }>
+                    { strings.goToToday }
+                  </span>
                 </div>
               </div>
-            ) : null}
-          </TextField>
+            </div>
+          </div>
+          ) }
       </div>
     );
   }
