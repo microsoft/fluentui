@@ -30,7 +30,7 @@ export default class TextFieldErrorMessageExample extends React.Component<any, a
         />
         <TextField
           label='TextField with a Promise-based validator. Hint: the length of the input string must be less than 3.'
-          value='It should show an error message under this error message after render about 3 seconds.'
+          value='It should show an error message under this error message 5 seconds after render.'
           onGetErrorMessage={this._getErrorMessagePromise}
         />
       </div>
@@ -46,7 +46,7 @@ export default class TextFieldErrorMessageExample extends React.Component<any, a
   private _getErrorMessagePromise(value: string): Promise<string> {
     return new Promise((resolve) => {
       // resolve the promise after 3 second.
-      setTimeout(() => resolve(this._getErrorMessage(value)), 3000);
+      setTimeout(() => resolve(this._getErrorMessage(value)), 5000);
     });
   }
 }

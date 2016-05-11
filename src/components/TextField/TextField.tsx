@@ -21,7 +21,6 @@ let _instance: number = 0;
 
 export default class TextField extends React.Component<ITextFieldProps, ITextFieldState> {
   public static defaultProps: ITextFieldProps = {
-    value: '',
     multiline: false,
     underlined: false,
     onChanged: () => { /* noop */ },
@@ -67,7 +66,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
   }
 
   public componentWillReceiveProps(newProps: ITextFieldProps) {
-    if (newProps.value !== this.state.value) {
+    if (newProps.value !== this.props.value) {
       this.setState({
         value: newProps.value
       } as ITextFieldState);
@@ -124,7 +123,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
         value={ this.state.value }
         onChange={ this._onInputChange }
         className={ this._fieldClassName }
-      />
+        />
     );
   }
 
@@ -139,7 +138,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
         onChange={ this._onInputChange }
         className={ this._fieldClassName }
         aria-describedby={ this._descriptionId }
-      />
+        />
     );
   }
 
@@ -159,21 +158,22 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
 
   private _validate(value: string): void {
     let { onGetErrorMessage } = this.props;
+    let result: string | PromiseLike<string> = onGetErrorMessage(value || '');
 
-    let result: string | PromiseLike<string> = onGetErrorMessage(value);
+    if (result !== undefined) {
+      if (typeof result === 'string') {
+        this.setState({
+          errorMessage: result
+        } as ITextFieldState);
+      } else {
+        let currentValidation: number = ++this._lastValidation;
 
-    if (typeof result === 'string') {
-      this.setState({
-        errorMessage: result
-      } as ITextFieldState);
-    } else {
-      let currentValidation: number = ++this._lastValidation;
-
-      result.then((errorMessage: string) => {
-        if (this._isMounted && currentValidation === this._lastValidation) {
-          this.setState({ errorMessage } as ITextFieldState);
-        }
-      });
+        result.then((errorMessage: string) => {
+          if (this._isMounted && currentValidation === this._lastValidation) {
+            this.setState({ errorMessage } as ITextFieldState);
+          }
+        });
+      }
     }
   }
 }

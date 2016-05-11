@@ -305,7 +305,7 @@ export default class List extends React.Component<IListProps, IListState> {
   private _updatePages(items?: any[], startIndex?: number, renderCount?: number) {
     items = items || this.props.items;
     startIndex = startIndex || this.props.startIndex;
-    renderCount = renderCount || this._getRenderCount();
+    renderCount = renderCount || this._getRenderCount(items);
 
     // Rebuild current page measurements.
     this._updatePageMeasurements();
@@ -394,7 +394,7 @@ export default class List extends React.Component<IListProps, IListState> {
         }
 
         let itemsInPage = Math.min(itemsPerPage, endIndex - itemIndex);
-        let newPage = this._createPage(null, _slice(items, itemIndex, itemIndex + itemsInPage, null), itemIndex);
+        let newPage = this._createPage(null, items.slice(itemIndex, itemIndex + itemsInPage), itemIndex);
 
         newPage.clientRect = {
           top: pageTop,
@@ -446,8 +446,8 @@ export default class List extends React.Component<IListProps, IListState> {
     return this.props.itemsPerPage;
   }
 
-  private _getRenderCount() {
-    let { items, renderCount, startIndex } = this.props;
+  private _getRenderCount(items: any[]) {
+    let { renderCount, startIndex } = this.props;
 
     return renderCount || (items ? items.length - startIndex : 0);
   }
@@ -493,18 +493,6 @@ export default class List extends React.Component<IListProps, IListState> {
 
 function _areEqualSize(rect1: ClientRect, rect2: ClientRect) {
   return !!(rect1 && rect2 && rect1.width === rect2.width && rect1.height === rect2.height);
-}
-
-function _slice(array, index, endIndex, defaultValue) {
-  let newArray = [];
-
-  while (index < endIndex) {
-    let val = array[index++];
-
-    newArray.push(val === undefined ? defaultValue : val);
-  }
-
-  return newArray;
 }
 
 function _isContainedWithin(innerRect: ClientRect, outerRect: ClientRect): boolean {

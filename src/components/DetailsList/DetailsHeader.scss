@@ -97,7 +97,7 @@ $rowHeight: 36px;
     position: absolute;
     width: 16px;
     @include margin-left(-10px);
-    cursor: col-resize;
+    cursor: ew-resize;
     bottom: 0;
     top: 0;
     height: inherit;

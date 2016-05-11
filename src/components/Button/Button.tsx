@@ -26,7 +26,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState> 
     };
   }
 
-  public render() {
+  public render(): JSX.Element {
     let { buttonType, children, icon, description, ariaLabel } = this.props;
     let {labelId, descriptionId } = this.state;
 

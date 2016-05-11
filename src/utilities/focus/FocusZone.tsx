@@ -559,9 +559,11 @@ export default class FocusZone extends React.Component<IFocusZoneProps, {}> {
   private _isElementTabbable(element: HTMLElement): boolean {
     return (
       !!element &&
+      element.getAttribute &&
+      element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) !== 'false' &&
       (element.tagName === 'A' ||
         (element.tagName === 'BUTTON' && !(element as HTMLButtonElement).disabled) ||
-        (element.getAttribute && element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true')));
+        element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true'));
   }
 
   private _isElementFocusZone(element?: HTMLElement): boolean {

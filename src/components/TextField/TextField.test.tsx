@@ -174,6 +174,7 @@ describe('TextField', () => {
 
     it('should not render error message when no value is provided', () => {
       let actualValue: string = undefined;
+
       const renderedDOM: HTMLElement = renderIntoDocument(
         <TextField
           label='text-field-label'
