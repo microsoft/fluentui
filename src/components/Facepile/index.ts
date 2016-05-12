@@ -1,3 +1,3 @@
-export * from './FacePile.Props';
-export * from './FacePile';
-export { default as default } from './FacePile';
+export * from './Facepile.Props';
+export * from './Facepile';
+export { default as default } from './Facepile';

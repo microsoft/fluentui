@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  Facepile, IFacepileProps, PersonaInitialsColor
+Facepile, IFacepileProps, PersonaInitialsColor, IFacepilePersona
 } from '../../../../components/index';
 
 const facepileProps: IFacepileProps = {
@@ -17,7 +17,10 @@ const facepileProps: IFacepileProps = {
     {
       personaName: 'Marcus Laue',
       imageInitials: 'ML',
-      initialsColor: PersonaInitialsColor.purple
+      initialsColor: PersonaInitialsColor.purple,
+      data: 'Emp1234',
+      onClick: (persona: IFacepilePersona, ev: React.MouseEvent) =>
+        alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data)
     }
   ]
 };

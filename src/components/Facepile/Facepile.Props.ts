@@ -31,4 +31,16 @@ export interface IFacepilePersona {
    * @defaultvalue PersonaInitialsColor.blue
    */
   initialsColor?: PersonaInitialsColor;
+
+  /**
+   * If provided, persona will be rendered with cursor:pointer and the handler will be
+   * called on click.
+   */
+  onClick?: (persona: IFacepilePersona, ev: React.MouseEvent) => void;
+
+  /**
+   * Extra data - not used directly but can be handy for passing additional data to custom event
+   * handlers.
+   */
+  data?: any;
 }
