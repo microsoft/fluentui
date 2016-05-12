@@ -29,6 +29,21 @@ export interface IChoiceGroupOption {
   text: string;
 
   /**
+   * The src of image for choice field.
+   */
+  imageSrc?: string;
+
+  /**
+   * The src of image for choice field which is selected.
+   */
+  selectedImageSrc?: string;
+
+  /**
+   * The width and height of image for choice field.
+   */
+  imageSize?: { width: number, height: number };
+
+  /**
    * Whether the option is disabled or not.
    * @defaultvalue false
    */

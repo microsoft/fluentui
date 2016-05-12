@@ -1,2 +1,65 @@
 @import '../../common';
 @import "~office-ui-fabric/src/components/ChoiceField/ChoiceField";
+
+.ms-ChoiceField--image {
+  display: inline-block;
+  margin: 0 6px;
+
+  .ms-ChoiceField-field--image {
+    cursor: pointer;
+  }
+
+  .ms-ChoiceField-imageWrapper {
+    display: inline-block;
+    margin: 4px;
+    padding: 0px 23px;
+
+    .ms-Image {
+      margin-top: 6px;
+    }
+
+    .ms-Label {
+      margin: 10px 0 8px 0;
+      padding: 0;
+      text-align: center;
+      color: $ms-color-neutralPrimary;
+    }
+  }
+
+  .ms-ChoiceField-innerField {
+    position: relative;
+    border: 2px solid transparent;
+  }
+
+  .ms-ChoiceField-input:checked+.ms-ChoiceField-field--image .ms-ChoiceField-innerField {
+    border: 2px solid $ms-color-themePrimary;
+
+    .ms-ChoiceField-imageWrapper {
+      background-color: $ms-color-themeLighterAlt;
+    }
+
+    .ms-Label {
+      color: $ms-color-themePrimary;
+    }
+  }
+
+  .ms-ChoiceField-input:not(:checked)+.ms-ChoiceField-field--image .ms-ChoiceField-innerField:hover {
+    border: 2px solid $ms-color-neutralTertiaryAlt;
+
+    .ms-ChoiceField-imageWrapper {
+      background-color: $ms-color-neutralLighter;
+    }
+  }
+}
+
+.is-focusVisible .ms-ChoiceField-input:focus+.ms-ChoiceField-field--image .ms-ChoiceField-innerField:before {
+  content: '';
+
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  bottom: -4px;
+  left: -4px;
+
+  border: 1px solid $ms-color-neutralSecondaryAlt;
+}
