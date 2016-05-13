@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ContextualMenu, IContextualMenuItem } from '../../../../components/index';
+import { ContextualMenu, IContextualMenuItem } from '../../../../index';
 
 export interface IContextualMenuMultiselectExampleState {
   selection?: { [ key: string]: boolean };

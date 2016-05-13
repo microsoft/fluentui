@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   Dropdown
-} from '../../../../components/index';
+} from '../../../../index';
 import './Dropdown.Basic.Example.scss';
 
 export default class DropdownBasicExample extends React.Component<any, any> {

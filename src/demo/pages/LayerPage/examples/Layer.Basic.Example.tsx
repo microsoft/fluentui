@@ -2,7 +2,7 @@ import * as React from 'react';
 import './Layer.Basic.Example.scss';
 import {
   Layer
-} from '../../../../components/index';
+} from '../../../../index';
 
 export default class LayerBasicExample extends React.Component<any, any> {
   public render() {

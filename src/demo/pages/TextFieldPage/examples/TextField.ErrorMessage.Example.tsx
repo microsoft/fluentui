@@ -2,7 +2,7 @@ import 'es6-promise';
 import * as React from 'react';
 import {
   TextField
-} from '../../../../components/index';
+} from '../../../../index';
 
 export default class TextFieldErrorMessageExample extends React.Component<any, any> {
   public constructor(props: any) {

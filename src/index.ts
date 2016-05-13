@@ -1,8 +1,5 @@
-import { setBaseUrl } from './utilities/resources';
+export * from './office-ui-fabric-react-utilities';
+export * from './office-ui-fabric-react-base';
+export * from './office-ui-fabric-react-collections';
+export * from './office-ui-fabric-react-extended';
 
-setBaseUrl('./dist/');
-
-export * from './components/index';
-export * from './utilities/index';
-
-export { loadTheme } from 'load-themed-styles/lib/index';

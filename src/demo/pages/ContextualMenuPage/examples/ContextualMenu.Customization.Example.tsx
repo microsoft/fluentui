@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css } from '../../../../utilities/css';
-import { ContextualMenu } from '../../../../components/index';
+import { ContextualMenu } from '../../../../index';
 
 export default class ContextualMenuCustomizationExample extends React.Component<any, any> {
   public render() {

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   Button,
   Overlay
-} from '../../../../components/index';
+} from '../../../../index';
 
 import './Overlay.Basic.Example.scss';
 

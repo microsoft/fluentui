@@ -3,7 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import { FocusZone, Image } from '../../../../index';
-import { createArray } from '../../../../utilities/index';
+import { createArray } from '../../../../index';
 import './FocusZone.Photos.Example.scss';
 
 const PHOTOS = createArray(25, () => {

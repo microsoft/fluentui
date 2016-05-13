@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   SearchBox
-} from '../../../../components/index';
+} from '../../../../index';
 import './SearchBox.Small.Example.scss';
 
 export default class SearchBoxSmallExample extends React.Component<any, any> {

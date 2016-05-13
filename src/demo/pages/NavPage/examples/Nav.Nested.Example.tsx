@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   Nav
-} from '../../../../components/index';
+} from '../../../../index';
 
 export default class NavNestedExample extends React.Component<any, any> {
   public render() {

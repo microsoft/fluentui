@@ -3,7 +3,7 @@ import {
   Label,
   Spinner,
   SpinnerType
-} from '../../../../components/index';
+} from '../../../../index';
 import './Spinner.Basic.Example.scss';
 
 export default class BasicExample extends React.Component<any, any> {

@@ -4,7 +4,7 @@ import {
   Callout,
   Button,
   Link
-} from '../../../../components/index';
+} from '../../../../index';
 
 export interface ICalloutBaiscExampleState {
   isCalloutVisible?: boolean;

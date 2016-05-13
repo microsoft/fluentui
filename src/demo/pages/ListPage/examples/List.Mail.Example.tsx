@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   List
-} from '../../../../components/index';
+} from '../../../../index';
 import './List.Mail.Example.scss';
 import { createListItems } from '../../../utilities/data';
 

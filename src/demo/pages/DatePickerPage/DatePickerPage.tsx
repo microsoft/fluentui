@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   Link
-} from '../../../components/index';
+} from '../../../index';
 import {
   ExampleCard,
   PropertiesTableSet

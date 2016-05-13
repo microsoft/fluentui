@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   Label,
   Pivot
-} from '../../../../components/index';
+} from '../../../../index';
 
 export default class PivotBasicExample extends React.Component<any, any> {
   public render() {

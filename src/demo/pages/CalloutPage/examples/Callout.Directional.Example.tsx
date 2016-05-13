@@ -8,7 +8,7 @@ import {
   TextField,
   Dropdown,
   IDropdownOption
-} from '../../../../components/index';
+} from '../../../../index';
 
 export interface ICalloutDirectionalExampleState {
   isCalloutVisible?: boolean;

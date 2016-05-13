@@ -5,7 +5,7 @@ import {
   ElementType,
   Label,
   Checkbox
-} from '../../../../components/index';
+} from '../../../../index';
 import './Button.Basic.Example.scss';
 
 export interface IBasicButtonsExampleState {

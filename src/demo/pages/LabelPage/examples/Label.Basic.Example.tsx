@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   Label
-} from '../../../../components/index';
+} from '../../../../index';
 
 export default class LabelBasicExample extends React.Component<any, any> {
   public render() {

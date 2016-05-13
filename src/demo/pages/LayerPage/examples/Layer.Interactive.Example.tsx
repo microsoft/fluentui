@@ -4,7 +4,7 @@ import {
   ChoiceGroup,
   IChoiceGroupOption,
   Layer
-} from '../../../../components/index';
+} from '../../../../index';
 
 export interface ILayerInteractiveExampleState {
   contentType: string;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import AppState, { ExampleStatus } from '../../../components/App/AppState';
 import {
   Nav
-} from '../../../../components/index';
+} from '../../../../index';
 
 export default class NavBasicExample extends React.Component<any, any> {
   public render() {

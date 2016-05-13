@@ -6,7 +6,7 @@ import {
   Button,
   ButtonType,
   ChoiceGroup
-} from '../../../../components/index';
+} from '../../../../index';
 
 export default class DialogBlockingExample extends React.Component<any, any> {
 

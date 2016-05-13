@@ -3,7 +3,7 @@ import {
   Panel,
   PanelType,
   Button
-} from '../../../../components/index';
+} from '../../../../index';
 
 export default class PanelLargeFixedExample extends React.Component<any, any> {
 

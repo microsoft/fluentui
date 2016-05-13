@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   CommandBar
-} from '../../../../components/index';
+} from '../../../../index';
 import { items, overflowItems } from './data';
 
 export default class CommandBarFixedOverflowExample extends React.Component<any, any> {

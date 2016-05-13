@@ -3,7 +3,7 @@ import {
   Fabric,
   TextField,
   List
-} from '../../../../components/index';
+} from '../../../../index';
 import { createListItems } from '../../../utilities/data';
 import './List.Basic.Example.scss';
 

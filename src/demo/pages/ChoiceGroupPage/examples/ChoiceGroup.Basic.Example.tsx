@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   ChoiceGroup,
   IChoiceGroupOption
-} from '../../../../components/index';
+} from '../../../../index';
 
 /**
  * Interface for ChoiceGroupBasicExample state.

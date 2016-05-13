@@ -1,10 +1,18 @@
 import * as React from 'react';
-import { FocusZone, FocusZoneDirection } from '../../../utilities/focus/index';
-import { default as ContextualMenu, IContextualMenuItem } from '../../../components/ContextualMenu/index';
-import { getRTL, setRTL } from '../../../utilities/rtl';
+import { } from '../../../utilities/rtl';
 import './Header.scss';
-import { withResponsiveMode, ResponsiveMode } from '../../../utilities/decorators/withResponsiveMode';
-import { DirectionalHint } from '../../../components/index';
+import { } from '../../../utilities/decorators/withResponsiveMode';
+import {
+  ContextualMenu,
+  DirectionalHint,
+  FocusZone,
+  FocusZoneDirection,
+  IContextualMenuItem,
+  ResponsiveMode,
+  getRTL,
+  setRTL,
+  withResponsiveMode
+  } from '../../../index';
 
 export interface IHeaderProps {
   title: string;

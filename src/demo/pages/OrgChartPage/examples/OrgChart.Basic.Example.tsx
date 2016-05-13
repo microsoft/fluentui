@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   OrgChart
-} from '../../../../components/index';
+} from '../../../../index';
 
 export default class OrgChartBasicExample extends React.Component<any, any> {
   public render() {

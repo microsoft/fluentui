@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CommandBar } from '../../../../components/index';
+import { CommandBar } from '../../../../index';
 import { items, farItems } from './data';
 
 export default class CommandBarBasicExample extends React.Component<any, any> {

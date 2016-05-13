@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ProgressIndicator
-} from '../../../../components/index';
+} from '../../../../index';
 
 export interface IProgressIndicatorBasicExampleState {
     percentComplete: number;

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import {
   Toggle
-} from '../../../../components/index';
+} from '../../../../index';
 
 export interface IToggleBasicExampleState {
   isToggled: boolean;

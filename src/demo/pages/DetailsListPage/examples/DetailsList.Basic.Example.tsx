@@ -14,7 +14,7 @@ import {
   Link,
   TextField,
   buildColumns
-} from '../../../../components/index';
+} from '../../../../index';
 import { SelectionMode } from '../../../../utilities/selection/interfaces';
 import { createListItems, isGroupable } from '../../../utilities/data';
 import './DetailsList.Basic.Example.scss';

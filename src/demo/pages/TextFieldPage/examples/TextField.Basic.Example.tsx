@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   TextField
-} from '../../../../components/index';
+} from '../../../../index';
 
 export default class TextFieldBasicExample extends React.Component<any, any> {
   public render() {

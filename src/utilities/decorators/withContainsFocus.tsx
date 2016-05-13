@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Async from '../Async/Async';
 
-export default function withContainsFocus<P, S>(ComposedComponent: any): any {
+export function withContainsFocus<P, S>(ComposedComponent: any): any {
 
   return class WithContainsFocusComponent extends React.Component<P, any> {
     public refs: {
@@ -62,3 +62,5 @@ export default function withContainsFocus<P, S>(ComposedComponent: any): any {
   };
 
 }
+
+export default withContainsFocus;

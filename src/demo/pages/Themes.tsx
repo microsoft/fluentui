@@ -4,7 +4,7 @@ import { loadTheme } from 'load-themed-styles';
 import {
   DetailsList,
   DetailsListLayoutMode as LayoutMode
-} from '../../components/index';
+} from '../../index';
 import { SelectionMode } from '../../utilities/selection/interfaces';
 import ColorPicker from '../../components/ColorPicker/index';
 

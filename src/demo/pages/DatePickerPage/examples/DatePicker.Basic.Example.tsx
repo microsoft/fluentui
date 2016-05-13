@@ -4,7 +4,7 @@ import {
   DayOfWeek,
   Dropdown,
   IDropdownOption
-} from '../../../../components/index';
+} from '../../../../index';
 
 const DayPickerStrings = {
   months: [

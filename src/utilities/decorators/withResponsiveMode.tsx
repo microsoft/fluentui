@@ -1,11 +1,6 @@
 import * as React from 'react';
 import EventGroup from '../eventGroup/EventGroup';
 
-export interface IViewport {
-  width: number;
-  height: number;
-}
-
 export interface IWithResponsiveModeState {
   responsiveMode?: ResponsiveMode;
 }

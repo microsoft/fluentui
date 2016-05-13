@@ -31,7 +31,7 @@ export interface IPersonaProps extends React.Props<Persona> {
 
   /**
    * Presence of the person to display - will not display presence if undefined.
-   * @defaultvalue undefined
+   * @defaultvalue PersonaPresence.none
    */
   presence?: PersonaPresence;
 
@@ -71,6 +71,7 @@ export enum PersonaSize {
 }
 
 export enum PersonaPresence {
+  none,
   offline,
   online,
   away,

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   DocumentCard
-} from '../../../../components/index';
+} from '../../../../index';
 import DocumentCardActions from '../../../../components/DocumentCard/DocumentCardActions';
 import DocumentCardEntity from '../../../../components/DocumentCard/DocumentCardEntity';
 import DocumentCardLocation from '../../../../components/DocumentCard/DocumentCardLocation';

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   Fabric,
   Panel,
-} from '../../../components/index';
+} from '../../../index';
 import {
   Header
 } from '../index';

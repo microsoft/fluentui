@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   Checkbox
-  } from '../../../../components/index';
+  } from '../../../../index';
 
 export default class CheckboxBasicExample extends React.Component<any, any> {
   constructor() {

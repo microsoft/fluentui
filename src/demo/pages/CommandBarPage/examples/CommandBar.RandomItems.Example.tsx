@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   CommandBar,
   IContextualMenuItem
-} from '../../../../components/index';
+} from '../../../../index';
 import { items, farItems } from './data';
 
 export interface IChangingItemsCommandBarState {

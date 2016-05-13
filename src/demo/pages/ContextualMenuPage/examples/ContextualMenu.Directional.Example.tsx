@@ -7,7 +7,7 @@ import {
   Dropdown,
   TextField,
   IDropdownOption
- } from '../../../../components/index';
+ } from '../../../../index';
 import './ContextualMenuExample.scss';
 
 export interface IContextualMenuDirectionalExampleState {

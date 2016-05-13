@@ -1,7 +1,10 @@
 import * as React from 'react';
 import {
-Facepile, IFacepileProps, PersonaInitialsColor, IFacepilePersona
-} from '../../../../components/index';
+  Facepile,
+  IFacepilePersona,
+  IFacepileProps,
+  PersonaInitialsColor
+} from '../../../../index';
 
 const facepileProps: IFacepileProps = {
   personas: [

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   Panel,
   Button
-} from '../../../../components/index';
+} from '../../../../index';
 
 export default class PanelLightDismissExample extends React.Component<any, any> {
 
