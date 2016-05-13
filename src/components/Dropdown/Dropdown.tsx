@@ -124,7 +124,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
     }
   }
 
-  private _getSelectedIndex(options: IDropdownOption[], selectedKey: string) {
+  private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number) {
     return findIndex(options, (option => (option.isSelected || selectedKey && option.key === selectedKey)));
   }
 

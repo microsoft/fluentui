@@ -12,7 +12,7 @@ export interface IDropdownProps {
   /**
    * The key of the initially selected option
    */
-  selectedKey?: string;
+  selectedKey?: string | number;
 
   /**
    * Collection of options for this Dropdown
@@ -34,7 +34,7 @@ export interface IDropdownOption {
   /**
    * Arbitrary string associated with this option.
    */
-  key: string;
+  key: string | number;
 
   /**
    * Text to render for this option
