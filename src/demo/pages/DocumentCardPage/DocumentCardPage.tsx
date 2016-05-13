@@ -15,6 +15,7 @@ export default class DocumentCardPage extends React.Component<any, any> {
     return (
       <div>
         <h1 className='ms-font-xxl'>DocumentCard</h1>
+        <div>A card representation of a document. Can be configured with various card parts, including a preview, title, and location.</div>
         <h2 className='ms-font-xl'>Examples</h2>
         <ExampleCard title='DocumentCard Basic' code={ DocumentCardBasicExampleCode }>
           <DocumentCardBasicExample />

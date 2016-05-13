@@ -1,18 +1,18 @@
 @import '../../common';
 
-.ms-DocumentCard-preview {
-  border-bottom: 4px solid $ms-color-neutralTertiary;
+.ms-DocumentCardPreview {
+  border-bottom: 2px solid $ms-color-neutralTertiary;
   position: relative;
 }
 
-.ms-DocumentCard-preview-image {
+.ms-DocumentCardPreview-image {
   display: block;
   height: auto;
   width: 100%;
 }
 
-.ms-DocumentCard-preview-icon {
-  @include left(0);
-  bottom: 6px;
+.ms-DocumentCardPreview-icon {
+  @include left(10px);
+  bottom: 10px;
   position: absolute;
 }

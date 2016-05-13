@@ -3,38 +3,32 @@ import DocumentCard from './DocumentCard';
 import DocumentCardTitle from './DocumentCardTitle';
 import DocumentCardPreview from './DocumentCardPreview';
 import DocumentCardLocation from './DocumentCardLocation';
-import DocumentCardEntity from './DocumentCardLocation';
+import DocumentCardActivity from './DocumentCardLocation';
 import DocumentCardActions from './DocumentCardActions';
 
 export interface IDocumentCardProps extends React.Props<DocumentCard> {
   /**
-   * The width of the card in pixels. If not specified, it will adapt to fit
-   * its container with a minimum width of 206px and a maximum of 320px.
+   * Function to call when the card is clicked.
    */
-  width?: Number;
-
-  /**
-   * A function to call when the card is clicked.
-   */
-  onClickFunction?: (ev?: any) => void;
+  onClick?: (ev?: any) => void;
 
   /**
    * A URL to navigate to when the card is clicked. If a function has also been provided,
    * it will be used instead of the URL.
    */
-  onClickURL?: string;
+  onClickHref?: string;
 }
 
 export interface IDocumentCardPreviewProps extends React.Props<DocumentCardPreview> {
   /**
    * Path to the preview image.
    */
-  previewImagePath: string;
+  previewImageSrc: string;
 
   /**
-   * Path to the icon.
+   * Path to the icon associated with this document type.
    */
-  iconPath?: string;
+  iconSrc?: string;
 
   /**
    * Hex color value of the line below the preview, which should correspond to the document type.
@@ -47,42 +41,48 @@ export interface IDocumentCardTitleProps extends React.Props<DocumentCardTitle> 
    * Title text.
    */
   title: string;
+
+  /**
+   * Whether we truncate the title to fit within the box. May have a performance impact.
+   * @defaultvalue true
+   */
+  shouldTruncate?: boolean;
 }
 
 export interface IDocumentCardLocationProps extends React.Props<DocumentCardLocation> {
   /**
-   * Location of the document.
+   * Text for the location of the document.
    */
   location: string;
 
   /**
    * URL to navigate to for this location.
    */
-  locationURL: string;
+  locationHref: string;
 }
 
-export interface IDocumentCardEntityProps extends React.Props<DocumentCardEntity> {
+export interface IDocumentCardActivityProps extends React.Props<DocumentCardActivity> {
   /**
-   * Path to the image for this entity, such as a profile image.
+   * Describes the activity that has taken place, such as "Created Feb 23, 2016".
    */
-  imagePath: string;
+  activity: string;
 
   /**
-   * One to three lines of detail text for this entity.
+   * One or more people who are involved in this activity.
    */
-  details: IDocumentCardEntityDetail[];
+  people: IDocumentCardActivityPerson[];
 }
 
-export interface IDocumentCardEntityDetail {
+export interface IDocumentCardActivityPerson {
   /**
-   * The text of the detail.
+   * The name of the person.
    */
-  text: string;
+  name: string;
 
   /**
-   * Specifies if the text should be presented in bold.
+   * Path to the profile photo of the person.
    */
-  isBold?: boolean;
+  profileImageSrc: string;
 }
 
 export interface IDocumentCardActionsProps extends React.Props<DocumentCardActions> {
@@ -106,5 +106,5 @@ export interface IDocumentCardAction {
   /**
    * Function to run when clicking the action.
    */
-  onClickFunction?: (ev?: any) => void;
+  onClick?: (ev?: any) => void;
 }

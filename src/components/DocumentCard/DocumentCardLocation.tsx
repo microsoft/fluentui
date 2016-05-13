@@ -4,10 +4,10 @@ import './DocumentCardLocation.scss';
 
 export default class DocumentCardTitle extends React.Component<IDocumentCardLocationProps, any> {
   public render() {
-    let { location, locationURL } = this.props;
+    let { location, locationHref } = this.props;
 
     return (
-      <a className='ms-DocumentCard-location' href={ locationURL }>{ location }</a>
+      <a className='ms-DocumentCardLocation' href={ locationHref }>{ location }</a>
     );
   }
 }

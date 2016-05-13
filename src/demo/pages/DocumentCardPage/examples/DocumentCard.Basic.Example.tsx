@@ -2,25 +2,24 @@ import * as React from 'react';
 import {
   DocumentCard
 } from '../../../../index';
-import DocumentCardEntity from '../../../../components/DocumentCard/DocumentCardEntity';
+import DocumentCardActivity from '../../../../components/DocumentCard/DocumentCardActivity';
 import DocumentCardPreview from '../../../../components/DocumentCard/DocumentCardPreview';
 import DocumentCardTitle from '../../../../components/DocumentCard/DocumentCardTitle';
 
 export default class DocumentCardBasicExample extends React.Component<any, any> {
   public render() {
     return (
-        <DocumentCard onClickURL='http://bing.com' width={ 236 }>
+        <DocumentCard onClickHref='http://bing.com'>
           <DocumentCardPreview
-            previewImagePath='dist/document-preview.png'
-            iconPath='dist/icon-ppt.png'
+            previewImageSrc='dist/document-preview.png'
+            iconSrc='dist/icon-ppt.png'
             accentColor='#ce4b1f'/>
-          <DocumentCardTitle title='Revenue stream proposal fiscal year 2016 version02'/>
-          <DocumentCardEntity
-            imagePath='dist/avatar-kat.png'
-            details={
+          <DocumentCardTitle title='Revenue stream proposal fiscal year 2016 version02.pptx'/>
+          <DocumentCardActivity
+            activity='Created Feb 23, 2016'
+            people={
               [
-                { text: 'Kat Larrson', isBold: true },
-                { text: 'Created Feb 23, 2016' }
+                { name: 'Kat Larrson', profileImageSrc: 'dist/avatar-kat.png' }
               ]
             }
           />

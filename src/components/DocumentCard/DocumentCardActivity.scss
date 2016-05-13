@@ -1,0 +1,54 @@
+@import '../../common';
+
+$ms-DocumentCardActivity-horizontalPadding: 16px;
+$ms-DocumentCardActivity-imageSize: 25px;
+$ms-DocumentCardActivity-verticalPadding: 8px;
+$ms-DocumentCardActivity-personaTextGutter: 8px;
+
+.ms-DocumentCardActivity {
+  padding: $ms-DocumentCardActivity-verticalPadding $ms-DocumentCardActivity-horizontalPadding;
+  position: relative;
+}
+
+.ms-DocumentCardActivity--multiplePeople {
+  .ms-DocumentCardActivity-avatar:nth-of-type(2) {
+    @include margin-left(-16px);
+  }
+
+  .ms-DocumentCardActivity-details {
+    @include left($ms-DocumentCardActivity-horizontalPadding + ($ms-DocumentCardActivity-imageSize * 1.5) + $ms-DocumentCardActivity-personaTextGutter);
+  }
+}
+
+.ms-DocumentCardActivity-avatars {
+  @include margin-left(-2px); // Avatars sit outside of the usual padding for visual balance
+}
+
+.ms-DocumentCardActivity-avatar {
+  border: 2px solid #fafafa; // Match the background of the card
+  border-radius: 50%;
+  height: $ms-DocumentCardActivity-imageSize;
+  width: $ms-DocumentCardActivity-imageSize;
+}
+
+.ms-DocumentCardActivity-details {
+  @include left($ms-DocumentCardActivity-horizontalPadding + $ms-DocumentCardActivity-imageSize + $ms-DocumentCardActivity-personaTextGutter);
+  @include margin-right($ms-DocumentCardActivity-horizontalPadding + $ms-DocumentCardActivity-imageSize + $ms-DocumentCardActivity-personaTextGutter); // Keeps text from running outside of card
+  height: $ms-DocumentCardActivity-imageSize;
+  position: absolute;
+  top: $ms-DocumentCardActivity-verticalPadding;
+}
+
+.ms-DocumentCardActivity-name,
+.ms-DocumentCardActivity-activity {
+  color: $ms-color-neutralSecondaryAlt;
+  display: block;
+  font-family: $ms-font-family-regular;
+  font-size: $ms-font-size-s;
+  line-height: 14px;
+}
+
+.ms-DocumentCardActivity-name {
+  color: $ms-color-neutralPrimary;
+  font-family: $ms-font-family-semibold;
+}

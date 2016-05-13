@@ -6,9 +6,16 @@
   box-sizing: border-box;
   max-width: 320px;
   min-width: 206px;
+  transition: box-shadow 0.167s;
   user-select: none;
 }
 
 .ms-DocumentCard--actionable:hover {
+  box-shadow: 0 0 8px 0 rgba(50, 50, 50, 0.2);
   cursor: pointer;
+}
+
+// When a DocumentCardTitle follows a DocumentCardLocation, we want to reduce the padding
+.ms-DocumentCardLocation + .ms-DocumentCardTitle {
+  padding-top: 4px;
 }

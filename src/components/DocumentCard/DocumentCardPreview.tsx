@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { IDocumentCardPreviewProps } from './DocumentCard.Props';
 import './DocumentCardPreview.scss';
+import Image from '../Image/Image';
 
 export default class DocumentCardTitle extends React.Component<IDocumentCardPreviewProps, any> {
   public render() {
-    let { previewImagePath, iconPath, accentColor } = this.props;
+    let { previewImageSrc, iconSrc, accentColor } = this.props;
 
     let icon;
-    if (iconPath) {
-      icon = <img className='ms-DocumentCard-preview-icon' src={ iconPath }/>;
+    if (iconSrc) {
+      icon = <Image className='ms-DocumentCardPreview-icon' src={ iconSrc }/>;
     }
 
     let style;
@@ -19,8 +20,8 @@ export default class DocumentCardTitle extends React.Component<IDocumentCardPrev
     }
 
     return (
-      <div className='ms-DocumentCard-preview' style={ style }>
-        <img className='ms-DocumentCard-preview-image' src={ previewImagePath }/>
+      <div className='ms-DocumentCardPreview' style={ style }>
+        <Image className='ms-DocumentCardPreview-image' src={ previewImageSrc }/>
         { icon }
       </div>
     );

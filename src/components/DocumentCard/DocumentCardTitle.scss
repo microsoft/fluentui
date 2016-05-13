@@ -1,9 +1,13 @@
 @import '../../common';
 
-.ms-DocumentCard-title {
+.ms-DocumentCardTitle {
+  padding: 8px 16px;
   color: $ms-color-neutralPrimary;
   display: block;
   font-family: $ms-font-family-regular;
   font-size: 16px;
-  padding: 8px 16px;
+  height: 36px; // Two lines of text, making sure the third line is hidden
+  line-height: 20px;
+  overflow: hidden;
+  word-wrap: break-word;
 }
