@@ -10,7 +10,7 @@ const PARENT_SIZE_NORMAL = 20;
 const OFFSET_SIZE_LARGE = 0.179;
 const OFFSET_SIZE_NORMAL = 0.2;
 
-export default class Spinner extends React.Component<ISpinnerProps, any> {
+export class Spinner extends React.Component<ISpinnerProps, any> {
   public static defaultProps: ISpinnerProps = {
     type: SpinnerType.normal
   };
@@ -53,3 +53,4 @@ export default class Spinner extends React.Component<ISpinnerProps, any> {
   }
 }
 
+export default Spinner;

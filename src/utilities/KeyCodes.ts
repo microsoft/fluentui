@@ -11,7 +11,9 @@ export enum KeyCodes {
   right = 39,
   space = 32,
   tab = 9,
-  up = 38
+  up = 38,
+  backspace = 8,
+  del = 46
 }
 
 export default KeyCodes;

@@ -4,12 +4,20 @@ import {
 } from '../../../index';
 import {
   ExampleCard,
-  PropertiesTable
+  PropertiesTableSet
 } from '../../components/index';
-import PeoplePickerProps from './PeoplePickerProps';
 
 import PeoplePickerBasicExample from './examples/PeoplePicker.Basic.Example';
 let PeoplePickerBasicExampleCode = require('./examples/PeoplePicker.Basic.Example.tsx');
+
+import PeoplePickerCompactExample from './examples/PeoplePicker.Compact.Example';
+let PeoplePickerCompactExampleCode = require('./examples/PeoplePicker.Compact.Example.tsx');
+
+import PeoplePickerDisconnectedExample from './examples/PeoplePicker.Disconnected.Example';
+let PeoplePickerDisconnectedExampleCode = require('./examples/PeoplePicker.Disconnected.Example.tsx');
+
+import PeoplePickerMemberListExample from './examples/PeoplePicker.MemberList.Example';
+let PeoplePickerMemberListExampleCode = require('./examples/PeoplePicker.MemberList.Example.tsx');
 
 export default class PeoplePickerExample extends React.Component<any, any> {
   public render() {
@@ -24,7 +32,16 @@ export default class PeoplePickerExample extends React.Component<any, any> {
         <ExampleCard title='PeoplePicker' code={ PeoplePickerBasicExampleCode }>
           <PeoplePickerBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ PeoplePickerProps } />
+        <ExampleCard title='PeoplePicker - Compact' code={ PeoplePickerCompactExampleCode }>
+          <PeoplePickerCompactExample />
+        </ExampleCard>
+        <ExampleCard title='PeoplePicker - Disconnected' code={ PeoplePickerDisconnectedExampleCode }>
+          <PeoplePickerDisconnectedExample />
+        </ExampleCard>
+        <ExampleCard title='PeoplePicker - Member List' code={ PeoplePickerMemberListExampleCode }>
+          <PeoplePickerMemberListExample />
+        </ExampleCard>
+        <PropertiesTableSet componentName='PeoplePicker' />
       </div>
     );
   }

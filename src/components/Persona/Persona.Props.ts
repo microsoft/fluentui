@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Persona } from './Persona';
 
-export interface IPersonaProps extends React.Props<Persona> {
+export interface IPersonaProps extends React.HTMLProps<Persona> {
   /**
    * Primary text to display, usually the name of the person.
    */

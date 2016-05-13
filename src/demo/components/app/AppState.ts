@@ -169,7 +169,7 @@ export const AppState: IAppState = {
         {
           component: PeoplePickerPage,
           name: 'PeoplePicker',
-          status: ExampleStatus.placeholder,
+          status: ExampleStatus.started,
           url: '#/examples/peoplepicker'
         },
         {

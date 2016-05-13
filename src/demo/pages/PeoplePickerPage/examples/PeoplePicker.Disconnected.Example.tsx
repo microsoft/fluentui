@@ -7,8 +7,7 @@ import {
 export interface IPeoplePickerExampleState {
   suggestions?: Array<IPersonaProps>;
 }
-
-export default class PeoplePickerBasicExample extends React.Component<any, IPeoplePickerExampleState> {
+export default class PeoplePickerDisconnectedExample extends React.Component<any, IPeoplePickerExampleState> {
   private _peopleList = [
     {
       imageUrl: '//www.fillmurray.com/200/200',
@@ -75,10 +74,11 @@ export default class PeoplePickerBasicExample extends React.Component<any, IPeop
     return (
       <PeoplePicker
         suggestions={ suggestions }
-        searchCategoryName={ 'Suggested Contacts' }
+        searchCategoryName={ 'Top Results' }
         onSearchFieldChanged={ this._onFilterChanged }
         onRemoveSuggestion={ this._onRemoveSuggestion }
-        primarySearchText='Showing top results'
+        isConnected={ false }
+        primarySearchText='Showing top 5 results'
         secondarySearchText='Search Contacts & Directory'
         disconnectedText='We are having trouble connecting to the server.<br>Please try again in a few minutes.'
       />

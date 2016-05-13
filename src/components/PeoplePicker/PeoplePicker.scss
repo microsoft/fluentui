@@ -1,0 +1,67 @@
+@import '../../common';
+
+//== Modifier: Persona with darker text
+//
+// Note: Typically applied when the component has a colored background.
+.ms-Persona.ms-Persona--darkText {
+  .ms-Persona-primaryText {
+    color: $ms-color-neutralDark;
+  }
+
+  .ms-Persona-secondaryText,
+  .ms-Persona-tertiaryText,
+  .ms-Persona-optionalText {
+    color: $ms-color-neutralPrimary;
+  }
+}
+
+@import "~office-ui-fabric/src/components/PeoplePicker/PeoplePicker";
+
+.ms-PeoplePicker-searchBox {
+  min-height: 42px; // this is accounting for the border. Actual inner height is 40px;
+}
+
+// Make the search box a flex container, so that the searchfield input
+// will take up the entire remaining width of the search box
+// without needing to constantly resize it manually.
+.ms-PeoplePicker-searchBox > .ms-FocusZone{
+  flex-flow: row wrap;
+  display: flex;
+  align-items: stretch;
+}
+
+.ms-PeoplePicker-searchField {
+  flex: 1;
+  min-width: 200px;
+}
+
+.ms-PeoplePicker-persona {
+  display: inline-flex;
+
+  // replace margin with padding, so that this container works
+  // better with the Focus Zone. However, that requires us to
+  // use a sub container element for the focus styling.
+  margin: 0px;
+  padding: 4px;
+  
+  &:focus {
+    .ms-PeoplePicker-personaContent {
+      outline: 2px solid $ms-color-themePrimary;
+    }
+  }
+}
+
+// The search more area may be in a disconnected state.
+.ms-PeoplePicker-searchMore.ms-PeoplePicker-searchMore--disconnected {
+  // Primary text
+  .ms-PeoplePicker-searchMorePrimary {
+    top: 0;
+  }
+}
+
+//== Modifier: Selectable Persona
+//
+.ms-PeoplePicker-resultBtn--selected {
+  background-color: $ms-color-themeLighter;
+  outline: 1px solid transparent;
+}
