@@ -6,7 +6,10 @@ import { css } from '../../utilities/css';
 export interface ISearchBoxState {
   value?: string;
   hasFocus?: boolean;
+  id?: string;
 }
+
+let _instance: number = 0;
 
 export default class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState> {
   public static defaultProps: ISearchBoxProps = {
@@ -23,7 +26,8 @@ export default class SearchBox extends React.Component<ISearchBoxProps, ISearchB
 
     this.state = {
       value: props.value,
-      hasFocus: false
+      hasFocus: false,
+      id: `searchbox-${ _instance++ }`,
     };
     this._clearInput = this._clearInput.bind(this);
     this._onInputChanged = this._onInputChanged.bind(this);
@@ -41,15 +45,15 @@ export default class SearchBox extends React.Component<ISearchBoxProps, ISearchB
 
   public render() {
     let { labelText, className } = this.props;
-    let { value, hasFocus } = this.state;
+    let { value, hasFocus, id } = this.state;
 
     return (
       <div className={ css('ms-SearchBox', className, {
           'is-active': hasFocus
         })}
       >
-        { !hasFocus && !value ? <label className='ms-SearchBox-label'><i className='ms-SearchBox-icon ms-Icon ms-Icon--search'></i>{ labelText }</label> : null }
-        <input className='ms-SearchBox-field' onFocus={ this._onInputFocus } onBlur={ this._onInputBlur } onChange={ this._onInputChanged } value={value} ref='inputText' />
+        { !hasFocus && !value ? <label className='ms-SearchBox-label' htmlFor={id}><i className='ms-SearchBox-icon ms-Icon ms-Icon--search'></i>{ labelText }</label> : null }
+        <input id={id} className='ms-SearchBox-field' onFocus={ this._onInputFocus } onBlur={ this._onInputBlur } onChange={ this._onInputChanged } value={value} ref='inputText' />
         <button className='ms-SearchBox-closeButton' onMouseDown={ this._clearInput }><i className='ms-Icon ms-Icon--x'></i></button>
       </div>
     );
