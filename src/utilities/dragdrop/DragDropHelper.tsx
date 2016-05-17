@@ -4,7 +4,8 @@ import EventGroup from '../../utilities/eventGroup/EventGroup';
 import {
   IDragDropHelper,
   IDragDropTarget,
-  IDragDropOptions
+  IDragDropOptions,
+  IDragDropEvent
 } from './interfaces';
 import { ISelection } from '../../utilities/selection/interfaces';
 
@@ -71,15 +72,21 @@ export default class DragDropHelper implements IDragDropHelper {
         events.onAll(root, {
           'dragenter': (event: DragEvent) => {
             event.preventDefault(); // needed for IE
-            this._dragEnterCounts[key]++;
-            if (this._dragEnterCounts[key] === 1) {
-              updateDropState(true /* isDropping */, event);
+            if (!(event as IDragDropEvent).isHandled) {
+              (event as IDragDropEvent).isHandled = true;
+              this._dragEnterCounts[key]++;
+              if (this._dragEnterCounts[key] === 1) {
+                updateDropState(true /* isDropping */, event);
+              }
             }
           },
           'dragleave': (event: DragEvent) => {
-            this._dragEnterCounts[key]--;
-            if (this._dragEnterCounts[key] === 0) {
-              updateDropState(false /* isDropping */, event);
+            if (!(event as IDragDropEvent).isHandled) {
+              (event as IDragDropEvent).isHandled = true;
+              this._dragEnterCounts[key]--;
+              if (this._dragEnterCounts[key] === 0) {
+                updateDropState(false /* isDropping */, event);
+              }
             }
           },
           'dragend': (event: DragEvent) => {

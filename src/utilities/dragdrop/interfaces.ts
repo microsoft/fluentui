@@ -37,3 +37,7 @@ export interface IDragDropOptions {
   canDrag?: (item?: any) => boolean;
   onDragStart?: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => void;
 }
+
+export interface IDragDropEvent {
+  isHandled?: boolean;
+}
