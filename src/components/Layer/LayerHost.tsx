@@ -46,7 +46,9 @@ export default class LayerHost extends React.Component<React.Props<LayerHost>, I
     this.setState({
       layers: layers.concat(layers, [ layerToAdd ])
     }, () => {
-      onComplete();
+      if (onComplete) {
+        onComplete();
+      }
     });
   }
 
