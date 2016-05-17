@@ -6,10 +6,12 @@ import { css } from '../../utilities/css';
 import { default as Spinner } from '../Spinner/index';
 import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
 import { IViewport } from '../../utilities/decorators/withViewport';
+import GroupSpacer from './GroupSpacer';
 
 export interface IGroupHeaderProps {
   group: IGroup;
   groupIndex: number;
+  groupLevel: number;
   headerProps?: IDetailsGroupHeaderProps;
   viewport?: IViewport;
 }
@@ -47,7 +49,7 @@ export default class GroupHeader extends React.Component<IGroupHeaderProps, IGro
   }
 
   public render() {
-    let { group, headerProps, viewport } = this.props;
+    let { group, groupLevel, headerProps, viewport } = this.props;
     let { isCollapsed, isLoadingVisible } = this.state;
     let showCheckBox = true;
     let isSelected = group && group.isSelected;
@@ -72,6 +74,8 @@ export default class GroupHeader extends React.Component<IGroupHeaderProps, IGro
               <Check isChecked={ isSelected } />
             </button>
           )}
+
+          { GroupSpacer({ count: groupLevel }) }
 
           <button className='ms-GroupHeader-expand' onClick={ this._onToggleCollapse }>
             <i className={ css('ms-Icon ms-Icon--chevronDown', {

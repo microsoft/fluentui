@@ -14,6 +14,7 @@ import {
 } from './../../utilities/dragdrop/interfaces';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import './DetailsRow.scss';
+import GroupSpacer from './GroupSpacer';
 
 export interface IDetailsRowProps extends React.Props<DetailsRow> {
   item: any;
@@ -26,7 +27,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   onWillUnmount?: (row?: DetailsRow) => void;
   dragDropEvents?: IDragDropEvents;
   dragDropHelper?: IDragDropHelper;
-  isGrouped?: boolean;
+  groupNestingDepth?: number;
   viewport?: IViewport;
 }
 
@@ -42,7 +43,7 @@ export interface IDetailsRowState {
     onMeasureDone: (measuredWidth: number) => void;
   };
   isDropping?: boolean;
-  isGrouped?: boolean;
+  groupNestingDepth?: number;
 }
 
 const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
@@ -67,7 +68,7 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
       selectionState: this._getSelectionState(props),
       columnMeasureInfo: null,
       isDropping: false,
-      isGrouped: props.isGrouped
+      groupNestingDepth: props.groupNestingDepth
     };
 
     this._hasSetFocus = false;
@@ -131,7 +132,7 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
   public componentWillReceiveProps(newProps: IDetailsRowProps) {
     this.setState({
       selectionState: this._getSelectionState(newProps),
-      isGrouped: newProps.isGrouped
+      groupNestingDepth: newProps.groupNestingDepth
     });
   }
 
@@ -144,7 +145,7 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
       selectionMode,
       viewport
     } = this.props;
-    let { selectionState: { isSelected }, columnMeasureInfo, isDropping, isGrouped } = this.state;
+    let { selectionState: { isSelected }, columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
     let isDraggable = Boolean(dragDropEvents && dragDropEvents.canDrag && dragDropEvents.canDrag(item));
     let droppingClassName = isDropping ? (this._droppingClassNames ? this._droppingClassNames : DEFAULT_DROPPING_CSS_CLASS) : '';
 
@@ -171,9 +172,7 @@ export default class DetailsRow extends React.Component<IDetailsRowProps, IDetai
             </button>
           ) }
 
-          { isGrouped && (
-            <span className='ms-DetailsRow-collapseGroupSpacer' />
-          ) }
+          { GroupSpacer({ count: groupNestingDepth }) }
 
           { item && (
             <DetailsRowFields

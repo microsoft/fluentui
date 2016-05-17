@@ -152,7 +152,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       layoutMode
     } = this.state;
     let { _selection: selection } = this;
-    let isGrouped = groups && groups.length > 0;
+    let groupNestingDepth = this._getGroupNestingDepth();
 
     if (!groups) {
       groups = [ null ];
@@ -176,6 +176,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           columns={ adjustedColumns }
           group={ group }
           groupIndex={ groupIndex }
+          groupNestingDepth={ groupNestingDepth }
           getGroupItemLimit={ groupProps && groupProps.getGroupItemLimit }
           selectionMode={ selectionMode }
           selection={ selection }
@@ -209,7 +210,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           columns={ adjustedColumns }
           onColumnResized={ this._onColumnResized }
           onColumnAutoResized={ this._onColumnAutoResized }
-          isGrouped={ isGrouped }
+          groupNestingDepth={ groupNestingDepth }
           isAllCollapsed={ isAllCollapsed }
           onToggleCollapseAll={ this._onToggleCollapseAll }
           ariaLabel={ ariaLabelForListHeader }
@@ -235,6 +236,19 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     return 'group-' + (group ?
       group.key + '-' + group.count :
       '');
+  }
+
+  private _getGroupNestingDepth(): number {
+    let { groups } = this.state;
+    let level = 0;
+    let groupsInLevel = groups;
+
+    while (groupsInLevel && groupsInLevel.length > 0) {
+      level++;
+      groupsInLevel = groupsInLevel[0].children;
+    }
+
+    return level;
   }
 
   private _onRowDidMount(row: DetailsRow) {
@@ -298,11 +312,26 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
   private _onToggleSelectGroup(group: IGroup) {
     let { groups } = this.state;
-    let { groupProps, items } = this.props;
-    // let group = groups ? groups[groupIndex] : null;
 
     if (group) {
       let isSelected = !group.isSelected;
+      this._selectGroup(group, isSelected);
+
+      this.setState({
+        groups: groups
+      });
+    }
+  }
+
+  private _selectGroup(group: IGroup, isSelected: boolean) {
+    let { groupProps, items } = this.props;
+
+    group.isSelected = isSelected;
+    if (group.children && group.children.length > 0) {
+      group.children.forEach((childGroup: IGroup) => {
+        this._selectGroup(childGroup, isSelected);
+      });
+    } else {
       let getGroupItemLimit = groupProps && groupProps.getGroupItemLimit;
       let groupItemLimit = getGroupItemLimit ? getGroupItemLimit(group) : items.length;
       let start = group.startIndex;
@@ -310,11 +339,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       for (let idx = start; idx < end; idx++) {
         this._selection.setIndexSelected(idx, isSelected, false /* shouldAnchor */);
       }
-      group.isSelected = isSelected;
-
-      this.setState({
-        groups: groups
-      });
     }
   }
 

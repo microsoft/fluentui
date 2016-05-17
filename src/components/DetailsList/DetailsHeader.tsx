@@ -4,6 +4,7 @@ import { css } from '../../utilities/css';
 import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import Check from './Check';
+import GroupSpacer from './GroupSpacer';
 import { getRTL } from '../../utilities/rtl';
 import EventGroup from '../../utilities/eventGroup/EventGroup';
 import './DetailsHeader.scss';
@@ -20,7 +21,7 @@ export interface IDetailsHeaderProps {
   onColumnIsSizingChanged?: (column: IColumn, isSizing: boolean) => void;
   onColumnResized?: (column: IColumn, newWidth: number) => void;
   onColumnAutoResized?: (column: IColumn, columnIndex: number) => void;
-  isGrouped?: boolean;
+  groupNestingDepth?: number;
   isAllCollapsed?: boolean;
   onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
   /** ariaLabel for the entire header */
@@ -34,7 +35,7 @@ export interface IDetailsHeaderState {
   columnResizeDetails?: IColumnResizeDetails;
   isAllSelected?: boolean;
   isSizing?: boolean;
-  isGrouped?: boolean;
+  groupNestingDepth?: number;
   isAllCollapsed?: boolean;
 }
 
@@ -54,7 +55,7 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
 
     this.state = {
       columnResizeDetails: null,
-      isGrouped: this.props.isGrouped,
+      groupNestingDepth: this.props.groupNestingDepth,
       isAllCollapsed: this.props.isAllCollapsed
     };
 
@@ -75,16 +76,16 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
   }
 
   public componentWillReceiveProps(newProps) {
-    let { isGrouped } = this.state;
+    let { groupNestingDepth } = this.state;
 
-    if (newProps.isGrouped !== isGrouped) {
-      this.setState({ isGrouped: newProps.isGrouped });
+    if (newProps.groupNestingDepth !== groupNestingDepth) {
+      this.setState({ groupNestingDepth: newProps.groupNestingDepth });
     }
   }
 
   public render() {
     let { selectionMode, columns, ariaLabel, ariaLabelForSelectAllCheckbox } = this.props;
-    let { isAllSelected, columnResizeDetails, isSizing, isGrouped, isAllCollapsed } = this.state;
+    let { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed } = this.state;
 
     return (
       <div
@@ -109,7 +110,7 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
               <Check isChecked={ isAllSelected } />
             </button>
           ) : (null) }
-          { isGrouped ? (
+          { groupNestingDepth > 0 ? (
           <button className='ms-DetailsHeader-cell' onClick={ this._onToggleCollapseAll }>
             <i className={ css('ms-DetailsHeader-collapseButton ms-Icon ms-Icon--chevronDown', {
               'is-collapsed': isAllCollapsed
@@ -117,6 +118,7 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
             </i>
           </button>
           ) : (null) }
+          { GroupSpacer({ count: groupNestingDepth - 1 }) }
           { columns.map((column, columnIndex) => (
             <div key={ column.key } className='ms-DetailsHeader-cellSizeWrapper'>
               <div className='ms-DetailsHeader-cellWrapper'>

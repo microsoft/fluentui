@@ -39,6 +39,9 @@ export interface IDetailsGroupProps extends React.Props<DetailsGroup> {
   /** Optional grouping instructions. */
   groupIndex?: number;
 
+  /** Optional group nesting level. */
+  groupNestingDepth?: number;
+
   /** Optional selection model to track selection state.  */
   selection?: ISelection;
 
@@ -124,17 +127,56 @@ export default class DetailsGroup extends React.Component<IDetailsGroupProps, ID
 
   public render() {
     let {
+      columns,
+      dragDropEvents,
+      dragDropHelper,
+      eventsToRegister,
       group,
       groupIndex,
+      groupNestingDepth,
       getGroupItemLimit,
       items,
       headerProps,
       footerProps,
+      onRenderMissingItem,
+      onRowDidMount,
+      onRowWillUnmount,
       selection,
+      selectionMode,
       viewport
     } = this.props;
     let renderCount = group ? getGroupItemLimit(group) : items.length;
-    let isFooterVisible = group && !group.isCollapsed && !group.isShowingAll && group.count > renderCount;
+    let isFooterVisible = group && !group.children && !group.isCollapsed && !group.isShowingAll && group.count > renderCount;
+
+    let nestedGroups = null;
+    let hasNestedGroups = group && group.children && group.children.length > 0;
+    if (hasNestedGroups) {
+      nestedGroups = group.children.map((subGroup: IGroup, subGroupIndex: number) => (
+        (!subGroup || subGroup.count > 0) ? (
+          <DetailsGroup
+            ref={ 'subGroup_' + subGroupIndex }
+            key={ this._getGroupKey(subGroup, subGroupIndex) }
+            items={ items }
+            columns={ columns }
+            group={ subGroup }
+            groupIndex={ subGroupIndex }
+            groupNestingDepth={ groupNestingDepth }
+            getGroupItemLimit={ getGroupItemLimit }
+            selectionMode={ selectionMode }
+            selection={ selection }
+            eventsToRegister={ eventsToRegister }
+            onRowDidMount={ onRowDidMount }
+            onRowWillUnmount={ onRowWillUnmount }
+            dragDropEvents={ dragDropEvents }
+            onRenderMissingItem={ onRenderMissingItem }
+            dragDropHelper={ dragDropHelper }
+            viewport={ viewport }
+            headerProps={ headerProps }
+            footerProps={ footerProps }
+            />
+          ) : null
+      ));
+    }
 
     return (
       <div
@@ -145,6 +187,7 @@ export default class DetailsGroup extends React.Component<IDetailsGroupProps, ID
           <GroupHeader
             group={ group }
             groupIndex={ groupIndex }
+            groupLevel={ group ? group.level : 0 }
             headerProps={ headerProps }
             viewport={ viewport }
             ref={ 'header' }
@@ -153,14 +196,18 @@ export default class DetailsGroup extends React.Component<IDetailsGroupProps, ID
         {
           group && group.isCollapsed ?
           null :
-          <List
-            items={ items }
-            onRenderCell={ this._onRenderCell }
-            ref={ 'list' }
-            renderCount={ renderCount }
-            selection={ selection }
-            startIndex={ group ? group.startIndex : 0 }
-          />
+          (
+            hasNestedGroups ?
+            nestedGroups :
+            <List
+              items={ items }
+              onRenderCell={ this._onRenderCell }
+              ref={ 'list' }
+              renderCount={ renderCount }
+              selection={ selection }
+              startIndex={ group ? group.startIndex : 0 }
+            />
+          )
         }
         {
           group && group.onRenderFooter ?
@@ -170,6 +217,7 @@ export default class DetailsGroup extends React.Component<IDetailsGroupProps, ID
             <GroupFooter
               group={ group }
               groupIndex={ groupIndex }
+              groupLevel={ group ? group.level : 0 }
               footerProps={ footerProps }
               ref={ 'footer' }
             />
@@ -180,9 +228,26 @@ export default class DetailsGroup extends React.Component<IDetailsGroupProps, ID
   }
 
   public forceListUpdate() {
+    let { group } = this.props;
+
     if (this.refs.list) {
       this.refs.list.forceUpdate();
+    } else if (group && group.children && group.children.length > 0) {
+      let subGroupCount = group.children.length;
+
+      for (let i = 0; i < subGroupCount; i++) {
+        let subGroup = this.refs['subGroup_' + String(i)] as DetailsGroup;
+        if (subGroup) {
+          subGroup.forceListUpdate();
+        }
+      }
     }
+  }
+
+  private _getGroupKey(group: IGroup, groupIndex: number): string {
+    return 'group-' + (group ?
+      group.key + '-' + group.count :
+      '');
   }
 
   private _onRenderCell(item: any, index: number): React.ReactNode {
@@ -191,7 +256,7 @@ export default class DetailsGroup extends React.Component<IDetailsGroupProps, ID
       dragDropEvents,
       dragDropHelper,
       eventsToRegister,
-      group,
+      groupNestingDepth,
       onRenderMissingItem,
       onRowDidMount,
       onRowWillUnmount,
@@ -222,7 +287,7 @@ export default class DetailsGroup extends React.Component<IDetailsGroupProps, ID
           eventsToRegister={ eventsToRegister }
           dragDropEvents={ dragDropEvents }
           dragDropHelper={ dragDropHelper }
-          isGrouped={ Boolean(group) }
+          groupNestingDepth={ groupNestingDepth }
           viewport={ viewport }
           />
     );
@@ -233,7 +298,7 @@ export default class DetailsGroup extends React.Component<IDetailsGroupProps, ID
    */
   private _getGroupDragDropOptions(): IDragDropOptions {
     let { group, groupIndex, dragDropEvents, eventsToRegister } = this.props;
-    this._dragDropKey = 'group-' + groupIndex;
+    this._dragDropKey = 'group-' + (group ? group.key : String(groupIndex));
     let options = {
       key: this._dragDropKey,
       eventMap: eventsToRegister,

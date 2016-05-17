@@ -249,6 +249,16 @@ export interface IGroup {
   count: number;
 
   /**
+   * Nested groups, if any.
+   */
+  children?: IGroup[];
+
+  /**
+   * Number indicating the level of nested groups.
+   */
+  level?: number;
+
+  /**
    * If all the items in the group are selected.
    */
   isSelected?: boolean;

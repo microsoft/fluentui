@@ -2,10 +2,12 @@ import * as React from 'react';
 import Link from '../Link/index';
 import { IGroup, IDetailsGroupFooterProps } from './index';
 import './GroupFooter.scss';
+import GroupSpacer from './GroupSpacer';
 
 export interface IGroupFooterProps {
   group: IGroup;
   groupIndex: number;
+  groupLevel: number;
   footerProps?: IDetailsGroupFooterProps;
 }
 
@@ -17,11 +19,12 @@ export default class GroupFooter extends React.Component<IGroupFooterProps, {}> 
   }
 
   public render() {
-    let { group, footerProps } = this.props;
+    let { group, groupLevel, footerProps } = this.props;
     let showAllLinkText = footerProps && footerProps.showAllLinkText;
 
     return group && (
       <div className='ms-groupFooter'>
+        { GroupSpacer({ count: groupLevel }) }
         <Link
           onClick={ this._onToggleSummarize }>
           { showAllLinkText }

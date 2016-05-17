@@ -382,35 +382,84 @@ export default class DetailsListBasicExample extends React.Component<any, IDetai
 
   private _onGroupByColumn(column: IColumn) {
     let { key, isGrouped } = column;
-    let { sortedColumnKey, isSortedDescending } = this.state;
+    let { sortedColumnKey, isSortedDescending, groups, items, columns } = this.state;
 
     if (isGrouped) { // ungroup
       this._onSortColumn(sortedColumnKey, isSortedDescending);
     } else {
-      let groupedItems = _items.slice(0).sort((a, b) => ((a[key] < b[key]) ? -1 : 1));
+      let groupedItems = [];
+      let newGroups = null;
+      if (groups) {
+        newGroups = groups;
+        groupedItems = this._groupByKey(newGroups, items, key);
+      } else {
+        groupedItems = this._groupItems(items, key);
+        newGroups = this._getGroups(groupedItems, key);
+      }
 
-      let groups = groupedItems.reduce((current, item, index) => {
-        let currentGroup = current[current.length - 1];
-
-        if (!currentGroup || (currentGroup.key !== item[key])) {
-          current.push({
-            key: item[key],
-            name: key + ': ' + item[key],
-            startIndex: index,
-            count: 1
-          });
-        } else {
-          currentGroup.count++;
-        }
-        return current;
-      }, []);
-
+      let newColumns = columns;
+      newColumns.filter(matchColumn => matchColumn.key === key).forEach((groupedColumn: IColumn) => {
+        groupedColumn.isGrouped = true;
+      });
       this.setState({
         items: groupedItems,
-        columns: this._buildColumns(groupedItems, true, this._onColumnClick, sortedColumnKey, isSortedDescending, key),
-        groups: groups
+        columns: newColumns,
+        groups: newGroups
       });
     }
+  }
+
+  private _groupByKey(groups: IGroup[], items: any[], key: string): any[] {
+    let groupedItems = [];
+    if (groups) {
+      groups.forEach((group: IGroup) => {
+        if (group.children && group.children.length > 0) {
+          let childGroupedItems = this._groupByKey(group.children, items, key);
+          groupedItems = groupedItems.concat(childGroupedItems);
+        } else {
+          let itemsInGroup = items.slice(group.startIndex, group.startIndex + group.count);
+          let nextLevelGroupedItems = this._groupItems(itemsInGroup, key);
+          groupedItems = groupedItems.concat(nextLevelGroupedItems);
+          group.children = this._getGroups(nextLevelGroupedItems, key, group);
+        }
+      });
+    }
+    return groupedItems;
+  }
+
+  private _groupItems(items: any[], columnKey: string): any[] {
+    return items.slice(0).sort((a, b) => ((a[columnKey] < b[columnKey]) ? -1 : 1));
+  }
+
+  private _getGroups(groupedItems: any[], key: string, parentGroup?: IGroup): IGroup[] {
+    let separator = '-';
+    let groups = groupedItems.reduce((current, item, index) => {
+      let currentGroup = current[current.length - 1];
+
+      if (!currentGroup || (this._getLeafGroupKey(currentGroup.key, separator) !== item[key])) {
+        current.push({
+          key: (parentGroup ? parentGroup.key + separator : '') + item[key],
+          name: key + ': ' + item[key],
+          startIndex: parentGroup ? parentGroup.startIndex + index : index,
+          count: 1,
+          level: parentGroup ? parentGroup.level + 1 : 0
+        });
+      } else {
+        currentGroup.count++;
+      }
+      return current;
+    }, []);
+
+    return groups;
+  }
+
+  private _getLeafGroupKey(key: string, separator: string): string {
+    let leafKey = key;
+    if (key.indexOf(separator) !== -1) {
+      let arrKeys = key.split(separator);
+      leafKey = arrKeys[arrKeys.length - 1];
+    }
+    return leafKey;
   }
 
   private _buildColumns(
