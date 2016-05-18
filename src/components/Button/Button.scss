@@ -22,3 +22,18 @@
     display: inline;
   }
 }
+
+// Add space between adjacent buttons.
+.ms-Button + .ms-Button {
+  @include margin-left(6px);
+}
+
+.ms-Button.ms-Button--command {
+  .ms-Button-icon {
+    @include margin-right(4px);
+  }
+}
+
+.ms-Button.ms-Button--command + .ms-Button.ms-Button--command {
+  @include margin-left(14px);
+}
