@@ -70,6 +70,7 @@ export default class TextField extends React.Component<ITextFieldProps, ITextFie
       this.setState({
         value: newProps.value
       } as ITextFieldState);
+      this._delayedValidate(newProps.value);
     }
   }
 

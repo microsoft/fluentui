@@ -185,5 +185,30 @@ describe('TextField', () => {
       assertErrorMessage(renderedDOM, /* exist */ false);
       expect(actualValue).to.equal('');
     });
+
+    it('should update error message when receive new value from props', () => {
+      function validator(value: string): string {
+        return value.length > 3 ? errorMessage : '';
+      }
+
+      const renderedDOM: HTMLElement = renderIntoDocument(
+        <TextField
+          value='initial value'
+          onGetErrorMessage={ validator }
+        />
+      );
+
+      assertErrorMessage(renderedDOM, errorMessage);
+
+      ReactDOM.render(
+        <TextField
+          value=''
+          onGetErrorMessage={ validator }
+        />,
+        renderedDOM.parentElement
+      );
+
+      return delay(250).then(() => assertErrorMessage(renderedDOM, /* exist */ false));
+    });
   });
 });

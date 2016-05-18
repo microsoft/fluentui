@@ -3,8 +3,9 @@ import * as React from 'react';
 import {
   TextField
 } from '../../../../index';
+import NumberTextField from './NumberTextField';
 
-export default class TextFieldErrorMessageExample extends React.Component<any, any> {
+export default class TextFieldErrorMessageExample extends React.Component<{}, {}> {
   public constructor(props: any) {
     super(props);
 
@@ -32,6 +33,14 @@ export default class TextFieldErrorMessageExample extends React.Component<any, a
           label='TextField with a Promise-based validator. Hint: the length of the input string must be less than 3.'
           value='It should show an error message under this error message 5 seconds after render.'
           onGetErrorMessage={this._getErrorMessagePromise}
+        />
+        <NumberTextField
+          label='Number TextField with valid initial value'
+          initialValue='100'
+        />
+        <NumberTextField
+          label='Number TextField with invalid initial value'
+          initialValue='Not a number'
         />
       </div>
     );
