@@ -53,14 +53,14 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     let { contextMenu } = this.state;
 
     // In medium and below scenarios, hide the side links.
-    if (responsiveMode <= ResponsiveMode.medium) {
+    if (responsiveMode <= ResponsiveMode.large) {
       sideLinks = [ ];
     }
 
     return (
       <div>
         <div className='Header'>
-          { (responsiveMode <= ResponsiveMode.medium) && (
+          { (responsiveMode <= ResponsiveMode.large) && (
             <button className='Header-button' onClick={ this._onMenuClick }>
               <i className='ms-Icon ms-Icon--menu'/>
             </button>

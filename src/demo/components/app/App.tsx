@@ -57,7 +57,7 @@ export default class App extends React.Component<IAppProps, any> {
             />
         </div>
 
-        { (responsiveMode > ResponsiveMode.medium) ? (
+        { (responsiveMode > ResponsiveMode.large) ? (
           <div className='App-nav'>
             { navPanel }
           </div>
@@ -67,7 +67,7 @@ export default class App extends React.Component<IAppProps, any> {
           { this.props.children }
         </div>
 
-        { (responsiveMode <= ResponsiveMode.medium) ? (
+        { (responsiveMode <= ResponsiveMode.large) ? (
           <Panel className='App-navPanel ms-font-m' isOpen={isMenuVisible} onDismiss={ this._onIsMenuVisibleChanged.bind(this, false) }>
             { navPanel }
           </Panel>

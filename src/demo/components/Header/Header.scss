@@ -10,7 +10,7 @@
   user-select: none;
 }
 
-@media (max-width: $ms-screen-md-max) {
+@media (max-width: $ms-screen-lg-max) {
   .Header {
     padding: 0;
   }
@@ -63,7 +63,7 @@
   }
 }
 
-@media (max-width: $ms-screen-md-max) {
+@media (max-width: $ms-screen-lg-max) {
   .Header-button {
     margin: 0;
 
