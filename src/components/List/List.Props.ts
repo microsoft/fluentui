@@ -18,11 +18,12 @@ export interface IListProps extends React.Props<List> {
   /** How many items to render per page. */
   itemsPerPage?: number;
 
-  /** index in items array to start rendering from. Defaults to 0. */
+  /** Index in items array to start rendering from. Defaults to 0. */
   startIndex?: number;
 
-  /** number of items to render. Defaults to items.length. */
+  /** Number of items to render. Defaults to items.length. */
   renderCount?: number;
 
+  /** Optional selection model to track selection state.  */
   selection?: ISelection;
 }
