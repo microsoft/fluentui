@@ -19,9 +19,9 @@ gulp serve
 
 #### Private NPM access instructions
 
-**NOTE:** this assumes that you have installed NPM and can access it on the command line. These
+**NOTE:** this assumes that you have installed NPM and can access it on the command line.
 
-Private packages are not stored in public npm, but install in our internal artifactory instance. Private packages are scoped using @ms/ prefix, you will see this in import statements as well as in package.json dependency lists. (e.g. import '@ms/odsp-utilities')
+Private packages are not stored in public npm, but in our internal artifactory instance. Private packages are scoped using @ms/ prefix, you will see this in import statements as well as in package.json dependency lists. (e.g. import '@ms/odsp-utilities')
 
 In order to use private NPM modules, your .npmrc file needs to be able to resolve the @ms scope to the right artifactory (private npm repository) url with the right auth key. Follow these steps to get that set up:
 

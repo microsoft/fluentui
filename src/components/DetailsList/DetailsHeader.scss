@@ -103,6 +103,10 @@ $rowHeight: 36px;
     height: inherit;
     z-index: 99;
   }
+
+  &.is-empty {
+    text-overflow: clip;
+  }
 }
 
 .ms-DetailsHeader-cell.is-resizing.is-sizer:after,

@@ -128,6 +128,7 @@ export default class DetailsHeader extends React.Component<IDetailsHeaderProps, 
                   disabled={ column.columnActionsMode === ColumnActionsMode.disabled }
                   className={ css('ms-DetailsHeader-cell', {
                     'is-actionable': column.columnActionsMode !== ColumnActionsMode.disabled,
+                    'is-empty': !column.name,
                     'is-icon-visible': column.isSorted || column.isGrouped || column.isFiltered
                   }) }
                   style={ { width: column.calculatedWidth + INNER_PADDING } }
