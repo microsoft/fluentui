@@ -48,10 +48,10 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
 
 .ms-DocumentCardActivity-details {
   @include left($ms-DocumentCardActivity-horizontalPadding + $ms-DocumentCardActivity-imageSize + $ms-DocumentCardActivity-personaTextGutter);
-  @include margin-right($ms-DocumentCardActivity-horizontalPadding + $ms-DocumentCardActivity-imageSize + $ms-DocumentCardActivity-personaTextGutter); // Keeps text from running outside of card
   height: $ms-DocumentCardActivity-imageSize;
   position: absolute;
   top: $ms-DocumentCardActivity-verticalPadding;
+  width: calc(100% - #{$ms-DocumentCardActivity-horizontalPadding + $ms-DocumentCardActivity-imageSize + $ms-DocumentCardActivity-personaTextGutter + $ms-DocumentCardActivity-horizontalPadding});
 }
 
 .ms-DocumentCardActivity-name,
@@ -61,6 +61,10 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
   font-family: $ms-font-family-regular;
   font-size: $ms-font-size-s;
   line-height: 14px;
+  height: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .ms-DocumentCardActivity-name {
