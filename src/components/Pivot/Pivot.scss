@@ -1,2 +1,8 @@
 @import '../../common';
 @import "~office-ui-fabric/src/components/Pivot/Pivot";
+
+.ms-Pivot {
+  position: relative;
+  color: $ms-color-themePrimary;
+  white-space: nowrap;
+}

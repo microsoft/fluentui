@@ -2,12 +2,10 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-export interface IPivotProps {
-  /**
-   * The items to display in the pivot
-   */
-  items: IPivotItem[];
+import Pivot from './Pivot';
+import { PivotItem } from './PivotItem';
 
+export interface IPivotProps extends React.Props<Pivot> {
   /**
    * The index of the pivot item initially selected
    */
@@ -16,22 +14,41 @@ export interface IPivotProps {
   /**
    * Callback issued when the selected pivot item is changed
    */
-  onChange?: (item: IPivotItem) => void;
+  onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent) => void;
 
   /**
-   * Whether to use the large format of the Picker
+   * Specify the PivotLinkSize to use (normal, large)
    */
-  largeformat?: boolean;
+  linkSize?: PivotLinkSize;
+
+  /**
+   * Specify the PivotLinkFormat to use (links, tabs)
+   */
+  linkFormat?: PivotLinkFormat;
+
 }
 
-export interface IPivotItem {
+export enum PivotLinkFormat {
   /**
-   * Arbitrary data to associate with this item.
+   * Display Pivot Links as links
    */
-  key: string;
+  links,
 
   /**
-   * Text to render for this item.
+   * Display Pivot Links as Tabs
    */
-  text: string;
+  tabs
+}
+
+export enum PivotLinkSize {
+
+  /**
+   * Display Link using normal font size
+   */
+  normal,
+
+  /**
+   * Display links using large font size
+   */
+  large
 }

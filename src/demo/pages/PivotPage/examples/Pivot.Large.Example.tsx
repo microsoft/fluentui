@@ -2,14 +2,15 @@ import * as React from 'react';
 import {
   Label,
   Pivot,
-  PivotItem
+  PivotItem,
+  PivotLinkSize
 } from '../../../../index';
 
 export default class PivotLargeExample extends React.Component<any, any> {
   public render() {
     return (
       <div>
-        <Pivot>
+        <Pivot linkSize={ PivotLinkSize.large }>
             <PivotItem linkText='My Files'>
               <Label>Pivot #1</Label>
             </PivotItem>
@@ -23,4 +24,5 @@ export default class PivotLargeExample extends React.Component<any, any> {
       </div>
     );
   }
+
 }
