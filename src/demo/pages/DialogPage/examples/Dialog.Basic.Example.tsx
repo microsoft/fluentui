@@ -7,6 +7,7 @@ import {
   ButtonType,
   ChoiceGroup
 } from '../../../../index';
+import './Dialog.Basic.Example.scss';
 
 export default class DialogBasicExample extends React.Component<any, any> {
 
@@ -28,6 +29,7 @@ export default class DialogBasicExample extends React.Component<any, any> {
           title='All emails together'
           subText='Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
           isBlocking={ false }
+          className='ms-dialogMainOverride'
         >
           <ChoiceGroup
             options={ [

@@ -41,6 +41,11 @@ export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeSt
   * @default false
   */
   isBlocking?: boolean;
+
+  /**
+  * Optional override class name
+  */
+  className?: string;
 }
 
 export enum DialogType {
