@@ -42,8 +42,8 @@ gulp.task('deploy', ['bundle'],  function(cb) {
     currentBranch = os.hostname().split('.')[0] + '-' + branch.replace('/', '-');
     let ftpConnection = ftp.create({
       host: 'waws-prod-bay-049.ftp.azurewebsites.windows.net',
-      user: "fabricreact\\FabricReactControls",
-      pass: 'Po1ntBarrow',
+      user: "fabricreact\\$fabricreact",
+      pass: 'GwncXS8DEF2WmAQ8bF9JpvX4osSk8ssMGdHeEkhiSdyu9KiPdZD109Phy3Ye',
       parallel: 10,
       secure: true,
       idleTimeout: 10000
