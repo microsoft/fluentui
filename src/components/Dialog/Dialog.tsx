@@ -76,10 +76,6 @@ export default class Dialog extends React.Component<IDialogProps, any> {
     };
 
     React.Children.map(this.props.children, child => {
-      console.log( 'checking child: ');
-      console.log( child );
-      let tom = DialogFooter;
-      console.log( tom );
       if (typeof child === 'object' && child.type === DialogFooter) {
         groupings.footers.push(child);
       } else {
