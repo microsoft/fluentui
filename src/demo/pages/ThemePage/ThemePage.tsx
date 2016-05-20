@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { defaultTheme } from '../../defaultTheme';
 import { loadTheme } from 'load-themed-styles';
+let Highlight = require('react-highlight');
+import { defaultTheme } from './defaultTheme';
 import {
   DetailsList,
   DetailsListLayoutMode as LayoutMode
-} from '../../index';
-import { SelectionMode } from '../../utilities/selection/interfaces';
-import ColorPicker from '../../components/ColorPicker/index';
+} from '../../../index';
+import { SelectionMode } from '../../../utilities/selection/interfaces';
+import ColorPicker from '../../../components/ColorPicker/index';
 
-let Highlight = require('react-highlight');
 let ThemeCodeExample = require('./ThemeCodeExample.txt');
 
 export default class Themes extends React.Component<any, any> {

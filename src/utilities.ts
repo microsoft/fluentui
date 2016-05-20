@@ -11,7 +11,10 @@ export * from './utilities/array';
 export * from './utilities/css';
 export * from './utilities/rtl';
 export * from './utilities/KeyCodes';
-export { default as EventGroup } from './utilities/eventGroup/EventGroup';
+
+export * from './utilities/eventGroup/EventGroup';
+export * from './utilities/Async/Async';
+
 export * from './utilities/decorators/withContainsFocus';
 export * from './utilities/decorators/withResponsiveMode';
 export * from './utilities/decorators/withViewport';

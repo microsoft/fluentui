@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom';
 import App from './components/App/App';
 import AppState from './components/App/AppState';
 import { Router, Route } from '../utilities/router/index';
-import GettingStarted from './pages/GettingStarted';
+import GettingStartedPage from './pages/GettingStartedPage/GettingStartedPage';
 import { setBaseUrl } from '../utilities/resources';
 import './app.scss';
 import './ColorStyles.scss';
@@ -40,7 +40,7 @@ function _getAppRoutes() {
 
   // Default route.
   routes.push(
-    <Route key='gettingstarted' component={ GettingStarted } />
+    <Route key='gettingstarted' component={ GettingStartedPage } />
   );
 
   return routes;

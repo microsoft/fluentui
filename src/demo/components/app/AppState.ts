@@ -31,7 +31,7 @@ import SearchBoxPage from '../../pages/SearchBoxPage/SearchBoxPage';
 import SpinnerPage from '../../pages/SpinnerPage/SpinnerPage';
 import TextFieldPage from '../../pages/TextFieldPage/TextFieldPage';
 import TogglePage from '../../pages/TogglePage/TogglePage';
-import Themes from '../../pages/Themes';
+import ThemePage from '../../pages/ThemePage/ThemePage';
 
 export enum ExampleStatus {
   placeholder,
@@ -268,7 +268,7 @@ export const AppState: IAppState = {
           url: '#examples/selectionManagement'
         },
         {
-          component: Themes,
+          component: ThemePage,
           name: 'Themes',
           url: '#examples/themes'
         }

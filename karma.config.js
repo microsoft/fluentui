@@ -20,7 +20,7 @@ module.exports = function(config) {
 
 
     // list of files / patterns to load in the browser
-    files: [bindPolyfillPath].concat(['lib/tests.js']),
+    files: [bindPolyfillPath].concat(['lib/common/tests.js']),
 
 
     // list of files to exclude

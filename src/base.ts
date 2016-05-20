@@ -31,6 +31,9 @@ export * from './components/Fabric/index';
 export { default as Image } from './components/Image/index';
 export * from './components/Image/index';
 
+export { default as Layer } from './components/Layer/index';
+export * from './components/Layer/index';
+
 export { default as Label } from './components/Label/index';
 export * from './components/Label/index';
 
