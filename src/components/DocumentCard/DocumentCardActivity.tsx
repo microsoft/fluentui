@@ -3,12 +3,17 @@ import { IDocumentCardActivityProps, IDocumentCardActivityPerson } from './Docum
 import './DocumentCardActivity.scss';
 import { css } from '../../utilities/css';
 import Image from '../Image/Image';
+import {
+  PERSONA_INITIALS_COLOR,
+  PersonaInitialsColor
+} from '../Persona/index';
 
 export default class DocumentCardActivity extends React.Component<IDocumentCardActivityProps, any> {
   public render() {
     let { activity, people } = this.props;
 
     return (
+      people && people.length > 0 &&
       <div className={css('ms-DocumentCardActivity', {
         'ms-DocumentCardActivity--multiplePeople': people.length > 1
       })}>
@@ -22,10 +27,29 @@ export default class DocumentCardActivity extends React.Component<IDocumentCardA
   }
 
   private _renderAvatars(people: IDocumentCardActivityPerson[]): React.ReactElement<{}> {
+    let renderAvatar = (person: IDocumentCardActivityPerson) => {
+      if (!person.initialsColor) {
+        person.initialsColor = PersonaInitialsColor.blue;
+      }
+
+      return (
+        <div className='ms-DocumentCardActivity-avatar'>
+          { person.initials && (
+            <div className={ css('ms-Persona-initials', PERSONA_INITIALS_COLOR[person.initialsColor]) }>
+              { person.initials }
+              </div>
+          ) }
+          { person.profileImageSrc && (
+            <Image src={ person.profileImageSrc }/>
+          ) }
+        </div>
+      );
+    };
+
     return (
       <div className='ms-DocumentCardActivity-avatars'>
-        { people.length > 1 ? <Image className='ms-DocumentCardActivity-avatar' src={ people[1].profileImageSrc }/> : '' }
-        <Image className='ms-DocumentCardActivity-avatar' src={ people[0].profileImageSrc }/>
+        { people.length > 1 ? renderAvatar(people[1]) : null }
+        { renderAvatar(people[0]) }
       </div>
     );
   }
@@ -33,10 +57,8 @@ export default class DocumentCardActivity extends React.Component<IDocumentCardA
   private _getNameString(people: IDocumentCardActivityPerson[]): string {
     let nameString = people[0].name;
 
-    if (people.length === 2) {
-      nameString += ' +' + (people.length - 1) + ' other';
-    } else if (people.length > 2) {
-      nameString += ' +' + (people.length - 1) + ' others';
+    if (people.length >= 2) {
+      nameString += ' +' + (people.length - 1);
     }
 
     return nameString;

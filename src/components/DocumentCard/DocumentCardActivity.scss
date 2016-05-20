@@ -29,6 +29,21 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
   border-radius: 50%;
   height: $ms-DocumentCardActivity-imageSize;
   width: $ms-DocumentCardActivity-imageSize;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+
+  .ms-Persona-initials {
+    height: $ms-DocumentCardActivity-imageSize;
+    line-height: $ms-DocumentCardActivity-imageSize;
+    font-size: $ms-font-size-s;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .ms-DocumentCardActivity-details {

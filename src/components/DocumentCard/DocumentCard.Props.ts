@@ -5,6 +5,7 @@ import DocumentCardPreview from './DocumentCardPreview';
 import DocumentCardLocation from './DocumentCardLocation';
 import DocumentCardActivity from './DocumentCardLocation';
 import DocumentCardActions from './DocumentCardActions';
+import { PersonaInitialsColor } from '../Persona/index';
 
 export interface IDocumentCardProps extends React.Props<DocumentCard> {
   /**
@@ -83,6 +84,17 @@ export interface IDocumentCardActivityPerson {
    * Path to the profile photo of the person.
    */
   profileImageSrc: string;
+
+  /**
+   * The user's initials to display in the profile photo area when there is no image.
+   */
+  initials?: string;
+
+  /**
+   * The background color when the user's initials are displayed.
+   * @defaultvalue PersonaInitialsColor.blue
+   */
+  initialsColor?: PersonaInitialsColor;
 }
 
 export interface IDocumentCardActionsProps extends React.Props<DocumentCardActions> {

@@ -26,7 +26,7 @@ export default class DocumentCardCompleteExample extends React.Component<any, an
             people={
               [
                 { name: 'Kat Larrson', profileImageSrc: 'dist/avatar-kat.png' },
-                { name: 'Josh Hancock', profileImageSrc: 'dist/avatar-josh.png' },
+                { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
                 { name: 'Tina Dasani', profileImageSrc: 'dist/avatar-kat.png' }
               ]
             }

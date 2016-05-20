@@ -83,20 +83,20 @@ export default class DocumentCardTitle extends React.Component<IDocumentCardTitl
     let originalTitle = this.props.title;
 
     // If the title is really short, there's no need to truncate it
-    if (originalTitle.length >= TRUNCATION_MINIMUM_LENGTH) {
+    if (originalTitle && originalTitle.length >= TRUNCATION_MINIMUM_LENGTH) {
 
       // Break the text into two pieces for assembly later
       if (originalTitle.length > TRUNCATION_MAXIMUM_LENGTH) {
         // The text is really long, so we can take a chunk out of the middle so the two pieces combine for the maximum length
         this.setState({
-          'truncatedTitleFirstPiece' : originalTitle.slice(0, TRUNCATION_MAXIMUM_LENGTH / 2 + TRUNCATION_FIRST_PIECE_LONGER_BY),
-          'truncatedTitleSecondPiece' : originalTitle.slice(originalTitle.length - (TRUNCATION_MAXIMUM_LENGTH / 2 - TRUNCATION_FIRST_PIECE_LONGER_BY))
+          truncatedTitleFirstPiece : originalTitle.slice(0, TRUNCATION_MAXIMUM_LENGTH / 2 + TRUNCATION_FIRST_PIECE_LONGER_BY),
+          truncatedTitleSecondPiece : originalTitle.slice(originalTitle.length - (TRUNCATION_MAXIMUM_LENGTH / 2 - TRUNCATION_FIRST_PIECE_LONGER_BY))
         });
       } else {
         // The text is not so long, so we'll just break it into two pieces
         this.setState({
-          'truncatedTitleFirstPiece' : originalTitle.slice(0, Math.ceil(originalTitle.length / 2) + TRUNCATION_FIRST_PIECE_LONGER_BY),
-          'truncatedTitleSecondPiece' : originalTitle.slice(originalTitle.length - Math.floor(originalTitle.length / 2) + TRUNCATION_FIRST_PIECE_LONGER_BY)
+          truncatedTitleFirstPiece : originalTitle.slice(0, Math.ceil(originalTitle.length / 2) + TRUNCATION_FIRST_PIECE_LONGER_BY),
+          truncatedTitleSecondPiece : originalTitle.slice(originalTitle.length - Math.floor(originalTitle.length / 2) + TRUNCATION_FIRST_PIECE_LONGER_BY)
         });
       }
     }
@@ -110,8 +110,8 @@ export default class DocumentCardTitle extends React.Component<IDocumentCardTitl
     if (this._doesTitleOverflow()) {
       let { truncatedTitleFirstPiece, truncatedTitleSecondPiece } = this.state;
       this.setState({
-        'truncatedTitleFirstPiece' : truncatedTitleFirstPiece.slice(0, truncatedTitleFirstPiece.length - 1),
-        'truncatedTitleSecondPiece' : truncatedTitleSecondPiece.slice(1)
+        truncatedTitleFirstPiece : truncatedTitleFirstPiece.slice(0, truncatedTitleFirstPiece.length - 1),
+        truncatedTitleSecondPiece : truncatedTitleSecondPiece.slice(1)
       });
     }
   }
