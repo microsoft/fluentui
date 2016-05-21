@@ -181,6 +181,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
           <FocusZone
             className={ 'ms-ContextualMenu is-open' + ((slideDirectionalClassName) ? (` ms-u-${slideDirectionalClassName}`) : '') }
             ref='focusZone'
+            isCircularNavigation={ true }
             role='menu'
             ariaLabelledBy={ labelElementId }
             style={ ((positions) ? positions.menu : OFF_SCREEN_POSITION) }
@@ -224,7 +225,7 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
              { className: css('ms-ContextualMenu-link', { 'is-expanded': (expandedMenuItemKey === item.key) }),
                onClick: item.onClick || (item.items && item.items.length) ? this._onItemClick.bind(this, item) : null,
                onKeyDown: item.items && item.items.length ? this._onItemKeyDown.bind(this, item) : null,
-               onMouseEnter: item.items && item.items.length ? this._onMouseEnter.bind(this, item) : null,
+               onMouseEnter: this._onMouseEnter.bind(this, item),
                onMouseLeave: this._onMouseLeave,
                disabled: item.isDisabled,
                dataCommandKey: index,
@@ -266,8 +267,11 @@ export default class ContextualMenu extends React.Component<IContextualMenuProps
 
   private _onMouseEnter(item: any, ev: React.MouseEvent) {
     let targetElement = ev.currentTarget as HTMLElement;
-
-    this._enterTimerId = this._async.setTimeout(() => this._onSubMenuExpand(item, targetElement), 500);
+    if (item.items && item.items.length) {
+      this._enterTimerId = this._async.setTimeout(() => this._onSubMenuExpand(item, targetElement), 500);
+    } else {
+      this._enterTimerId = this._async.setTimeout(() => this._onSubMenuDismiss(ev), 500);
+    }
   }
 
   private _onMouseLeave(ev: React.MouseEvent) {
