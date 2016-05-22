@@ -1,7 +1,7 @@
 import * as React from 'react';
-import ContextualMenu from './ContextualMenu';
+import { ContextualMenu } from './ContextualMenu';
 import { IPositionProps } from '../../utilities/positioning';
-import { DirectionalHint } from '../Callout/index';
+import { DirectionalHint } from '../../common/DirectionalHint';
 
 export interface IContextualMenuProps extends React.Props<ContextualMenu>, IPositionProps {
   /**

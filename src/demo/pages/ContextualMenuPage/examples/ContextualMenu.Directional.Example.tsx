@@ -34,7 +34,7 @@ const DIRECTION_OPTIONS = [
   { key: DirectionalHint[DirectionalHint.rightBottomEdge], text: 'Right Bottom Edge' },
 ];
 
-export default class ContextualMenuDirectionalExample extends React.Component<{}, IContextualMenuDirectionalExampleState> {
+export class ContextualMenuDirectionalExample extends React.Component<{}, IContextualMenuDirectionalExampleState> {
   public refs: {
     [key: string]: React.ReactInstance;
     menuButton: HTMLElement;

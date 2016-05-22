@@ -6,10 +6,12 @@ import {
   ExampleCard,
   PropertiesTableSet
 } from '../../components/index';
-import { BreadcrumbBasicExample } from './examples/Breadcrumb.Basic.Example';
-let BreadcrumbBasicExampleCode = require('./examples/Breadcrumb.Basic.Example.tsx');
 
-export default class BreadcrumbExample extends React.Component<any, any> {
+import { BreadcrumbBasicExample } from './examples/Breadcrumb.Basic.Example';
+
+const BreadcrumbBasicExampleCode = require('./examples/Breadcrumb.Basic.Example.tsx');
+
+export class BreadcrumbPage extends React.Component<any, any> {
   public render() {
     return (
       <div className='BreadcrumbExample'>

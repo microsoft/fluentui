@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css } from '../../utilities/css';
-import EventGroup from '../../utilities/eventGroup/EventGroup';
+import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import './Image.scss';
 
 export interface IImageProps {
@@ -98,5 +98,3 @@ export class Image extends React.Component<IImageProps, IImageState> {
   }
 
 }
-
-export default Image;

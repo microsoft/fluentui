@@ -15,7 +15,7 @@ const billMurrayContact = {
   optionalText: 'Available at 4:00pm'
 };
 
-export default class PersonaBasicExample extends React.Component<React.Props<PersonaBasicExample>, { renderPersonaDetails?: boolean; }> {
+export class PersonaBasicExample extends React.Component<React.Props<PersonaBasicExample>, { renderPersonaDetails?: boolean; }> {
   constructor() {
     super();
     this.state = {

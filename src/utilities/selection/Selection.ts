@@ -1,5 +1,5 @@
 import { IObjectWithKey, ISelection, SELECTION_CHANGE } from './interfaces';
-import EventGroup from '../eventGroup/EventGroup';
+import { EventGroup } from '../eventGroup/EventGroup';
 
 export class Selection implements ISelection {
   public count: number;
@@ -236,5 +236,3 @@ export class Selection implements ISelection {
   }
 
 }
-
-export default Selection;

@@ -1,22 +1,20 @@
 import * as React from 'react';
-import './PeoplePicker.scss';
-import { css } from '../../utilities/css';
+import { IPeoplePickerProps, PeoplePickerType } from './PeoplePicker.Props';
 import {
   Persona,
   PersonaSize,
   IPersonaProps,
   PersonaPresence
-} from '../Persona/index';
+} from '../../Persona';
 import {
   Spinner,
   SpinnerType
-} from '../Spinner/index';
-import {
-  FocusZone
-} from '../../utilities/focus/index';
-import { IPeoplePickerProps, PeoplePickerType } from './PeoplePicker.Props';
-import KeyCodes from '../../utilities/KeyCodes';
-import EventGroup from '../../utilities/eventGroup/EventGroup';
+} from '../../Spinner';
+import { FocusZone } from '../../FocusZone';
+import { css } from '../../utilities/css';
+import { KeyCodes } from '../../utilities/KeyCodes';
+import { EventGroup } from '../../utilities/eventGroup/EventGroup';
+import './PeoplePicker.scss';
 
 export interface IPeoplePickerState {
   isActive?: boolean;
@@ -27,7 +25,7 @@ export interface IPeoplePickerState {
 
 const INVALID_INDEX = -1;
 
-export default class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePickerState> {
+export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePickerState> {
   public static defaultProps: IPeoplePickerProps = {
     type: PeoplePickerType.normal,
     isConnected: true,
@@ -151,7 +149,7 @@ export default class PeoplePicker extends React.Component<IPeoplePickerProps, IP
   }
 
   /**
-   * 
+   *
    */
   private _onSelectedPersonaFocus(element: HTMLElement, ev: React.FocusEvent) {
     // store a reference to this element
@@ -222,7 +220,7 @@ export default class PeoplePicker extends React.Component<IPeoplePickerProps, IP
   }
 
   /**
-   * 
+   *
    */
   private _removeSuggestedPersona(index, personaInfo) {
     let { onRemoveSuggestion } = this.props;
@@ -371,7 +369,7 @@ export default class PeoplePicker extends React.Component<IPeoplePickerProps, IP
 
   /**
    * Handles changes in the input text box value, so we can notify the host
-   * of the search value change. 
+   * of the search value change.
    */
   private _onSearchFieldTextChanged() {
     let { onSearchFieldChanged } = this.props;
@@ -420,7 +418,7 @@ export default class PeoplePicker extends React.Component<IPeoplePickerProps, IP
   private _removeSelectedPersona(index) {
       this._selectedPersonas.splice( index, 1 );
 
-      // @TODO - calling this function isn't ideal. 
+      // @TODO - calling this function isn't ideal.
       // maybe put _selectedPersonas on state so it updates automatically
       this.forceUpdate();
   }
@@ -600,7 +598,7 @@ export default class PeoplePicker extends React.Component<IPeoplePickerProps, IP
   }
 
   /**
-   * Renders a single persona as part of a list to be displayed in the search results. 
+   * Renders a single persona as part of a list to be displayed in the search results.
    */
   private _renderSearchResultItem(personaInfo: IPersonaProps, id: number) {
     let { type } = this.props;

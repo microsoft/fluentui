@@ -1,6 +1,5 @@
 import * as React from 'react';
-
-import FocusZone from '../../utilities/focus/FocusZone';
+import { FocusZone } from '../../FocusZone';
 import './Nav.scss';
 
 import {
@@ -12,7 +11,7 @@ export interface INavState {
   isGroupExpanded: boolean[];
 }
 
-export default class Nav extends React.Component<INavProps, INavState> {
+export class Nav extends React.Component<INavProps, INavState> {
 
   constructor() {
     super();

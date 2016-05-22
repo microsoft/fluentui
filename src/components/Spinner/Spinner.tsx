@@ -1,8 +1,7 @@
 import * as React from 'react';
-import './Spinner.scss';
-import { SpinnerType } from './interfaces';
-import { ISpinnerProps } from './Spinner.Props';
+import { ISpinnerProps, SpinnerType } from './Spinner.Props';
 import { getRTL } from '../../utilities/rtl';
+import './Spinner.scss';
 
 const CIRCLE_COUNT = 8;
 const PARENT_SIZE_LARGE = 28;
@@ -52,5 +51,3 @@ export class Spinner extends React.Component<ISpinnerProps, any> {
     );
   }
 }
-
-export default Spinner;

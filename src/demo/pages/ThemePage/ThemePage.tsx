@@ -7,11 +7,11 @@ import {
   DetailsListLayoutMode as LayoutMode
 } from '../../../index';
 import { SelectionMode } from '../../../utilities/selection/interfaces';
-import ColorPicker from '../../../components/ColorPicker/index';
+import { ColorPicker } from '../../../components/ColorPicker/index';
 
-let ThemeCodeExample = require('./ThemeCodeExample.txt');
+const ThemeCodeExample = require('./ThemeCodeExample.txt');
 
-export default class Themes extends React.Component<any, any> {
+export class ThemePage extends React.Component<any, any> {
   constructor() {
     super();
 

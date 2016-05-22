@@ -1,8 +1,8 @@
 import * as React from 'react';
-import './ProgressIndicator.scss';
 import { IProgressIndicatorProps } from './ProgressIndicator.Props';
+import './ProgressIndicator.scss';
 
-export default class ProgressIndicator extends React.Component<IProgressIndicatorProps, any> {
+export class ProgressIndicator extends React.Component<IProgressIndicatorProps, any> {
 
   public static defaultProps = {
     title: '',

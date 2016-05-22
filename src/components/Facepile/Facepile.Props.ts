@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Facepile from './Facepile';
+import { Facepile } from './Facepile';
 import { PersonaInitialsColor } from '../Persona/index';
 
 export interface IFacepileProps extends React.Props<Facepile> {

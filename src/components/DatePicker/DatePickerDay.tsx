@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { css } from '../../utilities/css';
 import { DayOfWeek, IDatePickerStrings } from './DatePicker.Props';
-import { FocusZone } from '../../utilities/focus/index';
-import KeyCodes from '../../utilities/KeyCodes';
+import { FocusZone } from '../../FocusZone';
+import { KeyCodes } from '../../utilities/KeyCodes';
 import { addDays, addWeeks, addMonths, compareDates } from '../../utilities/dateMath/DateMath';
 import { getRTL, getRTLSafeKeyCode } from '../../utilities/rtl';
 
@@ -33,7 +33,7 @@ export interface IDatePickerDayState {
 
 let _instance = 0;
 
-export default class DatePickerDay extends React.Component<IDatePickerDayProps, IDatePickerDayState> {
+export class DatePickerDay extends React.Component<IDatePickerDayProps, IDatePickerDayState> {
   public refs: {
     [key: string]: React.ReactInstance;
     navigatedDay: HTMLElement;

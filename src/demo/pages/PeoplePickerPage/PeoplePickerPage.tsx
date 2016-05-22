@@ -7,19 +7,17 @@ import {
   PropertiesTableSet
 } from '../../components/index';
 
-import PeoplePickerBasicExample from './examples/PeoplePicker.Basic.Example';
-let PeoplePickerBasicExampleCode = require('./examples/PeoplePicker.Basic.Example.tsx');
+import { PeoplePickerBasicExample } from './examples/PeoplePicker.Basic.Example';
+import { PeoplePickerDisconnectedExample } from './examples/PeoplePicker.Disconnected.Example';
+import { PeoplePickerMemberListExample } from './examples/PeoplePicker.MemberList.Example';
+import { PeoplePickerCompactExample } from './examples/PeoplePicker.Compact.Example';
 
-import PeoplePickerCompactExample from './examples/PeoplePicker.Compact.Example';
-let PeoplePickerCompactExampleCode = require('./examples/PeoplePicker.Compact.Example.tsx');
+const PeoplePickerBasicExampleCode = require('./examples/PeoplePicker.Basic.Example.tsx');
+const PeoplePickerCompactExampleCode = require('./examples/PeoplePicker.Compact.Example.tsx');
+const PeoplePickerDisconnectedExampleCode = require('./examples/PeoplePicker.Disconnected.Example.tsx');
+const PeoplePickerMemberListExampleCode = require('./examples/PeoplePicker.MemberList.Example.tsx');
 
-import PeoplePickerDisconnectedExample from './examples/PeoplePicker.Disconnected.Example';
-let PeoplePickerDisconnectedExampleCode = require('./examples/PeoplePicker.Disconnected.Example.tsx');
-
-import PeoplePickerMemberListExample from './examples/PeoplePicker.MemberList.Example';
-let PeoplePickerMemberListExampleCode = require('./examples/PeoplePicker.MemberList.Example.tsx');
-
-export default class PeoplePickerExample extends React.Component<any, any> {
+export class PeoplePickerPage extends React.Component<any, any> {
   public render() {
     return (
       <div className='PeoplePickerExample'>

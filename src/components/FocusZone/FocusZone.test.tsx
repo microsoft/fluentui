@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
-import { KeyCodes } from '../KeyCodes';
+import { KeyCodes } from '../../utilities/KeyCodes';
 import { FocusZone, FocusZoneDirection } from './index';
 
 let { assert } = chai;

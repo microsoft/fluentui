@@ -1,12 +1,15 @@
 import * as React from 'react';
-import './GroupHeader.scss';
-import Check from './Check';
-import { IGroup, IDetailsGroupHeaderProps } from './index';
+import {
+  IDetailsGroupHeaderProps,
+  IGroup
+} from './index';
+import { Check } from './Check';
+import { GroupSpacer } from './GroupSpacer';
+import { Spinner } from '../../Spinner';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { css } from '../../utilities/css';
-import { default as Spinner } from '../Spinner/index';
-import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
 import { IViewport } from '../../utilities/decorators/withViewport';
-import GroupSpacer from './GroupSpacer';
+import './GroupHeader.scss';
 
 export interface IGroupHeaderProps {
   group: IGroup;
@@ -21,7 +24,7 @@ export interface IGroupHeaderState {
   isLoadingVisible: boolean;
 }
 
-export default class GroupHeader extends React.Component<IGroupHeaderProps, IGroupHeaderState> {
+export class GroupHeader extends React.Component<IGroupHeaderProps, IGroupHeaderState> {
   constructor(props: IGroupHeaderProps) {
     super(props);
 

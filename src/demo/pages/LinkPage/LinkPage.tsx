@@ -6,10 +6,10 @@ import {
   ExampleCard
 } from '../../components/index';
 
-import LinkBasicExample from './examples/Link.Basic.Example';
+import { LinkBasicExample } from './examples/Link.Basic.Example';
 let LinkBasicExampleCode = require('./examples/Link.Basic.Example.tsx');
 
-export default class LinkPage extends React.Component<any, any> {
+export class LinkPage extends React.Component<any, any> {
   public render() {
     return (
       <div className='LinkExample'>

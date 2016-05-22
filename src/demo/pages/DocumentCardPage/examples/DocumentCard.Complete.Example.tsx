@@ -2,13 +2,14 @@ import * as React from 'react';
 import {
   DocumentCard
 } from '../../../../index';
-import DocumentCardActions from '../../../../components/DocumentCard/DocumentCardActions';
-import DocumentCardActivity from '../../../../components/DocumentCard/DocumentCardActivity';
-import DocumentCardLocation from '../../../../components/DocumentCard/DocumentCardLocation';
-import DocumentCardPreview from '../../../../components/DocumentCard/DocumentCardPreview';
-import DocumentCardTitle from '../../../../components/DocumentCard/DocumentCardTitle';
 
-export default class DocumentCardCompleteExample extends React.Component<any, any> {
+import { DocumentCardActions } from '../../../../components/DocumentCard/DocumentCardActions';
+import { DocumentCardActivity } from '../../../../components/DocumentCard/DocumentCardActivity';
+import { DocumentCardLocation } from '../../../../components/DocumentCard/DocumentCardLocation';
+import { DocumentCardPreview } from '../../../../components/DocumentCard/DocumentCardPreview';
+import { DocumentCardTitle } from '../../../../components/DocumentCard/DocumentCardTitle';
+
+export class DocumentCardCompleteExample extends React.Component<any, any> {
   public render() {
     return (
         <DocumentCard

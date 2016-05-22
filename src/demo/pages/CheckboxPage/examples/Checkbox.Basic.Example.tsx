@@ -3,7 +3,7 @@ import {
   Checkbox
   } from '../../../../index';
 
-export default class CheckboxBasicExample extends React.Component<any, any> {
+export class CheckboxBasicExample extends React.Component<any, any> {
   constructor() {
     super();
     this._onToggleChanged = this._onToggleChanged.bind(this);

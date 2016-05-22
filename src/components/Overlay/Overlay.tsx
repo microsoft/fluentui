@@ -1,9 +1,9 @@
 import * as React from 'react';
-import './Overlay.scss';
-import { IOverlayProps } from './Overlay.props';
+import { IOverlayProps } from './Overlay.Props';
 import { css } from '../../utilities/css';
+import './Overlay.scss';
 
-export default class Overlay extends React.Component<IOverlayProps, {}> {
+export class Overlay extends React.Component<IOverlayProps, {}> {
   public render() {
     let { isDarkThemed, className } = this.props;
     let modifiedClassName = css(

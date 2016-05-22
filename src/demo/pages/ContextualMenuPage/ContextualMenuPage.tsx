@@ -7,19 +7,17 @@ import {
   PropertiesTableSet,
 } from '../../components/index';
 
-import ContextualMenuBasicExample from './examples/ContextualMenu.Basic.Example';
-let ContextualMenuBasicExampleCode = require('./examples/ContextualMenu.Basic.Example.tsx');
+import { ContextualMenuBasicExample } from './examples/ContextualMenu.Basic.Example';
+import { ContextualMenuCheckmarksExample } from './examples/ContextualMenu.Checkmarks.Example';
+import { ContextualMenuDirectionalExample } from './examples/ContextualMenu.Directional.Example';
+import { ContextualMenuCustomizationExample } from './examples/ContextualMenu.Customization.Example';
 
-import ContextualMenuCheckmarksExample from './examples/ContextualMenu.Checkmarks.Example';
-let ContextualMenuCheckmarksExampleCode = require('./examples/ContextualMenu.Checkmarks.Example.tsx');
+const ContextualMenuBasicExampleCode = require('./examples/ContextualMenu.Basic.Example.tsx');
+const ContextualMenuCheckmarksExampleCode = require('./examples/ContextualMenu.Checkmarks.Example.tsx');
+const ContextualMenuDirectionalExampleCode = require('./examples/ContextualMenu.Directional.Example.tsx');
+const ContextualMenuCustomizationExampleCode = require('./examples/ContextualMenu.Customization.Example.tsx');
 
-import ContextualMenuDirectionalExample from './examples/ContextualMenu.Directional.Example';
-let ContextualMenuDirectionalExampleCode = require('./examples/ContextualMenu.Directional.Example.tsx');
-
-import ContextualMenuCustomizationExample from './examples/ContextualMenu.Customization.Example';
-let ContextualMenuCustomizationExampleCode = require('./examples/ContextualMenu.Customization.Example.tsx');
-
-export default class ContextualMenuPage extends React.Component<any, any> {
+export class ContextualMenuPage extends React.Component<any, any> {
   public render() {
     return (
       <div className='ms-ContextualMenuPage'>

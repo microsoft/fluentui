@@ -1,5 +1,5 @@
 import * as React from 'react';
-import DetailsList from './DetailsList';
+import { DetailsList } from './DetailsList';
 import {
   ISelection,
   SelectionMode

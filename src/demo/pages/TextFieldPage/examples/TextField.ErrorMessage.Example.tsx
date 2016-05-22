@@ -3,9 +3,9 @@ import * as React from 'react';
 import {
   TextField
 } from '../../../../index';
-import NumberTextField from './NumberTextField';
+import { NumberTextField } from './NumberTextField';
 
-export default class TextFieldErrorMessageExample extends React.Component<{}, {}> {
+export class TextFieldErrorMessageExample extends React.Component<{}, {}> {
   public constructor(props: any) {
     super(props);
 

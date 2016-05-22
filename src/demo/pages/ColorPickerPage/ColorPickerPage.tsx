@@ -4,10 +4,11 @@ import {
   PropertiesTableSet
 } from '../../components/index';
 
-import ColorPickerBasicExample from './examples/ColorPicker.Basic.Example';
-let ColorPickerBasicExampleCode = require('./examples/ColorPicker.Basic.Example.tsx');
+import { ColorPickerBasicExample } from './examples/ColorPicker.Basic.Example';
 
-export default class ColorPickerPage extends React.Component<any, any> {
+const ColorPickerBasicExampleCode = require('./examples/ColorPicker.Basic.Example.tsx');
+
+export class ColorPickerPage extends React.Component<any, any> {
   public render() {
     return (
       <div className='ColorPickerExample'>

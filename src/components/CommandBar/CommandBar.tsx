@@ -1,11 +1,11 @@
 import * as React from 'react';
-import './CommandBar.scss';
-import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
-import EventGroup from '../../utilities/eventGroup/EventGroup';
-import { default as ContextualMenu, IContextualMenuItem } from '../ContextualMenu/index';
-import { DirectionalHint } from '../Callout/index';
-import { css } from '../../utilities/css';
 import { ICommandBarProps } from './CommandBar.Props';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { ContextualMenu, IContextualMenuItem } from '../../ContextualMenu';
+import { EventGroup } from '../../utilities/eventGroup/EventGroup';
+import { DirectionalHint } from '../../common/DirectionalHint';
+import { css } from '../../utilities/css';
+import './CommandBar.scss';
 
 const OVERFLOW_KEY = 'overflow';
 const OVERFLOW_WIDTH = 41.5;
@@ -286,5 +286,3 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     };
   }
 }
-
-export default CommandBar;

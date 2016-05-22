@@ -6,7 +6,7 @@ import {
   PivotLinkFormat
 } from '../../../../index';
 
-export default class PivotTabsExample extends React.Component<any, any> {
+export class PivotTabsExample extends React.Component<any, any> {
   public render() {
     return (
       <div>

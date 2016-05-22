@@ -8,7 +8,7 @@ export interface IToggleState {
 
 let _instance: number = 0;
 
-export default class Toggle extends React.Component<IToggleProps, IToggleState> {
+export class Toggle extends React.Component<IToggleProps, IToggleState> {
 
   public static initialProps = {
     label: '',

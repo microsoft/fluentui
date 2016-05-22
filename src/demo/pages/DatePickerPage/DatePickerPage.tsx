@@ -7,10 +7,11 @@ import {
   PropertiesTableSet
 } from '../../components/index';
 
-import DatePickerBasicExample from './examples/DatePicker.Basic.Example';
-let DatePickerBasicExampleCode = require('./examples/DatePicker.Basic.Example.tsx');
+import { DatePickerBasicExample } from './examples/DatePicker.Basic.Example';
 
-export default class DatePickerExample extends React.Component<any, any> {
+const DatePickerBasicExampleCode = require('./examples/DatePicker.Basic.Example.tsx');
+
+export class DatePickerPage extends React.Component<any, any> {
   public render() {
     return (
       <div className='DatePickerExample'>

@@ -41,7 +41,7 @@ export interface IDetailsListBasicExampleState {
   isLazyLoaded?: boolean;
 }
 
-export default class DetailsListBasicExample extends React.Component<any, IDetailsListBasicExampleState> {
+export class DetailsListBasicExample extends React.Component<any, IDetailsListBasicExampleState> {
   private _isFetchingItems: boolean;
 
   constructor() {

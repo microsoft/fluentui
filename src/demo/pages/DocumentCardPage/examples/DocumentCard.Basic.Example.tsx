@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {
-  DocumentCard
+  DocumentCard,
+  DocumentCardActivity,
+  DocumentCardPreview,
+  DocumentCardTitle
 } from '../../../../index';
-import DocumentCardActivity from '../../../../components/DocumentCard/DocumentCardActivity';
-import DocumentCardPreview from '../../../../components/DocumentCard/DocumentCardPreview';
-import DocumentCardTitle from '../../../../components/DocumentCard/DocumentCardTitle';
 
-export default class DocumentCardBasicExample extends React.Component<any, any> {
+export class DocumentCardBasicExample extends React.Component<any, any> {
   public render() {
     return (
         <DocumentCard onClickHref='http://bing.com'>

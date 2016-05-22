@@ -7,10 +7,11 @@ import {
   PropertiesTableSet
 } from '../../components/index';
 
-import OverlayBasicExample from './examples/Overlay.Basic.Example';
-let OverlayBasicExampleCode = require('./examples/Overlay.Basic.Example.tsx');
+import { OverlayBasicExample } from './examples/Overlay.Basic.Example';
 
-export default class OverlayPage extends React.Component<any, any> {
+const OverlayBasicExampleCode = require('./examples/Overlay.Basic.Example.tsx');
+
+export class OverlayPage extends React.Component<any, any> {
   public render() {
     return (
       <div>

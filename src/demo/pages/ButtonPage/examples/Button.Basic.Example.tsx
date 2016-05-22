@@ -12,7 +12,7 @@ export interface IBasicButtonsExampleState {
   disabled: boolean;
 }
 
-export class BasicButtonsExample extends React.Component<any, IBasicButtonsExampleState> {
+export class ButtonBasicExample extends React.Component<any, IBasicButtonsExampleState> {
 
   public constructor() {
     super();
@@ -61,5 +61,3 @@ export class BasicButtonsExample extends React.Component<any, IBasicButtonsExamp
     });
   }
 }
-
-export default BasicButtonsExample;

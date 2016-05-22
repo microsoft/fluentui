@@ -1,10 +1,10 @@
 import * as React from 'react';
-import AppState, { ExampleStatus } from '../../../components/App/AppState';
+import { AppState, ExampleStatus } from '../../../components/App/AppState';
 import {
   Nav
 } from '../../../../index';
 
-export default class NavBasicExample extends React.Component<any, any> {
+export class NavFabricDemoAppExample extends React.Component<any, any> {
   public render() {
     return (
       <Nav groups={ AppState.examplePages } onRenderLink={(link) => ([

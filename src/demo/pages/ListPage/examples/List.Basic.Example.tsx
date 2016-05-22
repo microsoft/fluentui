@@ -12,7 +12,7 @@ export interface IListBasicExampleState {
   filterText?: string;
 }
 
-export default class ListBasicExample extends React.Component<any, any> {
+export class ListBasicExample extends React.Component<any, any> {
   constructor() {
     super();
 

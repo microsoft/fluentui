@@ -1,12 +1,12 @@
 import * as React from 'react';
-import './Breadcrumb.scss';
-import EventGroup from '../../utilities/eventGroup/EventGroup';
-import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { ContextualMenu } from '../../ContextualMenu';
 import { IBreadcrumbProps, IBreadcrumb } from './Breadcrumb.Props';
-import { default as ContextualMenu } from '../ContextualMenu/index';
-import { DirectionalHint } from '../Callout/index';
+import { DirectionalHint } from '../../common/DirectionalHint';
+import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { getRTL } from '../../utilities/rtl';
 import { css } from '../../utilities/css';
+import './Breadcrumb.scss';
 
 export interface IBreadcrumbState {
   isOverflowOpen: boolean;
@@ -21,7 +21,7 @@ const OVERFLOW_WIDTH = 44;
 
 let _instance = 0;
 
-export default class Breadcrumb extends React.Component<IBreadcrumbProps, IBreadcrumbState> {
+export class Breadcrumb extends React.Component<IBreadcrumbProps, IBreadcrumbState> {
   public refs: {
     [key: string]: React.ReactInstance;
     renderingArea: HTMLElement;

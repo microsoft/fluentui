@@ -4,13 +4,13 @@ import {
   PropertiesTableSet
 } from '../../components/index';
 
-import DocumentCardBasicExample from './examples/DocumentCard.Basic.Example';
-let DocumentCardBasicExampleCode = require('./examples/DocumentCard.Basic.Example.tsx');
+import { DocumentCardBasicExample } from './examples/DocumentCard.Basic.Example';
+import { DocumentCardCompleteExample } from './examples/DocumentCard.Complete.Example';
 
-import DocumentCardCompleteExample from './examples/DocumentCard.Complete.Example';
-let DocumentCardCompleteExampleCode = require('./examples/DocumentCard.Complete.Example.tsx');
+const DocumentCardBasicExampleCode = require('./examples/DocumentCard.Basic.Example.tsx');
+const DocumentCardCompleteExampleCode = require('./examples/DocumentCard.Complete.Example.tsx');
 
-export default class DocumentCardPage extends React.Component<any, any> {
+export class DocumentCardPage extends React.Component<any, any> {
   public render() {
     return (
       <div>

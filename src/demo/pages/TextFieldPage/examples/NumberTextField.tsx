@@ -14,7 +14,7 @@ export interface INumberTextFieldState {
   value: string;
 }
 
-export default class NumberTextField extends React.Component<INumberTextFieldProps, INumberTextFieldState> {
+export class NumberTextField extends React.Component<INumberTextFieldProps, INumberTextFieldState> {
   constructor(props) {
     super(props);
 

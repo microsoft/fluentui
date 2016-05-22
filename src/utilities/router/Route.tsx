@@ -5,5 +5,5 @@ export interface IRouteProps {
   component: React.Component<any, any>;
 }
 
-export default class Route extends React.Component<any, any> {
+export class Route extends React.Component<any, any> {
 }

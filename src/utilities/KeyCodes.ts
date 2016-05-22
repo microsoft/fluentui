@@ -15,5 +15,3 @@ export enum KeyCodes {
   backspace = 8,
   del = 46
 }
-
-export default KeyCodes;

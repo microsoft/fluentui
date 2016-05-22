@@ -1,14 +1,14 @@
 import * as React from 'react';
-import FocusZone from '../../utilities/focus/FocusZone';
-import './ContextualMenu.scss';
-import KeyCodes from '../../utilities/KeyCodes';
-import EventGroup from '../../utilities/eventGroup/EventGroup';
+import { IContextualMenuProps, IContextualMenuItem } from './ContextualMenu.Props';
+import { DirectionalHint } from '../../common/DirectionalHint';
+import { FocusZone } from '../../FocusZone';
+import { KeyCodes } from '../../utilities/KeyCodes';
+import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { css } from '../../utilities/css';
 import { getRTL } from '../../utilities/rtl';
-import Async from '../../utilities/Async/Async';
-import { IContextualMenuProps, IContextualMenuItem } from './ContextualMenu.Props';
+import { Async } from '../../utilities/Async/Async';
 import { getRelativePositions, IPositionInfo } from '../../utilities/positioning';
-import { DirectionalHint } from '../Callout/index';
+import './ContextualMenu.scss';
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 const OFF_SCREEN_POSITION = { top: 0, left: -9999 };
@@ -68,7 +68,7 @@ interface IParsedDirectionalHint {
 
 let _instance = 0;
 
-export default class ContextualMenu extends React.Component<IContextualMenuProps, IContextualMenuState> {
+export class ContextualMenu extends React.Component<IContextualMenuProps, IContextualMenuState> {
   // The default ContextualMenu properities have no items and beak, the default submenu direction is right and top.
   public static defaultProps = {
     items: [],

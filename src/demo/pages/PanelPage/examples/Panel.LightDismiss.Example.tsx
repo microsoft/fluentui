@@ -4,7 +4,7 @@ import {
   Button
 } from '../../../../index';
 
-export default class PanelLightDismissExample extends React.Component<any, any> {
+export class PanelLightDismissExample extends React.Component<any, any> {
 
   constructor() {
     super();

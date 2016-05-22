@@ -7,10 +7,11 @@ import {
   PropertiesTableSet
 } from '../../components/index';
 
-import DropdownBasicExample from './examples/Dropdown.Basic.Example';
-let DropdownBasicExampleCode = require('./examples/Dropdown.Basic.Example.tsx');
+import { DropdownBasicExample } from './examples/Dropdown.Basic.Example';
 
-export default class DropdownExample extends React.Component<any, any> {
+const DropdownBasicExampleCode = require('./examples/Dropdown.Basic.Example.tsx');
+
+export class DropdownPage extends React.Component<any, any> {
   public render() {
     return (
       <div className='DropdownExample'>

@@ -3,7 +3,7 @@ import {
   TextField
 } from '../../../../index';
 
-export default class TextFieldBasicExample extends React.Component<any, any> {
+export class TextFieldBasicExample extends React.Component<any, any> {
   public render() {
     return (
       <div>

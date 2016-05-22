@@ -4,7 +4,7 @@ import {
 } from '../../../../index';
 import './Dropdown.Basic.Example.scss';
 
-export default class DropdownBasicExample extends React.Component<any, any> {
+export class DropdownBasicExample extends React.Component<any, any> {
   public render() {
     return (
       <div className='ms-DropdownBasicExample'>

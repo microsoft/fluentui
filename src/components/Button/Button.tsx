@@ -11,7 +11,7 @@ export interface IButtonState {
 
 let _instance = 0;
 
-export default class Button extends React.Component<IButtonProps, IButtonState> {
+export class Button extends React.Component<IButtonProps, IButtonState> {
   public static defaultProps: IButtonProps = {
     elementType: ElementType.button,
     buttonType: ButtonType.normal

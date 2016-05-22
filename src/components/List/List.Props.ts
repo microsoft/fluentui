@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ISelection } from '../../utilities/selection/interfaces';
-import List from './List';
+import { List } from './List';
 
 export interface IListProps extends React.Props<List> {
   /** Optional classname to append to root list. */

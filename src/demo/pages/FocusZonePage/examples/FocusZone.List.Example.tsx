@@ -5,13 +5,12 @@ import {
   FocusZone,
   FocusZoneDirection,
   IColumn,
-  Link,
-  Selection,
-  SelectionMode,
-  KeyCodes,
-  getRTLSafeKeyCode
+  Link
 } from '../../../../index';
-import DetailsRow from '../../../../components/DetailsList/DetailsRow';
+import { DetailsRow } from '../../../../components/DetailsList/DetailsRow';
+import { KeyCodes } from '../../../../utilities/KeyCodes';
+import { getRTLSafeKeyCode } from '../../../../utilities/rtl';
+import { Selection, SelectionMode } from '../../../../utilities/selection/index';
 
 const ITEMS = createArray(10, (index) => ({
   key: index,
@@ -42,7 +41,7 @@ const COLUMNS: IColumn[] = [
   }
 ];
 
-export default class ListExample extends React.Component<any, any> {
+export class FocusZoneListExample extends React.Component<any, any> {
   private _selection: Selection;
 
   constructor() {

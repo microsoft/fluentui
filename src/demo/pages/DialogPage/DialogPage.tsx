@@ -7,19 +7,17 @@ import {
   PropertiesTableSet
 } from '../../components/index';
 
-import DialogBasicExample from './examples/Dialog.Basic.Example';
-let DialogBasicExampleCode = require('./examples/Dialog.Basic.Example.tsx');
+import { DialogBasicExample } from './examples/Dialog.Basic.Example';
+import { DialogLargeHeaderExample } from './examples/Dialog.LargeHeader.Example';
+import { DialogCloseExample } from './examples/Dialog.Close.Example';
+import { DialogBlockingExample } from './examples/Dialog.Blocking.Example';
 
-import DialogLargeHeaderExample from './examples/Dialog.LargeHeader.Example';
-let DialogLargeHeaderExampleCode = require('./examples/Dialog.LargeHeader.Example.tsx');
+const DialogBasicExampleCode = require('./examples/Dialog.Basic.Example.tsx');
+const DialogLargeHeaderExampleCode = require('./examples/Dialog.LargeHeader.Example.tsx');
+const DialogCloseExampleCode = require('./examples/Dialog.Close.Example.tsx');
+const DialogBlockingExampleCode = require('./examples/Dialog.Blocking.Example.tsx');
 
-import DialogCloseExample from './examples/Dialog.Close.Example';
-let DialogCloseExampleCode = require('./examples/Dialog.Close.Example.tsx');
-
-import DialogBlockingExample from './examples/Dialog.Blocking.Example';
-let DialogBlockingExampleCode = require('./examples/Dialog.Blocking.Example.tsx');
-
-export default class DialogPage extends React.Component<any, any> {
+export class DialogPage extends React.Component<any, any> {
 
   public render() {
     return (

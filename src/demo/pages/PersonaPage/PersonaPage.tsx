@@ -7,13 +7,13 @@ import {
   PropertiesTableSet
 } from '../../components/index';
 
-import PersonaInitialsExample from './examples/Persona.Initials.Example';
-let PersonaInitialsExampleCode = require('./examples/Persona.Initials.Example.tsx');
+import { PersonaInitialsExample } from './examples/Persona.Initials.Example';
+import { PersonaBasicExample } from './examples/Persona.Basic.Example';
 
-import PersonaBasicExample from './examples/Persona.Basic.Example';
-let PersonaBasicExampleCode = require('./examples/Persona.Basic.Example.tsx');
+const PersonaInitialsExampleCode = require('./examples/Persona.Initials.Example.tsx');
+const PersonaBasicExampleCode = require('./examples/Persona.Basic.Example.tsx');
 
-export default class PersonaPage extends React.Component<any, any> {
+export class PersonaPage extends React.Component<any, any> {
   public render() {
     return (
       <div>

@@ -7,7 +7,7 @@ export interface IProgressIndicatorBasicExampleState {
     percentComplete: number;
 }
 
-export default class ProgressIndicatorBasicExample extends React.Component<any, IProgressIndicatorBasicExampleState> {
+export class ProgressIndicatorBasicExample extends React.Component<any, IProgressIndicatorBasicExampleState> {
   private _interval: number;
 
   constructor() {

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
-import KeyCodes from '../../utilities/KeyCodes';
-import { PivotItem } from './PivotItem';
 import { IPivotProps } from './Pivot.Props';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { KeyCodes } from '../../utilities/KeyCodes';
+import { PivotItem } from './PivotItem';
 import { PivotLinkFormat } from './Pivot.Props';
 import { PivotLinkSize } from './Pivot.Props';
 
@@ -33,7 +33,7 @@ interface IPivotLink {
   linkText: string;
 }
 
-export default class Pivot extends React.Component<IPivotProps, IPivotState> {
+export class Pivot extends React.Component<IPivotProps, IPivotState> {
 
   constructor(props?: IPivotProps) {
     super(props);

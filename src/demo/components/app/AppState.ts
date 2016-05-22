@@ -1,37 +1,37 @@
-import BreadcrumbPage from '../../pages/BreadcrumbPage/BreadcrumbPage';
-import ButtonPage from '../../pages/ButtonPage/ButtonPage';
-import CalloutPage from '../../pages/CalloutPage/CalloutPage';
-import ColorPickerPage from '../../pages/ColorPickerPage/ColorPickerPage';
-import DocumentCardPage from '../../pages/DocumentCardPage/DocumentCardPage';
-import CheckboxPage from '../../pages/CheckboxPage/CheckboxPage';
-import ChoiceGroupPage from '../../pages/ChoiceGroupPage/ChoiceGroupPage';
-import CommandBarPage from '../../pages/CommandBarPage/CommandBarPage';
-import ContextualMenuPage from '../../pages/ContextualMenuPage/ContextualMenuPage';
-import DatePickerPage from '../../pages/DatePickerPage/DatePickerPage';
-import DetailsListPage from '../../pages/DetailsListPage/DetailsListPage';
-import DialogPage from '../../pages/DialogPage/DialogPage';
-import DropdownPage from '../../pages/DropdownPage/DropdownPage';
-import FacepilePage from '../../pages/Facepile/FacepilePage';
-import FocusZonePage from '../../pages/FocusZonePage/FocusZonePage';
+import { BreadcrumbPage } from '../../pages/BreadcrumbPage/BreadcrumbPage';
+import { ButtonPage } from '../../pages/ButtonPage/ButtonPage';
+import { CalloutPage } from '../../pages/CalloutPage/CalloutPage';
+import { ColorPickerPage } from '../../pages/ColorPickerPage/ColorPickerPage';
+import { DocumentCardPage } from '../../pages/DocumentCardPage/DocumentCardPage';
+import { CheckboxPage } from '../../pages/CheckboxPage/CheckboxPage';
+import { ChoiceGroupPage } from '../../pages/ChoiceGroupPage/ChoiceGroupPage';
+import { CommandBarPage } from '../../pages/CommandBarPage/CommandBarPage';
+import { ContextualMenuPage } from '../../pages/ContextualMenuPage/ContextualMenuPage';
+import { DatePickerPage } from '../../pages/DatePickerPage/DatePickerPage';
+import { DetailsListPage } from '../../pages/DetailsListPage/DetailsListPage';
+import { DialogPage } from '../../pages/DialogPage/DialogPage';
+import { DropdownPage } from '../../pages/DropdownPage/DropdownPage';
+import { FacepilePage } from '../../pages/Facepile/FacepilePage';
+import { FocusZonePage } from '../../pages/FocusZonePage/FocusZonePage';
 import { INavLink, INavLinkGroup } from '../../../components/Nav/index';
-import LabelPage from '../../pages/LabelPage/LabelPage';
-import LayerPage from '../../pages/LayerPage/LayerPage';
-import LinkPage from '../../pages/LinkPage/LinkPage';
-import ListPage from '../../pages/ListPage/ListPage';
-import NavPage from '../../pages/NavPage/NavPage';
-import OrgChartPage from '../../pages/OrgChartPage/OrgChartPage';
-import OverlayPage from '../../pages/OverlayPage/OverlayPage';
-import PanelPage from '../../pages/PanelPage/PanelPage';
-import PeoplePickerPage from '../../pages/PeoplePickerPage/PeoplePickerPage';
-import PersonaCardPage from '../../pages/PersonaCardPage/PersonaCardPage';
-import PersonaPage from '../../pages/PersonaPage/PersonaPage';
-import PivotPage from '../../pages/PivotPage/PivotPage';
-import ProgressIndicatorPage from '../../pages/ProgressIndicatorPage/ProgressIndicatorPage';
-import SearchBoxPage from '../../pages/SearchBoxPage/SearchBoxPage';
-import SpinnerPage from '../../pages/SpinnerPage/SpinnerPage';
-import TextFieldPage from '../../pages/TextFieldPage/TextFieldPage';
-import TogglePage from '../../pages/TogglePage/TogglePage';
-import ThemePage from '../../pages/ThemePage/ThemePage';
+import { LabelPage } from '../../pages/LabelPage/LabelPage';
+import { LayerPage } from '../../pages/LayerPage/LayerPage';
+import { LinkPage } from '../../pages/LinkPage/LinkPage';
+import { ListPage } from '../../pages/ListPage/ListPage';
+import { NavPage } from '../../pages/NavPage/NavPage';
+import { OrgChartPage } from '../../pages/OrgChartPage/OrgChartPage';
+import { OverlayPage } from '../../pages/OverlayPage/OverlayPage';
+import { PanelPage } from '../../pages/PanelPage/PanelPage';
+import { PeoplePickerPage } from '../../pages/PeoplePickerPage/PeoplePickerPage';
+import { PersonaCardPage } from '../../pages/PersonaCardPage/PersonaCardPage';
+import { PersonaPage } from '../../pages/PersonaPage/PersonaPage';
+import { PivotPage } from '../../pages/PivotPage/PivotPage';
+import { ProgressIndicatorPage } from '../../pages/ProgressIndicatorPage/ProgressIndicatorPage';
+import { SearchBoxPage } from '../../pages/SearchBoxPage/SearchBoxPage';
+import { SpinnerPage } from '../../pages/SpinnerPage/SpinnerPage';
+import { TextFieldPage } from '../../pages/TextFieldPage/TextFieldPage';
+import { TogglePage } from '../../pages/TogglePage/TogglePage';
+import { ThemePage } from '../../pages/ThemePage/ThemePage';
 
 export enum ExampleStatus {
   placeholder,
@@ -293,5 +293,3 @@ export const AppState: IAppState = {
   ]
 
 };
-
-export default AppState;

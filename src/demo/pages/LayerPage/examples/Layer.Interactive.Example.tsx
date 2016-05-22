@@ -10,7 +10,7 @@ export interface ILayerInteractiveExampleState {
   contentType: string;
 }
 
-export default class LayerInteractiveExample extends React.Component<any, ILayerInteractiveExampleState> {
+export class LayerInteractiveExample extends React.Component<any, ILayerInteractiveExampleState> {
   constructor() {
     super();
 

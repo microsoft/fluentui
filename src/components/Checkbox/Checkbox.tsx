@@ -1,7 +1,7 @@
 import * as React from 'react';
-import './Checkbox.scss';
-import { css } from '../../utilities/css';
 import { ICheckboxProps } from './Checkbox.Props';
+import { css } from '../../utilities/css';
+import './Checkbox.scss';
 
 export interface ICheckboxState {
   id?: string;
@@ -10,7 +10,7 @@ export interface ICheckboxState {
 
 let _instance: number = 0;
 
-export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
+export class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
   public static defaultProps = {
     isSelected: false,
     isEnabled: true

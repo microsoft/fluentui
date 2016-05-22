@@ -34,7 +34,7 @@ const DIRECTION_OPTIONS = [
   { key: DirectionalHint[DirectionalHint.rightBottomEdge], text: 'Right Bottom Edge' },
 ];
 
-export default class CalloutDirectionalExample extends React.Component<any, ICalloutDirectionalExampleState> {
+export class CalloutDirectionalExample extends React.Component<any, ICalloutDirectionalExampleState> {
   private _menuButtonElement: HTMLElement;
   private _gapSize: TextField;
 

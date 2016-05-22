@@ -8,7 +8,7 @@ export interface IToggleBasicExampleState {
   isToggled: boolean;
 }
 
-export default class ToggleBasicExample extends React.Component<any, IToggleBasicExampleState> {
+export class ToggleBasicExample extends React.Component<any, IToggleBasicExampleState> {
   constructor() {
     super();
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Async from '../Async/Async';
+import { Async } from '../Async/Async';
 
 export function withContainsFocus<P, S>(ComposedComponent: any): any {
 
@@ -62,5 +62,3 @@ export function withContainsFocus<P, S>(ComposedComponent: any): any {
   };
 
 }
-
-export default withContainsFocus;

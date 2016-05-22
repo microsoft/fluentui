@@ -26,7 +26,7 @@ export class MailTile extends React.Component<any, any> {
   }
 }
 
-export default class MailListExample extends React.Component<any, any> {
+export class ListMailExample extends React.Component<any, any> {
   public render() {
     return (
       <div>

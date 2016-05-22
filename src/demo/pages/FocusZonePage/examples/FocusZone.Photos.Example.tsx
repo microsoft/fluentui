@@ -3,7 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import { FocusZone, Image } from '../../../../index';
-import { createArray } from '../../../../index';
+import { createArray } from '../../../../utilities/array';
 import './FocusZone.Photos.Example.scss';
 
 const PHOTOS = createArray(25, () => {
@@ -16,7 +16,7 @@ const PHOTOS = createArray(25, () => {
   };
 });
 
-export const PhotosExample = () => (
+export const FocusZonePhotosExample = () => (
   <FocusZone>
     <ul className='ms-FocusZoneExamples-photoList'>
       { PHOTOS.map((photo, index) => (
@@ -31,5 +31,3 @@ export const PhotosExample = () => (
     </ul>
   </FocusZone>
 );
-
-export default PhotosExample;

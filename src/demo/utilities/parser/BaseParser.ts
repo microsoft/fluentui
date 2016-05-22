@@ -2,7 +2,7 @@
 /**
  * Base for a parser - does not actually do any parsing.
  */
-export default class BaseParser {
+export class BaseParser {
   private _currLocation = 0;
   private _str: string;
   private _strLength: number;

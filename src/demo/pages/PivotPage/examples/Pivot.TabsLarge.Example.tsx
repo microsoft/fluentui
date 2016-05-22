@@ -7,7 +7,7 @@ import {
   PivotLinkSize
 } from '../../../../index';
 
-export default class PivotTabsLargeExample extends React.Component<any, any> {
+export class PivotTabsLargeExample extends React.Component<any, any> {
   public render() {
     return (
       <div>

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import './Label.scss';
 import { css } from '../../utilities/css';
 import { ILabelProps } from './Label.Props';
+import './Label.scss';
 
-export default class Label extends React.Component<ILabelProps, any> {
+export class Label extends React.Component<ILabelProps, any> {
   public render() {
     let {isDisabled, isRequired, children, htmlFor} = this.props;
 

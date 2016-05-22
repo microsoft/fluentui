@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { css } from '../../utilities/css';
-import Image from '../Image/Image';
-import './Persona.scss';
+import { Image } from '../Image/Image';
 import {
   IPersonaProps,
   PersonaInitialsColor,
-  PersonaSize,
-  PersonaPresence
+  PersonaPresence,
+  PersonaSize
 } from './Persona.Props';
 import {
   PERSONA_INITIALS_COLOR,
   PERSONA_PRESENCE,
   PERSONA_SIZE
 } from './PersonaConsts';
+import './Persona.scss';
 
 export class Persona extends React.Component<IPersonaProps, any> {
   public static defaultProps: IPersonaProps = {
@@ -49,5 +49,3 @@ export class Persona extends React.Component<IPersonaProps, any> {
     );
   }
 }
-
-export default Persona;

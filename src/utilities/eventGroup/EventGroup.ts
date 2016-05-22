@@ -275,5 +275,3 @@ export class EventGroup {
     }
   }
 }
-
-export default EventGroup;

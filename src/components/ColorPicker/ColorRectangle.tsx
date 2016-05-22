@@ -6,7 +6,7 @@ import {
   getFullColorString
  } from './colors';
 import { assign } from '../../utilities/object';
-import EventGroup from '../../utilities/eventGroup/EventGroup';
+import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 
 let hsv2hex = require('color-functions/lib/hsv2hex');
 
@@ -24,7 +24,7 @@ export interface IColorPickerState {
   fullColorString?: string;
 }
 
-export default class ColorPicker extends React.Component<IColorRectangleProps, IColorPickerState> {
+export class ColorRectangle extends React.Component<IColorRectangleProps, IColorPickerState> {
   public static defaultProps = {
     minSize: 220
   };

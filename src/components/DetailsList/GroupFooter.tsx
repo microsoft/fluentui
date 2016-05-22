@@ -1,8 +1,11 @@
 import * as React from 'react';
-import Link from '../Link/index';
-import { IGroup, IDetailsGroupFooterProps } from './index';
+import { Link } from '../../Link';
+import {
+  IDetailsGroupFooterProps,
+  IGroup,
+  } from './DetailsList.Props';
+import { GroupSpacer } from './GroupSpacer';
 import './GroupFooter.scss';
-import GroupSpacer from './GroupSpacer';
 
 export interface IGroupFooterProps {
   group: IGroup;
@@ -11,7 +14,7 @@ export interface IGroupFooterProps {
   footerProps?: IDetailsGroupFooterProps;
 }
 
-export default class GroupFooter extends React.Component<IGroupFooterProps, {}> {
+export class GroupFooter extends React.Component<IGroupFooterProps, {}> {
   constructor(props: IGroupFooterProps) {
     super(props);
 

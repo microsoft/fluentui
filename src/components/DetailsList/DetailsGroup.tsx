@@ -1,19 +1,19 @@
 import * as React from 'react';
-import GroupFooter from './GroupFooter';
-import DetailsRow from './DetailsRow';
-import GroupHeader from './GroupHeader';
-import List from '../List/index';
+import { GroupFooter } from './GroupFooter';
+import { DetailsRow } from './DetailsRow';
+import { GroupHeader } from './GroupHeader';
+import { List } from '../../List';
 import {
   IDragDropOptions
 } from './../../utilities/dragdrop/interfaces';
-import EventGroup from '../../utilities/eventGroup/EventGroup';
+import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { css } from '../../utilities/css';
 import {
   IGroup,
   IColumn,
   IDetailsGroupHeaderProps,
   IDetailsGroupFooterProps
-} from './index';
+} from './DetailsList.Props';
 import {
   ISelection,
   SelectionMode
@@ -85,7 +85,7 @@ export interface IDetailsGroupState {
 
 const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
 
-export default class DetailsGroup extends React.Component<IDetailsGroupProps, IDetailsGroupState> {
+export class DetailsGroup extends React.Component<IDetailsGroupProps, IDetailsGroupState> {
   public refs: {
     [key: string]: React.ReactInstance,
     root: HTMLElement,

@@ -6,10 +6,10 @@ import {
 import {
   Header
 } from '../index';
-import Nav from '../../../components/Nav/index';
-import './App.scss';
-import AppState, { ExampleStatus } from './AppState';
+import { Nav } from '../../../Nav';
+import { AppState, ExampleStatus } from './AppState';
 import { withResponsiveMode, ResponsiveMode } from '../../../utilities/decorators/withResponsiveMode';
+import './App.scss';
 
 export interface IAppProps extends React.Props<App> {
   responsiveMode?: ResponsiveMode;
@@ -19,7 +19,7 @@ export interface IAppState {
 }
 
 @withResponsiveMode
-export default class App extends React.Component<IAppProps, any> {
+export class App extends React.Component<IAppProps, any> {
 
   constructor(props: IAppProps) {
     super(props);

@@ -7,13 +7,13 @@ import {
   PropertiesTableSet
 } from '../../components/index';
 
-import ListBasicExample from './examples/List.Basic.Example';
-let ListBasicExampleCode = require('./examples/List.Basic.Example.tsx');
+import { ListBasicExample } from './examples/List.Basic.Example';
+import { ListMailExample } from './examples/List.Mail.Example';
 
-import ListMailExample from './examples/List.Mail.Example';
-let ListMailExampleCode = require('./examples/List.Mail.Example.tsx');
+const ListBasicExampleCode = require('./examples/List.Basic.Example.tsx');
+const ListMailExampleCode = require('./examples/List.Mail.Example.tsx');
 
-export default class ListPage extends React.Component<any, any> {
+export class ListPage extends React.Component<any, any> {
   public render() {
     return (
       <div className='ListExample'>

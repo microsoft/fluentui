@@ -7,7 +7,7 @@ import {
   PivotLinkSize
 } from '../../../../index';
 
-export default class PivotOnChangeExample extends React.Component<any, any> {
+export class PivotOnChangeExample extends React.Component<any, any> {
   public render() {
     return (
       <div>

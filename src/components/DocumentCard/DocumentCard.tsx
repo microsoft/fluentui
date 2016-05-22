@@ -1,9 +1,9 @@
 import * as React from 'react';
-import './DocumentCard.scss';
-import { css } from '../../utilities/css';
 import { IDocumentCardProps } from './DocumentCard.Props';
+import { css } from '../../utilities/css';
+import './DocumentCard.scss';
 
-export default class DocumentCard extends React.Component<IDocumentCardProps, any> {
+export class DocumentCard extends React.Component<IDocumentCardProps, any> {
   public render() {
     let { onClick, onClickHref, children } = this.props;
 

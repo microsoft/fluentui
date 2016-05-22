@@ -6,7 +6,7 @@ import {
 } from '../../../../index';
 import './Spinner.Basic.Example.scss';
 
-export default class BasicExample extends React.Component<any, any> {
+export class SpinnerBasicExample extends React.Component<any, any> {
   public render() {
     return (
       <div className='ms-BasicSpinnersExample'>

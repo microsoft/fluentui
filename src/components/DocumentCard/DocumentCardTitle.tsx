@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IDocumentCardTitleProps } from './DocumentCard.Props';
+import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import './DocumentCardTitle.scss';
-import EventGroup from '../../utilities/eventGroup/EventGroup';
 
 export interface IDocumentCardTitleState {
   truncatedTitleFirstPiece?: string;
@@ -14,7 +14,7 @@ const TRUNCATION_MAXIMUM_LENGTH = 90 - TRUNCATION_SEPARATOR.length;
 const TRUNCATION_FIRST_PIECE_LONGER_BY = 10;
 const TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD = 5;
 
-export default class DocumentCardTitle extends React.Component<IDocumentCardTitleProps, IDocumentCardTitleState> {
+export class DocumentCardTitle extends React.Component<IDocumentCardTitleProps, IDocumentCardTitleState> {
   public refs: {
     [key: string]: React.ReactInstance;
     titleElement: HTMLElement;

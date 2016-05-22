@@ -1,7 +1,7 @@
 import * as React from 'react';
-import EventGroup from '../eventGroup/EventGroup';
+import { EventGroup } from '../eventGroup/EventGroup';
 import { SelectionLayout } from './SelectionLayout';
-import KeyCodes from '../KeyCodes';
+import { KeyCodes } from '../KeyCodes';
 import {
   ISelection,
   ISelectionLayout,
@@ -36,7 +36,7 @@ export interface ISelectionZoneProps extends React.Props<SelectionZone> {
   onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
 }
 
-export default class SelectionZone extends React.Component<ISelectionZoneProps, any> {
+export class SelectionZone extends React.Component<ISelectionZoneProps, any> {
   public static defaultProps = {
     layout: new SelectionLayout(SelectionDirection.vertical),
     isMultiSelectEnabled: true,

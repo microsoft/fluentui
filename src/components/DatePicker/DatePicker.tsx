@@ -1,11 +1,13 @@
 import * as React from 'react';
-import TextField from '../TextField/index';
-import DatePickerDay from './DatePickerDay';
-import DatePickerMonth from './DatePickerMonth';
-import KeyCodes from '../../utilities/KeyCodes';
-import { IDatePickerProps, DayOfWeek } from './DatePicker.Props';
-import EventGroup from '../../utilities/eventGroup/EventGroup';
-
+import {
+  DayOfWeek,
+  IDatePickerProps
+} from './DatePicker.Props';
+import { DatePickerDay } from './DatePickerDay';
+import { DatePickerMonth } from './DatePickerMonth';
+import { TextField } from '../../TextField';
+import { KeyCodes } from '../../utilities/KeyCodes';
+import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import './DatePicker.scss';
 
 export interface IDatePickerState {
@@ -16,7 +18,7 @@ export interface IDatePickerState {
   isDatePickerShown?: boolean;
 }
 
-export default class DatePicker extends React.Component<IDatePickerProps, IDatePickerState> {
+export class DatePicker extends React.Component<IDatePickerProps, IDatePickerState> {
   public static defaultProps: IDatePickerProps = {
     format: (date: Date) => {
       if (date) {

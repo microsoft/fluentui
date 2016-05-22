@@ -1,10 +1,10 @@
 import * as React from 'react';
-import './Dropdown.scss';
+import { IDropdownProps, IDropdownOption } from './Dropdown.Props';
 import { css } from '../../utilities/css';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { findIndex } from '../../utilities/array';
-import KeyCodes from '../../utilities/KeyCodes';
-import { IDropdownProps, IDropdownOption } from './Dropdown.Props';
+import { KeyCodes } from '../../utilities/KeyCodes';
+import './Dropdown.scss';
 
 export interface IDropdownState {
   isOpen: boolean;
@@ -14,7 +14,7 @@ export interface IDropdownState {
 
 let _instance: number = 0;
 
-export default class Dropdown extends React.Component<IDropdownProps, any> {
+export class Dropdown extends React.Component<IDropdownProps, any> {
   public static defaultProps = {
     options: [],
     isDisabled: false

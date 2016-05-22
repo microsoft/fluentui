@@ -1,6 +1,6 @@
 import { IProperty, PropertyType } from '../../components/index';
-import InterfaceParser from './InterfaceParserHelper';
-import EnumParserHelper from './EnumParserHelper';
+import { InterfaceParserHelper } from './InterfaceParserHelper';
+import { EnumParserHelper } from './EnumParserHelper';
 
 /**
  * Given some valid, well linted Typescript source code, extracts exported interfaces and enums.
@@ -58,7 +58,7 @@ export function parse(source: string, propsInterfaceOrEnumName?: string): Array<
 function _parseEnumOrInterface(regexResult: RegExpExecArray) {
   let parseInfo;
   if (regexResult[1] === 'interface') {
-    let parser = new InterfaceParser(regexResult[0]);
+    let parser = new InterfaceParserHelper(regexResult[0]);
     parseInfo = parser.parse();
     parser = null;
   } else {

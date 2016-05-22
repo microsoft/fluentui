@@ -1,5 +1,5 @@
 import * as React from 'react';
-import EventGroup from '../eventGroup/EventGroup';
+import { EventGroup } from '../eventGroup/EventGroup';
 
 export interface IViewport {
   width: number;

@@ -7,10 +7,11 @@ import {
   PropertiesTableSet
 } from '../../components/index';
 
-import SpinnerBasicExample from './examples/Spinner.Basic.Example';
-let SpinnerBasicExampleCode = require('./examples/Spinner.Basic.Example.tsx');
+import { SpinnerBasicExample } from './examples/Spinner.Basic.Example';
 
-export default class SpinnerPage extends React.Component<any, any> {
+const SpinnerBasicExampleCode = require('./examples/Spinner.Basic.Example.tsx');
+
+export class SpinnerPage extends React.Component<any, any> {
   public render() {
     return (
       <div>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import EventGroup from '../../utilities/eventGroup/EventGroup';
+import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import {
   IDragDropHelper,
   IDragDropTarget,
@@ -17,7 +17,7 @@ export interface IDragDropHelperParams {
   selection: ISelection;
 }
 
-export default class DragDropHelper implements IDragDropHelper {
+export class DragDropHelper implements IDragDropHelper {
   private _dragEnterCounts: { [key: string]: number };
   private _isDragging: boolean;
   private _dragData: {

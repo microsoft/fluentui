@@ -3,10 +3,11 @@ import {
   ExampleCard, PropertiesTableSet
 } from '../../components/index';
 
-import FacepileBasicExample from './examples/Facepile.Basic.Example';
-let FacepileBasicExampleCode = require('./examples/Facepile.Basic.Example.tsx');
+import { FacepileBasicExample } from './examples/Facepile.Basic.Example';
 
-export default class FacepilePage extends React.Component<any, any> {
+const FacepileBasicExampleCode = require('./examples/Facepile.Basic.Example.tsx');
+
+export class FacepilePage extends React.Component<any, any> {
   public render() {
     return (
       <div className='FacepileExample'>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { css } from '../../utilities/css';
-import EventGroup from '../../utilities/eventGroup/EventGroup';
-import KeyCodes from '../../utilities/KeyCodes';
+import { EventGroup } from '../../utilities/eventGroup/EventGroup';
+import { KeyCodes } from '../../utilities/KeyCodes';
 
 const DIRECTIONAL_KEY_CODES = [
   KeyCodes.up,
@@ -17,15 +17,12 @@ const DIRECTIONAL_KEY_CODES = [
 
 const STATIONARY_DETECTION_DELAY = 100;
 
-export interface IFabricProps extends React.HTMLProps<HTMLDivElement> {
-}
-
 export interface IFabricState {
   isFocusVisible?: boolean;
   isStationary?: boolean;
 }
 
-export default class Fabric extends React.Component<IFabricProps, IFabricState> {
+export class Fabric extends React.Component<React.HTMLProps<Fabric>, IFabricState> {
   public refs: {
     [key: string]: React.ReactInstance;
     root: HTMLElement;

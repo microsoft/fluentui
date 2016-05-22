@@ -8,7 +8,7 @@ export interface IBasicColorPickerExampleState {
   color: string;
 }
 
-export class BasicButtonsExample extends React.Component<any, IBasicColorPickerExampleState> {
+export class ColorPickerBasicExample extends React.Component<any, IBasicColorPickerExampleState> {
 
   public render() {
 
@@ -17,5 +17,3 @@ export class BasicButtonsExample extends React.Component<any, IBasicColorPickerE
     );
   }
 }
-
-export default BasicButtonsExample;

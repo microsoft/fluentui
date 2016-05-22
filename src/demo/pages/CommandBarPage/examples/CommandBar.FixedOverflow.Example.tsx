@@ -4,7 +4,7 @@ import {
 } from '../../../../index';
 import { items, overflowItems } from './data';
 
-export default class CommandBarFixedOverflowExample extends React.Component<any, any> {
+export class CommandBarFixedOverflowExample extends React.Component<any, any> {
   public render() {
     return (
       <div>

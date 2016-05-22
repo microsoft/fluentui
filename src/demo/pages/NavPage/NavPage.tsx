@@ -7,15 +7,15 @@ import {
   PropertiesTableSet
 } from '../../components/index';
 
-import NavBasicExample from './examples/Nav.Basic.Example';
-import NavFabricDemoAppExample from './examples/Nav.FabricDemoApp.Example';
-import NavNestedExample from './examples/Nav.Nested.Example';
+import { NavBasicExample } from './examples/Nav.Basic.Example';
+import { NavFabricDemoAppExample } from './examples/Nav.FabricDemoApp.Example';
+import { NavNestedExample } from './examples/Nav.Nested.Example';
 
-let NavBasicExampleCode = require('./examples/Nav.Basic.Example.tsx');
-let NavFabricDemoAppExampleCode = require('./examples/Nav.FabricDemoApp.Example.tsx');
-let NavNestedExampleCode = require('./examples/Nav.Nested.Example.tsx');
+const NavBasicExampleCode = require('./examples/Nav.Basic.Example.tsx');
+const NavFabricDemoAppExampleCode = require('./examples/Nav.FabricDemoApp.Example.tsx');
+const NavNestedExampleCode = require('./examples/Nav.Nested.Example.tsx');
 
-export default class NavPage extends React.Component<any, any> {
+export class NavPage extends React.Component<any, any> {
   public render() {
     return (
       <div className='NavExample'>

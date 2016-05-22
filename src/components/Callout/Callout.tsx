@@ -1,10 +1,11 @@
 import * as React from 'react';
-import './Callout.scss';
-import { default as Layer } from '../Layer/index';
-import { ICalloutProps, DirectionalHint } from './Callout.Props';
+import { ICalloutProps } from './Callout.Props';
+import { DirectionalHint } from '../../common/DirectionalHint';
+import { Layer } from '../../Layer';
 import { css } from '../../utilities/css';
-import EventGroup from '../../utilities/eventGroup/EventGroup';
+import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { getRelativePositions, IPositionInfo } from '../../utilities/positioning';
+import './Callout.scss';
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 const OFF_SCREEN_POSITION = { top: 0, left: -9999 };
@@ -96,7 +97,4 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
       this.props.onLayerMounted();
     }
   }
-
 }
-
-export default Callout;

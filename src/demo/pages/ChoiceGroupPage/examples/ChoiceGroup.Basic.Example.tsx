@@ -11,7 +11,7 @@ export interface IChoiceGroupBasicExampleState {
   imageKey: string;
 }
 
-export default class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBasicExampleState> {
+export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBasicExampleState> {
   constructor() {
     super();
 

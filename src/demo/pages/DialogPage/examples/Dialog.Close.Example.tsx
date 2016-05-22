@@ -8,7 +8,7 @@ import {
   ChoiceGroup
 } from '../../../../index';
 
-export default class DialogBasicExample extends React.Component<any, any> {
+export class DialogCloseExample extends React.Component<any, any> {
 
   constructor() {
     super();

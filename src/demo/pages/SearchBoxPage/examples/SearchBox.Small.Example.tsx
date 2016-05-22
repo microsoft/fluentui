@@ -4,7 +4,7 @@ import {
 } from '../../../../index';
 import './SearchBox.Small.Example.scss';
 
-export default class SearchBoxSmallExample extends React.Component<any, any> {
+export class SearchBoxSmallExample extends React.Component<any, any> {
   public render() {
     return (
       <div className='ms-SearchBoxSmallExample'>

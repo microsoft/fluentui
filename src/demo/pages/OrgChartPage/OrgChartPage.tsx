@@ -6,12 +6,12 @@ import {
   ExampleCard,
   PropertiesTable
 } from '../../components/index';
-import OrgChartProps from './OrgChartProps';
 
-import OrgChartBasicExample from './examples/OrgChart.Basic.Example';
-let OrgChartBasicExampleCode = require('./examples/OrgChart.Basic.Example.tsx');
+import { OrgChartBasicExample } from './examples/OrgChart.Basic.Example';
 
-export default class OrgChartPage extends React.Component<any, any> {
+const OrgChartBasicExampleCode = require('./examples/OrgChart.Basic.Example.tsx');
+
+export class OrgChartPage extends React.Component<any, any> {
   public render() {
     return (
       <div>
@@ -24,7 +24,7 @@ export default class OrgChartPage extends React.Component<any, any> {
         <ExampleCard title='OrgChart' code={ OrgChartBasicExampleCode }>
           <OrgChartBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ OrgChartProps } />
+        <PropertiesTable properties={ null } />
       </div>
     );
   }

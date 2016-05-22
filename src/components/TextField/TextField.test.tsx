@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
 
-import TextField from './TextField';
+import { TextField } from './TextField';
 
 const expect: Chai.ExpectStatic = chai.expect;
 

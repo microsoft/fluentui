@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IColumn } from './index';
+import { IColumn } from './DetailsList.Props';
 import { css } from '../../utilities/css';
 import { shallowCompare } from '../../utilities/object';
 
@@ -9,7 +9,7 @@ export interface IDetailsRowFieldsProps {
   columns: IColumn[];
 }
 
-export default class DetailsRowFields extends React.Component<IDetailsRowFieldsProps, {}> {
+export class DetailsRowFields extends React.Component<IDetailsRowFieldsProps, {}> {
   public shouldComponentUpdate(newProps: IDetailsRowFieldsProps) {
     return !shallowCompare(this.props, newProps);
   }

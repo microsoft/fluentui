@@ -28,7 +28,7 @@ const facepileProps: IFacepileProps = {
   ]
 };
 
-export default class FacepileBasicExample extends React.Component<any, any> {
+export class FacepileBasicExample extends React.Component<any, any> {
   public render() {
     return (
       <Facepile {...facepileProps} />

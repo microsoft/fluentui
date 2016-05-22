@@ -7,10 +7,10 @@ import {
   PropertiesTableSet
 } from '../../components/index';
 
-import ProgressIndicatorBasicExample from './examples/ProgressIndicator.Basic.Example';
-let ProgressIndicatorBasicExampleCode = require('./examples/ProgressIndicator.Basic.Example.tsx');
+import { ProgressIndicatorBasicExample } from './examples/ProgressIndicator.Basic.Example';
+const ProgressIndicatorBasicExampleCode = require('./examples/ProgressIndicator.Basic.Example.tsx');
 
-export default class ProgressIndicatorPage extends React.Component<any, any> {
+export class ProgressIndicatorPage extends React.Component<any, any> {
 
   public render() {
     return (

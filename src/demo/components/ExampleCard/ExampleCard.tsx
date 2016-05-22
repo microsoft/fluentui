@@ -1,9 +1,9 @@
 import * as React from 'react';
 import './ExampleCard.scss';
-import { default as Button, ButtonType } from '../../../components/Button/index';
+import { Button, ButtonType } from '../../../Button';
 import { css } from '../../../utilities/css';
 
-let Highlight = require('react-highlight');
+const Highlight = require('react-highlight');
 
 export interface IExampleCardProps {
   title: string;

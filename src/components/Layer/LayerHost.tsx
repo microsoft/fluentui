@@ -1,5 +1,6 @@
 import * as React from 'react';
-import Fabric from '../Fabric/index';
+import { Fabric } from '../../Fabric';
+
 export interface ILayer {
   /**
    * The React children of the layer.
@@ -15,7 +16,7 @@ export interface ILayerHostState extends React.Props<LayerHost> {
   layers: ILayer[];
 }
 
-export default class LayerHost extends React.Component<React.Props<LayerHost>, ILayerHostState> {
+export class LayerHost extends React.Component<React.Props<LayerHost>, ILayerHostState> {
   constructor(props: {}) {
     super(props);
 

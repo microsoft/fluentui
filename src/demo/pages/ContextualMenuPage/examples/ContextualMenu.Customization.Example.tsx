@@ -2,7 +2,7 @@ import * as React from 'react';
 import { css } from '../../../../utilities/css';
 import { ContextualMenu } from '../../../../index';
 
-export default class ContextualMenuCustomizationExample extends React.Component<any, any> {
+export class ContextualMenuCustomizationExample extends React.Component<any, any> {
   public render() {
     return (
       <ContextualMenu

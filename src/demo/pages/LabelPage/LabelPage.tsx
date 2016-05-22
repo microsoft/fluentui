@@ -7,10 +7,11 @@ import {
   PropertiesTableSet
 } from '../../components/index';
 
-import LabelBasicExample from './examples/Label.Basic.Example';
-let LabelBasicExampleCode = require('./examples/Label.Basic.Example.tsx');
+import { LabelBasicExample } from './examples/Label.Basic.Example';
 
-export default class LabelPage extends React.Component<any, any> {
+const LabelBasicExampleCode = require('./examples/Label.Basic.Example.tsx');
+
+export class LabelPage extends React.Component<any, any> {
   public render() {
     return (
       <div className='ms-LabelExample'>

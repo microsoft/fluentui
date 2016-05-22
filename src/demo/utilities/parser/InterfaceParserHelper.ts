@@ -1,4 +1,4 @@
-import BaseParser from './BaseParser';
+import { BaseParser } from './BaseParser';
 import { IInterfaceProperty } from '../../components/index';
 
 const JSDOC_DEFAULT = '@default';
@@ -14,7 +14,7 @@ enum ParseState {
 /**
  * Helper Parser that parses interfaces.
  */
-export default class InterfaceParserHelper extends BaseParser {
+export class InterfaceParserHelper extends BaseParser {
   private _state: ParseState = ParseState.default;
 
   /**

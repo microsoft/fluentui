@@ -7,7 +7,7 @@ export interface IContextualMenuMultiselectExampleState {
 
 let keys: string[] = [ 'newItem', 'share', 'mobile', 'enablePrint', 'enableMusic', 'newSub', 'emailMessage', 'calendarEvent' ];
 
-export default class ContextualMenuCheckmarksExample extends React.Component<any, IContextualMenuMultiselectExampleState> {
+export class ContextualMenuCheckmarksExample extends React.Component<any, IContextualMenuMultiselectExampleState> {
 
   constructor() {
     super();

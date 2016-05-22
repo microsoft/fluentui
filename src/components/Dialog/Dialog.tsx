@@ -1,17 +1,17 @@
 import * as React from 'react';
-import './Dialog.scss';
-import Overlay from '../Overlay/Overlay';
-import Layer from '../Layer/Layer';
-import { DialogFooter } from './DialogFooter';
 import { IDialogProps, DialogType } from './Dialog.Props';
+import { Overlay } from '../../Overlay';
+import { Layer } from '../../Layer';
+import { DialogFooter } from './DialogFooter';
 import { css } from '../../utilities/css';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import './Dialog.scss';
 
 // @TODO - need to add animations, pending Fabric Team + Coulton work
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 
 @withResponsiveMode
-export default class Dialog extends React.Component<IDialogProps, any> {
+export class Dialog extends React.Component<IDialogProps, any> {
     public static defaultProps: IDialogProps = {
         isOpen: false,
         type: DialogType.normal,
@@ -33,8 +33,8 @@ export default class Dialog extends React.Component<IDialogProps, any> {
             'ms-Dialog--lgHeader': type === DialogType.largeHeader,
             'ms-Dialog--close': type === DialogType.close
         });
-
         let groupings = this._groupChildren();
+
         if (subText) {
             subTextContent = <p className='ms-Dialog-subText'>{ subText }</p>;
         }
@@ -44,7 +44,7 @@ export default class Dialog extends React.Component<IDialogProps, any> {
             return (
                 <Layer>
                     <div className={ dialogClassName }>
-                        <Overlay isDarkThemed={ isDarkOverlay } onClick={ isBlocking ? null : onDismiss}/>
+                        <Overlay isDarkThemed={ isDarkOverlay } onClick={ isBlocking ? null : onDismiss } />
                         <div className ={ css('ms-Dialog-main', this.props.className)}>
                             <button className='ms-Dialog-button ms-Dialog-button--close' onClick={ onDismiss }>
                                 <i className='ms-Icon ms-Icon--x'></i>

@@ -4,7 +4,7 @@ import {
   Layer
 } from '../../../../index';
 
-export default class LayerBasicExample extends React.Component<any, any> {
+export class LayerBasicExample extends React.Component<any, any> {
   public render() {
     return (
       <Layer>

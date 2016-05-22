@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { css } from '../../utilities/css';
-import './Panel.scss';
-import Overlay from '../Overlay/Overlay';
-import Layer from '../Layer/Layer';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { IPanelProps, PanelType } from './Panel.Props';
+import { Layer } from '../Layer/Layer';
+import { Overlay } from '../../Overlay';
+import { EventGroup } from '../../utilities/eventGroup/EventGroup';
+import { css } from '../../utilities/css';
 import { getRTL } from '../../utilities/rtl';
+import './Panel.scss';
 
 export interface IPanelState {
   isOpen?: boolean;
@@ -13,7 +13,7 @@ export interface IPanelState {
   isAnimatingClose?: boolean;
 }
 
-export default class Panel extends React.Component<IPanelProps, IPanelState> {
+export class Panel extends React.Component<IPanelProps, IPanelState> {
   public static defaultProps: IPanelProps = {
     isOpen: false,
     hasCloseButton: true,

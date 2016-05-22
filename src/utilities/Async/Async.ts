@@ -6,7 +6,7 @@
  * new instance of the class and remember to call dispose() during your code's dispose handler.
  */
 
-export default class Async {
+export class Async {
   private _timeoutIds = null;
   private _immediateIds = null;
   private _intervalIds = null;

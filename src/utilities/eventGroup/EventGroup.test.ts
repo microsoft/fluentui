@@ -1,4 +1,4 @@
-import EventGroup from './EventGroup';
+import { EventGroup } from './EventGroup';
 
 let { expect } = chai;
 

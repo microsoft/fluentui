@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { FocusZone } from '../../utilities/focus/index';
 import { IDatePickerStrings } from './DatePicker.Props';
-import KeyCodes from '../../utilities/KeyCodes';
+import { FocusZone } from '../../FocusZone';
+import { KeyCodes } from '../../utilities/KeyCodes';
 import { addYears, setMonth } from '../../utilities/dateMath/DateMath';
 import { getRTL } from '../../utilities/rtl';
 import { css } from '../../utilities/css';
@@ -12,7 +12,7 @@ export interface IDatePickerMonthProps {
    onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
 }
 
-export default class DatePickerMonth extends React.Component<IDatePickerMonthProps, {}> {
+export class DatePickerMonth extends React.Component<IDatePickerMonthProps, {}> {
   private _selectMonthCallbacks: (() => void)[];
 
   public constructor(props: IDatePickerMonthProps) {

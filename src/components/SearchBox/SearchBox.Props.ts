@@ -1,5 +1,5 @@
 import * as React from 'react';
-import SearchBox from './SearchBox';
+import { SearchBox } from './SearchBox';
 
 export interface ISearchBoxProps extends React.Props<SearchBox> {
 

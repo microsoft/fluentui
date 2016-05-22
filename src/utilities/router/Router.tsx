@@ -1,5 +1,5 @@
 import * as React from 'react';
-import EventGroup from '../eventGroup/EventGroup';
+import { EventGroup } from '../eventGroup/EventGroup';
 
 export interface IRouterProps {
   replaceState?: boolean;
@@ -10,7 +10,7 @@ export interface IRouterState {
   path: string;
 }
 
-export default class Router extends React.Component<IRouterProps, IRouterState> {
+export class Router extends React.Component<IRouterProps, IRouterState> {
   private _events: EventGroup;
 
   constructor() {

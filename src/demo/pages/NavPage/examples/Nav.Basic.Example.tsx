@@ -3,7 +3,7 @@ import {
   Nav
 } from '../../../../index';
 
-export default class NavBasicExample extends React.Component<any, any> {
+export class NavBasicExample extends React.Component<any, any> {
   public render() {
     return (
       <Nav

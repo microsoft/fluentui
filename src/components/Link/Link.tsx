@@ -1,8 +1,8 @@
 import * as React from 'react';
-import './Link.scss';
 import { css } from '../../utilities/css';
+import './Link.scss';
 
-export default class Link extends React.Component<React.HTMLProps<HTMLLinkElement>, any> {
+export class Link extends React.Component<React.HTMLProps<HTMLLinkElement>, any> {
 
   constructor(props: React.HTMLProps<HTMLLinkElement>) {
     super(props);

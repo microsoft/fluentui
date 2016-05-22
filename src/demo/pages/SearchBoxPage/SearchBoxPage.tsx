@@ -7,13 +7,13 @@ import {
   PropertiesTableSet
 } from '../../components/index';
 
-import SearchBoxSmallExample from './examples/SearchBox.Small.Example';
-let SearchBoxSmallExampleCode = require('./examples/SearchBox.Small.Example.tsx');
+import { SearchBoxSmallExample } from './examples/SearchBox.Small.Example';
+import { SearchBoxFullSizeExample } from './examples/SearchBox.FullSize.Example';
 
-import SearchBoxFullSizeExample from './examples/SearchBox.FullSize.Example';
-let SearchBoxFullSizeExampleCode = require('./examples/SearchBox.FullSize.Example.tsx');
+const SearchBoxSmallExampleCode = require('./examples/SearchBox.Small.Example.tsx');
+const SearchBoxFullSizeExampleCode = require('./examples/SearchBox.FullSize.Example.tsx');
 
-export default class SearchBoxPage extends React.Component<any, any> {
+export class SearchBoxPage extends React.Component<any, any> {
   public render() {
     return (
       <div>

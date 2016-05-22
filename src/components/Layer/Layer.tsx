@@ -1,12 +1,12 @@
 import * as React from 'react';
-import './Layer.scss';
-import * as ReactDom from 'react-dom';
-import LayerHost from './LayerHost';
+import * as ReactDOM from 'react-dom';
 import { ILayerProps } from './Layer.Props';
+import { LayerHost } from './LayerHost';
+import './Layer.scss';
 
 const LAYER_HOST_ELEMENT_ID = 'ms-layer-host';
 
-export default class Layer extends React.Component<ILayerProps, {}> {
+export class Layer extends React.Component<ILayerProps, {}> {
   private static _layerHost: LayerHost;
   private static _lastId: number = 0;
 
@@ -30,7 +30,7 @@ export default class Layer extends React.Component<ILayerProps, {}> {
       hostElement.setAttribute('id', LAYER_HOST_ELEMENT_ID);
       document.body.appendChild(hostElement);
 
-      let layerHost: LayerHost = ReactDom.render((
+      let layerHost: LayerHost = ReactDOM.render((
         <LayerHost />
       ), hostElement) as LayerHost;
 

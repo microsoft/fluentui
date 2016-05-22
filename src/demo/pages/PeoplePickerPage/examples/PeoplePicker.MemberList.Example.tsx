@@ -9,7 +9,7 @@ export interface IPeoplePickerExampleState {
   suggestions?: Array<IPersonaProps>;
 }
 
-export default class PeoplePickerMemberListExample extends React.Component<any, IPeoplePickerExampleState> {
+export class PeoplePickerMemberListExample extends React.Component<any, IPeoplePickerExampleState> {
   private _peopleList = [
     {
       imageUrl: '//www.fillmurray.com/200/200',

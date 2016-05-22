@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { IColumn } from './index';
+import { IColumn } from './DetailsList.Props';
+import { Check } from './Check';
+import { GroupSpacer } from './GroupSpacer';
+import { DetailsRowFields } from './DetailsRowFields';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
-import Check from './Check';
-import EventGroup from '../../utilities/eventGroup/EventGroup';
+import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { shallowCompare, assign } from '../../utilities/object';
 import { css } from '../../utilities/css';
-import DetailsRowFields from './DetailsRowFields';
-import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
 import {
   IDragDropHelper,
   IDragDropEvents,
@@ -14,7 +15,6 @@ import {
 } from './../../utilities/dragdrop/interfaces';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import './DetailsRow.scss';
-import GroupSpacer from './GroupSpacer';
 
 export interface IDetailsRowProps extends React.Props<DetailsRow> {
   item: any;
@@ -48,7 +48,7 @@ export interface IDetailsRowState {
 
 const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
 
-export default class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowState> {
+export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowState> {
   public refs: {
     [key: string]: React.ReactInstance,
     root: HTMLElement,

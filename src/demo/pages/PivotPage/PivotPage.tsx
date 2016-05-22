@@ -7,21 +7,21 @@ import {
   PropertiesTableSet
 } from '../../components/index';
 
- import PivotBasicExample from './examples/Pivot.Basic.Example';
-import PivotLargeExample from './examples/Pivot.Large.Example';
-import PivotTabsExample from './examples/Pivot.Tabs.Example';
-import PivotTabsLargeExample from './examples/Pivot.TabsLarge.Example';
-import PivotFabricExample from './examples/Pivot.Fabric.Example';
-import PivotOnChangeExample from './examples/Pivot.OnChange.Example';
+import { PivotBasicExample } from './examples/Pivot.Basic.Example';
+import { PivotLargeExample } from './examples/Pivot.Large.Example';
+import { PivotTabsExample } from './examples/Pivot.Tabs.Example';
+import { PivotTabsLargeExample } from './examples/Pivot.TabsLarge.Example';
+import { PivotFabricExample } from './examples/Pivot.Fabric.Example';
+import { PivotOnChangeExample } from './examples/Pivot.OnChange.Example';
 
-let PivotBasicExampleCode = require('./examples/Pivot.Basic.Example.tsx');
-let PivotLargeExampleCode = require('./examples/Pivot.Large.Example.tsx');
-let PivotTabsExampleCode = require('./examples/Pivot.Tabs.Example.tsx');
-let PivotTabsLargesExampleCode = require('./examples/Pivot.TabsLarge.Example.tsx');
-let PivotFabricExampleCode = require('./examples/Pivot.Fabric.Example.tsx');
-let PivotOnChangeExampleCode = require('./examples/Pivot.OnChange.Example.tsx');
+const PivotBasicExampleCode = require('./examples/Pivot.Basic.Example.tsx');
+const PivotLargeExampleCode = require('./examples/Pivot.Large.Example.tsx');
+const PivotTabsExampleCode = require('./examples/Pivot.Tabs.Example.tsx');
+const PivotTabsLargesExampleCode = require('./examples/Pivot.TabsLarge.Example.tsx');
+const PivotFabricExampleCode = require('./examples/Pivot.Fabric.Example.tsx');
+const PivotOnChangeExampleCode = require('./examples/Pivot.OnChange.Example.tsx');
 
-export default class PivotPageExample extends React.Component<any, any> {
+export class PivotPage extends React.Component<any, any> {
   public render() {
     return (
       <div className='PivotPageExample'>

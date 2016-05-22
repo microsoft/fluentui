@@ -7,10 +7,11 @@ import {
   PropertiesTableSet
 } from '../../components/index';
 
-import ButtonBasicExample from './examples/Button.Basic.Example';
-let ButtonBasicExampleCode = require('./examples/Button.Basic.Example.tsx');
+import { ButtonBasicExample } from './examples/Button.Basic.Example';
 
-export default class ButtonPage extends React.Component<any, any> {
+const ButtonBasicExampleCode = require('./examples/Button.Basic.Example.tsx');
+
+export class ButtonPage extends React.Component<any, any> {
   public render() {
     return (
       <div className='ButtonExample'>

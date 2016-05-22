@@ -1,4 +1,4 @@
-import BaseParser from './BaseParser';
+import { BaseParser } from './BaseParser';
 import { IEnumProperty } from '../../components/index';
 
 /**
@@ -11,7 +11,7 @@ enum ParseState {
 /**
  * Helper Parser that parses enums.
  */
-export default class EnumParserHelper extends BaseParser {
+export class EnumParserHelper extends BaseParser {
   private _state: ParseState = ParseState.default;
 
   /**

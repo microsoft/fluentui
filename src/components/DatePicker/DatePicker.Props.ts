@@ -1,5 +1,5 @@
 import * as React from 'react';
-import DatePicker from './DatePicker';
+import { DatePicker } from './DatePicker';
 
 export interface IDatePickerProps extends React.Props<DatePicker> {
   /**

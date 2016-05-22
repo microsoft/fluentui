@@ -7,12 +7,13 @@ import {
   PropertiesTableSet
 } from '../../components/index';
 
-import TextFieldBasicExample from './examples/TextField.Basic.Example';
-import TextFieldErrorMessageExample from './examples/TextField.ErrorMessage.Example';
-let TextFieldBasicExampleCode = require('./examples/TextField.Basic.Example.tsx');
-let TextFieldErrorMessageExampleCode = require('./examples/TextField.ErrorMessage.Example.tsx');
+import { TextFieldBasicExample } from './examples/TextField.Basic.Example';
+import { TextFieldErrorMessageExample } from './examples/TextField.ErrorMessage.Example';
 
-export default class TextFieldPage extends React.Component<any, any> {
+const TextFieldBasicExampleCode = require('./examples/TextField.Basic.Example.tsx');
+const TextFieldErrorMessageExampleCode = require('./examples/TextField.ErrorMessage.Example.tsx');
+
+export class TextFieldPage extends React.Component<any, any> {
   public render() {
     return (
       <div className='TextFieldExample'>

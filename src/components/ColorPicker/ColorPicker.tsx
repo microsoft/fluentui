@@ -1,7 +1,8 @@
 import * as React from 'react';
-import TextField from '../TextField';
-import ColorRectangle from './ColorRectangle';
-import ColorSlider from './ColorSlider';
+import { IColorPickerProps } from './ColorPicker.Props';
+import { TextField } from '../../TextField';
+import { ColorRectangle } from './ColorRectangle';
+import { ColorSlider } from './ColorSlider';
 import {
   IColor,
   MAX_COLOR_HUE,
@@ -11,7 +12,6 @@ import {
   updateSV
 } from './colors';
 import './ColorPicker.scss';
-import { IColorPickerProps } from './ColorPicker.Props';
 
 export interface IColorPickerState {
   isOpen: boolean;
@@ -30,7 +30,7 @@ export interface IColor {
   str: string;
 }
 
-export default class ColorPicker extends React.Component<IColorPickerProps, any> {
+export class ColorPicker extends React.Component<IColorPickerProps, any> {
   constructor(props: IColorPickerProps) {
     super(props);
 

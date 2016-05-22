@@ -3,7 +3,7 @@ import {
   Nav
 } from '../../../../index';
 
-export default class NavNestedExample extends React.Component<any, any> {
+export class NavNestedExample extends React.Component<any, any> {
   public render() {
     return (
       <Nav

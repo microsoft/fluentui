@@ -6,10 +6,12 @@ import {
   ExampleCard,
   PropertiesTableSet
 } from '../../components/index';
-import CheckboxBasicExample from './examples/Checkbox.Basic.Example';
-let CheckboxBasicExampleCode = require('./examples/Checkbox.Basic.Example.tsx');
 
-export default class CheckboxExample extends React.Component<any, any> {
+import { CheckboxBasicExample } from './examples/Checkbox.Basic.Example';
+
+const CheckboxBasicExampleCode = require('./examples/Checkbox.Basic.Example.tsx');
+
+export class CheckboxPage extends React.Component<any, any> {
   public render() {
     return (
       <div className='CheckboxExample'>

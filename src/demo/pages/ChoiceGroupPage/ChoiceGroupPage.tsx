@@ -7,10 +7,11 @@ import {
   PropertiesTableSet
 } from '../../components/index';
 
-import ChoiceGroupBasicExample from './examples/ChoiceGroup.Basic.Example';
-let ChoiceGroupBasicExampleCode = require('./examples/ChoiceGroup.Basic.Example.tsx');
+import { ChoiceGroupBasicExample } from './examples/ChoiceGroup.Basic.Example';
 
-export default class ChoiceGroupPage extends React.Component<any, any> {
+const ChoiceGroupBasicExampleCode = require('./examples/ChoiceGroup.Basic.Example.tsx');
+
+export class ChoiceGroupPage extends React.Component<any, any> {
 
   public render() {
     return (

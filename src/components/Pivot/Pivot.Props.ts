@@ -2,7 +2,7 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-import Pivot from './Pivot';
+import { Pivot } from './Pivot';
 import { PivotItem } from './PivotItem';
 
 export interface IPivotProps extends React.Props<Pivot> {

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import './Facepile.scss';
+import { Persona, PersonaSize } from '../../Persona';
 import { IFacepileProps, IFacepilePersona } from './Facepile.Props';
-import { default as Persona, PersonaSize } from '../Persona/index';
+import './Facepile.scss';
 
 export class Facepile extends React.Component<IFacepileProps, {}> {
 
@@ -47,5 +47,3 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
     ev.stopPropagation();
   }
 }
-
-export default Facepile;

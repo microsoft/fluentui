@@ -1,32 +1,32 @@
 import * as React from 'react';
-import { withViewport } from '../../utilities/decorators/withViewport';
-import { assign } from '../../utilities/object';
-import { css } from '../../utilities/css';
-import DetailsHeader from './DetailsHeader';
-import DetailsRow from './DetailsRow';
-import DetailsGroup from './DetailsGroup';
-import {
-  IObjectWithKey,
-  ISelection,
-  Selection,
-  SelectionMode
-} from '../../utilities/selection/index';
-import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
-import SelectionZone from '../../utilities/selection/SelectionZone';
-import EventGroup from '../../utilities/eventGroup/EventGroup';
 import {
   ColumnActionsMode,
   ConstrainMode,
   DetailsListLayoutMode,
   IColumn,
-  IDetailsListProps,
-  IGroup,
+  IDetailsGroupFooterProps,
   IDetailsGroupHeaderProps,
-  IDetailsGroupFooterProps
+  IDetailsListProps,
+  IGroup
 } from './DetailsList.Props';
+import { DetailsGroup } from './DetailsGroup';
+import { DetailsHeader } from './DetailsHeader';
+import { DetailsRow } from './DetailsRow';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { withViewport } from '../../utilities/decorators/withViewport';
+import { assign } from '../../utilities/object';
+import { css } from '../../utilities/css';
+import {
+  IObjectWithKey,
+  ISelection,
+  Selection,
+  SelectionMode,
+  SelectionZone
+  } from '../../utilities/selection/index';
+import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { getRTLSafeKeyCode } from '../../utilities/rtl';
 import { KeyCodes } from '../../utilities/KeyCodes';
-import DragDropHelper from '../../utilities/dragdrop/DragDropHelper';
+import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
 import './DetailsList.scss';
 
 export interface IDetailsListState {
@@ -595,5 +595,3 @@ export function buildColumns(
 
   return columns;
 }
-
-export default DetailsList;

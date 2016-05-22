@@ -7,10 +7,10 @@ import {
   PropertiesTableSet
 } from '../../components/index';
 
-import ToggleBasicExample from './examples/Toggle.Basic.Example';
-let ToggleBasicExampleCode = require('./examples/Toggle.Basic.Example.tsx');
+import { ToggleBasicExample } from './examples/Toggle.Basic.Example';
+const ToggleBasicExampleCode = require('./examples/Toggle.Basic.Example.tsx');
 
-export default class TogglePage extends React.Component<any, any> {
+export class TogglePage extends React.Component<any, any> {
   public render() {
     return (
       <div>

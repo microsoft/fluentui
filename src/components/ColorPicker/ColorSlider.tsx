@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css } from '../../utilities/css';
-import EventGroup from '../../utilities/eventGroup/EventGroup';
+import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 
 export interface IColorSliderProps {
   minValue?: number;
@@ -20,7 +20,7 @@ export interface IColorSliderState {
   currentValue?: number;
 }
 
-export default class ColorSlider extends React.Component<IColorSliderProps, IColorSliderState> {
+export class ColorSlider extends React.Component<IColorSliderProps, IColorSliderState> {
   public static defaultProps = {
     minValue: 0,
     maxValue: 100,

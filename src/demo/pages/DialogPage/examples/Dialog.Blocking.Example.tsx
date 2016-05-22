@@ -8,7 +8,7 @@ import {
   ChoiceGroup
 } from '../../../../index';
 
-export default class DialogBlockingExample extends React.Component<any, any> {
+export class DialogBlockingExample extends React.Component<any, any> {
 
   constructor() {
     super();

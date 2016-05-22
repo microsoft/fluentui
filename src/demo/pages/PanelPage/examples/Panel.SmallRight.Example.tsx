@@ -5,7 +5,7 @@ import {
   Button
 } from '../../../../index';
 
-export default class PanelSmallRightExample extends React.Component<any, any> {
+export class PanelSmallRightExample extends React.Component<any, any> {
 
   constructor() {
     super();

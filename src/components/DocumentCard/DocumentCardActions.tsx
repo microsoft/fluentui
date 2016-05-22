@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { IDocumentCardActionsProps } from './DocumentCard.Props';
+import { Button, ButtonType } from '../../Button';
 import './DocumentCardActions.scss';
-import Button from '../Button/Button';
-import { ButtonType } from '../Button/Button.Props';
 
-export default class DocumentCardActions extends React.Component<IDocumentCardActionsProps, any> {
+export class DocumentCardActions extends React.Component<IDocumentCardActionsProps, any> {
   public render() {
     let { actions, views } = this.props;
 

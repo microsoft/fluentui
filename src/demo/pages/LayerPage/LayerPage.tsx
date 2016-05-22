@@ -4,13 +4,14 @@ import {
   ExampleCard,
   PropertiesTableSet
 } from '../../components/index';
-import LayerBasicExample from './examples/Layer.Basic.Example';
-import LayerInteractiveExample from './examples/Layer.Interactive.Example';
+
+import { LayerBasicExample } from './examples/Layer.Basic.Example';
+import { LayerInteractiveExample } from './examples/Layer.Interactive.Example';
 
 const LayerBasicExampleCode = require('./examples/Layer.Basic.Example.tsx');
 const LayerInteractiveExampleCode = require('./examples/Layer.Interactive.Example.tsx');
 
-export default class LayerPage extends React.Component<any, any> {
+export class LayerPage extends React.Component<any, any> {
   public render() {
     return (
       <div>

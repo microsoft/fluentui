@@ -10,7 +10,7 @@ export interface IChangingItemsCommandBarState {
   farItems?: IContextualMenuItem[];
 }
 
-export default class CommandBarRandomItemsExample extends React.Component<any, IChangingItemsCommandBarState> {
+export class CommandBarRandomItemsExample extends React.Component<any, IChangingItemsCommandBarState> {
   private _changeTimerId;
 
   constructor() {

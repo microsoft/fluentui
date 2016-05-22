@@ -9,7 +9,7 @@ import {
 } from '../../../../index';
 import './Dialog.Basic.Example.scss';
 
-export default class DialogBasicExample extends React.Component<any, any> {
+export class DialogBasicExample extends React.Component<any, any> {
 
   constructor() {
     super();

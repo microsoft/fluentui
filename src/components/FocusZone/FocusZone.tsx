@@ -1,9 +1,9 @@
 import * as React from 'react';
-import EventGroup from '../eventGroup/EventGroup';
-import KeyCodes from '../KeyCodes';
-import { getRTL } from '../rtl';
-import { css } from '../css';
 import { IFocusZoneProps, FocusZoneDirection } from './FocusZone.Props';
+import { EventGroup } from '../../utilities/eventGroup/EventGroup';
+import { KeyCodes } from '../../utilities/KeyCodes';
+import { getRTL } from '../../utilities/rtl';
+import { css } from '../../utilities/css';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_ENTER_DISABLED_ATTRIBUTE = 'data-disable-click-on-enter';
@@ -20,7 +20,7 @@ interface IPoint {
   top: number;
 }
 
-export default class FocusZone extends React.Component<IFocusZoneProps, {}> {
+export class FocusZone extends React.Component<IFocusZoneProps, {}> {
 
   public static defaultProps: IFocusZoneProps = {
     isCircularNavigation: false,

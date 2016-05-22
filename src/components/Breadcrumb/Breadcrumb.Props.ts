@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import Breadcrumb from './Breadcrumb';
+import { Breadcrumb } from './Breadcrumb';
 
 export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
   /**

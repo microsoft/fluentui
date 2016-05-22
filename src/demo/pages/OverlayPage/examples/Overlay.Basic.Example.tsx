@@ -6,7 +6,7 @@ import {
 
 import './Overlay.Basic.Example.scss';
 
-export default class OverlayBasicExample extends React.Component<any, any> {
+export class OverlayBasicExample extends React.Component<any, any> {
   constructor() {
     super();
 

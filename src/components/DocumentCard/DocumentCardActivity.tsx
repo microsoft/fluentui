@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { IDocumentCardActivityProps, IDocumentCardActivityPerson } from './DocumentCard.Props';
-import './DocumentCardActivity.scss';
-import { css } from '../../utilities/css';
-import Image from '../Image/Image';
+import { Image } from '../../Image';
 import {
   PERSONA_INITIALS_COLOR,
   PersonaInitialsColor
-} from '../Persona/index';
+} from '../../Persona';
+import { css } from '../../utilities/css';
+import './DocumentCardActivity.scss';
 
-export default class DocumentCardActivity extends React.Component<IDocumentCardActivityProps, any> {
+export class DocumentCardActivity extends React.Component<IDocumentCardActivityProps, any> {
   public render() {
     let { activity, people } = this.props;
 

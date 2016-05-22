@@ -7,10 +7,11 @@ import {
   PropertiesTableSet
 } from '../../components/index';
 
-import DetailsListBasicExample from './examples/DetailsList.Basic.Example';
-let DetailsListBasicExampleCode = require('./examples/DetailsList.Basic.Example.tsx');
+import { DetailsListBasicExample } from './examples/DetailsList.Basic.Example';
 
-export default class DetailsListPage extends React.Component<any, any> {
+const DetailsListBasicExampleCode = require('./examples/DetailsList.Basic.Example.tsx');
+
+export class DetailsListPage extends React.Component<any, any> {
 
   public render() {
     return (

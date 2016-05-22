@@ -1,9 +1,9 @@
 import * as React from 'react';
-import Label from '../Label/index';
-import './TextField.scss';
-import { css } from '../../utilities/css';
-import Async from '../../utilities/Async/Async';
 import { ITextFieldProps } from './TextField.Props';
+import { Label } from '../../Label';
+import { css } from '../../utilities/css';
+import { Async } from '../../utilities/Async/Async';
+import './TextField.scss';
 
 export interface ITextFieldState {
   value: string;
@@ -19,7 +19,7 @@ export interface ITextFieldState {
 
 let _instance: number = 0;
 
-export default class TextField extends React.Component<ITextFieldProps, ITextFieldState> {
+export class TextField extends React.Component<ITextFieldProps, ITextFieldState> {
   public static defaultProps: ITextFieldProps = {
     multiline: false,
     underlined: false,

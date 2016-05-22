@@ -1,11 +1,11 @@
 import * as React from 'react';
-import DocumentCard from './DocumentCard';
-import DocumentCardTitle from './DocumentCardTitle';
-import DocumentCardPreview from './DocumentCardPreview';
-import DocumentCardLocation from './DocumentCardLocation';
-import DocumentCardActivity from './DocumentCardLocation';
-import DocumentCardActions from './DocumentCardActions';
-import { PersonaInitialsColor } from '../Persona/index';
+import { DocumentCard } from './DocumentCard';
+import { DocumentCardTitle } from './DocumentCardTitle';
+import { DocumentCardPreview } from './DocumentCardPreview';
+import { DocumentCardLocation } from './DocumentCardLocation';
+import { DocumentCardActivity } from './DocumentCardActivity';
+import { DocumentCardActions } from './DocumentCardActions';
+import { PersonaInitialsColor } from '../../Persona';
 
 export interface IDocumentCardProps extends React.Props<DocumentCard> {
   /**

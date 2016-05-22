@@ -1,9 +1,9 @@
 import * as React from 'react';
-import EventGroup from '../../utilities/eventGroup/EventGroup';
 import { IListProps } from './List.Props';
+import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { css } from '../../utilities/css';
 import { assign } from '../../utilities/object';
-import Async from '../../utilities/Async/Async';
+import { Async } from '../../utilities/Async/Async';
 
 const MIN_SCROLL_UPDATE_DELAY = 30;
 const MAX_SCROLL_UPDATE_DELAY = 200;
@@ -36,7 +36,7 @@ const EMPTY_RECT = {
   height: 0
 };
 
-export default class List extends React.Component<IListProps, IListState> {
+export class List extends React.Component<IListProps, IListState> {
   public static defaultProps = {
     startIndex: 0,
     itemsPerPage: ITEMS_PER_PAGE,

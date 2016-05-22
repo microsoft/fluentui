@@ -4,13 +4,13 @@ import {
   PropertiesTableSet
 } from '../../components/index';
 
-import FocusZonePhotosExample from './examples/FocusZone.Photos.Example';
-let FocusZonePhotosExampleCode = require('./examples/FocusZone.Photos.Example.tsx');
+import { FocusZonePhotosExample } from './examples/FocusZone.Photos.Example';
+import { FocusZoneListExample } from './examples/FocusZone.List.Example';
 
-import FocusZoneListExample from './examples/FocusZone.List.Example';
-let FocusZoneListExampleCode = require('./examples/FocusZone.List.Example.tsx');
+const FocusZonePhotosExampleCode = require('./examples/FocusZone.Photos.Example.tsx');
+const FocusZoneListExampleCode = require('./examples/FocusZone.List.Example.tsx');
 
-export default class FocusZonePage extends React.Component<any, any> {
+export class FocusZonePage extends React.Component<any, any> {
 
   public render() {
     return (

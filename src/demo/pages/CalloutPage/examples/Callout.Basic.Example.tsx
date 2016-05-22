@@ -10,7 +10,7 @@ export interface ICalloutBaiscExampleState {
   isCalloutVisible?: boolean;
 }
 
-export default class CalloutBasicExample extends React.Component<any, ICalloutBaiscExampleState> {
+export class CalloutBasicExample extends React.Component<any, ICalloutBaiscExampleState> {
   private _menuButtonElement: HTMLElement;
 
   public constructor() {

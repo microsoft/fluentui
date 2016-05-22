@@ -1,7 +1,7 @@
 import * as React from 'react';
-import './SearchBox.scss';
 import { ISearchBoxProps } from './SearchBox.Props';
 import { css } from '../../utilities/css';
+import './SearchBox.scss';
 
 export interface ISearchBoxState {
   value?: string;
@@ -11,7 +11,7 @@ export interface ISearchBoxState {
 
 let _instance: number = 0;
 
-export default class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState> {
+export class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState> {
   public static defaultProps: ISearchBoxProps = {
     labelText: 'Search',
   };

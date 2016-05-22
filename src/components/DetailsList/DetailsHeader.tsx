@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { IColumn, DetailsListLayoutMode, ColumnActionsMode } from './index';
+import { IColumn, DetailsListLayoutMode, ColumnActionsMode } from './DetailsList.Props';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { Check } from './Check';
+import { GroupSpacer } from './GroupSpacer';
 import { css } from '../../utilities/css';
-import { FocusZone, FocusZoneDirection } from '../../utilities/focus/index';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
-import Check from './Check';
-import GroupSpacer from './GroupSpacer';
 import { getRTL } from '../../utilities/rtl';
-import EventGroup from '../../utilities/eventGroup/EventGroup';
+import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import './DetailsHeader.scss';
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
@@ -45,7 +45,7 @@ export interface IColumnResizeDetails {
   columnMinWidth: number;
 }
 
-export default class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetailsHeaderState> {
+export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetailsHeaderState> {
   private _events: EventGroup;
 
   constructor(props: IDetailsHeaderProps) {

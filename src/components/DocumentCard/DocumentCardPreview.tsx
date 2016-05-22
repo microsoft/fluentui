@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { IDocumentCardPreviewProps } from './DocumentCard.Props';
+import { Image } from '../../Image';
 import './DocumentCardPreview.scss';
-import Image from '../Image/Image';
 
-export default class DocumentCardTitle extends React.Component<IDocumentCardPreviewProps, any> {
+export class DocumentCardPreview extends React.Component<IDocumentCardPreviewProps, any> {
   public render() {
     let { previewImageSrc, iconSrc, accentColor } = this.props;
 

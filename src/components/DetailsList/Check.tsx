@@ -29,5 +29,3 @@ export class Check extends React.Component<ICheckProps, {}> {
     );
   }
 }
-
-export default Check;

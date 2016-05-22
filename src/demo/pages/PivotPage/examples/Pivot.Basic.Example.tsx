@@ -5,7 +5,7 @@ import {
   PivotItem
 } from '../../../../index';
 
-export default class PivotLargeExample extends React.Component<any, any> {
+export class PivotBasicExample extends React.Component<any, any> {
   public render() {
     return (
       <div>

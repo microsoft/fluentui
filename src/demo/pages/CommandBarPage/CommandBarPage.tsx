@@ -7,16 +7,15 @@ import {
   PropertiesTableSet
 } from '../../components/index';
 
-import CommandBarBasicExample from './examples/CommandBar.Basic.Example';
-let CommandBarBasicExampleCode = require('./examples/CommandBar.Basic.Example.tsx');
+import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
+import { CommandBarFixedOverflowExample } from './examples/CommandBar.FixedOverflow.Example';
+import { CommandBarRandomItemsExample } from './examples/CommandBar.RandomItems.Example';
 
-import CommandBarFixedOverflowExample from './examples/CommandBar.FixedOverflow.Example';
-let CommandBarFixedOverflowExampleCode = require('./examples/CommandBar.FixedOverflow.Example.tsx');
+const CommandBarBasicExampleCode = require('./examples/CommandBar.Basic.Example.tsx');
+const CommandBarFixedOverflowExampleCode = require('./examples/CommandBar.FixedOverflow.Example.tsx');
+const CommandBarRandomItemsExampleCode = require('./examples/CommandBar.RandomItems.Example.tsx');
 
-import CommandBarRandomItemsExample from './examples/CommandBar.RandomItems.Example';
-let CommandBarRandomItemsExampleCode = require('./examples/CommandBar.RandomItems.Example.tsx');
-
-export default class CommandBarPage extends React.Component<any, any> {
+export class CommandBarPage extends React.Component<any, any> {
   public render() {
     return (
       <div>

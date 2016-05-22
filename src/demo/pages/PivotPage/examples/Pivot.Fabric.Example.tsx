@@ -7,26 +7,26 @@ import {
   PivotLinkSize
 } from '../../../../index';
 
-import CalloutExample from '../../CalloutPage/examples/Callout.Basic.Example';
-import SpinnerExample from '../../SpinnerPage/examples/Spinner.Basic.Example';
-import PersonaExample from '../../PersonaPage/examples/Persona.Basic.Example';
+import { CalloutBasicExample } from '../../CalloutPage/examples/Callout.Basic.Example';
+import { SpinnerBasicExample } from '../../SpinnerPage/examples/Spinner.Basic.Example';
+import { PersonaBasicExample } from '../../PersonaPage/examples/Persona.Basic.Example';
 
-export default class PivotFabricExample extends React.Component<any, any> {
+export class PivotFabricExample extends React.Component<any, any> {
   public render() {
     return (
       <div>
         <Pivot linkFormat={ PivotLinkFormat.links} linkSize={ PivotLinkSize.normal }>
             <PivotItem linkText='Callout'>
               <Label>Callout Example</Label>
-              <CalloutExample/>
+              <CalloutBasicExample/>
             </PivotItem>
             <PivotItem linkText='Spinner'>
               <Label>Spinner Example</Label>
-              <SpinnerExample/>
+              <SpinnerBasicExample/>
             </PivotItem>
             <PivotItem linkText='PersonaCard'>
               <Label>Persona Card Example</Label>
-              <PersonaExample/>
+              <PersonaBasicExample/>
             </PivotItem>
         </Pivot>
       </div>

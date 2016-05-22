@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { css } from '../../utilities/css';
-import Image from '../Image/index';
 import { IChoiceGroupOption, IChoiceGroupProps } from './ChoiceGroup.Props';
+import { Image } from '../../Image';
+import { css } from '../../utilities/css';
 import './ChoiceGroup.scss';
 
 let _instance = 0;
 
-export default class ChoiceGroup extends React.Component<IChoiceGroupProps, any> {
+export class ChoiceGroup extends React.Component<IChoiceGroupProps, any> {
   public static defaultProps = {
     options: []
   };
