@@ -2,7 +2,7 @@
 @import "~office-ui-fabric/src/components/Link/Link";
 
 .ms-Link {
-  @include focus-border($ms-color-neutralSecondaryAlt);
+  @include focus-border();
 
   font-family: $ms-font-family-regular;
   font-weight: normal;

@@ -1,4 +1,6 @@
-@mixin focus-border($color, $padding: 0) {
+@import './semanticColorVariables';
+
+@mixin focus-border($padding: 0, $color: $focusedBorderColor) {
   .ms-Fabric &::-moz-focus-inner {
     // Clear the focus border in Firefox. Reference: http://stackoverflow.com/a/199319/1436671
     border: 0;

@@ -1,13 +1,5 @@
 @import '../../common/common';
 
-$focusedBorderColor: $ms-color-neutralSecondaryAlt;
-$selectedColor: $ms-color-themeLighter;
-$selectedHoverColor: $ms-color-themeLight;
-$unselectedHoverColor: $ms-color-themeLighterAlt;
-$selectedHighlightColor: $ms-color-themePrimary;
-$groupBorderColor: $ms-color-neutralLight;
-$linkTextColor: $ms-color-neutralPrimary;
-
 .ms-Nav {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -50,12 +42,20 @@ $linkTextColor: $ms-color-neutralPrimary;
   padding: 0 40px;
   background: none;
   border: none;
-  border-bottom: 1px solid $groupBorderColor;
+  border-bottom: 1px solid $dividerColor;
   text-transform: uppercase;
   cursor: pointer;
 
+  color: $unselectedForegroundColor;
+  background: $unselectedBackgroundColor;
+
   &:visited {
     color: inherit;
+  }
+
+  &:hover {
+    color: $unselectedHoverForegroundColor;
+    background: $unselectedHoverBackgroundColor;
   }
 }
 
@@ -72,10 +72,6 @@ $linkTextColor: $ms-color-neutralPrimary;
   transform: rotate(-180deg);
 }
 
-.ms-Nav-groupButton:hover {
-  background: $unselectedHoverColor;
-}
-
 .ms-Nav-link {
   display: block;
   position: relative;
@@ -83,49 +79,43 @@ $linkTextColor: $ms-color-neutralPrimary;
   line-height: 40px;
   text-decoration: none;
   padding: 0 40px;
-  color: $linkTextColor;
   cursor: pointer;
   text-overflow: ellipsis;
   text-decoration: none;
   white-space: nowrap;
   overflow-x: hidden;
 
-  &:visited {
-    color: inherit;
-  }
+  color: $unselectedForegroundColor;
+  background: $unselectedBackgroundColor;
 
   &:hover {
-    background: $unselectedHoverColor;
+    color: $unselectedHoverForegroundColor;
+    background: $unselectedHoverBackgroundColor;
   }
 
   &.is-selected {
-    background: $selectedColor;
+    position: relative;
+    color: $selectedForegroundColor;
+    background: $selectedBackgroundColor;
 
     &:hover {
-      background: $selectedHoverColor;
+      color: $selectedHoverForegroundColor;
+      background: $selectedHoverBackgroundColor;
+    }
+
+    &:after {
+      @include border-left(2px, solid, $selectedForegroundColor);
+
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
     }
   }
 }
 
 .ms-Nav-groupButton, .ms-Nav-link {
-  @include focus-border($focusedBorderColor);
-}
-
-.ms-Nav-link.is-selected {
-  position: relative;
-
-  &:hover {
-    background: $selectedHoverColor;
-  }
-
-  &:after {
-    @include border-left(4px, solid, $selectedHighlightColor);
-
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  }
+  @include focus-border();
 }

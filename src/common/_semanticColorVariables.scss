@@ -1,0 +1,22 @@
+$focusedBorderColor: $ms-color-neutralSecondaryAlt;
+
+$bodyBackgroundColor: $ms-color-white;
+$bodyForegroundColor: $ms-color-black;
+
+/* Primary item colors, used for Nav, DetailsList headers, Pivots */
+$unselectedBackgroundColor: $bodyBackgroundColor;
+$unselectedForegroundColor: $bodyForegroundColor;
+
+$disabledBackgroundColor: $bodyBackgroundColor;
+$disabledForegroundColor: $ms-color-neutralTertiaryAlt;
+
+$unselectedHoverBackgroundColor: $ms-color-neutralLighterAlt;
+$unselectedHoverForegroundColor: $bodyForegroundColor;
+
+$selectedBackgroundColor: $ms-color-neutralLighter;
+$selectedForegroundColor: $ms-color-themePrimary;
+
+$selectedHoverBackgroundColor: $ms-color-neutralLight;
+$selectedHoverForegroundColor: $selectedForegroundColor;
+
+$dividerColor: $ms-color-neutralLight;

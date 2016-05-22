@@ -1,5 +1,7 @@
 @import '../../common/common';
 
+$iconForegroundColor: $ms-color-neutralTertiary;
+$dropdownChevronForegroundColor: ms-color-neutralTertiary;
 $rowHeight: 36px;
 
 .ms-DetailsHeader {
@@ -9,7 +11,7 @@ $rowHeight: 36px;
   line-height: $rowHeight;
   white-space: nowrap;
   padding-bottom: 1px;
-  border-bottom: 1px solid $ms-color-neutralLight;
+  border-bottom: 1px solid $dividerColor;
   cursor: default;
   user-select: none;
 
@@ -49,21 +51,22 @@ $rowHeight: 36px;
 }
 
 .ms-DetailsHeader-filterChevron.ms-Icon {
-  color: $ms-color-neutralTertiary;
+  color: $dropdownChevronForegroundColor;
   @include padding-left(4px);
   vertical-align: middle;
 }
 
 .ms-DetailsHeader-cell {
-  @include focus-border($ms-color-neutralSecondaryAlt);
+  color: $disabledForegroundColor;
+  background: $disabledBackgroundColor;
 
-  font-size: $ms-font-size-xs;
+  @include focus-border();
+  font-size: $ms-font-size-s;
+
   position: relative;
   display: inline-block;
   box-sizing: border-box;
   padding: 0 8px;
-  color: $ms-color-neutralTertiary;
-  background: none;
   border: none;
   line-height: inherit;
   margin: 0;
@@ -81,15 +84,12 @@ $rowHeight: 36px;
   }
 
   &.is-actionable {
-    color: $ms-color-black;
-    cursor: default;
+    color: $unselectedForegroundColor;
+    background: $unselectedBackgroundColor;
 
     &:hover {
-      background-color: $ms-color-neutralLight;
-    }
-
-    &:hover:active {
-      background-color: $ms-color-neutralTertiaryAlt;
+      color: $unselectedHoverForegroundColor;
+      background: $unselectedHoverBackgroundColor;
     }
   }
 
@@ -102,6 +102,7 @@ $rowHeight: 36px;
     top: 0;
     height: inherit;
     z-index: 99;
+    background: transparent;
   }
 
   &.is-empty {
@@ -117,7 +118,6 @@ $rowHeight: 36px;
   top: 0;
   bottom: 0;
   width: 1px;
-  background: $ms-color-neutralTertiary;
 }
 
 .ms-DetailsHeader-collapseButton {

@@ -99,7 +99,7 @@
 }
 
 .ms-ContextualMenu-link {
-  @include focus-border($ms-color-neutralSecondaryAlt);
+  @include focus-border();
 
   position: relative;
   text-decoration: none;

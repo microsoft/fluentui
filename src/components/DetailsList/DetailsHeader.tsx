@@ -91,7 +91,7 @@ export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetails
       <div
         role='row'
         aria-label= { ariaLabel }
-        className={ css('ms-DetailsHeader ms-font-s', {
+        className={ css('ms-DetailsHeader', {
           'is-allSelected': isAllSelected,
           'is-singleSelect': selectionMode === SelectionMode.single,
           'is-resizingColumn': !!columnResizeDetails && isSizing

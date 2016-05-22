@@ -3,6 +3,8 @@ import { ContextualMenu } from './ContextualMenu';
 import { IPositionProps } from '../../utilities/positioning';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
+export { DirectionalHint } from '../../common/DirectionalHint';
+
 export interface IContextualMenuProps extends React.Props<ContextualMenu>, IPositionProps {
   /**
    * Collection of menu items.

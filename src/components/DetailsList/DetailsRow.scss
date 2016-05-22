@@ -2,13 +2,12 @@
 
 $rowHeight: 36px;
 $rowVerticalPadding: 10px;
-$focusedBorderColor: $ms-color-neutralSecondaryAlt;
 $selectedColor: $ms-color-themeLighter;
 $selectedHoverColor: $ms-color-themeLight;
 $unselectedHoverColor: $ms-color-themeLighterAlt;
 
 .ms-DetailsRow {
-  @include focus-border($focusedBorderColor);
+  @include focus-border();
 
   display: inline-block;
   min-width: 100%;
@@ -64,7 +63,7 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
 }
 
 .ms-DetailsRow-check {
-  @include focus-border($focusedBorderColor);
+  @include focus-border();
 
   display: inline-block;
   cursor: default;

@@ -496,6 +496,11 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       totalWidth += increment;
     }
 
+    // Mark the last column as not resizable to avoid extra scrolling issues.
+    if (adjustedColumns.length) {
+      adjustedColumns[adjustedColumns.length - 1].isResizable = false;
+    }
+
     return adjustedColumns;
   }
 
