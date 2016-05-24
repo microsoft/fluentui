@@ -192,10 +192,12 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
                 // If the item name is equal to '-', a divider will be generated.
                 item.name === '-' ? (
                   <li
+                    role='separator'
                     key={ item.key || index }
                     className={ css('ms-ContextualMenu-item ms-ContextualMenu-item--divider', item.className ) }/>
                 ) : (
                     <li
+                      role='menuitem'
                       key={ item.key || index }
                       className={ css('ms-ContextualMenu-item', item.className ) }
                       ref={ item.key }>
