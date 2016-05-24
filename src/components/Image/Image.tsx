@@ -2,18 +2,7 @@ import * as React from 'react';
 import { css } from '../../utilities/css';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import './Image.scss';
-
-export interface IImageProps {
-  src: string;
-  alt?: string;
-  width?: number;
-  height?: number;
-  shouldFadeIn?: boolean;
-
-  className?: string;
-  ref?: string;
-  key?: string;
-}
+import { IImageProps } from './Image.Props';
 
 export interface IImageState {
   loadState?: ImageLoadState;
@@ -22,7 +11,8 @@ export interface IImageState {
 export enum ImageLoadState {
   notLoaded,
   loaded,
-  error
+  error,
+  errorLoaded
 }
 
 export class Image extends React.Component<IImageProps, IImageState> {
@@ -61,17 +51,20 @@ export class Image extends React.Component<IImageProps, IImageState> {
   }
 
   public render() {
-    let { src, alt, width, height, shouldFadeIn, className } = this.props;
+    let { src, alt, width, height, shouldFadeIn, className, errorSrc } = this.props;
     let { loadState } = this.state;
+    let loaded = loadState === ImageLoadState.loaded || loadState === ImageLoadState.errorLoaded;
+    let srcToDisplay: string =
+      (loadState === ImageLoadState.error || loadState === ImageLoadState.errorLoaded) ? errorSrc : src;
 
     return (
       <img className={ css('ms-Image', className, {
         'is-fadeIn': shouldFadeIn,
-        'is-notLoaded': loadState === ImageLoadState.notLoaded,
-        'is-loaded': loadState === ImageLoadState.loaded,
-        'ms-u-fadeIn400': loadState === ImageLoadState.loaded && shouldFadeIn,
+        'is-notLoaded': !loaded,
+        'is-loaded': loaded,
+        'ms-u-fadeIn400': loaded && shouldFadeIn,
         'is-error': loadState === ImageLoadState.error
-      }) } ref='image' src={ src } alt={ alt } style={ { width: width, height: height } } />
+        }) } ref='image' src={ srcToDisplay } alt={ alt } style={ { width: width, height: height } } />
     );
   }
 
@@ -81,10 +74,10 @@ export class Image extends React.Component<IImageProps, IImageState> {
     let { image } = this.refs;
     let isLoaded = (src && image.naturalWidth > 0 && image.naturalHeight > 0);
 
-    if (isLoaded && loadState !== ImageLoadState.loaded) {
+    if (isLoaded && loadState !== ImageLoadState.loaded && loadState !== ImageLoadState.errorLoaded) {
       this._events.off();
       this.setState({
-        loadState: ImageLoadState.loaded
+        loadState: loadState === ImageLoadState.error ? ImageLoadState.errorLoaded : ImageLoadState.loaded
       });
     }
 
@@ -92,9 +85,14 @@ export class Image extends React.Component<IImageProps, IImageState> {
   }
 
   private _setError() {
-    this.setState({
-      loadState: ImageLoadState.error
-    });
+    if (this.state.loadState !== ImageLoadState.error && this.state.loadState !== ImageLoadState.errorLoaded) {
+      if (this.props.onError) {
+        this.props.onError(this.props.src);
+      }
+      this.setState({
+        loadState: ImageLoadState.error
+      });
+    }
   }
 
 }

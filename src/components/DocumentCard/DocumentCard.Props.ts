@@ -35,6 +35,11 @@ export interface IDocumentCardPreviewProps extends React.Props<DocumentCardPrevi
    * Hex color value of the line below the preview, which should correspond to the document type.
    */
   accentColor?: string;
+
+  /**
+   * Path to the image to display if the preview image breaks.
+   */
+  errorImageSrc?: string;
 }
 
 export interface IDocumentCardTitleProps extends React.Props<DocumentCardTitle> {
