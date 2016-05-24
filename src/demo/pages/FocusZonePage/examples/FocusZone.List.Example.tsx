@@ -11,6 +11,7 @@ import { DetailsRow } from '../../../../components/DetailsList/DetailsRow';
 import { KeyCodes } from '../../../../utilities/KeyCodes';
 import { getRTLSafeKeyCode } from '../../../../utilities/rtl';
 import { Selection, SelectionMode } from '../../../../utilities/selection/index';
+import './FocusZone.List.Example.scss';
 
 const ITEMS = createArray(10, (index) => ({
   key: index,
@@ -54,6 +55,7 @@ export class FocusZoneListExample extends React.Component<any, any> {
   public render() {
     return (
       <FocusZone
+        className='ms-FocusZoneListExample'
         direction={ FocusZoneDirection.vertical }
         isCircularNavigation={ true }
         isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }>

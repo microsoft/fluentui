@@ -9,7 +9,7 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
 .ms-DetailsRow {
   @include focus-border();
 
-  display: block;
+  display: inline-block;
   min-width: 100%;
   min-height: $rowHeight;
   margin: 1px 0;
