@@ -29,7 +29,7 @@ export class DialogBasicExample extends React.Component<any, any> {
           title='All emails together'
           subText='Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
           isBlocking={ false }
-          className='ms-dialogMainOverride'
+          containerClassName='ms-dialogMainOverride'
         >
           <ChoiceGroup
             options={ [
