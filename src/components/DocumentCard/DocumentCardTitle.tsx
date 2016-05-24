@@ -44,6 +44,10 @@ export class DocumentCardTitle extends React.Component<IDocumentCardTitleProps, 
     }
   }
 
+  public componentWillUnmount() {
+    this._events.dispose();
+  }
+
   public componentWillReceiveProps(newProps: IDocumentCardTitleProps) {
     if ((newProps.title !== this.props.title) && this.props.shouldTruncate) {
       this._startTruncation();
