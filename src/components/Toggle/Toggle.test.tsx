@@ -23,7 +23,7 @@ describe('Toggle', () => {
     expect(labelElement.textContent).to.equal('Label');
   });
 
-  it('can call the callback on a click', () => {
+  it('can call the callback on a change of toggle', () => {
     let isToggledValue;
     let callback = (isToggled) => {
       isToggledValue = isToggled;
@@ -35,8 +35,11 @@ describe('Toggle', () => {
       />
     );
     let renderedDOM = ReactDOM.findDOMNode(component);
+    let input = renderedDOM.querySelector('.ms-Toggle-input');
 
-    ReactTestUtils.Simulate.click(renderedDOM);
+    // Can't simulate the click on the label to trigger the change event of the input.
+    // https://github.com/facebook/react/issues/5804
+    ReactTestUtils.Simulate.change(input, { target: { checked: true }} as React.SyntheticEventData);
     expect(isToggledValue).to.equal(true);
   });
 

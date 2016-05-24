@@ -4,9 +4,13 @@ import { Image } from '../../Image';
 import { css } from '../../utilities/css';
 import './ChoiceGroup.scss';
 
+export interface IChoiceGroupState {
+  keyChecked: string;
+}
+
 let _instance = 0;
 
-export class ChoiceGroup extends React.Component<IChoiceGroupProps, any> {
+export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroupState> {
   public static defaultProps = {
     options: []
   };
@@ -14,15 +18,31 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, any> {
   private _id: string;
   private _fieldDescriptionId: string;
 
-  constructor() {
+  constructor(props: IChoiceGroupProps) {
     super();
+
+    this.state = {
+      keyChecked: this._getKeyChecked(props.options)
+    };
 
     this._id = `ChoiceGroup-${ _instance++ }`;
     this._fieldDescriptionId = `ChoiceFieldDescription-${ _instance++ }`;
   }
 
+  public componentWillReceiveProps(newProps: IChoiceGroupProps) {
+    const newKeyChecked: string = this._getKeyChecked(newProps.options);
+    const oldKeyCheched: string = this._getKeyChecked(this.props.options);
+
+    if (newKeyChecked !== oldKeyCheched) {
+      this.setState({
+        keyChecked: newKeyChecked
+      });
+    }
+  }
+
   public render() {
     let { label, options } = this.props;
+    let { keyChecked } = this.state;
 
     return (
       // Need to assign role application on containing div because JAWS doesnt call OnKeyDown without this role
@@ -43,9 +63,9 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, any> {
                 type='radio'
                 name={ this._id }
                 disabled={ option.isDisabled }
-                defaultChecked={ option.isChecked }
-                aria-checked={ option.isChecked }
-                onChange={ this._onChanged.bind(this, option) }
+                checked={ option.key === keyChecked }
+                aria-checked={ option.key === keyChecked }
+                onChange={ this._handleInputChange.bind(this, option) }
                 aria-describedby={ this._fieldDescriptionId }
               />
               { this._renderField(option) }
@@ -57,6 +77,8 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, any> {
   }
 
   private _renderField(option: IChoiceGroupOption) {
+    let { keyChecked } = this.state;
+
     return (
       <label
         htmlFor={ this._id + '-' + option.key }
@@ -67,7 +89,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, any> {
             ? <div className='ms-ChoiceField-innerField'>
                 <div className='ms-ChoiceField-imageWrapper'>
                   <Image
-                    src={ option.isChecked ? option.selectedImageSrc : option.imageSrc }
+                    src={ option.key === keyChecked ? option.selectedImageSrc : option.imageSrc }
                     width={ option.imageSize.width }
                     height={ option.imageSize.height }
                   />
@@ -80,11 +102,31 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, any> {
     );
   }
 
-  private _onChanged(option: IChoiceGroupOption, evt?: React.SyntheticEvent) {
+  private _handleInputChange(option: IChoiceGroupOption, evt: React.FormEvent) {
     let { onChanged } = this.props;
+
+    this.setState({
+      keyChecked: option.key
+    });
 
     if (onChanged) {
       onChanged(option);
+    }
+  }
+
+  /**
+   * If all the isChecked property of options are falsy values, return undefined;
+   * Else return the key of the first option with the truthy isChecked property.
+   */
+  private _getKeyChecked(options: IChoiceGroupOption[]): string {
+    const optionsChecked = options.filter((option: IChoiceGroupOption) => {
+      return option.isChecked;
+    });
+
+    if (optionsChecked.length === 0) {
+      return undefined;
+    } else {
+      return optionsChecked[0].key;
     }
   }
 }

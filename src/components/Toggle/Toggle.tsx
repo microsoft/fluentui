@@ -3,7 +3,7 @@ import { IToggleProps } from './Toggle.Props';
 import './Toggle.scss';
 
 export interface IToggleState {
-  id?: string;
+  isToggled: boolean;
 }
 
 let _instance: number = 0;
@@ -17,32 +17,46 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
     offText: 'Off'
   };
 
-  constructor() {
+  private _id: string;
+
+  constructor(props: IToggleProps) {
     super();
 
     this.state = {
-      id: `Toggle-${ _instance++ }`
+      isToggled: props.isToggled
     };
 
-    this._handleClick = this._handleClick.bind(this);
+    this._id = `Toggle-${ _instance++ }`;
+
+    this._handleInputChange = this._handleInputChange.bind(this);
+  }
+
+  public componentWillReceiveProps(newProps: IToggleProps) {
+    if (newProps.isToggled !== this.props.isToggled) {
+      this.setState({
+        isToggled: newProps.isToggled
+      });
+    }
   }
 
   public render() {
-    let { label, isToggled, onText, offText } = this.props;
-    let { id } = this.state;
+    let { label, onText, offText } = this.props;
+    let { isToggled } = this.state;
 
     return (
-      <div className='ms-Toggle' onClick={ this._handleClick }>
-        <label className='ms-Toggle-description' htmlFor={ id }>{ label }</label>
-        <input ref='input'
-          id={ id }
+      <div className='ms-Toggle'>
+        <label className='ms-Toggle-description'>{ label }</label>
+        <input
+          id={ this._id }
+          name={ this._id }
           type='checkbox'
           className='ms-Toggle-input'
           checked={ isToggled }
           aria-pressed={ isToggled }
-          onChange={ this._handleClick }
-          aria-label={ label } />
-        <label className='ms-Toggle-field' title={ label }>
+          onChange={ this._handleInputChange }
+          aria-label={ label }
+        />
+        <label className='ms-Toggle-field' title={ label } htmlFor={ this._id }>
           <span className='ms-Label ms-Label--off'>{ offText }</span>
           <span className='ms-Label ms-Label--on'>{ onText }</span>
         </label>
@@ -50,11 +64,16 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
     );
   }
 
-  private _handleClick(ev: React.MouseEvent) {
-    let { onChanged, isToggled } = this.props;
+  private _handleInputChange(evt: React.FormEvent) {
+    let { onChanged } = this.props;
+    const isToggled = (evt.target as HTMLInputElement).checked;
+
+    this.setState({
+      isToggled: isToggled
+    });
 
     if (onChanged) {
-      onChanged(!isToggled);
+      onChanged(isToggled);
     }
   }
 }
