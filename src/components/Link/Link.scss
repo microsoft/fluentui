@@ -1,10 +1,13 @@
 @import '../../common/common';
 @import "~office-ui-fabric/src/components/Link/Link";
 
-.ms-Link {
+.ms-Link,
+BUTTON.ms-Link {
   @include focus-border();
 
-  font-family: $ms-font-family-regular;
+  /* Needed for buttons disguised as links scenario. */
+  font-family: inherit;
+  font-size: inherit;
   font-weight: normal;
 
   border: none;

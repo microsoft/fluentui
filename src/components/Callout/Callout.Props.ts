@@ -49,6 +49,11 @@ export interface ICalloutProps extends React.Props<Callout>, IPositionProps {
    * Optional callback when the layer content has mounted.
    */
   onLayerMounted?: () => void;
+
+  /**
+   * Callback when the Callout tries to close.
+   */
+  onDismiss?: (ev?: any) => void;
 }
 
 export interface ILink {

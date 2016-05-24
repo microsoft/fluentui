@@ -32,15 +32,15 @@ export class ContextualMenuPage extends React.Component<any, any> {
           <ContextualMenuBasicExample />
         </ExampleCard>
 
-        <ExampleCard title='ContextualMenu checked menus example' code= { ContextualMenuCheckmarksExampleCode }>
+        <ExampleCard title='ContextualMenu checked menus example' code={ ContextualMenuCheckmarksExampleCode }>
           <ContextualMenuCheckmarksExample />
         </ExampleCard>
 
-        <ExampleCard title='ContextualMenu beak/direction test' code= { ContextualMenuDirectionalExampleCode }>
+        <ExampleCard title='ContextualMenu beak/direction test' code={ ContextualMenuDirectionalExampleCode }>
           <ContextualMenuDirectionalExample />
         </ExampleCard>
 
-        <ExampleCard title='ContextualMenu customization example' code= { ContextualMenuCustomizationExampleCode }>
+        <ExampleCard title='ContextualMenu customization example' code={ ContextualMenuCustomizationExampleCode }>
           <ContextualMenuCustomizationExample />
         </ExampleCard>
 

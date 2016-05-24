@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   Fabric,
   Panel,
+  PanelType
 } from '../../../index';
 import {
   Header
@@ -68,7 +69,11 @@ export class App extends React.Component<IAppProps, any> {
         </div>
 
         { (responsiveMode <= ResponsiveMode.large) ? (
-          <Panel className='App-navPanel ms-font-m' isOpen={isMenuVisible} onDismiss={ this._onIsMenuVisibleChanged.bind(this, false) }>
+          <Panel
+            className='App-navPanel ms-font-m'
+            isOpen={isMenuVisible}
+            type={ PanelType.smallFixedNear }
+            onDismiss={ this._onIsMenuVisibleChanged.bind(this, false) }>
             { navPanel }
           </Panel>
         ) : (null) }

@@ -24,7 +24,7 @@ export class FocusZonePage extends React.Component<any, any> {
         <ExampleCard title='Nesting FocusZones in list rows' code={ FocusZoneListExampleCode }>
           <FocusZoneListExample />
         </ExampleCard>
-        <PropertiesTableSet componentName='FocusZone' componentPath='utilities/focus/' />
+        <PropertiesTableSet componentName='FocusZone' />
       </div>
     );
   }

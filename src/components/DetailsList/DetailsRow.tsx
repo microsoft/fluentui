@@ -152,7 +152,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
     return (
       <div
         ref='root'
-        className={ css('ms-DetailsRow ms-font-s', droppingClassName, {
+        className={ css('ms-DetailsRow', droppingClassName, {
           'is-selected': isSelected
         }) }
         data-is-focusable={ true }

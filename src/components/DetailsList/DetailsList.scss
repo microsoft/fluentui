@@ -4,11 +4,6 @@
   position: relative;
   font-size: $ms-font-size-s;
 
-  /* Button and links should match the default font family; for some reason this isn't specified. */
-  BUTTON, A {
-    font-family: $ms-font-family-regular;
-  }
-
   > .ms-FocusZone {
     display: inline-block;
     vertical-align: top;

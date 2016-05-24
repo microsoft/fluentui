@@ -6,7 +6,11 @@ import {
 export class LinkBasicExample extends React.Component<any, any> {
   public render() {
     return (
-      <Link href='http://dev.office.com/fabric/components/link'>I am a link.</Link>
+      <div>
+        <Link href='http://dev.office.com/fabric/components/link'>I am a link with an href.</Link>
+        <span> Also, </span>
+        <Link>i am a link without an href.</Link>
+      </div>
     );
   }
 

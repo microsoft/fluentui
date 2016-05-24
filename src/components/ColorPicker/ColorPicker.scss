@@ -6,12 +6,6 @@
 
 .ms-ColorPicker-panel {
   padding: 10px;
-
-  margin-top: 10px;
-
-  background: white;
-  border: 1px solid $ms-color-neutralLight;
-  @include drop-shadow(0,0, 15px, -5px);
 }
 
 .ms-ColorPicker-colorRect {

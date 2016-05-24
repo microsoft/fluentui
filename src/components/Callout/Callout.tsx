@@ -21,8 +21,8 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
   public static defaultProps = {
     isBeakVisible: true,
     beakStyle: 'ms-Callout-beak',
-    beakWidth: 28,
-    gapSpace: 0,
+    beakWidth: 10,
+    gapSpace: 10,
     directionalHint: DirectionalHint.rightCenter
   };
 
@@ -73,10 +73,33 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     );
   }
 
+  public dismiss() {
+    let { onDismiss } = this.props;
+
+    if (onDismiss) {
+      onDismiss();
+    }
+  }
+
+  private _dismissOnLostFocus(ev: Event) {
+    let { targetElement } = this.props;
+    let target = ev.target as HTMLElement;
+
+    if (!this._hostElement.contains(target) &&
+        (!targetElement || !targetElement.contains(target))) {
+      this.dismiss();
+    }
+  }
+
   private _updatePosition() {
     let { positions } = this.state;
     let hostElement: HTMLElement = this._hostElement;
     let calloutElement: HTMLElement = this._calloutElement;
+
+    this._events.on(window, 'scroll', this.dismiss, true);
+    this._events.on(window, 'resize', this.dismiss, true);
+    this._events.on(window, 'focus', this._dismissOnLostFocus, true);
+    this._events.on(window, 'click', this._dismissOnLostFocus, true);
 
     if (hostElement && calloutElement) {
       let positionInfo: IPositionInfo = getRelativePositions(this.props, hostElement, calloutElement);
