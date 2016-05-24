@@ -13,3 +13,10 @@ img.ms-Persona-image {
   border-radius: 50%;
   perspective: 1px;
 }
+
+.ms-Persona-optionalText,
+.ms-Persona-primaryText,
+.ms-Persona-secondaryText,
+.ms-Persona-tertiaryText {
+  width: auto;
+}
