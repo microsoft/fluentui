@@ -24,7 +24,8 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     multiline: false,
     underlined: false,
     onChanged: () => { /* noop */ },
-    onGetErrorMessage: () => ''
+    onGetErrorMessage: () => '',
+    deferredValidationTime: 200
   };
 
   public refs: {
@@ -53,7 +54,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
 
     this._onInputChange = this._onInputChange.bind(this);
 
-    this._delayedValidate = this._async.debounce(this._validate, 200);
+    this._delayedValidate = this._async.debounce(this._validate, this.props.deferredValidationTime);
     this._lastValidation = 0;
   }
 
@@ -70,8 +71,11 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
       this.setState({
         value: newProps.value
       } as ITextFieldState);
-      this._delayedValidate(newProps.value);
     }
+
+    // Need to validate even if the props.value is not changed,
+    // because the onGetErrorMessage maybe change after receiving new props.
+    this._delayedValidate(newProps.value);
   }
 
   public componentWillUnmount() {

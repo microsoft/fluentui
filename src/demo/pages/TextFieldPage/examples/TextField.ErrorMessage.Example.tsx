@@ -18,21 +18,27 @@ export class TextFieldErrorMessageExample extends React.Component<{}, {}> {
       <div>
         <TextField
           label='TextField with a string-based validator. Hint: the length of the input string must be less than 3.'
-          onGetErrorMessage={this._getErrorMessage}
+          onGetErrorMessage={ this._getErrorMessage }
         />
         <TextField
           label='TextField with a Promise-based validator. Hint: the length of the input string must be less than 3.'
-          onGetErrorMessage={this._getErrorMessagePromise}
+          onGetErrorMessage={ this._getErrorMessagePromise }
         />
         <TextField
           label='TextField with a string-based validator. Hint: the length of the input string must be less than 3.'
           value='It should show an error message under this error message on render.'
-          onGetErrorMessage={this._getErrorMessage}
+          onGetErrorMessage={ this._getErrorMessage }
         />
         <TextField
           label='TextField with a Promise-based validator. Hint: the length of the input string must be less than 3.'
           value='It should show an error message under this error message 5 seconds after render.'
-          onGetErrorMessage={this._getErrorMessagePromise}
+          onGetErrorMessage={ this._getErrorMessagePromise }
+        />
+        <TextField
+          label='TextField with a string-based validator. Hint: the length of the input string must be less than 3.'
+          placeholder='Validation will start after users stop typing for 2 seconds.'
+          onGetErrorMessage={ this._getErrorMessage }
+          deferredValidationTime={ 2000 }
         />
         <NumberTextField
           label='Number TextField with valid initial value'

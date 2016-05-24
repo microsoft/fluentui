@@ -57,6 +57,12 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement> {
   onGetErrorMessage?: (value: string) => string | PromiseLike<string>;
 
   /**
+   * Text field will start to validate after users stop typing for `deferredValidationTime` milliseconds.
+   * @default 200
+   */
+  deferredValidationTime?: number;
+
+  /**
    * Aria Label for textfield, if any.
    */
   ariaLabel?: string;

@@ -16,7 +16,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
   };
 
   private _id: string;
-  private _fieldDescriptionId: string;
+  private _descriptionId: string;
 
   constructor(props: IChoiceGroupProps) {
     super();
@@ -26,7 +26,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
     };
 
     this._id = `ChoiceGroup-${ _instance++ }`;
-    this._fieldDescriptionId = `ChoiceFieldDescription-${ _instance++ }`;
+    this._descriptionId = `ChoiceGroupDescription-${ _instance++ }`;
   }
 
   public componentWillReceiveProps(newProps: IChoiceGroupProps) {
@@ -58,7 +58,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
               className={ css('ms-ChoiceField', { 'ms-ChoiceField--image': !!option.imageSrc }) }
             >
               <input
-                id={ this._id + '-' + option.key }
+                id={ `${this._id}-${option.key}` }
                 className='ms-ChoiceField-input'
                 type='radio'
                 name={ this._id }
@@ -66,7 +66,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
                 checked={ option.key === keyChecked }
                 aria-checked={ option.key === keyChecked }
                 onChange={ this._handleInputChange.bind(this, option) }
-                aria-describedby={ this._fieldDescriptionId }
+                aria-describedby={ `${this._descriptionId}-${option.key}` }
               />
               { this._renderField(option) }
             </div>
@@ -93,10 +93,10 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
                     width={ option.imageSize.width }
                     height={ option.imageSize.height }
                   />
-                  <span id={ this._fieldDescriptionId } className='ms-Label'>{ option.text }</span>
+                  <span id={ `${this._descriptionId}-${option.key}` } className='ms-Label'>{ option.text }</span>
                 </div>
               </div>
-            : <span id={ this._fieldDescriptionId } className='ms-Label'>{ option.text }</span>
+            : <span id={ `${this._descriptionId}-${option.key}` } className='ms-Label'>{ option.text }</span>
         }
       </label>
     );
