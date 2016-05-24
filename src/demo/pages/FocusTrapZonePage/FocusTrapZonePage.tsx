@@ -26,7 +26,7 @@ export class FocusTrapZonePage extends React.Component<any, any> {
           <FocusTrapZoneBoxExample />
         </ExampleCard>
 
-        <PropertiesTableSet componentName='FocusTrapZone' componentPath='utilities/focus/' />
+        <PropertiesTableSet componentName='FocusTrapZone' />
       </div>
     );
   }
