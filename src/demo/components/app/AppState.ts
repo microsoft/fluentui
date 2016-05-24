@@ -13,6 +13,7 @@ import { DialogPage } from '../../pages/DialogPage/DialogPage';
 import { DropdownPage } from '../../pages/DropdownPage/DropdownPage';
 import { FacepilePage } from '../../pages/Facepile/FacepilePage';
 import { FocusZonePage } from '../../pages/FocusZonePage/FocusZonePage';
+import { FocusTrapZonePage } from '../../pages/FocusTrapZonePage/FocusTrapZonePage';
 import { INavLink, INavLinkGroup } from '../../../components/Nav/index';
 import { LabelPage } from '../../pages/LabelPage/LabelPage';
 import { LayerPage } from '../../pages/LayerPage/LayerPage';
@@ -256,6 +257,12 @@ export const AppState: IAppState = {
         {
           name: 'Event groups',
           url: '#examples/eventgroup'
+        },
+        {
+          component: FocusTrapZonePage,
+          name: 'Focus Trap zones',
+          status: ExampleStatus.beta,
+          url: '#examples/focustrapzone'
         },
         {
           component: FocusZonePage,

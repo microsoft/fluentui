@@ -4,6 +4,7 @@ import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { KeyCodes } from '../../utilities/KeyCodes';
 import { getRTL } from '../../utilities/rtl';
 import { css } from '../../utilities/css';
+import * as FocusUtilities from '../../utilities/focus/focusUtilities';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_ENTER_DISABLED_ATTRIBUTE = 'data-disable-click-on-enter';
@@ -57,7 +58,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
     let parentElement = this.refs.root.parentElement;
 
     while (parentElement && parentElement !== document.body) {
-      if (this._isElementFocusZone(parentElement)) {
+      if (FocusUtilities.isElementFocusZone(parentElement)) {
         this._isInnerZone = true;
         break;
       }
@@ -95,7 +96,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
   public focus(): boolean {
     const firstChild = this.refs.root.firstChild as HTMLElement;
 
-    return this._focusElement(this._getNextElement(firstChild, true));
+    return this._focusElement(FocusUtilities.getNextElement(this.refs.root, firstChild, true));
   }
 
   private _onFocus(ev: React.FocusEvent) {
@@ -108,7 +109,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
       let parentElement = ev.target as HTMLElement;
 
       while (parentElement && parentElement !== this.refs.root) {
-        if (this._isElementTabbable(parentElement) && this._isImmediateDescendantOfZone(parentElement)) {
+        if (FocusUtilities.isElementTabbable(parentElement) && this._isImmediateDescendantOfZone(parentElement)) {
           this._activeElement = parentElement;
           break;
         }
@@ -139,9 +140,9 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
     while (path.length) {
       target = path.pop();
 
-      if (this._isElementFocusZone(target)) {
+      if (FocusUtilities.isElementFocusZone(target)) {
         break;
-      } else if (target && this._isElementTabbable(target)) {
+      } else if (target && FocusUtilities.isElementTabbable(target)) {
         target.tabIndex = 0;
         this._setFocusAlignment(target, true, true);
       }
@@ -190,14 +191,14 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
 
         case KeyCodes.home:
           const firstChild = this.refs.root.firstChild as HTMLElement;
-          if (this._focusElement(this._getNextElement(firstChild, true))) {
+          if (this._focusElement(FocusUtilities.getNextElement(this.refs.root, firstChild, true))) {
             break;
           }
           return;
 
         case KeyCodes.end:
           const lastChild = this.refs.root.lastChild as HTMLElement;
-          if (this._focusElement(this._getPreviousElement(lastChild, true, true, true))) {
+          if (this._focusElement(FocusUtilities.getPreviousElement(this.refs.root, lastChild, true, true, true))) {
             break;
           }
           return;
@@ -246,7 +247,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
     let child: HTMLElement = rootElement.firstElementChild as HTMLElement;
 
     while (child) {
-      if (this._isElementFocusZone(child)) {
+      if (FocusUtilities.isElementFocusZone(child)) {
         return _allInstances[child.getAttribute(FOCUSZONE_ID_ATTRIBUTE)];
       }
       let match = this._getFirstInnerZone(child);
@@ -256,96 +257,6 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
       }
 
       child = child.nextElementSibling as HTMLElement;
-    }
-
-    return null;
-  }
-
-  /** Traverse to find the previous element. */
-  private _getPreviousElement(
-    currentElement: HTMLElement,
-    checkNode?: boolean,
-    suppressParentTraversal?: boolean,
-    traverseChildren?: boolean): HTMLElement {
-
-    if (!currentElement ||
-      currentElement === this.refs.root) {
-      return null;
-    }
-
-    let isCurrentElementVisible = this._isElementVisible(currentElement);
-
-    // Check its children.
-    if (traverseChildren && !this._isElementFocusZone(currentElement) && isCurrentElementVisible) {
-      const childMatch = this._getPreviousElement(currentElement.lastElementChild as HTMLElement, true, true, true);
-
-      if (childMatch) {
-        return childMatch;
-      }
-    }
-
-    // Check the current node, if it's not the first traversal.
-    if (checkNode && isCurrentElementVisible && this._isElementTabbable(currentElement)) {
-      return currentElement;
-    }
-
-    // Check its previous sibling.
-    const siblingMatch = this._getPreviousElement(currentElement.previousElementSibling as HTMLElement, true, true, true);
-
-    if (siblingMatch) {
-      return siblingMatch;
-    }
-
-    // Check its parent.
-    if (!suppressParentTraversal) {
-      return this._getPreviousElement(currentElement.parentElement, true, false, false);
-    }
-
-    return null;
-  }
-
-  /** Traverse to find the next focusable element. */
-  private _getNextElement(
-    currentElement: HTMLElement,
-    checkNode?: boolean,
-    suppressParentTraversal?: boolean,
-    suppressChildTraversal?: boolean): HTMLElement {
-
-    if (
-      !currentElement ||
-      (currentElement === this.refs.root && suppressChildTraversal)) {
-      return null;
-    }
-
-    let isCurrentElementVisible = this._isElementVisible(currentElement);
-
-    // Check the current node, if it's not the first traversal.
-    if (checkNode && isCurrentElementVisible && this._isElementTabbable(currentElement) ) {
-      return currentElement;
-    }
-
-    // Check its children.
-    if (!suppressChildTraversal && isCurrentElementVisible && !this._isElementFocusZone(currentElement)) {
-      const childMatch = this._getNextElement(currentElement.firstElementChild as HTMLElement, true, true, false);
-
-      if (childMatch) {
-        return childMatch;
-      }
-    }
-
-    if (currentElement === this.refs.root) {
-      return null;
-    }
-
-    // Check its sibling.
-    const siblingMatch = this._getNextElement(currentElement.nextElementSibling as HTMLElement, true, true, false);
-
-    if (siblingMatch) {
-      return siblingMatch;
-    }
-
-    if (!suppressParentTraversal) {
-      return this._getNextElement(currentElement.parentElement, false, false, true);
     }
 
     return null;
@@ -370,8 +281,8 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
 
     do {
       element = isForward ?
-        this._getNextElement(element) :
-        this._getPreviousElement(element);
+        FocusUtilities.getNextElement(this.refs.root, element) :
+        FocusUtilities.getPreviousElement(this.refs.root, element);
 
       startingElement = startingElement || element;
 
@@ -396,9 +307,9 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
       this._focusElement(candidateElement);
     } else if (this.props.isCircularNavigation) {
       if (isForward) {
-        return this._focusElement(this._getNextElement(this.refs.root.firstElementChild as HTMLElement, true));
+        return this._focusElement(FocusUtilities.getNextElement(this.refs.root, this.refs.root.firstElementChild as HTMLElement, true));
       } else {
-        return this._focusElement(this._getPreviousElement(this.refs.root.lastElementChild as HTMLElement, true, true, true));
+        return this._focusElement(FocusUtilities.getPreviousElement(this.refs.root, this.refs.root.lastElementChild as HTMLElement, true, true, true));
       }
     }
 
@@ -547,35 +458,11 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
     }
   }
 
-  private _isElementVisible(element: HTMLElement): boolean {
-    return (
-      !!element &&
-      element.tagName !== 'svg' &&
-      (element.offsetParent !== null ||
-      (element as any).isVisible === true) // used as a workaround for testing.
-    );
-  }
-
-  private _isElementTabbable(element: HTMLElement): boolean {
-    return (
-      !!element &&
-      element.getAttribute &&
-      element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) !== 'false' &&
-      (element.tagName === 'A' ||
-        (element.tagName === 'BUTTON' && !(element as HTMLButtonElement).disabled) ||
-        (element.tagName === 'INPUT' && !(element as HTMLInputElement).disabled) ||
-        element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true'));
-  }
-
-  private _isElementFocusZone(element?: HTMLElement): boolean {
-    return element && !!element.getAttribute(FOCUSZONE_ID_ATTRIBUTE);
-  }
-
   private _isImmediateDescendantOfZone(element?: HTMLElement): boolean {
     let parentElement = element.parentElement;
 
     while (parentElement && parentElement !== this.refs.root && parentElement !== document.body) {
-      if (this._isElementFocusZone(parentElement)) {
+      if (FocusUtilities.isElementFocusZone(parentElement)) {
         return false;
       }
 
@@ -598,8 +485,8 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
     for (let childIndex = 0; childNodes && childIndex < childNodes.length; childIndex++) {
       const child = childNodes[childIndex] as HTMLElement;
 
-      if (!this._isElementFocusZone(child)) {
-        if (this._isElementTabbable(child)) {
+      if (!FocusUtilities.isElementFocusZone(child)) {
+        if (FocusUtilities.isElementTabbable(child)) {
           if (!this._isInnerZone && (!this._activeElement || this._activeElement === child)) {
             this._activeElement = child;
             if (child.getAttribute(TABINDEX) !== '0') {

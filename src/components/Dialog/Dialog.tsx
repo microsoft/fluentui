@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { FocusTrapZone } from '../FocusTrapZone/index';
 import { IDialogProps, DialogType } from './Dialog.Props';
 import { Overlay } from '../../Overlay';
 import { Layer } from '../../Layer';
@@ -61,7 +62,7 @@ export class Dialog extends React.Component<IDialogProps, any> {
                         aria-describedby={ this.props.subText ? id + '-subText' : '' }
                         onKeyDown={ this._onDialogKeyDown }>
                         <Overlay isDarkThemed={ isDarkOverlay } onClick={ isBlocking ? null : onDismiss } />
-                        <div className={ css('ms-Dialog-main', this.props.containerClassName) }>
+                        <FocusTrapZone className ={ css('ms-Dialog-main', this.props.containerClassName)}>
                             <button className='ms-Dialog-button ms-Dialog-button--close' onClick={ onDismiss }>
                                 <i className='ms-Icon ms-Icon--x'></i>
                             </button>
@@ -75,7 +76,7 @@ export class Dialog extends React.Component<IDialogProps, any> {
                                 </div>
                                 { groupings.footers }
                             </div>
-                        </div>
+                        </FocusTrapZone>
                     </div>
                 </Layer>
             );

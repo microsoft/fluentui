@@ -18,6 +18,7 @@ export * from './DocumentCard';
 export * from './Dropdown';
 export * from './Fabric';
 export * from './Facepile';
+export * from './FocusTrapZone';
 export * from './FocusZone';
 export * from './Image';
 export * from './Label';
