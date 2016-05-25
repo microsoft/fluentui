@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ISpinnerProps, SpinnerType } from './Spinner.Props';
 import { getRTL } from '../../utilities/rtl';
+import { css } from '../../utilities/css';
 import './Spinner.scss';
 
 const CIRCLE_COUNT = 8;
@@ -15,7 +16,7 @@ export class Spinner extends React.Component<ISpinnerProps, any> {
   };
 
   public render() {
-    let { type, label } = this.props;
+    let { type, label, className } = this.props;
     let isRTL = getRTL();
     let parentSize: number = type === SpinnerType.large ? PARENT_SIZE_LARGE : PARENT_SIZE_NORMAL;
     let offsetSize: number = type === SpinnerType.large ? OFFSET_SIZE_LARGE : OFFSET_SIZE_NORMAL;
@@ -36,16 +37,15 @@ export class Spinner extends React.Component<ISpinnerProps, any> {
       circleObjects.push(<div className='ms-Spinner-circle' key={ i } style={ style } /> );
     }
 
-    let spinnerClass = type === SpinnerType.large ? 'ms-Spinner ms-Spinner--large' : 'ms-Spinner';
-    let labelElement;
-
-    if (label) {
-      labelElement = <div className='ms-Spinner-label'>Loading...</div>;
-    }
-
     return (
-      <div className={ spinnerClass }>
-        { labelElement }
+      <div className={ css('ms-Spinner', className, {
+        'ms-Spinner--large': type === SpinnerType.large
+      }) }>
+
+        { label && (
+          <div className='ms-Spinner-label'>{ label }</div>
+        ) }
+
         { circleObjects }
       </div>
     );
