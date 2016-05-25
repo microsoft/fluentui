@@ -65,10 +65,7 @@ export class Image extends React.Component<IImageProps, IImageState> {
       (loadState === ImageLoadState.error || loadState === ImageLoadState.errorLoaded) ? errorSrc : src;
 
     return (
-      <div className={ css('ms-Image-container', className, {
-        'ms-Imageaa-cover': imageFit === ImageFit.cover,
-        'ms-Image-aa-scale': imageFit === ImageFit.scale,
-        }) } style={ { width: width, height: height } }>
+      <div className='ms-Image-container' style={ { width: width, height: height } }>
         <img className={ css('ms-Image', className, {
           'is-fadeIn': shouldFadeIn,
           'is-notLoaded': !loaded,
