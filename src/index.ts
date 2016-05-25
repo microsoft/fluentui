@@ -43,4 +43,4 @@ export * from './Toggle';
 export * from './utilities/css';
 export * from './utilities/KeyCodes';
 export * from './utilities/eventGroup/EventGroup';
-export * from './utilities/async/Async';
+export * from './utilities/Async/Async';
