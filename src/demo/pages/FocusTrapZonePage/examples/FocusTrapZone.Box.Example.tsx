@@ -59,7 +59,7 @@ export default class BoxExample extends React.Component<React.HTMLProps<HTMLDivE
     let { isToggled } = this.state;
 
     return (
-      <div className='ms-FocusTrapZone'>
+      <div className='ms-FocusTrapZoneBoxExample'>
         <TextField label='Default TextField' placeholder='Input inside Focus Trap Zone' className='' />
         <Link href='' className='' >Hyperlink inside FocusTrapZone</Link><br /><br />
         <Toggle

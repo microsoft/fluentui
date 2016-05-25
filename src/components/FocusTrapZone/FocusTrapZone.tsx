@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { KeyCodes } from '../../utilities/KeyCodes';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
-import { css } from '../../utilities/css';
 import { IFocusTrapZoneProps } from './FocusTrapZone.Props';
 import * as FocusUtilities from '../../utilities/focus/focusUtilities';
 
@@ -46,7 +45,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> {
     return (
       <div
         { ...this.props as any }
-        className={ css('ms-FocusTrapZone', className) }
+        className={ className }
         ref='root'
         aria-labelledby={ ariaLabelledBy }
         onKeyDown={ this._onKeyboardHandler }>
