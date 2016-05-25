@@ -4,7 +4,12 @@ import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { KeyCodes } from '../../utilities/KeyCodes';
 import { getRTL } from '../../utilities/rtl';
 import { css } from '../../utilities/css';
-import * as FocusUtilities from '../../utilities/focus/focusUtilities';
+import {
+  getNextElement,
+  getPreviousElement,
+  isElementFocusZone,
+  isElementTabbable
+} from '../../utilities/focus';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_ENTER_DISABLED_ATTRIBUTE = 'data-disable-click-on-enter';
@@ -58,7 +63,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
     let parentElement = this.refs.root.parentElement;
 
     while (parentElement && parentElement !== document.body) {
-      if (FocusUtilities.isElementFocusZone(parentElement)) {
+      if (isElementFocusZone(parentElement)) {
         this._isInnerZone = true;
         break;
       }
@@ -96,7 +101,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
   public focus(): boolean {
     const firstChild = this.refs.root.firstChild as HTMLElement;
 
-    return this._focusElement(FocusUtilities.getNextElement(this.refs.root, firstChild, true));
+    return this._focusElement(getNextElement(this.refs.root, firstChild, true));
   }
 
   private _onFocus(ev: React.FocusEvent) {
@@ -109,7 +114,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
       let parentElement = ev.target as HTMLElement;
 
       while (parentElement && parentElement !== this.refs.root) {
-        if (FocusUtilities.isElementTabbable(parentElement) && this._isImmediateDescendantOfZone(parentElement)) {
+        if (isElementTabbable(parentElement) && this._isImmediateDescendantOfZone(parentElement)) {
           this._activeElement = parentElement;
           break;
         }
@@ -140,9 +145,9 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
     while (path.length) {
       target = path.pop();
 
-      if (FocusUtilities.isElementFocusZone(target)) {
+      if (isElementFocusZone(target)) {
         break;
-      } else if (target && FocusUtilities.isElementTabbable(target)) {
+      } else if (target && isElementTabbable(target)) {
         target.tabIndex = 0;
         this._setFocusAlignment(target, true, true);
       }
@@ -191,14 +196,14 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
 
         case KeyCodes.home:
           const firstChild = this.refs.root.firstChild as HTMLElement;
-          if (this._focusElement(FocusUtilities.getNextElement(this.refs.root, firstChild, true))) {
+          if (this._focusElement(getNextElement(this.refs.root, firstChild, true))) {
             break;
           }
           return;
 
         case KeyCodes.end:
           const lastChild = this.refs.root.lastChild as HTMLElement;
-          if (this._focusElement(FocusUtilities.getPreviousElement(this.refs.root, lastChild, true, true, true))) {
+          if (this._focusElement(getPreviousElement(this.refs.root, lastChild, true, true, true))) {
             break;
           }
           return;
@@ -247,7 +252,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
     let child: HTMLElement = rootElement.firstElementChild as HTMLElement;
 
     while (child) {
-      if (FocusUtilities.isElementFocusZone(child)) {
+      if (isElementFocusZone(child)) {
         return _allInstances[child.getAttribute(FOCUSZONE_ID_ATTRIBUTE)];
       }
       let match = this._getFirstInnerZone(child);
@@ -281,8 +286,8 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
 
     do {
       element = isForward ?
-        FocusUtilities.getNextElement(this.refs.root, element) :
-        FocusUtilities.getPreviousElement(this.refs.root, element);
+        getNextElement(this.refs.root, element) :
+        getPreviousElement(this.refs.root, element);
 
       startingElement = startingElement || element;
 
@@ -307,9 +312,9 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
       this._focusElement(candidateElement);
     } else if (this.props.isCircularNavigation) {
       if (isForward) {
-        return this._focusElement(FocusUtilities.getNextElement(this.refs.root, this.refs.root.firstElementChild as HTMLElement, true));
+        return this._focusElement(getNextElement(this.refs.root, this.refs.root.firstElementChild as HTMLElement, true));
       } else {
-        return this._focusElement(FocusUtilities.getPreviousElement(this.refs.root, this.refs.root.lastElementChild as HTMLElement, true, true, true));
+        return this._focusElement(getPreviousElement(this.refs.root, this.refs.root.lastElementChild as HTMLElement, true, true, true));
       }
     }
 
@@ -462,7 +467,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
     let parentElement = element.parentElement;
 
     while (parentElement && parentElement !== this.refs.root && parentElement !== document.body) {
-      if (FocusUtilities.isElementFocusZone(parentElement)) {
+      if (isElementFocusZone(parentElement)) {
         return false;
       }
 
@@ -485,8 +490,8 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
     for (let childIndex = 0; childNodes && childIndex < childNodes.length; childIndex++) {
       const child = childNodes[childIndex] as HTMLElement;
 
-      if (!FocusUtilities.isElementFocusZone(child)) {
-        if (FocusUtilities.isElementTabbable(child)) {
+      if (!isElementFocusZone(child)) {
+        if (isElementTabbable(child)) {
           if (!this._isInnerZone && (!this._activeElement || this._activeElement === child)) {
             this._activeElement = child;
             if (child.getAttribute(TABINDEX) !== '0') {

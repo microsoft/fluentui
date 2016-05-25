@@ -62,6 +62,10 @@ body {
 
 .ms-Panel.App-navPanel {
   top: 50px;
+
+  .ms-Panel-contentInner {
+    padding: 0;
+  }
 }
 
 .Nav-linkFlair {
