@@ -35,7 +35,8 @@ export interface IImageProps extends React.Props<Image> {
 
   /**
    * Used to determine how to size the image to fit the dimensions of the component.
-   * @default none
+   * If both dimensions are provided, then the image is fit using ImageFit.scale, otherwise ImageFit.none is used.
+   * @default See description
    */
   imageFit?: ImageFit;
 
@@ -71,7 +72,7 @@ export enum ImageFit {
   scale,
 
   /**
-   * The image is not resized. The default sizing algorithm is used.
+   * The image is not resized.
    */
   none
 }

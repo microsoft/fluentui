@@ -13,6 +13,18 @@ export enum CoverStyle {
   portrait
 }
 
+export const CoverStyleMap = {
+  [ CoverStyle.landscape ]: 'ms-Image--landscape',
+  [ CoverStyle.portrait ]: 'ms-Image--portrait'
+};
+
+export const ImageFitMap = {
+  [ ImageFit.center ]: 'ms-Image--center',
+  [ ImageFit.cover ]: 'ms-Image--cover',
+  [ ImageFit.none ]: 'ms-Image--none',
+  [ ImageFit.scale ]: 'ms-Image--scale'
+};
+
 export enum ImageLoadState {
   notLoaded,
   loaded,
@@ -64,19 +76,19 @@ export class Image extends React.Component<IImageProps, IImageState> {
     let srcToDisplay: string =
       (loadState === ImageLoadState.error || loadState === ImageLoadState.errorLoaded) ? errorSrc : src;
 
+    // If image dimensions aren't specified, the natural size of the image is used.
     return (
       <div className='ms-Image-container' style={ { width: width, height: height } }>
-        <img className={ css('ms-Image', className, {
-          'is-fadeIn': shouldFadeIn,
-          'is-notLoaded': !loaded,
-          'is-loaded': loaded,
-          'ms-u-fadeIn400': loaded && shouldFadeIn,
-          'is-error': loadState === ImageLoadState.error,
-          'ms-Image--center': imageFit === ImageFit.center,
-          'ms-Image--cover': imageFit === ImageFit.cover,
-          'ms-Image--scale': imageFit === ImageFit.scale,
-          'ms-Image--landscape': coverStyle === CoverStyle.landscape,
-          'ms-Image--portrait': coverStyle === CoverStyle.portrait
+        <img className={ css('ms-Image',
+          className,
+          (coverStyle !== undefined) && CoverStyleMap[coverStyle],
+          (imageFit !== undefined) && ImageFitMap[imageFit], {
+            'is-fadeIn': shouldFadeIn,
+            'is-notLoaded': !loaded,
+            'is-loaded': loaded,
+            'ms-u-fadeIn400': loaded && shouldFadeIn,
+            'is-error': loadState === ImageLoadState.error,
+            'ms-Image--scale': (imageFit === undefined && !!width && !!height),
           }) } ref='image' src={ srcToDisplay } alt={ alt } />
       </div>
     );
@@ -90,6 +102,7 @@ export class Image extends React.Component<IImageProps, IImageState> {
 
     let desiredRatio = width / height;
     let naturalRatio = image.naturalWidth / image.naturalHeight;
+
     if (naturalRatio > desiredRatio) {
       this._coverStyle = CoverStyle.landscape;
     } else {

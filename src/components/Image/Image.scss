@@ -32,6 +32,12 @@
   }
 }
 
+.ms-Image--none {
+  height: auto;
+  width: auto;
+}
+
+/** This is identical to the default behavior. */
 .ms-Image--scale {
   height: 100%;
   width: 100%;
