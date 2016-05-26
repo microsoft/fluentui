@@ -128,5 +128,9 @@ function _isLinkSelected(link: INavLink): boolean {
       return _urlResolver.href === target;
     }
 
+    if (_urlResolver.baseURI === location.href) {
+      return true;
+    }
+
     return false;
   }

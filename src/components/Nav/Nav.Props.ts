@@ -33,6 +33,11 @@ export interface INavLinkGroup {
    * Links to render within this group
    */
   links: INavLink[];
+
+  /**
+   *  (Optional) The name to use for functional automation tests
+   **/
+  automationId?: string;
 }
 
 export interface INavLink {
