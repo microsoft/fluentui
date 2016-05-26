@@ -56,3 +56,11 @@
   @include margin-left(-10px);
   @include margin-right(10px);
 }
+
+.ms-ContextualMenu-example-clickableArea {
+    background: transparent;
+    border: none;
+    font-size:0;
+    height: 500px;
+    width: 100%;
+}

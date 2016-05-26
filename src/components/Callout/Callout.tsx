@@ -21,7 +21,7 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
   public static defaultProps = {
     isBeakVisible: true,
     beakStyle: 'ms-Callout-beak',
-    beakWidth: 10,
+    beakWidth: 28,
     gapSpace: 10,
     directionalHint: DirectionalHint.rightCenter
   };

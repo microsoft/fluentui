@@ -115,6 +115,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     this._onSubMenuDismiss = this._onSubMenuDismiss.bind(this);
     this._onMouseEnter = this._onMouseEnter.bind(this);
     this._onMouseLeave = this._onMouseLeave.bind(this);
+    this._onWheel = this._onWheel.bind(this);
   }
 
   public dismiss(ev?: any) {
@@ -133,7 +134,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount() {
     this._updatePosition();
-    this._events.on(window, 'scroll', this.dismiss, true);
+    this._events.on(window, 'scroll', this._onScroll, true);
     this._events.on(window, 'resize', this.dismiss);
     this._events.on(window, 'mousedown', this._onMouseDownCapture, true);
     this._events.on(window, 'touchstart', this._onMouseDownCapture, true);
@@ -187,7 +188,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
             style={ ((positions) ? positions.menu : OFF_SCREEN_POSITION) }
             >
             { isBeakVisible && targetElement ? (<div className='ms-ContextualMenu-beak'  style={ ((positions) ? positions.beak : BEAK_ORIGIN_POSITION) } />) : (null) }
-            <ul className='ms-ContextualMenu-list is-open ' onKeyDown={ this._onKeyDown } ref='menu'>
+            <ul className='ms-ContextualMenu-list is-open ' onKeyDown={ this._onKeyDown } ref='menu' onWheel={ this._onWheel }>
               { items.map((item, index) => (
                 // If the item name is equal to '-', a divider will be generated.
                 item.name === '-' ? (
@@ -223,9 +224,9 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     }
 
     return React.createElement(
-            item.href ? 'a' : 'button',
+            'button',
              { className: css('ms-ContextualMenu-link', { 'is-expanded': (expandedMenuItemKey === item.key) }),
-               onClick: item.onClick || (item.items && item.items.length) ? this._onItemClick.bind(this, item) : null,
+               onClick: item.onClick || (item.items && item.items.length) ? this._onItemClick.bind(this, item) : item.href ? () => { location.href = item.href; } : null,
                onKeyDown: item.items && item.items.length ? this._onItemKeyDown.bind(this, item) : null,
                onMouseEnter: this._onMouseEnter.bind(this, item),
                onMouseLeave: this._onMouseLeave,
@@ -259,6 +260,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
 
   private _onKeyDown(ev: React.KeyboardEvent) {
     let submenuCloseKey = getRTL() ? KeyCodes.right : KeyCodes.left;
+
     if (ev.which === KeyCodes.escape
       || (ev.which === submenuCloseKey && this.props.isSubMenu)) {
       // When a user presses escape, we will try to refocus the previous focused element.
@@ -269,6 +271,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
 
   private _onMouseEnter(item: any, ev: React.MouseEvent) {
     let targetElement = ev.currentTarget as HTMLElement;
+
     if (item.items && item.items.length) {
       this._enterTimerId = this._async.setTimeout(() => this._onSubMenuExpand(item, targetElement), 500);
     } else {
@@ -283,6 +286,27 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   private _onMouseDownCapture(ev: React.MouseEvent) {
     if (!this.refs.host.contains(ev.target as HTMLElement)) {
       this.dismiss(ev);
+    }
+  }
+  private _onScroll(ev: React.UIEvent) {
+    if (!this.refs.host.contains(ev.target as HTMLElement)) {
+      this.dismiss(ev);
+    }
+  }
+
+  private _onWheel(ev: React.WheelEvent) {
+    let targetElement = ev.currentTarget as HTMLElement;
+    let scrollBottom = targetElement.scrollTop + targetElement.clientHeight;
+    let isScrollingDown = ev.deltaY > 0;
+
+     // Prevents the page from scrolling if the scroll bar has reached
+     // the very top or bottom in the contextualmenu
+    if (targetElement.scrollTop === 0 && !isScrollingDown) {
+      ev.stopPropagation();
+      ev.preventDefault();
+    } else if (scrollBottom === targetElement.scrollHeight && isScrollingDown) {
+      ev.stopPropagation();
+      ev.preventDefault();
     }
   }
 
@@ -306,6 +330,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
 
   private _onItemKeyDown(item: any, ev: KeyboardEvent) {
     let openKey = getRTL() ? KeyCodes.left : KeyCodes.right;
+
     if (ev.which === openKey) {
       this._onSubMenuExpand(item, ev.currentTarget as HTMLElement);
     }

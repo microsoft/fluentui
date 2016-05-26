@@ -46,15 +46,15 @@
   position: relative;
 }
 
-.ms-ContextualMenu {
+.ms-ContextualMenu.ms-FocusZone {
   @include ms-font-m;
   @include ms-u-normalize;
   @include drop-shadow(0,0, 15px, -5px);
-
   border: 1px solid $ms-color-neutralLight;
   z-index: $ms-zIndex-ContextualMenu;
   position: absolute;
   display: inline-block;
+  line-height: 0;
 }
 
 .ms-ContextualMenu-list {
@@ -62,9 +62,13 @@
   display: inline-block;
   list-style-type: none;
   min-width: 180px;
+  max-height: 300px;
   padding: 0;
   margin: 0;
   z-index: ($ms-zIndex-ContextualMenu + $ms-zIndex-middle);
+  overflow-y: auto;
+  line-height: 0;
+
 }
 
 .ms-ContextualMenu-item {
@@ -108,7 +112,7 @@
   cursor: pointer;
   display: block;
   height: 40px;
-  line-height: 40px;
+  // line-height: 40px;
   padding: 0 18px;
   white-space: nowrap;
   box-sizing: border-box;
