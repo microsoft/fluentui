@@ -55,8 +55,10 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
 
 .ms-CommandBar-primaryCommands {
   position: absolute;
-  overflow-x: hidden;
+  overflow: hidden;
   display: inline;
+  vertical-align: top;
+  line-height: $CommandBar-height;
   margin: 0 24px;
 }
 
