@@ -17,11 +17,14 @@ export interface ILayerHostState extends React.Props<LayerHost> {
 }
 
 export class LayerHost extends React.Component<React.Props<LayerHost>, ILayerHostState> {
+  private _layers: ILayer[];
+
   constructor(props: {}) {
     super(props);
 
+    this._layers = [];
     this.state = {
-      layers: []
+      layers: this._layers
     };
   }
 
@@ -42,10 +45,10 @@ export class LayerHost extends React.Component<React.Props<LayerHost>, ILayerHos
   }
 
   public addLayer(layerToAdd: ILayer, onComplete?: () => void) {
-    let { layers } = this.state;
+    this._layers.push(layerToAdd);
 
     this.setState({
-      layers: layers.concat([ layerToAdd ])
+      layers: this._layers
     }, () => {
       if (onComplete) {
         onComplete();
@@ -58,11 +61,10 @@ export class LayerHost extends React.Component<React.Props<LayerHost>, ILayerHos
   }
 
   public removeLayer(layerToRemove: ILayer) {
-    let { layers } = this.state;
-    let index = layers.indexOf(layerToRemove);
+    let index = this._layers.indexOf(layerToRemove);
 
     if (index > -1) {
-      layers.splice(index, 1);
+      this._layers.splice(index, 1);
       this.forceUpdate();
     }
   }
