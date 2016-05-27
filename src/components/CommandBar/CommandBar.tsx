@@ -103,7 +103,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           <div className='ms-CommandBar-primaryCommands' ref='commandSurface'>
             { renderedItems.map((item, index) => (
-            <div className='ms-CommandBarItem' key={ item.key } ref={ item.key }>
+            <div className={ css('ms-CommandBarItem', item.className) } key={ item.key } ref={ item.key }>
               <button
                 id={ this._instanceId + item.key }
                 className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === item.key) }) }
