@@ -26,7 +26,7 @@ export class LayerHost extends React.Component<React.Props<LayerHost>, ILayerHos
   }
 
   public render() {
-    let layers = this.state.layers.map((layer: ILayer) => {
+    let layers = this.state.layers.map((layer: ILayer, index: number) => {
       return (
         <div className='ms-LayerHost-layer' key={ layer.id }>
           { layer.children }
@@ -45,7 +45,7 @@ export class LayerHost extends React.Component<React.Props<LayerHost>, ILayerHos
     let { layers } = this.state;
 
     this.setState({
-      layers: layers.concat(layers, [ layerToAdd ])
+      layers: layers.concat([ layerToAdd ])
     }, () => {
       if (onComplete) {
         onComplete();
@@ -54,38 +54,17 @@ export class LayerHost extends React.Component<React.Props<LayerHost>, ILayerHos
   }
 
   public updateLayer(layerToUpdate: ILayer) {
-    this.setState((state: ILayerHostState) => {
-      let ids = state.layers.map((layer: ILayer) => layer.id);
-
-      let layers = state.layers.slice();
-
-      let index = ids.indexOf(layerToUpdate.id);
-
-      if (index > -1) {
-        layers.splice(index, 1, layerToUpdate);
-      }
-
-      return {
-        layers: layers
-      };
-    });
+    this.forceUpdate();
   }
 
   public removeLayer(layerToRemove: ILayer) {
-    this.setState((state: ILayerHostState) => {
-      let ids = state.layers.map((layer: ILayer) => layer.id);
+    let { layers } = this.state;
+    let index = layers.indexOf(layerToRemove);
 
-      let layers = state.layers.slice();
-
-      let index = ids.indexOf(layerToRemove.id);
-
-      if (index > -1) {
-        layers.splice(index, 1);
-      }
-
-      return {
-        layers: layers
-      };
-    });
+    if (index > -1) {
+      layers.splice(index, 1);
+      this.forceUpdate();
+    }
   }
+
 }

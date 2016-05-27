@@ -3,8 +3,7 @@ import {
   Link
 } from '../../../index';
 import {
-  ExampleCard,
-  PropertiesTable
+  ExampleCard
 } from '../../components/index';
 
 import { PersonaCardBasicExample } from './examples/PersonaCard.Basic.Example';
@@ -23,7 +22,6 @@ export class PersonaCardPage extends React.Component<any, any> {
         <ExampleCard title='PersonaCard' code={ PersonaCardBasicExampleCode }>
           <PersonaCardBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ null } />
       </div>
     );
   }

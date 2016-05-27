@@ -1,21 +1,24 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { ILayerProps } from './Layer.Props';
-import { LayerHost } from './LayerHost';
+import { LayerHost, ILayer } from './LayerHost';
 import './Layer.scss';
 
 const LAYER_HOST_ELEMENT_ID = 'ms-layer-host';
 
-export class Layer extends React.Component<ILayerProps, {}> {
-  private static _layerHost: LayerHost;
-  private static _lastId: number = 0;
+let _instance = 0;
+let _layerHost: LayerHost;
 
-  private _id: string;
+export class Layer extends React.Component<ILayerProps, {}> {
+  private _layer: ILayer;
 
   constructor(props?: ILayerProps) {
     super(props);
 
-    this._id = `${++Layer._lastId}`;
+    this._layer = {
+      id: String(_instance++),
+      children: props.children
+    };
   }
 
   public render() {
@@ -25,7 +28,7 @@ export class Layer extends React.Component<ILayerProps, {}> {
   }
 
   public componentWillMount() {
-    if (!Layer._layerHost) {
+    if (!_layerHost) {
       let hostElement = document.createElement('div');
       hostElement.setAttribute('id', LAYER_HOST_ELEMENT_ID);
       document.body.appendChild(hostElement);
@@ -34,28 +37,21 @@ export class Layer extends React.Component<ILayerProps, {}> {
         <LayerHost />
       ), hostElement) as LayerHost;
 
-      Layer._layerHost = layerHost;
+      _layerHost = layerHost;
     }
   }
 
   public componentDidMount() {
-    Layer._layerHost.addLayer({
-      id: this._id,
-      children: this.props.children
-    }, this.props.onLayerMounted);
+    _layerHost.addLayer(this._layer, this.props.onLayerMounted);
   }
 
   public componentWillReceiveProps(props: ILayerProps) {
-    Layer._layerHost.updateLayer({
-      id: this._id,
-      children: props.children
-    });
+    this._layer.children = props.children;
+
+    _layerHost.updateLayer(this._layer);
   }
 
   public componentWillUnmount() {
-    Layer._layerHost.removeLayer({
-      id: this._id,
-      children: []
-    });
+    _layerHost.removeLayer(this._layer);
   }
 }

@@ -85,8 +85,9 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     let { targetElement } = this.props;
     let target = ev.target as HTMLElement;
 
-    if (!this._hostElement.contains(target) &&
-        (!targetElement || !targetElement.contains(target))) {
+    if (ev.target !== window &&
+      !this._hostElement.contains(target) &&
+      (!targetElement || !targetElement.contains(target))) {
       this.dismiss();
     }
   }
