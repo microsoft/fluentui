@@ -26,4 +26,10 @@ export interface ICommandBarProps {
    * Items to render on the right side (or left, in RTL).
    */
   farItems?: IContextualMenuItem[];
+
+  /**
+   * Additional css class to apply to the command bar
+   * @defaultvalue undefined
+   */
+  className?: string;
 }

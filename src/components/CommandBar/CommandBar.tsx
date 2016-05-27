@@ -79,7 +79,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
   }
 
   public render() {
-    const { isSearchBoxVisible, searchPlaceholderText } = this.props;
+    const { isSearchBoxVisible, searchPlaceholderText, className } = this.props;
     const { renderedItems, contextualMenuItems, expandedMenuItemKey, expandedMenuId, renderedOverflowItems, contextualMenuTarget, renderedFarItems } = this.state;
     let searchBox;
 
@@ -98,7 +98,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     }
 
     return (
-      <div className='ms-CommandBar' ref='commandBarRegion'>
+      <div className={ css('ms-CommandBar', className) } ref='commandBarRegion'>
         { searchBox }
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           <div className='ms-CommandBar-primaryCommands' ref='commandSurface'>
@@ -128,7 +128,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
           </div>
           <div className='ms-CommandBar-sideCommands' ref='farCommandSurface'>
             { renderedFarItems.map((item, index) => (
-            <div className='ms-CommandBarItem' key={ item.key || String(index) } ref={ item.key || String(index) }>
+            <div className={ css('ms-CommandBarItem', item.className) } key={ item.key || String(index) } ref={ item.key || String(index) }>
               <button
                 id={ this._instanceId + item.key }
                 className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === item.key) }, {'is-static': (!item.onClick && !item.items)}) }
