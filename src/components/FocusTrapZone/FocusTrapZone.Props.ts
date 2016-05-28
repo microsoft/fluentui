@@ -11,4 +11,9 @@ export interface IFocusTrapZoneProps extends React.HTMLProps<HTMLDivElement> {
    * Sets the aria-labelledby attribute.
    */
   ariaLabelledBy?: string;
+
+  /**
+   * Indicates if this Trap Zone will allow clicks outside the FocusTrapZone
+   */
+  isClickableOutsideFocusTrap?: boolean;
 }

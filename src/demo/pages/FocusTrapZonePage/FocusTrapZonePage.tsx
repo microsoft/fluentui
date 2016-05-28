@@ -10,6 +10,9 @@ import {
 import FocusTrapZoneBoxExample from './examples/FocusTrapZone.Box.Example';
 let FocusTrapZoneBoxExampleCode = require('./examples/FocusTrapZone.Box.Example');
 
+import FocusTrapZoneBoxNoClickExample from './examples/FocusTrapZone.Box.NoClick.Example';
+let FocusTrapZoneBoxNoClickExampleCode = require('./examples/FocusTrapZone.Box.NoClick.Example');
+
 export class FocusTrapZonePage extends React.Component<any, any> {
 
   public render() {
@@ -24,6 +27,10 @@ export class FocusTrapZonePage extends React.Component<any, any> {
 
         <ExampleCard title='Simple Box' code={ FocusTrapZoneBoxExampleCode }>
           <FocusTrapZoneBoxExample />
+        </ExampleCard>
+
+        <ExampleCard title='Simple Box with Clicking outside Trap Zone disabled' code={ FocusTrapZoneBoxNoClickExampleCode }>
+          <FocusTrapZoneBoxNoClickExample/>
         </ExampleCard>
 
         <PropertiesTableSet componentName='FocusTrapZone' />

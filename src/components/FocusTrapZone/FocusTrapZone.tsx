@@ -26,13 +26,16 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> {
   }
 
   public componentDidMount() {
-    let { elementToFocusOnDismiss } = this.props;
+    let { elementToFocusOnDismiss, isClickableOutsideFocusTrap } = this.props;
 
     this._previouslyFocusedElement = elementToFocusOnDismiss ? elementToFocusOnDismiss : document.activeElement as HTMLElement;
     this._focusOnFirstChildInZone();
 
     this._events.on(window, 'focus', this._forceFocusInTrap, true);
-    this._events.on(window, 'click', this._forceClickInTrap, true);
+
+    if (!isClickableOutsideFocusTrap) {
+      this._events.on(window, 'click', this._forceClickInTrap, true);
+    }
   }
 
   public componentWillUnmount() {
