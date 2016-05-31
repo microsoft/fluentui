@@ -231,6 +231,7 @@ export class DetailsListBasicExample extends React.Component<any, IDetailsListBa
             onClick: this._onToggleLazyLoad
           },
           {
+            key: 'dash',
             name: '-'
           },
           {

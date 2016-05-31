@@ -101,20 +101,28 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
   color: $ms-color-neutralSecondary;
 }
 
-.ms-CommandBarItem-link {
+@mixin CommandBarItem-text {
   @include focus-border(2px);
 
   position: relative;
   background: none;
   border: none;
   line-height: $CommandBarItem-height - 1;
-  cursor: pointer;
   height: $CommandBarItem-height;
   min-width: 20px;
   text-align: center;
   padding: 0 8px;
   display: block;
   height: 100%;
+}
+
+.ms-CommandBarItem-text {
+  @include CommandBarItem-text;
+}
+
+.ms-CommandBarItem-link {
+  @include CommandBarItem-text;
+  cursor: pointer;
 
   &:hover,
   &.is-expanded {
