@@ -1,4 +1,4 @@
-import { DirectionalHint } from '../components/Callout/index';
+import { DirectionalHint } from '../common/DirectionalHint';
 import Rectangle from './Rectangle';
 export enum RectangleEdge {
   top,
