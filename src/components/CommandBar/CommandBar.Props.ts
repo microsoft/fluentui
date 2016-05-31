@@ -23,6 +23,11 @@ export interface ICommandBarProps {
   overflowItems?: IContextualMenuItem[];
 
   /**
+   * Text to be read by screen readers if there are overflow items and focus is on elipsis button
+   */
+  overflowScreenReaderText?: string;
+
+  /**
    * Items to render on the right side (or left, in RTL).
    */
   farItems?: IContextualMenuItem[];
