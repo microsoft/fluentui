@@ -39,9 +39,10 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> {
   }
 
   public componentWillUnmount() {
+    let { ignoreExternalFocusing } = this.props;
     this._events.dispose();
 
-    if (this._previouslyFocusedElement) {
+    if (!ignoreExternalFocusing && this._previouslyFocusedElement) {
       this._previouslyFocusedElement.focus();
     }
   }
