@@ -9,7 +9,6 @@ import {
   SelectionZone
   } from '../../../../utilities/selection/index';
 import { createListItems } from '../../../utilities/data';
-import { css } from '../../../../utilities/css';
 
 import './Selection.Example.scss';
 
@@ -28,10 +27,6 @@ export interface ISelectionItemExampleProps {
   selectionMode?: SelectionMode;
 }
 
-export interface ISelectionItemExampleState {
-  isSelected?: boolean;
-}
-
 /**
  * The SelectionBasicExample controls the selection state of all items
  */
@@ -42,8 +37,8 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
     super();
 
     this._hasMounted = false;
-    this._onSelectionModeChanged = this._onSelectionModeChanged.bind(this);
     this._onSelectionChanged = this._onSelectionChanged.bind(this);
+    this._onSelectionModeChanged = this._onSelectionModeChanged.bind(this);
     this._onToggleSelectAll = this._onToggleSelectAll.bind(this);
 
     this.state = {
@@ -59,35 +54,23 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
   }
 
   public render() {
-    let { selection, selectionMode } = this.state;
+    let { items, selection, selectionMode } = this.state;
 
     return (
       <div className='ms-SelectionBasicExample'>
         <CommandBar items={ this._getCommandItems() } />
         <SelectionZone selection={ selection } selectionMode={ selectionMode } >
-          { this._renderSelectionItems() }
+          { items.map((item, index) => (
+              <SelectionItemExample
+                ref={ 'detailsGroup_' + index }
+                key={ item.key }
+                item={ item }
+                itemIndex={ index }
+                selectionMode={ selectionMode }
+                selection={ selection }
+                />
+            )) }
         </SelectionZone>
-      </div>
-    );
-  }
-
-  private _renderSelectionItems() {
-    let { items, selection, selectionMode } = this.state;
-
-    let renderedItems = items.map((item, index) => (
-      <SelectionItemExample
-        ref={ 'detailsGroup_' + index }
-        key={ item.key }
-        item={ item }
-        itemIndex={ index }
-        selectionMode={ selectionMode }
-        selection={ selection }
-        />
-    ));
-
-    return (
-      <div className='ms-SelectionExampleItems'>
-        { renderedItems }
       </div>
     );
   }
@@ -157,29 +140,13 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
 /**
  * The SelectionItemExample controls and displays the selection state of a single item
  */
-export class SelectionItemExample extends React.Component<ISelectionItemExampleProps, ISelectionItemExampleState> {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isSelected: this._getSelectionState(props)
-    };
-  }
-
-  public forceUpdate() {
-    this._onSelectionChanged();
-    super.forceUpdate();
-  }
-
+export class SelectionItemExample extends React.Component<ISelectionItemExampleProps, {}> {
   public render() {
-    let { isSelected } = this.state;
-    let { item, itemIndex, selectionMode } = this.props;
+    let { item, itemIndex, selection, selectionMode } = this.props;
+    let isSelected = selection.isIndexSelected(itemIndex);
 
     return (
-      <div
-        className={ css('ms-SelectionItemExample', { 'is-selected': isSelected }) }
-        data-selection-index={ itemIndex }
-        >
+      <div className='ms-SelectionItemExample'  data-selection-index={ itemIndex }>
           { (selectionMode !== SelectionMode.none) && (
             <button className='ms-SelectionItemExample-check' data-selection-toggle={ true } >
               <Check isChecked={ isSelected } />
@@ -190,27 +157,5 @@ export class SelectionItemExample extends React.Component<ISelectionItemExampleP
           </span>
       </div>
     );
-  }
-
-  public componentWillReceiveProps(newProps: ISelectionItemExampleProps) {
-    this.setState({
-      isSelected: this._getSelectionState(newProps)
-    });
-  }
-
-  private _getSelectionState(props: ISelectionItemExampleProps): boolean {
-    let { itemIndex, selection } = props;
-
-    return selection.isIndexSelected(itemIndex);
-  }
-
-  private _onSelectionChanged() {
-    let selectionState = this._getSelectionState(this.props);
-
-    if (selectionState !== this.state.isSelected) {
-      this.setState({
-        isSelected: selectionState
-      });
-    }
   }
 }
