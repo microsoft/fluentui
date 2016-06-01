@@ -3,6 +3,7 @@ export const items = [
     key: 'newItem',
     name: 'New',
     icon: 'circlePlus',
+    onClick: () => { return; },
     items: [
       {
         key: 'emailMessage',
@@ -19,32 +20,38 @@ export const items = [
   {
     key: 'upload',
     name: 'Upload',
-    icon: 'upload'
+    icon: 'upload',
+    onClick: () => { return; }
   },
   {
     key: 'share',
     name: 'Share',
-    icon: 'share'
+    icon: 'share',
+    onClick: () => { return; }
   },
   {
     key: 'download',
     name: 'Download',
-    icon: 'download'
+    icon: 'download',
+    onClick: () => { return; }
   },
   {
     key: 'move',
     name: 'Move to...',
-    icon: 'folderMove'
+    icon: 'folderMove',
+    onClick: () => { return; }
   },
   {
     key: 'copy',
     name: 'Copy to...',
-    icon: 'copy'
+    icon: 'copy',
+    onClick: () => { return; }
   },
   {
     key: 'rename',
     name: 'Rename...',
-    icon: 'editBox'
+    icon: 'editBox',
+    onClick: () => { return; }
   }
 ];
 
@@ -70,16 +77,19 @@ export const farItems = [
   {
     key: 'sort',
     name: 'Sort',
-    icon: 'sortLines'
+    icon: 'sortLines',
+    onClick: () => { return; }
   },
   {
     key: 'tile',
     name: 'Grid view',
-    icon: 'tile'
+    icon: 'tile',
+    onClick: () => { return; }
   },
   {
     key: 'info',
     name: 'Info',
-    icon: 'circleInfo'
+    icon: 'circleInfo',
+    onClick: () => { return; }
   }
 ];

@@ -64,7 +64,12 @@ export interface IDocumentCardLocationProps extends React.Props<DocumentCardLoca
   /**
    * URL to navigate to for this location.
    */
-  locationHref: string;
+  locationHref?: string;
+
+  /**
+   * Function to call when the location is clicked.
+   */
+  onClick?: (ev?: any) => void;
 }
 
 export interface IDocumentCardActivityProps extends React.Props<DocumentCardActivity> {

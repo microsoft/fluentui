@@ -10,10 +10,12 @@ import {
 import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
 import { CommandBarFixedOverflowExample } from './examples/CommandBar.FixedOverflow.Example';
 import { CommandBarRandomItemsExample } from './examples/CommandBar.RandomItems.Example';
+import { CommandBarNonFocusableItemsExample } from './examples/CommandBar.NonFocusable.Example';
 
 const CommandBarBasicExampleCode = require('./examples/CommandBar.Basic.Example.tsx');
 const CommandBarFixedOverflowExampleCode = require('./examples/CommandBar.FixedOverflow.Example.tsx');
 const CommandBarRandomItemsExampleCode = require('./examples/CommandBar.RandomItems.Example.tsx');
+const CommandBarNoFocusableItemsExampleCode = require('./examples/CommandBar.NonFocusable.Example.tsx');
 
 export class CommandBarPage extends React.Component<any, any> {
   public render() {
@@ -33,6 +35,9 @@ export class CommandBarPage extends React.Component<any, any> {
         </ExampleCard>
         <ExampleCard title='CommandBar with no search box and dynamically updated items' code={ CommandBarRandomItemsExampleCode }>
           <CommandBarRandomItemsExample />
+        </ExampleCard>
+        <ExampleCard title='CommandBar with not focusable items' code={ CommandBarNoFocusableItemsExampleCode }>
+          <CommandBarNonFocusableItemsExample />
         </ExampleCard>
         <PropertiesTableSet componentName='CommandBar' />
         <PropertiesTableSet componentName='ContextualMenu' renderOnly={ ['IContextualMenuItem'] } />

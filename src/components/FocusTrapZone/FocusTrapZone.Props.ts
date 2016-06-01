@@ -3,7 +3,7 @@ import * as React from 'react';
 export interface IFocusTrapZoneProps extends React.HTMLProps<HTMLDivElement> {
   /**
    * Sets the HTMLElement to focus on when exiting the FocusTrapZone.
-   * @default: The element.target that triggered the FTZ.
+   * @default The element.target that triggered the FTZ.
    */
   elementToFocusOnDismiss?: HTMLElement;
 
@@ -14,6 +14,13 @@ export interface IFocusTrapZoneProps extends React.HTMLProps<HTMLDivElement> {
 
   /**
    * Indicates if this Trap Zone will allow clicks outside the FocusTrapZone
+   * @default false
    */
   isClickableOutsideFocusTrap?: boolean;
+
+  /**
+   * Indicates if this Trap Zone will ignore keeping track of HTMLElement that activated the Zone.
+   * @default false
+   */
+  ignoreExternalFocusing?: boolean;
 }

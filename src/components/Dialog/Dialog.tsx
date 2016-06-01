@@ -34,7 +34,7 @@ export class Dialog extends React.Component<IDialogProps, any> {
     }
 
     public render() {
-        let { isOpen, type, isDarkOverlay, onDismiss, title, subText, isBlocking, responsiveMode } = this.props;
+        let { isOpen, type, isDarkOverlay, onDismiss, title, subText, isBlocking, responsiveMode, elementToFocusOnDismiss, ignoreExternalFocusing } = this.props;
         let { id } = this.state;
         // @TODO - the discussion on whether the Dialog contain a property for rendering itself is still being discussed
         if (!isOpen) {
@@ -62,7 +62,11 @@ export class Dialog extends React.Component<IDialogProps, any> {
                         aria-describedby={ this.props.subText ? id + '-subText' : '' }
                         onKeyDown={ this._onDialogKeyDown }>
                         <Overlay isDarkThemed={ isDarkOverlay } onClick={ isBlocking ? null : onDismiss } />
-                        <FocusTrapZone className ={ css('ms-Dialog-main', this.props.containerClassName)}>
+                        <FocusTrapZone
+                            className={ css('ms-Dialog-main', this.props.containerClassName)}
+                            elementToFocusOnDismiss={ elementToFocusOnDismiss }
+                            isClickableOutsideFocusTrap={ !isBlocking }
+                            ignoreExternalFocusing={ ignoreExternalFocusing }>
                             <button className='ms-Dialog-button ms-Dialog-button--close' onClick={ onDismiss }>
                                 <i className='ms-Icon ms-Icon--x'></i>
                             </button>

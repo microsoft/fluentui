@@ -80,7 +80,7 @@ export interface IContextualMenuItem {
   /**
    * Unique id to identify the item
    */
-  key?: string;
+  key: string;
 
   /**
    * Text description for the menu item to display

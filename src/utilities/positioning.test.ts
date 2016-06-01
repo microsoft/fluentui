@@ -1,6 +1,6 @@
 import Rectangle from './Rectangle';
 import {positioningFunctions, RectangleEdge} from './positioning';
-import { DirectionalHint } from '../components/Callout/index';
+import { DirectionalHint } from '../common/DirectionalHint';
 import {areRectanglesEqual} from './Rectangle.test';
 interface ITestValidation {
   callout: Rectangle;

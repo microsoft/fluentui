@@ -43,7 +43,7 @@ export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeSt
   isBlocking?: boolean;
 
   /**
-  * Optional override for container class 
+  * Optional override for container class
   */
   containerClassName?: string;
 
@@ -51,6 +51,18 @@ export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeSt
   * Optional override content class
   */
   contentClassName?: string;
+
+  /**
+   * Sets the HTMLElement to focus on when exiting the FocusTrapZone.
+   * @default The element.target that triggered the Dialog.
+   */
+  elementToFocusOnDismiss?: HTMLElement;
+
+  /**
+   * Indicates if this Dialog will ignore keeping track of HTMLElement that activated the Dialog.
+   * @default false
+   */
+  ignoreExternalFocusing?: boolean;
 }
 
 export enum DialogType {
