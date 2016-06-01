@@ -2,11 +2,28 @@ import * as React from 'react';
 import { css } from '../../utilities/css';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import './Image.scss';
-import { IImageProps } from './Image.Props';
+import { IImageProps, ImageFit } from './Image.Props';
 
 export interface IImageState {
   loadState?: ImageLoadState;
 }
+
+export enum CoverStyle {
+  landscape,
+  portrait
+}
+
+export const CoverStyleMap = {
+  [ CoverStyle.landscape ]: 'ms-Image--landscape',
+  [ CoverStyle.portrait ]: 'ms-Image--portrait'
+};
+
+export const ImageFitMap = {
+  [ ImageFit.center ]: 'ms-Image--center',
+  [ ImageFit.cover ]: 'ms-Image--cover',
+  [ ImageFit.none ]: 'ms-Image--none',
+  [ ImageFit.scale ]: 'ms-Image--scale'
+};
 
 export enum ImageLoadState {
   notLoaded,
@@ -26,6 +43,7 @@ export class Image extends React.Component<IImageProps, IImageState> {
   };
 
   private _events: EventGroup;
+  private _coverStyle: CoverStyle;
 
   constructor(props: IImageProps) {
     super(props);
@@ -51,28 +69,45 @@ export class Image extends React.Component<IImageProps, IImageState> {
   }
 
   public render() {
-    let { src, alt, width, height, shouldFadeIn, className, errorSrc } = this.props;
+    let { src, alt, width, height, shouldFadeIn, className, imageFit, errorSrc } = this.props;
     let { loadState } = this.state;
+    let coverStyle = this._coverStyle;
     let loaded = loadState === ImageLoadState.loaded || loadState === ImageLoadState.errorLoaded;
     let srcToDisplay: string =
       (loadState === ImageLoadState.error || loadState === ImageLoadState.errorLoaded) ? errorSrc : src;
 
+    // If image dimensions aren't specified, the natural size of the image is used.
     return (
-      <img className={ css('ms-Image', className, {
-        'is-fadeIn': shouldFadeIn,
-        'is-notLoaded': !loaded,
-        'is-loaded': loaded,
-        'ms-u-fadeIn400': loaded && shouldFadeIn,
-        'is-error': loadState === ImageLoadState.error
-        }) } ref='image' src={ srcToDisplay } alt={ alt } style={ { width: width, height: height } } />
+      <div className='ms-Image-container' style={ { width: width, height: height } }>
+        <img className={ css('ms-Image',
+          className,
+          (coverStyle !== undefined) && CoverStyleMap[coverStyle],
+          (imageFit !== undefined) && ImageFitMap[imageFit], {
+            'is-fadeIn': shouldFadeIn,
+            'is-notLoaded': !loaded,
+            'is-loaded': loaded,
+            'ms-u-fadeIn400': loaded && shouldFadeIn,
+            'is-error': loadState === ImageLoadState.error,
+            'ms-Image--scale': (imageFit === undefined && !!width && !!height),
+          }) } ref='image' src={ srcToDisplay } alt={ alt } />
+      </div>
     );
   }
 
   private _evaluateImage(): boolean {
-    let { src } = this.props;
+    let { src, width, height } = this.props;
     let { loadState } = this.state;
     let { image } = this.refs;
     let isLoaded = (src && image.naturalWidth > 0 && image.naturalHeight > 0);
+
+    let desiredRatio = width / height;
+    let naturalRatio = image.naturalWidth / image.naturalHeight;
+
+    if (naturalRatio > desiredRatio) {
+      this._coverStyle = CoverStyle.landscape;
+    } else {
+      this._coverStyle = CoverStyle.portrait;
+    }
 
     if (isLoaded && loadState !== ImageLoadState.loaded && loadState !== ImageLoadState.errorLoaded) {
       this._events.off();

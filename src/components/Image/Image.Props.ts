@@ -34,6 +34,13 @@ export interface IImageProps extends React.Props<Image> {
   className?: string;
 
   /**
+   * Used to determine how to size the image to fit the dimensions of the component.
+   * If both dimensions are provided, then the image is fit using ImageFit.scale, otherwise ImageFit.none is used.
+   * @default See description
+   */
+  imageFit?: ImageFit;
+
+  /**
    * Function to call when the image indicated by src fails to load. The parameter src will be the same
    * as the original src property.
    */
@@ -45,3 +52,27 @@ export interface IImageProps extends React.Props<Image> {
   errorSrc?: string;
 }
 
+/**
+ * The possible methods that can be used to fit the image.
+ */
+export enum ImageFit {
+  /**
+   * The image is not scaled. The image is centered and cropped within the content box.
+   */
+  center,
+
+  /**
+   * The image is sized to maintain its aspect ratio while filling the element’s entire content box.
+   */
+  cover,
+
+  /**
+   * The image is scaled to match the size of the element's content box.
+   */
+  scale,
+
+  /**
+   * The image is not resized.
+   */
+  none
+}

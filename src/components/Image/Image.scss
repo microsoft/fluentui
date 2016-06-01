@@ -1,5 +1,9 @@
 @import '../../common/common';
 
+.ms-Image-container {
+  overflow: hidden;
+}
+
 .ms-Image {
   opacity: 0;
 
@@ -8,3 +12,33 @@
   }
 }
 
+.ms-Image--center,
+.ms-Image--cover {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.ms-Image--cover {
+  &.ms-Image--landscape {
+    height: 100%;
+    width: auto;
+  }
+
+  &.ms-Image--portrait {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.ms-Image--none {
+  height: auto;
+  width: auto;
+}
+
+/** This is identical to the default behavior. */
+.ms-Image--scale {
+  height: 100%;
+  width: 100%;
+}
