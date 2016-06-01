@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Image } from '../../Image';
 import { IChoiceGroupOption, IChoiceGroupProps } from './ChoiceGroup.Props';
 import { css } from '../../utilities/css';
 import './ChoiceGroup.scss';
@@ -79,20 +78,22 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
   private _renderField(option: IChoiceGroupOption) {
     const { keyChecked } = this.state;
 
+    // To make the image of the choice field could do transition,
+    // just use the background-image here.
+    const imageStyle: React.CSSProperties = option.imageSrc
+      ? {
+          backgroundImage: `url("${option.key === keyChecked ? option.selectedImageSrc : option.imageSrc}")`,
+          width: `${option.imageSize.width}`,
+          height: `${option.imageSize.height}`
+        }
+      : null;
+
     return (
       <label
         htmlFor={ this._id + '-' + option.key }
         className={ option.imageSrc ? 'ms-ChoiceField-field--image' : 'ms-ChoiceField-field' }
       >
-        {
-          option.imageSrc
-            ? <Image
-                src={ option.key === keyChecked ? option.selectedImageSrc : option.imageSrc }
-                width={ option.imageSize.width }
-                height={ option.imageSize.height }
-              />
-            : null
-        }
+        { option.imageSrc ? <div className='ms-ChoiceField-imageWrapper' style={ imageStyle }/> : null }
         <span id={ `${this._descriptionId}-${option.key}` } className='ms-Label'>{ option.text }</span>
       </label>
     );

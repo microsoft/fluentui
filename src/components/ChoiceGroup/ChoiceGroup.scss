@@ -23,6 +23,13 @@
 
     transition: all 300ms ease;
 
+    .ms-ChoiceField-imageWrapper {
+      display: inline-block;
+      background-size: 100% 100%;
+
+      transition: all 300ms ease;
+    }
+
     .ms-Label {
       line-height: $ms-font-size-s;
       padding: 10px 0 0 0;
