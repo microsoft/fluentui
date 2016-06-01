@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IChoiceGroupOption, IChoiceGroupProps } from './ChoiceGroup.Props';
 import { Image } from '../../Image';
+import { IChoiceGroupOption, IChoiceGroupProps } from './ChoiceGroup.Props';
 import { css } from '../../utilities/css';
 import './ChoiceGroup.scss';
 
@@ -77,7 +77,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
   }
 
   private _renderField(option: IChoiceGroupOption) {
-    let { keyChecked } = this.state;
+    const { keyChecked } = this.state;
 
     return (
       <label
@@ -86,18 +86,14 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
       >
         {
           option.imageSrc
-            ? <div className='ms-ChoiceField-innerField'>
-                <div className='ms-ChoiceField-imageWrapper'>
-                  <Image
-                    src={ option.key === keyChecked ? option.selectedImageSrc : option.imageSrc }
-                    width={ option.imageSize.width }
-                    height={ option.imageSize.height }
-                  />
-                  <span id={ `${this._descriptionId}-${option.key}` } className='ms-Label'>{ option.text }</span>
-                </div>
-              </div>
-            : <span id={ `${this._descriptionId}-${option.key}` } className='ms-Label'>{ option.text }</span>
+            ? <Image
+                src={ option.key === keyChecked ? option.selectedImageSrc : option.imageSrc }
+                width={ option.imageSize.width }
+                height={ option.imageSize.height }
+              />
+            : null
         }
+        <span id={ `${this._descriptionId}-${option.key}` } className='ms-Label'>{ option.text }</span>
       </label>
     );
   }

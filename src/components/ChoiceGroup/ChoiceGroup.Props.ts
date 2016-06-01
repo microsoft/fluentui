@@ -39,7 +39,7 @@ export interface IChoiceGroupOption {
   selectedImageSrc?: string;
 
   /**
-   * The width and height of image for choice field.
+   * The width and height of the image in px for choice field.
    */
   imageSize?: { width: number, height: number };
 

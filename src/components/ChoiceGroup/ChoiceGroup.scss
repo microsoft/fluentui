@@ -2,64 +2,53 @@
 @import "~office-ui-fabric/src/components/ChoiceField/ChoiceField";
 
 .ms-ChoiceField--image {
+  $fieldMinWidth: 164px;
+  $fieldPadding: 20px;
+
   display: inline-block;
-  margin: 0 6px;
+
+  font-size: 0;
+
+  @include ms-bgColor-neutralLighter;
 
   .ms-ChoiceField-field--image {
-    cursor: pointer;
-  }
-
-  .ms-ChoiceField-imageWrapper {
     display: inline-block;
-    margin: 4px;
-    padding: 0px 23px;
+    box-sizing: border-box;
+    min-width: $fieldMinWidth;
+    padding: $fieldPadding $fieldPadding 12px $fieldPadding;
 
-    .ms-Image {
-      margin-top: 6px;
-    }
+    cursor: pointer;
 
-    .ms-Label {
-      margin: 10px 0 8px 0;
-      padding: 0;
-      text-align: center;
-      color: $ms-color-neutralPrimary;
-    }
-  }
+    text-align: center;
 
-  .ms-ChoiceField-innerField {
-    position: relative;
-    border: 2px solid transparent;
-  }
-
-  .ms-ChoiceField-input:checked+.ms-ChoiceField-field--image .ms-ChoiceField-innerField {
-    border: 2px solid $ms-color-themePrimary;
-
-    .ms-ChoiceField-imageWrapper {
-      background-color: $ms-color-themeLighterAlt;
-    }
+    transition: all 300ms ease;
 
     .ms-Label {
-      color: $ms-color-themePrimary;
+      line-height: $ms-font-size-s;
+      padding: 10px 0 0 0;
+
+      @include ms-fontWeight-semibold;
+      @include ms-fontColor-neutralPrimary;
     }
   }
 
-  .ms-ChoiceField-input:not(:checked)+.ms-ChoiceField-field--image .ms-ChoiceField-innerField:hover {
-    border: 2px solid $ms-color-neutralTertiaryAlt;
+  .ms-ChoiceField-input:checked+.ms-ChoiceField-field--image {
+    @include ms-bgColor-themeLight;
+  }
 
-    .ms-ChoiceField-imageWrapper {
-      background-color: $ms-color-neutralLighter;
-    }
+  &+& {
+    @include margin-left(6px);
   }
 }
 
-.is-focusVisible .ms-ChoiceField-input:focus+.ms-ChoiceField-field--image .ms-ChoiceField-innerField:before {
+.is-focusVisible .ms-ChoiceField-input:focus+.ms-ChoiceField-field--image:before {
   content: '';
 
   position: absolute;
-  top: -4px;
-  right: -4px;
-  bottom: -4px;
-  left: -4px;
+  top: -2px;
+  right: -2px;
+  bottom: -2px;
+  left: -2px;
 
   border: 1px solid $ms-color-neutralSecondaryAlt;
 }

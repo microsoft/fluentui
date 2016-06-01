@@ -52,17 +52,17 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
             {
               key: 'bar',
               isChecked: this.state.imageKey === 'bar',
-              imageSrc: 'dist/choicegroup-bar-inactive.png',
-              selectedImageSrc: 'dist/choicegroup-bar-active.png',
-              imageSize: { width: 70, height: 70 },
+              imageSrc: 'dist/choicegroup-bar-unselected.png',
+              selectedImageSrc: 'dist/choicegroup-bar-selected.png',
+              imageSize: { width: 50, height: 50 },
               text: 'Bar chart'
             },
             {
               key: 'pie',
               isChecked: this.state.imageKey === 'pie',
-              imageSrc: 'dist/choicegroup-pie-inactive.png',
-              selectedImageSrc: 'dist/choicegroup-pie-active.png',
-              imageSize: { width: 70, height: 70 },
+              imageSrc: 'dist/choicegroup-pie-unselected.png',
+              selectedImageSrc: 'dist/choicegroup-pie-selected.png',
+              imageSize: { width: 50, height: 50 },
               text: 'Pie chart'
             }
           ] }
