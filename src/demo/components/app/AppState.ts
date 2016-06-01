@@ -119,7 +119,7 @@ export const AppState: IAppState = {
         {
           component: DocumentCardPage,
           name: 'DocumentCard',
-          status: ExampleStatus.started,
+          status: ExampleStatus.beta,
           url: '#/examples/documentcard'
         },
         {

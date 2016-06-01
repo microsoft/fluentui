@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {
-  DocumentCard
+  DocumentCard,
+  IDocumentCardPreviewProps,
+  ImageFit
 } from '../../../../index';
 
 import { DocumentCardActions } from '../../../../components/DocumentCard/DocumentCardActions';
@@ -11,14 +13,20 @@ import { DocumentCardTitle } from '../../../../components/DocumentCard/DocumentC
 
 export class DocumentCardCompleteExample extends React.Component<any, any> {
   public render() {
+    let previewProps: IDocumentCardPreviewProps = {
+      previewImageSrc: 'dist/document-preview.png',
+      imageFit: ImageFit.none,
+      width: 318,
+      height: 196,
+      iconSrc: 'dist/icon-ppt.png',
+      accentColor: '#ce4b1f'
+    };
+
     return (
         <DocumentCard
           onClick={ function() { console.log('You clicked the card.'); } }
         >
-          <DocumentCardPreview
-            previewImageSrc='dist/document-preview.png'
-            iconSrc='dist/icon-ppt.png'
-            accentColor='#ce4b1f'/>
+          <DocumentCardPreview { ...previewProps }/>
           <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com'/>
           <DocumentCardTitle title='Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx'
           shouldTruncate={ true }/>

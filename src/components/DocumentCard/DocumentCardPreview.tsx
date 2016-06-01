@@ -5,7 +5,7 @@ import './DocumentCardPreview.scss';
 
 export class DocumentCardPreview extends React.Component<IDocumentCardPreviewProps, any> {
   public render() {
-    let { previewImageSrc, iconSrc, accentColor, errorImageSrc } = this.props;
+    let { previewImageSrc, iconSrc, accentColor, errorImageSrc, width, height, imageFit } = this.props;
 
     let icon;
     if (iconSrc) {
@@ -21,7 +21,12 @@ export class DocumentCardPreview extends React.Component<IDocumentCardPreviewPro
 
     return (
       <div className='ms-DocumentCardPreview' style={ style }>
-        <Image className='ms-DocumentCardPreview-image' src={ previewImageSrc } errorSrc={ errorImageSrc }/>
+        <Image className='ms-DocumentCardPreview-image'
+          width={ width }
+          height={ height }
+          imageFit={ imageFit }
+          src={ previewImageSrc }
+          errorSrc={ errorImageSrc }/>
         { icon }
       </div>
     );

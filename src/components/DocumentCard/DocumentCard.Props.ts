@@ -6,6 +6,7 @@ import { DocumentCardLocation } from './DocumentCardLocation';
 import { DocumentCardActivity } from './DocumentCardActivity';
 import { DocumentCardActions } from './DocumentCardActions';
 import { PersonaInitialsColor } from '../../Persona';
+import { ImageFit } from '../../Image';
 
 export interface IDocumentCardProps extends React.Props<DocumentCard> {
   /**
@@ -25,6 +26,22 @@ export interface IDocumentCardPreviewProps extends React.Props<DocumentCardPrevi
    * Path to the preview image.
    */
   previewImageSrc: string;
+
+   /**
+   * If provided, forces the preview image to be this width.
+   */
+  width?: number;
+
+  /**
+   * If provided, forces the preview image to be this height.
+   */
+  height?: number;
+
+  /**
+   * Used to determine how to size the image to fit the dimensions of the component.
+   * If both dimensions are provided, then the image is fit using ImageFit.scale, otherwise ImageFit.none is used.
+   */
+  imageFit?: ImageFit;
 
   /**
    * Path to the icon associated with this document type.
