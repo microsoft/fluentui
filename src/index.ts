@@ -35,6 +35,7 @@ export * from './PersonaCard';
 export * from './Pivot';
 export * from './ProgressIndicator';
 export * from './SearchBox';
+export * from './Slider';
 export * from './Spinner';
 export * from './TextField';
 export * from './Toggle';
