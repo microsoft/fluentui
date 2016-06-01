@@ -30,6 +30,7 @@ import { PersonaPage } from '../../pages/PersonaPage/PersonaPage';
 import { PivotPage } from '../../pages/PivotPage/PivotPage';
 import { ProgressIndicatorPage } from '../../pages/ProgressIndicatorPage/ProgressIndicatorPage';
 import { SearchBoxPage } from '../../pages/SearchBoxPage/SearchBoxPage';
+import { SelectionPage } from '../../pages/SelectionPage/SelectionPage';
 import { SliderPage } from '../../pages/SliderPage/SliderPage';
 import { SpinnerPage } from '../../pages/SpinnerPage/SpinnerPage';
 import { TextFieldPage } from '../../pages/TextFieldPage/TextFieldPage';
@@ -280,7 +281,9 @@ export const AppState: IAppState = {
           url: '#examples/focuszone'
         },
         {
+          component: SelectionPage,
           name: 'Selection management',
+          status: ExampleStatus.beta,
           url: '#examples/selectionManagement'
         },
         {
