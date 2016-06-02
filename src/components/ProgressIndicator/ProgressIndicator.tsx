@@ -1,9 +1,13 @@
 import * as React from 'react';
 import { IProgressIndicatorProps } from './ProgressIndicator.Props';
+import { css } from '../../utilities/css';
 import './ProgressIndicator.scss';
 
-export class ProgressIndicator extends React.Component<IProgressIndicatorProps, any> {
+// if the percentComplete is near 0, don't animate it.
+// This prevents animations on reset to 0 scenarios
+const ZERO_THRESHOLD = 0.01;
 
+export class ProgressIndicator extends React.Component<IProgressIndicatorProps, any> {
   public static defaultProps = {
     title: '',
     description: '',
@@ -20,7 +24,11 @@ export class ProgressIndicator extends React.Component<IProgressIndicatorProps, 
         <div className='ms-ProgressIndicator-itemName'>{ title }</div>
         <div className='ms-ProgressIndicator-itemProgress'>
           <div className='ms-ProgressIndicator-progressTrack'></div>
-          <div className='ms-ProgressIndicator-progressBar' style={ { width: percentComplete + '%' } }></div>
+          <div className={ css('ms-ProgressIndicator-progressBar', {
+              'smoothTransition': percentComplete > ZERO_THRESHOLD
+            })}
+            style={ { width: percentComplete + '%' } }>
+          </div>
         </div>
         <div className='ms-ProgressIndicator-itemDescription'>{ description }</div>
       </div>

@@ -1,2 +1,8 @@
 @import "~office-ui-fabric/src/sass/Fabric.Common";
 @import "~office-ui-fabric/src/components/ProgressIndicator/ProgressIndicator";
+
+.ms-ProgressIndicator-progressBar.smoothTransition {
+  transition-property: width;
+  transition-timing-function: linear;
+  transition-duration: 150ms;
+}
