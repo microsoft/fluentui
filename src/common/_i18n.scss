@@ -250,12 +250,12 @@
     }
 }
 
-@mixin transform-rtl() {
+@mixin transform-scaleX($scaleX: 1) {
     @include LTR {
-        transform: scaleX(1);
+        transform: scaleX($scaleX);
     }
     @include RTL {
-        transform: scaleX(-1);
+        transform: scaleX(-$scaleX);
     }
 }
 
