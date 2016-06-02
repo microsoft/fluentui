@@ -112,6 +112,12 @@ export interface IColumn {
   ariaLabel?: string;
 
   /**
+   * Optional flag on whether the column is a header for the given row. There should be only one column with
+   * row header set to true.
+   */
+  isRowHeader?: boolean;
+
+  /**
    * Maximum width for the column, if stretching is allowed in justified scenarios.
    */
   maxWidth?: number;

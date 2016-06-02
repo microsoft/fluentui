@@ -152,6 +152,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
     return (
       <div
         ref='root'
+        role='row'
         className={ css('ms-DetailsRow', droppingClassName, {
           'is-selected': isSelected
         }) }
@@ -164,6 +165,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           { (selectionMode !== SelectionMode.none) && (
             <button
+              role='gridcell'
               className='ms-DetailsRow-check'
               data-selection-toggle={ true }
               data-automationid='DetailsRowCheck'

@@ -587,6 +587,7 @@ export function buildColumns(
           isMultiline: (isMultiline === undefined) ? false : isMultiline,
           isSorted: sortedColumnKey === propName,
           isSortedDescending: !!isSortedDescending,
+          isRowHeader: isFirstColumn,
           columnActionsMode: ColumnActionsMode.hasDropdown,
           isResizable: canResizeColumns,
           onColumnClick: onColumnClick,
