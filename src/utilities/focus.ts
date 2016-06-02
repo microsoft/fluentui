@@ -121,6 +121,7 @@ export function isElementVisible(element: HTMLElement): boolean {
   return (
     !!element &&
     (element.offsetParent !== null ||
+    (element.hidden === false) ||
     (element as any).isVisible === true) // used as a workaround for testing.
   );
 }

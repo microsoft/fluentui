@@ -268,6 +268,7 @@ describe('FocusZone', () => {
       width: 20,
       height: 20
     } as ClientRect);
+    hiddenButton.hidden = true;
     hiddenButton.focus = () => ReactTestUtils.Simulate.focus(hiddenButton);
 
     buttonD.getBoundingClientRect = () => ({
