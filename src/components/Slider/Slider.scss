@@ -38,7 +38,7 @@
   position: absolute;
   top: -6px;
   border-radius: 10px;
-  transform: translateX(-50%);
+  @include transform-translateX(-50%);
 }
 
 .ms-Slider-wrapper .ms-Label {
