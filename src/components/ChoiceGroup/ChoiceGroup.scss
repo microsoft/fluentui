@@ -9,30 +9,43 @@
 
   font-size: 0;
 
+  @include margin-right(6px);
   @include ms-bgColor-neutralLighter;
 
   .ms-ChoiceField-field--image {
     display: inline-block;
+
     box-sizing: border-box;
     min-width: $fieldMinWidth;
-    padding: $fieldPadding $fieldPadding 12px $fieldPadding;
 
     cursor: pointer;
+    padding: $fieldPadding $fieldPadding 12px $fieldPadding;
 
     text-align: center;
 
-    transition: all 300ms ease;
+    transition: all 200ms ease;
 
-    .ms-ChoiceField-imageWrapper {
-      display: inline-block;
-      background-size: 100% 100%;
+    .ms-ChoiceField-innerField {
+      position: relative;
 
-      transition: all 300ms ease;
+      .ms-ChoiceField-imageWrapper {
+        transition: all 200ms ease;
+
+        &.is-hidden {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          opacity: 0;
+        }
+      }
     }
 
     .ms-Label {
-      line-height: $ms-font-size-s;
       padding: 10px 0 0 0;
+      line-height: $ms-font-size-s;
 
       @include ms-fontWeight-semibold;
       @include ms-fontColor-neutralPrimary;
@@ -42,15 +55,9 @@
   .ms-ChoiceField-input:checked+.ms-ChoiceField-field--image {
     @include ms-bgColor-themeLight;
   }
-
-  &+& {
-    @include margin-left(6px);
-  }
 }
 
-.is-focusVisible .ms-ChoiceField-input:focus+.ms-ChoiceField-field--image:before {
-  content: '';
-
+.is-focusVisible .ms-ChoiceField-input:focus + .ms-ChoiceField-field--image:before {
   position: absolute;
   top: -2px;
   right: -2px;
@@ -58,4 +65,6 @@
   left: -2px;
 
   border: 1px solid $ms-color-neutralSecondaryAlt;
+
+  content: '';
 }
