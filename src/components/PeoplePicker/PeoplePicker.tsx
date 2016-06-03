@@ -44,8 +44,8 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
   };
 
   private _events: EventGroup;
+  private _suggestionsCount: number = 0;
   private _selectedPersonas: any = [];
-  private _searchResultsCount: number = 0;
   private _highlightedSearchResult: Object;
   private _focusedPersonaIndex: number = INVALID_INDEX;
 
@@ -83,6 +83,12 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
 
   public componentDidUpdate() {
     this._setScollPosition();
+    let { suggestions } = this.props;
+
+    if (this.state.isActive && this._suggestionsCount !== suggestions.length) {
+      this._setSelectedSearchResultIndex(0);
+    }
+    this._suggestionsCount = suggestions.length;
 
     // if the selected persona is out of range after an update, it means the user deleted it
     // and we need to set focus on the last one (which isn't handled by the FocusZone).
@@ -339,9 +345,7 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
       default:
         if (!isActive) {
           this._activatePeoplePicker();
-        }
-        if (highlightedSearchResultIndex === INVALID_INDEX) {
-          this._setSelectedSearchResultIndex(0);
+          // this._setSelectedSearchResultIndex(0);
         }
         return; // continue propagation
     }
@@ -356,9 +360,14 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
    */
   private _setSelectedSearchResultIndex(index: number) {
     let { highlightedSearchResultIndex } = this.state;
+    let { suggestions } = this.props;
 
-    index = Math.max(0, Math.min(this._searchResultsCount - 1, index));
-
+    if (suggestions.length > 0) {
+      // Cap index to stay in bounds of available search results
+      index = Math.max(0, Math.min(suggestions.length - 1, index));
+    } else {
+      index = INVALID_INDEX;
+    }
     if (index !== highlightedSearchResultIndex) {
       // Set the selected option.
       this.setState({
@@ -507,22 +516,22 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
    * Renders the popup search results
    */
   private _renderSearchResults() {
-    let { suggestions, searchCategoryName, type, isConnected, primarySearchText, secondarySearchText, disconnectedText } = this.props;
+    let { suggestions, searchCategoryName, noResultsText, type, isConnected, primarySearchText, secondarySearchText, disconnectedText } = this.props;
     let { isSearching } = this.state;
 
     // Generate a result group section for each item in the array of suggestions
-    this._searchResultsCount = 0;
+    let resultItemId = 0;
     let resultGroupId = 0;
     let searchResultItems = [];
     suggestions.forEach( (persona: IPersonaProps) => {
-      searchResultItems.push(this._renderSearchResultItem( persona, this._searchResultsCount++ ));
+      searchResultItems.push(this._renderSearchResultItem( persona, resultItemId++ ));
     });
     let searchResults = (
         <div
           className='ms-PeoplePicker-resultGroup'
           key={resultGroupId++}
         >
-          <div className='ms-PeoplePicker-resultGroupTitle'>{ searchCategoryName }</div>
+          <div className='ms-PeoplePicker-resultGroupTitle'>{ suggestions.length > 0 ? searchCategoryName : noResultsText }</div>
           <ul className='ms-PeoplePicker-resultList'>
             { searchResultItems }
           </ul>
@@ -573,10 +582,10 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
     let { suggestions } = this.props;
 
     // MemberList variant doesn't show groups
-    this._searchResultsCount = 0;
+    let resultItemId = 0;
     let searchResultItems = [];
     suggestions.forEach( (persona: IPersonaProps) => {
-      searchResultItems.push(this._renderSearchResultItem( persona, this._searchResultsCount++ ));
+      searchResultItems.push(this._renderSearchResultItem( persona, resultItemId++ ));
     });
     let searchResults = (
       <div className='ms-PeoplePicker-resultGroup'>

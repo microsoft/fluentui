@@ -77,6 +77,7 @@ export class PeoplePickerCompactExample extends React.Component<any, IPeoplePick
       <PeoplePicker
         suggestions={ suggestions }
         searchCategoryName={ 'Top Results' }
+        noResultsText={ 'No Results Available' }
         onSearchFieldChanged={ this._onFilterChanged }
         onRemoveSuggestion={ this._onRemoveSuggestion }
         type={ PeoplePickerType.compact }

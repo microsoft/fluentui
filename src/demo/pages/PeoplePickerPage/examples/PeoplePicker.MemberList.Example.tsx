@@ -77,6 +77,7 @@ export class PeoplePickerMemberListExample extends React.Component<any, IPeopleP
       <PeoplePicker
         suggestions={ suggestions }
         searchCategoryName={ 'Top Results' }
+        noResultsText={ 'No Results Available' }
         onSearchFieldChanged={ this._onFilterChanged }
         onRemoveSuggestion={ this._onRemoveSuggestion }
         type={ PeoplePickerType.memberList }

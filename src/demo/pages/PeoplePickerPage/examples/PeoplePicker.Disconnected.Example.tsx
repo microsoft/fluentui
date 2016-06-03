@@ -75,6 +75,7 @@ export class PeoplePickerDisconnectedExample extends React.Component<any, IPeopl
       <PeoplePicker
         suggestions={ suggestions }
         searchCategoryName={ 'Top Results' }
+        noResultsText={ 'No Results Available' }
         onSearchFieldChanged={ this._onFilterChanged }
         onRemoveSuggestion={ this._onRemoveSuggestion }
         isConnected={ false }

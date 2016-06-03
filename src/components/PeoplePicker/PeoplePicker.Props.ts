@@ -15,6 +15,12 @@ export interface IPeoplePickerProps extends React.Props<PeoplePicker> {
   searchCategoryName?: string;
 
   /**
+   * The no results text that appears when no results are available.
+   * Not displayed in the MemberList variant.
+   */
+  noResultsText?: string;
+
+  /**
   * The type of PeoplePickerType to display.
   * @default PeoplePickerType.normal
   */

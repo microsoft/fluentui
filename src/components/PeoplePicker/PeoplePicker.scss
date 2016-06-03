@@ -35,6 +35,15 @@
   min-width: 200px;
 }
 
+.ms-PeoplePicker-results {
+  min-width: 340px;
+}
+
+.ms-PeoplePicker-resultGroups {
+  min-height: 57px;
+  overflow-y: auto;
+}
+
 .ms-PeoplePicker-persona {
   display: inline-flex;
 
