@@ -114,6 +114,7 @@ export interface IColumn {
   /**
    * Optional flag on whether the column is a header for the given row. There should be only one column with
    * row header set to true.
+   * @default false
    */
   isRowHeader?: boolean;
 
