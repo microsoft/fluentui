@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IColumn } from './DetailsList.Props';
+import { IColumn, CheckboxVisibility } from './DetailsList.Props';
 import { Check } from './Check';
 import { GroupSpacer } from './GroupSpacer';
 import { DetailsRowFields } from './DetailsRowFields';
@@ -29,6 +29,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   dragDropHelper?: IDragDropHelper;
   groupNestingDepth?: number;
   viewport?: IViewport;
+  checkboxVisibility?: CheckboxVisibility;
 }
 
 export interface IDetailsRowSelectionState {
@@ -143,7 +144,8 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
       item,
       itemIndex,
       selectionMode,
-      viewport
+      viewport,
+      checkboxVisibility
     } = this.props;
     let { selectionState: { isSelected }, columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
     let isDraggable = Boolean(dragDropEvents && dragDropEvents.canDrag && dragDropEvents.canDrag(item));
@@ -154,7 +156,8 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
         ref='root'
         role='row'
         className={ css('ms-DetailsRow', droppingClassName, {
-          'is-selected': isSelected
+          'is-selected': isSelected,
+          'is-check-visible': checkboxVisibility === CheckboxVisibility.always
         }) }
         data-is-focusable={ true }
         data-selection-index={ itemIndex }

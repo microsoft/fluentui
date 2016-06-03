@@ -129,7 +129,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, any> {
 
   private _onClick(ev: MouseEvent) {
     let target = ev.target as HTMLElement;
-    let { selection, selectionMode } = this.props;
+    let { selection, selectionMode, onItemInvoked } = this.props;
     let isToggleElement = this._isToggleElement(target, SELECTION_TOGGLE_ATTRIBUTE_NAME) || ev.ctrlKey || ev.metaKey;
     let index = this._getIndexFromElement(target, true);
 
@@ -154,6 +154,8 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, any> {
 
       // Re-enabled change events.
       selection.setChangeEvents(true);
+    } else if (onItemInvoked) {
+      onItemInvoked(selection.getItems()[index], index, ev);
     }
   }
 

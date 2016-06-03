@@ -83,7 +83,8 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
 }
 
 .ms-Fabric.is-stationary .ms-DetailsRow:hover .ms-DetailsRow-check,
-.ms-DetailsRow.is-selected .ms-DetailsRow-check {
+.ms-DetailsRow.is-selected .ms-DetailsRow-check,
+.ms-DetailsRow.is-check-visible .ms-DetailsRow-check {
   opacity: 1;
 }
 

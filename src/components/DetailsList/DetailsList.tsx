@@ -7,7 +7,8 @@ import {
   IDetailsGroupFooterProps,
   IDetailsGroupHeaderProps,
   IDetailsListProps,
-  IGroup
+  IGroup,
+  CheckboxVisibility
 } from './DetailsList.Props';
 import { DetailsGroup } from './DetailsGroup';
 import { DetailsHeader } from './DetailsHeader';
@@ -48,7 +49,9 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   public static defaultProps = {
     layoutMode: DetailsListLayoutMode.justified,
     selectionMode: SelectionMode.multiple,
-    constrainMode: ConstrainMode.horizontalConstrained
+    constrainMode: ConstrainMode.horizontalConstrained,
+    checkboxVisibility: CheckboxVisibility.onHover,
+    isHeaderVisible: true
   };
 
   public refs: {
@@ -143,7 +146,9 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       onRenderMissingItem,
       rowElementEventMap,
       selectionMode,
-      viewport
+      viewport,
+      checkboxVisibility,
+      isHeaderVisible
     } = this.props;
     let {
       adjustedColumns,
@@ -189,6 +194,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           viewport={ viewport }
           headerProps={ headerProps }
           footerProps={ footerProps }
+          checkboxVisibility={ checkboxVisibility }
           />
         ) : null
     ));
@@ -202,20 +208,22 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
         }) }
         data-automationid='DetailsList'
         role='grid'>
-        <DetailsHeader
-          ref='header'
-          selectionMode={ selectionMode }
-          layoutMode={ layoutMode }
-          selection={ selection }
-          columns={ adjustedColumns }
-          onColumnResized={ this._onColumnResized }
-          onColumnAutoResized={ this._onColumnAutoResized }
-          groupNestingDepth={ groupNestingDepth }
-          isAllCollapsed={ isAllCollapsed }
-          onToggleCollapseAll={ this._onToggleCollapseAll }
-          ariaLabel={ ariaLabelForListHeader }
-          ariaLabelForSelectAllCheckbox = {ariaLabelForSelectAllCheckbox}
-          />
+        { isHeaderVisible && (
+          <DetailsHeader
+            ref='header'
+            selectionMode={ selectionMode }
+            layoutMode={ layoutMode }
+            selection={ selection }
+            columns={ adjustedColumns }
+            onColumnResized={ this._onColumnResized }
+            onColumnAutoResized={ this._onColumnAutoResized }
+            groupNestingDepth={ groupNestingDepth }
+            isAllCollapsed={ isAllCollapsed }
+            onToggleCollapseAll={ this._onToggleCollapseAll }
+            ariaLabel={ ariaLabelForListHeader }
+            ariaLabelForSelectAllCheckbox = {ariaLabelForSelectAllCheckbox}
+            />
+        ) }
         <FocusZone
           direction={ FocusZoneDirection.vertical }
           isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }

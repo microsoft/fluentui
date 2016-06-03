@@ -12,7 +12,8 @@ import {
   IGroup,
   IColumn,
   IDetailsGroupHeaderProps,
-  IDetailsGroupFooterProps
+  IDetailsGroupFooterProps,
+  CheckboxVisibility
 } from './DetailsList.Props';
 import {
   ISelection,
@@ -47,6 +48,9 @@ export interface IDetailsGroupProps extends React.Props<DetailsGroup> {
 
   /** Controls how/if the details list manages selection. */
   selectionMode?: SelectionMode;
+
+  /** Controls the visibility of selection check box. */
+  checkboxVisibility?: CheckboxVisibility;
 
   /** Grouping item limit. */
   getGroupItemLimit?: (group: IGroup) => number;
@@ -143,7 +147,8 @@ export class DetailsGroup extends React.Component<IDetailsGroupProps, IDetailsGr
       onRowWillUnmount,
       selection,
       selectionMode,
-      viewport
+      viewport,
+      checkboxVisibility
     } = this.props;
     let renderCount = group ? getGroupItemLimit(group) : items.length;
     let isFooterVisible = group && !group.children && !group.isCollapsed && !group.isShowingAll && group.count > renderCount;
@@ -173,6 +178,7 @@ export class DetailsGroup extends React.Component<IDetailsGroupProps, IDetailsGr
             viewport={ viewport }
             headerProps={ headerProps }
             footerProps={ footerProps }
+            checkboxVisibility={ checkboxVisibility }
             />
           ) : null
       ));
@@ -262,7 +268,8 @@ export class DetailsGroup extends React.Component<IDetailsGroupProps, IDetailsGr
       onRowWillUnmount,
       selection,
       selectionMode,
-      viewport
+      viewport,
+      checkboxVisibility
     } = this.props;
     let rowKey = item ? item.key : index;
 
@@ -289,6 +296,7 @@ export class DetailsGroup extends React.Component<IDetailsGroupProps, IDetailsGr
           dragDropHelper={ dragDropHelper }
           groupNestingDepth={ groupNestingDepth }
           viewport={ viewport }
+          checkboxVisibility={ checkboxVisibility }
           />
     );
   }

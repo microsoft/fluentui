@@ -35,6 +35,18 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /** Controls how the columns are adjusted. */
   layoutMode?: DetailsListLayoutMode;
 
+  /**
+   * Controls the visibility of selection check box.
+   * @default CheckboxVisibility.onHover
+   */
+  checkboxVisibility?: CheckboxVisibility;
+
+  /**
+   * Controls the visibility of the details header.
+   * @default true
+   */
+  isHeaderVisible?: boolean;
+
   /** Given column defitions. If none are provided, default columns will be created based on the item's properties. */
   columns?: IColumn[];
 
@@ -232,6 +244,18 @@ export enum DetailsListLayoutMode {
    * off columns that can't fit and have isCollapsable set.
    */
   justified
+}
+
+export enum CheckboxVisibility {
+  /**
+   * Visible on hover.
+   */
+  onHover,
+
+  /**
+   * Visible always.
+   */
+  always
 }
 
 export interface IGroup {
