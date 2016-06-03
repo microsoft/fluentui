@@ -42,6 +42,16 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement> {
   onChanged?: (newValue: any) => void;
 
   /**
+   * Callback for the onBeforeChange event.
+   */
+  onBeforeChange?: () => void;
+
+  /**
+   * Callback for the onNotifyValidationResult event.
+   */
+  onNotifyValidationResult?: (errorMessage: string) => void;
+
+  /**
    * The method is used to get the validation error message and determine whether the input value is valid or not.
    *
    *   When it returns string:

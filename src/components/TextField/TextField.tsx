@@ -24,6 +24,8 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     multiline: false,
     underlined: false,
     onChanged: () => { /* noop */ },
+    onBeforeChange: () => { /* noop */ },
+    onNotifyValidationResult: () => { /* noop */ },
     onGetErrorMessage: () => '',
     deferredValidationTime: 200
   };
@@ -39,6 +41,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
   private _delayedValidate: (value: string) => void;
   private _isMounted: boolean;
   private _lastValidation: number;
+  private _latestValidateValue;
 
   public constructor(props: ITextFieldProps) {
     super(props);
@@ -56,6 +59,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
 
     this._delayedValidate = this._async.debounce(this._validate, this.props.deferredValidationTime);
     this._lastValidation = 0;
+    this._latestValidateValue = '';
   }
 
   public componentWillMount() {
@@ -71,10 +75,12 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
       this.setState({
         value: newProps.value
       } as ITextFieldState);
-    }
 
+      const { onBeforeChange } = newProps;
+      onBeforeChange();
+    }
     // Need to validate even if the props.value is not changed,
-    // because the onGetErrorMessage maybe change after receiving new props.
+    // because the OnGetErrorMessage maybe change after receiving new props.
     this._delayedValidate(newProps.value);
   }
 
@@ -150,18 +156,23 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
   private _onInputChange(event: React.KeyboardEvent): void {
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
-    const { onChanged } = this.props;
 
     this.setState({
       value
     } as ITextFieldState);
 
     this._delayedValidate(value);
-
-    onChanged(value);
+    const { onBeforeChange } = this.props;
+    onBeforeChange();
   }
 
   private _validate(value: string): void {
+    // In case of _validate called multi-times during executing validate logic with promise return.
+    if (this._latestValidateValue === value) {
+      return;
+    }
+
+    this._latestValidateValue = value;
     let { onGetErrorMessage } = this.props;
     let result: string | PromiseLike<string> = onGetErrorMessage(value || '');
 
@@ -170,6 +181,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         this.setState({
           errorMessage: result
         } as ITextFieldState);
+        this._notifyAfterValidate(value, result);
       } else {
         let currentValidation: number = ++this._lastValidation;
 
@@ -177,8 +189,20 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
           if (this._isMounted && currentValidation === this._lastValidation) {
             this.setState({ errorMessage } as ITextFieldState);
           }
+          this._notifyAfterValidate(value, errorMessage);
         });
       }
+    } else {
+      this._notifyAfterValidate(value, '');
+    }
+  }
+
+  private _notifyAfterValidate(value: string, errorMessage: string): void {
+    const { onNotifyValidationResult } = this.props;
+    onNotifyValidationResult(errorMessage);
+    if (!errorMessage) {
+      const { onChanged } = this.props;
+      onChanged(value);
     }
   }
 }
