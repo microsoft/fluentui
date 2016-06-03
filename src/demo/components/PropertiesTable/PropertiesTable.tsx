@@ -41,6 +41,7 @@ const DEFAULT_COLUMNS: IColumn[] = [
     minWidth: 150,
     maxWidth: 250,
     isCollapsable: false,
+    isRowHeader: true,
     isResizable: true
   },
   {
@@ -79,6 +80,7 @@ const ENUM_COLUMNS: IColumn[] = [
     minWidth: 150,
     maxWidth: 250,
     isCollapsable: false,
+    isRowHeader: true,
     isResizable: true
   },
   {

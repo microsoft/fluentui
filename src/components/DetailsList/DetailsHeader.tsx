@@ -102,6 +102,7 @@ export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetails
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           { (selectionMode === SelectionMode.multiple) ? (
             <button
+              role='columnheader'
               className='ms-DetailsHeader-cell is-check'
               onClick={ this._onSelectAllClicked }
               aria-label={ ariaLabelForSelectAllCheckbox }

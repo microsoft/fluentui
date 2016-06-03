@@ -20,7 +20,7 @@ export class DetailsRowFields extends React.Component<IDetailsRowFieldsProps, {}
       return (
           <div className='ms-DetailsRow-fields' data-automationid='DetailsRowFields'>
         { columns.map((column, columnIndex) => (
-            <div key={ columnIndex } className={ css('ms-DetailsRow-cell', column.className, {
+            <div key={ columnIndex } role={ column.isRowHeader ? 'rowheader' : 'gridcell' } className={ css('ms-DetailsRow-cell', column.className, {
                 'is-multiline': column.isMultiline
             }) } style={ { width: column.calculatedWidth } }
                 data-automationid='DetailsRowCell'
