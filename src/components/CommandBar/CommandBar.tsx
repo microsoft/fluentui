@@ -136,11 +136,11 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
   }
 
   private _renderItemInCommandBar(item, index, expandedMenuItemKey, isFarItem?: boolean) {
-    let refValue, keyValue = item.key;
+    const itemKey = item.key || index;
     const className = item.onClick ? 'ms-CommandBarItem-link' : 'ms-CommandBarItem-text';
     const classNameValue = css(className, { 'is-expanded': (expandedMenuItemKey === item.key) });
 
-    return <div className={ css('ms-CommandBarItem', item.className) } key={ keyValue } ref={ refValue }>
+    return <div className={ css('ms-CommandBarItem', item.className) } key={ itemKey } ref={ itemKey }>
              {(() => {
                if (item.onClick || item.items) {
                  return <button
