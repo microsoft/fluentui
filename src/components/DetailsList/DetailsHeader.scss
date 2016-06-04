@@ -53,11 +53,9 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
 
 .ms-DetailsHeader-cell {
   color: $disabledForegroundColor;
-  background: $disabledBackgroundColor;
 
   @include focus-border();
-  font-size: $ms-font-size-s;
-
+  font-family: $ms-font-family-regular;
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -80,7 +78,6 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
 
   &.is-actionable {
     color: $actionableHeaderForegroundColor;
-    background: $unselectedBackgroundColor;
 
     &:hover {
       color: $ms-color-neutralPrimary;

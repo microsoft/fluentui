@@ -1,57 +1,80 @@
 import * as React from 'react';
 import {
-  Fabric,
+  FocusZone,
+  FocusZoneDirection,
   TextField,
+  Image,
+  ImageFit,
   List
 } from '../../../../index';
-import { createListItems } from '../../../utilities/data';
+import { css } from '../../../../utilities/css';
+import { getRTL } from '../../../../utilities/rtl';
 import './List.Basic.Example.scss';
 
-export interface IListBasicExampleState {
-  items?: any[];
-  filterText?: string;
+export interface IListBasicExampleProps {
+  items: any[];
 }
 
-export class ListBasicExample extends React.Component<any, any> {
-  constructor() {
-    super();
+export interface IListBasicExampleState {
+  filterText?: string;
+  items?: any[];
+}
+
+export class ListBasicExample extends React.Component<IListBasicExampleProps, any> {
+  constructor(props: IListBasicExampleProps) {
+    super(props);
 
     this._onFilterChanged = this._onFilterChanged.bind(this);
 
     this.state = {
       filterText: '',
-      items: createListItems(5000)
+      items: props.items
     };
   }
 
   public render() {
-    let { filterText, items } = this.state;
-    let filteredItems = filterText ?
-      items.filter(item => item.name.toLowerCase().indexOf(filterText.toLowerCase()) >= 0) :
-      items;
-    let resultCountText = filteredItems.length === items.length ? '' : ` (${ filteredItems.length } of ${ items.length } shown)`;
+    let { items: originalItems } = this.props;
+    let { items } = this.state;
+    let resultCountText = items.length === originalItems.length ? '' : ` (${ items.length } of ${ originalItems.length } shown)`;
 
     return (
-      <div>
-        <TextField label={ 'Filter by name' + resultCountText } onChanged={ this._onFilterChanged } />
-        <Fabric>
+      <FocusZone direction={ FocusZoneDirection.vertical }>
+        <TextField label={ 'Filter by name' + resultCountText } onBeforeChange={ this._onFilterChanged } />
           <List
-            items={ filteredItems }
+            items={ items }
             onRenderCell={ (item, index) => (
-              <div className='ms-ListBasicExample-itemCell'>
-                <div className='ms-ListBasicExample-itemName ms-font-xl'>{ item.name }</div>
-                <div className='ms-ListBasicExample-itemDesc ms-font-s'>{ item.description }</div>
+              <div className='ms-ListBasicExample-itemCell' data-is-focusable={ true }>
+                <Image
+                  className='ms-ListBasicExample-itemImage'
+                  src={ item.thumbnail }
+                  width={ 50 }
+                  height={ 50 }
+                  imageFit={ ImageFit.cover }
+                 />
+                <div className='ms-ListBasicExample-itemContent'>
+                  <div className='ms-ListBasicExample-itemName ms-font-xl'>{ item.name }</div>
+                  <div className='ms-ListBasicExample-itemIndex'>{ `Item ${ index }` }</div>
+                  <div className='ms-ListBasicExample-itemDesc ms-font-s'>{ item.description }</div>
+                </div>
+                <i className={ css('ms-ListBasicExample-chevron ms-Icon', {
+                  'ms-Icon--chevronRight': !getRTL(),
+                  'ms-Icon--chevronLeft': getRTL()
+                }) } />
               </div>
             ) }
           />
-        </Fabric>
-      </div>
+        </FocusZone>
     );
   }
 
   private _onFilterChanged(text: string) {
+    let { items } = this.props;
+
     this.setState({
-      filterText: text
+      filterText: text,
+      items: text ?
+        items.filter(item => item.name.toLowerCase().indexOf(text.toLowerCase()) >= 0) :
+        items
     });
   }
 }

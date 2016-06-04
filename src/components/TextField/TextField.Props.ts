@@ -44,7 +44,7 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement> {
   /**
    * Callback for the onBeforeChange event.
    */
-  onBeforeChange?: () => void;
+  onBeforeChange?: (newValue: any) => void;
 
   /**
    * Callback for the onNotifyValidationResult event.

@@ -26,6 +26,8 @@ if (isProduction) {
 /** @todo: Enable css modules when ready. */
 // build.sass.setConfig({ useCSSModules: true });
 
+build.task('tslint', build.tslint);
+
 // initialize tasks.
 build.initialize(gulp);
 

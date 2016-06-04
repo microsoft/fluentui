@@ -78,9 +78,8 @@ export class Image extends React.Component<IImageProps, IImageState> {
 
     // If image dimensions aren't specified, the natural size of the image is used.
     return (
-      <div className='ms-Image-container' style={ { width: width, height: height } }>
+      <div className={ css('ms-Image-container', className) } style={ { width: width, height: height } }>
         <img className={ css('ms-Image',
-          className,
           (coverStyle !== undefined) && CoverStyleMap[coverStyle],
           (imageFit !== undefined) && ImageFitMap[imageFit], {
             'is-fadeIn': shouldFadeIn,

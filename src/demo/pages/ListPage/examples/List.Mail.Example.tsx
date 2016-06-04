@@ -3,7 +3,6 @@ import {
   List
 } from '../../../../index';
 import './List.Mail.Example.scss';
-import { createListItems } from '../../../utilities/data';
 
 export class MailTile extends React.Component<any, any> {
   public render() {
@@ -26,14 +25,18 @@ export class MailTile extends React.Component<any, any> {
   }
 }
 
-export class ListMailExample extends React.Component<any, any> {
+export interface IListMailExampleProps {
+  items: any[];
+}
+
+export class ListMailExample extends React.Component<IListMailExampleProps, any> {
   public render() {
     return (
       <div>
         <h1 className='ms-font-xxl'>Inbox</h1>
         <div className='MailList'>
           <List
-            items={ createListItems(10000) }
+            items={ this.props.items }
             onRenderCell={ (item, index) => (
               <MailTile item={ item } />
             )}

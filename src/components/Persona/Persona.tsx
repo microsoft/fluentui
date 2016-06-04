@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css } from '../../utilities/css';
-import { Image } from '../Image/Image';
+import { Image, ImageFit } from '../../Image';
 import {
   IPersonaProps,
   PersonaInitialsColor,
@@ -30,7 +30,7 @@ export class Persona extends React.Component<IPersonaProps, any> {
         { size !== PersonaSize.tiny && (
           <div className='ms-Persona-imageArea'>
             <div className={ css('ms-Persona-initials', PERSONA_INITIALS_COLOR[initialsColor]) }>{ imageInitials }</div>
-            <Image className='ms-Persona-image' src={ imageUrl } />
+            <Image className='ms-Persona-image' imageFit={ ImageFit.cover } src={ imageUrl } />
           </div>
         ) }
 

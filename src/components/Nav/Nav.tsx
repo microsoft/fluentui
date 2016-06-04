@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FocusZone } from '../../FocusZone';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import './Nav.scss';
 
 import {
@@ -35,7 +35,7 @@ export class Nav extends React.Component<INavProps, INavState> {
       (group: INavLinkGroup, groupIndex: number) => this._renderGroup(group, groupIndex));
 
     return (
-      <FocusZone>
+      <FocusZone direction={ FocusZoneDirection.vertical }>
         <nav role='navigation' className={'ms-Nav' + (this.props.isOnTop ? ' is-onTop ms-u-slideRightIn40' : '')}>
           { groupElements }
         </nav>

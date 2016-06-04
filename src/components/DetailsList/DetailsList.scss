@@ -4,6 +4,11 @@
   position: relative;
   font-size: $ms-font-size-s;
 
+  BUTTON {
+    font-family: inherit;
+    background-color: inherit;
+  }
+
   > .ms-FocusZone {
     display: inline-block;
     vertical-align: top;

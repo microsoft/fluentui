@@ -10,6 +10,7 @@ import {
   IColumn,
   IContextualMenuItem,
   IContextualMenuProps,
+  Image,
   IGroup,
   Link,
   TextField,
@@ -39,6 +40,7 @@ export interface IDetailsListBasicExampleState {
   contextualMenuProps?: IContextualMenuProps;
   groupItemLimit?: number;
   isLazyLoaded?: boolean;
+  isHeaderVisible?: boolean;
 }
 
 export class DetailsListBasicExample extends React.Component<any, IDetailsListBasicExampleState> {
@@ -72,7 +74,8 @@ export class DetailsListBasicExample extends React.Component<any, IDetailsListBa
       contextualMenuProps: null,
       sortedColumnKey: 'name',
       isSortedDescending: false,
-      isLazyLoaded: false
+      isLazyLoaded: false,
+      isHeaderVisible: true
     };
   }
 
@@ -85,7 +88,8 @@ export class DetailsListBasicExample extends React.Component<any, IDetailsListBa
       constrainMode,
       selectionMode,
       columns,
-      contextualMenuProps
+      contextualMenuProps,
+      isHeaderVisible
     } = this.state;
 
     let isGrouped = groups && groups.length > 0;
@@ -118,6 +122,7 @@ export class DetailsListBasicExample extends React.Component<any, IDetailsListBa
           groups={ groups }
           columns={ columns }
           layoutMode={ layoutMode }
+          isHeaderVisible={ isHeaderVisible }
           selectionMode={ selectionMode }
           constrainMode={ constrainMode }
           groupProps={ groupProps }
@@ -208,7 +213,7 @@ export class DetailsListBasicExample extends React.Component<any, IDetailsListBa
   }
 
   private _getCommandItems() {
-    let { layoutMode, constrainMode, selectionMode, canResizeColumns, isLazyLoaded } = this.state;
+    let { layoutMode, constrainMode, selectionMode, canResizeColumns, isLazyLoaded, isHeaderVisible } = this.state;
 
     return [
       {
@@ -222,6 +227,13 @@ export class DetailsListBasicExample extends React.Component<any, IDetailsListBa
             canCheck: true,
             isChecked: canResizeColumns,
             onClick: this._onToggleResizing
+          },
+          {
+            key: 'headerVisible',
+            name: 'Is header visible',
+            canCheck: true,
+            isChecked: isHeaderVisible,
+            onClick: () => this.setState({ isHeaderVisible: !isHeaderVisible })
           },
           {
             key: 'lazyload',
@@ -480,23 +492,22 @@ export class DetailsListBasicExample extends React.Component<any, IDetailsListBa
         column.onRender = (item) => (
           <Link>{ item.name }</Link>
         );
+      } else if (column.key === 'thumbnail') {
+        column.name = '';
+        column.columnActionsMode = ColumnActionsMode.disabled;
+        column.isResizable = false;
+        column.minWidth = column.maxWidth = 50;
+        column.onRender = (item) => (
+          <Image src={ item.thumbnail } width={ 50 } height={ 50 } />
+        );
       } else if (column.key === 'key') {
+        column.columnActionsMode = ColumnActionsMode.disabled;
         column.onRender = (item) => (
           <Link href='#'>{ item.key }</Link>
         );
         column.minWidth = 90;
         column.maxWidth = 90;
       }
-    });
-
-    columns.unshift({
-      key: 'icon',
-      name: '',
-      minWidth: 16,
-      maxWidth: 16,
-      fieldName: null,
-      columnActionsMode: ColumnActionsMode.disabled,
-      onRender: () => <i className='ms-DetailsListBasicExample-icon ms-Icon ms-Icon--folder'/>
     });
 
     return columns;

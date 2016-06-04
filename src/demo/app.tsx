@@ -7,10 +7,16 @@ import { AppState } from './components/App/AppState';
 import { Router, Route } from '../utilities/router/index';
 import { GettingStartedPage } from './pages/GettingStartedPage/GettingStartedPage';
 import { setBaseUrl } from '../utilities/resources';
+import * as Debugging from './utilities/debugging';
+
 import './app.scss';
 import './ColorStyles.scss';
 
 setBaseUrl('./dist/');
+
+/* tslint:disable:no-string-literal */
+window['Debugging'] = Debugging;
+/* tslint:enable:no-string-literal */
 
 let rootElement;
 

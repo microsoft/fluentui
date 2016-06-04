@@ -26,7 +26,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     onChanged: () => { /* noop */ },
     onBeforeChange: () => { /* noop */ },
     onNotifyValidationResult: () => { /* noop */ },
-    onGetErrorMessage: () => '',
+    onGetErrorMessage: () => undefined,
     deferredValidationTime: 200
   };
 
@@ -77,7 +77,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
       } as ITextFieldState);
 
       const { onBeforeChange } = newProps;
-      onBeforeChange();
+      onBeforeChange(newProps.value);
     }
     // Need to validate even if the props.value is not changed,
     // because the OnGetErrorMessage maybe change after receiving new props.
@@ -163,7 +163,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
 
     this._delayedValidate(value);
     const { onBeforeChange } = this.props;
-    onBeforeChange();
+    onBeforeChange(value);
   }
 
   private _validate(value: string): void {

@@ -11,6 +11,10 @@ export class Check extends React.Component<ICheckProps, {}> {
     isChecked: false
   };
 
+  public shouldComponentUpdate(newProps: ICheckProps) {
+    return this.props.isChecked !== newProps.isChecked;
+  }
+
   public render() {
     let { isChecked } = this.props;
 

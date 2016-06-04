@@ -50,11 +50,16 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
     this._id = String(_instance++);
     _allInstances[this._id] = this;
 
+    this._focusAlignment = {
+      left: 0,
+      top: 0
+    };
+
     this._events = new EventGroup(this);
+
     this._onKeyDown = this._onKeyDown.bind(this);
     this._onFocus = this._onFocus.bind(this);
     this._onMouseDown = this._onMouseDown.bind(this);
-    this._updateTabIndexes = this._updateTabIndexes.bind(this);
   }
 
   public componentDidMount() {
@@ -446,20 +451,24 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
   }
 
   private _setFocusAlignment(element: HTMLElement, isHorizontal?: boolean, isVertical?: boolean) {
-    const rect = element.getBoundingClientRect();
-    const left = rect.left + (rect.width / 2);
-    const top = rect.top + (rect.height / 2);
+    if (this.props.direction === FocusZoneDirection.bidirectional &&
+      (!this._focusAlignment || isHorizontal || isVertical)) {
 
-    if (!this._focusAlignment) {
-      this._focusAlignment = { left, top };
-    }
+      const rect = element.getBoundingClientRect();
+      const left = rect.left + (rect.width / 2);
+      const top = rect.top + (rect.height / 2);
 
-    if (isHorizontal) {
-      this._focusAlignment.left = left;
-    }
+      if (!this._focusAlignment) {
+        this._focusAlignment = { left, top };
+      }
 
-    if (isVertical) {
-      this._focusAlignment.top = top;
+      if (isHorizontal) {
+        this._focusAlignment.left = left;
+      }
+
+      if (isVertical) {
+        this._focusAlignment.top = top;
+      }
     }
   }
 

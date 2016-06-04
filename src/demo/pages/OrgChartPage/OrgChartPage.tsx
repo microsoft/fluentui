@@ -3,8 +3,7 @@ import {
   Link
 } from '../../../index';
 import {
-  ExampleCard,
-  PropertiesTable
+  ExampleCard
 } from '../../components/index';
 
 import { OrgChartBasicExample } from './examples/OrgChart.Basic.Example';
@@ -24,7 +23,6 @@ export class OrgChartPage extends React.Component<any, any> {
         <ExampleCard title='OrgChart' code={ OrgChartBasicExampleCode }>
           <OrgChartBasicExample />
         </ExampleCard>
-        <PropertiesTable properties={ null } />
       </div>
     );
   }

@@ -64,7 +64,7 @@ export class App extends React.Component<IAppProps, any> {
           </div>
         ) : ( null ) }
 
-        <div className='App-content'>
+        <div className='App-content' data-is-scrollable='true'>
           { this.props.children }
         </div>
 

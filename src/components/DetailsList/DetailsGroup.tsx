@@ -81,6 +81,9 @@ export interface IDetailsGroupProps extends React.Props<DetailsGroup> {
 
   /** Viewport, provided by the withViewport decorator. */
   viewport?: IViewport;
+
+  /** Is the list resizing a column */
+  isSizing?: boolean;
 }
 
 export interface IDetailsGroupState {
@@ -88,6 +91,8 @@ export interface IDetailsGroupState {
 }
 
 const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
+const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
+const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
 
 export class DetailsGroup extends React.Component<IDetailsGroupProps, IDetailsGroupState> {
   public refs: {
@@ -140,6 +145,7 @@ export class DetailsGroup extends React.Component<IDetailsGroupProps, IDetailsGr
       groupNestingDepth,
       getGroupItemLimit,
       items,
+      isSizing,
       headerProps,
       footerProps,
       onRenderMissingItem,
@@ -210,6 +216,8 @@ export class DetailsGroup extends React.Component<IDetailsGroupProps, IDetailsGr
               onRenderCell={ this._onRenderCell }
               ref={ 'list' }
               renderCount={ renderCount }
+              renderedWindowsAhead={ isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_AHEAD }
+              renderedWindowsBehind={ isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_BEHIND }
               selection={ selection }
               startIndex={ group ? group.startIndex : 0 }
             />

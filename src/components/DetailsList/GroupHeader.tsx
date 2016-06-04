@@ -87,8 +87,8 @@ export class GroupHeader extends React.Component<IGroupHeaderProps, IGroupHeader
           </button>
 
           <div className='ms-GroupHeader-title ms-font-xl'>
-            <span>{ group.name }</span>
-            <span>( {group.count} )</span>
+            <span>{ group.name } </span>
+            <span>({ group.count })</span>
           </div>
 
           <div className={ css('ms-GroupHeader-loading', { 'is-loading': isLoadingVisible }) }>

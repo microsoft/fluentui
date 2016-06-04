@@ -221,6 +221,7 @@ export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetails
       buttons = MOUSEMOVE_PRIMARY_BUTTON
     } = ev;
 
+    let { onColumnIsSizingChanged, columns } = this.props;
     let { columnResizeDetails, isSizing } = this.state;
 
     if (columnResizeDetails) {
@@ -233,6 +234,11 @@ export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetails
       if (!isSizing && ev.clientX !== columnResizeDetails.originX) {
         isSizing = true;
         this.setState({ isSizing: isSizing });
+
+        if (onColumnIsSizingChanged) {
+          onColumnIsSizingChanged(columns[columnResizeDetails.columnIndex], true);
+        }
+
       }
     }
   }
@@ -258,7 +264,7 @@ export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetails
       return;
     }
 
-    let { columns, onColumnIsSizingChanged } = this.props;
+    let { columns } = this.props;
 
     this.setState({
       columnResizeDetails: {
@@ -267,10 +273,6 @@ export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetails
         originX: ev.clientX
       }
     });
-
-    if (onColumnIsSizingChanged) {
-      onColumnIsSizingChanged(columns[columnIndex], true);
-    }
   }
 
   private _onSelectionChanged() {

@@ -68,7 +68,8 @@ const DEFAULT_COLUMNS: IColumn[] = [
     minWidth: 300,
     maxWidth: 400,
     isCollapsable: false,
-    isResizable: true
+    isResizable: true,
+    isMultiline: true
   }
 ];
 
