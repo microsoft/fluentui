@@ -109,6 +109,9 @@ export class Nav extends React.Component<INavProps, INavState> {
 const _urlResolver = document.createElement('a');
 
 function _isLinkSelected(link: INavLink): boolean {
+    if (!link.url) {
+      return false;
+    }
     _urlResolver.href = link.url || '';
     const target: string = _urlResolver.href;
 
