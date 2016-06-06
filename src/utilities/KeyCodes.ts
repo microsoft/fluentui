@@ -1,5 +1,8 @@
 export enum KeyCodes {
   a = 65,
+  backspace = 8,
+  comma = 188,
+  del = 46,
   down = 40,
   end = 35,
   enter = 13,
@@ -9,9 +12,8 @@ export enum KeyCodes {
   pageDown = 34,
   pageUp = 33,
   right = 39,
+  semicolon = 186,
   space = 32,
   tab = 9,
-  up = 38,
-  backspace = 8,
-  del = 46
+  up = 38
 }

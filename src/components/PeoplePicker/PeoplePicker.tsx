@@ -250,6 +250,21 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
   }
 
   /**
+   * Creates a new persona based on what the user has typed (non search result persona)
+   */
+  private _addManualPersonaToSelectedList() {
+      let newPersonaName = this.state.searchTextValue;
+      if (newPersonaName.length > 0) {
+        let personaInfo = {
+          imageInitials: newPersonaName.charAt(0).toUpperCase(),
+          primaryText: newPersonaName,
+          secondaryText: newPersonaName
+        };
+        this._addPersonaToSelectedList(personaInfo);
+      }
+  }
+
+  /**
    * Handles keyboard inputs for the PeoplePicker.
    */
   private _onSearchFieldKeyDown(ev: React.KeyboardEvent) {
@@ -260,9 +275,12 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
 
       // Enter behavior:
       // - Adds the highlighted persona from the search results (autocomplete)
+      // - creates a new persona from the user's input (not from the search results)
       case KeyCodes.enter:
         if (isActive && highlightedSearchResultIndex !== INVALID_INDEX) {
-          this._addPersonaToSelectedList(this._highlightedSearchResult);
+            this._addPersonaToSelectedList(this._highlightedSearchResult);
+        } else {
+            this._addManualPersonaToSelectedList();
         }
         break;
 
@@ -337,6 +355,13 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
         } else {
           return; // continue propagation
         }
+        break;
+
+      // Semicolon and comma behavior:
+      // - creates a new persona from the user's input (not from the search results)
+      case KeyCodes.semicolon:
+      case KeyCodes.comma:
+        this._addManualPersonaToSelectedList();
         break;
 
       // Default keyboard behavior
