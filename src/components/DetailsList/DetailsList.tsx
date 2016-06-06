@@ -116,7 +116,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   }
 
   public componentWillReceiveProps(newProps) {
-    let { setKey, groups, items } = this.props;
+    let { setKey, groups, items, selectionMode } = this.props;
     let { layoutMode } = this.state;
     let shouldResetSelection = (newProps.setKey !== setKey) || newProps.setKey === undefined;
     let shouldForceUpdates = false;
@@ -135,6 +135,10 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
     if (newProps.groups !== groups) {
       this.setState({ groups: newProps.groups });
+      shouldForceUpdates = true;
+    }
+
+    if (newProps.selectionMode !== selectionMode) {
       shouldForceUpdates = true;
     }
 
