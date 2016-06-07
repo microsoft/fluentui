@@ -34,7 +34,7 @@ export class ListMailExample extends React.Component<IListMailExampleProps, any>
     return (
       <div>
         <h1 className='ms-font-xxl'>Inbox</h1>
-        <div className='MailList'>
+        <div className='MailList' data-is-scrollable={ true }>
           <List
             items={ this.props.items }
             onRenderCell={ (item, index) => (
