@@ -39,6 +39,16 @@ export interface IFacepilePersona {
   onClick?: (persona: IFacepilePersona, ev: React.MouseEvent) => void;
 
   /**
+   * If provided, the handler will be called on mouse move.
+   */
+  onMouseMove?: (persona: IFacepilePersona, ev: React.MouseEvent) => void;
+
+  /**
+   * If provided, the handler will be called when mouse moves out of the component.
+   */
+  onMouseOut?: (persona: IFacepilePersona, ev: React.MouseEvent) => void;
+
+  /**
    * Extra data - not used directly but can be handy for passing additional data to custom event
    * handlers.
    */
