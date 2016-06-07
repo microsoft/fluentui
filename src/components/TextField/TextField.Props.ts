@@ -37,6 +37,11 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement> {
   value?: string;
 
   /**
+   * Default value of the textfield, if any.
+   */
+  errorMessage?: string;
+
+  /**
    * Callback for the onChanged event.
    */
   onChanged?: (newValue: any) => void;
@@ -49,7 +54,7 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement> {
   /**
    * Callback for the onNotifyValidationResult event.
    */
-  onNotifyValidationResult?: (errorMessage: string) => void;
+  onNotifyValidationResult?: (errorMessage: string, value: string) => void;
 
   /**
    * The method is used to get the validation error message and determine whether the input value is valid or not.

@@ -27,7 +27,8 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     onBeforeChange: () => { /* noop */ },
     onNotifyValidationResult: () => { /* noop */ },
     onGetErrorMessage: () => undefined,
-    deferredValidationTime: 200
+    deferredValidationTime: 200,
+    errorMessage: ''
   };
 
   public refs: {
@@ -42,6 +43,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
   private _isMounted: boolean;
   private _lastValidation: number;
   private _latestValidateValue;
+  private _willMountTriggerValidation;
 
   public constructor(props: ITextFieldProps) {
     super(props);
@@ -60,9 +62,11 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     this._delayedValidate = this._async.debounce(this._validate, this.props.deferredValidationTime);
     this._lastValidation = 0;
     this._latestValidateValue = '';
+    this._willMountTriggerValidation = false;
   }
 
   public componentWillMount() {
+    this._willMountTriggerValidation = true;
     this._validate(this.state.value);
   }
 
@@ -71,17 +75,15 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
   }
 
   public componentWillReceiveProps(newProps: ITextFieldProps) {
-    if (newProps.value !== this.props.value) {
+    if (newProps.value !== this.props.value
+        && newProps.value !== this.state.value) {
       this.setState({
         value: newProps.value
       } as ITextFieldState);
-
-      const { onBeforeChange } = newProps;
+      const { onBeforeChange } = this.props;
       onBeforeChange(newProps.value);
+      this._delayedValidate(newProps.value);
     }
-    // Need to validate even if the props.value is not changed,
-    // because the OnGetErrorMessage maybe change after receiving new props.
-    this._delayedValidate(newProps.value);
   }
 
   public componentWillUnmount() {
@@ -91,7 +93,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
 
   public render() {
     let { disabled, required, multiline, underlined, label, description, iconClass, className } = this.props;
-    let { errorMessage } = this.state;
+    const errorMessage: string = this._errorMessage;
 
     const textFieldClassName = css('ms-TextField', className, {
       'is-required': required,
@@ -120,9 +122,19 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
   }
 
   private get _fieldClassName(): string {
+    const errorMessage: string = this._errorMessage;
     return css('ms-TextField-field', {
-      'ms-TextField-invalid': !!this.state.errorMessage
+      'ms-TextField-invalid': !!errorMessage
     });
+  }
+
+  private get _errorMessage(): string {
+    let { errorMessage } = this.state;
+    if (!errorMessage) {
+      errorMessage = this.props.errorMessage;
+    }
+
+    return errorMessage;
   }
 
   private _renderTextArea(): React.ReactElement<React.HTMLProps<HTMLAreaElement>> {
@@ -160,7 +172,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     this.setState({
       value
     } as ITextFieldState);
-
+    this._willMountTriggerValidation = false;
     this._delayedValidate(value);
     const { onBeforeChange } = this.props;
     onBeforeChange(value);
@@ -199,10 +211,14 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
 
   private _notifyAfterValidate(value: string, errorMessage: string): void {
     const { onNotifyValidationResult } = this.props;
-    onNotifyValidationResult(errorMessage);
-    if (!errorMessage) {
-      const { onChanged } = this.props;
-      onChanged(value);
+    if (!this._willMountTriggerValidation) {
+      onNotifyValidationResult(errorMessage, value);
+      if (!errorMessage) {
+        const { onChanged } = this.props;
+        onChanged(value);
+      }
+    } else {
+     this._willMountTriggerValidation = false;
     }
   }
 }
