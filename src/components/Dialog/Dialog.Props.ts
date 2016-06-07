@@ -63,6 +63,11 @@ export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeSt
    * @default false
    */
   ignoreExternalFocusing?: boolean;
+
+  /**
+   * Aria label on close button
+   */
+  closeButtonAriaLabel?: string;
 }
 
 export enum DialogType {

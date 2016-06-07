@@ -67,8 +67,10 @@ export class Dialog extends React.Component<IDialogProps, any> {
                             elementToFocusOnDismiss={ elementToFocusOnDismiss }
                             isClickableOutsideFocusTrap={ !isBlocking }
                             ignoreExternalFocusing={ ignoreExternalFocusing }>
-                            <button className='ms-Dialog-button ms-Dialog-button--close' onClick={ onDismiss }>
-                                <i className='ms-Icon ms-Icon--x'></i>
+                            <button className='ms-Dialog-button ms-Dialog-button--close'
+                              onClick={ onDismiss }
+                              aria-label= { this.props.closeButtonAriaLabel }>
+                              <i className='ms-Icon ms-Icon--x'></i>
                             </button>
                             <div className='ms-Dialog-header'>
                                 <p className='ms-Dialog-title' id={ id + '-title'}>{ title }</p>
