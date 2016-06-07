@@ -10,7 +10,6 @@ import {
   IColumn,
   IContextualMenuItem,
   IContextualMenuProps,
-  Image,
   IGroup,
   Link,
   TextField,
@@ -491,14 +490,6 @@ export class DetailsListBasicExample extends React.Component<any, IDetailsListBa
       } else if (column.key === 'name') {
         column.onRender = (item) => (
           <Link>{ item.name }</Link>
-        );
-      } else if (column.key === 'thumbnail') {
-        column.name = '';
-        column.columnActionsMode = ColumnActionsMode.disabled;
-        column.isResizable = false;
-        column.minWidth = column.maxWidth = 50;
-        column.onRender = (item) => (
-          <Image src={ item.thumbnail } width={ 50 } height={ 50 } />
         );
       } else if (column.key === 'key') {
         column.columnActionsMode = ColumnActionsMode.disabled;

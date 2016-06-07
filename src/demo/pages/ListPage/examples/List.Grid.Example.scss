@@ -1,0 +1,33 @@
+@import '../../../../common/common';
+
+.ms-ListGridExample .ms-List-page {
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 0;
+}
+
+.ms-ListGridExample .ms-List-cell {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+}
+
+.ms-ListGridExample-tile {
+  @include focus-border(2px, $ms-color-black);
+
+  display: inline-block;
+  text-align: center;
+}
+
+.ms-ListGridExample-label {
+  border: 2px solid white;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, .2);
+  color: $ms-color-white;
+  padding: 5px 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: $ms-font-size-s;
+}

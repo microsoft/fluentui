@@ -430,7 +430,7 @@ export class List extends BaseComponent<IListProps, IListState> {
   private _onPageRemoved(page: IPage) {
     let { onPageRemoved } = this.props;
 
-// console.log('  --- page removed', page.startIndex, this.state.pages.map(page=>page.key).join(', '));
+    // console.log('  --- page removed', page.startIndex, this.state.pages.map(page=>page.key).join(', '));
 
     if (onPageRemoved) {
       onPageRemoved(page);
@@ -451,7 +451,8 @@ export class List extends BaseComponent<IListProps, IListState> {
 
     // First render is very important to track; when we render cells, we have no idea of estimated page height.
     // So we should default to rendering only the first page so that we can get information.
-    let isFirstRender = this._estimatedPageHeight === 0;
+    // However if the user provides a measure function, let's just assume they know the right heights.
+    let isFirstRender = this._estimatedPageHeight === 0 && !this.props.getPageHeight;
 
     for (let itemIndex = startIndex; itemIndex < endIndex; itemIndex += itemsPerPage) {
       itemsPerPage = this._getItemCountForPage(itemIndex, visibleRect);
