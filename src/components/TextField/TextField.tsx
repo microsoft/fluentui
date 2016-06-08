@@ -170,7 +170,8 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     const value: string = element.value;
 
     this.setState({
-      value
+      value: value,
+      errorMessage: ''
     } as ITextFieldState);
     this._willMountTriggerValidation = false;
     this._delayedValidate(value);
@@ -210,8 +211,8 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
   }
 
   private _notifyAfterValidate(value: string, errorMessage: string): void {
-    const { onNotifyValidationResult } = this.props;
-    if (!this._willMountTriggerValidation) {
+    if (!this._willMountTriggerValidation && value === this.state.value) {
+      const { onNotifyValidationResult } = this.props;
       onNotifyValidationResult(errorMessage, value);
       if (!errorMessage) {
         const { onChanged } = this.props;
