@@ -29,7 +29,7 @@ export interface IPanelProps extends React.Props<Panel> {
   /**
   * Event handler for when the panel is closed.
   */
-  onDismiss?: () => {};
+  onDismiss?: () => void;
 
   /**
   * Additional styling options.
