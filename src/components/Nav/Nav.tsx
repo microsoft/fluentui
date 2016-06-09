@@ -50,6 +50,7 @@ export class Nav extends React.Component<INavProps, INavState> {
           className={'ms-Nav-link' + (_isLinkSelected(link) ? ' is-selected' : '')}
           href={ link.url || 'javascript://' }
           onClick={ this.props.onLinkClick }
+          title={ link.name }
         >
           { this.props.onRenderLink(link) }
         </a> { this._renderLinks(link.links) }
