@@ -11,16 +11,23 @@ const DATA = {
 };
 
 export function createListItems(count: number, startIndex = 0): any {
+  return Array.apply(null, Array(count)).map((item, index) => {
+    let width = 1000 + Math.round(Math.random() * 2000);
+    let height = 1000 + Math.round(Math.random() * 2000);
+    let aspectRatio = width / height;
 
-  return Array.apply(null, Array(count)).map((item, index) => ({
-    thumbnail: `//placekitten.com/${ _randNum(50, 75) }/${ _randNum(50, 75) }`,
-    key: 'item-' + (index + startIndex) + ' ' + lorem(4),
-    name: lorem(5),
-    description: lorem(10 + Math.round(Math.random() * 50)),
-    color: _randWord(DATA.color),
-    shape: _randWord(DATA.shape),
-    location: _randWord(DATA.location)
-  }));
+    return {
+      thumbnail: `//placekitten.com/${ Math.round(75 * aspectRatio) }/${ 75 }`,
+      key: 'item-' + (index + startIndex) + ' ' + lorem(4),
+      name: lorem(5),
+      description: lorem(10 + Math.round(Math.random() * 50)),
+      color: _randWord(DATA.color),
+      shape: _randWord(DATA.shape),
+      location: _randWord(DATA.location),
+      width: width,
+      height: height
+    };
+  });
 }
 
 export function lorem(wordCount: number): string {
@@ -38,8 +45,4 @@ export function isGroupable(key: string): boolean {
 function _randWord(array: string[]) {
   let index = Math.floor(Math.random() * array.length);
   return array[index];
-}
-
-function _randNum(low: number, high: number) {
-  return low + Math.round(Math.random() * (high - low));
 }

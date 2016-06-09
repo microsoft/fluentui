@@ -13,21 +13,30 @@
 }
 
 .ms-ListGridExample-tile {
-  @include focus-border(2px, $ms-color-black);
-
   display: inline-block;
   text-align: center;
+  outline: none;
+}
+
+.ms-Fabric.is-focusVisible .ms-ListGridExample-tile:focus:after {
+  content: '';
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  top: 2px;
+  bottom: 2px;
+  box-sizing: border-box;
+  border: 1px solid $ms-color-white;
 }
 
 .ms-ListGridExample-label {
   border: 2px solid white;
   border-radius: 20px;
-  background: rgba(0, 0, 0, .2);
+  background: rgba(0, 0, 0, .5);
   color: $ms-color-white;
   padding: 5px 10px;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  @include right(10px);
+  bottom: 10px;
   font-size: $ms-font-size-s;
 }

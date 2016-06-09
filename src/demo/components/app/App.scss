@@ -42,6 +42,11 @@ body {
   padding: 20px;
   overflow-x: auto;
   overflow-y: auto;
+
+  /* Helps to enable hardware accelleration and improve painting performance. */
+  transform: translateZ(0);
+
+  /* Helps to enable smooth scrolling on ios devices. */
   -webkit-overflow-scrolling: touch;
 }
 

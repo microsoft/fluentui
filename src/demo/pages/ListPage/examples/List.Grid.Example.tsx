@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { FocusZone, List } from '../../../../index';
+import {
+  FocusZone,
+  List,
+  Image,
+  ImageFit
+} from '../../../../index';
 import './List.Grid.Example.scss';
 
 export interface IListGridExampleProps {
@@ -31,11 +36,20 @@ export class ListGridExample extends React.Component<IListGridExampleProps, any>
           getItemCountForPage={ this._getItemCountForPage }
           getPageHeight={ this._getPageHeight }
           onRenderCell={ (item, index) => (
-            <div className='ms-ListGridExample-tile' data-is-focusable={ true } style={ {
-              width: this._columnWidth,
-              height: this._rowHeight,
-              backgroundColor: `rgba(${ 4 * (index % 32) + 127 }, ${ 4 * (index % 32) + 127 }, ${ 4 * (index % 32) + 127 }, 1)`
-            } }>
+            <div
+              className='ms-ListGridExample-tile'
+              data-is-focusable={ true }
+              style={ {
+                width: this._columnWidth,
+                height: this._rowHeight,
+                backgroundColor: `rgba(${ 4 * (index % 32) + 127 }, ${ 4 * (index % 32) + 127 }, ${ 4 * (index % 32) + 127 }, 1)`
+              } }>
+              <Image
+                className='ms-ListGridExample-image'
+                src={ this._getThumbnail(item, this._rowHeight) }
+                imageFit={ ImageFit.cover }
+                width={ this._rowHeight }
+                height={ this._rowHeight } />
               <span className='ms-ListGridExample-label'>
               { `item ${ index }` }
               </span>
@@ -44,6 +58,16 @@ export class ListGridExample extends React.Component<IListGridExampleProps, any>
         />
       </FocusZone>
     );
+  }
+
+  private _getThumbnail(item, rowHeight) {
+    const aspectRatio = item.width / item.height;
+
+    if (item.width >= item.height) {
+      return `//placekitten.com/${ Math.round( aspectRatio * rowHeight) }/${ rowHeight }`;
+    } else {
+      return `//placekitten.com/${ rowHeight }/${ Math.round(rowHeight / aspectRatio) }`;
+    }
   }
 
   private _getItemCountForPage(itemIndex: number, surfaceRect) {
