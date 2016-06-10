@@ -11,7 +11,7 @@ export interface IListGridExampleProps {
   items: any[];
 }
 
-const ROWS_PER_PAGE = 1;
+const ROWS_PER_PAGE = 3;
 
 export class ListGridExample extends React.Component<IListGridExampleProps, any> {
   private _positions;
@@ -73,7 +73,7 @@ export class ListGridExample extends React.Component<IListGridExampleProps, any>
   private _getItemCountForPage(itemIndex: number, surfaceRect) {
     if (itemIndex === 0) {
       this._columnCount = Math.ceil(surfaceRect.width / 200);
-      this._columnWidth = Math.round(surfaceRect.width / this._columnCount);
+      this._columnWidth = Math.floor(surfaceRect.width / this._columnCount);
       this._rowHeight = this._columnWidth;
     }
 
@@ -81,6 +81,6 @@ export class ListGridExample extends React.Component<IListGridExampleProps, any>
   }
 
   private _getPageHeight(itemIndex: number, surfaceRect) {
-    return this._rowHeight;
+    return this._rowHeight * ROWS_PER_PAGE;
   }
 }
