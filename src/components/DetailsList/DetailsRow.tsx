@@ -30,6 +30,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   groupNestingDepth?: number;
   viewport?: IViewport;
   checkboxVisibility?: CheckboxVisibility;
+  getRowAriaLabel?: (item: any) => string;
 }
 
 export interface IDetailsRowSelectionState {
@@ -145,16 +146,19 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
       itemIndex,
       selectionMode,
       viewport,
-      checkboxVisibility
+      checkboxVisibility,
+      getRowAriaLabel
     } = this.props;
     let { selectionState: { isSelected }, columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
     let isDraggable = Boolean(dragDropEvents && dragDropEvents.canDrag && dragDropEvents.canDrag(item));
     let droppingClassName = isDropping ? (this._droppingClassNames ? this._droppingClassNames : DEFAULT_DROPPING_CSS_CLASS) : '';
+    let ariaLabel = getRowAriaLabel ? getRowAriaLabel(item) : null;
 
     return (
       <div
         ref='root'
         role='row'
+        aria-label= { ariaLabel }
         className={ css('ms-DetailsRow', droppingClassName, {
           'is-selected': isSelected,
           'is-check-visible': checkboxVisibility === CheckboxVisibility.always

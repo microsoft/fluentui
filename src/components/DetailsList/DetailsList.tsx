@@ -162,7 +162,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       onRenderMissingItem,
       rowElementEventMap,
       selectionMode,
-      viewport
+      viewport,
+      getRowAriaLabel
     } = this.props;
     let {
       adjustedColumns,
@@ -211,6 +212,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           headerProps={ headerProps }
           footerProps={ footerProps }
           checkboxVisibility={ checkboxVisibility }
+          getRowAriaLabel={ getRowAriaLabel }
           />
         ) : null
     ));

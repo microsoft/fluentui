@@ -86,6 +86,9 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /** The aria-label attribute to stamp out on select all checkbox for the list */
   ariaLabelForSelectAllCheckbox?: string;
 
+  /** Optional callback to get the aria-label string for a given item. */
+  getRowAriaLabel?: (item: any) => string;
+
   /** Optional callback to get the item key that will be used in the selection. */
   getKey?: (item: any, index?: number) => string;
 }

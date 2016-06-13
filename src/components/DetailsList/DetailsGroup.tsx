@@ -84,6 +84,9 @@ export interface IDetailsGroupProps extends React.Props<DetailsGroup> {
 
   /** Is the list resizing a column */
   isSizing?: boolean;
+
+  /** Callback to get the aria-label string for a given item. */
+  getRowAriaLabel?: (item: any) => string;
 }
 
 export interface IDetailsGroupState {
@@ -154,7 +157,8 @@ export class DetailsGroup extends React.Component<IDetailsGroupProps, IDetailsGr
       selection,
       selectionMode,
       viewport,
-      checkboxVisibility
+      checkboxVisibility,
+      getRowAriaLabel
     } = this.props;
     let renderCount = group ? getGroupItemLimit(group) : items.length;
     let isFooterVisible = group && !group.children && !group.isCollapsed && !group.isShowingAll && group.count > renderCount;
@@ -185,6 +189,7 @@ export class DetailsGroup extends React.Component<IDetailsGroupProps, IDetailsGr
             headerProps={ headerProps }
             footerProps={ footerProps }
             checkboxVisibility={ checkboxVisibility }
+            getRowAriaLabel={ getRowAriaLabel }
             />
           ) : null
       ));
@@ -277,7 +282,8 @@ export class DetailsGroup extends React.Component<IDetailsGroupProps, IDetailsGr
       selection,
       selectionMode,
       viewport,
-      checkboxVisibility
+      checkboxVisibility,
+      getRowAriaLabel
     } = this.props;
     let rowKey = item ? item.key : index;
 
@@ -305,6 +311,7 @@ export class DetailsGroup extends React.Component<IDetailsGroupProps, IDetailsGr
           groupNestingDepth={ groupNestingDepth }
           viewport={ viewport }
           checkboxVisibility={ checkboxVisibility }
+          getRowAriaLabel={ getRowAriaLabel }
           />
     );
   }
