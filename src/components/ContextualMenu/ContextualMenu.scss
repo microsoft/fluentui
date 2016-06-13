@@ -62,11 +62,9 @@
   display: inline-block;
   list-style-type: none;
   min-width: 180px;
-  max-height: 300px;
   padding: 0;
   margin: 0;
   z-index: ($ms-zIndex-ContextualMenu + $ms-zIndex-middle);
-  overflow-y: auto;
   line-height: 0;
 
 }
@@ -270,6 +268,10 @@
   &.not-selected {
     @include padding-right(24px);
   }
+}
+
+.ms-FocusZone.ms-ContextualMenu.is-open {
+  width: auto;
 }
 
 .ExampleCard-example > .ms-ContextualMenu-container > .ms-ContextualMenu {
