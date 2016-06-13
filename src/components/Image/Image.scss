@@ -15,9 +15,15 @@
 .ms-Image--center,
 .ms-Image--cover {
   position: relative;
-  left: 50%;
+  @include left(50%);
   top: 50%;
-  transform: translate(-50%,-50%);
+  // transform-translateX mixin is not used here because a transateY is also required.
+  @include LTR {
+    transform: translate(-50%,-50%);
+  }
+  @include RTL {
+    transform: translate(50%,-50%);
+  }
 }
 
 .ms-Image--cover {
