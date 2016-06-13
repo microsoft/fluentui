@@ -106,7 +106,14 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
               </div>
             : null
         }
-        <span id={ `${this._descriptionId}-${option.key}` } className='ms-Label'>{ option.text }</span>
+        {
+          option.imageSrc
+            ? <div className='ms-ChoiceField-labelWrapper'>
+                <i className='ms-ChoiceField-icon ms-Icon ms-Icon--check' />
+                <span id={ `${this._descriptionId}-${option.key}` } className='ms-Label'>{ option.text }</span>
+              </div>
+            : <span id={ `${this._descriptionId}-${option.key}` } className='ms-Label'>{ option.text }</span>
+        }
       </label>
     );
   }

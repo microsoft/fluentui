@@ -43,17 +43,41 @@
       }
     }
 
-    .ms-Label {
-      padding: 10px 0 0 0;
-      line-height: $ms-font-size-s;
+    .ms-ChoiceField-labelWrapper {
+      display: inline-block;
+      position: relative;
+      margin: 10px 0 0 0;
+      padding: 0 24px;
 
-      @include ms-fontWeight-semibold;
-      @include ms-fontColor-neutralPrimary;
+      .ms-ChoiceField-icon {
+        display: none;
+        position: absolute;
+        left: 0;
+        line-height: $ms-font-size-s;
+
+        @include ms-fontSize-l;
+        @include ms-fontColor-themeDark;
+      }
+
+      .ms-Label {
+        display: inline-block;
+        padding: 0;
+        line-height: $ms-font-size-s;
+
+        @include ms-fontWeight-semibold;
+        @include ms-fontColor-neutralPrimary;
+      }
     }
   }
 
-  .ms-ChoiceField-input:checked+.ms-ChoiceField-field--image {
-    @include ms-bgColor-themeLight;
+  .ms-ChoiceField-input:checked {
+    & + .ms-ChoiceField-field--image .ms-ChoiceField-labelWrapper .ms-ChoiceField-icon {
+      display: inline-block;
+    }
+
+    & + .ms-ChoiceField-field--image {
+      @include ms-bgColor-themeLight;
+    }
   }
 }
 
@@ -64,7 +88,7 @@
   bottom: -2px;
   left: -2px;
 
-  border: 1px solid $ms-color-neutralSecondaryAlt;
+  border: 1px solid $ms-color-neutralPrimary;
 
   content: '';
 }
