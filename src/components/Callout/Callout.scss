@@ -43,9 +43,8 @@
   @include ms-font-m;
   @include ms-u-normalize;
   @include drop-shadow(0,0, 15px, -5px);
-
+  width: auto;
   border: 1px solid $ms-color-neutralLight;
-  z-index: $ms-zIndex-Callout;
   position: absolute;
   display: inline-block;
 }
@@ -56,16 +55,13 @@
 }
 
 .ms-Callout-beak {
-  @include drop-shadow(0,0, 15px, -5px);
-
   position: absolute;
   width: 28px;
   height: 28px;
-  background: #fff;
-  border: 1px solid $ms-color-neutralLight;
+  background-color: $ms-color-white;
+  box-shadow:  inherit;
+  border: inherit;
   box-sizing: border-box;
-  top: -6px;
-  display: none;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);

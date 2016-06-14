@@ -34,7 +34,7 @@ export interface ICalloutProps extends React.Props<Callout>, IPositionProps {
   beakWidth?: number;
 
   /**
-   * Weather the beak should be visible.
+   * Whether the beak should be visible.
    * @default true
    */
   isBeakVisible?: boolean;
@@ -54,6 +54,11 @@ export interface ICalloutProps extends React.Props<Callout>, IPositionProps {
    * Callback when the Callout tries to close.
    */
   onDismiss?: (ev?: any) => void;
+
+  /**
+   * If true do not render on a new layer. If false render on a new layer.
+   */
+  doNotLayer?: boolean;
 }
 
 export interface ILink {

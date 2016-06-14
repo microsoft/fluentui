@@ -25,7 +25,7 @@ function positionCalloutTest(testValues: ITestValues, alignment: DirectionalHint
   let gap: number = positioningFunctions._calculateActualBeakWidthInPixels(beakWidth) / 2;
   let result: positioningFunctions.ICallout = positioningFunctions._positionCalloutWithinBounds(callout, target, bounds, alignment, gap);
 
-  let beak: Rectangle = positioningFunctions._positionBeak(beakWidth, result, target);
+  let beak: Rectangle = positioningFunctions._positionBeak(beakWidth, result, target, 0);
 
   assert(areRectanglesEqual(result.calloutRectangle, validate.callout), 'Callout not alligned with target ' + stringifyResults(validate.callout, result.calloutRectangle));
 

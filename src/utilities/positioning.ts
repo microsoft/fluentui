@@ -97,6 +97,7 @@ let DirectionalDictionary: { [key: number]: PositionData} = {
     calloutElement: HTMLElement): IPositionInfo {
       let beakWidth = !props.isBeakVisible ? 0 : props.beakWidth;
 
+      let borderWidth = positioningFunctions._getBorderSize(calloutElement);
       let gap = positioningFunctions._calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
 
       let boundingRectangle: Rectangle = props.bounds ? positioningFunctions._getRectangleFromIRect(props.bounds) : new Rectangle (0, window.innerWidth - 15, 0, window.innerHeight);
@@ -104,7 +105,7 @@ let DirectionalDictionary: { [key: number]: PositionData} = {
       let targetRect: Rectangle = positioningFunctions._getTargetRect(boundingRectangle, props.targetElement, props.creationEvent, props.targetPoint, props.useTargetPoint);
 
       let positionedCallout: positioningFunctions.ICallout = positioningFunctions._positionCalloutWithinBounds(positioningFunctions._getRectangleFromHTMLElement(calloutElement), targetRect, boundingRectangle, props.directionalHint, gap);
-      let beakPositioned: Rectangle = positioningFunctions._positionBeak(beakWidth, positionedCallout, targetRect);
+      let beakPositioned: Rectangle = positioningFunctions._positionBeak(beakWidth, positionedCallout, targetRect, borderWidth);
       let finalizedCallout = positioningFunctions._finalizeCalloutPosition(positionedCallout.calloutRectangle, hostElement);
 
       return { calloutPosition: { top: finalizedCallout.top, left: finalizedCallout.left },
@@ -214,24 +215,24 @@ export module positioningFunctions {
         return callout;
     }
 
-    export function _positionBeak(beakWidth: number, callout: ICallout, targetRectangle: Rectangle): Rectangle {
-      let calloutRect: Rectangle = new Rectangle (0, callout.calloutRectangle.width, 0, callout.calloutRectangle.height);
+    export function _positionBeak(beakWidth: number, callout: ICallout, targetRectangle: Rectangle, border: number): Rectangle {
+      let calloutRect: Rectangle = new Rectangle (0, callout.calloutRectangle.width - border * 2, 0, callout.calloutRectangle.height - border * 2);
       let beakRectangle: Rectangle = new Rectangle (0, beakWidth, 0, beakWidth);
       let recalculatedPercent: number = _recalculateMatchingPercents(callout.calloutRectangle, callout.calloutEdge, targetRectangle, callout.targetEdge, callout.beakPercent);
       let estimatedTargetPoint: IPoint = _getPointOnEdgeFromPercent(calloutRect, callout.calloutEdge, recalculatedPercent);
 
-      return _finalizeBeakPosition(beakRectangle, callout, estimatedTargetPoint);
+      return _finalizeBeakPosition(beakRectangle, callout, estimatedTargetPoint, border);
     }
 
-    export function _finalizeBeakPosition(beakRectangle: Rectangle, callout: ICallout, estimatedTargetPoint: IPoint): Rectangle {
+    export function _finalizeBeakPosition(beakRectangle: Rectangle, callout: ICallout, estimatedTargetPoint: IPoint, border: number): Rectangle {
       let beakPixelSize: number = _calculateActualBeakWidthInPixels(beakRectangle.width) / 2;
       let innerRect: Rectangle = null;
       let beakPoint: IPoint = {x: beakRectangle.width / 2, y: beakRectangle.width / 2};
 
       if (callout.calloutEdge === RectangleEdge.bottom || callout.calloutEdge === RectangleEdge.top ) {
-        innerRect = new Rectangle (beakPixelSize, callout.calloutRectangle.width - beakPixelSize, 0, callout.calloutRectangle.height);
+        innerRect = new Rectangle (beakPixelSize, callout.calloutRectangle.width - beakPixelSize - border * 2, 0, callout.calloutRectangle.height - border * 2);
       } else {
-        innerRect = new Rectangle (0, callout.calloutRectangle.width, beakPixelSize, callout.calloutRectangle.height - beakPixelSize);
+        innerRect = new Rectangle (0, callout.calloutRectangle.width - border * 2, beakPixelSize, callout.calloutRectangle.height - beakPixelSize - border * 2);
       }
 
       let finalPoint: IPoint = _getClosestPointOnEdgeToPoint(innerRect, callout.calloutEdge, estimatedTargetPoint);
@@ -474,5 +475,23 @@ export module positioningFunctions {
      */
     export function _calculateActualBeakWidthInPixels(beakWidth: number): number {
       return Math.sqrt(beakWidth * beakWidth * 2);
+    }
+
+    export function _getBorderSize(element: HTMLElement): number {
+      let styles: CSSStyleDeclaration = getComputedStyle(element, null);
+      let topBorder: number = parseFloat(styles.borderTopWidth);
+      let bottomBorder: number = parseFloat(styles.borderBottomWidth);
+      let leftBorder: number = parseFloat(styles.borderLeftWidth);
+      let rightBorder: number = parseFloat(styles.borderRightWidth);
+      // If any of the borders are NaN default to 0
+      if (isNaN(topBorder) || isNaN(bottomBorder) || isNaN(leftBorder) || isNaN(rightBorder)) {
+        return 0;
+      }
+      // If all of the borders are the same size, any value;
+      if ( topBorder === bottomBorder && bottomBorder === leftBorder && leftBorder === rightBorder ) {
+        return topBorder;
+      }
+      // If the borders do not agree, return 0
+      return 0;
     }
 }

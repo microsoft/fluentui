@@ -8,39 +8,6 @@
 // --------------------------------------------------
 // Contextual Menu styles
 
-// slideRightIn20
-@mixin ms-u-slideRightIn20 {
-    @include animationMix((fadeIn, slideRightIn20), $ms-duration3, $ms-ease1);
-}
-
-.ms-u-slideRightIn20 {
-    @include ms-u-slideRightIn20;
-}
-@-webkit-keyframes slideRightIn20 {
-    from { -webkit-transform:translate3d(-20px, 0px, 0px); }
-    to { -webkit-transform:translate3d(0px, 0px, 0px); }
-}
-@keyframes slideRightIn20 {
-    from { transform:translate3d(-20px, 0px, 0px); }
-    to { transform:translate3d(0px, 0px, 0px); }
-}
-
-// slideLeftIn20
-@mixin ms-u-slideLeftIn20 {
-    @include animationMix((fadeIn, slideLeftIn20), $ms-duration3, $ms-ease1);
-}
-
-.ms-u-slideLeftIn20 {
-    @include ms-u-slideLeftIn20;
-}
-@-webkit-keyframes slideLeftIn20 {
-    from { -webkit-transform:translate3d(20px, 0px, 0px); }
-    to { -webkit-transform:translate3d(0px, 0px, 0px); }
-}
-@keyframes slideLeftIn20 {
-    from { transform:translate3d(20px, 0px, 0px); }
-    to { transform:translate3d(0px, 0px, 0px); }
-}
 
 .ms-ContextualMenu-container {
   position: relative;
@@ -49,17 +16,12 @@
 .ms-ContextualMenu.ms-FocusZone {
   @include ms-font-m;
   @include ms-u-normalize;
-  @include drop-shadow(0,0, 15px, -5px);
-  border: 1px solid $ms-color-neutralLight;
   z-index: $ms-zIndex-ContextualMenu;
-  position: absolute;
-  display: inline-block;
   line-height: 0;
 }
 
 .ms-ContextualMenu-list {
   background-color: $ms-color-white;
-  display: inline-block;
   list-style-type: none;
   min-width: 180px;
   padding: 0;
@@ -106,11 +68,9 @@
   position: relative;
   text-decoration: none;
   color: $ms-color-neutralPrimary;
-  border: 1px solid transparent;
   cursor: pointer;
   display: block;
   height: 40px;
-  // line-height: 40px;
   padding: 0 18px;
   white-space: nowrap;
   box-sizing: border-box;
@@ -226,23 +186,6 @@
   width: 100%;
   @include text-align(left);
   @include ms-font-m;
-}
-
-.ms-ContextualMenu-beak {
-  @include drop-shadow(0,0, 15px, -5px);
-
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  z-index: -1;
-  background: #fff;
-  border: 1px solid $ms-color-neutralLight;
-  box-sizing: border-box;
-  top: -6px;
-  display: none;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
 }
 
 .ms-ContextualMenu-chevronRight.ms-Icon {

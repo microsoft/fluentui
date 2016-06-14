@@ -7,11 +7,8 @@ import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { css } from '../../utilities/css';
 import { getRTL } from '../../utilities/rtl';
 import { Async } from '../../utilities/Async/Async';
-import { getRelativePositions, IPositionInfo } from '../../utilities/positioning';
+import { Callout } from '../../Callout';
 import './ContextualMenu.scss';
-
-const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
-const OFF_SCREEN_POSITION = { top: 0, left: -9999 };
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
@@ -81,11 +78,9 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
 
   public refs: {
     [key: string]: React.ReactInstance;
-    focusZone: FocusZone;
-    host: HTMLElement;
-    menu: HTMLElement;
   };
 
+  private _host: HTMLElement;
   private _previousActiveElement: HTMLElement;
   private _isFocusingPreviousElement: boolean;
   private _didSetInitialFocus: boolean;
@@ -107,7 +102,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     this._events = new EventGroup(this);
     this._async = new Async(this);
 
-    this._updatePosition = this._updatePosition.bind(this);
     this.dismiss = this.dismiss.bind(this);
     this._onKeyDown = this._onKeyDown.bind(this);
     this._onMouseDownCapture = this._onMouseDownCapture.bind(this);
@@ -133,7 +127,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
 
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount() {
-    this._updatePosition();
     this._events.on(window, 'scroll', this._onScroll, true);
     this._events.on(window, 'resize', this.dismiss);
     this._events.on(window, 'mousedown', this._onMouseDownCapture, true);
@@ -147,19 +140,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     }
   }
 
-  // Invoked immediately after the component's updates are flushed to the DOM.
-  public componentDidUpdate() {
-    if (!this._didSetInitialFocus && this.props.shouldFocusOnMount) {
-      let { focusZone } = this.refs;
-
-      if (focusZone) {
-        focusZone.focus();
-        this._didSetInitialFocus = true;
-      }
-    }
-    this._updatePosition();
-  }
-
   // Invoked immediately before a component is unmounted from the DOM.
   public componentWillUnmount() {
     if (this._isFocusingPreviousElement && this._previousActiveElement) {
@@ -170,49 +150,57 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   }
 
   public render() {
-    let { className, items, isBeakVisible, labelElementId, targetElement, id } = this.props;
-    let { submenuProps, positions, slideDirectionalClassName } = this.state;
+    let { className, items, isBeakVisible, labelElementId, targetElement, id, targetPoint, useTargetPoint, beakWidth, directionalHint, gapSpace } = this.props;
+
+    let { submenuProps } = this.state;
 
     let hasIcons = !!(items && items.some(item => !!item.icon));
     let hasCheckmarks = !!(items && items.some(item => !!item.canCheck));
 
     return (
-      <div ref='host' id={ id } className={ css('ms-ContextualMenu-container', className) }>
-        { (items && items.length) ? (
-          <FocusZone
-            className={ 'ms-ContextualMenu is-open' + ((slideDirectionalClassName) ? (` ms-u-${slideDirectionalClassName}`) : '') }
-            ref='focusZone'
-            isCircularNavigation={ true }
-            role='menu'
-            ariaLabelledBy={ labelElementId }
-            style={ ((positions) ? positions.menu : OFF_SCREEN_POSITION) }
-            >
-            { isBeakVisible && targetElement ? (<div className='ms-ContextualMenu-beak'  style={ ((positions) ? positions.beak : BEAK_ORIGIN_POSITION) } />) : (null) }
-            <ul className='ms-ContextualMenu-list is-open ' onKeyDown={ this._onKeyDown } ref='menu' onWheel={ this._onWheel }>
-              { items.map((item, index) => (
-                // If the item name is equal to '-', a divider will be generated.
-                item.name === '-' ? (
-                  <li
-                    role='separator'
-                    key={ item.key || index }
-                    className={ css('ms-ContextualMenu-item ms-ContextualMenu-item--divider', item.className ) }/>
-                ) : (
+      <Callout targetElement={ targetElement }
+               targetPoint={ targetPoint }
+               useTargetPoint={ useTargetPoint }
+               isBeakVisible={ isBeakVisible }
+               beakWidth={ beakWidth }
+               directionalHint={ directionalHint }
+               gapSpace={ gapSpace }
+               doNotLayer={ this.props.isSubMenu }
+               beakStyle='ms-Callout-smallbeak'>
+        <div ref={ (host: HTMLDivElement) => this._host = host} id={ id } className={ css('ms-ContextualMenu-container', className) }>
+          { (items && items.length) ? (
+            <FocusZone
+              className={ 'ms-ContextualMenu is-open'}
+              isCircularNavigation={ true }
+              role='menu'
+              ariaLabelledBy={ labelElementId }
+              ref={ (focusZone) => this._tryFocus(focusZone) }
+              >
+              <ul className='ms-ContextualMenu-list is-open ' onKeyDown={ this._onKeyDown } onWheel={ this._onWheel }>
+                { items.map((item, index) => (
+                  // If the item name is equal to '-', a divider will be generated.
+                  item.name === '-' ? (
                     <li
-                      role='menuitem'
+                      role='separator'
                       key={ item.key || index }
-                      className={ css('ms-ContextualMenu-item', item.className ) }
-                      ref={ item.key }>
-                        { this._renderMenuItem(item, index, hasCheckmarks, hasIcons) }
-                    </li>
-                  )
-              )) }
-            </ul>
-          </FocusZone>
-        ) : (null) }
-        { submenuProps ? ( // If a submenu properities exists, the submenu will be rendered.
-          <ContextualMenu { ...submenuProps } />
-        ) : (null) }
-      </div>
+                      className={ css('ms-ContextualMenu-item ms-ContextualMenu-item--divider', item.className ) }/>
+                  ) : (
+                      <li
+                        role='menuitem'
+                        key={ item.key || index }
+                        className={ css('ms-ContextualMenu-item', item.className ) }>
+                          { this._renderMenuItem(item, index, hasCheckmarks, hasIcons) }
+                      </li>
+                    )
+                )) }
+              </ul>
+            </FocusZone>
+          ) : (null) }
+          { submenuProps ? ( // If a submenu properities exists, the submenu will be rendered.
+            <ContextualMenu { ...submenuProps }/>
+          ) : (null) }
+        </div>
+      </Callout>
     );
   }
 
@@ -258,6 +246,12 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
            </div>;
   }
 
+  private _tryFocus(focusZone: FocusZone) {
+    if (focusZone && this.props.shouldFocusOnMount) {
+      focusZone.focus();
+    }
+  }
+
   private _onKeyDown(ev: React.KeyboardEvent) {
     let submenuCloseKey = getRTL() ? KeyCodes.right : KeyCodes.left;
 
@@ -284,12 +278,12 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   }
 
   private _onMouseDownCapture(ev: React.MouseEvent) {
-    if (!this.refs.host.contains(ev.target as HTMLElement)) {
+    if (!this._host.contains(ev.target as HTMLElement)) {
       this.dismiss(ev);
     }
   }
   private _onScroll(ev: React.UIEvent) {
-    if (!this.refs.host.contains(ev.target as HTMLElement)) {
+    if (!this._host.contains(ev.target as HTMLElement)) {
       this.dismiss(ev);
     }
   }
@@ -337,6 +331,10 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   }
 
   private _onSubMenuExpand(item: any, target: HTMLElement) {
+    if (this.state.submenuProps && this.state.expandedMenuItemKey !== item.key) {
+      this._onSubMenuDismiss();
+    }
+
     this.setState({
       expandedMenuItemKey: item.key,
       submenuProps: {
@@ -344,7 +342,9 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         targetElement: target,
         onDismiss: this._onSubMenuDismiss,
         isSubMenu: true,
-        id: this.state.subMenuId
+        id: this.state.subMenuId,
+        shouldFocusOnMount: true,
+        directionalHint: DirectionalHint.rightTopEdge
       }
     });
   }
@@ -356,6 +356,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     if (list && list.contains(ev.target as HTMLElement)) {
       itemKey = this.state.expandedMenuItemKey;
     }
+
     this.setState({
       dismissedMenuItemKey: itemKey,
       expandedMenuItemKey: null,
@@ -363,25 +364,4 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     });
   }
 
-  private _updatePosition() {
-    let { positions } = this.state;
-    let hostElement: HTMLElement = this.refs.host;
-    let menuElement: HTMLElement = this.refs.menu;
-
-    if (hostElement && menuElement) {
-      let positionInfo: IPositionInfo = getRelativePositions(this.props, hostElement, menuElement);
-
-      // Set the new position only when the positions are not exists or one of the new callout positions are different
-      if ((!positions && positionInfo) ||
-        (positions && positionInfo && (positions.menu.top !== positionInfo.calloutPosition.top || positions.menu.left !== positionInfo.calloutPosition.left))) {
-        this.setState({
-          positions: {
-            menu: positionInfo.calloutPosition,
-            beak: positionInfo.beakPosition,
-          },
-          slideDirectionalClassName: positionInfo.directionalClassName
-        });
-      }
-    }
-  }
 }

@@ -48,6 +48,10 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     this._updatePosition();
   }
 
+  public componentDidMount() {
+    this._updatePosition();
+  }
+
   public componentWillUnmount() {
     this._events.dispose();
   }
@@ -55,20 +59,26 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
   public render() {
     let { className, targetElement, isBeakVisible, beakStyle, children } = this.props;
     let { positions, slideDirectionalClassName } = this.state;
-
-    return (
-      <Layer onLayerMounted={ this._updatePosition }>
-        <div ref={ (host: HTMLDivElement) => this._hostElement = host } className={ css('ms-Callout-container', className) }>
+    let content = (
+      <div ref={ (host: HTMLDivElement) => this._hostElement = host } className={ css('ms-Callout-container', className) }>
           <div
             className= { 'ms-Callout' + ((slideDirectionalClassName) ? (` ms-u-${slideDirectionalClassName}`) : '') }
             style={ ((positions) ? positions.callout : OFF_SCREEN_POSITION) }
+            ref={ (callout: HTMLDivElement) => this._calloutElement = callout }
             >
             { isBeakVisible && targetElement ? (<div className={ beakStyle }  style={ ((positions) ? positions.beak : BEAK_ORIGIN_POSITION) } />) : (null) }
-            <div className='ms-Callout-main' ref={ (callout: HTMLDivElement) => this._calloutElement = callout }>
+            <div className= { 'ms-Callout-main' + ((slideDirectionalClassName) ? (` ms-u-${slideDirectionalClassName}`) : '') }>
                 { children }
             </div>
           </div>
         </div>
+        );
+
+    // Note: The slideDirectionalClassName being on 2 divs is intentional. It fixes a small browser bug in chrome where
+    // the sub menus would not be rerendered when they were removed from the dom.
+    return this.props.doNotLayer ? content : (
+      <Layer onLayerMounted={ this._updatePosition }>
+        {content}
       </Layer>
     );
   }
@@ -86,6 +96,7 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     let target = ev.target as HTMLElement;
 
     if (ev.target !== window &&
+      this._hostElement &&
       !this._hostElement.contains(target) &&
       (!targetElement || !targetElement.contains(target))) {
       this.dismiss();
