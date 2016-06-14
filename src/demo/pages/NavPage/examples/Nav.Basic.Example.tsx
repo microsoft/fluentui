@@ -7,10 +7,9 @@ export class NavBasicExample extends React.Component<any, any> {
   public render() {
     return (
       <Nav
-        groups={ [ { name: 'Link group', links: [ { name: 'A link', url: 'http://example.com' } ] } ] }
+        groups={ [ { name: 'LINK GROUP', links: [ { name: 'A link', url: 'http://example.com' }, {name: 'Add a link', url: 'http://msn.com', plusIconLink: 'true'} ]}]}
         />
     );
   }
 
 }
-

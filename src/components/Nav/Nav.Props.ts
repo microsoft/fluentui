@@ -57,13 +57,19 @@ export interface INavLink {
   links?: INavLink[];
 
   /**
+     * (optional) If defined, plus icon  will appear with the linkgroup.
+     * If not defined, the plus icon will not be rendered.
+     */
+  plusIconLink?: boolean;
+
+  /**
    * (Optional) The name of the item to be used in logging engagement data
    */
   engagementName?: string;
 
-/**
- * (Optional) The alt text for the item
-**/
+  /**
+  * (Optional) The alt text for the item
+  **/
   altText?: string;
 
   /**

@@ -25,11 +25,18 @@
 
 .ms-Nav-groupContent {
   display: none;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .ms-Nav-group.is-expanded .ms-Nav-groupContent {
   display: block;
+}
+
+.ms-Nav-plusIcon {
+  padding: 0px;
+  color: $selectedForegroundColor;
+  background: $selectedBackgroundColor;
+  transition: transform .1s linear;
 }
 
 .ms-Nav-groupButton {
