@@ -534,7 +534,7 @@ export class List extends BaseComponent<IListProps, IListState> {
     let el = this.refs.root;
     let elements = [];
 
-    while (el !== document.body) {
+    while (el && el !== document.body) {
       let style = getComputedStyle(el);
 
       if (style.overflowY === 'auto' || style.overflowY === 'scroll') {
