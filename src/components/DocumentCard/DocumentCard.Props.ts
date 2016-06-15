@@ -19,6 +19,11 @@ export interface IDocumentCardProps extends React.Props<DocumentCard> {
    * it will be used instead of the URL.
    */
   onClickHref?: string;
+
+  /**
+   * Optional class for document card
+   */
+  className?: string;
 }
 
 export interface IDocumentCardPreviewProps extends React.Props<DocumentCardPreview> {

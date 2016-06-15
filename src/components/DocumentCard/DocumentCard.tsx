@@ -5,7 +5,7 @@ import './DocumentCard.scss';
 
 export class DocumentCard extends React.Component<IDocumentCardProps, any> {
   public render() {
-    let { onClick, onClickHref, children } = this.props;
+    let { onClick, onClickHref, children, className } = this.props;
 
     // If no onClickFunction was provided and we do have an onClickURL, create a function from it.
     if (!onClick && onClickHref) {
@@ -21,7 +21,8 @@ export class DocumentCard extends React.Component<IDocumentCardProps, any> {
             'ms-DocumentCard',
             {
               'ms-DocumentCard--actionable': onClick ? true : false
-            }
+            },
+            className
           )
         }
         onClick={ onClick }>
