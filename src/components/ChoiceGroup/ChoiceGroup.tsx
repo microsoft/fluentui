@@ -90,7 +90,6 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
                 <div className={ css('ms-ChoiceField-imageWrapper', { 'is-hidden': option.key === keyChecked }) }>
                   <Image
                     src={ option.imageSrc }
-                    alt='unselected'
                     width={ option.imageSize.width }
                     height={ option.imageSize.height }
                   />
@@ -98,7 +97,6 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
                 <div className={ css('ms-ChoiceField-imageWrapper', { 'is-hidden': option.key !== keyChecked }) }>
                   <Image
                     src={ option.selectedImageSrc }
-                    alt='selected'
                     width={ option.imageSize.width }
                     height={ option.imageSize.height }
                   />
