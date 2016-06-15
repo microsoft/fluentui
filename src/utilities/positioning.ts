@@ -1,5 +1,6 @@
 import { DirectionalHint } from '../common/DirectionalHint';
 import Rectangle from './Rectangle';
+import { scrollBarWidth } from './scrollBarUtilities';
 export enum RectangleEdge {
   top,
   bottom,
@@ -40,6 +41,7 @@ export interface IPositionInfo {
   calloutPosition: {top: number, left: number};
   beakPosition: {top: number, left: number, display: string};
   directionalClassName: string;
+  submenuDirection: DirectionalHint;
 }
 
 export interface IPoint {
@@ -100,7 +102,7 @@ let DirectionalDictionary: { [key: number]: PositionData} = {
       let borderWidth = positioningFunctions._getBorderSize(calloutElement);
       let gap = positioningFunctions._calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
 
-      let boundingRectangle: Rectangle = props.bounds ? positioningFunctions._getRectangleFromIRect(props.bounds) : new Rectangle (0, window.innerWidth - 15, 0, window.innerHeight);
+      let boundingRectangle: Rectangle = props.bounds ? positioningFunctions._getRectangleFromIRect(props.bounds) : new Rectangle (0, window.innerWidth - scrollBarWidth(), 0, window.innerHeight);
 
       let targetRect: Rectangle = positioningFunctions._getTargetRect(boundingRectangle, props.targetElement, props.creationEvent, props.targetPoint, props.useTargetPoint);
 
@@ -110,7 +112,9 @@ let DirectionalDictionary: { [key: number]: PositionData} = {
 
       return { calloutPosition: { top: finalizedCallout.top, left: finalizedCallout.left },
         beakPosition: { top: beakPositioned.top, left: beakPositioned.left, display: 'block'},
-        directionalClassName: SLIDE_ANIMATIONS[positionedCallout.targetEdge] };
+        directionalClassName: SLIDE_ANIMATIONS[positionedCallout.targetEdge],
+        submenuDirection: positionedCallout.calloutEdge === RectangleEdge.right ? DirectionalHint.leftBottomEdge : DirectionalHint.rightBottomEdge
+       };
     }
 
 export module positioningFunctions {
@@ -209,7 +213,6 @@ export module positioningFunctions {
             callout.calloutRectangle = _alignEdgeToCoordinate(callout.calloutRectangle, boundingRectangle[RectangleEdge[direction]], direction);
             let adjustedPercent: number = _recalculateMatchingPercents(callout.calloutRectangle, callout.targetEdge, targetRectangle, callout.targetEdge, directionalInfo.targetPercent);
             callout.alignPercent = adjustedPercent;
-            callout.beakPercent = adjustedPercent;
           }
         }
         return callout;

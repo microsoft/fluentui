@@ -18,16 +18,19 @@
   @include ms-u-normalize;
   z-index: $ms-zIndex-ContextualMenu;
   line-height: 0;
+  box-sizing: border-box;
 }
 
 .ms-ContextualMenu-list {
   background-color: $ms-color-white;
   list-style-type: none;
   min-width: 180px;
+  max-height: 100vh;
   padding: 0;
   margin: 0;
   z-index: ($ms-zIndex-ContextualMenu + $ms-zIndex-middle);
   line-height: 0;
+  overflow-y: auto;
 
 }
 
@@ -215,6 +218,10 @@
 
 .ms-FocusZone.ms-ContextualMenu.is-open {
   width: auto;
+}
+
+.ms-Callout-container.ms-ContextualMenu-Callout>.ms-Callout {
+  max-height: 100vh;
 }
 
 .ExampleCard-example > .ms-ContextualMenu-container > .ms-ContextualMenu {

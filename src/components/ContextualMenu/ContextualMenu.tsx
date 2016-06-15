@@ -20,6 +20,7 @@ export interface IContextualMenuState {
   positions?: any;
   slideDirectionalClassName?: string;
   subMenuId?: string;
+  submenuDirection?: DirectionalHint;
 }
 
 enum ContextualMenuType {
@@ -166,7 +167,8 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
                directionalHint={ directionalHint }
                gapSpace={ gapSpace }
                doNotLayer={ this.props.isSubMenu }
-               beakStyle='ms-Callout-smallbeak'>
+               beakStyle='ms-Callout-smallbeak'
+               className='ms-ContextualMenu-Callout'>
         <div ref={ (host: HTMLDivElement) => this._host = host} id={ id } className={ css('ms-ContextualMenu-container', className) }>
           { (items && items.length) ? (
             <FocusZone
@@ -363,5 +365,4 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
       submenuProps: null
     });
   }
-
 }

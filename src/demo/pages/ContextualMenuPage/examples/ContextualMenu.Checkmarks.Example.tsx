@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ContextualMenu, IContextualMenuItem } from '../../../../index';
+import { ContextualMenu, IContextualMenuItem, DirectionalHint, Button } from '../../../../index';
 import './ContextualMenuExample.scss';
 export interface IContextualMenuMultiselectExampleState {
   selection?: { [ key: string]: boolean };
@@ -27,14 +27,15 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
     let { selection } = this.state;
 
     return (
-      <div className='ms-ContextualMenu-example-clickableArea'>
-        <button onClick={this._onClick} className='ms-ContextualMenu-example-clickableArea'> </button>
+      <div>
+        <Button onClick={this._onClick}> Click for ContextualMenu </Button>
         { this.state.isContextMenuVisible ? (
         <ContextualMenu
           targetPoint={this.state.target}
           useTargetPoint={true}
           shouldFocusOnMount={ false }
           onDismiss={this._onDismiss}
+          directionalHint={DirectionalHint.bottomLeftEdge}
           items={
             [
               {
