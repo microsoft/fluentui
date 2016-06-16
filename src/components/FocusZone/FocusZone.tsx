@@ -278,37 +278,41 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
     ev?: Event): boolean {
 
     let element = this._activeElement;
-    let startingElement = element;
     let candidateDistance = -1;
     let candidateElement: HTMLElement;
     let changedFocus = false;
+    let isBidirectional = this.props.direction === FocusZoneDirection.bidirectional;
 
     if (!this._activeElement) {
       return;
     }
 
-    const activeRect = this._activeElement.getBoundingClientRect();
+    const activeRect = isBidirectional ? this._activeElement.getBoundingClientRect() : null;
 
     do {
       element = isForward ?
         getNextElement(this.refs.root, element) :
         getPreviousElement(this.refs.root, element);
 
-      startingElement = startingElement || element;
+      if (isBidirectional) {
+        if (element) {
+          const targetRect = element.getBoundingClientRect();
+          const elementDistance = getDistanceFromCenter(activeRect, targetRect);
 
-      if (element) {
-        const targetRect = element.getBoundingClientRect();
-        const elementDistance = getDistanceFromCenter(activeRect, targetRect);
+          if (elementDistance > -1 && (candidateDistance === -1 || elementDistance < candidateDistance)) {
+            candidateDistance = elementDistance;
+            candidateElement = element;
+          }
 
-        if (elementDistance > -1 && (candidateDistance === -1 || elementDistance < candidateDistance)) {
-          candidateDistance = elementDistance;
-          candidateElement = element;
+          if (candidateDistance >= 0 && elementDistance < 0) {
+            break;
+          }
         }
-
-        if (candidateDistance >= 0 && elementDistance < 0) {
-          break;
-        }
+      } else {
+        candidateElement = element;
+        break;
       }
+
     } while (element);
 
     // Focus the closest candidate
@@ -337,8 +341,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
         (targetRect.top === targetTop)) {
 
         targetTop = targetRect.top;
-        distance = (leftAlignment >= targetRect.left && leftAlignment <= targetRect.right) ?
-          0 : Math.abs((targetRect.left + (targetRect.width / 2)) - leftAlignment);
+        distance = Math.abs((targetRect.left + (targetRect.width / 2)) - leftAlignment);
       }
 
       return distance;
@@ -360,8 +363,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
       if ((targetTop === -1 && targetRect.bottom <= activeRect.top) ||
       (targetRect.top === targetTop)) {
         targetTop = targetRect.top;
-        distance = (leftAlignment >= targetRect.left && leftAlignment <= targetRect.right) ?
-          0 : Math.abs((targetRect.left + (targetRect.width / 2)) - leftAlignment);
+        distance = Math.abs((targetRect.left + (targetRect.width / 2)) - leftAlignment);
       }
 
       return distance;
@@ -382,13 +384,12 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
 
       if ((
         targetTop === -1 &&
-        targetRect.right <= activeRect.left &&
+        targetRect.right <= activeRect.right &&
         (this.props.direction === FocusZoneDirection.horizontal || targetRect.top === activeRect.top)) ||
         (targetRect.top === targetTop)) {
 
         targetTop = targetRect.top;
-        distance = (topAlignment >= targetRect.top && topAlignment <= targetRect.bottom) ?
-          0 :  Math.abs((targetRect.top + (targetRect.height / 2)) - topAlignment);
+        distance = Math.abs((targetRect.top + (targetRect.height / 2)) - topAlignment);
       }
 
       return distance;
@@ -409,13 +410,12 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
 
       if ((
         targetTop === -1 &&
-        targetRect.left >= activeRect.right &&
+        targetRect.left >= activeRect.left &&
         (this.props.direction === FocusZoneDirection.horizontal || targetRect.top === activeRect.top)) ||
         (targetRect.top === targetTop)) {
 
         targetTop = targetRect.top;
-        distance = (topAlignment >= targetRect.top && topAlignment <= targetRect.bottom) ?
-          0 : Math.abs((targetRect.top + (targetRect.height / 2)) - topAlignment);
+        distance = Math.abs((targetRect.top + (targetRect.height / 2)) - topAlignment);
       }
 
       return distance;

@@ -6,19 +6,17 @@ const FOCUSZONE_ID_ATTRIBUTE = 'data-focuszone-id';
 export function getFirstFocusable(
   rootElement: HTMLElement,
   currentElement: HTMLElement,
-  includeElementsInFocusZones?: boolean,
-  includeInputElements?: boolean): HTMLElement {
+  includeElementsInFocusZones?: boolean): HTMLElement {
 
-  return getNextElement(rootElement, currentElement, true, false, false, includeElementsInFocusZones, includeInputElements);
+  return getNextElement(rootElement, currentElement, true, false, false, includeElementsInFocusZones);
 }
 
 export function getLastFocusable(
   rootElement: HTMLElement,
   currentElement: HTMLElement,
-  includeElementsInFocusZones?: boolean,
-  includeInputElements?: boolean): HTMLElement {
+  includeElementsInFocusZones?: boolean): HTMLElement {
 
-  return getPreviousElement(rootElement, currentElement, true, false, true, includeElementsInFocusZones, includeInputElements);
+  return getPreviousElement(rootElement, currentElement, true, false, true, includeElementsInFocusZones);
 }
 
 /** Traverse to find the previous element. */
@@ -28,8 +26,7 @@ export function getPreviousElement(
   checkNode?: boolean,
   suppressParentTraversal?: boolean,
   traverseChildren?: boolean,
-  includeElementsInFocusZones?: boolean,
-  includeInputElements?: boolean): HTMLElement {
+  includeElementsInFocusZones?: boolean): HTMLElement {
 
   if (!currentElement ||
     currentElement === rootElement) {
@@ -40,7 +37,7 @@ export function getPreviousElement(
 
   // Check its children.
   if (traverseChildren && (includeElementsInFocusZones || !isElementFocusZone(currentElement)) && isCurrentElementVisible) {
-    const childMatch = getPreviousElement(rootElement, currentElement.lastElementChild as HTMLElement, true, true, true, includeElementsInFocusZones, includeInputElements);
+    const childMatch = getPreviousElement(rootElement, currentElement.lastElementChild as HTMLElement, true, true, true, includeElementsInFocusZones);
 
     if (childMatch) {
       return childMatch;
@@ -48,12 +45,12 @@ export function getPreviousElement(
   }
 
   // Check the current node, if it's not the first traversal.
-  if (checkNode && isCurrentElementVisible && isElementTabbable(currentElement, includeInputElements)) {
+  if (checkNode && isCurrentElementVisible && isElementTabbable(currentElement)) {
     return currentElement;
   }
 
   // Check its previous sibling.
-  const siblingMatch = getPreviousElement(rootElement, currentElement.previousElementSibling as HTMLElement, true, true, true, includeElementsInFocusZones, includeInputElements);
+  const siblingMatch = getPreviousElement(rootElement, currentElement.previousElementSibling as HTMLElement, true, true, true, includeElementsInFocusZones);
 
   if (siblingMatch) {
     return siblingMatch;
@@ -61,7 +58,7 @@ export function getPreviousElement(
 
   // Check its parent.
   if (!suppressParentTraversal) {
-    return getPreviousElement(rootElement, currentElement.parentElement, true, false, false, includeElementsInFocusZones, includeInputElements);
+    return getPreviousElement(rootElement, currentElement.parentElement, true, false, false, includeElementsInFocusZones);
   }
 
   return null;
@@ -74,8 +71,7 @@ export function getNextElement(
   checkNode?: boolean,
   suppressParentTraversal?: boolean,
   suppressChildTraversal?: boolean,
-  includeElementsInFocusZones?: boolean,
-  includeInputElements?: boolean): HTMLElement {
+  includeElementsInFocusZones?: boolean): HTMLElement {
 
   if (
     !currentElement ||
@@ -86,13 +82,13 @@ export function getNextElement(
   let isCurrentElementVisible = isElementVisible(currentElement);
 
   // Check the current node, if it's not the first traversal.
-  if (checkNode && isCurrentElementVisible && isElementTabbable(currentElement, includeInputElements) ) {
+  if (checkNode && isCurrentElementVisible && isElementTabbable(currentElement) ) {
     return currentElement;
   }
 
   // Check its children.
   if (!suppressChildTraversal && isCurrentElementVisible && (includeElementsInFocusZones || !isElementFocusZone(currentElement))) {
-    const childMatch = getNextElement(rootElement, currentElement.firstElementChild as HTMLElement, true, true, false, includeElementsInFocusZones, includeInputElements);
+    const childMatch = getNextElement(rootElement, currentElement.firstElementChild as HTMLElement, true, true, false, includeElementsInFocusZones);
 
     if (childMatch) {
       return childMatch;
@@ -104,14 +100,14 @@ export function getNextElement(
   }
 
   // Check its sibling.
-  const siblingMatch = getNextElement(rootElement, currentElement.nextElementSibling as HTMLElement, true, true, false, includeElementsInFocusZones, includeInputElements);
+  const siblingMatch = getNextElement(rootElement, currentElement.nextElementSibling as HTMLElement, true, true, false, includeElementsInFocusZones);
 
   if (siblingMatch) {
     return siblingMatch;
   }
 
   if (!suppressParentTraversal) {
-    return getNextElement(rootElement, currentElement.parentElement, false, false, true, includeElementsInFocusZones, includeInputElements);
+    return getNextElement(rootElement, currentElement.parentElement, false, false, true, includeElementsInFocusZones);
   }
 
   return null;
@@ -121,17 +117,16 @@ export function isElementVisible(element: HTMLElement): boolean {
   return (
     !!element &&
     (element.offsetParent !== null ||
-    (element.hidden === false) ||
     (element as any).isVisible === true) // used as a workaround for testing.
   );
 }
 
-export function isElementTabbable(element: HTMLElement, includeInput?: boolean): boolean {
+export function isElementTabbable(element: HTMLElement): boolean {
   return (
     !!element &&
     (element.tagName === 'A' ||
       (element.tagName === 'BUTTON' && !(element as HTMLButtonElement).disabled) ||
-      (includeInput && element.tagName === 'INPUT' && !(element as HTMLButtonElement).disabled) ||
+      (element.tagName === 'INPUT' && !(element as HTMLButtonElement).disabled) ||
       (element.getAttribute && element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true')));
 }
 

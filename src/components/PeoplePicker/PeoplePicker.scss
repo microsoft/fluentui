@@ -46,13 +46,8 @@
 
 .ms-PeoplePicker-persona {
   display: inline-flex;
+  margin: 4px;
 
-  // replace margin with padding, so that this container works
-  // better with the Focus Zone. However, that requires us to
-  // use a sub container element for the focus styling.
-  margin: 0px;
-  padding: 4px;
-  
   &:focus {
     .ms-PeoplePicker-personaContent {
       outline: 2px solid $ms-color-themePrimary;

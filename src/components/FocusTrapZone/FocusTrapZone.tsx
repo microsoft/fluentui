@@ -69,8 +69,8 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> {
 
     let { root } = this.refs;
 
-    const _firstFocusableChild = getFirstFocusable(root, root.firstChild as HTMLElement, true, true);
-    const _lastFocusableChild = getLastFocusable(root, root.lastChild as HTMLElement, true, true);
+    const _firstFocusableChild = getFirstFocusable(root, root.firstChild as HTMLElement, true);
+    const _lastFocusableChild = getLastFocusable(root, root.lastChild as HTMLElement, true);
 
     if (ev.shiftKey && _firstFocusableChild === ev.target) {
       _lastFocusableChild.focus();
@@ -84,7 +84,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> {
   }
 
   private _focusOnFirstChildInZone() {
-    const _firstFocusableChild = getNextElement(this.refs.root, this.refs.root.firstChild as HTMLElement, true, false, false, true, true);
+    const _firstFocusableChild = getNextElement(this.refs.root, this.refs.root.firstChild as HTMLElement, true, false, false, true);
 
     if (_firstFocusableChild) {
       _firstFocusableChild.focus();
