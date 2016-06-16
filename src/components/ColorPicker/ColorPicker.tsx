@@ -48,6 +48,7 @@ export class ColorPicker extends React.Component<IColorPickerProps, any> {
     let { color } = this.state;
 
     return (
+      <div className='ms-ColorPicker'>
         <div className='ms-ColorPicker-panel'>
           <ColorRectangle color={ color } onSVChanged={ this._onSVChanged }/>
           <ColorSlider
@@ -86,6 +87,7 @@ export class ColorPicker extends React.Component<IColorPickerProps, any> {
             </tbody>
           </table>
         </div>
+      </div>
     );
   }
 
