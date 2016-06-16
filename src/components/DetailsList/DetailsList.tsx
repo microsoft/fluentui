@@ -163,7 +163,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       rowElementEventMap,
       selectionMode,
       viewport,
-      getRowAriaLabel
+      getRowAriaLabel,
+      canSelectItem
     } = this.props;
     let {
       adjustedColumns,
@@ -213,6 +214,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           footerProps={ footerProps }
           checkboxVisibility={ checkboxVisibility }
           getRowAriaLabel={ getRowAriaLabel }
+          canSelectItem={ canSelectItem }
           />
         ) : null
     ));

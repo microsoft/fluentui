@@ -31,6 +31,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   viewport?: IViewport;
   checkboxVisibility?: CheckboxVisibility;
   getRowAriaLabel?: (item: any) => string;
+  canSelectItem?: (item: any) => boolean;
 }
 
 export interface IDetailsRowSelectionState {
@@ -147,12 +148,14 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
       selectionMode,
       viewport,
       checkboxVisibility,
-      getRowAriaLabel
+      getRowAriaLabel,
+      canSelectItem
     } = this.props;
     let { selectionState: { isSelected }, columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
     let isDraggable = Boolean(dragDropEvents && dragDropEvents.canDrag && dragDropEvents.canDrag(item));
     let droppingClassName = isDropping ? (this._droppingClassNames ? this._droppingClassNames : DEFAULT_DROPPING_CSS_CLASS) : '';
     let ariaLabel = getRowAriaLabel ? getRowAriaLabel(item) : null;
+    let canSelect = !canSelectItem || canSelectItem(item);
 
     return (
       <div
@@ -164,7 +167,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
           'is-check-visible': checkboxVisibility === CheckboxVisibility.always
         }) }
         data-is-focusable={ true }
-        data-selection-index={ itemIndex }
+        data-selection-index={ canSelect ? itemIndex : -1 }
         data-is-draggable={ isDraggable }
         data-automationid='DetailsRow'
         style={ { minWidth: viewport ? viewport.width : 0 } }
@@ -177,7 +180,10 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
               data-selection-toggle={ true }
               data-automationid='DetailsRowCheck'
               >
-              <Check isChecked={ isSelected } />
+              { canSelect ?
+                <Check isChecked={ isSelected } /> :
+                <div className='ms-DetailsRow-checkSpacer' />
+              }
             </button>
           ) }
 

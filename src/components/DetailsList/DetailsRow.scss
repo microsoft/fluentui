@@ -105,3 +105,9 @@ $unselectedHoverColor: $ms-color-themeLighterAlt;
   overflow: visible;
   white-space: nowrap;
 }
+
+.ms-DetailsRow-checkSpacer {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+}
