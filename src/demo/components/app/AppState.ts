@@ -251,7 +251,7 @@ export const AppState: IAppState = {
           component: NavPage,
           name: 'Nav',
           status: ExampleStatus.started,
-          url: '#/examples/Nav'
+          url: '#/examples/Nav?mytest=1'
         },
         {
           component: SliderPage,

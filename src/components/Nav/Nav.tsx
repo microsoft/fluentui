@@ -51,6 +51,7 @@ export class Nav extends React.Component<INavProps, INavState> {
           href={ link.url || 'javascript:' }
           onClick={ this.props.onLinkClick }
           title={ link.name }
+          target={ link.plusIconLink ? '_blank' : '' }
         >
           { (link.plusIconLink ?
           <i className='ms-Nav-plusIcon ms-Icon ms-Icon--circlePlus'></i>
@@ -120,6 +121,10 @@ function _isLinkSelected(link: INavLink): boolean {
     const target: string = _urlResolver.href;
 
     if (location.protocol + '//' + location.host + location.pathname === target) {
+      return true;
+    }
+
+    if (location.href === target) {
       return true;
     }
 
