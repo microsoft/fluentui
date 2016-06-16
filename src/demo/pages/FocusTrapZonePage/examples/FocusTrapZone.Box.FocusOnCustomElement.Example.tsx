@@ -31,6 +31,8 @@ export default class BoxExample extends React.Component<React.HTMLProps<HTMLDivE
 
   public render() {
     let { isToggled } = this.state;
+    const className: string = 'shouldFocus input';
+
     return (
       <div>
         <Button description='Focuses inside the FocusTrapZone' onClick={ this._onButtonClickHandler.bind(this) }>Go to Trap Zone</Button>
@@ -38,7 +40,7 @@ export default class BoxExample extends React.Component<React.HTMLProps<HTMLDivE
         {(() => {
           if (isToggled) {
             return (
-              <FocusTrapZone>
+              <FocusTrapZone firstFocusableSelector={ className }>
                 { this._internalContents() }
               </FocusTrapZone>
               );
@@ -61,13 +63,15 @@ export default class BoxExample extends React.Component<React.HTMLProps<HTMLDivE
       <div className='ms-FocusTrapZoneBoxExample'>
         <TextField label='Default TextField' placeholder='Input inside Focus Trap Zone' className='' />
         <Link href='' className='' >Hyperlink inside FocusTrapZone</Link><br /><br />
+        <div className='shouldFocus input'>
         <Toggle
           ref='toggle'
           isToggled={ isToggled }
           onChanged={ this._onFocusTrapZoneToggleChanged.bind(this) }
           label='Focus Trap Zone'
           onText='On'
-          offText='Off' />
+          offText='Off'/>
+        </div>
         {(() => {
           if (isToggled) {
             return (
