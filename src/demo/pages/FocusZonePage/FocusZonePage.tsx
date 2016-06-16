@@ -16,7 +16,11 @@ export class FocusZonePage extends React.Component<any, any> {
     return (
       <div className='ms-FocusZonePage'>
         <h1 className='ms-font-xxl'>FocusZone</h1>
-        <div>FocusZones are used to delimit keyboard navigation behavior.</div>
+
+        <p>FocusZones abstract arrow key navigation behaviors. Tabbable elements (buttons, anchors, and elements with data-is-tabbable='true' attributes) are considered when pressing directional arrow keys and focus is moved appropriately. Tabbing to a zone sets focus only to the current "active" element, making it simple to use the tab key to transition from one zone to the next, rather than through every focusable element.</p>
+
+        <p>Using a FocusZone is simple. Just wrap a bunch of content inside of a FocusZone, and arrows and tabbling will be handled for you! See examples below.</p>
+
         <h2 className='ms-font-xl'>Examples</h2>
         <ExampleCard title='Non-uniform photos within bidirectional FocusZone' code={ FocusZonePhotosExampleCode }>
           <FocusZonePhotosExample />

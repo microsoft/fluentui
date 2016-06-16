@@ -265,10 +265,6 @@ export const AppState: IAppState = {
     {
       links: [
         {
-          name: 'Event groups',
-          url: '#examples/eventgroup'
-        },
-        {
           component: FocusTrapZonePage,
           name: 'Focus Trap zones',
           status: ExampleStatus.beta,
