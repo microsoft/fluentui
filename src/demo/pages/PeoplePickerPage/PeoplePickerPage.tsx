@@ -11,11 +11,13 @@ import { PeoplePickerBasicExample } from './examples/PeoplePicker.Basic.Example'
 import { PeoplePickerDisconnectedExample } from './examples/PeoplePicker.Disconnected.Example';
 import { PeoplePickerMemberListExample } from './examples/PeoplePicker.MemberList.Example';
 import { PeoplePickerCompactExample } from './examples/PeoplePicker.Compact.Example';
+import { PeoplePickerEditModeExample } from './/examples/PeoplePicker.EditMode.Example';
 
 const PeoplePickerBasicExampleCode = require('./examples/PeoplePicker.Basic.Example.tsx');
 const PeoplePickerCompactExampleCode = require('./examples/PeoplePicker.Compact.Example.tsx');
 const PeoplePickerDisconnectedExampleCode = require('./examples/PeoplePicker.Disconnected.Example.tsx');
 const PeoplePickerMemberListExampleCode = require('./examples/PeoplePicker.MemberList.Example.tsx');
+const PeoplePickerEditModeExampleCode = require('./examples/PeoplePicker.EditMode.Example.tsx');
 
 export class PeoplePickerPage extends React.Component<any, any> {
   public render() {
@@ -38,6 +40,9 @@ export class PeoplePickerPage extends React.Component<any, any> {
         </ExampleCard>
         <ExampleCard title='PeoplePicker - Member List' code={ PeoplePickerMemberListExampleCode }>
           <PeoplePickerMemberListExample />
+        </ExampleCard>
+        <ExampleCard title='PeoplePicker - Edit mode' code={ PeoplePickerEditModeExampleCode }>
+          <PeoplePickerEditModeExample />
         </ExampleCard>
         <PropertiesTableSet componentName='PeoplePicker' />
       </div>

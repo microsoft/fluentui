@@ -9,6 +9,12 @@ export interface IPeoplePickerProps extends React.Props<PeoplePicker> {
   suggestions?: Array<IPersonaProps>;
 
   /**
+   * A list of items that are already selected when the picker is rendered for the
+   * first time. Used in edit form mode. In new form mode it should be empty.
+   */
+  initialItems?: Array<IPersonaProps>;
+
+  /**
    * The search category name that appears just above the search results.
    * Not displayed in the MemberList variant.
    */
@@ -33,6 +39,12 @@ export interface IPeoplePickerProps extends React.Props<PeoplePicker> {
   isConnected?: boolean;
 
   /**
+   * Whether to show the search more button at the bottom of the picker.
+   * @default true
+   */
+  canSearchMore?: boolean;
+
+  /**
    * Text to display in the section where the user clicks to search for more results.
    */
   primarySearchText?: string;
@@ -48,6 +60,12 @@ export interface IPeoplePickerProps extends React.Props<PeoplePicker> {
   disconnectedText?: string;
 
   /**
+   * The format for the text that should display the number of members added so far in the picker.
+   * Should support singular/plural
+   */
+  addedMemberCountFormatText?: string;
+
+  /**
    * Callback for the onChanged event.
    */
   onSearchFieldChanged?: (newValue: any) => void;
@@ -61,6 +79,16 @@ export interface IPeoplePickerProps extends React.Props<PeoplePicker> {
    * Callback for when the user wants to remove a suggested result
    */
   onRemoveSuggestion?: (index: number, persona: IPersonaProps) => void;
+
+  /**
+   * This gets called when an item is added to the currently selected items
+   */
+  onItemAdded?: (item: IPersonaProps) => void;
+
+  /**
+   * This gets called when an item is removed from the currently selected items
+   */
+  onItemRemoved?: (item: IPersonaProps) => void;
 }
 
 export enum PeoplePickerType {
