@@ -8,7 +8,7 @@ import { getRelativePositions, IPositionInfo } from '../../utilities/positioning
 import './Callout.scss';
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
-const OFF_SCREEN_POSITION = { top: 0, left: -9999 };
+const OFF_SCREEN_POSITION = { top: -9999, left: 0 };
 
 export interface ICalloutState {
   positions?: any;

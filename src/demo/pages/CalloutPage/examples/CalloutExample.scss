@@ -8,7 +8,7 @@
 }
 
 .ms-CalloutExample-buttonArea {
-    position: absolut;
+    position: absolute;
     vertical-align: top;
     display: inline-block;
     min-width: 130px;
@@ -17,8 +17,19 @@
     text-align: center;
 }
 
+.ms-CalloutBasicExample-buttonArea {
+    vertical-align: top;
+    display: inline-block;
+    margin: 0 100px;
+    text-align: center;
+}
+
 .ms-CalloutExample-buttonArea .ms-Button {
     top: 80px;
     text-align: center;
     width: 100%;
+}
+
+.ms-Callout {
+    max-width: 300px;
 }

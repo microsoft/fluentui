@@ -28,7 +28,7 @@ export class CalloutBasicExample extends React.Component<any, ICalloutBaiscExamp
 
     return (
       <div className='ms-CalloutBasicExample'>
-        <div className='ms-CalloutExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
+        <div className='ms-CalloutBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
           <Button onClick={ this._onShowMenuClicked } >{ isCalloutVisible ? 'Hide callout' : 'Show callout' }</Button>
         </div>
         { isCalloutVisible ? (

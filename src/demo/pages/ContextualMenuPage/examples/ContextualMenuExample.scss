@@ -29,18 +29,9 @@
   display: inline-block;
   padding: 3px;
   margin: 2px;
-  @include float(left);
 
   &:hover {
     background-color: #eaeaea;
-  }
-
-  &:nth-of-type(7n-5) {
-    @include margin-left(15px);
-  }
-
-  &:nth-of-type(7n+2) {
-    @include clear(left);
   }
 }
 
@@ -63,4 +54,8 @@
     font-size:0;
     height: 200px;
     width: 100%;
+}
+
+.Charm-List {
+  text-align: center;
 }

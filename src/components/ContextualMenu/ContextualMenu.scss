@@ -19,6 +19,7 @@
   z-index: $ms-zIndex-ContextualMenu;
   line-height: 0;
   box-sizing: border-box;
+  position: relative;
 }
 
 .ms-ContextualMenu-list {
@@ -77,6 +78,7 @@
   padding: 0 18px;
   white-space: nowrap;
   box-sizing: border-box;
+  line-height: 0px;
 
   // Shorten the first and last items to maintain baseline alignment.
   &:first-child,

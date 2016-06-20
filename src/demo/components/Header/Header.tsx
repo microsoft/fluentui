@@ -131,10 +131,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
 
   private _onDismiss() {
     this.setState({
-      contextMenu: {
-        target: null,
-        items: null
-      }
+      contextMenu: null
     });
   }
 }

@@ -60,6 +60,7 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
                 {
                   key: 'charm',
                   name: 'Charm',
+                  className: 'Charm-List',
                   items: [
                     {
                       key: 'none',

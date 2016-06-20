@@ -110,7 +110,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     this._onSubMenuDismiss = this._onSubMenuDismiss.bind(this);
     this._onMouseEnter = this._onMouseEnter.bind(this);
     this._onMouseLeave = this._onMouseLeave.bind(this);
-    this._onWheel = this._onWheel.bind(this);
   }
 
   public dismiss(ev?: any) {
@@ -178,7 +177,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
               ariaLabelledBy={ labelElementId }
               ref={ (focusZone) => this._tryFocus(focusZone) }
               >
-              <ul className='ms-ContextualMenu-list is-open ' onKeyDown={ this._onKeyDown } onWheel={ this._onWheel }>
+              <ul className='ms-ContextualMenu-list is-open ' onKeyDown={ this._onKeyDown }>
                 { items.map((item, index) => (
                   // If the item name is equal to '-', a divider will be generated.
                   item.name === '-' ? (
@@ -290,22 +289,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     }
   }
 
-  private _onWheel(ev: React.WheelEvent) {
-    let targetElement = ev.currentTarget as HTMLElement;
-    let scrollBottom = targetElement.scrollTop + targetElement.clientHeight;
-    let isScrollingDown = ev.deltaY > 0;
-
-     // Prevents the page from scrolling if the scroll bar has reached
-     // the very top or bottom in the contextualmenu
-    if (targetElement.scrollTop === 0 && !isScrollingDown) {
-      ev.stopPropagation();
-      ev.preventDefault();
-    } else if (scrollBottom === targetElement.scrollHeight && isScrollingDown) {
-      ev.stopPropagation();
-      ev.preventDefault();
-    }
-  }
-
   private _onItemClick(item: any, ev: MouseEvent) {
     if (!item.items || !item.items.length) { // This is an item without a menu. Click it.
       if (item.onClick) {
@@ -346,7 +329,8 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         isSubMenu: true,
         id: this.state.subMenuId,
         shouldFocusOnMount: true,
-        directionalHint: DirectionalHint.rightTopEdge
+        directionalHint: DirectionalHint.rightTopEdge,
+        className: item.className
       }
     });
   }
