@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export interface IChoiceGroupProps {
+export interface IChoiceGroupProps extends React.HTMLProps<HTMLElement> {
   /**
    * The options for the choice group.
    */

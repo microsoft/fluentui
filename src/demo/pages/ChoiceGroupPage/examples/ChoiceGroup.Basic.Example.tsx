@@ -45,6 +45,7 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
           ] }
           onChanged={ this._onChanged }
           label='Pick one'
+          required={ true }
         />
         <ChoiceGroup
           label='Pick one image'
