@@ -1,10 +1,10 @@
 @import '../../common/common';
 
-.ms-Image-container {
+.ms-Image {
   overflow: hidden;
 }
 
-.ms-Image {
+.ms-Image-image {
   opacity: 0;
 
   &.is-loaded {
@@ -12,8 +12,8 @@
   }
 }
 
-.ms-Image--center,
-.ms-Image--cover {
+.ms-Image-image--center,
+.ms-Image-image--cover {
   position: relative;
   @include left(50%);
   top: 50%;
@@ -26,25 +26,25 @@
   }
 }
 
-.ms-Image--cover {
-  &.ms-Image--landscape {
+.ms-Image-image--cover {
+  &.ms-Image-image--landscape {
     height: 100%;
     width: auto;
   }
 
-  &.ms-Image--portrait {
+  &.ms-Image-image--portrait {
     width: 100%;
     height: auto;
   }
 }
 
-.ms-Image--none {
+.ms-Image-image--none {
   height: auto;
   width: auto;
 }
 
 /** This is identical to the default behavior. */
-.ms-Image--scale {
+.ms-Image-image--scale {
   height: 100%;
   width: 100%;
 }

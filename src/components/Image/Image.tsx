@@ -14,15 +14,15 @@ export enum CoverStyle {
 }
 
 export const CoverStyleMap = {
-  [ CoverStyle.landscape ]: 'ms-Image--landscape',
-  [ CoverStyle.portrait ]: 'ms-Image--portrait'
+  [ CoverStyle.landscape ]: 'ms-Image-image--landscape',
+  [ CoverStyle.portrait ]: 'ms-Image-image--portrait'
 };
 
 export const ImageFitMap = {
-  [ ImageFit.center ]: 'ms-Image--center',
-  [ ImageFit.cover ]: 'ms-Image--cover',
-  [ ImageFit.none ]: 'ms-Image--none',
-  [ ImageFit.scale ]: 'ms-Image--scale'
+  [ ImageFit.center ]: 'ms-Image-image--center',
+  [ ImageFit.cover ]: 'ms-Image-image--cover',
+  [ ImageFit.none ]: 'ms-Image-image--none',
+  [ ImageFit.scale ]: 'ms-Image-image--scale'
 };
 
 export enum ImageLoadState {
@@ -78,8 +78,8 @@ export class Image extends React.Component<IImageProps, IImageState> {
 
     // If image dimensions aren't specified, the natural size of the image is used.
     return (
-      <div className={ css('ms-Image-container', className) } style={ { width: width, height: height } }>
-        <img className={ css('ms-Image',
+      <div className={ css('ms-Image', className) } style={ { width: width, height: height } }>
+        <img className={ css('ms-Image-image',
           (coverStyle !== undefined) && CoverStyleMap[coverStyle],
           (imageFit !== undefined) && ImageFitMap[imageFit], {
             'is-fadeIn': shouldFadeIn,
@@ -87,7 +87,7 @@ export class Image extends React.Component<IImageProps, IImageState> {
             'is-loaded': loaded,
             'ms-u-fadeIn400': loaded && shouldFadeIn,
             'is-error': loadState === ImageLoadState.error,
-            'ms-Image--scale': (imageFit === undefined && !!width && !!height),
+            'ms-Image-image--scale': (imageFit === undefined && !!width && !!height),
           }) } ref='image' src={ srcToDisplay } alt={ alt } />
       </div>
     );
