@@ -14,11 +14,23 @@ import { DocumentCardTitle } from '../../../../components/DocumentCard/DocumentC
 export class DocumentCardCompleteExample extends React.Component<any, any> {
   public render() {
     let previewProps: IDocumentCardPreviewProps = {
-      previewImageSrc: 'dist/document-preview.png',
-      imageFit: ImageFit.none,
+      previewImages: [
+        {
+          previewImageSrc: 'dist/document-preview.png',
+          iconSrc: 'dist/icon-ppt.png',
+        },
+        {
+          previewImageSrc: 'dist/document-preview2.png',
+          iconSrc: 'dist/icon-ppt.png',
+        },
+        {
+          previewImageSrc: 'dist/document-preview3.png',
+          iconSrc: 'dist/icon-ppt.png',
+        }
+      ],
+      imageFit: ImageFit.cover,
       width: 318,
       height: 196,
-      iconSrc: 'dist/icon-ppt.png',
       accentColor: '#ce4b1f'
     };
 
@@ -28,7 +40,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
         >
           <DocumentCardPreview { ...previewProps }/>
           <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com'/>
-          <DocumentCardTitle title='Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx'
+          <DocumentCardTitle title='Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx +2'
           shouldTruncate={ true }/>
           <DocumentCardActivity
             activity='Created Feb 23, 2016'

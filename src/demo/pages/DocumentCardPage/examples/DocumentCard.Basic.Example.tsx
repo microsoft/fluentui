@@ -11,11 +11,15 @@ import {
 export class DocumentCardBasicExample extends React.Component<any, any> {
   public render() {
     let previewProps: IDocumentCardPreviewProps = {
-      previewImageSrc: 'dist/document-preview.png',
-      imageFit: ImageFit.none,
+      previewImages: [
+        {
+          previewImageSrc: 'dist/document-preview.png',
+          iconSrc: 'dist/icon-ppt.png',
+        }
+      ],
+      imageFit: ImageFit.cover,
       width: 318,
       height: 196,
-      iconSrc: 'dist/icon-ppt.png',
       accentColor: '#ce4b1f'
     };
 

@@ -5,12 +5,6 @@
   position: relative;
 }
 
-.ms-DocumentCardPreview-image {
-  display: block;
-  height: auto;
-  width: 100%;
-}
-
 .ms-DocumentCardPreview-icon {
   @include left(10px);
   bottom: 10px;

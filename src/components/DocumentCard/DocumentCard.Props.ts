@@ -28,9 +28,9 @@ export interface IDocumentCardProps extends React.Props<DocumentCard> {
 
 export interface IDocumentCardPreviewProps extends React.Props<DocumentCardPreview> {
   /**
-   * Path to the preview image.
+   * One or more preview images to display.
    */
-  previewImageSrc: string;
+  previewImages: IDocumentCardPreviewImage[];
 
    /**
    * If provided, forces the preview image to be this width.
@@ -49,24 +49,31 @@ export interface IDocumentCardPreviewProps extends React.Props<DocumentCardPrevi
   imageFit?: ImageFit;
 
   /**
-   * Path to the icon associated with this document type.
-   */
-  iconSrc?: string;
-
-  /**
    * Hex color value of the line below the preview, which should correspond to the document type.
    */
   accentColor?: string;
+}
+
+export interface IDocumentCardPreviewImage {
+  /**
+   * Path to the preview image.
+   */
+  previewImageSrc: string;
 
   /**
-   * Path to the image to display if the preview image breaks.
+   * Path to the image to display if the preview image won't load.
    */
   errorImageSrc?: string;
+
+  /**
+   * Path to the icon associated with this document type.
+   */
+  iconSrc?: string;
 }
 
 export interface IDocumentCardTitleProps extends React.Props<DocumentCardTitle> {
   /**
-   * Title text.
+   * Title text. If the card represents more than one document, this should be the title of one document and a "+X" string. For example, a collection of four documents would have a string of "Document.docx +3".
    */
   title: string;
 
