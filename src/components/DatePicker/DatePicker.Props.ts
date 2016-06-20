@@ -13,6 +13,23 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   label?: string;
 
   /**
+   * Whether the DatePicker is a required field or not
+   * @defaultvalue false
+   */
+  isRequired?: boolean;
+
+  /**
+   * Aria Label for TextField of the DatePicker for screen reader users.
+   */
+  ariaLabel?: string;
+
+  /**
+   * Whether the DatePicker allows input a date string directly or not
+   * @defaultvalue false
+   */
+  allowTextInput?: boolean;
+
+  /**
    * Placeholder text for the DatePicker
    */
   placeholder?: string;
@@ -23,10 +40,16 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   value?: Date;
 
   /**
-   * Method to format the chosen date to a string to display in the DatePicker
+   * Optional method to format the chosen date to a string to display in the DatePicker
    * @defaultvalue date.toString()
    */
-  format?: (date: Date) => string;
+  formatDate?: (date: Date) => string;
+
+  /**
+   * Optional method to parse the text input value to date, it is only useful when allowTextInput is set to true
+   * @defaultvalue new Date(Date.parse(dateStr))
+   */
+  parseDateFromString?: (dateStr: string) => Date;
 
   /**
    * The first day of the week for your locale.
@@ -79,4 +102,14 @@ export interface IDatePickerStrings {
    * String to render for button to direct the user to today's date.
    */
   goToToday: string;
+
+  /**
+   * Error message to render for TextField if isRequired validation fails.
+   */
+  isRequiredErrorMessage?: string;
+
+  /**
+   * Error message to render for TextField if input date string parsing fails.
+   */
+  invalidInputErrorMessage?: string;
 }

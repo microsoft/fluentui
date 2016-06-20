@@ -113,7 +113,7 @@ export class DatePickerBasicExample extends React.Component<any, IDatePickerBasi
           ] }
           selectedKey={ DayOfWeek[firstDayOfWeek] }
           onChanged={ this._onDropdownChanged.bind(this) }
-           />
+          />
       </div>
     );
   }

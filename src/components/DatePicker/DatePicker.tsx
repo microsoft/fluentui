@@ -7,6 +7,7 @@ import { DatePickerDay } from './DatePickerDay';
 import { DatePickerMonth } from './DatePickerMonth';
 import { TextField } from '../../TextField';
 import { KeyCodes } from '../../utilities/KeyCodes';
+import { css } from '../../utilities/css';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import './DatePicker.scss';
 
@@ -16,18 +17,29 @@ export interface IDatePickerState {
   selectedDate?: Date;
   formattedDate?: string;
   isDatePickerShown?: boolean;
+  errorMessage?: string;
 }
 
 export class DatePicker extends React.Component<IDatePickerProps, IDatePickerState> {
   public static defaultProps: IDatePickerProps = {
-    format: (date: Date) => {
+    allowTextInput: false,
+    formatDate: (date: Date) => {
       if (date) {
         return date.toDateString();
       }
 
       return null;
     },
+    parseDateFromString: (dateStr: string) => {
+      const date = Date.parse(dateStr);
+      if (date) {
+        return new Date(date);
+      }
+
+      return null;
+    },
     firstDayOfWeek: DayOfWeek.Sunday,
+    isRequired: false,
     strings: null
   };
 
@@ -46,12 +58,13 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
   constructor(props: IDatePickerProps) {
     super();
 
-    let { format, value } = props;
+    let { formatDate, value } = props;
 
     this.state = {
-      selectedDate: new Date(),
-      formattedDate: format && value ? format(value) : null,
+      selectedDate: value || new Date(),
+      formattedDate: formatDate && value ? formatDate(value) : null,
       isDatePickerShown: false,
+      errorMessage: ''
     };
 
     this._events = new EventGroup(this);
@@ -61,15 +74,21 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
     this._onNavigateDate = this._onNavigateDate.bind(this);
     this._onGotoToday = this._onGotoToday.bind(this);
     this._onGotoTodayKeyDown = this._onGotoTodayKeyDown.bind(this);
+    this._onDatePickerPopupKeyDown = this._onDatePickerPopupKeyDown.bind(this);
     this._onTextFieldFocus = this._onTextFieldFocus.bind(this);
+    this._onTextFieldBlur = this._onTextFieldBlur.bind(this);
     this._onTextFieldKeyDown = this._onTextFieldKeyDown.bind(this);
     this._onTextFieldClick = this._onTextFieldClick.bind(this);
+    this._onTextFieldChanged = this._onTextFieldChanged.bind(this);
+    this._handleEscKey = this._handleEscKey.bind(this);
+    this._validateTextInput = this._validateTextInput.bind(this);
   }
 
   public componentDidMount() {
     this._events.on(window, 'scroll', this._dismissDatePickerPopup);
     this._events.on(window, 'resize', this._dismissDatePickerPopup);
     this._events.on(window, 'click', this._onClickCapture, true);
+    this._events.on(window, 'focus', this._onClickCapture, true);
     this._events.on(window, 'touchstart', this._onClickCapture, true);
   }
 
@@ -86,29 +105,36 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
 
   public render() {
     let rootClass = 'ms-DatePicker';
-    let { firstDayOfWeek, strings } = this.props;
-    let { isDatePickerShown, formattedDate, selectedDate, navigatedDate } = this.state;
+    let { firstDayOfWeek, strings, label, isRequired, ariaLabel, placeholder, allowTextInput } = this.props;
+    let { isDatePickerShown, formattedDate, selectedDate, navigatedDate, errorMessage } = this.state;
 
     return (
       <div className={ rootClass } ref='root'>
         <div ref='textFieldContainer'>
           <TextField
+            ariaLabel={ ariaLabel }
+            aria-haspopup='true'
+            required={ isRequired }
             onKeyDown={ this._onTextFieldKeyDown }
             onFocus={ this._onTextFieldFocus }
+            onBlur={ this._onTextFieldBlur }
             onClick={ this._onTextFieldClick }
-            label={this.props.label}
-            placeholder={this.props.placeholder}
-            iconClass='ms-DatePicker-event ms-Icon ms-Icon--event'
-            readOnly={ true }
+            onChanged={ this._onTextFieldChanged }
+            errorMessage={ errorMessage }
+            label={ label }
+            placeholder={ placeholder }
+            iconClass={ css(
+              'ms-Icon ms-Icon--event',
+              label ? 'ms-DatePicker-event--with-label' : 'ms-DatePicker-event--without-label'
+              ) }
+            readOnly={ !allowTextInput }
             value={ formattedDate }
             ref='textField' />
         </div>
 
           { isDatePickerShown && (
-          <div
-            className='ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused'
-            >
-            <div className='ms-DatePicker-holder'>
+          <div className='ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused'>
+            <div className='ms-DatePicker-holder' onKeyDown={ this._onDatePickerPopupKeyDown }>
               <div className='ms-DatePicker-frame'>
                 <div className='ms-DatePicker-wrap'>
                   <DatePickerDay
@@ -156,12 +182,12 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
   }
 
   private _onSelectDate(date: Date) {
-    let { format, onSelectDate } = this.props;
+    let { formatDate, onSelectDate } = this.props;
 
     this.setState({
       selectedDate: date,
       isDatePickerShown: false,
-      formattedDate: format && date ? format(date) : null,
+      formattedDate: formatDate && date ? formatDate(date) : null,
     });
 
     this._restoreFocusToTextField();
@@ -178,26 +204,82 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
 
   private _onGotoTodayKeyDown(ev: React.KeyboardEvent) {
     if (ev.which === KeyCodes.enter) {
+      ev.preventDefault();
       this._onGotoToday();
     }
   };
 
-  private _onTextFieldFocus(evt: React.FocusEvent) {
-    if (!this._preventFocusOpeningPicker) {
-      this._showDatePickerPopup();
-    }
+  private _onTextFieldFocus(ev: React.FocusEvent) {
+    if (!this.props.allowTextInput) {
+      if (!this._preventFocusOpeningPicker) {
+        this._showDatePickerPopup();
+      }
 
-    this._preventFocusOpeningPicker = false;
-  };
-
-  private _onTextFieldKeyDown(evt: React.KeyboardEvent) {
-    if (evt.which === KeyCodes.enter) {
-      this._showDatePickerPopup();
-    } else if (evt.which === KeyCodes.escape) {
-      this._restoreFocusToTextField();
-      this._dismissDatePickerPopup();
+      this._preventFocusOpeningPicker = false;
     }
   };
+
+  private _onTextFieldBlur(ev: React.FocusEvent) {
+    this._validateTextInput();
+  };
+
+  private _onTextFieldChanged(newValue: string) {
+    if (this.props.allowTextInput) {
+      if (this.state.isDatePickerShown) {
+        this._dismissDatePickerPopup();
+      }
+
+      this.setState({
+        errorMessage: '',
+        formattedDate: newValue
+      });
+    }
+  }
+
+  private _onTextFieldKeyDown(ev: React.KeyboardEvent) {
+    switch (ev.which) {
+      case KeyCodes.enter:
+        ev.preventDefault();
+        ev.stopPropagation();
+        if (!this.state.isDatePickerShown) {
+          this._showDatePickerPopup();
+        } else {
+          // When DatePicker allows input date string directly,
+          // it is expected to hit another enter to close the popup
+          if (this.props.allowTextInput) {
+            this._restoreFocusToTextField();
+            this._dismissDatePickerPopup();
+          }
+        }
+        break;
+
+      case KeyCodes.escape:
+        this._handleEscKey(ev);
+        break;
+
+      default:
+        break;
+    }
+  };
+
+  private _onDatePickerPopupKeyDown(ev: React.KeyboardEvent) {
+    switch (ev.which) {
+      case KeyCodes.enter:
+        ev.preventDefault();
+        break;
+
+      case KeyCodes.backspace:
+        ev.preventDefault();
+        break;
+
+      case KeyCodes.escape:
+        this._handleEscKey(ev);
+        break;
+
+      default:
+        break;
+    }
+  }
 
   private _onClickCapture(ev: React.MouseEvent) {
     if (!this.refs.root.contains(ev.target as HTMLElement)) {
@@ -208,6 +290,12 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
   private _onTextFieldClick(ev: React.MouseEvent) {
     if (!this.state.isDatePickerShown) {
       this._showDatePickerPopup();
+    } else {
+      if (this.props.allowTextInput) {
+        this.setState({
+          isDatePickerShown: false
+        });
+      }
     }
   }
 
@@ -216,7 +304,8 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
       this._focusOnSelectedDateOnUpdate = true;
       this.setState({
         isDatePickerShown: true,
-        navigatedDate: this.state.selectedDate
+        navigatedDate: this.state.selectedDate,
+        errorMessage: ''
       });
     }
   }
@@ -226,6 +315,63 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
       this.setState({
         isDatePickerShown: false
       });
+
+      this._validateTextInput();
+    }
+  }
+
+  private _handleEscKey(ev: React.KeyboardEvent) {
+    this._restoreFocusToTextField();
+    this._dismissDatePickerPopup();
+  }
+
+  private _validateTextInput() {
+    let { isRequired, allowTextInput, strings, formatDate, parseDateFromString, onSelectDate } = this.props;
+    const inputValue: string = this.state.formattedDate;
+
+    // Do validation only if DatePicker's popup is dismissed
+    if (this.state.isDatePickerShown) {
+      return;
+    }
+
+    // Check when DatePicker is a required field but has NO input value
+    if (isRequired && !inputValue) {
+      this.setState({
+        // Since fabic react doesn't have loc support yet
+        // use the symbol '*' to represent error message
+        errorMessage: strings.isRequiredErrorMessage || '*'
+      });
+      return;
+    }
+
+    let date = null;
+    if (allowTextInput) {
+      if (inputValue) {
+        date = parseDateFromString(inputValue);
+        if (!date) {
+          this.setState({
+            errorMessage: strings.invalidInputErrorMessage || '*'
+          });
+        } else {
+          this.setState({
+            selectedDate: date,
+            formattedDate: formatDate && date ? formatDate(date) : null,
+            errorMessage: ''
+          });
+        }
+      } else {
+        // No input date string shouldn't be an error if field is not required
+        this.setState({
+          errorMessage: ''
+        });
+      }
+    }
+
+    // Execute onSelectDate callback
+    if (onSelectDate) {
+      // If no input date string or input date string is invalid
+      // date variable will be null, callback should expect null value for this case
+      onSelectDate(date);
     }
   }
 }
