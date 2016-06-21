@@ -99,6 +99,11 @@ export interface IDocumentCardLocationProps extends React.Props<DocumentCardLoca
    * Function to call when the location is clicked.
    */
   onClick?: (ev?: any) => void;
+
+  /**
+   * Aria label for the link to the document location.
+   */
+  ariaLabel?: string;
 }
 
 export interface IDocumentCardActivityProps extends React.Props<DocumentCardActivity> {

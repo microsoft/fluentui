@@ -39,7 +39,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           onClick={ function() { console.log('You clicked the card.'); } }
         >
           <DocumentCardPreview { ...previewProps }/>
-          <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com'/>
+          <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com' ariaLabel='Location, Marketing Documents'/>
           <DocumentCardTitle title='Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx +2'
           shouldTruncate={ true }/>
           <DocumentCardActivity

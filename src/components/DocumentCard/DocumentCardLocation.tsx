@@ -4,7 +4,7 @@ import './DocumentCardLocation.scss';
 
 export class DocumentCardLocation extends React.Component<IDocumentCardLocationProps, any> {
   public render() {
-    let { location, locationHref, onClick } = this.props;
+    let { location, locationHref, onClick, ariaLabel } = this.props;
 
     // If no onClick Function was provided and we do have an locationHref, create a function from it.
     if (!onClick && locationHref) {
@@ -16,7 +16,7 @@ export class DocumentCardLocation extends React.Component<IDocumentCardLocationP
     }
 
     return (
-      <a className='ms-DocumentCardLocation' href={ locationHref } onClick={ onClick }>{ location }</a>
+      <a className='ms-DocumentCardLocation' href={ locationHref } onClick={ onClick } aria-label={ ariaLabel }>{ location }</a>
     );
   }
 }
