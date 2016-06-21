@@ -120,7 +120,7 @@ export class Selection implements ISelection {
     return (
       (this.count > 0) &&
       (this._isAllSelected && this._exemptedCount === 0) ||
-      (!this._isAllSelected && this._exemptedCount === this._items.length));
+      (!this._isAllSelected && this._exemptedCount === this._items.length && this._items.length > 0));
   }
 
   public isKeySelected(key: string): boolean {
