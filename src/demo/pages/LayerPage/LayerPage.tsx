@@ -17,8 +17,12 @@ export class LayerPage extends React.Component<any, any> {
       <div>
         <h1 className='ms-font-xxl'>Layer</h1>
         <div>
-          Layers are used to stack components in a presentation
-          order appropriate for popups, panels, dialogs, and other modal behaviors.
+          <p>{
+            `Layers are used to render content outside of a DOM tree, at the end of the document. This allows content to escape traditional boundaries caused by "overflow: hidden" css rules and keeps it on the top without using z-index rules. This is useful for example in ContextualMenu and Tooltip scenarios, where the content should always overlay everything else.`
+          }</p>
+          <p>{
+            `There are some special considerations. Due to the nature of rendering content elsewhere asynchronously, React refs within content will not be resolvable synchronously at the time the Layer is mounted. Therefore, to use refs correctly, use functional refs ( ref={ (el) => { this._root = el; } ) rather than string refs ( ref='root' ). Additionally measuring the physical Layer element will not include any of the children, since it won't render it. Events that propgate from within the content will not go through the Layer element as well.`
+          }</p>
         </div>
         <h2 className='ms-font-xl'>Examples</h2>
         <ExampleCard title='Basic' code={ LayerBasicExampleCode }>

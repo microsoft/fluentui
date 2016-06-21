@@ -17,7 +17,7 @@ export class TogglePage extends React.Component<any, any> {
         <h1 className='ms-font-xxl'>Toggle</h1>
         <div>
           <Link target='_blank' href='http://dev.office.com/fabric/components/Toggle'>Toggles</Link>
-          <span> provide a ui indicator for progress.</span>
+          <span> allow the user to turn an option on/off.</span>
         </div>
 
         <h2 className='ms-font-xl'>Examples</h2>

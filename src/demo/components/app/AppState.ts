@@ -244,7 +244,7 @@ export const AppState: IAppState = {
         {
           component: LayerPage,
           name: 'Layer',
-          status: ExampleStatus.started,
+          status: ExampleStatus.beta,
           url: '#/examples/layer'
         },
         {
