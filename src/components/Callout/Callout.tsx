@@ -67,15 +67,12 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
             ref={ (callout: HTMLDivElement) => this._calloutElement = callout }
             >
             { isBeakVisible && targetElement ? (<div className={ beakStyle }  style={ ((positions) ? positions.beak : BEAK_ORIGIN_POSITION) } />) : (null) }
-            <div className= { 'ms-Callout-main' + ((slideDirectionalClassName) ? (` ms-u-${slideDirectionalClassName}`) : '') }>
+            <div className='ms-Callout-main'>
                 { children }
             </div>
           </div>
         </div>
         );
-
-    // Note: The slideDirectionalClassName being on 2 divs is intentional. It fixes a small browser bug in chrome where
-    // the sub menus would not be rerendered when they were removed from the dom.
     return this.props.doNotLayer ? content : (
       <Layer onLayerMounted={ this._updatePosition }>
         {content}

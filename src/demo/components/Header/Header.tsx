@@ -82,7 +82,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
           items={ contextMenu.items }
           isBeakVisible={ true }
           targetElement={ contextMenu.target }
-          directionalHint={ DirectionalHint.bottomRightEdge }
+          directionalHint={ DirectionalHint.bottomAutoEdge }
           gapSpace={ 5 }
           onDismiss={ this._onDismiss } />
         ) : (null) }

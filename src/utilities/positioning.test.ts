@@ -23,7 +23,7 @@ function stringifyResults(expected: any, actual: any) {
 function positionCalloutTest(testValues: ITestValues, alignment: DirectionalHint, validate: ITestValidation) {
   let {callout, target, bounds, beakWidth} = testValues;
   let gap: number = positioningFunctions._calculateActualBeakWidthInPixels(beakWidth) / 2;
-  let result: positioningFunctions.ICallout = positioningFunctions._positionCalloutWithinBounds(callout, target, bounds, alignment, gap);
+  let result: positioningFunctions.ICallout = positioningFunctions._positionCalloutWithinBounds(callout, target, bounds, positioningFunctions._getPositionData(alignment, target, bounds), gap);
 
   let beak: Rectangle = positioningFunctions._positionBeak(beakWidth, result, target, 0);
 
@@ -34,7 +34,7 @@ function positionCalloutTest(testValues: ITestValues, alignment: DirectionalHint
 
 function validateNoBeakTest(testValues: ITestValues, alignment: DirectionalHint, validate: ITestValidation) {
   let {callout, target, bounds, beakWidth} = testValues;
-  let result: positioningFunctions.ICallout = positioningFunctions._positionCalloutWithinBounds(callout, target, bounds, alignment, beakWidth);
+  let result: positioningFunctions.ICallout = positioningFunctions._positionCalloutWithinBounds(callout, target, bounds, positioningFunctions._getPositionData(alignment, target, bounds), beakWidth);
 
   assert(areRectanglesEqual(result.calloutRectangle, validate.callout), 'No Beak: Callout not alligned with target ' + stringifyResults(validate.callout, result.calloutRectangle));
 }
