@@ -5,7 +5,7 @@ import './Label.scss';
 
 export class Label extends React.Component<ILabelProps, any> {
   public render() {
-    let {isDisabled, isRequired, children, htmlFor} = this.props;
+    let {isDisabled, isRequired, children, htmlFor, ariaLabel} = this.props;
 
     return (
       <label
@@ -14,8 +14,10 @@ export class Label extends React.Component<ILabelProps, any> {
         className={ css('ms-Label', {
           'is-disabled': isDisabled,
           'is-required': isRequired
-        }) }>
-        {children}
+        }) }
+        aria-label={ ariaLabel }
+        tabIndex = { 0 }>
+        { children }
       </label>
     );
   }

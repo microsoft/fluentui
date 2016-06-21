@@ -19,4 +19,9 @@ export interface ILabelProps extends React.HTMLProps<HTMLLabelElement> {
    * @defaultvalue false
    */
   isRequired?: boolean;
+
+  /**
+   * Aria Label for label, if any.
+   */
+  ariaLabel?: string;
 }
