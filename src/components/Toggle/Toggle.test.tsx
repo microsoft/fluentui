@@ -18,7 +18,7 @@ describe('Toggle', () => {
       />
     );
     let renderedDOM = ReactDOM.findDOMNode(component);
-    let labelElement = renderedDOM.querySelector('.ms-Toggle-description');
+    let labelElement = renderedDOM.querySelector('.ms-Toggle-label');
 
     expect(labelElement.textContent).to.equal('Label');
   });
@@ -35,12 +35,26 @@ describe('Toggle', () => {
       />
     );
     let renderedDOM = ReactDOM.findDOMNode(component);
-    let input = renderedDOM.querySelector('.ms-Toggle-input');
+    let button = renderedDOM.querySelector('.ms-Toggle-button');
 
-    // Can't simulate the click on the label to trigger the change event of the input.
-    // https://github.com/facebook/react/issues/5804
-    ReactTestUtils.Simulate.change(input, { target: { checked: true }} as React.SyntheticEventData);
+    ReactTestUtils.Simulate.click(button);
     expect(isToggledValue).to.equal(true);
+    expect(component.state.isChecked).to.equal(true);
+  });
+
+  it(`doesn't update the state if the user provides checked`, () => {
+    let component = ReactTestUtils.renderIntoDocument(
+      <Toggle
+        label='Label'
+        checked={ false }
+      />
+    );
+    let renderedDOM = ReactDOM.findDOMNode(component);
+    let button = renderedDOM.querySelector('.ms-Toggle-button');
+
+    ReactTestUtils.Simulate.click(button);
+
+    expect(component.state.isChecked).to.equal(false);
   });
 
 });

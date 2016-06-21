@@ -1,41 +1,34 @@
+/* tslint:disable:no-unused-variable */
 import * as React from 'react';
+/* tslint:enable:no-unused-variable */
 
 import {
   Toggle
 } from '../../../../index';
 
-export interface IToggleBasicExampleState {
-  isToggled: boolean;
-}
-
-export class ToggleBasicExample extends React.Component<any, IToggleBasicExampleState> {
-  constructor() {
-    super();
-
-    this._onToggleChanged = this._onToggleChanged.bind(this);
-
-    this.state = {
-      isToggled: true
-    };
-  }
-
-  public render() {
-    let { isToggled } = this.state;
-
-    return (
-      <Toggle
-        isToggled={ isToggled }
-        onChanged={ this._onToggleChanged }
-        label='Indoor lighting'
-        onText='On'
-        offText='Off' />
-    );
-  }
-
-  private _onToggleChanged(isToggled: boolean) {
-    this.setState({
-      isToggled: isToggled
-    });
-  }
-
-}
+export const ToggleBasicExample = () => (
+  <div>
+    <Toggle
+      defaultChecked={ true }
+      label='Enabled and checked'
+      onText='On'
+      offText='Off' />
+    <Toggle
+      defaultChecked={ false }
+      label='Enabled and unchecked'
+      onText='On'
+      offText='Off' />
+    <Toggle
+      defaultChecked={ true }
+      disabled={ true }
+      label='Disabled and checked'
+      onText='On'
+      offText='Off' />
+    <Toggle
+      defaultChecked={ false }
+      disabled={ true }
+      label='Disabled and unchecked'
+      onText='On'
+      offText='Off' />
+  </div>
+);

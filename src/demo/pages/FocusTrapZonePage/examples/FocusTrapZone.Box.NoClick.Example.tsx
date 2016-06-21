@@ -64,7 +64,7 @@ export default class BoxNoClickExample extends React.Component<React.HTMLProps<H
         <Link href='' className='' >Hyperlink inside FocusTrapZone</Link><br /><br />
         <Toggle
           ref='toggle'
-          isToggled={ isToggled }
+          checked={ isToggled }
           onChanged={ this._onFocusTrapZoneToggleChanged.bind(this) }
           label='Focus Trap Zone'
           onText='On'

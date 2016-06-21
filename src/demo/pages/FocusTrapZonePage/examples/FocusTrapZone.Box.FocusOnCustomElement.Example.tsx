@@ -13,7 +13,7 @@ import {
 } from '../../../../index';
 
 export interface IBoxExampleExampleState {
-  isToggled: boolean;
+  isChecked: boolean;
 }
 
 export default class BoxExample extends React.Component<React.HTMLProps<HTMLDivElement>, IBoxExampleExampleState> {
@@ -25,12 +25,12 @@ export default class BoxExample extends React.Component<React.HTMLProps<HTMLDivE
     super(props);
 
     this.state = {
-      isToggled: false,
+      isChecked: false,
     };
   }
 
   public render() {
-    let { isToggled } = this.state;
+    let { isChecked } = this.state;
     const className: string = 'shouldFocus input';
 
     return (
@@ -38,7 +38,7 @@ export default class BoxExample extends React.Component<React.HTMLProps<HTMLDivE
         <Button description='Focuses inside the FocusTrapZone' onClick={ this._onButtonClickHandler.bind(this) }>Go to Trap Zone</Button>
 
         {(() => {
-          if (isToggled) {
+          if (isChecked) {
             return (
               <FocusTrapZone firstFocusableSelector={ className }>
                 { this._internalContents() }
@@ -57,7 +57,7 @@ export default class BoxExample extends React.Component<React.HTMLProps<HTMLDivE
   }
 
   private _internalContents() {
-    let { isToggled } = this.state;
+    let { isChecked } = this.state;
 
     return (
       <div className='ms-FocusTrapZoneBoxExample'>
@@ -66,14 +66,14 @@ export default class BoxExample extends React.Component<React.HTMLProps<HTMLDivE
         <div className='shouldFocus input'>
         <Toggle
           ref='toggle'
-          isToggled={ isToggled }
+          checked={ isChecked }
           onChanged={ this._onFocusTrapZoneToggleChanged.bind(this) }
           label='Focus Trap Zone'
           onText='On'
           offText='Off'/>
         </div>
         {(() => {
-          if (isToggled) {
+          if (isChecked) {
             return (
               <Button description='Exit Focus Trap Zone' onClick={ this._onExitButtonClickHandler.bind(this) }>Exit Focus Trap Zone</Button>
             );
@@ -85,19 +85,19 @@ export default class BoxExample extends React.Component<React.HTMLProps<HTMLDivE
 
   private _onButtonClickHandler() {
     this.setState({
-      isToggled: true
+      isChecked: true
     });
   }
 
   private _onExitButtonClickHandler() {
     this.setState({
-      isToggled: false
+      isChecked: false
     });
   }
 
-  private _onFocusTrapZoneToggleChanged(isToggled: boolean) {
+  private _onFocusTrapZoneToggleChanged(isChecked: boolean) {
     this.setState({
-      isToggled: isToggled
+      isChecked: isChecked
     }, () => {
       let toggle = ReactDOM.findDOMNode(this.refs.toggle) as HTMLElement;
 

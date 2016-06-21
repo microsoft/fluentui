@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { IToggleProps } from './Toggle.Props';
+import { css } from '../../utilities/css';
+import { Label } from '../../Label';
 import './Toggle.scss';
 
 export interface IToggleState {
-  isToggled: boolean;
+  isChecked: boolean;
 }
 
 let _instance: number = 0;
@@ -12,7 +14,6 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
 
   public static initialProps = {
     label: '',
-    isToggled: false,
     onText: 'On',
     offText: 'Off'
   };
@@ -23,57 +24,71 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
     super();
 
     this.state = {
-      isToggled: props.isToggled
+      isChecked: !!(props.checked || props.defaultChecked)
     };
 
     this._id = `Toggle-${ _instance++ }`;
 
-    this._handleInputChange = this._handleInputChange.bind(this);
+    this._onClick = this._onClick.bind(this);
   }
 
   public componentWillReceiveProps(newProps: IToggleProps) {
-    if (newProps.isToggled !== this.props.isToggled) {
+    if (newProps.checked !== undefined) {
       this.setState({
-        isToggled: newProps.isToggled
+        isChecked: newProps.checked
       });
     }
   }
 
   public render() {
-    let { label, onText, offText } = this.props;
-    let { isToggled } = this.state;
+    let { label, onText, offText, className, disabled } = this.props;
+    let { isChecked } = this.state;
+    let stateText = isChecked ? onText : offText;
 
     return (
-      <div className='ms-Toggle'>
-        <label className='ms-Toggle-description'>{ label }</label>
-        <input
-          id={ this._id }
-          name={ this._id }
-          type='checkbox'
-          className='ms-Toggle-input'
-          checked={ isToggled }
-          aria-pressed={ isToggled }
-          onChange={ this._handleInputChange }
-          aria-label={ label }
-        />
-        <label className='ms-Toggle-field' title={ label } htmlFor={ this._id }>
-          <span className='ms-Label ms-Label--off'>{ offText }</span>
-          <span className='ms-Label ms-Label--on'>{ onText }</span>
-        </label>
+      <div className={
+        css('ms-Toggle', {
+          'is-checked': isChecked,
+          'is-enabled': !disabled,
+          'is-disabled': disabled
+        })
+      }>
+        <Label className='ms-Toggle-label' htmlFor={ this._id }>{ label }</Label>
+
+        <div className='ms-Toggle-slider'>
+          <button
+            id={ this._id }
+            name={ this._id }
+            className={ css('ms-Toggle-button', className) }
+            disabled={ disabled }
+            role='button'
+            aria-pressed={ isChecked }
+            onClick={ this._onClick }
+          />
+          <div className='ms-Toggle-background'>
+            <div className='ms-Toggle-focus' />
+            <div className='ms-Toggle-thumb' />
+          </div>
+          <Label className='ms-Toggle-stateText'>{ stateText }</Label>
+        </div>
+
       </div>
     );
   }
 
-  private _handleInputChange(evt: React.FormEvent) {
-    let { onChanged } = this.props;
-    const isToggled = (evt.target as HTMLInputElement).checked;
+  private _onClick() {
+    let { checked, onChanged } = this.props;
+    let { isChecked } = this.state;
 
-    this.setState({
-      isToggled: isToggled
-    });
+    // Only update the state if the user hasn't provided it.
+    if (checked === undefined) {
+      this.setState({
+        isChecked: !isChecked
+      });
+    }
 
     if (onChanged) {
-      onChanged(isToggled);
+      onChanged(!isChecked);
     }
   }
 }

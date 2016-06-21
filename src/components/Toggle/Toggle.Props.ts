@@ -1,17 +1,13 @@
+import * as React from 'react';
+
 /**
  * Toggle component props.
  */
-export interface IToggleProps {
+export interface IToggleProps extends React.HTMLProps<HTMLInputElement> {
   /**
    * A label for the toggle.
    */
   label: string;
-
-  /**
-   * Whether or not the toggled component is toggled.
-   * @defaultvalue false
-   */
-  isToggled?: boolean;
 
   /**
    * Text to display when toggle is ON.
@@ -24,7 +20,22 @@ export interface IToggleProps {
   offText?: string;
 
   /**
+   * Checked state of the toggle. If you are maintaining state yourself, use this property. Otherwise refer to 'defaultChecked'.
+   */
+  checked?: boolean;
+
+  /**
+   * Initial state of the toggle. If you want the toggle to maintain its own state, use this. Otherwise refer to 'checked'.
+   */
+  defaultChecked?: boolean;
+
+  /**
+   * Optional disabled flag.
+   */
+  disabled?: boolean;
+
+  /**
    * onchange callback.
    */
-  onChanged?: (isToggled: boolean) => void;
+  onChanged?: (isChecked: boolean) => void;
 }
