@@ -15,9 +15,11 @@ build.postCopy.setConfig({
 
 // process *.Example.tsx as text.
 build.text.setConfig({ textMatch: ['src/**/*.txt', 'src/**/*.Example.tsx', 'src/**/*.Props.ts'] });
-let isProduction = process.argv.indexOf('--production') >= 0;
-// configure amd libraries to be built when the production flag is present.
-if (isProduction) {
+
+let isProduction = process.argv.indexOf( '--production' ) >= 0;
+let isNuke = process.argv.indexOf( 'nuke' ) >= 0;
+
+if (isProduction || isNuke) {
   build.setConfig({
     libAMDFolder: 'lib-amd'
   });
