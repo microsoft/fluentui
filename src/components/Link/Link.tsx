@@ -22,17 +22,17 @@ export class Link extends React.Component<ILinkProps, any> {
     return (
       href ? (
       <a
+        role='link'
         { ...this.props as any }
         className={ css('ms-Link', className) }
-        role='link'
         onClick={ this._onClick }>
         { children }
       </a>
       ) : (
       <button
+        role='button'
         { ...this.props as any }
         className={ css('ms-Link', className) }
-        role='button'
         onClick={ this._onClick } >
         { children }
       </button>

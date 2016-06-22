@@ -37,7 +37,7 @@ export class DetailsRowFields extends React.Component<IDetailsRowFieldsProps, ID
         { columns.map((column, columnIndex) => (
         <div
           key={ columnIndex }
-          role={ column.isRowHeader ? 'rowheader' : 'gridcell' }
+          role={ column.isRowHeader ? 'rowheader' : '' }
           className={ css('ms-DetailsRow-cell', column.className, {
             'is-multiline': column.isMultiline
           }) }

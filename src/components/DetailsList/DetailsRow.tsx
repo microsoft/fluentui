@@ -175,8 +175,9 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           { (selectionMode !== SelectionMode.none) && (
             <button
-              role='gridcell'
               className='ms-DetailsRow-check'
+              role='button'
+              aria-checked={ isSelected }
               data-selection-toggle={ true }
               data-automationid='DetailsRowCheck'
               >
