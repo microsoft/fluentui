@@ -32,10 +32,10 @@ export class DocumentCardPreview extends React.Component<IDocumentCardPreviewPro
   }
 
   public render() {
-    let { previewImages, accentColor, width, height, imageFit } = this.props;
+    let { previewImages } = this.props;
     let { visiblePreviewIndex } = this.state;
     let previewImage = previewImages[visiblePreviewIndex];
-
+    let { accentColor, width, height, imageFit } = previewImage;
     let style;
     if (accentColor) {
       style = {

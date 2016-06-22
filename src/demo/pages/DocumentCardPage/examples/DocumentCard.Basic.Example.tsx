@@ -15,12 +15,12 @@ export class DocumentCardBasicExample extends React.Component<any, any> {
         {
           previewImageSrc: 'dist/document-preview.png',
           iconSrc: 'dist/icon-ppt.png',
+          imageFit: ImageFit.cover,
+          width: 318,
+          height: 196,
+          accentColor: '#ce4b1f'
         }
       ],
-      imageFit: ImageFit.cover,
-      width: 318,
-      height: 196,
-      accentColor: '#ce4b1f'
     };
 
     return (

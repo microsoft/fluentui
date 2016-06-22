@@ -31,8 +31,25 @@ export interface IDocumentCardPreviewProps extends React.Props<DocumentCardPrevi
    * One or more preview images to display.
    */
   previewImages: IDocumentCardPreviewImage[];
+}
 
-   /**
+export interface IDocumentCardPreviewImage {
+  /**
+   * Path to the preview image.
+   */
+  previewImageSrc?: string;
+
+  /**
+   * Path to the image to display if the preview image won't load.
+   */
+  errorImageSrc?: string;
+
+  /**
+   * Path to the icon associated with this document type.
+   */
+  iconSrc?: string;
+
+  /**
    * If provided, forces the preview image to be this width.
    */
   width?: number;
@@ -52,23 +69,6 @@ export interface IDocumentCardPreviewProps extends React.Props<DocumentCardPrevi
    * Hex color value of the line below the preview, which should correspond to the document type.
    */
   accentColor?: string;
-}
-
-export interface IDocumentCardPreviewImage {
-  /**
-   * Path to the preview image.
-   */
-  previewImageSrc: string;
-
-  /**
-   * Path to the image to display if the preview image won't load.
-   */
-  errorImageSrc?: string;
-
-  /**
-   * Path to the icon associated with this document type.
-   */
-  iconSrc?: string;
 }
 
 export interface IDocumentCardTitleProps extends React.Props<DocumentCardTitle> {
