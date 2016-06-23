@@ -9,7 +9,7 @@ export class DocumentCard extends React.Component<IDocumentCardProps, any> {
 
     // If no onClickFunction was provided and we do have an onClickURL, create a function from it.
     if (!onClick && onClickHref) {
-      onClick = function () {
+      onClick = () => {
         window.location.href = onClickHref;
       };
     }

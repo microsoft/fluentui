@@ -45,7 +45,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
 
     return (
         <DocumentCard
-          onClick={ function() { console.log('You clicked the card.'); } }
+          onClick={ () => { console.log('You clicked the card.'); } }
         >
           <DocumentCardPreview { ...previewProps }/>
           <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com' ariaLabel='Location, Marketing Documents'/>
@@ -64,22 +64,19 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           <DocumentCardActions
             actions={
               [
-                { icon: 'share', onClick:
-                  function(ev: any) {
+                { icon: 'share', onClick: (ev: any) => {
                     console.log('You clicked the share action.');
                     ev.preventDefault();
                     ev.stopPropagation();
                   }
                 },
-                { icon: 'pinLeft', onClick:
-                  function(ev: any) {
+                { icon: 'pinLeft', onClick: (ev: any) => {
                     console.log('You clicked the pin action.');
                     ev.preventDefault();
                     ev.stopPropagation();
                   }
                 },
-                { icon: 'bell', onClick:
-                  function(ev: any) {
+                { icon: 'bell', onClick: (ev: any) => {
                     console.log('You clicked the bell action.');
                     ev.preventDefault();
                     ev.stopPropagation();

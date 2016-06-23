@@ -41,4 +41,4 @@ export function getStackTrace() {
   }
 
   return obj.stack;
-};
+}

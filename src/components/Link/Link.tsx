@@ -3,7 +3,10 @@ import { css } from '../../utilities/css';
 import './Link.scss';
 import { ILinkProps, IPopupWindowProps, PopupWindowPosition } from './Link.Props';
 
-interface IMyScreen extends Screen { left: number; top: number; };
+interface IMyScreen extends Screen {
+  left: number;
+  top: number;
+}
 
 declare var screen: IMyScreen;
 

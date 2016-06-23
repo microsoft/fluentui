@@ -38,12 +38,6 @@ export class EventGroup {
   private _id = EventGroup._uniqueId++;
   private _isDisposed: boolean;
 
-  /** parent: the context in which events attached to non-HTMLElements are called */
-  public constructor(parent: any) {
-    this._parent = parent;
-    this._eventRecords = [];
-  }
-
   /** For IE8, bubbleEvent is ignored here and must be dealt with by the handler.
    *  Events raised here by default have bubbling set to false and cancelable set to true.
    *  This applies also to built-in events being raised manually here on HTMLElements,
@@ -119,6 +113,12 @@ export class EventGroup {
 
   private static _isElement(target: HTMLElement) {
     return !!target && (target instanceof HTMLElement || target.addEventListener);
+  }
+
+  /** parent: the context in which events attached to non-HTMLElements are called */
+  public constructor(parent: any) {
+    this._parent = parent;
+    this._eventRecords = [];
   }
 
   public dispose() {

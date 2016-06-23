@@ -13,6 +13,11 @@ export interface INavState {
 
 export class Nav extends React.Component<INavProps, INavState> {
 
+  public static defaultProps: INavProps = {
+    groups: null,
+    onRenderLink: (link: INavLink) => (<span className='ms-Nav-linkText'>{ link.name }</span>)
+  };
+
   constructor() {
     super();
 
@@ -20,11 +25,6 @@ export class Nav extends React.Component<INavProps, INavState> {
       isGroupExpanded: []
     };
   }
-
-  public static defaultProps: INavProps = {
-    groups: null,
-    onRenderLink: (link: INavLink) => (<span className='ms-Nav-linkText'>{ link.name }</span>)
-  };
 
   public render(): React.ReactElement<{}> {
     if (!this.props.groups) {
