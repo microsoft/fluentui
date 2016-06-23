@@ -14,8 +14,8 @@ import FocusTrapZoneBoxExampleWithFocusableItem from './examples/FocusTrapZone.B
 let FocusTrapZoneBoxExampleWithFocusableItemCode =
     require('./examples/FocusTrapZone.Box.FocusOnCustomElement.Example');
 
-import FocusTrapZoneBoxNoClickExample from './examples/FocusTrapZone.Box.NoClick.Example';
-let FocusTrapZoneBoxNoClickExampleCode = require('./examples/FocusTrapZone.Box.NoClick.Example');
+import FocusTrapZoneBoxClickExample from './examples/FocusTrapZone.Box.Click.Example';
+let FocusTrapZoneBoxClickExampleCode = require('./examples/FocusTrapZone.Box.Click.Example');
 
 export class FocusTrapZonePage extends React.Component<any, any> {
 
@@ -37,8 +37,8 @@ export class FocusTrapZonePage extends React.Component<any, any> {
             <FocusTrapZoneBoxExampleWithFocusableItem />
         </ExampleCard>
 
-        <ExampleCard title='Simple Box with Clicking outside Trap Zone disabled' code={ FocusTrapZoneBoxNoClickExampleCode }>
-          <FocusTrapZoneBoxNoClickExample/>
+        <ExampleCard title='Simple Box with Clicking outside Trap Zone enabled' code={ FocusTrapZoneBoxClickExampleCode }>
+          <FocusTrapZoneBoxClickExample/>
         </ExampleCard>
 
         <PropertiesTableSet componentName='FocusTrapZone' />

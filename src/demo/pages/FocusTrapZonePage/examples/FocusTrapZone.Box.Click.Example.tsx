@@ -39,7 +39,7 @@ export default class BoxNoClickExample extends React.Component<React.HTMLProps<H
         {(() => {
           if (isToggled) {
             return (
-              <FocusTrapZone isClickableOutsideFocusTrap={ true }>
+              <FocusTrapZone isClickableOutsideFocusTrap={ true } forceFocusInsideTrap={ false }>
                 { this._internalContents() }
               </FocusTrapZone>
               );
