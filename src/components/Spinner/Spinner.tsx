@@ -43,7 +43,7 @@ export class Spinner extends React.Component<ISpinnerProps, any> {
       }) }>
 
         { label && (
-          <div className='ms-Spinner-label'>{ label }</div>
+          <div className='ms-Spinner-label' role='alert'>{ label }</div>
         ) }
 
         { circleObjects }

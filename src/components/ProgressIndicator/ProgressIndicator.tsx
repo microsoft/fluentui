@@ -27,7 +27,11 @@ export class ProgressIndicator extends React.Component<IProgressIndicatorProps, 
           <div className={ css('ms-ProgressIndicator-progressBar', {
               'smoothTransition': percentComplete > ZERO_THRESHOLD
             })}
-            style={ { width: percentComplete + '%' } }>
+            style={ { width: percentComplete + '%' } }
+            role='progressbar'
+            aria-valuemin='0'
+            aria-valuemax='100'
+            aria-valuenow={ percentComplete.toFixed().toString() }>
           </div>
         </div>
         <div className='ms-ProgressIndicator-itemDescription'>{ description }</div>
