@@ -56,11 +56,8 @@ export interface INavLink {
    */
   links?: INavLink[];
 
-  /**
-     * (optional) If defined, plus icon  will appear with the linkgroup.
-     * If not defined, the plus icon will not be rendered.
-     */
-  plusIconLink?: boolean;
+  /** (Optional) icon */
+  iconClassName?: string;
 
   /**
    * (Optional) The name of the item to be used in logging engagement data
@@ -76,6 +73,9 @@ export interface INavLink {
    *  (Optional) The name to use for functional automation tests
    **/
   automationId?: string;
+
+  /** (Optional) Whether or not the link is in an expanded state */
+  isExpanded?: boolean;
 
   /**
    * Any additional properties to apply to the rendered links.

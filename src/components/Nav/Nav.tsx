@@ -51,12 +51,11 @@ export class Nav extends React.Component<INavProps, INavState> {
           href={ link.url || 'javascript:' }
           onClick={ this.props.onLinkClick }
           title={ link.name }
-          target={ link.plusIconLink ? '_blank' : '' }
         >
-          { (link.plusIconLink ?
-          <i className='ms-Nav-plusIcon ms-Icon ms-Icon--circlePlus'></i>
-          : this.props.onRenderLink(link))
-        }
+          { (link.iconClassName !== '' ?
+          <i className={'ms-Nav-Icon ms-Icon ms-Nav-IconLink ' + link.iconClassName}></i>
+          : '') }
+         { this.props.onRenderLink(link)}
         </a> { this._renderLinks(link.links) }
     </li>
     );

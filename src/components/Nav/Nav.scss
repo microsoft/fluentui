@@ -32,11 +32,15 @@
   display: block;
 }
 
-.ms-Nav-plusIcon {
+.ms-Nav-Icon {
   padding: 0px;
   color: $selectedForegroundColor;
   background: $selectedBackgroundColor;
   transition: transform .1s linear;
+}
+
+.ms-Nav-IconLink {
+  @include margin-right(4px);
 }
 
 .ms-Nav-groupButton {
