@@ -20,16 +20,6 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   &.is-singleSelect {
     @include padding-left(40px);
   }
-
-  &.is-resizingColumn .ms-DetailsHeader-sizerCover {
-    background: transparent;
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 99;
-  }
 }
 
 .ms-DetailsHeader-cell.is-check .ms-Check-circle {

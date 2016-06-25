@@ -59,8 +59,6 @@ export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetails
       isAllCollapsed: this.props.isAllCollapsed
     };
 
-    this._onSizerMove = this._onSizerMove.bind(this);
-    this._onSizerUp = this._onSizerUp.bind(this);
     this._onToggleCollapseAll = this._onToggleCollapseAll.bind(this);
     this._onSelectAllClicked = this._onSelectAllClicked.bind(this);
   }
@@ -178,7 +176,6 @@ export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetails
             </div>
           )) }
         </FocusZone>
-        <div className='ms-DetailsHeader-sizerCover' onMouseMove={ this._onSizerMove } onMouseUp={ this._onSizerUp } />
       </div>
     );
   }
@@ -233,6 +230,10 @@ export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetails
 
       if (!isSizing && ev.clientX !== columnResizeDetails.originX) {
         isSizing = true;
+
+        this._events.on(window, 'mousemove', this._onSizerMove, true);
+        this._events.on(window, 'mouseup', this._onSizerUp, true);
+
         this.setState({ isSizing: isSizing });
 
         if (onColumnIsSizingChanged) {
@@ -321,6 +322,8 @@ export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetails
   private _onSizerUp() {
     let { columns, onColumnIsSizingChanged } = this.props;
     let { columnResizeDetails } = this.state;
+
+    this._events.off(window);
 
     this.setState({
       columnResizeDetails: null,
