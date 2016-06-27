@@ -8,6 +8,9 @@
   padding: 8px 16px;
   position: relative;
   text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   &:hover {
     color: #2a8dd4;
