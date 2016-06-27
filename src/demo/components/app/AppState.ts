@@ -20,6 +20,7 @@ import { LabelPage } from '../../pages/LabelPage/LabelPage';
 import { LayerPage } from '../../pages/LayerPage/LayerPage';
 import { LinkPage } from '../../pages/LinkPage/LinkPage';
 import { ListPage } from '../../pages/ListPage/ListPage';
+import { MessageBarPage } from '../../pages/MessageBarPage/MessageBarPage';
 import { NavPage } from '../../pages/NavPage/NavPage';
 import { OrgChartPage } from '../../pages/OrgChartPage/OrgChartPage';
 import { OverlayPage } from '../../pages/OverlayPage/OverlayPage';
@@ -151,6 +152,12 @@ export const AppState: IAppState = {
           name: 'List',
           status: ExampleStatus.beta,
           url: '#/examples/list'
+        },
+        {
+          component: MessageBarPage,
+          name: 'MessageBar',
+          status: ExampleStatus.placeholder,
+          url: '#/examples/MessageBar'
         },
         {
           component: OrgChartPage,

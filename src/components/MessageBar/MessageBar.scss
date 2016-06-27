@@ -1,0 +1,29 @@
+@import '../../common/common';
+@import "~office-ui-fabric/src/components/MessageBar/MessageBar";
+
+.ms-MessageBar-icon {
+  @include padding-right(8px);
+  min-width: 16px;
+  min-height: 16px;
+
+  .ms-MessageBar-icon {
+    display: inline;
+  }
+}
+
+.ms-MessageBar {
+  width: 100%;
+}
+
+.ms-MessageBar-text {
+  width: 100%;
+}
+
+.ms-MessageBar-actions {
+  @include float(right);
+}
+
+// Add space between adjacent MessageBars.
+.ms-MessageBar + .ms-MessageBar {
+  margin-bottom: 6px;
+}
