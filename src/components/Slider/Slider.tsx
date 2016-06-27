@@ -132,6 +132,12 @@ export class Slider extends React.Component<ISliderProps, ISliderState> {
     ) as React.ReactElement<{}>;
   }
 
+  public focus(): void {
+      if (this.refs.thumb) {
+          this.refs.thumb.focus();
+      }
+  }
+
   private _onMouseDownOrTouchStart(event: MouseEvent | TouchEvent): void {
     if (event.type === 'mousedown') {
       this._events.on(window, 'mousemove', this._onMouseMoveOrTouchMove, true);

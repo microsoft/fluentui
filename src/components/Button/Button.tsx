@@ -16,6 +16,7 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
     elementType: ElementType.button,
     buttonType: ButtonType.normal
   };
+  private _buttonElement: HTMLButtonElement;
 
   constructor(props: IButtonProps) {
     super(props);
@@ -54,7 +55,8 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
       assign({
         'aria-label': ariaLabel,
         'aria-labeledby': ariaLabel ? null : labelId,
-        'aria-describedby': buttonType === ButtonType.compound ? descriptionId : null
+        'aria-describedby': buttonType === ButtonType.compound ? descriptionId : null,
+        'ref':  (c: HTMLButtonElement): HTMLButtonElement => this._buttonElement = c
         },
         this.props,
         { className }),
@@ -64,4 +66,9 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
     );
   }
 
+  public focus(): void {
+      if (this._buttonElement) {
+          this._buttonElement.focus();
+      }
+  }
 }

@@ -17,6 +17,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
 
   private _id: string;
   private _descriptionId: string;
+  private _inputElement: HTMLInputElement;
 
   constructor(props: IChoiceGroupProps) {
     super();
@@ -62,6 +63,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
               className={ css('ms-ChoiceField', { 'ms-ChoiceField--image': !!option.imageSrc }) }
             >
               <input
+                ref={ (c): HTMLInputElement => this._inputElement = c }
                 id={ `${this._id}-${option.key}` }
                 className='ms-ChoiceField-input'
                 type='radio'
@@ -78,6 +80,12 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
         </div>
       </div>
     );
+  }
+
+  public focus() {
+      if (this._inputElement) {
+          this._inputElement.focus();
+      }
   }
 
   private _renderField(option: IChoiceGroupOption) {

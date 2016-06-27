@@ -16,6 +16,7 @@ export class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
   };
 
   private _id: string;
+  private _checkBox: HTMLInputElement;
 
   constructor(props: ICheckboxProps) {
     super(props);
@@ -44,6 +45,7 @@ export class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
     return (
       <div className={ css('ms-ChoiceField', className) }>
         <input
+          ref={ (c): HTMLInputElement => this._checkBox = c }
           id={ this._id }
           name={ this._id }
           className='ms-ChoiceField-input'
@@ -59,6 +61,12 @@ export class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
         </label>
       </div>
     );
+  }
+
+  public focus() {
+      if (this._checkBox) {
+          this._checkBox.focus();
+      }
   }
 
   private _handleInputChange(evt: React.FormEvent) {

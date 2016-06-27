@@ -26,6 +26,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
   };
 
   private _events: EventGroup;
+  private _dropDown: HTMLDivElement;
 
   constructor(props?: IDropdownProps) {
     super(props);
@@ -74,6 +75,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
       <div ref='root'>
         <label id={ id + '-label' } className='ms-Label'>{ label }</label>
         <div
+          ref={ (c): HTMLElement => this._dropDown = c }
           id={ id }
           className={ css('ms-Dropdown', {
             'is-open': isOpen, 'is-disabled': isDisabled
@@ -104,6 +106,12 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
         </div>
       </div>
     );
+  }
+
+  public focus() {
+      if (this._dropDown && this._dropDown.tabIndex !== -1) {
+          this._dropDown.focus();
+      }
   }
 
   public setSelectedIndex(index: number) {

@@ -31,11 +31,6 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     errorMessage: ''
   };
 
-  public refs: {
-    [key: string]: React.ReactInstance;
-    field: HTMLInputElement;
-  };
-
   private _id: string;
   private _descriptionId: string;
   private _async: Async;
@@ -44,6 +39,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
   private _lastValidation: number;
   private _latestValidateValue;
   private _willMountTriggerValidation;
+  private _field;
 
   public constructor(props: ITextFieldProps) {
     super(props);
@@ -116,8 +112,8 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
   }
 
   public focus() {
-    if (this.refs.field) {
-      this.refs.field.focus();
+    if (this._field) {
+      this._field.focus();
     }
   }
 
@@ -142,7 +138,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
       <textarea
         { ...this.props }
         id={ this._id }
-        ref='field'
+        ref={ (c): HTMLTextAreaElement => this._field = c }
         value={ this.state.value }
         onChange={ this._onInputChange }
         className={ this._fieldClassName }
@@ -156,7 +152,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         { ...this.props }
         id={ this._id }
         type='text'
-        ref='field'
+        ref={ (c): HTMLInputElement => this._field = c }
         value={ this.state.value }
         onChange={ this._onInputChange }
         className={ this._fieldClassName }

@@ -19,6 +19,7 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
   };
 
   private _id: string;
+  private _toggleButton: HTMLButtonElement;
 
   constructor(props: IToggleProps) {
     super();
@@ -57,6 +58,7 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
 
         <div className='ms-Toggle-slider'>
           <button
+            ref={ (c): HTMLButtonElement => this._toggleButton = c }
             id={ this._id }
             name={ this._id }
             className={ css('ms-Toggle-button', className) }
@@ -74,6 +76,12 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
 
       </div>
     );
+  }
+
+  public focus() {
+      if (this._toggleButton) {
+          this._toggleButton.focus();
+      }
   }
 
   private _onClick() {
