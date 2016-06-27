@@ -64,6 +64,17 @@ export class Image extends React.Component<IImageProps, IImageState> {
     }
   }
 
+  public componentWillReceiveProps(nextProps) {
+    if (this.state.loadState === ImageLoadState.loaded) {
+      let { nextHeight, nextWidth } = nextProps;
+      let { height, width } = this.props;
+
+      if (height !== nextHeight || width !== nextWidth) {
+        this._computeCoverStyle();
+      }
+    }
+  }
+
   public componentWillUnmount() {
     this._events.dispose();
   }
@@ -94,19 +105,12 @@ export class Image extends React.Component<IImageProps, IImageState> {
   }
 
   private _evaluateImage(): boolean {
-    let { src, width, height } = this.props;
+    let { src } = this.props;
     let { loadState } = this.state;
     let { image } = this.refs;
     let isLoaded = (src && image.naturalWidth > 0 && image.naturalHeight > 0);
 
-    let desiredRatio = width / height;
-    let naturalRatio = image.naturalWidth / image.naturalHeight;
-
-    if (naturalRatio > desiredRatio) {
-      this._coverStyle = CoverStyle.landscape;
-    } else {
-      this._coverStyle = CoverStyle.portrait;
-    }
+    this._computeCoverStyle();
 
     if (isLoaded && loadState !== ImageLoadState.loaded && loadState !== ImageLoadState.errorLoaded) {
       this._events.off();
@@ -116,6 +120,22 @@ export class Image extends React.Component<IImageProps, IImageState> {
     }
 
     return isLoaded;
+  }
+
+  private _computeCoverStyle() {
+    let { image } = this.refs;
+    if (image) {
+      let { width, height } = this.props;
+
+      let desiredRatio = width / height;
+      let naturalRatio = image.naturalWidth / image.naturalHeight;
+
+      if (naturalRatio > desiredRatio) {
+        this._coverStyle = CoverStyle.landscape;
+      } else {
+        this._coverStyle = CoverStyle.portrait;
+      }
+    }
   }
 
   private _setError() {
