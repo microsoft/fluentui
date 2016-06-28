@@ -5,6 +5,7 @@
 }
 
 .ms-Image-image {
+  display: block;
   opacity: 0;
 
   &.is-loaded {

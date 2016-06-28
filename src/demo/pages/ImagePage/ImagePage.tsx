@@ -4,13 +4,13 @@ import {
   PropertiesTableSet
 } from '../../components/index';
 
-import { ImageBasicExample } from './examples/Image.Basic.Example';
+import { ImageDefaultExample } from './examples/Image.Default.Example';
 import { ImageCenterExample } from './examples/Image.Center.Example';
 import { ImageCoverExample } from './examples/Image.Cover.Example';
 import { ImageScaleExample } from './examples/Image.Scale.Example';
 import { ImageNoneExample } from './examples/Image.None.Example';
 
-const ImageBasicExampleCode = require('./examples/Image.Basic.Example.tsx');
+const ImageDefaultExampleCode = require('./examples/Image.Default.Example.tsx');
 const ImageCenterExampleCode = require('./examples/Image.Center.Example.tsx');
 const ImageCoverExampleCode = require('./examples/Image.Cover.Example.tsx');
 const ImageNoneExampleCode = require('./examples/Image.None.Example.tsx');
@@ -26,19 +26,19 @@ export class ImagePage extends React.Component<any, any> {
         </div>
         <h2 className='ms-font-xl'>Examples</h2>
 
-        <ExampleCard title='Image' code={ ImageBasicExampleCode }>
-          <ImageBasicExample />
+        <ExampleCard title='ImageFit: Default' code={ ImageDefaultExampleCode }>
+          <ImageDefaultExample />
         </ExampleCard>
-        <ExampleCard title='Image no fit' code={ ImageNoneExampleCode }>
+        <ExampleCard title='ImageFit: None' code={ ImageNoneExampleCode }>
           <ImageNoneExample />
         </ExampleCard>
-        <ExampleCard title='Image Center' code={ ImageCenterExampleCode }>
+        <ExampleCard title='ImageFit: Center' code={ ImageCenterExampleCode }>
           <ImageCenterExample />
         </ExampleCard>
-        <ExampleCard title='Image Cover' code={ ImageCoverExampleCode }>
+        <ExampleCard title='ImageFit: Cover' code={ ImageCoverExampleCode }>
           <ImageCoverExample />
         </ExampleCard>
-        <ExampleCard title='Image Scale' code={ ImageScaleExampleCode }>
+        <ExampleCard title='ImageFit: Scale' code={ ImageScaleExampleCode }>
           <ImageScaleExample />
         </ExampleCard>
 

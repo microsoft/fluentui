@@ -245,7 +245,7 @@ export const AppState: IAppState = {
         {
           component: ImagePage,
           name: 'Image',
-          status: ExampleStatus.started,
+          status: ExampleStatus.beta,
           url: '#/examples/image'
         },
         {
