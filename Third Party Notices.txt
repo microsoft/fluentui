@@ -2,7 +2,7 @@ This project uses third party material from the projects listed below. The origi
 
 ------------
 
-dzearing-load-themed-styles
+load-themed-styles
 
 Copyright (c) 2014 David Zearing
  
