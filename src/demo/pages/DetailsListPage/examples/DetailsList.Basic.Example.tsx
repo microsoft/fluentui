@@ -43,6 +43,11 @@ export interface IDetailsListBasicExampleState {
 }
 
 export class DetailsListBasicExample extends React.Component<any, IDetailsListBasicExampleState> {
+  public refs: {
+    [key: string]: React.ReactInstance;
+    list: DetailsList
+  };
+
   private _isFetchingItems: boolean;
 
   constructor() {
@@ -60,6 +65,8 @@ export class DetailsListBasicExample extends React.Component<any, IDetailsListBa
     this._onColumnClick = this._onColumnClick.bind(this);
     this._onContextualMenuDismissed = this._onContextualMenuDismissed.bind(this);
     this._onItemLimitChanged = this._onItemLimitChanged.bind(this);
+    this._onAddRow = this._onAddRow.bind(this);
+    this._onDeleteRow = this._onDeleteRow.bind(this);
 
     this.state = {
       items: _items, // createListItems(100).concat(new Array(9900)), // _items,
@@ -116,6 +123,7 @@ export class DetailsListBasicExample extends React.Component<any, IDetailsListBa
         }
 
         <DetailsList
+          ref='list'
           setKey='items'
           items={ items }
           groups={ groups }
@@ -215,6 +223,18 @@ export class DetailsListBasicExample extends React.Component<any, IDetailsListBa
     let { layoutMode, constrainMode, selectionMode, canResizeColumns, isLazyLoaded, isHeaderVisible } = this.state;
 
     return [
+      {
+        key: 'addRow',
+        name: 'Insert row',
+        icon: 'plus',
+        onClick: this._onAddRow
+      },
+      {
+        key: 'deleteRow',
+        name: 'Delete row',
+        icon: 'trash',
+        onClick: this._onDeleteRow
+      },
       {
         key: 'configure',
         name: 'Configure',
@@ -472,6 +492,18 @@ export class DetailsListBasicExample extends React.Component<any, IDetailsListBa
       leafKey = arrKeys[arrKeys.length - 1];
     }
     return leafKey;
+  }
+
+  private _onAddRow() {
+    let newItem = createListItems(1)[0];
+
+    this.state.items.unshift(newItem);
+    this.refs.list.forceUpdate();
+  }
+
+  private _onDeleteRow() {
+    this.state.items.shift();
+    this.refs.list.forceUpdate();
   }
 
   private _buildColumns(

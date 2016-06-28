@@ -13,6 +13,12 @@ export interface IWithViewportState {
 export function withViewport<P, S>(ComposedComponent: any): any {
 
   return class WithViewportComponent extends React.Component<P, IWithViewportState> {
+
+    public refs: {
+      [key: string]: React.ReactInstance;
+      component: any;
+    };
+
     private _events: EventGroup;
 
     constructor() {
@@ -34,7 +40,7 @@ export function withViewport<P, S>(ComposedComponent: any): any {
       return (
         <div className='ms-Viewport' ref='root' style={ { minWidth: 1, minHeight: 1 } }>
           { this.state.viewport.height > 0 && (
-          <ComposedComponent viewport={ viewport } { ...this.props } />
+          <ComposedComponent ref='component' viewport={ viewport } { ...this.props } />
           )}
         </div>
       );
@@ -47,6 +53,10 @@ export function withViewport<P, S>(ComposedComponent: any): any {
 
     public componentWillUnmount() {
       this._events.dispose();
+    }
+
+    public forceUpdate() {
+      this.refs.component.forceUpdate();
     }
 
     private _updateViewport() {

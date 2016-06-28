@@ -265,6 +265,11 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     );
   }
 
+  public forceUpdate() {
+    super.forceUpdate();
+    this._forceListUpdates();
+  }
+
   private _onColumnIsSizingChanged(column: IColumn, isSizing: boolean) {
     this.setState({ isSizing: isSizing });
   }
