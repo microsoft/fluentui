@@ -54,7 +54,7 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
       tag,
       assign({
         'aria-label': ariaLabel,
-        'aria-labeledby': ariaLabel ? null : labelId,
+        'aria-labelledby': ariaLabel ? null : labelId,
         'aria-describedby': buttonType === ButtonType.compound ? descriptionId : null,
         'ref':  (c: HTMLButtonElement): HTMLButtonElement => this._buttonElement = c
         },
