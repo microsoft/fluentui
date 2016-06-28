@@ -45,7 +45,7 @@ export class DocumentCardPreview extends React.Component<IDocumentCardPreviewPro
 
     let icon;
     if (previewImage.iconSrc) {
-      icon = <Image className='ms-DocumentCardPreview-icon' src={ previewImage.iconSrc }/>;
+      icon = <Image className='ms-DocumentCardPreview-icon' src={ previewImage.iconSrc } role='presentation'/>;
     }
 
     return (
@@ -55,7 +55,8 @@ export class DocumentCardPreview extends React.Component<IDocumentCardPreviewPro
           height={ height }
           imageFit={ imageFit }
           src={ previewImage.previewImageSrc }
-          errorSrc={ previewImage.errorImageSrc }/>
+          errorSrc={ previewImage.errorImageSrc }
+          role='presentation'/>
         { icon }
       </div>
     );

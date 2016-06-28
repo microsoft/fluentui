@@ -80,7 +80,7 @@ export class Image extends React.Component<IImageProps, IImageState> {
   }
 
   public render() {
-    let { src, alt, width, height, shouldFadeIn, className, imageFit, errorSrc } = this.props;
+    let { src, alt, width, height, shouldFadeIn, className, imageFit, errorSrc, role } = this.props;
     let { loadState } = this.state;
     let coverStyle = this._coverStyle;
     let loaded = loadState === ImageLoadState.loaded || loadState === ImageLoadState.errorLoaded;
@@ -99,7 +99,7 @@ export class Image extends React.Component<IImageProps, IImageState> {
             'ms-u-fadeIn400': loaded && shouldFadeIn,
             'is-error': loadState === ImageLoadState.error,
             'ms-Image-image--scale': (imageFit === undefined && !!width && !!height),
-          }) } ref='image' src={ srcToDisplay } alt={ alt } />
+          }) } ref='image' src={ srcToDisplay } alt={ alt } role={ role } />
       </div>
     );
   }
@@ -127,7 +127,7 @@ export class Image extends React.Component<IImageProps, IImageState> {
     if (image) {
       let { width, height } = this.props;
 
-      let desiredRatio = width / height;
+      let desiredRatio = (width as number) / (height as number);
       let naturalRatio = image.naturalWidth / image.naturalHeight;
 
       if (naturalRatio > desiredRatio) {
@@ -140,9 +140,6 @@ export class Image extends React.Component<IImageProps, IImageState> {
 
   private _setError() {
     if (this.state.loadState !== ImageLoadState.error && this.state.loadState !== ImageLoadState.errorLoaded) {
-      if (this.props.onError) {
-        this.props.onError(this.props.src);
-      }
       this.setState({
         loadState: ImageLoadState.error
       });

@@ -35,12 +35,12 @@ export class DocumentCardActivity extends React.Component<IDocumentCardActivityP
       return (
         <div className='ms-DocumentCardActivity-avatar'>
           { person.initials && (
-            <div className={ css('ms-Persona-initials', PERSONA_INITIALS_COLOR[person.initialsColor]) }>
+            <div className={ css('ms-Persona-initials', PERSONA_INITIALS_COLOR[person.initialsColor]) } role='presentation'>
               { person.initials }
               </div>
           ) }
           { person.profileImageSrc && (
-            <Image src={ person.profileImageSrc }/>
+            <Image src={ person.profileImageSrc } role='presentation'/>
           ) }
         </div>
       );

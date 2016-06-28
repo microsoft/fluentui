@@ -15,7 +15,7 @@ export class ImageScaleExample extends React.Component<any, any> {
     };
 
     return (
-      <Image  { ...imageProps } />
+      <Image  { ...imageProps as any } />
     );
   }
 }
