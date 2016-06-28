@@ -33,6 +33,13 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
     this._onClick = this._onClick.bind(this);
   }
 
+  /**
+   * Gets the current checked state of the toggle.
+   */
+  public get checked(): boolean {
+    return this.state.isChecked;
+  }
+
   public componentWillReceiveProps(newProps: IToggleProps) {
     if (newProps.checked !== undefined) {
       this.setState({

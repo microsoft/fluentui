@@ -32,7 +32,14 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement> {
   iconClass?: string;
 
   /**
-   * Default value of the textfield, if any.
+   * Default value of the textfield, if any. Only provide this if the textfield is an uncontrolled component;
+   * otherwise, use the "value" property.
+   */
+  defaultValue?: string;
+
+  /**
+   * Current value of the textfield. Only provide this if the textfield is a controlled component where you
+   * are maintaining its current state; otherwise, use the "defaultValue" property.
    */
   value?: string;
 

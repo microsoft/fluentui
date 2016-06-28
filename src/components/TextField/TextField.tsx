@@ -49,7 +49,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     this._async = new Async(this);
 
     this.state = {
-      value: props.value,
+      value: props.value || props.defaultValue,
       errorMessage: ''
     };
 
@@ -59,6 +59,13 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     this._lastValidation = 0;
     this._latestValidateValue = '';
     this._willMountTriggerValidation = false;
+  }
+
+  /**
+   * Gets the current value of the text field.
+   */
+  public get value(): string {
+    return this.state.value;
   }
 
   public componentWillMount() {
@@ -71,13 +78,17 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
   }
 
   public componentWillReceiveProps(newProps: ITextFieldProps) {
-    if (newProps.value !== this.props.value
-        && newProps.value !== this.state.value) {
+    const { onBeforeChange } = this.props;
+
+    if (newProps.value !== undefined && newProps.value !== this.state.value) {
+      if (onBeforeChange) {
+        onBeforeChange(newProps.value);
+      }
+
       this.setState({
         value: newProps.value
       } as ITextFieldState);
-      const { onBeforeChange } = this.props;
-      onBeforeChange(newProps.value);
+
       this._delayedValidate(newProps.value);
     }
   }
