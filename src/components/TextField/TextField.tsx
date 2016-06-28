@@ -111,10 +111,40 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     );
   }
 
+  /**
+   * Sets focus on the text field
+   */
   public focus() {
-    if (this._field) {
-      this._field.focus();
-    }
+      if (this._field) {
+          this._field.focus();
+      }
+  }
+
+  /**
+   * Selects the text field
+   */
+  public select() {
+      if (this._field) {
+          this._field.select();
+      }
+  }
+
+  /**
+   * Sets the selection start of the text field to a specified value
+   */
+  public setSelectionStart(value: number) {
+      if (this._field) {
+          this._field.selectionStart = value;
+      }
+  }
+
+  /**
+   * Sets the selection end of the text field to a specified value
+   */
+  public setSelectionEnd(value: number) {
+      if (this._field) {
+          this._field.selectionEnd = value;
+      }
   }
 
   private get _fieldClassName(): string {
