@@ -8,13 +8,19 @@ export interface IFocusZoneProps extends React.HTMLProps<HTMLDivElement> {
   direction?: FocusZoneDirection;
 
   /**
-   * If set, will cycles to the beginning of the targets once the user navigates to the
+   * If set, the FocusZone will not be tabbable and keyboard navigation will be disabled.
+   * This does not affect disabled attribute of any child.
+   */
+  disabled?: boolean;
+
+  /**
+   * If set, will cycle to the beginning of the targets once the user navigates to the
    * next target while at the end, and to the end when navigate to the previous at the beginning.
    */
   isCircularNavigation?: boolean;
 
   /**
-   * If provided, this callback will be executed on keypresses to determine if ther user
+   * If provided, this callback will be executed on keypresses to determine if the user
    * intends to navigate into the inner zone. Returning true will ask the first inner zone to
    * set focus.
    */

@@ -6,9 +6,11 @@ import {
 
 import { FocusZonePhotosExample } from './examples/FocusZone.Photos.Example';
 import { FocusZoneListExample } from './examples/FocusZone.List.Example';
+import { FocusZoneDisabledExample } from './examples/FocusZone.Disabled.Example';
 
 const FocusZonePhotosExampleCode = require('./examples/FocusZone.Photos.Example.tsx');
 const FocusZoneListExampleCode = require('./examples/FocusZone.List.Example.tsx');
+const FocusZoneDisabledExampleCode = require('./examples/FocusZone.Disabled.Example.tsx');
 
 export class FocusZonePage extends React.Component<any, any> {
 
@@ -27,6 +29,9 @@ export class FocusZonePage extends React.Component<any, any> {
         </ExampleCard>
         <ExampleCard title='Nesting FocusZones in list rows' code={ FocusZoneListExampleCode }>
           <FocusZoneListExample />
+        </ExampleCard>
+        <ExampleCard title='Disabled FocusZone' code={ FocusZoneDisabledExampleCode }>
+          <FocusZoneDisabledExample />
         </ExampleCard>
         <PropertiesTableSet componentName='FocusZone' />
       </div>

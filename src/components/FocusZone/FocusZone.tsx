@@ -139,6 +139,12 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
   }
 
   private _onMouseDown(ev: React.MouseEvent) {
+    const { disabled } = this.props;
+
+    if (disabled) {
+      return;
+    }
+
     let target = ev.target as HTMLElement;
     const path = [];
 
@@ -161,7 +167,11 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
 
   /** Handle the keystrokes. */
   private _onKeyDown(ev: React.KeyboardEvent) {
-    const { direction, isInnerZoneKeystroke } = this.props;
+    const { direction, disabled, isInnerZoneKeystroke } = this.props;
+
+    if (disabled) {
+      return;
+    }
 
     if (
       isInnerZoneKeystroke &&
@@ -501,7 +511,9 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
 
       if (!isElementFocusZone(child)) {
         if (isElementTabbable(child)) {
-          if (!this._isInnerZone && (!this._activeElement || this._activeElement === child)) {
+          if (this.props.disabled) {
+            child.setAttribute(TABINDEX, '-1');
+          } else if (!this._isInnerZone && (!this._activeElement || this._activeElement === child)) {
             this._activeElement = child;
             if (child.getAttribute(TABINDEX) !== '0') {
               child.setAttribute(TABINDEX, '0');
