@@ -73,6 +73,10 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
       color: $ms-color-neutralPrimary;
       background: $unselectedHoverBackgroundColor;
     }
+
+    &:active {
+      background: $unselectedActiveBackgroundColor;
+    }
   }
 
   &.is-sizer {

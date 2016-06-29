@@ -261,9 +261,10 @@ export class List extends BaseComponent<IListProps, IListState> {
 
     for (let i = 0; page.items && i < page.items.length; i++) {
       let item = page.items[i];
+      let itemKey = (item ? item.key : null) || (page.startIndex + i);
 
       cells.push(
-        <div className='ms-List-cell' key={ (page.startIndex + i) } data-list-index={ i + page.startIndex } data-automationid='ListCell'>
+        <div className='ms-List-cell' key={ itemKey } data-list-index={ i + page.startIndex } data-automationid='ListCell'>
           { onRenderCell(item, page.startIndex + i) }
         </div>
       );

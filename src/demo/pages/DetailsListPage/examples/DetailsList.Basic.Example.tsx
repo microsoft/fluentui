@@ -12,6 +12,7 @@ import {
   IContextualMenuProps,
   IGroup,
   Link,
+  Selection,
   TextField,
   buildColumns
 } from '../../../../index';
@@ -49,6 +50,7 @@ export class DetailsListBasicExample extends React.Component<any, IDetailsListBa
   };
 
   private _isFetchingItems: boolean;
+  private _selection: Selection;
 
   constructor() {
     super();
@@ -56,6 +58,9 @@ export class DetailsListBasicExample extends React.Component<any, IDetailsListBa
     if (!_items) {
       _items = createListItems(ITEMS_COUNT);
     }
+
+    this._selection = new Selection();
+    this._selection.setItems(_items, false);
 
     this._onToggleResizing = this._onToggleResizing.bind(this);
     this._onToggleLazyLoad = this._onToggleLazyLoad.bind(this);
@@ -69,7 +74,7 @@ export class DetailsListBasicExample extends React.Component<any, IDetailsListBa
     this._onDeleteRow = this._onDeleteRow.bind(this);
 
     this.state = {
-      items: _items, // createListItems(100).concat(new Array(9900)), // _items,
+      items: _items,
       groups: null,
       groupItemLimit: DEFAULT_ITEM_LIMIT,
       layoutMode: LayoutMode.justified,
@@ -495,15 +500,15 @@ export class DetailsListBasicExample extends React.Component<any, IDetailsListBa
   }
 
   private _onAddRow() {
-    let newItem = createListItems(1)[0];
-
-    this.state.items.unshift(newItem);
-    this.refs.list.forceUpdate();
+    this.setState({
+      items: createListItems(1).concat(this.state.items)
+    });
   }
 
   private _onDeleteRow() {
-    this.state.items.shift();
-    this.refs.list.forceUpdate();
+    this.setState({
+      items: this.state.items.slice(1)
+    });
   }
 
   private _buildColumns(
