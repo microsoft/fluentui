@@ -43,8 +43,8 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
   public render() {
     return (
       <div>
-        {this._renderPivotLinks() }
-        {this._renderPivotItem() }
+        { this._renderPivotLinks() }
+        { this._renderPivotItem() }
       </div>
     );
   }
@@ -59,7 +59,7 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
         <ul className={ css('ms-Pivot',
           { 'ms-Pivot--large': this.props.linkSize === PivotLinkSize.large },
           { 'ms-Pivot--tabs': this.props.linkFormat === PivotLinkFormat.tabs }) }>
-          {links.map(this._renderLink.bind(this)) }
+          { links.map(this._renderLink.bind(this)) }
         </ul>
       </FocusZone>
     );
@@ -71,12 +71,12 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
   private _renderLink(link: IPivotLink, index: number, links: IPivotLink[]) {
     return (
       <a
-        key={index}
+        key={ index }
         className={ css('ms-Pivot-link', { 'is-selected': this.state.selectedIndex === index }) }
-        onClick={this._onLinkClick.bind(this, index) }
-        onKeyPress={this._onKeyPress.bind(this, index) }
+        onClick={ this._onLinkClick.bind(this, index) }
+        onKeyPress={ this._onKeyPress.bind(this, index) }
       >
-        {link.linkText}
+        { link.linkText }
       </a>
     );
   }
@@ -93,7 +93,7 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
     let item: PivotItem = this.props.children[index];
     return (
       <div className='pivotItem'>
-        {item}
+        { item }
       </div>
     );
   }
