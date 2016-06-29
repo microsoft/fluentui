@@ -1,7 +1,8 @@
 @import '../../common/common';
 @import "~office-ui-fabric/src/components/Persona/Persona";
 
-img.ms-Persona-image {
+// div.ms-Persona-image to overwrite Fabric's ms-Persona-image
+div.ms-Persona-image {
   position: absolute;
   left: 0;
   top: 0;
