@@ -59,6 +59,7 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  @include text-align(left);
 
   &.is-check {
     position: relative;
