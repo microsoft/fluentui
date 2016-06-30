@@ -8,8 +8,10 @@ import {
 } from '../../components/index';
 
 import { DetailsListBasicExample } from './examples/DetailsList.Basic.Example';
-
 const DetailsListBasicExampleCode = require('./examples/DetailsList.Basic.Example.tsx');
+
+import { DetailsListAdvancedExample } from './examples/DetailsList.Advanced.Example';
+const DetailsListAdvancedExampleCode = require('./examples/DetailsList.Advanced.Example.tsx');
 
 export class DetailsListPage extends React.Component<any, any> {
 
@@ -24,8 +26,11 @@ export class DetailsListPage extends React.Component<any, any> {
           <span> and provides a sortable, filterable, groupable, justified table for rendering large sets of items. This component replaces the Table Component.</span>
         </p>
         <h2 className='ms-font-xl'>Examples</h2>
-        <ExampleCard title='DetailsList of 5000 items, variable row heights' isOptIn={ false } code={ DetailsListBasicExampleCode }>
+        <ExampleCard title='Simple DetailsList with 500 items' isOptIn={ false } code={ DetailsListBasicExampleCode }>
           <DetailsListBasicExample />
+        </ExampleCard>
+        <ExampleCard title='Advanced DetailsList of 5000 items, variable row heights' isOptIn={ true } code={ DetailsListAdvancedExampleCode }>
+          <DetailsListAdvancedExample />
         </ExampleCard>
         <PropertiesTableSet componentName='DetailsList' />
       </div>

@@ -17,12 +17,12 @@ import { EnumParserHelper } from './EnumParserHelper';
  * @param {string} [propsInterfaceOrEnumName] Name of an interface or enum if you only want to parse said interface or enum.
  * @returns {Array<IProperty>} An array of properties.
  */
-export function parse(source: string, propsInterfaceOrEnumName?: string): Array<IProperty> {
-  let props: Array<IProperty> = [];
+export function parse(source: string, propsInterfaceOrEnumName?: string): IProperty[] {
+  let props: IProperty[] = [];
   let regex: RegExp = null;
   let parseInfo;
 
-  let propertyNameSuffix = (type: string) => type === 'interface' ? ' Interface' : ' Enum';
+  let propertyNameSuffix = (type: string) => type === 'interface' ? ' interface' : ' enum';
   let propertyType = (type: string) => type === 'interface' ? PropertyType.interface : PropertyType.enum;
 
   if (propsInterfaceOrEnumName) {
@@ -31,6 +31,7 @@ export function parse(source: string, propsInterfaceOrEnumName?: string): Array<
     if (regexResult && regexResult.length > 0) {
       parseInfo = _parseEnumOrInterface(regexResult);
       return [<IProperty>{
+        name: propsInterfaceOrEnumName,
         propertyName: propsInterfaceOrEnumName + propertyNameSuffix(regexResult[1]),
         propertyType: propertyType(regexResult[1]),
         property: parseInfo
@@ -43,6 +44,7 @@ export function parse(source: string, propsInterfaceOrEnumName?: string): Array<
     while ((regexResult = regex.exec(source)) !== null) {
       parseInfo = _parseEnumOrInterface(regexResult);
       results.push(<IProperty>{
+        name: regexResult[2],
         propertyName: regexResult[2] + propertyNameSuffix(regexResult[1]),
         propertyType: propertyType(regexResult[1]),
         property: parseInfo

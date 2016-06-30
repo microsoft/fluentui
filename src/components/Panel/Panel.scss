@@ -168,7 +168,7 @@ $CommandBarHeight: 40px;
   .ms-Panel-main {
     @media (min-width: $ms-screen-xxl-min) {
       @include left($Panel-margin-xl);
-    }    
+    }
   }
 }
 
@@ -220,7 +220,7 @@ $CommandBarHeight: 40px;
         @include ms-u-fadeIn200;
       }
     }
-    
+
     &.ms-Panel--openRight.ms-Panel-animateOut {
       .ms-Panel-main {
         @include ms-u-slideRightOut40;
@@ -298,6 +298,11 @@ $CommandBarHeight: 40px;
   padding: 0 16px 20px;
   overflow-y: auto;
 
+  -webkit-overflow-scrolling: touch;
+
+  /* Force hw accelleration on scrollable region */
+  transform: translateZ(0);
+
   @media (min-width: $ms-screen-lg-min) {
     padding: 0 32px 20px;
   }
@@ -320,5 +325,5 @@ $CommandBarHeight: 40px;
 
   @media (min-width: $ms-screen-xl-min) {
     margin-top: 30px;
-  } 
+  }
 }

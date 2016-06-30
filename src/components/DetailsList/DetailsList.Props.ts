@@ -10,6 +10,15 @@ import {
 } from './../../utilities/dragdrop/interfaces';
 import { IViewport } from '../../utilities/decorators/withViewport';
 
+export interface IDetailsList {
+  /**
+   * Ensures that the list content is updated. Call this in cases where the list prop updates don't change, but the list
+   * still needs to be re-evaluated. For example, if a sizer bar is adjusted and causes the list width to change, you can
+   * call this to force a re-evaluation. Be aware that this can be an expensive operation and should be done sparingly.
+   */
+  forceUpdate: () => void;
+}
+
 export interface IDetailsListProps extends React.Props<DetailsList> {
   /** A key that uniquely identifies the given items. If provided, the selection will be reset when the key changes. */
   setKey?: string;

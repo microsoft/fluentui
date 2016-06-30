@@ -5,6 +5,7 @@ import { SelectionMode } from '../../../utilities/selection/interfaces';
 import { assign } from '../../../utilities/object';
 
 export interface IProperty {
+  name: string;
   propertyName: string;
   propertyType: PropertyType;
   property: IInterfaceProperty[] | IEnumProperty[];
@@ -126,7 +127,7 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
             columns={ isEnum ? ENUM_COLUMNS : DEFAULT_COLUMNS }
             />
         ) : (
-            <div className='PropertiesTable-noProperties'>This component is missing properties.Please provide properties or remove the table from the example.</div>
+            <div className='PropertiesTable-noProperties'>This component is missing properties. Please provide properties or remove the table from the example.</div>
           ) }
         </div>
     );

@@ -6,6 +6,7 @@ import {
   IColumn,
   IDetailsGroupFooterProps,
   IDetailsGroupHeaderProps,
+  IDetailsList,
   IDetailsListProps,
   IGroup,
   CheckboxVisibility
@@ -46,7 +47,7 @@ const GROUP_EXPAND_WIDTH = 36;
 const DEFAULT_INNER_PADDING = 16;
 
 @withViewport
-export class DetailsList extends React.Component<IDetailsListProps, IDetailsListState> {
+export class DetailsList extends React.Component<IDetailsListProps, IDetailsListState> implements IDetailsList {
   public static defaultProps = {
     layoutMode: DetailsListLayoutMode.justified,
     selectionMode: SelectionMode.multiple,

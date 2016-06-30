@@ -1,8 +1,11 @@
+/* tslint:disable:no-unused-variable */
 import * as React from 'react';
+/* tslint:enable:no-unused-variable */
+
 import { IPanelProps, PanelType } from './Panel.Props';
 import { Layer } from '../Layer/Layer';
 import { Overlay } from '../../Overlay';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
+import { BaseComponent } from '../../common/BaseComponent';
 import { css } from '../../utilities/css';
 import { getRTL } from '../../utilities/rtl';
 import './Panel.scss';
@@ -13,14 +16,12 @@ export interface IPanelState {
   isAnimatingClose?: boolean;
 }
 
-export class Panel extends React.Component<IPanelProps, IPanelState> {
+export class Panel extends BaseComponent<IPanelProps, IPanelState> {
   public static defaultProps: IPanelProps = {
     isOpen: false,
     hasCloseButton: true,
     type: PanelType.smallFixedFar,
   };
-
-  private _events: EventGroup;
 
   constructor(props: IPanelProps) {
     super(props);
@@ -30,31 +31,25 @@ export class Panel extends React.Component<IPanelProps, IPanelState> {
 
     this.state = {
       isOpen: !!props.isOpen,
-      isAnimatingOpen: false,
+      isAnimatingOpen: props.isOpen,
       isAnimatingClose: false
     };
-
-    this._events = new EventGroup(this);
   }
 
   public componentDidMount() {
     if (this.state.isOpen) {
-      setTimeout(() => {
-      this.setState({
-        isAnimatingOpen: true
-      });
+      this._async.setTimeout(() => {
+        this.setState({
+          isAnimatingOpen: false
+        });
       }, 2000);
     }
-  }
-
-  public componentWillUnmount() {
-    this._events.dispose();
   }
 
   public componentWillReceiveProps(newProps: IPanelProps) {
     if (newProps.isOpen !== this.state.isOpen) {
       this.setState({
-        isOpen: true,
+        isOpen: newProps.isOpen,
         isAnimatingOpen: newProps.isOpen ? true : false,
         isAnimatingClose: newProps.isOpen ? false : true
       });
@@ -127,6 +122,7 @@ export class Panel extends React.Component<IPanelProps, IPanelState> {
   public dismiss() {
     if (this.state.isOpen) {
       this.setState({
+        isAnimatingOpen: false,
         isAnimatingClose: true
       });
     }
