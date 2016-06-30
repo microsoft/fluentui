@@ -6,7 +6,10 @@ import { Async } from '../../utilities/Async/Async';
 import './TextField.scss';
 
 export interface ITextFieldState {
-  value: string;
+  value?: string;
+
+  /** Is true when the control has focus. */
+  isFocused?: boolean;
 
   /**
    * The validation error message.
@@ -14,7 +17,7 @@ export interface ITextFieldState {
    * - If there is no validation error or we have not validated the input value, errorMessage is an empty string.
    * - If we have done the validation and there is validation error, errorMessage is the validation error message.
    */
-  errorMessage: string;
+  errorMessage?: string;
 }
 
 let _instance: number = 0;
@@ -50,10 +53,13 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
 
     this.state = {
       value: props.value || props.defaultValue,
+      isFocused: false,
       errorMessage: ''
     };
 
     this._onInputChange = this._onInputChange.bind(this);
+    this._onFocus = this._onFocus.bind(this);
+    this._onBlur = this._onBlur.bind(this);
 
     this._delayedValidate = this._async.debounce(this._validate, this.props.deferredValidationTime);
     this._lastValidation = 0;
@@ -100,11 +106,13 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
 
   public render() {
     let { disabled, required, multiline, underlined, label, description, iconClass, className } = this.props;
+    let { isFocused } = this.state;
     const errorMessage: string = this._errorMessage;
 
     const textFieldClassName = css('ms-TextField', className, {
       'is-required': required,
       'is-disabled': disabled,
+      'is-active': isFocused,
       'ms-TextField--multiline': multiline,
       'ms-TextField--underlined': underlined
     });
@@ -158,6 +166,14 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
       }
   }
 
+  private _onFocus() {
+    this.setState({ isFocused: true });
+  }
+
+  private _onBlur() {
+    this.setState({ isFocused: false });
+  }
+
   private get _fieldClassName(): string {
     const errorMessage: string = this._errorMessage;
     return css('ms-TextField-field', {
@@ -183,6 +199,8 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         value={ this.state.value }
         onChange={ this._onInputChange }
         className={ this._fieldClassName }
+        onFocus={ this._onFocus }
+        onBlur={ this._onBlur }
         />
     );
   }
@@ -198,6 +216,8 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         onChange={ this._onInputChange }
         className={ this._fieldClassName }
         aria-describedby={ this._descriptionId }
+        onFocus={ this._onFocus }
+        onBlur={ this._onBlur }
         />
     );
   }
