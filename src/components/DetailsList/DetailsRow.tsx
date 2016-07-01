@@ -162,7 +162,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
         ref='root'
         role='row'
         aria-label= { ariaLabel }
-        className={ css('ms-DetailsRow', droppingClassName, {
+        className={ css('ms-DetailsRow ms-u-fadeIn400', droppingClassName, {
           'is-selected': isSelected,
           'is-check-visible': checkboxVisibility === CheckboxVisibility.always
         }) }
