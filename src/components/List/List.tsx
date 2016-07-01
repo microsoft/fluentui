@@ -209,7 +209,7 @@ export class List extends BaseComponent<IListProps, IListState> {
 
   public forceUpdate() {
     // Ensure that when the list is force updated we update the pages first before render.
-    this._updateVisibleRect();
+    this._updateRenderRects();
     this._updatePages();
     this._measureVersion++;
 
@@ -326,13 +326,20 @@ export class List extends BaseComponent<IListProps, IListState> {
     return isIndexRendered;
   }
 
+  /**
+   * Called synchronously to reset the required render range to 0 on scrolling. After async scroll has executed,
+   * we will call onAsyncIdle which will reset it back to it's correct value.
+   */
   private _onScroll() {
     this._requiredWindowsAhead = 0;
     this._requiredWindowsBehind = 0;
   }
 
+  /**
+   * Debounced method to asynchronously update the visible region on a scroll event.
+   */
   private _onAsyncScroll() {
-    this._updateVisibleRect();
+    this._updateRenderRects();
 
     // Only update pages when the visible rect falls outside of the materialized rect.
     if (!this._materializedRect || !_isContainedWithin(this._requiredRect, this._materializedRect)) {
@@ -356,16 +363,16 @@ export class List extends BaseComponent<IListProps, IListState> {
     const windowsBehind = Math.min(renderedWindowsBehind, requiredWindowsBehind + 1);
 
     if (windowsAhead !== requiredWindowsAhead || windowsBehind !== requiredWindowsBehind) {
-  //  console.log('idling', windowsBehind, windowsAhead);
+
+      // console.log('idling', windowsBehind, windowsAhead);
 
       this._requiredWindowsAhead = windowsAhead;
       this._requiredWindowsBehind = windowsBehind;
-      this._updateVisibleRect();
+      this._updateRenderRects();
       this._updatePages();
     }
 
     if (renderedWindowsAhead > windowsAhead || renderedWindowsBehind > windowsBehind) {
-
       // Async increment on next tick.
       this._onAsyncIdle();
     }
@@ -376,14 +383,14 @@ export class List extends BaseComponent<IListProps, IListState> {
   }
 
   private _updatePages(props?: IListProps) {
-// console.log('updating pages');
-
     let { items, startIndex, renderCount } = (props || this.props);
+
+    // console.log('updating pages');
 
     renderCount = renderCount || (items ? items.length - startIndex : 0);
 
     if (!this._requiredRect) {
-      this._updateVisibleRect(props);
+      this._updateRenderRects(props);
     }
 
     let newListState = this._buildPages(items, startIndex, renderCount);
@@ -453,14 +460,14 @@ export class List extends BaseComponent<IListProps, IListState> {
     let pageElement = this.refs[page.key] as HTMLElement;
     let cachedHeight = this._cachedPageHeights[page.startIndex];
 
-// // console.log('   * measure attempt', page.startIndex, cachedHeight);
+    // console.log('   * measure attempt', page.startIndex, cachedHeight);
 
     if (pageElement && (!cachedHeight || cachedHeight.measureVersion !== this._measureVersion)) {
       let newClientRect = _measurePageRect(pageElement);
 
       hasChangedHeight = page.height !== newClientRect.height;
 
-// console.warn(' *** expensive page measure', page.startIndex, page.height, newClientRect.height);
+      // console.warn(' *** expensive page measure', page.startIndex, page.height, newClientRect.height);
 
       page.height = newClientRect.height;
 
@@ -483,7 +490,7 @@ export class List extends BaseComponent<IListProps, IListState> {
   private _onPageAdded(page: IPage) {
     let { onPageAdded } = this.props;
 
-//  console.log('page added', page.startIndex, this.state.pages.map(page=>page.key).join(', '));
+    // console.log('page added', page.startIndex, this.state.pages.map(page=>page.key).join(', '));
 
     if (onPageAdded) {
       onPageAdded(page);
@@ -494,7 +501,7 @@ export class List extends BaseComponent<IListProps, IListState> {
   private _onPageRemoved(page: IPage) {
     let { onPageRemoved } = this.props;
 
-//  console.log('  --- page removed', page.startIndex, this.state.pages.map(page=>page.key).join(', '));
+    // console.log('  --- page removed', page.startIndex, this.state.pages.map(page=>page.key).join(', '));
 
     if (onPageRemoved) {
       onPageRemoved(page);
@@ -578,7 +585,7 @@ export class List extends BaseComponent<IListProps, IListState> {
 
     this._materializedRect = materializedRect;
 
-   // console.log('materialized: ', materializedRect);
+    // console.log('materialized: ', materializedRect);
     return {
       pages: pages,
       measureVersion: this._measureVersion
@@ -642,7 +649,7 @@ export class List extends BaseComponent<IListProps, IListState> {
   }
 
   /** Calculate the visible rect within the list where top: 0 and left: 0 is the top/left of the list. */
-  private _updateVisibleRect(props?: IListProps, state?: IListState) {
+  private _updateRenderRects(props?: IListProps) {
     const { renderedWindowsAhead, renderedWindowsBehind } = (props || this.props);
 
     // WARNING: EXPENSIVE CALL! We need to know the surface top relative to the window.
@@ -685,12 +692,6 @@ function _expandRect(rect, pagesBefore, pagesAfter): ClientRect {
     width: rect.width
   };
 }
-
-/*
-function _areEqualSize(rect1: ClientRect, rect2: ClientRect) {
-  return !!(rect1 && rect2 && rect1.width === rect2.width && rect1.height === rect2.height);
-}
-*/
 
 function _isContainedWithin(innerRect: ClientRect, outerRect: ClientRect): boolean {
   return (
