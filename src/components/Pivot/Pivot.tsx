@@ -40,15 +40,11 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
     this.state = this._getStateFromProps(props);
   }
 
-  public componentWillReceiveProps(newProps: IPivotProps) {
-    this.state = this._getStateFromProps(newProps);
-  }
-
   public render() {
     return (
       <div>
-        {this._renderPivotLinks()}
-        {this._renderPivotItem()}
+        { this._renderPivotLinks() }
+        { this._renderPivotItem() }
       </div>
     );
   }
@@ -61,10 +57,10 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
     return (
       <FocusZone direction={ FocusZoneDirection.horizontal }>
         <ul className={ css('ms-Pivot',
-                     { 'ms-Pivot--large': this.props.linkSize === PivotLinkSize.large },
-                     { 'ms-Pivot--tabs': this.props.linkFormat === PivotLinkFormat.tabs })}>
-        {links.map(this._renderLink.bind(this))}
-      </ul>
+          { 'ms-Pivot--large': this.props.linkSize === PivotLinkSize.large },
+          { 'ms-Pivot--tabs': this.props.linkFormat === PivotLinkFormat.tabs }) }>
+          { links.map(this._renderLink.bind(this)) }
+        </ul>
       </FocusZone>
     );
   }
@@ -72,17 +68,16 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
   /**
    * Renders a pivot link
    */
-  private _renderLink(link: IPivotLink, index: number, links: IPivotLink[]) {
+  private _renderLink(link: IPivotLink, index: number) {
     return (
-      <li key={index}
-          className={ css('ms-Pivot-link', {
-                      'is-selected': this.state.selectedIndex === index })}>
-          <a onClick={this._onLinkClick.bind(this, index)}
-             onKeyPress={this._onKeyPress.bind(this, index)}
-             role='link'>
-            {link.linkText}
-          </a>
-      </li>
+      <a
+        key={ index }
+        className={ css('ms-Pivot-link', { 'is-selected': this.state.selectedIndex === index }) }
+        onClick={ this._onLinkClick.bind(this, index) }
+        onKeyPress={ this._onKeyPress.bind(this, index) }
+      >
+        { link.linkText }
+      </a>
     );
   }
 
@@ -98,7 +93,7 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
     let item: PivotItem = this.props.children[index];
     return (
       <div className='pivotItem'>
-        {item}
+        { item }
       </div>
     );
   }
@@ -126,31 +121,31 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
    * Handles the onClick event on PivotLinks
    */
   private _onLinkClick(index: number, ev: React.MouseEvent) {
-      ev.preventDefault();
-      this._updateSelectedItem(index, ev);
-    }
+    ev.preventDefault();
+    this._updateSelectedItem(index, ev);
+  }
 
   /**
    * Handle the onKeyPress eventon the PivotLinks
    */
   private _onKeyPress(index: number, ev: React.KeyboardEvent) {
-      ev.preventDefault();
-      if (ev.which === KeyCodes.enter) {
-        this._updateSelectedItem(index);
-      }
+    ev.preventDefault();
+    if (ev.which === KeyCodes.enter) {
+      this._updateSelectedItem(index);
+    }
   }
 
   /**
    * Updates the state with the new selected index
    */
-  private _updateSelectedItem(index: number, ev?: React.MouseEvent ) {
-      this.setState({
-        selectedIndex: index
-      });
+  private _updateSelectedItem(index: number, ev?: React.MouseEvent) {
+    this.setState({
+      selectedIndex: index
+    });
 
-      if (this.props.onLinkClick) {
-        this.props.onLinkClick(this.props.children[index], ev);
-      }
+    if (this.props.onLinkClick) {
+      this.props.onLinkClick(this.props.children[index], ev);
+    }
   }
 
   /**
