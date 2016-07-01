@@ -12,7 +12,7 @@ export interface IImageProps extends React.HTMLProps<HTMLImageElement>  {
   className?: string;
 
   /**
-   * Used to determine how to size the image to fit the dimensions of the component.
+   * Used to determine how the image is scaled and cropped to fit the frame.
    *
    * @default If both dimensions are provided, then the image is fit using ImageFit.scale. Otherwise, the image won't be scaled or cropped.
    */
@@ -37,11 +37,6 @@ export enum ImageFit {
    * The image is scaled to maintain its aspect ratio while filling the frame. Portions of the image will be cropped from the top and bottom, or from the sides, depending on the difference in aspect ratio between the image and the frame.
    */
   cover,
-
-  /**
-   * The image is scaled to fit the frame. If the aspect ratios of the two differ, the image will appear stretched in one dimension.
-   */
-  scale,
 
   /**
    * Neither the image nor the frame are scaled. If their sizes do not match, the image will either be cropped or the frame will have empty space.

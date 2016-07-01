@@ -21,8 +21,7 @@ export const CoverStyleMap = {
 export const ImageFitMap = {
   [ ImageFit.center ]: 'ms-Image-image--center',
   [ ImageFit.cover ]: 'ms-Image-image--cover',
-  [ ImageFit.none ]: 'ms-Image-image--none',
-  [ ImageFit.scale ]: 'ms-Image-image--scale'
+  [ ImageFit.none ]: 'ms-Image-image--none'
 };
 
 export enum ImageLoadState {
@@ -98,19 +97,23 @@ export class Image extends React.Component<IImageProps, IImageState> {
             'is-loaded': loaded,
             'ms-u-fadeIn400': loaded && shouldFadeIn,
             'is-error': loadState === ImageLoadState.error,
-            'ms-Image-image--scale': (imageFit === undefined && !!width && !!height),
+            'ms-Image-image--scaleWidth': (imageFit === undefined && !!width && !height),
+            'ms-Image-image--scaleHeight': (imageFit === undefined && !width && !!height),
+            'ms-Image-image--scaleWidthHeight': (imageFit === undefined && !!width && !!height),
           }) } ref='image' src={ srcToDisplay } alt={ alt } role={ role } />
       </div>
     );
   }
 
   private _evaluateImage(): boolean {
-    let { src } = this.props;
+    let { src, imageFit } = this.props;
     let { loadState } = this.state;
     let { image } = this.refs;
     let isLoaded = (src && image.naturalWidth > 0 && image.naturalHeight > 0);
 
-    this._computeCoverStyle();
+    if (imageFit === ImageFit.cover) {
+      this._computeCoverStyle();
+    }
 
     if (isLoaded && loadState !== ImageLoadState.loaded && loadState !== ImageLoadState.errorLoaded) {
       this._events.off();
