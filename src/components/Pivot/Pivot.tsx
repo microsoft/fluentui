@@ -68,7 +68,7 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
   /**
    * Renders a pivot link
    */
-  private _renderLink(link: IPivotLink, index: number, links: IPivotLink[]) {
+  private _renderLink(link: IPivotLink, index: number) {
     return (
       <a
         key={ index }
