@@ -4,19 +4,26 @@ import * as React from 'react';
 import { Breadcrumb } from './Breadcrumb';
 
 export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
+
   /**
    * Collection of breadcrumbs to render
    */
-  breadcrumbs: IBreadcrumb[];
+  items: IBreadcrumbItem[];
+
+  /**
+   * Optional root classname for the root breadcrumb element.
+   */
+  className?: string;
 
   /**
    * The maximum number of breadcrumbs to display before coalescing.
    * If not specified, all breadcrumbs will be rendered.
    */
-  maxDisplayedBreadcrumbs?: number;
+  maxDisplayedItems?: number;
 }
 
-export interface IBreadcrumb {
+export interface IBreadcrumbItem {
+
   /**
    * Text to display to the user for the breadcrumb
    */

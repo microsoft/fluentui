@@ -1,21 +1,19 @@
+/* tslint:disable:no-unused-variable */
 import * as React from 'react';
+/* tslint:enable:no-unused-variable */
 import {
   Breadcrumb
-} from '../../../../index';
+} from '../../../../Breadcrumb';
 
-export class BreadcrumbBasicExample extends React.Component<any, any> {
-  public render() {
-    return (
-      <Breadcrumb breadcrumbs={ [
-        {text: 'Files', 'key': 'Files'},
-        {text: 'Folder 1', 'key': 'Folder 1'},
-        {text: 'Folder 2', 'key': 'Folder 2'},
-        {text: 'Folder 3', 'key': 'Folder 3'},
-        {text: 'Folder 4', 'key': 'Folder 4'},
-        {text: 'Folder 5', 'key': 'Folder 5'},
-      ] }
-      maxDisplayedBreadcrumbs={ 3 } />
-    );
-  }
-
-}
+export const BreadcrumbBasicExample = () => (
+  <Breadcrumb
+    items={ [
+      {text: 'Files', 'key': 'Files'},
+      {text: 'This is folder 1', 'key': 'f1'},
+      {text: 'This is folder 2', 'key': 'f2'},
+      {text: 'This is folder 3', 'key': 'f3'},
+      {text: 'This is folder 4', 'key': 'f4'},
+      {text: 'This is folder 5', 'key': 'f5'},
+    ] }
+    maxDisplayedItems={ 3 } />
+);
