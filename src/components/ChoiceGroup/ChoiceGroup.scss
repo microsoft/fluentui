@@ -29,7 +29,7 @@
       position: relative;
 
       .ms-ChoiceField-imageWrapper {
-        transition: all 200ms ease;
+        transition: opacity 200ms ease;
 
         &.is-hidden {
           position: absolute;

@@ -19,6 +19,9 @@ export class DropdownBasicExample extends React.Component<any, any> {
               { key: 'E', text: 'Option e' },
               { key: 'F', text: 'Option f' },
               { key: 'G', text: 'Option g' },
+              { key: 'H', text: 'Option h' },
+              { key: 'I', text: 'Option i' },
+              { key: 'J', text: 'Option j' },
             ]
           }
         />

@@ -15,10 +15,13 @@ export interface IDropdownState {
 let _instance: number = 0;
 
 export class Dropdown extends React.Component<IDropdownProps, any> {
+
   public static defaultProps = {
     options: [],
     isDisabled: false
   };
+
+  private static itemHeightPx = 40;
 
   public refs: {
     [key: string]: React.ReactInstance,
@@ -26,6 +29,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
   };
 
   private _events: EventGroup;
+  private _optionList: HTMLElement;
   private _dropDown: HTMLDivElement;
 
   constructor(props?: IDropdownProps) {
@@ -65,6 +69,12 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
     this._events.dispose();
   }
 
+  public componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState) {
+    if (prevState.selectedIndex !== this.state.selectedIndex) {
+      this._scrollSelectedItemIntoView();
+    }
+  }
+
   public render() {
     let { label, options } = this.props;
     let { id, isOpen, selectedIndex, isDisabled } = this.state;
@@ -89,9 +99,14 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
           >
           <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown'></i>
           <span className='ms-Dropdown-title'>{ selectedOption ? selectedOption.text : '' }</span>
-          <ul id={ id + '-list' } className='ms-Dropdown-items' role='listbox' aria-labelledby={ id + '-label' }>
+          <ul ref={ (c: HTMLElement) => this._optionList = c }
+            id={ id + '-list' }
+            className='ms-Dropdown-items'
+            role='listbox'
+            aria-labelledby={ id + '-label' }>
             { options.map((option, index) => (
               <li id={ index.toString() }
+                style= { { 'height': Dropdown.itemHeightPx } }
                 key={ option.key }
                 data-index={ index }
                 className={ css('ms-Dropdown-item', { 'is-selected': selectedIndex === index }) }
@@ -109,9 +124,9 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
   }
 
   public focus() {
-      if (this._dropDown && this._dropDown.tabIndex !== -1) {
-          this._dropDown.focus();
-      }
+    if (this._dropDown && this._dropDown.tabIndex !== -1) {
+      this._dropDown.focus();
+    }
   }
 
   public setSelectedIndex(index: number) {
@@ -191,6 +206,19 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
       context.setState({
         isOpen: false
       });
+    }
+  }
+
+  private _scrollSelectedItemIntoView() {
+    const posBottom: number = Dropdown.itemHeightPx * (this.state.selectedIndex + 1);
+    const posTop: number = Dropdown.itemHeightPx * this.state.selectedIndex;
+
+    // if the selected item is too far down
+    if (posBottom > this._optionList.offsetHeight + this._optionList.scrollTop) {
+      this._optionList.scrollTop = posBottom - this._optionList.offsetHeight;
+      // else if it's too far up
+    } else if (posTop < this._optionList.scrollTop) {
+      this._optionList.scrollTop = posTop;
     }
   }
 }

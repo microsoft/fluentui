@@ -28,7 +28,7 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
   }
 
   public render(): JSX.Element {
-    let { buttonType, children, icon, description, ariaLabel } = this.props;
+    let { buttonType, children, icon, description, ariaLabel, elementType, disabled } = this.props;
     let {labelId, descriptionId } = this.state;
 
     const tag = this.props.elementType === ElementType.button ? 'button' : 'a';
@@ -38,7 +38,8 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
       'ms-Button--hero': buttonType === ButtonType.hero,
       'ms-Button--compound': buttonType === ButtonType.compound,
       'ms-Button--command': buttonType === ButtonType.command,
-      'ms-Button--icon' : buttonType === ButtonType.icon
+      'ms-Button--icon': buttonType === ButtonType.icon,
+      'disabled': (elementType === ElementType.anchor && disabled)
     });
 
     const iconSpan = icon && (buttonType === ButtonType.command || buttonType === ButtonType.hero || buttonType === ButtonType.icon)
