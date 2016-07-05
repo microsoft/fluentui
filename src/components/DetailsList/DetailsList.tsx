@@ -594,7 +594,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     if (!onActiveItemChanged || !el) {
       return;
     }
-    let index = Number(el.getAttribute('data-selection-index'));
+    let index = Number(el.getAttribute('data-item-index'));
     if (index >= 0) {
       onActiveItemChanged(items[index], index, ev);
     }

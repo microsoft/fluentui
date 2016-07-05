@@ -168,6 +168,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
         }) }
         data-is-focusable={ true }
         data-selection-index={ canSelect ? itemIndex : -1 }
+        data-item-index={ itemIndex }
         data-is-draggable={ isDraggable }
         data-automationid='DetailsRow'
         style={ { minWidth: viewport ? viewport.width : 0 } }
