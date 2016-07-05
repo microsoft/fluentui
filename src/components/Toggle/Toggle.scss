@@ -14,7 +14,7 @@
 
   position: relative;
   display: block;
-  margin-bottom: 26px;
+  margin-bottom: 10px;
   user-select: none;
 
   // Interactive overrides
@@ -25,16 +25,16 @@
     }
 
     .ms-Toggle-background {
-      border: 1px solid $ms-color-neutralPrimary;
+      border: 1px solid $ms-color-neutralSecondaryAlt;
     }
 
     .ms-Toggle-slider:hover {
       .ms-Toggle-background {
-        border: 1px solid $ms-color-neutralSecondary;
+        border: 1px solid $ms-color-black;
       }
 
       .ms-Toggle-thumb {
-        background: $ms-color-neutralSecondary;
+        background: $ms-color-black;
       }
     }
 
@@ -126,7 +126,7 @@
   border-radius: 10px;
   top: 4px;
   @include left(4px);
-  background: $ms-color-neutralPrimary;
+  background: $ms-color-neutralSecondary;
   transition: all 0.1s ease;
 }
 
