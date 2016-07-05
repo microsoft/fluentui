@@ -61,18 +61,18 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     let { positions, slideDirectionalClassName } = this.state;
     let content = (
       <div ref={ (host: HTMLDivElement) => this._hostElement = host } className={ css('ms-Callout-container', className) }>
-          <div
-            className= { 'ms-Callout' + ((slideDirectionalClassName) ? (` ms-u-${slideDirectionalClassName}`) : '') }
-            style={ ((positions) ? positions.callout : OFF_SCREEN_POSITION) }
-            ref={ (callout: HTMLDivElement) => this._calloutElement = callout }
-            >
-            { isBeakVisible && targetElement ? (<div className={ beakStyle }  style={ ((positions) ? positions.beak : BEAK_ORIGIN_POSITION) } />) : (null) }
-            <div className='ms-Callout-main'>
-                { children }
-            </div>
+        <div
+          className= { 'ms-Callout' + ((slideDirectionalClassName) ? (` ms-u-${slideDirectionalClassName}`) : '') }
+          style={ ((positions) ? positions.callout : OFF_SCREEN_POSITION) }
+          ref={ (callout: HTMLDivElement) => this._calloutElement = callout }
+          >
+          { isBeakVisible && targetElement ? (<div className={ beakStyle }  style={ ((positions) ? positions.beak : BEAK_ORIGIN_POSITION) } />) : (null) }
+          <div className='ms-Callout-main'>
+            { children }
           </div>
         </div>
-        );
+      </div>
+    );
     return this.props.doNotLayer ? content : (
       <Layer onLayerMounted={ this._updatePosition }>
         {content}
@@ -105,7 +105,9 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     let hostElement: HTMLElement = this._hostElement;
     let calloutElement: HTMLElement = this._calloutElement;
 
-    this._events.on(window, 'scroll', this.dismiss, true);
+    // This is added so the callout will dismiss when the window is scrolled
+    // but not when something inside the callout is scrolled.
+    this._events.on(window, 'scroll', this._dismissOnLostFocus, true);
     this._events.on(window, 'resize', this.dismiss, true);
     this._events.on(window, 'focus', this._dismissOnLostFocus, true);
     this._events.on(window, 'click', this._dismissOnLostFocus, true);

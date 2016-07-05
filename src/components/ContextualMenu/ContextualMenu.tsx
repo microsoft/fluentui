@@ -127,7 +127,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
 
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount() {
-    this._events.on(window, 'scroll', this._onScroll, true);
     this._events.on(window, 'resize', this.dismiss);
     this._events.on(window, 'mousedown', this._onMouseDownCapture, true);
     this._events.on(window, 'touchstart', this._onMouseDownCapture, true);
@@ -167,7 +166,8 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
                gapSpace={ gapSpace }
                doNotLayer={ this.props.isSubMenu }
                beakStyle='ms-Callout-smallbeak'
-               className='ms-ContextualMenu-Callout'>
+               className='ms-ContextualMenu-Callout'
+               onDismiss={ this.props.onDismiss }>
         <div ref={ (host: HTMLDivElement) => this._host = host} id={ id } className={ css('ms-ContextualMenu-container', className) }>
           { (items && items.length) ? (
             <FocusZone
@@ -279,11 +279,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   }
 
   private _onMouseDownCapture(ev: React.MouseEvent) {
-    if (!this._host.contains(ev.target as HTMLElement)) {
-      this.dismiss(ev);
-    }
-  }
-  private _onScroll(ev: React.UIEvent) {
     if (!this._host.contains(ev.target as HTMLElement)) {
       this.dismiss(ev);
     }
