@@ -104,7 +104,7 @@ export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetails
               className='ms-DetailsHeader-cell is-check'
               onClick={ this._onSelectAllClicked }
               aria-label={ ariaLabelForSelectAllCheckbox }
-              aria-checked= { isAllSelected }
+              aria-pressed={ isAllSelected }
               >
               <Check isChecked={ isAllSelected } />
             </button>
