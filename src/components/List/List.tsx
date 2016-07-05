@@ -280,7 +280,11 @@ export class List extends BaseComponent<IListProps, IListState> {
 
     for (let i = 0; page.items && i < page.items.length; i++) {
       let item = page.items[i];
-      let itemKey = (item ? item.key : null) || (page.startIndex + i);
+      let itemKey = (item ? item.key : undefined);
+
+      if (itemKey === null || itemKey === undefined) {
+        itemKey = page.startIndex + i;
+      }
 
       cells.push(
         <div className='ms-List-cell' key={ itemKey } data-list-index={ i + page.startIndex } data-automationid='ListCell'>

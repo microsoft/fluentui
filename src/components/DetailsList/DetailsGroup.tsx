@@ -291,7 +291,6 @@ export class DetailsGroup extends React.Component<IDetailsGroupProps, IDetailsGr
       getRowAriaLabel,
       canSelectItem
     } = this.props;
-    let rowKey = item ? item.key : index;
 
     if (!item) {
       if (onRenderMissingItem) {
@@ -303,7 +302,6 @@ export class DetailsGroup extends React.Component<IDetailsGroupProps, IDetailsGr
 
     return (
         <DetailsRow
-          key={ rowKey }
           item={ item }
           itemIndex={ index }
           columns={ columns }
