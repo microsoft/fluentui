@@ -9,7 +9,8 @@ import { createListItems } from '../../../utilities/data';
 let _items: any[];
 
 export const DetailsListBasicExample = () => {
-  _items = _items || createListItems(500);
+ _items = _items || createListItems(500);
+
   return (
     <DetailsList items={ _items } />
   );

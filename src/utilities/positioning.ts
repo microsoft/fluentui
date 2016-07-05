@@ -1,6 +1,6 @@
 import { DirectionalHint } from '../common/DirectionalHint';
 import Rectangle from './Rectangle';
-import { scrollBarWidth } from './scrollBarUtilities';
+import { getScrollbarWidth } from './scrollUtilities';
 import { assign } from '../utilities/object';
 
 export enum RectangleEdge {
@@ -111,7 +111,7 @@ export function getRelativePositions(
   let gap: number = positioningFunctions._calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
   let boundingRect: Rectangle = props.bounds ?
     positioningFunctions._getRectangleFromIRect(props.bounds) :
-    new Rectangle(0, window.innerWidth - scrollBarWidth(), 0, window.innerHeight);
+    new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
   let targetRect: Rectangle = positioningFunctions._getTargetRect(
     boundingRect,
     props.targetElement,

@@ -232,6 +232,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           'is-horizontalConstrained': constrainMode === ConstrainMode.horizontalConstrained
         }) }
         data-automationid='DetailsList'
+        data-is-scrollable='false'
         role='grid'>
         { isHeaderVisible && (
         <DetailsHeader

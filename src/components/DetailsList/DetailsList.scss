@@ -29,3 +29,8 @@
 .ms-DetailsList-cell {
     word-break: break-word;
 }
+
+/* Set the min height for a row to 38px so even rendering empty cells takes that space. */
+.ms-DetailsList .ms-List-cell {
+  min-height: 38px;
+}

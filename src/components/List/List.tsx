@@ -4,13 +4,13 @@ import { IListProps, IPage } from './List.Props';
 import { css } from '../../utilities/css';
 import { assign } from '../../utilities/object';
 import { findIndex } from '../../utilities/array';
+import { findScrollableParent } from '../../utilities/scrollUtilities';
 
 const MIN_SCROLL_UPDATE_DELAY = 50;
 const MAX_SCROLL_UPDATE_DELAY = 200;
 const IDLE_DEBOUNCE_DELAY = 200;
 const DEFAULT_ITEMS_PER_PAGE = 10;
 const DEFAULT_PAGE_HEIGHT = 30;
-
 const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
 const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
 
@@ -35,7 +35,6 @@ const EMPTY_RECT = {
 // Naming expensive measures so that they're named in profiles.
 const _measurePageRect = (element: HTMLElement) => element.getBoundingClientRect();
 const _measureSurfaceRect = _measurePageRect;
-const _measureScrollRect = _measurePageRect;
 
 /**
  * The List renders virtualized pages of items. Each page's item count is determined by the getItemCountForPage callback if
@@ -76,8 +75,8 @@ export class List extends BaseComponent<IListProps, IListState> {
     height: number,
     measureVersion: number
   } };
-  private _scrollableElement: HTMLElement;
   private _focusedIndex: number;
+  private _scrollElement: HTMLElement;
   private _scrollingToIndex: number;
   private _hasCompletedFirstRender: boolean;
 
@@ -136,37 +135,15 @@ export class List extends BaseComponent<IListProps, IListState> {
   }
 
   public componentDidMount() {
-    let scrollableElements = this._getScrollableElements();
-
-    this._scrollableElement = scrollableElements[0];
 
     this._updatePages();
     this._measureVersion++;
+    this._scrollElement = findScrollableParent(this.refs.root);
 
     this._events.on(window, 'resize', this._onResize);
     this._events.on(this.refs.root, 'focus', this._onFocus, true);
-
-    this._registerScrollListener();
-  }
-
-  public _registerScrollListener() {
-    let scrollElement: any = this.refs.root;
-
-    while (scrollElement) {
-      if (scrollElement.getAttribute('data-is-scrollable') === 'true') {
-        this._events.on(scrollElement, 'scroll', this._onScroll);
-        this._events.on(scrollElement, 'scroll', this._onAsyncScroll);
-        break;
-      }
-
-      if (scrollElement === document.body) {
-        this._events.on(window, 'scroll', this._onScroll, true);
-        this._events.on(window, 'scroll', this._onAsyncScroll, true);
-        break;
-      }
-
-      scrollElement = scrollElement.parentNode;
-    }
+    this._events.on(this._scrollElement, 'scroll', this._onScroll);
+    this._events.on(this._scrollElement, 'scroll', this._onAsyncScroll);
   }
 
   public componentWillReceiveProps(newProps: IListProps) {
@@ -174,6 +151,7 @@ export class List extends BaseComponent<IListProps, IListState> {
       newProps.renderCount !== this.props.renderCount ||
       newProps.startIndex !== this.props.startIndex) {
 
+      this._measureVersion++;
       this._updatePages(newProps);
     }
   }
@@ -216,46 +194,6 @@ export class List extends BaseComponent<IListProps, IListState> {
     super.forceUpdate();
   }
 
-  public scrollTo(index: number): boolean {
-    let isIndexRendered = this._isIndexRendered(index);
-    let didScroll = false;
-
-    if (!isIndexRendered) {
-      // Identify where the page would be.
-      let pageTop = 0;
-      let itemCount = 0;
-      let { items } = this.props;
-      let surfaceRect = _measureSurfaceRect(this.refs.surface);
-
-      for (let itemIndex = 0; items && itemIndex < items.length; itemIndex += itemCount) {
-
-        itemCount = this._getItemCountForPage(itemIndex, surfaceRect);
-
-        if (itemIndex <= index && (itemIndex + itemCount) > index) {
-          let allScrollables = this._getScrollableElements();
-          let scrollElement = allScrollables[0] || document.body;
-
-          for (let scrollable of allScrollables) {
-            if (scrollable.clientHeight < scrollable.scrollHeight) {
-              scrollElement = scrollable;
-              break;
-            }
-          }
-
-          let scrollRect = _measureScrollRect(scrollElement);
-
-          didScroll = true;
-          scrollElement.scrollTop = surfaceRect.top - scrollRect.top + scrollElement.scrollTop + pageTop;
-          break;
-        }
-
-        pageTop += this._getPageHeight(itemIndex, itemCount, surfaceRect);
-      }
-    }
-
-    return didScroll;
-  }
-
   public render() {
     let { className } = this.props;
     let { pages } = this.state;
@@ -277,10 +215,11 @@ export class List extends BaseComponent<IListProps, IListState> {
   private _renderPage(page: IPage): any {
     let { onRenderCell } = this.props;
     let cells = [];
+    let pageStyle = this._getPageStyle(page);
 
     for (let i = 0; page.items && i < page.items.length; i++) {
       let item = page.items[i];
-      let itemKey = (item ? item.key : undefined);
+      let itemKey = (item ? item.key : null);
 
       if (itemKey === null || itemKey === undefined) {
         itemKey = page.startIndex + i;
@@ -294,10 +233,27 @@ export class List extends BaseComponent<IListProps, IListState> {
     }
 
     return (
-      <div className='ms-List-page' key={ page.key } ref={ page.key } style={ page.style }>
+      <div className='ms-List-page' key={ page.key } ref={ page.key } style={ pageStyle }>
         { cells }
       </div>
     );
+  }
+
+  /** Generate the style object for the page. */
+  private _getPageStyle(page) {
+    let style;
+    let { getPageStyle } = this.props;
+
+    if (getPageStyle) {
+      style = getPageStyle(page);
+    }
+
+    if (!page.items) {
+      style = style || {};
+      style.height = page.height;
+    }
+
+    return style;
   }
 
   /** Track the last item index focused so that we ensure we keep it rendered. */
@@ -314,20 +270,6 @@ export class List extends BaseComponent<IListProps, IListState> {
 
       target = target.parentElement;
     }
-  }
-
-  private _isIndexRendered(index: number): boolean {
-    let { pages } = this.state;
-    let isIndexRendered = false;
-
-    for (let page of pages) {
-      if (page.items && page.startIndex <= index && (page.startIndex + page.itemCount) > index) {
-        isIndexRendered = true;
-        break;
-      }
-    }
-
-    return isIndexRendered;
   }
 
   /**
@@ -572,7 +514,7 @@ export class List extends BaseComponent<IListProps, IListState> {
         if (!currentSpacer) {
           currentSpacer = this._createPage('spacer-' + itemIndex, null, itemIndex, 0);
         }
-        currentSpacer.style.height = (currentSpacer.style.height || 0) + (pageBottom - pageTop) + 1;
+        currentSpacer.height = (currentSpacer.height || 0) + (pageBottom - pageTop) + 1;
         currentSpacer.itemCount += itemsPerPage;
       }
       pageTop += (pageBottom - pageTop + 1);
@@ -612,23 +554,6 @@ export class List extends BaseComponent<IListProps, IListState> {
 
   private _getItemCountForPage(itemIndex: number, visibileRect: ClientRect): number {
     return this.props.getItemCountForPage ? this.props.getItemCountForPage(itemIndex, visibileRect) : DEFAULT_ITEMS_PER_PAGE;
-  }
-
-  private _getScrollableElements() {
-    let el = this.refs.root;
-    let elements = [];
-
-    while (el && el !== document.body) {
-      let style = getComputedStyle(el);
-
-      if (style.overflowY === 'auto' || style.overflowY === 'scroll') {
-        elements.push(el);
-      }
-
-      el = el.parentElement;
-    }
-
-    return elements;
   }
 
   private _createPage(pageKey: string, items: any[], startIndex?: number, count?: number, style?: any): IPage {
