@@ -22,14 +22,14 @@ const OVERFLOW_WIDTH = 44;
 let _instance = 0;
 
 export class Breadcrumb extends React.Component<IBreadcrumbProps, IBreadcrumbState> {
+  public static defaultProps: IBreadcrumbProps = {
+    items: [],
+    maxDisplayedItems: 999
+  };
+
   public refs: {
     [key: string]: React.ReactInstance;
     renderingArea: HTMLElement;
-  };
-
-  public defaultProps: IBreadcrumbProps = {
-    items: [],
-    maxDisplayedItems: 999
   };
 
   private _breadcrumbItemWidths: { [key: string]: number };
