@@ -82,7 +82,7 @@ export function getNextElement(
   let isCurrentElementVisible = isElementVisible(currentElement);
 
   // Check the current node, if it's not the first traversal.
-  if (checkNode && isCurrentElementVisible && isElementTabbable(currentElement) ) {
+  if (checkNode && isCurrentElementVisible && isElementTabbable(currentElement)) {
     return currentElement;
   }
 
@@ -116,8 +116,9 @@ export function getNextElement(
 export function isElementVisible(element: HTMLElement): boolean {
   return (
     !!element &&
-    (element.offsetParent !== null ||
-    (element as any).isVisible === true) // used as a workaround for testing.
+    (element.offsetHeight !== 0 ||
+      element.offsetParent !== null ||
+      (element as any).isVisible === true) // used as a workaround for testing.
   );
 }
 

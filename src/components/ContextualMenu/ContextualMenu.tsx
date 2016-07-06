@@ -8,6 +8,7 @@ import { css } from '../../utilities/css';
 import { getRTL } from '../../utilities/rtl';
 import { Async } from '../../utilities/Async/Async';
 import { Callout } from '../../Callout';
+import { Popup } from '../../Popup';
 import './ContextualMenu.scss';
 
 export interface IContextualMenuState {
@@ -88,6 +89,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   private _enterTimerId: number;
   private _events: EventGroup;
   private _async: Async;
+  private _focusZone: FocusZone;
 
   constructor(props: IContextualMenuProps) {
     super(props);
@@ -169,51 +171,55 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     let hasCheckmarks = !!(items && items.some(item => !!item.canCheck));
 
     return (
-      <Callout targetElement={ targetElement }
-               targetPoint={ targetPoint }
-               useTargetPoint={ useTargetPoint }
-               isBeakVisible={ isBeakVisible }
-               beakWidth={ beakWidth }
-               directionalHint={ directionalHint }
-               gapSpace={ gapSpace }
-               doNotLayer={ isSubMenu }
-               coverTarget={ coverTarget }
-               beakStyle='ms-Callout-smallbeak'
-               className='ms-ContextualMenu-Callout'
-               onDismiss={ this.props.onDismiss }>
-        <div ref={ (host: HTMLDivElement) => this._host = host} id={ id } className={ css('ms-ContextualMenu-container', className) }>
-          { (items && items.length) ? (
-            <FocusZone
-              className={ 'ms-ContextualMenu is-open'}
-              isCircularNavigation={ true }
-              role='menu'
-              ariaLabelledBy={ labelElementId }
-              ref={ (focusZone) => this._tryFocus(focusZone) }
-              >
-              <ul className='ms-ContextualMenu-list is-open ' onKeyDown={ this._onKeyDown }>
-                { items.map((item, index) => (
-                  // If the item name is equal to '-', a divider will be generated.
-                  item.name === '-' ? (
-                    <li
-                      role='separator'
-                      key={ item.key || index }
-                      className={ css('ms-ContextualMenu-item ms-ContextualMenu-item--divider', item.className ) }/>
-                  ) : (
+      <Callout
+        targetElement={ targetElement }
+        targetPoint={ targetPoint }
+        useTargetPoint={ useTargetPoint }
+        isBeakVisible={ isBeakVisible }
+        beakWidth={ beakWidth }
+        directionalHint={ directionalHint }
+        gapSpace={ gapSpace }
+        doNotLayer={ isSubMenu }
+        coverTarget={ coverTarget }
+        beakStyle='ms-Callout-smallbeak'
+        className='ms-ContextualMenu-Callout'
+        onLayerMounted={ () => this._tryFocus(this._focusZone) }
+        onDismiss={ this.props.onDismiss }>
+        <Popup>
+          <div ref={ (host: HTMLDivElement) => this._host = host} id={ id } className={ css('ms-ContextualMenu-container', className) }>
+            { (items && items.length) ? (
+              <FocusZone
+                className={ 'ms-ContextualMenu is-open'}
+                isCircularNavigation={ true }
+                role='menu'
+                ariaLabelledBy={ labelElementId }
+                ref={ (focusZone) => this._focusZone = focusZone }
+                >
+                <ul className='ms-ContextualMenu-list is-open ' onKeyDown={ this._onKeyDown }>
+                  { items.map((item, index) => (
+                    // If the item name is equal to '-', a divider will be generated.
+                    item.name === '-' ? (
                       <li
-                        role='menuitem'
+                        role='separator'
                         key={ item.key || index }
-                        className={ css('ms-ContextualMenu-item', item.className ) }>
-                          { this._renderMenuItem(item, index, hasCheckmarks, hasIcons) }
-                      </li>
-                    )
-                )) }
-              </ul>
-            </FocusZone>
-          ) : (null) }
-          { submenuProps ? ( // If a submenu properities exists, the submenu will be rendered.
-            <ContextualMenu { ...submenuProps }/>
-          ) : (null) }
-        </div>
+                        className={ css('ms-ContextualMenu-item ms-ContextualMenu-item--divider', item.className ) }/>
+                    ) : (
+                        <li
+                          role='menuitem'
+                          key={ item.key || index }
+                          className={ css('ms-ContextualMenu-item', item.className ) }>
+                            { this._renderMenuItem(item, index, hasCheckmarks, hasIcons) }
+                        </li>
+                      )
+                  )) }
+                </ul>
+              </FocusZone>
+            ) : (null) }
+            { submenuProps ? ( // If a submenu properities exists, the submenu will be rendered.
+              <ContextualMenu { ...submenuProps }/>
+            ) : (null) }
+          </div>
+        </Popup>
       </Callout>
     );
   }

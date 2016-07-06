@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Dialog } from './Dialog';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
+import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 
-export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeState {
+export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeState, IAccessiblePopupProps {
   /**
   * Whether the dialog is displayed.
   * @default false
@@ -51,23 +52,6 @@ export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeSt
   * Optional override content class
   */
   contentClassName?: string;
-
-  /**
-   * Sets the HTMLElement to focus on when exiting the FocusTrapZone.
-   * @default The element.target that triggered the Dialog.
-   */
-  elementToFocusOnDismiss?: HTMLElement;
-
-  /**
-   * Indicates if this Dialog will ignore keeping track of HTMLElement that activated the Dialog.
-   * @default false
-   */
-  ignoreExternalFocusing?: boolean;
-
-  /**
-   * Aria label on close button
-   */
-  closeButtonAriaLabel?: string;
 }
 
 export enum DialogType {
