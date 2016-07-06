@@ -149,7 +149,19 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   }
 
   public render() {
-    let { className, items, isBeakVisible, labelElementId, targetElement, id, targetPoint, useTargetPoint, beakWidth, directionalHint, gapSpace } = this.props;
+    let { className,
+          items,
+          isBeakVisible,
+          labelElementId,
+          targetElement,
+          id,
+          targetPoint,
+          useTargetPoint,
+          beakWidth,
+          directionalHint,
+          gapSpace,
+          isSubMenu,
+          coverTarget } = this.props;
 
     let { submenuProps } = this.state;
 
@@ -164,7 +176,8 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
                beakWidth={ beakWidth }
                directionalHint={ directionalHint }
                gapSpace={ gapSpace }
-               doNotLayer={ this.props.isSubMenu }
+               doNotLayer={ isSubMenu }
+               coverTarget={ coverTarget }
                beakStyle='ms-Callout-smallbeak'
                className='ms-ContextualMenu-Callout'
                onDismiss={ this.props.onDismiss }>

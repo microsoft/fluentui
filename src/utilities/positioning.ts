@@ -18,25 +18,46 @@ let SLIDE_ANIMATIONS: { [key: number]: string; } = {
 };
 
 export interface IPositionProps {
+  /** The element that the callout should be positioned based on. */
   targetElement?: HTMLElement;
+
+  /** how the element should be positioned */
   directionalHint?: DirectionalHint;
+
+  /** The gap between the callout and the target */
   gapSpace?: number;
+
+  /** The width of the beak. */
   beakWidth?: number;
+
   /**
    * The bounding rectangle for which  the contextual menu can appear in.
    */
   bounds?: IRect;
+
   /**
    * The event that created the contextualmenu.
    * @default null
    */
   creationEvent?: MouseEvent;
 
+  /**
+   * If true use a point rather than rectangle to position the callout.
+   * For example it can be used to position based on a click.
+   */
   useTargetPoint?: boolean;
 
+  /** Point used to position */
   targetPoint?: IPoint;
 
+  /** If true then the beak is visible. If false it will not be shown. */
   isBeakVisible?: boolean;
+
+  /**
+   * If true the position returned will have the menu element cover the target.
+   * If false then it will position next to the target;
+   */
+  coverTarget?: boolean;
 }
 
 export interface IPositionInfo {
@@ -95,6 +116,22 @@ let DirectionalDictionary: { [key: number]: PositionData } = {
   [DirectionalHint.rightCenter]: new PositionData(RectangleEdge.left, RectangleEdge.right, 50, 50, 50, false),
   [DirectionalHint.rightBottomEdge]: new PositionData(RectangleEdge.left, RectangleEdge.right, 100, 100, 50, false)
 };
+let CoverDictionary: { [key: number]: PositionData } = {
+  [DirectionalHint.topLeftEdge]: new PositionData(RectangleEdge.top, RectangleEdge.top, 0, 0, 50, false),
+  [DirectionalHint.topCenter]: new PositionData(RectangleEdge.top, RectangleEdge.top, 50, 50, 50, false),
+  [DirectionalHint.topRightEdge]: new PositionData(RectangleEdge.top, RectangleEdge.top, 100, 100, 50, false),
+  [DirectionalHint.topAutoEdge]: new PositionData(RectangleEdge.top, RectangleEdge.top, 0, 0, 50, true),
+  [DirectionalHint.bottomLeftEdge]: new PositionData(RectangleEdge.bottom, RectangleEdge.bottom, 0, 0, 50, false),
+  [DirectionalHint.bottomCenter]: new PositionData(RectangleEdge.bottom, RectangleEdge.bottom, 50, 50, 50, false),
+  [DirectionalHint.bottomRightEdge]: new PositionData(RectangleEdge.bottom, RectangleEdge.bottom, 100, 100, 50, false),
+  [DirectionalHint.bottomAutoEdge]: new PositionData(RectangleEdge.bottom, RectangleEdge.bottom, 0, 0, 50, true),
+  [DirectionalHint.leftTopEdge]: new PositionData(RectangleEdge.left, RectangleEdge.left, 0, 0, 50, false),
+  [DirectionalHint.leftCenter]: new PositionData(RectangleEdge.left, RectangleEdge.left, 50, 50, 50, false),
+  [DirectionalHint.leftBottomEdge]: new PositionData(RectangleEdge.left, RectangleEdge.left, 100, 100, 50, false),
+  [DirectionalHint.rightTopEdge]: new PositionData(RectangleEdge.right, RectangleEdge.right, 0, 0, 50, false),
+  [DirectionalHint.rightCenter]: new PositionData(RectangleEdge.right, RectangleEdge.right, 50, 50, 50, false),
+  [DirectionalHint.rightBottomEdge]: new PositionData(RectangleEdge.right, RectangleEdge.right, 100, 100, 50, false)
+};
 
 let OppositeEdgeDictionary: { [key: number]: number } = {
   [RectangleEdge.top]: RectangleEdge.bottom,
@@ -118,13 +155,18 @@ export function getRelativePositions(
     props.creationEvent,
     props.targetPoint,
     props.useTargetPoint);
-  let positionData: PositionData = positioningFunctions._getPositionData(props.directionalHint, targetRect, boundingRect);
+  let positionData: PositionData = positioningFunctions._getPositionData(
+    props.directionalHint,
+    targetRect,
+    boundingRect,
+    props.coverTarget);
   let positionedCallout: positioningFunctions.ICallout = positioningFunctions._positionCalloutWithinBounds(
     positioningFunctions._getRectangleFromHTMLElement(calloutElement),
     targetRect,
     boundingRect,
     positionData,
-    gap);
+    gap,
+    props.coverTarget);
   let beakPositioned: Rectangle = positioningFunctions._positionBeak(beakWidth, positionedCallout, targetRect, borderWidth);
   let finalizedCallout: Rectangle = positioningFunctions._finalizeCalloutPosition(positionedCallout.calloutRectangle, hostElement);
 
@@ -189,7 +231,8 @@ export module positioningFunctions {
     targetRectangle: Rectangle,
     boundingRectangle: Rectangle,
     directionalInfo: PositionData,
-    gap: number = 0): ICallout {
+    gap: number = 0,
+    coverTarget?: boolean): ICallout {
     let estimatedRectangle: Rectangle = _moveRectangleToAnchorRectangle(calloutRectangle,
       directionalInfo.calloutDirection,
       directionalInfo.calloutPercent,
@@ -201,11 +244,17 @@ export module positioningFunctions {
     if (_isRectangleWithinBounds(estimatedRectangle, boundingRectangle)) {
       return { calloutRectangle: estimatedRectangle, calloutEdge: directionalInfo.calloutDirection, targetEdge: directionalInfo.targetDirection, alignPercent: directionalInfo.calloutPercent, beakPercent: directionalInfo.beakPercent };
     } else {
-      return _getBestRectangleFitWithinBounds(estimatedRectangle, targetRectangle, boundingRectangle, directionalInfo, gap);
+      return _getBestRectangleFitWithinBounds(estimatedRectangle, targetRectangle, boundingRectangle, directionalInfo, gap, coverTarget);
     }
   }
 
-  export function _getBestRectangleFitWithinBounds(estimatedPosition: Rectangle, targetRectangle: Rectangle, boundingRectangle: Rectangle, directionalInfo: PositionData, gap: number): ICallout {
+  export function _getBestRectangleFitWithinBounds(
+    estimatedPosition: Rectangle,
+    targetRectangle: Rectangle,
+    boundingRectangle: Rectangle,
+    directionalInfo: PositionData,
+    gap: number,
+    coverTarget?: boolean): ICallout {
     let callout: ICallout = {
       calloutRectangle: estimatedPosition,
       calloutEdge: directionalInfo.calloutDirection,
@@ -219,12 +268,14 @@ export module positioningFunctions {
       return callout;
     }
 
-    callout = _flipRectangleToFit(
-      callout,
-      targetRectangle,
-      directionalInfo.targetPercent,
-      boundingRectangle,
-      gap);
+    if (!coverTarget) {
+      callout = _flipRectangleToFit(
+        callout,
+        targetRectangle,
+        directionalInfo.targetPercent,
+        boundingRectangle,
+        gap);
+    }
 
     let outOfBounds: RectangleEdge[] = _getOutOfBoundsEdges(callout.calloutRectangle, boundingRectangle);
 
@@ -558,8 +609,8 @@ export module positioningFunctions {
     return 0;
   }
 
-  export function _getPositionData(direction: DirectionalHint, target: Rectangle, boundingRect: Rectangle): PositionData {
-    let directionalInfo: PositionData = DirectionalDictionary[direction];
+  export function _getPositionData(direction: DirectionalHint, target: Rectangle, boundingRect: Rectangle, coverTarget?: boolean): PositionData {
+    let directionalInfo: PositionData = coverTarget ? CoverDictionary[direction] : DirectionalDictionary[direction];
 
     if (directionalInfo.isAuto) {
       let center: IPoint = _getPointOnEdgeFromPercent(target, directionalInfo.targetDirection, 50);

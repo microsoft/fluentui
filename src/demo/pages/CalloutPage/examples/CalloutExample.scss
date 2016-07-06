@@ -15,6 +15,24 @@
     top: 85px;
     margin: 0 100px;
     text-align: center;
+    height: 32px;
+}
+
+.ms-CalloutCoverExample-buttonArea {
+    position: absolute;
+    vertical-align: top;
+    display: inline-block;
+    top: 30px;
+    margin: 0 100px;
+    text-align: center;
+    height: 32px;
+    width: 130px;
+}
+
+.ms-CalloutCoverExample-buttonArea > .ms-Button {
+    text-align: center;
+    height: 31px;
+    width: 130px;
 }
 
 .ms-CalloutBasicExample-buttonArea {
