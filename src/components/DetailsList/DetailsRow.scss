@@ -2,9 +2,9 @@
 
 $rowHeight: 36px;
 $rowVerticalPadding: 10px;
-$selectedColor: $ms-color-themeLighter;
-$selectedHoverColor: $ms-color-themeLight;
-$unselectedHoverColor: $ms-color-themeLighterAlt;
+$selectedColor: $ms-color-neutralQuaternary;
+$selectedHoverColor: $ms-color-neutralQuaternaryAlt;
+$unselectedHoverColor: $ms-color-neutralLighter;
 
 .ms-DetailsRow {
   @include focus-border();
