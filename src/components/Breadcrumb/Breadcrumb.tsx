@@ -132,9 +132,9 @@ export class Breadcrumb extends React.Component<IBreadcrumbProps, IBreadcrumbSta
     });
   }
 
-  private _onBreadcrumbClicked(item: any, ev: MouseEvent) {
-    if (item.onclick) {
-      item.onclick(item.key);
+  private _onBreadcrumbClicked(item: IBreadcrumbItem, ev: MouseEvent) {
+    if (item.onClick) {
+      item.onClick(item.key);
     }
     this.setState({
       'isOverflowOpen': false

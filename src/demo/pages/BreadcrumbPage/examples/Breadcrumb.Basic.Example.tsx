@@ -5,15 +5,29 @@ import {
   Breadcrumb
 } from '../../../../Breadcrumb';
 
-export const BreadcrumbBasicExample = () => (
-  <Breadcrumb
-    items={ [
-      {text: 'Files', 'key': 'Files'},
-      {text: 'This is folder 1', 'key': 'f1'},
-      {text: 'This is folder 2', 'key': 'f2'},
-      {text: 'This is folder 3', 'key': 'f3'},
-      {text: 'This is folder 4', 'key': 'f4'},
-      {text: 'This is folder 5', 'key': 'f5'},
-    ] }
-    maxDisplayedItems={ 3 } />
-);
+export class BreadcrumbBasicExample extends React.Component<any, any> {
+  constructor() {
+    super();
+    this._onBreadcrumbItemClicked = this._onBreadcrumbItemClicked.bind(this);
+  }
+
+  public render() {
+    return (
+      <Breadcrumb
+        items={ [
+          {text: 'Files', 'key': 'Files', onClick: this._onBreadcrumbItemClicked},
+          {text: 'This is folder 1', 'key': 'f1', onClick: this._onBreadcrumbItemClicked},
+          {text: 'This is folder 2', 'key': 'f2', onClick: this._onBreadcrumbItemClicked},
+          {text: 'This is folder 3', 'key': 'f3', onClick: this._onBreadcrumbItemClicked},
+          {text: 'This is folder 4', 'key': 'f4', onClick: this._onBreadcrumbItemClicked},
+          {text: 'This is folder 5', 'key': 'f5', onClick: this._onBreadcrumbItemClicked},
+        ] }
+        maxDisplayedItems={ 3 } />
+    );
+  }
+
+  private _onBreadcrumbItemClicked(key: string) {
+    console.log(`Breadcrumb item with key "${ key }" has been clicked.`);
+  }
+
+}
