@@ -200,6 +200,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         value={ this.state.value }
         onChange={ this._onInputChange }
         className={ this._fieldClassName }
+        aria-describedby={ this._descriptionId }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
         />
