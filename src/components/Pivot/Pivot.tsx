@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IPivotProps } from './Pivot.Props';
+import { IPivotItemProps} from './PivotItem.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { KeyCodes } from '../../utilities/KeyCodes';
 import { PivotItem } from './PivotItem';
@@ -29,10 +30,6 @@ export interface IPivotState {
   selectedIndex: number;
 }
 
-interface IPivotLink {
-  linkText: string;
-}
-
 export class Pivot extends React.Component<IPivotProps, IPivotState> {
 
   constructor(props?: IPivotProps) {
@@ -53,7 +50,7 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
    * Renders the set of links to route between pivots
    */
   private _renderPivotLinks() {
-    const links: IPivotLink[] = this.getPivotLinks();
+    const links: IPivotItemProps[] = this.getPivotLinks();
     return (
       <FocusZone direction={ FocusZoneDirection.horizontal }>
         <ul className={ css('ms-Pivot',
@@ -68,13 +65,14 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
   /**
    * Renders a pivot link
    */
-  private _renderLink(link: IPivotLink, index: number) {
+  private _renderLink(link: IPivotItemProps, index: number) {
     return (
       <a
         key={ index }
         className={ css('ms-Pivot-link', { 'is-selected': this.state.selectedIndex === index }) }
         onClick={ this._onLinkClick.bind(this, index) }
         onKeyPress={ this._onKeyPress.bind(this, index) }
+        aria-label={ link.ariaLabel }
       >
         { link.linkText }
       </a>
@@ -99,17 +97,18 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
   }
 
   /**
-   * Gets the set of PivotLinks as arrary of IPivotLink
+   * Gets the set of PivotLinks as arrary of IPivotItemProps
    * The set of Links is determined by child components of type PivotItem
    */
-  private getPivotLinks(): IPivotLink[] {
-    let links: IPivotLink[] = [];
+  private getPivotLinks(): IPivotItemProps[] {
+    let links: IPivotItemProps[] = [];
 
     React.Children.map(this.props.children, (child: any, index: number) => {
       if (typeof child === 'object' && child.type === PivotItem) {
         const pivotItem = child as PivotItem;
         links.push({
-          linkText: pivotItem.props.linkText
+          linkText: pivotItem.props.linkText,
+          ariaLabel: pivotItem.props.ariaLabel
         });
       }
     });

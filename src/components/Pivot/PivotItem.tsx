@@ -1,8 +1,5 @@
 import * as React from 'react';
-
-export interface IPivotItemProps extends React.HTMLProps<PivotItem> {
-  linkText: string;
-}
+import { IPivotItemProps } from './PivotItem.Props';
 
 export class PivotItem extends React.Component<IPivotItemProps, any> {
 
