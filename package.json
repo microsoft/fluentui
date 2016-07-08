@@ -22,7 +22,7 @@
     "react-highlight": "0.8.0",
     "source-map-loader": "0.1.5",
     "vinyl-ftp": "0.4.5",
-    "web-library-build": "~0.1.2",
+    "web-library-build": "~0.2.2",
     "webpack-split-by-path": "0.0.8",
     "webpack-visualizer-plugin": "0.1.5"
   },
