@@ -74,6 +74,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IPosi
    * @default 16
    */
   beakWidth?: number;
+
 }
 
 export interface IContextualMenuItem {
@@ -146,6 +147,13 @@ export interface IContextualMenuItem {
    * @defaultvalue undefined
    */
   onRender?: (item: any) => React.ReactNode;
+
+  /**
+   * A function to be executed onMouseDown. This is executed before an onClick event and can
+   * be used to interrupt native on click events as well. The click event should still handle
+   * the commands. This should only be used in special cases when react and non-react are mixed.
+   */
+  onMouseDown?: (item: IContextualMenuItem, event: any) => void;
 
   /**
    * Any additional properties to use when custom rendering menu items.
