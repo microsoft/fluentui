@@ -101,26 +101,28 @@ function _makeSafe(obj: BaseComponent<any, any>, prototype: Object, methodName: 
   let classMethod = obj[methodName];
   let prototypeMethod = prototype[methodName];
 
-  obj[methodName] = function() {
-    let retVal;
+  if (classMethod || prototypeMethod) {
+    obj[methodName] = function() {
+      let retVal;
 
-    try {
-      if (prototypeMethod) {
-        retVal = prototypeMethod.apply(this, arguments);
-      }
-      if (classMethod) {
-        retVal = classMethod.apply(this, arguments);
-      }
-    } catch (e) {
-      const errorMessage = `Exception in ${ obj.className }.${ methodName }(): ${ typeof e === 'string' ? e : e.stack }`;
+      try {
+        if (prototypeMethod) {
+          retVal = prototypeMethod.apply(this, arguments);
+        }
+        if (classMethod) {
+          retVal = classMethod.apply(this, arguments);
+        }
+      } catch (e) {
+        const errorMessage = `Exception in ${ obj.className }.${ methodName }(): ${ typeof e === 'string' ? e : e.stack }`;
 
-      if (BaseComponent.onError) {
-        BaseComponent.onError(errorMessage, e);
+        if (BaseComponent.onError) {
+          BaseComponent.onError(errorMessage, e);
+        }
       }
-    }
 
-    return retVal;
-  };
+      return retVal;
+    };
+  }
 }
 
 BaseComponent.onError = (errorMessage) => console.error(errorMessage);
