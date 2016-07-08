@@ -24,6 +24,12 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   ariaLabel?: string;
 
   /**
+   * Whether the month picker is shown beside the day picker or hidden.
+   * @defaultvalue true 
+   */
+  showMonthPicker?: boolean;
+
+  /**
    * Whether the DatePicker allows input a date string directly or not
    * @defaultvalue false
    */

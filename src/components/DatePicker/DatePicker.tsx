@@ -40,6 +40,7 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
     },
     firstDayOfWeek: DayOfWeek.Sunday,
     isRequired: false,
+    showMonthPicker: true,
     strings: null
   };
 
@@ -133,7 +134,7 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
         </div>
 
           { isDatePickerShown && (
-          <div className='ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused'>
+                <div className={'ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused ' + (this.props.showMonthPicker ? 'has-monthPicker-enabled' : '')} >
             <div className='ms-DatePicker-holder' onKeyDown={ this._onDatePickerPopupKeyDown }>
               <div className='ms-DatePicker-frame'>
                 <div className='ms-DatePicker-wrap'>
