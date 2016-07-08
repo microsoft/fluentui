@@ -92,7 +92,8 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
       }
 
       this.setState({
-        value: newProps.value
+        value: newProps.value,
+        errorMessage: ''
       } as ITextFieldState);
 
       this._delayedValidate(newProps.value);
