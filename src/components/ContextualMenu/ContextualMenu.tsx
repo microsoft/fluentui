@@ -259,7 +259,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
              {(hasIcons) ? (
                <span className={ 'ms-ContextualMenu-icon' + ((item.icon) ? ` ms-Icon ms-Icon--${item.icon}` : ' no-icon') }/>
              ) : (null)}
-             <span className='ms-ContextualMenu-itemText ms-font-m ms-font-weight-regular'>{ item.name }</span>
+             <span className='ms-ContextualMenu-itemText ms-fontWeight-regular'>{ item.name }</span>
              {(item.items && item.items.length) ? (
                <i className={ css('ms-ContextualMenu-chevronRight ms-Icon', getRTL() ? 'ms-Icon--chevronLeft' : 'ms-Icon--chevronRight') } />
              ) : (null)}
