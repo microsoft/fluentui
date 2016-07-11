@@ -29,6 +29,8 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
     type: PanelType.smallFixedFar,
   };
 
+  private _focusTrapZone: FocusTrapZone;
+
   constructor(props: IPanelProps) {
     super(props);
 
@@ -60,6 +62,11 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
         isAnimatingOpen: newProps.isOpen ? true : false,
         isAnimatingClose: newProps.isOpen ? false : true
       });
+      // Focustrapzone focuses on componentDidMount, not when the panel is opened so need to do it here
+      // Added timeout because there is a bug in REACT that does'nt set focus properly even if the elements have finished rendering
+      this._async.setTimeout(() => {
+        this._focusTrapZone.focus();
+      }, 100);
     }
   }
 
@@ -80,7 +87,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
 
     let closeButton;
     if (hasCloseButton) {
-      closeButton = <button className='ms-Panel-closeButton ms-PanelAction-close' onClick={ this._onPanelClick }  aria-label={ closeButtonAriaLabel }>
+      closeButton = <button className='ms-Panel-closeButton ms-PanelAction-close' onClick={ this._onPanelClick }  aria-label={ closeButtonAriaLabel } data-is-visible={ true }>
         <i className='ms-Panel-closeIcon ms-Icon ms-Icon--x'></i>
       </button>;
     }
@@ -114,13 +121,15 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
               isDarkThemed={ true }
               onClick={ isLightDismiss ? this._onPanelClick : null }
               />
-            <FocusTrapZone className='ms-Panel-main'
+            <FocusTrapZone
+              ref={ (c): FocusTrapZone => this._focusTrapZone = c }
+              className='ms-Panel-main'
               isClickableOutsideFocusTrap={ true }
               elementToFocusOnDismiss={ elementToFocusOnDismiss }
               firstFocusableSelector={ firstFocusableSelector }
               forceFocusInsideTrap={ forceFocusInsideTrap }
               ignoreExternalFocusing={ ignoreExternalFocusing }>
-              <div className='ms-Panel-commands'>
+              <div className='ms-Panel-commands' data-is-visible={ true } >
                 { pendingCommandBarContent }
                 { closeButton }
               </div>

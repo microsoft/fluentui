@@ -1,6 +1,7 @@
 /* tslint:disable:no-string-literal */
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
+const IS_VISIBLE_ATTRIBUTE = 'data-is-visible';
 const FOCUSZONE_ID_ATTRIBUTE = 'data-focuszone-id';
 
 export function getFirstFocusable(
@@ -118,7 +119,8 @@ export function isElementVisible(element: HTMLElement): boolean {
     !!element &&
     (element.offsetHeight !== 0 ||
       element.offsetParent !== null ||
-      (element as any).isVisible === true) // used as a workaround for testing.
+      (element as any).isVisible === true || // used as a workaround for testing.
+      (element.getAttribute && element.getAttribute(IS_VISIBLE_ATTRIBUTE) === 'true'))
   );
 }
 
