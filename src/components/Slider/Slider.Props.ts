@@ -1,4 +1,6 @@
-export interface ISliderProps {
+import * as React from 'react';
+
+export interface ISliderProps extends React.HTMLProps<HTMLInputElement> {
   /**
    * Description label of the Slider
    */
