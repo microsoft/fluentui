@@ -5,9 +5,18 @@ import { PivotItem } from './PivotItem';
 
 export interface IPivotProps extends React.Props<Pivot> {
   /**
-   * The index of the pivot item initially selected
+   * The index of the pivot item initially selected.
+   *
+   * It only works when initialSelectedKey is not defined. You must not use them together.
    */
   initialSelectedIndex?: number;
+
+  /**
+   * The key of the pivot item initially selected.
+   *
+   * It will make initialSelectedIndex not work. You must not use them together.
+   */
+  initialSelectedKey?: string;
 
   /**
    * Callback issued when the selected pivot item is changed

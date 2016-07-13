@@ -116,7 +116,7 @@
     }
   }
 
-  &.is-disabled {
+  &.is-disabled, &:disabled {
     background-color: $ms-color-white;
     color: $ms-color-neutralTertiary;
     cursor: default;

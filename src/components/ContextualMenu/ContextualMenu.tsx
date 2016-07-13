@@ -238,6 +238,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
                onKeyDown: item.items && item.items.length ? this._onItemKeyDown.bind(this, item) : null,
                onMouseEnter: this._onMouseEnter.bind(this, item),
                onMouseLeave: this._onMouseLeave,
+               onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
                disabled: item.isDisabled,
                dataCommandKey: index,
                role: 'menuitem',
@@ -259,7 +260,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
              {(hasIcons) ? (
                <span className={ 'ms-ContextualMenu-icon' + ((item.icon) ? ` ms-Icon ms-Icon--${item.icon}` : ' no-icon') }/>
              ) : (null)}
-             <span className='ms-ContextualMenu-itemText ms-font-m ms-font-weight-regular'>{ item.name }</span>
+             <span className='ms-ContextualMenu-itemText ms-fontWeight-regular'>{ item.name }</span>
              {(item.items && item.items.length) ? (
                <i className={ css('ms-ContextualMenu-chevronRight ms-Icon', getRTL() ? 'ms-Icon--chevronLeft' : 'ms-Icon--chevronRight') } />
              ) : (null)}
@@ -300,6 +301,12 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   private _onMouseDownCapture(ev: React.MouseEvent) {
     if (!this._host.contains(ev.target as HTMLElement)) {
       this.dismiss(ev);
+    }
+  }
+
+  private _onItemMouseDown(item: IContextualMenuItem, ev: React.MouseEvent) {
+    if (item.onMouseDown) {
+      item.onMouseDown(item, ev);
     }
   }
 

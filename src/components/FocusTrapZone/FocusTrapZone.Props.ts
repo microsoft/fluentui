@@ -1,5 +1,12 @@
 import * as React from 'react';
 
+export interface IFocusTrapZone {
+  /**
+  * Sets focus on the first focusable child in focus trap zone
+  */
+  focus: () => void;
+}
+
 export interface IFocusTrapZoneProps extends React.HTMLProps<HTMLDivElement> {
   /**
    * Sets the HTMLElement to focus on when exiting the FocusTrapZone.

@@ -29,30 +29,28 @@ export function getScrollbarWidth(): number {
 export function findScrollableParent(startingElement: HTMLElement): HTMLElement {
   let el = startingElement;
 
-  if (el) {
-    // First do a quick scan for the scrollable attribute.
-    while (el !== document.body) {
-      if (el.getAttribute(DATA_IS_SCROLLABLE_ATTRIBUTE) === 'true') {
+  // First do a quick scan for the scrollable attribute.
+  while (el && el !== document.body) {
+    if (el.getAttribute(DATA_IS_SCROLLABLE_ATTRIBUTE) === 'true') {
+      return el;
+    }
+    el = el.parentElement;
+  }
+
+  // If we haven't found it, the use the slower method: compute styles to evaluate if overflow is set.
+  el = startingElement;
+
+  while (el && el !== document.body) {
+    if (el.getAttribute(DATA_IS_SCROLLABLE_ATTRIBUTE) !== 'false') {
+      const styles = getComputedStyle(el);
+      let overflowY = styles ? styles.getPropertyValue('overflow-y') : '';
+
+      if (overflowY && (overflowY === 'scroll' || overflowY === 'auto')) {
         return el;
       }
-      el = el.parentElement;
     }
 
-    // If we haven't found it, the use the slower method: compute styles to evaluate if overflow is set.
-    el = startingElement;
-
-    while (el !== document.body) {
-      if (el.getAttribute(DATA_IS_SCROLLABLE_ATTRIBUTE) !== 'false') {
-        const styles = getComputedStyle(el);
-        let overflowY = styles ? styles.getPropertyValue('overflow-y') : '';
-
-        if (overflowY && (overflowY === 'scroll' || overflowY === 'auto')) {
-          return el;
-        }
-      }
-
-      el = el.parentElement;
-    }
+    el = el.parentElement;
   }
 
   return el;

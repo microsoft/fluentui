@@ -27,14 +27,45 @@ import { css } from '../../utilities/css';
  */
 
 export interface IPivotState {
-  selectedIndex: number;
+  links: IPivotItemProps[];
+  selectedKey: string;
 }
 
 export class Pivot extends React.Component<IPivotProps, IPivotState> {
+  private _keyToIndexMapping: { [key: string]: number };
 
-  constructor(props?: IPivotProps) {
+  constructor(props: IPivotProps) {
     super(props);
-    this.state = this._getStateFromProps(props);
+
+    const links: IPivotItemProps[] = this._getPivotLinks(this.props);
+    let selectedKey: string;
+
+    if (props.initialSelectedKey) {
+      selectedKey = props.initialSelectedKey;
+    } else if (props.initialSelectedIndex) {
+      selectedKey = links[props.initialSelectedIndex].itemKey;
+    } else {
+      selectedKey = links[0].itemKey;
+    }
+
+    this.state = {
+      links,
+      selectedKey
+    };
+
+    this._renderLink = this._renderLink.bind(this);
+  }
+
+  public componentWillReceiveProps(nextProps: IPivotProps) {
+    const links: IPivotItemProps[] = this._getPivotLinks(nextProps);
+    const selectedKey: string = this._isKeyValid(this.state.selectedKey)
+      ? this.state.selectedKey
+      : links[0].itemKey;
+
+    this.setState({
+      links,
+      selectedKey
+    });
   }
 
   public render() {
@@ -50,13 +81,12 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
    * Renders the set of links to route between pivots
    */
   private _renderPivotLinks() {
-    const links: IPivotItemProps[] = this.getPivotLinks();
     return (
       <FocusZone direction={ FocusZoneDirection.horizontal }>
         <ul className={ css('ms-Pivot',
           { 'ms-Pivot--large': this.props.linkSize === PivotLinkSize.large },
           { 'ms-Pivot--tabs': this.props.linkFormat === PivotLinkFormat.tabs }) }>
-          { links.map(this._renderLink.bind(this)) }
+          { this.state.links.map(this._renderLink) }
         </ul>
       </FocusZone>
     );
@@ -65,13 +95,15 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
   /**
    * Renders a pivot link
    */
-  private _renderLink(link: IPivotItemProps, index: number) {
+  private _renderLink(link: IPivotItemProps) {
+    const itemKey = link.itemKey;
+
     return (
       <a
-        key={ index }
-        className={ css('ms-Pivot-link', { 'is-selected': this.state.selectedIndex === index }) }
-        onClick={ this._onLinkClick.bind(this, index) }
-        onKeyPress={ this._onKeyPress.bind(this, index) }
+        key={ itemKey }
+        className={ css('ms-Pivot-link', { 'is-selected': this.state.selectedKey === itemKey }) }
+        onClick={ this._onLinkClick.bind(this, itemKey) }
+        onKeyPress={ this._onKeyPress.bind(this, itemKey) }
         aria-label={ link.ariaLabel }
       >
         { link.linkText }
@@ -83,15 +115,12 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
    * Renders the current Pivot Item
    */
   private _renderPivotItem() {
-    let index = this.state.selectedIndex;
-    if (!index) {
-      index = 0;
-    }
+    const itemKey: string = this.state.selectedKey;
+    const index = this._keyToIndexMapping[itemKey];
 
-    let item: PivotItem = this.props.children[index];
     return (
       <div className='pivotItem'>
-        { item }
+        { React.Children.toArray(this.props.children)[index] }
       </div>
     );
   }
@@ -100,16 +129,21 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
    * Gets the set of PivotLinks as arrary of IPivotItemProps
    * The set of Links is determined by child components of type PivotItem
    */
-  private getPivotLinks(): IPivotItemProps[] {
-    let links: IPivotItemProps[] = [];
+  private _getPivotLinks(props: IPivotProps): IPivotItemProps[] {
+    const links: IPivotItemProps[] = [];
+    this._keyToIndexMapping = {};
 
-    React.Children.map(this.props.children, (child: any, index: number) => {
+    React.Children.map(props.children, (child: any, index: number) => {
       if (typeof child === 'object' && child.type === PivotItem) {
         const pivotItem = child as PivotItem;
+        const itemKey = pivotItem.props.itemKey || index.toString();
+
         links.push({
           linkText: pivotItem.props.linkText,
-          ariaLabel: pivotItem.props.ariaLabel
+          ariaLabel: pivotItem.props.ariaLabel,
+          itemKey: itemKey
         });
+        this._keyToIndexMapping[itemKey] = index;
       }
     });
 
@@ -117,52 +151,47 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
   }
 
   /**
+   * whether the key exists in the pivot items.
+   */
+  private _isKeyValid(itemKey: string) {
+    return itemKey !== undefined && this._keyToIndexMapping[itemKey] !== undefined;
+  }
+
+  /**
    * Handles the onClick event on PivotLinks
    */
-  private _onLinkClick(index: number, ev: React.MouseEvent) {
+  private _onLinkClick(itemKey: string, ev: React.MouseEvent) {
     ev.preventDefault();
-    this._updateSelectedItem(index, ev);
+    this._updateSelectedItem(itemKey, ev);
   }
 
   /**
    * Handle the onKeyPress eventon the PivotLinks
    */
-  private _onKeyPress(index: number, ev: React.KeyboardEvent) {
+  private _onKeyPress(itemKey: string, ev: React.KeyboardEvent) {
     ev.preventDefault();
     if (ev.which === KeyCodes.enter) {
-      this._updateSelectedItem(index);
+      this._updateSelectedItem(itemKey);
     }
   }
 
   /**
    * Updates the state with the new selected index
    */
-  private _updateSelectedItem(index: number, ev?: React.MouseEvent) {
+  private _updateSelectedItem(itemKey: string, ev?: React.MouseEvent) {
     this.setState({
-      selectedIndex: index
-    });
+      selectedKey: itemKey
+    } as IPivotState);
 
-    if (this.props.onLinkClick) {
-      this.props.onLinkClick(this.props.children[index], ev);
+    if (this.props.onLinkClick && this._keyToIndexMapping[itemKey] >= 0) {
+      const index = this._keyToIndexMapping[itemKey];
+
+      // React.Element<any> cannot directly convert to PivotItem.
+      const item = React.Children.toArray(this.props.children)[index] as any;
+
+      if (typeof item === 'object' && item.type === PivotItem) {
+        this.props.onLinkClick(item as PivotItem, ev);
+      }
     }
-  }
-
-  /**
-   * returns new state state based on the provided Props
-   */
-  private _getStateFromProps(newProps: IPivotProps): IPivotState {
-    let newState: IPivotState;
-    let index: number;
-    if (newProps.initialSelectedIndex) {
-      index = newProps.initialSelectedIndex;
-    } else {
-      index = 0;
-    }
-
-    newState = {
-      selectedIndex: index
-    };
-
-    return newState;
   }
 }

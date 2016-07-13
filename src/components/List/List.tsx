@@ -142,8 +142,10 @@ export class List extends BaseComponent<IListProps, IListState> {
 
     this._events.on(window, 'resize', this._onResize);
     this._events.on(this.refs.root, 'focus', this._onFocus, true);
-    this._events.on(this._scrollElement, 'scroll', this._onScroll);
-    this._events.on(this._scrollElement, 'scroll', this._onAsyncScroll);
+    if (this._scrollElement) {
+      this._events.on(this._scrollElement, 'scroll', this._onScroll);
+      this._events.on(this._scrollElement, 'scroll', this._onAsyncScroll);
+    }
   }
 
   public componentWillReceiveProps(newProps: IListProps) {

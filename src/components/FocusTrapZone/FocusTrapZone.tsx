@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { KeyCodes } from '../../utilities/KeyCodes';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
-import { IFocusTrapZoneProps } from './FocusTrapZone.Props';
+import { IFocusTrapZone, IFocusTrapZoneProps } from './FocusTrapZone.Props';
 import {
   getFirstFocusable,
   getLastFocusable,
   getNextElement
 } from '../../utilities/focus';
 
-export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> {
+export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
 
   public refs: {
     [key: string]: React.ReactInstance,
@@ -29,7 +29,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> {
     let { elementToFocusOnDismiss, isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true } = this.props;
 
     this._previouslyFocusedElement = elementToFocusOnDismiss ? elementToFocusOnDismiss : document.activeElement as HTMLElement;
-    this._focusOnFirstChildInZone();
+    this.focus();
 
     if (forceFocusInsideTrap) {
         this._events.on(window, 'focus', this._forceFocusInTrap, true);
@@ -64,6 +64,24 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> {
     );
   }
 
+/**
+ * Need to expose this method in case of popups since focus needs to be set when popup is opened
+ **/
+  public focus() {
+    let { firstFocusableSelector } = this.props;
+    let _firstFocusableChild;
+    let root = this.refs.root;
+
+    if (firstFocusableSelector) {
+      _firstFocusableChild = root.querySelector('.' + firstFocusableSelector);
+    } else {
+        _firstFocusableChild = getNextElement(root, root.firstChild as HTMLElement, true, false, false, true);
+    }
+    if (_firstFocusableChild) {
+        _firstFocusableChild.focus();
+    }
+  }
+
   private _onKeyboardHandler(ev: React.KeyboardEvent) {
     if (ev.which !== KeyCodes.tab) {
       return;
@@ -85,27 +103,11 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> {
     }
   }
 
-  private _focusOnFirstChildInZone() {
-    let { firstFocusableSelector } = this.props;
-    let _firstFocusableChild;
-    let root = this.refs.root;
-
-    if (firstFocusableSelector) {
-        _firstFocusableChild = root.querySelector('.' + firstFocusableSelector);
-    } else {
-        _firstFocusableChild = getNextElement(root, root.firstChild as HTMLElement, true, false, false, true);
-    }
-
-    if (_firstFocusableChild) {
-        _firstFocusableChild.focus();
-    }
-  }
-
   private _forceFocusInTrap(ev: FocusEvent) {
     const focusedElement = document.activeElement;
 
     if (!this.refs.root.contains(focusedElement)) {
-      this._focusOnFirstChildInZone();
+      this.focus();
       ev.preventDefault();
       ev.stopPropagation();
     }
@@ -115,7 +117,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> {
     const clickedElement = ev.target as HTMLElement;
 
     if (clickedElement && !this.refs.root.contains(clickedElement)) {
-      this._focusOnFirstChildInZone();
+      this.focus();
       ev.preventDefault();
       ev.stopPropagation();
     }
