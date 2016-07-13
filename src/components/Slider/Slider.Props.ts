@@ -1,6 +1,4 @@
-import * as React from 'react';
-
-export interface ISliderProps extends React.HTMLProps<HTMLInputElement> {
+export interface ISliderProps {
   /**
    * Description label of the Slider
    */
@@ -46,4 +44,9 @@ export interface ISliderProps extends React.HTMLProps<HTMLInputElement> {
    * Whether or not the Slider is disabled.
    */
   isDisabled?: boolean;
+
+  /**
+  * Optional className for slider.
+  */
+  className?: string;
 }
