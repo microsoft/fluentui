@@ -6,6 +6,7 @@ import {
   ExampleCard,
   PropertiesTableSet
 } from '../../components/index';
+import { items, farItems, textOnlyItems, iconOnlyItems } from './examples/data';
 
 import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
 import { CommandBarFixedOverflowExample } from './examples/CommandBar.FixedOverflow.Example';
@@ -19,6 +20,10 @@ const CommandBarNoFocusableItemsExampleCode = require('./examples/CommandBar.Non
 
 export class CommandBarPage extends React.Component<any, any> {
   public render() {
+    let cmdBarParamsTextAndIcons: any = { items: items, farItems: farItems };
+    let cmdBarParamsTextOnly: any = { items: textOnlyItems, farItems: farItems };
+    let cmdBarParamsIconOnly: any = { items: iconOnlyItems, farItems: farItems };
+
     return (
       <div>
         <h1 className='ms-font-xxl'>CommandBar</h1>
@@ -28,7 +33,13 @@ export class CommandBarPage extends React.Component<any, any> {
         </div>
         <h2 className='ms-font-xl'>Examples</h2>
         <ExampleCard title='CommandBar with search box and overflowing menu items' code={ CommandBarBasicExampleCode }>
-          <CommandBarBasicExample />
+          <CommandBarBasicExample {... cmdBarParamsTextAndIcons} />
+        </ExampleCard>
+        <ExampleCard title='CommandBar with search box and overflowing menu items with only text' code={ CommandBarBasicExampleCode }>
+          <CommandBarBasicExample {... cmdBarParamsTextOnly} />
+        </ExampleCard>
+        <ExampleCard title='CommandBar with search box and overflowing menu items with only icons' code={ CommandBarBasicExampleCode }>
+          <CommandBarBasicExample {... cmdBarParamsIconOnly} />
         </ExampleCard>
         <ExampleCard title='CommandBar with no search box and fixed overflow items' code={ CommandBarFixedOverflowExampleCode }>
           <CommandBarFixedOverflowExample />

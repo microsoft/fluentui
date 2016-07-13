@@ -55,6 +55,78 @@ export const items = [
   }
 ];
 
+export const textOnlyItems = [
+  {
+    key: 'upload',
+    name: 'Upload',
+    onClick: () => { return; }
+  },
+  {
+    key: 'share',
+    name: 'Share',
+    onClick: () => { return; }
+  },
+  {
+    key: 'download',
+    name: 'Download',
+    onClick: () => { return; }
+  },
+  {
+    key: 'move',
+    name: 'Move to...',
+    onClick: () => { return; }
+  },
+  {
+    key: 'copy',
+    name: 'Copy to...',
+    onClick: () => { return; }
+  },
+  {
+    key: 'rename',
+    name: 'Rename...',
+    onClick: () => { return; }
+  }
+];
+
+export const iconOnlyItems = [
+  {
+    key: 'upload',
+    name: '',
+    icon: 'upload',
+    onClick: () => { return; }
+  },
+  {
+    key: 'share',
+    name: '',
+    icon: 'share',
+    onClick: () => { return; }
+  },
+  {
+    key: 'download',
+    name: '',
+    icon: 'download',
+    onClick: () => { return; }
+  },
+  {
+    key: 'move',
+    name: '',
+    icon: 'folderMove',
+    onClick: () => { return; }
+  },
+  {
+    key: 'copy',
+    name: '',
+    icon: 'copy',
+    onClick: () => { return; }
+  },
+  {
+    key: 'rename',
+    name: '',
+    icon: 'editBox',
+    onClick: () => { return; }
+  }
+];
+
 export const overflowItems = [
   {
     key: 'move',
