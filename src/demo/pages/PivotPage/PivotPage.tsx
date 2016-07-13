@@ -13,7 +13,9 @@ import { PivotTabsExample } from './examples/Pivot.Tabs.Example';
 import { PivotTabsLargeExample } from './examples/Pivot.TabsLarge.Example';
 import { PivotFabricExample } from './examples/Pivot.Fabric.Example';
 import { PivotOnChangeExample } from './examples/Pivot.OnChange.Example';
+import { PivotRemoveExample } from './examples/Pivot.Remove.Example';
 
+const PivotRemoveExampleCode = require('./examples/Pivot.Remove.Example.tsx');
 const PivotBasicExampleCode = require('./examples/Pivot.Basic.Example.tsx');
 const PivotLargeExampleCode = require('./examples/Pivot.Large.Example.tsx');
 const PivotTabsExampleCode = require('./examples/Pivot.Tabs.Example.tsx');
@@ -31,25 +33,29 @@ export class PivotPage extends React.Component<any, any> {
           <span> are used for grouping components under a set of Links or Tabs</span>
         </div>
         <h2 className='ms-font-xl'>Examples</h2>
-        <ExampleCard title='Pivot' code={ PivotBasicExampleCode }>
+        <ExampleCard title='Basic example' code={ PivotBasicExampleCode }>
           <PivotBasicExample />
         </ExampleCard>
-        <ExampleCard title='Pivot - Large' code={ PivotLargeExampleCode }>
+        <ExampleCard title='Large link size' code={ PivotLargeExampleCode }>
           <PivotLargeExample />
         </ExampleCard>
-        <ExampleCard title='Pivot - Tabs' code={ PivotTabsExampleCode }>
+        <ExampleCard title='Links of tab style' code={ PivotTabsExampleCode }>
           <PivotTabsExample />
         </ExampleCard>
-        <ExampleCard title='Pivot - Tabs - Large' code={ PivotTabsLargesExampleCode }>
+        <ExampleCard title='Links of large tab style' code={ PivotTabsLargesExampleCode }>
           <PivotTabsLargeExample />
         </ExampleCard>
-        <ExampleCard title='Pivot - OnChange' code={ PivotOnChangeExampleCode }>
+        <ExampleCard title='Trigger onchange event' code={ PivotOnChangeExampleCode }>
           <PivotOnChangeExample />
         </ExampleCard>
-        <ExampleCard title='Pivot - Nested Componets' code={ PivotFabricExampleCode }>
+        <ExampleCard title='Rendering nested components within the Pivot' code={ PivotFabricExampleCode }>
           <PivotFabricExample />
         </ExampleCard>
+        <ExampleCard title='Show/Hide pivot item' code={ PivotRemoveExampleCode }>
+          <PivotRemoveExample />
+        </ExampleCard>
         <PropertiesTableSet componentName='Pivot' />
+        <PropertiesTableSet componentPath='components/Pivot/' componentName='PivotItem' />
       </div>
     );
   }
