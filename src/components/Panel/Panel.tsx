@@ -9,7 +9,6 @@ import { BaseComponent } from '../../common/BaseComponent';
 import { css } from '../../utilities/css';
 import { getRTL } from '../../utilities/rtl';
 import './Panel.scss';
-import { FocusTrapZone } from '../FocusTrapZone/index';
 import { Popup } from '../Popup/index';
 
 export interface IPanelState {
@@ -28,8 +27,6 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
     hasCloseButton: true,
     type: PanelType.smallFixedFar,
   };
-
-  private _focusTrapZone: FocusTrapZone;
 
   constructor(props: IPanelProps) {
     super(props);
@@ -62,16 +59,11 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
         isAnimatingOpen: newProps.isOpen ? true : false,
         isAnimatingClose: newProps.isOpen ? false : true
       });
-      // Focustrapzone focuses on componentDidMount, not when the panel is opened so need to do it here
-      // Added timeout because there is a bug in REACT that does'nt set focus properly even if the elements have finished rendering
-      this._async.setTimeout(() => {
-        this._focusTrapZone.focus();
-      }, 100);
     }
   }
 
   public render() {
-    let { children, className = '', type, hasCloseButton, isLightDismiss, headerText, elementToFocusOnDismiss, ignoreExternalFocusing, forceFocusInsideTrap, firstFocusableSelector, closeButtonAriaLabel  } = this.props;
+    let { children, className = '', type, hasCloseButton, isLightDismiss, headerText, closeButtonAriaLabel  } = this.props;
     let { isOpen, isAnimatingOpen, isAnimatingClose, id } = this.state;
     let isLeft = type === PanelType.smallFixedNear ? true : false;
     let isRTL = getRTL();
@@ -121,14 +113,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
               isDarkThemed={ true }
               onClick={ isLightDismiss ? this._onPanelClick : null }
               />
-            <FocusTrapZone
-              ref={ (c): FocusTrapZone => this._focusTrapZone = c }
-              className='ms-Panel-main'
-              isClickableOutsideFocusTrap={ true }
-              elementToFocusOnDismiss={ elementToFocusOnDismiss }
-              firstFocusableSelector={ firstFocusableSelector }
-              forceFocusInsideTrap={ forceFocusInsideTrap }
-              ignoreExternalFocusing={ ignoreExternalFocusing }>
+            <div className='ms-Panel-main'>
               <div className='ms-Panel-commands' data-is-visible={ true } >
                 { pendingCommandBarContent }
                 { closeButton }
@@ -139,7 +124,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
                   { children }
                 </div>
               </div>
-            </FocusTrapZone>
+            </div>
           </div>
         </Popup>
       </Layer>

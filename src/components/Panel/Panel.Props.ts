@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Panel } from './Panel';
-import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 
-export interface IPanelProps extends React.Props<Panel>, IAccessiblePopupProps {
+export interface IPanelProps extends React.Props<Panel> {
   /**
   * Whether the panel is displayed.
   * @default false
@@ -42,6 +41,11 @@ export interface IPanelProps extends React.Props<Panel>, IAccessiblePopupProps {
   * @default PanelType.smallFixedRight
   */
   type?: PanelType;
+
+  /**
+   * Aria label on close button
+   */
+  closeButtonAriaLabel?: string;
 }
 
 export enum PanelType {
