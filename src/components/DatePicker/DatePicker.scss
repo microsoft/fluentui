@@ -377,7 +377,7 @@
     height: 30px;
     line-height: 30px;
     font-family: $ms-font-family-semibold;
-    font-size: 12px;
+    font-size: $ms-font-size-s;
   }
 
   // Size the month components to the day picker's new width
@@ -421,7 +421,7 @@
 
 
   // Show the month picker, if enabled
-  .has-monthPicker-enabled {
+  .is-monthPickerVisible {
     // Swap margin for padding so that the border extends the full height.
     .ms-DatePicker-dayPicker {
       margin: -10px 0;
