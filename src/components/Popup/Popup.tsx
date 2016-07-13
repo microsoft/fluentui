@@ -7,20 +7,35 @@ import { BaseComponent } from '../../common/BaseComponent';
  * This adds accessibility to Dialog and Panel controls
  **/
 export class Popup extends BaseComponent<IPopupProps, {}> {
+
   public static defaultProps: IPopupProps = {
     shouldRestoreFocus: true
   };
 
-  public _originalFocusedElement: HTMLElement;
+  public refs: {
+    [key: string]: React.ReactInstance;
+    root: HTMLElement;
+  };
+
+  private _originalFocusedElement: HTMLElement;
+  private _containsFocus: boolean;
 
   public componentDidMount(): void {
     this._originalFocusedElement = document.activeElement as HTMLElement;
 
     this._events.on(window, 'keydown', this._onDialogKeyDown, true);
+
+    this._events.on(this.refs.root, 'focus', () => this._containsFocus = true, true);
+    this._events.on(this.refs.root, 'blur', () => this._containsFocus = false, true);
   }
 
   public componentWillUnmount(): void {
-    if (this.props.shouldRestoreFocus && this._originalFocusedElement && this._originalFocusedElement as any !== window) {
+    if (
+      this.props.shouldRestoreFocus &&
+      this._originalFocusedElement &&
+      this._containsFocus &&
+      this._originalFocusedElement as any !== window) {
+
       this._originalFocusedElement.focus();
     }
   }
@@ -31,6 +46,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
     return (
       <div
         { ...this.props as any }
+        ref='root'
         className={ className }
         role={ role }
         aria-labelledby={ ariaLabelledBy }

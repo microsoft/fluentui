@@ -6,8 +6,9 @@ import { assign } from '../../utilities/object';
 import { findIndex } from '../../utilities/array';
 import { findScrollableParent } from '../../utilities/scrollUtilities';
 
-const MIN_SCROLL_UPDATE_DELAY = 50;
-const MAX_SCROLL_UPDATE_DELAY = 200;
+const RESIZE_DELAY = 500;
+const MIN_SCROLL_UPDATE_DELAY = 100;
+const MAX_SCROLL_UPDATE_DELAY = 500;
 const IDLE_DEBOUNCE_DELAY = 200;
 const DEFAULT_ITEMS_PER_PAGE = 10;
 const DEFAULT_PAGE_HEIGHT = 30;
@@ -128,6 +129,13 @@ export class List extends BaseComponent<IListProps, IListState> {
         leading: false
       });
 
+      this._onAsyncResize = this._async.debounce(
+        this._onAsyncResize,
+        RESIZE_DELAY,
+        {
+          leading: false
+        });
+
     this._cachedPageHeights = {};
     this._estimatedPageHeight = 0;
     this._focusedIndex = -1;
@@ -140,7 +148,7 @@ export class List extends BaseComponent<IListProps, IListState> {
     this._measureVersion++;
     this._scrollElement = findScrollableParent(this.refs.root);
 
-    this._events.on(window, 'resize', this._onResize);
+    this._events.on(window, 'resize', this._onAsyncResize);
     this._events.on(this.refs.root, 'focus', this._onFocus, true);
     if (this._scrollElement) {
       this._events.on(this._scrollElement, 'scroll', this._onScroll);
@@ -189,7 +197,7 @@ export class List extends BaseComponent<IListProps, IListState> {
 
   public forceUpdate() {
     // Ensure that when the list is force updated we update the pages first before render.
-    this._updateRenderRects();
+    this._updateRenderRects(this.props, true);
     this._updatePages();
     this._measureVersion++;
 
@@ -326,16 +334,16 @@ export class List extends BaseComponent<IListProps, IListState> {
     }
   }
 
-  private _onResize() {
+  private _onAsyncResize() {
     this.forceUpdate();
   }
 
   private _updatePages(props?: IListProps) {
     let { items, startIndex, renderCount } = (props || this.props);
 
-    // console.log('updating pages');
+    renderCount = this._getRenderCount();
 
-    renderCount = renderCount || (items ? items.length - startIndex : 0);
+    // console.log('updating pages');
 
     if (!this._requiredRect) {
       this._updateRenderRects(props);
@@ -367,6 +375,7 @@ export class List extends BaseComponent<IListProps, IListState> {
   private _updatePageMeasurements(oldPages: IPage[], newPages: IPage[]) {
     let renderedIndexes = {};
     let heightChanged = false;
+    let renderCount = this._getRenderCount();
 
     for (let i = 0; i < oldPages.length; i++) {
       let page = oldPages[i];
@@ -380,7 +389,10 @@ export class List extends BaseComponent<IListProps, IListState> {
       let page = newPages[i];
 
       if (page.items) {
-        heightChanged = this._measurePage(page) || heightChanged;
+        // Only evaluate page height if the page contains less items than total.
+        if (page.items.length < renderCount) {
+          heightChanged = this._measurePage(page) || heightChanged;
+        }
 
         if (!renderedIndexes[page.startIndex]) {
           this._onPageAdded(page);
@@ -579,12 +591,27 @@ export class List extends BaseComponent<IListProps, IListState> {
     };
   }
 
+  private _getRenderCount(): number {
+    let { items, startIndex, renderCount } = this.props;
+
+    return (renderCount === undefined ? (items ? items.length - startIndex : 0) : renderCount);
+  }
+
   /** Calculate the visible rect within the list where top: 0 and left: 0 is the top/left of the list. */
-  private _updateRenderRects(props?: IListProps) {
+  private _updateRenderRects(props?: IListProps, forceUpdate?: boolean) {
     const { renderedWindowsAhead, renderedWindowsBehind } = (props || this.props);
+    const { pages } = this.state;
+    const renderCount = this._getRenderCount();
+    let surfaceRect = this._surfaceRect;
 
     // WARNING: EXPENSIVE CALL! We need to know the surface top relative to the window.
-    const surfaceRect = this._surfaceRect = _measureSurfaceRect(this.refs.surface);
+    if (
+      forceUpdate ||
+      !pages ||
+      !this._surfaceRect ||
+      (pages.length > 0 && pages[0].items && pages[0].items.length < renderCount)) {
+       surfaceRect = this._surfaceRect = _measureSurfaceRect(this.refs.surface);
+    }
 
     // If the surface is above the container top or below the container bottom, return empty rect.
     if (

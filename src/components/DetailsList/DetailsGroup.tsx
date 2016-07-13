@@ -64,6 +64,12 @@ export interface IDetailsGroupProps extends React.Props<DetailsGroup> {
   /** Callback for when a given row has been mounted. Useful for identifying when a row has been removed from the page. */
   onRowWillUnmount?: (item?: any, index?: number) => void;
 
+  /**
+   * If provided, will be the "default" cell renderer method. This affects cells within the rows; not the rows themselves.
+   * If a column definition provides its own onRender method, that will be used instead of this.
+   */
+  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
+
   /** Map of callback functions related to drag and drop functionality. */
   dragDropEvents?: IDragDropEvents;
 
@@ -284,6 +290,7 @@ export class DetailsGroup extends React.Component<IDetailsGroupProps, IDetailsGr
       onRenderMissingItem,
       onRowDidMount,
       onRowWillUnmount,
+      onRenderItemColumn,
       selection,
       selectionMode,
       viewport,
@@ -309,6 +316,7 @@ export class DetailsGroup extends React.Component<IDetailsGroupProps, IDetailsGr
           selection={ selection }
           onDidMount={ onRowDidMount }
           onWillUnmount={ onRowWillUnmount }
+          onRenderItemColumn={ onRenderItemColumn }
           eventsToRegister={ eventsToRegister }
           dragDropEvents={ dragDropEvents }
           dragDropHelper={ dragDropHelper }

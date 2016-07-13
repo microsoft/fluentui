@@ -7,6 +7,7 @@ export interface IDetailsRowFieldsProps {
   item: any;
   itemIndex: number;
   columns: IColumn[];
+  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
 }
 
 export interface IDetailsRowFieldsState {
@@ -52,19 +53,31 @@ export class DetailsRowFields extends React.Component<IDetailsRowFieldsProps, ID
   }
 
   private _getState(props: IDetailsRowFieldsProps) {
-    let { item, itemIndex } = props;
+    let { item, itemIndex, onRenderItemColumn } = props;
 
     return {
       cellContent: props.columns.map((column) => {
         let cellContent;
 
         try {
-          cellContent = column.onRender ? column.onRender(item, itemIndex) : (String(item[column.fieldName] || ''));
+          let render = column.onRender || onRenderItemColumn;
+
+          cellContent = render ? render(item, itemIndex, column) : this._getCellText(item, column);
         } catch (e) { /* no-op */ }
 
         return cellContent;
       })
     };
+  }
+
+  private _getCellText(item, column) {
+    let value = (item && column && column.fieldName) ? item[column.fieldName] : '';
+
+    if (value === null || value === undefined) {
+      value = '';
+    }
+
+    return value;
   }
 
 }

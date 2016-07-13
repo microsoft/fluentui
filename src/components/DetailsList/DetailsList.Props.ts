@@ -74,8 +74,23 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /** Callback for when a given row has been mounted. Useful for identifying when a row has been removed from the page. */
   onRowWillUnmount?: (item?: any, index?: number) => void;
 
+  /** Callback for when the user clicks on the column header. */
+  onColumnHeaderClick?: (column?: IColumn, ev?: Event) => void;
+
+  /** Callback for when the user asks for a contextual menu (usually via right click) from a column header. */
+  onColumnHeaderContextMenu?: (column?: IColumn, ev?: Event) => void;
+
   /** Callback for when a given row has been invoked (by pressing enter while it is selected.) */
   onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
+
+  /** Callback for when the context menu of an item has been accessed. */
+  onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void;
+
+  /**
+   * If provided, will be the "default" item column renderer method. This affects cells within the rows; not the rows themselves.
+   * If a column definition provides its own onRender method, that will be used instead of this.
+   */
+  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
 
   /** Map of callback functions related to drag and drop functionality. */
   dragDropEvents?: IDragDropEvents;
@@ -188,7 +203,7 @@ export interface IColumn {
   /**
    * If provided uses this method to render custom cell content, rather than the default text rendering.
    */
-  onRender?: (item: any, index?: number) => any;
+  onRender?: (item: any, index?: number, column?: IColumn) => any;
 
   /**
    * Determines if the column is filtered, and if so shows a filter icon.
@@ -199,6 +214,11 @@ export interface IColumn {
    * If provided, will be executed when the user clicks on the column header.
    */
   onColumnClick?: (column: IColumn, ev: React.MouseEvent) => any;
+
+  /**
+   * If provided, will be executed when the user accesses the contextmenu on a column header.
+   */
+  onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent) => any;
 
   /**
    * If set will show a grouped icon next to the column header name.

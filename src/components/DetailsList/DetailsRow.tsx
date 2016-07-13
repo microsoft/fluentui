@@ -25,6 +25,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   eventsToRegister?: [{ eventName: string, callback: (item?: any, index?: number, event?: any) => void }];
   onDidMount?: (row?: DetailsRow) => void;
   onWillUnmount?: (row?: DetailsRow) => void;
+  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
   dragDropEvents?: IDragDropEvents;
   dragDropHelper?: IDragDropHelper;
   groupNestingDepth?: number;
@@ -145,6 +146,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
       dragDropEvents,
       item,
       itemIndex,
+      onRenderItemColumn,
       selectionMode,
       viewport,
       checkboxVisibility,
@@ -195,12 +197,17 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
             <DetailsRowFields
               columns={ columns }
               item={ item }
-              itemIndex={ itemIndex } />
+              itemIndex={ itemIndex }
+              onRenderItemColumn={ onRenderItemColumn } />
           ) }
 
           { columnMeasureInfo && (
             <span className='ms-DetailsRow-cellMeasurer ms-DetailsRow-cell' ref='cellMeasurer'>
-              <DetailsRowFields columns={ [ columnMeasureInfo.column ] } item={ item } itemIndex={ itemIndex } />
+              <DetailsRowFields
+                columns={ [ columnMeasureInfo.column ] }
+                item={ item }
+                itemIndex={ itemIndex }
+                onRenderItemColumn={ onRenderItemColumn } />
             </span>
           ) }
         </FocusZone>
@@ -219,6 +226,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
 
     column.minWidth = 0;
     column.maxWidth = 999999;
+
     delete column.calculatedWidth;
 
     this.setState({

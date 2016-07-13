@@ -165,6 +165,9 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       items,
       onItemInvoked,
       onRenderMissingItem,
+      onRenderItemColumn,
+      onColumnHeaderClick,
+      onColumnHeaderContextMenu,
       rowElementEventMap,
       selectionMode,
       viewport,
@@ -211,6 +214,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           eventsToRegister={ rowElementEventMap }
           onRowDidMount={ this._onRowDidMount }
           onRowWillUnmount={ this._onRowWillUnmount }
+          onRenderItemColumn={ onRenderItemColumn }
           dragDropEvents={ dragDropEvents }
           onRenderMissingItem={ onRenderMissingItem }
           dragDropHelper={ this._dragDropHelper }
@@ -241,6 +245,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           layoutMode={ layoutMode }
           selection={ selection }
           columns={ adjustedColumns }
+          onColumnClick={ onColumnHeaderClick }
+          onColumnContextMenu={ onColumnHeaderContextMenu }
           onColumnResized={ this._onColumnResized }
           onColumnIsSizingChanged={ this._onColumnIsSizingChanged }
           onColumnAutoResized={ this._onColumnAutoResized }
@@ -262,6 +268,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
             onItemInvoked={ onItemInvoked }>
             { renderedGroups }
           </SelectionZone>
+
         </FocusZone>
       </div>
     );
@@ -629,7 +636,7 @@ export function buildColumns(
           isSorted: sortedColumnKey === propName,
           isSortedDescending: !!isSortedDescending,
           isRowHeader: false,
-          columnActionsMode: ColumnActionsMode.hasDropdown,
+          columnActionsMode: ColumnActionsMode.clickable,
           isResizable: canResizeColumns,
           onColumnClick: onColumnClick,
           isGrouped: groupedColumnKey === propName

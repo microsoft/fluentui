@@ -67,7 +67,8 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, any> {
     this._events.onAll(element, {
       'keydown': this._onKeyDown,
       'mousedown': this._onMouseDown,
-      'click': this._onClick
+      'click': this._onClick,
+      'dblclick': this._onDoubleClick
     });
 
     // Always know what the state of shift/ctrl/meta are.
@@ -155,6 +156,15 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, any> {
       // Re-enabled change events.
       selection.setChangeEvents(true);
     } else if (onItemInvoked) {
+      onItemInvoked(selection.getItems()[index], index, ev);
+    }
+  }
+
+  private _onDoubleClick(ev: MouseEvent) {
+    let { onItemInvoked, selection } = this.props;
+    let index = this._getIndexFromElement(ev.target as HTMLElement, true);
+
+    if (onItemInvoked) {
       onItemInvoked(selection.getItems()[index], index, ev);
     }
   }

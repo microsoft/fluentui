@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { EventGroup } from '../eventGroup/EventGroup';
+import { BaseComponent } from '../../common/BaseComponent';
 
 export interface IViewport {
   width: number;
@@ -10,21 +10,19 @@ export interface IWithViewportState {
   viewport?: IViewport;
 }
 
+const RESIZE_DELAY = 500;
+
 export function withViewport<P, S>(ComposedComponent: any): any {
 
-  return class WithViewportComponent extends React.Component<P, IWithViewportState> {
+  return class WithViewportComponent extends BaseComponent<{}, IWithViewportState> {
 
     public refs: {
       [key: string]: React.ReactInstance;
       component: any;
     };
 
-    private _events: EventGroup;
-
     constructor() {
       super();
-
-      this._events = new EventGroup(this);
 
       this.state = {
         viewport: {
@@ -32,6 +30,22 @@ export function withViewport<P, S>(ComposedComponent: any): any {
           height: 0
         }
       };
+    }
+
+    public componentDidMount() {
+      this._onAsyncResize = this._async.debounce(
+        this._onAsyncResize,
+        RESIZE_DELAY,
+        {
+          leading: false
+        });
+
+      this._events.on(window, 'resize', this._onAsyncResize);
+      this._updateViewport();
+    }
+
+    public componentWillUnmount() {
+      this._events.dispose();
     }
 
     public render() {
@@ -46,17 +60,12 @@ export function withViewport<P, S>(ComposedComponent: any): any {
       );
     }
 
-    public componentDidMount() {
-      this._events.on(window, 'resize', this._updateViewport);
-      this._updateViewport();
-    }
-
-    public componentWillUnmount() {
-      this._events.dispose();
-    }
-
     public forceUpdate() {
       this.refs.component.forceUpdate();
+    }
+
+    private _onAsyncResize() {
+      this._updateViewport();
     }
 
     private _updateViewport() {
