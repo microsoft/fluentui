@@ -203,7 +203,7 @@ export interface IColumn {
   /**
    * If provided uses this method to render custom cell content, rather than the default text rendering.
    */
-  onRender?: (item: any, index?: number, column?: IColumn) => any;
+  onRender?: (item?: any, index?: number, column?: IColumn) => any;
 
   /**
    * Determines if the column is filtered, and if so shows a filter icon.
@@ -213,12 +213,12 @@ export interface IColumn {
   /**
    * If provided, will be executed when the user clicks on the column header.
    */
-  onColumnClick?: (column: IColumn, ev: React.MouseEvent) => any;
+  onColumnClick?: (column?: IColumn, ev?: React.MouseEvent) => any;
 
   /**
    * If provided, will be executed when the user accesses the contextmenu on a column header.
    */
-  onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent) => any;
+  onColumnContextMenu?: (column?: IColumn, ev?: React.MouseEvent) => any;
 
   /**
    * If set will show a grouped icon next to the column header name.
