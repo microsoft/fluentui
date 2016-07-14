@@ -44,4 +44,9 @@ export interface ISliderProps {
    * Whether or not the Slider is disabled.
    */
   isDisabled?: boolean;
+
+  /**
+  * Optional className for slider.
+  */
+  className?: string;
 }

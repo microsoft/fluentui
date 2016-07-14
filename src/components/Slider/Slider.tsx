@@ -21,7 +21,8 @@ export class Slider extends React.Component<ISliderProps, ISliderState> {
   public static defaultProps: {} = {
     step: 1,
     showValue: true,
-    isDisabled: false
+    isDisabled: false,
+    className: ''
   };
 
   public refs: {
@@ -81,15 +82,9 @@ export class Slider extends React.Component<ISliderProps, ISliderState> {
   }
 
   public render(): React.ReactElement<{}> {
-    const max: number = this.props.max;
-    const min: number = this.props.min;
+    const { min, max, label, showValue, isDisabled, className, ariaLabel } = this.props;
     const value: number = this.state.value;
-    const label: string = this.props.label;
-    const showValue: boolean = this.props.showValue;
-    const isDisabled: boolean = this.props.isDisabled;
     const thumbOffsetPercent: number = (value - min) / (max - min) * 100;
-
-    const ariaLabel: string = this.props.ariaLabel;
 
     const onMouseDownProp: {} = isDisabled ? {} : { onMouseDown: this._onMouseDownOrTouchStart };
     const onTouchStartProp: {} = isDisabled ? {} : { onTouchStart: this._onMouseDownOrTouchStart };
@@ -99,11 +94,10 @@ export class Slider extends React.Component<ISliderProps, ISliderState> {
       <div ref='root'>
         { label && <label className='ms-Label'
                           { ...ariaLabel ? {} : {'htmlFor' : this._id} }>{ label }</label> }
-        <div className= { css('ms-Slider-wrapper', {
+        <div className= { css('ms-Slider-wrapper', className, {
                'ms-Slider-showValue': showValue
              }) } >
           <div ref='sliderLine'
-               role='application'
                className = { css('ms-Slider-line', {
                  'ms-Slider-enabled': !isDisabled,
                  'ms-Slider-disabled': isDisabled
@@ -151,10 +145,7 @@ export class Slider extends React.Component<ISliderProps, ISliderState> {
   }
 
   private _onMouseMoveOrTouchMove(event: MouseEvent | TouchEvent): void {
-    const max: number = this.props.max;
-    const min: number = this.props.min;
-    const step: number = this.props.step;
-    const onChanged: (value: number) => void = this.props.onChanged;
+    const { max, min, step, onChanged } = this.props;
 
     const steps: number = (max - min) / step;
     const sliderLength: number = this.refs.sliderLine.offsetWidth;
@@ -197,11 +188,8 @@ export class Slider extends React.Component<ISliderProps, ISliderState> {
   }
 
   private _onKeyDown(event: MouseEvent): void {
-    const max: number = this.props.max;
-    const min: number = this.props.min;
-    const step: number = this.props.step;
     const value: number = this.state.value;
-    const onChanged: (value: number) => void = this.props.onChanged;
+    const { max, min, step, onChanged } = this.props;
 
     let diff: number = 0;
     if (event.which === getRTLSafeKeyCode(KeyCodes.left)) {
