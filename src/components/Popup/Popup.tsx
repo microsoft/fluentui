@@ -23,7 +23,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
   public componentDidMount(): void {
     this._originalFocusedElement = document.activeElement as HTMLElement;
 
-    this._events.on(window, 'keydown', this._onDialogKeyDown, true);
+    this._events.on(this.refs.root, 'keydown', this._onKeyDown);
 
     this._events.on(this.refs.root, 'focus', () => this._containsFocus = true, true);
     this._events.on(this.refs.root, 'blur', () => this._containsFocus = false, true);
@@ -54,7 +54,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
     );
   }
 
-  private _onDialogKeyDown(ev: React.KeyboardEvent) {
+  private _onKeyDown(ev: React.KeyboardEvent) {
     switch (ev.which) {
       case KeyCodes.escape:
 
