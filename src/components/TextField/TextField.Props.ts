@@ -11,6 +11,12 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement> {
   multiline?: boolean;
 
   /**
+   * Whether or not the multiline textfield is resizable.
+   * @default true
+   */
+  resizable?: boolean;
+
+  /**
    * Whether or not the textfield is underlined.
    * @default false
    */

@@ -25,6 +25,7 @@ let _instance: number = 0;
 export class TextField extends React.Component<ITextFieldProps, ITextFieldState> {
   public static defaultProps: ITextFieldProps = {
     multiline: false,
+    resizable: true,
     underlined: false,
     onChanged: () => { /* noop */ },
     onBeforeChange: () => { /* noop */ },
@@ -177,9 +178,17 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
 
   private get _fieldClassName(): string {
     const errorMessage: string = this._errorMessage;
-    return css('ms-TextField-field', {
-      'ms-TextField-invalid': !!errorMessage
-    });
+    let textFieldClassName: string;
+
+    if (this.props.multiline && !this.props.resizable) {
+      textFieldClassName = 'ms-TextField-field ms-TextField-field--unresizable';
+    } else {
+      textFieldClassName = 'ms-TextField-field';
+    }
+
+    return css(textFieldClassName, {
+        'ms-TextField-invalid': !!errorMessage
+      });
   }
 
   private get _errorMessage(): string {

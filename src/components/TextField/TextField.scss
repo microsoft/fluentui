@@ -37,6 +37,13 @@
   }
 }
 
-  .ms-TextField-hidden {
-    display: none;
+.ms-TextField.ms-TextField--multiline {
+
+  .ms-TextField-field.ms-TextField-field--unresizable {
+    resize: none;
   }
+}
+
+.ms-TextField-hidden {
+  display: none;
+}
