@@ -20,6 +20,7 @@ export const CoverStyleMap = {
 
 export const ImageFitMap = {
   [ ImageFit.center ]: 'ms-Image-image--center',
+  [ ImageFit.contain ]: 'ms-Image-image--contain',
   [ ImageFit.cover ]: 'ms-Image-image--cover',
   [ ImageFit.none ]: 'ms-Image-image--none'
 };
@@ -106,14 +107,12 @@ export class Image extends React.Component<IImageProps, IImageState> {
   }
 
   private _evaluateImage(): boolean {
-    let { src, imageFit } = this.props;
+    let { src } = this.props;
     let { loadState } = this.state;
     let { image } = this.refs;
     let isLoaded = (src && image.naturalWidth > 0 && image.naturalHeight > 0);
 
-    if (imageFit === ImageFit.cover) {
-      this._computeCoverStyle();
-    }
+    this._computeCoverStyle();
 
     if (isLoaded && loadState !== ImageLoadState.loaded && loadState !== ImageLoadState.errorLoaded) {
       this._events.off();
@@ -126,17 +125,20 @@ export class Image extends React.Component<IImageProps, IImageState> {
   }
 
   private _computeCoverStyle() {
-    let { image } = this.refs;
-    if (image) {
-      let { width, height } = this.props;
+    let { imageFit } = this.props;
+    if (imageFit === ImageFit.cover || imageFit === ImageFit.contain) {
+      let { image } = this.refs;
+      if (image) {
+        let { width, height } = this.props;
 
-      let desiredRatio = (width as number) / (height as number);
-      let naturalRatio = image.naturalWidth / image.naturalHeight;
+        let desiredRatio = (width as number) / (height as number);
+        let naturalRatio = image.naturalWidth / image.naturalHeight;
 
-      if (naturalRatio > desiredRatio) {
-        this._coverStyle = CoverStyle.landscape;
-      } else {
-        this._coverStyle = CoverStyle.portrait;
+        if (naturalRatio > desiredRatio) {
+          this._coverStyle = CoverStyle.landscape;
+        } else {
+          this._coverStyle = CoverStyle.portrait;
+        }
       }
     }
   }
