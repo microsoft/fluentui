@@ -17,6 +17,10 @@ export interface ILayerHostState extends React.Props<LayerHost> {
 }
 
 export class LayerHost extends React.Component<React.Props<LayerHost>, ILayerHostState> {
+  public static childContextTypes = {
+    isInLayer: React.PropTypes.bool
+  };
+
   private _layers: ILayer[];
 
   constructor(props: {}) {
@@ -25,6 +29,12 @@ export class LayerHost extends React.Component<React.Props<LayerHost>, ILayerHos
     this._layers = [];
     this.state = {
       layers: this._layers
+    };
+  }
+
+  public getChildContext() {
+    return {
+      isInLayer: true
     };
   }
 

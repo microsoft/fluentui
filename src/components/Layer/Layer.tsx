@@ -10,6 +10,14 @@ let _instance = 0;
 let _layerHost: LayerHost;
 
 export class Layer extends React.Component<ILayerProps, {}> {
+  public static contextTypes = {
+    isInLayer: React.PropTypes.bool
+  };
+
+  public context: {
+    isInLayer: boolean;
+  };
+
   private _layer: ILayer;
 
   constructor(props?: ILayerProps) {
@@ -21,10 +29,10 @@ export class Layer extends React.Component<ILayerProps, {}> {
     };
   }
 
-  public render() {
-    return (
-      <div className='ms-Layer' />
-    );
+  public render(): JSX.Element {
+    let { isInLayer } = this.context;
+
+    return isInLayer ? this.props.children as JSX.Element : null;
   }
 
   public componentWillMount() {
@@ -42,16 +50,25 @@ export class Layer extends React.Component<ILayerProps, {}> {
   }
 
   public componentDidMount() {
-    _layerHost.addLayer(this._layer, this.props.onLayerMounted);
+    if (!this.context.isInLayer) {
+      _layerHost.addLayer(this._layer, this.props.onLayerMounted);
+    } else {
+      if (this.props.onLayerMounted) {
+        this.props.onLayerMounted();
+      }
+    }
   }
 
   public componentWillReceiveProps(props: ILayerProps) {
-    this._layer.children = props.children;
-
-    _layerHost.updateLayer(this._layer);
+    if (!this.context.isInLayer) {
+      this._layer.children = props.children;
+      _layerHost.updateLayer(this._layer);
+    }
   }
 
   public componentWillUnmount() {
-    _layerHost.removeLayer(this._layer);
+    if (!this.context.isInLayer) {
+      _layerHost.removeLayer(this._layer);
+    }
   }
 }
