@@ -34,7 +34,7 @@ export class Dialog extends React.Component<IDialogProps, any> {
   }
 
   public render() {
-    let { isOpen, type, isDarkOverlay, onDismiss, title, subText, isBlocking, responsiveMode, elementToFocusOnDismiss, ignoreExternalFocusing, forceFocusInsideTrap, firstFocusableSelector, closeButtonAriaLabel } = this.props;
+    let { isOpen, type, isDarkOverlay, onDismiss, title, subText, isBlocking, responsiveMode, elementToFocusOnDismiss, ignoreExternalFocusing, forceFocusInsideTrap, firstFocusableSelector, closeButtonAriaLabel, onLayerMounted } = this.props;
     let { id } = this.state;
     // @TODO - the discussion on whether the Dialog contain a property for rendering itself is still being discussed
     if (!isOpen) {
@@ -55,7 +55,7 @@ export class Dialog extends React.Component<IDialogProps, any> {
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints
     if (responsiveMode >= ResponsiveMode.small) {
       return (
-        <Layer>
+        <Layer onLayerMounted={ onLayerMounted }>
           <Popup
             className= { dialogClassName }
             role='dialog'
