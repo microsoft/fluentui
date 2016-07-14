@@ -41,7 +41,7 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
 
     this._events = new EventGroup(this);
 
-    this._updatePosition = this._updatePosition.bind(this);
+    this._onLayerDidMount = this._onLayerDidMount.bind(this);
   }
 
   public componentDidUpdate() {
@@ -49,7 +49,9 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
   }
 
   public componentDidMount() {
-    this._updatePosition();
+    if (this.props.doNotLayer) {
+      this._onLayerDidMount();
+    }
   }
 
   public componentWillUnmount() {
@@ -74,8 +76,8 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
       </div>
     );
     return this.props.doNotLayer ? content : (
-      <Layer onLayerMounted={ this._updatePosition }>
-        {content}
+      <Layer onLayerMounted={ this._onLayerDidMount }>
+        { content }
       </Layer>
     );
   }
@@ -100,11 +102,7 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     }
   }
 
-  private _updatePosition() {
-    let { positions } = this.state;
-    let hostElement: HTMLElement = this._hostElement;
-    let calloutElement: HTMLElement = this._calloutElement;
-
+  private _onLayerDidMount() {
     // This is added so the callout will dismiss when the window is scrolled
     // but not when something inside the callout is scrolled.
     this._events.on(window, 'scroll', this._dismissOnLostFocus, true);
@@ -112,12 +110,25 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     this._events.on(window, 'focus', this._dismissOnLostFocus, true);
     this._events.on(window, 'click', this._dismissOnLostFocus, true);
 
+    if (this.props.onLayerMounted) {
+      this.props.onLayerMounted();
+    }
+
+    this._updatePosition();
+  }
+
+  private _updatePosition() {
+    let { positions } = this.state;
+    let hostElement: HTMLElement = this._hostElement;
+    let calloutElement: HTMLElement = this._calloutElement;
+
     if (hostElement && calloutElement) {
       let positionInfo: IPositionInfo = getRelativePositions(this.props, hostElement, calloutElement);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different
       if ((!positions && positionInfo) ||
         (positions && positionInfo && (positions.callout.top !== positionInfo.calloutPosition.top || positions.callout.left !== positionInfo.calloutPosition.left))) {
+
         this.setState({
           positions: {
             callout: positionInfo.calloutPosition,
@@ -126,9 +137,6 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
           slideDirectionalClassName: positionInfo.directionalClassName
         });
       }
-    }
-    if (this.props.onLayerMounted) {
-      this.props.onLayerMounted();
     }
   }
 }
