@@ -135,9 +135,9 @@ export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetails
                   style={ { width: column.calculatedWidth + INNER_PADDING } }
                   onClick={ this._onColumnClick.bind(this, column) }
                   onContextMenu={ this._onColumnContextMenu.bind(this, column) }
-                  aria-haspopup = {column.columnActionsMode !== ColumnActionsMode.disabled}
-                  aria-label = { column.ariaLabel || column.name }
-                  aria-sort = {column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none'}
+                  aria-haspopup={ column.columnActionsMode === ColumnActionsMode.hasDropdown }
+                  aria-label={ column.ariaLabel || column.name }
+                  aria-sort={ column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none' }
                   data-automationid='ColumnsHeaderColumn'
                   >
 
