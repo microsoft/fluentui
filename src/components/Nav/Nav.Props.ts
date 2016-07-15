@@ -15,7 +15,7 @@ export interface INavProps {
   /**
    * Function callback invoked when a link in the navigation is clicked
    */
-  onLinkClick?: { (e: React.MouseEvent): boolean };
+  onLinkClick?: (ev?: React.MouseEvent) => void;
 
   /**
    * Indicates whether the navigation component renders on top of other content in the UI

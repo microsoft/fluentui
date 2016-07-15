@@ -17,9 +17,10 @@ export class CalloutBasicExample extends React.Component<any, ICalloutBaiscExamp
     super();
 
     this._onShowMenuClicked = this._onShowMenuClicked.bind(this);
+    this._onCalloutDismiss = this._onCalloutDismiss.bind(this);
 
     this.state = {
-      isCalloutVisible: false,
+      isCalloutVisible: false
     };
   }
 
@@ -31,26 +32,29 @@ export class CalloutBasicExample extends React.Component<any, ICalloutBaiscExamp
         <div className='ms-CalloutBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
           <Button onClick={ this._onShowMenuClicked } >{ isCalloutVisible ? 'Hide callout' : 'Show callout' }</Button>
         </div>
-        { isCalloutVisible ? (
-        <Callout
-          gapSpace={ 20 }
-          targetElement={ this._menuButtonElement }
-        >
-            <div className='ms-Callout-header'>
-              <p className='ms-Callout-title'>
-                All of your favorite people
-              </p>
-            </div>
-            <div className='ms-Callout-inner'>
-              <div className='ms-Callout-content'>
-                <p className='ms-Callout-subText'>
-                  Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
+        { isCalloutVisible && (
+          <Callout
+            gapSpace={ 20 }
+            targetElement={ this._menuButtonElement }
+            onDismiss={ this._onCalloutDismiss }
+            >
+            <div className='ms-Callout-main'>
+              <div className='ms-Callout-header'>
+                <p className='ms-Callout-title'>
+                  All of your favorite people
                 </p>
               </div>
+              <div className='ms-Callout-inner'>
+                <div className='ms-Callout-content'>
+                  <p className='ms-Callout-subText'>
+                    Message body is optional.If help documentation is available, consider adding a link to learn more at the bottom.
+                  </p>
+                </div>
+              </div>
+              <Link href='http://microsoft.com'>Go to microsoft</Link>
             </div>
-            <Link href='http://microsoft.com'>Go to microsoft</Link>
-        </Callout>
-        ) : (null) }
+          </Callout>
+        ) }
       </div>
     );
   }
@@ -58,6 +62,12 @@ export class CalloutBasicExample extends React.Component<any, ICalloutBaiscExamp
   private _onShowMenuClicked() {
     this.setState({
       isCalloutVisible: !this.state.isCalloutVisible
+    });
+  }
+
+  private _onCalloutDismiss() {
+    this.setState({
+      isCalloutVisible: false
     });
   }
 }

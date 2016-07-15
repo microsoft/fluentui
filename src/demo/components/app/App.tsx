@@ -30,6 +30,7 @@ export class App extends React.Component<IAppProps, any> {
     };
 
     this._onIsMenuVisibleChanged = this._onIsMenuVisibleChanged.bind(this);
+    this._onLinkClick = this._onLinkClick.bind(this);
   }
 
   public render() {
@@ -37,12 +38,12 @@ export class App extends React.Component<IAppProps, any> {
     let { isMenuVisible } = this.state;
 
     let navPanel = (
-      <Nav groups={ AppState.examplePages } onRenderLink={(link) => ([
+      <Nav groups={ AppState.examplePages } onLinkClick={ this._onLinkClick } onRenderLink={(link) => ([
         <span key={ 1 } className='Nav-linkText'>{ link.name }</span>,
         (link.status !== undefined ?
-          <span key={ 2 } className={ 'Nav-linkFlair ' + 'is-state' + link.status } >{ ExampleStatus[link.status] }</span> :
+          <span key={ 2 } className={ 'Nav-linkFlair ' + 'is-state' + link.status } >{ ExampleStatus[link.status]}</span> :
           null)
-        ])}
+      ]) }
         />
     );
 
@@ -62,7 +63,7 @@ export class App extends React.Component<IAppProps, any> {
           <div className='App-nav'>
             { navPanel }
           </div>
-        ) : ( null ) }
+        ) : (null) }
 
         <div className='App-content' data-is-scrollable='true'>
           { this.props.children }
@@ -71,7 +72,8 @@ export class App extends React.Component<IAppProps, any> {
         { (responsiveMode <= ResponsiveMode.large) ? (
           <Panel
             className='App-navPanel ms-font-m'
-            isOpen={isMenuVisible}
+            isOpen={ isMenuVisible }
+            isLightDismiss={ true }
             type={ PanelType.smallFixedNear }
             onDismiss={ this._onIsMenuVisibleChanged.bind(this, false) }>
             { navPanel }
@@ -83,5 +85,9 @@ export class App extends React.Component<IAppProps, any> {
 
   private _onIsMenuVisibleChanged(isMenuVisible: boolean) {
     this.setState({ isMenuVisible });
+  }
+
+  private _onLinkClick() {
+    this.setState({ isMenuVisible: false });
   }
 }
