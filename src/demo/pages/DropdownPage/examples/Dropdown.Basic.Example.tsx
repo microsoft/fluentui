@@ -13,13 +13,13 @@ export class DropdownBasicExample extends React.Component<any, any> {
           options={
             [
               { key: 'A', text: 'Option a' },
-              { key: 'B', text: 'Option b', isSelected: true },
+              { key: 'B', text: 'Option b' },
               { key: 'C', text: 'Option c' },
               { key: 'D', text: 'Option d' },
               { key: 'E', text: 'Option e' },
               { key: 'F', text: 'Option f' },
               { key: 'G', text: 'Option g' },
-              { key: 'H', text: 'Option h' },
+              { key: 'H', text: 'Option h', isSelected: true },
               { key: 'I', text: 'Option i' },
               { key: 'J', text: 'Option j' },
             ]

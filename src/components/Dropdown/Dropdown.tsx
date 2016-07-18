@@ -21,7 +21,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
     isDisabled: false
   };
 
-  private static itemHeightPx = 40;
+  private static Option: string = 'option';
 
   public refs: {
     [key: string]: React.ReactInstance,
@@ -70,7 +70,9 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
   }
 
   public componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState) {
-    if (prevState.selectedIndex !== this.state.selectedIndex) {
+    if (prevState.isOpen === false && this.state.isOpen === true) {
+      this._scrollOnOpen();
+    } else if (prevState.selectedIndex !== this.state.selectedIndex) {
       this._scrollSelectedItemIntoView();
     }
   }
@@ -106,7 +108,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
             aria-labelledby={ id + '-label' }>
             { options.map((option, index) => (
               <li id={ index.toString() }
-                style= { { 'height': Dropdown.itemHeightPx } }
+                ref= { Dropdown.Option + index.toString() }
                 key={ option.key }
                 data-index={ index }
                 className={ css('ms-Dropdown-item', { 'is-selected': selectedIndex === index }) }
@@ -210,8 +212,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
   }
 
   private _scrollSelectedItemIntoView() {
-    const posBottom: number = Dropdown.itemHeightPx * (this.state.selectedIndex + 1);
-    const posTop: number = Dropdown.itemHeightPx * this.state.selectedIndex;
+    const { posTop, posBottom } = this._getCurrentItemPositionDetails();
 
     // if the selected item is too far down
     if (posBottom > this._optionList.offsetHeight + this._optionList.scrollTop) {
@@ -221,4 +222,22 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
       this._optionList.scrollTop = posTop;
     }
   }
+
+  private _scrollOnOpen() {
+    const { currentItem, posBottom } = this._getCurrentItemPositionDetails();
+
+    // the selected item should be in the center of the dropdown if possible
+    this._optionList.scrollTop = posBottom - (currentItem.offsetHeight + this._optionList.offsetHeight) / 2;
+  }
+
+  private _getCurrentItemPositionDetails() {
+    const currentItem: HTMLElement = this.refs[Dropdown.Option + this.state.selectedIndex] as HTMLElement;
+    const posTop: number = currentItem.offsetTop;
+    const posBottom: number = posTop + currentItem.offsetHeight;
+
+    return { currentItem: currentItem,
+      posTop: posTop,
+      posBottom: posBottom };
+  }
+
 }
