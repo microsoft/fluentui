@@ -7,6 +7,7 @@ import { IButtonProps, ButtonType, ElementType } from './Button.Props';
 export interface IButtonState {
   labelId?: string;
   descriptionId?: string;
+  ariaDescriptionId?: string;
 }
 
 let _instance = 0;
@@ -22,14 +23,15 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
     super(props);
 
     this.state = {
-      labelId: `Button-${ _instance++ }`,
-      descriptionId: `Button-${ _instance++ }`,
+      labelId: `Button-${_instance++}`,
+      descriptionId: `Button-${_instance++}`,
+      ariaDescriptionId: `Button-${_instance++}`,
     };
   }
 
   public render(): JSX.Element {
-    let { buttonType, children, icon, description, ariaLabel, elementType, disabled } = this.props;
-    let {labelId, descriptionId } = this.state;
+    let { buttonType, children, icon, description, ariaLabel, ariaDescription, elementType, disabled } = this.props;
+    let { labelId, descriptionId, ariaDescriptionId } = this.state;
 
     const tag = this.props.elementType === ElementType.button ? 'button' : 'a';
 
@@ -46,30 +48,38 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
       ? <span className='ms-Button-icon'><i className={`ms-Icon ms-Icon--${icon}`}></i></span>
       : null;
 
-    let descriptionSpan;
-    if (buttonType === ButtonType.compound) {
-      descriptionSpan = <span className='ms-Button-description' id={ descriptionId }>{ description }</span>;
-    }
+    // ms-Button-description is only shown when the button type is compound.
+    // In other cases it will not be displayed.
+    const descriptionSpan: React.ReactElement<React.HTMLProps<HTMLSpanElement>> = description
+      ? <span className='ms-Button-description' id={ descriptionId }>{ description }</span>
+      : null;
+
+    // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
+    // otherwise it will be assigned to descriptionSpan.
+    const ariaDescriptionSpan: React.ReactElement<React.HTMLProps<HTMLSpanElement>> = ariaDescription
+      ? <span className='ms-u-screenReaderOnly' id={ ariaDescriptionId }>{ ariaDescription }</span>
+      : null;
 
     return React.createElement(
       tag,
       assign({
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabel ? null : labelId,
-        'aria-describedby': buttonType === ButtonType.compound ? descriptionId : null,
-        'ref':  (c: HTMLButtonElement): HTMLButtonElement => this._buttonElement = c
-        },
+        'aria-describedby': ariaDescription ? ariaDescriptionId : description ? descriptionId : null,
+        'ref': (c: HTMLButtonElement): HTMLButtonElement => this._buttonElement = c
+      },
         this.props,
         { className }),
       iconSpan,
       <span className='ms-Button-label' id={ labelId } >{ children }</span>,
-      descriptionSpan
+      descriptionSpan,
+      ariaDescriptionSpan
     );
   }
 
   public focus(): void {
-      if (this._buttonElement) {
-          this._buttonElement.focus();
-      }
+    if (this._buttonElement) {
+      this._buttonElement.focus();
+    }
   }
 }
