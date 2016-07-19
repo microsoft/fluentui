@@ -3,7 +3,7 @@
   "editor.tabSize": 2,
 
     // When opening a file, `editor.tabSize` and `editor.insertSpaces` will be detected based on the file contents.
-  "editor.detectIndentation": true,
+  "editor.detectIndentation": false,
 
   // When enabled, will trim trailing whitespace when you save a file.
   "files.trimTrailingWhitespace": true,
