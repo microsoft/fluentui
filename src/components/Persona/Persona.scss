@@ -1,0 +1,23 @@
+@import '../../common/common';
+@import "~office-ui-fabric/src/components/Persona/Persona";
+
+// div.ms-Persona-image to overwrite Fabric's ms-Persona-image
+div.ms-Persona-image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  float: clear;
+  border: 50%;
+  width: 100%;
+  height: 100%;
+
+  border-radius: 50%;
+  perspective: 1px;
+}
+
+.ms-Persona-optionalText,
+.ms-Persona-primaryText,
+.ms-Persona-secondaryText,
+.ms-Persona-tertiaryText {
+  width: auto;
+}

@@ -1,0 +1,51 @@
+@import '../../common/common';
+@import "~office-ui-fabric/src/components/Label/Label";
+@import "~office-ui-fabric/src/components/SearchBox/SearchBox";
+
+// Override Fabric so that the SearchBox takes up 100% of the parent
+// container's width
+.ms-SearchBox,
+.ms-SearchBox-field {
+  width: 100%
+}
+
+// Override Fabric so that the label can be displayed on top of the input
+// instead of behind it. Since the input is no longer using a semi-transparent
+// background color, and want the label to still display during the hover state.
+.ms-SearchBox-label {
+  z-index: 10;
+}
+
+// Fabric was using a mouseover and mouseout events to toggle the ".hover" class
+// It's not clear to me why that is, but it seems just applying the styles
+// to a :hover state seems to work just fine
+.ms-SearchBox-field {
+  &:hover {
+    border-color: $ms-color-themePrimary;
+    background-color: $ms-color-themeLighter;
+
+    & + .ms-SearchBox-label {
+      color: $ms-color-black;
+
+      .ms-Icon {
+      color: $ms-color-neutralPrimary;
+      }
+    }
+  }
+}
+
+// Fabric RTL fixes. These values are the same as in the fabric src,
+// but we are replacing the properties with the SASS mixins.
+.ms-SearchBox-label {
+  @include padding-left(8px);
+  @include left(0);
+}
+
+.ms-SearchBox-icon {
+  @include margin-right(7px);
+}
+
+.ms-SearchBox-closeButton {
+  @include right(0);
+  @include left(auto);
+}

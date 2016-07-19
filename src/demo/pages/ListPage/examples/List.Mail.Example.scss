@@ -1,0 +1,15 @@
+@import '../../../../common/common';
+@import '~office-ui-fabric/src/components/ListItem/ListItem.scss';
+
+.MailList {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  max-height: 500px;
+}
+
+.MailTile {
+  margin-bottom: 5px;
+  padding: 10px;
+  background: red;
+}

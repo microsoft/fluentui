@@ -1,0 +1,63 @@
+@import '../../common/common';
+@import "~office-ui-fabric/src/components/Button/Button";
+
+.ms-Button--icon {
+  background-color: transparent;
+  padding: 0;
+  min-width: auto;
+  height: auto;
+  border: 0;
+
+  &:hover {
+    background-color: transparent;
+    border-color: transparent;
+    outline-color: transparent;
+  }
+
+  &:focus {
+    background-color: transparent;
+  }
+
+  .ms-Button-icon {
+    display: inline;
+  }
+}
+
+// this is added because we have an anchor styled like a button and there is no
+// disabled attribute so we're adding a css class with the same functionality instead
+.ms-Button.ms-Button--primary.disabled {
+  background-color: $ms-color-neutralLighter;
+  border-color: $ms-color-neutralLighter;
+  pointer-events: none;
+  cursor: default;
+
+  .ms-Button-label {
+    color: $ms-color-neutralTertiary;
+  }
+}
+// Add space between adjacent buttons.
+.ms-Button + .ms-Button {
+  @include margin-left(6px);
+}
+
+.ms-Button.ms-Button--command {
+  @include text-align(left);
+
+  .ms-Button-icon {
+    @include margin-right(4px);
+  }
+}
+
+.ms-Button.ms-Button--command + .ms-Button.ms-Button--command {
+  @include margin-left(14px);
+}
+
+.ms-Button.ms-Button--compound {
+  .ms-Button-label {
+    @include text-align(left);
+  }
+
+  .ms-Button-description {
+    @include text-align(left);
+  }
+}

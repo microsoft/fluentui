@@ -1,0 +1,5 @@
+import { loadTheme } from '@ms/office-ui-fabric-react';
+
+loadTheme({
+  'themePrimary': 'red'
+});
