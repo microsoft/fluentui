@@ -48,6 +48,11 @@ export interface IColumnResizeDetails {
 }
 
 export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetailsHeaderState> {
+  public refs: {
+    [key: string]: React.ReactInstance;
+    focusZone: FocusZone;
+  };
+
   private _events: EventGroup;
 
   constructor(props: IDetailsHeaderProps) {
@@ -99,7 +104,7 @@ export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetails
         onMouseMove={ this._onMove.bind(this) }
         onMouseUp={ this._onUp.bind(this) }
         ref='root' data-automationid='DetailsHeader'>
-        <FocusZone direction={ FocusZoneDirection.horizontal }>
+        <FocusZone ref='focusZone' direction={ FocusZoneDirection.horizontal }>
           { (selectionMode === SelectionMode.multiple) ? (
             <button
               role='columnheader'
@@ -181,6 +186,11 @@ export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetails
         </FocusZone>
       </div>
     );
+  }
+
+  /** Set focus to the active thing in the focus area. */
+  public focus(): boolean {
+    return this.refs.focusZone.focus();
   }
 
   /**

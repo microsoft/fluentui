@@ -59,7 +59,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   public refs: {
     [key: string]: React.ReactInstance,
     header: DetailsHeader,
-    root: HTMLElement
+    root: HTMLElement,
+    focusZone: FocusZone
   };
 
   private _events: EventGroup;
@@ -87,6 +88,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     this._onToggleSummarize = this._onToggleSummarize.bind(this);
     this._getGroupKey = this._getGroupKey.bind(this);
     this._onActiveRowChanged = this._onActiveRowChanged.bind(this);
+    this._onHeaderKeyDown = this._onHeaderKeyDown.bind(this);
+    this._onContentKeyDown = this._onContentKeyDown.bind(this);
 
     this.state = {
       lastWidth: 0,
@@ -101,6 +104,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     this._selection = props.selection || new Selection(null, props.getKey);
     this._selection.setItems(props.items as IObjectWithKey[], false);
     this._dragDropHelper = props.dragDropEvents ? new DragDropHelper({ selection: this._selection }) : null;
+
   }
 
   public componentWillUnmount() {
@@ -238,38 +242,43 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
         data-automationid='DetailsList'
         data-is-scrollable='false'
         role='grid'>
-        { isHeaderVisible && (
-        <DetailsHeader
-          ref='header'
-          selectionMode={ selectionMode }
-          layoutMode={ layoutMode }
-          selection={ selection }
-          columns={ adjustedColumns }
-          onColumnClick={ onColumnHeaderClick }
-          onColumnContextMenu={ onColumnHeaderContextMenu }
-          onColumnResized={ this._onColumnResized }
-          onColumnIsSizingChanged={ this._onColumnIsSizingChanged }
-          onColumnAutoResized={ this._onColumnAutoResized }
-          groupNestingDepth={ groupNestingDepth }
-          isAllCollapsed={ isAllCollapsed }
-          onToggleCollapseAll={ this._onToggleCollapseAll }
-          ariaLabel={ ariaLabelForListHeader }
-          ariaLabelForSelectAllCheckbox={ ariaLabelForSelectAllCheckbox }
-          />
-        ) }
-        <FocusZone
-          direction={ FocusZoneDirection.vertical }
-          isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }
-          onActiveElementChanged={ this._onActiveRowChanged }
-        >
-          <SelectionZone
-            selection={ selection }
+        <div ref='headerContainer' onKeyDown={ this._onHeaderKeyDown }>
+          { isHeaderVisible && (
+          <DetailsHeader
+            ref='header'
             selectionMode={ selectionMode }
-            onItemInvoked={ onItemInvoked }>
-            { renderedGroups }
-          </SelectionZone>
+            layoutMode={ layoutMode }
+            selection={ selection }
+            columns={ adjustedColumns }
+            onColumnClick={ onColumnHeaderClick }
+            onColumnContextMenu={ onColumnHeaderContextMenu }
+            onColumnResized={ this._onColumnResized }
+            onColumnIsSizingChanged={ this._onColumnIsSizingChanged }
+            onColumnAutoResized={ this._onColumnAutoResized }
+            groupNestingDepth={ groupNestingDepth }
+            isAllCollapsed={ isAllCollapsed }
+            onToggleCollapseAll={ this._onToggleCollapseAll }
+            ariaLabel={ ariaLabelForListHeader }
+            ariaLabelForSelectAllCheckbox={ ariaLabelForSelectAllCheckbox }
+            />
+          ) }
+        </div>
+        <div ref='contentContainer' onKeyDown={ this._onContentKeyDown }>
+          <FocusZone
+            ref='focusZone'
+            direction={ FocusZoneDirection.vertical }
+            isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }
+            onActiveElementChanged={ this._onActiveRowChanged }
+          >
+            <SelectionZone
+              selection={ selection }
+              selectionMode={ selectionMode }
+              onItemInvoked={ onItemInvoked }>
+              { renderedGroups }
+            </SelectionZone>
 
-        </FocusZone>
+          </FocusZone>
+        </div>
       </div>
     );
   }
@@ -281,6 +290,24 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
   private _onColumnIsSizingChanged(column: IColumn, isSizing: boolean) {
     this.setState({ isSizing: isSizing });
+  }
+
+  private _onHeaderKeyDown(ev: React.KeyboardEvent) {
+    if (ev.which === KeyCodes.down) {
+      if (this.refs.focusZone.focus()) {
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
+    }
+  }
+
+  private _onContentKeyDown(ev: React.KeyboardEvent) {
+    if (ev.which === KeyCodes.up) {
+      if (this.refs.header.focus()) {
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
+    }
   }
 
   private _getGroupKey(group: IGroup, groupIndex: number): string {
