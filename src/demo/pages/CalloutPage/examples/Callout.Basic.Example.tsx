@@ -50,7 +50,7 @@ export class CalloutBasicExample extends React.Component<any, ICalloutBaiscExamp
                   Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
                 </p>
               </div>
-              <div className="ms-Callout-actions">
+              <div className='ms-Callout-actions'>
                 <Link className='ms-Callout-link' href='http://microsoft.com'>Go to microsoft</Link>
               </div>
             </div>

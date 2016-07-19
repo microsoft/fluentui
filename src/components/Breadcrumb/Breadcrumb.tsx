@@ -102,6 +102,7 @@ export class Breadcrumb extends React.Component<IBreadcrumbProps, IBreadcrumbSta
         { isOverflowOpen ? (
           <ContextualMenu
             targetElement={ overflowAnchor }
+            isBeakVisible={ true }
             items={ renderedOverflowItems.map(
                 (item, index) => ({
                   name: item.text,
