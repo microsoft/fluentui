@@ -28,28 +28,31 @@ export class CalloutNestedExample extends React.Component<any, ICalloutBaiscExam
     let { isCalloutVisible } = this.state;
 
     return (
-      <div className='ms-CalloutBasicExample'>
+      <div className='ms-CalloutExample'>
         <div className='ms-CalloutBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
           <Button onClick={ this._onDismissCallout } >{ isCalloutVisible ? 'Hide callout' : 'Show callout' }</Button>
         </div>
         { isCalloutVisible ? (
           <div>
             <Callout
+              className='ms-CalloutExample-callout'
               gapSpace={ 20 }
               targetElement={ this._menuButtonElement }
               onDismiss= { (ev: any) => { this._onDismissCallout(ev); } }
               >
-              <div className='ms-CalloutExample-cmdBarHost'>
-                <div className='ms-CalloutExample-title'>Callout Title</div>
-                <div> some callout content</div>
-                <div> some and some more content</div>
-                <div> and some more</div>
-                <div>
-                  <CommandBar
-                    items={ this.props.items }
-                    />
+              <div className='ms-Callout-header'>
+                <p className='ms-Callout-title'>
+                  Callout title here
+                </p>
+              </div>
+              <div className='ms-Callout-inner'>
+                <div className='ms-Callout-content'>
+                  <p className='ms-Callout-subText'>
+                    Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
+                  </p>
                 </div>
               </div>
+              <CommandBar items={ this.props.items } />
             </Callout>
           </div>
         ) : (null) }

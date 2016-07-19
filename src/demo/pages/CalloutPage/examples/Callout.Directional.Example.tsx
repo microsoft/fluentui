@@ -58,7 +58,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
     let { isCalloutVisible, isBeakVisible, directionalHint, gapSpace } = this.state;
     // ms-Callout-smallbeak is used in this directional example to reflect all the positions. Large beak will disable some position to avoid beak over the callout edge.
     return (
-      <div className='ms-CalloutBasicExample'>
+      <div className='ms-CalloutExample'>
          <div className='ms-CalloutExample-configArea'>
           <Checkbox text='Show beak' isChecked={ isBeakVisible } onChanged={ this._onShowBeakChanged } />
           <TextField ref={ (gapSize) => this._gapSize = gapSize } label='Gap Space' placeholder='Type in the gap space' />
@@ -74,6 +74,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
         </div>
         { isCalloutVisible ? (
         <Callout
+          className='ms-CalloutExample-callout'
           gapSpace={ gapSpace }
           targetElement={ this._menuButtonElement }
           isBeakVisible={ isBeakVisible }

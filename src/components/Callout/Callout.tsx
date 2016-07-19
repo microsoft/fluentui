@@ -62,9 +62,9 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     let { className, targetElement, isBeakVisible, beakStyle, children } = this.props;
     let { positions, slideDirectionalClassName } = this.state;
     let content = (
-      <div ref={ (host: HTMLDivElement) => this._hostElement = host } className={ css('ms-Callout-container', className) }>
+      <div ref={ (host: HTMLDivElement) => this._hostElement = host } className={ 'ms-Callout-container' }>
         <div
-          className= { 'ms-Callout' + ((slideDirectionalClassName) ? (` ms-u-${slideDirectionalClassName}`) : '') }
+          className={ css('ms-Callout', className, slideDirectionalClassName ? `ms-u-${ slideDirectionalClassName }` : '') }
           style={ ((positions) ? positions.callout : OFF_SCREEN_POSITION) }
           ref={ (callout: HTMLDivElement) => this._calloutElement = callout }
           >

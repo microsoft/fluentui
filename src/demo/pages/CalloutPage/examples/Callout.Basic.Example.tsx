@@ -28,30 +28,31 @@ export class CalloutBasicExample extends React.Component<any, ICalloutBaiscExamp
     let { isCalloutVisible } = this.state;
 
     return (
-      <div className='ms-CalloutBasicExample'>
+      <div className='ms-CalloutExample'>
         <div className='ms-CalloutBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
           <Button onClick={ this._onShowMenuClicked } >{ isCalloutVisible ? 'Hide callout' : 'Show callout' }</Button>
         </div>
         { isCalloutVisible && (
           <Callout
+            className='ms-CalloutExample-callout'
             gapSpace={ 20 }
             targetElement={ this._menuButtonElement }
             onDismiss={ this._onCalloutDismiss }
             >
-            <div className='ms-Callout-main'>
-              <div className='ms-Callout-header'>
-                <p className='ms-Callout-title'>
-                  All of your favorite people
+            <div className='ms-Callout-header'>
+              <p className='ms-Callout-title'>
+                All of your favorite people
+              </p>
+            </div>
+            <div className='ms-Callout-inner'>
+              <div className='ms-Callout-content'>
+                <p className='ms-Callout-subText'>
+                  Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
                 </p>
               </div>
-              <div className='ms-Callout-inner'>
-                <div className='ms-Callout-content'>
-                  <p className='ms-Callout-subText'>
-                    Message body is optional.If help documentation is available, consider adding a link to learn more at the bottom.
-                  </p>
-                </div>
+              <div className="ms-Callout-actions">
+                <Link className='ms-Callout-link' href='http://microsoft.com'>Go to microsoft</Link>
               </div>
-              <Link href='http://microsoft.com'>Go to microsoft</Link>
             </div>
           </Callout>
         ) }
