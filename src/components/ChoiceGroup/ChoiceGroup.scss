@@ -80,7 +80,7 @@
     }
 
     & + .ms-ChoiceField-field--image {
-      @include ms-bgColor-themeLight;
+      @include ms-bgColor-themeLighter;
     }
   }
 }
