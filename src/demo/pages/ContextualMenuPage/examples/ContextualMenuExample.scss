@@ -1,0 +1,61 @@
+@import '../../../../common/common';
+
+.ms-ContextualMenuDirectionalExample {
+  position: relative;
+}
+
+.ms-ContextualMenuDirectionalExample-configArea,
+.ms-ContextualMenuDirectionalExample-buttonArea {
+  display: inline-block;
+  min-width: 300px;
+}
+
+.ms-ContextualMenuDirectionalExample-buttonArea {
+    position: absolute;
+    vertical-align: top;
+    width: 300px;
+    top: 85px;
+    margin: 0 100px;
+    text-align: center;
+}
+
+.ms-ContextualMenuDirectionalExample-buttonArea .ms-Button {
+    top: 80px;
+    text-align: center;
+    width: 100%;
+}
+
+.ms-ContextualMenu-customizationExample-item {
+  display: inline-block;
+  padding: 3px;
+  margin: 2px;
+
+  &:hover {
+    background-color: #eaeaea;
+  }
+}
+
+.ms-ContextualMenu-customizationExample-categoriesList {
+  max-height: 200px;
+  overflow-y: auto;
+  margin: 0px;
+  padding: 0;
+  list-style-type: none;
+}
+
+.ms-ContextualMenu-customizationExample-categorySwatch {
+  @include margin-left(-10px);
+  @include margin-right(10px);
+}
+
+.ms-ContextualMenu-example-clickableArea {
+    background: lightblue;
+    border: none;
+    font-size:0;
+    height: 200px;
+    width: 100%;
+}
+
+.Charm-List {
+  text-align: center;
+}

@@ -1,0 +1,11 @@
+@import '../../common/common';
+@import '~office-ui-fabric/src/components/Breadcrumb/Breadcrumb';
+
+.ms-Breadcrumb-overflow {
+  display: inline-block;
+}
+
+.ms-Breadcrumb-overflowButton {
+  line-height: 12px;
+  margin-right: 0px;
+}

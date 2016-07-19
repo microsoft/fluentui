@@ -1,0 +1,99 @@
+@import '../../common/common';
+
+.ms-Slider-wrapper {
+  position: relative;
+  padding-top: 8px;
+  height: 12px;
+}
+
+.ms-Slider-showValue {
+  width: 90%;
+}
+
+.ms-Slider-line {
+  position: relative;
+  width: 100%;
+}
+
+.ms-Slider-line span {
+  height: 4px;
+  @include float(left);
+  border-radius: 4px;
+}
+
+.ms-Slider-active {
+  background: $ms-color-neutralSecondary;
+}
+
+.ms-Slider-inactive {
+  background: $ms-color-neutralTertiaryAlt;
+}
+
+.ms-Slider-wrapper .ms-Slider-thumb {
+  border: 2px solid $ms-color-neutralSecondary;
+  background: $ms-color-white;
+  display: block;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  top: -6px;
+  border-radius: 10px;
+  @include transform-translateX(-50%);
+}
+
+.ms-Slider-wrapper .ms-Label {
+  display: inline-block;
+}
+
+.ms-Slider-value {
+  position: absolute;
+  @include margin-left(10px);
+  transform: translateY(-50%);
+}
+
+.ms-Slider-enabled {
+  .ms-Slider-thumb {
+    &:hover {
+      border: 2px solid $ms-color-blue;
+      ~ .ms-Slider-active {
+        background-color: $ms-color-themePrimary;
+      }
+      ~ .ms-Slider-inactive {
+        background-color: $ms-color-themeLight;
+      }
+    }
+
+    &:active {
+      border: 2px solid $ms-color-themeDark;
+      ~ .ms-Slider-active {
+        background-color: $ms-color-themePrimary;
+      }
+      ~ .ms-Slider-inactive {
+        background-color: $ms-color-themeLight;
+      }
+    }
+
+    &:focus {
+      @include focus-border(-2px , $ms-color-themeDark);
+      position: absolute !important; // necessary for overlapping the focus-border change
+      ~ .ms-Slider-active {
+        background-color: $ms-color-themePrimary;
+      }
+      ~ .ms-Slider-inactive {
+        background-color: $ms-color-themeLight;
+      }
+    }
+  }
+}
+
+.ms-Slider-disabled {
+  .ms-Slider-thumb {
+    border-color: $ms-color-neutralTertiaryAlt;
+  }
+  .ms-Slider-active {
+    background: $ms-color-neutralTertiaryAlt;
+  }
+  .ms-Slider-inactive {
+    background: $ms-color-neutralLight;
+  }
+}

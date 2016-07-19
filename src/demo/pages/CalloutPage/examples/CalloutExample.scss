@@ -1,0 +1,52 @@
+.ms-CalloutBasicExample {
+  position: relative;
+}
+
+.ms-CalloutExample-configArea {
+  min-width: 300px;
+  display: inline-block;
+}
+
+.ms-CalloutExample-buttonArea {
+    position: absolute;
+    vertical-align: top;
+    display: inline-block;
+    min-width: 130px;
+    top: 85px;
+    margin: 0 100px;
+    text-align: center;
+    height: 32px;
+}
+
+.ms-CalloutCoverExample-buttonArea {
+    position: absolute;
+    vertical-align: top;
+    display: inline-block;
+    top: 30px;
+    margin: 0 100px;
+    text-align: center;
+    height: 32px;
+    width: 130px;
+}
+
+.ms-CalloutCoverExample-buttonArea > .ms-Button {
+    text-align: center;
+    height: 31px;
+    width: 130px;
+}
+
+.ms-CalloutBasicExample-buttonArea {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+}
+
+.ms-CalloutExample-buttonArea .ms-Button {
+    top: 80px;
+    text-align: center;
+    width: 100%;
+}
+
+.ms-Callout {
+    max-width: 300px;
+}

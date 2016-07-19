@@ -1,0 +1,18 @@
+
+.ms-Layer {
+  display: block;
+  visibility: hidden;
+}
+
+.ms-LayerHost {
+  position: absolute;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.ms-LayerHost-layer {
+  visibility: visible;
+}

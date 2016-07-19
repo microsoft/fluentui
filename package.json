@@ -1,0 +1,37 @@
+{
+  "name": "@ms/office-ui-fabric-react",
+  "version": "0.30.0",
+  "description": "Reusable React components for building experiences for Office 365.",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://onedrive.visualstudio.com/DefaultCollection/Design/_git/office-ui-fabric-react"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "es6-promise": "3.2.1",
+    "git-rev": "0.2.1",
+    "gulp": "~3.9.1",
+    "gulp-debug": "2.1.2",
+    "gulp-util": "3.0.7",
+    "gutil": "1.6.4",
+    "highlight.js": "9.4.0",
+    "office-ui-fabric": "~2.6.0",
+    "react-addons-test-utils": "^15.1.0",
+    "react-highlight": "0.8.0",
+    "source-map-loader": "0.1.5",
+    "vinyl-ftp": "0.4.5",
+    "web-library-build": "~0.2.2",
+    "webpack-split-by-path": "0.0.8",
+    "webpack-visualizer-plugin": "0.1.5"
+  },
+  "peerDependencies": {
+    "react": "^0.14.0 || ^15.0.1",
+    "react-dom": "^0.14.0 || ^15.0.1"
+  },
+  "dependencies": {
+    "color-functions": "1.1.0",
+    "load-themed-styles": "~1.1.0"
+  }
+}

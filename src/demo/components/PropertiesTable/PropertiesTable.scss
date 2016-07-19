@@ -1,0 +1,17 @@
+@import "~office-ui-fabric/src/sass/Fabric.Common";
+@import "~office-ui-fabric/src/components/Table/Table";
+
+.PropertiesTable {
+  margin-bottom: 20px;
+  overflow-x: auto;
+  overflow-y: inherit;
+}
+
+.PropertiesTable-noProperties {
+  background: $ms-color-yellow;
+  padding: 10px;
+}
+
+.PropertiesTable-nameCell {
+  color: $ms-color-themePrimary;
+}

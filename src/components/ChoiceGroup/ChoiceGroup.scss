@@ -1,0 +1,98 @@
+@import '../../common/common';
+@import "~office-ui-fabric/src/components/ChoiceField/ChoiceField";
+
+.ms-ChoiceField--image {
+  $fieldMinWidth: 164px;
+  $fieldPadding: 20px;
+
+  display: inline-block;
+
+  font-size: 0;
+
+  @include margin-right(6px);
+  @include ms-bgColor-neutralLighter;
+
+  .ms-ChoiceField-field--image {
+    display: inline-block;
+
+    box-sizing: border-box;
+    min-width: $fieldMinWidth;
+
+    cursor: pointer;
+    padding: $fieldPadding $fieldPadding 12px $fieldPadding;
+
+    text-align: center;
+
+    transition: all 200ms ease;
+
+    .ms-ChoiceField-innerField {
+      position: relative;
+
+      .ms-ChoiceField-imageWrapper {
+        transition: opacity 200ms ease;
+
+        &.is-hidden {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          opacity: 0;
+        }
+
+        .ms-Image {
+          display: inline-block;
+        }
+      }
+    }
+
+    .ms-ChoiceField-labelWrapper {
+      display: inline-block;
+      position: relative;
+      margin: 10px 0 0 0;
+      padding: 0 24px;
+
+      .ms-ChoiceField-icon {
+        display: none;
+        position: absolute;
+        left: 0;
+        line-height: $ms-font-size-s;
+
+        @include ms-fontSize-l;
+        @include ms-fontColor-themeDark;
+      }
+
+      .ms-Label {
+        display: inline-block;
+        padding: 0;
+        line-height: $ms-font-size-s;
+
+        @include ms-fontWeight-semibold;
+        @include ms-fontColor-neutralPrimary;
+      }
+    }
+  }
+
+  .ms-ChoiceField-input:checked {
+    & + .ms-ChoiceField-field--image .ms-ChoiceField-labelWrapper .ms-ChoiceField-icon {
+      display: inline-block;
+    }
+
+    & + .ms-ChoiceField-field--image {
+      @include ms-bgColor-themeLight;
+    }
+  }
+}
+
+.is-focusVisible .ms-ChoiceField-input:focus + .ms-ChoiceField-field--image:before {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  bottom: -2px;
+  left: -2px;
+
+  border: 1px solid $ms-color-neutralPrimary;
+
+  content: '';
+}
