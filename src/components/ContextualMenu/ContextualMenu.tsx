@@ -143,8 +143,13 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   // Invoked immediately before a component is unmounted from the DOM.
   public componentWillUnmount() {
     if (this._isFocusingPreviousElement && this._previousActiveElement) {
-      this._previousActiveElement.focus();
+
+      // This slight delay is required so that we can unwind the stack, let react try to mess with focus, and then
+      // apply the correct focus. Without the setTimeout, we end up focusing the correct thing, and then React wants
+      // to reset the focus back to the thing it thinks should have been focused.
+      setTimeout(() => this._previousActiveElement.focus(), 0);
     }
+
     this._events.dispose();
     this._async.dispose();
   }
