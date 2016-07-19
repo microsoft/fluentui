@@ -61,3 +61,9 @@
     @include text-align(left);
   }
 }
+
+// Overide text underline for anchor type button
+a.ms-Button {
+	text-decoration: none;
+  text-align: center;
+}
