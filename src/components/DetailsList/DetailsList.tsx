@@ -176,6 +176,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       selectionMode,
       viewport,
       getRowAriaLabel,
+      ariaLabel,
       canSelectItem
     } = this.props;
     let {
@@ -241,6 +242,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
         }) }
         data-automationid='DetailsList'
         data-is-scrollable='false'
+        aria-label={ ariaLabel }
         role='grid'>
         <div ref='headerContainer' onKeyDown={ this._onHeaderKeyDown }>
           { isHeaderVisible && (
