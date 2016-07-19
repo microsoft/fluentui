@@ -281,9 +281,12 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     let submenuCloseKey = getRTL() ? KeyCodes.right : KeyCodes.left;
 
     if (ev.which === KeyCodes.escape
+      || ev.which === KeyCodes.tab
       || (ev.which === submenuCloseKey && this.props.isSubMenu)) {
       // When a user presses escape, we will try to refocus the previous focused element.
       this._isFocusingPreviousElement = true;
+      ev.preventDefault();
+      ev.stopPropagation();
       this.dismiss(ev);
     }
   }
