@@ -86,6 +86,10 @@
   }
 }
 
+.ms-Toggle-innerContainer {
+  display: inline-block;
+}
+
 .ms-Fabric.is-focusVisible .ms-Toggle.is-enabled  .ms-Toggle-button:focus + .ms-Toggle-background .ms-Toggle-focus {
   border: 1px solid $focusedBorderColor;
 }
@@ -102,7 +106,6 @@
 }
 
 .ms-Toggle-slider {
-  display: inline-block;
   position: relative;
 }
 
