@@ -17,7 +17,7 @@ export class CalloutNestedExample extends React.Component<any, ICalloutBaiscExam
   public constructor() {
     super();
 
-    this._onDismissCallout = this._onDismissCallout.bind(this);
+    this._onDismiss = this._onDismiss.bind(this);
 
     this.state = {
       isCalloutVisible: false,
@@ -30,7 +30,7 @@ export class CalloutNestedExample extends React.Component<any, ICalloutBaiscExam
     return (
       <div className='ms-CalloutExample'>
         <div className='ms-CalloutBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
-          <Button onClick={ this._onDismissCallout } >{ isCalloutVisible ? 'Hide callout' : 'Show callout' }</Button>
+          <Button onClick={ this._onDismiss } >{ isCalloutVisible ? 'Hide callout' : 'Show callout' }</Button>
         </div>
         { isCalloutVisible ? (
           <div>
@@ -38,7 +38,7 @@ export class CalloutNestedExample extends React.Component<any, ICalloutBaiscExam
               className='ms-CalloutExample-callout'
               gapSpace={ 20 }
               targetElement={ this._menuButtonElement }
-              onDismiss= { (ev: any) => { this._onDismissCallout(ev); } }
+              onDismiss= { (ev: any) => { this._onDismiss(ev); } }
               >
               <div className='ms-Callout-header'>
                 <p className='ms-Callout-title'>
@@ -60,7 +60,7 @@ export class CalloutNestedExample extends React.Component<any, ICalloutBaiscExam
     );
   }
 
-  private _onDismissCallout(ev: any) {
+  private _onDismiss(ev: any) {
     this.setState({
       isCalloutVisible: !this.state.isCalloutVisible
     });

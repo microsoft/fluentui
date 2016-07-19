@@ -41,6 +41,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
   public constructor() {
     super();
 
+    this._onDismiss = this._onDismiss.bind(this);
     this._onShowMenuClicked = this._onShowMenuClicked.bind(this);
     this._onShowBeakChanged = this._onShowBeakChanged.bind(this);
     this._onDirectionalChanged = this._onDirectionalChanged.bind(this);
@@ -59,13 +60,13 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
     // ms-Callout-smallbeak is used in this directional example to reflect all the positions. Large beak will disable some position to avoid beak over the callout edge.
     return (
       <div className='ms-CalloutExample'>
-         <div className='ms-CalloutExample-configArea'>
+        <div className='ms-CalloutExample-configArea'>
           <Checkbox text='Show beak' isChecked={ isBeakVisible } onChanged={ this._onShowBeakChanged } />
           <TextField ref={ (gapSize) => this._gapSize = gapSize } label='Gap Space' placeholder='Type in the gap space' />
           <Button onClick={ this._onChangeGapSizeClicked }>Submit</Button>
           <Dropdown
             label='Directional hint'
-            selectedKey={ DirectionalHint[directionalHint] }
+            selectedKey={ DirectionalHint[directionalHint]}
             options={ DIRECTION_OPTIONS }
             onChanged={ this._onDirectionalChanged } />
         </div>
@@ -73,15 +74,16 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
           <Button onClick={ this._onShowMenuClicked } >{ isCalloutVisible ? 'Hide callout' : 'Show callout' }</Button>
         </div>
         { isCalloutVisible ? (
-        <Callout
-          className='ms-CalloutExample-callout'
-          gapSpace={ gapSpace }
-          targetElement={ this._menuButtonElement }
-          isBeakVisible={ isBeakVisible }
-          directionalHint={ directionalHint }
-          beakStyle={ 'ms-Callout-smallbeak' }
-          beakWidth={ 16 }
-         >
+          <Callout
+            className='ms-CalloutExample-callout'
+            gapSpace={ gapSpace }
+            targetElement={ this._menuButtonElement }
+            isBeakVisible={ isBeakVisible }
+            onDismiss={ this._onDismiss }
+            directionalHint={ directionalHint }
+            beakStyle={ 'ms-Callout-smallbeak' }
+            beakWidth={ 16 }
+            >
             <div className='ms-Callout-header'>
               <p className='ms-Callout-title'>
                 All of your favorite people
@@ -90,14 +92,18 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
             <div className='ms-Callout-inner'>
               <div className='ms-Callout-content'>
                 <p className='ms-Callout-subText'>
-                  Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
+                  Message body is optional.If help documentation is available, consider adding a link to learn more at the bottom.
                 </p>
               </div>
             </div>
-         </Callout>
+          </Callout>
         ) : (null) }
       </div>
     );
+  }
+
+  private _onDismiss() {
+    this.setState({ isCalloutVisible: false });
   }
 
   private _onShowMenuClicked() {
