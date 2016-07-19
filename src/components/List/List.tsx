@@ -341,7 +341,7 @@ export class List extends BaseComponent<IListProps, IListState> {
   private _updatePages(props?: IListProps) {
     let { items, startIndex, renderCount } = (props || this.props);
 
-    renderCount = this._getRenderCount();
+    renderCount = this._getRenderCount(props);
 
     // console.log('updating pages');
 
@@ -591,8 +591,8 @@ export class List extends BaseComponent<IListProps, IListState> {
     };
   }
 
-  private _getRenderCount(): number {
-    let { items, startIndex, renderCount } = this.props;
+  private _getRenderCount(props?: IListProps): number {
+    let { items, startIndex, renderCount } = props || this.props;
 
     return (renderCount === undefined ? (items ? items.length - startIndex : 0) : renderCount);
   }
@@ -601,7 +601,7 @@ export class List extends BaseComponent<IListProps, IListState> {
   private _updateRenderRects(props?: IListProps, forceUpdate?: boolean) {
     const { renderedWindowsAhead, renderedWindowsBehind } = (props || this.props);
     const { pages } = this.state;
-    const renderCount = this._getRenderCount();
+    const renderCount = this._getRenderCount(props);
     let surfaceRect = this._surfaceRect;
 
     // WARNING: EXPENSIVE CALL! We need to know the surface top relative to the window.
