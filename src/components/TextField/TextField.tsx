@@ -124,10 +124,13 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         { label && <Label htmlFor={ this._id }>{ label }</Label> }
         { iconClass && <i className={ iconClass }></i> }
         { multiline ? this._renderTextArea() : this._renderInput() }
-        { errorMessage && <p className='ms-TextField-errorMessage ms-u-slideDownIn20'>{ errorMessage }</p> }
         { errorMessage && <div aria-live='assertive' className='ms-u-screenReaderOnly' data-automation-id='error-message'>{ errorMessage }</div> }
-        { description && <span className='ms-TextField-description'>{ description }</span> }
-        { this.props.ariaLabel && <span id={ this._descriptionId } className='ms-TextField-hidden'>{ this.props.ariaLabel }</span> }
+        { (description || errorMessage) &&
+          <span id={ this._descriptionId }>
+            { description && <span className='ms-TextField-description'>{ description }</span> }
+            { errorMessage && <p className='ms-TextField-errorMessage ms-u-slideDownIn20'>{ errorMessage }</p> }
+          </span>
+        }
       </div>
     );
   }
@@ -209,7 +212,9 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         value={ this.state.value }
         onChange={ this._onInputChange }
         className={ this._fieldClassName }
+        aria-label={ this.props.ariaLabel }
         aria-describedby={ this._descriptionId }
+        aria-invalid={ !!this.state.errorMessage }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
         />
@@ -226,7 +231,9 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         value={ this.state.value }
         onChange={ this._onInputChange }
         className={ this._fieldClassName }
+        aria-label={ this.props.ariaLabel }
         aria-describedby={ this._descriptionId }
+        aria-invalid={ !!this.state.errorMessage }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
         />
