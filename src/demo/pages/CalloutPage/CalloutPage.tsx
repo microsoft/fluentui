@@ -6,17 +6,22 @@ import {
   ExampleCard,
   PropertiesTableSet
 } from '../../components/index';
+import { textOnlyItems } from '../CommandBarPage/examples/data';
 
 import { CalloutBasicExample } from './examples/Callout.Basic.Example';
+import { CalloutNestedExample } from './examples/Callout.Nested.Example';
 import { CalloutDirectionalExample } from './examples/Callout.Directional.Example';
 import { CalloutCoverExample } from './examples/Callout.Cover.Example';
 
 const CalloutBasicExampleCode = require('./examples/Callout.Basic.Example.tsx');
+const CalloutNestedExampleCode = require('./examples/Callout.Nested.Example.tsx');
 const CalloutDirectionalExampleCode = require('./examples/Callout.Directional.Example.tsx');
 const CalloutCoverExampleCode = require('./examples/Callout.Cover.Example.tsx');
 
 export class CalloutPage extends React.Component<any, any> {
   public render() {
+    let cmdBarParamsTextAndIcons: any = { items: textOnlyItems, farItems: null };
+
     return (
       <div className='ms-CalloutPage'>
         <h1 className='ms-font-xxl'>Callout</h1>
@@ -27,6 +32,9 @@ export class CalloutPage extends React.Component<any, any> {
         <h2 className='ms-font-xl'>Examples</h2>
         <ExampleCard title='Simple callout' code={ CalloutBasicExampleCode }>
           <CalloutBasicExample />
+        </ExampleCard>
+        <ExampleCard title='Nested callout... Callout with a commandbar with a sub menu' code={ CalloutNestedExampleCode }>
+          <CalloutNestedExample { ...cmdBarParamsTextAndIcons }/>
         </ExampleCard>
         <ExampleCard title='Callout directional example' code={ CalloutDirectionalExampleCode }>
           <CalloutDirectionalExample />

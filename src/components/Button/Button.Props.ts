@@ -30,9 +30,16 @@ export interface IButtonProps extends React.HTMLProps<HTMLElement> {
   disabled?: boolean;
 
   /**
-   * A description of the button for the benefit of screen readers.
+   * The aria label of the button for the benefit of screen readers.
    */
   ariaLabel?: string;
+
+  /**
+   * Detailed description of the button for the benefit of screen readers.
+   *
+   * Besides the compound button, other button types will need more information provided to screen reader.
+   */
+  ariaDescription?: string;
 }
 
 export enum ElementType {

@@ -118,6 +118,9 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** Optional callback to determine if an item is selectable. */
   canSelectItem?: (item: any) => boolean;
+
+  /** A text summary of the table set via aria-label. */
+  ariaLabel?: string;
 }
 
 export interface IColumn {

@@ -36,6 +36,7 @@ export class CalloutCoverExample extends React.Component<any, ICalloutCoverExamp
   public constructor() {
     super();
 
+    this._onDismiss = this._onDismiss.bind(this);
     this._onShowMenuClicked = this._onShowMenuClicked.bind(this);
     this._onDirectionalChanged = this._onDirectionalChanged.bind(this);
 
@@ -49,7 +50,7 @@ export class CalloutCoverExample extends React.Component<any, ICalloutCoverExamp
     let { isCalloutVisible, directionalHint } = this.state;
     // ms-Callout-smallbeak is used in this directional example to reflect all the positions. Large beak will disable some position to avoid beak over the callout edge.
     return (
-      <div className='ms-CalloutBasicExample'>
+      <div className='ms-CalloutExample'>
          <div className='ms-CalloutExample-configArea'>
           <Dropdown
             label='Directional hint'
@@ -62,6 +63,8 @@ export class CalloutCoverExample extends React.Component<any, ICalloutCoverExamp
         </div>
         { isCalloutVisible ? (
         <Callout
+          className='ms-CalloutExample-callout'
+          onDismiss={ this._onDismiss }
           targetElement={ this._menuButtonElement }
           directionalHint={ directionalHint }
           coverTarget={ true }
@@ -82,6 +85,10 @@ export class CalloutCoverExample extends React.Component<any, ICalloutCoverExamp
         ) : (null) }
       </div>
     );
+  }
+
+  private _onDismiss() {
+    this.setState({ isCalloutVisible: false });
   }
 
   private _onShowMenuClicked() {

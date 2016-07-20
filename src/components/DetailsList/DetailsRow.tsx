@@ -177,18 +177,20 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
         >
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           { (selectionMode !== SelectionMode.none) && (
-            <button
-              className='ms-DetailsRow-check'
-              role='button'
-              aria-checked={ isSelected }
-              data-selection-toggle={ true }
-              data-automationid='DetailsRowCheck'
-              >
-              { canSelect ?
-                <Check isChecked={ isSelected } /> :
-                <div className='ms-DetailsRow-checkSpacer' />
-              }
-            </button>
+            <span role='gridcell'>
+              <button
+                className='ms-DetailsRow-check'
+                role='button'
+                aria-pressed={ isSelected }
+                data-selection-toggle={ true }
+                data-automationid='DetailsRowCheck'
+                >
+                { canSelect ?
+                  <Check isChecked={ isSelected } /> :
+                  <div className='ms-DetailsRow-checkSpacer' />
+                }
+              </button>
+            </span>
           ) }
 
           { GroupSpacer({ count: groupNestingDepth }) }

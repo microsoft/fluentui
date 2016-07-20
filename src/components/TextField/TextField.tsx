@@ -124,10 +124,13 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         { label && <Label htmlFor={ this._id }>{ label }</Label> }
         { iconClass && <i className={ iconClass }></i> }
         { multiline ? this._renderTextArea() : this._renderInput() }
-        { errorMessage && <p className='ms-TextField-errorMessage ms-u-slideDownIn20'>{ errorMessage }</p> }
         { errorMessage && <div aria-live='assertive' className='ms-u-screenReaderOnly' data-automation-id='error-message'>{ errorMessage }</div> }
-        { description && <span className='ms-TextField-description'>{ description }</span> }
-        { this.props.ariaLabel && <span id={ this._descriptionId } className='ms-TextField-hidden'>{ this.props.ariaLabel }</span> }
+        { (description || errorMessage) &&
+          <span id={ this._descriptionId }>
+            { description && <span className='ms-TextField-description'>{ description }</span> }
+            { errorMessage && <p className='ms-TextField-errorMessage ms-u-slideDownIn20'>{ errorMessage }</p> }
+          </span>
+        }
       </div>
     );
   }
@@ -136,43 +139,51 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
    * Sets focus on the text field
    */
   public focus() {
-      if (this._field) {
-          this._field.focus();
-      }
+    if (this._field) {
+      this._field.focus();
+    }
   }
 
   /**
    * Selects the text field
    */
   public select() {
-      if (this._field) {
-          this._field.select();
-      }
+    if (this._field) {
+      this._field.select();
+    }
   }
 
   /**
    * Sets the selection start of the text field to a specified value
    */
   public setSelectionStart(value: number) {
-      if (this._field) {
-          this._field.selectionStart = value;
-      }
+    if (this._field) {
+      this._field.selectionStart = value;
+    }
   }
 
   /**
    * Sets the selection end of the text field to a specified value
    */
   public setSelectionEnd(value: number) {
-      if (this._field) {
-          this._field.selectionEnd = value;
-      }
+    if (this._field) {
+      this._field.selectionEnd = value;
+    }
   }
 
-  private _onFocus() {
+  private _onFocus(ev: React.FocusEvent) {
+    if (this.props.onFocus) {
+      this.props.onFocus(ev);
+    }
+
     this.setState({ isFocused: true });
   }
 
-  private _onBlur() {
+  private _onBlur(ev: React.FocusEvent) {
+    if (this.props.onBlur) {
+      this.props.onBlur(ev);
+    }
+
     this.setState({ isFocused: false });
   }
 
@@ -187,8 +198,8 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     }
 
     return css(textFieldClassName, {
-        'ms-TextField-invalid': !!errorMessage
-      });
+      'ms-TextField-invalid': !!errorMessage
+    });
   }
 
   private get _errorMessage(): string {
@@ -209,7 +220,9 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         value={ this.state.value }
         onChange={ this._onInputChange }
         className={ this._fieldClassName }
+        aria-label={ this.props.ariaLabel }
         aria-describedby={ this._descriptionId }
+        aria-invalid={ !!this.state.errorMessage }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
         />
@@ -226,7 +239,9 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         value={ this.state.value }
         onChange={ this._onInputChange }
         className={ this._fieldClassName }
+        aria-label={ this.props.ariaLabel }
         aria-describedby={ this._descriptionId }
+        aria-invalid={ !!this.state.errorMessage }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
         />
@@ -287,7 +302,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         onChanged(value);
       }
     } else {
-     this._willMountTriggerValidation = false;
+      this._willMountTriggerValidation = false;
     }
   }
 }
