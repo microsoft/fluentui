@@ -18,7 +18,7 @@ Components are generally in 4 states: *placeholder*, *started*, *beta*, and *com
 | State       | Definition                                                                                                |
 |-------------|-----------------------------------------------------------------------------------------------------------|
 | Placeholder | The component has little to no functionality.                                                             |
-| Started     | Work on the component has begun, but it isn not anywhere near production ready.                                                             |
+| Started     | Work on the component has begun, but it is not anywhere near production ready.                                                             |
 | Beta        | The component is far enough along to be used, but still lacks some functionality or has significant bugs. |
 | Complete    | The component is generally bug-free and meets all of the requirements outlined above - production ready!  |
 
