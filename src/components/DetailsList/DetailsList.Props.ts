@@ -121,6 +121,9 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** A text summary of the table set via aria-label. */
   ariaLabel?: string;
+
+  /** Check button aria label for details list. */
+  checkButtonAriaLabel?: string;
 }
 
 export interface IColumn {

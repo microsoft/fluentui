@@ -177,7 +177,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       viewport,
       getRowAriaLabel,
       ariaLabel,
-      canSelectItem
+      canSelectItem,
+      checkButtonAriaLabel
     } = this.props;
     let {
       adjustedColumns,
@@ -229,6 +230,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           checkboxVisibility={ checkboxVisibility }
           getRowAriaLabel={ getRowAriaLabel }
           canSelectItem={ canSelectItem }
+          checkButtonAriaLabel={ checkButtonAriaLabel }
           />
         ) : null
     ));

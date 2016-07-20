@@ -96,6 +96,9 @@ export interface IDetailsGroupProps extends React.Props<DetailsGroup> {
 
   /** Optional callback to determine if an item is selectable. */
   canSelectItem?: (item: any) => boolean;
+
+  /** Check button aria label for details list. */
+  checkButtonAriaLabel?: string;
 }
 
 export interface IDetailsGroupState {
@@ -168,7 +171,8 @@ export class DetailsGroup extends React.Component<IDetailsGroupProps, IDetailsGr
       viewport,
       checkboxVisibility,
       getRowAriaLabel,
-      canSelectItem
+      canSelectItem,
+      checkButtonAriaLabel
     } = this.props;
     let renderCount = group ? getGroupItemLimit(group) : items.length;
     let isFooterVisible = group && !group.children && !group.isCollapsed && !group.isShowingAll && group.count > renderCount;
@@ -201,6 +205,7 @@ export class DetailsGroup extends React.Component<IDetailsGroupProps, IDetailsGr
             checkboxVisibility={ checkboxVisibility }
             getRowAriaLabel={ getRowAriaLabel }
             canSelectItem={ canSelectItem }
+            checkButtonAriaLabel={ checkButtonAriaLabel }
             />
           ) : null
       ));
@@ -296,7 +301,8 @@ export class DetailsGroup extends React.Component<IDetailsGroupProps, IDetailsGr
       viewport,
       checkboxVisibility,
       getRowAriaLabel,
-      canSelectItem
+      canSelectItem,
+      checkButtonAriaLabel
     } = this.props;
 
     if (!item) {
@@ -325,6 +331,7 @@ export class DetailsGroup extends React.Component<IDetailsGroupProps, IDetailsGr
           checkboxVisibility={ checkboxVisibility }
           getRowAriaLabel={ getRowAriaLabel }
           canSelectItem={ canSelectItem }
+          checkButtonAriaLabel={ checkButtonAriaLabel }
           />
     );
   }

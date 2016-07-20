@@ -33,6 +33,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   checkboxVisibility?: CheckboxVisibility;
   getRowAriaLabel?: (item: any) => string;
   canSelectItem?: (item: any) => boolean;
+  checkButtonAriaLabel?: string;
 }
 
 export interface IDetailsRowSelectionState {
@@ -151,6 +152,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
       viewport,
       checkboxVisibility,
       getRowAriaLabel,
+      checkButtonAriaLabel,
       canSelectItem
     } = this.props;
     let { selectionState: { isSelected }, columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
@@ -184,6 +186,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
                 aria-pressed={ isSelected }
                 data-selection-toggle={ true }
                 data-automationid='DetailsRowCheck'
+                aria-label={ checkButtonAriaLabel }
                 >
                 { canSelect ?
                   <Check isChecked={ isSelected } /> :
