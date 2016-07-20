@@ -72,7 +72,7 @@ We're excited to share our development of this project with folks outside of our
 
 All files on the Office UI Fabric React GitHub repository are subject to the MIT license. Please read the License file at the root of the project. 
 
-Usage of the fonts referenced on Office UI Fabric files is subject to the [license](http://appsforoffice.microsoft.com/fabric/Segoe_UI_and_Fabric_CDN_License.txt).
+Usage of the fonts referenced in Office UI Fabric files is subject to the [license](http://appsforoffice.microsoft.com/fabric/Segoe_UI_and_Fabric_CDN_License.txt).
 
 
 ## Changelog
