@@ -4,7 +4,7 @@
 
 Fabric React is a responsive, mobile-first collection of robust components designed to make it quick and simple for you to create web experiences using the Office Design Language.
 
-**This project is in a pre-v1 state**, so we strongly encourage you to check out the [Roadmap]() to see what the v1 we're working towards entails and what this means for your usage of the controls set.
+**This project is in a pre-v1 state**, so we strongly encourage you to check out the [Roadmap](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ROADMAP.md) to see what the v1 we're working towards entails and what this means for your usage of the controls set.
 
 ## Contents
 
