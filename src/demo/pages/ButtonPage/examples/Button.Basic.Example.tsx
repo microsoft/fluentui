@@ -50,6 +50,9 @@ export class ButtonBasicExample extends React.Component<any, IBasicButtonsExampl
         <Label>Button like anchor</Label>
         <Button disabled={ disabled } elementType={ ElementType.anchor } buttonType={ ButtonType.primary } href='http://bing.com' target='_blank' title='Let us bing!' description='Navigate to Bing home page.'>Bing</Button>
 
+        <Label>Button with aria description for screen reader</Label>
+        <Button disabled={ disabled } buttonType={ ButtonType.primary } ariaDescription='This is aria description used for screen reader.'>Aria Description</Button>
+
         <Checkbox text='Disable buttons' isChecked={ disabled } onChanged={ this._onDisabledChanged } />
       </div>
     );

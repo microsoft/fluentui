@@ -1,19 +1,61 @@
 import * as React from 'react';
-import { CommandBar } from '../../../../index';
+import { CommandBar } from '../../../../CommandBar';
+import { Toggle } from '../../../../Toggle';
+import { assign } from '../../../../utilities/object';
 
 export class CommandBarBasicExample extends React.Component<any, any> {
 
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      isSearchBoxVisible: true,
+      areNamesVisible: true,
+      areIconsVisible: true
+    };
+  }
+
   public render() {
+    let { items, farItems } = this.props;
+    let { isSearchBoxVisible: searchBoxVisible, areIconsVisible: iconsVisible, areNamesVisible: namesVisible } = this.state;
+
+    let filteredItems = items.map(item => assign({}, item, {
+      name: namesVisible ? item.name : '',
+      icon: iconsVisible ? item.icon : ''
+    }));
+
+    let filteredFarItems = farItems.map(item => assign({}, item, {
+      name: namesVisible ? item.name : '',
+      icon: iconsVisible ? item.icon : ''
+    }));
+
     return (
       <div>
+        <Toggle
+          label='Show search box'
+          checked={ searchBoxVisible }
+          onChanged={ isSearchBoxVisible => this.setState({ isSearchBoxVisible }) }
+          onText='Visible'
+          offText='Hidden'
+        />
+        <Toggle
+          label='Show names'
+          checked={ namesVisible }
+          onChanged={ areNamesVisible => this.setState({ areNamesVisible }) }
+          onText='Visible'
+          offText='Hidden' />
+        <Toggle
+          label='Show icons'
+          checked={ iconsVisible }
+          onChanged={ areIconsVisible => this.setState({ areIconsVisible }) }
+          onText='Visible'
+          offText='Hidden' />
         <CommandBar
-          isSearchBoxVisible={ true }
+          isSearchBoxVisible={ searchBoxVisible }
           searchPlaceholderText='Search...'
-          items={ this.props.items }
-          farItems={ this.props.farItems }
+          items={ filteredItems }
+          farItems={ filteredFarItems }
           />
       </div>
     );
   }
-
 }

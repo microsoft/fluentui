@@ -61,26 +61,28 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
           'is-disabled': disabled
         })
       }>
-        <Label className='ms-Toggle-label' htmlFor={ this._id }>{ label }</Label>
+        <div className='ms-Toggle-innerContainer'>
+          <Label className='ms-Toggle-label' htmlFor={ this._id }>{ label }</Label>
 
-        <div className='ms-Toggle-slider'>
-          <button
-            ref={ (c): HTMLButtonElement => this._toggleButton = c }
-            id={ this._id }
-            name={ this._id }
-            className={ css('ms-Toggle-button', className) }
-            disabled={ disabled }
-            role='button'
-            aria-pressed={ isChecked }
-            onClick={ this._onClick }
-          />
-          <div className='ms-Toggle-background'>
-            <div className='ms-Toggle-focus' />
-            <div className='ms-Toggle-thumb' />
+          <div className='ms-Toggle-slider'>
+            <button
+              ref={ (c): HTMLButtonElement => this._toggleButton = c }
+              id={ this._id }
+              name={ this._id }
+              className={ css('ms-Toggle-button', className) }
+              disabled={ disabled }
+              role='button'
+              aria-pressed={ isChecked }
+              onClick={ this._onClick }
+            />
+            <div className='ms-Toggle-background'>
+              <div className='ms-Toggle-focus' />
+              <div className='ms-Toggle-thumb' />
+            </div>
+            <Label className='ms-Toggle-stateText'>{ stateText }</Label>
           </div>
-          <Label className='ms-Toggle-stateText'>{ stateText }</Label>
-        </div>
 
+        </div>
       </div>
     );
   }

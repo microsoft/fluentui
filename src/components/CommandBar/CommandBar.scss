@@ -1,7 +1,9 @@
 @import '../../common/common';
 
-.ms-CommandBarItem-icon {
-  @include margin-right(5px);
+.ms-CommandBarItem-icon,
+.ms-CommandBarItem-overflow
+ {
+  padding: 0 2px;
   min-width: 17px;
 }
 
@@ -76,7 +78,7 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
   height: $CommandBarItem-height;
   outline: transparent;
   vertical-align: top;
-  padding: 0 4px;
+  margin: 0 2px;
 
   @media screen and (-ms-high-contrast: active) {
     @include highContrastBorder($ms-color-black);
@@ -94,6 +96,7 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
 .ms-CommandBarItem-chevronDown,
 .ms-CommandBarItem-commandText {
   display: inline;
+  padding: 0 2px;
 }
 
 .ms-CommandBarItem-overflow {
@@ -111,7 +114,7 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
   height: $CommandBarItem-height;
   min-width: 20px;
   text-align: center;
-  padding: 0 8px;
+  padding: 0 2px;
   display: block;
   height: 100%;
 }
@@ -123,6 +126,7 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
 .ms-CommandBarItem-link {
   @include CommandBarItem-text;
   cursor: pointer;
+  padding: 0 6px;
 
   &:hover,
   &.is-expanded {
@@ -149,7 +153,7 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
   color: $ms-color-neutralSecondary;
   font-size: 16px;
   width: 16px;
-  padding-left: 4px;
+  padding: 0 2px;
 }
 
 .ms-CommandBarSearch {

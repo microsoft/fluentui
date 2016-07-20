@@ -104,9 +104,14 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
 
   /** Sets focus to the first tabbable item in the zone. */
   public focus(): boolean {
-    const firstChild = this.refs.root.firstChild as HTMLElement;
+    if (this._activeElement && this.refs.root.contains(this._activeElement)) {
+      this._activeElement.focus();
+      return true;
+    } else {
+      const firstChild = this.refs.root.firstChild as HTMLElement;
 
-    return this._focusElement(getNextElement(this.refs.root, firstChild, true));
+      return this._focusElement(getNextElement(this.refs.root, firstChild, true));
+    }
   }
 
   private _onFocus(ev: React.FocusEvent) {
