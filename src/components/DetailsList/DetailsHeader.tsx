@@ -106,15 +106,16 @@ export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetails
         ref='root' data-automationid='DetailsHeader'>
         <FocusZone ref='focusZone' direction={ FocusZoneDirection.horizontal }>
           { (selectionMode === SelectionMode.multiple) ? (
-            <button
-              role='columnheader'
-              className='ms-DetailsHeader-cell is-check'
-              onClick={ this._onSelectAllClicked }
-              aria-label={ ariaLabelForSelectAllCheckbox }
-              aria-pressed={ isAllSelected }
-              >
-              <Check isChecked={ isAllSelected } />
-            </button>
+            <div className='ms-DetailsHeader-cellWrapper' role='columnheader'>
+              <button
+                className='ms-DetailsHeader-cell is-check'
+                onClick={ this._onSelectAllClicked }
+                aria-label={ ariaLabelForSelectAllCheckbox }
+                aria-pressed={ isAllSelected }
+                >
+                <Check isChecked={ isAllSelected } />
+              </button>
+            </div>
           ) : (null) }
           { groupNestingDepth > 0 ? (
           <button className='ms-DetailsHeader-cell' onClick={ this._onToggleCollapseAll }>
