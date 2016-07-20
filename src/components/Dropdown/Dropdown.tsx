@@ -97,7 +97,8 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
           onClick={ this._onDropdownClick }
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='application'
-          aria-activedescendant={ selectedIndex }
+          aria-activedescendant={ id + '-list' + selectedIndex }
+          aria-controls={ id + '-list' }
           >
           <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown'></i>
           <span className='ms-Dropdown-title'>{ selectedOption ? selectedOption.text : '' }</span>
@@ -107,7 +108,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
             role='listbox'
             aria-labelledby={ id + '-label' }>
             { options.map((option, index) => (
-              <li id={ index.toString() }
+              <li id={ id + '-list' + index.toString() }
                 ref= { Dropdown.Option + index.toString() }
                 key={ option.key }
                 data-index={ index }
@@ -115,6 +116,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
                 onClick={ this.setSelectedIndex.bind(this, index) }
                 role='option'
                 aria-selected={ selectedIndex === index ? 'true' : 'false' }
+                aria-label={ option.text }
                 >
                 { option.text }
               </li>
