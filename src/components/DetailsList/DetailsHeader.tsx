@@ -128,10 +128,9 @@ export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetails
           { GroupSpacer({ count: groupNestingDepth - 1 }) }
           { columns.map((column, columnIndex) => (
             <div key={ column.key } className='ms-DetailsHeader-cellSizeWrapper'>
-              <div className='ms-DetailsHeader-cellWrapper'>
+              <div className='ms-DetailsHeader-cellWrapper' role='columnheader'>
                 <button
                   key={ column.fieldName }
-                  role='columnheader'
                   disabled={ column.columnActionsMode === ColumnActionsMode.disabled }
                   className={ css('ms-DetailsHeader-cell', {
                     'is-actionable': column.columnActionsMode !== ColumnActionsMode.disabled,
