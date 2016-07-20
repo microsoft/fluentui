@@ -229,13 +229,15 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
     const { currentItem, posBottom } = this._getCurrentItemPositionDetails();
 
     // the selected item should be in the center of the dropdown if possible
-    this._optionList.scrollTop = posBottom - (currentItem.offsetHeight + this._optionList.offsetHeight) / 2;
+    if (currentItem) {
+      this._optionList.scrollTop = posBottom - (currentItem.offsetHeight + this._optionList.offsetHeight) / 2;
+    }
   }
 
   private _getCurrentItemPositionDetails() {
     const currentItem: HTMLElement = this.refs[Dropdown.Option + this.state.selectedIndex] as HTMLElement;
-    const posTop: number = currentItem.offsetTop;
-    const posBottom: number = posTop + currentItem.offsetHeight;
+    const posTop: number = currentItem ? currentItem.offsetTop : 0;
+    const posBottom: number = currentItem ? posTop + currentItem.offsetHeight : 0;
 
     return { currentItem: currentItem,
       posTop: posTop,
