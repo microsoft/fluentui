@@ -263,7 +263,7 @@ export const AppState: IAppState = {
         {
           component: SliderPage,
           name: 'Slider',
-          status: ExampleStatus.started,
+          status: ExampleStatus.beta,
           url: '#/examples/Slider'
         }
       ],

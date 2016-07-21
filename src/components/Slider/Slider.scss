@@ -1,16 +1,18 @@
 @import '../../common/common';
 
-.ms-Slider-wrapper {
-  position: relative;
-  padding-top: 8px;
-  height: 12px;
-}
+.ms-Slider {
 
-.ms-Slider-showValue {
-  width: 90%;
+  > .ms-Label {
+    padding: 0;
+  }
+
+  user-select: none;
+  margin-bottom: 8px;
 }
 
 .ms-Slider-line {
+  top: 50%;
+  margin-top: -2px;
   position: relative;
   width: 100%;
 }
@@ -29,7 +31,18 @@
   background: $ms-color-neutralTertiaryAlt;
 }
 
-.ms-Slider-wrapper .ms-Slider-thumb {
+.ms-Slider-showTransitions {
+  .ms-Slider-thumb {
+    transition: left $ms-duration3 $ms-ease1;
+  }
+
+  .ms-Slider-active,
+  .ms-Slider-inactive {
+    transition: width $ms-duration3 $ms-ease1;
+  }
+}
+
+.ms-Slider-slideBox .ms-Slider-thumb {
   border: 2px solid $ms-color-neutralSecondary;
   background: $ms-color-white;
   display: block;
@@ -41,47 +54,48 @@
   @include transform-translateX(-50%);
 }
 
-.ms-Slider-wrapper .ms-Label {
-  display: inline-block;
-}
+.ms-Slider-container {
+  display: flex;
 
-.ms-Slider-value {
-  position: absolute;
-  @include margin-left(10px);
-  transform: translateY(-50%);
+  .ms-Slider-slideBox {
+    flex-grow: 1;
+    height: 28px;
+    @include focus-border();
+
+  }
+
+  .ms-Label {
+    flex-shrink: 1;
+    width: 30px;
+    @include margin-left(12px);
+  }
 }
 
 .ms-Slider-enabled {
-  .ms-Slider-thumb {
-    &:hover {
-      border: 2px solid $ms-color-blue;
-      ~ .ms-Slider-active {
-        background-color: $ms-color-themePrimary;
-      }
-      ~ .ms-Slider-inactive {
-        background-color: $ms-color-themeLight;
-      }
+
+  .ms-Slider-slideBox:hover,
+  .ms-Slider-slideBox:active {
+
+    .ms-Slider-thumb {
+      border: 2px solid $ms-color-themePrimary;
     }
 
-    &:active {
+    .ms-Slider-active {
+      background-color: $ms-color-themePrimary;
+    }
+
+    .ms-Slider-inactive {
+      background-color: $ms-color-themeLight;
+    }
+
+  }
+
+  .ms-Slider-slideBox:active {
+    .ms-Slider-thumb {
       border: 2px solid $ms-color-themeDark;
-      ~ .ms-Slider-active {
-        background-color: $ms-color-themePrimary;
-      }
-      ~ .ms-Slider-inactive {
-        background-color: $ms-color-themeLight;
-      }
     }
-
-    &:focus {
-      @include focus-border(-2px , $ms-color-themeDark);
-      position: absolute !important; // necessary for overlapping the focus-border change
-      ~ .ms-Slider-active {
-        background-color: $ms-color-themePrimary;
-      }
-      ~ .ms-Slider-inactive {
-        background-color: $ms-color-themeLight;
-      }
+    .ms-Slider-active {
+      background-color: $ms-color-themeDark;
     }
   }
 }
