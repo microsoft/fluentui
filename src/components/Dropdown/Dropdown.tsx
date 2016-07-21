@@ -97,7 +97,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
           onClick={ this._onDropdownClick }
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='application'
-          aria-activedescendant={ id + '-list' + selectedIndex }
+          aria-activedescendant={ selectedIndex >= 0 ? (id + '-list' + selectedIndex) : (id + '-list') }
           aria-controls={ id + '-list' }
           >
           <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown'></i>
