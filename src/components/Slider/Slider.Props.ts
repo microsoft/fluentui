@@ -5,22 +5,32 @@ export interface ISliderProps {
   label?: string;
 
   /**
-   * The initial value of the Slider
+   * The initial value of the Slider. Use this if you intend for the Slider to be an uncontrolled component.
+   * This value is mutually exclusive to value. Use one or the other.
    */
-  initialValue?: number;
+  defaultValue?: number;
+
+  /**
+   * The initial value of the Slider. Use this if you intend to pass in a new value as a result of onChange events.
+   * This value is mutually exclusive to defaultValue. Use one or the other.
+   */
+  value?: number;
 
   /**
    * The min value of the Slider
+   * @default 0
    */
-  min: number;
+  min?: number;
 
   /**
    * The max value of the Slider
+   * @default 10
    */
   max: number;
 
   /**
    * The diffrrence between the two adjacent values of the Slider
+   * @default 1
    */
   step?: number;
 
@@ -33,7 +43,7 @@ export interface ISliderProps {
   /**
    * Callback when the value has been changed
    */
-  onChanged?: (value: number) => void;
+  onChange?: (value: number) => void;
 
   /**
    * A description of the Slider for the benefit of screen readers.
@@ -43,10 +53,16 @@ export interface ISliderProps {
   /**
    * Whether or not the Slider is disabled.
    */
-  isDisabled?: boolean;
+  disabled?: boolean;
 
   /**
   * Optional className for slider.
   */
   className?: string;
+}
+
+export interface ISlider {
+  value: number;
+
+  focus: () => void;
 }
