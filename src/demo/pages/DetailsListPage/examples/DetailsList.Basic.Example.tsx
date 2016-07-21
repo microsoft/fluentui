@@ -12,6 +12,6 @@ export const DetailsListBasicExample = () => {
  _items = _items || createListItems(500);
 
   return (
-    <DetailsList items={ _items } />
+    <DetailsList items={ _items }  shouldApplyApplicationRole= { true }/>
   );
 };

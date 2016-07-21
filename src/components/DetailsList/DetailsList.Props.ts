@@ -124,6 +124,12 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** Check button aria label for details list. */
   checkButtonAriaLabel?: string;
+
+  /** Aria label for grid in details list. */
+  ariaLabelForGrid?: string;
+
+  /** Boolean value to indicate if the role application should be applied on details list. Set to false by default */
+  shouldApplyApplicationRole?: boolean;
 }
 
 export interface IColumn {

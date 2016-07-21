@@ -178,7 +178,9 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       getRowAriaLabel,
       ariaLabel,
       canSelectItem,
-      checkButtonAriaLabel
+      checkButtonAriaLabel,
+      ariaLabelForGrid,
+      shouldApplyApplicationRole = false,
     } = this.props;
     let {
       adjustedColumns,
@@ -236,6 +238,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     ));
 
     return (
+      // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
+      // with JAWS.
       <div
         ref='root'
         className={css('ms-DetailsList', className, {
@@ -245,8 +249,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
         data-automationid='DetailsList'
         data-is-scrollable='false'
         aria-label={ ariaLabel }
-        role='grid'>
-        <div ref='headerContainer' onKeyDown={ this._onHeaderKeyDown }>
+        role={ shouldApplyApplicationRole ? 'application' : '' }>
+        <div ref='headerContainer' onKeyDown={ this._onHeaderKeyDown } role='grid' aria-label={ ariaLabelForGrid }>
           { isHeaderVisible && (
           <DetailsHeader
             ref='header'
