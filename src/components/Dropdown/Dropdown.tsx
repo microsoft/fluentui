@@ -97,7 +97,8 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
           onClick={ this._onDropdownClick }
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='application'
-          aria-activedescendant={ selectedIndex }
+          aria-activedescendant={ selectedIndex >= 0 ? (id + '-list' + selectedIndex) : (id + '-list') }
+          aria-controls={ id + '-list' }
           >
           <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown'></i>
           <span className='ms-Dropdown-title'>{ selectedOption ? selectedOption.text : '' }</span>
@@ -107,7 +108,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
             role='listbox'
             aria-labelledby={ id + '-label' }>
             { options.map((option, index) => (
-              <li id={ index.toString() }
+              <li id={ id + '-list' + index.toString() }
                 ref= { Dropdown.Option + index.toString() }
                 key={ option.key }
                 data-index={ index }
@@ -115,6 +116,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
                 onClick={ this.setSelectedIndex.bind(this, index) }
                 role='option'
                 aria-selected={ selectedIndex === index ? 'true' : 'false' }
+                aria-label={ option.text }
                 >
                 { option.text }
               </li>
@@ -227,13 +229,15 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
     const { currentItem, posBottom } = this._getCurrentItemPositionDetails();
 
     // the selected item should be in the center of the dropdown if possible
-    this._optionList.scrollTop = posBottom - (currentItem.offsetHeight + this._optionList.offsetHeight) / 2;
+    if (currentItem) {
+      this._optionList.scrollTop = posBottom - (currentItem.offsetHeight + this._optionList.offsetHeight) / 2;
+    }
   }
 
   private _getCurrentItemPositionDetails() {
     const currentItem: HTMLElement = this.refs[Dropdown.Option + this.state.selectedIndex] as HTMLElement;
-    const posTop: number = currentItem.offsetTop;
-    const posBottom: number = posTop + currentItem.offsetHeight;
+    const posTop: number = currentItem ? currentItem.offsetTop : 0;
+    const posBottom: number = currentItem ? posTop + currentItem.offsetHeight : 0;
 
     return { currentItem: currentItem,
       posTop: posTop,

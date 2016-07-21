@@ -106,15 +106,16 @@ export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetails
         ref='root' data-automationid='DetailsHeader'>
         <FocusZone ref='focusZone' direction={ FocusZoneDirection.horizontal }>
           { (selectionMode === SelectionMode.multiple) ? (
-            <button
-              role='columnheader'
-              className='ms-DetailsHeader-cell is-check'
-              onClick={ this._onSelectAllClicked }
-              aria-label={ ariaLabelForSelectAllCheckbox }
-              aria-pressed={ isAllSelected }
-              >
-              <Check isChecked={ isAllSelected } />
-            </button>
+            <div className='ms-DetailsHeader-cellWrapper' role='columnheader'>
+              <button
+                className='ms-DetailsHeader-cell is-check'
+                onClick={ this._onSelectAllClicked }
+                aria-label={ ariaLabelForSelectAllCheckbox }
+                aria-pressed={ isAllSelected }
+                >
+                <Check isChecked={ isAllSelected } />
+              </button>
+            </div>
           ) : (null) }
           { groupNestingDepth > 0 ? (
           <button className='ms-DetailsHeader-cell' onClick={ this._onToggleCollapseAll }>
@@ -127,10 +128,9 @@ export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetails
           { GroupSpacer({ count: groupNestingDepth - 1 }) }
           { columns.map((column, columnIndex) => (
             <div key={ column.key } className='ms-DetailsHeader-cellSizeWrapper'>
-              <div className='ms-DetailsHeader-cellWrapper'>
+              <div className='ms-DetailsHeader-cellWrapper' role='columnheader'>
                 <button
                   key={ column.fieldName }
-                  role='columnheader'
                   disabled={ column.columnActionsMode === ColumnActionsMode.disabled }
                   className={ css('ms-DetailsHeader-cell', {
                     'is-actionable': column.columnActionsMode !== ColumnActionsMode.disabled,

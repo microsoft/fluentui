@@ -1,13 +1,15 @@
 import * as React from 'react';
 import './Slider.scss';
-import { ISliderProps } from './Slider.Props';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
+import { ISliderProps, ISlider } from './Slider.Props';
+import { BaseComponent } from '../../common/BaseComponent';
 import { KeyCodes } from '../../utilities/KeyCodes';
+import { Label } from '../../Label';
 import { css } from '../../utilities/css';
 import { getRTL as isRTL, getRTLSafeKeyCode } from '../../utilities/rtl';
 
 export interface ISliderState {
-  value: number;
+  value?: number;
+  renderedValue?: number;
 }
 
 export enum ValuePosition {
@@ -17,12 +19,13 @@ export enum ValuePosition {
 
 let _instance: number = 0;
 
-export class Slider extends React.Component<ISliderProps, ISliderState> {
+export class Slider extends BaseComponent<ISliderProps, ISliderState> implements ISlider {
   public static defaultProps: {} = {
     step: 1,
+    min: 0,
+    max: 10,
     showValue: true,
-    isDisabled: false,
-    className: ''
+    disabled: false
   };
 
   public refs: {
@@ -32,29 +35,11 @@ export class Slider extends React.Component<ISliderProps, ISliderState> {
     thumb: HTMLElement
   };
 
-  private _events: EventGroup;
   private _id: string;
 
-  public static ensurePropsValid(props: ISliderProps): ISliderProps {
-    if (props.max <= props.min) {
-      props.max = props.min + 1;
-    }
-    if (!props.step || props.step <= 0) {
-      props.step = 1;
-    }
-    if (!props.initialValue || props.initialValue < props.min) {
-      props.initialValue = props.min;
-    } else if (props.initialValue > props.max) {
-      props.initialValue = props.max;
-    }
-    return props;
-  }
-
   constructor(props?: ISliderProps) {
-    const validProps: ISliderProps = Slider.ensurePropsValid(props);
-    super(validProps);
+    super(props);
 
-    this._events = new EventGroup(this);
     this._onMouseDownOrTouchStart = this._onMouseDownOrTouchStart.bind(this);
     this._onMouseMoveOrTouchMove = this._onMouseMoveOrTouchMove.bind(this);
     this._onMouseUpOrTouchEnd = this._onMouseUpOrTouchEnd.bind(this);
@@ -62,8 +47,11 @@ export class Slider extends React.Component<ISliderProps, ISliderState> {
 
     this._id = `Slider-${ _instance++ }`;
 
+    let value = props.value || props.defaultValue || props.min;
+
     this.state = {
-      value: validProps.initialValue
+      value: value,
+      renderedValue: value
     };
   }
 
@@ -71,54 +59,68 @@ export class Slider extends React.Component<ISliderProps, ISliderState> {
    * Invoked when a component is receiving new props. This method is not called for the initial render.
    */
   public componentWillReceiveProps(newProps: ISliderProps): void {
-    const validProps: ISliderProps = Slider.ensurePropsValid(newProps);
-    this.setState({
-      value: validProps.initialValue
-    });
-  }
 
-  public componentWillUnmount(): void {
-    this._events.dispose();
+    if (newProps.value !== undefined) {
+      let value = Math.max(newProps.min, Math.min(newProps.max, newProps.value));
+
+      this.setState({
+        value: value
+      });
+    }
   }
 
   public render(): React.ReactElement<{}> {
-    const { min, max, label, showValue, isDisabled, className, ariaLabel } = this.props;
-    const value: number = this.state.value;
-    const thumbOffsetPercent: number = (value - min) / (max - min) * 100;
+    const { min, max, label, showValue, disabled, className, ariaLabel } = this.props;
+    const { value, renderedValue } = this.state;
+    const thumbOffsetPercent: number = (renderedValue - min) / (max - min) * 100;
 
-    const onMouseDownProp: {} = isDisabled ? {} : { onMouseDown: this._onMouseDownOrTouchStart };
-    const onTouchStartProp: {} = isDisabled ? {} : { onTouchStart: this._onMouseDownOrTouchStart };
-    const onKeyDownProp: {} = isDisabled ? {} : { onKeyDown: this._onKeyDown };
+    const onMouseDownProp: {} = disabled ? {} : { onMouseDown: this._onMouseDownOrTouchStart };
+    const onTouchStartProp: {} = disabled ? {} : { onTouchStart: this._onMouseDownOrTouchStart };
+    const onKeyDownProp: {} = disabled ? {} : { onKeyDown: this._onKeyDown };
 
     return (
-      <div ref='root'>
-        { label && <label className='ms-Label'
-                          { ...ariaLabel ? {} : {'htmlFor' : this._id} }>{ label }</label> }
-        <div className= { css('ms-Slider-wrapper', className, {
-               'ms-Slider-showValue': showValue
-             }) } >
-          <div ref='sliderLine'
-               className = { css('ms-Slider-line', {
-                 'ms-Slider-enabled': !isDisabled,
-                 'ms-Slider-disabled': isDisabled
-               }) }
-               { ...onMouseDownProp }
-               { ...onTouchStartProp }>
-            <span ref='thumb'
-                  id={ this._id }
-                  className='ms-Slider-thumb'
-                  { ...isDisabled ? {} : {'tabIndex': 0 } }
-                  role='slider'
-                  aria-valuenow={ value }
-                  aria-valuemin={ min }
-                  aria-valuemax={ max }
-                  { ...ariaLabel ? {'aria-label' : ariaLabel} : {} }
-                  style={ isRTL() ?
-                          {'right': thumbOffsetPercent + '%'} :
-                          {'left': thumbOffsetPercent + '%'} }
-                  { ...onKeyDownProp }></span>
-            <span className='ms-Slider-active' style={ {'width': thumbOffsetPercent + '%'} }></span>
-            <span className='ms-Slider-inactive' style={ {'width': (100 - thumbOffsetPercent) + '%'} }></span>
+      <div
+        className={ css('ms-Slider', className, {
+          'ms-Slider-enabled': !disabled,
+          'ms-Slider-disabled': disabled
+        })}
+        ref='root'>
+        { label && (
+        <Label { ...ariaLabel ? {} : {'htmlFor' : this._id} }>
+          { label }
+        </Label>
+        ) }
+        <div className='ms-Slider-container'>
+          <div
+            className={ css('ms-Slider-slideBox', {
+              'ms-Slider-showValue': showValue,
+              'ms-Slider-showTransitions': ( renderedValue === value )
+            })}
+            { ...disabled ? { } : { 'tabIndex': 0 } }
+            { ...onMouseDownProp }
+            { ...onTouchStartProp }
+            { ...onKeyDownProp }
+            >
+            <div
+              ref='sliderLine'
+              className='ms-Slider-line'
+            >
+              <span
+                ref='thumb'
+                id={ this._id }
+                className='ms-Slider-thumb'
+                { ...ariaLabel ? { 'aria-label' : ariaLabel } : { } }
+                role='slider'
+                aria-valuenow={ value }
+                aria-valuemin={ min }
+                aria-valuemax={ max }
+                style={ isRTL() ?
+                  { 'right': thumbOffsetPercent + '%' } :
+                  { 'left': thumbOffsetPercent + '%' } }
+              />
+              <span className='ms-Slider-active' style={ {'width': thumbOffsetPercent + '%'} }></span>
+              <span className='ms-Slider-inactive' style={ {'width': (100 - thumbOffsetPercent) + '%'} }></span>
+            </div>
           </div>
           { showValue && <label className='ms-Label ms-Slider-value'>{ value }</label> }
         </div>
@@ -132,6 +134,10 @@ export class Slider extends React.Component<ISliderProps, ISliderState> {
       }
   }
 
+  public get value(): number {
+    return this.state.value;
+  }
+
   private _onMouseDownOrTouchStart(event: MouseEvent | TouchEvent): void {
     if (event.type === 'mousedown') {
       this._events.on(window, 'mousemove', this._onMouseMoveOrTouchMove, true);
@@ -141,55 +147,65 @@ export class Slider extends React.Component<ISliderProps, ISliderState> {
       this._events.on(window, 'touchend', this._onMouseUpOrTouchEnd, true);
     }
 
-    this._onMouseMoveOrTouchMove(event);
+    this._onMouseMoveOrTouchMove(event, true);
   }
 
-  private _onMouseMoveOrTouchMove(event: MouseEvent | TouchEvent): void {
-    const { max, min, step, onChanged } = this.props;
-
+  private _onMouseMoveOrTouchMove(event: MouseEvent | TouchEvent, suppressEventCancelation?: boolean): void {
+    const { max, min, step, onChange } = this.props;
     const steps: number = (max - min) / step;
     const sliderLength: number = this.refs.sliderLine.offsetWidth;
     const stepLength: number = sliderLength / steps;
     const sliderPositionRect: ClientRect = this.refs.sliderLine.getBoundingClientRect();
     let currentSteps: number;
+
     if (event.type === 'mousedown' || event.type === 'mousemove') {
       currentSteps = isRTL() ?
-                     (sliderPositionRect.right - (event as MouseEvent).clientX) / stepLength :
-                     ((event as MouseEvent).clientX - sliderPositionRect.left) / stepLength;
+        (sliderPositionRect.right - (event as MouseEvent).clientX) / stepLength :
+        ((event as MouseEvent).clientX - sliderPositionRect.left) / stepLength;
     } else if (event.type === 'touchstart' || event.type === 'touchmove') {
       currentSteps = isRTL() ?
-                     (sliderPositionRect.right - (event as TouchEvent).touches[0].clientX) / stepLength :
-                     ((event as TouchEvent).touches[0].clientX - sliderPositionRect.left) / stepLength;
+        (sliderPositionRect.right - (event as TouchEvent).touches[0].clientX) / stepLength :
+        ((event as TouchEvent).touches[0].clientX - sliderPositionRect.left) / stepLength;
     }
 
     let currentValue: number;
+    let renderedValue: number;
+
     // The value shouldn't be bigger than max or be smaller than min.
     if (currentSteps > Math.floor(steps)) {
-      currentValue = max;
+      renderedValue = currentValue = max;
     } else if (currentSteps < 0) {
-      currentValue = min;
+      renderedValue = currentValue = min;
     } else {
+      renderedValue = min + step * currentSteps;
       currentValue = min + step * Math.round(currentSteps);
     }
 
     this.setState({
-      value: currentValue
+      value: currentValue,
+      renderedValue: renderedValue
     });
-    if (onChanged) {
-      onChanged(currentValue);
+    if (onChange) {
+      onChange(currentValue);
     }
 
-    event.preventDefault();
-    event.stopPropagation();
+    if (!suppressEventCancelation) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
   }
 
   private _onMouseUpOrTouchEnd(): void {
+    this.setState({
+      renderedValue: this.state.value
+    });
+
     this._events.off();
   }
 
-  private _onKeyDown(event: MouseEvent): void {
+  private _onKeyDown(event: KeyboardEvent): void {
     const value: number = this.state.value;
-    const { max, min, step, onChanged } = this.props;
+    const { max, min, step, onChange } = this.props;
 
     let diff: number = 0;
     if (event.which === getRTLSafeKeyCode(KeyCodes.left)) {
@@ -202,10 +218,12 @@ export class Slider extends React.Component<ISliderProps, ISliderState> {
     const newValue: number = Math.min(max, Math.max(min, value + diff));
 
     this.setState({
-      value: newValue
+      value: newValue,
+      renderedValue: newValue
     });
-    if (onChanged) {
-      onChanged(newValue);
+
+    if (onChange) {
+      onChange(newValue);
     }
 
     event.preventDefault();
