@@ -34,38 +34,38 @@ gulp.task('install-deploy', function(cb) {
     .pipe(prompt.prompt([{
         type: 'input',
         name: 'host',
-        message: 'Please enter hostname'
+        message: 'Please enter hostname (ftp.example.com)'
     },
     {
         type: 'input',
         name: 'user',
-        message: 'Please enter username'
+        message: 'Please enter username (exampleusername)'
     },
     {
         type: 'input',
         name: 'password',
-        message: 'Please enter password'
+        message: 'Please enter password (examplepassword)'
     },
     {
         type: 'input',
         name: 'deployurl',
-        message: 'Enter deploy URL'
+        message: 'Enter deploy URL (http://example.com/website-subfolder/)'
     },
     {
         type: 'input',
         name: 'deploybasepath',
-        message: 'Please deployment base path'
+        message: 'Please deployment base path (/wwwroot/base/path/website-subfolder/)'
     },
     {
         type: 'input',
         name: 'secureconnection',
-        message: 'Secure connection?',
+        message: 'Secure connection? (Type true or false)',
         choices: ["true", "false"]
     },
     {
         type: 'input',
         name: 'idletimeout',
-        message: 'Enter Idle timeout'
+        message: 'Enter Idle timeout in milleseconds(1000)'
     }], function(res) {
         let ftpdata = {
           "host": res.host,
