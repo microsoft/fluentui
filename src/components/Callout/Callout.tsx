@@ -22,7 +22,7 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     isBeakVisible: true,
     beakStyle: 'ms-Callout-beak',
     beakWidth: 28,
-    gapSpace: 10,
+    gapSpace: 16,
     directionalHint: DirectionalHint.rightCenter
   };
 

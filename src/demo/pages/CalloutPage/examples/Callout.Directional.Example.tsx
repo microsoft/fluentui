@@ -50,8 +50,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
     this.state = {
       isCalloutVisible: false,
       isBeakVisible: true,
-      directionalHint: DirectionalHint.bottomLeftEdge,
-      gapSpace: 10
+      directionalHint: DirectionalHint.bottomLeftEdge
     };
   }
 
