@@ -6,7 +6,7 @@
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://onedrive.visualstudio.com/DefaultCollection/Design/_git/office-ui-fabric-react"
+    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
   },
   "license": "MIT",
   "devDependencies": {
