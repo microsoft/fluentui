@@ -77,6 +77,7 @@ gulp.task('deploy', ['bundle'],  function(cb) {
   let currentBranch;
   let json;
   let data;
+  let uploadPath;
 
   try {
     json = fs.readFileSync(configFile, 'utf8');
@@ -100,9 +101,10 @@ gulp.task('deploy', ['bundle'],  function(cb) {
         currentBranch = 'master';
       }
 
+      let uploadPath = data.deploybasepath + currentBranch;
       let stream = gulp.src( globs, { base: '.', buffer: false })
         .pipe(debug({ title: 'Copying file to server' }))
-        .pipe(ftpConnection.dest(data.deployurl + currentBranch ))
+        .pipe(ftpConnection.dest(uploadPath))
         .on('error', function(er) {
           console.log(er);
         })
