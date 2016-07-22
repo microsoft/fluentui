@@ -55,13 +55,26 @@ gulp.task('install-deploy', function(cb) {
         type: 'input',
         name: 'deploybasepath',
         message: 'Please deployment base path'
+    },
+    {
+        type: 'input',
+        name: 'secureconnection',
+        message: 'Secure connection?',
+        choices: ["true", "false"]
+    },
+    {
+        type: 'input',
+        name: 'idletimeout',
+        message: 'Enter Idle timeout'
     }], function(res) {
         let ftpdata = {
           "host": res.host,
           "user": res.user,
           "password": res.password,
           "deployurl": res.deployurl,
-          "deploybasepath": res.deploybasepath
+          "deploybasepath": res.deploybasepath,
+          "secureconnection": res.secureconnection,
+          "idletimeout": res.idletimeout
         };
         fs.writeFileSync(configFile, JSON.stringify(ftpdata));
         cb();
@@ -90,8 +103,8 @@ gulp.task('deploy', ['bundle'],  function(cb) {
         user: data.user,
         pass: data.password,
         parallel: 10,
-        secure: true,
-        idleTimeout: 10000
+        secure: (data.secureconnection == "true") ? true : false,
+        idleTimeout: data.idletimeout
       });
       let globs = [
         './index.html',
@@ -100,7 +113,6 @@ gulp.task('deploy', ['bundle'],  function(cb) {
       if (process.env.masterBuildLink || isProduction) {
         currentBranch = 'master';
       }
-
       let uploadPath = data.deploybasepath + currentBranch;
       let stream = gulp.src( globs, { base: '.', buffer: false })
         .pipe(debug({ title: 'Copying file to server' }))
