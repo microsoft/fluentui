@@ -19,7 +19,7 @@ Fabric React is a responsive, mobile-first collection of robust components desig
 
 ## View the docs
 
-Before you get started, make sure you have [node.js](https://nodejs.org/), [gulp](http://gulpjs.com/), and [git](https://git-scm.com/) installed. To view the doucmentation including examples, contracts, current statuses, and to add functionality or fix issues locally, you can:
+Before you get started, make sure you have [node.js](https://nodejs.org/), [gulp](http://gulpjs.com/), and [git](https://git-scm.com/) installed. To view the documentation including examples, contracts, component status, and to add functionality or fix issues locally, you can:
 
 1. `git clone https://github.com/OfficeDev/office-ui-fabric-react.git`
 2. `npm install`
