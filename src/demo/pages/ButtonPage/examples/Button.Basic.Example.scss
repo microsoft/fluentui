@@ -1,8 +1,11 @@
+@import '~office-ui-fabric/src/sass/Fabric.Common';
+
 .ms-BasicButtonsExample .ms-Button {
   margin: 10px 0;
+
+  .ms-Icon {
+    @include margin-right(5px);
+    @include margin-left(-10px);
+  }
 }
 
-.ms-Icon {
-  margin-right: 5px;
-  margin-left: -10px;
-}
