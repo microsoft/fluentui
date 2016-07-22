@@ -9,7 +9,7 @@
   line-height: 12px;
   margin-right: 0px;
 
-   // Temp fix. Should ne updated in fabric core
+   // Temp fix. Should be updated in fabric core
    &:hover {
      color: $ms-color-themeDark;
     }
@@ -18,16 +18,13 @@
 
 // Override the default fabric styles for focus which do not make use of FocusZone
 .ms-Breadcrumb-itemLink {
-
   &:focus {
     outline: none;
     color: $ms-color-neutralPrimary;
   }
-
 }
 
 .ms-Fabric.is-focusVisible .ms-Breadcrumb-itemLink {
-
   &:focus {
     outline: 1px solid $ms-color-neutralSecondaryAlt;
     color: $ms-color-black;
