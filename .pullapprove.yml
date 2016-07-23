@@ -4,7 +4,6 @@ reject_regex: ^Rejected
 reset_on_push: false
 reviewers:
   members:
-  - dzearing
   - ericthompson
   - Jahnp
   - battletoilet
