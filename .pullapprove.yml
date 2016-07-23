@@ -1,0 +1,13 @@
+approve_by_comment: true
+approve_regex: ^Approved
+reject_regex: ^Rejected
+reset_on_push: false
+reviewers:
+  members:
+  - ericthompson
+  - Jahnp
+  - battletoilet
+  - wdo3650
+  - mikewheaton
+  name: pullapprove
+  required: 1
