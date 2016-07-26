@@ -10,5 +10,6 @@ reviewers:
   - wdo3650
   - mikewheaton
   - dzearing
+  - cliffkoh
   name: pullapprove
   required: 1
