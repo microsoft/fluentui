@@ -2,24 +2,35 @@
 @import "~office-ui-fabric/src/components/Button/Button";
 
 .ms-Button--icon {
+  @include focus-border(0px);
   background-color: transparent;
+  color: $ms-color-neutralSecondary;
   padding: 0;
   min-width: auto;
   height: auto;
   border: 0;
 
-  &:hover {
+  &:hover,
+  &:active {
     background-color: transparent;
     border-color: transparent;
     outline-color: transparent;
+    color: $ms-color-neutralPrimary;
   }
 
   &:focus {
     background-color: transparent;
   }
-
+  .ms-Icon {
+    font-size: 16px;
+    padding: 8px;
+  }
   .ms-Button-icon {
     display: inline;
+  }
+  &.is-disabled, &:disabled {
+    color: $ms-color-neutralTertiaryAlt;
+    background-color: transparent;
   }
 }
 
