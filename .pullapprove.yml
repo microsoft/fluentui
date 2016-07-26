@@ -11,4 +11,4 @@ reviewers:
   - mikewheaton
   - dzearing
   name: pullapprove
-  required: 2
+  required: 1
