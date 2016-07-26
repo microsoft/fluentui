@@ -80,6 +80,7 @@ export class List extends BaseComponent<IListProps, IListState> {
   private _scrollElement: HTMLElement;
   private _scrollingToIndex: number;
   private _hasCompletedFirstRender: boolean;
+  private _isFirstUpdate: boolean;
 
   // surface rect relative to window
   private _surfaceRect: ClientRect;
@@ -110,6 +111,7 @@ export class List extends BaseComponent<IListProps, IListState> {
     this._totalEstimates = 0;
     this._requiredWindowsAhead = 0;
     this._requiredWindowsBehind = 0;
+    this._isFirstUpdate = true;
 
     // Track the measure version for everything.
     this._measureVersion = 0;
@@ -614,12 +616,9 @@ export class List extends BaseComponent<IListProps, IListState> {
     }
 
     // If the surface is above the container top or below the container bottom, return empty rect.
-    if (
-      surfaceRect.bottom < 0 ||
-      surfaceRect.top > window.innerHeight) {
-      this._requiredRect = EMPTY_RECT;
-      this._allowedRect = EMPTY_RECT;
-    } else {
+    if (this._isFirstUpdate ||
+      (surfaceRect.bottom >= 0 && surfaceRect.top <= window.innerHeight)) {
+        this._isFirstUpdate = false;
       const visibleTop = Math.max(0, -surfaceRect.top);
       const visibleRect = {
         top: visibleTop,
@@ -633,6 +632,9 @@ export class List extends BaseComponent<IListProps, IListState> {
       // The required/allowed rects are adjusted versions of the visible rect.
       this._requiredRect = _expandRect(visibleRect, this._requiredWindowsBehind, this._requiredWindowsAhead);
       this._allowedRect = _expandRect(visibleRect, renderedWindowsBehind, renderedWindowsAhead);
+    } else {
+      this._requiredRect = EMPTY_RECT;
+      this._allowedRect = EMPTY_RECT;
     }
   }
 }
