@@ -9,5 +9,6 @@ reviewers:
   - battletoilet
   - wdo3650
   - mikewheaton
+  - dzearing
   name: pullapprove
   required: 2
