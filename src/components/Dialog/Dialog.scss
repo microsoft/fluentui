@@ -30,11 +30,11 @@
   text-align: center;
 
   // Flexbox for Modern Browsers
-	@include flexBox();
-	@include alignItems(center);
+  @include flexBox();
+  @include alignItems(center);
 
-	&::before {
-  	@include dialogPositioningIE9Fallback();
+  &::before {
+    @include dialogPositioningIE9Fallback();
     content: "";
     height: 100%;
     width: 0;
