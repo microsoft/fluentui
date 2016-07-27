@@ -28,19 +28,19 @@
 
 
 .ms-Label {
-	@include ms-font-s;
-	@include ms-u-normalize;
-	box-sizing: border-box;
-	display: block;
-	padding: 5px 0;
+  @include ms-font-s;
+  @include ms-u-normalize;
+  box-sizing: border-box;
+  display: block;
+  padding: 5px 0;
 
-	&.is-required {
-		@include ms-Label-is-required;
-	}
+  &.is-required {
+    @include ms-Label-is-required;
+  }
 
-	&.is-disabled {
-		 @include ms-Label-is-disabled;
-	}
+  &.is-disabled {
+     @include ms-Label-is-disabled;
+  }
 }
 
 .is-disabled {
