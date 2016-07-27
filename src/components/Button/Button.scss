@@ -351,16 +351,27 @@
   &:focus {
     background-color: transparent;
   }
+
   .ms-Icon {
     font-size: 16px;
     padding: 8px;
   }
+
   .ms-Button-icon {
     display: inline;
   }
+
   &.is-disabled, &:disabled {
     color: $ms-color-neutralTertiaryAlt;
     background-color: transparent;
+  }
+
+  @media screen and (-ms-high-contrast: active) {
+    color: $ms-color-yellowLight;
+  }
+
+  @media screen and (-ms-high-contrast: black-on-white) {
+    color: $ms-color-blueMid;
   }
 }
 
