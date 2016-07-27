@@ -57,7 +57,7 @@ export class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
           aria-checked={ isChecked }
         />
         <label htmlFor={ this._id } className='ms-ChoiceField-field'>
-          <span className='ms-Label'>{ text }</span>
+          { text && <span className='ms-Label'>{ text }</span> }
         </label>
       </div>
     );

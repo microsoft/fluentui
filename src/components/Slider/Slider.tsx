@@ -97,6 +97,11 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
               'ms-Slider-showTransitions': ( renderedValue === value )
             })}
             { ...disabled ? { } : { 'tabIndex': 0 } }
+            id={ this._id }
+            role='slider'
+            aria-valuenow={ value }
+            aria-valuemin={ min }
+            aria-valuemax={ max }
             { ...onMouseDownProp }
             { ...onTouchStartProp }
             { ...onKeyDownProp }
@@ -107,13 +112,8 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
             >
               <span
                 ref='thumb'
-                id={ this._id }
                 className='ms-Slider-thumb'
                 { ...ariaLabel ? { 'aria-label' : ariaLabel } : { } }
-                role='slider'
-                aria-valuenow={ value }
-                aria-valuemin={ min }
-                aria-valuemax={ max }
                 style={ isRTL() ?
                   { 'right': thumbOffsetPercent + '%' } :
                   { 'left': thumbOffsetPercent + '%' } }

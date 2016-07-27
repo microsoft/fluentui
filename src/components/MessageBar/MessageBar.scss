@@ -1,5 +1,112 @@
 @import '../../common/common';
-@import "~office-ui-fabric/src/components/MessageBar/MessageBar";
+
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
+//
+// Office UI Fabric
+// --------------------------------------------------
+// MessageBar Styles
+
+/*
+  Base template file
+*/
+
+$MessageBar-padding: 8px;
+
+.ms-MessageBar {
+  padding: $MessageBar-padding;
+  display: table;
+  @include ms-bgColor-info;
+}
+
+.ms-MessageBar-icon,
+.ms-MessageBar-text {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.ms-MessageBar-icon {
+  padding-right: $MessageBar-padding;
+  font-size: 16px;
+  @include ms-fontColor-neutralSecondaryAlt;
+}
+
+.ms-MessageBar-text {
+  @include ms-font-s;
+}
+
+
+//== Modifier: Warning message
+//
+.ms-MessageBar.ms-MessageBar--warning {
+  @include ms-bgColor-warning;
+}
+
+
+//== Modifier: Severe Warning message
+//
+.ms-MessageBar.ms-MessageBar--severeWarning {
+  @include ms-bgColor-severeWarning;
+
+  .ms-MessageBar-icon {
+    @include ms-fontColor-severeWarning;
+  }
+}
+
+
+//== Modifier: Error message
+//
+.ms-MessageBar.ms-MessageBar--error {
+  @include ms-bgColor-error;
+
+  .ms-MessageBar-icon {
+    @include ms-fontColor-error;
+  }
+}
+
+
+//== Modifier: Remove message
+//
+.ms-MessageBar.ms-MessageBar--remove {
+  @include ms-bgColor-error;
+
+  .ms-MessageBar-icon {
+    @include ms-fontColor-error;
+  }
+
+  .ms-Icon {
+    font-size: 8px;
+    margin-left: 3px;
+  }
+}
+
+
+//== Modifier: Success message
+//
+.ms-MessageBar.ms-MessageBar--success {
+  @include ms-bgColor-success;
+
+  .ms-MessageBar-icon {
+    @include ms-fontColor-green;
+  }
+
+  .ms-Icon {
+    font-size: $ms-font-size-s;
+    top: 3px;
+
+    &:before {
+      margin-left: 1px;
+    }
+
+    &:after {
+      font-size: 8px;
+      margin-left: 3px;
+      top: 1px;
+    }
+  }
+}
+
+// TODO: Remove overrides below.
 
 // Shared
 .ms-MessageBar-icon {
