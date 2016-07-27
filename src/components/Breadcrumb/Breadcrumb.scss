@@ -2,13 +2,13 @@
 @import '~office-ui-fabric/src/components/Breadcrumb/Breadcrumb';
 
 .ms-Breadcrumb-overflow {
+  @include margin-right(0px);
   display: inline-block;
-  margin-right: 0px;
 }
 
 .ms-Breadcrumb-overflowButton {
+  @include margin-right(0px);
   line-height: 12px;
-  margin-right: 0px;
 
    // Temp fix. Should be updated in fabric core
    &:hover {
