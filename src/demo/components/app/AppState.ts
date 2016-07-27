@@ -14,6 +14,7 @@ import { DropdownPage } from '../../pages/DropdownPage/DropdownPage';
 import { FacepilePage } from '../../pages/Facepile/FacepilePage';
 import { FocusZonePage } from '../../pages/FocusZonePage/FocusZonePage';
 import { FocusTrapZonePage } from '../../pages/FocusTrapZonePage/FocusTrapZonePage';
+import { GroupedListPage } from '../../pages/GroupedListPage/GroupedListPage';
 import { ImagePage } from '../../pages/ImagePage/ImagePage';
 import { INavLink, INavLinkGroup } from '../../../components/Nav/index';
 import { LabelPage } from '../../pages/LabelPage/LabelPage';
@@ -241,6 +242,12 @@ export const AppState: IAppState = {
           name: 'ColorPicker',
           status: ExampleStatus.started,
           url: '#/examples/colorpicker'
+        },
+        {
+          component: GroupedListPage,
+          name: 'GroupedList',
+          status: ExampleStatus.started,
+          url: '#examples/GroupedList'
         },
         {
           component: ImagePage,
