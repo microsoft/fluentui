@@ -5,7 +5,7 @@ export interface ICheckboxProps extends React.Props<Checkbox> {
   /**
    * Label to display next to the checkbox.
    */
-  text: string;
+  text?: string;
 
   /**
    * Whether the checkbox is checked or not.
