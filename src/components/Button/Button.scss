@@ -62,6 +62,34 @@
   }
 }
 
+// Overide focus styles from fabric core and use focus-border
+.ms-Button{
+  @include focus-border();
+  &:focus {
+    border-color: $ms-color-neutralLighter;
+  }
+}
+
+.ms-Fabric.is-focusVisible .ms-Button {
+  &:focus {
+    color: $ms-color-black;
+
+    &:before {
+      border-color: $ms-color-themePrimary;
+    }
+  }
+}
+
+.ms-Fabric.is-focusVisible .ms-Button.ms-Button--primary {
+  &:focus {
+    color: $ms-color-white;
+
+    &:before {
+      border-color: $ms-color-themeDarker;
+    }
+  }
+}
+
 // Overide text underline for anchor type button
 a.ms-Button {
 	text-decoration: none;
