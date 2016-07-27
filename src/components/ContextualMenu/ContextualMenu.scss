@@ -1,232 +1,89 @@
 @import '../../common/common';
-@import '~office-ui-fabric/src/sass/Fabric.Animations';
 
-// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+$ContextualMenu-background: $ms-color-white;
+$ContextualMenu-itemHover: $ms-color-neutralLight;
+$ContextualMenu-expandedItemBackground: $ms-color-themeLight;
+$ContextualMenu-itemHeight: 40px;
+$ContextualMenu-iconWidth: 24px;
 
-//
-// Office UI Fabric
-// --------------------------------------------------
-// Contextual Menu styles
-
-
-.ms-ContextualMenu-container {
-  position: relative;
-}
-
-.ms-ContextualMenu.ms-FocusZone {
-  @include ms-font-m;
-  @include ms-u-normalize;
-  z-index: $ms-zIndex-ContextualMenu;
-  line-height: 0;
-  box-sizing: border-box;
-  position: relative;
+.ms-ContextualMenu {
+  background-color: $ContextualMenu-background;
+  min-width: 180px;
+  max-width: 300px;
 }
 
 .ms-ContextualMenu-list {
-  background-color: $ms-color-white;
   list-style-type: none;
-  min-width: 180px;
-  max-height: 100vh;
-  padding: 0;
   margin: 0;
-  z-index: ($ms-zIndex-ContextualMenu + $ms-zIndex-middle);
-  line-height: 0;
+  padding: 0;
+  max-height: 100vh;
   overflow-y: auto;
-
+  line-height: 0;
 }
 
 .ms-ContextualMenu-item {
-  @include ms-u-borderBox;
+  @include ms-font-m;
+
   position: relative;
-}
-
-// Modifier: Menu item Dividers
-.ms-ContextualMenu-item.ms-ContextualMenu-item--divider {
-  cursor: default;
-  display: block;
-  height: 1px;
-  margin: 4px 0;
-  background-color: $ms-color-neutralLight;
-  position: relative;
-}
-
-// Modifier: Menu item Headers
-.ms-ContextualMenu-item.ms-ContextualMenu-item--header {
-  color: $ms-color-themePrimary;
-  font-size: $ms-font-size-s;
-  text-transform: uppercase;
-  height: 40px;
-  line-height: 40px;
-  padding: 0 18px;
-}
-
-.ms-ContextualMenu-itemText.ms-font-m.ms-font-weight-regular {
-    display: inline-block;
-    @include margin-right(16px);
-    top: 0;
+  box-sizing: border-box;
 }
 
 .ms-ContextualMenu-link {
   @include focus-border();
 
-  position: relative;
-  text-decoration: none;
-  color: $ms-color-neutralPrimary;
-  cursor: pointer;
-  display: block;
-  height: 40px;
-  padding: 0 18px;
-  white-space: nowrap;
-  box-sizing: border-box;
-  line-height: 0px;
-
-  // Shorten the first and last items to maintain baseline alignment.
-  &:first-child,
-  &:last-child {
-    height: 39px;
-  }
-
-  &:hover,
-  &:active {
-    background-color: $ms-color-neutralLight;
-    color: $ms-color-black;
-  }
-
-  &:active {
-    border: 1px solid $ms-color-themePrimary;
-  }
-
-  &.is-selected {
-    background-color: $ms-color-themeLight;
-    color: $ms-color-black;
-    font-family: $ms-font-family-semibold;
-
-    &:hover {
-      background-color: $ms-color-themeLight;
-    }
-  }
-
-  &.is-expanded {
-    background-color: $ms-color-themeLight;
-    color: $ms-color-black;
-    font-family: $ms-font-family-semibold;
-
-    &:hover {
-      background-color: $ms-color-themeLight;
-    }
-  }
-
-  &.is-disabled, &:disabled {
-    background-color: $ms-color-white;
-    color: $ms-color-neutralTertiary;
-    cursor: default;
-    pointer-events: none;
-
-    &:active {
-      border-color: $ms-color-white;
-    }
-  }
-}
-
-// Modifier: Contextual menu with submenu
-.ms-ContextualMenu-link.ms-ContextualMenu-link--hasMenu ~ .ms-ContextualMenu {
-  position: absolute;
-  top: -1px;
-  @include left(178px); // Move the submenu to the left of the menu item that triggered it
-}
-
-// Right chevron.
-// Note: The .ms-ContextualMenu-caretRight class has been deprecated.
-// Please use .ms-ContextualMenu-subMenuIcon.
-.ms-ContextualMenu-subMenuIcon,
-.ms-ContextualMenu-caretRight {
-  color: $ms-color-neutralSecondary;
-  font-size: $ms-font-size-m-plus + 1;
-  height: 39px;
-  line-height: 40px;
-  position: absolute;
-  top: 0;
-  @include right(7px);
-  z-index: 1;
-  pointer-events: none;
-}
-
-
-//== Modifier: Multi-select menu
-//
-.ms-ContextualMenu.ms-ContextualMenu--multiselect {
-
-  // Align the header with the items
-  .ms-ContextualMenu-item.ms-ContextualMenu-item--header {
-    padding: 0 30px;
-  }
-
-  .ms-ContextualMenu-link {
-    padding: 0 30px;
-
-    // Multi-select checkmark
-    &.is-selected {
-      background-color: $ms-color-white;
-
-      // Checkmark
-      &:after {
-        @include ms-Icon;
-        color: $ms-color-neutralPrimary;
-        content: '\e041';
-        font-size: $ms-font-size-s;
-        height: 39px;
-        line-height: 40px;
-        position: absolute;
-        @include left(10px);
-      }
-    }
-  }
-}
-
-.ms-ContextualMenu-link,
-.ms-ContextualMenu-link:active {
+  font: inherit;
   background: none;
   border: none;
+  margin: 0;
+  padding: 0 8px;
+  min-width: 100%;
+  height: $ContextualMenu-itemHeight;
+  line-height: $ContextualMenu-itemHeight;
   display: block;
-  width: 100%;
   @include text-align(left);
-  @include ms-font-m;
-}
 
-.ms-ContextualMenu-chevronRight.ms-Icon {
-    top: 0;
-    position: absolute;
-    @include right(0);
-    vertical-align: middle;
-    line-height: 39px;
-    width: 34px;
-    text-align: center;
-}
-
-.ms-ContextualMenu-icon {
-  @include padding-right(10px);
-
-  &.no-icon {
-    @include padding-right(24px);
+  &:hover {
+    background: $ContextualMenu-itemHover;
   }
+
+  &.is-expanded,
+  &.is-expanded:hover {
+    background: $ContextualMenu-expandedItemBackground;
+  }
+}
+
+.ms-ContextualMenu-divider {
+  display: block;
+  height: 1px;
+  margin: 4px 0;
+  background-color: $dividerColor;
+  position: relative;
 }
 
 .ms-ContextualMenu-checkmark {
-  @include padding-right(10px);
-  &.not-selected {
-    @include padding-right(24px);
-  }
+  display: inline-block;
+  min-height: 1px;
+  width: $ContextualMenu-iconWidth;
+  text-align: center;
 }
 
-.ms-FocusZone.ms-ContextualMenu.is-open {
-  width: auto;
+.ms-ContextualMenu-icon {
+  display: inline-block;
+  min-height: 1px;
+  width: $ContextualMenu-iconWidth;
+  text-align: center;
 }
 
-.ms-Callout-container.ms-ContextualMenu-Callout>.ms-Callout {
-  max-height: 100vh;
+.ms-ContextualMenu-itemText {
+  padding: 0 4px;
 }
 
-.ExampleCard-example > .ms-ContextualMenu-container > .ms-ContextualMenu {
-  position: relative;
+.ms-Icon.ms-ContextualMenu-submenuChevron {
+  position: absolute;
+  height: $ContextualMenu-itemHeight;
+  line-height: $ContextualMenu-itemHeight;
+  vertical-align: middle;
+  @include right(8px);
+  width: 16px;
+  text-align: center;
 }
-
