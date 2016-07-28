@@ -7,22 +7,26 @@
 // --------------------------------------------------
 // Breadcrumb styles
 
+$Breadcrumb-overflowButtonColor: $ms-color-themePrimary;
+$Breadcrumb-buttonHoverColor: $ms-color-themeDark;
+$Breadcrumb-itemMaxWidth: 160px;
+$Breadcrumb-itemMaxWidth-sm: 116px;
 
 .ms-Breadcrumb {
   @include ms-baseFont;
   margin: 23px 0 1px;
 
-  .ms-Breadcrumb-chevron {
-    font-size: $ms-font-size-s;
-    color: $ms-color-neutralSecondary;
-    vertical-align: top;
-    margin: 11px 7px;
-  }
-
   .ms-Breadcrumb-list {
     white-space: nowrap;
     padding: 0;
     margin: 0;
+
+    .ms-Breadcrumb-chevron {
+      font-size: $ms-font-size-s;
+      color: $ms-color-neutralSecondary;
+      vertical-align: top;
+      margin: 11px 7px;
+    }
 
     .ms-Breadcrumb-listItem {
       list-style-type: none;
@@ -37,72 +41,73 @@
           display: none;
         }
       }
+
+      .ms-Breadcrumb-itemLink {
+        @include focus-border;
+        @include ms-font-xl;
+        display: inline-block;
+        padding: 0 4px;
+        max-width: $Breadcrumb-itemMaxWidth;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        vertical-align: top;
+      }
     }
-  }
 
-  .ms-Breadcrumb-overflow {
-    display: inline-block;
-    position: relative;
-
-    .ms-Breadcrumb-overflowButton {
-      font-size: 16px;
+    .ms-Breadcrumb-overflow {
       display: inline-block;
-      color: $ms-color-themePrimary;
-      padding: 8px;
-      cursor: pointer;
-      vertical-align: top;
-    }
-  }
+      position: relative;
 
-  .ms-Breadcrumb-itemLink,
-  .ms-Breadcrumb-overflowButton {
-    text-decoration: none;
-    outline: transparent;
-
-    &:hover {
-      background-color: $ms-color-neutralLighter;
-      color: $ms-color-themeDark;
-      cursor: pointer;
+      .ms-Breadcrumb-overflowButton {
+        font-size: $ms-font-size-m-plus;
+        display: inline-block;
+        color: $Breadcrumb-overflowButtonColor;
+        padding: 8px;
+        cursor: pointer;
+        vertical-align: top;
+      }
     }
 
-    &:focus {
-      outline: $ms-color-neutralSecondaryAlt solid 1px;
-      color: $ms-color-black;
-    }
-
-    &:active {
+    .ms-Breadcrumb-itemLink,
+    .ms-Breadcrumb-overflowButton {
+      text-decoration: none;
       outline: transparent;
-      background-color: $ms-color-neutralTertiaryAlt;
-    }
-  }
 
-  .ms-Breadcrumb-itemLink {
-    @include focus-border();
-    @include ms-font-xl();
-    display: inline-block;
-    padding: 0 4px;
-    max-width: 160px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    vertical-align: top;
+      &:hover {
+        background-color: $selectedHoverBackgroundColor;
+        color: $Breadcrumb-buttonHoverColor;
+        cursor: pointer;
+      }
+
+      &:focus {
+        outline: $ms-color-neutralSecondaryAlt solid 1px;
+        color: $ms-color-neutralDark;
+      }
+
+      &:active {
+        outline: transparent;
+        background-color: $selectedActiveBackgroundColor;
+        color: $selectedActiveForegroundColor;
+      }
+    }
   }
 
   @media screen and (max-width: $ms-screen-md-max) {
-    margin: 10px 0;
+    margin: 11px 0 1px;
 
     .ms-Breadcrumb-itemLink {
       font-size: $ms-font-size-l;
     }
 
     .ms-Breadcrumb-chevron {
-      font-size: 10px;
+      font-size: $ms-font-size-mi;
       margin: 8px 5px;
     }
 
     .ms-Breadcrumb-overflow {
       .ms-Breadcrumb-overflowButton {
-        font-size: 16px;
+        font-size: $ms-font-size-m-plus;
         padding: 5px 4px;
       }
     }
@@ -111,7 +116,7 @@
   @media screen and (max-width: $ms-screen-sm-max) {
     .ms-Breadcrumb-itemLink {
       font-size: $ms-font-size-m;
-      max-width: 116px;
+      max-width: $Breadcrumb-itemMaxWidth-sm;
     }
 
     .ms-Breadcrumb-chevron {
