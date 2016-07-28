@@ -1,5 +1,5 @@
 ## Overview
-In this tutorial, let's build a simple react app with a DocumentCard fabric component.
+In this tutorial, let's build a simple React app with an Office UI Fabric React DocumentCard.
 
 ## Prerequisites
 ### Node.js and npm
@@ -8,9 +8,9 @@ Install [Node.js and npm](https://nodejs.org/en/) if you haven't already install
 >You can check your node and npm version by running `node -v` and `npm -v` respectively.
 
 ### create-react-app package
-We will use [Create React App](https://facebook.github.io/react/blog/2016/07/22/create-apps-with-no-configuration.html) to quickly create a react app for the tutorial.
+We will use [Create React App](https://facebook.github.io/react/blog/2016/07/22/create-apps-with-no-configuration.html) to quickly create a React app for this tutorial.
 
-Once node and npm is installed, type the following command in a console to install the `create-react-app` npm package.
+Once node and npm is installed, type the following command in a console to install the `create-React-app` npm package.
 
 ```
 npm install -g create-react-app
@@ -22,13 +22,13 @@ Download and install [Visual Studio Code](https://code.visualstudio.com/).
 >We will use Visual Studio Code as our code editor for this tutorial. Feel free to use your favorite code editor of choice if you do not want to use Visual Studio Code.
 
 ## Step 1: Create react app
-In a console, type the following command to create a simple react app.
+In a console, type the following command to create a simple React app.
 
 ```
 create-react-app documentcardbasic-demo
 ```
 
-This will install the required depedencies and scaffold a simple react app.
+This will install the required depedencies and scaffold a simple React app.
 
 ![create-react-app command completed](./images/create-react-app-created.png)
 
@@ -38,7 +38,7 @@ Once its complete, navigate to the `documentcardbasic-demo` folder.
 cd documentcardbasic-demo
 ```
 
-Type the following command to launch the react app in your browser.
+Type the following command to launch the React app in your browser.
 
 ```
 npm start
@@ -47,7 +47,7 @@ npm start
 ![create-react-app preview in browser](./images/create-react-app-preview.png)
 
 ## Step 2: Install office-ui-fabric-react package
-To use Office UI Fabric React components in your project, you will need to first install the ofifce-ui-fabric-react npm package. Type the following in the console to install the package:
+To use Fabric React in your project, you will need to first install the `ofifce-ui-fabric-react` npm package. Type the following in the console to install the package:
 
 ```
 npm install office-ui-fabric-react --save
@@ -88,7 +88,7 @@ Open the file `src\App.js` and replace the existing code inside `render` method 
 ```
 `DocumentCard` component contains the `DocumentCardPreview`, `DocumentCardTitle` and `DocumentCardActivity` components that help you describe the document card.
 
-Since office-ui-fabric-react is an npm module, we will need to import the document card component in the `App` component.
+Since `office-ui-fabric-react` is a npm module, we will need to import the document card component in the `App` component.
 
 Add the following import statement at the top of the `src\App.js` file just below `import './App.css'`:
 
@@ -113,7 +113,7 @@ import { Button } from 'office-ui-fabric-react/lib/Button';
 
 Open `index.html` file.
 
-Office UI Fabric react components provide support for Left-to-Right (LTR) and Right-to-Left (RTL) rendering out of the box.
+Fabric React components provide support for Left-to-Right (LTR) and Right-to-Left (RTL) rendering out of the box.
 
 You can specify the default direction in your `index.html`. Add the `dir` attribute with the value `ltr` to the `<html>` element:
 
@@ -146,8 +146,8 @@ You should see the document card component in your app.
 ![DocumentCard preview](./images/react-app-doccard-preview.png)
 
 ## Next steps
-Congratulations! You have successfully built a simple react app with an Office UI Fabric React component.
+Congratulations! You have successfully built a simple React app with an Office UI Fabric React DocumentCard.
 
-As next steps, try using other components like DetailsLists, Callout etc.,
+As next steps, try using other components like `DetailsLists`, `Callout` etc.,
 
 
