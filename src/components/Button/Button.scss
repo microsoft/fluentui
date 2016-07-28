@@ -55,6 +55,7 @@
 .ms-Button.ms-Button--compound {
   .ms-Button-label {
     @include text-align(left);
+    color: $ms-color-black;
   }
 
   .ms-Button-description {
