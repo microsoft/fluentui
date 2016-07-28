@@ -200,4 +200,49 @@
 // TODO: overrides that need to be removed.
 .ms-ChoiceField {
   user-select: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.is-focusVisible .ms-ChoiceField .ms-ChoiceField-input[type="checkbox"] {
+  &:focus {
+    + .ms-ChoiceField-field {
+      outline: 1px solid $ms-color-neutralSecondaryAlt;
+    }
+  }
+}
+
+// The choicefield radio button or checkbox
+.ms-ChoiceField .ms-ChoiceField-input[type="checkbox"] {
+  // The actual styled choicefield element - radio button by default
+  + .ms-ChoiceField-field {
+    @include margin-left(-8px);
+    padding: 8px;
+
+    &:after {
+      top: 7px;
+      left: 7px;
+    }
+
+    .ms-Label {
+      padding: 0 0 0 34px;
+    }
+  }
+
+  &:focus {
+    + .ms-ChoiceField-field {
+      outline: none;
+    }
+  }
+
+  &:checked {
+    + .ms-ChoiceField-field {
+      &:before {
+        top: 11px;
+        left: 11px;
+      }
+    }
+  }
 }
