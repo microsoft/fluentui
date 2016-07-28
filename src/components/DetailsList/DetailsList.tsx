@@ -391,7 +391,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
   /** Returns adjusted columns, given the viewport size and layout mode. */
   private _getAdjustedColumns(newProps: IDetailsListProps, forceUpdate?: boolean, layoutMode?: DetailsListLayoutMode): IColumn[] {
-    let { columns: newColumns, viewport: { width: viewportWidth }, selectionMode } = newProps;
+    let { columns: newColumns, items: newItems, viewport: { width: viewportWidth }, selectionMode } = newProps;
 
     if (layoutMode === undefined) {
       layoutMode = newProps.layoutMode;
@@ -412,7 +412,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       viewportWidth = this.props.viewport.width;
     }
 
-    newColumns = newColumns || buildColumns(this.props.items);
+    newColumns = newColumns || buildColumns(newItems);
 
     let adjustedColumns: IColumn[];
 

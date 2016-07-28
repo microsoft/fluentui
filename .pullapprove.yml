@@ -11,5 +11,7 @@ reviewers:
   - mikewheaton
   - dzearing
   - cliffkoh
+  - aditima
+  - yiminwu
   name: pullapprove
   required: 1
