@@ -73,7 +73,7 @@
 
 .ms-Nav-chevronButton {
   display: block;
-  font-family: $ms-font-family-regular;
+  @include ms-baseFont;
   font-size: $ms-font-size-s;
 
   @include text-align(left);

@@ -9,7 +9,8 @@
 
 
 .ms-Breadcrumb {
-  margin: 23px 0 1px 0;
+  @include ms-baseFont;
+  margin: 23px 0 1px;
 
   &.is-overflow {
     .ms-Breadcrumb-overflow {
@@ -19,10 +20,10 @@
 }
 
 .ms-Breadcrumb-chevron {
-  font-size: $ms-font-size-l;
+  font-size: $ms-font-size-s;
   color: $ms-color-neutralSecondary;
   vertical-align: top;
-  margin: 10px 0;
+  margin: 11px 7px;
 }
 
 .ms-Breadcrumb-list {
@@ -49,21 +50,21 @@
 .ms-Breadcrumb-overflow {
   display: none;
   position: relative;
-  margin-right: -4px;
 
   .ms-Breadcrumb-overflowButton {
-    font-size: $ms-font-size-s;
+    font-size: 16px;
     display: inline-block;
-    color:$ms-color-themePrimary;
-    margin-right: -4px;
-    padding: 12px 8px 3px 8px;
+    color: $ms-color-themePrimary;
+    padding: 8px;
     cursor: pointer;
+    vertical-align: top;
   }
 }
 
 .ms-Breadcrumb-overflowMenu {
   display: none;
   position: absolute;
+  margin-right: -2px;
 
   &.is-open {
     display: block;
@@ -75,7 +76,7 @@
     z-index: ($ms-zIndex-ContextualMenu + $ms-zIndex-middle);
   }
 
-  &:before {
+  &::before {
     position: absolute;
     @include drop-shadow;
     top: -6px;
@@ -84,11 +85,11 @@
     width: 16px;
     height: 16px;
     transform: rotate(45deg);
-    background-color: white;
+    background-color: $ms-color-white;
   }
 
   .ms-ContextualMenu {
-    border: none;
+    border: 0;
     box-shadow: none;
     position: relative;
     width: 190px;
@@ -121,17 +122,20 @@
 }
 
 .ms-Breadcrumb-itemLink {
-  @include ms-font-xl();
+  font-weight: $ms-font-weight-light;
+  font-size: $ms-font-size-xl;
+  color: $ms-color-neutralPrimary;
   display: inline-block;
   padding: 0 4px;
   max-width: 160px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  vertical-align: top;
 }
 
 
-@media screen and (max-width: $ms-screen-md-max) {
+@media screen and (max-width: $ms-screen-md-max) {å
   .ms-Breadcrumb {
     margin: 10px 0;
   }
@@ -141,14 +145,14 @@
   }
 
   .ms-Breadcrumb-chevron {
-    font-size: $ms-font-size-m;
-    margin-top: 7px;
+    font-size: 10px;
+    margin: 8px 5px;
   }
 
   .ms-Breadcrumb-overflow {
     .ms-Breadcrumb-overflowButton {
-      padding-top: 8px;
-      padding-bottom: 3px;
+      font-size: 16px;
+      padding: 5px 4px;
     }
   }
 }
@@ -160,13 +164,12 @@
   }
 
   .ms-Breadcrumb-chevron {
-    margin-top: 4px;
+    margin: 5px 4px;
   }
 
   .ms-Breadcrumb-overflow {
     .ms-Breadcrumb-overflowButton {
-      padding-top: 5px;
-      padding-bottom: 3px;
+      padding: 2px 4px;
     }
   }
 }

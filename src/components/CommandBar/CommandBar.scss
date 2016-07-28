@@ -315,7 +315,7 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
 
 .ms-CommandBarSearch-input,
 .ms-CommandBarSearch-input::-webkit-input-placeholder {
-  font-family: $ms-font-family-regular;
+  @include ms-baseFont;
   font-size: $ms-font-size-m;
 }
 .ms-CommandBarSearch-input::-webkit-input-placeholder {
