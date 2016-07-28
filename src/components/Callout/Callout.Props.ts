@@ -59,6 +59,17 @@ export interface ICalloutProps extends React.Props<Callout>, IPositionProps {
    * If true do not render on a new layer. If false render on a new layer.
    */
   doNotLayer?: boolean;
+
+  /**
+  * Has the close button visible.
+  * @default false
+  */
+  hasCloseButton?: boolean;
+
+  /**
+   * Aria label on close button
+   */
+  closeButtonAriaLabel?: string;
 }
 
 export interface ILink {

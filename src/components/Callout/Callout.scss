@@ -78,3 +78,10 @@
   position: relative;
 }
 
+// The close button in the top right (x)
+.ms-Fabric .ms-Callout-closeButton {
+  @include button-reset();
+  position: absolute;
+  right: 6px;
+  top: 4px;
+}
