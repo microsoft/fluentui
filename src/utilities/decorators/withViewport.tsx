@@ -91,6 +91,9 @@ export function withViewport<P, S>(ComposedComponent: any): any {
         (computedOverflow !== 'auto') &&
         (computedOverflow !== 'scroll')
       ) {
+        if (rootElement.parentElement === null) {
+          break;
+        }
         rootElement = rootElement.parentElement;
         computedOverflow = getComputedStyle(rootElement)['overflow-y'];
       }

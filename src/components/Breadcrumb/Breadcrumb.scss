@@ -61,6 +61,7 @@
 
     &:hover {
       background-color: $ms-color-neutralLighter;
+      color: $ms-color-themeDark;
       cursor: pointer;
     }
 
@@ -76,9 +77,8 @@
   }
 
   .ms-Breadcrumb-itemLink {
-    font-weight: $ms-font-weight-light;
-    font-size: $ms-font-size-xl;
-    color: $ms-color-neutralPrimary;
+    @include focus-border();
+    @include ms-font-xl();
     display: inline-block;
     padding: 0 4px;
     max-width: 160px;
@@ -87,7 +87,6 @@
     overflow: hidden;
     vertical-align: top;
   }
-
 
   @media screen and (max-width: $ms-screen-md-max) {
     margin: 10px 0;
