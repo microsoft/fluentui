@@ -120,7 +120,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       items,
       setKey,
       selectionMode,
-      columns
+      columns,
+      viewport
     } = this.props;
     let { layoutMode } = this.state;
     let shouldResetSelection = (newProps.setKey !== setKey) || newProps.setKey === undefined;
@@ -136,7 +137,10 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       this._selection.setItems(newProps.items, shouldResetSelection);
     }
 
-    if (newProps.columns !== columns) {
+    if (
+      newProps.columns !== columns ||
+      newProps.viewport.width !== viewport.width
+    ) {
       shouldForceUpdates = true;
     }
 

@@ -50,10 +50,11 @@ export function withViewport<P, S>(ComposedComponent: any): any {
 
     public render() {
       let { viewport } = this.state;
+      let isViewportVisible = viewport.width > 0 && viewport.height > 0;
 
       return (
         <div className='ms-Viewport' ref='root' style={ { minWidth: 1, minHeight: 1 } }>
-          { this.state.viewport.height > 0 && (
+          { isViewportVisible && (
           <ComposedComponent ref='component' viewport={ viewport } { ...this.props } />
           )}
         </div>
@@ -61,7 +62,7 @@ export function withViewport<P, S>(ComposedComponent: any): any {
     }
 
     public forceUpdate() {
-      this.refs.component.forceUpdate();
+      this._updateViewport();
     }
 
     private _onAsyncResize() {
