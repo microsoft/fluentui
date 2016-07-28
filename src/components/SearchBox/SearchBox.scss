@@ -1,6 +1,114 @@
 @import '../../common/common';
-@import "~office-ui-fabric/src/components/Label/Label";
-@import "~office-ui-fabric/src/components/SearchBox/SearchBox";
+
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
+//
+// Office UI Fabric
+// --------------------------------------------------
+// Search box styles
+
+
+.ms-SearchBox {
+  @include ms-font-m;
+  @include ms-u-normalize;
+  position: relative;
+  margin-bottom: 10px;
+  display: inline-block;
+
+  // State: Disabled searchbox
+  &.is-disabled {
+
+    .ms-SearchBox-icon {
+      color: $ms-color-neutralTertiaryAlt;
+    }
+    .ms-SearchBox-field {
+      background-color: $ms-color-neutralLighter;
+      border-color: $ms-color-neutralLighter;
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+
+  // State: Active searchbox
+  &.is-active {
+    .ms-SearchBox-closeButton {
+      display: block;
+      outline: transparent 1px solid;
+    }
+  }
+}
+
+.ms-SearchBox-field {
+  position: relative;
+  @include ms-u-normalize;
+  border: 1px solid $ms-color-themeTertiary;
+  outline: transparent 1px solid;
+  border-radius: 0;
+  font-family: $ms-font-family-semilight;
+  font-size: $ms-font-size-m;
+  color: $ms-color-black;
+  height: 32px;
+  padding: 6px 3px 7px 10px;
+  width: 180px;
+  background-color: transparent;
+  z-index: $ms-zIndex-middle;
+
+  &.hovering {
+    border-color: $ms-color-themePrimary;
+    background-color: $ms-color-themeLighter;
+
+    & + .ms-SearchBox-label {
+      color: $ms-color-black;
+
+      .ms-Icon {
+        color: $ms-color-neutralPrimary;
+      }
+    }
+  }
+
+  &:focus {
+    padding: 6px 32px 7px 10px;
+    border-color: $ms-color-themePrimary;
+    background-color: $ms-color-themeLighter;
+  }
+
+  &::-ms-clear {
+    display: none;
+  }
+}
+
+.ms-SearchBox-closeButton {
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 32px;
+  width: 32px;
+  background-color: $ms-color-themePrimary;
+  text-align: center;
+  display: none;
+  font-size: $ms-font-size-l;
+  color: $ms-color-white;
+  z-index: $ms-zIndex-front;
+}
+
+.ms-SearchBox-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-left: 8px;
+  line-height: 32px;
+  color: $ms-color-neutralSecondary;
+}
+
+.ms-SearchBox-icon {
+  margin-right: 7px;
+  font-size: $ms-font-size-l;
+  color: $ms-color-neutralSecondaryAlt;
+}
+
+// TODO: Remove overrides below.
 
 // Override Fabric so that the SearchBox takes up 100% of the parent
 // container's width

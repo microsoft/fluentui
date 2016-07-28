@@ -9,5 +9,7 @@ reviewers:
   - battletoilet
   - wdo3650
   - mikewheaton
+  - dzearing
+  - cliffkoh
   name: pullapprove
-  required: 2
+  required: 1
