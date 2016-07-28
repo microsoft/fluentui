@@ -13,5 +13,6 @@ reviewers:
   - cliffkoh
   - aditima
   - yiminwu
+  - antonlabunets
   name: pullapprove
   required: 1
