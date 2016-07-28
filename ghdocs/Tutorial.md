@@ -130,9 +130,9 @@ Load Office UI Fabric styles by linking to the Office UI Fabric CDN. Add the fol
 Save the file.
 
 Copy the following images from GitHub to `src` folder.
-* [avatar-kat.png](./images/avatarkat.png)
-* [icon-ppt.png](./images/iconppt.png)
-* [document-preview.png](./images/documentpreview.png)
+* [avatarkat.png](./images/avatarkat.png)
+* [iconppt.png](./images/iconppt.png)
+* [documentpreview.png](./images/documentpreview.png)
 
 ## Step 4: Preview document card
 Switch to the console and type the following to preview your app in the browser:
