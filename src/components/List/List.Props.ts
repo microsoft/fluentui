@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ISelection } from '../../utilities/selection/interfaces';
 import { List } from './List';
 
 export interface IListProps extends React.Props<List> {
@@ -52,9 +51,6 @@ export interface IListProps extends React.Props<List> {
 
   /** Number of items to render. Defaults to items.length. */
   renderCount?: number;
-
-  /** Optional selection model to track selection state.  */
-  selection?: ISelection;
 }
 
 export interface IPage {

@@ -1,21 +1,21 @@
 import * as React from 'react';
 import { Link } from '../../Link';
 import {
-  IDetailsGroupFooterProps,
+  IGroupFooterProps,
   IGroup,
-  } from './DetailsList.Props';
+} from './GroupedList.Props';
 import { GroupSpacer } from './GroupSpacer';
 import './GroupFooter.scss';
 
-export interface IGroupFooterProps {
+export interface IGroupFooter {
   group: IGroup;
   groupIndex: number;
   groupLevel: number;
-  footerProps?: IDetailsGroupFooterProps;
+  footerProps?: IGroupFooterProps;
 }
 
-export class GroupFooter extends React.Component<IGroupFooterProps, {}> {
-  constructor(props: IGroupFooterProps) {
+export class GroupFooter extends React.Component<IGroupFooter, {}> {
+  constructor(props: IGroupFooter) {
     super(props);
 
     this._onToggleSummarize = this._onToggleSummarize.bind(this);

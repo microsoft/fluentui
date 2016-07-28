@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {
-  IDetailsGroupHeaderProps,
+  IGroupHeaderProps,
   IGroup
 } from './index';
-import { Check } from './Check';
+import { Check } from '../Check/Check';
 import { GroupSpacer } from './GroupSpacer';
 import { Spinner } from '../../Spinner';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -11,11 +11,11 @@ import { css } from '../../utilities/css';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import './GroupHeader.scss';
 
-export interface IGroupHeaderProps {
+export interface IGroupHeader {
   group: IGroup;
   groupIndex: number;
   groupLevel: number;
-  headerProps?: IDetailsGroupHeaderProps;
+  headerProps?: IGroupHeaderProps;
   viewport?: IViewport;
 }
 
@@ -24,8 +24,8 @@ export interface IGroupHeaderState {
   isLoadingVisible: boolean;
 }
 
-export class GroupHeader extends React.Component<IGroupHeaderProps, IGroupHeaderState> {
-  constructor(props: IGroupHeaderProps) {
+export class GroupHeader extends React.Component<IGroupHeader, IGroupHeaderState> {
+  constructor(props: IGroupHeader) {
     super(props);
 
     this._onToggleCollapse = this._onToggleCollapse.bind(this);
@@ -52,7 +52,12 @@ export class GroupHeader extends React.Component<IGroupHeaderProps, IGroupHeader
   }
 
   public render() {
-    let { group, groupLevel, headerProps, viewport } = this.props;
+    let {
+      group,
+      groupLevel,
+      headerProps,
+      viewport
+    } = this.props;
     let { isCollapsed, isLoadingVisible } = this.state;
     let showCheckBox = true;
     let isSelected = group && group.isSelected;
@@ -63,7 +68,7 @@ export class GroupHeader extends React.Component<IGroupHeaderProps, IGroupHeader
         className={ css('ms-GroupHeader', {
           'is-selected': isSelected
         }) }
-        style={ { minWidth: viewport.width } }
+        style={ viewport ? { minWidth: viewport.width } : {} }
         onClick={ this._onHeaderClick }
         data-is-focusable={ true } >
 
