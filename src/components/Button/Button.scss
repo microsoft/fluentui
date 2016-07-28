@@ -9,6 +9,7 @@
 
 
 .ms-Button {
+  @include focus-border();
   @include ms-font-m;
   @include ms-u-normalize;
   background-color: $ms-color-neutralLighter;
@@ -31,7 +32,7 @@
 
   &:focus {
     background-color: $ms-color-neutralLight;
-    border-color: $ms-color-themePrimary;
+    border-color: $ms-color-neutralLighter;
     outline: 1px solid transparent;
 
     .ms-Button-label {
@@ -81,6 +82,16 @@
   display: none;
 }
 
+.ms-Fabric.is-focusVisible .ms-Button {
+  &:focus {
+    color: $ms-color-black;
+
+    &:before {
+      border-color: $ms-color-themePrimary;
+    }
+  }
+}
+
 
 //== Modifier: Primary action button
 //
@@ -99,7 +110,7 @@
 
   &:focus {
     background-color: $ms-color-themeDark;
-    border-color: $ms-color-themeDarker;
+    border-color: $ms-color-themePrimary;
   }
 
   &:active {
@@ -118,6 +129,15 @@
   }
 }
 
+.ms-Fabric.is-focusVisible .ms-Button.ms-Button--primary {
+  &:focus {
+    color: $ms-color-white;
+
+    &:before {
+      border-color: $ms-color-themeDarker;
+    }
+  }
+}
 
 //== Modifier: Hero button
 //
@@ -204,20 +224,21 @@
   padding: 20px;
 
   .ms-Button-label {
+    @include text-align(left);
     display: block;
     font-family: $ms-font-family-semibold;
     position: relative;
-    text-align: left;
+    color: $ms-color-black;
     margin-top: -5px;
   }
 
   .ms-Button-description {
+    @include text-align(left);
     color: $ms-color-neutralSecondary;
     display: block;
     font-family: $ms-font-family-regular;
     font-size: $ms-font-size-s;
     position: relative;
-    text-align: left;
     top: 3px;
   }
 
@@ -380,45 +401,6 @@
 
 .ms-Button.ms-Button--command + .ms-Button.ms-Button--command {
   @include margin-left(14px);
-}
-
-.ms-Button.ms-Button--compound {
-  .ms-Button-label {
-    @include text-align(left);
-    color: $ms-color-black;
-  }
-
-  .ms-Button-description {
-    @include text-align(left);
-  }
-}
-
-// Overide focus styles from fabric core and use focus-border
-.ms-Button{
-  @include focus-border();
-  &:focus {
-    border-color: $ms-color-neutralLighter;
-  }
-}
-
-.ms-Fabric.is-focusVisible .ms-Button {
-  &:focus {
-    color: $ms-color-black;
-
-    &:before {
-      border-color: $ms-color-themePrimary;
-    }
-  }
-}
-
-.ms-Fabric.is-focusVisible .ms-Button.ms-Button--primary {
-  &:focus {
-    color: $ms-color-white;
-
-    &:before {
-      border-color: $ms-color-themeDarker;
-    }
-  }
 }
 
 // Overide text underline for anchor type button
