@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { IColumn, DetailsListLayoutMode, ColumnActionsMode } from './DetailsList.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { Check } from './Check';
-import { GroupSpacer } from './GroupSpacer';
+import { Check } from '../Check/Check';
+import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { css } from '../../utilities/css';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import { getRTL } from '../../utilities/rtl';

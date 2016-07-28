@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ContextualMenu, DirectionalHint, Button } from '../../../../index';
+import { ContextualMenu, DirectionalHint, Button, getRTL } from '../../../../index';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuBasicExample extends React.Component<any, any> {
@@ -21,7 +21,7 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
             targetPoint={this.state.target}
             useTargetPoint={true}
             onDismiss={this._onDismiss}
-            directionalHint={DirectionalHint.bottomLeftEdge}
+            directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge}
             items={
               [
                 {

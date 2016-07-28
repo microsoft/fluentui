@@ -47,6 +47,8 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
 }
 
 .ms-CommandBar {
+  @include ms-font-m;
+
   position: relative;
   background-color: $ms-color-themeLighterAlt;
   height: $CommandBar-height;
@@ -107,6 +109,9 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
 @mixin CommandBarItem-text {
   @include focus-border(2px);
 
+  font-family: inherit;
+  font-size: inherit;
+
   position: relative;
   background: none;
   border: none;
@@ -131,7 +136,6 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
   &:hover,
   &.is-expanded {
     background-color: $ms-color-themeLight;
-    color: $ms-color-themePrimary;
 
     @media screen and (-ms-high-contrast: active) {
       @include highContrastBorder($ms-color-white);
