@@ -107,9 +107,7 @@
 .ms-DatePicker-month,
 .ms-DatePicker-year {
   display: inline-block;
-  font-family: $ms-font-family-light;
-  font-size: 21px;
-  color: $ms-color-themePrimary;
+  @include ms-font-xl;
   margin-top: -1px;
 
   &:hover {
@@ -152,10 +150,7 @@
   height: 40px;
   padding: 0;
   line-height: 40px;
-  font-family: $ms-font-family-regular;
-  font-size: 15px;
-  font-weight: normal;
-  color: $ms-color-neutralPrimary;
+  @include ms-font-m-plus;
 }
 
 
@@ -175,7 +170,7 @@
 // Out of focus days.
 .ms-DatePicker-day--outfocus {
   color: $ms-color-neutralTertiary;
-  font-family: $ms-font-family-regular;
+  font-weight: $ms-font-weight-regular;
 }
 
 
@@ -267,9 +262,7 @@
 .ms-DatePicker-currentYear,
 .ms-DatePicker-currentDecade {
   display: block;
-  font-weight: normal;
-  font-family: $ms-font-family-semilight;
-  font-size: 21px;
+  @include ms-font-xl;
   height: 40px;
   line-height: 42px;
   @include margin-left(15px);
@@ -305,9 +298,7 @@
   cursor: pointer;
   @include float(left);
   @include margin(0, 10px, 10px, 0);
-  font-weight: normal;
-  font-family: $ms-font-family-regular;
-  font-size: 13px;
+  @include ms-font-s-plus;
   color: $ms-color-neutralPrimary;
   text-align: center;
 
@@ -328,8 +319,7 @@
   bottom: 9px;
   color: $ms-color-themePrimary;
   cursor: pointer;
-  font-family: $ms-font-family-semilight;
-  font-size: 13px;
+  @include ms-font-s-plus;
   height: 30px;
   line-height: 30px;
   padding: 0 10px;
@@ -376,7 +366,7 @@
     width: 30px;
     height: 30px;
     line-height: 30px;
-    font-family: $ms-font-family-semibold;
+    font-weight: $ms-font-weight-semibold;
     font-size: $ms-font-size-s;
   }
 
@@ -405,7 +395,7 @@
   // Update header text styles.
   .ms-DatePicker-month,
   .ms-DatePicker-year {
-    font-family: $ms-font-family-semilight;
+    font-weight: $ms-font-weight-semilight;
   }
 
   .ms-DatePicker-month,

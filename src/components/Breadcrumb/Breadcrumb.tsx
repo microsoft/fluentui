@@ -76,13 +76,13 @@ export class Breadcrumb extends React.Component<IBreadcrumbProps, IBreadcrumbSta
           <ul className='ms-Breadcrumb-list'>
           { renderedOverflowItems && renderedOverflowItems.length ? (
             <li className='ms-Breadcrumb-overflow' key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
-              <div className='ms-Breadcrumb-overflowButton ms-Icon ms-Icon--ellipsis'
+              <div className='ms-Breadcrumb-overflowButton ms-Icon ms-Icon--More'
                   onClick={ this._onOverflowClicked.bind(this) }
                   data-is-focusable={ true }
                   role='button'
                   aria-haspopup='true'
                   aria-owns={ isOverflowOpen ? overflowMenuId : null } />
-              <i className={ css('ms-Breadcrumb-chevron ms-Icon', getRTL() ? 'ms-Icon--chevronLeft' : 'ms-Icon--chevronRight') }></i>
+              <i className={ css('ms-Breadcrumb-chevron ms-Icon', getRTL() ? 'ms-Icon--ChevronLeft' : 'ms-Icon--ChevronRight') }></i>
             </li>
           ) : (null) }
           { renderedItems.map(
@@ -94,7 +94,7 @@ export class Breadcrumb extends React.Component<IBreadcrumbProps, IBreadcrumbSta
                   role={ item.onClick ? 'button' : 'link' }>
                   { item.text }
                   </a>
-              <i className={ css('ms-Breadcrumb-chevron ms-Icon', getRTL() ? 'ms-Icon--chevronLeft' : 'ms-Icon--chevronRight') }></i>
+              <i className={ css('ms-Breadcrumb-chevron ms-Icon', getRTL() ? 'ms-Icon--ChevronLeft' : 'ms-Icon--ChevronRight') }></i>
             </li>
           )) }
           </ul>

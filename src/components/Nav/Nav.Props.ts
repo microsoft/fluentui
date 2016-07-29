@@ -21,16 +21,6 @@ export interface INavProps {
    * Indicates whether the navigation component renders on top of other content in the UI
    */
   isOnTop?: boolean;
-
-  /**
-   * (Optional) The alt text for the expanded state
-   **/
-  expandedStateText?: string;
-
-  /**
-   * (Optional) The alt text for the collapsed state text
-   **/
-  collapsedStateText?: string;
 }
 
 export interface INavLinkGroup {

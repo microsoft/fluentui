@@ -43,49 +43,31 @@ export class Nav extends React.Component<INavProps, INavState> {
     );
   }
 
-  private _renderAnchorLink(link: INavLink): React.ReactElement<{}> {
-    return (<a className={'ms-Nav-link' + (_isLinkSelected(link) ? ' is-selected' : '')}
-              href={ link.url || 'javascript:' }
-              onClick={ this.props.onLinkClick }
-              title={ link.name }
-            >
-              { this.props.onRenderLink(link) }
-          </a>);
-  }
-
-  private _renderCompositeLink(link: INavLink, linkIndex: number): React.ReactElement<{}> {
-    return (
-      <div key={ linkIndex } className={ 'ms-Nav-links' + (link.isExpanded ? ' is-expanded' : ' is-collapsed') }>
-          <button
-              className='ms-Nav-chevronButton ms-Nav-chevronButton--link'
-              onClick={ this._onLinkExpandClicked.bind(this, link) }
-              title={ (link.isExpanded ? this.props.expandedStateText : this.props.collapsedStateText) }
-          >
-            <i className='ms-Nav-chevron ms-Icon ms-Icon--chevronDown'></i>
-          </button>
-          { this._renderAnchorLink(link) }
-      </div>
-     );
-  }
-
-  private _renderLink(link: INavLink, linkIndex: number, level: number): React.ReactElement<{}> {
+  private _renderLink(link: INavLink, linkIndex: number): React.ReactElement<{}> {
     return (
       <li key={ linkIndex }>
-         {(level === 0 && link.links && link.links.length > 0 ?
-            this._renderCompositeLink(link, linkIndex)  :  this._renderAnchorLink(link)
-         )}
-          { (link.isExpanded ? this._renderLinks(link.links, ++level) : null) }
-      </li>
+        <a
+          className={'ms-Nav-link' + (_isLinkSelected(link) ? ' is-selected' : '')}
+          href={ link.url || 'javascript:' }
+          onClick={ this.props.onLinkClick }
+          title={ link.name }
+        >
+          { (link.iconClassName ?
+          <i className={'ms-Icon ms-Nav-IconLink ' + link.iconClassName}></i>
+          : '') }
+         { this.props.onRenderLink(link)}
+        </a> { this._renderLinks(link.links) }
+    </li>
     );
   }
 
-  private _renderLinks(links: INavLink[], level: number): React.ReactElement<{}> {
+  private _renderLinks(links: INavLink[]): React.ReactElement<{}> {
     if (!links || !links.length) {
       return null;
     }
 
     const linkElements: React.ReactElement<{}>[] = links.map(
-      (link: INavLink, linkIndex: number) => this._renderLink(link, linkIndex, level));
+      (link: INavLink, linkIndex: number) => this._renderLink(link, linkIndex));
 
     return (
       <ul>
@@ -98,19 +80,19 @@ export class Nav extends React.Component<INavProps, INavState> {
     const isGroupExpanded: boolean = this.state.isGroupExpanded[groupIndex] !== false;
 
     return (
-      <div key={ groupIndex } className={ 'ms-Nav-group' + (isGroupExpanded ? ' is-expanded' : ' is-collapsed') }>
+      <div key={ groupIndex } className={ 'ms-Nav-group' + (isGroupExpanded ? ' is-expanded' : '') }>
         { (group.name ?
         <button
-          className='ms-Nav-chevronButton ms-Nav-chevronButton--group'
+          className='ms-Nav-groupButton'
           onClick={ this._onGroupHeaderClicked.bind(this, groupIndex) }
         >
-          <i className='ms-Nav-chevron ms-Icon ms-Icon--chevronDown'></i>
+          <i className='ms-Nav-groupChevron ms-Icon ms-Icon--chevronDown'></i>
           { group.name }
         </button> : null)
         }
 
         <div className='ms-Nav-groupContent ms-u-slideDownIn20'>
-        { this._renderLinks(group.links, 0) }
+        { this._renderLinks(group.links) }
         </div>
       </div>
     );
@@ -120,14 +102,6 @@ export class Nav extends React.Component<INavProps, INavState> {
     const currentState: boolean = this.state.isGroupExpanded[groupIndex] !== false;
 
     this.state.isGroupExpanded[groupIndex] = !currentState;
-    this.forceUpdate();
-
-    ev.preventDefault();
-    ev.stopPropagation();
-  }
-
-  private _onLinkExpandClicked(link: INavLink, ev: React.MouseEvent): void {
-    link.isExpanded = !link.isExpanded;
     this.forceUpdate();
 
     ev.preventDefault();

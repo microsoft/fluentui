@@ -569,7 +569,9 @@ export class List extends BaseComponent<IListProps, IListState> {
   }
 
   private _getItemCountForPage(itemIndex: number, visibileRect: ClientRect): number {
-    return this.props.getItemCountForPage ? this.props.getItemCountForPage(itemIndex, visibileRect) : DEFAULT_ITEMS_PER_PAGE;
+    let itemsPerPage = this.props.getItemCountForPage ? this.props.getItemCountForPage(itemIndex, visibileRect) : DEFAULT_ITEMS_PER_PAGE;
+
+    return itemsPerPage ? itemsPerPage : DEFAULT_ITEMS_PER_PAGE;
   }
 
   private _createPage(pageKey: string, items: any[], startIndex?: number, count?: number, style?: any): IPage {
