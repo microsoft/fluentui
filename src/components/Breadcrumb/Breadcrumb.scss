@@ -8,6 +8,7 @@
 // Breadcrumb styles
 
 $Breadcrumb-overflowButtonColor: $ms-color-themePrimary;
+$Breadcrumb-overflowButtonSize: 16px;
 $Breadcrumb-buttonHoverColor: $ms-color-themeDark;
 $Breadcrumb-itemMaxWidth: 160px;
 $Breadcrumb-itemMaxWidth-sm: 116px;
@@ -61,7 +62,7 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
     position: relative;
 
     .ms-Breadcrumb-overflowButton {
-      font-size: $ms-font-size-m-plus;
+      font-size: $Breadcrumb-overflowButtonSize;
       display: inline-block;
       color: $Breadcrumb-overflowButtonColor;
       padding: 8px;
