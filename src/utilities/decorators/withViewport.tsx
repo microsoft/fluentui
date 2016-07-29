@@ -55,33 +55,45 @@ export function withViewport<P, S>(ComposedComponent: any): any {
       return (
         <div className='ms-Viewport' ref='root' style={ { minWidth: 1, minHeight: 1 } }>
           { isViewportVisible && (
-          <ComposedComponent ref='component' viewport={ viewport } { ...this.props } />
-          )}
+            <ComposedComponent ref='component' viewport={ viewport } { ...this.props } />
+          ) }
         </div>
       );
     }
 
     public forceUpdate() {
-      this._updateViewport();
+      this._updateViewport(true);
     }
 
     private _onAsyncResize() {
       this._updateViewport();
     }
 
-    private _updateViewport() {
+    private _updateViewport(withForceUpdate?: boolean) {
+      let { viewport } = this.state;
       let viewportElement = (this.refs as any).root;
       let scrollElement = this._findScrollableElement(viewportElement);
-
       let clientRect = viewportElement.getBoundingClientRect();
       let scrollRect = scrollElement.getBoundingClientRect();
+      let updateComponent = () => {
+          if (withForceUpdate && this.refs.component) {
+            this.refs.component.forceUpdate();
+          }
+      };
+      let isSizeChanged = (
+        clientRect.width !== viewport.width ||
+        scrollRect.height !== viewport.height);
 
-      this.setState({
-        viewport: {
-          width: clientRect.width,
-          height: scrollRect.height
-        }
-      });
+      if (isSizeChanged) {
+        this.setState({
+          viewport: {
+            width: clientRect.width,
+            height: scrollRect.height
+          }
+        }, updateComponent);
+      } else {
+        updateComponent();
+      }
     }
 
     private _findScrollableElement(rootElement: HTMLElement) {
