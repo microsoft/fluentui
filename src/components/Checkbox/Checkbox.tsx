@@ -16,7 +16,7 @@ export class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
   };
 
   private _id: string;
-  private _checkBox: HTMLInputElement;
+  private _checkbox: HTMLInputElement;
 
   constructor(props: ICheckboxProps) {
     super(props);
@@ -43,12 +43,12 @@ export class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
     let { isChecked } = this.state;
 
     return (
-      <div className={ css('ms-ChoiceField', className) }>
+      <div className={ css('ms-Checkbox', className) }>
         <input
-          ref={ (c): HTMLInputElement => this._checkBox = c }
+          ref={ (c): HTMLInputElement => this._checkbox = c }
           id={ this._id }
           name={ this._id }
-          className='ms-ChoiceField-input'
+          className='ms-Checkbox-input'
           type='checkbox'
           role='checkbox'
           checked={ isChecked }
@@ -56,7 +56,7 @@ export class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
           onChange={ this._handleInputChange }
           aria-checked={ isChecked }
         />
-        <label htmlFor={ this._id } className='ms-ChoiceField-field'>
+        <label htmlFor={ this._id } className={ css('ms-Checkbox-field', isChecked && 'is-checked', !isEnabled && 'is-disabled') }>
           { text && <span className='ms-Label'>{ text }</span> }
         </label>
       </div>
@@ -64,8 +64,8 @@ export class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
   }
 
   public focus() {
-      if (this._checkBox) {
-          this._checkBox.focus();
+      if (this._checkbox) {
+          this._checkbox.focus();
       }
   }
 
