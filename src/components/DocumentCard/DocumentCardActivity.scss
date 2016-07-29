@@ -57,10 +57,8 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
 
 .ms-DocumentCardActivity-name,
 .ms-DocumentCardActivity-activity {
-  color: $ms-color-neutralSecondaryAlt;
   display: block;
-  font-family: $ms-font-family-regular;
-  font-size: $ms-font-size-s;
+  @include ms-font-s;
   line-height: 14px;
   height: 14px;
   overflow: hidden;
@@ -70,5 +68,5 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
 
 .ms-DocumentCardActivity-name {
   color: $ms-color-neutralPrimary;
-  font-family: $ms-font-family-semibold;
+  @include ms-fontWeight-semibold;
 }
