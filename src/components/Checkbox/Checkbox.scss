@@ -11,7 +11,6 @@ $ms-checkbox-field-size: 20px;
 $ms-checkbox-transition-duration: 200ms;
 $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
-
 .ms-Checkbox {
   box-sizing: border-box;
   color: $ms-color-neutralPrimary;
@@ -19,11 +18,13 @@ $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
   min-height: 36px;
+  border: 1px solid transparent;
   position: relative;
+  @include padding-left(8px);
 
   .ms-Label {
     font-size: $ms-font-size-m;
-    padding: 0 0 0 26px;
+    @include padding(0, 0, 0, 26px);
     display: inline-block;
   }
 }
@@ -32,6 +33,7 @@ $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
 .ms-Checkbox-input {
   position: absolute;
   opacity: 0;
+  top: 8px
 }
 
 // The checkbox square container
@@ -79,7 +81,6 @@ $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
   cursor: pointer;
   margin-top: 8px;
   position: relative;
-  outline: 0;
   vertical-align: top;
 
   &:hover {
@@ -91,7 +92,17 @@ $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
     }
   }
   &:focus {
-    outline: 1px solid $ms-color-neutralSecondaryAlt;
+        &::before {
+      border-color: $ms-color-neutralSecondaryAlt;
+    }
+
+    &.is-disabled::before {
+      border-color: $ms-color-neutralTertiaryAlt;
+    }
+
+    &.is-checked::before {
+      border-color: $ms-color-themeDarkAlt;
+    }
   }
   &:active {
     &::before {
@@ -102,10 +113,45 @@ $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
     }
   }
 
+    //== State: A checkbox is checked
+  //
+  &.is-checked {
+    &::before {
+      border: 10px solid $ms-color-themePrimary;
+      background-color: $ms-color-themePrimary;
+
+      @media screen and (-ms-high-contrast: active) {
+        border-color: $ms-color-contrastBlackSelected;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        border-color: $ms-color-contrastWhiteSelected;
+      }
+    }
+
+    &::after {
+      display: block;
+    }
+
+    &:hover,
+    &:focus {
+      &::before {
+        border-color: $ms-color-themeDarkAlt;
+      }
+    }
+  }
+
   //== State: A disabled checkbox
   //
   &.is-disabled {
     cursor: default;
+
+    &:hover,
+    &:focus {
+      &::before {
+        border-color: $ms-color-neutralTertiaryAlt;
+      }
+    }
 
     &::before {
       background-color: $ms-color-neutralTertiaryAlt;
@@ -134,31 +180,23 @@ $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
     }
   }
 
-  //== State: A checkbox is checked
+    //== State: A checkbox in focus
   //
-  &.is-checked {
+  &.is-inFocus {
     &::before {
-      border: 10px solid $ms-color-themePrimary;
-      background-color: $ms-color-themePrimary;
-
-      @media screen and (-ms-high-contrast: active) {
-        border-color: $ms-color-contrastBlackSelected;
-      }
-
-      @media screen and (-ms-high-contrast: black-on-white) {
-        border-color: $ms-color-contrastWhiteSelected;
-      }
+      border-color: $ms-color-neutralSecondaryAlt;
     }
 
-    &::after {
-      display: block;
+    &.is-disabled::before {
+      border-color: $ms-color-neutralTertiaryAlt;
     }
 
-    &:hover,
-    &:focus {
-      &::before {
-        border-color: $ms-color-themeDarkAlt;
-      }
+    &.is-checked::before {
+      border-color: $ms-color-themeDarkAlt;
     }
   }
+}
+
+.is-focusVisible .ms-Checkbox.is-inFocus {
+  border: 1px solid $ms-color-neutralPrimary;
 }

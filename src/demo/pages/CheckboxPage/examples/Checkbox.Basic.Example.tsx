@@ -14,6 +14,7 @@ export class CheckboxBasicExample extends React.Component<any, any> {
       <div>
         <Checkbox text='Unselected item' onChanged={ this._onToggleChanged } />
         <Checkbox text='Selected item' onChanged={ this._onToggleChanged } isChecked={ true } />
+        <Checkbox text='Disabled selected item' isChecked={ true } isEnabled={ false } />
         <Checkbox text='Disabled item' isEnabled={ false } />
       </div>
     );
