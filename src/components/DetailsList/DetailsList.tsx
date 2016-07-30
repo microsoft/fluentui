@@ -11,8 +11,8 @@ import {
 import { DetailsHeader } from '../DetailsList/DetailsHeader';
 import { DetailsRow } from '../DetailsList/DetailsRow';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { GroupedList } from '../GroupedList';
-import { List } from '../List';
+import { GroupedList } from '../../GroupedList';
+import { List } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { assign } from '../../utilities/object';
 import { css } from '../../utilities/css';
