@@ -294,17 +294,22 @@
 //== Modifier: Command button
 //
 .ms-Button.ms-Button--command {
+  @include text-align(left);
   background-color: transparent;
   border: none;
   height: 32px;
   line-height: 32px;
   min-width: 0;
   padding: 0 8px;
-  text-align: left;
   font-size: $ms-font-size-m;
 
+  .ms-Button-label {
+    color: $ms-color-themePrimary;
+  }
+
   .ms-Button-icon {
-    color: $ms-color-neutralSecondary;
+    @include text-align(left);
+    color: $ms-color-themePrimary;
     display: inline-block;
     margin-right: 4px;
     position: relative;
@@ -316,12 +321,9 @@
 
   &:hover,
   &:focus {
-    .ms-Button-icon {
-      color: $ms-color-neutralDark;
-    }
-
+    .ms-Button-icon,
     .ms-Button-label {
-      color: $ms-color-black;
+      color: $ms-color-themeDarker;
     }
   }
 
@@ -346,7 +348,7 @@
 
 // Add space between adjacent command buttons.
 .ms-Button.ms-Button--command + .ms-Button.ms-Button--command {
-  margin-left: 14px;
+  @include margin-left(14px);
 }
 
 
@@ -411,18 +413,6 @@
 // Add space between adjacent buttons.
 .ms-Button + .ms-Button {
   @include margin-left(6px);
-}
-
-.ms-Button.ms-Button--command {
-  @include text-align(left);
-
-  .ms-Button-icon {
-    @include margin-right(4px);
-  }
-}
-
-.ms-Button.ms-Button--command + .ms-Button.ms-Button--command {
-  @include margin-left(14px);
 }
 
 // Overide text underline for anchor type button
