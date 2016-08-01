@@ -6,7 +6,8 @@ import {
   ISelection,
   Selection,
   SelectionMode,
-  SelectionZone
+  SelectionZone,
+  MarqueeSelection
   } from '../../../../utilities/selection/index';
 import { createListItems } from '../../../utilities/data';
 
@@ -57,21 +58,23 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
     let { items, selection, selectionMode } = this.state;
 
     return (
-      <div className='ms-SelectionBasicExample'>
-        <CommandBar items={ this._getCommandItems() } />
-        <SelectionZone selection={ selection } selectionMode={ selectionMode } >
-          { items.map((item, index) => (
-              <SelectionItemExample
-                ref={ 'detailsGroup_' + index }
-                key={ item.key }
-                item={ item }
-                itemIndex={ index }
-                selectionMode={ selectionMode }
-                selection={ selection }
-                />
-            )) }
-        </SelectionZone>
-      </div>
+      <MarqueeSelection selection={ selection }>
+        <div className='ms-SelectionBasicExample'>
+          <CommandBar items={ this._getCommandItems() } />
+          <SelectionZone selection={ selection } selectionMode={ selectionMode } >
+            { items.map((item, index) => (
+                <SelectionItemExample
+                  ref={ 'detailsGroup_' + index }
+                  key={ item.key }
+                  item={ item }
+                  itemIndex={ index }
+                  selectionMode={ selectionMode }
+                  selection={ selection }
+                  />
+              )) }
+          </SelectionZone>
+        </div>
+      </MarqueeSelection>
     );
   }
 

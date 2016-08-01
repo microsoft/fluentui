@@ -47,6 +47,15 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
     return (results && results.length > 1) ? results[1] : '';
   }
 
+  /** Gives subclasses a way to automatically bind methods that are prefixed with "_on". */
+  protected autoBindCallbacks(prototype: Object) {
+    for (let methodName in prototype) {
+      if (methodName.indexOf('_on') === 0) {
+        this[methodName] = this[methodName].bind(this);
+      }
+    }
+  }
+
   /** Allows subclasses to push things to this._disposables to be auto disposed. */
   protected get _disposables(): IDisposable[] {
     if (!this.__disposables) {
