@@ -67,7 +67,7 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
 
     let closeButton;
     if (hasCloseButton) {
-      closeButton = <Button disabled={ false } className='ms-Callout-closeButton' buttonType={ ButtonType.icon }  onClick={ onDismiss }       icon='x' title='Close' ariaLabel={ closeButtonAriaLabel } />
+      closeButton = <Button disabled={ false } className='ms-Callout-closeButton' buttonType={ ButtonType.icon }  onClick={ onDismiss }       icon='x' title='Close' ariaLabel={ closeButtonAriaLabel } />;
     }
 
     let content = (
