@@ -21,6 +21,11 @@ export interface INavProps {
    * Indicates whether the navigation component renders on top of other content in the UI
    */
   isOnTop?: boolean;
+
+  /**
+   * Indicates whether the title should be assigned to the nav links
+   */
+  shouldAssignTitle?: boolean;
 }
 
 export interface INavLinkGroup {
