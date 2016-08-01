@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CommandBar, IContextualMenuItem } from '../../../../index';
-import { Check } from '../../../../components/DetailsList/Check';
+import { Check } from '../../../../components/Check/Check';
 import {
   IObjectWithKey,
   ISelection,
