@@ -62,7 +62,7 @@ export const AppState: IAppState = {
         {
           component: BreadcrumbPage,
           name: 'Breadcrumb',
-          status: ExampleStatus.alpha,
+          status: ExampleStatus.beta,
           url: '#/examples/breadcrumb'
         },
         {
@@ -230,7 +230,7 @@ export const AppState: IAppState = {
         {
           component: TogglePage,
           name: 'Toggle',
-          status: ExampleStatus.alpha,
+          status: ExampleStatus.beta,
           url: '#/examples/toggle'
         }
       ],

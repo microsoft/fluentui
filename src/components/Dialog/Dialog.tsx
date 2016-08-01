@@ -75,7 +75,7 @@ export class Dialog extends React.Component<IDialogProps, any> {
                 <button className='ms-Dialog-button ms-Dialog-button--close'
                   onClick={ onDismiss }
                   aria-label= { closeButtonAriaLabel }>
-                  <i className='ms-Icon ms-Icon--x'></i>
+                  <i className='ms-Icon ms-Icon--Cancel'></i>
                 </button>
                 <div className='ms-Dialog-header'>
                   <p className='ms-Dialog-title' id={ id + '-title'}>{ title }</p>

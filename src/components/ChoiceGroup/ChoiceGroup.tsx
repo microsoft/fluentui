@@ -119,7 +119,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
         {
           option.imageSrc
             ? <div className='ms-ChoiceField-labelWrapper'>
-                <i className='ms-ChoiceField-icon ms-Icon ms-Icon--check' />
+                <i className='ms-ChoiceField-icon ms-Icon ms-Icon--CheckMark' />
                 <span id={ `${this._descriptionId}-${option.key}` } className='ms-Label'>{ option.text }</span>
               </div>
             : <span id={ `${this._descriptionId}-${option.key}` } className='ms-Label'>{ option.text }</span>

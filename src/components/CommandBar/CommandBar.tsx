@@ -89,10 +89,10 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
         <div className='ms-CommandBarSearch' ref='searchSurface'>
           <input className='ms-CommandBarSearch-input' type='text' placeholder={ searchPlaceholderText } />
           <div className='ms-CommandBarSearch-iconWrapper ms-CommandBarSearch-iconSearchWrapper'>
-            <i className='ms-Icon ms-Icon--search'></i>
+            <i className='ms-Icon ms-Icon--Search'></i>
           </div>
           <div className='ms-CommandBarSearch-iconWrapper ms-CommandBarSearch-iconClearWrapper ms-font-s'>
-            <i className='ms-Icon ms-Icon--x'></i>
+            <i className='ms-Icon ms-Icon--Cancel'></i>
           </div>
         </div>
       );
@@ -108,7 +108,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
             )).concat((renderedOverflowItems && renderedOverflowItems.length) ? [
             <div className='ms-CommandBarItem' key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
               <button id={ this._instanceId + OVERFLOW_KEY } className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === OVERFLOW_KEY) }) } onClick={ this._onOverflowClick } role='menuitem' aria-label={ elipsisScreenReaderText }>
-                <i className='ms-CommandBarItem-overflow ms-Icon ms-Icon--ellipsis' />
+                <i className='ms-CommandBarItem-overflow ms-Icon ms-Icon--More' />
               </button>
             </div>
             ] : []) }
@@ -153,7 +153,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
                          { (!!item.icon) && <span className={ `ms-CommandBarItem-icon ms-Icon ms-Icon--${ item.icon }` }></span> }
                          { (!!item.name) && <span className='ms-CommandBarItem-commandText'>{ item.name }</span> }
                          { (item.items && item.items.length) ? (
-                           <i className='ms-CommandBarItem-chevronDown ms-Icon ms-Icon--chevronDown' />
+                           <i className='ms-CommandBarItem-chevronDown ms-Icon ms-Icon--ChevronDown' />
                          ) : ( null ) }
                        </button>;
                } else {

@@ -205,6 +205,6 @@ $MessageBar-padding: 8px;
 }
 
 // Because of an odd behaviour in other CSS, ms-MessageBar--remove causes children's icons to use 8px, and not inherit.
-.ms-MessageBar.ms-MessageBar--remove .ms-Icon--x {
+.ms-MessageBar.ms-MessageBar--remove .ms-Icon--Cancel {
   font-size: 13.333px;
 }
