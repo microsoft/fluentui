@@ -32,8 +32,8 @@ export class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
   }
 
   public componentDidMount() {
-    this._checkboxInput.addEventListener("focus", this._onFocus.bind(this), false);
-    this._checkboxInput.addEventListener("blur", this._onBlur.bind(this), false);
+    this._checkboxInput.addEventListener('focus', this._onFocus.bind(this), false);
+    this._checkboxInput.addEventListener('blur', this._onBlur.bind(this), false);
   }
 
   public componentWillReceiveProps(newProps: ICheckboxProps) {
@@ -45,8 +45,8 @@ export class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
   }
 
   public componentWillUnmount() {
-    this._checkboxInput.removeEventListener("focus", this._onFocus.bind(this));
-    this._checkboxInput.removeEventListener("blur", this._onBlur.bind(this));
+    this._checkboxInput.removeEventListener('focus', this._onFocus.bind(this));
+    this._checkboxInput.removeEventListener('blur', this._onBlur.bind(this));
   }
 
   public render() {
@@ -88,11 +88,11 @@ export class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
   }
 
   private _onFocus(): void {
-    this._checkbox.classList.add("is-inFocus");
+    this._checkbox.classList.add('is-inFocus');
   }
 
   private _onBlur(): void {
-    this._checkbox.classList.remove("is-inFocus");
+    this._checkbox.classList.remove('is-inFocus');
   }
 
   private _handleInputChange(evt: React.FormEvent) {
