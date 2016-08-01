@@ -82,6 +82,7 @@ $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
   margin-top: 8px;
   position: relative;
   vertical-align: top;
+  user-select: none;
 
   &:hover {
     &::before {

@@ -60,7 +60,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
           { options.map(option => (
             <div
               key={ option.key }
-              className={ css('ms-ChoiceField', { 'ms-ChoiceField--image': !!option.imageSrc }) }
+              className={ css('ms-ChoiceField', { 'ms-ChoiceField--image': !!option.imageSrc}) }
             >
               <input
                 ref={ (c): HTMLInputElement => this._inputElement = c }
@@ -94,7 +94,11 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
     return (
       <label
         htmlFor={ this._id + '-' + option.key }
-        className={ option.imageSrc ? 'ms-ChoiceField-field--image' : 'ms-ChoiceField-field' }
+        className={ css(
+                      option.imageSrc ? 'ms-ChoiceField-field--image' : 'ms-ChoiceField-field',
+                      {'is-checked': option.key === keyChecked },
+                      {'is-disabled': option.isDisabled }
+                    ) }
       >
         {
           option.imageSrc
@@ -119,7 +123,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
         {
           option.imageSrc
             ? <div className='ms-ChoiceField-labelWrapper'>
-                <i className='ms-ChoiceField-icon ms-Icon ms-Icon--check' />
+                <i className='ms-ChoiceField-icon ms-Icon ms-Icon--CheckMark' />
                 <span id={ `${this._descriptionId}-${option.key}` } className='ms-Label'>{ option.text }</span>
               </div>
             : <span id={ `${this._descriptionId}-${option.key}` } className='ms-Label'>{ option.text }</span>
