@@ -234,17 +234,14 @@ export class Group extends React.Component<IGroupProps, IGroupState> {
     let level = group ? group.level : 0;
 
     return (
-      <div
-        className={ css('ms-GroupedList-group', this._getDroppingClassName()) }>
-        <List
-          items={ items }
-          onRenderCell={ (item, itemIndex) => onRenderCell(level, item, itemIndex) }
-          ref={ 'list' }
-          renderCount={ Math.min(count, renderCount) }
-          startIndex={ startIndex }
-          { ...listProps }
-          />
-      </div>
+      <List
+        items={ items }
+        onRenderCell={ (item, itemIndex) => onRenderCell(level, item, itemIndex) }
+        ref={ 'list' }
+        renderCount={ Math.min(count, renderCount) }
+        startIndex={ startIndex }
+        { ...listProps }
+        />
     );
   }
 

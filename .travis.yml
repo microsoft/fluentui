@@ -3,7 +3,7 @@ node_js:
 - '4.2'
 before_script:
 - npm install -g gulp
-script: gulp
+script: gulp --production
 deploy:
   provider: npm
   email: dzearing@microsoft.com

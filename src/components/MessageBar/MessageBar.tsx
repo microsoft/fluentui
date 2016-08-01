@@ -17,13 +17,14 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
     isMultiline: true,
   };
 
+  // TODO bug 230228: Success icon not circled.
   private ICON_MAP = {
-    [MessageBarType.info]:    'infoCircle',
-    [MessageBarType.warning]: 'infoCircle',
-    [MessageBarType.error]: 'xCircle',
-    [MessageBarType.remove]: 'circle',
-    [MessageBarType.severeWarning]: 'alert',
-    [MessageBarType.success]: 'checkboxCheck ms-Icon--circle'
+    [MessageBarType.info]:    'Info',
+    [MessageBarType.warning]: 'Info',
+    [MessageBarType.error]: 'ErrorBadge',
+    [MessageBarType.remove]: 'CircleRing',
+    [MessageBarType.severeWarning]: 'IncidentTriangle',
+    [MessageBarType.success]: 'CircleRing'
   };
 
   constructor(props: IMessageBarProps) {
@@ -66,7 +67,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
           aria-label= { this.props.dismissButtonAriaLabel }
           className='ms-MessageBar-dismissal ms-Button--icon'
           onClick= { this.props.onDismiss }>
-          <i className='ms-Icon ms-Icon--x'></i>
+          <i className='ms-Icon ms-Icon--Cancel'></i>
         </button>;
     }
     return null;
