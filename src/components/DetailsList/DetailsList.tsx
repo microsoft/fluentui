@@ -11,7 +11,8 @@ import {
 import { DetailsHeader } from '../DetailsList/DetailsHeader';
 import { DetailsRow } from '../DetailsList/DetailsRow';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { GroupedList } from '../GroupedList';
+import { GroupedList } from '../../GroupedList';
+import { List } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { assign } from '../../utilities/object';
 import { css } from '../../utilities/css';
@@ -61,6 +62,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     header: DetailsHeader,
     root: HTMLElement,
     groups: GroupedList,
+    list: List,
     focusZone: FocusZone
   };
 
@@ -120,7 +122,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       items,
       setKey,
       selectionMode,
-      columns
+      columns,
+      viewport
     } = this.props;
     let { layoutMode } = this.state;
     let shouldResetSelection = (newProps.setKey !== setKey) || newProps.setKey === undefined;
@@ -136,7 +139,10 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       this._selection.setItems(newProps.items, shouldResetSelection);
     }
 
-    if (newProps.columns !== columns) {
+    if (
+      newProps.columns !== columns ||
+      newProps.viewport.width !== viewport.width
+    ) {
       shouldForceUpdates = true;
     }
 
@@ -182,6 +188,10 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       _dragDropHelper: dragDropHelper
     } = this;
     let groupNestingDepth = this._getGroupNestingDepth();
+    let additionalListProps = {
+      renderedWindowsAhead: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_AHEAD,
+      renderedWindowsBehind: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_BEHIND
+    };
 
     return (
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
@@ -228,22 +238,29 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
               selection={ selection }
               selectionMode={ selectionMode }
               onItemInvoked={ onItemInvoked }>
-              <GroupedList
-                groups={ groups }
-                groupProps={ groupProps }
-                items={ items }
-                onRenderCell={ this._onRenderCell }
-                selection={ selection }
-                selectionMode={ selectionMode }
-                dragDropEvents={ dragDropEvents }
-                dragDropHelper={ dragDropHelper }
-                eventsToRegister={ rowElementEventMap }
-                listProps={ {
-                  renderedWindowsAhead: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_AHEAD,
-                  renderedWindowsBehind: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_BEHIND
-                } }
-                ref='groups'
-                />
+              { groups ? (
+                  <GroupedList
+                    groups={ groups }
+                    groupProps={ groupProps }
+                    items={ items }
+                    onRenderCell={ this._onRenderCell }
+                    selection={ selection }
+                    selectionMode={ selectionMode }
+                    dragDropEvents={ dragDropEvents }
+                    dragDropHelper={ dragDropHelper }
+                    eventsToRegister={ rowElementEventMap }
+                    listProps={ additionalListProps }
+                    ref='groups'
+                    />
+                ) : (
+                  <List
+                    items={ items }
+                    onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex) }
+                    { ...additionalListProps }
+                    ref='list'
+                    />
+                )
+              }
             </SelectionZone>
           </FocusZone>
         </div>
@@ -261,8 +278,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       dragDropEvents,
       rowElementEventMap: eventsToRegister,
       onRenderMissingItem,
-      onRowDidMount,
-      onRowWillUnmount,
       onRenderItemColumn,
       selectionMode,
       viewport,
@@ -293,8 +308,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           groupNestingDepth={ nestingDepth }
           selectionMode={ selectionMode }
           selection={ selection }
-          onDidMount={ onRowDidMount }
-          onWillUnmount={ onRowWillUnmount }
+          onDidMount={ this._onRowDidMount }
+          onWillUnmount={ this._onRowWillUnmount }
           onRenderItemColumn={ onRenderItemColumn }
           eventsToRegister={ eventsToRegister }
           dragDropEvents={ dragDropEvents }
@@ -373,7 +388,12 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   }
 
   private _forceListUpdates() {
-    this.refs.groups.forceUpdate();
+    if (this.refs.groups) {
+      this.refs.groups.forceUpdate();
+    }
+    if (this.refs.list) {
+      this.refs.list.forceUpdate();
+    }
   }
 
   private _adjustColumns(newProps: IDetailsListProps, forceUpdate?: boolean, layoutMode?: DetailsListLayoutMode) {
@@ -391,7 +411,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
   /** Returns adjusted columns, given the viewport size and layout mode. */
   private _getAdjustedColumns(newProps: IDetailsListProps, forceUpdate?: boolean, layoutMode?: DetailsListLayoutMode): IColumn[] {
-    let { columns: newColumns, viewport: { width: viewportWidth }, selectionMode } = newProps;
+    let { columns: newColumns, items: newItems, viewport: { width: viewportWidth }, selectionMode } = newProps;
 
     if (layoutMode === undefined) {
       layoutMode = newProps.layoutMode;
@@ -412,7 +432,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       viewportWidth = this.props.viewport.width;
     }
 
-    newColumns = newColumns || buildColumns(this.props.items);
+    newColumns = newColumns || buildColumns(newItems);
 
     let adjustedColumns: IColumn[];
 
