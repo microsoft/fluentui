@@ -87,11 +87,12 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
 
   public componentWillReceiveProps(nextProps: IDatePickerProps) {
     let { formatDate, value } = nextProps;
-    this.state = {
+
+    this.setState({
       selectedDate: value || new Date(),
       formattedDate: formatDate && value ? formatDate(value) : null,
       errorMessage: ''
-    };
+    });
   }
 
   public componentDidMount() {
