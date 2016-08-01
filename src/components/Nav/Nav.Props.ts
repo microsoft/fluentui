@@ -81,4 +81,9 @@ export interface INavLink {
    * Any additional properties to apply to the rendered links.
    */
   [propertyName: string]: any;
+
+  /**
+   * (Optional) Aria label for nav link
+   */
+  ariaLabel?: string;
 }
