@@ -85,6 +85,15 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
     this._validateTextInput = this._validateTextInput.bind(this);
   }
 
+  public componentWillReceiveProps(nextProps: IDatePickerProps) {
+    let { formatDate, value } = nextProps;
+    this.state = {
+      selectedDate: value || new Date(),
+      formattedDate: formatDate && value ? formatDate(value) : null,
+      errorMessage: ''
+    };
+  }
+
   public componentDidMount() {
     this._events.on(window, 'scroll', this._dismissDatePickerPopup);
     this._events.on(window, 'resize', this._dismissDatePickerPopup);
