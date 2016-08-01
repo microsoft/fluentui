@@ -72,6 +72,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
     this._onItemLimitChanged = this._onItemLimitChanged.bind(this);
     this._onAddRow = this._onAddRow.bind(this);
     this._onDeleteRow = this._onDeleteRow.bind(this);
+    this._onItemSelected = this._onItemSelected.bind(this);
 
     this.state = {
       items: _items,
@@ -139,6 +140,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
           constrainMode={ constrainMode }
           groupProps={ groupProps }
           onItemInvoked={ this._onItemInvoked }
+          onItemSelected={ this._onItemSelected }
           ariaLabelForListHeader='Column headers. Use menus to perform column operations like sort and filter'
           ariaLabelForSelectAllCheckbox='Toggle selection for all items'
           onRenderMissingItem={ (index) => {
@@ -391,6 +393,10 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
 
   private _onItemInvoked(item: any, index: number) {
     console.log('Item invoked', item, index);
+  }
+
+  private _onItemSelected(isSelected: boolean) {
+    console.log('item', isSelected);
   }
 
   private _onColumnClick(column: IColumn, ev: React.MouseEvent) {
