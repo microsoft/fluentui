@@ -70,11 +70,20 @@ export class CalloutCoverExample extends React.Component<any, ICalloutCoverExamp
           coverTarget={ true }
           isBeakVisible={ false }
           gapSpace={ 0 }
+          hasCloseButton={ true }
+          closeButtonAriaLabel='Close'
          >
             <div className='ms-Callout-header'>
               <p className='ms-Callout-title'>
                 I'm covering the target!
               </p>
+            </div>
+            <div className='ms-Callout-inner'>
+              <div className='ms-Callout-content'>
+                <p className='ms-Callout-subText'>
+                  Click the X in the corner or the button below to dismiss.
+                </p>
+              </div>
             </div>
             <div className='ms-Callout-inner'>
               <div className='ms-Callout-content'>

@@ -2,6 +2,8 @@ import * as React from 'react';
 import { ICalloutProps } from './Callout.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Layer } from '../../Layer';
+import { Button } from '../../Button';
+import { ButtonType } from '../../Button';
 import { css } from '../../utilities/css';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { getRelativePositions, IPositionInfo } from '../../utilities/positioning';
@@ -22,6 +24,7 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     isBeakVisible: true,
     beakStyle: 'ms-Callout-beak',
     beakWidth: 28,
+    hasCloseButton: false,
     gapSpace: 16,
     directionalHint: DirectionalHint.rightCenter
   };
@@ -59,8 +62,14 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
   }
 
   public render() {
-    let { className, targetElement, isBeakVisible, beakStyle, children } = this.props;
+    let { className, targetElement, isBeakVisible, beakStyle, children, hasCloseButton, closeButtonAriaLabel, onDismiss  } = this.props;
     let { positions, slideDirectionalClassName } = this.state;
+
+    let closeButton;
+    if (hasCloseButton) {
+      closeButton = <Button disabled={ false } className='ms-Callout-closeButton' buttonType={ ButtonType.icon }  onClick={ onDismiss }       icon='x' title='Close' ariaLabel={ closeButtonAriaLabel } />;
+    }
+
     let content = (
       <div ref={ (host: HTMLDivElement) => this._hostElement = host } className={ 'ms-Callout-container' }>
         <div
@@ -70,6 +79,7 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
           >
           { isBeakVisible && targetElement ? (<div className={ beakStyle }  style={ ((positions) ? positions.beak : BEAK_ORIGIN_POSITION) } />) : (null) }
           <div className='ms-Callout-main'>
+            { closeButton }
             { children }
           </div>
         </div>
