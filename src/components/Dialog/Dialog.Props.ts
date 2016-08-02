@@ -44,6 +44,11 @@ export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeSt
   isBlocking?: boolean;
 
   /**
+   * Optional class name to be added to the root class
+   */
+  className?: string;
+
+  /**
   * Optional override for container class
   */
   containerClassName?: string;
