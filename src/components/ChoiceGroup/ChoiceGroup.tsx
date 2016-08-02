@@ -17,7 +17,8 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
 
   private _id: string;
   private _descriptionId: string;
-  private _inputElement: HTMLInputElement;
+  private _choiceFieldElements: HTMLElement[];
+  private _inputElements: HTMLInputElement[];
 
   constructor(props: IChoiceGroupProps) {
     super();
@@ -28,6 +29,15 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
 
     this._id = `ChoiceGroup-${ _instance++ }`;
     this._descriptionId = `ChoiceGroupDescription-${ _instance++ }`;
+    this._choiceFieldElements = [];
+    this._inputElements = [];
+  }
+
+  public componentDidMount() {
+    this._inputElements.forEach( inputElement => {
+      inputElement.addEventListener('focus', this._onFocus.bind(this), false);
+      inputElement.addEventListener('blur', this._onBlur.bind(this), false);
+    });
   }
 
   public componentWillReceiveProps(newProps: IChoiceGroupProps) {
@@ -39,6 +49,13 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
         keyChecked: newKeyChecked
       });
     }
+  }
+
+  public componentWillUnmount() {
+    this._inputElements.forEach( inputElement => {
+      inputElement.removeEventListener('focus', this._onFocus.bind(this));
+      inputElement.removeEventListener('blur', this._onBlur.bind(this));
+    });
   }
 
   public render() {
@@ -57,13 +74,14 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
             { this.props.label ? <label className={ titleClassName } id={ this._id + '-label' }>{ label }</label> : null }
           </div>
 
-          { options.map(option => (
+          { options.map((option, index) => (
             <div
               key={ option.key }
               className={ css('ms-ChoiceField', { 'ms-ChoiceField--image': !!option.imageSrc}) }
+              ref={ (c): HTMLElement => { this._choiceFieldElements.push(c); return c; } }
             >
               <input
-                ref={ (c): HTMLInputElement => this._inputElement = c }
+                ref={ (c): HTMLInputElement => { this._inputElements.push(c); return c; } }
                 id={ `${this._id}-${option.key}` }
                 className='ms-ChoiceField-input'
                 type='radio'
@@ -83,9 +101,17 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
   }
 
   public focus() {
-      if (this._inputElement) {
-          this._inputElement.focus();
-      }
+      //if (this._choiceFieldElement) {
+      //    this._choiceFieldElement.focus();
+      //}
+  }
+
+  private _onFocus(event): void {
+    event.target && event.target.parentNode.classList.add('is-inFocus');
+  }
+
+  private _onBlur(event): void {
+   event.target && event.target.parentNode.classList.remove('is-inFocus');
   }
 
   private _renderField(option: IChoiceGroupOption) {
