@@ -113,11 +113,15 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
   }
 
   private _onFocus(event): void {
-    event.target && event.target.parentNode.classList.add('is-inFocus');
+    if (event.target && event.target.parentNode) {
+      event.target.parentNode.classList.add('is-inFocus');
+    }
   }
 
   private _onBlur(event): void {
-   event.target && event.target.parentNode.classList.remove('is-inFocus');
+    if (event.target && event.target.parentNode) {
+      event.target.parentNode.classList.remove('is-inFocus');
+    }
   }
 
   private _renderField(option: IChoiceGroupOption) {
