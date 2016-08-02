@@ -395,7 +395,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
     console.log('Item invoked', item, index);
   }
 
-  private _onItemSelected(item:any, index:any, isSelected: boolean) {
+  private _onItemSelected(item: any, index: any, isSelected: boolean) {
     console.log('item', index, isSelected);
   }
 

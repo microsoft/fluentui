@@ -136,7 +136,7 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   shouldApplyApplicationRole?: boolean;
 
   /** Callback for selection zone to indicate whether the item was selected */
-  onItemSelected?: (item:any, index:any, isSelected: boolean) => void;
+  onItemSelected?: (item: any, index: any, isSelected: boolean) => void;
 }
 
 export interface IColumn {
