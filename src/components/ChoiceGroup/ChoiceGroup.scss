@@ -4,7 +4,7 @@
 
 //
 // --------------------------------------------------
-// Choice fields (radio buttons and choiceFieldes) styles
+// ChoiceField styles
 
 $ms-choiceField-field-size: 20px;
 $ms-choiceField-transition-duration: 200ms;
@@ -75,8 +75,8 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   top: 8px;
   @include left(8px);
   bottom: 0;
-  right: 0;
-  transition-property: top, left, width, height;
+  @include right(0);
+  transition-property: top, left, right, width, height;
   transition-duration: $ms-choiceField-transition-duration-inner;
   transition-timing-function: $ms-choiceField-transition-timing;
   box-sizing: border-box;
@@ -103,12 +103,14 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
     &::before {
       border-color: $ms-color-neutralSecondaryAlt;
     }
+
     .ms-Label {
       color: $ms-color-black;
     }
   }
+
   &:focus {
-        &::before {
+    &::before {
       border-color: $ms-color-neutralSecondaryAlt;
     }
 
@@ -124,6 +126,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
     &::before {
       border-color: $ms-color-neutralSecondaryAlt;
     }
+
     .ms-Label {
       color: $ms-color-black;
     }
@@ -255,7 +258,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
         &.is-hidden {
           position: absolute;
-          left: 0;
+          @include left(0);
           top: 0;
           width: 100%;
           height: 100%;
@@ -278,7 +281,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
       .ms-ChoiceField-icon {
         display: none;
         position: absolute;
-        left: 0;
+        @include left(0);
         line-height: $ms-font-size-s;
 
         @include ms-fontSize-l;
@@ -308,5 +311,3 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 .is-focusVisible .ms-ChoiceField.is-inFocus {
   border: 1px solid $ms-color-neutralPrimary;
 }
-
-

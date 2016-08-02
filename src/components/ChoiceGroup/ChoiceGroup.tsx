@@ -54,8 +54,10 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
 
   public componentWillUnmount() {
     this._inputElements.forEach( inputElement => {
-      inputElement.removeEventListener('focus', this._onFocus.bind(this));
-      inputElement.removeEventListener('blur', this._onBlur.bind(this));
+      if (inputElement) {
+        inputElement.removeEventListener('focus', this._onFocus.bind(this));
+        inputElement.removeEventListener('blur', this._onBlur.bind(this));
+      }
     });
   }
 
@@ -91,11 +93,9 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
                 id={ `${this._id}-${option.key}` }
                 className='ms-ChoiceField-input'
                 type='radio'
-                role='radio'
                 name={ this._id }
                 disabled={ option.isDisabled }
                 checked={ option.key === keyChecked }
-                aria-checked={ option.key === keyChecked }
                 onChange={ this._handleInputChange.bind(this, option) }
                 aria-describedby={ `${this._descriptionId}-${option.key}` }
               />

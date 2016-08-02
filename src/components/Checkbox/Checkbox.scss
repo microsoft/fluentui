@@ -88,12 +88,14 @@ $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
     &::before {
       border-color: $ms-color-neutralSecondaryAlt;
     }
+
     .ms-Label {
       color: $ms-color-black;
     }
   }
+
   &:focus {
-        &::before {
+    &::before {
       border-color: $ms-color-neutralSecondaryAlt;
     }
 
@@ -105,16 +107,18 @@ $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
       border-color: $ms-color-themeDarkAlt;
     }
   }
+
   &:active {
     &::before {
       border-color: $ms-color-neutralSecondaryAlt;
     }
+
     .ms-Label {
       color: $ms-color-black;
     }
   }
 
-    //== State: A checkbox is checked
+  //== State: A checkbox is checked
   //
   &.is-checked {
     &::before {

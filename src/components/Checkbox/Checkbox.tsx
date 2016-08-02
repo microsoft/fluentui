@@ -64,16 +64,13 @@ export class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
           name={ this._id }
           className='ms-Checkbox-input'
           type='checkbox'
-          role='checkbox'
           checked={ isChecked }
           disabled={ !isEnabled }
           onChange={ this._handleInputChange }
-          aria-checked={ isChecked }
         />
         <label
           htmlFor={ this._id }
           className={ css('ms-Checkbox-field', isChecked && 'is-checked', !isEnabled && 'is-disabled') }
-
         >
           { text && <span className='ms-Label'>{ text }</span> }
         </label>
