@@ -25,7 +25,7 @@ export interface INavProps {
   /**
    * Indicates whether the title should be assigned to the nav links
    */
-  shouldAssignTitle?: boolean;
+  addTitleToNavLink?: boolean;
 }
 
 export interface INavLinkGroup {
