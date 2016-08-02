@@ -34,7 +34,7 @@ export interface ISelectionZoneProps extends React.Props<SelectionZone> {
   selectionMode: SelectionMode;
   isSelectedOnFocus?: boolean;
   onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
-  onItemSelected?: ( isSelected: boolean) => void;
+  onItemSelected?: ( item?: any, index?: number, isSelected?: boolean) => void;
 }
 
 export class SelectionZone extends React.Component<ISelectionZoneProps, any> {
@@ -152,7 +152,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, any> {
         }
 
         selection.setIndexSelected(index, isToggleElement ? !isSelected : true, !ev.shiftKey);
-        onItemSelected(!isSelected);
+        onItemSelected(selection.getItems()[index], index, !isSelected);
       }
 
       // Re-enabled change events.
@@ -198,7 +198,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, any> {
             selection.setAllSelected(false);
           }
           selection.setIndexSelected(index, !isSelected, true);
-          onItemSelected(!isSelected);
+          onItemSelected(selection.getItems()[index], index, !isSelected);
           selection.setChangeEvents(true);
         }
       } else if (ev.which === KeyCodes.enter) {
@@ -210,7 +210,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, any> {
             selection.setAllSelected(false);
           }
           selection.setIndexSelected(index, !isSelected, true);
-          onItemSelected(!isSelected);
+          onItemSelected(selection.getItems()[index], index, !isSelected);
           selection.setChangeEvents(true);
         } else if (this._getIndexFromElement(target) >= 0 && onItemInvoked) {
           // if the target IS the item, and not a link inside, then call the invoke method.
