@@ -175,7 +175,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       ariaLabel,
       ariaLabelForGrid,
       rowElementEventMap,
-      onItemSelected,
       shouldApplyApplicationRole = false
     } = this.props;
     let {
@@ -240,8 +239,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
             <SelectionZone
               selection={ selection }
               selectionMode={ selectionMode }
-              onItemInvoked={ onItemInvoked }
-              onItemSelected= { onItemSelected }>
+              onItemInvoked={ onItemInvoked }>
               { groups ? (
                 <GroupedList
                   groups={ groups }

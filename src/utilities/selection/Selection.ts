@@ -13,9 +13,11 @@ export class Selection implements ISelection {
   private _keyToIndexMap: { [key: string]: number };
   private _anchoredIndex: number;
   private _onSelectionChanged: () => void;
+  private _onItemSelected: (item?: any, index?: number, isSelected?: boolean) => void;
   private _hasChanged: boolean;
 
-  constructor(onSelectionChanged?: () => void, getKey?: (item: IObjectWithKey, index?: number) => string) {
+  constructor(onSelectionChanged?: () => void, getKey?: (item: IObjectWithKey, index?: number) => string,
+  onItemSelected?: (item?: any, index?: number, isSelected?: boolean) => void) {
     this.getKey = getKey || ((item: IObjectWithKey, index?: number) => (item ? item.key : String(index)));
 
     this._changeEventSuppressionCount = 0;
@@ -24,6 +26,7 @@ export class Selection implements ISelection {
     this.setItems([], true);
 
     this._onSelectionChanged = onSelectionChanged;
+    this._onItemSelected = onItemSelected;
   }
 
   public setChangeEvents(isEnabled: boolean, suppressChange?: boolean) {
@@ -185,6 +188,8 @@ export class Selection implements ISelection {
     if (hasChanged) {
       this._updateCount();
     }
+
+    this._onItemSelected(this.getItems()[index], index, !isSelected);
   }
 
   public selectToKey(key: string) {
