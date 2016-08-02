@@ -148,10 +148,10 @@
 
   .ms-Pivot-link {
     @include focus-border();
+    @include margin-right(0px);
     height: 40px;
     background-color: $ms-color-neutralLighter;
     line-height: 40px;
-    margin-right: 0px; // Remove space next to inline-block element
     padding: 0 10px;
 
     &:hover:not(.is-selected):not(.ms-Pivot-link--overflow),
