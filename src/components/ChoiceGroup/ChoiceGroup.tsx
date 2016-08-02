@@ -17,6 +17,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
 
   private _id: string;
   private _descriptionId: string;
+  private _choiceFieldGroup: HTMLElement;
   private _choiceFieldElements: HTMLElement[];
   private _inputElements: HTMLInputElement[];
 
@@ -69,7 +70,12 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
     return (
       // Need to assign role application on containing div because JAWS doesnt call OnKeyDown without this role
       <div role='application' className={ className }>
-        <div className='ms-ChoiceFieldGroup' role='radiogroup'  aria-labelledby={ this.props.label ? this._id + '-label' : '' }>
+        <div
+          className='ms-ChoiceFieldGroup'
+          role='radiogroup'
+          aria-labelledby={ this.props.label ? this._id + '-label' : '' }
+          ref={ (c): HTMLElement => this._choiceFieldGroup = c }
+        >
           <div className='ms-ChoiceFieldGroup-title'>
             { this.props.label ? <label className={ titleClassName } id={ this._id + '-label' }>{ label }</label> : null }
           </div>
@@ -101,9 +107,9 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
   }
 
   public focus() {
-      //if (this._choiceFieldElement) {
-      //    this._choiceFieldElement.focus();
-      //}
+    if (this._choiceFieldGroup) {
+      this._choiceFieldGroup.focus();
+    }
   }
 
   private _onFocus(event): void {
