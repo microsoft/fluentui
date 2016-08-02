@@ -77,14 +77,14 @@ export class DatePickerDay extends React.Component<IDatePickerDayProps, IDatePic
               onClick={ this._onSelectPrevMonth }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectPrevMonth) }
               tabIndex={ 0 }>
-              <i className={ css('ms-Icon', {'ms-Icon--chevronLeft': !getRTL(), 'ms-Icon--chevronRight': getRTL()}) }  />
+              <i className={ css('ms-Icon', {'ms-Icon--ChevronLeft': !getRTL(), 'ms-Icon--ChevronRight': getRTL()}) }  />
             </span>
             <span
               className='ms-DatePicker-nextMonth js-nextMonth'
               onClick={ this._onSelectNextMonth }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectNextMonth) }
               tabIndex={ 0 }>
-              <i className={ css('ms-Icon', {'ms-Icon--chevronLeft': getRTL(), 'ms-Icon--chevronRight': !getRTL()}) }  />
+              <i className={ css('ms-Icon', {'ms-Icon--ChevronLeft': getRTL(), 'ms-Icon--ChevronRight': !getRTL()}) }  />
             </span>
           </div>
           <div className='ms-DatePicker-headerToggleView js-showMonthPicker'></div>

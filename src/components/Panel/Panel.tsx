@@ -80,7 +80,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
     let closeButton;
     if (hasCloseButton) {
       closeButton = <button className='ms-Panel-closeButton ms-PanelAction-close' onClick={ this._onPanelClick }  aria-label={ closeButtonAriaLabel } data-is-visible={ true }>
-        <i className='ms-Panel-closeIcon ms-Icon ms-Icon--x'></i>
+        <i className='ms-Panel-closeIcon ms-Icon ms-Icon--Cancel'></i>
       </button>;
     }
 
