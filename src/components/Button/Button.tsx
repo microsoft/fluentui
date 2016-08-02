@@ -62,13 +62,14 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
 
     return React.createElement(
       tag,
-      assign({
-        'aria-label': ariaLabel,
-        'aria-labelledby': ariaLabel ? null : labelId,
-        'aria-describedby': ariaDescription ? ariaDescriptionId : description ? descriptionId : null,
-        'ref': (c: HTMLButtonElement): HTMLButtonElement => this._buttonElement = c
-      },
-        this.props,
+      assign(
+        {
+          'aria-label': ariaLabel,
+          'aria-labelledby': ariaLabel ? null : labelId,
+          'aria-describedby': ariaDescription ? ariaDescriptionId : description ? descriptionId : null,
+          'ref': (c: HTMLButtonElement): HTMLButtonElement => this._buttonElement = c,
+          'disabled': this.props.disabled
+        },
         { className }),
       iconSpan,
       <span className='ms-Button-label' id={ labelId } >{ children }</span>,
