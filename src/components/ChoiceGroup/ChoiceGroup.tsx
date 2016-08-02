@@ -91,6 +91,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
                 id={ `${this._id}-${option.key}` }
                 className='ms-ChoiceField-input'
                 type='radio'
+                role='radio'
                 name={ this._id }
                 disabled={ option.isDisabled }
                 checked={ option.key === keyChecked }
