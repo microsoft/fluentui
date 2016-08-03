@@ -31,6 +31,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
   private _rootRect: IRectangle;
   private _lastMouseEvent: MouseEvent;
   private _autoScroll;
+  private _selectedIndicies: { [key: string]: boolean };
 
   constructor(props: IMarqueeSelectionProps) {
     super(props);
@@ -86,6 +87,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     let scrollableParent = findScrollableParent(this.refs.root);
 
     if (scrollableParent) {
+      this._selectedIndicies = {};
       this._events.on(window, 'mousemove', this._onMouseMove);
       this._events.on(scrollableParent, 'scroll', this._onMouseMove);
       this._events.on(window, 'mouseup', this._onMouseUp, true);
@@ -138,9 +140,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     this._events.off(scrollableParent, 'scroll');
 
     this._autoScroll.dispose();
-    this._autoScroll = null;
-    this._dragOrigin = null;
-    this._lastMouseEvent = null;
+    this._autoScroll = this._dragOrigin = this._lastMouseEvent = this._selectedIndicies = null;
 
     if (this.state.dragRect) {
       this.setState({
@@ -179,7 +179,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
 
     for (let i = 0; i < allElements.length; i++) {
       let element = allElements[i];
-      let index = Number(element.getAttribute('data-selection-index'));
+      let index = element.getAttribute('data-selection-index');
 
       // This may be potentially slow.
       let itemRect = element.getBoundingClientRect();
@@ -190,7 +190,15 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
         itemRect.left < dragRect.right &&
         itemRect.right > dragRect.left
       ) {
-        selection.setIndexSelected(index, true, false);
+        this._selectedIndicies[index] = true;
+      } else {
+        delete this._selectedIndicies[index];
+      }
+    }
+
+    for (let index in this._selectedIndicies) {
+      if (this._selectedIndicies.hasOwnProperty(index)) {
+        selection.setIndexSelected(Number(index), true, false);
       }
     }
 
