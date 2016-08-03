@@ -53,7 +53,7 @@ export class AutoScroll {
   private _startInterval() {
     if (!this._intervalId) {
       this._intervalId = setInterval(() => {
-        this._scrollableParent.scrollTop += this._scrollVelocity;
+        this._scrollableParent.scrollTop += Math.round(this._scrollVelocity);
       }, SCROLL_ITERATION_DELAY);
     }
   }
