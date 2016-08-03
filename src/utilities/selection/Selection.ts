@@ -15,8 +15,7 @@ export class Selection implements ISelection {
   private _onSelectionChanged: () => void;
   private _hasChanged: boolean;
 
-  constructor(onSelectionChanged?: () => void, getKey?: (item: IObjectWithKey, index?: number) => string,
-  onItemSelected?: (item?: any, index?: number, isSelected?: boolean) => void) {
+  constructor(onSelectionChanged?: () => void, getKey?: (item: IObjectWithKey, index?: number) => string) {
     this.getKey = getKey || ((item: IObjectWithKey, index?: number) => (item ? item.key : String(index)));
 
     this._changeEventSuppressionCount = 0;
