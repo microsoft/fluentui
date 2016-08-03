@@ -7,82 +7,76 @@
 // --------------------------------------------------
 // Dialog styles
 
+// Mixin for IE9 specific styles
+@mixin dialogPositioningIE9Fallback {
+  vertical-align: middle;
+  display: inline-block;
+}
+
 .ms-Dialog {
   @include ms-baseFont;
-  @include drop-shadow(0, 0, 5px, 0, .4);
-  background-color: $ms-color-white;
-  display: none;
-  height: auto;
-  min-width: 220px;
-  max-width: 340px;
-  padding: 28px 24px;
-  z-index: $ms-zIndex-front;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
-}
+  background-color: transparent;
+  position: fixed;
+  height: 100%;
+  width:  100%;
+  top:  0;
+  @include left(0);
 
-.ms-Dialog.is-open {
+  // Fallback for IE9
   display: block;
+  font-size: 0;
+  line-height: 100vh;
+  text-align: center;
+
+  // Flexbox for Modern Browsers
+  @include flexBox();
+  @include alignItems(center);
+
+  &::before {
+    @include dialogPositioningIE9Fallback();
+    content: "";
+    height: 100%;
+    width: 0;
+  }
+
+  .ms-Button.ms-Button--compound {
+    display: block;
+    @include margin-left(0);
+  }
+
+  .ms-Overlay {
+    z-index: $ms-zIndex-back;
+
+      @media screen and (-ms-high-contrast: active) {
+        opacity: 0;
+      }
+  }
 }
 
-.ms-Dialog-title {
-  font-size: $ms-font-size-xl;
-  font-weight: $ms-font-weight-light;
-  margin-bottom: 24px;
-}
-
-.ms-Dialog-content {
+// The actual dialog element
+.ms-Dialog-main {
+  @include dialogPositioningIE9Fallback();
+  @include drop-shadow();
+  background-color: $ms-color-white;
+  box-sizing: border-box;
+  line-height: 1.35;
+  margin: auto;
+  width: 288px;
   position: relative;
-}
-
-.ms-Dialog-subText {
-  color: $ms-color-neutralPrimary;
-  font-size: $ms-font-size-s;
-  font-weight: $ms-font-weight-semilight;
-  line-height: 1.5;
-}
-
-.ms-Dialog-actions {
-  margin-top: 24px;
-  text-align: right;
-}
-
-//= Modifier: Multiline button dialog
-//
-.ms-Dialog--multiline {
-  .ms-Dialog-title {
-    font-size: $ms-font-size-xxl;
-  }
-}
-
-//= Modifier: Large header dialog
-//
-.ms-Dialog.ms-Dialog--lgHeader {
-  .ms-Dialog-title {
-    background-color: $ms-color-themePrimary;
-    color: $ms-color-white;
-    font-size: $ms-font-size-xxl;
-    font-weight: $ms-font-weight-light;
-    padding: 28px 24px;
-    margin-top: -28px;
-    margin-left: -24px;
-    margin-right: -24px;
-  }
+  @include text-align(left);
+  outline: 3px solid transparent;
 }
 
 // Close button, hidden by default
-.ms-Dialog-buttonClose {
-  background: none;
+.ms-Dialog-button.ms-Dialog-button--close {
+  display: none;
+  margin:  0;
+  padding: 0;
   border: 0;
+  background: none;
   cursor: pointer;
-  margin: 0;
-  padding: 4px;
-  position: absolute;
-  right: 12px;
-  top: 12px;
-  z-index: $ms-zIndex-front;
+  @include margin-right(20px);
+  padding: 8px;
 
   .ms-Icon.ms-Icon--Cancel {
     color: $ms-color-neutralSecondary;
@@ -90,22 +84,114 @@
   }
 }
 
-// Add margin bottom between compound buttons
-.ms-Button.ms-Button--compound:not(:last-child) {
-  margin-bottom: 20px;
+.ms-Dialog-inner {
+  height: 100%;
+  padding: 0 28px 20px;
+}
+
+.ms-Dialog-header {
+  position: relative;
+  display: table-row;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ms-Dialog-title {
+  margin: 0;
+  display: table-cell;
+  @include ms-font-xl;
+  padding: 20px 28px 20px;
+  width: 100%;
+}
+
+.ms-Dialog-topButton {
+  display: table-cell;
+  padding: 1px;
+}
+
+.ms-Dialog-content {
+  position: relative;
+  width: 100%;
+
+  // Add margin bottom between compound buttons
+  .ms-Button.ms-Button--compound:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
+
+.ms-Dialog-subText {
+  margin: 0 0 20px 0;
+  padding-top: 8px;
+  @include ms-font-s;
+  font-weight: $ms-font-weight-semilight;
+  line-height: 1.5;
+}
+
+.ms-Dialog-actions {
+  position: relative;
+  width: 100%;
+  min-height:  24px;
+  line-height: 24px;
+  margin: 20px 0 0;
+  font-size: 0;
+
+  .ms-Button {
+    line-height: normal;
+  }
+}
+
+.ms-Dialog-actionsRight {
+  @include text-align(right);
+  font-size: 0;
+
+  // Reset spacing for first button
+  .ms-Dialog-action:first-child {
+    margin: 0;
+  }
+
+  // Spacing between bottom buttons
+  .ms-Dialog-action + .ms-Dialog-action {
+    @include margin(0, 0, 0, 8px);
+  }
 }
 
 //= Modifier: Dialog with close button
 //
 .ms-Dialog.ms-Dialog--close:not(.ms-Dialog--lgHeader) {
-  // Push the right side over so the icon doesn't overlap the text
+  // Show the close button
+  .ms-Dialog-button.ms-Dialog-button--close {
+    display: block;
+  }
+}
+
+//= Modifier: Multiline button dialog
+//
+.ms-Dialog.ms-Dialog--multiline {
   .ms-Dialog-title {
-    margin-right: 20px;
+    font-size: $ms-font-size-xxl;
   }
 
-  // Show the close button
-  .ms-Dialog-button.ms-Dialog-buttonClose {
-    display: block;
+  .ms-Dialog-inner {
+    padding: 0 20px 20px;
+  }
+}
+
+//= Modifier: Large header dialog
+//
+.ms-Dialog.ms-Dialog--lgHeader {
+  .ms-Dialog-header {
+    background-color: $ms-color-themePrimary;
+  }
+
+  .ms-Dialog-title {
+    @include ms-font-xxl;
+    color: $ms-color-white;
+    padding: 26px 28px 28px;
+    margin-bottom: 8px;
+  }
+
+  .ms-Dialog-subText {
+    font-size: $ms-font-size-m;
   }
 }
 
