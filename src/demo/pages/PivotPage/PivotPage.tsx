@@ -41,7 +41,7 @@ export class PivotPage extends React.Component<any, any> {
         <ExampleCard title='Large link size' code={ PivotLargeExampleCode }>
           <PivotLargeExample />
         </ExampleCard>
-        <ExampleCard title='Item Count' code={ PivotItemCountExampleCode }>
+        <ExampleCard title='Item count' code={ PivotItemCountExampleCode }>
           <PivotItemCountExample />
         </ExampleCard>
         <ExampleCard title='Links of tab style' code={ PivotTabsExampleCode }>
