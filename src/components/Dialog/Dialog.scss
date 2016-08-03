@@ -7,6 +7,10 @@
 // --------------------------------------------------
 // Dialog styles
 
+$Dialog-lgHeader-backgroundColor: $ms-color-themePrimary;
+$Dialog-default-min-width: 288px;
+$Dialog-default-max-width: 340px;
+
 // Mixin for IE9 specific styles
 @mixin dialogPositioningIE9Fallback {
   vertical-align: middle;
@@ -59,7 +63,7 @@
   box-sizing: border-box;
   line-height: 1.35;
   margin: auto;
-  width: 288px;
+  width: $Dialog-default-min-width;
   position: relative;
   @include text-align(left);
   outline: 3px solid transparent;
@@ -68,11 +72,6 @@
 // Close button, hidden by default
 .ms-Dialog-button.ms-Dialog-button--close {
   display: none;
-  margin:  0;
-  padding: 0;
-  border: 0;
-  background: none;
-  cursor: pointer;
   @include margin-right(8px);
   padding: 8px;
 
@@ -138,6 +137,8 @@
   }
 }
 
+// Negative margin to needed to compensate for symmetric
+// padding between action elements.
 .ms-Dialog-actionsRight {
   @include text-align(right);
   @include margin-right(-4px);
@@ -174,7 +175,7 @@
 //
 .ms-Dialog.ms-Dialog--lgHeader {
   .ms-Dialog-header {
-    background-color: $ms-color-themePrimary;
+    background-color: $Dialog-lgHeader-backgroundColor;
   }
 
   .ms-Dialog-title {
@@ -193,7 +194,7 @@
   // Allow wider dialog on larger screens
   .ms-Dialog-main {
     width: auto;
-    min-width: 288px;
-    max-width: 340px;
+    min-width: $Dialog-default-min-width;
+    max-width: $Dialog-default-max-width;
   }
 }

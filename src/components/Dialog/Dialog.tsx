@@ -82,6 +82,7 @@ export class Dialog extends React.Component<IDialogProps, any> {
                       icon='Cancel'
                       title={ closeButtonAriaLabel }
                       ariaLabel={ closeButtonAriaLabel }
+                      onClick={ onDismiss }
                     />
                   </div>
                 </div>
