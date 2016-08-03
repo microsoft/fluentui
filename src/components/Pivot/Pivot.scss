@@ -123,6 +123,14 @@
 
     &.is-selected {
       font-weight: $ms-font-weight-semilight;
+
+      .ms-Pivot-count {
+        font-weight: $ms-font-weight-regular;
+      }
+    }
+
+    .ms-Pivot-count {
+      @include margin-left(5px);
     }
   }
 
