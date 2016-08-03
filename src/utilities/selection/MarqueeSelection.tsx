@@ -11,8 +11,8 @@ import {
 } from './MarqueeSelection.Props';
 
 export interface IMarqueeSelectionState {
-  dragOrigin?: IPoint,
-  dragRect?: IRectangle
+  dragOrigin?: IPoint;
+  dragRect?: IRectangle;
 }
 
 const MIN_DRAG_DISTANCE = 10;
