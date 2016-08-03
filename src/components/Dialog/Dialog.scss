@@ -140,16 +140,12 @@
 
 .ms-Dialog-actionsRight {
   @include text-align(right);
+  @include margin-right(-4px);
   font-size: 0;
 
   // Reset spacing for first button
-  .ms-Dialog-action:first-child {
-    margin: 0;
-  }
-
-  // Spacing between bottom buttons
-  .ms-Dialog-action + .ms-Dialog-action {
-    @include margin(0, 0, 0, 8px);
+  .ms-Dialog-action {
+    margin: 0px 4px;
   }
 }
 
