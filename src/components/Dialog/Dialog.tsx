@@ -3,6 +3,7 @@ import { FocusTrapZone } from '../FocusTrapZone/index';
 import { IDialogProps, DialogType } from './Dialog.Props';
 import { Overlay } from '../../Overlay';
 import { Layer } from '../../Layer';
+import { Button, ButtonType } from '../../Button';
 import { DialogFooter } from './DialogFooter';
 import { css } from '../../utilities/css';
 import { Popup } from '../Popup/index';
@@ -75,11 +76,13 @@ export class Dialog extends React.Component<IDialogProps, any> {
                 <div className='ms-Dialog-header'>
                   <p className='ms-Dialog-title' id={ id + '-title'}>{ title }</p>
                   <div className='ms-Dialog-topButton'>
-                    <button className='ms-Dialog-button ms-Dialog-button--close'
-                      onClick={ onDismiss }
-                      aria-label= { closeButtonAriaLabel }>
-                      <i className='ms-Icon ms-Icon--Cancel'></i>
-                    </button>
+                    <Button
+                      className='ms-Dialog-button ms-Dialog-button--close'
+                      buttonType={ ButtonType.icon }
+                      icon='Cancel'
+                      title={ closeButtonAriaLabel }
+                      ariaLabel={ closeButtonAriaLabel }
+                    />
                   </div>
                 </div>
                 <div className='ms-Dialog-inner'>
