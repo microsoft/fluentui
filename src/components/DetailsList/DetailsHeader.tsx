@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { BaseComponent } from '../../common/BaseComponent';
 import { IColumn, DetailsListLayoutMode, ColumnActionsMode } from './DetailsList.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Check } from '../Check/Check';
@@ -47,18 +48,14 @@ export interface IColumnResizeDetails {
   columnMinWidth: number;
 }
 
-export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetailsHeaderState> {
+export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHeaderState> {
   public refs: {
     [key: string]: React.ReactInstance;
     focusZone: FocusZone;
   };
 
-  private _events: EventGroup;
-
   constructor(props: IDetailsHeaderProps) {
     super(props);
-
-    this._events = new EventGroup(this);
 
     this.state = {
       columnResizeDetails: null,
@@ -74,10 +71,6 @@ export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetails
     let { selection } = this.props;
 
     this._events.on(selection, SELECTION_CHANGE, this._onSelectionChanged);
-  }
-
-  public componentWillUnmount() {
-    this._events.dispose();
   }
 
   public componentWillReceiveProps(newProps) {
@@ -287,6 +280,9 @@ export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetails
         originX: ev.clientX
       }
     });
+
+    ev.preventDefault();
+    ev.stopPropagation();
   }
 
   private _onSelectionChanged() {

@@ -19,10 +19,11 @@ import { css } from '../../utilities/css';
 import {
   IObjectWithKey,
   ISelection,
+  MarqueeSelection,
   Selection,
   SelectionMode,
   SelectionZone
-  } from '../../utilities/selection/index';
+} from '../../utilities/selection/index';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { getRTLSafeKeyCode } from '../../utilities/rtl';
 import { KeyCodes } from '../../utilities/KeyCodes';
@@ -206,39 +207,40 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
         data-is-scrollable='false'
         aria-label={ ariaLabel }
         role={ shouldApplyApplicationRole ? 'application' : '' }>
-        <div ref='headerContainer' onKeyDown={ this._onHeaderKeyDown } role='grid' aria-label={ ariaLabelForGrid }>
-          { isHeaderVisible && (
-          <DetailsHeader
-            ref='header'
-            selectionMode={ selectionMode }
-            layoutMode={ layoutMode }
-            selection={ selection }
-            columns={ adjustedColumns }
-            onColumnClick={ onColumnHeaderClick }
-            onColumnContextMenu={ onColumnHeaderContextMenu }
-            onColumnResized={ this._onColumnResized }
-            onColumnIsSizingChanged={ this._onColumnIsSizingChanged }
-            onColumnAutoResized={ this._onColumnAutoResized }
-            groupNestingDepth={ groupNestingDepth }
-            isAllCollapsed={ isCollapsed }
-            onToggleCollapseAll={ this._onToggleCollapse }
-            ariaLabel={ ariaLabelForListHeader }
-            ariaLabelForSelectAllCheckbox={ ariaLabelForSelectAllCheckbox }
-            />
-          ) }
-        </div>
-        <div ref='contentContainer' onKeyDown={ this._onContentKeyDown }>
-          <FocusZone
-            ref='focusZone'
-            direction={ FocusZoneDirection.vertical }
-            isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }
-            onActiveElementChanged={ this._onActiveRowChanged }
-          >
-            <SelectionZone
-              selection={ selection }
-              selectionMode={ selectionMode }
-              onItemInvoked={ onItemInvoked }>
-              { groups ? (
+        <MarqueeSelection selection={ selection }>
+          <div ref='headerContainer' onKeyDown={ this._onHeaderKeyDown } role='grid' aria-label={ ariaLabelForGrid }>
+            { isHeaderVisible && (
+              <DetailsHeader
+                ref='header'
+                selectionMode={ selectionMode }
+                layoutMode={ layoutMode }
+                selection={ selection }
+                columns={ adjustedColumns }
+                onColumnClick={ onColumnHeaderClick }
+                onColumnContextMenu={ onColumnHeaderContextMenu }
+                onColumnResized={ this._onColumnResized }
+                onColumnIsSizingChanged={ this._onColumnIsSizingChanged }
+                onColumnAutoResized={ this._onColumnAutoResized }
+                groupNestingDepth={ groupNestingDepth }
+                isAllCollapsed={ isCollapsed }
+                onToggleCollapseAll={ this._onToggleCollapse }
+                ariaLabel={ ariaLabelForListHeader }
+                ariaLabelForSelectAllCheckbox={ ariaLabelForSelectAllCheckbox }
+                />
+            ) }
+          </div>
+          <div ref='contentContainer' onKeyDown={ this._onContentKeyDown }>
+            <FocusZone
+              ref='focusZone'
+              direction={ FocusZoneDirection.vertical }
+              isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }
+              onActiveElementChanged={ this._onActiveRowChanged }
+              >
+              <SelectionZone
+                selection={ selection }
+                selectionMode={ selectionMode }
+                onItemInvoked={ onItemInvoked }>
+                { groups ? (
                   <GroupedList
                     groups={ groups }
                     groupProps={ groupProps }
@@ -253,17 +255,18 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                     ref='groups'
                     />
                 ) : (
-                  <List
-                    items={ items }
-                    onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex) }
-                    { ...additionalListProps }
-                    ref='list'
-                    />
-                )
-              }
-            </SelectionZone>
-          </FocusZone>
-        </div>
+                    <List
+                      items={ items }
+                      onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex) }
+                      { ...additionalListProps }
+                      ref='list'
+                      />
+                  )
+                }
+              </SelectionZone>
+            </FocusZone>
+          </div>
+        </MarqueeSelection>
       </div>
     );
   }
@@ -303,25 +306,25 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     }
 
     return (
-        <DetailsRow
-          item={ item }
-          itemIndex={ index }
-          columns={ columns }
-          groupNestingDepth={ nestingDepth }
-          selectionMode={ selectionMode }
-          selection={ selection }
-          onDidMount={ onRowDidMount }
-          onWillUnmount={ onRowWillUnmount }
-          onRenderItemColumn={ onRenderItemColumn }
-          eventsToRegister={ eventsToRegister }
-          dragDropEvents={ dragDropEvents }
-          dragDropHelper={ dragDropHelper }
-          viewport={ viewport }
-          checkboxVisibility={ checkboxVisibility }
-          getRowAriaLabel={ getRowAriaLabel }
-          canSelectItem={ canSelectItem }
-          checkButtonAriaLabel={ checkButtonAriaLabel }
-          />
+      <DetailsRow
+        item={ item }
+        itemIndex={ index }
+        columns={ columns }
+        groupNestingDepth={ nestingDepth }
+        selectionMode={ selectionMode }
+        selection={ selection }
+        onDidMount={ onRowDidMount }
+        onWillUnmount={ onRowWillUnmount }
+        onRenderItemColumn={ onRenderItemColumn }
+        eventsToRegister={ eventsToRegister }
+        dragDropEvents={ dragDropEvents }
+        dragDropHelper={ dragDropHelper }
+        viewport={ viewport }
+        checkboxVisibility={ checkboxVisibility }
+        getRowAriaLabel={ getRowAriaLabel }
+        canSelectItem={ canSelectItem }
+        checkButtonAriaLabel={ checkButtonAriaLabel }
+        />
     );
   }
 
@@ -485,9 +488,9 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           calculatedWidth: column.minWidth || MIN_COLUMN_WIDTH
         });
 
-        totalWidth += newColumn.calculatedWidth + (i > 0 ? DEFAULT_INNER_PADDING : 0);
+      totalWidth += newColumn.calculatedWidth + (i > 0 ? DEFAULT_INNER_PADDING : 0);
 
-        return newColumn;
+      return newColumn;
     });
 
     let lastIndex = adjustedColumns.length - 1;

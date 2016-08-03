@@ -5,10 +5,20 @@
   cursor: default;
 }
 
+.ms-MarqueeSelection-dragMask {
+  position: absolute;
+  background: rgba(255, 0, 0, 0);
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
 .ms-MarqueeSelection-box {
   position: absolute;
   box-sizing: border-box;
   border: 1px solid $ms-color-themePrimary;
+  pointer-events: none;
 }
 
 .ms-MarqueeSelection-boxFill {

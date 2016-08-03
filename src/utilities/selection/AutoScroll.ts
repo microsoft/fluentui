@@ -2,8 +2,8 @@ import { EventGroup } from '../eventGroup/EventGroup';
 import { findScrollableParent } from '../scrollUtilities';
 
 const SCROLL_ITERATION_DELAY = 30;
-const SCROLL_GUTTER_HEIGHT = 150;
-const MAX_SCROLL_VELOCITY = 25;
+const SCROLL_GUTTER_HEIGHT = 100;
+const MAX_SCROLL_VELOCITY = 20;
 
 export class AutoScroll {
   private _events: EventGroup;
@@ -45,6 +45,8 @@ export class AutoScroll {
 
     if (this._scrollVelocity) {
       this._startInterval();
+    } else {
+      this._stopInterval();
     }
   }
 
