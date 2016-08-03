@@ -50,11 +50,11 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-@media (max-width: $ms-screen-lg-max) {
-  .App-content {
-    @include left(0);
-    padding: 5px;
-  }
+.App.small .App-content,
+.App.medium .App-content,
+.App.large .App-content {
+  @include left(0);
+  padding: 5px;
 }
 
 .App-nav .ms-Nav {

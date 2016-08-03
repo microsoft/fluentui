@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  css,
   Fabric,
   Panel,
   PanelType
@@ -48,7 +49,7 @@ export class App extends React.Component<IAppProps, any> {
     );
 
     return (
-      <Fabric className='App'>
+      <Fabric className={ css('App', ResponsiveMode[responsiveMode]) }>
 
         <div className='App-header'>
           <Header
