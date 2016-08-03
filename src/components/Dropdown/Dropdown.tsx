@@ -100,7 +100,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
           aria-activedescendant={ selectedIndex >= 0 ? (id + '-list' + selectedIndex) : (id + '-list') }
           aria-controls={ id + '-list' }
           >
-          <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--CaretDownSolid8'></i>
+          <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown'></i>
           <span className='ms-Dropdown-title'>{ selectedOption ? selectedOption.text : '' }</span>
           <ul ref={ (c: HTMLElement) => this._optionList = c }
             id={ id + '-list' }
