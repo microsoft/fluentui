@@ -45,11 +45,9 @@
   }
 
   .ms-Overlay {
-    z-index: $ms-zIndex-back;
-
-      @media screen and (-ms-high-contrast: active) {
-        opacity: 0;
-      }
+    @media screen and (-ms-high-contrast: active) {
+      opacity: 0;
+    }
   }
 }
 
