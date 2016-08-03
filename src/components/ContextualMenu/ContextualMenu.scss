@@ -42,7 +42,7 @@ $ContextualMenu-iconWidth: 24px;
   display: block;
   @include text-align(left);
 
-  &:hover {
+  &:hover:not([disabled]) {
     background: $ContextualMenu-itemHover;
   }
 
