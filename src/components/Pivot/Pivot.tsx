@@ -101,12 +101,11 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
    * Renders a pivot link
    */
   private _renderLink(link: IPivotItemProps) {
-    const itemKey = link.itemKey;
-    const itemCount = link.itemCount;
+    const { itemKey, itemCount } = link;
     let { id } = this.state;
     let countText;
     if (itemCount !== undefined && this.props.linkFormat !== PivotLinkFormat.tabs) {
-      countText = <span className={ css('ms-Pivot-count') }>({ itemCount })</span>;
+      countText = <span className='ms-Pivot-count'>({ itemCount })</span>;
     }
 
     return (
