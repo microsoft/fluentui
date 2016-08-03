@@ -69,6 +69,10 @@
     &::before {
       background-color: $ms-color-themePrimary;
     }
+
+    .ms-Pivot-count {
+      font-weight: $ms-font-weight-regular;
+    }
   }
 
   //== State: Disabled
@@ -123,6 +127,10 @@
 
     &.is-selected {
       font-weight: $ms-font-weight-semilight;
+    }
+
+    .ms-Pivot-count {
+      @include margin-left(5px);
     }
   }
 
