@@ -22,6 +22,7 @@ export class Dialog extends React.Component<IDialogProps, any> {
     type: DialogType.normal,
     isDarkOverlay: true,
     isBlocking: false,
+    className: '',
     containerClassName: '',
     contentClassName: ''
   };
@@ -43,7 +44,7 @@ export class Dialog extends React.Component<IDialogProps, any> {
     }
 
     let subTextContent;
-    const dialogClassName = css('ms-Dialog', {
+    const dialogClassName = css('ms-Dialog', this.props.className, {
       'ms-Dialog--lgHeader': type === DialogType.largeHeader,
       'ms-Dialog--close': type === DialogType.close
     });

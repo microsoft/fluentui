@@ -80,13 +80,13 @@ export const AppState: IAppState = {
         {
           component: CheckboxPage,
           name: 'Checkbox',
-          status: ExampleStatus.alpha,
+          status: ExampleStatus.beta,
           url: '#/examples/checkbox'
         },
         {
           component: ChoiceGroupPage,
           name: 'ChoiceGroup',
-          status: ExampleStatus.alpha,
+          status: ExampleStatus.beta,
           url: '#/examples/ChoiceGroup'
         },
         {
@@ -116,7 +116,7 @@ export const AppState: IAppState = {
         {
           component: DialogPage,
           name: 'Dialog',
-          status: ExampleStatus.alpha,
+          status: ExampleStatus.beta,
           url: '#/examples/dialog'
         },
         {
