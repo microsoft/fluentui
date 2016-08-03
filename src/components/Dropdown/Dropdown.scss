@@ -36,6 +36,7 @@
   margin-bottom: 10px;
   position: relative;
   outline: 0;
+  user-select: none;
 
   &:hover,
   &:focus,
@@ -120,11 +121,6 @@
   }
 }
 
-// Hide the original dropdown
-.ms-Dropdown-select {
-  display: none;
-}
-
 .ms-Dropdown-caretDown {
   color: $ms-color-neutralDark;
   font-size: $ms-icon-size-s;
@@ -166,6 +162,9 @@
   bottom: auto;
   left: auto;
   max-width: 100%;
+  box-shadow: 0 0px 15px -5px rgba(0, 0, 0, 0.4);
+  border: 1px solid $ms-color-neutralLight;
+
 
   &::before {
     content: '';
@@ -175,7 +174,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    border: 1px solid $ms-color-neutralLight;
+    border: none;
   }
 
   @media screen and (-ms-high-contrast: active) {
@@ -222,7 +221,6 @@
     background: $ms-color-white;
     color: $ms-color-neutralTertiary;
     cursor: default;
-    line-height: 40px;
   }
 }
 
@@ -233,30 +231,10 @@
 .ms-Dropdown-item.ms-Dropdown-item--selected {
   background-color: $ms-color-themeLight;
   color: $ms-color-black;
-  line-height: 40px;
 
   &:hover {
     background-color: $ms-color-themeLight;
   }
 
   @include highContrastListItemState;
-}
-
-// TODO: remove overrides below.
-
-.ms-Dropdown {
-  user-select: none;
-}
-
-.ms-Dropdown-items {
-  box-shadow: 0 0px 15px -5px rgba(0, 0, 0, 0.4);
-  border: 1px solid $ms-color-neutralLight;
-
-  &:before {
-    border: none;
-  }
-}
-
-.ms-Dropdown-item.is-selected {
-  line-height: 38px;
 }
