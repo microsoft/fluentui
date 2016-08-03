@@ -13,6 +13,9 @@
   @include ms-u-normalize;
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
+  position: relative;
+  color: $ms-color-themePrimary;
+  white-space: nowrap;
 }
 
 .ms-Pivot-links {
@@ -35,6 +38,10 @@
 
   &:hover {
     cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
   }
 
   // Underline, not yet visible
@@ -77,11 +84,13 @@
   }
 }
 
-
-
+.ms-Fabric.is-focusVisible .ms-Pivot-link {
+  &:focus {
+    outline: 1px solid $ms-color-neutralSecondaryAlt;
+  }
+}
 
 // @TODO: Determine if any of the styles below this are necessary anymore.
-
 
 // Overflow (ellipsis)
 .ms-Pivot-link.ms-Pivot-link--overflow {
@@ -133,16 +142,16 @@
   }
 }
 
-
 //== Modifier: Tabs
 //
 .ms-Pivot.ms-Pivot--tabs {
 
   .ms-Pivot-link {
+    @include focus-border();
+    @include margin-right(0px);
     height: 40px;
     background-color: $ms-color-neutralLighter;
     line-height: 40px;
-    margin-right: -2px; // Remove space next to inline-block element
     padding: 0 10px;
 
     &:hover:not(.is-selected):not(.ms-Pivot-link--overflow),
@@ -175,6 +184,14 @@
   }
 }
 
+.ms-Fabric.is-focusVisible .ms-Pivot.ms-Pivot--tabs .ms-Pivot-link:focus {
+  &:before {
+    height: auto;
+    background: transparent;
+    transition: none;
+  }
+}
+
 // @TODO: Confirm that this component is not responsive.
 //
 // @media (min-width: $ms-screen-lg-min) {
@@ -198,12 +215,4 @@
       }
     }
   }
-}
-
-// TODO: Remove override below.
-
-.ms-Pivot {
-  position: relative;
-  color: $ms-color-themePrimary;
-  white-space: nowrap;
 }
