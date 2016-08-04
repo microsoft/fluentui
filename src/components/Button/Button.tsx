@@ -15,7 +15,8 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
     elementType: ElementType.button,
     buttonType: ButtonType.normal
   };
-  private static _instance: number = 0;
+  // Start at random value in case consumer bundles react multiple times
+  private static _instance: number = Math.round(Math.random() * 1000);
   private _buttonElement: HTMLButtonElement;
 
   constructor(props: IButtonProps) {
