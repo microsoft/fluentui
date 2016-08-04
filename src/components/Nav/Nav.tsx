@@ -44,13 +44,15 @@ export class Nav extends React.Component<INavProps, INavState> {
   }
 
   private _renderLink(link: INavLink, linkIndex: number): React.ReactElement<{}> {
+    let { onLinkClick } = this.props;
     return (
       <li key={ linkIndex }>
         <a
           className={'ms-Nav-link' + (_isLinkSelected(link) ? ' is-selected' : '')}
           href={ link.url || 'javascript:' }
-          onClick={ this.props.onLinkClick }
-          title={ link.name }
+          onClick={ onLinkClick }
+          title={ link.title ? link.title : undefined }
+          aria-label={ link.ariaLabel }
         >
           { (link.iconClassName ?
           <i className={'ms-Icon ms-Nav-IconLink ' + link.iconClassName}></i>
