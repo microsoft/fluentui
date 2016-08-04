@@ -133,6 +133,10 @@
     &.is-selected {
       font-weight: $ms-font-weight-semilight;
     }
+
+    .ms-Pivot-count {
+      @include margin-left(4px);
+    }
   }
 
   .ms-Pivot-link.ms-Pivot-link--overflow {
