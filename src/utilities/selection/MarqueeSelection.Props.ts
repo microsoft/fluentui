@@ -21,4 +21,5 @@ export interface IMarqueeSelectionProps extends React.Props<MarqueeSelection> {
   baseElement?: string;
   className?: string;
   selection?: ISelection;
+  onShouldStartSelection?: (ev: React.MouseEvent) => boolean;
 }

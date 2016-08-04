@@ -83,16 +83,21 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     );
   }
 
-  private _onMouseDown(ev: MouseEvent) {
-    let scrollableParent = findScrollableParent(this.refs.root);
+  private _onMouseDown(ev: React.MouseEvent) {
+    let { onShouldStartSelection } = this.props;
 
-    if (scrollableParent) {
-      this._selectedIndicies = {};
-      this._events.on(window, 'mousemove', this._onMouseMove);
-      this._events.on(scrollableParent, 'scroll', this._onMouseMove);
-      this._events.on(window, 'mouseup', this._onMouseUp, true);
-      this._autoScroll = new AutoScroll(this.refs.root);
-      this._onMouseMove(ev);
+    if (!onShouldStartSelection || onShouldStartSelection(ev)) {
+      let scrollableParent = findScrollableParent(this.refs.root);
+
+      if (scrollableParent && ev.buttons === 1) {
+        this._selectedIndicies = {};
+        this._events.on(window, 'mousemove', this._onMouseMove);
+        this._events.on(scrollableParent, 'scroll', this._onMouseMove);
+        this._events.on(window, 'mouseup', this._onMouseUp, true);
+        this._autoScroll = new AutoScroll(this.refs.root);
+
+        this._onMouseMove(ev.nativeEvent as MouseEvent);
+      }
     }
   }
 

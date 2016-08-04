@@ -19,7 +19,6 @@ import { css } from '../../utilities/css';
 import {
   IObjectWithKey,
   ISelection,
-  MarqueeSelection,
   Selection,
   SelectionMode,
   SelectionZone
@@ -207,8 +206,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
         data-is-scrollable='false'
         aria-label={ ariaLabel }
         role={ shouldApplyApplicationRole ? 'application' : '' }>
-        <MarqueeSelection selection={ selection }>
-          <div ref='headerContainer' onKeyDown={ this._onHeaderKeyDown } role='grid' aria-label={ ariaLabelForGrid }>
+        <div role='grid' aria-label={ ariaLabelForGrid }>
+          <div ref='headerContainer' onKeyDown={ this._onHeaderKeyDown }>
             { isHeaderVisible && (
               <DetailsHeader
                 ref='header'
@@ -229,44 +228,44 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                 />
             ) }
           </div>
-          <div ref='contentContainer' onKeyDown={ this._onContentKeyDown }>
-            <FocusZone
-              ref='focusZone'
-              direction={ FocusZoneDirection.vertical }
-              isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }
-              onActiveElementChanged={ this._onActiveRowChanged }
-              >
-              <SelectionZone
-                selection={ selection }
-                selectionMode={ selectionMode }
-                onItemInvoked={ onItemInvoked }>
-                { groups ? (
-                  <GroupedList
-                    groups={ groups }
-                    groupProps={ groupProps }
+        </div>
+        <div ref='contentContainer' onKeyDown={ this._onContentKeyDown }>
+          <FocusZone
+            ref='focusZone'
+            direction={ FocusZoneDirection.vertical }
+            isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }
+            onActiveElementChanged={ this._onActiveRowChanged }
+            >
+            <SelectionZone
+              selection={ selection }
+              selectionMode={ selectionMode }
+              onItemInvoked={ onItemInvoked }>
+              { groups ? (
+                <GroupedList
+                  groups={ groups }
+                  groupProps={ groupProps }
+                  items={ items }
+                  onRenderCell={ this._onRenderCell }
+                  selection={ selection }
+                  selectionMode={ selectionMode }
+                  dragDropEvents={ dragDropEvents }
+                  dragDropHelper={ dragDropHelper }
+                  eventsToRegister={ rowElementEventMap }
+                  listProps={ additionalListProps }
+                  ref='groups'
+                  />
+              ) : (
+                  <List
                     items={ items }
-                    onRenderCell={ this._onRenderCell }
-                    selection={ selection }
-                    selectionMode={ selectionMode }
-                    dragDropEvents={ dragDropEvents }
-                    dragDropHelper={ dragDropHelper }
-                    eventsToRegister={ rowElementEventMap }
-                    listProps={ additionalListProps }
-                    ref='groups'
+                    onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex) }
+                    { ...additionalListProps }
+                    ref='list'
                     />
-                ) : (
-                    <List
-                      items={ items }
-                      onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex) }
-                      { ...additionalListProps }
-                      ref='list'
-                      />
-                  )
-                }
-              </SelectionZone>
-            </FocusZone>
-          </div>
-        </MarqueeSelection>
+                )
+              }
+            </SelectionZone>
+          </FocusZone>
+        </div>
       </div>
     );
   }
@@ -281,8 +280,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       dragDropEvents,
       rowElementEventMap: eventsToRegister,
       onRenderMissingItem,
-      onRowDidMount,
-      onRowWillUnmount,
       onRenderItemColumn,
       selectionMode,
       viewport,
@@ -313,8 +310,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
         groupNestingDepth={ nestingDepth }
         selectionMode={ selectionMode }
         selection={ selection }
-        onDidMount={ onRowDidMount }
-        onWillUnmount={ onRowWillUnmount }
+        onDidMount={ this._onRowDidMount }
+        onWillUnmount={ this._onRowWillUnmount }
         onRenderItemColumn={ onRenderItemColumn }
         eventsToRegister={ eventsToRegister }
         dragDropEvents={ dragDropEvents }
