@@ -10,22 +10,21 @@ export interface IButtonState {
   ariaDescriptionId?: string;
 }
 
-let _instance = 0;
-
 export class Button extends React.Component<IButtonProps, IButtonState> {
   public static defaultProps: IButtonProps = {
     elementType: ElementType.button,
     buttonType: ButtonType.normal
   };
+  private static _instance: number = 0;
   private _buttonElement: HTMLButtonElement;
 
   constructor(props: IButtonProps) {
     super(props);
 
     this.state = {
-      labelId: `Button-${_instance++}`,
-      descriptionId: `Button-${_instance++}`,
-      ariaDescriptionId: `Button-${_instance++}`,
+      labelId: `Button-${Button._instance++}`,
+      descriptionId: `Button-${Button._instance++}`,
+      ariaDescriptionId: `Button-${Button._instance++}`,
     };
   }
 
