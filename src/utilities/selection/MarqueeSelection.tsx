@@ -1,25 +1,42 @@
 import * as React from 'react';
+import { AutoScroll } from './AutoScroll';
 import { BaseComponent } from '../../common/BaseComponent';
+import { assign } from '../../utilities/object';
 import { css } from '../../utilities/css';
 import { findScrollableParent } from '../scrollUtilities';
-import { AutoScroll } from './AutoScroll';
-import './MarqueeSelection.scss';
 import {
-  IRectangle,
-  IPoint,
   IMarqueeSelectionProps
 } from './MarqueeSelection.Props';
+import './MarqueeSelection.scss';
+
+export interface IPoint {
+  x: number;
+  y: number;
+}
+
+export interface IRectangle {
+  left: number;
+  top: number;
+  width: number;
+  height: number;
+
+  right?: number;
+  bottom?: number;
+}
 
 export interface IMarqueeSelectionState {
   dragOrigin?: IPoint;
   dragRect?: IRectangle;
 }
 
-const MIN_DRAG_DISTANCE = 10;
+// We want to make the marquee selection start when the user drags a minimum distance. Otherwise we'd start
+// the drag even if they just click an item without moving.
+const MIN_DRAG_DISTANCE = 5;
 
 export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMarqueeSelectionState> {
   public static defaultProps = {
-    baseElement: 'div'
+    rootTagName: 'div',
+    rootProps: {}
   };
 
   public refs: {
@@ -32,6 +49,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
   private _lastMouseEvent: MouseEvent;
   private _autoScroll;
   private _selectedIndicies: { [key: string]: boolean };
+  private _itemRectCache: { [key: string]: IRectangle };
 
   constructor(props: IMarqueeSelectionProps) {
     super(props);
@@ -40,11 +58,10 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
       dragRect: null
     };
 
-    this.autoBindCallbacks(MarqueeSelection.prototype);
-  }
+    this._asyncEvaluateSelection = this._async.throttle(this._asyncEvaluateSelection, 100, {
+      leading: false });
 
-  public componentDidMount() {
-//    this._events.on(this.refs.root, 'mousedown', this._onMouseDown);
+    this.autoBindCallbacks(MarqueeSelection.prototype);
   }
 
   public componentWillUnmount() {
@@ -54,7 +71,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
   }
 
   public render(): JSX.Element {
-    let { baseElement, className, children } = this.props;
+    let { rootTagName, rootProps, children } = this.props;
     let { dragRect } = this.state;
     let selectionBox = null;
     let dragMask = null;
@@ -71,12 +88,12 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     }
 
     return React.createElement(
-      baseElement,
-      {
-        className: css('ms-MarqueeSelection', className),
+      rootTagName,
+      assign({}, rootProps, {
+        className: css('ms-MarqueeSelection', rootProps.className),
         ref: 'root',
         onMouseDown: this._onMouseDown
-      },
+      }),
       children,
       dragMask,
       selectionBox
@@ -95,6 +112,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
         this._events.on(scrollableParent, 'scroll', this._onMouseMove);
         this._events.on(window, 'mouseup', this._onMouseUp, true);
         this._autoScroll = new AutoScroll(this.refs.root);
+        this._itemRectCache = {};
 
         this._onMouseMove(ev.nativeEvent as MouseEvent);
       }
@@ -145,7 +163,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     this._events.off(scrollableParent, 'scroll');
 
     this._autoScroll.dispose();
-    this._autoScroll = this._dragOrigin = this._lastMouseEvent = this._selectedIndicies = null;
+    this._autoScroll = this._dragOrigin = this._lastMouseEvent = this._selectedIndicies = this._itemRectCache = null;
 
     if (this.state.dragRect) {
       this.setState({
@@ -160,39 +178,40 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
   private _asyncEvaluateSelection() {
     let { selection } = this.props;
     let { dragRect } = this.state;
+    let { _rootRect: rootRect } = this;
 
     // Potentially slow.
     let allElements = this.refs.root.querySelectorAll('[data-selection-index]');
 
-    // Normalize the dragRect to document coordinates.
-    dragRect = {
-      left: this._rootRect.left + dragRect.left,
-      top: this._rootRect.top + dragRect.top,
-      width: dragRect.width,
-      height: dragRect.height,
-      bottom: 0,
-      right: 0,
-    };
-
-    // Provide right/bottom values for easy compares.
-    dragRect.right = dragRect.left + dragRect.width;
-    dragRect.bottom = dragRect.top + dragRect.height;
-
+    // Stop change events, clear selection to re-populate.
     selection.setChangeEvents(false);
-
     selection.setAllSelected(false);
 
     for (let i = 0; i < allElements.length; i++) {
       let element = allElements[i];
       let index = element.getAttribute('data-selection-index');
 
-      // This may be potentially slow.
-      let itemRect = element.getBoundingClientRect();
+      // Pull the memoized rectangle for the item, or the get the rect and memoize.
+      let itemRect = this._itemRectCache[index];
+
+      if (!itemRect) {
+        itemRect = element.getBoundingClientRect();
+
+        // Normalize the item rect to the dragRect coordinates.
+        itemRect = this._itemRectCache[index] = {
+          left: itemRect.left - rootRect.left,
+          top: itemRect.top - rootRect.top,
+          width: itemRect.width,
+          height: itemRect.height,
+          right: (itemRect.left - rootRect.left) + itemRect.width,
+          bottom: (itemRect.top - rootRect.top) + itemRect.height
+        };
+      }
 
       if (
-        itemRect.top < dragRect.bottom &&
+        itemRect.top < (dragRect.top + dragRect.height) &&
         itemRect.bottom > dragRect.top &&
-        itemRect.left < dragRect.right &&
+        itemRect.left < (dragRect.left + dragRect.width) &&
         itemRect.right > dragRect.left
       ) {
         this._selectedIndicies[index] = true;

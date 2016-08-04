@@ -9,11 +9,12 @@ export class AutoScroll {
   private _events: EventGroup;
   private _scrollableParent: HTMLElement;
   private _scrollVelocity: number;
-  private _intervalId: number;
+  private _timeoutId: number;
 
   constructor(element: HTMLElement) {
     this._events = new EventGroup(this);
     this._scrollableParent = findScrollableParent(element);
+    this._incrementScroll = this._incrementScroll.bind(this);
 
     if (this._scrollableParent) {
       this._events.on(window, 'mousemove', this._onMouseMove, true);
@@ -22,7 +23,7 @@ export class AutoScroll {
 
   public dispose() {
     this._events.dispose();
-    this._stopInterval();
+    this._stopScroll();
   }
 
   private _onMouseMove(ev: MouseEvent) {
@@ -44,24 +45,27 @@ export class AutoScroll {
     }
 
     if (this._scrollVelocity) {
-      this._startInterval();
+      this._startScroll();
     } else {
-      this._stopInterval();
+      this._stopScroll();
     }
   }
 
-  private _startInterval() {
-    if (!this._intervalId) {
-      this._intervalId = setInterval(() => {
-        this._scrollableParent.scrollTop += Math.round(this._scrollVelocity);
-      }, SCROLL_ITERATION_DELAY);
+  private _startScroll() {
+    if (!this._timeoutId) {
+      this._incrementScroll();
     }
   }
 
-  private _stopInterval() {
-    if (this._intervalId) {
-      clearInterval(this._intervalId);
-      delete this._intervalId;
+  private _incrementScroll() {
+    this._scrollableParent.scrollTop += Math.round(this._scrollVelocity);
+    this._timeoutId = setTimeout(this._incrementScroll, SCROLL_ITERATION_DELAY);
+  }
+
+  private _stopScroll() {
+    if (this._timeoutId) {
+      clearTimeout(this._timeoutId);
+      delete this._timeoutId;
     }
   }
 }
