@@ -2,7 +2,7 @@
 
 $ContextualMenu-background: $ms-color-white;
 $ContextualMenu-itemHover: $ms-color-neutralLight;
-$ContextualMenu-expandedItemBackground: $ms-color-themeLight;
+$ContextualMenu-expandedItemBackground: $ms-color-neutralQuaternaryAlt;
 $ContextualMenu-itemHeight: 40px;
 $ContextualMenu-iconWidth: 24px;
 
@@ -72,6 +72,8 @@ $ContextualMenu-iconWidth: 24px;
   min-height: 1px;
   width: $ContextualMenu-iconWidth;
   text-align: center;
+  padding-top: ($ContextualMenu-itemHeight - $ms-font-size-m) / 2;
+  vertical-align: top;
 }
 
 .ms-ContextualMenu-itemText {
