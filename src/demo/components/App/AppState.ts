@@ -4,6 +4,7 @@ import { CalloutPage } from '../../pages/CalloutPage/CalloutPage';
 import { ColorPickerPage } from '../../pages/ColorPickerPage/ColorPickerPage';
 import { DocumentCardPage } from '../../pages/DocumentCardPage/DocumentCardPage';
 import { CheckboxPage } from '../../pages/CheckboxPage/CheckboxPage';
+import { ChoiceFieldPage } from '../../pages/ChoiceFieldPage/ChoiceFieldPage';
 import { ChoiceGroupPage } from '../../pages/ChoiceGroupPage/ChoiceGroupPage';
 import { CommandBarPage } from '../../pages/CommandBarPage/CommandBarPage';
 import { ContextualMenuPage } from '../../pages/ContextualMenuPage/ContextualMenuPage';
@@ -81,6 +82,12 @@ export const AppState: IAppState = {
           name: 'Checkbox',
           status: ExampleStatus.beta,
           url: '#/examples/checkbox'
+        },
+        {
+          component: ChoiceFieldPage,
+          name: 'ChoiceField',
+          status: ExampleStatus.beta,
+          url: '#/examples/choicefield'
         },
         {
           component: ChoiceGroupPage,
