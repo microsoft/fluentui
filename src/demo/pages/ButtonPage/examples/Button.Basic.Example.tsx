@@ -45,7 +45,7 @@ export class ButtonBasicExample extends React.Component<any, IBasicButtonsExampl
         <Button disabled={ disabled } buttonType={ ButtonType.command } icon='personAdd' description='Description of the action this button takes'>Create account</Button>
 
         <Label>Icon button</Label>
-        <Button disabled={ disabled } buttonType={ ButtonType.icon } icon='star' title='Star' ariaLabel='Take a star' />
+        <Button disabled={ disabled } buttonType={ ButtonType.icon } icon='Emoji2' title='Emoji' ariaLabel='Emoji' />
 
         <Label>Button like anchor</Label>
         <Button disabled={ disabled } elementType={ ElementType.anchor } buttonType={ ButtonType.primary } href='http://bing.com' target='_blank' title='Let us bing!' description='Navigate to Bing home page.'>Bing</Button>

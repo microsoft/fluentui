@@ -1,6 +1,6 @@
 {
   "name": "office-ui-fabric-react",
-  "version": "0.36.3",
+  "version": "0.37.0",
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -9,6 +9,10 @@
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
   },
   "license": "MIT",
+  "scripts": {
+    "start": "gulp serve",
+    "test": "gulp test"
+  },
   "devDependencies": {
     "es6-promise": "3.2.1",
     "git-rev": "0.2.1",
@@ -17,7 +21,7 @@
     "gulp-util": "3.0.7",
     "gutil": "1.6.4",
     "highlight.js": "9.4.0",
-    "office-ui-fabric": "git+https://github.com/OfficeDev/office-ui-fabric.git",
+    "office-ui-fabric-core": "^3.0.0",
     "react-addons-test-utils": "^15.1.0",
     "react-highlight": "0.8.0",
     "source-map-loader": "0.1.5",

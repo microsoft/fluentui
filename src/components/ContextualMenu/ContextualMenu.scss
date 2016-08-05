@@ -42,7 +42,7 @@ $ContextualMenu-iconWidth: 24px;
   display: block;
   @include text-align(left);
 
-  &:hover {
+  &:hover:not([disabled]) {
     background: $ContextualMenu-itemHover;
   }
 
@@ -72,7 +72,6 @@ $ContextualMenu-iconWidth: 24px;
   min-height: 1px;
   width: $ContextualMenu-iconWidth;
   text-align: center;
-  padding-top: ($ContextualMenu-itemHeight - $ms-font-size-m) / 2;
   vertical-align: top;
 }
 

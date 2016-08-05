@@ -30,6 +30,10 @@ This will open a web browser with the example page. You can make changes to the 
 
 ## Get started
 
+### Tutorial
+[Here is a step by step tutorial](./TUTORIAL.md) on how to build a simple React app with an Office UI Fabric React component.
+
+### Integrate into an existing project
 Integrating components into your project depends heavily on your setup. The recommended setup is to use a bundler such as Webpack which can resolve NPM package imports in your code and can bundle the specific things you import.
 
 Within an npm project, you should install the package and save it as a dependency:
@@ -52,7 +56,6 @@ const MyPage = () => (<div><Button>I am a button.</Button></div>);
 ReactDOM.render(<MyPage />, document.body.firstChild);
 ```
 
-
 ## Advanced usage
 
 For advanced usage including info about module vs. path-based imports and using an AMD bundler like Require, see our [advanced documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ADVANCED.md).
@@ -70,7 +73,7 @@ We're excited to share our development of this project with folks outside of the
 
 ## Licenses
 
-All files on the Office UI Fabric React GitHub repository are subject to the MIT license. Please read the License file at the root of the project. 
+All files on the Office UI Fabric React GitHub repository are subject to the MIT license. Please read the License file at the root of the project.
 
 Usage of the fonts referenced in Office UI Fabric files is subject to the [license](http://appsforoffice.microsoft.com/fabric/Segoe_UI_and_Fabric_CDN_License.txt).
 
@@ -79,6 +82,6 @@ Usage of the fonts referenced in Office UI Fabric files is subject to the [licen
 
 We use [GitHub Releases](https://github.com/blog/1547-release-your-software) to manage our releases, including the changelog between every release. View a complete list of additions, fixes, and changes on the [releases](https://github.com/OfficeDev/office-ui-fabric-react/releases) page.
 
-- - - 
+- - -
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
