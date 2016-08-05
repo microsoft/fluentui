@@ -69,7 +69,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
       70,
       { leading: false });
 
-    this.autoBindCallbacks(MarqueeSelection.prototype);
+      this._onMouseDown = this._onMouseDown.bind(this);
   }
 
   public componentWillUnmount() {
