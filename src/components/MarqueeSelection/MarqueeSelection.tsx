@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { AutoScroll } from './AutoScroll';
+import { AutoScroll } from '../../utilities/AutoScroll/AutoScroll';
 import { BaseComponent } from '../../common/BaseComponent';
 import { assign } from '../../utilities/object';
 import { css } from '../../utilities/css';
-import { findScrollableParent } from '../scrollUtilities';
+import { findScrollableParent } from '../../utilities/scrollUtilities';
 import {
   IMarqueeSelectionProps
 } from './MarqueeSelection.Props';
@@ -33,6 +33,12 @@ export interface IMarqueeSelectionState {
 // the drag even if they just click an item without moving.
 const MIN_DRAG_DISTANCE = 5;
 
+/**
+ * MarqueeSelection component abstracts managing a draggable rectangle which sets items selected/not selected.
+ * Elements which have data-selectable-index attributes are queried and measured once to determine if they
+ * fall within the bounds of the rectangle. The measure is memoized during the drag as a performance optimization
+ * so if the items change sizes while dragging, that could cause incorrect results.
+ */
 export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMarqueeSelectionState> {
   public static defaultProps = {
     rootTagName: 'div',

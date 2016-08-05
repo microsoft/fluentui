@@ -6,9 +6,8 @@ import {
   ISelection,
   Selection,
   SelectionMode,
-  SelectionZone,
-  MarqueeSelection
-  } from '../../../../utilities/selection/index';
+  SelectionZone
+} from '../../../../utilities/selection/index';
 import { createListItems } from '../../../utilities/data';
 
 import './Selection.Example.scss';
@@ -58,23 +57,21 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
     let { items, selection, selectionMode } = this.state;
 
     return (
-      <MarqueeSelection selection={ selection }>
-        <div className='ms-SelectionBasicExample'>
-          <CommandBar items={ this._getCommandItems() } />
-          <SelectionZone selection={ selection } selectionMode={ selectionMode } >
-            { items.map((item, index) => (
-                <SelectionItemExample
-                  ref={ 'detailsGroup_' + index }
-                  key={ item.key }
-                  item={ item }
-                  itemIndex={ index }
-                  selectionMode={ selectionMode }
-                  selection={ selection }
-                  />
-              )) }
-          </SelectionZone>
-        </div>
-      </MarqueeSelection>
+      <div className='ms-SelectionBasicExample'>
+        <CommandBar items={ this._getCommandItems() } />
+        <SelectionZone selection={ selection } selectionMode={ selectionMode } >
+          { items.map((item, index) => (
+            <SelectionItemExample
+              ref={ 'detailsGroup_' + index }
+              key={ item.key }
+              item={ item }
+              itemIndex={ index }
+              selectionMode={ selectionMode }
+              selection={ selection }
+              />
+          )) }
+        </SelectionZone>
+      </div>
     );
   }
 
@@ -150,14 +147,14 @@ export class SelectionItemExample extends React.Component<ISelectionItemExampleP
 
     return (
       <div className='ms-SelectionItemExample'  data-selection-index={ itemIndex }>
-          { (selectionMode !== SelectionMode.none) && (
-            <button className='ms-SelectionItemExample-check' data-selection-toggle={ true } >
-              <Check isChecked={ isSelected } />
-            </button>
-          ) }
-          <span className='ms-SelectionItemExample-name'>
-            { item.name }
-          </span>
+        { (selectionMode !== SelectionMode.none) && (
+          <button className='ms-SelectionItemExample-check' data-selection-toggle={ true } >
+            <Check isChecked={ isSelected } />
+          </button>
+        ) }
+        <span className='ms-SelectionItemExample-name'>
+          { item.name }
+        </span>
       </div>
     );
   }

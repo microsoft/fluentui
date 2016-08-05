@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ISelection } from './interfaces';
+import { ISelection } from '../../utilities/selection/interfaces';
 import { MarqueeSelection } from './MarqueeSelection';
 
 export interface IMarqueeSelectionProps extends React.Props<MarqueeSelection> {
