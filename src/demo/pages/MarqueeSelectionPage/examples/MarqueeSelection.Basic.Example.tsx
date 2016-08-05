@@ -30,7 +30,7 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, {}> {
 
     this._selection = new Selection(() => {
       if (this._isMounted) {
-        this.forceUpdate()
+        this.forceUpdate();
       }
     });
 
@@ -44,6 +44,7 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, {}> {
   public render() {
     return (
       <MarqueeSelection selection={ this._selection }>
+        <p>Drag a rectangle around the items below to select them:</p>
         <ul className='ms-MarqueeSelectionBasicExample-photoList'>
           { PHOTOS.map((photo, index) => (
             <div

@@ -58,8 +58,10 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
       dragRect: null
     };
 
-    this._asyncEvaluateSelection = this._async.throttle(this._asyncEvaluateSelection, 100, {
-      leading: false });
+    this._asyncEvaluateSelection = this._async.throttle(
+      this._asyncEvaluateSelection,
+      70,
+      { leading: false });
 
     this.autoBindCallbacks(MarqueeSelection.prototype);
   }
@@ -112,8 +114,6 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
         this._events.on(scrollableParent, 'scroll', this._onMouseMove);
         this._events.on(window, 'mouseup', this._onMouseUp, true);
         this._autoScroll = new AutoScroll(this.refs.root);
-        this._itemRectCache = {};
-
         this._onMouseMove(ev.nativeEvent as MouseEvent);
       }
     }
@@ -179,6 +179,15 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     let { selection } = this.props;
     let { dragRect } = this.state;
     let { _rootRect: rootRect } = this;
+
+    // Break early if we don't need to evaluate.
+    if (!dragRect) {
+      return;
+    }
+
+    if (!this._itemRectCache) {
+      this._itemRectCache = {};
+    }
 
     // Potentially slow.
     let allElements = this.refs.root.querySelectorAll('[data-selection-index]');
