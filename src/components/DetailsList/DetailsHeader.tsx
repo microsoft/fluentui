@@ -112,13 +112,16 @@ export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetails
                 onClick={ this._onSelectAllClicked }
                 aria-label={ ariaLabelForSelectAllCheckbox }
                 aria-pressed={ isAllSelected }
+                type='button'
                 >
                 <Check isChecked={ isAllSelected } />
               </button>
             </div>
           ) : (null) }
           { groupNestingDepth > 0 ? (
-          <button className='ms-DetailsHeader-cell' onClick={ this._onToggleCollapseAll }>
+          <button className='ms-DetailsHeader-cell'
+            onClick={ this._onToggleCollapseAll }
+            type='button' >
             <i className={ css('ms-DetailsHeader-collapseButton ms-Icon ms-Icon--chevronDown', {
               'is-collapsed': isAllCollapsed
             }) } >
@@ -144,6 +147,7 @@ export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetails
                   aria-label={ column.ariaLabel || column.name }
                   aria-sort={ column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none' }
                   data-automationid='ColumnsHeaderColumn'
+                  type='button'
                   >
 
                   { column.isGrouped && (
