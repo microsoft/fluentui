@@ -7,65 +7,61 @@
 // --------------------------------------------------
 // Callout styles
 
-
-$ms-Callout-commandButtonHeight: 27px;
+$Callout-OOBE-title-bg: $ms-color-themePrimary;
+$Callout-beak-slant-width: 28px;
 
 .ms-Callout {
   @include ms-baseFont;
-  width: 288px;
+  @include drop-shadow(0,0, 15px, -5px);
+  position: absolute;
+  display: inline-block;
+  border: 1px solid $ms-color-neutralLight;
+  z-index: $ms-zIndex-Callout;
 
-  &.is-hidden {
-    display: none;
+  @media screen and (-ms-high-contrast: active) {
+    border: 1px solid $ms-color-white;
+  }
+  @media screen and (-ms-high-contrast: black-on-white) {
+    border: 1px solid $ms-color-black;
   }
 }
 
-.ms-Callout-header {
-  z-index: ($ms-zIndex-Callout + $ms-zIndex-middle);
-  padding-top: 24px;
-  padding-bottom: 12px;
-  padding-left: 28px;
-  padding-right: 28px;
+.ms-Callout-container {
+  position: relative;
 }
 
-.ms-Callout-title {
-  margin: 0;
-  font-weight: $ms-font-weight-semilight;
-  font-size: $ms-font-size-xl;
-}
-
-.ms-Callout-subText {
-  margin: 0;
-  font-weight: $ms-font-weight-semilight;
-  color: $ms-color-neutralPrimary;
-  font-size: $ms-font-size-s;
-}
-
-.ms-Callout-close {
-  margin: 0;
-  border: 0;
-  background: none;
-  cursor: pointer;
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  padding: 8px;
-  width: 32px;
-  height: 32px;
-  font-size: 14px;
-  color: $ms-color-neutralSecondary;
-  z-index: 110;
-}
-
-.ms-Callout-link {
-  font-size: $ms-font-size-m;
+// The actual callout element
+.ms-Callout-main {
+  position: relative;
+  background-color: $ms-color-white;
+  box-sizing: border-box;
+  z-index: $ms-zIndex-middle;
 }
 
 .ms-Callout-inner {
   height: 100%;
-  padding-top: 0;
-  padding-bottom: 12px;
-  padding-left: 28px;
-  padding-right: 28px;
+  padding: 0 24px 20px;
+}
+
+.ms-Callout-header {
+  z-index: ($ms-zIndex-Callout + $ms-zIndex-middle);
+  padding: 18px 24px 12px;
+}
+
+.ms-Callout-title {
+  margin: 0;
+  @include ms-font-xl;
+  font-weight: $ms-font-weight-semilight;
+}
+
+.ms-Callout-subText {
+  margin: 0;
+  @include ms-font-s;
+  font-weight: $ms-font-weight-semilight;
+}
+
+.ms-Callout-link {
+  @include ms-font-m;
 }
 
 .ms-Callout-actions {
@@ -74,46 +70,57 @@ $ms-Callout-commandButtonHeight: 27px;
   width: 100%;
   white-space: nowrap;
 
-  .ms-CommandButton.ms-CommandButton--inline {
-    height: $ms-Callout-commandButtonHeight;
-    line-height: $ms-Callout-commandButtonHeight;
-
-    .ms-CommandButton-button {
-      height: $ms-Callout-commandButtonHeight;
-      line-height: $ms-Callout-commandButtonHeight;
-    }
-
-    .ms-CommandButton-label {
-      line-height: $ms-Callout-commandButtonHeight;
-    }
-
-    .ms-CommandButton-icon {
-      line-height: $ms-Callout-commandButtonHeight;
-    }
-
-    &:hover .ms-Button,
-    &:focus .ms-Button {
-      color: $ms-color-themePrimary;
-    }
-  }
-
-  .ms-Callout-button {
-    margin-right: 12px;
+  .ms-Link.ms-Link--hero {
+    position: relative;
+    left: -8px; // Move link inline with body text
   }
 }
+
+.ms-Callout-action {
+  position: relative;
+  top: 4px;
+  left: -8px;
+  margin-left: 0 !important;
+
+  &:hover .ms-Callout-actionIcon,
+  &:focus .ms-Callout-actionIcon {
+    color: $ms-color-themePrimary;
+  }
+}
+
+.ms-Callout-button {
+  margin-right: 12px;
+}
+
+//= Modifier: Close button callout
+//
+.ms-Callout.ms-Callout--close {
+  .ms-Callout-title {
+    margin-right: 20px; // Avoid overlap with close button
+  }
+}
+
 
 //= Modifier: OOBE (Out of box experience) callout
 //
 .ms-Callout.ms-Callout--OOBE {
+  &.ms-Callout--arrowRight,
+  &.ms-Callout--arrowLeft,
+  &.ms-Callout--arrowTop {
+    &:before,
+    &:after {
+      border-color: $Callout-OOBE-title-bg;
+      background-color: transparent;
+    }
+  }
 
   .ms-Callout-header {
     padding: 28px 24px;
-    background-color: $ms-color-themePrimary;
+    background-color: $Callout-OOBE-title-bg;
   }
 
   .ms-Callout-title {
-    font-weight: $ms-font-weight-light;
-    font-size: $ms-font-size-xxl;
+    @include ms-font-xxl;
     color: $ms-color-white;
   }
 
@@ -126,24 +133,35 @@ $ms-Callout-commandButtonHeight: 27px;
   }
 }
 
-
 //= Modifier: ActionText callout
 //
 .ms-Callout.ms-Callout--actionText {
   .ms-Callout-actions {
     border-top: 1px solid $ms-color-neutralLight;
-    padding-top: 12px;
-  }
-
-  .ms-Callout-inner {
-    padding-bottom: 12px;
+    margin-bottom: -8px;
   }
 }
-
 
 //= Modifier: Peek callout
 //
 .ms-Callout.ms-Callout--peek {
+  &.ms-Callout--arrowTop,
+  &.ms-Callout--arrowBottom {
+    &:before,
+    &:after {
+      left: 40px;
+      right: auto;
+    }
+  }
+
+  &.ms-Callout--arrowRight,
+  &.ms-Callout--arrowLeft {
+    &:before,
+    &:after {
+      top: calc('50% - 10px');
+    }
+  }
+
   .ms-Callout-header {
     padding-bottom: 0;
   }
@@ -158,66 +176,10 @@ $ms-Callout-commandButtonHeight: 27px;
   }
 }
 
-
-// TODO: remove overrides and scrub CSS
-
-// slideRightIn20
-@mixin ms-u-slideRightIn20 {
-    @include animationMix((fadeIn, slideRightIn20), $ms-duration3, $ms-ease1);
-}
-
-.ms-u-slideRightIn20 {
-    @include ms-u-slideRightIn20;
-}
-@-webkit-keyframes slideRightIn20 {
-    from { -webkit-transform:translate3d(-20px, 0px, 0px); }
-    to { -webkit-transform:translate3d(0px, 0px, 0px); }
-}
-@keyframes slideRightIn20 {
-    from { transform:translate3d(-20px, 0px, 0px); }
-    to { transform:translate3d(0px, 0px, 0px); }
-}
-
-// slideLeftIn20
-@mixin ms-u-slideLeftIn20 {
-    @include animationMix((fadeIn, slideLeftIn20), $ms-duration3, $ms-ease1);
-}
-
-.ms-u-slideLeftIn20 {
-    @include ms-u-slideLeftIn20;
-}
-@-webkit-keyframes slideLeftIn20 {
-    from { -webkit-transform:translate3d(20px, 0px, 0px); }
-    to { -webkit-transform:translate3d(0px, 0px, 0px); }
-}
-@keyframes slideLeftIn20 {
-    from { transform:translate3d(20px, 0px, 0px); }
-    to { transform:translate3d(0px, 0px, 0px); }
-}
-
-.ms-Callout-container {
-  position: relative;
-}
-
-.ms-Callout {
-  @include ms-font-m;
-  @include ms-u-normalize;
-  @include drop-shadow(0,0, 15px, -5px);
-  width: auto;
-  border: 1px solid $ms-color-neutralLight;
-  position: absolute;
-  display: inline-block;
-}
-
-// Disabled default box shadow.
-.ms-Callout-main {
-  box-shadow: none;
-}
-
 .ms-Callout-beak {
   position: absolute;
-  width: 28px;
-  height: 28px;
+  width: $Callout-beak-slant-width;
+  height: $Callout-beak-slant-width;
   background-color: $ms-color-white;
   box-shadow:  inherit;
   border: inherit;
@@ -233,8 +195,3 @@ $ms-Callout-commandButtonHeight: 27px;
   width: 16px;
   height: 16px;
 }
-
-.ExampleCard-example > .ms-Callout-container > .ms-Callout {
-  position: relative;
-}
-
