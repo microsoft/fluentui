@@ -30,6 +30,26 @@ export function createListItems(count: number, startIndex = 0): any {
   });
 }
 
+export function createGroups(
+  groupCount: number, groupDepth: number, startIndex: number,
+  itemsPerGroup: number, level?: number, key?: string) {
+  key = key ? key + '-' : '';
+  level = level ? level : 0;
+  let count = Math.pow(itemsPerGroup, groupDepth);
+  return Array.apply(null, Array(groupCount)).map((value, index) => {
+    return {
+      count: count,
+      key: 'group' + key + index,
+      name: 'group ' + key + index,
+      startIndex: index * count + startIndex,
+      level: level,
+      children: groupDepth > 1 ?
+        createGroups(groupCount, groupDepth - 1, index * count + startIndex, itemsPerGroup, level + 1, key + index) :
+        []
+    };
+  });
+}
+
 export function lorem(wordCount: number): string {
   return Array.apply(null, Array(wordCount))
     .map(item => _randWord(LOREM_IPSUM))

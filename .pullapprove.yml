@@ -2,6 +2,7 @@ approve_by_comment: true
 approve_regex: ^Approved
 reject_regex: ^Rejected
 reset_on_push: false
+reject_value: -1
 reviewers:
   members:
   - ericthompson
@@ -11,5 +12,8 @@ reviewers:
   - mikewheaton
   - dzearing
   - cliffkoh
+  - aditima
+  - yiminwu
+  - antonlabunets
   name: pullapprove
   required: 1
