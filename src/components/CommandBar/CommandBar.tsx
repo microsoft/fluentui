@@ -258,7 +258,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
       });
     }
     if (item.onClick) {
-      item.onClick();
+      item.onClick(item, ev);
     }
   }
 
