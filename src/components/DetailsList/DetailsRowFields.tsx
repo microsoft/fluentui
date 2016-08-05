@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { IColumn } from './DetailsList.Props';
 import { css } from '../../utilities/css';
-import { shallowCompare } from '../../utilities/object';
 
 export interface IDetailsRowFieldsProps {
   item: any;
@@ -19,10 +18,6 @@ export class DetailsRowFields extends React.Component<IDetailsRowFieldsProps, ID
     super();
 
     this.state = this._getState(props);
-  }
-
-  public shouldComponentUpdate(newProps: IDetailsRowFieldsProps) {
-    return !shallowCompare(this.props, newProps);
   }
 
   public componentWillReceiveProps(newProps: IDetailsRowFieldsProps) {
