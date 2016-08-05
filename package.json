@@ -9,6 +9,10 @@
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
   },
   "license": "MIT",
+  "scripts": {
+    "start": "gulp serve",
+    "test": "gulp test"
+  },
   "devDependencies": {
     "es6-promise": "3.2.1",
     "git-rev": "0.2.1",
