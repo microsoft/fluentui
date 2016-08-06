@@ -167,6 +167,9 @@ export interface IGroupHeaderProps {
 
   /** Callback for when the group is selected. */
   onToggleSelectGroup?: (group: IGroup) => void;
+
+  /** Determines if the group selection check box is shown for collapsed groups. */
+  preventSelectCollapsedGroups?: boolean;
 }
 
 export interface IGroupFooterProps {
