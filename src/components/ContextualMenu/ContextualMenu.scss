@@ -1,7 +1,7 @@
 @import '../../common/common';
 
 $ContextualMenu-background: $ms-color-white;
-$ContextualMenu-itemHover: $ms-color-neutralLight;
+$ContextualMenu-itemHover: $ms-color-neutralLighter;
 $ContextualMenu-expandedItemBackground: $ms-color-neutralQuaternaryAlt;
 $ContextualMenu-itemHeight: 36px;
 $ContextualMenu-iconWidth: 24px;
@@ -43,6 +43,10 @@ $ContextualMenu-iconWidth: 24px;
   @include text-align(left);
 
   &:hover:not([disabled]) {
+    background: $ContextualMenu-itemHover;
+  }
+
+  .is-focusVisible &:focus {
     background: $ContextualMenu-itemHover;
   }
 
