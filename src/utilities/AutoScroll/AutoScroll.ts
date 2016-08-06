@@ -1,9 +1,9 @@
 import { EventGroup } from '../eventGroup/EventGroup';
 import { findScrollableParent } from '../scrollUtilities';
 
-const SCROLL_ITERATION_DELAY = 30;
+const SCROLL_ITERATION_DELAY = 16;
 const SCROLL_GUTTER_HEIGHT = 100;
-const MAX_SCROLL_VELOCITY = 20;
+const MAX_SCROLL_VELOCITY = 15;
 
 /**
  * AutoScroll simply hooks up mouse events given a parent element, and scrolls the container
@@ -14,6 +14,7 @@ const MAX_SCROLL_VELOCITY = 20;
 export class AutoScroll {
   private _events: EventGroup;
   private _scrollableParent: HTMLElement;
+  private _scrollRect: ClientRect;
   private _scrollVelocity: number;
   private _timeoutId: number;
 
@@ -21,6 +22,7 @@ export class AutoScroll {
     this._events = new EventGroup(this);
     this._scrollableParent = findScrollableParent(element);
     this._incrementScroll = this._incrementScroll.bind(this);
+    this._scrollRect = this._scrollableParent.getBoundingClientRect();
 
     if (this._scrollableParent) {
       this._events.on(window, 'mousemove', this._onMouseMove, true);
@@ -33,13 +35,13 @@ export class AutoScroll {
   }
 
   private _onMouseMove(ev: MouseEvent) {
-    let scrollRect = this._scrollableParent.getBoundingClientRect();
-    let scrollClientBottom = scrollRect.top + scrollRect.height - SCROLL_GUTTER_HEIGHT;
+    let scrollRectTop = this._scrollRect.top;
+    let scrollClientBottom = scrollRectTop + this._scrollRect.height - SCROLL_GUTTER_HEIGHT;
 
-    if (ev.clientY < (scrollRect.top + SCROLL_GUTTER_HEIGHT)) {
+    if (ev.clientY < (scrollRectTop + SCROLL_GUTTER_HEIGHT)) {
       this._scrollVelocity = Math.max(
         -MAX_SCROLL_VELOCITY,
-        -MAX_SCROLL_VELOCITY * ((SCROLL_GUTTER_HEIGHT - (ev.clientY - scrollRect.top)) / SCROLL_GUTTER_HEIGHT
+        -MAX_SCROLL_VELOCITY * ((SCROLL_GUTTER_HEIGHT - (ev.clientY - scrollRectTop)) / SCROLL_GUTTER_HEIGHT
       ));
     } else if (ev.clientY > scrollClientBottom) {
       this._scrollVelocity = Math.min(
