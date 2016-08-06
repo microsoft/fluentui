@@ -31,6 +31,7 @@ export interface IDetailsHeaderProps {
   /** ariaLabel for the header checkbox that selects or deselects everything */
   ariaLabelForSelectAllCheckbox?: string;
   ref?: string;
+  hideSelectAll?: boolean;
 }
 
 export interface IDetailsHeaderState {
@@ -89,8 +90,9 @@ export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetails
   }
 
   public render() {
-    let { selectionMode, columns, ariaLabel, ariaLabelForSelectAllCheckbox } = this.props;
+    let { selectionMode, columns, ariaLabel, ariaLabelForSelectAllCheckbox, hideSelectAll } = this.props;
     let { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed } = this.state;
+    let hideSelectAllCheckbox = hideSelectAll || selectionMode !== SelectionMode.multiple;
 
     return (
       <div
@@ -98,14 +100,14 @@ export class DetailsHeader extends React.Component<IDetailsHeaderProps, IDetails
         aria-label= { ariaLabel }
         className={ css('ms-DetailsHeader', {
           'is-allSelected': isAllSelected,
-          'is-singleSelect': selectionMode === SelectionMode.single,
+          'is-singleSelect': hideSelectAllCheckbox,
           'is-resizingColumn': !!columnResizeDetails && isSizing
         }) }
         onMouseMove={ this._onMove.bind(this) }
         onMouseUp={ this._onUp.bind(this) }
         ref='root' data-automationid='DetailsHeader'>
         <FocusZone ref='focusZone' direction={ FocusZoneDirection.horizontal }>
-          { (selectionMode === SelectionMode.multiple) ? (
+          { !hideSelectAllCheckbox ? (
             <div className='ms-DetailsHeader-cellWrapper' role='columnheader'>
               <button
                 className='ms-DetailsHeader-cell is-check'
