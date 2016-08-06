@@ -3,7 +3,7 @@
 $ContextualMenu-background: $ms-color-white;
 $ContextualMenu-itemHover: $ms-color-neutralLight;
 $ContextualMenu-expandedItemBackground: $ms-color-neutralQuaternaryAlt;
-$ContextualMenu-itemHeight: 40px;
+$ContextualMenu-itemHeight: 36px;
 $ContextualMenu-iconWidth: 24px;
 
 .ms-ContextualMenu {
@@ -49,6 +49,8 @@ $ContextualMenu-iconWidth: 24px;
   &.is-expanded,
   &.is-expanded:hover {
     background: $ContextualMenu-expandedItemBackground;
+    color: $ms-color-black;
+    font-weight: $ms-font-weight-semibold;
   }
 }
 
