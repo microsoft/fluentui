@@ -236,43 +236,43 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                 />
             ) }
           </div>
-        </div>
-        <div ref='contentContainer' onKeyDown={ this._onContentKeyDown }>
-          <FocusZone
-            ref='focusZone'
-            direction={ FocusZoneDirection.vertical }
-            isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }
-            onActiveElementChanged={ this._onActiveRowChanged }
-            >
-            <SelectionZone
-              selection={ selection }
-              selectionMode={ selectionMode }
-              onItemInvoked={ onItemInvoked }>
-              { groups ? (
-                <GroupedList
-                  groups={ groups }
-                  groupProps={ groupProps }
-                  items={ items }
-                  onRenderCell={ this._onRenderCell }
-                  selection={ selection }
-                  selectionMode={ selectionMode }
-                  dragDropEvents={ dragDropEvents }
-                  dragDropHelper={ dragDropHelper }
-                  eventsToRegister={ rowElementEventMap }
-                  listProps={ additionalListProps }
-                  ref='groups'
-                  />
-              ) : (
-                  <List
+          <div ref='contentContainer' onKeyDown={ this._onContentKeyDown }>
+            <FocusZone
+              ref='focusZone'
+              direction={ FocusZoneDirection.vertical }
+              isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }
+              onActiveElementChanged={ this._onActiveRowChanged }
+              >
+              <SelectionZone
+                selection={ selection }
+                selectionMode={ selectionMode }
+                onItemInvoked={ onItemInvoked }>
+                { groups ? (
+                  <GroupedList
+                    groups={ groups }
+                    groupProps={ groupProps }
                     items={ items }
-                    onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex) }
-                    { ...additionalListProps }
-                    ref='list'
+                    onRenderCell={ this._onRenderCell }
+                    selection={ selection }
+                    selectionMode={ selectionMode }
+                    dragDropEvents={ dragDropEvents }
+                    dragDropHelper={ dragDropHelper }
+                    eventsToRegister={ rowElementEventMap }
+                    listProps={ additionalListProps }
+                    ref='groups'
                     />
-                )
-              }
-            </SelectionZone>
-          </FocusZone>
+                ) : (
+                    <List
+                      items={ items }
+                      onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex) }
+                      { ...additionalListProps }
+                      ref='list'
+                      />
+                  )
+                }
+              </SelectionZone>
+            </FocusZone>
+          </div>
         </div>
       </div>
     );

@@ -176,6 +176,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
         data-is-draggable={ isDraggable }
         data-automationid='DetailsRow'
         style={ { minWidth: viewport ? viewport.width : 0 } }
+        aria-selected={ isSelected }
         >
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           { (selectionMode !== SelectionMode.none) && (
