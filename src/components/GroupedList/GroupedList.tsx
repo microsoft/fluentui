@@ -110,7 +110,7 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
     this._forceListUpdates();
   }
 
-  public onToggleCollapseAll(allCollapsed: boolean) {
+  public toggleCollapseAll(allCollapsed: boolean) {
     let { groups } = this.state;
     let { groupProps } = this.props;
     let onToggleCollapseAll = groupProps && groupProps.onToggleCollapseAll;
