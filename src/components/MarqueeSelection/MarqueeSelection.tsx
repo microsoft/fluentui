@@ -110,7 +110,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     if (!onShouldStartSelection || onShouldStartSelection(ev)) {
       let scrollableParent = findScrollableParent(this.refs.root);
 
-      if (scrollableParent && ev.buttons === 1) {
+      if (scrollableParent && ev.button === 0) {
         this._selectedIndicies = {};
         this._events.on(window, 'mousemove', this._onMouseMove);
         this._events.on(scrollableParent, 'scroll', this._onMouseMove);
@@ -147,7 +147,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
       this._dragOrigin = currentPoint;
     }
 
-    if (ev.buttons === 0) {
+    if (ev.buttons !== undefined && ev.buttons === 0) {
       this._onMouseUp(ev);
     } else {
       if (this.state.dragRect || _getDistanceBetweenPoints(this._dragOrigin, currentPoint) > MIN_DRAG_DISTANCE) {
@@ -157,16 +157,20 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
           y: Math.max(0, Math.min(rootRect.height, this._lastMouseEvent.clientY - rootRect.top))
         };
 
-        this.setState({
-          dragRect: {
+        let dragRect = {
             left: Math.min(this._dragOrigin.x, constrainedPoint.x),
             top: Math.min(this._dragOrigin.y, constrainedPoint.y),
             width: Math.abs(constrainedPoint.x - this._dragOrigin.x),
             height: Math.abs(constrainedPoint.y - this._dragOrigin.y)
-          }
-        }, () => this._asyncEvaluateSelection());
+          };
+
+        this.setState({ dragRect });
+        this._evaluateSelection(dragRect);
       }
     }
+
+    ev.stopPropagation();
+    ev.preventDefault();
 
     return false;
   }
@@ -190,9 +194,8 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     }
   }
 
-  private _asyncEvaluateSelection() {
+  private _evaluateSelection(dragRect: IRectangle) {
     let { selection } = this.props;
-    let { dragRect } = this.state;
     let rootRect = this._getRootRect();
 
     // Break early if we don't need to evaluate.
