@@ -24,6 +24,11 @@ export interface IGroupedList {
    * call this to force a re-evaluation. Be aware that this can be an expensive operation and should be done sparingly.
    */
   forceUpdate: () => void;
+
+  /**
+   * Toggles the collapsed state of all the groups in the list.
+   */
+  toggleCollapseAll: (allCollapsed: boolean) => void;
 }
 
 export interface IGroupedListProps extends React.Props<GroupedList> {
@@ -167,6 +172,9 @@ export interface IGroupHeaderProps {
 
   /** Callback for when the group is selected. */
   onToggleSelectGroup?: (group: IGroup) => void;
+
+  /** Determines if the group selection check box is shown for collapsed groups. */
+  isCollapsedGroupSelectVisible?: boolean;
 }
 
 export interface IGroupFooterProps {
