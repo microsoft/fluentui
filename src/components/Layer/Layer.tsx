@@ -36,7 +36,7 @@ export class Layer extends React.Component<ILayerProps, {}> {
   }
 
   public componentWillMount() {
-    if (!_layerHost) {
+    if (!_layerHost || this.props.hostWindow) {
       let hostElement: HTMLElement;
       if (this.props.hostWindow) {
         let win = this.props.hostWindow;
