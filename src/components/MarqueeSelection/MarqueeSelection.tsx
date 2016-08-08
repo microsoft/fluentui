@@ -19,7 +19,6 @@ export interface IRectangle {
   top: number;
   width: number;
   height: number;
-
   right?: number;
   bottom?: number;
 }
@@ -56,6 +55,8 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
   private _autoScroll;
   private _selectedIndicies: { [key: string]: boolean };
   private _itemRectCache: { [key: string]: IRectangle };
+  private _scrollableParent: HTMLElement;
+  private _scrollTop: number;
 
   constructor(props: IMarqueeSelectionProps) {
     super(props);
@@ -64,12 +65,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
       dragRect: null
     };
 
-    this._asyncEvaluateSelection = this._async.throttle(
-      this._asyncEvaluateSelection,
-      70,
-      { leading: false });
-
-      this._onMouseDown = this._onMouseDown.bind(this);
+    this._onMouseDown = this._onMouseDown.bind(this);
   }
 
   public componentWillUnmount() {
@@ -120,9 +116,22 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
         this._events.on(scrollableParent, 'scroll', this._onMouseMove);
         this._events.on(window, 'mouseup', this._onMouseUp, true);
         this._autoScroll = new AutoScroll(this.refs.root);
+        this._scrollableParent = scrollableParent;
+        this._scrollTop = scrollableParent.scrollTop;
+        this._rootRect = this.refs.root.getBoundingClientRect();
+
         this._onMouseMove(ev.nativeEvent as MouseEvent);
       }
     }
+  }
+
+  private _getRootRect(): IRectangle {
+    return {
+      left: this._rootRect.left,
+      top: this._rootRect.top + (this._scrollTop - this._scrollableParent.scrollTop),
+      width: this._rootRect.width,
+      height: this._rootRect.height
+    };
   }
 
   private _onMouseMove(ev: MouseEvent) {
@@ -130,9 +139,9 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
       this._lastMouseEvent = ev;
     }
 
-    this._rootRect = this.refs.root.getBoundingClientRect();
+    let rootRect = this._getRootRect();
 
-    let currentPoint = { x: ev.clientX - this._rootRect.left, y: ev.clientY - this._rootRect.top };
+    let currentPoint = { x: ev.clientX - rootRect.left, y: ev.clientY - rootRect.top };
 
     if (!this._dragOrigin) {
       this._dragOrigin = currentPoint;
@@ -142,10 +151,10 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
       this._onMouseUp(ev);
     } else {
       if (this.state.dragRect || _getDistanceBetweenPoints(this._dragOrigin, currentPoint) > MIN_DRAG_DISTANCE) {
-        // We need to constain the current point to the rootRect boundaries.
+        // We need to constrain the current point to the rootRect boundaries.
         let constrainedPoint = {
-          x: Math.max(0, Math.min(this._rootRect.width, this._lastMouseEvent.clientX - this._rootRect.left)),
-          y: Math.max(0, Math.min(this._rootRect.height, this._lastMouseEvent.clientY - this._rootRect.top))
+          x: Math.max(0, Math.min(rootRect.width, this._lastMouseEvent.clientX - rootRect.left)),
+          y: Math.max(0, Math.min(rootRect.height, this._lastMouseEvent.clientY - rootRect.top))
         };
 
         this.setState({
@@ -184,7 +193,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
   private _asyncEvaluateSelection() {
     let { selection } = this.props;
     let { dragRect } = this.state;
-    let { _rootRect: rootRect } = this;
+    let rootRect = this._getRootRect();
 
     // Break early if we don't need to evaluate.
     if (!dragRect) {
@@ -213,7 +222,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
         itemRect = element.getBoundingClientRect();
 
         // Normalize the item rect to the dragRect coordinates.
-        itemRect = this._itemRectCache[index] = {
+        itemRect = {
           left: itemRect.left - rootRect.left,
           top: itemRect.top - rootRect.top,
           width: itemRect.width,
@@ -221,6 +230,10 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
           right: (itemRect.left - rootRect.left) + itemRect.width,
           bottom: (itemRect.top - rootRect.top) + itemRect.height
         };
+
+        if (itemRect.width > 0 && itemRect.height > 0) {
+          this._itemRectCache[index] = itemRect;
+        }
       }
 
       if (
