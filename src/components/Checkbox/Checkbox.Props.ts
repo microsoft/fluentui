@@ -1,31 +1,22 @@
 import * as React from 'react';
 import { Checkbox } from './Checkbox';
 
-export interface ICheckboxProps extends React.Props<Checkbox> {
+export interface ICheckbox {
+  /** Gets the current checked state. */
+  checked: boolean;
+
+  /** Sets focus to the checkbox. */
+  focus(): void;
+}
+
+export interface ICheckboxProps extends React.HTMLProps<HTMLInputElement> {
   /**
    * Label to display next to the checkbox.
    */
-  text?: string;
-
-  /**
-   * Whether the checkbox is checked or not.
-   * @defaultvalue false
-   */
-  isChecked?: boolean;
-
-  /**
-   * Whether the checkbox is enabled or not.
-   * @defaultvalue true
-   */
-  isEnabled?: boolean;
+  label?: string;
 
   /**
    * Callback that is called when the checked value has changed.
    */
-  onChanged?: (isChecked: boolean) => void;
-
-  /**
-   * Optional class name to stamp on the root of the component.
-   */
-  className?: string;
+  onChange?: (ev?: React.FormEvent, isChecked?: boolean) => void;
 }
