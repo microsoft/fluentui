@@ -1,14 +1,18 @@
 {
   "name": "office-ui-fabric-react",
-  "version": "0.34.0",
+  "version": "0.38.0",
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://onedrive.visualstudio.com/DefaultCollection/Design/_git/office-ui-fabric-react"
+    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
   },
   "license": "MIT",
+  "scripts": {
+    "start": "gulp serve",
+    "test": "gulp test"
+  },
   "devDependencies": {
     "es6-promise": "3.2.1",
     "git-rev": "0.2.1",

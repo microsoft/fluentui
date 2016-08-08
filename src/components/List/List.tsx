@@ -80,6 +80,7 @@ export class List extends BaseComponent<IListProps, IListState> {
   private _scrollElement: HTMLElement;
   private _scrollingToIndex: number;
   private _hasCompletedFirstRender: boolean;
+  private isFirstRenderRectUpdate: boolean;
 
   // surface rect relative to window
   private _surfaceRect: ClientRect;
@@ -110,6 +111,7 @@ export class List extends BaseComponent<IListProps, IListState> {
     this._totalEstimates = 0;
     this._requiredWindowsAhead = 0;
     this._requiredWindowsBehind = 0;
+    this.isFirstRenderRectUpdate = true;
 
     // Track the measure version for everything.
     this._measureVersion = 0;
@@ -567,7 +569,9 @@ export class List extends BaseComponent<IListProps, IListState> {
   }
 
   private _getItemCountForPage(itemIndex: number, visibileRect: ClientRect): number {
-    return this.props.getItemCountForPage ? this.props.getItemCountForPage(itemIndex, visibileRect) : DEFAULT_ITEMS_PER_PAGE;
+    let itemsPerPage = this.props.getItemCountForPage ? this.props.getItemCountForPage(itemIndex, visibileRect) : DEFAULT_ITEMS_PER_PAGE;
+
+    return itemsPerPage ? itemsPerPage : DEFAULT_ITEMS_PER_PAGE;
   }
 
   private _createPage(pageKey: string, items: any[], startIndex?: number, count?: number, style?: any): IPage {
@@ -613,13 +617,16 @@ export class List extends BaseComponent<IListProps, IListState> {
        surfaceRect = this._surfaceRect = _measureSurfaceRect(this.refs.surface);
     }
 
-    // If the surface is above the container top or below the container bottom, return empty rect.
-    if (
-      surfaceRect.bottom < 0 ||
-      surfaceRect.top > window.innerHeight) {
+    // If the surface is above the container top or below the container bottom, or if this is not the first
+    // render return empty rect.
+    // The first time the list gets rendered we need to calculate the rectangle. The width of the list is
+    // used to calculate the width of the list items.
+    if ( (surfaceRect.bottom < 0 ||
+      surfaceRect.top > window.innerHeight) && !this.isFirstRenderRectUpdate) {
       this._requiredRect = EMPTY_RECT;
       this._allowedRect = EMPTY_RECT;
     } else {
+      this.isFirstRenderRectUpdate = false;
       const visibleTop = Math.max(0, -surfaceRect.top);
       const visibleRect = {
         top: visibleTop,

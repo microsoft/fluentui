@@ -17,7 +17,7 @@ export interface ICalloutProps extends React.Props<Callout>, IPositionProps {
 
   /**
    * The gap space between the target element and the callout.
-   * @default 20
+   * @default 16
    */
   gapSpace?: number;
 

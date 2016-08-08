@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IColumn, CheckboxVisibility } from './DetailsList.Props';
-import { Check } from './Check';
-import { GroupSpacer } from './GroupSpacer';
+import { Check } from '../Check/Check';
+import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { DetailsRowFields } from './DetailsRowFields';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
@@ -176,6 +176,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
         data-is-draggable={ isDraggable }
         data-automationid='DetailsRow'
         style={ { minWidth: viewport ? viewport.width : 0 } }
+        aria-selected={ isSelected }
         >
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           { (selectionMode !== SelectionMode.none) && (

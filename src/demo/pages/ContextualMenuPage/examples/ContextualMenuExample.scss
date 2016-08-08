@@ -27,8 +27,12 @@
 
 .ms-ContextualMenu-customizationExample-item {
   display: inline-block;
-  padding: 3px;
-  margin: 2px;
+  width: 39px;
+  height: 39px;
+  line-height: 39px;
+  text-align: center;
+  vertical-align: middle;
+  margin-bottom: 8px;
 
   &:hover {
     background-color: #eaeaea;
@@ -36,16 +40,16 @@
 }
 
 .ms-ContextualMenu-customizationExample-categoriesList {
-  max-height: 200px;
-  overflow-y: auto;
   margin: 0px;
   padding: 0;
   list-style-type: none;
 }
 
 .ms-ContextualMenu-customizationExample-categorySwatch {
-  @include margin-left(-10px);
-  @include margin-right(10px);
+  margin: 8px;
+  width: 24px;
+  height: 24px;
+  vertical-align: top;
 }
 
 .ms-ContextualMenu-example-clickableArea {
