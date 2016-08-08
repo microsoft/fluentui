@@ -15,8 +15,6 @@ const DIRECTIONAL_KEY_CODES = [
   KeyCodes.pageDown
 ];
 
-const STATIONARY_DETECTION_DELAY = 100;
-
 export interface IFabricState {
   isFocusVisible?: boolean;
 }

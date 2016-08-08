@@ -3,7 +3,6 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import {
-  Image,
   Selection,
   MarqueeSelection,
   css
