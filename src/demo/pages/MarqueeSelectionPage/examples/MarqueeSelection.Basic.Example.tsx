@@ -3,7 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import {
-  Checkbox,
+  Toggle,
   Selection,
   MarqueeSelection,
   css
@@ -51,7 +51,7 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
 
   public render() {
     return (
-      <Checkbox selection={ this._selection } isEnabled={ this.state.isMarqueeEnabled }>
+      <MarqueeSelection selection={ this._selection } isEnabled={ this.state.isMarqueeEnabled }>
         <Toggle
           label='Is marquee enabled'
           defaultChecked={ true }
