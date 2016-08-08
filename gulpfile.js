@@ -9,7 +9,12 @@ build.tslint.setConfig({ lintConfig: require('./tslint.json') });
 
 build.postCopy.setConfig({
   copyTo: {
-    'dist': [ 'src/**/*.png' ]
+    'dist': [
+      'src/**/*.png',
+      'node_modules/react/dist/react.js',
+      'node_modules/react-dom/dist/react-dom.js',
+      'node_modules/office-ui-fabric/dist/fabric.min.css'
+    ],
   }
 });
 
