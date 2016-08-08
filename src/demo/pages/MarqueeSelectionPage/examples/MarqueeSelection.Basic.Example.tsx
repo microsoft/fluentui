@@ -30,7 +30,7 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, {}> {
 
     this._selection = new Selection(() => {
       if (this._isMounted) {
-        this.forceUpdate();
+        this.setState({});
       }
     });
 
@@ -54,8 +54,9 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, {}> {
               }) }
               data-is-focusable={ true }
               data-selection-index={ index }
-              onClick={ () => console.log('clicked') }>
-              <Image src={ photo.url } width={ photo.width } height={ photo.height } />
+              onClick={ () => console.log('clicked') }
+              style={ { width: photo.width, height: photo.height } }>
+              { index }
             </div>
           )) }
         </ul>
