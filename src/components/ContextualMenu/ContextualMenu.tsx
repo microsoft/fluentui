@@ -77,10 +77,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     beakWidth: 16
   };
 
-  public refs: {
-    [key: string]: React.ReactInstance;
-  };
-
   private _host: HTMLElement;
   private _previousActiveElement: HTMLElement;
   private _isFocusingPreviousElement: boolean;
@@ -198,14 +194,14 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
               ariaLabelledBy={ labelElementId }
               ref={ (focusZone) => this._focusZone = focusZone }
               >
-              <ul className='ms-ContextualMenu-list is-open ' onKeyDown={ this._onKeyDown }>
+              <ul className='ms-ContextualMenu-list is-open' onKeyDown={ this._onKeyDown }>
                 { items.map((item, index) => (
                   // If the item name is equal to '-', a divider will be generated.
                   item.name === '-' ? (
                     <li
                       role='separator'
                       key={ item.key || index }
-                      className={ css('ms-ContextualMenu-item ms-ContextualMenu-item--divider', item.className ) }/>
+                      className={ css('ms-ContextualMenu-divider', item.className ) }/>
                   ) : (
                       <li
                         role='menuitem'
@@ -265,7 +261,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         ) : (null)}
         <span className='ms-ContextualMenu-itemText ms-fontWeight-regular'>{ item.name }</span>
         {(item.items && item.items.length) ? (
-          <i className={ css('ms-ContextualMenu-chevronRight ms-Icon', getRTL() ? 'ms-Icon--chevronLeft' : 'ms-Icon--chevronRight') } />
+          <i className={ css('ms-ContextualMenu-submenuChevron ms-Icon', getRTL() ? 'ms-Icon--chevronLeft' : 'ms-Icon--chevronRight') } />
         ) : (null)}
       </div>
     );
@@ -363,7 +359,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
           isSubMenu: true,
           id: this.state.subMenuId,
           shouldFocusOnMount: true,
-          directionalHint: DirectionalHint.rightTopEdge,
+          directionalHint: getRTL() ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
           className: item.className
         }
       });
@@ -371,15 +367,8 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
  }
 
   private _onSubMenuDismiss(ev?: any) {
-    let itemKey = null;
-    let list = this.refs[this.state.expandedMenuItemKey] as HTMLElement;
-
-    if (list && list.contains(ev.target as HTMLElement)) {
-      itemKey = this.state.expandedMenuItemKey;
-    }
-
     this.setState({
-      dismissedMenuItemKey: itemKey,
+      dismissedMenuItemKey: this.state.expandedMenuItemKey,
       expandedMenuItemKey: null,
       submenuProps: null
     });

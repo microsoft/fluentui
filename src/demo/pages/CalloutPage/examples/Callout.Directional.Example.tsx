@@ -50,8 +50,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
     this.state = {
       isCalloutVisible: false,
       isBeakVisible: true,
-      directionalHint: DirectionalHint.bottomLeftEdge,
-      gapSpace: 10
+      directionalHint: DirectionalHint.bottomLeftEdge
     };
   }
 
@@ -81,8 +80,6 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
             isBeakVisible={ isBeakVisible }
             onDismiss={ this._onDismiss }
             directionalHint={ directionalHint }
-            beakStyle={ 'ms-Callout-smallbeak' }
-            beakWidth={ 16 }
             >
             <div className='ms-Callout-header'>
               <p className='ms-Callout-title'>

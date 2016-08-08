@@ -1,5 +1,51 @@
 @import "~office-ui-fabric/src/sass/Fabric.Common";
-@import "~office-ui-fabric/src/components/Spinner/Spinner";
+
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
+//
+// Office UI Fabric
+// --------------------------------------------------
+// Spinner styles
+
+
+.ms-Spinner {
+  position: relative;
+  height: 20px;
+
+  &.ms-Spinner--large {
+    height: 28px;
+
+    .ms-Spinner-label {
+      left: 34px;
+      top: 6px;
+    }
+  }
+}
+
+.ms-Spinner-circle {
+  position: absolute;
+  border-radius: 100px;
+  background-color: $ms-color-themePrimary;
+  opacity: 0;
+
+  @media screen and (-ms-high-contrast: active) {
+    background-color: $ms-color-white;
+  }
+
+  @media screen and (-ms-high-contrast: black-on-white) {
+    background-color: $ms-color-black;
+  }
+}
+
+.ms-Spinner-label {
+  position: relative;
+  @include ms-font-s();
+  color: $ms-color-themePrimary;
+  left: 28px;
+  top: 2px;
+}
+
+// TODO: Remove overrides below.
 
 /**
   Change from Fabric - RTL support

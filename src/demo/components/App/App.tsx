@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  css,
   Fabric,
   Panel,
   PanelType
@@ -48,9 +49,9 @@ export class App extends React.Component<IAppProps, any> {
     );
 
     return (
-      <Fabric className='App'>
+      <Fabric className={ css('ms-App', 'ms-App--' + ResponsiveMode[responsiveMode]) }>
 
-        <div className='App-header'>
+        <div className='ms-App-header'>
           <Header
             title={ AppState.appTitle }
             sideLinks={ AppState.headerLinks }
@@ -60,18 +61,18 @@ export class App extends React.Component<IAppProps, any> {
         </div>
 
         { (responsiveMode > ResponsiveMode.large) ? (
-          <div className='App-nav'>
+          <div className='ms-App-nav'>
             { navPanel }
           </div>
         ) : (null) }
 
-        <div className='App-content' data-is-scrollable='true'>
+        <div className='ms-App-content' data-is-scrollable='true'>
           { this.props.children }
         </div>
 
         { (responsiveMode <= ResponsiveMode.large) ? (
           <Panel
-            className='App-navPanel ms-font-m'
+            className='ms-App-navPanel ms-font-m'
             isOpen={ isMenuVisible }
             isLightDismiss={ true }
             type={ PanelType.smallFixedNear }

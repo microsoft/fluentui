@@ -151,7 +151,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
                          role='menuitem'
                        >
                          { (!!item.icon) && <span className={ `ms-CommandBarItem-icon ms-Icon ms-Icon--${ item.icon }` }></span> }
-                         { (!!item.name) && <span className='ms-CommandBarItem-commandText ms-font-m ms-font-weight-regular'>{ item.name }</span> }
+                         { (!!item.name) && <span className='ms-CommandBarItem-commandText'>{ item.name }</span> }
                          { (item.items && item.items.length) ? (
                            <i className='ms-CommandBarItem-chevronDown ms-Icon ms-Icon--chevronDown' />
                          ) : ( null ) }
@@ -258,7 +258,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
       });
     }
     if (item.onClick) {
-      item.onClick();
+      item.onClick(item, ev);
     }
   }
 
