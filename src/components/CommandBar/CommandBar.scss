@@ -1,12 +1,5 @@
 @import '../../common/common';
 
-.ms-CommandBarItem-icon,
-.ms-CommandBarItem-overflow
- {
-  padding: 0 2px;
-  min-width: 17px;
-}
-
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
 
 //
@@ -27,7 +20,9 @@ $CommandBar-sideAreaWidthxlg: 345px;
 $CommandBarItem-height: $CommandBar-height;
 $CommandBarItem-marginTop: 13px;
 $CommandBarItem-textHeight: 16px;
-$CommandBarItem-iconWidth: 16px;
+$CommandBarItem-fontSize: 16px;
+$CommandBarItem-chevronDown-fontSize: 12px;
+$CommandBarItem-overflow-fontSize: 18px;
 $CommandBarItem-iconLabelMargin: 8px;
 $CommandBarItem-flippedLineHeight: 32px;
 
@@ -50,10 +45,9 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
   @include ms-font-m;
 
   position: relative;
-  background-color: $ms-color-themeLighterAlt;
+  background-color: $ms-color-neutralLighter;
   height: $CommandBar-height;
   white-space: nowrap;
-
   user-select: none;
 }
 
@@ -63,14 +57,14 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
   display: inline;
   vertical-align: top;
   line-height: $CommandBar-height;
-  margin: 0 24px;
+  margin: 0 20px;
 }
 
 .ms-CommandBar-sideCommands {
   position: absolute;
   @include right(0px);
   @include text-align(right);
-  @include padding-right(24px);
+  @include margin-right(20px);
 }
 
 // Command Bar Item
@@ -80,7 +74,7 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
   height: $CommandBarItem-height;
   outline: transparent;
   vertical-align: top;
-  margin: 0 2px;
+  margin: 0 4px;
 
   @media screen and (-ms-high-contrast: active) {
     @include highContrastBorder($ms-color-black);
@@ -97,29 +91,23 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
 
 .ms-CommandBarItem-chevronDown,
 .ms-CommandBarItem-commandText {
-  display: inline;
-  padding: 0 2px;
-}
-
-.ms-CommandBarItem-overflow {
-  font-size: $ms-font-size-m;
-  color: $ms-color-neutralSecondary;
+  display: inline-block;
+  padding: 0 4px;
+  vertical-align: top;
 }
 
 @mixin CommandBarItem-text {
   @include focus-border(2px);
 
-  font-family: inherit;
-  font-size: inherit;
+  @include ms-font-m;
 
   position: relative;
   background: none;
   border: none;
-  line-height: $CommandBarItem-height - 1;
-  height: $CommandBarItem-height;
+  line-height: $CommandBarItem-height;
   min-width: 20px;
   text-align: center;
-  padding: 0 2px;
+  padding: 0 4px;
   display: block;
   height: 100%;
 }
@@ -131,11 +119,10 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
 .ms-CommandBarItem-link {
   @include CommandBarItem-text;
   cursor: pointer;
-  padding: 0 6px;
 
   &:hover,
   &.is-expanded {
-    background-color: $ms-color-themeLight;
+    background-color: $ms-color-neutralLight;
 
     @media screen and (-ms-high-contrast: active) {
       @include highContrastBorder($ms-color-white);
@@ -145,19 +132,31 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
       @include highContrastBorder($ms-color-black);
     }
   }
+
+  &.is-expanded {
+    background-color: $ms-color-neutralQuaternary;
+  }
+
+  &.is-expanded:hover {
+    background-color: $ms-color-neutralQuaternaryAlt;
+  }
 }
 
 .ms-CommandBarItem-icon {
-  font-size: $ms-font-size-l;
-  color: $ms-color-themePrimary;
+  font-size: $CommandBarItem-fontSize;
+  color: $ms-color-themeDarkAlt;
+  padding: 0 4px;
 }
 
 .ms-CommandBarItem-chevronDown  {
-  vertical-align: baseline;
   color: $ms-color-neutralSecondary;
-  font-size: 16px;
-  width: 16px;
-  padding: 0 2px;
+  font-size: $CommandBarItem-chevronDown-fontSize;
+}
+
+.ms-CommandBarItem-overflow {
+  font-size: $CommandBarItem-overflow-fontSize;
+  color: $ms-color-neutralPrimary;
+  padding: 0 7px;
 }
 
 .ms-CommandBarSearch {

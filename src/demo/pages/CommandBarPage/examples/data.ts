@@ -149,19 +149,19 @@ export const farItems = [
   {
     key: 'sort',
     name: 'Sort',
-    icon: 'sortLines',
+    icon: 'SortLines',
     onClick: () => { return; }
   },
   {
     key: 'tile',
     name: 'Grid view',
-    icon: 'tile',
+    icon: 'Tiles',
     onClick: () => { return; }
   },
   {
     key: 'info',
     name: 'Info',
-    icon: 'circleInfo',
+    icon: 'Info',
     onClick: () => { return; }
   }
 ];
