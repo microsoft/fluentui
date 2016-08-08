@@ -95,7 +95,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       adjustedColumns: this._getAdjustedColumns(props),
       layoutMode: props.layoutMode,
       isSizing: false,
-      isDropping: false
+      isDropping: false,
+      isCollapsed: props.groupProps && props.groupProps.isAllGroupsCollapsed
     };
 
     this._events = new EventGroup(this);
@@ -192,6 +193,12 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       renderedWindowsAhead: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_AHEAD,
       renderedWindowsBehind: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_BEHIND
     };
+    // if isCollapsedGroupSelectVisible is false, disable select all when the list has all collapsed groups
+    let isCollapsedGroupSelectVisible = groupProps && groupProps.headerProps && groupProps.headerProps.isCollapsedGroupSelectVisible;
+    if (isCollapsedGroupSelectVisible === undefined) {
+      isCollapsedGroupSelectVisible = true;
+    }
+    let isSelectAllVisible = isCollapsedGroupSelectVisible || !isCollapsed;
 
     return (
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
@@ -225,6 +232,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                 onToggleCollapseAll={ this._onToggleCollapse }
                 ariaLabel={ ariaLabelForListHeader }
                 ariaLabelForSelectAllCheckbox={ ariaLabelForSelectAllCheckbox }
+                isSelectAllVisible={ isSelectAllVisible }
                 />
             ) }
           </div>
@@ -385,8 +393,9 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     this.setState({
       isCollapsed: collapsed
     });
-
-    this.forceUpdate();
+    if (this.refs.groups) {
+      this.refs.groups.toggleCollapseAll(collapsed);
+    }
   }
 
   private _forceListUpdates() {
