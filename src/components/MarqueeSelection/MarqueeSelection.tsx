@@ -4,7 +4,6 @@ import { BaseComponent } from '../../common/BaseComponent';
 import { IMarqueeSelectionProps } from './MarqueeSelection.Props';
 import { IPoint } from '../../common/IPoint';
 import { IRectangle } from '../../common/IRectangle';
-import { assign } from '../../utilities/object';
 import { css } from '../../utilities/css';
 import { findScrollableParent } from '../../utilities/scrollUtilities';
 import { getDistanceBetweenPoints } from '../../utilities/math';
