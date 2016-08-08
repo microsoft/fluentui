@@ -30,7 +30,7 @@ $MessageBar-padding: 8px;
 }
 
 .ms-MessageBar-icon {
-  @include padding-right(MessageBar-padding);
+  @include padding-right($MessageBar-padding);
   font-size: $ms-icon-size-m;
   @include ms-fontColor-neutralSecondaryAlt;
   min-width: 16px;
@@ -95,19 +95,12 @@ $MessageBar-padding: 8px;
   }
 }
 
-// TODO: Remove overrides below.
-
 // Shared
 
 .ms-MessageBar-content {
   display: flex;
   width: 100%;
   box-sizing: border-box;
-}
-
-.ms-MessageBar-link {
-  white-space: nowrap;
-  padding: 0 8px 0;
 }
 
 .ms-MessageBar-actionables {
@@ -139,12 +132,10 @@ $MessageBar-padding: 8px;
 }
 
 .ms-MessageBar-dismissal {
-  padding: 8px;
   @include focus-border();
 }
-
-.ms-MessageBar-link {
-  @include padding-left(4px);
+.ms-MessageBar-actions-oneline .ms-MessageBar-dismissal {
+  padding: 8px;
 }
 
 // Add space between adjacent MessageBars.
@@ -153,7 +144,7 @@ $MessageBar-padding: 8px;
 }
 
 .ms-MessageBar-innerTextPadding {
-  @include padding-right(16px); // Add padding if we have a dismiss to prevent button overlapping text.
+  @include padding-right(24px); // Add padding if we have a dismiss to prevent button overlapping text.
 
   span, .ms-MessageBar-innerText > span {
     @include padding-right(4px); // Add padding between text and hyperlink.
@@ -195,6 +186,6 @@ $MessageBar-padding: 8px;
 }
 
 // Because of an odd behaviour in other CSS, ms-MessageBar--remove causes children's icons to use 8px, and not inherit.
-.ms-MessageBar.ms-MessageBar--remove .ms-Icon--Cancel {
-  font-size: 13.333px;
+.ms-MessageBar .ms-Icon--Cancel {
+  font-size: 14px;
 }
