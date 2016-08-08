@@ -9,13 +9,7 @@ export interface IMarqueeSelectionProps extends React.Props<MarqueeSelection> {
   selection: ISelection;
 
   /**
-   * The base element tag name to render the marquee bounding area within.
-   * @default div
-   */
-  rootTagName?: string;
-
-  /**
-   * Optional props to mix into the root element.
+   * Optional props to mix into the root DIV element.
    */
   rootProps?: React.HTMLProps<HTMLDivElement>;
 
@@ -25,4 +19,13 @@ export interface IMarqueeSelectionProps extends React.Props<MarqueeSelection> {
    * event to prevent upstream mousedown handlers from executing.
    */
   onShouldStartSelection?: (ev: React.MouseEvent) => boolean;
+
+  /**
+   * Optional flag to control the enabled state of marquee selection. This allows you to render
+   * it and have events all ready to go, but conditionally disable it. That way transitioning
+   * between enabled/disabled generate no difference in the DOM.
+   * @default true
+   */
+  isEnabled?: boolean;
+
 }

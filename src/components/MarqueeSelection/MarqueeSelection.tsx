@@ -1,27 +1,15 @@
 import * as React from 'react';
 import { AutoScroll } from '../../utilities/AutoScroll/AutoScroll';
 import { BaseComponent } from '../../common/BaseComponent';
+import { IMarqueeSelectionProps } from './MarqueeSelection.Props';
+import { IPoint } from '../../common/IPoint';
+import { IRectangle } from '../../common/IRectangle';
 import { assign } from '../../utilities/object';
 import { css } from '../../utilities/css';
 import { findScrollableParent } from '../../utilities/scrollUtilities';
-import {
-  IMarqueeSelectionProps
-} from './MarqueeSelection.Props';
+import { getDistanceBetweenPoints } from '../../utilities/math';
+
 import './MarqueeSelection.scss';
-
-export interface IPoint {
-  x: number;
-  y: number;
-}
-
-export interface IRectangle {
-  left: number;
-  top: number;
-  width: number;
-  height: number;
-  right?: number;
-  bottom?: number;
-}
 
 export interface IMarqueeSelectionState {
   dragOrigin?: IPoint;
@@ -41,7 +29,8 @@ const MIN_DRAG_DISTANCE = 5;
 export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMarqueeSelectionState> {
   public static defaultProps = {
     rootTagName: 'div',
-    rootProps: {}
+    rootProps: {},
+    isEnabled: true
   };
 
   public refs: {
@@ -52,7 +41,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
   private _dragOrigin: IPoint;
   private _rootRect: IRectangle;
   private _lastMouseEvent: MouseEvent;
-  private _autoScroll;
+  private _autoScroll: AutoScroll;
   private _selectedIndicies: { [key: string]: boolean };
   private _itemRectCache: { [key: string]: IRectangle };
   private _scrollableParent: HTMLElement;
@@ -62,7 +51,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     super(props);
 
     this.state = {
-      dragRect: null
+      dragRect: undefined
     };
 
     this._onMouseDown = this._onMouseDown.bind(this);
@@ -75,39 +64,31 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
   }
 
   public render(): JSX.Element {
-    let { rootTagName, rootProps, children } = this.props;
+    let { rootProps, children } = this.props;
     let { dragRect } = this.state;
-    let selectionBox = null;
-    let dragMask = null;
 
-    if (dragRect) {
-      dragMask = (
-        <div className='ms-MarqueeSelection-dragMask' />
-      );
-      selectionBox = (
-        <div className='ms-MarqueeSelection-box' style={ dragRect }>
-          <div className='ms-MarqueeSelection-boxFill' />
-        </div>
-      );
-    }
-
-    return React.createElement(
-      rootTagName,
-      assign({}, rootProps, {
-        className: css('ms-MarqueeSelection', rootProps.className),
-        ref: 'root',
-        onMouseDown: this._onMouseDown
-      }),
-      children,
-      dragMask,
-      selectionBox
+    return (
+      <div
+        { ...rootProps }
+        className={ css('ms-MarqueeSelection', rootProps.className) }
+        ref='root'
+        onMouseDown={ this._onMouseDown }
+        >
+        { children }
+        { dragRect && (<div className='ms-MarqueeSelection-dragMask' />) }
+        { dragRect && (
+          <div className='ms-MarqueeSelection-box' style={ dragRect }>
+            <div className='ms-MarqueeSelection-boxFill' />
+          </div>
+        ) }
+      </div>
     );
   }
 
   private _onMouseDown(ev: React.MouseEvent) {
-    let { onShouldStartSelection } = this.props;
+    let { isEnabled, onShouldStartSelection } = this.props;
 
-    if (!onShouldStartSelection || onShouldStartSelection(ev)) {
+    if (isEnabled && (!onShouldStartSelection || onShouldStartSelection(ev))) {
       let scrollableParent = findScrollableParent(this.refs.root);
 
       if (scrollableParent && ev.button === 0) {
@@ -150,7 +131,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     if (ev.buttons !== undefined && ev.buttons === 0) {
       this._onMouseUp(ev);
     } else {
-      if (this.state.dragRect || _getDistanceBetweenPoints(this._dragOrigin, currentPoint) > MIN_DRAG_DISTANCE) {
+      if (this.state.dragRect || getDistanceBetweenPoints(this._dragOrigin, currentPoint) > MIN_DRAG_DISTANCE) {
         // We need to constrain the current point to the rootRect boundaries.
         let constrainedPoint = {
           x: Math.max(0, Math.min(rootRect.width, this._lastMouseEvent.clientX - rootRect.left)),
@@ -158,11 +139,11 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
         };
 
         let dragRect = {
-            left: Math.min(this._dragOrigin.x, constrainedPoint.x),
-            top: Math.min(this._dragOrigin.y, constrainedPoint.y),
-            width: Math.abs(constrainedPoint.x - this._dragOrigin.x),
-            height: Math.abs(constrainedPoint.y - this._dragOrigin.y)
-          };
+          left: Math.min(this._dragOrigin.x, constrainedPoint.x),
+          top: Math.min(this._dragOrigin.y, constrainedPoint.y),
+          width: Math.abs(constrainedPoint.x - this._dragOrigin.x),
+          height: Math.abs(constrainedPoint.y - this._dragOrigin.y)
+        };
 
         this.setState({ dragRect });
         this._evaluateSelection(dragRect);
@@ -182,11 +163,11 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     this._events.off(scrollableParent, 'scroll');
 
     this._autoScroll.dispose();
-    this._autoScroll = this._dragOrigin = this._lastMouseEvent = this._selectedIndicies = this._itemRectCache = null;
+    this._autoScroll = this._dragOrigin = this._lastMouseEvent = this._selectedIndicies = this._itemRectCache = undefined;
 
     if (this.state.dragRect) {
       this.setState({
-        dragRect: null
+        dragRect: undefined
       });
 
       ev.preventDefault();
@@ -261,8 +242,3 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
   }
 }
 
-function _getDistanceBetweenPoints(point1: IPoint, point2: IPoint): number {
-  let distance = Math.sqrt(Math.pow(point1.x - point2.x, 2) + Math.pow(point1.y - point2.y, 2));
-
-  return distance;
-}

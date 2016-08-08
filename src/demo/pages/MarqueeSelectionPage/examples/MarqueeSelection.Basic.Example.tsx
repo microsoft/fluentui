@@ -3,6 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import {
+  Checkbox,
   Selection,
   MarqueeSelection,
   css
@@ -20,16 +21,24 @@ const PHOTOS = createArray(250, () => {
   };
 });
 
-export class MarqueeSelectionBasicExample extends React.Component<{}, {}> {
+export interface IMarqueeSelectionBasicExampleState {
+  isMarqueeEnabled: boolean;
+}
+
+export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSelectionBasicExampleState> {
   private _selection: Selection;
   private _isMounted: boolean;
 
   constructor() {
     super();
 
+    this.state = {
+      isMarqueeEnabled: true
+    };
+
     this._selection = new Selection(() => {
       if (this._isMounted) {
-        this.setState({});
+        this.forceUpdate();
       }
     });
 
@@ -42,7 +51,11 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, {}> {
 
   public render() {
     return (
-      <MarqueeSelection selection={ this._selection }>
+      <Checkbox selection={ this._selection } isEnabled={ this.state.isMarqueeEnabled }>
+        <Toggle
+          label='Is marquee enabled'
+          defaultChecked={ true }
+          onChanged={ (isMarqueeEnabled) => this.setState({ isMarqueeEnabled }) } />
         <p>Drag a rectangle around the items below to select them:</p>
         <ul className='ms-MarqueeSelectionBasicExample-photoList'>
           { PHOTOS.map((photo, index) => (

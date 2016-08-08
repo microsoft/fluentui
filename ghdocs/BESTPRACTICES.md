@@ -35,8 +35,6 @@ _async: A collection of utilities for performing async operations, scoped to the
 
 _disposables: An array of IDisposable instances. If you have things you want disposed, you can push them into this.
 
-autoBindCallbacks: A helper method that will automatically bind _on methods, to simplify the manual binding of event callbacks.
-
 Another interesting thing is that when exceptions occur within React's methods, things tend to silently fail. With the BaseComponent, we
 make all methods "safe" meaning that if an exception occurs, we send the exception to a global callback which can be hooked up to a telemetry post. By default however, we forward the exception to console.error with the exact class/method that threw the exception so that there is an obvious hint what went wrong.
 

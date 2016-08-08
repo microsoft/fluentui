@@ -52,17 +52,6 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
     return (results && results.length > 1) ? results[1] : '';
   }
 
-  /**
-   * Gives the class constructor, will iterate through prototype methods prefixed with "_on" and bind them to "this".
-   * Example: in your constructor, you'd have: this.autoBindCallbacks(MyComponent); */
-  protected autoBindCallbacks(object: Function) {
-    for (let methodName in object.prototype) {
-      if (methodName.indexOf('_on') === 0) {
-        this[methodName] = this[methodName].bind(this);
-      }
-    }
-  }
-
   /** Allows subclasses to push things to this._disposables to be auto disposed. */
   protected get _disposables(): IDisposable[] {
     if (!this.__disposables) {
