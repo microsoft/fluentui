@@ -12,8 +12,11 @@ $MessageBar-padding: 8px;
 .ms-MessageBar {
   @include ms-baseFont;
   padding: $MessageBar-padding;
-  display: table;
   @include ms-bgColor-info;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  position: relative;
 
   .ms-Link {
     font-size: $ms-font-size-s;
@@ -27,13 +30,18 @@ $MessageBar-padding: 8px;
 }
 
 .ms-MessageBar-icon {
-  padding-right: $MessageBar-padding;
+  @include padding-right(MessageBar-padding);
   font-size: $ms-icon-size-m;
   @include ms-fontColor-neutralSecondaryAlt;
+  min-width: 16px;
+  min-height: 16px;
+  display:flex;
 }
 
 .ms-MessageBar-text {
   @include ms-font-s;
+  width: 100%;
+  display: flex;
 }
 
 
@@ -90,29 +98,11 @@ $MessageBar-padding: 8px;
 // TODO: Remove overrides below.
 
 // Shared
-.ms-MessageBar-icon {
-  @include padding-right(8px);
-  min-width: 16px;
-  min-height: 16px;
-  display:flex;
-}
-
-.ms-MessageBar {
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  position: relative;
-}
 
 .ms-MessageBar-content {
   display: flex;
   width: 100%;
   box-sizing: border-box;
-}
-
-.ms-MessageBar-text {
-  width: 100%;
-  display: flex;
 }
 
 .ms-MessageBar-link {
