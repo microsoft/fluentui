@@ -40,11 +40,10 @@ export class Layer extends React.Component<ILayerProps, {}> {
       let hostElement: HTMLElement;
       if (this.props.hostWindow) {
         let win = this.props.hostWindow;
-        win.document.createElement('div');
+        hostElement = win.document.createElement('div');
         hostElement.setAttribute('id', LAYER_HOST_ELEMENT_ID);
         win.document.body.appendChild(hostElement);
-      }
-      else {
+      } else {
         hostElement = document.createElement('div');
         hostElement.setAttribute('id', LAYER_HOST_ELEMENT_ID);
         document.body.appendChild(hostElement);

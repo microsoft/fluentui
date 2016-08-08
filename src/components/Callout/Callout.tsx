@@ -76,7 +76,7 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
       </div>
     );
     return this.props.doNotLayer ? content : (
-      <Layer onLayerMounted={ this._onLayerDidMount } hostWindow = { this.props.targetElement.ownerDocument.defaultView }>
+      <Layer onLayerMounted={ this._onLayerDidMount } hostWindow = { targetElement ? targetElement.ownerDocument.defaultView : null }>
         { content }
       </Layer>
     );
