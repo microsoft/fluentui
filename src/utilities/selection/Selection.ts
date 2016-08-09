@@ -152,7 +152,7 @@ export class Selection implements ISelection {
   public isIndexSelected(index: number): boolean {
     return !!(
       (this.count > 0) &&
-      (this._isAllSelected && !this._exemptedIndices[index]) ||
+      (this._isAllSelected && !this._exemptedIndices[index] && !this._dontSelectIndices[index]) ||
       (!this._isAllSelected && this._exemptedIndices[index]));
   }
 
