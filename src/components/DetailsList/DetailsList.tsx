@@ -236,6 +236,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                 />
             ) }
           </div>
+        </div>
           <div ref='contentContainer' onKeyDown={ this._onContentKeyDown }>
             <FocusZone
               ref='focusZone'
@@ -274,7 +275,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
             </FocusZone>
           </div>
         </div>
-      </div>
     );
   }
 
