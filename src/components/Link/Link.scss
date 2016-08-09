@@ -21,6 +21,7 @@
   background: none;
   @include text-align(left);
   display: inline;
+  border: none;
 
   &:hover,
   &:focus {
@@ -43,10 +44,3 @@
 .ms-Link {
   @include ms-Link;
 }
-
-BUTTON.ms-Link {
-
-  /* Needed for buttons disguised as links scenario. */
-  border: none;
-}
-
