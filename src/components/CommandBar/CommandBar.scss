@@ -6,6 +6,9 @@
 // Office UI Fabric
 // --------------------------------------------------
 // Command Bar styles
+//
+// Using Padding instead of Margin for Command bar items so that width to
+// calculate overFlow items is calculated correctly.
 
 $CommandBar-height: 40px;
 $CommandBar-mobileHeight: 48px;
@@ -25,7 +28,6 @@ $CommandBarItem-chevronDown-fontSize: 12px;
 $CommandBarItem-overflow-fontSize: 18px;
 $CommandBarItem-iconLabelMargin: 8px;
 $CommandBarItem-flippedLineHeight: 32px;
-
 
 $SearchBox-height: 40px;
 $SearchBox-widthLgCollapsed: 50px;
@@ -57,14 +59,14 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
   display: inline;
   vertical-align: top;
   line-height: $CommandBar-height;
-  margin: 0 20px;
+  padding: 0 20px;
 }
 
 .ms-CommandBar-sideCommands {
   position: absolute;
   @include right(0px);
   @include text-align(right);
-  @include margin-right(20px);
+  @include padding-right(20px);
 }
 
 // Command Bar Item
@@ -74,7 +76,7 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
   height: $CommandBarItem-height;
   outline: transparent;
   vertical-align: top;
-  margin: 0 4px;
+  padding: 0 4px;
 
   @media screen and (-ms-high-contrast: active) {
     @include highContrastBorder($ms-color-black);
