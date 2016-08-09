@@ -100,7 +100,6 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
 
 @mixin CommandBarItem-text {
   @include focus-border(2px);
-
   @include ms-font-m;
 
   position: relative;
@@ -112,6 +111,10 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
   padding: 0 4px;
   display: block;
   height: 100%;
+
+  &.ms-CommandBarItem--noName {
+    padding: 0 8px;
+  }
 }
 
 .ms-CommandBarItem-text {
