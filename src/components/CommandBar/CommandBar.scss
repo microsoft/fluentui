@@ -7,7 +7,7 @@
 // --------------------------------------------------
 // Command Bar styles
 //
-// Using Padding instead of Margin for Command bar items so that width to
+// Using Padding instead of Margin for ms-CommandBarItem so that width to
 // calculate overFlow items is calculated correctly.
 
 $CommandBar-height: 40px;
@@ -59,7 +59,7 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
   display: inline;
   vertical-align: top;
   line-height: $CommandBar-height;
-  padding: 0 20px;
+  margin: 0 20px;
 }
 
 .ms-CommandBar-sideCommands {
