@@ -58,7 +58,7 @@ ReactDOM.render(<MyPage />, document.body.firstChild);
 
 ## Advanced usage
 
-For advanced usage including info about module vs. path-based imports and using an AMD bundler like Require, see our [advanced documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ADVANCED.md).
+For advanced usage including info about module vs. path-based imports, using an AMD bundler like Require, and public deployment features, see our [advanced documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ADVANCED.md).
 
 
 ## Roadmap
