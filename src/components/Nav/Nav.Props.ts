@@ -83,9 +83,9 @@ export interface INavLink {
   ariaLabel?: string;
 
   /**
-   * (Optional) key for nav link
+   * (Optional) Unique ID for nav link
    */
-  key?: string;
+  id?: string;
 
   /**
    * Any additional properties to apply to the rendered links.
