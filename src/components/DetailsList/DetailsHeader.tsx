@@ -278,7 +278,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     let columnIndex = Number(columnIndexAttr);
     let { columns } = this.props;
 
-    if (columnIndex === null || ev.button !== MOUSEDOWN_PRIMARY_BUTTON) {
+    if (columnIndexAttr === null || ev.button !== MOUSEDOWN_PRIMARY_BUTTON) {
       // Ignore anything except the primary button.
       return;
     }
