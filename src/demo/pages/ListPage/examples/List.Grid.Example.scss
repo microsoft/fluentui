@@ -16,6 +16,18 @@
   float: left;
 }
 
+.ms-ListGridExample-sizer {
+  padding-bottom: 100%;
+}
+
+.msListGridExample-padder {
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+}
+
 .ms-Fabric.is-focusVisible .ms-ListGridExample-tile:focus:after {
   content: '';
   position: absolute;
@@ -37,4 +49,12 @@
   left: 0;
   width: 100%;
   font-size: $ms-font-size-s;
+  box-sizing: border-box;
+}
+
+.ms-ListGridExample-image {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
 }

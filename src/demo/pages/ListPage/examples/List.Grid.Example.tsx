@@ -39,13 +39,15 @@ export class ListGridExample extends React.Component<IListGridExampleProps, any>
               className='ms-ListGridExample-tile'
               data-is-focusable={ true }
               style={ {
-                width: (100 / this._columnCount) + '%',
-                backgroundColor: `rgba(${ 4 * (index % 32) + 127 }, ${ 4 * (index % 32) + 127 }, ${ 4 * (index % 32) + 127 }, 1)`
+                width: (100 / this._columnCount) + '%'
               } }>
-                <div style={ { paddingBottom: '100%' } }>
-                  <span className='ms-ListGridExample-label'>
-                  { `item ${ index }` }
-                  </span>
+                <div className='ms-ListGridExample-sizer'>
+                  <div className='msListGridExample-padder'>
+                    <img src={ item.thumbnail } className='ms-ListGridExample-image' />
+                    <span className='ms-ListGridExample-label'>
+                    { `item ${ index }` }
+                    </span>
+                  </div>
                 </div>
             </div>
           ) }
@@ -53,6 +55,7 @@ export class ListGridExample extends React.Component<IListGridExampleProps, any>
       </FocusZone>
     );
   }
+//                backgroundColor: `rgba(${ 4 * (index % 32) + 127 }, ${ 4 * (index % 32) + 127 }, ${ 4 * (index % 32) + 127 }, 1)`
 
   private _getItemCountForPage(itemIndex: number, surfaceRect) {
     if (itemIndex === 0) {
