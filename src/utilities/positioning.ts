@@ -142,13 +142,16 @@ let OppositeEdgeDictionary: { [key: number]: number } = {
 export function getRelativePositions(
   props: IPositionProps,
   hostElement: HTMLElement,
-  calloutElement: HTMLElement): IPositionInfo {
+  calloutElement: HTMLElement,
+  targetWindow: Window = window): IPositionInfo {
   let beakWidth: number = !props.isBeakVisible ? 0 : props.beakWidth;
   let borderWidth: number = positioningFunctions._getBorderSize(calloutElement);
   let gap: number = positioningFunctions._calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
+  // There are certain cases that the window the javascript is running in does not match the window where the
+  // contextual menu will be. As such we need to allow users to pass in a specific window.
   let boundingRect: Rectangle = props.bounds ?
     positioningFunctions._getRectangleFromIRect(props.bounds) :
-    new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
+    new Rectangle(0, targetWindow.innerWidth - getScrollbarWidth(), 0, targetWindow.innerHeight);
   let targetRect: Rectangle = positioningFunctions._getTargetRect(
     boundingRect,
     props.targetElement,

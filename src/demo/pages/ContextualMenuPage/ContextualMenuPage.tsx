@@ -11,11 +11,13 @@ import { ContextualMenuBasicExample } from './examples/ContextualMenu.Basic.Exam
 import { ContextualMenuCheckmarksExample } from './examples/ContextualMenu.Checkmarks.Example';
 import { ContextualMenuDirectionalExample } from './examples/ContextualMenu.Directional.Example';
 import { ContextualMenuCustomizationExample } from './examples/ContextualMenu.Customization.Example';
+import { ContextualMenuRemoteExample } from './examples/ContextualMenu.Remote.Example';
 
 const ContextualMenuBasicExampleCode = require('./examples/ContextualMenu.Basic.Example.tsx');
 const ContextualMenuCheckmarksExampleCode = require('./examples/ContextualMenu.Checkmarks.Example.tsx');
 const ContextualMenuDirectionalExampleCode = require('./examples/ContextualMenu.Directional.Example.tsx');
 const ContextualMenuCustomizationExampleCode = require('./examples/ContextualMenu.Customization.Example.tsx');
+const ContextualMenuRemoteExampleCode = require('./examples/ContextualMenu.Remote.Example.tsx');
 
 export class ContextualMenuPage extends React.Component<any, any> {
   public render() {
@@ -42,6 +44,10 @@ export class ContextualMenuPage extends React.Component<any, any> {
 
         <ExampleCard title='ContextualMenu customization example' code={ ContextualMenuCustomizationExampleCode }>
           <ContextualMenuCustomizationExample />
+        </ExampleCard>
+
+        <ExampleCard title='ContextualMenu remote window example' code={ ContextualMenuRemoteExampleCode }>
+          <ContextualMenuRemoteExample />
         </ExampleCard>
 
         <PropertiesTableSet componentName='ContextualMenu' />

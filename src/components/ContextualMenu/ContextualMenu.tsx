@@ -68,6 +68,7 @@ let _instance = 0;
 
 export class ContextualMenu extends React.Component<IContextualMenuProps, IContextualMenuState> {
   // The default ContextualMenu properities have no items and beak, the default submenu direction is right and top.
+  private targetWindow: Window;
   public static defaultProps = {
     items: [],
     shouldFocusOnMount: true,
@@ -97,7 +98,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
       contextualMenuItems: null,
       subMenuId: 'ContextualMenu-SubMenu-' + _instance++
     };
-
+    this.targetWindow = props.targetElement ? props.targetElement.ownerDocument.defaultView : window
     this._isFocusingPreviousElement = false;
     this._didSetInitialFocus = false;
     this._enterTimerId = 0;
@@ -128,9 +129,9 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
 
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount() {
-    this._events.on(window, 'resize', this.dismiss);
-    this._events.on(window, 'mousedown', this._onMouseDownCapture, true);
-    this._events.on(window, 'touchstart', this._onMouseDownCapture, true);
+    this._events.on(this.targetWindow, 'resize', this.dismiss);
+    this._events.on(this.targetWindow, 'mousedown', this._onMouseDownCapture, true);
+    this._events.on(this.targetWindow, 'touchstart', this._onMouseDownCapture, true);
   }
 
   // Invoked when a component is receiving new props.
@@ -188,7 +189,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         beakStyle='ms-Callout-smallbeak'
         className='ms-ContextualMenu-Callout'
         onLayerMounted={ () => this._tryFocus(this._focusZone) }
-        onDismiss={ this.props.onDismiss }>
+        onDismiss={ this.dismiss }>
         <div ref={ (host: HTMLDivElement) => this._host = host} id={ id } className={ css('ms-ContextualMenu-container', className) }>
           { (items && items.length) ? (
             <FocusZone
