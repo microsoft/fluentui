@@ -6,13 +6,13 @@ $ContextualMenu-expandedItemBackground: $ms-color-themeLight;
 $ContextualMenu-itemHeight: 40px;
 $ContextualMenu-iconWidth: 24px;
 
-.ms-ContextualMenu {
+.od-ContextualMenu {
   background-color: $ContextualMenu-background;
   min-width: 180px;
   max-width: 300px;
 }
 
-.ms-ContextualMenu-list {
+.od-ContextualMenu-list {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -21,14 +21,14 @@ $ContextualMenu-iconWidth: 24px;
   line-height: 0;
 }
 
-.ms-ContextualMenu-item {
+.od-ContextualMenu-item {
   @include ms-font-m;
 
   position: relative;
   box-sizing: border-box;
 }
 
-.ms-ContextualMenu-link {
+.od-ContextualMenu-link {
   @include focus-border();
 
   font: inherit;
@@ -52,7 +52,7 @@ $ContextualMenu-iconWidth: 24px;
   }
 }
 
-.ms-ContextualMenu-divider {
+.od-ContextualMenu-divider {
   display: block;
   height: 1px;
   margin: 4px 0;
@@ -60,25 +60,25 @@ $ContextualMenu-iconWidth: 24px;
   position: relative;
 }
 
-.ms-ContextualMenu-checkmark {
+.od-ContextualMenu-checkmark {
   display: inline-block;
   min-height: 1px;
   width: $ContextualMenu-iconWidth;
   text-align: center;
 }
 
-.ms-ContextualMenu-icon {
+.od-ContextualMenu-icon {
   display: inline-block;
   min-height: 1px;
   width: $ContextualMenu-iconWidth;
   text-align: center;
 }
 
-.ms-ContextualMenu-itemText {
+.od-ContextualMenu-itemText {
   padding: 0 4px;
 }
 
-.ms-Icon.ms-ContextualMenu-submenuChevron {
+.ms-Icon.od-ContextualMenu-submenuChevron {
   position: absolute;
   height: $ContextualMenu-itemHeight;
   line-height: $ContextualMenu-itemHeight;

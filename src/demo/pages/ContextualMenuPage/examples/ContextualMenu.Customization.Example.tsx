@@ -70,85 +70,85 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
                       key: 'cat',
                       name: 'cat',
                       onRender: this._renderCharmMenuItem,
-                      className: 'ms-ContextualMenu-customizationExample-item'
+                      className: 'od-ContextualMenu-customizationExample-item'
                     },
                     {
                       key: 'dog',
                       name: 'dog',
                       onRender: this._renderCharmMenuItem,
-                      className: 'ms-ContextualMenu-customizationExample-item'
+                      className: 'od-ContextualMenu-customizationExample-item'
                     },
                     {
                       key: 'plane',
                       name: 'plane',
                       onRender: this._renderCharmMenuItem,
-                      className: 'ms-ContextualMenu-customizationExample-item'
+                      className: 'od-ContextualMenu-customizationExample-item'
                     },
                     {
                       key: 'page',
                       name: 'page',
                       onRender: this._renderCharmMenuItem,
-                      className: 'ms-ContextualMenu-customizationExample-item'
+                      className: 'od-ContextualMenu-customizationExample-item'
                     },
                     {
                       key: 'firstAid',
                       name: 'firstAid',
                       onRender: this._renderCharmMenuItem,
-                      className: 'ms-ContextualMenu-customizationExample-item'
+                      className: 'od-ContextualMenu-customizationExample-item'
                     },
                     {
                       key: 'trophy',
                       name: 'trophy',
                       onRender: this._renderCharmMenuItem,
-                      className: 'ms-ContextualMenu-customizationExample-item'
+                      className: 'od-ContextualMenu-customizationExample-item'
                     },
                     {
                       key: 'home',
                       name: 'home',
                       onRender: this._renderCharmMenuItem,
-                      className: 'ms-ContextualMenu-customizationExample-item'
+                      className: 'od-ContextualMenu-customizationExample-item'
                     },
                     {
                       key: 'pill',
                       name: 'pill',
                       onRender: this._renderCharmMenuItem,
-                      className: 'ms-ContextualMenu-customizationExample-item'
+                      className: 'od-ContextualMenu-customizationExample-item'
                     },
                     {
                       key: 'briefcase',
                       name: 'briefcase',
                       onRender: this._renderCharmMenuItem,
-                      className: 'ms-ContextualMenu-customizationExample-item'
+                      className: 'od-ContextualMenu-customizationExample-item'
                     },
                     {
                       key: 'coffee',
                       name: 'coffee',
                       onRender: this._renderCharmMenuItem,
-                      className: 'ms-ContextualMenu-customizationExample-item'
+                      className: 'od-ContextualMenu-customizationExample-item'
                     },
                     {
                       key: 'people',
                       name: 'people',
                       onRender: this._renderCharmMenuItem,
-                      className: 'ms-ContextualMenu-customizationExample-item'
+                      className: 'od-ContextualMenu-customizationExample-item'
                     },
                     {
                       key: 'stopwatch',
                       name: 'stopwatch',
                       onRender: this._renderCharmMenuItem,
-                      className: 'ms-ContextualMenu-customizationExample-item'
+                      className: 'od-ContextualMenu-customizationExample-item'
                     },
                     {
                       key: 'music',
                       name: 'music',
                       onRender: this._renderCharmMenuItem,
-                      className: 'ms-ContextualMenu-customizationExample-item'
+                      className: 'od-ContextualMenu-customizationExample-item'
                     },
                     {
                       key: 'bag',
                       name: 'bag',
                       onRender: this._renderCharmMenuItem,
-                      className: 'ms-ContextualMenu-customizationExample-item'
+                      className: 'od-ContextualMenu-customizationExample-item'
                     }
                   ]
                 },
@@ -209,20 +209,20 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
   }
 
   private _renderCharmMenuItem(item: any) {
-    return <i className={ css('ms-Icon', 'ms-ContextualMenu-customizationExample-icon', 'ms-Icon--' + item.name) } />;
+    return <i className={ css('ms-Icon', 'od-ContextualMenu-customizationExample-icon', 'ms-Icon--' + item.name) } />;
   }
 
   private _renderCategoriesList(item: any) {
     return (
-      <ul className='ms-ContextualMenu-customizationExample-categoriesList'>
-        <li className='ms-ContextualMenu-item'>
+      <ul className='od-ContextualMenu-customizationExample-categoriesList'>
+        <li className='od-ContextualMenu-item'>
           { item.categoryList.map( category =>
-            <button className='ms-ContextualMenu-link' role='menuitem'>
+            <button className='od-ContextualMenu-link' role='menuitem'>
               <div>
                 <span
-                  className='ms-ContextualMenu-icon ms-ContextualMenu-customizationExample-categorySwatch'
+                  className='od-ContextualMenu-icon od-ContextualMenu-customizationExample-categorySwatch'
                   style={ {backgroundColor: category.color} }/>
-                <span className='ms-ContextualMenu-itemText ms-font-m ms-font-weight-regular'>
+                <span className='od-ContextualMenu-itemText ms-font-m ms-font-weight-regular'>
                   { category.name }
                 </span>
               </div>

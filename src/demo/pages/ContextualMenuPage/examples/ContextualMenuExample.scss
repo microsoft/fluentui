@@ -1,16 +1,16 @@
 @import '../../../../common/common';
 
-.ms-ContextualMenuDirectionalExample {
+.od-ContextualMenuDirectionalExample {
   position: relative;
 }
 
-.ms-ContextualMenuDirectionalExample-configArea,
-.ms-ContextualMenuDirectionalExample-buttonArea {
+.od-ContextualMenuDirectionalExample-configArea,
+.od-ContextualMenuDirectionalExample-buttonArea {
   display: inline-block;
   min-width: 300px;
 }
 
-.ms-ContextualMenuDirectionalExample-buttonArea {
+.od-ContextualMenuDirectionalExample-buttonArea {
     position: absolute;
     vertical-align: top;
     width: 300px;
@@ -19,13 +19,13 @@
     text-align: center;
 }
 
-.ms-ContextualMenuDirectionalExample-buttonArea .ms-Button {
+.od-ContextualMenuDirectionalExample-buttonArea .ms-Button {
     top: 80px;
     text-align: center;
     width: 100%;
 }
 
-.ms-ContextualMenu-customizationExample-item {
+.od-ContextualMenu-customizationExample-item {
   display: inline-block;
   width: 39px;
   height: 39px;
@@ -39,20 +39,20 @@
   }
 }
 
-.ms-ContextualMenu-customizationExample-categoriesList {
+.od-ContextualMenu-customizationExample-categoriesList {
   margin: 0px;
   padding: 0;
   list-style-type: none;
 }
 
-.ms-ContextualMenu-customizationExample-categorySwatch {
+.od-ContextualMenu-customizationExample-categorySwatch {
   margin: 8px;
   width: 24px;
   height: 24px;
   vertical-align: top;
 }
 
-.ms-ContextualMenu-example-clickableArea {
+.od-ContextualMenu-example-clickableArea {
     background: lightblue;
     border: none;
     font-size:0;
