@@ -130,7 +130,7 @@ export class ContextualMenuRemoteExample extends React.Component<any, any> {
 
   private _onClick(event: any) {
     let win = window.open('/src/demo/pages/ContextualMenuPage/examples/Context.html', 'funWindow', 'height=500, width=500');
-    win.addEventListener('load', (event) => {
+    win.addEventListener('load', (ev) => {
       let but = win.document.createElement('div');
       ReactDOM.render((<Button onClick={this._onNewClick.bind(this)} className='fancyButton'> Press me </Button>), but);
       win.document.body.appendChild(but);

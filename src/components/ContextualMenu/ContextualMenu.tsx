@@ -68,7 +68,6 @@ let _instance = 0;
 
 export class ContextualMenu extends React.Component<IContextualMenuProps, IContextualMenuState> {
   // The default ContextualMenu properities have no items and beak, the default submenu direction is right and top.
-  private targetWindow: Window;
   public static defaultProps = {
     items: [],
     shouldFocusOnMount: true,
@@ -90,6 +89,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   private _events: EventGroup;
   private _async: Async;
   private _focusZone: FocusZone;
+  private _targetWindow: Window;
 
   constructor(props: IContextualMenuProps) {
     super(props);
@@ -98,7 +98,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
       contextualMenuItems: null,
       subMenuId: 'ContextualMenu-SubMenu-' + _instance++
     };
-    this.targetWindow = props.targetElement ? props.targetElement.ownerDocument.defaultView : window
+    this._targetWindow = props.targetElement ? props.targetElement.ownerDocument.defaultView : window;
     this._isFocusingPreviousElement = false;
     this._didSetInitialFocus = false;
     this._enterTimerId = 0;
@@ -129,9 +129,9 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
 
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount() {
-    this._events.on(this.targetWindow, 'resize', this.dismiss);
-    this._events.on(this.targetWindow, 'mousedown', this._onMouseDownCapture, true);
-    this._events.on(this.targetWindow, 'touchstart', this._onMouseDownCapture, true);
+    this._events.on(this._targetWindow, 'resize', this.dismiss);
+    this._events.on(this._targetWindow, 'mousedown', this._onMouseDownCapture, true);
+    this._events.on(this._targetWindow, 'touchstart', this._onMouseDownCapture, true);
   }
 
   // Invoked when a component is receiving new props.
