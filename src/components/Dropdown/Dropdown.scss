@@ -7,6 +7,9 @@
 // --------------------------------------------------
 // Dropdown styles
 
+$Dropdown-selectedItem-bg: $ms-color-neutralQuaternaryAlt;
+$Dropdown-selectedItem-hover-bg: $ms-color-neutralLighter;
+
 // Mixin for high contrast mode link states
 @mixin highContrastListItemState {
   @media screen and (-ms-high-contrast: active) {
@@ -27,12 +30,9 @@
 }
 
 .ms-Dropdown {
-  @include ms-baseFont;
   @include ms-u-normalize;
-  color: $ms-color-neutralPrimary;
+  @include ms-font-m;
 
-  font-size: $ms-font-size-m;
-  font-weight: $ms-font-weight-regular;
   margin-bottom: 10px;
   position: relative;
   outline: 0;
@@ -50,7 +50,7 @@
   &:hover,
   &:active {
     .ms-Dropdown-title {
-      border-color: $ms-color-neutralSecondaryAlt;
+      border-color: $ms-color-themePrimary;
     }
   }
 
@@ -205,15 +205,20 @@
   }
 
   &:hover {
-    background-color: $ms-color-neutralLight;
+    background-color: $Dropdown-selectedItem-hover-bg;
     color: $ms-color-black;
 
     @include highContrastListItemState;
   }
 
+  @include focus-border();
+
+  &:focus {
+    background-color: $ms-color-neutralLighter;
+  }
+
   &:active {
-    background-color: $ms-color-neutralLight;
-    border-color: $ms-color-themePrimary;
+    background-color: $Dropdown-selectedItem-hover-bg;
     color: $ms-color-black;
   }
 
@@ -229,12 +234,14 @@
 // Use .is-selected instead.
 .ms-Dropdown-item.is-selected,
 .ms-Dropdown-item.ms-Dropdown-item--selected {
-  background-color: $ms-color-themeLight;
+  background-color: $Dropdown-selectedItem-bg;
   color: $ms-color-black;
 
   &:hover {
-    background-color: $ms-color-themeLight;
+    background-color: $Dropdown-selectedItem-bg;
   }
+
+  @include focus-border();
 
   @include highContrastListItemState;
 }
