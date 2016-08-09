@@ -116,14 +116,14 @@ $MessageBar-padding: 8px;
   position: absolute !important; // Needed because we're using focus-border mixin
 }
 
-.ms-MessageBar-actions, .ms-MessageBar-actions-oneline {
+.ms-MessageBar-actions, .ms-MessageBar-actionsOneline {
   display: flex;
   flex: 0 0 auto;
   flex-direction: row-reverse;
   align-items: center;
 }
 
-.ms-MessageBar-actions-oneline {
+.ms-MessageBar-actionsOneline {
   position: relative;
 }
 
@@ -134,7 +134,7 @@ $MessageBar-padding: 8px;
 .ms-MessageBar-dismissal {
   @include focus-border();
 }
-.ms-MessageBar-actions-oneline .ms-MessageBar-dismissal {
+.ms-MessageBar-actionsOneline .ms-MessageBar-dismissal {
   padding: 8px;
 }
 
