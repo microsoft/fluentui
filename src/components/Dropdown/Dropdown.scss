@@ -212,6 +212,7 @@ $Dropdown-selectedItem-hover-bg: $ms-color-neutralLighter;
   }
 
   @include focus-border();
+
   &:focus {
     background-color: $ms-color-neutralLighter;
   }

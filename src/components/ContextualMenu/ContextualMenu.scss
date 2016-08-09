@@ -40,6 +40,7 @@ $ContextualMenu-iconWidth: 24px;
   height: $ContextualMenu-itemHeight;
   line-height: $ContextualMenu-itemHeight;
   display: block;
+  cursor: pointer;
   @include text-align(left);
 
   &:hover:not([disabled]) {
