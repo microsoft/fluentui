@@ -179,10 +179,17 @@ export class EventGroup {
           let result;
           try {
             result = callback.apply(parent, args);
-            if (result === false && args[0] && args[0].preventDefault) {
+            if (result === false && args[0]) {
               let e = args[0];
 
-              e.preventDefault();
+              if (e.preventDefault) {
+                e.preventDefault();
+              }
+
+              if (e.stopPropagation) {
+                e.stopPropagation();
+              }
+
               e.cancelBubble = true;
             }
           } catch (e) {
