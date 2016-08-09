@@ -37,19 +37,15 @@ export class ListGridExample extends React.Component<IListGridExampleProps, any>
           getPageHeight={ this._getPageHeight }
           onRenderCell={ (item, index) => (
             <div
-              className='ms-ListGridExample-tile'
+              className='ms-ListGridExample-tile ms-u-fadeIn400'
               data-is-focusable={ true }
               style={ {
+                left: this._columnWidth * (index % this._columnCount),
+                top: this._columnWidth * Math.floor(index / this._columnCount),
                 width: this._columnWidth,
                 height: this._rowHeight,
                 backgroundColor: `rgba(${ 4 * (index % 32) + 127 }, ${ 4 * (index % 32) + 127 }, ${ 4 * (index % 32) + 127 }, 1)`
               } }>
-              <Image
-                className='ms-ListGridExample-image'
-                src={ this._getThumbnail(item, this._rowHeight) }
-                imageFit={ ImageFit.cover }
-                width={ this._rowHeight }
-                height={ this._rowHeight } />
               <span className='ms-ListGridExample-label'>
               { `item ${ index }` }
               </span>

@@ -6,7 +6,7 @@ import { assign } from '../../utilities/object';
 import { findIndex } from '../../utilities/array';
 import { findScrollableParent } from '../../utilities/scrollUtilities';
 
-const RESIZE_DELAY = 500;
+const RESIZE_DELAY = 16;
 const MIN_SCROLL_UPDATE_DELAY = 100;
 const MAX_SCROLL_UPDATE_DELAY = 500;
 const IDLE_DEBOUNCE_DELAY = 200;
