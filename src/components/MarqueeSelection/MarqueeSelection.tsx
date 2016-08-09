@@ -56,6 +56,14 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     this._onMouseDown = this._onMouseDown.bind(this);
   }
 
+  public componentDidMount() {
+    this._scrollableParent = findScrollableParent(this.refs.root);
+
+    if (!this.props.isDraggingConstrainedToRoot && this._scrollableParent) {
+      this._events.on(this._scrollableParent, 'mousedown', this._onMouseDown);
+    }
+  }
+
   public componentWillUnmount() {
     if (this._autoScroll) {
       this._autoScroll.dispose();
@@ -63,7 +71,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
   }
 
   public render(): JSX.Element {
-    let { rootProps, children } = this.props;
+    let { rootProps, children, isDraggingConstrainedToRoot } = this.props;
     let { dragRect } = this.state;
 
     return (
@@ -71,7 +79,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
         { ...rootProps }
         className={ css('ms-MarqueeSelection', rootProps.className) }
         ref='root'
-        onMouseDown={ this._onMouseDown }
+        onMouseDown={ isDraggingConstrainedToRoot ? this._onMouseDown : undefined }
         >
         { children }
         { dragRect && (<div className='ms-MarqueeSelection-dragMask' />) }
@@ -120,7 +128,6 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     }
 
     let rootRect = this._getRootRect();
-
     let currentPoint = { x: ev.clientX - rootRect.left, y: ev.clientY - rootRect.top };
 
     if (!this._dragOrigin) {
@@ -132,9 +139,12 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     } else {
       if (this.state.dragRect || getDistanceBetweenPoints(this._dragOrigin, currentPoint) > MIN_DRAG_DISTANCE) {
         // We need to constrain the current point to the rootRect boundaries.
-        let constrainedPoint = {
+        let constrainedPoint = this.props.isDraggingConstrainedToRoot ? {
           x: Math.max(0, Math.min(rootRect.width, this._lastMouseEvent.clientX - rootRect.left)),
           y: Math.max(0, Math.min(rootRect.height, this._lastMouseEvent.clientY - rootRect.top))
+        } : {
+          x: this._lastMouseEvent.clientX - rootRect.left,
+          y: this._lastMouseEvent.clientY - rootRect.top
         };
 
         let dragRect = {

@@ -434,7 +434,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       viewportWidth = this.props.viewport.width;
     }
 
-    newColumns = newColumns || buildColumns(newItems);
+    newColumns = newColumns || buildColumns(newItems, true);
 
     let adjustedColumns: IColumn[];
 

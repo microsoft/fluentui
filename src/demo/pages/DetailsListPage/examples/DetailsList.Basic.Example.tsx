@@ -34,7 +34,7 @@ export class DetailsListBasicExample extends React.Component<any, any> {
           onChanged={ text => this.setState({ filterText: text }) }
         />
         <MarqueeSelection selection={ this._selection }>
-          <DetailsList items={ items } shouldApplyApplicationRole= { true } setKey='set' selection={ this._selection } />
+          <DetailsList items={ items } setKey='set' selection={ this._selection } />
         </MarqueeSelection>
       </div>
     );

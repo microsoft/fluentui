@@ -28,4 +28,10 @@ export interface IMarqueeSelectionProps extends React.Props<MarqueeSelection> {
    */
   isEnabled?: boolean;
 
+  /**
+   * Optional flag to restrict the drag rect to the root element, instead of allowing the drag
+   * rect to start outside of the root element boundaries.
+   * @default false
+   */
+  isDraggingConstrainedToRoot?: boolean;
 }

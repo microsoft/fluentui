@@ -50,6 +50,7 @@ export interface IColumnResizeDetails {
 export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHeaderState> {
   public refs: {
     [key: string]: React.ReactInstance;
+    root: HTMLElement;
     focusZone: FocusZone;
   };
 
@@ -70,6 +71,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     let { selection } = this.props;
 
     this._events.on(selection, SELECTION_CHANGE, this._onSelectionChanged);
+    this._events.on(this.refs.root, 'mousedown', this._onSizerDown);
   }
 
   public componentWillReceiveProps(newProps) {
@@ -95,7 +97,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         }) }
         onMouseMove={ this._onMove.bind(this) }
         onMouseUp={ this._onUp.bind(this) }
-        ref='root' data-automationid='DetailsHeader'>
+        ref='root'
+        data-automationid='DetailsHeader'>
         <FocusZone ref='focusZone' direction={ FocusZoneDirection.horizontal }>
           { (selectionMode === SelectionMode.multiple) ? (
             <div className='ms-DetailsHeader-cellWrapper' role='columnheader'>
@@ -166,10 +169,10 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
               </div>
               { (column.isResizable) ? (
                 <div
+                  data-sizer-index={ columnIndex }
                   className={ css('ms-DetailsHeader-cell is-sizer', {
                     'is-resizing': columnResizeDetails && columnResizeDetails.columnIndex === columnIndex && isSizing
                   }) }
-                  onMouseDown={ this._onSizerDown.bind(this, columnIndex) }
                   onDoubleClick={ this._onSizerDoubleClick.bind(this, columnIndex) }
                   />
               ) : (null) }
@@ -264,13 +267,15 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     });
   }
 
-  private _onSizerDown(columnIndex: number, ev: React.MouseEvent) {
-    if (ev.button !== MOUSEDOWN_PRIMARY_BUTTON) {
+  private _onSizerDown(ev: MouseEvent) {
+    let columnIndexAttr = (ev.target as HTMLElement).getAttribute('data-sizer-index');
+    let columnIndex = Number(columnIndexAttr);
+    let { columns } = this.props;
+
+    if (columnIndex === null || ev.button !== MOUSEDOWN_PRIMARY_BUTTON) {
       // Ignore anything except the primary button.
       return;
     }
-
-    let { columns } = this.props;
 
     this.setState({
       columnResizeDetails: {
