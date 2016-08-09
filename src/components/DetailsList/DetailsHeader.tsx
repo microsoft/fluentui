@@ -31,6 +31,7 @@ export interface IDetailsHeaderProps {
   /** ariaLabel for the header checkbox that selects or deselects everything */
   ariaLabelForSelectAllCheckbox?: string;
   ref?: string;
+  isSelectAllVisible?: boolean;
 }
 
 export interface IDetailsHeaderState {
@@ -48,6 +49,10 @@ export interface IColumnResizeDetails {
 }
 
 export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHeaderState> {
+  public static defaultProps = {
+    isSelectAllVisible: true
+  };
+
   public refs: {
     [key: string]: React.ReactInstance;
     root: HTMLElement;
@@ -83,8 +88,9 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   }
 
   public render() {
-    let { selectionMode, columns, ariaLabel, ariaLabelForSelectAllCheckbox } = this.props;
+    let { selectionMode, columns, ariaLabel, ariaLabelForSelectAllCheckbox, isSelectAllVisible } = this.props;
     let { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed } = this.state;
+    let showSelectAllCheckbox = isSelectAllVisible && selectionMode === SelectionMode.multiple;
 
     return (
       <div
@@ -92,7 +98,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         aria-label= { ariaLabel }
         className={ css('ms-DetailsHeader', {
           'is-allSelected': isAllSelected,
-          'is-singleSelect': selectionMode === SelectionMode.single,
+          'is-singleSelect': !showSelectAllCheckbox,
           'is-resizingColumn': !!columnResizeDetails && isSizing
         }) }
         onMouseMove={ this._onMove.bind(this) }
@@ -100,7 +106,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         ref='root'
         data-automationid='DetailsHeader'>
         <FocusZone ref='focusZone' direction={ FocusZoneDirection.horizontal }>
-          { (selectionMode === SelectionMode.multiple) ? (
+          { showSelectAllCheckbox ? (
             <div className='ms-DetailsHeader-cellWrapper' role='columnheader'>
               <button
                 className='ms-DetailsHeader-cell is-check'
