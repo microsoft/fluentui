@@ -125,8 +125,6 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
 
   &:hover,
   &.is-expanded {
-    background-color: $ms-color-neutralLight;
-
     @media screen and (-ms-high-contrast: active) {
       @include highContrastBorder($ms-color-white);
     }
@@ -136,12 +134,42 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
     }
   }
 
+  &:hover {
+    color: $ms-color-neutralDark;
+    background-color: $ms-color-neutralLight;
+
+    .ms-CommandBarItem-icon {
+      color: $ms-color-themeDark;
+    }
+
+    .ms-CommandBarItem-chevronDown {
+      color: $ms-color-neutralPrimaryAlt;
+    }
+
+    .ms-CommandBarItem-overflow {
+      color: $ms-color-neutralDark;
+    }
+  }
+
   &.is-expanded {
-    background-color: $ms-color-neutralQuaternary;
+    background-color: $ms-color-neutralQuaternaryAlt;
+    color: $ms-color-black;
+
+    .ms-CommandBarItem-icon {
+      color: $ms-color-themeDarker;
+    }
+
+    .ms-CommandBarItem-chevronDown {
+      color: $ms-color-neutralDark;
+    }
+
+    .ms-CommandBarItem-overflow {
+      color: $ms-color-black;
+    }
   }
 
   &.is-expanded:hover {
-    background-color: $ms-color-neutralQuaternaryAlt;
+    background-color: $ms-color-neutralQuaternary;
   }
 }
 
