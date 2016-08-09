@@ -87,3 +87,6 @@ typings/webparts
 
 # Configs that contain sensitive information
 TDSDeployConfig.json
+
+#ftp config
+ftpconfig.json
