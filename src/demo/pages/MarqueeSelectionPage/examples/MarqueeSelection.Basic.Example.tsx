@@ -36,11 +36,11 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
       isMarqueeEnabled: true
     };
 
-    this._selection = new Selection(() => {
+    this._selection = new Selection({ onSelectionChanged: () => {
       if (this._isMounted) {
         this.forceUpdate();
       }
-    });
+    }});
 
     this._selection.setItems(PHOTOS);
   }
