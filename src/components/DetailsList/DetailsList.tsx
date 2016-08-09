@@ -100,7 +100,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     };
 
     this._events = new EventGroup(this);
-    this._selection = props.selection || new Selection(null, props.getKey);
+    this._selection = props.selection || new Selection({ onSelectionChanged: null, getKey: props.getKey });
     this._selection.setItems(props.items as IObjectWithKey[], false);
     this._dragDropHelper = props.dragDropEvents ? new DragDropHelper({ selection: this._selection }) : null;
   }
@@ -293,7 +293,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       viewport,
       checkboxVisibility,
       getRowAriaLabel,
-      canSelectItem,
       checkButtonAriaLabel
     } = this.props;
     let selection = this._selection;
@@ -327,7 +326,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           viewport={ viewport }
           checkboxVisibility={ checkboxVisibility }
           getRowAriaLabel={ getRowAriaLabel }
-          canSelectItem={ canSelectItem }
+          canSelectItem={ this._selection.canSelectItem }
           checkButtonAriaLabel={ checkButtonAriaLabel }
           />
     );

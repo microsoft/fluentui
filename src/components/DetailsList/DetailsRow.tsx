@@ -171,7 +171,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
           'is-check-visible': checkboxVisibility === CheckboxVisibility.always
         }) }
         data-is-focusable={ true }
-        data-selection-index={ canSelect ? itemIndex : -1 }
+        data-selection-index={ itemIndex }
         data-item-index={ itemIndex }
         data-is-draggable={ isDraggable }
         data-automationid='DetailsRow'
