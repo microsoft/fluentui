@@ -34,6 +34,7 @@ export class ListGridExample extends React.Component<IListGridExampleProps, any>
           items={ this.props.items }
           getItemCountForPage={ this._getItemCountForPage }
           getPageHeight={ this._getPageHeight }
+          renderedWindowsAhead={ 4 }
           onRenderCell={ (item, index) => (
             <div
               className='ms-ListGridExample-tile'
@@ -55,7 +56,6 @@ export class ListGridExample extends React.Component<IListGridExampleProps, any>
       </FocusZone>
     );
   }
-//                backgroundColor: `rgba(${ 4 * (index % 32) + 127 }, ${ 4 * (index % 32) + 127 }, ${ 4 * (index % 32) + 127 }, 1)`
 
   private _getItemCountForPage(itemIndex: number, surfaceRect) {
     if (itemIndex === 0) {
