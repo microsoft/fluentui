@@ -62,6 +62,11 @@ export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeSt
    * A callback function for when the Dialog content is mounted on the overlay layer
    */
   onLayerMounted?: () => void;
+
+  /**
+   * If the dialog should render
+   */
+  hostElement?: HTMLElement;
 }
 
 export enum DialogType {
