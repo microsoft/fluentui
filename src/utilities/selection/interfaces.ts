@@ -12,6 +12,7 @@ export enum SelectionMode {
 
 export interface ISelection {
   count: number;
+  canSelectItem?: (item: any) => boolean;
 
   // Obesrvable methods.
   setChangeEvents(isEnabled: boolean, suppressChange?: boolean);
