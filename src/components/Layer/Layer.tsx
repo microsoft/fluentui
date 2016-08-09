@@ -36,18 +36,16 @@ export class Layer extends React.Component<ILayerProps, {}> {
   }
 
   public componentWillMount() {
-    if (!_layerHost || this.props.hostWindow) {
+    let useHostWindow: boolean = (this.props.hostWindow && !this.props.hostWindow.document.getElementById(LAYER_HOST_ELEMENT_ID));
+
+    if (!_layerHost || useHostWindow) {
       let hostElement: HTMLElement;
-      if (this.props.hostWindow) {
-        let win = this.props.hostWindow;
-        hostElement = win.document.createElement('div');
-        hostElement.setAttribute('id', LAYER_HOST_ELEMENT_ID);
-        win.document.body.appendChild(hostElement);
-      } else {
-        hostElement = document.createElement('div');
-        hostElement.setAttribute('id', LAYER_HOST_ELEMENT_ID);
-        document.body.appendChild(hostElement);
-      }
+      let hostDocument: Document = useHostWindow ? this.props.hostWindow.document : document;
+
+      hostElement = hostDocument.createElement('div');
+      hostElement.setAttribute('id', LAYER_HOST_ELEMENT_ID);
+      hostDocument.body.appendChild(hostElement);
+
       let layerHost: LayerHost = ReactDOM.render((
         <LayerHost />
       ), hostElement) as LayerHost;
