@@ -326,7 +326,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
         viewport={ viewport }
         checkboxVisibility={ checkboxVisibility }
         getRowAriaLabel={ getRowAriaLabel }
-        canSelectItem={ this._selection.canSelectItem }
         checkButtonAriaLabel={ checkButtonAriaLabel }
         />
     );
