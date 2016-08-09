@@ -311,25 +311,25 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     }
 
     return (
-        <DetailsRow
-          item={ item }
-          itemIndex={ index }
-          columns={ columns }
-          groupNestingDepth={ nestingDepth }
-          selectionMode={ selectionMode }
-          selection={ selection }
-          onDidMount={ this._onRowDidMount }
-          onWillUnmount={ this._onRowWillUnmount }
-          onRenderItemColumn={ onRenderItemColumn }
-          eventsToRegister={ eventsToRegister }
-          dragDropEvents={ dragDropEvents }
-          dragDropHelper={ dragDropHelper }
-          viewport={ viewport }
-          checkboxVisibility={ checkboxVisibility }
-          getRowAriaLabel={ getRowAriaLabel }
-          canSelectItem={ canSelectItem }
-          checkButtonAriaLabel={ checkButtonAriaLabel }
-          />
+      <DetailsRow
+        item={ item }
+        itemIndex={ index }
+        columns={ columns }
+        groupNestingDepth={ nestingDepth }
+        selectionMode={ selectionMode }
+        selection={ selection }
+        onDidMount={ this._onRowDidMount }
+        onWillUnmount={ this._onRowWillUnmount }
+        onRenderItemColumn={ onRenderItemColumn }
+        eventsToRegister={ eventsToRegister }
+        dragDropEvents={ dragDropEvents }
+        dragDropHelper={ dragDropHelper }
+        viewport={ viewport }
+        checkboxVisibility={ checkboxVisibility }
+        getRowAriaLabel={ getRowAriaLabel }
+        canSelectItem={ canSelectItem }
+        checkButtonAriaLabel={ checkButtonAriaLabel }
+        />
     );
   }
 
@@ -443,7 +443,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       viewportWidth = this.props.viewport.width;
     }
 
-    newColumns = newColumns || buildColumns(newItems);
+    newColumns = newColumns || buildColumns(newItems, true);
 
     let adjustedColumns: IColumn[];
 

@@ -7,6 +7,7 @@ export class Selection implements ISelection {
 
   private _changeEventSuppressionCount: number;
   private _items: IObjectWithKey[];
+  private _selectedItems: IObjectWithKey[];
   private _isAllSelected: boolean;
   private _exemptedIndices: { [index: string]: boolean };
   private _exemptedCount: number;
@@ -95,21 +96,17 @@ export class Selection implements ISelection {
   }
 
   public getSelection(): IObjectWithKey[] {
-    let selectedItems = [];
+    if (!this._selectedItems) {
+      this._selectedItems = [];
 
-    for (let i = 0; i < this._items.length; i++) {
-      let item = this._items[i];
-      let isExempt = !!this._exemptedIndices[i];
-      let key = item ? this.getKey(item, i) : null;
-
-      if ((!key && this._isAllSelected) ||
-        (key && this._isAllSelected && !isExempt) ||
-        (key && !this._isAllSelected && isExempt)) {
-        selectedItems.push(item);
+      for (let i = 0; i < this._items.length; i++) {
+        if (this.isIndexSelected(i)) {
+          this._selectedItems.push(this._items[i]);
+        }
       }
     }
 
-    return selectedItems;
+    return this._selectedItems;
   }
 
   public getSelectedCount(): number {
@@ -224,6 +221,7 @@ export class Selection implements ISelection {
 
   private _change() {
     if (this._changeEventSuppressionCount === 0) {
+      this._selectedItems = null;
 
       EventGroup.raise(this, SELECTION_CHANGE);
 
