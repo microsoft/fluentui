@@ -39,6 +39,14 @@
     .ms-Dropdown-title,
     .ms-Dropdown-caretDown {
       color: $ms-color-black;
+
+      @media screen and (-ms-high-contrast: active) {
+        color: $ms-color-contrastBlackSelected;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        color: $ms-color-contrastWhiteSelected;
+      }
     }
   }
 
@@ -46,12 +54,28 @@
   &:active {
     .ms-Dropdown-title {
       border-color: $ms-color-neutralSecondaryAlt;
+
+      @media screen and (-ms-high-contrast: active) {
+        border-color: $ms-color-contrastBlackSelected;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        border-color: $ms-color-contrastWhiteSelected;
+      }
     }
   }
 
   &:focus {
     .ms-Dropdown-title {
       border-color: $ms-color-themePrimary;
+
+      @media screen and (-ms-high-contrast: active) {
+        border-color: $ms-color-contrastBlackSelected;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        border-color: $ms-color-contrastWhiteSelected;
+      }
     }
   }
 
