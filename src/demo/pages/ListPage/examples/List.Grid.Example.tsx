@@ -1,9 +1,7 @@
 import * as React from 'react';
 import {
   FocusZone,
-  List,
-  Image,
-  ImageFit
+  List
 } from '../../../../index';
 import './List.Grid.Example.scss';
 
@@ -12,6 +10,7 @@ export interface IListGridExampleProps {
 }
 
 const ROWS_PER_PAGE = 3;
+const MAX_ROW_HEIGHT = 250;
 
 export class ListGridExample extends React.Component<IListGridExampleProps, any> {
   private _positions;
@@ -37,18 +36,17 @@ export class ListGridExample extends React.Component<IListGridExampleProps, any>
           getPageHeight={ this._getPageHeight }
           onRenderCell={ (item, index) => (
             <div
-              className='ms-ListGridExample-tile ms-u-fadeIn400'
+              className='ms-ListGridExample-tile'
               data-is-focusable={ true }
               style={ {
-                left: this._columnWidth * (index % this._columnCount),
-                top: this._columnWidth * Math.floor(index / this._columnCount),
-                width: this._columnWidth,
-                height: this._rowHeight,
+                width: (100 / this._columnCount) + '%',
                 backgroundColor: `rgba(${ 4 * (index % 32) + 127 }, ${ 4 * (index % 32) + 127 }, ${ 4 * (index % 32) + 127 }, 1)`
               } }>
-              <span className='ms-ListGridExample-label'>
-              { `item ${ index }` }
-              </span>
+                <div style={ { paddingBottom: '100%' } }>
+                  <span className='ms-ListGridExample-label'>
+                  { `item ${ index }` }
+                  </span>
+                </div>
             </div>
           ) }
         />
@@ -56,19 +54,9 @@ export class ListGridExample extends React.Component<IListGridExampleProps, any>
     );
   }
 
-  private _getThumbnail(item, rowHeight) {
-    const aspectRatio = item.width / item.height;
-
-    if (item.width >= item.height) {
-      return `//placekitten.com/${ Math.round( aspectRatio * rowHeight) }/${ rowHeight }`;
-    } else {
-      return `//placekitten.com/${ rowHeight }/${ Math.round(rowHeight / aspectRatio) }`;
-    }
-  }
-
   private _getItemCountForPage(itemIndex: number, surfaceRect) {
     if (itemIndex === 0) {
-      this._columnCount = Math.ceil(surfaceRect.width / 200);
+      this._columnCount = Math.ceil(surfaceRect.width / MAX_ROW_HEIGHT);
       this._columnWidth = Math.floor(surfaceRect.width / this._columnCount);
       this._rowHeight = this._columnWidth;
     }

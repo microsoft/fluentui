@@ -10,9 +10,10 @@
 }
 
 .ms-ListGridExample-tile {
-  position: absolute;
   text-align: center;
   outline: none;
+  position: relative;
+  float: left;
 }
 
 .ms-Fabric.is-focusVisible .ms-ListGridExample-tile:focus:after {
@@ -27,13 +28,13 @@
 }
 
 .ms-ListGridExample-label {
-  border: 2px solid white;
-  border-radius: 20px;
-  background: rgba(0, 0, 0, .5);
-  color: $ms-color-white;
-  padding: 5px 10px;
+  background: rgba(0,0,0,.3);
+  color: #ffffff;
+  padding: 10px;
   position: absolute;
-  @include right(10px);
-  bottom: 10px;
+  bottom: 0;
+  font-size: 12px;
+  left: 0;
+  width: 100%;
   font-size: $ms-font-size-s;
 }
