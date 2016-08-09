@@ -51,7 +51,6 @@ export class Nav extends React.Component<INavProps, INavState> {
           className={'ms-Nav-link' + (_isLinkSelected(link) ? ' is-selected' : '')}
           href={ link.url || 'javascript:' }
           onClick={ onLinkClick }
-          title={ link.title ? link.title : undefined }
           aria-label={ link.ariaLabel }
         >
           { (link.iconClassName ?

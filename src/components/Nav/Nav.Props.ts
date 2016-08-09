@@ -78,17 +78,17 @@ export interface INavLink {
   isExpanded?: boolean;
 
   /**
-   * Any additional properties to apply to the rendered links.
-   */
-  [propertyName: string]: any;
-
-  /**
    * (Optional) Aria label for nav link
    */
   ariaLabel?: string;
 
   /**
-   * (Optional) Title for nav link
+   * (Optional) key for nav link
    */
-  title?: string;
+  key?: string;
+
+  /**
+   * Any additional properties to apply to the rendered links.
+   */
+  [propertyName: string]: any;
 }
