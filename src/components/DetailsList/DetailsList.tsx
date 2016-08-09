@@ -95,7 +95,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       adjustedColumns: this._getAdjustedColumns(props),
       layoutMode: props.layoutMode,
       isSizing: false,
-      isDropping: false
+      isDropping: false,
+      isCollapsed: props.groupProps && props.groupProps.isAllGroupsCollapsed
     };
 
     this._events = new EventGroup(this);
@@ -192,6 +193,12 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       renderedWindowsAhead: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_AHEAD,
       renderedWindowsBehind: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_BEHIND
     };
+    // if isCollapsedGroupSelectVisible is false, disable select all when the list has all collapsed groups
+    let isCollapsedGroupSelectVisible = groupProps && groupProps.headerProps && groupProps.headerProps.isCollapsedGroupSelectVisible;
+    if (isCollapsedGroupSelectVisible === undefined) {
+      isCollapsedGroupSelectVisible = true;
+    }
+    let isSelectAllVisible = isCollapsedGroupSelectVisible || !isCollapsed;
 
     return (
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
@@ -225,46 +232,47 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                 onToggleCollapseAll={ this._onToggleCollapse }
                 ariaLabel={ ariaLabelForListHeader }
                 ariaLabelForSelectAllCheckbox={ ariaLabelForSelectAllCheckbox }
+                isSelectAllVisible={ isSelectAllVisible }
                 />
             ) }
           </div>
-        </div>
-        <div ref='contentContainer' onKeyDown={ this._onContentKeyDown }>
-          <FocusZone
-            ref='focusZone'
-            direction={ FocusZoneDirection.vertical }
-            isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }
-            onActiveElementChanged={ this._onActiveRowChanged }
-            >
-            <SelectionZone
-              selection={ selection }
-              selectionMode={ selectionMode }
-              onItemInvoked={ onItemInvoked }>
-              { groups ? (
-                <GroupedList
-                  groups={ groups }
-                  groupProps={ groupProps }
-                  items={ items }
-                  onRenderCell={ this._onRenderCell }
-                  selection={ selection }
-                  selectionMode={ selectionMode }
-                  dragDropEvents={ dragDropEvents }
-                  dragDropHelper={ dragDropHelper }
-                  eventsToRegister={ rowElementEventMap }
-                  listProps={ additionalListProps }
-                  ref='groups'
-                  />
-              ) : (
-                  <List
+          <div ref='contentContainer' onKeyDown={ this._onContentKeyDown }>
+            <FocusZone
+              ref='focusZone'
+              direction={ FocusZoneDirection.vertical }
+              isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }
+              onActiveElementChanged={ this._onActiveRowChanged }
+              >
+              <SelectionZone
+                selection={ selection }
+                selectionMode={ selectionMode }
+                onItemInvoked={ onItemInvoked }>
+                { groups ? (
+                  <GroupedList
+                    groups={ groups }
+                    groupProps={ groupProps }
                     items={ items }
-                    onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex) }
-                    { ...additionalListProps }
-                    ref='list'
+                    onRenderCell={ this._onRenderCell }
+                    selection={ selection }
+                    selectionMode={ selectionMode }
+                    dragDropEvents={ dragDropEvents }
+                    dragDropHelper={ dragDropHelper }
+                    eventsToRegister={ rowElementEventMap }
+                    listProps={ additionalListProps }
+                    ref='groups'
                     />
-                )
-              }
-            </SelectionZone>
-          </FocusZone>
+                ) : (
+                    <List
+                      items={ items }
+                      onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex) }
+                      { ...additionalListProps }
+                      ref='list'
+                      />
+                  )
+                }
+              </SelectionZone>
+            </FocusZone>
+          </div>
         </div>
       </div>
     );
@@ -303,25 +311,25 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     }
 
     return (
-        <DetailsRow
-          item={ item }
-          itemIndex={ index }
-          columns={ columns }
-          groupNestingDepth={ nestingDepth }
-          selectionMode={ selectionMode }
-          selection={ selection }
-          onDidMount={ this._onRowDidMount }
-          onWillUnmount={ this._onRowWillUnmount }
-          onRenderItemColumn={ onRenderItemColumn }
-          eventsToRegister={ eventsToRegister }
-          dragDropEvents={ dragDropEvents }
-          dragDropHelper={ dragDropHelper }
-          viewport={ viewport }
-          checkboxVisibility={ checkboxVisibility }
-          getRowAriaLabel={ getRowAriaLabel }
-          canSelectItem={ canSelectItem }
-          checkButtonAriaLabel={ checkButtonAriaLabel }
-          />
+      <DetailsRow
+        item={ item }
+        itemIndex={ index }
+        columns={ columns }
+        groupNestingDepth={ nestingDepth }
+        selectionMode={ selectionMode }
+        selection={ selection }
+        onDidMount={ this._onRowDidMount }
+        onWillUnmount={ this._onRowWillUnmount }
+        onRenderItemColumn={ onRenderItemColumn }
+        eventsToRegister={ eventsToRegister }
+        dragDropEvents={ dragDropEvents }
+        dragDropHelper={ dragDropHelper }
+        viewport={ viewport }
+        checkboxVisibility={ checkboxVisibility }
+        getRowAriaLabel={ getRowAriaLabel }
+        canSelectItem={ canSelectItem }
+        checkButtonAriaLabel={ checkButtonAriaLabel }
+        />
     );
   }
 
@@ -385,8 +393,9 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     this.setState({
       isCollapsed: collapsed
     });
-
-    this.forceUpdate();
+    if (this.refs.groups) {
+      this.refs.groups.toggleCollapseAll(collapsed);
+    }
   }
 
   private _forceListUpdates() {
@@ -434,7 +443,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       viewportWidth = this.props.viewport.width;
     }
 
-    newColumns = newColumns || buildColumns(newItems);
+    newColumns = newColumns || buildColumns(newItems, true);
 
     let adjustedColumns: IColumn[];
 
