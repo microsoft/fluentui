@@ -33,10 +33,8 @@ $SearchBox-height: 40px;
 $SearchBox-widthLgCollapsed: 50px;
 $SearchBox-widthMdDownCollapsed: 36px;
 $SearchBox-widthXLarge: 208px;
-$SearchBox-iconSize: 17px;
+$SearchBox-iconSize: 16px;
 $SearchBox-sidePadding: 8px; // padding in input on left and right sides without icons
-$SearchBox-smallWidth: 36px;
-$SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePadding * 2);
 
 @mixin highContrastBorder($color) {
     @include border-left(1px, solid, $color);
@@ -164,16 +162,18 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
   padding: 0 7px;
 }
 
+// CommandBarSearch needs to replaced with SearchBox component, and hence following styles revisited/cleaned.
 .ms-CommandBarSearch {
   @include float(left);
   width: 208px;
   max-width: 208px;
-  background-color: $ms-color-themeLighter;
+  background-color: $ms-color-white;
   color: $ms-color-neutralPrimary;
   height: $SearchBox-height;
   position: relative;
   box-sizing: border-box;
   border-color: transparent; // give a base state for animation
+  @include border-right(1px, solid, $ms-color-neutralLight);
 
   @media screen and (-ms-high-contrast: active) {
     @include border-right(1px, solid, $ms-color-white);
@@ -184,8 +184,17 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
     @include border-right(1px, solid, $ms-color-black);
   }
 
+  &:before {
+    position: absolute;
+    content: ' ';
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0 8px;
+    border-bottom: 1px solid $ms-color-neutralLight;
+  }
+
   &:hover {
-    background-color: $ms-color-themeLight;
     color: $ms-color-themePrimary;
 
     @media screen and (-ms-high-contrast: active) {
@@ -195,12 +204,6 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
     @media screen and (-ms-high-contrast: black-on-white) {
       @include highContrastBorder($ms-color-black);
     }
-  }
-
-  .ms-Icon--Search {
-    @include margin-left(2px);
-    margin-top: 12px;
-    vertical-align: top;
   }
 }
 
@@ -238,7 +241,6 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
 // default styles for icons, show the search icon and hide X (and arrow) until focused
 .ms-CommandBarSearch-iconSearchWrapper {
   display: block;
-  @include padding-left(15px);
 }
 
 .ms-CommandBarSearch-iconArrowWrapper {
@@ -248,7 +250,7 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
 .ms-CommandBarSearch-iconSearchWrapper,
 .ms-CommandBarSearch-iconArrowWrapper {
   top: 0;
-  @include padding-left(8px);
+  @include padding-left(17px);
   @include padding-right(8px);
 }
 
@@ -258,7 +260,6 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
   @include right(0px);
   z-index: $ms-zIndex-front;
 }
-
 
 //== State: Puts search in an active state
 //
@@ -303,15 +304,11 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
   height: $SearchBox-height;
   line-height: $SearchBox-height;
   cursor: pointer;
-  padding: 0px $SearchBox-sidePadding;
   position: absolute;
-  width: $SearchBox-iconWrapperWidth;
   text-align: center;
 }
 
-
 // New rules
-
 .ms-CommandBarSearch .ms-Icon:before {
   font-size: $SearchBox-iconSize;
   color: $ms-color-themePrimary;
@@ -321,7 +318,4 @@ $SearchBox-iconWrapperWidth: $SearchBox-widthLgCollapsed - ($SearchBox-sidePaddi
 .ms-CommandBarSearch-input::-webkit-input-placeholder {
   @include ms-baseFont;
   font-size: $ms-font-size-m;
-}
-.ms-CommandBarSearch-input::-webkit-input-placeholder {
-  font-style: italic;
 }
