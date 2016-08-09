@@ -35,7 +35,7 @@ $MessageBar-padding: 8px;
   @include ms-fontColor-neutralSecondaryAlt;
   min-width: 16px;
   min-height: 16px;
-  display:flex;
+  display: flex;
 }
 
 .ms-MessageBar-text {
@@ -111,9 +111,9 @@ $MessageBar-padding: 8px;
 }
 
 .ms-MessageBar-actionables > .ms-MessageBar-dismissal {
-    right: 0;
-    top: 0;
-    position: absolute !important; // Needed because we're using focus-border mixin
+  right: 0;
+  top: 0;
+  position: absolute !important; // Needed because we're using focus-border mixin
 }
 
 .ms-MessageBar-actions, .ms-MessageBar-actions-oneline {
