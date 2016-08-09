@@ -62,8 +62,8 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
     let { isContextualMenuVisible, isBeakVisible, directionalHint, gapSpace } = this.state;
 
     return (
-      <div className='ms-ContextualMenuDirectionalExample'>
-       <div className='ms-ContextualMenuDirectionalExample-configArea'>
+      <div className='od-ContextualMenuDirectionalExample'>
+       <div className='od-ContextualMenuDirectionalExample-configArea'>
           <Checkbox text='Show beak' isChecked={ isBeakVisible } onChanged={ this._onShowBeakChanged } />
           <TextField ref='gapSize' label='Gap Space' placeholder='Type in the gap space' />
           <Button onClick={ this._onChangeGapSizeClicked }>Submit</Button>
@@ -73,7 +73,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
             options={ DIRECTION_OPTIONS }
             onChanged={ this._onDirectionalChanged } />
         </div>
-        <div className='ms-ContextualMenuDirectionalExample-buttonArea' ref='menuButton'>
+        <div className='od-ContextualMenuDirectionalExample-buttonArea' ref='menuButton'>
           <Button onClick={ this._onShowMenuClicked }>{ isContextualMenuVisible ? 'Hide context menu' : 'Show context menu'}</Button>
         </div>
         { isContextualMenuVisible ? (
