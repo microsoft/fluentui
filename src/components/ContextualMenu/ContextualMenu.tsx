@@ -77,10 +77,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     beakWidth: 16
   };
 
-  public refs: {
-    [key: string]: React.ReactInstance;
-  };
-
   private _host: HTMLElement;
   private _previousActiveElement: HTMLElement;
   private _isFocusingPreviousElement: boolean;
@@ -371,15 +367,8 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
  }
 
   private _onSubMenuDismiss(ev?: any) {
-    let itemKey = null;
-    let list = this.refs[this.state.expandedMenuItemKey] as HTMLElement;
-
-    if (list && list.contains(ev.target as HTMLElement)) {
-      itemKey = this.state.expandedMenuItemKey;
-    }
-
     this.setState({
-      dismissedMenuItemKey: itemKey,
+      dismissedMenuItemKey: this.state.expandedMenuItemKey,
       expandedMenuItemKey: null,
       submenuProps: null
     });
