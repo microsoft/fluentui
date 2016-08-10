@@ -3,9 +3,9 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import {
   DetailsList,
-  TextField,
+  MarqueeSelection,
   Selection,
-  MarqueeSelection
+  TextField
 } from '../../../../index';
 import { createListItems } from '../../../utilities/data';
 
