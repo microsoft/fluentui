@@ -16,8 +16,6 @@ export class ButtonBasicExample extends React.Component<any, IBasicButtonsExampl
   public constructor() {
     super();
 
-    this._onDisabledChanged = this._onDisabledChanged.bind(this);
-
     this.state = {
       areButtonsDisabled: false
     };
