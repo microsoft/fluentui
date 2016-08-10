@@ -57,12 +57,12 @@ export class ButtonBasicExample extends React.Component<any, IBasicButtonsExampl
         <Label>Button with aria description for screen reader</Label>
         <Button disabled={ areButtonsDisabled } buttonType={ ButtonType.primary } ariaDescription='This is aria description used for screen reader.'>Aria Description</Button>
 
-        <Checkbox text='Disable buttons' isChecked={ areButtonsDisabled } onChanged={ this._onDisabledChanged } />
+        <Checkbox label='Disable buttons' checked={ areButtonsDisabled } onChange={ this._onDisabledChanged.bind(this) } />
       </div>
     );
   }
 
-  private _onDisabledChanged(isDisabled: boolean) {
+  private _onDisabledChanged(ev: React.MouseEvent, isDisabled: boolean) {
     this.setState({
       areButtonsDisabled: isDisabled
     });

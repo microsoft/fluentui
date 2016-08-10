@@ -33,7 +33,7 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
     let { labelId, descriptionId, ariaDescriptionId } = this.state;
 
     const renderAsAnchor: boolean = !!href;
-    const tag = !renderAsAnchor ? 'button' : 'a';
+    const tag = renderAsAnchor ? 'a' : 'button';
 
     const className = css((this.props.className), 'ms-Button', {
       'ms-Button--primary': buttonType === ButtonType.primary,
