@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CommandBar, IContextualMenuItem } from '../../../../index';
+import { CommandBar, IContextualMenuItem, MarqueeSelection } from '../../../../index';
 import { Check } from '../../../../components/Check/Check';
 import {
   IObjectWithKey,
@@ -63,18 +63,20 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
     return (
       <div className='ms-SelectionBasicExample'>
         <CommandBar items={ this._getCommandItems() } />
-        <SelectionZone selection={ selection } selectionMode={ selectionMode } >
-          { items.map((item, index) => (
-            <SelectionItemExample
-              ref={ 'detailsGroup_' + index }
-              key={ item.key }
-              item={ item }
-              itemIndex={ index }
-              selectionMode={ selectionMode }
-              selection={ selection }
-              />
-          )) }
-        </SelectionZone>
+        <MarqueeSelection selection={ selection } isEnabled={ selectionMode === SelectionMode.multiple } >
+          <SelectionZone selection={ selection } selectionMode={ selectionMode } >
+            { items.map((item, index) => (
+              <SelectionItemExample
+                ref={ 'detailsGroup_' + index }
+                key={ item.key }
+                item={ item }
+                itemIndex={ index }
+                selectionMode={ selectionMode }
+                selection={ selection }
+                />
+            )) }
+          </SelectionZone>
+        </MarqueeSelection>
       </div>
     );
   }
