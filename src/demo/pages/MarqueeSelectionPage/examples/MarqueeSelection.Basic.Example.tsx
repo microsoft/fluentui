@@ -3,7 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import {
-  Toggle,
+  Checkbox,
   Selection,
   MarqueeSelection,
   css
@@ -52,10 +52,10 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
   public render() {
     return (
       <MarqueeSelection selection={ this._selection } isEnabled={ this.state.isMarqueeEnabled }>
-        <Toggle
+        <Checkbox
           label='Is marquee enabled'
           defaultChecked={ true }
-          onChanged={ (isMarqueeEnabled) => this.setState({ isMarqueeEnabled }) } />
+          onChange={ (ev, isMarqueeEnabled) => this.setState({ isMarqueeEnabled }) } />
         <p>Drag a rectangle around the items below to select them:</p>
         <ul className='ms-MarqueeSelectionBasicExample-photoList'>
           { PHOTOS.map((photo, index) => (
