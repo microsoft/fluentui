@@ -5,7 +5,6 @@ import { css } from '../../utilities/css';
 import { assign } from '../../utilities/object';
 import { findIndex } from '../../utilities/array';
 import { findScrollableParent } from '../../utilities/scrollUtilities';
-import { getId } from '../../utilities/object';
 
 const RESIZE_DELAY = 16;
 const MIN_SCROLL_UPDATE_DELAY = 100;
