@@ -187,6 +187,11 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
   }
 
   private _evaluateSelection(dragRect: IRectangle) {
+    // Break early if we don't need to evaluate.
+    if (!dragRect) {
+      return;
+    }
+
     let { selection } = this.props;
     let rootRect = this._getRootRect();
     let allElements = this.refs.root.querySelectorAll('[data-selection-index]');
