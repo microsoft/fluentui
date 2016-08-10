@@ -30,6 +30,7 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
   private _events: EventGroup;
   // There are some cases when the callout needs to be rendered on a window other than the one
   // the javascript is running in.
+  // NOTE: The window must be within the same domain as the parent window or this will not be allowed.
   private _targetWindow: Window;
 
   constructor(props: ICalloutProps) {

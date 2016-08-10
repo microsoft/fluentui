@@ -91,6 +91,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   private _focusZone: FocusZone;
   // There are a few scenarios in which the contextual menu needs to be projected onto a window
   // other than the one that the javascript is running in.
+  // NOTE: The window must be within the same domain as the parent window or this will not be allowed.
   private _targetWindow: Window;
 
   constructor(props: IContextualMenuProps) {
