@@ -4,7 +4,6 @@ import { BaseComponent } from '../../common/BaseComponent';
 import { IMarqueeSelectionProps } from './MarqueeSelection.Props';
 import { IPoint } from '../../common/IPoint';
 import { IRectangle } from '../../common/IRectangle';
-import { assign } from '../../utilities/object';
 import { css } from '../../utilities/css';
 import { findScrollableParent } from '../../utilities/scrollUtilities';
 import { getDistanceBetweenPoints } from '../../utilities/math';
@@ -57,6 +56,17 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     this._onMouseDown = this._onMouseDown.bind(this);
   }
 
+  public componentDidMount() {
+    this._scrollableParent = findScrollableParent(this.refs.root);
+
+    if (this._scrollableParent) {
+      this._events.on(
+        this.props.isDraggingConstrainedToRoot ? this.refs.root : this._scrollableParent,
+        'mousedown',
+        this._onMouseDown);
+    }
+  }
+
   public componentWillUnmount() {
     if (this._autoScroll) {
       this._autoScroll.dispose();
@@ -72,7 +82,6 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
         { ...rootProps }
         className={ css('ms-MarqueeSelection', rootProps.className) }
         ref='root'
-        onMouseDown={ this._onMouseDown }
         >
         { children }
         { dragRect && (<div className='ms-MarqueeSelection-dragMask' />) }
@@ -85,7 +94,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     );
   }
 
-  private _onMouseDown(ev: React.MouseEvent) {
+  private _onMouseDown(ev: MouseEvent) {
     let { isEnabled, onShouldStartSelection } = this.props;
 
     if (isEnabled && (!onShouldStartSelection || onShouldStartSelection(ev))) {
@@ -101,7 +110,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
         this._scrollTop = scrollableParent.scrollTop;
         this._rootRect = this.refs.root.getBoundingClientRect();
 
-        this._onMouseMove(ev.nativeEvent as MouseEvent);
+        this._onMouseMove(ev);
       }
     }
   }
@@ -121,7 +130,6 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     }
 
     let rootRect = this._getRootRect();
-
     let currentPoint = { x: ev.clientX - rootRect.left, y: ev.clientY - rootRect.top };
 
     if (!this._dragOrigin) {
@@ -133,9 +141,12 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     } else {
       if (this.state.dragRect || getDistanceBetweenPoints(this._dragOrigin, currentPoint) > MIN_DRAG_DISTANCE) {
         // We need to constrain the current point to the rootRect boundaries.
-        let constrainedPoint = {
+        let constrainedPoint = this.props.isDraggingConstrainedToRoot ? {
           x: Math.max(0, Math.min(rootRect.width, this._lastMouseEvent.clientX - rootRect.left)),
           y: Math.max(0, Math.min(rootRect.height, this._lastMouseEvent.clientY - rootRect.top))
+        } : {
+          x: this._lastMouseEvent.clientX - rootRect.left,
+          y: this._lastMouseEvent.clientY - rootRect.top
         };
 
         let dragRect = {
@@ -176,20 +187,18 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
   }
 
   private _evaluateSelection(dragRect: IRectangle) {
-    let { selection } = this.props;
-    let rootRect = this._getRootRect();
-
     // Break early if we don't need to evaluate.
     if (!dragRect) {
       return;
     }
 
+    let { selection } = this.props;
+    let rootRect = this._getRootRect();
+    let allElements = this.refs.root.querySelectorAll('[data-selection-index]');
+
     if (!this._itemRectCache) {
       this._itemRectCache = {};
     }
-
-    // Potentially slow.
-    let allElements = this.refs.root.querySelectorAll('[data-selection-index]');
 
     // Stop change events, clear selection to re-populate.
     selection.setChangeEvents(false);

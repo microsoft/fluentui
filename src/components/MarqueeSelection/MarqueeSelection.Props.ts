@@ -18,7 +18,7 @@ export interface IMarqueeSelectionProps extends React.Props<MarqueeSelection> {
    * if we should start a marquee selection. If true is returned, we will cancel the mousedown
    * event to prevent upstream mousedown handlers from executing.
    */
-  onShouldStartSelection?: (ev: React.MouseEvent) => boolean;
+  onShouldStartSelection?: (ev: MouseEvent) => boolean;
 
   /**
    * Optional flag to control the enabled state of marquee selection. This allows you to render
@@ -28,4 +28,10 @@ export interface IMarqueeSelectionProps extends React.Props<MarqueeSelection> {
    */
   isEnabled?: boolean;
 
+  /**
+   * Optional flag to restrict the drag rect to the root element, instead of allowing the drag
+   * rect to start outside of the root element boundaries.
+   * @default false
+   */
+  isDraggingConstrainedToRoot?: boolean;
 }

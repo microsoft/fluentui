@@ -5,13 +5,8 @@ import { getId } from '../../utilities/object';
 
 import './Checkbox.scss';
 
-export interface ICheckboxState {
-  isChecked: boolean;
-}
-
-export class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
+export class Checkbox extends React.Component<ICheckboxProps, {}> implements ICheckbox {
   public static defaultProps: ICheckboxProps = {
-    disabled: false
   };
 
   private _id: string;
@@ -30,13 +25,17 @@ export class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
       className,
       defaultChecked,
       disabled,
-      label
+      label,
+      inputProps
     } = this.props;
 
     return (
       <div className={ css('ms-ChoiceField', className) }>
         <input
-          { ...this.props }
+          { ...inputProps }
+          { ...(checked !== undefined && { checked }) }
+          { ...(defaultChecked !== undefined && { defaultChecked }) }
+          disabled={ disabled }
           ref={ (el): HTMLInputElement => this._checkBox = el }
           id={ this._id }
           name={ this._id }
