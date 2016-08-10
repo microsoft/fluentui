@@ -83,14 +83,14 @@ export interface INavLink {
   ariaLabel?: string;
 
   /**
-   * (Optional) Unique ID for nav link
+   * (Optional) Meta info for the link, does not involving rendering.
    */
-  id?: string;
+  key?: string;
 
   /**
-   * (Optional) Desciption
+   * (Optional) title for tooltip or description
    */
-  tooltip?: string;
+  title?: string;
   /**
    * Any additional properties to apply to the rendered links.
    */

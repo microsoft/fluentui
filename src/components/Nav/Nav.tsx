@@ -52,7 +52,7 @@ export class Nav extends React.Component<INavProps, INavState> {
           href={ link.url || 'javascript:' }
           onClick={ onLinkClick }
           aria-label={ link.ariaLabel }
-          title= { link.tooltip ? link.tooltip : '' }
+          title= { link.title ? link.title : '' }
         >
           { (link.iconClassName ?
           <i className={'ms-Icon ms-Nav-IconLink ' + link.iconClassName}></i>
