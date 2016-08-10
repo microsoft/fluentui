@@ -21,6 +21,7 @@ import { LabelPage } from '../../pages/LabelPage/LabelPage';
 import { LayerPage } from '../../pages/LayerPage/LayerPage';
 import { LinkPage } from '../../pages/LinkPage/LinkPage';
 import { ListPage } from '../../pages/ListPage/ListPage';
+import { MarqueeSelectionPage } from '../../pages/MarqueeSelectionPage/MarqueeSelectionPage';
 import { MessageBarPage } from '../../pages/MessageBarPage/MessageBarPage';
 import { NavPage } from '../../pages/NavPage/NavPage';
 import { OrgChartPage } from '../../pages/OrgChartPage/OrgChartPage';
@@ -87,7 +88,7 @@ export const AppState: IAppState = {
           component: ChoiceGroupPage,
           name: 'ChoiceGroup',
           status: ExampleStatus.beta,
-          url: '#/examples/ChoiceGroup'
+          url: '#/examples/choicegroup'
         },
         {
           component: CommandBarPage,
@@ -135,7 +136,7 @@ export const AppState: IAppState = {
           component: FacepilePage,
           name: 'Facepile',
           status: ExampleStatus.started,
-          url: '#/examples/Facepile'
+          url: '#/examples/facepile'
         },
         {
           component: LabelPage,
@@ -159,7 +160,7 @@ export const AppState: IAppState = {
           component: MessageBarPage,
           name: 'MessageBar',
           status: ExampleStatus.placeholder,
-          url: '#/examples/MessageBar'
+          url: '#/examples/messagebar'
         },
         {
           component: OrgChartPage,
@@ -248,7 +249,7 @@ export const AppState: IAppState = {
           component: GroupedListPage,
           name: 'GroupedList',
           status: ExampleStatus.started,
-          url: '#examples/GroupedList'
+          url: '#examples/groupedlist'
         },
         {
           component: ImagePage,
@@ -266,13 +267,13 @@ export const AppState: IAppState = {
           component: NavPage,
           name: 'Nav',
           status: ExampleStatus.started,
-          url: '#/examples/Nav?mytest=1'
+          url: '#/examples/nav'
         },
         {
           component: SliderPage,
           name: 'Slider',
-          status: ExampleStatus.alpha,
-          url: '#/examples/Slider'
+          status: ExampleStatus.beta,
+          url: '#/examples/slider'
         }
       ],
       name: 'Extended components'
@@ -281,21 +282,27 @@ export const AppState: IAppState = {
       links: [
         {
           component: FocusTrapZonePage,
-          name: 'Focus Trap zones',
-          status: ExampleStatus.alpha,
+          name: 'FocusTrapZone',
+          status: ExampleStatus.beta,
           url: '#examples/focustrapzone'
         },
         {
           component: FocusZonePage,
-          name: 'Focus zones',
-          status: ExampleStatus.alpha,
+          name: 'FocusZone',
+          status: ExampleStatus.beta,
           url: '#examples/focuszone'
         },
         {
+          component: MarqueeSelectionPage,
+          name: 'MarqueeSelection',
+          status: ExampleStatus.beta,
+          url: '#examples/marqueeselection'
+        },
+        {
           component: SelectionPage,
-          name: 'Selection management',
-          status: ExampleStatus.alpha,
-          url: '#examples/selectionManagement'
+          name: 'Selection',
+          status: ExampleStatus.beta,
+          url: '#examples/selection'
         },
         {
           component: ThemePage,

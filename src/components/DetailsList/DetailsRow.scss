@@ -31,11 +31,11 @@ $unselectedHoverColor: $ms-color-neutralLighter;
   }
 }
 
-.ms-Fabric.is-stationary .ms-DetailsRow:hover {
+.ms-DetailsRow:hover {
   background: $unselectedHoverColor;
 }
 
-.ms-Fabric.is-stationary .ms-DetailsRow.is-selected:hover {
+.ms-DetailsRow.is-selected:hover {
   background: $selectedHoverColor;
 }
 
@@ -82,7 +82,7 @@ $unselectedHoverColor: $ms-color-neutralLighter;
   }
 }
 
-.ms-Fabric.is-stationary .ms-DetailsRow:hover .ms-DetailsRow-check,
+.ms-DetailsRow:hover .ms-DetailsRow-check,
 .ms-DetailsRow.is-selected .ms-DetailsRow-check,
 .ms-DetailsRow.is-check-visible .ms-DetailsRow-check {
   opacity: 1;
