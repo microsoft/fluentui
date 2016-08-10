@@ -101,7 +101,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     return (
       <div className={ css('ms-CommandBar', className) } ref='commandBarRegion'>
         { searchBox }
-        <FocusZone direction={ FocusZoneDirection.horizontal } role='menubar'>
+        <FocusZone direction={ FocusZoneDirection.horizontal } rootProps={ { role:'menubar' } }>
           <div className='ms-CommandBar-primaryCommands' ref='commandSurface'>
             { renderedItems.map((item, index) => (
               this._renderItemInCommandBar(item, index, expandedMenuItemKey)
