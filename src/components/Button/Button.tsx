@@ -1,16 +1,15 @@
 import * as React from 'react';
-import './Button.scss';
 import { css } from '../../utilities/css';
 import { assign } from '../../utilities/object';
 import { IButtonProps, ButtonType, ElementType } from './Button.Props';
+import { getId } from '../../utilities/object';
+import './Button.scss';
 
 export interface IButtonState {
   labelId?: string;
   descriptionId?: string;
   ariaDescriptionId?: string;
 }
-
-let _instance = 0;
 
 export class Button extends React.Component<IButtonProps, IButtonState> {
   public static defaultProps: IButtonProps = {
@@ -23,9 +22,9 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
     super(props);
 
     this.state = {
-      labelId: `Button-${_instance++}`,
-      descriptionId: `Button-${_instance++}`,
-      ariaDescriptionId: `Button-${_instance++}`,
+      labelId: getId('Button'),
+      descriptionId: getId('Button'),
+      ariaDescriptionId: getId('Button')
     };
   }
 
