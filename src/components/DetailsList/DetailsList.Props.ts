@@ -247,6 +247,11 @@ export interface IColumn {
    * Internal only value.
    */
   calculatedWidth?: number;
+
+  /**
+   * An optional class name to stick on the column cell within each header.
+   */
+  headerClassName?: string;
 }
 
 /**

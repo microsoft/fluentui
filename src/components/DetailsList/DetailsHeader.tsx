@@ -138,8 +138,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                 <button
                   key={ column.fieldName }
                   disabled={ column.columnActionsMode === ColumnActionsMode.disabled }
-                  className={ css('ms-DetailsHeader-cell',
-                    ( column.className ? column.className : '' ), {
+                  className={ css('ms-DetailsHeader-cell', column.headerClassName, {
                     'is-actionable': column.columnActionsMode !== ColumnActionsMode.disabled,
                     'is-empty': !column.name,
                     'is-icon-visible': column.isSorted || column.isGrouped || column.isFiltered

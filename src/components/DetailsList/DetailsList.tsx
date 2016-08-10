@@ -37,6 +37,7 @@ export interface IDetailsListState {
   isCollapsed?: boolean;
   isSizing?: boolean;
   isDropping?: boolean;
+  isSomeGroupExpanded?: boolean;
 }
 
 const MIN_COLUMN_WIDTH = 100; // this is the global min width
@@ -89,6 +90,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     this._onHeaderKeyDown = this._onHeaderKeyDown.bind(this);
     this._onContentKeyDown = this._onContentKeyDown.bind(this);
     this._onRenderCell = this._onRenderCell.bind(this);
+    this._onGroupExpandStateChanged = this._onGroupExpandStateChanged.bind(this);
 
     this.state = {
       lastWidth: 0,
@@ -96,7 +98,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       layoutMode: props.layoutMode,
       isSizing: false,
       isDropping: false,
-      isCollapsed: props.groupProps && props.groupProps.isAllGroupsCollapsed
+      isCollapsed: props.groupProps && props.groupProps.isAllGroupsCollapsed,
+      isSomeGroupExpanded: props.groupProps && !props.groupProps.isAllGroupsCollapsed
     };
 
     this._events = new EventGroup(this);
@@ -182,7 +185,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       adjustedColumns,
       isCollapsed,
       layoutMode,
-      isSizing
+      isSizing,
+      isSomeGroupExpanded
     } = this.state;
     let {
       _selection: selection,
@@ -203,7 +207,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       if (isCollapsedGroupSelectVisible === undefined) {
         isCollapsedGroupSelectVisible = true;
       }
-      let isSelectAllVisible = isCollapsedGroupSelectVisible || !isCollapsed;
+      let isSelectAllVisible = isCollapsedGroupSelectVisible || !groups || isSomeGroupExpanded;
       selectAllVisibility = isSelectAllVisible ? SelectAllVisibility.visible : SelectAllVisibility.hidden;
     }
 
@@ -267,6 +271,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                   dragDropHelper={ dragDropHelper }
                   eventsToRegister={ rowElementEventMap }
                   listProps={ additionalListProps }
+                  onGroupExpandStateChanged={ this._onGroupExpandStateChanged }
                   ref='groups'
                   />
               ) : (
@@ -336,6 +341,10 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
         checkButtonAriaLabel={ checkButtonAriaLabel }
         />
     );
+  }
+
+  private _onGroupExpandStateChanged(isSomeGroupExpanded: boolean) {
+    this.setState({ isSomeGroupExpanded: isSomeGroupExpanded });
   }
 
   private _onColumnIsSizingChanged(column: IColumn, isSizing: boolean) {
