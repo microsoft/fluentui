@@ -20,7 +20,6 @@ $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
   min-height: 36px;
   border: 1px solid transparent;
   position: relative;
-  @include padding-left(8px);
 
   .ms-Label {
     font-size: $ms-font-size-m;
