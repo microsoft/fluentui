@@ -28,7 +28,7 @@ export interface ICheckboxProps extends React.Props<Checkbox> {
   checked?: boolean;
 
   /**
-   * Default checked state. Mututally exclusive to "checked". Use this if you want an uncontrolled component, and
+   * Default checked state. Mutually exclusive to "checked". Use this if you want an uncontrolled component, and
    * want the Checkbox instance to maintain its own state.
    */
   defaultChecked?: boolean;
@@ -49,8 +49,9 @@ export interface ICheckboxProps extends React.Props<Checkbox> {
   onChange?: (ev?: React.FormEvent, isChecked?: boolean) => void;
 
   /**
-   * Input props that will be mixed into the input element, before other props are applied. This allows you to extend
-   * the input element with additional attributes, such as data-automation-id needed for automation.
+   * Input props that will be mixed into the input element, *before* other props are applied. This allows you to extend
+   * the input element with additional attributes, such as data-automation-id needed for automation. Note that if you
+   * provide, for example, "disabled" as well as "inputProps.disabled", the former will take precedence of the later.
    */
   inputProps?: React.Props<HTMLInputElement>;
 }

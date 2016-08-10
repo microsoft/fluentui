@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { ICheckboxProps, ICheckbox } from './Checkbox.Props';
+import {
+  ICheckbox,
+  ICheckboxProps
+} from './Checkbox.Props';
 import { css } from '../../utilities/css';
 import { getId } from '../../utilities/object';
 
@@ -20,13 +23,13 @@ export class Checkbox extends React.Component<ICheckboxProps, {}> implements ICh
   }
 
   public render() {
-    let {
+    const {
       checked,
       className,
       defaultChecked,
       disabled,
-      label,
-      inputProps
+      inputProps,
+      label
     } = this.props;
 
     return (
@@ -63,7 +66,7 @@ export class Checkbox extends React.Component<ICheckboxProps, {}> implements ICh
   }
 
   private _onChange(ev: React.FormEvent) {
-    let { onChange } = this.props;
+    const { onChange } = this.props;
     const isChecked = (ev.target as HTMLInputElement).checked;
 
     if (onChange) {
