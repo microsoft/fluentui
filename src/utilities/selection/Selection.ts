@@ -10,7 +10,7 @@ export interface ISelectionOptions {
 export class Selection implements ISelection {
   public count: number;
   public getKey: (item: IObjectWithKey, index?: number) => string;
-  public canSelectItem: (item: any) => boolean;
+  public canSelectItem: (item: IObjectWithKey) => boolean;
 
   private _changeEventSuppressionCount: number;
   private _items: IObjectWithKey[];
