@@ -191,7 +191,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
               direction={ FocusZoneDirection.vertical }
               ariaLabelledBy={ labelElementId }
               ref={ (focusZone) => this._focusZone = focusZone }
-              rootProps= { {
+              rootProps={ {
                 className: 'ms-ContextualMenu is-open',
                 role: 'menu'
               } }

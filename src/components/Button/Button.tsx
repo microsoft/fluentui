@@ -63,6 +63,7 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
     return React.createElement(
       tag,
       assign(
+        {},
         this.props.rootProps,
         {
           'aria-label': ariaLabel,
