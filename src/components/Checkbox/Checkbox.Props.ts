@@ -22,12 +22,14 @@ export interface ICheckboxProps extends React.Props<Checkbox> {
   className?: string;
 
   /**
-   * Checked state.
+   * Checked state. Mutually exclusive to "defaultChecked". Use this if you control the checked state at a higher
+   * level and plan to pass in the correct value based on handling onChange events and re-rendering.
    */
   checked?: boolean;
 
   /**
-   * Default checked state. Mututally exclusive to "checked". Use this if you want an uncontrolled component.
+   * Default checked state. Mututally exclusive to "checked". Use this if you want an uncontrolled component, and
+   * want the Checkbox instance to maintain its own state.
    */
   defaultChecked?: boolean;
 
