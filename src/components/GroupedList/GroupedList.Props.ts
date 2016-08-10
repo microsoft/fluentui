@@ -71,6 +71,9 @@ export interface IGroupedListProps extends React.Props<GroupedList> {
 
   /** Optional Viewport, provided by the parent component. */
   viewport?: IViewport;
+
+  /** Optional callback when the group expand state changes between all collapsed and at least one group is expanded. */
+  onGroupExpandStateChanged?: (isSomeGroupExpanded: boolean) => void;
 }
 
 export interface IGroup {
