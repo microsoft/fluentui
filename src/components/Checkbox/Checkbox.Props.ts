@@ -51,7 +51,7 @@ export interface ICheckboxProps extends React.Props<Checkbox> {
   /**
    * Input props that will be mixed into the input element, *before* other props are applied. This allows you to extend
    * the input element with additional attributes, such as data-automation-id needed for automation. Note that if you
-   * provide, for example, "disabled" as well as "inputProps.disabled", the former will take precedence of the later.
+   * provide, for example, "disabled" as well as "inputProps.disabled", the former will take precedence over the later.
    */
   inputProps?: React.Props<HTMLInputElement>;
 }

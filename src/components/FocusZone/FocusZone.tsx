@@ -89,7 +89,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
 
     return (
       <div
-        { ...this.props as any }
+        { ...this.props.rootProps as any }
         className={ css('ms-FocusZone', className) }
         ref='root'
         data-focuszone-id={ this._id }
