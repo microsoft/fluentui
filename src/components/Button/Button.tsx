@@ -3,14 +3,13 @@ import './Button.scss';
 import { css } from '../../utilities/css';
 import { assign } from '../../utilities/object';
 import { IButtonProps, ButtonType } from './Button.Props';
+import { getId } from '../../utilities/object';
 
 export interface IButtonState {
   labelId?: string;
   descriptionId?: string;
   ariaDescriptionId?: string;
 }
-
-let _instance = 0;
 
 export class Button extends React.Component<IButtonProps, IButtonState> {
   public static defaultProps: IButtonProps = {
@@ -22,14 +21,14 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
     super(props);
 
     this.state = {
-      labelId: `Button-${_instance++}`,
-      descriptionId: `Button-${_instance++}`,
-      ariaDescriptionId: `Button-${_instance++}`,
+      labelId: getId('Button-'),
+      descriptionId: getId('Button-'),
+      ariaDescriptionId: getId('Button-'),
     };
   }
 
   public render(): JSX.Element {
-    let { buttonType, children, icon, description, ariaLabel, ariaDescription, href, disabled } = this.props;
+    let { buttonType, children, icon, description, ariaLabel, ariaDescription, href, disabled, onClick } = this.props;
     let { labelId, descriptionId, ariaDescriptionId } = this.state;
 
     const renderAsAnchor: boolean = !!href;
@@ -41,7 +40,8 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
       'ms-Button--compound': buttonType === ButtonType.compound,
       'ms-Button--command': buttonType === ButtonType.command,
       'ms-Button--icon': buttonType === ButtonType.icon,
-      'disabled': (!renderAsAnchor && disabled)
+      'disabled': (renderAsAnchor && disabled) // add disable styling if it is an anchor
+                                               // if not utilize default button disabled behavior.
     });
 
     const iconSpan = icon && (buttonType === ButtonType.command || buttonType === ButtonType.hero || buttonType === ButtonType.icon)
@@ -69,9 +69,10 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
           'aria-label': ariaLabel,
           'aria-labelledby': ariaLabel ? null : labelId,
           'aria-describedby': ariaDescription ? ariaDescriptionId : description ? descriptionId : null,
-          'ref': (c: HTMLButtonElement): HTMLButtonElement => this._buttonElement = c,
-          'onClick': this.props.onClick
+          'ref': (c: HTMLButtonElement): HTMLButtonElement => this._buttonElement = c
         },
+        onClick && { 'onClick': onClick },
+        disabled && { 'disabled': disabled },
         { className }),
       iconSpan,
       <span className='ms-Button-label' id={ labelId } >{ children }</span>,

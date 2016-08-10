@@ -39,12 +39,18 @@ export class ButtonBasicExample extends React.Component<any, IBasicButtonsExampl
         <Button disabled={ areButtonsDisabled } buttonType={ ButtonType.compound } description='You can create a new account here.'>Create account</Button>
 
         <Label>Command button</Label>
-        <Button disabled={ areButtonsDisabled } buttonType={ ButtonType.command } icon='personAdd' description='Description of the action this button takes'>Create account</Button>
+        <Button
+          buttonType={ ButtonType.command }
+          icon='personAdd'
+          description='Description of the action this button takes'
+          rootProps={ { disabled: areButtonsDisabled } }>
+          Create account
+        </Button>
 
         <Label>Icon button</Label>
         <Button disabled={ areButtonsDisabled } buttonType={ ButtonType.icon } icon='star' rootProps={ { title: 'Star' } } ariaLabel='Take a star' />
 
-        <Label>Button like anchor (cannot be disabled)</Label>
+        <Label>Button like anchor</Label>
         <Button
           disabled={ areButtonsDisabled }
           buttonType={ ButtonType.primary }
