@@ -33,9 +33,9 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
     let { buttonType, children, icon, description, ariaLabel, ariaDescription, elementType, disabled } = this.props;
     let { labelId, descriptionId, ariaDescriptionId } = this.state;
 
-    const tag = this.props.elementType === ElementType.button ? 'button' : 'a';
+    const tag = elementType === ElementType.button ? 'button' : 'a';
 
-    const className = css(this.props.className, 'ms-Button', {
+    const className = css((this.props.className), 'ms-Button', {
       'ms-Button--primary': buttonType === ButtonType.primary,
       'ms-Button--hero': buttonType === ButtonType.hero,
       'ms-Button--compound': buttonType === ButtonType.compound,
@@ -62,13 +62,14 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
 
     return React.createElement(
       tag,
-      assign({
-        'aria-label': ariaLabel,
-        'aria-labelledby': ariaLabel ? null : labelId,
-        'aria-describedby': ariaDescription ? ariaDescriptionId : description ? descriptionId : null,
-        'ref': (c: HTMLButtonElement): HTMLButtonElement => this._buttonElement = c
-      },
-        this.props,
+      assign(
+        this.props.rootProps,
+        {
+          'aria-label': ariaLabel,
+          'aria-labelledby': ariaLabel ? null : labelId,
+          'aria-describedby': ariaDescription ? ariaDescriptionId : description ? descriptionId : null,
+          'ref': (c: HTMLButtonElement): HTMLButtonElement => this._buttonElement = c
+        },
         { className }),
       iconSpan,
       <span className='ms-Button-label' id={ labelId } >{ children }</span>,

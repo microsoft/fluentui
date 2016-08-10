@@ -85,12 +85,12 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
   }
 
   public render() {
-    let { className, ariaLabelledBy } = this.props;
+    let { rootProps, ariaLabelledBy } = this.props;
 
     return (
       <div
-        { ...this.props as any }
-        className={ css('ms-FocusZone', className) }
+        { ...this.props.rootProps as any }
+        className={ css('ms-FocusZone', rootProps && rootProps.className ) }
         ref='root'
         data-focuszone-id={ this._id }
         aria-labelledby={ ariaLabelledBy }

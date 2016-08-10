@@ -45,10 +45,17 @@ export class ButtonBasicExample extends React.Component<any, IBasicButtonsExampl
         <Button disabled={ disabled } buttonType={ ButtonType.command } icon='personAdd' description='Description of the action this button takes'>Create account</Button>
 
         <Label>Icon button</Label>
-        <Button disabled={ disabled } buttonType={ ButtonType.icon } icon='star' title='Star' ariaLabel='Take a star' />
+        <Button disabled={ disabled } buttonType={ ButtonType.icon } icon='star' rootProps={ { title: 'Star' } } ariaLabel='Take a star' />
 
-        <Label>Button like anchor</Label>
-        <Button disabled={ disabled } elementType={ ElementType.anchor } buttonType={ ButtonType.primary } href='http://bing.com' target='_blank' title='Let us bing!' description='Navigate to Bing home page.'>Bing</Button>
+        <Label>Button like anchor (cannot be disabled)</Label>
+        <Button
+          disabled={ disabled }
+          elementType={ ElementType.anchor }
+          buttonType={ ButtonType.primary }
+          rootProps={ { href: 'http://bing.com', target: '_blank', title: 'Let us bing!' } }
+          description='Navigate to Bing home page.'>
+          Bing
+        </Button>
 
         <Label>Button with aria description for screen reader</Label>
         <Button disabled={ disabled } buttonType={ ButtonType.primary } ariaDescription='This is aria description used for screen reader.'>Aria Description</Button>
