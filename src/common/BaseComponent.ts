@@ -3,6 +3,11 @@ import { Async } from '../utilities/Async/Async';
 import { EventGroup } from '../utilities/eventGroup/EventGroup';
 import { IDisposable } from './IDisposable';
 
+// Ensure that the HTML element has a dir specified. This helps to ensure RTL/LTR macros in css for all components will work.
+if (document && document.documentElement && !document.documentElement.getAttribute('dir')) {
+  document.documentElement.setAttribute('dir', 'ltr');
+}
+
 export class BaseComponent<P, S> extends React.Component<P, S> {
   /**
    * External consumers should override BaseComponent.onError to hook into error messages that occur from
