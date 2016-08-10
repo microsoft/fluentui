@@ -107,8 +107,8 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
               this._renderItemInCommandBar(item, index, expandedMenuItemKey)
             )).concat((renderedOverflowItems && renderedOverflowItems.length) ? [
             <div className='ms-CommandBarItem' key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
-              <button id={ this._instanceId + OVERFLOW_KEY } className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === OVERFLOW_KEY) }) } 
-                onClick={ this._onOverflowClick } 
+              <button id={ this._instanceId + OVERFLOW_KEY } className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === OVERFLOW_KEY) }) }
+                onClick={ this._onOverflowClick }
                 role='menuitem' aria-label={ elipsisScreenReaderText } aria-haspopup={ true }>
                 <i className='ms-CommandBarItem-overflow ms-Icon ms-Icon--ellipsis' />
               </button>
@@ -279,8 +279,8 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
   }
 
   private _onContextMenuDismiss(ev?: any) {
-    if (!ev || 
-        ((!ev.relatedTarget || !this.refs.commandSurface.contains(ev.relatedTarget as HTMLElement)) && 
+    if (!ev ||
+        ((!ev.relatedTarget || !this.refs.commandSurface.contains(ev.relatedTarget as HTMLElement)) &&
         (!ev.target || ev.target.id !== this._instanceId + OVERFLOW_KEY))) {
       this.setState({
         expandedMenuItemKey: null,
