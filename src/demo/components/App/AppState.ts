@@ -43,7 +43,6 @@ import { ThemePage } from '../../pages/ThemePage/ThemePage';
 export enum ExampleStatus {
   placeholder,
   started,
-  alpha,
   beta,
   release
 }
@@ -69,13 +68,13 @@ export const AppState: IAppState = {
         {
           component: ButtonPage,
           name: 'Button',
-          status: ExampleStatus.alpha,
+          status: ExampleStatus.beta,
           url: '#/examples/button'
         },
         {
           component: CalloutPage,
           name: 'Callout',
-          status: ExampleStatus.alpha,
+          status: ExampleStatus.beta,
           url: '#/examples/callout'
         },
         {
@@ -93,25 +92,25 @@ export const AppState: IAppState = {
         {
           component: CommandBarPage,
           name: 'CommandBar',
-          status: ExampleStatus.alpha,
+          status: ExampleStatus.beta,
           url: '#/examples/commandbar'
         },
         {
           component: ContextualMenuPage,
           name: 'ContextualMenu',
-          status: ExampleStatus.alpha,
+          status: ExampleStatus.beta,
           url: '#/examples/contextmenu'
         },
         {
           component: DatePickerPage,
           name: 'DatePicker',
-          status: ExampleStatus.alpha,
+          status: ExampleStatus.beta,
           url: '#/examples/datepicker'
         },
         {
           component: DetailsListPage,
           name: 'DetailsList',
-          status: ExampleStatus.alpha,
+          status: ExampleStatus.beta,
           url: '#/examples/detailslist'
         },
         {
@@ -123,13 +122,13 @@ export const AppState: IAppState = {
         {
           component: DocumentCardPage,
           name: 'DocumentCard',
-          status: ExampleStatus.alpha,
+          status: ExampleStatus.beta,
           url: '#/examples/documentcard'
         },
         {
           component: DropdownPage,
           name: 'Dropdown',
-          status: ExampleStatus.alpha,
+          status: ExampleStatus.beta,
           url: '#/examples/dropdown'
         },
         {
@@ -141,19 +140,19 @@ export const AppState: IAppState = {
         {
           component: LabelPage,
           name: 'Label',
-          status: ExampleStatus.alpha,
+          status: ExampleStatus.beta,
           url: '#/examples/label'
         },
         {
           component: LinkPage,
           name: 'Link',
-          status: ExampleStatus.alpha,
+          status: ExampleStatus.beta,
           url: '#/examples/link'
         },
         {
           component: ListPage,
           name: 'List',
-          status: ExampleStatus.alpha,
+          status: ExampleStatus.beta,
           url: '#/examples/list'
         },
         {
@@ -171,13 +170,13 @@ export const AppState: IAppState = {
         {
           component: OverlayPage,
           name: 'Overlay',
-          status: ExampleStatus.alpha,
+          status: ExampleStatus.beta,
           url: '#/examples/overlay'
         },
         {
           component: PanelPage,
           name: 'Panel',
-          status: ExampleStatus.alpha,
+          status: ExampleStatus.beta,
           url: '#/examples/panel'
         },
         {
@@ -189,7 +188,7 @@ export const AppState: IAppState = {
         {
           component: PersonaPage,
           name: 'Persona',
-          status: ExampleStatus.alpha,
+          status: ExampleStatus.beta,
           url: '#/examples/persona'
         },
         {
@@ -207,7 +206,7 @@ export const AppState: IAppState = {
         {
           component: ProgressIndicatorPage,
           name: 'ProgressIndicator',
-          status: ExampleStatus.alpha,
+          status: ExampleStatus.beta,
           url: '#/examples/progressindicator'
         },
         {
@@ -219,13 +218,13 @@ export const AppState: IAppState = {
         {
           component: SpinnerPage,
           name: 'Spinner',
-          status: ExampleStatus.alpha,
+          status: ExampleStatus.beta,
           url: '#/examples/spinner'
         },
         {
           component: TextFieldPage,
           name: 'TextField',
-          status: ExampleStatus.alpha,
+          status: ExampleStatus.beta,
           url: '#/examples/textfield'
         },
         {
@@ -254,13 +253,13 @@ export const AppState: IAppState = {
         {
           component: ImagePage,
           name: 'Image',
-          status: ExampleStatus.alpha,
+          status: ExampleStatus.beta,
           url: '#/examples/image'
         },
         {
           component: LayerPage,
           name: 'Layer',
-          status: ExampleStatus.alpha,
+          status: ExampleStatus.beta,
           url: '#/examples/layer'
         },
         {
