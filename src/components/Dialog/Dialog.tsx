@@ -52,7 +52,9 @@ export class Dialog extends React.Component<IDialogProps, any> {
     if (subText) {
       subTextContent = <p className='ms-Dialog-subText' id={ id + '-subText'}>{ subText }</p>;
     }
-
+    // There are some cases where the dialog should render in a window different from where
+    // the javascript is running. If the parent passes a hostElement in it is expected that the
+    // the dialog should render in that hostElement's window.
     let hostWindow = hostElement ? hostElement.ownerDocument.defaultView : window;
 
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints

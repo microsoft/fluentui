@@ -25,10 +25,12 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     directionalHint: DirectionalHint.rightCenter
   };
 
-  private _targetWindow: Window;
   private _hostElement: HTMLDivElement;
   private _calloutElement: HTMLDivElement;
   private _events: EventGroup;
+  // There are some cases when the callout needs to be rendered on a window other than the one
+  // the javascript is running in.
+  private _targetWindow: Window;
 
   constructor(props: ICalloutProps) {
     super(props);
