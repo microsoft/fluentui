@@ -8,7 +8,7 @@ import {
   IDetailsList,
   CheckboxVisibility
 } from '../DetailsList/DetailsList.Props';
-import { DetailsHeader } from '../DetailsList/DetailsHeader';
+import { DetailsHeader, SelectAllVisibility } from '../DetailsList/DetailsHeader';
 import { DetailsRow } from '../DetailsList/DetailsRow';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { GroupedList } from '../../GroupedList';
@@ -193,12 +193,19 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       renderedWindowsAhead: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_AHEAD,
       renderedWindowsBehind: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_BEHIND
     };
-    // if isCollapsedGroupSelectVisible is false, disable select all when the list has all collapsed groups
-    let isCollapsedGroupSelectVisible = groupProps && groupProps.headerProps && groupProps.headerProps.isCollapsedGroupSelectVisible;
-    if (isCollapsedGroupSelectVisible === undefined) {
-      isCollapsedGroupSelectVisible = true;
+    let selectAllVisibility = SelectAllVisibility.none; // for SelectionMode.none
+    if (selectionMode === SelectionMode.single) {
+      selectAllVisibility = SelectAllVisibility.hidden;
     }
-    let isSelectAllVisible = isCollapsedGroupSelectVisible || !isCollapsed;
+    if (selectionMode === SelectionMode.multiple) {
+      // if isCollapsedGroupSelectVisible is false, disable select all when the list has all collapsed groups
+      let isCollapsedGroupSelectVisible = groupProps && groupProps.headerProps && groupProps.headerProps.isCollapsedGroupSelectVisible;
+      if (isCollapsedGroupSelectVisible === undefined) {
+        isCollapsedGroupSelectVisible = true;
+      }
+      let isSelectAllVisible = isCollapsedGroupSelectVisible || !isCollapsed;
+      selectAllVisibility = isSelectAllVisible ? SelectAllVisibility.visible : SelectAllVisibility.hidden;
+    }
 
     return (
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
@@ -232,7 +239,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                 onToggleCollapseAll={ this._onToggleCollapse }
                 ariaLabel={ ariaLabelForListHeader }
                 ariaLabelForSelectAllCheckbox={ ariaLabelForSelectAllCheckbox }
-                isSelectAllVisible={ isSelectAllVisible }
+                selectAllVisibility={ selectAllVisibility }
                 />
             ) }
           </div>
