@@ -1,10 +1,10 @@
 import { IObjectWithKey, ISelection, SELECTION_CHANGE } from './interfaces';
 import { EventGroup } from '../eventGroup/EventGroup';
 
-export interface ISelectionParams {
+export interface ISelectionOptions {
   onSelectionChanged?: () => void;
   getKey?: (item: IObjectWithKey, index?: number) => string;
-  canSelectItem?: (item: any) => boolean;
+  canSelectItem?: (item: IObjectWithKey) => boolean;
 }
 
 export class Selection implements ISelection {
@@ -22,21 +22,21 @@ export class Selection implements ISelection {
   private _anchoredIndex: number;
   private _onSelectionChanged: () => void;
   private _hasChanged: boolean;
-  private _dontSelectIndices: { [index: string]: boolean };
-  private _dontSelectCount: number;
+  private _unselectableIndices: { [index: string]: boolean };
+  private _unselectableCount: number;
 
-  constructor(params: ISelectionParams = {}) {
+  constructor(options: ISelectionOptions = {}) {
     let {
       onSelectionChanged,
       getKey,
-      canSelectItem = (item: any) => { return true; }
-    } = params;
+      canSelectItem = (item: IObjectWithKey) => { return true; }
+    } = options;
     this.getKey = getKey || ((item: IObjectWithKey, index?: number) => (item ? item.key : String(index)));
 
     this._changeEventSuppressionCount = 0;
     this._exemptedCount = 0;
     this._anchoredIndex = 0;
-    this._dontSelectCount = 0;
+    this._unselectableCount = 0;
     this.setItems([], true);
 
     this._onSelectionChanged = onSelectionChanged;
@@ -63,7 +63,7 @@ export class Selection implements ISelection {
    */
   public setItems(items: IObjectWithKey[], shouldClear = true) {
     let newKeyToIndexMap: { [key: string]: number } = {};
-    let newDontSelectIndices: { [key: string]: boolean } = {};
+    let newUnselectableIndices: { [key: string]: boolean } = {};
 
     // Build lookup table for quick selection evaluation.
     for (let i = 0; i < items.length; i++) {
@@ -73,9 +73,9 @@ export class Selection implements ISelection {
         newKeyToIndexMap[this.getKey(item, i)] = i;
       }
 
-      newDontSelectIndices[i] = item && !this.canSelectItem(item);
-      if (newDontSelectIndices[i]) {
-        this._dontSelectCount++;
+      newUnselectableIndices[i] = item && !this.canSelectItem(item);
+      if (newUnselectableIndices[i]) {
+        this._unselectableCount++;
       }
     }
 
@@ -108,7 +108,7 @@ export class Selection implements ISelection {
 
     this._exemptedIndices = newExemptedIndicies;
     this._keyToIndexMap = newKeyToIndexMap;
-    this._dontSelectIndices = newDontSelectIndices;
+    this._unselectableIndices = newUnselectableIndices;
     this._items = items || [];
 
     this._change();
@@ -133,14 +133,14 @@ export class Selection implements ISelection {
   }
 
   public getSelectedCount(): number {
-    return this._isAllSelected ? (this._items.length - this._exemptedCount - this._dontSelectCount) : (this._exemptedCount);
+    return this._isAllSelected ? (this._items.length - this._exemptedCount - this._unselectableCount) : (this._exemptedCount);
   }
 
   public isAllSelected(): boolean {
     return (
       (this.count > 0) &&
       (this._isAllSelected && this._exemptedCount === 0) ||
-      (!this._isAllSelected && (this._exemptedCount === this._items.length - this._dontSelectCount) && this._items.length > 0));
+      (!this._isAllSelected && (this._exemptedCount === this._items.length - this._unselectableCount) && this._items.length > 0));
   }
 
   public isKeySelected(key: string): boolean {
@@ -152,7 +152,7 @@ export class Selection implements ISelection {
   public isIndexSelected(index: number): boolean {
     return !!(
       (this.count > 0) &&
-      (this._isAllSelected && !this._exemptedIndices[index] && !this._dontSelectIndices[index]) ||
+      (this._isAllSelected && !this._exemptedIndices[index] && !this._unselectableIndices[index]) ||
       (!this._isAllSelected && this._exemptedIndices[index]));
   }
 
@@ -177,7 +177,7 @@ export class Selection implements ISelection {
 
     let isExempt = this._exemptedIndices[index];
     let hasChanged = false;
-    let canSelect = !this._dontSelectIndices[index];
+    let canSelect = !this._unselectableIndices[index];
 
     if (canSelect) {
       // Determine if we need to remove the exemption.
