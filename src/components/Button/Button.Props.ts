@@ -3,10 +3,10 @@ import { Button } from './Button';
 
 export interface IButtonProps extends React.Props<Button> {
   /**
-   * The type of the element to render.
+   * If provided, this component will be rendered as an anchor.
    * @default ElementType.anchor
    */
-  elementType?: ElementType;
+  href?: string;
 
   /**
    * The type of button to render.
