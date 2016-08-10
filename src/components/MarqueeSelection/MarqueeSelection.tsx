@@ -74,7 +74,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
   }
 
   public render(): JSX.Element {
-    let { rootProps, children, isDraggingConstrainedToRoot } = this.props;
+    let { rootProps, children } = this.props;
     let { dragRect } = this.state;
 
     return (
