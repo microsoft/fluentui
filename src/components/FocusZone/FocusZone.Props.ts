@@ -1,6 +1,17 @@
 import * as React from 'react';
 import { FocusZone } from './FocusZone';
 
+/**
+ * FocusZone component class interface.
+ */
+export interface IFocusZone {
+  /** Sets focus to the checkbox. */
+  focus(): void;
+}
+
+/**
+ * FocusZone component props.
+ */
 export interface IFocusZoneProps extends React.Props<FocusZone> {
   /**
    * Additional class name to provide on the root element, in addition to the ms-FocusZone class.
