@@ -19,6 +19,11 @@ export interface ICommandBarProps extends React.HTMLProps<HTMLDivElement> {
   items: IContextualMenuItem[];
 
   /**
+   * Text to be read by screen readers about how to navigate through items
+   */
+  itemNavigationScreenReaderText?: string;
+
+  /**
    * Default items to have in the overflow menu
    */
   overflowItems?: IContextualMenuItem[];

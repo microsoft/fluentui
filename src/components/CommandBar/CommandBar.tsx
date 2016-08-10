@@ -107,7 +107,9 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
               this._renderItemInCommandBar(item, index, expandedMenuItemKey)
             )).concat((renderedOverflowItems && renderedOverflowItems.length) ? [
             <div className='ms-CommandBarItem' key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
-              <button id={ this._instanceId + OVERFLOW_KEY } className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === OVERFLOW_KEY) }) } onClick={ this._onOverflowClick } role='menuitem' aria-label={ elipsisScreenReaderText }>
+              <button id={ this._instanceId + OVERFLOW_KEY } className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === OVERFLOW_KEY) }) } 
+                onClick={ this._onOverflowClick } 
+                role='menuitem' aria-label={ elipsisScreenReaderText } aria-haspopup={ true }>
                 <i className='ms-CommandBarItem-overflow ms-Icon ms-Icon--ellipsis' />
               </button>
             </div>
@@ -149,6 +151,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
                          data-command-key={ index }
                          aria-haspopup={ !!(item.items && item.items.length) }
                          role='menuitem'
+                         aria-label={ `${ item.name }. ${ index === 0 ? this.props.itemNavigationScreenReaderText : '' }` }
                        >
                          { (!!item.icon) && <span className={ `ms-CommandBarItem-icon ms-Icon ms-Icon--${ item.icon }` }></span> }
                          { (!!item.name) && <span className='ms-CommandBarItem-commandText'>{ item.name }</span> }
@@ -276,7 +279,9 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
   }
 
   private _onContextMenuDismiss(ev?: any) {
-    if (!ev || !ev.relatedTarget || !this.refs.commandSurface.contains(ev.relatedTarget as HTMLElement)) {
+    if (!ev || 
+        ((!ev.relatedTarget || !this.refs.commandSurface.contains(ev.relatedTarget as HTMLElement)) && 
+        (!ev.target || ev.target.id !== this._instanceId + OVERFLOW_KEY))) {
       this.setState({
         expandedMenuItemKey: null,
         contextualMenuItems: null,
