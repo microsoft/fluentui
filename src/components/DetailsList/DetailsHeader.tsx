@@ -98,7 +98,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         aria-label= { ariaLabel }
         className={ css('ms-DetailsHeader', {
           'is-allSelected': isAllSelected,
-          'is-singleSelect': !showSelectAllCheckbox,
+          'is-singleSelect': selectionMode === SelectionMode.single,
           'is-resizingColumn': !!columnResizeDetails && isSizing
         }) }
         onMouseMove={ this._onMove.bind(this) }
@@ -278,7 +278,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     let columnIndex = Number(columnIndexAttr);
     let { columns } = this.props;
 
-    if (columnIndex === null || ev.button !== MOUSEDOWN_PRIMARY_BUTTON) {
+    if (columnIndexAttr === null || ev.button !== MOUSEDOWN_PRIMARY_BUTTON) {
       // Ignore anything except the primary button.
       return;
     }
