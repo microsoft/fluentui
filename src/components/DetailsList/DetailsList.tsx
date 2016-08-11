@@ -179,7 +179,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       ariaLabel,
       ariaLabelForGrid,
       rowElementEventMap,
-      shouldApplyApplicationRole = false
+      shouldApplyApplicationRole = false,
+      shouldApplyGridRole = true
     } = this.props;
     let {
       adjustedColumns,
@@ -224,7 +225,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
         data-is-scrollable='false'
         aria-label={ ariaLabel }
         role={ shouldApplyApplicationRole ? 'application' : '' }>
-        <div role='grid' aria-label={ ariaLabelForGrid }>
+        <div role={ shouldApplyGridRole ? 'grid' : '' } aria-label={ ariaLabelForGrid }>
           <div ref='headerContainer' onKeyDown={ this._onHeaderKeyDown }>
             { isHeaderVisible && (
               <DetailsHeader
