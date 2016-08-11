@@ -39,10 +39,8 @@
 }
 
 .ms-Spinner-label {
-  @include ms-baseFont;
+  @include ms-font-s;
   position: relative;
-  font-size: $ms-font-size-s;
-  font-weight: $ms-font-weight-regular;
   color: $ms-color-themePrimary;
   left: 28px;
   top: 2px;
