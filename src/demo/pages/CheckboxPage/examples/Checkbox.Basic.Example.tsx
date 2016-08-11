@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {
   Checkbox
-  } from '../../../../index';
+  } from '../../../../Checkbox';
 
-export interface CheckboxBasicExample {
+export interface ICheckboxBasicExampleState {
   isChecked: boolean;
 }
 
-export class CheckboxBasicExample extends React.Component<any, any> {
+export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExampleState> {
   constructor() {
     super();
 
