@@ -1,107 +1,109 @@
 import * as React from 'react';
-import { ICheckboxProps } from './Checkbox.Props';
+import {
+  ICheckbox,
+  ICheckboxProps
+} from './Checkbox.Props';
 import { css } from '../../utilities/css';
+import { getId } from '../../utilities/object';
+
 import './Checkbox.scss';
 
-export interface ICheckboxState {
-  isChecked: boolean;
-}
-
-let _instance: number = 0;
-
-export class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
-  public static defaultProps = {
-    isSelected: false,
-    isEnabled: true
+export class Checkbox extends React.Component<ICheckboxProps, {}> implements ICheckbox {
+  public static defaultProps: ICheckboxProps = {
   };
 
   private _id: string;
-  private _checkbox: HTMLElement;
-  private _checkboxInput: HTMLInputElement;
+  private _checkBox: HTMLElement;
+  private _checkBoxInput: HTMLInputElement;
+  private _checkBoxLabel: HTMLLabelElement;
 
   constructor(props: ICheckboxProps) {
     super(props);
 
-    this.state = {
-      isChecked: props.isChecked
-    };
-
-    this._id = `checkbox-${ _instance++ }`;
-
-    this._handleInputChange = this._handleInputChange.bind(this);
+    this._id = getId('checkbox-');
+    this._onChange = this._onChange.bind(this);
   }
 
   public componentDidMount() {
-    this._checkboxInput.addEventListener('focus', this._onFocus.bind(this), false);
-    this._checkboxInput.addEventListener('blur', this._onBlur.bind(this), false);
-  }
-
-  public componentWillReceiveProps(newProps: ICheckboxProps) {
-    if (newProps.isChecked !== this.props.isChecked) {
-      this.setState({
-        isChecked: newProps.isChecked
-      });
-    }
+    this._checkBoxInput.addEventListener('focus', this._onFocus.bind(this), false);
+    this._checkBoxInput.addEventListener('blur', this._onBlur.bind(this), false);
   }
 
   public componentWillUnmount() {
-    this._checkboxInput.removeEventListener('focus', this._onFocus.bind(this));
-    this._checkboxInput.removeEventListener('blur', this._onBlur.bind(this));
+    this._checkBoxInput.removeEventListener('focus', this._onFocus.bind(this));
+    this._checkBoxInput.removeEventListener('blur', this._onBlur.bind(this));
   }
 
   public render() {
-    let { text, isEnabled, className } = this.props;
-    let { isChecked } = this.state;
+    const {
+      checked,
+      className,
+      defaultChecked,
+      disabled,
+      inputProps,
+      label
+    } = this.props;
 
     return (
       <div
         className={ css('ms-Checkbox', className) }
-        ref={ (c): HTMLElement => this._checkbox = c }
+        ref={ (c): HTMLElement => this._checkBox = c }
       >
         <input
-          ref={ (c): HTMLInputElement => this._checkboxInput = c }
+          { ...inputProps }
+          { ...(checked !== undefined && { checked }) }
+          { ...(defaultChecked !== undefined && { defaultChecked }) }
+          disabled={ disabled }
+          ref={ (el): HTMLInputElement => this._checkBoxInput = el }
           id={ this._id }
           name={ this._id }
           className='ms-Checkbox-input'
           type='checkbox'
-          checked={ isChecked }
-          disabled={ !isEnabled }
-          onChange={ this._handleInputChange }
+          onChange={ this._onChange }
+          aria-checked={ checked }
         />
-        <label
-          htmlFor={ this._id }
-          className={ css('ms-Checkbox-field', isChecked && 'is-checked', !isEnabled && 'is-disabled') }
+        <label htmlFor={ this._id }
+          ref={ (el): HTMLLabelElement => this._checkBoxLabel = el }
+          className={ css('ms-Checkbox-label', checked && 'is-checked', disabled && 'is-disabled') }
         >
-          { text && <span className='ms-Label'>{ text }</span> }
+          { label && <span className='ms-Label'>{ label }</span> }
         </label>
       </div>
     );
   }
 
+  public get checked(): boolean {
+    return this._checkBoxInput ? this._checkBoxInput.checked : false;
+  }
+
   public focus() {
-      if (this._checkboxInput) {
-          this._checkboxInput.focus();
+      if (this._checkBoxInput) {
+          this._checkBoxInput.focus();
       }
   }
 
   private _onFocus(): void {
-    this._checkbox.classList.add('is-inFocus');
+    this._checkBox.classList.add('is-inFocus');
   }
 
   private _onBlur(): void {
-    this._checkbox.classList.remove('is-inFocus');
+    this._checkBox.classList.remove('is-inFocus');
   }
 
-  private _handleInputChange(evt: React.FormEvent) {
-    let { onChanged } = this.props;
-    const isChecked = (evt.target as HTMLInputElement).checked;
+  private _onChange(ev: React.FormEvent) {
+    const { onChange } = this.props;
+    const isChecked = (ev.target as HTMLInputElement).checked;
 
-    this.setState({
-      isChecked: isChecked
-    });
+    if(isChecked) {
+      this._checkBoxLabel.classList.add('is-checked');
+    }
 
-    if (onChanged) {
-      onChanged(isChecked);
+    if(!isChecked) {
+      this._checkBoxLabel.classList.remove('is-checked');
+    }
+
+    if (onChange) {
+      onChange(ev, isChecked);
     }
   }
 }

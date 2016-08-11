@@ -7,7 +7,7 @@
 // --------------------------------------------------
 // Checkbox styles
 
-$ms-checkbox-field-size: 20px;
+$ms-checkbox-label-size: 20px;
 $ms-checkbox-transition-duration: 200ms;
 $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
@@ -36,12 +36,12 @@ $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
 }
 
 // The checkbox square container
-.ms-Checkbox-field::before {
+.ms-Checkbox-label::before {
   content: '';
   display: inline-block;
   border: 2px solid $ms-color-neutralTertiary;
-  width: $ms-checkbox-field-size;
-  height: $ms-checkbox-field-size;
+  width: $ms-checkbox-label-size;
+  height: $ms-checkbox-label-size;
   font-weight: normal;
   position: absolute;
   box-sizing: border-box;
@@ -51,7 +51,7 @@ $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
 }
 
 // The check mark icon
-.ms-Checkbox-field::after {
+.ms-Checkbox-label::after {
   @include ms-Icon--CheckMark;
   font-family: 'FabricMDL2Icons';
   display: none;
@@ -61,8 +61,8 @@ $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
   font-size: $ms-font-size-s-plus;
   top: 0;
   color: $ms-color-white;
-  line-height: $ms-checkbox-field-size;
-  width: $ms-checkbox-field-size;
+  line-height: $ms-checkbox-label-size;
+  width: $ms-checkbox-label-size;
   text-align: center;
 
   @media screen and (-ms-high-contrast: active) {
@@ -74,8 +74,8 @@ $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
   }
 }
 
-// The checkbox field
-.ms-Checkbox-field {
+// The checkbox label
+.ms-Checkbox-label {
   display: inline-block;
   cursor: pointer;
   margin-top: 8px;

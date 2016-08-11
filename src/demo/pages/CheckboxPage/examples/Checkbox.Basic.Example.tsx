@@ -6,21 +6,20 @@ import {
 export class CheckboxBasicExample extends React.Component<any, any> {
   constructor() {
     super();
-    this._onToggleChanged = this._onToggleChanged.bind(this);
+    this._onCheckboxChange = this._onCheckboxChange.bind(this);
   }
 
   public render() {
     return (
       <div>
-        <Checkbox text='Unselected item' onChanged={ this._onToggleChanged } />
-        <Checkbox text='Selected item' onChanged={ this._onToggleChanged } isChecked={ true } />
-        <Checkbox text='Disabled selected item' isChecked={ true } isEnabled={ false } />
-        <Checkbox text='Disabled item' isEnabled={ false } />
+        <Checkbox label='Unselected item' onChange={ this._onCheckboxChange } />
+        <Checkbox label='Selected item' onChange={ this._onCheckboxChange } checked={ true } />
+        <Checkbox label='Disabled item' disabled={ true } />
       </div>
     );
   }
 
-  private _onToggleChanged(isChecked: boolean) {
+  private _onCheckboxChange(ev: React.FormEvent, isChecked: boolean) {
     console.log(`The option has been changed to ${ isChecked }.`);
   }
 
