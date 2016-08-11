@@ -18,7 +18,7 @@ export interface IMarqueeSelectionProps extends React.Props<MarqueeSelection> {
    * if we should start a marquee selection. If true is returned, we will cancel the mousedown
    * event to prevent upstream mousedown handlers from executing.
    */
-  onShouldStartSelection?: (ev: React.MouseEvent) => boolean;
+  onShouldStartSelection?: (ev: MouseEvent) => boolean;
 
   /**
    * Optional flag to control the enabled state of marquee selection. This allows you to render
