@@ -17,7 +17,7 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   cursor: default;
   user-select: none;
 
-  &.is-singleSelect {
+  &.is-selectAllHidden {
     @include padding-left(36px);
   }
 }
