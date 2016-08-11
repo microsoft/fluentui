@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { FocusZone } from './FocusZone';
 
-export interface IFocusZoneProps extends React.HTMLProps<HTMLDivElement> {
+export interface IFocusZoneProps extends React.Props<FocusZone> {
   /**
    * Defines which arrows to react to.
    * @default FocusZoneDirection.bidriectional
@@ -36,6 +37,18 @@ export interface IFocusZoneProps extends React.HTMLProps<HTMLDivElement> {
    * or by having one of its respective children elements focused.
    */
   onActiveElementChanged?: (element?: HTMLElement, ev?: React.FocusEvent) => void;
+
+  /**
+   * If provided, additional class name to provide on the root element.
+   */
+  className?: string;
+
+  /**
+   * If provided, HTMLProps which will be mixed in onto the root element emitted by the FocusZone, before
+   * other props are applied. This allows you to extend the root element with additional attributes, such as
+   * data-automation-id needed for automation.
+   */
+  rootProps?: React.HTMLProps<HTMLDivElement>;
 }
 
 export enum FocusZoneDirection {
