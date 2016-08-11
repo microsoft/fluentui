@@ -17,7 +17,6 @@ export interface ICalloutState {
 }
 
 export class Callout extends React.Component<ICalloutProps, ICalloutState> {
-
   public static defaultProps = {
     isBeakVisible: true,
     beakStyle: 'ms-Callout-beak',
@@ -29,14 +28,18 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
   private _hostElement: HTMLDivElement;
   private _calloutElement: HTMLDivElement;
   private _events: EventGroup;
+  // There are some cases when the callout needs to be rendered on a window other than the one
+  // the javascript is running in.
+  // NOTE: The window must be within the same domain as the parent window or this will not be allowed.
+  private _targetWindow: Window;
 
   constructor(props: ICalloutProps) {
     super(props);
-
+    this._targetWindow = props.targetElement ? props.targetElement.ownerDocument.defaultView : window;
     this.state = {
       positions: null,
       slideDirectionalClassName: null,
-      calloutElementRect: null
+      calloutElementRect: null,
     };
 
     this._events = new EventGroup(this);
@@ -76,7 +79,7 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
       </div>
     );
     return this.props.doNotLayer ? content : (
-      <Layer onLayerMounted={ this._onLayerDidMount }>
+      <Layer onLayerMounted={ this._onLayerDidMount } hostWindow = { this._targetWindow }>
         { content }
       </Layer>
     );
@@ -94,7 +97,7 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     let { targetElement } = this.props;
     let target = ev.target as HTMLElement;
 
-    if (ev.target !== window &&
+    if (ev.target !== this._targetWindow &&
       this._hostElement &&
       !this._hostElement.contains(target) &&
       (!targetElement || !targetElement.contains(target))) {
@@ -105,11 +108,10 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
   private _onLayerDidMount() {
     // This is added so the callout will dismiss when the window is scrolled
     // but not when something inside the callout is scrolled.
-    this._events.on(window, 'scroll', this._dismissOnLostFocus, true);
-    this._events.on(window, 'resize', this.dismiss, true);
-    this._events.on(window, 'focus', this._dismissOnLostFocus, true);
-    this._events.on(window, 'click', this._dismissOnLostFocus, true);
-
+    this._events.on(this._targetWindow, 'scroll', this._dismissOnLostFocus, true);
+    this._events.on(this._targetWindow, 'resize', this.dismiss, true);
+    this._events.on(this._targetWindow, 'focus', this._dismissOnLostFocus, true);
+    this._events.on(this._targetWindow, 'click', this._dismissOnLostFocus, true);
     if (this.props.onLayerMounted) {
       this.props.onLayerMounted();
     }
@@ -123,7 +125,7 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     let calloutElement: HTMLElement = this._calloutElement;
 
     if (hostElement && calloutElement) {
-      let positionInfo: IPositionInfo = getRelativePositions(this.props, hostElement, calloutElement);
+      let positionInfo: IPositionInfo = getRelativePositions(this.props, hostElement, calloutElement, this._targetWindow);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different
       if ((!positions && positionInfo) ||

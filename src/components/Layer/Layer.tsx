@@ -36,10 +36,18 @@ export class Layer extends React.Component<ILayerProps, {}> {
   }
 
   public componentWillMount() {
-    if (!_layerHost) {
-      let hostElement = document.createElement('div');
+    // Test to see if there is a host window passed in, if there is and that window does not already have a layer
+    // then the layer should be added to that window.
+    // NOTE: The window must be within the same domain as the parent window or this will not be allowed.
+    let useHostWindow: boolean = (this.props.hostWindow && !this.props.hostWindow.document.getElementById(LAYER_HOST_ELEMENT_ID));
+
+    if (!_layerHost || useHostWindow) {
+      let hostElement: HTMLElement;
+      let hostDocument: Document = useHostWindow ? this.props.hostWindow.document : document;
+
+      hostElement = hostDocument.createElement('div');
       hostElement.setAttribute('id', LAYER_HOST_ELEMENT_ID);
-      document.body.appendChild(hostElement);
+      hostDocument.body.appendChild(hostElement);
 
       let layerHost: LayerHost = ReactDOM.render((
         <LayerHost />

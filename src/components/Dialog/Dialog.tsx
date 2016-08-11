@@ -35,7 +35,7 @@ export class Dialog extends React.Component<IDialogProps, any> {
   }
 
   public render() {
-    let { isOpen, type, isDarkOverlay, onDismiss, title, subText, isBlocking, responsiveMode, elementToFocusOnDismiss, ignoreExternalFocusing, forceFocusInsideTrap, firstFocusableSelector, closeButtonAriaLabel, onLayerMounted } = this.props;
+    let { isOpen, type, isDarkOverlay, onDismiss, title, subText, isBlocking, responsiveMode, elementToFocusOnDismiss, ignoreExternalFocusing, forceFocusInsideTrap, firstFocusableSelector, closeButtonAriaLabel, onLayerMounted, hostElement } = this.props;
     let { id } = this.state;
     // @TODO - the discussion on whether the Dialog contain a property for rendering itself is still being discussed
     if (!isOpen) {
@@ -52,11 +52,18 @@ export class Dialog extends React.Component<IDialogProps, any> {
     if (subText) {
       subTextContent = <p className='ms-Dialog-subText' id={ id + '-subText'}>{ subText }</p>;
     }
+    // There are some cases where the dialog should render in a window different from where
+    // the javascript is running. If the parent passes a hostElement in it is expected that the
+    // the dialog should render in that hostElement's window.
+    // NOTE: The window must be within the same domain as the parent window or this will not be allowed.
+    let hostWindow = hostElement ? hostElement.ownerDocument.defaultView : null;
 
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints
     if (responsiveMode >= ResponsiveMode.small) {
       return (
-        <Layer onLayerMounted={ onLayerMounted }>
+        <Layer onLayerMounted={ onLayerMounted }
+               hostWindow={hostWindow}
+        >
           <Popup
             className= { dialogClassName }
             role='dialog'
