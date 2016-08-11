@@ -7,6 +7,7 @@
 // --------------------------------------------------
 // Search box styles
 
+$SearchBox-height: 36px;
 
 .ms-SearchBox {
   @include ms-font-m;
@@ -34,6 +35,21 @@
     .ms-SearchBox-closeButton {
       display: block;
       outline: transparent 1px solid;
+      padding: 0px;
+
+      .ms-Icon--Cancel {
+        line-height: $SearchBox-height;
+      }
+    }
+  }
+
+  &:hover {
+    .ms-SearchBox-label {
+      color: #000;
+
+      .ms-SearchBox-icon {
+        color: #333;
+      }
     }
   }
 }
@@ -47,7 +63,7 @@
   font-weight: $ms-font-weight-semilight;
   font-size: $ms-font-size-m;
   color: $ms-color-black;
-  height: 32px;
+  height: $SearchBox-height;
   padding: 6px 3px 7px 10px;
   width: 180px;
   background-color: transparent;
@@ -83,8 +99,8 @@
   position: absolute;
   right: 0;
   top: 0;
-  height: 32px;
-  width: 32px;
+  height: $SearchBox-height;
+  width: 40px;
   background-color: $ms-color-themePrimary;
   text-align: center;
   display: none;
@@ -98,14 +114,23 @@
   top: 0;
   left: 0;
   padding-left: 8px;
-  line-height: 32px;
+  line-height: $SearchBox-height;
+  height: $SearchBox-height;
   color: $ms-color-neutralSecondary;
 }
 
 .ms-SearchBox-icon {
-  margin-right: 7px;
   font-size: $ms-font-size-l;
   color: $ms-color-neutralSecondaryAlt;
+
+  
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  width: 16px;
+  color: #0078d7;
+  vertical-align: top;
 }
 
 // TODO: Remove overrides below.
@@ -129,7 +154,6 @@
 // to a :hover state seems to work just fine
 .ms-SearchBox-field {
   &:hover {
-    border-color: $ms-color-themePrimary;
     background-color: $ms-color-themeLighter;
 
     & + .ms-SearchBox-label {
@@ -145,12 +169,12 @@
 // Fabric RTL fixes. These values are the same as in the fabric src,
 // but we are replacing the properties with the SASS mixins.
 .ms-SearchBox-label {
-  @include padding-left(8px);
+  @include padding-left(12px);
   @include left(0);
 }
 
 .ms-SearchBox-icon {
-  @include margin-right(7px);
+  @include margin-right(10px);
 }
 
 .ms-SearchBox-closeButton {
