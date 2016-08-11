@@ -47,6 +47,12 @@ export class ButtonBasicExample extends React.Component<any, IBasicButtonsExampl
           Create account
         </Button>
 
+        <Label>Primary Button with Icon</Label>
+        <Button disabled={ disabled } buttonType={ ButtonType.primary } title='Star' description='Description of the action this button takes'>
+          <i className='ms-Icon ms-Icon--star' />
+          <span>I am a button.</span>
+        </Button>
+
         <Label>Icon button</Label>
         <Button disabled={ areButtonsDisabled } buttonType={ ButtonType.icon } icon='star' rootProps={ { title: 'Star' } } ariaLabel='Take a star' />
 
