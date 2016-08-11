@@ -133,7 +133,7 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   shouldApplyApplicationRole?: boolean;
 
   /** Optional value if you want to define the grid role on the list */
-  ariaRoleForGrid?: boolean;
+  ariaRoleForGrid?: string;
 }
 
 export interface IColumn {
