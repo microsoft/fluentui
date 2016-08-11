@@ -1,5 +1,9 @@
 import * as React from 'react';
-import { IFocusZoneProps, FocusZoneDirection } from './FocusZone.Props';
+import {
+  FocusZoneDirection,
+  IFocusZone,
+  IFocusZoneProps
+} from './FocusZone.Props';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { KeyCodes } from '../../utilities/KeyCodes';
 import { getRTL } from '../../utilities/rtl';
@@ -26,7 +30,7 @@ interface IPoint {
   top: number;
 }
 
-export class FocusZone extends React.Component<IFocusZoneProps, {}> {
+export class FocusZone extends React.Component<IFocusZoneProps, {}> implements IFocusZone {
 
   public static defaultProps: IFocusZoneProps = {
     isCircularNavigation: false,
@@ -90,7 +94,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
     return (
       <div
         { ...rootProps }
-        className={ css('ms-FocusZone', className ) }
+        className={ css('ms-FocusZone', className) }
         ref='root'
         data-focuszone-id={ this._id }
         aria-labelledby={ ariaLabelledBy }
