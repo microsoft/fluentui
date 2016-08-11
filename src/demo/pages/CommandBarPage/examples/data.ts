@@ -3,6 +3,7 @@ export const items = [
     key: 'newItem',
     name: 'New',
     icon: 'circlePlus',
+    ariaLabel: 'Use left and right arrow keys to navigate',
     onClick: () => { return; },
     items: [
       {

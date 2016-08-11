@@ -53,7 +53,6 @@ export class CommandBarBasicExample extends React.Component<any, any> {
           isSearchBoxVisible={ searchBoxVisible }
           searchPlaceholderText='Search...'
           overflowScreenReaderText='More options'
-          itemNavigationScreenReaderText='Use left and right arrow keys to navigate'
           items={ filteredItems }
           farItems={ filteredFarItems }
           />

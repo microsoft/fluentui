@@ -151,7 +151,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
                          data-command-key={ index }
                          aria-haspopup={ !!(item.items && item.items.length) }
                          role='menuitem'
-                         aria-label={ `${ item.name }. ${ index === 0 ? this.props.itemNavigationScreenReaderText : '' }` }
+                         aria-label={ `${ item.name }. ${ item.ariaLabel ? item.ariaLabel : '' }` }
                        >
                          { (!!item.icon) && <span className={ `ms-CommandBarItem-icon ms-Icon ms-Icon--${ item.icon }` }></span> }
                          { (!!item.name) && <span className='ms-CommandBarItem-commandText'>{ item.name }</span> }
