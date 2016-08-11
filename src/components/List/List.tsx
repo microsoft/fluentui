@@ -15,8 +15,6 @@ const DEFAULT_PAGE_HEIGHT = 30;
 const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
 const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
 
-let _instance = 0;
-
 export interface IListState {
   pages?: IPage[];
 
@@ -97,15 +95,14 @@ export class List extends BaseComponent<IListProps, IListState> {
   private _requiredWindowsAhead: number;
   private _requiredWindowsBehind: number;
 
-  private _id: number;
   private _measureVersion: number;
 
   constructor(props: IListProps) {
     super(props);
+
     this.state = {
       pages: []
     };
-    this._id = _instance++;
 
     this._estimatedPageHeight = 0;
     this._totalEstimates = 0;

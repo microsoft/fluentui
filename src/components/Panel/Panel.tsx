@@ -2,14 +2,15 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
+import { BaseComponent } from '../../common/BaseComponent';
 import { IPanelProps, PanelType } from './Panel.Props';
 import { Layer } from '../Layer/Layer';
 import { Overlay } from '../../Overlay';
-import { BaseComponent } from '../../common/BaseComponent';
+import { Popup } from '../Popup/index';
 import { css } from '../../utilities/css';
+import { getId } from '../../utilities/object';
 import { getRTL } from '../../utilities/rtl';
 import './Panel.scss';
-import { Popup } from '../Popup/index';
 
 export interface IPanelState {
   isOpen?: boolean;
@@ -17,8 +18,6 @@ export interface IPanelState {
   isAnimatingClose?: boolean;
   id?: string;
 }
-
-let _instance = 0;
 
 export class Panel extends BaseComponent<IPanelProps, IPanelState> {
 
@@ -38,7 +37,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
       isOpen: !!props.isOpen,
       isAnimatingOpen: props.isOpen,
       isAnimatingClose: false,
-      id: `Panel-${_instance++}`
+      id: getId('Panel')
     };
   }
 

@@ -92,13 +92,14 @@ export class Checkbox extends React.Component<ICheckboxProps, {}> implements ICh
 
   private _onChange(ev: React.FormEvent) {
     const { onChange } = this.props;
+
     const isChecked = (ev.target as HTMLInputElement).checked;
 
-    if(isChecked) {
+    if (this.props.checked === undefined && isChecked) {
       this._checkBoxLabel.classList.add('is-checked');
     }
 
-    if(!isChecked) {
+    if (this.props.checked === undefined && !isChecked) {
       this._checkBoxLabel.classList.remove('is-checked');
     }
 

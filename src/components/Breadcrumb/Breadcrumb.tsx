@@ -1,10 +1,11 @@
 import * as React from 'react';
+import { BaseComponent } from '../../common/BaseComponent';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu } from '../../ContextualMenu';
 import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { getRTL } from '../../utilities/rtl';
+import { getId } from '../../utilities/object';
 import { css } from '../../utilities/css';
 import './Breadcrumb.scss';
 
@@ -13,15 +14,12 @@ export interface IBreadcrumbState {
   overflowAnchor?: HTMLElement;
   renderedItems?: IBreadcrumbItem[];
   renderedOverflowItems?: IBreadcrumbItem[];
-  internalId?: string;
 }
 
 const OVERFLOW_KEY = 'overflow';
 const OVERFLOW_WIDTH = 44;
 
-let _instance = 0;
-
-export class Breadcrumb extends React.Component<IBreadcrumbProps, IBreadcrumbState> {
+export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState> {
   public static defaultProps: IBreadcrumbProps = {
     items: [],
     maxDisplayedItems: 999
@@ -33,12 +31,12 @@ export class Breadcrumb extends React.Component<IBreadcrumbProps, IBreadcrumbSta
   };
 
   private _breadcrumbItemWidths: { [key: string]: number };
-  private _events: EventGroup;
+  private _id: string;
 
   constructor(props: IBreadcrumbProps) {
     super(props);
 
-    this._events = new EventGroup(this);
+    this._id = getId('Breadcrumb');
     this.state = this._getStateFromProps(props);
   }
 
@@ -47,10 +45,6 @@ export class Breadcrumb extends React.Component<IBreadcrumbProps, IBreadcrumbSta
     this._updateRenderedItems();
 
     this._events.on(window, 'resize', this._updateRenderedItems);
-  }
-
-  public componentWillUnmount() {
-    this._events.dispose();
   }
 
   public componentWillReceiveProps(nextProps: IBreadcrumbProps) {
@@ -67,8 +61,8 @@ export class Breadcrumb extends React.Component<IBreadcrumbProps, IBreadcrumbSta
 
   public render() {
     let { className } = this.props;
-    let { isOverflowOpen, overflowAnchor, renderedItems, renderedOverflowItems, internalId } = this.state;
-    let overflowMenuId = internalId + '-overflow';
+    let { isOverflowOpen, overflowAnchor, renderedItems, renderedOverflowItems } = this.state;
+    let overflowMenuId = this._id + '-overflow';
 
     return (
       <div className={ css('ms-Breadcrumb', className) } ref='renderingArea'>
@@ -201,8 +195,7 @@ export class Breadcrumb extends React.Component<IBreadcrumbProps, IBreadcrumbSta
       isOverflowOpen: false,
       overflowAnchor: null,
       renderedItems: nextProps.items || [],
-      renderedOverflowItems: null,
-      internalId: 'Breadcrumb-' + _instance++
+      renderedOverflowItems: null
     };
   }
 
