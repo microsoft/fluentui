@@ -134,7 +134,8 @@ export class Group extends React.Component<IGroupProps, IGroupState> {
       groupIndex,
       headerProps,
       footerProps,
-      viewport
+      viewport,
+      selectionMode
     } = this.props;
     let renderCount = group && getGroupItemLimit ? getGroupItemLimit(group) : Infinity;
     let isFooterVisible = group && !group.children && !group.isCollapsed && !group.isShowingAll && group.count > renderCount;
@@ -155,6 +156,7 @@ export class Group extends React.Component<IGroupProps, IGroupState> {
             groupLevel={ group ? group.level : 0 }
             headerProps={ headerProps }
             viewport={ viewport }
+            canSelectGroup={ selectionMode === SelectionMode.multiple }
             ref={ 'header' }
           />
         }
@@ -227,16 +229,16 @@ export class Group extends React.Component<IGroupProps, IGroupState> {
       group,
       items,
       onRenderCell,
-      listProps
+      listProps,
+      groupNestingDepth
     } = this.props;
     let count = group ? group.count : items.length;
     let startIndex = group ? group.startIndex : 0;
-    let level = group ? group.level : 0;
 
     return (
       <List
         items={ items }
-        onRenderCell={ (item, itemIndex) => onRenderCell(level, item, itemIndex) }
+        onRenderCell={ (item, itemIndex) => onRenderCell(groupNestingDepth, item, itemIndex) }
         ref={ 'list' }
         renderCount={ Math.min(count, renderCount) }
         startIndex={ startIndex }

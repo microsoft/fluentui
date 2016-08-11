@@ -39,6 +39,8 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
     list: List
   };
 
+  private _isSomeGroupExpanded: boolean;
+
   constructor(props: IGroupedListProps) {
     super(props);
 
@@ -47,6 +49,7 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
     this._onToggleSummarize = this._onToggleSummarize.bind(this);
     this._getGroupKey = this._getGroupKey.bind(this);
     this._renderGroup = this._renderGroup.bind(this);
+    this._isSomeGroupExpanded = this._computeIsSomeGroupExpanded(props.groups);
 
     this.state = {
       lastWidth: 0,
@@ -108,6 +111,26 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
   public forceUpdate() {
     super.forceUpdate();
     this._forceListUpdates();
+  }
+
+  public toggleCollapseAll(allCollapsed: boolean) {
+    let { groups } = this.state;
+    let { groupProps } = this.props;
+    let onToggleCollapseAll = groupProps && groupProps.onToggleCollapseAll;
+
+    if (groups) {
+      if (onToggleCollapseAll) {
+        onToggleCollapseAll(allCollapsed);
+      }
+
+      for (let groupIndex = 0; groupIndex < groups.length; groupIndex++) {
+        groups[groupIndex].isCollapsed = allCollapsed;
+      }
+
+      this._updateIsSomeGroupExpanded();
+
+      this.forceUpdate();
+    }
   }
 
   private _renderGroup(group, groupIndex) {
@@ -186,6 +209,7 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
       }
 
       group.isCollapsed = !group.isCollapsed;
+      this._updateIsSomeGroupExpanded();
       this.setState({ }, this.forceUpdate);
     }
   }
@@ -260,6 +284,23 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
           groups: groups
         });
       }
+    }
+  }
+
+  private _computeIsSomeGroupExpanded(groups: IGroup[]) {
+    return groups && groups.some(group => group.children ? this._computeIsSomeGroupExpanded(group.children) : !group.isCollapsed);
+  }
+
+  private _updateIsSomeGroupExpanded() {
+    let { groups } = this.state;
+    let { onGroupExpandStateChanged } = this.props;
+
+    let newIsSomeGroupExpanded = this._computeIsSomeGroupExpanded(groups);
+    if (this._isSomeGroupExpanded !== newIsSomeGroupExpanded) {
+      if (onGroupExpandStateChanged) {
+        onGroupExpandStateChanged(newIsSomeGroupExpanded);
+      }
+      this._isSomeGroupExpanded = newIsSomeGroupExpanded;
     }
   }
 }

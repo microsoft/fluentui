@@ -8,7 +8,7 @@ import {
   IDetailsList,
   CheckboxVisibility
 } from '../DetailsList/DetailsList.Props';
-import { DetailsHeader } from '../DetailsList/DetailsHeader';
+import { DetailsHeader, SelectAllVisibility } from '../DetailsList/DetailsHeader';
 import { DetailsRow } from '../DetailsList/DetailsRow';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { GroupedList } from '../../GroupedList';
@@ -37,6 +37,7 @@ export interface IDetailsListState {
   isCollapsed?: boolean;
   isSizing?: boolean;
   isDropping?: boolean;
+  isSomeGroupExpanded?: boolean;
 }
 
 const MIN_COLUMN_WIDTH = 100; // this is the global min width
@@ -89,17 +90,20 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     this._onHeaderKeyDown = this._onHeaderKeyDown.bind(this);
     this._onContentKeyDown = this._onContentKeyDown.bind(this);
     this._onRenderCell = this._onRenderCell.bind(this);
+    this._onGroupExpandStateChanged = this._onGroupExpandStateChanged.bind(this);
 
     this.state = {
       lastWidth: 0,
       adjustedColumns: this._getAdjustedColumns(props),
       layoutMode: props.layoutMode,
       isSizing: false,
-      isDropping: false
+      isDropping: false,
+      isCollapsed: props.groupProps && props.groupProps.isAllGroupsCollapsed,
+      isSomeGroupExpanded: props.groupProps && !props.groupProps.isAllGroupsCollapsed
     };
 
     this._events = new EventGroup(this);
-    this._selection = props.selection || new Selection(null, props.getKey);
+    this._selection = props.selection || new Selection({ onSelectionChanged: null, getKey: props.getKey });
     this._selection.setItems(props.items as IObjectWithKey[], false);
     this._dragDropHelper = props.dragDropEvents ? new DragDropHelper({ selection: this._selection }) : null;
   }
@@ -181,7 +185,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       adjustedColumns,
       isCollapsed,
       layoutMode,
-      isSizing
+      isSizing,
+      isSomeGroupExpanded
     } = this.state;
     let {
       _selection: selection,
@@ -192,6 +197,19 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       renderedWindowsAhead: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_AHEAD,
       renderedWindowsBehind: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_BEHIND
     };
+    let selectAllVisibility = SelectAllVisibility.none; // for SelectionMode.none
+    if (selectionMode === SelectionMode.single) {
+      selectAllVisibility = SelectAllVisibility.hidden;
+    }
+    if (selectionMode === SelectionMode.multiple) {
+      // if isCollapsedGroupSelectVisible is false, disable select all when the list has all collapsed groups
+      let isCollapsedGroupSelectVisible = groupProps && groupProps.headerProps && groupProps.headerProps.isCollapsedGroupSelectVisible;
+      if (isCollapsedGroupSelectVisible === undefined) {
+        isCollapsedGroupSelectVisible = true;
+      }
+      let isSelectAllVisible = isCollapsedGroupSelectVisible || !groups || isSomeGroupExpanded;
+      selectAllVisibility = isSelectAllVisible ? SelectAllVisibility.visible : SelectAllVisibility.hidden;
+    }
 
     return (
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
@@ -225,6 +243,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                 onToggleCollapseAll={ this._onToggleCollapse }
                 ariaLabel={ ariaLabelForListHeader }
                 ariaLabelForSelectAllCheckbox={ ariaLabelForSelectAllCheckbox }
+                selectAllVisibility={ selectAllVisibility }
                 />
             ) }
           </div>
@@ -252,6 +271,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                   dragDropHelper={ dragDropHelper }
                   eventsToRegister={ rowElementEventMap }
                   listProps={ additionalListProps }
+                  onGroupExpandStateChanged={ this._onGroupExpandStateChanged }
                   ref='groups'
                   />
               ) : (
@@ -285,7 +305,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       viewport,
       checkboxVisibility,
       getRowAriaLabel,
-      canSelectItem,
       checkButtonAriaLabel
     } = this.props;
     let selection = this._selection;
@@ -303,26 +322,29 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     }
 
     return (
-        <DetailsRow
-          item={ item }
-          itemIndex={ index }
-          columns={ columns }
-          groupNestingDepth={ nestingDepth }
-          selectionMode={ selectionMode }
-          selection={ selection }
-          onDidMount={ this._onRowDidMount }
-          onWillUnmount={ this._onRowWillUnmount }
-          onRenderItemColumn={ onRenderItemColumn }
-          eventsToRegister={ eventsToRegister }
-          dragDropEvents={ dragDropEvents }
-          dragDropHelper={ dragDropHelper }
-          viewport={ viewport }
-          checkboxVisibility={ checkboxVisibility }
-          getRowAriaLabel={ getRowAriaLabel }
-          canSelectItem={ canSelectItem }
-          checkButtonAriaLabel={ checkButtonAriaLabel }
-          />
+      <DetailsRow
+        item={ item }
+        itemIndex={ index }
+        columns={ columns }
+        groupNestingDepth={ nestingDepth }
+        selectionMode={ selectionMode }
+        selection={ selection }
+        onDidMount={ this._onRowDidMount }
+        onWillUnmount={ this._onRowWillUnmount }
+        onRenderItemColumn={ onRenderItemColumn }
+        eventsToRegister={ eventsToRegister }
+        dragDropEvents={ dragDropEvents }
+        dragDropHelper={ dragDropHelper }
+        viewport={ viewport }
+        checkboxVisibility={ checkboxVisibility }
+        getRowAriaLabel={ getRowAriaLabel }
+        checkButtonAriaLabel={ checkButtonAriaLabel }
+        />
     );
+  }
+
+  private _onGroupExpandStateChanged(isSomeGroupExpanded: boolean) {
+    this.setState({ isSomeGroupExpanded: isSomeGroupExpanded });
   }
 
   private _onColumnIsSizingChanged(column: IColumn, isSizing: boolean) {
@@ -385,8 +407,9 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     this.setState({
       isCollapsed: collapsed
     });
-
-    this.forceUpdate();
+    if (this.refs.groups) {
+      this.refs.groups.toggleCollapseAll(collapsed);
+    }
   }
 
   private _forceListUpdates() {
@@ -434,7 +457,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       viewportWidth = this.props.viewport.width;
     }
 
-    newColumns = newColumns || buildColumns(newItems);
+    newColumns = newColumns || buildColumns(newItems, true);
 
     let adjustedColumns: IColumn[];
 

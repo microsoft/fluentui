@@ -6,6 +6,7 @@ import { KeyCodes } from '../../utilities/KeyCodes';
 import { Label } from '../../Label';
 import { css } from '../../utilities/css';
 import { getRTL as isRTL, getRTLSafeKeyCode } from '../../utilities/rtl';
+import { getId } from '../../utilities/object';
 
 export interface ISliderState {
   value?: number;
@@ -16,8 +17,6 @@ export enum ValuePosition {
   Previous,
   Next
 }
-
-let _instance: number = 0;
 
 export class Slider extends BaseComponent<ISliderProps, ISliderState> implements ISlider {
   public static defaultProps: {} = {
@@ -45,7 +44,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     this._onMouseUpOrTouchEnd = this._onMouseUpOrTouchEnd.bind(this);
     this._onKeyDown = this._onKeyDown.bind(this);
 
-    this._id = `Slider-${ _instance++ }`;
+    this._id = getId('Slider');
 
     let value = props.value || props.defaultValue || props.min;
 

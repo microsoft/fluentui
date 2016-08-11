@@ -1,18 +1,15 @@
 import * as React from 'react';
-import { ICheckboxProps } from './Checkbox.Props';
+import {
+  ICheckbox,
+  ICheckboxProps
+} from './Checkbox.Props';
 import { css } from '../../utilities/css';
+import { getId } from '../../utilities/object';
+
 import './Checkbox.scss';
 
-export interface ICheckboxState {
-  isChecked: boolean;
-}
-
-let _instance: number = 0;
-
-export class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
-  public static defaultProps = {
-    isSelected: false,
-    isEnabled: true
+export class Checkbox extends React.Component<ICheckboxProps, {}> implements ICheckbox {
+  public static defaultProps: ICheckboxProps = {
   };
 
   private _id: string;
@@ -21,46 +18,45 @@ export class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
   constructor(props: ICheckboxProps) {
     super(props);
 
-    this.state = {
-      isChecked: props.isChecked
-    };
-
-    this._id = `checkbox-${ _instance++ }`;
-
-    this._handleInputChange = this._handleInputChange.bind(this);
-  }
-
-  public componentWillReceiveProps(newProps: ICheckboxProps) {
-    if (newProps.isChecked !== this.props.isChecked) {
-      this.setState({
-        isChecked: newProps.isChecked
-      });
-    }
+    this._id = getId('checkbox-');
+    this._onChange = this._onChange.bind(this);
   }
 
   public render() {
-    let { text, isEnabled, className } = this.props;
-    let { isChecked } = this.state;
+    const {
+      checked,
+      className,
+      defaultChecked,
+      disabled,
+      inputProps,
+      label
+    } = this.props;
 
     return (
       <div className={ css('ms-ChoiceField', className) }>
         <input
-          ref={ (c): HTMLInputElement => this._checkBox = c }
+          { ...inputProps }
+          { ...(checked !== undefined && { checked }) }
+          { ...(defaultChecked !== undefined && { defaultChecked }) }
+          disabled={ disabled }
+          ref={ (el): HTMLInputElement => this._checkBox = el }
           id={ this._id }
           name={ this._id }
           className='ms-ChoiceField-input'
           type='checkbox'
           role='checkbox'
-          checked={ isChecked }
-          disabled={ !isEnabled }
-          onChange={ this._handleInputChange }
-          aria-checked={ isChecked }
+          onChange={ this._onChange }
+          aria-checked={ checked }
         />
         <label htmlFor={ this._id } className='ms-ChoiceField-field'>
-          { text && <span className='ms-Label'>{ text }</span> }
+          { label && <span className='ms-Label'>{ label }</span> }
         </label>
       </div>
     );
+  }
+
+  public get checked(): boolean {
+    return this._checkBox ? this._checkBox.checked : false;
   }
 
   public focus() {
@@ -69,16 +65,12 @@ export class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
       }
   }
 
-  private _handleInputChange(evt: React.FormEvent) {
-    let { onChanged } = this.props;
-    const isChecked = (evt.target as HTMLInputElement).checked;
+  private _onChange(ev: React.FormEvent) {
+    const { onChange } = this.props;
+    const isChecked = (ev.target as HTMLInputElement).checked;
 
-    this.setState({
-      isChecked: isChecked
-    });
-
-    if (onChanged) {
-      onChanged(isChecked);
+    if (onChange) {
+      onChange(ev, isChecked);
     }
   }
 }
