@@ -6,6 +6,7 @@ import { KeyCodes } from '../../utilities/KeyCodes';
 import { PivotItem } from './PivotItem';
 import { PivotLinkFormat } from './Pivot.Props';
 import { PivotLinkSize } from './Pivot.Props';
+import { getId } from '../../utilities/object';
 
 import './Pivot.scss';
 import { css } from '../../utilities/css';
@@ -32,8 +33,6 @@ export interface IPivotState {
   id: string;
 }
 
-let _instance: number = 0;
-
 export class Pivot extends React.Component<IPivotProps, IPivotState> {
   private _keyToIndexMapping: { [key: string]: number };
 
@@ -54,7 +53,7 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
     this.state = {
       links,
       selectedKey,
-      id: `Pivot-${_instance++}`
+      id: getId('Pivot')
     } as IPivotState;
 
     this._renderLink = this._renderLink.bind(this);

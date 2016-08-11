@@ -6,6 +6,7 @@ import { KeyCodes } from '../../utilities/KeyCodes';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { css } from '../../utilities/css';
 import { getRTL } from '../../utilities/rtl';
+import { getId } from '../../utilities/object';
 import { Async } from '../../utilities/Async/Async';
 import { Callout } from '../../Callout';
 import './ContextualMenu.scss';
@@ -64,8 +65,6 @@ interface IParsedDirectionalHint {
   verticalAlignmentHint: VerticalAlignmentHint;
 }
 
-let _instance = 0;
-
 export class ContextualMenu extends React.Component<IContextualMenuProps, IContextualMenuState> {
   // The default ContextualMenu properities have no items and beak, the default submenu direction is right and top.
   public static defaultProps = {
@@ -91,7 +90,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
 
     this.state = {
       contextualMenuItems: null,
-      subMenuId: 'ContextualMenu-SubMenu-' + _instance++
+      subMenuId: getId('ContextualMenu')
     };
 
     this._isFocusingPreviousElement = false;

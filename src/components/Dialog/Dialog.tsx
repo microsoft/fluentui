@@ -7,11 +7,11 @@ import { DialogFooter } from './DialogFooter';
 import { css } from '../../utilities/css';
 import { Popup } from '../Popup/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { getId } from '../../utilities/object';
 import './Dialog.scss';
 
 // @TODO - need to add animations, pending Fabric Team + Coulton work
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
-let _instance = 0;
 
 @withResponsiveMode
 export class Dialog extends React.Component<IDialogProps, any> {
@@ -30,7 +30,7 @@ export class Dialog extends React.Component<IDialogProps, any> {
     super(props);
 
     this.state = {
-      id: `Dialog-${_instance++}`,
+      id: getId('Dialog'),
     };
   }
 
