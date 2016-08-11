@@ -7,7 +7,7 @@ import './Layer.scss';
 const LAYER_HOST_ELEMENT_ID = 'ms-layer-host';
 
 let _instance = 0;
-let _layerHost: LayerHost;
+let _layerHost: { [key: string]: LayerHost };
 
 export class Layer extends React.Component<ILayerProps, {}> {
   public static contextTypes = {
@@ -19,10 +19,17 @@ export class Layer extends React.Component<ILayerProps, {}> {
   };
 
   private _layer: ILayer;
+  private _hostWindow: Window;
 
   constructor(props?: ILayerProps) {
+    if (!_layerHost) {
+      _layerHost = {};
+    }
     super(props);
-
+    this._hostWindow = this.props.hostWindow ? this.props.hostWindow : window;
+    if (this._hostWindow.name === '') {
+      this._hostWindow.name = new Date().getTime().toString();
+    }
     this._layer = {
       id: String(_instance++),
       children: props.children
@@ -39,27 +46,26 @@ export class Layer extends React.Component<ILayerProps, {}> {
     // Test to see if there is a host window passed in, if there is and that window does not already have a layer
     // then the layer should be added to that window.
     // NOTE: The window must be within the same domain as the parent window or this will not be allowed.
-    let useHostWindow: boolean = (this.props.hostWindow && !this.props.hostWindow.document.getElementById(LAYER_HOST_ELEMENT_ID));
-
-    if (!_layerHost || useHostWindow) {
+    let layerHost: LayerHost = _layerHost[this._hostWindow.name];
+    if (_layerHost !== undefined) {
       let hostElement: HTMLElement;
-      let hostDocument: Document = useHostWindow ? this.props.hostWindow.document : document;
+      let hostDocument: Document = this._hostWindow.document;
 
       hostElement = hostDocument.createElement('div');
       hostElement.setAttribute('id', LAYER_HOST_ELEMENT_ID);
       hostDocument.body.appendChild(hostElement);
 
-      let layerHost: LayerHost = ReactDOM.render((
+      layerHost = ReactDOM.render((
         <LayerHost />
       ), hostElement) as LayerHost;
 
-      _layerHost = layerHost;
+      _layerHost[this._hostWindow.name]= layerHost;
     }
   }
 
   public componentDidMount() {
     if (!this.context.isInLayer) {
-      _layerHost.addLayer(this._layer, this.props.onLayerMounted);
+      _layerHost[this._hostWindow.name].addLayer(this._layer, this.props.onLayerMounted);
     } else {
       if (this.props.onLayerMounted) {
         this.props.onLayerMounted();
@@ -70,13 +76,14 @@ export class Layer extends React.Component<ILayerProps, {}> {
   public componentWillReceiveProps(props: ILayerProps) {
     if (!this.context.isInLayer) {
       this._layer.children = props.children;
-      _layerHost.updateLayer(this._layer);
+      _layerHost[this._hostWindow.name].updateLayer(this._layer);
     }
   }
 
   public componentWillUnmount() {
     if (!this.context.isInLayer) {
-      _layerHost.removeLayer(this._layer);
+      _layerHost[this._hostWindow.name].removeLayer(this._layer);
     }
   }
+
 }
