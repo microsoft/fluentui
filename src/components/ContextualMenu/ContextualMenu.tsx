@@ -187,13 +187,11 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         <div ref={ (host: HTMLDivElement) => this._host = host} id={ id } className={ css('ms-ContextualMenu-container', className) }>
           { (items && items.length) ? (
             <FocusZone
+              className={ 'ms-ContextualMenu is-open' }
               direction={ FocusZoneDirection.vertical }
               ariaLabelledBy={ labelElementId }
               ref={ (focusZone) => this._focusZone = focusZone }
-              rootProps={ {
-                className: 'ms-ContextualMenu is-open',
-                role: 'menu'
-              } }
+              rootProps={ { role: 'menu' } }
               >
               <ul className='ms-ContextualMenu-list is-open' onKeyDown={ this._onKeyDown }>
                 { items.map((item, index) => (
