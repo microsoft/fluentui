@@ -66,6 +66,7 @@
   width: 100%;
   min-width: 180px;
   outline: 0;
+  text-overflow: ellipsis;
 
   &:hover {
     border-color: $ms-color-neutralSecondaryAlt;
@@ -220,6 +221,10 @@
 .ms-TextField.ms-TextField--multiline {
   .ms-TextField-field {
     @include ms-baseFont;
+    color: $ms-color-neutralSecondary;
+    font-family: $ms-font-family-base;
+    font-size: $ms-font-size-m;
+    font-weight: $ms-font-weight-regular;
     line-height: 17px;
     min-height: 60px;
     min-width: 260px;

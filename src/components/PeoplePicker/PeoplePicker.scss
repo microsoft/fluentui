@@ -30,6 +30,7 @@ $personaItemHeight: 42px;
   @include ms-u-normalize;
   background-color: $ms-color-white;
   margin-bottom: 10px;
+  position: relative;
 }
 
 // Box that contains the search field and selected people.
@@ -37,11 +38,17 @@ $personaItemHeight: 42px;
   @include ms-u-clearfix;
   border: 1px solid $ms-color-neutralTertiaryAlt;
   box-sizing: border-box;
-  min-height: 40px;
+  min-height: 42px;
   width: 100%;
 
   &:hover {
     border-color: $ms-color-neutralSecondaryAlt;
+  }
+
+   > .ms-FocusZone{
+    flex-flow: row wrap;
+    display: flex;
+    align-items: stretch;
   }
 }
 
@@ -60,14 +67,22 @@ $personaItemHeight: 42px;
   outline: none;
   padding-left: 8px;
   width: 100%;
+  flex: 1;
+  min-width: 200px;
 }
 
 // A selected persona, which appears within the search field.
 .ms-PeoplePicker-persona {
-  display: inline-block;
+  display: inline-flex;
   float: left;
   margin: 4px;
   outline: 1px solid transparent;
+
+  &:focus {
+    .ms-PeoplePicker-personaContent {
+      outline: 2px solid $ms-color-themePrimary;
+    }
+  }
 
   //TODO: Avoid styling child components like this.
   .ms-Persona {
@@ -116,7 +131,7 @@ $personaItemHeight: 42px;
   border: 1px solid $ms-color-neutralTertiaryAlt;
   display: none;
   margin-bottom: -1px;
-  max-width: 340px;
+  min-width: 340px;
   padding-top: 9px;
   position: absolute;
   z-index: ($ms-zIndex-PeoplePicker + $ms-zIndex-middle);
@@ -133,7 +148,8 @@ $personaItemHeight: 42px;
 // This is limited to five results for both regular and compact sizes.
 .ms-PeoplePicker-resultGroups {
     max-height: 309px;
-    overflow-y: scroll;
+    min-height: 57px;
+    overflow-y: auto;
 }
 
 // A group of results
@@ -216,6 +232,13 @@ $personaItemHeight: 42px;
   &.ms-PeoplePicker-resultBtn--compact {
     height: 32px;
   }
+}
+
+//== Modifier: Selectable Persona
+//
+.ms-PeoplePicker-resultBtn--selected {
+  background-color: $ms-color-themeLighter;
+  outline: 1px solid transparent;
 }
 
 .ms-PeoplePicker-peopleListBtn {
@@ -402,7 +425,7 @@ $personaItemHeight: 42px;
     font-size: $ms-font-size-xs;
     line-height: 20px;
     position: relative;
-    top: 12px;
+    top: 0;
   }
 }
 
@@ -476,6 +499,10 @@ $personaItemHeight: 42px;
 
   .ms-Persona {
     cursor: pointer;
+  }
+
+  .ms-PeoplePicker-memberListTopMargin {
+    margin-top: 8px;
   }
 }
 
@@ -649,63 +676,4 @@ $personaItemHeight: 42px;
 .ms-PeoplePicker-peopleListItem {
   margin-bottom: 6px;
   position: relative;
-}
-
-// TODO: remove overides below.
-
-.ms-PeoplePicker-searchBox {
-  min-height: 42px; // this is accounting for the border. Actual inner height is 40px;
-}
-
-// Make the search box a flex container, so that the searchfield input
-// will take up the entire remaining width of the search box
-// without needing to constantly resize it manually.
-.ms-PeoplePicker-searchBox > .ms-FocusZone{
-  flex-flow: row wrap;
-  display: flex;
-  align-items: stretch;
-}
-
-.ms-PeoplePicker-searchField {
-  flex: 1;
-  min-width: 200px;
-}
-
-.ms-PeoplePicker-results {
-  min-width: 340px;
-}
-
-.ms-PeoplePicker-memberListTopMargin {
-  margin-top: 8px;
-}
-
-.ms-PeoplePicker-resultGroups {
-  min-height: 57px;
-  overflow-y: auto;
-}
-
-.ms-PeoplePicker-persona {
-  display: inline-flex;
-  margin: 4px;
-
-  &:focus {
-    .ms-PeoplePicker-personaContent {
-      outline: 2px solid $ms-color-themePrimary;
-    }
-  }
-}
-
-// The search more area may be in a disconnected state.
-.ms-PeoplePicker-searchMore.ms-PeoplePicker-searchMore--disconnected {
-  // Primary text
-  .ms-PeoplePicker-searchMorePrimary {
-    top: 0;
-  }
-}
-
-//== Modifier: Selectable Persona
-//
-.ms-PeoplePicker-resultBtn--selected {
-  background-color: $ms-color-themeLighter;
-  outline: 1px solid transparent;
 }
