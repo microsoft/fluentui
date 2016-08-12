@@ -73,7 +73,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
 
     let header;
     if (headerText) {
-      header = <p className={ css('ms-Panel-headerText', {'ms-Panel-screenReader': hideHeadetText}) } id={ headerTextId }>{ headerText }</p>;
+      header = <p className={ css('ms-Panel-headerText', {'ms-u-screenReaderOnly': hideHeadetText}) } id={ headerTextId }>{ headerText }</p>;
     }
 
     let closeButton;
