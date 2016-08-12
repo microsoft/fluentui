@@ -59,7 +59,7 @@ export class Layer extends React.Component<ILayerProps, {}> {
         <LayerHost />
       ), hostElement) as LayerHost;
 
-      _layerHost[this._hostWindow.name]= layerHost;
+      _layerHost[this._hostWindow.name] = layerHost;
     }
   }
 
