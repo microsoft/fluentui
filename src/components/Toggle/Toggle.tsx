@@ -72,12 +72,22 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
               role='button'
               aria-pressed={ isChecked }
               onClick={ this._onClick }
+              aria-describedby={ this._id + 'ariaDescribedBy' }
             />
             <div className='ms-Toggle-background'>
               <div className='ms-Toggle-focus' />
               <div className='ms-Toggle-thumb' />
             </div>
-            <Label className='ms-Toggle-stateText'>{ stateText }</Label>
+            <Label
+              className='ms-Toggle-stateText'
+              role='status'
+              aria-live='polite'
+            >
+              { stateText }
+            </Label>
+            <p className='ms-u-screenReaderOnly' id={ this._id + 'ariaDescribedBy' }>
+              { 'current state is ' + (isChecked ? 'on' : 'off') }
+            </p>
           </div>
 
         </div>
