@@ -29,7 +29,10 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
     return (
       <div>
         <div>
-          <Checkbox text='Include persona details' isChecked={ renderPersonaDetails } onChanged={ (isChecked: boolean) => { this.setState({ renderPersonaDetails: isChecked }); }} />
+          <Checkbox
+            label='Include persona details'
+            checked={ renderPersonaDetails }
+            onChange={ (ev, isChecked) => { this.setState({ renderPersonaDetails: isChecked }); }} />
         </div>
         <Persona
           { ...billMurrayContact }
