@@ -12,12 +12,13 @@ export interface INavState {
 }
 
 export class Nav extends React.Component<INavProps, INavState> {
-  private _selectedKey: string;
 
   public static defaultProps: INavProps = {
     groups: null,
     onRenderLink: (link: INavLink) => (<span className='ms-Nav-linkText'>{ link.name }</span>)
   };
+
+  private _selectedKey: string;
 
   constructor() {
     super();
@@ -30,6 +31,10 @@ export class Nav extends React.Component<INavProps, INavState> {
   public render(): React.ReactElement<{}> {
     if (!this.props.groups) {
       return null;
+    }
+
+    if (this.props.initialSelectedKey) {
+      this._selectedKey = this.props.initialSelectedKey;
     }
 
     const groupElements: React.ReactElement<{}>[] = this.props.groups.map(
@@ -51,7 +56,7 @@ export class Nav extends React.Component<INavProps, INavState> {
   private _renderLink(link: INavLink, linkIndex: number): React.ReactElement<{}> {
     let { onLinkClick } = this.props;
 
-    const ifLinkSelected: boolean = _isLinkSelected(link);
+    const ifLinkSelected: boolean = _isLinkSelected(link, this._selectedKey);
     if (ifLinkSelected) {
       this._selectedKey = link.key;
     }
@@ -126,12 +131,16 @@ export class Nav extends React.Component<INavProps, INavState> {
 // A tag used for resolving links.
 const _urlResolver = document.createElement('a');
 
-function _isLinkSelected(link: INavLink): boolean {
+function _isLinkSelected(link: INavLink, selectedKey: string): boolean {
     if (!link.url) {
       return false;
     }
     _urlResolver.href = link.url || '';
     const target: string = _urlResolver.href;
+
+    if (selectedKey && link.key && link.key === selectedKey) {
+      return true;
+    }
 
     if (location.protocol + '//' + location.host + location.pathname === target) {
       return true;
