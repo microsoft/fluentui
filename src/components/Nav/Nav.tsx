@@ -58,7 +58,7 @@ export class Nav extends React.Component<INavProps, INavState> {
 
     const ifLinkSelected: boolean = _isLinkSelected(link, this._selectedKey);
     if (ifLinkSelected) {
-      this._selectedKey = link.key;
+      this._selectedKey = link.key ? link.key : undefined;
     }
 
     return (
