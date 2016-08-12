@@ -9,6 +9,7 @@ import {
 
 export interface INavState {
   isGroupExpanded: boolean[];
+  selectedKey?: string;
 }
 
 export class Nav extends React.Component<INavProps, INavState> {
