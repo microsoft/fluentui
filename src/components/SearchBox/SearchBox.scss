@@ -39,6 +39,10 @@ $SearchBox-height: 36px;
 
       .ms-Icon--Cancel {
         line-height: $SearchBox-height;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
       }
     }
   }
@@ -104,7 +108,7 @@ $SearchBox-height: 36px;
   background-color: $ms-color-themePrimary;
   text-align: center;
   display: none;
-  font-size: $ms-font-size-l;
+  font-size: 16px;
   color: $ms-color-white;
   z-index: $ms-zIndex-front;
 }
