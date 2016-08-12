@@ -28,6 +28,16 @@
       border: 1px solid $ms-color-neutralSecondaryAlt;
     }
 
+    .ms-Toggle-thumb {
+      @media screen and (-ms-high-contrast: active) {
+        background-color: $ms-color-white;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        background-color: $ms-color-black;
+      }
+    }
+
     .ms-Toggle-slider:hover {
       .ms-Toggle-background {
         border: 1px solid $ms-color-black;
@@ -42,11 +52,27 @@
       .ms-Toggle-background {
         background: $ms-color-themePrimary;
         border: 1px solid $ms-color-themePrimary;
+
+        @media screen and (-ms-high-contrast: active) {
+          background-color: $ms-color-white;
+        }
+
+        @media screen and (-ms-high-contrast: black-on-white) {
+          background-color: $ms-color-black;
+        }
       }
 
       .ms-Toggle-thumb {
         background: $ms-color-white;
         @include left(28px);
+
+        @media screen and (-ms-high-contrast: active) {
+          background-color: $ms-color-black;
+        }
+
+        @media screen and (-ms-high-contrast: black-on-white) {
+          background-color: $ms-color-white;
+        }
       }
 
       .ms-Toggle-slider:hover {
@@ -66,21 +92,55 @@
   &.is-disabled {
     .ms-Toggle-thumb {
       background: $ms-color-neutralTertiaryAlt;
+
+      @media screen and (-ms-high-contrast: active) {
+        background-color: $ms-color-contrastBlackDisabled;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        background-color: $ms-color-contrastWhiteDisabled;
+      }
     }
 
     .ms-Toggle-background {
       border: 1px solid $ms-color-neutralTertiaryAlt;
+
+      @media screen and (-ms-high-contrast: active) {
+        border-color: $ms-color-contrastBlackDisabled;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        border-color: $ms-color-contrastWhiteDisabled;
+      }
     }
 
     &.is-checked {
       .ms-Toggle-background {
         background: $ms-color-neutralTertiaryAlt;
         border: 1px solid transparent;
+
+        @media screen and (-ms-high-contrast: active) {
+          border-color: $ms-color-contrastBlackDisabled;
+          background: $ms-color-contrastBlackDisabled;
+        }
+
+        @media screen and (-ms-high-contrast: black-on-white) {
+          border-color: $ms-color-contrastWhiteDisabled;
+          background: $ms-color-contrastWhiteDisabled;
+        }
       }
 
       .ms-Toggle-thumb {
         background: $ms-color-neutralLight;
         @include left(28px);
+
+        @media screen and (-ms-high-contrast: active) {
+          background-color: $ms-color-black;
+        }
+
+        @media screen and (-ms-high-contrast: black-on-white) {
+          background-color: $ms-color-white;
+        }
       }
     }
   }
