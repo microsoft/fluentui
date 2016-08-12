@@ -46,6 +46,11 @@ export interface IPanelProps extends React.Props<Panel> {
    * Aria label on close button
    */
   closeButtonAriaLabel?: string;
+
+  /**
+   * Hide the header text to be only read by screen readers @default false
+   */
+  hideHeadetText?: boolean;
 }
 
 export enum PanelType {
