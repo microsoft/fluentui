@@ -254,7 +254,9 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, any> {
         index = Number(indexString);
         break;
       }
-      element = element.parentElement;
+      if (element !== this.refs.root) {
+        element = element.parentElement;
+      }
     } while (traverseParents && element !== this.refs.root);
 
     return index;

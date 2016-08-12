@@ -26,7 +26,7 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
   constructor(props: ITodoItemProps) {
     super(props);
 
-    this._onCheckboxToggle = this._onCheckboxToggle.bind(this);
+    this._onCheckboxChange = this._onCheckboxChange.bind(this);
     this._onDelete = this._onDelete.bind(this);
   }
 
@@ -53,9 +53,9 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           <div className={ css(styles.itemTaskRow, 'ms-Grid-row') }>
             <Checkbox
-              text= { this.props.item.title }
-              onChanged={ this._onCheckboxToggle }
-              isChecked={ this.props.item.isComplete === true }
+              label={ this.props.item.title }
+              onChange={ this._onCheckboxChange }
+              checked={ this.props.item.isComplete === true }
             />
             <Button
               className={ styles.deleteButton }
@@ -79,7 +79,7 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
     return `${completeState} ${titleString}`;
   }
 
-  private _onCheckboxToggle(isChecked: boolean): void {
+  private _onCheckboxChange(ev: React.FormEvent, isChecked: boolean): void {
     this._handleWithAnimation(this.props.onToggleComplete, 'ms-u-slideUpOut20');
   }
 

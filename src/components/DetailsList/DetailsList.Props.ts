@@ -120,9 +120,6 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /** Optional callback to get the item key that will be used in the selection. */
   getKey?: (item: any, index?: number) => string;
 
-  /** Optional callback to determine if an item is selectable. */
-  canSelectItem?: (item: any) => boolean;
-
   /** A text summary of the table set via aria-label. */
   ariaLabel?: string;
 
@@ -250,6 +247,11 @@ export interface IColumn {
    * Internal only value.
    */
   calculatedWidth?: number;
+
+  /**
+   * An optional class name to stick on the column cell within each header.
+   */
+  headerClassName?: string;
 }
 
 /**

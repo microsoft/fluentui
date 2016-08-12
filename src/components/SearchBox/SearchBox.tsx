@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ISearchBoxProps } from './SearchBox.Props';
 import { css } from '../../utilities/css';
+import { getId } from '../../utilities/object';
 import './SearchBox.scss';
 
 export interface ISearchBoxState {
@@ -8,8 +9,6 @@ export interface ISearchBoxState {
   hasFocus?: boolean;
   id?: string;
 }
-
-let _instance: number = 0;
 
 export class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState> {
   public static defaultProps: ISearchBoxProps = {
@@ -27,7 +26,7 @@ export class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState>
     this.state = {
       value: props.value,
       hasFocus: false,
-      id: `searchbox-${ _instance++ }`,
+      id: getId('SearchBox')
     };
     this._clearInput = this._clearInput.bind(this);
     this._onInputChanged = this._onInputChanged.bind(this);

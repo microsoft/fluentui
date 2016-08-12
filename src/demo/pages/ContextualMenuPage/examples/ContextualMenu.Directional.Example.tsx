@@ -45,7 +45,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
     super();
 
     this._onShowMenuClicked = this._onShowMenuClicked.bind(this);
-    this._onShowBeakChanged = this._onShowBeakChanged.bind(this);
+    this._onShowBeakChange = this._onShowBeakChange.bind(this);
     this._onDirectionalChanged = this._onDirectionalChanged.bind(this);
     this._onChangeGapSizeClicked = this._onChangeGapSizeClicked.bind(this);
     this._onDismissMenu = this._onDismissMenu.bind(this);
@@ -64,7 +64,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
     return (
       <div className='ms-ContextualMenuDirectionalExample'>
        <div className='ms-ContextualMenuDirectionalExample-configArea'>
-          <Checkbox text='Show beak' isChecked={ isBeakVisible } onChanged={ this._onShowBeakChanged } />
+          <Checkbox label='Show beak' checked={ isBeakVisible } onChange={ this._onShowBeakChange } />
           <TextField ref='gapSize' label='Gap Space' placeholder='Type in the gap space' />
           <Button onClick={ this._onChangeGapSizeClicked }>Submit</Button>
           <Dropdown
@@ -147,7 +147,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
     );
   }
 
-  private _onShowBeakChanged(isVisible: boolean) {
+  private _onShowBeakChange(ev: React.FormEvent, isVisible: boolean) {
     this.setState({
       isBeakVisible: isVisible
     });

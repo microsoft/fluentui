@@ -17,6 +17,7 @@ export interface IGroupHeader {
   groupLevel: number;
   headerProps?: IGroupHeaderProps;
   viewport?: IViewport;
+  canSelectGroup?: boolean;
 }
 
 export interface IGroupHeaderState {
@@ -56,12 +57,17 @@ export class GroupHeader extends React.Component<IGroupHeader, IGroupHeaderState
       group,
       groupLevel,
       headerProps,
-      viewport
+      viewport,
+      canSelectGroup
     } = this.props;
     let { isCollapsed, isLoadingVisible } = this.state;
-    let showCheckBox = true;
-    let isSelected = group && group.isSelected;
     let loadingText = headerProps && headerProps.loadingText;
+    let isCollapsedGroupSelectVisible = headerProps && headerProps.isCollapsedGroupSelectVisible;
+    if (isCollapsedGroupSelectVisible === undefined) {
+      isCollapsedGroupSelectVisible = true;
+    }
+    let isSelectionCheckVisible = canSelectGroup && (isCollapsedGroupSelectVisible || !(group && group.isCollapsed));
+    let isSelected = group && group.isSelected && isSelectionCheckVisible;
 
     return group && (
       <div
@@ -74,14 +80,15 @@ export class GroupHeader extends React.Component<IGroupHeader, IGroupHeaderState
 
         <FocusZone direction={ FocusZoneDirection.horizontal }>
 
-          { showCheckBox && (
+          { isSelectionCheckVisible ? (
             <button
               className='ms-GroupHeader-check'
               data-selection-toggle={ true }
               onClick={ this._onToggleSelectGroup } >
               <Check isChecked={ isSelected } />
             </button>
-          )}
+            ) : ( GroupSpacer({ count: 1 }) )
+          }
 
           { GroupSpacer({ count: groupLevel }) }
 

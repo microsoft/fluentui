@@ -4,6 +4,7 @@ import { css } from '../../utilities/css';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { findIndex } from '../../utilities/array';
 import { KeyCodes } from '../../utilities/KeyCodes';
+import { getId } from '../../utilities/object';
 import './Dropdown.scss';
 
 export interface IDropdownState {
@@ -11,8 +12,6 @@ export interface IDropdownState {
   selectedIndex: number;
   isDisabled: boolean;
 }
-
-let _instance: number = 0;
 
 export class Dropdown extends React.Component<IDropdownProps, any> {
 
@@ -38,7 +37,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
     this._events = new EventGroup(this);
 
     this.state = {
-      id: `Dropdown-${_instance++}`,
+      id: getId('Dropdown'),
       isOpen: false,
       selectedIndex: this._getSelectedIndex(props.options, props.selectedKey),
       isDisabled: this.props.isDisabled

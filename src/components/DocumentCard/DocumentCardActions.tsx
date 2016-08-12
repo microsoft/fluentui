@@ -15,9 +15,9 @@ export class DocumentCardActions extends React.Component<IDocumentCardActionsPro
           <Button
             buttonType={ ButtonType.icon }
             icon={ action.icon }
-            title=''
-            description=''
-            onClick={ action.onClick } />
+            onClick={ action.onClick }
+            rootProps={ { title:'' } }
+            description='' />
         </div>
         )) }
 

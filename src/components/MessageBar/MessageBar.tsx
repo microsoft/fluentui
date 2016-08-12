@@ -3,12 +3,11 @@ import { Button, ButtonType } from '../../Button';
 import './MessageBar.scss';
 import { css } from '../../utilities/css';
 import { IMessageBarProps, MessageBarType } from './MessageBar.Props';
+import { getId } from '../../utilities/object';
 
 export interface IMessageBarState {
   labelId?: string;
 }
-
-let _instance = 0;
 
 export class MessageBar extends React.Component<IMessageBarProps, IMessageBarState> {
 
@@ -32,7 +31,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
     super(props);
 
     this.state = {
-      labelId: `MessageBar-${ _instance++ }`,
+      labelId: getId('MessageBar')
     };
   }
 
@@ -70,7 +69,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
         buttonType={ ButtonType.icon }
         onClick={ this.props.onDismiss }
         icon='Cancel'
-        title='Close'
+        rootProps={ { title: 'Close' } }
         ariaLabel={ this.props.dismissButtonAriaLabel }
       />;
     }

@@ -1,98 +1,29 @@
 @import '../../common/common';
 
-.ms-FacePile {
-  @include ms-baseFont;
+.ms-Facepile {
   position: relative;
   height: 32px;
   width: auto;
-
-  .ms-FacePile-personaCardHost {
-    display: none;
-  }
 }
 
-.ms-FacePile-addButton {
-  @include button-reset;
+.ms-Facepile-itemBtn {
   position: relative;
   height: 32px;
   width: 32px;
   line-height: 32px;
   text-align: center;
-  float: left;
+  @include float(left);
   padding: 0;
-  margin-right: 4px;
+  @include margin-right(4px);
   outline: transparent;
   border-radius: 50%;
   vertical-align: top;
-
-  .ms-Persona-presence,
-  .ms-Persona-details {
-    display: none;
-  }
 }
 
-.ms-FacePile-addButton.ms-FacePile-addButton--addPerson {
-  background-color: $ms-color-themePrimary;
-  color: $ms-color-white;
-  font-size: $ms-font-size-l - 1;
-
-  &:hover,
-  &:focus {
-    background-color: $ms-color-themeDark;
-  }
-
-  &:active {
-    background-color: $ms-color-themeDarker;
-  }
-
-  &:disabled {
-    background-color: $ms-color-neutralTertiaryAlt;
-  }
-}
-
-.ms-FacePile-addButton.ms-FacePile-addButton--overflow {
-  background-color: $ms-color-neutralLight;
-  color: $ms-color-neutralSecondary;
-  display: none;
-
-  &.is-active {
-    display: block;
-  }
-
-  &:hover {
-    color: $ms-color-neutralDark;
-  }
-
-  &:disabled {
-    color: $ms-color-neutralTertiaryAlt;
-  }
-}
-
-.ms-FacePile-addPersonIcon {
-  position: relative;
-  top: -1px;
-}
-
-.ms-FacePile-overflowText {
-  font-size: $ms-font-size-m;
-}
-
-//== Panels
-// Overflow panel - only show member list
-.ms-FacePile-panel.ms-FacePile-panel--overflow {
-  .ms-Panel-headerText,
-  .ms-PeoplePicker-searchBox,
-  .ms-PeoplePicker-results,
-  .ms-PeoplePicker-resultAction {
-    display: none;
-  }
-
-  .ms-PeoplePicker-selectedHeader {
-    font-weight: $ms-font-weight-light;
-    font-size: $ms-font-size-xl;
-    color: $ms-color-neutralPrimary;
-    line-height: 82px;
-    height: 74px;
-    text-transform: none;
-  }
+button.ms-Facepile-itemBtn {
+   display: inline;
+   background: none;
+   padding: 0;
+   cursor: pointer;
+   border: none;
 }
