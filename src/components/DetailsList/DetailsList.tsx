@@ -225,7 +225,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
         aria-label={ ariaLabel }
         role={ shouldApplyApplicationRole ? 'application' : '' }>
         <div role='grid' aria-label={ ariaLabelForGrid }>
-          <div ref='headerContainer' onKeyDown={ this._onHeaderKeyDown }>
+          <div ref='headerContainer' onKeyDown={ this._onHeaderKeyDown } role='presentation'>
             { isHeaderVisible && (
               <DetailsHeader
                 ref='header'
@@ -247,7 +247,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                 />
             ) }
           </div>
-          <div ref='contentContainer' onKeyDown={ this._onContentKeyDown }>
+          <div ref='contentContainer' onKeyDown={ this._onContentKeyDown } role='presentation'>
             <FocusZone
               ref='focusZone'
               direction={ FocusZoneDirection.vertical }
