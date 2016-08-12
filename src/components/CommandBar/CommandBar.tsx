@@ -111,7 +111,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
                 onClick={ this._onOverflowClick }
                 role='menuitem'
                 aria-label={ this.props.elipisisAriaLabel || '' }
-                aria-haspopup={ true } 
+                aria-haspopup={ true }
               >
                 <i className='ms-CommandBarItem-overflow ms-Icon ms-Icon--ellipsis' />
               </button>
