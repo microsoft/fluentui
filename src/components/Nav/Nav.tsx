@@ -52,7 +52,7 @@ export class Nav extends React.Component<INavProps, INavState> {
           href={ link.url || 'javascript:' }
           onClick={ onLinkClick }
           aria-label={ link.ariaLabel }
-          title= { link.title ? link.title : '' }
+          title={ link.title ? link.title : '' }
           target={ link.target || '' }
         >
           { (link.iconClassName ?
