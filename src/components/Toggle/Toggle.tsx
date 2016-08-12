@@ -69,8 +69,8 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
               name={ this._id }
               className={ css('ms-Toggle-button', className) }
               disabled={ disabled }
-              role='button'
-              aria-pressed={ isChecked }
+              role='checkbox'
+              aria-checked={ isChecked }
               onClick={ this._onClick }
             />
             <div className='ms-Toggle-background'>
