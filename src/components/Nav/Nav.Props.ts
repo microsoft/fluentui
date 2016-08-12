@@ -78,6 +78,26 @@ export interface INavLink {
   isExpanded?: boolean;
 
   /**
+   * (Optional) Aria label for nav link
+   */
+  ariaLabel?: string;
+
+  /**
+   * (Optional) Meta info for the link, does not involving rendering.
+   */
+  key?: string;
+
+  /**
+   * (Optional) title for tooltip or description
+   */
+  title?: string;
+
+  /**
+   * (Optional) Link <a> target.
+   */
+  target?: string;
+
+  /**
    * Any additional properties to apply to the rendered links.
    */
   [propertyName: string]: any;

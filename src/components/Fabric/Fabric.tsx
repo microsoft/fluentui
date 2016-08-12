@@ -15,11 +15,8 @@ const DIRECTIONAL_KEY_CODES = [
   KeyCodes.pageDown
 ];
 
-const STATIONARY_DETECTION_DELAY = 100;
-
 export interface IFabricState {
   isFocusVisible?: boolean;
-  isStationary?: boolean;
 }
 
 export class Fabric extends React.Component<React.HTMLProps<Fabric>, IFabricState> {
@@ -29,37 +26,30 @@ export class Fabric extends React.Component<React.HTMLProps<Fabric>, IFabricStat
   };
 
   private _events: EventGroup;
-  private _scrollTimerId: number;
 
   constructor() {
     super();
 
     this.state = {
-      isFocusVisible: false,
-      isStationary: true
+      isFocusVisible: false
     };
 
     this._events = new EventGroup(this);
-    this._onScrollEnd = this._onScrollEnd.bind(this);
   }
 
   public componentDidMount() {
     this._events.on(document.body, 'mousedown', this._onMouseDown, true);
     this._events.on(document.body, 'keydown', this._onKeyDown, true);
-    this._events.on(window, 'scroll', this._onScroll, true);
   }
 
   public componentWillUnmount() {
     this._events.dispose();
-    clearTimeout(this._scrollTimerId);
   }
 
   public render() {
-    const { isFocusVisible, isStationary } = this.state;
+    const { isFocusVisible } = this.state;
     const rootClass = css('ms-Fabric ms-font-m', this.props.className, {
-      'is-focusVisible': isFocusVisible,
-      'is-stationary': isStationary,
-      'is-scrolling': !isStationary
+      'is-focusVisible': isFocusVisible
     });
 
     return (
@@ -81,24 +71,5 @@ export class Fabric extends React.Component<React.HTMLProps<Fabric>, IFabricStat
         isFocusVisible: true
       });
     }
-  }
-
-  private _onScroll() {
-    let { isStationary } = this.state;
-
-    clearTimeout(this._scrollTimerId);
-    if (isStationary) {
-      this.setState({
-        isStationary: false
-      });
-    }
-
-    this._scrollTimerId = setTimeout(this._onScrollEnd, STATIONARY_DETECTION_DELAY);
-  }
-
-  private _onScrollEnd() {
-    this.setState({
-      isStationary: true
-    });
   }
 }

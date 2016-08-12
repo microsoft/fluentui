@@ -27,6 +27,7 @@ export * from './Layer';
 export * from './Link';
 export * from './List';
 export * from './MessageBar';
+export * from './MarqueeSelection';
 export * from './Nav';
 export * from './OrgChart';
 export * from './Overlay';
