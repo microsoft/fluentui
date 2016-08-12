@@ -51,8 +51,7 @@ export class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState>
           'is-active': hasFocus
         })}
       >
-        { !hasFocus && !value ? 
-            <label className='ms-SearchBox-label' htmlFor={id}>
+        { !hasFocus && !value ? <label className='ms-SearchBox-label' htmlFor={id}>
               <i className='ms-SearchBox-icon ms-Icon ms-Icon--Search'></i>
               <span className='ms-SearchBox-text'>{ labelText }</span>
              </label> : null }
