@@ -21,6 +21,11 @@ export interface INavProps {
    * Indicates whether the navigation component renders on top of other content in the UI
    */
   isOnTop?: boolean;
+
+  /**
+   * (Optional) The key of the nav item initially selected.
+   */
+  initialSelectedKey?: string;
 }
 
 export interface INavLinkGroup {
