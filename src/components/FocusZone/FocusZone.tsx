@@ -1,8 +1,13 @@
 import * as React from 'react';
-import { IFocusZoneProps, FocusZoneDirection } from './FocusZone.Props';
+import {
+  FocusZoneDirection,
+  IFocusZone,
+  IFocusZoneProps
+} from './FocusZone.Props';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { KeyCodes } from '../../utilities/KeyCodes';
 import { getRTL } from '../../utilities/rtl';
+import { getId } from '../../utilities/object';
 import { css } from '../../utilities/css';
 import {
   getNextElement,
@@ -16,7 +21,6 @@ const IS_ENTER_DISABLED_ATTRIBUTE = 'data-disable-click-on-enter';
 const FOCUSZONE_ID_ATTRIBUTE = 'data-focuszone-id';
 const TABINDEX = 'tabindex';
 
-let _instance = 0;
 let _allInstances: {
   [key: string]: FocusZone
 } = {};
@@ -26,7 +30,7 @@ interface IPoint {
   top: number;
 }
 
-export class FocusZone extends React.Component<IFocusZoneProps, {}> {
+export class FocusZone extends React.Component<IFocusZoneProps, {}> implements IFocusZone {
 
   public static defaultProps: IFocusZoneProps = {
     isCircularNavigation: false,
@@ -47,7 +51,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
   constructor(props) {
     super(props);
 
-    this._id = String(_instance++);
+    this._id = getId('FocusZone');
     _allInstances[this._id] = this;
 
     this._focusAlignment = {
@@ -90,7 +94,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> {
     return (
       <div
         { ...rootProps }
-        className={ css('ms-FocusZone', className ) }
+        className={ css('ms-FocusZone', className) }
         ref='root'
         data-focuszone-id={ this._id }
         aria-labelledby={ ariaLabelledBy }
