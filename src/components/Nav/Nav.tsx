@@ -9,10 +9,10 @@ import {
 
 export interface INavState {
   isGroupExpanded: boolean[];
-  selectedKey?: string;
 }
 
 export class Nav extends React.Component<INavProps, INavState> {
+  private _selectedKey: string;
 
   public static defaultProps: INavProps = {
     groups: null,
@@ -44,12 +44,22 @@ export class Nav extends React.Component<INavProps, INavState> {
     );
   }
 
+  public get selectedKey(): string {
+    return this._selectedKey;
+  }
+
   private _renderLink(link: INavLink, linkIndex: number): React.ReactElement<{}> {
     let { onLinkClick } = this.props;
+
+    const ifLinkSelected: boolean = _isLinkSelected(link);
+    if (ifLinkSelected) {
+      this._selectedKey = link.key;
+    }
+
     return (
       <li key={ linkIndex }>
         <a
-          className={'ms-Nav-link' + (_isLinkSelected(link) ? ' is-selected' : '')}
+          className={'ms-Nav-link' + (ifLinkSelected ? ' is-selected' : '')}
           href={ link.url || 'javascript:' }
           onClick={ onLinkClick }
           aria-label={ link.ariaLabel }
