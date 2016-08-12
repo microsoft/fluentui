@@ -5,6 +5,7 @@ import { FocusZone } from '../../FocusZone';
 import { KeyCodes } from '../../utilities/KeyCodes';
 import { addDays, addWeeks, addMonths, compareDates } from '../../utilities/dateMath/DateMath';
 import { getRTL, getRTLSafeKeyCode } from '../../utilities/rtl';
+import { getId } from '../../utilities/object';
 
 const DAYS_IN_WEEK = 7;
 
@@ -31,8 +32,6 @@ export interface IDatePickerDayState {
   weeks?: IDayInfo[][];
 }
 
-let _instance = 0;
-
 export class DatePickerDay extends React.Component<IDatePickerDayProps, IDatePickerDayState> {
   public refs: {
     [key: string]: React.ReactInstance;
@@ -43,7 +42,7 @@ export class DatePickerDay extends React.Component<IDatePickerDayProps, IDatePic
     super(props);
 
     this.state = {
-      activeDescendantId: 'DatePickerDay-active-' + _instance,
+      activeDescendantId: getId('DatePickerDay-active'),
       weeks: this._getWeeks(props.navigatedDate, props.selectedDate)
     };
 
