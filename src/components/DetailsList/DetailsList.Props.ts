@@ -131,9 +131,6 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** Boolean value to indicate if the role application should be applied on details list. Set to false by default */
   shouldApplyApplicationRole?: boolean;
-
-  /** Optional value if you want to define the grid role on the list */
-  ariaRoleForGrid?: string;
 }
 
 export interface IColumn {
