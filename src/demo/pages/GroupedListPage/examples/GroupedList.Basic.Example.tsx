@@ -76,7 +76,6 @@ export class GroupedListBasicExample extends React.Component<any, any> {
         itemIndex={ itemIndex }
         selection={ selection }
         selectionMode={ SelectionMode.multiple }
-        canSelectItem={ () => true }
         />
     );
   }

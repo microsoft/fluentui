@@ -2,13 +2,12 @@ import * as React from 'react';
 import { Image } from '../../Image';
 import { IChoiceGroupOption, IChoiceGroupProps } from './ChoiceGroup.Props';
 import { css } from '../../utilities/css';
+import { getId } from '../../utilities/object';
 import './ChoiceGroup.scss';
 
 export interface IChoiceGroupState {
   keyChecked: string;
 }
-
-let _instance = 0;
 
 export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroupState> {
   public static defaultProps = {
@@ -26,8 +25,8 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
       keyChecked: this._getKeyChecked(props.options)
     };
 
-    this._id = `ChoiceGroup-${ _instance++ }`;
-    this._descriptionId = `ChoiceGroupDescription-${ _instance++ }`;
+    this._id = getId('ChoiceGroup');
+    this._descriptionId = getId('ChoiceGroupDescription');
   }
 
   public componentWillReceiveProps(newProps: IChoiceGroupProps) {
