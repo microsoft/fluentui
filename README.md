@@ -4,7 +4,7 @@
 
 Fabric React is a responsive, mobile-first collection of robust components designed to make it quick and simple for you to create web experiences using the Office Design Language.
 
-**This project is in a pre-v1 state**, so we strongly encourage you to check out the [Roadmap](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ROADMAP.md) to see what the v1 we're working towards entails and what this means for your usage of the controls set.
+**This project is in a pre-v1 state**, so we encourage you to check out the [Roadmap](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ROADMAP.md) to see what the v1 we're working towards entails and what this means for your usage of the controls set.
 
 ## Contents
 
@@ -58,12 +58,12 @@ ReactDOM.render(<MyPage />, document.body.firstChild);
 
 ## Advanced usage
 
-For advanced usage including info about module vs. path-based imports, using an AMD bundler like Require, and public deployment features, see our [advanced documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ADVANCED.md).
+For advanced usage including info about module vs. path-based imports, using an AMD bundler like Require, and deployment features, see our [advanced documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ADVANCED.md).
 
 
 ## Roadmap
 
-As mentioned above, the project is currently in a **pre-v1 state**. Components will be in varying states of completion with the end goal being keyboard accessible, screen reader friendly, RTL friendly, and themeable controls. To see details about the components and the desired goal, please check out the [Roadmap](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ROADMAP.md).
+As mentioned above, the project is currently in a **pre-v1 state**. Components will be in varying states with the end goal being keyboard accessible, screen reader friendly, RTL friendly, and themeable controls. To see details about the components and the desired goal, please check out the [Roadmap](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ROADMAP.md).
 
 
 ## Contribute to Fabric React
