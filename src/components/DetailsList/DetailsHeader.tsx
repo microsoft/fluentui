@@ -111,8 +111,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         ref='root'
         data-automationid='DetailsHeader'>
         <FocusZone ref='focusZone' direction={ FocusZoneDirection.horizontal }>
-          { (selectAllVisibility === SelectAllVisibility.visible) ? (
-            <div className='ms-DetailsHeader-cellWrapper' role='columnheader'>
+          <div className='ms-DetailsHeader-cellWrapper' role='columnheader'>
+            { (selectAllVisibility === SelectAllVisibility.visible) ? (
               <button
                 className='ms-DetailsHeader-cell is-check'
                 onClick={ this._onSelectAllClicked }
@@ -121,8 +121,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                 >
                 <Check isChecked={ isAllSelected } />
               </button>
-            </div>
-          ) : (null) }
+            ) : null }
+          </div>
           { groupNestingDepth > 0 ? (
           <button className='ms-DetailsHeader-cell' onClick={ this._onToggleCollapseAll }>
             <i className={ css('ms-DetailsHeader-collapseButton ms-Icon ms-Icon--chevronDown', {
