@@ -64,13 +64,16 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     root: HTMLElement,
     groups: GroupedList,
     list: List,
-    focusZone: FocusZone
+    focusZone: FocusZone,
+    selectionZone: SelectionZone
   };
 
   private _events: EventGroup;
   private _selection: ISelection;
   private _activeRows: { [key: string]: DetailsRow };
   private _dragDropHelper: DragDropHelper;
+  private _initialFocusedIndex: number;
+
   private _columnOverrides: {
     [key: string]: IColumn;
   };
@@ -106,6 +109,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     this._selection = props.selection || new Selection({ onSelectionChanged: null, getKey: props.getKey });
     this._selection.setItems(props.items as IObjectWithKey[], false);
     this._dragDropHelper = props.dragDropEvents ? new DragDropHelper({ selection: this._selection }) : null;
+    this._initialFocusedIndex = props.initialFocusedIndex;
   }
 
   public componentWillUnmount() {
@@ -121,7 +125,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     }
   }
 
-  public componentWillReceiveProps(newProps) {
+  public componentWillReceiveProps(newProps: IDetailsListProps) {
     let {
       items,
       setKey,
@@ -137,6 +141,10 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       layoutMode = newProps.layoutMode;
       this.setState({ layoutMode: layoutMode });
       shouldForceUpdates = true;
+    }
+
+    if (shouldResetSelection) {
+      this._initialFocusedIndex = newProps.initialFocusedIndex;
     }
 
     if (newProps.items !== items) {
@@ -256,6 +264,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
             onActiveElementChanged={ this._onActiveRowChanged }
             >
             <SelectionZone
+              ref='selectionZone'
               selection={ selection }
               selectionMode={ selectionMode }
               onItemInvoked={ onItemInvoked }>
@@ -387,6 +396,15 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     let index = row.props.itemIndex;
 
     this._activeRows[index] = row; // this is used for column auto resize
+
+    // Set focus to the row if it should receive focus.
+    if (this._initialFocusedIndex !== undefined && index === this._initialFocusedIndex) {
+      this.refs.selectionZone.setEnabled(false);
+      row.focus();
+      this.refs.selectionZone.setEnabled(true);
+      delete this._initialFocusedIndex;
+    }
+
     if (onRowDidMount) {
       onRowDidMount(row.props.item, index);
     }
