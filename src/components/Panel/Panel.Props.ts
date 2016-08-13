@@ -50,7 +50,7 @@ export interface IPanelProps extends React.Props<Panel> {
   /**
    * Hide the header text to be only read by screen readers @default false
    */
-  hideHeadetText?: boolean;
+  hideHeaderText?: boolean;
 }
 
 export enum PanelType {
