@@ -62,7 +62,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
   }
 
   public render() {
-    let { children, className = '', type, hasCloseButton, isLightDismiss, headerText, closeButtonAriaLabel, headerClassName=''  } = this.props;
+    let { children, className = '', type, hasCloseButton, isLightDismiss, headerText, closeButtonAriaLabel, headerClassName = ''  } = this.props;
     let { isOpen, isAnimatingOpen, isAnimatingClose, id } = this.state;
     let isLeft = type === PanelType.smallFixedNear ? true : false;
     let isRTL = getRTL();
