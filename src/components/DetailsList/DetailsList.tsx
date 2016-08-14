@@ -231,7 +231,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
         aria-label={ ariaLabel }
         role={ shouldApplyApplicationRole ? 'application' : '' }>
         <div role='grid' aria-label={ ariaLabelForGrid }>
-          <div onKeyDown={ this._onHeaderKeyDown }>
+          <div onKeyDown={ this._onHeaderKeyDown } role='presentation'>
             { isHeaderVisible && (
               <DetailsHeader
                 ref={ header => this._header = header }
@@ -253,45 +253,45 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                 />
             ) }
           </div>
-        </div>
-        <div onKeyDown={ this._onContentKeyDown }>
-          <FocusZone
-            ref={ focusZone => this._focusZone = focusZone }
-            direction={ FocusZoneDirection.vertical }
-            isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }
-            onActiveElementChanged={ this._onActiveRowChanged }
-            >
-            <SelectionZone
-              ref={ selectionZone => this._selectionZone = selectionZone }
-              selection={ selection }
-              selectionMode={ selectionMode }
-              onItemInvoked={ onItemInvoked }>
-              { groups ? (
-                <GroupedList
-                  groups={ groups }
-                  groupProps={ groupProps }
-                  items={ items }
-                  onRenderCell={ this._onRenderCell }
-                  selection={ selection }
-                  selectionMode={ selectionMode }
-                  dragDropEvents={ dragDropEvents }
-                  dragDropHelper={ dragDropHelper }
-                  eventsToRegister={ rowElementEventMap }
-                  listProps={ additionalListProps }
-                  onGroupExpandStateChanged={ this._onGroupExpandStateChanged }
-                  ref={ groupedList => this._groupedList = groupedList }
-                  />
-              ) : (
-                  <List
+          <div ref='contentContainer' onKeyDown={ this._onContentKeyDown } role='presentation'>
+            <FocusZone
+              ref={ focusZone => this._focusZone = focusZone }
+              direction={ FocusZoneDirection.vertical }
+              isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }
+              onActiveElementChanged={ this._onActiveRowChanged }
+              >
+              <SelectionZone
+                ref={ selectionZone => this._selectionZone = selectionZone }
+                selection={ selection }
+                selectionMode={ selectionMode }
+                onItemInvoked={ onItemInvoked }>
+                { groups ? (
+                  <GroupedList
+                    groups={ groups }
+                    groupProps={ groupProps }
                     items={ items }
-                    onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex) }
-                    { ...additionalListProps }
-                    ref={ list => this._list = list }
+                    onRenderCell={ this._onRenderCell }
+                    selection={ selection }
+                    selectionMode={ selectionMode }
+                    dragDropEvents={ dragDropEvents }
+                    dragDropHelper={ dragDropHelper }
+                    eventsToRegister={ rowElementEventMap }
+                    listProps={ additionalListProps }
+                    onGroupExpandStateChanged={ this._onGroupExpandStateChanged }
+                    ref={ groupedList => this._groupedList = groupedList }
                     />
-                )
-              }
-            </SelectionZone>
-          </FocusZone>
+                ) : (
+                    <List
+                      items={ items }
+                      onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex) }
+                      { ...additionalListProps }
+                      ref={ list => this._list = list }
+                      />
+                  )
+                }
+              </SelectionZone>
+            </FocusZone>
+          </div>
         </div>
       </div>
     );
