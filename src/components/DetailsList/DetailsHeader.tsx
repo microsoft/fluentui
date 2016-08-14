@@ -13,7 +13,7 @@ const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.butt
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
 const INNER_PADDING = 16;
 
-export interface IDetailsHeaderProps {
+export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
   columns: IColumn[];
   selection: ISelection;
   selectionMode: SelectionMode;
@@ -30,7 +30,6 @@ export interface IDetailsHeaderProps {
   ariaLabel?: string;
   /** ariaLabel for the header checkbox that selects or deselects everything */
   ariaLabelForSelectAllCheckbox?: string;
-  ref?: string;
   selectAllVisibility?: SelectAllVisibility;
 }
 
