@@ -1,7 +1,23 @@
 import * as React from 'react';
 import { FocusZone } from './FocusZone';
 
+/**
+ * FocusZone component class interface.
+ */
+export interface IFocusZone {
+  /** Sets focus to the checkbox. */
+  focus(): void;
+}
+
+/**
+ * FocusZone component props.
+ */
 export interface IFocusZoneProps extends React.Props<FocusZone> {
+  /**
+   * Additional class name to provide on the root element, in addition to the ms-FocusZone class.
+   */
+  className?: string;
+
   /**
    * Defines which arrows to react to.
    * @default FocusZoneDirection.bidriectional
@@ -39,14 +55,10 @@ export interface IFocusZoneProps extends React.Props<FocusZone> {
   onActiveElementChanged?: (element?: HTMLElement, ev?: React.FocusEvent) => void;
 
   /**
-   * If provided, additional class name to provide on the root element.
-   */
-  className?: string;
-
-  /**
-   * If provided, HTMLProps which will be mixed in onto the root element emitted by the FocusZone, before
-   * other props are applied. This allows you to extend the root element with additional attributes, such as
-   * data-automation-id needed for automation.
+   * Optional DIV props that will be mixed into the root element, *before* other props are applied. This allows you
+   * to extend the root element with additional attributes, such as data-automation-id needed for automation. Note
+   * that if you provide, for example, "ariaLabelledBy" as well as "rootProps.ariaLabelledBy", the former will take
+   * precedence over the later.
    */
   rootProps?: React.HTMLProps<HTMLDivElement>;
 }

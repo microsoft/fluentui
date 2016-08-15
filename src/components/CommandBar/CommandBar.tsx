@@ -78,10 +78,9 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
   }
 
   public render() {
-    const { isSearchBoxVisible, searchPlaceholderText, className, overflowScreenReaderText } = this.props;
+    const { isSearchBoxVisible, searchPlaceholderText, className } = this.props;
     const { renderedItems, contextualMenuItems, expandedMenuItemKey, expandedMenuId, renderedOverflowItems, contextualMenuTarget, renderedFarItems } = this.state;
     let searchBox;
-    const elipsisScreenReaderText = overflowScreenReaderText || '';
 
     if (isSearchBoxVisible) {
       searchBox = (
@@ -100,13 +99,20 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     return (
       <div className={ css('ms-CommandBar', className) } ref='commandBarRegion'>
         { searchBox }
-        <FocusZone direction={ FocusZoneDirection.horizontal } rootProps={ { role:'menubar' } }>
+        <FocusZone direction={ FocusZoneDirection.horizontal } rootProps={ { role: 'menubar' } }>
           <div className='ms-CommandBar-primaryCommands' ref='commandSurface'>
             { renderedItems.map((item, index) => (
               this._renderItemInCommandBar(item, index, expandedMenuItemKey)
             )).concat((renderedOverflowItems && renderedOverflowItems.length) ? [
             <div className='ms-CommandBarItem' key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
-              <button id={ this._id + OVERFLOW_KEY } className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === OVERFLOW_KEY) }) } onClick={ this._onOverflowClick } role='menuitem' aria-label={ elipsisScreenReaderText }>
+              <button
+                id={ this._id + OVERFLOW_KEY }
+                className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === OVERFLOW_KEY) }) }
+                onClick={ this._onOverflowClick }
+                role='menuitem'
+                aria-label={ this.props.elipisisAriaLabel || '' }
+                aria-haspopup={ true }
+              >
                 <i className='ms-CommandBarItem-overflow ms-Icon ms-Icon--ellipsis' />
               </button>
             </div>
@@ -148,6 +154,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
                          data-command-key={ index }
                          aria-haspopup={ !!(item.items && item.items.length) }
                          role='menuitem'
+                         aria-label={ item.ariaLabel || item.name }
                        >
                          { (!!item.icon) && <span className={ `ms-CommandBarItem-icon ms-Icon ms-Icon--${ item.icon }` }></span> }
                          { (!!item.name) && <span className='ms-CommandBarItem-commandText'>{ item.name }</span> }
