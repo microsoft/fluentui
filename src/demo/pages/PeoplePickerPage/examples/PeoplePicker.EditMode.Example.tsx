@@ -6,7 +6,6 @@ import {
 } from '../../../../index';
 const PeopleData = require('./PeoplePickerExampleData');
 
-
 export interface IPeoplePickerExampleState {
   suggestions?: Array<IPersonaProps>;
   initialItems?: Array<IPersonaProps>;

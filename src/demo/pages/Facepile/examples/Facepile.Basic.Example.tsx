@@ -9,17 +9,17 @@ import {
 const facepileProps: IFacepileProps = {
   personas: [
     {
-      personaName: 'Bill Murray',
-      imageUrl: '//www.fillmurray.com/200/200'
+      personaName: 'Annie Lindqvist',
+      imageUrl: './images/persona-female.png'
     },
     {
-      personaName: 'Douglas Field',
-      imageInitials: 'DF',
+      personaName: 'Greta Lundberg',
+      imageInitials: 'GL',
       initialsColor: PersonaInitialsColor.green
     },
     {
-      personaName: 'Marcus Laue',
-      imageInitials: 'ML',
+      personaName: 'Roko Kolar',
+      imageInitials: 'RK',
       initialsColor: PersonaInitialsColor.purple,
       data: 'Emp1234',
       onClick: (persona: IFacepilePersona, ev: React.MouseEvent) =>
