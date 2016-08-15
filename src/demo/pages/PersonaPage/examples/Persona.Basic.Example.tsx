@@ -6,11 +6,11 @@ import {
   Checkbox
 } from '../../../../index';
 
-const billMurrayContact = {
+const examplePersona = {
   imageUrl: '//www.fillmurray.com/200/200',
-  imageInitials: 'BM',
-  primaryText: 'Bill Murray',
-  seconaryText: 'Actor',
+  imageInitials: 'AL',
+  primaryText: 'Annie Lindqvist',
+  seconaryText: 'Software Engineer',
   tertiaryText: 'In a meeting',
   optionalText: 'Available at 4:00pm'
 };
@@ -35,35 +35,35 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
             onChange={ (ev, isChecked) => { this.setState({ renderPersonaDetails: isChecked }); }} />
         </div>
         <Persona
-          { ...billMurrayContact }
+          { ...examplePersona }
           size={ PersonaSize.tiny }
           presence={ PersonaPresence.offline }
           hidePersonaDetails={ !renderPersonaDetails }
         />
         <Persona
-          { ...billMurrayContact }
+          { ...examplePersona }
           size={ PersonaSize.extraSmall }
           presence={ PersonaPresence.online }
           hidePersonaDetails={ !renderPersonaDetails }
         />
         <Persona
-          { ...billMurrayContact }
+          { ...examplePersona }
           size={ PersonaSize.small }
           presence={ PersonaPresence.away }
           hidePersonaDetails={ !renderPersonaDetails }
         />
         <Persona
-          { ...billMurrayContact }
+          { ...examplePersona }
           hidePersonaDetails={ !renderPersonaDetails }
         />
         <Persona
-          { ...billMurrayContact }
+          { ...examplePersona }
           size={ PersonaSize.large }
           presence={ PersonaPresence.dnd }
           hidePersonaDetails={ !renderPersonaDetails }
         />
         <Persona
-          { ...billMurrayContact }
+          { ...examplePersona }
           size={ PersonaSize.extraLarge }
           presence={ PersonaPresence.blocked }
           hidePersonaDetails={ !renderPersonaDetails }

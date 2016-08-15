@@ -13,7 +13,7 @@ export class PeoplePickerBasicExample extends React.Component<any, IPeoplePicker
     {
       imageUrl: '//www.fillmurray.com/200/200',
       imageInitials: 'PV',
-      primaryText: 'Peter Venkman',
+      primaryText: 'Annie Lindqvist',
       secondaryText: 'Ghostbuster',
       tertiaryText: 'In a meeting',
       optionalText: 'Available at 4:00pm'
