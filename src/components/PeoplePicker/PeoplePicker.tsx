@@ -176,7 +176,8 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
   private _onBlurCapture(ev) {
     // onBlur, relatedTarget refers to the element that got focus
     if (!this.refs.searchField.contains(ev.relatedTarget)
-      && !this.refs.pickerResults.contains(ev.relatedTarget) ) {
+      && !this.refs.pickerResults.contains(ev.relatedTarget)
+      && ev.currentTarget !== window ) {
       this._dismissPeoplePicker();
     }
   }
