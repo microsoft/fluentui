@@ -167,9 +167,8 @@ $personaItemHeight: 42px;
   color: $ms-color-themePrimary;
   font-weight: $ms-font-weight-semilight;
   font-size: $ms-font-size-s;
-  padding: 17px 0 0 12px;
+  padding: 8px 0 8px 16px;
   text-transform: uppercase;
-  height: 40px;
 }
 
 // List of results
@@ -213,8 +212,8 @@ $personaItemHeight: 42px;
   background: none;
   border: 0;
   text-align: left;
-  margin: 0 0 10px 0;
-  padding: 0 0 0 9px;
+  margin: 8px 0;
+  padding: 0 0 0 16px;
 
   @media (min-width: $ms-screen-md-min) {
     height: 48px;
