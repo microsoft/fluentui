@@ -58,13 +58,15 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     isHeaderVisible: true
   };
 
-  // Refs
-  private _header: DetailsHeader;
-  private _root: HTMLElement;
-  private _groupedList: GroupedList;
-  private _list: List;
-  private _focusZone: FocusZone;
-  private _selectionZone: SelectionZone;
+  public refs: {
+    [ key: string]: React.ReactInstance,
+    header: DetailsHeader,
+    root: HTMLElement,
+    groupedList: GroupedList,
+    list: List,
+    focusZone: FocusZone,
+    selectionZone: SelectionZone
+  };
 
   private _events: EventGroup;
   private _selection: ISelection;
@@ -221,7 +223,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
       // with JAWS.
       <div
-        ref={ root => this._root = root }
+        ref='root'
         className={css('ms-DetailsList', className, {
           'is-fixed': layoutMode === DetailsListLayoutMode.fixedColumns,
           'is-horizontalConstrained': constrainMode === ConstrainMode.horizontalConstrained
@@ -234,7 +236,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           <div onKeyDown={ this._onHeaderKeyDown } role='presentation'>
             { isHeaderVisible && (
               <DetailsHeader
-                ref={ header => this._header = header }
+                ref='header'
                 selectionMode={ selectionMode }
                 layoutMode={ layoutMode }
                 selection={ selection }
@@ -255,13 +257,13 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           </div>
           <div ref='contentContainer' onKeyDown={ this._onContentKeyDown } role='presentation'>
             <FocusZone
-              ref={ focusZone => this._focusZone = focusZone }
+              ref='focusZone'
               direction={ FocusZoneDirection.vertical }
               isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }
               onActiveElementChanged={ this._onActiveRowChanged }
               >
               <SelectionZone
-                ref={ selectionZone => this._selectionZone = selectionZone }
+                ref='selectionZone'
                 selection={ selection }
                 selectionMode={ selectionMode }
                 onItemInvoked={ onItemInvoked }>
@@ -278,14 +280,14 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                     eventsToRegister={ rowElementEventMap }
                     listProps={ additionalListProps }
                     onGroupExpandStateChanged={ this._onGroupExpandStateChanged }
-                    ref={ groupedList => this._groupedList = groupedList }
+                    ref='groupedList'
                     />
                 ) : (
                     <List
                       items={ items }
                       onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex) }
                       { ...additionalListProps }
-                      ref={ list => this._list = list }
+                      ref='list'
                       />
                   )
                 }
@@ -360,7 +362,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
   private _onHeaderKeyDown(ev: React.KeyboardEvent) {
     if (ev.which === KeyCodes.down) {
-      if (this._focusZone.focus()) {
+      if (this.refs.focusZone.focus()) {
         ev.preventDefault();
         ev.stopPropagation();
       }
@@ -369,7 +371,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
   private _onContentKeyDown(ev: React.KeyboardEvent) {
     if (ev.which === KeyCodes.up) {
-      if (this._header.focus()) {
+      if (this.refs.header.focus()) {
         ev.preventDefault();
         ev.stopPropagation();
       }
@@ -397,14 +399,14 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
     // Set focus to the row if it should receive focus.
     if (this._initialFocusedIndex !== undefined && index === this._initialFocusedIndex) {
-      if (this._selectionZone) {
-        this._selectionZone.setEnabled(false);
+      if (this.refs.selectionZone) {
+        this.refs.selectionZone.setEnabled(false);
       }
 
       row.focus();
 
-      if (this._selectionZone) {
-        this._selectionZone.setEnabled(true);
+      if (this.refs.selectionZone) {
+        this.refs.selectionZone.setEnabled(true);
       }
 
       delete this._initialFocusedIndex;
@@ -430,17 +432,17 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     this.setState({
       isCollapsed: collapsed
     });
-    if (this._groupedList) {
-      this._groupedList.toggleCollapseAll(collapsed);
+    if (this.refs.groupedList) {
+      this.refs.groupedList.toggleCollapseAll(collapsed);
     }
   }
 
   private _forceListUpdates() {
-    if (this._groupedList) {
-      this._groupedList.forceUpdate();
+    if (this.refs.groupedList) {
+      this.refs.groupedList.forceUpdate();
     }
-    if (this._list) {
-      this._list.forceUpdate();
+    if (this.refs.list) {
+      this.refs.list.forceUpdate();
     }
   }
 
