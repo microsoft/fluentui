@@ -109,7 +109,7 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
  * Helper to override a given method with a wrapper method that can try/catch the original, but also
  * ensures that the BaseComponent's methods are called before the subclass's. This ensures that
  * componentWillUnmount in the base is called and that things in the _disposables array are disposed.
- **/
+ */
 function _makeAllSafe(obj: BaseComponent<any, any>, prototype: Object, methodNames: string[]) {
   for (let i = 0, len = methodNames.length; i < len; i++) {
     _makeSafe(obj, prototype, methodNames[i]);
