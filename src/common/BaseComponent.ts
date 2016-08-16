@@ -19,8 +19,16 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
   private __events: EventGroup;
   private __disposables: IDisposable[];
 
-  constructor(props?: P) {
+  constructor(props?: P, deprecatedProps?: { [propName: string]: string }) {
     super(props);
+
+    if (deprecatedProps) {
+      for (var propName in deprecatedProps) {
+        if (propName in props) {
+          _warnDeprecation(this, propName, deprecatedProps[propName]);
+        }
+      }
+    }
 
     _makeAllSafe(this, BaseComponent.prototype, [
       'componentWillMount',
@@ -127,6 +135,12 @@ function _makeSafe(obj: BaseComponent<any, any>, prototype: Object, methodName: 
 
       return retVal;
     };
+  }
+}
+
+function _warnDeprecation(obj: BaseComponent<any, any>, propertyName: string, newPropertyName: string) {
+  if (console && console.warn) {
+    console.warn(`${ obj.className } property '${ propertyName }' was used but has been deprecated. Use '${ newPropertyName }' instead.`);
   }
 }
 
