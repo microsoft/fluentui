@@ -114,8 +114,38 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     } else {
       const firstChild = this.refs.root.firstChild as HTMLElement;
 
-      return this._focusElement(getNextElement(this.refs.root, firstChild, true));
+      return this.focusElement(getNextElement(this.refs.root, firstChild, true));
     }
+  }
+
+  /** Sets focus to a specific element within the zone. */
+  public focusElement(element: HTMLElement): boolean {
+    let { onBeforeFocus } = this.props;
+
+    if (onBeforeFocus && !onBeforeFocus(element)) {
+      return false;
+    }
+
+    if (element) {
+      if (this._activeElement) {
+        this._activeElement.tabIndex = -1;
+      }
+
+      this._activeElement = element;
+
+      if (element) {
+        if (!this._focusAlignment) {
+          this._setFocusAlignment(element, true, true);
+        }
+
+        this._activeElement.tabIndex = 0;
+        element.focus();
+
+        return true;
+      }
+    }
+
+    return false;
   }
 
   private _onFocus(ev: React.FocusEvent) {
@@ -220,14 +250,14 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
 
         case KeyCodes.home:
           const firstChild = this.refs.root.firstChild as HTMLElement;
-          if (this._focusElement(getNextElement(this.refs.root, firstChild, true))) {
+          if (this.focusElement(getNextElement(this.refs.root, firstChild, true))) {
             break;
           }
           return;
 
         case KeyCodes.end:
           const lastChild = this.refs.root.lastChild as HTMLElement;
-          if (this._focusElement(getPreviousElement(this.refs.root, lastChild, true, true, true))) {
+          if (this.focusElement(getPreviousElement(this.refs.root, lastChild, true, true, true))) {
             break;
           }
           return;
@@ -337,12 +367,12 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     // Focus the closest candidate
     if (candidateElement && candidateElement !== this._activeElement) {
       changedFocus = true;
-      this._focusElement(candidateElement);
+      this.focusElement(candidateElement);
     } else if (this.props.isCircularNavigation) {
       if (isForward) {
-        return this._focusElement(getNextElement(this.refs.root, this.refs.root.firstElementChild as HTMLElement, true));
+        return this.focusElement(getNextElement(this.refs.root, this.refs.root.firstElementChild as HTMLElement, true));
       } else {
-        return this._focusElement(getPreviousElement(this.refs.root, this.refs.root.lastElementChild as HTMLElement, true, true, true));
+        return this.focusElement(getPreviousElement(this.refs.root, this.refs.root.lastElementChild as HTMLElement, true, true, true));
       }
     }
 
@@ -441,29 +471,6 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     })) {
       this._setFocusAlignment(this._activeElement, true, false);
       return true;
-    }
-
-    return false;
-  }
-
-  private _focusElement(element: HTMLElement): boolean {
-    if (element) {
-      if (this._activeElement) {
-        this._activeElement.tabIndex = -1;
-      }
-
-      this._activeElement = element;
-
-      if (element) {
-        if (!this._focusAlignment) {
-          this._setFocusAlignment(element, true, true);
-        }
-
-        this._activeElement.tabIndex = 0;
-        element.focus();
-
-        return true;
-      }
     }
 
     return false;

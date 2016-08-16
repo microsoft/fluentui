@@ -5,8 +5,17 @@ import { FocusZone } from './FocusZone';
  * FocusZone component class interface.
  */
 export interface IFocusZone {
-  /** Sets focus to the checkbox. */
+  /**
+   * Sets focus to the current active element within the FocusZone.
+   **/
   focus(): void;
+
+  /**
+   * Sets focus to a specific child element within the zone. This can be used in conjunction with
+   * onBeforeFocus to created delayed focus scenarios (like animate the scroll position to the correct
+   * location and then focus.)
+   **/
+  focusElement(childElement?: HTMLElement);
 }
 
 /**
@@ -55,12 +64,17 @@ export interface IFocusZoneProps extends React.Props<FocusZone> {
   onActiveElementChanged?: (element?: HTMLElement, ev?: React.FocusEvent) => void;
 
   /**
-   * Optional DIV props that will be mixed into the root element, *before* other props are applied. This allows you
-   * to extend the root element with additional attributes, such as data-automation-id needed for automation. Note
-   * that if you provide, for example, "ariaLabelledBy" as well as "rootProps.ariaLabelledBy", the former will take
-   * precedence over the later.
+   * Props mixed into the div root element that will be mixed into the root element, *before* other props are applied.
+   * This allows you to extend the root element with additional attributes, such as data-automation-id needed for
+   *  automation. Note that if you provide, for example, "ariaLabelledBy" as well as "rootProps.ariaLabelledBy", the
+   * former will take precedence over the later.
    */
   rootProps?: React.HTMLProps<HTMLDivElement>;
+
+  /**
+   * Callback method for determining if focus should indeed be set on the given element.
+   */
+  onBeforeFocus?: (childElement?: Element) => boolean;
 }
 
 export enum FocusZoneDirection {
