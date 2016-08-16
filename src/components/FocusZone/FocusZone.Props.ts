@@ -8,7 +8,7 @@ export interface IFocusZone {
   /**
    * Sets focus to the first tabbable item in the zone.
    * @returns True if focus could be set to an active element, false if no operation was taken.
-   **/
+   */
   focus(): boolean;
 
   /**
@@ -17,7 +17,7 @@ export interface IFocusZone {
    * location and then focus.)
    * @param {HTMLElement} element The child element within the zone to focus.
    * @returns True if focus could be set to an active element, false if no operation was taken.
-   **/
+   */
   focusElement(childElement?: HTMLElement): boolean;
 }
 
