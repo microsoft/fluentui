@@ -50,8 +50,8 @@ export interface INavLinkGroup {
   links: INavLink[];
 
   /**
-   *  (Optional) The name to use for functional automation tests
-   **/
+   * The name to use for functional automation tests
+   */
   automationId?: string;
 }
 
@@ -71,44 +71,48 @@ export interface INavLink {
    */
   links?: INavLink[];
 
-  /** (Optional) icon */
+  /**
+   * Classname to apply to the icon.
+   */
   iconClassName?: string;
 
   /**
-   * (Optional) The name of the item to be used in logging engagement data
+   * The name of the item to be used in logging engagement data
    */
   engagementName?: string;
 
   /**
-  * (Optional) The alt text for the item
-  **/
+   * The alt text for the item
+   */
   altText?: string;
 
   /**
-   *  (Optional) The name to use for functional automation tests
-   **/
+   * The name to use for functional automation tests
+   */
   automationId?: string;
 
-  /** (Optional) Whether or not the link is in an expanded state */
+  /**
+   * Whether or not the link is in an expanded state
+   */
   isExpanded?: boolean;
 
   /**
-   * (Optional) Aria label for nav link
+   * Aria label for nav link
    */
   ariaLabel?: string;
 
   /**
-   * (Optional) Meta info for the link, does not involving rendering.
+   * Meta info for the link, does not involving rendering.
    */
   key?: string;
 
   /**
-   * (Optional) title for tooltip or description
+   * title for tooltip or description
    */
   title?: string;
 
   /**
-   * (Optional) Link <a> target.
+   * Link <a> target.
    */
   target?: string;
 

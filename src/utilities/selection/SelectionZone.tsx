@@ -54,10 +54,12 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, any> {
   private _isShiftPressed: boolean;
   private _isMetaPressed: boolean;
   private _hasClickedOnItem: boolean;
+  private _isEnabled: boolean;
 
   constructor() {
     super();
 
+    this._isEnabled = true;
     this._events = new EventGroup(this);
   }
 
@@ -92,7 +94,20 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, any> {
     );
   }
 
+  /**
+   * In some cases, the consuming scenario requires to disable the behaviors of selection zone. For
+   * example, the caller wants to set focus onto an item without selecting it. They can use this
+   * method to temporarily disable the selection changes.
+   */
+  public setEnabled(isEnabled: boolean) {
+    this._isEnabled = isEnabled;
+  }
+
   private _onFocus(ev: FocusEvent) {
+    if (!this._isEnabled) {
+      return;
+    }
+
     let { selection, selectionMode } = this.props;
     let index = this._getIndexFromElement(ev.target as HTMLElement);
 
@@ -116,6 +131,10 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, any> {
   }
 
   private _onMouseDown(ev: MouseEvent) {
+    if (!this._isEnabled) {
+      return;
+    }
+
     // We need to reset the key states for ctrl/meta/etc.
     this._onKeyChangeCapture(ev as any);
 
@@ -129,6 +148,10 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, any> {
   }
 
   private _onClick(ev: MouseEvent) {
+    if (!this._isEnabled) {
+      return;
+    }
+
     let target = ev.target as HTMLElement;
     let { selection, selectionMode, onItemInvoked } = this.props;
     let isToggleElement = this._isToggleElement(target, SELECTION_TOGGLE_ATTRIBUTE_NAME) || ev.ctrlKey || ev.metaKey;
@@ -161,10 +184,17 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, any> {
   }
 
   private _onDoubleClick(ev: MouseEvent) {
-    let { onItemInvoked, selection } = this.props;
-    let index = this._getIndexFromElement(ev.target as HTMLElement, true);
+    let target = ev.target as HTMLElement;
+    let isToggleElement = this._isToggleElement(target, SELECTION_TOGGLE_ATTRIBUTE_NAME) || ev.ctrlKey || ev.metaKey;
 
-    if (onItemInvoked) {
+    if (!this._isEnabled || isToggleElement) {
+      return;
+    }
+
+    let { onItemInvoked, selection } = this.props;
+    let index = this._getIndexFromElement(target, true);
+
+    if (onItemInvoked && index >= 0) {
       onItemInvoked(selection.getItems()[index], index, ev);
     }
   }
@@ -176,6 +206,10 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, any> {
   }
 
   private _onKeyDown(ev: KeyboardEvent) {
+    if (!this._isEnabled) {
+      return;
+    }
+
     let target = ev.target as HTMLElement;
     let { selection, selectionMode, onItemInvoked } = this.props;
     let isToggleElement = this._isToggleElement(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);
@@ -217,7 +251,11 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, any> {
       } else if (ev.which === KeyCodes.a && (ev.ctrlKey || ev.metaKey) && selectionMode === SelectionMode.multiple) {
         selection.setAllSelected(true);
       } else if (ev.which === KeyCodes.escape) {
-        selection.setAllSelected(false);
+        if (selection.getSelectedCount() > 0) {
+          selection.setAllSelected(false);
+        } else {
+          return;
+        }
       } else {
         return;
       }

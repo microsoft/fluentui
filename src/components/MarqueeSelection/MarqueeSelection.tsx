@@ -109,8 +109,6 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
         this._scrollableParent = scrollableParent;
         this._scrollTop = scrollableParent.scrollTop;
         this._rootRect = this.refs.root.getBoundingClientRect();
-
-        this._onMouseMove(ev);
       }
     }
   }
