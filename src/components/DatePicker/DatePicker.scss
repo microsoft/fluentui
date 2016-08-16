@@ -8,7 +8,7 @@
 
 @mixin ms-DatePicker-event() {
   color: $ms-color-neutralSecondary;
-  font-size: 21px;
+  font-size: $ms-icon-size-l;
   line-height: 20px;
   pointer-events: none;
   position: absolute;
@@ -42,7 +42,7 @@
 // Insert a calendar icon over the date field.
 .ms-DatePicker-event--with-label {
   @include ms-DatePicker-event();
-  top: 32px;
+  top: 35px;
 }
 
 .ms-DatePicker-event--without-label {
@@ -218,6 +218,7 @@
 .ms-DatePicker-decadeComponents {
   position: absolute;
   @include right(10px);
+  top: -2px;
 }
 
 .ms-DatePicker-prevMonth,
@@ -233,10 +234,10 @@
   text-align: center;
   line-height: 40px;
   text-align: center;
-  font-size: 21px;
+  font-size: $ms-icon-size-m;
   color: $ms-color-neutralSecondary;
   position: relative;
-  top: 3px;
+  top: 2px;
 
   &:hover {
     color: $ms-color-neutralDark;
@@ -382,10 +383,10 @@
   .ms-DatePicker-nextYear,
   .ms-DatePicker-prevDecade,
   .ms-DatePicker-nextDecade {
-    font-size: 17px;
-    width: 30px;
-    height: 30px;
-    line-height: 29px;
+    font-size: $ms-icon-size-s;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
   }
 
   .ms-DatePicker-holder {
