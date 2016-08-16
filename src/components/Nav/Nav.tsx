@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { css } from '../../utilities/css';
 import './Nav.scss';
 
 import {
+  INav,
   INavProps,
   INavLinkGroup,
   INavLink } from './Nav.Props';
@@ -11,12 +13,14 @@ export interface INavState {
   isGroupExpanded: boolean[];
 }
 
-export class Nav extends React.Component<INavProps, INavState> {
+export class Nav extends React.Component<INavProps, INavState> implements INav {
 
   public static defaultProps: INavProps = {
     groups: null,
     onRenderLink: (link: INavLink) => (<span className='ms-Nav-linkText'>{ link.name }</span>)
   };
+
+  private _selectedKey: string;
 
   constructor() {
     super();
@@ -31,24 +35,38 @@ export class Nav extends React.Component<INavProps, INavState> {
       return null;
     }
 
+    if (this.props.initialSelectedKey) {
+      this._selectedKey = this.props.initialSelectedKey;
+    }
+
     const groupElements: React.ReactElement<{}>[] = this.props.groups.map(
       (group: INavLinkGroup, groupIndex: number) => this._renderGroup(group, groupIndex));
 
     return (
       <FocusZone direction={ FocusZoneDirection.vertical }>
-        <nav role='navigation' className={'ms-Nav' + (this.props.isOnTop ? ' is-onTop ms-u-slideRightIn40' : '')}>
+        <nav role='navigation' className={ css('ms-Nav', { 'is-onTop ms-u-slideRightIn40' : this.props.isOnTop }) }>
           { groupElements }
         </nav>
       </FocusZone>
     );
   }
 
+  public get selectedKey(): string {
+    return this._selectedKey;
+  }
+
   private _renderLink(link: INavLink, linkIndex: number): React.ReactElement<{}> {
     let { onLinkClick } = this.props;
+
+    const isLinkSelected: boolean = _isLinkSelected(link, this._selectedKey);
+    if (isLinkSelected) {
+      this._selectedKey = link.key ? link.key : undefined;
+    }
+
     return (
       <li key={ linkIndex }>
         <a
-          className={'ms-Nav-link' + (_isLinkSelected(link) ? ' is-selected' : '')}
+          className={ css('ms-Nav-link', { 'is-selected' : isLinkSelected }) }
           href={ link.url || 'javascript:' }
           onClick={ onLinkClick }
           aria-label={ link.ariaLabel }
@@ -56,7 +74,7 @@ export class Nav extends React.Component<INavProps, INavState> {
           target={ link.target || '' }
         >
           { (link.iconClassName ?
-          <i className={'ms-Icon ms-Nav-IconLink ' + link.iconClassName}></i>
+          <i className={ css('ms-Icon', 'ms-Nav-IconLink', link.iconClassName) }></i>
           : '') }
          { this.props.onRenderLink(link)}
         </a> { this._renderLinks(link.links) }
@@ -83,18 +101,18 @@ export class Nav extends React.Component<INavProps, INavState> {
     const isGroupExpanded: boolean = this.state.isGroupExpanded[groupIndex] !== false;
 
     return (
-      <div key={ groupIndex } className={ 'ms-Nav-group' + (isGroupExpanded ? ' is-expanded' : '') }>
+      <div key={ groupIndex } className={ css('ms-Nav-group', { 'is-expanded' : isGroupExpanded }) }>
         { (group.name ?
         <button
           className='ms-Nav-groupButton'
           onClick={ this._onGroupHeaderClicked.bind(this, groupIndex) }
         >
-          <i className='ms-Nav-groupChevron ms-Icon ms-Icon--chevronDown'></i>
+          <i className={ css('ms-Nav-groupChevron', 'ms-Icon', 'ms-Icon--chevronDown') }></i>
           { group.name }
         </button> : null)
         }
 
-        <div className='ms-Nav-groupContent ms-u-slideDownIn20'>
+        <div className={ css('ms-Nav-groupContent', 'ms-u-slideDownIn20') }>
         { this._renderLinks(group.links) }
         </div>
       </div>
@@ -115,12 +133,16 @@ export class Nav extends React.Component<INavProps, INavState> {
 // A tag used for resolving links.
 const _urlResolver = document.createElement('a');
 
-function _isLinkSelected(link: INavLink): boolean {
+function _isLinkSelected(link: INavLink, selectedKey: string): boolean {
     if (!link.url) {
       return false;
     }
     _urlResolver.href = link.url || '';
     const target: string = _urlResolver.href;
+
+    if (selectedKey && link.key === selectedKey) {
+      return true;
+    }
 
     if (location.protocol + '//' + location.host + location.pathname === target) {
       return true;
