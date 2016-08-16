@@ -19,6 +19,10 @@ export interface IFabricState {
   isFocusVisible?: boolean;
 }
 
+// We will track the last focus visibility state so that if we tear down and recreate
+// the Fabric component, we will use the last known value as the default.
+let _lastIsFocusVisible: boolean = false;
+
 export class Fabric extends React.Component<React.HTMLProps<Fabric>, IFabricState> {
   public refs: {
     [key: string]: React.ReactInstance;
@@ -31,7 +35,7 @@ export class Fabric extends React.Component<React.HTMLProps<Fabric>, IFabricStat
     super();
 
     this.state = {
-      isFocusVisible: false
+      isFocusVisible: _lastIsFocusVisible
     };
 
     this._events = new EventGroup(this);
@@ -62,6 +66,8 @@ export class Fabric extends React.Component<React.HTMLProps<Fabric>, IFabricStat
       this.setState({
         isFocusVisible: false
       });
+
+      _lastIsFocusVisible = false;
     }
   }
 
@@ -70,6 +76,8 @@ export class Fabric extends React.Component<React.HTMLProps<Fabric>, IFabricStat
       this.setState({
         isFocusVisible: true
       });
+
+      _lastIsFocusVisible = true;
     }
   }
 }

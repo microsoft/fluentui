@@ -2,25 +2,26 @@ export const itemsNonFocusable = [
   {
     key: 'newItem',
     name: 'New',
-    icon: 'CirclePlus',
+    icon: 'circlePlus',
+    ariaLabel: 'New. Use left and right arrow keys to navigate',
     onClick: () => { return; },
     items: [
       {
         key: 'emailMessage',
         name: 'Email message',
-        icon: 'Mail'
+        icon: 'mail'
       },
       {
         key: 'calendarEvent',
         name: 'Calendar event',
-        icon: 'Calendar'
+        icon: 'calendar'
       }
     ]
   },
   {
     key: 'upload',
     name: 'Upload',
-    icon: 'Upload',
+    icon: 'upload',
     onClick: () => { return; }
   }
 ];
@@ -29,12 +30,12 @@ export const farItemsNonFocusable = [
   {
     key: 'saveStatus',
     name: 'Your page has been saved',
-    icon: 'CheckMark'
+    icon: 'check'
   },
   {
     key: 'publish',
     name: 'Publish',
-    icon: 'ReadingMode',
+    icon: 'story',
     onClick: () => { return; }
   }
 ];

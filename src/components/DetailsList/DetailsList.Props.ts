@@ -30,6 +30,11 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /** The items to render. */
   items: any[];
 
+  /**
+   * Optional default focused index to set focus to once the items have rendered and the index exists.
+   */
+  initialFocusedIndex?: number;
+
   /** Optional class name to add to the root element. */
   className?: string;
 

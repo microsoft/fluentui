@@ -2,55 +2,56 @@ export const items = [
   {
     key: 'newItem',
     name: 'New',
-    icon: 'CirclePlus',
+    icon: 'circlePlus',
+    ariaLabel: 'New. Use left and right arrow keys to navigate',
     onClick: () => { return; },
     items: [
       {
         key: 'emailMessage',
         name: 'Email message',
-        icon: 'Mail'
+        icon: 'mail'
       },
       {
         key: 'calendarEvent',
         name: 'Calendar event',
-        icon: 'Calendar'
+        icon: 'calendar'
       }
     ]
   },
   {
     key: 'upload',
     name: 'Upload',
-    icon: 'Upload',
+    icon: 'upload',
     onClick: () => { return; }
   },
   {
     key: 'share',
     name: 'Share',
-    icon: 'Share',
+    icon: 'share',
     onClick: () => { return; }
   },
   {
     key: 'download',
     name: 'Download',
-    icon: 'Download',
+    icon: 'download',
     onClick: () => { return; }
   },
   {
     key: 'move',
     name: 'Move to...',
-    icon: 'MoveToFolder',
+    icon: 'folderMove',
     onClick: () => { return; }
   },
   {
     key: 'copy',
     name: 'Copy to...',
-    icon: 'Copy',
+    icon: 'copy',
     onClick: () => { return; }
   },
   {
     key: 'rename',
     name: 'Rename...',
-    icon: 'Edit',
+    icon: 'editBox',
     onClick: () => { return; }
   }
 ];
@@ -92,37 +93,37 @@ export const iconOnlyItems = [
   {
     key: 'upload',
     name: '',
-    icon: 'Upload',
+    icon: 'upload',
     onClick: () => { return; }
   },
   {
     key: 'share',
     name: '',
-    icon: 'Share',
+    icon: 'share',
     onClick: () => { return; }
   },
   {
     key: 'download',
     name: '',
-    icon: 'Download',
+    icon: 'download',
     onClick: () => { return; }
   },
   {
     key: 'move',
     name: '',
-    icon: 'MoveToFolder',
+    icon: 'folderMove',
     onClick: () => { return; }
   },
   {
     key: 'copy',
     name: '',
-    icon: 'Copy',
+    icon: 'copy',
     onClick: () => { return; }
   },
   {
     key: 'rename',
     name: '',
-    icon: 'Edit',
+    icon: 'editBox',
     onClick: () => { return; }
   }
 ];
@@ -131,17 +132,17 @@ export const overflowItems = [
   {
     key: 'move',
     name: 'Move to...',
-    icon: 'MoveToFolder'
+    icon: 'folderMove'
   },
   {
     key: 'copy',
     name: 'Copy to...',
-    icon: 'Copy'
+    icon: 'copy'
   },
   {
     key: 'rename',
     name: 'Rename...',
-    icon: 'Edit'
+    icon: 'editBox'
   }
 
 ];
@@ -149,19 +150,19 @@ export const farItems = [
   {
     key: 'sort',
     name: 'Sort',
-    icon: 'SortLines',
+    icon: 'sortLines',
     onClick: () => { return; }
   },
   {
     key: 'tile',
     name: 'Grid view',
-    icon: 'Tiles',
+    icon: 'tile',
     onClick: () => { return; }
   },
   {
     key: 'info',
     name: 'Info',
-    icon: 'Info',
+    icon: 'circleInfo',
     onClick: () => { return; }
   }
 ];

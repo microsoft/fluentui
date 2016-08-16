@@ -78,20 +78,19 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
   }
 
   public render() {
-    const { isSearchBoxVisible, searchPlaceholderText, className, overflowScreenReaderText } = this.props;
+    const { isSearchBoxVisible, searchPlaceholderText, className } = this.props;
     const { renderedItems, contextualMenuItems, expandedMenuItemKey, expandedMenuId, renderedOverflowItems, contextualMenuTarget, renderedFarItems } = this.state;
     let searchBox;
-    const elipsisScreenReaderText = overflowScreenReaderText || '';
 
     if (isSearchBoxVisible) {
       searchBox = (
         <div className='ms-CommandBarSearch' ref='searchSurface'>
           <input className='ms-CommandBarSearch-input' type='text' placeholder={ searchPlaceholderText } />
           <div className='ms-CommandBarSearch-iconWrapper ms-CommandBarSearch-iconSearchWrapper'>
-            <i className='ms-Icon ms-Icon--Search'></i>
+            <i className='ms-Icon ms-Icon--search'></i>
           </div>
           <div className='ms-CommandBarSearch-iconWrapper ms-CommandBarSearch-iconClearWrapper ms-font-s'>
-            <i className='ms-Icon ms-Icon--Cancel'></i>
+            <i className='ms-Icon ms-Icon--x'></i>
           </div>
         </div>
       );
@@ -106,8 +105,15 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
               this._renderItemInCommandBar(item, index, expandedMenuItemKey)
             )).concat((renderedOverflowItems && renderedOverflowItems.length) ? [
             <div className='ms-CommandBarItem' key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
-              <button id={ this._id + OVERFLOW_KEY } className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === OVERFLOW_KEY) }) } onClick={ this._onOverflowClick } role='menuitem' aria-label={ elipsisScreenReaderText }>
-                <i className='ms-CommandBarItem-overflow ms-Icon ms-Icon--More' />
+              <button
+                id={ this._id + OVERFLOW_KEY }
+                className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === OVERFLOW_KEY) }) }
+                onClick={ this._onOverflowClick }
+                role='menuitem'
+                aria-label={ this.props.elipisisAriaLabel || '' }
+                aria-haspopup={ true }
+              >
+                <i className='ms-CommandBarItem-overflow ms-Icon ms-Icon--ellipsis' />
               </button>
             </div>
             ] : []) }
@@ -135,7 +141,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
 
   private _renderItemInCommandBar(item, index, expandedMenuItemKey, isFarItem?: boolean) {
     const itemKey = item.key || index;
-    const className = css(item.onClick ? 'ms-CommandBarItem-link' : 'ms-CommandBarItem-text', !item.name && 'ms-CommandBarItem--noName');
+    const className = item.onClick ? 'ms-CommandBarItem-link' : 'ms-CommandBarItem-text';
     const classNameValue = css(className, { 'is-expanded': (expandedMenuItemKey === item.key) });
 
     return <div className={ css('ms-CommandBarItem', item.className) } key={ itemKey } ref={ itemKey }>
@@ -148,11 +154,12 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
                          data-command-key={ index }
                          aria-haspopup={ !!(item.items && item.items.length) }
                          role='menuitem'
+                         aria-label={ item.ariaLabel || item.name }
                        >
                          { (!!item.icon) && <span className={ `ms-CommandBarItem-icon ms-Icon ms-Icon--${ item.icon }` }></span> }
                          { (!!item.name) && <span className='ms-CommandBarItem-commandText'>{ item.name }</span> }
                          { (item.items && item.items.length) ? (
-                           <i className='ms-CommandBarItem-chevronDown ms-Icon ms-Icon--ChevronDown' />
+                           <i className='ms-CommandBarItem-chevronDown ms-Icon ms-Icon--chevronDown' />
                          ) : ( null ) }
                        </button>;
                } else {

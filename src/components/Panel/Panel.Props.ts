@@ -46,6 +46,11 @@ export interface IPanelProps extends React.Props<Panel> {
    * Aria label on close button
    */
   closeButtonAriaLabel?: string;
+
+  /**
+   * Optional parameter to provider the class name for header text
+   */
+  headerClassName?: string;
 }
 
 export enum PanelType {
