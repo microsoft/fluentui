@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { css } from '../../utilities/css';
 import './Nav.scss';
 
 import {
@@ -56,15 +57,15 @@ export class Nav extends React.Component<INavProps, INavState> {
   private _renderLink(link: INavLink, linkIndex: number): React.ReactElement<{}> {
     let { onLinkClick } = this.props;
 
-    const ifLinkSelected: boolean = _isLinkSelected(link, this._selectedKey);
-    if (ifLinkSelected) {
+    const isLinkSelected: boolean = _isLinkSelected(link, this._selectedKey);
+    if (isLinkSelected) {
       this._selectedKey = link.key ? link.key : undefined;
     }
 
     return (
       <li key={ linkIndex }>
         <a
-          className={'ms-Nav-link' + (ifLinkSelected ? ' is-selected' : '')}
+          className={ css('ms-Nav-link', { 'is-selected' : isLinkSelected }) }
           href={ link.url || 'javascript:' }
           onClick={ onLinkClick }
           aria-label={ link.ariaLabel }
@@ -138,7 +139,7 @@ function _isLinkSelected(link: INavLink, selectedKey: string): boolean {
     _urlResolver.href = link.url || '';
     const target: string = _urlResolver.href;
 
-    if (selectedKey && link.key && link.key === selectedKey) {
+    if (selectedKey && link.key === selectedKey) {
       return true;
     }
 
