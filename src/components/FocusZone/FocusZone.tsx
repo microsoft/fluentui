@@ -106,7 +106,10 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     );
   }
 
-  /** Sets focus to the first tabbable item in the zone. */
+  /**
+   * Sets focus to the first tabbable item in the zone.
+   * @returns True if focus could be set to an active element, false if no operation was taken.
+   **/
   public focus(): boolean {
     if (this._activeElement && this.refs.root.contains(this._activeElement)) {
       this._activeElement.focus();
@@ -118,7 +121,11 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     }
   }
 
-  /** Sets focus to a specific element within the zone. */
+  /**
+   * Sets focus to a specific element within the zone.
+   * @param {HTMLElement} element The child element within the zone to focus.
+   * @returns True if focus could be set to an active element, false if no operation was taken.
+   **/
   public focusElement(element: HTMLElement): boolean {
     let { onBeforeFocus } = this.props;
 
@@ -170,7 +177,9 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     }
   }
 
-  /** Handle global tab presses so that we can patch tabindexes on the fly. */
+  /**
+   * Handle global tab presses so that we can patch tabindexes on the fly.
+   **/
   private _onKeyDownCapture(ev: React.KeyboardEvent) {
     if (ev.which === KeyCodes.tab) {
       this._updateTabIndexes();
@@ -204,7 +213,9 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     }
   }
 
-  /** Handle the keystrokes. */
+  /**
+   * Handle the keystrokes.
+   **/
   private _onKeyDown(ev: React.KeyboardEvent) {
     const { direction, disabled, isInnerZoneKeystroke } = this.props;
 
@@ -216,6 +227,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
       isInnerZoneKeystroke &&
       this._isImmediateDescendantOfZone(ev.target as HTMLElement) &&
       isInnerZoneKeystroke(ev)) {
+
       // Try to focus
       let innerZone = this._getFirstInnerZone();
 
@@ -277,7 +289,9 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     ev.stopPropagation();
   }
 
-  /** Walk up the dom try to find a focusable element. */
+  /**
+   * Walk up the dom try to find a focusable element.
+   **/
   private _tryInvokeClickForFocusable(target: HTMLElement): boolean {
     do {
       if (target.tagName === 'BUTTON' || target.tagName === 'A') {
@@ -299,7 +313,9 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     return false;
   }
 
-  /** Traverse to find first child zone. */
+  /**
+   * Traverse to find first child zone.
+   **/
   private _getFirstInnerZone(rootElement?: HTMLElement): FocusZone {
     rootElement = rootElement || this._activeElement || this.refs.root;
 
