@@ -243,6 +243,13 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
     });
   }
 
+  public focus() {
+    if (this.refs && this.refs.root) {
+      this.refs.root.tabIndex = 0;
+      this.refs.root.focus();
+    }
+  }
+
   private _getSelectionState(props: IDetailsRowProps): IDetailsRowSelectionState {
     let { itemIndex, selection } = props;
 
