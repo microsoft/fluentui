@@ -130,8 +130,6 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
     };
   }
 
-
-
   public render() {
     let { title } = this.props;
     let { properties, isEnum, groups } = this.state;

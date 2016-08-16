@@ -1,4 +1,7 @@
+/* tslint:disable:no-unused-variable */
 import * as React from 'react';
+/* tslint:enable:no-unused-variable */
+
 import { IProgressIndicatorProps } from './ProgressIndicator.Props';
 import { BaseComponent } from '../../common/BaseComponent';
 import { css } from '../../utilities/css';

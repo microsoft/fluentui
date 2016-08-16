@@ -93,7 +93,7 @@ export class InterfaceParserHelper extends BaseParser {
                 let tmp = this.eatUntil(/[\*\n]/);
                 defaultValue = tmp;
                 this.eatSpacesAndNewlines();
-              } if (this.eatWord(JSDOC_DEPRECATED)) {
+              } else if (this.eatWord(JSDOC_DEPRECATED)) {
                 let tmp = this.eatUntil(/[\*\n]/);
                 isDeprecated = true;
                 deprecatedMessage = tmp;

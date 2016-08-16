@@ -19,11 +19,17 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
   private __events: EventGroup;
   private __disposables: IDisposable[];
 
+  /**
+   * BaseComponent constructor
+   * @param {P} props The props for the component.
+   * @param {Object} deprecatedProps The map of deprecated prop names to new names, where the key is the old name and the
+   * value is the new name. If a prop is removed rather than renamed, leave the value undefined.
+   */
   constructor(props?: P, deprecatedProps?: { [propName: string]: string }) {
     super(props);
 
     if (deprecatedProps) {
-      for (var propName in deprecatedProps) {
+      for (let propName in deprecatedProps) {
         if (propName in props) {
           _warnDeprecation(this, propName, deprecatedProps[propName]);
         }
@@ -140,7 +146,13 @@ function _makeSafe(obj: BaseComponent<any, any>, prototype: Object, methodName: 
 
 function _warnDeprecation(obj: BaseComponent<any, any>, propertyName: string, newPropertyName: string) {
   if (console && console.warn) {
-    console.warn(`${ obj.className } property '${ propertyName }' was used but has been deprecated. Use '${ newPropertyName }' instead.`);
+    let deprecationMessage = `${ obj.className } property '${ propertyName }' was used but has been deprecated.`;
+
+    if (newPropertyName) {
+      deprecationMessage += ` Use '${ newPropertyName }' instead.`;
+    }
+
+    console.warn(deprecationMessage);
   }
 }
 
