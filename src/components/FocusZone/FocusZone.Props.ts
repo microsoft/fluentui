@@ -77,7 +77,7 @@ export interface IFocusZoneProps extends React.Props<FocusZone> {
   /**
    * Callback method for determining if focus should indeed be set on the given element.
    * @param {HTMLElement} element The child element within the zone to focus.
-   * @returns True if focus could be set to an active element, false if no operation was taken.
+   * @returns True if focus should be set to the given element, false to avoid setting focus.
    */
   onBeforeFocus?: (childElement?: HTMLElement) => boolean;
 }
