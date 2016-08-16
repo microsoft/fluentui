@@ -1,5 +1,15 @@
 import * as React from 'react';
 
+export interface INav {
+  /**
+   * The meta 'key' property of the currently selected NavItem of the Nav. Can return
+   * undefined if the currently selected nav item has no populated key property. Be aware
+   * that in order for Nav to properly understand which key is selected all NavItems in
+   * all groups of the Nav must have populated key properties.
+   */
+  selectedKey: string;
+}
+
 export interface INavProps {
   /**
    * A collection of link groups to display in the navigation bar

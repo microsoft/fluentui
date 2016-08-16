@@ -4,6 +4,7 @@ import { css } from '../../utilities/css';
 import './Nav.scss';
 
 import {
+  INav,
   INavProps,
   INavLinkGroup,
   INavLink } from './Nav.Props';
@@ -12,7 +13,7 @@ export interface INavState {
   isGroupExpanded: boolean[];
 }
 
-export class Nav extends React.Component<INavProps, INavState> {
+export class Nav extends React.Component<INavProps, INavState> implements INav {
 
   public static defaultProps: INavProps = {
     groups: null,
@@ -43,7 +44,7 @@ export class Nav extends React.Component<INavProps, INavState> {
 
     return (
       <FocusZone direction={ FocusZoneDirection.vertical }>
-        <nav role='navigation' className={'ms-Nav' + (this.props.isOnTop ? ' is-onTop ms-u-slideRightIn40' : '')}>
+        <nav role='navigation' className={ css('ms-Nav', { 'is-onTop ms-u-slideRightIn40' : this.props.isOnTop }) }>
           { groupElements }
         </nav>
       </FocusZone>
@@ -73,7 +74,7 @@ export class Nav extends React.Component<INavProps, INavState> {
           target={ link.target || '' }
         >
           { (link.iconClassName ?
-          <i className={'ms-Icon ms-Nav-IconLink ' + link.iconClassName}></i>
+          <i className={ css('ms-Icon', 'ms-Nav-IconLink', link.iconClassName) }></i>
           : '') }
          { this.props.onRenderLink(link)}
         </a> { this._renderLinks(link.links) }
@@ -100,18 +101,18 @@ export class Nav extends React.Component<INavProps, INavState> {
     const isGroupExpanded: boolean = this.state.isGroupExpanded[groupIndex] !== false;
 
     return (
-      <div key={ groupIndex } className={ 'ms-Nav-group' + (isGroupExpanded ? ' is-expanded' : '') }>
+      <div key={ groupIndex } className={ css('ms-Nav-group', { 'is-expanded' : isGroupExpanded }) }>
         { (group.name ?
         <button
           className='ms-Nav-groupButton'
           onClick={ this._onGroupHeaderClicked.bind(this, groupIndex) }
         >
-          <i className='ms-Nav-groupChevron ms-Icon ms-Icon--chevronDown'></i>
+          <i className={ css('ms-Nav-groupChevron', 'ms-Icon', 'ms-Icon--chevronDown') }></i>
           { group.name }
         </button> : null)
         }
 
-        <div className='ms-Nav-groupContent ms-u-slideDownIn20'>
+        <div className={ css('ms-Nav-groupContent', 'ms-u-slideDownIn20') }>
         { this._renderLinks(group.links) }
         </div>
       </div>
