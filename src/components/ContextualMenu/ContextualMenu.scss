@@ -89,10 +89,6 @@ $ContextualMenu-iconWidth: 24px;
   text-align: center;
 }
 
-// The following is temporary to allow the React Contextual Menu to appear correctly.
-// This should be removed once the React Contextual Menu has been turned on
-// and the conflicting css, found in ODFabric.scss has been removed. See bug 236807.
-// Note: This will not conflict with the knockout Contextual Menu.
 button.ms-ContextualMenu-link,
 button.ms-ContextualMenu-link:first-child,
 button.ms-ContextualMenu-link:last-child {
