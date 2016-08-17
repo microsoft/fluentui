@@ -385,7 +385,7 @@
   }
 
   .ms-Icon {
-    font-size: 16px;
+    font-size: $ms-icon-size-m;
     padding: 8px;
   }
 
@@ -393,7 +393,8 @@
     display: inline;
   }
 
-  &.is-disabled, &:disabled {
+  &.is-disabled,
+  &:disabled {
     color: $ms-color-neutralTertiaryAlt;
     background-color: transparent;
   }
