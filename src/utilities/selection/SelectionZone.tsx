@@ -67,15 +67,19 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, {}> {
 
     this._events.onAll(element, {
       'keydown': this._onKeyDown,
-      'mousedown': this._onMouseDown,
-      'click': this._onClick,
-      'dblclick': this._onDoubleClick
+      'mousedown': this._onMouseDown
     });
 
     // Always know what the state of shift/ctrl/meta are.
     this._events.on(element, 'focus', this._onFocus, true);
     this._events.on(window, 'keydown', this._onKeyChangeCapture, true);
     this._events.on(window, 'keyup', this._onKeyChangeCapture, true);
+
+    // Specifically for the click methods, we will want to use React eventing to allow
+    // React and non React events to stop propagation and avoid the default SelectionZone
+    // behaviors (like executing onInvoked.)
+    this._onClick = this._onClick.bind(this);
+    this._onDoubleClick = this._onDoubleClick.bind(this);
   }
 
   public componentWillUnmount() {
@@ -87,6 +91,8 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, {}> {
       <div
         className='ms-SelectionZone'
         ref='root'
+        onClick={ this._onClick }
+        onDoubleClick={ this._onDoubleClick }
         >
         {this.props.children }
       </div>
@@ -144,7 +150,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, {}> {
     }
   }
 
-  private _onClick(ev: MouseEvent) {
+  private _onClick(ev: React.MouseEvent) {
     let target = ev.target as HTMLElement;
     let { selection, selectionMode, onItemInvoked } = this.props;
     let isToggleElement = this._isToggleElement(target, SELECTION_TOGGLE_ATTRIBUTE_NAME) || ev.ctrlKey || ev.metaKey;
@@ -172,11 +178,11 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, {}> {
       // Re-enabled change events.
       selection.setChangeEvents(true);
     } else if (onItemInvoked) {
-      onItemInvoked(selection.getItems()[index], index, ev);
+      onItemInvoked(selection.getItems()[index], index, ev.nativeEvent);
     }
   }
 
-  private _onDoubleClick(ev: MouseEvent) {
+  private _onDoubleClick(ev: React.MouseEvent) {
     let target = ev.target as HTMLElement;
     let isToggleElement = this._isToggleElement(target, SELECTION_TOGGLE_ATTRIBUTE_NAME) || ev.ctrlKey || ev.metaKey;
 
@@ -188,7 +194,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, {}> {
     let index = this._getIndexFromElement(target, true);
 
     if (onItemInvoked && index >= 0) {
-      onItemInvoked(selection.getItems()[index], index, ev);
+      onItemInvoked(selection.getItems()[index], index, ev.nativeEvent);
     }
   }
 
