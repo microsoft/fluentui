@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { PeoplePicker } from './PeoplePicker';
 import { IPersonaProps } from '../Persona/Persona.Props';
+import { IPeoplePickerItemProps } from './IPeoplePickerItemProps';
 
 export interface IPeoplePickerProps extends React.Props<PeoplePicker> {
   /**
@@ -89,6 +90,10 @@ export interface IPeoplePickerProps extends React.Props<PeoplePicker> {
    * This gets called when an item is removed from the currently selected items
    */
   onItemRemoved?: (item: IPersonaProps) => void;
+
+  renderSelectedItem?: (result: IPeoplePickerItemProps) => JSX.Element;
+
+  renderSearchItem?: (result: IPeoplePickerItemProps) => JSX.Element;
 }
 
 export enum PeoplePickerType {

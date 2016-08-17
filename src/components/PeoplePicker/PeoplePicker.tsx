@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IPeoplePickerProps, PeoplePickerType } from './PeoplePicker.Props';
+import { IPeoplePickerItemProps } from './IPeoplePickerItemProps';
 import {
   Persona,
   PersonaSize,
@@ -50,6 +51,8 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
   private _suggestionsCount: number = 0;
   private _highlightedSearchResult: Object;
   private _focusedPersonaIndex: number = INVALID_INDEX;
+  private _renderSearchItem: (result: IPeoplePickerItemProps) => JSX.Element;
+  private _renderSelectedItem: (result: IPeoplePickerItemProps) => JSX.Element;
 
   constructor(props: IPeoplePickerProps) {
     super(props);
@@ -65,6 +68,7 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
     this._onSelectedPersonaFocus = this._onSelectedPersonaFocus.bind(this);
     this._onSearchBoxKeyDown = this._onSearchBoxKeyDown.bind(this);
     const selectedPersonas: IPersonaProps[] = props.initialItems ? props.initialItems : [];
+    this._renderSearchItem = props.renderSearchItem ? props.renderSearchItem : PeoplePickerSearchResultDefault;
     this.state = {
       isActive: false,
       isSearching: false,
@@ -118,7 +122,7 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
     let selectedPersonas = type === PeoplePickerType.memberList ? null : this._renderSelectedPersonas();
     let memberList = type === PeoplePickerType.memberList ? this._renderSelectedPersonasAsMemberList() : null;
 
-    let className = css( 'ms-PeoplePicker', {
+    let className = css('ms-PeoplePicker', {
       'is-active': this.state.isActive,
       'ms-PeoplePicker--compact': type === PeoplePickerType.compact,
       'ms-PeoplePicker--membersList': type === PeoplePickerType.memberList,
@@ -129,12 +133,12 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
         className={ className }
         ref='root'
         key='root'
-      >
+        >
         <div className='ms-PeoplePicker-searchBox' ref={ (searchBox) => this.refs._searchBox = searchBox } onKeyDown={ this._onSearchBoxKeyDown }>
           <FocusZone
             onActiveElementChanged={ this._onSelectedPersonaFocus }
             ref={ (focusZone) => this.refs.focusZone = focusZone }
-          >
+            >
             { selectedPersonas }
             { searchField }
           </FocusZone>
@@ -151,7 +155,7 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
       case KeyCodes.backspace:
       case KeyCodes.del:
         if (this._focusedPersonaIndex !== INVALID_INDEX) {
-          this._removeSelectedPersona( this._focusedPersonaIndex );
+          this._removeSelectedPersona(this._focusedPersonaIndex);
           ev.stopPropagation();
           ev.preventDefault();
         }
@@ -176,7 +180,7 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
   private _onBlurCapture(ev) {
     // onBlur, relatedTarget refers to the element that got focus
     if (!this.refs.searchField.contains(ev.relatedTarget)
-      && !this.refs.pickerResults.contains(ev.relatedTarget) ) {
+      && !this.refs.pickerResults.contains(ev.relatedTarget)) {
       this._dismissPeoplePicker();
     }
   }
@@ -186,7 +190,7 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
    */
   private _onClickCapture(ev: React.MouseEvent) {
     if (!this.refs.searchField.contains(ev.target as HTMLElement)
-      && !this.refs.pickerResults.contains(ev.target as HTMLElement) ) {
+      && !this.refs.pickerResults.contains(ev.target as HTMLElement)) {
       this._dismissPeoplePicker();
     }
   }
@@ -264,15 +268,15 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
    * Creates a new persona based on what the user has typed (non search result persona)
    */
   private _addManualPersonaToSelectedList() {
-      let newPersonaName = this.state.searchTextValue;
-      if (newPersonaName.length > 0) {
-        let personaInfo = {
-          imageInitials: newPersonaName.charAt(0).toUpperCase(),
-          primaryText: newPersonaName,
-          secondaryText: newPersonaName
-        };
-        this._addPersonaToSelectedList(personaInfo);
-      }
+    let newPersonaName = this.state.searchTextValue;
+    if (newPersonaName.length > 0) {
+      let personaInfo = {
+        imageInitials: newPersonaName.charAt(0).toUpperCase(),
+        primaryText: newPersonaName,
+        secondaryText: newPersonaName
+      };
+      this._addPersonaToSelectedList(personaInfo);
+    }
   }
 
   /**
@@ -289,9 +293,9 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
       // - creates a new persona from the user's input (not from the search results)
       case KeyCodes.enter:
         if (isActive && highlightedSearchResultIndex !== INVALID_INDEX) {
-            this._addPersonaToSelectedList(this._highlightedSearchResult);
+          this._addPersonaToSelectedList(this._highlightedSearchResult);
         } else {
-            this._addManualPersonaToSelectedList();
+          this._addManualPersonaToSelectedList();
         }
         break;
 
@@ -449,7 +453,7 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
 
       // check to scroll up
       let amountCutOffUp = selectedResultTop - menuItemHeight;
-      if (amountCutOffUp < currentTop ) {
+      if (amountCutOffUp < currentTop) {
         newTop = amountCutOffUp;
       }
     }
@@ -467,7 +471,7 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
       onItemRemoved(selectedPersonas[index]);
     }
 
-    selectedPersonas.splice( index, 1 );
+    selectedPersonas.splice(index, 1);
     this.setState({
       selectedPersonas: selectedPersonas
     });
@@ -495,21 +499,21 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
 
       <ul className='ms-PeoplePicker-selectedPeople'>
         <FocusZone>
-          { selectedPersonas.map( (child) => {
-              return (
-                <li className='ms-PeoplePicker-selectedPerson' key={id++}>
-                  <Persona
-                    { ...child }
-                    size={ PersonaSize.small }
-                    presence={ child.presence ? child.presence : PersonaPresence.online }
+          { selectedPersonas.map((child) => {
+            return (
+              <li className='ms-PeoplePicker-selectedPerson' key={id++}>
+                <Persona
+                  { ...child }
+                  size={ PersonaSize.small }
+                  presence={ child.presence ? child.presence : PersonaPresence.online }
                   />
-                  <button className='ms-PeoplePicker-resultAction' onClick={ () => {
-                      this._removeSelectedPersona( selectedPersonas.indexOf(child) );
-                  }}>
-                    <i className='ms-Icon ms-Icon--x'></i>
-                  </button>
-                </li>);
-            })
+                <button className='ms-PeoplePicker-resultAction' onClick={ () => {
+                  this._removeSelectedPersona(selectedPersonas.indexOf(child));
+                } }>
+                  <i className='ms-Icon ms-Icon--x'></i>
+                </button>
+              </li>);
+          })
           }
         </FocusZone>
       </ul>
@@ -523,7 +527,7 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
   private _renderSelectedPersonas() {
     let id = 0;
     const { selectedPersonas } = this.state;
-    return selectedPersonas.map( (child) => {
+    return selectedPersonas.map((child) => {
       let key = id++;
       return (
         <div className='ms-PeoplePicker-persona' ref={ 'persona' + key } key={key} data-selection-index={key} data-is-focusable={true} tabIndex={-1}>
@@ -532,10 +536,10 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
               { ...child }
               size={ PersonaSize.extraSmall }
               presence={ child.presence ? child.presence : PersonaPresence.online }
-            />
+              />
             <button className='ms-PeoplePicker-personaRemove' tabIndex={-1} data-is-focusable={false} onClick={ () => {
-                this._removeSelectedPersona( selectedPersonas.indexOf(child) );
-              } }>
+              this._removeSelectedPersona(selectedPersonas.indexOf(child));
+            } }>
               <i className='ms-Icon ms-Icon--x'></i>
             </button>
           </div>
@@ -553,10 +557,10 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
         type='text'
         ref='searchField' key='searchField'
         data-is-focusable={ true }
-        onFocus={ () => {this._focusedPersonaIndex = INVALID_INDEX;}}
+        onFocus={ () => { this._focusedPersonaIndex = INVALID_INDEX; } }
         onChange={ this._onSearchFieldTextChanged }
         onKeyDown={ this._onSearchFieldKeyDown }
-      />
+        />
     );
   }
 
@@ -580,20 +584,17 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
     let resultItemId = 0;
     let resultGroupId = 0;
     let searchResultItems = [];
-    suggestions.forEach( (persona: IPersonaProps) => {
-      searchResultItems.push(this._renderSearchResultItem( persona, resultItemId++ ));
-    });
     let searchResults = (
-        <div
-          className='ms-PeoplePicker-resultGroup'
-          key={resultGroupId++}
+      <div
+        className='ms-PeoplePicker-resultGroup'
+        key={resultGroupId++}
         >
-          <div className='ms-PeoplePicker-resultGroupTitle'>{ suggestions.length > 0 ? searchCategoryName : noResultsText }</div>
-          <ul className='ms-PeoplePicker-resultList'>
-            { searchResultItems }
-          </ul>
-        </div>
-      );
+        <div className='ms-PeoplePicker-resultGroupTitle'>{ suggestions.length > 0 ? searchCategoryName : noResultsText }</div>
+        <ul className='ms-PeoplePicker-resultList'>
+          { this._renderSearchResultList(suggestions, searchCategoryName, noResultsText) }
+        </ul>
+      </div>
+    );
 
     let searchMoreClassName = css('ms-PeoplePicker-searchMore', {
       'is-searching': isSearching,
@@ -623,9 +624,9 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
       <div
         className='ms-PeoplePicker-results'
         key='pickerResults' ref={ (pickerResults) => this.refs.pickerResults = pickerResults }
-      >
+        >
         <div className='ms-PeoplePicker-resultGroups' ref='pickerResultGroups'>
-            { searchResults }
+          { searchResults }
         </div>
         { searchMore }
       </div>
@@ -641,8 +642,8 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
     // MemberList variant doesn't show groups
     let resultItemId = 0;
     let searchResultItems = [];
-    suggestions.forEach( (persona: IPersonaProps) => {
-      searchResultItems.push(this._renderSearchResultItem( persona, resultItemId++ ));
+    suggestions.forEach((persona: IPersonaProps) => {
+      searchResultItems.push(this._renderSearchResultItem(persona, resultItemId++));
     });
     let searchResults = (
       <div className='ms-PeoplePicker-resultGroup'>
@@ -655,50 +656,82 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
       <div
         className='ms-PeoplePicker-results'
         key='pickerResults' ref='pickerResults'
-      >
+        >
         <div className='ms-PeoplePicker-resultGroups' ref='pickerResultGroups'>
-            { searchResults }
+          { searchResults }
         </div>
       </div>
     );
   }
 
-  /**
-   * Renders a single persona as part of a list to be displayed in the search results.
-   */
-  private _renderSearchResultItem(personaInfo: IPersonaProps, id: number) {
-    let { type } = this.props;
-    let isSelected = id === this.state.highlightedSearchResultIndex;
-    let buttonClassName = css( 'ms-PeoplePicker-resultBtn', {
-      'ms-PeoplePicker-resultBtn--compact': type === PeoplePickerType.compact,
-      'ms-PeoplePicker-resultBtn--selected': isSelected
-    });
-    if (isSelected) {
-      this._highlightedSearchResult = personaInfo;
-    }
-    let personaSize = type === PeoplePickerType.compact ? PersonaSize.extraSmall : PersonaSize.regular;
+  private _renderSearchResultList(
+    personaList: IPersonaProps[],
+    searchName: string,
+    noResultsText: string
+  ): JSX.Element {
+
+    let id = 0;
     return (
-      <li
-        className='ms-PeoplePicker-result'
-        key={id}
-        ref={ isSelected ? 'selectedSearchResult' : null }
-      >
-        <div role='button' className={ buttonClassName }>
-          <Persona
-            { ...personaInfo }
-            presence={ personaInfo.presence ? personaInfo.presence : PersonaPresence.online }
-            size={ personaSize }
-            onMouseDown={ () => { this._addPersonaToSelectedList(personaInfo); }}
-            onClick={ () => { this._addPersonaToSelectedList(personaInfo); }}
-          />
-          { type !== PeoplePickerType.memberList ?
-            <button
-              className='ms-PeoplePicker-resultAction'
-              tabIndex={-1}
-              onClick={ () => { this._removeSuggestedPersona(id, personaInfo); }} >
-              <i className='ms-Icon ms-Icon--x'></i></button>
-            : null }
-        </div>
-      </li>);
+      <div className='ms-PeoplePicker-resultGroup'>
+        <div className='ms-PeoplePicker-resultGroupTitle'>{ personaList.length > 0 ? searchName : noResultsText }</div>
+        <ul className='ms-PeoplePicker-resultList'>
+          {
+            personaList.map((persona) => {
+              let isSelected = id === this.state.highlightedSearchResultIndex;
+              let itemProps: IPeoplePickerItemProps = {
+                persona: persona,
+                onRemovePersona: this.props.onRemoveSuggestion,
+                onSelectPersona: this._addPersonaToSelectedList.bind(this),
+                isSelected: isSelected,
+                peoplePickerType: this.props.type
+              }
+              return (
+                <li key= { id++ }
+                  ref= { isSelected ? 'selectedSearchResult' : null } >
+                  {
+                    this._renderSearchItem(itemProps)
+                  }
+                </li>
+              );
+            })
+          }
+        </ul>
+      </div >
+    );
   }
 }
+
+export const PeoplePickerSearchResultDefault = (peoplePickerItemProps: IPeoplePickerItemProps) => {
+  let { persona,
+    onRemovePersona,
+    onSelectPersona,
+    className,
+    index,
+    peoplePickerType,
+    isSelected
+  } = peoplePickerItemProps
+
+  let buttonClassName = css('ms-PeoplePicker-resultBtn', {
+    'ms-PeoplePicker-resultBtn--compact': peoplePickerType === PeoplePickerType.compact,
+    'ms-PeoplePicker-resultBtn--selected': isSelected
+  });
+  return (
+    <div role='button' className={ buttonClassName }>
+      <Persona
+        { ...persona }
+        presence={ persona.presence ? persona.presence : PersonaPresence.online }
+        size={ persona.size }
+        onMouseDown={ () => { onSelectPersona(persona); } }
+        onClick={ () => { onSelectPersona(persona); } }
+        />
+      { peoplePickerType !== PeoplePickerType.memberList ?
+        <button
+          className='ms-PeoplePicker-resultAction'
+          tabIndex={-1}
+          onClick={ () => { onRemovePersona(index, persona); } } >
+          <i className='ms-Icon ms-Icon--x'></i></button>
+        : null }
+    </div>
+  );
+}
+
