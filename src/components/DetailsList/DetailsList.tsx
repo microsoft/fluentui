@@ -400,14 +400,9 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     // Set focus to the row if it should receive focus.
     if (this._initialFocusedIndex !== undefined && index === this._initialFocusedIndex) {
       if (this.refs.selectionZone) {
-        this.refs.selectionZone.setEnabled(false);
+        this.refs.selectionZone.ignoreNextFocus();
       }
-
       row.focus();
-
-      if (this.refs.selectionZone) {
-        this.refs.selectionZone.setEnabled(true);
-      }
 
       delete this._initialFocusedIndex;
     }
