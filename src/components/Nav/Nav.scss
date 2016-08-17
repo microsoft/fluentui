@@ -19,10 +19,6 @@
   padding: 0;
 }
 
-.ms-Nav li > ul {
-  margin: 0 14px;
-}
-
 .ms-Nav-groupContent {
   display: none;
   margin-bottom: 20px;
@@ -127,6 +123,21 @@
       right: 0;
       bottom: 0;
       left: 0;
+    }
+  }
+}
+
+// ms-Nav-link-level-0 through .ms-Nav-link-level-9
+// If more nesting levels are needed, update this loop.
+@for $nestingLevel from 0 through 9 {
+  .ms-Nav-level-#{$nestingLevel} {
+    .ms-Nav-link {
+      padding: 0 14px * $nestingLevel + 20px;
+
+      // If there is a group header, add another 20px.
+      .ms-Nav-groupButton + .ms-Nav-groupContent & {
+        padding: 0 14px * $nestingLevel + 40px;
+      }
     }
   }
 }

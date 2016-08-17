@@ -55,7 +55,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
     return this._selectedKey;
   }
 
-  private _renderLink(link: INavLink, linkIndex: number): React.ReactElement<{}> {
+  private _renderLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     let { onLinkClick } = this.props;
 
     const isLinkSelected: boolean = _isLinkSelected(link, this._selectedKey);
@@ -77,21 +77,22 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
           <i className={ css('ms-Icon', 'ms-Nav-IconLink', link.iconClassName) }></i>
           : '') }
          { this.props.onRenderLink(link)}
-        </a> { this._renderLinks(link.links) }
+        </a>
+        { this._renderLinks(link.links, nestingLevel + 1) }
     </li>
     );
   }
 
-  private _renderLinks(links: INavLink[]): React.ReactElement<{}> {
+  private _renderLinks(links: INavLink[], nestingLevel: number): React.ReactElement<{}> {
     if (!links || !links.length) {
       return null;
     }
 
     const linkElements: React.ReactElement<{}>[] = links.map(
-      (link: INavLink, linkIndex: number) => this._renderLink(link, linkIndex));
+      (link: INavLink, linkIndex: number) => this._renderLink(link, linkIndex, nestingLevel));
 
     return (
-      <ul>
+      <ul className={'ms-Nav-level-' + nestingLevel.toString(10)}>
         { linkElements }
       </ul>
     );
@@ -113,7 +114,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
         }
 
         <div className={ css('ms-Nav-groupContent', 'ms-u-slideDownIn20') }>
-        { this._renderLinks(group.links) }
+          { this._renderLinks(group.links, 0 /* nestingLevel */) }
         </div>
       </div>
     );
