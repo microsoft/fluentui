@@ -127,21 +127,6 @@
   }
 }
 
-// ms-Nav-link-level-0 through .ms-Nav-link-level-9
-// If more nesting levels are needed, update this loop.
-@for $nestingLevel from 0 through 9 {
-  .ms-Nav-level-#{$nestingLevel} {
-    .ms-Nav-link {
-      padding: 0 14px * $nestingLevel + 20px;
-
-      // If there is a group header, add another 20px.
-      .ms-Nav-groupButton + .ms-Nav-groupContent & {
-        padding: 0 14px * $nestingLevel + 40px;
-      }
-    }
-  }
-}
-
 .ms-Nav-groupButton, .ms-Nav-link {
   @include focus-border();
 }
