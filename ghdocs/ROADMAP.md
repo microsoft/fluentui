@@ -1,6 +1,6 @@
 # Roadmap
 
-The Office UI Fabric React project is currently in a **pre-v1 state** which means that we're working hard on achieving our v1 - a complete set of powerful and easy to use components built to the Office Design Language. We will be actively working on this set as teams across Office and Office 365 contribute, evolve, and use these components in their own products.
+The Office UI Fabric React project is currently in a **pre-v1 state** which means that we're working hard on achieving our v1 - a set of powerful and easy to use components built to the Office Design Language that are used *in production*. We will be actively working on this set as teams across Office and Office 365 contribute, evolve, and use these components in their own products.
 
 Given the early state of the project, all things are subject to change and some components may be more stable/usable than others. Use at your own risk!
 
@@ -20,7 +20,7 @@ Components are generally in 4 states: *placeholder*, *started*, *beta*, and *com
 | Placeholder | The component has little to no functionality.                                                             |
 | Started     | Work on the component has begun, but it is not anywhere near production ready.                                                             |
 | Beta        | The component is far enough along to be used, but still lacks some functionality or has significant bugs. |
-| Complete    | The component is generally bug-free and meets all of the requirements outlined above - production ready!  |
+| In prod    | The component meets standards that enable it to be used in a production environment - it's production ready!  |
 
 
 ## Components
@@ -40,6 +40,7 @@ Components are generally in 4 states: *placeholder*, *started*, *beta*, and *com
 | DocumentCard      |        Beta |
 | Dropdown          |        Beta |
 | Facepile          |     Started |
+| GroupedList       |     Started |
 | Image             |        Beta |
 | Label             |        Beta |
 | Layer             |        Beta |
@@ -57,7 +58,7 @@ Components are generally in 4 states: *placeholder*, *started*, *beta*, and *com
 | ProgressIndicator |        Beta |
 | SearchBox         |     Started |
 | Spinner           |        Beta |
-| Slider            |     Started |
+| Slider            |        Beta |
 | TextField         |        Beta |
 | Toggle            |        Beta |
 
@@ -68,5 +69,6 @@ Components are generally in 4 states: *placeholder*, *started*, *beta*, and *com
 |----------------------|--------:|
 | Focus trap zones     |    Beta |
 | Focus zones          |    Beta |
+| MarqueeSelection     |    Beta |
 | Selection management |    Beta |
 | Themes               | Started |

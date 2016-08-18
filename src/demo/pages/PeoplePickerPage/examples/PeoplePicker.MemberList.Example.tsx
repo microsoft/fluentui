@@ -4,62 +4,14 @@ import {
   PeoplePickerType,
   IPersonaProps
 } from '../../../../index';
+const PeopleData = require('./PeoplePickerExampleData');
 
 export interface IPeoplePickerExampleState {
   suggestions?: Array<IPersonaProps>;
 }
 
 export class PeoplePickerMemberListExample extends React.Component<any, IPeoplePickerExampleState> {
-  private _peopleList = [
-    {
-      imageUrl: '//www.fillmurray.com/200/200',
-      imageInitials: 'PV',
-      primaryText: 'Peter Venkman',
-      secondaryText: 'Ghostbuster',
-      tertiaryText: 'In a meeting',
-      optionalText: 'Available at 4:00pm'
-    },
-    {
-      imageUrl: '//www.fillmurray.com/200/200',
-      imageInitials: 'PC',
-      primaryText: 'Phil Connors',
-      secondaryText: 'Reporter',
-      tertiaryText: 'In a meeting',
-      optionalText: 'Available at 4:00pm'
-    },
-    {
-      imageUrl: '//www.fillmurray.com/200/200',
-      imageInitials: 'CS',
-      primaryText: 'Carl Spackler',
-      secondaryText: 'Golpher',
-      tertiaryText: 'In a meeting',
-      optionalText: 'Available at 4:00pm'
-    },
-    {
-      imageUrl: '//www.fillmurray.com/200/200',
-      imageInitials: 'SZ',
-      primaryText: 'Steve Zissou',
-      secondaryText: 'Oceanographer',
-      tertiaryText: 'In a meeting',
-      optionalText: 'Available at 4:00pm'
-    },
-    {
-      imageUrl: '//www.fillmurray.com/200/200',
-      imageInitials: 'BH',
-      primaryText: 'Bob Harris',
-      secondaryText: 'Actor',
-      tertiaryText: 'In a meeting',
-      optionalText: 'Available at 4:00pm'
-    },
-    {
-      imageUrl: '//www.fillmurray.com/200/200',
-      imageInitials: 'BB',
-      primaryText: 'Bunny Breckinridge',
-      secondaryText: 'Actor',
-      tertiaryText: 'In a meeting',
-      optionalText: 'Available at 4:00pm'
-    },
-  ];
+  private _peopleList = PeopleData;
 
   constructor() {
     super();

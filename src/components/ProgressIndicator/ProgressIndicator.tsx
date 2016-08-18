@@ -1,5 +1,9 @@
+/* tslint:disable:no-unused-variable */
 import * as React from 'react';
+/* tslint:enable:no-unused-variable */
+
 import { IProgressIndicatorProps } from './ProgressIndicator.Props';
+import { BaseComponent } from '../../common/BaseComponent';
 import { css } from '../../utilities/css';
 import './ProgressIndicator.scss';
 
@@ -7,21 +11,33 @@ import './ProgressIndicator.scss';
 // This prevents animations on reset to 0 scenarios
 const ZERO_THRESHOLD = 0.01;
 
-export class ProgressIndicator extends React.Component<IProgressIndicatorProps, any> {
+export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}> {
   public static defaultProps = {
     title: '',
     description: '',
-    percentComplete: 0
+    percentComplete: 0,
+    width: 180
   };
 
+  constructor(props: IProgressIndicatorProps) {
+    super(props, {
+      'title': 'label'
+    });
+  }
+
   public render() {
-    let { title, description, percentComplete } = this.props;
+    let { title, label, description, percentComplete, className } = this.props;
+
+    // Handle deprecated value.
+    if (title) {
+      label = title;
+    }
 
     percentComplete = Math.min(100, Math.max(0, percentComplete * 100));
 
     return (
-      <div className='ms-ProgressIndicator'>
-        <div className='ms-ProgressIndicator-itemName'>{ title }</div>
+      <div className={ css('ms-ProgressIndicator', className) }>
+        <div className='ms-ProgressIndicator-itemName'>{ label }</div>
         <div className='ms-ProgressIndicator-itemProgress'>
           <div className='ms-ProgressIndicator-progressTrack'></div>
           <div className={ css('ms-ProgressIndicator-progressBar', {

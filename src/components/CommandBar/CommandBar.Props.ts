@@ -26,7 +26,7 @@ export interface ICommandBarProps extends React.HTMLProps<HTMLDivElement> {
   /**
    * Text to be read by screen readers if there are overflow items and focus is on elipsis button
    */
-  overflowScreenReaderText?: string;
+  elipisisAriaLabel?: string;
 
   /**
    * Items to render on the right side (or left, in RTL).
