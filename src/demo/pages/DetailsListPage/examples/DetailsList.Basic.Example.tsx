@@ -3,6 +3,8 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import {
   DetailsList,
+  MarqueeSelection,
+  Selection,
   TextField
 } from '../../../../index';
 import { createListItems } from '../../../utilities/data';
@@ -10,10 +12,14 @@ import { createListItems } from '../../../utilities/data';
 let _items: any[];
 
 export class DetailsListBasicExample extends React.Component<any, any> {
+  private _selection: Selection;
+
   constructor() {
     super();
 
     _items = _items || createListItems(500);
+    this._selection = new Selection();
+
     this.state = { filterText: '' };
   }
 
@@ -27,7 +33,9 @@ export class DetailsListBasicExample extends React.Component<any, any> {
           label='Filter by name:'
           onChanged={ text => this.setState({ filterText: text }) }
         />
-        <DetailsList items={ items } shouldApplyApplicationRole= { true } setKey='set' />
+        <MarqueeSelection selection={ this._selection }>
+          <DetailsList items={ items } initialFocusedIndex={ 0 } shouldApplyApplicationRole={ true } setKey='set' selection={ this._selection } />
+        </MarqueeSelection>
       </div>
     );
   }

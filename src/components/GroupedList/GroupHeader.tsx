@@ -3,6 +3,7 @@ import {
   IGroupHeaderProps,
   IGroup
 } from './index';
+import { SelectionMode } from '../../utilities/selection/index';
 import { Check } from '../Check/Check';
 import { GroupSpacer } from './GroupSpacer';
 import { Spinner } from '../../Spinner';
@@ -17,6 +18,7 @@ export interface IGroupHeader {
   groupLevel: number;
   headerProps?: IGroupHeaderProps;
   viewport?: IViewport;
+  selectionMode?: SelectionMode;
 }
 
 export interface IGroupHeaderState {
@@ -56,12 +58,18 @@ export class GroupHeader extends React.Component<IGroupHeader, IGroupHeaderState
       group,
       groupLevel,
       headerProps,
-      viewport
+      viewport,
+      selectionMode
     } = this.props;
     let { isCollapsed, isLoadingVisible } = this.state;
-    let showCheckBox = true;
-    let isSelected = group && group.isSelected;
     let loadingText = headerProps && headerProps.loadingText;
+    let isCollapsedGroupSelectVisible = headerProps && headerProps.isCollapsedGroupSelectVisible;
+    if (isCollapsedGroupSelectVisible === undefined) {
+      isCollapsedGroupSelectVisible = true;
+    }
+    let canSelectGroup = selectionMode === SelectionMode.multiple;
+    let isSelectionCheckVisible = canSelectGroup && (isCollapsedGroupSelectVisible || !(group && group.isCollapsed));
+    let isSelected = group && group.isSelected && isSelectionCheckVisible;
 
     return group && (
       <div
@@ -74,14 +82,15 @@ export class GroupHeader extends React.Component<IGroupHeader, IGroupHeaderState
 
         <FocusZone direction={ FocusZoneDirection.horizontal }>
 
-          { showCheckBox && (
+          { isSelectionCheckVisible ? (
             <button
               className='ms-GroupHeader-check'
               data-selection-toggle={ true }
               onClick={ this._onToggleSelectGroup } >
               <Check isChecked={ isSelected } />
             </button>
-          )}
+            ) : (selectionMode !== SelectionMode.none ? GroupSpacer({ count: 1 }) : null )
+          }
 
           { GroupSpacer({ count: groupLevel }) }
 
