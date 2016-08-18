@@ -31,10 +31,12 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                     {
                       key: 'emailMessage',
                       name: 'Email message',
+                      title: 'Create an email'
                     },
                     {
                       key: 'calendarEvent',
                       name: 'Calendar event',
+                      title: 'Create a calendar event',
                     }
                   ],
                   name: 'New'
@@ -42,7 +44,8 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                 {
                   key: 'upload',
                   icon: 'upload',
-                  name: 'Upload'
+                  name: 'Upload',
+                  title: 'Upload a file'
                 },
                 {
                   key: 'divider_1',
@@ -86,15 +89,18 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                         {
                           key: 'sharetoemail_1',
                           name: 'Share to Email',
+                          title: 'Share to Email',
                           icon: 'mail'
                         },
                         {
                           key: 'sharetofacebook_1',
                           name: 'Share to Facebook',
+                          title: 'Share to Facebook',
                         },
                         {
                           key: 'sharetotwitter_1',
                           name: 'Share to Twitter',
+                          title: 'Share to Twitter',
                           icon: 'share'
                       },
                   ],
