@@ -149,7 +149,7 @@
   // Spacing between bottom buttons
   .ms-Dialog-action + .ms-Dialog-action {
     margin: 0;
-    @include margin-right(16px);
+    @include margin-left(16px);
   }
 }
 
