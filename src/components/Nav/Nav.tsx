@@ -63,10 +63,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
     let { onLinkClick } = this.props;
 
     const isRtl: boolean = getRTL();
-    const paddingAfter: string = '0';
     const paddingBefore: string = (_indentationSize * nestingLevel + (hasGroupButton ? 40 : 20)).toString(10) + 'px';
-    const leftPadding: string = isRtl ? paddingAfter : paddingBefore;
-    const rightPadding: string = isRtl ? paddingBefore : paddingAfter;
 
     const isLinkSelected: boolean = _isLinkSelected(link, this._selectedKey);
     if (isLinkSelected) {
@@ -77,7 +74,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
       <li key={ linkIndex }>
         <a
           className={ css('ms-Nav-link', { 'is-selected' : isLinkSelected }) }
-          style={ { padding: '0 ' + rightPadding + ' 0 ' + leftPadding } }
+          style={ { [isRtl ? 'paddingRight' : 'paddingLeft'] : paddingBefore } }
           href={ link.url || 'javascript:' }
           onClick={ onLinkClick }
           aria-label={ link.ariaLabel }
