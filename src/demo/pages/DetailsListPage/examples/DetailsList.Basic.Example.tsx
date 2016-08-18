@@ -20,7 +20,7 @@ export class DetailsListBasicExample extends React.Component<any, any> {
     _items = _items || createListItems(500);
 
     this._selection = new Selection({
-      onSelectionChanged: ()=> this.setState({ selectionDetails: this._getSelectionDetails() })
+      onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() })
     });
 
     this.state = {
