@@ -94,6 +94,7 @@ export class GroupHeader extends React.Component<IGroupHeader, IGroupHeaderState
 
           { GroupSpacer({ count: groupLevel }) }
 
+          <div className='ms-GroupHeader-dropIcon'><i className='ms-Icon ms-Icon--tag'></i></div>
           <button className='ms-GroupHeader-expand' onClick={ this._onToggleCollapse }>
             <i className={ css('ms-Icon ms-Icon--chevronDown', {
               'is-collapsed': isCollapsed
