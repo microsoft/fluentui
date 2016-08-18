@@ -60,6 +60,12 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, {}> {
     super();
 
     this._events = new EventGroup(this);
+
+    // Specifically for the click methods, we will want to use React eventing to allow
+    // React and non React events to stop propagation and avoid the default SelectionZone
+    // behaviors (like executing onInvoked.)
+    this._onClick = this._onClick.bind(this);
+    this._onDoubleClick = this._onDoubleClick.bind(this);
   }
 
   public componentDidMount() {
@@ -75,11 +81,6 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, {}> {
     this._events.on(window, 'keydown', this._onKeyChangeCapture, true);
     this._events.on(window, 'keyup', this._onKeyChangeCapture, true);
 
-    // Specifically for the click methods, we will want to use React eventing to allow
-    // React and non React events to stop propagation and avoid the default SelectionZone
-    // behaviors (like executing onInvoked.)
-    this._onClick = this._onClick.bind(this);
-    this._onDoubleClick = this._onDoubleClick.bind(this);
   }
 
   public componentWillUnmount() {
