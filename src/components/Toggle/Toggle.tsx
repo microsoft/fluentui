@@ -2,13 +2,12 @@ import * as React from 'react';
 import { IToggleProps } from './Toggle.Props';
 import { css } from '../../utilities/css';
 import { Label } from '../../Label';
+import { getId } from '../../utilities/object';
 import './Toggle.scss';
 
 export interface IToggleState {
   isChecked: boolean;
 }
-
-let _instance: number = 0;
 
 export class Toggle extends React.Component<IToggleProps, IToggleState> {
 
@@ -28,8 +27,7 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
       isChecked: !!(props.checked || props.defaultChecked)
     };
 
-    this._id = `Toggle-${ _instance++ }`;
-
+    this._id = getId('Toggle');
     this._onClick = this._onClick.bind(this);
   }
 
@@ -71,8 +69,8 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
               name={ this._id }
               className={ css('ms-Toggle-button', className) }
               disabled={ disabled }
-              role='button'
-              aria-pressed={ isChecked }
+              role='checkbox'
+              aria-checked={ isChecked }
               onClick={ this._onClick }
             />
             <div className='ms-Toggle-background'>

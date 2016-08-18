@@ -32,7 +32,6 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   viewport?: IViewport;
   checkboxVisibility?: CheckboxVisibility;
   getRowAriaLabel?: (item: any) => string;
-  canSelectItem?: (item: any) => boolean;
   checkButtonAriaLabel?: string;
 }
 
@@ -153,13 +152,13 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
       checkboxVisibility,
       getRowAriaLabel,
       checkButtonAriaLabel,
-      canSelectItem
+      selection
     } = this.props;
     let { selectionState: { isSelected }, columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
     let isDraggable = Boolean(dragDropEvents && dragDropEvents.canDrag && dragDropEvents.canDrag(item));
     let droppingClassName = isDropping ? (this._droppingClassNames ? this._droppingClassNames : DEFAULT_DROPPING_CSS_CLASS) : '';
     let ariaLabel = getRowAriaLabel ? getRowAriaLabel(item) : null;
-    let canSelect = !canSelectItem || canSelectItem(item);
+    let canSelect = selection.canSelectItem(item);
 
     return (
       <div
@@ -171,11 +170,12 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
           'is-check-visible': checkboxVisibility === CheckboxVisibility.always
         }) }
         data-is-focusable={ true }
-        data-selection-index={ canSelect ? itemIndex : -1 }
+        data-selection-index={ itemIndex }
         data-item-index={ itemIndex }
         data-is-draggable={ isDraggable }
         data-automationid='DetailsRow'
         style={ { minWidth: viewport ? viewport.width : 0 } }
+        aria-selected={ isSelected }
         >
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           { (selectionMode !== SelectionMode.none) && (
@@ -241,6 +241,13 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
         onMeasureDone
       }
     });
+  }
+
+  public focus() {
+    if (this.refs && this.refs.root) {
+      this.refs.root.tabIndex = 0;
+      this.refs.root.focus();
+    }
   }
 
   private _getSelectionState(props: IDetailsRowProps): IDetailsRowSelectionState {

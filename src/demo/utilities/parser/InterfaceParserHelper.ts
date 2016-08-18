@@ -1,9 +1,9 @@
 import { BaseParser } from './BaseParser';
-import { IInterfaceProperty } from '../../components/index';
+import { IInterfaceProperty, InterfacePropertyType } from '../../components/index';
 
 const JSDOC_DEFAULT = '@default';
 const JSDOC_DEFAULTVALUE = '@defaultvalue';
-
+const JSDOC_DEPRECATED = '@deprecated';
 /**
  * Supporting enum for the parser, used internally within the parser only.
  */
@@ -32,6 +32,8 @@ export class InterfaceParserHelper extends BaseParser {
     let type = '';
     let returnResult = [];
     let defaultValue = '';
+    let isDeprecated = false;
+    let deprecatedMessage = '';
     let noClosingSymbolAsteriskPrereq = false;
 
     this.eatUntil(/\{/);
@@ -91,6 +93,10 @@ export class InterfaceParserHelper extends BaseParser {
                 let tmp = this.eatUntil(/[\*\n]/);
                 defaultValue = tmp;
                 this.eatSpacesAndNewlines();
+              } else if (this.eatWord(JSDOC_DEPRECATED)) {
+                let tmp = this.eatUntil(/[\*\n]/);
+                isDeprecated = true;
+                deprecatedMessage = tmp;
               } else {
                 bank.push(this.eat('@'));
               }
@@ -112,12 +118,18 @@ export class InterfaceParserHelper extends BaseParser {
             }
 
             this.eat(';'); // actually eat the semicolon
+
+            let isOptional = identifierName[identifierName.length - 1] === '?';
+            let propType = isDeprecated ? InterfacePropertyType.deprecated : (isOptional ? InterfacePropertyType.optional : InterfacePropertyType.required);
+
             this._state = ParseState.default;
             returnResult.push(<IInterfaceProperty>{
               description: comment,
               name: identifierName,
-              type: type,
-              defaultValue: defaultValue
+              type,
+              defaultValue: defaultValue,
+              interfacePropertyType: propType,
+              deprecatedMessage
             });
 
             comment = identifierName = type = defaultValue = '';
