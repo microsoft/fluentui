@@ -184,14 +184,17 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, any> {
   }
 
   private _onDoubleClick(ev: MouseEvent) {
-    if (!this._isEnabled) {
+    let target = ev.target as HTMLElement;
+    let isToggleElement = this._isToggleElement(target, SELECTION_TOGGLE_ATTRIBUTE_NAME) || ev.ctrlKey || ev.metaKey;
+
+    if (!this._isEnabled || isToggleElement) {
       return;
     }
 
     let { onItemInvoked, selection } = this.props;
-    let index = this._getIndexFromElement(ev.target as HTMLElement, true);
+    let index = this._getIndexFromElement(target, true);
 
-    if (onItemInvoked) {
+    if (onItemInvoked && index >= 0) {
       onItemInvoked(selection.getItems()[index], index, ev);
     }
   }

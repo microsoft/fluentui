@@ -5,7 +5,7 @@ import { BaseComponent } from '../../common/BaseComponent';
 
 /**
  * This adds accessibility to Dialog and Panel controls
- **/
+ */
 export class Popup extends BaseComponent<IPopupProps, {}> {
 
   public static defaultProps: IPopupProps = {
