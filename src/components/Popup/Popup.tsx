@@ -45,12 +45,13 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
 
     return (
       <div
-        { ...this.props as any }
         ref='root'
         className={ className }
         role={ role }
         aria-labelledby={ ariaLabelledBy }
-        aria-desribedby={ ariaDescribedBy } />
+        aria-desribedby={ ariaDescribedBy }>
+        {this.props.children }
+      </div >
     );
   }
 

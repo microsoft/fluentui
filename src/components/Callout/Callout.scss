@@ -366,6 +366,7 @@
 // Disabled default box shadow.
 .ms-Callout-main {
   box-shadow: none;
+  @include focus-border();
 }
 
 .ms-Callout-beak {

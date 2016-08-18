@@ -5,6 +5,9 @@ import { Layer } from '../../Layer';
 import { css } from '../../utilities/css';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { getRelativePositions, IPositionInfo } from '../../utilities/positioning';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { Popup } from '../../Popup';
+import { KeyCodes } from '../../utilities/KeyCodes';
 import './Callout.scss';
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
@@ -29,7 +32,7 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
   private _hostElement: HTMLDivElement;
   private _calloutElement: HTMLDivElement;
   private _events: EventGroup;
-
+  private _focusZone: FocusZone;
   constructor(props: ICalloutProps) {
     super(props);
 
@@ -42,6 +45,7 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     this._events = new EventGroup(this);
 
     this._onLayerDidMount = this._onLayerDidMount.bind(this);
+
   }
 
   public componentDidUpdate() {
@@ -64,14 +68,22 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     let content = (
       <div ref={ (host: HTMLDivElement) => this._hostElement = host } className={ 'ms-Callout-container' }>
         <div
-          className={ css('ms-Callout', className, slideDirectionalClassName ? `ms-u-${ slideDirectionalClassName }` : '') }
+          className={ css('ms-Callout', className, slideDirectionalClassName ? `ms-u-${slideDirectionalClassName}` : '') }
           style={ ((positions) ? positions.callout : OFF_SCREEN_POSITION) }
           ref={ (callout: HTMLDivElement) => this._calloutElement = callout }
           >
           { isBeakVisible && targetElement ? (<div className={ beakStyle }  style={ ((positions) ? positions.beak : BEAK_ORIGIN_POSITION) } />) : (null) }
-          <div className='ms-Callout-main'>
-            { children }
-          </div>
+          <Popup shouldRestoreFocus={true} onDismiss={this.props.onDismiss}>
+            <FocusZone
+              direction={ FocusZoneDirection.vertical }
+              ref={ (focusZone) => this._focusZone = focusZone }
+              isInnerZoneKeystroke={ (ev) => (ev.which === KeyCodes.tab) }
+              >
+              <div className='ms-Callout-main' data-is-focusable = {true}>
+                { children }
+              </div>
+            </FocusZone>
+          </Popup>
         </div>
       </div>
     );
@@ -109,7 +121,7 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     this._events.on(window, 'resize', this.dismiss, true);
     this._events.on(window, 'focus', this._dismissOnLostFocus, true);
     this._events.on(window, 'click', this._dismissOnLostFocus, true);
-
+    this._tryFocus(this._focusZone);
     if (this.props.onLayerMounted) {
       this.props.onLayerMounted();
     }
@@ -137,6 +149,12 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
           slideDirectionalClassName: positionInfo.directionalClassName
         });
       }
+    }
+  }
+
+  private _tryFocus(focusZone?: FocusZone) {
+    if (focusZone) {
+      console.log(focusZone.focus());
     }
   }
 }
