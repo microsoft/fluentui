@@ -1,9 +1,9 @@
 import * as React from 'react';
-import './Button.scss';
 import { css } from '../../utilities/css';
 import { assign } from '../../utilities/object';
 import { IButtonProps, ButtonType } from './Button.Props';
 import { getId } from '../../utilities/object';
+import './Button.scss';
 
 export interface IButtonState {
   labelId?: string;
@@ -21,9 +21,9 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
     super(props);
 
     this.state = {
-      labelId: getId('Button-'),
-      descriptionId: getId('Button-'),
-      ariaDescriptionId: getId('Button-'),
+      labelId: getId('Button'),
+      descriptionId: getId('Button'),
+      ariaDescriptionId: getId('Button')
     };
   }
 

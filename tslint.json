@@ -1,4 +1,5 @@
 {
+  "extends": [ "./node_modules/gulp-core-build-typescript/lib/defaultTslint.json" ],
   "rules": {
     "max-line-length": [false, 140],
     "no-any": false,
