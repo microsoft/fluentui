@@ -64,7 +64,7 @@
   margin: auto;
   width: 288px;
   position: relative;
-  text-align: left;
+  @include text-align(left);
   outline: 3px solid transparent;
 }
 
@@ -78,7 +78,7 @@
   background: none;
   cursor: pointer;
   top: 12px;
-  right: 12px;
+  @include right(12px);
   padding: 8px;
   z-index: $ms-zIndex-front;
 
@@ -138,7 +138,7 @@
 }
 
 .ms-Dialog-actionsRight {
-  text-align: right;
+  @include text-align(right);
   font-size: 0;
 
   // Reset spacing for first button
@@ -148,7 +148,8 @@
 
   // Spacing between bottom buttons
   .ms-Dialog-action + .ms-Dialog-action {
-    margin: 0 0 0 16px;
+    margin: 0;
+    @include margin-right(16px);
   }
 }
 
@@ -158,7 +159,7 @@
 .ms-Dialog.ms-Dialog--close:not(.ms-Dialog--lgHeader) {
   // Push the right side over so the icon doesn't overlap the text
   .ms-Dialog-title {
-    margin-right: 20px;
+    @include margin-right(20px);
   }
 
   // Show the close button
