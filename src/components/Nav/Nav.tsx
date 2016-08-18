@@ -62,6 +62,8 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
   private _renderLink(link: INavLink, linkIndex: number, nestingLevel: number, hasGroupButton: boolean): React.ReactElement<{}> {
     let { onLinkClick } = this.props;
 
+    // Determine the appropriate padding to add before this link.
+    // In RTL, the "before" padding will go on the right instead of the left.
     const isRtl: boolean = getRTL();
     const paddingBefore: string = (_indentationSize * nestingLevel + (hasGroupButton ? 40 : 20)).toString(10) + 'px';
 
