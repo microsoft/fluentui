@@ -43,7 +43,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
 
     this._onDismiss = this._onDismiss.bind(this);
     this._onShowMenuClicked = this._onShowMenuClicked.bind(this);
-    this._onShowBeakChanged = this._onShowBeakChanged.bind(this);
+    this._onShowBeakChange = this._onShowBeakChange.bind(this);
     this._onDirectionalChanged = this._onDirectionalChanged.bind(this);
     this._onChangeGapSizeClicked = this._onChangeGapSizeClicked.bind(this);
 
@@ -60,7 +60,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
     return (
       <div className='ms-CalloutExample'>
         <div className='ms-CalloutExample-configArea'>
-          <Checkbox text='Show beak' isChecked={ isBeakVisible } onChanged={ this._onShowBeakChanged } />
+          <Checkbox label='Show beak' checked={ isBeakVisible } onChange={ this._onShowBeakChange } />
           <TextField ref={ (gapSize) => this._gapSize = gapSize } label='Gap Space' placeholder='Type in the gap space' />
           <Button onClick={ this._onChangeGapSizeClicked }>Submit</Button>
           <Dropdown
@@ -109,7 +109,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
     });
   }
 
-  private _onShowBeakChanged(isVisible: boolean) {
+  private _onShowBeakChange(ev: React.FormEvent, isVisible: boolean) {
     this.setState({
       isBeakVisible: isVisible
     });
