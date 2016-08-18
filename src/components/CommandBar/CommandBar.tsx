@@ -112,6 +112,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
                 role='menuitem'
                 aria-label={ this.props.elipisisAriaLabel || '' }
                 aria-haspopup={ true }
+                type='button'
               >
                 <i className='ms-CommandBarItem-overflow ms-Icon ms-Icon--More' />
               </button>
@@ -155,6 +156,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
                          aria-haspopup={ !!(item.items && item.items.length) }
                          role='menuitem'
                          aria-label={ item.ariaLabel || item.name }
+                         type='button'
                        >
                          { (!!item.icon) && <span className={ `ms-CommandBarItem-icon ms-Icon ms-Icon--${ item.icon }` }></span> }
                          { (!!item.name) && <span className='ms-CommandBarItem-commandText'>{ item.name }</span> }
