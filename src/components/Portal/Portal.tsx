@@ -1,27 +1,7 @@
 
 import * as React from 'react';
-
-export enum PortalStatus {
-  initialized,
-  opened,
-  closed
-}
-
-export interface IPortalId<TOptions> {
-  _PortalId_Brand: boolean;
-  id: string;
-}
-
-export interface IPortal<TOptions> {
-  id: IPortalId<TOptions>;
-  children: React.ReactNode;
-  options: TOptions;
-  status: PortalStatus;
-}
-
-export interface IPortalNexus<TOptions> {
-  update(portal: IPortal<TOptions>): void;
-}
+import { IPortalId, IPortal, PortalStatus } from '../../utilities/portal/IPortal';
+import { IPortalNexus } from '../../utilities/portal/PortalNexus';
 
 export interface IPortalProps<TOptions> extends React.Props<Portal<TOptions>> {
   options: TOptions;
