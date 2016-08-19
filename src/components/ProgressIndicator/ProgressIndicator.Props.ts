@@ -1,8 +1,14 @@
 export interface IProgressIndicatorProps {
+
   /**
-   * Title of the operation.
+   * Class name to apply to the root in addition to ms-ProgressIndicator.
    */
-  title?: string;
+  className?: string;
+
+  /**
+   * Label to display above the control.
+   */
+  label?: string;
 
   /**
    * Text describing or supplementing the operation.
@@ -13,4 +19,10 @@ export interface IProgressIndicatorProps {
    * Percentage of the operation's completeness.
    */
   percentComplete?: number;
+
+  /**
+   * Deprecated at v0.43.0, to be removed at >= v0.53.0. Use 'label' instead.
+   * @deprecated
+   */
+  title?: string;
 }
