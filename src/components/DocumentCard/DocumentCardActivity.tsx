@@ -40,7 +40,7 @@ export class DocumentCardActivity extends React.Component<IDocumentCardActivityP
               </div>
           ) }
           { person.profileImageSrc && (
-            <Image src={ person.profileImageSrc } role='presentation'/>
+            <Image src={ person.profileImageSrc } role='presentation' alt=''/>
           ) }
         </div>
       );
