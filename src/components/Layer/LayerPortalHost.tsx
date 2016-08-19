@@ -32,14 +32,14 @@ export class LayerPortalHost extends React.Component<ILayerPortalHostProps, ILay
       } = portal;
 
       return (
-        <div className="ms-LayerHost-layer" key={ id }>
+        <div className='ms-LayerHost-layer' key={ id }>
           { children }
         </div>
       );
     });
 
     return (
-      <div className="ms-LayerHost">
+      <div className='ms-LayerHost'>
         { layerElements }
       </div>
     );

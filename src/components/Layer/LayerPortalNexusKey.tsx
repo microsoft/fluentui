@@ -1,8 +1,9 @@
 
+/* tslint:disable:no-unused-variable */
 import * as React from 'react';
+/* tslint:enable:no-unused-variable */
 import * as ReactDOM from 'react-dom';
 
-import { IPortal } from '../../utilities/portal/IPortal';
 import { PortalNexusKey } from '../../utilities/portal/PortalNexusKey';
 import { PortalNexus, IOnPortalsChangeEventArgs, PORTALS_CHANGE_EVENT_NAME } from '../../utilities/portal/PortalNexus';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';

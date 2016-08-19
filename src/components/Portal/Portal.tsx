@@ -1,7 +1,6 @@
 
 import * as React from 'react';
 import { IPortalId, IPortal, PortalStatus } from '../../utilities/portal/IPortal';
-import { IPortalNexus } from '../../utilities/portal/PortalNexus';
 import { PortalNexusKey } from '../../utilities/portal/PortalNexusKey';
 
 export interface IPortalProps<TOptions> extends React.Props<Portal<TOptions>> {
