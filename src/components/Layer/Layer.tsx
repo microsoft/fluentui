@@ -1,74 +1,27 @@
+
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { ILayerProps } from './Layer.Props';
-import { LayerHost, ILayer } from './LayerHost';
-import { getId } from '../../utilities/object';
+import { Portal, IPortalProps } from '../portal/Portal';
+import { layerPortalNexusKey } from './LayerPortalNexusKey';
 import './Layer.scss';
 
-const LAYER_HOST_ELEMENT_ID = 'ms-layer-host';
-
-let _layerHost: LayerHost;
+const LayerPortal: (new (props: IPortalProps<void>, ...args: any[]) => React.Component<IPortalProps<void>, any>) = Portal;
 
 export class Layer extends React.Component<ILayerProps, {}> {
-  public static contextTypes = {
-    isInLayer: React.PropTypes.bool
-  };
-
-  public context: {
-    isInLayer: boolean;
-  };
-
-  private _layer: ILayer;
-
-  constructor(props?: ILayerProps) {
-    super(props);
-
-    this._layer = {
-      id: getId('Layer'),
-      children: props.children
-    };
-  }
-
   public render(): JSX.Element {
-    let { isInLayer } = this.context;
+    let {
+      children
+    } = this.props;
 
-    return isInLayer ? this.props.children as JSX.Element : null;
-  }
+    let options: void;
 
-  public componentWillMount() {
-    if (!_layerHost) {
-      let hostElement = document.createElement('div');
-      hostElement.setAttribute('id', LAYER_HOST_ELEMENT_ID);
-      document.body.appendChild(hostElement);
-
-      let layerHost: LayerHost = ReactDOM.render((
-        <LayerHost />
-      ), hostElement) as LayerHost;
-
-      _layerHost = layerHost;
-    }
-  }
-
-  public componentDidMount() {
-    if (!this.context.isInLayer) {
-      _layerHost.addLayer(this._layer, this.props.onLayerMounted);
-    } else {
-      if (this.props.onLayerMounted) {
-        this.props.onLayerMounted();
-      }
-    }
-  }
-
-  public componentWillReceiveProps(props: ILayerProps) {
-    if (!this.context.isInLayer) {
-      this._layer.children = props.children;
-      _layerHost.updateLayer(this._layer);
-    }
-  }
-
-  public componentWillUnmount() {
-    if (!this.context.isInLayer) {
-      _layerHost.removeLayer(this._layer);
-    }
+    return (
+      <LayerPortal
+        options={ options }
+        nexusKey={ layerPortalNexusKey }>
+        { children }
+      </LayerPortal>
+    );
   }
 }

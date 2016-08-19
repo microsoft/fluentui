@@ -30,5 +30,6 @@ function onPortalsChange({
 eventGroup.on(layerPortalNexus, PORTALS_CHANGE_EVENT_NAME, onPortalsChange);
 
 export const layerPortalNexusKey: PortalNexusKey<void> = new PortalNexusKey<void>({
-  name: 'layer'
+  name: 'layer',
+  nexus: layerPortalNexus
 });

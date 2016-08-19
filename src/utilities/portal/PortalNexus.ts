@@ -29,9 +29,9 @@ export class PortalNexus<TOptions> implements IPortalNexus<TOptions>, IDisposabl
 
     this._eventGroup.declare(PORTALS_CHANGE_EVENT_NAME);
 
-    this._setState({
+    this._state = {
       portals: []
-    });
+    };
   }
 
   public dispose() {
@@ -41,7 +41,7 @@ export class PortalNexus<TOptions> implements IPortalNexus<TOptions>, IDisposabl
   public update(portal: IPortal<TOptions>): void {
     let {
       id: {
-        id
+        id: portalId
       },
       children,
       options,
@@ -53,10 +53,18 @@ export class PortalNexus<TOptions> implements IPortalNexus<TOptions>, IDisposabl
         portals: previousPortals
       } = previousState;
 
-      let portals: IPortal<TOptions>[];
+      let portals: IPortal<TOptions>[] = [];
+
+      let isNewPortal = true;
 
       for (let previousPortal of previousPortals) {
-        if (previousPortal.id.id === id) {
+        let {
+          id: {
+            id: previousPortalId
+          }
+        } = previousPortal;
+
+        if (previousPortalId === portalId) {
           if (status !== PortalStatus.closed) {
             // Update the portal with new data.
             portals.push(this._updatePortal(previousPortal, {
@@ -66,10 +74,16 @@ export class PortalNexus<TOptions> implements IPortalNexus<TOptions>, IDisposabl
             }));
           }
 
+          isNewPortal = false;
+
           // If a portal has been closed, it should not be in the updated state.
         } else {
           portals.push(previousPortal);
         }
+      }
+
+      if (isNewPortal) {
+        portals.push(this._updatePortal(portal));
       }
 
       return {
@@ -114,16 +128,10 @@ export class PortalNexus<TOptions> implements IPortalNexus<TOptions>, IDisposabl
     };
   }
 
-  private _setState(state: IPortalNexusState<TOptions>): void;
-  private _setState(getState: (previousState: IPortalNexusState<TOptions>) => IPortalNexusState<TOptions>, callback?: (state: IPortalNexusState<TOptions>) => void): void;
-  private _setState(getState: IPortalNexusState<TOptions> | ((previousState: IPortalNexusState<TOptions>) => IPortalNexusState<TOptions>), callback?: (state: IPortalNexusState<TOptions>) => void) {
-    let newState: IPortalNexusState<TOptions>;
+  private _setState(getState: (previousState: IPortalNexusState<TOptions>) => IPortalNexusState<TOptions>, callback?: (state: IPortalNexusState<TOptions>) => void): void {
+    let previousState = this._state;
 
-    if (isStateSetter(getState)) {
-      let previousState = this._state;
-
-      newState = getState(previousState);
-    }
+    let newState = getState(previousState);
 
     this._state = newState;
 
@@ -131,8 +139,4 @@ export class PortalNexus<TOptions> implements IPortalNexus<TOptions>, IDisposabl
       callback(this._state);
     }
   }
-}
-
-function isStateSetter<TOptions>(getState: IPortalNexusState<TOptions> | ((previousState: IPortalNexusState<TOptions>) => IPortalNexusState<TOptions>)): getState is ((previousState: IPortalNexusState<TOptions>) => IPortalNexusState<TOptions>) {
-  return typeof getState === 'function';
 }
