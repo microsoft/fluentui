@@ -2,7 +2,7 @@ export const items = [
   {
     key: 'newItem',
     name: 'New',
-    icon: 'CirclePlus',
+    icon: 'Add',
     ariaLabel: 'New. Use left and right arrow keys to navigate',
     onClick: () => { return; },
     items: [

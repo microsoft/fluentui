@@ -35,6 +35,7 @@
   margin-right: 8px;
   padding: 0 8px;
   text-align: center;
+  position: relative;
 
   &:hover {
     cursor: pointer;
@@ -70,7 +71,6 @@
   //== State: Selected
   &.is-selected {
     font-weight: $ms-font-weight-semibold;
-    position: relative;
 
     // Show the underline
     &::before {
@@ -173,6 +173,11 @@
       background-color: $ms-color-themePrimary;
       color: $ms-color-white;
       font-weight: $ms-font-weight-semilight;
+
+      &::before {
+        background-color: transparent;
+        transition: none;
+      }
     }
   }
 
