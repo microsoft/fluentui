@@ -53,6 +53,24 @@ export const items = [
     name: 'Rename...',
     icon: 'editBox',
     onClick: () => { return; }
+  },
+  {
+    key: 'junk',
+    name: 'Junk',
+    icon: null,
+    ariaLabel: 'Junk',
+    items: [
+      {
+        key: 'option1',
+        name: 'Option1',
+        icon: 'mail'
+      },
+      {
+        key: 'option2',
+        name: 'Option2',
+        icon: 'calendar'
+      }
+    ]
   }
 ];
 

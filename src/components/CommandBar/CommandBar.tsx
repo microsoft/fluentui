@@ -50,6 +50,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     this._events = new EventGroup(this);
 
     this._onItemClick = this._onItemClick.bind(this);
+    this._onContextMenuOrItemClick = this._onContextMenuOrItemClick.bind(this);
     this._onOverflowClick = this._onOverflowClick.bind(this);
     this._onContextMenuDismiss = this._onContextMenuDismiss.bind(this);
   }
@@ -141,16 +142,33 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
 
   private _renderItemInCommandBar(item, index, expandedMenuItemKey, isFarItem?: boolean) {
     const itemKey = item.key || index;
-    const className = item.onClick ? 'ms-CommandBarItem-link' : 'ms-CommandBarItem-text';
+    const className = (item.onClick || item.items) ? 'ms-CommandBarItem-link' : 'ms-CommandBarItem-text';
     const classNameValue = css(className, { 'is-expanded': (expandedMenuItemKey === item.key) });
 
     return <div className={ css('ms-CommandBarItem', item.className) } key={ itemKey } ref={ itemKey }>
              {(() => {
-               if (item.onClick || item.items) {
+               if (item.onClick && item.items) {
                  return <button
                          id={ this._id + item.key }
                          className={ classNameValue }
-                         onClick={ this._onItemClick.bind(this, item) }
+                         data-command-key={ index }
+                         aria-haspopup={ !!(item.items && item.items.length) }
+                         role='menuitem'
+                         aria-label={ item.ariaLabel || item.name }
+                       >
+                         <span onClick={ this._onItemClick.bind(this, item) }>
+                         { (!!item.icon) && <span className={ `ms-CommandBarItem-icon ms-Icon ms-Icon--${ item.icon }` }></span> }
+                         { (!!item.name) && <span className='ms-CommandBarItem-commandText'>{ item.name }</span> } |
+                         </span>
+                         { (item.items && item.items.length) ? (
+                           <i onClick={ this._onContextMenuOrItemClick.bind(this, item) } className='ms-CommandBarItem-chevronDown ms-Icon ms-Icon--chevronDown' />
+                         ) : ( null ) }
+                       </button>;
+               } else if (item.onClick || item.items) {
+                 return <button
+                         id={ this._id + item.key }
+                         className={ classNameValue }
+                         onClick={ this._onContextMenuOrItemClick.bind(this, item) }
                          data-command-key={ index }
                          aria-haspopup={ !!(item.items && item.items.length) }
                          role='menuitem'
@@ -252,7 +270,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     });
   }
 
-  private _onItemClick(item, ev) {
+  private _onContextMenuOrItemClick(item, ev) {
     if (item.key === this.state.expandedMenuItemKey || !item.items || !item.items.length) {
       this._onContextMenuDismiss();
     } else {
@@ -263,6 +281,10 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
         contextualMenuTarget: ev.currentTarget
       });
     }
+    this._onItemClick(item, ev);
+  }
+
+   private _onItemClick(item, ev) {
     if (item.onClick) {
       item.onClick(item, ev);
     }
