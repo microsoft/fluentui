@@ -109,7 +109,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
             }
             >
             <Overlay
-              isDarkThemed={ true }
+              isDarkThemed={ false }
               onClick={ isLightDismiss ? this._onPanelClick : null }
               />
             <div className='ms-Panel-main'>
