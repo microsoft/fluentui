@@ -3,6 +3,7 @@ import {
   IGroupHeaderProps,
   IGroup
 } from './index';
+import { SelectionMode } from '../../utilities/selection/index';
 import { Check } from '../Check/Check';
 import { GroupSpacer } from './GroupSpacer';
 import { Spinner } from '../../Spinner';
@@ -17,7 +18,7 @@ export interface IGroupHeader {
   groupLevel: number;
   headerProps?: IGroupHeaderProps;
   viewport?: IViewport;
-  canSelectGroup?: boolean;
+  selectionMode?: SelectionMode;
 }
 
 export interface IGroupHeaderState {
@@ -58,7 +59,7 @@ export class GroupHeader extends React.Component<IGroupHeader, IGroupHeaderState
       groupLevel,
       headerProps,
       viewport,
-      canSelectGroup
+      selectionMode
     } = this.props;
     let { isCollapsed, isLoadingVisible } = this.state;
     let loadingText = headerProps && headerProps.loadingText;
@@ -66,6 +67,7 @@ export class GroupHeader extends React.Component<IGroupHeader, IGroupHeaderState
     if (isCollapsedGroupSelectVisible === undefined) {
       isCollapsedGroupSelectVisible = true;
     }
+    let canSelectGroup = selectionMode === SelectionMode.multiple;
     let isSelectionCheckVisible = canSelectGroup && (isCollapsedGroupSelectVisible || !(group && group.isCollapsed));
     let isSelected = group && group.isSelected && isSelectionCheckVisible;
 
@@ -87,11 +89,12 @@ export class GroupHeader extends React.Component<IGroupHeader, IGroupHeaderState
               onClick={ this._onToggleSelectGroup } >
               <Check isChecked={ isSelected } />
             </button>
-            ) : ( GroupSpacer({ count: 1 }) )
+            ) : (selectionMode !== SelectionMode.none ? GroupSpacer({ count: 1 }) : null )
           }
 
           { GroupSpacer({ count: groupLevel }) }
 
+          <div className='ms-GroupHeader-dropIcon'><i className='ms-Icon ms-Icon--Tag'></i></div>
           <button className='ms-GroupHeader-expand' onClick={ this._onToggleCollapse }>
             <i className={ css('ms-Icon ms-Icon--ChevronDown', {
               'is-collapsed': isCollapsed

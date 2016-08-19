@@ -101,7 +101,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
 
     this.dismiss = this.dismiss.bind(this);
     this._onKeyDown = this._onKeyDown.bind(this);
-    this._onMouseDownCapture = this._onMouseDownCapture.bind(this);
     this._onItemClick = this._onItemClick.bind(this);
     this._onSubMenuDismiss = this._onSubMenuDismiss.bind(this);
     this._onMouseEnter = this._onMouseEnter.bind(this);
@@ -124,8 +123,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount() {
     this._events.on(window, 'resize', this.dismiss);
-    this._events.on(window, 'mousedown', this._onMouseDownCapture, true);
-    this._events.on(window, 'touchstart', this._onMouseDownCapture, true);
   }
 
   // Invoked when a component is receiving new props.
@@ -204,6 +201,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
                   ) : (
                       <li
                         role='menuitem'
+                        title={ item.title }
                         key={ item.key || index }
                         className={ css('ms-ContextualMenu-item', item.className ) }>
                           { this._renderMenuItem(item, index, hasCheckmarks, hasIcons) }
@@ -302,12 +300,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     this._async.clearTimeout(this._enterTimerId);
   }
 
-  private _onMouseDownCapture(ev: React.MouseEvent) {
-    if (!this._host.contains(ev.target as HTMLElement)) {
-      this.dismiss(ev);
-    }
-  }
-
   private _onItemMouseDown(item: IContextualMenuItem, ev: React.MouseEvent) {
     if (item.onMouseDown) {
       item.onMouseDown(item, ev);
@@ -359,7 +351,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
           id: this.state.subMenuId,
           shouldFocusOnMount: true,
           directionalHint: getRTL() ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
-          className: item.className
+          className: this.props.className
         }
       });
     }

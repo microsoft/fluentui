@@ -3,6 +3,7 @@ export const itemsNonFocusable = [
     key: 'newItem',
     name: 'New',
     icon: 'CirclePlus',
+    ariaLabel: 'New. Use left and right arrow keys to navigate',
     onClick: () => { return; },
     items: [
       {

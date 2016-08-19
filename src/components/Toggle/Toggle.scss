@@ -7,6 +7,16 @@
 // --------------------------------------------------
 // Toggle styles
 
+@mixin highContrast-bgColor($active-color, $bw-color) {
+  @media screen and (-ms-high-contrast: active) {
+    background-color: $active-color;
+  }
+
+  @media screen and (-ms-high-contrast: black-on-white) {
+    background-color: $bw-color;
+  }
+}
+
 // Toggle
 .ms-Toggle {
   @include ms-baseFont;
@@ -29,6 +39,10 @@
       border: 1px solid $ms-color-neutralSecondaryAlt;
     }
 
+    .ms-Toggle-thumb {
+      @include highContrast-bgColor($ms-color-white, $ms-color-black);
+    }
+
     .ms-Toggle-slider:hover {
       .ms-Toggle-background {
         border: 1px solid $ms-color-black;
@@ -43,11 +57,13 @@
       .ms-Toggle-background {
         background: $ms-color-themePrimary;
         border: 1px solid $ms-color-themePrimary;
+        @include highContrast-bgColor($ms-color-white, $ms-color-black);
       }
 
       .ms-Toggle-thumb {
         background: $ms-color-white;
         @include left(28px);
+        @include highContrast-bgColor($ms-color-black, $ms-color-white);
       }
 
       .ms-Toggle-slider:hover {
@@ -67,21 +83,32 @@
   &.is-disabled {
     .ms-Toggle-thumb {
       background: $ms-color-neutralTertiaryAlt;
+      @include highContrast-bgColor($ms-color-contrastBlackDisabled, $ms-color-contrastWhiteDisabled);
     }
 
     .ms-Toggle-background {
       border: 1px solid $ms-color-neutralTertiaryAlt;
+
+      @media screen and (-ms-high-contrast: active) {
+        border-color: $ms-color-contrastBlackDisabled;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        border-color: $ms-color-contrastWhiteDisabled;
+      }
     }
 
     &.is-checked {
       .ms-Toggle-background {
         background: $ms-color-neutralTertiaryAlt;
         border: 1px solid transparent;
+        @include highContrast-bgColor($ms-color-contrastBlackDisabled, $ms-color-contrastWhiteDisabled);
       }
 
       .ms-Toggle-thumb {
         background: $ms-color-neutralLight;
         @include left(28px);
+        @include highContrast-bgColor($ms-color-black, $ms-color-white);
       }
     }
   }
