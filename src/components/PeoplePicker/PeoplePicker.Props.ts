@@ -91,8 +91,17 @@ export interface IPeoplePickerProps extends React.Props<PeoplePicker> {
    */
   onItemRemoved?: (item: IPersonaProps) => void;
 
+  /**
+   * Allows parent components to specify how the peoplepicker search items should render.
+   * The selected items can appear in the search box (standard) or below the search box
+   * if the PeoplePickerType is members.
+   */
   renderSelectedItem?: (result: IPeoplePickerItemProps) => JSX.Element;
 
+  /**
+   * Allows parent components to specify how the peoplepicker search items should render.
+   * The search items will only appear in the search dropdown list.
+   */
   renderSearchItem?: (result: IPeoplePickerItemProps) => JSX.Element;
 }
 

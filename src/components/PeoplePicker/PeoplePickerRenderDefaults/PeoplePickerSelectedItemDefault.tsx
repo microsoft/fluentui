@@ -10,6 +10,11 @@ import {
   PersonaPresence
 } from '../../Persona';
 
+/**
+ * A dumb component that renders items for the PeoplePicker results.
+ * Can appear either in the search box itself or beneath it
+ * if the PeoplePicker type is memberList
+ */
 export const PeoplePickerSelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element = (peoplePickerItemProps: IPeoplePickerItemProps) => {
   let { persona,
     onRemovePersona,

@@ -11,6 +11,9 @@ import {
 } from '../../Persona';
 import { css } from '../../../utilities/css';
 
+/**
+ * A dumb component that renders items for the PeoplePicker search dropdown.
+ */
 export const PeoplePickerSearchItemDefault: (props: IPeoplePickerItemProps) => JSX.Element = (peoplePickerItemProps: IPeoplePickerItemProps) => {
   let { persona,
     onRemovePersona,

@@ -51,7 +51,16 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
   private _suggestionsCount: number = 0;
   private _highlightedSearchResult: Object;
   private _focusedPersonaIndex: number = INVALID_INDEX;
+  /**
+   * The way that a search item will be rendered in the search drop down.
+   * @Default PeoplePickerSearchItemDefault
+   */
   private _renderSearchItem: (result: IPeoplePickerItemProps) => JSX.Element;
+  /**
+   * The way that a selected item will be rendered in either the search
+   * box (default location) or membersList (if PeoplePickerType is memberList) .
+   * @Default PeoplePickerSearchItemDefault
+   */
   private _renderSelectedItem: (result: IPeoplePickerItemProps) => JSX.Element;
 
   constructor(props: IPeoplePickerProps) {
@@ -612,6 +621,14 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
     );
   }
 
+  /**
+   * Renders the dropdown list with the list of personas passed into this method.
+   * @param {IPersonaProps[]} personaList - Array of personas to be rendered in the search dropdown.
+   * @param {string} searchName - The text that will appear at the top of the search dropdown.
+   * @param {string} noResultsText - The text that will appear at the top of the search dropdown if there are no results.
+   * @param {itemProps: IPeoplePickerItemProps) => JSX.Element} itemTemplate -
+   * The template for how the search item's will be rendered.
+   */
   private _renderResultList(
     personaList: IPersonaProps[],
     searchName: string,
