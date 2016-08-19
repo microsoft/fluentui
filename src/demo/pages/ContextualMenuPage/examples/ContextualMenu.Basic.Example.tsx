@@ -26,7 +26,7 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
               [
                 {
                   key: 'newItem',
-                  icon: 'CirclePlus',
+                  icon: 'Add',
                   items: [
                     {
                       key: 'emailMessage',

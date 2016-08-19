@@ -88,7 +88,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
               {
                 key: 'newItem',
                 name: 'New',
-                icon: 'CirclePlus',
+                icon: 'Add',
                 items: [
                   {
                     key: 'emailMessage',
