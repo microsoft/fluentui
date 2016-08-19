@@ -154,21 +154,7 @@
 
   .ms-Button-icon {
     color: $ms-color-themePrimary;
-    display: inline-block;
-    font-size: $ms-font-size-s;
-    margin-right: 2px;
-    position: relative;
-    top: -7px;
-    text-align: center;
-
-    .ms-Icon {
-      border-radius: 18px;
-      border: 1px solid $ms-color-themePrimary;
-      font-size: $ms-font-size-s;
-      height: 18px;
-      line-height: 18px;
-      width: 18px;
-    }
+    font-size: $ms-icon-size-l;
   }
 
   .ms-Button-label {
