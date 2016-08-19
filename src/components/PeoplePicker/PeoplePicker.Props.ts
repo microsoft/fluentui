@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PeoplePicker } from './PeoplePicker';
 import { IPersonaProps } from '../Persona/Persona.Props';
-import { IPeoplePickerItemProps } from './IPeoplePickerItemProps';
+import { IPeoplePickerItemProps } from './PeoplePickerItemProps';
 
 export interface IPeoplePickerProps extends React.Props<PeoplePicker> {
   /**
