@@ -5,7 +5,7 @@ import { Layer } from '../../Layer';
 import { css } from '../../utilities/css';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { getRelativePositions, IPositionInfo } from '../../utilities/positioning';
-import { focusFirstFocusable } from '../../utilities/focus';
+import { focusFirstChild } from '../../utilities/focus';
 import { Popup } from '../Popup/index';
 import './Callout.scss';
 
@@ -116,7 +116,7 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     this._events.on(window, 'click', this._dismissOnLostFocus, true);
 
     if (this.props.setInitialFocus) {
-      focusFirstFocusable(this._calloutElement, this._calloutElement, true);
+      focusFirstChild(this._calloutElement);
     }
 
     if (this.props.onLayerMounted) {
