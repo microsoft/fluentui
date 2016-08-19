@@ -13,7 +13,7 @@ import {
   ButtonType
 } from '../../../../index';
 
-import './PeoplePicker.CustomResult.Example.scss'
+import './PeoplePicker.CustomResult.Example.scss';
 
 export interface IPeoplePickerExampleState {
   suggestions?: Array<IPersonaProps>;
@@ -148,10 +148,7 @@ export class PeoplePickerCustomResultExample extends React.Component<any, IPeopl
   private _renderResult(peoplePickerItemProps: IPeoplePickerItemProps): JSX.Element {
     let { persona,
       onRemovePersona,
-      onSelectPersona,
-      index,
-      peoplePickerType,
-      isSelected
+      index
     } = peoplePickerItemProps;
 
     return (
@@ -185,7 +182,7 @@ export class PeoplePickerCustomResultExample extends React.Component<any, IPeopl
   }
 
   private onContextualMenu(ev?: any) {
-    let targetElement: HTMLElement = ev.target as HTMLElement
+    let targetElement: HTMLElement = ev.target as HTMLElement;
     this.setState({ contextualMenuVisible: true, contextualMenuTarget: targetElement });
   }
 

@@ -2,10 +2,8 @@ import * as React from 'react';
 import { IPeoplePickerProps, PeoplePickerType } from './PeoplePicker.Props';
 import { IPeoplePickerItemProps } from './PeoplePickerItemProps';
 import {
-  Persona,
   PersonaSize,
-  IPersonaProps,
-  PersonaPresence
+  IPersonaProps
 } from '../../Persona';
 import {
   Spinner,
@@ -16,6 +14,8 @@ import { FocusZone } from '../../FocusZone';
 import { css } from '../../utilities/css';
 import { KeyCodes } from '../../utilities/KeyCodes';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
+import { PeoplePickerSelectedItemDefault } from './PeoplePickerRenderDefaults/PeoplePickerSelectedItemDefault';
+import { PeoplePickerSearchItemDefault } from './PeoplePickerRenderDefaults/PeoplePickerSearchItemDefault';
 import './PeoplePicker.scss';
 
 export interface IPeoplePickerState {
@@ -27,61 +27,6 @@ export interface IPeoplePickerState {
 }
 
 const INVALID_INDEX = -1;
-
-export const PeoplePickerSearchResultDefault: (props: IPeoplePickerItemProps) => JSX.Element = (peoplePickerItemProps: IPeoplePickerItemProps) => {
-  let { persona,
-    onRemovePersona,
-    onSelectPersona,
-    index,
-    peoplePickerType,
-    isSelected
-  } = peoplePickerItemProps;
-
-  let buttonClassName = css('ms-PeoplePicker-resultBtn', {
-    'ms-PeoplePicker-resultBtn--compact': peoplePickerType === PeoplePickerType.compact,
-    'ms-PeoplePicker-resultBtn--selected': isSelected
-  });
-  return (
-    <div role='button' className={ buttonClassName }>
-      <Persona
-        { ...persona }
-        presence={ persona.presence ? persona.presence : PersonaPresence.online }
-        onMouseDown={ () => { if (onSelectPersona) { onSelectPersona(persona); } } }
-        onClick={ () => { if (onSelectPersona) { onSelectPersona(persona); } } }
-        />
-      { peoplePickerType !== PeoplePickerType.memberList ?
-        <button
-          className='ms-PeoplePicker-resultAction'
-          tabIndex={-1}
-          onClick={ () => { if (onRemovePersona) { onRemovePersona(index, persona); } } } >
-          <i className='ms-Icon ms-Icon--x'/>
-        </button>
-        : null }
-    </div>
-  );
-}
-
-export const PeoplePickerResultDefault: (props: IPeoplePickerItemProps) => JSX.Element = (peoplePickerItemProps: IPeoplePickerItemProps) => {
-  let { persona,
-    onRemovePersona,
-    onSelectPersona,
-    index,
-    peoplePickerType,
-    isSelected
-  } = peoplePickerItemProps;
-  let buttonClassName = peoplePickerType === PeoplePickerType.memberList ? 'ms-PeoplePicker-resultAction' : 'ms-PeoplePicker-personaRemove'
-  return (
-    <div className='ms-PeoplePicker-personaContent'>
-      <Persona
-        { ...persona }
-        presence = { persona.presence ? persona.presence : PersonaPresence.online }
-        />
-      <button className={ buttonClassName } onClick={ () => { if (onRemovePersona) { onRemovePersona(index, persona); } } }>
-        <i className='ms-Icon ms-Icon--x'></i>
-      </button>
-    </div>
-  );
-}
 
 export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePickerState> {
   public static defaultProps: IPeoplePickerProps = {
@@ -123,8 +68,8 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
     this._onSelectedPersonaFocus = this._onSelectedPersonaFocus.bind(this);
     this._onSearchBoxKeyDown = this._onSearchBoxKeyDown.bind(this);
     const selectedPersonas: IPersonaProps[] = props.initialItems ? props.initialItems : [];
-    this._renderSearchItem = props.renderSearchItem ? props.renderSearchItem : PeoplePickerSearchResultDefault;
-    this._renderSelectedItem = props.renderSelectedItem ? props.renderSelectedItem : PeoplePickerResultDefault;
+    this._renderSearchItem = props.renderSearchItem ? props.renderSearchItem : PeoplePickerSearchItemDefault;
+    this._renderSelectedItem = props.renderSelectedItem ? props.renderSelectedItem : PeoplePickerSelectedItemDefault;
     this.state = {
       isActive: false,
       isSearching: false,
@@ -467,8 +412,8 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
     if (index !== highlightedSearchResultIndex) {
       // Set the selected option.
       this.setState({
-        highlightedSearchResultIndex: index
-      });
+        highlightedSearchResultIndex: index,
+      }, () => this._highlightedSearchResult = this.props.suggestions[index]);
     }
   }
 
@@ -630,8 +575,6 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
     } = this.props;
     let { isSearching } = this.state;
 
-    let resultItemId = 0;
-    let resultGroupId = 0;
     let searchMoreClassName = css('ms-PeoplePicker-searchMore', {
       'is-searching': isSearching,
       'ms-PeoplePicker-searchMore--disconnected': !isConnected
@@ -687,7 +630,7 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
               persona.size = this.props.type === PeoplePickerType.compact ? PersonaSize.extraSmall : PersonaSize.regular;
               let itemProps: IPeoplePickerItemProps = {
                 persona: persona,
-                onRemovePersona: this.props.onRemoveSuggestion,
+                onRemovePersona: this._removeSuggestedPersona,
                 onSelectPersona: this._addPersonaToSelectedList.bind(this),
                 isSelected: isSelected,
                 peoplePickerType: this.props.type,
@@ -695,7 +638,8 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
               };
               return (
                 <li key= { id++ }
-                  ref= { isSelected ? 'selectedSearchResult' : null } >
+                  ref= { isSelected ? 'selectedSearchResult' : null }
+                  className={ css('ms-PeoplePicker-result', '--selected') } >
                   {
                     this._renderSearchItem(itemProps)
                   }
