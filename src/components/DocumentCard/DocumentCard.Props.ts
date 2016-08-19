@@ -7,6 +7,7 @@ import { DocumentCardActivity } from './DocumentCardActivity';
 import { DocumentCardActions } from './DocumentCardActions';
 import { PersonaInitialsColor } from '../../Persona';
 import { ImageFit } from '../../Image';
+import { IButtonProps } from '../../Button';
 
 export interface IDocumentCardProps extends React.Props<DocumentCard> {
   /**
@@ -153,7 +154,7 @@ export interface IDocumentCardActionsProps extends React.Props<DocumentCardActio
   views?: Number;
 }
 
-export interface IDocumentCardAction {
+export interface IDocumentCardAction extends IButtonProps {
   /**
    * The icon for this action.
    */
