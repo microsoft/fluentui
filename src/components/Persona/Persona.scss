@@ -61,22 +61,34 @@ $ms-Persona-presenceSizeXl: 28px;
 
 
 .ms-Persona {
-  @include ms-font-m;
+  @include ms-baseFont;
   @include ms-u-normalize;
-  display: table;
+  color: $ms-color-neutralPrimary;
+  font-size: $ms-font-size-m;
+  font-weight: $ms-font-weight-regular;
   line-height: 1;
   position: relative;
+  height: $ms-Persona-sizeMd;
+  display: table;
+  table-layout: fixed;
+  border-collapse: separate;
+  
+  .ms-ContextualHost {
+    display: none;
+  }
 }
 
 .ms-Persona-imageArea {
-  position: relative;
-  display: block;
+  position: absolute;
   overflow: hidden;
   text-align: center;
-  width: 48px;
-  height: 48px;
+  max-width: $ms-Persona-sizeMd;
+  height: $ms-Persona-sizeMd;
   border-radius: 50%;
   z-index: $ms-zIndex-back;
+  width: 100%;
+  top: 0;
+  left: 0;
 
   @media screen and (-ms-high-contrast: active) {
     border: 1px solid $ms-color-white;
@@ -97,6 +109,7 @@ $ms-Persona-presenceSizeXl: 28px;
   left: 0;
   font-size: 47px;
   top: 9px;
+  z-index: $ms-zIndex-middle;
 }
 
 .ms-Persona-initials {
@@ -171,20 +184,45 @@ $ms-Persona-presenceSizeXl: 28px;
 .ms-Persona-presence {
   background-color: $ms-color-presence-available;
   position: absolute;
-  height: 12px;
-  width: 12px;
+  height: $ms-Persona-presenceSizeMd;
+  width: $ms-Persona-presenceSizeMd;
   border-radius: 50%;
   top: auto;
   left: 34px;
   bottom: -1px;
   border: 2px solid $ms-color-white;
+  text-align: center;
+
+  @media screen and (-ms-high-contrast: active) {
+    border-color: $ms-color-black;
+    box-shadow: 0 0 0 1px $ms-color-contrastBlackSelected inset;
+    color: $ms-color-black;
+    background-color: $ms-color-white;
+  }
+
+  @media screen and (-ms-high-contrast: black-on-white) {
+    border-color: $ms-color-white;
+    box-shadow: 0 0 0 1px $ms-color-contrastWhiteSelected inset;
+    color: $ms-color-white;
+    background-color: $ms-color-black;
+  }
+}
+
+.ms-Persona-presenceIcon {
+  color: $ms-color-white;
+  font-size: 8px;
+  line-height: $ms-Persona-presenceSizeMd;
+  vertical-align: top;
 }
 
 .ms-Persona-details {
-  display: table-cell;
   padding: 0 12px;
   vertical-align: middle;
   overflow: hidden;
+  text-align: left;
+  padding-left: $ms-Persona-sizeMd + $ms-Persona-imageDetailsLgSpace;
+  display: table-cell;
+  width: 100%;
 }
 
 .ms-Persona-primaryText,
@@ -194,7 +232,7 @@ $ms-Persona-presenceSizeXl: 28px;
   @include noWrap();
   overflow: hidden;
   text-overflow: ellipsis;
-  width: auto;
+  width: 100%;
 }
 
 .ms-Persona-primaryText {
@@ -258,7 +296,7 @@ $ms-Persona-presenceSizeXl: 28px;
 //== Modifier: Tiny Persona
 //
 .ms-Persona.ms-Persona--tiny {
-  height: 30px;
+  height: $ms-Persona-sizeTiny;
   display: inline-block;
 
   .ms-Persona-imageArea {
@@ -327,10 +365,12 @@ $ms-Persona-presenceSizeXl: 28px;
 //== Modifier: Extra Small Persona
 //
 .ms-Persona.ms-Persona--xs {
+  height: $ms-Persona-sizeXs;
+
   .ms-Persona-imageArea,
   .ms-Persona-image {
-    width: 32px;
-    height: 32px;
+    max-width: $ms-Persona-sizeXs;
+    height: $ms-Persona-sizeXs;
   }
 
   .ms-Persona-placeholder {
@@ -340,7 +380,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .ms-Persona-initials {
     font-size: $ms-font-size-s;
-    line-height: 32px;
+    line-height: $ms-Persona-sizeXs;
   }
 
   .ms-Persona-presence {
@@ -348,7 +388,7 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 
   .ms-Persona-details {
-    padding-left: 8px;
+    padding-left: $ms-Persona-sizeXs + $ms-Persona-imageDetailsSmSpace;
   }
 
   .ms-Persona-primaryText {
@@ -376,10 +416,12 @@ $ms-Persona-presenceSizeXl: 28px;
 //== Modifier: Small Persona
 //
 .ms-Persona.ms-Persona--sm {
+  height: $ms-Persona-sizeSm;
+
   .ms-Persona-imageArea,
   .ms-Persona-image {
-    width: 40px;
-    height: 40px;
+    max-width: $ms-Persona-sizeSm;
+    height: $ms-Persona-sizeSm;
   }
 
   .ms-Persona-placeholder {
@@ -389,7 +431,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .ms-Persona-initials {
     font-size: $ms-font-size-m;
-    line-height: 40px;
+    line-height: $ms-Persona-sizeSm;
   }
 
   .ms-Persona-presence {
@@ -397,7 +439,7 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 
   .ms-Persona-details {
-    padding-left: 8px;
+    padding-left: $ms-Persona-sizeSm + $ms-Persona-imageDetailsSmSpace;
   }
 
   .ms-Persona-primaryText {
@@ -425,10 +467,12 @@ $ms-Persona-presenceSizeXl: 28px;
 //== Modifier: Large Persona
 //
 .ms-Persona.ms-Persona--lg {
+  height: $ms-Persona-sizeLg;
+
   .ms-Persona-imageArea,
   .ms-Persona-image {
-    width: 72px;
-    height: 72px;
+    max-width: $ms-Persona-sizeLg;
+    height: $ms-Persona-sizeLg;
   }
 
   .ms-Persona-placeholder {
@@ -438,11 +482,23 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .ms-Persona-initials {
     font-size: $ms-font-size-xxl;
-    line-height: 72px;
+    line-height: $ms-Persona-sizeLg;
   }
 
   .ms-Persona-presence {
     left: 49px;
+    height: $ms-Persona-presenceSizeLg;
+    width: $ms-Persona-presenceSizeLg;
+    border-width: 3px;
+  }
+
+  .ms-Persona-presenceIcon {
+    line-height: $ms-Persona-presenceSizeLg;
+    font-size: $ms-font-size-m;
+  }
+
+  .ms-Persona-details {
+    padding-left: $ms-Persona-sizeLg + $ms-Persona-imageDetailsLgSpace;
   }
 
   .ms-Persona-secondaryText {
@@ -451,10 +507,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .ms-Persona-tertiaryText {
     padding-top: 5px;
-  }
-
-  .ms-Persona-tertiaryText {
-    display: block; // Show tertiary text
+    display: block; 
   }
 }
 
@@ -473,10 +526,12 @@ $ms-Persona-presenceSizeXl: 28px;
 //== Modifier: Extra Large Persona
 //
 .ms-Persona.ms-Persona--xl {
+  height: $ms-Persona-sizeXl;
+
   .ms-Persona-imageArea,
   .ms-Persona-image {
-    width: 100px;
-    height: 100px;
+    max-width: $ms-Persona-sizeXl;
+    height: $ms-Persona-sizeXl;
   }
 
   .ms-Persona-placeholder {
@@ -486,17 +541,25 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .ms-Persona-initials {
     font-size: $ms-font-size-su;
-    line-height: 100px;
+    line-height: $ms-Persona-sizeXl;
   }
 
   .ms-Persona-presence {
-    height: 20px;
-    width: 20px;
+    height: $ms-Persona-presenceSizeXl;
+    width: $ms-Persona-presenceSizeXl;
     left: 71px;
+    border-width: 4px;
+  }
+
+  .ms-Persona-presenceIcon {
+    line-height: $ms-Persona-presenceSizeXl;
+    font-size: $ms-font-size-xl;
+    position: relative;
+    top: 1px;
   }
 
   .ms-Persona-details {
-    padding-left: 20px;
+    padding-left: $ms-Persona-sizeXl + $ms-Persona-imageDetailsXlSpace;
   }
 
   .ms-Persona-primaryText {
@@ -577,6 +640,11 @@ $ms-Persona-presenceSizeXl: 28px;
   .ms-Persona-presence {
     background-color: $ms-color-presence-away;
   }
+
+  .ms-Persona-presenceIcon {
+    position: relative;
+    left: 1px;
+  }
 }
 
 
@@ -584,9 +652,45 @@ $ms-Persona-presenceSizeXl: 28px;
 //
 .ms-Persona.ms-Persona--blocked {
   .ms-Persona-presence {
-    background-color: $ms-color-presence-blocked-background;
-    // Use a gradient to include the stripe on modern browsers.
-    background-image: linear-gradient( to bottom, $ms-color-presence-blocked-background 0%, $ms-color-presence-blocked-background 48%, $ms-color-presence-blocked-line 40%, $ms-color-presence-blocked-line 58%, $ms-color-presence-blocked-background 52%, $ms-color-presence-blocked-background 100% );
+    background-color: $ms-color-white;
+
+    &::before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      box-shadow: 0 0 0 2px $ms-color-presence-busy-average inset;
+      border-radius: 50%;
+    }
+
+    &::after {
+      content: '';
+      width: 100%;
+      height: 2px;
+      background-color: $ms-color-presence-busy-average;
+      transform: rotate(-45deg);
+      position: absolute;
+      top: 5px;
+      left: 0;
+    }
+  }
+
+  &.ms-Persona--lg {
+    .ms-Persona-presence {
+      &::after {
+        top: 9px;
+      }
+    }
+  }
+
+  &.ms-Persona--xl {
+    .ms-Persona-presence {
+      &::after {
+        top: 13px;
+      }
+    }
   }
 }
 
@@ -596,8 +700,14 @@ $ms-Persona-presenceSizeXl: 28px;
 .ms-Persona.ms-Persona--busy {
   .ms-Persona-presence {
     background-color: $ms-color-presence-busy-average;
-    // Replace solid background with stripes on modern browsers.
-    background: repeating-linear-gradient( -45deg, $ms-color-presence-busy-stripe-light, $ms-color-presence-busy-stripe-light 1px, $ms-color-presence-busy-stripe-dark 0px, $ms-color-presence-busy-stripe-dark 2px );
+
+    @media screen and (-ms-high-contrast: active) {
+      background-color: $ms-color-contrastBlackSelected;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      background-color: $ms-color-contrastWhiteSelected;
+    }
   }
 }
 
@@ -618,8 +728,6 @@ $ms-Persona-presenceSizeXl: 28px;
 .ms-Persona.ms-Persona--dnd {
   .ms-Persona-presence {
     background-color: $ms-color-presence-dnd-background;
-    // Use a gradient to include the stripe on modern browsers.
-    background-image: linear-gradient( to bottom, $ms-color-presence-dnd-background 0%, $ms-color-presence-dnd-background 48%, $ms-color-presence-dnd-line 48%, $ms-color-presence-dnd-line 52%, $ms-color-presence-dnd-background 52%, $ms-color-presence-dnd-background 100% );
   }
 }
 
@@ -629,5 +737,95 @@ $ms-Persona-presenceSizeXl: 28px;
 .ms-Persona.ms-Persona--offline {
   .ms-Persona-presence {
     background-color: $ms-color-presence-offline;
+
+    @media screen and (-ms-high-contrast: active) {
+      background-color: $ms-color-black;
+      box-shadow: 0 0 0 1px $ms-color-white inset;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      background-color: $ms-color-white;
+      box-shadow: 0 0 0 1px $ms-color-black inset;
+    }
+  }
+}
+
+
+//== Modifier: FacePile
+//
+.ms-Persona.ms-Persona--facePile {
+  display: inline-block;
+  width: auto;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .ms-Persona-imageArea {
+    position: relative;
+    width: 100%;
+    min-width: $ms-Persona-sizeXs;
+  }
+
+  .ms-Persona-initials {
+    position: relative;
+  }
+
+  .ms-Persona-details {
+    display: none;
+  }
+
+  .ms-Persona-presence {
+    display: none;
+  }
+}
+
+//== Modifier: FacePile
+//
+.ms-Persona.ms-Persona--token {
+  display: inline-block;
+  width: auto;
+  background-color: $ms-color-neutralLighter;
+  border-radius: 20px;
+  margin: 4px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .ms-Persona-actionIcon {
+    border-radius: 20px;
+    display: inline-block;
+    width: $ms-Persona-sizeXs;
+    height: $ms-Persona-sizeXs;
+    padding: 0;
+    line-height: 30px;
+    transition: background-color $ms-duration1 $ms-ease1;
+    text-align: center;
+
+    &:hover {
+      background-color: $ms-color-neutralLight;
+    }
+  }
+
+  .ms-Persona-imageArea {
+    width: 100%;
+    min-width: $ms-Persona-sizeXs;
+  }
+
+  .ms-Persona-details {
+    height: 30px;
+    display: inline-block;
+    width: auto;
+    padding-right: 8px;
+  }
+
+  .ms-Persona-primaryText {
+    padding-top: 0;
+    line-height: 34px;
+  }
+
+  .ms-Persona-initials {
+    position: relative;
   }
 }
