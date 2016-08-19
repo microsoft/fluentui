@@ -560,11 +560,12 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
             let itemProps: IPeoplePickerItemProps = {
               persona: child,
               onRemovePersona: (index, persona) => this._removeSelectedPersona(index),
-              peoplePickerType: this.props.type
+              peoplePickerType: this.props.type,
+              index: id
             };
             return (
               <li className='ms-PeoplePicker-selectedPerson' key={id++}>
-              { this._renderSelectedItem(itemProps) }
+                { this._renderSelectedItem(itemProps) }
               </li>);
           })
           }
@@ -581,13 +582,14 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
     let id = 0;
     const { selectedPersonas } = this.state;
     return selectedPersonas.map((child) => {
-      let key = id++;
       child.size = PersonaSize.extraSmall;
       let itemProps: IPeoplePickerItemProps = {
         persona: child,
-        onRemovePersona:  (index, persona) => this._removeSelectedPersona(index),
-        peoplePickerType: this.props.type
+        onRemovePersona: (index, persona) => this._removeSelectedPersona(index),
+        peoplePickerType: this.props.type,
+        index: id
       };
+      let key = id++;
       return (
         <div className='ms-PeoplePicker-persona' ref={ 'persona' + key } key={key} data-selection-index={key} data-is-focusable={true} tabIndex={-1}>
           {this._renderSelectedItem(itemProps) }
@@ -628,7 +630,6 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
     } = this.props;
     let { isSearching } = this.state;
 
-    // Generate a result group section for each item in the array of suggestions
     let resultItemId = 0;
     let resultGroupId = 0;
     let searchMoreClassName = css('ms-PeoplePicker-searchMore', {
@@ -689,7 +690,8 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
                 onRemovePersona: this.props.onRemoveSuggestion,
                 onSelectPersona: this._addPersonaToSelectedList.bind(this),
                 isSelected: isSelected,
-                peoplePickerType: this.props.type
+                peoplePickerType: this.props.type,
+                index: id
               };
               return (
                 <li key= { id++ }

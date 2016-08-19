@@ -13,7 +13,7 @@ import {
   ButtonType
 } from '../../../../index';
 
-import './CustomResult.scss'
+import './PeoplePicker.CustomResult.Example.scss'
 
 export interface IPeoplePickerExampleState {
   suggestions?: Array<IPersonaProps>;
@@ -159,9 +159,19 @@ export class PeoplePickerCustomResultExample extends React.Component<any, IPeopl
         <Persona
           { ...persona }
           presence={ persona.presence ? persona.presence : PersonaPresence.online }
+          className='ms-result-item'
           />
-          <Button icon={'ellipsis'} buttonType={ButtonType.icon} onClick={this.onContextualMenu.bind(this)}/>
-          <Button icon={'x'} buttonType={ButtonType.icon} onClick={(ev: any) => onRemovePersona(index, persona)}/>
+        <Button
+          icon={'ellipsis'}
+          buttonType={ButtonType.icon} onClick={this.onContextualMenu.bind(this) }
+          className='ms-result-item'
+          />
+        <Button
+          icon={'x'}
+          buttonType={ButtonType.icon}
+          onClick={(ev: any) => onRemovePersona(index, persona) }
+          className='ms-result-item'
+          />
         { this.state.contextualMenuVisible ? (
           <ContextualMenu
             items={ this.contextualMenuItems }
