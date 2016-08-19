@@ -15,7 +15,7 @@ import { FocusZone } from '../../FocusZone';
 import { css } from '../../utilities/css';
 import { KeyCodes } from '../../utilities/KeyCodes';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
-import { elementContains } from '../../utilities/Dom/DomUtils'
+import { elementContains } from '../../utilities/DomUtils';
 import './PeoplePicker.scss';
 
 export interface IPeoplePickerState {
