@@ -1,5 +1,7 @@
 @import '../../common/common';
 
+$groupList-ease-in-out-sine: cubic-bezier(0.445, 0.050, 0.550, 0.950);
+
 .ms-GroupedList {
   position: relative;
   font-size: $ms-font-size-s;
@@ -31,6 +33,8 @@
 }
 
 .ms-GroupedList-group {
+  transition: background-color $ms-duration2 $groupList-ease-in-out-sine;
+
   &.is-dropping {
     background-color: $ms-color-neutralLight;
   }
