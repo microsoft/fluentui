@@ -14,6 +14,12 @@ export interface IPortalNexusState<TOptions> {
   portals: IPortal<TOptions>[];
 }
 
+export interface IOnPortalsChangeEventArgs<TOptions> {
+  portals: IPortal<TOptions>[];
+}
+
+export const PORTALS_CHANGE_EVENT_NAME = 'portalsChange';
+
 export class PortalNexus<TOptions> implements IPortalNexus<TOptions>, IDisposable {
   private _state: IPortalNexusState<TOptions>;
   private _eventGroup: EventGroup;
@@ -21,7 +27,7 @@ export class PortalNexus<TOptions> implements IPortalNexus<TOptions>, IDisposabl
   constructor() {
     this._eventGroup = new EventGroup(this);
 
-    this._eventGroup.declare('change');
+    this._eventGroup.declare(PORTALS_CHANGE_EVENT_NAME);
 
     this._setState({
       portals: []
@@ -70,7 +76,11 @@ export class PortalNexus<TOptions> implements IPortalNexus<TOptions>, IDisposabl
         portals: portals
       };
     }, (state: IPortalNexusState<TOptions>) => {
-      this._eventGroup.raise('change', state);
+      let onPortalsChangeEventArgs: IOnPortalsChangeEventArgs<TOptions> = {
+        portals: state.portals
+      };
+
+      this._eventGroup.raise(PORTALS_CHANGE_EVENT_NAME, onPortalsChangeEventArgs);
     });
   }
 
