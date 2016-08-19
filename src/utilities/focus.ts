@@ -20,6 +20,20 @@ export function getLastFocusable(
   return getPreviousElement(rootElement, currentElement, true, false, true, includeElementsInFocusZones);
 }
 
+// Attempts to focus the first focusable element. If it successfully focuses it will return true. Otherwise it will return false.
+export function focusFirstFocusable(
+  rootElement: HTMLElement,
+  currentElement: HTMLElement,
+  includeElementsInFocusZones?: boolean): boolean {
+  let element: HTMLElement = getNextElement(rootElement, currentElement, true, false, false, includeElementsInFocusZones);
+
+  if (element) {
+    element.focus();
+    return true;
+  }
+  return false;
+}
+
 /** Traverse to find the previous element. */
 export function getPreviousElement(
   rootElement: HTMLElement,
