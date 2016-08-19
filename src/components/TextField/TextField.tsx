@@ -3,6 +3,7 @@ import { ITextFieldProps } from './TextField.Props';
 import { Label } from '../../Label';
 import { css } from '../../utilities/css';
 import { Async } from '../../utilities/Async/Async';
+import { getId } from '../../utilities/object';
 import './TextField.scss';
 
 export interface ITextFieldState {
@@ -19,8 +20,6 @@ export interface ITextFieldState {
    */
   errorMessage?: string;
 }
-
-let _instance: number = 0;
 
 export class TextField extends React.Component<ITextFieldProps, ITextFieldState> {
   public static defaultProps: ITextFieldProps = {
@@ -48,8 +47,8 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
   public constructor(props: ITextFieldProps) {
     super(props);
 
-    this._id = `TextField-${ _instance++ }`;
-    this._descriptionId = `TextFieldDescription-${ _instance++ }`;
+    this._id = getId('TextField');
+    this._descriptionId = getId('TextFieldDescription');
     this._async = new Async(this);
 
     this.state = {

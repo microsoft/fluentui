@@ -156,7 +156,7 @@ export class Group extends React.Component<IGroupProps, IGroupState> {
             groupLevel={ group ? group.level : 0 }
             headerProps={ headerProps }
             viewport={ viewport }
-            canSelectGroup={ selectionMode === SelectionMode.multiple }
+            selectionMode={ selectionMode }
             ref={ 'header' }
           />
         }
