@@ -26,6 +26,7 @@ import {
 
 const SELECTION_INDEX_ATTRIBUTE_NAME = 'data-selection-index';
 const SELECTION_TOGGLE_ATTRIBUTE_NAME = 'data-selection-toggle';
+const SELECTION_INVOKE_ATTRIBUTE_NAME = 'data-selection-invoke';
 const SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME = 'data-selection-all-toggle';
 
 export interface ISelectionZoneProps extends React.Props<SelectionZone> {
@@ -154,7 +155,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, {}> {
   private _onClick(ev: React.MouseEvent) {
     let target = ev.target as HTMLElement;
     let { selection, selectionMode, onItemInvoked } = this.props;
-    let isToggleElement = this._isToggleElement(target, SELECTION_TOGGLE_ATTRIBUTE_NAME) || ev.ctrlKey || ev.metaKey;
+    let isToggleElement = this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME) || ev.ctrlKey || ev.metaKey;
     let index = this._getIndexFromElement(target, true);
 
     if (index >= 0 && selectionMode !== SelectionMode.none) {
@@ -163,7 +164,11 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, {}> {
       // Disable change events.
       selection.setChangeEvents(false);
 
-      if (ev.shiftKey && selectionMode === SelectionMode.multiple) {
+      let isInvokable = this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME);
+
+      if (isInvokable && onItemInvoked) {
+        onItemInvoked(selection.getItems()[index], index, ev.nativeEvent);
+      } else if (ev.shiftKey && selectionMode === SelectionMode.multiple) {
         if (!ev.ctrlKey && !ev.metaKey) {
           selection.setAllSelected(false);
         }
@@ -185,7 +190,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, {}> {
 
   private _onDoubleClick(ev: React.MouseEvent) {
     let target = ev.target as HTMLElement;
-    let isToggleElement = this._isToggleElement(target, SELECTION_TOGGLE_ATTRIBUTE_NAME) || ev.ctrlKey || ev.metaKey;
+    let isToggleElement = this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME) || ev.ctrlKey || ev.metaKey;
 
     if (isToggleElement) {
       return;
@@ -208,8 +213,8 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, {}> {
   private _onKeyDown(ev: KeyboardEvent) {
     let target = ev.target as HTMLElement;
     let { selection, selectionMode, onItemInvoked } = this.props;
-    let isToggleElement = this._isToggleElement(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);
-    let isToggleAllElement = !isToggleElement && this._isToggleElement(target, SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME);
+    let isToggleElement = this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);
+    let isToggleAllElement = !isToggleElement && this._hasAttribute(target, SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME);
     let index = this._getIndexFromElement(target, true);
 
     if (index >= 0 && !this._isInputElement(target) && selectionMode !== SelectionMode.none) {
@@ -263,7 +268,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, {}> {
     ev.stopPropagation();
   }
 
-  private _isToggleElement(element: HTMLElement, attributeName: string) {
+  private _hasAttribute(element: HTMLElement, attributeName: string) {
     let isToggle = false;
 
     while (!isToggle && element !== this.refs.root) {
