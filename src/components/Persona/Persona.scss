@@ -264,35 +264,6 @@ $ms-Persona-presenceSizeXl: 28px;
 }
 
 
-//== Modifier: Persona with square images
-//
-.ms-Persona.ms-Persona--square {
-  .ms-Persona-imageArea {
-    background-color: $ms-color-neutralTertiary;
-    border-radius: 0;
-  }
-
-  .ms-Persona-presence {
-    top: 0;
-    left: 0;
-    bottom: auto;
-    right: auto;
-    height: 48px;
-    width: 5px;
-    border-radius: 0;
-    border: 0;
-
-    @media screen and (-ms-high-contrast: active) {
-      border: 1px solid $ms-color-white;
-    }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-      border: 1px solid $ms-color-black;
-    }
-  }
-}
-
-
 //== Modifier: Tiny Persona
 //
 .ms-Persona.ms-Persona--tiny {
@@ -351,17 +322,6 @@ $ms-Persona-presenceSizeXl: 28px;
 }
 
 
-//== Modifier: Tiny Square Persona
-//
-.ms-Persona.ms-Persona--square.ms-Persona--tiny {
-  .ms-Persona-presence {
-    height: 12px;
-    width: 12px;
-    top: 10px;
-  }
-}
-
-
 //== Modifier: Extra Small Persona
 //
 .ms-Persona.ms-Persona--xs {
@@ -401,16 +361,6 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 }
 
-
-//== Modifier: Extra Small Square Persona
-//
-.ms-Persona.ms-Persona--square.ms-Persona--xs {
-  .ms-Persona-presence {
-    height: 32px;
-    width: 4px;
-    left: 0;
-  }
-}
 
 
 //== Modifier: Small Persona
@@ -452,16 +402,6 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 }
 
-
-//== Modifier: Small Square Persona
-//
-.ms-Persona.ms-Persona--square.ms-Persona--sm {
-  .ms-Persona-presence {
-    height: 40px;
-    width: 4px;
-    left: 0;
-  }
-}
 
 
 //== Modifier: Large Persona
@@ -510,18 +450,6 @@ $ms-Persona-presenceSizeXl: 28px;
     display: block; 
   }
 }
-
-
-//== Modifier: Large Square Persona
-//
-.ms-Persona.ms-Persona--square.ms-Persona--lg {
-  .ms-Persona-presence {
-    height: 72px;
-    width: 7px;
-    left: 0;
-  }
-}
-
 
 //== Modifier: Extra Large Persona
 //
@@ -579,18 +507,6 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 }
 
-
-//== Modifier: Extra Large Square Persona
-//
-.ms-Persona.ms-Persona--square.ms-Persona--xl {
-  .ms-Persona-presence {
-    height: 100px;
-    width: 9px;
-    left: 0;
-  }
-}
-
-
 //== Modifier: Persona with darker text
 //
 // Note: Typically applied when the component has a colored background.
@@ -605,7 +521,6 @@ $ms-Persona-presenceSizeXl: 28px;
     color: $ms-color-neutralPrimary;
   }
 }
-
 
 //== Modifier: Selectable Persona
 //
@@ -694,7 +609,6 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 }
 
-
 //== Modifier: Persona with busy presence
 //
 .ms-Persona.ms-Persona--busy {
@@ -710,18 +624,6 @@ $ms-Persona-presenceSizeXl: 28px;
     }
   }
 }
-
-
-//== Modifier: Square Persona with busy presence
-//
-.ms-Persona.ms-Persona--busy.ms-Persona--square {
-  .ms-Persona-presence {
-    background-color: $ms-color-presence-busy-average;
-    // Replace solid background with stripes on modern browsers.
-    background: repeating-linear-gradient( -45deg, $ms-color-presence-busy-stripe-light, $ms-color-presence-busy-stripe-light 3px, $ms-color-presence-busy-stripe-dark 3px, $ms-color-presence-busy-stripe-dark 6px );
-  }
-}
-
 
 //== Modifier: Persona with do not disturb presence
 //
@@ -747,85 +649,5 @@ $ms-Persona-presenceSizeXl: 28px;
       background-color: $ms-color-white;
       box-shadow: 0 0 0 1px $ms-color-black inset;
     }
-  }
-}
-
-
-//== Modifier: FacePile
-//
-.ms-Persona.ms-Persona--facePile {
-  display: inline-block;
-  width: auto;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  .ms-Persona-imageArea {
-    position: relative;
-    width: 100%;
-    min-width: $ms-Persona-sizeXs;
-  }
-
-  .ms-Persona-initials {
-    position: relative;
-  }
-
-  .ms-Persona-details {
-    display: none;
-  }
-
-  .ms-Persona-presence {
-    display: none;
-  }
-}
-
-//== Modifier: FacePile
-//
-.ms-Persona.ms-Persona--token {
-  display: inline-block;
-  width: auto;
-  background-color: $ms-color-neutralLighter;
-  border-radius: 20px;
-  margin: 4px;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  .ms-Persona-actionIcon {
-    border-radius: 20px;
-    display: inline-block;
-    width: $ms-Persona-sizeXs;
-    height: $ms-Persona-sizeXs;
-    padding: 0;
-    line-height: 30px;
-    transition: background-color $ms-duration1 $ms-ease1;
-    text-align: center;
-
-    &:hover {
-      background-color: $ms-color-neutralLight;
-    }
-  }
-
-  .ms-Persona-imageArea {
-    width: 100%;
-    min-width: $ms-Persona-sizeXs;
-  }
-
-  .ms-Persona-details {
-    height: 30px;
-    display: inline-block;
-    width: auto;
-    padding-right: 8px;
-  }
-
-  .ms-Persona-primaryText {
-    padding-top: 0;
-    line-height: 34px;
-  }
-
-  .ms-Persona-initials {
-    position: relative;
   }
 }
