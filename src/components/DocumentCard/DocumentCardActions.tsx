@@ -16,7 +16,7 @@ export class DocumentCardActions extends React.Component<IDocumentCardActionsPro
             <div className='ms-DocumentCardActions-action' key={ index }>
               <Button { ...action } />
             </div>
-          )
+          );
         }) }
 
         { views && (
