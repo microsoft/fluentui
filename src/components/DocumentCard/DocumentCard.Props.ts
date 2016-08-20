@@ -146,22 +146,10 @@ export interface IDocumentCardActionsProps extends React.Props<DocumentCardActio
   /**
    * The actions available for this document.
    */
-  actions: IDocumentCardAction[];
+  actions: IButtonProps[];
 
   /**
    * The number of views this document has received.
    */
   views?: Number;
-}
-
-export interface IDocumentCardAction extends IButtonProps {
-  /**
-   * The icon for this action.
-   */
-  icon: string;
-
-  /**
-   * Function to run when clicking the action.
-   */
-  onClick?: (ev?: any) => void;
 }
