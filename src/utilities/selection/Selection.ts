@@ -175,6 +175,11 @@ export class Selection implements ISelection {
     // Clamp the index.
     index = Math.min(Math.max(0, index), this._items.length - 1);
 
+    // No-op on out of bounds selections.
+    if (index < 0) {
+      return;
+    }
+
     let isExempt = this._exemptedIndices[index];
     let hasChanged = false;
     let canSelect = !this._unselectableIndices[index];

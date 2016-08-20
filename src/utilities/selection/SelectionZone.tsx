@@ -66,6 +66,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, {}> {
     // React and non React events to stop propagation and avoid the default SelectionZone
     // behaviors (like executing onInvoked.)
     this._onClick = this._onClick.bind(this);
+    this._onMouseDown = this._onMouseDown.bind(this);
     this._onDoubleClick = this._onDoubleClick.bind(this);
   }
 
@@ -73,8 +74,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, {}> {
     let element = this.refs.root;
 
     this._events.onAll(element, {
-      'keydown': this._onKeyDown,
-      'mousedown': this._onMouseDown
+      'keydown': this._onKeyDown
     });
 
     // Always know what the state of shift/ctrl/meta are.
@@ -93,6 +93,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, {}> {
       <div
         className='ms-SelectionZone'
         ref='root'
+        onMouseDown={ this._onMouseDown }
         onClick={ this._onClick }
         onDoubleClick={ this._onDoubleClick }
         >
@@ -139,7 +140,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, {}> {
     this._hasClickedOnItem = false;
   }
 
-  private _onMouseDown(ev: MouseEvent) {
+  private _onMouseDown(ev: React.MouseEvent) {
     // We need to reset the key states for ctrl/meta/etc.
     this._onKeyChangeCapture(ev as any);
 
@@ -164,11 +165,7 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, {}> {
       // Disable change events.
       selection.setChangeEvents(false);
 
-      let isInvokable = this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME);
-
-      if (isInvokable && onItemInvoked) {
-        onItemInvoked(selection.getItems()[index], index, ev.nativeEvent);
-      } else if (ev.shiftKey && selectionMode === SelectionMode.multiple) {
+      if (ev.shiftKey && selectionMode === SelectionMode.multiple) {
         if (!ev.ctrlKey && !ev.metaKey) {
           selection.setAllSelected(false);
         }
@@ -179,6 +176,10 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, {}> {
         }
 
         selection.setIndexSelected(index, isToggleElement ? !isSelected : true, !ev.shiftKey);
+
+        if (!isToggleElement && onItemInvoked && this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)) {
+          onItemInvoked(selection.getItems()[index], index, ev.nativeEvent);
+        }
       }
 
       // Re-enabled change events.
