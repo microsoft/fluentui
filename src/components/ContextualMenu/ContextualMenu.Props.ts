@@ -149,6 +149,11 @@ export interface IContextualMenuItem {
   ariaLabel?: string;
 
   /**
+   * Optional title for displaying text when hovering over an item.
+   */
+  title?: string;
+
+  /**
    * Method to custom render this menu item
    * @defaultvalue undefined
    */

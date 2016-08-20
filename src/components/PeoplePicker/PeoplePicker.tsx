@@ -15,6 +15,7 @@ import { FocusZone } from '../../FocusZone';
 import { css } from '../../utilities/css';
 import { KeyCodes } from '../../utilities/KeyCodes';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
+import { elementContains } from '../../utilities/DomUtils';
 import './PeoplePicker.scss';
 
 export interface IPeoplePickerState {
@@ -60,7 +61,7 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
     this._searchForMoreResults = this._searchForMoreResults.bind(this);
     this._onSearchFieldTextChanged = this._onSearchFieldTextChanged.bind(this);
     this._onSearchFieldKeyDown = this._onSearchFieldKeyDown.bind(this);
-    this._onBlurCapture = this._onBlurCapture.bind(this);
+    this._onFocusCapture = this._onFocusCapture.bind(this);
     this._removeSelectedPersona = this._removeSelectedPersona.bind(this);
     this._onSelectedPersonaFocus = this._onSelectedPersonaFocus.bind(this);
     this._onSearchBoxKeyDown = this._onSearchBoxKeyDown.bind(this);
@@ -75,7 +76,7 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
   }
 
   public componentDidMount() {
-    this._events.on(window, 'blur', this._onBlurCapture, true);
+    this._events.on(window, 'focus', this._onFocusCapture, true);
     this._events.on(window, 'click', this._onClickCapture, true);
     this._events.on(window, 'touchstart', this._onClickCapture, true);
   }
@@ -173,10 +174,10 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
   /**
    * Handles closing the people picker whenever focus is lost
    */
-  private _onBlurCapture(ev) {
+  private _onFocusCapture(ev: Event) {
     // onBlur, relatedTarget refers to the element that got focus
-    if (!this.refs.searchField.contains(ev.relatedTarget)
-      && !this.refs.pickerResults.contains(ev.relatedTarget) ) {
+    let target: HTMLElement = ev.target as HTMLElement;
+    if (!elementContains(this.refs.root, target)) {
       this._dismissPeoplePicker();
     }
   }
