@@ -5,7 +5,8 @@ import {
   DetailsList,
   MarqueeSelection,
   Selection,
-  TextField
+  TextField,
+  Link
 } from '../../../../index';
 import { createListItems } from '../../../utilities/data';
 
@@ -21,6 +22,7 @@ export class DetailsListBasicExample extends React.Component<any, any> {
     this._selection = new Selection();
 
     this.state = { filterText: '' };
+    this._onRenderItemColumn = this._onRenderItemColumn.bind(this);
   }
 
   public render() {
@@ -32,13 +34,27 @@ export class DetailsListBasicExample extends React.Component<any, any> {
         <TextField
           label='Filter by name:'
           onChanged={ text => this.setState({ filterText: text }) }
-        />
+          />
         <MarqueeSelection selection={ this._selection }>
-          <DetailsList items={ items } initialFocusedIndex={ 0 } shouldApplyApplicationRole={ true } setKey='set' selection={ this._selection } />
+          <DetailsList
+            items={ items }
+            initialFocusedIndex={ 0 }
+            setKey='set'
+            selection={ this._selection }
+            onItemInvoked={ (item) => alert(`Item invoked: ${item.name}`) }
+            onRenderItemColumn={ this._onRenderItemColumn }
+            />
         </MarqueeSelection>
       </div>
     );
   }
 
+  private _onRenderItemColumn(item, index, column) {
+    if (column.key === 'name') {
+      return <Link data-selection-invoke={ true }>{ item[column.key] }</Link>;
+    }
+
+    return item[column.key];
+  }
 }
 

@@ -37,7 +37,7 @@ export class Link extends React.Component<ILinkProps, any> {
         { ...this.props as any }
         className={ css('ms-Link', className) }
         onClick={ this._onClick } >
-        { children }
+        <span>{ children }</span>
       </button>
       ));
   }
