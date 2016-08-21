@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { IContextualMenuItem } from '../ContextualMenu/index';
 
+export interface ICommandBar {
+  /**
+   * Sets focus to the active command in the list.
+   */
+  focus(): void;
+}
+
 export interface ICommandBarProps extends React.HTMLProps<HTMLDivElement> {
   /**
    * Whether or not the search box is visible
