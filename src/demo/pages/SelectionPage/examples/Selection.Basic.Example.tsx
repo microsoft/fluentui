@@ -64,7 +64,10 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
       <div className='ms-SelectionBasicExample'>
         <CommandBar items={ this._getCommandItems() } />
         <MarqueeSelection selection={ selection } isEnabled={ selectionMode === SelectionMode.multiple } >
-          <SelectionZone selection={ selection } selectionMode={ selectionMode } >
+          <SelectionZone
+            selection={ selection }
+            selectionMode={ selectionMode }
+            onItemInvoked={ (item) => alert('item invoked: ' + item.name) }>
             { items.map((item, index) => (
               <SelectionItemExample
                 ref={ 'detailsGroup_' + index }
@@ -190,9 +193,9 @@ export class SelectionItemExample extends React.Component<ISelectionItemExampleP
     return (
       <div className='ms-SelectionItemExample'  data-selection-index={ itemIndex }>
         { (selectionMode !== SelectionMode.none) && (
-          <button className='ms-SelectionItemExample-check' data-selection-toggle={ true } >
+          <div className='ms-SelectionItemExample-check' data-selection-toggle={ true } >
             <Check isChecked={ isSelected } />
-          </button>
+          </div>
         ) }
         <span className='ms-SelectionItemExample-name'>
           { item.name }

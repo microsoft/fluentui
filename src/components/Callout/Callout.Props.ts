@@ -59,6 +59,15 @@ export interface ICalloutProps extends React.Props<Callout>, IPositionProps {
    * If true do not render on a new layer. If false render on a new layer.
    */
   doNotLayer?: boolean;
+
+  /**
+   * If true then the callout will attempt to focus the first focusable element that it contains.
+   * If it doesn't find an element, no focus will be set and the method will return false.
+   * This means that it's the contents responsibility to either set focus or have
+   * focusable items.
+   * @returns True if focus was set, false if it was not.
+   */
+  setInitialFocus?: boolean;
 }
 
 export interface ILink {
