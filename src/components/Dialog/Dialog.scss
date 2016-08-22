@@ -78,7 +78,7 @@
   background: none;
   cursor: pointer;
   top: 12px;
-  right: 12px;
+  @include right(12px);
   padding: 8px;
   z-index: $ms-zIndex-front;
 
@@ -104,6 +104,7 @@
   margin: 0;
   font-family: $ms-font-family-light;
   font-size: $ms-font-size-xl;
+  @include text-align(left);
 }
 
 .ms-Dialog-content {
@@ -148,7 +149,7 @@
 
   // Spacing between bottom buttons
   .ms-Dialog-action + .ms-Dialog-action {
-    margin: 0 0 0 16px;
+    @include margin-left(6px);
   }
 }
 
@@ -200,7 +201,6 @@
     font-size: $ms-font-size-m;
   }
 }
-
 
 
 @media (min-width: $ms-screen-md-min) {
