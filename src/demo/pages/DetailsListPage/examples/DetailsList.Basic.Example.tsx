@@ -70,7 +70,7 @@ export class DetailsListBasicExample extends React.Component<any, any> {
       case 0:
         return 'No items selected';
       case 1:
-        return '1 item selected: ' + (this._selection.getItems()[0] as any).name;
+        return '1 item selected: ' + (this._selection.getSelection()[0] as any).name;
       default:
         return `${ selectionCount } items selected`;
     }
