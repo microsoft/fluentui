@@ -43,8 +43,8 @@ export enum MessageBarType {
   info,
   /** Error styled MessageBar */
   error,
-  /** Remove styled MessageBar */
-  remove,
+  /** Blocked styled MessageBar */
+  blocked,
   /** SevereWarning styled MessageBar */
   severeWarning,
   /** Success styled MessageBar */
