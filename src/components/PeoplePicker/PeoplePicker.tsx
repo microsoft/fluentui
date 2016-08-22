@@ -507,7 +507,7 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
                   <button className='ms-PeoplePicker-resultAction' onClick={ () => {
                       this._removeSelectedPersona( selectedPersonas.indexOf(child) );
                   }}>
-                    <i className='ms-Icon ms-Icon--Clear'></i>
+                    <i className='ms-Icon ms-Icon--Cancel'></i>
                   </button>
                 </li>);
             })

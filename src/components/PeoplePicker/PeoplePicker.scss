@@ -62,10 +62,10 @@ $personaItemHeight: 42px;
   border: 0;
   box-sizing: border-box;
   display: inline-block;
-  float: left;
+  @include float(left);
   height: 38px;
   outline: none;
-  padding-left: 8px;
+  @include padding-left(8px);
   width: 100%;
   flex: 1;
   min-width: 200px;
@@ -74,7 +74,7 @@ $personaItemHeight: 42px;
 // A selected persona, which appears within the search field.
 .ms-PeoplePicker-persona {
   display: inline-flex;
-  float: left;
+  @include float(left);
   margin: 4px;
   outline: 1px solid transparent;
 
@@ -87,7 +87,7 @@ $personaItemHeight: 42px;
   //TODO: Avoid styling child components like this.
   .ms-Persona {
     background-color: $ms-color-neutralLighter;
-    float: left;
+    @include float(left);
     min-height: 30px;
   }
 }
@@ -105,7 +105,7 @@ $personaItemHeight: 42px;
   background-color: $ms-color-neutralLighter;
   color: $ms-color-neutralSecondary;
   display: inline-block;
-  float: left;
+  @include float(left);
   text-align: center;
   height: 32px;
   width: 32px;
@@ -167,7 +167,7 @@ $personaItemHeight: 42px;
   color: $ms-color-themePrimary;
   font-weight: $ms-font-weight-semilight;
   font-size: $ms-font-size-s;
-  padding: 8px 0 8px 16px;
+  @include padding(8px, 0, 8px, 16px);
   text-transform: uppercase;
 }
 
@@ -212,8 +212,8 @@ $personaItemHeight: 42px;
   background: none;
   border: 0;
   text-align: left;
-  margin: 8px 0;
-  padding: 0 0 0 16px;
+  @include margin(8px, 0, 0, 0);
+  @include padding(0, 0, 0, 16px);
 
   @media (min-width: $ms-screen-md-min) {
     height: 48px;
@@ -256,7 +256,7 @@ $personaItemHeight: 42px;
   height: 34px;
   transition: background-color 0.367s $ms-ease1;
   position: absolute;
-  right: 0;
+  @include right(0);
   top: 0;
   width: 30px;
   text-align: center;

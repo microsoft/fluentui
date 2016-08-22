@@ -71,7 +71,7 @@ $SearchBox-height: 36px;
   font-size: $ms-font-size-m;
   color: $ms-color-black;
   height: $SearchBox-height;
-  padding: 6px 3px 7px $SearchBox-field-padding-left;
+  @include padding(6px, 3px, 7px, $SearchBox-field-padding-left);
   width: 100%;
   background-color: transparent;
   z-index: $ms-zIndex-middle;
