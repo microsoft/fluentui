@@ -65,12 +65,12 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
       assign(
         {},
         this.props.rootProps,
+        href ? { href } : null,
         {
           'aria-label': ariaLabel,
           'aria-labelledby': ariaLabel ? null : labelId,
           'aria-describedby': ariaDescription ? ariaDescriptionId : description ? descriptionId : null,
-          'ref': (c: HTMLButtonElement): HTMLButtonElement => this._buttonElement = c,
-          'href' : href ? href : null
+          'ref': (c: HTMLButtonElement): HTMLButtonElement => this._buttonElement = c
         },
         onClick && { 'onClick': onClick },
         disabled && { 'disabled': disabled },
