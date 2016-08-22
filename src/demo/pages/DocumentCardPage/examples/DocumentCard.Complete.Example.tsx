@@ -62,28 +62,37 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
             }
           />
           <DocumentCardActions
-            actions={
-              [
-                { icon: 'share', onClick: (ev: any) => {
-                    console.log('You clicked the share action.');
-                    ev.preventDefault();
-                    ev.stopPropagation();
-                  }
+          actions={
+            [
+              {
+                icon: 'share',
+                onClick: (ev: any) => {
+                  console.log('You clicked the share action.');
+                  ev.preventDefault();
+                  ev.stopPropagation();
                 },
-                { icon: 'pinLeft', onClick: (ev: any) => {
-                    console.log('You clicked the pin action.');
-                    ev.preventDefault();
-                    ev.stopPropagation();
-                  }
+                ariaLabel: 'share action'
+              },
+              {
+                icon: 'pinLeft',
+                onClick: (ev: any) => {
+                  console.log('You clicked the pin action.');
+                  ev.preventDefault();
+                  ev.stopPropagation();
                 },
-                { icon: 'bell', onClick: (ev: any) => {
-                    console.log('You clicked the bell action.');
-                    ev.preventDefault();
-                    ev.stopPropagation();
-                  }
+                ariaLabel: 'pin left action'
+              },
+              {
+                icon: 'bell',
+                onClick: (ev: any) => {
+                  console.log('You clicked the bell action.');
+                  ev.preventDefault();
+                  ev.stopPropagation();
                 },
-              ]
-            }
+                ariaLabel: 'bell action'
+              },
+            ]
+          }
             views={ 432 }
           />
         </DocumentCard>
