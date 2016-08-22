@@ -51,9 +51,12 @@ export class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState>
           'is-active': hasFocus
         })}
       >
-        { !hasFocus && !value ? <label className='ms-SearchBox-label' htmlFor={id}><i className='ms-SearchBox-icon ms-Icon ms-Icon--Search'></i>{ labelText }</label> : null }
+        { !hasFocus && !value ? <label className='ms-SearchBox-label' htmlFor={id}>
+              <i className='ms-SearchBox-icon ms-Icon ms-Icon--Search'></i>
+              <span className='ms-SearchBox-text'>{ labelText }</span>
+             </label> : null }
         <input id={id} className='ms-SearchBox-field' onFocus={ this._onInputFocus } onBlur={ this._onInputBlur } onChange={ this._onInputChanged } value={value} ref='inputText' />
-        <button className='ms-SearchBox-closeButton' onMouseDown={ this._clearInput }><i className='ms-Icon ms-Icon--Cancel'></i></button>
+        <button className='ms-SearchBox-closeButton' onMouseDown={ this._clearInput }><i className='ms-Icon ms-Icon--Clear'></i></button>
       </div>
     );
   }

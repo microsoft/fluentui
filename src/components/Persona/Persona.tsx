@@ -25,6 +25,30 @@ export class Persona extends React.Component<IPersonaProps, any> {
   public render() {
     let { className, size, imageUrl, imageInitials, initialsColor, presence, primaryText, secondaryText, tertiaryText, optionalText, hidePersonaDetails } = this.props;
 
+    let presenceElement = null;
+    if (presence !== PersonaPresence.none) {
+      let userPresence = PersonaPresence[presence],
+          statusIcon = null;
+      switch (userPresence) {
+        case 'online':
+          userPresence = 'SkypeCheck';
+          break;
+        case 'away':
+          userPresence = 'SkypeClock';
+          break;
+        case 'dnd':
+          userPresence = 'SkypeMinus';
+          break;
+        default:
+          userPresence = '';
+      }
+      if (userPresence) {
+        let iconClass = `ms-Persona-presenceIcon ms-Icon ms-Icon--${userPresence}`;
+        statusIcon = <i className={ iconClass }></i>;
+      }
+      presenceElement = <div className='ms-Persona-presence'>{ statusIcon }</div>;
+    }
+
     return (
       <div { ... this.props as any } className={ css('ms-Persona', className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence]) }>
         { size !== PersonaSize.tiny && (
@@ -34,7 +58,7 @@ export class Persona extends React.Component<IPersonaProps, any> {
           </div>
         ) }
 
-        { presence !== PersonaPresence.none && <div className='ms-Persona-presence'></div> }
+        { presenceElement }
 
         { !hidePersonaDetails && (
           <div className='ms-Persona-details'>

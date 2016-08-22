@@ -537,7 +537,7 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
             <button className='ms-PeoplePicker-personaRemove' tabIndex={-1} data-is-focusable={false} onClick={ () => {
                 this._removeSelectedPersona( selectedPersonas.indexOf(child) );
               } }>
-              <i className='ms-Icon ms-Icon--Cancel'></i>
+              <i className='ms-Icon ms-Icon--Clear'></i>
             </button>
           </div>
         </div>);
@@ -697,7 +697,7 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
               className='ms-PeoplePicker-resultAction'
               tabIndex={-1}
               onClick={ () => { this._removeSuggestedPersona(id, personaInfo); }} >
-              <i className='ms-Icon ms-Icon--Cancel'></i></button>
+              <i className='ms-Icon ms-Icon--Clear'></i></button>
             : null }
         </div>
       </li>);
