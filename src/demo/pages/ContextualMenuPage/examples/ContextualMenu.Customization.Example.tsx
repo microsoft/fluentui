@@ -35,7 +35,7 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
               [
                 {
                   key: 'newItem',
-                  icon: 'CirclePlus',
+                  icon: 'Add',
                   items: [
                     {
                       key: 'emailMessage',
