@@ -175,6 +175,11 @@ export class Selection implements ISelection {
     // Clamp the index.
     index = Math.min(Math.max(0, index), this._items.length - 1);
 
+    // No-op on out of bounds selections.
+    if (index < 0 || index >= this._items.length) {
+      return;
+    }
+
     let isExempt = this._exemptedIndices[index];
     let hasChanged = false;
     let canSelect = !this._unselectableIndices[index];
@@ -210,16 +215,20 @@ export class Selection implements ISelection {
     }
   }
 
-  public selectToKey(key: string) {
-    this.selectToIndex(this._keyToIndexMap[key]);
+  public selectToKey(key: string, clearSelection?: boolean) {
+    this.selectToIndex(this._keyToIndexMap[key], clearSelection);
   }
 
-  public selectToIndex(index: number) {
+  public selectToIndex(index: number, clearSelection?: boolean) {
     let anchorIndex = this._anchoredIndex || 0;
     let startIndex = Math.min(index, anchorIndex);
     let endIndex = Math.max(index, anchorIndex);
 
     this.setChangeEvents(false);
+
+    if (clearSelection) {
+      this.setAllSelected(false);
+    }
 
     for (; startIndex <= endIndex; startIndex++) {
       this.setIndexSelected(startIndex, true, false);

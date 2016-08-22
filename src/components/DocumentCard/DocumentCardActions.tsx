@@ -10,16 +10,14 @@ export class DocumentCardActions extends React.Component<IDocumentCardActionsPro
     return (
       <div className='ms-DocumentCardActions'>
 
-        { actions && actions.map((action, index) => (
-        <div className='ms-DocumentCardActions-action' key={ index }>
-          <Button
-            buttonType={ ButtonType.icon }
-            icon={ action.icon }
-            onClick={ action.onClick }
-            rootProps={ { title:'' } }
-            description='' />
-        </div>
-        )) }
+        { actions && actions.map((action, index) => {
+          action.buttonType = ButtonType.icon;
+          return (
+            <div className='ms-DocumentCardActions-action' key={ index }>
+              <Button { ...action } />
+            </div>
+          );
+        }) }
 
         { views && (
         <div className='ms-DocumentCardActions-views'>
