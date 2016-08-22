@@ -201,6 +201,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
                   ) : (
                       <li
                         role='menuitem'
+                        title={ item.title }
                         key={ item.key || index }
                         className={ css('ms-ContextualMenu-item', item.className ) }>
                           { this._renderMenuItem(item, index, hasCheckmarks, hasIcons) }
