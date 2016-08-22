@@ -104,6 +104,7 @@
   margin: 0;
   font-family: $ms-font-family-light;
   font-size: $ms-font-size-xl;
+  @include text-align(left);
 }
 
 .ms-Dialog-content {
