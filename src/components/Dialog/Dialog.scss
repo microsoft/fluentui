@@ -149,12 +149,8 @@
 
   // Spacing between bottom buttons
   .ms-Dialog-action + .ms-Dialog-action {
-<<<<<<< HEAD
-    @include margin-left(6px);
-=======
     margin: 0;
     @include margin-left(16px);
->>>>>>> master
   }
 }
 
@@ -206,6 +202,7 @@
     font-size: $ms-font-size-m;
   }
 }
+
 
 
 @media (min-width: $ms-screen-md-min) {
