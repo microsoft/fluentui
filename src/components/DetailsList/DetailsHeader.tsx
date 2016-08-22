@@ -163,7 +163,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                   ) }
 
                   { column.isGrouped && (
-                    <i className='ms-Icon ms-Icon--Filter' />
+                    <i className='ms-Icon ms-Icon--GroupedDescending' />
                   ) }
 
                   { column.iconClassName && (

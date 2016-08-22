@@ -23,6 +23,10 @@
   display: inline;
   border: none;
 
+  width: inherit;
+  overflow: inherit;
+  text-overflow: inherit;
+
   &:hover,
   &:focus {
     color: $ms-color-themeDarker;

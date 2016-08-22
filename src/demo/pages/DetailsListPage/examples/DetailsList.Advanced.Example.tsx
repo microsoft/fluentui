@@ -231,19 +231,19 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
       {
         key: 'addRow',
         name: 'Insert row',
-        icon: 'plus',
+        icon: 'Add',
         onClick: this._onAddRow
       },
       {
         key: 'deleteRow',
         name: 'Delete row',
-        icon: 'trash',
+        icon: 'Delete',
         onClick: this._onDeleteRow
       },
       {
         key: 'configure',
         name: 'Configure',
-        icon: 'gear',
+        icon: 'Settings',
         items: [
           {
             key: 'resizing',
@@ -355,7 +355,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
       {
         key: 'aToZ',
         name: 'A to Z',
-        icon: 'arrowUp2',
+        icon: 'Up',
         canCheck: true,
         isChecked: column.isSorted && !column.isSortedDescending,
         onClick: () => this._onSortColumn(column.key, false)
@@ -363,7 +363,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
       {
         key: 'zToA',
         name: 'Z to A',
-        icon: 'arrowDown2',
+        icon: 'Down',
         canCheck: true,
         isChecked: column.isSorted && column.isSortedDescending,
         onClick: () => this._onSortColumn(column.key, true)
@@ -373,7 +373,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
       items.push({
         key: 'groupBy',
         name: 'Group By ' + column.name,
-        icon: 'listGroup2',
+        icon: 'GroupedDescending',
         canCheck: true,
         isChecked: column.isGrouped,
         onClick: () => this._onGroupByColumn(column)
