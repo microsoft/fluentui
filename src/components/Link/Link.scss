@@ -31,14 +31,6 @@
   &:active {
     color: $ms-color-themePrimary;
   }
-
-  @media screen and (-ms-high-contrast: active) {
-    color: $ms-color-contrastBlackLink;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    color: $ms-color-contrastWhiteLink;
-  }
 }
 
 .ms-Link {

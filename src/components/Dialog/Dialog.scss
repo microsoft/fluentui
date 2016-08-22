@@ -71,8 +71,6 @@ $Dialog-default-max-width: 340px;
 // Close button, hidden by default
 .ms-Dialog-button.ms-Dialog-button--close {
   display: none;
-  @include margin-right(8px);
-  padding: 8px;
 
   .ms-Icon.ms-Icon--Cancel {
     color: $ms-color-neutralSecondary;
@@ -102,7 +100,8 @@ $Dialog-default-max-width: 340px;
 
 .ms-Dialog-topButton {
   display: table-cell;
-  padding: 1px;
+  vertical-align: top;
+  @include padding(12px, 12px, 0, 0);
 }
 
 .ms-Dialog-content {
