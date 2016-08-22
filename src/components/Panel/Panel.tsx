@@ -11,6 +11,7 @@ import { css } from '../../utilities/css';
 import { getId } from '../../utilities/object';
 import { getRTL } from '../../utilities/rtl';
 import './Panel.scss';
+import { FocusTrapZone } from '../FocusTrapZone/FocusTrapZone';
 
 export interface IPanelState {
   isOpen?: boolean;
@@ -26,6 +27,8 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
     hasCloseButton: true,
     type: PanelType.smallFixedFar,
   };
+
+  private _focusTrapZoneInstance: FocusTrapZone;
 
   constructor(props: IPanelProps) {
     super(props);
@@ -61,6 +64,14 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
     }
   }
 
+  public componentDidUpdate(prevPops: IPanelProps, prevState: IPanelState) {
+    if (!prevState.isOpen && this.state.isOpen) {
+      this._async.setTimeout(() => {
+        this._focusTrapZoneInstance.focus();
+      }, 500);
+    }
+  }
+
   public render() {
     let { children, className = '', type, hasCloseButton, isLightDismiss, headerText, closeButtonAriaLabel, headerClassName = ''  } = this.props;
     let { isOpen, isAnimatingOpen, isAnimatingClose, id } = this.state;
@@ -88,43 +99,48 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
         <Popup
           role='dialog'
           ariaLabelledBy={ headerText ? headerTextId : undefined }
-          onDismiss={ this.props.onDismiss }>
-          <div
-            ref={ this._onPanelRef }
-            className={
-              css('ms-Panel', className, {
-                'ms-Panel--openLeft': !isOnRightSide,  // because the RTL animations are not being used, we need to set a class
-                'ms-Panel--openRight': isOnRightSide,  // because the RTL animations are not being used, we need to set a class
-                'is-open': isOpen,
-                'ms-Panel-animateIn': isAnimatingOpen,
-                'ms-Panel-animateOut': isAnimatingClose,
-                'ms-Panel--smFluid': type === PanelType.smallFluid,
-                'ms-Panel--smLeft': type === PanelType.smallFixedNear,
-                'ms-Panel--sm': type === PanelType.smallFixedFar,
-                'ms-Panel--md': type === PanelType.medium,
-                'ms-Panel--lg': type === PanelType.large || type === PanelType.largeFixed,
-                'ms-Panel--fixed': type === PanelType.largeFixed,
-                'ms-Panel--xl': type === PanelType.extraLarge,
-              })
-            }
-            >
-            <Overlay
-              isDarkThemed={ false }
-              onClick={ isLightDismiss ? this._onPanelClick : null }
-              />
-            <div className='ms-Panel-main'>
-              <div className='ms-Panel-commands' data-is-visible={ true } >
-                { pendingCommandBarContent }
-                { closeButton }
-              </div>
-              <div className='ms-Panel-contentInner'>
-                { header }
-                <div className='ms-Panel-content'>
-                  { children }
+          onDismiss={ this.props.onDismiss }
+          shouldRestoreFocus={ true }>
+          <FocusTrapZone
+            isClickableOutsideFocusTrap={ true }
+            ref={(instance) => this._focusTrapZoneInstance = instance}>
+            <div
+              ref={ this._onPanelRef }
+              className={
+                css('ms-Panel', className, {
+                  'ms-Panel--openLeft': !isOnRightSide,  // because the RTL animations are not being used, we need to set a class
+                  'ms-Panel--openRight': isOnRightSide,  // because the RTL animations are not being used, we need to set a class
+                  'is-open': isOpen,
+                  'ms-Panel-animateIn': isAnimatingOpen,
+                  'ms-Panel-animateOut': isAnimatingClose,
+                  'ms-Panel--smFluid': type === PanelType.smallFluid,
+                  'ms-Panel--smLeft': type === PanelType.smallFixedNear,
+                  'ms-Panel--sm': type === PanelType.smallFixedFar,
+                  'ms-Panel--md': type === PanelType.medium,
+                  'ms-Panel--lg': type === PanelType.large || type === PanelType.largeFixed,
+                  'ms-Panel--fixed': type === PanelType.largeFixed,
+                  'ms-Panel--xl': type === PanelType.extraLarge,
+                })
+              }
+              >
+              <Overlay
+                isDarkThemed={ false }
+                onClick={ isLightDismiss ? this._onPanelClick : null }
+                />
+              <div className='ms-Panel-main'>
+                <div className='ms-Panel-commands' data-is-visible={ true } >
+                  { pendingCommandBarContent }
+                  { closeButton }
+                </div>
+                <div className='ms-Panel-contentInner'>
+                  { header }
+                  <div className='ms-Panel-content'>
+                    { children }
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </FocusTrapZone>
         </Popup>
       </Layer>
 
