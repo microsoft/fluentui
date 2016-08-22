@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ICommandBarProps } from './CommandBar.Props';
+import { ICommandBar, ICommandBarProps } from './CommandBar.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu, IContextualMenuItem } from '../../ContextualMenu';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
@@ -21,7 +21,7 @@ export interface ICommandBarState {
   renderedFarItems?: IContextualMenuItem[];
 }
 
-export class CommandBar extends React.Component<ICommandBarProps, ICommandBarState> {
+export class CommandBar extends React.Component<ICommandBarProps, ICommandBarState> implements ICommandBar {
   public static defaultProps = {
     items: [],
     overflowItems: [],
@@ -34,6 +34,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     farCommandSurface: HTMLElement;
     commandBarRegion: HTMLElement;
     searchSurface: HTMLElement;
+    focusZone: FocusZone;
   };
 
   private _id: string;
@@ -99,7 +100,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     return (
       <div className={ css('ms-CommandBar', className) } ref='commandBarRegion'>
         { searchBox }
-        <FocusZone direction={ FocusZoneDirection.horizontal } rootProps={ { role: 'menubar' } }>
+        <FocusZone ref='focusZone' direction={ FocusZoneDirection.horizontal } rootProps={ { role: 'menubar' } }>
           <div className='ms-CommandBar-primaryCommands' ref='commandSurface'>
             { renderedItems.map((item, index) => (
               this._renderItemInCommandBar(item, index, expandedMenuItemKey)
@@ -112,6 +113,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
                 role='menuitem'
                 aria-label={ this.props.elipisisAriaLabel || '' }
                 aria-haspopup={ true }
+                type='button'
               >
                 <i className='ms-CommandBarItem-overflow ms-Icon ms-Icon--More' />
               </button>
@@ -139,6 +141,10 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     );
   }
 
+  public focus() {
+    this.refs.focusZone.focus();
+  }
+
   private _renderItemInCommandBar(item, index, expandedMenuItemKey, isFarItem?: boolean) {
     const itemKey = item.key || index;
     const className = css(item.onClick ? 'ms-CommandBarItem-link' : 'ms-CommandBarItem-text', !item.name && 'ms-CommandBarItem--noName');
@@ -155,6 +161,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
                          aria-haspopup={ !!(item.items && item.items.length) }
                          role='menuitem'
                          aria-label={ item.ariaLabel || item.name }
+                         type='button'
                        >
                          { (!!item.icon) && <span className={ `ms-CommandBarItem-icon ms-Icon ms-Icon--${ item.icon }` }></span> }
                          { (!!item.name) && <span className='ms-CommandBarItem-commandText'>{ item.name }</span> }

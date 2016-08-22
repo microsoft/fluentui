@@ -5,7 +5,8 @@ import {
   DetailsList,
   MarqueeSelection,
   Selection,
-  TextField
+  TextField,
+  Link
 } from '../../../../index';
 import { createListItems } from '../../../utilities/data';
 
@@ -19,6 +20,7 @@ export class DetailsListBasicExample extends React.Component<any, any> {
 
     _items = _items || createListItems(500);
 
+    this._onRenderItemColumn = this._onRenderItemColumn.bind(this);
     this._selection = new Selection({
       onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() })
     });
@@ -40,10 +42,25 @@ export class DetailsListBasicExample extends React.Component<any, any> {
           onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
         />
         <MarqueeSelection selection={ this._selection }>
-          <DetailsList items={ items } initialFocusedIndex={ 0 } shouldApplyApplicationRole={ true } setKey='set' selection={ this._selection } />
+          <DetailsList
+            items={ items }
+            initialFocusedIndex={ 0 }
+            setKey='set'
+            selection={ this._selection }
+            onItemInvoked={ (item) => alert(`Item invoked: ${item.name}`) }
+            onRenderItemColumn={ this._onRenderItemColumn }
+            />
         </MarqueeSelection>
       </div>
     );
+  }
+
+  private _onRenderItemColumn(item, index, column) {
+    if (column.key === 'name') {
+      return <Link data-selection-invoke={ true }>{ item[column.key] }</Link>;
+    }
+
+    return item[column.key];
   }
 
   private _getSelectionDetails(): string {
@@ -53,7 +70,7 @@ export class DetailsListBasicExample extends React.Component<any, any> {
       case 0:
         return 'No items selected';
       case 1:
-        return '1 item selected: ' + (this._selection.getItems()[0] as any).name;
+        return '1 item selected: ' + (this._selection.getSelection()[0] as any).name;
       default:
         return `${ selectionCount } items selected`;
     }
