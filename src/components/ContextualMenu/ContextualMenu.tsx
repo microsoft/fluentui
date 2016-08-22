@@ -201,6 +201,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
                   ) : (
                       <li
                         role='menuitem'
+                        title={ item.title }
                         key={ item.key || index }
                         className={ css('ms-ContextualMenu-item', item.className ) }>
                           { this._renderMenuItem(item, index, hasCheckmarks, hasIcons) }
@@ -350,7 +351,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
           id: this.state.subMenuId,
           shouldFocusOnMount: true,
           directionalHint: getRTL() ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
-          className: item.className
+          className: this.props.className
         }
       });
     }

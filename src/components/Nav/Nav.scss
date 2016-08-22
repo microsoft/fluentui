@@ -19,10 +19,6 @@
   padding: 0;
 }
 
-.ms-Nav li > ul {
-  margin: 0 14px;
-}
-
 .ms-Nav-groupContent {
   display: none;
   margin-bottom: 20px;
@@ -90,7 +86,7 @@
   height: 40px;
   line-height: 40px;
   text-decoration: none;
-  padding: 0 40px;
+  padding: 0 20px;
   cursor: pointer;
   text-overflow: ellipsis;
   text-decoration: none;
