@@ -69,7 +69,8 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
           'aria-label': ariaLabel,
           'aria-labelledby': ariaLabel ? null : labelId,
           'aria-describedby': ariaDescription ? ariaDescriptionId : description ? descriptionId : null,
-          'ref': (c: HTMLButtonElement): HTMLButtonElement => this._buttonElement = c
+          'ref': (c: HTMLButtonElement): HTMLButtonElement => this._buttonElement = c,
+          'href' : href ? href : null
         },
         onClick && { 'onClick': onClick },
         disabled && { 'disabled': disabled },
