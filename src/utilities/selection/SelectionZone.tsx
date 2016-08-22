@@ -24,10 +24,10 @@ import {
 // If you click index 8
 //    The anchor and focus are set to 8.
 
-export const SELECTION_INDEX_ATTRIBUTE_NAME = 'data-selection-index';
-export const SELECTION_TOGGLE_ATTRIBUTE_NAME = 'data-selection-toggle';
-export const SELECTION_INVOKE_ATTRIBUTE_NAME = 'data-selection-invoke';
-export const SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME = 'data-selection-all-toggle';
+const SELECTION_INDEX_ATTRIBUTE_NAME = 'data-selection-index';
+const SELECTION_TOGGLE_ATTRIBUTE_NAME = 'data-selection-toggle';
+const SELECTION_INVOKE_ATTRIBUTE_NAME = 'data-selection-invoke';
+const SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME = 'data-selection-all-toggle';
 
 export interface ISelectionZoneProps extends React.Props<SelectionZone> {
   selection: ISelection;

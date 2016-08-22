@@ -210,6 +210,11 @@ describe('SelectionZone', () => {
     ReactTestUtils.Simulate.keyDown(_surface0, { which: KeyCodes.space });
     expect(_selection.isIndexSelected(0)).equals(false, 'Expecting index 0 to become unselected');
   });
+
+  it('does not select the row when clicking on a toggle within an invoke element', () => {
+    ReactTestUtils.Simulate.mouseDown(_toggle2);
+    expect(_selection.isIndexSelected(2)).equals(false, 'Item 2 should have been unselected');
+  });
 });
 
 function _simulateClick(el, eventData?: React.SyntheticEventData) {
