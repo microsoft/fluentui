@@ -92,7 +92,6 @@ $ContextualMenu-iconWidth: 24px;
 button.ms-ContextualMenu-link,
 button.ms-ContextualMenu-link:first-child,
 button.ms-ContextualMenu-link:last-child {
-    line-height: 0;
     height: 40px;
 }
 
@@ -102,8 +101,4 @@ button.ms-ContextualMenu-link:last-child {
   border: none;
   box-shadow: 0px 0px 0px 0px transparent;
   width: auto;
-}
-
-.ms-Callout.ms-ContextualMenu-Callout{
-    @include drop-shadow(0, 0, 5px, 0px);
 }
