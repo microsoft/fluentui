@@ -126,7 +126,7 @@ export class PeoplePickerCustomResultExample extends React.Component<any, IPeopl
         primarySearchText='Showing top 5 results'
         secondarySearchText='Search Contacts & Directory'
         disconnectedText='We are having trouble connecting to the server.<br>Please try again in a few minutes.'
-        renderSelectedItem={ this._renderResult.bind(this) }
+        onRenderPeoplePickerItem={ this._renderResult.bind(this) }
         />
     );
   }

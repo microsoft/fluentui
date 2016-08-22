@@ -56,13 +56,13 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
    * The way that a search item will be rendered in the search drop down.
    * @Default PeoplePickerSearchItemDefault
    */
-  private _renderSearchItem: (result: IPeoplePickerItemProps) => JSX.Element;
+  private _onRenderResultItem: (result: IPeoplePickerItemProps) => JSX.Element;
   /**
    * The way that a selected item will be rendered in either the search
    * box (default location) or membersList (if PeoplePickerType is memberList) .
    * @Default PeoplePickerSearchItemDefault
    */
-  private _renderSelectedItem: (result: IPeoplePickerItemProps) => JSX.Element;
+  private _onRenderPeoplePickerItem: (result: IPeoplePickerItemProps) => JSX.Element;
 
   constructor(props: IPeoplePickerProps) {
     super(props);
@@ -78,8 +78,8 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
     this._onSelectedPersonaFocus = this._onSelectedPersonaFocus.bind(this);
     this._onSearchBoxKeyDown = this._onSearchBoxKeyDown.bind(this);
     const selectedPersonas: IPersonaProps[] = props.initialItems ? props.initialItems : [];
-    this._renderSearchItem = props.renderSearchItem ? props.renderSearchItem : PeoplePickerSearchItemDefault;
-    this._renderSelectedItem = props.renderSelectedItem ? props.renderSelectedItem : PeoplePickerSelectedItemDefault;
+    this._onRenderResultItem = props.onRenderResultItem ? props.onRenderResultItem : PeoplePickerSearchItemDefault;
+    this._onRenderPeoplePickerItem = props.onRenderPeoplePickerItem ? props.onRenderPeoplePickerItem : PeoplePickerSelectedItemDefault;
     this.state = {
       isActive: false,
       isSearching: false,
@@ -520,7 +520,7 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
             };
             return (
               <li className='ms-PeoplePicker-selectedPerson' key={id++}>
-                { this._renderSelectedItem(itemProps) }
+                { this._onRenderPeoplePickerItem(itemProps) }
               </li>);
           })
           }
@@ -547,7 +547,7 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
       let key = id++;
       return (
         <div className='ms-PeoplePicker-persona' ref={ 'persona' + key } key={key} data-selection-index={key} data-is-focusable={true} tabIndex={-1}>
-          {this._renderSelectedItem(itemProps) }
+          {this._onRenderPeoplePickerItem(itemProps) }
         </div>);
     });
   }
@@ -659,7 +659,7 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
                   ref= { isSelected ? 'selectedSearchResult' : null }
                   className={ css('ms-PeoplePicker-result', '--selected') } >
                   {
-                    this._renderSearchItem(itemProps)
+                    this._onRenderResultItem(itemProps)
                   }
                 </li>
               );
