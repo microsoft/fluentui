@@ -8,6 +8,7 @@
 // Button styles
 
 
+
 .ms-Button {
   @include focus-border();
   @include ms-font-m;
@@ -16,17 +17,26 @@
   border: 1px solid $ms-color-neutralLighter;
   cursor: pointer;
   display: inline-block;
-  height: 32px;
+  height: 36px;
   min-width: 80px;
   padding: 4px 20px 6px;
 
   &:hover {
     background-color: $ms-color-neutralLight;
     border-color: $ms-color-neutralLight;
-    outline: 1px solid transparent;
 
     .ms-Button-label {
       color: $ms-color-black;
+    }
+
+    @media screen and (-ms-high-contrast: active) {
+      color: $ms-color-contrastBlackSelected;
+      border-color: $ms-color-contrastBlackSelected;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      color: $ms-color-contrastWhiteSelected;
+      border-color: $ms-color-contrastWhiteSelected;
     }
   }
 
@@ -66,14 +76,9 @@
   }
 }
 
-// Add space between adjacent buttons.
-.ms-Button + .ms-Button {
-  margin-left: 6px;
-}
-
 .ms-Button-label {
   color: $ms-color-neutralPrimary;
-  font-family: $ms-font-family-semibold;
+  font-weight: $ms-font-weight-semibold;
   font-size: $ms-font-size-m;
 }
 
@@ -91,7 +96,6 @@
     }
   }
 }
-
 
 //== Modifier: Primary action button
 //
@@ -142,44 +146,46 @@
 //== Modifier: Hero button
 //
 .ms-Button.ms-Button--hero {
+  align-items: center;
   background-color: transparent;
-  border: none;
-  vertical-align: top;
-  line-height: normal;
+  border: 0;
+  display: flex;
+  padding: 0;
 
   .ms-Button-icon {
     color: $ms-color-themePrimary;
     display: inline-block;
     font-size: $ms-font-size-s;
+    margin-right: 2px;
     position: relative;
-    top: -8px;
+    top: -7px;
     text-align: center;
 
     .ms-Icon {
       border-radius: 18px;
       border: 1px solid $ms-color-themePrimary;
+      font-size: $ms-font-size-s;
       height: 18px;
       line-height: 18px;
       width: 18px;
-      font-size: $ms-font-size-s;
-      margin: 0;
     }
   }
 
   .ms-Button-label {
     color: $ms-color-themePrimary;
-    font-family: $ms-font-family-light;
     font-size: $ms-font-size-xl;
+    font-weight: $ms-font-weight-light;
     position: relative;
-    top: -5px;
     text-decoration: none;
   }
 
   &:hover,
   &:focus {
     .ms-Button-icon {
+      color: $ms-color-themeDark;
+
       .ms-Icon {
-        color: $ms-color-themeDark;
+        border: 1px solid $ms-color-themeDark;
       }
     }
 
@@ -190,8 +196,10 @@
 
   &:active {
     .ms-Button-icon {
+      color: $ms-color-themePrimary;
+
       .ms-Icon {
-        color: $ms-color-themePrimary;
+        border: 1px solid $ms-color-themePrimary;
       }
     }
 
@@ -203,8 +211,10 @@
   &:disabled,
   &.is-disabled {
     .ms-Button-icon {
+      color: $ms-color-neutralTertiaryAlt;
+
       .ms-Icon {
-        color: $ms-color-neutralTertiaryAlt;
+        border: 1px solid $ms-color-neutralTertiaryAlt;
       }
     }
 
@@ -218,15 +228,16 @@
 //== Modifier: Compound button
 //
 .ms-Button.ms-Button--compound {
+  display: block;
   height: auto;
-  min-height: 72px;
   max-width: 280px;
+  min-height: 72px;
   padding: 20px;
 
   .ms-Button-label {
     @include text-align(left);
     display: block;
-    font-family: $ms-font-family-semibold;
+    font-weight: $ms-font-weight-semibold;
     position: relative;
     color: $ms-color-black;
     margin-top: -5px;
@@ -236,7 +247,7 @@
     @include text-align(left);
     color: $ms-color-neutralSecondary;
     display: block;
-    font-family: $ms-font-family-regular;
+    font-weight: $ms-font-weight-regular;
     font-size: $ms-font-size-s;
     position: relative;
     top: 3px;
@@ -290,7 +301,6 @@
   }
 }
 
-
 //== Modifier: Command button
 //
 .ms-Button.ms-Button--command {
@@ -316,7 +326,7 @@
   }
 
   .ms-Button-label {
-    font-family: $ms-font-family-regular;
+    font-weight: $ms-font-weight-regular;
   }
 
   &:hover,
@@ -350,7 +360,6 @@
 .ms-Button.ms-Button--command + .ms-Button.ms-Button--command {
   @include margin-left(14px);
 }
-
 
 // TODO: Overrides that need to be removed.
 

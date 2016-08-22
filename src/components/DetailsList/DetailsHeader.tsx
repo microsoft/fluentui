@@ -124,7 +124,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
           </div>
           { groupNestingDepth > 0 ? (
           <button className='ms-DetailsHeader-cell' onClick={ this._onToggleCollapseAll }>
-            <i className={ css('ms-DetailsHeader-collapseButton ms-Icon ms-Icon--chevronDown', {
+            <i className={ css('ms-DetailsHeader-collapseButton ms-Icon ms-Icon--ChevronDown', {
               'is-collapsed': isAllCollapsed
             }) } >
             </i>
@@ -157,13 +157,13 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
                   { column.isSorted && (
                     <i className={ css('ms-Icon', {
-                      'ms-Icon--arrowUp2': !column.isSortedDescending,
-                      'ms-Icon--arrowDown2': column.isSortedDescending
+                      'ms-Icon--Up': !column.isSortedDescending,
+                      'ms-Icon--Down': column.isSortedDescending
                     }) } />
                   ) }
 
                   { column.isGrouped && (
-                    <i className='ms-Icon ms-Icon--listGroup2' />
+                    <i className='ms-Icon ms-Icon--Filter' />
                   ) }
 
                   { column.iconClassName && (
@@ -173,7 +173,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                   { column.name }
 
                   { column.columnActionsMode === ColumnActionsMode.hasDropdown && (
-                    <i className='ms-DetailsHeader-filterChevron ms-Icon ms-Icon--chevronDown' />
+                    <i className='ms-DetailsHeader-filterChevron ms-Icon ms-Icon--ChevronDown' />
                   ) }
                 </button>
               </div>

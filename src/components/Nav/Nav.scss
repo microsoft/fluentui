@@ -45,12 +45,9 @@
 
 .ms-Nav-groupButton {
   display: block;
+  @include ms-baseFont;
   width: 100%;
   height: 40px;
-
-  font-family: $ms-font-family-regular;
-  font-size: $ms-font-size-s;
-
   @include text-align(left);
   line-height: 40px;
   margin: 5px 0;

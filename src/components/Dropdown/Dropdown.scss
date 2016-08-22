@@ -7,6 +7,9 @@
 // --------------------------------------------------
 // Dropdown styles
 
+$Dropdown-selectedItem-bg: $ms-color-neutralQuaternaryAlt;
+$Dropdown-selectedItem-hover-bg: $ms-color-neutralLighter;
+
 // Mixin for high contrast mode link states
 @mixin highContrastListItemState {
   @media screen and (-ms-high-contrast: active) {
@@ -27,11 +30,13 @@
 }
 
 .ms-Dropdown {
-  @include ms-font-m;
   @include ms-u-normalize;
+  @include ms-font-m;
+
   margin-bottom: 10px;
   position: relative;
   outline: 0;
+  user-select: none;
 
   &:hover,
   &:focus,
@@ -53,7 +58,7 @@
   &:hover,
   &:active {
     .ms-Dropdown-title {
-      border-color: $ms-color-neutralSecondaryAlt;
+      border-color: $ms-color-themePrimary;
 
       @media screen and (-ms-high-contrast: active) {
         border-color: $ms-color-contrastBlackSelected;
@@ -118,25 +123,34 @@
 }
 
 // When the dropdown is opened
-// Note: .ms-Dropdown--open is deprecated and will be removed in a future version.
-// Use .is-open for an open dropdown.
-.ms-Dropdown.ms-Dropdown--open .ms-Dropdown-items,
 .ms-Dropdown.is-open .ms-Dropdown-items {
   display: block;
-  position: fixed;
+  position: absolute;
 }
 
-// Hide the original dropdown
-.ms-Dropdown-select {
-  display: none;
+// Adjustments for when the dropdown is open as a panel on small screens
+.ms-Panel .ms-Dropdown-items {
+  box-shadow: none;
+  overflow-y: auto;
+  padding-top: 4px;
+  max-height: 100%;
+
+  .ms-Dropdown-item {
+    padding: 7px 16px;
+  }
+
+  &::before {
+    content: none;
+    border: 0;
+  }
 }
 
 .ms-Dropdown-caretDown {
-  color: $ms-color-neutralSecondary;
-  font-size: $ms-font-size-l;
+  color: $ms-color-neutralDark;
+  font-size: $ms-icon-size-s;
   position: absolute;
-  right: 9px;
-  bottom: 5px;
+  right: 13px;
+  bottom: 9px;
   z-index: 1;
   pointer-events: none;
 }
@@ -149,8 +163,7 @@
   cursor: pointer;
   display: block;
   height: 32px;
-  line-height: 30px;
-  padding: 0 32px 0 10px;
+  padding: 5px 32px 0 10px;
   position: relative;
   overflow: hidden;
 }
@@ -165,14 +178,19 @@
   position: absolute;
   width: 100%;
   max-height: 200px;
-  max-width: 268px;
   z-index: ($ms-zIndex-Dropdown + $ms-zIndex-back);
-  top: 0;
-  right: 0;
-  bottom: 0;
   overflow-y: scroll;
 
-  &:before {
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  max-width: 100%;
+  box-shadow: 0 0px 15px -5px rgba(0, 0, 0, 0.4);
+  border: 1px solid $ms-color-neutralLight;
+
+
+  &::before {
     content: '';
     position: absolute;
     z-index: -1;
@@ -180,7 +198,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    border: 1px solid $ms-color-neutralLight;
+    border: none;
   }
 
   @media screen and (-ms-high-contrast: active) {
@@ -196,9 +214,8 @@
   box-sizing: border-box;
   cursor: pointer;
   display: block;
-  height: 40px;
-  line-height: 38px;
-  padding: 0 10px;
+  height: 36px;
+  padding: 7px 10px;
   position: relative;
   border: 1px solid transparent;
   white-space: nowrap;
@@ -211,22 +228,21 @@
     border-color: $ms-color-white;
   }
 
-  // Shorten the first and last items to maintain baseline alignment.
-  &:first-child,
-  &:last-child {
-    height: 39px;
-  }
-
   &:hover {
-    background-color: $ms-color-neutralLight;
+    background-color: $Dropdown-selectedItem-hover-bg;
     color: $ms-color-black;
 
     @include highContrastListItemState;
   }
 
+  @include focus-border();
+
+  &:focus {
+    background-color: $ms-color-neutralLighter;
+  }
+
   &:active {
-    background-color: $ms-color-neutralLight;
-    border-color: $ms-color-themePrimary;
+    background-color: $Dropdown-selectedItem-hover-bg;
     color: $ms-color-black;
   }
 
@@ -234,7 +250,6 @@
     background: $ms-color-white;
     color: $ms-color-neutralTertiary;
     cursor: default;
-    line-height: 40px;
   }
 }
 
@@ -243,48 +258,14 @@
 // Use .is-selected instead.
 .ms-Dropdown-item.is-selected,
 .ms-Dropdown-item.ms-Dropdown-item--selected {
-  background-color: $ms-color-themeLight;
+  background-color: $Dropdown-selectedItem-bg;
   color: $ms-color-black;
-  line-height: 40px;
 
   &:hover {
-    background-color: $ms-color-themeLight;
+    background-color: $Dropdown-selectedItem-bg;
   }
+
+  @include focus-border();
 
   @include highContrastListItemState;
-}
-
-@media (min-width: $ms-screen-md-min) {
-  // On larger screens, display as a traditional dropdown.
-  .ms-Dropdown-items {
-    top: auto;
-    right: auto;
-    bottom: auto;
-    left: auto;
-    max-width: 100%;
-  }
-
-  .ms-Dropdown.ms-Dropdown--open .ms-Dropdown-items,
-  .ms-Dropdown.is-open .ms-Dropdown-items {
-    position: absolute;
-  }
-}
-
-// TODO: remove overrides below.
-
-.ms-Dropdown {
-  user-select: none;
-}
-
-.ms-Dropdown-items {
-  box-shadow: 0 0px 15px -5px rgba(0, 0, 0, 0.4);
-  border: 1px solid $ms-color-neutralLight;
-
-  &:before {
-    border: none;
-  }
-}
-
-.ms-Dropdown-item.is-selected {
-  line-height: 38px;
 }

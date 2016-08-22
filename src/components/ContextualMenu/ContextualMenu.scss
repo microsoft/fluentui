@@ -1,9 +1,9 @@
 @import '../../common/common';
 
 $ContextualMenu-background: $ms-color-white;
-$ContextualMenu-itemHover: $ms-color-neutralLight;
-$ContextualMenu-expandedItemBackground: $ms-color-themeLight;
-$ContextualMenu-itemHeight: 40px;
+$ContextualMenu-itemHover: $ms-color-neutralLighter;
+$ContextualMenu-expandedItemBackground: $ms-color-neutralQuaternaryAlt;
+$ContextualMenu-itemHeight: 36px;
 $ContextualMenu-iconWidth: 24px;
 
 .ms-ContextualMenu {
@@ -41,15 +41,22 @@ $ContextualMenu-iconWidth: 24px;
   height: $ContextualMenu-itemHeight;
   line-height: $ContextualMenu-itemHeight;
   display: block;
+  cursor: pointer;
   @include text-align(left);
 
   &:hover:not([disabled]) {
     background: $ContextualMenu-itemHover;
   }
 
+  .is-focusVisible &:focus {
+    background: $ContextualMenu-itemHover;
+  }
+
   &.is-expanded,
   &.is-expanded:hover {
     background: $ContextualMenu-expandedItemBackground;
+    color: $ms-color-black;
+    font-weight: $ms-font-weight-semibold;
   }
 }
 
@@ -73,6 +80,7 @@ $ContextualMenu-iconWidth: 24px;
   min-height: 1px;
   width: $ContextualMenu-iconWidth;
   text-align: center;
+  vertical-align: top;
 }
 
 .ms-ContextualMenu-itemText {

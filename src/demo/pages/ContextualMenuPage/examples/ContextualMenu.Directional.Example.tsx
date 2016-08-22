@@ -88,7 +88,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
               {
                 key: 'newItem',
                 name: 'New',
-                icon: 'circlePlus',
+                icon: 'CirclePlus',
                 items: [
                   {
                     key: 'emailMessage',
@@ -103,7 +103,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
               {
                 key: 'upload',
                 name: 'Upload',
-                icon: 'upload'
+                icon: 'Upload'
               },
               {
                 key: 'rename',
@@ -116,12 +116,12 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
               {
                 key: 'share',
                 name: 'Share',
-                icon: 'share',
+                icon: 'Share',
                 items: [
                   {
                     key: 'sharetoemail',
                     name: 'Share to Email',
-                    icon: 'mail'
+                    icon: 'Mail'
                   },
                   {
                     key: 'sharetofacebook',
@@ -130,14 +130,14 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
                   {
                     key: 'sharetotwitter',
                     name: 'Share to Twitter',
-                    icon: 'share'
+                    icon: 'Share'
                   },
                 ]
               },
               {
                 key: 'print',
                 name: 'Print',
-                icon: 'print'
+                icon: 'Print'
               },
             ]
           }

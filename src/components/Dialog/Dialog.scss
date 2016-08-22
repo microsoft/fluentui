@@ -7,6 +7,9 @@
 // --------------------------------------------------
 // Dialog styles
 
+$Dialog-lgHeader-backgroundColor: $ms-color-themePrimary;
+$Dialog-default-min-width: 288px;
+$Dialog-default-max-width: 340px;
 
 // Mixin for IE9 specific styles
 @mixin dialogPositioningIE9Fallback {
@@ -15,17 +18,16 @@
 }
 
 .ms-Dialog {
+  @include ms-baseFont;
   background-color: transparent;
   position: fixed;
   height: 100%;
   width:  100%;
   top:  0;
-  left: 0;
-  z-index: $ms-zIndex-Dialog;
+  @include left(0);
 
   // Fallback for IE9
   display: block;
-  font-size: 0;
   line-height: 100vh;
   text-align: center;
 
@@ -42,15 +44,13 @@
 
   .ms-Button.ms-Button--compound {
     display: block;
-    margin-left: 0;
+    @include margin-left(0);
   }
 
   .ms-Overlay {
-    z-index: $ms-zIndex-back;
-
-      @media screen and (-ms-high-contrast: active) {
-        opacity: 0;
-      }
+    @media screen and (-ms-high-contrast: active) {
+      opacity: 0;
+    }
   }
 }
 
@@ -62,48 +62,47 @@
   box-sizing: border-box;
   line-height: 1.35;
   margin: auto;
-  width: 288px;
+  width: $Dialog-default-min-width;
   position: relative;
-  text-align: left;
+  @include text-align(left);
   outline: 3px solid transparent;
 }
 
 // Close button, hidden by default
 .ms-Dialog-button.ms-Dialog-button--close {
   display: none;
-  position: absolute;
-  margin:  0;
-  padding: 0;
-  border: 0;
-  background: none;
-  cursor: pointer;
-  top: 12px;
-  right: 12px;
+  @include margin-right(8px);
   padding: 8px;
-  z-index: $ms-zIndex-front;
 
-  .ms-Icon.ms-Icon--x {
+  .ms-Icon.ms-Icon--Cancel {
     color: $ms-color-neutralSecondary;
-    font-size: $ms-font-size-m + 2;
+    font-size: 16px;
   }
 }
 
 .ms-Dialog-inner {
   height: 100%;
-  padding: 0 20px 20px;
+  padding: 0 28px 20px;
 }
 
 .ms-Dialog-header {
   position: relative;
+  display: table-row;
   width: 100%;
   box-sizing: border-box;
-  padding: 12px 20px 15px;
 }
 
 .ms-Dialog-title {
   margin: 0;
-  font-family: $ms-font-family-light;
-  font-size: $ms-font-size-xl;
+  display: table-cell;
+  @include ms-font-xl;
+  padding: 20px 28px 20px;
+  width: 100%;
+}
+
+.ms-Dialog-topButton {
+  display: table-cell;
+  padding: 1px;
 }
 
 .ms-Dialog-content {
@@ -111,17 +110,21 @@
   width: 100%;
 
   // Add margin bottom between compound buttons
-  .ms-Button.ms-Button--compound:not(:last-child) {
+  .ms-Button.ms-Button--compound {
     margin-bottom: 20px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
 .ms-Dialog-subText {
   margin: 0 0 20px 0;
   padding-top: 8px;
-  font-family: $ms-font-family-semilight;
-  color: $ms-color-neutralPrimary;
-  font-size: $ms-font-size-s;
+  @include ms-font-s;
+  font-weight: $ms-font-weight-semilight;
+  line-height: 1.5;
 }
 
 .ms-Dialog-actions {
@@ -137,36 +140,27 @@
   }
 }
 
+// Negative margin to needed to compensate for symmetric
+// padding between action elements.
 .ms-Dialog-actionsRight {
-  text-align: right;
+  @include text-align(right);
+  @include margin-right(-4px);
   font-size: 0;
 
   // Reset spacing for first button
-  .ms-Dialog-action:first-child {
-    margin: 0;
-  }
-
-  // Spacing between bottom buttons
-  .ms-Dialog-action + .ms-Dialog-action {
-    margin: 0 0 0 16px;
+  .ms-Dialog-action {
+    margin: 0px 4px;
   }
 }
-
 
 //= Modifier: Dialog with close button
 //
 .ms-Dialog.ms-Dialog--close:not(.ms-Dialog--lgHeader) {
-  // Push the right side over so the icon doesn't overlap the text
-  .ms-Dialog-title {
-    margin-right: 20px;
-  }
-
   // Show the close button
   .ms-Dialog-button.ms-Dialog-button--close {
     display: block;
   }
 }
-
 
 //= Modifier: Multiline button dialog
 //
@@ -180,20 +174,18 @@
   }
 }
 
-
 //= Modifier: Large header dialog
 //
 .ms-Dialog.ms-Dialog--lgHeader {
   .ms-Dialog-header {
-    background-color: $ms-color-themePrimary;
-    padding: 26px 20px 28px;
-    margin-bottom: 8px;
+    background-color: $Dialog-lgHeader-backgroundColor;
   }
 
   .ms-Dialog-title {
-    font-size: $ms-font-size-xxl;
-    font-family: $ms-font-family-light;
+    @include ms-font-xxl;
     color: $ms-color-white;
+    padding: 26px 28px 28px;
+    margin-bottom: 8px;
   }
 
   .ms-Dialog-subText {
@@ -201,13 +193,11 @@
   }
 }
 
-
-
 @media (min-width: $ms-screen-md-min) {
   // Allow wider dialog on larger screens
   .ms-Dialog-main {
     width: auto;
-    min-width: 288px;
-    max-width: 340px;
+    min-width: $Dialog-default-min-width;
+    max-width: $Dialog-default-max-width;
   }
 }

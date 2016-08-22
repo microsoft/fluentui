@@ -1,4 +1,4 @@
-@import "~office-ui-fabric/src/sass/Fabric.Common";
+@import '../../common/common';
 
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
 
@@ -12,8 +12,14 @@ $ProgressIndicatorMarginBetweenText: 8px;
 $ProgressIndicatorButtonsWidth: 218px;
 $ProgressIndicatorTextHeight: 18px;
 
+.ms-ProgressIndicator {
+  @include ms-baseFont;
+  font-weight: $ms-font-weight-regular;
+}
+
 .ms-ProgressIndicator-itemName {
-  @include ms-font-m();
+  color: $ms-color-neutralPrimary;
+  font-size: $ms-font-size-m;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -22,9 +28,8 @@ $ProgressIndicatorTextHeight: 18px;
 }
 
 .ms-ProgressIndicator-itemDescription {
-  @include ms-font-m();
   color: $ms-color-neutralSecondaryAlt;
-  font-size: 11px;
+  font-size: $ms-font-size-xs;
   line-height: $ProgressIndicatorTextHeight;
 }
 
@@ -43,9 +48,11 @@ $ProgressIndicatorTextHeight: 18px;
 }
 
 .ms-ProgressIndicator-progressBar {
-  position: absolute;
-  height: 2px;
   background-color: $ms-color-themePrimary;
+  height: 2px;
+  position: absolute;
+  transition: width .3s ease;
+  width: 0;
 
   @media screen and (-ms-high-contrast: active) {
     background-color: $ms-color-white;

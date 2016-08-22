@@ -48,7 +48,7 @@ export class ButtonBasicExample extends React.Component<any, IBasicButtonsExampl
         </Button>
 
         <Label>Icon button</Label>
-        <Button disabled={ areButtonsDisabled } buttonType={ ButtonType.icon } icon='star' rootProps={ { title: 'Star' } } ariaLabel='Take a star' />
+        <Button disabled={ areButtonsDisabled } buttonType={ ButtonType.icon } icon='Emoji2' rootProps={ { title: 'Emoji' } } ariaLabel='Emoji' />
 
         <Label>Button like anchor</Label>
         <Button

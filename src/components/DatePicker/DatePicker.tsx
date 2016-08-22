@@ -136,7 +136,7 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
             label={ label }
             placeholder={ placeholder }
             iconClass={ css(
-              'ms-Icon ms-Icon--event',
+              'ms-Icon ms-Icon--Event',
               label ? 'ms-DatePicker-event--with-label' : 'ms-DatePicker-event--without-label'
               ) }
             readOnly={ !allowTextInput }

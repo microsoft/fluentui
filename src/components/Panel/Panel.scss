@@ -313,9 +313,7 @@ $CommandBarHeight: 40px;
 
 // Header text at the top of the panel.
 .ms-Panel-headerText {
-  font-family: $ms-font-family-light;
-  font-size: $ms-font-size-xl;
-  color: $ms-color-neutralPrimary;
+  @include ms-font-xl;
   margin: 10px 0;
   padding: 4px 0;
   line-height: 1;

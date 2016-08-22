@@ -45,7 +45,7 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   color: $disabledForegroundColor;
 
   @include focus-border();
-  font-family: $ms-font-family-regular;
+  font-weight: $ms-font-weight-regular;
   position: relative;
   display: inline-block;
   box-sizing: border-box;

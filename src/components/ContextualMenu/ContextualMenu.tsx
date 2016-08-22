@@ -248,7 +248,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         {(hasCheckmarks) ? (
           <span
             className={
-              css('ms-ContextualMenu-checkmark', {'ms-Icon ms-Icon--check': item.isChecked, 'not-selected': !item.isChecked})
+              css('ms-ContextualMenu-checkmark', {'ms-Icon ms-Icon--CheckMark': item.isChecked, 'not-selected': !item.isChecked})
             }
             onClick={ this._onItemClick.bind(this, item) } />
         ) : (null) }
@@ -257,7 +257,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         ) : (null)}
         <span className='ms-ContextualMenu-itemText ms-fontWeight-regular'>{ item.name }</span>
         {(item.items && item.items.length) ? (
-          <i className={ css('ms-ContextualMenu-submenuChevron ms-Icon', getRTL() ? 'ms-Icon--chevronLeft' : 'ms-Icon--chevronRight') } />
+          <i className={ css('ms-ContextualMenu-submenuChevron ms-Icon', getRTL() ? 'ms-Icon--ChevronLeft' : 'ms-Icon--ChevronRight') } />
         ) : (null)}
       </div>
     );
