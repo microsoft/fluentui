@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './PropertiesTable.scss';
-import { DetailsList, DetailsListLayoutMode, IColumn } from '../../../components/DetailsList/index';
+import { DetailsList, DetailsListLayoutMode, IColumn, IGroup } from '../../../DetailsList';
 import { SelectionMode } from '../../../utilities/selection/interfaces';
 import { assign } from '../../../utilities/object';
 
@@ -14,8 +14,16 @@ export interface IProperty {
 export interface IInterfaceProperty {
   name: string;
   type: string;
-  defaultValue?: string;
+  defaultValue: string;
   description: string;
+  interfacePropertyType: InterfacePropertyType;
+  deprecatedMessage: string;
+}
+
+export enum InterfacePropertyType {
+  required = 0,
+  optional = 1,
+  deprecated = 2
 }
 
 export interface IEnumProperty {
@@ -104,17 +112,27 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
   constructor(props: IPropertiesTableProps) {
     super(props);
 
-    this.state = {
-      properties: props.properties
+    let properties = props.properties
         .map((prop, index) => assign({ key: index }, prop))
-        .sort((a, b) => (a.name < b.name) ? -1 : 1),
+        .sort((a, b) => (a.name > b.name) ? -1 : 1)
+        .sort((a, b) => (a.interfacePropertyType < b.interfacePropertyType) ? -1 : 1);
+
+    let groups = null;
+
+    if (!props.renderAsEnum) {
+      groups = this._getGroups(properties);
+    }
+
+    this.state = {
+      properties,
+      groups,
       isEnum: !!props.renderAsEnum
     };
   }
 
   public render() {
     let { title } = this.props;
-    let { properties, isEnum } = this.state;
+    let { properties, isEnum, groups } = this.state;
 
     return (
       <div className='PropertiesTable'>
@@ -123,7 +141,8 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
           <DetailsList
             selectionMode={ SelectionMode.none }
             layoutMode={ DetailsListLayoutMode.justified }
-            items={ properties.sort((a, b) => (a.name < b.name) ? -1 : 1) }
+            items={ properties }
+            groups={ groups }
             columns={ isEnum ? ENUM_COLUMNS : DEFAULT_COLUMNS }
             />
         ) : (
@@ -131,5 +150,42 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
           ) }
         </div>
     );
+  }
+
+  private _getGroups(props: IInterfaceProperty[]) {
+    let groups: IGroup[] = [];
+    let index = 0;
+
+    index = this._tryAddGroup(props, InterfacePropertyType.required, 'Required members', index, groups);
+    index = this._tryAddGroup(props, InterfacePropertyType.optional, 'Optional members', index, groups);
+    index = this._tryAddGroup(props, InterfacePropertyType.deprecated, 'Deprecated members', index, groups);
+
+    return groups;
+  }
+
+  private _tryAddGroup(props, typeToCompare: InterfacePropertyType, name: string, index: number, allGroups): number {
+    let group: IGroup;
+
+    while (index < props.length) {
+      let prop = props[index] ;
+
+      if (prop.interfacePropertyType !== typeToCompare) {
+        break;
+      }
+
+      if (!group) {
+        group = {
+          key: name,
+          name,
+          startIndex: index,
+          count: 0
+        };
+        allGroups.push(group);
+      }
+      group.count++;
+      index++;
+    }
+
+    return index;
   }
 }

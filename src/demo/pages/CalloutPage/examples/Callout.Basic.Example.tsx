@@ -38,6 +38,7 @@ export class CalloutBasicExample extends React.Component<any, ICalloutBaiscExamp
             gapSpace={ 20 }
             targetElement={ this._menuButtonElement }
             onDismiss={ this._onCalloutDismiss }
+            setInitialFocus={ true }
             >
             <div className='ms-Callout-header'>
               <p className='ms-Callout-title'>
