@@ -373,7 +373,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
       items.push({
         key: 'groupBy',
         name: 'Group By ' + column.name,
-        icon: 'listGroup2',
+        icon: 'groupingDescending',
         canCheck: true,
         isChecked: column.isGrouped,
         onClick: () => this._onGroupByColumn(column)
