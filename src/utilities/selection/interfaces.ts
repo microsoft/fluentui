@@ -39,8 +39,8 @@ export interface ISelection {
 
   // Write range selection methods.
 
-  selectToKey(key: string);
-  selectToIndex(index: number);
+  selectToKey(key: string, clearSelection?: boolean);
+  selectToIndex(index: number, clearSelection?: boolean);
 
   // Toggle helpers.
 

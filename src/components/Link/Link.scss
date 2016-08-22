@@ -52,5 +52,9 @@ BUTTON.ms-Link {
   display: inline;
   padding: 0;
   margin: 0;
+
+  width: inherit;
+  overflow: inherit;
+  text-overflow: inherit;
 }
 
