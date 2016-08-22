@@ -180,10 +180,6 @@
   &:active {
     .ms-Button-icon {
       color: $ms-color-themePrimary;
-
-      .ms-Icon {
-        border: 1px solid $ms-color-themePrimary;
-      }
     }
 
     .ms-Button-label {
