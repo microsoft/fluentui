@@ -14,9 +14,14 @@ build.postCopy.setConfig({
     'dist': [
       'src/**/*.png',
       'node_modules/react/dist/react.js',
-      'node_modules/react-dom/dist/react-dom.js',
-      'node_modules/office-ui-fabric/dist/fabric.min.css'
+      'node_modules/react-dom/dist/react-dom.js'
     ],
+    'dist/sass': [
+      'node_modules/office-ui-fabric/dist/sass/*.*'
+    ],
+    'dist/css': [
+      'node_modules/office-ui-fabric/dist/css/*.*'
+    ]
   }
 });
 
@@ -35,7 +40,7 @@ if (isProduction || isNuke) {
 gulp.task('install-deploy', function(cb) {
   let prompt = require('gulp-prompt');
 
-  gulp.src('index.html') 
+  gulp.src('index.html')
     .pipe(prompt.prompt([{
         type: 'input',
         name: 'host',
