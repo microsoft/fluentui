@@ -20,6 +20,15 @@ export interface IOnPortalsChangeEventArgs<TOptions> {
 
 export const PORTALS_CHANGE_EVENT_NAME = 'portalsChange';
 
+/**
+ * Component which manages a set of opened portals which can be used for content projection.
+ *
+ * @export
+ * @class PortalNexus
+ * @implements {IPortalNexus<TOptions>}
+ * @implements {IDisposable}
+ * @template TOptions
+ */
 export class PortalNexus<TOptions> implements IPortalNexus<TOptions>, IDisposable {
   private _state: IPortalNexusState<TOptions>;
   private _eventGroup: EventGroup;
@@ -34,10 +43,23 @@ export class PortalNexus<TOptions> implements IPortalNexus<TOptions>, IDisposabl
     };
   }
 
+  /**
+   * Stops this portal nexus from firing change events.
+   */
   public dispose() {
     this._eventGroup.dispose();
   }
 
+  /**
+   * Updates the state of a specific portal which should be managed by this nexus.
+   * If the portal is new, the nexus adds it as the last opened portal.
+   * If the portal is closed, the nexus removed it from its list of portals.
+   * For other updates, the nexus modifies its tracked state for the portal.
+   *
+   * This method must be called for any state update to a portal.
+   *
+   * @param {IPortal<TOptions>} portal
+   */
   public update(portal: IPortal<TOptions>): void {
     let {
       id: {
@@ -98,6 +120,11 @@ export class PortalNexus<TOptions> implements IPortalNexus<TOptions>, IDisposabl
     });
   }
 
+  /**
+   * Gets the current list of portals opened through this nexus.
+   *
+   * @returns {IPortal<TOptions>[]}
+   */
   public getPortals(): IPortal<TOptions>[] {
     return this._state.portals;
   }

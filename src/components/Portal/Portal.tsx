@@ -15,6 +15,17 @@ export interface IPortalState<TOptions> {
 
 let nextPortalId: number = 0;
 
+/**
+ * Component which projects content through a 'portal' opened via a 'nexus'.
+ * This component takes child `React` elements and attempts to render them
+ * elsewhere in the DOM, assisted via a `PortalNexus` implementation accessed
+ * via a `PortalNexusKey`.
+ *
+ * @export
+ * @class Portal
+ * @extends {React.Component<IPortalProps<TOptions>, IPortalState<TOptions>>}
+ * @template TOptions
+ */
 export class Portal<TOptions> extends React.Component<IPortalProps<TOptions>, IPortalState<TOptions>> {
   public static contextTypes = PORTAL_CONTEXT_PROP_TYPES;
 

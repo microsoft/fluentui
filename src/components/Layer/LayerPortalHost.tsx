@@ -11,6 +11,13 @@ export interface ILayerPortalHostState {
   // Nothing special.
 }
 
+/**
+ * Provides a host for portal content which should be rendered as individual layers on a glass pane.
+ *
+ * @export
+ * @class LayerPortalHost
+ * @extends {React.Component<ILayerPortalHostProps, ILayerPortalHostState>}
+ */
 export class LayerPortalHost extends React.Component<ILayerPortalHostProps, ILayerPortalHostState> {
   public render(): JSX.Element {
     let {

@@ -16,6 +16,13 @@ export const LAYER_CONTEXT_PROP_TYPES = {
 
 const LayerPortal: (new (props: IPortalProps<void>, ...args: any[]) => React.Component<IPortalProps<void>, any>) = Portal;
 
+/**
+ * Component which projects child elements onto a layer host.
+ *
+ * @export
+ * @class Layer
+ * @extends {React.Component<ILayerProps, {}>}
+ */
 export class Layer extends React.Component<ILayerProps, {}> {
   public static contextTypes = LAYER_CONTEXT_PROP_TYPES;
 

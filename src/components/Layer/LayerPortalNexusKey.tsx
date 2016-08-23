@@ -15,6 +15,14 @@ const layerPortalNexus = new PortalNexus<void>();
 
 let hostElement: HTMLDivElement;
 
+/**
+ * Handles changes to the default portal nexus, rendering updates on
+ * a 'glass pane' at the end of the DOM.
+ *
+ * @param {IOnPortalsChangeEventArgs<void>} {
+ *   portals
+ * }
+ */
 function onPortalsChange({
   portals
 }: IOnPortalsChangeEventArgs<void>) {
@@ -30,6 +38,9 @@ function onPortalsChange({
 
 eventGroup.on(layerPortalNexus, PORTALS_CHANGE_EVENT_NAME, onPortalsChange);
 
+/**
+ * The portal nexus key used for layers.
+ */
 export const layerPortalNexusKey: PortalNexusKey<void> = new PortalNexusKey<void>({
   name: 'layer',
   nexus: layerPortalNexus
