@@ -16,6 +16,8 @@ export class Layer extends React.Component<ILayerProps, {}> {
     super(layerProps, context);
 
     this._portalId = `layer_${++lastPortalId}`;
+
+    this._onLayerRef = this._onLayerRef.bind(this);
   }
 
   public render(): JSX.Element {
