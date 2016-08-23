@@ -249,7 +249,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         {(hasCheckmarks) ? (
           <span
             className={
-              css('ms-ContextualMenu-checkmark', {'ms-Icon ms-Icon--CheckMark': item.isChecked, 'not-selected': !item.isChecked})
+              css('ms-ContextualMenu-icon', {'ms-Icon ms-Icon--CheckMark': item.isChecked, 'not-selected': !item.isChecked})
             }
             onClick={ this._onItemClick.bind(this, item) } />
         ) : (null) }

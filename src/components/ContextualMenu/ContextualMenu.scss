@@ -4,7 +4,7 @@ $ContextualMenu-background: $ms-color-white;
 $ContextualMenu-itemHover: $ms-color-neutralLighter;
 $ContextualMenu-expandedItemBackground: $ms-color-neutralQuaternaryAlt;
 $ContextualMenu-itemHeight: 36px;
-$ContextualMenu-iconWidth: 24px;
+$ContextualMenu-iconWidth: 14px;
 
 .ms-ContextualMenu {
   background-color: $ContextualMenu-background;
@@ -36,7 +36,7 @@ $ContextualMenu-iconWidth: 24px;
   background: none;
   border: none;
   margin: 0;
-  padding: 0 8px;
+  padding: 0 4px;
   min-width: 100%;
   height: $ContextualMenu-itemHeight;
   line-height: $ContextualMenu-itemHeight;
@@ -68,23 +68,17 @@ $ContextualMenu-iconWidth: 24px;
   position: relative;
 }
 
-.ms-ContextualMenu-checkmark {
-  display: inline-block;
-  min-height: 1px;
-  width: $ContextualMenu-iconWidth;
-  text-align: center;
-}
-
 .ms-ContextualMenu-icon {
   display: inline-block;
   min-height: 1px;
   width: $ContextualMenu-iconWidth;
   text-align: center;
   vertical-align: top;
+  padding: 0px 4px;
 }
 
 .ms-ContextualMenu-itemText {
-  padding: 0 4px;
+  @include padding(0, 12px, 0, 4px);
 }
 
 .ms-Icon.ms-ContextualMenu-submenuChevron {
@@ -93,6 +87,6 @@ $ContextualMenu-iconWidth: 24px;
   line-height: $ContextualMenu-itemHeight;
   vertical-align: middle;
   @include right(8px);
-  width: 16px;
   text-align: center;
+  font-size: $ms-icon-size-xs;
 }
