@@ -17,20 +17,16 @@ export class LayerPortalHost extends React.Component<ILayerPortalHostProps, ILay
       portals = []
     } = this.props;
 
-    let layerElements = portals.filter((portal: IPortal<void>) => {
-      let {
-        status
-      } = portal;
-
+    let layerElements = portals.filter(({
+      status
+    }: IPortal<void>) => {
       return status === PortalStatus.opened;
-    }).map((portal: IPortal<void>) => {
-      let {
-        children,
-        id: {
-          id
-        }
-      } = portal;
-
+    }).map(({
+      children,
+      id: {
+        id
+      }
+    }: IPortal<void>) => {
       return (
         <div className='ms-LayerHost-layer' key={ id }>
           { children }
