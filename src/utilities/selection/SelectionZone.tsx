@@ -32,7 +32,7 @@ const SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME = 'data-selection-all-toggle';
 export interface ISelectionZoneProps extends React.Props<SelectionZone> {
   selection: ISelection;
   layout?: ISelectionLayout;
-  selectionMode: SelectionMode;
+  selectionMode?: SelectionMode;
   isSelectedOnFocus?: boolean;
   onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
 }
@@ -41,7 +41,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   public static defaultProps = {
     layout: new SelectionLayout(SelectionDirection.vertical),
     isMultiSelectEnabled: true,
-    isSelectedOnFocus: true
+    isSelectedOnFocus: true,
+    selectionMode: SelectionMode.multiple
   };
 
   public refs: {
