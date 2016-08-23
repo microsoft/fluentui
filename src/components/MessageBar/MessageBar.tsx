@@ -22,9 +22,9 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
     [MessageBarType.info]:    'Info',
     [MessageBarType.warning]: 'Info',
     [MessageBarType.error]: 'ErrorBadge',
-    [MessageBarType.remove]: 'CircleRing',
-    [MessageBarType.severeWarning]: 'IncidentTriangle',
-    [MessageBarType.success]: 'CircleRing'
+    [MessageBarType.blocked]: 'Blocked',
+    [MessageBarType.severeWarning]: 'Warning',
+    [MessageBarType.success]: 'Completed'
   };
 
   constructor(props: IMessageBarProps) {
@@ -54,7 +54,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
     return css(this.props.className, 'ms-MessageBar', {
       'ms-MessageBar': this.props.messageBarType === MessageBarType.info,
       'ms-MessageBar--error': this.props.messageBarType === MessageBarType.error,
-      'ms-MessageBar--remove': this.props.messageBarType === MessageBarType.remove,
+      'ms-MessageBar--blocked': this.props.messageBarType === MessageBarType.blocked,
       'ms-MessageBar--severeWarning': this.props.messageBarType === MessageBarType.severeWarning,
       'ms-MessageBar--success' : this.props.messageBarType === MessageBarType.success,
       'ms-MessageBar--warning' : this.props.messageBarType === MessageBarType.warning

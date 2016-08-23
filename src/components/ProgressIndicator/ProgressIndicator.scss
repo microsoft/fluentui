@@ -63,8 +63,6 @@ $ProgressIndicatorTextHeight: 18px;
   }
 }
 
-// TODO: Remove override below.
-
 .ms-ProgressIndicator-progressBar.smoothTransition {
   transition-property: width;
   transition-timing-function: linear;

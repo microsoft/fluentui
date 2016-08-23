@@ -7,7 +7,6 @@
 // --------------------------------------------------
 // Single line (input) and multiline (textarea) form field styles
 
-
 @import '../Label/Label.scss';
 
 .ms-TextField {
@@ -56,6 +55,7 @@
 
 .ms-TextField-field {
   @include ms-u-normalize;
+  @include ms-baseFont;
   border: 1px solid $ms-color-neutralTertiaryAlt;
   border-radius: 0;
   font-weight: $ms-font-weight-semilight;
@@ -66,6 +66,7 @@
   width: 100%;
   min-width: 180px;
   outline: 0;
+  text-overflow: ellipsis;
 
   &:hover {
     border-color: $ms-color-neutralSecondaryAlt;
@@ -101,38 +102,6 @@
 .ms-TextField-description {
   color: $ms-color-neutralSecondaryAlt;
   font-size: $ms-font-size-xs;
-}
-
-
-//== Modifier: Single line (default), placeholder label
-//
-.ms-TextField.ms-TextField--placeholder {
-  position: relative;
-  background-color: $ms-color-white;
-
-  .ms-TextField-field {
-    position: relative;
-    background-color: transparent;
-    z-index: $ms-zIndex-middle;
-  }
-
-  .ms-Label {
-    position: absolute;
-    font-weight: $ms-font-weight-semilight;
-    font-size: $ms-font-size-m;
-    color: $ms-color-neutralSecondary;
-    padding: 6px 12px 7px;
-    pointer-events: none;
-    z-index: $ms-zIndex-back;
-  }
-
-  &.is-disabled {
-    color: $ms-color-neutralTertiary;
-
-    .ms-Label {
-      @include ms-Label-is-disabled;
-    }
-  }
 }
 
 
@@ -220,6 +189,10 @@
 .ms-TextField.ms-TextField--multiline {
   .ms-TextField-field {
     @include ms-baseFont;
+    color: $ms-color-neutralSecondary;
+    font-family: $ms-font-family-base;
+    font-size: $ms-font-size-m;
+    font-weight: $ms-font-weight-regular;
     line-height: 17px;
     min-height: 60px;
     min-width: 260px;
