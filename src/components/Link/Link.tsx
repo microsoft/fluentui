@@ -53,8 +53,6 @@ export class Link extends React.Component<ILinkProps, any> {
 
     if (onClick) {
       onClick(ev);
-      ev.preventDefault();
-      ev.stopPropagation();
     }
   }
 

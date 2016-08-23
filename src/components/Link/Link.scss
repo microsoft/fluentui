@@ -53,7 +53,10 @@ BUTTON.ms-Link {
   padding: 0;
   margin: 0;
 
-  width: inherit;
+  // need to support ellipsis truncation, so we do this by default.
+  width: auto;
+  max-width: 100%;
+
   overflow: inherit;
   text-overflow: inherit;
 }
