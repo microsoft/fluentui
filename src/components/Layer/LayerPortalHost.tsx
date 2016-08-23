@@ -12,7 +12,7 @@ export interface ILayerPortalHostState {
 }
 
 export class LayerPortalHost extends React.Component<ILayerPortalHostProps, ILayerPortalHostState> {
-  public render() {
+  public render(): JSX.Element {
     let {
       portals = []
     } = this.props;

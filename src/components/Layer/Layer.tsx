@@ -6,20 +6,26 @@ import { layerPortalNexusKey } from './LayerPortalNexusKey';
 import { setVirtualParent } from '../../utilities/DomUtils';
 import './Layer.scss';
 
+export interface ILayerContext {
+  isInLayer?: boolean;
+}
+
+export const LAYER_CONTEXT_PROP_TYPES = {
+  isInLayer: React.PropTypes.bool
+};
+
 const LayerPortal: (new (props: IPortalProps<void>, ...args: any[]) => React.Component<IPortalProps<void>, any>) = Portal;
 
-let lastPortalId: number = 0;
-
 export class Layer extends React.Component<ILayerProps, {}> {
-  private _portalId: string;
+  public static contextTypes = LAYER_CONTEXT_PROP_TYPES;
+
+  public context: ILayerContext;
 
   private _layerElement: HTMLDivElement;
   private _layerContentElement: HTMLDivElement;
 
   constructor(layerProps: ILayerProps, context: any) {
     super(layerProps, context);
-
-    this._portalId = `layer_${++lastPortalId}`;
 
     this._onLayerRef = this._onLayerRef.bind(this);
     this._onLayerContentRef = this._onLayerContentRef.bind(this);
@@ -30,19 +36,27 @@ export class Layer extends React.Component<ILayerProps, {}> {
       children
     } = this.props;
 
-    let options: void;
+    let {
+      isInLayer = false
+    } = this.context;
 
-    return (
-      <div className='ms-Layer' ref={ this._onLayerRef }>
-        <LayerPortal
-          options={ options }
-          nexusKey={ layerPortalNexusKey }>
-          <div className='ms-Layer-content' data-parent-virtual-id={ this._portalId } ref={ this._onLayerContentRef }>
-            { children }
-          </div>
-        </LayerPortal>
-      </div>
-    );
+    if (isInLayer) {
+      return children as JSX.Element;
+    } else {
+      let options: void;
+
+      return (
+        <div className='ms-Layer' ref={ this._onLayerRef }>
+          <LayerPortal
+            options={ options }
+            nexusKey={ layerPortalNexusKey }>
+            <LayerContent contentRef={ this._onLayerContentRef }>
+              { children }
+            </LayerContent>
+          </LayerPortal>
+        </div>
+      );
+    }
   }
 
   private _onLayerRef(element: HTMLDivElement) {
@@ -78,3 +92,35 @@ export class Layer extends React.Component<ILayerProps, {}> {
     }
   }
 }
+
+interface ILayerContentProps extends React.Props<LayerContent> {
+  contentRef: (element: HTMLDivElement) => void;
+}
+
+interface ILayerContentState {
+  // Nothing special.
+}
+
+class LayerContent extends React.Component<ILayerContentProps, ILayerContentState> {
+  public static childContextTypes = LAYER_CONTEXT_PROP_TYPES;
+
+  public getChildContext(): ILayerContext {
+    return {
+      isInLayer: true
+    };
+  }
+
+  public render() {
+    let {
+      children,
+      contentRef
+    } = this.props;
+
+    return (
+      <div className='ms-Layer-content' ref={ contentRef }>
+        { children }
+      </div>
+    );
+  }
+}
+

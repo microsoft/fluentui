@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { IPortalId, IPortal, PortalStatus } from '../../utilities/portal/IPortal';
 import { PortalNexusKey } from '../../utilities/portal/PortalNexusKey';
+import { getPortalNexus, IPortalContext, PORTAL_CONTEXT_PROP_TYPES } from '../../utilities/portal/IPortalContext';
 
 export interface IPortalProps<TOptions> extends React.Props<Portal<TOptions>> {
   options: TOptions;
@@ -15,6 +16,10 @@ export interface IPortalState<TOptions> {
 let nextPortalId: number = 0;
 
 export class Portal<TOptions> extends React.Component<IPortalProps<TOptions>, IPortalState<TOptions>> {
+  public static contextTypes = PORTAL_CONTEXT_PROP_TYPES;
+
+  public context: IPortalContext;
+
   private _id: IPortalId<TOptions>;
 
   constructor(props: IPortalProps<TOptions>, context: any) {
@@ -46,9 +51,7 @@ export class Portal<TOptions> extends React.Component<IPortalProps<TOptions>, IP
       status = PortalStatus.initialized
     } = this.state;
 
-    let {
-      nexus
-    } = nexusKey;
+    let nexus = getPortalNexus(nexusKey, this.context);
 
     let {
       nexus: previousNexus
@@ -85,9 +88,7 @@ export class Portal<TOptions> extends React.Component<IPortalProps<TOptions>, IP
       nexusKey
     } = this.props;
 
-    let {
-      nexus
-    } = nexusKey;
+    let nexus = getPortalNexus(nexusKey, this.context);
 
     let portal: IPortal<TOptions> = {
       id: this._id,
