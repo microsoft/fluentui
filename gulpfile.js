@@ -5,9 +5,11 @@ let gulp = require('gulp');
 let configFile = "./ftpconfig.json";
 let fs = require('fs');
 
+let isProduction = process.argv.indexOf( '--production' ) >= 0;
+let isNuke = process.argv.indexOf( 'nuke' ) >= 0;
+
 /** @todo: disable lint config. */
 build.tslint.setConfig({ lintConfig: require('./tslint.json') });
-
 
 build.postCopy.setConfig({
   copyTo: {
@@ -15,7 +17,12 @@ build.postCopy.setConfig({
       'src/**/*.png',
       'node_modules/react/dist/react.js',
       'node_modules/react-dom/dist/react-dom.js'
-    ],
+    ]
+  }
+});
+
+isProduction && build.postCopy.setConfig({
+  copyTo: {
     'dist/sass': [
       'node_modules/office-ui-fabric/dist/sass/*.*'
     ],
@@ -27,9 +34,6 @@ build.postCopy.setConfig({
 
 // process *.Example.tsx as text.
 build.text.setConfig({ textMatch: ['src/**/*.txt', 'src/**/*.Example.tsx', 'src/**/*.Props.ts'] });
-
-let isProduction = process.argv.indexOf( '--production' ) >= 0;
-let isNuke = process.argv.indexOf( 'nuke' ) >= 0;
 
 if (isProduction || isNuke) {
   build.setConfig({
