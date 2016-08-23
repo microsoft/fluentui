@@ -13,7 +13,7 @@ export function setVirtualParent(child: HTMLElement, parent: HTMLElement) {
   if (!virtualChild._virtual) {
     virtualChild._virtual = {
       children: []
-    }
+    };
   }
 
   let oldParent = virtualChild._virtual.parent;
