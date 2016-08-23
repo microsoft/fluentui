@@ -10,9 +10,9 @@ export interface ITagSuggestionsProps extends IPickerSuggestionsProps {
 }
 
 export interface ITagSuggestionsState {
-  text: string;
-  suggestions: ITag[];
-  currentSuggestion: ITag;
+  text?: string;
+  suggestions?: ITag[];
+  selectedIndex?: number;
 };
 
 export class TagSuggestions extends React.Component<ITagSuggestionsProps, ITagSuggestionsState> {
@@ -27,8 +27,11 @@ export class TagSuggestions extends React.Component<ITagSuggestionsProps, ITagSu
     this.state = {
       text: undefined,
       suggestions: props.onResolveSuggestions(props.text, props.items),
-      currentSuggestion: undefined
+      selectedIndex: -1
     };
+
+    this.nextSuggestion = this.nextSuggestion.bind(this);
+    this.previousSuggestion = this.previousSuggestion.bind(this);
   }
 
   public componentWillReceiveProps(newProps: ITagSuggestionsProps) {
@@ -39,20 +42,44 @@ export class TagSuggestions extends React.Component<ITagSuggestionsProps, ITagSu
       this.setState({
         text: newProps.text,
         suggestions: suggestions,
-        currentSuggestion
-      });
-
-      if (suggestions.length > 0) {
-        newProps.onSuggestionAvailable(suggestions[0].name, suggestions[0]);
-      } else {
-        newProps.onSuggestionAvailable();
-      }
+        selectedIndex: suggestions.length > 0 ? 0 : -1
+      }, this._notifySuggestionAvailable);
     }
   }
 
+  public nextSuggestion(): boolean {
+    let { selectedIndex, suggestions } = this.state;
+
+    if (selectedIndex < (suggestions.length - 1)) {
+      this.setState({ selectedIndex: selectedIndex + 1 }, this._notifySuggestionAvailable);
+      return true;
+    }
+  }
+
+  public previousSuggestion(): boolean {
+    let { selectedIndex, suggestions } = this.state;
+
+    if (selectedIndex > 0) {
+      this.setState({ selectedIndex: selectedIndex - 1 }, this._notifySuggestionAvailable);
+      return true;
+    }
+  }
+
+  private _notifySuggestionAvailable() {
+    let { suggestions, selectedIndex } = this.state;
+    let suggestion = suggestions[selectedIndex];
+
+    this.props.onSuggestionAvailable({
+      text: suggestion ? suggestion.name : undefined,
+      item: suggestion,
+      onNextSuggestion: this.nextSuggestion,
+      onPreviousSuggestion: this.previousSuggestion
+    });
+
+  }
   public render() {
     let { text } = this.props;
-    let { suggestions, currentSuggestion } = this.state;
+    let { suggestions, selectedIndex } = this.state;
 
     return (
       <div className='ms-TagSuggestions'>
@@ -61,10 +88,9 @@ export class TagSuggestions extends React.Component<ITagSuggestionsProps, ITagSu
         </div>
 
         <div>
-
-          { suggestions.length ? suggestions.map(tag => (
+          { suggestions.length ? suggestions.map((tag, index) => (
             <div key={ tag.key } className={ css('ms-TagSuggestions-item', {
-              'is-suggested': currentSuggestion === tag
+              'is-suggested': selectedIndex === index
             }) }>{ tag.name }</div>
           )) : (
             <div className='ms-TagSuggestions-none'>None</div>

@@ -17,8 +17,7 @@ export interface IBasePickerState {
   items?: any;
   suggestions?: JSX.Element;
   value?: string;
-  suggestedText?: string;
-  suggestedItem?: any;
+  suggestionAvailable?: ISuggestionAvailable;
 }
 
 export interface IPickerItemProps {
@@ -28,11 +27,18 @@ export interface IPickerItemProps {
   onRemoveItem?: () => void;
 }
 
+export interface ISuggestionAvailable {
+  text?: string;
+  item?: any;
+  onNextSuggestion?: () => boolean;
+  onPreviousSuggestion?: () => boolean;
+}
+
 export interface IPickerSuggestionsProps {
   text?: string;
   items?: any[];
   selectedIndex?: number;
-  onSuggestionAvailable?: (text?: string, item?: any) => void;
+  onSuggestionAvailable?: (props: ISuggestionAvailable) => void;
   onDismiss?: () => void;
   onAddItem?: (item: any) => void;
   onRemoveItem: (item: any) => void;
@@ -132,13 +138,17 @@ export class BasePicker<P extends IBasePickerProps, S extends IBasePickerState> 
   }
 
   public completeSuggestion() {
-    this.addItem(this.state.suggestedItem);
-    this.setState({
-      value: '',
-      suggestedText: '',
-      suggestedItem: undefined,
-      suggestions: undefined
-    });
+    let { suggestionAvailable } = this.state;
+
+    if (suggestionAvailable) {
+      this.addItem(suggestionAvailable.item);
+
+      this.setState({
+        value: '',
+        suggestionAvailable: undefined,
+        suggestions: undefined
+      });
+    }
   }
 
   public completeEntry() {
@@ -188,9 +198,10 @@ export class BasePicker<P extends IBasePickerProps, S extends IBasePickerState> 
     }
   }
 
-  private _onSuggestionAvailable(text: string, item: any) {
+  private _onSuggestionAvailable(props: ISuggestionAvailable) {
     let differenceIndex = 0;
     let { value } = this.state;
+    let { text, item } = props;
 
     if (text) {
       while (differenceIndex < text.length && value[differenceIndex] === text[differenceIndex]) {
@@ -200,8 +211,7 @@ export class BasePicker<P extends IBasePickerProps, S extends IBasePickerState> 
 
     this.setState({
       value: text || value,
-      suggestedText: text,
-      suggestedItem: item
+      suggestionAvailable: props
     }, () => {
       if (text && differenceIndex < text.length) {
         this.refs.input.setSelectionRange(differenceIndex, text.length);
@@ -215,10 +225,10 @@ export class BasePicker<P extends IBasePickerProps, S extends IBasePickerState> 
 
   private _onInputChange(ev: React.FormEvent) {
     let { onRenderSuggestions } = this.props;
-    let { items, suggestedText } = this.state;
+    let { items, suggestionAvailable } = this.state;
     let value = (ev.target as HTMLInputElement).value;
 
-    if (value !== suggestedText) {
+    if (!suggestionAvailable || value !== suggestionAvailable.text) {
       if (value) {
         this.showSuggestions(value);
       } else {
@@ -234,7 +244,7 @@ export class BasePicker<P extends IBasePickerProps, S extends IBasePickerState> 
   }
 
   private _onKeyDown(ev: React.KeyboardEvent) {
-    let { value, suggestedItem } = this.state;
+    let { value, suggestionAvailable } = this.state;
 
     switch (ev.which) {
       case KeyCodes.escape:
@@ -243,7 +253,7 @@ export class BasePicker<P extends IBasePickerProps, S extends IBasePickerState> 
 
       case KeyCodes.tab:
       case KeyCodes.enter:
-        if (value && suggestedItem) {
+        if (value && suggestionAvailable) {
           this.completeSuggestion();
           ev.preventDefault();
           ev.stopPropagation();
@@ -253,7 +263,7 @@ export class BasePicker<P extends IBasePickerProps, S extends IBasePickerState> 
 
       case KeyCodes.backspace:
         if (ev.target === this.refs.input) {
-          if (value && value === this.state.suggestedText && this.refs.input.selectionStart !== this.refs.input.selectionEnd) {
+          if (value && suggestionAvailable && value === suggestionAvailable.text && this.refs.input.selectionStart !== this.refs.input.selectionEnd) {
             this.setState({
               value: value.substring(0, this.refs.input.selectionStart)
             });
@@ -269,7 +279,19 @@ export class BasePicker<P extends IBasePickerProps, S extends IBasePickerState> 
         this.completeEntry();
         break;
 
-      default:
+      case KeyCodes.up:
+        if (ev.target === this.refs.input && suggestionAvailable && suggestionAvailable.onPreviousSuggestion()) {
+          ev.preventDefault();
+          ev.stopPropagation();
+        };
+        break;
+
+      case KeyCodes.down:
+        if (ev.target === this.refs.input && suggestionAvailable && suggestionAvailable.onNextSuggestion()) {
+          ev.preventDefault();
+          ev.stopPropagation();
+        };
+        break;
     }
   }
 }
