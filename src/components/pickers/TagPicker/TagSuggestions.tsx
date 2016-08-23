@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { IPickerSuggestionsProps } from './BasePicker';
+import { IPickerSuggestionsProps } from '../BasePicker';
 import { ITag } from './TagPicker';
-import { TagItem } from './TagItem';
-import { css } from '../../utilities/css';
+import { css } from '../../../utilities/css';
 import './TagSuggestions.scss';
 
 export interface ITagSuggestionsProps extends IPickerSuggestionsProps {

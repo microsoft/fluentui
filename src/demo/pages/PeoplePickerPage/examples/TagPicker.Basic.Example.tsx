@@ -2,11 +2,11 @@ import * as React from 'react';
 import {
   TagPicker,
   ITagPickerProps
-} from '../../../../components/PeoplePicker/TagPicker';
+} from '../../../../components/pickers/TagPicker/TagPicker';
 
 import {
   TagSuggestions
-} from '../../../../components/PeoplePicker/TagSuggestions';
+} from '../../../../components/pickers/TagPicker/TagSuggestions';
 
 let _testTags = [
   'black',

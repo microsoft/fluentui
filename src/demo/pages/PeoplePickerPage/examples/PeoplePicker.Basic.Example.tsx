@@ -3,14 +3,14 @@ import {
   PeoplePicker,
   IPersonaProps
 } from '../../../../index';
-const PeopleData = require('./PeoplePickerExampleData');
+import { people } from './PeoplePickerExampleData';
 
 export interface IPeoplePickerExampleState {
   suggestions?: Array<IPersonaProps>;
 }
 
 export class PeoplePickerBasicExample extends React.Component<any, IPeoplePickerExampleState> {
-  private _peopleList = PeopleData;
+  private _peopleList = people;
 
   constructor() {
     super();

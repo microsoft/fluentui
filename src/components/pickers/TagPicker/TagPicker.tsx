@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BasePicker, IBasePickerProps } from './BasePicker';
+import { BasePicker, IBasePickerProps } from '../BasePicker';
 import { TagSuggestions } from './TagSuggestions';
 import { TagItem } from './TagItem';
 
@@ -18,7 +18,7 @@ export class TagPicker extends React.Component<ITagPickerProps, {}> {
 
     return (
       <BasePicker
-        onRenderItem={ props => <TagItem { ...props } />}
+        onRenderItem={ props => <TagItem { ...props }>{ props.item.name }</TagItem> }
         onRenderSuggestions={ props => <TagSuggestions { ...props } onResolveSuggestions={ onResolveSuggestions } /> }
       />
     );

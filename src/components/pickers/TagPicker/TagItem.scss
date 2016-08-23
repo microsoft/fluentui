@@ -1,4 +1,4 @@
-@import '../../common/common';
+@import '../../../common/common';
 
 .ms-TagItem {
   @include focus-border();
@@ -32,7 +32,7 @@
   white-space: nowrap;
 
   display: inline-block;
-  max-width: 100px;
+  min-width: 100px;
   margin: 0 8px;
 }
 

@@ -5,7 +5,7 @@ import { KeyCodes } from '../../utilities/KeyCodes';
 import { ISelection, Selection, SelectionZone } from '../../utilities/selection/index';
 import './BasePicker.scss';
 
-export interface IBasePickerProps {
+export interface IBasePickerProps extends React.Props<any> {
   onRenderItem: (item: IPickerItemProps) => JSX.Element;
   onRenderSuggestions: (props: IPickerSuggestionsProps) => JSX.Element;
 
@@ -20,7 +20,7 @@ export interface IBasePickerState {
   suggestionAvailable?: ISuggestionAvailable;
 }
 
-export interface IPickerItemProps {
+export interface IPickerItemProps extends React.Props<any> {
   item: any;
   index: number;
   isSelected: boolean;
@@ -34,7 +34,7 @@ export interface ISuggestionAvailable {
   onPreviousSuggestion?: () => boolean;
 }
 
-export interface IPickerSuggestionsProps {
+export interface IPickerSuggestionsProps extends React.Props<any> {
   text?: string;
   items?: any[];
   selectedIndex?: number;
