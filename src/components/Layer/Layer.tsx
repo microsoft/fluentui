@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 import { ILayerProps } from './Layer.Props';
-import { Portal, IPortalProps } from '../portal/Portal';
+import { Portal, IPortalProps } from '../Portal/Portal';
 import { layerPortalNexusKey } from './LayerPortalNexusKey';
 import { setVirtualParent } from '../../utilities/DomUtils';
 import './Layer.scss';

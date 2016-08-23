@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 
-import { IPortal, PortalStatus } from '../../utilities/portal/IPortal';
+import { IPortal, PortalStatus } from '../../utilities/Portal/IPortal';
 
 export interface ILayerPortalHostProps extends React.Props<LayerPortalHost> {
   portals: IPortal<void>[];

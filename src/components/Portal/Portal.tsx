@@ -1,8 +1,8 @@
 
 import * as React from 'react';
-import { IPortalId, IPortal, PortalStatus } from '../../utilities/portal/IPortal';
-import { PortalNexusKey } from '../../utilities/portal/PortalNexusKey';
-import { getPortalNexus, IPortalContext, PORTAL_CONTEXT_PROP_TYPES } from '../../utilities/portal/IPortalContext';
+import { IPortalId, IPortal, PortalStatus } from '../../utilities/Portal/IPortal';
+import { PortalNexusKey } from '../../utilities/Portal/PortalNexusKey';
+import { getPortalNexus, IPortalContext, PORTAL_CONTEXT_PROP_TYPES } from '../../utilities/Portal/IPortalContext';
 
 export interface IPortalProps<TOptions> extends React.Props<Portal<TOptions>> {
   options: TOptions;
