@@ -4,8 +4,8 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import * as ReactDOM from 'react-dom';
 
-import { PortalNexusKey } from '../../utilities/Portal/PortalNexusKey';
-import { PortalNexus, IOnPortalsChangeEventArgs, PORTALS_CHANGE_EVENT_NAME } from '../../utilities/Portal/PortalNexus';
+import { PortalNexusKey } from '../../utilities/portal/PortalNexusKey';
+import { PortalNexus, IOnPortalsChangeEventArgs, PORTALS_CHANGE_EVENT_NAME } from '../../utilities/portal/PortalNexus';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { LayerPortalHost } from './LayerPortalHost';
 
