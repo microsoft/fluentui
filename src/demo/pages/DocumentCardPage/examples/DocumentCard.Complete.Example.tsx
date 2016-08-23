@@ -55,9 +55,9 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
             activity='Created Feb 23, 2016'
             people={
               [
-                { name: 'Kat Larrson', profileImageSrc: 'dist/avatar-kat.png' },
-                { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-                { name: 'Tina Dasani', profileImageSrc: 'dist/avatar-kat.png' }
+                { name: 'Annie Lindqvist', profileImageSrc: 'images/persona-female.png' },
+                { name: 'Roko Kolar', profileImageSrc: '', initials: 'JH' },
+                { name: 'Greta Lundberg', profileImageSrc: 'images/persona-female.png' }
               ]
             }
           />
