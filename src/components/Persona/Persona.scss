@@ -97,6 +97,10 @@ $ms-Persona-presenceSizeXl: 28px;
   @media screen and (-ms-high-contrast: black-on-white) {
     border: 1px solid $ms-color-black;
   }
+
+  .ms-Image {
+    border: 0px;
+  }
 }
 
 //= Note: The doughboy placeholder is being deprecated.
