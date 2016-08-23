@@ -157,10 +157,12 @@ export class Selection implements ISelection {
   }
 
   public setAllSelected(isAllSelected: boolean) {
-    this._exemptedIndices = {};
-    this._exemptedCount = 0;
-    this._isAllSelected = isAllSelected;
-    this._updateCount();
+    if (this._exemptedCount > 0 || isAllSelected !== this._isAllSelected) {
+      this._exemptedIndices = {};
+      this._exemptedCount = 0;
+      this._isAllSelected = isAllSelected;
+      this._updateCount();
+    }
   }
 
   public setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean) {
