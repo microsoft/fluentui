@@ -86,7 +86,7 @@ $ms-Persona-presenceSizeXl: 28px;
   height: $ms-Persona-sizeMd;
   border-radius: 50%;
   z-index: $ms-zIndex-back;
-  width: 100%;
+  width: $ms-Persona-sizeMd;
   top: 0;
   @include left(0);
 
@@ -334,6 +334,7 @@ $ms-Persona-presenceSizeXl: 28px;
   .ms-Persona-imageArea,
   .ms-Persona-image {
     max-width: $ms-Persona-sizeXs;
+    width: $ms-Persona-sizeXs;
     height: $ms-Persona-sizeXs;
   }
 
@@ -375,6 +376,7 @@ $ms-Persona-presenceSizeXl: 28px;
   .ms-Persona-imageArea,
   .ms-Persona-image {
     max-width: $ms-Persona-sizeSm;
+    width: $ms-Persona-sizeSm;
     height: $ms-Persona-sizeSm;
   }
 
@@ -416,6 +418,7 @@ $ms-Persona-presenceSizeXl: 28px;
   .ms-Persona-imageArea,
   .ms-Persona-image {
     max-width: $ms-Persona-sizeLg;
+    width: $ms-Persona-sizeLg;
     height: $ms-Persona-sizeLg;
   }
 
@@ -463,6 +466,7 @@ $ms-Persona-presenceSizeXl: 28px;
   .ms-Persona-imageArea,
   .ms-Persona-image {
     max-width: $ms-Persona-sizeXl;
+    width: $ms-Persona-sizeXl;
     height: $ms-Persona-sizeXl;
   }
 
