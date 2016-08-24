@@ -68,8 +68,7 @@ export class Persona extends React.Component<IPersonaProps, any> {
 
         { presenceElement }
 
-        { !hidePersonaDetails && personaDetails }
-        { (hidePersonaDetails && (size === PersonaSize.tiny) && personaDetails) }
+        { (!hidePersonaDetails || (size === PersonaSize.tiny)) && personaDetails }
       </div>
     );
   }
