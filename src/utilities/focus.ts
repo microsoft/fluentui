@@ -131,14 +131,22 @@ export function getNextElement(
 }
 
 export function isElementVisible(element: HTMLElement): boolean {
-  return (
-    !!element &&
-      element.getAttribute && isVisibleAttribute(element) ?
-      element.getAttribute(IS_VISIBLE_ATTRIBUTE) === 'true' :
-      (element.offsetHeight !== 0 ||
-        element.offsetParent !== null ||
-        (element as any).isVisible === true) // used as a workaround for testing.
-  );
+  // If the element is not valid, return false.
+  if (!element || !element.getAttribute) {
+    return false;
+  }
+
+  let visibilityAttribute = element.getAttribute(IS_VISIBLE_ATTRIBUTE);
+
+  // If the element is explicitly marked with the visibility attribute, return that value as boolean.
+  if (visibilityAttribute !== null) {
+    return visibilityAttribute === 'true';
+  }
+
+  // Fallback to other methods of determining actual visibility.
+  return (element.offsetHeight !== 0 ||
+    element.offsetParent !== null ||
+    (element as any).isVisible === true); // used as a workaround for testing.
 }
 
 export function isElementTabbable(element: HTMLElement): boolean {
@@ -152,8 +160,4 @@ export function isElementTabbable(element: HTMLElement): boolean {
 
 export function isElementFocusZone(element?: HTMLElement): boolean {
   return element && !!element.getAttribute(FOCUSZONE_ID_ATTRIBUTE);
-}
-
-export function isVisibleAttribute(element?: HTMLElement): boolean {
-  return element && !!element.getAttribute(IS_VISIBLE_ATTRIBUTE);
 }
