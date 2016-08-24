@@ -9,7 +9,6 @@ $ContextualMenu-iconWidth: 24px;
 .ms-ContextualMenu {
   background-color: $ContextualMenu-background;
   min-width: 180px;
-  max-width: 300px;
 }
 
 .ms-ContextualMenu-list {
@@ -51,6 +50,10 @@ $ContextualMenu-iconWidth: 24px;
   &.is-expanded:hover {
     background: $ContextualMenu-expandedItemBackground;
   }
+}
+
+.ms-ContextualMenu-linkContent {
+  white-space: nowrap;
 }
 
 .ms-ContextualMenu-divider {
