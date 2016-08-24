@@ -55,9 +55,9 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
             activity='Created Feb 23, 2016'
             people={
               [
-                { name: 'Kat Larrson', profileImageSrc: 'dist/avatar-kat.png' },
-                { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-                { name: 'Tina Dasani', profileImageSrc: 'dist/avatar-kat.png' }
+                { name: 'Annie Lindqvist', profileImageSrc: 'images/persona-female.png' },
+                { name: 'Roko Kolar', profileImageSrc: '', initials: 'JH' },
+                { name: 'Greta Lundberg', profileImageSrc: 'images/persona-female.png' }
               ]
             }
           />
@@ -65,7 +65,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           actions={
             [
               {
-                icon: 'share',
+                icon: 'Share',
                 onClick: (ev: any) => {
                   console.log('You clicked the share action.');
                   ev.preventDefault();
@@ -74,22 +74,22 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
                 ariaLabel: 'share action'
               },
               {
-                icon: 'pinLeft',
+                icon: 'Pin',
                 onClick: (ev: any) => {
                   console.log('You clicked the pin action.');
                   ev.preventDefault();
                   ev.stopPropagation();
                 },
-                ariaLabel: 'pin left action'
+                ariaLabel: 'pin action'
               },
               {
-                icon: 'bell',
+                icon: 'Ringer',
                 onClick: (ev: any) => {
-                  console.log('You clicked the bell action.');
+                  console.log('You clicked the ringer action.');
                   ev.preventDefault();
                   ev.stopPropagation();
                 },
-                ariaLabel: 'bell action'
+                ariaLabel: 'ringer action'
               },
             ]
           }

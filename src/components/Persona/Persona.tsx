@@ -49,6 +49,14 @@ export class Persona extends React.Component<IPersonaProps, any> {
       presenceElement = <div className='ms-Persona-presence'>{ statusIcon }</div>;
     }
 
+    let personaDetails = <div className='ms-Persona-details'>
+            <div className='ms-Persona-primaryText'>{ primaryText }</div>
+            { secondaryText ? (
+              <div className='ms-Persona-secondaryText'>{ secondaryText }</div>
+            ) : (null) }
+            <div className='ms-Persona-tertiaryText'>{ tertiaryText }</div>
+            <div className='ms-Persona-optionalText'>{ optionalText }</div>
+          </div>;
     return (
       <div { ... this.props as any } className={ css('ms-Persona', className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence]) }>
         { size !== PersonaSize.tiny && (
@@ -60,15 +68,7 @@ export class Persona extends React.Component<IPersonaProps, any> {
 
         { presenceElement }
 
-        { !hidePersonaDetails && (
-          <div className='ms-Persona-details'>
-            <div className='ms-Persona-primaryText'>{ primaryText }</div>
-            { secondaryText ? (
-              <div className='ms-Persona-secondaryText'>{ secondaryText }</div>
-            ) : (null) }
-            <div className='ms-Persona-tertiaryText'>{ tertiaryText }</div>
-            <div className='ms-Persona-optionalText'>{ optionalText }</div>
-          </div>) }
+        { (!hidePersonaDetails || (size === PersonaSize.tiny)) && personaDetails }
       </div>
     );
   }

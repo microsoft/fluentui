@@ -19,7 +19,7 @@
 
   .ms-Label {
     font-size: $ms-font-size-m;
-    font-weight: $ms-font-weight-semibold;
+    font-weight: $ms-font-weight-regular;
   }
 }
 
@@ -58,7 +58,7 @@
   @include ms-baseFont;
   border: 1px solid $ms-color-neutralTertiaryAlt;
   border-radius: 0;
-  font-weight: $ms-font-weight-semilight;
+  font-weight: $ms-font-weight-regular;
   font-size: $ms-font-size-m;
   color: $ms-color-neutralPrimary;
   height: 32px;
@@ -189,7 +189,7 @@
 .ms-TextField.ms-TextField--multiline {
   .ms-TextField-field {
     @include ms-baseFont;
-    color: $ms-color-neutralSecondary;
+    color: $ms-color-neutralPrimary;
     font-family: $ms-font-family-base;
     font-size: $ms-font-size-m;
     font-weight: $ms-font-weight-regular;

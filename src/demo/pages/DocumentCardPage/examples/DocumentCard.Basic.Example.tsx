@@ -31,7 +31,7 @@ export class DocumentCardBasicExample extends React.Component<any, any> {
             activity='Created Feb 23, 2016'
             people={
               [
-                { name: 'Kat Larrson', profileImageSrc: 'dist/avatar-kat.png' }
+                { name: 'Annie Lindqvist', profileImageSrc: 'images/persona-female.png' }
               ]
             }
           />
