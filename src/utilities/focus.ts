@@ -133,10 +133,11 @@ export function getNextElement(
 export function isElementVisible(element: HTMLElement): boolean {
   return (
     !!element &&
-    (element.offsetHeight !== 0 ||
-      element.offsetParent !== null ||
-      (element as any).isVisible === true || // used as a workaround for testing.
-      (element.getAttribute && element.getAttribute(IS_VISIBLE_ATTRIBUTE) === 'true'))
+      element.getAttribute && isVisibleAttribute(element) ?
+      element.getAttribute(IS_VISIBLE_ATTRIBUTE) === 'true' :
+      (element.offsetHeight !== 0 ||
+        element.offsetParent !== null ||
+        (element as any).isVisible === true) // used as a workaround for testing.
   );
 }
 
@@ -151,4 +152,8 @@ export function isElementTabbable(element: HTMLElement): boolean {
 
 export function isElementFocusZone(element?: HTMLElement): boolean {
   return element && !!element.getAttribute(FOCUSZONE_ID_ATTRIBUTE);
+}
+
+export function isVisibleAttribute(element?: HTMLElement): boolean {
+  return element && !!element.getAttribute(IS_VISIBLE_ATTRIBUTE);
 }
