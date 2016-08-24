@@ -42,23 +42,24 @@ export interface IPickerSuggestionsProps extends React.Props<any> {
   onDismiss?: () => void;
   onAddItem?: (item: any) => void;
   onRemoveItem: (item: any) => void;
+  onRenderSuggestion?: (props: any, index: number) => JSX.Element;
 }
 
 export interface IPickerSuggestions<T> {
   selectedItem?: T;
 }
 
-export class BasePicker<P extends IBasePickerProps, S extends IBasePickerState> extends React.Component<P, IBasePickerState> {
+export class BasePicker<S extends IBasePickerProps> extends React.Component<S, IBasePickerState> {
   public refs: {
-    [ key: string ]: React.ReactInstance;
+    [key: string]: React.ReactInstance;
     root: HTMLElement;
     input: HTMLInputElement;
     focusZone: FocusZone;
   };
 
-  private _selection: Selection;
+  protected _selection: Selection;
 
-  constructor(props: P) {
+  constructor(props: S) {
     super(props);
 
     let items = props.defaultItems || [];
@@ -88,27 +89,17 @@ export class BasePicker<P extends IBasePickerProps, S extends IBasePickerState> 
   }
 
   public render() {
-    let { onRenderItem = () => undefined } = this.props;
-    let { items, suggestions, value } = this.state;
+    let { value } = this.state;
 
     return (
       <div ref='root' className='ms-BasePicker' onKeyDown={ this._onKeyDown }>
         <SelectionZone selection={ this._selection }>
           <FocusZone ref='focusZone' className='ms-BasePicker-text'>
-            { items.map((item, index) => onRenderItem({
-              item,
-              index,
-              isSelected: this._selection.isIndexSelected(index),
-              onRemoveItem: () => this.removeItem(item)
-            })) }
+            { this.renderItems() }
             <input ref='input' className='ms-BasePicker-input' onFocus={ this._onInputFocus } onChange={ this._onInputChange } value={ value } />
           </FocusZone>
         </SelectionZone>
-        { suggestions && (
-        <Callout isBeakVisible={ false } gapSpace={ 0 } targetElement={ this.refs.root } onDismiss={ this.dismissSuggestions }>
-          { suggestions }
-        </Callout>
-        ) }
+        { this.renderSuggestions() }
       </div>
     );
   }
@@ -156,7 +147,7 @@ export class BasePicker<P extends IBasePickerProps, S extends IBasePickerState> 
   }
 
   public addItem(item: any) {
-    let newItems = this.state.items.concat([ item ]);
+    let newItems = this.state.items.concat([item]);
     this._selection.setItems(newItems);
     this.setState({ items: newItems });
   }
@@ -184,7 +175,27 @@ export class BasePicker<P extends IBasePickerProps, S extends IBasePickerState> 
     this.setState({ items: newItems }, () => this._resetFocus(index));
   }
 
-  private _resetFocus(index: number) {
+  protected renderItems(): JSX.Element[] {
+    let { onRenderItem = () => undefined } = this.props;
+    let { items } = this.state;
+    return items.map((item, index) => onRenderItem({
+      item,
+      index,
+      isSelected: this._selection.isIndexSelected(index),
+      onRemoveItem: () => this.removeItem(item)
+    }));
+  }
+
+  protected renderSuggestions(): JSX.Element {
+    let { suggestions } = this.state
+    return suggestions ? (
+          <Callout isBeakVisible={ false } gapSpace={ 0 } targetElement={ this.refs.root } onDismiss={ this.dismissSuggestions }>
+            { suggestions }
+          </Callout>
+        ) : (null);
+  }
+
+  protected _resetFocus(index: number) {
     let { items } = this.state;
 
     if (items.length) {
@@ -198,7 +209,7 @@ export class BasePicker<P extends IBasePickerProps, S extends IBasePickerState> 
     }
   }
 
-  private _onSuggestionAvailable(props: ISuggestionAvailable) {
+  protected _onSuggestionAvailable(props: ISuggestionAvailable) {
     let differenceIndex = 0;
     let { value } = this.state;
     let { text, item } = props;
@@ -219,11 +230,11 @@ export class BasePicker<P extends IBasePickerProps, S extends IBasePickerState> 
     });
   }
 
-  private _onSelectionChange() {
+  protected _onSelectionChange() {
     this.forceUpdate();
   }
 
-  private _onInputChange(ev: React.FormEvent) {
+  protected _onInputChange(ev: React.FormEvent) {
     let { onRenderSuggestions } = this.props;
     let { items, suggestionAvailable } = this.state;
     let value = (ev.target as HTMLInputElement).value;
@@ -239,11 +250,11 @@ export class BasePicker<P extends IBasePickerProps, S extends IBasePickerState> 
     this.setState({ value: value });
   }
 
-  private _onInputFocus(ev: React.FocusEvent) {
+  protected _onInputFocus(ev: React.FocusEvent) {
     this._selection.setAllSelected(false);
   }
 
-  private _onKeyDown(ev: React.KeyboardEvent) {
+  protected _onKeyDown(ev: React.KeyboardEvent) {
     let { value, suggestionAvailable } = this.state;
 
     switch (ev.which) {
@@ -275,22 +286,18 @@ export class BasePicker<P extends IBasePickerProps, S extends IBasePickerState> 
         }
         break;
 
-      case KeyCodes.enter:
-        this.completeEntry();
-        break;
-
       case KeyCodes.up:
         if (ev.target === this.refs.input && suggestionAvailable && suggestionAvailable.onPreviousSuggestion()) {
           ev.preventDefault();
           ev.stopPropagation();
-        };
+        }
         break;
 
       case KeyCodes.down:
         if (ev.target === this.refs.input && suggestionAvailable && suggestionAvailable.onNextSuggestion()) {
           ev.preventDefault();
           ev.stopPropagation();
-        };
+        }
         break;
     }
   }

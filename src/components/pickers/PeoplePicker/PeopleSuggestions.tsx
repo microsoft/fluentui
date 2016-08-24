@@ -6,6 +6,7 @@ import './PeopleSuggestions.scss';
 
 export interface IPeopleSuggestionsProps extends IPickerSuggestionsProps {
   onResolveSuggestions: (text?: string, selectedItems?: IPersonaProps[]) => IPersonaProps[];
+  onRenderSuggestion: (props: IPersonaProps, index: number) => JSX.Element;
 }
 
 export interface IPeopleSuggestionsState {
@@ -87,16 +88,32 @@ export class PeopleSuggestions extends React.Component<IPeopleSuggestionsProps, 
         </div>
 
         <div>
-          { suggestions.length ? suggestions.map((persona: IPersonaProps, index) => (
-            <div key={ persona.key } className={ css('ms-PeopleSuggestions-item', {
-              'is-suggested': selectedIndex === index
-            }) }><Persona { ...persona } /></div>
-          )) : (
-            <div className='ms-PeopleSuggestions-none'>None</div>
-          ) }
+          { this._renderSuggestions() }
         </div>
       </div>
     );
+  }
+
+  private _renderSuggestions(): JSX.Element[] {
+    let { suggestions, selectedIndex } = this.state;
+    if (!suggestions.length) {
+      return [<div className='ms-PeopleSuggestions-none'>None</div>];
+    }
+    if (this.props.onRenderSuggestion) {
+      return this.state.suggestions.map((persona: IPersonaProps, index) =>
+        <div key={ persona.key } className={ css('ms-PeopleSuggestions-item', {
+          'is-suggested': selectedIndex === index
+        }) }>
+          {this.props.onRenderSuggestion(persona, index) }
+        </div>);
+    }
+    else {
+      return suggestions.map((persona: IPersonaProps, index) => (
+        <div key={ persona.key } className={ css('ms-PeopleSuggestions-item', {
+          'is-suggested': selectedIndex === index
+        }) }><Persona { ...persona } /></div>
+      ));
+    }
   }
 
 }
