@@ -63,7 +63,7 @@ export class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState>
 
   private _clearInput(ev?: any) {
     this.setState({
-      value: undefined
+      value: ""
     });
     ev.stopPropagation();
     ev.preventDefault();
