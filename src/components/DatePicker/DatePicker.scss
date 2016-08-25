@@ -12,7 +12,7 @@
   line-height: 20px;
   pointer-events: none;
   position: absolute;
-  @include right(5px);
+  @include right(9px);
   z-index: $ms-zIndex-middle;
 }
 
@@ -26,6 +26,10 @@
 
     input::-ms-clear {
       display: none;
+    }
+
+    input[readonly] {
+      cursor: pointer;
     }
   }
 }
@@ -366,7 +370,7 @@
   .ms-DatePicker-weekday {
     width: 30px;
     height: 30px;
-    line-height: 30px;
+    line-height: 28px;
     font-weight: $ms-font-weight-semibold;
     font-size: $ms-font-size-s;
   }
@@ -470,7 +474,7 @@
     .ms-DatePicker-yearOption {
       width: 40px;
       height: 40px;
-      line-height: 40px;
+      line-height: 38px;
       font-size: 12px;
       @include margin(0, 10px, 10px, 0);
 
@@ -548,7 +552,6 @@
 .ms-DatePicker-prevMonth,
 .ms-DatePicker-nextYear,
 .ms-DatePicker-prevYear {
-  float: none;
   display: inline-block;
 }
 
