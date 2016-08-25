@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IPickerSuggestionsProps } from '../BasePicker';
 import { IPersonaProps, Persona } from '../../Persona';
 import { css } from '../../../utilities/css';
+import { Button } from '../../Button';
 import './PeopleSuggestions.scss';
 
 export interface IPeopleSuggestionsProps extends IPickerSuggestionsProps {
@@ -32,6 +33,7 @@ export class PeopleSuggestions extends React.Component<IPeopleSuggestionsProps, 
 
     this.nextSuggestion = this.nextSuggestion.bind(this);
     this.previousSuggestion = this.previousSuggestion.bind(this);
+    this.clickSuggestion = this.clickSuggestion.bind(this);
   }
 
   public componentWillReceiveProps(newProps: IPeopleSuggestionsProps) {
@@ -45,6 +47,22 @@ export class PeopleSuggestions extends React.Component<IPeopleSuggestionsProps, 
         selectedIndex: suggestions.length > 0 ? 0 : -1
       }, this._notifySuggestionAvailable);
     }
+  }
+
+  public render() {
+    let { text } = this.props;
+    let { suggestions, selectedIndex } = this.state;
+
+    return (
+      <div className='ms-PeopleSuggestions'>
+        <div className='ms-PeopleSuggestions-title'>
+          { `Suggestions for "${text}"` }
+        </div>
+        <div>
+          { this._renderSuggestions() }
+        </div>
+      </div>
+    );
   }
 
   public nextSuggestion(): boolean {
@@ -65,6 +83,21 @@ export class PeopleSuggestions extends React.Component<IPeopleSuggestionsProps, 
     }
   }
 
+  public clickSuggestion(ev: React.MouseEvent, index: number) {
+    if (index !== undefined) {
+      this.setState({ selectedIndex: index });
+      let { suggestions } = this.state;
+      let suggestion = suggestions[index];
+      return {
+        text: suggestion ? suggestion.name : undefined,
+        item: suggestion,
+        onNextSuggestion: this.nextSuggestion,
+        onPreviousSuggestion: this.previousSuggestion,
+        onSuggestionClick: this.clickSuggestion
+      };
+    }
+  }
+
   private _notifySuggestionAvailable() {
     let { suggestions, selectedIndex } = this.state;
     let suggestion = suggestions[selectedIndex];
@@ -73,25 +106,9 @@ export class PeopleSuggestions extends React.Component<IPeopleSuggestionsProps, 
       text: suggestion ? suggestion.name : undefined,
       item: suggestion,
       onNextSuggestion: this.nextSuggestion,
-      onPreviousSuggestion: this.previousSuggestion
+      onPreviousSuggestion: this.previousSuggestion,
+      onSuggestionClick: this.clickSuggestion
     });
-
-  }
-  public render() {
-    let { text } = this.props;
-    let { suggestions, selectedIndex } = this.state;
-
-    return (
-      <div className='ms-PeopleSuggestions'>
-        <div className='ms-PeopleSuggestions-title'>
-          { `Suggestions for "${text}"` }
-        </div>
-
-        <div>
-          { this._renderSuggestions() }
-        </div>
-      </div>
-    );
   }
 
   private _renderSuggestions(): JSX.Element[] {
@@ -100,12 +117,14 @@ export class PeopleSuggestions extends React.Component<IPeopleSuggestionsProps, 
       return [<div className='ms-PeopleSuggestions-none'>None</div>];
     }
     if (this.props.onRenderSuggestion) {
-      return this.state.suggestions.map((persona: IPersonaProps, index) =>
-        <div key={ persona.key } className={ css('ms-PeopleSuggestions-item', {
-          'is-suggested': selectedIndex === index
-        }) }>
-          {this.props.onRenderSuggestion(persona, index) }
-        </div>);
+      return this.state.suggestions.map((persona: IPersonaProps, index: number) =>
+        <Button
+          key={ persona.key }
+          className={ css('ms-PeopleSuggestions-item', { 'is-suggested': selectedIndex === index }) }
+          onClick={ (ev: React.MouseEvent) => this.props.onSuggestionClick(ev, index) }
+          >
+          { this.props.onRenderSuggestion(persona, index) }
+        </Button>);
     }
     else {
       return suggestions.map((persona: IPersonaProps, index) => (

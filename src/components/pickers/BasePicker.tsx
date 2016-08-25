@@ -32,6 +32,7 @@ export interface ISuggestionAvailable {
   item?: any;
   onNextSuggestion?: () => boolean;
   onPreviousSuggestion?: () => boolean;
+  onSuggestionClick?: (ev: React.MouseEvent, index: number) => ISuggestionAvailable;
 }
 
 export interface IPickerSuggestionsProps extends React.Props<any> {
@@ -43,6 +44,7 @@ export interface IPickerSuggestionsProps extends React.Props<any> {
   onAddItem?: (item: any) => void;
   onRemoveItem: (item: any) => void;
   onRenderSuggestion?: (props: any, index: number) => JSX.Element;
+  onSuggestionClick?: (ev: React.MouseEvent, index: number) => void;
 }
 
 export interface IPickerSuggestions<T> {
@@ -78,12 +80,13 @@ export class BasePicker<S extends IBasePickerProps> extends React.Component<S, I
     this._onInputFocus = this._onInputFocus.bind(this);
     this.dismissSuggestions = this.dismissSuggestions.bind(this);
     this.addItem = this.addItem.bind(this);
+    this._onSuggestionClick = this._onSuggestionClick.bind(this);
 
     this.removeItem = this.removeItem.bind(this);
   }
 
   public componentWillReceiveProps(newProps: IBasePickerProps, newState: IBasePickerState) {
-    if (newState.items !== this.state.items) {
+    if (newState.items && newState.items !== this.state.items) {
       this._selection.setItems(newState.items);
     }
   }
@@ -119,7 +122,8 @@ export class BasePicker<S extends IBasePickerProps> extends React.Component<S, I
         onDismiss: this.dismissSuggestions,
         onAddItem: this.addItem,
         onRemoveItem: this.removeItem,
-        onSuggestionAvailable: this._onSuggestionAvailable
+        onSuggestionAvailable: this._onSuggestionAvailable,
+        onSuggestionClick: this._onSuggestionClick
       })
     });
   }
@@ -140,10 +144,6 @@ export class BasePicker<S extends IBasePickerProps> extends React.Component<S, I
         suggestions: undefined
       });
     }
-  }
-
-  public completeEntry() {
-
   }
 
   public addItem(item: any) {
@@ -189,10 +189,10 @@ export class BasePicker<S extends IBasePickerProps> extends React.Component<S, I
   protected renderSuggestions(): JSX.Element {
     let { suggestions } = this.state
     return suggestions ? (
-          <Callout isBeakVisible={ false } gapSpace={ 0 } targetElement={ this.refs.root } onDismiss={ this.dismissSuggestions }>
-            { suggestions }
-          </Callout>
-        ) : (null);
+      <Callout isBeakVisible={ false } gapSpace={ 0 } targetElement={ this.refs.root } onDismiss={ this.dismissSuggestions }>
+        { suggestions }
+      </Callout>
+    ) : (null);
   }
 
   protected _resetFocus(index: number) {
@@ -273,17 +273,7 @@ export class BasePicker<S extends IBasePickerProps> extends React.Component<S, I
         break;
 
       case KeyCodes.backspace:
-        if (ev.target === this.refs.input) {
-          if (value && suggestionAvailable && value === suggestionAvailable.text && this.refs.input.selectionStart !== this.refs.input.selectionEnd) {
-            this.setState({
-              value: value.substring(0, this.refs.input.selectionStart)
-            });
-          } else if (!value && this.state.items.length) {
-            this.removeItem(this.state.items[this.state.items.length - 1]);
-          }
-        } else if (this._selection.getSelectedCount() > 0) {
-          this.removeItems(this._selection.getSelection());
-        }
+        this._onBackSpace(ev);
         break;
 
       case KeyCodes.up:
@@ -299,6 +289,48 @@ export class BasePicker<S extends IBasePickerProps> extends React.Component<S, I
           ev.stopPropagation();
         }
         break;
+    }
+  }
+
+  protected _onSuggestionClick(ev: React.MouseEvent, index: number): void {
+    let { suggestionAvailable } = this.state
+    if (suggestionAvailable) {
+      let props = suggestionAvailable.onSuggestionClick(ev, index)
+      let differenceIndex = 0;
+      let { value } = this.state;
+      let { text, item } = props;
+
+      if (text) {
+        while (differenceIndex < text.length && value[differenceIndex] === text[differenceIndex]) {
+          differenceIndex++;
+        }
+      }
+
+      this.setState({
+        value: text || value,
+        suggestionAvailable: props
+      }, () => {
+        if (text && differenceIndex < text.length) {
+          this.refs.input.setSelectionRange(differenceIndex, text.length);
+        }
+        this.completeSuggestion();
+      });
+    }
+  }
+
+
+  protected _onBackSpace(ev: React.KeyboardEvent) {
+    let { value, suggestionAvailable } = this.state;
+    if (ev.target === this.refs.input) {
+      if (value && suggestionAvailable && value === suggestionAvailable.text && this.refs.input.selectionStart !== this.refs.input.selectionEnd) {
+        this.setState({
+          value: value.substring(0, this.refs.input.selectionStart)
+        });
+      } else if (!value && this.state.items.length) {
+        this.removeItem(this.state.items[this.state.items.length - 1]);
+      }
+    } else if (this._selection.getSelectedCount() > 0) {
+      this.removeItems(this._selection.getSelection());
     }
   }
 }
