@@ -18,7 +18,9 @@
 
 .ms-PeopleSuggestions-item {
   padding: 2px 16px;
-
+  height: auto;
+  width: 100%;
+  text-align: left;
   &:hover {
     background: $ms-color-neutralLight;
   }
@@ -29,14 +31,12 @@
       background: $ms-color-neutralQuaternaryAlt;
     }
   }
+  .ms-result-item.ms-Persona {
+    width: 120px;
+  }
 }
 
 .ms-PeopleSuggestions-none {
   text-align: center;
   color: $ms-color-neutralTertiary;
-}
-
-.ms-PeopleSuggestions-item.ms-Button {
-  height: auto;
-  width: 100%;
 }

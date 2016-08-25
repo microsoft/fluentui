@@ -7,8 +7,7 @@ import { FocusZone } from '../../FocusZone';
 import { Callout } from '../../Callout';
 import { ISelection, Selection, SelectionZone } from '../../../utilities/selection/index';
 import { css } from '../../../utilities/css';
-import { ContextualMenu, IContextualMenuItem, DirectionalHint } from '../../ContextualMenu';
-import { Button, ButtonType } from '../../Button';
+import { PeoplePickerItem } from './PeoplePickerItem';
 import './PeoplePicker2.scss';
 
 export enum PeoplePickerType {
@@ -38,7 +37,7 @@ export interface IPeoplePickerItemProps extends IPickerItemProps {
  */
 export const PeoplePickerSearchItemDefault: (persona: IPersonaProps, index: number) => JSX.Element = (personaProps: IPersonaProps, index: number) => {
   return (
-    <div role='button' className='ms-PeoplePicker-personaContent'>
+    <div className='ms-PeoplePicker-personaContent'>
       <Persona
         { ...personaProps }
         presence={ personaProps.presence ? personaProps.presence : PersonaPresence.online }
@@ -104,42 +103,13 @@ export class BasePeoplePicker extends BasePicker<IBasePickerProps> {
 }
 
 export class PeoplePicker extends React.Component<IPeoplePickerProps, {contextualMenuVisible?: boolean, contextualMenuTarget?: HTMLElement;}> {
+
   static defaultProps = {
     peoplePickerType: PeoplePickerType.normal
   }
 
-    private contextualMenuItems: IContextualMenuItem[] = [
-    {
-      key: 'newItem',
-      icon: 'circlePlus',
-      name: 'New'
-    },
-    {
-      key: 'upload',
-      icon: 'upload',
-      name: 'Upload'
-    },
-    {
-      key: 'divider_1',
-      name: '-',
-    },
-    {
-      key: 'rename',
-      name: 'Rename'
-    },
-    {
-      key: 'properties',
-      name: 'Properties'
-    },
-    {
-      key: 'disabled',
-      name: 'Disabled item',
-      isDisabled: true,
-    },
-  ];
   constructor() {
     super();
-    this._renderResult = this._renderResult.bind(this);
     this.state = {
       contextualMenuVisible: false,
       contextualMenuTarget: null
@@ -149,7 +119,7 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, {contextua
   render() {
     let { onResolveSuggestions, onRenderSuggestion, peoplePickerType } = this.props;
     let pickerProps: IBasePickerProps = {
-      onRenderItem: this._renderResult,
+      onRenderItem:  props => <PeoplePickerItem {...props}/> ,
       onRenderSuggestions: (props) =>
         <PeopleSuggestions { ...props }
           onResolveSuggestions={ onResolveSuggestions }
@@ -162,51 +132,5 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, {contextua
     } else {
       return <BasePicker { ...pickerProps }/>
     }
-  }
-
-  private _renderResult(peoplePickerItemProps: IPeoplePickerItemProps): JSX.Element {
-    let {
-      item,
-      index,
-      onRemoveItem
-    } = peoplePickerItemProps;
-
-    return (
-      <div className='ms-result-content'>
-        <Persona
-          { ...item }
-          presence={ item.presence ? item.presence : PersonaPresence.online }
-          className='ms-result-item'
-          />
-        <Button
-          icon={'ellipsis'}
-          buttonType={ButtonType.icon} onClick={this.onContextualMenu.bind(this) }
-          className='ms-result-item'
-          />
-        <Button
-          icon={'x'}
-          buttonType={ButtonType.icon}
-          onClick={ onRemoveItem }
-          className='ms-result-item'
-          />
-        { this.state.contextualMenuVisible ? (
-          <ContextualMenu
-            items={ this.contextualMenuItems }
-            shouldFocusOnMount={ true }
-            targetElement={ this.state.contextualMenuTarget }
-            onDismiss={ this._onCloseContextualMenu.bind(this) }
-            directionalHint={DirectionalHint.bottomAutoEdge}/>)
-          : null }
-      </div>
-    );
-  }
-
-  private onContextualMenu(ev?: any) {
-    let targetElement: HTMLElement = ev.target as HTMLElement;
-    this.setState({ contextualMenuVisible: true, contextualMenuTarget: targetElement });
-  }
-
-  private _onCloseContextualMenu(ev: Event) {
-    this.setState({ contextualMenuVisible: false, contextualMenuTarget: null });
   }
 }

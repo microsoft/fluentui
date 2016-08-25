@@ -118,13 +118,15 @@ export class PeopleSuggestions extends React.Component<IPeopleSuggestionsProps, 
     }
     if (this.props.onRenderSuggestion) {
       return this.state.suggestions.map((persona: IPersonaProps, index: number) =>
-        <Button
-          key={ persona.key }
-          className={ css('ms-PeopleSuggestions-item', { 'is-suggested': selectedIndex === index }) }
-          onClick={ (ev: React.MouseEvent) => this.props.onSuggestionClick(ev, index) }
-          >
-          { this.props.onRenderSuggestion(persona, index) }
-        </Button>);
+        <div>
+          <Button
+            key={ persona.key }
+            onClick={ (ev: React.MouseEvent) => this.props.onSuggestionClick(ev, index) }
+            className={ css('ms-PeopleSuggestions-item', { 'is-suggested': selectedIndex === index }) }
+            >
+            { this.props.onRenderSuggestion(persona, index) }
+          </Button>
+        </div >);
     }
     else {
       return suggestions.map((persona: IPersonaProps, index) => (
