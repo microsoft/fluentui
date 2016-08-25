@@ -139,7 +139,7 @@ export function isElementVisible(element: HTMLElement): boolean {
   const visibilityAttribute = element.getAttribute(IS_VISIBLE_ATTRIBUTE);
 
   // If the element is explicitly marked with the visibility attribute, return that value as boolean.
-  if (visibilityAttribute !== null) {
+  if (visibilityAttribute !== null && visibilityAttribute !== undefined) {
     return visibilityAttribute === 'true';
   }
 
