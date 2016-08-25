@@ -33,6 +33,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   min-height: 36px;
   border: 1px solid transparent;
   position: relative;
+  line-height: $ms-choiceField-field-size;
   @include padding-left(8px);
 
   .ms-Label {
@@ -72,8 +73,8 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   height: 0;
   border-radius: 50%;
   position: absolute;
-  top: 8px;
-  @include left(8px);
+  top: $ms-choiceField-field-size / 2;
+  @include left($ms-choiceField-field-size / 2);
   bottom: 0;
   @include right(0);
   transition-property: top, left, right, width, height;
