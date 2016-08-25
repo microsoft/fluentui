@@ -11,11 +11,6 @@ export interface IRouterState {
   path: string;
 }
 
-export interface urlObject {
-  anchorLink?: string;
-  route: string;
-}
-
 export class Router extends React.Component<IRouterProps, IRouterState> {
   private _events: EventGroup;
 
@@ -90,7 +85,7 @@ function _hasAnchorLink(path) {
 
 function _extractBasePath(path) {
   let split = path.split('#');
-  split.splice(split.length -1, 1);
+  split.splice(split.length - 1, 1);
   return '#' + split.join('');
 }
 
