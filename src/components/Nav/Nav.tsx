@@ -48,7 +48,9 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
 
     return (
       <FocusZone direction={ FocusZoneDirection.vertical }>
-        <nav role='navigation' className={ css('ms-Nav', { 'is-onTop ms-u-slideRightIn40' : this.props.isOnTop }) }>
+        <nav role='navigation'
+          className={ css('ms-Nav', { 'is-onTop ms-u-slideRightIn40': this.props.isOnTop }) }
+          aria-label={ this.props.navbarAriaLabel || '' }>
           { groupElements }
         </nav>
       </FocusZone>
