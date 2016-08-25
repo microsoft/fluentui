@@ -6,6 +6,7 @@ import { KeyCodes } from '../../utilities/KeyCodes';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { css } from '../../utilities/css';
 import { getRTL } from '../../utilities/rtl';
+import { getId } from '../../utilities/object';
 import { Async } from '../../utilities/Async/Async';
 import { Callout } from '../../Callout';
 import './ContextualMenu.scss';
@@ -64,8 +65,6 @@ interface IParsedDirectionalHint {
   verticalAlignmentHint: VerticalAlignmentHint;
 }
 
-let _instance = 0;
-
 export class ContextualMenu extends React.Component<IContextualMenuProps, IContextualMenuState> {
   // The default ContextualMenu properities have no items and beak, the default submenu direction is right and top.
   public static defaultProps = {
@@ -75,10 +74,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     gapSpace: 0,
     directionalHint: DirectionalHint.rightBottomEdge,
     beakWidth: 16
-  };
-
-  public refs: {
-    [key: string]: React.ReactInstance;
   };
 
   private _host: HTMLElement;
@@ -95,7 +90,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
 
     this.state = {
       contextualMenuItems: null,
-      subMenuId: 'ContextualMenu-SubMenu-' + _instance++
+      subMenuId: getId('ContextualMenu')
     };
 
     this._isFocusingPreviousElement = false;
@@ -106,7 +101,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
 
     this.dismiss = this.dismiss.bind(this);
     this._onKeyDown = this._onKeyDown.bind(this);
-    this._onMouseDownCapture = this._onMouseDownCapture.bind(this);
     this._onItemClick = this._onItemClick.bind(this);
     this._onSubMenuDismiss = this._onSubMenuDismiss.bind(this);
     this._onMouseEnter = this._onMouseEnter.bind(this);
@@ -129,8 +123,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount() {
     this._events.on(window, 'resize', this.dismiss);
-    this._events.on(window, 'mousedown', this._onMouseDownCapture, true);
-    this._events.on(window, 'touchstart', this._onMouseDownCapture, true);
   }
 
   // Invoked when a component is receiving new props.
@@ -192,23 +184,24 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         <div ref={ (host: HTMLDivElement) => this._host = host} id={ id } className={ css('ms-ContextualMenu-container', className) }>
           { (items && items.length) ? (
             <FocusZone
-              className={ 'ms-ContextualMenu is-open'}
+              className={ 'ms-ContextualMenu is-open' }
               direction={ FocusZoneDirection.vertical }
-              role='menu'
               ariaLabelledBy={ labelElementId }
               ref={ (focusZone) => this._focusZone = focusZone }
+              rootProps={ { role: 'menu' } }
               >
-              <ul className='ms-ContextualMenu-list is-open ' onKeyDown={ this._onKeyDown }>
+              <ul className='ms-ContextualMenu-list is-open' onKeyDown={ this._onKeyDown }>
                 { items.map((item, index) => (
                   // If the item name is equal to '-', a divider will be generated.
                   item.name === '-' ? (
                     <li
                       role='separator'
                       key={ item.key || index }
-                      className={ css('ms-ContextualMenu-item ms-ContextualMenu-item--divider', item.className ) }/>
+                      className={ css('ms-ContextualMenu-divider', item.className ) }/>
                   ) : (
                       <li
                         role='menuitem'
+                        title={ item.title }
                         key={ item.key || index }
                         className={ css('ms-ContextualMenu-item', item.className ) }>
                           { this._renderMenuItem(item, index, hasCheckmarks, hasIcons) }
@@ -252,7 +245,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
 
   private _renderMenuItemChildren(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
     return (
-      <div>
+      <div className='ms-ContextualMenu-linkContent'>
         {(hasCheckmarks) ? (
           <span
             className={
@@ -265,7 +258,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         ) : (null)}
         <span className='ms-ContextualMenu-itemText ms-fontWeight-regular'>{ item.name }</span>
         {(item.items && item.items.length) ? (
-          <i className={ css('ms-ContextualMenu-chevronRight ms-Icon', getRTL() ? 'ms-Icon--chevronLeft' : 'ms-Icon--chevronRight') } />
+          <i className={ css('ms-ContextualMenu-submenuChevron ms-Icon', getRTL() ? 'ms-Icon--chevronLeft' : 'ms-Icon--chevronRight') } />
         ) : (null)}
       </div>
     );
@@ -305,12 +298,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
 
   private _onMouseLeave(ev: React.MouseEvent) {
     this._async.clearTimeout(this._enterTimerId);
-  }
-
-  private _onMouseDownCapture(ev: React.MouseEvent) {
-    if (!this._host.contains(ev.target as HTMLElement)) {
-      this.dismiss(ev);
-    }
   }
 
   private _onItemMouseDown(item: IContextualMenuItem, ev: React.MouseEvent) {
@@ -363,23 +350,16 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
           isSubMenu: true,
           id: this.state.subMenuId,
           shouldFocusOnMount: true,
-          directionalHint: DirectionalHint.rightTopEdge,
-          className: item.className
+          directionalHint: getRTL() ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
+          className: this.props.className
         }
       });
     }
  }
 
   private _onSubMenuDismiss(ev?: any) {
-    let itemKey = null;
-    let list = this.refs[this.state.expandedMenuItemKey] as HTMLElement;
-
-    if (list && list.contains(ev.target as HTMLElement)) {
-      itemKey = this.state.expandedMenuItemKey;
-    }
-
     this.setState({
-      dismissedMenuItemKey: itemKey,
+      dismissedMenuItemKey: this.state.expandedMenuItemKey,
       expandedMenuItemKey: null,
       submenuProps: null
     });

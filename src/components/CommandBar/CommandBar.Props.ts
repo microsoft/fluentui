@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { IContextualMenuItem } from '../ContextualMenu/index';
 
+export interface ICommandBar {
+  /**
+   * Sets focus to the active command in the list.
+   */
+  focus(): void;
+}
+
 export interface ICommandBarProps extends React.HTMLProps<HTMLDivElement> {
   /**
    * Whether or not the search box is visible
@@ -26,7 +33,7 @@ export interface ICommandBarProps extends React.HTMLProps<HTMLDivElement> {
   /**
    * Text to be read by screen readers if there are overflow items and focus is on elipsis button
    */
-  overflowScreenReaderText?: string;
+  elipisisAriaLabel?: string;
 
   /**
    * Items to render on the right side (or left, in RTL).

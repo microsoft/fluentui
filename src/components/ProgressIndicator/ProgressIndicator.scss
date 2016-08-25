@@ -1,5 +1,62 @@
 @import "~office-ui-fabric/src/sass/Fabric.Common";
-@import "~office-ui-fabric/src/components/ProgressIndicator/ProgressIndicator";
+
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
+//
+// Office UI Fabric
+// --------------------------------------------------
+// ProgressIndicator Styles
+
+
+$ProgressIndicatorMarginBetweenText: 8px;
+$ProgressIndicatorButtonsWidth: 218px;
+$ProgressIndicatorTextHeight: 18px;
+
+.ms-ProgressIndicator-itemName {
+  @include ms-font-m();
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-top: $ProgressIndicatorMarginBetweenText / 2;
+  line-height: $ProgressIndicatorTextHeight + 2;
+}
+
+.ms-ProgressIndicator-itemDescription {
+  @include ms-font-m();
+  color: $ms-color-neutralSecondaryAlt;
+  font-size: 11px;
+  line-height: $ProgressIndicatorTextHeight;
+}
+
+.ms-ProgressIndicator-itemProgress {
+  position: relative;
+  height: 2px;
+  padding: $ProgressIndicatorMarginBetweenText 0;
+}
+
+.ms-ProgressIndicator-progressTrack {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: $ms-color-neutralLight;
+  outline: 1px solid transparent;
+}
+
+.ms-ProgressIndicator-progressBar {
+  position: absolute;
+  height: 2px;
+  background-color: $ms-color-themePrimary;
+
+  @media screen and (-ms-high-contrast: active) {
+    background-color: $ms-color-white;
+  }
+
+  @media screen and (-ms-high-contrast: black-on-white) {
+    background-color: $ms-color-black;
+  }
+}
+
+// TODO: Remove override below.
 
 .ms-ProgressIndicator-progressBar.smoothTransition {
   transition-property: width;

@@ -5,7 +5,7 @@ import { BaseComponent } from '../../common/BaseComponent';
 
 /**
  * This adds accessibility to Dialog and Panel controls
- **/
+ */
 export class Popup extends BaseComponent<IPopupProps, {}> {
 
   public static defaultProps: IPopupProps = {
@@ -45,12 +45,13 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
 
     return (
       <div
-        { ...this.props as any }
         ref='root'
         className={ className }
         role={ role }
         aria-labelledby={ ariaLabelledBy }
-        aria-desribedby={ ariaDescribedBy } />
+        aria-desribedby={ ariaDescribedBy }>
+        { this.props.children }
+      </div>
     );
   }
 

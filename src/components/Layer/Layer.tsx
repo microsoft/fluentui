@@ -2,11 +2,11 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { ILayerProps } from './Layer.Props';
 import { LayerHost, ILayer } from './LayerHost';
+import { getId } from '../../utilities/object';
 import './Layer.scss';
 
 const LAYER_HOST_ELEMENT_ID = 'ms-layer-host';
 
-let _instance = 0;
 let _layerHost: LayerHost;
 
 export class Layer extends React.Component<ILayerProps, {}> {
@@ -24,7 +24,7 @@ export class Layer extends React.Component<ILayerProps, {}> {
     super(props);
 
     this._layer = {
-      id: String(_instance++),
+      id: getId('Layer'),
       children: props.children
     };
   }
