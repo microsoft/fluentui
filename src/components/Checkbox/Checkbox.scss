@@ -12,7 +12,7 @@ $ms-checkbox-transition-duration: 200ms;
 $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
 $ms-checkbox-highContrast-iconBoxSize: 16px;
 
-@mixin highContrast-borderColor($active-color, $bw-color, $size: 2px) {
+@mixin highContrast-border($active-color, $bw-color, $size: 2px) {
   @media screen and (-ms-high-contrast: active) {
     border: $size solid $active-color;
   }
@@ -42,7 +42,7 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
   border: 1px solid transparent;
   position: relative;
 
-  @include highContrast-borderColor($ms-color-black, $ms-color-white, 1px);
+  @include highContrast-border($ms-color-black, $ms-color-white, 1px);
 
   .ms-Label {
     font-size: $ms-font-size-m;
@@ -153,7 +153,7 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
         line-height: $ms-checkbox-highContrast-iconBoxSize;
       }
 
-      @include highContrast-borderColor($ms-color-white, $ms-color-black);
+      @include highContrast-border($ms-color-white, $ms-color-black);
     }
 
     &:hover,
@@ -183,7 +183,7 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
     }
 
     &::after {
-      @include highContrast-borderColor($ms-color-contrastBlackDisabled, $ms-color-contrastWhiteDisabled);
+      @include highContrast-border($ms-color-contrastBlackDisabled, $ms-color-contrastWhiteDisabled);
       @include highContrast-color($ms-color-contrastBlackDisabled, $ms-color-contrastWhiteDisabled);
     }
 
@@ -220,6 +220,6 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
     @include right(0px);
     @include left(-8px);
     border: 1px solid $focusedBorderColor;
-    @include highContrast-borderColor($ms-color-white, $ms-color-black, 1px);
+    @include highContrast-border($ms-color-white, $ms-color-black, 1px);
   }
 }
