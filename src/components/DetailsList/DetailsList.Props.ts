@@ -8,6 +8,10 @@ import {
   IDragDropEvents,
   IDragDropContext
 } from './../../utilities/dragdrop/interfaces';
+import {
+  IGroup,
+  IGroupRenderProps
+} from '../GroupedList/index';
 import { IViewport } from '../../utilities/decorators/withViewport';
 
 export interface IDetailsList {
@@ -26,14 +30,19 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /** The items to render. */
   items: any[];
 
+  /**
+   * Optional default focused index to set focus to once the items have rendered and the index exists.
+   */
+  initialFocusedIndex?: number;
+
   /** Optional class name to add to the root element. */
   className?: string;
 
-  /** Optional grouping instructions. */
+  /** Optional grouping instructions. The definition for IGroup can be found under the GroupedList component. */
   groups?: IGroup[];
 
-  /** Optional override properties to render groups. */
-  groupProps?: IDetailsGroupProps;
+  /** Optional override properties to render groups. The definition for IGroupRenderProps can be found under the GroupedList component. */
+  groupProps?: IGroupRenderProps;
 
   /** Optional selection model to track selection state.  */
   selection?: ISelection;
@@ -115,9 +124,6 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** Optional callback to get the item key that will be used in the selection. */
   getKey?: (item: any, index?: number) => string;
-
-  /** Optional callback to determine if an item is selectable. */
-  canSelectItem?: (item: any) => boolean;
 
   /** A text summary of the table set via aria-label. */
   ariaLabel?: string;
@@ -246,6 +252,11 @@ export interface IColumn {
    * Internal only value.
    */
   calculatedWidth?: number;
+
+  /**
+   * An optional class name to stick on the column cell within each header.
+   */
+  headerClassName?: string;
 }
 
 /**
@@ -304,113 +315,3 @@ export enum CheckboxVisibility {
    */
   always
 }
-
-export interface IGroup {
-  /**
-   * Unique identifier for the group.
-   */
-  key: string;
-
-  /**
-   * Display name for the group, rendered on the header.
-   */
-  name: string;
-
-  /**
-   * Start index for the group within the given items.
-   */
-  startIndex: number;
-
-  /**
-   * How many items should be rendered within the group.
-   */
-  count: number;
-
-  /**
-   * Nested groups, if any.
-   */
-  children?: IGroup[];
-
-  /**
-   * Number indicating the level of nested groups.
-   */
-  level?: number;
-
-  /**
-   * If all the items in the group are selected.
-   */
-  isSelected?: boolean;
-
-  /**
-   * If all the items in the group are collapsed.
-   */
-  isCollapsed?: boolean;
-
-  /**
-   * If the items within the group are summarized or showing all.
-   */
-  isShowingAll?: boolean;
-
-  /**
-   * If drag/drop is enabled for the group header.
-   */
-  isDropEnabled?: boolean;
-
-  /**
-   * Arbitrary data required to be preserved by the caller.
-   */
-  data?: any;
-
-  /**
-   * Override which allows the caller to provide a custom header.
-   */
-  onRenderHeader?: (group: IGroup) => React.ReactNode;
-
-  /**
-   * Override which allows the caller to provider a customer footer.
-   */
-  onRenderFooter?: (group: IGroup) => React.ReactNode;
-}
-
-export interface IDetailsGroupProps {
-  /** Boolean indicating if all groups are in collapsed state. */
-  isAllGroupsCollapsed?: boolean;
-
-  /** Grouping item limit. */
-  getGroupItemLimit?: (group: IGroup) => number;
-
-  /** Callback for when all groups are expanded or collapsed. */
-  onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
-
-  /** Information to pass in to the group header. */
-  headerProps?: IDetailsGroupHeaderProps;
-
-  /** Information to pass in to the group footer. */
-  footerProps?: IDetailsGroupFooterProps;
-}
-
-export interface IDetailsGroupHeaderProps {
-  /** Callback to determine if a group has missing items and needs to load them from the server. */
-  isGroupLoading?: (group: IGroup) => boolean;
-
-  /** Text shown on group headers to indicate the group is being loaded. */
-  loadingText?: string;
-
-  /** Callback for when the group header is clicked. */
-  onGroupHeaderClick?: (group: IGroup) => void;
-
-  /** Callback for when the group is expanded or collapsed. */
-  onToggleCollapse?: (group: IGroup) => void;
-
-  /** Callback for when the group is selected. */
-  onToggleSelectGroup?: (group: IGroup) => void;
-}
-
-export interface IDetailsGroupFooterProps {
-  /** Callback for when the "Show All" link in group footer is clicked */
-  onToggleSummarize?: (group: IGroup) => void;
-
-  /** Text to display for the group footer show all link. */
-  showAllLinkText?: string;
-}
-

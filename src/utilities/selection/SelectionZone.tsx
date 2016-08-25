@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { EventGroup } from '../eventGroup/EventGroup';
+import { BaseComponent } from '../../common/BaseComponent';
 import { SelectionLayout } from './SelectionLayout';
 import { KeyCodes } from '../KeyCodes';
 import {
@@ -26,6 +26,7 @@ import {
 
 const SELECTION_INDEX_ATTRIBUTE_NAME = 'data-selection-index';
 const SELECTION_TOGGLE_ATTRIBUTE_NAME = 'data-selection-toggle';
+const SELECTION_INVOKE_ATTRIBUTE_NAME = 'data-selection-invoke';
 const SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME = 'data-selection-all-toggle';
 
 export interface ISelectionZoneProps extends React.Props<SelectionZone> {
@@ -36,7 +37,7 @@ export interface ISelectionZoneProps extends React.Props<SelectionZone> {
   onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
 }
 
-export class SelectionZone extends React.Component<ISelectionZoneProps, any> {
+export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   public static defaultProps = {
     layout: new SelectionLayout(SelectionDirection.vertical),
     isMultiSelectEnabled: true,
@@ -48,37 +49,29 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, any> {
     root: HTMLElement
   };
 
-  private _events: EventGroup;
-
   private _isCtrlPressed: boolean;
   private _isShiftPressed: boolean;
   private _isMetaPressed: boolean;
-  private _hasClickedOnItem: boolean;
+  private _shouldIgnoreFocus: boolean;
 
-  constructor() {
-    super();
+  constructor(props: ISelectionZoneProps) {
+    super(props);
 
-    this._events = new EventGroup(this);
+    // Specifically for the click methods, we will want to use React eventing to allow
+    // React and non React events to stop propagation and avoid the default SelectionZone
+    // behaviors (like executing onInvoked.)
+    this._onFocus = this._onFocus.bind(this);
+    this._onKeyDown = this._onKeyDown.bind(this);
+    this._onClick = this._onClick.bind(this);
+    this._onMouseDown = this._onMouseDown.bind(this);
+    this._onDoubleClick = this._onDoubleClick.bind(this);
+    this._updateModifiers = this._updateModifiers.bind(this);
+    this.ignoreNextFocus = this.ignoreNextFocus.bind(this);
   }
 
   public componentDidMount() {
-    let element = this.refs.root;
-
-    this._events.onAll(element, {
-      'keydown': this._onKeyDown,
-      'mousedown': this._onMouseDown,
-      'click': this._onClick,
-      'dblclick': this._onDoubleClick
-    });
-
-    // Always know what the state of shift/ctrl/meta are.
-    this._events.on(element, 'focus', this._onFocus, true);
-    this._events.on(window, 'keydown', this._onKeyChangeCapture, true);
-    this._events.on(window, 'keyup', this._onKeyChangeCapture, true);
-  }
-
-  public componentWillUnmount() {
-    this._events.dispose();
+    // Track the latest modifier keys globally.
+    this._events.on(window, 'keydown keyup', this._updateModifiers);
   }
 
   public render() {
@@ -86,150 +79,313 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, any> {
       <div
         className='ms-SelectionZone'
         ref='root'
+        onMouseDownCapture={ this.ignoreNextFocus }
+        onFocusCapture={ this._onFocus }
+        onKeyDown={ this._onKeyDown }
+        onMouseDown={ this._onMouseDown }
+        onClick={ this._onClick }
+        onDoubleClick={ this._onDoubleClick }
         >
         {this.props.children }
       </div>
     );
   }
 
-  private _onFocus(ev: FocusEvent) {
+  /**
+   * In some cases, the consuming scenario requires to set focus on a row without having SelectionZone
+   * react to the event. Note that focus events in IE <= 11 will occur asynchronously after .focus() has
+   * been called on an element, so we need a flag to store the idea that we will bypass the "next"
+   * focus event that occurs. This method does that.
+   */
+  public ignoreNextFocus() {
+    this._shouldIgnoreFocus = true;
+  }
+
+  /**
+   * When we focus an item, for single/multi select scenarios, we should try to select it immediately
+   * as long as the focus did not originate from a mouse down/touch event. For those cases, we handle them
+   * specially.
+   */
+  private _onFocus(ev: React.FocusEvent) {
+    let target = ev.target as HTMLElement;
     let { selection, selectionMode } = this.props;
-    let index = this._getIndexFromElement(ev.target as HTMLElement);
+    let isToggleModifierPressed = this._isCtrlPressed || this._isMetaPressed;
 
-    if (index >= 0 && selectionMode !== SelectionMode.none && !this._hasClickedOnItem) {
-      selection.setChangeEvents(false);
-
-      if (this._isShiftPressed && selectionMode === SelectionMode.multiple) {
-        if (!this._isCtrlPressed && !this._isMetaPressed) {
-          selection.setAllSelected(false);
-        }
-        selection.selectToIndex(index);
-      } else if (!this._isCtrlPressed && !this._isMetaPressed) {
-        selection.setAllSelected(false);
-        selection.setIndexSelected(index, true, true);
-      }
-
-      selection.setChangeEvents(true);
+    if (this._shouldIgnoreFocus || selectionMode === SelectionMode.none) {
+      this._shouldIgnoreFocus = false;
+      return;
     }
 
-    this._hasClickedOnItem = false;
-  }
+    let isToggle = this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);
+    let itemRoot = this._findItemRoot(target);
 
-  private _onMouseDown(ev: MouseEvent) {
-    // We need to reset the key states for ctrl/meta/etc.
-    this._onKeyChangeCapture(ev as any);
+    if (!isToggle && itemRoot) {
+      let index = this._getItemIndex(itemRoot);
 
-    let target = ev.target as HTMLElement;
-    let { selectionMode } = this.props;
-    let index = this._getIndexFromElement(target, true);
-
-    if (index >= 0 && selectionMode !== SelectionMode.none) {
-      this._hasClickedOnItem = true;
-    }
-  }
-
-  private _onClick(ev: MouseEvent) {
-    let target = ev.target as HTMLElement;
-    let { selection, selectionMode, onItemInvoked } = this.props;
-    let isToggleElement = this._isToggleElement(target, SELECTION_TOGGLE_ATTRIBUTE_NAME) || ev.ctrlKey || ev.metaKey;
-    let index = this._getIndexFromElement(target, true);
-
-    if (index >= 0 && selectionMode !== SelectionMode.none) {
-      let isSelected = selection.isIndexSelected(index);
-
-      // Disable change events.
-      selection.setChangeEvents(false);
-
-      if (ev.shiftKey && selectionMode === SelectionMode.multiple) {
-        if (!ev.ctrlKey && !ev.metaKey) {
-          selection.setAllSelected(false);
-        }
-        selection.selectToIndex(index);
+      if (isToggleModifierPressed) {
+        // set anchor only.
+        selection.setIndexSelected(index, selection.isIndexSelected(index), true);
       } else {
-        if (selectionMode === SelectionMode.single || !isToggleElement) {
-          selection.setAllSelected(false);
-        }
-
-        selection.setIndexSelected(index, isToggleElement ? !isSelected : true, !ev.shiftKey);
+        this._onItemSurfaceClick(ev, index);
       }
-
-      // Re-enabled change events.
-      selection.setChangeEvents(true);
-    } else if (onItemInvoked) {
-      onItemInvoked(selection.getItems()[index], index, ev);
     }
   }
 
-  private _onDoubleClick(ev: MouseEvent) {
-    let { onItemInvoked, selection } = this.props;
-    let index = this._getIndexFromElement(ev.target as HTMLElement, true);
+  private _onMouseDown(ev: React.MouseEvent) {
+    this._updateModifiers(ev);
+
+    let target = ev.target as HTMLElement;
+    let itemRoot = this._findItemRoot(target);
+
+    while (target !== this.refs.root) {
+      if (this._hasAttribute(target, SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME)) {
+        break;
+      } else if (itemRoot) {
+        if (this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME)) {
+          break;
+        } else if (this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)) {
+          this._onInvokeMouseDown(ev, this._getItemIndex(itemRoot));
+          break;
+        } else if (target === itemRoot) {
+          break;
+        }
+      }
+
+      target = target.parentElement;
+    }
+  }
+
+  private _onClick(ev: React.MouseEvent) {
+    this._updateModifiers(ev);
+
+    let target = ev.target as HTMLElement;
+    let itemRoot = this._findItemRoot(target);
+
+    while (target !== this.refs.root) {
+      if (this._hasAttribute(target, SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME)) {
+        this._onToggleAllClick(ev);
+        break;
+      } else if (itemRoot) {
+        let index = this._getItemIndex(itemRoot);
+
+        if (this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME)) {
+          if (this._isShiftPressed) {
+            this._onItemSurfaceClick(ev, index);
+          } else {
+            this._onToggleClick(ev, index);
+          }
+          break;
+        } else if (this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)) {
+          this._onInvokeClick(ev, index);
+          break;
+        } else if (target === itemRoot) {
+          this._onItemSurfaceClick(ev, index);
+          break;
+        }
+      }
+
+      target = target.parentElement;
+    }
+  }
+
+  /**
+   * In multi selection, if you double click within an item's root (but not within the invoke element or input elements),
+   * we should execute the invoke handler.
+   */
+  private _onDoubleClick(ev: React.MouseEvent) {
+    let target = ev.target as HTMLElement;
+    let { selectionMode, onItemInvoked } = this.props;
+    let itemRoot = this._findItemRoot(target);
+
+    if (itemRoot && onItemInvoked && selectionMode !== SelectionMode.none && !this._isInputElement(target)) {
+      let index = this._getItemIndex(itemRoot);
+
+      while (target !== this.refs.root) {
+        if (
+          this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME) ||
+          this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)) {
+          break;
+        } else if (target === itemRoot) {
+          this._onInvokeClick(ev, index);
+          break;
+        }
+
+        target = target.parentElement;
+      }
+
+      target = target.parentElement;
+    }
+  }
+
+  private _onKeyDown(ev: React.KeyboardEvent) {
+    this._updateModifiers(ev);
+
+    let target = ev.target as HTMLElement;
+    let { selection, selectionMode } = this.props;
+    let isSelectAllKey = ev.which === KeyCodes.a && (this._isCtrlPressed || this._isMetaPressed);
+    let isClearSelectionKey = ev.which === KeyCodes.escape;
+
+    // Ignore key downs from input elements.
+    if (this._isInputElement(target)) {
+      return;
+    }
+
+    // If ctrl-a is pressed, select all (if all are not already selected.)
+    if (isSelectAllKey && selectionMode === SelectionMode.multiple && !selection.isAllSelected()) {
+      selection.setAllSelected(true);
+      ev.stopPropagation();
+      ev.preventDefault();
+      return;
+    }
+
+    // If escape is pressed, clear selection (if any are selected.)
+    if (isClearSelectionKey && selection.getSelectedCount() > 0) {
+      selection.setAllSelected(false);
+      ev.stopPropagation();
+      ev.preventDefault();
+      return;
+    }
+
+    let itemRoot = this._findItemRoot(target);
+
+    // If a key was pressed within an item, we should treat "enters" as invokes and "space" as toggle
+    if (itemRoot) {
+      let index = this._getItemIndex(itemRoot);
+
+      while (target !== this.refs.root) {
+        if (this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME)) {
+          // For toggle elements, assuming they are rendered as buttons, they will generate a click event,
+          // so we can no-op for any keydowns in this case.
+          break;
+        } else if (target === itemRoot) {
+          if (ev.which === KeyCodes.enter) {
+            this._onInvokeClick(ev, index);
+          } else if (ev.which === KeyCodes.space) {
+            this._onToggleClick(ev, index);
+          }
+          break;
+        }
+
+        target = target.parentElement;
+      }
+    }
+  }
+
+  private _onToggleAllClick(ev: React.MouseEvent) {
+    let { selection, selectionMode } = this.props;
+
+    if (selectionMode === SelectionMode.multiple) {
+      selection.toggleAllSelected();
+      ev.stopPropagation();
+      ev.preventDefault();
+    }
+  }
+
+  private _onToggleClick(ev: React.MouseEvent | React.KeyboardEvent, index: number) {
+    let { selection, selectionMode } = this.props;
+
+    if (selectionMode === SelectionMode.multiple) {
+      selection.toggleIndexSelected(index);
+    } else if (selectionMode === SelectionMode.single) {
+      let isSelected = selection.isIndexSelected(index);
+      selection.setChangeEvents(false);
+      selection.setAllSelected(false);
+      selection.setIndexSelected(index, !isSelected, true);
+      selection.setChangeEvents(true);
+    } else {
+      return;
+    }
+
+    ev.stopPropagation();
+    ev.preventDefault();
+  }
+
+  private _onInvokeClick(ev: React.MouseEvent | React.KeyboardEvent, index: number) {
+    let { selection, onItemInvoked } = this.props;
 
     if (onItemInvoked) {
-      onItemInvoked(selection.getItems()[index], index, ev);
+      onItemInvoked(selection.getItems()[index], index, ev.nativeEvent);
+      ev.preventDefault();
+      ev.stopPropagation();
     }
   }
 
-  private _onKeyChangeCapture(ev: KeyboardEvent) {
+  private _onItemSurfaceClick(ev: React.SyntheticEvent, index: number) {
+    let { selection, selectionMode } = this.props;
+    let isToggleModifierPressed = this._isCtrlPressed || this._isMetaPressed;
+
+    if (selectionMode === SelectionMode.multiple) {
+      if (this._isShiftPressed) {
+        selection.selectToIndex(index, !isToggleModifierPressed);
+      } else if (isToggleModifierPressed) {
+        selection.toggleIndexSelected(index);
+      } else {
+        this._clearAndSelectIndex(index);
+      }
+    } else if (selectionMode === SelectionMode.single) {
+      this._clearAndSelectIndex(index);
+    }
+  }
+
+  private _onInvokeMouseDown(ev: React.MouseEvent | React.KeyboardEvent, index: number) {
+    let { selection } = this.props;
+
+    // Only do work if item is not selected.
+    if (selection.isIndexSelected(index)) {
+      return;
+    }
+
+    this._clearAndSelectIndex(index);
+  }
+
+  private _clearAndSelectIndex(index: number) {
+    let { selection } = this.props;
+    let isAlreadySingleSelected = selection.getSelectedCount() === 1 && selection.isIndexSelected(index);
+
+    if (!isAlreadySingleSelected) {
+      selection.setChangeEvents(false);
+      selection.setAllSelected(false);
+      selection.setIndexSelected(index, true, true);
+      selection.setChangeEvents(true);
+    }
+  }
+
+  /**
+   * We need to track the modifier key states so that when focus events occur, which do not contain
+   * modifier states in the Event object, we know how to behave.
+   */
+  private _updateModifiers(ev: React.KeyboardEvent | React.MouseEvent) {
     this._isShiftPressed = ev.shiftKey;
     this._isCtrlPressed = ev.ctrlKey;
     this._isMetaPressed = ev.metaKey;
   }
 
-  private _onKeyDown(ev: KeyboardEvent) {
-    let target = ev.target as HTMLElement;
-    let { selection, selectionMode, onItemInvoked } = this.props;
-    let isToggleElement = this._isToggleElement(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);
-    let isToggleAllElement = !isToggleElement && this._isToggleElement(target, SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME);
-    let index = this._getIndexFromElement(target, true);
+  private _findItemRoot(target: HTMLElement): HTMLElement {
+    let { selection } = this.props;
 
-    if (index >= 0 && !this._isInputElement(target) && selectionMode !== SelectionMode.none) {
-      let isSelected = selection.isIndexSelected(index);
+    while (target !== this.refs.root) {
+      let indexValue = target.getAttribute(SELECTION_INDEX_ATTRIBUTE_NAME);
+      let index = Number(indexValue);
 
-      if (ev.which === KeyCodes.space) {
-        if (isToggleAllElement) {
-          if (selectionMode === SelectionMode.multiple) {
-            selection.toggleAllSelected();
-          }
-        } else { // an item
-          selection.setChangeEvents(false);
-          if (selectionMode === SelectionMode.single) {
-            selection.setAllSelected(false);
-          }
-          selection.setIndexSelected(index, !isSelected, true);
-          selection.setChangeEvents(true);
-        }
-      } else if (ev.which === KeyCodes.enter) {
-        if (isToggleAllElement) {
-          selection.toggleAllSelected();
-        } else if (isToggleElement) {
-          selection.setChangeEvents(false);
-          if (selectionMode === SelectionMode.single) {
-            selection.setAllSelected(false);
-          }
-          selection.setIndexSelected(index, !isSelected, true);
-          selection.setChangeEvents(true);
-        } else if (this._getIndexFromElement(target) >= 0 && onItemInvoked) {
-          // if the target IS the item, and not a link inside, then call the invoke method.
-          onItemInvoked(selection.getItems()[index], index, ev);
-        } else {
-          return;
-        }
-      } else if (ev.which === KeyCodes.a && (ev.ctrlKey || ev.metaKey) && selectionMode === SelectionMode.multiple) {
-        selection.setAllSelected(true);
-      } else if (ev.which === KeyCodes.escape) {
-        selection.setAllSelected(false);
-      } else {
-        return;
+      if (indexValue !== null && index >= 0 && index < selection.getItems().length ) {
+        break;
       }
-    } else {
-      return;
+
+      target = target.parentElement;
     }
 
-    ev.preventDefault();
-    ev.stopPropagation();
+    if (target === this.refs.root) {
+      return undefined;
+    }
+
+    return target;
   }
 
-  private _isToggleElement(element: HTMLElement, attributeName: string) {
+  private _getItemIndex(itemRoot: HTMLElement): number {
+    return Number(itemRoot.getAttribute(SELECTION_INDEX_ATTRIBUTE_NAME));
+  }
+
+  private _hasAttribute(element: HTMLElement, attributeName: string) {
     let isToggle = false;
 
     while (!isToggle && element !== this.refs.root) {
@@ -242,22 +398,6 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, any> {
 
   private _isInputElement(element: HTMLElement) {
     return element.tagName === 'INPUT' || element.tagName === 'TEXTAREA';
-  }
-
-  private _getIndexFromElement(element: HTMLElement, traverseParents?: boolean): number {
-    let index = -1;
-
-    do {
-      let indexString = element.getAttribute(SELECTION_INDEX_ATTRIBUTE_NAME);
-
-      if (indexString) {
-        index = Number(indexString);
-        break;
-      }
-      element = element.parentElement;
-    } while (traverseParents && element !== this.refs.root);
-
-    return index;
   }
 
 }

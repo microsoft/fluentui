@@ -12,20 +12,38 @@ const DATA = {
 
 export function createListItems(count: number, startIndex = 0): any {
   return Array.apply(null, Array(count)).map((item, index) => {
-    let width = 1000 + Math.round(Math.random() * 2000);
-    let height = 1000 + Math.round(Math.random() * 2000);
-    let aspectRatio = width / height;
+    let size = 150 + Math.round(Math.random() * 100);
 
     return {
-      thumbnail: `//placekitten.com/${ Math.round(75 * aspectRatio) }/${ 75 }`,
+      thumbnail: `//placekitten.com/${ size }/${ size }`,
       key: 'item-' + (index + startIndex) + ' ' + lorem(4),
       name: lorem(5),
       description: lorem(10 + Math.round(Math.random() * 50)),
       color: _randWord(DATA.color),
       shape: _randWord(DATA.shape),
       location: _randWord(DATA.location),
-      width: width,
-      height: height
+      width: size,
+      height: size
+    };
+  });
+}
+
+export function createGroups(
+  groupCount: number, groupDepth: number, startIndex: number,
+  itemsPerGroup: number, level?: number, key?: string) {
+  key = key ? key + '-' : '';
+  level = level ? level : 0;
+  let count = Math.pow(itemsPerGroup, groupDepth);
+  return Array.apply(null, Array(groupCount)).map((value, index) => {
+    return {
+      count: count,
+      key: 'group' + key + index,
+      name: 'group ' + key + index,
+      startIndex: index * count + startIndex,
+      level: level,
+      children: groupDepth > 1 ?
+        createGroups(groupCount, groupDepth - 1, index * count + startIndex, itemsPerGroup, level + 1, key + index) :
+        []
     };
   });
 }

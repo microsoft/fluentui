@@ -2,14 +2,15 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
+import { BaseComponent } from '../../common/BaseComponent';
 import { IPanelProps, PanelType } from './Panel.Props';
 import { Layer } from '../Layer/Layer';
 import { Overlay } from '../../Overlay';
-import { BaseComponent } from '../../common/BaseComponent';
+import { Popup } from '../Popup/index';
 import { css } from '../../utilities/css';
+import { getId } from '../../utilities/object';
 import { getRTL } from '../../utilities/rtl';
 import './Panel.scss';
-import { Popup } from '../Popup/index';
 
 export interface IPanelState {
   isOpen?: boolean;
@@ -17,8 +18,6 @@ export interface IPanelState {
   isAnimatingClose?: boolean;
   id?: string;
 }
-
-let _instance = 0;
 
 export class Panel extends BaseComponent<IPanelProps, IPanelState> {
 
@@ -38,7 +37,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
       isOpen: !!props.isOpen,
       isAnimatingOpen: props.isOpen,
       isAnimatingClose: false,
-      id: `Panel-${_instance++}`
+      id: getId('Panel')
     };
   }
 
@@ -63,7 +62,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
   }
 
   public render() {
-    let { children, className = '', type, hasCloseButton, isLightDismiss, headerText, closeButtonAriaLabel  } = this.props;
+    let { children, className = '', type, hasCloseButton, isLightDismiss, headerText, closeButtonAriaLabel, headerClassName = ''  } = this.props;
     let { isOpen, isAnimatingOpen, isAnimatingClose, id } = this.state;
     let isLeft = type === PanelType.smallFixedNear ? true : false;
     let isRTL = getRTL();
@@ -74,7 +73,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
 
     let header;
     if (headerText) {
-      header = <p className='ms-Panel-headerText' id={ headerTextId }>{ headerText }</p>;
+      header = <p className={ css('ms-Panel-headerText', headerClassName ) } id={ headerTextId }>{ headerText }</p>;
     }
 
     let closeButton;
@@ -110,7 +109,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
             }
             >
             <Overlay
-              isDarkThemed={ true }
+              isDarkThemed={ false }
               onClick={ isLightDismiss ? this._onPanelClick : null }
               />
             <div className='ms-Panel-main'>
