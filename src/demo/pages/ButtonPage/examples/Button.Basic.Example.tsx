@@ -33,7 +33,7 @@ export class ButtonBasicExample extends React.Component<any, IBasicButtonsExampl
         <Button disabled={ areButtonsDisabled } buttonType={ ButtonType.primary }>Create account</Button>
 
         <Label>Hero button</Label>
-        <Button disabled={ areButtonsDisabled } buttonType={ ButtonType.hero } icon='CirclePlus' >Create account</Button>
+        <Button disabled={ areButtonsDisabled } buttonType={ ButtonType.hero } icon='Add' >Create account</Button>
 
         <Label>Compound button</Label>
         <Button disabled={ areButtonsDisabled } buttonType={ ButtonType.compound } description='You can create a new account here.'>Create account</Button>
