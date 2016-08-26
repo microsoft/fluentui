@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { loadTheme } from 'load-themed-styles';
+import { loadTheme } from '@microsoft/load-themed-styles';
 let Highlight = require('react-highlight');
 import { defaultTheme } from './defaultTheme';
 import {
