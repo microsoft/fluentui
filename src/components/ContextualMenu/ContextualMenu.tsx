@@ -245,7 +245,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
 
   private _renderMenuItemChildren(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
     return (
-      <div>
+      <div className='ms-ContextualMenu-linkContent'>
         {(hasCheckmarks) ? (
           <span
             className={
