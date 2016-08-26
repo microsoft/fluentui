@@ -3,10 +3,50 @@
 .ms-DocumentCardPreview {
   border-bottom: 2px solid $ms-color-neutralTertiary; // Default border color
   position: relative;
+  background-color: $ms-color-white;
 }
 
 .ms-DocumentCardPreview-icon {
   @include left(10px);
   bottom: 10px;
   position: absolute;
+}
+
+.ms-DocumentCardPreview-fileList {
+  @include padding(16px, 16px, 0, 16px);
+  list-style-type: none;
+  margin: 0;
+
+  li {
+    height: 24px;
+    line-height: 24px; // Vertically center the text
+    margin-bottom: 8px;
+    overflow: hidden;
+    padding-left: 32px; // Make room for icon
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  a {
+    font-size: $ms-font-size-s;
+    text-decoration: none;
+    color: $ms-color-neutralDark;
+
+    &:hover {
+      color: $ms-color-themePrimary;
+    }
+  }
+}
+
+.ms-DocumentCardPreview-fileListIcon {
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+.ms-DocumentCardPreview-fileListMore {
+  @include padding(8px, 16px, 16px, 16px);
+  display: block;
+  font-size: $ms-font-size-s;
 }

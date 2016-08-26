@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { IDocumentCardPreviewProps, IDocumentCardPreviewImage } from './DocumentCard.Props';
 import { Image } from '../../Image';
-import { Async } from '../../utilities/Async/Async';
 import './DocumentCardPreview.scss';
 
 const LIST_ITEM_COUNT = 3;
@@ -21,7 +20,6 @@ export class DocumentCardPreview extends React.Component<IDocumentCardPreviewPro
 
       // Override the border color if an accent color was provided
       if (previewImages[0].accentColor) {
-        console.log(previewImages[0].accentColor);
         style = {
           borderBottomColor: previewImages[0].accentColor
         };
@@ -36,7 +34,7 @@ export class DocumentCardPreview extends React.Component<IDocumentCardPreviewPro
   }
 
   private _renderPreviewImage(previewImage: IDocumentCardPreviewImage): React.ReactElement<React.HTMLProps<HTMLDivElement>> {
-    let { accentColor, width, height, imageFit } = previewImage;
+    let { width, height, imageFit } = previewImage;
 
     let image = (
       <Image
@@ -66,16 +64,25 @@ export class DocumentCardPreview extends React.Component<IDocumentCardPreviewPro
     let overflowDocumentCount = previewImages.length - LIST_ITEM_COUNT;
 
     // Create list items for the documents to be shown
-    let fileListItems = previewImages.splice(0,LIST_ITEM_COUNT).map((file, fileIndex) => (
-      <li><Image src={ file.iconSrc } role='presentation' alt=''/>{ file.name }</li>
+    let fileListItems = previewImages.splice(0, LIST_ITEM_COUNT).map((file, fileIndex) => (
+      <li key={ fileIndex }>
+        <Image
+          className='ms-DocumentCardPreview-fileListIcon'
+          src={ file.iconSrc }
+          role='presentation'
+          alt=''
+          width='24px'
+          height='24px'/>
+        <a href={ file.url }>{ file.name }</a>
+      </li>
     ));
 
     return (
       <div>
-        <ul>
+        <ul className='ms-DocumentCardPreview-fileList'>
           { fileListItems }
         </ul>
-        <span>+{ overflowDocumentCount } more</span>
+        <span className='ms-DocumentCardPreview-fileListMore'>+{ overflowDocumentCount } more</span>
       </div>
     );
   }

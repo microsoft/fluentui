@@ -17,6 +17,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
       previewImages: [
         {
           name: '2016 Conference Presentation',
+          url: 'http://bing.com',
           previewImageSrc: 'dist/document-preview.png',
           iconSrc: 'dist/icon-ppt.png',
           imageFit: ImageFit.cover,
@@ -25,7 +26,8 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           accentColor: '#ce4b1f'
         },
         {
-          name: 'New Contoso Collaboration for Conference',
+          name: 'New Contoso Collaboration for Conference Presentation Draft',
+          url: 'http://bing.com',
           previewImageSrc: 'dist/document-preview2.png',
           iconSrc: 'dist/icon-ppt.png',
           imageFit: ImageFit.cover,
@@ -35,6 +37,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
         },
         {
           name: 'Spec Sheet for design',
+          url: 'http://bing.com',
           previewImageSrc: 'dist/document-preview3.png',
           iconSrc: 'dist/icon-ppt.png',
           imageFit: ImageFit.cover,
@@ -44,6 +47,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
         },
         {
           name: 'Contoso Marketing Presentation',
+          url: 'http://bing.com',
           previewImageSrc: 'dist/document-preview.png',
           iconSrc: 'dist/icon-ppt.png',
           imageFit: ImageFit.cover,
@@ -53,6 +57,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
         },
         {
           name: 'Notes from Ignite conference',
+          url: 'http://bing.com',
           previewImageSrc: 'dist/document-preview2.png',
           iconSrc: 'dist/icon-ppt.png',
           imageFit: ImageFit.cover,
@@ -62,6 +67,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
         },
         {
           name: 'FY17 Cost Projections',
+          url: 'http://bing.com',
           previewImageSrc: 'dist/document-preview3.png',
           iconSrc: 'dist/icon-ppt.png',
           imageFit: ImageFit.cover,

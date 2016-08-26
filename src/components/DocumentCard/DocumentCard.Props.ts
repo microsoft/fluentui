@@ -41,6 +41,11 @@ export interface IDocumentCardPreviewImage {
   name: string;
 
   /**
+   * URL to view the file.
+   */
+  url: string;
+
+  /**
    * Path to the preview image.
    */
   previewImageSrc?: string;
