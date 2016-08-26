@@ -4,7 +4,7 @@ import { EventGroup } from '../eventGroup/EventGroup';
 export interface IRouterProps {
   replaceState?: boolean;
   children?: React.ReactElement<any>[];
-  routerDidMount?: Function;
+  onNewRouteLoaded?: () => void;
 }
 
 export interface IRouterState {
@@ -37,16 +37,16 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
   public componentDidMount() {
     this._events.on(window, 'hashchange', () => {
       if (this.state.path !== location.hash) {
-        this.setState({ path: location.hash });
-
-        if (this.props.routerDidMount) {
-          this.props.routerDidMount();
-        }
+        this.setState({ path: location.hash }, () => {
+          if (this.props.onNewRouteLoaded) {
+            this.props.onNewRouteLoaded();
+          }
+        });
       }
     });
 
-    if (this.props.routerDidMount) {
-      this.props.routerDidMount();
+    if (this.props.onNewRouteLoaded) {
+      this.props.onNewRouteLoaded();
     }
   }
 
@@ -61,8 +61,10 @@ function _getComponent(matchPath, children) {
     children = [ children ];
   }
 
+  // Check if an in page anchor link was passed to the Url #/example/route#inPageAnchorLink
   if (_hasAnchorLink(path)) {
-    path = _extractBasePath(path);
+    // Extract the base path #/example/route - #inPageAnchorLink
+    path = _extractRoute(path);
   }
 
   for (let i = 0; children && i < children.length; i++) {
@@ -75,7 +77,6 @@ function _getComponent(matchPath, children) {
       return React.createElement(component, null, childComponent);
     }
   }
-
   return null;
 }
 
@@ -83,10 +84,17 @@ function _hasAnchorLink(path) {
   return (path.match(/#/g) || []).length > 1;
 }
 
-function _extractBasePath(path) {
-  let split = path.split('#');
-  split.splice(split.length - 1, 1);
-  return '#' + split.join('');
+/*
+  Extract the route from the URL minus the in page anchor link
+  Example URL #/example/route#inPageAnchorLink
+  Returns #/example/route
+*/
+function _extractRoute(path) {
+  let index = path.lastIndexOf('#');
+  if (index >= 0) {
+    path = path.substr(0, index);
+  }
+  return path;
 }
 
 function _match(currentPath, child): boolean {
