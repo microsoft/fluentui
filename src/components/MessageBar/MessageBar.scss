@@ -133,6 +133,7 @@ $MessageBar-padding: 8px;
 
 .ms-MessageBar-dismissal {
   @include focus-border();
+  min-width: 0;
 }
 .ms-MessageBar-actionsOneline .ms-MessageBar-dismissal {
   @include margin-right(-8px);

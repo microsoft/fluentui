@@ -81,7 +81,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
   }
 
   private _getInnerTextClassName(): string {
-    return this.props.onDismiss ? 'ms-MessageBar-innerTextPadding' : 'ms-MessageBar-innerText';
+    return this.props.onDismiss || this.props.actions ? 'ms-MessageBar-innerTextPadding' : 'ms-MessageBar-innerText';
   }
 
   private _renderMultiLine(): React.ReactElement<React.HTMLProps<HTMLAreaElement>> {
