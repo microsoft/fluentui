@@ -4,6 +4,8 @@ import { Image } from '../../Image';
 import { Async } from '../../utilities/Async/Async';
 import './DocumentCardPreview.scss';
 
+const LIST_ITEM_COUNT = 3;
+
 export class DocumentCardPreview extends React.Component<IDocumentCardPreviewProps, any> {
 
   public render() {
@@ -12,7 +14,7 @@ export class DocumentCardPreview extends React.Component<IDocumentCardPreviewPro
 
     if (previewImages.length > 1) {
       // Render a list of files
-      preview = this._renderPreviewList();
+      preview = this._renderPreviewList(previewImages);
     } else {
       // Render a single preview
       preview = this._renderPreviewImage(previewImages[0]);
@@ -59,9 +61,23 @@ export class DocumentCardPreview extends React.Component<IDocumentCardPreviewPro
     );
   }
 
-  private _renderPreviewList(): React.ReactElement<React.HTMLProps<HTMLDivElement>> {
-    console.log('rendering a list of files with icons');
-    return <p>List of files with icons</p>;
+  private _renderPreviewList(previewImages: IDocumentCardPreviewImage[]): React.ReactElement<React.HTMLProps<HTMLDivElement>> {
+    // Determine how many documents we won't be showing
+    let overflowDocumentCount = previewImages.length - LIST_ITEM_COUNT;
+
+    // Create list items for the documents to be shown
+    let fileListItems = previewImages.splice(0,LIST_ITEM_COUNT).map((file, fileIndex) => (
+      <li><Image src={ file.iconSrc } role='presentation' alt=''/>{ file.name }</li>
+    ));
+
+    return (
+      <div>
+        <ul>
+          { fileListItems }
+        </ul>
+        <span>+{ overflowDocumentCount } more</span>
+      </div>
+    );
   }
 
 }

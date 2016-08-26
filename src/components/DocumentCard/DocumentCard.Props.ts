@@ -36,6 +36,11 @@ export interface IDocumentCardPreviewProps extends React.Props<DocumentCardPrevi
 
 export interface IDocumentCardPreviewImage {
   /**
+   * File name for the document this preview represents.
+   */
+  name: string;
+
+  /**
    * Path to the preview image.
    */
   previewImageSrc?: string;
