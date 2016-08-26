@@ -28,7 +28,7 @@
     "source-map-loader": "0.1.5",
     "tslint-microsoft-contrib": "^2.0.9",
     "vinyl-ftp": "0.4.5",
-    "web-library-build": "~0.2.2",
+    "@microsoft/web-library-build": "~0.2.6",
     "webpack-split-by-path": "0.0.8",
     "webpack-visualizer-plugin": "0.1.5"
   },
@@ -38,6 +38,6 @@
   },
   "dependencies": {
     "color-functions": "1.1.0",
-    "load-themed-styles": "~1.1.0"
+    "@microsoft/load-themed-styles": "~1.2.2"
   }
 }

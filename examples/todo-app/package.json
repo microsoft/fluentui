@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "es6-promise": "^3.2.1",
-    "load-themed-styles": "^1.2.0",
+    "@microsoft/load-themed-styles": "~1.2.2",
     "office-ui-fabric": "^2.6.1",
     "office-ui-fabric-react": "^0.33.0",
     "react": "^0.14.0",
