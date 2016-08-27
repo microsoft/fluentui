@@ -22,7 +22,8 @@
 // --------------------------------------------------
 // People Picker styles
 
-$peoplePicker-width: 340px;
+$peoplePickerResults-maxWidth: 340px;
+$peoplePicker-rowHeight: 56px;
 $personaItemHeight: 42px;
 
 
@@ -132,10 +133,14 @@ $personaItemHeight: 42px;
   border: 1px solid $ms-color-neutralTertiaryAlt;
   display: none;
   margin-bottom: -1px;
-  width: $peoplePicker-width;
+  width: 100%;
   padding-top: 9px;
   position: absolute;
   z-index: ($ms-zIndex-PeoplePicker + $ms-zIndex-middle);
+
+  @media (min-width: $ms-screen-md-min) {
+    width: $peoplePickerResults-maxWidth;
+  }
 }
 
 // Show the results area when the people picker is active
@@ -211,16 +216,15 @@ $personaItemHeight: 42px;
   @include button-reset();
   position: relative;
   box-sizing: border-box;
-  height: 34px;
+  height: $personaItemHeight;
   width: 100%;
   background: none;
   border: 0;
-  text-align: left;
-  @include margin(8px, 0, 0, 0);
-  @include padding(0, 0, 0, 16px);
+  @include text-align(left);
+  @include padding(4px, 0, 4px, 16px);
 
   @media (min-width: $ms-screen-md-min) {
-    height: 48px;
+    height: $peoplePicker-rowHeight;
   }
 
   &:hover {
@@ -233,7 +237,7 @@ $personaItemHeight: 42px;
   }
 
   &.ms-PeoplePicker-resultBtn--compact {
-    height: 32px;
+    height: 40px;
   }
 }
 
@@ -275,7 +279,7 @@ $personaItemHeight: 42px;
   padding: 0px;
 
   @media (min-width: $ms-screen-md-min) {
-    height: 48px;
+    height: $peoplePicker-rowHeight;
   }
 
   .ms-Icon {
@@ -326,7 +330,7 @@ $personaItemHeight: 42px;
     width: 32px;
     height: 32px;
     top: 20px;
-    left: 20px;
+    @include left(20px);
     display: none;
 
     .ms-Spinner-circle {
@@ -365,8 +369,8 @@ $personaItemHeight: 42px;
   width: 100%;
   padding: 0;
   margin: 0;
-  padding-left: 70px;
-  text-align: left;
+  @include padding-left(70px);
+  @include text-align(left);
 
   &:hover {
     background-color: $ms-color-neutralLight;
@@ -390,7 +394,7 @@ $personaItemHeight: 42px;
 
 .ms-PeoplePicker-searchMoreBtn.ms-PeoplePicker-searchMoreBtn--compact {
   height: 49px;
-  padding-left: 50px;
+  @include padding-left(50px);
 }
 
 // Default search icon
@@ -398,7 +402,7 @@ $personaItemHeight: 42px;
   height: 70px;
   position: absolute;
   top: 0;
-  left: 0;
+  @include left(0);
   width: 70px;
 
   .ms-Icon {
@@ -458,7 +462,7 @@ $personaItemHeight: 42px;
   }
 
   .ms-PeoplePicker-resultAction {
-    height: 32px;
+    height: 40px;
   }
 
   .ms-PeoplePicker-searchMore {
@@ -468,7 +472,7 @@ $personaItemHeight: 42px;
       width: 28px;
       height: 28px;
       top: 12px;
-      left: 12px;
+      @include left(12px);
     }
 
   }
@@ -576,11 +580,11 @@ $personaItemHeight: 42px;
       }
 
       .ms-Persona-presence {
-        left: 19px;
+        @include left(19px);
       }
 
       .ms-Persona-details {
-        padding-left: 8px;
+        @include padding-left(8px);
       }
 
       .ms-Persona-primaryText {
@@ -628,30 +632,30 @@ $personaItemHeight: 42px;
   .ms-PeoplePicker-searchMore,
   .ms-PeoplePicker-searchMoreBtn,
   .ms-PeoplePicker-searchMoreIcon {
-    height: 48px;
+    height: $peoplePicker-rowHeight;
   }
 
   .ms-PeoplePicker-searchMoreBtn {
-    padding-left: 48px;
+    @include padding-left($peoplePicker-rowHeight);
   }
 
   .ms-PeoplePicker-searchMoreIcon {
-    width: 48px;
+    width: $peoplePicker-rowHeight;
   }
 
   .ms-PeoplePicker-searchMorePrimary {
     font-size: $ms-font-size-s;
-    line-height: 48px;
+    line-height: $peoplePicker-rowHeight;
   }
 
   .ms-PeoplePicker-searchMoreIcon .ms-Icon {
     top: 0;
-    line-height: 48px;
+    line-height: $peoplePicker-rowHeight;
   }
 
   .ms-Spinner {
     top: 16px;
-    left: 14px;
+    @include left(14px);
     height: 20px;
     width: 20px;
   }
