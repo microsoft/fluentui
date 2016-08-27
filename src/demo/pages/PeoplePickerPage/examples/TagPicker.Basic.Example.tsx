@@ -4,10 +4,6 @@ import {
   ITagPickerProps
 } from '../../../../components/pickers/TagPicker/TagPicker';
 
-import {
-  TagSuggestions
-} from '../../../../components/pickers/TagPicker/TagSuggestions';
-
 let _testTags = [
   'black',
   'blue',
@@ -36,7 +32,7 @@ export class TagPickerBasicExample extends React.Component<{}, {}> {
     );
   }
 
-  private _onResolveSuggestions(text, selectedItems) {
-    return text ? _testTags.filter(color => color.name.indexOf(text) === 0 && selectedItems.indexOf(color) === -1) : _testTags;
+  private _onResolveSuggestions(text) {
+    return text && text!=='' ? _testTags.filter(color => color.name.indexOf(text) > -1) : [];
   }
 }

@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { BasePicker, IBasePickerProps, IPickerItemProps } from '../BasePicker';
 import { Persona, PersonaSize, IPersonaProps, PersonaPresence } from '../../Persona';
-import { PeopleSuggestions } from './PeopleSuggestions';
+import { SelectedItemDefault } from './PeoplePickerItems/SelectedItemDefault';
+import { SuggestionItemDefault } from './PeoplePickerItems/SuggestionItemDefault';
 import { TagItem } from '../TagPicker/TagItem';
 import { FocusZone } from '../../FocusZone';
 import { Callout } from '../../Callout';
 import { ISelection, Selection, SelectionZone } from '../../../utilities/selection/index';
 import { css } from '../../../utilities/css';
-import { PeoplePickerItem } from './PeoplePickerItem';
+import { SelectedItemWithMenu } from './PeoplePickerItems/SelectedItemWithMenu';
 import './PeoplePicker2.scss';
 
 export enum PeoplePickerType {
@@ -22,51 +23,15 @@ export enum PeoplePickerType {
 }
 
 export interface IPeoplePickerProps extends React.Props<any> {
-  onResolveSuggestions?: (text?: string, selectedItems?: IPersonaProps[]) => IPersonaProps[];
-  onRenderSuggestion?: (props: IPersonaProps, index: number) => JSX.Element;
+  onResolveSuggestions?: (text?: string) => IPersonaProps[];
+  onRenderSuggestion?: (props: IPersonaProps) => JSX.Element;
   peoplePickerType?: PeoplePickerType;
 }
 
-export interface IPeoplePickerItemProps extends IPickerItemProps {
-  item: IPersonaProps;
+export class BasePeoplePicker extends BasePicker<IPersonaProps, IBasePickerProps<IPersonaProps>> {
 }
 
-
-/**
- * A dumb component that renders items for the PeoplePicker search dropdown.
- */
-export const PeoplePickerSearchItemDefault: (persona: IPersonaProps, index: number) => JSX.Element = (personaProps: IPersonaProps, index: number) => {
-  return (
-    <div className='ms-PeoplePicker-personaContent'>
-      <Persona
-        { ...personaProps }
-        presence={ personaProps.presence ? personaProps.presence : PersonaPresence.online }
-        size={ PersonaSize.small }
-        />
-    </div>
-  );
-};
-
-export const PeoplePickerSelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element = (peoplePickerItemProps: IPeoplePickerItemProps) => {
-  let { item,
-    onRemoveItem,
-    index
-  } = peoplePickerItemProps;
-  return (
-    <div className='ms-PickerPersona-Container'>
-      <Persona
-        { ...item }
-        presence = { item.presence ? item.presence : PersonaPresence.online }
-        className='ms-base-peoplepicker'
-        />
-      <button className='ms-base-peoplepicker' onClick={ () => { if (onRemoveItem) { onRemoveItem(); } } }>
-        <i className='ms-Icon ms-Icon--x'></i>
-      </button>
-    </div>
-  );
-};
-
-export class BasePeoplePicker extends BasePicker<IBasePickerProps> {
+export class MemberListBelow extends BasePeoplePicker {
   render() {
     let { value } = this.state;
 
@@ -82,18 +47,17 @@ export class BasePeoplePicker extends BasePicker<IBasePickerProps> {
               />
           </div>
         </SelectionZone>
-        { this.renderSuggestions() }
         <FocusZone ref='focusZone'>
           { this.renderItems() }
         </FocusZone>
+        { this.renderSuggestions() }
       </div>
     );
   }
-
   protected _onBackSpace(ev: React.KeyboardEvent) {
-    let { value, suggestionAvailable } = this.state;
+    let { value } = this.state;
     if (ev.target === this.refs.input) {
-      if (value && suggestionAvailable && value === suggestionAvailable.text && this.refs.input.selectionStart !== this.refs.input.selectionEnd) {
+      if (value && this.refs.input.selectionStart !== this.refs.input.selectionEnd) {
         this.setState({
           value: value.substring(0, this.refs.input.selectionStart)
         });
@@ -102,7 +66,7 @@ export class BasePeoplePicker extends BasePicker<IBasePickerProps> {
   }
 }
 
-export class PeoplePicker extends React.Component<IPeoplePickerProps, {contextualMenuVisible?: boolean, contextualMenuTarget?: HTMLElement;}> {
+export class PeoplePicker extends React.Component<IPeoplePickerProps, { contextualMenuVisible?: boolean, contextualMenuTarget?: HTMLElement; }> {
 
   static defaultProps = {
     peoplePickerType: PeoplePickerType.normal
@@ -118,19 +82,13 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, {contextua
 
   render() {
     let { onResolveSuggestions, onRenderSuggestion, peoplePickerType } = this.props;
-    let pickerProps: IBasePickerProps = {
-      onRenderItem:  props => <PeoplePickerItem {...props}/> ,
-      onRenderSuggestions: (props) =>
-        <PeopleSuggestions { ...props }
-          onResolveSuggestions={ onResolveSuggestions }
-          onRenderSuggestion={ (persona: IPersonaProps, index: number) => onRenderSuggestion ?
-            onRenderSuggestion(persona, index) :
-            PeoplePickerSearchItemDefault(persona, index) } />
+    let pickerProps: IBasePickerProps<IPersonaProps> = {
+      onRenderItem: props => <SelectedItemDefault {...props} />,
+      onResolveSuggestions: onResolveSuggestions,
+      onRenderSuggestion: (persona: IPersonaProps) => onRenderSuggestion ?
+        onRenderSuggestion(persona) :
+        SuggestionItemDefault(persona)
     }
-    if (peoplePickerType === PeoplePickerType.normal) {
-      return (<BasePeoplePicker { ...pickerProps }/>);
-    } else {
-      return <BasePicker { ...pickerProps }/>
-    }
+    return (<BasePeoplePicker { ...pickerProps }/>);
   }
 }

@@ -1,17 +1,14 @@
 import * as React from 'react';
-import { IPickerItemProps } from '../BasePicker';
-import { Persona, PersonaSize, IPersonaProps, PersonaPresence } from '../../Persona';
-import { ContextualMenu, IContextualMenuItem, DirectionalHint } from '../../ContextualMenu';
-import { Button, ButtonType } from '../../Button';
-export interface IPeoplePickerItemProps extends IPickerItemProps {
-  item: IPersonaProps;
-}
+import { IPickerItemProps } from '../../BasePicker';
+import { Persona, PersonaSize, IPersonaProps, PersonaPresence } from '../../../Persona';
+import { ContextualMenu, IContextualMenuItem, DirectionalHint } from '../../../ContextualMenu';
+import { Button, ButtonType } from '../../../Button';
 
 export interface IPeoplePickerItemState {
   contextualMenuVisible: boolean;
 }
 
-export class PeoplePickerItem extends React.Component<IPeoplePickerItemProps, IPeoplePickerItemState> {
+export class SelectedItemWithMenu extends React.Component<IPickerItemProps<IPersonaProps>, IPeoplePickerItemState> {
   private contextualMenuItems: IContextualMenuItem[] = [
     {
       key: 'newItem',
@@ -47,7 +44,7 @@ export class PeoplePickerItem extends React.Component<IPeoplePickerItemProps, IP
     ellipsisRef: HTMLElement
   }
 
-  constructor(props: IPeoplePickerItemProps) {
+  constructor(props: IPickerItemProps<IPersonaProps>) {
     super(props);
     this.onContextualMenu = this.onContextualMenu.bind(this);
     this._onCloseContextualMenu = this._onCloseContextualMenu.bind(this);

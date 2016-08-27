@@ -3,14 +3,14 @@ import { IPickerItemProps } from '../BasePicker';
 import { css } from '../../../utilities/css';
 import './TagItem.scss';
 
-export interface ITagItemProps extends IPickerItemProps {
+export interface TagItem {
   item: {
     key: string;
     name: string;
   }
 }
 
-export const TagItem = (props: ITagItemProps ) => (
+export const TagItem = (props: IPickerItemProps<TagItem> ) => (
   <div
   className={ css('ms-TagItem', {
     'is-selected': props.isSelected

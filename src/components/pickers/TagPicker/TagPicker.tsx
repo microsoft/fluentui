@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { BasePicker, IBasePickerProps } from '../BasePicker';
-import { TagSuggestions } from './TagSuggestions';
 import { TagItem } from './TagItem';
 
 export interface ITag {
@@ -8,19 +7,12 @@ export interface ITag {
   name: string;
 }
 
-export interface ITagPickerProps {
-  onResolveSuggestions?: (text?: string, selectedItems?: ITag[]) => ITag[];
+export interface ITagPickerProps extends IBasePickerProps<ITag> {
 }
 
-export class TagPicker extends React.Component<ITagPickerProps, {}> {
-  render() {
-    let { onResolveSuggestions } = this.props;
-
-    return (
-      <BasePicker
-        onRenderItem={ props => <TagItem { ...props }>{ props.item.name }</TagItem> }
-        onRenderSuggestions={ props => <TagSuggestions { ...props } onResolveSuggestions={ onResolveSuggestions } /> }
-      />
-    );
+export class TagPicker extends BasePicker<ITag, ITagPickerProps> {
+  static defaultProps = {
+    onRenderItem: (props) => <TagItem { ...props }>{ props.item.name }</TagItem>,
+    onRenderSuggestion:  (props: ITag) => <div> {props.name} </div>
   }
 }
