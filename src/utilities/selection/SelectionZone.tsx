@@ -292,6 +292,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
       selection.setChangeEvents(false);
       selection.setAllSelected(false);
       selection.setIndexSelected(index, !isSelected, true);
+      selection.setChangeEvents(true);
     } else {
       return;
     }
