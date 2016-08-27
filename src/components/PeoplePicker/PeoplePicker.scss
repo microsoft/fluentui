@@ -22,6 +22,7 @@
 // --------------------------------------------------
 // People Picker styles
 
+$peoplePicker-width: 340px;
 $personaItemHeight: 42px;
 
 
@@ -131,7 +132,7 @@ $personaItemHeight: 42px;
   border: 1px solid $ms-color-neutralTertiaryAlt;
   display: none;
   margin-bottom: -1px;
-  min-width: 340px;
+  width: $peoplePicker-width;
   padding-top: 9px;
   position: absolute;
   z-index: ($ms-zIndex-PeoplePicker + $ms-zIndex-middle);
@@ -183,6 +184,8 @@ $personaItemHeight: 42px;
   position: relative;
 
   .ms-Persona {
+    width: inherit;
+
     &:hover {
       @extend .ms-Persona.ms-Persona--darkText;
       cursor: pointer;
@@ -198,6 +201,7 @@ $personaItemHeight: 42px;
   // Ensure the width is 100%.
   .ms-Persona-details {
     width: 100%;
+    @include padding-right(28px);
   }
 }
 
@@ -236,8 +240,16 @@ $personaItemHeight: 42px;
 //== Modifier: Selectable Persona
 //
 .ms-PeoplePicker-resultBtn--selected {
-  background-color: $ms-color-themeLighter;
+  background-color: $ms-color-neutralQuaternaryAlt;
   outline: 1px solid transparent;
+
+  &:hover {
+    background-color: $ms-color-neutralQuaternary;
+  }
+
+  .ms-PeoplePicker-resultAction:hover {
+      background-color: $ms-color-neutralTertiaryAlt
+  }
 }
 
 .ms-PeoplePicker-peopleListBtn {
@@ -260,6 +272,7 @@ $personaItemHeight: 42px;
   top: 0;
   width: 30px;
   text-align: center;
+  padding: 0px;
 
   @media (min-width: $ms-screen-md-min) {
     height: 48px;
@@ -271,12 +284,12 @@ $personaItemHeight: 42px;
   }
 
   &:hover {
-    background-color: $ms-color-neutralTertiaryAlt;
+    background-color: $ms-color-neutralQuaternaryAlt;
     outline: 1px solid transparent;
   }
 
   &:active {
-    background-color: $ms-color-themeTertiary;
+    background-color: $ms-color-neutralQuaternary;
   }
 }
 
@@ -356,14 +369,22 @@ $personaItemHeight: 42px;
   text-align: left;
 
   &:hover {
-      background-color: $ms-color-neutralLight;
-      cursor: pointer;
+    background-color: $ms-color-neutralLight;
+    cursor: pointer;
+
+    .ms-PeoplePicker-searchMoreSecondary {
+      color: $ms-color-neutralDark;
+    }
   }
 
   // TODO: Works in Chrome, but not working in IE
   &:focus,
   &:active {
-      background-color: $ms-color-themeLight;
+    background-color: $ms-color-neutralQuaternaryAlt;
+
+    .ms-PeoplePicker-searchMoreSecondary {
+      color: $ms-color-black;
+    }
   }
 }
 
@@ -438,10 +459,6 @@ $personaItemHeight: 42px;
 
   .ms-PeoplePicker-resultAction {
     height: 32px;
-
-    .ms-Icon {
-      margin-top: -8px;
-    }
   }
 
   .ms-PeoplePicker-searchMore {

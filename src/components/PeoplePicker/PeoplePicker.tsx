@@ -683,14 +683,14 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
         className='ms-PeoplePicker-result'
         key={id}
         ref={ isSelected ? 'selectedSearchResult' : null }
+        onMouseDown={ () => { this._addPersonaToSelectedList(personaInfo); }}
+        onClick={ () => { this._addPersonaToSelectedList(personaInfo); }}
       >
         <div role='button' className={ buttonClassName }>
           <Persona
             { ...personaInfo }
             presence={ personaInfo.presence ? personaInfo.presence : PersonaPresence.online }
             size={ personaSize }
-            onMouseDown={ () => { this._addPersonaToSelectedList(personaInfo); }}
-            onClick={ () => { this._addPersonaToSelectedList(personaInfo); }}
           />
           { type !== PeoplePickerType.memberList ?
             <button
