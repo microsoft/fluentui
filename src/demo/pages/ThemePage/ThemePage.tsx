@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { loadTheme } from 'load-themed-styles';
+import { loadTheme, ITheme } from '@microsoft/load-themed-styles';
 let Highlight = require('react-highlight');
 import { defaultTheme } from './defaultTheme';
 import {
@@ -119,7 +119,7 @@ export class ThemePage extends React.Component<any, any> {
   private _onColorChanged(index: number, newColor: string) {
     let { colors } = this.state;
     let color = colors[index];
-    let theme = {};
+    let theme: ITheme = {};
 
     color.value = newColor;
 
