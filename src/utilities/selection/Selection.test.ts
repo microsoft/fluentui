@@ -52,5 +52,4 @@ describe('Selection', () => {
     expect(changeCount).equals(10, 'after range selecting from 0 to 2');
   });
 
-
 });
