@@ -408,7 +408,11 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
         (targetRect.top === targetTop)) {
 
         targetTop = targetRect.top;
-        distance = Math.abs((targetRect.left + (targetRect.width / 2)) - leftAlignment);
+        if (leftAlignment >= targetRect.left && leftAlignment <= (targetRect.left + targetRect.width)) {
+          distance = 0;
+        } else {
+          distance = Math.abs((targetRect.left + (targetRect.width / 2)) - leftAlignment);
+        }
       }
 
       return distance;
@@ -430,7 +434,11 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
       if ((targetTop === -1 && targetRect.bottom <= activeRect.top) ||
       (targetRect.top === targetTop)) {
         targetTop = targetRect.top;
-        distance = Math.abs((targetRect.left + (targetRect.width / 2)) - leftAlignment);
+        if (leftAlignment >= targetRect.left && leftAlignment <= (targetRect.left + targetRect.width)) {
+          distance = 0;
+        } else {
+          distance = Math.abs((targetRect.left + (targetRect.width / 2)) - leftAlignment);
+        }
       }
 
       return distance;
