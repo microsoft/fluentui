@@ -103,7 +103,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
       (link: INavLink, linkIndex: number) => this._renderLink(link, linkIndex, nestingLevel, hasGroupButton));
 
     return (
-      <ul role='list' aria-label={ this.props.navbarAriaLabel || '' }>
+      <ul role='list' aria-label={ this.props.ariaLabel || '' }>
         { linkElements }
       </ul>
     );
