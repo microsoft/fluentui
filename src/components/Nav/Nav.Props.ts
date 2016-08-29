@@ -39,7 +39,7 @@ export interface INavProps {
   /**
    * (Optional) The nav container aria label.
    */
-  navbarAriaLabel?: string;
+  ariaLabel?: string;
 }
 
 export interface INavLinkGroup {
