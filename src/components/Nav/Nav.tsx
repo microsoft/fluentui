@@ -49,8 +49,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
     return (
       <FocusZone direction={ FocusZoneDirection.vertical }>
         <nav role='navigation'
-          className={ css('ms-Nav', { 'is-onTop ms-u-slideRightIn40': this.props.isOnTop }) }
-          aria-label={ this.props.navbarAriaLabel || '' }>
+          className={ css('ms-Nav', { 'is-onTop ms-u-slideRightIn40': this.props.isOnTop }) }>
           { groupElements }
         </nav>
       </FocusZone>
@@ -75,7 +74,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
     }
 
     return (
-      <li key={ linkIndex }>
+      <li role='listitem' key={ linkIndex }>
         <a
           className={ css('ms-Nav-link', { 'is-selected' : isLinkSelected }) }
           style={ { [isRtl ? 'paddingRight' : 'paddingLeft'] : paddingBefore } }
@@ -104,7 +103,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
       (link: INavLink, linkIndex: number) => this._renderLink(link, linkIndex, nestingLevel, hasGroupButton));
 
     return (
-      <ul>
+      <ul role='list' aria-label={ this.props.navbarAriaLabel || '' }>
         { linkElements }
       </ul>
     );
