@@ -7,6 +7,7 @@ import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { getRelativePositions, IPositionInfo } from '../../utilities/positioning';
 import { focusFirstChild } from '../../utilities/focus';
 import { Popup } from '../Popup/index';
+import { getRTL } from '../../utilities/rtl';
 import './Callout.scss';
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
@@ -25,7 +26,7 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     beakStyle: 'ms-Callout-beak',
     beakWidth: 28,
     gapSpace: 16,
-    directionalHint: DirectionalHint.rightCenter
+    directionalHint: getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge
   };
 
   private _hostElement: HTMLDivElement;
