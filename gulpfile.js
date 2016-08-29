@@ -1,6 +1,6 @@
 'use strict';
 
-let build = require('web-library-build');
+let build = require('@microsoft/web-library-build');
 let gulp = require('gulp');
 let configFile = "./ftpconfig.json";
 let fs = require('fs');
