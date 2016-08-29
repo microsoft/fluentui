@@ -4,6 +4,7 @@ import { EventGroup } from '../eventGroup/EventGroup';
 export interface IRouterProps {
   replaceState?: boolean;
   children?: React.ReactElement<any>[];
+  onNewRouteLoaded?: () => void;
 }
 
 export interface IRouterState {
@@ -23,6 +24,7 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
   }
 
   public componentDidUpdate(prevProps: IRouterProps, prevState: IRouterState) {
+
     if (this.state.path !== prevState.path) {
       window.scrollTo(0, 0);
     }
@@ -35,9 +37,17 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
   public componentDidMount() {
     this._events.on(window, 'hashchange', () => {
       if (this.state.path !== location.hash) {
-        this.setState({ path: location.hash });
+        this.setState({ path: location.hash }, () => {
+          if (this.props.onNewRouteLoaded) {
+            this.props.onNewRouteLoaded();
+          }
+        });
       }
     });
+
+    if (this.props.onNewRouteLoaded) {
+      this.props.onNewRouteLoaded();
+    }
   }
 
   public componentWillUnmount() {
@@ -46,22 +56,45 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
 }
 
 function _getComponent(matchPath, children) {
+  let path = matchPath;
   if (children && children.$$typeof) {
     children = [ children ];
+  }
+
+  // Check if an in page anchor link was passed to the Url #/example/route#inPageAnchorLink
+  if (_hasAnchorLink(path)) {
+    // Extract the base path #/example/route - #inPageAnchorLink
+    path = _extractRoute(path);
   }
 
   for (let i = 0; children && i < children.length; i++) {
     let currentChild = children[i];
 
-    if (_match(matchPath, currentChild)) {
+    if (_match(path, currentChild)) {
       let component = currentChild.props.component;
-      let childComponent = _getComponent(matchPath, currentChild.props.children);
+      let childComponent = _getComponent(path, currentChild.props.children);
 
       return React.createElement(component, null, childComponent);
     }
   }
-
   return null;
+}
+
+function _hasAnchorLink(path) {
+  return (path.match(/#/g) || []).length > 1;
+}
+
+/*
+  Extract the route from the URL minus the in page anchor link
+  Example URL #/example/route#inPageAnchorLink
+  Returns #/example/route
+*/
+function _extractRoute(path) {
+  let index = path.lastIndexOf('#');
+  if (index >= 0) {
+    path = path.substr(0, index);
+  }
+  return path;
 }
 
 function _match(currentPath, child): boolean {
