@@ -5,28 +5,13 @@ import { KeyCodes } from '../../utilities/KeyCodes';
 import { ISelection, Selection, SelectionZone } from '../../utilities/selection/index';
 import { SuggestionElement, ISuggestionElementProps } from './SuggestionElement';
 import { Suggestions } from './Suggestions';
+import { IBasePickerProps, IPickerItemProps } from './BasePickerProps';
 import './BasePicker.scss';
-
-export interface IBasePickerProps<T> extends React.Props<any> {
-  onRenderItem?: (item: IPickerItemProps<T>) => JSX.Element;
-  onRenderSuggestion?: (props: T) => JSX.Element;
-  onResolveSuggestions: (filter: string) => T[];
-  defaultItems?: T[];
-  onChange?: (items: any[]) => void;
-}
 
 export interface IBasePickerState {
   items?: any;
   value?: string;
 }
-
-export interface IPickerItemProps<T> extends React.Props<any> {
-  item: T;
-  index: number;
-  isSelected: boolean;
-  onRemoveItem?: () => void;
-}
-
 
 export class BasePicker<T, S extends IBasePickerProps<T>> extends React.Component<S, IBasePickerState> {
   private suggestionManager: Suggestions<T>;
@@ -67,15 +52,33 @@ export class BasePicker<T, S extends IBasePickerProps<T>> extends React.Componen
     }
   }
 
+  public componentDidMount() {
+  }
+
   public render() {
     let { value } = this.state;
-
+    let { input } = this.refs;
+    let ghostDivStyle = {};
+    if (input) {
+      let style = window.getComputedStyle(input);
+      let tryMargin = parseFloat(style.paddingLeft)
+      let margin = tryMargin && !isNaN(tryMargin) ? tryMargin : 0;
+      ghostDivStyle = { left: this.refs.input.offsetLeft + this._calculateStringWidthInPixels(value) + margin + 'px' };
+    }
     return (
       <div ref='root' className='ms-BasePicker' onKeyDown={ this._onKeyDown }>
         <SelectionZone selection={ this._selection }>
           <FocusZone ref='focusZone' className='ms-BasePicker-text'>
             { this.renderItems() }
-            <input ref='input' className='ms-BasePicker-input' onFocus={ this._onInputFocus } onChange={ this._onInputChange } value={ value } />
+            <input ref='input' className='ms-BasePicker-input' onFocus={ this._onInputFocus } onChange={ this._onInputChange } value={ value }/>
+            { this.suggestionManager.currentSuggestion ?
+              <div className='ms-CurrentSuggestion' style={ ghostDivStyle }>
+                { this.props.onRenderItem({
+                  item: this.suggestionManager.currentSuggestion.item,
+                  index: this.suggestionManager.currentIndex,
+                  isSelected: false
+                }) }
+              </div> : null }
           </FocusZone>
         </SelectionZone>
         { this.renderSuggestions() }
@@ -92,6 +95,7 @@ export class BasePicker<T, S extends IBasePickerProps<T>> extends React.Componen
           onRenderSuggestion={this.props.onRenderSuggestion}
           onSuggestionClick={(ev: React.MouseEvent, index: number) => this.addItemByIndex(index) }
           suggestions={this.suggestionManager.getSuggestions() }
+          suggestionLimit={ 2 }
           />
       </Callout>
     ) : (null);
@@ -102,7 +106,7 @@ export class BasePicker<T, S extends IBasePickerProps<T>> extends React.Componen
   }
 
   public dismissSuggestions() {
-    this.setState({ value: '' });
+    this._updateSuggestions('');
   }
 
   public completeSuggestion() {
@@ -184,14 +188,11 @@ export class BasePicker<T, S extends IBasePickerProps<T>> extends React.Componen
 
   protected _updateSuggestions(value: string) {
     if (!this.suggestionManager.currentIndex || value !== this.state.value) {
-      if (value && value !== '') {
-        this.setState({ value: value });
-      } else {
-        this.setState({ value: '' });
-      }
+      let newValue: string = value ? value : '';
+      let newSuggestions: T[] = this.props.onResolveSuggestions(value);
+      this.suggestionManager.updateSuggestions(newSuggestions);
+      this.setState({ value: newValue });
     }
-    let newSuggestions = this.props.onResolveSuggestions(value);
-    this.suggestionManager.updateSuggestions(newSuggestions);
   }
 
   protected _onInputFocus(ev: React.FocusEvent) {
@@ -252,4 +253,21 @@ export class BasePicker<T, S extends IBasePickerProps<T>> extends React.Componen
       this.removeItems(this._selection.getSelection());
     }
   }
+
+  protected _calculateStringWidthInPixels(value: string): number {
+
+    let spanElement: HTMLElement = document.createElement('span');
+    spanElement.style.setProperty('width', 'auto');
+    spanElement.style.setProperty('visibility', 'hidden');
+    spanElement.style.setProperty('top', '-9999px');
+    spanElement.style.setProperty('left', '-9999px');
+    spanElement.style.setProperty('position', 'absolute');
+    spanElement.innerHTML = this.state.value;
+    document.body.appendChild(spanElement);
+    let spanWidth = spanElement.clientWidth;
+    document.body.removeChild(spanElement);
+    return spanWidth;
+  }
+
+
 }

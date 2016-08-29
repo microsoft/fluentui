@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Persona, PersonaSize, IPersonaProps, PersonaPresence } from '../../../Persona';
-import { Button } from '../../../Button';
-import { IPickerItemProps } from '../../BasePicker';
+import { Button, ButtonType } from '../../../Button';
+import { IPickerItemProps } from '../../BasePickerProps';
 import { css } from '../../../../utilities/css';
 import './PickerItemsDefault.scss';
 export const SelectedItemDefault: (props: IPickerItemProps<IPersonaProps>) => JSX.Element = (peoplePickerItemProps: IPickerItemProps<IPersonaProps>) => {
@@ -25,9 +25,13 @@ export const SelectedItemDefault: (props: IPickerItemProps<IPersonaProps>) => JS
         size={ PersonaSize.extraSmall }
         className='ms-base-peoplepicker'
         />
-      <Button className='ms-base-peoplepicker' onClick={ () => { if (onRemoveItem) { onRemoveItem(); } } }>
-        <i className='ms-Icon ms-Icon--x'></i>
+      <Button
+        onClick={ () => { if (onRemoveItem) { onRemoveItem(); } } }
+        icon={ 'x' }
+        buttonType={ ButtonType.icon }
+        className='ms-base-peoplepicker'
+        >
       </Button>
-    </div>
+    </div >
   );
 };

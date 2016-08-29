@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IPickerItemProps } from '../BasePicker';
+import { IPickerItemProps } from '../BasePickerProps';
 import { css } from '../../../utilities/css';
 import './TagItem.scss';
 

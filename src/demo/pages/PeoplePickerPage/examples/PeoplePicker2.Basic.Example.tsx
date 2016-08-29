@@ -16,6 +16,6 @@ export class PeoplePicker2BasicExample extends React.Component<{}, {}> {
   }
 
   private _onResolveSuggestions(text) {
-    return text ? people.filter(person => person.primaryText.toLowerCase().indexOf(text) > -1) : [];
+    return text ? people.filter(person => person.primaryText.toLowerCase().indexOf(text) === 0) : [];
   }
 }

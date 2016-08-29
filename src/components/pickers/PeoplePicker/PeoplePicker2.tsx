@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { BasePicker, IBasePickerProps, IPickerItemProps } from '../BasePicker';
+import { BasePicker } from '../BasePicker';
+import { IBasePickerProps, IPickerItemProps } from '../BasePickerProps'
 import { Persona, PersonaSize, IPersonaProps, PersonaPresence } from '../../Persona';
 import { SelectedItemDefault } from './PeoplePickerItems/SelectedItemDefault';
 import { SuggestionItemDefault } from './PeoplePickerItems/SuggestionItemDefault';
@@ -36,17 +37,19 @@ export class MemberListBelow extends BasePeoplePicker {
     let { value } = this.state;
 
     return (
-      <div ref='root' className='ms-BasePicker' onKeyDown={ this._onKeyDown }>
-        <SelectionZone selection={ this._selection }>
-          <div className='ms-BasePicker-text'>
-            <input ref='input'
-              onFocus={ this._onInputFocus }
-              onChange={ this._onInputChange }
-              value={ value }
-              className='ms-BasePicker-input'
-              />
-          </div>
-        </SelectionZone>
+      <div>
+        <div ref='root' className='ms-BasePicker' onKeyDown={ this._onKeyDown }>
+          <SelectionZone selection={ this._selection }>
+            <div className='ms-BasePicker-text'>
+              <input ref='input'
+                onFocus={ this._onInputFocus }
+                onChange={ this._onInputChange }
+                value={ value }
+                className='ms-BasePicker-input'
+                />
+            </div>
+          </SelectionZone>
+        </div>
         <FocusZone ref='focusZone'>
           { this.renderItems() }
         </FocusZone>
@@ -83,7 +86,7 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, { contextu
   render() {
     let { onResolveSuggestions, onRenderSuggestion, peoplePickerType } = this.props;
     let pickerProps: IBasePickerProps<IPersonaProps> = {
-      onRenderItem: props => <SelectedItemDefault {...props} />,
+      onRenderItem: props => <SelectedItemWithMenu {...props} />,
       onResolveSuggestions: onResolveSuggestions,
       onRenderSuggestion: (persona: IPersonaProps) => onRenderSuggestion ?
         onRenderSuggestion(persona) :

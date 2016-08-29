@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { BasePicker, IBasePickerProps } from '../BasePicker';
+import { BasePicker } from '../BasePicker';
+import { IBasePickerProps } from '../BasePickerProps';
 import { TagItem } from './TagItem';
 
 export interface ITag {

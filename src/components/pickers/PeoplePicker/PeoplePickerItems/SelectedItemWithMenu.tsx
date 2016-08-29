@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IPickerItemProps } from '../../BasePicker';
+import { IPickerItemProps } from '../../BasePickerProps';
 import { Persona, PersonaSize, IPersonaProps, PersonaPresence } from '../../../Persona';
 import { ContextualMenu, IContextualMenuItem, DirectionalHint } from '../../../ContextualMenu';
 import { Button, ButtonType } from '../../../Button';

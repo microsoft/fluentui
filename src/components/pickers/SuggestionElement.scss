@@ -1,0 +1,41 @@
+@import '../../common/common';
+
+.ms-SearchMore-Button {
+  @include button-reset();
+  position: relative;
+  height: auto;
+  width: 100%;
+  padding: 0px 8px 0px 0px;
+  margin: 0;
+  text-align: center;
+
+  &:hover {
+      background-color: $ms-color-neutralLight;
+      cursor: pointer;
+  }
+
+  // TODO: Works in Chrome, but not working in IE
+  &:focus,
+  &:active {
+      background-color: $ms-color-themeLight;
+  }
+}
+
+.ms-Suggestions {
+  .ms-Suggestions-item {
+    padding: 2px 16px;
+    height: auto;
+    width: 100%;
+    text-align: left;
+    &:hover {
+      background: $ms-color-neutralLight;
+    }
+
+    &.is-suggested {
+      background: $ms-color-neutralQuaternary;
+      &:hover {
+        background: $ms-color-neutralQuaternaryAlt;
+      }
+    }
+  }
+}
