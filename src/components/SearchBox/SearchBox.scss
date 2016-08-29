@@ -8,7 +8,7 @@
 // Search box styles
 
 
-$SearchBox-field-padding-left: 3px;
+$SearchBox-field-padding-left: 10px;
 $SearchBox-height: 36px;
 
 .ms-SearchBox {
@@ -35,12 +35,13 @@ $SearchBox-height: 36px;
 
   // State: Active searchbox
   &.is-active {
+
     .ms-SearchBox-closeButton {
       display: block;
       outline: transparent 1px solid;
       padding: 0px;
 
-      .ms-Icon--Cancel {
+      .ms-Icon--Clear {
         line-height: $SearchBox-height;
         position: absolute;
         top: 50%;
@@ -51,11 +52,16 @@ $SearchBox-height: 36px;
   }
 
   &:hover {
+
+    .ms-SearchBox-field {
+      border-color: $ms-color-themeDarker;
+    }
+
     .ms-SearchBox-label {
-      color: #000;
+      color: $ms-color-black;
 
       .ms-SearchBox-icon {
-        color: #333;
+        color:$ms-color-themeDarker;
       }
     }
   }
@@ -77,22 +83,9 @@ $SearchBox-height: 36px;
   z-index: $ms-zIndex-middle;
   transition: padding-left $ms-duration1;
 
-  &:hover {
-    background-color: $ms-color-themeLighter;
-
-    & + .ms-SearchBox-label {
-      color: $ms-color-black;
-
-      .ms-Icon {
-      color: $ms-color-neutralPrimary;
-      }
-    }
-  }
-
   &:focus {
     padding: 6px 32px 7px 10px;
-    border-color: $ms-color-themePrimary;
-    background-color: $ms-color-themeLighter;
+    border-color: $ms-color-themeDarker;
   }
 
   &::-ms-clear {
