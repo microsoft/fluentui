@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
-let { assert, expect } = chai;
+let { expect } = chai;
 
 import { SelectionZone, Selection, SelectionMode } from './index';
 import { KeyCodes } from '../KeyCodes';
@@ -77,22 +77,22 @@ describe('SelectionZone', () => {
 
   it('toggles an item on click of toggle element', () => {
     _simulateClick(_toggle0);
-    assert(_selection.isIndexSelected(0) === true, 'Index 0 not selected');
+    expect(_selection.isIndexSelected(0)).equals(true, 'Index 0 not selected');
     _simulateClick(_toggle0);
-    assert(_selection.isIndexSelected(0) === false, 'Index 0 selected');
-    assert(_onItemInvokeCalled === 0, 'onItemInvoked was called');
+    expect(_selection.isIndexSelected(0)).equals(false, 'Index 0 selected');
+    expect(_onItemInvokeCalled).equals(0, 'onItemInvoked was called');
   });
 
   it('toggles an item on dblclick of toggle element', () => {
     ReactTestUtils.Simulate.doubleClick(_toggle0);
-    assert(_selection.isIndexSelected(0) === false, 'Index 0 selected');
-    assert(_onItemInvokeCalled === 0, 'onItemInvoked was called');
+    expect(_selection.isIndexSelected(0)).equals(false, 'Index 0 selected');
+    expect(_onItemInvokeCalled).equals(0, 'onItemInvoked was called');
   });
 
   it('does not toggle an item on mousedown of toggle element', () => {
     ReactTestUtils.Simulate.mouseDown(_toggle0);
-    assert(_selection.isIndexSelected(0) === false, 'Index 0 selected');
-    assert(_onItemInvokeCalled === 0, 'onItemInvoked was called');
+    expect(_selection.isIndexSelected(0) === false, 'Index 0 selected');
+    expect(_onItemInvokeCalled === 0, 'onItemInvoked was called');
   });
 
   it('selects an unselected item on mousedown of invoke without modifiers pressed', () => {
@@ -114,31 +114,31 @@ describe('SelectionZone', () => {
 
   it('calls the invoke callback on click of invoke area', () => {
     _simulateClick(_invoke0);
-    assert(_onItemInvokeCalled === 1, 'onItemInvoked was not called 1 time after normal click');
+    expect(_onItemInvokeCalled === 1, 'onItemInvoked was not called 1 time after normal click');
   });
 
   it('selects an unselected item on click of item surface element', () => {
     _simulateClick(_surface0);
-    assert(_selection.isIndexSelected(0) === true, 'Index 0 not selected');
-    assert(_onItemInvokeCalled === 0, 'onItemInvoked was called');
+    expect(_selection.isIndexSelected(0)).equals(true, 'Index 0 not selected');
+    expect(_onItemInvokeCalled).equals(0, 'onItemInvoked was called');
   });
 
   it('does not unselect a selected item on click of item surface element', () => {
     _selection.setIndexSelected(0, true, true);
     _simulateClick(_surface0);
-    assert(_selection.isIndexSelected(0) === true, 'Index 0 not selected');
-    assert(_onItemInvokeCalled === 0, 'onItemInvoked was called');
+    expect(_selection.isIndexSelected(0)).equals(true, 'Index 0 not selected');
+    expect(_onItemInvokeCalled).equals(0, 'onItemInvoked was called');
   });
 
   it('does not select an unselected item on mousedown of item surface element', () => {
     ReactTestUtils.Simulate.mouseDown(_surface0);
-    assert(_selection.isIndexSelected(0) === false, 'Index 0 selected');
+    expect(_selection.isIndexSelected(0)).equals(false, 'Index 0 selected');
   });
 
   it('invokes an item on double clicking the surface element', () => {
     ReactTestUtils.Simulate.doubleClick(_surface0);
-    assert(_onItemInvokeCalled === 1, 'Item was invoked');
-    assert(_lastItemInvoked.key === 'a', 'Item invoked was not expected item');
+    expect(_onItemInvokeCalled).equals(1, 'Item was invoked');
+    expect(_lastItemInvoked.key).equals('a', 'Item invoked was not expected item');
   });
 
   it('toggles all on toggle-all clicks', () => {
@@ -168,12 +168,12 @@ describe('SelectionZone', () => {
 
   it('toggles by ctrl clicking a surface', () => {
     _simulateClick(_toggleAll);
-    assert(_selection.getSelectedCount() === 4, 'There were not 4 selected items');
+    expect(_selection.getSelectedCount()).equals(4, 'There were not 4 selected items');
 
     _simulateClick(_surface1, {
       ctrlKey: true
     });
-    assert(_selection.getSelectedCount() === 3, 'There were not 3 selected items');
+    expect(_selection.getSelectedCount()).equals(3, 'There were not 3 selected items');
   });
 
   it ('selects all on ctrl-a', () => {
