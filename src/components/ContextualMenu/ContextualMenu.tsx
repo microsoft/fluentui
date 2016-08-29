@@ -229,7 +229,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     return React.createElement(
             'button',
              { className: css('ms-ContextualMenu-link', { 'is-expanded': (expandedMenuItemKey === item.key) }),
-               onClick: item.onClick || (item.items && item.items.length) ? this._onItemClick.bind(this, item) : item.href ? () => { location.href = item.href; } : null,
+               onClick: this._onItemClick.bind(this, item),
                onKeyDown: item.items && item.items.length ? this._onItemKeyDown.bind(this, item) : null,
                onMouseEnter: this._onMouseEnter.bind(this, item),
                onMouseLeave: this._onMouseLeave,
@@ -311,6 +311,8 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
       if (!item.items || !item.items.length) { // This is an item without a menu. Click it.
         if (item.onClick) {
           item.onClick(item, ev);
+        } else if (item.href) {
+          location.href = item.href;
         }
         this.dismiss(ev);
       } else {
