@@ -123,7 +123,9 @@ export class ThemePage extends React.Component<any, any> {
 
     color.value = newColor;
 
-    for (let themeColor of colors) {
+    for (let i = 0; i < colors.length; i++) {
+      let themeColor = colors[i];
+
       theme[themeColor.key] = themeColor.value;
     }
 
