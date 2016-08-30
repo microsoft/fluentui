@@ -39,6 +39,5 @@ export function hoistMethods(destination, source, exclusions = REACT_LIFECYCLE_E
  */
 export function unhoistMethods(source: Object, methodNames: string[]): void {
   methodNames
-    .filter((methodName) => source.hasOwnProperty(methodName) && typeof source[methodName] === 'function')
     .forEach((methodName) => delete source[methodName]);
 }
