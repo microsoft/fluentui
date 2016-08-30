@@ -248,4 +248,3 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     selection.setChangeEvents(true);
   }
 }
-
