@@ -31,7 +31,6 @@ export function autobind<T extends Function>(target: Object, key: string, descri
         enumerable: true,
         value: newValue
       });
-      return newValue;
     }
   };
 }
