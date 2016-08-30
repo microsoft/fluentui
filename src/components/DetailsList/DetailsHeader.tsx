@@ -157,8 +157,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
                   { column.isSorted && (
                     <i className={ css('ms-Icon', {
-                      'ms-Icon--Up': !column.isSortedDescending,
-                      'ms-Icon--Down': column.isSortedDescending
+                      'ms-Icon--SortUp': !column.isSortedDescending,
+                      'ms-Icon--SortDown': column.isSortedDescending
                     }) } />
                   ) }
 
