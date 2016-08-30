@@ -1,7 +1,7 @@
 'use strict';
 
 /** Note: this require may need to be fixed to point to the build that exports the gulp-core-build-webpack instance. */
-let webpackTaskResources = require('web-library-build').webpack.resources;
+let webpackTaskResources = require('@microsoft/web-library-build').webpack.resources;
 let webpack = webpackTaskResources.webpack;
 let path = require('path');
 let VisualizerPlugin = require('webpack-visualizer-plugin');

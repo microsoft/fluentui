@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { css } from '../../utilities/css';
+import { getRTL } from '../../utilities/rtl';
 import './Nav.scss';
 
 import {
@@ -8,6 +9,9 @@ import {
   INavProps,
   INavLinkGroup,
   INavLink } from './Nav.Props';
+
+// The number pixels per indentation level for Nav links.
+const _indentationSize: number = 14;
 
 export interface INavState {
   isGroupExpanded: boolean[];
@@ -44,7 +48,8 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
 
     return (
       <FocusZone direction={ FocusZoneDirection.vertical }>
-        <nav role='navigation' className={ css('ms-Nav', { 'is-onTop ms-u-slideRightIn40' : this.props.isOnTop }) }>
+        <nav role='navigation'
+          className={ css('ms-Nav', { 'is-onTop ms-u-slideRightIn40': this.props.isOnTop }) }>
           { groupElements }
         </nav>
       </FocusZone>
@@ -55,8 +60,13 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
     return this._selectedKey;
   }
 
-  private _renderLink(link: INavLink, linkIndex: number): React.ReactElement<{}> {
+  private _renderLink(link: INavLink, linkIndex: number, nestingLevel: number, hasGroupButton: boolean): React.ReactElement<{}> {
     let { onLinkClick } = this.props;
+
+    // Determine the appropriate padding to add before this link.
+    // In RTL, the "before" padding will go on the right instead of the left.
+    const isRtl: boolean = getRTL();
+    const paddingBefore: string = (_indentationSize * nestingLevel + (hasGroupButton ? 40 : 20)).toString(10) + 'px';
 
     const isLinkSelected: boolean = _isLinkSelected(link, this._selectedKey);
     if (isLinkSelected) {
@@ -64,9 +74,10 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
     }
 
     return (
-      <li key={ linkIndex }>
+      <li role='listitem' key={ linkIndex }>
         <a
           className={ css('ms-Nav-link', { 'is-selected' : isLinkSelected }) }
+          style={ { [isRtl ? 'paddingRight' : 'paddingLeft'] : paddingBefore } }
           href={ link.url || 'javascript:' }
           onClick={ onLinkClick }
           aria-label={ link.ariaLabel }
@@ -77,21 +88,22 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
           <i className={ css('ms-Icon', 'ms-Nav-IconLink', link.iconClassName) }></i>
           : '') }
          { this.props.onRenderLink(link)}
-        </a> { this._renderLinks(link.links) }
+        </a>
+        { this._renderLinks(link.links, nestingLevel + 1, hasGroupButton) }
     </li>
     );
   }
 
-  private _renderLinks(links: INavLink[]): React.ReactElement<{}> {
+  private _renderLinks(links: INavLink[], nestingLevel: number, hasGroupButton: boolean): React.ReactElement<{}> {
     if (!links || !links.length) {
       return null;
     }
 
     const linkElements: React.ReactElement<{}>[] = links.map(
-      (link: INavLink, linkIndex: number) => this._renderLink(link, linkIndex));
+      (link: INavLink, linkIndex: number) => this._renderLink(link, linkIndex, nestingLevel, hasGroupButton));
 
     return (
-      <ul>
+      <ul role='list' aria-label={ this.props.ariaLabel }>
         { linkElements }
       </ul>
     );
@@ -99,10 +111,11 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
 
   private _renderGroup(group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> {
     const isGroupExpanded: boolean = this.state.isGroupExpanded[groupIndex] !== false;
+    const hasGroupButton: boolean = !!(group.name);
 
     return (
       <div key={ groupIndex } className={ css('ms-Nav-group', { 'is-expanded' : isGroupExpanded }) }>
-        { (group.name ?
+        { (hasGroupButton ?
         <button
           className='ms-Nav-groupButton'
           onClick={ this._onGroupHeaderClicked.bind(this, groupIndex) }
@@ -113,7 +126,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
         }
 
         <div className={ css('ms-Nav-groupContent', 'ms-u-slideDownIn20') }>
-        { this._renderLinks(group.links) }
+          { this._renderLinks(group.links, 0 /* nestingLevel */, hasGroupButton) }
         </div>
       </div>
     );

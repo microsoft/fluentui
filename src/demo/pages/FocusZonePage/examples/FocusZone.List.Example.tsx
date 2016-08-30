@@ -16,7 +16,7 @@ import './FocusZone.List.Example.scss';
 const ITEMS = createArray(10, (index) => ({
   key: index,
   name: 'Item-' + index,
-  url: 'http://placekitten.com/100/' + (200 + index)
+  url: 'http://placehold.it/100x' + (200 + index)
 }));
 
 const COLUMNS: IColumn[] = [

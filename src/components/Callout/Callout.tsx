@@ -5,6 +5,9 @@ import { Layer } from '../../Layer';
 import { css } from '../../utilities/css';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { getRelativePositions, IPositionInfo } from '../../utilities/positioning';
+import { focusFirstChild } from '../../utilities/focus';
+import { Popup } from '../Popup/index';
+import { getRTL } from '../../utilities/rtl';
 import './Callout.scss';
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
@@ -23,7 +26,7 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     beakStyle: 'ms-Callout-beak',
     beakWidth: 28,
     gapSpace: 16,
-    directionalHint: DirectionalHint.rightCenter
+    directionalHint: getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge
   };
 
   private _hostElement: HTMLDivElement;
@@ -69,9 +72,12 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
           ref={ (callout: HTMLDivElement) => this._calloutElement = callout }
           >
           { isBeakVisible && targetElement ? (<div className={ beakStyle }  style={ ((positions) ? positions.beak : BEAK_ORIGIN_POSITION) } />) : (null) }
-          <div className='ms-Callout-main'>
+          <Popup
+            className='ms-Callout-main'
+            onDismiss={ (ev:any) => this.dismiss() }
+            shouldRestoreFocus={ true }>
             { children }
-          </div>
+          </Popup>
         </div>
       </div>
     );
@@ -109,6 +115,10 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     this._events.on(window, 'resize', this.dismiss, true);
     this._events.on(window, 'focus', this._dismissOnLostFocus, true);
     this._events.on(window, 'click', this._dismissOnLostFocus, true);
+
+    if (this.props.setInitialFocus) {
+      focusFirstChild(this._calloutElement);
+    }
 
     if (this.props.onLayerMounted) {
       this.props.onLayerMounted();

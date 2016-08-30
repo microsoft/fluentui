@@ -65,6 +65,7 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
       assign(
         {},
         this.props.rootProps,
+        href ? { href } : null,
         {
           'aria-label': ariaLabel,
           'aria-labelledby': ariaLabel ? null : labelId,
