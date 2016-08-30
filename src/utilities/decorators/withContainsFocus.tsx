@@ -6,8 +6,6 @@ export function withContainsFocus<P extends { containsFocus?: boolean }, S>(Comp
   return class WithContainsFocusComponent extends BaseDecorator<P & { containsFocus? }, { containsFocus?: boolean }> {
     public refs: {
       [key: string]: React.ReactInstance,
-      /** @deprecated */
-      composed: any
     };
 
     private _newContainsFocus: boolean;
