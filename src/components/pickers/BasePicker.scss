@@ -7,7 +7,6 @@
   border: 1px solid #c8c8c8;
   min-width: 180px;
   padding: 1px;
-  position: relative;
 
   &:hover {
     border-color: #767677;
@@ -25,18 +24,4 @@
   outline: none;
   padding: 0 6px;
   margin: 1px;
-}
-
-.ms-autocomplete-bottom {
-  min-height: 28px;
-  color: $ms-color-themeLight;
-  box-sizing: border-box;
-  border: none;
-}
-.ms-autocomplete-top {
-  min-height: 28px;
-  border: none;
-  background: transparent;
-  position: absolute;
-  margin: 0;
 }

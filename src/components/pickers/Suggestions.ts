@@ -14,14 +14,11 @@ export class Suggestions<T> {
   public updateSuggestions(newSuggestions: T[]) {
     if (newSuggestions && newSuggestions.length > 0) {
       this.suggestions = this._convertSuggestionsToSuggestionItems(newSuggestions);
-      this.currentIndex = 0;
-      this.suggestions[0].isSelected = true;
-      this.currentSuggestion = this.suggestions[0];
     } else {
       this.suggestions = []
-      this.currentIndex = -1;
-      this.currentSuggestion = undefined;
     }
+    this.currentIndex = -1;
+    this.currentSuggestion = undefined;
 
   }
 
