@@ -238,7 +238,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         onMouseLeave: this._onMouseLeave,
         onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
         disabled: item.isDisabled,
-        dataCommandKey: index,
         role: 'menuitem',
         'aria-haspopup': item.items && item.items.length ? true : null,
         'aria-owns': item.key === expandedMenuItemKey ? subMenuId : null

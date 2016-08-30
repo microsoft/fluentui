@@ -55,7 +55,7 @@ $ContextualMenu-iconWidth: 24px;
 
 a.ms-ContextualMenu-link {
   text-rendering: auto;
-  color: initial;
+  color: inherit;
   letter-spacing: normal;
   word-spacing: normal;
   text-transform: none;
@@ -67,7 +67,6 @@ a.ms-ContextualMenu-link {
 .ms-ContextualMenu-divider {
   display: block;
   height: 1px;
-  margin: 4px 0;
   background-color: $dividerColor;
   position: relative;
 }
