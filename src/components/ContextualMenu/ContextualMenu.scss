@@ -53,6 +53,17 @@ $ContextualMenu-iconWidth: 24px;
   }
 }
 
+a.ms-ContextualMenu-link {
+  text-rendering: auto;
+  color: initial;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  box-sizing: border-box
+}
+
 .ms-ContextualMenu-divider {
   display: block;
   height: 1px;
@@ -77,6 +88,12 @@ $ContextualMenu-iconWidth: 24px;
 
 .ms-ContextualMenu-itemText {
   padding: 0 4px;
+}
+
+.ms-ContextualMenu-linkText {
+  padding: 0 4px;
+  display: inline-block;
+  text-decoration: underline;
 }
 
 .ms-Icon.ms-ContextualMenu-submenuChevron {

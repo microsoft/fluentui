@@ -148,18 +148,18 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
 
   public render() {
     let { className,
-          items,
-          isBeakVisible,
-          labelElementId,
-          targetElement,
-          id,
-          targetPoint,
-          useTargetPoint,
-          beakWidth,
-          directionalHint,
-          gapSpace,
-          isSubMenu,
-          coverTarget } = this.props;
+      items,
+      isBeakVisible,
+      labelElementId,
+      targetElement,
+      id,
+      targetPoint,
+      useTargetPoint,
+      beakWidth,
+      directionalHint,
+      gapSpace,
+      isSubMenu,
+      coverTarget } = this.props;
 
     let { submenuProps } = this.state;
 
@@ -197,14 +197,14 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
                     <li
                       role='separator'
                       key={ item.key || index }
-                      className={ css('ms-ContextualMenu-divider', item.className ) }/>
+                      className={ css('ms-ContextualMenu-divider', item.className) }/>
                   ) : (
                       <li
                         role='menuitem'
                         title={ item.title }
                         key={ item.key || index }
-                        className={ css('ms-ContextualMenu-item', item.className ) }>
-                          { this._renderMenuItem(item, index, hasCheckmarks, hasIcons) }
+                        className={ css('ms-ContextualMenu-item', item.className) }>
+                        { this._renderMenuItem(item, index, hasCheckmarks, hasIcons) }
                       </li>
                     )
                 )) }
@@ -225,22 +225,42 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     if (item.onRender) {
       return item.onRender(item);
     }
-
+    if (item.href) {
+      return this._renderAnchorMenuItem(item, index, hasCheckmarks, hasIcons);
+    }
     return React.createElement(
-            'button',
-             { className: css('ms-ContextualMenu-link', { 'is-expanded': (expandedMenuItemKey === item.key) }),
-               onClick: this._onItemClick.bind(this, item),
-               onKeyDown: item.items && item.items.length ? this._onItemKeyDown.bind(this, item) : null,
-               onMouseEnter: this._onMouseEnter.bind(this, item),
-               onMouseLeave: this._onMouseLeave,
-               onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
-               disabled: item.isDisabled,
-               dataCommandKey: index,
-               role: 'menuitem',
-               href: item.href,
-               'aria-haspopup': item.items && item.items.length ? true : null,
-               'aria-owns': item.key === expandedMenuItemKey ? subMenuId : null },
-             this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons));
+      'button',
+      {
+        className: css('ms-ContextualMenu-link', { 'is-expanded': (expandedMenuItemKey === item.key) }),
+        onClick: this._onItemClick.bind(this, item),
+        onKeyDown: item.items && item.items.length ? this._onItemKeyDown.bind(this, item) : null,
+        onMouseEnter: this._onMouseEnter.bind(this, item),
+        onMouseLeave: this._onMouseLeave,
+        onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
+        disabled: item.isDisabled,
+        dataCommandKey: index,
+        role: 'menuitem',
+        'aria-haspopup': item.items && item.items.length ? true : null,
+        'aria-owns': item.key === expandedMenuItemKey ? subMenuId : null
+      },
+      this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons));
+  }
+
+  private _renderAnchorMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): JSX.Element {
+    return (
+      <div>
+        <a
+          href= { item.href }
+          className='ms-ContextualMenu-link'
+          disabled={item.isDisabled}
+          role='menuitem'>
+          { (hasIcons) ? (
+            <span className={ 'ms-ContextualMenu-icon' + ((item.icon) ? ` ms-Icon ms-Icon--${item.icon}` : ' no-icon') }/>)
+            : null
+          }
+          <span className='ms-ContextualMenu-linkText ms-fontWeight-regular'> { item.name } </span>
+        </a>
+      </div >);
   }
 
   private _renderMenuItemChildren(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
@@ -249,17 +269,17 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         {(hasCheckmarks) ? (
           <span
             className={
-              css('ms-ContextualMenu-checkmark', {'ms-Icon ms-Icon--check': item.isChecked, 'not-selected': !item.isChecked})
+              css('ms-ContextualMenu-checkmark', { 'ms-Icon ms-Icon--check': item.isChecked, 'not-selected': !item.isChecked })
             }
             onClick={ this._onItemClick.bind(this, item) } />
         ) : (null) }
         {(hasIcons) ? (
           <span className={ 'ms-ContextualMenu-icon' + ((item.icon) ? ` ms-Icon ms-Icon--${item.icon}` : ' no-icon') }/>
-        ) : (null)}
+        ) : (null) }
         <span className='ms-ContextualMenu-itemText ms-fontWeight-regular'>{ item.name }</span>
         {(item.items && item.items.length) ? (
           <i className={ css('ms-ContextualMenu-submenuChevron ms-Icon', getRTL() ? 'ms-Icon--chevronLeft' : 'ms-Icon--chevronRight') } />
-        ) : (null)}
+        ) : (null) }
       </div>
     );
   }
@@ -311,8 +331,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
       if (!item.items || !item.items.length) { // This is an item without a menu. Click it.
         if (item.onClick) {
           item.onClick(item, ev);
-        } else if (item.href) {
-          location.href = item.href;
         }
         this.dismiss(ev);
       } else {
@@ -357,7 +375,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         }
       });
     }
- }
+  }
 
   private _onSubMenuDismiss(ev?: any) {
     this.setState({
