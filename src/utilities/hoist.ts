@@ -1,6 +1,5 @@
 const REACT_LIFECYCLE_EXCLUSIONS = [
   'setState',
-  'forceUpdate',
   'render',
   'componentWillMount',
   'componentDidMount',
