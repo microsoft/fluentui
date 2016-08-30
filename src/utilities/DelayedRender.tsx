@@ -16,12 +16,16 @@ export interface IDelayedRenderState {
 }
 
 /**
- * Utility component for delaying the render of a child component after a given delay.
+ * Utility component for delaying the render of a child component after a given delay. This component
+ * requires a single child component; don't pass in many components. Wrap multiple components in a DIV
+ * if necessary.
  *
- * Usage:
- *
+ * @example
  * <DelayedRender delay={ 3000 }>
- *  <div>Surprise, I will show up in 3 seconds.</div>
+ *  <div className='foo-List-loadingSpinner'>
+ *    <p>I am loading</p>
+ *    <Spinner />
+ *  </div>
  * </DelayedRender>
  */
 export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayedRenderState> {
@@ -52,6 +56,6 @@ export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayed
   }
 
   public render() {
-    return this.state.isRendered ? this.props.children as JSX.Element : null;
+    return this.state.isRendered ? React.Children.only(this.props.children) : null;
   }
 }
