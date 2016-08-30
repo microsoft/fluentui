@@ -11,6 +11,13 @@ import './BasePicker.scss';
 export interface IBasePickerState {
   items?: any;
   value?: string;
+  inputPositon?: IInputPositon;
+}
+
+export interface IInputPositon {
+  left?: number;
+  top?: number;
+  width?: number;
 }
 
 export class BasePicker<T, S extends IBasePickerProps<T>> extends React.Component<S, IBasePickerState> {
@@ -41,9 +48,11 @@ export class BasePicker<T, S extends IBasePickerProps<T>> extends React.Componen
     this.addItem = this.addItem.bind(this);
     this.addItemByIndex = this.addItemByIndex.bind(this);
     this.removeItem = this.removeItem.bind(this);
+    this._setInputPosition = this._setInputPosition.bind(this);
     this.state = {
       items: items,
-      value: ''
+      value: '',
+      inputPositon: { top: 0,left: 0, width: 0 }
     };
   }
 
@@ -68,12 +77,30 @@ export class BasePicker<T, S extends IBasePickerProps<T>> extends React.Componen
         <SelectionZone selection={ this._selection }>
           <FocusZone ref='focusZone' className='ms-BasePicker-text'>
             { this.renderItems() }
-            <input ref='input' className='ms-BasePicker-input' onFocus={ this._onInputFocus } onChange={ this._onInputChange } value={ value + suggestionValue.substring(value.length)}/>
+            <input ref={(input) => this._setInputPosition(input) } value={value + suggestionValue.substring(value.length)} className='ms-BasePicker-input ms-autocomplete-bottom'/>
+            <input ref='input' className='ms-BasePicker-input ms-autocomplete-top' onFocus={ this._onInputFocus } onChange={ this._onInputChange } value={ value } style={{ width: this.state.inputPositon.width + 'px', left: this.state.inputPositon.left, top: this.state.inputPositon.top }}/>
           </FocusZone>
         </SelectionZone>
         { this.renderSuggestions() }
       </div>
     );
+  }
+
+  protected _setInputPosition(element: HTMLInputElement) {
+    if (element) {
+      let inputPositon: IInputPositon = {};
+      let style = window.getComputedStyle(element);
+      let leftPad = parseFloat(style.paddingLeft);
+      leftPad = !isNaN(leftPad) ? leftPad : 0
+      let rightPad = parseFloat(style.paddingRight);
+      rightPad = !isNaN(rightPad) ? rightPad : 0
+      inputPositon.width = element.getBoundingClientRect().width - leftPad - rightPad;
+      inputPositon.left = element.offsetLeft;
+      inputPositon.top = element.offsetTop;
+      if (inputPositon.width !== this.state.inputPositon.width || inputPositon.top !== this.state.inputPositon.top || inputPositon.left !== this.state.inputPositon.left) {
+        this.setState({ inputPositon });
+      }
+    }
   }
 
   protected renderSuggestions(): JSX.Element {
@@ -85,6 +112,7 @@ export class BasePicker<T, S extends IBasePickerProps<T>> extends React.Componen
           onRenderSuggestion={this.props.onRenderSuggestion}
           onSuggestionClick={(ev: React.MouseEvent, index: number) => this.addItemByIndex(index) }
           suggestions={this.suggestionManager.getSuggestions() }
+          suggestionLimit={ 2 }
           />
       </Callout>
     ) : (null);

@@ -26,3 +26,17 @@
   padding: 0 6px;
   margin: 1px;
 }
+
+.ms-autocomplete-bottom {
+  min-height: 28px;
+  color: $ms-color-themeLight;
+  box-sizing: border-box;
+  border: none;
+}
+.ms-autocomplete-top {
+  min-height: 28px;
+  border: none;
+  background: transparent;
+  position: absolute;
+  margin: 0;
+}
