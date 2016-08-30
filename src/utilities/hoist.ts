@@ -21,6 +21,7 @@ export function hoistMethods(destination, source, exclusions = REACT_LIFECYCLE_E
     if (
       typeof source[methodName] === 'function' &&
       destination[methodName] === undefined &&
+      exclusions &&
       exclusions.indexOf(methodName) === -1
     ) {
       hoisted.push(methodName);
