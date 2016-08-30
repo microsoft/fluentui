@@ -181,7 +181,6 @@ $personaItemHeight: 42px;
 // List of results
 .ms-PeoplePicker-resultList {
   @include ms-u-normalize;
-  margin-bottom: -1px;
   list-style-type: none; // Browser default override.
 }
 
@@ -217,16 +216,12 @@ $personaItemHeight: 42px;
   @include button-reset();
   position: relative;
   box-sizing: border-box;
-  height: $personaItemHeight;
+  height: $peoplePicker-rowHeight;
   width: 100%;
   background: none;
   border: 0;
   @include text-align(left);
   @include padding(4px, 0, 4px, 16px);
-
-  @media (min-width: $ms-screen-md-min) {
-    height: $peoplePicker-rowHeight;
-  }
 
   &:hover {
     background-color: $ms-color-neutralLight;
@@ -270,7 +265,7 @@ $personaItemHeight: 42px;
 .ms-PeoplePicker-resultAction {
   @include button-reset();
   display: block;
-  height: 34px;
+  height: $peoplePicker-rowHeight;
   transition: background-color 0.367s $ms-ease1;
   position: absolute;
   @include right(0);
