@@ -1,0 +1,34 @@
+@import '../../../common/common';
+
+$componentPageColor: #0f8387;
+$componentPagePadding: 20px;
+
+.ComponentPage {
+  width: 100%;
+}
+
+.ComponentPage-header {
+  background-color: $componentPageColor;
+  min-height: 300px;
+  padding: $componentPagePadding;
+}
+
+.ComponentPage-title {
+  @include ms-font-xxl;
+  font-size: 48px;
+  color: $ms-color-white;
+  display: inline-block;
+  width: 100%;
+}
+
+.ComponentPage-overviewTitle {
+  @include ms-font-xxl;
+}
+
+.ComponentPage-overview {
+  font-size: $ms-font-size-m;
+}
+
+.ComponentPage-body {
+  padding: $componentPagePadding;
+}

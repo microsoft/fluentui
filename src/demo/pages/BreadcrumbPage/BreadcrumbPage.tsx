@@ -4,7 +4,8 @@ import {
 } from '../../../index';
 import {
   ExampleCard,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentPage
 } from '../../components/index';
 
 import { BreadcrumbBasicExample } from './examples/Breadcrumb.Basic.Example';
@@ -14,19 +15,28 @@ const BreadcrumbBasicExampleCode = require('./examples/Breadcrumb.Basic.Example.
 export class BreadcrumbPage extends React.Component<any, any> {
   public render() {
     return (
-      <div className='BreadcrumbExample'>
-        <h1 className='ms-font-xxl'>Breadcrumb</h1>
-        <div>
-          <Link target='_blank' href='http://dev.office.com/fabric/components/breadcrumb'>Breadcrumbs</Link>
-          <span> are used to represent a given path.</span>
-        </div>
-        <h2 className='ms-font-xl'>Examples</h2>
-        <ExampleCard title='Simple breadcrumb' code={ BreadcrumbBasicExampleCode }>
-          <BreadcrumbBasicExample />
-        </ExampleCard>
-        <PropertiesTableSet componentName='Breadcrumb' />
-      </div>
+      <ComponentPage
+        title='Breadcrumb'
+        componentName='BreadcrumbExample'
+        exampleCards={
+          [
+            <ExampleCard title='Simple breadcrumb' code={ BreadcrumbBasicExampleCode }>
+              <BreadcrumbBasicExample />
+            </ExampleCard>
+          ]
+        }
+        propertiesTables={
+          [
+            <PropertiesTableSet componentName='Breadcrumb' />
+          ]
+        }
+        overview={
+          <div>
+            <Link target='_blank' href='http://dev.office.com/fabric/components/breadcrumb'>Breadcrumbs</Link>
+            <span> are used to represent a given path.</span>
+          </div>
+        }>
+      </ComponentPage>
     );
   }
-
 }
