@@ -90,7 +90,8 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, { contextu
       onResolveSuggestions: onResolveSuggestions,
       onRenderSuggestion: (persona: IPersonaProps) => onRenderSuggestion ?
         onRenderSuggestion(persona) :
-        SuggestionItemDefault(persona)
+        SuggestionItemDefault(persona),
+      getTextFromItem: (persona: IPersonaProps) => persona.primaryText
     }
     return (<BasePeoplePicker { ...pickerProps }/>);
   }

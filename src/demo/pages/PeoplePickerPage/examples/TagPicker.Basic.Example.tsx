@@ -28,11 +28,12 @@ export class TagPickerBasicExample extends React.Component<{}, {}> {
     return (
       <TagPicker
         onResolveSuggestions={ this._onResolveSuggestions }
+        getTextFromItem= {(item: any) => {return item.name}}
       />
     );
   }
 
   private _onResolveSuggestions(text) {
-    return text && text!=='' ? _testTags.filter(color => color.name.indexOf(text) > -1) : [];
+    return text && text!=='' ? _testTags.filter(color => color.name.indexOf(text) === 0) : [];
   }
 }

@@ -3,11 +3,11 @@
 .ms-BasePicker-text {
   display: flex;
   flex-wrap: wrap;
-
   box-sizing: border-box;
   border: 1px solid #c8c8c8;
   min-width: 180px;
   padding: 1px;
+  position: relative;
 
   &:hover {
     border-color: #767677;
@@ -25,10 +25,4 @@
   outline: none;
   padding: 0 6px;
   margin: 1px;
-}
-
-.ms-CurrentSuggestion {
-  opacity: .5;
-  pointer-events: none;
-  position: absolute;
 }

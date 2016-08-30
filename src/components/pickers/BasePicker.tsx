@@ -16,6 +16,7 @@ export interface IBasePickerState {
 export class BasePicker<T, S extends IBasePickerProps<T>> extends React.Component<S, IBasePickerState> {
   private suggestionManager: Suggestions<T>;
   private SuggestionOfProperType = SuggestionElement as new (props: ISuggestionElementProps<T>) => SuggestionElement<T>;
+
   public refs: {
     [key: string]: React.ReactInstance;
     root: HTMLElement;
@@ -58,27 +59,16 @@ export class BasePicker<T, S extends IBasePickerProps<T>> extends React.Componen
   public render() {
     let { value } = this.state;
     let { input } = this.refs;
-    let ghostDivStyle = {};
-    if (input) {
-      let style = window.getComputedStyle(input);
-      let tryMargin = parseFloat(style.paddingLeft)
-      let margin = tryMargin && !isNaN(tryMargin) ? tryMargin : 0;
-      ghostDivStyle = { left: this.refs.input.offsetLeft + this._calculateStringWidthInPixels(value) + margin + 'px' };
+    let suggestionValue: string = '';
+    if (this.suggestionManager.currentSuggestion && this.props.getTextFromItem) {
+      suggestionValue = this.props.getTextFromItem(this.suggestionManager.currentSuggestion.item);
     }
     return (
       <div ref='root' className='ms-BasePicker' onKeyDown={ this._onKeyDown }>
         <SelectionZone selection={ this._selection }>
           <FocusZone ref='focusZone' className='ms-BasePicker-text'>
             { this.renderItems() }
-            <input ref='input' className='ms-BasePicker-input' onFocus={ this._onInputFocus } onChange={ this._onInputChange } value={ value }/>
-            { this.suggestionManager.currentSuggestion ?
-              <div className='ms-CurrentSuggestion' style={ ghostDivStyle }>
-                { this.props.onRenderItem({
-                  item: this.suggestionManager.currentSuggestion.item,
-                  index: this.suggestionManager.currentIndex,
-                  isSelected: false
-                }) }
-              </div> : null }
+            <input ref='input' className='ms-BasePicker-input' onFocus={ this._onInputFocus } onChange={ this._onInputChange } value={ value + suggestionValue.substring(value.length)}/>
           </FocusZone>
         </SelectionZone>
         { this.renderSuggestions() }
@@ -95,7 +85,6 @@ export class BasePicker<T, S extends IBasePickerProps<T>> extends React.Componen
           onRenderSuggestion={this.props.onRenderSuggestion}
           onSuggestionClick={(ev: React.MouseEvent, index: number) => this.addItemByIndex(index) }
           suggestions={this.suggestionManager.getSuggestions() }
-          suggestionLimit={ 2 }
           />
       </Callout>
     ) : (null);
@@ -253,21 +242,4 @@ export class BasePicker<T, S extends IBasePickerProps<T>> extends React.Componen
       this.removeItems(this._selection.getSelection());
     }
   }
-
-  protected _calculateStringWidthInPixels(value: string): number {
-
-    let spanElement: HTMLElement = document.createElement('span');
-    spanElement.style.setProperty('width', 'auto');
-    spanElement.style.setProperty('visibility', 'hidden');
-    spanElement.style.setProperty('top', '-9999px');
-    spanElement.style.setProperty('left', '-9999px');
-    spanElement.style.setProperty('position', 'absolute');
-    spanElement.innerHTML = this.state.value;
-    document.body.appendChild(spanElement);
-    let spanWidth = spanElement.clientWidth;
-    document.body.removeChild(spanElement);
-    return spanWidth;
-  }
-
-
 }
