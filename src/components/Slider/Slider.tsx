@@ -148,7 +148,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
 
   @autobind
   private _onMouseMoveOrTouchMove(event: MouseEvent | TouchEvent, suppressEventCancelation?: boolean): void {
-    const { max, min, step, onChange } = this.props;
+    const { max, min, step } = this.props;
     const steps: number = (max - min) / step;
     const sliderLength: number = this.refs.sliderLine.offsetWidth;
     const stepLength: number = sliderLength / steps;
@@ -213,7 +213,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
   @autobind
   private _onKeyDown(event: KeyboardEvent): void {
     const value: number = this.state.value;
-    const { max, min, step, onChange } = this.props;
+    const { max, min, step } = this.props;
 
     let diff: number = 0;
     if (event.which === getRTLSafeKeyCode(KeyCodes.left)) {
