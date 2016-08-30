@@ -42,7 +42,7 @@ export function hoistMethods(destination, source, exclusions = REACT_LIFECYCLE_E
 export function unhoistMethods(source: Object, methodNames: string[]): void {
   for (let methodName of methodNames) {
     if (source.hasOwnProperty(methodName) && typeof source[methodName] === 'function') {
-      source[methodName] = null; // or should this be undefined?
+      delete source[methodName];
     }
   }
 }
