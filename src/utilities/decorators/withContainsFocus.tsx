@@ -1,27 +1,21 @@
 import * as React from 'react';
-import { Async } from '../Async/Async';
-import { hoistMethods, unhoistMethods } from '../hoist';
+import { BaseDecorator } from './BaseDecorator';
 
-export function withContainsFocus<P, S>(ComposedComponent: any): any {
+export function withContainsFocus<P extends { containsFocus?: boolean }, S>(ComposedComponent: (new (props: P, ...args: any[]) => (React.Component<P, S>))): any {
 
-  return class WithContainsFocusComponent extends React.Component<P, any> {
+  return class WithContainsFocusComponent extends BaseDecorator<P & { containsFocus? }, { containsFocus?: boolean }> {
     public refs: {
       [key: string]: React.ReactInstance,
       /** @deprecated */
       composed: any
     };
 
-    private _async: Async;
-    private _composedComponentInstance: any;
-    private _hoisted: string[];
     private _newContainsFocus: boolean;
-
     private _delayedSetContainsFocus: () => void;
 
     constructor() {
       super();
 
-      this._async = new Async(this);
       this.state = {
         containsFocus: false
       };
@@ -46,17 +40,6 @@ export function withContainsFocus<P, S>(ComposedComponent: any): any {
 
     public forceUpdate() {
       this._composedComponentInstance.forceUpdate();
-    }
-
-    private _updateChildRef(composedComponentInstance: any) {
-      this.refs.composed = composedComponentInstance;
-      this._composedComponentInstance = composedComponentInstance;
-      if (composedComponentInstance) {
-        this._hoisted = hoistMethods(this, composedComponentInstance);
-      } else if (this._hoisted) {
-        this.refs.composed = null;
-        unhoistMethods(this, this._hoisted);
-      }
     }
 
     private _handleFocus(ev) {

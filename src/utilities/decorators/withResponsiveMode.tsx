@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { EventGroup } from '../eventGroup/EventGroup';
-import { hoistMethods, unhoistMethods } from '../hoist';
+import { BaseDecorator } from './BaseDecorator';
 
 export interface IWithResponsiveModeState {
   responsiveMode?: ResponsiveMode;
@@ -24,17 +23,11 @@ const RESPONSIVE_MAX_CONSTRAINT = [
   99999999
 ];
 
-export function withResponsiveMode<P, S>(ComposedComponent: any): any {
+export function withResponsiveMode<P extends { responsiveMode?: ResponsiveMode }, S>(ComposedComponent: (new (props: P, ...args: any[]) => React.Component<P, S>)): any {
 
-  return class WithResponsiveMode extends React.Component<P, IWithResponsiveModeState> {
-    private _composedComponentInstance: any;
-    private _events: EventGroup;
-    private _hoisted: string[];
-
+  return class WithResponsiveMode extends BaseDecorator<P, IWithResponsiveModeState> {
     constructor() {
       super();
-
-      this._events = new EventGroup(this);
       this._updateChildRef = this._updateChildRef.bind(this);
 
       this.state = {
@@ -64,15 +57,6 @@ export function withResponsiveMode<P, S>(ComposedComponent: any): any {
       return (
         <ComposedComponent ref={ this._updateChildRef } responsiveMode={ responsiveMode } { ...this.props } />
       );
-    }
-
-    private _updateChildRef(composedComponentInstance: any) {
-      this._composedComponentInstance = composedComponentInstance;
-      if (composedComponentInstance) {
-        this._hoisted = hoistMethods(this, composedComponentInstance);
-      } else if (this._hoisted) {
-        unhoistMethods(this, this._hoisted);
-      }
     }
 
     private _getResponsiveMode(): ResponsiveMode {

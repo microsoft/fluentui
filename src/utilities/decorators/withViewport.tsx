@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { BaseComponent } from '../../common/BaseComponent';
-import { hoistMethods, unhoistMethods } from '../hoist';
+import { BaseDecorator } from './BaseDecorator';
 
 export interface IViewport {
   width: number;
@@ -13,23 +12,17 @@ export interface IWithViewportState {
 
 const RESIZE_DELAY = 500;
 
-export function withViewport<P, S>(ComposedComponent: any): any {
+export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComponent: (new (props: P, ...args: any[]) => React.Component<P, S>)): any {
 
-  return class WithViewportComponent extends BaseComponent<{}, IWithViewportState> {
+  return class WithViewportComponent extends BaseDecorator<P, IWithViewportState> {
 
     public refs: {
       [key: string]: React.ReactInstance;
-      /** @deprecated */
-      component: any;
     };
-
-    private _composedComponentInstance: any;
-    private _hoisted: string[];
 
     constructor() {
       super();
 
-      this._updateChildRef = this._updateChildRef.bind(this);
       this.state = {
         viewport: {
           width: 0,
@@ -71,17 +64,6 @@ export function withViewport<P, S>(ComposedComponent: any): any {
       this._updateViewport(true);
     }
 
-    private _updateChildRef(composedComponentInstance: any) {
-      this.refs.component = composedComponentInstance;
-      this._composedComponentInstance = composedComponentInstance;
-      if (composedComponentInstance) {
-        this._hoisted = hoistMethods(this, composedComponentInstance);
-      } else if (this._hoisted) {
-        this.refs.component = null;
-        unhoistMethods(this, this._hoisted);
-      }
-    }
-
     private _onAsyncResize() {
       this._updateViewport();
     }
@@ -93,10 +75,11 @@ export function withViewport<P, S>(ComposedComponent: any): any {
       let clientRect = viewportElement.getBoundingClientRect();
       let scrollRect = scrollElement.getBoundingClientRect();
       let updateComponent = () => {
-          if (withForceUpdate && this.refs.component) {
-            this.refs.component.forceUpdate();
-          }
+        if (withForceUpdate && this._composedComponentInstance) {
+          this._composedComponentInstance.forceUpdate();
+        }
       };
+
       let isSizeChanged = (
         clientRect.width !== viewport.width ||
         scrollRect.height !== viewport.height);
@@ -131,5 +114,4 @@ export function withViewport<P, S>(ComposedComponent: any): any {
       return rootElement;
     }
   };
-
 }
