@@ -22,7 +22,7 @@ export interface IDelayedRenderState {
  *
  * <DelayedRender delay={ 3000 }>
  *  <div>Surprise, I will show up in 3 seconds.</div>
- * </DelayedRender
+ * </DelayedRender>
  */
 export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayedRenderState> {
   public static defaultProps = {
