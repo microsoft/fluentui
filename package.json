@@ -29,7 +29,7 @@
     "tslint-microsoft-contrib": "^2.0.9",
     "vinyl-ftp": "0.4.5",
     "@microsoft/web-library-build": "~0.2.7",
-    "webpack-split-by-path": "0.0.8",
+    "webpack-split-by-path": "0.0.10",
     "webpack-visualizer-plugin": "0.1.5"
   },
   "peerDependencies": {
