@@ -180,13 +180,14 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
       currentValue = min + step * Math.round(currentSteps);
     }
 
+    if (onChange && currentValue !== this.state.value) {
+      onChange(currentValue);
+    }
+
     this.setState({
       value: currentValue,
       renderedValue: renderedValue
     });
-    if (onChange) {
-      onChange(currentValue);
-    }
 
     if (!suppressEventCancelation) {
       event.preventDefault();
