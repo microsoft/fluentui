@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { EventGroup } from '../eventGroup/EventGroup';
+import { hoistMethods, unhoistMethods } from '../hoist';
 
 export interface IWithResponsiveModeState {
   responsiveMode?: ResponsiveMode;
@@ -26,8 +27,9 @@ const RESPONSIVE_MAX_CONSTRAINT = [
 export function withResponsiveMode<P, S>(ComposedComponent: any): any {
 
   return class WithResponsiveMode extends React.Component<P, IWithResponsiveModeState> {
-    private _events: EventGroup;
     private _composedComponentInstance: any;
+    private _events: EventGroup;
+    private _hoisted: string[];
 
     constructor() {
       super();
@@ -64,15 +66,13 @@ export function withResponsiveMode<P, S>(ComposedComponent: any): any {
       );
     }
 
-    /**
-     * Accessor for the instance of the component being wrapped by WithResponsiveMode.
-     */
-    public get composedComponentInstance() {
-      return this._composedComponentInstance;
-    }
-
     private _updateChildRef(composedComponentInstance: any) {
       this._composedComponentInstance = composedComponentInstance;
+      if (composedComponentInstance) {
+        this._hoisted = hoistMethods(this, composedComponentInstance);
+      } else if (this._hoisted) {
+        unhoistMethods(this, this._hoisted);
+      }
     }
 
     private _getResponsiveMode(): ResponsiveMode {

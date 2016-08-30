@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { BaseComponent } from '../../common/BaseComponent';
+import { hoistMethods, unhoistMethods } from '../hoist';
 
 export interface IViewport {
   width: number;
@@ -18,12 +19,17 @@ export function withViewport<P, S>(ComposedComponent: any): any {
 
     public refs: {
       [key: string]: React.ReactInstance;
+      /** @deprecated */
       component: any;
     };
+
+    private _composedComponentInstance: any;
+    private _hoisted: string[];
 
     constructor() {
       super();
 
+      this._updateChildRef = this._updateChildRef.bind(this);
       this.state = {
         viewport: {
           width: 0,
@@ -55,21 +61,25 @@ export function withViewport<P, S>(ComposedComponent: any): any {
       return (
         <div className='ms-Viewport' ref='root' style={ { minWidth: 1, minHeight: 1 } }>
           { isViewportVisible && (
-            <ComposedComponent ref='component' viewport={ viewport } { ...this.props } />
+            <ComposedComponent ref={ this._updateChildRef } viewport={ viewport } { ...this.props } />
           ) }
         </div>
       );
     }
 
-    /**
-     * Accessor for the instance of the component being wrapped by withViewport.
-     */
-    public get composedComponentInstance() {
-      return this.refs.component;
-    }
-
     public forceUpdate() {
       this._updateViewport(true);
+    }
+
+    private _updateChildRef(composedComponentInstance: any) {
+      this.refs.component = composedComponentInstance;
+      this._composedComponentInstance = composedComponentInstance;
+      if (composedComponentInstance) {
+        this._hoisted = hoistMethods(this, composedComponentInstance);
+      } else if (this._hoisted) {
+        this.refs.component = null;
+        unhoistMethods(this, this._hoisted);
+      }
     }
 
     private _onAsyncResize() {
