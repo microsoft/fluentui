@@ -41,6 +41,11 @@ export interface IPersonaProps extends React.HTMLProps<Persona> {
   secondaryText?: string;
 
   /**
+   *  Optional control to display/update, usually the role of the user.
+   */
+  secondaryControl?: JSX.Element;
+
+  /**
    * Tertiary text to display, usually the status of the user.
    */
   tertiaryText?: string;

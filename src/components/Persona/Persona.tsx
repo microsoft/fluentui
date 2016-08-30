@@ -23,7 +23,8 @@ export class Persona extends React.Component<IPersonaProps, any> {
   };
 
   public render() {
-    let { className, size, imageUrl, imageInitials, initialsColor, presence, primaryText, secondaryText, tertiaryText, optionalText, hidePersonaDetails } = this.props;
+      let { className, size, imageUrl, imageInitials, initialsColor, presence, primaryText, secondaryText, tertiaryText, optionalText, hidePersonaDetails, secondaryControl } = this.props;
+     let personaDetailsClass = secondaryControl ? 'ms-Persona-details-controls' : 'ms-Persona-details';
 
     return (
       <div { ... this.props as any } className={ css('ms-Persona', className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence]) }>
@@ -35,13 +36,12 @@ export class Persona extends React.Component<IPersonaProps, any> {
         ) }
 
         { presence !== PersonaPresence.none && <div className='ms-Persona-presence'></div> }
-
         { !hidePersonaDetails && (
-          <div className='ms-Persona-details'>
+                <div className= { personaDetailsClass }>
             <div className='ms-Persona-primaryText'>{ primaryText }</div>
             { secondaryText ? (
               <div className='ms-Persona-secondaryText'>{ secondaryText }</div>
-            ) : (null) }
+                ) : secondaryControl ? (<div className='ms-Persona-secondaryControl'>{ secondaryControl }</div>) : (null) }
             <div className='ms-Persona-tertiaryText'>{ tertiaryText }</div>
             <div className='ms-Persona-optionalText'>{ optionalText }</div>
           </div>) }
