@@ -28,7 +28,7 @@ export function withResponsiveMode<P extends { responsiveMode?: ResponsiveMode }
   return class WithResponsiveMode extends BaseDecorator<P, IWithResponsiveModeState> {
     constructor() {
       super();
-      this._updateChildRef = this._updateChildRef.bind(this);
+      this._updateComposedComponentRef = this._updateComposedComponentRef.bind(this);
 
       this.state = {
         responsiveMode: this._getResponsiveMode()
@@ -55,7 +55,7 @@ export function withResponsiveMode<P extends { responsiveMode?: ResponsiveMode }
       let { responsiveMode } = this.state;
 
       return (
-        <ComposedComponent ref={ this._updateChildRef } responsiveMode={ responsiveMode } { ...this.props } />
+        <ComposedComponent ref={ this._updateComposedComponentRef } responsiveMode={ responsiveMode } { ...this.props } />
       );
     }
 

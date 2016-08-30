@@ -21,7 +21,7 @@ export function withContainsFocus<P extends { containsFocus?: boolean }, S>(Comp
       };
 
       this._delayedSetContainsFocus = this._async.debounce(this._setContainsFocus, 20);
-      this._updateChildRef = this._updateChildRef.bind(this);
+      this._updateComposedComponentRef = this._updateComposedComponentRef.bind(this);
     }
 
     public componentWillUnmount() {
@@ -33,7 +33,7 @@ export function withContainsFocus<P extends { containsFocus?: boolean }, S>(Comp
 
       return (
         <div ref='root' onFocus={ this._handleFocus.bind(this) } onBlur={ this._handleBlur.bind(this) }>
-          <ComposedComponent ref={ this._updateChildRef } containsFocus={ containsFocus } {...this.props} />
+          <ComposedComponent ref={ this._updateComposedComponentRef } containsFocus={ containsFocus } {...this.props} />
         </div>
       );
     }

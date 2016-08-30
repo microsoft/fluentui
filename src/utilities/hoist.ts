@@ -40,9 +40,7 @@ export function hoistMethods(destination, source, exclusions = REACT_LIFECYCLE_E
  * @param {string[]} methodNames An array of method names to unhoist.
  */
 export function unhoistMethods(source: Object, methodNames: string[]): void {
-  for (let methodName of methodNames) {
-    if (source.hasOwnProperty(methodName) && typeof source[methodName] === 'function') {
-      delete source[methodName];
-    }
-  }
+  methodNames
+    .filter((methodName) => source.hasOwnProperty(methodName) && typeof source[methodName] === 'function')
+    .forEach((methodName) => delete source[methodName]);
 }

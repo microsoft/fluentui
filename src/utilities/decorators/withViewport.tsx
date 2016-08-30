@@ -54,7 +54,7 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
       return (
         <div className='ms-Viewport' ref='root' style={ { minWidth: 1, minHeight: 1 } }>
           { isViewportVisible && (
-            <ComposedComponent ref={ this._updateChildRef } viewport={ viewport } { ...this.props } />
+            <ComposedComponent ref={ this._updateComposedComponentRef } viewport={ viewport } { ...this.props } />
           ) }
         </div>
       );
