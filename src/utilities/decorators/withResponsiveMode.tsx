@@ -27,11 +27,13 @@ export function withResponsiveMode<P, S>(ComposedComponent: any): any {
 
   return class WithResponsiveMode extends React.Component<P, IWithResponsiveModeState> {
     private _events: EventGroup;
+    private _composedComponentInstance: any;
 
     constructor() {
       super();
 
       this._events = new EventGroup(this);
+      this._updateChildRef = this._updateChildRef.bind(this);
 
       this.state = {
         responsiveMode: this._getResponsiveMode()
@@ -58,8 +60,19 @@ export function withResponsiveMode<P, S>(ComposedComponent: any): any {
       let { responsiveMode } = this.state;
 
       return (
-        <ComposedComponent responsiveMode={ responsiveMode } { ...this.props } />
+        <ComposedComponent ref={ this._updateChildRef } responsiveMode={ responsiveMode } { ...this.props } />
       );
+    }
+
+    /**
+     * Accessor for the instance of the component being wrapped by WithResponsiveMode.
+     */
+    public get composedComponentInstance() {
+      return this._composedComponentInstance;
+    }
+
+    private _updateChildRef(composedComponentInstance: any) {
+      this._composedComponentInstance = composedComponentInstance;
     }
 
     private _getResponsiveMode(): ResponsiveMode {
@@ -71,7 +84,5 @@ export function withResponsiveMode<P, S>(ComposedComponent: any): any {
 
       return responsiveMode;
     }
-
   };
-
 }

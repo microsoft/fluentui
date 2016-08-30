@@ -61,6 +61,13 @@ export function withViewport<P, S>(ComposedComponent: any): any {
       );
     }
 
+    /**
+     * Accessor for the instance of the component being wrapped by withViewport.
+     */
+    public get composedComponentInstance() {
+      return this.refs.component;
+    }
+
     public forceUpdate() {
       this._updateViewport(true);
     }

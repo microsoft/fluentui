@@ -39,6 +39,13 @@ export function withContainsFocus<P, S>(ComposedComponent: any): any {
       );
     }
 
+    /**
+     * Accessor for the instance of the component being wrapped by withContainsFocus.
+     */
+    public get composedComponentInstance() {
+      return this.refs.composed;
+    }
+
     public forceUpdate() {
       this.refs.composed.forceUpdate();
     }
