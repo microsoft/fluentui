@@ -40,6 +40,7 @@ $MessageBar-padding: 8px;
 
 .ms-MessageBar-text {
   @include ms-font-s;
+  color: $ms-color-neutralPrimary;
   min-width: 0;
   display: flex;
 }

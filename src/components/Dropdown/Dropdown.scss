@@ -32,6 +32,7 @@ $Dropdown-selectedItem-hover-bg: $ms-color-neutralLighter;
 .ms-Dropdown {
   @include ms-u-normalize;
   @include ms-font-m;
+  color: $ms-color-neutralPrimary;
 
   margin-bottom: 10px;
   position: relative;

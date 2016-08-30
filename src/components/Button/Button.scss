@@ -13,6 +13,7 @@
   @include focus-border();
   @include ms-font-m;
   @include ms-u-normalize;
+  color: $ms-color-neutralPrimary;
   background-color: $ms-color-neutralLighter;
   border: 1px solid $ms-color-neutralLighter;
   cursor: pointer;

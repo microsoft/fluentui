@@ -22,6 +22,7 @@
   @include ms-baseFont;
   @include ms-font-m;
   @include ms-u-normalize;
+  color: $ms-color-neutralPrimary;
 
   position: relative;
   display: block;

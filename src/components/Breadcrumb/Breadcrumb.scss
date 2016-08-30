@@ -47,6 +47,7 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
     .ms-Breadcrumb-itemLink {
       @include focus-border;
       @include ms-font-xl;
+      color: $ms-color-neutralPrimary;
       display: inline-block;
       padding: 0 4px;
       max-width: $Breadcrumb-itemMaxWidth;

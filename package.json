@@ -22,7 +22,7 @@
     "gulp-util": "3.0.7",
     "gutil": "1.6.4",
     "highlight.js": "9.4.0",
-    "office-ui-fabric-core": "^3.1.0",
+    "office-ui-fabric-core": "^4.0.0",
     "react-addons-test-utils": "^15.1.0",
     "react-highlight": "0.8.0",
     "source-map-loader": "0.1.5",

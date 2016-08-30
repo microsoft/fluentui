@@ -355,7 +355,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
       {
         key: 'aToZ',
         name: 'A to Z',
-        icon: 'Up',
+        icon: 'SortUp',
         canCheck: true,
         isChecked: column.isSorted && !column.isSortedDescending,
         onClick: () => this._onSortColumn(column.key, false)
@@ -363,7 +363,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
       {
         key: 'zToA',
         name: 'Z to A',
-        icon: 'Down',
+        icon: 'SortDown',
         canCheck: true,
         isChecked: column.isSorted && column.isSortedDescending,
         onClick: () => this._onSortColumn(column.key, true)
