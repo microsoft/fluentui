@@ -187,4 +187,3 @@ export interface IGroupFooterProps {
   /** Text to display for the group footer show all link. */
   showAllLinkText?: string;
 }
-

@@ -76,4 +76,3 @@ export class DetailsListBasicExample extends React.Component<any, any> {
     }
   }
 }
-
