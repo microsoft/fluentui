@@ -17,6 +17,12 @@ export interface IDelayedRenderState {
 
 /**
  * Utility component for delaying the render of a child component after a given delay.
+ *
+ * Usage:
+ *
+ * <DelayedRender delay={ 3000 }>
+ *  <div>Surprise, I will show up in 3 seconds.</div>
+ * </DelayedRender
  */
 export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayedRenderState> {
   public static defaultProps = {
