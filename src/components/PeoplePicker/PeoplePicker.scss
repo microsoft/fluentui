@@ -30,6 +30,7 @@ $personaItemHeight: 42px;
 .ms-PeoplePicker {
   @include ms-font-m;
   @include ms-u-normalize;
+  color: $ms-color-neutralPrimary;
   background-color: $ms-color-white;
   margin-bottom: 10px;
   position: relative;

@@ -4,6 +4,7 @@
   padding: 8px 16px;
   display: block;
   @include ms-font-l;
+  color: $ms-color-neutralPrimary;
   height: 36px; // Two lines of text, making sure the third line is hidden
   line-height: 20px;
   overflow: hidden;

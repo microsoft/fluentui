@@ -43,6 +43,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
 
 .ms-CommandBar {
   @include ms-font-m;
+  color: $ms-color-neutralPrimary;
 
   position: relative;
   background-color: $ms-color-neutralLighter;
@@ -99,6 +100,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
 @mixin CommandBarItem-text {
   @include focus-border(2px);
   @include ms-font-m;
+  color: $ms-color-neutralPrimary;
 
   position: relative;
   background: none;
