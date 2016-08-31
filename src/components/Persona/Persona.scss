@@ -155,12 +155,6 @@ $ms-color-initials-darkRed:     #b91d47;
   overflow: hidden;
 }
 
-.ms-Persona-details-controls {
-  display: table-cell;
-  padding: 0 12px;
-  vertical-align: middle;
-}
-
 .ms-Persona-primaryText,
 .ms-Persona-secondaryText,
 .ms-Persona-tertiaryText,
@@ -182,7 +176,7 @@ $ms-color-initials-darkRed:     #b91d47;
 .ms-Persona-secondaryText,
 .ms-Persona-tertiaryText,
 .ms-Persona-optionalText,
-.ms-Persona-secondaryControl {
+.ms-PersonaAll-details {
   color: $ms-color-neutralSecondary;
   font-family: $ms-font-family-regular;
   font-size: $ms-font-size-s;
@@ -194,7 +188,7 @@ $ms-color-initials-darkRed:     #b91d47;
   padding-top: 3px;
 }
 
-.ms-Persona-secondaryControl {
+.ms-PersonaAll-details {
   padding-top: 3px;
 }
 
@@ -428,7 +422,7 @@ $ms-color-initials-darkRed:     #b91d47;
     padding-top: 3px;
   }
 
-  .ms-Persona-secondaryControl {
+  .ms-PersonaAll-details {
   padding-top: 3px;
 }
 
