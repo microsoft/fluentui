@@ -31,4 +31,3 @@ export class PersonaInitialsExample extends React.Component<any, any> {
     );
   }
 }
-

@@ -1,28 +1,25 @@
 import * as React from 'react';
-import { Async } from '../Async/Async';
+import { BaseDecorator } from './BaseDecorator';
 
-export function withContainsFocus<P, S>(ComposedComponent: any): any {
+export function withContainsFocus<P extends { containsFocus?: boolean }, S>(ComposedComponent: (new (props: P, ...args: any[]) => (React.Component<P, S>))): any {
 
-  return class WithContainsFocusComponent extends React.Component<P, any> {
+  return class WithContainsFocusComponent extends BaseDecorator<P & { containsFocus? }, { containsFocus?: boolean }> {
     public refs: {
       [key: string]: React.ReactInstance,
-      composed: any
     };
 
-    private _async: Async;
     private _newContainsFocus: boolean;
-
     private _delayedSetContainsFocus: () => void;
 
     constructor() {
       super();
 
-      this._async = new Async(this);
       this.state = {
         containsFocus: false
       };
 
       this._delayedSetContainsFocus = this._async.debounce(this._setContainsFocus, 20);
+      this._updateComposedComponentRef = this._updateComposedComponentRef.bind(this);
     }
 
     public componentWillUnmount() {
@@ -34,13 +31,13 @@ export function withContainsFocus<P, S>(ComposedComponent: any): any {
 
       return (
         <div ref='root' onFocus={ this._handleFocus.bind(this) } onBlur={ this._handleBlur.bind(this) }>
-          <ComposedComponent ref='composed' containsFocus={ containsFocus } {...this.props} />
+          <ComposedComponent ref={ this._updateComposedComponentRef } containsFocus={ containsFocus } {...this.props} />
         </div>
       );
     }
 
     public forceUpdate() {
-      this.refs.composed.forceUpdate();
+      this._composedComponentInstance.forceUpdate();
     }
 
     private _handleFocus(ev) {
@@ -58,7 +55,5 @@ export function withContainsFocus<P, S>(ComposedComponent: any): any {
         this.setState({ containsFocus: this._newContainsFocus });
       }
     }
-
   };
-
 }

@@ -73,4 +73,3 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
     );
   }
 }
-
