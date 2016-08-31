@@ -12,7 +12,7 @@ import {
   EmbedServiceResponseCode } from './EmbeddableService/IEmbeddableService';
 import HtmlGenerator, { IHtmlGeneratorProps } from './HtmlGenerator/HtmlGenerator';
 import HtmlGeneratorFactory from './HtmlGenerator/HtmlGeneratorFactory';
-import styles from './style/HTMLEmbed.module.scss';
+import './style/HTMLEmbed.scss';
 import { IHTMLEmbedProps, EmbedCodeType, IHTMLEmbedArea } from './HTMLEmbed.Props';
 import { IValidateResult } from './HtmlValidator/HtmlValidator';
 
@@ -114,13 +114,13 @@ export default class HTMLEmbed extends React.Component<IHTMLEmbedProps, IHTMLEmb
           this._renderLoadingIndicator() : (
             (!this.state.errorMessage && this._htmlGenerator) ? (
               <div
-                className={ styles.HTMLEmbed }
+                className='HTMLEmbed'
                 style={ this._htmlGenerator.getMaxWidthStyle() }
               >
                 <div
                   role='row'
-                  className={ styles.embedCode }
-                  tabIndex='0'
+                  className='embedCode'
+                  tabIndex={ 0 }
                   style={ this._htmlGenerator.getPaddingBottomStyle() }
                   onKeyDown={ this._handleKeyDown.bind(this) }
                   aria-label={ this.props.stringsLoc.htmlEmbedWebPartAriaLabel }
