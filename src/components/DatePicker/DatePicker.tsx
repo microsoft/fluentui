@@ -356,34 +356,35 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
       return;
     }
 
-    let date = null;
     if (allowTextInput) {
-      if (inputValue) {
-        date = parseDateFromString(inputValue);
-        if (!date) {
-          this.setState({
-            errorMessage: strings.invalidInputErrorMessage || '*'
-          });
+      let date = null;
+
+        if (inputValue) {
+          date = parseDateFromString(inputValue);
+          if (!date) {
+            this.setState({
+              errorMessage: strings.invalidInputErrorMessage || '*'
+            });
+          } else {
+            this.setState({
+              selectedDate: date,
+              formattedDate: formatDate && date ? formatDate(date) : null,
+              errorMessage: ''
+            });
+          }
         } else {
+          // No input date string shouldn't be an error if field is not required
           this.setState({
-            selectedDate: date,
-            formattedDate: formatDate && date ? formatDate(date) : null,
             errorMessage: ''
           });
         }
-      } else {
-        // No input date string shouldn't be an error if field is not required
-        this.setState({
-          errorMessage: ''
-        });
-      }
-    }
 
-    // Execute onSelectDate callback
-    if (onSelectDate) {
-      // If no input date string or input date string is invalid
-      // date variable will be null, callback should expect null value for this case
-      onSelectDate(date);
+      // Execute onSelectDate callback
+      if (onSelectDate) {
+        // If no input date string or input date string is invalid
+        // date variable will be null, callback should expect null value for this case
+        onSelectDate(date);
+      }
     }
   }
 }
