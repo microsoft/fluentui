@@ -21,18 +21,15 @@ export class BingPreviewStyleGenerator extends HtmlGenerator {
         style= { {marginBottom: '20px', overflow: 'auto',  width: '100%', textIndent: '0px'} }
       >
         <table
-          cellspacing={'0'}
           style={ {width: '90%', position: 'relative', overflow: 'auto', paddingTop: '20px', paddingBottom: '20px',
             marginTop: '20px', borderTop: '1px dotted rgb(200, 200, 200)', borderBottom: '1px dotted rgb(200, 200, 200)',
             backgroundColor: 'rgb(255, 255, 255)'} }
         >
           <tbody>
             <tr
-              valign={'top'}
               style={ {borderSpacing: '0px'} }
             >
                 <td
-                  colspan='1'
                   style={ {width: '250px', position: 'relative', display: 'table-cell', paddingRight: '20px'} }
                 >
                   <div
@@ -59,7 +56,7 @@ export class BingPreviewStyleGenerator extends HtmlGenerator {
                     />
                   </div>
                 </td>
-                <td colspan='2' style={ {verticalAlign: 'top', position: 'relative', padding: '0px', display: 'table-cell'} }>
+                <td style={ {verticalAlign: 'top', position: 'relative', padding: '0px', display: 'table-cell'} }>
                   <div>
                     <a className='ms-Icon--x ms-icon-font-size-14' style={ {
                       fontFamily: 'wf_segoe-ui_normal, &quot;Segoe UI&quot;, &quot;Segoe WP&quot;, Tahoma,Arial, sans-serif', fontWeight: 'normal',
