@@ -94,6 +94,8 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
   position: relative;
   vertical-align: top;
   user-select: none;
+  min-width: $ms-checkbox-label-size;
+  min-height: $ms-checkbox-label-size;
   line-height: $ms-checkbox-label-size;
 
   &:hover {

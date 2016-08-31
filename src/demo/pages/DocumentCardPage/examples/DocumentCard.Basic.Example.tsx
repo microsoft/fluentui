@@ -28,7 +28,7 @@ export class DocumentCardBasicExample extends React.Component<any, any> {
           <DocumentCardPreview { ...previewProps } />
           <DocumentCardTitle title='Revenue stream proposal fiscal year 2016 version02.pptx'/>
           <DocumentCardActivity
-            activity='Created Feb 23, 2016'
+            activity='Created a few minutes ago'
             people={
               [
                 { name: 'Annie Lindqvist', profileImageSrc: 'images/persona-female.png' }
