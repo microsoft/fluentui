@@ -144,10 +144,14 @@ $ms-color-initials-darkRed:     #b91d47;
   border: 2px solid $ms-color-white;
 }
 
+.ms-PersonaAll-details,
 .ms-Persona-details {
   display: table-cell;
   padding: 0 12px;
   vertical-align: middle;
+}
+
+.ms-Persona-details {
   overflow: hidden;
 }
 
