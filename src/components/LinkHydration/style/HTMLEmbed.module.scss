@@ -1,0 +1,42 @@
+@import '~office-ui-fabric/dist/sass/Fabric.Common';
+@import './../../../../common/themeOverrides.scss';
+
+.HTMLEmbed {
+  margin: 0 auto;
+
+  .embedCode iframe {
+    border: none;
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .iframeStyles {
+    border: none;
+    display: block;
+    margin: 0 auto;
+  }
+
+  [contentEditable=true]:empty:before {
+    content: attr(placeholder);
+    color: $ms-color-neutralSecondaryAlt;
+    display: block; /* For Firefox */
+  }
+}
+
+.embedCode {
+  border: none;
+  display: block;
+  position: relative;
+  height: 0;
+  overflow: hidden;
+}
+
+.blackBackGround {
+  background-color: $ms-color-black;
+}
