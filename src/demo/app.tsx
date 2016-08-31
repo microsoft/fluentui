@@ -20,11 +20,25 @@ window['Debugging'] = Debugging;
 
 let rootElement;
 
+// Return the anchor link from the URL without the hash
+function _extractAnchorLink(path) {
+  let index = path.lastIndexOf('#');
+  if (index >= 0) {
+    path = path.substr(index + 1, path.length - index);
+  }
+  return path;
+}
+
+function _scrollAnchorLink() {
+  let anchor = _extractAnchorLink(window.location.hash);
+  document.getElementById(anchor).scrollIntoView();
+}
+
 function _onLoad() {
   rootElement = rootElement || document.getElementById('content');
 
   ReactDOM.render(
-    <Router>
+    <Router onNewRouteLoaded = { _scrollAnchorLink }>
       <Route component={ App }>
         { _getAppRoutes() }
       </Route>

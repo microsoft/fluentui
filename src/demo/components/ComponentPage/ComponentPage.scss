@@ -2,6 +2,7 @@
 
 $componentPageColor: #0f8387;
 $componentPagePadding: 20px;
+$componentPageDividingMargin: 80px;
 
 .ComponentPage {
   width: 100%;
@@ -9,26 +10,78 @@ $componentPagePadding: 20px;
 
 .ComponentPage-header {
   background-color: $componentPageColor;
-  min-height: 300px;
+  min-height: 245px;
   padding: $componentPagePadding;
 }
 
 .ComponentPage-title {
   @include ms-font-xxl;
-  font-size: 48px;
+  font-size: 82px;
   color: $ms-color-white;
   display: inline-block;
   width: 100%;
 }
 
-.ComponentPage-overviewTitle {
+.ComponentPage-subHeading {
   @include ms-font-xxl;
+  font-size: 36px;
 }
 
 .ComponentPage-overview {
   font-size: $ms-font-size-m;
 }
 
-.ComponentPage-body {
+.ComponentPage-overviewSection,
+.ComponentPage-bestPracticesSection,
+.ComponentPage-variantsSection,
+.ComponentPage-implementationSection {
   padding: $componentPagePadding;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.ComponentPage-navigation {
+  width: 100%;
+}
+
+.ComponentPage-navLink {
+  display: inline-block;
+  margin-right: 40px;
+  @include ms-font-l;
+  color: $ms-color-white;
+}
+
+.ComponentPage-navLink a {
+  color: $ms-color-white;
+  text-decoration: none;
+}
+
+.ComponentPage-bestPracticesSection {
+  background-color: $ms-color-neutralLighterAlt;
+  margin-top: $componentPageDividingMargin;
+}
+
+.ComponentPage-doSections {
+  margin-top: $componentPageDividingMargin;
+}
+
+.ComponentPage-doSection {
+  width: 50%;
+  box-sizing: border-box;
+  min-height: 330px;
+  display: inline-block;
+  border-top: 8px solid #177D3E;
+}
+
+.ComponentPage-doSection {
+  width: calc(50% - 50px);
+  margin-right: 50px;
+}
+
+.ComponentPage-doNotSection {
+  border-top: 8px solid #A61E22;
+}
+
+.ComponentPage-variantsTitle {
+  margin-top: $componentPageDividingMargin;
 }
