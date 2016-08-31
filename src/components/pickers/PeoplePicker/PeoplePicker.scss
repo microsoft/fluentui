@@ -1,0 +1,21 @@
+.ms-base-peoplepicker {
+  float: left;
+}
+
+.ms-PickerPersona-Container {
+  display: inline-block;
+}
+
+.ms-Picker-MenuItem.ms-result-content{
+  display: table-row;
+  .ms-result-item {
+    display: table-cell;
+    vertical-align: bottom;
+  }
+}
+
+.ms-PeoplePicker {
+  .ms-BasePicker-text {
+    height: 40px;
+  }
+}
