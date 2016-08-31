@@ -26,23 +26,22 @@ export class PeoplePickerBasicExample extends React.Component<any, IPeoplePicker
 
     return (
       <PeoplePicker
-        suggestions={ suggestions }
-        searchCategoryName={ 'Suggested Contacts' }
-        noResultsText={ 'No Results Available' }
-        onSearchFieldChanged={ this._onFilterChanged }
-        onRemoveSuggestion={ this._onRemoveSuggestion }
-        primarySearchText='Showing top results'
-        secondarySearchText='Search Contacts & Directory'
-        disconnectedText='We are having trouble connecting to the server.<br>Please try again in a few minutes.'
-      />
+        onResolveSuggestions={ this._onFilterChanged }
+        // suggestions={ suggestions }
+        // searchCategoryName={ 'Suggested Contacts' }
+        // noResultsText={ 'No Results Available' }
+        // onSearchFieldChanged={ this._onFilterChanged }
+        // onRemoveSuggestion={ this._onRemoveSuggestion }
+        // primarySearchText='Showing top results'
+        // secondarySearchText='Search Contacts & Directory'
+        // disconnectedText='We are having trouble connecting to the server.<br>Please try again in a few minutes.'
+        />
     );
   }
 
   private _onFilterChanged(filterText: string) {
-    this.setState({
-      suggestions: this._peopleList.filter(item => item.primaryText.toLowerCase().indexOf(filterText.toLowerCase()) >= 0)
-    });
-  };
+    return filterText ? this._peopleList.filter(item => item.primaryText.toLowerCase().indexOf(filterText.toLowerCase()) === 0) : [];
+  }
 
   private _onRemoveSuggestion(index: number, persona: IPersonaProps) {
     let personas = this.state.suggestions;

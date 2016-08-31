@@ -36,13 +36,20 @@ export class PeoplePickerPage extends React.Component<any, any> {
         <ExampleCard title='TagPicker'>
           <TagPickerBasicExample />
         </ExampleCard>
-
         <ExampleCard title='New PeoplePicker'>
           <PeoplePicker2BasicExample />
         </ExampleCard>
-
-        <ExampleCard title='Old PeoplePicker' code={ PeoplePickerBasicExampleCode }>
+        <ExampleCard title='Basic PeoplePicker' code={ PeoplePickerBasicExampleCode }>
           <PeoplePickerBasicExample />
+        </ExampleCard>
+        <ExampleCard title='MemberList PeoplePicker' code={ PeoplePickerMemberListExampleCode }>
+          <PeoplePickerMemberListExample />
+        </ExampleCard>
+        <ExampleCard title='Compact PeoplePicker' code={ PeoplePickerCompactExampleCode }>
+          <PeoplePickerCompactExample />
+        </ExampleCard>
+        <ExampleCard title='Custom PeoplePicker' code={ PeoplePickerCompactExampleCode }>
+          <PeoplePickerCustomResultExample />
         </ExampleCard>
       </div>
     );

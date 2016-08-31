@@ -26,35 +26,28 @@ export class PeoplePickerEditModeExample extends React.Component<any, IPeoplePic
     };
   }
 
-  public render() {
-    let { suggestions, initialItems } = this.state;
+   public render() {
+    let { suggestions } = this.state;
 
     return (
-      <div>
-        <PeoplePicker
-          ref={ (c: PeoplePicker) => this._peoplePickerRef = c }
-          suggestions={ suggestions }
-          initialItems={ initialItems }
-          type={ PeoplePickerType.compact }
-          canSearchMore={ false }
-          addedMemberCountFormatText= { '{0} people added' }
-          searchCategoryName={ 'Suggested Contacts' }
-          noResultsText={ 'No Results Available' }
-          onSearchFieldChanged={ this._onFilterChanged }
-          onRemoveSuggestion={ this._onRemoveSuggestion }
-          primarySearchText='Showing top results'
-          secondarySearchText='Search Contacts & Directory'
-          disconnectedText='We are having trouble connecting to the server.<br>Please try again in a few minutes.'
-          />
-      </div>
+      <PeoplePicker
+        onResolveSuggestions={ this._onFilterChanged }
+        // suggestions={ suggestions }
+        // searchCategoryName={ 'Top Results' }
+        // noResultsText={ 'No Results Available' }
+        // onSearchFieldChanged={ this._onFilterChanged }
+        // onRemoveSuggestion={ this._onRemoveSuggestion }
+        // type={ PeoplePickerType.compact }
+        // primarySearchText='Showing top 5 results'
+        // secondarySearchText='Search Contacts & Directory'
+        // disconnectedText='We are having trouble connecting to the server.<br>Please try again in a few minutes.'
+        />
     );
   }
 
   private _onFilterChanged(filterText: string) {
-    this.setState({
-      suggestions: this._peopleList.filter(item => item.primaryText.toLowerCase().indexOf(filterText.toLowerCase()) >= 0)
-    });
-  };
+    return this._peopleList.filter(item => item.primaryText.toLowerCase().indexOf(filterText.toLowerCase()) >= 0);
+  }
 
   private _onRemoveSuggestion(index: number, persona: IPersonaProps) {
     let personas = this.state.suggestions;

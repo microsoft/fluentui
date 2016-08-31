@@ -7,6 +7,10 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   defaultItems?: T[];
   onChange?: (items: any[]) => void;
   getTextFromItem?: (T)=> string;
+  suggestionsHeaderText?: string;
+  onGetMoreResults?: (filter: string) => T[];
+  className?: string;
+  suggestionsClassName?: string;
 }
 
 export interface IPickerItemProps<T> extends React.Props<any> {

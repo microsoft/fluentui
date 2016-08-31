@@ -22,11 +22,13 @@
 }
 
 .ms-Suggestions {
-  .ms-Suggestions-item {
+  min-width: 180px;
+  .ms-Suggestions-Item {
     padding: 2px 16px;
     height: auto;
     width: 100%;
     text-align: left;
+    border: none;
     &:hover {
       background: $ms-color-neutralLight;
     }
@@ -37,5 +39,21 @@
         background: $ms-color-neutralQuaternaryAlt;
       }
     }
+  }
+  .ms-Suggestions-Title {
+    color: $ms-color-themePrimary;
+    font-family: $ms-font-family-semilight;
+    font-size: $ms-font-size-s;
+    text-align: center;
+    text-transform: uppercase;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid $ms-color-neutralLight;
+  }
+  .ms-Suggestion-Container {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 400px;
+    border-bottom: 1px solid $ms-color-neutralLight;
   }
 }

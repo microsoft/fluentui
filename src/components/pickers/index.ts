@@ -1,3 +1,2 @@
-export * from './PeoplePicker';
-export * from './PeoplePicker.Props';
+export * from './PeoplePicker/PeoplePicker';
 export * from './PeoplePickerItemProps';

@@ -1,192 +1,418 @@
 import * as React from 'react';
 import {
-  PeoplePicker,
-  PeoplePickerType,
-  IPersonaProps,
-  IPeoplePickerItemProps,
-  Persona,
-  ContextualMenu,
-  IContextualMenuItem,
   DirectionalHint,
   PersonaPresence,
   Button,
-  ButtonType
+  ButtonType,
+  IDocumentCardActionsProps,
+  IDocumentCardPreviewProps,
+  IDocumentCardActivityPerson,
+  IDocumentCardProps,
+  IDocumentCardTitleProps,
+  IDocumentCardActivityProps,
+  DocumentCard,
+  DocumentCardActions,
+  DocumentCardActivity,
+  DocumentCardLocation,
+  DocumentCardPreview,
+  DocumentCardTitle,
+  SelectionZone,
+  FocusZone,
+  ImageFit
 } from '../../../../index';
-
+import {
+  BasePicker
+} from '../../../../components/pickers/BasePicker';
+import {
+  IBasePickerProps,
+  IPickerItemProps
+} from '../../../../components/pickers/BasePickerProps';
 import './PeoplePicker.CustomResult.Example.scss';
 
 export interface IPeoplePickerExampleState {
-  suggestions?: Array<IPersonaProps>;
   contextualMenuVisible?: boolean;
   contextualMenuTarget?: HTMLElement;
 }
 
 export class PeoplePickerCustomResultExample extends React.Component<any, IPeoplePickerExampleState> {
-  private _peopleList = [
-    {
-      imageUrl: '//www.fillmurray.com/200/200',
-      imageInitials: 'PV',
-      primaryText: 'Peter Venkman',
-      secondaryText: 'Ghostbuster',
-      tertiaryText: 'In a meeting',
-      optionalText: 'Available at 4:00pm'
-    },
-    {
-      imageUrl: '//www.fillmurray.com/200/200',
-      imageInitials: 'PC',
-      primaryText: 'Phil Connors',
-      secondaryText: 'Reporter',
-      tertiaryText: 'In a meeting',
-      optionalText: 'Available at 4:00pm'
-    },
-    {
-      imageUrl: '//www.fillmurray.com/200/200',
-      imageInitials: 'CS',
-      primaryText: 'Carl Spackler',
-      secondaryText: 'Golpher',
-      tertiaryText: 'In a meeting',
-      optionalText: 'Available at 4:00pm'
-    },
-    {
-      imageUrl: '//www.fillmurray.com/200/200',
-      imageInitials: 'SZ',
-      primaryText: 'Steve Zissou',
-      secondaryText: 'Oceanographer',
-      tertiaryText: 'In a meeting',
-      optionalText: 'Available at 4:00pm'
-    },
-    {
-      imageUrl: '//www.fillmurray.com/200/200',
-      imageInitials: 'BH',
-      primaryText: 'Bob Harris',
-      secondaryText: 'Actor',
-      tertiaryText: 'In a meeting',
-      optionalText: 'Available at 4:00pm'
-    },
-    {
-      imageUrl: '//www.fillmurray.com/200/200',
-      imageInitials: 'BB',
-      primaryText: 'Bunny Breckinridge',
-      secondaryText: 'Actor',
-      tertiaryText: 'In a meeting',
-      optionalText: 'Available at 4:00pm'
-    },
-  ];
-
-  private contextualMenuItems: IContextualMenuItem[] = [
-    {
-      key: 'newItem',
-      icon: 'circlePlus',
-      name: 'New'
-    },
-    {
-      key: 'upload',
-      icon: 'upload',
-      name: 'Upload'
-    },
-    {
-      key: 'divider_1',
-      name: '-',
-    },
-    {
-      key: 'rename',
-      name: 'Rename'
-    },
-    {
-      key: 'properties',
-      name: 'Properties'
-    },
-    {
-      key: 'disabled',
-      name: 'Disabled item',
-      isDisabled: true,
-    },
-  ];
-
   constructor() {
     super();
     this._onFilterChanged = this._onFilterChanged.bind(this);
-    this._onRemoveSuggestion = this._onRemoveSuggestion.bind(this);
-    this.state = {
-      suggestions: this._peopleList,
-    };
   }
 
   public render() {
-    let { suggestions } = this.state;
 
     return (
-      <PeoplePicker
-        suggestions={ suggestions }
-        searchCategoryName={ 'Top Results' }
-        noResultsText={ 'No Results Available' }
-        onSearchFieldChanged={ this._onFilterChanged }
-        onRemoveSuggestion={ this._onRemoveSuggestion }
-        type={ PeoplePickerType.memberList }
-        primarySearchText='Showing top 5 results'
-        secondarySearchText='Search Contacts & Directory'
-        disconnectedText='We are having trouble connecting to the server.<br>Please try again in a few minutes.'
-        onRenderPeoplePickerItem={ this._renderResult.bind(this) }
+      <DocumentPicker
+        onResolveSuggestions={this._onFilterChanged}
+        onRenderItem={SelectedDocumentItem}
+        onRenderSuggestion={SuggestedDocumentItem}
         />
     );
   }
 
   private _onFilterChanged(filterText: string) {
-    this.setState({
-      suggestions: this._peopleList.filter(item => item.primaryText.toLowerCase().indexOf(filterText.toLowerCase()) >= 0)
-    });
-  };
-
-  private _onRemoveSuggestion(index: number, persona: IPersonaProps) {
-    let personas = this.state.suggestions;
-    personas.splice(index, 1);
-    this.setState({
-      suggestions: personas
-    });
+    return filterText ? data : [];
   }
 
-  private _renderResult(peoplePickerItemProps: IPeoplePickerItemProps): JSX.Element {
-    let { persona,
-      onRemovePersona,
-      index
-    } = peoplePickerItemProps;
+}
+
+export interface IFullDocumentCardProps {
+  documentCardProps?: IDocumentCardProps;
+  documentActionsProps?: IDocumentCardActionsProps;
+  documentPreviewProps?: IDocumentCardPreviewProps;
+  documentActivityProps?: IDocumentCardActivityProps;
+  documentTitleProps?: IDocumentCardTitleProps;
+}
+
+export class DocumentPicker extends BasePicker<IFullDocumentCardProps, IBasePickerProps<IFullDocumentCardProps>> {
+  render() {
+    let { value } = this.state;
 
     return (
-      <div className='ms-result-content'>
-        <Persona
-          { ...persona }
-          presence={ persona.presence ? persona.presence : PersonaPresence.online }
-          className='ms-result-item'
-          />
-        <Button
-          icon={'ellipsis'}
-          buttonType={ButtonType.icon} onClick={this.onContextualMenu.bind(this) }
-          className='ms-result-item'
-          />
-        <Button
-          icon={'x'}
-          buttonType={ButtonType.icon}
-          onClick={(ev: any) => onRemovePersona(index, persona) }
-          className='ms-result-item'
-          />
-        { this.state.contextualMenuVisible ? (
-          <ContextualMenu
-            items={ this.contextualMenuItems }
-            shouldFocusOnMount={ true }
-            targetElement={ this.state.contextualMenuTarget }
-            onDismiss={ this._onCloseContextualMenu.bind(this) }
-            directionalHint={DirectionalHint.bottomAutoEdge}/>)
-          : null }
+      <div>
+        <div ref='root' className='ms-BasePicker' onKeyDown={ this._onKeyDown }>
+          <SelectionZone selection={ this._selection }>
+            <div className='ms-BasePicker-text'>
+              <input ref='input'
+                onFocus={ this._onInputFocus }
+                onChange={ this._onInputChange }
+                value={ value }
+                className='ms-BasePicker-input'
+                />
+            </div>
+          </SelectionZone>
+        </div>
+        <FocusZone ref='focusZone'>
+          { this.renderItems() }
+        </FocusZone>
+        { this.renderSuggestions() }
       </div>
     );
   }
-
-  private onContextualMenu(ev?: any) {
-    let targetElement: HTMLElement = ev.target as HTMLElement;
-    this.setState({ contextualMenuVisible: true, contextualMenuTarget: targetElement });
-  }
-
-  private _onCloseContextualMenu(ev: Event) {
-    this.setState({ contextualMenuVisible: false, contextualMenuTarget: null });
+  protected _onBackSpace(ev: React.KeyboardEvent) {
+    let { value } = this.state;
+    if (ev.target === this.refs.input) {
+      if (value && this.refs.input.selectionStart !== this.refs.input.selectionEnd) {
+        this.setState({
+          value: value.substring(0, this.refs.input.selectionStart)
+        });
+      }
+    }
   }
 }
+
+export const SuggestedDocumentItem: (documentProps: IFullDocumentCardProps) => JSX.Element = (documentProps: IFullDocumentCardProps) => {
+  return (<div> { documentProps.documentTitleProps.title } </div>);
+}
+
+export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardProps>) => JSX.Element = (documentProps: IPickerItemProps<IFullDocumentCardProps>) => {
+  let {
+    documentCardProps,
+    documentActionsProps,
+    documentPreviewProps,
+    documentActivityProps,
+    documentTitleProps
+  } = documentProps.item;
+  let actions = [];
+  documentActionsProps.actions.forEach((action) => actions.push(action));
+ actions.push({
+    icon: 'x', onClick: (ev: any) => { documentProps.onRemoveItem() }
+  });
+
+
+  return (
+    <DocumentCard
+      onClick={ () => { console.log('You clicked the card.'); } }
+      >
+      <DocumentCardPreview { ...documentProps.item.documentPreviewProps }/>
+      <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com' ariaLabel='Location, Marketing Documents'/>
+      <DocumentCardTitle { ...documentTitleProps }/>
+      <DocumentCardActivity { ...documentActivityProps }/>
+      <DocumentCardActions actions={ actions }/>
+    </DocumentCard>
+  );
+};
+
+const data: IFullDocumentCardProps[] = [
+  {
+    documentPreviewProps: {
+      previewImages: [
+        {
+          previewImageSrc: 'dist/document-preview.png',
+          iconSrc: 'dist/icon-ppt.png',
+          imageFit: ImageFit.cover,
+          width: 318,
+          height: 196,
+          accentColor: '#ce4b1f'
+        },
+        {
+          previewImageSrc: 'dist/document-preview2.png',
+          iconSrc: 'dist/icon-ppt.png',
+          imageFit: ImageFit.cover,
+          width: 318,
+          height: 196,
+          accentColor: '#ce4b1f'
+        },
+        {
+          previewImageSrc: 'dist/document-preview3.png',
+          iconSrc: 'dist/icon-ppt.png',
+          imageFit: ImageFit.cover,
+          width: 318,
+          height: 196,
+          accentColor: '#ce4b1f'
+        }
+      ]
+    },
+    documentCardProps: {},
+    documentActionsProps: {
+      actions:
+      [
+        {
+          icon: 'share', onClick: (ev: any) => {
+            console.log('You clicked the share action.');
+            ev.preventDefault();
+            ev.stopPropagation();
+          }
+        },
+        {
+          icon: 'pinLeft', onClick: (ev: any) => {
+            console.log('You clicked the pin action.');
+            ev.preventDefault();
+            ev.stopPropagation();
+          }
+        },
+        {
+          icon: 'bell', onClick: (ev: any) => {
+            console.log('You clicked the bell action.');
+            ev.preventDefault();
+            ev.stopPropagation();
+          }
+        },
+      ]
+    },
+    documentActivityProps: {
+      activity: 'Created Feb 23, 2016',
+      people:
+      [
+        { name: 'Kat Larrson', profileImageSrc: 'dist/avatar-kat.png' },
+        { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
+        { name: 'Tina Dasani', profileImageSrc: 'dist/avatar-kat.png' }
+      ]
+    },
+    documentTitleProps: {
+      title: 'Document1',
+      shouldTruncate: true
+    }
+  },
+  {
+    documentPreviewProps: {
+      previewImages: [
+        {
+          previewImageSrc: 'dist/document-preview.png',
+          iconSrc: 'dist/icon-ppt.png',
+          imageFit: ImageFit.cover,
+          width: 318,
+          height: 196,
+          accentColor: '#ce4b1f'
+        },
+        {
+          previewImageSrc: 'dist/document-preview2.png',
+          iconSrc: 'dist/icon-ppt.png',
+          imageFit: ImageFit.cover,
+          width: 318,
+          height: 196,
+          accentColor: '#ce4b1f'
+        },
+        {
+          previewImageSrc: 'dist/document-preview3.png',
+          iconSrc: 'dist/icon-ppt.png',
+          imageFit: ImageFit.cover,
+          width: 318,
+          height: 196,
+          accentColor: '#ce4b1f'
+        }
+      ]
+    },
+    documentCardProps: {},
+    documentActionsProps: {
+      actions:
+      [
+        {
+          icon: 'share', onClick: (ev: any) => {
+            console.log('You clicked the share action.');
+            ev.preventDefault();
+            ev.stopPropagation();
+          }
+        },
+        {
+          icon: 'pinLeft', onClick: (ev: any) => {
+            console.log('You clicked the pin action.');
+            ev.preventDefault();
+            ev.stopPropagation();
+          }
+        },
+        {
+          icon: 'bell', onClick: (ev: any) => {
+            console.log('You clicked the bell action.');
+            ev.preventDefault();
+            ev.stopPropagation();
+          }
+        },
+      ]
+    },
+    documentActivityProps: {
+      activity: 'Created Feb 23, 2016',
+      people:
+      [
+        { name: 'Kat Larrson', profileImageSrc: 'dist/avatar-kat.png' },
+        { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
+        { name: 'Tina Dasani', profileImageSrc: 'dist/avatar-kat.png' }
+      ]
+    },
+    documentTitleProps: {
+      title: 'Document2',
+      shouldTruncate: true
+    }
+  },
+  {
+    documentPreviewProps: {
+      previewImages: [
+        {
+          previewImageSrc: 'dist/document-preview.png',
+          iconSrc: 'dist/icon-ppt.png',
+          imageFit: ImageFit.cover,
+          width: 318,
+          height: 196,
+          accentColor: '#ce4b1f'
+        },
+        {
+          previewImageSrc: 'dist/document-preview2.png',
+          iconSrc: 'dist/icon-ppt.png',
+          imageFit: ImageFit.cover,
+          width: 318,
+          height: 196,
+          accentColor: '#ce4b1f'
+        },
+        {
+          previewImageSrc: 'dist/document-preview3.png',
+          iconSrc: 'dist/icon-ppt.png',
+          imageFit: ImageFit.cover,
+          width: 318,
+          height: 196,
+          accentColor: '#ce4b1f'
+        }
+      ]
+    },
+    documentCardProps: {},
+    documentActionsProps: {
+      actions:
+      [
+        {
+          icon: 'share', onClick: (ev: any) => {
+            console.log('You clicked the share action.');
+            ev.preventDefault();
+            ev.stopPropagation();
+          }
+        },
+        {
+          icon: 'pinLeft', onClick: (ev: any) => {
+            console.log('You clicked the pin action.');
+            ev.preventDefault();
+            ev.stopPropagation();
+          }
+        },
+        {
+          icon: 'bell', onClick: (ev: any) => {
+            console.log('You clicked the bell action.');
+            ev.preventDefault();
+            ev.stopPropagation();
+          }
+        },
+      ]
+    },
+    documentActivityProps: {
+      activity: 'Created Feb 23, 2016',
+      people:
+      [
+        { name: 'Kat Larrson', profileImageSrc: 'dist/avatar-kat.png' },
+        { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
+        { name: 'Tina Dasani', profileImageSrc: 'dist/avatar-kat.png' }
+      ]
+    },
+    documentTitleProps: {
+      title: 'Document3',
+      shouldTruncate: true
+    }
+  },
+  {
+    documentPreviewProps: {
+      previewImages: [
+        {
+          previewImageSrc: 'dist/document-preview.png',
+          iconSrc: 'dist/icon-ppt.png',
+          imageFit: ImageFit.cover,
+          width: 318,
+          height: 196,
+          accentColor: '#ce4b1f'
+        },
+        {
+          previewImageSrc: 'dist/document-preview2.png',
+          iconSrc: 'dist/icon-ppt.png',
+          imageFit: ImageFit.cover,
+          width: 318,
+          height: 196,
+          accentColor: '#ce4b1f'
+        },
+        {
+          previewImageSrc: 'dist/document-preview3.png',
+          iconSrc: 'dist/icon-ppt.png',
+          imageFit: ImageFit.cover,
+          width: 318,
+          height: 196,
+          accentColor: '#ce4b1f'
+        }
+      ]
+    },
+    documentCardProps: {},
+    documentActionsProps: {
+      actions:
+      [
+        {
+          icon: 'share', onClick: (ev: any) => {
+            console.log('You clicked the share action.');
+            ev.preventDefault();
+            ev.stopPropagation();
+          }
+        },
+        {
+          icon: 'pinLeft', onClick: (ev: any) => {
+            console.log('You clicked the pin action.');
+            ev.preventDefault();
+            ev.stopPropagation();
+          }
+        },
+        {
+          icon: 'bell', onClick: (ev: any) => {
+            console.log('You clicked the bell action.');
+            ev.preventDefault();
+            ev.stopPropagation();
+          }
+        },
+      ]
+    },
+    documentActivityProps: {
+      activity: 'Created Feb 23, 2016',
+      people:
+      [
+        { name: 'Kat Larrson', profileImageSrc: 'dist/avatar-kat.png' },
+        { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
+        { name: 'Tina Dasani', profileImageSrc: 'dist/avatar-kat.png' }
+      ]
+    },
+    documentTitleProps: {
+      title: 'Document4',
+      shouldTruncate: true
+    }
+  }
+];

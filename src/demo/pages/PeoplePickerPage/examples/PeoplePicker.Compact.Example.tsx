@@ -4,14 +4,14 @@ import {
   PeoplePickerType,
   IPersonaProps
 } from '../../../../index';
-const PeopleData = require('./PeoplePickerExampleData');
+import { people } from './PeoplePickerExampleData';
 
 export interface IPeoplePickerExampleState {
   suggestions?: Array<IPersonaProps>;
 }
 
 export class PeoplePickerCompactExample extends React.Component<any, IPeoplePickerExampleState> {
-  private _peopleList = PeopleData;
+  private _peopleList = people;
 
   constructor() {
     super();
@@ -27,24 +27,24 @@ export class PeoplePickerCompactExample extends React.Component<any, IPeoplePick
 
     return (
       <PeoplePicker
-        suggestions={ suggestions }
-        searchCategoryName={ 'Top Results' }
-        noResultsText={ 'No Results Available' }
-        onSearchFieldChanged={ this._onFilterChanged }
-        onRemoveSuggestion={ this._onRemoveSuggestion }
-        type={ PeoplePickerType.compact }
-        primarySearchText='Showing top 5 results'
-        secondarySearchText='Search Contacts & Directory'
-        disconnectedText='We are having trouble connecting to the server.<br>Please try again in a few minutes.'
-      />
+        onResolveSuggestions={ this._onFilterChanged }
+        peoplePickerType={ PeoplePickerType.compact }
+        // suggestions={ suggestions }
+        // searchCategoryName={ 'Top Results' }
+        // noResultsText={ 'No Results Available' }
+        // onSearchFieldChanged={ this._onFilterChanged }
+        // onRemoveSuggestion={ this._onRemoveSuggestion }
+        // type={ PeoplePickerType.compact }
+        // primarySearchText='Showing top 5 results'
+        // secondarySearchText='Search Contacts & Directory'
+        // disconnectedText='We are having trouble connecting to the server.<br>Please try again in a few minutes.'
+        />
     );
   }
 
   private _onFilterChanged(filterText: string) {
-    this.setState({
-      suggestions: this._peopleList.filter(item => item.primaryText.toLowerCase().indexOf(filterText.toLowerCase()) >= 0)
-    });
-  };
+    return filterText ? this._peopleList.filter(item => item.primaryText.toLowerCase().indexOf(filterText.toLowerCase()) === 0) : [];
+  }
 
   private _onRemoveSuggestion(index: number, persona: IPersonaProps) {
     let personas = this.state.suggestions;

@@ -25,24 +25,22 @@ export class PeoplePickerDisconnectedExample extends React.Component<any, IPeopl
 
     return (
       <PeoplePicker
-        suggestions={ suggestions }
-        searchCategoryName={ 'Top Results' }
-        noResultsText={ 'No Results Available' }
-        onSearchFieldChanged={ this._onFilterChanged }
-        onRemoveSuggestion={ this._onRemoveSuggestion }
-        isConnected={ false }
-        primarySearchText='Showing top 5 results'
-        secondarySearchText='Search Contacts & Directory'
-        disconnectedText='We are having trouble connecting to the server.<br>Please try again in a few minutes.'
+        // suggestions={ suggestions }
+        // searchCategoryName={ 'Top Results' }
+        // noResultsText={ 'No Results Available' }
+        // onSearchFieldChanged={ this._onFilterChanged }
+        // onRemoveSuggestion={ this._onRemoveSuggestion }
+        // isConnected={ false }
+        // primarySearchText='Showing top 5 results'
+        // secondarySearchText='Search Contacts & Directory'
+        // disconnectedText='We are having trouble connecting to the server.<br>Please try again in a few minutes.'
       />
     );
   }
 
   private _onFilterChanged(filterText: string) {
-    this.setState({
-      suggestions: this._peopleList.filter(item => item.primaryText.toLowerCase().indexOf(filterText.toLowerCase()) >= 0)
-    });
-  };
+    return this._peopleList.filter(item => item.primaryText.toLowerCase().indexOf(filterText.toLowerCase()) >= 0);
+  }
 
   private _onRemoveSuggestion(index: number, persona: IPersonaProps) {
     let personas = this.state.suggestions;
