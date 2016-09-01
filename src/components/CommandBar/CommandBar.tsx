@@ -97,13 +97,6 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
       );
     }
 
-    let visibleOverflow = false;
-    if (renderedOverflowItems) {
-      visibleOverflow = renderedOverflowItems.some(function(item) {
-        return (item.icon !== '' || item.name !== '');
-      });
-    }
-
     return (
       <div className={ css('ms-CommandBar', className) } ref='commandBarRegion'>
         { searchBox }
@@ -111,7 +104,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
           <div className='ms-CommandBar-primaryCommands' ref='commandSurface'>
             { renderedItems.map((item, index) => (
               this._renderItemInCommandBar(item, index, expandedMenuItemKey)
-            )).concat((renderedOverflowItems && renderedOverflowItems.length && visibleOverflow) ? [
+            )).concat((renderedOverflowItems && renderedOverflowItems.length) ? [
               <div className='ms-CommandBarItem' key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
                 <button
                   id={ this._id + OVERFLOW_KEY }
@@ -155,8 +148,9 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     const itemKey = item.key || index;
     const className = css(item.onClick ? 'ms-CommandBarItem-link' : 'ms-CommandBarItem-text', !item.name && 'ms-CommandBarItem--noName');
     const classNameValue = css(className, { 'is-expanded': (expandedMenuItemKey === item.key) });
+    const showItem = (!(item.items && item.items.length) && item.name === '' && item.icon === '') ? 'is-hidden' : '';
 
-    return <div className={ css('ms-CommandBarItem', item.className) } key={ itemKey } ref={ itemKey }>
+    return <div className={ css('ms-CommandBarItem', item.className, showItem) } key={ itemKey } ref={ itemKey }>
              {(() => {
                if (item.onClick || item.items) {
                  return <button
