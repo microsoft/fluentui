@@ -3,6 +3,7 @@ import { IColorPickerProps } from './ColorPicker.Props';
 import { TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle';
 import { ColorSlider } from './ColorSlider';
+import { autobind } from '../../utilities/autobind';
 import {
   IColor,
   MAX_COLOR_HUE,
@@ -33,11 +34,6 @@ export interface IColor {
 export class ColorPicker extends React.Component<IColorPickerProps, any> {
   constructor(props: IColorPickerProps) {
     super(props);
-
-    this._onPickerClick = this._onPickerClick.bind(this);
-    this._onSVChanged = this._onSVChanged.bind(this);
-    this._onHChanged = this._onHChanged.bind(this);
-    this._onAChanged = this._onAChanged.bind(this);
 
     this.state = {
       color: getColorFromString(props.color)
@@ -91,20 +87,24 @@ export class ColorPicker extends React.Component<IColorPickerProps, any> {
     );
   }
 
+  @autobind
   private _onPickerClick() {
     this.setState({
       isOpen: !this.state.isOpen
     });
   }
 
+  @autobind
   private _onSVChanged(s: number, v: number) {
     this._updateColor(updateSV(this.state.color, s, v));
   }
 
+  @autobind
   private _onHChanged(h: number) {
     this._updateColor(updateH(this.state.color, h));
   }
 
+  @autobind
   private _onAChanged(a: number) {
     this._updateColor(updateA(this.state.color, a));
   }
