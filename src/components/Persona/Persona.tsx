@@ -24,7 +24,7 @@ export class Persona extends React.Component<IPersonaProps, any> {
 
   public render() {
       let { className, size, imageUrl, imageInitials, initialsColor, presence, primaryText, secondaryText, tertiaryText, optionalText, hidePersonaDetails, innerControl } = this.props;
-     let personaDetailsClass = innerControl ? '.ms-PersonaAll-details' : 'ms-Persona-details';
+     let personaDetailsClass = innerControl ? 'ms-Persona-detailsWithInnerControl' : 'ms-Persona-details';
 
     return (
       <div { ... this.props as any } className={ css('ms-Persona', className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence]) }>
@@ -45,7 +45,7 @@ export class Persona extends React.Component<IPersonaProps, any> {
             <div className='ms-Persona-tertiaryText'>{ tertiaryText }</div>
             <div className='ms-Persona-optionalText'>{ optionalText }</div>
             { innerControl ? (
-              <div className={ personaDetailsClass }>{ innerControl }</div>
+              <div className='ms-Persona-detailsWithInnerControl'>{ innerControl }</div>
             ) : (null) }
           </div>) }
       </div>

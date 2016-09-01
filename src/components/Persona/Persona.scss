@@ -144,7 +144,7 @@ $ms-color-initials-darkRed:     #b91d47;
   border: 2px solid $ms-color-white;
 }
 
-.ms-PersonaAll-details,
+.ms-Persona-detailsWithInnerControl,
 .ms-Persona-details {
   display: table-cell;
   padding: 0 12px;
@@ -176,7 +176,7 @@ $ms-color-initials-darkRed:     #b91d47;
 .ms-Persona-secondaryText,
 .ms-Persona-tertiaryText,
 .ms-Persona-optionalText,
-.ms-PersonaAll-details {
+.ms-Persona-detailsWithInnerControl {
   color: $ms-color-neutralSecondary;
   font-family: $ms-font-family-regular;
   font-size: $ms-font-size-s;
@@ -188,7 +188,7 @@ $ms-color-initials-darkRed:     #b91d47;
   padding-top: 3px;
 }
 
-.ms-PersonaAll-details {
+.ms-Persona-detailsWithInnerControl {
   padding-top: 3px;
 }
 
@@ -269,6 +269,10 @@ $ms-color-initials-darkRed:     #b91d47;
   .ms-Persona-secondaryText {
     display: none;
   }
+
+  .ms-Persona-detailsWithInnerControl {
+    display: none;
+}
 }
 
 
@@ -283,6 +287,10 @@ $ms-color-initials-darkRed:     #b91d47;
   .ms-Persona-primaryText:after {
     content: ';';
   }
+
+  .ms-Persona-detailsWithInnerControl {
+    display: none;
+}
 }
 
 
@@ -294,6 +302,10 @@ $ms-color-initials-darkRed:     #b91d47;
     width: 12px;
     top: 10px;
   }
+
+  .ms-Persona-detailsWithInnerControl {
+    display: none;
+}
 }
 
 
@@ -332,6 +344,10 @@ $ms-color-initials-darkRed:     #b91d47;
   .ms-Persona-secondaryText {
     display: none;
   }
+
+  .ms-Persona-detailsWithInnerControl {
+    display: none;
+}
 }
 
 
@@ -343,6 +359,9 @@ $ms-color-initials-darkRed:     #b91d47;
     width: 4px;
     left: 0;
   }
+  .ms-Persona-detailsWithInnerControl {
+    display: none;
+}
 }
 
 
@@ -381,6 +400,10 @@ $ms-color-initials-darkRed:     #b91d47;
   .ms-Persona-secondaryText {
     padding-top: 1px;
   }
+
+  .ms-Persona-detailsWithInnerControl {
+    display: none;
+}
 }
 
 
@@ -392,6 +415,10 @@ $ms-color-initials-darkRed:     #b91d47;
     width: 4px;
     left: 0;
   }
+
+  .ms-Persona-detailsWithInnerControl {
+    display: none;
+}
 }
 
 
@@ -422,10 +449,6 @@ $ms-color-initials-darkRed:     #b91d47;
     padding-top: 3px;
   }
 
-  .ms-PersonaAll-details {
-  padding-top: 3px;
-}
-
   .ms-Persona-tertiaryText {
     padding-top: 5px;
   }
@@ -433,6 +456,10 @@ $ms-color-initials-darkRed:     #b91d47;
   .ms-Persona-tertiaryText {
     display: block; // Show tertiary text
   }
+
+  .ms-Persona-detailsWithInnerControl {
+    display: none;
+}
 }
 
 
@@ -444,6 +471,10 @@ $ms-color-initials-darkRed:     #b91d47;
     width: 7px;
     left: 0;
   }
+
+  .ms-Persona-detailsWithInnerControl {
+    display: none;
+ }
 }
 
 
@@ -491,6 +522,10 @@ $ms-color-initials-darkRed:     #b91d47;
     padding-top: 5px;
     display: block; // Show tertiary and optional text
   }
+
+  .ms-Persona-detailsWithInnerControl {
+    display: none;
+ }
 }
 
 
@@ -502,6 +537,10 @@ $ms-color-initials-darkRed:     #b91d47;
     width: 9px;
     left: 0;
   }
+
+  .ms-Persona-detailsWithInnerControl {
+    display: none;
+ }
 }
 
 
