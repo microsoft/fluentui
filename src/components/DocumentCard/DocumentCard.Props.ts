@@ -11,6 +11,12 @@ import { IButtonProps } from '../../Button';
 
 export interface IDocumentCardProps extends React.Props<DocumentCard> {
   /**
+  * The type of DocumentCard to display.
+  * @default DocumentCardType.normal
+  */
+  type?: DocumentCardType;
+
+  /**
    * Function to call when the card is clicked.
    */
   onClick?: (ev?: any) => void;
@@ -22,9 +28,20 @@ export interface IDocumentCardProps extends React.Props<DocumentCard> {
   onClickHref?: string;
 
   /**
-   * Optional class for document card
+   * Optional class for document card.
    */
   className?: string;
+}
+
+export enum DocumentCardType {
+  /**
+   * Standard DocumentCard.
+   */
+  normal,
+  /**
+   * Compact layout. Displays the preview beside the details, rather than above.
+   */
+  compact
 }
 
 export interface IDocumentCardPreviewProps extends React.Props<DocumentCardPreview> {
