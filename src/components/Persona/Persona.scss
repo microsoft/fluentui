@@ -144,15 +144,10 @@ $ms-color-initials-darkRed:     #b91d47;
   border: 2px solid $ms-color-white;
 }
 
-.ms-Persona-detailsWithInnerControl,
 .ms-Persona-details {
   display: table-cell;
   padding: 0 12px;
   vertical-align: middle;
-}
-
-.ms-Persona-details {
-  overflow: hidden;
 }
 
 .ms-Persona-primaryText,
@@ -175,8 +170,7 @@ $ms-color-initials-darkRed:     #b91d47;
 
 .ms-Persona-secondaryText,
 .ms-Persona-tertiaryText,
-.ms-Persona-optionalText,
-.ms-Persona-detailsWithInnerControl {
+.ms-Persona-optionalText {
   color: $ms-color-neutralSecondary;
   font-family: $ms-font-family-regular;
   font-size: $ms-font-size-s;
@@ -185,10 +179,6 @@ $ms-color-initials-darkRed:     #b91d47;
 }
 
 .ms-Persona-secondaryText {
-  padding-top: 3px;
-}
-
-.ms-Persona-detailsWithInnerControl {
   padding-top: 3px;
 }
 
@@ -269,10 +259,6 @@ $ms-color-initials-darkRed:     #b91d47;
   .ms-Persona-secondaryText {
     display: none;
   }
-
-  .ms-Persona-detailsWithInnerControl {
-    display: none;
-  }
 }
 
 
@@ -287,10 +273,6 @@ $ms-color-initials-darkRed:     #b91d47;
   .ms-Persona-primaryText:after {
     content: ';';
   }
-
-  .ms-Persona-detailsWithInnerControl {
-    display: none;
-  }
 }
 
 
@@ -301,10 +283,6 @@ $ms-color-initials-darkRed:     #b91d47;
     height: 12px;
     width: 12px;
     top: 10px;
-  }
-
-  .ms-Persona-detailsWithInnerControl {
-    display: none;
   }
 }
 
@@ -355,9 +333,6 @@ $ms-color-initials-darkRed:     #b91d47;
     width: 4px;
     left: 0;
   }
-  .ms-Persona-detailsWithInnerControl {
-    display: none;
-  }
 }
 
 
@@ -396,10 +371,6 @@ $ms-color-initials-darkRed:     #b91d47;
   .ms-Persona-secondaryText {
     padding-top: 1px;
   }
-
-  .ms-Persona-detailsWithInnerControl {
-    display: none;
-  }
 }
 
 
@@ -410,10 +381,6 @@ $ms-color-initials-darkRed:     #b91d47;
     height: 40px;
     width: 4px;
     left: 0;
-  }
-
-  .ms-Persona-detailsWithInnerControl {
-    display: none;
   }
 }
 
@@ -452,10 +419,6 @@ $ms-color-initials-darkRed:     #b91d47;
   .ms-Persona-tertiaryText {
     display: block; // Show tertiary text
   }
-
-  .ms-Persona-detailsWithInnerControl {
-    display: none;
-  }
 }
 
 
@@ -466,10 +429,6 @@ $ms-color-initials-darkRed:     #b91d47;
     height: 72px;
     width: 7px;
     left: 0;
-  }
-
-  .ms-Persona-detailsWithInnerControl {
-    display: none;
   }
 }
 
@@ -518,10 +477,6 @@ $ms-color-initials-darkRed:     #b91d47;
     padding-top: 5px;
     display: block; // Show tertiary and optional text
   }
-
-  .ms-Persona-detailsWithInnerControl {
-    display: none;
-  }
 }
 
 
@@ -532,10 +487,6 @@ $ms-color-initials-darkRed:     #b91d47;
     height: 100px;
     width: 9px;
     left: 0;
-  }
-
-  .ms-Persona-detailsWithInnerControl {
-    display: none;
   }
 }
 
