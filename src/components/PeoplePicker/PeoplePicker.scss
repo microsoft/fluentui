@@ -106,12 +106,13 @@ $personaItemHeight: 42px;
 // Button to remove a selected person.
 .ms-PeoplePicker-personaRemove {
   @include button-reset();
-  color: $ms-color-neutralSecondary;
+  color: $ms-color-neutralPrimary;
   display: inline-block;
   @include float(left);
   text-align: center;
   height: 32px;
   width: 32px;
+  border-radius: 20px;
 
   &:hover {
     background-color: $ms-color-neutralLight;
