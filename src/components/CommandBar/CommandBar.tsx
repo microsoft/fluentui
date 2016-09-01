@@ -97,6 +97,13 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
       );
     }
 
+    let visibleOverflow = false;
+    if (renderedOverflowItems) {
+      visibleOverflow = renderedOverflowItems.some(function(item) {
+        return (item.icon !== '' || item.name !== '');
+      });
+    }
+
     return (
       <div className={ css('ms-CommandBar', className) } ref='commandBarRegion'>
         { searchBox }
@@ -104,19 +111,19 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
           <div className='ms-CommandBar-primaryCommands' ref='commandSurface'>
             { renderedItems.map((item, index) => (
               this._renderItemInCommandBar(item, index, expandedMenuItemKey)
-            )).concat((renderedOverflowItems && renderedOverflowItems.length) ? [
-            <div className='ms-CommandBarItem' key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
-              <button
-                id={ this._id + OVERFLOW_KEY }
-                className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === OVERFLOW_KEY) }) }
-                onClick={ this._onOverflowClick }
-                role='menuitem'
-                aria-label={ this.props.elipisisAriaLabel || '' }
-                aria-haspopup={ true }
-              >
-                <i className='ms-CommandBarItem-overflow ms-Icon ms-Icon--More' />
-              </button>
-            </div>
+            )).concat((renderedOverflowItems && renderedOverflowItems.length && visibleOverflow) ? [
+              <div className='ms-CommandBarItem' key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
+                <button
+                  id={ this._id + OVERFLOW_KEY }
+                  className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === OVERFLOW_KEY) }) }
+                  onClick={ this._onOverflowClick }
+                  role='menuitem'
+                  aria-label={ this.props.elipisisAriaLabel || '' }
+                  aria-haspopup={ true }
+                >
+                  <i className='ms-CommandBarItem-overflow ms-Icon ms-Icon--More' />
+                </button>
+              </div>
             ] : []) }
           </div>
           <div className='ms-CommandBar-sideCommands' ref='farCommandSurface'>
