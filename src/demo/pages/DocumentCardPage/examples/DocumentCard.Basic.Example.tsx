@@ -32,7 +32,7 @@ export class DocumentCardBasicExample extends React.Component<any, any> {
             title='Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx +2'
             shouldTruncate={ true }/>
           <DocumentCardActivity
-            activity='Created Feb 23, 2016'
+            activity='Created a few minutes ago'
             people={
               [
                 { name: 'Kat Larrson', profileImageSrc: 'dist/avatar-kat.png' }
