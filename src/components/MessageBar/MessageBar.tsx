@@ -17,12 +17,12 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
     isMultiline: true,
   };
 
-  // TODO bug 230228: Success icon not circled.
   private ICON_MAP = {
     [MessageBarType.info]:    'Info',
     [MessageBarType.warning]: 'Info',
     [MessageBarType.error]: 'ErrorBadge',
     [MessageBarType.blocked]: 'Blocked',
+    [MessageBarType.remove]: 'Blocked', // TODO remove deprecated value at >= 1.0.0
     [MessageBarType.severeWarning]: 'Warning',
     [MessageBarType.success]: 'Completed'
   };
@@ -54,7 +54,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
     return css(this.props.className, 'ms-MessageBar', {
       'ms-MessageBar': this.props.messageBarType === MessageBarType.info,
       'ms-MessageBar--error': this.props.messageBarType === MessageBarType.error,
-      'ms-MessageBar--blocked': this.props.messageBarType === MessageBarType.blocked,
+      'ms-MessageBar--blocked': (this.props.messageBarType === MessageBarType.blocked) || (this.props.messageBarType === MessageBarType.remove), // TODO remove deprecated value at >= 1.0.0
       'ms-MessageBar--severeWarning': this.props.messageBarType === MessageBarType.severeWarning,
       'ms-MessageBar--success' : this.props.messageBarType === MessageBarType.success,
       'ms-MessageBar--warning' : this.props.messageBarType === MessageBarType.warning

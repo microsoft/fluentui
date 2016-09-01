@@ -50,5 +50,10 @@ export enum MessageBarType {
   /** Success styled MessageBar */
   success,
   /** Warning styled MessageBar */
-  warning
+  warning,
+  /**
+   * Deprecated at v0.48.0, to be removed at >= v1.0.0. Use 'blocked' instead.
+   * @deprecated
+   */
+  remove
 }
