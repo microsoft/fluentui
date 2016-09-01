@@ -143,6 +143,18 @@ export class Selection implements ISelection {
     return this._isAllSelected ? (this._items.length - this._exemptedCount - this._unselectableCount) : (this._exemptedCount);
   }
 
+  public isRangeSelected(fromIndex: number, count: number): boolean {
+    let endIndex = fromIndex + count;
+
+    for (let i = fromIndex; i < endIndex; i++) {
+      if (!this.isIndexSelected(i)) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
   public isAllSelected(): boolean {
     return (
       (this.count > 0) &&
@@ -256,6 +268,17 @@ export class Selection implements ISelection {
 
   public toggleIndexSelected(index: number) {
     this.setIndexSelected(index, !this.isIndexSelected(index), true);
+  }
+
+  public toggleRangeSelected(fromIndex: number, count: number) {
+    let isRangeSelected = this.isRangeSelected(fromIndex, count);
+    let endIndex = fromIndex + count;
+
+    this.setChangeEvents(false);
+    for (let i = fromIndex; i < endIndex; i++) {
+      this.setIndexSelected(i, !isRangeSelected, false);
+    }
+    this.setChangeEvents(true);
   }
 
   private _updateCount() {
