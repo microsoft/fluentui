@@ -1,5 +1,7 @@
 @import '../../common/common';
 
+$navnode-height: 36px;
+
 .ms-Nav {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -21,7 +23,7 @@
 
 .ms-Nav-groupContent {
   display: none;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .ms-Nav-group.is-expanded .ms-Nav-groupContent {
@@ -43,11 +45,16 @@
   display: block;
   @include ms-baseFont;
   width: 100%;
-  height: 40px;
+
+  height: $navnode-height;
+
+  font-family: $ms-font-family-regular;
+  font-size: $ms-font-size-s;
+
   @include text-align(left);
-  line-height: 40px;
+  line-height: $navnode-height;
   margin: 5px 0;
-  padding: 0 40px;
+  padding: 0 $navnode-height;
   background: none;
   border: none;
   border-bottom: 1px solid $dividerColor;
@@ -69,10 +76,10 @@
 
 .ms-Nav-groupChevron.ms-Icon {
   position: absolute;
-  @include left(15px);
-  height: 40px;
-  line-height: 40px;
-  font-size: 15px;
+  @include left(8px);
+  height: $navnode-height;
+  line-height: $navnode-height;
+  font-size: 12px;
   transition: transform .1s linear;
 }
 
@@ -83,8 +90,8 @@
 .ms-Nav-link {
   display: block;
   position: relative;
-  height: 40px;
-  line-height: 40px;
+  height: $navnode-height;
+  line-height: $navnode-height;
   text-decoration: none;
   padding: 0 20px;
   cursor: pointer;
