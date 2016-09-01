@@ -9,12 +9,19 @@ export class DocumentCard extends React.Component<IDocumentCardProps, any> {
   };
 
   public render() {
-    let { onClick, onClickHref, children, className, type } = this.props;
-
+    let { onClick, onClickHref, children, className, type, accentColor } = this.props;
     // If no onClickFunction was provided and we do have an onClickURL, create a function from it.
     if (!onClick && onClickHref) {
       onClick = () => {
         window.location.href = onClickHref;
+      };
+    }
+
+    // Override the border color if an accent color was provided (compact card only)
+    let style;
+    if (type === DocumentCardType.compact && accentColor) {
+      style = {
+        borderBottomColor: accentColor
       };
     }
 
@@ -30,7 +37,8 @@ export class DocumentCard extends React.Component<IDocumentCardProps, any> {
             className
           )
         }
-        onClick={ onClick }>
+        onClick={ onClick }
+        style={ style }>
         { children }
       </div>
     );

@@ -35,8 +35,14 @@
 
 // Modifier: Compact layout
 .ms-DocumentCard--compact {
+  border-bottom: 2px solid $ms-color-neutralTertiary; // Default border color
   display: flex;
   max-width: 480px;
+
+  // Remove the usual accent color from the preview
+  .ms-DocumentCardPreview {
+    border-bottom: none;
+  }
 
   // Expand the details area to fill the remaining width
   .ms-DocumentCard-details {

@@ -20,14 +20,13 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
           iconSrc: 'dist/icon-ppt.png',
           imageFit: ImageFit.cover,
           width: 239,
-          height: 147,
-          accentColor: '#ce4b1f'
+          height: 147
         }
       ],
     };
 
     return (
-        <DocumentCard type={ DocumentCardType.compact } onClickHref='http://bing.com'>
+        <DocumentCard type={ DocumentCardType.compact } onClickHref='http://bing.com' accentColor='#ce4b1f'>
           <DocumentCardPreview { ...previewProps } />
           <div className='ms-DocumentCard-details'>
             <DocumentCardTitle

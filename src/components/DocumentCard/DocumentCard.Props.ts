@@ -31,6 +31,12 @@ export interface IDocumentCardProps extends React.Props<DocumentCard> {
    * Optional class for document card.
    */
   className?: string;
+
+  /**
+   * Hex color value of the line below the card, which should correspond to the document type.
+   * This should only be supplied when using the 'compact' card layout.
+   */
+  accentColor?: string;
 }
 
 export enum DocumentCardType {
