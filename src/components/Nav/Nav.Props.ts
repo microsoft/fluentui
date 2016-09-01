@@ -36,6 +36,10 @@ export interface INavProps {
    * (Optional) The key of the nav item initially selected.
    */
   initialSelectedKey?: string;
+  /**
+   * (Optional) The nav container aria label.
+   */
+  ariaLabel?: string;
 }
 
 export interface INavLinkGroup {
