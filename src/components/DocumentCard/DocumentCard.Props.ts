@@ -61,12 +61,12 @@ export interface IDocumentCardPreviewImage {
   /**
    * File name for the document this preview represents.
    */
-  name: string;
+  name?: string;
 
   /**
    * URL to view the file.
    */
-  url: string;
+  url?: string;
 
   /**
    * Path to the preview image.
