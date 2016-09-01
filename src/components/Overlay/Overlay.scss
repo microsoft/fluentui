@@ -15,7 +15,7 @@
   right:  0;
   top:    0;
   z-index: $ms-zIndex-Overlay;
-
+  cursor: pointer;
   //== Modifier: Hidden overlay
   //
   &.ms-Overlay--none {
