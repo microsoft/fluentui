@@ -41,7 +41,6 @@ $checkBoxHeight: 20px;
       &:before {
         background: $ms-color-themePrimary;
         border: 1px solid $ms-color-white;
-        z-index: $ms-zIndex-1;
       }
     }
 
@@ -62,7 +61,6 @@ $checkBoxHeight: 20px;
     right: 0;
     position: absolute;
     line-height: $checkBoxHeight;
-    z-index: $ms-zIndex-2;
     color: $ms-color-neutralTertiaryAlt;
     opacity: 0;
   }
