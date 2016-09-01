@@ -23,9 +23,9 @@ export class Persona extends React.Component<IPersonaProps, any> {
   };
 
   public render() {
-      let { className, size, imageUrl, imageInitials, initialsColor, presence, primaryText, secondaryText, tertiaryText, optionalText, hidePersonaDetails } = this.props;
+  let { className, size, imageUrl, imageInitials, initialsColor, presence, primaryText, secondaryText, tertiaryText, optionalText, hidePersonaDetails } = this.props;
 
-      return (
+  return (
       <div { ... this.props as any } className={ css('ms-Persona', className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence]) }>
         { size !== PersonaSize.tiny && (
           <div className='ms-Persona-imageArea'>
@@ -44,8 +44,8 @@ export class Persona extends React.Component<IPersonaProps, any> {
             <div className='ms-Persona-tertiaryText'>{ tertiaryText }</div>
             <div className='ms-Persona-optionalText'>{ optionalText }</div>
             { this.props.children }
-            </div>) }
-          </div>
+          </div>) }
+      </div>
     );
   }
 }
