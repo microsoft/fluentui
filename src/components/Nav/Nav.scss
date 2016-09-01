@@ -45,7 +45,6 @@ $navnode-height: 36px;
   display: block;
   @include ms-baseFont;
   width: 100%;
-
   height: $navnode-height;
 
   font-family: $ms-font-family-regular;
@@ -58,6 +57,7 @@ $navnode-height: 36px;
   @include padding-right(20px);
   padding-bottom: 0px;
   @include padding-left(28px);
+
   background: none;
   border: none;
 
@@ -103,6 +103,16 @@ $navnode-height: 36px;
 .ms-Nav-compositeLink {
   display: block;
   position: relative;
+
+  height: $navnode-height;
+  line-height: $navnode-height;
+  text-decoration: none;
+  padding: 0 20px;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow-x: hidden;
 
   .ms-Nav-chevronButton.ms-Nav-chevronButton--link {
     display: block;
