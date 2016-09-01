@@ -32,3 +32,18 @@
 .ms-DocumentCardLocation + .ms-DocumentCardTitle {
   padding-top: 4px;
 }
+
+// Modifier: Compact layout
+.ms-DocumentCard--compact {
+  display: flex;
+  max-width: 480px;
+
+  // Expand the details area to fill the remaining width
+  .ms-DocumentCard-details {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+    padding: 16px 0;
+  }
+}

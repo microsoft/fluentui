@@ -29,7 +29,7 @@ export class DocumentCardBasicExample extends React.Component<any, any> {
         <DocumentCard onClickHref='http://bing.com'>
           <DocumentCardPreview { ...previewProps } />
           <DocumentCardTitle
-            title='Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx +2'
+            title='Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx'
             shouldTruncate={ true }/>
           <DocumentCardActivity
             activity='Created a few minutes ago'
