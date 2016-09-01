@@ -37,7 +37,7 @@ export class Persona extends React.Component<IPersonaProps, any> {
 
         { presence !== PersonaPresence.none && <div className='ms-Persona-presence'></div> }
         { !hidePersonaDetails && (
-                <div className= { personaDetailsClass }>
+          <div className= { personaDetailsClass }>
             <div className='ms-Persona-primaryText'>{ primaryText }</div>
             { secondaryText ? (
               <div className='ms-Persona-secondaryText'>{ secondaryText }</div>
@@ -47,8 +47,8 @@ export class Persona extends React.Component<IPersonaProps, any> {
             { innerControl ? (
               <div className='ms-Persona-detailsWithInnerControl'>{ innerControl }</div>
             ) : (null) }
-          </div>) }
-      </div>
+            </div>) }
+          </div>
     );
   }
 }
