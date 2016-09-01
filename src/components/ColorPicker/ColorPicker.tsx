@@ -88,13 +88,6 @@ export class ColorPicker extends React.Component<IColorPickerProps, any> {
   }
 
   @autobind
-  private _onPickerClick() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
-
-  @autobind
   private _onSVChanged(s: number, v: number) {
     this._updateColor(updateSV(this.state.color, s, v));
   }
