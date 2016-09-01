@@ -80,6 +80,8 @@ $personaItemHeight: 42px;
   @include float(left);
   margin: 4px;
   outline: 1px solid transparent;
+  background-color: $ms-color-neutralLighter;
+  border-radius: 20px;
 
   &:focus {
     .ms-PeoplePicker-personaContent {
@@ -89,7 +91,6 @@ $personaItemHeight: 42px;
 
   //TODO: Avoid styling child components like this.
   .ms-Persona {
-    background-color: $ms-color-neutralLighter;
     @include float(left);
     min-height: 30px;
   }
@@ -105,7 +106,6 @@ $personaItemHeight: 42px;
 // Button to remove a selected person.
 .ms-PeoplePicker-personaRemove {
   @include button-reset();
-  background-color: $ms-color-neutralLighter;
   color: $ms-color-neutralSecondary;
   display: inline-block;
   @include float(left);
