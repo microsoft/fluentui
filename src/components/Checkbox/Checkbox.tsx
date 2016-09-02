@@ -58,7 +58,11 @@ export class Checkbox extends React.Component<ICheckboxProps, {}> implements ICh
         />
         <label htmlFor={ this._id }
           ref={ (el): HTMLLabelElement => this._checkBoxLabel = el }
-          className={ css('ms-Checkbox-label', (checked || defaultChecked) && 'is-checked', disabled && 'is-disabled') }
+          className={ css('ms-Checkbox-label', {
+            'is-checked': checked || defaultChecked,
+            'is-disabled': disabled
+            })
+          }
         >
           { label && <span className='ms-Label'>{ label }</span> }
         </label>
