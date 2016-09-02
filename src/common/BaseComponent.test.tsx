@@ -1,3 +1,12 @@
+/* tslint:disable:no-unused-variable */
+import * as React from 'react';
+/* tslint:enable:no-unused-variable */
+
+import * as ReactDOM from 'react-dom';
+import * as ReactTestUtils from 'react-addons-test-utils';
+
+let { expect } = chai;
+
 import { BaseComponent } from './BaseComponent';
 
 let { assert } = chai;
@@ -54,6 +63,22 @@ describe('BaseComponent', () => {
   _buildTestFor('render');
   _buildTestFor('componentDidUpdate');
   _buildTestFor('componentWillUnmount');
+
+  it('can resolve refs', () => {
+    class Foo extends BaseComponent<{}, {}> {
+      public root: HTMLElement;
+
+      public render() {
+        return <div ref={ this._resolveRef('root') } />;
+      }
+    }
+
+    let component = ReactTestUtils.renderIntoDocument(
+      <Foo />
+    ) as any;
+
+    expect(component.root).to.exist;
+  });
 });
 
 function _buildTestFor(methodName) {
