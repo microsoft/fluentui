@@ -46,7 +46,7 @@
 }
 
 .ms-DocumentCardPreview-fileListMore {
-  @include padding(0px, 16px, 0px, 16px);
+  @include padding(0px, 16px, 8px, 16px);
   display: block;
   font-size: $ms-font-size-s;
 }
