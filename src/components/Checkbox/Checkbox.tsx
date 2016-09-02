@@ -22,16 +22,8 @@ export class Checkbox extends React.Component<ICheckboxProps, {}> implements ICh
 
     this._id = getId('checkbox-');
     this._onChange = this._onChange.bind(this);
-  }
-
-  public componentDidMount() {
-    this._checkBoxInput.addEventListener('focus', this._onFocus.bind(this), false);
-    this._checkBoxInput.addEventListener('blur', this._onBlur.bind(this), false);
-  }
-
-  public componentWillUnmount() {
-    this._checkBoxInput.removeEventListener('focus', this._onFocus.bind(this));
-    this._checkBoxInput.removeEventListener('blur', this._onBlur.bind(this));
+    this._onFocus = this._onFocus.bind(this);
+    this._onBlur = this._onBlur.bind(this);
   }
 
   public render() {
@@ -60,6 +52,8 @@ export class Checkbox extends React.Component<ICheckboxProps, {}> implements ICh
           className='ms-Checkbox-input'
           type='checkbox'
           onChange={ this._onChange }
+          onFocus= { this._onFocus }
+          onBlur= { this._onBlur }
           aria-checked={ checked }
         />
         <label htmlFor={ this._id }
