@@ -29,7 +29,8 @@ export class NavBasicExample extends React.Component<any, any> {
                   },
                   { name: 'Documents', url: 'http://example.com', isExpanded: true },
                   { name: 'Pages', url: 'http://msn.com' },
-                  { name: 'Notebook', url: 'http://msn.com' }
+                  { name: 'Notebook', url: 'http://msn.com' },
+                  { name: 'Long Name Test for elipse', url: 'http://msn.com' }
                 ]
               }
             ]

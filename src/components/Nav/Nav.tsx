@@ -147,7 +147,6 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
 
   private _renderGroup(group: INavLinkGroup, groupIndex: number): React.ReactElement<{}> {
     const isGroupExpanded: boolean = this.state.isGroupExpanded[groupIndex] !== false;
-    const hasGroupButton: boolean = !!(group.name);
 
     return (
       <div key={ groupIndex } className={ css('ms-Nav-group', { 'is-expanded' : isGroupExpanded }) }>
