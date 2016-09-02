@@ -23,11 +23,17 @@
   }
 
   @media screen and (-ms-high-contrast: active) {
-    color: $ms-color-contrastBlackLink;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   @media screen and (-ms-high-contrast: black-on-white) {
     color: $ms-color-contrastWhiteLink;
+  }
+
+  @media screen and (-ms-high-contrast: white-on-black) {
+    color: $ms-color-contrastBlackLink;
   }
 }
 
