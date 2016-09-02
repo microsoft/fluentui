@@ -1,16 +1,18 @@
+/* tslint:disable */
 import * as React from 'react';
+/* tslint:enable */
 import { IPickerItemProps } from '../BasePickerProps';
 import { css } from '../../../utilities/css';
 import './TagItem.scss';
 
-export interface TagItem {
+export interface ITagItem {
   item: {
     key: string;
     name: string;
-  }
+  };
 }
 
-export const TagItem = (props: IPickerItemProps<TagItem> ) => (
+export const TagItem = (props: IPickerItemProps<ITagItem> ) => (
   <div
   className={ css('ms-TagItem', {
     'is-selected': props.isSelected

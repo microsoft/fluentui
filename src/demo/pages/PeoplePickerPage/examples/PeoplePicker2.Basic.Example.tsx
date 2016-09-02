@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
-  PeoplePicker,
-  IPeoplePickerProps
+  PeoplePicker
 } from '../../../../components/pickers/PeoplePicker/PeoplePicker';
 import { people } from './PeoplePickerExampleData';
 

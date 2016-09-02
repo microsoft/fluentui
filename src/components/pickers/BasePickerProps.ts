@@ -6,7 +6,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   onResolveSuggestions: (filter: string) => T[];
   defaultItems?: T[];
   onChange?: (items: any[]) => void;
-  getTextFromItem?: (T)=> string;
+  getTextFromItem?: (T) => string;
   suggestionsHeaderText?: string;
   onGetMoreResults?: (filter: string) => T[];
   className?: string;

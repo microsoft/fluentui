@@ -1,4 +1,6 @@
+/* tslint:disable */
 import * as React from 'react';
+/* tslint:enable */
 import { Persona, PersonaSize, IPersonaProps, PersonaPresence } from '../../../Persona';
 import { Button, ButtonType } from '../../../Button';
 import { IPickerItemProps } from '../../BasePickerProps';

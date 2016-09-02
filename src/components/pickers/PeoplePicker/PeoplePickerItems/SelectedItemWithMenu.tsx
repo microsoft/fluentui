@@ -1,6 +1,8 @@
+/* tslint:disable */
 import * as React from 'react';
+/* tslint:enable */
 import { IPickerItemProps } from '../../BasePickerProps';
-import { Persona, PersonaSize, IPersonaProps, PersonaPresence } from '../../../Persona';
+import { Persona, IPersonaProps, PersonaPresence } from '../../../Persona';
 import { ContextualMenu, IContextualMenuItem, DirectionalHint } from '../../../ContextualMenu';
 import { Button, ButtonType } from '../../../Button';
 
@@ -9,6 +11,11 @@ export interface IPeoplePickerItemState {
 }
 
 export class SelectedItemWithMenu extends React.Component<IPickerItemProps<IPersonaProps>, IPeoplePickerItemState> {
+  public refs: {
+    [key: string]: any,
+    ellipsisRef: HTMLElement
+  };
+
   private contextualMenuItems: IContextualMenuItem[] = [
     {
       key: 'newItem',
@@ -39,11 +46,6 @@ export class SelectedItemWithMenu extends React.Component<IPickerItemProps<IPers
     },
   ];
 
-  refs: {
-    [key: string]: any,
-    ellipsisRef: HTMLElement
-  }
-
   constructor(props: IPickerItemProps<IPersonaProps>) {
     super(props);
     this.onContextualMenu = this.onContextualMenu.bind(this);
@@ -51,10 +53,9 @@ export class SelectedItemWithMenu extends React.Component<IPickerItemProps<IPers
     this.state = { contextualMenuVisible: false };
   }
 
-  render(): JSX.Element {
+  public render() {
     let {
       item,
-      index,
       onRemoveItem
     } = this.props;
     return (
@@ -91,7 +92,6 @@ export class SelectedItemWithMenu extends React.Component<IPickerItemProps<IPers
   }
 
   private onContextualMenu(ev?: any) {
-    let targetElement: HTMLElement = ev.target as HTMLElement;
     this.setState({ contextualMenuVisible: true });
   }
 

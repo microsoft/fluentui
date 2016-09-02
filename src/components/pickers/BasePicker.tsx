@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { FocusZone } from '../../FocusZone';
 import { Callout } from '../../Callout';
 import { KeyCodes } from '../../utilities/KeyCodes';
-import { ISelection, Selection, SelectionZone } from '../../utilities/selection/index';
+import { Selection, SelectionZone } from '../../utilities/selection/index';
 import { SuggestionElement, ISuggestionElementProps } from './SuggestionElement';
 import { Suggestions } from './Suggestions';
-import { IBasePickerProps, IPickerItemProps } from './BasePickerProps';
+import { IBasePickerProps } from './BasePickerProps';
 import { css } from '../../utilities/css';
 import './BasePicker.scss';
 
@@ -15,8 +15,6 @@ export interface IBasePickerState {
 }
 
 export class BasePicker<T, S extends IBasePickerProps<T>> extends React.Component<S, IBasePickerState> {
-  private suggestionManager: Suggestions<T>;
-  private SuggestionOfProperType = SuggestionElement as new (props: ISuggestionElementProps<T>) => SuggestionElement<T>;
 
   public refs: {
     [key: string]: React.ReactInstance;
@@ -28,11 +26,13 @@ export class BasePicker<T, S extends IBasePickerProps<T>> extends React.Componen
 
   protected _selection: Selection;
 
-  constructor(props: S) {
-    super(props);
+  private suggestionManager: Suggestions<T>;
+  private SuggestionOfProperType = SuggestionElement as new (props: ISuggestionElementProps<T>) => SuggestionElement<T>;
 
-    let items = props.defaultItems || [];
+  constructor(basePickerProps: S) {
+    super(basePickerProps);
 
+    let items = basePickerProps.defaultItems || [];
 
     this.suggestionManager = new Suggestions(items);
     this._onKeyDown = this._onKeyDown.bind(this);
@@ -62,7 +62,6 @@ export class BasePicker<T, S extends IBasePickerProps<T>> extends React.Componen
 
   public render() {
     let { value } = this.state;
-    let { input } = this.refs;
     return (
       <div ref='root' className={ css('ms-BasePicker', this.props.className ? this.props.className : '') } onKeyDown={ this._onKeyDown }>
         <SelectionZone selection={ this._selection }>
@@ -78,7 +77,7 @@ export class BasePicker<T, S extends IBasePickerProps<T>> extends React.Componen
 
   protected renderSuggestions(): JSX.Element {
     let suggestions = this.suggestionManager.getSuggestions();
-    let TypedSuggestionElement = this.SuggestionOfProperType
+    let TypedSuggestionElement = this.SuggestionOfProperType;
     return suggestions && suggestions.length > 0 ? (
       <Callout isBeakVisible={ false } gapSpace={ 0 } targetElement={ this.refs.root } onDismiss={ this.dismissSuggestions }>
         <TypedSuggestionElement

@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Button, ButtonType } from '../../Button';
 import { css } from '../../utilities/css';
 import { ISuggestionItem } from './Suggestions';
-import './SuggestionElement.scss'
+import './SuggestionElement.scss';
 
 export interface ISuggestionElementProps<T> extends React.Props<any> {
-  onRenderSuggestion: (props: any, index: number) => JSX.Element;
+  onRenderSuggestion: (props: any) => JSX.Element;
   onSuggestionClick: (ev: React.MouseEvent, index: number) => void;
   suggestions: ISuggestionItem<T>[];
   suggestionsHeaderText?: string;
@@ -15,9 +15,71 @@ export interface ISuggestionElementProps<T> extends React.Props<any> {
 }
 
 
-export class SuggestionElement<T> extends React.Component<ISuggestionElementProps<T>, {}> {
+export interface ISuggestionProps<T> {
+  suggestion: ISuggestionItem<T>,
+  RenderSuggestion: (item: T) => JSX.Element,
+  onClick: (ev: React.MouseEvent) => void
+}
 
-  static defaultProps = {
+
+export class Suggestion<T> extends React.Component<ISuggestionProps<T>, {}> {
+  public render() {
+    let {
+      suggestion,
+      RenderSuggestion,
+      onClick
+    } = this.props;
+    return (
+      <Button
+        onClick={ onClick }
+        className={ css('ms-Suggestions-Item', { 'is-suggested': suggestion.isSelected }) }
+        >
+        <RenderSuggestion {...suggestion.item}/>
+      </Button>
+    );
+  }
+}
+
+export function Example(props: ISuggestionProps<any>) {
+  let {
+    suggestion,
+    RenderSuggestion,
+    onClick
+  } = props;
+  return (
+    <Button
+      onClick={ onClick }
+      className={ css('ms-Suggestions-Item', { 'is-suggested': suggestion.isSelected }) }
+      >
+      <RenderSuggestion {...suggestion.item}/>
+    </Button>
+  );
+}
+
+export function Example2<T>(props: ISuggestionProps<T>) {
+  let {
+    suggestion,
+    RenderSuggestion,
+    onClick
+  } = props;
+  return (
+    <Button
+      onClick={ onClick }
+      className={ css('ms-Suggestions-Item', { 'is-suggested': suggestion.isSelected }) }
+      >
+      <RenderSuggestion {...suggestion.item}/>
+    </Button>
+  );
+}
+
+export function renderComposit(func: (props: any[]) => JSX.Element) {
+  return func;
+}
+
+export class SuggestionElement<T> extends React.Component<ISuggestionElementProps<T>, {}> {
+  private SuggestionOfProperType = Suggestion as new (props: ISuggestionProps<T>) => Suggestion<T>;
+  private ExampleOfProperType = (props: ISuggestionProps<T>) => Example2<T>(props);
+  public static defaultProps = {
     searchForMoreText: 'Search For More',
     canSearchForMore: false
   };
@@ -30,7 +92,6 @@ export class SuggestionElement<T> extends React.Component<ISuggestionElementProp
 
   constructor(props) {
     super(props);
-    let displayAll: boolean = props.suggestionLimit ? false : true;
     this._getMoreResults = this._getMoreResults.bind(this);
   }
 
@@ -73,24 +134,24 @@ export class SuggestionElement<T> extends React.Component<ISuggestionElementProp
   }
 
   private _renderSuggestions(): JSX.Element[] {
-    let { suggestions, searchForMoreText } = this.props;
+    let { suggestions } = this.props;
+    let RenderSuggestion = this.props.onRenderSuggestion;
     if (!suggestions.length) {
       return [<div className='ms-Suggestions-None'> None </div>];
     }
     let suggestionItems: JSX.Element[] = [];
+    let TypedSuggestion = this.SuggestionOfProperType;
+    let Ex = this.ExampleOfProperType;
     for (let index: number = 0; index <= suggestions.length - 1; index++) {
       suggestionItems.push(
         <div ref={ suggestions[index].isSelected ? 'selectedElement' : '' }
           key={index}>
-          <Button
-            key={index}
-            onClick={ (ev: React.MouseEvent) => this.props.onSuggestionClick(ev, index) }
-            className={ css('ms-Suggestions-Item', { 'is-suggested': suggestions[index].isSelected }) }
-            >
-            { this.props.onRenderSuggestion(suggestions[index].item, index) }
-          </Button>
-        </div>
-      );
+          <Ex
+            suggestion={suggestions[index]}
+            RenderSuggestion={this.props.onRenderSuggestion}
+            onClick={(ev: React.MouseEvent) => this.props.onSuggestionClick(ev, index) }
+            />
+        </div>);
     }
     return suggestionItems;
   }
@@ -102,3 +163,22 @@ export class SuggestionElement<T> extends React.Component<ISuggestionElementProp
   }
 
 }
+
+// <Example
+//   suggestion={suggestions[index]}
+//   RenderSuggestion={this.props.onRenderSuggestion}
+//   onClick={(ev: React.MouseEvent) => this.props.onSuggestionClick(ev, index) }
+//   />
+
+// <Ex
+//   suggestion={suggestions[index]}
+//   RenderSuggestion={this.props.onRenderSuggestion}
+//   onClick={(ev: React.MouseEvent) => this.props.onSuggestionClick(ev, index) }
+//   />
+
+// <Button
+//   onClick={(ev: React.MouseEvent) => this.props.onSuggestionClick(ev, index) }
+//   className={ css('ms-Suggestions-Item', { 'is-suggested': suggestions[index].isSelected }) }
+//   >
+//   <RenderSuggestion {...suggestions[index].item}/>
+// </Button>

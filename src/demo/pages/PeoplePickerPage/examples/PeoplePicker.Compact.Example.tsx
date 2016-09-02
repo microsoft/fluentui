@@ -1,13 +1,11 @@
 import * as React from 'react';
 import {
   PeoplePicker,
-  PeoplePickerType,
-  IPersonaProps
+  PeoplePickerType
 } from '../../../../index';
 import { people } from './PeoplePickerExampleData';
 
 export interface IPeoplePickerExampleState {
-  suggestions?: Array<IPersonaProps>;
 }
 
 export class PeoplePickerCompactExample extends React.Component<any, IPeoplePickerExampleState> {
@@ -16,14 +14,9 @@ export class PeoplePickerCompactExample extends React.Component<any, IPeoplePick
   constructor() {
     super();
     this._onFilterChanged = this._onFilterChanged.bind(this);
-    this._onRemoveSuggestion = this._onRemoveSuggestion.bind(this);
-    this.state = {
-      suggestions: this._peopleList,
-    };
   }
 
   public render() {
-    let { suggestions } = this.state;
 
     return (
       <PeoplePicker
@@ -46,11 +39,4 @@ export class PeoplePickerCompactExample extends React.Component<any, IPeoplePick
     return filterText ? this._peopleList.filter(item => item.primaryText.toLowerCase().indexOf(filterText.toLowerCase()) === 0) : [];
   }
 
-  private _onRemoveSuggestion(index: number, persona: IPersonaProps) {
-    let personas = this.state.suggestions;
-    personas.splice(index, 1);
-    this.setState({
-      suggestions: personas
-    });
-  }
 }

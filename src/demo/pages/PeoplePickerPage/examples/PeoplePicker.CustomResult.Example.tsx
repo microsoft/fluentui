@@ -1,12 +1,7 @@
 import * as React from 'react';
 import {
-  DirectionalHint,
-  PersonaPresence,
-  Button,
-  ButtonType,
   IDocumentCardActionsProps,
   IDocumentCardPreviewProps,
-  IDocumentCardActivityPerson,
   IDocumentCardProps,
   IDocumentCardTitleProps,
   IDocumentCardActivityProps,
@@ -34,29 +29,6 @@ export interface IPeoplePickerExampleState {
   contextualMenuTarget?: HTMLElement;
 }
 
-export class PeoplePickerCustomResultExample extends React.Component<any, IPeoplePickerExampleState> {
-  constructor() {
-    super();
-    this._onFilterChanged = this._onFilterChanged.bind(this);
-  }
-
-  public render() {
-
-    return (
-      <DocumentPicker
-        onResolveSuggestions={this._onFilterChanged}
-        onRenderItem={SelectedDocumentItem}
-        onRenderSuggestion={SuggestedDocumentItem}
-        />
-    );
-  }
-
-  private _onFilterChanged(filterText: string) {
-    return filterText ? data : [];
-  }
-
-}
-
 export interface IFullDocumentCardProps {
   documentCardProps?: IDocumentCardProps;
   documentActionsProps?: IDocumentCardActionsProps;
@@ -64,75 +36,6 @@ export interface IFullDocumentCardProps {
   documentActivityProps?: IDocumentCardActivityProps;
   documentTitleProps?: IDocumentCardTitleProps;
 }
-
-export class DocumentPicker extends BasePicker<IFullDocumentCardProps, IBasePickerProps<IFullDocumentCardProps>> {
-  render() {
-    let { value } = this.state;
-
-    return (
-      <div>
-        <div ref='root' className='ms-BasePicker' onKeyDown={ this._onKeyDown }>
-          <SelectionZone selection={ this._selection }>
-            <div className='ms-BasePicker-text'>
-              <input ref='input'
-                onFocus={ this._onInputFocus }
-                onChange={ this._onInputChange }
-                value={ value }
-                className='ms-BasePicker-input'
-                />
-            </div>
-          </SelectionZone>
-        </div>
-        <FocusZone ref='focusZone'>
-          { this.renderItems() }
-        </FocusZone>
-        { this.renderSuggestions() }
-      </div>
-    );
-  }
-  protected _onBackSpace(ev: React.KeyboardEvent) {
-    let { value } = this.state;
-    if (ev.target === this.refs.input) {
-      if (value && this.refs.input.selectionStart !== this.refs.input.selectionEnd) {
-        this.setState({
-          value: value.substring(0, this.refs.input.selectionStart)
-        });
-      }
-    }
-  }
-}
-
-export const SuggestedDocumentItem: (documentProps: IFullDocumentCardProps) => JSX.Element = (documentProps: IFullDocumentCardProps) => {
-  return (<div> { documentProps.documentTitleProps.title } </div>);
-}
-
-export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardProps>) => JSX.Element = (documentProps: IPickerItemProps<IFullDocumentCardProps>) => {
-  let {
-    documentCardProps,
-    documentActionsProps,
-    documentPreviewProps,
-    documentActivityProps,
-    documentTitleProps
-  } = documentProps.item;
-  let actions = [];
-  documentActionsProps.actions.forEach((action) => actions.push(action));
- actions.push({
-    icon: 'x', onClick: (ev: any) => { documentProps.onRemoveItem() }
-  });
-
-
-  return (
-    <DocumentCard
-      onClick={ () => { console.log('You clicked the card.'); } }
-      >
-      <DocumentCardPreview { ...documentProps.item.documentPreviewProps }/>
-      <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com' ariaLabel='Location, Marketing Documents'/>
-      <DocumentCardTitle { ...documentTitleProps }/>
-      <DocumentCardActivity { ...documentActivityProps }/>
-      <DocumentCardActions actions={ actions }/>
-    </DocumentCard>
-  );
-};
 
 const data: IFullDocumentCardProps[] = [
   {
@@ -416,3 +319,94 @@ const data: IFullDocumentCardProps[] = [
     }
   }
 ];
+
+export const SuggestedDocumentItem: (documentProps: IFullDocumentCardProps) => JSX.Element = (documentProps: IFullDocumentCardProps) => {
+  return (<div> { documentProps.documentTitleProps.title } </div>);
+};
+
+export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardProps>) => JSX.Element = (documentProps: IPickerItemProps<IFullDocumentCardProps>) => {
+  let {
+    documentActionsProps,
+    documentPreviewProps,
+    documentActivityProps,
+    documentTitleProps
+  } = documentProps.item;
+  let actions = [];
+  documentActionsProps.actions.forEach((action) => actions.push(action));
+ actions.push({
+    icon: 'x', onClick: (ev: any) => { documentProps.onRemoveItem(); }
+  });
+
+  return (
+    <DocumentCard
+      onClick={ () => { console.log('You clicked the card.'); } }
+      >
+      <DocumentCardPreview { ...documentPreviewProps }/>
+      <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com' ariaLabel='Location, Marketing Documents'/>
+      <DocumentCardTitle { ...documentTitleProps }/>
+      <DocumentCardActivity { ...documentActivityProps }/>
+      <DocumentCardActions actions={ actions }/>
+    </DocumentCard>
+  );
+};
+
+export class PeoplePickerCustomResultExample extends React.Component<any, IPeoplePickerExampleState> {
+  constructor() {
+    super();
+    this._onFilterChanged = this._onFilterChanged.bind(this);
+  }
+
+  public render() {
+
+    return (
+      <DocumentPicker
+        onResolveSuggestions={this._onFilterChanged}
+        onRenderItem={SelectedDocumentItem}
+        onRenderSuggestion={SuggestedDocumentItem}
+        getTextFromItem={(props: any) => props.documentTitleProps.title}
+        />
+    );
+  }
+
+  private _onFilterChanged(filterText: string) {
+    return filterText ? data : [];
+  }
+
+}
+
+export class DocumentPicker extends BasePicker<IFullDocumentCardProps, IBasePickerProps<IFullDocumentCardProps>> {
+  public render() {
+    let { value } = this.state;
+
+    return (
+      <div>
+        <div ref='root' className='ms-BasePicker' onKeyDown={ this._onKeyDown }>
+          <SelectionZone selection={ this._selection }>
+            <div className='ms-BasePicker-text'>
+              <input ref='input'
+                onFocus={ this._onInputFocus }
+                onChange={ this._onInputChange }
+                value={ value }
+                className='ms-BasePicker-input'
+                />
+            </div>
+          </SelectionZone>
+        </div>
+        <FocusZone ref='focusZone'>
+          { this.renderItems() }
+        </FocusZone>
+        { this.renderSuggestions() }
+      </div>
+    );
+  }
+  protected _onBackSpace(ev: React.KeyboardEvent) {
+    let { value } = this.state;
+    if (ev.target === this.refs.input) {
+      if (value && this.refs.input.selectionStart !== this.refs.input.selectionEnd) {
+        this.setState({
+          value: value.substring(0, this.refs.input.selectionStart)
+        });
+      }
+    }
+  }
+}

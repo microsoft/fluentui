@@ -15,7 +15,7 @@ export class Suggestions<T> {
     if (newSuggestions && newSuggestions.length > 0) {
       this.suggestions = this._convertSuggestionsToSuggestionItems(newSuggestions);
     } else {
-      this.suggestions = []
+      this.suggestions = [];
     }
     this.currentIndex = -1;
     this.currentSuggestion = undefined;

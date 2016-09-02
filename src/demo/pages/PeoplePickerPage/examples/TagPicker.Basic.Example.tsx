@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
-  TagPicker,
-  ITagPickerProps
+  TagPicker
 } from '../../../../components/pickers/TagPicker/TagPicker';
 
 let _testTags = [
@@ -28,12 +27,12 @@ export class TagPickerBasicExample extends React.Component<{}, {}> {
     return (
       <TagPicker
         onResolveSuggestions={ this._onResolveSuggestions }
-        getTextFromItem= {(item: any) => {return item.name}}
+        getTextFromItem= {(item: any) => {return item.name;}}
       />
     );
   }
 
   private _onResolveSuggestions(text) {
-    return text && text!=='' ? _testTags.filter(color => color.name.indexOf(text) === 0) : [];
+    return text && text !== '' ? _testTags.filter(color => color.name.indexOf(text) === 0) : [];
   }
 }
