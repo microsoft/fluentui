@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { PeoplePicker } from './PeoplePicker';
 import { IPersonaProps } from '../Persona/Persona.Props';
+import { IPeoplePickerItemProps } from './PeoplePickerItemProps';
 
 export interface IPeoplePickerProps extends React.Props<PeoplePicker> {
   /**
@@ -89,6 +90,19 @@ export interface IPeoplePickerProps extends React.Props<PeoplePicker> {
    * This gets called when an item is removed from the currently selected items
    */
   onItemRemoved?: (item: IPersonaProps) => void;
+
+  /**
+   * Allows parent components to specify how the peoplepicker search items should render.
+   * The selected items can appear in the search box (standard) or below the search box
+   * if the PeoplePickerType is members.
+   */
+  onRenderPeoplePickerItem?: (item: IPeoplePickerItemProps) => JSX.Element;
+
+  /**
+   * Allows parent components to specify how the peoplepicker result items should render.
+   * The result items will only appear in the search dropdown list.
+   */
+  onRenderResultItem?: (item: IPeoplePickerItemProps) => JSX.Element;
 }
 
 export enum PeoplePickerType {
