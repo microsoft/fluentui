@@ -3,9 +3,9 @@ import {
   ICheckbox,
   ICheckboxProps
 } from './Checkbox.Props';
+import { autobind } from '../../utilities/autobind';
 import { css } from '../../utilities/css';
 import { getId } from '../../utilities/object';
-
 import './Checkbox.scss';
 
 export class Checkbox extends React.Component<ICheckboxProps, {}> implements ICheckbox {
@@ -21,7 +21,6 @@ export class Checkbox extends React.Component<ICheckboxProps, {}> implements ICh
     super(props);
 
     this._id = getId('checkbox-');
-    this._onChange = this._onChange.bind(this);
     this._onFocus = this._onFocus.bind(this);
     this._onBlur = this._onBlur.bind(this);
   }
@@ -88,6 +87,7 @@ export class Checkbox extends React.Component<ICheckboxProps, {}> implements ICh
     this._checkBox.classList.remove('is-inFocus');
   }
 
+  @autobind
   private _onChange(ev: React.FormEvent) {
     const { onChange } = this.props;
     const isChecked = (ev.target as HTMLInputElement).checked;
