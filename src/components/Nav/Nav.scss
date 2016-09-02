@@ -41,7 +41,7 @@ $navnode-height: 36px;
   @include margin-right(4px);
 }
 
-.ms-Nav-groupButton {
+.ms-Nav-chevronButton {
   display: block;
   @include ms-baseFont;
   width: 100%;
@@ -54,10 +54,13 @@ $navnode-height: 36px;
   @include text-align(left);
   line-height: $navnode-height;
   margin: 5px 0;
-  padding: 0 $navnode-height;
+  padding-top: 0px;
+  @include padding-right(20px);
+  padding-bottom: 0px;
+  @include padding-left(28px);
   background: none;
   border: none;
-  border-bottom: 1px solid $dividerColor;
+
   text-transform: uppercase;
   cursor: pointer;
 
@@ -72,9 +75,15 @@ $navnode-height: 36px;
     color: $unselectedHoverForegroundColor;
     background: $unselectedHoverBackgroundColor;
   }
+
+  &.ms-Nav-chevronButton--group {
+    width: 100%;
+    height: $navnode-height;
+    border-bottom: 1px solid $dividerColor;
+  }
 }
 
-.ms-Nav-groupChevron.ms-Icon {
+.ms-Nav-chevron.ms-Icon {
   position: absolute;
   @include left(8px);
   height: $navnode-height;
@@ -83,8 +92,74 @@ $navnode-height: 36px;
   transition: transform .1s linear;
 }
 
-.ms-Nav-group.is-expanded .ms-Nav-groupChevron {
+.ms-Nav-group.is-expanded .ms-Nav-chevronButton--group .ms-Nav-chevron  {
   transform: rotate(-180deg);
+}
+
+.ms-Nav-linkText {
+  vertical-align: middle;
+}
+
+.ms-Nav-compositeLink {
+  display: block;
+  position: relative;
+
+  .ms-Nav-chevronButton.ms-Nav-chevronButton--link {
+    display: block;
+    width: 28px;
+    height: $navnode-height;
+    position: absolute;
+    top: 0;
+    @include left(0);
+    z-index: 1;
+    padding: 0;
+    margin: 0;
+
+    .ms-Nav-chevron {
+      position: relative;
+    }
+  }
+
+  & a {
+   color: $unselectedForegroundColor;
+  }
+  color: $unselectedForegroundColor;
+  background: $unselectedBackgroundColor;
+
+  &:hover {
+
+     & a,
+     & .ms-Nav-chevronButton {
+       background: $unselectedHoverBackgroundColor;
+       color: $unselectedHoverForegroundColor;
+     }
+  }
+
+  &.is-expanded {
+    .ms-Nav-chevron {
+      transform: rotate(-180deg);
+    }
+  }
+
+  &.is-selected {
+    & a,
+    & .ms-Nav-chevronButton {
+
+      color: $ms-color-themePrimary;
+      background: $selectedBackgroundColor;
+
+      &:after {
+        @include border-left(2px, solid, $selectedForegroundColor);
+
+        content: '';
+        position: absolute;
+        top: 0;
+        @include right(0);
+        bottom: 0;
+        @include left(0);
+      }
+    }
+  }
 }
 
 .ms-Nav-link {
@@ -98,39 +173,16 @@ $navnode-height: 36px;
   text-overflow: ellipsis;
   text-decoration: none;
   white-space: nowrap;
-  overflow-x: hidden;
-
-  color: $unselectedForegroundColor;
-  background: $unselectedBackgroundColor;
-
-  &:hover {
-    color: $unselectedHoverForegroundColor;
-    background: $unselectedHoverBackgroundColor;
-  }
-
-  &.is-selected {
-    position: relative;
-    color: $selectedForegroundColor;
-    background: $selectedBackgroundColor;
-
-    &:hover {
-      color: $selectedHoverForegroundColor;
-      background: $selectedHoverBackgroundColor;
-    }
-
-    &:after {
-      @include border-left(2px, solid, $selectedForegroundColor);
-
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-    }
-  }
+  overflow: hidden;
 }
 
-.ms-Nav-groupButton, .ms-Nav-link {
+.ms-Nav-SublinkTextSize {
+  font-size: $ms-font-size-s;
+}
+
+.ms-Nav-chevronButton,
+.ms-Nav-chevronButton--group,
+.ms-Nav-chevronButton--link,
+.ms-Nav-link {
   @include focus-border();
 }

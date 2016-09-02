@@ -2,15 +2,42 @@ import * as React from 'react';
 import {
   Nav
 } from '../../../../index';
+import './Nav.Basic.Example.scss';
 
 export class NavBasicExample extends React.Component<any, any> {
   public render() {
     return (
-      <Nav
-        ariaLabel='use up and down arrow keys to navigate'
-        groups={ [ { name: 'LINK GROUP', links: [ { name: 'A link to New Tab', url: 'http://example.com',iconClassName:'', target: '_blank' }, {name: 'Edit', url: 'http://msn.com', iconClassName: 'ms-Icon--pencil'} ]}]}
-        />
+      <div className='ms-NavExample-LeftPane'>
+        <Nav
+          groups={
+            [
+              {
+                links:
+                [
+                  {
+                  name: 'Home',
+                  url: 'http://example.com',
+                  links: [{
+                    name: 'Activity',
+                    url: 'http://msn.com'
+                    },
+                    {
+                      name: 'News',
+                      url: 'http://msn.com'
+                    }],
+                  isExpanded: true
+                  },
+                  { name: 'Documents', url: 'http://example.com', isExpanded: true },
+                  { name: 'Pages', url: 'http://msn.com' },
+                  { name: 'Notebook', url: 'http://msn.com' }
+                ]
+              }
+            ]
+          }
+          expandedStateText={ 'expanded' }
+          collapsedStateText={ 'collapsed' }
+          />
+       </div>
     );
   }
-
 }

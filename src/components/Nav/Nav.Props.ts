@@ -40,6 +40,16 @@ export interface INavProps {
    * (Optional) The nav container aria label.
    */
   ariaLabel?: string;
+
+  /**
+   * (Optional) The alt text for the expanded state
+   **/
+  expandedStateText?: string;
+
+  /**
+   * (Optional) The alt text for the collapsed state text
+   **/
+  collapsedStateText?: string;
 }
 
 export interface INavLinkGroup {
