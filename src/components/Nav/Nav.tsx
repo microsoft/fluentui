@@ -83,21 +83,13 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
 
     return (
         <a
-<<<<<<< 35d0f5a0cc0411fc2ff85f4c83d1b856e0f008b7
           className={ css('ms-Nav-link', nestingLevel > 0 ? 'ms-Nav-SublinkTextSize' : '') }
-=======
-          className={ css('ms-Nav-link', nestingLevel > 0 ? 'ms-Nav-SublinkTextSize' : '')}
->>>>>>> Adjust Nav with new redline design update
           style={ { [isRtl ? 'paddingRight' : 'paddingLeft'] : paddingBefore } }
           href={ link.url || 'javascript:' }
           onclick={ !!link.onClick ? link.onClick : onLinkClick }
           aria-label={ link.ariaLabel }
           title={ link.title ? link.title : link.name }
-<<<<<<< 35d0f5a0cc0411fc2ff85f4c83d1b856e0f008b7
           target={ link.target }
-=======
-          target={ link.target || '' }
->>>>>>> Adjust Nav with new redline design update
         >
           { link.iconClassName ?
           <i className={ css('ms-Icon', 'ms-Nav-IconLink', link.iconClassName) }></i>
@@ -163,11 +155,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
           className='ms-Nav-chevronButton ms-Nav-chevronButton--group'
           onClick={ this._onGroupHeaderClicked.bind(this, groupIndex) }
         >
-<<<<<<< 35d0f5a0cc0411fc2ff85f4c83d1b856e0f008b7
           <i className={ css('ms-Nav-chevron', 'ms-Icon', 'ms-Icon--ChevronDown') }></i>
-=======
-          <i className={ css('ms-Nav-chevron', 'ms-Icon', 'ms-Icon--chevronDown') }></i>
->>>>>>> Adjust Nav with new redline design update
           { group.name }
         </button> : null)
         }

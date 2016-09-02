@@ -35,18 +35,14 @@ export class NavBasicExample extends React.Component<any, any> {
                   },
                   { name: 'Documents', url: 'http://example.com', isExpanded: true },
                   { name: 'Pages', url: 'http://msn.com' },
-<<<<<<< 35d0f5a0cc0411fc2ff85f4c83d1b856e0f008b7
                   { name: 'Notebook', url: 'http://msn.com' },
                   { name: 'Long Name Test for elipse', url: 'http://msn.com' },
                   { name: 'Edit Link', url: 'http://example.com', iconClassName: 'ms-Icon--pencil' },
                   {
                     name: 'Edit', url: '#',
                     onClick: this._onClickHandler,
-                    iconClassName: 'ms-Icon--pencil'
+                    iconClassName: 'ms-Icon--Edit'
                   }
-=======
-                  { name: 'Notebook', url: 'http://msn.com' }
->>>>>>> Adjust Nav with new redline design update
                 ]
               }
             ]
@@ -57,13 +53,10 @@ export class NavBasicExample extends React.Component<any, any> {
        </div>
     );
   }
-<<<<<<< 35d0f5a0cc0411fc2ff85f4c83d1b856e0f008b7
 
   private _onClickHandler(e: React.MouseEvent) {
     alert('test');
     return false;
   }
 }
-=======
-}
->>>>>>> Adjust Nav with new redline design update
+
