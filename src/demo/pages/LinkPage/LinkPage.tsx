@@ -3,26 +3,43 @@ import {
   Link
 } from '../../../index';
 import {
-  ExampleCard
+  ExampleCard,
+  ComponentPage
 } from '../../components/index';
 
 import { LinkBasicExample } from './examples/Link.Basic.Example';
+import { getPageRouteFromState } from '../../utilities/pageroute';
+
 let LinkBasicExampleCode = require('./examples/Link.Basic.Example.tsx');
 
 export class LinkPage extends React.Component<any, any> {
+  private _url: string;
+
+  constructor() {
+    super();
+    this._url = getPageRouteFromState('Basic components', 'Link');
+  }
+
   public render() {
     return (
-      <div className='LinkExample'>
-        <h1 className='ms-font-xxl'>Link</h1>
-        <div>
-          <Link target='_blank' href='http://dev.office.com/fabric/components/link'>Links</Link>
-          <span> are used as a styled replacement for A tags. All attributes valid on A tags will be passed through.</span>
-        </div>
-        <h2 className='ms-font-xl'>Examples</h2>
-        <ExampleCard title='Link' code={ LinkBasicExampleCode }>
-          <LinkBasicExample />
-        </ExampleCard>
-      </div>
+      <ComponentPage
+        title='Link'
+        componentName='LinkExample'
+        exampleCards={
+          [
+            <ExampleCard title='Link' code={ LinkBasicExampleCode }>
+              <LinkBasicExample />
+            </ExampleCard>
+          ]
+        }
+        overview={
+          <div>
+            <Link target='_blank' href='http://dev.office.com/fabric/components/link'>Links</Link>
+            <span> are used as a styled replacement for A tags. All attributes valid on A tags will be passed through.</span>
+          </div>
+        }
+        route={ this._url }>
+      </ComponentPage>
     );
   }
 

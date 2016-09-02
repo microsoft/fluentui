@@ -10,10 +10,10 @@ export interface IComponentPageProps {
   title: string;
   componentName: string;
   exampleCards: Array<JSX.Element>;
-  propertiesTables: Array<JSX.Element>;
+  propertiesTables?: Array<JSX.Element>;
   bestPractices?: JSX.Element;
-  do?: JSX.Element;
-  dont?: JSX.Element;
+  dos?: JSX.Element;
+  donts?: JSX.Element;
   overview: JSX.Element;
   route: string;
 }
@@ -43,18 +43,12 @@ export class ComponentPage extends React.Component<IComponentPageProps, ICompone
                   { this.props.overview }
                 </div>
             </div>
-            <div className='ComponentPage-bestPracticesSection'>
-              { this._getUsage() }
-              { this._getDosAndDonts() }
-            </div>
+            { this._getDosAndDonts() }
             <div className='ComponentPage-variantsSection'>
               <h2 className='ComponentPage-subHeading ComponentPage-variantsTitle' id='Variants'>Variants</h2>
               { this.props.exampleCards }
             </div>
-            <div className='ComponentPage-implementationSection'>
-              <h2 className='ComponentPage-subHeading' id='Implementation'>Implementation</h2>
-              { this.props.propertiesTables }
-            </div>
+            { this._getPropertiesTable() }
           </div>
         </div>
       </div>
@@ -64,7 +58,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, ICompone
   private _navigationLinks(): JSX.Element {
     let links: Array<JSX.Element> = [];
 
-    if (this.props.bestPractices && this.props.do && this.props.dont) {
+    if (this.props.bestPractices && this.props.dos && this.props.donts) {
       links.push(
         <div className='ComponentPage-navLink'>
           <a href={ this.props.route + '#Best Practices' }>Best Practices</a>
@@ -88,32 +82,48 @@ export class ComponentPage extends React.Component<IComponentPageProps, ICompone
     );
   }
 
-  private _getDosAndDonts(): JSX.Element {
-    let doAndDont: Array<JSX.Element>;
-    let doSection: JSX.Element;
-
-    if (this.props.do && this.props.dont) {
+  private _getPropertiesTable(): JSX.Element {
+    if (this.props.propertiesTables) {
       return (
-        <div className='ComponentPage-doSections'>
-          <div className='ComponentPage-doSection'>
-            <h3>Do</h3>
-            { this.props.do }
-          </div>
-          <div className='ComponentPage-doSection ComponentPage-doNotSection'>
-            <h3>Do not</h3>
-            { this.props.dont }
-          </div>
+        <div className='ComponentPage-implementationSection'>
+          <h2 className='ComponentPage-subHeading' id='Implementation'>Implementation</h2>
+          { this.props.propertiesTables }
         </div>
       );
     }
   }
 
-  private _getUsage(): JSX.Element {
+  private _getDosAndDonts(): JSX.Element {
+    let dosAndDonts: Array<JSX.Element> = [];
+
     if (this.props.bestPractices) {
-      return (
+      dosAndDonts.push(
         <div class='ComponentPage-usage' id='Best Practices'>
           <h2 className='ComponentPage-subHeading'>Best Practices</h2>
           { this.props.bestPractices }
+        </div>
+      );
+    }
+
+    if (this.props.dos && this.props.donts) {
+      dosAndDonts.push(
+        <div className='ComponentPage-doSections'>
+          <div className='ComponentPage-doSection'>
+            <h3>Do</h3>
+            { this.props.dos }
+          </div>
+          <div className='ComponentPage-doSection ComponentPage-doNotSection'>
+            <h3>Do not</h3>
+            { this.props.donts }
+          </div>
+        </div>
+      );
+    }
+
+    if (this.props.bestPractices || (this.props.dos && this.props.donts)) {
+      return(
+        <div className='ComponentPage-bestPracticesSection'>
+          { dosAndDonts }
         </div>
       );
     }

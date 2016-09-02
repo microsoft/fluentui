@@ -36,21 +36,21 @@
   .ms-Button:last-child {
     margin-right: 0;
   }
-}
 
-.ms-Button.ms-Button--primary {
-  .ms-Button-label {
-    color: $ms-color-neutralDark;
-  }
-
-  &:hover,
-  &:active,
-  &:focus {
-    background-color: $ms-color-neutralDark;
-    border-color:  $ms-color-neutralDark;
-
+  .ms-Button.ms-Button--primary {
     .ms-Button-label {
-      color: $ms-color-white;
+      color: $ms-color-neutralDark;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: $ms-color-neutralDark;
+      border-color:  $ms-color-neutralDark;
+
+      .ms-Button-label {
+        color: $ms-color-white;
+      }
     }
   }
 }
@@ -74,3 +74,29 @@
   border-bottom: 1px solid $ms-color-neutralLight;
   margin-bottom: 20px;
 }
+
+.ExampleCard-dosAndDonts {
+  width: 100%;
+}
+
+.ExampleCard-dos {
+  width: calc(50% - 50px);
+  display: inline-block;
+  margin-right: 50px;
+
+  h4 {
+    @include ms-font-l;
+    color: #177D3E;
+  }
+}
+
+.ExampleCard-donts {
+  width: calc(50%);
+  display: inline-block;
+
+  h4 {
+    @include ms-font-l;
+    color: #A61E22;
+  }
+}
+
