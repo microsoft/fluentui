@@ -29,7 +29,9 @@ export class BreadcrumbPage extends React.Component<any, any> {
         componentName='BreadcrumbExample'
         exampleCards={
           [
-            <ExampleCard title='Simple breadcrumb' code={ BreadcrumbBasicExampleCode }>
+            <ExampleCard
+              title='Simple breadcrumb'
+              code={ BreadcrumbBasicExampleCode }>
               <BreadcrumbBasicExample />
             </ExampleCard>
           ]
@@ -41,29 +43,23 @@ export class BreadcrumbPage extends React.Component<any, any> {
         }
         overview={
           <div>
-            <Link target='_blank' href='http://dev.office.com/fabric/components/breadcrumb'>Breadcrumbs</Link>
-            <span> are used to represent a given path.</span>
+            <span>Breadcrumbs should be used as a navigational aid in your app or site. They indicate the current page’s location within a hierarchy and help the user understand where they are in relation to the rest of that hierarchy. They also afford one-click access to higher levels of that hierarchy. Breadcrumbs are typically placed, in horizontal form, under the masthead or navigation of an experience, above the primary content area.</span> View <Link target='_blank' href='http://dev.office.com/fabric/components/breadcrumb'>Breadcrumbs</Link> on our website.
           </div>
         }
         bestPractices={
-          <div>
-            <p>30 words -- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed sem in nunc imperdiet vestibulum. Maecenas vulputate dapibus nisl, in varius nunc fermentum vitae. Aenean cursus leo eget pharetra aliquam.</p>
-            <p>30 words -- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed sem in nunc imperdiet vestibulum. Maecenas vulputate dapibus nisl, in varius nunc fermentum vitae. Aenean cursus leo eget pharetra aliquam.</p>
-          </div>
+          <div></div>
         }
-        do={
+        dos={
           <div>
             <ul>
-              <li>15 to 30 words -- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed sem in nunc imperdiet vestibulum. Maecenas vulputate dapibus nisl, in varius nunc fermentum vitae. Aenean cursus leo eget pharetra aliquam.</li>
-              <li>15 to 30 words -- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed sem in nunc imperdiet vestibulum. Maecenas vulputate dapibus nisl, in varius nunc fermentum vitae. Aenean cursus leo eget pharetra aliquam.</li>
+              <li>Place Breadcrumbs at the top of a page, above a list of items, or above the main content of a page.</li>
             </ul>
           </div>
         }
-        dont={
+        donts={
           <div>
             <ul>
-              <li>15 to 30 words -- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed sem in nunc imperdiet vestibulum. Maecenas vulputate dapibus nisl, in varius nunc fermentum vitae. Aenean cursus leo eget pharetra aliquam.</li>
-              <li>15 to 30 words -- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed sem in nunc imperdiet vestibulum. Maecenas vulputate dapibus nisl, in varius nunc fermentum vitae. Aenean cursus leo eget pharetra aliquam.</li>
+              <li>Don't use Breadcrumbs as a primary way to navigate an app or site.</li>
             </ul>
           </div>
         }

@@ -4,32 +4,50 @@ import {
 } from '../../../index';
 import {
   ExampleCard,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentPage
 } from '../../components/index';
 
 import { SpinnerBasicExample } from './examples/Spinner.Basic.Example';
+import { getPageRouteFromState } from '../../utilities/pageroute';
 
 const SpinnerBasicExampleCode = require('./examples/Spinner.Basic.Example.tsx');
 
 export class SpinnerPage extends React.Component<any, any> {
-  public render() {
-    return (
-      <div>
-        <h1 className='ms-font-xxl'>Spinner</h1>
-        <div>
-          <Link target='_blank' href='http://dev.office.com/fabric/components/Spinner'>Spinners</Link>
-          <span> provide a ui indicator for progress.</span>
-        </div>
-        <h2 className='ms-font-xl'>Examples</h2>
-        <ExampleCard
-          title='Various Spinner Types'
-          code={ SpinnerBasicExampleCode }
-        >
-          <SpinnerBasicExample />
-        </ExampleCard>
-        <PropertiesTableSet componentName='Spinner' />
-      </div>
-    );
+  private _url: string;
+
+  constructor() {
+    super();
+    this._url = getPageRouteFromState('Basic components', 'Spinner');
   }
 
+  public render() {
+    return (
+      <ComponentPage
+        title='Spinner'
+        componentName='SpinnerExample'
+        exampleCards={
+          [
+            <ExampleCard
+              title='Various Spinner Types'
+              code={ SpinnerBasicExampleCode }>
+              <SpinnerBasicExample />
+            </ExampleCard>
+          ]
+        }
+        propertiesTables={
+          [
+            <PropertiesTableSet componentName='Spinner' />
+          ]
+        }
+        overview={
+          <div>
+            <Link target='_blank' href='http://dev.office.com/fabric/components/Spinner'>Spinners</Link>
+            <span> provide a ui indicator for progress.</span>
+          </div>
+        }
+        route={ this._url }>
+      </ComponentPage>
+    );
+  }
 }

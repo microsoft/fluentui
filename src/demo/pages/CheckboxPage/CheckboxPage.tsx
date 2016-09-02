@@ -4,31 +4,48 @@ import {
 } from '../../../index';
 import {
   ExampleCard,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentPage
 } from '../../components/index';
 
 import { CheckboxBasicExample } from './examples/Checkbox.Basic.Example';
+import { getPageRouteFromState } from '../../utilities/pageroute';
 
 const CheckboxBasicExampleCode = require('./examples/Checkbox.Basic.Example.tsx');
 
 export class CheckboxPage extends React.Component<any, any> {
+  private _url: string;
+
+  constructor() {
+    super();
+    this._url = getPageRouteFromState('Basic components', 'Checkbox');
+  }
+
   public render() {
     return (
-      <div className='CheckboxExample'>
-        <h1 className='ms-font-xxl'>Checkbox</h1>
-        <div>
-          <Link target='_blank' href='http://dev.office.com/fabric/components/checkbox'>Checkboxes</Link>
-          <span> allow the user to enable or disable a setting.</span>
-        </div>
-
-        <h2 className='ms-font-xl'>Examples</h2>
-
-        <ExampleCard title='Checkboxes' code={ CheckboxBasicExampleCode }>
-          <CheckboxBasicExample />
-        </ExampleCard>
-
-        <PropertiesTableSet componentName='Checkbox' />
-      </div>
+      <ComponentPage
+        title='Checkbox'
+        componentName='CheckboxExample'
+        exampleCards={
+          [
+            <ExampleCard title='Checkboxes' code={ CheckboxBasicExampleCode }>
+              <CheckboxBasicExample />
+            </ExampleCard>
+          ]
+        }
+        propertiesTables={
+          [
+            <PropertiesTableSet componentName='Checkbox' />
+          ]
+        }
+        overview={
+          <div>
+            <Link target='_blank' href='http://dev.office.com/fabric/components/checkbox'>Checkboxes</Link>
+            <span> allow the user to enable or disable a setting.</span>
+          </div>
+        }
+        route={ this._url }>
+      </ComponentPage>
     );
   }
 }
