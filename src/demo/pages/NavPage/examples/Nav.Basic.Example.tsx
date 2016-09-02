@@ -36,6 +36,7 @@ export class NavBasicExample extends React.Component<any, any> {
                   { name: 'Documents', url: 'http://example.com', isExpanded: true },
                   { name: 'Pages', url: 'http://msn.com' },
                   { name: 'Notebook', url: 'http://msn.com' },
+<<<<<<< HEAD
                   { name: 'Long Name Test for elipse', url: 'http://msn.com' },
                   { name: 'Edit Link', url: 'http://example.com', iconClassName: 'ms-Icon--Edit' },
                   {
@@ -44,6 +45,9 @@ export class NavBasicExample extends React.Component<any, any> {
                     onClick: this._onClickHandler,
                     iconClassName: 'ms-Icon--Edit'
                   }
+=======
+                  { name: 'Long Name Test for elipse', url: 'http://msn.com' }
+>>>>>>> add long name to test case
                 ]
               }
             ]
