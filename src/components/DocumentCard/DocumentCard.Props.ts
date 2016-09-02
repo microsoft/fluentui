@@ -55,6 +55,12 @@ export interface IDocumentCardPreviewProps extends React.Props<DocumentCardPrevi
    * One or more preview images to display.
    */
   previewImages: IDocumentCardPreviewImage[];
+
+  /**
+   * The format for the text that should display the number of overflow documents.
+   * such as '+2 more'
+   */
+  overflowDocumentCountFormatText?: string;
 }
 
 export interface IDocumentCardPreviewImage {
