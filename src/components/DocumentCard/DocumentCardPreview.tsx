@@ -19,7 +19,7 @@ export class DocumentCardPreview extends React.Component<IDocumentCardPreviewPro
     if (previewImages.length > 1) {
       // Render a list of files
       preview = this._renderPreviewList(previewImages);
-    } else {
+    } else if (previewImages.length === 1) {
       // Render a single preview
       preview = this._renderPreviewImage(previewImages[0]);
 
@@ -73,7 +73,7 @@ export class DocumentCardPreview extends React.Component<IDocumentCardPreviewPro
     // Determine the overflow text that will be rendered after the preview list.
     let overflowText = overflowDocumentCount ?
       (overflowDocumentCountFormatText ?
-        format('+{0} more', overflowDocumentCount) :
+        format(overflowDocumentCountFormatText, overflowDocumentCount) :
         '+' + overflowDocumentCount) : null;
 
     // Create list items for the documents to be shown
