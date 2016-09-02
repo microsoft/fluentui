@@ -5,6 +5,7 @@ import {
   IGroup,
 } from './GroupedList.Props';
 import { GroupSpacer } from './GroupSpacer';
+import { autobind } from '../../utilities/autobind';
 import './GroupFooter.scss';
 
 export interface IGroupFooter {
@@ -15,11 +16,6 @@ export interface IGroupFooter {
 }
 
 export class GroupFooter extends React.Component<IGroupFooter, {}> {
-  constructor(props: IGroupFooter) {
-    super(props);
-
-    this._onToggleSummarize = this._onToggleSummarize.bind(this);
-  }
 
   public render() {
     let { group, groupLevel, footerProps } = this.props;
@@ -36,6 +32,7 @@ export class GroupFooter extends React.Component<IGroupFooter, {}> {
     );
   }
 
+  @autobind
   private _onToggleSummarize() {
     let { group, footerProps } = this.props;
     let onToggleSummarize = footerProps && footerProps.onToggleSummarize;
