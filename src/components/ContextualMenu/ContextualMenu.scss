@@ -91,3 +91,16 @@ $ContextualMenu-iconWidth: 24px;
   width: 16px;
   text-align: center;
 }
+
+button.ms-ContextualMenu-link,
+button.ms-ContextualMenu-link:first-child,
+button.ms-ContextualMenu-link:last-child {
+    height: 40px;
+}
+
+.ms-ContextualMenu.ms-FocusZone {
+  position: relative;
+  line-height: 0;
+  border: none;
+  width: auto;
+}
