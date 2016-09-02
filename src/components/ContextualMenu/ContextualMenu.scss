@@ -61,7 +61,8 @@ a.ms-ContextualMenu-link {
   text-transform: none;
   text-indent: 0px;
   text-shadow: none;
-  box-sizing: border-box
+  box-sizing: border-box;
+  cursor: default;
 }
 
 .ms-ContextualMenu-divider {
@@ -92,7 +93,6 @@ a.ms-ContextualMenu-link {
 .ms-ContextualMenu-linkText {
   padding: 0 4px;
   display: inline-block;
-  text-decoration: underline;
 }
 
 .ms-Icon.ms-ContextualMenu-submenuChevron {
