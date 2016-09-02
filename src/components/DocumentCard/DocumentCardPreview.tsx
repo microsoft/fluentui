@@ -64,15 +64,15 @@ export class DocumentCardPreview extends React.Component<IDocumentCardPreviewPro
     let overflowDocumentCount = previewImages.length - LIST_ITEM_COUNT;
 
     // Create list items for the documents to be shown
-    let fileListItems = previewImages.splice(0, LIST_ITEM_COUNT).map((file, fileIndex) => (
+    let fileListItems = previewImages.slice(0, LIST_ITEM_COUNT).map((file, fileIndex) => (
       <li key={ fileIndex }>
         <Image
           className='ms-DocumentCardPreview-fileListIcon'
           src={ file.iconSrc }
           role='presentation'
           alt=''
-          width='24px'
-          height='24px'/>
+          width='16px'
+          height='16px'/>
         <a href={ file.url }>{ file.name }</a>
       </li>
     ));
@@ -82,7 +82,9 @@ export class DocumentCardPreview extends React.Component<IDocumentCardPreviewPro
         <ul className='ms-DocumentCardPreview-fileList'>
           { fileListItems }
         </ul>
-        <span className='ms-DocumentCardPreview-fileListMore'>+{ overflowDocumentCount } more</span>
+        { (overflowDocumentCount > 0) &&
+          <span className='ms-DocumentCardPreview-fileListMore'>+{ overflowDocumentCount } more</span>
+        }
       </div>
     );
   }

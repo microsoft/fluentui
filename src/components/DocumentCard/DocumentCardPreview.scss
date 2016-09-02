@@ -18,8 +18,8 @@
   margin: 0;
 
   li {
-    height: 24px;
-    line-height: 24px; // Vertically center the text
+    height: 16px;
+    line-height: 16px; // Vertically center the text
     margin-bottom: 8px;
     overflow: hidden;
     padding-left: 32px; // Make room for icon
@@ -46,7 +46,7 @@
 }
 
 .ms-DocumentCardPreview-fileListMore {
-  @include padding(8px, 16px, 16px, 16px);
+  @include padding(0px, 16px, 0px, 16px);
   display: block;
   font-size: $ms-font-size-s;
 }
