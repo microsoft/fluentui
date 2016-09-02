@@ -1,9 +1,6 @@
 @import '../../common/common';
 
 $navnode-height: 36px;
-$hasExpandButtonLinkLeftPadding: 28px;
-$noExpandButtonLinkLeftPadding: 20px;
-$linkRightPadding: 20px;
 
 .ms-Nav {
   overflow-y: auto;
@@ -47,14 +44,13 @@ $linkRightPadding: 20px;
 .ms-Nav-chevronButton {
   display: block;
 
-  font-weight: $ms-font-weight-regular;
+  font-family: $ms-font-family-regular;
   font-size: $ms-font-size-s;
 
   @include text-align(left);
   line-height: $navnode-height;
   margin: 5px 0;
   @include padding(0px, $linkRightPadding, 0px, $hasExpandButtonLinkLeftPadding);
-
   background: none;
   border: none;
 
@@ -113,7 +109,7 @@ $linkRightPadding: 20px;
 
   .ms-Nav-chevronButton.ms-Nav-chevronButton--link {
     display: block;
-    width: $hasExpandButtonLinkLeftPadding;
+    width: 28px;
     height: $navnode-height;
     position: absolute;
     top: 0;
@@ -175,7 +171,7 @@ $linkRightPadding: 20px;
   height: $navnode-height;
   line-height: $navnode-height;
   text-decoration: none;
-  @include padding(0px, $linkRightPadding, 0px, $linkRightPadding);
+  padding: 0 20px;
   cursor: pointer;
   text-overflow: ellipsis;
   text-decoration: none;
@@ -192,16 +188,4 @@ $linkRightPadding: 20px;
 .ms-Nav-chevronButton--link,
 .ms-Nav-link {
   @include focus-border();
-}
-
-.ms-Nav-linkButton.ms-Button--command {
-  @include padding-left($noExpandButtonLinkLeftPadding);
-  .ms-Button-label {
-    @include ms-font-m;
-    color: $ms-color-themePrimary;
-  }
-
-  &.isOnExpanded {
-     @include padding-left($hasExpandButtonLinkLeftPadding);
-  }
 }

@@ -42,12 +42,12 @@ export interface INavProps {
   ariaLabel?: string;
 
   /**
-   * (Optional) The tooltip text for the expanded state
+   * (Optional) The alt text for the expanded state
    **/
   expandedStateText?: string;
 
   /**
-   * (Optional) The tooltip text for the collapsed state text
+   * (Optional) The alt text for the collapsed state text
    **/
   collapsedStateText?: string;
 }
@@ -86,12 +86,7 @@ export interface INavLink {
   links?: INavLink[];
 
   /**
-   * Function callback invoked when a button link in the navigation is clicked
-   */
-  onClick?: (ev?: React.MouseEvent) => void;
-
-  /**
-   * Classname to apply to the icon link or button link with icon.
+   * Classname to apply to the icon.
    */
   iconClassName?: string;
 
@@ -134,11 +129,6 @@ export interface INavLink {
    * Link <a> target.
    */
   target?: string;
-
-  /**
-   * ParentId points to the parent node key.  Server used it during editing.
-   */
-  parentId?: string;
 
   /**
    * Any additional properties to apply to the rendered links.
