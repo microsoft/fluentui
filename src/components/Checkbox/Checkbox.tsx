@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { BaseComponent } from '../../common/BaseComponent';
 import {
   ICheckbox,
   ICheckboxProps
@@ -8,7 +9,7 @@ import { css } from '../../utilities/css';
 import { getId } from '../../utilities/object';
 import './Checkbox.scss';
 
-export class Checkbox extends React.Component<ICheckboxProps, {}> implements ICheckbox {
+export class Checkbox extends BaseComponent<ICheckboxProps, {}> implements ICheckbox {
   public static defaultProps: ICheckboxProps = {
   };
 
@@ -21,8 +22,6 @@ export class Checkbox extends React.Component<ICheckboxProps, {}> implements ICh
     super(props);
 
     this._id = getId('checkbox-');
-    this._onFocus = this._onFocus.bind(this);
-    this._onBlur = this._onBlur.bind(this);
   }
 
   public render() {
@@ -38,14 +37,14 @@ export class Checkbox extends React.Component<ICheckboxProps, {}> implements ICh
     return (
       <div
         className={ css('ms-Checkbox', className) }
-        ref={ (c): HTMLElement => this._checkBox = c }
+        ref={ this._resolveRef('_checkBox') }
       >
         <input
           { ...inputProps }
           { ...(checked !== undefined && { checked }) }
           { ...(defaultChecked !== undefined && { defaultChecked }) }
           disabled={ disabled }
-          ref={ (el): HTMLInputElement => this._checkBoxInput = el }
+          ref={ this._resolveRef('_checkBoxInput') }
           id={ this._id }
           name={ this._id }
           className='ms-Checkbox-input'
@@ -56,7 +55,7 @@ export class Checkbox extends React.Component<ICheckboxProps, {}> implements ICh
           aria-checked={ checked }
         />
         <label htmlFor={ this._id }
-          ref={ (el): HTMLLabelElement => this._checkBoxLabel = el }
+          ref={ this._resolveRef('_checkBoxLabel') }
           className={ css('ms-Checkbox-label', {
             'is-checked': checked || defaultChecked,
             'is-disabled': disabled
@@ -79,10 +78,12 @@ export class Checkbox extends React.Component<ICheckboxProps, {}> implements ICh
       }
   }
 
+  @autobind
   private _onFocus(): void {
     this._checkBox.classList.add('is-inFocus');
   }
 
+  @autobind
   private _onBlur(): void {
     this._checkBox.classList.remove('is-inFocus');
   }
