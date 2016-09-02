@@ -43,9 +43,6 @@ $navnode-height: 36px;
 
 .ms-Nav-chevronButton {
   display: block;
-  @include ms-baseFont;
-  width: 100%;
-  height: $navnode-height;
 
   font-family: $ms-font-family-regular;
   font-size: $ms-font-size-s;
@@ -57,7 +54,10 @@ $navnode-height: 36px;
   @include padding-right(20px);
   padding-bottom: 0px;
   @include padding-left(28px);
+<<<<<<< 35d0f5a0cc0411fc2ff85f4c83d1b856e0f008b7
 
+=======
+>>>>>>> Adjust Nav with new redline design update
   background: none;
   border: none;
 
