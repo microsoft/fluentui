@@ -9,12 +9,16 @@ import { css } from '../../utilities/css';
 import { getId } from '../../utilities/object';
 import './Checkbox.scss';
 
-export class Checkbox extends BaseComponent<ICheckboxProps, {}> implements ICheckbox {
+export interface ICheckboxState {
+  /** Is true when the control has focus. */
+  isFocused?: boolean;
+}
+
+export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> implements ICheckbox {
   public static defaultProps: ICheckboxProps = {
   };
 
   private _id: string;
-  private _checkBox: HTMLElement;
   private _checkBoxInput: HTMLInputElement;
   private _checkBoxLabel: HTMLLabelElement;
 
@@ -22,6 +26,9 @@ export class Checkbox extends BaseComponent<ICheckboxProps, {}> implements IChec
     super(props);
 
     this._id = getId('checkbox-');
+    this.state = {
+      isFocused: false
+    }
   }
 
   public render() {
@@ -34,10 +41,11 @@ export class Checkbox extends BaseComponent<ICheckboxProps, {}> implements IChec
       label
     } = this.props;
 
+    const { isFocused } = this.state;
+
     return (
       <div
-        className={ css('ms-Checkbox', className) }
-        ref={ this._resolveRef('_checkBox') }
+        className={ css('ms-Checkbox', className, { 'is-inFocus': isFocused }) }
       >
         <input
           { ...inputProps }
@@ -79,13 +87,13 @@ export class Checkbox extends BaseComponent<ICheckboxProps, {}> implements IChec
   }
 
   @autobind
-  private _onFocus(): void {
-    this._checkBox.classList.add('is-inFocus');
+  private _onFocus(ev: React.FocusEvent): void {
+    this.setState({ isFocused: true });
   }
 
   @autobind
-  private _onBlur(): void {
-    this._checkBox.classList.remove('is-inFocus');
+  private _onBlur(ev: React.FocusEvent): void {
+    this.setState({ isFocused: false });
   }
 
   @autobind
