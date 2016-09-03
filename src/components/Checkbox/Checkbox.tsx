@@ -22,8 +22,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
   };
 
   private _id: string;
-  private _checkBoxInput: HTMLInputElement;
-  private _checkBoxLabel: HTMLLabelElement;
+  private _checkBox: HTMLInputElement;
 
   constructor(props: ICheckboxProps) {
     super(props);
@@ -56,7 +55,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
           { ...(checked !== undefined && { checked }) }
           { ...(defaultChecked !== undefined && { defaultChecked }) }
           disabled={ disabled }
-          ref={ this._resolveRef('_checkBoxInput') }
+          ref={ this._resolveRef('_checkBox') }
           id={ this._id }
           name={ this._id }
           className='ms-Checkbox-input'
@@ -67,7 +66,6 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
           aria-checked={ checked }
         />
         <label htmlFor={ this._id }
-          ref={ this._resolveRef('_checkBoxLabel') }
           className={ css('ms-Checkbox-label', {
             'is-checked': checked || isChecked,
             'is-disabled': disabled
@@ -81,12 +79,12 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
   }
 
   public get checked(): boolean {
-    return this._checkBoxInput ? this._checkBoxInput.checked : false;
+    return this._checkBox ? this._checkBox.checked : false;
   }
 
   public focus() {
-      if (this._checkBoxInput) {
-          this._checkBoxInput.focus();
+      if (this._checkBox) {
+          this._checkBox.focus();
       }
   }
 
