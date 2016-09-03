@@ -31,7 +31,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     this.state = {
       isFocused: false,
       isChecked: props.defaultChecked || false
-    }
+    };
   }
 
   public render() {
@@ -107,6 +107,8 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       onChange(ev, isChecked);
     }
 
-    this.props.checked === undefined && this.setState({ isChecked: isChecked });
+    if (this.props.checked === undefined) {
+      this.setState({ isChecked: isChecked });
+    }
   }
 }
