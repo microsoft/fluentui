@@ -12,6 +12,9 @@ import './Checkbox.scss';
 export interface ICheckboxState {
   /** Is true when the control has focus. */
   isFocused?: boolean;
+
+  /** Is true when Uncontrolled control is checked. */
+  isChecked?: boolean;
 }
 
 export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> implements ICheckbox {
@@ -27,7 +30,8 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
 
     this._id = getId('checkbox-');
     this.state = {
-      isFocused: false
+      isFocused: false,
+      isChecked: props.defaultChecked || false
     }
   }
 
@@ -41,7 +45,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       label
     } = this.props;
 
-    const { isFocused } = this.state;
+    const { isFocused, isChecked } = this.state;
 
     return (
       <div
@@ -65,7 +69,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
         <label htmlFor={ this._id }
           ref={ this._resolveRef('_checkBoxLabel') }
           className={ css('ms-Checkbox-label', {
-            'is-checked': checked || defaultChecked,
+            'is-checked': checked || isChecked,
             'is-disabled': disabled
             })
           }
@@ -101,16 +105,10 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     const { onChange } = this.props;
     const isChecked = (ev.target as HTMLInputElement).checked;
 
-    if (this.props.checked === undefined && isChecked) {
-      this._checkBoxLabel.classList.add('is-checked');
-    }
-
-    if (this.props.checked === undefined && !isChecked) {
-      this._checkBoxLabel.classList.remove('is-checked');
-    }
-
     if (onChange) {
       onChange(ev, isChecked);
     }
+
+    this.props.checked === undefined && this.setState({ isChecked: isChecked });
   }
 }
