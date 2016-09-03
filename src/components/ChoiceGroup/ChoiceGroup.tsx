@@ -19,7 +19,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
 
   private _id: string;
   private _descriptionId: string;
-  private _inputElement: HTMLElement;
+  private _inputElement: HTMLInputElement;
 
   constructor(props: IChoiceGroupProps) {
     super();
