@@ -23,19 +23,29 @@ export class Persona extends React.Component<IPersonaProps, any> {
   };
 
   public render() {
-    let { className, size, imageUrl, imageInitials, initialsColor, presence, primaryText, secondaryText, tertiaryText, optionalText, hidePersonaDetails } = this.props;
+    let {
+      className,
+      size,
+      imageUrl,
+      imageInitials,
+      initialsColor,
+      presence,
+      primaryText,
+      secondaryText,
+      tertiaryText,
+      optionalText,
+      hidePersonaDetails
+    } = this.props;
 
     return (
-      <div { ... this.props as any } className={ css('ms-Persona', className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence]) }>
+      <div { ...this.props as any } className={ css('ms-Persona', className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence]) }>
         { size !== PersonaSize.tiny && (
           <div className='ms-Persona-imageArea'>
             <div className={ css('ms-Persona-initials', PERSONA_INITIALS_COLOR[initialsColor]) }>{ imageInitials }</div>
             <Image className='ms-Persona-image' imageFit={ ImageFit.cover } src={ imageUrl } />
           </div>
         ) }
-
         { presence !== PersonaPresence.none && <div className='ms-Persona-presence'></div> }
-
         { !hidePersonaDetails && (
           <div className='ms-Persona-details'>
             <div className='ms-Persona-primaryText'>{ primaryText }</div>
@@ -44,6 +54,7 @@ export class Persona extends React.Component<IPersonaProps, any> {
             ) : (null) }
             <div className='ms-Persona-tertiaryText'>{ tertiaryText }</div>
             <div className='ms-Persona-optionalText'>{ optionalText }</div>
+            { this.props.children }
           </div>) }
       </div>
     );
