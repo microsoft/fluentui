@@ -75,6 +75,12 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IPosi
    */
   beakWidth?: number;
 
+  /**
+   * Aria label for accessibility for the ContextualMenu.
+   * If none specified no aria label will be applied to the ContextualMenu.
+   */
+  ariaLabel?: string;
+
 }
 
 export interface IContextualMenuItem {

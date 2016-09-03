@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { EventGroup } from '../eventGroup/EventGroup';
+import { BaseDecorator } from './BaseDecorator';
 
 export interface IWithResponsiveModeState {
   responsiveMode?: ResponsiveMode;
@@ -23,15 +23,12 @@ const RESPONSIVE_MAX_CONSTRAINT = [
   99999999
 ];
 
-export function withResponsiveMode<P, S>(ComposedComponent: any): any {
+export function withResponsiveMode<P extends { responsiveMode?: ResponsiveMode }, S>(ComposedComponent: (new (props: P, ...args: any[]) => React.Component<P, S>)): any {
 
-  return class WithResponsiveMode extends React.Component<P, IWithResponsiveModeState> {
-    private _events: EventGroup;
-
+  return class WithResponsiveMode extends BaseDecorator<P, IWithResponsiveModeState> {
     constructor() {
       super();
-
-      this._events = new EventGroup(this);
+      this._updateComposedComponentRef = this._updateComposedComponentRef.bind(this);
 
       this.state = {
         responsiveMode: this._getResponsiveMode()
@@ -58,7 +55,7 @@ export function withResponsiveMode<P, S>(ComposedComponent: any): any {
       let { responsiveMode } = this.state;
 
       return (
-        <ComposedComponent responsiveMode={ responsiveMode } { ...this.props } />
+        <ComposedComponent ref={ this._updateComposedComponentRef } responsiveMode={ responsiveMode } { ...this.props } />
       );
     }
 
@@ -71,7 +68,5 @@ export function withResponsiveMode<P, S>(ComposedComponent: any): any {
 
       return responsiveMode;
     }
-
   };
-
 }
