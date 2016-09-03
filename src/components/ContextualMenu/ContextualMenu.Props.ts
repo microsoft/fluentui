@@ -50,7 +50,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IPosi
   /**
    * Callback when the ContextualMenu tries to close.
    */
-  onDismiss?: (ev?: any) => void;
+  onDismiss?: (ev?: any, dismissAll?: boolean) => void;
 
   /**
    * CSS class to apply to the context menu.
