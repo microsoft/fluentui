@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { IDocumentCardPreviewProps, IDocumentCardPreviewImage } from './DocumentCard.Props';
-import { Image } from '../../Image';
+import { Image, ImageFit } from '../../Image';
 import { format } from '../../utilities/string';
+import { css } from '../../utilities/css';
 import './DocumentCardPreview.scss';
 
 const LIST_ITEM_COUNT = 3;
@@ -15,10 +16,12 @@ export class DocumentCardPreview extends React.Component<IDocumentCardPreviewPro
   public render() {
     let { previewImages } = this.props;
     let style, preview;
+    let isFileList = false;
 
     if (previewImages.length > 1) {
       // Render a list of files
       preview = this._renderPreviewList(previewImages);
+      isFileList = true;
     } else if (previewImages.length === 1) {
       // Render a single preview
       preview = this._renderPreviewImage(previewImages[0]);
@@ -32,7 +35,7 @@ export class DocumentCardPreview extends React.Component<IDocumentCardPreviewPro
     }
 
     return (
-      <div className='ms-DocumentCardPreview' style={ style }>
+      <div className={ css('ms-DocumentCardPreview', isFileList && 'is-fileList') } style={ style }>
         { preview }
       </div>
     );

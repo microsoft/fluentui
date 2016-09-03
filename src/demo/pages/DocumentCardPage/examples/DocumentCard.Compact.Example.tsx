@@ -18,9 +18,8 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
           url: 'http://bing.com',
           previewImageSrc: 'dist/document-preview.png',
           iconSrc: 'dist/icon-ppt.png',
-          imageFit: ImageFit.cover,
-          width: 239,
-          height: 147
+          width: 144,
+          height: 106
         }
       ],
     };
@@ -30,7 +29,7 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
           <DocumentCardPreview { ...previewProps } />
           <div className='ms-DocumentCard-details'>
             <DocumentCardTitle
-              title='Presentation.pptx'
+              title='Revenue stream proposal fiscal year 2016 version02.pptx'
               shouldTruncate={ true }/>
             <DocumentCardActivity
               activity='Created a few minutes ago'

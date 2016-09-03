@@ -38,10 +38,23 @@
   border-bottom: 2px solid $ms-color-neutralTertiary; // Default border color
   display: flex;
   max-width: 480px;
+  height: 109px;
 
   // Remove the usual accent color from the preview
   .ms-DocumentCardPreview {
     border-bottom: none;
+
+    .ms-Image {
+      max-height: 106px;
+      max-width: 144px
+    }
+
+    .ms-DocumentCardPreview-icon {
+      .ms-Image-image {
+        max-height: 16px;
+        max-width: 16px;
+      }
+    }
   }
 
   // Expand the details area to fill the remaining width
@@ -50,6 +63,10 @@
     flex-direction: column;
     flex: 1;
     justify-content: space-between;
-    padding: 16px 0;
+    padding: 12px 0;
+  }
+
+  .ms-DocumentCardTitle {
+      padding: 0px 12px 8px 12px;
   }
 }
