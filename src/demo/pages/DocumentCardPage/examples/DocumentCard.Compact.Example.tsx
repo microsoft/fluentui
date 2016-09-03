@@ -5,8 +5,7 @@ import {
   DocumentCardPreview,
   DocumentCardTitle,
   IDocumentCardPreviewProps,
-  DocumentCardType,
-  ImageFit
+  DocumentCardType
 } from '../../../../index';
 
 export class DocumentCardCompactExample extends React.Component<any, any> {

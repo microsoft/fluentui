@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IDocumentCardPreviewProps, IDocumentCardPreviewImage } from './DocumentCard.Props';
-import { Image, ImageFit } from '../../Image';
+import { Image } from '../../Image';
 import { format } from '../../utilities/string';
 import { css } from '../../utilities/css';
 import './DocumentCardPreview.scss';
