@@ -72,7 +72,7 @@ $ms-Persona-presenceSizeXl: 28px;
   display: table;
   table-layout: fixed;
   border-collapse: separate;
-  
+
   .ms-ContextualHost {
     display: none;
   }
@@ -222,7 +222,6 @@ $ms-Persona-presenceSizeXl: 28px;
 .ms-Persona-details {
   padding: 0 12px;
   vertical-align: middle;
-  overflow: hidden;
   @include text-align(left);
   @include padding-left($ms-Persona-sizeMd + $ms-Persona-imageDetailsLgSpace);
   display: table-cell;
@@ -454,7 +453,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .ms-Persona-tertiaryText {
     padding-top: 5px;
-    display: block; 
+    display: block;
   }
 }
 

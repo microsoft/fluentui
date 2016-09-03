@@ -8,6 +8,7 @@ import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { KeyCodes } from '../../utilities/KeyCodes';
 import { getRTL } from '../../utilities/rtl';
 import { getId } from '../../utilities/object';
+import { autobind } from '../../utilities/autobind';
 import { css } from '../../utilities/css';
 import {
   getNextElement,
@@ -60,10 +61,6 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     };
 
     this._events = new EventGroup(this);
-
-    this._onKeyDown = this._onKeyDown.bind(this);
-    this._onFocus = this._onFocus.bind(this);
-    this._onMouseDown = this._onMouseDown.bind(this);
   }
 
   public componentDidMount() {
@@ -100,7 +97,8 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
         aria-labelledby={ ariaLabelledBy }
         onMouseDownCapture={ this._onMouseDown }
         onKeyDown={ this._onKeyDown }
-        onFocus={ this._onFocus } >
+        onFocus={ this._onFocus }
+        >
         { this.props.children }
       </div>
     );
@@ -157,6 +155,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     return false;
   }
 
+  @autobind
   private _onFocus(ev: React.FocusEvent) {
     let { onActiveElementChanged } = this.props;
 
@@ -182,12 +181,13 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
   /**
    * Handle global tab presses so that we can patch tabindexes on the fly.
    */
-  private _onKeyDownCapture(ev: React.KeyboardEvent) {
+  private _onKeyDownCapture(ev: KeyboardEvent) {
     if (ev.which === KeyCodes.tab) {
       this._updateTabIndexes();
     }
   }
 
+  @autobind
   private _onMouseDown(ev: React.MouseEvent) {
     const { disabled } = this.props;
 
@@ -218,6 +218,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
   /**
    * Handle the keystrokes.
    */
+  @autobind
   private _onKeyDown(ev: React.KeyboardEvent) {
     const { direction, disabled, isInnerZoneKeystroke } = this.props;
 
@@ -432,7 +433,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
       let distance = -1;
 
       if ((targetTop === -1 && targetRect.bottom <= activeRect.top) ||
-      (targetRect.top === targetTop)) {
+        (targetRect.top === targetTop)) {
         targetTop = targetRect.top;
         if (leftAlignment >= targetRect.left && leftAlignment <= (targetRect.left + targetRect.width)) {
           distance = 0;
