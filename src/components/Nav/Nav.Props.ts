@@ -131,6 +131,12 @@ export interface INavLink {
   target?: string;
 
   /**
+   * Point to the parent node key.  This is used in EditNav when move node from sublink to
+   *   parent lin vs vers.
+   */
+  parentId?: string;
+
+  /**
    * Any additional properties to apply to the rendered links.
    */
   [propertyName: string]: any;
