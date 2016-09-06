@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { PivotTab } from './PivotTab';
 import { PivotTitle } from './PivotTitle';
-import { IPivotItem, IPivotProps, PivotLinkFormat, PivotLinkSize, IPivotTitleProps } from './Pivot.Props';
+import { IPivot, IPivotItem, IPivotProps, PivotLinkFormat, PivotLinkSize, IPivotTitleProps } from './Pivot.Props';
 import { autobind, css, getId } from '../../Utilities';
 import './Pivot.scss';
 
@@ -10,7 +10,7 @@ export interface IPivotState {
   selectedIndex: number;
 }
 
-export class Pivot extends React.Component<IPivotProps, IPivotState> {
+export class Pivot extends React.Component<IPivotProps, IPivotState> implements IPivot {
   public static defaultProps = {
     linkFormat: PivotLinkFormat.links,
     linkSize: PivotLinkSize.normal,
@@ -78,6 +78,10 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
         </ul>
       </FocusZone>
     );
+  }
+
+  public get selected() {
+    return this.props.items[this.state.selectedIndex];
   }
 
   @autobind

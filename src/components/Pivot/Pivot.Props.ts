@@ -2,6 +2,18 @@ import * as React from 'react';
 
 import { Pivot } from './Pivot';
 
+export interface IPivot {
+  /**
+   * Gets the selected item.
+   */
+  selected: IPivotItem;
+
+  /**
+   * Sets the selected item. Item should be an item within the array provided by the items prop.
+   */
+  setSelected: (item: IPivotItem) => void;
+}
+
 export interface IPivotProps extends React.Props<Pivot> {
   /**
    * Pivot items, each containing details about the pivot title and content to render.
