@@ -4,32 +4,49 @@ import {
 } from '../../../index';
 import {
   ExampleCard,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentPage
 } from '../../components/index';
 
 import { ChoiceGroupBasicExample } from './examples/ChoiceGroup.Basic.Example';
+import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/App/AppState';
 
 const ChoiceGroupBasicExampleCode = require('./examples/ChoiceGroup.Basic.Example.tsx');
 
 export class ChoiceGroupPage extends React.Component<any, any> {
+  private _url: string;
+
+  constructor() {
+    super();
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'ChoiceGroup');
+  }
 
   public render() {
     return (
-      <div className='ChoiceGroupExample'>
-        <h1 className='ms-font-xxl'>ChoiceGroup</h1>
-        <div>
-          <Link target='_blank' href='http://dev.office.com/fabric/components/choiceGroup'>ChoiceGroups</Link>
-          <span> allow the user to choose one of many options.</span>
-        </div>
-        <h2 className='ms-font-xl'>Examples</h2>
-        <ExampleCard title='ChoiceGroups' code={ ChoiceGroupBasicExampleCode }>
-          <ChoiceGroupBasicExample />
-        </ExampleCard>
-
-        <PropertiesTableSet componentName='ChoiceGroup' />
-
-      </div>
+      <ComponentPage
+        title='ChoiceGroup'
+        componentName='ChoiceGroupExample'
+        exampleCards={
+          [
+            <ExampleCard title='ChoiceGroups' code={ ChoiceGroupBasicExampleCode }>
+              <ChoiceGroupBasicExample />
+            </ExampleCard>
+          ]
+        }
+        propertiesTables={
+          [
+            <PropertiesTableSet componentName='ChoiceGroup' />
+          ]
+        }
+        overview={
+          <div>
+            <Link target='_blank' href='http://dev.office.com/fabric/components/choiceGroup'>ChoiceGroups</Link>
+            <span> allow the user to choose one of many options.</span>
+          </div>
+        }
+        route={ this._url }>
+      </ComponentPage>
     );
   }
-
 }

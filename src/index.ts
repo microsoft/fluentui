@@ -42,6 +42,7 @@ export * from './Slider';
 export * from './Spinner';
 export * from './TextField';
 export * from './Toggle';
+export * from './Utilities';
 
 /* Special cases that will be removed once we've moved utilities out into a common location. */
 export * from './utilities/css';
