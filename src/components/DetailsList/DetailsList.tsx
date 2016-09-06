@@ -9,13 +9,15 @@ import {
   CheckboxVisibility
 } from '../DetailsList/DetailsList.Props';
 import { DetailsHeader, SelectAllVisibility } from '../DetailsList/DetailsHeader';
-import { DetailsRow } from '../DetailsList/DetailsRow';
+import { DetailsRow, IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { GroupedList } from '../../GroupedList';
 import { List } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { assign } from '../../utilities/object';
 import { css } from '../../utilities/css';
+import { autobind } from '../../utilities/autobind';
+
 import {
   IObjectWithKey,
   ISelection,
@@ -304,12 +306,18 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     this._forceListUpdates();
   }
 
+  @autobind
+  protected _onRenderRow(props: IDetailsRowProps) {
+    return <DetailsRow { ...props } />;
+  }
+
   private _onRenderCell(nestingDepth: number, item: any, index: number): React.ReactNode {
     let {
       dragDropEvents,
       rowElementEventMap: eventsToRegister,
       onRenderMissingItem,
       onRenderItemColumn,
+      onRenderRow = this._onRenderRow,
       selectionMode,
       viewport,
       checkboxVisibility,
@@ -330,26 +338,24 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       return null;
     }
 
-    return (
-      <DetailsRow
-        item={ item }
-        itemIndex={ index }
-        columns={ columns }
-        groupNestingDepth={ nestingDepth }
-        selectionMode={ selectionMode }
-        selection={ selection }
-        onDidMount={ this._onRowDidMount }
-        onWillUnmount={ this._onRowWillUnmount }
-        onRenderItemColumn={ onRenderItemColumn }
-        eventsToRegister={ eventsToRegister }
-        dragDropEvents={ dragDropEvents }
-        dragDropHelper={ dragDropHelper }
-        viewport={ viewport }
-        checkboxVisibility={ checkboxVisibility }
-        getRowAriaLabel={ getRowAriaLabel }
-        checkButtonAriaLabel={ checkButtonAriaLabel }
-        />
-    );
+    return onRenderRow({
+      item: item,
+      itemIndex: index,
+      columns: columns,
+      groupNestingDepth: nestingDepth,
+      selectionMode: selectionMode,
+      selection: selection,
+      onDidMount: this._onRowDidMount,
+      onWillUnmount: this._onRowWillUnmount,
+      onRenderItemColumn: onRenderItemColumn,
+      eventsToRegister: eventsToRegister,
+      dragDropEvents: dragDropEvents,
+      dragDropHelper: dragDropHelper,
+      viewport: viewport,
+      checkboxVisibility: checkboxVisibility,
+      getRowAriaLabel: getRowAriaLabel,
+      checkButtonAriaLabel: checkButtonAriaLabel
+    });
   }
 
   private _onGroupExpandStateChanged(isSomeGroupExpanded: boolean) {
