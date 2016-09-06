@@ -171,10 +171,10 @@ $ms-Persona-presenceSizeXl: 28px;
 
 .ms-Persona-image {
   display: table-cell;
-  margin-right: 10px;
+  @include margin-right(10px);
   position: absolute;
   top: 0;
-  left: 0;
+  @include left(0);
   width: 100%;
   height: 100%;
   border-radius: 50%;
@@ -582,7 +582,7 @@ $ms-Persona-presenceSizeXl: 28px;
       height: 100%;
       position: absolute;
       top: 0;
-      left: 0;
+      @include left(0);
       box-shadow: 0 0 0 2px $ms-color-presence-busy-average inset;
       border-radius: 50%;
     }
@@ -595,7 +595,7 @@ $ms-Persona-presenceSizeXl: 28px;
       transform: rotate(-45deg);
       position: absolute;
       top: 5px;
-      left: 0;
+      @include left(0);
     }
   }
 
