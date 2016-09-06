@@ -14,6 +14,7 @@ import { ContextualMenuDirectionalExample } from './examples/ContextualMenu.Dire
 import { ContextualMenuCustomizationExample } from './examples/ContextualMenu.Customization.Example';
 
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 const ContextualMenuBasicExampleCode = require('./examples/ContextualMenu.Basic.Example.tsx');
 const ContextualMenuCheckmarksExampleCode = require('./examples/ContextualMenu.Checkmarks.Example.tsx');
@@ -25,7 +26,7 @@ export class ContextualMenuPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'ContextualMenu');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'ContextualMenu');
   }
 
   public render() {

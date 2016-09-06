@@ -9,6 +9,7 @@ import {
 } from '../../components/index';
 
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 import { DetailsListBasicExample } from './examples/DetailsList.Basic.Example';
 const DetailsListBasicExampleCode = require('./examples/DetailsList.Basic.Example.tsx');
@@ -24,7 +25,7 @@ export class DetailsListPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'DetailsList');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'DetailsList');
   }
 
   public render() {

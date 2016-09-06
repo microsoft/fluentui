@@ -10,6 +10,7 @@ import {
 
 import { ToggleBasicExample } from './examples/Toggle.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 const ToggleBasicExampleCode = require('./examples/Toggle.Basic.Example.tsx');
 
@@ -18,7 +19,7 @@ export class TogglePage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'Toggle');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'Toggle');
   }
 
   public render() {

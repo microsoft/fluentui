@@ -11,6 +11,7 @@ import {
 import { PersonaInitialsExample } from './examples/Persona.Initials.Example';
 import { PersonaBasicExample } from './examples/Persona.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 const PersonaInitialsExampleCode = require('./examples/Persona.Initials.Example.tsx');
 const PersonaBasicExampleCode = require('./examples/Persona.Basic.Example.tsx');
@@ -20,7 +21,7 @@ export class PersonaPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'Persona');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'Persona');
   }
 
   public render() {

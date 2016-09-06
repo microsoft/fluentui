@@ -14,6 +14,7 @@ import { CalloutNestedExample } from './examples/Callout.Nested.Example';
 import { CalloutDirectionalExample } from './examples/Callout.Directional.Example';
 import { CalloutCoverExample } from './examples/Callout.Cover.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 const CalloutBasicExampleCode = require('./examples/Callout.Basic.Example.tsx');
 const CalloutNestedExampleCode = require('./examples/Callout.Nested.Example.tsx');
@@ -25,7 +26,7 @@ export class CalloutPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'Callout');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'Callout');
   }
 
   public render() {

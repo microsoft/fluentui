@@ -10,6 +10,7 @@ import {
 
 import { SpinnerBasicExample } from './examples/Spinner.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 const SpinnerBasicExampleCode = require('./examples/Spinner.Basic.Example.tsx');
 
@@ -18,7 +19,7 @@ export class SpinnerPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'Spinner');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'Spinner');
   }
 
   public render() {

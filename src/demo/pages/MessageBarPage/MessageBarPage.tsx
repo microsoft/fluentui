@@ -10,6 +10,7 @@ import {
 
 import { MessageBarBasicExample } from './examples/MessageBar.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 const MessageBarBasicExampleCode = require('./examples/MessageBar.Basic.Example.tsx');
 
@@ -18,7 +19,7 @@ export class MessageBarPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'MessageBar');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'MessageBar');
   }
 
   public render() {

@@ -6,6 +6,7 @@ import {
 
 import { MarqueeSelectionBasicExample } from './examples/MarqueeSelection.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 const MarqueeSelectionBasicExampleCode = require('./examples/MarqueeSelection.Basic.Example.tsx');
 
@@ -14,7 +15,7 @@ export class MarqueeSelectionPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'MarqueeSelection');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'MarqueeSelection');
   }
 
   public render() {

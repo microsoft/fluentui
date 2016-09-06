@@ -9,6 +9,7 @@ import {
 } from '../../components/index';
 
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 import { ProgressIndicatorBasicExample } from './examples/ProgressIndicator.Basic.Example';
 const ProgressIndicatorBasicExampleCode = require('./examples/ProgressIndicator.Basic.Example.tsx');
 
@@ -17,7 +18,7 @@ export class ProgressIndicatorPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'ProgressIndicator');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'ProgressIndicator');
   }
 
   public render() {

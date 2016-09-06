@@ -9,6 +9,7 @@ import { FocusZonePhotosExample } from './examples/FocusZone.Photos.Example';
 import { FocusZoneListExample } from './examples/FocusZone.List.Example';
 import { FocusZoneDisabledExample } from './examples/FocusZone.Disabled.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 const FocusZonePhotosExampleCode = require('./examples/FocusZone.Photos.Example.tsx');
 const FocusZoneListExampleCode = require('./examples/FocusZone.List.Example.tsx');
@@ -19,7 +20,7 @@ export class FocusZonePage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'FocusZone');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'FocusZone');
   }
 
   public render() {

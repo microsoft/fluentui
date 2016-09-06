@@ -13,6 +13,7 @@ import { DialogLargeHeaderExample } from './examples/Dialog.LargeHeader.Example'
 import { DialogCloseExample } from './examples/Dialog.Close.Example';
 import { DialogBlockingExample } from './examples/Dialog.Blocking.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 const DialogBasicExampleCode = require('./examples/Dialog.Basic.Example.tsx');
 const DialogLargeHeaderExampleCode = require('./examples/Dialog.LargeHeader.Example.tsx');
@@ -24,7 +25,7 @@ export class DialogPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'Dialog');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'Dialog');
   }
 
   public render() {

@@ -9,6 +9,7 @@ import {
 
 import { OrgChartBasicExample } from './examples/OrgChart.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 const OrgChartBasicExampleCode = require('./examples/OrgChart.Basic.Example.tsx');
 
@@ -17,7 +18,7 @@ export class OrgChartPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'OrgChart');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'OrgChart');
   }
 
   public render() {

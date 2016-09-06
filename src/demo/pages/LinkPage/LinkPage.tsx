@@ -9,6 +9,7 @@ import {
 
 import { LinkBasicExample } from './examples/Link.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 let LinkBasicExampleCode = require('./examples/Link.Basic.Example.tsx');
 
@@ -17,7 +18,7 @@ export class LinkPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'Link');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'Link');
   }
 
   public render() {

@@ -7,6 +7,7 @@ import {
 
 import { FacepileBasicExample } from './examples/Facepile.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 const FacepileBasicExampleCode = require('./examples/Facepile.Basic.Example.tsx');
 
@@ -15,7 +16,7 @@ export class FacepilePage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'Facepile');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'Facepile');
   }
 
   public render() {

@@ -12,6 +12,7 @@ import { DatePickerBasicExample } from './examples/DatePicker.Basic.Example';
 import { DatePickerRequiredExample } from './examples/DatePicker.Required.Example';
 import { DatePickerInputExample } from './examples/DatePicker.Input.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 const DatePickerBasicExampleCode = require('./examples/DatePicker.Basic.Example.tsx');
 const DatePickerRequiredExampleCode = require('./examples/DatePicker.Required.Example.tsx');
@@ -22,7 +23,7 @@ export class DatePickerPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'DatePicker');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'DatePicker');
   }
   public render() {
     return (

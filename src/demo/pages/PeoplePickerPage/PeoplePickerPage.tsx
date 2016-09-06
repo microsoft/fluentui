@@ -15,6 +15,7 @@ import { PeoplePickerCompactExample } from './examples/PeoplePicker.Compact.Exam
 import { PeoplePickerEditModeExample } from './/examples/PeoplePicker.EditMode.Example';
 
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 const PeoplePickerBasicExampleCode = require('./examples/PeoplePicker.Basic.Example.tsx');
 const PeoplePickerCompactExampleCode = require('./examples/PeoplePicker.Compact.Example.tsx');
@@ -27,7 +28,7 @@ export class PeoplePickerPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'PeoplePicker');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'PeoplePicker');
   }
 
   public render() {

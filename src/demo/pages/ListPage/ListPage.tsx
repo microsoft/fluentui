@@ -18,6 +18,7 @@ const ListMailExampleCode = require('./examples/List.Mail.Example.tsx');
 const ListGridExampleCode = require('./examples/List.Grid.Example.tsx');
 
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 let _cachedItems;
 
@@ -26,7 +27,7 @@ export class ListPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'List');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'List');
 
     if (!_cachedItems) {
       _cachedItems = createListItems(5000);

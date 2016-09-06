@@ -8,6 +8,7 @@ import {
 import { DocumentCardBasicExample } from './examples/DocumentCard.Basic.Example';
 import { DocumentCardCompleteExample } from './examples/DocumentCard.Complete.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 const DocumentCardBasicExampleCode = require('./examples/DocumentCard.Basic.Example.tsx');
 const DocumentCardCompleteExampleCode = require('./examples/DocumentCard.Complete.Example.tsx');
@@ -17,7 +18,7 @@ export class DocumentCardPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'DocumentCard');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'DocumentCard');
   }
 
   public render() {

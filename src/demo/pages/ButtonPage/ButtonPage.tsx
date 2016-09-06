@@ -10,7 +10,7 @@ import {
 
 import { ButtonBasicExample } from './examples/Button.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-
+import { AppState } from '../../components/app/AppState';
 const ButtonBasicExampleCode = require('./examples/Button.Basic.Example.tsx');
 
 export class ButtonPage extends React.Component<any, any> {
@@ -18,7 +18,7 @@ export class ButtonPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'Button');
+    this._url =  getPageRouteFromState(AppState, 'Basic components', 'Button');
   }
 
   public render() {

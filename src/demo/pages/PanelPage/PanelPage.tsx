@@ -17,6 +17,7 @@ import { PanelLargeFixedExample } from './examples/Panel.LargeFixed.Example';
 import { PanelExtraLargeExample } from './examples/Panel.ExtraLarge.Example';
 import { PanelLightDismissExample } from './examples/Panel.LightDismiss.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 const PanelSmallRightExampleCode = require('./examples/Panel.SmallRight.Example.tsx');
 const PanelSmallLeftExampleCode = require('./examples/Panel.SmallLeft.Example.tsx');
@@ -32,7 +33,7 @@ export class PanelPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'Panel');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'Panel');
   }
 
   public render() {

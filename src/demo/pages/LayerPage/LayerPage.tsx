@@ -9,6 +9,7 @@ import {
 import { LayerBasicExample } from './examples/Layer.Basic.Example';
 import { LayerInteractiveExample } from './examples/Layer.Interactive.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 const LayerBasicExampleCode = require('./examples/Layer.Basic.Example.tsx');
 const LayerInteractiveExampleCode = require('./examples/Layer.Interactive.Example.tsx');
@@ -18,7 +19,7 @@ export class LayerPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'Layer');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'Layer');
   }
 
   public render() {
