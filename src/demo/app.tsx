@@ -30,8 +30,10 @@ function _extractAnchorLink(path) {
 }
 
 function _scrollAnchorLink() {
-  let anchor = _extractAnchorLink(window.location.hash);
-  document.getElementById(anchor).scrollIntoView();
+  if ((window.location.hash.match(/#/g)||[]).length > 1) {
+    let anchor = _extractAnchorLink(window.location.hash);
+    document.getElementById(anchor).scrollIntoView();
+  }
 }
 
 function _onLoad() {
