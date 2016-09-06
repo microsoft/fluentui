@@ -44,14 +44,20 @@ export interface IChoiceGroupOption {
   imageSize?: { width: number, height: number };
 
   /**
-   * Whether the option is disabled or not.
-   * @defaultvalue false
-   */
-  isDisabled?: boolean;
-
-  /**
    * Whether the options is checked or not.
    * @defaultvalue false
    */
   isChecked?: boolean;
+
+  /**
+   * Whether or not the option is disabled.
+   */
+  disabled?: boolean;
+
+  // @todo: Update version numbers for depriate and removal
+  /**
+   * Deprecated at v0.xx.0, to be removed at >= v0.xx.0. Use 'disabled' instead.
+   * @deprecated
+   */
+  isDisabled?: boolean;
 }

@@ -20,14 +20,16 @@ export class Link extends React.Component<ILinkProps, any> {
   }
 
   public render() {
-    let { children, className, href } = this.props;
+    let { disabled, children, className, href } = this.props;
 
     return (
       href ? (
       <a
         role='link'
         { ...this.props as any }
-        className={ css('ms-Link', className) }
+        className={ css('ms-Link', className, {
+          'is-disabled' : disabled
+        }) }
         onClick={ this._onClick }>
         { children }
       </a>
@@ -35,7 +37,9 @@ export class Link extends React.Component<ILinkProps, any> {
       <button
         role='button'
         { ...this.props as any }
-        className={ css('ms-Link', className) }
+        className={ css('ms-Link', className, {
+          'is-disabled' : disabled
+        }) }
         onClick={ this._onClick } >
         { children }
       </button>

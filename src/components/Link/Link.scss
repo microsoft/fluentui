@@ -13,6 +13,12 @@
   text-decoration: none;
   cursor: pointer;
 
+  &.is-disabled {
+    color: $ms-color-neutralTertiary;
+    pointer-events: none;
+    cursor: pointer;
+  }
+
   &:hover,
   &:focus {
     color: $ms-color-themeDarker;
