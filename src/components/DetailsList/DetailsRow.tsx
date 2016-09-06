@@ -25,6 +25,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   eventsToRegister?: [{ eventName: string, callback: (item?: any, index?: number, event?: any) => void }];
   onDidMount?: (row?: DetailsRow) => void;
   onWillUnmount?: (row?: DetailsRow) => void;
+  onRenderCheck?: (props: IDetailsRowCheckProps) => JSX.Element;
   onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
   dragDropEvents?: IDragDropEvents;
   dragDropHelper?: IDragDropHelper;
@@ -147,6 +148,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
       dragDropEvents,
       item,
       itemIndex,
+      onRenderCheck = this._onRenderCheck,
       onRenderItemColumn,
       selectionMode,
       viewport,
@@ -181,7 +183,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           { (selectionMode !== SelectionMode.none) && (
             <span role='gridcell'>
-              { this._onRenderCheck({
+              { onRenderCheck({
                 isSelected,
                 anySelected,
                 ariaLabel: checkButtonAriaLabel,
