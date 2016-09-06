@@ -7,7 +7,7 @@ import {
 
 import { ColorPickerBasicExample } from './examples/ColorPicker.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const ColorPickerBasicExampleCode = require('./examples/ColorPicker.Basic.Example.tsx');
 

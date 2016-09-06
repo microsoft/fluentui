@@ -10,7 +10,7 @@ import {
 
 import { MessageBarBasicExample } from './examples/MessageBar.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const MessageBarBasicExampleCode = require('./examples/MessageBar.Basic.Example.tsx');
 

@@ -12,7 +12,7 @@ import { ImageContainExample } from './examples/Image.Contain.Example';
 import { ImageCoverExample } from './examples/Image.Cover.Example';
 import { ImageNoneExample } from './examples/Image.None.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const ImageDefaultExampleCode = require('./examples/Image.Default.Example.tsx');
 const ImageCenterExampleCode = require('./examples/Image.Center.Example.tsx');

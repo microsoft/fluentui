@@ -14,7 +14,7 @@ import { ContextualMenuDirectionalExample } from './examples/ContextualMenu.Dire
 import { ContextualMenuCustomizationExample } from './examples/ContextualMenu.Customization.Example';
 
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const ContextualMenuBasicExampleCode = require('./examples/ContextualMenu.Basic.Example.tsx');
 const ContextualMenuCheckmarksExampleCode = require('./examples/ContextualMenu.Checkmarks.Example.tsx');

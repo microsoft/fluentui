@@ -6,7 +6,7 @@ import {
 
 import { SelectionBasicExample } from './examples/Selection.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const SelectionBasicExampleCode = require('./examples/Selection.Basic.Example.tsx');
 

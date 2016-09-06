@@ -7,7 +7,7 @@ import {
 
 import { FacepileBasicExample } from './examples/Facepile.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const FacepileBasicExampleCode = require('./examples/Facepile.Basic.Example.tsx');
 

@@ -9,7 +9,7 @@ import {
 
 import { OrgChartBasicExample } from './examples/OrgChart.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const OrgChartBasicExampleCode = require('./examples/OrgChart.Basic.Example.tsx');
 

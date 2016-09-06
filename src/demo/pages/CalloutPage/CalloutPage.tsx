@@ -14,7 +14,7 @@ import { CalloutNestedExample } from './examples/Callout.Nested.Example';
 import { CalloutDirectionalExample } from './examples/Callout.Directional.Example';
 import { CalloutCoverExample } from './examples/Callout.Cover.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const CalloutBasicExampleCode = require('./examples/Callout.Basic.Example.tsx');
 const CalloutNestedExampleCode = require('./examples/Callout.Nested.Example.tsx');

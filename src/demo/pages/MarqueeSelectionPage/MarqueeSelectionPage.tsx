@@ -6,7 +6,7 @@ import {
 
 import { MarqueeSelectionBasicExample } from './examples/MarqueeSelection.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const MarqueeSelectionBasicExampleCode = require('./examples/MarqueeSelection.Basic.Example.tsx');
 

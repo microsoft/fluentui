@@ -8,7 +8,7 @@ import {
 import { GroupedListBasicExample } from './examples/GroupedList.Basic.Example';
 import { GroupedListCustomExample } from './examples/GroupedList.Custom.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const GroupedListBasicExampleCode = require('./examples/GroupedList.Basic.Example.tsx');
 const GroupedListCustomExampleCode = require('./examples/GroupedList.Custom.Example.tsx');

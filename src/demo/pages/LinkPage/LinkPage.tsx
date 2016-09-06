@@ -9,7 +9,7 @@ import {
 
 import { LinkBasicExample } from './examples/Link.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 let LinkBasicExampleCode = require('./examples/Link.Basic.Example.tsx');
 

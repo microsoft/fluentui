@@ -12,7 +12,7 @@ import { NavBasicExample } from './examples/Nav.Basic.Example';
 import { NavFabricDemoAppExample } from './examples/Nav.FabricDemoApp.Example';
 import { NavNestedExample } from './examples/Nav.Nested.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const NavBasicExampleCode = require('./examples/Nav.Basic.Example.tsx');
 const NavFabricDemoAppExampleCode = require('./examples/Nav.FabricDemoApp.Example.tsx');

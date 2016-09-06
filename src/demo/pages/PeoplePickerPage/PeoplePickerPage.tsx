@@ -15,7 +15,7 @@ import { PeoplePickerCompactExample } from './examples/PeoplePicker.Compact.Exam
 import { PeoplePickerEditModeExample } from './/examples/PeoplePicker.EditMode.Example';
 
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const PeoplePickerBasicExampleCode = require('./examples/PeoplePicker.Basic.Example.tsx');
 const PeoplePickerCompactExampleCode = require('./examples/PeoplePicker.Compact.Example.tsx');

@@ -8,7 +8,7 @@ import {
 } from '../../components/index';
 
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 import { PersonaCardBasicExample } from './examples/PersonaCard.Basic.Example';
 const PersonaCardBasicExampleCode = require('./examples/PersonaCard.Basic.Example.tsx');
 

@@ -13,7 +13,7 @@ import { DialogLargeHeaderExample } from './examples/Dialog.LargeHeader.Example'
 import { DialogCloseExample } from './examples/Dialog.Close.Example';
 import { DialogBlockingExample } from './examples/Dialog.Blocking.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const DialogBasicExampleCode = require('./examples/Dialog.Basic.Example.tsx');
 const DialogLargeHeaderExampleCode = require('./examples/Dialog.LargeHeader.Example.tsx');

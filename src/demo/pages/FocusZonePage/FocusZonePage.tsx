@@ -9,7 +9,7 @@ import { FocusZonePhotosExample } from './examples/FocusZone.Photos.Example';
 import { FocusZoneListExample } from './examples/FocusZone.List.Example';
 import { FocusZoneDisabledExample } from './examples/FocusZone.Disabled.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const FocusZonePhotosExampleCode = require('./examples/FocusZone.Photos.Example.tsx');
 const FocusZoneListExampleCode = require('./examples/FocusZone.List.Example.tsx');

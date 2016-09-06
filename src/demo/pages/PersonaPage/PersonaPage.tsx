@@ -11,7 +11,7 @@ import {
 import { PersonaInitialsExample } from './examples/Persona.Initials.Example';
 import { PersonaBasicExample } from './examples/Persona.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const PersonaInitialsExampleCode = require('./examples/Persona.Initials.Example.tsx');
 const PersonaBasicExampleCode = require('./examples/Persona.Basic.Example.tsx');

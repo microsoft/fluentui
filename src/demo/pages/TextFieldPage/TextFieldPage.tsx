@@ -11,7 +11,7 @@ import {
 import { TextFieldBasicExample } from './examples/TextField.Basic.Example';
 import { TextFieldErrorMessageExample } from './examples/TextField.ErrorMessage.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const TextFieldBasicExampleCode = require('./examples/TextField.Basic.Example.tsx');
 const TextFieldErrorMessageExampleCode = require('./examples/TextField.ErrorMessage.Example.tsx');
