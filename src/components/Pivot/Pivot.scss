@@ -99,6 +99,10 @@
 
 /* Modifier: tabs */
 .ms-Pivot--tabs {
+  &.ms-Pivot {
+      margin: 0;
+  }
+
   .ms-Pivot-header {
     margin: 0;
   }

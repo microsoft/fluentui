@@ -42,13 +42,14 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
 
     return (
       <FocusZone
-        className={ css('ms-Pivot', className) }
+        className={ css('ms-Pivot', className, {
+          'ms-Pivot--large': linkSize === PivotLinkSize.large,
+          'ms-Pivot--tabs': linkFormat === PivotLinkFormat.tabs
+        }) }
         direction={ FocusZoneDirection.horizontal }
         >
         <ul
-          className={ css('ms-Pivot-header',
-            { 'ms-Pivot--large': linkSize === PivotLinkSize.large },
-            { 'ms-Pivot--tabs': linkFormat === PivotLinkFormat.tabs }) }
+          className='ms-Pivot-header'
           role='tablist'>
           { items.map((item, index) => (
             <li
