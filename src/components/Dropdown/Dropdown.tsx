@@ -16,8 +16,7 @@ export interface IDropdownState {
 export class Dropdown extends React.Component<IDropdownProps, any> {
 
   public static defaultProps = {
-    options: [],
-    isDisabled: false
+    options: []
   };
 
   private static Option: string = 'option';
@@ -40,7 +39,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
       id: getId('Dropdown'),
       isOpen: false,
       selectedIndex: this._getSelectedIndex(props.options, props.selectedKey),
-      isDisabled: this.props.isDisabled
+      isDisabled: this.props.isDisabled || this.props.disabled
     };
 
     this._onDropdownKeyDown = this._onDropdownKeyDown.bind(this);
