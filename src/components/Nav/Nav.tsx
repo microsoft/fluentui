@@ -83,10 +83,17 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
 
     return (
         <a
+<<<<<<< 74575b965d0c29309b37e934f25585f332c2cd15
           className={ css('ms-Nav-link', nestingLevel > 0 ? 'ms-Nav-SublinkTextSize' : '') }
           style={ { [isRtl ? 'paddingRight' : 'paddingLeft'] : paddingBefore } }
           href={ link.url || 'javascript:' }
           onclick={ !!link.onClick ? link.onClick : onLinkClick }
+=======
+        className={ css('ms-Nav-link', nestingLevel > 0 ? 'ms-Nav-SublinkTextSize' : '') }
+          style={ { [isRtl ? 'paddingRight' : 'paddingLeft'] : paddingBefore } }
+          href={ link.url || 'javascript:' }
+          onClick={ !!link.onClick ? link.onClick : onLinkClick }
+>>>>>>> add onClick for INavLink
           aria-label={ link.ariaLabel }
           title={ link.title ? link.title : link.name }
           target={ link.target }
