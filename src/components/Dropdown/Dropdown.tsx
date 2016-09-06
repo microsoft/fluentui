@@ -4,6 +4,7 @@ import { css } from '../../utilities/css';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { findIndex } from '../../utilities/array';
 import { KeyCodes } from '../../utilities/KeyCodes';
+import { getId } from '../../utilities/object';
 import './Dropdown.scss';
 
 export interface IDropdownState {
@@ -11,8 +12,6 @@ export interface IDropdownState {
   selectedIndex: number;
   isDisabled: boolean;
 }
-
-let _instance: number = 0;
 
 export class Dropdown extends React.Component<IDropdownProps, any> {
 
@@ -38,7 +37,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
     this._events = new EventGroup(this);
 
     this.state = {
-      id: `Dropdown-${_instance++}`,
+      id: getId('Dropdown'),
       isOpen: false,
       selectedIndex: this._getSelectedIndex(props.options, props.selectedKey),
       isDisabled: this.props.isDisabled
@@ -51,7 +50,8 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
 
   public componentWillReceiveProps(newProps: IDropdownProps) {
     this.setState({
-      selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey)
+      selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey),
+      isDisabled: newProps.isDisabled
     });
   }
 
@@ -87,6 +87,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
       <div ref='root'>
         <label id={ id + '-label' } className='ms-Label'>{ label }</label>
         <div
+          data-is-focusable={ true }
           ref={ (c): HTMLElement => this._dropDown = c }
           id={ id }
           className={ css('ms-Dropdown', {

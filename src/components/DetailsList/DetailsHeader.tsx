@@ -13,7 +13,7 @@ const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.butt
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
 const INNER_PADDING = 16;
 
-export interface IDetailsHeaderProps {
+export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
   columns: IColumn[];
   selection: ISelection;
   selectionMode: SelectionMode;
@@ -30,8 +30,13 @@ export interface IDetailsHeaderProps {
   ariaLabel?: string;
   /** ariaLabel for the header checkbox that selects or deselects everything */
   ariaLabelForSelectAllCheckbox?: string;
-  ref?: string;
-  isSelectAllVisible?: boolean;
+  selectAllVisibility?: SelectAllVisibility;
+}
+
+export enum SelectAllVisibility {
+  none,
+  hidden,
+  visible
 }
 
 export interface IDetailsHeaderState {
@@ -50,7 +55,7 @@ export interface IColumnResizeDetails {
 
 export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHeaderState> {
   public static defaultProps = {
-    isSelectAllVisible: true
+    isSelectAllVisible: SelectAllVisibility.visible
   };
 
   public refs: {
@@ -88,9 +93,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   }
 
   public render() {
-    let { selectionMode, columns, ariaLabel, ariaLabelForSelectAllCheckbox, isSelectAllVisible } = this.props;
+    let { columns, ariaLabel, ariaLabelForSelectAllCheckbox, selectAllVisibility } = this.props;
     let { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed } = this.state;
-    let showSelectAllCheckbox = isSelectAllVisible && selectionMode === SelectionMode.multiple;
 
     return (
       <div
@@ -98,7 +102,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         aria-label= { ariaLabel }
         className={ css('ms-DetailsHeader', {
           'is-allSelected': isAllSelected,
-          'is-singleSelect': !showSelectAllCheckbox,
+          'is-selectAllHidden': selectAllVisibility === SelectAllVisibility.hidden,
           'is-resizingColumn': !!columnResizeDetails && isSizing
         }) }
         onMouseMove={ this._onMove.bind(this) }
@@ -106,8 +110,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         ref='root'
         data-automationid='DetailsHeader'>
         <FocusZone ref='focusZone' direction={ FocusZoneDirection.horizontal }>
-          { showSelectAllCheckbox ? (
-            <div className='ms-DetailsHeader-cellWrapper' role='columnheader'>
+          <div className='ms-DetailsHeader-cellWrapper' role='columnheader'>
+            { (selectAllVisibility === SelectAllVisibility.visible) ? (
               <button
                 className='ms-DetailsHeader-cell is-check'
                 onClick={ this._onSelectAllClicked }
@@ -116,8 +120,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                 >
                 <Check isChecked={ isAllSelected } />
               </button>
-            </div>
-          ) : (null) }
+            ) : null }
+          </div>
           { groupNestingDepth > 0 ? (
           <button className='ms-DetailsHeader-cell' onClick={ this._onToggleCollapseAll }>
             <i className={ css('ms-DetailsHeader-collapseButton ms-Icon ms-Icon--chevronDown', {
@@ -133,7 +137,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                 <button
                   key={ column.fieldName }
                   disabled={ column.columnActionsMode === ColumnActionsMode.disabled }
-                  className={ css('ms-DetailsHeader-cell', {
+                  className={ css('ms-DetailsHeader-cell', column.headerClassName, {
                     'is-actionable': column.columnActionsMode !== ColumnActionsMode.disabled,
                     'is-empty': !column.name,
                     'is-icon-visible': column.isSorted || column.isGrouped || column.isFiltered
@@ -147,8 +151,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                   data-automationid='ColumnsHeaderColumn'
                   >
 
-                  { column.isGrouped && (
-                    <i className='ms-Icon ms-Icon--listGroup2' />
+                  { column.isFiltered && (
+                    <i className='ms-Icon ms-Icon--filter' />
                   ) }
 
                   { column.isSorted && (
@@ -158,8 +162,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                     }) } />
                   ) }
 
-                  { column.isFiltered && (
-                    <i className='ms-Icon ms-Icon--filter' />
+                  { column.isGrouped && (
+                    <i className='ms-Icon ms-Icon--groupingDescending' />
                   ) }
 
                   { column.iconClassName && (

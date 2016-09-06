@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CommandBar, IContextualMenuItem } from '../../../../index';
+import { CommandBar, IContextualMenuItem, MarqueeSelection } from '../../../../index';
 import { Check } from '../../../../components/Check/Check';
 import {
   IObjectWithKey,
@@ -18,6 +18,7 @@ export interface ISelectionBasicExampleState {
   items?: any[];
   selection?: ISelection;
   selectionMode?: SelectionMode;
+  canSelect?: string;
 }
 
 export interface ISelectionItemExampleProps {
@@ -40,11 +41,14 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
     this._onSelectionChanged = this._onSelectionChanged.bind(this);
     this._onSelectionModeChanged = this._onSelectionModeChanged.bind(this);
     this._onToggleSelectAll = this._onToggleSelectAll.bind(this);
+    this._onCanSelectChanged = this._onCanSelectChanged.bind(this);
+    this._canSelectItem = this._canSelectItem.bind(this);
 
     this.state = {
       items: createListItems(ITEM_COUNT),
-      selection: new Selection(this._onSelectionChanged),
+      selection: new Selection({ onSelectionChanged: this._onSelectionChanged }),
       selectionMode: SelectionMode.multiple,
+      canSelect: 'all'
     };
     this.state.selection.setItems(this.state.items as IObjectWithKey[], false);
   }
@@ -59,18 +63,23 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
     return (
       <div className='ms-SelectionBasicExample'>
         <CommandBar items={ this._getCommandItems() } />
-        <SelectionZone selection={ selection } selectionMode={ selectionMode } >
-          { items.map((item, index) => (
-            <SelectionItemExample
-              ref={ 'detailsGroup_' + index }
-              key={ item.key }
-              item={ item }
-              itemIndex={ index }
-              selectionMode={ selectionMode }
-              selection={ selection }
-              />
-          )) }
-        </SelectionZone>
+        <MarqueeSelection selection={ selection } isEnabled={ selectionMode === SelectionMode.multiple } >
+          <SelectionZone
+            selection={ selection }
+            selectionMode={ selectionMode }
+            onItemInvoked={ (item) => alert('item invoked: ' + item.name) }>
+            { items.map((item, index) => (
+              <SelectionItemExample
+                ref={ 'detailsGroup_' + index }
+                key={ item.key }
+                item={ item }
+                itemIndex={ index }
+                selectionMode={ selectionMode }
+                selection={ selection }
+                />
+            )) }
+          </SelectionZone>
+        </MarqueeSelection>
       </div>
     );
   }
@@ -92,8 +101,22 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
     });
   }
 
+  private _onCanSelectChanged(menuItem: IContextualMenuItem) {
+    let canSelectItem = (menuItem.data === 'vowels') ? this._canSelectItem : undefined;
+    let newSelection = new Selection({ onSelectionChanged: this._onSelectionChanged, canSelectItem: canSelectItem });
+    newSelection.setItems(this.state.items as IObjectWithKey[], false);
+    this.setState({
+      selection: newSelection,
+      canSelect: (menuItem.data === 'vowels') ? 'vowels' : 'all'
+    });
+  }
+
+  private _canSelectItem(item: any): boolean {
+    return item.name && (item.name.indexOf('a') === 0 || item.name.indexOf('e') === 0 || item.name.indexOf('i') === 0 || item.name.indexOf('o') === 0 || item.name.indexOf('u') === 0);
+  }
+
   private _getCommandItems(): IContextualMenuItem[] {
-    let { selectionMode } = this.state;
+    let { selectionMode, canSelect } = this.state;
 
     return [
       {
@@ -132,6 +155,28 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
         name: 'Select All',
         icon: 'check',
         onClick: this._onToggleSelectAll
+      },
+      {
+        key: 'allowCanSelect',
+        name: 'Choose selectable items',
+        items: [
+          {
+            key: 'all',
+            name: 'All items',
+            canCheck: true,
+            isChecked: canSelect === 'all',
+            onClick: this._onCanSelectChanged,
+            data: 'all'
+          },
+          {
+            key: 'a',
+            name: 'Names starting with vowels',
+            canCheck: true,
+            isChecked: canSelect === 'vowels',
+            onClick: this._onCanSelectChanged,
+            data: 'vowels'
+          }
+        ]
       }
     ];
   }
@@ -148,9 +193,9 @@ export class SelectionItemExample extends React.Component<ISelectionItemExampleP
     return (
       <div className='ms-SelectionItemExample'  data-selection-index={ itemIndex }>
         { (selectionMode !== SelectionMode.none) && (
-          <button className='ms-SelectionItemExample-check' data-selection-toggle={ true } >
+          <div className='ms-SelectionItemExample-check' data-selection-toggle={ true } >
             <Check isChecked={ isSelected } />
-          </button>
+          </div>
         ) }
         <span className='ms-SelectionItemExample-name'>
           { item.name }

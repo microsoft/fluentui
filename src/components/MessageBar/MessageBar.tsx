@@ -2,12 +2,11 @@ import * as React from 'react';
 import './MessageBar.scss';
 import { css } from '../../utilities/css';
 import { IMessageBarProps, MessageBarType } from './MessageBar.Props';
+import { getId } from '../../utilities/object';
 
 export interface IMessageBarState {
   labelId?: string;
 }
-
-let _instance = 0;
 
 export class MessageBar extends React.Component<IMessageBarProps, IMessageBarState> {
 
@@ -30,7 +29,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
     super(props);
 
     this.state = {
-      labelId: `MessageBar-${ _instance++ }`,
+      labelId: getId('MessageBar')
     };
   }
 

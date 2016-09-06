@@ -1,6 +1,35 @@
 import * as React from 'react';
+import { FocusZone } from './FocusZone';
 
-export interface IFocusZoneProps extends React.HTMLProps<HTMLDivElement> {
+/**
+ * FocusZone component class interface.
+ */
+export interface IFocusZone {
+  /**
+   * Sets focus to the first tabbable item in the zone.
+   * @returns True if focus could be set to an active element, false if no operation was taken.
+   */
+  focus(): boolean;
+
+  /**
+   * Sets focus to a specific child element within the zone. This can be used in conjunction with
+   * onBeforeFocus to created delayed focus scenarios (like animate the scroll position to the correct
+   * location and then focus.)
+   * @param {HTMLElement} element The child element within the zone to focus.
+   * @returns True if focus could be set to an active element, false if no operation was taken.
+   */
+  focusElement(childElement?: HTMLElement): boolean;
+}
+
+/**
+ * FocusZone component props.
+ */
+export interface IFocusZoneProps extends React.Props<FocusZone> {
+  /**
+   * Additional class name to provide on the root element, in addition to the ms-FocusZone class.
+   */
+  className?: string;
+
   /**
    * Defines which arrows to react to.
    * @default FocusZoneDirection.bidriectional
@@ -36,6 +65,21 @@ export interface IFocusZoneProps extends React.HTMLProps<HTMLDivElement> {
    * or by having one of its respective children elements focused.
    */
   onActiveElementChanged?: (element?: HTMLElement, ev?: React.FocusEvent) => void;
+
+  /**
+   * Props mixed into the div root element that will be mixed into the root element, *before* other props are applied.
+   * This allows you to extend the root element with additional attributes, such as data-automation-id needed for
+   *  automation. Note that if you provide, for example, "ariaLabelledBy" as well as "rootProps.ariaLabelledBy", the
+   * former will take precedence over the later.
+   */
+  rootProps?: React.HTMLProps<HTMLDivElement>;
+
+  /**
+   * Callback method for determining if focus should indeed be set on the given element.
+   * @param {HTMLElement} element The child element within the zone to focus.
+   * @returns True if focus should be set to the given element, false to avoid setting focus.
+   */
+  onBeforeFocus?: (childElement?: HTMLElement) => boolean;
 }
 
 export enum FocusZoneDirection {

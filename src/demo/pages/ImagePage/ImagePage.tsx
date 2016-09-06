@@ -20,7 +20,7 @@ const ImageNoneExampleCode = require('./examples/Image.None.Example.tsx');
 export class ImagePage extends React.Component<any, any> {
   public render() {
     return (
-      <div className='ms-ImageExample'>
+      <div className='ImageExample'>
         <h1 className='ms-font-xxl'>Image</h1>
         <div>
           <span>

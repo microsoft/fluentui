@@ -1,11 +1,13 @@
 import * as React from 'react';
+import { BaseComponent } from '../../common/BaseComponent';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu } from '../../ContextualMenu';
 import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { getRTL } from '../../utilities/rtl';
+import { getId } from '../../utilities/object';
 import { css } from '../../utilities/css';
+import { autobind } from '../../utilities/autobind';
 import './Breadcrumb.scss';
 
 export interface IBreadcrumbState {
@@ -13,15 +15,12 @@ export interface IBreadcrumbState {
   overflowAnchor?: HTMLElement;
   renderedItems?: IBreadcrumbItem[];
   renderedOverflowItems?: IBreadcrumbItem[];
-  internalId?: string;
 }
 
 const OVERFLOW_KEY = 'overflow';
 const OVERFLOW_WIDTH = 44;
 
-let _instance = 0;
-
-export class Breadcrumb extends React.Component<IBreadcrumbProps, IBreadcrumbState> {
+export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState> {
   public static defaultProps: IBreadcrumbProps = {
     items: [],
     maxDisplayedItems: 999
@@ -33,12 +32,12 @@ export class Breadcrumb extends React.Component<IBreadcrumbProps, IBreadcrumbSta
   };
 
   private _breadcrumbItemWidths: { [key: string]: number };
-  private _events: EventGroup;
+  private _id: string;
 
   constructor(props: IBreadcrumbProps) {
     super(props);
 
-    this._events = new EventGroup(this);
+    this._id = getId('Breadcrumb');
     this.state = this._getStateFromProps(props);
   }
 
@@ -47,10 +46,6 @@ export class Breadcrumb extends React.Component<IBreadcrumbProps, IBreadcrumbSta
     this._updateRenderedItems();
 
     this._events.on(window, 'resize', this._updateRenderedItems);
-  }
-
-  public componentWillUnmount() {
-    this._events.dispose();
   }
 
   public componentWillReceiveProps(nextProps: IBreadcrumbProps) {
@@ -67,8 +62,8 @@ export class Breadcrumb extends React.Component<IBreadcrumbProps, IBreadcrumbSta
 
   public render() {
     let { className } = this.props;
-    let { isOverflowOpen, overflowAnchor, renderedItems, renderedOverflowItems, internalId } = this.state;
-    let overflowMenuId = internalId + '-overflow';
+    let { isOverflowOpen, overflowAnchor, renderedItems, renderedOverflowItems } = this.state;
+    let overflowMenuId = this._id + '-overflow';
 
     return (
       <div className={ css('ms-Breadcrumb', className) } ref='renderingArea'>
@@ -77,7 +72,7 @@ export class Breadcrumb extends React.Component<IBreadcrumbProps, IBreadcrumbSta
           { renderedOverflowItems && renderedOverflowItems.length ? (
             <li className='ms-Breadcrumb-overflow' key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
               <div className='ms-Breadcrumb-overflowButton ms-Icon ms-Icon--ellipsis'
-                  onClick={ this._onOverflowClicked.bind(this) }
+                  onClick={ this._onOverflowClicked }
                   data-is-focusable={ true }
                   role='button'
                   aria-haspopup='true'
@@ -113,12 +108,13 @@ export class Breadcrumb extends React.Component<IBreadcrumbProps, IBreadcrumbSta
               ) }
             id={ overflowMenuId }
             directionalHint={ DirectionalHint.bottomLeftEdge }
-            onDismiss={ this._onOverflowDismissed.bind(this) } />
+            onDismiss={ this._onOverflowDismissed } />
         ) : (null) }
       </div>
     );
   }
 
+  @autobind
   private _onOverflowClicked(ev: MouseEvent) {
     this.setState({
       'isOverflowOpen' : !this.state.isOverflowOpen,
@@ -126,6 +122,7 @@ export class Breadcrumb extends React.Component<IBreadcrumbProps, IBreadcrumbSta
     });
   }
 
+  @autobind
   private _onOverflowDismissed(ev: MouseEvent) {
     this.setState({
       'isOverflowOpen' : false,
@@ -133,6 +130,7 @@ export class Breadcrumb extends React.Component<IBreadcrumbProps, IBreadcrumbSta
     });
   }
 
+  @autobind
   private _onBreadcrumbClicked(item: IBreadcrumbItem, ev: MouseEvent) {
     if (item.onClick) {
       item.onClick(item.key);
@@ -201,8 +199,7 @@ export class Breadcrumb extends React.Component<IBreadcrumbProps, IBreadcrumbSta
       isOverflowOpen: false,
       overflowAnchor: null,
       renderedItems: nextProps.items || [],
-      renderedOverflowItems: null,
-      internalId: 'Breadcrumb-' + _instance++
+      renderedOverflowItems: null
     };
   }
 

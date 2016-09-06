@@ -8,7 +8,7 @@ import {
   IDetailsList,
   CheckboxVisibility
 } from '../DetailsList/DetailsList.Props';
-import { DetailsHeader } from '../DetailsList/DetailsHeader';
+import { DetailsHeader, SelectAllVisibility } from '../DetailsList/DetailsHeader';
 import { DetailsRow } from '../DetailsList/DetailsRow';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { GroupedList } from '../../GroupedList';
@@ -37,6 +37,7 @@ export interface IDetailsListState {
   isCollapsed?: boolean;
   isSizing?: boolean;
   isDropping?: boolean;
+  isSomeGroupExpanded?: boolean;
 }
 
 const MIN_COLUMN_WIDTH = 100; // this is the global min width
@@ -58,18 +59,21 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   };
 
   public refs: {
-    [key: string]: React.ReactInstance,
+    [ key: string]: React.ReactInstance,
     header: DetailsHeader,
     root: HTMLElement,
-    groups: GroupedList,
+    groupedList: GroupedList,
     list: List,
-    focusZone: FocusZone
+    focusZone: FocusZone,
+    selectionZone: SelectionZone
   };
 
   private _events: EventGroup;
   private _selection: ISelection;
   private _activeRows: { [key: string]: DetailsRow };
   private _dragDropHelper: DragDropHelper;
+  private _initialFocusedIndex: number;
+
   private _columnOverrides: {
     [key: string]: IColumn;
   };
@@ -89,6 +93,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     this._onHeaderKeyDown = this._onHeaderKeyDown.bind(this);
     this._onContentKeyDown = this._onContentKeyDown.bind(this);
     this._onRenderCell = this._onRenderCell.bind(this);
+    this._onGroupExpandStateChanged = this._onGroupExpandStateChanged.bind(this);
 
     this.state = {
       lastWidth: 0,
@@ -96,13 +101,15 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       layoutMode: props.layoutMode,
       isSizing: false,
       isDropping: false,
-      isCollapsed: props.groupProps && props.groupProps.isAllGroupsCollapsed
+      isCollapsed: props.groupProps && props.groupProps.isAllGroupsCollapsed,
+      isSomeGroupExpanded: props.groupProps && !props.groupProps.isAllGroupsCollapsed
     };
 
     this._events = new EventGroup(this);
-    this._selection = props.selection || new Selection(null, props.getKey);
+    this._selection = props.selection || new Selection({ onSelectionChanged: null, getKey: props.getKey });
     this._selection.setItems(props.items as IObjectWithKey[], false);
     this._dragDropHelper = props.dragDropEvents ? new DragDropHelper({ selection: this._selection }) : null;
+    this._initialFocusedIndex = props.initialFocusedIndex;
   }
 
   public componentWillUnmount() {
@@ -118,7 +125,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     }
   }
 
-  public componentWillReceiveProps(newProps) {
+  public componentWillReceiveProps(newProps: IDetailsListProps) {
     let {
       items,
       setKey,
@@ -134,6 +141,10 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       layoutMode = newProps.layoutMode;
       this.setState({ layoutMode: layoutMode });
       shouldForceUpdates = true;
+    }
+
+    if (shouldResetSelection) {
+      this._initialFocusedIndex = newProps.initialFocusedIndex;
     }
 
     if (newProps.items !== items) {
@@ -182,7 +193,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       adjustedColumns,
       isCollapsed,
       layoutMode,
-      isSizing
+      isSizing,
+      isSomeGroupExpanded
     } = this.state;
     let {
       _selection: selection,
@@ -193,12 +205,19 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       renderedWindowsAhead: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_AHEAD,
       renderedWindowsBehind: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_BEHIND
     };
-    // if isCollapsedGroupSelectVisible is false, disable select all when the list has all collapsed groups
-    let isCollapsedGroupSelectVisible = groupProps && groupProps.headerProps && groupProps.headerProps.isCollapsedGroupSelectVisible;
-    if (isCollapsedGroupSelectVisible === undefined) {
-      isCollapsedGroupSelectVisible = true;
+    let selectAllVisibility = SelectAllVisibility.none; // for SelectionMode.none
+    if (selectionMode === SelectionMode.single) {
+      selectAllVisibility = SelectAllVisibility.hidden;
     }
-    let isSelectAllVisible = isCollapsedGroupSelectVisible || !isCollapsed;
+    if (selectionMode === SelectionMode.multiple) {
+      // if isCollapsedGroupSelectVisible is false, disable select all when the list has all collapsed groups
+      let isCollapsedGroupSelectVisible = groupProps && groupProps.headerProps && groupProps.headerProps.isCollapsedGroupSelectVisible;
+      if (isCollapsedGroupSelectVisible === undefined) {
+        isCollapsedGroupSelectVisible = true;
+      }
+      let isSelectAllVisible = isCollapsedGroupSelectVisible || !groups || isSomeGroupExpanded;
+      selectAllVisibility = isSelectAllVisible ? SelectAllVisibility.visible : SelectAllVisibility.hidden;
+    }
 
     return (
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
@@ -214,7 +233,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
         aria-label={ ariaLabel }
         role={ shouldApplyApplicationRole ? 'application' : '' }>
         <div role='grid' aria-label={ ariaLabelForGrid }>
-          <div ref='headerContainer' onKeyDown={ this._onHeaderKeyDown }>
+          <div onKeyDown={ this._onHeaderKeyDown } role='presentation'>
             { isHeaderVisible && (
               <DetailsHeader
                 ref='header'
@@ -232,47 +251,49 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                 onToggleCollapseAll={ this._onToggleCollapse }
                 ariaLabel={ ariaLabelForListHeader }
                 ariaLabelForSelectAllCheckbox={ ariaLabelForSelectAllCheckbox }
-                isSelectAllVisible={ isSelectAllVisible }
+                selectAllVisibility={ selectAllVisibility }
                 />
             ) }
           </div>
-        </div>
-        <div ref='contentContainer' onKeyDown={ this._onContentKeyDown }>
-          <FocusZone
-            ref='focusZone'
-            direction={ FocusZoneDirection.vertical }
-            isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }
-            onActiveElementChanged={ this._onActiveRowChanged }
-            >
-            <SelectionZone
-              selection={ selection }
-              selectionMode={ selectionMode }
-              onItemInvoked={ onItemInvoked }>
-              { groups ? (
-                <GroupedList
-                  groups={ groups }
-                  groupProps={ groupProps }
-                  items={ items }
-                  onRenderCell={ this._onRenderCell }
-                  selection={ selection }
-                  selectionMode={ selectionMode }
-                  dragDropEvents={ dragDropEvents }
-                  dragDropHelper={ dragDropHelper }
-                  eventsToRegister={ rowElementEventMap }
-                  listProps={ additionalListProps }
-                  ref='groups'
-                  />
-              ) : (
-                  <List
+          <div ref='contentContainer' onKeyDown={ this._onContentKeyDown } role='presentation'>
+            <FocusZone
+              ref='focusZone'
+              direction={ FocusZoneDirection.vertical }
+              isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }
+              onActiveElementChanged={ this._onActiveRowChanged }
+              >
+              <SelectionZone
+                ref='selectionZone'
+                selection={ selection }
+                selectionMode={ selectionMode }
+                onItemInvoked={ onItemInvoked }>
+                { groups ? (
+                  <GroupedList
+                    groups={ groups }
+                    groupProps={ groupProps }
                     items={ items }
-                    onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex) }
-                    { ...additionalListProps }
-                    ref='list'
+                    onRenderCell={ this._onRenderCell }
+                    selection={ selection }
+                    selectionMode={ selectionMode }
+                    dragDropEvents={ dragDropEvents }
+                    dragDropHelper={ dragDropHelper }
+                    eventsToRegister={ rowElementEventMap }
+                    listProps={ additionalListProps }
+                    onGroupExpandStateChanged={ this._onGroupExpandStateChanged }
+                    ref='groupedList'
                     />
-                )
-              }
-            </SelectionZone>
-          </FocusZone>
+                ) : (
+                    <List
+                      items={ items }
+                      onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex) }
+                      { ...additionalListProps }
+                      ref='list'
+                      />
+                  )
+                }
+              </SelectionZone>
+            </FocusZone>
+          </div>
         </div>
       </div>
     );
@@ -293,7 +314,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       viewport,
       checkboxVisibility,
       getRowAriaLabel,
-      canSelectItem,
       checkButtonAriaLabel
     } = this.props;
     let selection = this._selection;
@@ -327,10 +347,13 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
         viewport={ viewport }
         checkboxVisibility={ checkboxVisibility }
         getRowAriaLabel={ getRowAriaLabel }
-        canSelectItem={ canSelectItem }
         checkButtonAriaLabel={ checkButtonAriaLabel }
         />
     );
+  }
+
+  private _onGroupExpandStateChanged(isSomeGroupExpanded: boolean) {
+    this.setState({ isSomeGroupExpanded: isSomeGroupExpanded });
   }
 
   private _onColumnIsSizingChanged(column: IColumn, isSizing: boolean) {
@@ -373,6 +396,17 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     let index = row.props.itemIndex;
 
     this._activeRows[index] = row; // this is used for column auto resize
+
+    // Set focus to the row if it should receive focus.
+    if (this._initialFocusedIndex !== undefined && index === this._initialFocusedIndex) {
+      if (this.refs.selectionZone) {
+        this.refs.selectionZone.ignoreNextFocus();
+      }
+      row.focus();
+
+      delete this._initialFocusedIndex;
+    }
+
     if (onRowDidMount) {
       onRowDidMount(row.props.item, index);
     }
@@ -393,14 +427,14 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     this.setState({
       isCollapsed: collapsed
     });
-    if (this.refs.groups) {
-      this.refs.groups.toggleCollapseAll(collapsed);
+    if (this.refs.groupedList) {
+      this.refs.groupedList.toggleCollapseAll(collapsed);
     }
   }
 
   private _forceListUpdates() {
-    if (this.refs.groups) {
-      this.refs.groups.forceUpdate();
+    if (this.refs.groupedList) {
+      this.refs.groupedList.forceUpdate();
     }
     if (this.refs.list) {
       this.refs.list.forceUpdate();

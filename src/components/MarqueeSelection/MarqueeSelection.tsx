@@ -7,6 +7,7 @@ import { IRectangle } from '../../common/IRectangle';
 import { css } from '../../utilities/css';
 import { findScrollableParent } from '../../utilities/scrollUtilities';
 import { getDistanceBetweenPoints } from '../../utilities/math';
+import { autobind } from '../../utilities/autobind';
 
 import './MarqueeSelection.scss';
 
@@ -52,15 +53,16 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     this.state = {
       dragRect: undefined
     };
-
-    this._onMouseDown = this._onMouseDown.bind(this);
   }
 
   public componentDidMount() {
     this._scrollableParent = findScrollableParent(this.refs.root);
 
-    if (!this.props.isDraggingConstrainedToRoot && this._scrollableParent) {
-      this._events.on(this._scrollableParent, 'mousedown', this._onMouseDown);
+    if (this._scrollableParent) {
+      this._events.on(
+        this.props.isDraggingConstrainedToRoot ? this.refs.root : this._scrollableParent,
+        'mousedown',
+        this._onMouseDown);
     }
   }
 
@@ -71,7 +73,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
   }
 
   public render(): JSX.Element {
-    let { rootProps, children, isDraggingConstrainedToRoot } = this.props;
+    let { rootProps, children } = this.props;
     let { dragRect } = this.state;
 
     return (
@@ -79,7 +81,6 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
         { ...rootProps }
         className={ css('ms-MarqueeSelection', rootProps.className) }
         ref='root'
-        onMouseDown={ isDraggingConstrainedToRoot ? this._onMouseDown : undefined }
         >
         { children }
         { dragRect && (<div className='ms-MarqueeSelection-dragMask' />) }
@@ -92,7 +93,8 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     );
   }
 
-  private _onMouseDown(ev: React.MouseEvent) {
+  @autobind
+  private _onMouseDown(ev: MouseEvent) {
     let { isEnabled, onShouldStartSelection } = this.props;
 
     if (isEnabled && (!onShouldStartSelection || onShouldStartSelection(ev))) {
@@ -107,8 +109,6 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
         this._scrollableParent = scrollableParent;
         this._scrollTop = scrollableParent.scrollTop;
         this._rootRect = this.refs.root.getBoundingClientRect();
-
-        this._onMouseMove(ev.nativeEvent as MouseEvent);
       }
     }
   }
@@ -185,6 +185,11 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
   }
 
   private _evaluateSelection(dragRect: IRectangle) {
+    // Break early if we don't need to evaluate.
+    if (!dragRect) {
+      return;
+    }
+
     let { selection } = this.props;
     let rootRect = this._getRootRect();
     let allElements = this.refs.root.querySelectorAll('[data-selection-index]');
@@ -243,4 +248,3 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     selection.setChangeEvents(true);
   }
 }
-

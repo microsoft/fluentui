@@ -12,6 +12,7 @@ export enum SelectionMode {
 
 export interface ISelection {
   count: number;
+  canSelectItem?: (item: IObjectWithKey) => boolean;
 
   // Obesrvable methods.
   setChangeEvents(isEnabled: boolean, suppressChange?: boolean);
@@ -25,6 +26,7 @@ export interface ISelection {
 
   getSelection(): IObjectWithKey[];
   getSelectedCount(): number;
+  isRangeSelected(fromIndex: number, count: number): boolean;
 
   isAllSelected(): boolean;
   isKeySelected(key: string): boolean;
@@ -38,14 +40,15 @@ export interface ISelection {
 
   // Write range selection methods.
 
-  selectToKey(key: string);
-  selectToIndex(index: number);
+  selectToKey(key: string, clearSelection?: boolean);
+  selectToIndex(index: number, clearSelection?: boolean);
 
   // Toggle helpers.
 
   toggleAllSelected();
   toggleKeySelected(key: string);
   toggleIndexSelected(index: number);
+  toggleRangeSelected(fromIndex: number, count: number);
 }
 
 export interface ISelectionLayout {

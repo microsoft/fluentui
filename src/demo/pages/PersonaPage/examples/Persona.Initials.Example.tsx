@@ -4,10 +4,10 @@ import {
   PersonaInitialsColor,
 } from '../../../../index';
 
-const billMurrayContact = {
-  imageInitials: 'BM',
-  primaryText: 'Bill Murray',
-  seconaryText: 'Actor',
+const examplePersona = {
+  imageInitials: 'MS',
+  primaryText: 'Maor Sharett',
+  seconaryText: 'Designer',
   tertiaryText: 'In a meeting',
   optionalText: 'Available at 4:00pm'
 };
@@ -17,18 +17,17 @@ export class PersonaInitialsExample extends React.Component<any, any> {
     return (
       <div>
         <Persona
-          { ...billMurrayContact }
+          { ...examplePersona }
         />
         <Persona
-          { ...billMurrayContact }
+          { ...examplePersona }
           initialsColor={PersonaInitialsColor.black}
         />
         <Persona
-          { ...billMurrayContact }
+          { ...examplePersona }
           initialsColor={PersonaInitialsColor.teal}
         />
       </div>
     );
   }
 }
-

@@ -1,6 +1,6 @@
 approve_by_comment: true
 approve_regex: ^Approved
-reject_regex: ^Rejected
+reject_regex: ^Blocked
 reset_on_push: false
 reject_value: -1
 reviewers:
@@ -15,5 +15,7 @@ reviewers:
   - aditima
   - yiminwu
   - antonlabunets
+  - cschlechty
+  - atneik
   name: pullapprove
   required: 1
