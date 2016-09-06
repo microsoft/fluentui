@@ -49,7 +49,8 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
 
   public componentWillReceiveProps(newProps: IDropdownProps) {
     this.setState({
-      selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey)
+      selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey),
+      isDisabled: newProps.isDisabled
     });
   }
 

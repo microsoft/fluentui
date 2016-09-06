@@ -1,6 +1,6 @@
 let { expect } = chai;
 
-import { Selection } from './index';
+import { Selection, IObjectWithKey } from './index';
 
 let setA = [ { key: 'a' }, { key: 'b' }, { key: 'c' } ];
 let setB = [ { key: 'a' }, { key: 'd' }, { key: 'b' } ];
@@ -50,6 +50,24 @@ describe('Selection', () => {
     selection.setIndexSelected(0, true, true);
     selection.selectToIndex(2, true);
     expect(changeCount).equals(10, 'after range selecting from 0 to 2');
+  });
+
+  it('returns false on isAllSelected when no items are selectable', () => {
+    let changeEvents = 0;
+    let selection = new Selection({
+      canSelectItem: (item: IObjectWithKey) => false,
+      onSelectionChanged: () => changeEvents++
+    });
+
+    selection.setItems(setA);
+
+    expect(selection.isAllSelected()).to.equal(false, 'isAllSelected was not false after initialization');
+
+    selection.setAllSelected(true);
+
+    expect(selection.isAllSelected()).to.equal(false, 'isAllSelected was not false after trying to select all the unselectables');
+
+    expect(changeEvents).to.equal(0, 'changeEvents were not 0');
   });
 
 });
