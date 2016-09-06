@@ -6,9 +6,8 @@ export class PivotTitle extends React.Component<IPivotTitleProps, {}> {
     let { item } = this.props;
 
     return (
-      <div className='ms-Pivot-title'>
+      <div className='ms-Pivot-title' data-selected-overlay={ item.name }>
         <span className='ms-Pivot-titleText'>{ item.name }</span>
-        <span className='ms-Pivot-selectedTitleText' role='decoration'>{ item.name }</span>
       </div>
     );
   }
