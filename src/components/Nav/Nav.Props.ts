@@ -86,7 +86,12 @@ export interface INavLink {
   links?: INavLink[];
 
   /**
-   * Classname to apply to the icon.
+   * Function callback invoked when a link in the navigation is clicked
+   */
+  onClick?: (ev?: React.MouseEvent) => void;
+
+  /**
+   * Classname to apply to the icon link. (obsolet should be removed after all repo updated)
    */
   iconClassName?: string;
 
