@@ -4,7 +4,6 @@ import * as React from 'react';
 import {
   DetailsList,
   DetailsRow,
-  IDetailsRowCheckProps,
   css,
   autobind
 } from '../../../../index';
