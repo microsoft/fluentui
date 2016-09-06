@@ -48,7 +48,8 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IPosi
   isBeakVisible?: boolean;
 
   /**
-   * Callback when the ContextualMenu tries to close.
+   * Callback when the ContextualMenu tries to close. If dismissAll is true then all
+   * submenus will be dismissed.
    */
   onDismiss?: (ev?: any, dismissAll?: boolean) => void;
 

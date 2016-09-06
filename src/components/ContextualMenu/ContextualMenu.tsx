@@ -272,6 +272,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         </a>
       </div >);
   }
+
   private _renderMenuItemChildren(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
     return (
       <div className='ms-ContextualMenu-linkContent'>
@@ -349,12 +350,13 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         }
       }
     }
+    ev.stopPropagation();
+    ev.preventDefault();
   }
 
   private _onAnchorClick(item: IContextualMenuItem, ev: MouseEvent) {
     this._executeItemClick(item, ev);
-    // An anchor onclick must return true for the anchor to navigate to the href.
-    return true;
+    ev.stopPropagation();
   }
 
   private _executeItemClick(item: any, ev: MouseEvent) {
