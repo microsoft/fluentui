@@ -306,6 +306,11 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     this._forceListUpdates();
   }
 
+  @autobind
+  protected _onRenderRow(props: IDetailsRowProps) {
+    return <DetailsRow { ...props } />;
+  }
+
   private _onRenderCell(nestingDepth: number, item: any, index: number): React.ReactNode {
     let {
       dragDropEvents,
@@ -351,11 +356,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       getRowAriaLabel: getRowAriaLabel,
       checkButtonAriaLabel: checkButtonAriaLabel
     });
-  }
-
-  @autobind
-  protected _onRenderRow(props: IDetailsRowProps) {
-    return <DetailsRow { ...props } />;
   }
 
   private _onGroupExpandStateChanged(isSomeGroupExpanded: boolean) {

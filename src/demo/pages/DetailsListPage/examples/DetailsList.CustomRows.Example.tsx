@@ -35,8 +35,6 @@ class CustomDetailsRow extends DetailsRow {
 }
 
 export class DetailsListCustomRowsExample extends React.Component<any, any> {
-  _selection: Selection;
-
   constructor() {
     super();
 
@@ -49,8 +47,12 @@ export class DetailsListCustomRowsExample extends React.Component<any, any> {
           items={ _items }
           initialFocusedIndex={ 0 }
           setKey='set'
-          onRenderRow={ (props) => <CustomDetailsRow { ...props } /> }
+          onRenderRow={ this._onRenderRow }
           />
     );
+  }
+
+  private _onRenderRow(props) {
+    return <CustomDetailsRow { ...props } />;
   }
 }
