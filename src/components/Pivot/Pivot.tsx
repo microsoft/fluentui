@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { PivotHeader } from './PivotHeader';
-import { IPivotItem, IPivotProps, PivotLinkFormat, PivotLinkSize } from './Pivot.Props';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { PivotTab } from './PivotTab';
+import { PivotTitle } from './PivotTitle';
+import { IPivotItem, IPivotProps, PivotLinkFormat, PivotLinkSize, IPivotTitleProps } from './Pivot.Props';
 import { autobind, css, getId } from '../../Utilities';
 import './Pivot.scss';
 
@@ -29,7 +31,7 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
 
   public render() {
     let {
-      onRenderPivotTitle,
+      onRenderPivotTitle = this._onRenderPivotTitle,
       linkSize,
       linkFormat,
       items,
@@ -39,22 +41,41 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
     let selected = items[Math.min(items.length - 1, Math.max(0, selectedIndex))];
 
     return (
-      <div className={ css('ms-Pivot', className) }>
-        <PivotHeader
-          pivotId={ this._id }
-          items={ items }
-          linkFormat={ linkFormat }
-          linkSize={ linkSize }
-          selected={ selected }
-          onRenderPivotTitle={ onRenderPivotTitle }
-          onSelectTab={ this.setSelected }
-          />
+      <FocusZone
+        className={ css('ms-Pivot', className) }
+        direction={ FocusZoneDirection.horizontal }
+        >
+        <ul
+          className={ css('ms-Pivot-header',
+            { 'ms-Pivot--large': linkSize === PivotLinkSize.large },
+            { 'ms-Pivot--tabs': linkFormat === PivotLinkFormat.tabs }) }
+          role='tablist'>
+          { items.map((item, index) => (
+            <li
+              key={ item.key }
+              className={css('ms-Pivot-tab', {
+                'is-selected': selected === item
+              }) }
+              >
+              <PivotTab
+                pivotId={ this._id }
+                item={ item }
+                isSelected={ selected === item }
+                onSelectTab={ this.setSelected }
+                >
+                {
+                  onRenderPivotTitle({
+                    item,
+                    index,
+                    isSelected: selected === item
+                  }, this._onRenderPivotTitle)
+                }
+              </PivotTab>
+            </li>
 
-        { selected && (
-          selected.children
-        ) }
-
-      </div >
+          )) }
+        </ul>
+      </FocusZone>
     );
   }
 
@@ -70,6 +91,10 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
         onChange(item, selectedIndex);
       }
     }
+  }
+
+  private _onRenderPivotTitle(props: IPivotTitleProps, defaultRender?: (props: IPivotTitleProps) => JSX.Element): JSX.Element {
+    return (<PivotTitle { ...props } />) as JSX.Element;
   }
 
 }

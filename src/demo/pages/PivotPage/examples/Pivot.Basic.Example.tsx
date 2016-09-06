@@ -33,9 +33,23 @@ export const sampleItems = [
   }
 ];
 
-export const PivotBasicExample = () => (
-  <Pivot
-    items={ sampleItems }
-    onChange={ (item, index) => console.log(`Selected ${ item.name } tab`) }
-    />
-);
+export class PivotBasicExample extends React.Component<{}, any> {
+  constructor() {
+    super();
+
+    this.state = {
+      selectedItem: sampleItems[0]
+    };
+  }
+
+  public render() {
+    let { selectedItem } = this.state;
+
+    return (
+      <div>
+        <Pivot items={ sampleItems } onChange={ newItem => this.setState({ selectedItem: newItem }) } />
+        { selectedItem && selectedItem.children }
+      </div>
+    );
+  }
+}

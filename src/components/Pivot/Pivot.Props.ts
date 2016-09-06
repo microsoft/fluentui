@@ -87,11 +87,6 @@ export interface IPivotItem {
    * Optional additional button props that will be mixed into the item's button.
    */
   buttonProps?: React.HTMLProps<HTMLButtonElement>;
-
-  /**
-   * The content to render below the pivot when the tab is selected.
-   */
-  children?: React.ReactNode;
 }
 
 export enum PivotLinkFormat {
