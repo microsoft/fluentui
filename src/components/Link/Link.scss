@@ -21,20 +21,6 @@
   &:active {
     color: $ms-color-themePrimary;
   }
-
-  @media screen and (-ms-high-contrast: active) {
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    color: $ms-color-contrastWhiteLink;
-  }
-
-  @media screen and (-ms-high-contrast: white-on-black) {
-    color: $ms-color-contrastBlackLink;
-  }
 }
 
 .ms-Link {
