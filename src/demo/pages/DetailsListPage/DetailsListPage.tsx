@@ -17,6 +17,9 @@ const DetailsListBasicExampleCode = require('./examples/DetailsList.Basic.Exampl
 import { DetailsListCustomColumnsExample } from './examples/DetailsList.CustomColumns.Example';
 const DetailsListCustomColumnsExampleCode = require('./examples/DetailsList.CustomColumns.Example.tsx');
 
+import { DetailsListCustomRowsExample } from './examples/DetailsList.CustomRows.Example';
+const DetailsListCustomRowsExampleCode = require('./examples/DetailsList.CustomRows.Example.tsx');
+
 import { DetailsListAdvancedExample } from './examples/DetailsList.Advanced.Example';
 const DetailsListAdvancedExampleCode = require('./examples/DetailsList.Advanced.Example.tsx');
 
@@ -40,6 +43,9 @@ export class DetailsListPage extends React.Component<any, any> {
             </ExampleCard>,
             <ExampleCard title='Rendering custom item columns with sorting' isOptIn={ true } code={ DetailsListCustomColumnsExampleCode }>
               <DetailsListCustomColumnsExample />
+            </ExampleCard>,
+            <ExampleCard title='Rendering custom item rows' isOptIn={ true } code={ DetailsListCustomRowsExampleCode }>
+              <DetailsListCustomRowsExample />
             </ExampleCard>,
             <ExampleCard title='Advanced DetailsList of 5000 items, variable row heights' isOptIn={ true } code={ DetailsListAdvancedExampleCode }>
               <DetailsListAdvancedExample />
