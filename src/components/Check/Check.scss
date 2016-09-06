@@ -17,25 +17,6 @@ $checkBoxHeight: 20px;
   height: $checkBoxHeight;
   text-align: center;
 
-  .ms-Check-background {
-    &:before {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      display: inline-block;
-      margin: auto;
-      height: $checkBoxHeight - 2px;
-      width: $checkBoxHeight - 2px;
-      background: $ms-color-white;
-      border: 1px solid $ms-color-neutralTertiaryAlt;
-      border-radius: 50%;
-      content: ' ';
-    }
-
-  }
-
   &.is-checked {
     .ms-Check-background {
       &:before {
@@ -55,13 +36,31 @@ $checkBoxHeight: 20px;
       opacity: 1;
     }
   }
+}
 
-  .ms-Check-check {
+.ms-Check-check {
+  left: 0;
+  right: 0;
+  position: absolute;
+  line-height: $checkBoxHeight;
+  color: $ms-color-neutralTertiaryAlt;
+  opacity: 0;
+}
+
+.ms-Check-background {
+  &:before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
-    position: absolute;
-    line-height: $checkBoxHeight;
-    color: $ms-color-neutralTertiaryAlt;
-    opacity: 0;
+    display: inline-block;
+    margin: auto;
+    height: $checkBoxHeight - 2px;
+    width: $checkBoxHeight - 2px;
+    background: $ms-color-white;
+    border: 1px solid $ms-color-neutralTertiaryAlt;
+    border-radius: 50%;
+    content: ' ';
   }
 }
