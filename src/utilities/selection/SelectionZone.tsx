@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { BaseComponent } from '../../common/BaseComponent';
+import { autobind } from '../../utilities/autobind';
 import { SelectionLayout } from './SelectionLayout';
 import { KeyCodes } from '../KeyCodes';
 import {
@@ -55,21 +56,6 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _isMetaPressed: boolean;
   private _shouldIgnoreFocus: boolean;
 
-  constructor(props: ISelectionZoneProps) {
-    super(props);
-
-    // Specifically for the click methods, we will want to use React eventing to allow
-    // React and non React events to stop propagation and avoid the default SelectionZone
-    // behaviors (like executing onInvoked.)
-    this._onFocus = this._onFocus.bind(this);
-    this._onKeyDown = this._onKeyDown.bind(this);
-    this._onClick = this._onClick.bind(this);
-    this._onMouseDown = this._onMouseDown.bind(this);
-    this._onDoubleClick = this._onDoubleClick.bind(this);
-    this._updateModifiers = this._updateModifiers.bind(this);
-    this.ignoreNextFocus = this.ignoreNextFocus.bind(this);
-  }
-
   public componentDidMount() {
     // Track the latest modifier keys globally.
     this._events.on(window, 'keydown keyup', this._updateModifiers);
@@ -98,6 +84,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    * been called on an element, so we need a flag to store the idea that we will bypass the "next"
    * focus event that occurs. This method does that.
    */
+  @autobind
   public ignoreNextFocus() {
     this._shouldIgnoreFocus = true;
   }
@@ -107,6 +94,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    * as long as the focus did not originate from a mouse down/touch event. For those cases, we handle them
    * specially.
    */
+  @autobind
   private _onFocus(ev: React.FocusEvent) {
     let target = ev.target as HTMLElement;
     let { selection, selectionMode } = this.props;
@@ -132,6 +120,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
   }
 
+  @autobind
   private _onMouseDown(ev: React.MouseEvent) {
     this._updateModifiers(ev);
 
@@ -156,6 +145,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
   }
 
+  @autobind
   private _onClick(ev: React.MouseEvent) {
     this._updateModifiers(ev);
 
@@ -193,6 +183,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    * In multi selection, if you double click within an item's root (but not within the invoke element or input elements),
    * we should execute the invoke handler.
    */
+  @autobind
   private _onDoubleClick(ev: React.MouseEvent) {
     let target = ev.target as HTMLElement;
     let { selectionMode, onItemInvoked } = this.props;
@@ -218,6 +209,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
   }
 
+  @autobind
   private _onKeyDown(ev: React.KeyboardEvent) {
     this._updateModifiers(ev);
 

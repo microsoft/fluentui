@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { autobind } from '../../utilities/autobind';
 import { css } from '../../utilities/css';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 
@@ -41,9 +42,6 @@ export class ColorSlider extends React.Component<IColorSliderProps, IColorSlider
     let { initialValue } = this.props;
 
     this._events = new EventGroup(this);
-    this._onMouseDown = this._onMouseDown.bind(this);
-    this._onMouseMove = this._onMouseMove.bind(this);
-    this._onMouseUp = this._onMouseUp.bind(this);
 
     this.state = {
       isAdjusting: false,
@@ -75,6 +73,7 @@ export class ColorSlider extends React.Component<IColorSliderProps, IColorSlider
     );
   }
 
+  @autobind
   private _onMouseDown(ev: React.MouseEvent) {
     this._events.on(window, 'mousemove', this._onMouseMove, true);
     this._events.on(window, 'mouseup', this._onMouseUp, true);
@@ -82,6 +81,7 @@ export class ColorSlider extends React.Component<IColorSliderProps, IColorSlider
     this._onMouseMove(ev);
   }
 
+  @autobind
   private _onMouseMove(ev: React.MouseEvent) {
     let { onChanged, minValue, maxValue } = this.props;
     let rectSize = this.refs.root.getBoundingClientRect();
@@ -102,6 +102,7 @@ export class ColorSlider extends React.Component<IColorSliderProps, IColorSlider
     ev.stopPropagation();
   }
 
+  @autobind
   private _onMouseUp(ev: React.MouseEvent) {
     this._events.off();
 

@@ -4,6 +4,7 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu, IContextualMenuItem } from '../../ContextualMenu';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { DirectionalHint } from '../../common/DirectionalHint';
+import { autobind } from '../../utilities/autobind';
 import { css } from '../../utilities/css';
 import { getId } from '../../utilities/object';
 import './CommandBar.scss';
@@ -49,10 +50,6 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
 
     this._id = getId('CommandBar');
     this._events = new EventGroup(this);
-
-    this._onItemClick = this._onItemClick.bind(this);
-    this._onOverflowClick = this._onOverflowClick.bind(this);
-    this._onContextMenuDismiss = this._onContextMenuDismiss.bind(this);
   }
 
   public componentDidMount() {
@@ -273,6 +270,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     }
   }
 
+  @autobind
   private _onOverflowClick(ev) {
     if (this.state.expandedMenuItemKey === OVERFLOW_KEY) {
       this._onContextMenuDismiss();
@@ -286,6 +284,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     }
   }
 
+  @autobind
   private _onContextMenuDismiss(ev?: any) {
     if (!ev || !ev.relatedTarget || !this.refs.commandSurface.contains(ev.relatedTarget as HTMLElement)) {
       this.setState({
