@@ -290,7 +290,9 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
 
     ev.stopPropagation();
-    ev.preventDefault();
+
+    // NOTE: ev.preventDefault is not called for toggle clicks, because this will kill the browser behavior
+    // for checkboxes if you use a checkbox for the toggle.
   }
 
   private _onInvokeClick(ev: React.MouseEvent | React.KeyboardEvent, index: number) {

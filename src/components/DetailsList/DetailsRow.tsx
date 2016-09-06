@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IColumn, CheckboxVisibility } from './DetailsList.Props';
-import { Check } from '../Check/Check';
+import { DetailsRowCheck, IDetailsRowCheckProps } from './DetailsRowCheck';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { DetailsRowFields } from './DetailsRowFields';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -180,19 +180,11 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           { (selectionMode !== SelectionMode.none) && (
             <span role='gridcell'>
-              <button
-                className='ms-DetailsRow-check'
-                role='button'
-                aria-pressed={ isSelected }
-                data-selection-toggle={ true }
-                data-automationid='DetailsRowCheck'
-                aria-label={ checkButtonAriaLabel }
-                >
-                { canSelect ?
-                  <Check isChecked={ isSelected } /> :
-                  <div className='ms-DetailsRow-checkSpacer' />
-                }
-              </button>
+              { this._onRenderCheck({
+                isSelected,
+                ariaLabel: checkButtonAriaLabel,
+                canSelect
+              }) }
             </span>
           ) }
 
@@ -248,6 +240,10 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
       this.refs.root.tabIndex = 0;
       this.refs.root.focus();
     }
+  }
+
+  protected _onRenderCheck(props: IDetailsRowCheckProps) {
+    return <DetailsRowCheck { ...props } />;
   }
 
   private _getSelectionState(props: IDetailsRowProps): IDetailsRowSelectionState {
