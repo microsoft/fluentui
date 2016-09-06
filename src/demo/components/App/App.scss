@@ -26,7 +26,7 @@ body {
   top: 50px;
   bottom: 0;
   @include border-right(1px, solid, #EEE);
-  background: white;
+  background: $ms-color-white;
   box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: auto;
@@ -39,7 +39,6 @@ body {
   @include right(0);
   top: 50px;
   bottom: 0;
-  padding: 20px;
   overflow-x: auto;
   overflow-y: auto;
 
