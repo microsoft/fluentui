@@ -9,18 +9,15 @@ import {
 let _samplePivotItems = [
   {
     key: 'my-files',
-    name: 'My files',
-    children: <div>All of your items</div>
+    name: 'My files'
   },
   {
     key: 'recent',
-    name: 'Recent',
-    children: <div>All of your recent items</div>
+    name: 'Recent'
   },
   {
     key: 'shared',
-    name: 'Shared with me',
-    children: <div>All of your shared items</div>
+    name: 'Shared with me'
   }
 ];
 
