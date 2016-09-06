@@ -62,7 +62,7 @@
   font-size: $ms-font-size-m;
   color: $ms-color-neutralPrimary;
   height: 32px;
-  padding: 6px 12px 7px;
+  @include padding(6px, 12px, 7px, 12px);
   width: 100%;
   min-width: 180px;
   outline: 0;
@@ -132,10 +132,10 @@
 
   .ms-Label {
     font-size: $ms-font-size-m;
-    margin-right: 8px;
+    @include margin-right(8px);
     display: table-cell;
     vertical-align: top;
-    padding-left: 12px;
+    @include padding-left(12px);
     padding-top: 9px;
     height: 32px;
     width: 1%;
@@ -144,9 +144,9 @@
 
   .ms-TextField-field {
     border: 0;
-    float: left;
+    @include float(left);
     display: table-cell;
-    text-align: left;
+    @include text-align(left);
     padding-top: 8px;
     padding-bottom: 3px;
 

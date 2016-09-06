@@ -85,7 +85,7 @@ $SearchBox-height: 36px;
   transition: padding-left $ms-duration1;
 
   &:focus {
-    padding: 6px 32px 7px 10px;
+    @include padding-right(32px);
     border-color: $ms-color-themeDarker;
   }
 
