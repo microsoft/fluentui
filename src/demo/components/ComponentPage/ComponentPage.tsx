@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ButtonType } from '../../../Button';
 import {
   Link
 } from '../../../index';
