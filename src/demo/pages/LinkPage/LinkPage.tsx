@@ -3,7 +3,8 @@ import {
   Link
 } from '../../../index';
 import {
-  ExampleCard
+  ExampleCard,
+  PropertiesTableSet
 } from '../../components/index';
 
 import { LinkBasicExample } from './examples/Link.Basic.Example';
@@ -22,6 +23,8 @@ export class LinkPage extends React.Component<any, any> {
         <ExampleCard title='Link' code={ LinkBasicExampleCode }>
           <LinkBasicExample />
         </ExampleCard>
+
+        <PropertiesTableSet componentName='Link' />
       </div>
     );
   }
