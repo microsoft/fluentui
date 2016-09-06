@@ -90,14 +90,14 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
         </Label>
         ) }
         <div className='ms-Slider-container'>
-          <div
+          <button
             className={ css('ms-Slider-slideBox', {
               'ms-Slider-showValue': showValue,
               'ms-Slider-showTransitions': ( renderedValue === value )
             })}
-            { ...disabled ? { } : { 'tabIndex': 0 } }
             id={ this._id }
             role='slider'
+            disabled={ disabled }
             aria-valuenow={ value }
             aria-valuemin={ min }
             aria-valuemax={ max }
@@ -120,7 +120,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
               <span className='ms-Slider-active' style={ {'width': thumbOffsetPercent + '%'} }></span>
               <span className='ms-Slider-inactive' style={ {'width': (100 - thumbOffsetPercent) + '%'} }></span>
             </div>
-          </div>
+          </button>
           { showValue && <label className='ms-Label ms-Slider-value'>{ value }</label> }
         </div>
       </div>
