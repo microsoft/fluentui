@@ -143,11 +143,25 @@ export class Selection implements ISelection {
     return this._isAllSelected ? (this._items.length - this._exemptedCount - this._unselectableCount) : (this._exemptedCount);
   }
 
+  public isRangeSelected(fromIndex: number, count: number): boolean {
+    let endIndex = fromIndex + count;
+
+    for (let i = fromIndex; i < endIndex; i++) {
+      if (!this.isIndexSelected(i)) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
   public isAllSelected(): boolean {
+    let selectableCount = this._items.length - this._unselectableCount;
+
     return (
       (this.count > 0) &&
       (this._isAllSelected && this._exemptedCount === 0) ||
-      (!this._isAllSelected && (this._exemptedCount === this._items.length - this._unselectableCount) && this._items.length > 0));
+      (!this._isAllSelected && (this._exemptedCount === selectableCount) && selectableCount > 0));
   }
 
   public isKeySelected(key: string): boolean {
@@ -164,7 +178,9 @@ export class Selection implements ISelection {
   }
 
   public setAllSelected(isAllSelected: boolean) {
-    if (this._exemptedCount > 0 || isAllSelected !== this._isAllSelected) {
+    let selectableCount = this._items ? (this._items.length - this._unselectableCount) : 0;
+
+    if (selectableCount > 0 && (this._exemptedCount > 0 || isAllSelected !== this._isAllSelected)) {
       this._exemptedIndices = {};
       this._exemptedCount = 0;
       this._isAllSelected = isAllSelected;
@@ -256,6 +272,17 @@ export class Selection implements ISelection {
 
   public toggleIndexSelected(index: number) {
     this.setIndexSelected(index, !this.isIndexSelected(index), true);
+  }
+
+  public toggleRangeSelected(fromIndex: number, count: number) {
+    let isRangeSelected = this.isRangeSelected(fromIndex, count);
+    let endIndex = fromIndex + count;
+
+    this.setChangeEvents(false);
+    for (let i = fromIndex; i < endIndex; i++) {
+      this.setIndexSelected(i, !isRangeSelected, false);
+    }
+    this.setChangeEvents(true);
   }
 
   private _updateCount() {
