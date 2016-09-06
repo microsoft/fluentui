@@ -26,7 +26,7 @@
     line-height: 16px; // Vertically center the text
     margin-bottom: 8px;
     overflow: hidden;
-    padding-left: 32px; // Make room for icon
+    @include padding-left(32px); // Make room for icon
     position: relative;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -44,7 +44,7 @@
 }
 
 .ms-DocumentCardPreview-fileListIcon {
-  left: 0;
+  @include left(0);
   position: absolute;
   top: 0;
 }
