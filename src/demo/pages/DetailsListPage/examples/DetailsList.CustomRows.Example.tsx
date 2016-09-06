@@ -5,12 +5,10 @@ import {
   DetailsList,
   DetailsRow,
   IDetailsRowCheckProps,
-  MarqueeSelection,
-  Selection,
-  TextField,
-  Link
+  css
 } from '../../../../index';
 import { createListItems } from '../../../utilities/data';
+import './DetailsListExample.scss';
 
 let _items: any[];
 
@@ -18,7 +16,10 @@ class CustomDetailsRow extends DetailsRow {
   protected _onRenderCheck(props: IDetailsRowCheckProps) {
     return (
       <div
-        className='ms-DetailsRow-check'
+        className={ css(
+          'ms-DetailsRow-check DetailsListExample-customCheck', {
+          'is-any-selected': props.anySelected
+        }) }
         role='button'
         aria-pressed={ props.isSelected }
         data-selection-toggle={ true }
@@ -34,6 +35,8 @@ class CustomDetailsRow extends DetailsRow {
 }
 
 export class DetailsListCustomRowsExample extends React.Component<any, any> {
+  _selection: Selection;
+
   constructor() {
     super();
 
@@ -42,12 +45,12 @@ export class DetailsListCustomRowsExample extends React.Component<any, any> {
 
   public render() {
     return (
-      <DetailsList
-        items={ _items }
-        initialFocusedIndex={ 0 }
-        setKey='set'
-        onRenderRow={ (props) => <CustomDetailsRow { ...props } /> }
-        />
+        <DetailsList
+          items={ _items }
+          initialFocusedIndex={ 0 }
+          setKey='set'
+          onRenderRow={ (props) => <CustomDetailsRow { ...props } /> }
+          />
     );
   }
 }

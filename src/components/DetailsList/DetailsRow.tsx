@@ -37,6 +37,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
 
 export interface IDetailsRowSelectionState {
   isSelected: boolean;
+  anySelected: boolean;
 }
 
 export interface IDetailsRowState {
@@ -154,7 +155,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
       checkButtonAriaLabel,
       selection
     } = this.props;
-    let { selectionState: { isSelected }, columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
+    let { selectionState: { isSelected, anySelected }, columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
     let isDraggable = Boolean(dragDropEvents && dragDropEvents.canDrag && dragDropEvents.canDrag(item));
     let droppingClassName = isDropping ? (this._droppingClassNames ? this._droppingClassNames : DEFAULT_DROPPING_CSS_CLASS) : '';
     let ariaLabel = getRowAriaLabel ? getRowAriaLabel(item) : null;
@@ -182,6 +183,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
             <span role='gridcell'>
               { this._onRenderCheck({
                 isSelected,
+                anySelected,
                 ariaLabel: checkButtonAriaLabel,
                 canSelect
               }) }
@@ -250,7 +252,8 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
     let { itemIndex, selection } = props;
 
     return {
-      isSelected: selection.isIndexSelected(itemIndex)
+      isSelected: selection.isIndexSelected(itemIndex),
+      anySelected: selection.getSelectedCount() > 0
     };
   }
 

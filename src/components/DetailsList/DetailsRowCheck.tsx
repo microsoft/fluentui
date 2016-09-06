@@ -3,6 +3,7 @@ import { Check } from '../../Check';
 
 export interface IDetailsRowCheckProps {
   isSelected: boolean;
+  anySelected: boolean;
   ariaLabel: string;
   canSelect: boolean;
 }
