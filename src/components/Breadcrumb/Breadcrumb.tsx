@@ -7,6 +7,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { getRTL } from '../../utilities/rtl';
 import { getId } from '../../utilities/object';
 import { css } from '../../utilities/css';
+import { autobind } from '../../utilities/autobind';
 import './Breadcrumb.scss';
 
 export interface IBreadcrumbState {
@@ -71,7 +72,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
           { renderedOverflowItems && renderedOverflowItems.length ? (
             <li className='ms-Breadcrumb-overflow' key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
               <div className='ms-Breadcrumb-overflowButton ms-Icon ms-Icon--ellipsis'
-                  onClick={ this._onOverflowClicked.bind(this) }
+                  onClick={ this._onOverflowClicked }
                   data-is-focusable={ true }
                   role='button'
                   aria-haspopup='true'
@@ -107,12 +108,13 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
               ) }
             id={ overflowMenuId }
             directionalHint={ DirectionalHint.bottomLeftEdge }
-            onDismiss={ this._onOverflowDismissed.bind(this) } />
+            onDismiss={ this._onOverflowDismissed } />
         ) : (null) }
       </div>
     );
   }
 
+  @autobind
   private _onOverflowClicked(ev: MouseEvent) {
     this.setState({
       'isOverflowOpen' : !this.state.isOverflowOpen,
@@ -120,6 +122,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
     });
   }
 
+  @autobind
   private _onOverflowDismissed(ev: MouseEvent) {
     this.setState({
       'isOverflowOpen' : false,
@@ -127,6 +130,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
     });
   }
 
+  @autobind
   private _onBreadcrumbClicked(item: IBreadcrumbItem, ev: MouseEvent) {
     if (item.onClick) {
       item.onClick(item.key);

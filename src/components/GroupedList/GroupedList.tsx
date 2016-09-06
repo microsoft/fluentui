@@ -17,7 +17,7 @@ import {
 import {
   SelectionMode
 } from '../../utilities/selection/index';
-
+import { autobind } from '../../utilities/autobind';
 import { assign } from '../../utilities/object';
 import './GroupedList.scss';
 
@@ -44,11 +44,6 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
   constructor(props: IGroupedListProps) {
     super(props);
 
-    this._onToggleCollapse = this._onToggleCollapse.bind(this);
-    this._onToggleSelectGroup = this._onToggleSelectGroup.bind(this);
-    this._onToggleSummarize = this._onToggleSummarize.bind(this);
-    this._getGroupKey = this._getGroupKey.bind(this);
-    this._renderGroup = this._renderGroup.bind(this);
     this._isSomeGroupExpanded = this._computeIsSomeGroupExpanded(props.groups);
 
     this.state = {
@@ -133,6 +128,7 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
     }
   }
 
+  @autobind
   private _renderGroup(group, groupIndex) {
     let {
       dragDropEvents,
@@ -180,6 +176,7 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
       ) : null;
   }
 
+  @autobind
   private _getGroupKey(group: IGroup): string {
     return 'group-' + (group ?
       group.key + '-' + group.count :
@@ -199,6 +196,7 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
     return level;
   }
 
+  @autobind
   private _onToggleCollapse(group: IGroup) {
     let { groupProps } = this.props;
     let onToggleCollapse = groupProps && groupProps.headerProps && groupProps.headerProps.onToggleCollapse;
@@ -214,6 +212,7 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
     }
   }
 
+  @autobind
   private _onToggleSelectGroup(group: IGroup) {
     let { groups } = this.state;
 
@@ -269,6 +268,7 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
     }
   }
 
+  @autobind
   private _onToggleSummarize(group: IGroup) {
     let { groups } = this.state;
     let { groupProps } = this.props;
