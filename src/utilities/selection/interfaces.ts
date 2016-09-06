@@ -26,6 +26,7 @@ export interface ISelection {
 
   getSelection(): IObjectWithKey[];
   getSelectedCount(): number;
+  isRangeSelected(fromIndex: number, count: number): boolean;
 
   isAllSelected(): boolean;
   isKeySelected(key: string): boolean;
@@ -47,6 +48,7 @@ export interface ISelection {
   toggleAllSelected();
   toggleKeySelected(key: string);
   toggleIndexSelected(index: number);
+  toggleRangeSelected(fromIndex: number, count: number);
 }
 
 export interface ISelectionLayout {

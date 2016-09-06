@@ -3,6 +3,7 @@ import { ICalloutProps } from './Callout.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Layer } from '../../Layer';
 import { css } from '../../utilities/css';
+import { autobind } from '../../utilities/autobind';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { getRelativePositions, IPositionInfo } from '../../utilities/positioning';
 import { focusFirstChild } from '../../utilities/focus';
@@ -43,8 +44,6 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     };
 
     this._events = new EventGroup(this);
-
-    this._onLayerDidMount = this._onLayerDidMount.bind(this);
   }
 
   public componentDidUpdate() {
@@ -108,6 +107,7 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     }
   }
 
+  @autobind
   private _onLayerDidMount() {
     // This is added so the callout will dismiss when the window is scrolled
     // but not when something inside the callout is scrolled.
