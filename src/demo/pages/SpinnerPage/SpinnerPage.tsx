@@ -10,7 +10,7 @@ import {
 
 import { SpinnerBasicExample } from './examples/Spinner.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const SpinnerBasicExampleCode = require('./examples/Spinner.Basic.Example.tsx');
 

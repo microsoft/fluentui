@@ -12,7 +12,7 @@ import { DatePickerBasicExample } from './examples/DatePicker.Basic.Example';
 import { DatePickerRequiredExample } from './examples/DatePicker.Required.Example';
 import { DatePickerInputExample } from './examples/DatePicker.Input.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const DatePickerBasicExampleCode = require('./examples/DatePicker.Basic.Example.tsx');
 const DatePickerRequiredExampleCode = require('./examples/DatePicker.Required.Example.tsx');

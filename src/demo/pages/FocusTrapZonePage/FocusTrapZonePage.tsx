@@ -15,7 +15,7 @@ import FocusTrapZoneBoxExampleWithFocusableItem from './examples/FocusTrapZone.B
 let FocusTrapZoneBoxExampleWithFocusableItemCode =
     require('./examples/FocusTrapZone.Box.FocusOnCustomElement.Example');
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 import FocusTrapZoneBoxClickExample from './examples/FocusTrapZone.Box.Click.Example';
 let FocusTrapZoneBoxClickExampleCode = require('./examples/FocusTrapZone.Box.Click.Example');
 

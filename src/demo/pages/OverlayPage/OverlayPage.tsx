@@ -10,7 +10,7 @@ import {
 
 import { OverlayBasicExample } from './examples/Overlay.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const OverlayBasicExampleCode = require('./examples/Overlay.Basic.Example.tsx');
 

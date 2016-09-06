@@ -10,7 +10,7 @@ import {
 
 import { DropdownBasicExample } from './examples/Dropdown.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const DropdownBasicExampleCode = require('./examples/Dropdown.Basic.Example.tsx');
 

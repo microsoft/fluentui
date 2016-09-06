@@ -17,7 +17,7 @@ import { PanelLargeFixedExample } from './examples/Panel.LargeFixed.Example';
 import { PanelExtraLargeExample } from './examples/Panel.ExtraLarge.Example';
 import { PanelLightDismissExample } from './examples/Panel.LightDismiss.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const PanelSmallRightExampleCode = require('./examples/Panel.SmallRight.Example.tsx');
 const PanelSmallLeftExampleCode = require('./examples/Panel.SmallLeft.Example.tsx');

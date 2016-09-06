@@ -11,7 +11,7 @@ import {
 import { SearchBoxSmallExample } from './examples/SearchBox.Small.Example';
 import { SearchBoxFullSizeExample } from './examples/SearchBox.FullSize.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const SearchBoxSmallExampleCode = require('./examples/SearchBox.Small.Example.tsx');
 const SearchBoxFullSizeExampleCode = require('./examples/SearchBox.FullSize.Example.tsx');

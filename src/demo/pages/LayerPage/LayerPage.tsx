@@ -9,7 +9,7 @@ import {
 import { LayerBasicExample } from './examples/Layer.Basic.Example';
 import { LayerInteractiveExample } from './examples/Layer.Interactive.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const LayerBasicExampleCode = require('./examples/Layer.Basic.Example.tsx');
 const LayerInteractiveExampleCode = require('./examples/Layer.Interactive.Example.tsx');

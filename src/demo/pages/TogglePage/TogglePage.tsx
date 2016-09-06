@@ -10,7 +10,7 @@ import {
 
 import { ToggleBasicExample } from './examples/Toggle.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const ToggleBasicExampleCode = require('./examples/Toggle.Basic.Example.tsx');
 

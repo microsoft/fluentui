@@ -10,7 +10,7 @@ import {
 
 import { LabelBasicExample } from './examples/Label.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const LabelBasicExampleCode = require('./examples/Label.Basic.Example.tsx');
 

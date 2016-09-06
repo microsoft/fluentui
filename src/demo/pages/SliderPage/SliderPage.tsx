@@ -7,7 +7,7 @@ import {
 
 import { SliderBasicExample } from './examples/Slider.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 const SliderBasicExampleCode = require('./examples/Slider.Basic.Example.tsx');
 

@@ -18,7 +18,7 @@ const ListMailExampleCode = require('./examples/List.Mail.Example.tsx');
 const ListGridExampleCode = require('./examples/List.Grid.Example.tsx');
 
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/app/AppState';
+import { AppState } from '../../components/App/AppState';
 
 let _cachedItems;
 
