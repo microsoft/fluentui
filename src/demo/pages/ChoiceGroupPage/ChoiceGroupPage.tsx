@@ -10,6 +10,7 @@ import {
 
 import { ChoiceGroupBasicExample } from './examples/ChoiceGroup.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 const ChoiceGroupBasicExampleCode = require('./examples/ChoiceGroup.Basic.Example.tsx');
 
@@ -18,7 +19,7 @@ export class ChoiceGroupPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'ChoiceGroup');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'ChoiceGroup');
   }
 
   public render() {

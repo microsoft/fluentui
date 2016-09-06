@@ -12,6 +12,7 @@ import { NavBasicExample } from './examples/Nav.Basic.Example';
 import { NavFabricDemoAppExample } from './examples/Nav.FabricDemoApp.Example';
 import { NavNestedExample } from './examples/Nav.Nested.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 const NavBasicExampleCode = require('./examples/Nav.Basic.Example.tsx');
 const NavFabricDemoAppExampleCode = require('./examples/Nav.FabricDemoApp.Example.tsx');
@@ -22,7 +23,7 @@ export class NavPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'Checkbox');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'Checkbox');
   }
 
   public render() {

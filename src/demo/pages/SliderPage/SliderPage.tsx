@@ -7,6 +7,7 @@ import {
 
 import { SliderBasicExample } from './examples/Slider.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 const SliderBasicExampleCode = require('./examples/Slider.Basic.Example.tsx');
 
@@ -15,7 +16,7 @@ export class SliderPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'Slider');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'Slider');
   }
 
   public render() {

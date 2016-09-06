@@ -10,6 +10,7 @@ import {
 
 import { OverlayBasicExample } from './examples/Overlay.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 const OverlayBasicExampleCode = require('./examples/Overlay.Basic.Example.tsx');
 
@@ -18,7 +19,7 @@ export class OverlayPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'Overlay');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'Overlay');
   }
 
   public render() {

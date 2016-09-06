@@ -12,6 +12,7 @@ import { items, farItems } from './examples/data';
 import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
 import { CommandBarNonFocusableItemsExample } from './examples/CommandBar.NonFocusable.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 const CommandBarBasicExampleCode = require('./examples/CommandBar.Basic.Example.tsx');
 const CommandBarNoFocusableItemsExampleCode = require('./examples/CommandBar.NonFocusable.Example.tsx');
@@ -21,7 +22,7 @@ export class CommandBarPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'CommandBar');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'CommandBar');
   }
 
   public render() {

@@ -11,6 +11,7 @@ import {
 import { SearchBoxSmallExample } from './examples/SearchBox.Small.Example';
 import { SearchBoxFullSizeExample } from './examples/SearchBox.FullSize.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 const SearchBoxSmallExampleCode = require('./examples/SearchBox.Small.Example.tsx');
 const SearchBoxFullSizeExampleCode = require('./examples/SearchBox.FullSize.Example.tsx');
@@ -20,7 +21,7 @@ export class SearchBoxPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'SearchBox');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'SearchBox');
   }
 
   public render() {

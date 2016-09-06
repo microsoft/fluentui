@@ -7,9 +7,9 @@ import {
   PropertiesTableSet,
   ComponentPage
 } from '../../components/index';
-
 import { BreadcrumbBasicExample } from './examples/Breadcrumb.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 const BreadcrumbBasicExampleCode = require('./examples/Breadcrumb.Basic.Example.tsx');
 
@@ -18,7 +18,7 @@ export class BreadcrumbPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'Breadcrumb');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'Breadcrumb');
   }
 
   public render() {

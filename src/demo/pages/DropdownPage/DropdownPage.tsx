@@ -10,6 +10,7 @@ import {
 
 import { DropdownBasicExample } from './examples/Dropdown.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 const DropdownBasicExampleCode = require('./examples/Dropdown.Basic.Example.tsx');
 
@@ -18,7 +19,7 @@ export class DropdownPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'Dropdown');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'Dropdown');
   }
 
   public render() {

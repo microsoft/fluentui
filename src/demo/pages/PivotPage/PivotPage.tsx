@@ -16,6 +16,7 @@ import { PivotFabricExample } from './examples/Pivot.Fabric.Example';
 import { PivotOnChangeExample } from './examples/Pivot.OnChange.Example';
 import { PivotRemoveExample } from './examples/Pivot.Remove.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/app/AppState';
 
 const PivotRemoveExampleCode = require('./examples/Pivot.Remove.Example.tsx');
 const PivotBasicExampleCode = require('./examples/Pivot.Basic.Example.tsx');
@@ -30,7 +31,7 @@ export class PivotPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'Pivot');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'Pivot');
   }
 
   public render() {

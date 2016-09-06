@@ -8,7 +8,7 @@ import {
 } from '../../components/index';
 
 import { getPageRouteFromState } from '../../utilities/pageroute';
-
+import { AppState } from '../../components/app/AppState';
 import { PersonaCardBasicExample } from './examples/PersonaCard.Basic.Example';
 const PersonaCardBasicExampleCode = require('./examples/PersonaCard.Basic.Example.tsx');
 
@@ -17,7 +17,7 @@ export class PersonaCardPage extends React.Component<any, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState('Basic components', 'PersonaCard');
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'PersonaCard');
   }
 
   public render() {
