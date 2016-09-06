@@ -5,9 +5,9 @@ import { AppState } from '../components/app/AppState';
 export function getPageRouteFromState(groupName: string, pageName: string): string {
   let route: string = '';
   AppState.examplePages.map((pageValue) => {
-    if (groupName == pageValue.name) {
+    if (groupName === pageValue.name) {
       pageValue.links.map((linkValue) => {
-        if (linkValue.name == pageName) {
+        if (linkValue.name === pageName) {
           route = linkValue.url;
         }
       });

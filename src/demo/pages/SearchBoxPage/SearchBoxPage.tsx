@@ -46,7 +46,7 @@ export class SearchBoxPage extends React.Component<any, any> {
         overview={
           <div>
             <Link target='_blank' href='http://dev.office.com/fabric/components/SearchBox'>SearchBoxes</Link>
-    	      <span> provide a box for searching, complete with auto complete callbacks and suggestions.</span>
+            <span> provide a box for searching, complete with auto complete callbacks and suggestions.</span>
           </div>
         }
         route={ this._url }>

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Button, ButtonType } from '../../../Button';
-import { css } from '../../../utilities/css';
+import { ButtonType } from '../../../Button';
 import {
   Link
 } from '../../../index';
@@ -18,35 +17,38 @@ export interface IComponentPageProps {
   route: string;
 }
 
-export interface IComponentPageState {
-}
-
-export class ComponentPage extends React.Component<IComponentPageProps, IComponentPageState> {
+export class ComponentPage extends React.Component<IComponentPageProps, {}> {
 
   constructor(props: IComponentPageProps) {
     super(props);
   }
 
   public render() {
+    let {
+      title,
+      componentName,
+      exampleCards,
+      overview
+    } = this.props;
 
     return (
       <div className='ComponentPage'>
-        <div className={ this.props.componentName }>
+        <div className={ componentName }>
           <div className='ComponentPage-header'>
-            <h1 className='ComponentPage-title'>{ this.props.title }</h1>
+            <h1 className='ComponentPage-title'>{ title }</h1>
             { this._navigationLinks() }
           </div>
           <div className='ComponentPage-body'>
             <div className='ComponentPage-overviewSection'>
                 <h2 className='ComponentPage-subHeading' id='Overview'>Overview</h2>
                 <div className='ComponentPage-overview'>
-                  { this.props.overview }
+                  { overview }
                 </div>
             </div>
             { this._getDosAndDonts() }
             <div className='ComponentPage-variantsSection'>
               <h2 className='ComponentPage-subHeading ComponentPage-variantsTitle' id='Variants'>Variants</h2>
-              { this.props.exampleCards }
+              { exampleCards }
             </div>
             { this._getPropertiesTable() }
           </div>
@@ -57,11 +59,17 @@ export class ComponentPage extends React.Component<IComponentPageProps, ICompone
 
   private _navigationLinks(): JSX.Element {
     let links: Array<JSX.Element> = [];
+    let {
+      bestPractices,
+      dos,
+      donts,
+      route
+    } = this.props;
 
-    if (this.props.bestPractices && this.props.dos && this.props.donts) {
+    if (bestPractices && dos && donts) {
       links.push(
         <div className='ComponentPage-navLink'>
-          <a href={ this.props.route + '#Best Practices' }>Best Practices</a>
+          <a href={ route + '#Best Practices' }>Best Practices</a>
         </div>
       );
     }
@@ -69,14 +77,14 @@ export class ComponentPage extends React.Component<IComponentPageProps, ICompone
     return (
       <div className='ComponentPage-navigation'>
         <div className='ComponentPage-navLink'>
-          <a href={ this.props.route + '#Overview' }>Overview</a>
+          <Link href={ route + '#Overview' }>Overview</Link>
         </div>
         { links }
         <div className='ComponentPage-navLink'>
-          <a href={ this.props.route + '#Variants' }>Variants</a>
+          <Link href={ route + '#Variants' }>Variants</Link>
         </div>
         <div className='ComponentPage-navLink'>
-          <a href={ this.props.route + '#Implementation' }>Implementation</a>
+          <Link href={ route + '#Implementation' }>Implementation</Link>
         </div>
       </div>
     );
@@ -127,11 +135,5 @@ export class ComponentPage extends React.Component<IComponentPageProps, ICompone
         </div>
       );
     }
-  }
-
-  private _renderExamples(): Array<JSX.Element> {
-    return this.props.exampleCards.map((value) => {
-      return value;
-    });
   }
 }

@@ -9,7 +9,6 @@ import {
 } from '../../components/index';
 
 import { BreadcrumbBasicExample } from './examples/Breadcrumb.Basic.Example';
-import { AppState } from '../../components/app/AppState';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 
 const BreadcrumbBasicExampleCode = require('./examples/Breadcrumb.Basic.Example.tsx');
