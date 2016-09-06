@@ -7,151 +7,129 @@
 // --------------------------------------------------
 // Pivot and tab styles
 
-
-.ms-Pivot {
-  @include ms-font-m;
-  @include ms-u-normalize;
-  height: 40px;
-  list-style-type: none;
-  overflow-x: hidden;
-  white-space: nowrap;
+/* The UL element */
+.ms-Pivot-header {
+   list-style-type: none;
+   white-space: nowrap;
+   padding: 0;
+   margin: 0 -8px;
+   user-select: none;
 }
 
-.ms-Pivot-link {
-  color: $ms-color-neutralPrimary;
+/* The LI element */
+.ms-Pivot-tab {
   display: inline-block;
+  vertical-align: bottom;
+}
+
+/* The button element in a tab */
+.ms-Pivot-tabButton {
+  @include focus-border();
+
   position: relative;
+  background: none;
+  border: none;
+  margin: 0 4px;
+  padding: 0 4px;
+  color: $ms-color-neutralPrimary;
   font-family: $ms-font-family-regular;
-  font-size: $ms-font-size-m-plus;
-  line-height: 40px;
-  margin-right: 8px;
-
-  &:after {
-    content: '';
-    width: 100%;
-    position: absolute;
-    display: none;
-    bottom: 0;
-    left: 0;
-    height: 2px;
-    background-color: $ms-color-themePrimary;
-
-    @media screen and (-ms-high-contrast: active) {
-      background-color: $ms-color-contrastBlackSelected;
-    }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-      background-color: $ms-color-contrastWhiteSelected;
-    }
-  }
+  font-size: $ms-font-size-m;
+  text-align: center;
+  cursor: pointer;
 
   &:hover,
   &:focus,
   &:active {
     color: $ms-color-black;
-    cursor: pointer;
-
-    + .ms-Pivot-dropdownIcon {
-      color: $ms-color-neutralDark;
-    }
   }
 
-  &:active {
-    font-family: $ms-font-family-semibold;
+  &[disabled] {
+    color: $ms-color-neutralTertiary;
+    cursor: default;
+  }
+}
 
-    @media screen and (-ms-high-contrast: active) {
-      color: $ms-color-contrastBlackSelected;
-    }
+.ms-Pivot-title {
+  position: relative;
+  line-height: 40px;
+}
 
-    @media screen and (-ms-high-contrast: black-on-white) {
-      color: $ms-color-contrastWhiteSelected;
-    }
+.ms-Pivot-selectedTitleText {
+  display: none;
+}
 
-    &:after {
-      display: block;
-    }
+/* Selected state. */
+.ms-Pivot-tabButton.is-selected {
+
+  /* Selected bottom border */
+  .ms-Pivot-title:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-bottom: 2px solid $ms-color-themePrimary;
   }
 
-  //== State: Selected
-  &.is-selected {
+  /* Hide text and show bold overlay to prevent pixel jumping. */
+  .ms-Pivot-titleText {
+    color: transparent;
+  }
+
+  .ms-Pivot-selectedTitleText {
+    display: block;
+    position: absolute;
     color: $ms-color-black;
     font-family: $ms-font-family-semibold;
-
-    @media screen and (-ms-high-contrast: active) {
-      color: $ms-color-contrastBlackSelected;
-    }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-      color: $ms-color-contrastWhiteSelected;
-    }
-
-    &:after {
-      display: block;
-    }
-
-    + .ms-Pivot-dropdownIcon {
-      color: $ms-color-neutralDark;
-    }
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
   }
 }
 
-.ms-Pivot-dropdownIcon {
-  font-size: $ms-font-size-m-plus + 1;
-  position: relative;
-  top: 2px;
-}
-
-// Overflow (ellipsis)
-.ms-Pivot-link.ms-Pivot-link--overflow {
-  color: $ms-color-neutralSecondary;
-
-  &.is-selected {
-    color: $ms-color-themePrimary;
-  }
-
-  &:hover:not(.is-selected),
-  &:focus:not(.is-selected) {
-    color: $ms-color-neutralDark;
-  }
-
-  &:active {
-    &:after {
-      display: none;
-    }
-  }
-}
-
-// Ellipsis icon
-.ms-Pivot-ellipsis {
-  font-size: $ms-font-size-m-plus;
-  position: relative;
-  top: 0;
-}
-
-
-//== Modifier: Large Pivots
-//
-.ms-Pivot.ms-Pivot--large {
-  .ms-Pivot-link {
+/* Modifier: large links */
+.ms-Pivot--large {
+  .ms-Pivot-tabButton {
     font-size: $ms-font-size-l;
 
-    &:active {
+    &:is-selected .ms-Pivot-selectedTitleText {
       font-family: $ms-font-family-regular;
-    }
-
-    &.is-selected {
-      font-family: $ms-font-family-regular;
-    }
-  }
-
-  .ms-Pivot-link.ms-Pivot-link--overflow {
-    &:after {
-      font-size: $ms-font-size-l;
     }
   }
 }
 
+/* Modifier: tabs */
+.ms-Pivot--tabs {
+  .ms-Pivot-header {
+    margin: 0;
+  }
 
+  .ms-Pivot-tabButton {
+    font-family: $ms-font-family-semilight;
+    background: $ms-color-neutralLighter;
+    margin: 0;
+    padding: 0 8px;
+
+    &.is-selected {
+      background: $ms-color-themePrimary;
+      font-family: $ms-font-family-semilight;
+      color: $ms-color-white;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $ms-color-white;
+      }
+
+      .ms-Pivot-selectedTitleText {
+        font-family: $ms-font-family-semilight;
+        color: $ms-color-white;
+      }
+    }
+  }
+}
+
+/*
 //== Modifier: Tabs
 //
 .ms-Pivot.ms-Pivot--tabs {
@@ -163,7 +141,7 @@
     line-height: 40px;
     margin-right: -2px; // Remove space next to inline-block element
     padding: 0 10px;
-    font-family: $ms-font-family-semilight !important;
+    font-family:  !important;
 
     &:hover:not(.is-selected):not(.ms-Pivot-link--overflow),
     &:focus:not(.is-selected):not(.ms-Pivot-link--overflow) {
@@ -250,3 +228,4 @@
   color: $ms-color-themePrimary;
   white-space: nowrap;
 }
+*/

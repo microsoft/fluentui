@@ -8,20 +8,12 @@ import {
 } from '../../components/index';
 
 import { PivotBasicExample } from './examples/Pivot.Basic.Example';
-import { PivotLargeExample } from './examples/Pivot.Large.Example';
-import { PivotTabsExample } from './examples/Pivot.Tabs.Example';
-import { PivotTabsLargeExample } from './examples/Pivot.TabsLarge.Example';
-import { PivotFabricExample } from './examples/Pivot.Fabric.Example';
-import { PivotOnChangeExample } from './examples/Pivot.OnChange.Example';
-import { PivotRemoveExample } from './examples/Pivot.Remove.Example';
+import { PivotVariationsExample } from './examples/Pivot.Variations.Example';
+import { PivotCustomExample } from './examples/Pivot.Custom.Example';
 
-const PivotRemoveExampleCode = require('./examples/Pivot.Remove.Example.tsx');
 const PivotBasicExampleCode = require('./examples/Pivot.Basic.Example.tsx');
-const PivotLargeExampleCode = require('./examples/Pivot.Large.Example.tsx');
-const PivotTabsExampleCode = require('./examples/Pivot.Tabs.Example.tsx');
-const PivotTabsLargesExampleCode = require('./examples/Pivot.TabsLarge.Example.tsx');
-const PivotFabricExampleCode = require('./examples/Pivot.Fabric.Example.tsx');
-const PivotOnChangeExampleCode = require('./examples/Pivot.OnChange.Example.tsx');
+const PivotVariationsExampleCode = require('./examples/Pivot.Variations.Example.tsx');
+const PivotCustomExampleCode = require('./examples/Pivot.Custom.Example.tsx');
 
 export class PivotPage extends React.Component<any, any> {
   public render() {
@@ -33,27 +25,17 @@ export class PivotPage extends React.Component<any, any> {
           <span> are used for grouping components under a set of Links or Tabs</span>
         </div>
         <h2 className='ms-font-xl'>Examples</h2>
+
         <ExampleCard title='Basic example' code={ PivotBasicExampleCode }>
           <PivotBasicExample />
         </ExampleCard>
-        <ExampleCard title='Large link size' code={ PivotLargeExampleCode }>
-          <PivotLargeExample />
+        <ExampleCard title='Pivot variations' code={ PivotVariationsExampleCode }>
+          <PivotVariationsExample />
         </ExampleCard>
-        <ExampleCard title='Links of tab style' code={ PivotTabsExampleCode }>
-          <PivotTabsExample />
+        <ExampleCard title='Custom tab rendering' code={ PivotCustomExampleCode }>
+          <PivotCustomExample />
         </ExampleCard>
-        <ExampleCard title='Links of large tab style' code={ PivotTabsLargesExampleCode }>
-          <PivotTabsLargeExample />
-        </ExampleCard>
-        <ExampleCard title='Trigger onchange event' code={ PivotOnChangeExampleCode }>
-          <PivotOnChangeExample />
-        </ExampleCard>
-        <ExampleCard title='Rendering nested components within the Pivot' code={ PivotFabricExampleCode }>
-          <PivotFabricExample />
-        </ExampleCard>
-        <ExampleCard title='Show/Hide pivot item' code={ PivotRemoveExampleCode }>
-          <PivotRemoveExample />
-        </ExampleCard>
+
         <PropertiesTableSet componentName='Pivot' />
         <PropertiesTableSet componentPath='components/Pivot/' componentName='PivotItem' />
       </div>
