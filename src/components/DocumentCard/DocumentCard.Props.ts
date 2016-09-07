@@ -60,7 +60,7 @@ export interface IDocumentCardPreviewProps extends React.Props<DocumentCardPrevi
    * The format for the text that should display the number of overflow documents.
    * such as '+2 more'
    */
-  overflowDocumentCountFormatText?: string;
+  getOverflowDocumentCountText?: (overflowCount: number) => string;
 }
 
 export interface IDocumentCardPreviewImage {

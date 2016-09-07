@@ -1,18 +1,13 @@
 import * as React from 'react';
 import { IDocumentCardPreviewProps, IDocumentCardPreviewImage } from './DocumentCard.Props';
 import { Image } from '../../Image';
-import { format } from '../../utilities/string';
 import { css } from '../../utilities/css';
+import { autobind } from '../../utilities/autobind';
 import './DocumentCardPreview.scss';
 
 const LIST_ITEM_COUNT = 3;
 
 export class DocumentCardPreview extends React.Component<IDocumentCardPreviewProps, any> {
-  constructor(props: IDocumentCardPreviewProps) {
-    super(props);
-    this._renderPreviewList = this._renderPreviewList.bind(this);
-  }
-
   public render() {
     let { previewImages } = this.props;
     let style, preview;
@@ -67,16 +62,17 @@ export class DocumentCardPreview extends React.Component<IDocumentCardPreviewPro
     );
   }
 
+  @autobind
   private _renderPreviewList(previewImages: IDocumentCardPreviewImage[]): React.ReactElement<React.HTMLProps<HTMLDivElement>> {
-    let { overflowDocumentCountFormatText } = this.props;
+    let { getOverflowDocumentCountText } = this.props;
 
     // Determine how many documents we won't be showing
     let overflowDocumentCount = previewImages.length - LIST_ITEM_COUNT;
 
     // Determine the overflow text that will be rendered after the preview list.
     let overflowText = overflowDocumentCount ?
-      (overflowDocumentCountFormatText ?
-        format(overflowDocumentCountFormatText, overflowDocumentCount) :
+      (getOverflowDocumentCountText ?
+        getOverflowDocumentCountText(overflowDocumentCount) :
         '+' + overflowDocumentCount) : null;
 
     // Create list items for the documents to be shown

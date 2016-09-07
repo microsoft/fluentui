@@ -14,7 +14,7 @@ import { DocumentCardTitle } from '../../../../components/DocumentCard/DocumentC
 export class DocumentCardCompleteExample extends React.Component<any, any> {
   public render() {
     let previewProps: IDocumentCardPreviewProps = {
-      overflowDocumentCountFormatText: '+{0} more',
+      getOverflowDocumentCountText: (displayCount) => `+${ displayCount } more`,
       previewImages: [
         {
           name: '2016 Conference Presentation',
