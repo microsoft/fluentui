@@ -196,3 +196,10 @@ $navnode-height: 36px;
 .ms-Nav-link {
   @include focus-border();
 }
+
+.ms-Nav-linkButton.ms-Button--command {
+  .ms-Button-label {
+    @include ms-font-m;
+    color: $ms-color-themePrimary;
+  }
+}

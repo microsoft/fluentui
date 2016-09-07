@@ -39,7 +39,8 @@ export class NavBasicExample extends React.Component<any, any> {
                   { name: 'Long Name Test for elipse', url: 'http://msn.com' },
                   { name: 'Edit Link', url: 'http://example.com', iconClassName: 'ms-Icon--pencil' },
                   {
-                    name: 'Edit', url: '#',
+                    name: 'Edit',
+                    url: '#',
                     onClick: this._onClickHandler,
                     iconClassName: 'ms-Icon--Edit'
                   }

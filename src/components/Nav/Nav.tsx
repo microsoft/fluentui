@@ -2,6 +2,7 @@ import * as React from 'react';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { css } from '../../utilities/css';
 import { getRTL } from '../../utilities/rtl';
+import { Button, ButtonType } from '../../Button';
 import './Nav.scss';
 
 import {
@@ -86,7 +87,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
           className={ css('ms-Nav-link', nestingLevel > 0 ? 'ms-Nav-SublinkTextSize' : '') }
           style={ { [isRtl ? 'paddingRight' : 'paddingLeft'] : paddingBefore } }
           href={ link.url || 'javascript:' }
-          onclick={ !!link.onClick ? link.onClick : onLinkClick }
+          onClick={ onLinkClick }
           aria-label={ link.ariaLabel }
           title={ link.title ? link.title : link.name }
           target={ link.target }
@@ -97,6 +98,18 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
          { this.props.onRenderLink(link)}
         </a>
     );
+  }
+
+  private _renderButtonLink(link: INavLink, linkIndex: number) {
+    return (
+      <Button
+          className={ css('ms-Nav-link ms-Nav-linkButton', link.iconClassName) }
+          buttonType={ ButtonType.command }
+          icon='Pencil'
+          description={ link.title || link.name }
+          onClick={ link.onClick }>
+          { link.name }
+      </Button>);
   }
 
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
@@ -110,6 +123,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
            className={ css('ms-Nav-compositeLink', { ' is-expanded': link.isExpanded, 'is-selected': isLinkSelected }) }>
         { (nestingLevel === 0 && link.links && link.links.length > 0 ?
           <button
+            buttonType={ ButtonType.icon }
             className='ms-Nav-chevronButton ms-Nav-chevronButton--link'
             onClick={ this._onLinkExpandClicked.bind(this, link) }
             title={ (link.isExpanded ? this.props.expandedStateText : this.props.collapsedStateText) }
