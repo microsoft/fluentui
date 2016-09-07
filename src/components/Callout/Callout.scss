@@ -7,123 +7,27 @@
 // --------------------------------------------------
 // Callout styles
 
+$Callout-OOBE-title-bg: $ms-color-themePrimary;
+$Callout-beak-slant-width: 28px;
 
 .ms-Callout {
+  @include ms-baseFont;
+  @include drop-shadow(0,0, 15px, -5px);
+  position: absolute;
+  display: inline-block;
+  border: 1px solid $ms-color-neutralLight;
   z-index: $ms-zIndex-Callout;
-  margin: 16px auto;
+
+  @media screen and (-ms-high-contrast: active) {
+    border: 1px solid $ms-color-white;
+  }
+  @media screen and (-ms-high-contrast: black-on-white) {
+    border: 1px solid $ms-color-black;
+  }
+}
+
+.ms-Callout-container {
   position: relative;
-  width: 288px;
-}
-
-// Mixin for arrow size and color
-@mixin arrowBorders($ms-color-top, $ms-color-right, $ms-color-bottom, $ms-color-left) {
-  border-top: 10px solid $ms-color-top;
-  border-right: 10px solid $ms-color-right;
-  border-bottom: 10px solid $ms-color-bottom;
-  border-left: 10px solid $ms-color-left;
-}
-
-//= Modifier: Base styling for all callout arrows
-//
-.ms-Callout.ms-Callout--arrowRight,
-.ms-Callout.ms-Callout--arrowLeft,
-.ms-Callout.ms-Callout--arrowBottom,
-.ms-Callout.ms-Callout--arrowTop {
-  &:before,
-  &:after {
-    content: '';
-    position: absolute;
-    transform: rotate(-45deg);
-    height: 0;
-    width: 0;
-  }
-
-  &:before {
-    z-index: $ms-zIndex-back;
-    outline: 1px solid transparent;
-    @include drop-shadow;
-  }
-
-  &:after {
-    z-index: $ms-zIndex-front;
-  }
-}
-
-
-//= Modifier: Callout with left and right arrows
-//
-.ms-Callout.ms-Callout--arrowLeft,
-.ms-Callout.ms-Callout--arrowRight {
-  &:before,
-  &:after {
-    top: 40px;
-    display: none; // Hide left and right arrows on sm screens
-  }
-}
-
-.ms-Callout.ms-Callout--arrowLeft {
-  &:before,
-  &:after {
-    @include arrowBorders($ms-color-white, transparent, transparent, $ms-color-white);
-    left: -10px;
-  }
-}
-
-.ms-Callout.ms-Callout--arrowRight {
-  &:before,
-  &:after {
-    @include arrowBorders(transparent, $ms-color-white, $ms-color-white, transparent);
-    right: -10px;
-  }
-}
-
-
-//= Modifier: Callout with top and bottom arrows
-//
-.ms-Callout.ms-Callout--arrowTop,
-.ms-Callout.ms-Callout--arrowBottom {
-  &:before,
-  &:after {
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    width: 0;
-  }
-}
-
-.ms-Callout.ms-Callout--arrowTop {
-  &:before,
-  &:after {
-    @include arrowBorders($ms-color-white, $ms-color-white, transparent, transparent);
-    top: -10px;
-  }
-}
-
-.ms-Callout.ms-Callout--arrowBottom {
-  &:before,
-  &:after {
-    @include arrowBorders(transparent, transparent, $ms-color-white, $ms-color-white);
-    bottom: -10px;
-  }
-}
-
-// High contrast mode styling for callout arrows
-.ms-Callout.ms-Callout--arrowRight,
-.ms-Callout.ms-Callout--arrowLeft,
-.ms-Callout.ms-Callout--arrowBottom,
-.ms-Callout.ms-Callout--arrowTop {
-  &:before,
-  &:after {
-    @media screen and (-ms-high-contrast: active) {
-      border: 0;
-      width: 20px;
-      height: 20px;
-      background-color: $ms-color-black;
-    }
-    @media screen and (-ms-high-contrast: black-on-white) {
-      background-color: $ms-color-white;
-    }
-  }
 }
 
 // The actual callout element
@@ -131,25 +35,7 @@
   position: relative;
   background-color: $ms-color-white;
   box-sizing: border-box;
-  outline: 1px solid transparent;
   z-index: $ms-zIndex-middle;
-  @include drop-shadow;
-}
-
-.ms-Callout-close {
-  margin: 0;
-  border: 0;
-  background: none;
-  cursor: pointer;
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  padding: 8px;
-  width: 32px;
-  height: 32px;
-  font-size: $ms-font-size-m;
-  color: $ms-color-neutralSecondary;
-  z-index: ($ms-zIndex-Callout + $ms-zIndex-front);
 }
 
 .ms-Callout-inner {
@@ -164,20 +50,21 @@
 
 .ms-Callout-title {
   margin: 0;
-  font-family: $ms-font-family-semilight;
-  font-size: $ms-font-size-xl;
+  @include ms-font-xl;
+  color: $ms-color-neutralPrimary;
+  font-weight: $ms-font-weight-semilight;
 }
 
 .ms-Callout-subText {
   margin: 0;
-  font-family: $ms-font-family-semilight;
+  @include ms-font-s;
   color: $ms-color-neutralPrimary;
-  font-size: $ms-font-size-s;
+  font-weight: $ms-font-weight-semilight;
 }
 
 .ms-Callout-link {
-  font-size: $ms-font-size-m;
-  font-family: $ms-font-family-semilight;
+  @include ms-font-m;
+  color: $ms-color-neutralPrimary;
 }
 
 .ms-Callout-actions {
@@ -188,15 +75,15 @@
 
   .ms-Link.ms-Link--hero {
     position: relative;
-    left: -8px; // Move link inline with body text
+    @include left(-8px); // Move link inline with body text
   }
 }
 
 .ms-Callout-action {
   position: relative;
   top: 4px;
-  left: -8px;
-  margin-left: 0 !important;
+  @include left(-8px);
+  @include margin-left(0);
 
   &:hover .ms-Callout-actionIcon,
   &:focus .ms-Callout-actionIcon {
@@ -205,18 +92,16 @@
 }
 
 .ms-Callout-button {
-  margin-right: 12px;
+  @include margin-right(12px);
 }
-
 
 //= Modifier: Close button callout
 //
 .ms-Callout.ms-Callout--close {
   .ms-Callout-title {
-    margin-right: 20px; // Avoid overlap with close button
+    @include margin-right(20px); // Avoid overlap with close button
   }
 }
-
 
 //= Modifier: OOBE (Out of box experience) callout
 //
@@ -226,19 +111,18 @@
   &.ms-Callout--arrowTop {
     &:before,
     &:after {
-      border-color: $ms-color-themePrimary;
+      border-color: $Callout-OOBE-title-bg;
       background-color: transparent;
     }
   }
 
   .ms-Callout-header {
     padding: 28px 24px;
-    background-color: $ms-color-themePrimary;
+    background-color: $Callout-OOBE-title-bg;
   }
 
   .ms-Callout-title {
-    font-family: $ms-font-family-light;
-    font-size: $ms-font-size-xxl;
+    @include ms-font-xxl;
     color: $ms-color-white;
   }
 
@@ -251,7 +135,6 @@
   }
 }
 
-
 //= Modifier: ActionText callout
 //
 .ms-Callout.ms-Callout--actionText {
@@ -261,7 +144,6 @@
   }
 }
 
-
 //= Modifier: Peek callout
 //
 .ms-Callout.ms-Callout--peek {
@@ -269,8 +151,8 @@
   &.ms-Callout--arrowBottom {
     &:before,
     &:after {
-      left: 40px;
-      right: auto;
+      @include left(40px);
+      @include right(auto);
     }
   }
 
@@ -278,7 +160,7 @@
   &.ms-Callout--arrowLeft {
     &:before,
     &:after {
-      top: calc('50% - 10px');
+      top: calc(50% - 10px);
     }
   }
 
@@ -296,82 +178,10 @@
   }
 }
 
-@media (min-width: $ms-screen-md-min) {
-  // Make width larger and remove centering on md+ screens
-  .ms-Callout {
-    width: 300px;
-    margin: 16px;
-  }
-
-  // Show arrows right and left
-  .ms-Callout.ms-Callout--arrowRight,
-  .ms-Callout.ms-Callout--arrowLeft {
-    &:before,
-    &:after {
-      display: block;
-    }
-  }
-}
-
-// TODO: remove overrides and scrub CSS
-
-// slideRightIn20
-@mixin ms-u-slideRightIn20 {
-    @include animationMix((fadeIn, slideRightIn20), $ms-duration3, $ms-ease1);
-}
-
-.ms-u-slideRightIn20 {
-    @include ms-u-slideRightIn20;
-}
-@-webkit-keyframes slideRightIn20 {
-    from { -webkit-transform:translate3d(-20px, 0px, 0px); }
-    to { -webkit-transform:translate3d(0px, 0px, 0px); }
-}
-@keyframes slideRightIn20 {
-    from { transform:translate3d(-20px, 0px, 0px); }
-    to { transform:translate3d(0px, 0px, 0px); }
-}
-
-// slideLeftIn20
-@mixin ms-u-slideLeftIn20 {
-    @include animationMix((fadeIn, slideLeftIn20), $ms-duration3, $ms-ease1);
-}
-
-.ms-u-slideLeftIn20 {
-    @include ms-u-slideLeftIn20;
-}
-@-webkit-keyframes slideLeftIn20 {
-    from { -webkit-transform:translate3d(20px, 0px, 0px); }
-    to { -webkit-transform:translate3d(0px, 0px, 0px); }
-}
-@keyframes slideLeftIn20 {
-    from { transform:translate3d(20px, 0px, 0px); }
-    to { transform:translate3d(0px, 0px, 0px); }
-}
-
-.ms-Callout-container {
-  position: relative;
-}
-
-.ms-Callout {
-  @include ms-font-m;
-  @include ms-u-normalize;
-  @include drop-shadow(0,0, 15px, -5px);
-  width: auto;
-  border: 1px solid $ms-color-neutralLight;
-  position: absolute;
-  display: inline-block;
-}
-
-// Disabled default box shadow.
-.ms-Callout-main {
-  box-shadow: none;
-}
-
 .ms-Callout-beak {
   position: absolute;
-  width: 28px;
-  height: 28px;
+  width: $Callout-beak-slant-width;
+  height: $Callout-beak-slant-width;
   background-color: $ms-color-white;
   box-shadow:  inherit;
   border: inherit;
@@ -387,8 +197,3 @@
   width: 16px;
   height: 16px;
 }
-
-.ExampleCard-example > .ms-Callout-container > .ms-Callout {
-  position: relative;
-}
-
