@@ -4,38 +4,58 @@ import {
 } from '../../../index';
 import {
   ExampleCard,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentPage
 } from '../../components/index';
 
 import { DatePickerBasicExample } from './examples/DatePicker.Basic.Example';
 import { DatePickerRequiredExample } from './examples/DatePicker.Required.Example';
 import { DatePickerInputExample } from './examples/DatePicker.Input.Example';
+import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/App/AppState';
 
 const DatePickerBasicExampleCode = require('./examples/DatePicker.Basic.Example.tsx');
 const DatePickerRequiredExampleCode = require('./examples/DatePicker.Required.Example.tsx');
 const DatePickerInputExampleCode = require('./examples/DatePicker.Input.Example.tsx');
 
 export class DatePickerPage extends React.Component<any, any> {
+  private _url: string;
+
+  constructor() {
+    super();
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'DatePicker');
+  }
   public render() {
     return (
-      <div className='DatePickerExample'>
-        <h1 className='ms-font-xxl'>DatePicker</h1>
-        <div>
-          <Link target='_blank' href='http://dev.office.com/fabric/components/datepicker'>DatePickers</Link>
-          <span> provide a menu for use in context menus and dropdowns.</span>
-        </div>
-        <h2 className='ms-font-xl'>Examples</h2>
-        <ExampleCard title='DatePicker' code={ DatePickerBasicExampleCode }>
-          <DatePickerBasicExample />
-        </ExampleCard>
-        <ExampleCard title='DatePicker as required field' code={ DatePickerRequiredExampleCode }>
-          <DatePickerRequiredExample />
-        </ExampleCard>
-        <ExampleCard title='DatePicker allows input date string' code={ DatePickerInputExampleCode }>
-          <DatePickerInputExample />
-        </ExampleCard>
-        <PropertiesTableSet componentName='DatePicker' />
-      </div>
+      <ComponentPage
+        title='DatePicker'
+        componentName='DatePickerExample'
+        exampleCards={
+          [
+            <ExampleCard title='DatePicker' code={ DatePickerBasicExampleCode }>
+              <DatePickerBasicExample />
+            </ExampleCard>,
+            <ExampleCard title='DatePicker as required field' code={ DatePickerRequiredExampleCode }>
+              <DatePickerRequiredExample />
+            </ExampleCard>,
+            <ExampleCard title='DatePicker allows input date string' code={ DatePickerInputExampleCode }>
+              <DatePickerInputExample />
+            </ExampleCard>
+          ]
+        }
+        propertiesTables={
+          [
+           <PropertiesTableSet componentName='DatePicker' />
+          ]
+        }
+        overview={
+          <div>
+            <Link target='_blank' href='http://dev.office.com/fabric/components/datepicker'>DatePickers</Link>
+            <span> provide a menu for use in context menus and dropdowns.</span>
+          </div>
+        }
+        route={ this._url }>
+      </ComponentPage>
     );
   }
 

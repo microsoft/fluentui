@@ -41,6 +41,12 @@
     transition: width $ms-duration3 $ms-ease1;
   }
 }
+.ms-Slider-slideBox {
+  background: inherit;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
 
 .ms-Slider-slideBox .ms-Slider-thumb {
   border: 2px solid $ms-color-neutralSecondary;

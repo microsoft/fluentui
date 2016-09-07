@@ -11,6 +11,8 @@ export interface IExampleCardProps {
   code?: string;
   children?: any;
   isRightAligned?: boolean;
+  dos?: JSX.Element;
+  donts?: JSX.Element;
 }
 
 export interface IExampleCardState {
@@ -42,9 +44,15 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
         <div className='ExampleCard-header'>
           <span className='ExampleCard-title ms-font-l'>{ title }</span>
           <span className='ExampleCard-toggleButtons ms-font-l'>
-            <Button buttonType={ ButtonType.primary } onClick={ this._onShowExampleClick }>{ isExampleShown ? 'Hide example' : 'Show example' }</Button>
+            <Button buttonType={ ButtonType.primary }
+              onClick={ this._onShowExampleClick }>
+              { isExampleShown ? 'Hide example' : 'Show example' }
+            </Button>
             { code ? (
-            <Button buttonType={ ButtonType.primary } onClick={ this._onToggleCodeClick }>{ isCodeVisible ? 'Hide code' : 'Show code' }</Button>
+            <Button buttonType={ ButtonType.primary }
+              onClick={ this._onToggleCodeClick } className={ isCodeVisible ? 'is-open' : ''}>
+              { '</>' }
+            </Button>
             ) : ( null ) }
           </span>
         </div>
@@ -65,8 +73,26 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
           ) }
 
         </div>
+        { this._getDosAndDonts() }
       </div>
     );
+  }
+
+  private _getDosAndDonts() {
+    if (this.props.dos && this.props.donts) {
+      return (
+        <div className='ExampleCard-dosAndDonts'>
+          <div className='ExampleCard-dos'>
+            <h4>Do</h4>
+            { this.props.dos }
+          </div>
+          <div className='ExampleCard-donts'>
+            <h4>Do not</h4>
+            { this.props.donts }
+          </div>
+        </div>
+      );
+    }
   }
 
   private _onToggleCodeClick() {
