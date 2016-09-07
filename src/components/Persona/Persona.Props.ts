@@ -76,7 +76,8 @@ export enum PersonaPresence {
   online,
   away,
   dnd,
-  blocked
+  blocked,
+  busy
 }
 
 export enum PersonaInitialsColor {
