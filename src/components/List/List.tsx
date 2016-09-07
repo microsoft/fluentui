@@ -78,7 +78,6 @@ export class List extends BaseComponent<IListProps, IListState> {
   private _scrollElement: HTMLElement;
   private _scrollingToIndex: number;
   private _hasCompletedFirstRender: boolean;
-  private isFirstRenderRectUpdate: boolean;
 
   // surface rect relative to window
   private _surfaceRect: ClientRect;
@@ -108,7 +107,6 @@ export class List extends BaseComponent<IListProps, IListState> {
     this._totalEstimates = 0;
     this._requiredWindowsAhead = 0;
     this._requiredWindowsBehind = 0;
-    this.isFirstRenderRectUpdate = true;
 
     // Track the measure version for everything.
     this._measureVersion = 0;
