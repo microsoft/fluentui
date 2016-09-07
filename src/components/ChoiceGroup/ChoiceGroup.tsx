@@ -124,7 +124,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
           'ms-ChoiceField-field--image': !!option.imageSrc,
           'ms-ChoiceField-field': !option.imageSrc,
           'is-checked': option.key === keyChecked,
-          'is-disabled':  option.isDisabled || option.disabled
+          'is-disabled': option.isDisabled || option.disabled
         }) }
       >
         {
