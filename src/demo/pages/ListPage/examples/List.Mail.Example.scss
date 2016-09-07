@@ -25,18 +25,14 @@
 }
 
 .ms-ListItem-primaryText {
-  color: $ms-color-neutralDark;
-  font-family: $ms-font-family-semilight;
-  font-size: $ms-font-size-xl;
+  @include ms-font-xl;
   padding-right: 80px; // Prevent overlap with up to three actions.
   position: relative;
   top: -4px;
 }
 
 .ms-ListItem-secondaryText {
-  color: $ms-color-neutralPrimary;
-  font-family: $ms-font-family-regular;
-  font-size: $ms-font-size-m;
+  @include ms-font-m;
   line-height: 25px;
   position: relative;
   top: -7px;
@@ -44,9 +40,7 @@
 }
 
 .ms-ListItem-tertiaryText {
-  color: $ms-color-neutralSecondaryAlt;
-  font-family: $ms-font-family-semilight;
-  font-size: $ms-font-size-m;
+  @include ms-font-m;
   position: relative;
   top: -9px;
   margin-bottom: -4px;
@@ -54,9 +48,7 @@
 }
 
 .ms-ListItem-metaText {
-  color: $ms-color-neutralPrimary;
-  font-family: $ms-font-family-semilight;
-  font-size: $ms-font-size-xs;
+  @include ms-font-xs;
   position: absolute;
   right: 30px;
   top: 39px;
@@ -112,7 +104,7 @@
 
   .ms-ListItem-secondaryText, .ms-ListItem-metaText {
     color: $ms-color-themePrimary;
-    font-family: $ms-font-family-semibold;
+    @include ms-fontWeight-semibold;
   }
 }
 
@@ -224,9 +216,7 @@
   // Secondary text, typically the modified date or some other metadata.
   .ms-ListItem-secondaryText {
     @include noWrap;
-    color: $ms-color-neutralSecondary;
-    font-family: $ms-font-family-regular;
-    font-size: $ms-font-size-xs;
+    @include ms-font-xs;
     padding-top: 6px;
   }
 }
