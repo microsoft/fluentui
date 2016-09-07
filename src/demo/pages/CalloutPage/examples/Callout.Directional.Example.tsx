@@ -89,7 +89,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
             <div className='ms-Callout-inner'>
               <div className='ms-Callout-content'>
                 <p className='ms-Callout-subText'>
-                  Message body is optional.If help documentation is available, consider adding a link to learn more at the bottom.
+                  Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
                 </p>
               </div>
             </div>

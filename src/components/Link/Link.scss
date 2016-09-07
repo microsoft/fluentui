@@ -9,9 +9,26 @@
 
 
 @mixin ms-Link {
+  @include ms-baseFont;
+  @include focus-border();
+  font-size: $ms-font-size-m;
+  font-weight: $ms-font-weight-regular;
   color: $ms-color-themePrimary;
   text-decoration: none;
   cursor: pointer;
+  padding: 0;
+  margin: 0;
+  background: none;
+  @include text-align(left);
+  display: inline;
+  border: none;
+
+  // need to support ellipsis truncation, so we do this by default.
+  width: auto;
+  max-width: 100%;
+
+  overflow: inherit;
+  text-overflow: inherit;
 
   &:hover,
   &:focus {
@@ -21,43 +38,8 @@
   &:active {
     color: $ms-color-themePrimary;
   }
-
-  @media screen and (-ms-high-contrast: active) {
-    color: $ms-color-contrastBlackLink;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    color: $ms-color-contrastWhiteLink;
-  }
 }
 
 .ms-Link {
   @include ms-Link;
 }
-
-// TODO: Remove overrides below.
-
-.ms-Link,
-BUTTON.ms-Link {
-  @include focus-border();
-
-  /* Needed for buttons disguised as links scenario. */
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: normal;
-
-  border: none;
-  background: none;
-  @include text-align(left);
-  display: inline;
-  padding: 0;
-  margin: 0;
-
-  // need to support ellipsis truncation, so we do this by default.
-  width: auto;
-  max-width: 100%;
-
-  overflow: inherit;
-  text-overflow: inherit;
-}
-

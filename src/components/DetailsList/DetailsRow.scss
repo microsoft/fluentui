@@ -76,10 +76,6 @@ $unselectedHoverColor: $ms-color-neutralLighter;
 
 .ms-DetailsRow-check {
   opacity: 0;
-
-  &:focus {
-    opacity: 1;
-  }
 }
 
 .ms-DetailsRow:hover .ms-DetailsRow-check,

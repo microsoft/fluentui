@@ -40,7 +40,6 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
             [
               {
                 key: keys[0],
-                icon: 'circlePlus',
                 name: 'New',
                 canCheck: true,
                 isChecked: selection[keys[0]],
@@ -48,7 +47,6 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
               },
               {
                 key: keys[1],
-                icon: 'share',
                 name: 'Share',
                 canCheck: true,
                 isChecked: selection[keys[1]],
@@ -56,7 +54,6 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
               },
               {
                 key: keys[2],
-                icon: 'mobile',
                 name: 'Mobile',
                 canCheck: true,
                 isChecked: selection[keys[2]],
@@ -69,7 +66,6 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
 
               {
                 key: keys[3],
-                icon: 'print',
                 name: 'Print',
                 canCheck: true,
                 isChecked: selection[keys[3]],
@@ -77,7 +73,6 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
               },
               {
                 key: keys[4],
-                icon: 'music',
                 name: 'Music',
                 canCheck: true,
                 isChecked: selection[keys[4]],
@@ -85,7 +80,6 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
               },
               {
                 key: keys[5],
-                icon: 'circlePlus',
                 items: [
                   {
                     key: keys[6],

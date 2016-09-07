@@ -21,7 +21,7 @@ export class DocumentCardActions extends React.Component<IDocumentCardActionsPro
 
         { views && (
         <div className='ms-DocumentCardActions-views'>
-          <i className='ms-Icon ms-Icon--eye' />
+          <i className='ms-Icon ms-Icon--View' />
           { views }
         </div>
         ) }
