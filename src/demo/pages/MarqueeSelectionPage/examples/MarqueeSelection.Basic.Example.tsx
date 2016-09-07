@@ -15,7 +15,7 @@ const PHOTOS = createArray(250, () => {
   const randomWidth = 50 + Math.floor(Math.random() * 150);
 
   return {
-    url: `http://placekitten.com/${randomWidth}/100`,
+    url: `http://placehold.it/${randomWidth}x100`,
     width: randomWidth,
     height: 100
   };
