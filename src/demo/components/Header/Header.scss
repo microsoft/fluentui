@@ -1,10 +1,12 @@
 @import '../../../common/common';
 
+$Header-fabricWebsiteHeaderColor: #272630;
+
 .Header {
   height: 50px;
   line-height: 50px;
   padding: 0 20px;
-  background: $ms-color-themeDark;
+  background: $Header-fabricWebsiteHeaderColor;
   overflow: hidden;
   white-space: no-wrap;
   user-select: none;
