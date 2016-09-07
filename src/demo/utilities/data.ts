@@ -15,7 +15,7 @@ export function createListItems(count: number, startIndex = 0): any {
     let size = 150 + Math.round(Math.random() * 100);
 
     return {
-      thumbnail: `//placekitten.com/${ size }/${ size }`,
+      thumbnail: `//placehold.it/${ size }x${ size }`,
       key: 'item-' + (index + startIndex) + ' ' + lorem(4),
       name: lorem(5),
       description: lorem(10 + Math.round(Math.random() * 50)),

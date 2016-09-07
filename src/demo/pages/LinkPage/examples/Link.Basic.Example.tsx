@@ -9,7 +9,7 @@ export class LinkBasicExample extends React.Component<any, any> {
       <div>
         <Link href='http://dev.office.com/fabric/components/link'>I am a link with an href.</Link>
         <span> Also, </span>
-        <Link>i am a link without an href.</Link>
+        <Link>I am a link without an href.</Link>
       </div>
     );
   }

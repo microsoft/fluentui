@@ -1,4 +1,4 @@
-@import "~office-ui-fabric/src/sass/Fabric.Common";
+@import '../../common/common';
 
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
 
@@ -9,6 +9,7 @@
 
 
 .ms-Spinner {
+  @include ms-baseFont;
   position: relative;
   height: 20px;
 
@@ -16,7 +17,7 @@
     height: 28px;
 
     .ms-Spinner-label {
-      left: 34px;
+      @include left(34px);
       top: 6px;
     }
   }
@@ -38,28 +39,11 @@
 }
 
 .ms-Spinner-label {
+  @include ms-font-s;
   position: relative;
-  @include ms-font-s();
   color: $ms-color-themePrimary;
-  left: 28px;
-  top: 2px;
-}
-
-// TODO: Remove overrides below.
-
-/**
-  Change from Fabric - RTL support
-*/
-.ms-Spinner {
-  &.ms-Spinner--large {
-    .ms-Spinner-label {
-      @include left(34px);
-    }
-  }
-}
-
-.ms-Spinner-label {
   @include left(28px);
+  top: 2px;
 }
 
 /**
