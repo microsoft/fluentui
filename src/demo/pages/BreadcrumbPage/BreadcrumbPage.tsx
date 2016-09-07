@@ -5,8 +5,7 @@ import {
 import {
   ExampleCard,
   PropertiesTableSet,
-  ComponentPage,
-  IComponentPageProps
+  ComponentPage
 } from '../../components/index';
 import { BreadcrumbBasicExample } from './examples/Breadcrumb.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';

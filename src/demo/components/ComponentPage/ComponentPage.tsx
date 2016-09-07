@@ -18,13 +18,12 @@ export interface IComponentPageProps {
 }
 
 export class ComponentPage extends React.Component<IComponentPageProps, {}> {
+  public static defaultProps = {
+    showHeader: true
+  };
 
   constructor(props: IComponentPageProps) {
     super(props);
-  }
-
-  public static defaultProps = {
-    showHeader: true
   }
 
   public render() {

@@ -15,7 +15,7 @@ import { IComponentDemoPageProps } from '../../components/ComponentPage/ICompone
 
 const LabelBasicExampleCode = require('./examples/Label.Basic.Example.tsx');
 
-export class LabelPage extends React.Component<any, any> {
+export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
