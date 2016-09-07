@@ -131,7 +131,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
             <i className='ms-Nav-chevron ms-Icon ms-Icon--chevronDown'></i>
           </button> : null
         )}
-          { this._renderAnchorLink(link, linkIndex, nestingLevel) }
+          { !!link.onClick ? this._renderButtonLink(link, linkIndex) : this._renderAnchorLink(link, linkIndex, nestingLevel) }
       </div>
      );
   }

@@ -42,12 +42,12 @@ export interface INavProps {
   ariaLabel?: string;
 
   /**
-   * (Optional) The alt text for the expanded state
+   * (Optional) The tooltip text for the expanded state
    **/
   expandedStateText?: string;
 
   /**
-   * (Optional) The alt text for the collapsed state text
+   * (Optional) The tooltip text for the collapsed state text
    **/
   collapsedStateText?: string;
 }
@@ -86,12 +86,12 @@ export interface INavLink {
   links?: INavLink[];
 
   /**
-   * Function callback invoked when a link in the navigation is clicked
+   * Function callback invoked when a button link in the navigation is clicked
    */
   onClick?: (ev?: React.MouseEvent) => void;
 
   /**
-   * Classname to apply to the icon link. (obsolet should be removed after all repo updated)
+   * Classname to apply to the icon link or button link with icon.
    */
   iconClassName?: string;
 
@@ -136,8 +136,7 @@ export interface INavLink {
   target?: string;
 
   /**
-   * Point to the parent node key.  This is used in EditNav when move node from sublink to
-   *   parent lin vs vers.
+   * ParentId points to the parent node key.  Server used it during editing.
    */
   parentId?: string;
 
