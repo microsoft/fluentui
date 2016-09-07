@@ -507,7 +507,7 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
                   <button className='ms-PeoplePicker-resultAction' onClick={ () => {
                       this._removeSelectedPersona( selectedPersonas.indexOf(child) );
                   }}>
-                    <i className='ms-Icon ms-Icon--x'></i>
+                    <i className='ms-Icon ms-Icon--Cancel'></i>
                   </button>
                 </li>);
             })
@@ -537,7 +537,7 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
             <button className='ms-PeoplePicker-personaRemove' tabIndex={-1} data-is-focusable={false} onClick={ () => {
                 this._removeSelectedPersona( selectedPersonas.indexOf(child) );
               } }>
-              <i className='ms-Icon ms-Icon--x'></i>
+              <i className='ms-Icon ms-Icon--Clear'></i>
             </button>
           </div>
         </div>);
@@ -604,8 +604,8 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
       'ms-PeoplePicker-searchMoreBtn--compact': type === PeoplePickerType.compact
     });
     let searchIconClassName = css('ms-Icon', {
-      'ms-Icon--search': isConnected,
-      'ms-Icon--alert': !isConnected
+      'ms-Icon--Search': isConnected,
+      'ms-Icon--IncidentTriangle': !isConnected
     });
     let searchMore = canSearchMore ? (
       <div className={ searchMoreClassName } onClick={ isConnected ? this._searchForMoreResults : null }>
@@ -697,7 +697,7 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
               className='ms-PeoplePicker-resultAction'
               tabIndex={-1}
               onClick={ () => { this._removeSuggestedPersona(id, personaInfo); }} >
-              <i className='ms-Icon ms-Icon--x'></i></button>
+              <i className='ms-Icon ms-Icon--Clear'></i></button>
             : null }
         </div>
       </li>);

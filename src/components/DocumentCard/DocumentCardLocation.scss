@@ -1,10 +1,9 @@
 @import '../../common/common';
 
 .ms-DocumentCardLocation {
-  color: $ms-color-neutralSecondaryAlt;
+  @include ms-font-s;
+  color: $ms-color-neutralPrimary;
   display: block;
-  font-family: $ms-font-family-regular;
-  font-size: $ms-font-size-s;
   padding: 8px 16px;
   position: relative;
   text-decoration: none;

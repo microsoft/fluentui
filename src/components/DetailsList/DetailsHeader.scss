@@ -22,12 +22,12 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   }
 }
 
-.ms-DetailsHeader-cell.is-check .ms-Check-circle {
+.ms-DetailsHeader-cell.is-check .ms-Check-background {
   visibility: hidden;
 }
 
-.ms-DetailsHeader-cell.is-check:hover .ms-Check-circle,
-.ms-DetailsHeader.is-allSelected .ms-Check-circle {
+.ms-DetailsHeader-cell.is-check:hover .ms-Check-background,
+.ms-DetailsHeader.is-allSelected .ms-Check-background {
   visibility: visible;
 }
 
@@ -45,7 +45,7 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   color: $disabledForegroundColor;
 
   @include focus-border();
-  font-family: $ms-font-family-regular;
+  font-weight: $ms-font-weight-regular;
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -134,7 +134,7 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
 
 .ms-DetailsHeader-cell .ms-Icon {
   color: $iconForegroundColor;
-  @include padding-right(5px);
+  opacity: 1;
 }
 
 .ms-DetailsHeader-cell .ms-DetailsHeader-filterChevron.ms-Icon {

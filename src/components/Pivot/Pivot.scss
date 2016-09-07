@@ -7,18 +7,32 @@
 // --------------------------------------------------
 // Pivot and tab styles
 
+
+.ms-Pivot {
+  @include ms-baseFont;
+  @include ms-u-normalize;
+  font-size: $ms-font-size-m;
+  font-weight: $ms-font-weight-regular;
+  position: relative;
+  color: $ms-color-themePrimary;
+  white-space: nowrap;
+}
+
 /* The UL element */
 .ms-Pivot-header {
-   list-style-type: none;
-   white-space: nowrap;
-   padding: 0;
-   margin: 0 -8px;
-   user-select: none;
+  font-size: 0; // Bring inline-block children together
+  list-style-type: none;
+  white-space: nowrap;
+  padding: 0;
+  margin: 0 -8px;
+  user-select: none;
 }
 
 /* The LI element */
 .ms-Pivot-tab {
   display: inline-block;
+  font-size: $ms-font-size-m;
+  font-weight: $ms-font-weight-regular;
   vertical-align: bottom;
 }
 
@@ -32,8 +46,8 @@
   margin: 0 4px;
   padding: 0 4px;
   color: $ms-color-neutralPrimary;
-  font-family: $ms-font-family-regular;
-  font-size: $ms-font-size-m;
+  font-family: inherit;
+  font-size: inherit;
   text-align: center;
   cursor: pointer;
 
@@ -41,6 +55,18 @@
   &:focus,
   &:active {
     color: $ms-color-black;
+  }
+
+  /** Overlay text, we hide it to make room for it. */
+  .ms-Pivot-title::after {
+    content: attr(data-selected-overlay);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    color: transparent;
+    font-weight: bold;
   }
 
   &[disabled] {
@@ -67,21 +93,13 @@
     border-bottom: 2px solid $ms-color-themePrimary;
   }
 
-  /** Overlay text */
-  .ms-Pivot-title::after {
-    content: attr(data-selected-overlay);
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-
-    color: $ms-color-black;
-    font-family: $ms-font-family-semibold;
-  }
-
   /* Hide text and show bold overlay to prevent pixel jumping. */
   .ms-Pivot-titleText {
     color: transparent;
+  }
+
+  .ms-Pivot-title::after {
+    color: $ms-color-black;
   }
 
 }
@@ -90,10 +108,6 @@
 .ms-Pivot--large {
   .ms-Pivot-tabButton {
     font-size: $ms-font-size-l;
-
-    &:is-selected .ms-Pivot-selectedTitleText {
-      font-family: $ms-font-family-regular;
-    }
   }
 }
 
@@ -103,20 +117,20 @@
       margin: 0;
   }
 
-  .ms-Pivot-header {
-    margin: 0;
+  &:active {
+    color: $ms-color-themePrimary;
   }
 
   .ms-Pivot-tabButton {
-    font-family: $ms-font-family-semilight;
     background-color: $ms-color-neutralLighter;
     margin: 0;
     padding: 0 8px;
+    font-weight: $ms-font-weight-semilight;
 
     &.is-selected {
       background-color: $ms-color-themePrimary;
-      font-family: $ms-font-family-semilight;
       color: $ms-color-white;
+      font-weight: $ms-font-weight-semilight;
 
       &:hover,
       &:focus,
@@ -125,7 +139,6 @@
       }
 
       .ms-Pivot-title::after {
-        font-family: $ms-font-family-semilight;
         color: $ms-color-white;
       }
 
@@ -141,104 +154,3 @@
     }
   }
 }
-
-/*
-//== Modifier: Tabs
-//
-.ms-Pivot.ms-Pivot--tabs {
-  height: 40px;
-
-  .ms-Pivot-link {
-    height: 40px;
-    background-color: $ms-color-neutralLighter;
-    line-height: 40px;
-    margin-right: -2px; // Remove space next to inline-block element
-    padding: 0 10px;
-    font-family:  !important;
-
-    &:hover:not(.is-selected):not(.ms-Pivot-link--overflow),
-    &:focus:not(.is-selected):not(.ms-Pivot-link--overflow) {
-      color: $ms-color-black;
-    }
-
-    &:active {
-      color: $ms-color-white !important;
-      background-color: $ms-color-themePrimary;
-      font-family: $ms-font-family-semilight;
-
-      @media screen and (-ms-high-contrast: active) {
-        background-color: $ms-color-contrastBlackSelected;
-        color: $ms-color-black;
-      }
-
-      @media screen and (-ms-high-contrast: black-on-white) {
-        background-color: $ms-color-contrastWhiteSelected;
-        color: $ms-color-white;
-      }
-    }
-
-    //== State: Selected
-    &.is-selected {
-      background-color: $ms-color-themePrimary;
-      color: $ms-color-white;
-      font-family: $ms-font-family-semilight;
-
-      @media screen and (-ms-high-contrast: active) {
-        background-color: $ms-color-contrastBlackSelected;
-        color: $ms-color-black;
-      }
-
-      @media screen and (-ms-high-contrast: black-on-white) {
-        background-color: $ms-color-contrastWhiteSelected;
-        color: $ms-color-white;
-      }
-    }
-  }
-
-  .ms-Pivot-link.ms-Pivot-link--overflow {
-    &:hover:not(.is-selected),
-    &:focus:not(.is-selected) {
-      background-color: $ms-color-white;
-    }
-
-    &:active {
-      background-color: $ms-color-themePrimary !important;
-    }
-  }
-}
-
-
-
-@media (min-width: $ms-screen-lg-min) {
-  .ms-Pivot-link {
-    font-size: $ms-font-size-m;
-  }
-
-  .ms-Pivot-link.ms-Pivot-link--overflow {
-    &:after {
-      font-size: $ms-font-size-m;
-    }
-  }
-}
-
-
-
-// All high contrast styling rules
-@media screen and (-ms-high-contrast: active) {
-  .ms-Pivot.ms-Pivot--tabs {
-    .ms-Pivot-link {
-      &.is-selected {
-        font-family: $ms-font-family-semibold;
-      }
-    }
-  }
-}
-
-// TODO: Remove override below.
-
-.ms-Pivot {
-  position: relative;
-  color: $ms-color-themePrimary;
-  white-space: nowrap;
-}
-*/
