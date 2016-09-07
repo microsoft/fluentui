@@ -14,7 +14,7 @@ import { IComponentDemoPageProps } from '../../components/ComponentPage/ICompone
 import { ProgressIndicatorBasicExample } from './examples/ProgressIndicator.Basic.Example';
 const ProgressIndicatorBasicExampleCode = require('./examples/ProgressIndicator.Basic.Example.tsx');
 
-export class ProgressIndicatorPage extends React.Component<any, any> {
+export class ProgressIndicatorPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
