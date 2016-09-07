@@ -61,8 +61,8 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
           className='ms-Checkbox-input'
           type='checkbox'
           onChange={ this._onChange }
-          onFocus= { this._onFocus }
-          onBlur= { this._onBlur }
+          onFocus={ this._onFocus }
+          onBlur={ this._onBlur }
           aria-checked={ checked }
         />
         <label htmlFor={ this._id }

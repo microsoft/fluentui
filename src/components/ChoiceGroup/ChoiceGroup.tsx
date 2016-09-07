@@ -120,11 +120,12 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
     return (
       <label
         htmlFor={ this._id + '-' + option.key }
-        className={ css(
-                      option.imageSrc ? 'ms-ChoiceField-field--image' : 'ms-ChoiceField-field',
-                      {'is-checked': option.key === keyChecked },
-                      {'is-disabled': option.isDisabled }
-                    ) }
+        className={ css({
+          'ms-ChoiceField-field--image': !!option.imageSrc,
+          'ms-ChoiceField-field': !option.imageSrc,
+          'is-checked': option.key === keyChecked,
+          'is-disabled': option.isDisabled
+        }) }
       >
         {
           option.imageSrc
