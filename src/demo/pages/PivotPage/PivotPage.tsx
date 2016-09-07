@@ -4,9 +4,12 @@ import {
 } from '../../../index';
 import {
   ExampleCard,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentPage
 } from '../../components/index';
 
+import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/App/AppState';
 import { PivotBasicExample } from './examples/Pivot.Basic.Example';
 import { PivotVariationsExample } from './examples/Pivot.Variations.Example';
 import { PivotCustomExample } from './examples/Pivot.Custom.Example';
@@ -16,29 +19,44 @@ const PivotVariationsExampleCode = require('./examples/Pivot.Variations.Example.
 const PivotCustomExampleCode = require('./examples/Pivot.Custom.Example.tsx');
 
 export class PivotPage extends React.Component<any, any> {
+  private _url: string;
+
+  constructor() {
+    super();
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'Pivot');
+  }
+
   public render() {
     return (
-      <div className='PivotPageExample'>
-        <h1 className='ms-font-xxl'>Pivot</h1>
-        <div>
-          <Link target='_blank' href='http://dev.office.com/fabric/components/Pivot'>Pivots</Link>
-          <span> are used for rendering selectable section links.</span>
-        </div>
-        <h2 className='ms-font-xl'>Examples</h2>
-
-        <ExampleCard title='Basic example' code={ PivotBasicExampleCode }>
-          <PivotBasicExample />
-        </ExampleCard>
-        <ExampleCard title='Pivot variations' code={ PivotVariationsExampleCode }>
-          <PivotVariationsExample />
-        </ExampleCard>
-        <ExampleCard title='Custom tab rendering' code={ PivotCustomExampleCode }>
-          <PivotCustomExample />
-        </ExampleCard>
-
-        <PropertiesTableSet componentName='Pivot' />
-        <PropertiesTableSet componentPath='components/Pivot/' componentName='PivotItem' />
-      </div>
+      <ComponentPage
+        title='Pivot'
+        componentName='PivotExample'
+        exampleCards={
+          [
+            <ExampleCard title='Basic example' code={ PivotBasicExampleCode }>
+              <PivotBasicExample />
+            </ExampleCard>,
+            <ExampleCard title='Pivot variations' code={ PivotVariationsExampleCode }>
+              <PivotVariationsExample />
+            </ExampleCard>,
+            <ExampleCard title='Custom tab rendering' code={ PivotCustomExampleCode }>
+              <PivotCustomExample />
+            </ExampleCard>
+          ]
+        }
+        propertiesTables={
+          [
+            <PropertiesTableSet componentName='Pivot' />
+          ]
+        }
+        overview={
+          <div>
+            <Link target='_blank' href='http://dev.office.com/fabric/components/Pivot'>Pivots</Link>
+            <span> are used for grouping components under a set of Links or Tabs</span>
+          </div>
+        }
+        route={ this._url }>
+      </ComponentPage>
     );
   }
 }
