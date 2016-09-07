@@ -141,6 +141,12 @@ export interface IGroup {
    * Override which allows the caller to provider a customer footer.
    */
   onRenderFooter?: (group: IGroup) => React.ReactNode;
+
+  /**
+   * Optional accessibility label (aria-label) attribute that will be stamped on to the element.
+   * If none is specified, the arai-label attribute will contain the group name
+   */
+  ariaLabel?: string;
 }
 
 export interface IGroupRenderProps {
