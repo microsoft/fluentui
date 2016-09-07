@@ -19,9 +19,11 @@ export function format(s: string, ...values: any[]): string {
         // looks up in the args
         let replacement = args[match.replace(FORMAT_ARGS_REGEX, '')];
 
-        if (replacement) {
+        // catches undefined in nondebug and null in debug and nondebug
+        if (replacement === null || replacement === undefined) {
             replacement = '';
         }
+
         return replacement;
     }
     return (s.replace(FORMAT_REGEX, replace_func));

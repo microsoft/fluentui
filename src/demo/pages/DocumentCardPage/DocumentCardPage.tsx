@@ -7,11 +7,13 @@ import {
 
 import { DocumentCardBasicExample } from './examples/DocumentCard.Basic.Example';
 import { DocumentCardCompleteExample } from './examples/DocumentCard.Complete.Example';
+import { DocumentCardCompactExample } from './examples/DocumentCard.Compact.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 
 const DocumentCardBasicExampleCode = require('./examples/DocumentCard.Basic.Example.tsx');
 const DocumentCardCompleteExampleCode = require('./examples/DocumentCard.Complete.Example.tsx');
+const DocumentCardCompactExampleCode = require('./examples/DocumentCard.Compact.Example.tsx');
 
 export class DocumentCardPage extends React.Component<any, any> {
   private _url: string;
@@ -33,6 +35,9 @@ export class DocumentCardPage extends React.Component<any, any> {
             </ExampleCard>,
             <ExampleCard title='DocumentCard Complete' code={ DocumentCardCompleteExampleCode }>
               <DocumentCardCompleteExample />
+            </ExampleCard>,
+            <ExampleCard title='DocumentCard Compact Layout' code={ DocumentCardCompactExampleCode }>
+              <DocumentCardCompactExample />
             </ExampleCard>
           ]
         }
