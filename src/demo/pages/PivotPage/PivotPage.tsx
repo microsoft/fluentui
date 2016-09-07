@@ -10,7 +10,6 @@ import {
 
 import { PivotBasicExample } from './examples/Pivot.Basic.Example';
 import { PivotLargeExample } from './examples/Pivot.Large.Example';
-import { PivotItemCountExample } from './examples/Pivot.ItemCount.Example';
 import { PivotTabsExample } from './examples/Pivot.Tabs.Example';
 import { PivotTabsLargeExample } from './examples/Pivot.TabsLarge.Example';
 import { PivotFabricExample } from './examples/Pivot.Fabric.Example';
@@ -22,7 +21,6 @@ import { AppState } from '../../components/App/AppState';
 const PivotRemoveExampleCode = require('./examples/Pivot.Remove.Example.tsx');
 const PivotBasicExampleCode = require('./examples/Pivot.Basic.Example.tsx');
 const PivotLargeExampleCode = require('./examples/Pivot.Large.Example.tsx');
-const PivotItemCountExampleCode = require('./examples/Pivot.ItemCount.Example.tsx');
 const PivotTabsExampleCode = require('./examples/Pivot.Tabs.Example.tsx');
 const PivotTabsLargesExampleCode = require('./examples/Pivot.TabsLarge.Example.tsx');
 const PivotFabricExampleCode = require('./examples/Pivot.Fabric.Example.tsx');
