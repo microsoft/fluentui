@@ -50,7 +50,7 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement> {
   value?: string;
 
   /**
-   * Default value of the textfield, if any.
+   * The error message show show for an invalid value.
    */
   errorMessage?: string;
 
@@ -58,37 +58,6 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement> {
    * Callback for the onChanged event.
    */
   onChanged?: (newValue: any) => void;
-
-  /**
-   * Callback for the onBeforeChange event.
-   */
-  onBeforeChange?: (newValue: any) => void;
-
-  /**
-   * Callback for the onNotifyValidationResult event.
-   */
-  onNotifyValidationResult?: (errorMessage: string, value: string) => void;
-
-  /**
-   * The method is used to get the validation error message and determine whether the input value is valid or not.
-   *
-   *   When it returns string:
-   *   - If valid, it returns empty string.
-   *   - If invalid, it returns the error message string and the text field will
-   *     show a red border and show an error message below the text field.
-   *
-   *   When it returns Promise<string>:
-   *   - The resolved value is display as error message.
-   *   - The rejected, the value is thrown away.
-   *
-   */
-  onGetErrorMessage?: (value: string) => string | PromiseLike<string>;
-
-  /**
-   * Text field will start to validate after users stop typing for `deferredValidationTime` milliseconds.
-   * @default 200
-   */
-  deferredValidationTime?: number;
 
   /**
    * Aria Label for textfield, if any.
