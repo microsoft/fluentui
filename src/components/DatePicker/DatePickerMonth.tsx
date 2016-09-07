@@ -41,14 +41,14 @@ export class DatePickerMonth extends React.Component<IDatePickerMonthProps, {}> 
               onClick={ this._onSelectPrevYear }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectPrevYear) }
               tabIndex={ 0 }>
-              <i className={ css('ms-Icon', {'ms-Icon--chevronLeft': !getRTL(), 'ms-Icon--chevronRight': getRTL()}) }  />
+              <i className={ css('ms-Icon', {'ms-Icon--ChevronLeft': !getRTL(), 'ms-Icon--ChevronRight': getRTL()}) }  />
             </span>
             <span
               className='ms-DatePicker-nextYear js-nextYear'
               onClick={ this._onSelectNextYear }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectNextYear) }
               tabIndex={ 0 }>
-              <i className={ css('ms-Icon', {'ms-Icon--chevronLeft': getRTL(), 'ms-Icon--chevronRight': !getRTL()}) }  />
+              <i className={ css('ms-Icon', {'ms-Icon--ChevronLeft': getRTL(), 'ms-Icon--ChevronRight': !getRTL()}) }  />
             </span>
           </div>
           <div className='ms-DatePicker-currentYear js-showYearPicker'>{ navigatedDate.getFullYear() }</div>

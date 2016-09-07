@@ -98,10 +98,10 @@
 
   .ms-Slider-slideBox:active {
     .ms-Slider-thumb {
-      border: 2px solid $ms-color-themeDark;
+      border: 2px solid $ms-color-themeDarkAlt;
     }
     .ms-Slider-active {
-      background-color: $ms-color-themeDark;
+      background-color: $ms-color-themeDarkAlt;
     }
   }
 }

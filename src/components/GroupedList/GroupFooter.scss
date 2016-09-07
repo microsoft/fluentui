@@ -6,7 +6,7 @@
   cursor: pointer;
 
   .ms-Link {
-    font-family: $ms-font-family-regular;
+    @include ms-baseFont;
     font-size: $ms-font-size-s;
   }
 }
