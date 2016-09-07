@@ -3,15 +3,16 @@ import { DetailsList } from './DetailsList';
 import {
   ISelection,
   SelectionMode
-} from '../../utilities/selection/interfaces';
+} from '../../utilities/selection/index';
 import {
   IDragDropEvents,
-  IDragDropContext
-} from './../../utilities/dragdrop/interfaces';
+  IDragDropContext,
+} from './../../utilities/dragdrop/index';
 import {
   IGroup,
   IGroupRenderProps
 } from '../GroupedList/index';
+import { IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { IViewport } from '../../utilities/decorators/withViewport';
 
 export interface IDetailsList {
@@ -29,6 +30,11 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** The items to render. */
   items: any[];
+
+  /**
+   * Optional default focused index to set focus to once the items have rendered and the index exists.
+   */
+  initialFocusedIndex?: number;
 
   /** Optional class name to add to the root element. */
   className?: string;
@@ -89,6 +95,11 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** Callback for when the context menu of an item has been accessed. */
   onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void;
+
+  /**
+   *  If provided, will allow the caller to override the default row rendering.
+   */
+  onRenderRow?: (props: IDetailsRowProps, defaultRender?: (props: IDetailsRowProps) => JSX.Element) => JSX.Element;
 
   /**
    * If provided, will be the "default" item column renderer method. This affects cells within the rows; not the rows themselves.

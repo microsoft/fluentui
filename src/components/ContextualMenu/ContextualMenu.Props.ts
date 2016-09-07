@@ -75,6 +75,12 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IPosi
    */
   beakWidth?: number;
 
+  /**
+   * Aria label for accessibility for the ContextualMenu.
+   * If none specified no aria label will be applied to the ContextualMenu.
+   */
+  ariaLabel?: string;
+
 }
 
 export interface IContextualMenuItem {
@@ -141,6 +147,17 @@ export interface IContextualMenuItem {
    * @defaultvalue undefined
    */
   className?: string;
+
+  /**
+   * Optional accessibility label (aria-label) attribute that will be stamped on to the element.
+   * If none is specified, the arai-label attribute will contain the item name
+   */
+  ariaLabel?: string;
+
+  /**
+   * Optional title for displaying text when hovering over an item.
+   */
+  title?: string;
 
   /**
    * Method to custom render this menu item

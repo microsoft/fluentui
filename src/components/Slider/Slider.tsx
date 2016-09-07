@@ -7,6 +7,7 @@ import { Label } from '../../Label';
 import { css } from '../../utilities/css';
 import { getRTL as isRTL, getRTLSafeKeyCode } from '../../utilities/rtl';
 import { getId } from '../../utilities/object';
+import { autobind } from '../../utilities/autobind';
 
 export interface ISliderState {
   value?: number;
@@ -38,11 +39,6 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
 
   constructor(props?: ISliderProps) {
     super(props);
-
-    this._onMouseDownOrTouchStart = this._onMouseDownOrTouchStart.bind(this);
-    this._onMouseMoveOrTouchMove = this._onMouseMoveOrTouchMove.bind(this);
-    this._onMouseUpOrTouchEnd = this._onMouseUpOrTouchEnd.bind(this);
-    this._onKeyDown = this._onKeyDown.bind(this);
 
     this._id = getId('Slider');
 
@@ -137,6 +133,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     return this.state.value;
   }
 
+  @autobind
   private _onMouseDownOrTouchStart(event: MouseEvent | TouchEvent): void {
     if (event.type === 'mousedown') {
       this._events.on(window, 'mousemove', this._onMouseMoveOrTouchMove, true);
@@ -149,8 +146,9 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     this._onMouseMoveOrTouchMove(event, true);
   }
 
+  @autobind
   private _onMouseMoveOrTouchMove(event: MouseEvent | TouchEvent, suppressEventCancelation?: boolean): void {
-    const { max, min, step, onChange } = this.props;
+    const { max, min, step } = this.props;
     const steps: number = (max - min) / step;
     const sliderLength: number = this.refs.sliderLine.offsetWidth;
     const stepLength: number = sliderLength / steps;
@@ -180,13 +178,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
       currentValue = min + step * Math.round(currentSteps);
     }
 
-    this.setState({
-      value: currentValue,
-      renderedValue: renderedValue
-    });
-    if (onChange) {
-      onChange(currentValue);
-    }
+    this._updateValue(currentValue, renderedValue);
 
     if (!suppressEventCancelation) {
       event.preventDefault();
@@ -194,7 +186,23 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     }
   }
 
+  private _updateValue(value, renderedValue) {
+    let valueChanged = value !== this.state.value;
+
+    this.setState({
+      value,
+      renderedValue
+    }, () => {
+      if (valueChanged && this.props.onChange) {
+        this.props.onChange(this.state.value);
+      }
+    });
+  }
+
+  @autobind
   private _onMouseUpOrTouchEnd(): void {
+
+    // Synchronize the renderedValue to the actual value.
     this.setState({
       renderedValue: this.state.value
     });
@@ -202,9 +210,10 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     this._events.off();
   }
 
+  @autobind
   private _onKeyDown(event: KeyboardEvent): void {
     const value: number = this.state.value;
-    const { max, min, step, onChange } = this.props;
+    const { max, min, step } = this.props;
 
     let diff: number = 0;
     if (event.which === getRTLSafeKeyCode(KeyCodes.left)) {
@@ -216,14 +225,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     }
     const newValue: number = Math.min(max, Math.max(min, value + diff));
 
-    this.setState({
-      value: newValue,
-      renderedValue: newValue
-    });
-
-    if (onChange) {
-      onChange(newValue);
-    }
+    this._updateValue(newValue, newValue);
 
     event.preventDefault();
     event.stopPropagation();

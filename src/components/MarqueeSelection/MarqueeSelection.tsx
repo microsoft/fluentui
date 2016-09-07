@@ -7,6 +7,7 @@ import { IRectangle } from '../../common/IRectangle';
 import { css } from '../../utilities/css';
 import { findScrollableParent } from '../../utilities/scrollUtilities';
 import { getDistanceBetweenPoints } from '../../utilities/math';
+import { autobind } from '../../utilities/autobind';
 
 import './MarqueeSelection.scss';
 
@@ -52,8 +53,6 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     this.state = {
       dragRect: undefined
     };
-
-    this._onMouseDown = this._onMouseDown.bind(this);
   }
 
   public componentDidMount() {
@@ -94,6 +93,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     );
   }
 
+  @autobind
   private _onMouseDown(ev: MouseEvent) {
     let { isEnabled, onShouldStartSelection } = this.props;
 
@@ -109,8 +109,6 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
         this._scrollableParent = scrollableParent;
         this._scrollTop = scrollableParent.scrollTop;
         this._rootRect = this.refs.root.getBoundingClientRect();
-
-        this._onMouseMove(ev);
       }
     }
   }
@@ -250,4 +248,3 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     selection.setChangeEvents(true);
   }
 }
-

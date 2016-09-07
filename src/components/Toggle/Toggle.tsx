@@ -3,6 +3,8 @@ import { IToggleProps } from './Toggle.Props';
 import { css } from '../../utilities/css';
 import { Label } from '../../Label';
 import { getId } from '../../utilities/object';
+import { autobind } from '../../utilities/autobind';
+
 import './Toggle.scss';
 
 export interface IToggleState {
@@ -28,7 +30,6 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
     };
 
     this._id = getId('Toggle');
-    this._onClick = this._onClick.bind(this);
   }
 
   /**
@@ -69,8 +70,8 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
               name={ this._id }
               className={ css('ms-Toggle-button', className) }
               disabled={ disabled }
-              role='button'
-              aria-pressed={ isChecked }
+              role='checkbox'
+              aria-checked={ isChecked }
               onClick={ this._onClick }
             />
             <div className='ms-Toggle-background'>
@@ -91,6 +92,7 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
       }
   }
 
+  @autobind
   private _onClick() {
     let { checked, onChanged } = this.props;
     let { isChecked } = this.state;

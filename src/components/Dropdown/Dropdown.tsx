@@ -50,7 +50,8 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
 
   public componentWillReceiveProps(newProps: IDropdownProps) {
     this.setState({
-      selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey)
+      selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey),
+      isDisabled: newProps.isDisabled
     });
   }
 
@@ -86,6 +87,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
       <div ref='root'>
         <label id={ id + '-label' } className='ms-Label'>{ label }</label>
         <div
+          data-is-focusable={ true }
           ref={ (c): HTMLElement => this._dropDown = c }
           id={ id }
           className={ css('ms-Dropdown', {

@@ -9,13 +9,15 @@ import {
   CheckboxVisibility
 } from '../DetailsList/DetailsList.Props';
 import { DetailsHeader, SelectAllVisibility } from '../DetailsList/DetailsHeader';
-import { DetailsRow } from '../DetailsList/DetailsRow';
+import { DetailsRow, IDetailsRowProps } from '../DetailsList/DetailsRow';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { GroupedList } from '../../GroupedList';
 import { List } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { assign } from '../../utilities/object';
 import { css } from '../../utilities/css';
+import { autobind } from '../../utilities/autobind';
+
 import {
   IObjectWithKey,
   ISelection,
@@ -59,18 +61,21 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   };
 
   public refs: {
-    [key: string]: React.ReactInstance,
+    [ key: string]: React.ReactInstance,
     header: DetailsHeader,
     root: HTMLElement,
-    groups: GroupedList,
+    groupedList: GroupedList,
     list: List,
-    focusZone: FocusZone
+    focusZone: FocusZone,
+    selectionZone: SelectionZone
   };
 
   private _events: EventGroup;
   private _selection: ISelection;
   private _activeRows: { [key: string]: DetailsRow };
   private _dragDropHelper: DragDropHelper;
+  private _initialFocusedIndex: number;
+
   private _columnOverrides: {
     [key: string]: IColumn;
   };
@@ -106,6 +111,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     this._selection = props.selection || new Selection({ onSelectionChanged: null, getKey: props.getKey });
     this._selection.setItems(props.items as IObjectWithKey[], false);
     this._dragDropHelper = props.dragDropEvents ? new DragDropHelper({ selection: this._selection }) : null;
+    this._initialFocusedIndex = props.initialFocusedIndex;
   }
 
   public componentWillUnmount() {
@@ -121,7 +127,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     }
   }
 
-  public componentWillReceiveProps(newProps) {
+  public componentWillReceiveProps(newProps: IDetailsListProps) {
     let {
       items,
       setKey,
@@ -137,6 +143,10 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       layoutMode = newProps.layoutMode;
       this.setState({ layoutMode: layoutMode });
       shouldForceUpdates = true;
+    }
+
+    if (shouldResetSelection) {
+      this._initialFocusedIndex = newProps.initialFocusedIndex;
     }
 
     if (newProps.items !== items) {
@@ -225,7 +235,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
         aria-label={ ariaLabel }
         role={ shouldApplyApplicationRole ? 'application' : '' }>
         <div role='grid' aria-label={ ariaLabelForGrid }>
-          <div ref='headerContainer' onKeyDown={ this._onHeaderKeyDown }>
+          <div onKeyDown={ this._onHeaderKeyDown } role='presentation'>
             { isHeaderVisible && (
               <DetailsHeader
                 ref='header'
@@ -247,44 +257,45 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                 />
             ) }
           </div>
-        </div>
-        <div ref='contentContainer' onKeyDown={ this._onContentKeyDown }>
-          <FocusZone
-            ref='focusZone'
-            direction={ FocusZoneDirection.vertical }
-            isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }
-            onActiveElementChanged={ this._onActiveRowChanged }
-            >
-            <SelectionZone
-              selection={ selection }
-              selectionMode={ selectionMode }
-              onItemInvoked={ onItemInvoked }>
-              { groups ? (
-                <GroupedList
-                  groups={ groups }
-                  groupProps={ groupProps }
-                  items={ items }
-                  onRenderCell={ this._onRenderCell }
-                  selection={ selection }
-                  selectionMode={ selectionMode }
-                  dragDropEvents={ dragDropEvents }
-                  dragDropHelper={ dragDropHelper }
-                  eventsToRegister={ rowElementEventMap }
-                  listProps={ additionalListProps }
-                  onGroupExpandStateChanged={ this._onGroupExpandStateChanged }
-                  ref='groups'
-                  />
-              ) : (
-                  <List
+          <div ref='contentContainer' onKeyDown={ this._onContentKeyDown } role='presentation'>
+            <FocusZone
+              ref='focusZone'
+              direction={ FocusZoneDirection.vertical }
+              isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }
+              onActiveElementChanged={ this._onActiveRowChanged }
+              >
+              <SelectionZone
+                ref='selectionZone'
+                selection={ selection }
+                selectionMode={ selectionMode }
+                onItemInvoked={ onItemInvoked }>
+                { groups ? (
+                  <GroupedList
+                    groups={ groups }
+                    groupProps={ groupProps }
                     items={ items }
-                    onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex) }
-                    { ...additionalListProps }
-                    ref='list'
+                    onRenderCell={ this._onRenderCell }
+                    selection={ selection }
+                    selectionMode={ selectionMode }
+                    dragDropEvents={ dragDropEvents }
+                    dragDropHelper={ dragDropHelper }
+                    eventsToRegister={ rowElementEventMap }
+                    listProps={ additionalListProps }
+                    onGroupExpandStateChanged={ this._onGroupExpandStateChanged }
+                    ref='groupedList'
                     />
-                )
-              }
-            </SelectionZone>
-          </FocusZone>
+                ) : (
+                    <List
+                      items={ items }
+                      onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex) }
+                      { ...additionalListProps }
+                      ref='list'
+                      />
+                  )
+                }
+              </SelectionZone>
+            </FocusZone>
+          </div>
         </div>
       </div>
     );
@@ -295,12 +306,18 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     this._forceListUpdates();
   }
 
+  @autobind
+  protected _onRenderRow(props: IDetailsRowProps) {
+    return <DetailsRow { ...props } />;
+  }
+
   private _onRenderCell(nestingDepth: number, item: any, index: number): React.ReactNode {
     let {
       dragDropEvents,
       rowElementEventMap: eventsToRegister,
       onRenderMissingItem,
       onRenderItemColumn,
+      onRenderRow = this._onRenderRow,
       selectionMode,
       viewport,
       checkboxVisibility,
@@ -321,26 +338,24 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       return null;
     }
 
-    return (
-      <DetailsRow
-        item={ item }
-        itemIndex={ index }
-        columns={ columns }
-        groupNestingDepth={ nestingDepth }
-        selectionMode={ selectionMode }
-        selection={ selection }
-        onDidMount={ this._onRowDidMount }
-        onWillUnmount={ this._onRowWillUnmount }
-        onRenderItemColumn={ onRenderItemColumn }
-        eventsToRegister={ eventsToRegister }
-        dragDropEvents={ dragDropEvents }
-        dragDropHelper={ dragDropHelper }
-        viewport={ viewport }
-        checkboxVisibility={ checkboxVisibility }
-        getRowAriaLabel={ getRowAriaLabel }
-        checkButtonAriaLabel={ checkButtonAriaLabel }
-        />
-    );
+    return onRenderRow({
+      item: item,
+      itemIndex: index,
+      columns: columns,
+      groupNestingDepth: nestingDepth,
+      selectionMode: selectionMode,
+      selection: selection,
+      onDidMount: this._onRowDidMount,
+      onWillUnmount: this._onRowWillUnmount,
+      onRenderItemColumn: onRenderItemColumn,
+      eventsToRegister: eventsToRegister,
+      dragDropEvents: dragDropEvents,
+      dragDropHelper: dragDropHelper,
+      viewport: viewport,
+      checkboxVisibility: checkboxVisibility,
+      getRowAriaLabel: getRowAriaLabel,
+      checkButtonAriaLabel: checkButtonAriaLabel
+    });
   }
 
   private _onGroupExpandStateChanged(isSomeGroupExpanded: boolean) {
@@ -387,6 +402,17 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     let index = row.props.itemIndex;
 
     this._activeRows[index] = row; // this is used for column auto resize
+
+    // Set focus to the row if it should receive focus.
+    if (this._initialFocusedIndex !== undefined && index === this._initialFocusedIndex) {
+      if (this.refs.selectionZone) {
+        this.refs.selectionZone.ignoreNextFocus();
+      }
+      row.focus();
+
+      delete this._initialFocusedIndex;
+    }
+
     if (onRowDidMount) {
       onRowDidMount(row.props.item, index);
     }
@@ -407,14 +433,14 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     this.setState({
       isCollapsed: collapsed
     });
-    if (this.refs.groups) {
-      this.refs.groups.toggleCollapseAll(collapsed);
+    if (this.refs.groupedList) {
+      this.refs.groupedList.toggleCollapseAll(collapsed);
     }
   }
 
   private _forceListUpdates() {
-    if (this.refs.groups) {
-      this.refs.groups.forceUpdate();
+    if (this.refs.groupedList) {
+      this.refs.groupedList.forceUpdate();
     }
     if (this.refs.list) {
       this.refs.list.forceUpdate();

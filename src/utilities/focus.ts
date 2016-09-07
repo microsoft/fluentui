@@ -20,6 +20,22 @@ export function getLastFocusable(
   return getPreviousElement(rootElement, currentElement, true, false, true, includeElementsInFocusZones);
 }
 
+/**
+ * Attempts to focus the first focusable element that is a child or child's child of the rootElement.
+ * @return True if focus was set, false if it was not.
+ * @param {HTMLElement} rootElement - element to start the search for a focusable child.
+ */
+export function focusFirstChild(
+  rootElement: HTMLElement): boolean {
+  let element: HTMLElement = getNextElement(rootElement, rootElement, true, false, false, true);
+
+  if (element) {
+    element.focus();
+    return true;
+  }
+  return false;
+}
+
 /** Traverse to find the previous element. */
 export function getPreviousElement(
   rootElement: HTMLElement,
@@ -115,13 +131,22 @@ export function getNextElement(
 }
 
 export function isElementVisible(element: HTMLElement): boolean {
-  return (
-    !!element &&
-    (element.offsetHeight !== 0 ||
-      element.offsetParent !== null ||
-      (element as any).isVisible === true || // used as a workaround for testing.
-      (element.getAttribute && element.getAttribute(IS_VISIBLE_ATTRIBUTE) === 'true'))
-  );
+  // If the element is not valid, return false.
+  if (!element || !element.getAttribute) {
+    return false;
+  }
+
+  const visibilityAttribute = element.getAttribute(IS_VISIBLE_ATTRIBUTE);
+
+  // If the element is explicitly marked with the visibility attribute, return that value as boolean.
+  if (visibilityAttribute !== null && visibilityAttribute !== undefined) {
+    return visibilityAttribute === 'true';
+  }
+
+  // Fallback to other methods of determining actual visibility.
+  return (element.offsetHeight !== 0 ||
+    element.offsetParent !== null ||
+    (element as any).isVisible === true); // used as a workaround for testing.
 }
 
 export function isElementTabbable(element: HTMLElement): boolean {

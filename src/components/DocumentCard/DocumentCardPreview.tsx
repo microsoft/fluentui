@@ -1,80 +1,104 @@
 import * as React from 'react';
-import { IDocumentCardPreviewProps } from './DocumentCard.Props';
+import { IDocumentCardPreviewProps, IDocumentCardPreviewImage } from './DocumentCard.Props';
 import { Image } from '../../Image';
-import { Async } from '../../utilities/Async/Async';
+import { css } from '../../utilities/css';
+import { autobind } from '../../utilities/autobind';
 import './DocumentCardPreview.scss';
 
-const INTERVAL_DELAY: number = 3000;
+const LIST_ITEM_COUNT = 3;
 
 export class DocumentCardPreview extends React.Component<IDocumentCardPreviewProps, any> {
-
-  private _async: Async;
-  private _interval: number;
-
-  constructor(props: IDocumentCardPreviewProps) {
-    super(props);
-    this._showNextPreview = this._showNextPreview.bind(this);
-    this._async = new Async(this);
-
-    // Show the first preview by default
-    this.state = {
-      visiblePreviewIndex: 0
-    };
-
-    // If more than one preview has been provided, set an interval to start flipping through them
-    if (this.props.previewImages.length > 1) {
-      this._interval = this._async.setInterval(() => { this._showNextPreview(); }, INTERVAL_DELAY);
-    }
-  }
-
-  public componentWillUnmount() {
-    this._async.dispose();
-  }
-
   public render() {
     let { previewImages } = this.props;
-    let { visiblePreviewIndex } = this.state;
-    let previewImage = previewImages[visiblePreviewIndex];
-    let { accentColor, width, height, imageFit } = previewImage;
-    let style;
-    if (accentColor) {
-      style = {
-        borderBottomColor: accentColor
-      };
-    }
+    let style, preview;
+    let isFileList = false;
 
-    let icon;
-    if (previewImage.iconSrc) {
-      icon = <Image className='ms-DocumentCardPreview-icon' src={ previewImage.iconSrc } role='presentation'/>;
+    if (previewImages.length > 1) {
+      // Render a list of files
+      preview = this._renderPreviewList(previewImages);
+      isFileList = true;
+    } else if (previewImages.length === 1) {
+      // Render a single preview
+      preview = this._renderPreviewImage(previewImages[0]);
+
+      // Override the border color if an accent color was provided
+      if (previewImages[0].accentColor) {
+        style = {
+          borderBottomColor: previewImages[0].accentColor
+        };
+      }
     }
 
     return (
-      <div className='ms-DocumentCardPreview' style={ style }>
-        <Image
-          width={ width }
-          height={ height }
-          imageFit={ imageFit }
-          src={ previewImage.previewImageSrc }
-          errorSrc={ previewImage.errorImageSrc }
-          role='presentation'/>
+      <div className={ css('ms-DocumentCardPreview', isFileList && 'is-fileList') } style={ style }>
+        { preview }
+      </div>
+    );
+  }
+
+  private _renderPreviewImage(previewImage: IDocumentCardPreviewImage): React.ReactElement<React.HTMLProps<HTMLDivElement>> {
+    let { width, height, imageFit } = previewImage;
+
+    let image = (
+      <Image
+        width={ width }
+        height={ height }
+        imageFit={ imageFit }
+        src={ previewImage.previewImageSrc }
+        errorSrc={ previewImage.errorImageSrc }
+        role='presentation' alt=''/>
+    );
+
+    let icon;
+    if (previewImage.iconSrc) {
+      icon = <Image className='ms-DocumentCardPreview-icon' src={ previewImage.iconSrc } role='presentation' alt=''/>;
+    }
+
+    return (
+      <div>
+        { image }
         { icon }
       </div>
     );
   }
 
-  private _showNextPreview() {
-    let maximumIndex = this.props.previewImages.length - 1;
-    let currentIndex = this.state.visiblePreviewIndex;
+  @autobind
+  private _renderPreviewList(previewImages: IDocumentCardPreviewImage[]): React.ReactElement<React.HTMLProps<HTMLDivElement>> {
+    let { getOverflowDocumentCountText } = this.props;
 
-    let newIndex;
-    if (currentIndex < maximumIndex) {
-      newIndex = currentIndex + 1;
-    } else {
-      newIndex = 0;
-    }
+    // Determine how many documents we won't be showing
+    let overflowDocumentCount = previewImages.length - LIST_ITEM_COUNT;
 
-    this.setState({
-      visiblePreviewIndex: newIndex
-    });
+    // Determine the overflow text that will be rendered after the preview list.
+    let overflowText = overflowDocumentCount ?
+      (getOverflowDocumentCountText ?
+        getOverflowDocumentCountText(overflowDocumentCount) :
+        '+' + overflowDocumentCount) : null;
+
+    // Create list items for the documents to be shown
+    let fileListItems = previewImages.slice(0, LIST_ITEM_COUNT).map((file, fileIndex) => (
+      <li key={ fileIndex }>
+        <Image
+          className='ms-DocumentCardPreview-fileListIcon'
+          src={ file.iconSrc }
+          role='presentation'
+          alt=''
+          width='16px'
+          height='16px'/>
+        <a href={ file.url }>{ file.name }</a>
+      </li>
+    ));
+
+    return (
+      <div>
+        <ul className='ms-DocumentCardPreview-fileList'>
+          { fileListItems }
+        </ul>
+        { overflowText &&
+          <span className='ms-DocumentCardPreview-fileListMore'>{ overflowText }</span>
+        }
+      </div>
+    );
   }
+
 }

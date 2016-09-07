@@ -90,6 +90,8 @@
   cursor: pointer;
   margin-top: 8px;
   position: relative;
+  min-width: 19px;
+  min-height: 19px;
 
   // The actual styled choicefield element - radio button by default
   &:after {

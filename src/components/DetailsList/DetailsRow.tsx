@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IColumn, CheckboxVisibility } from './DetailsList.Props';
-import { Check } from '../Check/Check';
+import { DetailsRowCheck, IDetailsRowCheckProps } from './DetailsRowCheck';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { DetailsRowFields } from './DetailsRowFields';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -25,6 +25,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   eventsToRegister?: [{ eventName: string, callback: (item?: any, index?: number, event?: any) => void }];
   onDidMount?: (row?: DetailsRow) => void;
   onWillUnmount?: (row?: DetailsRow) => void;
+  onRenderCheck?: (props: IDetailsRowCheckProps) => JSX.Element;
   onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
   dragDropEvents?: IDragDropEvents;
   dragDropHelper?: IDragDropHelper;
@@ -37,6 +38,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
 
 export interface IDetailsRowSelectionState {
   isSelected: boolean;
+  anySelected: boolean;
 }
 
 export interface IDetailsRowState {
@@ -146,6 +148,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
       dragDropEvents,
       item,
       itemIndex,
+      onRenderCheck = this._onRenderCheck,
       onRenderItemColumn,
       selectionMode,
       viewport,
@@ -154,7 +157,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
       checkButtonAriaLabel,
       selection
     } = this.props;
-    let { selectionState: { isSelected }, columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
+    let { selectionState: { isSelected, anySelected }, columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
     let isDraggable = Boolean(dragDropEvents && dragDropEvents.canDrag && dragDropEvents.canDrag(item));
     let droppingClassName = isDropping ? (this._droppingClassNames ? this._droppingClassNames : DEFAULT_DROPPING_CSS_CLASS) : '';
     let ariaLabel = getRowAriaLabel ? getRowAriaLabel(item) : null;
@@ -180,19 +183,12 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           { (selectionMode !== SelectionMode.none) && (
             <span role='gridcell'>
-              <button
-                className='ms-DetailsRow-check'
-                role='button'
-                aria-pressed={ isSelected }
-                data-selection-toggle={ true }
-                data-automationid='DetailsRowCheck'
-                aria-label={ checkButtonAriaLabel }
-                >
-                { canSelect ?
-                  <Check isChecked={ isSelected } /> :
-                  <div className='ms-DetailsRow-checkSpacer' />
-                }
-              </button>
+              { onRenderCheck({
+                isSelected,
+                anySelected,
+                ariaLabel: checkButtonAriaLabel,
+                canSelect
+              }) }
             </span>
           ) }
 
@@ -243,11 +239,23 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
     });
   }
 
+  public focus() {
+    if (this.refs && this.refs.root) {
+      this.refs.root.tabIndex = 0;
+      this.refs.root.focus();
+    }
+  }
+
+  protected _onRenderCheck(props: IDetailsRowCheckProps) {
+    return <DetailsRowCheck { ...props } />;
+  }
+
   private _getSelectionState(props: IDetailsRowProps): IDetailsRowSelectionState {
     let { itemIndex, selection } = props;
 
     return {
-      isSelected: selection.isIndexSelected(itemIndex)
+      isSelected: selection.isIndexSelected(itemIndex),
+      anySelected: selection.getSelectedCount() > 0
     };
   }
 

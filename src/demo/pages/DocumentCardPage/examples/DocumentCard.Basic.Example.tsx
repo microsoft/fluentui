@@ -13,6 +13,8 @@ export class DocumentCardBasicExample extends React.Component<any, any> {
     let previewProps: IDocumentCardPreviewProps = {
       previewImages: [
         {
+          name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
+          url: 'http://bing.com',
           previewImageSrc: 'dist/document-preview.png',
           iconSrc: 'dist/icon-ppt.png',
           imageFit: ImageFit.cover,
@@ -26,9 +28,11 @@ export class DocumentCardBasicExample extends React.Component<any, any> {
     return (
         <DocumentCard onClickHref='http://bing.com'>
           <DocumentCardPreview { ...previewProps } />
-          <DocumentCardTitle title='Revenue stream proposal fiscal year 2016 version02.pptx'/>
+          <DocumentCardTitle
+            title='Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx'
+            shouldTruncate={ true }/>
           <DocumentCardActivity
-            activity='Created Feb 23, 2016'
+            activity='Created a few minutes ago'
             people={
               [
                 { name: 'Kat Larrson', profileImageSrc: 'dist/avatar-kat.png' }

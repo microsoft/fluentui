@@ -18,9 +18,24 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
   private __async: Async;
   private __events: EventGroup;
   private __disposables: IDisposable[];
+  private __resolves: { [ name: string ]: (ref: any) => any };
 
-  constructor(props?: P) {
+  /**
+   * BaseComponent constructor
+   * @param {P} props The props for the component.
+   * @param {Object} deprecatedProps The map of deprecated prop names to new names, where the key is the old name and the
+   * value is the new name. If a prop is removed rather than renamed, leave the value undefined.
+   */
+  constructor(props?: P, deprecatedProps?: { [propName: string]: string }) {
     super(props);
+
+    if (deprecatedProps) {
+      for (let propName in deprecatedProps) {
+        if (propName in props) {
+          _warnDeprecation(this, propName, deprecatedProps[propName]);
+        }
+      }
+    }
 
     _makeAllSafe(this, BaseComponent.prototype, [
       'componentWillMount',
@@ -89,13 +104,36 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
 
     return this.__events;
   }
+
+  /**
+   * Helper to return a memoized ref resolver function.
+   * @params refName Name of the member to assign the ref to.
+   *
+   * @examples
+   * class Foo extends BaseComponent<...> {
+   *   private _root: HTMLElement;
+   *
+   *   public render() {
+   *     return <div ref={ this._resolveRef('_root') } />
+   *   }
+   * }
+   */
+  protected _resolveRef(refName: string) {
+    if (!this.__resolves) {
+      this.__resolves = {};
+    }
+    if (!this.__resolves[refName]) {
+      this.__resolves[refName] = (ref) => this[refName] = ref;
+    }
+    return this.__resolves[refName];
+  }
 }
 
 /**
  * Helper to override a given method with a wrapper method that can try/catch the original, but also
  * ensures that the BaseComponent's methods are called before the subclass's. This ensures that
  * componentWillUnmount in the base is called and that things in the _disposables array are disposed.
- **/
+ */
 function _makeAllSafe(obj: BaseComponent<any, any>, prototype: Object, methodNames: string[]) {
   for (let i = 0, len = methodNames.length; i < len; i++) {
     _makeSafe(obj, prototype, methodNames[i]);
@@ -127,6 +165,18 @@ function _makeSafe(obj: BaseComponent<any, any>, prototype: Object, methodName: 
 
       return retVal;
     };
+  }
+}
+
+function _warnDeprecation(obj: BaseComponent<any, any>, propertyName: string, newPropertyName: string) {
+  if (console && console.warn) {
+    let deprecationMessage = `${ obj.className } property '${ propertyName }' was used but has been deprecated.`;
+
+    if (newPropertyName) {
+      deprecationMessage += ` Use '${ newPropertyName }' instead.`;
+    }
+
+    console.warn(deprecationMessage);
   }
 }
 
