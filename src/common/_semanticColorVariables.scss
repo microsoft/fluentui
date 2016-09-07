@@ -1,4 +1,4 @@
-$focusedBorderColor: $ms-color-neutralSecondaryAlt;
+$focusedBorderColor: $ms-color-neutralSecondary;
 
 $bodyBackgroundColor: $ms-color-white;
 $bodyForegroundColor: $ms-color-neutralPrimary;
@@ -21,5 +21,8 @@ $selectedForegroundColor: $ms-color-neutralPrimary;
 
 $selectedHoverBackgroundColor: $ms-color-neutralLight;
 $selectedHoverForegroundColor: $ms-color-neutralDark;
+
+$selectedActiveBackgroundColor: $ms-color-neutralTertiaryAlt;
+$selectedActiveForegroundColor: $ms-color-neutralPrimary;
 
 $dividerColor: $ms-color-neutralLight;

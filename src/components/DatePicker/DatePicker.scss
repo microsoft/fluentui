@@ -8,11 +8,11 @@
 
 @mixin ms-DatePicker-event() {
   color: $ms-color-neutralSecondary;
-  font-size: 21px;
+  font-size: $ms-icon-size-l;
   line-height: 20px;
   pointer-events: none;
   position: absolute;
-  @include right(5px);
+  @include right(9px);
   z-index: $ms-zIndex-middle;
 }
 
@@ -26,6 +26,10 @@
 
     input::-ms-clear {
       display: none;
+    }
+
+    input[readonly] {
+      cursor: pointer;
     }
   }
 }
@@ -42,7 +46,7 @@
 // Insert a calendar icon over the date field.
 .ms-DatePicker-event--with-label {
   @include ms-DatePicker-event();
-  top: 32px;
+  top: 35px;
 }
 
 .ms-DatePicker-event--without-label {
@@ -107,9 +111,8 @@
 .ms-DatePicker-month,
 .ms-DatePicker-year {
   display: inline-block;
-  font-family: $ms-font-family-light;
-  font-size: 21px;
-  color: $ms-color-themePrimary;
+  @include ms-font-xl;
+  color: $ms-color-neutralPrimary;
   margin-top: -1px;
 
   &:hover {
@@ -152,9 +155,7 @@
   height: 40px;
   padding: 0;
   line-height: 40px;
-  font-family: $ms-font-family-regular;
-  font-size: 15px;
-  font-weight: normal;
+  @include ms-font-m-plus;
   color: $ms-color-neutralPrimary;
 }
 
@@ -175,7 +176,7 @@
 // Out of focus days.
 .ms-DatePicker-day--outfocus {
   color: $ms-color-neutralTertiary;
-  font-family: $ms-font-family-regular;
+  font-weight: $ms-font-weight-regular;
 }
 
 
@@ -223,6 +224,7 @@
 .ms-DatePicker-decadeComponents {
   position: absolute;
   @include right(10px);
+  top: -2px;
 }
 
 .ms-DatePicker-prevMonth,
@@ -238,10 +240,10 @@
   text-align: center;
   line-height: 40px;
   text-align: center;
-  font-size: 21px;
+  font-size: $ms-icon-size-m;
   color: $ms-color-neutralSecondary;
   position: relative;
-  top: 3px;
+  top: 2px;
 
   &:hover {
     color: $ms-color-neutralDark;
@@ -267,9 +269,8 @@
 .ms-DatePicker-currentYear,
 .ms-DatePicker-currentDecade {
   display: block;
-  font-weight: normal;
-  font-family: $ms-font-family-semilight;
-  font-size: 21px;
+  @include ms-font-xl;
+  color: $ms-color-neutralPrimary;
   height: 40px;
   line-height: 42px;
   @include margin-left(15px);
@@ -305,9 +306,7 @@
   cursor: pointer;
   @include float(left);
   @include margin(0, 10px, 10px, 0);
-  font-weight: normal;
-  font-family: $ms-font-family-regular;
-  font-size: 13px;
+  @include ms-font-s-plus;
   color: $ms-color-neutralPrimary;
   text-align: center;
 
@@ -328,8 +327,8 @@
   bottom: 9px;
   color: $ms-color-themePrimary;
   cursor: pointer;
-  font-family: $ms-font-family-semilight;
-  font-size: 13px;
+  @include ms-font-s-plus;
+  color: $ms-color-neutralPrimary;
   height: 30px;
   line-height: 30px;
   padding: 0 10px;
@@ -375,8 +374,8 @@
   .ms-DatePicker-weekday {
     width: 30px;
     height: 30px;
-    line-height: 30px;
-    font-family: $ms-font-family-semibold;
+    line-height: 28px;
+    font-weight: $ms-font-weight-semibold;
     font-size: $ms-font-size-s;
   }
 
@@ -392,10 +391,10 @@
   .ms-DatePicker-nextYear,
   .ms-DatePicker-prevDecade,
   .ms-DatePicker-nextDecade {
-    font-size: 17px;
-    width: 30px;
-    height: 30px;
-    line-height: 29px;
+    font-size: $ms-icon-size-s;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
   }
 
   .ms-DatePicker-holder {
@@ -405,7 +404,7 @@
   // Update header text styles.
   .ms-DatePicker-month,
   .ms-DatePicker-year {
-    font-family: $ms-font-family-semilight;
+    font-weight: $ms-font-weight-semilight;
   }
 
   .ms-DatePicker-month,
@@ -479,7 +478,7 @@
     .ms-DatePicker-yearOption {
       width: 40px;
       height: 40px;
-      line-height: 40px;
+      line-height: 38px;
       font-size: 12px;
       @include margin(0, 10px, 10px, 0);
 
@@ -557,7 +556,6 @@
 .ms-DatePicker-prevMonth,
 .ms-DatePicker-nextYear,
 .ms-DatePicker-prevYear {
-  float: none;
   display: inline-block;
 }
 
