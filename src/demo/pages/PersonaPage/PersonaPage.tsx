@@ -12,11 +12,12 @@ import { PersonaInitialsExample } from './examples/Persona.Initials.Example';
 import { PersonaBasicExample } from './examples/Persona.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const PersonaInitialsExampleCode = require('./examples/Persona.Initials.Example.tsx');
 const PersonaBasicExampleCode = require('./examples/Persona.Basic.Example.tsx');
 
-export class PersonaPage extends React.Component<any, any> {
+export class PersonaPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -50,7 +51,8 @@ export class PersonaPage extends React.Component<any, any> {
             <span> are used for rendering an individual's avatar and presence. They are used within the PersonaCard and PeoplePicker.</span>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        showHeader={ this.props.showHeader }>
       </ComponentPage>
     );
   }

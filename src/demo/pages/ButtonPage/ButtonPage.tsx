@@ -11,9 +11,11 @@ import {
 import { ButtonBasicExample } from './examples/Button.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
+
 const ButtonBasicExampleCode = require('./examples/Button.Basic.Example.tsx');
 
-export class ButtonPage extends React.Component<any, any> {
+export class ButtonPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -77,7 +79,8 @@ export class ButtonPage extends React.Component<any, any> {
             </ul>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        showHeader={ this.props.showHeader }>
       </ComponentPage>
     );
   }

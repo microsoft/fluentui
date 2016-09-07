@@ -13,11 +13,12 @@ import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
 import { CommandBarNonFocusableItemsExample } from './examples/CommandBar.NonFocusable.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const CommandBarBasicExampleCode = require('./examples/CommandBar.Basic.Example.tsx');
 const CommandBarNoFocusableItemsExampleCode = require('./examples/CommandBar.NonFocusable.Example.tsx');
 
-export class CommandBarPage extends React.Component<any, any> {
+export class CommandBarPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -54,7 +55,8 @@ export class CommandBarPage extends React.Component<any, any> {
           <span> provide a menu control to expose application commands. Command bars typically are rendered just below the header.</span>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        showHeader={ this.props.showHeader }>
       </ComponentPage>
     );
   }

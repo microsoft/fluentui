@@ -14,6 +14,7 @@ export interface IComponentPageProps {
   donts?: JSX.Element;
   overview: JSX.Element;
   route: string;
+  showHeader?: boolean;
 }
 
 export class ComponentPage extends React.Component<IComponentPageProps, {}> {
@@ -22,9 +23,12 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     super(props);
   }
 
+  public static defaultProps = {
+    showHeader: true
+  }
+
   public render() {
     let {
-      title,
       componentName,
       exampleCards,
       overview
@@ -33,10 +37,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     return (
       <div className='ComponentPage'>
         <div className={ componentName }>
-          <div className='ComponentPage-header'>
-            <h1 className='ComponentPage-title'>{ title }</h1>
-            { this._navigationLinks() }
-          </div>
+          { this._pageHeader() }
           <div className='ComponentPage-body'>
             <div className='ComponentPage-overviewSection'>
                 <h2 className='ComponentPage-subHeading' id='Overview'>Overview</h2>
@@ -56,6 +57,17 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     );
   }
 
+  private _pageHeader(): JSX.Element {
+    if (this.props.showHeader) {
+      return (
+        <div className='ComponentPage-header'>
+          <h1 className='ComponentPage-title'>{ this.props.title }</h1>
+          { this._navigationLinks() }
+        </div>
+      );
+    }
+  }
+
   private _navigationLinks(): JSX.Element {
     let links: Array<JSX.Element> = [];
     let {
@@ -68,7 +80,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     if (bestPractices && dos && donts) {
       links.push(
         <div className='ComponentPage-navLink'>
-          <a href={ route + '#Best Practices' }>Best Practices</a>
+          <Link href={ route + '#Best Practices' }>Best Practices</Link>
         </div>
       );
     }

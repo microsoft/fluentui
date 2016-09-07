@@ -5,15 +5,17 @@ import {
 import {
   ExampleCard,
   PropertiesTableSet,
-  ComponentPage
+  ComponentPage,
+  IComponentPageProps
 } from '../../components/index';
 import { BreadcrumbBasicExample } from './examples/Breadcrumb.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const BreadcrumbBasicExampleCode = require('./examples/Breadcrumb.Basic.Example.tsx');
 
-export class BreadcrumbPage extends React.Component<any, any> {
+export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -62,7 +64,8 @@ export class BreadcrumbPage extends React.Component<any, any> {
             </ul>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        showHeader={ this.props.showHeader }>
       </ComponentPage>
     );
   }

@@ -16,6 +16,7 @@ import { PeoplePickerEditModeExample } from './/examples/PeoplePicker.EditMode.E
 
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const PeoplePickerBasicExampleCode = require('./examples/PeoplePicker.Basic.Example.tsx');
 const PeoplePickerCompactExampleCode = require('./examples/PeoplePicker.Compact.Example.tsx');
@@ -23,7 +24,7 @@ const PeoplePickerDisconnectedExampleCode = require('./examples/PeoplePicker.Dis
 const PeoplePickerMemberListExampleCode = require('./examples/PeoplePicker.MemberList.Example.tsx');
 const PeoplePickerEditModeExampleCode = require('./examples/PeoplePicker.EditMode.Example.tsx');
 
-export class PeoplePickerPage extends React.Component<any, any> {
+export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -66,7 +67,8 @@ export class PeoplePickerPage extends React.Component<any, any> {
             <span> are used to pick recipients.</span>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        showHeader={ this.props.showHeader }>
       </ComponentPage>
     );
   }

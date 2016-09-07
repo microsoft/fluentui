@@ -13,12 +13,13 @@ import { DatePickerRequiredExample } from './examples/DatePicker.Required.Exampl
 import { DatePickerInputExample } from './examples/DatePicker.Input.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const DatePickerBasicExampleCode = require('./examples/DatePicker.Basic.Example.tsx');
 const DatePickerRequiredExampleCode = require('./examples/DatePicker.Required.Example.tsx');
 const DatePickerInputExampleCode = require('./examples/DatePicker.Input.Example.tsx');
 
-export class DatePickerPage extends React.Component<any, any> {
+export class DatePickerPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -54,7 +55,8 @@ export class DatePickerPage extends React.Component<any, any> {
             <span> provide a menu for use in context menus and dropdowns.</span>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        showHeader={ this.props.showHeader }>
       </ComponentPage>
     );
   }
