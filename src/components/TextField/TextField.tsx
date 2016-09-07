@@ -3,6 +3,7 @@ import { ITextFieldProps } from './TextField.Props';
 import { Label } from '../../Label';
 import { css } from '../../utilities/css';
 import { getId } from '../../utilities/object';
+import { autobind } from '../../utilities/autobind';
 import './TextField.scss';
 
 export interface ITextFieldState {
@@ -35,10 +36,6 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
       value: props.value || props.defaultValue,
       isFocused: false
     };
-
-    this._onInputChange = this._onInputChange.bind(this);
-    this._onFocus = this._onFocus.bind(this);
-    this._onBlur = this._onBlur.bind(this);
   }
 
   /**
@@ -127,6 +124,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     }
   }
 
+  @autobind
   private _onFocus(ev: React.FocusEvent) {
     if (this.props.onFocus) {
       this.props.onFocus(ev);
@@ -135,6 +133,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     this.setState({ isFocused: true });
   }
 
+  @autobind
   private _onBlur(ev: React.FocusEvent) {
     if (this.props.onBlur) {
       this.props.onBlur(ev);
@@ -155,6 +154,21 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     return css(textFieldClassName, {
       'ms-TextField-invalid': !!this.props.errorMessage
     });
+  }
+
+  @autobind
+  private _onInputChange(event: React.KeyboardEvent): void {
+    const element: HTMLInputElement = event.target as HTMLInputElement;
+    const value: string = element.value;
+
+    this.setState({
+      value: value,
+      errorMessage: ''
+    } as ITextFieldState);
+
+    if (this.props.onChanged) {
+      this.props.onChanged(value);
+    }
   }
 
   private _renderTextArea(): React.ReactElement<React.HTMLProps<HTMLAreaElement>> {
@@ -192,15 +206,5 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         onBlur={ this._onBlur }
         />
     );
-  }
-
-  private _onInputChange(event: React.KeyboardEvent): void {
-    const element: HTMLInputElement = event.target as HTMLInputElement;
-    const value: string = element.value;
-
-    this.setState({
-      value: value,
-      errorMessage: ''
-    } as ITextFieldState);
   }
 }
