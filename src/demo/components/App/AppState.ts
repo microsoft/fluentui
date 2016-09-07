@@ -200,7 +200,7 @@ export const AppState: IAppState = {
         {
           component: PivotPage,
           name: 'Pivot',
-          status: ExampleStatus.started,
+          status: ExampleStatus.beta,
           url: '#/examples/pivot'
         },
         {

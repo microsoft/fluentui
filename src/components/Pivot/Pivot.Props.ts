@@ -1,38 +1,104 @@
 import * as React from 'react';
 
 import { Pivot } from './Pivot';
-import { PivotItem } from './PivotItem';
+
+export interface IPivot {
+  /**
+   * Gets the selected item.
+   */
+  selected: IPivotItem;
+
+  /**
+   * Sets the selected item. Item should be an item within the array provided by the items prop.
+   */
+  setSelected: (item: IPivotItem) => void;
+}
 
 export interface IPivotProps extends React.Props<Pivot> {
   /**
-   * The index of the pivot item initially selected.
-   *
-   * It only works when initialSelectedKey is not defined. You must not use them together.
+   * Pivot items, each containing details about the pivot title and content to render.
    */
-  initialSelectedIndex?: number;
+  items: IPivotItem[];
 
   /**
-   * The key of the pivot item initially selected.
-   *
-   * It will make initialSelectedIndex not work. You must not use them together.
+   * Optional class name to mix into the root node.
    */
-  initialSelectedKey?: string;
+  className?: string;
 
   /**
-   * Callback issued when the selected pivot item is changed
+   * Variation of the pivot to use.
    */
-  onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent) => void;
+  linkFormat?: PivotLinkFormat;
 
   /**
-   * Specify the PivotLinkSize to use (normal, large)
+   * Size of the pivot tabs.
    */
   linkSize?: PivotLinkSize;
 
   /**
-   * Specify the PivotLinkFormat to use (links, tabs)
+   * Default selected pivot to select on intial render.
+   * @default 0
    */
-  linkFormat?: PivotLinkFormat;
+  defaultSelectedIndex?: number;
 
+  /**
+   * Allows the caller to override the default render for pivot titles.
+   * @param props The props for the item
+   * @param defaultRender The function to call to render the default content. This allows you to render your own title,
+   * and then inject the default rendered content within your custom title.
+   */
+  onRenderPivotTitle?: (props: IPivotTitleProps, defaultRender: (props?: IPivotTitleProps) => JSX.Element) => JSX.Element;
+
+  /**
+   * Change event which is called when the selection changes.
+   * @param item The item that was selected
+   * @param the index of the item
+   */
+  onChange?: (item: IPivotItem, index: number) => void;
+}
+
+export interface IPivotTitleProps {
+  /**
+   * The item from the pivot 'items' prop to render.
+   */
+  item: IPivotItem;
+
+  /**
+   * The index of the item.
+   */
+  index: number;
+
+  /**
+   * If the item is currently selected.
+   */
+  isSelected: boolean;
+}
+
+export interface IPivotItem {
+  /**
+   * A required key value to uniquely identify the pivot item.
+   */
+  key: string;
+
+  /**
+   * The display name to render in the item tab.
+   */
+  name?: string;
+
+  /**
+   * The aria-label attribute value to render for the tab button.
+   */
+  ariaLabel?: string;
+
+  /**
+   * If the tab button is disabled.
+   */
+  disabled?: boolean;
+
+  /**
+   * Optional additional button props that will be mixed into the item's button.
+   */
+  buttonProps?: React.HTMLProps<HTMLButtonElement>;
 }
 
 export enum PivotLinkFormat {
