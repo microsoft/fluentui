@@ -10,11 +10,12 @@ import { LayerBasicExample } from './examples/Layer.Basic.Example';
 import { LayerInteractiveExample } from './examples/Layer.Interactive.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const LayerBasicExampleCode = require('./examples/Layer.Basic.Example.tsx');
 const LayerInteractiveExampleCode = require('./examples/Layer.Interactive.Example.tsx');
 
-export class LayerPage extends React.Component<any, any> {
+export class LayerPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -52,7 +53,8 @@ export class LayerPage extends React.Component<any, any> {
             }</p>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        showHeader={ this.props.showHeader }>
       </ComponentPage>
     );
   }

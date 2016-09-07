@@ -7,10 +7,11 @@ import {
 import { MarqueeSelectionBasicExample } from './examples/MarqueeSelection.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const MarqueeSelectionBasicExampleCode = require('./examples/MarqueeSelection.Basic.Example.tsx');
 
-export class MarqueeSelectionPage extends React.Component<any, any> {
+export class MarqueeSelectionPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -48,7 +49,8 @@ export class MarqueeSelectionPage extends React.Component<any, any> {
             </p>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        showHeader={ this.props.showHeader }>
       </ComponentPage>
     );
   }

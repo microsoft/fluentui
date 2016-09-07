@@ -11,10 +11,11 @@ import {
 import { CheckboxBasicExample } from './examples/Checkbox.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const CheckboxBasicExampleCode = require('./examples/Checkbox.Basic.Example.tsx');
 
-export class CheckboxPage extends React.Component<any, any> {
+export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -45,7 +46,8 @@ export class CheckboxPage extends React.Component<any, any> {
             <span> allow the user to enable or disable a setting.</span>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        showHeader={ this.props.showHeader }>
       </ComponentPage>
     );
   }

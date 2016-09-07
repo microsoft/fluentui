@@ -11,10 +11,11 @@ import {
 import { ToggleBasicExample } from './examples/Toggle.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const ToggleBasicExampleCode = require('./examples/Toggle.Basic.Example.tsx');
 
-export class TogglePage extends React.Component<any, any> {
+export class TogglePage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -45,7 +46,8 @@ export class TogglePage extends React.Component<any, any> {
             <span> allow the user to turn an option on/off.</span>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        showHeader={ this.props.showHeader }>
       </ComponentPage>
     );
   }

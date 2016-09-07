@@ -15,13 +15,14 @@ import { CalloutDirectionalExample } from './examples/Callout.Directional.Exampl
 import { CalloutCoverExample } from './examples/Callout.Cover.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const CalloutBasicExampleCode = require('./examples/Callout.Basic.Example.tsx');
 const CalloutNestedExampleCode = require('./examples/Callout.Nested.Example.tsx');
 const CalloutDirectionalExampleCode = require('./examples/Callout.Directional.Example.tsx');
 const CalloutCoverExampleCode = require('./examples/Callout.Cover.Example.tsx');
 
-export class CalloutPage extends React.Component<any, any> {
+export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -96,7 +97,8 @@ export class CalloutPage extends React.Component<any, any> {
             </ul>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        showHeader={ this.props.showHeader }>
       </ComponentPage>
     );
   }

@@ -10,6 +10,7 @@ import {
 
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 import { ProgressIndicatorBasicExample } from './examples/ProgressIndicator.Basic.Example';
 const ProgressIndicatorBasicExampleCode = require('./examples/ProgressIndicator.Basic.Example.tsx');
 
@@ -44,7 +45,8 @@ export class ProgressIndicatorPage extends React.Component<any, any> {
             <span> allow the user to see the status of activities. Unlike the Spinner, ProgressIndicator should accurately display the progress of the activity while the Spinner is used when the time is indeterminate.</span>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+         showHeader={ this.props.showHeader }>
       </ComponentPage>
     );
   }

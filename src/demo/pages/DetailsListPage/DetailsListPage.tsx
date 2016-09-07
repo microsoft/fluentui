@@ -10,6 +10,7 @@ import {
 
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 import { DetailsListBasicExample } from './examples/DetailsList.Basic.Example';
 const DetailsListBasicExampleCode = require('./examples/DetailsList.Basic.Example.tsx');
@@ -23,7 +24,7 @@ const DetailsListCustomRowsExampleCode = require('./examples/DetailsList.CustomR
 import { DetailsListAdvancedExample } from './examples/DetailsList.Advanced.Example';
 const DetailsListAdvancedExampleCode = require('./examples/DetailsList.Advanced.Example.tsx');
 
-export class DetailsListPage extends React.Component<any, any> {
+export class DetailsListPage extends React.Component<IComponentDemoPageProps, any> {
  private _url: string;
 
   constructor() {
@@ -65,7 +66,8 @@ export class DetailsListPage extends React.Component<any, any> {
             <span> and provides a sortable, filterable, justified table for rendering large sets of items. This component replaces the Table Component.</span>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        showHeader={ this.props.showHeader }>
       </ComponentPage>
     );
   }

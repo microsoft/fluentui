@@ -11,10 +11,11 @@ import {
 import { ChoiceGroupBasicExample } from './examples/ChoiceGroup.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const ChoiceGroupBasicExampleCode = require('./examples/ChoiceGroup.Basic.Example.tsx');
 
-export class ChoiceGroupPage extends React.Component<any, any> {
+export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -45,7 +46,8 @@ export class ChoiceGroupPage extends React.Component<any, any> {
             <span> allow the user to choose one of many options.</span>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        showHeader={ this.props.showHeader }>
       </ComponentPage>
     );
   }

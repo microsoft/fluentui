@@ -15,13 +15,14 @@ import { ContextualMenuCustomizationExample } from './examples/ContextualMenu.Cu
 
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const ContextualMenuBasicExampleCode = require('./examples/ContextualMenu.Basic.Example.tsx');
 const ContextualMenuCheckmarksExampleCode = require('./examples/ContextualMenu.Checkmarks.Example.tsx');
 const ContextualMenuDirectionalExampleCode = require('./examples/ContextualMenu.Directional.Example.tsx');
 const ContextualMenuCustomizationExampleCode = require('./examples/ContextualMenu.Customization.Example.tsx');
 
-export class ContextualMenuPage extends React.Component<any, any> {
+export class ContextualMenuPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -62,7 +63,8 @@ export class ContextualMenuPage extends React.Component<any, any> {
             <span> provide a menu for use in context menus and dropdowns.</span>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        showHeader={ this.props.showHeader }>
       </ComponentPage>
     );
   }
