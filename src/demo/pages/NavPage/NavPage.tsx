@@ -34,7 +34,7 @@ export class NavPage extends React.Component<IComponentDemoPageProps, any> {
         componentName='NavExample'
         exampleCards={
           [
-            <ExampleCard title='Basic Nav with one link' code={ NavBasicExampleCode }>
+            <ExampleCard title='Basic Nav bar with sample links' code={ NavBasicExampleCode }>
               <NavBasicExample />
             </ExampleCard>,
             <ExampleCard title='Navigation menu used in this Fabric React demo app' code={ NavFabricDemoAppExampleCode }>

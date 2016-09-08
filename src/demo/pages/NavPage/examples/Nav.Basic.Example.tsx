@@ -1,16 +1,63 @@
 import * as React from 'react';
 import {
-  Nav
+  Nav,
+  INavProps
 } from '../../../../index';
+import './Nav.Basic.Example.scss';
 
 export class NavBasicExample extends React.Component<any, any> {
+  constructor(props: INavProps) {
+    super(props);
+    this._onClickHandler = this._onClickHandler.bind(this);
+  }
+
   public render() {
     return (
-      <Nav
-        ariaLabel='use up and down arrow keys to navigate'
-        groups={ [ { name: 'LINK GROUP', links: [ { name: 'A link to New Tab', url: 'http://example.com',iconClassName:'', target: '_blank' }, {name: 'Edit', url: 'http://msn.com', iconClassName: 'ms-Icon--pencil'} ]}]}
-        />
+      <div className='ms-NavExample-LeftPane'>
+        <Nav
+          groups={
+            [
+              {
+                links:
+                [
+                  {
+                  name: 'Home',
+                  url: 'http://example.com',
+                  links: [{
+                    name: 'Activity',
+                    url: 'http://msn.com'
+                    },
+                    {
+                      name: 'News',
+                      url: 'http://msn.com'
+                    }],
+                  isExpanded: true
+                  },
+                  { name: 'Documents', url: 'http://example.com', isExpanded: true },
+                  { name: 'Pages', url: 'http://msn.com' },
+                  { name: 'Notebook', url: 'http://msn.com' },
+                  { name: 'Long Name Test for elipse', url: 'http://msn.com' },
+                  { name: 'Edit Link', url: 'http://example.com', iconClassName: 'ms-Icon--Edit' },
+                  {
+                    name: 'Edit',
+                    url: '#',
+                    onClick: this._onClickHandler,
+                    icon: 'Edit'
+                  }
+                ]
+              }
+            ]
+          }
+          expandedStateText={ 'expanded' }
+          collapsedStateText={ 'collapsed' }
+          />
+       </div>
     );
   }
 
+  private _onClickHandler(e: React.MouseEvent) {
+    alert('test');
+    return false;
+  }
 }
+
