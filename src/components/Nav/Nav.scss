@@ -1,6 +1,8 @@
 @import '../../common/common';
 
 $navnode-height: 36px;
+$hasExpandButton-linkLeftPadding: 28px;
+$noExpandButton-linkLeftPadding: 20px;
 
 .ms-Nav {
   overflow-y: auto;
@@ -51,13 +53,10 @@ $navnode-height: 36px;
   line-height: $navnode-height;
   margin: 5px 0;
   padding-top: 0px;
-  @include padding-right(20px);
+  @include padding-right($noExpandButton-linkLeftPadding);
   padding-bottom: 0px;
-  @include padding-left(28px);
-<<<<<<< 35d0f5a0cc0411fc2ff85f4c83d1b856e0f008b7
+  @include padding-left($hasExpandButton-linkLeftPadding);
 
-=======
->>>>>>> Adjust Nav with new redline design update
   background: none;
   border: none;
 
@@ -116,7 +115,7 @@ $navnode-height: 36px;
 
   .ms-Nav-chevronButton.ms-Nav-chevronButton--link {
     display: block;
-    width: 28px;
+    width: $hasExpandButton-linkLeftPadding;
     height: $navnode-height;
     position: absolute;
     top: 0;
@@ -198,13 +197,13 @@ $navnode-height: 36px;
 }
 
 .ms-Nav-linkButton.ms-Button--command {
-  @include padding-left(20px);
+  @include padding-left($noExpandButton-linkLeftPadding);
   .ms-Button-label {
     @include ms-font-m;
     color: $ms-color-themePrimary;
   }
 
   &.isOnExpanded {
-     @include padding-left(28px);
+     @include padding-left($hasExpandButton-linkLeftPadding);
   }
 }
