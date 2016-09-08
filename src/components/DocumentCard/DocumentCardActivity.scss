@@ -59,8 +59,9 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
 .ms-DocumentCardActivity-activity {
   display: block;
   @include ms-font-s;
-  line-height: 14px;
-  height: 14px;
+  color: $ms-color-neutralPrimary;
+  line-height: 15px;
+  height: 15px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

@@ -40,7 +40,8 @@ $MessageBar-padding: 8px;
 
 .ms-MessageBar-text {
   @include ms-font-s;
-  width: 100%;
+  color: $ms-color-neutralPrimary;
+  min-width: 0;
   display: flex;
 }
 
@@ -107,7 +108,7 @@ $MessageBar-padding: 8px;
   display: flex;
   flex-direction: column;
   width: 100%;
-
+  min-width: 0;
 }
 
 .ms-MessageBar-actionables > .ms-MessageBar-dismissal {
@@ -133,9 +134,10 @@ $MessageBar-padding: 8px;
 
 .ms-MessageBar-dismissal {
   @include focus-border();
+  min-width: 0;
 }
 .ms-MessageBar-actionsOneline .ms-MessageBar-dismissal {
-  padding: 8px;
+  @include margin-right(-8px);
 }
 
 // Add space between adjacent MessageBars.
@@ -175,7 +177,7 @@ $MessageBar-padding: 8px;
         line-height: 1.3em;
         overflow: hidden;
         text-overflow: ellipsis;
-        //white-space: nowrap;
+        white-space: nowrap;
       }
     }
   }

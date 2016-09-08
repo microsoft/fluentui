@@ -50,7 +50,8 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
 
   public componentWillReceiveProps(newProps: IDropdownProps) {
     this.setState({
-      selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey)
+      selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey),
+      isDisabled: newProps.isDisabled
     });
   }
 
@@ -100,8 +101,8 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
           aria-activedescendant={ selectedIndex >= 0 ? (id + '-list' + selectedIndex) : (id + '-list') }
           aria-controls={ id + '-list' }
           >
-          <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown'></i>
           <span className='ms-Dropdown-title'>{ selectedOption ? selectedOption.text : '' }</span>
+          <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown'></i>
           <ul ref={ (c: HTMLElement) => this._optionList = c }
             id={ id + '-list' }
             className='ms-Dropdown-items'

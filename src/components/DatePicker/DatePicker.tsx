@@ -356,8 +356,8 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
       return;
     }
 
-    let date = null;
     if (allowTextInput) {
+      let date = null;
       if (inputValue) {
         date = parseDateFromString(inputValue);
         if (!date) {
@@ -377,13 +377,13 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
           errorMessage: ''
         });
       }
-    }
 
-    // Execute onSelectDate callback
-    if (onSelectDate) {
-      // If no input date string or input date string is invalid
-      // date variable will be null, callback should expect null value for this case
-      onSelectDate(date);
+      // Execute onSelectDate callback
+      if (onSelectDate) {
+        // If no input date string or input date string is invalid
+        // date variable will be null, callback should expect null value for this case
+        onSelectDate(date);
+      }
     }
   }
 }

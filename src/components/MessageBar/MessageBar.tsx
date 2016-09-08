@@ -17,14 +17,14 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
     isMultiline: true,
   };
 
-  // TODO bug 230228: Success icon not circled.
   private ICON_MAP = {
     [MessageBarType.info]:    'Info',
     [MessageBarType.warning]: 'Info',
     [MessageBarType.error]: 'ErrorBadge',
-    [MessageBarType.remove]: 'CircleRing',
-    [MessageBarType.severeWarning]: 'IncidentTriangle',
-    [MessageBarType.success]: 'CircleRing'
+    [MessageBarType.blocked]: 'Blocked',
+    [MessageBarType.remove]: 'Blocked', // TODO remove deprecated value at >= 1.0.0
+    [MessageBarType.severeWarning]: 'Warning',
+    [MessageBarType.success]: 'Completed'
   };
 
   constructor(props: IMessageBarProps) {
@@ -54,7 +54,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
     return css(this.props.className, 'ms-MessageBar', {
       'ms-MessageBar': this.props.messageBarType === MessageBarType.info,
       'ms-MessageBar--error': this.props.messageBarType === MessageBarType.error,
-      'ms-MessageBar--remove': this.props.messageBarType === MessageBarType.remove,
+      'ms-MessageBar--blocked': (this.props.messageBarType === MessageBarType.blocked) || (this.props.messageBarType === MessageBarType.remove), // TODO remove deprecated value at >= 1.0.0
       'ms-MessageBar--severeWarning': this.props.messageBarType === MessageBarType.severeWarning,
       'ms-MessageBar--success' : this.props.messageBarType === MessageBarType.success,
       'ms-MessageBar--warning' : this.props.messageBarType === MessageBarType.warning
@@ -81,7 +81,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
   }
 
   private _getInnerTextClassName(): string {
-    return this.props.onDismiss ? 'ms-MessageBar-innerTextPadding' : 'ms-MessageBar-innerText';
+    return this.props.onDismiss || this.props.actions ? 'ms-MessageBar-innerTextPadding' : 'ms-MessageBar-innerText';
   }
 
   private _renderMultiLine(): React.ReactElement<React.HTMLProps<HTMLAreaElement>> {

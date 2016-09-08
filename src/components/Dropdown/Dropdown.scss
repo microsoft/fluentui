@@ -9,6 +9,8 @@
 
 $Dropdown-selectedItem-bg: $ms-color-neutralQuaternaryAlt;
 $Dropdown-selectedItem-hover-bg: $ms-color-neutralLighter;
+$DropDown-height: 32px;
+$DropDown-item-height: 36px;
 
 // Mixin for high contrast mode link states
 @mixin highContrastListItemState {
@@ -32,6 +34,7 @@ $Dropdown-selectedItem-hover-bg: $ms-color-neutralLighter;
 .ms-Dropdown {
   @include ms-u-normalize;
   @include ms-font-m;
+  color: $ms-color-neutralPrimary;
 
   margin-bottom: 10px;
   position: relative;
@@ -149,10 +152,10 @@ $Dropdown-selectedItem-hover-bg: $ms-color-neutralLighter;
   color: $ms-color-neutralDark;
   font-size: $ms-icon-size-s;
   position: absolute;
-  right: 13px;
-  bottom: 9px;
-  z-index: 1;
+  top: 0px;
+  @include right(12px);
   pointer-events: none;
+  line-height: $DropDown-height;
 }
 
 // Style the new, replacement component
@@ -162,8 +165,9 @@ $Dropdown-selectedItem-hover-bg: $ms-color-neutralLighter;
   border: 1px solid $ms-color-neutralTertiaryAlt;
   cursor: pointer;
   display: block;
-  height: 32px;
-  padding: 5px 32px 0 10px;
+  height: $DropDown-height;
+  line-height: $DropDown-height - 2px; // height minus the border
+  @include padding(0, $DropDown-height, 0, 12px);
   position: relative;
   overflow: hidden;
 }
@@ -214,8 +218,9 @@ $Dropdown-selectedItem-hover-bg: $ms-color-neutralLighter;
   box-sizing: border-box;
   cursor: pointer;
   display: block;
-  height: 36px;
-  padding: 7px 10px;
+  height: $DropDown-item-height;
+  line-height: $DropDown-item-height - 2px; // height minus the border
+  padding: 0px 12px;
   position: relative;
   border: 1px solid transparent;
   white-space: nowrap;

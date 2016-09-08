@@ -94,6 +94,7 @@ $Dialog-default-max-width: 340px;
   margin: 0;
   display: table-cell;
   @include ms-font-xl;
+  color: $ms-color-neutralPrimary;
   padding: 20px 28px 20px;
   width: 100%;
 }
@@ -122,6 +123,7 @@ $Dialog-default-max-width: 340px;
   margin: 0 0 20px 0;
   padding-top: 8px;
   @include ms-font-s;
+  color: $ms-color-neutralPrimary;
   font-weight: $ms-font-weight-semilight;
   line-height: 1.5;
 }

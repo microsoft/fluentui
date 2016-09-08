@@ -13,11 +13,12 @@
   @include focus-border();
   @include ms-font-m;
   @include ms-u-normalize;
+  color: $ms-color-neutralPrimary;
   background-color: $ms-color-neutralLighter;
   border: 1px solid $ms-color-neutralLighter;
   cursor: pointer;
   display: inline-block;
-  height: 36px;
+  height: 32px;
   min-width: 80px;
   padding: 4px 20px 6px;
 
@@ -146,47 +147,30 @@
 //== Modifier: Hero button
 //
 .ms-Button.ms-Button--hero {
-  align-items: center;
   background-color: transparent;
   border: 0;
-  display: flex;
-  padding: 0;
+  height: auto;
 
   .ms-Button-icon {
     color: $ms-color-themePrimary;
     display: inline-block;
-    font-size: $ms-font-size-s;
-    margin-right: 2px;
-    position: relative;
-    top: -7px;
-    text-align: center;
-
-    .ms-Icon {
-      border-radius: 18px;
-      border: 1px solid $ms-color-themePrimary;
-      font-size: $ms-font-size-s;
-      height: 18px;
-      line-height: 18px;
-      width: 18px;
-    }
+    @include margin-right(8px);
+    padding-top: 5px;
+    font-size: $ms-icon-size-l;
+    line-height: 1; // FireFox vertical offset
   }
 
   .ms-Button-label {
     color: $ms-color-themePrimary;
     font-size: $ms-font-size-xl;
     font-weight: $ms-font-weight-light;
-    position: relative;
-    text-decoration: none;
+    vertical-align: top;
   }
 
   &:hover,
   &:focus {
     .ms-Button-icon {
       color: $ms-color-themeDark;
-
-      .ms-Icon {
-        border: 1px solid $ms-color-themeDark;
-      }
     }
 
     .ms-Button-label {
@@ -197,10 +181,6 @@
   &:active {
     .ms-Button-icon {
       color: $ms-color-themePrimary;
-
-      .ms-Icon {
-        border: 1px solid $ms-color-themePrimary;
-      }
     }
 
     .ms-Button-label {
@@ -212,10 +192,6 @@
   &.is-disabled {
     .ms-Button-icon {
       color: $ms-color-neutralTertiaryAlt;
-
-      .ms-Icon {
-        border: 1px solid $ms-color-neutralTertiaryAlt;
-      }
     }
 
     .ms-Button-label {
@@ -237,8 +213,6 @@
   .ms-Button-label {
     @include text-align(left);
     display: block;
-    font-weight: $ms-font-weight-semibold;
-    position: relative;
     color: $ms-color-black;
     margin-top: -5px;
   }
@@ -247,7 +221,6 @@
     @include text-align(left);
     color: $ms-color-neutralSecondary;
     display: block;
-    font-weight: $ms-font-weight-regular;
     font-size: $ms-font-size-s;
     position: relative;
     top: 3px;
@@ -307,22 +280,23 @@
   @include text-align(left);
   background-color: transparent;
   border: none;
-  height: 32px;
-  line-height: 32px;
+  height: 40px;
   min-width: 0;
   padding: 0 8px;
-  font-size: $ms-font-size-m;
 
   .ms-Button-label {
-    color: $ms-color-themePrimary;
+    color: $ms-color-neutralPrimary;
   }
 
   .ms-Button-icon {
+    vertical-align: top;
+    margin-top: 2px;
     @include text-align(left);
     color: $ms-color-themePrimary;
     display: inline-block;
-    margin-right: 4px;
+    @include margin-right(8px);
     position: relative;
+    font-size: $ms-icon-size-m;
   }
 
   .ms-Button-label {
@@ -356,13 +330,6 @@
   }
 }
 
-// Add space between adjacent command buttons.
-.ms-Button.ms-Button--command + .ms-Button.ms-Button--command {
-  @include margin-left(14px);
-}
-
-// TODO: Overrides that need to be removed.
-
 .ms-Button--icon {
   @include focus-border(0px);
   background-color: transparent;
@@ -375,8 +342,6 @@
   &:hover,
   &:active {
     background-color: transparent;
-    border-color: transparent;
-    outline-color: transparent;
     color: $ms-color-neutralPrimary;
   }
 
@@ -385,7 +350,7 @@
   }
 
   .ms-Icon {
-    font-size: 16px;
+    font-size: $ms-icon-size-m;
     padding: 8px;
   }
 
@@ -393,7 +358,8 @@
     display: inline;
   }
 
-  &.is-disabled, &:disabled {
+  &.is-disabled,
+  &:disabled {
     color: $ms-color-neutralTertiaryAlt;
     background-color: transparent;
   }
@@ -422,6 +388,11 @@
 // Add space between adjacent buttons.
 .ms-Button + .ms-Button {
   @include margin-left(6px);
+}
+
+// Add space between adjacent command buttons.
+.ms-Button.ms-Button--command + .ms-Button.ms-Button--command {
+  @include margin-left(14px);
 }
 
 // Overide text underline for anchor type button

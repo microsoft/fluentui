@@ -64,6 +64,9 @@ export class Selection implements ISelection {
   public setItems(items: IObjectWithKey[], shouldClear = true) {
     let newKeyToIndexMap: { [key: string]: number } = {};
     let newUnselectableIndices: { [key: string]: boolean } = {};
+    let hasSelectionChanged = false;
+
+    this.setChangeEvents(false);
 
     // Build lookup table for quick selection evaluation.
     for (let i = 0; i < items.length; i++) {
@@ -86,8 +89,9 @@ export class Selection implements ISelection {
     // Check the exemption list for discrepencies.
     let newExemptedIndicies: { [key: string]: boolean } = {};
 
-    for (let index in this._exemptedIndices) {
-      if (this._exemptedIndices.hasOwnProperty(index)) {
+    for (let indexProperty in this._exemptedIndices) {
+      if (this._exemptedIndices.hasOwnProperty(indexProperty)) {
+        let index = Number(indexProperty);
         let item = this._items[index];
         let exemptKey = item ? this.getKey(item, Number(index)) : undefined;
         let newIndex = exemptKey ? newKeyToIndexMap[exemptKey] : index;
@@ -95,13 +99,12 @@ export class Selection implements ISelection {
         if (newIndex === undefined) {
           // We don't know the index of the item any more so it's either moved or removed.
           // In this case we reset the entire selection.
-          newExemptedIndicies = {};
-          this._isAllSelected = false;
-          this._exemptedCount = 0;
+          this.setAllSelected(false);
           break;
         } else {
           // We know the new index of the item. update the existing exemption table.
           newExemptedIndicies[newIndex] = true;
+          hasSelectionChanged = hasSelectionChanged || (newIndex !== index);
         }
       }
     }
@@ -111,7 +114,11 @@ export class Selection implements ISelection {
     this._unselectableIndices = newUnselectableIndices;
     this._items = items || [];
 
-    this._change();
+    if (hasSelectionChanged) {
+      this._change();
+    }
+
+    this.setChangeEvents(true);
   }
 
   public getItems(): IObjectWithKey[] {
@@ -136,11 +143,25 @@ export class Selection implements ISelection {
     return this._isAllSelected ? (this._items.length - this._exemptedCount - this._unselectableCount) : (this._exemptedCount);
   }
 
+  public isRangeSelected(fromIndex: number, count: number): boolean {
+    let endIndex = fromIndex + count;
+
+    for (let i = fromIndex; i < endIndex; i++) {
+      if (!this.isIndexSelected(i)) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
   public isAllSelected(): boolean {
+    let selectableCount = this._items.length - this._unselectableCount;
+
     return (
       (this.count > 0) &&
       (this._isAllSelected && this._exemptedCount === 0) ||
-      (!this._isAllSelected && (this._exemptedCount === this._items.length - this._unselectableCount) && this._items.length > 0));
+      (!this._isAllSelected && (this._exemptedCount === selectableCount) && selectableCount > 0));
   }
 
   public isKeySelected(key: string): boolean {
@@ -157,10 +178,14 @@ export class Selection implements ISelection {
   }
 
   public setAllSelected(isAllSelected: boolean) {
-    this._exemptedIndices = {};
-    this._exemptedCount = 0;
-    this._isAllSelected = isAllSelected;
-    this._updateCount();
+    let selectableCount = this._items ? (this._items.length - this._unselectableCount) : 0;
+
+    if (selectableCount > 0 && (this._exemptedCount > 0 || isAllSelected !== this._isAllSelected)) {
+      this._exemptedIndices = {};
+      this._exemptedCount = 0;
+      this._isAllSelected = isAllSelected;
+      this._updateCount();
+    }
   }
 
   public setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean) {
@@ -247,6 +272,17 @@ export class Selection implements ISelection {
 
   public toggleIndexSelected(index: number) {
     this.setIndexSelected(index, !this.isIndexSelected(index), true);
+  }
+
+  public toggleRangeSelected(fromIndex: number, count: number) {
+    let isRangeSelected = this.isRangeSelected(fromIndex, count);
+    let endIndex = fromIndex + count;
+
+    this.setChangeEvents(false);
+    for (let i = fromIndex; i < endIndex; i++) {
+      this.setIndexSelected(i, !isRangeSelected, false);
+    }
+    this.setChangeEvents(true);
   }
 
   private _updateCount() {

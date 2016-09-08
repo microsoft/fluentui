@@ -26,12 +26,13 @@
 
 .ms-ContextualMenu-customizationExample-item {
   display: inline-block;
-  width: 39px;
-  height: 39px;
-  line-height: 39px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
   text-align: center;
   vertical-align: middle;
   margin-bottom: 8px;
+  cursor: pointer;
 
   &:hover {
     background-color: #eaeaea;

@@ -10,6 +10,27 @@
 $ms-checkbox-label-size: 20px;
 $ms-checkbox-transition-duration: 200ms;
 $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
+$ms-checkbox-highContrast-iconBoxSize: 16px;
+
+@mixin highContrast-border($active-color, $bw-color, $size: 2px) {
+  @media screen and (-ms-high-contrast: active) {
+    border: $size solid $active-color;
+  }
+
+  @media screen and (-ms-high-contrast: black-on-white) {
+    border: $size solid $bw-color;
+  }
+}
+
+@mixin highContrast-color($active-color, $bw-color) {
+  @media screen and (-ms-high-contrast: active) {
+    color: $active-color;
+  }
+
+  @media screen and (-ms-high-contrast: black-on-white) {
+    color: $bw-color;
+  }
+}
 
 .ms-Checkbox {
   box-sizing: border-box;
@@ -18,7 +39,6 @@ $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
   min-height: 36px;
-  border: 1px solid transparent;
   position: relative;
 
   .ms-Label {
@@ -64,14 +84,6 @@ $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
   line-height: $ms-checkbox-label-size;
   width: $ms-checkbox-label-size;
   text-align: center;
-
-  @media screen and (-ms-high-contrast: active) {
-    color: $ms-color-black;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    color: $ms-color-white;
-  }
 }
 
 // The checkbox label
@@ -82,6 +94,9 @@ $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
   position: relative;
   vertical-align: top;
   user-select: none;
+  min-width: $ms-checkbox-label-size;
+  min-height: $ms-checkbox-label-size;
+  line-height: $ms-checkbox-label-size;
 
   &:hover {
     &::before {
@@ -124,17 +139,21 @@ $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
       border: 10px solid $ms-color-themePrimary;
       background-color: $ms-color-themePrimary;
 
-      @media screen and (-ms-high-contrast: active) {
-        border-color: $ms-color-contrastBlackSelected;
-      }
-
-      @media screen and (-ms-high-contrast: black-on-white) {
-        border-color: $ms-color-contrastWhiteSelected;
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: black-on-white) {
+        display: none;
       }
     }
 
     &::after {
       display: block;
+
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: black-on-white) {
+        height: $ms-checkbox-highContrast-iconBoxSize;
+        width: $ms-checkbox-highContrast-iconBoxSize;
+        line-height: $ms-checkbox-highContrast-iconBoxSize;
+      }
+
+      @include highContrast-border($ms-color-white, $ms-color-black);
     }
 
     &:hover,
@@ -161,26 +180,17 @@ $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
       background-color: $ms-color-neutralTertiaryAlt;
       border-color: $ms-color-neutralTertiaryAlt;
       color: $ms-color-neutralTertiaryAlt;
+    }
 
-      @media screen and (-ms-high-contrast: active) {
-        border-color: $ms-color-contrastBlackDisabled;
-      }
-
-      @media screen and (-ms-high-contrast: black-on-white) {
-        border-color: $ms-color-contrastWhiteDisabled;
-      }
+    &::after {
+      @include highContrast-border($ms-color-contrastBlackDisabled, $ms-color-contrastWhiteDisabled);
+      @include highContrast-color($ms-color-contrastBlackDisabled, $ms-color-contrastWhiteDisabled);
     }
 
     .ms-Label {
       color: $ms-color-neutralTertiary;
 
-      @media screen and (-ms-high-contrast: active) {
-        color: $ms-color-contrastBlackDisabled;
-      }
-
-      @media screen and (-ms-high-contrast: black-on-white) {
-        color: $ms-color-contrastWhiteDisabled;
-      }
+      @include highContrast-color($ms-color-contrastBlackDisabled, $ms-color-contrastWhiteDisabled);
     }
   }
 
@@ -202,5 +212,14 @@ $ms-checkbox-transition-timing: cubic-bezier(.4, 0, .23, 1);
 }
 
 .is-focusVisible .ms-Checkbox.is-inFocus {
-  border: 1px solid $ms-color-neutralPrimary;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    @include right(0px);
+    @include left(-8px);
+    border: 1px solid $focusedBorderColor;
+    @include highContrast-border($ms-color-white, $ms-color-black, 1px);
+  }
 }

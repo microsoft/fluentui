@@ -113,7 +113,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     return [{
       key: 'isRTL',
       name: `Render in ${ this.state.isRTLEnabled ? 'LTR' : 'RTL' }`,
-      icon: 'gear',
+      icon: 'Settings',
       onClick: this._onRTLToggled
     }];
   }

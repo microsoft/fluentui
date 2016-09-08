@@ -7,7 +7,7 @@ import {
 const examplePersona = {
   imageInitials: 'MS',
   primaryText: 'Maor Sharett',
-  seconaryText: 'Designer',
+  secondaryText: 'Designer',
   tertiaryText: 'In a meeting',
   optionalText: 'Available at 4:00pm'
 };
@@ -31,4 +31,3 @@ export class PersonaInitialsExample extends React.Component<any, any> {
     );
   }
 }
-

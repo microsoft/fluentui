@@ -7,33 +7,60 @@
 // --------------------------------------------------
 // Check styles
 
+$checkBoxHeight: 20px;
+
 .ms-Check {
   display: inline-block;
   cursor: default;
-  line-height: 0;
   vertical-align: top;
+  width: $checkBoxHeight;
+  height: $checkBoxHeight;
+  text-align: center;
 
   &.is-checked {
-
-    .ms-Check-circle {
-      fill: $ms-color-themePrimary;
-      stroke: $ms-color-white;
-      stroke-width: 1px;
+    .ms-Check-background {
+      &:before {
+        background: $ms-color-themePrimary;
+        border: 1px solid $ms-color-white;
+      }
     }
 
     .ms-Check-check {
-      stroke: $ms-color-white;
+      opacity: 1;
+      color: $ms-color-white;
+    }
+  }
+
+  &:hover {
+    .ms-Check-check {
+      opacity: 1;
     }
   }
 }
 
-.ms-Check-circle {
-  fill: $ms-color-white;
-  stroke: $ms-color-neutralTertiaryAlt;
-}
-
 .ms-Check-check {
-  stroke: $ms-color-neutralTertiaryAlt;
+  left: 0;
+  right: 0;
+  position: absolute;
+  line-height: $checkBoxHeight;
+  color: $ms-color-neutralTertiaryAlt;
+  opacity: 0;
 }
 
-
+.ms-Check-background {
+  &:before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: inline-block;
+    margin: auto;
+    height: $checkBoxHeight - 2px;
+    width: $checkBoxHeight - 2px;
+    background: $ms-color-white;
+    border: 1px solid $ms-color-neutralTertiaryAlt;
+    border-radius: 50%;
+    content: ' ';
+  }
+}
