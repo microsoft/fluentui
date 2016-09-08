@@ -44,7 +44,7 @@ $navnode-height: 36px;
 .ms-Nav-chevronButton {
   display: block;
 
-  font-family: $ms-font-family-regular;
+  font-weight: $ms-font-weight-regular;
   font-size: $ms-font-size-s;
 
   @include text-align(left);
