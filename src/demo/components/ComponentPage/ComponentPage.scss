@@ -31,6 +31,13 @@ $dontColor: #A61E22;
   @include ms-font-xxl;
   font-size: 36px;
   margin-top: 0;
+  margin-bottom: 28px;
+}
+
+.ComponentPage-smallSubHeading {
+  @include ms-font-l;
+  line-height: $ms-font-size-xl;
+  margin-bottom: 18px;
 }
 
 .ComponentPage-overview {
@@ -77,6 +84,15 @@ $dontColor: #A61E22;
   box-sizing: border-box;
   display: inline-block;
   border-top: 8px solid #177D3E;
+
+  ul {
+    padding-left: 18px;
+  }
+
+  li {
+    @include ms-font-m;
+    line-height: $ms-font-size-xl;
+  }
 }
 
 .ComponentPage-doSection {
