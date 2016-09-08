@@ -91,6 +91,11 @@ export interface INavLink {
   onClick?: (ev?: React.MouseEvent) => void;
 
   /**
+   * button icon name if applied
+   */
+  icon?: string;
+
+  /**
    * Classname to apply to the icon link. (obsolet should be removed after all repo updated)
    */
   iconClassName?: string;

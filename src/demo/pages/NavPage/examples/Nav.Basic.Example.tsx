@@ -42,7 +42,7 @@ export class NavBasicExample extends React.Component<any, any> {
                     name: 'Edit',
                     url: '#',
                     onClick: this._onClickHandler,
-                    iconClassName: 'ms-Icon--Edit'
+                    icon: 'Edit'
                   }
                 ]
               }
