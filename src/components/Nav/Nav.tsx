@@ -89,7 +89,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
           className={ css('ms-Nav-link', nestingLevel > 0 ? 'ms-Nav-SublinkTextSize' : '') }
           style={ { [isRtl ? 'paddingRight' : 'paddingLeft'] : paddingBefore } }
           href={ link.url || 'javascript:' }
-          onclick={ !!link.onClick ? link.onClick : onLinkClick }
+          onclick={ onLinkClick }
           aria-label={ link.ariaLabel }
           title={ link.title ? link.title : link.name }
           target={ link.target }
@@ -101,7 +101,6 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
   }
 
   private _renderButtonLink(link: INavLink, linkIndex: number) {
-
     return (
       <Button
         className={ css('ms-Nav-link ms-Nav-linkButton', { 'isOnExpanded': this._hasExpandButton }) }
