@@ -1,74 +1,133 @@
+
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { ILayerProps } from './Layer.Props';
-import { LayerHost, ILayer } from './LayerHost';
-import { getId } from '../../utilities/object';
+import { Portal, IPortalProps } from '../Portal/Portal';
+import { layerPortalNexusKey } from './LayerPortalNexusKey';
+import { setVirtualParent } from '../../utilities/DomUtils';
 import './Layer.scss';
 
-const LAYER_HOST_ELEMENT_ID = 'ms-layer-host';
+export interface ILayerContext {
+  isInLayer?: boolean;
+}
 
-let _layerHost: LayerHost;
+export const LAYER_CONTEXT_PROP_TYPES = {
+  isInLayer: React.PropTypes.bool
+};
 
+const LayerPortal: (new (props: IPortalProps<void>, ...args: any[]) => React.Component<IPortalProps<void>, any>) = Portal;
+
+/**
+ * Component which projects child elements onto a layer host.
+ *
+ * @export
+ * @class Layer
+ * @extends {React.Component<ILayerProps, {}>}
+ */
 export class Layer extends React.Component<ILayerProps, {}> {
-  public static contextTypes = {
-    isInLayer: React.PropTypes.bool
-  };
+  public static contextTypes = LAYER_CONTEXT_PROP_TYPES;
 
-  public context: {
-    isInLayer: boolean;
-  };
+  public context: ILayerContext;
 
-  private _layer: ILayer;
+  private _layerElement: HTMLDivElement;
+  private _layerContentElement: HTMLDivElement;
 
-  constructor(props?: ILayerProps) {
-    super(props);
+  constructor(layerProps: ILayerProps, context: any) {
+    super(layerProps, context);
 
-    this._layer = {
-      id: getId('Layer'),
-      children: props.children
-    };
+    this._onLayerRef = this._onLayerRef.bind(this);
+    this._onLayerContentRef = this._onLayerContentRef.bind(this);
   }
 
   public render(): JSX.Element {
-    let { isInLayer } = this.context;
+    let {
+      children
+    } = this.props;
 
-    return isInLayer ? this.props.children as JSX.Element : null;
-  }
+    let {
+      isInLayer = false
+    } = this.context;
 
-  public componentWillMount() {
-    if (!_layerHost) {
-      let hostElement = document.createElement('div');
-      hostElement.setAttribute('id', LAYER_HOST_ELEMENT_ID);
-      document.body.appendChild(hostElement);
+    if (isInLayer) {
+      return children as JSX.Element;
+    } else {
+      let options: void;
 
-      let layerHost: LayerHost = ReactDOM.render((
-        <LayerHost />
-      ), hostElement) as LayerHost;
-
-      _layerHost = layerHost;
+      return (
+        <div className='ms-Layer' ref={ this._onLayerRef }>
+          <LayerPortal
+            options={ options }
+            nexusKey={ layerPortalNexusKey }>
+            <LayerContent contentRef={ this._onLayerContentRef }>
+              { children }
+            </LayerContent>
+          </LayerPortal>
+        </div>
+      );
     }
   }
 
-  public componentDidMount() {
-    if (!this.context.isInLayer) {
-      _layerHost.addLayer(this._layer, this.props.onLayerMounted);
-    } else {
-      if (this.props.onLayerMounted) {
-        this.props.onLayerMounted();
+  private _onLayerRef(element: HTMLDivElement) {
+    this._layerElement = element;
+
+    if (this._layerContentElement) {
+      // If the content element is mounted, set its virtual parent.
+      setVirtualParent(this._layerContentElement, this._layerElement);
+    }
+  }
+
+  private _onLayerContentRef(element: HTMLDivElement) {
+    if (this._layerContentElement && element !== this._layerContentElement) {
+      // If a different content element was previously mounted, clear its virtual parent.
+      setVirtualParent(this._layerContentElement, undefined);
+    }
+
+    this._layerContentElement = element;
+
+    if (this._layerContentElement) {
+      // If the content element is now mounted, set its virtual parent.
+      setVirtualParent(this._layerContentElement, this._layerElement);
+    }
+
+    if (this._layerContentElement) {
+      let {
+        onLayerMounted
+      } = this.props;
+
+      if (onLayerMounted) {
+        onLayerMounted();
       }
     }
   }
+}
 
-  public componentWillReceiveProps(props: ILayerProps) {
-    if (!this.context.isInLayer) {
-      this._layer.children = props.children;
-      _layerHost.updateLayer(this._layer);
-    }
+interface ILayerContentProps extends React.Props<LayerContent> {
+  contentRef: (element: HTMLDivElement) => void;
+}
+
+interface ILayerContentState {
+  // Nothing special.
+}
+
+class LayerContent extends React.Component<ILayerContentProps, ILayerContentState> {
+  public static childContextTypes = LAYER_CONTEXT_PROP_TYPES;
+
+  public getChildContext(): ILayerContext {
+    return {
+      isInLayer: true
+    };
   }
 
-  public componentWillUnmount() {
-    if (!this.context.isInLayer) {
-      _layerHost.removeLayer(this._layer);
-    }
+  public render() {
+    let {
+      children,
+      contentRef
+    } = this.props;
+
+    return (
+      <div className='ms-Layer-content' ref={ contentRef }>
+        { children }
+      </div>
+    );
   }
 }
+
