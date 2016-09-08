@@ -17,6 +17,7 @@ import { PivotOnChangeExample } from './examples/Pivot.OnChange.Example';
 import { PivotRemoveExample } from './examples/Pivot.Remove.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const PivotRemoveExampleCode = require('./examples/Pivot.Remove.Example.tsx');
 const PivotBasicExampleCode = require('./examples/Pivot.Basic.Example.tsx');
@@ -26,7 +27,7 @@ const PivotTabsLargesExampleCode = require('./examples/Pivot.TabsLarge.Example.t
 const PivotFabricExampleCode = require('./examples/Pivot.Fabric.Example.tsx');
 const PivotOnChangeExampleCode = require('./examples/Pivot.OnChange.Example.tsx');
 
-export class PivotPage extends React.Component<any, any> {
+export class PivotPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -76,7 +77,8 @@ export class PivotPage extends React.Component<any, any> {
             <span> are used for grouping components under a set of Links or Tabs</span>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }
