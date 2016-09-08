@@ -1,19 +1,21 @@
 import * as React from 'react';
+import { BaseComponent } from '../../common/BaseComponent';
 import { ITextFieldProps } from './TextField.Props';
 import { Label } from '../../Label';
 import { css } from '../../utilities/css';
-import { getId } from '../../utilities/object';
+import { getId, assign } from '../../utilities/object';
 import { autobind } from '../../utilities/autobind';
 import './TextField.scss';
 
 export interface ITextFieldState {
+  /** value of the uncontrolled TextField */
   value?: string;
 
   /** Is true when the control has focus. */
   isFocused?: boolean;
 }
 
-export class TextField extends React.Component<ITextFieldProps, ITextFieldState> {
+export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> {
   public static defaultProps: ITextFieldProps = {
     multiline: false,
     resizable: true,
@@ -24,25 +26,18 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
 
   private _id: string;
   private _descriptionId: string;
-  private _field;
+  private _input: HTMLInputElement;
 
   public constructor(props: ITextFieldProps) {
     super(props);
 
     this._id = getId('TextField');
-    this._descriptionId = getId('TextFieldDescription');
+    this._descriptionId = getId('TextField-Description');
 
     this.state = {
-      value: props.value || props.defaultValue,
+      value: props.defaultValue || '',
       isFocused: false
     };
-  }
-
-  /**
-   * Gets the current value of the text field.
-   */
-  public get value(): string {
-    return this.state.value;
   }
 
   public componentWillReceiveProps(newProps: ITextFieldProps) {
@@ -61,8 +56,20 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
   }
 
   public render() {
-    let { disabled, required, multiline, underlined, label, description, iconClass, className, errorMessage } = this.props;
-    let { isFocused } = this.state;
+    const {
+      disabled,
+      required,
+      multiline,
+      underlined,
+      label,
+      description,
+      iconClass,
+      className,
+      errorMessage,
+      inputProps,
+      placeholder
+    } = this.props;
+    const { isFocused } = this.state;
 
     const textFieldClassName = css('ms-TextField', className, {
       'is-required': required,
@@ -72,12 +79,32 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
       'ms-TextField--underlined': underlined
     });
 
+    const inputElement = React.createElement(multiline ? 'textarea' : 'input', assign(
+      {},
+      inputProps,
+      {
+        id: this._id,
+        ref: this._resolveRef('_input'),
+        value: this.props.value || this.state.value,
+        onChange: this._onInputChange,
+        className: this._inputClassName,
+        onFocus: this._onFocus,
+        onBlur: this._onBlur,
+        'aria-label': this.props.ariaLabel,
+        'aria-describedby': this._descriptionId,
+        'aria-invalid': !!this.props.errorMessage,
+      },
+      multiline ? null : { type: 'text', placeholder }
+    ));
+
     return (
       <div className={ textFieldClassName }>
         { label && <Label htmlFor={ this._id }>{ label }</Label> }
         { iconClass && <i className={ iconClass }></i> }
-        { multiline ? this._renderTextArea() : this._renderInput() }
-        { errorMessage && <div aria-live='assertive' className='ms-u-screenReaderOnly' data-automation-id='error-message'>{ errorMessage }</div> }
+        { inputElement }
+        { errorMessage && <div aria-live='assertive' className='ms-u-screenReaderOnly' data-automation-id='error-message'>
+          { errorMessage }
+        </div> }
         { (description || errorMessage) &&
           <span id={ this._descriptionId }>
             { description && <span className='ms-TextField-description'>{ description }</span> }
@@ -88,12 +115,16 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     );
   }
 
+  public get value(): string {
+    return this._input ? this._input.value : '';
+  }
+
   /**
    * Sets focus on the text field
    */
   public focus() {
-    if (this._field) {
-      this._field.focus();
+    if (this._input) {
+      this._input.focus();
     }
   }
 
@@ -101,8 +132,8 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
    * Selects the text field
    */
   public select() {
-    if (this._field) {
-      this._field.select();
+    if (this._input) {
+      this._input.select();
     }
   }
 
@@ -110,8 +141,8 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
    * Sets the selection start of the text field to a specified value
    */
   public setSelectionStart(value: number) {
-    if (this._field) {
-      this._field.selectionStart = value;
+    if (this._input) {
+      this._input.selectionStart = value;
     }
   }
 
@@ -119,8 +150,8 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
    * Sets the selection end of the text field to a specified value
    */
   public setSelectionEnd(value: number) {
-    if (this._field) {
-      this._field.selectionEnd = value;
+    if (this._input) {
+      this._input.selectionEnd = value;
     }
   }
 
@@ -142,16 +173,9 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     this.setState({ isFocused: false });
   }
 
-  private get _fieldClassName(): string {
-    let textFieldClassName: string;
-
-    if (this.props.multiline && !this.props.resizable) {
-      textFieldClassName = 'ms-TextField-field ms-TextField-field--unresizable';
-    } else {
-      textFieldClassName = 'ms-TextField-field';
-    }
-
-    return css(textFieldClassName, {
+  private get _inputClassName(): string {
+    return css('ms-TextField-field', {
+      'ms-TextField-field--unresizable': this.props.multiline && !this.props.resizable,
       'ms-TextField-invalid': !!this.props.errorMessage
     });
   }
@@ -161,50 +185,12 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
 
-    this.setState({
-      value: value,
-      errorMessage: ''
-    } as ITextFieldState);
+    if (this.props.value === undefined) {
+      this.setState({ value });
+    }
 
     if (this.props.onChanged) {
       this.props.onChanged(value);
     }
-  }
-
-  private _renderTextArea(): React.ReactElement<React.HTMLProps<HTMLAreaElement>> {
-    return (
-      <textarea
-        id={ this._id }
-        ref={ (c): HTMLTextAreaElement => this._field = c }
-        value={ this.state.value }
-        defaultValue={ this.props.defaultValue }
-        onChange={ this._onInputChange }
-        className={ this._fieldClassName }
-        aria-label={ this.props.ariaLabel }
-        aria-describedby={ this._descriptionId }
-        aria-invalid={ !!this.props.errorMessage }
-        onFocus={ this._onFocus }
-        onBlur={ this._onBlur }
-        />
-    );
-  }
-
-  private _renderInput(): React.ReactElement<React.HTMLProps<HTMLInputElement>> {
-    return (
-      <input
-        id={ this._id }
-        type='text'
-        ref={ (c): HTMLInputElement => this._field = c }
-        value={ this.state.value }
-        defaultValue={ this.props.defaultValue }
-        onChange={ this._onInputChange }
-        className={ this._fieldClassName }
-        aria-label={ this.props.ariaLabel }
-        aria-describedby={ this._descriptionId }
-        aria-invalid={ !!this.props.errorMessage }
-        onFocus={ this._onFocus }
-        onBlur={ this._onBlur }
-        />
-    );
   }
 }
