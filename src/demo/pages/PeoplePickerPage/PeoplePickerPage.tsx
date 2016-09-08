@@ -68,7 +68,7 @@ export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, a
           </div>
         }
         route={ this._url }
-        showHeader={ this.props.showHeader }>
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }

@@ -67,7 +67,7 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, an
           </div>
         }
         route={ this._url }
-        showHeader={ this.props.showHeader }>
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }

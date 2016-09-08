@@ -50,7 +50,7 @@ export class MarqueeSelectionPage extends React.Component<IComponentDemoPageProp
           </div>
         }
         route={ this._url }
-        showHeader={ this.props.showHeader }>
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }

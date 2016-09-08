@@ -41,7 +41,7 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, any> 
           <div>A control for managing people through a panel.</div>
         }
         route={ this._url }
-        showHeader={ this.props.showHeader }>
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }
