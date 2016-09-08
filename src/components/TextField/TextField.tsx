@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { BaseComponent } from '../../common/BaseComponent';
+import { ITextField } from './ITextField';
 import { ITextFieldProps } from './TextField.Props';
+import { BaseComponent } from '../../common/BaseComponent';
 import { Label } from '../../Label';
 import { css } from '../../utilities/css';
 import { getId, assign } from '../../utilities/object';
@@ -15,7 +16,7 @@ export interface ITextFieldState {
   isFocused?: boolean;
 }
 
-export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> {
+export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> implements ITextField {
   public static defaultProps: ITextFieldProps = {
     multiline: false,
     resizable: true,
