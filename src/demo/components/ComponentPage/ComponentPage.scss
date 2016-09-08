@@ -3,6 +3,7 @@
 $componentPageColor: #0f8387;
 $componentPagePadding: 50px;
 $componentPageDividingMargin: 80px;
+$componentSubHeadMargin: 28px;
 $dosColor: #177D3E;
 $dontColor: #A61E22;
 
@@ -31,7 +32,7 @@ $dontColor: #A61E22;
   @include ms-font-xxl;
   font-size: 36px;
   margin-top: 0;
-  margin-bottom: 28px;
+  margin-bottom: $componentSubHeadMargin;
 }
 
 .ComponentPage-smallSubHeading {
@@ -42,6 +43,7 @@ $dontColor: #A61E22;
 
 .ComponentPage-overview {
   font-size: $ms-font-size-m;
+  line-height: $ms-font-size-l;
 }
 
 .ComponentPage-overviewSection,
@@ -92,6 +94,7 @@ $dontColor: #A61E22;
   li {
     @include ms-font-m;
     line-height: $ms-font-size-xl;
+    list-style: disc;
   }
 }
 
