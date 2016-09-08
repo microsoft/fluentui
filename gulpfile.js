@@ -24,10 +24,10 @@ build.postCopy.setConfig({
 isProduction && build.postCopy.setConfig({
   copyTo: {
     'dist/sass': [
-      'node_modules/office-ui-fabric/dist/sass/*.*'
+      'node_modules/office-ui-fabric-core/dist/sass/*.*'
     ],
     'dist/css': [
-      'node_modules/office-ui-fabric/dist/css/*.*'
+      'node_modules/office-ui-fabric-core/dist/css/*.*'
     ]
   }
 });

@@ -10,7 +10,7 @@ const examplePersona = {
   imageUrl: './images/persona-female.png',
   imageInitials: 'AL',
   primaryText: 'Annie Lindqvist',
-  seconaryText: 'Software Engineer',
+  secondaryText: 'Software Engineer',
   tertiaryText: 'In a meeting',
   optionalText: 'Available at 4:00pm'
 };
@@ -55,6 +55,7 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
         <Persona
           { ...examplePersona }
           hidePersonaDetails={ !renderPersonaDetails }
+          presence={ PersonaPresence.busy }
         />
         <Persona
           { ...examplePersona }

@@ -1,5 +1,9 @@
 @import '../../../common/common';
 
+.Themes {
+  padding: 40px;
+}
+
 .ThemePage-colorSwatch {
   @include focus-border();
   margin: -10px 0;

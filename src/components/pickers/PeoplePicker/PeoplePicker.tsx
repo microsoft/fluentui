@@ -77,7 +77,6 @@ export class MemberListBelow extends BasePeoplePicker {
   }
 }
 
-
 export class NormalPeoplePicker extends BasePeoplePicker {
   public static defaultProps = {
     onRenderItem: SelectedItemDefault,

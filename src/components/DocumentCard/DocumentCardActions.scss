@@ -40,6 +40,7 @@ $ms-DocumentCardActions-verticalPadding: 4px;
 
   .ms-Icon {
     @include margin-right(4px);
-    font-size: 16px;
+    font-size: $ms-icon-size-m;
+    vertical-align: top;
   }
 }

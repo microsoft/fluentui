@@ -14,13 +14,11 @@ export interface ISuggestionElementProps<T> extends React.Props<any> {
   className?: string;
 }
 
-
 export interface ISuggestionProps<T> {
-  suggestion: ISuggestionItem<T>,
-  RenderSuggestion: (item: T) => JSX.Element,
-  onClick: (ev: React.MouseEvent) => void
+  suggestion: ISuggestionItem<T>;
+  RenderSuggestion: (item: T) => JSX.Element;
+  onClick: (ev: React.MouseEvent) => void;
 }
-
 
 export class SuggestionItem<T> extends React.Component<ISuggestionProps<T>, {}> {
   public render() {
@@ -41,7 +39,7 @@ export class SuggestionItem<T> extends React.Component<ISuggestionProps<T>, {}> 
 }
 
 export class SuggestionElement<T> extends React.Component<ISuggestionElementProps<T>, {}> {
-  private SuggestionOfProperType = SuggestionItem as new (props: ISuggestionProps<T>) => SuggestionItem<T>;
+
   public static defaultProps = {
     searchForMoreText: 'Search For More',
     canSearchForMore: false
@@ -53,8 +51,10 @@ export class SuggestionElement<T> extends React.Component<ISuggestionElementProp
     selectedElement: HTMLDivElement;
   };
 
-  constructor(props) {
-    super(props);
+  private SuggestionOfProperType = SuggestionItem as new (props: ISuggestionProps<T>) => SuggestionItem<T>;
+
+  constructor(suggestionProps) {
+    super(suggestionProps);
     this._getMoreResults = this._getMoreResults.bind(this);
   }
 
@@ -66,7 +66,7 @@ export class SuggestionElement<T> extends React.Component<ISuggestionElementProp
         { suggestionsHeaderText ?
           (<div className='ms-Suggestions-Title'>
             { suggestionsHeaderText }
-          </div> ) : (null) }
+          </div>) : (null) }
         <div className='ms-Suggestion-Container'>
           { this._renderSuggestions() }
         </div>
@@ -97,24 +97,27 @@ export class SuggestionElement<T> extends React.Component<ISuggestionElementProp
   }
 
   private _renderSuggestions(): JSX.Element[] {
-    let { suggestions } = this.props;
-    let RenderSuggestion = this.props.onRenderSuggestion;
+    let { suggestions, onRenderSuggestion } = this.props;
+
     if (!suggestions.length) {
       return [<div className='ms-Suggestions-None'> None </div>];
     }
+
     let suggestionItems: JSX.Element[] = [];
     let TypedSuggestion = this.SuggestionOfProperType;
+
     for (let index: number = 0; index <= suggestions.length - 1; index++) {
       suggestionItems.push(
         <div ref={ suggestions[index].isSelected ? 'selectedElement' : '' }
           key={index}>
           <TypedSuggestion
             suggestion={suggestions[index]}
-            RenderSuggestion={this.props.onRenderSuggestion}
+            RenderSuggestion={ onRenderSuggestion }
             onClick={(ev: React.MouseEvent) => this.props.onSuggestionClick(ev, index) }
             />
         </div>);
     }
+
     return suggestionItems;
   }
 

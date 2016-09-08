@@ -193,14 +193,13 @@ export class BasePicker<T, S extends IBasePickerProps<T>> extends React.Componen
     let differenceIndex = 0;
     let { value } = this.state;
 
-    if (!this.suggestionManager.currentIndex || updatedValue !== this.state.value) {
-      let newValue: string = updatedValue ? updatedValue : '';
+    if (!this.suggestionManager.currentIndex || updatedValue !== value) {
       let newSuggestions: T[] = this.props.onResolveSuggestions(updatedValue);
 
       this.suggestionManager.updateSuggestions(newSuggestions);
       let text: string = undefined;
       if (this.suggestionManager.currentSuggestion) {
-        text = this.props.getTextFromItem(this.suggestionManager.currentSuggestion.item)
+        text = this.props.getTextFromItem(this.suggestionManager.currentSuggestion.item);
       }
 
       if (updatedValue) {
