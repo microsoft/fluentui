@@ -51,6 +51,12 @@ export interface IPanelProps extends React.Props<Panel> {
    * Optional parameter to provider the class name for header text
    */
   headerClassName?: string;
+
+  /**
+  * Whether the panel uses a modal overlay or not
+  * @default true
+  */
+  isModal?: boolean;
 }
 
 export enum PanelType {

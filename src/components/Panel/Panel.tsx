@@ -22,6 +22,7 @@ export interface IPanelState {
 export class Panel extends BaseComponent<IPanelProps, IPanelState> {
 
   public static defaultProps: IPanelProps = {
+    isModal: true,
     isOpen: false,
     hasCloseButton: true,
     type: PanelType.smallFixedFar,
@@ -62,7 +63,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
   }
 
   public render() {
-    let { children, className = '', type, hasCloseButton, isLightDismiss, headerText, closeButtonAriaLabel, headerClassName = ''  } = this.props;
+    let { children, className = '', type, hasCloseButton, isLightDismiss, headerText, closeButtonAriaLabel, headerClassName = '', isModal } = this.props;
     let { isOpen, isAnimatingOpen, isAnimatingClose, id } = this.state;
     let isLeft = type === PanelType.smallFixedNear ? true : false;
     let isRTL = getRTL();
@@ -81,6 +82,14 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
       closeButton = <button className='ms-Panel-closeButton ms-PanelAction-close' onClick={ this._onPanelClick }  aria-label={ closeButtonAriaLabel } data-is-visible={ true }>
         <i className='ms-Panel-closeIcon ms-Icon ms-Icon--Cancel'></i>
       </button>;
+    }
+
+    let overlay;
+    if (isModal) {
+      overlay = <Overlay
+        isDarkThemed={ false }
+        onClick={ isLightDismiss ? this._onPanelClick : null }
+        />;
     }
 
     return (
@@ -108,10 +117,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
               })
             }
             >
-            <Overlay
-              isDarkThemed={ false }
-              onClick={ isLightDismiss ? this._onPanelClick : null }
-              />
+            { overlay }
             <div className='ms-Panel-main'>
               <div className='ms-Panel-commands' data-is-visible={ true } >
                 { pendingCommandBarContent }
@@ -127,7 +133,6 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
           </div>
         </Popup>
       </Layer>
-
     );
   }
 

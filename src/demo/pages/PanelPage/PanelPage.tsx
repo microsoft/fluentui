@@ -16,6 +16,7 @@ import { PanelLargeExample } from './examples/Panel.Large.Example';
 import { PanelLargeFixedExample } from './examples/Panel.LargeFixed.Example';
 import { PanelExtraLargeExample } from './examples/Panel.ExtraLarge.Example';
 import { PanelLightDismissExample } from './examples/Panel.LightDismiss.Example';
+import { PanelNonModalExample } from './examples/Panel.NonModal.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 
@@ -27,6 +28,7 @@ const PanelLargeExampleCode = require('./examples/Panel.Large.Example.tsx');
 const PanelLargeFixedExampleCode = require('./examples/Panel.LargeFixed.Example.tsx');
 const PanelExtraLargeExampleCode = require('./examples/Panel.ExtraLarge.Example.tsx');
 const PanelLightDismissExampleCode = require('./examples/Panel.LightDismiss.Example.tsx');
+const PanelNonModalExampleCode = require('./examples/Panel.NonModal.Example.tsx');
 
 export class PanelPage extends React.Component<any, any> {
   private _url: string;
@@ -66,6 +68,9 @@ export class PanelPage extends React.Component<any, any> {
             </ExampleCard>,
             <ExampleCard title='Panel - Light Dismiss' code={ PanelLightDismissExampleCode }>
               <PanelLightDismissExample />
+            </ExampleCard>,
+            <ExampleCard title='Panel - Non-Modal' code={ PanelNonModalExampleCode }>
+              <PanelNonModalExample />
             </ExampleCard>
           ]
         }
