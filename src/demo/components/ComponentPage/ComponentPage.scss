@@ -19,9 +19,12 @@ $dontColor: #A61E22;
 .ComponentPage-title {
   @include ms-font-xxl;
   font-size: 82px;
+  line-height: 94px;
   color: $ms-color-white;
   display: inline-block;
   width: 100%;
+  margin-top: $componentPagePadding;
+  margin-bottom: $componentPagePadding;
 }
 
 .ComponentPage-subHeading {
