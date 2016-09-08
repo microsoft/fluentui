@@ -10,10 +10,11 @@ import {
 import { OrgChartBasicExample } from './examples/OrgChart.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const OrgChartBasicExampleCode = require('./examples/OrgChart.Basic.Example.tsx');
 
-export class OrgChartPage extends React.Component<any, any> {
+export class OrgChartPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -39,7 +40,8 @@ export class OrgChartPage extends React.Component<any, any> {
             <span> are used to render an org chart.</span>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }
