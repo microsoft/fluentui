@@ -86,12 +86,12 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
 
     return (
         <a
-          className={ css('ms-Nav-link', nestingLevel > 0 ? 'ms-Nav-SublinkTextSize' : '') }
+          className={ css('ms-Nav-link') }
           style={ { [isRtl ? 'paddingRight' : 'paddingLeft'] : paddingBefore } }
           href={ link.url || 'javascript:' }
           onclick={ onLinkClick }
           aria-label={ link.ariaLabel }
-          title={ link.title ? link.title : link.name }
+          title={ link.title || link.name }
           target={ link.target }
         >
          { link.iconClassName && <i className={ css('ms-Icon', 'ms-Nav-IconLink', link.iconClassName) }></i> }
@@ -139,7 +139,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
   private _renderLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     return (
       <li key={ link.key || linkIndex } role='listitem'>
-         { this._renderCompositeLink(link, linkIndex, nestingLevel)}
+         { this._renderCompositeLink(link, linkIndex, nestingLevel) }
           { (link.isExpanded ? this._renderLinks(link.links, ++nestingLevel) : null) }
       </li>
     );
@@ -166,7 +166,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
       <div key={ groupIndex } className={ css('ms-Nav-group', { 'is-expanded' : isGroupExpanded }) }>
         { (group.name ?
         <button
-          className='ms-Nav-chevronButton ms-Nav-chevronButton--group'
+          className='ms-Nav-chevronButton ms-Nav-chevronButton--group ms-Nav-groupHeaderFontSize'
           onClick={ this._onGroupHeaderClicked.bind(this, groupIndex) }
         >
           <i className={ css('ms-Nav-chevron', 'ms-Icon', 'ms-Icon--ChevronDown') }></i>

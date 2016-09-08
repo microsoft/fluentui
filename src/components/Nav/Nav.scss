@@ -172,8 +172,8 @@ $linkRightPadding: 20px;
   overflow: hidden;
 }
 
-.ms-Nav-SublinkTextSize {
-  font-size: $ms-font-size-s;
+.ms-Nav-groupHeaderFontSize {
+  @include ms-font-l;
 }
 
 .ms-Nav-chevronButton,
