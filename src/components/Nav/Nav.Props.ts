@@ -96,7 +96,7 @@ export interface INavLink {
   icon?: string;
 
   /**
-   * Classname to apply to the icon link. (obsolet should be removed after all repo updated)
+   * Classname to apply to the icon link.
    */
   iconClassName?: string;
 
