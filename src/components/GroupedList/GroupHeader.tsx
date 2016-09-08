@@ -75,6 +75,7 @@ export class GroupHeader extends React.Component<IGroupHeader, IGroupHeaderState
         }) }
         style={ viewport ? { minWidth: viewport.width } : {} }
         onClick={ this._onHeaderClick }
+        aria-label={ group.ariaLabel || group.name }
         data-is-focusable={ true } >
 
         <FocusZone direction={ FocusZoneDirection.horizontal }>
