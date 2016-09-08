@@ -22,8 +22,8 @@ export interface IPanelState {
 export class Panel extends BaseComponent<IPanelProps, IPanelState> {
 
   public static defaultProps: IPanelProps = {
-    isModal: true,
     isOpen: false,
+    isModal: true,
     hasCloseButton: true,
     type: PanelType.smallFixedFar,
   };
@@ -63,7 +63,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
   }
 
   public render() {
-    let { children, className = '', type, hasCloseButton, isLightDismiss, headerText, closeButtonAriaLabel, headerClassName = '', isModal } = this.props;
+    let { children, className = '', type, hasCloseButton, isLightDismiss, isModal, headerText, closeButtonAriaLabel, headerClassName = '' } = this.props;
     let { isOpen, isAnimatingOpen, isAnimatingClose, id } = this.state;
     let isLeft = type === PanelType.smallFixedNear ? true : false;
     let isRTL = getRTL();
