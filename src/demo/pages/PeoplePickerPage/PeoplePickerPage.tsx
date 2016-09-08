@@ -14,7 +14,6 @@ import { PeoplePickerCompactExample } from './examples/PeoplePicker.Compact.Exam
 import { PeoplePickerCustomResultExample } from './examples/PeoplePicker.CustomResult.Example';
 
 import { TagPickerBasicExample } from './examples/TagPicker.Basic.Example';
-import { PeoplePicker2BasicExample } from './examples/PeoplePicker2.Basic.Example';
 
 const PeoplePickerBasicExampleCode = require('./examples/PeoplePicker.Basic.Example.tsx');
 const PeoplePickerCompactExampleCode = require('./examples/PeoplePicker.Compact.Example.tsx');
@@ -34,9 +33,6 @@ export class PeoplePickerPage extends React.Component<any, any> {
         <h2 className='ms-font-xl'>Examples</h2>
         <ExampleCard title='TagPicker'>
           <TagPickerBasicExample />
-        </ExampleCard>
-        <ExampleCard title='New PeoplePicker'>
-          <PeoplePicker2BasicExample />
         </ExampleCard>
         <ExampleCard title='Basic PeoplePicker' code={ PeoplePickerBasicExampleCode }>
           <PeoplePickerBasicExample />

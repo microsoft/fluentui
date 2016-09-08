@@ -5,7 +5,7 @@ import { IPersonaProps } from '../../Persona';
 import { SelectedItemDefault } from './PeoplePickerItems/SelectedItemDefault';
 import { SuggestionItemSmall, SuggestionItemNormal } from './PeoplePickerItems/SuggestionItemDefault';
 import { FocusZone } from '../../FocusZone';
-import { SelectionZone } from '../../../utilities/selection/index';
+import { SelectionZone, SelectionMode } from '../../../utilities/selection/index';
 import { SelectedItemWithMenu } from './PeoplePickerItems/SelectedItemWithMenu';
 import './PeoplePicker.scss';
 
@@ -45,7 +45,8 @@ export class MemberListBelow extends BasePeoplePicker {
     return (
       <div>
         <div ref='root' className='ms-BasePicker' onKeyDown={ this._onKeyDown }>
-          <SelectionZone selection={ this._selection }>
+          <SelectionZone selection={ this._selection }
+            selectionMode={SelectionMode.multiple}>
             <div className='ms-BasePicker-text'>
               <input ref='input'
                 onFocus={ this._onInputFocus }
@@ -63,6 +64,7 @@ export class MemberListBelow extends BasePeoplePicker {
       </div>
     );
   }
+
   protected _onBackSpace(ev: React.KeyboardEvent) {
     let { value } = this.state;
     if (ev.target === this.refs.input) {
@@ -75,29 +77,34 @@ export class MemberListBelow extends BasePeoplePicker {
   }
 }
 
+
+export class NormalPeoplePicker extends BasePeoplePicker {
+  public static defaultProps = {
+    onRenderItem: SelectedItemDefault,
+    onRenderSuggestion: SuggestionItemNormal
+  };
+}
+
+export class CompactPeoplePicker extends BasePeoplePicker {
+  public static defaultProps = {
+    onRenderItem: SelectedItemDefault,
+    onRenderSuggestion: SuggestionItemSmall
+  };
+}
+
+export class ListPeoplePicker extends MemberListBelow {
+  public static defaultProps = {
+    onRenderItem: (props) => <SelectedItemWithMenu { ...props }/>,
+    onRenderSuggestion: SuggestionItemNormal
+  };
+}
+
 export class PeoplePicker extends React.Component<IPeoplePickerProps, {}> {
 
   public static defaultProps = {
     peoplePickerType: PeoplePickerType.normal
   };
 
-  constructor(props: IPeoplePickerProps) {
-    super(props);
-  }
-
-  public render() {
-    switch (this.props.peoplePickerType) {
-      case PeoplePickerType.normal:
-        return (<NormalPeoplePicker { ...this.props }/>);
-      case PeoplePickerType.list:
-        return (<ListPeoplePicker { ...this.props }/>);
-      case PeoplePickerType.compact:
-        return (<CompactPeoplePicker { ...this.props }/>);
-    }
-  }
-}
-
-export class BasicPeoplePicker extends React.Component<IPeoplePickerProps, {}> {
   constructor(props: IPeoplePickerProps) {
     super(props);
   }
@@ -118,36 +125,15 @@ export class BasicPeoplePicker extends React.Component<IPeoplePickerProps, {}> {
       className: 'ms-PeoplePicker',
       onGetMoreResults: onGetMoreResults
     };
-    return this._renderPicker(pickerProps);
-  }
 
-  protected _renderPicker(props: IBasePickerProps<IPersonaProps>): JSX.Element {
-    return <BasePeoplePicker { ...props }/>;
-  }
-}
-
-export class NormalPeoplePicker extends BasicPeoplePicker {
-  public static defaultProps = {
-    onRenderItem: SelectedItemDefault,
-    onRenderSuggestion: SuggestionItemNormal
-  };
-}
-
-export class CompactPeoplePicker extends BasicPeoplePicker {
-  public static defaultProps = {
-    onRenderItem: SelectedItemDefault,
-    onRenderSuggestion: SuggestionItemSmall
-  };
-}
-
-export class ListPeoplePicker extends BasicPeoplePicker {
-  public static defaultProps = {
-    onRenderItem: (props) => <SelectedItemWithMenu { ...props }/>,
-    onRenderSuggestion: SuggestionItemNormal
-  };
-
-  protected _renderPicker(props: IBasePickerProps<IPersonaProps>): JSX.Element {
-    return <MemberListBelow { ...props }/>;
+    switch (this.props.peoplePickerType) {
+      case PeoplePickerType.normal:
+        return (<NormalPeoplePicker { ...pickerProps }/>);
+      case PeoplePickerType.list:
+        return (<ListPeoplePicker { ...pickerProps }/>);
+      case PeoplePickerType.compact:
+        return (<CompactPeoplePicker { ...pickerProps }/>);
+    }
   }
 }
 

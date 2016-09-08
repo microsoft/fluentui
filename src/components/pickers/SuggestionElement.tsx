@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button, ButtonType } from '../../Button';
 import { css } from '../../utilities/css';
-import { ISuggestionItem } from './Suggestions';
+import { ISuggestionItem } from './SuggestionController';
 import './SuggestionElement.scss';
 
 export interface ISuggestionElementProps<T> extends React.Props<any> {
@@ -22,7 +22,7 @@ export interface ISuggestionProps<T> {
 }
 
 
-export class Suggestion<T> extends React.Component<ISuggestionProps<T>, {}> {
+export class SuggestionItem<T> extends React.Component<ISuggestionProps<T>, {}> {
   public render() {
     let {
       suggestion,
@@ -40,45 +40,8 @@ export class Suggestion<T> extends React.Component<ISuggestionProps<T>, {}> {
   }
 }
 
-export function Example(props: ISuggestionProps<any>) {
-  let {
-    suggestion,
-    RenderSuggestion,
-    onClick
-  } = props;
-  return (
-    <Button
-      onClick={ onClick }
-      className={ css('ms-Suggestions-Item', { 'is-suggested': suggestion.isSelected }) }
-      >
-      <RenderSuggestion {...suggestion.item}/>
-    </Button>
-  );
-}
-
-export function Example2<T>(props: ISuggestionProps<T>) {
-  let {
-    suggestion,
-    RenderSuggestion,
-    onClick
-  } = props;
-  return (
-    <Button
-      onClick={ onClick }
-      className={ css('ms-Suggestions-Item', { 'is-suggested': suggestion.isSelected }) }
-      >
-      <RenderSuggestion {...suggestion.item}/>
-    </Button>
-  );
-}
-
-export function renderComposit(func: (props: any[]) => JSX.Element) {
-  return func;
-}
-
 export class SuggestionElement<T> extends React.Component<ISuggestionElementProps<T>, {}> {
-  private SuggestionOfProperType = Suggestion as new (props: ISuggestionProps<T>) => Suggestion<T>;
-  private ExampleOfProperType = (props: ISuggestionProps<T>) => Example2<T>(props);
+  private SuggestionOfProperType = SuggestionItem as new (props: ISuggestionProps<T>) => SuggestionItem<T>;
   public static defaultProps = {
     searchForMoreText: 'Search For More',
     canSearchForMore: false
@@ -103,7 +66,7 @@ export class SuggestionElement<T> extends React.Component<ISuggestionElementProp
         { suggestionsHeaderText ?
           (<div className='ms-Suggestions-Title'>
             { suggestionsHeaderText }
-          </div>) : (null) }
+          </div> ) : (null) }
         <div className='ms-Suggestion-Container'>
           { this._renderSuggestions() }
         </div>
@@ -141,12 +104,11 @@ export class SuggestionElement<T> extends React.Component<ISuggestionElementProp
     }
     let suggestionItems: JSX.Element[] = [];
     let TypedSuggestion = this.SuggestionOfProperType;
-    let Ex = this.ExampleOfProperType;
     for (let index: number = 0; index <= suggestions.length - 1; index++) {
       suggestionItems.push(
         <div ref={ suggestions[index].isSelected ? 'selectedElement' : '' }
           key={index}>
-          <Ex
+          <TypedSuggestion
             suggestion={suggestions[index]}
             RenderSuggestion={this.props.onRenderSuggestion}
             onClick={(ev: React.MouseEvent) => this.props.onSuggestionClick(ev, index) }
@@ -163,22 +125,3 @@ export class SuggestionElement<T> extends React.Component<ISuggestionElementProp
   }
 
 }
-
-// <Example
-//   suggestion={suggestions[index]}
-//   RenderSuggestion={this.props.onRenderSuggestion}
-//   onClick={(ev: React.MouseEvent) => this.props.onSuggestionClick(ev, index) }
-//   />
-
-// <Ex
-//   suggestion={suggestions[index]}
-//   RenderSuggestion={this.props.onRenderSuggestion}
-//   onClick={(ev: React.MouseEvent) => this.props.onSuggestionClick(ev, index) }
-//   />
-
-// <Button
-//   onClick={(ev: React.MouseEvent) => this.props.onSuggestionClick(ev, index) }
-//   className={ css('ms-Suggestions-Item', { 'is-suggested': suggestions[index].isSelected }) }
-//   >
-//   <RenderSuggestion {...suggestions[index].item}/>
-// </Button>

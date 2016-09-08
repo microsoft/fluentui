@@ -3,28 +3,38 @@ export interface ISuggestionItem<T> {
   isSelected: boolean;
 }
 
-export class Suggestions<T> {
+export class SuggestionController<T> {
   public currentIndex: number;
   public currentSuggestion: ISuggestionItem<T>;
   private suggestions: ISuggestionItem<T>[];
   constructor(suggestions: T[]) {
-    this.suggestions = this._convertSuggestionsToSuggestionItems(suggestions);
+    if (suggestions && suggestions.length > 0) {
+      this.suggestions = this._convertSuggestionsToSuggestionItems(suggestions);
+      this.currentIndex = 0;
+      this.suggestions[0].isSelected = true;
+      this.currentSuggestion = this.suggestions[0];
+    }
   }
 
   public updateSuggestions(newSuggestions: T[]) {
     if (newSuggestions && newSuggestions.length > 0) {
       this.suggestions = this._convertSuggestionsToSuggestionItems(newSuggestions);
+      this.currentIndex = 0;
+      this.suggestions[0].isSelected = true;
+      this.currentSuggestion = this.suggestions[0];
     } else {
       this.suggestions = [];
+      this.currentIndex = -1;
+      this.currentSuggestion = undefined;
     }
-    this.currentIndex = -1;
-    this.currentSuggestion = undefined;
-
   }
 
   public nextSuggestion(): boolean {
     if (this.currentIndex < (this.suggestions.length - 1)) {
       this.setSelectedSuggestion(this.currentIndex + 1);
+      return true;
+    } else if (this.currentIndex === (this.suggestions.length - 1)) {
+      this.setSelectedSuggestion(0);
       return true;
     }
   }
@@ -32,6 +42,9 @@ export class Suggestions<T> {
   public previousSuggestion(): boolean {
     if (this.currentIndex > 0) {
       this.setSelectedSuggestion(this.currentIndex - 1);
+      return true;
+    } else if (this.currentIndex === 0) {
+      this.setSelectedSuggestion(this.suggestions.length - 1);
       return true;
     }
   }

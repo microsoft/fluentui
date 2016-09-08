@@ -64,4 +64,67 @@ export const people: IPersonaProps[] = [
       tertiaryText: 'In a meeting',
       optionalText: 'Available at 4:00pm'
     },
+        {
+      key: 7,
+      imageUrl: './images/persona-female.png',
+      imageInitials: 'PV',
+      primaryText: 'Annie Lindqvist2',
+      secondaryText: 'Designer',
+      tertiaryText: 'In a meeting',
+      optionalText: 'Available at 4:00pm'
+    },
+    {
+      key: 8,
+      imageUrl: './images/persona-male.png',
+      imageInitials: 'AR',
+      primaryText: 'Aaron Reid2',
+      secondaryText: 'Designer',
+      tertiaryText: 'In a meeting',
+      optionalText: 'Available at 4:00pm'
+    },
+    {
+      key: 9,
+      imageUrl: './images/persona-male.png',
+      imageInitials: 'AL',
+      primaryText: 'Alex Lundberg2',
+      secondaryText: 'Software Developer',
+      tertiaryText: 'In a meeting',
+      optionalText: 'Available at 4:00pm'
+    },
+    {
+      key: 10,
+      imageUrl: './images/persona-male.png',
+      imageInitials: 'RK',
+      primaryText: 'Roko Kolar2',
+      secondaryText: 'Financial Analyst',
+      tertiaryText: 'In a meeting',
+      optionalText: 'Available at 4:00pm'
+    },
+    {
+      key: 11,
+      imageUrl: './images/persona-male.png',
+      imageInitials: 'CB',
+      primaryText: 'Christian Bergqvist2',
+      secondaryText: 'Sr. Designer',
+      tertiaryText: 'In a meeting',
+      optionalText: 'Available at 4:00pm'
+    },
+    {
+      key: 12,
+      imageUrl: './images/persona-female.png',
+      imageInitials: 'VL',
+      primaryText: 'Valentina Lovric2',
+      secondaryText: 'Design Developer',
+      tertiaryText: 'In a meeting',
+      optionalText: 'Available at 4:00pm'
+    },
+    {
+      key: 13,
+      imageUrl: './images/persona-male.png',
+      imageInitials: 'MS',
+      primaryText: 'Maor Sharett2',
+      secondaryText: 'UX Designer',
+      tertiaryText: 'In a meeting',
+      optionalText: 'Available at 4:00pm'
+    },
   ];

@@ -2,9 +2,9 @@ import * as React from 'react';
 import { FocusZone } from '../../FocusZone';
 import { Callout } from '../../Callout';
 import { KeyCodes } from '../../utilities/KeyCodes';
-import { Selection, SelectionZone } from '../../utilities/selection/index';
+import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
 import { SuggestionElement, ISuggestionElementProps } from './SuggestionElement';
-import { Suggestions } from './Suggestions';
+import { SuggestionController } from './SuggestionController';
 import { IBasePickerProps } from './BasePickerProps';
 import { css } from '../../utilities/css';
 import './BasePicker.scss';
@@ -26,7 +26,7 @@ export class BasePicker<T, S extends IBasePickerProps<T>> extends React.Componen
 
   protected _selection: Selection;
 
-  private suggestionManager: Suggestions<T>;
+  private suggestionManager: SuggestionController<T>;
   private SuggestionOfProperType = SuggestionElement as new (props: ISuggestionElementProps<T>) => SuggestionElement<T>;
 
   constructor(basePickerProps: S) {
@@ -34,7 +34,7 @@ export class BasePicker<T, S extends IBasePickerProps<T>> extends React.Componen
 
     let items = basePickerProps.defaultItems || [];
 
-    this.suggestionManager = new Suggestions(items);
+    this.suggestionManager = new SuggestionController(items);
     this._onKeyDown = this._onKeyDown.bind(this);
     this._onInputChange = this._onInputChange.bind(this);
     this._onInputFocus = this._onInputFocus.bind(this);
@@ -64,10 +64,10 @@ export class BasePicker<T, S extends IBasePickerProps<T>> extends React.Componen
     let { value } = this.state;
     return (
       <div ref='root' className={ css('ms-BasePicker', this.props.className ? this.props.className : '') } onKeyDown={ this._onKeyDown }>
-        <SelectionZone selection={ this._selection }>
+        <SelectionZone selection={ this._selection } selectionMode={ SelectionMode.multiple }>
           <FocusZone ref='focusZone' className='ms-BasePicker-text'>
             { this.renderItems() }
-            <input ref='input' className='ms-BasePicker-input ms-autocomplete-top' onFocus={ this._onInputFocus } onChange={ this._onInputChange } value={ value + '' } />
+            <input ref='input' className='ms-BasePicker-input ms-autocomplete-top' onFocus={ this._onInputFocus } onChange={ this._onInputChange } value={ value } />
           </FocusZone>
         </SelectionZone>
         { this.renderSuggestions() }
@@ -103,7 +103,6 @@ export class BasePicker<T, S extends IBasePickerProps<T>> extends React.Componen
   }
 
   public completeSuggestion() {
-
     if (this.suggestionManager.hasSelectedSuggestion()) {
       this.addItem(this.suggestionManager.currentSuggestion.item);
       this._updateValue('');
@@ -190,12 +189,33 @@ export class BasePicker<T, S extends IBasePickerProps<T>> extends React.Componen
     this.forceUpdate();
   }
 
-  protected _updateValue(value: string) {
-    if (!this.suggestionManager.currentIndex || value !== this.state.value) {
-      let newValue: string = value ? value : '';
-      let newSuggestions: T[] = this.props.onResolveSuggestions(value);
+  protected _updateValue(updatedValue: string) {
+    let differenceIndex = 0;
+    let { value } = this.state;
+
+    if (!this.suggestionManager.currentIndex || updatedValue !== this.state.value) {
+      let newValue: string = updatedValue ? updatedValue : '';
+      let newSuggestions: T[] = this.props.onResolveSuggestions(updatedValue);
+
       this.suggestionManager.updateSuggestions(newSuggestions);
-      this.setState({ value: newValue });
+      let text: string = undefined;
+      if (this.suggestionManager.currentSuggestion) {
+        text = this.props.getTextFromItem(this.suggestionManager.currentSuggestion.item)
+      }
+
+      if (updatedValue) {
+        while (differenceIndex < updatedValue.length && updatedValue[differenceIndex].toLocaleLowerCase() === updatedValue[differenceIndex].toLocaleLowerCase()) {
+          differenceIndex++;
+        }
+      }
+
+      this.setState({
+        value: text || updatedValue
+      }, () => {
+        if (text && differenceIndex < text.length) {
+          this.refs.input.setSelectionRange(differenceIndex, text.length);
+        }
+      });
     }
   }
 

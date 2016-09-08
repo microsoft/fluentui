@@ -35,6 +35,6 @@ export class PeoplePickerMemberListExample extends React.Component<any, IPeopleP
   }
 
   private _onFilterChanged(filterText: string) {
-    return filterText ? this._peopleList.filter(item => item.primaryText.toLowerCase().indexOf(filterText.toLowerCase()) >= 0) : [];
+    return filterText ? this._peopleList.filter(item => item.primaryText.toLowerCase().indexOf(filterText.toLowerCase()) === 0) : [];
   }
 }
