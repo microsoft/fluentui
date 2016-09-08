@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent } from '../../common/BaseComponent';
+import { BaseDecorator } from './BaseDecorator';
 
 export interface IViewport {
   width: number;
@@ -12,13 +12,12 @@ export interface IWithViewportState {
 
 const RESIZE_DELAY = 500;
 
-export function withViewport<P, S>(ComposedComponent: any): any {
+export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComponent: (new (props: P, ...args: any[]) => React.Component<P, S>)): any {
 
-  return class WithViewportComponent extends BaseComponent<{}, IWithViewportState> {
+  return class WithViewportComponent extends BaseDecorator<P, IWithViewportState> {
 
     public refs: {
       [key: string]: React.ReactInstance;
-      component: any;
     };
 
     constructor() {
@@ -55,7 +54,7 @@ export function withViewport<P, S>(ComposedComponent: any): any {
       return (
         <div className='ms-Viewport' ref='root' style={ { minWidth: 1, minHeight: 1 } }>
           { isViewportVisible && (
-            <ComposedComponent ref='component' viewport={ viewport } { ...this.props } />
+            <ComposedComponent ref={ this._updateComposedComponentRef } viewport={ viewport } { ...this.props } />
           ) }
         </div>
       );
@@ -76,10 +75,11 @@ export function withViewport<P, S>(ComposedComponent: any): any {
       let clientRect = viewportElement.getBoundingClientRect();
       let scrollRect = scrollElement.getBoundingClientRect();
       let updateComponent = () => {
-          if (withForceUpdate && this.refs.component) {
-            this.refs.component.forceUpdate();
-          }
+        if (withForceUpdate && this._composedComponentInstance) {
+          this._composedComponentInstance.forceUpdate();
+        }
       };
+
       let isSizeChanged = (
         clientRect.width !== viewport.width ||
         scrollRect.height !== viewport.height);
@@ -114,5 +114,4 @@ export function withViewport<P, S>(ComposedComponent: any): any {
       return rootElement;
     }
   };
-
 }
