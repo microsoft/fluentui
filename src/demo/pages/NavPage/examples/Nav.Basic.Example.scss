@@ -4,11 +4,7 @@
   width: 208px;
   height: 500px;
   box-sizing: border-box;
-  @include border-right(1px, solid, #EEE);
+  border: 1px solid #EEE;
   overflow-y: auto;
-}
-
-.ExampleCard-content {
-  background: #677;
 }
 

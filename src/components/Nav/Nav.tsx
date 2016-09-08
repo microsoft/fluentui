@@ -101,11 +101,12 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
   }
 
   private _renderButtonLink(link: INavLink, linkIndex: number) {
+
     return (
       <Button
-          className={ css('ms-Nav-link ms-Nav-linkButton', link.iconClassName) }
+        className={ css('ms-Nav-link ms-Nav-linkButton', { 'isOnExpanded': this._hasExpandButton }) }
           buttonType={ ButtonType.command }
-          icon='Pencil'
+          icon='Edit'
           description={ link.title || link.name }
           onClick={ link.onClick }>
           { link.name }
@@ -128,7 +129,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
             onClick={ this._onLinkExpandClicked.bind(this, link) }
             title={ (link.isExpanded ? this.props.expandedStateText : this.props.collapsedStateText) }
             >
-            <i className='ms-Nav-chevron ms-Icon ms-Icon--chevronDown'></i>
+            <i className='ms-Nav-chevron ms-Icon ms-Icon--ChevronDown'></i>
           </button> : null
         )}
           { !!link.onClick ? this._renderButtonLink(link, linkIndex) : this._renderAnchorLink(link, linkIndex, nestingLevel) }

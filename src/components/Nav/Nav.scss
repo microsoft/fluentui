@@ -44,7 +44,7 @@ $navnode-height: 36px;
 .ms-Nav-chevronButton {
   display: block;
 
-  font-family: $ms-font-family-base;
+  font-weight: $ms-font-weight-regular;
   font-size: $ms-font-size-s;
 
   @include text-align(left);
@@ -198,8 +198,13 @@ $navnode-height: 36px;
 }
 
 .ms-Nav-linkButton.ms-Button--command {
+  @include padding-left(20px);
   .ms-Button-label {
     @include ms-font-m;
     color: $ms-color-themePrimary;
+  }
+
+  &.isOnExpanded {
+     @include padding-left(28px);
   }
 }
