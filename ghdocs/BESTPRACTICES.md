@@ -57,7 +57,7 @@ public render() {
 }
 ```
 
-Good:
+Acceptable:
 ```typescript
 private _root: HTMLElement;
 private _resolveRoot: (element: HTMLElement) => any;
@@ -68,6 +68,17 @@ constructor() {
 
 public render() {
   return <div ref={ this._resolveRoot } />
+}
+```
+
+Best, use _resolveRef in BaseComponent:
+```typescript
+class Foo extends BaseComponent<...> {
+  private _root: HTMLElement;
+  
+  public render() {
+    return <div ref={ this._resolveRef('_root') } />;
+  }
 }
 ```
 
