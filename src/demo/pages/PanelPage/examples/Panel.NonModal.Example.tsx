@@ -23,7 +23,7 @@ export class PanelNonModalExample extends React.Component<any, any> {
           isOpen={ this.state.showPanel }
           onDismiss= { this._closePanel.bind(this) }
           type={ PanelType.medium }
-          headerText='Extra Large Panel'
+          headerText='Non-Modal Panel'
           closeButtonAriaLabel='Close'
         >
           <span className='ms-font-m'>Content goes here.</span>
