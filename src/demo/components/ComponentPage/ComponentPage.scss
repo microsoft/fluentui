@@ -48,13 +48,17 @@ $dontColor: #A61E22;
 .ComponentPage-navLink {
   display: inline-block;
   margin-right: 40px;
-  @include ms-font-l;
-  color: $ms-color-white;
 }
 
-.ComponentPage-navLink a {
+.ComponentPage-navLink .ms-Link {
   color: $ms-color-white;
   text-decoration: none;
+  @include ms-font-l;
+  color: $ms-color-white;
+
+  &:hover {
+    color: $ms-color-neutralLight;
+  }
 }
 
 .ComponentPage-bestPracticesSection {

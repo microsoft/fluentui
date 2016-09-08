@@ -12,11 +12,12 @@ import { SearchBoxSmallExample } from './examples/SearchBox.Small.Example';
 import { SearchBoxFullSizeExample } from './examples/SearchBox.FullSize.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const SearchBoxSmallExampleCode = require('./examples/SearchBox.Small.Example.tsx');
 const SearchBoxFullSizeExampleCode = require('./examples/SearchBox.FullSize.Example.tsx');
 
-export class SearchBoxPage extends React.Component<any, any> {
+export class SearchBoxPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -50,7 +51,8 @@ export class SearchBoxPage extends React.Component<any, any> {
             <span> provide a box for searching, complete with auto complete callbacks and suggestions.</span>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }

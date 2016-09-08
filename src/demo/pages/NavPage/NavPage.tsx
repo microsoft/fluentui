@@ -13,12 +13,13 @@ import { NavFabricDemoAppExample } from './examples/Nav.FabricDemoApp.Example';
 import { NavNestedExample } from './examples/Nav.Nested.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const NavBasicExampleCode = require('./examples/Nav.Basic.Example.tsx');
 const NavFabricDemoAppExampleCode = require('./examples/Nav.FabricDemoApp.Example.tsx');
 const NavNestedExampleCode = require('./examples/Nav.Nested.Example.tsx');
 
-export class NavPage extends React.Component<any, any> {
+export class NavPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -55,7 +56,8 @@ export class NavPage extends React.Component<any, any> {
             <span> provide a navigation control to expose internal and external links. Navigation bars typically are rendered vertically to the side of the page content.</span>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }
