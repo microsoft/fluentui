@@ -43,7 +43,7 @@ export class ColorPickerPage extends React.Component<IComponentDemoPageProps, an
           <div>ColorPicker is used to allow a user to select a color</div>
         }
         route={ this._url }
-        showHeader={ this.props.showHeader }>
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }

@@ -14,12 +14,12 @@ export interface IComponentPageProps {
   donts?: JSX.Element;
   overview: JSX.Element;
   route: string;
-  showHeader?: boolean;
+  isHeaderVisible?: boolean;
 }
 
 export class ComponentPage extends React.Component<IComponentPageProps, {}> {
   public static defaultProps = {
-    showHeader: true
+    isHeaderVisible: true
   };
 
   constructor(props: IComponentPageProps) {
@@ -57,7 +57,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
   }
 
   private _pageHeader(): JSX.Element {
-    if (this.props.showHeader) {
+    if (this.props.isHeaderVisible) {
       return (
         <div className='ComponentPage-header'>
           <h1 className='ComponentPage-title'>{ this.props.title }</h1>

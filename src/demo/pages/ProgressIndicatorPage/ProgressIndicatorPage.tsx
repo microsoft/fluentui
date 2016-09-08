@@ -46,7 +46,7 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
           </div>
         }
         route={ this._url }
-         showHeader={ this.props.showHeader }>
+         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }

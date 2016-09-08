@@ -56,7 +56,7 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, any
           </div>
         }
         route={ this._url }
-        showHeader={ this.props.showHeader }>
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }

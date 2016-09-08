@@ -46,7 +46,7 @@ export class GroupedListPage extends React.Component<IComponentDemoPageProps, an
           <p>Allows you to render a set of items as multiple lists with various grouping properties.</p>
         }
         route={ this._url }
-        showHeader={ this.props.showHeader }>
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }

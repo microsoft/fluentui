@@ -1,3 +1,3 @@
 export interface IComponentDemoPageProps {
-  showHeader?: boolean;
+  isHeaderVisible?: boolean;
 }
