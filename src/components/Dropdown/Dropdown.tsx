@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { BaseComponent } from '../../common/BaseComponent';
 import { IDropdownProps, IDropdownOption } from './Dropdown.Props';
 import { css } from '../../utilities/css';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
@@ -13,11 +14,10 @@ export interface IDropdownState {
   isDisabled: boolean;
 }
 
-export class Dropdown extends React.Component<IDropdownProps, any> {
+export class Dropdown extends BaseComponent<IDropdownProps, any> {
 
   public static defaultProps = {
-    options: [],
-    isDisabled: false
+    options: []
   };
 
   private static Option: string = 'option';
@@ -27,20 +27,22 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
     root: HTMLElement
   };
 
-  private _events: EventGroup;
+  private _eventGroup: EventGroup;
   private _optionList: HTMLElement;
   private _dropDown: HTMLDivElement;
 
   constructor(props?: IDropdownProps) {
-    super(props);
+    super(props, {
+      'isDisabled': 'disabled'
+    });
 
-    this._events = new EventGroup(this);
+    this._eventGroup = new EventGroup(this);
 
     this.state = {
       id: getId('Dropdown'),
       isOpen: false,
       selectedIndex: this._getSelectedIndex(props.options, props.selectedKey),
-      isDisabled: this.props.isDisabled
+      isDisabled: this.props.isDisabled || this.props.disabled
     };
 
     this._onDropdownKeyDown = this._onDropdownKeyDown.bind(this);
@@ -58,15 +60,15 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
   public componentWillUpdate(nextProps: IDropdownProps, nextState: IDropdownState) {
     if (this.state.isOpen !== nextState.isOpen) {
       if (nextState.isOpen) {
-        this._events.on(window, 'focus', this._onFocusChange, true);
+        this._eventGroup.on(window, 'focus', this._onFocusChange, true);
       } else {
-        this._events.off();
+        this._eventGroup.off();
       }
     }
   }
 
   public componentWillUnmount() {
-    this._events.dispose();
+    this._eventGroup.dispose();
   }
 
   public componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState) {
