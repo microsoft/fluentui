@@ -4,6 +4,7 @@ import {
 } from '../../../index';
 import {
   ExampleCard,
+  PropertiesTableSet,
   ComponentPage
 } from '../../components/index';
 
@@ -32,6 +33,11 @@ export class LinkPage extends React.Component<IComponentDemoPageProps, any> {
             <ExampleCard title='Link' code={ LinkBasicExampleCode }>
               <LinkBasicExample />
             </ExampleCard>
+          ]
+        }
+        propertiesTables={
+          [
+            <PropertiesTableSet componentName='Link' />
           ]
         }
         overview={

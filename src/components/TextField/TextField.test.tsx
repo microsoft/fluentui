@@ -73,7 +73,7 @@ describe('TextField', () => {
 
   it('should render a disabled input element', () => {
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <TextField disabled />
+      <TextField disabled={ true } />
     );
 
     // Assert the input box is disabled.
