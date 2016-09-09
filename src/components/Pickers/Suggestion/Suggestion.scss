@@ -1,4 +1,4 @@
-@import '../../common/common';
+@import '../../../common/common';
 
 .ms-SearchMore-Button {
   @include button-reset();
@@ -24,7 +24,6 @@
 .ms-Suggestions {
   min-width: 180px;
   .ms-Suggestions-Item {
-    padding: 2px 16px;
     height: auto;
     width: 100%;
     text-align: left;

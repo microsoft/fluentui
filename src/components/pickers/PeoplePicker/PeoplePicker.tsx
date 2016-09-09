@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { BasePicker } from '../BasePicker';
-import { IBasePickerProps, IPickerItemProps } from '../BasePickerProps';
+import { IBasePickerProps } from '../BasePicker.Props';
+import {IPickerItemProps } from '../PickerItem.Props';
 import { IPersonaProps } from '../../Persona';
 import { SelectedItemDefault } from './PeoplePickerItems/SelectedItemDefault';
 import { SuggestionItemSmall, SuggestionItemNormal } from './PeoplePickerItems/SuggestionItemDefault';

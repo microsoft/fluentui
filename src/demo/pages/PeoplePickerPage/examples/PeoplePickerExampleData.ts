@@ -127,4 +127,94 @@ export const people: IPersonaProps[] = [
       tertiaryText: 'In a meeting',
       optionalText: 'Available at 4:00pm'
     },
+        {
+      key: 14,
+      imageUrl: './images/persona-female.png',
+      imageInitials: 'VL',
+      primaryText: 'Another A Name',
+      secondaryText: 'Extra',
+      tertiaryText: 'In a meeting',
+      optionalText: 'Available at 4:00pm'
+    },
+    {
+      key: 15,
+      imageUrl: './images/persona-male.png',
+      imageInitials: 'MS',
+      primaryText: 'Another A Name (So Many A names!)',
+      secondaryText: 'Extra extra',
+      tertiaryText: 'In a meeting',
+      optionalText: 'Available at 4:00pm'
+    },
+        {
+      key: 16,
+      imageUrl: './images/persona-female.png',
+      imageInitials: 'VL',
+      primaryText: 'Another Anecdotal A Name',
+      secondaryText: '3 extra',
+      tertiaryText: 'In a meeting',
+      optionalText: 'Available at 4:00pm'
+    },
+    {
+      key: 17,
+      imageUrl: './images/persona-male.png',
+      imageInitials: 'MS',
+      primaryText: 'Anerobic A Name',
+      secondaryText: 'Lifts Weights',
+      tertiaryText: 'In a meeting',
+      optionalText: 'Available at 4:00pm'
+    },
+        {
+      key: 18,
+      imageUrl: './images/persona-female.png',
+      imageInitials: 'VL',
+      primaryText: 'Aerobic A Name',
+      secondaryText: 'Runs a lot',
+      tertiaryText: 'In a meeting',
+      optionalText: 'Available at 4:00pm'
+    },
+    {
+      key: 13,
+      imageUrl: './images/persona-male.png',
+      imageInitials: 'MS',
+      primaryText: 'Maor Sharett2',
+      secondaryText: 'UX Designer',
+      tertiaryText: 'In a meeting',
+      optionalText: 'Available at 4:00pm'
+    },
+        {
+      key: 12,
+      imageUrl: './images/persona-female.png',
+      imageInitials: 'VL',
+      primaryText: 'Valentina Lovric2',
+      secondaryText: 'Design Developer',
+      tertiaryText: 'In a meeting',
+      optionalText: 'Available at 4:00pm'
+    },
+    {
+      key: 13,
+      imageUrl: './images/persona-male.png',
+      imageInitials: 'MS',
+      primaryText: 'Maor Sharett2',
+      secondaryText: 'UX Designer',
+      tertiaryText: 'In a meeting',
+      optionalText: 'Available at 4:00pm'
+    },
+        {
+      key: 12,
+      imageUrl: './images/persona-female.png',
+      imageInitials: 'VL',
+      primaryText: 'Valentina Lovric2',
+      secondaryText: 'Design Developer',
+      tertiaryText: 'In a meeting',
+      optionalText: 'Available at 4:00pm'
+    },
+    {
+      key: 13,
+      imageUrl: './images/persona-male.png',
+      imageInitials: 'MS',
+      primaryText: 'Maor Sharett2',
+      secondaryText: 'UX Designer',
+      tertiaryText: 'In a meeting',
+      optionalText: 'Available at 4:00pm'
+    },
   ];

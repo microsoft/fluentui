@@ -17,11 +17,13 @@ import {
 } from '../../../../index';
 import {
   BasePicker
-} from '../../../../components/pickers/BasePicker';
+} from '../../../../components/Pickers/BasePicker';
 import {
-  IBasePickerProps,
-  IPickerItemProps
-} from '../../../../components/pickers/BasePickerProps';
+  IBasePickerProps
+} from '../../../../components/Pickers/BasePicker.Props';
+import {
+    IPickerItemProps
+} from '../../../../components/Pickers/PickerItem.Props';
 import './PeoplePicker.CustomResult.Example.scss';
 
 export interface IPeoplePickerExampleState {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   TagPicker
-} from '../../../../components/pickers/TagPicker/TagPicker';
+} from '../../../../components/Pickers/TagPicker/TagPicker';
 
 let _testTags = [
   'black',

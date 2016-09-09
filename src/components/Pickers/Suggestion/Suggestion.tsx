@@ -1,26 +1,10 @@
 import * as React from 'react';
 import { Button, ButtonType } from '../../Button';
-import { css } from '../../utilities/css';
-import { ISuggestionItem } from './SuggestionController';
-import './SuggestionElement.scss';
+import { css } from '../../../utilities/css';
+import { ISuggestionItemProps, ISuggestionProps } from './Suggestion.Props';
+import './Suggestion.scss';
 
-export interface ISuggestionElementProps<T> extends React.Props<any> {
-  onRenderSuggestion: (props: any) => JSX.Element;
-  onSuggestionClick: (ev: React.MouseEvent, index: number) => void;
-  suggestions: ISuggestionItem<T>[];
-  suggestionsHeaderText?: string;
-  searchForMoreText?: string;
-  onGetMoreResults?: () => void;
-  className?: string;
-}
-
-export interface ISuggestionProps<T> {
-  suggestion: ISuggestionItem<T>;
-  RenderSuggestion: (item: T) => JSX.Element;
-  onClick: (ev: React.MouseEvent) => void;
-}
-
-export class SuggestionItem<T> extends React.Component<ISuggestionProps<T>, {}> {
+export class SuggestionItem<T> extends React.Component<ISuggestionItemProps<T>, {}> {
   public render() {
     let {
       suggestion,
@@ -38,7 +22,7 @@ export class SuggestionItem<T> extends React.Component<ISuggestionProps<T>, {}> 
   }
 }
 
-export class SuggestionElement<T> extends React.Component<ISuggestionElementProps<T>, {}> {
+export class Suggestion<T> extends React.Component<ISuggestionProps<T>, {}> {
 
   public static defaultProps = {
     searchForMoreText: 'Search For More',
@@ -51,7 +35,7 @@ export class SuggestionElement<T> extends React.Component<ISuggestionElementProp
     selectedElement: HTMLDivElement;
   };
 
-  private SuggestionOfProperType = SuggestionItem as new (props: ISuggestionProps<T>) => SuggestionItem<T>;
+  private SuggestionOfProperType = SuggestionItem as new (props: ISuggestionItemProps<T>) => SuggestionItem<T>;
 
   constructor(suggestionProps) {
     super(suggestionProps);
@@ -92,7 +76,7 @@ export class SuggestionElement<T> extends React.Component<ISuggestionElementProp
 
   public scrollSelected() {
     if (this.refs.selectedElement) {
-      this.refs.selectedElement.scrollIntoView();
+      this.refs.selectedElement.scrollIntoView(false);
     }
   }
 

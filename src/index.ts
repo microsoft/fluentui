@@ -32,7 +32,7 @@ export * from './Nav';
 export * from './OrgChart';
 export * from './Overlay';
 export * from './Panel';
-export * from './PeoplePicker';
+export * from './Pickers';
 export * from './Persona';
 export * from './PersonaCard';
 export * from './Pivot';

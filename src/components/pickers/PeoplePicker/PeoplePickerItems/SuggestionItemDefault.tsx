@@ -9,6 +9,7 @@ export const SuggestionItemNormal: (persona: IPersonaProps) => JSX.Element = (pe
         { ...personaProps }
         presence={ personaProps.presence ? personaProps.presence : PersonaPresence.online }
         size={ PersonaSize.small }
+        className={ 'ms-PeoplePicker-Persona' }
         />
     </div>
   );
@@ -21,6 +22,7 @@ export const SuggestionItemSmall: (persona: IPersonaProps) => JSX.Element = (per
         { ...personaProps }
         presence={ personaProps.presence ? personaProps.presence : PersonaPresence.online }
         size={ PersonaSize.extraSmall }
+        className={ 'ms-PeoplePicker-Persona' }
         />
     </div>
   );

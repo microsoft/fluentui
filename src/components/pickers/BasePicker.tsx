@@ -3,9 +3,8 @@ import { FocusZone } from '../../FocusZone';
 import { Callout } from '../../Callout';
 import { KeyCodes } from '../../utilities/KeyCodes';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
-import { SuggestionElement, ISuggestionElementProps } from './SuggestionElement';
-import { SuggestionController } from './SuggestionController';
-import { IBasePickerProps } from './BasePickerProps';
+import { Suggestion, SuggestionController, ISuggestionItemProps} from './Suggestion/index';
+import { IBasePickerProps } from './BasePicker.Props';
 import { css } from '../../utilities/css';
 import './BasePicker.scss';
 
@@ -21,18 +20,18 @@ export class BasePicker<T, S extends IBasePickerProps<T>> extends React.Componen
     root: HTMLElement;
     input: HTMLInputElement;
     focusZone: FocusZone;
-    suggestionElement: SuggestionElement<T>
+    suggestionElement: Suggestion<T>
   };
 
   protected _selection: Selection;
 
   private suggestionManager: SuggestionController<T>;
-  private SuggestionOfProperType = SuggestionElement as new (props: ISuggestionElementProps<T>) => SuggestionElement<T>;
+  private SuggestionOfProperType = Suggestion as new (props: ISuggestionItemProps<T>) => Suggestion<T>;
 
   constructor(basePickerProps: S) {
     super(basePickerProps);
 
-    let items = basePickerProps.defaultItems || [];
+    let items = basePickerProps.startingItems || [];
 
     this.suggestionManager = new SuggestionController(items);
     this._onKeyDown = this._onKeyDown.bind(this);

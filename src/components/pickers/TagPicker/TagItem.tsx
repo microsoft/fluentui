@@ -1,7 +1,7 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { IPickerItemProps } from '../BasePickerProps';
+import { IPickerItemProps } from '../PickerItem.Props';
 import { css } from '../../../utilities/css';
 import './TagItem.scss';
 

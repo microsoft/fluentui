@@ -2,7 +2,7 @@
 import * as React from 'react';
 /* tslint:enable */
 import { BasePicker } from '../BasePicker';
-import { IBasePickerProps } from '../BasePickerProps';
+import { IBasePickerProps } from '../BasePicker.Props';
 import { TagItem } from './TagItem';
 
 export interface ITag {

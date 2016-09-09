@@ -1,7 +1,7 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { IPickerItemProps } from '../../BasePickerProps';
+import { IPickerItemProps } from '../../PickerItem.Props';
 import { Persona, IPersonaProps, PersonaPresence } from '../../../Persona';
 import { ContextualMenu, IContextualMenuItem, DirectionalHint } from '../../../ContextualMenu';
 import { Button, ButtonType } from '../../../Button';
