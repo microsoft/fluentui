@@ -56,7 +56,7 @@ export interface IChoiceGroupOption {
 
   // @todo: Update version numbers for depriate and removal
   /**
-   * Deprecated at v0.xx.0, to be removed at >= v0.xx.0. Use 'disabled' instead.
+   * Deprecated at v0.52.0, to be removed at >= v1.0.0. Use 'disabled' instead.
    * @deprecated
    */
   isDisabled?: boolean;

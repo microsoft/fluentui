@@ -33,7 +33,7 @@
   &.is-disabled {
     color: $ms-color-neutralTertiary;
     pointer-events: none;
-    cursor: pointer;
+    cursor: default;
   }
 
   &:hover,
