@@ -14,13 +14,14 @@ import { DialogCloseExample } from './examples/Dialog.Close.Example';
 import { DialogBlockingExample } from './examples/Dialog.Blocking.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const DialogBasicExampleCode = require('./examples/Dialog.Basic.Example.tsx');
 const DialogLargeHeaderExampleCode = require('./examples/Dialog.LargeHeader.Example.tsx');
 const DialogCloseExampleCode = require('./examples/Dialog.Close.Example.tsx');
 const DialogBlockingExampleCode = require('./examples/Dialog.Blocking.Example.tsx');
 
-export class DialogPage extends React.Component<any, any> {
+export class DialogPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -60,7 +61,8 @@ export class DialogPage extends React.Component<any, any> {
             <span> are used to render a modal window.</span>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }

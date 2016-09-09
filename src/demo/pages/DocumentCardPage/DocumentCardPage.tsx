@@ -10,12 +10,13 @@ import { DocumentCardCompleteExample } from './examples/DocumentCard.Complete.Ex
 import { DocumentCardCompactExample } from './examples/DocumentCard.Compact.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const DocumentCardBasicExampleCode = require('./examples/DocumentCard.Basic.Example.tsx');
 const DocumentCardCompleteExampleCode = require('./examples/DocumentCard.Complete.Example.tsx');
 const DocumentCardCompactExampleCode = require('./examples/DocumentCard.Compact.Example.tsx');
 
-export class DocumentCardPage extends React.Component<any, any> {
+export class DocumentCardPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -51,7 +52,8 @@ export class DocumentCardPage extends React.Component<any, any> {
              A card representation of a document. Can be configured with various card parts, including a preview, title, and location.
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }

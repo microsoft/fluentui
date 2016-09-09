@@ -154,7 +154,8 @@ export function isElementTabbable(element: HTMLElement): boolean {
     !!element &&
     (element.tagName === 'A' ||
       (element.tagName === 'BUTTON' && !(element as HTMLButtonElement).disabled) ||
-      (element.tagName === 'INPUT' && !(element as HTMLButtonElement).disabled) ||
+      (element.tagName === 'INPUT' && !(element as HTMLInputElement).disabled) ||
+      (element.tagName === 'TEXTAREA' && !(element as HTMLTextAreaElement).disabled) ||
       (element.getAttribute && element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true')));
 }
 

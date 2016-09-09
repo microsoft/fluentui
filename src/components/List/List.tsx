@@ -78,7 +78,6 @@ export class List extends BaseComponent<IListProps, IListState> {
   private _scrollElement: HTMLElement;
   private _scrollingToIndex: number;
   private _hasCompletedFirstRender: boolean;
-  private isFirstRenderRectUpdate: boolean;
 
   // surface rect relative to window
   private _surfaceRect: ClientRect;
@@ -108,7 +107,6 @@ export class List extends BaseComponent<IListProps, IListState> {
     this._totalEstimates = 0;
     this._requiredWindowsAhead = 0;
     this._requiredWindowsBehind = 0;
-    this.isFirstRenderRectUpdate = true;
 
     // Track the measure version for everything.
     this._measureVersion = 0;
@@ -618,26 +616,19 @@ export class List extends BaseComponent<IListProps, IListState> {
     // render return empty rect.
     // The first time the list gets rendered we need to calculate the rectangle. The width of the list is
     // used to calculate the width of the list items.
-    if ( (surfaceRect.bottom < 0 ||
-      surfaceRect.top > window.innerHeight) && !this.isFirstRenderRectUpdate) {
-      this._requiredRect = EMPTY_RECT;
-      this._allowedRect = EMPTY_RECT;
-    } else {
-      this.isFirstRenderRectUpdate = false;
-      const visibleTop = Math.max(0, -surfaceRect.top);
-      const visibleRect = {
-        top: visibleTop,
-        left: surfaceRect.left,
-        bottom: visibleTop + window.innerHeight,
-        right: surfaceRect.right,
-        width: surfaceRect.width,
-        height: window.innerHeight
-      };
+    const visibleTop = Math.max(0, -surfaceRect.top);
+    const visibleRect = {
+      top: visibleTop,
+      left: surfaceRect.left,
+      bottom: visibleTop + window.innerHeight,
+      right: surfaceRect.right,
+      width: surfaceRect.width,
+      height: window.innerHeight
+    };
 
-      // The required/allowed rects are adjusted versions of the visible rect.
-      this._requiredRect = _expandRect(visibleRect, this._requiredWindowsBehind, this._requiredWindowsAhead);
-      this._allowedRect = _expandRect(visibleRect, renderedWindowsBehind, renderedWindowsAhead);
-    }
+    // The required/allowed rects are adjusted versions of the visible rect.
+    this._requiredRect = _expandRect(visibleRect, this._requiredWindowsBehind, this._requiredWindowsAhead);
+    this._allowedRect = _expandRect(visibleRect, renderedWindowsBehind, renderedWindowsAhead);
   }
 }
 

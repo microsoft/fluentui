@@ -79,7 +79,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
                 className='ms-ChoiceField-input'
                 type='radio'
                 name={ this._id }
-                disabled={ option.isDisabled }
+                disabled={ option.isDisabled || option.disabled }
                 checked={ option.key === keyChecked }
                 onChange={ this._handleInputChange.bind(this, option) }
                 onFocus={ this._onFocus.bind(this, option) }
@@ -124,7 +124,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
           'ms-ChoiceField-field--image': !!option.imageSrc,
           'ms-ChoiceField-field': !option.imageSrc,
           'is-checked': option.key === keyChecked,
-          'is-disabled': option.isDisabled
+          'is-disabled': option.isDisabled || option.disabled
         }) }
       >
         {
