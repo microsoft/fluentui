@@ -1,6 +1,6 @@
 # Component design
 
-## Build many smaller components and composite them together.
+## Build many smaller components and compose them together.
 
 Often we want to build something complex, like a CommandBar. We see a picture of what we want and we build one giant component that does this. Then we find other scenarios that have overlaps. The CommandBar contains a SearchBox, a set of left side collapsable links and right side links. We may find we have other cases that just want a set of links, without the extra overhead. We may also find cases where we just want a single command bar item with a dropdown menu.
 
