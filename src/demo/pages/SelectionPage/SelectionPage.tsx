@@ -7,10 +7,11 @@ import {
 import { SelectionBasicExample } from './examples/Selection.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const SelectionBasicExampleCode = require('./examples/Selection.Basic.Example.tsx');
 
-export class SelectionPage extends React.Component<any, any> {
+export class SelectionPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -60,7 +61,8 @@ export class SelectionPage extends React.Component<any, any> {
             </ul>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }
