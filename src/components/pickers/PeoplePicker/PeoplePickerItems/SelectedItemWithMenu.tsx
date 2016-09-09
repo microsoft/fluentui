@@ -68,13 +68,13 @@ export class SelectedItemWithMenu extends React.Component<IPickerItemProps<IPers
         </div>
         <div ref='ellipsisRef' className='ms-result-item'>
           <Button
-            icon={ 'ellipsis' }
+            icon={ 'More' }
             buttonType={ ButtonType.icon } onClick={ this.onContextualMenu }
             />
         </div>
         <div className='ms-result-item'>
           <Button
-            icon={ 'x' }
+            icon={ 'Cancel' }
             buttonType={ ButtonType.icon }
             onClick={ onRemoveItem }
             />

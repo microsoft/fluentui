@@ -59,7 +59,7 @@ export class Suggestion<T> extends React.Component<ISuggestionProps<T>, {}> {
             onClick={ this._getMoreResults.bind(this) }
             className={ 'ms-SearchMore-Button' }
             buttonType={ ButtonType.icon }
-            icon={ 'search' }
+            icon={ 'Search' }
             ref='searchForMoreButton' >
             { searchForMoreText }
           </Button>) : (null)

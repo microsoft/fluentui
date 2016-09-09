@@ -21,6 +21,6 @@ export const TagItem = (props: IPickerItemProps<ITagItem> ) => (
     data-selection-index={ props.index }
     data-is-focusable={ true }>
     <span className='ms-TagItem-text'>{ props.children }</span>
-    <span className='ms-TagItem-close' onClick={ props.onRemoveItem }><i className=' ms-Icon ms-Icon--x'/></span>
+    <span className='ms-TagItem-close' onClick={ props.onRemoveItem }><i className=' ms-Icon ms-Icon--Cancel'/></span>
   </div>
 );

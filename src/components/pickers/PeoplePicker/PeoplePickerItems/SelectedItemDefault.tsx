@@ -29,7 +29,7 @@ export const SelectedItemDefault: (props: IPickerItemProps<IPersonaProps>) => JS
         />
       <Button
         onClick={ () => { if (onRemoveItem) { onRemoveItem(); } } }
-        icon={ 'x' }
+        icon={ 'Cancel' }
         buttonType={ ButtonType.icon }
         className='ms-base-peoplepicker'
         >
