@@ -11,10 +11,11 @@ import {
 import { LinkBasicExample } from './examples/Link.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 let LinkBasicExampleCode = require('./examples/Link.Basic.Example.tsx');
 
-export class LinkPage extends React.Component<any, any> {
+export class LinkPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -45,7 +46,8 @@ export class LinkPage extends React.Component<any, any> {
             <span> are used as a styled replacement for A tags. All attributes valid on A tags will be passed through.</span>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }

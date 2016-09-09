@@ -16,10 +16,11 @@ let FocusTrapZoneBoxExampleWithFocusableItemCode =
     require('./examples/FocusTrapZone.Box.FocusOnCustomElement.Example');
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 import FocusTrapZoneBoxClickExample from './examples/FocusTrapZone.Box.Click.Example';
 let FocusTrapZoneBoxClickExampleCode = require('./examples/FocusTrapZone.Box.Click.Example');
 
-export class FocusTrapZonePage extends React.Component<any, any> {
+export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -56,7 +57,8 @@ export class FocusTrapZonePage extends React.Component<any, any> {
             <span> is used to trap the focus in any html element. Pressing tab will circle focus within the inner focusable elements of the FocusTrapZone.</span>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }

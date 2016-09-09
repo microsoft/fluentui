@@ -11,10 +11,11 @@ import {
 import { MessageBarBasicExample } from './examples/MessageBar.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const MessageBarBasicExampleCode = require('./examples/MessageBar.Basic.Example.tsx');
 
-export class MessageBarPage extends React.Component<any, any> {
+export class MessageBarPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -48,7 +49,8 @@ export class MessageBarPage extends React.Component<any, any> {
             <span> are used typically to inform the user like a notification.</span>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }
