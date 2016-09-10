@@ -4,12 +4,17 @@ import {
   IFocusZone,
   IFocusZoneProps
 } from './FocusZone.Props';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
-import { KeyCodes } from '../../utilities/KeyCodes';
-import { getRTL } from '../../utilities/rtl';
-import { getId } from '../../utilities/object';
-import { autobind } from '../../utilities/autobind';
-import { css } from '../../utilities/css';
+import {
+  BaseComponent,
+  EventGroup,
+  KeyCodes,
+  autobind,
+  css,
+  elementContains,
+  getParent,
+  getId,
+  getRTL
+} from '../../Utilities';
 import {
   getNextElement,
   getPreviousElement,
@@ -31,7 +36,7 @@ interface IPoint {
   top: number;
 }
 
-export class FocusZone extends React.Component<IFocusZoneProps, {}> implements IFocusZone {
+export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFocusZone {
 
   public static defaultProps: IFocusZoneProps = {
     isCircularNavigation: false,
@@ -45,7 +50,6 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
 
   private _id: string;
   private _activeElement: HTMLElement;
-  private _events: EventGroup;
   private _focusAlignment: IPoint;
   private _isInnerZone: boolean;
 
@@ -59,29 +63,25 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
       left: 0,
       top: 0
     };
-
-    this._events = new EventGroup(this);
   }
 
   public componentDidMount() {
     const windowElement = this.refs.root.ownerDocument.defaultView;
 
-    let parentElement = this.refs.root.parentElement;
+    let parentElement = getParent(this.refs.root);
 
     while (parentElement && parentElement !== document.body) {
       if (isElementFocusZone(parentElement)) {
         this._isInnerZone = true;
         break;
       }
-      parentElement = parentElement.parentElement;
+      parentElement = getParent(parentElement);
     }
 
     this._events.on(windowElement, 'keydown', this._onKeyDownCapture, true);
   }
 
   public componentWillUnmount() {
-    this._events.dispose();
-
     delete _allInstances[this._id];
   }
 
@@ -109,7 +109,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
   public focus(): boolean {
-    if (this._activeElement && this.refs.root.contains(this._activeElement)) {
+    if (this._activeElement && elementContains(this.refs.root, this._activeElement)) {
       this._activeElement.focus();
       return true;
     } else {
@@ -170,7 +170,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
           this._activeElement = parentElement;
           break;
         }
-        parentElement = parentElement.parentElement;
+        parentElement = getParent(parentElement);
       }
     }
     if (onActiveElementChanged) {
@@ -200,7 +200,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
 
     while (target && target !== this.refs.root) {
       path.push(target);
-      target = target.parentElement;
+      target = getParent(target);
     }
 
     while (path.length) {
@@ -310,7 +310,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
         return true;
       }
 
-      target = target.parentElement;
+      target = getParent(target);
     } while (target !== this.refs.root);
 
     return false;
@@ -526,14 +526,14 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
   }
 
   private _isImmediateDescendantOfZone(element?: HTMLElement): boolean {
-    let parentElement = element.parentElement;
+    let parentElement = getParent(element);
 
     while (parentElement && parentElement !== this.refs.root && parentElement !== document.body) {
       if (isElementFocusZone(parentElement)) {
         return false;
       }
 
-      parentElement = parentElement.parentElement;
+      parentElement = getParent(parentElement);
     }
 
     return true;
@@ -542,7 +542,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
   private _updateTabIndexes(element?: HTMLElement) {
     if (!element) {
       element = this.refs.root;
-      if (this._activeElement && !element.contains(this._activeElement)) {
+      if (this._activeElement && !elementContains(element, this._activeElement)) {
         this._activeElement = null;
       }
     }
