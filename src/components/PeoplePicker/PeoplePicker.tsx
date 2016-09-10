@@ -12,10 +12,12 @@ import {
 } from '../../Spinner';
 import { format } from '../../utilities/string';
 import { FocusZone } from '../../FocusZone';
-import { css } from '../../utilities/css';
-import { KeyCodes } from '../../utilities/KeyCodes';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
-import { elementContains } from '../../utilities/DomUtils';
+import {
+  BaseComponent,
+  KeyCodes,
+  css,
+  elementContains
+   } from '../../Utilities';
 import './PeoplePicker.scss';
 
 export interface IPeoplePickerState {
@@ -28,7 +30,7 @@ export interface IPeoplePickerState {
 
 const INVALID_INDEX = -1;
 
-export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePickerState> {
+export class PeoplePicker extends BaseComponent<IPeoplePickerProps, IPeoplePickerState> {
   public static defaultProps: IPeoplePickerProps = {
     type: PeoplePickerType.normal,
     isConnected: true,
@@ -47,14 +49,12 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
     focusZone: HTMLElement;
   };
 
-  private _events: EventGroup;
   private _suggestionsCount: number = 0;
   private _highlightedSearchResult: Object;
   private _focusedPersonaIndex: number = INVALID_INDEX;
 
   constructor(props: IPeoplePickerProps) {
     super(props);
-    this._events = new EventGroup(this);
     this._activatePeoplePicker = this._activatePeoplePicker.bind(this);
     this._dismissPeoplePicker = this._dismissPeoplePicker.bind(this);
     this._addPersonaToSelectedList = this._addPersonaToSelectedList.bind(this);
@@ -79,10 +79,6 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
     this._events.on(window, 'focus', this._onFocusCapture, true);
     this._events.on(window, 'click', this._onClickCapture, true);
     this._events.on(window, 'touchstart', this._onClickCapture, true);
-  }
-
-  public componentWillUnmount() {
-    this._events.dispose();
   }
 
   public componentDidUpdate() {
@@ -186,8 +182,8 @@ export class PeoplePicker extends React.Component<IPeoplePickerProps, IPeoplePic
    * Handles closing the people picker whenever focus is lost through mouse.
    */
   private _onClickCapture(ev: React.MouseEvent) {
-    if (!this.refs.searchField.contains(ev.target as HTMLElement)
-      && !this.refs.pickerResults.contains(ev.target as HTMLElement) ) {
+    if (!elementContains(this.refs.searchField, ev.target as HTMLElement)
+      && !elementContains(this.refs.pickerResults, ev.target as HTMLElement) ) {
       this._dismissPeoplePicker();
     }
   }
