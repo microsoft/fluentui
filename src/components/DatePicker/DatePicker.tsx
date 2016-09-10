@@ -9,7 +9,6 @@ import { TextField } from '../../TextField';
 import {
   autobind,
   BaseComponent,
-  EventGroup,
   KeyCodes,
   css,
   elementContains
