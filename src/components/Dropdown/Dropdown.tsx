@@ -20,8 +20,7 @@ export interface IDropdownState {
 export class Dropdown extends BaseComponent<IDropdownProps, any> {
 
   public static defaultProps = {
-    options: [],
-    isDisabled: false
+    options: []
   };
 
   private static Option: string = 'option';
@@ -35,13 +34,15 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
   private _dropDown: HTMLDivElement;
 
   constructor(props?: IDropdownProps) {
-    super(props);
+    super(props, {
+      'isDisabled': 'disabled'
+    });
 
     this.state = {
       id: getId('Dropdown'),
       isOpen: false,
       selectedIndex: this._getSelectedIndex(props.options, props.selectedKey),
-      isDisabled: this.props.isDisabled
+      isDisabled: this.props.isDisabled || this.props.disabled
     };
   }
 
@@ -202,9 +203,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
   @autobind
   private _onFocusChange(ev: React.FocusEvent) {
     if (this.state.isOpen && !elementContains(this.refs.root, ev.target as HTMLElement)) {
-      let context: Dropdown = this;
-
-      context.setState({
+      this.setState({
         isOpen: false
       });
     }
