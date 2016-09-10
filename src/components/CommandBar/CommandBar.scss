@@ -88,6 +88,10 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
     height: 38px;
     outline: none;
   }
+
+  &.is-hidden {
+    display: none;
+  }
 }
 
 .ms-CommandBarItem-chevronDown,
