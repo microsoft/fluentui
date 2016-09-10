@@ -1,10 +1,14 @@
 import * as React from 'react';
 import { IDropdownProps, IDropdownOption } from './Dropdown.Props';
-import { css } from '../../utilities/css';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
-import { findIndex } from '../../utilities/array';
-import { KeyCodes } from '../../utilities/KeyCodes';
-import { getId } from '../../utilities/object';
+import {
+  BaseComponent,
+  KeyCodes,
+  autobind,
+  css,
+  elementContains,
+  findIndex,
+  getId
+} from '../../Utilities';
 import './Dropdown.scss';
 
 export interface IDropdownState {
@@ -13,7 +17,7 @@ export interface IDropdownState {
   isDisabled: boolean;
 }
 
-export class Dropdown extends React.Component<IDropdownProps, any> {
+export class Dropdown extends BaseComponent<IDropdownProps, any> {
 
   public static defaultProps = {
     options: [],
@@ -27,14 +31,11 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
     root: HTMLElement
   };
 
-  private _events: EventGroup;
   private _optionList: HTMLElement;
   private _dropDown: HTMLDivElement;
 
   constructor(props?: IDropdownProps) {
     super(props);
-
-    this._events = new EventGroup(this);
 
     this.state = {
       id: getId('Dropdown'),
@@ -42,10 +43,6 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
       selectedIndex: this._getSelectedIndex(props.options, props.selectedKey),
       isDisabled: this.props.isDisabled
     };
-
-    this._onDropdownKeyDown = this._onDropdownKeyDown.bind(this);
-    this._onDropdownClick = this._onDropdownClick.bind(this);
-    this._onFocusChange = this._onFocusChange.bind(this);
   }
 
   public componentWillReceiveProps(newProps: IDropdownProps) {
@@ -63,10 +60,6 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
         this._events.off();
       }
     }
-  }
-
-  public componentWillUnmount() {
-    this._events.dispose();
   }
 
   public componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState) {
@@ -156,6 +149,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
     return findIndex(options, (option => (option.isSelected || selectedKey && option.key === selectedKey)));
   }
 
+  @autobind
   private _onDropdownKeyDown(ev: React.KeyboardEvent) {
     switch (ev.which) {
       case KeyCodes.enter:
@@ -194,6 +188,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
     ev.preventDefault();
   }
 
+  @autobind
   private _onDropdownClick() {
     let { isDisabled, isOpen } = this.state;
 
@@ -204,8 +199,9 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
     }
   }
 
+  @autobind
   private _onFocusChange(ev: React.FocusEvent) {
-    if (this.state.isOpen && !this.refs.root.contains(ev.target as HTMLElement)) {
+    if (this.state.isOpen && !elementContains(this.refs.root, ev.target as HTMLElement)) {
       let context: Dropdown = this;
 
       context.setState({
