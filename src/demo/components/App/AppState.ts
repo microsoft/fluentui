@@ -27,7 +27,7 @@ import { NavPage } from '../../pages/NavPage/NavPage';
 import { OrgChartPage } from '../../pages/OrgChartPage/OrgChartPage';
 import { OverlayPage } from '../../pages/OverlayPage/OverlayPage';
 import { PanelPage } from '../../pages/PanelPage/PanelPage';
-import { PeoplePickerPage } from '../../pages/PeoplePickerPage/PeoplePickerPage';
+import { PickersPage } from '../../pages/PickersPage/PickersPage';
 import { PersonaCardPage } from '../../pages/PersonaCardPage/PersonaCardPage';
 import { PersonaPage } from '../../pages/PersonaPage/PersonaPage';
 import { PivotPage } from '../../pages/PivotPage/PivotPage';
@@ -180,10 +180,10 @@ export const AppState: IAppState = {
           url: '#/examples/panel'
         },
         {
-          component: PeoplePickerPage,
-          name: 'PeoplePicker',
+          component: PickersPage,
+          name: 'Pickers',
           status: ExampleStatus.started,
-          url: '#/examples/peoplepicker'
+          url: '#/examples/pickers'
         },
         {
           component: PersonaPage,
