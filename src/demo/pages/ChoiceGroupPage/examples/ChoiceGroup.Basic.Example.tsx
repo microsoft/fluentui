@@ -40,13 +40,13 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
             {
               key: 'C',
               text: 'Option C',
-              isDisabled: true
+              disabled: true
             },
             {
               key: 'D',
               text: 'Option D',
               isChecked: true,
-              isDisabled: true
+              disabled: true
             }
           ] }
           onChanged={ this._onChanged }

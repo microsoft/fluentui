@@ -19,6 +19,7 @@ import { PanelLightDismissExample } from './examples/Panel.LightDismiss.Example'
 import { PanelNonModalExample } from './examples/Panel.NonModal.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const PanelSmallRightExampleCode = require('./examples/Panel.SmallRight.Example.tsx');
 const PanelSmallLeftExampleCode = require('./examples/Panel.SmallLeft.Example.tsx');
@@ -30,7 +31,7 @@ const PanelExtraLargeExampleCode = require('./examples/Panel.ExtraLarge.Example.
 const PanelLightDismissExampleCode = require('./examples/Panel.LightDismiss.Example.tsx');
 const PanelNonModalExampleCode = require('./examples/Panel.NonModal.Example.tsx');
 
-export class PanelPage extends React.Component<any, any> {
+export class PanelPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -85,7 +86,8 @@ export class PanelPage extends React.Component<any, any> {
             <span> are used to render an org chart, and other components.</span>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }

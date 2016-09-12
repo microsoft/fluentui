@@ -4,6 +4,11 @@ import * as React from 'react';
 
 export interface ILinkProps extends React.HTMLProps<HTMLLabelElement> {
   /**
+   * Whether the link is disabled
+   */
+  disabled?: boolean;
+
+  /**
    *  The props of pop up window.
    */
   popupWindowProps?: IPopupWindowProps;

@@ -5,7 +5,7 @@ import { IMarqueeSelectionProps } from './MarqueeSelection.Props';
 import { IPoint } from '../../common/IPoint';
 import { IRectangle } from '../../common/IRectangle';
 import { css } from '../../utilities/css';
-import { findScrollableParent } from '../../utilities/scrollUtilities';
+import { findScrollableParent } from '../../utilities/scroll';
 import { getDistanceBetweenPoints } from '../../utilities/math';
 import { autobind } from '../../utilities/autobind';
 

@@ -39,7 +39,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
               { key: 'G', text: 'Option g' },
             ]
           }
-          isDisabled={ true }
+          disabled={ true }
         />
       </div>
     );
