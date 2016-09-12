@@ -56,7 +56,7 @@ export interface IPanelProps extends React.Props<Panel> {
   * Whether the panel uses a modal overlay or not
   * @default true
   */
-  isModal?: boolean;
+  isBlocking?: boolean;
 }
 
 export enum PanelType {
