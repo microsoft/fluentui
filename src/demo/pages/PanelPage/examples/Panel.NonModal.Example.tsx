@@ -19,7 +19,7 @@ export class PanelNonModalExample extends React.Component<any, any> {
       <div>
         <Button description='Opens the Sample Panel' onClick={ this._showPanel.bind(this) }>Open Panel</Button>
         <Panel
-          isModal={ false }
+          isBlocking={ false }
           isOpen={ this.state.showPanel }
           onDismiss= { this._closePanel.bind(this) }
           type={ PanelType.medium }

@@ -23,7 +23,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
 
   public static defaultProps: IPanelProps = {
     isOpen: false,
-    isModal: true,
+    isBlocking: true,
     hasCloseButton: true,
     type: PanelType.smallFixedFar,
   };
@@ -63,7 +63,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
   }
 
   public render() {
-    let { children, className = '', type, hasCloseButton, isLightDismiss, isModal, headerText, closeButtonAriaLabel, headerClassName = '' } = this.props;
+    let { children, className = '', type, hasCloseButton, isLightDismiss, isBlocking, headerText, closeButtonAriaLabel, headerClassName = '' } = this.props;
     let { isOpen, isAnimatingOpen, isAnimatingClose, id } = this.state;
     let isLeft = type === PanelType.smallFixedNear ? true : false;
     let isRTL = getRTL();
@@ -85,7 +85,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
     }
 
     let overlay;
-    if (isModal) {
+    if (isBlocking) {
       overlay = <Overlay
         isDarkThemed={ false }
         onClick={ isLightDismiss ? this._onPanelClick : null }
