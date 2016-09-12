@@ -10,9 +10,11 @@ import {
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { PersonaCardBasicExample } from './examples/PersonaCard.Basic.Example';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
+
 const PersonaCardBasicExampleCode = require('./examples/PersonaCard.Basic.Example.tsx');
 
-export class PersonaCardPage extends React.Component<any, any> {
+export class PersonaCardPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -38,7 +40,8 @@ export class PersonaCardPage extends React.Component<any, any> {
             <span> render a details for an individual.</span>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }

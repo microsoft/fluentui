@@ -11,10 +11,11 @@ import {
 import { OverlayBasicExample } from './examples/Overlay.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const OverlayBasicExampleCode = require('./examples/Overlay.Basic.Example.tsx');
 
-export class OverlayPage extends React.Component<any, any> {
+export class OverlayPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -45,7 +46,8 @@ export class OverlayPage extends React.Component<any, any> {
             <span> are used to render a semi transparent overlaying div on top of content. This can be used in modal situations, such as Dialogs, which render on top of existing content.</span>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }
