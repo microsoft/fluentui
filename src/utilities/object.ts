@@ -24,14 +24,37 @@ export function shallowCompare(a, b) {
   return checkProperties(a, b) && checkProperties(b, a);
 }
 
-// Assign function.
-export function assign(target: any, ...args) {
+/**
+ * Makes a resulting merge of a bunch of objects. Pass in the target object followed by 1 or more
+ * objects as arguments and they will be merged sequentially into the target. Note that this will
+ * shallow merge; it will not create new cloned values for object members.
+ *
+ * @params target {Object} Target object to merge following object arguments into.
+ * @params args {Object} One or more objects that will be mixed into the target in the order they are provided.
+ * @returns Resulting merged target.
+ */
+export function assign(target: any, ...args): any {
+  return assignExcept.apply(this, [ null, target ].concat(args));
+}
+
+/**
+ * Makes a resulting merge of a bunch of objects, but avoids copying a list of member names. Pass
+ * in the target object followed by 1 or more  objects as arguments and they will be merged sequentially
+ * into the target. Note that this will shallow merge; it will not create new cloned values for object members.
+ *
+ * @params exceptions {string[]} A list of parameters that should not be mixed into the target.
+ * @params target {Object} Target object to merge following object arguments into.
+ * @params args {Object} One or more objects that will be mixed into the target in the order they are provided.
+ * @returns Resulting merged target.
+ */
+export function assignExcept(exceptions: string[], target: any, ...args) {
   target = target || {};
 
   for (let sourceObject of args) {
     if (sourceObject) {
       for (let propName in sourceObject) {
-        if (sourceObject.hasOwnProperty(propName)) {
+        if (sourceObject.hasOwnProperty(propName) &&
+            !exceptions || exceptions.indexOf(propName) === -1) {
           target[propName] = sourceObject[propName];
         }
       }

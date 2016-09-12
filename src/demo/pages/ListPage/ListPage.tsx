@@ -19,10 +19,11 @@ const ListGridExampleCode = require('./examples/List.Grid.Example.tsx');
 
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 let _cachedItems;
 
-export class ListPage extends React.Component<any, any> {
+export class ListPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -71,7 +72,8 @@ export class ListPage extends React.Component<any, any> {
             </p>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }

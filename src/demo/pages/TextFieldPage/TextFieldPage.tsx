@@ -12,11 +12,12 @@ import { TextFieldBasicExample } from './examples/TextField.Basic.Example';
 import { TextFieldErrorMessageExample } from './examples/TextField.ErrorMessage.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const TextFieldBasicExampleCode = require('./examples/TextField.Basic.Example.tsx');
 const TextFieldErrorMessageExampleCode = require('./examples/TextField.ErrorMessage.Example.tsx');
 
-export class TextFieldPage extends React.Component<any, any> {
+export class TextFieldPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -50,7 +51,8 @@ export class TextFieldPage extends React.Component<any, any> {
             <span> allow the user to enter text.</span>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }

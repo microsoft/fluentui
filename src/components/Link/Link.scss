@@ -30,6 +30,12 @@
   overflow: inherit;
   text-overflow: inherit;
 
+  &.is-disabled {
+    color: $ms-color-neutralTertiary;
+    pointer-events: none;
+    cursor: default;
+  }
+
   &:hover,
   &:focus {
     color: $ms-color-themeDarker;
