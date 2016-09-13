@@ -15,6 +15,7 @@ $dontColor: #A61E22;
   background-color: $componentPageColor;
   min-height: 245px;
   padding: $componentPagePadding;
+  padding-bottom: 0;
 }
 
 .ComponentPage-title {
@@ -44,6 +45,11 @@ $dontColor: #A61E22;
 .ComponentPage-overview {
   font-size: $ms-font-size-m;
   line-height: $ms-font-size-l;
+
+  p {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
 }
 
 .ComponentPage-overviewSection,
@@ -82,10 +88,18 @@ $dontColor: #A61E22;
 }
 
 .ComponentPage-doSection {
-  width: 50%;
+  width: 100%;
   box-sizing: border-box;
   display: inline-block;
   border-top: 8px solid #177D3E;
+  margin-right: 50px;
+  vertical-align: top;
+  margin-bottom: 20px;
+
+  h3 {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
 
   ul {
     padding-left: 18px;
@@ -98,12 +112,13 @@ $dontColor: #A61E22;
   }
 }
 
-.ComponentPage-doSection {
-  width: calc(50% - 50px);
-  margin-right: 50px;
-  vertical-align: top;
-}
-
 .ComponentPage-doNotSection {
   border-top: 8px solid #A61E22;
+}
+
+
+@media(min-width: $ms-screen-lg-min) {
+  .ComponentPage-doSection {
+    width: calc(50% - 50px);
+  }
 }
