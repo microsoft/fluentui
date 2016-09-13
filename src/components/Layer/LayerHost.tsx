@@ -21,11 +21,12 @@ export interface ILayer {
  * wrapped within a LayerHost, a LayerHost will be created and appended to the end of the document body, where
  * layer content will then be projected. However in some circumstances you want Layered content to be rendered
  * in a specific place rather than document body (for example in a popup window or contained within a scrollable
- * region.) In those cases, wrap the content wihtin a LayerHost:
+ * region.) In those cases, wrap the content wihtin a LayerHost.
  *
+ * @example
  * <LayerHost>
- *   <Layer>I'm rendered on top.</Layer>
- *   <div>I am render on bottom.</div>
+ *   <Layer>I will at the end of LayerHost.</Layer>
+ *   <div>I will render normally.</div>
  * </LayerHost>
  **/
 export class LayerHost extends React.Component<ILayerHostProps, {}> {
