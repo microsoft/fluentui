@@ -130,7 +130,7 @@ export interface IContextualMenuItem {
   /**
    * Callback issued when the menu item is invoked
    */
-  onClick?: (item?: IContextualMenuItem, ev?: React.MouseEvent) => void;
+  onClick?: (ev?: React.MouseEvent, item?: IContextualMenuItem) => void;
 
   /**
    * An optional URL to navigate to upon selection

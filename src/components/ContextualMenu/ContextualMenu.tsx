@@ -323,7 +323,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     if (item.key !== this.state.expandedMenuItemKey) {
       if (!item.items || !item.items.length) { // This is an item without a menu. Click it.
         if (item.onClick) {
-          item.onClick(item, ev);
+          item.onClick(ev, item);
         }
         this.dismiss(ev);
       } else {
