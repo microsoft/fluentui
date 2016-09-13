@@ -47,18 +47,13 @@ export class ProjectedLayer extends BaseComponent<IProjectedLayerProps, IProject
     setVirtualParent(this._rootElement, this.props.parentElement);
   }
 
-  public componentWillUnmount() {
-    console.log(`Unmounting projection for ${ this.props.layerId }`);
-  }
-
   public render() {
     let { remoteProps } = this.state;
 
-    console.log(`Rendering projected layer ${ this.props.layerId }`);
     return (
       <div
         { ...remoteProps }
-        className={ css('ms-Layer', remoteProps.className) }
+        className={ css('ms-ProjectedLayer', remoteProps.className) }
         ref={ this._resolveRef('_rootElement') }
         >
         { remoteProps && remoteProps.children }

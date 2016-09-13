@@ -38,8 +38,6 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
     layerHost.addLayer(this._id, this._rootElement, this.props, (projectedLayer) => {
       this._projectedLayer = projectedLayer;
 
-      console.log(`Projection has been mounted for ${this._id}`);
-
       if (this.props.onLayerMounted) {
         this.props.onLayerMounted();
       }
@@ -52,8 +50,6 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
 
   public componentWillReceiveProps(newProps: ILayerProps) {
     if (this._projectedLayer) {
-      console.log(`Received new props, proxying them to projection for ${this._id}`);
-
       this._projectedLayer.projectProps(newProps);
     }
   }
