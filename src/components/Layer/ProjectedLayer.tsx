@@ -30,13 +30,12 @@ export interface IProjectedLayerState {
  */
 export class ProjectedLayer extends BaseComponent<IProjectedLayerProps, IProjectedLayerState> {
   private _rootElement: HTMLElement;
+  private _remoteProps: any;
 
   constructor(props?: IProjectedLayerProps) {
     super(props);
 
-    this.state = {
-      remoteProps: props.defaultRemoteProps
-    };
+    this._remoteProps = props.defaultRemoteProps;
   }
 
   public shouldComponentUpdate() {
@@ -48,16 +47,14 @@ export class ProjectedLayer extends BaseComponent<IProjectedLayerProps, IProject
   }
 
   public render() {
-    let { remoteProps } = this.state;
+    let remoteProps = this._remoteProps;
 
     return (
       <div
         { ...remoteProps }
         className={ css('ms-ProjectedLayer', remoteProps.className) }
         ref={ this._resolveRef('_rootElement') }
-        >
-        { remoteProps && remoteProps.children }
-      </div>
+        />
     );
   }
 
@@ -66,7 +63,7 @@ export class ProjectedLayer extends BaseComponent<IProjectedLayerProps, IProject
   }
 
   public projectProps(remoteProps: any) {
-    this.setState({ remoteProps });
+    this._remoteProps = remoteProps;
     this.forceUpdate();
   }
 }
