@@ -1,6 +1,10 @@
 import * as React from 'react';
-import { KeyCodes } from '../../utilities/KeyCodes';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
+import {
+  BaseComponent,
+  KeyCodes,
+  autobind,
+  elementContains
+} from '../../Utilities';
 import { IFocusTrapZone, IFocusTrapZoneProps } from './FocusTrapZone.Props';
 import {
   getFirstFocusable,
@@ -8,7 +12,7 @@ import {
   getNextElement
 } from '../../utilities/focus';
 
-export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
+export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
 
   public refs: {
     [key: string]: React.ReactInstance,
@@ -16,14 +20,6 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
   };
 
   private _previouslyFocusedElement: HTMLElement;
-  private _events: EventGroup;
-
-  constructor(props) {
-    super(props);
-
-    this._onKeyboardHandler = this._onKeyboardHandler.bind(this);
-    this._events = new EventGroup(this);
-  }
 
   public componentDidMount() {
     let { elementToFocusOnDismiss, isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true } = this.props;
@@ -32,7 +28,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
     this.focus();
 
     if (forceFocusInsideTrap) {
-        this._events.on(window, 'focus', this._forceFocusInTrap, true);
+      this._events.on(window, 'focus', this._forceFocusInTrap, true);
     }
 
     if (!isClickableOutsideFocusTrap) {
@@ -42,7 +38,6 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
 
   public componentWillUnmount() {
     let { ignoreExternalFocusing } = this.props;
-    this._events.dispose();
 
     if (!ignoreExternalFocusing && this._previouslyFocusedElement) {
       this._previouslyFocusedElement.focus();
@@ -64,9 +59,9 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
     );
   }
 
-/**
- * Need to expose this method in case of popups since focus needs to be set when popup is opened
- */
+  /**
+   * Need to expose this method in case of popups since focus needs to be set when popup is opened
+   */
   public focus() {
     let { firstFocusableSelector } = this.props;
     let _firstFocusableChild;
@@ -75,13 +70,14 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
     if (firstFocusableSelector) {
       _firstFocusableChild = root.querySelector('.' + firstFocusableSelector);
     } else {
-        _firstFocusableChild = getNextElement(root, root.firstChild as HTMLElement, true, false, false, true);
+      _firstFocusableChild = getNextElement(root, root.firstChild as HTMLElement, true, false, false, true);
     }
     if (_firstFocusableChild) {
-        _firstFocusableChild.focus();
+      _firstFocusableChild.focus();
     }
   }
 
+  @autobind
   private _onKeyboardHandler(ev: React.KeyboardEvent) {
     if (ev.which !== KeyCodes.tab) {
       return;
@@ -104,19 +100,19 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
   }
 
   private _forceFocusInTrap(ev: FocusEvent) {
-    const focusedElement = document.activeElement;
+    const focusedElement = document.activeElement as HTMLElement;
 
-    if (!this.refs.root.contains(focusedElement)) {
+    if (!elementContains(this.refs.root, focusedElement)) {
       this.focus();
       ev.preventDefault();
       ev.stopPropagation();
     }
   }
 
- private _forceClickInTrap(ev: MouseEvent) {
+  private _forceClickInTrap(ev: MouseEvent) {
     const clickedElement = ev.target as HTMLElement;
 
-    if (clickedElement && !this.refs.root.contains(clickedElement)) {
+    if (clickedElement && !elementContains(this.refs.root, clickedElement)) {
       this.focus();
       ev.preventDefault();
       ev.stopPropagation();
