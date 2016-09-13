@@ -12,7 +12,7 @@ export class LayerBasicExample extends React.Component<any, any> {
     super();
     this.state = {
       showLayer: false,
-      time: ''
+      time: new Date().toLocaleTimeString()
     };
   }
 
@@ -27,8 +27,8 @@ export class LayerBasicExample extends React.Component<any, any> {
   public render() {
     let { showLayer, time } = this.state;
     let content = (
-      <div className='LayerExample-content'>
-        <div>This is example layer content.</div>
+      <div className='LayerExample-content ms-u-scaleUpIn100'>
+        <div className='LayerExample-textContent'>This is example layer content.</div>
         <div>{ time }</div>
       </div>
     );

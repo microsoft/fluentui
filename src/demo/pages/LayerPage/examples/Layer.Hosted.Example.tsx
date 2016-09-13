@@ -15,7 +15,7 @@ export class LayerHostedExample extends React.Component<any, any> {
   public render() {
     let { showLayer } = this.state;
     let content = (
-      <div className='LayerExample-content'>
+      <div className='LayerExample-content ms-u-scaleUpIn100'>
         This is example layer content.
       </div>
     );

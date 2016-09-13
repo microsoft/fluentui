@@ -5,6 +5,11 @@
   color: $ms-color-white;
   line-height: 50px;
   padding: 0 20px;
+  display: flex;
+}
+
+.LayerExample-textContent {
+  flex-grow: 1;
 }
 
 .LayerExample-nonLayered {
