@@ -127,11 +127,11 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
       dosAndDonts.push(
         <div className='ComponentPage-doSections'>
           <div className='ComponentPage-doSection'>
-            <h3>Do</h3>
+            <h3 className='ComponentPage-smallSubHeading'>Do</h3>
             { this.props.dos }
           </div>
           <div className='ComponentPage-doSection ComponentPage-doNotSection'>
-            <h3>Do not</h3>
+            <h3 className='ComponentPage-smallSubHeading'>Do not</h3>
             { this.props.donts }
           </div>
         </div>
