@@ -1,3 +1,4 @@
+import { filteredAssign } from './object';
 export const baseElementEvents = [
   'onCopy',
   'onCut',
@@ -90,6 +91,7 @@ export const baseElementProperties = [
   'charSet',
   'challenge',
   'checked',
+  'children',
   'classID',
   'className',
   'cols',
@@ -105,7 +107,6 @@ export const baseElementProperties = [
   'default',
   'defer',
   'dir',
-  'disabled',
   'download',
   'draggable',
   'encType',
@@ -197,4 +198,17 @@ export const anchorProperties = baseElementProperties.concat(baseElementEvents, 
   'target'
 ]);
 
-export const buttonProperties = baseElementProperties.concat(baseElementEvents);
+export const buttonProperties = baseElementProperties.concat(baseElementEvents, [
+  'disabled'
+]);
+
+export const divProperties = baseElementProperties.concat(baseElementEvents);
+
+export function getNativeProps(props: any, allowedPropNames: string[]) {
+  return filteredAssign((propName) => {
+    return (
+      (propName.indexOf('data-') === 0) ||
+      (allowedPropNames.indexOf(propName) >= 0)
+    );
+  }, {}, props);
+}
