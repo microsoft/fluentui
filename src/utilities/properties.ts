@@ -204,11 +204,22 @@ export const buttonProperties = baseElementProperties.concat(baseElementEvents, 
 
 export const divProperties = baseElementProperties.concat(baseElementEvents);
 
-export function getNativeProps(props: any, allowedPropNames: string[]) {
+/**
+ * Gets native supported props for an html element provided the allowance set. Use one of the property
+ * sets defined (divProperties, buttonPropertes, etc) to filter out supported properties from a given
+ * props set. Note that all data- prefixed attributes will be allowed.
+ *
+ * @param props The unfiltered input props
+ * @param allowedPropsNames The array of allowed propnames.
+ * @returns The filtered props
+ */
+export function getNativeProps<T>(props: any, allowedPropNames: string[]): T {
   return filteredAssign((propName) => {
     return (
       (propName.indexOf('data-') === 0) ||
       (allowedPropNames.indexOf(propName) >= 0)
     );
-  }, {}, props);
+  },
+  {},
+  props) as T;
 }
