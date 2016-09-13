@@ -33,7 +33,7 @@ export class BasePicker<P extends IBasePickerProps> extends React.Component<P, I
 
     let items = basePickerProps.startingItems || [];
 
-    this.suggestionManager = new SuggestionController(items);
+    this.suggestionManager = new SuggestionController();
     this._onKeyDown = this._onKeyDown.bind(this);
     this._onInputChange = this._onInputChange.bind(this);
     this._onInputFocus = this._onInputFocus.bind(this);
@@ -43,6 +43,8 @@ export class BasePicker<P extends IBasePickerProps> extends React.Component<P, I
     this.removeItem = this.removeItem.bind(this);
     this._onGetMoreResults = this._onGetMoreResults.bind(this);
     this._onSuggestionClick = this._onSuggestionClick.bind(this);
+    this._selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
+    this._selection.setItems(items);
     this.state = {
       items: items,
       displayValue: '',
@@ -57,7 +59,6 @@ export class BasePicker<P extends IBasePickerProps> extends React.Component<P, I
   }
 
   public componentDidMount() {
-    this._selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
     this._selection.setItems(this.state.items);
   }
 

@@ -8,18 +8,15 @@ import {
   ComponentPage
 } from '../../components/index';
 
-import { PeoplePickerBasicExample } from './examples/PeoplePicker.Basic.Example';
-import { PeoplePickerMemberListExample } from './examples/PeoplePicker.MemberList.Example';
-import { PeoplePickerCompactExample } from './examples/PeoplePicker.Compact.Example';
+import { PeoplePickerTypesExample } from './examples/PeoplePicker.Types.Example';
 import { PickerCustomResultExample } from './examples/Picker.CustomResult.Example';
 import { TagPickerBasicExample } from './examples/TagPicker.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const PeoplePickerBasicExampleCode = require('./examples/PeoplePicker.Basic.Example.tsx');
-const PeoplePickerCompactExampleCode = require('./examples/PeoplePicker.Compact.Example.tsx');
-const PeoplePickerMemberListExampleCode = require('./examples/PeoplePicker.MemberList.Example.tsx');
+const TagPickerExampleCode = require('./examples/TagPicker.Basic.Example');
+const PeoplePickerTypesExampleCode = require('./examples/PeoplePicker.MemberList.Example.tsx');
 const PickerCustomResultExampleCode = require('./examples/Picker.CustomResult.Example');
 
 export class PickersPage extends React.Component<IComponentDemoPageProps, any> {
@@ -43,7 +40,7 @@ export class PickersPage extends React.Component<IComponentDemoPageProps, any> {
                 <span> TagPickers are used to pick tags.</span>
               </div>
               <h2 className='ms-font-xl'> Examples </h2>
-              <ExampleCard title='TagPicker'>
+              <ExampleCard title='TagPicker' code={ TagPickerExampleCode }>
                 <TagPickerBasicExample />
               </ExampleCard>
               <h1 className='ms-font-xxl'> PeoplePicker </h1>
@@ -52,18 +49,12 @@ export class PickersPage extends React.Component<IComponentDemoPageProps, any> {
                 <span> are used to pick recipients.</span>
               </div>
               <h2 className='ms-font-xl'> Examples </h2>
-              <ExampleCard title='Basic PeoplePicker' code={ PeoplePickerBasicExampleCode }>
-                <PeoplePickerBasicExample />
-              </ExampleCard>
-              <ExampleCard title='MemberList PeoplePicker' code={ PeoplePickerMemberListExampleCode }>
-                <PeoplePickerMemberListExample />
-              </ExampleCard>
-              <ExampleCard title='Compact PeoplePicker' code={ PeoplePickerCompactExampleCode }>
-                <PeoplePickerCompactExample />
+              <ExampleCard title='MemberList PeoplePicker' code={ PeoplePickerTypesExampleCode }>
+                <PeoplePickerTypesExample />
               </ExampleCard>
               <h1 className='ms-font-xxl'> Custom Pickers </h1>
               <div>
-                <span> Pickers can be expanded to displa almost anything</span>
+                <span> Pickers can be expanded to display almost anything</span>
               </div>
               <h2 className='ms-font-xl'> Examples </h2>
               <ExampleCard title='Document Picker' code={ PickerCustomResultExampleCode }>

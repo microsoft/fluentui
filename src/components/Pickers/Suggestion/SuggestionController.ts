@@ -7,13 +7,9 @@ export class SuggestionController {
   public currentIndex: number;
   public currentSuggestion: ISuggestionModel;
   private suggestions: ISuggestionModel[];
-  constructor(suggestions: any[]) {
-    if (suggestions && suggestions.length > 0) {
-      this.suggestions = this._convertSuggestionsToSuggestionItems(suggestions);
-      this.currentIndex = 0;
-      this.suggestions[0].isSelected = true;
-      this.currentSuggestion = this.suggestions[0];
-    }
+  constructor() {
+      this.suggestions = [];
+      this.currentIndex = -1;
   }
 
   public updateSuggestions(newSuggestions: any[]) {

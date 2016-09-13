@@ -1,0 +1,153 @@
+import * as React from 'react';
+import {
+  ListPeoplePicker,
+  NormalPeoplePicker,
+  CompactPeoplePicker,
+  IContextualMenuItem,
+  Dropdown,
+  IDropdownOption,
+  IPersonaProps
+} from '../../../../index';
+import { IPersonaWithMenu } from '../../../../components/Pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
+import { people } from './PeoplePickerExampleData';
+import { assign } from '../../../../utilities/object';
+import './PeoplePicker.Types.Example.scss';
+
+export interface IPeoplePickerExampleState {
+  currentPicker: number | string;
+}
+
+export class PeoplePickerTypesExample extends React.Component<any, IPeoplePickerExampleState> {
+  private _peopleList;
+  private contextualMenuItems: IContextualMenuItem[] = [
+    {
+      key: 'newItem',
+      icon: 'circlePlus',
+      name: 'New'
+    },
+    {
+      key: 'upload',
+      icon: 'upload',
+      name: 'Upload'
+    },
+    {
+      key: 'divider_1',
+      name: '-',
+    },
+    {
+      key: 'rename',
+      name: 'Rename'
+    },
+    {
+      key: 'properties',
+      name: 'Properties'
+    },
+    {
+      key: 'disabled',
+      name: 'Disabled item',
+      isDisabled: true
+    }
+  ];
+
+  constructor() {
+    super();
+    this._onFilterChanged = this._onFilterChanged.bind(this);
+    this._peopleList = [];
+    people.forEach((persona: IPersonaProps) => {
+      let target: IPersonaWithMenu = {};
+
+      assign(target, persona, { menuItems: this.contextualMenuItems });
+      this._peopleList.push(target);
+    });
+    this.state = { currentPicker: 1 };
+  }
+
+  public render() {
+    let currentPicker: JSX.Element;
+    switch (this.state.currentPicker) {
+      case 1:
+        currentPicker = this._renderNormalPicker();
+        break;
+      case 2:
+        currentPicker = this._renderCompactPicker();
+        break;
+      case 3:
+        currentPicker = this._renderListPicker();
+        break;
+      case 4:
+        currentPicker = this._renderPreselectedItemsPicker();
+        break;
+    }
+    return (
+      <div>
+        { currentPicker }
+        <div className={'dropdown-div'}>
+          <Dropdown label='Select People Picker Type'
+            options={[
+              { key: 1, text: 'Normal' },
+              { key: 2, text: 'Compact' },
+              { key: 3, text: 'Members List' },
+              { key: 4, text: 'Preselected Items' }
+            ]}
+            selectedKey={ this.state.currentPicker }
+            onChanged={ this._dropDownSelected.bind(this) }
+            />
+        </div>
+      </div>
+    );
+  }
+
+  public _renderListPicker() {
+    return (
+      <ListPeoplePicker
+        onResolveSuggestions={ this._onFilterChanged }
+        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
+        suggestionsHeaderText={'Suggested People'}
+        className={'ms-PeoplePicker'}
+        key={'compact'}
+        />
+    );
+  }
+  public _renderNormalPicker() {
+    return (
+      <NormalPeoplePicker
+        onResolveSuggestions={ this._onFilterChanged }
+        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
+        suggestionsHeaderText={'Suggested People'}
+        className={'ms-PeoplePicker'}
+        key={'normal'}
+        />
+    );
+  }
+  public _renderCompactPicker() {
+    return (
+      <CompactPeoplePicker
+        onResolveSuggestions={ this._onFilterChanged }
+        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
+        suggestionsHeaderText={'Suggested People'}
+        className={'ms-PeoplePicker'}
+        />
+    );
+  }
+  public _renderPreselectedItemsPicker() {
+    return (
+      <CompactPeoplePicker
+        onResolveSuggestions={ this._onFilterChanged }
+        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
+        suggestionsHeaderText={'Suggested People'}
+        className={'ms-PeoplePicker'}
+        startingItems={ people.splice(0, 3) }
+        key={'list'}
+        />
+    );
+  }
+
+  private _onFilterChanged(filterText: string) {
+    return filterText ? this._peopleList.filter(item => item.primaryText.toLowerCase().indexOf(filterText.toLowerCase()) === 0) : [];
+  }
+
+  private _dropDownSelected(option: IDropdownOption) {
+    this.setState({ currentPicker: option.key });
+  }
+
+}
