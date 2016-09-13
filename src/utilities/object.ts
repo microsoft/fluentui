@@ -27,7 +27,7 @@ export function shallowCompare(a, b) {
 /**
  * Makes a resulting merge of a bunch of objects. Pass in the target object followed by 1 or more
  * objects as arguments and they will be merged sequentially into the target. Note that this will
- * shallow merge; it will not create new cloned values for object members.
+ * shallow merge; it will not create new cloned values for target members.
  *
  * @params target {Object} Target object to merge following object arguments into.
  * @params args {Object} One or more objects that will be mixed into the target in the order they are provided.
@@ -38,9 +38,10 @@ export function assign(target: any, ...args): any {
 }
 
 /**
- * Makes a resulting merge of a bunch of objects, but avoids copying a list of member names. Pass
- * in the target object followed by 1 or more  objects as arguments and they will be merged sequentially
- * into the target. Note that this will shallow merge; it will not create new cloned values for object members.
+ * Makes a resulting merge of a bunch of objects, but allows a filter function to be passed in to filter
+ * the resulting merges. This allows for scenarios where you want to merge "everything except that one thing"
+ * or "properties that start with data-". Note that this will shallow merge; it will not create new cloned
+ * values for target members.
  *
  * @params filteredAssign {Function} A callback function that tests if the property should be assigned.
  * @params target {Object} Target object to merge following object arguments into.
