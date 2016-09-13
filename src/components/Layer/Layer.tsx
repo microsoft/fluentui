@@ -1,12 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { ILayerProps } from './Layer.Props';
-import { LayerHost, ILayer } from './LayerHost';
+import { LayerHost } from './LayerHost';
 import { ProjectedLayer } from './ProjectedLayer';
-import { BaseComponent, css, getId, assignExcept, setVirtualParent } from '../../Utilities';
+import { BaseComponent, getId } from '../../Utilities';
 import './Layer.scss';
-
-const LAYER_HOST_ELEMENT_ID = 'ms-layer-host';
 
 let _defaultHost: LayerHost;
 
@@ -74,7 +72,6 @@ function _getDefaultLayerHost() {
   if (!_defaultHost) {
     let hostElement = document.createElement('div');
 
-    hostElement.setAttribute('id', LAYER_HOST_ELEMENT_ID);
     document.body.appendChild(hostElement);
     _defaultHost = ReactDOM.render(<LayerHost />, hostElement) as any;
   }

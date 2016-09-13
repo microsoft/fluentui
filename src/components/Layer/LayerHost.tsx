@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Fabric } from '../../Fabric';
-import { autobind, findIndex, getId } from '../../Utilities';
-import { Layer } from './Layer';
+import { autobind, findIndex } from '../../Utilities';
 import { ProjectedLayer } from './ProjectedLayer';
 import { ILayerProps } from './Layer.Props';
 
@@ -74,19 +73,6 @@ export class LayerHost extends React.Component<React.Props<LayerHost>, {}> {
     );
   }
 
-  @autobind
-  private _resolveLayer(layer: ProjectedLayer) {
-    if (layer) {
-      let layerId = layer.getId();
-      let index = findIndex(this._layers, layer => layer.id == layerId);
-
-      if (index >= 0 && this._layerRefs[layerId] !== layer) {
-        this._layerRefs[layerId] = layer;
-        this._layers[index].onMounted(layer);
-      }
-    }
-  }
-
   public addLayer(id: string, parentElement: HTMLElement, props: ILayerProps, onMounted: (proxyLayer: ProjectedLayer) => void) {
     this._layers.push({
       id,
@@ -98,12 +84,25 @@ export class LayerHost extends React.Component<React.Props<LayerHost>, {}> {
   }
 
   public removeLayer(id: string) {
-    let index = findIndex(this._layers, layer => layer.id == id);
+    let index = findIndex(this._layers, layer => layer.id === id);
 
     if (index >= 0) {
       this._layers.splice(index, 1);
       delete this._layerRefs[id];
       this.forceUpdate();
+    }
+  }
+
+  @autobind
+  private _resolveLayer(projectedLayer: ProjectedLayer) {
+    if (projectedLayer) {
+      let layerId = projectedLayer.getId();
+      let index = findIndex(this._layers, layer => layer.id === layerId);
+
+      if (index >= 0 && this._layerRefs[layerId] !== projectedLayer) {
+        this._layerRefs[layerId] = projectedLayer;
+        this._layers[index].onMounted(projectedLayer);
+      }
     }
   }
 
