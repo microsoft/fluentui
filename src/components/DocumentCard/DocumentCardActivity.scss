@@ -57,12 +57,11 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
 
 .ms-DocumentCardActivity-name,
 .ms-DocumentCardActivity-activity {
-  color: $ms-color-neutralSecondaryAlt;
   display: block;
-  font-family: $ms-font-family-regular;
-  font-size: $ms-font-size-s;
-  line-height: 14px;
-  height: 14px;
+  @include ms-font-s;
+  color: $ms-color-neutralPrimary;
+  line-height: 15px;
+  height: 15px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -70,5 +69,5 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
 
 .ms-DocumentCardActivity-name {
   color: $ms-color-neutralPrimary;
-  font-family: $ms-font-family-semibold;
+  @include ms-fontWeight-semibold;
 }

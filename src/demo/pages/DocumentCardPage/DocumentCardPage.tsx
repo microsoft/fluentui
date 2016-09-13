@@ -1,31 +1,60 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentPage
 } from '../../components/index';
 
 import { DocumentCardBasicExample } from './examples/DocumentCard.Basic.Example';
 import { DocumentCardCompleteExample } from './examples/DocumentCard.Complete.Example';
+import { DocumentCardCompactExample } from './examples/DocumentCard.Compact.Example';
+import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const DocumentCardBasicExampleCode = require('./examples/DocumentCard.Basic.Example.tsx');
 const DocumentCardCompleteExampleCode = require('./examples/DocumentCard.Complete.Example.tsx');
+const DocumentCardCompactExampleCode = require('./examples/DocumentCard.Compact.Example.tsx');
 
-export class DocumentCardPage extends React.Component<any, any> {
+export class DocumentCardPage extends React.Component<IComponentDemoPageProps, any> {
+  private _url: string;
+
+  constructor() {
+    super();
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'DocumentCard');
+  }
+
   public render() {
     return (
-      <div>
-        <h1 className='ms-font-xxl'>DocumentCard</h1>
-        <div>A card representation of a document. Can be configured with various card parts, including a preview, title, and location.</div>
-        <h2 className='ms-font-xl'>Examples</h2>
-        <ExampleCard title='DocumentCard Basic' code={ DocumentCardBasicExampleCode }>
-          <DocumentCardBasicExample />
-        </ExampleCard>
-        <ExampleCard title='DocumentCard Complete' code={ DocumentCardCompleteExampleCode }>
-          <DocumentCardCompleteExample />
-        </ExampleCard>
-
-        <PropertiesTableSet componentName='DocumentCard' />
-      </div>
+      <ComponentPage
+        title='DocumentCard'
+        componentName='DocumentCardExample'
+        exampleCards={
+          [
+            <ExampleCard title='DocumentCard Basic' code={ DocumentCardBasicExampleCode }>
+              <DocumentCardBasicExample />
+            </ExampleCard>,
+            <ExampleCard title='DocumentCard Complete' code={ DocumentCardCompleteExampleCode }>
+              <DocumentCardCompleteExample />
+            </ExampleCard>,
+            <ExampleCard title='DocumentCard Compact Layout' code={ DocumentCardCompactExampleCode }>
+              <DocumentCardCompactExample />
+            </ExampleCard>
+          ]
+        }
+        propertiesTables={
+          [
+            <PropertiesTableSet componentName='DocumentCard' />
+          ]
+        }
+        overview={
+          <div>
+             A card representation of a document. Can be configured with various card parts, including a preview, title, and location.
+          </div>
+        }
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
+      </ComponentPage>
     );
   }
 

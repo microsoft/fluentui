@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { css } from '../../utilities/css';
-import './Link.scss';
+import { autobind } from '../../utilities/autobind';
 import { ILinkProps, IPopupWindowProps, PopupWindowPosition } from './Link.Props';
+import './Link.scss';
 
 interface IMyScreen extends Screen {
   left: number;
@@ -12,22 +13,17 @@ declare var screen: IMyScreen;
 
 export class Link extends React.Component<ILinkProps, any> {
 
-  constructor(props: ILinkProps) {
-    super(props);
-
-    this._onClick = this._onClick.bind(this);
-    this._popupWindow = this._popupWindow.bind(this);
-  }
-
   public render() {
-    let { children, className, href } = this.props;
+    let { disabled, children, className, href } = this.props;
 
     return (
       href ? (
       <a
         role='link'
         { ...this.props as any }
-        className={ css('ms-Link', className) }
+        className={ css('ms-Link', className, {
+          'is-disabled' : disabled
+        }) }
         onClick={ this._onClick }>
         { children }
       </a>
@@ -35,13 +31,16 @@ export class Link extends React.Component<ILinkProps, any> {
       <button
         role='button'
         { ...this.props as any }
-        className={ css('ms-Link', className) }
+        className={ css('ms-Link', className, {
+          'is-disabled' : disabled
+        }) }
         onClick={ this._onClick } >
         { children }
       </button>
       ));
   }
 
+  @autobind
   private _onClick(ev: React.MouseEvent) {
     let { popupWindowProps, onClick } = this.props;
 

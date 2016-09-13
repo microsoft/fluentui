@@ -36,6 +36,20 @@ export interface INavProps {
    * (Optional) The key of the nav item initially selected.
    */
   initialSelectedKey?: string;
+  /**
+   * (Optional) The nav container aria label.
+   */
+  ariaLabel?: string;
+
+  /**
+   * (Optional) The alt text for the expanded state
+   **/
+  expandedStateText?: string;
+
+  /**
+   * (Optional) The alt text for the collapsed state text
+   **/
+  collapsedStateText?: string;
 }
 
 export interface INavLinkGroup {
@@ -72,7 +86,17 @@ export interface INavLink {
   links?: INavLink[];
 
   /**
-   * Classname to apply to the icon.
+   * Function callback invoked when a link in the navigation is clicked
+   */
+  onClick?: (ev?: React.MouseEvent) => void;
+
+  /**
+   * button icon name if applied
+   */
+  icon?: string;
+
+  /**
+   * Classname to apply to the icon link.
    */
   iconClassName?: string;
 
@@ -115,6 +139,12 @@ export interface INavLink {
    * Link <a> target.
    */
   target?: string;
+
+  /**
+   * Point to the parent node key.  This is used in EditNav when move node from sublink to
+   *   parent lin vs vers.
+   */
+  parentId?: string;
 
   /**
    * Any additional properties to apply to the rendered links.

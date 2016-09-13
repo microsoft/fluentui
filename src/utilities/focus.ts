@@ -131,13 +131,22 @@ export function getNextElement(
 }
 
 export function isElementVisible(element: HTMLElement): boolean {
-  return (
-    !!element &&
-    (element.offsetHeight !== 0 ||
-      element.offsetParent !== null ||
-      (element as any).isVisible === true || // used as a workaround for testing.
-      (element.getAttribute && element.getAttribute(IS_VISIBLE_ATTRIBUTE) === 'true'))
-  );
+  // If the element is not valid, return false.
+  if (!element || !element.getAttribute) {
+    return false;
+  }
+
+  const visibilityAttribute = element.getAttribute(IS_VISIBLE_ATTRIBUTE);
+
+  // If the element is explicitly marked with the visibility attribute, return that value as boolean.
+  if (visibilityAttribute !== null && visibilityAttribute !== undefined) {
+    return visibilityAttribute === 'true';
+  }
+
+  // Fallback to other methods of determining actual visibility.
+  return (element.offsetHeight !== 0 ||
+    element.offsetParent !== null ||
+    (element as any).isVisible === true); // used as a workaround for testing.
 }
 
 export function isElementTabbable(element: HTMLElement): boolean {
@@ -145,7 +154,8 @@ export function isElementTabbable(element: HTMLElement): boolean {
     !!element &&
     (element.tagName === 'A' ||
       (element.tagName === 'BUTTON' && !(element as HTMLButtonElement).disabled) ||
-      (element.tagName === 'INPUT' && !(element as HTMLButtonElement).disabled) ||
+      (element.tagName === 'INPUT' && !(element as HTMLInputElement).disabled) ||
+      (element.tagName === 'TEXTAREA' && !(element as HTMLTextAreaElement).disabled) ||
       (element.getAttribute && element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true')));
 }
 

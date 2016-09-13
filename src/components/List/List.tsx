@@ -1,10 +1,13 @@
 import * as React from 'react';
 import { BaseComponent } from '../../common/BaseComponent';
 import { IListProps, IPage } from './List.Props';
-import { css } from '../../utilities/css';
-import { assign } from '../../utilities/object';
-import { findIndex } from '../../utilities/array';
-import { findScrollableParent } from '../../utilities/scrollUtilities';
+import {
+  assign,
+  css,
+  findIndex,
+  getParent
+} from '../../Utilities';
+import { findScrollableParent } from '../../utilities/scroll';
 
 const RESIZE_DELAY = 16;
 const MIN_SCROLL_UPDATE_DELAY = 100;
@@ -70,15 +73,16 @@ export class List extends BaseComponent<IListProps, IListState> {
 
   private _estimatedPageHeight: number;
   private _totalEstimates: number;
-  private _cachedPageHeights: { [key: string]: {
-    height: number,
-    measureVersion: number
-  } };
+  private _cachedPageHeights: {
+    [key: string]: {
+      height: number,
+      measureVersion: number
+    }
+  };
   private _focusedIndex: number;
   private _scrollElement: HTMLElement;
   private _scrollingToIndex: number;
   private _hasCompletedFirstRender: boolean;
-  private isFirstRenderRectUpdate: boolean;
 
   // surface rect relative to window
   private _surfaceRect: ClientRect;
@@ -108,7 +112,6 @@ export class List extends BaseComponent<IListProps, IListState> {
     this._totalEstimates = 0;
     this._requiredWindowsAhead = 0;
     this._requiredWindowsBehind = 0;
-    this.isFirstRenderRectUpdate = true;
 
     // Track the measure version for everything.
     this._measureVersion = 0;
@@ -128,12 +131,12 @@ export class List extends BaseComponent<IListProps, IListState> {
         leading: false
       });
 
-      this._onAsyncResize = this._async.debounce(
-        this._onAsyncResize,
-        RESIZE_DELAY,
-        {
-          leading: false
-        });
+    this._onAsyncResize = this._async.debounce(
+      this._onAsyncResize,
+      RESIZE_DELAY,
+      {
+        leading: false
+      });
 
     this._cachedPageHeights = {};
     this._estimatedPageHeight = 0;
@@ -277,7 +280,7 @@ export class List extends BaseComponent<IListProps, IListState> {
         break;
       }
 
-      target = target.parentElement;
+      target = getParent(target);
     }
   }
 
@@ -300,7 +303,7 @@ export class List extends BaseComponent<IListProps, IListState> {
     if (!this._materializedRect || !_isContainedWithin(this._requiredRect, this._materializedRect)) {
       this._updatePages();
     } else {
-     // console.log('requiredRect contained in materialized', this._requiredRect, this._materializedRect);
+      // console.log('requiredRect contained in materialized', this._requiredRect, this._materializedRect);
     }
   }
 
@@ -495,7 +498,7 @@ export class List extends BaseComponent<IListProps, IListState> {
       let isPageFocused = focusedIndex >= itemIndex && focusedIndex < (itemIndex + itemsPerPage);
       let isFirstPage = itemIndex === startIndex;
 
-     // console.log('building page', itemIndex, 'pageTop: ' + pageTop, 'inAllowed: ' + isPageInAllowedRange, 'inRequired: ' + isPageInRequiredRange);
+      // console.log('building page', itemIndex, 'pageTop: ' + pageTop, 'inAllowed: ' + isPageInAllowedRange, 'inRequired: ' + isPageInRequiredRange);
 
       // Only render whats visible, focused, or first page.
       if (isPageVisible || isPageFocused || isFirstPage) {
@@ -611,33 +614,26 @@ export class List extends BaseComponent<IListProps, IListState> {
       !pages ||
       !this._surfaceRect ||
       (pages.length > 0 && pages[0].items && pages[0].items.length < renderCount)) {
-       surfaceRect = this._surfaceRect = _measureSurfaceRect(this.refs.surface);
+      surfaceRect = this._surfaceRect = _measureSurfaceRect(this.refs.surface);
     }
 
     // If the surface is above the container top or below the container bottom, or if this is not the first
     // render return empty rect.
     // The first time the list gets rendered we need to calculate the rectangle. The width of the list is
     // used to calculate the width of the list items.
-    if ( (surfaceRect.bottom < 0 ||
-      surfaceRect.top > window.innerHeight) && !this.isFirstRenderRectUpdate) {
-      this._requiredRect = EMPTY_RECT;
-      this._allowedRect = EMPTY_RECT;
-    } else {
-      this.isFirstRenderRectUpdate = false;
-      const visibleTop = Math.max(0, -surfaceRect.top);
-      const visibleRect = {
-        top: visibleTop,
-        left: surfaceRect.left,
-        bottom: visibleTop + window.innerHeight,
-        right: surfaceRect.right,
-        width: surfaceRect.width,
-        height: window.innerHeight
-      };
+    const visibleTop = Math.max(0, -surfaceRect.top);
+    const visibleRect = {
+      top: visibleTop,
+      left: surfaceRect.left,
+      bottom: visibleTop + window.innerHeight,
+      right: surfaceRect.right,
+      width: surfaceRect.width,
+      height: window.innerHeight
+    };
 
-      // The required/allowed rects are adjusted versions of the visible rect.
-      this._requiredRect = _expandRect(visibleRect, this._requiredWindowsBehind, this._requiredWindowsAhead);
-      this._allowedRect = _expandRect(visibleRect, renderedWindowsBehind, renderedWindowsAhead);
-    }
+    // The required/allowed rects are adjusted versions of the visible rect.
+    this._requiredRect = _expandRect(visibleRect, this._requiredWindowsBehind, this._requiredWindowsAhead);
+    this._allowedRect = _expandRect(visibleRect, renderedWindowsBehind, renderedWindowsAhead);
   }
 }
 

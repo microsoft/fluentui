@@ -3,28 +3,46 @@ import {
   Link
 } from '../../../index';
 import {
-  ExampleCard
+  ExampleCard,
+  ComponentPage
 } from '../../components/index';
 
 import { OrgChartBasicExample } from './examples/OrgChart.Basic.Example';
+import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const OrgChartBasicExampleCode = require('./examples/OrgChart.Basic.Example.tsx');
 
-export class OrgChartPage extends React.Component<any, any> {
-  public render() {
-    return (
-      <div>
-        <h1 className='ms-font-xxl'>OrgChart</h1>
-        <div>
-          <Link target='_blank' href='http://dev.office.com/fabric/components/OrgChart'>OrgCharts</Link>
-          <span> are used to render an org chart.</span>
-        </div>
-        <h2 className='ms-font-xl'>Examples</h2>
-        <ExampleCard title='OrgChart' code={ OrgChartBasicExampleCode }>
-          <OrgChartBasicExample />
-        </ExampleCard>
-      </div>
-    );
+export class OrgChartPage extends React.Component<IComponentDemoPageProps, any> {
+  private _url: string;
+
+  constructor() {
+    super();
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'OrgChart');
   }
 
+  public render() {
+    return (
+      <ComponentPage
+        title='OrgChart'
+        componentName='OrgChartExample'
+        exampleCards={
+          [
+            <ExampleCard title='OrgChart' code={ OrgChartBasicExampleCode }>
+              <OrgChartBasicExample />
+            </ExampleCard>
+          ]
+        }
+        overview={
+          <div>
+            <Link target='_blank' href='http://dev.office.com/fabric/components/OrgChart'>OrgCharts</Link>
+            <span> are used to render an org chart.</span>
+          </div>
+        }
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
+      </ComponentPage>
+    );
+  }
 }

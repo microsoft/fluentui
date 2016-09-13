@@ -3,26 +3,46 @@ import {
   Link
 } from '../../../index';
 import {
-  ExampleCard
+  ExampleCard,
+  ComponentPage
 } from '../../components/index';
 
+import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/App/AppState';
 import { PersonaCardBasicExample } from './examples/PersonaCard.Basic.Example';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
+
 const PersonaCardBasicExampleCode = require('./examples/PersonaCard.Basic.Example.tsx');
 
-export class PersonaCardPage extends React.Component<any, any> {
+export class PersonaCardPage extends React.Component<IComponentDemoPageProps, any> {
+  private _url: string;
+
+  constructor() {
+    super();
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'PersonaCard');
+  }
+
   public render() {
     return (
-      <div>
-        <h1 className='ms-font-xxl'>PersonaCard</h1>
-        <div>
-          <Link target='_blank' href='http://dev.office.com/fabric/components/PersonaCard'>PersonaCards</Link>
-          <span> render a details for an individual.</span>
-        </div>
-        <h2 className='ms-font-xl'>Examples</h2>
-        <ExampleCard title='PersonaCard' code={ PersonaCardBasicExampleCode }>
-          <PersonaCardBasicExample />
-        </ExampleCard>
-      </div>
+       <ComponentPage
+        title='PersonaCard'
+        componentName='PersonaCardExample'
+        exampleCards={
+          [
+            <ExampleCard title='PersonaCard' code={ PersonaCardBasicExampleCode }>
+              <PersonaCardBasicExample />
+            </ExampleCard>
+          ]
+        }
+        overview={
+          <div>
+            <Link target='_blank' href='http://dev.office.com/fabric/components/PersonaCard'>PersonaCards</Link>
+            <span> render a details for an individual.</span>
+          </div>
+        }
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
+      </ComponentPage>
     );
   }
 

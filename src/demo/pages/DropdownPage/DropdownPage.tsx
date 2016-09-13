@@ -4,31 +4,51 @@ import {
 } from '../../../index';
 import {
   ExampleCard,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentPage
 } from '../../components/index';
 
 import { DropdownBasicExample } from './examples/Dropdown.Basic.Example';
+import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const DropdownBasicExampleCode = require('./examples/Dropdown.Basic.Example.tsx');
 
-export class DropdownPage extends React.Component<any, any> {
+export class DropdownPage extends React.Component<IComponentDemoPageProps, any> {
+  private _url: string;
+
+  constructor() {
+    super();
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'Dropdown');
+  }
+
   public render() {
     return (
-      <div className='DropdownExample'>
-        <h1 className='ms-font-xxl'>Dropdown</h1>
-        <div>
-          <Link target='_blank' href='http://dev.office.com/fabric/components/dropdown'>Dropdowns</Link>
-          <span> provide a way for users to choose an option.</span>
-        </div>
-
-        <h2 className='ms-font-xl'>Examples</h2>
-
-        <ExampleCard title='Dropdown' code={ DropdownBasicExampleCode }>
-          <DropdownBasicExample />
-        </ExampleCard>
-
-        <PropertiesTableSet componentName='Dropdown' />
-      </div>
+      <ComponentPage
+        title='Dropdown'
+        componentName='DropdownExample'
+        exampleCards={
+          [
+            <ExampleCard title='Dropdown' code={ DropdownBasicExampleCode }>
+              <DropdownBasicExample />
+            </ExampleCard>
+          ]
+        }
+        propertiesTables={
+          [
+            <PropertiesTableSet componentName='Dropdown' />
+          ]
+        }
+        overview={
+          <div>
+            <Link target='_blank' href='http://dev.office.com/fabric/components/dropdown'>Dropdowns</Link>
+            <span> provide a way for users to choose an option.</span>
+          </div>
+        }
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
+      </ComponentPage>
     );
   }
 }

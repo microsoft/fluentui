@@ -1,7 +1,11 @@
 import * as React from 'react';
-import { BaseComponent } from '../../common/BaseComponent';
+import {
+  BaseComponent,
+  KeyCodes,
+  autobind,
+  getParent
+ } from '../../Utilities';
 import { SelectionLayout } from './SelectionLayout';
-import { KeyCodes } from '../KeyCodes';
 import {
   ISelection,
   ISelectionLayout,
@@ -32,7 +36,7 @@ const SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME = 'data-selection-all-toggle';
 export interface ISelectionZoneProps extends React.Props<SelectionZone> {
   selection: ISelection;
   layout?: ISelectionLayout;
-  selectionMode: SelectionMode;
+  selectionMode?: SelectionMode;
   isSelectedOnFocus?: boolean;
   onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
 }
@@ -41,7 +45,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   public static defaultProps = {
     layout: new SelectionLayout(SelectionDirection.vertical),
     isMultiSelectEnabled: true,
-    isSelectedOnFocus: true
+    isSelectedOnFocus: true,
+    selectionMode: SelectionMode.multiple
   };
 
   public refs: {
@@ -53,21 +58,6 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _isShiftPressed: boolean;
   private _isMetaPressed: boolean;
   private _shouldIgnoreFocus: boolean;
-
-  constructor(props: ISelectionZoneProps) {
-    super(props);
-
-    // Specifically for the click methods, we will want to use React eventing to allow
-    // React and non React events to stop propagation and avoid the default SelectionZone
-    // behaviors (like executing onInvoked.)
-    this._onFocus = this._onFocus.bind(this);
-    this._onKeyDown = this._onKeyDown.bind(this);
-    this._onClick = this._onClick.bind(this);
-    this._onMouseDown = this._onMouseDown.bind(this);
-    this._onDoubleClick = this._onDoubleClick.bind(this);
-    this._updateModifiers = this._updateModifiers.bind(this);
-    this.ignoreNextFocus = this.ignoreNextFocus.bind(this);
-  }
 
   public componentDidMount() {
     // Track the latest modifier keys globally.
@@ -97,6 +87,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    * been called on an element, so we need a flag to store the idea that we will bypass the "next"
    * focus event that occurs. This method does that.
    */
+  @autobind
   public ignoreNextFocus() {
     this._shouldIgnoreFocus = true;
   }
@@ -106,6 +97,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    * as long as the focus did not originate from a mouse down/touch event. For those cases, we handle them
    * specially.
    */
+  @autobind
   private _onFocus(ev: React.FocusEvent) {
     let target = ev.target as HTMLElement;
     let { selection, selectionMode } = this.props;
@@ -131,6 +123,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
   }
 
+  @autobind
   private _onMouseDown(ev: React.MouseEvent) {
     this._updateModifiers(ev);
 
@@ -151,10 +144,11 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         }
       }
 
-      target = target.parentElement;
+      target = getParent(target);
     }
   }
 
+  @autobind
   private _onClick(ev: React.MouseEvent) {
     this._updateModifiers(ev);
 
@@ -184,7 +178,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         }
       }
 
-      target = target.parentElement;
+      target = getParent(target);
     }
   }
 
@@ -192,6 +186,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    * In multi selection, if you double click within an item's root (but not within the invoke element or input elements),
    * we should execute the invoke handler.
    */
+  @autobind
   private _onDoubleClick(ev: React.MouseEvent) {
     let target = ev.target as HTMLElement;
     let { selectionMode, onItemInvoked } = this.props;
@@ -210,13 +205,14 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
           break;
         }
 
-        target = target.parentElement;
+        target = getParent(target);
       }
 
-      target = target.parentElement;
+      target = getParent(target);
     }
   }
 
+  @autobind
   private _onKeyDown(ev: React.KeyboardEvent) {
     this._updateModifiers(ev);
 
@@ -266,7 +262,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
           break;
         }
 
-        target = target.parentElement;
+        target = getParent(target);
       }
     }
   }
@@ -297,7 +293,9 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
 
     ev.stopPropagation();
-    ev.preventDefault();
+
+    // NOTE: ev.preventDefault is not called for toggle clicks, because this will kill the browser behavior
+    // for checkboxes if you use a checkbox for the toggle.
   }
 
   private _onInvokeClick(ev: React.MouseEvent | React.KeyboardEvent, index: number) {
@@ -371,7 +369,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         break;
       }
 
-      target = target.parentElement;
+      target = getParent(target);
     }
 
     if (target === this.refs.root) {
@@ -390,7 +388,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 
     while (!isToggle && element !== this.refs.root) {
       isToggle = element.getAttribute(attributeName) === 'true';
-      element = element.parentElement;
+      element = getParent(element);
     }
 
     return isToggle;

@@ -4,29 +4,51 @@ import {
 } from '../../../index';
 import {
   ExampleCard,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentPage
 } from '../../components/index';
 
 import { ToggleBasicExample } from './examples/Toggle.Basic.Example';
+import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
+
 const ToggleBasicExampleCode = require('./examples/Toggle.Basic.Example.tsx');
 
-export class TogglePage extends React.Component<any, any> {
+export class TogglePage extends React.Component<IComponentDemoPageProps, any> {
+  private _url: string;
+
+  constructor() {
+    super();
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'Toggle');
+  }
+
   public render() {
     return (
-      <div>
-        <h1 className='ms-font-xxl'>Toggle</h1>
-        <div>
-          <Link target='_blank' href='http://dev.office.com/fabric/components/Toggle'>Toggles</Link>
-          <span> allow the user to turn an option on/off.</span>
-        </div>
-
-        <h2 className='ms-font-xl'>Examples</h2>
-
-        <ExampleCard title='Toggle' code={ ToggleBasicExampleCode }>
-          <ToggleBasicExample />
-        </ExampleCard>
-        <PropertiesTableSet componentName='Toggle' />
-      </div>
+      <ComponentPage
+        title='Toggle'
+        componentName='ToggleExample'
+        exampleCards={
+          [
+            <ExampleCard title='Toggle' code={ ToggleBasicExampleCode }>
+              <ToggleBasicExample />
+            </ExampleCard>
+          ]
+        }
+        propertiesTables={
+          [
+            <PropertiesTableSet componentName='Toggle' />
+          ]
+        }
+        overview={
+          <div>
+            <Link target='_blank' href='http://dev.office.com/fabric/components/Toggle'>Toggles</Link>
+            <span> allow the user to turn an option on/off.</span>
+          </div>
+        }
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
+      </ComponentPage>
     );
   }
 }

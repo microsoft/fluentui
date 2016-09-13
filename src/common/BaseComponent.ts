@@ -3,11 +3,6 @@ import { Async } from '../utilities/Async/Async';
 import { EventGroup } from '../utilities/eventGroup/EventGroup';
 import { IDisposable } from './IDisposable';
 
-// Ensure that the HTML element has a dir specified. This helps to ensure RTL/LTR macros in css for all components will work.
-if (document && document.documentElement && !document.documentElement.getAttribute('dir')) {
-  document.documentElement.setAttribute('dir', 'ltr');
-}
-
 export class BaseComponent<P, S> extends React.Component<P, S> {
   /**
    * External consumers should override BaseComponent.onError to hook into error messages that occur from
@@ -18,6 +13,7 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
   private __async: Async;
   private __events: EventGroup;
   private __disposables: IDisposable[];
+  private __resolves: { [ name: string ]: (ref: any) => any };
 
   /**
    * BaseComponent constructor
@@ -102,6 +98,29 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
     }
 
     return this.__events;
+  }
+
+  /**
+   * Helper to return a memoized ref resolver function.
+   * @params refName Name of the member to assign the ref to.
+   *
+   * @examples
+   * class Foo extends BaseComponent<...> {
+   *   private _root: HTMLElement;
+   *
+   *   public render() {
+   *     return <div ref={ this._resolveRef('_root') } />
+   *   }
+   * }
+   */
+  protected _resolveRef(refName: string) {
+    if (!this.__resolves) {
+      this.__resolves = {};
+    }
+    if (!this.__resolves[refName]) {
+      this.__resolves[refName] = (ref) => this[refName] = ref;
+    }
+    return this.__resolves[refName];
   }
 }
 

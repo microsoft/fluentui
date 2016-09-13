@@ -2,8 +2,13 @@ import * as React from 'react';
 import { ICalloutProps } from './Callout.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Layer } from '../../Layer';
-import { css } from '../../utilities/css';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
+import {
+  autobind,
+  css,
+  EventGroup,
+  getRTL,
+  elementContains
+} from '../../Utilities';
 import { getRelativePositions, IPositionInfo } from '../../utilities/positioning';
 import { focusFirstChild } from '../../utilities/focus';
 import { Popup } from '../Popup/index';
@@ -25,7 +30,7 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     beakStyle: 'ms-Callout-beak',
     beakWidth: 28,
     gapSpace: 16,
-    directionalHint: DirectionalHint.rightCenter
+    directionalHint: getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge
   };
 
   private _hostElement: HTMLDivElement;
@@ -42,8 +47,6 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     };
 
     this._events = new EventGroup(this);
-
-    this._onLayerDidMount = this._onLayerDidMount.bind(this);
   }
 
   public componentDidUpdate() {
@@ -101,12 +104,13 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
 
     if (ev.target !== window &&
       this._hostElement &&
-      !this._hostElement.contains(target) &&
-      (!targetElement || !targetElement.contains(target))) {
+      !elementContains(this._hostElement, target) &&
+      (!targetElement || !elementContains(targetElement, target))) {
       this.dismiss();
     }
   }
 
+  @autobind
   private _onLayerDidMount() {
     // This is added so the callout will dismiss when the window is scrolled
     // but not when something inside the callout is scrolled.

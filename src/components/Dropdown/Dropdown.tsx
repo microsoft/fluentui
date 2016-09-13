@@ -1,10 +1,14 @@
 import * as React from 'react';
 import { IDropdownProps, IDropdownOption } from './Dropdown.Props';
-import { css } from '../../utilities/css';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
-import { findIndex } from '../../utilities/array';
-import { KeyCodes } from '../../utilities/KeyCodes';
-import { getId } from '../../utilities/object';
+import {
+  BaseComponent,
+  KeyCodes,
+  autobind,
+  css,
+  elementContains,
+  findIndex,
+  getId
+} from '../../Utilities';
 import './Dropdown.scss';
 
 export interface IDropdownState {
@@ -13,11 +17,10 @@ export interface IDropdownState {
   isDisabled: boolean;
 }
 
-export class Dropdown extends React.Component<IDropdownProps, any> {
+export class Dropdown extends BaseComponent<IDropdownProps, any> {
 
   public static defaultProps = {
-    options: [],
-    isDisabled: false
+    options: []
   };
 
   private static Option: string = 'option';
@@ -27,30 +30,26 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
     root: HTMLElement
   };
 
-  private _events: EventGroup;
   private _optionList: HTMLElement;
   private _dropDown: HTMLDivElement;
 
   constructor(props?: IDropdownProps) {
-    super(props);
-
-    this._events = new EventGroup(this);
+    super(props, {
+      'isDisabled': 'disabled'
+    });
 
     this.state = {
       id: getId('Dropdown'),
       isOpen: false,
       selectedIndex: this._getSelectedIndex(props.options, props.selectedKey),
-      isDisabled: this.props.isDisabled
+      isDisabled: this.props.isDisabled || this.props.disabled
     };
-
-    this._onDropdownKeyDown = this._onDropdownKeyDown.bind(this);
-    this._onDropdownClick = this._onDropdownClick.bind(this);
-    this._onFocusChange = this._onFocusChange.bind(this);
   }
 
   public componentWillReceiveProps(newProps: IDropdownProps) {
     this.setState({
-      selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey)
+      selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey),
+      isDisabled: newProps.isDisabled
     });
   }
 
@@ -62,10 +61,6 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
         this._events.off();
       }
     }
-  }
-
-  public componentWillUnmount() {
-    this._events.dispose();
   }
 
   public componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState) {
@@ -100,8 +95,8 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
           aria-activedescendant={ selectedIndex >= 0 ? (id + '-list' + selectedIndex) : (id + '-list') }
           aria-controls={ id + '-list' }
           >
-          <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown'></i>
           <span className='ms-Dropdown-title'>{ selectedOption ? selectedOption.text : '' }</span>
+          <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown'></i>
           <ul ref={ (c: HTMLElement) => this._optionList = c }
             id={ id + '-list' }
             className='ms-Dropdown-items'
@@ -155,6 +150,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
     return findIndex(options, (option => (option.isSelected || selectedKey && option.key === selectedKey)));
   }
 
+  @autobind
   private _onDropdownKeyDown(ev: React.KeyboardEvent) {
     switch (ev.which) {
       case KeyCodes.enter:
@@ -193,6 +189,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
     ev.preventDefault();
   }
 
+  @autobind
   private _onDropdownClick() {
     let { isDisabled, isOpen } = this.state;
 
@@ -203,11 +200,10 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
     }
   }
 
+  @autobind
   private _onFocusChange(ev: React.FocusEvent) {
-    if (this.state.isOpen && !this.refs.root.contains(ev.target as HTMLElement)) {
-      let context: Dropdown = this;
-
-      context.setState({
+    if (this.state.isOpen && !elementContains(this.refs.root, ev.target as HTMLElement)) {
+      this.setState({
         isOpen: false
       });
     }

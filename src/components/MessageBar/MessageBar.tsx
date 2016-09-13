@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Button, ButtonType } from '../../Button';
 import './MessageBar.scss';
 import { css } from '../../utilities/css';
 import { IMessageBarProps, MessageBarType } from './MessageBar.Props';
@@ -17,12 +18,13 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
   };
 
   private ICON_MAP = {
-    [MessageBarType.info]:    'infoCircle',
-    [MessageBarType.warning]: 'infoCircle',
-    [MessageBarType.error]: 'xCircle',
-    [MessageBarType.remove]: 'circle',
-    [MessageBarType.severeWarning]: 'alert',
-    [MessageBarType.success]: 'checkboxCheck ms-Icon--circle'
+    [MessageBarType.info]:    'Info',
+    [MessageBarType.warning]: 'Info',
+    [MessageBarType.error]: 'ErrorBadge',
+    [MessageBarType.blocked]: 'Blocked',
+    [MessageBarType.remove]: 'Blocked', // TODO remove deprecated value at >= 1.0.0
+    [MessageBarType.severeWarning]: 'Warning',
+    [MessageBarType.success]: 'Completed'
   };
 
   constructor(props: IMessageBarProps) {
@@ -43,7 +45,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
     if (this.props.actions) {
       return this.props.isMultiline ?
         <div className='ms-MessageBar-actions'> { this.props.actions } </div> :
-        <div className='ms-MessageBar-actions-oneline'> { [this._getDismissDiv(), this.props.actions] } </div>;
+        <div className='ms-MessageBar-actionsOneline'> { [this._getDismissDiv(), this.props.actions] } </div>;
     }
     return null;
   }
@@ -52,7 +54,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
     return css(this.props.className, 'ms-MessageBar', {
       'ms-MessageBar': this.props.messageBarType === MessageBarType.info,
       'ms-MessageBar--error': this.props.messageBarType === MessageBarType.error,
-      'ms-MessageBar--remove': this.props.messageBarType === MessageBarType.remove,
+      'ms-MessageBar--blocked': (this.props.messageBarType === MessageBarType.blocked) || (this.props.messageBarType === MessageBarType.remove), // TODO remove deprecated value at >= 1.0.0
       'ms-MessageBar--severeWarning': this.props.messageBarType === MessageBarType.severeWarning,
       'ms-MessageBar--success' : this.props.messageBarType === MessageBarType.success,
       'ms-MessageBar--warning' : this.props.messageBarType === MessageBarType.warning
@@ -61,12 +63,15 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
 
   private _getDismissDiv(): JSX.Element {
     if (this.props.onDismiss != null) {
-      return <button
-          aria-label= { this.props.dismissButtonAriaLabel }
-          className='ms-MessageBar-dismissal ms-Button--icon'
-          onClick= { this.props.onDismiss }>
-          <i className='ms-Icon ms-Icon--x'></i>
-        </button>;
+      return <Button
+        disabled={ false }
+        className='ms-MessageBar-dismissal'
+        buttonType={ ButtonType.icon }
+        onClick={ this.props.onDismiss }
+        icon='Cancel'
+        rootProps={ { title: 'Close' } }
+        ariaLabel={ this.props.dismissButtonAriaLabel }
+      />;
     }
     return null;
   }
@@ -76,7 +81,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
   }
 
   private _getInnerTextClassName(): string {
-    return this.props.onDismiss ? 'ms-MessageBar-innerTextPadding' : 'ms-MessageBar-innerText';
+    return this.props.onDismiss || this.props.actions ? 'ms-MessageBar-innerTextPadding' : 'ms-MessageBar-innerText';
   }
 
   private _renderMultiLine(): React.ReactElement<React.HTMLProps<HTMLAreaElement>> {

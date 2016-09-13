@@ -280,7 +280,7 @@ $CommandBarHeight: 40px;
   line-height: $CommandBarHeight;
   padding: 0;
   color: $ms-color-neutralSecondary;
-  font-size: $ms-font-size-m;
+  font-size: $ms-icon-size-m;
 
   &:hover {
     color: $ms-color-neutralPrimary;
@@ -313,8 +313,7 @@ $CommandBarHeight: 40px;
 
 // Header text at the top of the panel.
 .ms-Panel-headerText {
-  font-family: $ms-font-family-light;
-  font-size: $ms-font-size-xl;
+  @include ms-font-xl;
   color: $ms-color-neutralPrimary;
   margin: 10px 0;
   padding: 4px 0;

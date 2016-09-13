@@ -4,28 +4,51 @@ import {
 } from '../../../index';
 import {
   ExampleCard,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentPage
 } from '../../components/index';
 
 import { OverlayBasicExample } from './examples/Overlay.Basic.Example';
+import { getPageRouteFromState } from '../../utilities/pageroute';
+import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const OverlayBasicExampleCode = require('./examples/Overlay.Basic.Example.tsx');
 
-export class OverlayPage extends React.Component<any, any> {
+export class OverlayPage extends React.Component<IComponentDemoPageProps, any> {
+  private _url: string;
+
+  constructor() {
+    super();
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'Overlay');
+  }
+
   public render() {
     return (
-      <div>
-        <h1 className='ms-font-xxl'>Overlay</h1>
-        <div>
-          <Link target='_blank' href='http://dev.office.com/fabric/components/Overlay'>Overlays</Link>
-          <span> are used to render a semi transparent overlaying div on top of content. This can be used in modal situations, such as Dialogs, which render on top of existing content.</span>
-        </div>
-        <h2 className='ms-font-xl'>Examples</h2>
-        <ExampleCard title='Overlay' code={ OverlayBasicExampleCode }>
-          <OverlayBasicExample />
-        </ExampleCard>
-        <PropertiesTableSet componentName='Overlay' />
-      </div>
+      <ComponentPage
+        title='Overlay'
+        componentName='OverlayExample'
+        exampleCards={
+          [
+            <ExampleCard title='Overlay' code={ OverlayBasicExampleCode }>
+              <OverlayBasicExample />
+            </ExampleCard>
+          ]
+        }
+        propertiesTables={
+          [
+            <PropertiesTableSet componentName='Overlay' />
+          ]
+        }
+        overview={
+          <div>
+            <Link target='_blank' href='http://dev.office.com/fabric/components/Overlay'>Overlays</Link>
+            <span> are used to render a semi transparent overlaying div on top of content. This can be used in modal situations, such as Dialogs, which render on top of existing content.</span>
+          </div>
+        }
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
+      </ComponentPage>
     );
   }
 

@@ -9,6 +9,7 @@ import { GroupSpacer } from './GroupSpacer';
 import { Spinner } from '../../Spinner';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { css } from '../../utilities/css';
+import { autobind } from '../../utilities/autobind';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import './GroupHeader.scss';
 
@@ -29,10 +30,6 @@ export interface IGroupHeaderState {
 export class GroupHeader extends React.Component<IGroupHeader, IGroupHeaderState> {
   constructor(props: IGroupHeader) {
     super(props);
-
-    this._onToggleCollapse = this._onToggleCollapse.bind(this);
-    this._onToggleSelectGroup = this._onToggleSelectGroup.bind(this);
-    this._onHeaderClick = this._onHeaderClick.bind(this);
 
     this.state = {
       isCollapsed: this.props.group && this.props.group.isCollapsed,
@@ -78,6 +75,7 @@ export class GroupHeader extends React.Component<IGroupHeader, IGroupHeaderState
         }) }
         style={ viewport ? { minWidth: viewport.width } : {} }
         onClick={ this._onHeaderClick }
+        aria-label={ group.ariaLabel || group.name }
         data-is-focusable={ true } >
 
         <FocusZone direction={ FocusZoneDirection.horizontal }>
@@ -94,9 +92,9 @@ export class GroupHeader extends React.Component<IGroupHeader, IGroupHeaderState
 
           { GroupSpacer({ count: groupLevel }) }
 
-          <div className='ms-GroupHeader-dropIcon'><i className='ms-Icon ms-Icon--tag'></i></div>
+          <div className='ms-GroupHeader-dropIcon'><i className='ms-Icon ms-Icon--Tag'></i></div>
           <button className='ms-GroupHeader-expand' onClick={ this._onToggleCollapse }>
-            <i className={ css('ms-Icon ms-Icon--chevronDown', {
+            <i className={ css('ms-Icon ms-Icon--ChevronDown', {
               'is-collapsed': isCollapsed
             })} />
           </button>
@@ -115,6 +113,7 @@ export class GroupHeader extends React.Component<IGroupHeader, IGroupHeaderState
     );
   }
 
+  @autobind
   private _onToggleCollapse(ev: React.MouseEvent) {
     let { group, headerProps } = this.props;
     let { isCollapsed } = this.state;
@@ -136,6 +135,7 @@ export class GroupHeader extends React.Component<IGroupHeader, IGroupHeaderState
     ev.preventDefault();
   }
 
+  @autobind
   private _onToggleSelectGroup(ev: React.MouseEvent) {
     let { group, headerProps } = this.props;
     let onToggleSelectGroup = headerProps && headerProps.onToggleSelectGroup;
@@ -148,6 +148,7 @@ export class GroupHeader extends React.Component<IGroupHeader, IGroupHeaderState
     ev.stopPropagation();
   }
 
+  @autobind
   private _onHeaderClick() {
     let { group, headerProps } = this.props;
 

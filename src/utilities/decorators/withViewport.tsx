@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { BaseComponent } from '../../common/BaseComponent';
+import { BaseDecorator } from './BaseDecorator';
+import { findScrollableParent } from '../../utilities/scroll';
 
 export interface IViewport {
   width: number;
@@ -12,13 +13,12 @@ export interface IWithViewportState {
 
 const RESIZE_DELAY = 500;
 
-export function withViewport<P, S>(ComposedComponent: any): any {
+export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComponent: (new (props: P, ...args: any[]) => React.Component<P, S>)): any {
 
-  return class WithViewportComponent extends BaseComponent<{}, IWithViewportState> {
+  return class WithViewportComponent extends BaseDecorator<P, IWithViewportState> {
 
     public refs: {
       [key: string]: React.ReactInstance;
-      component: any;
     };
 
     constructor() {
@@ -55,7 +55,7 @@ export function withViewport<P, S>(ComposedComponent: any): any {
       return (
         <div className='ms-Viewport' ref='root' style={ { minWidth: 1, minHeight: 1 } }>
           { isViewportVisible && (
-            <ComposedComponent ref='component' viewport={ viewport } { ...this.props } />
+            <ComposedComponent ref={ this._updateComposedComponentRef } viewport={ viewport } { ...this.props } />
           ) }
         </div>
       );
@@ -72,14 +72,15 @@ export function withViewport<P, S>(ComposedComponent: any): any {
     private _updateViewport(withForceUpdate?: boolean) {
       let { viewport } = this.state;
       let viewportElement = (this.refs as any).root;
-      let scrollElement = this._findScrollableElement(viewportElement);
+      let scrollElement = findScrollableParent(viewportElement);
       let clientRect = viewportElement.getBoundingClientRect();
       let scrollRect = scrollElement.getBoundingClientRect();
       let updateComponent = () => {
-          if (withForceUpdate && this.refs.component) {
-            this.refs.component.forceUpdate();
-          }
+        if (withForceUpdate && this._composedComponentInstance) {
+          this._composedComponentInstance.forceUpdate();
+        }
       };
+
       let isSizeChanged = (
         clientRect.width !== viewport.width ||
         scrollRect.height !== viewport.height);
@@ -95,24 +96,5 @@ export function withViewport<P, S>(ComposedComponent: any): any {
         updateComponent();
       }
     }
-
-    private _findScrollableElement(rootElement: HTMLElement) {
-      let computedOverflow = getComputedStyle(rootElement)['overflow-y'];
-
-      while (
-        (rootElement !== document.body) &&
-        (computedOverflow !== 'auto') &&
-        (computedOverflow !== 'scroll')
-      ) {
-        if (rootElement.parentElement === null) {
-          break;
-        }
-        rootElement = rootElement.parentElement;
-        computedOverflow = getComputedStyle(rootElement)['overflow-y'];
-      }
-
-      return rootElement;
-    }
   };
-
 }

@@ -4,11 +4,17 @@ import {
   IFocusZone,
   IFocusZoneProps
 } from './FocusZone.Props';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
-import { KeyCodes } from '../../utilities/KeyCodes';
-import { getRTL } from '../../utilities/rtl';
-import { getId } from '../../utilities/object';
-import { css } from '../../utilities/css';
+import {
+  BaseComponent,
+  EventGroup,
+  KeyCodes,
+  autobind,
+  css,
+  elementContains,
+  getParent,
+  getId,
+  getRTL
+} from '../../Utilities';
 import {
   getNextElement,
   getPreviousElement,
@@ -30,7 +36,7 @@ interface IPoint {
   top: number;
 }
 
-export class FocusZone extends React.Component<IFocusZoneProps, {}> implements IFocusZone {
+export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFocusZone {
 
   public static defaultProps: IFocusZoneProps = {
     isCircularNavigation: false,
@@ -44,7 +50,6 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
 
   private _id: string;
   private _activeElement: HTMLElement;
-  private _events: EventGroup;
   private _focusAlignment: IPoint;
   private _isInnerZone: boolean;
 
@@ -58,33 +63,25 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
       left: 0,
       top: 0
     };
-
-    this._events = new EventGroup(this);
-
-    this._onKeyDown = this._onKeyDown.bind(this);
-    this._onFocus = this._onFocus.bind(this);
-    this._onMouseDown = this._onMouseDown.bind(this);
   }
 
   public componentDidMount() {
     const windowElement = this.refs.root.ownerDocument.defaultView;
 
-    let parentElement = this.refs.root.parentElement;
+    let parentElement = getParent(this.refs.root);
 
     while (parentElement && parentElement !== document.body) {
       if (isElementFocusZone(parentElement)) {
         this._isInnerZone = true;
         break;
       }
-      parentElement = parentElement.parentElement;
+      parentElement = getParent(parentElement);
     }
 
     this._events.on(windowElement, 'keydown', this._onKeyDownCapture, true);
   }
 
   public componentWillUnmount() {
-    this._events.dispose();
-
     delete _allInstances[this._id];
   }
 
@@ -100,7 +97,8 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
         aria-labelledby={ ariaLabelledBy }
         onMouseDownCapture={ this._onMouseDown }
         onKeyDown={ this._onKeyDown }
-        onFocus={ this._onFocus } >
+        onFocus={ this._onFocus }
+        >
         { this.props.children }
       </div>
     );
@@ -111,7 +109,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
   public focus(): boolean {
-    if (this._activeElement && this.refs.root.contains(this._activeElement)) {
+    if (this._activeElement && elementContains(this.refs.root, this._activeElement)) {
       this._activeElement.focus();
       return true;
     } else {
@@ -157,6 +155,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     return false;
   }
 
+  @autobind
   private _onFocus(ev: React.FocusEvent) {
     let { onActiveElementChanged } = this.props;
 
@@ -171,7 +170,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
           this._activeElement = parentElement;
           break;
         }
-        parentElement = parentElement.parentElement;
+        parentElement = getParent(parentElement);
       }
     }
     if (onActiveElementChanged) {
@@ -182,12 +181,13 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
   /**
    * Handle global tab presses so that we can patch tabindexes on the fly.
    */
-  private _onKeyDownCapture(ev: React.KeyboardEvent) {
+  private _onKeyDownCapture(ev: KeyboardEvent) {
     if (ev.which === KeyCodes.tab) {
       this._updateTabIndexes();
     }
   }
 
+  @autobind
   private _onMouseDown(ev: React.MouseEvent) {
     const { disabled } = this.props;
 
@@ -200,7 +200,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
 
     while (target && target !== this.refs.root) {
       path.push(target);
-      target = target.parentElement;
+      target = getParent(target);
     }
 
     while (path.length) {
@@ -218,6 +218,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
   /**
    * Handle the keystrokes.
    */
+  @autobind
   private _onKeyDown(ev: React.KeyboardEvent) {
     const { direction, disabled, isInnerZoneKeystroke } = this.props;
 
@@ -309,7 +310,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
         return true;
       }
 
-      target = target.parentElement;
+      target = getParent(target);
     } while (target !== this.refs.root);
 
     return false;
@@ -408,7 +409,11 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
         (targetRect.top === targetTop)) {
 
         targetTop = targetRect.top;
-        distance = Math.abs((targetRect.left + (targetRect.width / 2)) - leftAlignment);
+        if (leftAlignment >= targetRect.left && leftAlignment <= (targetRect.left + targetRect.width)) {
+          distance = 0;
+        } else {
+          distance = Math.abs((targetRect.left + (targetRect.width / 2)) - leftAlignment);
+        }
       }
 
       return distance;
@@ -428,9 +433,13 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
       let distance = -1;
 
       if ((targetTop === -1 && targetRect.bottom <= activeRect.top) ||
-      (targetRect.top === targetTop)) {
+        (targetRect.top === targetTop)) {
         targetTop = targetRect.top;
-        distance = Math.abs((targetRect.left + (targetRect.width / 2)) - leftAlignment);
+        if (leftAlignment >= targetRect.left && leftAlignment <= (targetRect.left + targetRect.width)) {
+          distance = 0;
+        } else {
+          distance = Math.abs((targetRect.left + (targetRect.width / 2)) - leftAlignment);
+        }
       }
 
       return distance;
@@ -517,14 +526,14 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
   }
 
   private _isImmediateDescendantOfZone(element?: HTMLElement): boolean {
-    let parentElement = element.parentElement;
+    let parentElement = getParent(element);
 
     while (parentElement && parentElement !== this.refs.root && parentElement !== document.body) {
       if (isElementFocusZone(parentElement)) {
         return false;
       }
 
-      parentElement = parentElement.parentElement;
+      parentElement = getParent(parentElement);
     }
 
     return true;
@@ -533,7 +542,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
   private _updateTabIndexes(element?: HTMLElement) {
     if (!element) {
       element = this.refs.root;
-      if (this._activeElement && !element.contains(this._activeElement)) {
+      if (this._activeElement && !elementContains(element, this._activeElement)) {
         this._activeElement = null;
       }
     }
