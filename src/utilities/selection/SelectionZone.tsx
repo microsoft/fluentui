@@ -1,8 +1,11 @@
 import * as React from 'react';
-import { BaseComponent } from '../../common/BaseComponent';
-import { autobind } from '../../utilities/autobind';
+import {
+  BaseComponent,
+  KeyCodes,
+  autobind,
+  getParent
+ } from '../../Utilities';
 import { SelectionLayout } from './SelectionLayout';
-import { KeyCodes } from '../KeyCodes';
 import {
   ISelection,
   ISelectionLayout,
@@ -141,7 +144,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         }
       }
 
-      target = target.parentElement;
+      target = getParent(target);
     }
   }
 
@@ -175,7 +178,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         }
       }
 
-      target = target.parentElement;
+      target = getParent(target);
     }
   }
 
@@ -202,10 +205,10 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
           break;
         }
 
-        target = target.parentElement;
+        target = getParent(target);
       }
 
-      target = target.parentElement;
+      target = getParent(target);
     }
   }
 
@@ -259,7 +262,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
           break;
         }
 
-        target = target.parentElement;
+        target = getParent(target);
       }
     }
   }
@@ -366,7 +369,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         break;
       }
 
-      target = target.parentElement;
+      target = getParent(target);
     }
 
     if (target === this.refs.root) {
@@ -385,7 +388,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 
     while (!isToggle && element !== this.refs.root) {
       isToggle = element.getAttribute(attributeName) === 'true';
-      element = element.parentElement;
+      element = getParent(element);
     }
 
     return isToggle;

@@ -6,9 +6,13 @@ import {
 import { DatePickerDay } from './DatePickerDay';
 import { DatePickerMonth } from './DatePickerMonth';
 import { TextField } from '../../TextField';
-import { KeyCodes } from '../../utilities/KeyCodes';
-import { css } from '../../utilities/css';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
+import {
+  autobind,
+  BaseComponent,
+  KeyCodes,
+  css,
+  elementContains
+} from '../../Utilities';
 import './DatePicker.scss';
 
 export interface IDatePickerState {
@@ -20,7 +24,7 @@ export interface IDatePickerState {
   errorMessage?: string;
 }
 
-export class DatePicker extends React.Component<IDatePickerProps, IDatePickerState> {
+export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState> {
   public static defaultProps: IDatePickerProps = {
     allowTextInput: false,
     formatDate: (date: Date) => {
@@ -52,7 +56,6 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
     dayPicker: DatePickerDay;
   };
 
-  private _events: EventGroup;
   private _preventFocusOpeningPicker: boolean;
   private _focusOnSelectedDateOnUpdate: boolean;
 
@@ -68,21 +71,7 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
       errorMessage: ''
     };
 
-    this._events = new EventGroup(this);
     this._preventFocusOpeningPicker = false;
-
-    this._onSelectDate = this._onSelectDate.bind(this);
-    this._onNavigateDate = this._onNavigateDate.bind(this);
-    this._onGotoToday = this._onGotoToday.bind(this);
-    this._onGotoTodayKeyDown = this._onGotoTodayKeyDown.bind(this);
-    this._onDatePickerPopupKeyDown = this._onDatePickerPopupKeyDown.bind(this);
-    this._onTextFieldFocus = this._onTextFieldFocus.bind(this);
-    this._onTextFieldBlur = this._onTextFieldBlur.bind(this);
-    this._onTextFieldKeyDown = this._onTextFieldKeyDown.bind(this);
-    this._onTextFieldClick = this._onTextFieldClick.bind(this);
-    this._onTextFieldChanged = this._onTextFieldChanged.bind(this);
-    this._handleEscKey = this._handleEscKey.bind(this);
-    this._validateTextInput = this._validateTextInput.bind(this);
   }
 
   public componentWillReceiveProps(nextProps: IDatePickerProps) {
@@ -102,10 +91,6 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
     this._events.on(window, 'click', this._onClickCapture, true);
     this._events.on(window, 'focus', this._onClickCapture, true);
     this._events.on(window, 'touchstart', this._onClickCapture, true);
-  }
-
-  public componentWillUnmount() {
-    this._events.dispose();
   }
 
   public componentDidUpdate() {
@@ -138,7 +123,7 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
             iconClass={ css(
               'ms-Icon ms-Icon--Calendar',
               label ? 'ms-DatePicker-event--with-label' : 'ms-DatePicker-event--without-label'
-              ) }
+            ) }
             readOnly={ !allowTextInput }
             value={ formattedDate }
             ref='textField' />
@@ -172,7 +157,7 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
               </div>
             </div>
           </div>
-          ) }
+        ) }
       </div>
     );
   }
@@ -188,11 +173,13 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
     });
   }
 
+  @autobind
   private _onNavigateDate(date: Date, focusOnNavigatedDay: boolean) {
     this._focusOnSelectedDateOnUpdate = this._focusOnSelectedDateOnUpdate || focusOnNavigatedDay;
     this._navigateDay(date);
   }
 
+  @autobind
   private _onSelectDate(date: Date) {
     let { formatDate, onSelectDate } = this.props;
 
@@ -209,11 +196,13 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
     }
   };
 
+  @autobind
   private _onGotoToday() {
     this._focusOnSelectedDateOnUpdate = true;
     this._navigateDay(new Date());
   };
 
+  @autobind
   private _onGotoTodayKeyDown(ev: React.KeyboardEvent) {
     if (ev.which === KeyCodes.enter) {
       ev.preventDefault();
@@ -221,6 +210,7 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
     }
   };
 
+  @autobind
   private _onTextFieldFocus(ev: React.FocusEvent) {
     if (!this.props.allowTextInput) {
       if (!this._preventFocusOpeningPicker) {
@@ -231,10 +221,12 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
     }
   };
 
+  @autobind
   private _onTextFieldBlur(ev: React.FocusEvent) {
     this._validateTextInput();
   };
 
+  @autobind
   private _onTextFieldChanged(newValue: string) {
     if (this.props.allowTextInput) {
       if (this.state.isDatePickerShown) {
@@ -248,6 +240,7 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
     }
   }
 
+  @autobind
   private _onTextFieldKeyDown(ev: React.KeyboardEvent) {
     switch (ev.which) {
       case KeyCodes.enter:
@@ -274,6 +267,7 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
     }
   };
 
+  @autobind
   private _onDatePickerPopupKeyDown(ev: React.KeyboardEvent) {
     switch (ev.which) {
       case KeyCodes.enter:
@@ -293,12 +287,14 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
     }
   }
 
+  @autobind
   private _onClickCapture(ev: React.MouseEvent) {
-    if (!this.refs.root.contains(ev.target as HTMLElement)) {
+    if (!elementContains(this.refs.root, ev.target as HTMLElement)) {
       this._dismissDatePickerPopup();
     }
   }
 
+  @autobind
   private _onTextFieldClick(ev: React.MouseEvent) {
     if (!this.state.isDatePickerShown) {
       this._showDatePickerPopup();
@@ -332,11 +328,13 @@ export class DatePicker extends React.Component<IDatePickerProps, IDatePickerSta
     }
   }
 
+  @autobind
   private _handleEscKey(ev: React.KeyboardEvent) {
     this._restoreFocusToTextField();
     this._dismissDatePickerPopup();
   }
 
+  @autobind
   private _validateTextInput() {
     let { isRequired, allowTextInput, strings, formatDate, parseDateFromString, onSelectDate } = this.props;
     const inputValue: string = this.state.formattedDate;
