@@ -1,10 +1,5 @@
 
-.ms-Layer {
-  display: block;
-  visibility: hidden;
-}
-
-.ms-LayerHost {
+.ms-LayerHost-overlay {
   position: absolute;
   visibility: hidden;
   top: 0;
@@ -13,6 +8,6 @@
   right: 0;
 }
 
-.ms-LayerHost-layer {
+.ms-Layer {
   visibility: visible;
 }

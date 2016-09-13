@@ -2,73 +2,86 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { ILayerProps } from './Layer.Props';
 import { LayerHost, ILayer } from './LayerHost';
-import { getId } from '../../utilities/object';
+import { ProjectedLayer } from './ProjectedLayer';
+import { BaseComponent, css, getId, assignExcept, setVirtualParent } from '../../Utilities';
 import './Layer.scss';
 
 const LAYER_HOST_ELEMENT_ID = 'ms-layer-host';
 
-let _layerHost: LayerHost;
+let _defaultHost: LayerHost;
 
-export class Layer extends React.Component<ILayerProps, {}> {
+export class Layer extends BaseComponent<ILayerProps, {}> {
   public static contextTypes = {
-    isInLayer: React.PropTypes.bool
+    layerHost: React.PropTypes.object
   };
 
   public context: {
-    isInLayer: boolean;
+    layerHost: LayerHost;
   };
 
-  private _layer: ILayer;
+  private _rootElement: HTMLElement;
+  private _projectedLayer: ProjectedLayer;
+  private _layerHost: LayerHost;
+  private _id: string;
 
   constructor(props?: ILayerProps) {
     super(props);
 
-    this._layer = {
-      id: getId('Layer'),
-      children: props.children
-    };
-  }
-
-  public render(): JSX.Element {
-    let { isInLayer } = this.context;
-
-    return isInLayer ? this.props.children as JSX.Element : null;
-  }
-
-  public componentWillMount() {
-    if (!_layerHost) {
-      let hostElement = document.createElement('div');
-      hostElement.setAttribute('id', LAYER_HOST_ELEMENT_ID);
-      document.body.appendChild(hostElement);
-
-      let layerHost: LayerHost = ReactDOM.render((
-        <LayerHost />
-      ), hostElement) as LayerHost;
-
-      _layerHost = layerHost;
-    }
+    this._id = getId();
   }
 
   public componentDidMount() {
-    if (!this.context.isInLayer) {
-      _layerHost.addLayer(this._layer, this.props.onLayerMounted);
-    } else {
+    let layerHost = this.context.layerHost || _getDefaultLayerHost();
+
+    this._layerHost = layerHost;
+
+    layerHost.addLayer(this._id, this._rootElement, this.props, (projectedLayer) => {
+      this._projectedLayer = projectedLayer;
+
+      console.log(`Projection has been mounted for ${this._id}`);
+
       if (this.props.onLayerMounted) {
         this.props.onLayerMounted();
       }
-    }
-  }
-
-  public componentWillReceiveProps(props: ILayerProps) {
-    if (!this.context.isInLayer) {
-      this._layer.children = props.children;
-      _layerHost.updateLayer(this._layer);
-    }
+    });
   }
 
   public componentWillUnmount() {
-    if (!this.context.isInLayer) {
-      _layerHost.removeLayer(this._layer);
+    this._layerHost.removeLayer(this._id);
+  }
+
+  public componentWillReceiveProps(newProps: ILayerProps) {
+    if (this._projectedLayer) {
+      console.log(`Received new props, proxying them to projection for ${this._id}`);
+
+      this._projectedLayer.projectProps(newProps);
     }
   }
+
+  public forceUpdate() {
+    if (this._projectedLayer) {
+      this._projectedLayer.forceUpdate();
+    }
+  }
+
+  public render() {
+    return (
+      <span
+        className='ms-Layer'
+        ref={ this._resolveRef('_rootElement') }
+        />
+    );
+  }
+}
+
+function _getDefaultLayerHost() {
+  if (!_defaultHost) {
+    let hostElement = document.createElement('div');
+
+    hostElement.setAttribute('id', LAYER_HOST_ELEMENT_ID);
+    document.body.appendChild(hostElement);
+    _defaultHost = ReactDOM.render(<LayerHost />, hostElement) as any;
+  }
+
+  return _defaultHost;
 }
