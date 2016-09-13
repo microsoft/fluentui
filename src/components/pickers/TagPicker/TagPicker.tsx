@@ -10,7 +10,10 @@ export interface ITag {
   name: string;
 }
 
-export class TagPicker extends BasePicker<ITag, IBasePickerProps<ITag>> {
+export interface ITagPickerProps extends IBasePickerProps {
+}
+
+export class TagPicker extends BasePicker<ITagPickerProps> {
   protected static defaultProps = {
     onRenderItem:  (props) => { return <TagItem { ...props }>{ props.item.name }</TagItem>; },
     onRenderSuggestion: (props: ITag) => <div> {props.name} </div>

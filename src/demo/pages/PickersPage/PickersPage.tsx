@@ -74,7 +74,7 @@ export class PickersPage extends React.Component<IComponentDemoPageProps, any> {
         }
         propertiesTables={
           [
-            <PropertiesTableSet componentName='BasePicker' componentPath='components/Pickers/' />
+            <PropertiesTableSet componentName='BasePicker' componentPath='components/pickers/' />
           ]
         }
         overview={

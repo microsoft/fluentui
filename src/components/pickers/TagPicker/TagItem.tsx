@@ -12,7 +12,7 @@ export interface ITagItem {
   };
 }
 
-export const TagItem = (props: IPickerItemProps<ITagItem> ) => (
+export const TagItem = (props: IPickerItemProps ) => (
   <div
   className={ css('ms-TagItem', {
     'is-selected': props.isSelected

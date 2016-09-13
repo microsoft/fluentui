@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
-  PeoplePicker,
-  PeoplePickerType
+  IPersonaProps,
+  CompactPeoplePicker
 } from '../../../../index';
 import { people } from './PeoplePickerExampleData';
 
@@ -19,9 +19,11 @@ export class PeoplePickerCompactExample extends React.Component<any, IPeoplePick
   public render() {
 
     return (
-      <PeoplePicker
+      <CompactPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
-        peoplePickerType={ PeoplePickerType.compact }
+        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
+        suggestionsHeaderText={'Suggested People'}
+        className={'ms-PeoplePicker'}
         // suggestions={ suggestions }
         // searchCategoryName={ 'Top Results' }
         // noResultsText={ 'No Results Available' }

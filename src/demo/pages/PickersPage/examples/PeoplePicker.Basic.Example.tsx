@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
-  PeoplePicker
+  NormalPeoplePicker,
+  IPersonaProps
 } from '../../../../index';
 import { people } from './PeoplePickerExampleData';
 
@@ -17,8 +18,11 @@ export class PeoplePickerBasicExample extends React.Component<any, IPeoplePicker
 
   public render() {
     return (
-      <PeoplePicker
+      <NormalPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
+        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
+        suggestionsHeaderText={'Suggested People'}
+        className={'ms-PeoplePicker'}
         // suggestions={ suggestions }
         // searchCategoryName={ 'Suggested Contacts' }
         // noResultsText={ 'No Results Available' }

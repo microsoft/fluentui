@@ -1,13 +1,13 @@
-export interface ISuggestionModel<T> {
-  item: T;
+export interface ISuggestionModel {
+  item: any;
   isSelected: boolean;
 }
 
-export class SuggestionController<T> {
+export class SuggestionController {
   public currentIndex: number;
-  public currentSuggestion: ISuggestionModel<T>;
-  private suggestions: ISuggestionModel<T>[];
-  constructor(suggestions: T[]) {
+  public currentSuggestion: ISuggestionModel;
+  private suggestions: ISuggestionModel[];
+  constructor(suggestions: any[]) {
     if (suggestions && suggestions.length > 0) {
       this.suggestions = this._convertSuggestionsToSuggestionItems(suggestions);
       this.currentIndex = 0;
@@ -16,7 +16,7 @@ export class SuggestionController<T> {
     }
   }
 
-  public updateSuggestions(newSuggestions: T[]) {
+  public updateSuggestions(newSuggestions: any[]) {
     if (newSuggestions && newSuggestions.length > 0) {
       this.suggestions = this._convertSuggestionsToSuggestionItems(newSuggestions);
       this.currentIndex = 0;
@@ -49,15 +49,15 @@ export class SuggestionController<T> {
     }
   }
 
-  public getSuggestions(): ISuggestionModel<T>[] {
+  public getSuggestions(): ISuggestionModel[] {
     return this.suggestions;
   }
 
-  public getCurrentItem(): ISuggestionModel<T> {
+  public getCurrentItem(): ISuggestionModel {
     return this.currentSuggestion;
   }
 
-  public getSuggestionAtIndex(index: number): ISuggestionModel<T> {
+  public getSuggestionAtIndex(index: number): ISuggestionModel {
     return this.suggestions[index];
   }
 
@@ -65,9 +65,9 @@ export class SuggestionController<T> {
     return this.currentSuggestion ? true : false;
   }
 
-  private _convertSuggestionsToSuggestionItems(suggestions: T[]): ISuggestionModel<T>[] {
-    let converted: ISuggestionModel<T>[] = [];
-    suggestions.forEach((suggestion: T) => converted.push({ item: suggestion, isSelected: false }));
+  private _convertSuggestionsToSuggestionItems(suggestions: any[]): ISuggestionModel[] {
+    let converted: ISuggestionModel[] = [];
+    suggestions.forEach((suggestion: any) => converted.push({ item: suggestion, isSelected: false }));
     return converted;
   }
 

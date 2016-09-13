@@ -13,18 +13,16 @@ import {
   DocumentCardTitle,
   SelectionZone,
   FocusZone,
-  ImageFit
+  ImageFit,
+  IBasePickerProps
 } from '../../../../index';
 import {
   BasePicker
 } from '../../../../components/Pickers/BasePicker';
 import {
-  IBasePickerProps
-} from '../../../../components/Pickers/BasePicker.Props';
-import {
     IPickerItemProps
 } from '../../../../components/Pickers/PickerItem.Props';
-import './PeoplePicker.CustomResult.Example.scss';
+import './Picker.CustomResult.Example.scss';
 
 export interface IPeoplePickerExampleState {
   contextualMenuVisible?: boolean;
@@ -37,6 +35,9 @@ export interface IFullDocumentCardProps {
   documentPreviewProps?: IDocumentCardPreviewProps;
   documentActivityProps?: IDocumentCardActivityProps;
   documentTitleProps?: IDocumentCardTitleProps;
+}
+
+export interface IDocumentPickerProps extends IBasePickerProps {
 }
 
 const data: IFullDocumentCardProps[] = [
@@ -326,7 +327,7 @@ export const SuggestedDocumentItem: (documentProps: IFullDocumentCardProps) => J
   return (<div> { documentProps.documentTitleProps.title } </div>);
 };
 
-export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardProps>) => JSX.Element = (documentProps: IPickerItemProps<IFullDocumentCardProps>) => {
+export const SelectedDocumentItem: (documentProps: IPickerItemProps) => JSX.Element = (documentProps: IPickerItemProps) => {
   let {
     documentActionsProps,
     documentPreviewProps,
@@ -359,7 +360,6 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
   }
 
   public render() {
-
     return (
       <DocumentPicker
         onResolveSuggestions={this._onFilterChanged}
@@ -373,12 +373,11 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
   private _onFilterChanged(filterText: string) {
     return filterText ? data : [];
   }
-
 }
 
-export class DocumentPicker extends BasePicker<IFullDocumentCardProps, IBasePickerProps<IFullDocumentCardProps>> {
+export class DocumentPicker extends BasePicker<IDocumentPickerProps> {
   public render() {
-    let { value } = this.state;
+    let { displayValue } = this.state;
 
     return (
       <div>
@@ -388,7 +387,7 @@ export class DocumentPicker extends BasePicker<IFullDocumentCardProps, IBasePick
               <input ref='input'
                 onFocus={ this._onInputFocus }
                 onChange={ this._onInputChange }
-                value={ value }
+                value={ displayValue }
                 className='ms-BasePicker-input'
                 />
             </div>
@@ -406,7 +405,7 @@ export class DocumentPicker extends BasePicker<IFullDocumentCardProps, IBasePick
     if (ev.target === this.refs.input) {
       if (value && this.refs.input.selectionStart !== this.refs.input.selectionEnd) {
         this.setState({
-          value: value.substring(0, this.refs.input.selectionStart)
+          displayValue: value.substring(0, this.refs.input.selectionStart)
         });
       }
     }

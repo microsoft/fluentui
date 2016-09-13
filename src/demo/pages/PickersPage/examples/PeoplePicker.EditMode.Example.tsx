@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  PeoplePicker,
+  NormalPeoplePicker,
   IPersonaProps
 } from '../../../../index';
 const PeopleData = require('./PeoplePickerExampleData');
@@ -11,7 +11,7 @@ export interface IPeoplePickerExampleState {
 }
 
 export class PeoplePickerEditModeExample extends React.Component<any, IPeoplePickerExampleState> {
-  // private _existingList = PeopleData.slice(0, 2);
+  private _existingList = PeopleData.slice(0, 2);
   private _peopleList = PeopleData;
 
   constructor() {
@@ -19,11 +19,15 @@ export class PeoplePickerEditModeExample extends React.Component<any, IPeoplePic
     this._onFilterChanged = this._onFilterChanged.bind(this);
   }
 
-   public render() {
+  public render() {
 
     return (
-      <PeoplePicker
+      <NormalPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
+        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
+        suggestionsHeaderText={'Suggested People'}
+        className={ 'ms-PeoplePicker' }
+        startingItems={ this._existingList }
         // suggestions={ suggestions }
         // searchCategoryName={ 'Top Results' }
         // noResultsText={ 'No Results Available' }

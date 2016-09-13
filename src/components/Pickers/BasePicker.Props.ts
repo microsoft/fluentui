@@ -1,23 +1,27 @@
 import * as React from 'react';
 import { IPickerItemProps } from './PickerItem.Props';
 
-export interface IBasePickerProps<T> extends React.Props<any> {
+export interface IBasePickerProps extends React.Props<any> {
   /**
    *
    */
-  onRenderItem?: (item: IPickerItemProps<T>) => JSX.Element;
+  onRenderItem?: (item: IPickerItemProps) => JSX.Element;
   /**
    *
    */
-  onRenderSuggestion?: (props: T) => JSX.Element;
+  onRenderSuggestion?: (props: any) => JSX.Element;
   /**
    *
    */
-  onResolveSuggestions: (filter: string) => T[];
+  onResolveSuggestions: (filter: string) => any[];
   /**
    *
    */
-  startingItems?: T[];
+  onSuggestionClick?: (ev: React.MouseEvent, item: any) => void;
+  /**
+   *
+   */
+  startingItems?: any[];
   /**
    *
    */
@@ -33,7 +37,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    *
    */
-  onGetMoreResults?: (filter: string) => T[];
+  onGetMoreResults?: (filter: string) => any[];
   /**
    *
    */
@@ -42,4 +46,8 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    *
    */
   suggestionsClassName?: string;
+  /**
+   *
+   */
+  searchText?: string;
 }

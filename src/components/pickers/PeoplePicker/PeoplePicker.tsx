@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { BasePicker } from '../BasePicker';
 import { IBasePickerProps } from '../BasePicker.Props';
-import {IPickerItemProps } from '../PickerItem.Props';
-import { IPersonaProps } from '../../Persona';
 import { SelectedItemDefault } from './PeoplePickerItems/SelectedItemDefault';
 import { SuggestionItemSmall, SuggestionItemNormal } from './PeoplePickerItems/SuggestionItemDefault';
 import { FocusZone } from '../../FocusZone';
@@ -27,21 +25,16 @@ export enum PeoplePickerType {
   custom
 }
 
-export interface IPeoplePickerProps extends React.Props<any> {
-  onResolveSuggestions?: (text?: string) => IPersonaProps[];
-  onRenderSuggestion?: (props: IPersonaProps) => JSX.Element;
-  peoplePickerType?: PeoplePickerType;
-  onGetMoreResults?: (value: string) => IPersonaProps[];
-  onRenderItem?: (persona: IPickerItemProps<IPersonaProps>) => JSX.Element;
+export interface IPeoplePickerProps extends IBasePickerProps {
 }
 
-export class BasePeoplePicker extends BasePicker<IPersonaProps, IBasePickerProps<IPersonaProps>> {
-
+export class BasePeoplePicker extends BasePicker<IPeoplePickerProps> {
 }
+
 export class MemberListBelow extends BasePeoplePicker {
 
   public render() {
-    let { value } = this.state;
+    let { displayValue } = this.state;
 
     return (
       <div>
@@ -52,16 +45,17 @@ export class MemberListBelow extends BasePeoplePicker {
               <input ref='input'
                 onFocus={ this._onInputFocus }
                 onChange={ this._onInputChange }
-                value={ value }
+                value={ displayValue }
                 className='ms-BasePicker-input'
                 />
             </div>
           </SelectionZone>
         </div>
+        { this.renderSuggestions() }
         <FocusZone ref='focusZone'>
           { this.renderItems() }
         </FocusZone>
-        { this.renderSuggestions() }
+
       </div>
     );
   }
@@ -71,7 +65,7 @@ export class MemberListBelow extends BasePeoplePicker {
     if (ev.target === this.refs.input) {
       if (value && this.refs.input.selectionStart !== this.refs.input.selectionEnd) {
         this.setState({
-          value: value.substring(0, this.refs.input.selectionStart)
+          displayValue: value.substring(0, this.refs.input.selectionStart)
         });
       }
     }
@@ -80,60 +74,21 @@ export class MemberListBelow extends BasePeoplePicker {
 
 export class NormalPeoplePicker extends BasePeoplePicker {
   public static defaultProps = {
-    onRenderItem: SelectedItemDefault,
-    onRenderSuggestion: SuggestionItemNormal
+    onRenderItem: (props) => <SelectedItemDefault {...props}/>,
+    onRenderSuggestion: (props) => <SuggestionItemNormal { ...props }/>
   };
 }
 
 export class CompactPeoplePicker extends BasePeoplePicker {
   public static defaultProps = {
-    onRenderItem: SelectedItemDefault,
-    onRenderSuggestion: SuggestionItemSmall
+    onRenderItem: (props) => <SelectedItemDefault {...props}/>,
+    onRenderSuggestion: (props) => <SuggestionItemSmall { ...props }/>
   };
 }
 
 export class ListPeoplePicker extends MemberListBelow {
   public static defaultProps = {
     onRenderItem: (props) => <SelectedItemWithMenu { ...props }/>,
-    onRenderSuggestion: SuggestionItemNormal
+    onRenderSuggestion: (props) => <SuggestionItemNormal { ...props }/>
   };
 }
-
-export class PeoplePicker extends React.Component<IPeoplePickerProps, {}> {
-
-  public static defaultProps = {
-    peoplePickerType: PeoplePickerType.normal
-  };
-
-  constructor(props: IPeoplePickerProps) {
-    super(props);
-  }
-
-  public render() {
-    let {
-      onResolveSuggestions,
-      onRenderSuggestion,
-      onRenderItem,
-      onGetMoreResults
-    } = this.props;
-    let pickerProps: IBasePickerProps<IPersonaProps> = {
-      onRenderItem: onRenderItem,
-      onResolveSuggestions: onResolveSuggestions,
-      onRenderSuggestion: onRenderSuggestion,
-      getTextFromItem: (persona: IPersonaProps) => persona.primaryText,
-      suggestionsHeaderText: 'Suggested People',
-      className: 'ms-PeoplePicker',
-      onGetMoreResults: onGetMoreResults
-    };
-
-    switch (this.props.peoplePickerType) {
-      case PeoplePickerType.normal:
-        return (<NormalPeoplePicker { ...pickerProps }/>);
-      case PeoplePickerType.list:
-        return (<ListPeoplePicker { ...pickerProps }/>);
-      case PeoplePickerType.compact:
-        return (<CompactPeoplePicker { ...pickerProps }/>);
-    }
-  }
-}
-

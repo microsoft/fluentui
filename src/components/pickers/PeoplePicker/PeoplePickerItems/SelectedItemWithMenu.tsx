@@ -1,52 +1,22 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { IPickerItemProps } from '../../PickerItem.Props';
-import { Persona, IPersonaProps, PersonaPresence } from '../../../Persona';
-import { ContextualMenu, IContextualMenuItem, DirectionalHint } from '../../../ContextualMenu';
+import { IPeoplePickerItemWithMenuProps } from './PeoplePickerItem.Props';
+import { Persona, PersonaPresence } from '../../../Persona';
+import { ContextualMenu, DirectionalHint } from '../../../ContextualMenu';
 import { Button, ButtonType } from '../../../Button';
 
 export interface IPeoplePickerItemState {
   contextualMenuVisible: boolean;
 }
 
-export class SelectedItemWithMenu extends React.Component<IPickerItemProps<IPersonaProps>, IPeoplePickerItemState> {
+export class SelectedItemWithMenu extends React.Component<IPeoplePickerItemWithMenuProps, IPeoplePickerItemState> {
   public refs: {
     [key: string]: any,
     ellipsisRef: HTMLElement
   };
 
-  private contextualMenuItems: IContextualMenuItem[] = [
-    {
-      key: 'newItem',
-      icon: 'circlePlus',
-      name: 'New'
-    },
-    {
-      key: 'upload',
-      icon: 'upload',
-      name: 'Upload'
-    },
-    {
-      key: 'divider_1',
-      name: '-',
-    },
-    {
-      key: 'rename',
-      name: 'Rename'
-    },
-    {
-      key: 'properties',
-      name: 'Properties'
-    },
-    {
-      key: 'disabled',
-      name: 'Disabled item',
-      isDisabled: true,
-    },
-  ];
-
-  constructor(props: IPickerItemProps<IPersonaProps>) {
+  constructor(props: IPeoplePickerItemWithMenuProps) {
     super(props);
     this.onContextualMenu = this.onContextualMenu.bind(this);
     this._onCloseContextualMenu = this._onCloseContextualMenu.bind(this);
@@ -81,7 +51,7 @@ export class SelectedItemWithMenu extends React.Component<IPickerItemProps<IPers
         </div>
         { this.state.contextualMenuVisible ? (
           <ContextualMenu
-            items={ this.contextualMenuItems }
+            items={ item.menuItems }
             shouldFocusOnMount={ true }
             targetElement={ this.refs.ellipsisRef }
             onDismiss={ this._onCloseContextualMenu }

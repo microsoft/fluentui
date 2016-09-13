@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
-  PeoplePicker
+  IPersonaProps,
+  NormalPeoplePicker
 } from '../../../../index';
 const PeopleData = require('./PeoplePickerExampleData');
 
@@ -16,7 +17,11 @@ export class PeoplePickerDisconnectedExample extends React.Component<any, IPeopl
 
   public render() {
     return (
-      <PeoplePicker
+      <NormalPeoplePicker
+        onResolveSuggestions={ this._onFilterChanged }
+        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
+        suggestionsHeaderText={'Suggested People'}
+        className={'ms-PeoplePicker'}
         // suggestions={ suggestions }
         // searchCategoryName={ 'Top Results' }
         // noResultsText={ 'No Results Available' }
@@ -26,7 +31,7 @@ export class PeoplePickerDisconnectedExample extends React.Component<any, IPeopl
         // primarySearchText='Showing top 5 results'
         // secondarySearchText='Search Contacts & Directory'
         // disconnectedText='We are having trouble connecting to the server.<br>Please try again in a few minutes.'
-      />
+        />
     );
   }
 
