@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Fabric } from '../../Fabric';
-import { autobind, findIndex } from '../../Utilities';
+import { autobind, css, findIndex } from '../../Utilities';
 import { ProjectedLayer } from './ProjectedLayer';
 import { ILayerProps } from './Layer.Props';
+import { ILayerHostProps } from './LayerHost.Props';
 
 export interface ILayer {
   id: string;
@@ -27,7 +28,7 @@ export interface ILayer {
  *   <div>I am render on bottom.</div>
  * </LayerHost>
  **/
-export class LayerHost extends React.Component<React.Props<LayerHost>, {}> {
+export class LayerHost extends React.Component<ILayerHostProps, {}> {
   public static childContextTypes = {
     layerHost: React.PropTypes.object
   };
@@ -56,20 +57,22 @@ export class LayerHost extends React.Component<React.Props<LayerHost>, {}> {
 
   public render() {
     return (
-      <Fabric className='ms-LayerHost'>
-        { this.props.children }
-        <div className='ms-LayerHost-overlay'>
-          { this._layers.map(layer => (
-            <ProjectedLayer
-              key={ layer.id }
-              layerId={ layer.id }
-              parentElement={ layer.parentElement }
-              defaultRemoteProps={ layer.props }
-              ref={ this._resolveLayer }
-              />
-          )) }
-        </div>
-      </Fabric>
+      <div { ...this.props } className={ css('ms-LayerHost', this.props.className) }>
+        <Fabric>
+          { this.props.children }
+          <div className='ms-LayerHost-overlay'>
+            { this._layers.map(layer => (
+              <ProjectedLayer
+                key={ layer.id }
+                layerId={ layer.id }
+                parentElement={ layer.parentElement }
+                defaultRemoteProps={ layer.props }
+                ref={ this._resolveLayer }
+                />
+            )) }
+          </div>
+        </Fabric>
+      </div>
     );
   }
 
