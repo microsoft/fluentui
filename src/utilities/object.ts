@@ -34,7 +34,7 @@ export function shallowCompare(a, b) {
  * @returns Resulting merged target.
  */
 export function assign(target: any, ...args): any {
-  return assignExcept.apply(this, [ null, target ].concat(args));
+  return filteredAssign.apply(this, [null, target].concat(args));
 }
 
 /**
@@ -42,19 +42,19 @@ export function assign(target: any, ...args): any {
  * in the target object followed by 1 or more  objects as arguments and they will be merged sequentially
  * into the target. Note that this will shallow merge; it will not create new cloned values for object members.
  *
- * @params exceptions {string[]} A list of parameters that should not be mixed into the target.
+ * @params filteredAssign {Function} A callback function that tests if the property should be assigned.
  * @params target {Object} Target object to merge following object arguments into.
  * @params args {Object} One or more objects that will be mixed into the target in the order they are provided.
  * @returns Resulting merged target.
  */
-export function assignExcept(exceptions: string[], target: any, ...args) {
+export function filteredAssign(isAllowed: (propName: string) => boolean, target: any, ...args) {
   target = target || {};
 
   for (let sourceObject of args) {
     if (sourceObject) {
       for (let propName in sourceObject) {
         if (sourceObject.hasOwnProperty(propName) &&
-            !exceptions || exceptions.indexOf(propName) === -1) {
+          !isAllowed || isAllowed(propName)) {
           target[propName] = sourceObject[propName];
         }
       }
