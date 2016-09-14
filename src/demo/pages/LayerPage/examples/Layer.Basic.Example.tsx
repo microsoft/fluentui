@@ -16,11 +16,11 @@ export class LayerBasicExample extends React.Component<any, any> {
     };
   }
 
-  componentDidMount() {
+  public componentDidMount() {
     this._intervalId = setInterval(() => this.setState({ time: new Date().toLocaleTimeString() }), 1000);
   }
 
-  componentWillUnmount() {
+  public componentWillUnmount() {
     clearInterval(this._intervalId);
   }
 
