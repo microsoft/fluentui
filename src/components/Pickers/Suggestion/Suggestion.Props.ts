@@ -10,7 +10,7 @@ export interface ISuggestionProps<T> extends React.Props<any> {
   onGetMoreResults?: () => void;
   className?: string;
   searchErrorText?: string;
-  noResultsFound?: string;
+  noResultsFoundText?: string;
 }
 
 export interface ISuggestionItemProps<T> {

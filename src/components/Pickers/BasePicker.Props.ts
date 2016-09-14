@@ -35,6 +35,10 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    */
   onGetMoreResults?: (filter: string) => any[];
   /**
+   * the text that should appear when no results are returned.
+   */
+  noResultsText?: string;
+  /**
    * ClassName for the picker.
    */
   className?: string;

@@ -15,7 +15,7 @@ export class SuggestionItem<T> extends React.Component<ISuggestionItemProps<T>, 
     return (
       <Button
         onClick={ onClick }
-        className={ css('ms-Suggestions-Item', { 'is-suggested': suggestionModel.isSelected }) }
+        className={ css('ms-Suggestion-item', { 'is-suggested': suggestionModel.isSelected }) }
         >
         <RenderSuggestion {...suggestionModel.item}/>
       </Button>
@@ -40,18 +40,18 @@ export class Suggestion<T> extends React.Component<ISuggestionProps<T>, {}> {
     let { suggestionsHeaderText, searchForMoreText, className } = this.props;
 
     return (
-      <div className={ css('ms-Suggestions', className ? className : '') }>
+      <div className={ css('ms-Suggestion', className ? className : '') }>
         { suggestionsHeaderText ?
-          (<div className='ms-Suggestions-Title'>
+          (<div className='ms-Suggestion-title'>
             { suggestionsHeaderText }
           </div>) : (null) }
-        <div className='ms-Suggestion-Container'>
+        <div className='ms-Suggestion-container'>
           { this._renderSuggestions() }
         </div>
         { searchForMoreText ?
           (<Button
             onClick={ this._getMoreResults.bind(this) }
-            className={ 'ms-SearchMore-Button' }
+            className={ 'ms-SearchMore-button' }
             buttonType={ ButtonType.icon }
             icon={ 'Search' }
             ref='searchForMoreButton' >
@@ -75,10 +75,10 @@ export class Suggestion<T> extends React.Component<ISuggestionProps<T>, {}> {
   }
 
   private _renderSuggestions(): JSX.Element[] {
-    let { suggestions, onRenderSuggestion } = this.props;
+    let { suggestions, onRenderSuggestion, noResultsFoundText } = this.props;
 
-    if (!suggestions.length) {
-      return [<div className='ms-Suggestions-None'> None </div>];
+    if (!suggestions || !suggestions.length) {
+      return [<div className='ms-Suggestion-none'> { noResultsFoundText ? noResultsFoundText : ' ' } </div>];
     }
 
     let suggestionItems: JSX.Element[] = [];

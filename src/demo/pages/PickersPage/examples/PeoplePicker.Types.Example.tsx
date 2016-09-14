@@ -109,8 +109,9 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
       <ListPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
-        suggestionsHeaderText={'Suggested People'}
-        className={'ms-PeoplePicker'}
+        suggestionsHeaderText={ 'Suggested People' }
+        className={ 'ms-PeoplePicker' }
+        noResultsText= { 'No results found' }
         key={'list'}
         />
     );
@@ -121,9 +122,10 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
       <NormalPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
-        suggestionsHeaderText={'Suggested People'}
-        className={'ms-PeoplePicker'}
-        key={'normal'}
+        suggestionsHeaderText={ 'Suggested People' }
+        className={ 'ms-PeoplePicker' }
+        key={ 'normal' }
+        noResultsText= { 'No results found' }
         />
     );
   }
@@ -133,8 +135,9 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
       <CompactPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
-        suggestionsHeaderText={'Suggested People'}
-        className={'ms-PeoplePicker'}
+        suggestionsHeaderText={ 'Suggested People' }
+        className={ 'ms-PeoplePicker' }
+        noResultsText= { 'No results found' }
         />
     );
   }
@@ -144,10 +147,11 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
       <CompactPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
-        suggestionsHeaderText={'Suggested People'}
-        className={'ms-PeoplePicker'}
+        suggestionsHeaderText={ 'Suggested People' }
+        className={ 'ms-PeoplePicker' }
         startingItems={ people.splice(0, 3) }
-        key={'list'}
+        key={ 'list' }
+        noResultsText= { 'No results found' }
         />
     );
   }
@@ -157,10 +161,11 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
       <CompactPeoplePicker
         onResolveSuggestions={ this._filterWithLimit.bind(this) }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
-        suggestionsHeaderText={'Suggested People'}
-        className={'ms-PeoplePicker'}
+        suggestionsHeaderText={ 'Suggested People' }
+        className={ 'ms-PeoplePicker' }
         onGetMoreResults={ this._onFilterChanged }
         searchForMoreText={ 'Load all Results' }
+        noResultsText= { 'No results found' }
         />
     );
   }

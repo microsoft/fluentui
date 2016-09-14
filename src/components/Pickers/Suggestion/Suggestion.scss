@@ -1,32 +1,28 @@
 @import '../../../common/common';
 
-.ms-SearchMore-Button {
+.ms-SearchMore-button {
   @include button-reset();
   position: relative;
   height: auto;
   width: 100%;
-  padding: 0px 8px 0px 0px;
+  text-align: center;
   margin: 0;
-  text-align: left;
-
   &:hover {
       background-color: $ms-color-neutralLight;
       cursor: pointer;
   }
-
   // TODO: Works in Chrome, but not working in IE
   &:focus,
   &:active {
       background-color: $ms-color-themeLight;
   }
 }
-
-.ms-Suggestions {
+.ms-Suggestion {
   min-width: 180px;
-  .ms-Suggestions-Item {
+  .ms-Suggestion-item {
     height: auto;
     width: 100%;
-    text-align: left;
+    @include text-align(left);
     border: none;
     &:hover {
       background: $ms-color-neutralLight;
@@ -39,7 +35,7 @@
       }
     }
   }
-  .ms-Suggestions-Title {
+  .ms-Suggestion-title {
     color: $ms-color-themePrimary;
     font-size: $ms-font-size-s;
     text-align: center;
@@ -47,10 +43,16 @@
     line-height: 40px;
     border-bottom: 1px solid $ms-color-neutralLight;
   }
-  .ms-Suggestion-Container {
+  .ms-Suggestion-container {
     overflow-y: auto;
     overflow-x: hidden;
     max-height: 300px;
     border-bottom: 1px solid $ms-color-neutralLight;
+  }
+  .ms-Suggestion-none {
+    text-align: center;
+    color: $ms-color-info;
+    font-size: $ms-font-size-s;
+    line-height: 30px;
   }
 }

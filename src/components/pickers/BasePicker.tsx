@@ -82,9 +82,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
   }
 
   protected renderSuggestions(): JSX.Element {
-    let suggestions = this.suggestionManager.getSuggestions();
     let TypedSuggestion = this.SuggestionOfProperType;
-    return suggestions && suggestions.length > 0 ? (
+    return this.state.value && this.state.value !== '' ? (
       <Callout isBeakVisible={ false } gapSpace={ 0 } targetElement={ this.refs.root } onDismiss={ this.dismissSuggestions }>
         <TypedSuggestion
           onRenderSuggestion={ this.props.onRenderSuggestion }
@@ -94,6 +93,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
           ref='suggestionElement'
           searchForMoreText={ this.state.searchForMoreText }
           onGetMoreResults={ this._onGetMoreResults }
+          noResultsFoundText= { this.props.noResultsText }
           className={ this.props.suggestionsClassName }
           />
       </Callout>
