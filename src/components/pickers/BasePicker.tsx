@@ -29,7 +29,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
   protected _selection: Selection;
 
   private suggestionManager: SuggestionController<T>;
-    private SuggestionOfProperType = Suggestion as new (props: ISuggestionProps<T>) => Suggestion<T>;
+  private SuggestionOfProperType = Suggestion as new (props: ISuggestionProps<T>) => Suggestion<T>;
 
   constructor(basePickerProps: P) {
     super(basePickerProps);
@@ -267,6 +267,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
 
       case KeyCodes.backspace:
         this._onBackSpace(ev);
+        ev.preventDefault();
+        ev.stopPropagation();
         break;
 
       case KeyCodes.up:
