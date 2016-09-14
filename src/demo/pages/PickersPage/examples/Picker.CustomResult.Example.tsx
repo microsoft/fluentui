@@ -349,7 +349,6 @@ export const SuggestedBigItem: (documentProps: IFullDocumentCardProps) => JSX.El
   );
 };
 
-
 export const SelectedDocumentItem: (documentProps: IPickerItemProps) => JSX.Element = (documentProps: IPickerItemProps) => {
   let {
     documentActionsProps,

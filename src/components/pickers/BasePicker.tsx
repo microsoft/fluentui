@@ -195,7 +195,7 @@ export class BasePicker<P extends IBasePickerProps> extends React.Component<P, I
     let value = (ev.target as HTMLInputElement).value;
 
     this._updateValue(value);
-    this.setState({ searchForMoreText: this.props.searchForMoreText })
+    this.setState({ searchForMoreText: this.props.searchForMoreText });
   }
 
   protected _updateSuggestions(suggestions: any[]) {
@@ -295,7 +295,7 @@ export class BasePicker<P extends IBasePickerProps> extends React.Component<P, I
       this._updateSuggestions(this.props.onGetMoreResults(this.state.value));
     }
     this.refs.input.focus();
-    this.setState({ searchForMoreText: undefined })
+    this.setState({ searchForMoreText: undefined });
   }
 
   protected _onBackSpace(ev: React.KeyboardEvent) {

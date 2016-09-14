@@ -160,7 +160,7 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
         suggestionsHeaderText={'Suggested People'}
         className={'ms-PeoplePicker'}
         onGetMoreResults={ this._onFilterChanged }
-        searchForMoreText={ "Load all Results" }
+        searchForMoreText={ 'Load all Results' }
         />
     );
   }
