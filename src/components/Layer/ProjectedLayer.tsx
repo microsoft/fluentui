@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { BaseComponent, css, setVirtualParent } from '../../Utilities';
+import { ILayerProps } from './Layer.Props';
 import './Layer.scss';
 
 export interface IProjectedLayerProps extends React.Props<ProjectedLayer> {
@@ -10,7 +11,7 @@ export interface IProjectedLayerProps extends React.Props<ProjectedLayer> {
   parentElement: HTMLElement;
 
   /** Indicates the layer to redirect to. */
-  defaultRemoteProps: any;
+  defaultRemoteProps: ILayerProps;
 }
 
 /**
@@ -19,7 +20,7 @@ export interface IProjectedLayerProps extends React.Props<ProjectedLayer> {
  */
 export class ProjectedLayer extends BaseComponent<IProjectedLayerProps, {}> {
   private _rootElement: HTMLElement;
-  private _remoteProps: any;
+  private _remoteProps: ILayerProps;
 
   constructor(props?: IProjectedLayerProps) {
     super(props);
