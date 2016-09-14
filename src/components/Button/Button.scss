@@ -349,9 +349,14 @@
     background-color: transparent;
   }
 
-  .ms-Icon {
+  .ms-Icon--m {
     font-size: $ms-icon-size-m;
     padding: 8px;
+  }
+
+  .ms-Icon--s {
+    font-size: $ms-icon-size-s;
+    padding: 10px;
   }
 
   .ms-Button-icon {

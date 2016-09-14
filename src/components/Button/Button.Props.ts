@@ -19,6 +19,18 @@ export interface IButtonProps extends React.Props<Button> {
    */
   icon?: string;
 
+ /**
+  * Should the button use a small icon
+  * @default False
+  */
+  iconSize?: IconSize;
+
+ /**
+  * Should the button use a small icon
+  * @default False
+  */
+  iconColor?: IconColor;
+
   /**
    * Description of the action this button takes.
    * Only used for compound buttons
@@ -77,4 +89,14 @@ export enum ButtonType {
   compound,
   command,
   icon
+}
+
+export enum IconColor {
+  neutralSecondary,
+  white
+}
+
+export enum IconSize {
+  small,
+  medium
 }
