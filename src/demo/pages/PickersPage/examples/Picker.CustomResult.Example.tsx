@@ -327,6 +327,29 @@ export const SuggestedDocumentItem: (documentProps: IFullDocumentCardProps) => J
   return (<div> { documentProps.documentTitleProps.title } </div>);
 };
 
+export const SuggestedBigItem: (documentProps: IFullDocumentCardProps) => JSX.Element = (documentProps: IFullDocumentCardProps) => {
+    let {
+    documentActionsProps,
+    documentPreviewProps,
+    documentActivityProps,
+    documentTitleProps
+  } = documentProps;
+  let actions = [];
+  documentActionsProps.actions.forEach((action) => actions.push(action));
+  return (
+    <DocumentCard
+      onClick={ () => { console.log('You clicked the card.'); } }
+      >
+      <DocumentCardPreview { ...documentPreviewProps }/>
+      <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com' ariaLabel='Location, Marketing Documents'/>
+      <DocumentCardTitle { ...documentTitleProps }/>
+      <DocumentCardActivity { ...documentActivityProps }/>
+      <DocumentCardActions actions={ actions }/>
+    </DocumentCard>
+  );
+};
+
+
 export const SelectedDocumentItem: (documentProps: IPickerItemProps) => JSX.Element = (documentProps: IPickerItemProps) => {
   let {
     documentActionsProps,
@@ -364,7 +387,7 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
       <DocumentPicker
         onResolveSuggestions={this._onFilterChanged}
         onRenderItem={SelectedDocumentItem}
-        onRenderSuggestion={SuggestedDocumentItem}
+        onRenderSuggestion={SuggestedBigItem}
         getTextFromItem={(props: any) => props.documentTitleProps.title}
         />
     );

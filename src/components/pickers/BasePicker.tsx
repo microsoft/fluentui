@@ -5,6 +5,7 @@ import { KeyCodes } from '../../utilities/KeyCodes';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
 import { Suggestion, SuggestionController } from './Suggestion/index';
 import { IBasePickerProps } from './BasePicker.Props';
+import { IPickerItemProps } from './PickerItem.Props';
 import { css } from '../../utilities/css';
 import './BasePicker.scss';
 
@@ -12,6 +13,7 @@ export interface IBasePickerState {
   items?: any;
   displayValue?: string;
   value?: string;
+  searchForMoreText?: string;
 }
 
 export class BasePicker<P extends IBasePickerProps> extends React.Component<P, IBasePickerState> {
@@ -48,7 +50,8 @@ export class BasePicker<P extends IBasePickerProps> extends React.Component<P, I
     this.state = {
       items: items,
       displayValue: '',
-      value: ''
+      value: '',
+      searchForMoreText: basePickerProps.searchForMoreText
     };
   }
 
@@ -87,7 +90,7 @@ export class BasePicker<P extends IBasePickerProps> extends React.Component<P, I
           suggestions={ this.suggestionManager.getSuggestions() }
           suggestionsHeaderText={ this.props.suggestionsHeaderText }
           ref='suggestionElement'
-          searchForMoreText={this.props.searchText ? this.props.searchText : ''}
+          searchForMoreText={ this.state.searchForMoreText }
           onGetMoreResults={ this._onGetMoreResults }
           className={ this.props.suggestionsClassName }
           />
@@ -110,13 +113,13 @@ export class BasePicker<P extends IBasePickerProps> extends React.Component<P, I
     }
   }
 
-  public addItem(item: any) {
+  protected addItem(item: IPickerItemProps) {
     let newItems = this.state.items.concat([item]);
     this._selection.setItems(newItems);
-    this.setState({ items: newItems });
+    this.setState({ items: newItems }, () => this._onChange());
   }
 
-  public removeItem(item: any) {
+  protected removeItem(item: IPickerItemProps) {
     let { items } = this.state;
     let index = items.indexOf(item);
 
@@ -124,11 +127,17 @@ export class BasePicker<P extends IBasePickerProps> extends React.Component<P, I
       let newItems = items.slice(0, index).concat(items.slice(index + 1));
 
       this._selection.setItems(newItems);
-      this.setState({ items: newItems });
+      this.setState({ items: newItems }, () => this._onChange());
     }
   }
 
-  public removeItems(itemsToRemove: any[]) {
+  protected _onChange() {
+    if (this.props.onChange) {
+      this.props.onChange(this.state.items);
+    }
+  }
+
+  protected removeItems(itemsToRemove: any[]) {
     let { items } = this.state;
     let newItems = items.filter(item => itemsToRemove.indexOf(item) === -1);
     let firstItemToRemove = this._selection.getSelection()[0];
@@ -184,8 +193,9 @@ export class BasePicker<P extends IBasePickerProps> extends React.Component<P, I
 
   protected _onInputChange(ev: React.FormEvent) {
     let value = (ev.target as HTMLInputElement).value;
-    this._updateValue(value);
 
+    this._updateValue(value);
+    this.setState({ searchForMoreText: this.props.searchForMoreText })
   }
 
   protected _updateSuggestions(suggestions: any[]) {
@@ -210,6 +220,7 @@ export class BasePicker<P extends IBasePickerProps> extends React.Component<P, I
 
   protected _updateDisplayValue(updatedValue: string, itemValue?: string) {
     let differenceIndex: number = 0;
+
     if (updatedValue) {
       while (differenceIndex < updatedValue.length && updatedValue[differenceIndex].toLocaleLowerCase() === updatedValue[differenceIndex].toLocaleLowerCase()) {
         differenceIndex++;
@@ -281,8 +292,10 @@ export class BasePicker<P extends IBasePickerProps> extends React.Component<P, I
 
   protected _onGetMoreResults() {
     if (this.props.onGetMoreResults) {
-      this._updateSuggestions(this.props.onGetMoreResults(this.state.displayValue));
+      this._updateSuggestions(this.props.onGetMoreResults(this.state.value));
     }
+    this.refs.input.focus();
+    this.setState({ searchForMoreText: undefined })
   }
 
   protected _onBackSpace(ev: React.KeyboardEvent) {

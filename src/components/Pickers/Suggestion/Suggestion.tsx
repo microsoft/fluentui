@@ -25,11 +25,6 @@ export class SuggestionItem extends React.Component<ISuggestionItemProps, {}> {
 
 export class Suggestion extends React.Component<ISuggestionProps, {}> {
 
-  public static defaultProps = {
-    searchForMoreText: 'Search For More',
-    canSearchForMore: false
-  };
-
   public refs: {
     [key: string]: React.ReactInstance;
     searchForMoreButton: Button;

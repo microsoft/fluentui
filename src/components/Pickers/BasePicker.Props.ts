@@ -17,7 +17,7 @@ export interface IBasePickerProps extends React.Props<any> {
   /**
    *
    */
-  onSuggestionClick?: (ev: React.MouseEvent, item: any) => void;
+  onSuggestionClick?: (ev?: React.MouseEvent, item?: any) => void;
   /**
    *
    */
@@ -49,5 +49,5 @@ export interface IBasePickerProps extends React.Props<any> {
   /**
    *
    */
-  searchText?: string;
+  searchForMoreText?: string;
 }

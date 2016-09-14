@@ -7,7 +7,7 @@
   width: 100%;
   padding: 0px 8px 0px 0px;
   margin: 0;
-  text-align: center;
+  text-align: left;
 
   &:hover {
       background-color: $ms-color-neutralLight;
@@ -44,7 +44,6 @@
     font-size: $ms-font-size-s;
     text-align: center;
     text-transform: uppercase;
-    height: 40px;
     line-height: 40px;
     border-bottom: 1px solid $ms-color-neutralLight;
   }

@@ -59,11 +59,13 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
       assign(target, persona, { menuItems: this.contextualMenuItems });
       this._peopleList.push(target);
     });
+
     this.state = { currentPicker: 1 };
   }
 
   public render() {
     let currentPicker: JSX.Element;
+
     switch (this.state.currentPicker) {
       case 1:
         currentPicker = this._renderNormalPicker();
@@ -77,7 +79,11 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
       case 4:
         currentPicker = this._renderPreselectedItemsPicker();
         break;
+      case 5:
+        currentPicker = this._renderLimitedSearch();
+        break;
     }
+
     return (
       <div>
         { currentPicker }
@@ -87,7 +93,8 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
               { key: 1, text: 'Normal' },
               { key: 2, text: 'Compact' },
               { key: 3, text: 'Members List' },
-              { key: 4, text: 'Preselected Items' }
+              { key: 4, text: 'Preselected Items' },
+              { key: 5, text: 'Limit Search' }
             ]}
             selectedKey={ this.state.currentPicker }
             onChanged={ this._dropDownSelected.bind(this) }
@@ -104,10 +111,11 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
         suggestionsHeaderText={'Suggested People'}
         className={'ms-PeoplePicker'}
-        key={'compact'}
+        key={'list'}
         />
     );
   }
+
   public _renderNormalPicker() {
     return (
       <NormalPeoplePicker
@@ -119,6 +127,7 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
         />
     );
   }
+
   public _renderCompactPicker() {
     return (
       <CompactPeoplePicker
@@ -129,6 +138,7 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
         />
     );
   }
+
   public _renderPreselectedItemsPicker() {
     return (
       <CompactPeoplePicker
@@ -142,8 +152,25 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
     );
   }
 
+  public _renderLimitedSearch() {
+    return (
+      <CompactPeoplePicker
+        onResolveSuggestions={ this._filterWithLimit.bind(this) }
+        getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
+        suggestionsHeaderText={'Suggested People'}
+        className={'ms-PeoplePicker'}
+        onGetMoreResults={ this._onFilterChanged }
+        searchForMoreText={ "Load all Results" }
+        />
+    );
+  }
+
   private _onFilterChanged(filterText: string) {
     return filterText ? this._peopleList.filter(item => item.primaryText.toLowerCase().indexOf(filterText.toLowerCase()) === 0) : [];
+  }
+
+  private _filterWithLimit(filterText: string) {
+    return filterText ? this._peopleList.filter(item => item.primaryText.toLowerCase().indexOf(filterText.toLowerCase()) === 0).splice(0, 2) : [];
   }
 
   private _dropDownSelected(option: IDropdownOption) {
