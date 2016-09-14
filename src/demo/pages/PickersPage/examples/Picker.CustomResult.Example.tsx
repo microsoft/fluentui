@@ -337,9 +337,7 @@ export const SuggestedBigItem: (documentProps: IFullDocumentCardProps) => JSX.El
   let actions = [];
   documentActionsProps.actions.forEach((action) => actions.push(action));
   return (
-    <DocumentCard
-      onClick={ () => { console.log('You clicked the card.'); } }
-      >
+    <DocumentCard>
       <DocumentCardPreview { ...documentPreviewProps }/>
       <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com' ariaLabel='Location, Marketing Documents'/>
       <DocumentCardTitle { ...documentTitleProps }/>
@@ -388,6 +386,8 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
         onRenderItem={SelectedDocumentItem}
         onRenderSuggestion={SuggestedBigItem}
         getTextFromItem={(props: any) => props.documentTitleProps.title}
+        suggestionsClassName={ 'ms-DocumentPicker-suggestion' }
+        suggestionItemClassName={ 'ms-DocumentPicker-bigSuggestion' }
         />
     );
   }

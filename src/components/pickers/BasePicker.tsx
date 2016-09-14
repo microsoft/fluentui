@@ -73,7 +73,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
         <SelectionZone selection={ this._selection } selectionMode={ SelectionMode.multiple }>
           <FocusZone ref='focusZone' className='ms-BasePicker-text'>
             { this.renderItems() }
-            <input ref='input' className='ms-BasePicker-input ms-autocomplete-top' onFocus={ this._onInputFocus } onChange={ this._onInputChange } value={ displayValue } />
+            <input ref='input' className='ms-BasePicker-input ms-autocomplete-top' onFocus={ this._onInputFocus } onChange={ this._onInputChange } value={ displayValue }
+            aria-activedescendant={ 'sug-' + this.suggestionManager.currentIndex }
+            aria-owns={ 'sug-' + this.suggestionManager.currentIndex } />
           </FocusZone>
         </SelectionZone>
         { this.renderSuggestions() }
@@ -95,6 +97,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
           onGetMoreResults={ this._onGetMoreResults }
           noResultsFoundText= { this.props.noResultsText }
           className={ this.props.suggestionsClassName }
+          suggestionItemClassName={ this.props.suggestionItemClassName }
           />
       </Callout>
     ) : (null);

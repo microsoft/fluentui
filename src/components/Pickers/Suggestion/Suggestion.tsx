@@ -10,12 +10,13 @@ export class SuggestionItem<T> extends React.Component<ISuggestionItemProps<T>, 
     let {
       suggestionModel,
       RenderSuggestion,
-      onClick
+      onClick,
+      className
     } = this.props;
     return (
       <Button
         onClick={ onClick }
-        className={ css('ms-Suggestion-item', { 'is-suggested': suggestionModel.isSelected }) }
+        className={ css('ms-Suggestion-item', { 'is-suggested': suggestionModel.isSelected }, className ) }
         >
         <RenderSuggestion {...suggestionModel.item}/>
       </Button>
@@ -88,11 +89,13 @@ export class Suggestion<T> extends React.Component<ISuggestionProps<T>, {}> {
       let suggestionItem: ISuggestionModel<T> = suggestions[index];
       suggestionItems.push(
         <div ref={ suggestionItem.isSelected ? 'selectedElement' : '' }
-          key={index}>
+          key={ index }
+          id={ 'sug-' + index }>
           <TypedSuggestionItem
             suggestionModel={ suggestionItem }
             RenderSuggestion={ onRenderSuggestion }
             onClick={(ev: React.MouseEvent) => this.props.onSuggestionClick(ev, suggestionItem.item, index) }
+            className={ this.props.suggestionItemClassName }
             />
         </div>);
     }

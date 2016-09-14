@@ -46,6 +46,8 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * Classname for the suggestion box.
    */
   suggestionsClassName?: string;
+
+  suggestionItemClassName?: string;
   /**
    * The text that should appear on the button to search for more.
    */

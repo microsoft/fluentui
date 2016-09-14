@@ -11,10 +11,12 @@ export interface ISuggestionProps<T> extends React.Props<any> {
   className?: string;
   searchErrorText?: string;
   noResultsFoundText?: string;
+  suggestionItemClassName?: string;
 }
 
 export interface ISuggestionItemProps<T> {
   suggestionModel: ISuggestionModel<T>;
   RenderSuggestion: (item: any) => JSX.Element;
   onClick: (ev: React.MouseEvent) => void;
+  className?: string;
 }
