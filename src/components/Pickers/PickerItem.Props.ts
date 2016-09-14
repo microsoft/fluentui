@@ -1,6 +1,6 @@
 import * as React from 'react';
-export interface IPickerItemProps extends React.Props<any> {
-  item: any;
+export interface IPickerItemProps<T> extends React.Props<any> {
+  item: T;
   index: number;
   isSelected: boolean;
   onRemoveItem?: () => void;

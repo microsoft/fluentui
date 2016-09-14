@@ -1,12 +1,12 @@
-export interface ISuggestionModel {
-  item: any;
+export interface ISuggestionModel<T> {
+  item: T;
   isSelected: boolean;
 }
 
-export class SuggestionController {
+export class SuggestionController<T> {
   public currentIndex: number;
-  public currentSuggestion: ISuggestionModel;
-  private suggestions: ISuggestionModel[];
+  public currentSuggestion: ISuggestionModel<T>;
+  private suggestions: ISuggestionModel<T>[];
   constructor() {
       this.suggestions = [];
       this.currentIndex = -1;
@@ -45,15 +45,15 @@ export class SuggestionController {
     }
   }
 
-  public getSuggestions(): ISuggestionModel[] {
+  public getSuggestions(): ISuggestionModel<T>[] {
     return this.suggestions;
   }
 
-  public getCurrentItem(): ISuggestionModel {
+  public getCurrentItem(): ISuggestionModel<T> {
     return this.currentSuggestion;
   }
 
-  public getSuggestionAtIndex(index: number): ISuggestionModel {
+  public getSuggestionAtIndex(index: number): ISuggestionModel<T> {
     return this.suggestions[index];
   }
 
@@ -61,8 +61,8 @@ export class SuggestionController {
     return this.currentSuggestion ? true : false;
   }
 
-  private _convertSuggestionsToSuggestionItems(suggestions: any[]): ISuggestionModel[] {
-    let converted: ISuggestionModel[] = [];
+  private _convertSuggestionsToSuggestionItems(suggestions: any[]): ISuggestionModel<T>[] {
+    let converted: ISuggestionModel<T>[] = [];
     suggestions.forEach((suggestion: any) => converted.push({ item: suggestion, isSelected: false }));
     return converted;
   }

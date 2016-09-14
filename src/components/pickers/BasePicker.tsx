@@ -3,7 +3,7 @@ import { FocusZone } from '../../FocusZone';
 import { Callout } from '../../Callout';
 import { KeyCodes } from '../../utilities/KeyCodes';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
-import { Suggestion, SuggestionController } from './Suggestion/index';
+import { Suggestion, SuggestionController, ISuggestionProps } from './Suggestion/index';
 import { IBasePickerProps } from './BasePicker.Props';
 import { IPickerItemProps } from './PickerItem.Props';
 import { css } from '../../utilities/css';
@@ -16,26 +16,27 @@ export interface IBasePickerState {
   searchForMoreText?: string;
 }
 
-export class BasePicker<P extends IBasePickerProps> extends React.Component<P, IBasePickerState> {
+export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Component<P, IBasePickerState> {
 
   public refs: {
     [key: string]: React.ReactInstance;
     root: HTMLElement;
     input: HTMLInputElement;
     focusZone: FocusZone;
-    suggestionElement: Suggestion
+    suggestionElement: Suggestion<T>
   };
 
   protected _selection: Selection;
 
-  private suggestionManager: SuggestionController;
+  private suggestionManager: SuggestionController<T>;
+    private SuggestionOfProperType = Suggestion as new (props: ISuggestionProps<T>) => Suggestion<T>;
 
   constructor(basePickerProps: P) {
     super(basePickerProps);
 
     let items = basePickerProps.startingItems || [];
 
-    this.suggestionManager = new SuggestionController();
+    this.suggestionManager = new SuggestionController<T>();
     this._onKeyDown = this._onKeyDown.bind(this);
     this._onInputChange = this._onInputChange.bind(this);
     this._onInputFocus = this._onInputFocus.bind(this);
@@ -55,7 +56,7 @@ export class BasePicker<P extends IBasePickerProps> extends React.Component<P, I
     };
   }
 
-  public componentWillReceiveProps(newProps: IBasePickerProps, newState: IBasePickerState) {
+  public componentWillReceiveProps(newProps: IBasePickerProps<T>, newState: IBasePickerState) {
     if (newState.items && newState.items !== this.state.items) {
       this._selection.setItems(newState.items);
     }
@@ -82,9 +83,10 @@ export class BasePicker<P extends IBasePickerProps> extends React.Component<P, I
 
   protected renderSuggestions(): JSX.Element {
     let suggestions = this.suggestionManager.getSuggestions();
+    let TypedSuggestion = this.SuggestionOfProperType;
     return suggestions && suggestions.length > 0 ? (
       <Callout isBeakVisible={ false } gapSpace={ 0 } targetElement={ this.refs.root } onDismiss={ this.dismissSuggestions }>
-        <Suggestion
+        <TypedSuggestion
           onRenderSuggestion={ this.props.onRenderSuggestion }
           onSuggestionClick={ this._onSuggestionClick }
           suggestions={ this.suggestionManager.getSuggestions() }
@@ -113,13 +115,13 @@ export class BasePicker<P extends IBasePickerProps> extends React.Component<P, I
     }
   }
 
-  protected addItem(item: IPickerItemProps) {
+  protected addItem(item: T) {
     let newItems = this.state.items.concat([item]);
     this._selection.setItems(newItems);
     this.setState({ items: newItems }, () => this._onChange());
   }
 
-  protected removeItem(item: IPickerItemProps) {
+  protected removeItem(item: IPickerItemProps<T>) {
     let { items } = this.state;
     let index = items.indexOf(item);
 
@@ -239,9 +241,6 @@ export class BasePicker<P extends IBasePickerProps> extends React.Component<P, I
 
   protected _onSuggestionClick(ev: React.MouseEvent, item: any, index: number) {
     this.addItemByIndex(index);
-    if (this.props.onSuggestionClick) {
-      this.props.onSuggestionClick(ev, item);
-    }
   }
 
   protected _onInputFocus(ev: React.FocusEvent) {

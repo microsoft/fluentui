@@ -5,7 +5,7 @@ import { ISuggestionItemProps, ISuggestionProps } from './Suggestion.Props';
 import { ISuggestionModel } from './SuggestionController';
 import './Suggestion.scss';
 
-export class SuggestionItem extends React.Component<ISuggestionItemProps, {}> {
+export class SuggestionItem<T> extends React.Component<ISuggestionItemProps<T>, {}> {
   public render() {
     let {
       suggestionModel,
@@ -23,13 +23,13 @@ export class SuggestionItem extends React.Component<ISuggestionItemProps, {}> {
   }
 }
 
-export class Suggestion extends React.Component<ISuggestionProps, {}> {
-
+export class Suggestion<T> extends React.Component<ISuggestionProps<T>, {}> {
   public refs: {
     [key: string]: React.ReactInstance;
     searchForMoreButton: Button;
     selectedElement: HTMLDivElement;
   };
+  private SuggestionItemOfProperType = SuggestionItem as new (props: ISuggestionItemProps<T>) => SuggestionItem<T>;
 
   constructor(suggestionProps) {
     super(suggestionProps);
@@ -82,13 +82,14 @@ export class Suggestion extends React.Component<ISuggestionProps, {}> {
     }
 
     let suggestionItems: JSX.Element[] = [];
+    let TypedSuggestionItem = this.SuggestionItemOfProperType;
 
     for (let index: number = 0; index <= suggestions.length - 1; index++) {
-      let suggestionItem: ISuggestionModel = suggestions[index];
+      let suggestionItem: ISuggestionModel<T> = suggestions[index];
       suggestionItems.push(
         <div ref={ suggestionItem.isSelected ? 'selectedElement' : '' }
           key={index}>
-          <SuggestionItem
+          <TypedSuggestionItem
             suggestionModel={ suggestionItem }
             RenderSuggestion={ onRenderSuggestion }
             onClick={(ev: React.MouseEvent) => this.props.onSuggestionClick(ev, suggestionItem.item, index) }

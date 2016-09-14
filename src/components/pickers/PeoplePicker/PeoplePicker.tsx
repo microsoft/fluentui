@@ -2,6 +2,7 @@ import * as React from 'react';
 import { BasePicker } from '../BasePicker';
 import { IBasePickerProps } from '../BasePicker.Props';
 import { SelectedItemDefault } from './PeoplePickerItems/SelectedItemDefault';
+import { IPersonaProps } from '../../Persona/Persona.Props';
 import { SuggestionItemSmall, SuggestionItemNormal } from './PeoplePickerItems/SuggestionItemDefault';
 import { FocusZone } from '../../FocusZone';
 import { SelectionZone, SelectionMode } from '../../../utilities/selection/index';
@@ -20,18 +21,16 @@ export enum PeoplePickerType {
   /**
    * MemberList layout. The selected people show up below the search box.
    */
-  list,
-
-  custom
+  list
 }
 
-export interface IPeoplePickerProps extends IBasePickerProps {
+export interface IPeoplePickerProps extends IBasePickerProps<IPersonaProps> {
 }
 
-export class BasePeoplePicker extends BasePicker<IPeoplePickerProps> {
+export class BasePeoplePicker extends BasePicker<IPersonaProps, IPeoplePickerProps> {
 }
 
-export class MemberListBelow extends BasePeoplePicker {
+export class MemberListPeoplePicker extends BasePeoplePicker {
 
   public render() {
     let { displayValue } = this.state;
@@ -86,7 +85,7 @@ export class CompactPeoplePicker extends BasePeoplePicker {
   };
 }
 
-export class ListPeoplePicker extends MemberListBelow {
+export class ListPeoplePicker extends MemberListPeoplePicker {
   public static defaultProps = {
     onRenderItem: (props) => <SelectedItemWithMenu { ...props }/>,
     onRenderSuggestion: (props) => <SuggestionItemNormal { ...props }/>

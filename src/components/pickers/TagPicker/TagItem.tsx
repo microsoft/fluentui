@@ -2,17 +2,11 @@
 import * as React from 'react';
 /* tslint:enable */
 import { IPickerItemProps } from '../PickerItem.Props';
+import { ITag } from './TagPicker';
 import { css } from '../../../utilities/css';
 import './TagItem.scss';
 
-export interface ITagItem {
-  item: {
-    key: string;
-    name: string;
-  };
-}
-
-export const TagItem = (props: IPickerItemProps ) => (
+export const TagItem = (props: IPickerItemProps<ITag> ) => (
   <div
   className={ css('ms-TagItem', {
     'is-selected': props.isSelected

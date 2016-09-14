@@ -37,7 +37,7 @@ export interface IFullDocumentCardProps {
   documentTitleProps?: IDocumentCardTitleProps;
 }
 
-export interface IDocumentPickerProps extends IBasePickerProps {
+export interface IDocumentPickerProps extends IBasePickerProps<IFullDocumentCardProps> {
 }
 
 const data: IFullDocumentCardProps[] = [
@@ -349,7 +349,7 @@ export const SuggestedBigItem: (documentProps: IFullDocumentCardProps) => JSX.El
   );
 };
 
-export const SelectedDocumentItem: (documentProps: IPickerItemProps) => JSX.Element = (documentProps: IPickerItemProps) => {
+export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardProps>) => JSX.Element = (documentProps:  IPickerItemProps<IFullDocumentCardProps>) => {
   let {
     documentActionsProps,
     documentPreviewProps,
@@ -397,7 +397,7 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
   }
 }
 
-export class DocumentPicker extends BasePicker<IDocumentPickerProps> {
+export class DocumentPicker extends BasePicker<IFullDocumentCardProps, IDocumentPickerProps> {
   public render() {
     let { displayValue } = this.state;
 

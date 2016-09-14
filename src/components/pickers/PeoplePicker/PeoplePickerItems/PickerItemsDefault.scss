@@ -3,6 +3,7 @@
 .ms-PickerPersona-Container {
   @include focus-border();
 
+  display: inline-block;
   vertical-align: top;
   background: $ms-color-neutralLighter;
   margin: 1px;

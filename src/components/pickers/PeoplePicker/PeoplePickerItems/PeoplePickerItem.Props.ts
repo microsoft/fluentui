@@ -1,11 +1,10 @@
 import { IPersonaProps } from '../../../Persona';
 import { IPickerItemProps } from '../../PickerItem.Props';
 import { IContextualMenuItem } from '../../../ContextualMenu';
-export interface IPeoplePickerItemProps extends IPickerItemProps {
-  item: IPersonaProps;
+export interface IPeoplePickerItemProps extends IPickerItemProps <IPersonaProps> {
 }
 
-export interface IPeoplePickerItemWithMenuProps extends IPickerItemProps {
+export interface IPeoplePickerItemWithMenuProps extends IPickerItemProps<IPersonaWithMenu> {
   item: IPersonaWithMenu;
 }
 
