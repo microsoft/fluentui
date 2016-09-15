@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import {
   TeachingBubble,
-  TeachingBubbleBGColor,
+  TeachingBubbleTypes,
   Button
 } from '../../../../index';
 
@@ -37,7 +37,7 @@ export class TeachingBubbleBasicExample extends React.Component<any, ITeachingBu
           <div>
             <TeachingBubble
               targetElement={ this._menuButtonElement }
-              backgroundColor= {TeachingBubbleBGColor.blue}
+              teachingBubbleType= {TeachingBubbleTypes.reversed}
               body='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?'
             >
 

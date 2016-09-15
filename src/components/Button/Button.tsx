@@ -48,10 +48,9 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
     const iconClassName = css('ms-Icon', iconTypeClass, {
       'ms-fontColor-neutralSecondary' : iconColor === IconColor.neutralSecondary,
       'ms-fontColor-white' : iconColor === IconColor.white,
-      'ms-Icon--s' : iconSize === IconSize.small,
-      'ms-Icon--m' : iconSize === IconSize.medium,
+      'ms-Button-icon--small' : iconSize === IconSize.small,
+      'ms-Button-icon--medium' : iconSize === IconSize.medium,
     });
-
 
     const iconSpan = icon && (buttonType === ButtonType.command || buttonType === ButtonType.hero || buttonType === ButtonType.icon)
       ? <span className='ms-Button-icon'><i className={ iconClassName }></i></span>

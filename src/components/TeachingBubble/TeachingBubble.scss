@@ -43,19 +43,6 @@
   }
 }
 
-.ms-TeachingBubble-link {
-  @include ms-font-m;
-  color: $ms-color-neutralPrimary;
-}
-
-.ms-TeachingBubble-actions {
-  position: relative;
-  margin-top: 20px;
-  width: 100%;
-  white-space: nowrap;
-}
-
-
 
 // Carried over from callout
 // .ms-Callout-inner {

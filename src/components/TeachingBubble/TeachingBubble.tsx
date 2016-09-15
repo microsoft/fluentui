@@ -3,7 +3,7 @@ import { BaseComponent } from '../../common/BaseComponent';
 import {
   ITeachingBubble,
   ITeachingBubbleProps,
-  TeachingBubbleBGColor
+  TeachingBubbleTypes
 } from './TeachingBubble.Props';
 import {
   Callout,
@@ -11,7 +11,6 @@ import {
   Button,
   ButtonType,
   Image,
-  IImageProps,
   ImageFit
 } from '../../index';
 import { css } from '../../utilities/css';
@@ -27,6 +26,11 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
 
   // State Any Initial Prop Values
   public static initialProps = {
+    imageProps: {
+      imageFit: ImageFit.cover,
+      width: 220,
+      height: 130
+    }
   };
 
   // Specify any private variables
@@ -42,22 +46,16 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
   }
 
   public render() {
-    let { title, body, img, backgroundColor, targetElement } = this.props;
-    let imageProps: IImageProps = {
-      src: img,
-      imageFit: ImageFit.cover,
-      width: 220,
-      height: 130
-    };
+    let { title, body, teachingBubbleType, targetElement, imageProps } = this.props;
     let CalloutColor;
     let TeachingBubbleTheme;
 
-    switch (backgroundColor) {
-      case TeachingBubbleBGColor.white:
+    switch (teachingBubbleType) {
+      case TeachingBubbleTypes.normal:
         CalloutColor = CalloutBackgroundColor.white;
         TeachingBubbleTheme = 'ms-TeachingBubble--light';
         break;
-      case TeachingBubbleBGColor.blue:
+      case TeachingBubbleTypes.reversed:
         CalloutColor = CalloutBackgroundColor.blue;
         TeachingBubbleTheme = 'ms-TeachingBubble--dark';
         break;
@@ -66,7 +64,7 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
     let headerContent;
     let footerContent;
 
-    if (img) {
+    if (imageProps.src) {
       headerContent = (
         <div className='ms-TeachingBubble-header'>
           <Image { ...imageProps as any } />

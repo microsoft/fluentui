@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { TeachingBubble } from './TeachingBubble';
+import { IImageProps } from '../Image/Image.Props';
 
 /**
  * Checkbox class interface.
@@ -11,12 +12,13 @@ export interface ITeachingBubble {
 /**
  * TeachingBubble component props.
  */
-export interface ITeachingBubbleProps extends React.Props<TeachingBubble> {
+
+export interface ITeachingBubbleProps extends React.Props<TeachingBubble>, IImageProps {
   /**
-   * The background color of the TeachingBubble
-   * @default white
+   * The type of TeachingBubble (changes bg color and text color)
+   * @default normal
    */
-  backgroundColor?: TeachingBubbleBGColor;
+  teachingBubbleType: TeachingBubbleTypes;
 
   /**
    * A title for the Teaching Bubble.
@@ -26,7 +28,7 @@ export interface ITeachingBubbleProps extends React.Props<TeachingBubble> {
   /**
    * An Image for the Teaching Bubble.
    */
-  img?: string;
+  imageProps?: IImageProps;
 
   /**
    * A body for the Teaching Bubble.
@@ -44,7 +46,7 @@ export interface ITeachingBubbleProps extends React.Props<TeachingBubble> {
   onDismiss?: (ev?: any) => void;
 }
 
-export enum TeachingBubbleBGColor {
-  white,
-  blue
+export enum TeachingBubbleTypes {
+  normal,
+  reversed
 }

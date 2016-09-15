@@ -20,7 +20,7 @@ export interface IButtonProps extends React.Props<Button> {
   icon?: string;
 
  /**
-  * Should the button use a small icon
+  * Size of the icon
   * @default False
   */
   iconSize?: IconSize;

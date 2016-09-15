@@ -4,7 +4,6 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { IPositionProps } from '../../utilities/positioning';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 
-
 export interface ICalloutProps extends React.Props<Callout>, IPositionProps, IAccessiblePopupProps {
   /**
    * Element to anchor the callout to.

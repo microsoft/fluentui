@@ -8,6 +8,7 @@ import * as ReactTestUtils from 'react-addons-test-utils';
 let { expect } = chai;
 
 import { TeachingBubble } from './TeachingBubble';
+import { TeachingBubbleTypes } from './TeachingBubble.props';
 
 describe('TeachingBubble', () => {
 
@@ -15,6 +16,8 @@ describe('TeachingBubble', () => {
     let component = ReactTestUtils.renderIntoDocument(
       <TeachingBubble
         title='Title'
+        teachingBubbleType= {TeachingBubbleTypes.normal}
+
       />
     );
     let renderedDOM = ReactDOM.findDOMNode(component);
