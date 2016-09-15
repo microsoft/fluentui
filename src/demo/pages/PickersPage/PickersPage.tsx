@@ -16,7 +16,7 @@ import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const TagPickerExampleCode = require('./examples/TagPicker.Basic.Example');
-const PeoplePickerTypesExampleCode = require('./examples/PeoplePicker.MemberList.Example.tsx');
+const PeoplePickerTypesExampleCode = require('./examples/PeoplePicker.Types.Example.tsx');
 const PickerCustomResultExampleCode = require('./examples/Picker.CustomResult.Example');
 
 export class PickersPage extends React.Component<IComponentDemoPageProps, any> {
