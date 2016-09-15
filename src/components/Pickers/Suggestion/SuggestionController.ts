@@ -27,21 +27,25 @@ export class SuggestionController<T> {
 
   public nextSuggestion(): boolean {
     if (this.currentIndex < (this.suggestions.length - 1)) {
-      this.setSelectedSuggestion(this.currentIndex + 1);
+      this._setSelectedSuggestion(this.currentIndex + 1);
       return true;
     } else if (this.currentIndex === (this.suggestions.length - 1)) {
-      this.setSelectedSuggestion(0);
+      this._setSelectedSuggestion(0);
       return true;
+    } else {
+      return false;
     }
   }
 
   public previousSuggestion(): boolean {
     if (this.currentIndex > 0) {
-      this.setSelectedSuggestion(this.currentIndex - 1);
+      this._setSelectedSuggestion(this.currentIndex - 1);
       return true;
     } else if (this.currentIndex === 0) {
-      this.setSelectedSuggestion(this.suggestions.length - 1);
+      this._setSelectedSuggestion(this.suggestions.length - 1);
       return true;
+    } else {
+      return false;
     }
   }
 
@@ -67,7 +71,7 @@ export class SuggestionController<T> {
     return converted;
   }
 
-  private setSelectedSuggestion(index: number): void {
+  private _setSelectedSuggestion(index: number): void {
     if (index > this.suggestions.length - 1 || index < 0) {
       this.currentIndex = 0;
       this.currentSuggestion.isSelected = false;

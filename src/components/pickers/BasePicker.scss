@@ -4,15 +4,15 @@
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
-  border: 1px solid #c8c8c8;
+  border: 1px solid $ms-color-neutralLight;
   min-width: 180px;
   padding: 1px;
 
   &:hover {
-    border-color: #767677;
+    border-color: $ms-color-themeLight;
   }
 
-  + .ms-BasePicker-input:focus {
+  &.inputFocused {
     border-color: $ms-color-themePrimary;
   }
 }

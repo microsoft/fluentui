@@ -7,6 +7,7 @@ import { Suggestion, SuggestionController, ISuggestionProps } from './Suggestion
 import { IBasePickerProps } from './BasePicker.Props';
 import { IPickerItemProps } from './PickerItem.Props';
 import { css } from '../../utilities/css';
+import { autobind } from '../../utilities/autobind';
 import './BasePicker.scss';
 
 export interface IBasePickerState {
@@ -14,6 +15,7 @@ export interface IBasePickerState {
   displayValue?: string;
   value?: string;
   searchForMoreText?: string;
+  suggestionsVisible?: boolean;
 }
 
 // This interface is because selection direction is not currently supported by the typedefinitions even
@@ -79,7 +81,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
         <SelectionZone selection={ this._selection } selectionMode={ SelectionMode.multiple }>
           <FocusZone ref='focusZone' className='ms-BasePicker-text'>
             { this.renderItems() }
-            <input ref='input' className='ms-BasePicker-input ms-autocomplete-top' onFocus={ this._onInputFocus } onChange={ this._onInputChange } value={ displayValue }
+            <input
+              ref='input'
+              className='ms-BasePicker-input'
+              onFocus={ this._onInputFocus }
+              onChange={ this._onInputChange }
+              value={ displayValue }
               aria-activedescendant={ 'sug-' + this.suggestionManager.currentIndex }
               aria-owns='suggestion-list'
               aria-expanded='true'
@@ -95,7 +102,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
 
   protected renderSuggestions(): JSX.Element {
     let TypedSuggestion = this.SuggestionOfProperType;
-    return this.state.value && this.state.value !== '' ? (
+    return this.state.suggestionsVisible ? (
       <Callout isBeakVisible={ false } gapSpace={ 0 } targetElement={ this.refs.root } onDismiss={ this.dismissSuggestions }>
         <TypedSuggestion
           onRenderSuggestion={ this.props.onRenderSuggestion }
@@ -118,7 +125,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
   }
 
   public dismissSuggestions() {
-    this._updateValue('');
+    this.setState({ suggestionsVisible: false });
   }
 
   public completeSuggestion() {
@@ -244,7 +251,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
 
     this.setState({
       displayValue: itemValue || updatedValue,
-      value: updatedValue
+      value: updatedValue,
+      suggestionsVisible: updatedValue && updatedValue !== ''
     }, () => {
       if (itemValue && differenceIndex < itemValue.length) {
         (this.refs.input as IHTMLInputElementWithSelectionDirection).setSelectionRange(differenceIndex, itemValue.length, 'backward');
@@ -313,7 +321,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
   protected _onBackSpace(ev: React.KeyboardEvent) {
     let { displayValue } = this.state;
     if (ev.target === this.refs.input) {
-      if (displayValue && this.suggestionManager.hasSelectedSuggestion() && this.refs.input.selectionStart !== this.refs.input.selectionEnd){
+      if (displayValue && this.suggestionManager.hasSelectedSuggestion() && this.refs.input.selectionStart !== this.refs.input.selectionEnd) {
         this._updateValue(displayValue.substr(0, this.refs.input.selectionStart - 1));
       } else if (!displayValue && this.state.items.length) {
         this.removeItem(this.state.items[this.state.items.length - 1]);
