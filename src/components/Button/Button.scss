@@ -7,7 +7,7 @@
 // --------------------------------------------------
 // Button styles
 
-
+$button-commandButtonHeight: 40px;
 
 .ms-Button {
   @include focus-border();
@@ -280,17 +280,21 @@
   @include text-align(left);
   background-color: transparent;
   border: none;
-  height: 40px;
+  height: $button-commandButtonHeight;
   min-width: 0;
   padding: 0 8px;
 
+  .ms-Icon {
+    line-height: $button-commandButtonHeight;
+  }
+
   .ms-Button-label {
     color: $ms-color-neutralPrimary;
+    line-height: $button-commandButtonHeight;
   }
 
   .ms-Button-icon {
     vertical-align: top;
-    margin-top: 2px;
     @include text-align(left);
     color: $ms-color-themePrimary;
     display: inline-block;
