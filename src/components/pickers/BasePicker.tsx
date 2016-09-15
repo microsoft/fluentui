@@ -16,6 +16,12 @@ export interface IBasePickerState {
   searchForMoreText?: string;
 }
 
+// This interface is because selection direction is not currently supported by the typedefinitions even
+// though it works in IE (9 and later), Chrome, and Firefox.
+export interface IHTMLInputElementWithSelectionDirection extends HTMLInputElement {
+  setSelectionRange(start: number, end: number, direction?: string): void;
+}
+
 export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Component<P, IBasePickerState> {
 
   public refs: {
@@ -74,8 +80,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
           <FocusZone ref='focusZone' className='ms-BasePicker-text'>
             { this.renderItems() }
             <input ref='input' className='ms-BasePicker-input ms-autocomplete-top' onFocus={ this._onInputFocus } onChange={ this._onInputChange } value={ displayValue }
-            aria-activedescendant={ 'sug-' + this.suggestionManager.currentIndex }
-            aria-owns={ 'sug-' + this.suggestionManager.currentIndex } />
+              aria-activedescendant={ 'sug-' + this.suggestionManager.currentIndex }
+              aria-owns='suggestion-list'
+              aria-expanded='true'
+              aria-haspopup='true'
+              autoCapitalize='off'
+              autoComplete='off'/>
           </FocusZone>
         </SelectionZone>
         { this.renderSuggestions() }
@@ -237,7 +247,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
       value: updatedValue
     }, () => {
       if (itemValue && differenceIndex < itemValue.length) {
-        this.refs.input.setSelectionRange(differenceIndex, itemValue.length);
+        (this.refs.input as IHTMLInputElementWithSelectionDirection).setSelectionRange(differenceIndex, itemValue.length, 'backward');
       }
     });
   }
@@ -270,8 +280,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
 
       case KeyCodes.backspace:
         this._onBackSpace(ev);
-        ev.preventDefault();
-        ev.stopPropagation();
         break;
 
       case KeyCodes.up:
@@ -303,13 +311,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
   }
 
   protected _onBackSpace(ev: React.KeyboardEvent) {
-    let { value } = this.state;
+    let { displayValue } = this.state;
     if (ev.target === this.refs.input) {
-      if (value && this.suggestionManager.hasSelectedSuggestion() && this.refs.input.selectionStart !== this.refs.input.selectionEnd) {
-        this.setState({
-          displayValue: value.substring(0, this.refs.input.selectionStart)
-        });
-      } else if (!value && this.state.items.length) {
+      if (displayValue && this.suggestionManager.hasSelectedSuggestion() && this.refs.input.selectionStart !== this.refs.input.selectionEnd){
+        this._updateValue(displayValue.substr(0, this.refs.input.selectionStart - 1));
+      } else if (!displayValue && this.state.items.length) {
         this.removeItem(this.state.items[this.state.items.length - 1]);
       }
     } else if (this._selection.getSelectedCount() > 0) {

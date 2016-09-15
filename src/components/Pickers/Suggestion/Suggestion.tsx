@@ -46,7 +46,7 @@ export class Suggestion<T> extends React.Component<ISuggestionProps<T>, {}> {
           (<div className='ms-Suggestion-title'>
             { suggestionsHeaderText }
           </div>) : (null) }
-        <div className='ms-Suggestion-container'>
+        <div className='ms-Suggestion-container' id='suggestion-list' role='menu'>
           { this._renderSuggestions() }
         </div>
         { searchForMoreText ?
@@ -90,7 +90,8 @@ export class Suggestion<T> extends React.Component<ISuggestionProps<T>, {}> {
       suggestionItems.push(
         <div ref={ suggestionItem.isSelected ? 'selectedElement' : '' }
           key={ index }
-          id={ 'sug-' + index }>
+          id={ 'sug-' + index }
+          role='menuitem'>
           <TypedSuggestionItem
             suggestionModel={ suggestionItem }
             RenderSuggestion={ onRenderSuggestion }
