@@ -5,7 +5,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * Function that specifies how the selected item will appear.
    */
-  onRenderItem?: (item: IPickerItemProps<T>) => JSX.Element;
+  onRenderItem?: (props: IPickerItemProps<T>) => JSX.Element;
   /**
    * Function that specifies how the suggestion will appear
    */
@@ -46,7 +46,9 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * Classname for the suggestion box.
    */
   suggestionsClassName?: string;
-
+  /**
+   * ClassName for suggestion items.
+   */
   suggestionItemClassName?: string;
   /**
    * The text that should appear on the button to search for more.

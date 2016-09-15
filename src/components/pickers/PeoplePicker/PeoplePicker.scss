@@ -1,5 +1,7 @@
+@import '../../../common/common';
+
 .ms-base-peoplepicker {
-  float: left;
+  @include float(left);
 }
 
 .ms-PickerPersona-Container {

@@ -3,7 +3,7 @@ export interface ISuggestionModel<T> {
   isSelected: boolean;
 }
 
-export class SuggestionController<T> {
+export class SuggestionsController<T> {
   public currentIndex: number;
   public currentSuggestion: ISuggestionModel<T>;
   private suggestions: ISuggestionModel<T>[];

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ISuggestionModel } from './SuggestionController';
+import { ISuggestionModel } from './SuggestionsController';
 
-export interface ISuggestionProps<T> extends React.Props<any> {
+export interface ISuggestionsProps<T> extends React.Props<any> {
   onRenderSuggestion: (props: any) => JSX.Element;
   onSuggestionClick: (ev: React.MouseEvent, item: any, index: number) => void;
   suggestions: ISuggestionModel<T>[];

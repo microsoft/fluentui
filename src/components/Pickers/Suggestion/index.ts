@@ -1,3 +1,3 @@
-export * from './Suggestion';
-export * from './Suggestion.Props';
-export * from './SuggestionController';
+export * from './Suggestions';
+export * from './Suggestions.Props';
+export * from './SuggestionsController';

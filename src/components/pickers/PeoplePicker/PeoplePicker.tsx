@@ -9,21 +9,6 @@ import { SelectionZone, SelectionMode } from '../../../utilities/selection/index
 import { SelectedItemWithMenu } from './PeoplePickerItems/SelectedItemWithMenu';
 import './PeoplePicker.scss';
 
-export enum PeoplePickerType {
-  /**
-   * Standard People Picker.
-   */
-  normal,
-  /**
- * Compact layout. It uses small personas when displaying search results.
- */
-  compact,
-  /**
-   * MemberList layout. The selected people show up below the search box.
-   */
-  list
-}
-
 export interface IPeoplePickerProps extends IBasePickerProps<IPersonaProps> {
 }
 
@@ -37,11 +22,11 @@ export class MemberListPeoplePicker extends BasePeoplePicker {
 
     return (
       <div>
-        <div ref='root' className='ms-BasePicker' onKeyDown={ this._onKeyDown }>
+        <div ref={ this._resolveRef('_root') } className='ms-BasePicker' onKeyDown={ this._onKeyDown }>
           <SelectionZone selection={ this._selection }
             selectionMode={SelectionMode.multiple}>
             <div className='ms-BasePicker-text'>
-              <input ref='input'
+              <input ref={ this._resolveRef('_input') }
                 onFocus={ this._onInputFocus }
                 onChange={ this._onInputChange }
                 value={ displayValue }
@@ -51,7 +36,7 @@ export class MemberListPeoplePicker extends BasePeoplePicker {
           </SelectionZone>
         </div>
         { this._renderSuggestions() }
-        <FocusZone ref='focusZone'>
+        <FocusZone ref={ this._resolveRef('_focusZone') }>
           { this._renderItems() }
         </FocusZone>
 
@@ -61,16 +46,19 @@ export class MemberListPeoplePicker extends BasePeoplePicker {
 
   protected _onBackSpace(ev: React.KeyboardEvent) {
     let { value } = this.state;
-    if (ev.target === this.refs.input) {
-      if (value && this.refs.input.selectionStart !== this.refs.input.selectionEnd) {
+    if (ev.target === this._input) {
+      if (value && this._input.selectionStart !== this._input.selectionEnd) {
         this.setState({
-          displayValue: value.substring(0, this.refs.input.selectionStart)
+          displayValue: value.substring(0, this._input.selectionStart)
         });
       }
     }
   }
 }
 
+/**
+ * Standard People Picker.
+ */
 export class NormalPeoplePicker extends BasePeoplePicker {
   public static defaultProps = {
     onRenderItem: (props) => <SelectedItemDefault {...props}/>,
@@ -78,6 +66,9 @@ export class NormalPeoplePicker extends BasePeoplePicker {
   };
 }
 
+/**
+* Compact layout. It uses small personas when displaying search results.
+*/
 export class CompactPeoplePicker extends BasePeoplePicker {
   public static defaultProps = {
     onRenderItem: (props) => <SelectedItemDefault {...props}/>,
@@ -85,6 +76,9 @@ export class CompactPeoplePicker extends BasePeoplePicker {
   };
 }
 
+/**
+ * MemberList layout. The selected people show up below the search box.
+ */
 export class ListPeoplePicker extends MemberListPeoplePicker {
   public static defaultProps = {
     onRenderItem: (props) => <SelectedItemWithMenu { ...props }/>,

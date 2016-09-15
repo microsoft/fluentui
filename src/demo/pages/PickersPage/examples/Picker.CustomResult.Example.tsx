@@ -371,10 +371,10 @@ export class DocumentPicker extends BasePicker<IFullDocumentCardProps, IDocument
 
     return (
       <div>
-        <div ref='root' className='ms-BasePicker' onKeyDown={ this._onKeyDown }>
+        <div ref={ this._resolveRef('_root') } className='ms-BasePicker' onKeyDown={ this._onKeyDown }>
           <SelectionZone selection={ this._selection }>
             <div className='ms-BasePicker-text'>
-              <input ref='input'
+              <input ref={ this._resolveRef('_input') }
                 onFocus={ this._onInputFocus }
                 onChange={ this._onInputChange }
                 value={ displayValue }
@@ -383,7 +383,7 @@ export class DocumentPicker extends BasePicker<IFullDocumentCardProps, IDocument
             </div>
           </SelectionZone>
         </div>
-        <FocusZone ref='focusZone'>
+        <FocusZone ref={ this._resolveRef('_focusZone') }>
           { this._renderItems() }
         </FocusZone>
         { this._renderSuggestions() }
@@ -392,10 +392,10 @@ export class DocumentPicker extends BasePicker<IFullDocumentCardProps, IDocument
   }
   protected _onBackSpace(ev: React.KeyboardEvent) {
     let { value } = this.state;
-    if (ev.target === this.refs.input) {
-      if (value && this.refs.input.selectionStart !== this.refs.input.selectionEnd) {
+    if (ev.target === this._input) {
+      if (value && this._input.selectionStart !== this._input.selectionEnd) {
         this.setState({
-          displayValue: value.substring(0, this.refs.input.selectionStart)
+          displayValue: value.substring(0, this._input.selectionStart)
         });
       }
     }

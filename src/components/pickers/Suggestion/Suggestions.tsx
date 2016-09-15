@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Button, ButtonType } from '../../Button';
 import { css } from '../../../utilities/css';
-import { ISuggestionItemProps, ISuggestionProps } from './Suggestion.Props';
-import { ISuggestionModel } from './SuggestionController';
+import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.Props';
+import { ISuggestionModel } from './SuggestionsController';
+import { BaseComponent } from '../../../common/BaseComponent';
 import './Suggestion.scss';
 
 export class SuggestionItem<T> extends React.Component<ISuggestionItemProps<T>, {}> {
@@ -16,20 +17,18 @@ export class SuggestionItem<T> extends React.Component<ISuggestionItemProps<T>, 
     return (
       <Button
         onClick={ onClick }
-        className={ css('ms-Suggestion-item', { 'is-suggested': suggestionModel.isSelected }, className ) }
+        className={ css('ms-Suggestions-item', { 'is-suggested': suggestionModel.isSelected }, className) }
         >
-        <RenderSuggestion {...suggestionModel.item}/>
+        <RenderSuggestion { ...suggestionModel.item }/>
       </Button>
     );
   }
 }
 
-export class Suggestion<T> extends React.Component<ISuggestionProps<T>, {}> {
-  public refs: {
-    [key: string]: React.ReactInstance;
-    searchForMoreButton: Button;
-    selectedElement: HTMLDivElement;
-  };
+export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
+
+  protected _searchForMoreButton: Button;
+  protected _selectedElement: HTMLDivElement;
   private SuggestionItemOfProperType = SuggestionItem as new (props: ISuggestionItemProps<T>) => SuggestionItem<T>;
 
   constructor(suggestionProps) {
@@ -41,12 +40,12 @@ export class Suggestion<T> extends React.Component<ISuggestionProps<T>, {}> {
     let { suggestionsHeaderText, searchForMoreText, className } = this.props;
 
     return (
-      <div className={ css('ms-Suggestion', className ? className : '') }>
+      <div className={ css('ms-Suggestions', className ? className : '') }>
         { suggestionsHeaderText ?
-          (<div className='ms-Suggestion-title'>
+          (<div className='ms-Suggestions-title'>
             { suggestionsHeaderText }
           </div>) : (null) }
-        <div className='ms-Suggestion-container' id='suggestion-list' role='menu'>
+        <div className='ms-Suggestions-container' id='suggestion-list' role='menu'>
           { this._renderSuggestions() }
         </div>
         { searchForMoreText ?
@@ -55,7 +54,7 @@ export class Suggestion<T> extends React.Component<ISuggestionProps<T>, {}> {
             className={ 'ms-SearchMore-button' }
             buttonType={ ButtonType.icon }
             icon={ 'Search' }
-            ref='searchForMoreButton' >
+            ref={ this._resolveRef('_searchForMoreButton') } >
             { searchForMoreText }
           </Button>) : (null)
         }
@@ -64,14 +63,14 @@ export class Suggestion<T> extends React.Component<ISuggestionProps<T>, {}> {
   }
 
   public focusSearchForMoreButton() {
-    if (this.refs.searchForMoreButton) {
-      this.refs.searchForMoreButton.focus();
+    if (this._searchForMoreButton) {
+      this._searchForMoreButton.focus();
     }
   }
 
   public scrollSelected() {
-    if (this.refs.selectedElement) {
-      this.refs.selectedElement.scrollIntoView(false);
+    if (this._selectedElement) {
+      this._selectedElement.scrollIntoView(false);
     }
   }
 
@@ -79,7 +78,7 @@ export class Suggestion<T> extends React.Component<ISuggestionProps<T>, {}> {
     let { suggestions, onRenderSuggestion, noResultsFoundText } = this.props;
 
     if (!suggestions || !suggestions.length) {
-      return [<div className='ms-Suggestion-none'> { noResultsFoundText ? noResultsFoundText : ' ' } </div>];
+      return [<div className='ms-Suggestions-none'> { noResultsFoundText ? noResultsFoundText : ' ' } </div>];
     }
 
     let suggestionItems: JSX.Element[] = [];
@@ -88,7 +87,7 @@ export class Suggestion<T> extends React.Component<ISuggestionProps<T>, {}> {
     for (let index: number = 0; index <= suggestions.length - 1; index++) {
       let suggestionItem: ISuggestionModel<T> = suggestions[index];
       suggestionItems.push(
-        <div ref={ suggestionItem.isSelected ? 'selectedElement' : '' }
+        <div ref={ this._resolveRef(suggestionItem.isSelected ? '_selectedElement' : '') }
           key={ index }
           id={ 'sug-' + index }
           role='menuitem'>

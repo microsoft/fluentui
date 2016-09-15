@@ -2,11 +2,10 @@
 
 .ms-SearchMore-button {
   @include button-reset();
-  position: relative;
   height: auto;
-  width: 100%;
   text-align: center;
   margin: 0;
+  width: 100%;
   &:hover {
       background-color: $ms-color-neutralLight;
       cursor: pointer;
@@ -17,9 +16,9 @@
       background-color: $ms-color-themeLight;
   }
 }
-.ms-Suggestion {
+.ms-Suggestions {
   min-width: 180px;
-  .ms-Suggestion-item {
+  .ms-Suggestions-item {
     height: auto;
     width: 100%;
     @include text-align(left);
@@ -35,7 +34,7 @@
       }
     }
   }
-  .ms-Suggestion-title {
+  .ms-Suggestions-title {
     color: $ms-color-themePrimary;
     font-size: $ms-font-size-s;
     text-align: center;
@@ -43,13 +42,13 @@
     line-height: 40px;
     border-bottom: 1px solid $ms-color-neutralLight;
   }
-  .ms-Suggestion-container {
+  .ms-Suggestions-container {
     overflow-y: auto;
     overflow-x: hidden;
     max-height: 300px;
     border-bottom: 1px solid $ms-color-neutralLight;
   }
-  .ms-Suggestion-none {
+  .ms-Suggestions-none {
     text-align: center;
     color: $ms-color-info;
     font-size: $ms-font-size-s;
