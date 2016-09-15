@@ -50,9 +50,9 @@ export class MemberListPeoplePicker extends BasePeoplePicker {
             </div>
           </SelectionZone>
         </div>
-        { this.renderSuggestions() }
+        { this._renderSuggestions() }
         <FocusZone ref='focusZone'>
-          { this.renderItems() }
+          { this._renderItems() }
         </FocusZone>
 
       </div>

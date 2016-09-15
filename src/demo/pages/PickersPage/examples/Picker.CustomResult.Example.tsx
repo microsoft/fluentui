@@ -384,9 +384,9 @@ export class DocumentPicker extends BasePicker<IFullDocumentCardProps, IDocument
           </SelectionZone>
         </div>
         <FocusZone ref='focusZone'>
-          { this.renderItems() }
+          { this._renderItems() }
         </FocusZone>
-        { this.renderSuggestions() }
+        { this._renderSuggestions() }
       </div>
     );
   }
