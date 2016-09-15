@@ -12,7 +12,7 @@ export class SuggestionController<T> {
       this.currentIndex = -1;
   }
 
-  public updateSuggestions(newSuggestions: any[]) {
+  public updateSuggestions(newSuggestions: T[]) {
     if (newSuggestions && newSuggestions.length > 0) {
       this.suggestions = this._convertSuggestionsToSuggestionItems(newSuggestions);
       this.currentIndex = 0;
