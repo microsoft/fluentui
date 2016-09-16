@@ -64,7 +64,7 @@ export const AppState: IAppState = {
           key: 'Breadcrumb',
           name: 'Breadcrumb',
           status: ExampleStatus.beta,
-          url: '#/examples/breadcrumb',
+          url: '#/examples/breadcrumb'
         },
         {
           component: ButtonPage,
