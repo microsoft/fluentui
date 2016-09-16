@@ -12,6 +12,7 @@ Fabric React is a responsive, mobile-first collection of robust components desig
 - [Get started](#get-started)
 - [Advanced usage](#advanced-usage)
 - [Roadmap](#roadmap)
+- [Browser support](#browser-support)
 - [Contribute to Fabric React](#contribute-to-fabric-react)
 - [Licenses](#licenses)
 - [Changelog](#changelog)
@@ -64,6 +65,10 @@ For advanced usage including info about module vs. path-based imports, using an 
 ## Roadmap
 
 As mentioned above, the project is currently in a **pre-v1 state**. Components will be in varying states with the end goal being keyboard accessible, screen reader friendly, RTL friendly, and themeable controls. To see details about the components and the desired goal, please check out the [Roadmap](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ROADMAP.md).
+
+## Browser support
+
+Fabric React supports many commonly used browsers. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/BROWSERSUPPORT.md) for more information.
 
 
 ## Contribute to Fabric React
