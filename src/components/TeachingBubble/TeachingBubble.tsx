@@ -117,7 +117,9 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
       );
     }
 
+    //MISC TODOS
     //@TODO fix example - currently clicking button jumps you to top of the page
+    //@TODO remove unused styles from TeachingBubble.scss
     return (
         <Callout
           className='ms-TeachingBubble'
