@@ -19,7 +19,7 @@ describe('TeachingBubble', () => {
       />
     );
     let renderedDOM = ReactDOM.findDOMNode(component);
-    let titleElement = renderedDOM.querySelector('.ms-TeachingBubble-title');
+    let titleElement = renderedDOM.querySelector('.ms-TeachingBubble-headline');
 
     expect(titleElement.textContent).to.equal('Title');
   });

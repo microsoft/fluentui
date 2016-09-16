@@ -5,7 +5,6 @@ import * as React from 'react';
 import {
   TeachingBubble,
   Button,
-  Image,
   IImageProps,
   IButtonProps,
 } from '../../../../index';

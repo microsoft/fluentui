@@ -71,7 +71,7 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
       headerContent = (
         <div className={ css(
               'ms-TeachingBubble-header',
-              hasCondensedHeadline ? 'ms-TeachingBubble-header--small': 'ms-TeachingBubble-header--large'
+              hasCondensedHeadline ? 'ms-TeachingBubble-header--small' : 'ms-TeachingBubble-header--large'
              ) }>
           <p className='ms-TeachingBubble-headline' >
             { headline }
@@ -80,8 +80,8 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
       );
     }
 
-    //@TODO find better name for 'body'?
-    //@TODO support passing through children unless this prop is present
+    // @TODO find better name for 'body'?
+    // @TODO support passing through children unless this prop is present
     if (body) {
       bodyContent = (
         <div className='ms-TeachingBubble-body'>
@@ -92,9 +92,9 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
       );
     }
 
-    //@TODO support single button, i.e. only render the button passed in
-    //@TODO update button to support passing in displayText as a property (Discuss with David)
-    //@TODO button styles still need to be done to match redlines
+    // @TODO support single button, i.e. only render the button passed in
+    // @TODO update button to support passing in displayText as a property (Discuss with David)
+    // @TODO button styles still need to be done to match redlines
     if (primaryButtonProps || secondaryButtonProps ) {
       footerContent = (
         <div className='ms-TeachingBubble-footer'>
@@ -117,9 +117,9 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
       );
     }
 
-    //MISC TODOS
-    //@TODO fix example - currently clicking button jumps you to top of the page
-    //@TODO remove unused styles from TeachingBubble.scss
+    // MISC TODOS
+    // @TODO fix example - currently clicking button jumps you to top of the page
+    // @TODO remove unused styles from TeachingBubble.scss
     return (
         <Callout
           className='ms-TeachingBubble'
