@@ -51,6 +51,7 @@ export class Link extends React.Component<ILinkProps, any> {
 
     if (popupWindowProps) {
       this._popupWindow(popupWindowProps);
+      ev.preventDefault();
     }
 
     if (onClick) {
