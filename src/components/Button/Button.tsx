@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { css } from '../../utilities/css';
 import { assign } from '../../utilities/object';
-import { IButtonProps, ButtonType, IconColor, IconSize } from './Button.Props';
+import { IButtonProps, ButtonType } from './Button.Props';
 import { getId } from '../../utilities/object';
 import './Button.scss';
 
@@ -28,12 +28,11 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
   }
 
   public render(): JSX.Element {
-    let { buttonType, children, icon, iconColor, iconSize, description, ariaLabel, ariaDescription, href, disabled, onClick } = this.props;
+    let { buttonType, children, icon, description, ariaLabel, ariaDescription, href, disabled, onClick } = this.props;
     let { labelId, descriptionId, ariaDescriptionId } = this.state;
 
     const renderAsAnchor: boolean = !!href;
     const tag = renderAsAnchor ? 'a' : 'button';
-    const iconTypeClass = 'ms-Icon--'.concat(icon);
 
     const className = css((this.props.className), 'ms-Button', {
       'ms-Button--primary': buttonType === ButtonType.primary,
@@ -45,15 +44,8 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
                                                // if not utilize default button disabled behavior.
     });
 
-    const iconClassName = css('ms-Icon', iconTypeClass, {
-      'ms-fontColor-neutralSecondary' : iconColor === IconColor.neutralSecondary,
-      'ms-fontColor-white' : iconColor === IconColor.white,
-      'ms-Button-icon--small' : iconSize === IconSize.small,
-      'ms-Button-icon--medium' : iconSize === IconSize.medium,
-    });
-
     const iconSpan = icon && (buttonType === ButtonType.command || buttonType === ButtonType.hero || buttonType === ButtonType.icon)
-      ? <span className='ms-Button-icon'><i className={ iconClassName }></i></span>
+      ? <span className='ms-Button-icon'><i className={`ms-Icon ms-Icon--${icon}`}></i></span>
       : null;
 
     // ms-Button-description is only shown when the button type is compound.

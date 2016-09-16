@@ -2,18 +2,17 @@ import * as React from 'react';
 import { BaseComponent } from '../../common/BaseComponent';
 import {
   ITeachingBubble,
-  ITeachingBubbleProps,
-  TeachingBubbleTypes
+  ITeachingBubbleProps
 } from './TeachingBubble.Props';
 import {
   Callout,
-  CalloutBackgroundColor,
   Button,
   ButtonType,
   Image,
   ImageFit
 } from '../../index';
-import { css } from '../../utilities/css';
+import { DirectionalHint } from '../../common/DirectionalHint';
+import { css } from '../../utilities';
 import { getId } from '../../utilities/object';
 
 import './TeachingBubble.scss';
@@ -26,16 +25,22 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
 
   // State Any Initial Prop Values
   public static initialProps = {
+    hasCondensedHeadline: false,
+    primaryButtonProps: {
+      type: ButtonType.primary
+    },
+    secondaryButtonProps: {
+      type: ButtonType.normal
+    },
     imageProps: {
       imageFit: ImageFit.cover,
-      width: 220,
+      width: 364,
       height: 130
     }
   };
 
   // Specify any private variables
   private _id: string;
-
   // Constructor
   constructor(props: ITeachingBubbleProps) {
     super(props);
@@ -46,81 +51,92 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
   }
 
   public render() {
-    let { title, body, teachingBubbleType, targetElement, imageProps } = this.props;
-    let CalloutColor;
-    let TeachingBubbleTheme;
+    let { imageProps, primaryButtonProps, secondaryButtonProps, headline, hasCondensedHeadline, hasCloseIcon, body, targetElement, onDismiss, closeButtonAriaLabel } = this.props;
 
-    switch (teachingBubbleType) {
-      case TeachingBubbleTypes.normal:
-        CalloutColor = CalloutBackgroundColor.white;
-        TeachingBubbleTheme = 'ms-TeachingBubble--light';
-        break;
-      case TeachingBubbleTypes.reversed:
-        CalloutColor = CalloutBackgroundColor.blue;
-        TeachingBubbleTheme = 'ms-TeachingBubble--dark';
-        break;
-    }
-
+    let imageContent;
     let headerContent;
+    let bodyContent;
     let footerContent;
+    let closeButton;
 
     if (imageProps.src) {
-      headerContent = (
-        <div className='ms-TeachingBubble-header'>
-          <Image { ...imageProps as any } />
-        </div>
+      imageContent = (
+         <div className='ms-TeachingBubble-header'>
+            <Image { ...imageProps as any } />
+         </div>
       );
-    } else if (title) {
+     }
+
+    if (headline) {
       headerContent = (
-        <div className='ms-TeachingBubble-header'>
-          <p className='ms-TeachingBubble-title'>
-            { title }
+        <div className={ css(
+              'ms-TeachingBubble-header',
+              hasCondensedHeadline ? 'ms-TeachingBubble-header--small': 'ms-TeachingBubble-header--large'
+             ) }>
+          <p className='ms-TeachingBubble-headline' >
+            { headline }
           </p>
         </div>
       );
     }
 
-    footerContent = (
-      <div className='ms-TeachingBubble-actions'>
-        <Button buttonType={ ButtonType.primary } >Save</Button>
-        <Button>Cancel</Button>
-      </div>
-    );
+    //@TODO find better name for 'body'?
+    //@TODO support passing through children unless this prop is present
+    if (body) {
+      bodyContent = (
+        <div className='ms-TeachingBubble-body'>
+          <p className='ms-TeachingBubble-subText'>
+            { body }
+          </p>
+         </div>
+      );
+    }
 
-    return (
-      <Callout
-        className='ms-TeachingBubble-callout'
-        gapSpace={ 20 }
-        targetElement={ targetElement }
-        hasCloseButton= { true }
-        onDismiss={ (ev: any) => { this.dismiss(); } }
-        setInitialFocus={ true }
-        backgroundColor={ CalloutColor }
-      >
-        <div className={
-          css('ms-TeachingBubble', TeachingBubbleTheme)
-        }>
-
-        { headerContent }
-
-          <div className='ms-TeachingBubble-inner'>
-            <div className='ms-TeachingBubble-content'>
-              <p className='ms-TeachingBubble-subText'>
-               { body }
-              </p>
-            </div>
-          </div>
+    //@TODO support single button, i.e. only render the button passed in
+    //@TODO update button to support passing in displayText as a property (Discuss with David)
+    //@TODO button styles still need to be done to match redlines
+    if (primaryButtonProps || secondaryButtonProps ) {
+      footerContent = (
+        <div className='ms-TeachingBubble-footer'>
+          <Button { ...primaryButtonProps as any } >Button One</Button>
+          <Button { ...secondaryButtonProps as any }>Button Two</Button>
         </div>
+      );
+    }
+
+    if ( hasCloseIcon ) {
+      closeButton = (
+        <Button
+          className='ms-TeachingBubble-button'
+          buttonType={ ButtonType.icon }
+          icon='Cancel'
+          rootProps={ { title: closeButtonAriaLabel } }
+          ariaLabel={ closeButtonAriaLabel }
+          onClick={ onDismiss }
+        />
+      );
+    }
+
+    //@TODO fix example - currently clicking button jumps you to top of the page
+    return (
+        <Callout
+          className='ms-TeachingBubble'
+          ref={this._resolveRef('_callout')}
+          gapSpace={ 20 }
+          targetElement={ targetElement }
+          setInitialFocus={ true }
+          doNotLayer={ true }
+          directionalHint={ DirectionalHint.leftBottomEdge }
+        >
+          { imageContent }
+          { closeButton }
+          <div className='ms-TeachingBubble-content'>
+            { headerContent }
+            { bodyContent   }
+            { footerContent }
+          </div>
         </Callout>
     );
-  }
-
-  public dismiss() {
-    let { onDismiss } = this.props;
-
-    if (onDismiss) {
-      onDismiss();
-    }
   }
 
 }

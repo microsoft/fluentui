@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { TeachingBubble } from './TeachingBubble';
 import { IImageProps } from '../Image/Image.Props';
+import { IButtonProps } from '../Button/Button.Props';
+import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 
 /**
  * Checkbox class interface.
@@ -13,17 +15,21 @@ export interface ITeachingBubble {
  * TeachingBubble component props.
  */
 
-export interface ITeachingBubbleProps extends React.Props<TeachingBubble>, IImageProps {
+export interface ITeachingBubbleProps extends React.Props<TeachingBubble>, IAccessiblePopupProps {
   /**
-   * The type of TeachingBubble (changes bg color and text color)
-   * @default normal
+   * A headline for the Teaching Bubble.
    */
-  teachingBubbleType: TeachingBubbleTypes;
+  headline?: string;
 
   /**
-   * A title for the Teaching Bubble.
+   * A variation with smaller bold headline and no margins.
    */
-  title?: string;
+  hasCondensedHeadline?: boolean;
+
+  /**
+   * Does the TeachingBubble have a close button in the top right corner?
+   */
+  hasCloseIcon?: boolean;
 
   /**
    * An Image for the Teaching Bubble.
@@ -36,6 +42,16 @@ export interface ITeachingBubbleProps extends React.Props<TeachingBubble>, IImag
   body?: string;
 
   /**
+   * The Primary interaction button
+   */
+  primaryButtonProps?: IButtonProps;
+
+  /**
+   * The Secondary interaction button
+   */
+  secondaryButtonProps?: IButtonProps;
+
+  /**
    * Element to anchor the TeachingBubble to.
    */
   targetElement?: HTMLElement;
@@ -44,9 +60,4 @@ export interface ITeachingBubbleProps extends React.Props<TeachingBubble>, IImag
    * Callback when the TeachingBubble tries to close.
    */
   onDismiss?: (ev?: any) => void;
-}
-
-export enum TeachingBubbleTypes {
-  normal,
-  reversed
 }

@@ -353,16 +353,13 @@ $button-commandButtonHeight: 40px;
     background-color: transparent;
   }
 
+  .ms-Icon {
+    font-size: $ms-icon-size-m;
+    padding: 8px;
+  }
+
   .ms-Button-icon {
     display: inline;
-    &.ms-Button-icon--small {
-      font-size: $ms-icon-size-s;
-      padding: 10px;
-    }
-    &.ms-Button-icon--medium {
-      font-size: $ms-icon-size-m;
-      padding: 8px;
-    }
   }
 
   &.is-disabled,

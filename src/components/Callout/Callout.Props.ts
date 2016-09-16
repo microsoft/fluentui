@@ -2,9 +2,8 @@ import * as React from 'react';
 import { Callout } from './Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IPositionProps } from '../../utilities/positioning';
-import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 
-export interface ICalloutProps extends React.Props<Callout>, IPositionProps, IAccessiblePopupProps {
+export interface ICalloutProps extends React.Props<Callout>, IPositionProps {
   /**
    * Element to anchor the callout to.
    */
@@ -23,12 +22,6 @@ export interface ICalloutProps extends React.Props<Callout>, IPositionProps, IAc
   gapSpace?: number;
 
   /**
-   * The background color of the callout
-   * @default white
-   */
-  backgroundColor?: CalloutBackgroundColor;
-
-  /**
    * The css className for the beak.
    * @default 'ms-Callout-beak'
    */
@@ -45,12 +38,6 @@ export interface ICalloutProps extends React.Props<Callout>, IPositionProps, IAc
    * @default true
    */
   isBeakVisible?: boolean;
-
-  /**
-   * Whether the close should be visible.
-   * @default false
-   */
-  hasCloseButton?: boolean;
 
   /**
    * CSS class to apply to the callout.
@@ -93,9 +80,4 @@ export interface ILink {
    * URL for the link.
    */
   url: string;
-}
-
-export enum CalloutBackgroundColor {
-  white,
-  blue
 }

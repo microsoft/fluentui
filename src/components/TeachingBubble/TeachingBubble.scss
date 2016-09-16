@@ -9,39 +9,63 @@
 
 .ms-TeachingBubble {
   display: block;
-  max-width: 220px;
+  max-width: 364px;
 }
 
-.ms-TeachingBubble-header {
-  background: $ms-color-themePrimary;
-  margin-bottom: 8px;
+.ms-TeachingBubble-content {
+  padding: 20px;
 }
 
-.ms-TeachingBubble-title {
+.ms-TeachingBubble-header--large:not(:last-child) {
+  margin-bottom: 14px;
+}
+
+.ms-TeachingBubble-headline {
   margin: 0;
-  @include ms-font-xxl;
   color: $ms-color-white;
-  padding: 24px 20px;
-  font-weight: $ms-font-weight-semilight;
+   .ms-TeachingBubble-header--large & {
+    @include ms-font-xxl;
+    font-weight: $ms-font-weight-light;
+  }
+  .ms-TeachingBubble-header--small & {
+    @include ms-font-m;
+    font-weight: $ms-font-weight-semibold;
+  }
 }
 
-.ms-TeachingBubble-inner {
-  height: 100%;
-  padding: 0 20px 20px;
-  &:first-child {
-    padding-top: 20px;
-  }
+.ms-TeachingBubble-body:not(:last-child) {
+  margin-bottom: 20px;
 }
 
 .ms-TeachingBubble-subText {
   margin: 0;
   font-size: $ms-font-size-m;
-  color: $ms-color-neutralPrimary;
+  color: $ms-color-white;
   font-weight: $ms-font-weight-semilight;
-  .ms-TeachingBubble--dark & {
-    color: $ms-color-white;
+}
+
+.ms-TeachingBubble-button {
+  position: absolute;
+  right: 2px;
+  top: 0;
+  &.ms-Button--icon .ms-Icon {
+    font-size: $ms-icon-size-s;
+    padding: 10px;
   }
 }
+
+.ms-TeachingBubble-footer {
+  .ms-Button:not(:first-child) {
+    @include margin-left(20px);
+  }
+}
+
+// Callout Overrides
+.ms-TeachingBubble .ms-Callout-main,
+.ms-TeachingBubble .ms-Callout-beak {
+  background: $ms-color-themePrimary;
+}
+
 
 
 // Carried over from callout

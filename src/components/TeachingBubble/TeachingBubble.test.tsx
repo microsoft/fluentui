@@ -8,15 +8,13 @@ import * as ReactTestUtils from 'react-addons-test-utils';
 let { expect } = chai;
 
 import { TeachingBubble } from './TeachingBubble';
-import { TeachingBubbleTypes } from './TeachingBubble.props';
 
 describe('TeachingBubble', () => {
 
   it('renders a label', () => {
     let component = ReactTestUtils.renderIntoDocument(
       <TeachingBubble
-        title='Title'
-        teachingBubbleType= {TeachingBubbleTypes.normal}
+        headline='Title'
 
       />
     );

@@ -34,13 +34,8 @@ $Callout-beak-slant-width: 28px;
 .ms-Callout-main {
   position: relative;
   box-sizing: border-box;
+  background-color: $ms-color-white;
   z-index: $ms-zIndex-middle;
-  .ms-Callout--white-bg & {
-     background-color: $ms-color-white;
-  }
-  .ms-Callout--blue-bg & {
-     background-color: $ms-color-blue;
-  }
 }
 
 //= Modifier: Peek callout
@@ -92,17 +87,4 @@ $Callout-beak-slant-width: 28px;
     width: 16px;
     height: 16px;
   }
-  .ms-Callout--blue-bg & {
-    background-color: $ms-color-blue;
-  }
-}
-
-
-//= Modifier: hasCloseButton
-//
-.ms-Callout-button--close {
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin-right: 2px;
 }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ICalloutProps, CalloutBackgroundColor } from './Callout.Props';
+import { ICalloutProps } from './Callout.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Layer } from '../../Layer';
 import {
@@ -9,7 +9,6 @@ import {
   getRTL,
   elementContains
 } from '../../Utilities';
-import { Button, ButtonType, IconSize, IconColor} from '../../Button';
 import { getRelativePositions, IPositionInfo } from '../../utilities/positioning';
 import { focusFirstChild } from '../../utilities/focus';
 import { Popup } from '../Popup/index';
@@ -27,7 +26,6 @@ export interface ICalloutState {
 export class Callout extends React.Component<ICalloutProps, ICalloutState> {
 
   public static defaultProps = {
-    backgroundColor: CalloutBackgroundColor.white,
     isBeakVisible: true,
     beakStyle: 'ms-Callout-beak',
     beakWidth: 28,
@@ -66,52 +64,20 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
   }
 
   public render() {
-    let { className, targetElement, backgroundColor, closeButtonAriaLabel, isBeakVisible, hasCloseButton, beakStyle, children } = this.props;
+    let { className, targetElement, isBeakVisible, beakStyle, children } = this.props;
     let { positions, slideDirectionalClassName } = this.state;
-
-    let backgroundClass;
-
-    switch (backgroundColor) {
-      case CalloutBackgroundColor.white:
-        backgroundClass = 'ms-Callout--white-bg';
-        break;
-      case CalloutBackgroundColor.blue:
-        backgroundClass = 'ms-Callout--blue-bg';
-        break;
-    }
-
     let content = (
       <div ref={ (host: HTMLDivElement) => this._hostElement = host } className={ 'ms-Callout-container' }>
         <div
-          className={ css(
-            'ms-Callout',
-            className,
-            backgroundClass,
-            slideDirectionalClassName ? `ms-u-${ slideDirectionalClassName }` : '')
-          }
+          className={ css('ms-Callout', className, slideDirectionalClassName ? `ms-u-${ slideDirectionalClassName }` : '') }
           style={ ((positions) ? positions.callout : OFF_SCREEN_POSITION) }
           ref={ (callout: HTMLDivElement) => this._calloutElement = callout }
           >
-          { isBeakVisible && targetElement ? (
-            <div
-              className={ beakStyle }
-              style={ ((positions) ? positions.beak : BEAK_ORIGIN_POSITION) }
-            />) : (null) }
+          { isBeakVisible && targetElement ? (<div className={ beakStyle }  style={ ((positions) ? positions.beak : BEAK_ORIGIN_POSITION) } />) : (null) }
           <Popup
             className='ms-Callout-main'
             onDismiss={ (ev:any) => this.dismiss() }
             shouldRestoreFocus={ true }>
-            { hasCloseButton && targetElement ? (
-              <Button
-                className='ms-Callout-button ms-Callout-button--close'
-                buttonType={ ButtonType.icon }
-                icon='Cancel'
-                iconSize={ IconSize.small }
-                iconColor={ IconColor.white }
-                rootProps={ { title: closeButtonAriaLabel } }
-                ariaLabel={ closeButtonAriaLabel }
-                onClick={ (ev:any) => this.dismiss() }
-              />) : (null) }
             { children }
           </Popup>
         </div>
