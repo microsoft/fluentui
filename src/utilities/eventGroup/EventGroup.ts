@@ -112,7 +112,7 @@ export class EventGroup {
   }
 
   private static _isElement(target: HTMLElement) {
-    return !!target && (target instanceof HTMLElement || target.addEventListener);
+    return !!target && (target.addEventListener || target instanceof HTMLElement);
   }
 
   /** parent: the context in which events attached to non-HTMLElements are called */
