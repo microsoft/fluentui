@@ -37,7 +37,12 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
   }
 
   public render() {
-    let { suggestionsHeaderText, searchForMoreText, className } = this.props;
+    let {
+      suggestionsHeaderText,
+      searchForMoreText,
+      className,
+      moreSuggestionsAvailable
+    } = this.props;
 
     return (
       <div className={ css('ms-Suggestions', className ? className : '') }>
@@ -48,7 +53,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
         <div className='ms-Suggestions-container' id='suggestion-list' role='menu'>
           { this._renderSuggestions() }
         </div>
-        { searchForMoreText ?
+        { searchForMoreText && moreSuggestionsAvailable ?
           (<Button
             onClick={ this._getMoreResults.bind(this) }
             className={ 'ms-SearchMore-button' }

@@ -15,7 +15,7 @@ export interface IBasePickerState {
   items?: any;
   displayValue?: string;
   value?: string;
-  searchForMoreText?: string;
+  moreSuggestionsAvailable?: boolean;
   suggestionsVisible?: boolean;
 }
 
@@ -49,7 +49,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       items: items,
       displayValue: '',
       value: '',
-      searchForMoreText: basePickerProps.searchForMoreText
+      moreSuggestionsAvailable: false
     };
   }
 
@@ -112,13 +112,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           onRenderSuggestion={ this.props.onRenderSuggestion }
           onSuggestionClick={ this._onSuggestionClick }
           suggestions={ this._suggestionStore.getSuggestions() }
-          suggestionsHeaderText={ this.props.suggestionsHeaderText }
           ref={ this._resolveRef('_suggestionElement') }
-          searchForMoreText={ this.state.searchForMoreText }
           onGetMoreResults={ this._onGetMoreResults }
-          noResultsFoundText= { this.props.noResultsText }
-          className={ this.props.suggestionsClassName }
-          suggestionItemClassName={ this.props.suggestionItemClassName }
+          moreSuggestionsAvailable={ this.state.moreSuggestionsAvailable }
+          { ...this.props.pickerSuggestionProps }
           />
       </Callout>
     ) : (null);
@@ -171,7 +168,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     let { value } = this.state;
 
     if (!this._suggestionStore.currentIndex || updatedValue !== value) {
-      let newSuggestions: any[] = this.props.onResolveSuggestions(updatedValue);
+      let newSuggestions: any[] = this.props.onResolveSuggestions(updatedValue, this.state.items);
 
       this._suggestionStore.updateSuggestions(newSuggestions);
       let itemValue: string = undefined;
@@ -213,7 +210,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     let value = (ev.target as HTMLInputElement).value;
 
     this._updateValue(value);
-    this.setState({ searchForMoreText: this.props.searchForMoreText });
+    this.setState({ moreSuggestionsAvailable: true });
   }
 
   @autobind
@@ -278,7 +275,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       this._updateSuggestions(this.props.onGetMoreResults(this.state.value));
     }
     this._input.focus();
-    this.setState({ searchForMoreText: undefined });
+    this.setState({ moreSuggestionsAvailable: false });
   }
 
   @autobind

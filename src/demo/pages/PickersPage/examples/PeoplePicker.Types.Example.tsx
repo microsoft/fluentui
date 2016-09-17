@@ -6,7 +6,8 @@ import {
   IContextualMenuItem,
   Dropdown,
   IDropdownOption,
-  IPersonaProps
+  IPersonaProps,
+  IBasePickerSuggestionProps
 } from '../../../../index';
 import { IPersonaWithMenu } from '../../../../components/Pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
 import { people } from './PeoplePickerExampleData';
@@ -15,6 +16,11 @@ import './PeoplePicker.Types.Example.scss';
 
 export interface IPeoplePickerExampleState {
   currentPicker: number | string;
+}
+
+const suggestionProps: IBasePickerSuggestionProps = {
+  suggestionsHeaderText: 'Suggested People',
+  noResultsText: 'No results found'
 }
 
 export class PeoplePickerTypesExample extends React.Component<any, IPeoplePickerExampleState> {
@@ -109,9 +115,8 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
       <ListPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
-        suggestionsHeaderText={ 'Suggested People' }
         className={ 'ms-PeoplePicker' }
-        noResultsText= { 'No results found' }
+        pickerSuggestionProps={ suggestionProps }
         key={'list'}
         />
     );
@@ -122,10 +127,9 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
       <NormalPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
-        suggestionsHeaderText={ 'Suggested People' }
+        pickerSuggestionProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
         key={ 'normal' }
-        noResultsText= { 'No results found' }
         />
     );
   }
@@ -135,9 +139,8 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
       <CompactPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
-        suggestionsHeaderText={ 'Suggested People' }
+        pickerSuggestionProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
-        noResultsText= { 'No results found' }
         />
     );
   }
@@ -147,34 +150,37 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
       <CompactPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
-        suggestionsHeaderText={ 'Suggested People' }
         className={ 'ms-PeoplePicker' }
         startingItems={ people.splice(0, 3) }
         key={ 'list' }
-        noResultsText= { 'No results found' }
+        pickerSuggestionProps={ suggestionProps }
         />
     );
   }
 
   public _renderLimitedSearch() {
+    let limitedSearchSuggestionProps = suggestionProps;
+    limitedSearchSuggestionProps.searchForMoreText = 'Load all Results'
     return (
       <CompactPeoplePicker
         onResolveSuggestions={ this._filterWithLimit.bind(this) }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
-        suggestionsHeaderText={ 'Suggested People' }
         className={ 'ms-PeoplePicker' }
         onGetMoreResults={ this._onFilterChanged }
-        searchForMoreText={ 'Load all Results' }
-        noResultsText= { 'No results found' }
+        pickerSuggestionProps={ limitedSearchSuggestionProps }
         />
     );
   }
 
-  private _onFilterChanged(filterText: string) {
-    return filterText ? this._peopleList.filter(item => item.primaryText.toLowerCase().indexOf(filterText.toLowerCase()) === 0) : [];
+  private _onFilterChanged(filterText: string, items: IPersonaProps[]) {
+    return filterText ? this._peopleList.filter(item => item.primaryText.toLowerCase().indexOf(filterText.toLowerCase() ) === 0).filter(item => !this._listContainsPersona(item, items)) : [];
   }
 
-  private _filterWithLimit(filterText: string) {
+  private _listContainsPersona(persona: IPersonaProps, items: IPersonaProps[]) {
+    return items.filter(item => item.primaryText === persona.primaryText).length > 0;
+  }
+
+  private _filterWithLimit(filterText: string, currentItems: IPersonaProps[]) {
     return filterText ? this._peopleList.filter(item => item.primaryText.toLowerCase().indexOf(filterText.toLowerCase()) === 0).splice(0, 2) : [];
   }
 

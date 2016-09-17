@@ -20,7 +20,7 @@ import {
   BasePicker
 } from '../../../../components/Pickers/BasePicker';
 import {
-    IPickerItemProps
+  IPickerItemProps
 } from '../../../../components/Pickers/PickerItem.Props';
 import './Picker.CustomResult.Example.scss';
 
@@ -296,7 +296,7 @@ export const SuggestedDocumentItem: (documentProps: IFullDocumentCardProps) => J
 };
 
 export const SuggestedBigItem: (documentProps: IFullDocumentCardProps) => JSX.Element = (documentProps: IFullDocumentCardProps) => {
-    let {
+  let {
     documentActionsProps,
     documentPreviewProps,
     documentActivityProps,
@@ -315,7 +315,7 @@ export const SuggestedBigItem: (documentProps: IFullDocumentCardProps) => JSX.El
   );
 };
 
-export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardProps>) => JSX.Element = (documentProps:  IPickerItemProps<IFullDocumentCardProps>) => {
+export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumentCardProps>) => JSX.Element = (documentProps: IPickerItemProps<IFullDocumentCardProps>) => {
   let {
     documentActionsProps,
     documentPreviewProps,
@@ -324,7 +324,7 @@ export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumen
   } = documentProps.item;
   let actions = [];
   documentActionsProps.actions.forEach((action) => actions.push(action));
- actions.push({
+  actions.push({
     icon: 'Cancel', onClick: (ev: any) => { documentProps.onRemoveItem(); }
   });
 
@@ -354,8 +354,12 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
         onRenderItem={SelectedDocumentItem}
         onRenderSuggestion={SuggestedBigItem}
         getTextFromItem={(props: any) => props.documentTitleProps.title}
-        suggestionsClassName={ 'ms-DocumentPicker-suggestion' }
-        suggestionItemClassName={ 'ms-DocumentPicker-bigSuggestion' }
+        pickerSuggestionProps={
+          {
+            suggestionsHeaderText: 'Suggested People',
+            noResultsText: 'No results found'
+          }
+        }
         />
     );
   }

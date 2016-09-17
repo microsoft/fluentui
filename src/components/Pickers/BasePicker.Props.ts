@@ -12,8 +12,9 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   onRenderSuggestion?: (props: T) => JSX.Element;
   /**
    * A callback for what should happen when a person types text into the input.
+   * Returns the already selected items so the resolver can filter them out.
    */
-  onResolveSuggestions: (filter: string) => any[];
+  onResolveSuggestions: (filter: string, selectedItems?: T[]) => any[];
   /**
    * Initial items that have already been selected and should appear in the people picker.
    */
@@ -27,13 +28,22 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    */
   getTextFromItem?: (item: T) => string;
   /**
+   * A callback that get's the rest of the results when a user clicks get more results.
+   */
+  onGetMoreResults?: (filter: string, selectedItems?: T[]) => any[];
+  /**
+   * ClassName for the picker.
+   */
+  className?: string;
+
+  pickerSuggestionProps?: IBasePickerSuggestionProps;
+}
+
+export interface IBasePickerSuggestionProps {
+  /**
    * The text that should appear at the top of the suggestion box.
    */
   suggestionsHeaderText?: string;
-  /**
-   * A callback that get's the rest of the results when a user clicks get more results.
-   */
-  onGetMoreResults?: (filter: string) => any[];
   /**
    * the text that should appear when no results are returned.
    */
