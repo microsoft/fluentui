@@ -1,9 +1,10 @@
 import * as React from 'react';
 import {
   GroupedList,
-  IGroup
+  IGroup,
+  IGroupDividerProps
 } from '../../../../components/GroupedList/index';
-
+import { Toggle } from '../../../../Toggle';
 import { createListItems } from '../../../utilities/data';
 import './GroupedList.Custom.Example.scss';
 
@@ -49,18 +50,19 @@ export class GroupedListCustomExample extends React.Component<any, any> {
     );
   }
 
-  private _onRenderHeader(group: IGroup): React.ReactNode {
+  private _onRenderHeader(props: IGroupDividerProps): React.ReactNode {
     return (
       <div className='ms-GroupedListExample-header ms-font-xl'>
-          This is a custom header for { group.name }
+          This is a custom header for { props.group.name }
+          <Toggle label='Summarize' onChanged={ checked => props.onToggleSummarize(props.group) } />
       </div>
     );
   }
 
-  private _onRenderFooter(group: IGroup): React.ReactNode {
+  private _onRenderFooter(props: IGroupDividerProps): React.ReactNode {
     return (
       <div className='ms-GroupedListExample-footer ms-font-xl'>
-        This is a custom footer for { group.name }
+        This is a custom footer for { props.group.name }
       </div>
     );
   }

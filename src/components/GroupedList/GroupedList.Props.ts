@@ -135,12 +135,12 @@ export interface IGroup {
   /**
    * Override which allows the caller to provide a custom header.
    */
-  onRenderHeader?: (group: IGroup) => React.ReactNode;
+  onRenderHeader?: (props?: IGroupDividerProps) => React.ReactNode;
 
   /**
    * Override which allows the caller to provider a customer footer.
    */
-  onRenderFooter?: (group: IGroup) => React.ReactNode;
+  onRenderFooter?: (props?: IGroupDividerProps) => React.ReactNode;
 
   /**
    * Optional accessibility label (aria-label) attribute that will be stamped on to the element.
@@ -160,18 +160,42 @@ export interface IGroupRenderProps {
   onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
 
   /** Information to pass in to the group header. */
-  headerProps?: IGroupHeaderProps;
+  headerProps?: IGroupDividerProps;
 
   /** Information to pass in to the group footer. */
-  footerProps?: IGroupFooterProps;
+  footerProps?: IGroupDividerProps;
 }
 
-export interface IGroupHeaderProps {
+export interface IGroupDividerProps {
   /** Callback to determine if a group has missing items and needs to load them from the server. */
   isGroupLoading?: (group: IGroup) => boolean;
 
   /** Text shown on group headers to indicate the group is being loaded. */
   loadingText?: string;
+
+  /** Determines if the group selection check box is shown for collapsed groups. */
+  isCollapsedGroupSelectVisible?: boolean;
+
+  /** The group to be rendered by the header. */
+  group?: IGroup;
+
+  /** The index of the group. */
+  groupIndex?: number;
+
+  /** The indent level of the group. */
+  groupLevel?: number;
+
+  /** A reference to the viewport in which the header is rendered. */
+  viewport?: IViewport;
+
+  /** The selection mode of the list the group lives within. */
+  selectionMode?: SelectionMode;
+
+  /** Text to display for the group footer show all link. */
+  showAllLinkText?: string;
+
+  /** Callback for when the "Show All" link in group footer is clicked */
+  onToggleSummarize?: (group: IGroup) => void;
 
   /** Callback for when the group header is clicked. */
   onGroupHeaderClick?: (group: IGroup) => void;
@@ -181,15 +205,4 @@ export interface IGroupHeaderProps {
 
   /** Callback for when the group is selected. */
   onToggleSelectGroup?: (group: IGroup) => void;
-
-  /** Determines if the group selection check box is shown for collapsed groups. */
-  isCollapsedGroupSelectVisible?: boolean;
-}
-
-export interface IGroupFooterProps {
-  /** Callback for when the "Show All" link in group footer is clicked */
-  onToggleSummarize?: (group: IGroup) => void;
-
-  /** Text to display for the group footer show all link. */
-  showAllLinkText?: string;
 }
