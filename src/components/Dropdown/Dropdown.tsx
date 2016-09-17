@@ -1,11 +1,14 @@
 import * as React from 'react';
-import { BaseComponent } from '../../common/BaseComponent';
 import { IDropdownProps, IDropdownOption } from './Dropdown.Props';
-import { css } from '../../utilities/css';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
-import { findIndex } from '../../utilities/array';
-import { KeyCodes } from '../../utilities/KeyCodes';
-import { getId } from '../../utilities/object';
+import {
+  BaseComponent,
+  KeyCodes,
+  autobind,
+  css,
+  elementContains,
+  findIndex,
+  getId
+} from '../../Utilities';
 import './Dropdown.scss';
 
 export interface IDropdownState {
@@ -27,7 +30,6 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
     root: HTMLElement
   };
 
-  private _eventGroup: EventGroup;
   private _optionList: HTMLElement;
   private _dropDown: HTMLDivElement;
 
@@ -36,18 +38,12 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
       'isDisabled': 'disabled'
     });
 
-    this._eventGroup = new EventGroup(this);
-
     this.state = {
       id: getId('Dropdown'),
       isOpen: false,
       selectedIndex: this._getSelectedIndex(props.options, props.selectedKey),
       isDisabled: this.props.isDisabled || this.props.disabled
     };
-
-    this._onDropdownKeyDown = this._onDropdownKeyDown.bind(this);
-    this._onDropdownClick = this._onDropdownClick.bind(this);
-    this._onFocusChange = this._onFocusChange.bind(this);
   }
 
   public componentWillReceiveProps(newProps: IDropdownProps) {
@@ -60,15 +56,11 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
   public componentWillUpdate(nextProps: IDropdownProps, nextState: IDropdownState) {
     if (this.state.isOpen !== nextState.isOpen) {
       if (nextState.isOpen) {
-        this._eventGroup.on(window, 'focus', this._onFocusChange, true);
+        this._events.on(window, 'focus', this._onFocusChange, true);
       } else {
-        this._eventGroup.off();
+        this._events.off();
       }
     }
-  }
-
-  public componentWillUnmount() {
-    this._eventGroup.dispose();
   }
 
   public componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState) {
@@ -158,6 +150,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
     return findIndex(options, (option => (option.isSelected || selectedKey && option.key === selectedKey)));
   }
 
+  @autobind
   private _onDropdownKeyDown(ev: React.KeyboardEvent) {
     switch (ev.which) {
       case KeyCodes.enter:
@@ -196,6 +189,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
     ev.preventDefault();
   }
 
+  @autobind
   private _onDropdownClick() {
     let { isDisabled, isOpen } = this.state;
 
@@ -206,11 +200,10 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
     }
   }
 
+  @autobind
   private _onFocusChange(ev: React.FocusEvent) {
-    if (this.state.isOpen && !this.refs.root.contains(ev.target as HTMLElement)) {
-      let context: Dropdown = this;
-
-      context.setState({
+    if (this.state.isOpen && !elementContains(this.refs.root, ev.target as HTMLElement)) {
+      this.setState({
         isOpen: false
       });
     }

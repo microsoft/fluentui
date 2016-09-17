@@ -3,6 +3,7 @@
 $componentPageColor: #0f8387;
 $componentPagePadding: 50px;
 $componentPageDividingMargin: 80px;
+$componentSubHeadMargin: 28px;
 $dosColor: #177D3E;
 $dontColor: #A61E22;
 
@@ -19,19 +20,30 @@ $dontColor: #A61E22;
 .ComponentPage-title {
   @include ms-font-xxl;
   font-size: 82px;
+  line-height: 94px;
   color: $ms-color-white;
   display: inline-block;
   width: 100%;
+  margin-top: $componentPagePadding;
+  margin-bottom: $componentPagePadding;
 }
 
 .ComponentPage-subHeading {
   @include ms-font-xxl;
   font-size: 36px;
   margin-top: 0;
+  margin-bottom: $componentSubHeadMargin;
+}
+
+.ComponentPage-smallSubHeading {
+  @include ms-font-l;
+  line-height: $ms-font-size-xl;
+  margin-bottom: 18px;
 }
 
 .ComponentPage-overview {
   font-size: $ms-font-size-m;
+  line-height: $ms-font-size-l;
 }
 
 .ComponentPage-overviewSection,
@@ -74,6 +86,16 @@ $dontColor: #A61E22;
   box-sizing: border-box;
   display: inline-block;
   border-top: 8px solid #177D3E;
+
+  ul {
+    padding-left: 18px;
+  }
+
+  li {
+    @include ms-font-m;
+    line-height: $ms-font-size-xl;
+    list-style: disc;
+  }
 }
 
 .ComponentPage-doSection {
