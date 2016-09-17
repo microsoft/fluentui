@@ -12,6 +12,11 @@ export interface ILinkProps extends React.HTMLProps<HTMLLabelElement> {
    *  The props of pop up window.
    */
   popupWindowProps?: IPopupWindowProps;
+
+  /**
+   * Function to call when the card is clicked.
+   */
+  onClick?: (ev?: React.MouseEvent) => void;
 }
 
 export interface IPopupWindowProps {
