@@ -7,7 +7,7 @@ import {
   Dropdown,
   IDropdownOption,
   IPersonaProps,
-  IBasePickerSuggestionProps
+  IBasePickerSuggestionsProps
 } from '../../../../index';
 import { IPersonaWithMenu } from '../../../../components/Pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
 import { people } from './PeoplePickerExampleData';
@@ -18,10 +18,10 @@ export interface IPeoplePickerExampleState {
   currentPicker: number | string;
 }
 
-const suggestionProps: IBasePickerSuggestionProps = {
+const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsHeaderText: 'Suggested People',
   noResultsText: 'No results found'
-}
+};
 
 export class PeoplePickerTypesExample extends React.Component<any, IPeoplePickerExampleState> {
   private _peopleList;
@@ -116,7 +116,7 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
         className={ 'ms-PeoplePicker' }
-        pickerSuggestionProps={ suggestionProps }
+        pickerSuggestionsProps={ suggestionProps }
         key={'list'}
         />
     );
@@ -127,7 +127,7 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
       <NormalPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
-        pickerSuggestionProps={ suggestionProps }
+        pickerSuggestionsProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
         key={ 'normal' }
         />
@@ -139,7 +139,7 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
       <CompactPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
-        pickerSuggestionProps={ suggestionProps }
+        pickerSuggestionsProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
         />
     );
@@ -151,23 +151,23 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
         className={ 'ms-PeoplePicker' }
-        startingItems={ people.splice(0, 3) }
+        defaultSelectedItems={ people.splice(0, 3) }
         key={ 'list' }
-        pickerSuggestionProps={ suggestionProps }
+        pickerSuggestionsProps={ suggestionProps }
         />
     );
   }
 
   public _renderLimitedSearch() {
     let limitedSearchSuggestionProps = suggestionProps;
-    limitedSearchSuggestionProps.searchForMoreText = 'Load all Results'
+    limitedSearchSuggestionProps.searchForMoreText = 'Load all Results';
     return (
       <CompactPeoplePicker
         onResolveSuggestions={ this._filterWithLimit.bind(this) }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
         className={ 'ms-PeoplePicker' }
         onGetMoreResults={ this._onFilterChanged }
-        pickerSuggestionProps={ limitedSearchSuggestionProps }
+        pickerSuggestionsProps={ limitedSearchSuggestionProps }
         />
     );
   }

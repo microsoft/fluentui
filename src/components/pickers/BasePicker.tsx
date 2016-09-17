@@ -3,7 +3,7 @@ import { FocusZone } from '../../FocusZone';
 import { Callout } from '../../Callout';
 import { KeyCodes } from '../../utilities/KeyCodes';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
-import { Suggestions, SuggestionsController, ISuggestionsProps } from './Suggestion/index';
+import { Suggestions, SuggestionsController, ISuggestionsProps } from './Suggestions/index';
 import { IBasePickerProps } from './BasePicker.Props';
 import { IPickerItemProps } from './PickerItem.Props';
 import { BaseComponent } from '../../common/BaseComponent';
@@ -40,7 +40,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   constructor(basePickerProps: P) {
     super(basePickerProps);
 
-    let items = basePickerProps.startingItems || [];
+    let items: T[] = basePickerProps.defaultSelectedItems || [];
 
     this._suggestionStore = new SuggestionsController<T>();
     this._selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
@@ -109,13 +109,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     return this.state.suggestionsVisible ? (
       <Callout isBeakVisible={ false } gapSpace={ 0 } targetElement={ this._root } onDismiss={ this.dismissSuggestions }>
         <TypedSuggestion
-          onRenderSuggestion={ this.props.onRenderSuggestion }
+          onRenderSuggestion={ this.props.onRenderSuggestionsItem }
           onSuggestionClick={ this._onSuggestionClick }
           suggestions={ this._suggestionStore.getSuggestions() }
           ref={ this._resolveRef('_suggestionElement') }
           onGetMoreResults={ this._onGetMoreResults }
           moreSuggestionsAvailable={ this.state.moreSuggestionsAvailable }
-          { ...this.props.pickerSuggestionProps }
+          { ...this.props.pickerSuggestionsProps }
           />
       </Callout>
     ) : (null);
@@ -136,7 +136,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     let { items } = this.state;
 
     if (items.length) {
-      let newEl = this._root.querySelectorAll('[data-selection-index]')[Math.min(index, items.length - 1)] as HTMLElement;
+      let newEl: HTMLElement = this._root.querySelectorAll('[data-selection-index]')[Math.min(index, items.length - 1)] as HTMLElement;
 
       if (newEl) {
         this._focusZone.focusElement(newEl);
@@ -148,7 +148,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   protected _onSuggestionSelect() {
     if (this._suggestionStore.currentSuggestion) {
-      let currentValue = this.state.value;
+      let currentValue: string = this.state.value;
       let itemValue: string = this.props.getTextFromItem(this._suggestionStore.currentSuggestion.item);
       this._updateDisplayValue(currentValue, itemValue);
       this.setState({ displayValue: itemValue }, () => this._suggestionElement.scrollSelected());
@@ -207,7 +207,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   @autobind
   protected _onInputChange(ev: React.FormEvent) {
-    let value = (ev.target as HTMLInputElement).value;
+    let value: string = (ev.target as HTMLInputElement).value;
 
     this._updateValue(value);
     this.setState({ moreSuggestionsAvailable: true });
@@ -286,7 +286,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   @autobind
   protected _addItem(item: T) {
-    let newItems = this.state.items.concat([item]);
+    let newItems: T[] = this.state.items.concat([item]);
     this._selection.setItems(newItems);
     this.setState({ items: newItems }, () => this._onChange());
   }
@@ -294,10 +294,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected _removeItem(item: IPickerItemProps<T>) {
     let { items } = this.state;
-    let index = items.indexOf(item);
+    let index: number = items.indexOf(item);
 
     if (index >= 0) {
-      let newItems = items.slice(0, index).concat(items.slice(index + 1));
+      let newItems: T[] = items.slice(0, index).concat(items.slice(index + 1));
 
       this._selection.setItems(newItems);
       this.setState({ items: newItems }, () => this._onChange());
@@ -307,9 +307,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected _removeItems(itemsToRemove: any[]) {
     let { items } = this.state;
-    let newItems = items.filter(item => itemsToRemove.indexOf(item) === -1);
+    let newItems: T[] = items.filter(item => itemsToRemove.indexOf(item) === -1);
     let firstItemToRemove = this._selection.getSelection()[0];
-    let index = items.indexOf(firstItemToRemove);
+    let index: number = items.indexOf(firstItemToRemove);
 
     this._selection.setItems(newItems);
 

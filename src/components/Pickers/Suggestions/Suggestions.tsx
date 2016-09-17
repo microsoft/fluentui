@@ -4,9 +4,9 @@ import { css } from '../../../utilities/css';
 import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.Props';
 import { ISuggestionModel } from './SuggestionsController';
 import { BaseComponent } from '../../../common/BaseComponent';
-import './Suggestion.scss';
+import './Suggestions.scss';
 
-export class SuggestionItem<T> extends React.Component<ISuggestionItemProps<T>, {}> {
+export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>, {}> {
   public render() {
     let {
       suggestionModel,
@@ -29,10 +29,10 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
 
   protected _searchForMoreButton: Button;
   protected _selectedElement: HTMLDivElement;
-  private SuggestionItemOfProperType = SuggestionItem as new (props: ISuggestionItemProps<T>) => SuggestionItem<T>;
+  private SuggestionItemOfProperType = SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
 
-  constructor(suggestionProps) {
-    super(suggestionProps);
+  constructor(suggestionsProps: ISuggestionsProps<T>) {
+    super(suggestionsProps);
     this._getMoreResults = this._getMoreResults.bind(this);
   }
 

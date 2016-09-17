@@ -352,9 +352,9 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
       <DocumentPicker
         onResolveSuggestions={this._onFilterChanged}
         onRenderItem={SelectedDocumentItem}
-        onRenderSuggestion={SuggestedBigItem}
+        onRenderSuggestionsItem={SuggestedBigItem}
         getTextFromItem={(props: any) => props.documentTitleProps.title}
-        pickerSuggestionProps={
+        pickerSuggestionsProps={
           {
             suggestionsHeaderText: 'Suggested People',
             noResultsText: 'No results found'
