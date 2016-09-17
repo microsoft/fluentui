@@ -14,7 +14,7 @@
     "test": "gulp test"
   },
   "devDependencies": {
-    "@microsoft/web-library-build": "~0.2.7",
+    "@microsoft/web-library-build": "^0.4.0",
     "es6-promise": "3.2.1",
     "git-rev": "0.2.1",
     "gulp": "~3.9.1",
@@ -38,7 +38,7 @@
     "react-dom": "^0.14.0 || ^15.0.1"
   },
   "dependencies": {
-    "color-functions": "1.1.0",
-    "@microsoft/load-themed-styles": "~1.2.2"
+    "color-functions": "^1.1.0",
+    "@microsoft/load-themed-styles": "^1.2.2"
   }
 }
