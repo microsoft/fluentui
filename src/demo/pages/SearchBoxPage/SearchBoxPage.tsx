@@ -51,6 +51,9 @@ export class SearchBoxPage extends React.Component<IComponentDemoPageProps, any>
             <span> provide a box for searching, complete with auto complete callbacks and suggestions.</span>
           </div>
         }
+        related={
+          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/SearchBox.md'>Fabric JS</a>
+        }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>

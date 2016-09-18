@@ -13,6 +13,7 @@ export interface IComponentPageProps {
   dos?: JSX.Element;
   donts?: JSX.Element;
   overview: JSX.Element;
+  related?: JSX.Element;
   route: string;
   isHeaderVisible?: boolean;
 }
@@ -33,16 +34,21 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
       overview
     } = this.props;
 
+    let relatedComponents
+
     return (
       <div className='ComponentPage'>
         <div className={ componentName }>
           { this._pageHeader() }
           <div className='ComponentPage-body'>
             <div className='ComponentPage-overviewSection'>
-                <h2 className='ComponentPage-subHeading' id='Overview'>Overview</h2>
+              <h2 className='ComponentPage-subHeading' id='Overview'>Overview</h2>
+              <div className='ComponentPage-overviewSectionContent'>
                 <div className='ComponentPage-overview'>
                   { overview }
                 </div>
+                { this._getRelatedComponents() }
+              </div>
             </div>
             { this._getDosAndDonts() }
             <div className='ComponentPage-variantsSection'>
@@ -98,6 +104,17 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
         </div>
       </div>
     );
+  }
+
+  private _getRelatedComponents(): JSX.Element {
+    if (this.props.related) {
+      return (
+        <div className='ComponentPage-related'>
+          <span className='ComponentPage-relatedTitle'>Also available in</span>
+          { this.props.related }
+        </div>
+      );
+    }
   }
 
   private _getPropertiesTable(): JSX.Element {

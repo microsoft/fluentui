@@ -51,9 +51,11 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, any
         }
         overview={
           <div>
-            <Link target='_blank' href='http://dev.office.com/fabric/components/datepicker'>DatePickers</Link>
-            <span> provide a menu for use in context menus and dropdowns.</span>
+            Date pickers provide a menu for use in context menus and dropdowns.
           </div>
+        }
+        related={
+          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/DatePicker.md'>Fabric JS</a>
         }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>

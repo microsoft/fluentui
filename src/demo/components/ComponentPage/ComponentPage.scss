@@ -42,13 +42,43 @@ $dontColor: #A61E22;
   margin-bottom: 18px;
 }
 
+.ComponentPage-overviewSectionContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media(min-width: $ms-screen-xl-min) {
+    flex-direction: row;
+  }
+}
+
 .ComponentPage-overview {
-  font-size: $ms-font-size-m;
-  line-height: $ms-font-size-l;
+  font-size: $ms-font-size-l;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  max-width: 50em;
 
   p {
     margin-top: 1em;
     margin-bottom: 1em;
+  }
+}
+
+.ComponentPage-related {
+  min-width: 160px;
+  padding-left: 40px;
+
+  .ComponentPage-relatedTitle {
+    color: $ms-color-neutralSecondary;
+    display: block;
+    font-size: $ms-font-size-l;
+    font-weight: $ms-font-weight-semibold;
+    margin-bottom: 12px;
+  }
+
+  a, a:visited {
+    @include ms-font-l;
+    text-decoration: none;
   }
 }
 
@@ -116,6 +146,7 @@ $dontColor: #A61E22;
     @include ms-font-m;
     line-height: $ms-font-size-xl;
     list-style: disc;
+    margin-bottom: 16px;
   }
 
   &:first-child {
