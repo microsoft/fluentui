@@ -5,8 +5,8 @@ import {
   IGroup
 } from './GroupedList.Props';
 import {
-  Group
-} from './Group';
+  GroupedListSection
+} from './GroupedListSection';
 
 import { css } from '../../utilities/css';
 import {
@@ -28,7 +28,8 @@ export interface IGroupedListState {
 export class GroupedList extends React.Component<IGroupedListProps, IGroupedListState> implements IGroupedList {
   public static defaultProps = {
     selectionMode: SelectionMode.multiple,
-    isHeaderVisible: true
+    isHeaderVisible: true,
+    groupProps: {}
   };
 
   public refs: {
@@ -147,19 +148,20 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
       onToggleSelectGroup: this._onToggleSelectGroup,
       onToggleSummarize: this._onToggleSummarize
     };
-    let headerProps = assign({}, groupProps && groupProps.headerProps, dividerProps);
-    let footerProps = assign({}, groupProps && groupProps.footerProps, dividerProps);
+
+    let headerProps = assign({}, groupProps.headerProps, dividerProps);
+    let footerProps = assign({}, groupProps.footerProps, dividerProps);
     let groupNestingDepth = this._getGroupNestingDepth();
 
     return (!group || group.count > 0) ? (
-      <Group
+      <GroupedListSection
         ref={ 'group_' + groupIndex }
         key={ this._getGroupKey(group) }
         dragDropEvents={ dragDropEvents }
         dragDropHelper={ dragDropHelper }
         eventsToRegister={ eventsToRegister }
         footerProps={ footerProps }
-        getGroupItemLimit={ groupProps && groupProps.getGroupItemLimit }
+        getGroupItemLimit={ groupProps.getGroupItemLimit }
         group={ group }
         groupIndex={ groupIndex }
         groupNestingDepth={ groupNestingDepth }
@@ -167,6 +169,8 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
         listProps={ listProps }
         items={ items }
         onRenderCell={ onRenderCell }
+        onRenderGroupHeader={ groupProps.onRenderHeader }
+        onRenderGroupFooter={ groupProps.onRenderFooter }
         selectionMode={ selectionMode }
         selection={ selection }
         viewport={ viewport }
@@ -253,13 +257,13 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
       this.refs.list.forceUpdate();
 
       for (let i = 0; i < groupCount; i++) {
-        let group = this.refs.list.refs['group_' + String(i)] as Group;
+        let group = this.refs.list.refs['group_' + String(i)] as GroupedListSection;
         if (group) {
           group.forceListUpdate();
         }
       }
     } else {
-      let group = this.refs['group_' + String(0)] as Group;
+      let group = this.refs['group_' + String(0)] as GroupedListSection;
       if (group) {
         group.forceListUpdate();
       }

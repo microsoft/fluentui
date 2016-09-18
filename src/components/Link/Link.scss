@@ -49,3 +49,7 @@
 .ms-Link {
   @include ms-Link;
 }
+
+BUTTON.ms-Link {
+  font-size: inherit;
+}

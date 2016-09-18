@@ -1,3 +1,30 @@
+@import '../../../../common/common';
+
 .DetailsListExample-customCheck.ms-DetailsRow-check.is-any-selected {
   opacity: 1;
+}
+
+.DetailsListExample-customHeader {
+  border-bottom: 1px solid $ms-color-neutralTertiaryAlt;
+  padding: 8px;
+  margin-bottom: 8px;
+  background: #fafafa;
+  box-shadow: 0 8px 12px -8px rgba(0, 0, 0, .3);
+
+  /* Overlay the sizer bars */
+  position: relative;
+  z-index: 100;
+}
+
+.DetailsListExample-customHeaderTitle {
+  @include ms-font-xl;
+  padding: 4px 0;
+}
+
+.DetailsListExample-customHeaderLinkSet {
+  margin: 4px -8px;
+}
+
+.DetailsListExample-customHeaderLink {
+  margin: 0 8px;
 }

@@ -133,20 +133,14 @@ export interface IGroup {
   data?: any;
 
   /**
-   * Override which allows the caller to provide a custom header.
-   */
-  onRenderHeader?: (props?: IGroupDividerProps) => React.ReactNode;
-
-  /**
-   * Override which allows the caller to provider a customer footer.
-   */
-  onRenderFooter?: (props?: IGroupDividerProps) => React.ReactNode;
-
-  /**
    * Optional accessibility label (aria-label) attribute that will be stamped on to the element.
    * If none is specified, the arai-label attribute will contain the group name
    */
   ariaLabel?: string;
+}
+
+export interface IRenderFunction<P> {
+  (props?: P, defaultRender?: (props?: P) => JSX.Element): JSX.Element;
 }
 
 export interface IGroupRenderProps {
@@ -164,6 +158,16 @@ export interface IGroupRenderProps {
 
   /** Information to pass in to the group footer. */
   footerProps?: IGroupDividerProps;
+
+  /**
+   * Override which allows the caller to provide a custom header.
+   */
+  onRenderHeader?: IRenderFunction<IGroupDividerProps>;
+
+  /**
+   * Override which allows the caller to provider a customer footer.
+   */
+  onRenderFooter?: IRenderFunction<IGroupDividerProps>;
 }
 
 export interface IGroupDividerProps {

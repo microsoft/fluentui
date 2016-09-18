@@ -97,15 +97,15 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void;
 
   /**
-   *  If provided, will allow the caller to override the default row rendering.
-   */
-  onRenderRow?: (props: IDetailsRowProps, defaultRender?: (props: IDetailsRowProps) => JSX.Element) => JSX.Element;
-
-  /**
    * If provided, will be the "default" item column renderer method. This affects cells within the rows; not the rows themselves.
    * If a column definition provides its own onRender method, that will be used instead of this.
    */
   onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
+
+  /**
+   *  If provided, will allow the caller to override the default row rendering.
+   */
+  onRenderRow?: (props: IDetailsRowProps, defaultRender?: (props: IDetailsRowProps) => JSX.Element) => JSX.Element;
 
   /** Map of callback functions related to drag and drop functionality. */
   dragDropEvents?: IDragDropEvents;
