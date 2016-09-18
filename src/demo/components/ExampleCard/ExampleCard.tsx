@@ -17,7 +17,6 @@ export interface IExampleCardProps {
 
 export interface IExampleCardState {
   isCodeVisible?: boolean;
-  isExampleShown?: boolean;
 }
 
 export class ExampleCard extends React.Component<IExampleCardProps, IExampleCardState> {
@@ -26,17 +25,15 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
     super(props);
 
     this.state = {
-      isCodeVisible: false,
-      isExampleShown: props.isOptIn ? false : true
+      isCodeVisible: false
     };
 
     this._onToggleCodeClick = this._onToggleCodeClick.bind(this);
-    this._onShowExampleClick = this._onShowExampleClick.bind(this);
   }
 
   public render() {
     const { title, code, children, isRightAligned } = this.props;
-    const { isCodeVisible, isExampleShown } = this.state;
+    const { isCodeVisible } = this.state;
     let rootClass = 'ExampleCard' + (this.state.isCodeVisible ? ' is-codeVisible' : '');
 
     return (
@@ -44,10 +41,6 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
         <div className='ExampleCard-header'>
           <span className='ExampleCard-title ms-font-l'>{ title }</span>
           <span className='ExampleCard-toggleButtons ms-font-l'>
-            <Button buttonType={ ButtonType.primary }
-              onClick={ this._onShowExampleClick }>
-              { isExampleShown ? 'Hide example' : 'Show example' }
-            </Button>
             { code ? (
             <Button buttonType={ ButtonType.primary }
               onClick={ this._onToggleCodeClick } className={ isCodeVisible ? 'is-active' : ''}>
@@ -63,11 +56,9 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
           </Highlight>
         </div>
 
-        { isExampleShown && (
         <div className={ css('ExampleCard-example', { ' is-right-aligned': (isRightAligned) }) }>
           { children }
         </div>
-        ) }
 
         { this._getDosAndDonts() }
       </div>
@@ -94,12 +85,6 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
   private _onToggleCodeClick() {
     this.setState({
       isCodeVisible: !this.state.isCodeVisible
-    });
-  }
-
-  private _onShowExampleClick() {
-    this.setState({
-      isExampleShown: !this.state.isExampleShown
     });
   }
 }
