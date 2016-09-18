@@ -1,0 +1,28 @@
+@import '../../../../common/common';
+
+.LayerExample-content {
+  background-color: $ms-color-themePrimary;
+  color: $ms-color-white;
+  line-height: 50px;
+  padding: 0 20px;
+  display: flex;
+}
+
+.LayerExample-textContent {
+  flex-grow: 1;
+}
+
+.LayerExample-nonLayered {
+  background-color: $ms-color-neutralTertiaryAlt;
+  line-height: 50px;
+  padding: 0 20px;
+  margin: 8px 0;
+}
+
+.ms-LayerHost.LayerExample-customHost {
+  position: relative;
+
+  .ms-LayerHost-overlay {
+    position: relative;
+  }
+}

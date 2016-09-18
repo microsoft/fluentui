@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { List } from './List';
+import { IRectangle } from '../../common/IRectangle';
 
 export interface IListProps extends React.Props<List> {
   /** Optional classname to append to root list. */
@@ -18,7 +19,7 @@ export interface IListProps extends React.Props<List> {
   onPageRemoved?: (page: IPage) => void;
 
   /** Method called by the list to get how many items to render per page from specified index. */
-  getItemCountForPage?: (itemIndex?: number, visibleRect?: ClientRect) => number;
+  getItemCountForPage?: (itemIndex?: number, visibleRect?: IRectangle) => number;
 
   /**
    * Method called by the list to get the pixel height for a given page. By default, we measure the first
@@ -26,7 +27,7 @@ export interface IListProps extends React.Props<List> {
    * ideal to be able to adequately predict page heights in order to keep the surface space from jumping
    * in pixels, which has been seen to cause browser perforamnce issues.
    */
-  getPageHeight?: (itemIndex?: number, visibleRect?: ClientRect) => number;
+  getPageHeight?: (itemIndex?: number, visibleRect?: IRectangle) => number;
 
   /**
    * Method called by the list to derive the page style object. For spacer pages, the list will derive
