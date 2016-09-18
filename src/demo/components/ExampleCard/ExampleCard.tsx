@@ -50,29 +50,25 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
             </Button>
             { code ? (
             <Button buttonType={ ButtonType.primary }
-              onClick={ this._onToggleCodeClick } className={ isCodeVisible ? 'is-open' : ''}>
+              onClick={ this._onToggleCodeClick } className={ isCodeVisible ? 'is-active' : ''}>
               { '</>' }
             </Button>
             ) : ( null ) }
           </span>
         </div>
-        <div className={ css('ExampleCard-content', { ' ms-u-slideDownIn20': (isCodeVisible) }) }>
 
-          { isCodeVisible && (
-          <div className='ExampleCard-code ms-u-slideDownIn20'>
-            <Highlight className='javascript'>
-              { code }
-            </Highlight>
-          </div>
-          ) }
-
-          { isExampleShown && (
-          <div className={ css('ExampleCard-example', { ' is-right-aligned': (isRightAligned) }) }>
-            { children }
-          </div>
-          ) }
-
+        <div className='ExampleCard-code'>
+          <Highlight className='javascript'>
+            { code }
+          </Highlight>
         </div>
+
+        { isExampleShown && (
+        <div className={ css('ExampleCard-example', { ' is-right-aligned': (isRightAligned) }) }>
+          { children }
+        </div>
+        ) }
+
         { this._getDosAndDonts() }
       </div>
     );
