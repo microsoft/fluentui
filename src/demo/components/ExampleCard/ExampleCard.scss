@@ -6,37 +6,33 @@
 
 .ExampleCard-header {
   border-bottom: 1px solid $ms-color-neutralTertiary;
-  line-height: 50px;
   min-height: 50px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  position: relative;
+}
+
+.ExampleCard-title {
+  line-height: 50px;
 }
 
 .ExampleCard-toggleButtons {
-  @include float(right);
-  position: relative;
-  top: 8px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 
-  .ms-Button {
-    margin: 10px 5px;
-    line-height: 1;
-    margin-bottom: 0;
+  .ms-Button.ms-Button--primary {
+    @include margin-right(0);
     background: none;
     border: 1px solid $ms-color-neutralTertiary;
     border-bottom: 0;
-    border-top-right-radius: 4px;
     border-top-left-radius: 4px;
-    padding-left: 8px;
-    padding-right: 8px;
+    border-top-right-radius: 4px;
+    line-height: 1;
+    padding: 0 12px;
     min-width: 0;
-  }
 
-  .ms-Button:last-child {
-    margin-right: 0;
-  }
-
-  .ms-Button.ms-Button--primary {
     .ms-Button-label {
       color: $ms-color-neutralDark;
     }

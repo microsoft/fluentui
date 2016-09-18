@@ -34,8 +34,6 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
       overview
     } = this.props;
 
-    let relatedComponents
-
     return (
       <div className='ComponentPage'>
         <div className={ componentName }>
