@@ -5,7 +5,7 @@
 }
 
 .ExampleCard-header {
-  border-bottom: 1px solid $ms-color-neutralDark;
+  border-bottom: 1px solid $ms-color-neutralTertiary;
   line-height: 50px;
   min-height: 50px;
   overflow: hidden;
@@ -23,7 +23,7 @@
     line-height: 1;
     margin-bottom: 0;
     background: none;
-    border: 1px solid $ms-color-neutralLight;
+    border: 1px solid $ms-color-neutralTertiary;
     border-bottom: 0;
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
@@ -56,7 +56,9 @@
 }
 
 .ExampleCard-example {
-  padding-top: 20px;
+  max-height: 720px;
+  overflow: scroll;
+  padding: 20px 0;
 }
 
 .ExampleCard-example.is-right-aligned {
@@ -81,9 +83,15 @@
   }
 }
 
-.ExampleCard.is-codeVisible .ExampleCard-code pre {
-  max-height: 480px;
-  min-height: 120px;
+.ExampleCard.is-codeVisible {
+  .ExampleCard-header {
+    border-color: $ms-color-neutralDark;
+  }
+
+  .ExampleCard-code pre {
+    max-height: 480px;
+    min-height: 120px;
+  }
 }
 
 .ExampleCard.is-codeVisible .ExampleCard-code {
