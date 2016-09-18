@@ -57,6 +57,7 @@ $dontColor: #A61E22;
   line-height: 1.5;
   margin-bottom: 20px;
   max-width: 50em;
+  padding-right: 60px;
 
   p {
     margin-top: 1em;
@@ -65,8 +66,7 @@ $dontColor: #A61E22;
 }
 
 .ComponentPage-related {
-  min-width: 160px;
-  padding-left: 60px;
+  min-width: 200px;
 
   .ComponentPage-relatedTitle {
     color: $ms-color-neutralSecondary;
