@@ -136,29 +136,32 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       footerProps,
       viewport,
       selectionMode,
+      selection,
       onRenderGroupHeader = this._onRenderGroupHeader,
       onRenderGroupFooter = this._onRenderGroupFooter
     } = this.props;
     let renderCount = group && getGroupItemLimit ? getGroupItemLimit(group) : Infinity;
-    let isFooterVisible = group && !group.children && !group.isCollapsed && !group.isShowingAll && group.count > renderCount;
-
     let hasNestedGroups = group && group.children && group.children.length > 0;
+    let isFooterVisible = group && !hasNestedGroups && !group.isCollapsed;
+
     let dividerProps = {
       group: group,
       groupIndex: groupIndex,
       groupLevel: group ? group.level : 0,
       viewport: viewport,
-      selectionMode: selectionMode
+      selectionMode: selectionMode,
+      selected: selection.isRangeSelected(group.startIndex, group.count),
+      onToggleSelected: this._onToggleSelected
     };
     let groupHeaderProps: IGroupDividerProps = assign({}, headerProps, dividerProps);
     let groupFooterProps: IGroupDividerProps = assign({}, footerProps, dividerProps);
 
     return (
       <div
-        ref={this._resolveRef('_root')}
-        className={css('ms-GroupedList-group', this._getDroppingClassName())}
+        ref={this._resolveRef('_root') }
+        className={css('ms-GroupedList-group', this._getDroppingClassName()) }
         >
-        {onRenderGroupHeader(groupHeaderProps, this._onRenderGroupHeader)}
+        {onRenderGroupHeader(groupHeaderProps, this._onRenderGroupHeader) }
         {
           group && group.isCollapsed ?
             null :
@@ -166,7 +169,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
               hasNestedGroups ?
                 (
                   <List
-                    ref={this._resolveRef('_list')}
+                    ref={this._resolveRef('_list') }
                     items={group.children}
                     onRenderCell={this._renderSubGroup}
                     getItemCountForPage={() => 1}
@@ -175,7 +178,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
                 this._onRenderGroup(renderCount)
             )
         }
-        {onRenderGroupFooter(groupFooterProps, this._onRenderGroupFooter)}
+        {isFooterVisible && onRenderGroupFooter(groupFooterProps, this._onRenderGroupFooter) }
       </div>
     );
   }
@@ -225,9 +228,9 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     return (
       <List
         items={items}
-        onRenderCell={(item, itemIndex) => onRenderCell(groupNestingDepth, item, itemIndex)}
-        ref={this._resolveRef('_list')}
-        renderCount={Math.min(count, renderCount)}
+        onRenderCell={(item, itemIndex) => onRenderCell(groupNestingDepth, item, itemIndex) }
+        ref={this._resolveRef('_list') }
+        renderCount={Math.min(count, renderCount) }
         startIndex={startIndex}
         { ...listProps }
         />
@@ -255,7 +258,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     return (!subGroup || subGroup.count > 0) ? (
       <GroupedListSection
         ref={ (section) => (section ? (this._subGroups[subGroupIndex] = section) : delete this._subGroups[subGroupIndex]) }
-        key={this._getGroupKey(subGroup, subGroupIndex)}
+        key={this._getGroupKey(subGroup, subGroupIndex) }
         dragDropEvents={dragDropEvents}
         dragDropHelper={dragDropHelper}
         eventsToRegister={eventsToRegister}
@@ -300,6 +303,14 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     };
     return options;
   }
+
+  @autobind
+  private _onToggleSelected() {
+    let { group, selection } = this.props;
+
+    selection.toggleRangeSelected(group.startIndex, group.count);
+  }
+
 
   /**
    * update groupIsDropping state based on the input value, which is used to change style during drag and drop

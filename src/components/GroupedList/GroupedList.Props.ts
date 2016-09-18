@@ -108,11 +108,6 @@ export interface IGroup {
   level?: number;
 
   /**
-   * If all the items in the group are selected.
-   */
-  isSelected?: boolean;
-
-  /**
    * If all the items in the group are collapsed.
    */
   isCollapsed?: boolean;
@@ -198,6 +193,9 @@ export interface IGroupDividerProps {
   /** Text to display for the group footer show all link. */
   showAllLinkText?: string;
 
+  /** If all items in the group are selected. */
+  selected?: boolean;
+
   /** Callback for when the "Show All" link in group footer is clicked */
   onToggleSummarize?: (group: IGroup) => void;
 
@@ -208,5 +206,5 @@ export interface IGroupDividerProps {
   onToggleCollapse?: (group: IGroup) => void;
 
   /** Callback for when the group is selected. */
-  onToggleSelectGroup?: (group: IGroup) => void;
+  onToggleSelected?: () => void;
 }

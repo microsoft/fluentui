@@ -45,6 +45,7 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
       groupLevel,
       viewport,
       selectionMode,
+      selected,
       loadingText,
       isCollapsedGroupSelectVisible
     } = this.props;
@@ -55,7 +56,7 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
     }
     let canSelectGroup = selectionMode === SelectionMode.multiple;
     let isSelectionCheckVisible = canSelectGroup && (isCollapsedGroupSelectVisible || !(group && group.isCollapsed));
-    let isSelected = group && group.isSelected && isSelectionCheckVisible;
+    let isSelected = group && selected && isSelectionCheckVisible;
 
     return group && (
       <div
@@ -73,7 +74,7 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
             <button
               className='ms-GroupHeader-check'
               data-selection-toggle={ true }
-              onClick={ this._onToggleSelectGroup } >
+              onClick={ this._onToggleSelectClick } >
               <Check isChecked={ isSelected } />
             </button>
             ) : (selectionMode !== SelectionMode.none ? GroupSpacer({ count: 1 }) : null )
@@ -123,12 +124,10 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
   }
 
   @autobind
-  private _onToggleSelectGroup(ev: React.MouseEvent) {
-    let { group, onToggleSelectGroup } = this.props;
+  private _onToggleSelectClick(ev: React.MouseEvent) {
+    let { group, onToggleSelected } = this.props;
 
-    if (onToggleSelectGroup) {
-      onToggleSelectGroup(group);
-    }
+    onToggleSelected();
 
     ev.preventDefault();
     ev.stopPropagation();
@@ -136,12 +135,12 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
 
   @autobind
   private _onHeaderClick() {
-    let { group, onGroupHeaderClick, onToggleSelectGroup } = this.props;
+    let { group, onGroupHeaderClick, onToggleSelected } = this.props;
 
     if (onGroupHeaderClick) {
       onGroupHeaderClick(group);
-    } else if (onToggleSelectGroup) {
-      onToggleSelectGroup(group);
+    } else {
+      onToggleSelected();
     }
   }
 }
