@@ -3,12 +3,9 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import * as ReactTestUtils from 'react-addons-test-utils';
-
-let { expect } = chai;
-
 import { BaseComponent } from './BaseComponent';
 
-let { assert } = chai;
+let { assert, expect } = chai;
 
 class TestComponent extends BaseComponent<{}, {}> {
 
