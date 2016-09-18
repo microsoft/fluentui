@@ -29,7 +29,7 @@ import {
 import {
   IDragDropOptions
 } from './../../utilities/dragdrop/interfaces';
-import { EventGroup, assign, css } from '../../Utilities';
+import { assign, css } from '../../Utilities';
 import { IViewport } from '../../utilities/decorators/withViewport';
 
 export interface IGroupedListSectionProps extends React.Props<GroupedListSection> {
@@ -189,10 +189,6 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
   }
 
   public forceListUpdate() {
-    let {
-      group
-    } = this.props;
-
     if (this._list) {
       this._list.forceUpdate();
     }
@@ -310,7 +306,6 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
 
     selection.toggleRangeSelected(group.startIndex, group.count);
   }
-
 
   /**
    * update groupIsDropping state based on the input value, which is used to change style during drag and drop

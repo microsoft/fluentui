@@ -3,13 +3,8 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import {
   DetailsList,
-  MarqueeSelection,
-  Selection,
-  TextField,
-  Link,
-  IGroupRenderProps,
-  IGroupDividerProps,
-  IGroup
+  IGroup,
+  Link
 } from '../../../../index';
 import { createListItems, createGroups } from '../../../utilities/data';
 import './DetailsListExample.scss';
