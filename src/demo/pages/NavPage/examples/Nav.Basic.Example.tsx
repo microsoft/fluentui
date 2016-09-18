@@ -60,4 +60,3 @@ export class NavBasicExample extends React.Component<any, any> {
     return false;
   }
 }
-

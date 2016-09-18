@@ -7,13 +7,13 @@ import {
 } from '../../components/index';
 
 import { LayerBasicExample } from './examples/Layer.Basic.Example';
-import { LayerInteractiveExample } from './examples/Layer.Interactive.Example';
+import { LayerHostedExample } from './examples/Layer.Hosted.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const LayerBasicExampleCode = require('./examples/Layer.Basic.Example.tsx');
-const LayerInteractiveExampleCode = require('./examples/Layer.Interactive.Example.tsx');
+const LayerHostedExampleCode = require('./examples/Layer.Hosted.Example.tsx');
 
 export class LayerPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -30,11 +30,11 @@ export class LayerPage extends React.Component<IComponentDemoPageProps, any> {
         componentName='LayerExample'
         exampleCards={
           [
-            <ExampleCard title='Basic' code={ LayerBasicExampleCode }>
+            <ExampleCard title='Basic layered content' code={ LayerBasicExampleCode }>
               <LayerBasicExample />
             </ExampleCard>,
-            <ExampleCard title='Interactive' code={ LayerInteractiveExampleCode }>
-              <LayerInteractiveExample />
+            <ExampleCard title='Using LayerHost to control projection' code={ LayerHostedExampleCode }>
+              <LayerHostedExample />
             </ExampleCard>
           ]
         }

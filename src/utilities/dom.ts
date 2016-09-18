@@ -57,7 +57,7 @@ export function setVirtualParent(child: HTMLElement, parent: HTMLElement) {
 export function getVirtualParent(child: HTMLElement): HTMLElement {
   let parent: HTMLElement;
 
-  if (isVirtualElement(child)) {
+  if (child && isVirtualElement(child)) {
     parent = child._virtual.parent;
   }
 
@@ -75,7 +75,7 @@ export function getVirtualParent(child: HTMLElement): HTMLElement {
  * @returns {HTMLElement}
  */
 export function getParent(child: HTMLElement, allowVirtualParents: boolean = true): HTMLElement {
-  return allowVirtualParents && getVirtualParent(child) || child.parentElement;
+  return child && (allowVirtualParents && getVirtualParent(child) || child.parentElement);
 }
 
 /**
@@ -90,23 +90,25 @@ export function getParent(child: HTMLElement, allowVirtualParents: boolean = tru
  * @returns {boolean}
  */
 export function elementContains(parent: HTMLElement, child: HTMLElement, allowVirtualParents: boolean = true): boolean {
-  let isContained: boolean;
+  let isContained: boolean = false;
 
-  if (allowVirtualParents) {
-    isContained = false;
+  if (parent && child) {
+    if (allowVirtualParents) {
+      isContained = false;
 
-    while (child) {
-      let nextParent = getParent(child);
+      while (child) {
+        let nextParent = getParent(child);
 
-      if (nextParent === parent) {
-        isContained = true;
-        break;
+        if (nextParent === parent) {
+          isContained = true;
+          break;
+        }
+
+        child = nextParent;
       }
-
-      child = nextParent;
+    } else if (parent.contains) {
+      isContained = parent.contains(child);
     }
-  } else {
-    isContained = parent.contains(child);
   }
 
   return isContained;
@@ -119,5 +121,5 @@ export function elementContains(parent: HTMLElement, child: HTMLElement, allowVi
  * @returns {element is IVirtualElement}
  */
 function isVirtualElement(element: HTMLElement | IVirtualElement): element is IVirtualElement {
-  return !!(<IVirtualElement>element)._virtual;
+  return element && !!(<IVirtualElement>element)._virtual;
 }
