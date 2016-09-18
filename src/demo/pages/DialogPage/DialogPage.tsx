@@ -61,6 +61,9 @@ export class DialogPage extends React.Component<IComponentDemoPageProps, any> {
             <span> are used to render a modal window.</span>
           </div>
         }
+        related={
+          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Dialog.md'>Fabric JS</a>
+        }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>

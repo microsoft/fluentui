@@ -45,6 +45,9 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
             <span> allow the user to see the status of activities. Unlike the Spinner, ProgressIndicator should accurately display the progress of the activity while the Spinner is used when the time is indeterminate.</span>
           </div>
         }
+        related={
+          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/ProgressIndicator.md'>Fabric JS</a>
+        }
         route={ this._url }
          isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>

@@ -46,6 +46,9 @@ export class LinkPage extends React.Component<IComponentDemoPageProps, any> {
             <span> are used as a styled replacement for A tags. All attributes valid on A tags will be passed through.</span>
           </div>
         }
+        related={
+          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Link.md'>Fabric JS</a>
+        }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>

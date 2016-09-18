@@ -51,9 +51,11 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, any
         }
         overview={
           <div>
-           <Link target='_blank' href='http://dev.office.com/fabric/components/commandBar'>CommandBars</Link>
-          <span> provide a menu control to expose application commands. Command bars typically are rendered just below the header.</span>
+           Command bars provide a menu control to expose application commands. Command bars typically are rendered just below the header.
           </div>
+        }
+        related={
+          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/CommandBar.md'>Fabric JS</a>
         }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>

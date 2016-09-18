@@ -40,6 +40,9 @@ export class PersonaCardPage extends React.Component<IComponentDemoPageProps, an
             <span> render a details for an individual.</span>
           </div>
         }
+        related={
+          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/PersonaCard.md'>Fabric JS</a>
+        }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>

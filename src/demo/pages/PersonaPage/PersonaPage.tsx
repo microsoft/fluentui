@@ -51,6 +51,9 @@ export class PersonaPage extends React.Component<IComponentDemoPageProps, any> {
             <span> are used for rendering an individual's avatar and presence. They are used within the PersonaCard and PeoplePicker.</span>
           </div>
         }
+        related={
+          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Persona.md'>Fabric JS</a>
+        }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>

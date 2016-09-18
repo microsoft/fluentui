@@ -59,9 +59,11 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
         }
         overview={
           <div>
-            <Link target='_blank' href='http://dev.office.com/fabric/components/contextualMenu'>ContextualMenus</Link>
-            <span> provide a menu for use in context menus and dropdowns.</span>
+            Contextual menus provide a menu for use in context menus and dropdowns.
           </div>
+        }
+        related={
+          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/ContextualMenu.md'>Fabric JS</a>
         }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
