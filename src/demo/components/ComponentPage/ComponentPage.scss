@@ -2,7 +2,7 @@
 
 $componentPageColor: #0f8387;
 $componentPagePadding: 50px;
-$componentPageDividingMargin: 80px;
+$componentPageDividingMargin: 40px;
 $componentSubHeadMargin: 28px;
 $dosColor: #177D3E;
 $dontColor: #A61E22;
@@ -91,14 +91,21 @@ $dontColor: #A61E22;
   width: 100%;
   box-sizing: border-box;
   display: inline-block;
-  border-top: 8px solid #177D3E;
-  margin-right: 50px;
   vertical-align: top;
   margin-bottom: 20px;
 
   h3 {
-    margin-top: 1em;
-    margin-bottom: 1em;
+    margin-bottom: 16px;
+    @include ms-font-xl;
+
+    &::after {
+      background-color: #a4cf0c;
+      border-radius: 3px;
+      content: '';
+      display: block;
+      height: 8px;
+      margin: 12px 0;
+    }
   }
 
   ul {
@@ -110,15 +117,18 @@ $dontColor: #A61E22;
     line-height: $ms-font-size-xl;
     list-style: disc;
   }
+
+  &:first-child {
+    margin-right: 120px;
+  }
 }
 
-.ComponentPage-doNotSection {
-  border-top: 8px solid #A61E22;
+.ComponentPage-doSection--dont h3::after {
+  background-color: #e74856;
 }
-
 
 @media(min-width: $ms-screen-lg-min) {
   .ComponentPage-doSection {
-    width: calc(50% - 50px);
+    width: calc(50% - 60px);
   }
 }
