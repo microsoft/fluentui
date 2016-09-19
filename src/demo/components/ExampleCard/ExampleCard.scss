@@ -67,8 +67,8 @@
 }
 
 .ExampleCard-example {
-  max-height: 720px;
-  overflow: scroll;
+  max-height: 80vh;
+  overflow: auto;
   padding: 20px 0;
 }
 
@@ -84,7 +84,7 @@
   pre {
     margin: 0;
     max-height: 0;
-    overflow: scroll;
+    overflow: auto;
     transition: all $ms-duration3 $ms-ease1;
   }
 
