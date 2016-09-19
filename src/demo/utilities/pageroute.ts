@@ -1,4 +1,4 @@
-import { IAppState } from '../components/app/AppState';
+import { IAppState } from '../components/App/AppState';
 /*
   Retreive the route URL for a page in a group from the the AppState
 */
