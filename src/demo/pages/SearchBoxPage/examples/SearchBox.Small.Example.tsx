@@ -9,7 +9,7 @@ export class SearchBoxSmallExample extends React.Component<any, any> {
     return (
       <div className='ms-SearchBoxSmallExample'>
         <SearchBox onChange={
-          function(newValue) {
+          (newValue) => {
             console.log('Search box value changed to: ' + newValue);
           }
         } />
