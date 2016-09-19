@@ -33,7 +33,7 @@ export class DocumentCard extends React.Component<IDocumentCardProps, any> {
             className
           )
         }
-        onClick={ actionable? this._onClick: null }
+        onClick={ actionable ? this._onClick : null }
         style={ style }>
         { children }
       </div>
