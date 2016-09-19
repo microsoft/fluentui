@@ -23,6 +23,11 @@ export class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState>
   public constructor(props: ISearchBoxProps) {
     super(props);
 
+    // Handle deprecated prop
+    if (this.props.onChanged) {
+      this.props.onChange = this.props.onChanged;
+    }
+
     this.state = {
       value: props.value,
       hasFocus: false,
@@ -85,14 +90,14 @@ export class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState>
     this.setState({
       value: this.refs.inputText.value
     });
-    this._onChanged(this.refs.inputText.value);
+    this._onChange(this.refs.inputText.value);
   }
 
-  private _onChanged(newValue: string): void {
-    let { onChanged } = this.props;
+  private _onChange(newValue: string): void {
+    let { onChange } = this.props;
 
-    if (onChanged) {
-      onChanged(newValue);
+    if (onChange) {
+      onChange(newValue);
     }
   }
 }
