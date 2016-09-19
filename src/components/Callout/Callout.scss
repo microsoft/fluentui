@@ -38,112 +38,6 @@ $Callout-beak-slant-width: 28px;
   z-index: $ms-zIndex-middle;
 }
 
-.ms-Callout-inner {
-  height: 100%;
-  padding: 0 24px 20px;
-}
-
-.ms-Callout-header {
-  z-index: ($ms-zIndex-Callout + $ms-zIndex-middle);
-  padding: 18px 24px 12px;
-}
-
-.ms-Callout-title {
-  margin: 0;
-  @include ms-font-xl;
-  color: $ms-color-neutralPrimary;
-  font-weight: $ms-font-weight-semilight;
-}
-
-.ms-Callout-subText {
-  margin: 0;
-  @include ms-font-s;
-  color: $ms-color-neutralPrimary;
-  font-weight: $ms-font-weight-semilight;
-}
-
-.ms-Callout-link {
-  @include ms-font-m;
-  color: $ms-color-neutralPrimary;
-}
-
-.ms-Callout-actions {
-  position: relative;
-  margin-top: 20px;
-  width: 100%;
-  white-space: nowrap;
-
-  .ms-Link.ms-Link--hero {
-    position: relative;
-    @include left(-8px); // Move link inline with body text
-  }
-}
-
-.ms-Callout-action {
-  position: relative;
-  top: 4px;
-  @include left(-8px);
-  @include margin-left(0);
-
-  &:hover .ms-Callout-actionIcon,
-  &:focus .ms-Callout-actionIcon {
-    color: $ms-color-themePrimary;
-  }
-}
-
-.ms-Callout-button {
-  @include margin-right(12px);
-}
-
-//= Modifier: Close button callout
-//
-.ms-Callout.ms-Callout--close {
-  .ms-Callout-title {
-    @include margin-right(20px); // Avoid overlap with close button
-  }
-}
-
-//= Modifier: OOBE (Out of box experience) callout
-//
-.ms-Callout.ms-Callout--OOBE {
-  &.ms-Callout--arrowRight,
-  &.ms-Callout--arrowLeft,
-  &.ms-Callout--arrowTop {
-    &:before,
-    &:after {
-      border-color: $Callout-OOBE-title-bg;
-      background-color: transparent;
-    }
-  }
-
-  .ms-Callout-header {
-    padding: 28px 24px;
-    background-color: $Callout-OOBE-title-bg;
-  }
-
-  .ms-Callout-title {
-    @include ms-font-xxl;
-    color: $ms-color-white;
-  }
-
-  .ms-Callout-inner {
-    padding-top: 20px;
-  }
-
-  .ms-Callout-subText {
-    font-size: $ms-font-size-m;
-  }
-}
-
-//= Modifier: ActionText callout
-//
-.ms-Callout.ms-Callout--actionText {
-  .ms-Callout-actions {
-    border-top: 1px solid $ms-color-neutralLight;
-    margin-bottom: -8px;
-  }
-}
-
 //= Modifier: Peek callout
 //
 .ms-Callout.ms-Callout--peek {
@@ -189,11 +83,8 @@ $Callout-beak-slant-width: 28px;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
-}
-
-.ms-Callout-smallbeak {
-  @extend .ms-Callout-beak;
-
-  width: 16px;
-  height: 16px;
+  &.ms-Callout-smallbeak {
+    width: 16px;
+    height: 16px;
+  }
 }
