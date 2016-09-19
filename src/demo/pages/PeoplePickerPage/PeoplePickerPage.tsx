@@ -1,8 +1,5 @@
 import * as React from 'react';
 import {
-  Link
-} from '../../../index';
-import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
@@ -40,15 +37,27 @@ export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, a
         exampleCards={
           [
             <ExampleCard title='PeoplePicker' code={ PeoplePickerBasicExampleCode }>
+              <p>
+                The default version of the PeoplePicker. Includes a specialized TextField well, which selected entities are added to.
+              </p>
               <PeoplePickerBasicExample />
             </ExampleCard>,
             <ExampleCard title='PeoplePicker - Compact' code={ PeoplePickerCompactExampleCode }>
+              <p>
+                The compact variant makes various UI elements smaller, such as the list of results and search button. It should be used in information-dense scenarios that require more compact UI.
+              </p>
               <PeoplePickerCompactExample />
             </ExampleCard>,
             <ExampleCard title='PeoplePicker - Disconnected' code={ PeoplePickerDisconnectedExampleCode }>
+              <p>
+                The disconnected state includes additional styling and text to let the user know there are issues when performing a search for entities. It should be used if there are connection issues that would prevent a user's search from running.
+              </p>
               <PeoplePickerDisconnectedExample />
             </ExampleCard>,
             <ExampleCard title='PeoplePicker - Member List' code={ PeoplePickerMemberListExampleCode }>
+              <p>
+                The Facepile variant adds selected entities to a vertical list below the PeoplePicker's input field instead of directly in the well. It should be used when additional details about the entities may be useful to surface directly, or when the list of entities is meant to be the focus of an experience (such as in a Panel).
+              </p>
               <PeoplePickerMemberListExample />
             </ExampleCard>,
             <ExampleCard title='PeoplePicker - Edit mode' code={ PeoplePickerEditModeExampleCode }>
@@ -63,8 +72,27 @@ export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, a
         }
         overview={
           <div>
-            <Link target='_blank' href='http://dev.office.com/fabric/components/peoplepicker'>PeoplePickers</Link>
-            <span> are used to pick recipients.</span>
+            <p>
+              The PeoplePicker is used to select one or more entities, such as people or groups. Entry points for PeoplePickers are typically specialized TextField-like input fields known as a "well", which are used to search for recipients from a list. When a recipient is selected from the list, it is added to the well as a specialized Persona that can be interacted with or removed. Clicking on a Persona from the well should invoke a PersonaCard or open a profile pane for that recipient.
+            </p>
+          </div>
+        }
+        dos={
+          <div>
+            <ul>
+              <li>
+                Use to select people to add to a list.
+              </li>
+            </ul>
+          </div>
+        }
+        donts={
+          <div>
+            <ul>
+              <li>
+                Don’t use to select objects that are not people or groups.
+              </li>
+            </ul>
           </div>
         }
         related={
