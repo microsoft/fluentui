@@ -22,7 +22,7 @@
   bottom: 0;
   right: 0;
 
-  .ms-Button.ms-Button--primary {
+  .codeButton {
     @include margin-right(0);
     background: none;
     border: 1px solid $ms-color-neutralTertiary;
@@ -30,11 +30,25 @@
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     line-height: 1;
-    padding: 0 12px;
-    min-width: 0;
+    padding: 4px 12px;
+    min-width: 100px;
+    transition: border $ms-duration3 $ms-ease1;
+
+    .ms-Button-icon {
+      position: relative;
+      top: 3px;
+
+      .ms-Icon {
+        font-size: $ms-font-size-l;
+        padding: 0;
+        margin-right: 8px;
+      }
+    }
 
     .ms-Button-label {
       color: $ms-color-neutralDark;
+      display: inline-block;
+      padding-bottom: 6px;
     }
 
     &.is-active,
@@ -44,6 +58,7 @@
       background-color: $ms-color-neutralDark;
       border-color: $ms-color-neutralDark;
 
+      .ms-Button-icon,
       .ms-Button-label {
         color: $ms-color-white;
       }
