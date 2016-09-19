@@ -56,7 +56,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
 
   public render() {
     let { isCalloutVisible, isBeakVisible, directionalHint, gapSpace } = this.state;
-    // ms-Callout-smallbeak is used in this directional example to reflect all the positions. Large beak will disable some position to avoid beak over the callout edge.
+    //  ms-Callout-smallbeak is used in this directional example to reflect all the positions. Large beak will disable some position to avoid beak over the callout edge.
     return (
       <div className='ms-CalloutExample'>
         <div className='ms-CalloutExample-configArea'>
