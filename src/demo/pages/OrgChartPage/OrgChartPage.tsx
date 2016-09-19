@@ -40,6 +40,9 @@ export class OrgChartPage extends React.Component<IComponentDemoPageProps, any> 
             <span> are used to render an org chart.</span>
           </div>
         }
+        related={
+          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/OrgChart.md'>Fabric JS</a>
+        }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>

@@ -9,3 +9,4 @@ export * from './utilities/eventGroup/EventGroup';
 export * from './utilities/hoist';
 export * from './utilities/object';
 export * from './utilities/rtl';
+export * from './utilities/properties';

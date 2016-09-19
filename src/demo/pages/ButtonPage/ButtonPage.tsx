@@ -1,8 +1,5 @@
 import * as React from 'react';
 import {
-   Link
-} from '../../../index';
-import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
@@ -45,8 +42,11 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, any> {
         }
         overview={
           <div>
-            <span>Buttons are best used to enable a user to commit a change or complete steps in a task. They are typically found inside forms, dialogs, panels or pages. An example of their usage is confirming the deletion of a file in a confirmation dialog. When considering their place in a layout, contemplate the order in which a user will flow through the UI. As an example, in a form, the individual will need to read and interact with the form fields before submiting the form. Therefore, as a general rule, the button should be placed at the bottom of the UI container (a dialog, panel, or page) which holds the related UI elements. While buttons can technically be used to navigate a user to another part of the experience, this is not recommended - unless that navigation is part of an action or their flow.</span> View <Link target='_blank' href='http://dev.office.com/fabric/components/button'>Buttons</Link> on our website.
+            <span>Buttons are best used to enable a user to commit a change or complete steps in a task. They are typically found inside forms, dialogs, panels or pages. An example of their usage is confirming the deletion of a file in a confirmation dialog. When considering their place in a layout, contemplate the order in which a user will flow through the UI. As an example, in a form, the individual will need to read and interact with the form fields before submiting the form. Therefore, as a general rule, the button should be placed at the bottom of the UI container (a dialog, panel, or page) which holds the related UI elements. While buttons can technically be used to navigate a user to another part of the experience, this is not recommended - unless that navigation is part of an action or their flow.</span> View <a target='_blank' href='http://dev.office.com/fabric/components/button'>Buttons</a> on our website.
           </div>
+        }
+        related={
+          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Button.md'>Fabric JS</a>
         }
         bestPractices={
           <div></div>

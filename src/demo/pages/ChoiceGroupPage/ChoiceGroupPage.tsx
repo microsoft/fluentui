@@ -1,8 +1,5 @@
 import * as React from 'react';
 import {
-  Link
-} from '../../../index';
-import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
@@ -42,9 +39,11 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, an
         }
         overview={
           <div>
-            <Link target='_blank' href='http://dev.office.com/fabric/components/choiceGroup'>ChoiceGroups</Link>
-            <span> allow the user to choose one of many options.</span>
+            Choice groups allow the user to choose one of many options.
           </div>
+        }
+        related={
+          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/ChoiceFieldGroup.md'>Fabric JS</a>
         }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>

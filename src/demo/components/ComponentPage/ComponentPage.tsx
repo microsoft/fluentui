@@ -13,6 +13,7 @@ export interface IComponentPageProps {
   dos?: JSX.Element;
   donts?: JSX.Element;
   overview: JSX.Element;
+  related?: JSX.Element;
   route: string;
   isHeaderVisible?: boolean;
 }
@@ -39,10 +40,13 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
           { this._pageHeader() }
           <div className='ComponentPage-body'>
             <div className='ComponentPage-overviewSection'>
-                <h2 className='ComponentPage-subHeading' id='Overview'>Overview</h2>
+              <h2 className='ComponentPage-subHeading' id='Overview'>Overview</h2>
+              <div className='ComponentPage-overviewSectionContent'>
                 <div className='ComponentPage-overview'>
                   { overview }
                 </div>
+                { this._getRelatedComponents() }
+              </div>
             </div>
             { this._getDosAndDonts() }
             <div className='ComponentPage-variantsSection'>
@@ -100,6 +104,17 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     );
   }
 
+  private _getRelatedComponents(): JSX.Element {
+    if (this.props.related) {
+      return (
+        <div className='ComponentPage-related'>
+          <span className='ComponentPage-relatedTitle'>Also available in</span>
+          { this.props.related }
+        </div>
+      );
+    }
+  }
+
   private _getPropertiesTable(): JSX.Element {
     if (this.props.propertiesTables) {
       return (
@@ -117,7 +132,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     if (this.props.bestPractices) {
       dosAndDonts.push(
         <div class='ComponentPage-usage' id='Best Practices'>
-          <h2 className='ComponentPage-subHeading'>Best Practices</h2>
+          <h2 className='ComponentPage-subHeading'>Best practices</h2>
           { this.props.bestPractices }
         </div>
       );
@@ -127,11 +142,11 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
       dosAndDonts.push(
         <div className='ComponentPage-doSections'>
           <div className='ComponentPage-doSection'>
-            <h3 className='ComponentPage-smallSubHeading'>Do</h3>
+            <h3>Do</h3>
             { this.props.dos }
           </div>
-          <div className='ComponentPage-doSection ComponentPage-doNotSection'>
-            <h3 className='ComponentPage-smallSubHeading'>Do not</h3>
+          <div className='ComponentPage-doSection ComponentPage-doSection--dont'>
+            <h3>Don&rsquo;t</h3>
             { this.props.donts }
           </div>
         </div>

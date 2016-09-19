@@ -90,6 +90,9 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, any> 
             </ul>
           </div>
         }
+        related={
+          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/FacePile.md'>Fabric JS</a>
+        }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>

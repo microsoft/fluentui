@@ -77,6 +77,9 @@ export class PivotPage extends React.Component<IComponentDemoPageProps, any> {
             <span> are used for grouping components under a set of Links or Tabs</span>
           </div>
         }
+        related={
+          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Pivot.md'>Fabric JS</a>
+        }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>

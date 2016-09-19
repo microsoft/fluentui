@@ -46,6 +46,9 @@ export class OverlayPage extends React.Component<IComponentDemoPageProps, any> {
             <span> are used to render a semi transparent overlaying div on top of content. This can be used in modal situations, such as Dialogs, which render on top of existing content.</span>
           </div>
         }
+        related={
+          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Overlay.md'>Fabric JS</a>
+        }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>

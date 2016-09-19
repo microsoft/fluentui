@@ -1,8 +1,5 @@
 import * as React from 'react';
 import {
-  Link
-} from '../../../index';
-import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
@@ -42,9 +39,11 @@ export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> 
         }
         overview={
           <div>
-            <Link target='_blank' href='http://dev.office.com/fabric/components/checkbox'>Checkboxes</Link>
-            <span> allow the user to enable or disable a setting.</span>
+            Checkboxes allow the user to enable or disable a setting.
           </div>
+        }
+        related={
+          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Checkbox.md'>Fabric JS</a>
         }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
