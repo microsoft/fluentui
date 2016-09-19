@@ -70,6 +70,7 @@ export class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState>
     this.setState({
       value: ''
     });
+    this._onChange('');
     ev.stopPropagation();
     ev.preventDefault();
   }
