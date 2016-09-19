@@ -104,7 +104,7 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
       );
     }
 
-    if ( hasCloseIcon ) {
+    if (hasCloseIcon) {
       closeButton = (
         <Button
           className='ms-TeachingBubble-button'

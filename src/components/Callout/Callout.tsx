@@ -74,6 +74,7 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
           ref={ (callout: HTMLDivElement) => this._calloutElement = callout }
           >
           { isBeakVisible && targetElement ? (<div className={ beakStyle }  style={ ((positions) ? positions.beak : BEAK_ORIGIN_POSITION) } />) : (null) }
+          <div className='ms-Callout-beakCurtain' />
           <Popup
             className='ms-Callout-main'
             onDismiss={ (ev:any) => this.dismiss() }

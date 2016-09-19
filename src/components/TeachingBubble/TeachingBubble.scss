@@ -23,7 +23,8 @@
 .ms-TeachingBubble-headline {
   margin: 0;
   color: $ms-color-white;
-   .ms-TeachingBubble-header--large & {
+
+  .ms-TeachingBubble-header--large & {
     @include ms-font-xxl;
     font-weight: $ms-font-weight-light;
   }

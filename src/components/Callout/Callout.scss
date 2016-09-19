@@ -7,8 +7,21 @@
 // --------------------------------------------------
 // Callout styles
 
-$Callout-OOBE-title-bg: $ms-color-themePrimary;
 $Callout-beak-slant-width: 28px;
+$Callout-smallbeak-slant-width: 16px;
+
+@mixin calloutBeak {
+  position: absolute;
+  width: $Callout-beak-slant-width;
+  height: $Callout-beak-slant-width;
+  background-color: $ms-color-white;
+  box-shadow:  inherit;
+  border: inherit;
+  box-sizing: border-box;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
 
 .ms-Callout {
   @include ms-baseFont;
@@ -16,7 +29,6 @@ $Callout-beak-slant-width: 28px;
   position: absolute;
   display: inline-block;
   border: 1px solid $ms-color-neutralLight;
-  z-index: $ms-zIndex-Callout;
 
   @media screen and (-ms-high-contrast: active) {
     border: 1px solid $ms-color-white;
@@ -35,56 +47,24 @@ $Callout-beak-slant-width: 28px;
   position: relative;
   background-color: $ms-color-white;
   box-sizing: border-box;
-  z-index: $ms-zIndex-middle;
-}
-
-//= Modifier: Peek callout
-//
-.ms-Callout.ms-Callout--peek {
-  &.ms-Callout--arrowTop,
-  &.ms-Callout--arrowBottom {
-    &:before,
-    &:after {
-      @include left(40px);
-      @include right(auto);
-    }
-  }
-
-  &.ms-Callout--arrowRight,
-  &.ms-Callout--arrowLeft {
-    &:before,
-    &:after {
-      top: calc(50% - 10px);
-    }
-  }
-
-  .ms-Callout-header {
-    padding-bottom: 0;
-  }
-
-  .ms-Callout-title {
-    font-size: $ms-font-size-m;
-  }
-
-  .ms-Callout-actions {
-    margin-top: 12px;
-    margin-bottom: -4px;
-  }
 }
 
 .ms-Callout-beak {
+  @include calloutBeak;
+}
+
+.ms-Callout-smallbeak {
+  @include calloutBeak;
+
+  width: 16px;
+  height: 16px;
+}
+
+.ms-Callout-beakCurtain {
   position: absolute;
-  width: $Callout-beak-slant-width;
-  height: $Callout-beak-slant-width;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   background-color: $ms-color-white;
-  box-shadow:  inherit;
-  border: inherit;
-  box-sizing: border-box;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-  &.ms-Callout-smallbeak {
-    width: 16px;
-    height: 16px;
-  }
 }
