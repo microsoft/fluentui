@@ -43,7 +43,7 @@ export class DocumentCardPage extends React.Component<IComponentDemoPageProps, a
               </p>
               <DocumentCardCompleteExample />
             </ExampleCard>,
-            <ExampleCard title='DocumentCard Compact Layout' code={ DocumentCardCompactExampleCode }>
+            <ExampleCard title='DocumentCard Compact Layout'>
               <p>
                 When showing a card on a mobile device or a similarly narrow layout, you may choose this Compact layout which helps the filename remain scannable while giving roomy space for a preview thumbnail.
               </p>
