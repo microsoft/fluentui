@@ -56,8 +56,8 @@ $Callout-smallbeak-slant-width: 16px;
 .ms-Callout-smallbeak {
   @include calloutBeak;
 
-  width: 16px;
-  height: 16px;
+  width: $Callout-smallbeak-slant-width;
+  height: $Callout-smallbeak-slant-width;
 }
 
 .ms-Callout-beakCurtain {
