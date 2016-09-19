@@ -81,6 +81,9 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, any> {
             <span> are used to render an org chart, and other components.</span>
           </div>
         }
+        related={
+          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Panel.md'>Fabric JS</a>
+        }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>

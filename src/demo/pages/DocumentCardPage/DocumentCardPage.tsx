@@ -14,7 +14,7 @@ import { IComponentDemoPageProps } from '../../components/ComponentPage/ICompone
 
 const DocumentCardBasicExampleCode = require('./examples/DocumentCard.Basic.Example.tsx');
 const DocumentCardCompleteExampleCode = require('./examples/DocumentCard.Complete.Example.tsx');
-const DocumentCardCompactExampleCode = require('./examples/DocumentCard.Compact.Example.tsx');
+// const DocumentCardCompactExampleCode = require('./examples/DocumentCard.Compact.Example.tsx');
 
 export class DocumentCardPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;

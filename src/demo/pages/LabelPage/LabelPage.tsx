@@ -46,6 +46,9 @@ export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
             <span> render a text string, styled as a label.</span>
           </div>
         }
+        related={
+          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Label.md'>Fabric JS</a>
+        }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
