@@ -28,7 +28,7 @@
     "react-highlight": "0.8.0",
     "source-map-loader": "0.1.5",
     "tslint-microsoft-contrib": "^2.0.9",
-    "typescript": "^2.0.2",
+    "typescript": "^1.8.10",
     "vinyl-ftp": "0.4.5",
     "webpack-split-by-path": "0.0.10",
     "webpack-visualizer-plugin": "0.1.5"
