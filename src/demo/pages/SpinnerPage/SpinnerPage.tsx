@@ -46,6 +46,9 @@ export class SpinnerPage extends React.Component<IComponentDemoPageProps, any> {
             </p>
           </div>
         }
+        bestPractices={
+          <div></div>
+        }
         dos={
           <div>
             <ul>

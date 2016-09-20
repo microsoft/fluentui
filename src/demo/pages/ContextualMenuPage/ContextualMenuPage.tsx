@@ -67,6 +67,9 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
             </p>
           </div>
         }
+        bestPractices={
+          <div></div>
+        }
         dos={
           <div>
             <ul>
