@@ -64,6 +64,9 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
 
           </div>
         }
+        bestPractices={
+          <div></div>
+        }
         dos={
           <div>
             <ul>
