@@ -72,6 +72,9 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, any> 
 
           </div>
         }
+        bestPractices={
+          <div></div>
+        }
         dos={
           <div>
             <ul>

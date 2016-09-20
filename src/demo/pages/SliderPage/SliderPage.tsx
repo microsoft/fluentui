@@ -47,6 +47,9 @@ export class SliderPage extends React.Component<IComponentDemoPageProps, any> {
             </p>
           </div>
         }
+        bestPractices={
+          <div></div>
+        }
         dos={
           <div>
             <ul>

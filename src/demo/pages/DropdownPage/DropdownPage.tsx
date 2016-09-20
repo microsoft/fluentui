@@ -44,6 +44,9 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, any> 
             </p>
           </div>
         }
+        bestPractices={
+          <div></div>
+        }
         dos={
           <div>
             <ul>
@@ -52,6 +55,9 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, any> 
               <li>Use a Dropdown when the selected option is more important than the alternatives (in contrast to radio buttons where all the choices are visible putting more emphasis on the other options).</li>
             </ul>
           </div>
+        }
+        donts={
+          <div></div>
         }
         related={
           <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Dropdown.md'>Fabric JS</a>
