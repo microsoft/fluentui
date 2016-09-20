@@ -87,7 +87,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
           className={ css('ms-Nav-link') }
           style={ { [isRtl ? 'paddingRight' : 'paddingLeft'] : paddingBefore } }
           href={ link.url || 'javascript:' }
-          onClick={ this._onNavLinkClicked.bind(this, link) }
+          onClick={ this._onNavAnchorLinkClicked.bind(this, link) }
           aria-label={ link.ariaLabel }
           title={ link.title || link.name }
           target={ link.target }
@@ -105,7 +105,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
           buttonType={ ButtonType.command }
           icon={ link.icon }
           description={ link.title || link.name }
-          onClick={ this._onNavLinkClicked.bind(this, link) }>
+          onClick={ this._onNavButtonLinkClicked.bind(this, link) }>
           { link.name }
       </Button>);
   }
@@ -195,11 +195,19 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
     ev.stopPropagation();
   }
 
-  private _onNavLinkClicked(link: INavLink, ev: React.MouseEvent): void {
+  private _onNavAnchorLinkClicked(link: INavLink, ev: React.MouseEvent): void {
+    this._selectedKey = link.key;
+
+    if (this.props.onLinkClick) {
+      this.props.onLinkClick(ev, link);
+    }
+  }
+
+  private _onNavButtonLinkClicked(link: INavLink, ev: React.MouseEvent): void {
     this._selectedKey = link.key;
 
     if (link.onClick) {
-      link.onClick(ev, link);
+      link.onClick(ev);
     }
   }
 }
