@@ -45,7 +45,7 @@ export class PersonaPage extends React.Component<IComponentDemoPageProps, any> {
         overview={
           <div>
             <p>
-              Personas are used for rendering an individual's avatar and presence. They are used within the PersonaCard and PeoplePicker components.
+              Personas are used for rendering an individual's avatar and presence. They are used within the PeoplePicker components.
             </p>
           </div>
         }

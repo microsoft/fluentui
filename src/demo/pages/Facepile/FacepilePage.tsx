@@ -40,7 +40,7 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, any> 
         overview={
           <div>
             <p>
-              The Facepile shows a list of faces or initials in a horizontal lockup. Each circle represents a person. Many times this component is used when sharing who has access to a specific view or file or when assigning a user to a task within a workflow. Clicking or tapping on the individual circles should invoke a PersonaCard or open the person’s profile pane.
+              The Facepile shows a list of faces or initials in a horizontal lockup. Each circle represents a person. Many times this component is used when sharing who has access to a specific view or file or when assigning a user to a task within a workflow.
             </p>
 
             <h2 className='ms-font-xl'>Adding people</h2>
