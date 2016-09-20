@@ -160,12 +160,6 @@ export const AppState: IAppState = {
           url: '#/examples/messagebar'
         },
         {
-          component: OrgChartPage,
-          name: 'OrgChart',
-          status: ExampleStatus.placeholder,
-          url: '#/examples/orgchart'
-        },
-        {
           component: OverlayPage,
           name: 'Overlay',
           status: ExampleStatus.beta,
@@ -188,12 +182,6 @@ export const AppState: IAppState = {
           name: 'Persona',
           status: ExampleStatus.beta,
           url: '#/examples/persona'
-        },
-        {
-          component: PersonaCardPage,
-          name: 'PersonaCard',
-          status: ExampleStatus.placeholder,
-          url: '#/examples/personacard'
         },
         {
           component: PivotPage,
