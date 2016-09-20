@@ -6,7 +6,7 @@ import {
   TeachingBubble,
   Button,
   ButtonType,
-  IButtonProps,
+  IButtonProps
 } from '../../../../index';
 
 export interface ITeachingBubbleBasicExampleState {
@@ -28,12 +28,12 @@ export class TeachingBubbleBasicExample extends React.Component<any, ITeachingBu
 
   public render() {
     let { isTeachingBubbleVisible } = this.state;
-    let examplePrimaryButtonProps: IButtonProps = {
-      href: '',
-      buttonType: ButtonType.primary
+    let examplePrimaryButton: IButtonProps = {
+      buttonType: ButtonType.primary,
+      children: 'Try it out'
     };
     let exampleSecondaryButtonProps: IButtonProps = {
-      href: ''
+      children: 'May be later'
     };
 
     return (
@@ -45,13 +45,12 @@ export class TeachingBubbleBasicExample extends React.Component<any, ITeachingBu
           <div>
             <TeachingBubble
               targetElement={ this._menuButtonElement }
-              primaryButtonProps={ examplePrimaryButtonProps }
-              secondaryButtonProps={ exampleSecondaryButtonProps }
+              primaryButton={ examplePrimaryButton }
+              secondaryButton={ exampleSecondaryButtonProps }
               onDismiss={ this._onDismiss }
               headline='Discover what’s trending around you'
-              body='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?'
             >
-
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?
             </TeachingBubble>
           </div>
         ) : (null) }

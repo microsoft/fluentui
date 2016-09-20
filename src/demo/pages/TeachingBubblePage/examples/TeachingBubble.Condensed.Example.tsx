@@ -40,9 +40,8 @@ export class TeachingBubbleCondensedExample extends React.Component<any, ITeachi
               onDismiss={ this._onDismiss }
               hasCloseIcon={ true }
               headline='Discover what’s trending around you'
-              body='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?'
             >
-
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?
             </TeachingBubble>
           </div>
         ) : (null) }

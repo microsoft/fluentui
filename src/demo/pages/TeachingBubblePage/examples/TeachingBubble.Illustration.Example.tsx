@@ -30,12 +30,12 @@ export class TeachingBubbleIllustrationExample extends React.Component<any, ITea
   public render() {
     let { isTeachingBubbleVisible } = this.state;
     let exampleImageProps: IImageProps = { src: 'http://placehold.it/364x140'};
-    let examplePrimaryButtonProps: IButtonProps = {
-      href: '',
-      buttonType: ButtonType.primary
+    let examplePrimaryButton: IButtonProps = {
+      buttonType: ButtonType.primary,
+      children: 'Try it out'
     };
     let exampleSecondaryButtonProps: IButtonProps = {
-      href: ''
+      children: 'May be later'
     };
 
     return (
@@ -46,15 +46,14 @@ export class TeachingBubbleIllustrationExample extends React.Component<any, ITea
         { isTeachingBubbleVisible ? (
           <div>
             <TeachingBubble
-              imageProps={ exampleImageProps }
+              illustrationImage={ exampleImageProps }
               targetElement={ this._menuButtonElement }
-              primaryButtonProps={ examplePrimaryButtonProps }
-              secondaryButtonProps={ exampleSecondaryButtonProps }
+              primaryButton={ examplePrimaryButton }
+              secondaryButton={ exampleSecondaryButtonProps }
               onDismiss={ this._onDismiss }
               headline='Discover what’s trending around you'
-              body='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?'
             >
-
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?
             </TeachingBubble>
           </div>
         ) : (null) }

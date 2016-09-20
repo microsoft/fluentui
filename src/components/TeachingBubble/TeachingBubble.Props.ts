@@ -34,22 +34,17 @@ export interface ITeachingBubbleProps extends React.Props<TeachingBubble>, IAcce
   /**
    * An Image for the Teaching Bubble.
    */
-  imageProps?: IImageProps;
-
-  /**
-   * A body for the Teaching Bubble.
-   */
-  body?: string;
+  illustrationImage?: IImageProps;
 
   /**
    * The Primary interaction button
    */
-  primaryButtonProps?: IButtonProps;
+  primaryButton?: IButtonProps;
 
   /**
    * The Secondary interaction button
    */
-  secondaryButtonProps?: IButtonProps;
+  secondaryButton?: IButtonProps;
 
   /**
    * Element to anchor the TeachingBubble to.

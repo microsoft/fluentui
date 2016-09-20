@@ -53,7 +53,7 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
   }
 
   public render() {
-    let { imageProps, primaryButtonProps, secondaryButtonProps, headline, hasCondensedHeadline, hasCloseIcon, body, targetElement, onDismiss, closeButtonAriaLabel } = this.props;
+    let { illustrationImage, primaryButton, secondaryButton, headline, hasCondensedHeadline, hasCloseIcon, targetElement, onDismiss, closeButtonAriaLabel } = this.props;
 
     let imageContent;
     let headerContent;
@@ -61,10 +61,10 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
     let footerContent;
     let closeButton;
 
-    if (imageProps && imageProps.src) {
+    if (illustrationImage && illustrationImage.src) {
       imageContent = (
          <div className='ms-TeachingBubble-header'>
-            <Image { ...imageProps as any } />
+            <Image { ...illustrationImage as any } />
          </div>
       );
      }
@@ -84,11 +84,11 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
 
     // @TODO find better name for 'body'?
     // @TODO support passing through children unless this prop is present
-    if (body) {
+    if (this.props.children) {
       bodyContent = (
         <div className='ms-TeachingBubble-body'>
           <p className='ms-TeachingBubble-subText'>
-            { body }
+            { this.props.children }
           </p>
          </div>
       );
@@ -97,11 +97,12 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
     // @TODO support single button, i.e. only render the button passed in
     // @TODO update button to support passing in displayText as a property (Discuss with David)
     // @TODO button styles still need to be done to match redlines
-    if (primaryButtonProps || secondaryButtonProps ) {
+    if (primaryButton || secondaryButton) {
+       console.log(primaryButton, secondaryButton);
       footerContent = (
         <div className='ms-TeachingBubble-footer'>
-          <Button { ...primaryButtonProps as any }>Button One</Button>
-          <Button { ...secondaryButtonProps as any }>Button Two</Button>
+          <Button { ...primaryButton }/>
+          <Button { ...secondaryButton }/>
         </div>
       );
     }
@@ -131,7 +132,7 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
           gapSpace={ 20 }
           targetElement={ targetElement }
           setInitialFocus={ true }
-          doNotLayer={ true }
+          doNotLayer={ false }
           directionalHint={ DirectionalHint.leftBottomEdge }
         >
           { imageContent }
