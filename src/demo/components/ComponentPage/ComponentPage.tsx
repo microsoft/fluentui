@@ -82,7 +82,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
 
     if (bestPractices && dos && donts) {
       links.push(
-        <div className='ComponentPage-navLink'>
+        <div className='ComponentPage-navLink' key='nav-link'>
           <Link href={ route + '#Best Practices' }>Best Practices</Link>
         </div>
       );
@@ -131,7 +131,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
 
     if (this.props.bestPractices) {
       dosAndDonts.push(
-        <div class='ComponentPage-usage' id='Best Practices'>
+        <div className='ComponentPage-usage' id='Best Practices' key='best-practices'>
           <h2 className='ComponentPage-subHeading'>Best practices</h2>
           { this.props.bestPractices }
         </div>
@@ -140,7 +140,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
 
     if (this.props.dos && this.props.donts) {
       dosAndDonts.push(
-        <div className='ComponentPage-doSections'>
+        <div className='ComponentPage-doSections' key='do-sections'>
           <div className='ComponentPage-doSection'>
             <h3>Do</h3>
             { this.props.dos }
