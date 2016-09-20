@@ -49,13 +49,11 @@ $CommandBarHeight: 40px;
   position: fixed;
   right: 0;
   top: 0;
-  z-index: $ms-zIndex-Panel;
   display: none;
   pointer-events: none;
 
   // Overlay used within panel
   .ms-Overlay {
-    z-index: $ms-zIndex-back;
     display: none;
     pointer-events: none;
     opacity: 1;
@@ -72,7 +70,6 @@ $CommandBarHeight: 40px;
   @include right(0);
   top: 0;
   display: none;
-  z-index: $ms-zIndex-front;
   width: 100%;
 
   // Medium screens and up - (anchored right, fixed width)
