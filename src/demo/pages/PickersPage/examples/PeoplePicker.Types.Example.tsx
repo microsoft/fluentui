@@ -177,11 +177,14 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
   }
 
   private _listContainsPersona(persona: IPersonaProps, items: IPersonaProps[]) {
+    if (!items || !items.length || items.length === 0) {
+      return false;
+    }
     return items.filter(item => item.primaryText === persona.primaryText).length > 0;
   }
 
   private _filterWithLimit(filterText: string, currentItems: IPersonaProps[]) {
-    return filterText ? this._peopleList.filter(item => item.primaryText.toLowerCase().indexOf(filterText.toLowerCase()) === 0).splice(0, 2) : [];
+    return filterText ? this._onFilterChanged(filterText, currentItems).splice(0, 2) : [];
   }
 
   private _dropDownSelected(option: IDropdownOption) {
