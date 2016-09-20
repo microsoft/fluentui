@@ -196,6 +196,7 @@ $ms-Persona-presenceSizeXl: 28px;
   bottom: -1px;
   border: 2px solid $ms-color-white;
   text-align: center;
+  box-sizing: content-box;
 
   @media screen and (-ms-high-contrast: active) {
     border-color: $ms-color-black;
