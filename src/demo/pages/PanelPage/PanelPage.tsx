@@ -89,6 +89,9 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, any> {
             </ul>
           </div>
         }
+        bestPractices={
+          <div></div>
+        }
         dos={
           <div>
             <ul>

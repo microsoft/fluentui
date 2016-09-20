@@ -63,6 +63,9 @@ export class DocumentCardPage extends React.Component<IComponentDemoPageProps, a
             </p>
           </div>
         }
+        bestPractices={
+          <div></div>
+        }
         dos={
           <div>
             <ul>
