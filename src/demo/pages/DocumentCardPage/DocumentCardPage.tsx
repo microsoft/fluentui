@@ -14,7 +14,7 @@ import { IComponentDemoPageProps } from '../../components/ComponentPage/ICompone
 
 const DocumentCardBasicExampleCode = require('./examples/DocumentCard.Basic.Example.tsx');
 const DocumentCardCompleteExampleCode = require('./examples/DocumentCard.Complete.Example.tsx');
-// const DocumentCardCompactExampleCode = require('./examples/DocumentCard.Compact.Example.tsx');
+const DocumentCardCompactExampleCode = require('./examples/DocumentCard.Compact.Example.tsx');
 
 export class DocumentCardPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -43,7 +43,7 @@ export class DocumentCardPage extends React.Component<IComponentDemoPageProps, a
               </p>
               <DocumentCardCompleteExample />
             </ExampleCard>,
-            <ExampleCard title='DocumentCard Compact Layout'>
+            <ExampleCard title='DocumentCard Compact Layout' code={ DocumentCardCompactExampleCode }>
               <p>
                 When showing a card on a mobile device or a similarly narrow layout, you may choose this Compact layout which helps the filename remain scannable while giving roomy space for a preview thumbnail.
               </p>
