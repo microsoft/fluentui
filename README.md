@@ -33,7 +33,7 @@ This will open a web browser with the example page. You can make changes to the 
 ## Get started
 
 ### Tutorial
-[Here is a step by step tutorial](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/Tutorial.md) on how to build a simple React app with an Office UI Fabric React component.
+[Here is a step by step tutorial](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/README.md) on how to build a simple React app with an Office UI Fabric React component.
 
 ### Integrate into an existing project
 Integrating components into your project depends heavily on your setup. The recommended setup is to use a bundler such as Webpack which can resolve NPM package imports in your code and can bundle the specific things you import.
