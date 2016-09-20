@@ -5,11 +5,12 @@
 }
 
 .DetailsListExample-customHeader {
-  border-bottom: 1px solid $ms-color-neutralTertiaryAlt;
+  border-top: 1px solid $ms-color-neutralQuaternary;
+  border-bottom: 1px solid $ms-color-neutralQuaternary;
   padding: 8px;
-  margin-bottom: 8px;
-  background: #fafafa;
-  box-shadow: 0 8px 12px -8px rgba(0, 0, 0, .3);
+  margin: 8px 0;
+  background: $ms-color-neutralLighterAlt;
+  box-shadow: 0 0 20px -8px $ms-color-black;
 
   /* Overlay the sizer bars */
   position: relative;
