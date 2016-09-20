@@ -56,6 +56,9 @@ export class LayerPage extends React.Component<IComponentDemoPageProps, any> {
             }</p>
           </div>
         }
+        bestPractices={
+          <div></div>
+        }
         dos={
           <div>
             <ul>

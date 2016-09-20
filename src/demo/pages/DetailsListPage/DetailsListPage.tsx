@@ -71,6 +71,9 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, an
             </p>
           </div>
         }
+        bestPractices={
+          <div></div>
+        }
         dos={
           <div>
             <ul>
