@@ -63,7 +63,8 @@
 }
 
 // Callout Overrides
-.ms-TeachingBubble .ms-Callout-main,
-.ms-TeachingBubble .ms-Callout-beak {
-  background: $ms-color-themePrimary;
+.ms-TeachingBubble {
+  .ms-Callout-main, .ms-Callout-beak, .ms-Callout-smallbeak {
+    background: $ms-color-themePrimary;
+  }
 }

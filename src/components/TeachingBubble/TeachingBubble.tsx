@@ -1,4 +1,6 @@
+/* tslint:disable:no-unused-variable */
 import * as React from 'react';
+/* tslint:enable:no-unused-variable */
 import { BaseComponent } from '../../common/BaseComponent';
 import {
   ITeachingBubble,
@@ -59,7 +61,7 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
     let footerContent;
     let closeButton;
 
-    if (imageProps.src) {
+    if (imageProps && imageProps.src) {
       imageContent = (
          <div className='ms-TeachingBubble-header'>
             <Image { ...imageProps as any } />
@@ -98,7 +100,7 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
     if (primaryButtonProps || secondaryButtonProps ) {
       footerContent = (
         <div className='ms-TeachingBubble-footer'>
-          <Button { ...primaryButtonProps as any } >Button One</Button>
+          <Button { ...primaryButtonProps as any }>Button One</Button>
           <Button { ...secondaryButtonProps as any }>Button Two</Button>
         </div>
       );
@@ -124,6 +126,8 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
         <Callout
           className='ms-TeachingBubble'
           ref={this._resolveRef('_callout')}
+          beakStyle='ms-Callout-smallbeak'
+          beakWidth= { 16 }
           gapSpace={ 20 }
           targetElement={ targetElement }
           setInitialFocus={ true }
@@ -140,5 +144,4 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
         </Callout>
     );
   }
-
 }

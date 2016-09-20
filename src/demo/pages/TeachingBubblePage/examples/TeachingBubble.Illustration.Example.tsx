@@ -6,14 +6,15 @@ import {
   TeachingBubble,
   Button,
   ButtonType,
+  IImageProps,
   IButtonProps,
 } from '../../../../index';
 
-export interface ITeachingBubbleBasicExampleState {
+export interface ITeachingBubbleIllustrationExampleState {
   isTeachingBubbleVisible?: boolean;
 }
 
-export class TeachingBubbleBasicExample extends React.Component<any, ITeachingBubbleBasicExampleState> {
+export class TeachingBubbleIllustrationExample extends React.Component<any, ITeachingBubbleIllustrationExampleState> {
   private _menuButtonElement: HTMLElement;
 
   public constructor() {
@@ -28,6 +29,7 @@ export class TeachingBubbleBasicExample extends React.Component<any, ITeachingBu
 
   public render() {
     let { isTeachingBubbleVisible } = this.state;
+    let exampleImageProps: IImageProps = { src: 'http://placehold.it/364x140'};
     let examplePrimaryButtonProps: IButtonProps = {
       href: '',
       buttonType: ButtonType.primary
@@ -44,6 +46,7 @@ export class TeachingBubbleBasicExample extends React.Component<any, ITeachingBu
         { isTeachingBubbleVisible ? (
           <div>
             <TeachingBubble
+              imageProps={ exampleImageProps }
               targetElement={ this._menuButtonElement }
               primaryButtonProps={ examplePrimaryButtonProps }
               secondaryButtonProps={ exampleSecondaryButtonProps }

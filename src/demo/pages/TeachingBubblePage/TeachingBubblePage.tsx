@@ -9,10 +9,14 @@ import {
 } from '../../components/index';
 
 import { TeachingBubbleBasicExample } from './examples/TeachingBubble.Basic.Example';
+import { TeachingBubbleCondensedExample } from './examples/TeachingBubble.Condensed.Example';
+import { TeachingBubbleIllustrationExample } from './examples/TeachingBubble.Illustration.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 
 const TeachingBubbleBasicExampleCode = require('./examples/TeachingBubble.Basic.Example.tsx');
+const TeachingBubbleCondensedExampleCode = require('./examples/TeachingBubble.Condensed.Example.tsx');
+const TeachingBubbleIllustrationExampleCode = require('./examples/TeachingBubble.Basic.Example.tsx');
 
 export class TeachingBubblePage extends React.Component<any, any> {
   private _url: string;
@@ -31,6 +35,12 @@ export class TeachingBubblePage extends React.Component<any, any> {
           [
             <ExampleCard title='TeachingBubble' code={ TeachingBubbleBasicExampleCode }>
               <TeachingBubbleBasicExample />
+            </ExampleCard>,
+            <ExampleCard title='TeachingBubble Condensed' code={ TeachingBubbleCondensedExampleCode }>
+              <TeachingBubbleCondensedExample />
+            </ExampleCard>,
+            <ExampleCard title='TeachingBubble with Illustration' code={ TeachingBubbleIllustrationExampleCode }>
+              <TeachingBubbleIllustrationExample />
             </ExampleCard>
           ]
         }
