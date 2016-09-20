@@ -16,7 +16,6 @@ $Callout-beak-slant-width: 28px;
   position: absolute;
   display: inline-block;
   border: 1px solid $ms-color-neutralLight;
-  z-index: $ms-zIndex-Callout;
 
   @media screen and (-ms-high-contrast: active) {
     border: 1px solid $ms-color-white;
@@ -35,7 +34,6 @@ $Callout-beak-slant-width: 28px;
   position: relative;
   background-color: $ms-color-white;
   box-sizing: border-box;
-  z-index: $ms-zIndex-middle;
 }
 
 .ms-Callout-inner {
@@ -44,7 +42,6 @@ $Callout-beak-slant-width: 28px;
 }
 
 .ms-Callout-header {
-  z-index: ($ms-zIndex-Callout + $ms-zIndex-middle);
   padding: 18px 24px 12px;
 }
 
