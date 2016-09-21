@@ -181,4 +181,7 @@ function _warnDeprecation(obj: BaseComponent<any, any>, propertyName: string, ne
   }
 }
 
-BaseComponent.onError = (errorMessage) => console.error(errorMessage);
+BaseComponent.onError = (errorMessage) => {
+  console.error(errorMessage);
+  throw errorMessage;
+};

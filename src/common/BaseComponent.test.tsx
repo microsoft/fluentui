@@ -7,6 +7,8 @@ import { BaseComponent } from './BaseComponent';
 
 let { assert, expect } = chai;
 
+let _originalOnError = BaseComponent.onError;
+
 class TestComponent extends BaseComponent<{}, {}> {
 
   public componentWillMount(): void {
@@ -51,6 +53,10 @@ class TestComponent extends BaseComponent<{}, {}> {
 }
 
 describe('BaseComponent', () => {
+  afterEach(() => {
+    BaseComponent.onError = _originalOnError;
+  });
+
   _buildTestFor('componentWillMount');
   _buildTestFor('componentDidMount');
   _buildTestFor('shouldComponentUpdate');
@@ -78,7 +84,7 @@ describe('BaseComponent', () => {
 });
 
 function _buildTestFor(methodName) {
-  it(`calls the error logger on ${ methodName } exception`, () => {
+  it(`calls the error logger on ${methodName} exception`, () => {
     let lastErrorMessage = null;
 
     BaseComponent.onError = (errorMessage, ex) => lastErrorMessage = errorMessage;

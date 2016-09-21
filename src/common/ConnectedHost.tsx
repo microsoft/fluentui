@@ -24,6 +24,8 @@ export class ConnectedHost extends BaseComponent<IConnectedHostProps, IConnected
     };
   };
 
+  private _stores: any[];
+
   constructor(props: IConnectedHostProps) {
     super(props);
 
@@ -33,29 +35,28 @@ export class ConnectedHost extends BaseComponent<IConnectedHostProps, IConnected
   }
 
   public componentWillMount() {
+    if (this.props.storesToSubscribe && this.props.storesToSubscribe.length > 0) {
+      if (!this.context.stores) {
+        throw `A connected component was hosted in an environment where no stores were hosted. Use the StoreHost to host components.`;
+      }
+
+      // Resolve and subscribe to stores.
+      this._stores = this.props.storesToSubscribe.map(storeName => {
+        let store = this.context.stores[storeName];
+
+        if (!store) {
+          throw `The "${ storeName }" store was required by a connected component, but not exposed.`;
+        }
+        this._disposables.push(store.subscribe(this._onStoreChanged));
+
+        return store;
+      });
+    }
+
+    // We can only initialize state at this point, where context has been resolved.
     this.state = {
       props: this._getComponentProps(this.props)
     };
-  }
-
-  public componentDidMount() {
-    let stores = this.context.stores;
-    let { storesToSubscribe } = this.props;
-
-    if (storesToSubscribe) {
-      for (let storeName of storesToSubscribe) {
-        let store = stores[storeName];
-
-        this._disposables.push(store.subscribe(this._updateProps));
-      }
-    } else {
-      for (let storeName in stores) {
-        if (stores.hasOwnProperty(storeName)) {
-          let store = stores[storeName];
-          this._disposables.push(store.subscribe(this._updateProps));
-        }
-      }
-    }
   }
 
   public componentWillReceiveProps(newProps) {
@@ -78,18 +79,22 @@ export class ConnectedHost extends BaseComponent<IConnectedHostProps, IConnected
   }
 
   @autobind
+  private _onStoreChanged() {
+    this._updateProps();
+  }
+
+  @autobind
   private _updateProps(props?: any) {
     props = this._getComponentProps(props || this.props);
     this.setState({ props });
   }
 
   private _getComponentProps(props) {
-    let stores = this.context.stores;
 
     let newProps = assign(
       {},
       props.componentProps,
-      props.getProps(props.componentProps, stores));
+      props.getProps(props.componentProps, ...this._stores));
 
     return newProps;
   }

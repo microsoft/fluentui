@@ -3,8 +3,9 @@ import { ConnectedHost } from './ConnectedHost';
 
 export function connect<T>(
   component: React.ReactType,
-  getProps: (props: T, stores: any) => T,
-  storesToSubscribe: string[]) {
+  storesToSubscribe: string[],
+  getProps: (props: T, ...stores) => T
+  ) {
 
   return props => (
     <ConnectedHost
