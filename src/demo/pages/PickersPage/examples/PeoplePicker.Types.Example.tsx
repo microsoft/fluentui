@@ -9,7 +9,7 @@ import {
   IPersonaProps,
   IBasePickerSuggestionsProps
 } from '../../../../index';
-import { IPersonaWithMenu } from '../../../../components/Pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
+import { IPersonaWithMenu } from '../../../../components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
 import { people } from './PeoplePickerExampleData';
 import { assign } from '../../../../utilities/object';
 import './PeoplePicker.Types.Example.scss';

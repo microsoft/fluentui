@@ -18,10 +18,10 @@ import {
 } from '../../../../index';
 import {
   BasePicker
-} from '../../../../components/Pickers/BasePicker';
+} from '../../../../components/pickers/BasePicker';
 import {
   IPickerItemProps
-} from '../../../../components/Pickers/PickerItem.Props';
+} from '../../../../components/pickers/PickerItem.Props';
 import './Picker.CustomResult.Example.scss';
 
 export interface IPeoplePickerExampleState {

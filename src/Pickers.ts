@@ -1,1 +1,1 @@
-export * from './components/Pickers/index';
+export * from './components/pickers/index';
