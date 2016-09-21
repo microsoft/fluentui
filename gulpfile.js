@@ -11,6 +11,9 @@ let isNuke = process.argv.indexOf( 'nuke' ) >= 0;
 /** @todo: disable lint config. */
 build.tslint.setConfig({ lintConfig: require('./tslint.json') });
 
+/* Configure TypeScript 2.0. */
+build.typescript.setConfig({ typescript: require('typescript') });
+
 build.postCopy.setConfig({
   copyTo: {
     'dist': [
