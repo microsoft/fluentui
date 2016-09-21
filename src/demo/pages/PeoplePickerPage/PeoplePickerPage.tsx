@@ -5,6 +5,8 @@ import {
   ComponentPage
 } from '../../components/index';
 
+import './PeoplePickerPage.scss';
+
 import { PeoplePickerBasicExample } from './examples/PeoplePicker.Basic.Example';
 import { PeoplePickerDisconnectedExample } from './examples/PeoplePicker.Disconnected.Example';
 import { PeoplePickerMemberListExample } from './examples/PeoplePicker.MemberList.Example';
@@ -34,6 +36,7 @@ export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, a
       <ComponentPage
         title='PeoplePicker'
         componentName='PeoplePickerExample'
+        className='PeoplePickerPage'
         exampleCards={
           [
             <ExampleCard title='PeoplePicker' code={ PeoplePickerBasicExampleCode }>

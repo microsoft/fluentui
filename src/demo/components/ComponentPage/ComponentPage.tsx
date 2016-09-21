@@ -3,6 +3,7 @@ import {
   Link
 } from '../../../index';
 import './ComponentPage.scss';
+import { css } from '../../../utilities/css';
 
 export interface IComponentPageProps {
   title: string;
@@ -16,6 +17,7 @@ export interface IComponentPageProps {
   related?: JSX.Element;
   route: string;
   isHeaderVisible?: boolean;
+  className?: string;
 }
 
 export class ComponentPage extends React.Component<IComponentPageProps, {}> {
@@ -31,11 +33,12 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     let {
       componentName,
       exampleCards,
-      overview
+      overview,
+      className
     } = this.props;
 
     return (
-      <div className='ComponentPage'>
+      <div className={ css('ComponentPage', className) }>
         <div className={ componentName }>
           { this._pageHeader() }
           <div className='ComponentPage-body'>
