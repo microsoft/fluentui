@@ -40,12 +40,12 @@ describe('connect', () => {
       'hello2': new HelloStore()
     };
 
-    let Connected = connect(
+    let Connected = connect<ITestComponentProps, {}>(
       TestComponent,
       ['hello1', 'hello2'],
       (props: ITestComponentProps, hello1: IHelloStore, hello2: IHelloStore) => ({
         children: hello1.message + hello2.message
-      } as ITestComponentProps)
+      })
     );
     let root = ReactTestUtils.renderIntoDocument(
       <div>

@@ -1,6 +1,8 @@
+import { ISubscribable } from './ISubscribable';
+
 let _instanceId = 0;
 
-export class BaseStore {
+export class BaseStore implements ISubscribable {
   private _callbacks: {
     [key: string]: () => void;
   };

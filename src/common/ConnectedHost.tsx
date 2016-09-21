@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseStore } from './BaseStore';
+import { ISubscribable } from './ISubscribable';
 import { BaseComponent, autobind, assign, shallowCompare } from '../Utilities';
 
 // Track all components that require changes.
@@ -23,11 +23,11 @@ export class ConnectedHost extends BaseComponent<IConnectedHostProps, IConnected
 
   public context: {
     stores: {
-      [key: string]: BaseStore
+      [key: string]: ISubscribable
     };
   };
 
-  private _stores: any[];
+  private _stores: ISubscribable[];
   private _changeEnqueued: boolean;
   private _isMounted: boolean;
 
@@ -93,7 +93,11 @@ export class ConnectedHost extends BaseComponent<IConnectedHostProps, IConnected
 
   @autobind
   private _onStoreChanged() {
-    if (!this._changeEnqueued) {
+    let { storesToSubscribe } = this.props;
+
+    if (!storesToSubscribe || storesToSubscribe.length < 2) {
+      this._updateProps();
+    } else if (!this._changeEnqueued) {
       if (!_changedComponents) {
         _changedComponents = [];
         this._async.setImmediate(() => {
@@ -113,7 +117,7 @@ export class ConnectedHost extends BaseComponent<IConnectedHostProps, IConnected
     this.setState({ props });
   }
 
-  private _getComponentProps(props) {
+  private _getComponentProps(props: any) {
     let newProps = assign(
       {},
       props.componentProps,
