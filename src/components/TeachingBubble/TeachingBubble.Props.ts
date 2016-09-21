@@ -1,21 +1,21 @@
 import * as React from 'react';
 import { TeachingBubble } from './TeachingBubble';
+import { TeachingBubbleContent } from './TeachingBubbleContent';
 import { IImageProps } from '../Image/Image.Props';
 import { IButtonProps } from '../Button/Button.Props';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
-
-/**
- * Checkbox class interface.
- */
-export interface ITeachingBubble {
-
-}
+import { ICalloutProps } from '../../index';
 
 /**
  * TeachingBubble component props.
  */
 
-export interface ITeachingBubbleProps extends React.Props<TeachingBubble>, IAccessiblePopupProps {
+export interface ITeachingBubbleProps extends React.Props<TeachingBubble|TeachingBubbleContent>, IAccessiblePopupProps {
+  /**
+   * Properties to pass through for Callout, reference detail properties in ICalloutProps
+   */
+  calloutProps?: ICalloutProps;
+
   /**
    * A headline for the Teaching Bubble.
    */
@@ -39,12 +39,12 @@ export interface ITeachingBubbleProps extends React.Props<TeachingBubble>, IAcce
   /**
    * The Primary interaction button
    */
-  primaryButton?: IButtonProps;
+  primaryButtonProps?: IButtonProps;
 
   /**
    * The Secondary interaction button
    */
-  secondaryButton?: IButtonProps;
+  secondaryButtonProps?: IButtonProps;
 
   /**
    * Element to anchor the TeachingBubble to.

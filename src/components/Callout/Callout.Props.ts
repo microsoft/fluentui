@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Callout } from './Callout';
+import { Callout, CalloutContent } from './index';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IPositionProps } from '../../utilities/positioning';
 
-export interface ICalloutProps extends React.Props<Callout>, IPositionProps {
+export interface ICalloutProps extends React.Props<Callout|CalloutContent>, IPositionProps {
   /**
    * Element to anchor the callout to.
    */

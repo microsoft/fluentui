@@ -33,7 +33,8 @@ export class TeachingBubbleBasicExample extends React.Component<any, ITeachingBu
       children: 'Try it out'
     };
     let exampleSecondaryButtonProps: IButtonProps = {
-      children: 'May be later'
+      children: 'May be later',
+      onClick: this._onDismiss
     };
 
     return (
@@ -45,8 +46,8 @@ export class TeachingBubbleBasicExample extends React.Component<any, ITeachingBu
           <div>
             <TeachingBubble
               targetElement={ this._menuButtonElement }
-              primaryButton={ examplePrimaryButton }
-              secondaryButton={ exampleSecondaryButtonProps }
+              primaryButtonProps={ examplePrimaryButton }
+              secondaryButtonProps={ exampleSecondaryButtonProps }
               onDismiss={ this._onDismiss }
               headline='Discover what’s trending around you'
             >

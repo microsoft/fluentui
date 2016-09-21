@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
-  Link
+  Link,
+  LayerHost
 } from '../../../index';
 import {
   ExampleCard,
@@ -34,13 +35,19 @@ export class TeachingBubblePage extends React.Component<any, any> {
         exampleCards={
           [
             <ExampleCard title='TeachingBubble' code={ TeachingBubbleBasicExampleCode }>
-              <TeachingBubbleBasicExample />
+              <LayerHost>
+                <TeachingBubbleBasicExample />
+              </LayerHost>
             </ExampleCard>,
             <ExampleCard title='TeachingBubble Condensed' code={ TeachingBubbleCondensedExampleCode }>
-              <TeachingBubbleCondensedExample />
+              <LayerHost>
+                <TeachingBubbleCondensedExample />
+              </LayerHost>
             </ExampleCard>,
             <ExampleCard title='TeachingBubble with Illustration' code={ TeachingBubbleIllustrationExampleCode }>
-              <TeachingBubbleIllustrationExample />
+              <LayerHost>
+                <TeachingBubbleIllustrationExample />
+              </LayerHost>
             </ExampleCard>
           ]
         }
@@ -52,7 +59,7 @@ export class TeachingBubblePage extends React.Component<any, any> {
         overview={
           <div>
             <Link target='_blank' href='http://dev.office.com/fabric/components/TeachingBubble'>TeachingBubbles</Link>
-            <span> allow the user to turn an option on/off.</span>
+            <span> allow the user to display important hints on their web pages with a callout box.</span>
           </div>
         }
         route={ this._url }>

@@ -7,15 +7,15 @@ import * as ReactTestUtils from 'react-addons-test-utils';
 
 let { expect } = chai;
 
-import { TeachingBubble } from './TeachingBubble';
+import { TeachingBubbleContent } from './index';
 
 describe('TeachingBubble', () => {
 
+  // <Layer> compoents will lead ReactDOM.findDOMNode(component) return null, so the test is based on the actual teaching bubble content.
   it('renders a label', () => {
     let component = ReactTestUtils.renderIntoDocument(
-      <TeachingBubble
+      <TeachingBubbleContent
         headline='Title'
-
       />
     );
     let renderedDOM = ReactDOM.findDOMNode(component);

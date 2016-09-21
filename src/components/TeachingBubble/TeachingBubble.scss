@@ -12,7 +12,7 @@
   max-width: 364px;
 }
 
-.ms-TeachingBubble-content {
+.ms-TeachingBubble-bodycontent {
   padding: 20px;
 }
 
@@ -66,5 +66,57 @@
 .ms-TeachingBubble {
   .ms-Callout-main, .ms-Callout-beak, .ms-Callout-smallbeak {
     background: $ms-color-themePrimary;
+  }
+}
+
+//Primary button style override
+.ms-Button.ms-TeachingBubble-primaryButton {
+  background-color: $ms-color-white;
+  border-color: $ms-color-white;
+
+  .ms-Button-label {
+    @include ms-font-m;
+    color: $ms-color-themePrimary;
+  }
+
+  &:hover {
+    background-color: $ms-color-themeLighter;
+    border-color: $ms-color-themeLighter;
+  }
+
+  &:focus {
+    background-color:  $ms-color-themeLighter;
+    border-color: $ms-color-white;
+  }
+
+  &:active {
+    background-color: $ms-color-white;
+    border-color: $ms-color-white;
+  }
+}
+
+//Secondary button style override
+.ms-Button.ms-TeachingBubble-secondaryButton {
+  background-color: $ms-color-themePrimary;
+  border-color: $ms-color-white;
+
+  .ms-Button-label {
+    @include ms-font-m;
+    color: $ms-color-white;
+  }
+
+  &:hover {
+    background-color: $ms-color-themeDarkAlt;
+    border-color: $ms-color-white;
+  }
+
+  &:focus {
+    background-color: $ms-color-themeDarkAlt;
+    border-color: $ms-color-white;
+  }
+
+  &:active {
+    background-color: $ms-color-themePrimary;
+    border-color: $ms-color-white;
   }
 }

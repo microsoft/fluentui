@@ -32,10 +32,11 @@ export class TeachingBubbleIllustrationExample extends React.Component<any, ITea
     let exampleImageProps: IImageProps = { src: 'http://placehold.it/364x140'};
     let examplePrimaryButton: IButtonProps = {
       buttonType: ButtonType.primary,
-      children: 'Try it out'
+      children: 'Try it out',
     };
     let exampleSecondaryButtonProps: IButtonProps = {
-      children: 'May be later'
+      children: 'May be later',
+      onClick: this._onDismiss
     };
 
     return (
@@ -48,8 +49,8 @@ export class TeachingBubbleIllustrationExample extends React.Component<any, ITea
             <TeachingBubble
               illustrationImage={ exampleImageProps }
               targetElement={ this._menuButtonElement }
-              primaryButton={ examplePrimaryButton }
-              secondaryButton={ exampleSecondaryButtonProps }
+              primaryButtonProps={ examplePrimaryButton }
+              secondaryButtonProps={ exampleSecondaryButtonProps }
               onDismiss={ this._onDismiss }
               headline='Discover what’s trending around you'
             >
