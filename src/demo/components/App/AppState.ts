@@ -26,6 +26,7 @@ import { MessageBarPage } from '../../pages/MessageBarPage/MessageBarPage';
 import { NavPage } from '../../pages/NavPage/NavPage';
 import { OrgChartPage } from '../../pages/OrgChartPage/OrgChartPage';
 import { OverlayPage } from '../../pages/OverlayPage/OverlayPage';
+import { PanePage } from '../../pages/PanePage/PanePage';
 import { PanelPage } from '../../pages/PanelPage/PanelPage';
 import { PeoplePickerPage } from '../../pages/PeoplePickerPage/PeoplePickerPage';
 import { PersonaCardPage } from '../../pages/PersonaCardPage/PersonaCardPage';
@@ -172,6 +173,12 @@ export const AppState: IAppState = {
           name: 'Overlay',
           status: ExampleStatus.beta,
           url: '#/examples/overlay'
+        },
+        {
+          component: PanePage,
+          name: 'Pane',
+          status: ExampleStatus.placeholder,
+          url: '#/examples/pane'
         },
         {
           component: PanelPage,
