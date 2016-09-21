@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { assign } from '../Utilities';
-import { BaseStore } from './BaseStore';
+import { StoreSet } from './StoreSet';
 
 export interface IStoreHostProps extends React.Props<StoreHost> {
-  stores?: {
-    [key: string]: BaseStore;
-  };
+  stores?: StoreSet;
+}
+
+export interface IStoreHostContext {
+  stores?: StoreSet;
 }
 
 export class StoreHost extends React.Component<IStoreHostProps, {}> {
@@ -17,17 +18,13 @@ export class StoreHost extends React.Component<IStoreHostProps, {}> {
     stores: React.PropTypes.object
   };
 
-  public context: {
-    stores?: {
-      [key: string]: BaseStore;
-    };
-  };
+  public context: IStoreHostContext ;
 
-  public getChildContext() {
+  public getChildContext(): IStoreHostContext {
     let { stores: parentStores } = this.context;
     let { stores: currentStores } = this.props;
 
-    return { stores: assign({}, parentStores, currentStores) };
+    return { stores: parentStores ? parentStores.merge(currentStores) : currentStores };
   }
 
   public render() {

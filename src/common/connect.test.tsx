@@ -7,6 +7,9 @@ import * as ReactTestUtils from 'react-addons-test-utils';
 import { connect } from './connect';
 import { BaseStore } from './BaseStore';
 import { StoreHost } from './StoreHost';
+import { StoreSet } from './StoreSet';
+import { storeKey } from './storeKey';
+import { ISubscribable } from './ISubscribable';
 
 let { expect } = chai;
 
@@ -18,10 +21,20 @@ const TestComponent = (props: ITestComponentProps) => (
 );
 
 // Dumb store.
-interface IHelloStore {
+interface IHelloStore extends ISubscribable {
   message: string;
 
   say(message: string): void;
+}
+
+interface IAddStore extends ISubscribable {
+  result: number;
+
+  add(num1: number, num2: number): void;
+}
+
+class AddStore extends BaseStore implements ISubscribable {
+
 }
 
 class HelloStore extends BaseStore implements IHelloStore {
@@ -35,16 +48,17 @@ class HelloStore extends BaseStore implements IHelloStore {
 
 describe('connect', () => {
   it('can observe store changes', (done) => {
-    let localStores: any = {
-      'hello1': new HelloStore(),
-      'hello2': new HelloStore()
-    };
+    let hello1 = storeKey<IHelloStore>('hello1');
+    let hello2 = storeKey<IHelloStore>('hello2');
+    let localStores = new StoreSet()
+      .add(hello1, new HelloStore())
+      .add(hello2, new HelloStore());
 
     let Connected = connect<ITestComponentProps, {}>(
       TestComponent,
-      ['hello1', 'hello2'],
-      (props: ITestComponentProps, hello1: IHelloStore, hello2: IHelloStore) => ({
-        children: hello1.message + hello2.message
+      [hello1, hello2],
+      (props: ITestComponentProps, hello1Store: IHelloStore, hello2Store: IHelloStore) => ({
+        children: hello1Store.message + hello2Store.message
       })
     );
     let root = ReactTestUtils.renderIntoDocument(
@@ -58,11 +72,11 @@ describe('connect', () => {
 
     expect(rootElement.textContent).equals('');
 
-    localStores.hello1.say('hello');
+    localStores.getStore(hello1).say('hello');
     setTimeout(() => {
       try {
         expect(rootElement.textContent).equals('hello');
-        localStores.hello2.say(' world');
+        localStores.getStore(hello2).say(' world');
 
         setTimeout(() => {
           try {
@@ -76,10 +90,11 @@ describe('connect', () => {
 
   });
 
-  it('can throw when requiring a store in an environment without stores', () => {
+  it('can throw when requiring a store in an environment without any stores hosted', () => {
+    let hello = storeKey<IHelloStore>('hello');
     let Connected = connect(
       TestComponent,
-      ['hello'],
+      [hello],
       () => { /* empty */ }
     );
     let threwException = false;
@@ -96,16 +111,17 @@ describe('connect', () => {
   });
 
   it('can throw in an environment that does not contain the required store', () => {
+    let hello = storeKey<IHelloStore>('hello');
     let Connected = connect(
       TestComponent,
-      ['hello'],
+      [hello],
       () => { /* empty */ }
     );
     let threwException = false;
 
     try {
       ReactTestUtils.renderIntoDocument(
-        <StoreHost stores={{ /* empty */ }}>
+        <StoreHost stores={ new StoreSet() }>
           <div>
             <Connected />
           </div>
@@ -125,13 +141,14 @@ describe('connect', () => {
       return <div>hi</div>;
     };
 
-    let localStores: any = {
-      'hello1': new HelloStore(),
-      'hello2': new HelloStore()
-    };
+    let hello1 = storeKey<IHelloStore>('hello1');
+    let hello2 = storeKey<IHelloStore>('hello2');
+    let localStores = new StoreSet()
+      .add(hello1, new HelloStore())
+      .add(hello2, new HelloStore());
     let Connected = connect(
       Dumb,
-      ['hello1', 'hello2'],
+      [hello1, hello2],
       () => {
         resolves++;
         return {};
@@ -149,8 +166,8 @@ describe('connect', () => {
     expect(renders).to.equal(1, 'render was not 1');
 
     // Cause 2 store changes. This should setImmediate and cause 1 resolve.
-    localStores.hello1.say('hello');
-    localStores.hello2.say(' world');
+    localStores.getStore(hello1).say('hello');
+    localStores.getStore(hello2).say(' world');
 
     setTimeout(() => {
       try {

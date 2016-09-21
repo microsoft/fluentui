@@ -1,13 +1,15 @@
 import * as React from 'react';
 import { ISubscribable } from './ISubscribable';
 import { BaseComponent, autobind, assign, shallowCompare } from '../Utilities';
+import { IStoreKey } from './storeKey';
+import { StoreSet } from './StoreSet';
 
 // Track all components that require changes.
 let _changedComponents: ConnectedHost[];
 
 export interface IConnectedHostProps {
   componentProps: any;
-  storesToSubscribe: string[];
+  storesToSubscribe: IStoreKey<any>[];
   component: any;
   getProps: (stores: any, props: any) => any;
 }
@@ -22,9 +24,7 @@ export class ConnectedHost extends BaseComponent<IConnectedHostProps, IConnected
   };
 
   public context: {
-    stores: {
-      [key: string]: ISubscribable
-    };
+    stores: StoreSet;
   };
 
   private _stores: ISubscribable[];
@@ -46,11 +46,11 @@ export class ConnectedHost extends BaseComponent<IConnectedHostProps, IConnected
       }
 
       // Resolve and subscribe to stores.
-      this._stores = this.props.storesToSubscribe.map(storeName => {
-        let store = this.context.stores[storeName];
+      this._stores = this.props.storesToSubscribe.map(storeKey => {
+        let store = this.context.stores.getStore(storeKey);
 
         if (!store) {
-          throw `The "${storeName}" store was required by a connected component, but not exposed.`;
+          throw `The "${storeKey.name}" store was required by a connected component, but not exposed.`;
         }
         this._disposables.push(store.subscribe(this._onStoreChanged));
 
