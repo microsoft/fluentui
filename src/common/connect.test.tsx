@@ -34,7 +34,7 @@ class HelloStore extends BaseStore implements IHelloStore {
 }
 
 describe('connect', () => {
-  it('can observe store changes', () => {
+  it('can observe store changes', (done) => {
     let localStores: any = {
       'hello1': new HelloStore(),
       'hello2': new HelloStore()
@@ -59,10 +59,21 @@ describe('connect', () => {
     expect(rootElement.textContent).equals('');
 
     localStores.hello1.say('hello');
-    expect(rootElement.textContent).equals('hello');
+    setTimeout(() => {
+      try {
+        expect(rootElement.textContent).equals('hello');
+        localStores.hello2.say(' world');
 
-    localStores.hello2.say(' world');
-    expect(rootElement.textContent).equals('hello world');
+        setTimeout(() => {
+          try {
+            expect(rootElement.textContent).equals('hello world');
+            done();
+          } catch (e) { done(e); }
+        }, 10);
+
+      } catch (e) { done(e); }
+    }, 10);
+
   });
 
   it('can throw when requiring a store in an environment without stores', () => {
@@ -105,4 +116,48 @@ describe('connect', () => {
     expect(threwException).to.be.true;
   });
 
+  it('renders a connected component 1 time when multiple stores fire changes', (done) => {
+    let resolves = 0;
+    let renders = 0;
+
+    const Dumb = () => {
+      renders++;
+      return <div>hi</div>;
+    };
+
+    let localStores: any = {
+      'hello1': new HelloStore(),
+      'hello2': new HelloStore()
+    };
+    let Connected = connect(
+      Dumb,
+      ['hello1', 'hello2'],
+      () => {
+        resolves++;
+        return {};
+      });
+
+    ReactTestUtils.renderIntoDocument(
+      <div>
+        <StoreHost stores={ localStores }>
+          <Connected />
+        </StoreHost>
+      </div>
+    );
+
+    expect(resolves).to.equal(1, 'resolve was not 1');
+    expect(renders).to.equal(1, 'render was not 1');
+
+    // Cause 2 store changes. This should setImmediate and cause 1 resolve.
+    localStores.hello1.say('hello');
+    localStores.hello2.say(' world');
+
+    setTimeout(() => {
+      try {
+        expect(resolves).to.equal(2, 'resolve was not 2');
+        expect(renders).to.equal(1, 'render was not 1');
+        done();
+      } catch (e) { done(e); }
+    }, 10);
+  });
 });

@@ -2,6 +2,9 @@ import * as React from 'react';
 import { BaseStore } from './BaseStore';
 import { BaseComponent, autobind, assign, shallowCompare } from '../Utilities';
 
+// Track all components that require changes.
+let _changedComponents: ConnectedHost[];
+
 export interface IConnectedHostProps {
   componentProps: any;
   storesToSubscribe: string[];
@@ -25,6 +28,8 @@ export class ConnectedHost extends BaseComponent<IConnectedHostProps, IConnected
   };
 
   private _stores: any[];
+  private _changeEnqueued: boolean;
+  private _isMounted: boolean;
 
   constructor(props: IConnectedHostProps) {
     super(props);
@@ -45,7 +50,7 @@ export class ConnectedHost extends BaseComponent<IConnectedHostProps, IConnected
         let store = this.context.stores[storeName];
 
         if (!store) {
-          throw `The "${ storeName }" store was required by a connected component, but not exposed.`;
+          throw `The "${storeName}" store was required by a connected component, but not exposed.`;
         }
         this._disposables.push(store.subscribe(this._onStoreChanged));
 
@@ -57,6 +62,14 @@ export class ConnectedHost extends BaseComponent<IConnectedHostProps, IConnected
     this.state = {
       props: this._getComponentProps(this.props)
     };
+  }
+
+  public componentDidMount() {
+    this._isMounted = true;
+  }
+
+  public componentWillUnmount() {
+    this._isMounted = false;
   }
 
   public componentWillReceiveProps(newProps) {
@@ -80,17 +93,27 @@ export class ConnectedHost extends BaseComponent<IConnectedHostProps, IConnected
 
   @autobind
   private _onStoreChanged() {
-    this._updateProps();
+    if (!this._changeEnqueued) {
+      if (!_changedComponents) {
+        _changedComponents = [];
+        this._async.setImmediate(() => {
+          _changedComponents.forEach(comp => comp._updateProps());
+          _changedComponents = null;
+        });
+      }
+      _changedComponents.push(this);
+      this._changeEnqueued = true;
+    }
   }
 
   @autobind
   private _updateProps(props?: any) {
+    this._changeEnqueued = false;
     props = this._getComponentProps(props || this.props);
     this.setState({ props });
   }
 
   private _getComponentProps(props) {
-
     let newProps = assign(
       {},
       props.componentProps,
