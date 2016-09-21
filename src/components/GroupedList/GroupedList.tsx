@@ -2,9 +2,7 @@ import * as React from 'react';
 import {
   IGroupedList,
   IGroupedListProps,
-  IGroup,
-  IGroupFooterProps,
-  IGroupHeaderProps
+  IGroup
 } from './GroupedList.Props';
 import {
   Group
@@ -144,13 +142,13 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
     } = this.props;
 
     // override group header/footer props as needed
-    let headerProps = assign({}, groupProps && groupProps.headerProps ? groupProps.headerProps : {}, {
+    let dividerProps = {
       onToggleCollapse: this._onToggleCollapse,
-      onToggleSelectGroup: this._onToggleSelectGroup
-    }) as IGroupHeaderProps;
-    let footerProps = assign({}, groupProps && groupProps.footerProps ? groupProps.footerProps : {}, {
+      onToggleSelectGroup: this._onToggleSelectGroup,
       onToggleSummarize: this._onToggleSummarize
-    }) as IGroupFooterProps;
+    };
+    let headerProps = assign({}, groupProps && groupProps.headerProps, dividerProps);
+    let footerProps = assign({}, groupProps && groupProps.footerProps, dividerProps);
     let groupNestingDepth = this._getGroupNestingDepth();
 
     return (!group || group.count > 0) ? (

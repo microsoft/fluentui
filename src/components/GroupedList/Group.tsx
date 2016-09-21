@@ -1,8 +1,7 @@
 import * as React from 'react';
 import {
   IGroup,
-  IGroupFooterProps,
-  IGroupHeaderProps
+  IGroupDividerProps
 } from './GroupedList.Props';
 
 import {
@@ -24,8 +23,7 @@ import {
 import {
   IDragDropOptions
 } from './../../utilities/dragdrop/interfaces';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
-import { css } from '../../utilities/css';
+import { EventGroup, assign, css } from '../../Utilities';
 import { IViewport } from '../../utilities/decorators/withViewport';
 
 export interface IGroupProps extends React.Props<Group> {
@@ -39,7 +37,7 @@ export interface IGroupProps extends React.Props<Group> {
   eventsToRegister?: [{ eventName: string, callback: (context: IDragDropContext, event?: any) => void }];
 
   /** Information to pass in to the group footer. */
-  footerProps?: IGroupFooterProps;
+  footerProps?: IGroupDividerProps;
 
   /** Grouping item limit. */
   getGroupItemLimit?: (group: IGroup) => number;
@@ -54,7 +52,7 @@ export interface IGroupProps extends React.Props<Group> {
   group?: IGroup;
 
   /** Information to pass in to the group header. */
-  headerProps?: IGroupHeaderProps;
+  headerProps?: IGroupDividerProps;
 
   /** List of items to render. */
   items: any[];
@@ -141,6 +139,15 @@ export class Group extends React.Component<IGroupProps, IGroupState> {
     let isFooterVisible = group && !group.children && !group.isCollapsed && !group.isShowingAll && group.count > renderCount;
 
     let hasNestedGroups = group && group.children && group.children.length > 0;
+    let dividerProps = {
+      group: group,
+      groupIndex: groupIndex,
+      groupLevel: group ? group.level : 0,
+      viewport: viewport,
+      selectionMode: selectionMode
+    };
+    let groupHeaderProps: IGroupDividerProps = assign({}, headerProps, dividerProps);
+    let groupFooterProps: IGroupDividerProps = assign({}, footerProps, dividerProps);
 
     return (
       <div
@@ -148,17 +155,10 @@ export class Group extends React.Component<IGroupProps, IGroupState> {
         className={ css('ms-GroupedList-group', this._getDroppingClassName()) }
         >
         {
-          group && group.onRenderHeader ?
-          group.onRenderHeader(group) :
-          <GroupHeader
-            group={ group }
-            groupIndex={ groupIndex }
-            groupLevel={ group ? group.level : 0 }
-            headerProps={ headerProps }
-            viewport={ viewport }
-            selectionMode={ selectionMode }
-            ref={ 'header' }
-          />
+          group && (group.onRenderHeader ?
+          group.onRenderHeader(groupHeaderProps) :
+          <GroupHeader ref='header' { ...groupHeaderProps } />
+          )
         }
         {
           group && group.isCollapsed ?
@@ -177,17 +177,9 @@ export class Group extends React.Component<IGroupProps, IGroupState> {
           )
         }
         {
-          group && group.onRenderFooter ?
-          group.onRenderFooter(group) :
-          (
-            isFooterVisible &&
-            <GroupFooter
-              group={ group }
-              groupIndex={ groupIndex }
-              groupLevel={ group ? group.level : 0 }
-              footerProps={ footerProps }
-              ref={ 'footer' }
-            />
+          group && isFooterVisible && (group.onRenderFooter ?
+          group.onRenderFooter(groupFooterProps) :
+            <GroupFooter ref='footer' { ...groupFooterProps } />
           )
         }
        </div>
