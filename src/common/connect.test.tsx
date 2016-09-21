@@ -29,7 +29,7 @@ class HelloStore extends BaseStore {
 
 describe('connect', () => {
   it('can observe store changes', () => {
-    let localStores = { hello: new HelloStore() };
+    let localStores: any = { hello: new HelloStore() };
     let Connected = connect(
       TestComponent,
       (props: ITestComponentProps, stores: any) => ({

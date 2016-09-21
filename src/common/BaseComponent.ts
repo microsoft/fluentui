@@ -48,7 +48,7 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
   public componentWillUnmount() {
     if (this.__disposables) {
       for (let i = 0, len = this._disposables.length; i < len; i++) {
-        let disposable = this._disposables[i];
+        let disposable = this._disposables[i] as any;
 
         if (typeof disposable === 'function') {
           disposable();
