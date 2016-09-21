@@ -25,7 +25,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * A callback for when the selected list of items changes.
    */
-  onChange?: (items: T[]) => void;
+  onChange?: (items?: T[]) => void;
   /**
    * A callback to get text from an item. Used to autofill text in the pickers.
    */
@@ -52,7 +52,7 @@ export interface IBasePickerSuggestionsProps {
   /**
    * the text that should appear when no results are returned.
    */
-  noResultsText?: string;
+  noResultsFoundText?: string;
   /**
    * ClassName for the picker.
    */

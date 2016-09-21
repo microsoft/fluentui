@@ -41,7 +41,7 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
   /**
    * the classname of the suggestionitem.
    */
-  suggestionItemClassName?: string;
+  suggestionsItemClassName?: string;
   /**
    * Used to indicate whether or not the user can request more suggestions.
    * Dictates whether or not the searchForMore button is displayed.

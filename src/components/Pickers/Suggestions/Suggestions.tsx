@@ -29,7 +29,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
 
   protected _searchForMoreButton: Button;
   protected _selectedElement: HTMLDivElement;
-  private SuggestionItemOfProperType = SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
+  private SuggestionsItemOfProperType = SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
 
   constructor(suggestionsProps: ISuggestionsProps<T>) {
     super(suggestionsProps);
@@ -81,14 +81,18 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
   }
 
   private _renderSuggestions(): JSX.Element[] {
-    let { suggestions, onRenderSuggestion, noResultsFoundText } = this.props;
+    let {
+      suggestions,
+      onRenderSuggestion,
+      noResultsFoundText,
+      suggestionsItemClassName } = this.props;
 
     if (!suggestions || !suggestions.length) {
       return [<div className='ms-Suggestions-none'> { noResultsFoundText ? noResultsFoundText : ' ' } </div>];
     }
 
     let suggestionItems: JSX.Element[] = [];
-    let TypedSuggestionItem = this.SuggestionItemOfProperType;
+    let TypedSuggestionsItem = this.SuggestionsItemOfProperType;
 
     for (let index: number = 0; index <= suggestions.length - 1; index++) {
       let suggestionItem: ISuggestionModel<T> = suggestions[index];
@@ -97,11 +101,11 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
           key={ index }
           id={ 'sug-' + index }
           role='menuitem'>
-          <TypedSuggestionItem
+          <TypedSuggestionsItem
             suggestionModel={ suggestionItem }
             RenderSuggestion={ onRenderSuggestion }
-            onClick={(ev: React.MouseEvent) => this.props.onSuggestionClick(ev, suggestionItem.item, index) }
-            className={ this.props.suggestionItemClassName }
+            onClick={ (ev: React.MouseEvent) => this.props.onSuggestionClick(ev, suggestionItem.item, index) }
+            className={ suggestionsItemClassName }
             />
         </div>);
     }

@@ -44,7 +44,7 @@ export class MemberListPeoplePicker extends BasePeoplePicker {
     );
   }
 
-  protected _onBackSpace(ev: React.KeyboardEvent) {
+  protected _onBackspace(ev: React.KeyboardEvent) {
     let { value } = this.state;
     if (ev.target === this._input) {
       if (value && this._input.selectionStart !== this._input.selectionEnd) {

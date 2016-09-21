@@ -246,7 +246,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         break;
 
       case KeyCodes.backspace:
-        this._onBackSpace(ev);
+        this._onBackspace(ev);
         break;
 
       case KeyCodes.up:
@@ -316,7 +316,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.setState({ items: newItems }, () => this._resetFocus(index));
   }
 
-  protected _onBackSpace(ev: React.KeyboardEvent) {
+  protected _onBackspace(ev: React.KeyboardEvent) {
     let { displayValue } = this.state;
     if (ev.target === this._input) {
       if (displayValue && this._suggestionStore.hasSelectedSuggestion() && this._input.selectionStart !== this._input.selectionEnd) {

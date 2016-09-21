@@ -14,7 +14,9 @@ import {
   SelectionZone,
   FocusZone,
   ImageFit,
-  IBasePickerProps
+  IBasePickerProps,
+  Persona,
+  PersonaSize
 } from '../../../../index';
 import {
   BasePicker
@@ -153,23 +155,7 @@ const data: IFullDocumentCardProps[] = [
     documentPreviewProps: {
       previewImages: [
         {
-          previewImageSrc: 'dist/document-preview.png',
-          iconSrc: 'dist/icon-ppt.png',
-          imageFit: ImageFit.cover,
-          width: 318,
-          height: 196,
-          accentColor: '#ce4b1f'
-        },
-        {
           previewImageSrc: 'dist/document-preview2.png',
-          iconSrc: 'dist/icon-ppt.png',
-          imageFit: ImageFit.cover,
-          width: 318,
-          height: 196,
-          accentColor: '#ce4b1f'
-        },
-        {
-          previewImageSrc: 'dist/document-preview3.png',
           iconSrc: 'dist/icon-ppt.png',
           imageFit: ImageFit.cover,
           width: 318,
@@ -222,22 +208,6 @@ const data: IFullDocumentCardProps[] = [
   {
     documentPreviewProps: {
       previewImages: [
-        {
-          previewImageSrc: 'dist/document-preview.png',
-          iconSrc: 'dist/icon-ppt.png',
-          imageFit: ImageFit.cover,
-          width: 318,
-          height: 196,
-          accentColor: '#ce4b1f'
-        },
-        {
-          previewImageSrc: 'dist/document-preview2.png',
-          iconSrc: 'dist/icon-ppt.png',
-          imageFit: ImageFit.cover,
-          width: 318,
-          height: 196,
-          accentColor: '#ce4b1f'
-        },
         {
           previewImageSrc: 'dist/document-preview3.png',
           iconSrc: 'dist/icon-ppt.png',
@@ -297,21 +267,14 @@ export const SuggestedDocumentItem: (documentProps: IFullDocumentCardProps) => J
 
 export const SuggestedBigItem: (documentProps: IFullDocumentCardProps) => JSX.Element = (documentProps: IFullDocumentCardProps) => {
   let {
-    documentActionsProps,
     documentPreviewProps,
-    documentActivityProps,
     documentTitleProps
   } = documentProps;
-  let actions = [];
-  documentActionsProps.actions.forEach((action) => actions.push(action));
   return (
-    <DocumentCard>
-      <DocumentCardPreview { ...documentPreviewProps }/>
-      <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com' ariaLabel='Location, Marketing Documents'/>
-      <DocumentCardTitle { ...documentTitleProps }/>
-      <DocumentCardActivity { ...documentActivityProps }/>
-      <DocumentCardActions actions={ actions }/>
-    </DocumentCard>
+    <Persona
+      imageUrl={ documentPreviewProps.previewImages[0].previewImageSrc }
+      primaryText={ documentTitleProps.title }
+      size={ PersonaSize.small } />
   );
 };
 
@@ -350,14 +313,15 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
   public render() {
     return (
       <DocumentPicker
-        onResolveSuggestions={this._onFilterChanged}
-        onRenderItem={SelectedDocumentItem}
-        onRenderSuggestionsItem={SuggestedBigItem}
+        onRenderSuggestionsItem={ SuggestedBigItem }
+        onResolveSuggestions={ this._onFilterChanged }
+        onRenderItem={ SelectedDocumentItem }
         getTextFromItem={(props: any) => props.documentTitleProps.title}
         pickerSuggestionsProps={
           {
             suggestionsHeaderText: 'Suggested People',
-            noResultsText: 'No results found'
+            noResultsFoundText: 'No results found',
+            suggestionsItemClassName: 'ms-DocumentPicker-bigSuggestion'
           }
         }
         />
@@ -394,7 +358,7 @@ export class DocumentPicker extends BasePicker<IFullDocumentCardProps, IDocument
       </div>
     );
   }
-  protected _onBackSpace(ev: React.KeyboardEvent) {
+  protected _onBackspace(ev: React.KeyboardEvent) {
     let { value } = this.state;
     if (ev.target === this._input) {
       if (value && this._input.selectionStart !== this._input.selectionEnd) {

@@ -20,7 +20,7 @@ export interface IPeoplePickerExampleState {
 
 const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsHeaderText: 'Suggested People',
-  noResultsText: 'No results found'
+  noResultsFoundText: 'No results found'
 };
 
 export class PeoplePickerTypesExample extends React.Component<any, IPeoplePickerExampleState> {
