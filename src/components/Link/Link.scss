@@ -11,8 +11,6 @@
 @mixin ms-Link {
   @include ms-baseFont;
   @include focus-border();
-  font-size: $ms-font-size-m;
-  font-weight: $ms-font-weight-regular;
   color: $ms-color-themePrimary;
   text-decoration: none;
   cursor: pointer;

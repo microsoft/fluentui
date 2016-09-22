@@ -1,0 +1,684 @@
+@import '../../common/common';
+
+//== Modifier: Persona with darker text
+//
+// Note: Typically applied when the component has a colored background.
+.ms-Persona.ms-Persona--darkText {
+  .ms-Persona-primaryText {
+    color: $ms-color-neutralDark;
+  }
+
+  .ms-Persona-secondaryText,
+  .ms-Persona-tertiaryText,
+  .ms-Persona-optionalText {
+    color: $ms-color-neutralPrimary;
+  }
+}
+
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
+//
+// Office UI Fabric
+// --------------------------------------------------
+// People Picker styles
+
+$peoplePickerResults-maxWidth: 340px;
+$peoplePicker-rowHeight: 56px;
+$personaItemHeight: 42px;
+
+
+.ms-PeoplePicker {
+  @include ms-font-m;
+  @include ms-u-normalize;
+  color: $ms-color-neutralPrimary;
+  background-color: $ms-color-white;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+// Box that contains the search field and selected people.
+.ms-PeoplePicker-searchBox {
+  @include ms-u-clearfix;
+  border: 1px solid $ms-color-neutralTertiaryAlt;
+  box-sizing: border-box;
+  min-height: 42px;
+  width: 100%;
+
+  &:hover {
+    border-color: $ms-color-neutralSecondaryAlt;
+  }
+
+   > .ms-FocusZone{
+    flex-flow: row wrap;
+    display: flex;
+    align-items: stretch;
+  }
+}
+
+// Highlight the search box when the people picker is active
+.ms-PeoplePicker.is-active .ms-PeoplePicker-searchBox {
+  border-color: $ms-color-themePrimary;
+}
+
+// The search field.
+.ms-PeoplePicker-searchField {
+  border: 0;
+  box-sizing: border-box;
+  display: inline-block;
+  @include float(left);
+  height: 38px;
+  outline: none;
+  @include padding-left(8px);
+  width: 100%;
+  flex: 1;
+  min-width: 200px;
+}
+
+// A selected persona, which appears within the search field.
+.ms-PeoplePicker-persona {
+  display: inline-flex;
+  @include float(left);
+  margin: 4px;
+  outline: 1px solid transparent;
+  background-color: $ms-color-neutralLighter;
+  border-radius: 20px;
+
+  &:focus {
+    .ms-PeoplePicker-personaContent {
+      outline: 2px solid $ms-color-themePrimary;
+    }
+  }
+
+  //TODO: Avoid styling child components like this.
+  .ms-Persona {
+    @include float(left);
+    min-height: 30px;
+  }
+}
+
+// The selected persona may be in an error state.
+.ms-PeoplePicker-persona.has-error {
+  .ms-Persona-primaryText {
+    color: $ms-color-error;
+  }
+}
+
+// Button to remove a selected person.
+.ms-PeoplePicker-personaRemove {
+  @include button-reset();
+  color: $ms-color-neutralPrimary;
+  display: inline-block;
+  @include float(left);
+  text-align: center;
+  height: 32px;
+  width: 32px;
+  border-radius: 20px;
+
+  &:hover {
+    background-color: $ms-color-neutralLight;
+    color: $ms-color-neutralPrimary;
+    cursor: pointer;
+  }
+
+  &:focus {
+    background-color: $ms-color-neutralLight;
+    color: $ms-color-neutralPrimary;
+    border: 1px solid $ms-color-themePrimary;
+    outline: none;
+  }
+}
+
+// Results area, hidden by default
+.ms-PeoplePicker-results {
+  @include drop-shadow();
+  background-color: $ms-color-white;
+  border: 1px solid $ms-color-neutralTertiaryAlt;
+  display: none;
+  margin-bottom: -1px;
+  width: 100%;
+  padding-top: 9px;
+  position: absolute;
+  z-index: ($ms-zIndex-PeoplePicker + $ms-zIndex-middle);
+
+  @media (min-width: $ms-screen-md-min) {
+    width: $peoplePickerResults-maxWidth;
+  }
+}
+
+// Show the results area when the people picker is active
+.ms-PeoplePicker.is-active .ms-PeoplePicker-results {
+  display: block;
+  opacity: 1;
+}
+
+
+// One or more groups of results (ms-PeoplePicker-resultGroup) are contained in this scrollable area.
+// This is limited to five results for both regular and compact sizes.
+.ms-PeoplePicker-resultGroups {
+    max-height: 309px;
+    min-height: 57px;
+    overflow-y: auto;
+}
+
+// A group of results
+.ms-PeoplePicker-resultGroup {
+  border-top: 1px solid $ms-color-neutralLight;
+
+  // The first result group needs to be bumped up 1px to account for border on ms-PeoplePicker-results
+  &:first-child {
+    border-top: 0;
+  }
+}
+
+// Title for a group of results (optional)
+.ms-PeoplePicker-resultGroupTitle {
+  color: $ms-color-themePrimary;
+  font-weight: $ms-font-weight-semilight;
+  font-size: $ms-font-size-s;
+  @include padding(8px, 0, 8px, 16px);
+  text-transform: uppercase;
+}
+
+// List of results
+.ms-PeoplePicker-resultList {
+  @include ms-u-normalize;
+  list-style-type: none; // Browser default override.
+}
+
+// A single result in the result list
+.ms-PeoplePicker-result {
+  position: relative;
+
+  .ms-Persona {
+    width: inherit;
+
+    &:hover {
+      @extend .ms-Persona.ms-Persona--darkText;
+      cursor: pointer;
+    }
+
+    // TODO: Active style is being blocked by the inner content on IE
+    // http://stackoverflow.com/questions/5594102/active-css-selector-not-working-for-ie8-and-ie9?rq=1
+    &:active {
+      background-color: $ms-color-themeLight;
+    }
+  }
+
+  // Ensure the width is 100%.
+  .ms-Persona-details {
+    width: 100%;
+    @include padding-right(28px);
+  }
+}
+
+// Result buttons
+.ms-PeoplePicker-resultBtn,
+.ms-PeoplePicker-peopleListBtn {
+  @include button-reset();
+  position: relative;
+  box-sizing: border-box;
+  height: $peoplePicker-rowHeight;
+  width: 100%;
+  background: none;
+  border: 0;
+  @include text-align(left);
+  @include padding(4px, 0, 4px, 16px);
+
+  &:hover {
+    background-color: $ms-color-neutralLight;
+    outline: 1px solid transparent;
+  }
+
+  &:focus {
+    outline: 1;
+  }
+
+  &.ms-PeoplePicker-resultBtn--compact {
+    height: 40px;
+  }
+}
+
+//== Modifier: Selectable Persona
+//
+.ms-PeoplePicker-resultBtn--selected {
+  background-color: $ms-color-neutralQuaternaryAlt;
+  outline: 1px solid transparent;
+
+  &:hover {
+    background-color: $ms-color-neutralQuaternary;
+  }
+
+  .ms-PeoplePicker-resultAction:hover {
+      background-color: $ms-color-neutralTertiaryAlt
+  }
+}
+
+.ms-PeoplePicker-peopleListBtn {
+  margin-bottom: 0;
+  padding: 0;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+// Actionable icon on a result
+.ms-PeoplePicker-resultAction {
+  @include button-reset();
+  display: block;
+  height: $peoplePicker-rowHeight;
+  transition: background-color 0.367s $ms-ease1;
+  position: absolute;
+  @include right(0);
+  top: 0;
+  width: 30px;
+  text-align: center;
+  padding: 0px;
+
+  @media (min-width: $ms-screen-md-min) {
+    height: $peoplePicker-rowHeight;
+  }
+
+  .ms-Icon {
+    color: $ms-color-neutralSecondary;
+    font-size: $ms-font-size-m-plus;
+  }
+
+  &:hover {
+    background-color: $ms-color-neutralQuaternaryAlt;
+    outline: 1px solid transparent;
+  }
+
+  &:active {
+    background-color: $ms-color-neutralQuaternary;
+  }
+}
+
+// A result can contain additional content (usually a ms-PeoplePicker-resultList of Persona components) that is hidden initially
+.ms-PeoplePicker-resultAdditionalContent {
+    display: none;
+}
+
+// Use the .is-expanded state to reveal the additional content
+.ms-PeoplePicker-result.is-expanded {
+  background-color: $ms-color-neutralLighter;
+  margin-bottom: 11px;
+
+  // Switch the toggle icon
+  .ms-PeoplePicker-resultAction .ms-Icon {
+    transform: rotate(180deg);
+  }
+
+  // Show the content
+  .ms-PeoplePicker-resultAdditionalContent {
+      display: block;
+  }
+}
+
+// After the result groups we have an area to trigger additional searches
+.ms-PeoplePicker-searchMore {
+  border-top: 1px solid $ms-color-neutralLight;
+  height: 69px;
+  position: relative;
+  overflow: hidden;
+
+  .ms-Spinner {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: 20px;
+    @include left(20px);
+    display: none;
+
+    .ms-Spinner-circle {
+      background-color: $ms-color-themePrimary;
+    }
+  }
+}
+
+// Searching state
+.ms-PeoplePicker-searchMore.is-searching {
+
+  .ms-Spinner {
+    display: block;
+  }
+
+  .ms-PeoplePicker-searchMoreIcon {
+    .ms-Icon {
+      display: none;
+    }
+  }
+
+  .ms-PeoplePicker-searchMorePrimary {
+    color: $ms-color-themePrimary;
+  }
+
+  &:hover {
+    background-color: transparent;
+    cursor: default;
+  }
+}
+
+.ms-PeoplePicker-searchMoreBtn {
+  @include button-reset();
+  position: relative;
+  height: 69px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  @include padding-left(70px);
+  @include text-align(left);
+
+  &:hover {
+    background-color: $ms-color-neutralLight;
+    cursor: pointer;
+
+    .ms-PeoplePicker-searchMoreSecondary {
+      color: $ms-color-neutralDark;
+    }
+  }
+
+  // TODO: Works in Chrome, but not working in IE
+  &:focus,
+  &:active {
+    background-color: $ms-color-neutralQuaternaryAlt;
+
+    .ms-PeoplePicker-searchMoreSecondary {
+      color: $ms-color-black;
+    }
+  }
+}
+
+.ms-PeoplePicker-searchMoreBtn.ms-PeoplePicker-searchMoreBtn--compact {
+  height: 49px;
+  @include padding-left(50px);
+}
+
+// Default search icon
+.ms-PeoplePicker-searchMoreIcon {
+  height: 70px;
+  position: absolute;
+  top: 0;
+  @include left(0);
+  width: 70px;
+
+  .ms-Icon {
+    color: $ms-color-neutralPrimary;
+    font-size: $ms-font-size-m + 2;
+    position: absolute;
+    text-align: center;
+    top: 27px;
+    width: 100%;
+  }
+}
+
+// Primary text
+.ms-PeoplePicker-searchMorePrimary {
+  padding-top: 2px;
+  font-weight: $ms-font-weight-regular;
+}
+
+// Secondary text
+.ms-PeoplePicker-searchMoreSecondary {
+  font-weight: $ms-font-weight-semilight;
+  font-size: $ms-font-size-xs;
+  color: $ms-color-neutralSecondary;
+}
+
+// The search more area may be in a disconnected state.
+.ms-PeoplePicker-searchMore.ms-PeoplePicker-searchMore--disconnected {
+
+  // Do nothing on hover
+  &:hover {
+    background-color: inherit;
+    cursor: default;
+  }
+
+  // Alert icon
+  .ms-PeoplePicker-searchMoreIcon .ms-Icon {
+    color: $ms-color-neutralSecondary;
+  }
+
+  // Primary text
+  .ms-PeoplePicker-searchMorePrimary {
+    color: $ms-color-neutralSecondary;
+    font-weight: $ms-font-weight-semilight;
+    font-size: $ms-font-size-xs;
+    line-height: 20px;
+    position: relative;
+    top: 0;
+  }
+}
+
+// Compact size
+.ms-PeoplePicker.ms-PeoplePicker--compact {
+
+  // Limit to 5 results before scrolling.
+  .ms-PeoplePicker-resultGroups {
+    max-height: 209px;
+  }
+
+  .ms-PeoplePicker-resultAction {
+    height: 40px;
+  }
+
+  .ms-PeoplePicker-searchMore {
+    height: 49px;
+
+    .ms-Spinner {
+      width: 28px;
+      height: 28px;
+      top: 12px;
+      @include left(12px);
+    }
+
+  }
+
+  .ms-PeoplePicker-searchMore.is-searching .ms-PeoplePicker-searchMoreIcon {
+    background-size: 16px;
+  }
+
+  .ms-PeoplePicker-searchMoreIcon {
+    height: 50px;
+    width: 50px;
+
+    .ms-Icon {
+      font-size: $ms-font-size-l;
+      top: 0;
+      margin-top: 0;
+      line-height: 50px;
+    }
+  }
+
+  .ms-PeoplePicker-searchMorePrimary {
+    font-size: $ms-font-size-s;
+    line-height: 45px;
+  }
+
+  .ms-PeoplePicker-searchMoreSecondary {
+    display: none;
+  }
+}
+
+
+//== Modifier: Facepile and Members list
+//
+.ms-PeoplePicker.ms-PeoplePicker--Facepile,
+.ms-PeoplePicker.ms-PeoplePicker--membersList {
+  .ms-PeoplePicker-searchBox {
+    height: 30px;
+    min-height: 30px;
+  }
+
+  .ms-PeoplePicker-searchField {
+    height: 28px;
+  }
+
+  .ms-Persona {
+    cursor: pointer;
+  }
+
+  .ms-PeoplePicker-memberListTopMargin {
+    margin-top: 8px;
+  }
+}
+
+.ms-PeoplePicker-selected {
+  margin-bottom: 20px;
+  display: none;
+
+  &.is-active {
+    display: block;
+  }
+}
+
+.ms-PeoplePicker.ms-PeoplePicker--Facepile {
+  //= State: Searching in peoplepicker search field
+  &.is-searching {
+    .ms-PeoplePicker-results {
+      border-bottom: 0;
+      padding: 20px 0 0;
+    }
+
+    .ms-PeoplePicker-peopleListHeader {
+      display: none;
+    }
+  }
+
+  .ms-PeoplePicker-results {
+    position: relative;
+    border: 0;
+    box-shadow: none;
+    margin: 0;
+    max-width: 100%;
+    padding: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $ms-color-neutralLight;
+  }
+
+  // Personas are size xs on mobile, sm on md screens and above
+  .ms-PeoplePicker-results,
+  .ms-PeoplePicker-selectedPeople {
+    @media (max-width: $ms-screen-sm-max) {
+      .ms-Persona-imageArea,
+      .ms-Persona-image {
+        width: 32px;
+        height: 32px;
+      }
+
+      .ms-Persona-placeholder {
+        font-size: 28px;
+        top: 6px;
+      }
+
+      .ms-Persona-initials {
+        font-size: $ms-font-size-s;
+        line-height: 32px;
+      }
+
+      .ms-Persona-presence {
+        @include left(19px);
+      }
+
+      .ms-Persona-details {
+        @include padding-left(8px);
+      }
+
+      .ms-Persona-primaryText {
+        font-size: $ms-font-size-m;
+        padding-top: 3px;
+      }
+
+      .ms-Persona-secondaryText {
+        display: none;
+      }
+    }
+
+    @media (min-width: $ms-screen-md-min) {
+      .ms-Persona .ms-Persona-secondaryText {
+        display: block;
+      }
+    }
+  }
+
+  .ms-PeoplePicker-resultBtn,
+  .ms-PeoplePicker-peopleListBtn {
+    @media (min-width: $ms-screen-md-min) {
+      height: $personaItemHeight;
+    }
+  }
+
+  .ms-PeoplePicker-resultAction {
+    @media (min-width: $ms-screen-md-min) {
+      height: $personaItemHeight;
+    }
+  }
+
+  .ms-Persona.ms-Persona--selectable {
+    padding: 0;
+  }
+
+  .ms-PeoplePicker-searchMore {
+    display: none;
+
+    &.is-active {
+      display: block;
+    }
+  }
+
+  .ms-PeoplePicker-searchMore,
+  .ms-PeoplePicker-searchMoreBtn,
+  .ms-PeoplePicker-searchMoreIcon {
+    height: $peoplePicker-rowHeight;
+  }
+
+  .ms-PeoplePicker-searchMoreBtn {
+    @include padding-left($peoplePicker-rowHeight);
+  }
+
+  .ms-PeoplePicker-searchMoreIcon {
+    width: $peoplePicker-rowHeight;
+  }
+
+  .ms-PeoplePicker-searchMorePrimary {
+    font-size: $ms-font-size-s;
+    line-height: $peoplePicker-rowHeight;
+  }
+
+  .ms-PeoplePicker-searchMoreIcon .ms-Icon {
+    top: 0;
+    line-height: $peoplePicker-rowHeight;
+  }
+
+  .ms-Spinner {
+    top: 16px;
+    @include left(14px);
+    height: 20px;
+    width: 20px;
+  }
+}
+
+.ms-PeoplePicker-selectedHeader,
+.ms-PeoplePicker-peopleListHeader {
+  color: $ms-color-themePrimary;
+  font-size: $ms-font-size-s;
+  font-weight: $ms-font-weight-regular;
+  height: 50px;
+  line-height: 50px;
+}
+
+.ms-PeoplePicker-selectedPeople,
+.ms-PeoplePicker-peopleList {
+  @include ms-u-normalize;
+  list-style: none;
+}
+
+.ms-PeoplePicker-selectedPerson {
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.ms-PeoplePicker-peopleListItem {
+  margin-bottom: 6px;
+  position: relative;
+}

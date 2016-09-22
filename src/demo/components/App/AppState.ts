@@ -24,11 +24,9 @@ import { ListPage } from '../../pages/ListPage/ListPage';
 import { MarqueeSelectionPage } from '../../pages/MarqueeSelectionPage/MarqueeSelectionPage';
 import { MessageBarPage } from '../../pages/MessageBarPage/MessageBarPage';
 import { NavPage } from '../../pages/NavPage/NavPage';
-import { OrgChartPage } from '../../pages/OrgChartPage/OrgChartPage';
 import { OverlayPage } from '../../pages/OverlayPage/OverlayPage';
 import { PanelPage } from '../../pages/PanelPage/PanelPage';
 import { PickersPage } from '../../pages/PickersPage/PickersPage';
-import { PersonaCardPage } from '../../pages/PersonaCardPage/PersonaCardPage';
 import { PersonaPage } from '../../pages/PersonaPage/PersonaPage';
 import { PivotPage } from '../../pages/PivotPage/PivotPage';
 import { ProgressIndicatorPage } from '../../pages/ProgressIndicatorPage/ProgressIndicatorPage';
@@ -180,13 +178,6 @@ export const AppState: IAppState = {
           url: '#/examples/messagebar'
         },
         {
-          component: OrgChartPage,
-          key: 'OrgChart',
-          name: 'OrgChart',
-          status: ExampleStatus.placeholder,
-          url: '#/examples/orgchart'
-        },
-        {
           component: OverlayPage,
           key: 'Overlay',
           name: 'Overlay',
@@ -213,13 +204,6 @@ export const AppState: IAppState = {
           name: 'Persona',
           status: ExampleStatus.beta,
           url: '#/examples/persona'
-        },
-        {
-          component: PersonaCardPage,
-          key: 'PersonaCard',
-          name: 'PersonaCard',
-          status: ExampleStatus.placeholder,
-          url: '#/examples/personacard'
         },
         {
           component: PivotPage,
