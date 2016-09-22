@@ -85,10 +85,10 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
         <div className='ms-CommandBarSearch' ref='searchSurface'>
           <input className='ms-CommandBarSearch-input' type='text' placeholder={ searchPlaceholderText } />
           <div className='ms-CommandBarSearch-iconWrapper ms-CommandBarSearch-iconSearchWrapper'>
-            <i className='ms-Icon ms-Icon--search'></i>
+            <i className='ms-Icon ms-Icon--Search'></i>
           </div>
           <div className='ms-CommandBarSearch-iconWrapper ms-CommandBarSearch-iconClearWrapper ms-font-s'>
-            <i className='ms-Icon ms-Icon--x'></i>
+            <i className='ms-Icon ms-Icon--Cancel'></i>
           </div>
         </div>
       );
@@ -111,7 +111,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
                 aria-label={ this.props.elipisisAriaLabel || '' }
                 aria-haspopup={ true }
               >
-                <i className='ms-CommandBarItem-overflow ms-Icon ms-Icon--ellipsis' />
+                <i className='ms-CommandBarItem-overflow ms-Icon ms-Icon--More' />
               </button>
             </div>
             ] : []) }
@@ -143,7 +143,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
 
   private _renderItemInCommandBar(item, index, expandedMenuItemKey, isFarItem?: boolean) {
     const itemKey = item.key || index;
-    const className = item.onClick ? 'ms-CommandBarItem-link' : 'ms-CommandBarItem-text';
+    const className = css(item.onClick ? 'ms-CommandBarItem-link' : 'ms-CommandBarItem-text', !item.name && 'ms-CommandBarItem--noName');
     const classNameValue = css(className, { 'is-expanded': (expandedMenuItemKey === item.key) });
 
     return <div className={ css('ms-CommandBarItem', item.className) } key={ itemKey } ref={ itemKey }>
@@ -161,7 +161,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
                          { (!!item.icon) && <span className={ `ms-CommandBarItem-icon ms-Icon ms-Icon--${ item.icon }` }></span> }
                          { (!!item.name) && <span className='ms-CommandBarItem-commandText'>{ item.name }</span> }
                          { (item.items && item.items.length) ? (
-                           <i className='ms-CommandBarItem-chevronDown ms-Icon ms-Icon--chevronDown' />
+                           <i className='ms-CommandBarItem-chevronDown ms-Icon ms-Icon--ChevronDown' />
                          ) : ( null ) }
                        </button>;
                } else {

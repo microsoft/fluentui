@@ -18,7 +18,8 @@ export const PERSONA_PRESENCE = {
   [PersonaPresence.online]: 'ms-Persona--online',
   [PersonaPresence.away]: 'ms-Persona--away',
   [PersonaPresence.dnd]: 'ms-Persona--dnd',
-  [PersonaPresence.blocked]: 'ms-Persona--blocked'
+  [PersonaPresence.blocked]: 'ms-Persona--blocked',
+  [PersonaPresence.busy]: 'ms-Persona--busy'
 };
 
 export const PERSONA_INITIALS_COLOR = {

@@ -1,5 +1,4 @@
-.ms-CalloutExample {
-}
+@import '../../../../common/common';
 
 .ms-CalloutExample-callout {
     max-width: 300px;
@@ -14,7 +13,6 @@
   vertical-align: top;
   display: inline-block;
   min-width: 130px;
-  top: 85px;
   margin: 0 100px;
   text-align: center;
   height: 32px;
@@ -40,12 +38,6 @@
   text-align: center;
 }
 
-.ms-CalloutExample-buttonArea .ms-Button {
-  top: 80px;
-  text-align: center;
-  width: 100%;
-}
-
 .ms-CalloutExample-title {
   font-size: x-large;
 }
@@ -53,4 +45,39 @@
 .ms-CalloutExample-cmdBarHost {
   width: 350px;
   padding: 10px;
+}
+
+.ms-CalloutExample-inner {
+  height: 100%;
+  padding: 0 24px 20px;
+}
+
+.ms-CalloutExample-header {
+  padding: 18px 24px 12px;
+}
+
+.ms-CalloutExample-title {
+  margin: 0;
+  @include ms-font-xl;
+  color: $ms-color-neutralPrimary;
+  font-weight: $ms-font-weight-semilight;
+}
+
+.ms-CalloutExample-subText {
+  margin: 0;
+  @include ms-font-s;
+  color: $ms-color-neutralPrimary;
+  font-weight: $ms-font-weight-semilight;
+}
+
+.ms-CalloutExample-link {
+  @include ms-font-m;
+  color: $ms-color-neutralPrimary;
+}
+
+.ms-CalloutExample-actions {
+  position: relative;
+  margin-top: 20px;
+  width: 100%;
+  white-space: nowrap;
 }

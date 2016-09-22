@@ -7,14 +7,20 @@
 // --------------------------------------------------
 // Single line (input) and multiline (textarea) form field styles
 
-
 @import '../Label/Label.scss';
 
-
 .ms-TextField {
-  @include ms-font-m;
+  @include ms-baseFont;
   @include ms-u-normalize;
+  color: $ms-color-neutralPrimary;
+  font-size: $ms-font-size-m;
+  font-weight: $ms-font-weight-regular;
   margin-bottom: 8px;
+
+  .ms-Label {
+    font-size: $ms-font-size-m;
+    font-weight: $ms-font-weight-regular;
+  }
 }
 
 //= State: A disabled textfield
@@ -49,16 +55,18 @@
 
 .ms-TextField-field {
   @include ms-u-normalize;
+  @include ms-baseFont;
   border: 1px solid $ms-color-neutralTertiaryAlt;
   border-radius: 0;
-  font-family: $ms-font-family-semilight;
-  font-size: $ms-font-size-s;
+  font-weight: $ms-font-weight-regular;
+  font-size: $ms-font-size-m;
   color: $ms-color-neutralPrimary;
   height: 32px;
-  padding: 6px 10px 8px;
+  @include padding(6px, 12px, 7px, 12px);
   width: 100%;
   min-width: 180px;
   outline: 0;
+  text-overflow: ellipsis;
 
   &:hover {
     border-color: $ms-color-neutralSecondaryAlt;
@@ -79,6 +87,13 @@
     }
   }
 
+  &[disabled] {
+    background-color: $ms-color-neutralLighter;
+    border-color: $ms-color-neutralLighter;
+    pointer-events: none;
+    cursor: default;
+  }
+
   @include input-placeholder {
     color: $ms-color-neutralSecondary;
   }
@@ -87,29 +102,6 @@
 .ms-TextField-description {
   color: $ms-color-neutralSecondaryAlt;
   font-size: $ms-font-size-xs;
-}
-
-
-//== Modifier: Single line (default), placeholder label
-//
-.ms-TextField.ms-TextField--placeholder {
-  position: relative;
-
-  .ms-Label {
-    position: absolute;
-    font-family: $ms-font-family-semilight;
-    font-size: $ms-font-size-s;
-    color: $ms-color-neutralSecondary;
-    padding: 7px 0 7px 10px;
-  }
-
-  &.is-disabled {
-    color: $ms-color-neutralTertiary;
-
-    .ms-Label {
-      @include ms-Label-is-disabled;
-    }
-  }
 }
 
 
@@ -139,12 +131,12 @@
   }
 
   .ms-Label {
-    font-size: $ms-font-size-s;
-    margin-right: 8px;
+    font-size: $ms-font-size-m;
+    @include margin-right(8px);
     display: table-cell;
-    vertical-align: bottom;
-    padding-left: 12px;
-    padding-bottom: 5px;
+    vertical-align: top;
+    @include padding-left(12px);
+    padding-top: 9px;
     height: 32px;
     width: 1%;
     white-space: nowrap;
@@ -152,11 +144,11 @@
 
   .ms-TextField-field {
     border: 0;
-    float: left;
+    @include float(left);
     display: table-cell;
-    text-align: left;
+    @include text-align(left);
     padding-top: 8px;
-    padding-bottom: 2px;
+    padding-bottom: 3px;
 
     &:active,
     &:focus,
@@ -196,7 +188,11 @@
 //
 .ms-TextField.ms-TextField--multiline {
   .ms-TextField-field {
-    @include ms-font-s;
+    @include ms-baseFont;
+    color: $ms-color-neutralPrimary;
+    font-family: $ms-font-family-base;
+    font-size: $ms-font-size-m;
+    font-weight: $ms-font-weight-regular;
     line-height: 17px;
     min-height: 60px;
     min-width: 260px;
@@ -210,6 +206,7 @@
   @include ms-font-s;
   @include ms-fontColor-redDark;
   @include resetMargins;
+  padding-top: 5px;
 }
 
 .ms-TextField-invalid,
