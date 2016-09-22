@@ -1,10 +1,14 @@
 import * as React from 'react';
-import { BaseComponent } from '../../common/BaseComponent';
+import { IRectangle } from '../../common/IRectangle';
 import { IListProps, IPage } from './List.Props';
-import { css } from '../../utilities/css';
-import { assign } from '../../utilities/object';
-import { findIndex } from '../../utilities/array';
-import { findScrollableParent } from '../../utilities/scrollUtilities';
+import {
+  BaseComponent,
+  assign,
+  css,
+  findIndex,
+  getParent
+} from '../../Utilities';
+import { findScrollableParent } from '../../utilities/scroll';
 
 const RESIZE_DELAY = 16;
 const MIN_SCROLL_UPDATE_DELAY = 100;
@@ -70,27 +74,28 @@ export class List extends BaseComponent<IListProps, IListState> {
 
   private _estimatedPageHeight: number;
   private _totalEstimates: number;
-  private _cachedPageHeights: { [key: string]: {
-    height: number,
-    measureVersion: number
-  } };
+  private _cachedPageHeights: {
+    [key: string]: {
+      height: number,
+      measureVersion: number
+    }
+  };
   private _focusedIndex: number;
   private _scrollElement: HTMLElement;
   private _scrollingToIndex: number;
   private _hasCompletedFirstRender: boolean;
-  private isFirstRenderRectUpdate: boolean;
 
   // surface rect relative to window
-  private _surfaceRect: ClientRect;
+  private _surfaceRect: IRectangle;
 
   // The visible rect that we're required to render given the current list state.
-  private _requiredRect: ClientRect;
+  private _requiredRect: IRectangle;
 
   // The visible rect that we're allowed to keep rendered. Pages outside of this rect will be removed.
-  private _allowedRect: ClientRect;
+  private _allowedRect: IRectangle;
 
   // materialized rect around visible items, relative to surface
-  private _materializedRect: ClientRect;
+  private _materializedRect: IRectangle;
 
   private _requiredWindowsAhead: number;
   private _requiredWindowsBehind: number;
@@ -108,7 +113,6 @@ export class List extends BaseComponent<IListProps, IListState> {
     this._totalEstimates = 0;
     this._requiredWindowsAhead = 0;
     this._requiredWindowsBehind = 0;
-    this.isFirstRenderRectUpdate = true;
 
     // Track the measure version for everything.
     this._measureVersion = 0;
@@ -128,12 +132,12 @@ export class List extends BaseComponent<IListProps, IListState> {
         leading: false
       });
 
-      this._onAsyncResize = this._async.debounce(
-        this._onAsyncResize,
-        RESIZE_DELAY,
-        {
-          leading: false
-        });
+    this._onAsyncResize = this._async.debounce(
+      this._onAsyncResize,
+      RESIZE_DELAY,
+      {
+        leading: false
+      });
 
     this._cachedPageHeights = {};
     this._estimatedPageHeight = 0;
@@ -277,7 +281,7 @@ export class List extends BaseComponent<IListProps, IListState> {
         break;
       }
 
-      target = target.parentElement;
+      target = getParent(target);
     }
   }
 
@@ -300,7 +304,7 @@ export class List extends BaseComponent<IListProps, IListState> {
     if (!this._materializedRect || !_isContainedWithin(this._requiredRect, this._materializedRect)) {
       this._updatePages();
     } else {
-     // console.log('requiredRect contained in materialized', this._requiredRect, this._materializedRect);
+      // console.log('requiredRect contained in materialized', this._requiredRect, this._materializedRect);
     }
   }
 
@@ -469,7 +473,7 @@ export class List extends BaseComponent<IListProps, IListState> {
 
   /** Build up the pages that should be rendered. */
   private _buildPages(items: any[], startIndex: number, renderCount: number): IListState {
-    let materializedRect = assign({}, EMPTY_RECT) as ClientRect;
+    let materializedRect = assign({}, EMPTY_RECT) as IRectangle;
     let itemsPerPage = 1;
     let pages = [];
     let pageTop = 0;
@@ -495,7 +499,7 @@ export class List extends BaseComponent<IListProps, IListState> {
       let isPageFocused = focusedIndex >= itemIndex && focusedIndex < (itemIndex + itemsPerPage);
       let isFirstPage = itemIndex === startIndex;
 
-     // console.log('building page', itemIndex, 'pageTop: ' + pageTop, 'inAllowed: ' + isPageInAllowedRange, 'inRequired: ' + isPageInRequiredRange);
+      // console.log('building page', itemIndex, 'pageTop: ' + pageTop, 'inAllowed: ' + isPageInAllowedRange, 'inRequired: ' + isPageInRequiredRange);
 
       // Only render whats visible, focused, or first page.
       if (isPageVisible || isPageFocused || isFirstPage) {
@@ -555,7 +559,7 @@ export class List extends BaseComponent<IListProps, IListState> {
    * Get the pixel height of a give page. Will use the props getPageHeight first, and if not provided, fallback to
    * cached height, or estimated page height, or default page height.
    */
-  private _getPageHeight(itemIndex: number, itemsPerPage: number, visibleRect: ClientRect): number {
+  private _getPageHeight(itemIndex: number, itemsPerPage: number, visibleRect: IRectangle): number {
     if (this.props.getPageHeight) {
       return this.props.getPageHeight(itemIndex, visibleRect);
     } else {
@@ -565,7 +569,7 @@ export class List extends BaseComponent<IListProps, IListState> {
     }
   }
 
-  private _getItemCountForPage(itemIndex: number, visibileRect: ClientRect): number {
+  private _getItemCountForPage(itemIndex: number, visibileRect: IRectangle): number {
     let itemsPerPage = this.props.getItemCountForPage ? this.props.getItemCountForPage(itemIndex, visibileRect) : DEFAULT_ITEMS_PER_PAGE;
 
     return itemsPerPage ? itemsPerPage : DEFAULT_ITEMS_PER_PAGE;
@@ -611,37 +615,30 @@ export class List extends BaseComponent<IListProps, IListState> {
       !pages ||
       !this._surfaceRect ||
       (pages.length > 0 && pages[0].items && pages[0].items.length < renderCount)) {
-       surfaceRect = this._surfaceRect = _measureSurfaceRect(this.refs.surface);
+      surfaceRect = this._surfaceRect = _measureSurfaceRect(this.refs.surface);
     }
 
     // If the surface is above the container top or below the container bottom, or if this is not the first
     // render return empty rect.
     // The first time the list gets rendered we need to calculate the rectangle. The width of the list is
     // used to calculate the width of the list items.
-    if ( (surfaceRect.bottom < 0 ||
-      surfaceRect.top > window.innerHeight) && !this.isFirstRenderRectUpdate) {
-      this._requiredRect = EMPTY_RECT;
-      this._allowedRect = EMPTY_RECT;
-    } else {
-      this.isFirstRenderRectUpdate = false;
-      const visibleTop = Math.max(0, -surfaceRect.top);
-      const visibleRect = {
-        top: visibleTop,
-        left: surfaceRect.left,
-        bottom: visibleTop + window.innerHeight,
-        right: surfaceRect.right,
-        width: surfaceRect.width,
-        height: window.innerHeight
-      };
+    const visibleTop = Math.max(0, -surfaceRect.top);
+    const visibleRect = {
+      top: visibleTop,
+      left: surfaceRect.left,
+      bottom: visibleTop + window.innerHeight,
+      right: surfaceRect.right,
+      width: surfaceRect.width,
+      height: window.innerHeight
+    };
 
-      // The required/allowed rects are adjusted versions of the visible rect.
-      this._requiredRect = _expandRect(visibleRect, this._requiredWindowsBehind, this._requiredWindowsAhead);
-      this._allowedRect = _expandRect(visibleRect, renderedWindowsBehind, renderedWindowsAhead);
-    }
+    // The required/allowed rects are adjusted versions of the visible rect.
+    this._requiredRect = _expandRect(visibleRect, this._requiredWindowsBehind, this._requiredWindowsAhead);
+    this._allowedRect = _expandRect(visibleRect, renderedWindowsBehind, renderedWindowsAhead);
   }
 }
 
-function _expandRect(rect, pagesBefore, pagesAfter): ClientRect {
+function _expandRect(rect, pagesBefore, pagesAfter): IRectangle {
   const top = rect.top - (pagesBefore * rect.height);
   const height = rect.height + ((pagesBefore + pagesAfter) * rect.height);
 
@@ -655,7 +652,7 @@ function _expandRect(rect, pagesBefore, pagesAfter): ClientRect {
   };
 }
 
-function _isContainedWithin(innerRect: ClientRect, outerRect: ClientRect): boolean {
+function _isContainedWithin(innerRect: IRectangle, outerRect: IRectangle): boolean {
   return (
     innerRect.top >= outerRect.top &&
     innerRect.left >= outerRect.left &&
@@ -663,7 +660,7 @@ function _isContainedWithin(innerRect: ClientRect, outerRect: ClientRect): boole
     innerRect.right <= outerRect.right);
 }
 
-function _mergeRect(targetRect: ClientRect, newRect: ClientRect): ClientRect {
+function _mergeRect(targetRect: IRectangle, newRect: IRectangle): IRectangle {
   targetRect.top = (newRect.top < targetRect.top || targetRect.top === -1) ? newRect.top : targetRect.top;
   targetRect.left = (newRect.left < targetRect.left || targetRect.left === -1) ? newRect.left : targetRect.left;
   targetRect.bottom = (newRect.bottom > targetRect.bottom || targetRect.bottom === -1) ? newRect.bottom : targetRect.bottom;

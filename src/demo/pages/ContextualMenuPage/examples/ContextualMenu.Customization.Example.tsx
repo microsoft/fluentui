@@ -35,7 +35,7 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
               [
                 {
                   key: 'newItem',
-                  icon: 'circlePlus',
+                  icon: 'Add',
                   items: [
                     {
                       key: 'emailMessage',
@@ -50,7 +50,7 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
                 },
                 {
                   key: 'upload',
-                  icon: 'upload',
+                  icon: 'Upload',
                   name: 'Upload'
                 },
                 {
@@ -67,86 +67,86 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
                       name: 'None'
                     },
                     {
-                      key: 'cat',
-                      name: 'cat',
+                      key: 'bulb',
+                      name: 'Lightbulb',
                       onRender: this._renderCharmMenuItem,
                       className: 'ms-ContextualMenu-customizationExample-item'
                     },
                     {
-                      key: 'dog',
-                      name: 'dog',
+                      key: 'run',
+                      name: 'Running',
                       onRender: this._renderCharmMenuItem,
                       className: 'ms-ContextualMenu-customizationExample-item'
                     },
                     {
                       key: 'plane',
-                      name: 'plane',
+                      name: 'Airplane',
                       onRender: this._renderCharmMenuItem,
                       className: 'ms-ContextualMenu-customizationExample-item'
                     },
                     {
                       key: 'page',
-                      name: 'page',
+                      name: 'Page',
                       onRender: this._renderCharmMenuItem,
                       className: 'ms-ContextualMenu-customizationExample-item'
                     },
                     {
-                      key: 'firstAid',
-                      name: 'firstAid',
+                      key: 'cake',
+                      name: 'Cake',
                       onRender: this._renderCharmMenuItem,
                       className: 'ms-ContextualMenu-customizationExample-item'
                     },
                     {
-                      key: 'trophy',
-                      name: 'trophy',
+                      key: 'soccer',
+                      name: 'Soccer',
                       onRender: this._renderCharmMenuItem,
                       className: 'ms-ContextualMenu-customizationExample-item'
                     },
                     {
                       key: 'home',
-                      name: 'home',
+                      name: 'Home',
                       onRender: this._renderCharmMenuItem,
                       className: 'ms-ContextualMenu-customizationExample-item'
                     },
                     {
-                      key: 'pill',
-                      name: 'pill',
+                      key: 'emoji',
+                      name: 'Emoji2',
                       onRender: this._renderCharmMenuItem,
                       className: 'ms-ContextualMenu-customizationExample-item'
                     },
                     {
-                      key: 'briefcase',
-                      name: 'briefcase',
+                      key: 'work',
+                      name: 'Work',
                       onRender: this._renderCharmMenuItem,
                       className: 'ms-ContextualMenu-customizationExample-item'
                     },
                     {
                       key: 'coffee',
-                      name: 'coffee',
+                      name: 'Coffee',
                       onRender: this._renderCharmMenuItem,
                       className: 'ms-ContextualMenu-customizationExample-item'
                     },
                     {
                       key: 'people',
-                      name: 'people',
+                      name: 'People',
                       onRender: this._renderCharmMenuItem,
                       className: 'ms-ContextualMenu-customizationExample-item'
                     },
                     {
                       key: 'stopwatch',
-                      name: 'stopwatch',
+                      name: 'Stopwatch',
                       onRender: this._renderCharmMenuItem,
                       className: 'ms-ContextualMenu-customizationExample-item'
                     },
                     {
                       key: 'music',
-                      name: 'music',
+                      name: 'MusicInCollectionFill',
                       onRender: this._renderCharmMenuItem,
                       className: 'ms-ContextualMenu-customizationExample-item'
                     },
                     {
-                      key: 'bag',
-                      name: 'bag',
+                      key: 'lock',
+                      name: 'Lock',
                       onRender: this._renderCharmMenuItem,
                       className: 'ms-ContextualMenu-customizationExample-item'
                     }

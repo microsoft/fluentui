@@ -23,7 +23,12 @@ export interface IFabricState {
 // the Fabric component, we will use the last known value as the default.
 let _lastIsFocusVisible: boolean = false;
 
-export class Fabric extends React.Component<React.HTMLProps<Fabric>, IFabricState> {
+// Ensure that the HTML element has a dir specified. This helps to ensure RTL/LTR macros in css for all components will work.
+if (document && document.documentElement && !document.documentElement.getAttribute('dir')) {
+  document.documentElement.setAttribute('dir', 'ltr');
+}
+
+export class Fabric extends React.Component<React.HTMLProps<HTMLDivElement>, IFabricState> {
   public refs: {
     [key: string]: React.ReactInstance;
     root: HTMLElement;

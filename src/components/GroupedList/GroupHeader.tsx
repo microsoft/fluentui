@@ -75,6 +75,7 @@ export class GroupHeader extends React.Component<IGroupHeader, IGroupHeaderState
         }) }
         style={ viewport ? { minWidth: viewport.width } : {} }
         onClick={ this._onHeaderClick }
+        aria-label={ group.ariaLabel || group.name }
         data-is-focusable={ true } >
 
         <FocusZone direction={ FocusZoneDirection.horizontal }>
@@ -91,9 +92,9 @@ export class GroupHeader extends React.Component<IGroupHeader, IGroupHeaderState
 
           { GroupSpacer({ count: groupLevel }) }
 
-          <div className='ms-GroupHeader-dropIcon'><i className='ms-Icon ms-Icon--tag'></i></div>
+          <div className='ms-GroupHeader-dropIcon'><i className='ms-Icon ms-Icon--Tag'></i></div>
           <button className='ms-GroupHeader-expand' onClick={ this._onToggleCollapse }>
-            <i className={ css('ms-Icon ms-Icon--chevronDown', {
+            <i className={ css('ms-Icon ms-Icon--ChevronDown', {
               'is-collapsed': isCollapsed
             })} />
           </button>

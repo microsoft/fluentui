@@ -29,19 +29,19 @@ export * from './List';
 export * from './MessageBar';
 export * from './MarqueeSelection';
 export * from './Nav';
-export * from './OrgChart';
 export * from './Overlay';
 export * from './Panel';
-export * from './PeoplePicker';
+export * from './Pickers';
 export * from './Persona';
-export * from './PersonaCard';
 export * from './Pivot';
 export * from './ProgressIndicator';
 export * from './SearchBox';
 export * from './Slider';
 export * from './Spinner';
+export * from './TeachingBubble';
 export * from './TextField';
 export * from './Toggle';
+export * from './Utilities';
 
 /* Special cases that will be removed once we've moved utilities out into a common location. */
 export * from './utilities/css';

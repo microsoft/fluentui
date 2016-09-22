@@ -2,6 +2,7 @@
 
 .ms-GettingStartedPage {
   margin-top: -20px;
+  padding: 40px;
 
   h1 {
     @include ms-font-xxl;
@@ -18,8 +19,6 @@
 }
 
 .ms-GettingStartedPage-banner {
-  background: $ms-color-neutralLight;
-  color: white;
   padding: 1px 20px;
   margin: -20px;
   margin-bottom: 20px;
@@ -42,7 +41,7 @@
 }
 
 .ms-GettingStartedPage-code {
-  background: $ms-color-neutralLighter;
+  background: $ms-color-neutralDark;
   padding: 20px;
 
   pre {

@@ -1,5 +1,5 @@
 import { EventGroup } from '../eventGroup/EventGroup';
-import { findScrollableParent } from '../scrollUtilities';
+import { findScrollableParent } from '../scroll';
 
 const SCROLL_ITERATION_DELAY = 16;
 const SCROLL_GUTTER_HEIGHT = 100;

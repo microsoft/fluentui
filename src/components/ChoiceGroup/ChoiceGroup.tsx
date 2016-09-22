@@ -7,6 +7,9 @@ import './ChoiceGroup.scss';
 
 export interface IChoiceGroupState {
   keyChecked: string;
+
+  /** Is true when the control has focus. */
+  keyFocused?: string;
 }
 
 export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroupState> {
@@ -22,7 +25,8 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
     super();
 
     this.state = {
-      keyChecked: this._getKeyChecked(props.options)
+      keyChecked: this._getKeyChecked(props.options),
+      keyFocused: undefined
     };
 
     this._id = getId('ChoiceGroup');
@@ -35,14 +39,14 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
 
     if (newKeyChecked !== oldKeyCheched) {
       this.setState({
-        keyChecked: newKeyChecked
+        keyChecked: newKeyChecked,
       });
     }
   }
 
   public render() {
     let { label, options, className, required } = this.props;
-    let { keyChecked } = this.state;
+    let { keyChecked, keyFocused } = this.state;
 
     const titleClassName = css('ms-Label', className, {
       'is-required': required
@@ -51,15 +55,23 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
     return (
       // Need to assign role application on containing div because JAWS doesnt call OnKeyDown without this role
       <div role='application' className={ className }>
-        <div className='ms-ChoiceFieldGroup' role='radiogroup'  aria-labelledby={ this.props.label ? this._id + '-label' : '' }>
+        <div
+          className='ms-ChoiceFieldGroup'
+          role='radiogroup'
+          aria-labelledby={ this.props.label ? this._id + '-label' : '' }
+        >
           <div className='ms-ChoiceFieldGroup-title'>
             { this.props.label ? <label className={ titleClassName } id={ this._id + '-label' }>{ label }</label> : null }
           </div>
 
-          { options.map(option => (
+          { options.map((option) => (
             <div
               key={ option.key }
-              className={ css('ms-ChoiceField', { 'ms-ChoiceField--image': !!option.imageSrc }) }
+              className={ css('ms-ChoiceField', {
+                  'ms-ChoiceField--image': !!option.imageSrc,
+                  'is-inFocus': option.key === keyFocused
+                })
+              }
             >
               <input
                 ref={ (c): HTMLInputElement => this._inputElement = c }
@@ -67,10 +79,11 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
                 className='ms-ChoiceField-input'
                 type='radio'
                 name={ this._id }
-                disabled={ option.isDisabled }
+                disabled={ option.isDisabled || option.disabled }
                 checked={ option.key === keyChecked }
-                aria-checked={ option.key === keyChecked }
                 onChange={ this._handleInputChange.bind(this, option) }
+                onFocus={ this._onFocus.bind(this, option) }
+                onBlur={ this._onBlur.bind(this, option) }
                 aria-describedby={ `${this._descriptionId}-${option.key}` }
               />
               { this._renderField(option) }
@@ -82,9 +95,23 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
   }
 
   public focus() {
-      if (this._inputElement) {
-          this._inputElement.focus();
-      }
+    if (this._inputElement) {
+      this._inputElement.focus();
+    }
+  }
+
+  private _onFocus(option: IChoiceGroupOption, ev: React.FocusEvent): void {
+    this.setState({
+      keyFocused: option.key,
+      keyChecked: this.state.keyChecked
+    });
+  }
+
+  private _onBlur(option: IChoiceGroupOption, ev: React.FocusEvent): void {
+    this.setState({
+      keyFocused: undefined,
+      keyChecked: this.state.keyChecked
+    });
   }
 
   private _renderField(option: IChoiceGroupOption) {
@@ -93,7 +120,12 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
     return (
       <label
         htmlFor={ this._id + '-' + option.key }
-        className={ option.imageSrc ? 'ms-ChoiceField-field--image' : 'ms-ChoiceField-field' }
+        className={ css({
+          'ms-ChoiceField-field--image': !!option.imageSrc,
+          'ms-ChoiceField-field': !option.imageSrc,
+          'is-checked': option.key === keyChecked,
+          'is-disabled': option.isDisabled || option.disabled
+        }) }
       >
         {
           option.imageSrc
@@ -118,7 +150,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
         {
           option.imageSrc
             ? <div className='ms-ChoiceField-labelWrapper'>
-                <i className='ms-ChoiceField-icon ms-Icon ms-Icon--check' />
+                <i className='ms-ChoiceField-icon ms-Icon ms-Icon--CheckMark' />
                 <span id={ `${this._descriptionId}-${option.key}` } className='ms-Label'>{ option.text }</span>
               </div>
             : <span id={ `${this._descriptionId}-${option.key}` } className='ms-Label'>{ option.text }</span>

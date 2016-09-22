@@ -14,8 +14,11 @@ import { DocumentCardTitle } from '../../../../components/DocumentCard/DocumentC
 export class DocumentCardCompleteExample extends React.Component<any, any> {
   public render() {
     let previewProps: IDocumentCardPreviewProps = {
+      getOverflowDocumentCountText: (overflowCount: number) => `+${ overflowCount } more`,
       previewImages: [
         {
+          name: '2016 Conference Presentation',
+          url: 'http://bing.com',
           previewImageSrc: 'dist/document-preview.png',
           iconSrc: 'dist/icon-ppt.png',
           imageFit: ImageFit.cover,
@@ -24,6 +27,8 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           accentColor: '#ce4b1f'
         },
         {
+          name: 'New Contoso Collaboration for Conference Presentation Draft',
+          url: 'http://bing.com',
           previewImageSrc: 'dist/document-preview2.png',
           iconSrc: 'dist/icon-ppt.png',
           imageFit: ImageFit.cover,
@@ -32,6 +37,38 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           accentColor: '#ce4b1f'
         },
         {
+          name: 'Spec Sheet for design',
+          url: 'http://bing.com',
+          previewImageSrc: 'dist/document-preview3.png',
+          iconSrc: 'dist/icon-ppt.png',
+          imageFit: ImageFit.cover,
+          width: 318,
+          height: 196,
+          accentColor: '#ce4b1f'
+        },
+        {
+          name: 'Contoso Marketing Presentation',
+          url: 'http://bing.com',
+          previewImageSrc: 'dist/document-preview.png',
+          iconSrc: 'dist/icon-ppt.png',
+          imageFit: ImageFit.cover,
+          width: 318,
+          height: 196,
+          accentColor: '#ce4b1f'
+        },
+        {
+          name: 'Notes from Ignite conference',
+          url: 'http://bing.com',
+          previewImageSrc: 'dist/document-preview2.png',
+          iconSrc: 'dist/icon-ppt.png',
+          imageFit: ImageFit.cover,
+          width: 318,
+          height: 196,
+          accentColor: '#ce4b1f'
+        },
+        {
+          name: 'FY17 Cost Projections',
+          url: 'http://bing.com',
           previewImageSrc: 'dist/document-preview3.png',
           iconSrc: 'dist/icon-ppt.png',
           imageFit: ImageFit.cover,
@@ -49,15 +86,14 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
         >
           <DocumentCardPreview { ...previewProps }/>
           <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com' ariaLabel='Location, Marketing Documents'/>
-          <DocumentCardTitle title='Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx +2'
-          shouldTruncate={ true }/>
+          <DocumentCardTitle title='6 files were uploaded'/>
           <DocumentCardActivity
             activity='Created Feb 23, 2016'
             people={
               [
-                { name: 'Kat Larrson', profileImageSrc: 'dist/avatar-kat.png' },
-                { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-                { name: 'Tina Dasani', profileImageSrc: 'dist/avatar-kat.png' }
+                { name: 'Annie Lindqvist', profileImageSrc: 'images/persona-female.png' },
+                { name: 'Roko Kolar', profileImageSrc: '', initials: 'JH' },
+                { name: 'Greta Lundberg', profileImageSrc: 'images/persona-female.png' }
               ]
             }
           />
@@ -65,7 +101,7 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
           actions={
             [
               {
-                icon: 'share',
+                icon: 'Share',
                 onClick: (ev: any) => {
                   console.log('You clicked the share action.');
                   ev.preventDefault();
@@ -74,22 +110,22 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
                 ariaLabel: 'share action'
               },
               {
-                icon: 'pinLeft',
+                icon: 'Pin',
                 onClick: (ev: any) => {
                   console.log('You clicked the pin action.');
                   ev.preventDefault();
                   ev.stopPropagation();
                 },
-                ariaLabel: 'pin left action'
+                ariaLabel: 'pin action'
               },
               {
-                icon: 'bell',
+                icon: 'Ringer',
                 onClick: (ev: any) => {
-                  console.log('You clicked the bell action.');
+                  console.log('You clicked the ringer action.');
                   ev.preventDefault();
                   ev.stopPropagation();
                 },
-                ariaLabel: 'bell action'
+                ariaLabel: 'ringer action'
               },
             ]
           }

@@ -58,11 +58,11 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
         <div className='Header'>
           { (responsiveMode <= ResponsiveMode.large) && (
             <button className='Header-button' onClick={ this._onMenuClick }>
-              <i className='ms-Icon ms-Icon--menu'/>
+              <i className='ms-Icon ms-Icon--GlobalNavButton'/>
             </button>
           ) }
           <div className='Header-title ms-font-xl ms-fontColor-white'>
-            <i className='ms-Icon ms-Icon--classroom' />
+            <i className='ms-Icon ms-Icon--Org' />
             { title }
           </div>
           <div className='Header-buttons'>
@@ -71,7 +71,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
                 <a key={ linkIndex } className='Header-button ms-fontColor-white' href={ link.url }>{ link.name }</a>
               )).concat([
                 <button key='headerButton' className='Header-button' onClick={ this._onGearClick }>
-                  <i className='ms-Icon ms-Icon--gear'/>
+                  <i className='ms-Icon ms-Icon--Settings'/>
                 </button>
               ]) }
             </FocusZone>
@@ -113,7 +113,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     return [{
       key: 'isRTL',
       name: `Render in ${ this.state.isRTLEnabled ? 'LTR' : 'RTL' }`,
-      icon: 'gear',
+      icon: 'Settings',
       onClick: this._onRTLToggled
     }];
   }

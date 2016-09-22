@@ -11,6 +11,9 @@ let isNuke = process.argv.indexOf( 'nuke' ) >= 0;
 /** @todo: disable lint config. */
 build.tslint.setConfig({ lintConfig: require('./tslint.json') });
 
+/* Configure TypeScript 2.0. */
+build.typescript.setConfig({ typescript: require('typescript') });
+
 build.postCopy.setConfig({
   copyTo: {
     'dist': [
@@ -24,10 +27,10 @@ build.postCopy.setConfig({
 isProduction && build.postCopy.setConfig({
   copyTo: {
     'dist/sass': [
-      'node_modules/office-ui-fabric/dist/sass/*.*'
+      'node_modules/office-ui-fabric-core/dist/sass/*.*'
     ],
     'dist/css': [
-      'node_modules/office-ui-fabric/dist/css/*.*'
+      'node_modules/office-ui-fabric-core/dist/css/*.*'
     ]
   }
 });
