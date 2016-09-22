@@ -29,30 +29,34 @@ export class SuggestionsController<T> {
    * Increments the suggestion index and gets the next suggestion in the list.
    */
   public nextSuggestion(): boolean {
-    if (this.currentIndex < (this.suggestions.length - 1)) {
-      this._setSelectedSuggestion(this.currentIndex + 1);
-      return true;
-    } else if (this.currentIndex === (this.suggestions.length - 1)) {
-      this._setSelectedSuggestion(0);
-      return true;
-    } else {
-      return false;
+    if (this.suggestions && this.suggestions.length) {
+      if (this.currentIndex < (this.suggestions.length - 1)) {
+        this._setSelectedSuggestion(this.currentIndex + 1);
+        return true;
+      } else if (this.currentIndex === (this.suggestions.length - 1)) {
+        this._setSelectedSuggestion(0);
+        return true;
+      }
     }
+
+    return false;
   }
 
   /**
    * Decrements the suggestion index and gets the previous suggestion in the list.
    */
   public previousSuggestion(): boolean {
-    if (this.currentIndex > 0) {
-      this._setSelectedSuggestion(this.currentIndex - 1);
-      return true;
-    } else if (this.currentIndex === 0) {
-      this._setSelectedSuggestion(this.suggestions.length - 1);
-      return true;
-    } else {
-      return false;
+    if (this.suggestions && this.suggestions.length) {
+      if (this.currentIndex > 0) {
+        this._setSelectedSuggestion(this.currentIndex - 1);
+        return true;
+      } else if (this.currentIndex === 0) {
+        this._setSelectedSuggestion(this.suggestions.length - 1);
+        return true;
+      }
     }
+
+    return false;
   }
 
   public getSuggestions(): ISuggestionModel<T>[] {

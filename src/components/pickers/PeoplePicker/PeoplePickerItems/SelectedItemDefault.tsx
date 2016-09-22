@@ -22,17 +22,18 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
       data-is-focusable={ true }
       data-selection-index={ index }
       key={ index } >
-      <Persona
-        { ...item }
-        presence = { item.presence ? item.presence : PersonaPresence.online }
-        size={ PersonaSize.extraSmall }
-        className='ms-base-peoplepicker'
-        />
+      <div className='ms-PickerItem-content'>
+        <Persona
+          { ...item }
+          presence = { item.presence ? item.presence : PersonaPresence.online }
+          size={ PersonaSize.extraSmall }
+          />
+      </div>
       <Button
         onClick={ () => { if (onRemoveItem) { onRemoveItem(); } } }
         icon={ 'Cancel' }
         buttonType={ ButtonType.icon }
-        className='ms-base-peoplepicker'
+        className='ms-PickerItem-content'
         >
       </Button>
     </div >

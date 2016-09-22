@@ -328,8 +328,15 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
     );
   }
 
-  private _onFilterChanged(filterText: string) {
-    return filterText ? data : [];
+  private _onFilterChanged(filterText: string, items: IFullDocumentCardProps[]) {
+    return filterText ? data.filter(item => item.documentTitleProps.title.toLowerCase().indexOf(filterText.toLowerCase()) === 0).filter(item => !this._listContainsPersona(item, items)) : [];
+  }
+
+  private _listContainsPersona(document: IFullDocumentCardProps, items: IFullDocumentCardProps[]) {
+    if (!items || !items.length || items.length === 0) {
+      return false;
+    }
+    return items.filter(item => item.documentTitleProps.title === document.documentTitleProps.title).length > 0;
   }
 }
 
