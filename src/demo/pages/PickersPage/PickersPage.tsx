@@ -49,7 +49,7 @@ export class PickersPage extends React.Component<IComponentDemoPageProps, any> {
                 <span> are used to pick recipients.</span>
               </div>
               <h2 className='ms-font-xl'> Examples </h2>
-              <ExampleCard title='MemberList PeoplePicker' code={ PeoplePickerTypesExampleCode }>
+              <ExampleCard title='People Pickers' code={ PeoplePickerTypesExampleCode }>
                 <PeoplePickerTypesExample />
               </ExampleCard>
               <h1 className='ms-font-xxl'> Custom Pickers </h1>
