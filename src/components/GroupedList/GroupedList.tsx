@@ -13,10 +13,14 @@ import {
   List
 } from '../../List';
 import {
+  Selection,
   SelectionMode
 } from '../../utilities/selection/index';
-import { autobind } from '../../utilities/autobind';
-import { assign } from '../../utilities/object';
+import {
+  BaseComponent,
+  autobind,
+  assign
+} from '../../Utilities';
 import './GroupedList.scss';
 
 export interface IGroupedListState {
@@ -25,7 +29,7 @@ export interface IGroupedListState {
   groups?: IGroup[];
 }
 
-export class GroupedList extends React.Component<IGroupedListProps, IGroupedListState> implements IGroupedList {
+export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListState> implements IGroupedList {
   public static defaultProps = {
     selectionMode: SelectionMode.multiple,
     isHeaderVisible: true,
@@ -39,6 +43,7 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
   };
 
   private _isSomeGroupExpanded: boolean;
+  private _selection: Selection;
 
   constructor(props: IGroupedListProps) {
     super(props);
@@ -49,6 +54,11 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
       lastWidth: 0,
       groups: props.groups
     };
+
+    if (!props.selection) {
+      this._selection = new Selection();
+      this._selection.setItems(props.items);
+    }
   }
 
   public componentWillReceiveProps(newProps) {
@@ -57,6 +67,10 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
       selectionMode
     } = this.props;
     let shouldForceUpdates = false;
+
+    if (this._selection && newProps.items !== this.props.items) {
+      this._selection.setItems(newProps.items);
+    }
 
     if (newProps.groups !== groups) {
       this.setState({ groups: newProps.groups });
@@ -138,7 +152,7 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
       listProps,
       onRenderCell,
       selectionMode,
-      selection,
+      selection = this._selection,
       viewport
     } = this.props;
 

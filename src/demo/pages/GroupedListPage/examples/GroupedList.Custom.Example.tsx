@@ -4,7 +4,7 @@ import {
   IGroup,
   IGroupDividerProps
 } from '../../../../components/GroupedList/index';
-import { Toggle } from '../../../../Toggle';
+import { Link } from '../../../../Link';
 import { createListItems, createGroups } from '../../../utilities/data';
 import './GroupedList.Custom.Example.scss';
 
@@ -50,7 +50,7 @@ export class GroupedListCustomExample extends React.Component<any, any> {
     return (
       <div className='ms-GroupedListExample-header ms-font-xl'>
         This is a custom header for {props.group.name}
-        <Toggle label='Summarize' onChanged={checked => props.onToggleSummarize(props.group)} />
+        (<Link onClick={ props.onToggleCollapse }>{ props.group.isCollapsed ? 'Expand' : 'Collapse' }</Link>)
       </div>
     );
   }
