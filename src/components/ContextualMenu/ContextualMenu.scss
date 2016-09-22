@@ -47,6 +47,9 @@ $ContextualMenu-iconWidth: 14px;
   &:hover:not([disabled]) {
     background: $ContextualMenu-itemHover;
   }
+  &[disabled] {
+    background: $ms-color-neutralTertiaryAlt;
+  }
 
   .is-focusVisible &:focus {
     background: $ContextualMenu-itemHover;
