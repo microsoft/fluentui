@@ -49,29 +49,6 @@ $Callout-smallbeak-slant-width: 16px;
   box-sizing: border-box;
 }
 
-.ms-Callout-inner {
-  height: 100%;
-  padding: 0 24px 20px;
-}
-
-.ms-Callout-header {
-  padding: 18px 24px 12px;
-}
-
-.ms-Callout-title {
-  margin: 0;
-  @include ms-font-xl;
-  color: $ms-color-neutralPrimary;
-  font-weight: $ms-font-weight-semilight;
-}
-
-.ms-Callout-subText {
-  margin: 0;
-  @include ms-font-s;
-  color: $ms-color-neutralPrimary;
-  font-weight: $ms-font-weight-semilight;
-}
-
 .ms-Callout-beak {
   @include calloutBeak;
 }
