@@ -232,7 +232,9 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     if (item.onRender) {
       return item.onRender(item);
     }
-    if (item.href) {
+
+    // If the item is disabled then it should render as the button for proper styling.
+    if (item.href && !item.isDisabled) {
       return this._renderAnchorMenuItem(item, index, hasCheckmarks, hasIcons);
     }
     return React.createElement(
@@ -261,7 +263,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
       <div>
         <a href={ item.href }
           className='ms-ContextualMenu-link'
-          disabled={ item.isDisabled }
           role='menuitem'
           onClick={ this._onAnchorClick.bind(this, item) }>
           { (hasIcons) ? (
