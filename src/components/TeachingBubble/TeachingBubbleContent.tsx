@@ -63,7 +63,6 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
       );
     }
 
-    // @TODO support passing through children unless this prop is present
     if (this.props.children) {
       bodyContent = (
         <div className='ms-TeachingBubble-body'>
@@ -86,7 +85,7 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
     if (hasCloseIcon) {
       closeButton = (
         <Button
-          className='ms-TeachingBubble-button'
+          className='ms-TeachingBubble-closebutton'
           buttonType={ ButtonType.icon }
           icon='Cancel'
           rootProps={ { title: closeButtonAriaLabel } }
