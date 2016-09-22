@@ -56,7 +56,7 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
           </Highlight>
         </div>
 
-        <div className={ css('ExampleCard-example', { ' is-right-aligned': (isRightAligned) }) }>
+        <div className={ css('ExampleCard-example', { ' is-right-aligned': (isRightAligned) }) } data-is-scrollable='true'>
           { children }
         </div>
 
