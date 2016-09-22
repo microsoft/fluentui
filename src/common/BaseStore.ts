@@ -1,4 +1,5 @@
 import { ISubscribable } from './ISubscribable';
+import { IDisposable } from './IDisposable';
 
 let _instanceId = 0;
 
@@ -11,12 +12,12 @@ export class BaseStore implements ISubscribable {
     this._callbacks = {};
   }
 
-  public subscribe(onChange: () => void): () => void {
+  public subscribe(onChange: () => void): IDisposable {
     let id = _instanceId++;
 
     this._callbacks[id] = onChange;
 
-    return () => delete this._callbacks[id];
+    return { dispose: () => delete this._callbacks[id] };
   }
 
   protected emitChange() {

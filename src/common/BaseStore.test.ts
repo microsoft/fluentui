@@ -22,9 +22,9 @@ describe('BaseStore', () => {
   it('can unsubscribe', () => {
     let test = new TestStore();
     let hasChanged = false;
-    let unsubscribe = test.subscribe(() => hasChanged = true);
+    let disposable = test.subscribe(() => hasChanged = true);
 
-    unsubscribe();
+    disposable.dispose();
     test.doThings();
 
     expect(hasChanged).to.be.false;

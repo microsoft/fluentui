@@ -12,7 +12,7 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
 
   private __async: Async;
   private __events: EventGroup;
-  private __disposables: (IDisposable | (() => void))[];
+  private __disposables: IDisposable[];
   private __resolves: { [ name: string ]: (ref: any) => any };
 
   /**
@@ -48,11 +48,9 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
   public componentWillUnmount() {
     if (this.__disposables) {
       for (let i = 0, len = this._disposables.length; i < len; i++) {
-        let disposable = this._disposables[i] as any;
+        let disposable = this.__disposables[i];
 
-        if (typeof disposable === 'function') {
-          disposable();
-        } else if (disposable.dispose) {
+        if (disposable.dispose) {
           disposable.dispose();
         }
       }
@@ -69,7 +67,7 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
   }
 
   /** Allows subclasses to push things to this._disposables to be auto disposed. */
-  protected get _disposables(): (IDisposable | (() => void))[] {
+  protected get _disposables(): IDisposable[] {
     if (!this.__disposables) {
       this.__disposables = [];
     }
