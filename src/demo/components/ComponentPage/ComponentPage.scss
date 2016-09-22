@@ -64,6 +64,17 @@ $dontColor: #A61E22;
     margin-top: 1em;
     margin-bottom: 1em;
   }
+
+  ul {
+    padding-left: 18px;
+  }
+
+  li {
+    @include ms-font-m;
+    line-height: $ms-font-size-xl;
+    list-style: disc;
+    margin-bottom: 16px;
+  }
 }
 
 .ComponentPage-related {
