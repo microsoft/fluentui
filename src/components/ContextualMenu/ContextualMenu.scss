@@ -49,6 +49,7 @@ $ContextualMenu-iconWidth: 14px;
   }
   &[disabled] {
     background: $ms-color-neutralTertiaryAlt;
+    cursor: default;
   }
 
   .is-focusVisible &:focus {
