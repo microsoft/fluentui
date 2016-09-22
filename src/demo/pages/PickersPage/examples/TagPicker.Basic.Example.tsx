@@ -31,7 +31,7 @@ export class TagPickerBasicExample extends React.Component<{}, {}> {
         pickerSuggestionsProps={
           {
             suggestionsHeaderText: 'Suggested Tags',
-            noResultsFoundText: 'No results found'
+            noResultsFoundText: 'No Color Tags Found'
           }
         }
         />

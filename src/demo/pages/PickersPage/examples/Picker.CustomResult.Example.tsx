@@ -319,8 +319,8 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
         getTextFromItem={(props: any) => props.documentTitleProps.title}
         pickerSuggestionsProps={
           {
-            suggestionsHeaderText: 'Suggested People',
-            noResultsFoundText: 'No results found',
+            suggestionsHeaderText: 'Suggested Documents',
+            noResultsFoundText: 'No Documents Found',
             suggestionsItemClassName: 'ms-DocumentPicker-bigSuggestion'
           }
         }
