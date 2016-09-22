@@ -15,9 +15,9 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const TagPickerExampleCode = require('./examples/TagPicker.Basic.Example');
+const TagPickerExampleCode = require('./examples/TagPicker.Basic.Example.tsx');
 const PeoplePickerTypesExampleCode = require('./examples/PeoplePicker.Types.Example.tsx');
-const PickerCustomResultExampleCode = require('./examples/Picker.CustomResult.Example');
+const PickerCustomResultExampleCode = require('./examples/Picker.CustomResult.Example.tsx');
 
 export class PickersPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -34,33 +34,15 @@ export class PickersPage extends React.Component<IComponentDemoPageProps, any> {
         componentName='PickersExample'
         exampleCards={
           [
-            <div className='PeoplePickerExample'>
-              <h1 className='ms-font-xxl'> TagPicker </h1>
-              <div>
-                <span> TagPickers are used to pick tags.</span>
-              </div>
-              <h2 className='ms-font-xl'> Examples </h2>
               <ExampleCard title='TagPicker' code={ TagPickerExampleCode }>
                 <TagPickerBasicExample />
-              </ExampleCard>
-              <h1 className='ms-font-xxl'> PeoplePicker </h1>
-              <div>
-                <Link target='_blank' href='http://dev.office.com/fabric/components/peoplepickers'> PeoplePickers </Link>
-                <span> are used to pick recipients.</span>
-              </div>
-              <h2 className='ms-font-xl'> Examples </h2>
+              </ExampleCard>,
               <ExampleCard title='People Pickers' code={ PeoplePickerTypesExampleCode }>
                 <PeoplePickerTypesExample />
-              </ExampleCard>
-              <h1 className='ms-font-xxl'> Custom Pickers </h1>
-              <div>
-                <span> Pickers can be expanded to display almost anything</span>
-              </div>
-              <h2 className='ms-font-xl'> Examples </h2>
+              </ExampleCard>,
               <ExampleCard title='Document Picker' code={ PickerCustomResultExampleCode }>
                 <PickerCustomResultExample />
               </ExampleCard>
-            </div>
           ]
         }
         propertiesTables={
