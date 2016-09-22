@@ -95,6 +95,8 @@ a.ms-ContextualMenu-link {
 .ms-ContextualMenu-linkText {
   padding: 0 4px;
   display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
 }
 
 .ms-Icon.ms-ContextualMenu-submenuChevron {
