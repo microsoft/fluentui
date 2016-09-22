@@ -21,7 +21,7 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
       beakWidth: 16,
       gapSpace: 0,
       setInitialFocus: true,
-      doNotLayer: true,
+      doNotLayer: false,
       directionalHint: DirectionalHint.rightCenter
     }
   };
@@ -44,7 +44,7 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
           targetElement={ targetElement }
           {...calloutProps}
         >
-        <TeachingBubbleContent { ...this.props }/>
+          <TeachingBubbleContent { ...this.props }/>
         </Callout>
     );
   }

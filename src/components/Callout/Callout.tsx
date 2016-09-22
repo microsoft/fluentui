@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { ICalloutProps, ICalloutState, CalloutContent } from './index';
+import { ICalloutProps } from './Callout.Props';
+import { ICalloutState, CalloutContent } from './CalloutContent';
 import { Layer } from '../../Layer';
 
 export class Callout extends React.Component<ICalloutProps, ICalloutState> {

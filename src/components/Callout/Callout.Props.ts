@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Callout, CalloutContent } from './index';
+import { Callout } from './Callout';
+import { CalloutContent } from './CalloutContent';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IPositionProps } from '../../utilities/positioning';
 

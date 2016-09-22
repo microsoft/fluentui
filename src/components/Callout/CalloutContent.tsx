@@ -1,16 +1,18 @@
+/* tslint:disable:no-unused-variable */
 import * as React from 'react';
+/* tslint:enable:no-unused-variable */
 import { ICalloutProps } from './Callout.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   autobind,
   css,
-  EventGroup,
   getRTL,
   elementContains
 } from '../../Utilities';
 import { getRelativePositions, IPositionInfo } from '../../utilities/positioning';
 import { focusFirstChild } from '../../utilities/focus';
 import { Popup } from '../Popup/index';
+import { BaseComponent } from '../../common/BaseComponent';
 import './Callout.scss';
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
@@ -22,7 +24,7 @@ export interface ICalloutState {
   calloutElementRect?: ClientRect;
 }
 
-export class CalloutContent extends React.Component<ICalloutProps, ICalloutState> {
+export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> {
 
   public static defaultProps = {
     isBeakVisible: true,
@@ -35,7 +37,6 @@ export class CalloutContent extends React.Component<ICalloutProps, ICalloutState
   private _didSetInitialFocus: boolean;
   private _hostElement: HTMLDivElement;
   private _calloutElement: HTMLDivElement;
-  private _events: EventGroup;
 
   constructor(props: ICalloutProps) {
     super(props);
@@ -46,8 +47,6 @@ export class CalloutContent extends React.Component<ICalloutProps, ICalloutState
       slideDirectionalClassName: null,
       calloutElementRect: null
     };
-
-    this._events = new EventGroup(this);
   }
 
   public componentDidUpdate() {
@@ -59,19 +58,15 @@ export class CalloutContent extends React.Component<ICalloutProps, ICalloutState
     this._onComponentDidMount();
   }
 
-  public componentWillUnmount() {
-    this._events.dispose();
-  }
-
   public render() {
     let { className, targetElement, isBeakVisible, beakStyle, children } = this.props;
     let { positions, slideDirectionalClassName } = this.state;
     let content = (
-      <div ref={ (host: HTMLDivElement) => this._hostElement = host } className={ 'ms-Callout-container' }>
+      <div ref={ this._resolveRef('_hostElement') } className={ 'ms-Callout-container' }>
         <div
           className={ css('ms-Callout', className, slideDirectionalClassName ? `ms-u-${ slideDirectionalClassName }` : '') }
           style={ ((positions) ? positions.callout : OFF_SCREEN_POSITION) }
-          ref={ (callout: HTMLDivElement) => this._calloutElement = callout }
+          ref={ this._resolveRef('_calloutElement') }
           >
           { isBeakVisible && targetElement ? (<div className={ beakStyle }  style={ ((positions) ? positions.beak : BEAK_ORIGIN_POSITION) } />) : (null) }
           <div className='ms-Callout-beakCurtain' />

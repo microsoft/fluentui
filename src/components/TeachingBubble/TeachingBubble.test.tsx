@@ -11,7 +11,7 @@ import { TeachingBubbleContent } from './index';
 
 describe('TeachingBubble', () => {
 
-  // <Layer> compoents will lead ReactDOM.findDOMNode(component) return null, so the test is based on the actual teaching bubble content.
+  // <Layer> components will lead ReactDOM.findDOMNode(test_component) return null, so the test is based on the teaching bubble content.
   it('renders a label', () => {
     let component = ReactTestUtils.renderIntoDocument(
       <TeachingBubbleContent
