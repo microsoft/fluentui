@@ -329,10 +329,10 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
   }
 
   private _onFilterChanged(filterText: string, items: IFullDocumentCardProps[]) {
-    return filterText ? data.filter(item => item.documentTitleProps.title.toLowerCase().indexOf(filterText.toLowerCase()) === 0).filter(item => !this._listContainsPersona(item, items)) : [];
+    return filterText ? data.filter(item => item.documentTitleProps.title.toLowerCase().indexOf(filterText.toLowerCase()) === 0).filter(item => !this._listContainsDocument(item, items)) : [];
   }
 
-  private _listContainsPersona(document: IFullDocumentCardProps, items: IFullDocumentCardProps[]) {
+  private _listContainsDocument(document: IFullDocumentCardProps, items: IFullDocumentCardProps[]) {
     if (!items || !items.length || items.length === 0) {
       return false;
     }

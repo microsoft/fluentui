@@ -26,13 +26,26 @@ export class TagPickerBasicExample extends React.Component<{}, {}> {
   public render() {
     return (
       <TagPicker
-        onResolveSuggestions={ this._onResolveSuggestions }
-        getTextFromItem= {(item: any) => {return item.name;}}
-      />
+        onResolveSuggestions={ this._onFilterChanged.bind(this) }
+        getTextFromItem= {(item: any) => { return item.name; } }
+        pickerSuggestionsProps={
+          {
+            suggestionsHeaderText: 'Suggested Tags',
+            noResultsFoundText: 'No results found'
+          }
+        }
+        />
     );
   }
 
-  private _onResolveSuggestions(text) {
-    return text && text !== '' ? _testTags.filter(color => color.name.indexOf(text) === 0) : [];
+  private _onFilterChanged(filterText: string, tagList: { key: string, name: string }[]) {
+    return filterText ? _testTags.filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0).filter(item => !this._listContainsDocument(item, tagList)) : [];
+  }
+
+  private _listContainsDocument(tag: { key: string, name: string }, tagList: { key: string, name: string }[]) {
+    if (!tagList || !tagList.length || tagList.length === 0) {
+      return false;
+    }
+    return tagList.filter(compareTag => compareTag.key === tag.key).length > 0;
   }
 }
