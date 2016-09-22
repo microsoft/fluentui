@@ -1,0 +1,50 @@
+@import '../../../common/common';
+
+.ms-TagItem {
+  @include focus-border();
+
+  flex-shrink: 0;
+  vertical-align: top;
+  background: $ms-color-neutralLighter;
+  margin: 1px;
+  height: 28px;
+  line-height: 28px;
+  vertical-align: top;
+  white-space: nowrap;
+  cursor: default;
+  user-select: none;
+
+  &:hover {
+    background: $ms-color-neutralLight;
+  }
+
+  &.is-selected {
+    background: $ms-color-neutralQuaternary;
+    &:hover {
+      background: $ms-color-neutralQuaternaryAlt;
+    }
+  }
+}
+
+.ms-TagItem-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  display: inline-block;
+  min-width: 100px;
+  margin: 0 8px;
+}
+
+.ms-TagItem-close {
+  cursor: pointer;
+
+  color: $ms-color-neutralSecondary;
+
+  font-size: $ms-font-size-s;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  width: 30px;
+  height: 100%;
+}

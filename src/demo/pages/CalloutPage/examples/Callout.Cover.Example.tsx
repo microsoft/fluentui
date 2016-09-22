@@ -71,13 +71,13 @@ export class CalloutCoverExample extends React.Component<any, ICalloutCoverExamp
           isBeakVisible={ false }
           gapSpace={ 0 }
          >
-            <div className='ms-Callout-header'>
-              <p className='ms-Callout-title'>
+            <div className='ms-CalloutExample-header'>
+              <p className='ms-CalloutExample-title'>
                 I'm covering the target!
               </p>
             </div>
-            <div className='ms-Callout-inner'>
-              <div className='ms-Callout-content'>
+            <div className='ms-CalloutExample-inner'>
+              <div className='ms-CalloutExample-content'>
               <Button onClick={ this._onShowMenuClicked }> Click to dismiss </Button>
               </div>
             </div>

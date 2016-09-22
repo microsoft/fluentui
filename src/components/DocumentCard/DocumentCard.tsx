@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IDocumentCardProps, DocumentCardType } from './DocumentCard.Props';
 import { css } from '../../utilities/css';
 import './DocumentCard.scss';
+import { autobind } from '../../utilities/autobind';
 
 export class DocumentCard extends React.Component<IDocumentCardProps, any> {
   public static defaultProps: IDocumentCardProps = {
@@ -10,12 +11,7 @@ export class DocumentCard extends React.Component<IDocumentCardProps, any> {
 
   public render() {
     let { onClick, onClickHref, children, className, type, accentColor } = this.props;
-    // If no onClickFunction was provided and we do have an onClickURL, create a function from it.
-    if (!onClick && onClickHref) {
-      onClick = () => {
-        window.location.href = onClickHref;
-      };
-    }
+    let actionable = (onClick || onClickHref) ? true : false;
 
     // Override the border color if an accent color was provided (compact card only)
     let style;
@@ -31,16 +27,30 @@ export class DocumentCard extends React.Component<IDocumentCardProps, any> {
           css(
             'ms-DocumentCard',
             {
-              'ms-DocumentCard--actionable': onClick ? true : false,
+              'ms-DocumentCard--actionable': actionable,
               'ms-DocumentCard--compact': type === DocumentCardType.compact ? true : false
             },
             className
           )
         }
-        onClick={ onClick }
+        onClick={ actionable ? this._onClick : null }
         style={ style }>
         { children }
       </div>
     );
+  }
+
+  @autobind
+  private _onClick(ev: React.MouseEvent): void {
+    let { onClick, onClickHref } = this.props;
+
+    if (onClick) {
+      onClick(ev);
+    } else if (!onClick && onClickHref) {
+      // If no onClick Function was provided and we do have an onClickHref, redirect to the onClickHref
+      window.location.href = onClickHref;
+      ev.preventDefault();
+      ev.stopPropagation();
+    }
   }
 }

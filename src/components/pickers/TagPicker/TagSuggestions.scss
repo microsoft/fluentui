@@ -1,0 +1,36 @@
+@import '../../../common/common';
+
+.ms-TagSuggestions {
+  min-width: 200px;
+  box-sizing: border-box;
+}
+
+.ms-TagSuggestions-title,
+.ms-TagSuggestions-none,
+.ms-TagSuggestions-item {
+  height: 36px;
+  line-height: 36px;
+  padding: 0 16px;
+}
+
+.ms-TagSuggestions-title {
+  border-bottom: 1px solid $ms-color-neutralLighter;
+}
+
+.ms-TagSuggestions-item {
+  &:hover {
+    background: $ms-color-neutralLight;
+  }
+
+  &.is-suggested {
+    background: $ms-color-neutralQuaternary;
+    &:hover {
+      background: $ms-color-neutralQuaternaryAlt;
+    }
+  }
+}
+
+.ms-TagSuggestions-none {
+  text-align: center;
+  color: $ms-color-neutralTertiary;
+}
