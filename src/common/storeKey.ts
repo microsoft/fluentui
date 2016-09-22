@@ -1,5 +1,8 @@
+import { getId } from '../Utilities';
+
 export interface IStoreKey<T> {
   name: string;
+  id: string;
 }
 
 /**
@@ -25,4 +28,4 @@ export interface IStoreKey<T> {
  * to the selectionKey reference, and you will get TypeScript errors by referring to selection
  * member that aren't in that interface.
  */
-export const storeKey = <T>(name: string) => ({ name }) as IStoreKey<T>;
+export const storeKey = <T>(name: string) => ({ name, id: getId(name) }) as IStoreKey<T>;
