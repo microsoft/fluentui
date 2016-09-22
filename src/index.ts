@@ -40,6 +40,7 @@ export * from './ProgressIndicator';
 export * from './SearchBox';
 export * from './Slider';
 export * from './Spinner';
+export * from './TeachingBubble';
 export * from './TextField';
 export * from './Toggle';
 export * from './Utilities';

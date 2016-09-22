@@ -56,7 +56,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
 
   public render() {
     let { isCalloutVisible, isBeakVisible, directionalHint, gapSpace } = this.state;
-    // ms-Callout-smallbeak is used in this directional example to reflect all the positions. Large beak will disable some position to avoid beak over the callout edge.
+    //  ms-Callout-smallbeak is used in this directional example to reflect all the positions. Large beak will disable some position to avoid beak over the callout edge.
     return (
       <div className='ms-CalloutExample'>
         <div className='ms-CalloutExample-configArea'>
@@ -81,14 +81,14 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
             onDismiss={ this._onDismiss }
             directionalHint={ directionalHint }
             >
-            <div className='ms-Callout-header'>
-              <p className='ms-Callout-title'>
+            <div className='ms-CalloutExample-header'>
+              <p className='ms-CalloutExample-title'>
                 All of your favorite people
               </p>
             </div>
-            <div className='ms-Callout-inner'>
-              <div className='ms-Callout-content'>
-                <p className='ms-Callout-subText'>
+            <div className='ms-CalloutExample-inner'>
+              <div className='ms-CalloutExample-content'>
+                <p className='ms-CalloutExample-subText'>
                   Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
                 </p>
               </div>

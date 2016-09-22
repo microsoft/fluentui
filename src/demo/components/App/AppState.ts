@@ -36,6 +36,7 @@ import { SearchBoxPage } from '../../pages/SearchBoxPage/SearchBoxPage';
 import { SelectionPage } from '../../pages/SelectionPage/SelectionPage';
 import { SliderPage } from '../../pages/SliderPage/SliderPage';
 import { SpinnerPage } from '../../pages/SpinnerPage/SpinnerPage';
+import { TeachingBubblePage } from '../../pages/TeachingBubblePage/TeachingBubblePage';
 import { TextFieldPage } from '../../pages/TextFieldPage/TextFieldPage';
 import { TogglePage } from '../../pages/TogglePage/TogglePage';
 import { ThemePage } from '../../pages/ThemePage/ThemePage';
@@ -247,6 +248,12 @@ export const AppState: IAppState = {
           name: 'Spinner',
           status: ExampleStatus.beta,
           url: '#/examples/spinner'
+        },
+        {
+          component: TeachingBubblePage,
+          name: 'TeachingBubble',
+          status: ExampleStatus.beta,
+          url: '#/examples/teachingbubble'
         },
         {
           component: TextFieldPage,
