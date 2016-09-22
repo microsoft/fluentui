@@ -17,5 +17,6 @@ reviewers:
   - antonlabunets
   - cschlechty
   - atneik
+  - ThomasMichon
   name: pullapprove
   required: 1
