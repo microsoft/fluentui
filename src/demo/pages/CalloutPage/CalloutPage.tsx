@@ -1,8 +1,5 @@
 import * as React from 'react';
 import {
-  Link
-} from '../../../index';
-import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
@@ -65,8 +62,11 @@ export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
 
             <p>Use a Callout for displaying additional contextual information about an item on the screen. Unlike Tooltips, Callouts also have a tail that identifies their source. A common use for Callout is the introduction of a new feature or capability of an app or site. Alternate usages include pairing the Callout with a button or clickable element for on-demand presentation of additional or supporting content.</p>
 
-            <p>Real-world examples of this implementation can be seen in administrative interfaces where a particularly difficult-to-understand concept is paired with the ms-Icon--info "i" icon. In this example, Callout - with its tip text - is opened when the user clicks on or hovers over the icon.</p> View <Link target='_blank' href='http://dev.office.com/fabric/components/callout'>Callout</Link> on our website.
+            <p>Real-world examples of this implementation can be seen in administrative interfaces where a particularly difficult-to-understand concept is paired with the ms-Icon--info "i" icon. In this example, Callout - with its tip text - is opened when the user clicks on or hovers over the icon.</p>
           </div>
+        }
+        related={
+          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Callout.md'>Fabric JS</a>
         }
         bestPractices={
           <div></div>
