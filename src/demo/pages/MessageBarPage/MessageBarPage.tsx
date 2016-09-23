@@ -26,19 +26,17 @@ export class MessageBarPage extends React.Component<IComponentDemoPageProps, any
         title='MessageBar'
         componentName='MessageBarExample'
         exampleCards={
-          [
-            <ExampleCard
-              title='Various MessageBar types'
-              code={ MessageBarBasicExampleCode }>
-              <MessageBarBasicExample />
-            </ExampleCard>
-          ]
+          <ExampleCard
+            title='Various MessageBar types'
+            code={ MessageBarBasicExampleCode }>
+            <MessageBarBasicExample />
+          </ExampleCard>
         }
         propertiesTables={
-          [
+          <div>
             <PropertiesTableSet componentName='MessageBar' />,
             <p>Besides the above properties, the <code>MessageBar</code> component accepts all properties that the React <code>MessageBar</code> and <code>a</code> components accept.</p>
-          ]
+          </div>
         }
         overview={
           <div>

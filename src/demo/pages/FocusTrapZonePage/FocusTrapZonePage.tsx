@@ -34,22 +34,22 @@ export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, 
         title='FocusTrapZone'
         componentName='FocusTrapZoneExample'
         exampleCards={
-          [
+          <div>
             <ExampleCard title='Simple Box' code={ FocusTrapZoneBoxExampleCode }>
               <FocusTrapZoneBoxExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Simple Box with focus on custom focusable element' code={ FocusTrapZoneBoxExampleWithFocusableItemCode }>
                 <FocusTrapZoneBoxExampleWithFocusableItem />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Simple Box with Clicking outside Trap Zone enabled' code={ FocusTrapZoneBoxClickExampleCode }>
               <FocusTrapZoneBoxClickExample/>
-            </ExampleCard>,
-          ]
+            </ExampleCard>
+          </div>
         }
         propertiesTables={
-          [
+          <div>
             <PropertiesTableSet componentName='FocusTrapZone' />
-          ]
+          </div>
         }
         overview={
           <div>

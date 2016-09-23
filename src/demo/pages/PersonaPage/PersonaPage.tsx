@@ -28,19 +28,17 @@ export class PersonaPage extends React.Component<IComponentDemoPageProps, any> {
         title='Persona'
         componentName='PersonaExample'
         exampleCards={
-          [
+          <div>
             <ExampleCard title='Persona in various sizes' code={ PersonaBasicExampleCode }>
               <PersonaBasicExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Persona in initials' code={ PersonaInitialsExampleCode }>
               <PersonaInitialsExample />
             </ExampleCard>
-          ]
+          </div>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='Persona' />
-          ]
+          <PropertiesTableSet componentName='Persona' />
         }
         overview={
           <div>

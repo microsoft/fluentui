@@ -25,16 +25,12 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
         title='ProgressIndicator'
         componentName='ProgressIndicatorExample'
         exampleCards={
-          [
-            <ExampleCard title='ProgressIndicator' code={ ProgressIndicatorBasicExampleCode }>
-              <ProgressIndicatorBasicExample />
-            </ExampleCard>
-          ]
+          <ExampleCard title='ProgressIndicator' code={ ProgressIndicatorBasicExampleCode }>
+            <ProgressIndicatorBasicExample />
+          </ExampleCard>
         }
         propertiesTables={
-          [
             <PropertiesTableSet componentName='ProgressIndicator' />
-          ]
         }
         overview={
           <div>

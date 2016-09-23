@@ -26,16 +26,12 @@ export class SliderPage extends React.Component<IComponentDemoPageProps, any> {
         title='Slider'
         componentName='SliderExample'
         exampleCards={
-          [
-            <ExampleCard title='Slider' code={ SliderBasicExampleCode }>
-              <SliderBasicExample />
-            </ExampleCard>
-          ]
+          <ExampleCard title='Slider' code={ SliderBasicExampleCode }>
+            <SliderBasicExample />
+          </ExampleCard>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='Slider' />
-          ]
+          <PropertiesTableSet componentName='Slider' />
         }
         overview={
           <div>

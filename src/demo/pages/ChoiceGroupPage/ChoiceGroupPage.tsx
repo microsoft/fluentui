@@ -26,16 +26,12 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, an
         title='ChoiceGroup'
         componentName='ChoiceGroupExample'
         exampleCards={
-          [
-            <ExampleCard title='ChoiceGroups' code={ ChoiceGroupBasicExampleCode }>
-              <ChoiceGroupBasicExample />
-            </ExampleCard>
-          ]
+          <ExampleCard title='ChoiceGroups' code={ ChoiceGroupBasicExampleCode }>
+            <ChoiceGroupBasicExample />
+          </ExampleCard>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='ChoiceGroup' />
-          ]
+          <PropertiesTableSet componentName='ChoiceGroup' />
         }
         overview={
           <div>

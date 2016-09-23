@@ -41,22 +41,20 @@ export class ListPage extends React.Component<IComponentDemoPageProps, any> {
         title='List'
         componentName='ListExample'
         exampleCards={
-          [
+          <div>
             <ExampleCard title='List of 5000 grid items' isOptIn={ true } code={ ListGridExampleCode }>
               <ListGridExample items={ _cachedItems } />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='List of 5000 variable height items' isOptIn={ true } code={ ListBasicExampleCode }>
               <ListBasicExample items={ _cachedItems } />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Fixed list of 5000 email tiles' isOptIn={ true } code={ ListMailExampleCode }>
               <ListMailExample items={ _cachedItems } />
             </ExampleCard>
-          ]
+          </div>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='List' />
-          ]
+          <PropertiesTableSet componentName='List' />
         }
         overview={
           <div>

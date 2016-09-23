@@ -29,19 +29,17 @@ export class LayerPage extends React.Component<IComponentDemoPageProps, any> {
         title='Layer'
         componentName='LayerExample'
         exampleCards={
-          [
+          <div>
             <ExampleCard title='Basic layered content' code={ LayerBasicExampleCode }>
               <LayerBasicExample />
             </ExampleCard>,
             <ExampleCard title='Using LayerHost to control projection' code={ LayerHostedExampleCode }>
               <LayerHostedExample />
             </ExampleCard>
-          ]
+          </div>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='Layer' />
-          ]
+          <PropertiesTableSet componentName='Layer' />
         }
         overview={
           <div>

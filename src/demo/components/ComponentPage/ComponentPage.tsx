@@ -8,8 +8,8 @@ import { css } from '../../../utilities/css';
 export interface IComponentPageProps {
   title: string;
   componentName: string;
-  exampleCards: Array<JSX.Element>;
-  propertiesTables?: Array<JSX.Element>;
+  exampleCards: JSX.Element;
+  propertiesTables?: JSX.Element;
   bestPractices?: JSX.Element;
   dos?: JSX.Element;
   donts?: JSX.Element;

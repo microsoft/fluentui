@@ -26,16 +26,12 @@ export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> 
         title='Checkbox'
         componentName='CheckboxExample'
         exampleCards={
-          [
-            <ExampleCard title='Checkboxes' code={ CheckboxBasicExampleCode }>
-              <CheckboxBasicExample />
-            </ExampleCard>
-          ]
+          <ExampleCard title='Checkboxes' code={ CheckboxBasicExampleCode }>
+            <CheckboxBasicExample />
+          </ExampleCard>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='Checkbox' />
-          ]
+          <PropertiesTableSet componentName='Checkbox' />
         }
         overview={
           <div>
