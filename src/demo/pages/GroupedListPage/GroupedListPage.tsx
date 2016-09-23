@@ -28,19 +28,17 @@ export class GroupedListPage extends React.Component<IComponentDemoPageProps, an
         title='GroupedList'
         componentName='GroupedListExample'
         exampleCards={
-          [
+          <div>
             <ExampleCard title='GroupedList basic example' isOptIn={ true } code={ GroupedListBasicExampleCode }>
               <GroupedListBasicExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='GroupedList example with custom header and footer' isOptIn={ true } code={ GroupedListCustomExampleCode }>
               <GroupedListCustomExample />
             </ExampleCard>
-          ]
+          </div>
         }
         propertiesTables={
-          [
             <PropertiesTableSet componentName='GroupedList' />
-          ]
         }
         overview={
           <p>Allows you to render a set of items as multiple lists with various grouping properties.</p>

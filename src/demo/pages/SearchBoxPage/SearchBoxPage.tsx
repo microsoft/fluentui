@@ -28,19 +28,19 @@ export class SearchBoxPage extends React.Component<IComponentDemoPageProps, any>
         title='SearchBox'
         componentName='SearchBoxExample'
         exampleCards={
-          [
+          <div>
             <ExampleCard title='SearchBox' code={ SearchBoxSmallExampleCode }>
               <SearchBoxSmallExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='SearchBox - No Parent Container' code={ SearchBoxFullSizeExampleCode }>
               <SearchBoxFullSizeExample />
             </ExampleCard>
-          ]
+          </div>
         }
         propertiesTables={
-          [
+          <div>
             <PropertiesTableSet componentName='SearchBox' />
-          ]
+          </div>
         }
         overview={
           <div>

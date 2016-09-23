@@ -33,26 +33,26 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
         title='ContextualMenu'
         componentName='ContextualMenuExample'
         exampleCards={
-          [
+          <div>
             <ExampleCard title='ContextualMenu' code= { ContextualMenuBasicExampleCode }>
               <ContextualMenuBasicExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='ContextualMenu checked menus example' code={ ContextualMenuCheckmarksExampleCode }>
               <ContextualMenuCheckmarksExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='ContextualMenu beak/direction test' code={ ContextualMenuDirectionalExampleCode }>
               <ContextualMenuDirectionalExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='ContextualMenu customization example' code={ ContextualMenuCustomizationExampleCode }>
               <ContextualMenuCustomizationExample />
-            </ExampleCard>,
-          ]
+            </ExampleCard>
+          </div>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='ContextualMenu' />,
+          <div>
+            <PropertiesTableSet componentName='ContextualMenu' />
             <PropertiesTableSet componentName='Callout' renderOnly={ ['DirectionalHint'] } />
-          ]
+          </div>
         }
         overview={
           <div>

@@ -30,22 +30,20 @@ export class NavPage extends React.Component<IComponentDemoPageProps, any> {
         title='Nav'
         componentName='NavExample'
         exampleCards={
-          [
+          <div>
             <ExampleCard title='Basic Nav bar with sample links' code={ NavBasicExampleCode }>
               <NavBasicExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Navigation menu used in this Fabric React demo app' code={ NavFabricDemoAppExampleCode }>
               <NavFabricDemoAppExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Nested navigation menu (without group header)' code={ NavNestedExampleCode }>
               <NavNestedExample />
             </ExampleCard>
-          ]
+          </div>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='Nav' />
-          ]
+          <PropertiesTableSet componentName='Nav' />
         }
         overview={
           <div>

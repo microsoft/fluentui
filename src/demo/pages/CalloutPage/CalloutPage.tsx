@@ -35,26 +35,26 @@ export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
         title='Callout'
         componentName='CalloutExample'
         exampleCards={
-          [
+          <div>
             <ExampleCard title='Simple callout' code={ CalloutBasicExampleCode }>
               <CalloutBasicExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Nested callout... Callout with a commandbar with a sub menu' code={ CalloutNestedExampleCode }>
               <CalloutNestedExample { ...cmdBarParamsTextAndIcons }/>
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Callout directional example' code={ CalloutDirectionalExampleCode }>
               <CalloutDirectionalExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Callout cover example' code={ CalloutCoverExampleCode }>
               <CalloutCoverExample />
             </ExampleCard>
-          ]
+          </div>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='Callout' />,
+          <div>
+            <PropertiesTableSet componentName='Callout' />
             <p>Besides the above properties, the <code>Callout</code> component accepts all properties that the React <code>button</code> and <code>a</code> components accept.</p>
-          ]
+          </div>
         }
         overview={
           <div>

@@ -38,35 +38,35 @@ export class PivotPage extends React.Component<IComponentDemoPageProps, any> {
         title='Pivot'
         componentName='PivotExample'
         exampleCards={
-          [
+          <div>
             <ExampleCard title='Basic example' code={ PivotBasicExampleCode }>
               <PivotBasicExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Large link size' code={ PivotLargeExampleCode }>
               <PivotLargeExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Links of tab style' code={ PivotTabsExampleCode }>
               <PivotTabsExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Links of large tab style' code={ PivotTabsLargesExampleCode }>
               <PivotTabsLargeExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Trigger onchange event' code={ PivotOnChangeExampleCode }>
               <PivotOnChangeExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Rendering nested components within the Pivot' code={ PivotFabricExampleCode }>
               <PivotFabricExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Show/Hide pivot item' code={ PivotRemoveExampleCode }>
               <PivotRemoveExample />
             </ExampleCard>
-          ]
+          </div>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='Pivot' />,
+          <div>
+            <PropertiesTableSet componentName='Pivot' />
             <PropertiesTableSet componentPath='components/Pivot/' componentName='PivotItem' />
-          ]
+          </div>
         }
         overview={
           <div>

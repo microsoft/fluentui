@@ -26,16 +26,12 @@ export class LinkPage extends React.Component<IComponentDemoPageProps, any> {
         title='Link'
         componentName='LinkExample'
         exampleCards={
-          [
-            <ExampleCard title='Link' code={ LinkBasicExampleCode }>
-              <LinkBasicExample />
-            </ExampleCard>
-          ]
+          <ExampleCard title='Link' code={ LinkBasicExampleCode }>
+            <LinkBasicExample />
+          </ExampleCard>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='Link' />
-          ]
+          <PropertiesTableSet componentName='Link' />
         }
         overview={
           <div>
