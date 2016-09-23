@@ -1,6 +1,6 @@
 import { DirectionalHint } from '../common/DirectionalHint';
 import Rectangle from './Rectangle';
-import { getScrollbarWidth } from './scrollUtilities';
+import { getScrollbarWidth } from './scroll';
 import { assign } from '../utilities/object';
 
 export enum RectangleEdge {

@@ -28,7 +28,7 @@ if (document && document.documentElement && !document.documentElement.getAttribu
   document.documentElement.setAttribute('dir', 'ltr');
 }
 
-export class Fabric extends React.Component<React.HTMLProps<Fabric>, IFabricState> {
+export class Fabric extends React.Component<React.HTMLProps<HTMLDivElement>, IFabricState> {
   public refs: {
     [key: string]: React.ReactInstance;
     root: HTMLElement;
