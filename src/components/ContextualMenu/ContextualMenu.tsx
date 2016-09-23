@@ -176,7 +176,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         coverTarget={ coverTarget }
         beakStyle='ms-Callout-smallbeak'
         className='ms-ContextualMenu-Callout'
-        onLayerMounted={ () => this._tryFocus(this._focusZone) }
+        setInitialFocus={ true }
         onDismiss={ this.props.onDismiss }>
         <div ref={ (host: HTMLDivElement) => this._host = host} id={ id } className={ css('ms-ContextualMenu-container', className) }>
           { (items && items.length) ? (
@@ -247,7 +247,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         onMouseLeave: this._onMouseLeave,
         onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
         disabled: item.isDisabled,
-        dataCommandKey: index,
         role: 'menuitem',
         href: item.href,
         title: item.title,
