@@ -294,12 +294,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     );
   }
 
-  private _tryFocus(focusZone: FocusZone) {
-    if (focusZone && this.props.shouldFocusOnMount) {
-      focusZone.focus();
-    }
-  }
-
   @autobind
   private _onKeyDown(ev: React.KeyboardEvent) {
     let submenuCloseKey = getRTL() ? KeyCodes.right : KeyCodes.left;
