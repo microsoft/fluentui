@@ -49,7 +49,7 @@ $ContextualMenu-iconWidth: 14px;
   }
   &.is-disabled,
   &[disabled] {
-    background: $ms-color-neutralTertiaryAlt;
+    color: $ms-color-neutralTertiaryAlt;
     cursor: default;
     pointer-events: none;
   }
