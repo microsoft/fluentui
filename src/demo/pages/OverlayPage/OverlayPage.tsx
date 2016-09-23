@@ -26,16 +26,14 @@ export class OverlayPage extends React.Component<IComponentDemoPageProps, any> {
         title='Overlay'
         componentName='OverlayExample'
         exampleCards={
-          [
-            <ExampleCard title='Overlay' code={ OverlayBasicExampleCode }>
-              <OverlayBasicExample />
-            </ExampleCard>
-          ]
+          <ExampleCard title='Overlay' code={ OverlayBasicExampleCode }>
+            <OverlayBasicExample />
+          </ExampleCard>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='Overlay' />
-          ]
+
+          <PropertiesTableSet componentName='Overlay' />
+
         }
         overview={
           <div>

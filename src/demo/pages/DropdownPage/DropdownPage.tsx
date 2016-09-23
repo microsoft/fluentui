@@ -26,16 +26,12 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, any> 
         title='Dropdown'
         componentName='DropdownExample'
         exampleCards={
-          [
-            <ExampleCard title='Dropdown' code={ DropdownBasicExampleCode }>
-              <DropdownBasicExample />
-            </ExampleCard>
-          ]
+          <ExampleCard title='Dropdown' code={ DropdownBasicExampleCode }>
+            <DropdownBasicExample />
+          </ExampleCard>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='Dropdown' />
-          ]
+          <PropertiesTableSet componentName='Dropdown' />
         }
         overview={
           <div>

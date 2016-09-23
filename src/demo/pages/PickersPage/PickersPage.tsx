@@ -33,22 +33,20 @@ export class PickersPage extends React.Component<IComponentDemoPageProps, any> {
         title='Pickers'
         componentName='PickersExample'
         exampleCards={
-          [
+          <div>
               <ExampleCard title='TagPicker' code={ TagPickerExampleCode }>
                 <TagPickerBasicExample />
-              </ExampleCard>,
+              </ExampleCard>
               <ExampleCard title='People Pickers' code={ PeoplePickerTypesExampleCode }>
                 <PeoplePickerTypesExample />
-              </ExampleCard>,
+              </ExampleCard>
               <ExampleCard title='Document Picker' code={ PickerCustomResultExampleCode }>
                 <PickerCustomResultExample />
               </ExampleCard>
-          ]
+          </div>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='BasePicker' componentPath='components/pickers/' />
-          ]
+          <PropertiesTableSet componentName='BasePicker' componentPath='components/pickers/' />
         }
         overview={
           <div>

@@ -26,16 +26,12 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, any> {
         title='Toggle'
         componentName='ToggleExample'
         exampleCards={
-          [
-            <ExampleCard title='Toggle' code={ ToggleBasicExampleCode }>
-              <ToggleBasicExample />
-            </ExampleCard>
-          ]
+          <ExampleCard title='Toggle' code={ ToggleBasicExampleCode }>
+            <ToggleBasicExample />
+          </ExampleCard>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='Toggle' />
-          ]
+          <PropertiesTableSet componentName='Toggle' />
         }
         overview={
           <div>

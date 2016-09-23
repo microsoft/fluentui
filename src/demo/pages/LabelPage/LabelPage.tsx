@@ -26,16 +26,12 @@ export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
         title='Label'
         componentName='LabelExample'
         exampleCards={
-          [
-            <ExampleCard title='Label' code={ LabelBasicExampleCode }>
-              <LabelBasicExample/>
-            </ExampleCard>
-          ]
+          <ExampleCard title='Label' code={ LabelBasicExampleCode }>
+            <LabelBasicExample/>
+          </ExampleCard>
         }
         propertiesTables={
-          [
             <PropertiesTableSet componentName='Label' />
-          ]
         }
         overview={
           <div>

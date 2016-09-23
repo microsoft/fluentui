@@ -28,19 +28,17 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, any>
         title='TextField'
         componentName='TextFieldExample'
         exampleCards={
-          [
+          <div>
             <ExampleCard title='TextField variations' code={ TextFieldBasicExampleCode }>
               <TextFieldBasicExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='TextField error message variations' code={ TextFieldErrorMessageExampleCode }>
               <TextFieldErrorMessageExample />
             </ExampleCard>
-          ]
+          </div>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='TextField' />
-          ]
+          <PropertiesTableSet componentName='TextField' />
         }
         overview={
           <div>
