@@ -24,8 +24,8 @@ export class PivotFabricExample extends React.Component<any, any> {
               <Label>Spinner Example</Label>
               <SpinnerBasicExample/>
             </PivotItem>
-            <PivotItem linkText='PersonaCard'>
-              <Label>Persona Card Example</Label>
+            <PivotItem linkText='Persona'>
+              <Label>Persona Example</Label>
               <PersonaBasicExample/>
             </PivotItem>
         </Pivot>

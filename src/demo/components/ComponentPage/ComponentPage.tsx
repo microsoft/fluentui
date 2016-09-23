@@ -3,6 +3,7 @@ import {
   Link
 } from '../../../index';
 import './ComponentPage.scss';
+import { css } from '../../../utilities/css';
 
 export interface IComponentPageProps {
   title: string;
@@ -13,8 +14,10 @@ export interface IComponentPageProps {
   dos?: JSX.Element;
   donts?: JSX.Element;
   overview: JSX.Element;
+  related?: JSX.Element;
   route: string;
   isHeaderVisible?: boolean;
+  className?: string;
 }
 
 export class ComponentPage extends React.Component<IComponentPageProps, {}> {
@@ -30,19 +33,23 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     let {
       componentName,
       exampleCards,
-      overview
+      overview,
+      className
     } = this.props;
 
     return (
-      <div className='ComponentPage'>
+      <div className={ css('ComponentPage', className) }>
         <div className={ componentName }>
           { this._pageHeader() }
           <div className='ComponentPage-body'>
             <div className='ComponentPage-overviewSection'>
-                <h2 className='ComponentPage-subHeading' id='Overview'>Overview</h2>
+              <h2 className='ComponentPage-subHeading' id='Overview'>Overview</h2>
+              <div className='ComponentPage-overviewSectionContent'>
                 <div className='ComponentPage-overview'>
                   { overview }
                 </div>
+                { this._getRelatedComponents() }
+              </div>
             </div>
             { this._getDosAndDonts() }
             <div className='ComponentPage-variantsSection'>
@@ -78,7 +85,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
 
     if (bestPractices && dos && donts) {
       links.push(
-        <div className='ComponentPage-navLink'>
+        <div className='ComponentPage-navLink' key='nav-link'>
           <Link href={ route + '#Best Practices' }>Best Practices</Link>
         </div>
       );
@@ -100,6 +107,17 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     );
   }
 
+  private _getRelatedComponents(): JSX.Element {
+    if (this.props.related) {
+      return (
+        <div className='ComponentPage-related'>
+          <span className='ComponentPage-relatedTitle'>Also available in</span>
+          { this.props.related }
+        </div>
+      );
+    }
+  }
+
   private _getPropertiesTable(): JSX.Element {
     if (this.props.propertiesTables) {
       return (
@@ -116,8 +134,8 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
 
     if (this.props.bestPractices) {
       dosAndDonts.push(
-        <div class='ComponentPage-usage' id='Best Practices'>
-          <h2 className='ComponentPage-subHeading'>Best Practices</h2>
+        <div className='ComponentPage-usage' id='Best Practices' key='best-practices'>
+          <h2 className='ComponentPage-subHeading'>Best practices</h2>
           { this.props.bestPractices }
         </div>
       );
@@ -125,13 +143,13 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
 
     if (this.props.dos && this.props.donts) {
       dosAndDonts.push(
-        <div className='ComponentPage-doSections'>
+        <div className='ComponentPage-doSections' key='do-sections'>
           <div className='ComponentPage-doSection'>
             <h3>Do</h3>
             { this.props.dos }
           </div>
-          <div className='ComponentPage-doSection ComponentPage-doNotSection'>
-            <h3>Do not</h3>
+          <div className='ComponentPage-doSection ComponentPage-doSection--dont'>
+            <h3>Don&rsquo;t</h3>
             { this.props.donts }
           </div>
         </div>

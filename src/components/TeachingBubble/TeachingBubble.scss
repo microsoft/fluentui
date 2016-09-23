@@ -1,0 +1,122 @@
+@import '../../common/common';
+
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
+//
+// Office UI Fabric
+// --------------------------------------------------
+// Teaching Bubble styles
+
+.ms-TeachingBubble {
+  display: block;
+  max-width: 364px;
+}
+
+.ms-TeachingBubble-bodycontent {
+  padding: 20px;
+}
+
+.ms-TeachingBubble-header--large:not(:last-child) {
+  margin-bottom: 14px;
+}
+
+.ms-TeachingBubble-headline {
+  margin: 0;
+  color: $ms-color-white;
+
+  .ms-TeachingBubble-header--large & {
+    @include ms-font-xxl;
+    font-weight: $ms-font-weight-light;
+  }
+  .ms-TeachingBubble-header--small & {
+    @include ms-font-m;
+    font-weight: $ms-font-weight-semibold;
+  }
+}
+
+.ms-TeachingBubble-body:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.ms-TeachingBubble-subText {
+  margin: 0;
+  font-size: $ms-font-size-m;
+  color: $ms-color-white;
+  font-weight: $ms-font-weight-semilight;
+}
+
+.ms-TeachingBubble-closebutton {
+  position: absolute;
+  right: 2px;
+  top: 0;
+  &.ms-Button--icon .ms-Icon {
+    color: $ms-color-white;
+    font-size: $ms-icon-size-s;
+    padding: 10px;
+  }
+}
+
+.ms-TeachingBubble-footer {
+  .ms-Button:not(:first-child) {
+    @include margin-left(20px);
+  }
+}
+
+// Callout Overrides
+.ms-TeachingBubble {
+  .ms-Callout-main, .ms-Callout-beak, .ms-Callout-smallbeak {
+    background: $ms-color-themePrimary;
+  }
+}
+
+//Primary button style override
+.ms-Button.ms-TeachingBubble-primaryButton {
+  background-color: $ms-color-white;
+  border-color: $ms-color-white;
+
+  .ms-Button-label {
+    @include ms-font-m;
+    color: $ms-color-themePrimary;
+  }
+
+  &:hover {
+    background-color: $ms-color-themeLighter;
+    border-color: $ms-color-themeLighter;
+  }
+
+  &:focus {
+    background-color:  $ms-color-themeLighter;
+    border-color: $ms-color-white;
+  }
+
+  &:active {
+    background-color: $ms-color-white;
+    border-color: $ms-color-white;
+  }
+}
+
+//Secondary button style override
+.ms-Button.ms-TeachingBubble-secondaryButton {
+  background-color: $ms-color-themePrimary;
+  border-color: $ms-color-white;
+
+  .ms-Button-label {
+    @include ms-font-m;
+    color: $ms-color-white;
+  }
+
+  &:hover {
+    background-color: $ms-color-themeDarkAlt;
+    border-color: $ms-color-white;
+  }
+
+  &:focus {
+    background-color: $ms-color-themeDarkAlt;
+    border-color: $ms-color-white;
+  }
+
+  &:active {
+    background-color: $ms-color-themePrimary;
+    border-color: $ms-color-white;
+  }
+}
