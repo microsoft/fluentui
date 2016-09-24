@@ -12,12 +12,12 @@ export class StoreSet {
   }
 
   public add<T extends ISubscribable>(key: IStoreKey<T>, value: T): StoreSet {
-    this._stores[key.name] = value;
+    this._stores[key.id] = value;
     return this;
   }
 
   public getStore<T extends ISubscribable>(key: IStoreKey<T>): T {
-    return this._stores[key.name];
+    return this._stores[key.id];
   }
 
   public merge(stores: StoreSet) {
