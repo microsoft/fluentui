@@ -27,29 +27,27 @@ export class DocumentCardActivity extends React.Component<IDocumentCardActivityP
   }
 
   private _renderAvatars(people: IDocumentCardActivityPerson[]): React.ReactElement<{}> {
-    let renderAvatar = (person: IDocumentCardActivityPerson) => {
-      if (!person.initialsColor) {
-        person.initialsColor = PersonaInitialsColor.blue;
-      }
-
-      return (
-        <div className='ms-DocumentCardActivity-avatar'>
-          { person.initials && (
-            <div className={ css('ms-Persona-initials', PERSONA_INITIALS_COLOR[person.initialsColor]) } role='presentation'>
-              { person.initials }
-              </div>
-          ) }
-          { person.profileImageSrc && (
-            <Image src={ person.profileImageSrc } role='presentation' alt=''/>
-          ) }
-        </div>
-      );
-    };
-
     return (
       <div className='ms-DocumentCardActivity-avatars'>
-        { people.length > 1 ? renderAvatar(people[1]) : null }
-        { renderAvatar(people[0]) }
+        { people.length > 1 ? this._renderAvatar(people[1]) : null }
+        { this._renderAvatar(people[0]) }
+      </div>
+    );
+  }
+
+  private _renderAvatar(person: IDocumentCardActivityPerson) {
+    let initialsColor = person.initialsColor ? person.initialsColor : PersonaInitialsColor.blue;
+
+    return (
+      <div className='ms-DocumentCardActivity-avatar'>
+        { person.initials && (
+          <div className={ css('ms-Persona-initials', PERSONA_INITIALS_COLOR[initialsColor]) } role='presentation'>
+            { person.initials }
+          </div>
+        ) }
+        { person.profileImageSrc && (
+          <Image src={ person.profileImageSrc } role='presentation' alt=''/>
+        ) }
       </div>
     );
   }

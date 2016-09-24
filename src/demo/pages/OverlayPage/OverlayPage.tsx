@@ -1,8 +1,5 @@
 import * as React from 'react';
 import {
-  Link
-} from '../../../index';
-import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
@@ -29,22 +26,42 @@ export class OverlayPage extends React.Component<IComponentDemoPageProps, any> {
         title='Overlay'
         componentName='OverlayExample'
         exampleCards={
-          [
-            <ExampleCard title='Overlay' code={ OverlayBasicExampleCode }>
-              <OverlayBasicExample />
-            </ExampleCard>
-          ]
+          <ExampleCard title='Overlay' code={ OverlayBasicExampleCode }>
+            <OverlayBasicExample />
+          </ExampleCard>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='Overlay' />
-          ]
+
+          <PropertiesTableSet componentName='Overlay' />
+
         }
         overview={
           <div>
-            <Link target='_blank' href='http://dev.office.com/fabric/components/Overlay'>Overlays</Link>
-            <span> are used to render a semi transparent overlaying div on top of content. This can be used in modal situations, such as Dialogs, which render on top of existing content.</span>
+            <p>
+              Overlays are used to render a semi-transparent layer on top of existing UI. Overlays help focus the user on the content that sits above the added layer and are often used to help designate a modal or blocking experience. Overlays can be seen used in conjunction with Panels and Dialogs.
+            </p>
           </div>
+        }
+        bestPractices={
+          <div></div>
+        }
+        dos={
+          <div>
+            <ul>
+              <li>Use a dark Overlay with a first-run experience.</li>
+              <li>Use a white Overlay for dialogs and panels.</li>
+            </ul>
+          </div>
+        }
+        donts={
+          <div>
+            <ul>
+              <li>Use an Overlay when you want the user to interact with the UI that is being covered.</li>
+            </ul>
+          </div>
+        }
+        related={
+          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Overlay.md'>Fabric JS</a>
         }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>

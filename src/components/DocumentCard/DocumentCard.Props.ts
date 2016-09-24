@@ -19,7 +19,7 @@ export interface IDocumentCardProps extends React.Props<DocumentCard> {
   /**
    * Function to call when the card is clicked.
    */
-  onClick?: (ev?: any) => void;
+  onClick?: (ev?: React.MouseEvent) => void;
 
   /**
    * A URL to navigate to when the card is clicked. If a function has also been provided,
@@ -138,7 +138,7 @@ export interface IDocumentCardLocationProps extends React.Props<DocumentCardLoca
   /**
    * Function to call when the location is clicked.
    */
-  onClick?: (ev?: any) => void;
+  onClick?: (ev?: React.MouseEvent) => void;
 
   /**
    * Aria label for the link to the document location.

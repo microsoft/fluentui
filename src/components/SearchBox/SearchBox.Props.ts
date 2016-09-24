@@ -12,6 +12,12 @@ export interface ISearchBoxProps extends React.Props<SearchBox> {
   /**
   * Callback function for when the typed input for the SearchBox has changed.
   */
+  onChange?: (newValue: any) => void;
+
+  /**
+   * Deprecated at v0.52.2, to be removed at >= v1.0.0. Use 'onChange' instead.
+   * @deprecated
+   */
   onChanged?: (newValue: any) => void;
 
   /**

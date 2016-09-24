@@ -16,6 +16,7 @@ $checkBoxHeight: 20px;
   width: $checkBoxHeight;
   height: $checkBoxHeight;
   text-align: center;
+  position: relative;
 
   &.is-checked {
     .ms-Check-background {

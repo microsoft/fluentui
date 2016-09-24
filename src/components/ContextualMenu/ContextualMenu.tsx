@@ -103,11 +103,11 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   }
 
   @autobind
-  public dismiss(ev?: any) {
+  public dismiss(ev?: any, dismissAll?: boolean) {
     let { onDismiss } = this.props;
 
     if (onDismiss) {
-      onDismiss(ev);
+      onDismiss(ev, dismissAll);
     }
   }
 
@@ -176,7 +176,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         coverTarget={ coverTarget }
         beakStyle='ms-Callout-smallbeak'
         className='ms-ContextualMenu-Callout'
-        onLayerMounted={ () => this._tryFocus(this._focusZone) }
+        setInitialFocus={ true }
         onDismiss={ this.props.onDismiss }>
         <div ref={ (host: HTMLDivElement) => this._host = host} id={ id } className={ css('ms-ContextualMenu-container', className) }>
           { (items && items.length) ? (
@@ -233,17 +233,20 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
       return item.onRender(item);
     }
 
+    // If the item is disabled then it should render as the button for proper styling.
+    if (item.href) {
+      return this._renderAnchorMenuItem(item, index, hasCheckmarks, hasIcons);
+    }
     return React.createElement(
       'button',
       {
         className: css('ms-ContextualMenu-link', { 'is-expanded': (expandedMenuItemKey === item.key) }),
-        onClick: item.onClick || (item.items && item.items.length) ? this._onItemClick.bind(this, item) : item.href ? () => { location.href = item.href; } : null,
+        onClick: this._onItemClick.bind(this, item),
         onKeyDown: item.items && item.items.length ? this._onItemKeyDown.bind(this, item) : null,
         onMouseEnter: this._onItemMouseEnter.bind(this, item),
         onMouseLeave: this._onMouseLeave,
         onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
         disabled: item.isDisabled,
-        dataCommandKey: index,
         role: 'menuitem',
         href: item.href,
         title: item.title,
@@ -252,6 +255,22 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         'aria-owns': item.key === expandedMenuItemKey ? subMenuId : null
       },
       this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons));
+  }
+
+  private _renderAnchorMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): JSX.Element {
+    return (
+      <div>
+        <a href={ item.href }
+          className={ css('ms-ContextualMenu-link', item.isDisabled ? 'is-disabled' : '' ) }
+          role='menuitem'
+          onClick={ this._onAnchorClick.bind(this, item) }>
+          { (hasIcons) ? (
+            <span className={ 'ms-ContextualMenu-icon' + ((item.icon) ? ` ms-Icon ms-Icon--${item.icon}` : ' no-icon') }/>)
+            : null
+          }
+          <span className='ms-ContextualMenu-linkText ms-fontWeight-regular'> { item.name } </span>
+        </a>
+      </div >);
   }
 
   private _renderMenuItemChildren(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
@@ -273,12 +292,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         ) : (null) }
       </div>
     );
-  }
-
-  private _tryFocus(focusZone: FocusZone) {
-    if (focusZone && this.props.shouldFocusOnMount) {
-      focusZone.focus();
-    }
   }
 
   @autobind
@@ -322,10 +335,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   private _onItemClick(item: any, ev: MouseEvent) {
     if (item.key !== this.state.expandedMenuItemKey) {
       if (!item.items || !item.items.length) { // This is an item without a menu. Click it.
-        if (item.onClick) {
-          item.onClick(item, ev);
-        }
-        this.dismiss(ev);
+        this._executeItemClick(item, ev);
       } else {
         if (item.key === this.state.dismissedMenuItemKey) { // This has an expanded sub menu. collapse it.
           this._onSubMenuDismiss(ev);
@@ -334,9 +344,20 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         }
       }
     }
-
     ev.stopPropagation();
     ev.preventDefault();
+  }
+
+  private _onAnchorClick(item: IContextualMenuItem, ev: MouseEvent) {
+    this._executeItemClick(item, ev);
+    ev.stopPropagation();
+  }
+
+  private _executeItemClick(item: any, ev: MouseEvent) {
+    if (item.onClick) {
+      item.onClick(item, ev);
+    }
+    this.dismiss(ev, true);
   }
 
   private _onItemKeyDown(item: any, ev: KeyboardEvent) {
@@ -371,11 +392,15 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   }
 
   @autobind
-  private _onSubMenuDismiss(ev?: any) {
-    this.setState({
-      dismissedMenuItemKey: this.state.expandedMenuItemKey,
-      expandedMenuItemKey: null,
-      submenuProps: null
-    });
+  private _onSubMenuDismiss(ev?: any, dismissAll?: boolean) {
+    if (dismissAll) {
+      this.dismiss(ev, dismissAll);
+    } else {
+      this.setState({
+        dismissedMenuItemKey: this.state.expandedMenuItemKey,
+        expandedMenuItemKey: null,
+        submenuProps: null
+      });
+    }
   }
 }

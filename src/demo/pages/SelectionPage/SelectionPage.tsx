@@ -25,11 +25,9 @@ export class SelectionPage extends React.Component<IComponentDemoPageProps, any>
         title='Selection'
         componentName='SelectionExample'
         exampleCards={
-          [
-            <ExampleCard title='Basic Selection Example' code={ SelectionBasicExampleCode }>
-              <SelectionBasicExample />
-            </ExampleCard>
-          ]
+          <ExampleCard title='Basic Selection Example' code={ SelectionBasicExampleCode }>
+            <SelectionBasicExample />
+          </ExampleCard>
         }
         overview={
           <div>
