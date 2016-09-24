@@ -355,7 +355,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
 
   private _executeItemClick(item: any, ev: MouseEvent) {
     if (item.onClick) {
-      item.onClick(item, ev);
+      item.onClick(ev, item);
     }
     this.dismiss(ev, true);
   }
