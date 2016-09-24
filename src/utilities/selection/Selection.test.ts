@@ -70,4 +70,21 @@ describe('Selection', () => {
     expect(changeEvents).to.equal(0, 'changeEvents were not 0');
   });
 
+  it ('resets unselectable count on setting new items', () => {
+    let canSelect = false;
+    let selection = new Selection({
+      canSelectItem: (item: IObjectWithKey) => canSelect
+    });
+
+    selection.setItems(setA);
+    expect(selection.isAllSelected()).to.equal(false, 'isAllSelected was not false after initialization');
+    selection.setAllSelected(true);
+    expect(selection.isAllSelected()).to.equal(false, 'isAllSelected was not false after trying to select all the unselectables');
+
+    canSelect = true;
+    selection.setItems(setA);
+    selection.setAllSelected(true);
+    expect(selection.isAllSelected()).to.equal(true, 'isAllSelected was not false after trying to select all the unselectables');
+  });
+
 });

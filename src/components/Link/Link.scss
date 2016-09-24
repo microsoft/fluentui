@@ -48,9 +48,9 @@
   @include ms-Link;
 }
 
-// For button links we need to ensure by default that we inherit the font size. Otherwise
-// the button default font size will override.
+// For button links, we need to ensure by default that we inherit the font size.
+// Otherwise, the browser's default font size will be applied.
 
-BUTTON.ms-Link {
+button.ms-Link {
   font-size: inherit;
 }
