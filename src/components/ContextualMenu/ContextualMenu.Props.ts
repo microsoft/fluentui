@@ -174,6 +174,11 @@ export interface IContextualMenuItem {
   onMouseDown?: (item: IContextualMenuItem, event: any) => void;
 
   /**
+   * Optional identifier for automated tests to find the element by.
+   */
+  automationId?: string;
+
+  /**
    * Any additional properties to use when custom rendering menu items.
    */
   [propertyName: string]: any;

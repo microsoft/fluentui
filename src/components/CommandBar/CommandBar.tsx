@@ -110,6 +110,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
                 role='menuitem'
                 aria-label={ this.props.elipisisAriaLabel || '' }
                 aria-haspopup={ true }
+                data-automationid='commandBarOverflow'
               >
                 <i className='ms-CommandBarItem-overflow ms-Icon ms-Icon--More' />
               </button>
@@ -141,7 +142,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     this.refs.focusZone.focus();
   }
 
-  private _renderItemInCommandBar(item, index, expandedMenuItemKey, isFarItem?: boolean) {
+  private _renderItemInCommandBar(item: IContextualMenuItem, index: number, expandedMenuItemKey: string, isFarItem?: boolean) {
     const itemKey = item.key || index;
     const className = css(item.onClick ? 'ms-CommandBarItem-link' : 'ms-CommandBarItem-text', !item.name && 'ms-CommandBarItem--noName');
     const classNameValue = css(className, { 'is-expanded': (expandedMenuItemKey === item.key) });
@@ -157,6 +158,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
                          aria-haspopup={ !!(item.items && item.items.length) }
                          role='menuitem'
                          aria-label={ item.ariaLabel || item.name }
+                         data-automationid={ item.automationId }
                        >
                          { (!!item.icon) && <span className={ `ms-CommandBarItem-icon ms-Icon ms-Icon--${ item.icon }` }></span> }
                          { (!!item.name) && <span className='ms-CommandBarItem-commandText'>{ item.name }</span> }

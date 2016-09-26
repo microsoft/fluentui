@@ -55,7 +55,7 @@ export interface IButtonProps extends React.Props<Button> {
   /**
    * If provided, HTMLProps which will be mixed in onto the root element emitted by this component, before
    * other props are applied. This allows you to extend the root element with additional attributes, such as
-   * data-automation-id needed for automation.
+   * data-automationid needed for automation.
    *
    * The root element will either be a button or an anchor, depending on what value is specified for
    * the elementType prop.
