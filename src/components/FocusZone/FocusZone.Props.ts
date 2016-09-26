@@ -68,7 +68,7 @@ export interface IFocusZoneProps extends React.Props<FocusZone> {
 
   /**
    * Props mixed into the div root element that will be mixed into the root element, *before* other props are applied.
-   * This allows you to extend the root element with additional attributes, such as data-automation-id needed for
+   * This allows you to extend the root element with additional attributes, such as data-automationid needed for
    *  automation. Note that if you provide, for example, "ariaLabelledBy" as well as "rootProps.ariaLabelledBy", the
    * former will take precedence over the later.
    */
