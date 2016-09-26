@@ -9,6 +9,7 @@ import { css } from '../../utilities/css';
 import { getRTL } from '../../utilities/rtl';
 import { getId } from '../../utilities/object';
 import { Async } from '../../utilities/Async/Async';
+import { assign, anchorProperties, buttonProperties, getNativeProps } from '../../utilities'
 import { Callout } from '../../Callout';
 import './ContextualMenu.scss';
 
@@ -239,6 +240,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     }
     return React.createElement(
       'button',
+      assign(
       {
         className: css('ms-ContextualMenu-link', { 'is-expanded': (expandedMenuItemKey === item.key) }),
         onClick: this._onItemClick.bind(this, item),
@@ -253,14 +255,16 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         'aria-label': ariaLabel,
         'aria-haspopup': item.items && item.items.length ? true : null,
         'aria-owns': item.key === expandedMenuItemKey ? subMenuId : null
-      },
+      }, getNativeProps(item, buttonProperties)),
       this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons));
   }
 
   private _renderAnchorMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): JSX.Element {
     return (
       <div>
-        <a href={ item.href }
+        <a
+          { ...getNativeProps(item, anchorProperties) }
+          href={ item.href }
           className={ css('ms-ContextualMenu-link', item.isDisabled ? 'is-disabled' : '' ) }
           role='menuitem'
           onClick={ this._onAnchorClick.bind(this, item) }>
