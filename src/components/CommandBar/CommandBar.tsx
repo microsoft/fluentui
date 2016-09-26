@@ -7,7 +7,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { autobind } from '../../utilities/autobind';
 import { css } from '../../utilities/css';
 import { getId } from '../../utilities/object';
-import { buttonProperties, divProperties, getNativeProps } from '../../utilities'
+import { buttonProperties, divProperties, getNativeProps } from '../../utilities/properties';
 import './CommandBar.scss';
 
 const OVERFLOW_KEY = 'overflow';

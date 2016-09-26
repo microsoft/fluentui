@@ -7,9 +7,9 @@ import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { autobind } from '../../utilities/autobind';
 import { css } from '../../utilities/css';
 import { getRTL } from '../../utilities/rtl';
-import { getId } from '../../utilities/object';
+import { assign, getId } from '../../utilities/object';
 import { Async } from '../../utilities/Async/Async';
-import { assign, anchorProperties, buttonProperties, getNativeProps } from '../../utilities'
+import { anchorProperties, buttonProperties, getNativeProps } from '../../utilities/properties';
 import { Callout } from '../../Callout';
 import './ContextualMenu.scss';
 
