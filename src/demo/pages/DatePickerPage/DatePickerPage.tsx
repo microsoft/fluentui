@@ -29,22 +29,20 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, any
         title='DatePicker'
         componentName='DatePickerExample'
         exampleCards={
-          [
+          <div>
             <ExampleCard title='DatePicker' code={ DatePickerBasicExampleCode }>
               <DatePickerBasicExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='DatePicker as required field' code={ DatePickerRequiredExampleCode }>
               <DatePickerRequiredExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='DatePicker allows input date string' code={ DatePickerInputExampleCode }>
               <DatePickerInputExample />
             </ExampleCard>
-          ]
+          </div>
         }
         propertiesTables={
-          [
-           <PropertiesTableSet componentName='DatePicker' />
-          ]
+          <PropertiesTableSet componentName='DatePicker' />
         }
         overview={
           <div>

@@ -26,18 +26,14 @@ export class ColorPickerPage extends React.Component<IComponentDemoPageProps, an
         title='ColorPicker'
         componentName='ColorPickerExample'
         exampleCards={
-          [
-            <ExampleCard
-              title='ColorPicker'
-              code={ ColorPickerBasicExampleCode }>
-              <ColorPickerBasicExample />
-            </ExampleCard>
-          ]
+          <ExampleCard
+            title='ColorPicker'
+            code={ ColorPickerBasicExampleCode }>
+            <ColorPickerBasicExample />
+          </ExampleCard>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='ColorPicker' />
-          ]
+          <PropertiesTableSet componentName='ColorPicker' />
         }
         overview={
           <div>ColorPicker is used to allow a user to select a color</div>

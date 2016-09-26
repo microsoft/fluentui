@@ -32,34 +32,34 @@ export class DialogPage extends React.Component<IComponentDemoPageProps, any> {
         title='Dialog'
         componentName='DialogExample'
         exampleCards={
-          [
+          <div>
             <ExampleCard title='Dialog' code={ DialogBasicExampleCode }>
               <DialogBasicExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Dialog Large Header' code={ DialogLargeHeaderExampleCode }>
               <p>
                 Use this Dialog sparingly, when calling extra attention to the content. It can be used in situations where you want to teach the user something or notify them of an important change.
               </p>
               <DialogLargeHeaderExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Dialog Close' code={ DialogCloseExampleCode }>
               <p>
                 Use a Dialog with an explicit close button when the user is able to close the Dialog without providing the necessary information that it asks for. This is the most common type of dialog; it is generally used for user initiated actions that they change their mind about, or other non-critical information.
               </p>
               <DialogCloseExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Dialog Blocking' code={ DialogBlockingExampleCode }>
               <p>
                 A blocking Dialog disables all other actions and commands on the page behind it. They should be used very sparingly, only when it is critical that the user makes a choice or provides information before they can proceed. Blocking Dialogs are generally used for irreversible or potentially destructive tasks.
               </p>
               <DialogBlockingExample />
             </ExampleCard>
-          ]
+          </div>
         }
         propertiesTables={
-          [
+          <div>
             <PropertiesTableSet componentName='Dialog' />
-          ]
+          </div>
         }
         overview={
           <div>

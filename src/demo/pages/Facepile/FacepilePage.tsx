@@ -26,16 +26,12 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, any> 
         title='Facepile'
         componentName='FacepileExample'
         exampleCards={
-          [
-            <ExampleCard title='Facepile' code={ FacepileBasicExampleCode }>
-              <FacepileBasicExample />
-            </ExampleCard>
-          ]
+          <ExampleCard title='Facepile' code={ FacepileBasicExampleCode }>
+            <FacepileBasicExample />
+          </ExampleCard>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='Facepile' />
-          ]
+          <PropertiesTableSet componentName='Facepile' />
         }
         overview={
           <div>

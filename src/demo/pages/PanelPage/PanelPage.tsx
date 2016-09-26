@@ -40,37 +40,35 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, any> {
         title='Panel'
         componentName='PanelExample'
         exampleCards={
-          [
+          <div>
             <ExampleCard title='Panel - Small Panel, Anchored Right, Fixed Width' code={ PanelSmallRightExampleCode }>
               <PanelSmallRightExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Panel - Small Panel, Anchored Left, Fixed Width' code={ PanelSmallLeftExampleCode }>
               <PanelSmallLeftExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Panel - Small Panel, Full Screen, Fluid Width' code={ PanelSmallFluidExampleCode }>
               <PanelSmallFluidExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Panel - Medium' code={ PanelMediumExampleCode }>
               <PanelMediumExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Panel - Large' code={ PanelLargeExampleCode }>
               <PanelLargeExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Panel - LargeFixed' code={ PanelLargeFixedExampleCode }>
               <PanelLargeFixedExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Panel - Extra Large' code={ PanelExtraLargeExampleCode }>
               <PanelExtraLargeExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Panel - Light Dismiss' code={ PanelLightDismissExampleCode }>
               <PanelLightDismissExample />
             </ExampleCard>
-          ]
+          </div>
         }
         propertiesTables={
-          [
-             <PropertiesTableSet componentName='Panel' />
-          ]
+          <PropertiesTableSet componentName='Panel' />
         }
         overview={
           <div>

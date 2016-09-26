@@ -33,28 +33,20 @@ export class TeachingBubblePage extends React.Component<any, any> {
         title='TeachingBubble'
         componentName='TeachingBubbleExample'
         exampleCards={
-          [
+          <LayerHost>
             <ExampleCard title='TeachingBubble' code={ TeachingBubbleBasicExampleCode }>
-              <LayerHost>
-                <TeachingBubbleBasicExample />
-              </LayerHost>
-            </ExampleCard>,
-            <ExampleCard title='TeachingBubble Condensed' code={ TeachingBubbleCondensedExampleCode }>
-              <LayerHost>
-                <TeachingBubbleCondensedExample />
-              </LayerHost>
-            </ExampleCard>,
-            <ExampleCard title='TeachingBubble with Illustration' code={ TeachingBubbleIllustrationExampleCode }>
-              <LayerHost>
-                <TeachingBubbleIllustrationExample />
-              </LayerHost>
+              <TeachingBubbleBasicExample />
             </ExampleCard>
-          ]
+            <ExampleCard title='TeachingBubble Condensed' code={ TeachingBubbleCondensedExampleCode }>
+              <TeachingBubbleCondensedExample />
+            </ExampleCard>
+            <ExampleCard title='TeachingBubble with Illustration' code={ TeachingBubbleIllustrationExampleCode }>
+              <TeachingBubbleIllustrationExample />
+            </ExampleCard>
+          </LayerHost>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='TeachingBubble' />
-          ]
+          <PropertiesTableSet componentName='TeachingBubble' />
         }
         overview={
           <div>

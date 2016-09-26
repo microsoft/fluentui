@@ -41,28 +41,26 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, an
         title='DetailsList'
         componentName='DetailsListExample'
         exampleCards={
-          [
+          <div>
             <ExampleCard title='Simple DetailsList with 500 items, filtering, marquee selection' isOptIn={ true } code={ DetailsListBasicExampleCode }>
               <DetailsListBasicExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Rendering custom item columns with sorting' isOptIn={ true } code={ DetailsListCustomColumnsExampleCode }>
               <DetailsListCustomColumnsExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Rendering custom item rows' isOptIn={ true } code={ DetailsListCustomRowsExampleCode }>
               <DetailsListCustomRowsExample />
             </ExampleCard>,
             <ExampleCard title='Rendering custom group headers' isOptIn={ true } code={ DetailsListCustomGroupHeadersExampleCode }>
               <DetailsListCustomGroupHeadersExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Advanced DetailsList of 5000 items, variable row heights' isOptIn={ true } code={ DetailsListAdvancedExampleCode }>
               <DetailsListAdvancedExample />
             </ExampleCard>
-          ]
+          </div>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='DetailsList' />
-          ]
+          <PropertiesTableSet componentName='DetailsList' />
         }
         overview={
           <div>

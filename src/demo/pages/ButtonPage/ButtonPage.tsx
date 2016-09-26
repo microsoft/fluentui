@@ -26,19 +26,17 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, any> {
         title='Button'
         componentName='ButtonExample'
         exampleCards={
-          [
-            <ExampleCard
-              title='Various button types'
-              code={ ButtonBasicExampleCode }>
-              <ButtonBasicExample />
-            </ExampleCard>
-          ]
+          <ExampleCard
+            title='Various button types'
+            code={ ButtonBasicExampleCode }>
+            <ButtonBasicExample />
+          </ExampleCard>
         }
         propertiesTables={
-          [
+          <div>
             <PropertiesTableSet componentName='Button' />,
             <p>Besides the above properties, the <code>Button</code> component accepts all properties that the React <code>button</code> and <code>a</code> components accept.</p>
-          ]
+          </div>
         }
         overview={
           <div>

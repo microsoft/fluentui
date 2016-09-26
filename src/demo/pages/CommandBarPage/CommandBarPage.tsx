@@ -31,20 +31,20 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, any
         title='CommandBar'
         componentName='CommandBarExample'
         exampleCards={
-          [
+          <div>
             <ExampleCard title='CommandBar with search box and overflowing menu items' code={ CommandBarBasicExampleCode }>
               <CommandBarBasicExample {... cmdBarParamsTextAndIcons} />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='CommandBar with non-focusable items' code={ CommandBarNoFocusableItemsExampleCode }>
               <CommandBarNonFocusableItemsExample />
             </ExampleCard>
-          ]
+          </div>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='CommandBar' />,
+          <div>
+            <PropertiesTableSet componentName='CommandBar' />
             <PropertiesTableSet componentName='ContextualMenu' renderOnly={ ['IContextualMenuItem'] } />
-          ]
+          </div>
         }
         overview={
           <div>
