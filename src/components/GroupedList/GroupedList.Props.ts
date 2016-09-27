@@ -204,5 +204,5 @@ export interface IGroupDividerProps {
   onToggleCollapse?: (group: IGroup) => void;
 
   /** Callback for when the group is selected. */
-  onToggleSelectGroup?: () => void;
+  onToggleSelectGroup?: (group: IGroup) => void;
 }
