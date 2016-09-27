@@ -4,8 +4,9 @@ import {
   ButtonType,
   Label
 } from '../../../../index';
+import { IButtonProps } from './IButtonProps';
 
-export class ButtonPrimaryExample extends React.Component<any, any> {
+export class ButtonPrimaryExample extends React.Component<IButtonProps, {}> {
   public constructor() {
     super();
   }

@@ -18,7 +18,7 @@ import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Exampl
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
-import { IComponentDemoPageState } from '../../components/ComponentPage/IComponentDemoPageState';
+import { IButtonDemoPageState } from './examples/IButtonDemoPageState';
 import './examples/Button.Basic.Example.scss';
 
 const ButtonNormalExampleCode = require('./examples/Button.Normal.Example.tsx');
@@ -30,7 +30,7 @@ const ButtonIconExampleCode = require('./examples/Button.Icon.Example.tsx');
 const ButtonAnchorExampleCode = require('./examples/Button.Icon.Example.tsx');
 const ButtonScreenReaderExampleCode = require('./examples/Button.ScreenReader.Example.tsx');
 
-export class ButtonPage extends React.Component<IComponentDemoPageProps, IComponentDemoPageState> {
+export class ButtonPage extends React.Component<IComponentDemoPageProps, IButtonDemoPageState> {
   private _url: string;
 
   constructor() {
