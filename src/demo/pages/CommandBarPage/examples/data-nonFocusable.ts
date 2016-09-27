@@ -22,7 +22,8 @@ export const itemsNonFocusable = [
     key: 'upload',
     name: 'Upload',
     icon: 'Upload',
-    onClick: () => { return; }
+    onClick: () => { return; },
+    ['data-automation-id']: 'uploadNonFocusButton'
   }
 ];
 
@@ -30,7 +31,8 @@ export const farItemsNonFocusable = [
   {
     key: 'saveStatus',
     name: 'Your page has been saved',
-    icon: 'CheckMark'
+    icon: 'CheckMark',
+    ['data-automation-id']: 'saveStatusCheckMark'
   },
   {
     key: 'publish',
