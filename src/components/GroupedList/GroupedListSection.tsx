@@ -211,16 +211,6 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
 
       if (subGroup) {
         subGroup.forceListUpdate();
-
-        if (this.refs.list) {
-          this.refs.list.forceUpdate();
-        }
-
-        for (let subGroupId in this._subGroups) {
-          if (this._subGroups.hasOwnProperty(subGroupId)) {
-            this._subGroups[subGroupId].forceListUpdate();
-          }
-        }
       }
     }
   }
