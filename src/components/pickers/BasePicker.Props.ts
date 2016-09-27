@@ -33,7 +33,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * A callback that gets the rest of the results when a user clicks get more results.
    */
-  onGetMoreResults?: (filter: string, selectedItems?: T[]) => T[]  | Promise<T[]>;
+  onGetMoreResults?: (filter: string, selectedItems?: T[]) => T[] | Promise<T[]>;
   /**
    * ClassName for the picker.
    */
