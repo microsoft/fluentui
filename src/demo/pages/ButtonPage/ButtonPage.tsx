@@ -5,19 +5,40 @@ import {
   ComponentPage
 } from '../../components/index';
 
-import { ButtonBasicExample } from './examples/Button.Basic.Example';
+import { Checkbox } from '../../../index';
+
+import { ButtonNormalExample } from './examples/Button.Normal.Example';
+import { ButtonPrimaryExample } from './examples/Button.Primary.Example';
+import { ButtonHeroExample } from './examples/Button.Hero.Example';
+import { ButtonCompoundExample } from './examples/Button.Compound.Example';
+import { ButtonCommandExample } from './examples/Button.Command.Example';
+import { ButtonIconExample } from './examples/Button.Icon.Example';
+import { ButtonAnchorExample } from './examples/Button.Anchor.Example';
+import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
+import { IComponentDemoPageState } from '../../components/ComponentPage/IComponentDemoPageState';
+import './examples/Button.Basic.Example.scss';
 
-const ButtonBasicExampleCode = require('./examples/Button.Basic.Example.tsx');
+const ButtonNormalExampleCode = require('./examples/Button.Normal.Example.tsx');
+const ButtonPrimaryExampleCode = require('./examples/Button.Primary.Example.tsx');
+const ButtonHeroExampleCode = require('./examples/Button.Hero.Example.tsx');
+const ButtonCompoundExampleCode = require('./examples/Button.Compound.Example.tsx');
+const ButtonCommandExampleCode = require('./examples/Button.Command.Example.tsx');
+const ButtonIconExampleCode = require('./examples/Button.Icon.Example.tsx');
+const ButtonAnchorExampleCode = require('./examples/Button.Icon.Example.tsx');
+const ButtonScreenReaderExampleCode = require('./examples/Button.ScreenReader.Example.tsx');
 
-export class ButtonPage extends React.Component<IComponentDemoPageProps, any> {
+export class ButtonPage extends React.Component<IComponentDemoPageProps, IComponentDemoPageState> {
   private _url: string;
 
   constructor() {
     super();
-    this._url =  getPageRouteFromState(AppState, 'Basic components', 'Button');
+    this.state = {
+      areButtonsDisabled: false
+    };
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'Button');
   }
 
   public render() {
@@ -26,11 +47,33 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, any> {
         title='Button'
         componentName='ButtonExample'
         exampleCards={
-          <ExampleCard
-            title='Various button types'
-            code={ ButtonBasicExampleCode }>
-            <ButtonBasicExample />
-          </ExampleCard>
+          <div>
+            <Checkbox label='Disable buttons' checked={ this.state.areButtonsDisabled } onChange={ this._onDisabledChanged.bind(this) } />
+            <ExampleCard title='Normal Button' code={ ButtonNormalExampleCode }>
+              <ButtonNormalExample isDisabled={ this.state.areButtonsDisabled } />
+            </ExampleCard>
+            <ExampleCard title='Primary Button' code={ ButtonPrimaryExampleCode }>
+              <ButtonPrimaryExample isDisabled={ this.state.areButtonsDisabled } />
+            </ExampleCard>
+            <ExampleCard title='Hero Button' code={ ButtonHeroExampleCode }>
+              <ButtonHeroExample isDisabled={ this.state.areButtonsDisabled } />
+            </ExampleCard>
+            <ExampleCard title='Compound Button' code={ ButtonCompoundExampleCode }>
+              <ButtonCompoundExample isDisabled={ this.state.areButtonsDisabled } />
+            </ExampleCard>
+            <ExampleCard title='Command Button' code={ ButtonCommandExampleCode }>
+              <ButtonCommandExample isDisabled={ this.state.areButtonsDisabled } />
+            </ExampleCard>
+            <ExampleCard title='Icon Button' code={ ButtonIconExampleCode }>
+              <ButtonIconExample isDisabled={ this.state.areButtonsDisabled } />
+            </ExampleCard>
+            <ExampleCard title='Button Like Anchor' code={ ButtonAnchorExampleCode }>
+              <ButtonAnchorExample isDisabled={ this.state.areButtonsDisabled } />
+            </ExampleCard>
+            <ExampleCard title='Button with Aria Description for Screen Reader' code={ ButtonScreenReaderExampleCode }>
+              <ButtonScreenReaderExample isDisabled={ this.state.areButtonsDisabled } />
+            </ExampleCard>
+          </div>
         }
         propertiesTables={
           <div>
@@ -85,4 +128,9 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, any> {
     );
   }
 
+  private _onDisabledChanged(ev: React.MouseEvent, isDisabled: boolean) {
+    this.setState({
+      areButtonsDisabled: isDisabled
+    });
+  }
 }
