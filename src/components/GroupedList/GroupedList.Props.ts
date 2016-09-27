@@ -5,7 +5,7 @@ import {
 import {
   IListProps
 } from '../List';
-
+import { IRenderFunction } from '../../common/IRenderFunction';
 import {
   IDragDropContext,
   IDragDropEvents,
@@ -139,10 +139,6 @@ export interface IGroup {
   ariaLabel?: string;
 }
 
-export interface IRenderFunction<P> {
-  (props?: P, defaultRender?: (props?: P) => JSX.Element): JSX.Element;
-}
-
 export interface IGroupRenderProps {
   /** Boolean indicating if all groups are in collapsed state. */
   isAllGroupsCollapsed?: boolean;
@@ -208,5 +204,5 @@ export interface IGroupDividerProps {
   onToggleCollapse?: (group: IGroup) => void;
 
   /** Callback for when the group is selected. */
-  onToggleSelected?: () => void;
+  onToggleSelectGroup?: () => void;
 }

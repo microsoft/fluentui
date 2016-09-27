@@ -32,8 +32,7 @@ export interface IGroupedListState {
 export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListState> implements IGroupedList {
   public static defaultProps = {
     selectionMode: SelectionMode.multiple,
-    isHeaderVisible: true,
-    groupProps: {}
+    isHeaderVisible: true
   };
 
   public refs: {
@@ -183,6 +182,13 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   }
 
   @autobind
+  private _getGroupKey(group: IGroup): string {
+    return 'group-' + (group ?
+      group.key + '-' + group.count :
+      '');
+  }
+
+  @autobind
   private _onToggleSelectGroup(group: IGroup) {
     let { groups } = this.state;
 
@@ -214,14 +220,6 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
       }
       this.setState({ }, this.forceUpdate);
     }
-  }
-
-
-  @autobind
-  private _getGroupKey(group: IGroup): string {
-    return 'group-' + (group ?
-      group.key + '-' + group.count :
-      '');
   }
 
   private _getGroupNestingDepth(): number {

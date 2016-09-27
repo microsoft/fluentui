@@ -124,9 +124,9 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
 
   @autobind
   private _onToggleSelectGroupClick(ev: React.MouseEvent) {
-    let { onToggleSelected } = this.props;
+    let { onToggleSelectGroup } = this.props;
 
-    onToggleSelected();
+    onToggleSelectGroup();
 
     ev.preventDefault();
     ev.stopPropagation();
@@ -134,12 +134,12 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
 
   @autobind
   private _onHeaderClick() {
-    let { group, onGroupHeaderClick, onToggleSelected } = this.props;
+    let { group, onGroupHeaderClick, onToggleSelectGroup } = this.props;
 
     if (onGroupHeaderClick) {
       onGroupHeaderClick(group);
     } else {
-      onToggleSelected();
+      onToggleSelectGroup();
     }
   }
 }
