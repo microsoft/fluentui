@@ -43,7 +43,6 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
   };
 
   private _isSomeGroupExpanded: boolean;
-  private _selection: Selection;
 
   constructor(props: IGroupedListProps) {
     super(props);
@@ -54,11 +53,6 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
       lastWidth: 0,
       groups: props.groups
     };
-
-    if (!props.selection) {
-      this._selection = new Selection();
-      this._selection.setItems(props.items);
-    }
   }
 
   public componentWillReceiveProps(newProps) {
@@ -67,10 +61,6 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
       selectionMode
     } = this.props;
     let shouldForceUpdates = false;
-
-    if (this._selection && newProps.items !== this.props.items) {
-      this._selection.setItems(newProps.items);
-    }
 
     if (newProps.groups !== groups) {
       this.setState({ groups: newProps.groups });
@@ -152,12 +142,13 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
       listProps,
       onRenderCell,
       selectionMode,
-      selection = this._selection,
+      selection,
       viewport
     } = this.props;
 
     // override group header/footer props as needed
     let dividerProps = {
+      onToggleSelectGroup: this._onToggleSelectGroup,
       onToggleCollapse: this._onToggleCollapse,
       onToggleSummarize: this._onToggleSummarize
     };
@@ -190,6 +181,41 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
         />
       ) : null;
   }
+
+  @autobind
+  private _onToggleSelectGroup(group: IGroup) {
+    let { groups } = this.state;
+
+    if (group) {
+      let isSelected = !group.isSelected;
+      this._selectGroup(group, isSelected);
+
+      this.setState({
+        groups: groups
+      });
+    }
+  }
+
+  private _selectGroup(group: IGroup, isSelected: boolean) {
+    let { groupProps } = this.props;
+
+    group.isSelected = isSelected;
+    if (group.children && group.children.length > 0) {
+      group.children.forEach((childGroup: IGroup) => {
+        this._selectGroup(childGroup, isSelected);
+      });
+    } else {
+      let getGroupItemLimit = groupProps && groupProps.getGroupItemLimit;
+      let groupItemLimit = getGroupItemLimit ? getGroupItemLimit(group) : Infinity;
+      let start = group.startIndex;
+      let end = group.startIndex + Math.min(group.count, groupItemLimit);
+      for (let idx = start; idx < end; idx++) {
+        this.props.selection.setIndexSelected(idx, isSelected, false /* shouldAnchor */);
+      }
+      this.setState({ }, this.forceUpdate);
+    }
+  }
+
 
   @autobind
   private _getGroupKey(group: IGroup): string {

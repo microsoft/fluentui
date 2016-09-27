@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from '../../Link';
 import { IGroupDividerProps } from './GroupedList.Props';
 import { GroupSpacer } from './GroupSpacer';
-import { autobind } from '../../Utilities';
+import { autobind } from '../../utilities/autobind';
 import './GroupFooter.scss';
 
 export class GroupFooter extends React.Component<IGroupDividerProps, {}> {

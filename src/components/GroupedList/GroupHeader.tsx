@@ -45,7 +45,6 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
       groupLevel,
       viewport,
       selectionMode,
-      selected,
       loadingText,
       isCollapsedGroupSelectVisible
     } = this.props;
@@ -56,7 +55,7 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
     }
     let canSelectGroup = selectionMode === SelectionMode.multiple;
     let isSelectionCheckVisible = canSelectGroup && (isCollapsedGroupSelectVisible || !(group && group.isCollapsed));
-    let isSelected = group && selected && isSelectionCheckVisible;
+    let isSelected = group && group.isSelected && isSelectionCheckVisible;
 
     return group && (
       <div
@@ -74,7 +73,7 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
             <button
               className='ms-GroupHeader-check'
               data-selection-toggle={ true }
-              onClick={ this._onToggleSelectClick } >
+              onClick={ this._onToggleSelectGroupClick } >
               <Check isChecked={ isSelected } />
             </button>
             ) : (selectionMode !== SelectionMode.none ? GroupSpacer({ count: 1 }) : null )
@@ -124,7 +123,7 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
   }
 
   @autobind
-  private _onToggleSelectClick(ev: React.MouseEvent) {
+  private _onToggleSelectGroupClick(ev: React.MouseEvent) {
     let { onToggleSelected } = this.props;
 
     onToggleSelected();

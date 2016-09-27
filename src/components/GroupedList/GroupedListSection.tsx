@@ -136,7 +136,6 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       footerProps,
       viewport,
       selectionMode,
-      selection,
       onRenderGroupHeader = this._onRenderGroupHeader,
       onRenderGroupFooter = this._onRenderGroupFooter
     } = this.props;
@@ -144,14 +143,12 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     let hasNestedGroups = group && group.children && group.children.length > 0;
     let isFooterVisible = group && !hasNestedGroups && !group.isCollapsed;
 
-    let dividerProps = {
+    let dividerProps: IGroupDividerProps = {
       group: group,
       groupIndex: groupIndex,
       groupLevel: group ? group.level : 0,
       viewport: viewport,
-      selectionMode: selectionMode,
-      selected: selection.isRangeSelected(group.startIndex, group.count),
-      onToggleSelected: this._onToggleSelected
+      selectionMode: selectionMode
     };
     let groupHeaderProps: IGroupDividerProps = assign({}, headerProps, dividerProps);
     let groupFooterProps: IGroupDividerProps = assign({}, footerProps, dividerProps);
