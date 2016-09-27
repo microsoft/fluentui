@@ -164,7 +164,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
         dragDropHelper={ dragDropHelper }
         eventsToRegister={ eventsToRegister }
         footerProps={ footerProps }
-        getGroupItemLimit={ groupProps.getGroupItemLimit }
+        getGroupItemLimit={ groupProps && groupProps.getGroupItemLimit }
         group={ group }
         groupIndex={ groupIndex }
         groupNestingDepth={ groupNestingDepth }

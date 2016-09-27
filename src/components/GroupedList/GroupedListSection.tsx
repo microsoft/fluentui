@@ -66,6 +66,13 @@ export interface IGroupedListSectionProps extends React.Props<GroupedListSection
   /** Optional list props to pass to list renderer.  */
   listProps?: any;
 
+  /** Rendering callback to render the group items. */
+  onRenderCell: (
+    nestingDepth?: number,
+    item?: any,
+    index?: number
+  ) => React.ReactNode;
+
   /** Optional selection model to track selection state.  */
   selection?: ISelection;
 
@@ -74,13 +81,6 @@ export interface IGroupedListSectionProps extends React.Props<GroupedListSection
 
   /** Optional Viewport, provided by the parent component. */
   viewport?: IViewport;
-
-  /** Rendering callback to render the group items. */
-  onRenderCell: (
-    nestingDepth?: number,
-    item?: any,
-    index?: number
-  ) => React.ReactNode;
 
   /** Override for rendering the group header. */
   onRenderGroupHeader?: (props?: IGroupDividerProps, defaultRender?: (props?: IGroupDividerProps) => JSX.Element) => JSX.Element;
@@ -96,8 +96,12 @@ export interface IGroupedListSectionState {
 const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
 
 export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, IGroupedListSectionState> {
-  private _root: HTMLElement;
-  private _list: List;
+  public refs: {
+    [key: string]: React.ReactInstance,
+    root: HTMLElement,
+    list: List
+  }
+
   private _subGroups: {
     [key: string]: GroupedListSection;
   };
@@ -116,14 +120,14 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     let { dragDropHelper } = this.props;
 
     if (dragDropHelper) {
-      dragDropHelper.subscribe(this._root, this._events, this._getGroupDragDropOptions());
+      dragDropHelper.subscribe(this.refs.root, this._events, this._getGroupDragDropOptions());
     }
   }
 
   public componentWillUnmount() {
     let { dragDropHelper } = this.props;
     if (dragDropHelper) {
-      dragDropHelper.unsubscribe(this._root, this._dragDropKey);
+      dragDropHelper.unsubscribe(this.refs.root, this._dragDropKey);
     }
   }
 
@@ -155,10 +159,10 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
 
     return (
       <div
-        ref={this._resolveRef('_root') }
-        className={css('ms-GroupedList-group', this._getDroppingClassName()) }
+        ref={ 'root' }
+        className={ css('ms-GroupedList-group', this._getDroppingClassName()) }
         >
-        {onRenderGroupHeader(groupHeaderProps, this._onRenderGroupHeader) }
+        { onRenderGroupHeader(groupHeaderProps, this._onRenderGroupHeader) }
         {
           group && group.isCollapsed ?
             null :
@@ -166,16 +170,16 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
               hasNestedGroups ?
                 (
                   <List
-                    ref={this._resolveRef('_list') }
-                    items={group.children}
-                    onRenderCell={this._renderSubGroup}
-                    getItemCountForPage={() => 1}
+                    ref={ 'list' }
+                    items={ group.children }
+                    onRenderCell={ this._renderSubGroup }
+                    getItemCountForPage={ () => 1 }
                     />
                 ) :
                 this._onRenderGroup(renderCount)
             )
         }
-        {isFooterVisible && onRenderGroupFooter(groupFooterProps, this._onRenderGroupFooter) }
+        { isFooterVisible && onRenderGroupFooter(groupFooterProps, this._onRenderGroupFooter) }
       </div>
     );
   }
@@ -186,8 +190,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
   }
 
   public forceListUpdate() {
-    if (this._list) {
-      this._list.forceUpdate();
+    if (this.refs.list) {
+      this.refs.list.forceUpdate();
     }
 
     for (let subGroupId in this._subGroups) {
@@ -222,7 +226,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       <List
         items={items}
         onRenderCell={(item, itemIndex) => onRenderCell(groupNestingDepth, item, itemIndex) }
-        ref={this._resolveRef('_list') }
+        ref={ 'list' }
         renderCount={Math.min(count, renderCount) }
         startIndex={startIndex}
         { ...listProps }
@@ -250,23 +254,23 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
 
     return (!subGroup || subGroup.count > 0) ? (
       <GroupedListSection
-        ref={ (section) => (section ? (this._subGroups[subGroupIndex] = section) : delete this._subGroups[subGroupIndex]) }
-        key={this._getGroupKey(subGroup, subGroupIndex) }
-        dragDropEvents={dragDropEvents}
-        dragDropHelper={dragDropHelper}
-        eventsToRegister={eventsToRegister}
-        footerProps={footerProps}
-        getGroupItemLimit={getGroupItemLimit}
-        group={subGroup}
-        groupIndex={subGroupIndex}
-        groupNestingDepth={groupNestingDepth}
-        headerProps={headerProps}
-        items={items}
-        listProps={listProps}
-        onRenderCell={onRenderCell}
-        selection={selection}
-        selectionMode={selectionMode}
-        viewport={viewport}
+        ref={ 'subGroup_' + subGroupIndex }
+        key={ this._getGroupKey(subGroup, subGroupIndex) }
+        dragDropEvents={ dragDropEvents }
+        dragDropHelper={ dragDropHelper }
+        eventsToRegister={ eventsToRegister }
+        footerProps={ footerProps }
+        getGroupItemLimit={ getGroupItemLimit }
+        group={ subGroup }
+        groupIndex={ subGroupIndex }
+        groupNestingDepth={ groupNestingDepth }
+        headerProps={ headerProps }
+        items={ items }
+        listProps={ listProps }
+        onRenderCell={ onRenderCell }
+        selection={ selection }
+        selectionMode={ selectionMode }
+        viewport={ viewport }
         />
     ) : null;
   }
@@ -295,13 +299,6 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       updateDropState: this._updateDroppingState
     };
     return options;
-  }
-
-  @autobind
-  private _onToggleSelected() {
-    let { group, selection } = this.props;
-
-    selection.toggleRangeSelected(group.startIndex, group.count);
   }
 
   /**
