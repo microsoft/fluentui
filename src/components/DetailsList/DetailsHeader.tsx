@@ -124,7 +124,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
           </div>
           { groupNestingDepth > 0 ? (
           <button className='ms-DetailsHeader-cell' onClick={ this._onToggleCollapseAll }>
-            <i className={ css('ms-DetailsHeader-collapseButton ms-Icon ms-Icon--chevronDown', {
+            <i className={ css('ms-DetailsHeader-collapseButton ms-Icon ms-Icon--ChevronDown', {
               'is-collapsed': isAllCollapsed
             }) } >
             </i>
@@ -149,6 +149,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                   aria-label={ column.ariaLabel || column.name }
                   aria-sort={ column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none' }
                   data-automationid='ColumnsHeaderColumn'
+                  data-item-key={ column.key }
                   >
 
                   { column.isFiltered && (
@@ -157,13 +158,13 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
                   { column.isSorted && (
                     <i className={ css('ms-Icon', {
-                      'ms-Icon--arrowUp2': !column.isSortedDescending,
-                      'ms-Icon--arrowDown2': column.isSortedDescending
+                      'ms-Icon--SortUp': !column.isSortedDescending,
+                      'ms-Icon--SortDown': column.isSortedDescending
                     }) } />
                   ) }
 
                   { column.isGrouped && (
-                    <i className='ms-Icon ms-Icon--groupingDescending' />
+                    <i className='ms-Icon ms-Icon--GroupedDescending' />
                   ) }
 
                   { column.iconClassName && (
@@ -173,7 +174,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                   { column.name }
 
                   { column.columnActionsMode === ColumnActionsMode.hasDropdown && (
-                    <i className='ms-DetailsHeader-filterChevron ms-Icon ms-Icon--chevronDown' />
+                    <i className='ms-DetailsHeader-filterChevron ms-Icon ms-Icon--ChevronDown' />
                   ) }
                 </button>
               </div>

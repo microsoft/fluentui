@@ -7,6 +7,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { autobind } from '../../utilities/autobind';
 import { css } from '../../utilities/css';
 import { getId } from '../../utilities/object';
+import { buttonProperties, divProperties, getNativeProps } from '../../utilities/properties';
 import './CommandBar.scss';
 
 const OVERFLOW_KEY = 'overflow';
@@ -85,10 +86,10 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
         <div className='ms-CommandBarSearch' ref='searchSurface'>
           <input className='ms-CommandBarSearch-input' type='text' placeholder={ searchPlaceholderText } />
           <div className='ms-CommandBarSearch-iconWrapper ms-CommandBarSearch-iconSearchWrapper'>
-            <i className='ms-Icon ms-Icon--search'></i>
+            <i className='ms-Icon ms-Icon--Search'></i>
           </div>
           <div className='ms-CommandBarSearch-iconWrapper ms-CommandBarSearch-iconClearWrapper ms-font-s'>
-            <i className='ms-Icon ms-Icon--x'></i>
+            <i className='ms-Icon ms-Icon--Cancel'></i>
           </div>
         </div>
       );
@@ -110,8 +111,9 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
                 role='menuitem'
                 aria-label={ this.props.elipisisAriaLabel || '' }
                 aria-haspopup={ true }
+                data-automation-id='commandBarOverflow'
               >
-                <i className='ms-CommandBarItem-overflow ms-Icon ms-Icon--ellipsis' />
+                <i className='ms-CommandBarItem-overflow ms-Icon ms-Icon--More' />
               </button>
             </div>
             ] : []) }
@@ -141,15 +143,16 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     this.refs.focusZone.focus();
   }
 
-  private _renderItemInCommandBar(item, index, expandedMenuItemKey, isFarItem?: boolean) {
+  private _renderItemInCommandBar(item: IContextualMenuItem, index: number, expandedMenuItemKey: string, isFarItem?: boolean) {
     const itemKey = item.key || index;
-    const className = item.onClick ? 'ms-CommandBarItem-link' : 'ms-CommandBarItem-text';
+    const className = css(item.onClick ? 'ms-CommandBarItem-link' : 'ms-CommandBarItem-text', !item.name && 'ms-CommandBarItem--noName');
     const classNameValue = css(className, { 'is-expanded': (expandedMenuItemKey === item.key) });
 
     return <div className={ css('ms-CommandBarItem', item.className) } key={ itemKey } ref={ itemKey }>
              {(() => {
                if (item.onClick || item.items) {
                  return <button
+                         { ...getNativeProps(item, buttonProperties) }
                          id={ this._id + item.key }
                          className={ classNameValue }
                          onClick={ this._onItemClick.bind(this, item) }
@@ -161,11 +164,12 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
                          { (!!item.icon) && <span className={ `ms-CommandBarItem-icon ms-Icon ms-Icon--${ item.icon }` }></span> }
                          { (!!item.name) && <span className='ms-CommandBarItem-commandText'>{ item.name }</span> }
                          { (item.items && item.items.length) ? (
-                           <i className='ms-CommandBarItem-chevronDown ms-Icon ms-Icon--chevronDown' />
+                           <i className='ms-CommandBarItem-chevronDown ms-Icon ms-Icon--ChevronDown' />
                          ) : ( null ) }
                        </button>;
                } else {
                  return <div
+                         { ...getNativeProps(item, divProperties) }
                          id={ this._id + item.key }
                          className={ classNameValue }
                          data-command-key={ index }

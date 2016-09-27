@@ -44,7 +44,6 @@ export class DetailsListBasicExample extends React.Component<any, any> {
         <MarqueeSelection selection={ this._selection }>
           <DetailsList
             items={ items }
-            initialFocusedIndex={ 0 }
             setKey='set'
             selection={ this._selection }
             onItemInvoked={ (item) => alert(`Item invoked: ${item.name}`) }

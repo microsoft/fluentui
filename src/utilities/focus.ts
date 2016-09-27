@@ -155,8 +155,8 @@ export function isElementTabbable(element: HTMLElement): boolean {
     (element.tagName === 'A' ||
       (element.tagName === 'BUTTON' && !(element as HTMLButtonElement).disabled) ||
       (element.tagName === 'INPUT' && !(element as HTMLInputElement).disabled) ||
-      (element.getAttribute && element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true')) ||
-      (element.getAttribute && element.getAttribute('tabindex') === '0'));
+      (element.tagName === 'TEXTAREA' && !(element as HTMLTextAreaElement).disabled) ||
+      (element.getAttribute && element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true')));
 }
 
 export function isElementFocusZone(element?: HTMLElement): boolean {

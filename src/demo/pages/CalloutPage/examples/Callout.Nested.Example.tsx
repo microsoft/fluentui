@@ -36,19 +36,19 @@ export class CalloutNestedExample extends React.Component<any, ICalloutBaiscExam
           <div>
             <Callout
               className='ms-CalloutExample-callout'
-              gapSpace={ 20 }
+              gapSpace={ 0 }
               targetElement={ this._menuButtonElement }
               onDismiss={ (ev: any) => { this._onDismiss(ev); } }
               setInitialFocus={ true }
               >
-              <div className='ms-Callout-header'>
-                <p className='ms-Callout-title'>
+              <div className='ms-CalloutExample-header'>
+                <p className='ms-CalloutExample-title'>
                   Callout title here
                 </p>
               </div>
-              <div className='ms-Callout-inner'>
-                <div className='ms-Callout-content'>
-                  <p className='ms-Callout-subText'>
+              <div className='ms-CalloutExample-inner'>
+                <div className='ms-CalloutExample-content'>
+                  <p className='ms-CalloutExample-subText'>
                     Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
                   </p>
                 </div>

@@ -23,6 +23,11 @@ export class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState>
   public constructor(props: ISearchBoxProps) {
     super(props);
 
+    // Handle deprecated prop
+    if (this.props.onChanged) {
+      this.props.onChange = this.props.onChanged;
+    }
+
     this.state = {
       value: props.value,
       hasFocus: false,
@@ -51,17 +56,21 @@ export class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState>
           'is-active': hasFocus
         })}
       >
-        { !hasFocus && !value ? <label className='ms-SearchBox-label' htmlFor={id}><i className='ms-SearchBox-icon ms-Icon ms-Icon--search'></i>{ labelText }</label> : null }
+        { !hasFocus && !value ? <label className='ms-SearchBox-label' htmlFor={id}>
+              <i className='ms-SearchBox-icon ms-Icon ms-Icon--Search'></i>
+              <span className='ms-SearchBox-text'>{ labelText }</span>
+             </label> : null }
         <input id={id} className='ms-SearchBox-field' onFocus={ this._onInputFocus } onBlur={ this._onInputBlur } onChange={ this._onInputChanged } value={value} ref='inputText' />
-        <button className='ms-SearchBox-closeButton' onMouseDown={ this._clearInput }><i className='ms-Icon ms-Icon--x'></i></button>
+        <button className='ms-SearchBox-closeButton' onMouseDown={ this._clearInput }><i className='ms-Icon ms-Icon--Clear'></i></button>
       </div>
     );
   }
 
   private _clearInput(ev?: any) {
     this.setState({
-      value: undefined
+      value: ''
     });
+    this._onChange('');
     ev.stopPropagation();
     ev.preventDefault();
   }
@@ -82,14 +91,14 @@ export class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState>
     this.setState({
       value: this.refs.inputText.value
     });
-    this._onChanged(this.refs.inputText.value);
+    this._onChange(this.refs.inputText.value);
   }
 
-  private _onChanged(newValue: string): void {
-    let { onChanged } = this.props;
+  private _onChange(newValue: string): void {
+    let { onChange } = this.props;
 
-    if (onChanged) {
-      onChanged(newValue);
+    if (onChange) {
+      onChange(newValue);
     }
   }
 }

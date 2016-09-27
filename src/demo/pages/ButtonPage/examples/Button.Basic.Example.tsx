@@ -33,7 +33,7 @@ export class ButtonBasicExample extends React.Component<any, IBasicButtonsExampl
         <Button disabled={ areButtonsDisabled } buttonType={ ButtonType.primary }>Create account</Button>
 
         <Label>Hero button</Label>
-        <Button disabled={ areButtonsDisabled } buttonType={ ButtonType.hero }>Create account</Button>
+        <Button disabled={ areButtonsDisabled } buttonType={ ButtonType.hero } icon='Add' >Create account</Button>
 
         <Label>Compound button</Label>
         <Button disabled={ areButtonsDisabled } buttonType={ ButtonType.compound } description='You can create a new account here.'>Create account</Button>
@@ -41,14 +41,14 @@ export class ButtonBasicExample extends React.Component<any, IBasicButtonsExampl
         <Label>Command button</Label>
         <Button
           buttonType={ ButtonType.command }
-          icon='personAdd'
+          icon='AddFriend'
           description='Description of the action this button takes'
           rootProps={ { disabled: areButtonsDisabled } }>
           Create account
         </Button>
 
         <Label>Icon button</Label>
-        <Button disabled={ areButtonsDisabled } buttonType={ ButtonType.icon } icon='star' rootProps={ { title: 'Star' } } ariaLabel='Take a star' />
+        <Button disabled={ areButtonsDisabled } buttonType={ ButtonType.icon } icon='Emoji2' rootProps={ { title: 'Emoji' } } ariaLabel='Emoji' />
 
         <Label>Button like anchor</Label>
         <Button
