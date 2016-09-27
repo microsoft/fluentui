@@ -34,8 +34,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected _focusZone: FocusZone;
   protected _suggestionElement: Suggestions<T>;
 
-  private _suggestionStore: SuggestionsController<T>;
-  private _SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
+  protected _suggestionStore: SuggestionsController<T>;
+  protected _SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
 
   constructor(basePickerProps: P) {
     super(basePickerProps);
@@ -168,15 +168,18 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     let { value } = this.state;
 
     if (!this._suggestionStore.currentIndex || updatedValue !== value) {
-      let newSuggestions: any[] = this.props.onResolveSuggestions(updatedValue, this.state.items);
-
-      this._suggestionStore.updateSuggestions(newSuggestions);
-      let itemValue: string = undefined;
-      if (this._suggestionStore.currentSuggestion) {
-        itemValue = this.props.getTextFromItem(this._suggestionStore.currentSuggestion.item);
-      }
-      this._updateDisplayValue(updatedValue, itemValue);
+      Promise.resolve(this.props.onResolveSuggestions(updatedValue, this.state.items)).then((newSuggestions: T[]) => this.resolveNewValue(newSuggestions, updatedValue));
     }
+  }
+
+  protected resolveNewValue(suggestions: T[], updatedValue: string) {
+
+    this._suggestionStore.updateSuggestions(suggestions);
+    let itemValue: string = undefined;
+    if (this._suggestionStore.currentSuggestion) {
+      itemValue = this.props.getTextFromItem(this._suggestionStore.currentSuggestion.item);
+    }
+    this._updateDisplayValue(updatedValue, itemValue);
   }
 
   protected _updateDisplayValue(updatedValue: string, itemValue?: string) {
