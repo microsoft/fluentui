@@ -52,7 +52,8 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
     // when this.props.groups[x].name is specified or Any of the link has child link, chevorn Expand/collaps button is shown,
     // different padding is needed. _hasExpandButton marks this condition.
     this._hasExpandButton = this.props.groups.some((group: INavLinkGroup, groupIndex: number) => {
-      return !!group.name || group.links && group.links.some((link: INavLink, linkIndex: number) => { return !!link.links && link.links.length > 0; });
+      return !!group && !!group.name || group.links && group.links.some((link: INavLink, linkIndex: number) => {
+        return !!link && !!link.links && link.links.length > 0; });
     });
 
     const groupElements: React.ReactElement<{}>[] = this.props.groups.map(
