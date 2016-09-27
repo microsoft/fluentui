@@ -18,7 +18,6 @@ export class Tooltip extends BaseComponent<ITooltipProps, ITooltipState> {
   public static defaultProps = {
     calloutProps: {
       beakStyle: 'ms-Callout-smallbeak',
-      beakWidth: 16,
       gapSpace: 16,
       setInitialFocus: true,
       doNotLayer: false,
@@ -39,6 +38,7 @@ export class Tooltip extends BaseComponent<ITooltipProps, ITooltipState> {
 
     return (
         <Callout
+          beakWidth= {14}
           className='ms-Tooltip'
           ref={this._resolveRef('_callout')}
           targetElement={ targetElement }
