@@ -50,7 +50,7 @@ export class GroupedListCustomExample extends React.Component<any, any> {
     return (
       <div className='ms-GroupedListExample-header ms-font-xl'>
         This is a custom header for {props.group.name}
-        (<Link onClick={ props.onToggleCollapse }>{ props.group.isCollapsed ? 'Expand' : 'Collapse' }</Link>)
+        (<Link onClick={ () => props.onToggleCollapse(props.group) }>{ props.group.isCollapsed ? 'Expand' : 'Collapse' }</Link>)
       </div>
     );
   }
