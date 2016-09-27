@@ -188,6 +188,35 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
       '');
   }
 
+  private _getGroupNestingDepth(): number {
+    let { groups } = this.state;
+    let level = 0;
+    let groupsInLevel = groups;
+
+    while (groupsInLevel && groupsInLevel.length > 0) {
+      level++;
+      groupsInLevel = groupsInLevel[0].children;
+    }
+
+    return level;
+  }
+
+  @autobind
+  private _onToggleCollapse(group: IGroup) {
+    let { groupProps } = this.props;
+    let onToggleCollapse = groupProps && groupProps.headerProps && groupProps.headerProps.onToggleCollapse;
+
+    if (group) {
+      if (onToggleCollapse) {
+        onToggleCollapse(group);
+      }
+
+      group.isCollapsed = !group.isCollapsed;
+      this._updateIsSomeGroupExpanded();
+      this.setState({ }, this.forceUpdate);
+    }
+  }
+
   @autobind
   private _onToggleSelectGroup(group: IGroup) {
     let { groups } = this.state;
@@ -218,35 +247,6 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
       for (let idx = start; idx < end; idx++) {
         this.props.selection.setIndexSelected(idx, isSelected, false /* shouldAnchor */);
       }
-      this.setState({ }, this.forceUpdate);
-    }
-  }
-
-  private _getGroupNestingDepth(): number {
-    let { groups } = this.state;
-    let level = 0;
-    let groupsInLevel = groups;
-
-    while (groupsInLevel && groupsInLevel.length > 0) {
-      level++;
-      groupsInLevel = groupsInLevel[0].children;
-    }
-
-    return level;
-  }
-
-  @autobind
-  private _onToggleCollapse(group: IGroup) {
-    let { groupProps } = this.props;
-    let onToggleCollapse = groupProps && groupProps.headerProps && groupProps.headerProps.onToggleCollapse;
-
-    if (group) {
-      if (onToggleCollapse) {
-        onToggleCollapse(group);
-      }
-
-      group.isCollapsed = !group.isCollapsed;
-      this._updateIsSomeGroupExpanded();
       this.setState({ }, this.forceUpdate);
     }
   }
