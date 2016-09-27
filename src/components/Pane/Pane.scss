@@ -1,14 +1,24 @@
 @import '../../common/common';
 
+.ms-Pane > .main-content {
+  overflow: auto;
+  flex: 0 1 auto;
+}
+
+.ms-Pane > .popup {
+  display: flex;
+}
+
 .ms-Pane {
   /** bug: pane should not ignore pointer events. */
   pointer-events: inherit;
   overflow: hidden;
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
 }
 
 .ms-Pane .ms-Pane-main {
-  position: absolute;
-
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -42,33 +52,9 @@ $Pane-margin-lg: 428px;
 $Pane-margin-xl: 176px;
 $CommandBarHeight: 40px;
 
-// The pane covers the entire screen.
-.ms-Pane {
-  bottom: 0;
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  display: none;
-  pointer-events: none;
-
-  // Overlay used within pane
-  .ms-Overlay {
-    display: none;
-    pointer-events: none;
-    opacity: 1;
-    cursor: pointer;
-    transition: opacity $ms-duration3 $ms-ease1;
-  }
-}
-
 // The pane itself, where the content goes.
 .ms-Pane-main {
   background-color: $ms-color-white;
-  bottom: 0;
-  //position: fixed;
-  @include right(0);
-  top: 0;
   display: none;
   width: 100%;
 
@@ -78,7 +64,6 @@ $CommandBarHeight: 40px;
     border-right: 1px solid $ms-color-neutralLight;
     pointer-events: auto;
     width: $Pane-width-sm;
-    @include drop-shadow(-30px, 0px, 30px, -30px, .2);
     @include left(auto);
   }
 }
@@ -172,7 +157,6 @@ $CommandBarHeight: 40px;
 //== State: When the pane is open.
 //
 .ms-Pane.is-open {
-  display: block;
 
   .ms-Pane-main {
     opacity: 1;
@@ -266,10 +250,13 @@ $CommandBarHeight: 40px;
   }
 }
 
+.ms-Pane-commands {
+  text-align: right;
+}
+
 // The close button in the top right (x)
 .ms-Pane-closeButton {
   @include button-reset();
-  position: absolute;
   right: 8px;
   top: 0;
   height: $CommandBarHeight;
@@ -286,7 +273,6 @@ $CommandBarHeight: 40px;
 
 // Scrollable content area
 .ms-Pane-contentInner {
-  position: absolute;
   top: $CommandBarHeight;
   bottom: 0;
   left: 0;

@@ -44,25 +44,25 @@ export class PanePage extends React.Component<IComponentDemoPageProps, any> {
           [
             <ExampleCard title='Pane - Small Pane, Anchored Right, Fixed Width' code={ PaneSmallRightExampleCode }>
               <PaneSmallRightExample />
-            </ExampleCard>//,
-            // <ExampleCard title='Pane - Small Pane, Anchored Left, Fixed Width' code={ PaneSmallLeftExampleCode }>
-            //   <PaneSmallLeftExample />
-            // </ExampleCard>,
-            // <ExampleCard title='Pane - Small Pane, Full Screen, Fluid Width' code={ PaneSmallFluidExampleCode }>
-            //   <PaneSmallFluidExample />
-            // </ExampleCard>,
-            // <ExampleCard title='Pane - Medium' code={ PaneMediumExampleCode }>
-            //   <PaneMediumExample />
-            // </ExampleCard>,
-            // <ExampleCard title='Pane - Large' code={ PaneLargeExampleCode }>
-            //   <PaneLargeExample />
-            // </ExampleCard>,
-            // <ExampleCard title='Pane - LargeFixed' code={ PaneLargeFixedExampleCode }>
-            //   <PaneLargeFixedExample />
-            // </ExampleCard>,
-            // <ExampleCard title='Pane - Extra Large' code={ PaneExtraLargeExampleCode }>
-            //   <PaneExtraLargeExample />
-            // </ExampleCard>
+            </ExampleCard>,
+            <ExampleCard title='Pane - Small Pane, Anchored Left, Fixed Width' code={ PaneSmallLeftExampleCode }>
+              <PaneSmallLeftExample />
+            </ExampleCard>,
+            <ExampleCard title='Pane - Small Pane, Full Screen, Fluid Width' code={ PaneSmallFluidExampleCode }>
+              <PaneSmallFluidExample />
+            </ExampleCard>,
+            <ExampleCard title='Pane - Medium' code={ PaneMediumExampleCode }>
+              <PaneMediumExample />
+            </ExampleCard>,
+            <ExampleCard title='Pane - Large' code={ PaneLargeExampleCode }>
+              <PaneLargeExample />
+            </ExampleCard>,
+            <ExampleCard title='Pane - LargeFixed' code={ PaneLargeFixedExampleCode }>
+              <PaneLargeFixedExample />
+            </ExampleCard>,
+            <ExampleCard title='Pane - Extra Large' code={ PaneExtraLargeExampleCode }>
+              <PaneExtraLargeExample />
+            </ExampleCard>
           ]
         }
         propertiesTables={

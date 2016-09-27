@@ -67,7 +67,7 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
     let isOnRightSide = isRTL ? isLeft : !isLeft;
     const headerTextId = id + '-headerText';
     let pendingCommandBarContent = '';
-    let childControls=React.Children.toArray(children);
+    let childControls = React.Children.toArray(children);
 
     let header;
     if (headerText) {
@@ -81,15 +81,27 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
       </button>;
     }
 
+    let paneContent;
+    if (React.Children.count(children) > 1) {
+      paneContent = childControls[1];
+    }
+
+    let wrappedContent;
+    if (childControls) {
+      wrappedContent = childControls[0];
+    }
+
+    // Should I use Popup?
+
     return (
-      <div>
+      <div className={ 'ms-Pane' }>
         <div
-          className={ 'ms-Main-content' }
+          className={ 'main-content' }
           >
-          Content:
-          { childControls ? childControls[0] : null }
+          { wrappedContent }
         </div>
-        <div
+        <Popup
+          className='popup'
           role='dialog'
           ariaLabelledBy={ headerText ? headerTextId : undefined }
           onDismiss={ this.props.onDismiss }>
@@ -120,12 +132,12 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
               <div className='ms-Pane-contentInner'>
                 { header }
                 <div className='ms-Pane-content'>
-                  { React.Children.count(children) > 1 ? childControls[1] : null }
+                  { paneContent }
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </Popup>
       </div>
     );
   }
