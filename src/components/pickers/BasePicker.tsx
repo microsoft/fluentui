@@ -168,11 +168,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     let { value } = this.state;
 
     if (!this._suggestionStore.currentIndex || updatedValue !== value) {
-      Promise.resolve(this.props.onResolveSuggestions(updatedValue, this.state.items)).then((newSuggestions: T[]) => this.resolveNewValue(newSuggestions, updatedValue));
+      Promise.resolve(this.props.onResolveSuggestions(updatedValue, this.state.items))
+        .then((newSuggestions: T[]) => this._resolveNewValue(updatedValue, newSuggestions));
     }
   }
 
-  protected resolveNewValue(suggestions: T[], updatedValue: string) {
+  protected _resolveNewValue(updatedValue: string, suggestions: T[]) {
 
     this._suggestionStore.updateSuggestions(suggestions);
     let itemValue: string = undefined;
@@ -275,7 +276,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected _onGetMoreResults() {
     if (this.props.onGetMoreResults) {
-      this._updateSuggestions(this.props.onGetMoreResults(this.state.value, this.state.items));
+      Promise.resolve(this.props.onGetMoreResults(this.state.value, this.state.items))
+      .then((suggestions: T[]) => this._updateSuggestions(suggestions));
     }
     this._input.focus();
     this.setState({ moreSuggestionsAvailable: false });
