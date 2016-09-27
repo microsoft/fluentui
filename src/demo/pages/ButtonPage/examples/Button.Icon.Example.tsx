@@ -16,7 +16,7 @@ export class ButtonIconExample extends React.Component<any, any> {
     return (
       <div className='ms-BasicButtonsExample'>
         <Label>Icon button</Label>
-        <Button 
+        <Button
           disabled={ isDisabled }
           buttonType={ ButtonType.icon }
           icon='Emoji2'
