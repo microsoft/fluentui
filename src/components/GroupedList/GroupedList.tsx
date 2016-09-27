@@ -13,7 +13,6 @@ import {
   List
 } from '../../List';
 import {
-  Selection,
   SelectionMode
 } from '../../utilities/selection/index';
 import {
@@ -32,7 +31,8 @@ export interface IGroupedListState {
 export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListState> implements IGroupedList {
   public static defaultProps = {
     selectionMode: SelectionMode.multiple,
-    isHeaderVisible: true
+    isHeaderVisible: true,
+    groupProps: {}
   };
 
   public refs: {

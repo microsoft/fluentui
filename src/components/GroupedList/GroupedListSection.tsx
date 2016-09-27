@@ -190,13 +190,37 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
   }
 
   public forceListUpdate() {
+    let { group } = this.props;
+
     if (this.refs.list) {
       this.refs.list.forceUpdate();
-    }
 
-    for (let subGroupId in this._subGroups) {
-      if (this._subGroups.hasOwnProperty(subGroupId)) {
-        this._subGroups[subGroupId].forceListUpdate();
+      if (group && group.children && group.children.length > 0) {
+        let subGroupCount = group.children.length;
+
+        for (let i = 0; i < subGroupCount; i++) {
+          let subGroup = this.refs.list.refs['subGroup_' + String(i)] as GroupedListSection;
+
+          if (subGroup) {
+            subGroup.forceListUpdate();
+          }
+        }
+      }
+    } else {
+      let subGroup = this.refs['subGroup_' + String(0)] as GroupedListSection;
+
+      if (subGroup) {
+        subGroup.forceListUpdate();
+
+        if (this.refs.list) {
+          this.refs.list.forceUpdate();
+        }
+
+        for (let subGroupId in this._subGroups) {
+          if (this._subGroups.hasOwnProperty(subGroupId)) {
+            this._subGroups[subGroupId].forceListUpdate();
+          }
+        }
       }
     }
   }
@@ -224,11 +248,11 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
 
     return (
       <List
-        items={items}
-        onRenderCell={(item, itemIndex) => onRenderCell(groupNestingDepth, item, itemIndex) }
+        items={ items }
+        onRenderCell={ (item, itemIndex) => onRenderCell(groupNestingDepth, item, itemIndex) }
         ref={ 'list' }
-        renderCount={Math.min(count, renderCount) }
-        startIndex={startIndex}
+        renderCount={ Math.min(count, renderCount) }
+        startIndex={ startIndex }
         { ...listProps }
         />
     );
