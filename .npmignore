@@ -8,7 +8,6 @@
 coverage
 dist/*.stats.html
 dist/demo*.*
-examples
 gulpfile.js
 index.html
 jsconfig.json
