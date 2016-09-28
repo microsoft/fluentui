@@ -126,6 +126,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
 
   public componentWillUnmount() {
     let { dragDropHelper } = this.props;
+
     if (dragDropHelper) {
       dragDropHelper.unsubscribe(this.refs.root, this._dragDropKey);
     }
@@ -144,8 +145,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       onRenderGroupFooter = this._onRenderGroupFooter
     } = this.props;
     let renderCount = group && getGroupItemLimit ? getGroupItemLimit(group) : Infinity;
+    let isFooterVisible = group && !group.children && !group.isCollapsed && !group.isShowingAll && group.count > renderCount;
     let hasNestedGroups = group && group.children && group.children.length > 0;
-    let isFooterVisible = group && !hasNestedGroups && !group.isCollapsed;
 
     let dividerProps: IGroupDividerProps = {
       group: group,
@@ -159,7 +160,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
 
     return (
       <div
-        ref={ 'root' }
+        ref='root'
         className={ css('ms-GroupedList-group', this._getDroppingClassName()) }
         >
         { onRenderGroupHeader(groupHeaderProps, this._onRenderGroupHeader) }
@@ -170,7 +171,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
               hasNestedGroups ?
                 (
                   <List
-                    ref={ 'list' }
+                    ref='list'
                     items={ group.children }
                     onRenderCell={ this._renderSubGroup }
                     getItemCountForPage={ () => 1 }
