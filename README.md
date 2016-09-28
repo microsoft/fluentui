@@ -2,7 +2,7 @@
 
 ##### The React-based front-end framework for building experiences for Office and Office 365.
 
-[![npm version](https://badge.fury.io/js/OfficeDev%2Foffice-ui-fabric-react.svg)](https://badge.fury.io/js/OfficeDev/office-ui-fabric-react)
+[![npm version](https://badge.fury.io/js/office-ui-fabric-react.svg)](https://badge.fury.io/js/office-ui-fabric-react)
 [![Build Status](https://travis-ci.org/OfficeDev/office-ui-fabric-react.svg?branch=master)](https://travis-ci.org/OfficeDev/office-ui-fabric-react)
 [![Dependencies](https://david-dm.org/OfficeDev/office-ui-fabric-react.svg)](https://david-dm.org/OfficeDev/office-ui-fabric-react)
 
