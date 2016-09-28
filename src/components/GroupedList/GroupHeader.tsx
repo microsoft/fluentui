@@ -76,7 +76,7 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
               onClick={ this._onToggleSelectGroupClick } >
               <Check isChecked={ isSelected } />
             </button>
-            ) : (selectionMode !== SelectionMode.none ? GroupSpacer({ count: 1 }) : null )
+          ) : (selectionMode !== SelectionMode.none ? GroupSpacer({ count: 1 }) : null)
           }
 
           { GroupSpacer({ count: groupLevel }) }
@@ -85,12 +85,12 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
           <button className='ms-GroupHeader-expand' onClick={ this._onToggleCollapse }>
             <i className={ css('ms-Icon ms-Icon--ChevronDown', {
               'is-collapsed': isCollapsed
-            })} />
+            }) } />
           </button>
 
           <div className='ms-GroupHeader-title ms-font-xl'>
             <span>{ group.name } </span>
-            <span>({ group.count })</span>
+            <span>({ group.count }) </span>
           </div>
 
           <div className={ css('ms-GroupHeader-loading', { 'is-loading': isLoadingVisible }) }>
@@ -126,7 +126,9 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
   private _onToggleSelectGroupClick(ev: React.MouseEvent) {
     let { onToggleSelectGroup, group } = this.props;
 
-    onToggleSelectGroup(group);
+    if (onToggleSelectGroup) {
+      onToggleSelectGroup(group);
+    }
 
     ev.preventDefault();
     ev.stopPropagation();
@@ -138,7 +140,7 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
 
     if (onGroupHeaderClick) {
       onGroupHeaderClick(group);
-    } else {
+    } else if (onToggleSelectGroup) {
       onToggleSelectGroup(group);
     }
   }

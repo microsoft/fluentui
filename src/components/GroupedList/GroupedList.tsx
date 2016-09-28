@@ -284,11 +284,9 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     } else {
       if (group) {
         group.isShowingAll = !group.isShowingAll;
-
-        this.setState({
-          groups: groups
-        });
       }
+
+      this.forceUpdate();
     }
   }
 

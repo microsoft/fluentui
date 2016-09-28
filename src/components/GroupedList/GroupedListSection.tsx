@@ -100,7 +100,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     [key: string]: React.ReactInstance,
     root: HTMLElement,
     list: List
-  }
+  };
 
   private _subGroups: {
     [key: string]: GroupedListSection;

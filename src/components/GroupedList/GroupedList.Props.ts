@@ -173,9 +173,6 @@ export interface IGroupDividerProps {
   /** Text shown on group headers to indicate the group is being loaded. */
   loadingText?: string;
 
-  /** Determines if the group selection check box is shown for collapsed groups. */
-  isCollapsedGroupSelectVisible?: boolean;
-
   /** The group to be rendered by the header. */
   group?: IGroup;
 
@@ -205,4 +202,7 @@ export interface IGroupDividerProps {
 
   /** Callback for when the group is selected. */
   onToggleSelectGroup?: (group: IGroup) => void;
+
+  /** Determines if the group selection check box is shown for collapsed groups. */
+  isCollapsedGroupSelectVisible?: boolean;
 }
