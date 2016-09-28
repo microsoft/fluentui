@@ -169,10 +169,15 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
     if (!this._suggestionStore.currentIndex || updatedValue !== value) {
       let suggestions: T[] | PromiseLike<T[]> = this.props.onResolveSuggestions(updatedValue, this.state.items);
-      if ((suggestions as T[]).length) {
-        this._resolveNewValue(updatedValue, (suggestions as T[]))
-      } else if ((suggestions as PromiseLike<T[]>).then) {
-        (suggestions as PromiseLike<T[]>).then((newSuggestions: T[]) => this._resolveNewValue(updatedValue, newSuggestions));
+      let suggestionsArray: T[] = suggestions as T[];
+      let suggestionsPromiseLike: PromiseLike<T[]> = suggestions as PromiseLike<T[]>;
+
+      // Check to see if the returned value is an array, if it is then just pass it into the next function.
+      // If the returned value is not an array then check to see if it's a promise or PromiseLike. If it is then resolve it asynchronously.
+      if (suggestionsArray.length) {
+        this._resolveNewValue(updatedValue, suggestionsArray)
+      } else if (suggestionsPromiseLike.then) {
+        suggestionsPromiseLike.then((newSuggestions: T[]) => this._resolveNewValue(updatedValue, newSuggestions));
       }
     }
   }
@@ -281,10 +286,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected _onGetMoreResults() {
     if (this.props.onGetMoreResults) {
       let suggestions: T[] | PromiseLike<T[]> = this.props.onGetMoreResults(this.state.value, this.state.items);
-      if ((suggestions as T[]).length) {
-       this._updateSuggestions(suggestions as T[]);
-      } else if ((suggestions as PromiseLike<T[]>).then) {
-        (suggestions as PromiseLike<T[]>).then((newSuggestions: T[]) => this._updateSuggestions(newSuggestions));
+      let suggestionsArray: T[] = suggestions as T[];
+      let suggestionsPromiseLike: PromiseLike<T[]> = suggestions as PromiseLike<T[]>;
+
+      if (suggestionsArray.length) {
+        this._updateSuggestions(suggestionsArray);
+      } else if (suggestionsPromiseLike.then) {
+        suggestionsPromiseLike.then((newSuggestions: T[]) => this._updateSuggestions(newSuggestions));
       }
     }
     this._input.focus();
