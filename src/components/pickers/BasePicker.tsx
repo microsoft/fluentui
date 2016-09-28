@@ -168,8 +168,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     let { value } = this.state;
 
     if (!this._suggestionStore.currentIndex || updatedValue !== value) {
-      Promise.resolve(this.props.onResolveSuggestions(updatedValue, this.state.items))
-        .then((newSuggestions: T[]) => this._resolveNewValue(updatedValue, newSuggestions));
+      let suggestions: T[] | PromiseLike<T[]> = this.props.onResolveSuggestions(updatedValue, this.state.items);
+      if ((suggestions as T[]).length) {
+        this._resolveNewValue(updatedValue, (suggestions as T[]))
+      } else if ((suggestions as PromiseLike<T[]>).then) {
+        (suggestions as PromiseLike<T[]>).then((newSuggestions: T[]) => this._resolveNewValue(updatedValue, newSuggestions));
+      }
     }
   }
 
@@ -276,8 +280,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected _onGetMoreResults() {
     if (this.props.onGetMoreResults) {
-      Promise.resolve(this.props.onGetMoreResults(this.state.value, this.state.items))
-      .then((suggestions: T[]) => this._updateSuggestions(suggestions));
+      let suggestions: T[] | PromiseLike<T[]> = this.props.onGetMoreResults(this.state.value, this.state.items);
+      if ((suggestions as T[]).length) {
+       this._updateSuggestions(suggestions as T[]);
+      } else if ((suggestions as PromiseLike<T[]>).then) {
+        (suggestions as PromiseLike<T[]>).then((newSuggestions: T[]) => this._updateSuggestions(newSuggestions));
+      }
     }
     this._input.focus();
     this.setState({ moreSuggestionsAvailable: false });
