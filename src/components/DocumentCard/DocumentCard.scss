@@ -43,17 +43,24 @@
   // Remove the usual accent color from the preview
   .ms-DocumentCardPreview {
     border-bottom: none;
-
-    .ms-Image {
-      max-height: 106px;
-      max-width: 144px
-    }
+    max-height: 106px;
+    max-width: 144px;
 
     .ms-DocumentCardPreview-icon {
       .ms-Image-image {
-        max-height: 16px;
-        max-width: 16px;
+        max-height: 32px;
+        max-width: 32px;
       }
+    }
+  }
+
+  .ms-DocumentCardPreview.is-fileList {
+    @include border-right(1px, solid, $ms-color-neutralLight);
+  }
+
+  .ms-DocumentCardPreview-fileList {
+    li {
+      @include padding-left(24px); // Make room for icon
     }
   }
 
@@ -68,5 +75,7 @@
 
   .ms-DocumentCardTitle {
       padding: 0px 12px 8px 12px;
+      @include ms-font-m;
+      line-height: 16px;
   }
 }
