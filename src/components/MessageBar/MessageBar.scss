@@ -37,7 +37,6 @@ $MessageBar-padding: 8px;
 .ms-MessageBar-icon {
   @include padding-right($MessageBar-padding);
   font-size: $ms-icon-size-m;
-  //@include ms-fontColor-neutralSecondaryAlt;
   min-width: 16px;
   min-height: 16px;
   display: flex;
@@ -45,7 +44,6 @@ $MessageBar-padding: 8px;
 
 .ms-MessageBar-text {
   @include ms-font-s;
-  //color: $ms-color-neutralPrimary;
   min-width: 0;
   display: flex;
 }
