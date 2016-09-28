@@ -28,8 +28,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
   public static defaultProps = {
     isBeakVisible: true,
-    beakStyle: 'ms-Callout-beak',
-    beakWidth: 28,
+    beakStyle: 'ms-Callout-smallbeak',
+    beakWidth: 16,
     gapSpace: 0,
     directionalHint: getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge
   };
