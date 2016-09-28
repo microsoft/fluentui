@@ -4,6 +4,7 @@
   border-bottom: 2px solid $ms-color-neutralTertiary; // Default border color
   position: relative;
   background-color: $ms-color-neutralLighterAlt;
+  overflow: hidden;
 
   &.is-fileList {
     background-color: $ms-color-white;
