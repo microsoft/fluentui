@@ -275,7 +275,6 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
 
   @autobind
   private _onToggleSummarize(group: IGroup) {
-    let { groups } = this.state;
     let { groupProps } = this.props;
     let onToggleSummarize = groupProps && groupProps.footerProps && groupProps.footerProps.onToggleSummarize;
 
