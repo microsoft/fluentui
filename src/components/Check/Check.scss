@@ -17,12 +17,7 @@ $checkBoxHeight: 20px;
   height: 18px;
   vertical-align: top;
   position: relative;
-  cursor: default;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  @include user-select(none);
 
   &.is-checked {
     .ms-Check-background {
@@ -70,7 +65,7 @@ $checkBoxHeight: 20px;
 
   &:before {
     content: '\E91F';
-    color: #ffffff;
+    color: $ms-color-white;
   }
 
   &:after {
