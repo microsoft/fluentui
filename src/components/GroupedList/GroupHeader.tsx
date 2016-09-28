@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
-  IGroupHeaderProps,
-  IGroup
+  IGroupDividerProps
 } from './index';
 import { SelectionMode } from '../../utilities/selection/index';
 import { Check } from '../Check/Check';
@@ -10,25 +9,15 @@ import { Spinner } from '../../Spinner';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { css } from '../../utilities/css';
 import { autobind } from '../../utilities/autobind';
-import { IViewport } from '../../utilities/decorators/withViewport';
 import './GroupHeader.scss';
-
-export interface IGroupHeader {
-  group: IGroup;
-  groupIndex: number;
-  groupLevel: number;
-  headerProps?: IGroupHeaderProps;
-  viewport?: IViewport;
-  selectionMode?: SelectionMode;
-}
 
 export interface IGroupHeaderState {
   isCollapsed: boolean;
   isLoadingVisible: boolean;
 }
 
-export class GroupHeader extends React.Component<IGroupHeader, IGroupHeaderState> {
-  constructor(props: IGroupHeader) {
+export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeaderState> {
+  constructor(props: IGroupDividerProps) {
     super(props);
 
     this.state = {
@@ -54,13 +43,13 @@ export class GroupHeader extends React.Component<IGroupHeader, IGroupHeaderState
     let {
       group,
       groupLevel,
-      headerProps,
       viewport,
-      selectionMode
+      selectionMode,
+      loadingText,
+      isCollapsedGroupSelectVisible
     } = this.props;
     let { isCollapsed, isLoadingVisible } = this.state;
-    let loadingText = headerProps && headerProps.loadingText;
-    let isCollapsedGroupSelectVisible = headerProps && headerProps.isCollapsedGroupSelectVisible;
+
     if (isCollapsedGroupSelectVisible === undefined) {
       isCollapsedGroupSelectVisible = true;
     }
@@ -84,10 +73,10 @@ export class GroupHeader extends React.Component<IGroupHeader, IGroupHeaderState
             <button
               className='ms-GroupHeader-check'
               data-selection-toggle={ true }
-              onClick={ this._onToggleSelectGroup } >
+              onClick={ this._onToggleSelectGroupClick } >
               <Check isChecked={ isSelected } />
             </button>
-            ) : (selectionMode !== SelectionMode.none ? GroupSpacer({ count: 1 }) : null )
+          ) : (selectionMode !== SelectionMode.none ? GroupSpacer({ count: 1 }) : null)
           }
 
           { GroupSpacer({ count: groupLevel }) }
@@ -96,12 +85,12 @@ export class GroupHeader extends React.Component<IGroupHeader, IGroupHeaderState
           <button className='ms-GroupHeader-expand' onClick={ this._onToggleCollapse }>
             <i className={ css('ms-Icon ms-Icon--ChevronDown', {
               'is-collapsed': isCollapsed
-            })} />
+            }) } />
           </button>
 
           <div className='ms-GroupHeader-title ms-font-xl'>
             <span>{ group.name } </span>
-            <span>({ group.count })</span>
+            <span>({ group.count }) </span>
           </div>
 
           <div className={ css('ms-GroupHeader-loading', { 'is-loading': isLoadingVisible }) }>
@@ -115,10 +104,8 @@ export class GroupHeader extends React.Component<IGroupHeader, IGroupHeaderState
 
   @autobind
   private _onToggleCollapse(ev: React.MouseEvent) {
-    let { group, headerProps } = this.props;
+    let { group, onToggleCollapse, isGroupLoading } = this.props;
     let { isCollapsed } = this.state;
-    let onToggleCollapse = headerProps && headerProps.onToggleCollapse;
-    let isGroupLoading = headerProps && headerProps.isGroupLoading;
 
     let newCollapsed = !isCollapsed;
     let newLoadingVisible = !newCollapsed && isGroupLoading && isGroupLoading(group);
@@ -136,9 +123,8 @@ export class GroupHeader extends React.Component<IGroupHeader, IGroupHeaderState
   }
 
   @autobind
-  private _onToggleSelectGroup(ev: React.MouseEvent) {
-    let { group, headerProps } = this.props;
-    let onToggleSelectGroup = headerProps && headerProps.onToggleSelectGroup;
+  private _onToggleSelectGroupClick(ev: React.MouseEvent) {
+    let { onToggleSelectGroup, group } = this.props;
 
     if (onToggleSelectGroup) {
       onToggleSelectGroup(group);
@@ -150,15 +136,12 @@ export class GroupHeader extends React.Component<IGroupHeader, IGroupHeaderState
 
   @autobind
   private _onHeaderClick() {
-    let { group, headerProps } = this.props;
+    let { group, onGroupHeaderClick, onToggleSelectGroup } = this.props;
 
-    if (headerProps) {
-      let { onGroupHeaderClick, onToggleSelectGroup } = headerProps;
-      if (onGroupHeaderClick) {
-        onGroupHeaderClick(group);
-      } else if (onToggleSelectGroup) {
-        onToggleSelectGroup(group);
-      }
+    if (onGroupHeaderClick) {
+      onGroupHeaderClick(group);
+    } else if (onToggleSelectGroup) {
+      onToggleSelectGroup(group);
     }
   }
 }
