@@ -48,9 +48,8 @@ export class MemberListPeoplePicker extends BasePeoplePicker {
     let { value } = this.state;
     if (ev.target === this._input) {
       if (value && this._input.selectionStart !== this._input.selectionEnd) {
-        this.setState({
-          displayValue: value.substring(0, this._input.selectionStart)
-        });
+        this._updateValue(value.substring(0, this._input.selectionStart));
+        ev.preventDefault();
       }
     }
   }

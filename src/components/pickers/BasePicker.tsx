@@ -342,6 +342,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     if (ev.target === this._input) {
       if (displayValue && this._suggestionStore.hasSelectedSuggestion() && this._input.selectionStart !== this._input.selectionEnd) {
         this._updateValue(displayValue.substr(0, this._input.selectionStart - 1));
+        ev.preventDefault();
       } else if (!displayValue && this.state.items.length) {
         this._removeItem(this.state.items[this.state.items.length - 1]);
       }
