@@ -3,7 +3,7 @@
 $componentPageColor: #0f8387;
 $componentPagePadding: 50px;
 $componentPageDividingMargin: 40px;
-$componentSubHeadMargin: 28px;
+$componentSubHeadMargin: 24px;
 $dosColor: #177D3E;
 $dontColor: #A61E22;
 
@@ -32,7 +32,7 @@ $dontColor: #A61E22;
 .ComponentPage-subHeading {
   @include ms-font-xxl;
   font-size: 36px;
-  margin-top: 0;
+  margin-top: 10px;
   margin-bottom: $componentSubHeadMargin;
 }
 
@@ -53,16 +53,15 @@ $dontColor: #A61E22;
 }
 
 .ComponentPage-overview {
-  font-size: $ms-font-size-l;
+  font-size: $ms-font-size-m;
   line-height: 1.5;
-  margin-bottom: 20px;
   max-width: 50em;
   padding-right: 60px;
+  margin-bottom: -6px; // Trim padding off last paragraph
 
   p {
-    font-size: $ms-font-size-l;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    margin: 0;
+    padding: 16px 0;
   }
 
   ul {
@@ -71,7 +70,6 @@ $dontColor: #A61E22;
 
   li {
     @include ms-font-m;
-    line-height: $ms-font-size-xl;
     list-style: disc;
     margin-bottom: 16px;
   }
@@ -125,10 +123,6 @@ $dontColor: #A61E22;
   background-color: $ms-color-neutralLighterAlt;
 }
 
-.ComponentPage-doSections {
-  margin-top: $componentPageDividingMargin;
-}
-
 .ComponentPage-doSection {
   width: 100%;
   box-sizing: border-box;
@@ -137,7 +131,7 @@ $dontColor: #A61E22;
   margin-bottom: 20px;
 
   h3 {
-    margin-bottom: 16px;
+    margin: 16px 0 40px 0;
     @include ms-font-xl;
 
     &::after {
@@ -155,10 +149,8 @@ $dontColor: #A61E22;
   }
 
   li {
-    @include ms-font-m;
-    line-height: $ms-font-size-xl;
     list-style: disc;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
 
   &:first-child {
@@ -170,8 +162,9 @@ $dontColor: #A61E22;
   background-color: #e74856;
 }
 
-@media(min-width: $ms-screen-lg-min) {
+@media screen and (min-width: $ms-screen-lg-min) {
   .ComponentPage-doSection {
+    margin-bottom: -10px; // Trim last list item
     width: calc(50% - 60px);
   }
 }
