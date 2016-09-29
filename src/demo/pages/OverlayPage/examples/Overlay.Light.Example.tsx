@@ -4,9 +4,9 @@ import {
   Overlay
 } from '../../../../index';
 
-import './Overlay.Basic.Example.scss';
+import './Overlay.Example.scss';
 
-export class OverlayBasicExample extends React.Component<any, any> {
+export class OverlayLightExample extends React.Component<any, any> {
   constructor() {
     super();
 
@@ -25,7 +25,7 @@ export class OverlayBasicExample extends React.Component<any, any> {
         <Button onClick={ this._onClick }>Show the overlay</Button>
         { isOverlayVisible && (
         <Overlay onClick={ this._onClick }>
-          <div className='ms-OverlayBasicExample'>
+          <div className='OverlayExample-content'>
             <p>I am content within the overlay.</p>
           </div>
         </Overlay>

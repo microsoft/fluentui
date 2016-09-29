@@ -5,12 +5,12 @@ import {
   ComponentPage
 } from '../../components/index';
 
-import { OverlayBasicExample } from './examples/Overlay.Basic.Example';
+import { OverlayLightExample } from './examples/Overlay.Light.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const OverlayBasicExampleCode = require('./examples/Overlay.Basic.Example.tsx');
+const OverlayLightExampleCode = require('./examples/Overlay.Light.Example.tsx');
 
 export class OverlayPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -26,8 +26,8 @@ export class OverlayPage extends React.Component<IComponentDemoPageProps, any> {
         title='Overlay'
         componentName='OverlayExample'
         exampleCards={
-          <ExampleCard title='Overlay' code={ OverlayBasicExampleCode }>
-            <OverlayBasicExample />
+          <ExampleCard title='Light Overlay' code={ OverlayLightExampleCode }>
+            <OverlayLightExample />
           </ExampleCard>
         }
         propertiesTables={
