@@ -17,7 +17,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * A callback for what should happen when a person types text into the input.
    * Returns the already selected items so the resolver can filter them out.
    */
-  onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[];
+  onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
   /**
    * Initial items that have already been selected and should appear in the people picker.
    */
@@ -33,7 +33,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * A callback that gets the rest of the results when a user clicks get more results.
    */
-  onGetMoreResults?: (filter: string, selectedItems?: T[]) => T[];
+  onGetMoreResults?: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
   /**
    * ClassName for the picker.
    */
