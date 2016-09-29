@@ -29,20 +29,20 @@ export class SelectedItemWithMenu extends React.Component<IPeoplePickerItemWithM
       onRemoveItem
     } = this.props;
     return (
-      <div className='ms-Picker-MenuItem'>
-        <div>
+      <div className='ms-PickerPersona-container'>
+        <div className='ms-PickerItem-content'>
           <Persona
             { ...item }
             presence={ item.presence ? item.presence : PersonaPresence.online }
             />
         </div>
-        <div ref='ellipsisRef'>
+        <div ref='ellipsisRef' className='ms-PickerItem-content'>
           <Button
             icon={ 'More' }
             buttonType={ ButtonType.icon } onClick={ this.onContextualMenu }
             />
         </div>
-        <div>
+        <div className='ms-PickerItem-content'>
           <Button
             icon={ 'Cancel' }
             buttonType={ ButtonType.icon }
