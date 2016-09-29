@@ -29,7 +29,7 @@ export class SelectedItemWithMenu extends React.Component<IPeoplePickerItemWithM
       onRemoveItem
     } = this.props;
     return (
-      <div className='ms-PickerPersona-Container'>
+      <div className='ms-PickerPersona-container'>
         <div className='ms-PickerItem-content'>
           <Persona
             { ...item }

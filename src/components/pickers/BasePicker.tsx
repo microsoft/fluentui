@@ -342,6 +342,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     if (ev.target === this._input) {
       if (displayValue && this._suggestionStore.hasSelectedSuggestion() && this._input.selectionStart !== this._input.selectionEnd) {
         this._updateValue(displayValue.substr(0, this._input.selectionStart - 1));
+        // Since this effectively deletes a letter from the string we need to preventDefault so that
+        // the backspace doesn't try to delete a letter that's already been deleted. If a letter is deleted
+        // it can trigger the onChange event again which can have unintended consequences.
         ev.preventDefault();
       } else if (!displayValue && this.state.items.length) {
         this._removeItem(this.state.items[this.state.items.length - 1]);
