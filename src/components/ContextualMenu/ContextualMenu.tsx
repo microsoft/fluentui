@@ -221,15 +221,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   }
 
   private _renderMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
-    let { expandedMenuItemKey, subMenuId } = this.state;
-    let ariaLabel = '';
-
-    if (item.ariaLabel) {
-      ariaLabel = item.ariaLabel;
-    } else if (item.name) {
-      ariaLabel = item.name;
-    }
-
     if (item.onRender) {
       return item.onRender(item);
     }
@@ -238,25 +229,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     if (item.href) {
       return this._renderAnchorMenuItem(item, index, hasCheckmarks, hasIcons);
     }
-    return React.createElement(
-      'button',
-      assign(
-      {
-        className: css('ms-ContextualMenu-link', { 'is-expanded': (expandedMenuItemKey === item.key) }),
-        onClick: this._onItemClick.bind(this, item),
-        onKeyDown: item.items && item.items.length ? this._onItemKeyDown.bind(this, item) : null,
-        onMouseEnter: this._onItemMouseEnter.bind(this, item),
-        onMouseLeave: this._onMouseLeave,
-        onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
-        disabled: item.isDisabled,
-        role: 'menuitem',
-        href: item.href,
-        title: item.title,
-        'aria-label': ariaLabel,
-        'aria-haspopup': item.items && item.items.length ? true : null,
-        'aria-owns': item.key === expandedMenuItemKey ? subMenuId : null
-      }, getNativeProps(item, buttonProperties)),
-      this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons));
+    return this._renderButtonItem(item, index, hasCheckmarks, hasIcons);
   }
 
   private _renderAnchorMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): JSX.Element {
@@ -265,7 +238,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         <a
           { ...getNativeProps(item, anchorProperties) }
           href={ item.href }
-          className={ css('ms-ContextualMenu-link', item.isDisabled ? 'is-disabled' : '' ) }
+          className={ css('ms-ContextualMenu-link', item.isDisabled ? 'is-disabled' : '') }
           role='menuitem'
           onClick={ this._onAnchorClick.bind(this, item) }>
           { (hasIcons) ? (
@@ -275,6 +248,42 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
           <span className='ms-ContextualMenu-linkText ms-fontWeight-regular'> { item.name } </span>
         </a>
       </div >);
+  }
+
+  private _renderButtonItem(
+    item: IContextualMenuItem,
+    index: number,
+    hasCheckmarks?: boolean,
+    hasIcons?: boolean) {
+    let { expandedMenuItemKey, subMenuId } = this.state;
+    let ariaLabel = '';
+
+    if (item.ariaLabel) {
+      ariaLabel = item.ariaLabel;
+    } else if (item.name) {
+      ariaLabel = item.name;
+    }
+
+    let itemButtonProperties = {
+      className: css('ms-ContextualMenu-link', { 'is-expanded': (expandedMenuItemKey === item.key) }),
+      onClick: this._onItemClick.bind(this, item),
+      onKeyDown: item.items && item.items.length ? this._onItemKeyDown.bind(this, item) : null,
+      onMouseEnter: this._onItemMouseEnter.bind(this, item),
+      onMouseLeave: this._onMouseLeave,
+      onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
+      disabled: item.isDisabled,
+      role: 'menuitem',
+      href: item.href,
+      title: item.title,
+      'aria-label': ariaLabel,
+      'aria-haspopup': item.items && item.items.length ? true : null,
+      'aria-owns': item.key === expandedMenuItemKey ? subMenuId : null
+    };
+
+    return React.createElement(
+      'button',
+      assign({}, getNativeProps(item, buttonProperties), itemButtonProperties),
+      this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons));
   }
 
   private _renderMenuItemChildren(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
