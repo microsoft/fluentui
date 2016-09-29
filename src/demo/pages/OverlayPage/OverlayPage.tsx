@@ -5,12 +5,14 @@ import {
   ComponentPage
 } from '../../components/index';
 
-import { OverlayLightExample } from './examples/Overlay.Light.Example';
-import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { getPageRouteFromState } from '../../utilities/pageroute';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
+import { OverlayDarkExample } from './examples/Overlay.Dark.Example';
+import { OverlayLightExample } from './examples/Overlay.Light.Example';
 
 const OverlayLightExampleCode = require('./examples/Overlay.Light.Example.tsx');
+const OverlayDarkExampleCode = require('./examples/Overlay.Dark.Example.tsx');
 
 export class OverlayPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -26,14 +28,17 @@ export class OverlayPage extends React.Component<IComponentDemoPageProps, any> {
         title='Overlay'
         componentName='OverlayExample'
         exampleCards={
-          <ExampleCard title='Light Overlay' code={ OverlayLightExampleCode }>
-            <OverlayLightExample />
-          </ExampleCard>
+          <div>
+            <ExampleCard title='Light' code={ OverlayLightExampleCode }>
+              <OverlayLightExample />
+            </ExampleCard>
+            <ExampleCard title='Dark'>
+              <OverlayDarkExample />
+            </ExampleCard>
+          </div>
         }
         propertiesTables={
-
           <PropertiesTableSet componentName='Overlay' />
-
         }
         overview={
           <div>
