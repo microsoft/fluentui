@@ -13,10 +13,15 @@ $MessageBar-padding: 8px;
   @include ms-baseFont;
   padding: $MessageBar-padding;
   @include ms-bgColor-info;
+  color: $ms-color-infoText;
   width: 100%;
   box-sizing: border-box;
   display: flex;
   position: relative;
+
+  .ms-MessageBar-icon {
+    color: $ms-color-info;
+  }
 
   .ms-Link {
     font-size: $ms-font-size-s;
@@ -32,7 +37,6 @@ $MessageBar-padding: 8px;
 .ms-MessageBar-icon {
   @include padding-right($MessageBar-padding);
   font-size: $ms-icon-size-m;
-  @include ms-fontColor-neutralSecondaryAlt;
   min-width: 16px;
   min-height: 16px;
   display: flex;
@@ -40,7 +44,6 @@ $MessageBar-padding: 8px;
 
 .ms-MessageBar-text {
   @include ms-font-s;
-  color: $ms-color-neutralPrimary;
   min-width: 0;
   display: flex;
 }
@@ -50,6 +53,7 @@ $MessageBar-padding: 8px;
 //
 .ms-MessageBar.ms-MessageBar--warning {
   @include ms-bgColor-warning;
+  color: $ms-color-warningText;
 }
 
 
@@ -57,6 +61,7 @@ $MessageBar-padding: 8px;
 //
 .ms-MessageBar.ms-MessageBar--severeWarning {
   @include ms-bgColor-severeWarning;
+  color: $ms-color-severeWarningText;
 
   .ms-MessageBar-icon {
     @include ms-fontColor-severeWarning;
@@ -68,6 +73,7 @@ $MessageBar-padding: 8px;
 //
 .ms-MessageBar.ms-MessageBar--error {
   @include ms-bgColor-error;
+  color: $ms-color-errorText;
 
   .ms-MessageBar-icon {
     @include ms-fontColor-error;
@@ -79,6 +85,7 @@ $MessageBar-padding: 8px;
 //
 .ms-MessageBar.ms-MessageBar--blocked {
   @include ms-bgColor-error;
+  color: $ms-color-errorText;
 
   .ms-MessageBar-icon {
     @include ms-fontColor-error;
@@ -90,6 +97,7 @@ $MessageBar-padding: 8px;
 //
 .ms-MessageBar.ms-MessageBar--success {
   @include ms-bgColor-success;
+  color: $ms-color-successText;
 
   .ms-MessageBar-icon {
     @include ms-fontColor-green;

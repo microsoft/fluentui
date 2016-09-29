@@ -19,11 +19,9 @@
 }
 
 .ms-Label {
-  @include ms-baseFont;
+  @include ms-font-m;
   @include ms-u-normalize;
   color: $ms-color-neutralPrimary;
-  font-size: $ms-font-size-s;
-  font-weight: $ms-font-weight-regular;
   box-sizing: border-box;
   display: block;
   padding: 5px 0;

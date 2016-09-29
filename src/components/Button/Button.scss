@@ -334,7 +334,7 @@ $button-commandButtonHeight: 40px;
   }
 }
 
-.ms-Button--icon {
+.ms-Button.ms-Button--icon {
   @include focus-border(0px);
   background-color: transparent;
   color: $ms-color-neutralSecondary;
