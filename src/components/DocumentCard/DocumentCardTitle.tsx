@@ -1,6 +1,8 @@
+/* tslint:disable:no-unused-variable */
 import * as React from 'react';
+/* tslint:enable:no-unused-variable */
+
 import { IDocumentCardTitleProps } from './DocumentCard.Props';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { BaseComponent } from '../../common/BaseComponent';
 import { autobind } from '../../utilities/autobind';
 import './DocumentCardTitle.scss';
