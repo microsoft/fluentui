@@ -44,10 +44,10 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
   }
 
   public componentWillReceiveProps(newProps: IDocumentCardTitleProps) {
-    if (!newProps.shouldTruncate || !newProps.title || newProps.title.length <= TRUNCATION_MINIMUM_LENGTH) {
-      this._events.off(window, 'resize');
-      this._isTruncated = false;
-    } else {
+    this._events.off(window, 'resize');
+    this._isTruncated = false;
+
+    if (newProps.shouldTruncate && newProps.title && newProps.title.length > TRUNCATION_MINIMUM_LENGTH) {
       this._startTruncation(newProps);
       this._events.on(window, 'resize', this._updateTruncation);
     }
