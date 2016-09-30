@@ -64,6 +64,7 @@
   height: 32px;
   @include padding(6px, 12px, 7px, 12px);
   width: 100%;
+  min-width: 180px;
   outline: 0;
   text-overflow: ellipsis;
 
@@ -110,6 +111,7 @@
   border-bottom: 1px solid $ms-color-neutralTertiaryAlt;
   display: table;
   width: 100%;
+  min-width: 180px;
 
   &:hover {
     border-color: $ms-color-neutralSecondaryAlt;
@@ -193,6 +195,7 @@
     font-weight: $ms-font-weight-regular;
     line-height: 17px;
     min-height: 60px;
+    min-width: 260px;
     padding-top: 6px;
     overflow: auto;
   }

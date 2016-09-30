@@ -31,6 +31,10 @@ $Dialog-default-max-width: 340px;
   line-height: 100vh;
   text-align: center;
 
+  // Flexbox for Modern Browsers
+  @include flexBox();
+  @include alignItems(center);
+
   &::before {
     @include dialogPositioningIE9Fallback();
     content: "";
