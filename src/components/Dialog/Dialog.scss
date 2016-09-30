@@ -66,8 +66,6 @@ $Dialog-default-max-width: 340px;
   position: relative;
   @include text-align(left);
   outline: 3px solid transparent;
-  max-height: 100%;
-  overflow-y: auto;
 }
 
 // Close button, hidden by default
