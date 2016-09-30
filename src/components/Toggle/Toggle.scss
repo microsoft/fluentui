@@ -29,7 +29,6 @@
   margin-bottom: 8px;
   user-select: none;
 
-  // Interactive overrides
   &.is-enabled {
 
     .ms-Toggle-button {
@@ -37,7 +36,7 @@
     }
 
     .ms-Toggle-background {
-      border: 1px solid $ms-color-neutralSecondaryAlt;
+      border: 1px solid $neutralBackgroundColor;
     }
 
     .ms-Toggle-thumb {
@@ -46,34 +45,31 @@
 
     .ms-Toggle-slider:hover {
       .ms-Toggle-background {
-        border: 1px solid $ms-color-black;
+        border: 1px solid $foregroundColor;
       }
 
       .ms-Toggle-thumb {
-        background: $ms-color-black;
+        background: $foregroundColor;
       }
     }
 
+    // Checked state overrides
     &.is-checked {
       .ms-Toggle-background {
-        background: $ms-color-themePrimary;
-        border: 1px solid $ms-color-themePrimary;
+        background: $inputAccentedBackground;
+        border: 1px solid $inputAccentedBackground;
         @include highContrast-bgColor($ms-color-white, $ms-color-black);
       }
 
       .ms-Toggle-thumb {
-        background: $ms-color-white;
+        background: $counteraccentForegroundColor;
         @include left(28px);
         @include highContrast-bgColor($ms-color-black, $ms-color-white);
       }
 
       .ms-Toggle-slider:hover {
         .ms-Toggle-background {
-          border: 1px solid $ms-color-themePrimary;
-          background: $ms-color-themeSecondary;
-        }
-        .ms-Toggle-thumb {
-          background: $ms-color-white;
+          background: $accentBackgroundHoverColor;
         }
       }
     }
@@ -83,12 +79,12 @@
   // Disabled overrides
   &.is-disabled {
     .ms-Toggle-thumb {
-      background: $ms-color-neutralTertiaryAlt;
+      background: $disabledBackgroundColor;
       @include highContrast-bgColor($ms-color-contrastBlackDisabled, $ms-color-contrastWhiteDisabled);
     }
 
     .ms-Toggle-background {
-      border: 1px solid $ms-color-neutralTertiaryAlt;
+      border: 1px solid $disabledBackgroundColor;
 
       @media screen and (-ms-high-contrast: active) {
         border-color: $ms-color-contrastBlackDisabled;
@@ -101,13 +97,13 @@
 
     &.is-checked {
       .ms-Toggle-background {
-        background: $ms-color-neutralTertiaryAlt;
+        background: $disabledBackgroundColor;
         border: 1px solid transparent;
         @include highContrast-bgColor($ms-color-contrastBlackDisabled, $ms-color-contrastWhiteDisabled);
       }
 
       .ms-Toggle-thumb {
-        background: $ms-color-neutralLight;
+        background: $disabledForegroundColor;
         @include left(28px);
         @include highContrast-bgColor($ms-color-black, $ms-color-white);
       }
@@ -158,7 +154,7 @@
   border-radius: 10px;
   top: 4px;
   @include left(4px);
-  background: $ms-color-neutralSecondary;
+  background: $neutralBackgroundColor;
   transition: all 0.1s ease;
 }
 

@@ -1,5 +1,9 @@
-import { IColor } from './IColor';
-import { assign } from '../../utilities/object';
+import {
+  IColor,
+  MAX_COLOR_SATURATION,
+  MAX_COLOR_VALUE
+} from './IColor';
+import { assign } from '../object';
 
 let cssColor = require('color-functions/lib/css-color');
 let rgb2hex = require('color-functions/lib/rgb2hex');
@@ -7,24 +11,13 @@ let hsv2hex = require('color-functions/lib/hsv2hex');
 let rgb2hsv = require('color-functions/lib/rgb2hsv');
 let hsv2rgb = require('color-functions/lib/hsv2rgb');
 
-export const MAX_COLOR_SATURATION = 100;
-export const MAX_COLOR_HUE = 359;
-export const MAX_COLOR_VALUE = 100;
-
-export interface IColor {
-  a: number;
-  b: number;
-  g: number;
-  h: number;
-  hex: string;
-  r: number;
-  s: number;
-  str: string;
-  v: number;
+export function getStrFromRGBA(rgba: {a: number, b: number, g: number, r: number}) {
+  let { a, b, g, r } = rgba;
+  return (a === 100) ? `#${ rgb2hex(r, g, b) }` : `rgba(${r}, ${g}, ${b}, ${a / 100})`;
 }
 
-export function getColorFromString(color: string): IColor {
-  let { a, b, g, r } = cssColor(color);
+export function getColorFromRGBA(rgba: {a: number, b: number, g: number, r: number}): IColor {
+  let { a, b, g, r } = rgba;
   let { h, s, v } = rgb2hsv(r, g, b);
 
   return {
@@ -35,10 +28,14 @@ export function getColorFromString(color: string): IColor {
     hex: rgb2hex(r, g, b),
     r: r,
     s: s,
-    str: color,
+    str: getStrFromRGBA(rgba),
     v: v
   };
+}
 
+export function getColorFromString(color: string): IColor {
+  let { a, b, g, r } = cssColor(color);
+  return getColorFromRGBA({a: a, b: b, g: g, r: r});
 }
 
 export function getFullColorString(color: IColor): string {
@@ -47,36 +44,12 @@ export function getFullColorString(color: IColor): string {
 
 export function updateSV(color: IColor, s: number, v: number): IColor {
   let { r, g, b } = hsv2rgb(color.h, s, v);
-  let hex = rgb2hex(r, g, b);
-
-  return {
-    a: color.a,
-    b: b,
-    g: g,
-    h: color.h,
-    hex: hex,
-    r: r,
-    s: s,
-    str: (color.a === 100) ? `#${ hex }` : `rgba(${r}, ${g}, ${b}, ${color.a / 100})`,
-    v: v
-   };
+  return getColorFromRGBA({a: color.a, b: b, g: g, r: r});
 }
 
 export function updateH(color: IColor, h: number): IColor {
   let { r, g, b } = hsv2rgb(h, color.s, color.v);
-  let hex = rgb2hex(r, g, b);
-
-  return {
-    a: color.a,
-    b: b,
-    g: g,
-    h: h,
-    hex: hex,
-    r: r,
-    s: color.s,
-    str: (color.a === 100) ? `#${ hex }` : `rgba(${r}, ${g}, ${b}, ${color.a / 100})`,
-    v: color.v
-   };
+  return getColorFromRGBA({a: color.a, b: b, g: g, r: r});
 }
 
 export function updateA(color: IColor, a: number): IColor {

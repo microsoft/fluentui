@@ -26,3 +26,19 @@ $selectedActiveBackgroundColor: $ms-color-neutralTertiaryAlt;
 $selectedActiveForegroundColor: $ms-color-neutralPrimary;
 
 $dividerColor: $ms-color-neutralLight;
+
+
+/*[theme:primaryBackgroundColor, default: #FFAAFA]*/
+$foregroundColor: "[theme:Foreground, default: #333]"; // font
+
+$inputAccentedBackground: "[theme:InputAccentedBackground, default: #0078d7]"; // $ms-color-themePrimary;
+
+$accentBackgroundColor: "[theme:AccentBackground, default: #0078d7]"; // $ms-color-themePrimary;
+$accentBackgroundHoverColor: "[theme:AccentBackgroundHover, default: #2b88d8]"; // $ms-color-themeSecondary;
+$counteraccentForegroundColor: "[theme:CounteraccentForeground, default: #fff]"; // $ms-color-white;
+
+$neutralBackgroundColor: "[theme:NeutralBackground, default: #767676]"; // $ms-color-neutralTertiaryAlt
+// just use normal foreground: $neutralForegroundHoverColor: "[theme:, default: #333]"; // $ms-color-black;
+
+$disabledBackgroundColor: "[theme:DisabledBackground, default: #c8c8c8]"; // $ms-color-neutralTertiaryAlt
+$disabledForegroundColor: "[theme:DisabledForeground, default: #eaeaea]"; // $ms-color-neutralLight

@@ -39,6 +39,7 @@ import { TextFieldPage } from '../../pages/TextFieldPage/TextFieldPage';
 import { TogglePage } from '../../pages/TogglePage/TogglePage';
 import { ThemePage } from '../../pages/ThemePage/ThemePage';
 import { DetailsListBasicExample } from '../../pages/DetailsListPage/examples/DetailsList.Basic.Example';
+import { ThemerPage } from '../../pages/ThemerPage/ThemerPage';
 
 export enum ExampleStatus {
   placeholder,
@@ -350,6 +351,12 @@ export const AppState: IAppState = {
           key: 'Themes',
           name: 'Themes',
           url: '#examples/themes'
+        },
+        {
+          component: ThemerPage,
+          name: 'Theming',
+          status: ExampleStatus.started,
+          url: '#examples/themer'
         }
       ],
       name: 'Utilities'

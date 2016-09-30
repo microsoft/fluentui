@@ -1,10 +1,10 @@
 import * as React from 'react';
+import { getFullColorString } from '../../utilities/Color/Colors';
 import {
   IColor,
   MAX_COLOR_SATURATION,
-  MAX_COLOR_VALUE,
-  getFullColorString
- } from './colors';
+  MAX_COLOR_VALUE
+} from '../../utilities/Color/IColor';
 import { assign } from '../../utilities/object';
 import { autobind } from '../../utilities/autobind';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
