@@ -12,7 +12,6 @@ import { OverlayDarkExample } from './examples/Overlay.Dark.Example';
 import { OverlayLightExample } from './examples/Overlay.Light.Example';
 
 const OverlayLightExampleCode = require('./examples/Overlay.Light.Example.tsx');
-const OverlayDarkExampleCode = require('./examples/Overlay.Dark.Example.tsx');
 
 export class OverlayPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
