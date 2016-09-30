@@ -13,8 +13,8 @@ export class Spinner extends React.Component<ISpinnerProps, any> {
 
     return (
       <div className='ms-Spinner'>
-        <div className={ css('normal', className, {
-            'large': type === SpinnerType.large
+        <div className={ css('ms-Spinner--normal', className, {
+            'ms-Spinner--large': type === SpinnerType.large
           }) }>
           <div className='ms-Spinner-circle'></div>
         </div>

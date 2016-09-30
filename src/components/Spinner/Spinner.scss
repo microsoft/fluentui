@@ -20,11 +20,11 @@ $borderSize: 1.5px;
 }
 
 .ms-Spinner {
-  .normal {
+  .ms-Spinner--normal {
     width: 20px;
     height: 20px;
     margin: auto;
-    &.large {
+    &.ms-Spinner--large {
       width: 28px;
       height: 28px;
     }
