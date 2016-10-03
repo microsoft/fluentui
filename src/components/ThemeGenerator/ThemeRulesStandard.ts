@@ -3,18 +3,6 @@ import { getColorFromString } from '../../utilities/Color/Colors';
 
 import { IThemeSlotRule } from './IThemeSlotRule';
 
-/*export enum ThemeSlotsStandard {
-  primaryPalette,
-
-  primaryLightest,
-  primaryLighter,
-  primaryMedium,
-  primaryDarker,
-  primaryDarkest,
-
-  inputAccentedBackground
-}*/
-
 export enum PaletteSlots {
   Primary,
   Neutral,
