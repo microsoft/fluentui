@@ -5,23 +5,6 @@ import { getShade } from '../../utilities/Color/Shades';
 import { IThemeSlotRule } from './IThemeSlotRule';
 
 export class ThemeGenerator {
-
-  /* Sets the color of each slot based on its rule. Slots that don't inherit must have a value already.
-   * If this completes without error, then the theme is ready to use.
-   * setSlot() can be called before this.
-   */
-  public static insureSlots(slotRules: Array<IThemeSlotRule>) {
-    // Get all the "root" rules, the ones which don't inherit. Then "set" them to trigger updating dependent slots.
-    slotRules.forEach((rule: IThemeSlotRule) => {
-      if (!rule.inherits) {
-        if (!rule.value) {
-          throw 'A theme slot that does not inherit must have a value.';
-        }
-        ThemeGenerator.setSlot(rule, rule.value, slotRules);
-      }
-    }); // slotRules.forEach()
-  }
-
   public static setSlot(
     rule:       IThemeSlotRule,
     value:      string | IColor,
@@ -37,26 +20,21 @@ export class ThemeGenerator {
     ThemeGenerator._setSlot(rule, valueAsIColor, slotRules, true);
   }
 
-  private static _setSlot(
-    rule:       IThemeSlotRule,
-    value:      IColor,
-    slotRules:  Array<IThemeSlotRule>,
-    isCustomized: boolean
-  ) {
-    // set the appropriate data on the slot rule first
-    if (!rule.asShade) {
-      rule.value = value;
-    } else {
-      rule.value = getShade(value, rule.asShade);
-    }
-    rule.isCustomized = isCustomized;
-
-    // then run through the rest of the rules and update dependent values
-    slotRules.forEach((ruleToUpdate: IThemeSlotRule) => {
-      if (ruleToUpdate.inherits === rule) {
-        ThemeGenerator._setSlot(ruleToUpdate, rule.value, slotRules, false);
+  /* Sets the color of each slot based on its rule. Slots that don't inherit must have a value already.
+   * If this completes without error, then the theme is ready to use.
+   * setSlot() can be called before this.
+   */
+  public static insureSlots(slotRules: Array<IThemeSlotRule>) {
+    // Get all the "root" rules, the ones which don't inherit. Then "set" them to trigger updating dependent slots.
+    for (let ruleName in slotRules) {
+      let rule: IThemeSlotRule = slotRules[ruleName];
+      if (!rule.inherits) {
+        if (!rule.value) {
+          throw 'A theme slot that does not inherit must have a value.';
+        }
+        ThemeGenerator.setSlot(rule, rule.value, slotRules);
       }
-    });
+    }
   }
 
   /* Gets the JSON-format blob that describes the theme, in this format:
@@ -65,9 +43,34 @@ export class ThemeGenerator {
    */
   public static getTheme(slotRules: Array<IThemeSlotRule>): any {
     let theme: any = {};
-    slotRules.forEach((rule: IThemeSlotRule) => {
+    for (let ruleName in slotRules) {
+      let rule: IThemeSlotRule = slotRules[ruleName];
       theme[rule.name] = rule.value.str;
-    });
+    }
     return theme;
   }
+
+  private static _setSlot(
+    rule:       IThemeSlotRule,
+    value:      IColor,
+    slotRules:  Array<IThemeSlotRule>,
+    isCustomized: boolean
+  ) {
+    // set the appropriate properties on the slot rule first
+    if (!rule.asShade) {
+      rule.value = value;
+    } else {
+      rule.value = getShade(value, rule.asShade);
+    }
+    rule.isCustomized = isCustomized;
+
+    // then run through the rest of the rules and update dependent values
+    for (let ruleName in slotRules) {
+      let ruleToUpdate: IThemeSlotRule = slotRules[ruleName];
+      if (ruleToUpdate.inherits === rule) {
+        ThemeGenerator._setSlot(ruleToUpdate, rule.value, slotRules, false);
+      }
+    }
+  }
+
 }
