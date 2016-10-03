@@ -13,8 +13,8 @@ $checkBoxHeight: 20px;
   font-family: FabricMDL2Icons;
   line-height: 1;
   text-align: center;
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
   vertical-align: top;
   position: relative;
   @include user-select(none);
@@ -57,11 +57,7 @@ $checkBoxHeight: 20px;
 
 .ms-Check-background {
   font-family: 'FabricMDL2Icons';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  position: relative;
 
   &:before {
     content: '\E91F';
@@ -75,13 +71,13 @@ $checkBoxHeight: 20px;
 
   &:before,
   &:after {
-    @include left(-2px);
-    @include right(0);
+    @include left(50%);
+    @include transform-translateX(-50%);
     font-size: 22px;
     line-height: 21px;
     display: inline-block;
-    height: 18px;
-    width: 18px;
+    height: 22px;
+    width: 22px;
     position: absolute;
     top: 0;
     bottom: 0;
