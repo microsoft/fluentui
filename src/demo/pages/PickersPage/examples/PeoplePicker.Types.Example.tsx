@@ -9,7 +9,6 @@ import {
   IPersonaProps,
   IBasePickerSuggestionsProps
 } from '../../../../index';
-import { IPersonaWithMenu } from '../../../../components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
 import { people } from './PeoplePickerExampleData';
 import { assign } from '../../../../utilities/object';
 import './PeoplePicker.Types.Example.scss';
@@ -25,46 +24,11 @@ const suggestionProps: IBasePickerSuggestionsProps = {
 
 export class PeoplePickerTypesExample extends React.Component<any, IPeoplePickerExampleState> {
   private _peopleList;
-  private contextualMenuItems: IContextualMenuItem[] = [
-    {
-      key: 'newItem',
-      icon: 'circlePlus',
-      name: 'New'
-    },
-    {
-      key: 'upload',
-      icon: 'upload',
-      name: 'Upload'
-    },
-    {
-      key: 'divider_1',
-      name: '-',
-    },
-    {
-      key: 'rename',
-      name: 'Rename'
-    },
-    {
-      key: 'properties',
-      name: 'Properties'
-    },
-    {
-      key: 'disabled',
-      name: 'Disabled item',
-      isDisabled: true
-    }
-  ];
 
   constructor() {
     super();
     this._onFilterChanged = this._onFilterChanged.bind(this);
-    this._peopleList = [];
-    people.forEach((persona: IPersonaProps) => {
-      let target: IPersonaWithMenu = {};
-
-      assign(target, persona, { menuItems: this.contextualMenuItems });
-      this._peopleList.push(target);
-    });
+    this._peopleList = people;
 
     this.state = { currentPicker: 1 };
   }

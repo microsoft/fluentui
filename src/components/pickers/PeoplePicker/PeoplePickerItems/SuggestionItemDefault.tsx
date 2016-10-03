@@ -21,7 +21,7 @@ export const SuggestionItemSmall: (persona: IPersonaProps) => JSX.Element = (per
       <Persona
         { ...personaProps }
         presence={ personaProps.presence ? personaProps.presence : PersonaPresence.online }
-        size={ PersonaSize.extraSmall }
+        size={ PersonaSize.tiny }
         className={ 'ms-PeoplePicker-Persona' }
         />
     </div>

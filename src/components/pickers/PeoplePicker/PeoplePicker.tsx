@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { BasePicker } from '../BasePicker';
 import { IBasePickerProps } from '../BasePicker.Props';
-import { SelectedItemDefault } from './PeoplePickerItems/SelectedItemDefault';
+import { SelectedItemDefault, SelectedLargeItemDefault } from './PeoplePickerItems/SelectedItemDefault';
 import { IPersonaProps } from '../../Persona/Persona.Props';
 import { SuggestionItemSmall, SuggestionItemNormal } from './PeoplePickerItems/SuggestionItemDefault';
 import { FocusZone } from '../../FocusZone';
 import { SelectionZone, SelectionMode } from '../../../utilities/selection/index';
-import { SelectedItemWithMenu } from './PeoplePickerItems/SelectedItemWithMenu';
 import { css } from '../../../utilities/css';
 import './PeoplePicker.scss';
 
@@ -84,7 +83,7 @@ export class CompactPeoplePicker extends BasePeoplePicker {
  */
 export class ListPeoplePicker extends MemberListPeoplePicker {
   public static defaultProps = {
-    onRenderItem: (props) => <SelectedItemWithMenu { ...props }/>,
+    onRenderItem: (props) => <SelectedLargeItemDefault { ...props }/>,
     onRenderSuggestionsItem: (props) => <SuggestionItemNormal { ...props }/>
   };
 }
