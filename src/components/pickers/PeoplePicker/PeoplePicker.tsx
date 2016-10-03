@@ -37,7 +37,7 @@ export class MemberListPeoplePicker extends BasePeoplePicker {
           </SelectionZone>
         </div>
         { this._renderSuggestions() }
-        <FocusZone ref={ this._resolveRef('_focusZone') } className='ms-BasePicker-SelectedItems'>
+        <FocusZone ref={ this._resolveRef('_focusZone') } className='ms-BasePicker-selectedItems'>
           { this._renderItems() }
         </FocusZone>
 
