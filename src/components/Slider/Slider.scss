@@ -61,6 +61,7 @@
 }
 
 .ms-Slider-container {
+  @include padding-left(8px); // Make room for thumb
   display: flex;
 
   .ms-Slider-slideBox {
