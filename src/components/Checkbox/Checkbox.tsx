@@ -65,6 +65,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
           onBlur={ this._onBlur }
           aria-checked={ checked }
         />
+        {this.props.children}
         <label htmlFor={ this._id }
           className={ css('ms-Checkbox-label', {
             'is-checked': checked || isChecked,
@@ -83,9 +84,9 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
   }
 
   public focus() {
-      if (this._checkBox) {
-          this._checkBox.focus();
-      }
+    if (this._checkBox) {
+      this._checkBox.focus();
+    }
   }
 
   @autobind
