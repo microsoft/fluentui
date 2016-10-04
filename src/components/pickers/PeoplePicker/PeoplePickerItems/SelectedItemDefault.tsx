@@ -16,13 +16,13 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
   } = peoplePickerItemProps;
   return (
     <div
-      className={css('ms-PickerPersona-container', {
+      className={css('ms-PeoplePickerItem-container', {
         'is-selected': isSelected
       })}
       data-is-focusable={true}
       data-selection-index={index}
       key={index} >
-      <div className='ms-PickerItem-content'>
+      <div className='ms-PeoplePickerItem-content'>
         <Persona
           { ...item }
           presence={item.presence ? item.presence : PersonaPresence.online}
@@ -33,7 +33,7 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
         onClick={() => { if (onRemoveItem) { onRemoveItem(); } } }
         icon={'Cancel'}
         buttonType={ButtonType.icon}
-        className='ms-PickerItem-content'
+        className='ms-PeoplePickerItem-content'
         />
     </div>
   );
@@ -48,13 +48,13 @@ export const SelectedLargeItemDefault: (props: IPeoplePickerItemProps) => JSX.El
   } = peoplePickerItemProps;
   return (
     <div
-      className={css('ms-PickerPersona-container', {
+      className={css('ms-PeoplePickerItem-container', {
         'is-selected': isSelected
       })}
       data-is-focusable={true}
       data-selection-index={index}
       key={index} >
-      <div className='ms-PickerItem-content'>
+      <div className='ms-PeoplePickerItem-content'>
         <Persona
           { ...item }
           presence={item.presence ? item.presence : PersonaPresence.online}
@@ -65,7 +65,7 @@ export const SelectedLargeItemDefault: (props: IPeoplePickerItemProps) => JSX.El
         onClick={() => { if (onRemoveItem) { onRemoveItem(); } } }
         icon={'Cancel'}
         buttonType={ButtonType.icon}
-        className='ms-PickerItem-content'
+        className='ms-PeoplePickerItem-content'
         />
     </div>
   );

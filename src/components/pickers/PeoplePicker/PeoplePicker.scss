@@ -1,14 +1,6 @@
 @import '../../../common/common';
 
-.ms-Picker-MenuItem.ms-result-content{
-  display: table-row;
-  .ms-result-item {
-    display: table-cell;
-    vertical-align: bottom;
-  }
-}
-
-.ms-PeoplePicker-Persona {
+.ms-PeoplePickerSuggestion-persona {
   width: 180px;
 }
 
