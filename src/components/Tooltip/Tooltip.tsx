@@ -6,7 +6,6 @@ import { TooltipContent } from './TooltipContent';
 import { ITooltipProps } from './Tooltip.Props';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import './Tooltip.scss';
 
 export interface ITooltipState {
   isTooltipVisible?: boolean;
@@ -28,9 +27,6 @@ export class Tooltip extends BaseComponent<ITooltipProps, ITooltipState> {
   // Constructor
   constructor(props: ITooltipProps) {
     super(props);
-
-    this.state = {
-    };
   }
 
   public render() {

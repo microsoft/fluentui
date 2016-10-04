@@ -9,10 +9,6 @@ import './Tooltip.scss';
 
 export class TooltipContent extends BaseComponent<ITooltipProps, ITooltipState> {
 
-  // Specify default props values
-  public static defaultProps = {
-  };
-
   // Specify any private variables
   private _id: string;
 
@@ -21,12 +17,9 @@ export class TooltipContent extends BaseComponent<ITooltipProps, ITooltipState> 
     super(props);
 
     this._id = getId('Tooltip');
-    this.state = {
-    };
   }
 
   public render() {
-    let { } = this.props;
 
     let bodyContent;
 
@@ -36,13 +29,13 @@ export class TooltipContent extends BaseComponent<ITooltipProps, ITooltipState> 
           <p className='ms-Tooltip-subText'>
             { this.props.children }
           </p>
-         </div>
+        </div>
       );
     }
 
     return (
         <div className='ms-Tooltip-content'>
-            { bodyContent   }
+            { bodyContent }
         </div>
     );
   }
