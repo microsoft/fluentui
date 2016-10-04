@@ -31,10 +31,6 @@ $Dialog-default-max-width: 340px;
   line-height: 100vh;
   text-align: center;
 
-  // Flexbox for Modern Browsers
-  @include flexBox();
-  @include alignItems(center);
-
   &::before {
     @include dialogPositioningIE9Fallback();
     content: "";
@@ -66,6 +62,8 @@ $Dialog-default-max-width: 340px;
   position: relative;
   @include text-align(left);
   outline: 3px solid transparent;
+  max-height: 100%;
+  overflow-y: auto;
 }
 
 // Close button, hidden by default
