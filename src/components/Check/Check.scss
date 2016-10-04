@@ -71,8 +71,8 @@ $checkBoxHeight: 20px;
 
   &:before,
   &:after {
-    @include left(50%);
-    @include transform-translateX(-50%);
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 22px;
     line-height: 21px;
     display: inline-block;
