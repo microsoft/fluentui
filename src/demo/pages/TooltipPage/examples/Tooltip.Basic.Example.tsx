@@ -46,7 +46,6 @@ export class TooltipBasicExample extends React.Component<any, ITooltipBasicExamp
           <div>
             <Tooltip
               targetElement={ this._menuButtonElement }
-              onDismiss={ this._onDismiss }
             >
               Files > Pictures > Colors Folder > Blue
             </Tooltip>

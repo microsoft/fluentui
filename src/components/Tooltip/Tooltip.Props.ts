@@ -17,9 +17,4 @@ export interface ITooltipProps extends React.Props<Tooltip|TooltipContent> {
    * Element to anchor the Tooltip to.
    */
   targetElement?: HTMLElement;
-
-  /**
-   * Callback when the Tooltip tries to close.
-   */
-  onDismiss?: (ev?: any) => void;
 }
