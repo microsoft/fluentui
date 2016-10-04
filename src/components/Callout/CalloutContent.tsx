@@ -135,7 +135,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       let positionInfo: IPositionInfo = getRelativePositions(this.props, hostElement, calloutElement);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
-      // The positon should not change if the position is within 2 decimal places.
+      // The position should not change if the position is within 2 decimal places.
       if ((!positions && positionInfo) ||
         (positions && positionInfo && (positions.callout.top.toFixed(2) !== positionInfo.calloutPosition.top.toFixed(2) || positions.callout.left.toFixed(2) !== positionInfo.calloutPosition.left.toFixed(2)))) {
 
