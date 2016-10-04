@@ -43,7 +43,7 @@ export class TooltipPage extends React.Component<any, any> {
         overview={
           <div>
             <Link target='_blank' href='http://dev.office.com/fabric/components/Tooltip'>Tooltips</Link>
-            <span> allow the user to display important hints on their web pages with a callout box.</span>
+            <span> supplement content associated with a specifuc UI component.</span>
           </div>
         }
         route={ this._url }>
