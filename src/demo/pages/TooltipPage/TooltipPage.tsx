@@ -13,7 +13,7 @@ import { TooltipBasicExample } from './examples/Tooltip.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 
-import "./TooltipPage.scss";
+import './TooltipPage.scss';
 
 const TooltipBasicExampleCode = require('./examples/Tooltip.Basic.Example.tsx');
 

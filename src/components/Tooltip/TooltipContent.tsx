@@ -4,7 +4,7 @@ import * as React from 'react';
 import { BaseComponent } from '../../common/BaseComponent';
 import { ITooltipProps } from './Tooltip.Props';
 import { ITooltipState } from './Tooltip';
-import { css, getId } from '../../Utilities';
+import { getId } from '../../Utilities';
 import './Tooltip.scss';
 
 export class TooltipContent extends BaseComponent<ITooltipProps, ITooltipState> {
@@ -26,7 +26,7 @@ export class TooltipContent extends BaseComponent<ITooltipProps, ITooltipState> 
   }
 
   public render() {
-    let { onDismiss } = this.props;
+    let { } = this.props;
 
     let bodyContent;
 
