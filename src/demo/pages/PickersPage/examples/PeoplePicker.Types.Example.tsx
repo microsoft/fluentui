@@ -3,14 +3,12 @@ import {
   ListPeoplePicker,
   NormalPeoplePicker,
   CompactPeoplePicker,
-  IContextualMenuItem,
   Dropdown,
   IDropdownOption,
   IPersonaProps,
   IBasePickerSuggestionsProps
 } from '../../../../index';
 import { people } from './PeoplePickerExampleData';
-import { assign } from '../../../../utilities/object';
 import './PeoplePicker.Types.Example.scss';
 
 export interface IPeoplePickerExampleState {
