@@ -75,7 +75,8 @@ export function getVirtualParent(child: HTMLElement): HTMLElement {
  * @returns {HTMLElement}
  */
 export function getParent(child: HTMLElement, allowVirtualParents: boolean = true): HTMLElement {
-  return child && (allowVirtualParents && getVirtualParent(child) || child.parentElement);
+  return child && (allowVirtualParents && getVirtualParent(child) || child.parentElement ||
+    (child.parentNode && child.parentNode.nodeType === Node.ELEMENT_NODE ? child.parentNode as HTMLElement : null));
 }
 
 /**
