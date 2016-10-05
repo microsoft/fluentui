@@ -16,7 +16,7 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
   } = peoplePickerItemProps;
   return (
     <div
-      className={css('ms-PickerPersona-Container', {
+      className={css('ms-PickerPersona-container', {
         'is-selected': isSelected
       }) }
       data-is-focusable={ true }

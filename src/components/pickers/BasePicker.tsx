@@ -34,8 +34,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected _focusZone: FocusZone;
   protected _suggestionElement: Suggestions<T>;
 
-  private _suggestionStore: SuggestionsController<T>;
-  private _SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
+  protected _suggestionStore: SuggestionsController<T>;
+  protected _SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
 
   constructor(basePickerProps: P) {
     super(basePickerProps);
@@ -168,15 +168,28 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     let { value } = this.state;
 
     if (!this._suggestionStore.currentIndex || updatedValue !== value) {
-      let newSuggestions: any[] = this.props.onResolveSuggestions(updatedValue, this.state.items);
+      let suggestions: T[] | PromiseLike<T[]> = this.props.onResolveSuggestions(updatedValue, this.state.items);
+      let suggestionsArray: T[] = suggestions as T[];
+      let suggestionsPromiseLike: PromiseLike<T[]> = suggestions as PromiseLike<T[]>;
 
-      this._suggestionStore.updateSuggestions(newSuggestions);
-      let itemValue: string = undefined;
-      if (this._suggestionStore.currentSuggestion) {
-        itemValue = this.props.getTextFromItem(this._suggestionStore.currentSuggestion.item);
+      // Check to see if the returned value is an array, if it is then just pass it into the next function.
+      // If the returned value is not an array then check to see if it's a promise or PromiseLike. If it is then resolve it asynchronously.
+      if (Array.isArray(suggestionsArray)) {
+        this._resolveNewValue(updatedValue, suggestionsArray);
+      } else if (suggestionsPromiseLike.then) {
+        suggestionsPromiseLike.then((newSuggestions: T[]) => this._resolveNewValue(updatedValue, newSuggestions));
       }
-      this._updateDisplayValue(updatedValue, itemValue);
     }
+  }
+
+  protected _resolveNewValue(updatedValue: string, suggestions: T[]) {
+
+    this._suggestionStore.updateSuggestions(suggestions);
+    let itemValue: string = undefined;
+    if (this._suggestionStore.currentSuggestion) {
+      itemValue = this.props.getTextFromItem(this._suggestionStore.currentSuggestion.item);
+    }
+    this._updateDisplayValue(updatedValue, itemValue);
   }
 
   protected _updateDisplayValue(updatedValue: string, itemValue?: string) {
@@ -272,7 +285,15 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected _onGetMoreResults() {
     if (this.props.onGetMoreResults) {
-      this._updateSuggestions(this.props.onGetMoreResults(this.state.value, this.state.items));
+      let suggestions: T[] | PromiseLike<T[]> = this.props.onGetMoreResults(this.state.value, this.state.items);
+      let suggestionsArray: T[] = suggestions as T[];
+      let suggestionsPromiseLike: PromiseLike<T[]> = suggestions as PromiseLike<T[]>;
+
+      if (Array.isArray(suggestionsArray)) {
+        this._updateSuggestions(suggestionsArray);
+      } else if (suggestionsPromiseLike.then) {
+        suggestionsPromiseLike.then((newSuggestions: T[]) => this._updateSuggestions(newSuggestions));
+      }
     }
     this._input.focus();
     this.setState({ moreSuggestionsAvailable: false });
@@ -321,6 +342,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     if (ev.target === this._input) {
       if (displayValue && this._suggestionStore.hasSelectedSuggestion() && this._input.selectionStart !== this._input.selectionEnd) {
         this._updateValue(displayValue.substr(0, this._input.selectionStart - 1));
+        // Since this effectively deletes a letter from the string we need to preventDefault so that
+        // the backspace doesn't try to delete a letter that's already been deleted. If a letter is deleted
+        // it can trigger the onChange event again which can have unintended consequences.
+        ev.preventDefault();
       } else if (!displayValue && this.state.items.length) {
         this._removeItem(this.state.items[this.state.items.length - 1]);
       }
