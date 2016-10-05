@@ -11,7 +11,6 @@ $checkBoxHeight: 23px;
 
 .ms-Check {
   line-height: 1;
-  text-align: center;
   width: $checkBoxHeight;
   height: $checkBoxHeight;
   vertical-align: top;
@@ -22,7 +21,6 @@ $checkBoxHeight: 23px;
     .ms-Check-background {
       &:before {
         color: $ms-color-themePrimary;
-        display: inline-block;
       }
 
       &:after {
@@ -75,7 +73,6 @@ $checkBoxHeight: 23px;
     top: 50%;
     transform: translate(-50%, -50%);
     font-size: $checkBoxHeight;
-    display: inline-block;
     height: $checkBoxHeight;
     width: $checkBoxHeight;
     position: absolute;
