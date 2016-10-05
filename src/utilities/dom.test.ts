@@ -1,5 +1,5 @@
 import {
-  elementContains
+  elementContains, getParent
 } from './dom';
 
 const { expect } = chai;
@@ -28,7 +28,19 @@ describe('elementContains', () => {
     expect(elementContains(null, null)).equals(false);
   });
 
-  it ('can return false when parent is an svg', () => {
+  it('can return false when parent is an svg', () => {
     expect(elementContains(unattachedSvg, unattachedDiv)).equals(false);
+  });
+});
+
+describe('getParent', () => {
+  it('returns correct parent for inner SVG elements', () => {
+    let childSvg = document.createElement('svg');
+    let svgRectangle = document.createElement('rect');
+    childSvg.appendChild(svgRectangle);
+    parentDiv.appendChild(childSvg);
+
+    expect(getParent(svgRectangle)).equals(childSvg);
+    expect(getParent(childSvg)).equals(parentDiv);
   });
 });
