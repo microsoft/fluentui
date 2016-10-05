@@ -22,7 +22,7 @@
 
 .ms-TeachingBubble-headline {
   margin: 0;
-  color: $ms-color-white;
+  color: $counteraccentForegroundColor;
 
   .ms-TeachingBubble-header--large & {
     @include ms-font-xxl;
@@ -42,7 +42,7 @@
 .ms-TeachingBubble-subText {
   margin: 0;
   font-size: $ms-font-size-m;
-  color: $ms-color-white;
+  color: $counteraccentForegroundColor;
   font-weight: $ms-font-weight-semilight;
 }
 
@@ -51,7 +51,7 @@
   right: 2px;
   top: 0;
   &.ms-Button--icon .ms-Icon {
-    color: $ms-color-white;
+    color: $counteraccentForegroundColor;
     font-size: $ms-icon-size-s;
     padding: 10px;
   }
@@ -66,58 +66,58 @@
 // Callout Overrides
 .ms-TeachingBubble {
   .ms-Callout-main, .ms-Callout-beak, .ms-Callout-smallbeak {
-    background: $ms-color-themePrimary;
+    background: $accentBackgroundColor;
   }
 }
 
 //Primary button style override
 .ms-Button.ms-TeachingBubble-primaryButton {
-  background-color: $ms-color-white;
-  border-color: $ms-color-white;
+  background-color: $counteraccentForegroundColor;
+  border-color: $counteraccentForegroundColor;
 
   .ms-Button-label {
     @include ms-font-m;
-    color: $ms-color-themePrimary;
+    color: $accentBackgroundColor;
   }
 
   &:hover {
-    background-color: $ms-color-themeLighter;
-    border-color: $ms-color-themeLighter;
+    background-color: $counteraccentForegroundHoverColor;
+    border-color: $counteraccentForegroundHoverColor;
   }
 
   &:focus {
-    background-color:  $ms-color-themeLighter;
-    border-color: $ms-color-white;
+    background-color:  $counteraccentForegroundHoverColor;
+    border-color: $counteraccentForegroundColor;
   }
 
   &:active {
-    background-color: $ms-color-white;
-    border-color: $ms-color-white;
+    background-color: $counteraccentForegroundColor;
+    border-color: $counteraccentForegroundColor;
   }
 }
 
 //Secondary button style override
 .ms-Button.ms-TeachingBubble-secondaryButton {
-  background-color: $ms-color-themePrimary;
-  border-color: $ms-color-white;
+  background-color: $accentBackgroundColor;
+  border-color: $counteraccentForegroundColor;
 
   .ms-Button-label {
     @include ms-font-m;
-    color: $ms-color-white;
+    color: $counteraccentForegroundColor;
   }
 
   &:hover {
-    background-color: $ms-color-themeDarkAlt;
-    border-color: $ms-color-white;
+    background-color: $accentBackgroundHoverColor;
+    border-color: $counteraccentForegroundColor;
   }
 
   &:focus {
-    background-color: $ms-color-themeDarkAlt;
-    border-color: $ms-color-white;
+    background-color: $accentBackgroundHoverColor;
+    border-color: $counteraccentForegroundColor;
   }
 
   &:active {
-    background-color: $ms-color-themePrimary;
-    border-color: $ms-color-white;
+    background-color: $accentBackgroundColor;
+    border-color: $counteraccentForegroundColor;
   }
 }

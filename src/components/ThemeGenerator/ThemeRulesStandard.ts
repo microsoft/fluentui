@@ -1,12 +1,25 @@
-import { Shades } from '../../utilities/Color/Shades';
+import { Shade } from '../../utilities/Color/Shades';
 import { getColorFromString } from '../../utilities/Color/Colors';
 
 import { IThemeSlotRule } from './IThemeSlotRule';
 
-export enum PaletteSlots {
+export enum PaletteSlot {
   Primary,
   Neutral,
   Secondary
+}
+
+export enum SemanticSlot {
+  Foreground,
+  Background,
+  AccentBackground,
+  AccentBackgroundHover,
+  CounteraccentForeground,
+  CounteraccentForegroundHover,
+  NeutralBackground,
+  NeutralForeground,
+  DisabledBackground,
+  DisabledForeground
 }
 
 /* The string we append to the palette color slots enum to get the name of the palette color slots. */
@@ -14,10 +27,10 @@ export const PaletteName = 'Palette';
 
 export function getThemeSlotsStandard() {
   let slots = [];
-  _mapEnumByName(PaletteSlots, (paletteSlot) => {
+  _mapEnumByName(PaletteSlot, (paletteSlot) => {
     slots.push(paletteSlot + PaletteName);
 
-    _mapEnumByName(Shades, (shadeName) => {
+    _mapEnumByName(Shade, (shadeName) => {
       slots.push(paletteSlot + shadeName);
       return void 0;
     });
@@ -44,7 +57,7 @@ export function ThemeRulesStandardCreator() {
 
   /*** BASE PALETTE COLORS and their SHADES */
   // iterate through each palette slot and make the SlotRules for those
-  _mapEnumByName(PaletteSlots, (paletteSlot) => {
+  _mapEnumByName(PaletteSlot, (paletteSlot) => {
     // first make the SlotRule for the unshaded palette Color
     let paletteSlotName = paletteSlot + PaletteName;
     slotRules[paletteSlotName] = {
@@ -53,8 +66,8 @@ export function ThemeRulesStandardCreator() {
     };
 
     // then make a rule for each shade of this palette color, but skip unshaded
-    _mapEnumByName(Shades, (shadeName, actualShade) => {
-      if (shadeName === Shades[Shades.Unshaded]) {
+    _mapEnumByName(Shade, (shadeName, actualShade) => {
+      if (shadeName === Shade[Shade.Unshaded]) {
         return;
       }
       slotRules[paletteSlot + shadeName] = {
@@ -70,16 +83,28 @@ export function ThemeRulesStandardCreator() {
   });
 
   // set default colors for the palette
-  slotRules[PaletteSlots.Primary + PaletteName].value = getColorFromString('#0078d7');
-  slotRules[PaletteSlots.Neutral + PaletteName].value = getColorFromString('#888');
-  slotRules[PaletteSlots.Secondary + PaletteName].value = getColorFromString('#f00');
+  slotRules[PaletteSlot[PaletteSlot.Primary] + PaletteName].value = getColorFromString('#0078d7');
+  slotRules[PaletteSlot[PaletteSlot.Neutral] + PaletteName].value = getColorFromString('#888');
+  slotRules[PaletteSlot[PaletteSlot.Secondary] + PaletteName].value = getColorFromString('#f00');
 
-  /*** SEMANTIC SLOTS
-  slotRules[ThemeSlotsStandard.inputAccentedBackground] = {
-    name: 'InputAccentedBackground',
-    inherits: slotRules[ThemeSlotsStandard.primaryMedium],
-    isCustomized: false
-  };*/
+  /*** SEMANTIC SLOTS */
+  function _makeSemanticSlotRule(semanticSlot: SemanticSlot, inherits: string) {
+    slotRules[SemanticSlot[semanticSlot]] = {
+      name: SemanticSlot[semanticSlot],
+      inherits: slotRules[inherits],
+      isCustomized: false
+    };
+  }
+  _makeSemanticSlotRule(SemanticSlot.Foreground,              PaletteSlot[PaletteSlot.Neutral] + Shade[Shade.Darkest]);
+  _makeSemanticSlotRule(SemanticSlot.Background,              PaletteSlot[PaletteSlot.Neutral] + Shade[Shade.Lightest]);
+  _makeSemanticSlotRule(SemanticSlot.AccentBackground,        PaletteSlot[PaletteSlot.Primary] + PaletteName);
+  _makeSemanticSlotRule(SemanticSlot.AccentBackgroundHover,   PaletteSlot[PaletteSlot.Primary] + Shade[Shade.Medium]);
+  _makeSemanticSlotRule(SemanticSlot.CounteraccentForeground, PaletteSlot[PaletteSlot.Neutral] + Shade[Shade.Lightest]);
+  _makeSemanticSlotRule(SemanticSlot.CounteraccentForegroundHover, PaletteSlot[PaletteSlot.Neutral] + Shade[Shade.Lighter]);
+  _makeSemanticSlotRule(SemanticSlot.NeutralBackground,       PaletteSlot[PaletteSlot.Neutral] + Shade[Shade.Lighter]);
+  _makeSemanticSlotRule(SemanticSlot.NeutralForeground,       PaletteSlot[PaletteSlot.Neutral] + Shade[Shade.Darker]);
+  _makeSemanticSlotRule(SemanticSlot.DisabledBackground,      PaletteSlot[PaletteSlot.Neutral] + Shade[Shade.Medium]);
+  _makeSemanticSlotRule(SemanticSlot.DisabledForeground,      PaletteSlot[PaletteSlot.Neutral] + Shade[Shade.Lightest]);
 
   return slotRules;
 }

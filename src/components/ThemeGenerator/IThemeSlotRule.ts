@@ -1,5 +1,5 @@
 import { IColor } from '../../utilities/Color/IColor';
-import { Shades } from '../../utilities/Color/Shades';
+import { Shade } from '../../utilities/Color/Shades';
 
 export interface IThemeSlotRule {
   /* The name of this theme slot. */
@@ -9,7 +9,7 @@ export interface IThemeSlotRule {
   /* The theme slot this slot is based on. */
   inherits?: IThemeSlotRule;
   /* If set, this slot is the specified shade of the slot it inherits from. */
-  asShade?: Shades;
+  asShade?: Shade;
   /* Whether this slot has been manually overridden (else, it was automatically generated based on inheritance). */
   isCustomized?: boolean;
 }

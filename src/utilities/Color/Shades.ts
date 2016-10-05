@@ -19,7 +19,7 @@ const c_LuminanceLow = 0.2;
 const c_LuminanceHigh = 0.8;
 
 /** Shades of a given color, from Lightest to Darkest. */
-export enum Shades {
+export enum Shade {
     Unshaded = 0,
     Lightest = 1,
     Lighter  = 2,
@@ -29,12 +29,12 @@ export enum Shades {
 }
 
 /**
- * Returns true if the argument is a valid Shades value
- * @param {Shades} shade The Shades value to validate.
+ * Returns true if the argument is a valid Shade value
+ * @param {Shade} shade The Shade value to validate.
  */
-function _isValidShade(shade: Shades): boolean {
+function _isValidShade(shade: Shade): boolean {
     'use strict';
-    return (shade >= Shades.Unshaded) && (shade <= Shades.Darkest);
+    return (shade >= Shade.Unshaded) && (shade <= Shade.Darkest);
 }
 
 function _isBlack(color: IColor): boolean {
@@ -73,16 +73,16 @@ function _lighten(hsl: {h: number, s: number, l: number}, factor) {
  * default
  *  lghtst lghtr med   drkr  drkst
  *  [0.20, 0.40, 0.60][0.75, 0.50]
- * @param {RgbaColor} color The base color whose shades are to be computed
- * @param {Shades} shade The shade of the base color to compute.
+ * @param {RgbaColor} color The base color whose Shade are to be computed
+ * @param {Shade} shade The shade of the base color to compute.
  */
-export function getShade(color: IColor, shade: Shades) {
+export function getShade(color: IColor, shade: Shade) {
     'use strict';
     if (!color) {
         return null;
     }
 
-    if (shade === Shades.Unshaded || !_isValidShade(shade)) {
+    if (shade === Shade.Unshaded || !_isValidShade(shade)) {
         return color;
     }
 

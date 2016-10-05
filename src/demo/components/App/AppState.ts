@@ -354,9 +354,10 @@ export const AppState: IAppState = {
         },
         {
           component: ThemerPage,
+          key: 'Theming',
           name: 'Theming',
           status: ExampleStatus.started,
-          url: '#examples/themer'
+          url: '#examples/theming'
         }
       ],
       name: 'Utilities'

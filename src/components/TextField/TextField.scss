@@ -12,7 +12,7 @@
 .ms-TextField {
   @include ms-baseFont;
   @include ms-u-normalize;
-  color: $ms-color-neutralPrimary;
+  color: $foregroundColor;
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
   margin-bottom: 8px;
@@ -26,14 +26,14 @@
 //= State: A disabled textfield
 .ms-TextField.is-disabled {
   .ms-TextField-field {
-    background-color: $ms-color-neutralLighter;
-    border-color: $ms-color-neutralLighter;
+    background-color: $disabledBackgroundColor;
+    border-color: $disabledBackgroundColor;
     pointer-events: none;
     cursor: default;
   }
 
   @include input-placeholder {
-    color: $ms-color-neutralTertiary;
+    color: $disabledForegroundColor;
   }
 }
 
@@ -50,17 +50,17 @@
 
 //= State: An active textfield
 .ms-TextField.is-active {
-  border-color: $ms-color-themePrimary;
+  border-color: $accentBackgroundColor;
 }
 
 .ms-TextField-field {
   @include ms-u-normalize;
   @include ms-baseFont;
-  border: 1px solid $ms-color-neutralTertiaryAlt;
+  border: 1px solid $neutralBackgroundColor;
   border-radius: 0;
   font-weight: $ms-font-weight-regular;
   font-size: $ms-font-size-m;
-  color: $ms-color-neutralPrimary;
+  color: $foregroundColor;
   height: 32px;
   @include padding(6px, 12px, 7px, 12px);
   width: 100%;
@@ -68,11 +68,11 @@
   text-overflow: ellipsis;
 
   &:hover {
-    border-color: $ms-color-neutralSecondaryAlt;
+    border-color: $foregroundColor;
   }
 
   &:focus {
-    border-color: $ms-color-themePrimary;
+    border-color: $accentBackgroundColor;
   }
 
   &:hover,
@@ -87,14 +87,14 @@
   }
 
   &[disabled] {
-    background-color: $ms-color-neutralLighter;
-    border-color: $ms-color-neutralLighter;
+    background-color: $disabledBackgroundColor;
+    border-color: $disabledBackgroundColor;
     pointer-events: none;
     cursor: default;
   }
 
   @include input-placeholder {
-    color: $ms-color-neutralSecondary;
+    color: $neutralForegroundColor;
   }
 }
 
@@ -107,12 +107,12 @@
 //== Modifier: Single line (default), underlined
 //
 .ms-TextField.ms-TextField--underlined {
-  border-bottom: 1px solid $ms-color-neutralTertiaryAlt;
+  border-bottom: 1px solid $neutralBackgroundColor;
   display: table;
   width: 100%;
 
   &:hover {
-    border-color: $ms-color-neutralSecondaryAlt;
+    border-color: $foregroundColor;
 
     @media screen and (-ms-high-contrast: active) {
       border-color: $ms-color-contrastBlackSelected;
@@ -125,7 +125,7 @@
 
   &:active,
   &:focus {
-    border-color: $ms-color-themePrimary;
+    border-color: $accentBackgroundColor;
   }
 
   .ms-Label {
@@ -156,7 +156,7 @@
   }
 
   &.is-disabled {
-    border-bottom-color: $ms-color-neutralLight;
+    border-bottom-color: $disabledBackgroundColor;
 
     .ms-Label {
       @include ms-Label-is-disabled;
@@ -164,12 +164,12 @@
 
     .ms-TextField-field {
       background-color: transparent;
-      color: $ms-color-neutralTertiary;
+      color: $disabledForegroundColor;
     }
   }
 
   &.is-active {
-    border-color: $ms-color-themePrimary;
+    border-color: $accentBackgroundColor;
 
     @media screen and (-ms-high-contrast: active) {
       border-color: $ms-color-contrastBlackSelected;
@@ -187,7 +187,7 @@
 .ms-TextField.ms-TextField--multiline {
   .ms-TextField-field {
     @include ms-baseFont;
-    color: $ms-color-neutralPrimary;
+    color: $foregroundColor;
     font-family: $ms-font-family-base;
     font-size: $ms-font-size-m;
     font-weight: $ms-font-weight-regular;

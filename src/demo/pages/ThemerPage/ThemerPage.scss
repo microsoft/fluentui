@@ -1,5 +1,22 @@
 @import '../../../common/common';
 
+/* TEMP CODE FOR THEMING DEMO */
+html > body {
+  background-color: $backgroundColor;
+  color: $foregroundColor;
+}
+.ms-Label.ms-Label {
+  color: $foregroundColor;
+}
+/* end temp code */
+
+.ms-themer {
+  padding: 12px;
+}
+.ms-themer h3 {
+  margin: 0;
+}
+
 .ms-themer-paletteSlot {
   text-align: center;
 }
@@ -8,11 +25,20 @@
   display: inline-block;
   height: 36px;
   width: 36px;
-  margin: 2px;
+  margin: 3px;
 }
 
 .ms-themer-swatchBg {
-  padding: 2px;
+  padding: 3px;
   display: inline-block;
   font-size: 0;
+}
+
+.ms-themer-example {
+  padding: 20px;
+  max-width: 40%;
+}
+
+.ms-themer-accessibilityTable td {
+  padding: 4px;
 }

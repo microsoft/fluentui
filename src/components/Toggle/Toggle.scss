@@ -56,8 +56,8 @@
     // Checked state overrides
     &.is-checked {
       .ms-Toggle-background {
-        background: $inputAccentedBackground;
-        border: 1px solid $inputAccentedBackground;
+        background: $accentBackgroundColor;
+        border: 1px solid $accentBackgroundColor;
         @include highContrast-bgColor($ms-color-white, $ms-color-black);
       }
 
