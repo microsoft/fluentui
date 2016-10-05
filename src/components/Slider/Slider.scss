@@ -59,7 +59,6 @@
 }
 
 .ms-Slider-container {
-  @include padding-left(8px); // Make room for thumb
   display: flex;
 
   .ms-Slider-slideBox {
@@ -67,13 +66,13 @@
     height: 28px;
     line-height: 28px;
     @include focus-border();
-
+    padding: 0 8px; // Make room for thumb at ends of line
   }
 
   .ms-Label {
     flex-shrink: 1;
     width: 30px;
-    @include margin-left(12px);
+    @include margin-left(8px);
   }
 }
 
