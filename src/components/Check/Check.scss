@@ -7,7 +7,7 @@
 // --------------------------------------------------
 // Check styles
 
-$checkBoxHeight: 22px;
+$checkBoxHeight: 23px;
 
 .ms-Check {
   line-height: 1;
@@ -46,20 +46,18 @@ $checkBoxHeight: 22px;
 }
 
 .ms-Check-check {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   position: absolute;
-  line-height: $checkBoxHeight - 1;
   color: $ms-color-neutralTertiaryAlt;
   opacity: 0;
 }
 
 .ms-Check-background {
   position: relative;
-  height: 100%;
+  height: $checkBoxHeight;
+  width: $checkBoxHeight;
 
   &:before {
     content: '\E91F';
@@ -76,11 +74,10 @@ $checkBoxHeight: 22px;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    font-size: $checkBoxHeight + 1;
-    line-height: $checkBoxHeight - 1;
+    font-size: $checkBoxHeight;
     display: inline-block;
-    height: $checkBoxHeight + 1;
-    width: $checkBoxHeight + 1;
+    height: $checkBoxHeight;
+    width: $checkBoxHeight;
     position: absolute;
   }
 }
