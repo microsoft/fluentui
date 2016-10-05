@@ -22,7 +22,7 @@
   bottom: 0;
   right: 0;
 
-  .codeButton.codeButton {
+  .ms-Button.ExampleCard-codeButton {
     @include margin-right(0);
     background: none;
     border: 1px solid $ms-color-neutralTertiary;
