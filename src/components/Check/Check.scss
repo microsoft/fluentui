@@ -10,25 +10,32 @@
 $checkBoxHeight: 20px;
 
 .ms-Check {
-  display: inline-block;
-  cursor: default;
-  vertical-align: top;
-  width: $checkBoxHeight;
-  height: $checkBoxHeight;
+  font-family: FabricMDL2Icons;
+  line-height: 1;
   text-align: center;
+  width: 22px;
+  height: 22px;
+  vertical-align: top;
   position: relative;
+  @include user-select(none);
 
   &.is-checked {
     .ms-Check-background {
       &:before {
-        background: $ms-color-themePrimary;
-        border: 1px solid $ms-color-white;
+        color: $ms-color-themePrimary;
+        display: inline-block;
+      }
+
+      &:after {
+        color: $ms-color-white;
       }
     }
 
     .ms-Check-check {
       opacity: 1;
       color: $ms-color-white;
+      font-weight: 900;
+      font-size: $ms-font-size-s;
     }
   }
 
@@ -49,19 +56,30 @@ $checkBoxHeight: 20px;
 }
 
 .ms-Check-background {
+  font-family: 'FabricMDL2Icons';
+  position: relative;
+
   &:before {
+    content: '\E91F';
+    color: $ms-color-white;
+  }
+
+  &:after {
+    content: '\EA3A';
+    color: $ms-color-neutralTertiaryAlt;
+  }
+
+  &:before,
+  &:after {
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 22px;
+    line-height: 21px;
+    display: inline-block;
+    height: 22px;
+    width: 22px;
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 0;
-    right: 0;
-    display: inline-block;
-    margin: auto;
-    height: $checkBoxHeight - 2px;
-    width: $checkBoxHeight - 2px;
-    background: $ms-color-white;
-    border: 1px solid $ms-color-neutralTertiaryAlt;
-    border-radius: 50%;
-    content: ' ';
   }
 }
