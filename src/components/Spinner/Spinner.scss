@@ -45,12 +45,12 @@ $borderSize: 1.5px;
   }
 }
 
-@media screen and (-ms-high-contrast: active) {
+//@media screen and (-ms-high-contrast: active) {
   .ms-Spinner {
     > .ms-Spinner--normal {
       > .ms-Spinner-circle {
-          border-top-style: none;
+          clip-path: polygon(0% 0%, 50% 50%, 0% 100%, 100% 100%, 100% 0%, 0% 0%);
       }
     }
   }
-}
+//}
