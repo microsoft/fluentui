@@ -131,23 +131,6 @@ $DropDown-item-height: 36px;
   position: absolute;
 }
 
-// Adjustments for when the dropdown is open as a panel on small screens
-.ms-Panel .ms-Dropdown-items {
-  box-shadow: none;
-  overflow-y: auto;
-  padding-top: 4px;
-  max-height: 100%;
-
-  .ms-Dropdown-item {
-    padding: 7px 16px;
-  }
-
-  &::before {
-    content: none;
-    border: 0;
-  }
-}
-
 .ms-Dropdown-caretDown {
   color: $ms-color-neutralDark;
   font-size: $ms-icon-size-s;
