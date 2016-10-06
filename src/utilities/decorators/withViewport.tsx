@@ -73,6 +73,12 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
       let { viewport } = this.state;
       let viewportElement = (this.refs as any).root;
       let scrollElement = findScrollableParent(viewportElement);
+
+      // If we are window scrolling, use body to measure.
+      if (scrollElement === window as any) {
+        scrollElement = document.body;
+      }
+
       let clientRect = viewportElement.getBoundingClientRect();
       let scrollRect = scrollElement.getBoundingClientRect();
       let updateComponent = () => {
