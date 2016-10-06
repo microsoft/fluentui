@@ -20,7 +20,7 @@ $borderSize: 1.5px;
 }
 
 .ms-Spinner {
-  .ms-Spinner--normal {
+  > .ms-Spinner--normal {
     width: 20px;
     height: 20px;
     margin: auto;
@@ -28,7 +28,7 @@ $borderSize: 1.5px;
       width: 28px;
       height: 28px;
     }
-    .ms-Spinner-circle {
+    > .ms-Spinner-circle {
       box-sizing: border-box;
       border-radius: 50%;
       width: 100%;
@@ -38,9 +38,19 @@ $borderSize: 1.5px;
       animation: ms-Spinner-spin $spin-duration infinite linear;
     }
   }
-  .ms-Spinner-label {
+  > .ms-Spinner-label {
       color: $ms-color-themePrimary;
       margin-top: 10px;
       text-align: center;
+  }
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .ms-Spinner {
+    > .ms-Spinner--normal {
+      > .ms-Spinner-circle {
+          border-top-style: none;
+      }
+    }
   }
 }
