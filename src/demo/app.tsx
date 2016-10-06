@@ -58,7 +58,7 @@ function _getRoutes() {
       .filter(link => link.hasOwnProperty('component'))
       .forEach((link, linkIndex) => {
         let { component } = link;
-        appRoutes.push(<Route key={ linkIndex } path={ link.url } component={ component } />);
+        appRoutes.push(<Route key={ link.key } path={ link.url } component={ component } />);
       });
   });
 
@@ -68,7 +68,7 @@ function _getRoutes() {
   );
 
   routes.push(
-    <Route component={ App }>
+    <Route key='app' component={ App }>
       { appRoutes }
     </Route>
   );

@@ -246,6 +246,7 @@ export const AppState: IAppState = {
         },
         {
           component: TeachingBubblePage,
+          key: 'TeachingBubble',
           name: 'TeachingBubble',
           status: ExampleStatus.beta,
           url: '#/examples/teachingbubble'
