@@ -25,11 +25,11 @@ html > body {
   display: inline-block;
   height: 36px;
   width: 36px;
-  margin: 3px;
+  margin: 4px;
 }
 
 .ms-themer-swatchBg {
-  padding: 3px;
+  padding: 4px;
   display: inline-block;
   font-size: 0;
 }
@@ -41,4 +41,9 @@ html > body {
 
 .ms-themer-accessibilityTable td {
   padding: 4px;
+  text-align: right;
+}
+
+.ms-themer-slot {
+  display: inline-flex;
 }

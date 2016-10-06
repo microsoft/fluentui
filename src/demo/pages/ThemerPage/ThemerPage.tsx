@@ -3,6 +3,8 @@ import './ThemerPage.scss';
 
 import { loadTheme } from '@microsoft/load-themed-styles';
 import { IColor } from '../../../utilities/Color/IColor';
+import { getContrastRatio } from '../../../utilities/Color/Shades';
+import { mapEnumByName } from '../../../utilities/object';
 
 import { ThemeGenerator } from '../../../components/ThemeGenerator/ThemeGenerator';
 import {
@@ -39,11 +41,17 @@ export class ThemerPage extends React.Component<any, any> {
   }
 
   public render() {
+    let slotsList = mapEnumByName(SemanticSlot, (x, slot) => {
+      return this._semanticSlotWidget(slot);
+    });
+
     return (
       <div className='ms-themer'>
         <div style={{ display: 'flex', flexDirection: 'row' }}>
           { [this._oneColor(PaletteSlot.Primary), this._oneColor(PaletteSlot.Neutral)] }
         </div>
+
+        { slotsList }
 
         <div style={{ display: 'flex', flexDirection: 'row' }}>
           <div className='ms-themer-example'><TextFieldBasicExample /></div>
@@ -52,15 +60,28 @@ export class ThemerPage extends React.Component<any, any> {
         </div>
 
         <h3>Accessibility</h3>
-        <p>Each pair of colors below should produce legible text and have a minimum contrast ratio of 22 [TBD].</p>
+        <p>Each pair of colors below should produce legible text and have a minimum contrast ratio of 4.5 [TBD].</p>
         <table className='ms-themer-accessibilityTable'>
            { [this._accessibilityRow(SemanticSlot.DisabledForeground, SemanticSlot.DisabledBackground),
               this._accessibilityRow(SemanticSlot.CounteraccentForeground, SemanticSlot.AccentBackground),
               this._accessibilityRow(SemanticSlot.Foreground, SemanticSlot.NeutralBackground),
               this._accessibilityRow(SemanticSlot.NeutralForeground, SemanticSlot.NeutralBackground),
               this._accessibilityRow(SemanticSlot.AccentBackground, SemanticSlot.NeutralBackground)
-              ] }
+            ] }
         </table>
+      </div>
+    );
+  }
+
+  private _semanticSlotWidget(semanticSlot: SemanticSlot) {
+    let themeRules = this.state.themeRules;
+    return (
+      <div key={semanticSlot} className='ms-themer-slot'>
+        <div className='ms-themer-swatch' style={{ backgroundColor: themeRules[SemanticSlot[semanticSlot]].value.str }}></div>
+        <div>
+          <div>{ SemanticSlot[semanticSlot] }</div>
+          <div>Inherits from: { themeRules[SemanticSlot[semanticSlot]].inherits.name }</div>
+        </div>
       </div>
     );
   }
@@ -70,16 +91,16 @@ export class ThemerPage extends React.Component<any, any> {
     let bgc: IColor = themeRules[SemanticSlot[background]].value;
     let fgc: IColor = themeRules[SemanticSlot[foreground]].value;
 
-    // FAKE FORMULA
-    let contrastRatio = Math.abs(hsv2hsl(fgc.h, fgc.s, fgc.v).l - hsv2hsl(bgc.h, bgc.s, bgc.v).l);
-    let contrastRatioString = String(contrastRatio).substr(0, 4);
-    if (contrastRatio < 100/4.5) {
+    let contrastRatio = getContrastRatio(bgc, fgc);
+    let contrastRatioString = String(contrastRatio);
+    contrastRatioString = contrastRatioString.substr(0, contrastRatioString.indexOf('.') + 3);
+    if (contrastRatio < 4.5) {
       contrastRatioString = '**' + contrastRatioString + '**';
     }
 
     return (
       <tr key={ String(foreground) + String(background) }>
-        <td style={{ backgroundColor: bgc.str, color: fgc.str }}>The quick brown fox jumps over the lazy brown dog.</td>
+        <td style={{ backgroundColor: bgc.str, color: fgc.str }}>The quick brown fox jumps over the lazy dog.</td>
         <td>{ contrastRatioString }</td>
         <td>{ SemanticSlot[foreground] + ' + ' + SemanticSlot[background] }</td>
       </tr>

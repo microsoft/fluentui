@@ -106,3 +106,29 @@ export function getShade(color: IColor, shade: Shade) {
 
     return Colors.getColorFromRGBA(assign(hsl2rgb(hsl.h, hsl.s, hsl.l), { a: color.a }));
 }
+
+/* https://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef */
+export function getContrastRatio(color1: IColor, color2: IColor) {
+    /* calculate the intermediate value needed to calculating relative luminance */
+    function _getThing(x: number) {
+        if (x <= .03928) {
+            return x / 12.92;
+        } else {
+            return Math.pow((x + .055) / 1.055, 2.4);
+        }
+    }
+
+    let r1 = _getThing(color1.r / MAX_COLOR_RGBA);
+    let g1 = _getThing(color1.g / MAX_COLOR_RGBA);
+    let b1 = _getThing(color1.b / MAX_COLOR_RGBA);
+    let L1 = (.2126 * r1) + (.7152 * g1) + (.0722 * b1); // relative luminance of first color
+
+    let r2 = _getThing(color2.r / MAX_COLOR_RGBA);
+    let g2 = _getThing(color2.g / MAX_COLOR_RGBA);
+    let b2 = _getThing(color2.b / MAX_COLOR_RGBA);
+    let L2 = (.2126 * r2) + (.7152 * g2) + (.0722 * b2); // relative luminance of second color
+
+    // return the lighter color divided by darker
+    return L1 / L2 > 1 ?
+        L1 / L2 : L2 / L1;
+}

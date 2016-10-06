@@ -27,7 +27,7 @@
 .ms-TextField.is-disabled {
   .ms-TextField-field {
     background-color: $disabledBackgroundColor;
-    border-color: $disabledBackgroundColor;
+    border-color: $disabledForegroundColor;
     pointer-events: none;
     cursor: default;
   }
