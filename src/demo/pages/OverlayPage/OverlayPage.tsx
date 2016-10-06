@@ -12,6 +12,7 @@ import { OverlayDarkExample } from './examples/Overlay.Dark.Example';
 import { OverlayLightExample } from './examples/Overlay.Light.Example';
 
 const OverlayLightExampleCode = require('./examples/Overlay.Light.Example.tsx');
+const OverlayDarkExampleCode = require('./examples/Overlay.Dark.Example.tsx');
 
 export class OverlayPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -31,7 +32,7 @@ export class OverlayPage extends React.Component<IComponentDemoPageProps, any> {
             <ExampleCard title='Light' code={ OverlayLightExampleCode }>
               <OverlayLightExample />
             </ExampleCard>
-            <ExampleCard title='Dark'>
+            <ExampleCard title='Dark' code={ OverlayDarkExampleCode }>
               <OverlayDarkExample />
             </ExampleCard>
           </div>
