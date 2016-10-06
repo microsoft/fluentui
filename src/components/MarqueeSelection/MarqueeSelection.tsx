@@ -7,6 +7,7 @@ import { IRectangle } from '../../common/IRectangle';
 import { css } from '../../utilities/css';
 import { findScrollableParent } from '../../utilities/scroll';
 import { getDistanceBetweenPoints } from '../../utilities/math';
+import { getRTL } from '../../utilities/rtl';
 import { autobind } from '../../utilities/autobind';
 
 import './MarqueeSelection.scss';
@@ -93,9 +94,42 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     );
   }
 
+  /** Determine if the mouse event occured on a scrollbar of the target element. */
+  private _isMouseEventOnScrollbar(ev: MouseEvent) {
+    let targetElement = ev.target as HTMLElement;
+    let targetScrollbarWidth = (targetElement.offsetWidth - targetElement.clientWidth);
+
+    if (targetScrollbarWidth) {
+      let targetRect = targetElement.getBoundingClientRect();
+
+      // Check vertical scroll
+      if (getRTL()) {
+        if (ev.clientX < (targetRect.left + targetScrollbarWidth)) {
+          return true;
+        }
+      } else {
+        if (ev.clientX > (targetRect.left + targetElement.clientWidth)) {
+          return true;
+        }
+      }
+
+      // Check horizontal scroll
+      if (ev.clientY > (targetRect.top + targetElement.clientHeight)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   @autobind
   private _onMouseDown(ev: MouseEvent) {
     let { isEnabled, onShouldStartSelection } = this.props;
+
+    // Ensure the mousedown is within the boundaries of the target. If not, it may have been a click on a scrollbar.
+    if (this._isMouseEventOnScrollbar(ev)) {
+      return;
+    }
 
     if (isEnabled && (!onShouldStartSelection || onShouldStartSelection(ev))) {
       let scrollableParent = findScrollableParent(this.refs.root);
