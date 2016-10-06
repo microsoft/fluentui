@@ -53,9 +53,9 @@ export function findScrollableParent(startingElement: HTMLElement): HTMLElement 
     el = el.parentElement;
   }
 
-  // Fall back to body scroll.
-  if (!el) {
-    el = document.body;
+  // Fall back to window scroll.
+  if (!el || el === document.body) {
+    el = window as any;
   }
 
   return el;

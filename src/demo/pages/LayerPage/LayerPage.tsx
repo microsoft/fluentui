@@ -32,7 +32,7 @@ export class LayerPage extends React.Component<IComponentDemoPageProps, any> {
           <div>
             <ExampleCard title='Basic layered content' code={ LayerBasicExampleCode }>
               <LayerBasicExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Using LayerHost to control projection' code={ LayerHostedExampleCode }>
               <LayerHostedExample />
             </ExampleCard>
