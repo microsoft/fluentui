@@ -7,14 +7,12 @@
 // --------------------------------------------------
 // Check styles
 
-$checkBoxHeight: 20px;
+$checkBoxHeight: 23px;
 
 .ms-Check {
-  font-family: FabricMDL2Icons;
   line-height: 1;
-  text-align: center;
-  width: 22px;
-  height: 22px;
+  width: $checkBoxHeight;
+  height: $checkBoxHeight;
   vertical-align: top;
   position: relative;
   @include user-select(none);
@@ -23,7 +21,6 @@ $checkBoxHeight: 20px;
     .ms-Check-background {
       &:before {
         color: $ms-color-themePrimary;
-        display: inline-block;
       }
 
       &:after {
@@ -47,17 +44,18 @@ $checkBoxHeight: 20px;
 }
 
 .ms-Check-check {
-  left: 0;
-  right: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   position: absolute;
-  line-height: $checkBoxHeight;
   color: $ms-color-neutralTertiaryAlt;
   opacity: 0;
 }
 
 .ms-Check-background {
-  font-family: 'FabricMDL2Icons';
   position: relative;
+  height: $checkBoxHeight;
+  width: $checkBoxHeight;
 
   &:before {
     content: '\E91F';
@@ -72,14 +70,11 @@ $checkBoxHeight: 20px;
   &:before,
   &:after {
     left: 50%;
-    transform: translateX(-50%);
-    font-size: 22px;
-    line-height: 21px;
-    display: inline-block;
-    height: 22px;
-    width: 22px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: $checkBoxHeight;
+    height: $checkBoxHeight;
+    width: $checkBoxHeight;
     position: absolute;
-    top: 0;
-    bottom: 0;
   }
 }
