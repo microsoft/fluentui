@@ -22,7 +22,7 @@
   bottom: 0;
   right: 0;
 
-  .codeButton {
+  .ms-Button.ExampleCard-codeButton {
     @include margin-right(0);
     background: none;
     border: 1px solid $ms-color-neutralTertiary;
@@ -52,9 +52,7 @@
     }
 
     &.is-active,
-    &:hover,
-    &:active,
-    &:focus {
+    &:hover {
       background-color: $ms-color-neutralDark;
       border-color: $ms-color-neutralDark;
 
