@@ -368,7 +368,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
   private _onHeaderKeyDown(ev: React.KeyboardEvent) {
     if (ev.which === KeyCodes.down) {
-      if (this.refs.focusZone.focus()) {
+      if (this.refs.focusZone && this.refs.focusZone.focus()) {
         ev.preventDefault();
         ev.stopPropagation();
       }
@@ -377,7 +377,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
   private _onContentKeyDown(ev: React.KeyboardEvent) {
     if (ev.which === KeyCodes.up) {
-      if (this.refs.header.focus()) {
+      if (this.refs.header && this.refs.header.focus()) {
         ev.preventDefault();
         ev.stopPropagation();
       }

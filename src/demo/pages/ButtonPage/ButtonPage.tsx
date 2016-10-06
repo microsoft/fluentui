@@ -77,7 +77,7 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
         }
         propertiesTables={
           <div>
-            <PropertiesTableSet componentName='Button' />,
+            <PropertiesTableSet componentName='Button' />
             <p>Besides the above properties, the <code>Button</code> component accepts all properties that the React <code>button</code> and <code>a</code> components accept.</p>
           </div>
         }
