@@ -217,8 +217,8 @@ function _isLinkSelected(link: INavLink, selectedKey: string): boolean {
     _urlResolver.href = link.url || '';
     const target: string = _urlResolver.href;
 
-    if (selectedKey && link.key === selectedKey) {
-      return true;
+    if (selectedKey) {
+      return link.key === selectedKey;
     }
 
     if (location.protocol + '//' + location.host + location.pathname === target) {
