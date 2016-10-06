@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { BaseDecorator } from './BaseDecorator';
 import { findScrollableParent } from '../../utilities/scroll';
+import { getRect } from '../../utilities/dom';
 
 export interface IViewport {
   width: number;
@@ -73,23 +74,8 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
       let { viewport } = this.state;
       let viewportElement = (this.refs as any).root;
       let scrollElement = findScrollableParent(viewportElement);
-      let scrollRect;
-
-      // If we are window scrolling, measure the window rather than the container element.
-      if (scrollElement === window as any) {
-        scrollRect = {
-          left: 0,
-          top: 0,
-          width: window.innerWidth,
-          height: window.innerHeight,
-          right: window.innerWidth,
-          bottom: window.innerHeight
-        };
-      } else {
-        scrollRect = scrollElement.getBoundingClientRect();
-      }
-
-      let clientRect = viewportElement.getBoundingClientRect();
+      let scrollRect = getRect(scrollElement);
+      let clientRect = getRect(viewportElement);
       let updateComponent = () => {
         if (withForceUpdate && this._composedComponentInstance) {
           this._composedComponentInstance.forceUpdate();
