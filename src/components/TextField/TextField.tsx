@@ -6,7 +6,8 @@ import {
   getId,
   css,
   getNativeProps,
-  baseElementProperties
+  inputProperties,
+  textAreaProperties
 } from '../../Utilities';
 import './TextField.scss';
 
@@ -67,7 +68,6 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
 
     this._delayedValidate = this._async.debounce(this._validate, this.props.deferredValidationTime);
     this._lastValidation = 0;
-    this._latestValidateValue = '';
     this._willMountTriggerValidation = false;
   }
 
@@ -215,7 +215,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
   }
 
   private _renderTextArea(): React.ReactElement<React.HTMLProps<HTMLAreaElement>> {
-    let textAreaProps = getNativeProps(this.props, baseElementProperties);
+    let textAreaProps = getNativeProps(this.props, textAreaProperties);
 
     return (
       <textarea
@@ -235,7 +235,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
   }
 
   private _renderInput(): React.ReactElement<React.HTMLProps<HTMLInputElement>> {
-    let inputProps = getNativeProps(this.props, baseElementProperties);
+    let inputProps = getNativeProps(this.props, inputProperties);
 
     return (
       <input
