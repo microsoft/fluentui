@@ -107,7 +107,10 @@ export function getShade(color: IColor, shade: Shade) {
     return Colors.getColorFromRGBA(assign(hsl2rgb(hsl.h, hsl.s, hsl.l), { a: color.a }));
 }
 
-/* https://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef */
+/* Calculates the contrast ratio between two colors. Used for verifying
+ * color pairs meet minimum accessibility requirements.
+ * See: https://www.w3.org/TR/WCAG20/ section 1.4.3
+ */
 export function getContrastRatio(color1: IColor, color2: IColor) {
     /* calculate the intermediate value needed to calculating relative luminance */
     function _getThing(x: number) {
