@@ -86,6 +86,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   private _events: EventGroup;
   private _async: Async;
   private _focusZone: FocusZone;
+  private _targetWindow: Window;
 
   constructor(props: IContextualMenuProps) {
     super(props);
@@ -100,6 +101,12 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     this._enterTimerId = 0;
     this._events = new EventGroup(this);
     this._async = new Async(this);
+    // This is used to allow the ContextualMenu to appear on a window other than the one the javascript is running in.
+    if (props.targetElement && props.targetElement.ownerDocument && props.targetElement.ownerDocument.defaultView) {
+      this._targetWindow = props.targetElement.ownerDocument.defaultView;
+    } else {
+      this._targetWindow = window;
+    }
 
   }
 
@@ -119,7 +126,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
 
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount() {
-    this._events.on(window, 'resize', this.dismiss);
+    this._events.on(this._targetWindow, 'resize', this.dismiss);
   }
 
   // Invoked when a component is receiving new props.
