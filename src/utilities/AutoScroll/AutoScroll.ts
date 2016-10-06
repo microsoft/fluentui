@@ -1,5 +1,7 @@
 import { EventGroup } from '../eventGroup/EventGroup';
 import { findScrollableParent } from '../scroll';
+import { getRect } from '../dom';
+import { IRectangle } from '../../common/IRectangle';
 
 const SCROLL_ITERATION_DELAY = 16;
 const SCROLL_GUTTER_HEIGHT = 100;
@@ -14,15 +16,20 @@ const MAX_SCROLL_VELOCITY = 15;
 export class AutoScroll {
   private _events: EventGroup;
   private _scrollableParent: HTMLElement;
-  private _scrollRect: ClientRect;
+  private _scrollRect: IRectangle;
   private _scrollVelocity: number;
   private _timeoutId: number;
 
   constructor(element: HTMLElement) {
     this._events = new EventGroup(this);
     this._scrollableParent = findScrollableParent(element);
+
     this._incrementScroll = this._incrementScroll.bind(this);
-    this._scrollRect = this._scrollableParent.getBoundingClientRect();
+    this._scrollRect = getRect(this._scrollableParent);
+
+    if (this._scrollableParent === window as any) {
+      this._scrollableParent = document.body;
+    }
 
     if (this._scrollableParent) {
       this._events.on(window, 'mousemove', this._onMouseMove, true);
