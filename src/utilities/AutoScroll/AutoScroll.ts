@@ -16,7 +16,6 @@ const MAX_SCROLL_VELOCITY = 15;
 export class AutoScroll {
   private _events: EventGroup;
   private _scrollableParent: HTMLElement;
-  private _scrollableSurface: HTMLElement;
   private _scrollRect: IRectangle;
   private _scrollVelocity: number;
   private _timeoutId: number;

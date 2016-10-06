@@ -59,7 +59,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
 
   public componentDidMount() {
     this._scrollableParent = findScrollableParent(this.refs.root);
-    this._scrollableSurface = this._scrollableParent == window as any ? document.body : this._scrollableParent;
+    this._scrollableSurface = this._scrollableParent === window as any ? document.body : this._scrollableParent;
     // When scroll events come from window, we need to read scrollTop values from the body.
 
     this._events.on(
@@ -67,7 +67,6 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
       'mousedown',
       this._onMouseDown);
   }
-
 
   public componentWillUnmount() {
     if (this._autoScroll) {
