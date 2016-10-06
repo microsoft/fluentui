@@ -204,6 +204,10 @@ export const buttonProperties = baseElementProperties.concat(baseElementEvents, 
 
 export const divProperties = baseElementProperties.concat(baseElementEvents);
 
+export const inputProperties = buttonProperties;
+
+export const textAreaProperties = buttonProperties;
+
 /**
  * Gets native supported props for an html element provided the allowance set. Use one of the property
  * sets defined (divProperties, buttonPropertes, etc) to filter out supported properties from a given
