@@ -50,7 +50,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     };
     // This is used to allow the Callout to appear on a window other than the one the javascript is running in.
     if (props.targetElement && props.targetElement.ownerDocument && props.targetElement.ownerDocument.defaultView) {
-      this._targetWindow = props.targetElement.ownerDocument.defaultView
+      this._targetWindow = props.targetElement.ownerDocument.defaultView;
     } else {
       this._targetWindow = window;
     }
@@ -97,7 +97,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     }
   }
 
-  private _dismissOnLostFocus(ev: Event) {
+  protected _dismissOnLostFocus(ev: Event) {
     let { targetElement } = this.props;
     let target = ev.target as HTMLElement;
 

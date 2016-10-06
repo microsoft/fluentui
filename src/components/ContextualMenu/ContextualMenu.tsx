@@ -101,9 +101,9 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     this._enterTimerId = 0;
     this._events = new EventGroup(this);
     this._async = new Async(this);
-    // This is used to allow the Callout to appear on a window other than the one the javascript is running in.
+    // This is used to allow the ContextualMenu to appear on a window other than the one the javascript is running in.
     if (props.targetElement && props.targetElement.ownerDocument && props.targetElement.ownerDocument.defaultView) {
-      this._targetWindow = props.targetElement.ownerDocument.defaultView
+      this._targetWindow = props.targetElement.ownerDocument.defaultView;
     } else {
       this._targetWindow = window;
     }
