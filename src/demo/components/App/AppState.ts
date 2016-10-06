@@ -38,6 +38,7 @@ import { TeachingBubblePage } from '../../pages/TeachingBubblePage/TeachingBubbl
 import { TextFieldPage } from '../../pages/TextFieldPage/TextFieldPage';
 import { TogglePage } from '../../pages/TogglePage/TogglePage';
 import { ThemePage } from '../../pages/ThemePage/ThemePage';
+import { DetailsListBasicExample } from '../../pages/DetailsListPage/examples/DetailsList.Basic.Example';
 
 export enum ExampleStatus {
   placeholder,
@@ -48,12 +49,22 @@ export enum ExampleStatus {
 
 export interface IAppState {
   appTitle: string;
+  testPages: any[];
   examplePages: INavLinkGroup[];
   headerLinks: INavLink[];
 }
 
 export const AppState: IAppState = {
   appTitle: 'Fabric - React',
+
+  testPages: [
+    {
+      component: DetailsListBasicExample,
+      key: 'DetailsListBasicExample',
+      name: 'DetailsListBasicExample',
+      url: '#/tests/detailslistbasicexample'
+    }
+  ],
 
   examplePages: [
     {
@@ -235,6 +246,7 @@ export const AppState: IAppState = {
         },
         {
           component: TeachingBubblePage,
+          key: 'TeachingBubble',
           name: 'TeachingBubble',
           status: ExampleStatus.beta,
           url: '#/examples/teachingbubble'

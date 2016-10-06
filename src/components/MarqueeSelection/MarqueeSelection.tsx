@@ -46,6 +46,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
   private _selectedIndicies: { [key: string]: boolean };
   private _itemRectCache: { [key: string]: IRectangle };
   private _scrollableParent: HTMLElement;
+  private _scrollableSurface: HTMLElement;
   private _scrollTop: number;
 
   constructor(props: IMarqueeSelectionProps) {
@@ -58,13 +59,13 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
 
   public componentDidMount() {
     this._scrollableParent = findScrollableParent(this.refs.root);
+    this._scrollableSurface = this._scrollableParent === window as any ? document.body : this._scrollableParent;
+    // When scroll events come from window, we need to read scrollTop values from the body.
 
-    if (this._scrollableParent) {
-      this._events.on(
-        this.props.isDraggingConstrainedToRoot ? this.refs.root : this._scrollableParent,
-        'mousedown',
-        this._onMouseDown);
-    }
+    this._events.on(
+      this.props.isDraggingConstrainedToRoot ? this.refs.root : this._scrollableSurface,
+      'mousedown',
+      this._onMouseDown);
   }
 
   public componentWillUnmount() {
@@ -132,16 +133,13 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     }
 
     if (isEnabled && (!onShouldStartSelection || onShouldStartSelection(ev))) {
-      let scrollableParent = findScrollableParent(this.refs.root);
-
-      if (scrollableParent && ev.button === 0) {
+      if (this._scrollableSurface && ev.button === 0) {
         this._selectedIndicies = {};
         this._events.on(window, 'mousemove', this._onMouseMove);
-        this._events.on(scrollableParent, 'scroll', this._onMouseMove);
+        this._events.on(this._scrollableParent, 'scroll', this._onMouseMove);
         this._events.on(window, 'mouseup', this._onMouseUp, true);
         this._autoScroll = new AutoScroll(this.refs.root);
-        this._scrollableParent = scrollableParent;
-        this._scrollTop = scrollableParent.scrollTop;
+        this._scrollTop = this._scrollableSurface.scrollTop;
         this._rootRect = this.refs.root.getBoundingClientRect();
       }
     }
@@ -150,7 +148,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
   private _getRootRect(): IRectangle {
     return {
       left: this._rootRect.left,
-      top: this._rootRect.top + (this._scrollTop - this._scrollableParent.scrollTop),
+      top: this._rootRect.top + (this._scrollTop - this._scrollableSurface.scrollTop),
       width: this._rootRect.width,
       height: this._rootRect.height
     };
@@ -177,9 +175,9 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
           x: Math.max(0, Math.min(rootRect.width, this._lastMouseEvent.clientX - rootRect.left)),
           y: Math.max(0, Math.min(rootRect.height, this._lastMouseEvent.clientY - rootRect.top))
         } : {
-          x: this._lastMouseEvent.clientX - rootRect.left,
-          y: this._lastMouseEvent.clientY - rootRect.top
-        };
+            x: this._lastMouseEvent.clientX - rootRect.left,
+            y: this._lastMouseEvent.clientY - rootRect.top
+          };
 
         let dragRect = {
           left: Math.min(this._dragOrigin.x, constrainedPoint.x),
@@ -200,10 +198,9 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
   }
 
   private _onMouseUp(ev: MouseEvent) {
-    let scrollableParent = findScrollableParent(this.refs.root);
 
     this._events.off(window);
-    this._events.off(scrollableParent, 'scroll');
+    this._events.off(this._scrollableParent, 'scroll');
 
     this._autoScroll.dispose();
     this._autoScroll = this._dragOrigin = this._lastMouseEvent = this._selectedIndicies = this._itemRectCache = undefined;
