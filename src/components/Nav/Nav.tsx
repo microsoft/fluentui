@@ -211,15 +211,15 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
 const _urlResolver = document.createElement('a');
 
 function _isLinkSelected(link: INavLink, selectedKey: string): boolean {
+    if (selectedKey && link.key === selectedKey) {
+      return true;
+    }
+
     if (!link.url) {
       return false;
     }
     _urlResolver.href = link.url || '';
     const target: string = _urlResolver.href;
-
-    if (selectedKey && link.key === selectedKey) {
-      return true;
-    }
 
     if (location.protocol + '//' + location.host + location.pathname === target) {
       return true;
