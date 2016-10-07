@@ -60,9 +60,9 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
   ariaDescription?: string;
 
   /**
+   * @deprecated
    * Deprecated at v0.56.2, to be removed at >= v1.0.0. Just pass in button props instead;
    * they will be mixed into the button/anchor element rendered by the component.
-   * @deprecated
    */
   rootProps?: React.HTMLProps<HTMLButtonElement> | React.HTMLProps<HTMLAnchorElement>;
 }
