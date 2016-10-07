@@ -69,7 +69,6 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
         buttonType={ ButtonType.icon }
         onClick={ this.props.onDismiss }
         icon='Cancel'
-        rootProps={ { title: 'Close' } }
         ariaLabel={ this.props.dismissButtonAriaLabel }
       />;
     }
