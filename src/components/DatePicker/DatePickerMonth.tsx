@@ -1,36 +1,52 @@
 import * as React from 'react';
-import { IDatePickerStrings } from './DatePicker.Props';
 import { FocusZone } from '../../FocusZone';
 import { KeyCodes } from '../../utilities/KeyCodes';
 import { addYears, setMonth } from '../../utilities/dateMath/DateMath';
 import { getRTL } from '../../utilities/rtl';
 import { css } from '../../utilities/css';
 
+const MONTHS_IN_YEAR = 12;
+
 export interface IDatePickerMonthProps {
    navigatedDate: Date;
-   strings: IDatePickerStrings;
    onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
+   locales: string[];
 }
 
-export class DatePickerMonth extends React.Component<IDatePickerMonthProps, {}> {
+export interface IDatePickerMonthState {
+  monthStrings: string[];
+}
+
+export class DatePickerMonth extends React.Component<IDatePickerMonthProps, IDatePickerMonthState> {
   private _selectMonthCallbacks: (() => void)[];
 
   public constructor(props: IDatePickerMonthProps) {
     super(props);
 
     this._selectMonthCallbacks = [];
-    props.strings.shortMonths.map((month, index) => {
-      this._selectMonthCallbacks[index] = this._onSelectMonth.bind(this, index);
-    });
+    for (let i = 0; i < MONTHS_IN_YEAR; i++) {
+      this._selectMonthCallbacks[i] = this._onSelectMonth.bind(this, i);
+    }
 
     this._onSelectNextYear = this._onSelectNextYear.bind(this);
     this._onSelectPrevYear = this._onSelectPrevYear.bind(this);
     this._onSelectMonth = this._onSelectMonth.bind(this);
+
+    this.state = {
+      monthStrings: this._getMonthStrings(props.locales),
+    };
+  }
+
+  public componentWillReceiveProps (nextProps: IDatePickerMonthProps) {
+    this.setState({
+      monthStrings: this._getMonthStrings(nextProps.locales),
+    });
   }
 
   public render() {
 
-    let { navigatedDate, strings } = this.props;
+    let { monthStrings } = this.state;
+    let { navigatedDate } = this.props;
 
     return (
       <div className='ms-DatePicker-monthPicker'>
@@ -55,7 +71,7 @@ export class DatePickerMonth extends React.Component<IDatePickerMonthProps, {}> 
         </div>
         <FocusZone>
           <div className='ms-DatePicker-optionGrid'>
-            { strings.shortMonths.map((month, index) => {
+            { monthStrings.map((month, index) => {
               return (<span className='ms-DatePicker-monthOption' key={index} onClick={ this._selectMonthCallbacks[index] } data-is-focusable={true}>{month}</span>);
             }) }
           </div>
@@ -83,5 +99,16 @@ export class DatePickerMonth extends React.Component<IDatePickerMonthProps, {}> 
   private _onSelectMonth(newMonth: number) {
     let { navigatedDate, onNavigateDate } = this.props;
     onNavigateDate(setMonth(navigatedDate, newMonth), true);
+  }
+
+  private _getMonthStrings(locales: string[]) {
+    let strings = new Array(MONTHS_IN_YEAR);
+    let date: Date = new Date();
+
+    for (let i = 0; i < MONTHS_IN_YEAR; i++) {
+      strings[i] = setMonth(date, i).toLocaleString(locales, { month: 'short' });
+    }
+
+    return strings;
   }
 }

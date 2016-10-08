@@ -45,7 +45,8 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     firstDayOfWeek: DayOfWeek.Sunday,
     isRequired: false,
     isMonthPickerVisible: true,
-    strings: null
+    strings: null,
+    locales: ['en']
   };
 
   public refs: {
@@ -102,7 +103,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   public render() {
     let rootClass = 'ms-DatePicker';
-    let { firstDayOfWeek, strings, label, isRequired, ariaLabel, placeholder, allowTextInput } = this.props;
+    let { firstDayOfWeek, strings, label, isRequired, ariaLabel, placeholder, allowTextInput, locales } = this.props;
     let { isDatePickerShown, formattedDate, selectedDate, navigatedDate, errorMessage } = this.state;
 
     return (
@@ -141,11 +142,12 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
                     onNavigateDate={ this._onNavigateDate }
                     firstDayOfWeek={ firstDayOfWeek }
                     strings={ strings }
+                    locales={ locales }
                     ref='dayPicker' />
                   <DatePickerMonth
                     navigatedDate={ navigatedDate }
-                    strings={ strings }
-                    onNavigateDate={ this._onNavigateDate } />
+                    onNavigateDate={ this._onNavigateDate }
+                    locales={ locales } />
                   <span
                     className='ms-DatePicker-goToday js-goToday'
                     onClick={ this._onGotoToday }

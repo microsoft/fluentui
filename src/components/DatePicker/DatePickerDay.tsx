@@ -25,11 +25,14 @@ export interface IDatePickerDayProps {
   onSelectDate: (date: Date) => void;
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
   firstDayOfWeek: DayOfWeek;
+  locales: string[];
 }
 
 export interface IDatePickerDayState {
   activeDescendantId?: string;
   weeks?: IDayInfo[][];
+  shortDayStrings?: string[];
+  longDayStrings?: string[];
 }
 
 export class DatePickerDay extends React.Component<IDatePickerDayProps, IDatePickerDayState> {
@@ -41,9 +44,13 @@ export class DatePickerDay extends React.Component<IDatePickerDayProps, IDatePic
   public constructor(props: IDatePickerDayProps) {
     super(props);
 
+    let strings = this._getDayStrings(props.locales);
+
     this.state = {
       activeDescendantId: getId('DatePickerDay-active'),
-      weeks: this._getWeeks(props.navigatedDate, props.selectedDate)
+      weeks: this._getWeeks(props.navigatedDate, props.selectedDate),
+      shortDayStrings: strings.shortDayStrings,
+      longDayStrings: strings.longDayStrings,
     };
 
     this._onSelectNextMonth = this._onSelectNextMonth.bind(this);
@@ -51,14 +58,18 @@ export class DatePickerDay extends React.Component<IDatePickerDayProps, IDatePic
   }
 
   public componentWillReceiveProps (nextProps: IDatePickerDayProps) {
+    let strings = this._getDayStrings(nextProps.locales);
+
     this.setState({
-      weeks: this._getWeeks(nextProps.navigatedDate, nextProps.selectedDate)
+      weeks: this._getWeeks(nextProps.navigatedDate, nextProps.selectedDate),
+      shortDayStrings: strings.shortDayStrings,
+      longDayStrings: strings.longDayStrings,
     });
   }
 
   public render() {
-    let { activeDescendantId, weeks } = this.state;
-    let { firstDayOfWeek, strings,  navigatedDate, onSelectDate } = this.props;
+    let { activeDescendantId, weeks, shortDayStrings, longDayStrings } = this.state;
+    let { firstDayOfWeek, navigatedDate, onSelectDate, locales } = this.props;
 
     let selectDayCallbacks = {};
     weeks.map((week, index) => week.map(day => selectDayCallbacks[day.key] = onSelectDate.bind(this, day.originalDate)));
@@ -66,8 +77,8 @@ export class DatePickerDay extends React.Component<IDatePickerDayProps, IDatePic
     return (
       <div className='ms-DatePicker-dayPicker'>
         <div className='ms-DatePicker-header'>
-          <div className='ms-DatePicker-month'>{strings.months[navigatedDate.getMonth()]}</div>
-          <div className='ms-DatePicker-year'>{navigatedDate.getFullYear() }</div>
+          <div className='ms-DatePicker-month'>{ navigatedDate.toLocaleDateString(locales, { month: 'long'}) }</div>
+          <div className='ms-DatePicker-year'>{ navigatedDate.getFullYear() }</div>
         </div>
         <div className='ms-DatePicker-monthComponents'>
           <div className='ms-DatePicker-navContainer'>
@@ -92,9 +103,9 @@ export class DatePickerDay extends React.Component<IDatePickerDayProps, IDatePic
           <table className='ms-DatePicker-table' role='grid' aria-readonly='true' aria-multiselectable='false' aria-activedescendant={ activeDescendantId }>
             <thead>
               <tr>
-                { strings.shortDays.map((val, index) =>
-                  <th className='ms-DatePicker-weekday' scope='col' key={ index } title={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }>
-                    { strings.shortDays[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
+                { shortDayStrings.map((val, index) =>
+                  <th className='ms-DatePicker-weekday' scope='col' key={ index } title={ longDayStrings[(index + firstDayOfWeek) % DAYS_IN_WEEK] }>
+                    { shortDayStrings[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
                   </th>) }
               </tr>
             </thead>
@@ -214,5 +225,20 @@ export class DatePickerDay extends React.Component<IDatePickerDayProps, IDatePic
     }
 
     return weeks;
+  }
+
+  private _getDayStrings(locales: string[]) {
+    let strings = {
+      shortDayStrings: new Array(DAYS_IN_WEEK),
+      longDayStrings: new Array(DAYS_IN_WEEK),
+    };
+    let startOfWeek: Date = addDays(new Date(), -new Date().getDay());
+
+    for (let i = 0; i < DAYS_IN_WEEK; i++) {
+      strings.shortDayStrings[i] = addDays(startOfWeek, i).toLocaleString(locales, { weekday: 'short' });
+      strings.longDayStrings[i] = addDays(startOfWeek, i).toLocaleString(locales, { weekday: 'long' });
+    }
+
+    return strings;
   }
 }

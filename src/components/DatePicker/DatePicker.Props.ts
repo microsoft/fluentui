@@ -25,7 +25,7 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
 
   /**
    * Whether the month picker is shown beside the day picker or hidden.
-   * @defaultvalue true 
+   * @defaultvalue true
    */
   isMonthPickerVisible?: boolean;
 
@@ -67,6 +67,11 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
    * Localized strings to use in the DatePicker
    */
   strings: IDatePickerStrings;
+
+  /**
+  * Locales to use for rendering date strings, in descending order of priority
+  */
+  locales?: string[];
 }
 
 export enum DayOfWeek {
@@ -80,30 +85,6 @@ export enum DayOfWeek {
 }
 
 export interface IDatePickerStrings {
-  /**
-   * An array of strings for the full names of months.
-   * The array is 0-based, so months[0] should be the full name of January.
-   */
-  months: string[];
-
-  /**
-   * An array of strings for the short names of months.
-   * The array is 0-based, so shortMonths[0] should be the short name of January.
-   */
-  shortMonths: string[];
-
-  /**
-   * An array of strings for the full names of days of the week.
-   * The array is 0-based, so days[0] should be the full name of Sunday.
-   */
-  days: string[];
-
-  /**
-   * An array of strings for the initials of the days of the week.
-   * The array is 0-based, so days[0] should be the initial of Sunday.
-   */
-  shortDays: string[];
-
   /**
    * String to render for button to direct the user to today's date.
    */
