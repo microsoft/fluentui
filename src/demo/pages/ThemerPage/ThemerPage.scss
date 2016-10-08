@@ -26,6 +26,7 @@ html > body {
   height: 36px;
   width: 36px;
   margin: 4px;
+  flex-shrink: 0;
 }
 
 .ms-themer-swatchBg {
@@ -46,4 +47,6 @@ html > body {
 
 .ms-themer-slot {
   display: inline-flex;
+  width: 250px;
+  overflow: auto;
 }
