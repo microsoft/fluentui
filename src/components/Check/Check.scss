@@ -7,28 +7,32 @@
 // --------------------------------------------------
 // Check styles
 
-$checkBoxHeight: 20px;
+$checkBoxHeight: 23px;
 
 .ms-Check {
-  display: inline-block;
-  cursor: default;
-  vertical-align: top;
+  line-height: 1;
   width: $checkBoxHeight;
   height: $checkBoxHeight;
-  text-align: center;
+  vertical-align: top;
   position: relative;
+  @include user-select(none);
 
   &.is-checked {
     .ms-Check-background {
       &:before {
-        background: $ms-color-themePrimary;
-        border: 1px solid $ms-color-white;
+        color: $ms-color-themePrimary;
+      }
+
+      &:after {
+        color: $ms-color-white;
       }
     }
 
     .ms-Check-check {
       opacity: 1;
       color: $ms-color-white;
+      font-weight: 900;
+      font-size: $ms-font-size-s;
     }
   }
 
@@ -40,28 +44,37 @@ $checkBoxHeight: 20px;
 }
 
 .ms-Check-check {
-  left: 0;
-  right: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   position: absolute;
-  line-height: $checkBoxHeight;
   color: $ms-color-neutralTertiaryAlt;
   opacity: 0;
 }
 
 .ms-Check-background {
+  position: relative;
+  height: $checkBoxHeight;
+  width: $checkBoxHeight;
+
   &:before {
+    content: '\E91F';
+    color: $ms-color-white;
+  }
+
+  &:after {
+    content: '\EA3A';
+    color: $ms-color-neutralTertiaryAlt;
+  }
+
+  &:before,
+  &:after {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: $checkBoxHeight;
+    height: $checkBoxHeight;
+    width: $checkBoxHeight;
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: inline-block;
-    margin: auto;
-    height: $checkBoxHeight - 2px;
-    width: $checkBoxHeight - 2px;
-    background: $ms-color-white;
-    border: 1px solid $ms-color-neutralTertiaryAlt;
-    border-radius: 50%;
-    content: ' ';
   }
 }

@@ -35,13 +35,12 @@ $ContextualMenu-iconWidth: 14px;
   color: inherit;
   background: none;
   border: none;
-  margin: 0;
-  padding: 0 4px;
   min-width: 100%;
   height: $ContextualMenu-itemHeight;
   line-height: $ContextualMenu-itemHeight;
   display: block;
   cursor: pointer;
+  padding: 0px 6px;
   @include text-align(left);
 
   &:hover:not([disabled]) {
@@ -67,6 +66,7 @@ $ContextualMenu-iconWidth: 14px;
 }
 
 a.ms-ContextualMenu-link {
+  padding: 0px 6px;
   text-rendering: auto;
   color: inherit;
   letter-spacing: normal;
@@ -93,7 +93,7 @@ a.ms-ContextualMenu-link {
   width: $ContextualMenu-iconWidth;
   text-align: center;
   vertical-align: top;
-  padding: 0px 4px;
+  margin: 0px 4px;
 }
 
 .ms-ContextualMenu-itemText {
@@ -101,7 +101,7 @@ a.ms-ContextualMenu-link {
 }
 
 .ms-ContextualMenu-linkText {
-  padding: 0 4px;
+  margin: 0px 4px;
   display: inline-block;
   vertical-align: top;
   white-space: nowrap;
