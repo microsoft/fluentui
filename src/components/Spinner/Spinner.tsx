@@ -13,10 +13,10 @@ export class Spinner extends React.Component<ISpinnerProps, any> {
 
     return (
       <div className={ css('ms-Spinner', className) }>
-        <div className={ css('ms-Spinner--normal', {
-            'ms-Spinner--large': type === SpinnerType.large
-          }) }>
-          <div className='ms-Spinner-circle'></div>
+        <div className={ css('ms-Spinner-circle',
+            { 'ms-Spinner--normal': type === SpinnerType.normal },
+            { 'ms-Spinner--large': type === SpinnerType.large })
+          }>
         </div>
         { label && (
           <div className='ms-Spinner-label'>{label}</div>
