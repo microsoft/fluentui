@@ -8,6 +8,7 @@ import {
 import { NavBasicExample } from './examples/Nav.Basic.Example';
 import { NavFabricDemoAppExample } from './examples/Nav.FabricDemoApp.Example';
 import { NavNestedExample } from './examples/Nav.Nested.Example';
+import { NavByKeysExample } from './examples/Nav.ByKeys.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
@@ -15,6 +16,7 @@ import { IComponentDemoPageProps } from '../../components/ComponentPage/ICompone
 const NavBasicExampleCode = require('./examples/Nav.Basic.Example.tsx');
 const NavFabricDemoAppExampleCode = require('./examples/Nav.FabricDemoApp.Example.tsx');
 const NavNestedExampleCode = require('./examples/Nav.Nested.Example.tsx');
+const NavByKeysExampleCode = require('./examples/Nav.ByKeys.Example.tsx');
 
 export class NavPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -39,6 +41,9 @@ export class NavPage extends React.Component<IComponentDemoPageProps, any> {
             </ExampleCard>
             <ExampleCard title='Nested navigation menu (without group header)' code={ NavNestedExampleCode }>
               <NavNestedExample />
+            </ExampleCard>
+            <ExampleCard title='Nav bar of links each with unique keys and empty urls' code={ NavByKeysExampleCode }>
+              <NavByKeysExample />
             </ExampleCard>
           </div>
         }
