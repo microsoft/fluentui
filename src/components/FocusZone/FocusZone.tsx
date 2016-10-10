@@ -220,9 +220,13 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
    */
   @autobind
   private _onKeyDown(ev: React.KeyboardEvent) {
-    const { direction, disabled, isInnerZoneKeystroke } = this.props;
+    const { direction, disabled, isInnerZoneKeystroke, shouldControlFocus } = this.props;
 
     if (disabled) {
+      return;
+    }
+
+    if (shouldControlFocus && !shouldControlFocus(ev)) {
       return;
     }
 

@@ -79,7 +79,9 @@ export interface IFocusZoneProps extends React.Props<FocusZone> {
    * @param {HTMLElement} element The child element within the zone to focus.
    * @returns True if focus should be set to the given element, false to avoid setting focus.
    */
-  onBeforeFocus?: (childElement?: HTMLElement) => boolean;
+  onBeforeFocus?: (childElement?: HTMLElement, ev?: Event) => boolean;
+
+  shouldControlFocus?: (ev?: any) => boolean;
 }
 
 export enum FocusZoneDirection {
