@@ -69,7 +69,9 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   strings: IDatePickerStrings;
 
   /**
-  * Locales to use for rendering date strings, in descending order of priority
+  * Locales to use for rendering date strings, in descending order of priority.
+  * Use BCP 47 language tags (eg., 'en-us')
+  * @defaultvalue navigator.language
   */
   locales?: string[];
 }
@@ -85,6 +87,30 @@ export enum DayOfWeek {
 }
 
 export interface IDatePickerStrings {
+  /**
+   * Deprecated at v0.57.0, to be removed at >= v1.0.0. Provide the appropriate locale instead.
+   * @deprecated
+   */
+  months?: string[];
+
+  /**
+   * Deprecated at v0.57.0, to be removed at >= v1.0.0. Provide the appropriate locale instead.
+   * @deprecated
+   */
+  shortMonths?: string[];
+
+  /**
+   * Deprecated at v0.57.0, to be removed at >= v1.0.0. Provide the appropriate locale instead.
+   * @deprecated
+   */
+  days?: string[];
+
+  /**
+   * Deprecated at v0.57.0, to be removed at >= v1.0.0. Provide the appropriate locale instead.
+   * @deprecated
+   */
+  shortDays?: string[];
+
   /**
    * String to render for button to direct the user to today's date.
    */

@@ -40,7 +40,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     isRequired: false,
     isMonthPickerVisible: true,
     strings: null,
-    locales: ['en']
+    locales: [ navigator.language ]
   };
 
   public refs: {
@@ -61,7 +61,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
     this.state = {
       selectedDate: value || new Date(),
-      formattedDate: value ? this.formatDate(value) : null,
+      formattedDate: value ? this._formatDate(value) : null,
       isDatePickerShown: false,
       errorMessage: ''
     };
@@ -75,7 +75,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
     this.setState({
       selectedDate: value || new Date(),
-      formattedDate: value ? this.formatDate(value) : null,
+      formattedDate: value ? this._formatDate(value) : null,
       errorMessage: errorMessage
     });
   }
@@ -182,7 +182,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     this.setState({
       selectedDate: date,
       isDatePickerShown: false,
-      formattedDate: date ? this.formatDate(date) : null,
+      formattedDate: date ? this._formatDate(date) : null,
     });
 
     this._restoreFocusToTextField();
@@ -382,13 +382,13 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   }
 
   @autobind
-  private formatDate(date: Date) {
+  private _formatDate(date: Date) {
     let { formatDate } = this.props;
 
-    return formatDate ? formatDate(date) : this.defaultFormatDate(date);
+    return formatDate ? formatDate(date) : this._defaultFormatDate(date);
   }
 
-  private defaultFormatDate(date: Date) {
+  private _defaultFormatDate(date: Date) {
     let { locales } = this.props;
 
     if (date) {
