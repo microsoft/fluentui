@@ -1,3 +1,5 @@
+import { IRectangle } from '../common/IRectangle';
+
 /**
  * Attached interface for elements which support virtual references.
  * Used internally by the virtual hierarchy methods.
@@ -75,7 +77,10 @@ export function getVirtualParent(child: HTMLElement): HTMLElement {
  * @returns {HTMLElement}
  */
 export function getParent(child: HTMLElement, allowVirtualParents: boolean = true): HTMLElement {
-  return child && (allowVirtualParents && getVirtualParent(child) || child.parentElement);
+  return child && (
+    allowVirtualParents && getVirtualParent(child) ||
+    child.parentNode && child.parentNode as HTMLElement
+  );
 }
 
 /**
@@ -112,6 +117,28 @@ export function elementContains(parent: HTMLElement, child: HTMLElement, allowVi
   }
 
   return isContained;
+}
+
+/** Helper to get bounding client rect, works with window. */
+export function getRect(element: HTMLElement | Window): IRectangle {
+  let rect: IRectangle;
+
+  if (element) {
+    if (element === window) {
+      rect = {
+        left: 0,
+        top: 0,
+        width: window.innerWidth,
+        height: window.innerHeight,
+        right: window.innerWidth,
+        bottom: window.innerHeight
+      };
+    } else if ((element as HTMLElement).getBoundingClientRect) {
+      rect = (element as HTMLElement).getBoundingClientRect();
+    }
+  }
+
+  return rect;
 }
 
 /**

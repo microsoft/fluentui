@@ -37,7 +37,7 @@ export interface IBreadcrumbItem {
   /**
    * Callback issued when the breadcrumb is selected.
    */
-  onClick?: (key?: string) => void;
+  onClick?: (ev?: React.MouseEvent, item?: IBreadcrumbItem) => void;
 
   /**
    * Url to navigate to when this breadcrumb is clicked.
