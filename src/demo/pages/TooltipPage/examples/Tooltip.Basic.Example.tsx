@@ -4,9 +4,7 @@ import * as React from 'react';
 
 import {
   Tooltip,
-  Button,
-  ButtonType,
-  IButtonProps
+  Button
 } from '../../../../index';
 
 export interface ITooltipBasicExampleState {
@@ -28,14 +26,6 @@ export class TooltipBasicExample extends React.Component<any, ITooltipBasicExamp
 
   public render() {
     let { isTooltipVisible } = this.state;
-    let examplePrimaryButton: IButtonProps = {
-      buttonType: ButtonType.primary,
-      children: 'Try it out'
-    };
-    let exampleSecondaryButtonProps: IButtonProps = {
-      children: 'May be later',
-      onClick: this._onDismiss
-    };
 
     return (
       <div className='ms-TooltipExample'>
