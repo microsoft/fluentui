@@ -88,26 +88,26 @@ export enum DayOfWeek {
 
 export interface IDatePickerStrings {
   /**
-   * Deprecated at v0.57.0, to be removed at >= v1.0.0. Provide the appropriate locale instead.
    * @deprecated
+   * Deprecated at v0.57.0, to be removed at >= v1.0.0. Provide the appropriate locale instead.
    */
   months?: string[];
 
   /**
-   * Deprecated at v0.57.0, to be removed at >= v1.0.0. Provide the appropriate locale instead.
    * @deprecated
+   * Deprecated at v0.57.0, to be removed at >= v1.0.0. Provide the appropriate locale instead.
    */
   shortMonths?: string[];
 
   /**
-   * Deprecated at v0.57.0, to be removed at >= v1.0.0. Provide the appropriate locale instead.
    * @deprecated
+   * Deprecated at v0.57.0, to be removed at >= v1.0.0. Provide the appropriate locale instead.
    */
   days?: string[];
 
   /**
-   * Deprecated at v0.57.0, to be removed at >= v1.0.0. Provide the appropriate locale instead.
    * @deprecated
+   * Deprecated at v0.57.0, to be removed at >= v1.0.0. Provide the appropriate locale instead.
    */
   shortDays?: string[];
 

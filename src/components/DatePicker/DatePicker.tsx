@@ -381,7 +381,6 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     }
   }
 
-  @autobind
   private _formatDate(date: Date) {
     let { formatDate } = this.props;
 
