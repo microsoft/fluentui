@@ -27,13 +27,7 @@ export interface IDatePickerState {
 export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState> {
   public static defaultProps: IDatePickerProps = {
     allowTextInput: false,
-    formatDate: (date: Date) => {
-      if (date) {
-        return date.toDateString();
-      }
-
-      return null;
-    },
+    formatDate: null,
     parseDateFromString: (dateStr: string) => {
       const date = Date.parse(dateStr);
       if (date) {
@@ -61,13 +55,13 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   private _focusOnSelectedDateOnUpdate: boolean;
 
   constructor(props: IDatePickerProps) {
-    super();
+    super(props);
 
-    let { formatDate, value } = props;
+    let { value } = props;
 
     this.state = {
       selectedDate: value || new Date(),
-      formattedDate: formatDate && value ? formatDate(value) : null,
+      formattedDate: value ? this.formatDate(value) : null,
       isDatePickerShown: false,
       errorMessage: ''
     };
@@ -76,12 +70,12 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   }
 
   public componentWillReceiveProps(nextProps: IDatePickerProps) {
-    let { formatDate, isRequired, strings, value } = nextProps;
+    let { isRequired, strings, value } = nextProps;
     const errorMessage = isRequired && !value ? (strings.isRequiredErrorMessage || '*') : '';
 
     this.setState({
       selectedDate: value || new Date(),
-      formattedDate: formatDate && value ? formatDate(value) : null,
+      formattedDate: value ? this.formatDate(value) : null,
       errorMessage: errorMessage
     });
   }
@@ -183,12 +177,12 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   @autobind
   private _onSelectDate(date: Date) {
-    let { formatDate, onSelectDate } = this.props;
+    let { onSelectDate } = this.props;
 
     this.setState({
       selectedDate: date,
       isDatePickerShown: false,
-      formattedDate: formatDate && date ? formatDate(date) : null,
+      formattedDate: date ? this.formatDate(date) : null,
     });
 
     this._restoreFocusToTextField();
@@ -385,5 +379,22 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
         onSelectDate(date);
       }
     }
+  }
+
+  @autobind
+  private formatDate(date: Date) {
+    let { formatDate } = this.props;
+
+    return formatDate ? formatDate(date) : this.defaultFormatDate(date);
+  }
+
+  private defaultFormatDate(date: Date) {
+    let { locales } = this.props;
+
+    if (date) {
+      return date.toLocaleDateString(locales);
+    }
+
+    return null;
   }
 }
