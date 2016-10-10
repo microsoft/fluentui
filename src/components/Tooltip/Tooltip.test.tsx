@@ -19,7 +19,7 @@ describe('Tooltip', () => {
       </TooltipContent>
     );
     let renderedDOM = ReactDOM.findDOMNode(component);
-    let contentElement = renderedDOM.querySelector('.ms-Tooltip-content');
+    let contentElement = renderedDOM.querySelector('.ms-Tooltip-subText');
 
     expect(contentElement.textContent).to.equal('Foo');
   });
