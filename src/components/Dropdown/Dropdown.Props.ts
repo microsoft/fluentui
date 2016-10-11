@@ -31,8 +31,8 @@ export interface IDropdownProps {
 
   // @todo: Update version numbers for depriate and removal
   /**
-   * Deprecated at v0.52.0, to be removed at >= v1.0.0. Use 'disabled' instead.
    * @deprecated
+   * Deprecated at v0.52.0, to be removed at >= v1.0.0. Use 'disabled' instead.
    */
   isDisabled?: boolean;
 
