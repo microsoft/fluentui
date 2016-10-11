@@ -18,10 +18,12 @@ export class ButtonCommandExample extends React.Component<IButtonProps, any> {
       <div className='ms-BasicButtonsExample'>
         <Label>Command button</Label>
         <Button
+          data-automation-id='test'
           buttonType={ ButtonType.command }
           icon='AddFriend'
           description='Description of the action this button takes'
-          rootProps={ { disabled: isDisabled } }>
+          disabled={ isDisabled }
+        >
           Create account
         </Button>
       </div>
