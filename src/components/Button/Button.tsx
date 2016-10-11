@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { css } from '../../utilities/css';
 import { assign } from '../../utilities/object';
-import { IButtonProps, ButtonType } from './Button.Props';
+import { IButtonProps, IButton, ButtonType } from './Button.Props';
 import { getId } from '../../utilities/object';
+import { getNativeProps, buttonProperties, anchorProperties } from '../../utilities/properties';
 import './Button.scss';
 
 export interface IButtonState {
@@ -11,7 +12,7 @@ export interface IButtonState {
   ariaDescriptionId?: string;
 }
 
-export class Button extends React.Component<IButtonProps, IButtonState> {
+export class Button extends React.Component<IButtonProps, IButtonState> implements IButton {
   public static defaultProps: IButtonProps = {
     buttonType: ButtonType.normal
   };
@@ -33,7 +34,7 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
 
     const renderAsAnchor: boolean = !!href;
     const tag = renderAsAnchor ? 'a' : 'button';
-
+    const nativeProps = getNativeProps(this.props.rootProps || this.props, renderAsAnchor ? anchorProperties : buttonProperties);
     const className = css((this.props.className), 'ms-Button', {
       'ms-Button--primary': buttonType === ButtonType.primary,
       'ms-Button--hero': buttonType === ButtonType.hero,
@@ -64,7 +65,7 @@ export class Button extends React.Component<IButtonProps, IButtonState> {
       tag,
       assign(
         {},
-        this.props.rootProps,
+        nativeProps,
         href ? { href } : null,
         {
           'aria-label': ariaLabel,
