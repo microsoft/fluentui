@@ -2,7 +2,13 @@
 
 .ms-Pane > .main-content {
   overflow: auto;
-  flex: 0 1 auto;
+  flex: 1 1 auto;
+}
+
+.ms-Pane > .main-content > .container {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
 }
 
 .ms-Pane > .popup {
@@ -15,7 +21,14 @@
   overflow: hidden;
   display: flex;
   flex: 0 1 auto;
-  flex-direction: row;
+}
+
+.ms-Pane--left {
+    flex-direction: row-reverse;
+}
+
+.ms-Pane--right {
+    flex-direction: row;
 }
 
 .ms-Pane .ms-Pane-main {
