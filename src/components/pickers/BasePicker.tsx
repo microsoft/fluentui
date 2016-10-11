@@ -81,9 +81,16 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   public render() {
     let { displayValue } = this.state;
     return (
-      <div ref={ this._resolveRef('_root') } className={ css('ms-BasePicker', this.props.className ? this.props.className : '') } onKeyDown={ this._onKeyDown }>
+      <div
+        ref={ this._resolveRef('_root') }
+        className={ css('ms-BasePicker', this.props.className ? this.props.className : '') }
+        onKeyDown={ this._onKeyDown }
+        role='combobox'>
         <SelectionZone selection={ this._selection } selectionMode={ SelectionMode.multiple }>
-          <FocusZone ref={ this._resolveRef('_focusZone') } className='ms-BasePicker-text'>
+          <FocusZone
+          ref={ this._resolveRef('_focusZone') }
+          className='ms-BasePicker-text'
+          shouldControlFocus={ this.shouldFocus.bind(this) }>
             { this._renderItems() }
             <input
               ref={ this._resolveRef('_input') }
@@ -93,7 +100,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
               value={ displayValue }
               aria-activedescendant={ 'sug-' + this._suggestionStore.currentIndex }
               aria-owns='suggestion-list'
-              aria-expanded='true'
+              aria-expanded={ this.state.suggestionsVisible }
               aria-haspopup='true'
               autoCapitalize='off'
               autoComplete='off'/>
@@ -106,7 +113,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   protected _renderSuggestions(): JSX.Element {
     let TypedSuggestion = this._SuggestionOfProperType;
-    return this.state.suggestionsVisible ? (
+    return this.state.suggestionsVisible
+      && this._input === document.activeElement ? (
       <Callout isBeakVisible={ false } gapSpace={ 0 } targetElement={ this._root } onDismiss={ this.dismissSuggestions }>
         <TypedSuggestion
           onRenderSuggestion={ this.props.onRenderSuggestionsItem }
@@ -340,17 +348,34 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected _onBackspace(ev: React.KeyboardEvent) {
     let { displayValue } = this.state;
     if (ev.target === this._input) {
-      if (displayValue && this._suggestionStore.hasSelectedSuggestion() && this._input.selectionStart !== this._input.selectionEnd) {
+      if (displayValue
+        && this._suggestionStore.hasSelectedSuggestion()
+        && this._input.selectionStart !== this._input.selectionEnd) {
         this._updateValue(displayValue.substr(0, this._input.selectionStart - 1));
         // Since this effectively deletes a letter from the string we need to preventDefault so that
         // the backspace doesn't try to delete a letter that's already been deleted. If a letter is deleted
         // it can trigger the onChange event again which can have unintended consequences.
         ev.preventDefault();
-      } else if (!displayValue && this.state.items.length) {
+      } else if (this._input.selectionStart === 0 && this.state.items.length) {
         this._removeItem(this.state.items[this.state.items.length - 1]);
       }
     } else if (this._selection.getSelectedCount() > 0) {
       this._removeItems(this._selection.getSelection());
     }
+  }
+
+  // TODO Make RTL friendly.
+  protected shouldFocus(ev?: React.KeyboardEvent): boolean {
+    switch (ev.which) {
+      case KeyCodes.left:
+        if (ev.target === this._input) {
+          if (this.state.value
+            && (this._input.selectionStart !== this._input.selectionEnd
+            || this._input.selectionStart) > 0) {
+            return false;
+          }
+        }
+    }
+    return true;
   }
 }

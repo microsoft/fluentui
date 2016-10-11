@@ -94,9 +94,9 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
     let TypedSuggestionsItem = this.SuggestionsItemOfProperType;
 
     return (
-      <div className='ms-Suggestions-container' id='suggestion-list' role='menu'>
+      <ul className='ms-Suggestions-container' id='suggestion-list' role='menu'>
         { suggestions.map((suggestion, index) =>
-          <div ref={ this._resolveRef(suggestion.isSelected ? '_selectedElement' : '') }
+          <li ref={ this._resolveRef(suggestion.isSelected ? '_selectedElement' : '') }
             key={ index }
             id={ 'sug-' + index }
             role='menuitem'>
@@ -106,8 +106,8 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
               onClick={ (ev: React.MouseEvent) => this.props.onSuggestionClick(ev, suggestion.item, index) }
               className={ suggestionsItemClassName }
               />
-          </div>) }
-      </div>);
+          </li>) }
+      </ul>);
   }
 
   private _getMoreResults() {
