@@ -1,6 +1,6 @@
 @import '../../../../common/common';
 
-.ms-PickerPersona-container {
+.ms-PeoplePickerItem-container {
   @include focus-border();
 
   display: inline-block;
@@ -23,10 +23,8 @@
     }
   }
 
-  .ms-PickerItem-content {
+  .ms-PeoplePickerItem-content {
     display: inline-block;
     vertical-align: middle;
   }
-
-
 }

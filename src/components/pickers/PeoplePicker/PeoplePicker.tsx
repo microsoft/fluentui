@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { BasePicker } from '../BasePicker';
 import { IBasePickerProps } from '../BasePicker.Props';
-import { SelectedItemDefault } from './PeoplePickerItems/SelectedItemDefault';
+import { SelectedItemDefault, SelectedLargeItemDefault } from './PeoplePickerItems/SelectedItemDefault';
 import { IPersonaProps } from '../../Persona/Persona.Props';
 import { SuggestionItemSmall, SuggestionItemNormal } from './PeoplePickerItems/SuggestionItemDefault';
 import { FocusZone } from '../../FocusZone';
 import { SelectionZone, SelectionMode } from '../../../utilities/selection/index';
-import { SelectedItemWithMenu } from './PeoplePickerItems/SelectedItemWithMenu';
+import { css } from '../../../utilities/css';
 import './PeoplePicker.scss';
 
 export interface IPeoplePickerProps extends IBasePickerProps<IPersonaProps> {
@@ -22,7 +22,7 @@ export class MemberListPeoplePicker extends BasePeoplePicker {
 
     return (
       <div>
-        <div ref={ this._resolveRef('_root') } className='ms-BasePicker' onKeyDown={ this._onKeyDown }>
+        <div ref={ this._resolveRef('_root') } className={ css('ms-BasePicker', this.props.className ? this.props.className : '') } onKeyDown={ this._onKeyDown }>
           <SelectionZone selection={ this._selection }
             selectionMode={SelectionMode.multiple}>
             <div className='ms-BasePicker-text'>
@@ -36,7 +36,7 @@ export class MemberListPeoplePicker extends BasePeoplePicker {
           </SelectionZone>
         </div>
         { this._renderSuggestions() }
-        <FocusZone ref={ this._resolveRef('_focusZone') }>
+        <FocusZone ref={ this._resolveRef('_focusZone') } className='ms-BasePicker-selectedItems'>
           { this._renderItems() }
         </FocusZone>
 
@@ -83,7 +83,7 @@ export class CompactPeoplePicker extends BasePeoplePicker {
  */
 export class ListPeoplePicker extends MemberListPeoplePicker {
   public static defaultProps = {
-    onRenderItem: (props) => <SelectedItemWithMenu { ...props }/>,
+    onRenderItem: (props) => <SelectedLargeItemDefault { ...props }/>,
     onRenderSuggestionsItem: (props) => <SuggestionItemNormal { ...props }/>
   };
 }

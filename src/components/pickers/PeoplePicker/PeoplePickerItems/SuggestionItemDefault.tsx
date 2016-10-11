@@ -4,12 +4,12 @@ import * as React from 'react';
 import { Persona, PersonaSize, IPersonaProps, PersonaPresence } from '../../../Persona';
 export const SuggestionItemNormal: (persona: IPersonaProps) => JSX.Element = (personaProps: IPersonaProps) => {
   return (
-    <div className='ms-PeoplePicker-personaContent'>
+    <div>
       <Persona
         { ...personaProps }
         presence={ personaProps.presence ? personaProps.presence : PersonaPresence.online }
         size={ PersonaSize.small }
-        className={ 'ms-PeoplePicker-Persona' }
+        className={ 'ms-PeoplePickerSuggestion-persona' }
         />
     </div>
   );
@@ -17,12 +17,12 @@ export const SuggestionItemNormal: (persona: IPersonaProps) => JSX.Element = (pe
 
 export const SuggestionItemSmall: (persona: IPersonaProps) => JSX.Element = (personaProps: IPersonaProps) => {
   return (
-    <div className='ms-PeoplePicker-personaContent'>
+    <div>
       <Persona
         { ...personaProps }
         presence={ personaProps.presence ? personaProps.presence : PersonaPresence.online }
-        size={ PersonaSize.extraSmall }
-        className={ 'ms-PeoplePicker-Persona' }
+        size={ PersonaSize.tiny }
+        className={ 'ms-PeoplePickerSuggestion-persona' }
         />
     </div>
   );
