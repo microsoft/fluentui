@@ -1,9 +1,9 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { Persona, PersonaSize, PersonaPresence } from '../../../Persona';
+import { Persona, PersonaSize, PersonaPresence } from '../../../../Persona';
 import { IPeoplePickerItemProps } from './PeoplePickerItem.Props';
-import { Button, ButtonType } from '../../../Button';
+import { Button, ButtonType } from '../../../../Button';
 import { css } from '../../../../utilities/css';
 import './PickerItemsDefault.scss';
 

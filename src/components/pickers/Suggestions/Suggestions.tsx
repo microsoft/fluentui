@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, ButtonType } from '../../Button';
+import { Button, ButtonType } from '../../../Button';
 import { css } from '../../../utilities/css';
 import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.Props';
 import { BaseComponent } from '../../../common/BaseComponent';
