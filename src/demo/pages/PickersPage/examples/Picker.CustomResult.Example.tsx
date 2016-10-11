@@ -346,31 +346,31 @@ export class DocumentPicker extends BasePicker<IFullDocumentCardProps, IDocument
 
     return (
       <div>
-        <div ref={ this._resolveRef('_root') } className='ms-BasePicker' onKeyDown={ this._onKeyDown }>
-          <SelectionZone selection={ this._selection }>
+        <div ref={ this._resolveRef('root') } className='ms-BasePicker' onKeyDown={ this.onKeyDown }>
+          <SelectionZone selection={ this.selection }>
             <div className='ms-BasePicker-text'>
-              <input ref={ this._resolveRef('_input') }
-                onFocus={ this._onInputFocus }
-                onChange={ this._onInputChange }
+              <input ref={ this._resolveRef('input') }
+                onFocus={ this.onInputFocus }
+                onChange={ this.onInputChange }
                 value={ displayValue }
                 className='ms-BasePicker-input'
                 />
             </div>
           </SelectionZone>
         </div>
-        <FocusZone ref={ this._resolveRef('_focusZone') }>
-          { this._renderItems() }
+        <FocusZone ref={ this._resolveRef('focusZone') }>
+          { this.renderItems() }
         </FocusZone>
-        { this._renderSuggestions() }
+        { this.renderSuggestions() }
       </div>
     );
   }
   protected _onBackspace(ev: React.KeyboardEvent) {
     let { value } = this.state;
-    if (ev.target === this._input) {
-      if (value && this._input.selectionStart !== this._input.selectionEnd) {
+    if (ev.target === this.input) {
+      if (value && this.input.selectionStart !== this.input.selectionEnd) {
         this.setState({
-          displayValue: value.substring(0, this._input.selectionStart)
+          displayValue: value.substring(0, this.input.selectionStart)
         });
       }
     }
