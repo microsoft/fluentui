@@ -363,7 +363,9 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
 
     return (
       <div>
-        <div ref={ this._resolveRef('_root') } className='ms-BasePicker' onKeyDown={ this._onKeyDown }>
+        <div ref={ this._resolveRef('_root') }
+          className={ css('ms-BasePicker', this.props.className ? this.props.className : '') }
+          onKeyDown={ this._onKeyDown }>
           <SelectionZone selection={ this._selection }
             selectionMode={SelectionMode.multiple}>
             <div className='ms-BasePicker-text'>
@@ -377,7 +379,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
           </SelectionZone>
         </div>
         { this._renderSuggestions() }
-        <FocusZone ref={ this._resolveRef('_focusZone') }>
+        <FocusZone ref={ this._resolveRef('_focusZone') } className='ms-BasePicker-selectedItems'>
           { this._renderItems() }
         </FocusZone>
 
