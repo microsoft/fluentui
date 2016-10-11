@@ -40,14 +40,14 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
       <div className={ rootClass }>
         <div className='ExampleCard-header'>
           <span className='ExampleCard-title ms-font-l'>{ title }</span>
-          <span className='ExampleCard-toggleButtons ms-font-l'>
+          <div className='ExampleCard-toggleButtons ms-font-l'>
             { code ? (
             <Button buttonType={ ButtonType.icon } icon='Embed'
               onClick={ this._onToggleCodeClick } className={ css('ExampleCard-codeButton', { 'is-active': isCodeVisible }) }>
               { this.state.isCodeVisible ? 'Hide code' : 'Show code' }
             </Button>
             ) : ( null ) }
-          </span>
+          </div>
         </div>
 
         <div className='ExampleCard-code'>

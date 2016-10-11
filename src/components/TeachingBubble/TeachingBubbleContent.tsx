@@ -76,8 +76,8 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
     if (primaryButtonProps || secondaryButtonProps) {
       footerContent = (
         <div className='ms-TeachingBubble-footer'>
-          { primaryButtonProps ? <Button className='ms-TeachingBubble-primaryButton' { ...primaryButtonProps }/> : null }
-          { secondaryButtonProps ? <Button className='ms-TeachingBubble-secondaryButton' { ...secondaryButtonProps }/> : null }
+          { primaryButtonProps ? <Button className='ms-TeachingBubble-primaryButton' { ...primaryButtonProps } /> : null }
+          { secondaryButtonProps ? <Button className='ms-TeachingBubble-secondaryButton' { ...secondaryButtonProps } /> : null }
         </div>
       );
     }
@@ -88,7 +88,7 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
           className='ms-TeachingBubble-closebutton'
           buttonType={ ButtonType.icon }
           icon='Cancel'
-          rootProps={ { title: closeButtonAriaLabel } }
+          title={ closeButtonAriaLabel }
           ariaLabel={ closeButtonAriaLabel }
           onClick={ onDismiss }
         />

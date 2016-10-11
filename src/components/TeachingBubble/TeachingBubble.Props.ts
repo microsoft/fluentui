@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { TeachingBubble } from './TeachingBubble';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
-import { IImageProps } from '../Image/Image.Props';
-import { IButtonProps } from '../Button/Button.Props';
+import { IImageProps } from '../../Image';
+import { IButtonProps } from '../../Button';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { ICalloutProps } from '../../index';
 
