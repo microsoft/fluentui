@@ -4,11 +4,10 @@ body {
   padding: 0;
   margin: 0;
   position: absolute;
-  overflow: hidden;
   left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .ms-App-header {
@@ -26,7 +25,7 @@ body {
   top: 50px;
   bottom: 0;
   @include border-right(1px, solid, #EEE);
-  background: white;
+  background: $ms-color-white;
   box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: auto;
@@ -39,7 +38,6 @@ body {
   @include right(0);
   top: 50px;
   bottom: 0;
-  padding: 20px;
   overflow-x: auto;
   overflow-y: auto;
 

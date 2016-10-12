@@ -19,4 +19,12 @@ export interface IPivotItemProps extends React.HTMLProps<HTMLDivElement> {
    * Note that unless you have compelling requirements you should not override aria-label.
    */
   ariaLabel?: string;
+
+  /**
+   * An optional item count that gets displayed just after the linkText(itemCount)
+   *
+   * Example: completed(4)
+   */
+  itemCount?: number;
+
 }

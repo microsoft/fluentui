@@ -1,32 +1,80 @@
 @import '../../common/common';
 
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
+//
+// Office UI Fabric
+// --------------------------------------------------
+// Check styles
+
+$checkBoxHeight: 23px;
+
 .ms-Check {
-  display: inline-block;
-  cursor: default;
-  line-height: 0;
+  line-height: 1;
+  width: $checkBoxHeight;
+  height: $checkBoxHeight;
   vertical-align: top;
+  position: relative;
+  @include user-select(none);
 
   &.is-checked {
+    .ms-Check-background {
+      &:before {
+        color: $ms-color-themePrimary;
+      }
 
-    .ms-Check-circle {
-      fill: $ms-color-themePrimary;
-      stroke: $ms-color-white;
-      stroke-width: 1px;
+      &:after {
+        color: $ms-color-white;
+      }
     }
 
     .ms-Check-check {
-      stroke: $ms-color-white;
+      opacity: 1;
+      color: $ms-color-white;
+      font-weight: 900;
+      font-size: $ms-font-size-s;
+    }
+  }
+
+  &:hover {
+    .ms-Check-check {
+      opacity: 1;
     }
   }
 }
 
-.ms-Check-circle {
-  fill: $ms-color-white;
-  stroke: $ms-color-neutralTertiaryAlt;
-}
-
 .ms-Check-check {
-  stroke: $ms-color-neutralTertiaryAlt;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  color: $ms-color-neutralTertiaryAlt;
+  opacity: 0;
 }
 
+.ms-Check-background {
+  position: relative;
+  height: $checkBoxHeight;
+  width: $checkBoxHeight;
 
+  &:before {
+    content: '\E91F';
+    color: $ms-color-white;
+  }
+
+  &:after {
+    content: '\EA3A';
+    color: $ms-color-neutralTertiaryAlt;
+  }
+
+  &:before,
+  &:after {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: $checkBoxHeight;
+    height: $checkBoxHeight;
+    width: $checkBoxHeight;
+    position: absolute;
+  }
+}

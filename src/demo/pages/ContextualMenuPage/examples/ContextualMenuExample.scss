@@ -14,7 +14,7 @@
     position: absolute;
     vertical-align: top;
     width: 300px;
-    top: 85px;
+    top: 108px;
     margin: 0 100px;
     text-align: center;
 }
@@ -26,12 +26,13 @@
 
 .ms-ContextualMenu-customizationExample-item {
   display: inline-block;
-  width: 39px;
-  height: 39px;
-  line-height: 39px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
   text-align: center;
   vertical-align: middle;
   margin-bottom: 8px;
+  cursor: pointer;
 
   &:hover {
     background-color: #eaeaea;
@@ -45,7 +46,7 @@
 }
 
 .ms-ContextualMenu-customizationExample-categorySwatch {
-  margin: 8px;
+  margin: 6px 8px;
   width: 24px;
   height: 24px;
   vertical-align: top;

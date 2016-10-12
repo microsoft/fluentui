@@ -2,7 +2,7 @@
 
 .ms-DocumentCard {
   -webkit-font-smoothing: antialiased;
-  background-color: $ms-color-neutralLighterAlt;
+  background-color: $ms-color-white;
   border: 1px solid $ms-color-neutralLight;
   box-sizing: border-box;
   max-width: 320px;
@@ -31,4 +31,51 @@
 // When a DocumentCardTitle follows a DocumentCardLocation, we want to reduce the padding
 .ms-DocumentCardLocation + .ms-DocumentCardTitle {
   padding-top: 4px;
+}
+
+// Modifier: Compact layout
+.ms-DocumentCard--compact {
+  border-bottom: 2px solid $ms-color-neutralTertiary; // Default border color
+  display: flex;
+  max-width: 480px;
+  height: 109px;
+
+  // Remove the usual accent color from the preview
+  .ms-DocumentCardPreview {
+    border-bottom: none;
+    max-height: 106px;
+    max-width: 144px;
+
+    .ms-DocumentCardPreview-icon {
+      .ms-Image-image {
+        max-height: 32px;
+        max-width: 32px;
+      }
+    }
+  }
+
+  .ms-DocumentCardPreview.is-fileList {
+    @include border-right(1px, solid, $ms-color-neutralLight);
+  }
+
+  .ms-DocumentCardPreview-fileList {
+    li {
+      @include padding-left(24px); // Make room for icon
+    }
+  }
+
+  // Expand the details area to fill the remaining width
+  .ms-DocumentCard-details {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+    padding: 12px 0;
+  }
+
+  .ms-DocumentCardTitle {
+      padding: 0px 12px 8px 12px;
+      @include ms-font-m;
+      line-height: 16px;
+  }
 }

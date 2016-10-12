@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css } from '../../utilities/css';
+import { css, divProperties, getNativeProps } from '../../Utilities';
 import { ILabelProps } from './Label.Props';
 import './Label.scss';
 
@@ -9,7 +9,7 @@ export class Label extends React.Component<ILabelProps, any> {
 
     return (
       <label
-        { ...this.props }
+        { ...getNativeProps(this.props, divProperties) }
         className={ css('ms-Label', className, {
           'is-disabled': disabled,
           'is-required': required

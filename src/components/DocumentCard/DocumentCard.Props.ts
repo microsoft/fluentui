@@ -11,9 +11,15 @@ import { IButtonProps } from '../../Button';
 
 export interface IDocumentCardProps extends React.Props<DocumentCard> {
   /**
+  * The type of DocumentCard to display.
+  * @default DocumentCardType.normal
+  */
+  type?: DocumentCardType;
+
+  /**
    * Function to call when the card is clicked.
    */
-  onClick?: (ev?: any) => void;
+  onClick?: (ev?: React.MouseEvent) => void;
 
   /**
    * A URL to navigate to when the card is clicked. If a function has also been provided,
@@ -22,9 +28,26 @@ export interface IDocumentCardProps extends React.Props<DocumentCard> {
   onClickHref?: string;
 
   /**
-   * Optional class for document card
+   * Optional class for document card.
    */
   className?: string;
+
+  /**
+   * Hex color value of the line below the card, which should correspond to the document type.
+   * This should only be supplied when using the 'compact' card layout.
+   */
+  accentColor?: string;
+}
+
+export enum DocumentCardType {
+  /**
+   * Standard DocumentCard.
+   */
+  normal,
+  /**
+   * Compact layout. Displays the preview beside the details, rather than above.
+   */
+  compact
 }
 
 export interface IDocumentCardPreviewProps extends React.Props<DocumentCardPreview> {
@@ -32,9 +55,25 @@ export interface IDocumentCardPreviewProps extends React.Props<DocumentCardPrevi
    * One or more preview images to display.
    */
   previewImages: IDocumentCardPreviewImage[];
+
+  /**
+   * The function return string that will describe the number of overflow documents.
+   * such as  (overflowCount: number) => `+${ overflowCount } more`,
+   */
+  getOverflowDocumentCountText?: (overflowCount: number) => string;
 }
 
 export interface IDocumentCardPreviewImage {
+  /**
+   * File name for the document this preview represents.
+   */
+  name?: string;
+
+  /**
+   * URL to view the file.
+   */
+  url?: string;
+
   /**
    * Path to the preview image.
    */
@@ -99,7 +138,7 @@ export interface IDocumentCardLocationProps extends React.Props<DocumentCardLoca
   /**
    * Function to call when the location is clicked.
    */
-  onClick?: (ev?: any) => void;
+  onClick?: (ev?: React.MouseEvent) => void;
 
   /**
    * Aria label for the link to the document location.

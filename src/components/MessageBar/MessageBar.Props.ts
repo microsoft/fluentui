@@ -43,12 +43,17 @@ export enum MessageBarType {
   info,
   /** Error styled MessageBar */
   error,
-  /** Remove styled MessageBar */
-  remove,
+  /** Blocked styled MessageBar */
+  blocked,
   /** SevereWarning styled MessageBar */
   severeWarning,
   /** Success styled MessageBar */
   success,
   /** Warning styled MessageBar */
-  warning
+  warning,
+  /**
+   * @deprecated
+   * Deprecated at v0.48.0, to be removed at >= v1.0.0. Use 'blocked' instead.
+   */
+  remove
 }

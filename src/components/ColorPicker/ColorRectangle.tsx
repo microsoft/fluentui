@@ -6,6 +6,7 @@ import {
   getFullColorString
  } from './colors';
 import { assign } from '../../utilities/object';
+import { autobind } from '../../utilities/autobind';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 
 let hsv2hex = require('color-functions/lib/hsv2hex');
@@ -42,9 +43,6 @@ export class ColorRectangle extends React.Component<IColorRectangleProps, IColor
     let { color } = this.props;
 
     this._events = new EventGroup(this);
-    this._onMouseDown = this._onMouseDown.bind(this);
-    this._onMouseMove = this._onMouseMove.bind(this);
-    this._onMouseUp = this._onMouseUp.bind(this);
 
     this.state = {
       isAdjusting: false,
@@ -80,6 +78,7 @@ export class ColorRectangle extends React.Component<IColorRectangleProps, IColor
     );
   }
 
+  @autobind
   private _onMouseDown(ev: React.MouseEvent) {
     this._events.on(window, 'mousemove', this._onMouseMove, true);
     this._events.on(window, 'mouseup', this._onMouseUp, true);
@@ -87,6 +86,7 @@ export class ColorRectangle extends React.Component<IColorRectangleProps, IColor
     this._onMouseMove(ev);
   }
 
+  @autobind
   private _onMouseMove(ev: React.MouseEvent) {
     let { color, onSVChanged } = this.props;
     let rectSize = this.refs.root.getBoundingClientRect();
@@ -114,6 +114,7 @@ export class ColorRectangle extends React.Component<IColorRectangleProps, IColor
     ev.stopPropagation();
   }
 
+  @autobind
   private _onMouseUp(ev: React.MouseEvent) {
     this._events.off();
 

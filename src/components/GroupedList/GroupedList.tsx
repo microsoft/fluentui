@@ -2,13 +2,11 @@ import * as React from 'react';
 import {
   IGroupedList,
   IGroupedListProps,
-  IGroup,
-  IGroupFooterProps,
-  IGroupHeaderProps
+  IGroup
 } from './GroupedList.Props';
 import {
-  Group
-} from './Group';
+  GroupedListSection
+} from './GroupedListSection';
 
 import { css } from '../../utilities/css';
 import {
@@ -17,8 +15,11 @@ import {
 import {
   SelectionMode
 } from '../../utilities/selection/index';
-
-import { assign } from '../../utilities/object';
+import {
+  BaseComponent,
+  autobind,
+  assign
+} from '../../Utilities';
 import './GroupedList.scss';
 
 export interface IGroupedListState {
@@ -27,10 +28,11 @@ export interface IGroupedListState {
   groups?: IGroup[];
 }
 
-export class GroupedList extends React.Component<IGroupedListProps, IGroupedListState> implements IGroupedList {
+export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListState> implements IGroupedList {
   public static defaultProps = {
     selectionMode: SelectionMode.multiple,
-    isHeaderVisible: true
+    isHeaderVisible: true,
+    groupProps: {}
   };
 
   public refs: {
@@ -44,11 +46,6 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
   constructor(props: IGroupedListProps) {
     super(props);
 
-    this._onToggleCollapse = this._onToggleCollapse.bind(this);
-    this._onToggleSelectGroup = this._onToggleSelectGroup.bind(this);
-    this._onToggleSummarize = this._onToggleSummarize.bind(this);
-    this._getGroupKey = this._getGroupKey.bind(this);
-    this._renderGroup = this._renderGroup.bind(this);
     this._isSomeGroupExpanded = this._computeIsSomeGroupExpanded(props.groups);
 
     this.state = {
@@ -133,6 +130,7 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
     }
   }
 
+  @autobind
   private _renderGroup(group, groupIndex) {
     let {
       dragDropEvents,
@@ -148,17 +146,18 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
     } = this.props;
 
     // override group header/footer props as needed
-    let headerProps = assign({}, groupProps && groupProps.headerProps ? groupProps.headerProps : {}, {
+    let dividerProps = {
+      onToggleSelectGroup: this._onToggleSelectGroup,
       onToggleCollapse: this._onToggleCollapse,
-      onToggleSelectGroup: this._onToggleSelectGroup
-    }) as IGroupHeaderProps;
-    let footerProps = assign({}, groupProps && groupProps.footerProps ? groupProps.footerProps : {}, {
       onToggleSummarize: this._onToggleSummarize
-    }) as IGroupFooterProps;
+    };
+
+    let headerProps = assign({}, groupProps.headerProps, dividerProps);
+    let footerProps = assign({}, groupProps.footerProps, dividerProps);
     let groupNestingDepth = this._getGroupNestingDepth();
 
     return (!group || group.count > 0) ? (
-      <Group
+      <GroupedListSection
         ref={ 'group_' + groupIndex }
         key={ this._getGroupKey(group) }
         dragDropEvents={ dragDropEvents }
@@ -173,6 +172,8 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
         listProps={ listProps }
         items={ items }
         onRenderCell={ onRenderCell }
+        onRenderGroupHeader={ groupProps.onRenderHeader }
+        onRenderGroupFooter={ groupProps.onRenderFooter }
         selectionMode={ selectionMode }
         selection={ selection }
         viewport={ viewport }
@@ -180,6 +181,7 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
       ) : null;
   }
 
+  @autobind
   private _getGroupKey(group: IGroup): string {
     return 'group-' + (group ?
       group.key + '-' + group.count :
@@ -199,6 +201,7 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
     return level;
   }
 
+  @autobind
   private _onToggleCollapse(group: IGroup) {
     let { groupProps } = this.props;
     let onToggleCollapse = groupProps && groupProps.headerProps && groupProps.headerProps.onToggleCollapse;
@@ -214,6 +217,7 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
     }
   }
 
+  @autobind
   private _onToggleSelectGroup(group: IGroup) {
     let { groups } = this.state;
 
@@ -256,21 +260,21 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
       this.refs.list.forceUpdate();
 
       for (let i = 0; i < groupCount; i++) {
-        let group = this.refs.list.refs['group_' + String(i)] as Group;
+        let group = this.refs.list.refs['group_' + String(i)] as GroupedListSection;
         if (group) {
           group.forceListUpdate();
         }
       }
     } else {
-      let group = this.refs['group_' + String(0)] as Group;
+      let group = this.refs['group_' + String(0)] as GroupedListSection;
       if (group) {
         group.forceListUpdate();
       }
     }
   }
 
+  @autobind
   private _onToggleSummarize(group: IGroup) {
-    let { groups } = this.state;
     let { groupProps } = this.props;
     let onToggleSummarize = groupProps && groupProps.footerProps && groupProps.footerProps.onToggleSummarize;
 
@@ -279,11 +283,9 @@ export class GroupedList extends React.Component<IGroupedListProps, IGroupedList
     } else {
       if (group) {
         group.isShowingAll = !group.isShowingAll;
-
-        this.setState({
-          groups: groups
-        });
       }
+
+      this.forceUpdate();
     }
   }
 
