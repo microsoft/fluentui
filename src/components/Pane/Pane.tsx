@@ -4,7 +4,9 @@ import * as React from 'react';
 
 import { BaseComponent } from '../../common/BaseComponent';
 import { IPaneProps, PaneType } from './Pane.Props';
+import { PaneContent } from './PaneContent';
 import { Popup } from '../Popup/index';
+import { WrappedContent } from './WrappedContent';
 import { css } from '../../utilities/css';
 import { getId } from '../../utilities/object';
 import { getRTL } from '../../utilities/rtl';
@@ -91,17 +93,7 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
             </button>;
         }
 
-        let paneContent;
-        if (React.Children.count(children) > 1) {
-            paneContent = childControls[1];
-        }
-
-        let wrappedContent;
-        if (childControls) {
-            wrappedContent = childControls[0];
-        }
-
-        // Should I use Popup?
+        let groupings = this._groupChildren();
 
         return (
             <div className={
@@ -118,7 +110,7 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
                         ref='content-container'
                         className={ 'content-container' }
                         >
-                        { wrappedContent }
+                        { groupings.wrappedContents }
                     </div>
                 </div>
                 <Popup
@@ -153,7 +145,7 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
                             <div className='ms-Pane-contentInner'>
                                 { header }
                                 <div className='ms-Pane-content'>
-                                    { paneContent }
+                                    { groupings.paneContents }
                                 </div>
                             </div>
                         </div>
@@ -201,5 +193,23 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
                 this.props.onDismiss();
             }
         }
+    }
+
+    private _groupChildren(): { wrappedContents: any[]; paneContents: any[]; } {
+
+        let groupings: { wrappedContents: any[]; paneContents: any[]; } = {
+            wrappedContents: [],
+            paneContents: []
+        };
+
+        React.Children.map(this.props.children, child => {
+            if (typeof child === 'object' && child.type === PaneContent) {
+                groupings.paneContents.push(child);
+            } else if (typeof child === 'object' && child.type === WrappedContent) {
+                groupings.wrappedContents.push(child);
+            }
+        });
+
+        return groupings;
     }
 }

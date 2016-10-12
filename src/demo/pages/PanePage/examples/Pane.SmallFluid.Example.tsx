@@ -1,8 +1,10 @@
 import * as React from 'react';
 import {
+  Button,
   Pane,
+  PaneContent,
   PaneType,
-  Button
+  WrappedContent
 } from '../../../../index';
 
 export class PaneSmallFluidExample extends React.Component<any, any> {
@@ -10,10 +12,12 @@ export class PaneSmallFluidExample extends React.Component<any, any> {
   constructor() {
     super();
     this.state = {
-      showPane: false
+      showPane: false,
+      mainContent: null
     };
   }
 
+  // ref={(element) => this.state.mainContent = element}
   public render() {
     return (
       <div>
@@ -21,9 +25,9 @@ export class PaneSmallFluidExample extends React.Component<any, any> {
           isOpen={ this.state.showPane }
           type={ PaneType.smallFluid }
           onDismiss= { this._closePane.bind(this) }
-          headerText='Panel - Small, right-aligned, fluid width'
+          headerText='Pane - Small, right-aligned, fluid width'
           >
-          <div>
+          <WrappedContent className="myContent">
             [Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block]
             [Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block]
             [Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block]
@@ -33,8 +37,10 @@ export class PaneSmallFluidExample extends React.Component<any, any> {
             [Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block]
             [Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block]
             [Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block]
-          </div>
-          <span className='ms-font-m'>Pane content goes here.</span>
+          </WrappedContent>
+          <PaneContent className='ms-font-m'>
+            Pane content goes here.
+          </PaneContent>
         </Pane>
         <Button description='Opens the Sample Pane' onClick={ this._showPane.bind(this) }>Open Pane</Button>
       </div>

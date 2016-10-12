@@ -1,8 +1,10 @@
 import * as React from 'react';
 import {
+    Button,
     Pane,
+    PaneContent,
     PaneType,
-    Button
+    WrappedContent
 } from '../../../../index';
 
 export class PaneSmallRightExample extends React.Component<any, any> {
@@ -25,7 +27,7 @@ export class PaneSmallRightExample extends React.Component<any, any> {
                     onDismiss= { this._closePane.bind(this) }
                     headerText='Pane - Small, right-aligned, fixed'
                     >
-                    <div>
+                    <WrappedContent className="myContent">
                         [Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block]
                         [Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block]
                         [Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block]
@@ -35,8 +37,10 @@ export class PaneSmallRightExample extends React.Component<any, any> {
                         [Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block]
                         [Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block]
                         [Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block]
-                    </div>
-                    <span className='ms-font-m'>Pane content goes here.</span>
+                    </WrappedContent>
+                    <PaneContent className='ms-font-m'>
+                        Pane content goes here.
+                    </PaneContent>
                 </Pane>
                 <Button description='Opens the Sample Pane' onClick={ this._showPane.bind(this) }>Open Pane</Button>
             </div >
