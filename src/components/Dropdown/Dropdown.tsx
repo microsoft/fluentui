@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IDropdownProps, IDropdownOption } from './Dropdown.Props';
+import { Callout } from '../../Callout';
 import {
   BaseComponent,
   KeyCodes,
@@ -32,6 +33,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
 
   private _optionList: HTMLElement;
   private _dropDown: HTMLDivElement;
+  private _dropdownLabel: HTMLElement;
 
   constructor(props?: IDropdownProps) {
     super(props, {
@@ -79,7 +81,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
     // Need to assign role application on containing div because JAWS doesnt call OnKeyDown without this role
     return (
       <div ref='root'>
-        <label id={ id + '-label' } className='ms-Label'>{ label }</label>
+        <label id={ id + '-label' } className='ms-Label' ref={ (dropdownLabel) => this._dropdownLabel = dropdownLabel } >{ label }</label>
         <div
           data-is-focusable={ true }
           ref={ (c): HTMLElement => this._dropDown = c }
@@ -97,26 +99,37 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
           >
           <span className='ms-Dropdown-title'>{ selectedOption ? selectedOption.text : '' }</span>
           <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown'></i>
-          <ul ref={ (c: HTMLElement) => this._optionList = c }
-            id={ id + '-list' }
-            className='ms-Dropdown-items'
-            role='listbox'
-            aria-labelledby={ id + '-label' }>
-            { options.map((option, index) => (
-              <li id={ id + '-list' + index.toString() }
-                ref= { Dropdown.Option + index.toString() }
-                key={ option.key }
-                data-index={ index }
-                className={ css('ms-Dropdown-item', { 'is-selected': selectedIndex === index }) }
-                onClick={ this.setSelectedIndex.bind(this, index) }
-                role='option'
-                aria-selected={ selectedIndex === index ? 'true' : 'false' }
-                aria-label={ option.text }
-                >
-                { option.text }
-              </li>
-            )) }
-          </ul>
+           { isOpen && (
+            <Callout
+              isBeakVisible = { false }
+              className='ms-Dropdown-callout'
+              gapSpace={ 0 }
+              targetElement={ this._dropdownLabel }
+              onDismiss={ this._onDropdownClick }
+              setInitialFocus={ true }
+            >
+              <ul ref={ (c: HTMLElement) => this._optionList = c }
+                id={ id + '-list' }
+                className='ms-Dropdown-items'
+                role='listbox'
+                aria-labelledby={ id + '-label' }>
+                { options.map((option, index) => (
+                  <li id={ id + '-list' + index.toString() }
+                    ref= { Dropdown.Option + index.toString() }
+                    key={ option.key }
+                    data-index={ index }
+                    className={ css('ms-Dropdown-item', { 'is-selected': selectedIndex === index }) }
+                    onClick={ this.setSelectedIndex.bind(this, index) }
+                    role='option'
+                    aria-selected={ selectedIndex === index ? 'true' : 'false' }
+                    aria-label={ option.text }
+                    >
+                    { option.text }
+                  </li>
+                )) }
+              </ul>
+            </Callout>
+           ) }
         </div>
       </div>
     );
