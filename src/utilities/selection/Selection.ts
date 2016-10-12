@@ -68,6 +68,9 @@ export class Selection implements ISelection {
 
     this.setChangeEvents(false);
 
+    // Reset the unselectable count.
+    this._unselectableCount = 0;
+
     // Build lookup table for quick selection evaluation.
     for (let i = 0; i < items.length; i++) {
       let item = items[i];

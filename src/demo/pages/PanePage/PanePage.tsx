@@ -33,27 +33,25 @@ export class PanePage extends React.Component<IComponentDemoPageProps, any> {
         title='Pane'
         componentName='PaneExample'
         exampleCards={
-          [
-            <ExampleCard title='Pane - Small Pane, Full Screen, Fluid Width' code={ PaneSmallFluidExampleCode }>
-              <PaneSmallFluidExample />
-            </ExampleCard>,
+          <div>
             <ExampleCard title='Pane - Small Pane, Anchored Right, Fixed Width' code={ PaneSmallRightExampleCode }>
               <PaneSmallRightExample />
             </ExampleCard>,
             <ExampleCard title='Pane - Small Pane, Anchored Left, Fixed Width' code={ PaneSmallLeftExampleCode }>
               <PaneSmallLeftExample />
+            </ExampleCard>,
+            <ExampleCard title='Pane - Small Pane, Full Screen, Fluid Width' code={ PaneSmallFluidExampleCode }>
+              <PaneSmallFluidExample />
             </ExampleCard>
-          ]
+          </div>
         }
         propertiesTables={
-          [
-             <PropertiesTableSet componentName='Pane' />
-          ]
+          <PropertiesTableSet componentName='Pane' />
         }
         overview={
           <div>
             <Link target='_blank' href='http://dev.office.com/fabric/components/pane'>Panes</Link>
-            <span> are used to render a split screen view.</span>
+            <span> are used to render a split view.</span>
           </div>
         }
         route={ this._url }

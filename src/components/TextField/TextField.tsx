@@ -1,9 +1,14 @@
 import * as React from 'react';
 import { ITextFieldProps } from './TextField.Props';
 import { Label } from '../../Label';
-import { css } from '../../utilities/css';
-import { Async } from '../../utilities/Async/Async';
-import { getId } from '../../utilities/object';
+import {
+  Async,
+  getId,
+  css,
+  getNativeProps,
+  inputProperties,
+  textAreaProperties
+} from '../../Utilities';
 import './TextField.scss';
 
 export interface ITextFieldState {
@@ -52,7 +57,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     this._async = new Async(this);
 
     this.state = {
-      value: props.value || props.defaultValue,
+      value: props.value || props.defaultValue || '',
       isFocused: false,
       errorMessage: ''
     };
@@ -63,7 +68,6 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
 
     this._delayedValidate = this._async.debounce(this._validate, this.props.deferredValidationTime);
     this._lastValidation = 0;
-    this._latestValidateValue = '';
     this._willMountTriggerValidation = false;
   }
 
@@ -211,9 +215,11 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
   }
 
   private _renderTextArea(): React.ReactElement<React.HTMLProps<HTMLAreaElement>> {
+    let textAreaProps = getNativeProps(this.props, textAreaProperties);
+
     return (
       <textarea
-        { ...this.props }
+        { ...textAreaProps }
         id={ this._id }
         ref={ (c): HTMLTextAreaElement => this._field = c }
         value={ this.state.value }
@@ -229,9 +235,11 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
   }
 
   private _renderInput(): React.ReactElement<React.HTMLProps<HTMLInputElement>> {
+    let inputProps = getNativeProps(this.props, inputProperties);
+
     return (
       <input
-        { ...this.props }
+        { ...inputProps }
         id={ this._id }
         type='text'
         ref={ (c): HTMLInputElement => this._field = c }

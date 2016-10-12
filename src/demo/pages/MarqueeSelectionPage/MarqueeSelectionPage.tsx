@@ -25,11 +25,9 @@ export class MarqueeSelectionPage extends React.Component<IComponentDemoPageProp
         title='MarqueeSelection'
         componentName='MarqueeSelectionExample'
         exampleCards={
-          [
-            <ExampleCard title='Basic Selection Example' code={ MarqueeSelectionBasicExampleCode }>
-              <MarqueeSelectionBasicExample />
-            </ExampleCard>
-          ]
+          <ExampleCard title='Basic Selection Example' code={ MarqueeSelectionBasicExampleCode }>
+            <MarqueeSelectionBasicExample />
+          </ExampleCard>
         }
         overview={
           <div>

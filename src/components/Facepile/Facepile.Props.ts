@@ -36,17 +36,17 @@ export interface IFacepilePersona {
    * If provided, persona will be rendered with cursor:pointer and the handler will be
    * called on click.
    */
-  onClick?: (persona: IFacepilePersona, ev: React.MouseEvent) => void;
+  onClick?: (ev?: React.MouseEvent, persona?: IFacepilePersona) => void;
 
   /**
    * If provided, the handler will be called on mouse move.
    */
-  onMouseMove?: (persona: IFacepilePersona, ev: React.MouseEvent) => void;
+  onMouseMove?: (ev?: React.MouseEvent, persona?: IFacepilePersona) => void;
 
   /**
    * If provided, the handler will be called when mouse moves out of the component.
    */
-  onMouseOut?: (persona: IFacepilePersona, ev: React.MouseEvent) => void;
+  onMouseOut?: (ev?: React.MouseEvent, persona?: IFacepilePersona) => void;
 
   /**
    * Extra data - not used directly but can be handy for passing additional data to custom event

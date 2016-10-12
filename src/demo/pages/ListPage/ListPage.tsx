@@ -1,8 +1,5 @@
 import * as React from 'react';
 import {
-  Link
-} from '../../../index';
-import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
@@ -41,28 +38,25 @@ export class ListPage extends React.Component<IComponentDemoPageProps, any> {
         title='List'
         componentName='ListExample'
         exampleCards={
-          [
+          <div>
             <ExampleCard title='List of 5000 grid items' isOptIn={ true } code={ ListGridExampleCode }>
               <ListGridExample items={ _cachedItems } />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='List of 5000 variable height items' isOptIn={ true } code={ ListBasicExampleCode }>
               <ListBasicExample items={ _cachedItems } />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Fixed list of 5000 email tiles' isOptIn={ true } code={ ListMailExampleCode }>
               <ListMailExample items={ _cachedItems } />
             </ExampleCard>
-          ]
+          </div>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='List' />
-          ]
+          <PropertiesTableSet componentName='List' />
         }
         overview={
           <div>
             <p>
-              <Link target='_blank' href='http://dev.office.com/fabric/components/List'>List</Link>
-              <span> provides a base component for rendering large sets of items. It is agnostic of layout, the tile component used, and selection management. These concerns can be layered separately.</span>
+              <span>List provides a base component for rendering large sets of items. It is agnostic of layout, the tile component used, and selection management. These concerns can be layered separately.</span>
             </p>
             <p>
               <b>Performance is important, and DOM content is expensive. Therefore limit what you render.</b> Unlike a simple for loop that renders all items in a set, a List uses ui virtualization. It only renders a subset of items, and as you scroll around, the subset of rendered content is shifted to what you're looking at. This gives a much better experience for large sets, especially when the per-item components are complex/render intensive/network intensive.

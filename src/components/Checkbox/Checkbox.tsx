@@ -44,7 +44,8 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       label
     } = this.props;
 
-    const { isFocused, isChecked } = this.state;
+    const { isFocused } = this.state;
+    const isChecked = checked === undefined ? this.state.isChecked : checked;
 
     return (
       <div
@@ -63,11 +64,12 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
           onChange={ this._onChange }
           onFocus={ this._onFocus }
           onBlur={ this._onBlur }
-          aria-checked={ checked }
+          aria-checked={ isChecked }
         />
+        {this.props.children}
         <label htmlFor={ this._id }
           className={ css('ms-Checkbox-label', {
-            'is-checked': checked || isChecked,
+            'is-checked': isChecked,
             'is-disabled': disabled
             })
           }
@@ -83,9 +85,9 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
   }
 
   public focus() {
-      if (this._checkBox) {
-          this._checkBox.focus();
-      }
+    if (this._checkBox) {
+      this._checkBox.focus();
+    }
   }
 
   @autobind

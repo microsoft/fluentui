@@ -7,6 +7,7 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { autobind } from '../../utilities/autobind';
 import { css } from '../../utilities/css';
 import { getId } from '../../utilities/object';
+import { buttonProperties, divProperties, getNativeProps } from '../../utilities/properties';
 import './CommandBar.scss';
 
 const OVERFLOW_KEY = 'overflow';
@@ -110,6 +111,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
                 role='menuitem'
                 aria-label={ this.props.elipisisAriaLabel || '' }
                 aria-haspopup={ true }
+                data-automation-id='commandBarOverflow'
               >
                 <i className='ms-CommandBarItem-overflow ms-Icon ms-Icon--More' />
               </button>
@@ -141,7 +143,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     this.refs.focusZone.focus();
   }
 
-  private _renderItemInCommandBar(item, index, expandedMenuItemKey, isFarItem?: boolean) {
+  private _renderItemInCommandBar(item: IContextualMenuItem, index: number, expandedMenuItemKey: string, isFarItem?: boolean) {
     const itemKey = item.key || index;
     const className = css(item.onClick ? 'ms-CommandBarItem-link' : 'ms-CommandBarItem-text', !item.name && 'ms-CommandBarItem--noName');
     const classNameValue = css(className, { 'is-expanded': (expandedMenuItemKey === item.key) });
@@ -150,6 +152,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
              {(() => {
                if (item.onClick || item.items) {
                  return <button
+                         { ...getNativeProps(item, buttonProperties) }
                          id={ this._id + item.key }
                          className={ classNameValue }
                          onClick={ this._onItemClick.bind(this, item) }
@@ -166,6 +169,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
                        </button>;
                } else {
                  return <div
+                         { ...getNativeProps(item, divProperties) }
                          id={ this._id + item.key }
                          className={ classNameValue }
                          data-command-key={ index }

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ContextualMenu, IContextualMenuItem, DirectionalHint, Button } from '../../../../index';
 import './ContextualMenuExample.scss';
+
 export interface IContextualMenuMultiselectExampleState {
   selection?: { [ key: string]: boolean };
   target?: {x: number, y: number};
@@ -17,6 +18,7 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
     this._onToggleSelect = this._onToggleSelect.bind(this);
     this._onClick = this._onClick.bind(this);
     this._onDismiss = this._onDismiss.bind(this);
+
     this.state = {
       selection: {},
       isContextMenuVisible: false
@@ -105,7 +107,7 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
     );
   }
 
-  private _onToggleSelect(item: IContextualMenuItem) {
+  private _onToggleSelect(ev?: React.MouseEvent, item?: IContextualMenuItem) {
     let { selection } = this.state;
 
     selection[item.key] = !selection[item.key];
@@ -115,11 +117,11 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
     });
   }
 
-  private _onClick(event: any) {
+  private _onClick(event: React.MouseEvent) {
     this.setState({target: {x: event.clientX, y: event.clientY}, isContextMenuVisible: true});
   }
 
-  private _onDismiss(event: any) {
+  private _onDismiss() {
     this.setState({isContextMenuVisible: false});
   }
 
