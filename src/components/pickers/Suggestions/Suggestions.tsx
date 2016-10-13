@@ -59,8 +59,10 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
             { suggestionsHeaderText }
           </div>) : (null) }
           { isLoading ?
-            <Spinner className='ms-Suggestions-spinner'
-            label={ loadingText }/> : (null) }
+            <Spinner
+              className='ms-Suggestions-spinner'
+              label={ loadingText }
+              /> : (null) }
         { (!suggestions || !suggestions.length) && !isLoading  ?
           noResults :
           this._renderSuggestions()
