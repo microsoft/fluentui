@@ -1,7 +1,7 @@
 // Initialize global window id.
 const CURRENT_ID_PROPERTY = '__currentId__';
 
-let _global = window || process;
+let _global = (typeof window !== 'undefined' && window) || process;
 
 if (_global[CURRENT_ID_PROPERTY] === undefined) {
   _global[CURRENT_ID_PROPERTY] = 0;
