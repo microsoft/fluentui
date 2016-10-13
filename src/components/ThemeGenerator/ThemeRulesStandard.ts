@@ -13,14 +13,24 @@ export enum PaletteSlot {
 export enum SemanticSlot {
   Foreground,
   Background,
-  AccentBackground,
-  AccentBackgroundHover,
-  CounteraccentForeground,
-  CounteraccentForegroundHover,
-  NeutralBackground,
-  NeutralForeground,
+
+  InputEmphasizedBackground,
+  InputEmphasizedBackgroundHover,
+  InputEmphasizedForeground,
+  InputEmphasizedForegroundHover,
+  InputBackground,
+  InputBackgroundHover,
+  InputForeground,
+  InputForegroundHover,
   DisabledBackground,
-  DisabledForeground
+  DisabledForeground,
+
+
+  EmphasizedBackground,
+  EmphasizedForeground,
+
+  NeutralBackground,
+  NeutralForeground
 }
 
 /* The string we append to the palette color slots enum to get the name of the palette color slots. */
@@ -83,16 +93,32 @@ export function ThemeRulesStandardCreator() {
       isCustomized: false
     };
   }
-  _makeSemanticSlotRule(SemanticSlot.Foreground,              PaletteSlot.Neutral, Shade.Darkest);
-  _makeSemanticSlotRule(SemanticSlot.Background,              PaletteSlot.Neutral, Shade.Lightest);
-  _makeSemanticSlotRule(SemanticSlot.AccentBackground,        PaletteSlot.Primary, Shade.Unshaded);
-  _makeSemanticSlotRule(SemanticSlot.AccentBackgroundHover,   PaletteSlot.Primary, Shade.Medium);
-  _makeSemanticSlotRule(SemanticSlot.CounteraccentForeground, PaletteSlot.Neutral, Shade.Lightest);
-  _makeSemanticSlotRule(SemanticSlot.CounteraccentForegroundHover, PaletteSlot.Neutral, Shade.Lighter);
-  _makeSemanticSlotRule(SemanticSlot.NeutralBackground,       PaletteSlot.Neutral, Shade.Lighter);
-  _makeSemanticSlotRule(SemanticSlot.NeutralForeground,       PaletteSlot.Neutral, Shade.Darker);
-  _makeSemanticSlotRule(SemanticSlot.DisabledBackground,      PaletteSlot.Neutral, Shade.Darker);
-  _makeSemanticSlotRule(SemanticSlot.DisabledForeground,      PaletteSlot.Neutral, Shade.Lightest);
+
+  // Basics
+  _makeSemanticSlotRule(SemanticSlot.Foreground, PaletteSlot.Neutral, Shade.Darkest);
+  slotRules[SemanticSlot[SemanticSlot.Background]] = {
+    name: SemanticSlot[SemanticSlot.Background],
+    value: getColorFromString('#fff'),
+    isCustomized: true
+  };
+
+  // Inputs
+  _makeSemanticSlotRule(SemanticSlot.InputEmphasizedBackground,       PaletteSlot.Primary, Shade.Unshaded);
+  _makeSemanticSlotRule(SemanticSlot.InputEmphasizedBackgroundHover,  PaletteSlot.Primary, Shade.Medium);
+  _makeSemanticSlotRule(SemanticSlot.InputEmphasizedForeground,       PaletteSlot.Neutral, Shade.Lightest);
+  _makeSemanticSlotRule(SemanticSlot.InputEmphasizedForegroundHover,  PaletteSlot.Neutral, Shade.Lighter);
+  _makeSemanticSlotRule(SemanticSlot.InputBackground,       PaletteSlot.Neutral, Shade.Lighter);
+  _makeSemanticSlotRule(SemanticSlot.InputBackgroundHover,  PaletteSlot.Neutral, Shade.Medium);
+  _makeSemanticSlotRule(SemanticSlot.InputForeground,       PaletteSlot.Neutral, Shade.Darker);
+  _makeSemanticSlotRule(SemanticSlot.InputForegroundHover,  PaletteSlot.Neutral, Shade.Darkest);
+  _makeSemanticSlotRule(SemanticSlot.DisabledBackground, PaletteSlot.Neutral, Shade.Medium);
+  _makeSemanticSlotRule(SemanticSlot.DisabledForeground, PaletteSlot.Neutral, Shade.Lightest);
+
+  // Areas? Informational? Presentation?
+  _makeSemanticSlotRule(SemanticSlot.EmphasizedBackground, PaletteSlot.Primary, Shade.Unshaded);
+  _makeSemanticSlotRule(SemanticSlot.EmphasizedForeground, PaletteSlot.Neutral, Shade.Lightest);
+  _makeSemanticSlotRule(SemanticSlot.NeutralBackground, PaletteSlot.Neutral, Shade.Lighter);
+  _makeSemanticSlotRule(SemanticSlot.NeutralForeground, PaletteSlot.Neutral, Shade.Darker);
 
   return slotRules;
 }

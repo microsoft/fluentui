@@ -112,6 +112,9 @@ export function getShade(color: IColor, shade: Shade) {
  * See: https://www.w3.org/TR/WCAG20/ section 1.4.3
  */
 export function getContrastRatio(color1: IColor, color2: IColor) {
+    // Formula defined by: http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html#contrast-ratiodef
+    // relative luminance: http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
+
     /* calculate the intermediate value needed to calculating relative luminance */
     function _getThing(x: number) {
         if (x <= .03928) {
@@ -125,11 +128,13 @@ export function getContrastRatio(color1: IColor, color2: IColor) {
     let g1 = _getThing(color1.g / MAX_COLOR_RGBA);
     let b1 = _getThing(color1.b / MAX_COLOR_RGBA);
     let L1 = (.2126 * r1) + (.7152 * g1) + (.0722 * b1); // relative luminance of first color
+    L1 += .05;
 
     let r2 = _getThing(color2.r / MAX_COLOR_RGBA);
     let g2 = _getThing(color2.g / MAX_COLOR_RGBA);
     let b2 = _getThing(color2.b / MAX_COLOR_RGBA);
     let L2 = (.2126 * r2) + (.7152 * g2) + (.0722 * b2); // relative luminance of second color
+    L2 += .05;
 
     // return the lighter color divided by darker
     return L1 / L2 > 1 ?

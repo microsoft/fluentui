@@ -40,17 +40,45 @@ export class ThemerPage extends React.Component<any, any> {
   public render() {
     let { themeRules, colorPickerVisible, colorPickerSlot, colorPickerElement } = this.state;
 
-    let slotsList = mapEnumByName(SemanticSlot, (x, slot) => {
+    /*let slotsList = mapEnumByName(SemanticSlot, (x, slot) => {
       return this._semanticSlotWidget(slot);
-    });
+    });*/
+
+    let basicSlots = [this._semanticSlotWidget(SemanticSlot.Background),
+                      this._semanticSlotWidget(SemanticSlot.Foreground)];
+    let inputSlots = [this._semanticSlotWidget(SemanticSlot.InputBackground),
+                      this._semanticSlotWidget(SemanticSlot.InputBackgroundHover),
+                      this._semanticSlotWidget(SemanticSlot.InputForeground),
+                      this._semanticSlotWidget(SemanticSlot.InputForegroundHover),
+                      this._semanticSlotWidget(SemanticSlot.InputEmphasizedBackground),
+                      this._semanticSlotWidget(SemanticSlot.InputEmphasizedBackgroundHover),
+                      this._semanticSlotWidget(SemanticSlot.InputEmphasizedForeground),
+                      this._semanticSlotWidget(SemanticSlot.InputEmphasizedForegroundHover),
+                      this._semanticSlotWidget(SemanticSlot.DisabledBackground),
+                      this._semanticSlotWidget(SemanticSlot.DisabledForeground)];
 
     return (
       <div className='ms-themer'>
         <div style={{ display: 'flex', flexDirection: 'row' }}>
           { [this._oneColor(PaletteSlot.Primary), this._oneColor(PaletteSlot.Neutral)] }
         </div>
+<br/>
 
-        { slotsList }
+        { this._exampleSection('Basic Slots',
+                              'Basic theme slots for page background and default text color.',
+                              basicSlots) }
+        { this._exampleSection('Input Slots',
+                               'These slots are used to theme simple input controls, such as buttons, text inputs, or toggle switches.',
+                               inputSlots,
+                               [<ToggleBasicExample />]) }
+
+        <h3>Presentation Slots</h3>
+        { [this._semanticSlotWidget(SemanticSlot.NeutralBackground),
+           this._semanticSlotWidget(SemanticSlot.NeutralForeground),
+           this._semanticSlotWidget(SemanticSlot.EmphasizedBackground),
+           this._semanticSlotWidget(SemanticSlot.EmphasizedForeground)] }
+
+        /** the shared popup color picker for semantic slots */
         { colorPickerVisible && colorPickerSlot && colorPickerElement &&
           <Callout
             key={ colorPickerSlot }
@@ -71,16 +99,40 @@ export class ThemerPage extends React.Component<any, any> {
         </div>
 
         <h3>Accessibility</h3>
-        <p>Each pair of colors below should produce legible text and have a minimum contrast ratio of 4.5 [TBD].</p>
+        <p>Each pair of colors below should produce legible text and have a minimum contrast ratio of 4.5 [TBD verify formula].</p>
         <table className='ms-themer-accessibilityTable'>
            { [this._accessibilityRow(SemanticSlot.DisabledForeground, SemanticSlot.DisabledBackground),
-              this._accessibilityRow(SemanticSlot.CounteraccentForeground, SemanticSlot.AccentBackground),
+              this._accessibilityRow(SemanticSlot.EmphasizedForeground, SemanticSlot.EmphasizedBackground),
+              this._accessibilityRow(SemanticSlot.InputEmphasizedForeground, SemanticSlot.InputEmphasizedBackground),
               this._accessibilityRow(SemanticSlot.Foreground, SemanticSlot.NeutralBackground),
-              this._accessibilityRow(SemanticSlot.NeutralForeground, SemanticSlot.NeutralBackground),
-              this._accessibilityRow(SemanticSlot.AccentBackground, SemanticSlot.NeutralBackground)
+              this._accessibilityRow(SemanticSlot.Foreground, SemanticSlot.Background),
+              this._accessibilityRow(SemanticSlot.NeutralForeground, SemanticSlot.NeutralBackground)
             ] }
         </table>
       </div>
+    );
+  }
+
+  private _exampleSection(
+    sectionName: string,
+    description: string,
+    slots: Array<JSX.Element>,
+    examples?: Array<JSX.Element>
+  ) {
+    return (
+        <div className='ms-themer-exampleSection'>
+          <h3>{ sectionName }</h3>
+          <p>{ description }</p>
+          <div className='ms-themer-exampleTable'>
+            <div className='ms-themer-slotsList'>
+              { slots }
+            </div>
+            <div className='ms-themer-exampleList'>
+              { examples }
+            </div>
+          </div>
+          <br />
+        </div>
     );
   }
 

@@ -32,14 +32,19 @@ $dividerColor: $ms-color-neutralLight;
 $foregroundColor: "[theme:Foreground, default: #333]"; // font
 $backgroundColor: "[theme:Background, default: #fff]"; // body
 
-$accentBackgroundColor: "[theme:AccentBackground, default: #0078d7]"; // $ms-color-themePrimary;
-$accentBackgroundHoverColor: "[theme:AccentBackgroundHover, default: #2b88d8]"; // $ms-color-themeSecondary;
-$counteraccentForegroundColor: "[theme:CounteraccentForeground, default: #fff]"; // $ms-color-white;
-$counteraccentForegroundHoverColor: "[theme:CounteraccentForegroundHover, default: #ddd]"; // $ms-color-white;
+$inputEmphasizedBackground: "[theme:InputEmphasizedBackground, default: #0078d7]"; // $ms-color-themePrimary;
+$inputEmphasizedBackgroundHover: "[theme:InputEmphasizedBackgroundHover, default: #2b88d8]"; // $ms-color-themeSecondary;
+$inputEmphasizedForeground: "[theme:InputEmphasizedForeground, default: #fff]"; // $ms-color-white;
+$inputEmphasizedForegroundHover: "[theme:InputEmphasizedForegroundHover, default: #ddd]";
+
+$inputBackground: "[theme:InputBackground, default: #f4f4f4]";
+$inputBackgroundHover: "[theme:InputBackgroundHover, default: #eaeaea]";
+$inputForeground: "[theme:InputForeground, default: #333]";
+$inputForegroundHover: "[theme:InputForegroundHover, default: #333]";
+
+$disabledBackgroundColor: "[theme:DisabledBackground, default: #c8c8c8]"; // $ms-color-neutralTertiaryAlt
+$disabledForegroundColor: "[theme:DisabledForeground, default: #a6a6a6]"; // $ms-color-neutralLight
 
 $neutralBackgroundColor: "[theme:NeutralBackground, default: #767676]"; // $ms-color-neutralTertiaryAlt
 $neutralForegroundColor: "[theme:NeutralForeground, default: #a6a6a6]"; // $ms-color-neutralTertiary
 // just use normal foreground: $neutralForegroundHoverColor: "[theme:, default: #333]"; // $ms-color-black;
-
-$disabledBackgroundColor: "[theme:DisabledBackground, default: #c8c8c8]"; // $ms-color-neutralTertiaryAlt
-$disabledForegroundColor: "[theme:DisabledForeground, default: #a6a6a6]"; // $ms-color-neutralLight

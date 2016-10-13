@@ -36,7 +36,7 @@
     }
 
     .ms-Toggle-background {
-      border: 1px solid $neutralBackgroundColor;
+      border: 1px solid $foregroundColor;
     }
 
     .ms-Toggle-thumb {
@@ -56,20 +56,20 @@
     // Checked state overrides
     &.is-checked {
       .ms-Toggle-background {
-        background: $accentBackgroundColor;
-        border: 1px solid $accentBackgroundColor;
+        background: $inputEmphasizedBackground;
+        border: 1px solid $inputEmphasizedBackground;
         @include highContrast-bgColor($ms-color-white, $ms-color-black);
       }
 
       .ms-Toggle-thumb {
-        background: $counteraccentForegroundColor;
+        background: $inputEmphasizedForeground;
         @include left(28px);
         @include highContrast-bgColor($ms-color-black, $ms-color-white);
       }
 
       .ms-Toggle-slider:hover {
         .ms-Toggle-background {
-          background: $accentBackgroundHoverColor;
+          background: $inputEmphasizedBackgroundHover;
         }
       }
     }

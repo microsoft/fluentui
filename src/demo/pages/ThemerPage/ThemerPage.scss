@@ -23,10 +23,10 @@ html > body {
 
 .ms-themer-swatch {
   display: inline-block;
+  flex-shrink: 0;
   height: 36px;
   width: 36px;
   margin: 4px;
-  flex-shrink: 0;
 }
 
 .ms-themer-swatchBg {
@@ -46,7 +46,13 @@ html > body {
 }
 
 .ms-themer-slot {
-  display: inline-flex;
-  width: 250px;
+  display: flex;
+  //width: 250px;
   overflow: auto;
+}
+.ms-themer-exampleTable {
+  display: flex;
+  > div {
+    padding: 8px;
+  }
 }
