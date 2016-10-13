@@ -151,9 +151,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected onSuggestionSelect() {
     if (this.suggestionStore.currentSuggestion) {
       let currentValue: string = this.state.value;
-      let itemValue: string = this.props.getTextFromItem(this.suggestionStore.currentSuggestion.item);
-      this.updateDisplayValue(currentValue, itemValue);
-      this.setState({ displayValue: itemValue }, () => this.suggestionElement.scrollSelected());
+      let itemValue: string = this.props.getTextFromItem(this.suggestionStore.currentSuggestion.item, currentValue);
+      this.updateDisplayValue(currentValue, itemValue, () => this.suggestionElement.scrollSelected());
     }
   }
 
@@ -179,6 +178,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       if (Array.isArray(suggestionsArray)) {
         this.resolveNewValue(updatedValue, suggestionsArray);
       } else if (suggestionsPromiseLike.then) {
+        this.updateDisplayValue(updatedValue);
         suggestionsPromiseLike.then((newSuggestions: T[]) => this.resolveNewValue(updatedValue, newSuggestions));
       }
     }
@@ -189,16 +189,16 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.suggestionStore.updateSuggestions(suggestions);
     let itemValue: string = undefined;
     if (this.suggestionStore.currentSuggestion) {
-      itemValue = this.props.getTextFromItem(this.suggestionStore.currentSuggestion.item);
+      itemValue = this.props.getTextFromItem(this.suggestionStore.currentSuggestion.item, updatedValue);
     }
     this.updateDisplayValue(updatedValue, itemValue);
   }
 
-  protected updateDisplayValue(updatedValue: string, itemValue?: string) {
+  protected updateDisplayValue(updatedValue: string, itemValue?: string, afterUpdateCallback?: () => void) {
     let differenceIndex: number = 0;
 
-    if (updatedValue) {
-      while (differenceIndex < updatedValue.length && updatedValue[differenceIndex].toLocaleLowerCase() === updatedValue[differenceIndex].toLocaleLowerCase()) {
+    if (updatedValue && itemValue) {
+      while (differenceIndex < updatedValue.length && updatedValue[differenceIndex].toLocaleLowerCase() === itemValue[differenceIndex].toLocaleLowerCase()) {
         differenceIndex++;
       }
     }
@@ -208,7 +208,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       value: updatedValue,
       suggestionsVisible: updatedValue && updatedValue !== ''
     }, () => {
-      if (itemValue && differenceIndex < itemValue.length) {
+      if (afterUpdateCallback) {
+        afterUpdateCallback();
+      }
+      if (itemValue && differenceIndex < itemValue.length && differenceIndex === updatedValue.length) {
         (this.input as IHTMLInputElementWithSelectionDirection).setSelectionRange(differenceIndex, itemValue.length, 'backward');
       }
     });
@@ -369,7 +372,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
           className={ css('ms-BasePicker', this.props.className ? this.props.className : '') }
           onKeyDown={ this.onKeyDown }>
           <SelectionZone selection={ this.selection }
-            selectionMode={SelectionMode.multiple}>
+            selectionMode={ SelectionMode.multiple }>
             <div className='ms-BasePicker-text'>
               <input ref={ this._resolveRef('input') }
                 onFocus={ this.onInputFocus }

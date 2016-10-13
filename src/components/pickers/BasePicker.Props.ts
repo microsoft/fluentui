@@ -29,7 +29,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * A callback to get text from an item. Used to autofill text in the pickers.
    */
-  getTextFromItem?: (item: T) => string;
+  getTextFromItem?: (item: T, currentValue?: string) => string;
   /**
    * A callback that gets the rest of the results when a user clicks get more results.
    */
