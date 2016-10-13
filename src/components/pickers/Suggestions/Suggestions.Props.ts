@@ -47,12 +47,13 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
    * Dictates whether or not the searchForMore button is displayed.
    */
   moreSuggestionsAvailable?: boolean;
-
   /**
    * Used to indicate whether or not the suggestions are loading.
    */
   isLoading?: boolean;
-
+  /**
+   * The text to display while the results are loading.
+   */
   loadingText?: string;
 }
 
