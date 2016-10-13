@@ -19,6 +19,7 @@ export interface IBasePickerState {
   value?: string;
   moreSuggestionsAvailable?: boolean;
   suggestionsVisible?: boolean;
+  suggestionsLoading?: boolean;
 }
 
 // This interface is because selection direction is not currently supported by the typedefinitions even
@@ -117,6 +118,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           ref={ this._resolveRef('suggestionElement') }
           onGetMoreResults={ this.onGetMoreResults }
           moreSuggestionsAvailable={ this.state.moreSuggestionsAvailable }
+          isLoading={ this.state.suggestionsLoading }
           { ...this.props.pickerSuggestionsProps }
           />
       </Callout>
@@ -178,6 +180,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       if (Array.isArray(suggestionsArray)) {
         this.resolveNewValue(updatedValue, suggestionsArray);
       } else if (suggestionsPromiseLike.then) {
+        this.setState({
+          suggestionsLoading: true
+        });
         this.updateDisplayValue(updatedValue);
         suggestionsPromiseLike.then((newSuggestions: T[]) => this.resolveNewValue(updatedValue, newSuggestions));
       }
@@ -191,6 +196,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     if (this.suggestionStore.currentSuggestion) {
       itemValue = this.props.getTextFromItem(this.suggestionStore.currentSuggestion.item, updatedValue);
     }
+    this.setState({suggestionsLoading: false } );
     this.updateDisplayValue(updatedValue, itemValue);
   }
 

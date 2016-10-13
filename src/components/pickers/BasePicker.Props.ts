@@ -69,4 +69,6 @@ export interface IBasePickerSuggestionsProps {
    * The text that should appear on the button to search for more.
    */
   searchForMoreText?: string;
+
+  loadingText?: string;
 }
