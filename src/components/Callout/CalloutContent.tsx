@@ -31,7 +31,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     beakStyle: 'ms-Callout-beak',
     beakWidth: 28,
     gapSpace: 0,
-    directionalHint: getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge
+    directionalHint: null
   };
 
   private _didSetInitialFocus: boolean;
@@ -128,6 +128,12 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
     if (this.props.onLayerMounted) {
       this.props.onLayerMounted();
+    }
+
+    // Set default directionalHint according to rtl setting.
+    // The is added here so that getRTL() is called on the client only.
+    if (!CalloutContent.defaultProps.directionalHint) {
+      CalloutContent.defaultProps.directionalHint = getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge;
     }
 
     this._updatePosition();
