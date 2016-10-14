@@ -39,6 +39,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   protected suggestionStore: SuggestionsController<T>;
   protected SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
+  protected loadingTimer: number;
+  protected currentPromise: PromiseLike<any>;
 
   constructor(basePickerProps: P) {
     super(basePickerProps);
@@ -180,11 +182,22 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       if (Array.isArray(suggestionsArray)) {
         this.resolveNewValue(updatedValue, suggestionsArray);
       } else if (suggestionsPromiseLike.then) {
-        this.setState({
-          suggestionsLoading: true
-        });
+        if (!this.loadingTimer) {
+          this.loadingTimer = this._async.setTimeout(() => this.setState({
+            suggestionsLoading: true
+          }), 500);
+        }
         this.updateDisplayValue(updatedValue);
-        suggestionsPromiseLike.then((newSuggestions: T[]) => this.resolveNewValue(updatedValue, newSuggestions));
+        // Ensure that the promise will only use the callback if it was the most recent one.
+        let promise: PromiseLike<void> = this.currentPromise = suggestionsPromiseLike.then((newSuggestions: T[]) => {
+          if (promise === this.currentPromise) {
+            this.resolveNewValue(updatedValue, newSuggestions);
+            if (this.loadingTimer) {
+              this._async.clearTimeout(this.loadingTimer);
+              this.loadingTimer = undefined;
+            }
+          }
+        });
       }
     }
   }
@@ -196,7 +209,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     if (this.suggestionStore.currentSuggestion) {
       itemValue = this.props.getTextFromItem(this.suggestionStore.currentSuggestion.item, updatedValue);
     }
-    this.setState({suggestionsLoading: false } );
+    this.setState({ suggestionsLoading: false });
     this.updateDisplayValue(updatedValue, itemValue);
   }
 

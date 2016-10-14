@@ -1,4 +1,6 @@
+/* tslint:disable */
 import * as React from 'react';
+/* tslint:enable */
 import {
   ListPeoplePicker,
   NormalPeoplePicker,
@@ -7,7 +9,9 @@ import {
   Dropdown,
   IDropdownOption,
   IPersonaProps,
-  IBasePickerSuggestionsProps
+  IBasePickerSuggestionsProps,
+  BaseComponent,
+  autobind
 } from '../../../../index';
 import { IPersonaWithMenu } from '../../../../components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
 import { people } from './PeoplePickerExampleData';
@@ -15,7 +19,8 @@ import { assign } from '../../../../utilities/object';
 import './PeoplePicker.Types.Example.scss';
 
 export interface IPeoplePickerExampleState {
-  currentPicker: number | string;
+  currentPicker?: number | string;
+  promiseDelay?: number;
 }
 
 const suggestionProps: IBasePickerSuggestionsProps = {
@@ -23,8 +28,9 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   noResultsFoundText: 'No results found'
 };
 
-export class PeoplePickerTypesExample extends React.Component<any, IPeoplePickerExampleState> {
+export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerExampleState> {
   private _peopleList;
+  private _select: HTMLSelectElement;
   private contextualMenuItems: IContextualMenuItem[] = [
     {
       key: 'newItem',
@@ -57,7 +63,6 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
 
   constructor() {
     super();
-    this._onFilterChanged = this._onFilterChanged.bind(this);
     this._peopleList = [];
     people.forEach((persona: IPersonaProps) => {
       let target: IPersonaWithMenu = {};
@@ -66,7 +71,10 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
       this._peopleList.push(target);
     });
 
-    this.state = { currentPicker: 1 };
+    this.state = {
+      currentPicker: 1,
+      promiseDelay: 0
+    };
   }
 
   public render() {
@@ -93,6 +101,16 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
     return (
       <div>
         { currentPicker }
+        <label> Result Delay in Seconds </label>
+        <select
+          ref={ this._resolveRef('_select') }
+          onChange={() => { this.setState({ promiseDelay: parseInt(this._select.value, 10) }); } }>
+          <option value='0'>0</option>
+          <option value='1'>1</option>
+          <option value='2'>2</option>
+          <option value='5'>5</option>
+          <option value='10'>6</option>
+        </select>
         <div className={'dropdown-div'}>
           <Dropdown label='Select People Picker Type'
             options={[
@@ -113,7 +131,7 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
   public _renderListPicker() {
     return (
       <ListPeoplePicker
-        onResolveSuggestions={ this._onFilterChanged }
+        onResolveSuggestions={ this._filterPromise }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
         className={ 'ms-PeoplePicker' }
         pickerSuggestionsProps={ suggestionProps }
@@ -125,7 +143,7 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
   public _renderNormalPicker() {
     return (
       <NormalPeoplePicker
-        onResolveSuggestions={ this._onFilterChanged }
+        onResolveSuggestions={ this._filterPromise }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
         pickerSuggestionsProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
@@ -137,7 +155,7 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
   public _renderCompactPicker() {
     return (
       <CompactPeoplePicker
-        onResolveSuggestions={ this._onFilterChanged }
+        onResolveSuggestions={ this._filterPromise }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
         pickerSuggestionsProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
@@ -148,7 +166,7 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
   public _renderPreselectedItemsPicker() {
     return (
       <CompactPeoplePicker
-        onResolveSuggestions={ this._onFilterChanged }
+        onResolveSuggestions={ this._filterPromise }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
         className={ 'ms-PeoplePicker' }
         defaultSelectedItems={ people.splice(0, 3) }
@@ -163,7 +181,7 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
     limitedSearchSuggestionProps.searchForMoreText = 'Load all Results';
     return (
       <CompactPeoplePicker
-        onResolveSuggestions={ this._filterWithLimit.bind(this) }
+        onResolveSuggestions={ this._filterWithLimit }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
         className={ 'ms-PeoplePicker' }
         onGetMoreResults={ this._onFilterChanged }
@@ -172,8 +190,14 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
     );
   }
 
+  @autobind
+  private _filterPromise(filterText: string, items: IPersonaProps[]) {
+    return new Promise<IPersonaProps[]>((resolve, reject) => setTimeout(() => resolve(this._onFilterChanged(filterText, items)), this.state.promiseDelay * 1000));
+  }
+
+  @autobind
   private _onFilterChanged(filterText: string, items: IPersonaProps[]) {
-    return filterText ? this._peopleList.filter(item => item.primaryText.toLowerCase().indexOf(filterText.toLowerCase() ) === 0).filter(item => !this._listContainsPersona(item, items)) : [];
+    return filterText ? this._peopleList.filter(item => item.primaryText.toLowerCase().indexOf(filterText.toLowerCase()) === 0).filter(item => !this._listContainsPersona(item, items)) : [];
   }
 
   private _listContainsPersona(persona: IPersonaProps, items: IPersonaProps[]) {
@@ -183,8 +207,9 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
     return items.filter(item => item.primaryText === persona.primaryText).length > 0;
   }
 
+  @autobind
   private _filterWithLimit(filterText: string, currentItems: IPersonaProps[]) {
-    return filterText ? this._onFilterChanged(filterText, currentItems).splice(0, 2) : [];
+        return new Promise<IPersonaProps[]>((resolve, reject) => setTimeout(() => resolve(this._onFilterChanged(filterText, currentItems).splice(0, 2)), this.state.promiseDelay * 1000));
   }
 
   private _dropDownSelected(option: IDropdownOption) {
