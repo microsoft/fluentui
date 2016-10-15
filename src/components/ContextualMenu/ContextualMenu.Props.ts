@@ -170,6 +170,7 @@ export interface IContextualMenuItem {
    * A function to be executed onMouseDown. This is executed before an onClick event and can
    * be used to interrupt native on click events as well. The click event should still handle
    * the commands. This should only be used in special cases when react and non-react are mixed.
+   * Note: This will not call stopPropagation(); or preventDefault();. That should be part of the Callback.
    */
   onMouseDown?: (item: IContextualMenuItem, event: any) => void;
 

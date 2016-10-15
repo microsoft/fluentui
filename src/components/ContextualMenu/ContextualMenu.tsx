@@ -349,6 +349,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   private _onItemMouseDown(item: IContextualMenuItem, ev: React.MouseEvent) {
     if (item.onMouseDown) {
       item.onMouseDown(item, ev);
+      this.dismiss(ev, true);
     }
   }
 
