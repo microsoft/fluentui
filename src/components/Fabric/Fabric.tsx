@@ -23,6 +23,11 @@ export interface IFabricState {
 // the Fabric component, we will use the last known value as the default.
 let _lastIsFocusVisible: boolean = false;
 
+// Ensure that the HTML element has a dir specified. This helps to ensure RTL/LTR macros in css for all components will work.
+if (typeof(document) === 'object' && document.documentElement && !document.documentElement.getAttribute('dir')) {
+  document.documentElement.setAttribute('dir', 'ltr');
+}
+
 export class Fabric extends React.Component<React.HTMLProps<HTMLDivElement>, IFabricState> {
   public refs: {
     [key: string]: React.ReactInstance;
@@ -44,11 +49,6 @@ export class Fabric extends React.Component<React.HTMLProps<HTMLDivElement>, IFa
   public componentDidMount() {
     this._events.on(document.body, 'mousedown', this._onMouseDown, true);
     this._events.on(document.body, 'keydown', this._onKeyDown, true);
-
-    // Ensure that the HTML element has a dir specified. This helps to ensure RTL/LTR macros in css for all components will work.
-    if (document && document.documentElement && !document.documentElement.getAttribute('dir')) {
-      document.documentElement.setAttribute('dir', 'ltr');
-    }
   }
 
   public componentWillUnmount() {
