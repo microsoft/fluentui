@@ -6,7 +6,6 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   autobind,
   css,
-  getRTL,
   elementContains
 } from '../../Utilities';
 import { getRelativePositions, IPositionInfo } from '../../utilities/positioning';
@@ -31,7 +30,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     beakStyle: 'ms-Callout-beak',
     beakWidth: 28,
     gapSpace: 0,
-    directionalHint: getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge
+    directionalHint: DirectionalHint.bottomAutoEdge
   };
 
   private _didSetInitialFocus: boolean;
