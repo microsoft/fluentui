@@ -50,6 +50,7 @@ export class DialogBasicExample extends React.Component<any, any> {
             ] }
             onChanged={ this._onChoiceChanged }
           />
+          { null /** You can also include null values as the result of conditionals */ }
           <DialogFooter>
             <Button buttonType={ ButtonType.primary } onClick={this._closeDialog.bind(this)}>Save</Button>
             <Button onClick={this._closeDialog.bind(this)}>Cancel</Button>

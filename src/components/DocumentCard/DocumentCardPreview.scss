@@ -27,7 +27,7 @@
     line-height: 16px; // Vertically center the text
     margin-bottom: 8px;
     overflow: hidden;
-    @include padding-left(32px); // Make room for icon
+    @include padding-left(24px); // Make room for icon
     position: relative;
     text-overflow: ellipsis;
     white-space: nowrap;

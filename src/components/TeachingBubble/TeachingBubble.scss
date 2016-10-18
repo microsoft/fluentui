@@ -30,6 +30,7 @@
   }
   .ms-TeachingBubble-header--small & {
     @include ms-font-m;
+    @include margin-right(10px);
     font-weight: $ms-font-weight-semibold;
   }
 }

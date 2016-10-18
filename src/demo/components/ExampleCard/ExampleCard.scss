@@ -6,7 +6,6 @@
 
 .ExampleCard-header {
   border-bottom: 1px solid $ms-color-neutralTertiary;
-  min-height: 50px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -14,13 +13,13 @@
 }
 
 .ExampleCard-title {
-  line-height: 50px;
+  margin-bottom: 10px;
+  display: inline-block;
 }
 
 .ExampleCard-toggleButtons {
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  display: block;
+  @include float(right);
 
   .ms-Button.ExampleCard-codeButton {
     @include margin-right(0);
@@ -41,7 +40,7 @@
       .ms-Icon {
         font-size: $ms-font-size-l;
         padding: 0;
-        margin-right: 8px;
+        @include margin-right(8px);
       }
     }
 
@@ -117,7 +116,7 @@
 .ExampleCard-dos {
   width: calc(50% - 50px);
   display: inline-block;
-  margin-right: 50px;
+  @include margin-right(50px);
 
   h4 {
     @include ms-font-l;

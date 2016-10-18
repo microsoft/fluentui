@@ -2,9 +2,9 @@
 import * as React from 'react';
 /* tslint:enable */
 import { IPeoplePickerItemWithMenuProps } from './PeoplePickerItem.Props';
-import { Persona, PersonaPresence } from '../../../Persona';
-import { ContextualMenu, DirectionalHint } from '../../../ContextualMenu';
-import { Button, ButtonType } from '../../../Button';
+import { Persona, PersonaPresence } from '../../../../Persona';
+import { ContextualMenu, DirectionalHint } from '../../../../ContextualMenu';
+import { Button, ButtonType } from '../../../../Button';
 
 export interface IPeoplePickerItemState {
   contextualMenuVisible: boolean;

@@ -56,7 +56,7 @@ $dontColor: #A61E22;
   font-size: $ms-font-size-m;
   line-height: 1.5;
   max-width: 50em;
-  padding-right: 60px;
+  @include padding-right(60px);
   margin-bottom: -6px; // Trim padding off last paragraph
 
   p {
@@ -65,7 +65,7 @@ $dontColor: #A61E22;
   }
 
   ul {
-    padding-left: 18px;
+    @include padding-left(18px);
   }
 
   li {
@@ -105,7 +105,7 @@ $dontColor: #A61E22;
 
 .ComponentPage-navLink {
   display: inline-block;
-  margin-right: 40px;
+  @include margin-right(40px);
 }
 
 .ComponentPage-navLink .ms-Link {
@@ -145,7 +145,7 @@ $dontColor: #A61E22;
   }
 
   ul {
-    padding-left: 18px;
+    @include padding-left(18px);
   }
 
   li {
@@ -154,7 +154,7 @@ $dontColor: #A61E22;
   }
 
   &:first-child {
-    margin-right: 120px;
+    @include margin-right(120px);
   }
 }
 

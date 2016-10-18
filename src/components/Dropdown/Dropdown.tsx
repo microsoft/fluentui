@@ -147,7 +147,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
   }
 
   private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number) {
-    return findIndex(options, (option => (option.isSelected || selectedKey && option.key === selectedKey)));
+    return findIndex(options, (option => (option.isSelected || (selectedKey != null) && option.key === selectedKey)));
   }
 
   @autobind
