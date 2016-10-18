@@ -24,11 +24,9 @@ import { ListPage } from '../../pages/ListPage/ListPage';
 import { MarqueeSelectionPage } from '../../pages/MarqueeSelectionPage/MarqueeSelectionPage';
 import { MessageBarPage } from '../../pages/MessageBarPage/MessageBarPage';
 import { NavPage } from '../../pages/NavPage/NavPage';
-import { OrgChartPage } from '../../pages/OrgChartPage/OrgChartPage';
 import { OverlayPage } from '../../pages/OverlayPage/OverlayPage';
 import { PanelPage } from '../../pages/PanelPage/PanelPage';
-import { PeoplePickerPage } from '../../pages/PeoplePickerPage/PeoplePickerPage';
-import { PersonaCardPage } from '../../pages/PersonaCardPage/PersonaCardPage';
+import { PickersPage } from '../../pages/PickersPage/PickersPage';
 import { PersonaPage } from '../../pages/PersonaPage/PersonaPage';
 import { PivotPage } from '../../pages/PivotPage/PivotPage';
 import { ProgressIndicatorPage } from '../../pages/ProgressIndicatorPage/ProgressIndicatorPage';
@@ -36,9 +34,11 @@ import { SearchBoxPage } from '../../pages/SearchBoxPage/SearchBoxPage';
 import { SelectionPage } from '../../pages/SelectionPage/SelectionPage';
 import { SliderPage } from '../../pages/SliderPage/SliderPage';
 import { SpinnerPage } from '../../pages/SpinnerPage/SpinnerPage';
+import { TeachingBubblePage } from '../../pages/TeachingBubblePage/TeachingBubblePage';
 import { TextFieldPage } from '../../pages/TextFieldPage/TextFieldPage';
 import { TogglePage } from '../../pages/TogglePage/TogglePage';
 import { ThemePage } from '../../pages/ThemePage/ThemePage';
+import { DetailsListBasicExample } from '../../pages/DetailsListPage/examples/DetailsList.Basic.Example';
 
 export enum ExampleStatus {
   placeholder,
@@ -49,6 +49,7 @@ export enum ExampleStatus {
 
 export interface IAppState {
   appTitle: string;
+  testPages: any[];
   examplePages: INavLinkGroup[];
   headerLinks: INavLink[];
 }
@@ -56,179 +57,210 @@ export interface IAppState {
 export const AppState: IAppState = {
   appTitle: 'Fabric - React',
 
+  testPages: [
+    {
+      component: DetailsListBasicExample,
+      key: 'DetailsListBasicExample',
+      name: 'DetailsListBasicExample',
+      url: '#/tests/detailslistbasicexample'
+    }
+  ],
+
   examplePages: [
     {
       links: [
         {
           component: BreadcrumbPage,
+          key: 'Breadcrumb',
           name: 'Breadcrumb',
           status: ExampleStatus.beta,
           url: '#/examples/breadcrumb'
         },
         {
           component: ButtonPage,
+          key: 'Button',
           name: 'Button',
           status: ExampleStatus.beta,
           url: '#/examples/button'
         },
         {
           component: CalloutPage,
+          key: 'Callout',
           name: 'Callout',
           status: ExampleStatus.beta,
           url: '#/examples/callout'
         },
         {
           component: CheckboxPage,
+          key: 'Checkbox',
           name: 'Checkbox',
           status: ExampleStatus.beta,
           url: '#/examples/checkbox'
         },
         {
           component: ChoiceGroupPage,
+          key: 'ChoiceGroup',
           name: 'ChoiceGroup',
           status: ExampleStatus.beta,
           url: '#/examples/choicegroup'
         },
         {
           component: CommandBarPage,
+          key: 'CommandBar',
           name: 'CommandBar',
           status: ExampleStatus.beta,
           url: '#/examples/commandbar'
         },
         {
           component: ContextualMenuPage,
+          key: 'ContextualMenu',
           name: 'ContextualMenu',
           status: ExampleStatus.beta,
           url: '#/examples/contextmenu'
         },
         {
           component: DatePickerPage,
+          key: 'DatePicker',
           name: 'DatePicker',
           status: ExampleStatus.beta,
           url: '#/examples/datepicker'
         },
         {
           component: DetailsListPage,
+          key: 'DetailsList',
           name: 'DetailsList',
           status: ExampleStatus.beta,
           url: '#/examples/detailslist'
         },
         {
           component: DialogPage,
+          key: 'Dialog',
           name: 'Dialog',
           status: ExampleStatus.beta,
           url: '#/examples/dialog'
         },
         {
           component: DocumentCardPage,
+          key: 'DocumentCard',
           name: 'DocumentCard',
           status: ExampleStatus.beta,
           url: '#/examples/documentcard'
         },
         {
           component: DropdownPage,
+          key: 'Dropdown',
           name: 'Dropdown',
           status: ExampleStatus.beta,
           url: '#/examples/dropdown'
         },
         {
           component: FacepilePage,
+          key: 'Facepile',
           name: 'Facepile',
           status: ExampleStatus.started,
           url: '#/examples/facepile'
         },
         {
           component: LabelPage,
+          key: 'Label',
           name: 'Label',
           status: ExampleStatus.beta,
           url: '#/examples/label'
         },
         {
           component: LinkPage,
+          key: 'Link',
           name: 'Link',
           status: ExampleStatus.beta,
           url: '#/examples/link'
         },
         {
           component: ListPage,
+          key: 'List',
           name: 'List',
           status: ExampleStatus.beta,
           url: '#/examples/list'
         },
         {
           component: MessageBarPage,
+          key: 'MessageBar',
           name: 'MessageBar',
           status: ExampleStatus.placeholder,
           url: '#/examples/messagebar'
         },
         {
-          component: OrgChartPage,
-          name: 'OrgChart',
-          status: ExampleStatus.placeholder,
-          url: '#/examples/orgchart'
-        },
-        {
           component: OverlayPage,
+          key: 'Overlay',
           name: 'Overlay',
           status: ExampleStatus.beta,
           url: '#/examples/overlay'
         },
         {
           component: PanelPage,
+          key: 'Panel',
           name: 'Panel',
           status: ExampleStatus.beta,
           url: '#/examples/panel'
         },
         {
-          component: PeoplePickerPage,
-          name: 'PeoplePicker',
+          component: PickersPage,
+          key: 'Pickers',
+          name: 'Pickers',
           status: ExampleStatus.started,
-          url: '#/examples/peoplepicker'
+          url: '#/examples/pickers'
         },
         {
           component: PersonaPage,
+          key: 'Persona',
           name: 'Persona',
           status: ExampleStatus.beta,
           url: '#/examples/persona'
         },
         {
-          component: PersonaCardPage,
-          name: 'PersonaCard',
-          status: ExampleStatus.placeholder,
-          url: '#/examples/personacard'
-        },
-        {
           component: PivotPage,
+          key: 'Pivot',
           name: 'Pivot',
           status: ExampleStatus.started,
           url: '#/examples/pivot'
         },
         {
           component: ProgressIndicatorPage,
+          key: 'ProgressIndicator',
           name: 'ProgressIndicator',
           status: ExampleStatus.beta,
           url: '#/examples/progressindicator'
         },
         {
           component: SearchBoxPage,
+          key: 'SearchBox',
           name: 'SearchBox',
           status: ExampleStatus.started,
           url: '#/examples/searchbox'
         },
         {
           component: SpinnerPage,
+          key: 'Spinner',
           name: 'Spinner',
           status: ExampleStatus.beta,
           url: '#/examples/spinner'
         },
         {
+          component: TeachingBubblePage,
+          key: 'TeachingBubble',
+          name: 'TeachingBubble',
+          status: ExampleStatus.beta,
+          url: '#/examples/teachingbubble'
+        },
+        {
           component: TextFieldPage,
+          key: 'TextField',
           name: 'TextField',
           status: ExampleStatus.beta,
           url: '#/examples/textfield'
         },
         {
           component: TogglePage,
+          key: 'Toggle',
           name: 'Toggle',
           status: ExampleStatus.beta,
           url: '#/examples/toggle'
@@ -240,36 +272,42 @@ export const AppState: IAppState = {
       links: [
         {
           component: ColorPickerPage,
+          key: 'ColorPicker',
           name: 'ColorPicker',
           status: ExampleStatus.started,
           url: '#/examples/colorpicker'
         },
         {
           component: GroupedListPage,
+          key: 'GroupedList',
           name: 'GroupedList',
           status: ExampleStatus.started,
           url: '#examples/groupedlist'
         },
         {
           component: ImagePage,
+          key: 'Image',
           name: 'Image',
           status: ExampleStatus.beta,
           url: '#/examples/image'
         },
         {
           component: LayerPage,
+          key: 'Layer',
           name: 'Layer',
           status: ExampleStatus.beta,
           url: '#/examples/layer'
         },
         {
           component: NavPage,
+          key: 'Nav',
           name: 'Nav',
           status: ExampleStatus.started,
           url: '#/examples/nav'
         },
         {
           component: SliderPage,
+          key: 'Slider',
           name: 'Slider',
           status: ExampleStatus.beta,
           url: '#/examples/slider'
@@ -281,30 +319,35 @@ export const AppState: IAppState = {
       links: [
         {
           component: FocusTrapZonePage,
+          key: 'FocusTrapZone',
           name: 'FocusTrapZone',
           status: ExampleStatus.beta,
           url: '#examples/focustrapzone'
         },
         {
           component: FocusZonePage,
+          key: 'FocusZone',
           name: 'FocusZone',
           status: ExampleStatus.beta,
           url: '#examples/focuszone'
         },
         {
           component: MarqueeSelectionPage,
+          key: 'MarqueeSelection',
           name: 'MarqueeSelection',
           status: ExampleStatus.beta,
           url: '#examples/marqueeselection'
         },
         {
           component: SelectionPage,
+          key: 'Selection',
           name: 'Selection',
           status: ExampleStatus.beta,
           url: '#examples/selection'
         },
         {
           component: ThemePage,
+          key: 'Themes',
           name: 'Themes',
           url: '#examples/themes'
         }

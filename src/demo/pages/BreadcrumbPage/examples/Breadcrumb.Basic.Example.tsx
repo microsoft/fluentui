@@ -2,7 +2,7 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import {
-  Breadcrumb
+  Breadcrumb, IBreadcrumbItem
 } from '../../../../Breadcrumb';
 
 export class BreadcrumbBasicExample extends React.Component<any, any> {
@@ -26,8 +26,8 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
     );
   }
 
-  private _onBreadcrumbItemClicked(key: string) {
-    console.log(`Breadcrumb item with key "${ key }" has been clicked.`);
+  private _onBreadcrumbItemClicked(ev: React.MouseEvent, item: IBreadcrumbItem) {
+    console.log(`Breadcrumb item with key "${ item.key }" has been clicked.`);
   }
 
 }

@@ -14,8 +14,8 @@ describe('Breadcrumb', () => {
 
   it('can call the callback when an item is clicked', () => {
     let callbackValue;
-    const clickCallback = (key: string) => {
-      callbackValue = key;
+    const clickCallback = (ev: React.MouseEvent, item: IBreadcrumbItem) => {
+      callbackValue = item.key;
     };
 
     const items: IBreadcrumbItem[] = [

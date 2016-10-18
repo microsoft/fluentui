@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { BaseDecorator } from './BaseDecorator';
+import { findScrollableParent } from '../../utilities/scroll';
+import { getRect } from '../../utilities/dom';
 
 export interface IViewport {
   width: number;
@@ -71,9 +73,9 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
     private _updateViewport(withForceUpdate?: boolean) {
       let { viewport } = this.state;
       let viewportElement = (this.refs as any).root;
-      let scrollElement = this._findScrollableElement(viewportElement);
-      let clientRect = viewportElement.getBoundingClientRect();
-      let scrollRect = scrollElement.getBoundingClientRect();
+      let scrollElement = findScrollableParent(viewportElement);
+      let scrollRect = getRect(scrollElement);
+      let clientRect = getRect(viewportElement);
       let updateComponent = () => {
         if (withForceUpdate && this._composedComponentInstance) {
           this._composedComponentInstance.forceUpdate();
@@ -94,24 +96,6 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
       } else {
         updateComponent();
       }
-    }
-
-    private _findScrollableElement(rootElement: HTMLElement) {
-      let computedOverflow = getComputedStyle(rootElement)['overflow-y'];
-
-      while (
-        (rootElement !== document.body) &&
-        (computedOverflow !== 'auto') &&
-        (computedOverflow !== 'scroll')
-      ) {
-        if (rootElement.parentElement === null) {
-          break;
-        }
-        rootElement = rootElement.parentElement;
-        computedOverflow = getComputedStyle(rootElement)['overflow-y'];
-      }
-
-      return rootElement;
     }
   };
 }

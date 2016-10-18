@@ -1,24 +1,44 @@
 import * as React from 'react';
 import {
-   Link
-} from '../../../index';
-import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
 } from '../../components/index';
 
-import { ButtonBasicExample } from './examples/Button.Basic.Example';
+import { Checkbox } from '../../../index';
+
+import { ButtonNormalExample } from './examples/Button.Normal.Example';
+import { ButtonPrimaryExample } from './examples/Button.Primary.Example';
+import { ButtonHeroExample } from './examples/Button.Hero.Example';
+import { ButtonCompoundExample } from './examples/Button.Compound.Example';
+import { ButtonCommandExample } from './examples/Button.Command.Example';
+import { ButtonIconExample } from './examples/Button.Icon.Example';
+import { ButtonAnchorExample } from './examples/Button.Anchor.Example';
+import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
-const ButtonBasicExampleCode = require('./examples/Button.Basic.Example.tsx');
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
+import { IButtonDemoPageState } from './examples/IButtonDemoPageState';
+import './examples/Button.Basic.Example.scss';
 
-export class ButtonPage extends React.Component<any, any> {
+const ButtonNormalExampleCode = require('./examples/Button.Normal.Example.tsx');
+const ButtonPrimaryExampleCode = require('./examples/Button.Primary.Example.tsx');
+const ButtonHeroExampleCode = require('./examples/Button.Hero.Example.tsx');
+const ButtonCompoundExampleCode = require('./examples/Button.Compound.Example.tsx');
+const ButtonCommandExampleCode = require('./examples/Button.Command.Example.tsx');
+const ButtonIconExampleCode = require('./examples/Button.Icon.Example.tsx');
+const ButtonAnchorExampleCode = require('./examples/Button.Icon.Example.tsx');
+const ButtonScreenReaderExampleCode = require('./examples/Button.ScreenReader.Example.tsx');
+
+export class ButtonPage extends React.Component<IComponentDemoPageProps, IButtonDemoPageState> {
   private _url: string;
 
   constructor() {
     super();
-    this._url =  getPageRouteFromState(AppState, 'Basic components', 'Button');
+    this.state = {
+      areButtonsDisabled: false
+    };
+    this._url = getPageRouteFromState(AppState, 'Basic components', 'Button');
   }
 
   public render() {
@@ -27,24 +47,49 @@ export class ButtonPage extends React.Component<any, any> {
         title='Button'
         componentName='ButtonExample'
         exampleCards={
-          [
-            <ExampleCard
-              title='Various button types'
-              code={ ButtonBasicExampleCode }>
-              <ButtonBasicExample />
+          <div>
+            <Checkbox label='Disable buttons' checked={ this.state.areButtonsDisabled } onChange={ this._onDisabledChanged.bind(this) } />
+            <ExampleCard title='Normal Button' code={ ButtonNormalExampleCode }>
+              <ButtonNormalExample isDisabled={ this.state.areButtonsDisabled } />
             </ExampleCard>
-          ]
+            <ExampleCard title='Primary Button' code={ ButtonPrimaryExampleCode }>
+              <ButtonPrimaryExample isDisabled={ this.state.areButtonsDisabled } />
+            </ExampleCard>
+            <ExampleCard title='Hero Button' code={ ButtonHeroExampleCode }>
+              <ButtonHeroExample isDisabled={ this.state.areButtonsDisabled } />
+            </ExampleCard>
+            <ExampleCard title='Compound Button' code={ ButtonCompoundExampleCode }>
+              <ButtonCompoundExample isDisabled={ this.state.areButtonsDisabled } />
+            </ExampleCard>
+            <ExampleCard title='Command Button' code={ ButtonCommandExampleCode }>
+              <ButtonCommandExample isDisabled={ this.state.areButtonsDisabled } />
+            </ExampleCard>
+            <ExampleCard title='Icon Button' code={ ButtonIconExampleCode }>
+              <ButtonIconExample isDisabled={ this.state.areButtonsDisabled } />
+            </ExampleCard>
+            <ExampleCard title='Button Like Anchor' code={ ButtonAnchorExampleCode }>
+              <ButtonAnchorExample isDisabled={ this.state.areButtonsDisabled } />
+            </ExampleCard>
+            <ExampleCard title='Button with Aria Description for Screen Reader' code={ ButtonScreenReaderExampleCode }>
+              <ButtonScreenReaderExample isDisabled={ this.state.areButtonsDisabled } />
+            </ExampleCard>
+          </div>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='Button' />,
+          <div>
+            <PropertiesTableSet componentName='Button' />
             <p>Besides the above properties, the <code>Button</code> component accepts all properties that the React <code>button</code> and <code>a</code> components accept.</p>
-          ]
+          </div>
         }
         overview={
           <div>
-            <span>Buttons are best used to enable a user to commit a change or complete steps in a task. They are typically found inside forms, dialogs, panels or pages. An example of their usage is confirming the deletion of a file in a confirmation dialog. When considering their place in a layout, contemplate the order in which a user will flow through the UI. As an example, in a form, the individual will need to read and interact with the form fields before submiting the form. Therefore, as a general rule, the button should be placed at the bottom of the UI container (a dialog, panel, or page) which holds the related UI elements. While buttons can technically be used to navigate a user to another part of the experience, this is not recommended - unless that navigation is part of an action or their flow.</span> View <Link target='_blank' href='http://dev.office.com/fabric/components/button'>Buttons</Link> on our website.
+            <p>Buttons are best used to enable a user to commit a change or complete steps in a task. They are typically found inside forms, dialogs, panels or pages. An example of their usage is confirming the deletion of a file in a confirmation dialog.</p>
+            <p>When considering their place in a layout, contemplate the order in which a user will flow through the UI. As an example, in a form, the individual will need to read and interact with the form fields before submiting the form. Therefore, as a general rule, the button should be placed at the bottom of the UI container (a dialog, panel, or page) which holds the related UI elements.</p>
+            <p>While buttons can technically be used to navigate a user to another part of the experience, this is not recommended unless that navigation is part of an action or their flow.</p>
           </div>
+        }
+        related={
+          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Button.md'>Fabric JS</a>
         }
         bestPractices={
           <div></div>
@@ -77,9 +122,15 @@ export class ButtonPage extends React.Component<any, any> {
             </ul>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }
 
+  private _onDisabledChanged(ev: React.MouseEvent, isDisabled: boolean) {
+    this.setState({
+      areButtonsDisabled: isDisabled
+    });
+  }
 }

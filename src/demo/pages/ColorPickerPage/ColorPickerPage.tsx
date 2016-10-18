@@ -8,10 +8,11 @@ import {
 import { ColorPickerBasicExample } from './examples/ColorPicker.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const ColorPickerBasicExampleCode = require('./examples/ColorPicker.Basic.Example.tsx');
 
-export class ColorPickerPage extends React.Component<any, any> {
+export class ColorPickerPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -25,23 +26,20 @@ export class ColorPickerPage extends React.Component<any, any> {
         title='ColorPicker'
         componentName='ColorPickerExample'
         exampleCards={
-          [
-            <ExampleCard
-              title='ColorPicker'
-              code={ ColorPickerBasicExampleCode }>
-              <ColorPickerBasicExample />
-            </ExampleCard>
-          ]
+          <ExampleCard
+            title='ColorPicker'
+            code={ ColorPickerBasicExampleCode }>
+            <ColorPickerBasicExample />
+          </ExampleCard>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='ColorPicker' />
-          ]
+          <PropertiesTableSet componentName='ColorPicker' />
         }
         overview={
           <div>ColorPicker is used to allow a user to select a color</div>
         }
-        route={ this._url }>
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }

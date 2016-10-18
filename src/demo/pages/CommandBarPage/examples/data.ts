@@ -5,11 +5,13 @@ export const items = [
     icon: 'Add',
     ariaLabel: 'New. Use left and right arrow keys to navigate',
     onClick: () => { return; },
+    ['data-automation-id']: 'newItemMenu',
     items: [
       {
         key: 'emailMessage',
         name: 'Email message',
-        icon: 'Mail'
+        icon: 'Mail',
+        ['data-automation-id']: 'newEmailButton'
       },
       {
         key: 'calendarEvent',
@@ -22,7 +24,8 @@ export const items = [
     key: 'upload',
     name: 'Upload',
     icon: 'Upload',
-    onClick: () => { return; }
+    onClick: () => { return; },
+    ['data-automation-id']: 'uploadButton'
   },
   {
     key: 'share',

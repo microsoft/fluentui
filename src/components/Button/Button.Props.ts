@@ -1,7 +1,14 @@
 import * as React from 'react';
 import { Button } from './Button';
 
-export interface IButtonProps extends React.Props<Button> {
+export interface IButton {
+  /**
+   * Focuses the button.
+   */
+  focus();
+}
+
+export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAnchorElement | Button> {
   /**
    * If provided, this component will be rendered as an anchor.
    * @default ElementType.anchor
@@ -53,12 +60,9 @@ export interface IButtonProps extends React.Props<Button> {
   ariaDescription?: string;
 
   /**
-   * If provided, HTMLProps which will be mixed in onto the root element emitted by this component, before
-   * other props are applied. This allows you to extend the root element with additional attributes, such as
-   * data-automation-id needed for automation.
-   *
-   * The root element will either be a button or an anchor, depending on what value is specified for
-   * the elementType prop.
+   * @deprecated
+   * Deprecated at v0.56.2, to be removed at >= v1.0.0. Just pass in button props instead;
+   * they will be mixed into the button/anchor element rendered by the component.
    */
   rootProps?: React.HTMLProps<HTMLButtonElement> | React.HTMLProps<HTMLAnchorElement>;
 }

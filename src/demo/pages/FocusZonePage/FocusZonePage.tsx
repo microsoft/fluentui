@@ -10,12 +10,13 @@ import { FocusZoneListExample } from './examples/FocusZone.List.Example';
 import { FocusZoneDisabledExample } from './examples/FocusZone.Disabled.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const FocusZonePhotosExampleCode = require('./examples/FocusZone.Photos.Example.tsx');
 const FocusZoneListExampleCode = require('./examples/FocusZone.List.Example.tsx');
 const FocusZoneDisabledExampleCode = require('./examples/FocusZone.Disabled.Example.tsx');
 
-export class FocusZonePage extends React.Component<any, any> {
+export class FocusZonePage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -29,22 +30,20 @@ export class FocusZonePage extends React.Component<any, any> {
         title='FocusZone'
         componentName='FocusZoneExample'
         exampleCards={
-          [
+          <div>
             <ExampleCard title='Non-uniform photos within bidirectional FocusZone' code={ FocusZonePhotosExampleCode }>
               <FocusZonePhotosExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Nesting FocusZones in list rows' code={ FocusZoneListExampleCode }>
               <FocusZoneListExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Disabled FocusZone' code={ FocusZoneDisabledExampleCode }>
               <FocusZoneDisabledExample />
             </ExampleCard>
-          ]
+          </div>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='FocusZone' />
-          ]
+          <PropertiesTableSet componentName='FocusZone' />
         }
         overview={
           <div>
@@ -53,7 +52,8 @@ export class FocusZonePage extends React.Component<any, any> {
             <p>Using a FocusZone is simple. Just wrap a bunch of content inside of a FocusZone, and arrows and tabbling will be handled for you! See examples below.</p>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }

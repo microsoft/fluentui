@@ -1,8 +1,5 @@
 import * as React from 'react';
 import {
-  Link
-} from '../../../index';
-import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
@@ -10,10 +7,11 @@ import {
 import { BreadcrumbBasicExample } from './examples/Breadcrumb.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
+import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const BreadcrumbBasicExampleCode = require('./examples/Breadcrumb.Basic.Example.tsx');
 
-export class BreadcrumbPage extends React.Component<any, any> {
+export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -27,23 +25,23 @@ export class BreadcrumbPage extends React.Component<any, any> {
         title='Breadcrumb'
         componentName='BreadcrumbExample'
         exampleCards={
-          [
-            <ExampleCard
-              title='Simple breadcrumb'
-              code={ BreadcrumbBasicExampleCode }>
-              <BreadcrumbBasicExample />
-            </ExampleCard>
-          ]
+          <ExampleCard
+            title='Simple breadcrumb'
+            code={ BreadcrumbBasicExampleCode }>
+            <BreadcrumbBasicExample />
+          </ExampleCard>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='Breadcrumb' />
-          ]
+          <PropertiesTableSet componentName='Breadcrumb' />
         }
         overview={
           <div>
-            <span>Breadcrumbs should be used as a navigational aid in your app or site. They indicate the current page’s location within a hierarchy and help the user understand where they are in relation to the rest of that hierarchy. They also afford one-click access to higher levels of that hierarchy. Breadcrumbs are typically placed, in horizontal form, under the masthead or navigation of an experience, above the primary content area.</span> View <Link target='_blank' href='http://dev.office.com/fabric/components/breadcrumb'>Breadcrumbs</Link> on our website.
+            <p>Breadcrumbs should be used as a navigational aid in your app or site. They indicate the current page’s location within a hierarchy and help the user understand where they are in relation to the rest of that hierarchy. They also afford one-click access to higher levels of that hierarchy.</p>
+            <p>Breadcrumbs are typically placed, in horizontal form, under the masthead or navigation of an experience, above the primary content area.</p>
           </div>
+        }
+        related={
+          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Breadcrumb.md'>Fabric JS</a>
         }
         bestPractices={
           <div></div>
@@ -62,7 +60,8 @@ export class BreadcrumbPage extends React.Component<any, any> {
             </ul>
           </div>
         }
-        route={ this._url }>
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }
