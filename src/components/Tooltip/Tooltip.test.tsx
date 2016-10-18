@@ -7,16 +7,16 @@ import * as ReactTestUtils from 'react-addons-test-utils';
 
 let { expect } = chai;
 
-import { TooltipContent } from './index';
+import { Tooltip } from './index';
 
 describe('Tooltip', () => {
 
   // <Layer> components will lead ReactDOM.findDOMNode(test_component) return null, so the test is based on the teaching bubble content.
   it('renders a label', () => {
     let component = ReactTestUtils.renderIntoDocument(
-      <TooltipContent>
+      <Tooltip>
         Foo
-      </TooltipContent>
+      </Tooltip>
     );
     let renderedDOM = ReactDOM.findDOMNode(component);
     let contentElement = renderedDOM.querySelector('.ms-Tooltip-subText');

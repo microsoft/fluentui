@@ -2,7 +2,6 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent } from '../../common/BaseComponent';
-import { TooltipContent } from './TooltipContent';
 import { ITooltipProps } from './Tooltip.Props';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -31,16 +30,29 @@ export class Tooltip extends BaseComponent<ITooltipProps, ITooltipState> {
 
   public render() {
     let { calloutProps, targetElement } = this.props;
+    let bodyContent;
+
+    if (this.props.children) {
+      bodyContent = (
+        <div className='ms-Tooltip-body'>
+          <p className='ms-Tooltip-subText'>
+            { this.props.children }
+          </p>
+        </div>
+      );
+    }
 
     return (
         <Callout
-          beakWidth= {14}
+          beakWidth={ 14 }
           className='ms-Tooltip'
           ref={this._resolveRef('_callout')}
           targetElement={ targetElement }
           {...calloutProps}
         >
-          <TooltipContent { ...this.props }/>
+          <div className='ms-Tooltip-content'>
+              { bodyContent }
+          </div>
         </Callout>
     );
   }
