@@ -178,6 +178,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           suggestionsLoading: true
         }), 500);
       }
+
+      this.setState({
+        suggestionsVisible: this.input.value !== '' && this.input.inputElement === document.activeElement
+      });
       // Ensure that the promise will only use the callback if it was the most recent one.
       let promise: PromiseLike<void> = this.currentPromise = suggestionsPromiseLike.then((newSuggestions: T[]) => {
         if (promise === this.currentPromise) {
