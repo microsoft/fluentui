@@ -147,7 +147,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
   }
 
   private _renderDropdownOption(item: IDropdownOption): JSX.Element {
-    if(item.onRender) {
+    if (item.onRender) {
       return item.onRender(item);
     }
 
