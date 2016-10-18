@@ -58,4 +58,9 @@ export interface IDropdownOption {
    * Whether this option is currently selected.
    */
   isSelected?: boolean;
+
+  /**
+   * Optional custom renderer for the dropdown item
+   */
+  onRender?: (item: IDropdownOption) => JSX.Element;
 }
