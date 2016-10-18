@@ -36,6 +36,10 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
     this._getMoreResults = this._getMoreResults.bind(this);
   }
 
+  public componentDidUpdate() {
+    this.scrollSelected();
+  }
+
   public render() {
     let {
       suggestionsHeaderText,
