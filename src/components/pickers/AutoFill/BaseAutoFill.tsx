@@ -97,7 +97,6 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
           'autoComplete': 'off',
           'onChange': this._onChange,
           'onKeyDown': this._onKeyDown,
-          'onBlur': this._onBlur,
           'aria-activedescendant': ariaActiveDescendant,
           'aria-owns': ariaOwns,
           'aria-expanded': ariaExpanded,
@@ -121,14 +120,6 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
         this._onBackspace(ev);
         break;
     }
-  }
-
-  @autobind
-  private _onBlur(ev: React.FocusEvent) {
-    // This should not send out another onChange event.
-    this.setState({
-      value: this.props.suggestedDisplayValue
-    });
   }
 
   private _onBackspace(ev: React.KeyboardEvent) {

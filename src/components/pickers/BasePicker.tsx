@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { FocusZone } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
-import { KeyCodes } from '../../utilities/KeyCodes';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
 import { Suggestions } from './Suggestions/Suggestions';
 import { ISuggestionsProps } from './Suggestions/Suggestions.Props';
@@ -10,8 +9,11 @@ import { IBasePickerProps } from './BasePicker.Props';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 import { IPickerItemProps } from './PickerItem.Props';
 import { BaseComponent } from '../../common/BaseComponent';
-import { css } from '../../utilities/css';
-import { autobind } from '../../utilities/autobind';
+import {
+  css,
+  autobind,
+  KeyCodes
+} from '../../Utilities';
 import './BasePicker.scss';
 
 export interface IBasePickerState {
@@ -90,12 +92,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
               onFocus={ this.onInputFocus }
               onInputValueChange={ this.onInputChange }
               suggestedDisplayValue={ suggestedDisplayValue }
-              aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
-              aria-owns='suggestion-list'
-              aria-expanded='true'
-              aria-haspopup='true'
-              autoCapitalize='off'
-              autoComplete='off'/>
+              ariaActiveDescendant={ 'sug-' + this.suggestionStore.currentIndex }
+              ariaOwns='suggestion-list'
+              ariaExpanded='true'
+              ariaHasPopup='true'/>
           </FocusZone>
         </SelectionZone>
         { this.renderSuggestions() }
