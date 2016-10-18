@@ -8,6 +8,16 @@ export interface IFacepileProps extends React.Props<Facepile> {
    * is fixed at PersonaSize.extraSmall regardless of what is specified.
    */
   personas: IFacepilePersona[];
+
+  /** Width available to show personas, names, and other data in. */
+  availableWidth?: number;
+
+  /** Show add person button */
+  showAddButton?: boolean;
+
+  addUserIconColor?: PersonaInitialsColor;
+
+  overflowIconColor?: PersonaInitialsColor;
 }
 
 export interface IFacepilePersona {

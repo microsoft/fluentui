@@ -6,11 +6,15 @@ import {
 } from '../../components/index';
 
 import { FacepileBasicExample } from './examples/Facepile.Basic.Example';
+import { FacepileAddFaceExample } from './examples/Facepile.AddFace.Example';
+import { FacepileOverflowExample } from './examples/Facepile.Overflow.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const FacepileBasicExampleCode = require('./examples/Facepile.Basic.Example.tsx');
+const FacepileOverflowExampleCode = require('./examples/Facepile.Overflow.Example.tsx');
+const FacepileAddFaceExampleCode = require('./examples/Facepile.AddFace.Example.tsx');
 
 export class FacepilePage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -26,9 +30,17 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, any> 
         title='Facepile'
         componentName='FacepileExample'
         exampleCards={
-          <ExampleCard title='Facepile' code={ FacepileBasicExampleCode }>
-            <FacepileBasicExample />
-          </ExampleCard>
+          <div>
+            <ExampleCard title='Facepile' code={FacepileBasicExampleCode}>
+              <FacepileBasicExample />
+            </ExampleCard>
+            <ExampleCard title='Facepile with Overflow' code={FacepileOverflowExampleCode}>
+              <FacepileOverflowExample />
+            </ExampleCard>
+            <ExampleCard title='Facepile with Add Face' code={FacepileAddFaceExampleCode}>
+              <FacepileAddFaceExample />
+            </ExampleCard>
+          </div>
         }
         propertiesTables={
           <PropertiesTableSet componentName='Facepile' />
@@ -92,8 +104,8 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, any> 
         related={
           <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/FacePile.md'>Fabric JS</a>
         }
-        route={ this._url }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        route={this._url}
+        isHeaderVisible={this.props.isHeaderVisible}>
       </ComponentPage>
     );
   }
