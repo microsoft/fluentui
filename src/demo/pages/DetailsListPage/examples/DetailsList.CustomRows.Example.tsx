@@ -23,7 +23,6 @@ export class DetailsListCustomRowsExample extends React.Component<any, any> {
     return (
       <DetailsList
         items={ _items }
-        initialFocusedIndex={ 0 }
         setKey='set'
         onRenderRow={ this._onRenderRow }
         />

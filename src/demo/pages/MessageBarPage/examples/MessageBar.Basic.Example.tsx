@@ -20,6 +20,9 @@ export const MessageBarBasicExample = () => (
           messageBarType={ MessageBarType.error }
           onDismiss={ () => { console.log('test'); } }>
           Error - lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.</MessageBar>
+          <p>
+            Add a close box when the user can safely dismiss the message. They’ll want to do this to reclaim space or if they feel too disrupted.
+          </p>
 
         <Label>Blocked MessageBar - single line</Label>
         <MessageBar messageBarType={ MessageBarType.blocked }

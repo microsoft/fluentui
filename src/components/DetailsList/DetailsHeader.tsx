@@ -149,6 +149,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                   aria-label={ column.ariaLabel || column.name }
                   aria-sort={ column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none' }
                   data-automationid='ColumnsHeaderColumn'
+                  data-item-key={ column.key }
                   >
 
                   { column.isFiltered && (
