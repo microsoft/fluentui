@@ -1,6 +1,8 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
+import { BaseComponent } from '../../../../common/BaseComponent';
+
 
 import {
   Tooltip,
@@ -8,46 +10,44 @@ import {
 } from '../../../../index';
 
 export interface ITooltipBasicExampleState {
-  isTooltipVisible?: boolean;
+  stateBeenSet?: boolean;
 }
 
-export class TooltipBasicExample extends React.Component<any, ITooltipBasicExampleState> {
-  private _menuButtonElement: HTMLElement;
+export class TooltipBasicExample extends BaseComponent<any, ITooltipBasicExampleState> {
 
+  private _menuButtonElement: HTMLElement;
   public constructor() {
     super();
 
-    this._onDismiss = this._onDismiss.bind(this);
-
     this.state = {
-      isTooltipVisible: false,
-    };
+      stateBeenSet: false
+    }
+  }
+
+  public componentDidMount() {
+    this.setState({
+      stateBeenSet: true
+    });
   }
 
   public render() {
-    let { isTooltipVisible } = this.state;
-
     return (
       <div className='ms-TooltipExample'>
-        <span className='ms-TooltipBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
-          <Button onClick={ this._onDismiss } >{ isTooltipVisible ? 'Hide Tooltip' : 'Show Tooltip' }</Button>
-        </span>
-        { isTooltipVisible ? (
+        <div className='ms-TooltipBasicExample-buttonArea' ref={ this._resolveRef('_menuButtonElement') }>
+          <Button >{ 'Show Tooltip' }</Button>
+        </div>
           <div>
+          { this.state.stateBeenSet && (
             <Tooltip
+              tooltipContent= 'Files > Pictures > Colors Folder > Blue'
               targetElement={ this._menuButtonElement }
             >
-              Files > Pictures > Colors Folder > Blue
             </Tooltip>
+          ) }
           </div>
-        ) : (null) }
       </div>
     );
   }
-
-  private _onDismiss(ev: any) {
-    this.setState({
-      isTooltipVisible: !this.state.isTooltipVisible
-    });
-  }
 }
+
+
