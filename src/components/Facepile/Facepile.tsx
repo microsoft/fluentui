@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { css } from '../../utilities/css';
 import { IFacepileProps, IFacepilePersona } from './Facepile.Props';
-import { Persona, PersonaInitialsColor, PersonaSize } from '../../Persona';
-import {
-  PERSONA_INITIALS_COLOR
-} from '../../components/persona/PersonaConsts';
-
+import { Persona,
+  PERSONA_INITIALS_COLOR,
+  PersonaInitialsColor,
+  PersonaSize
+} from '../../Persona';
 import './Facepile.scss';
 
 export class Facepile extends React.Component<IFacepileProps, {}> {
