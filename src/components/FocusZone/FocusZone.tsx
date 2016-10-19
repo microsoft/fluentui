@@ -355,6 +355,12 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       return;
     }
 
+    if (this._isElementInput(element)) {
+      if (!this._shouldInputLoseFocus(element as HTMLInputElement, isForward)) {
+        return false;
+      }
+    }
+
     const activeRect = isBidirectional ? this._activeElement.getBoundingClientRect() : null;
 
     do {
@@ -573,6 +579,33 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       }
     }
 
+  }
+
+  private _isElementInput(element?: HTMLElement): boolean {
+    if (element.tagName && element.tagName.toLowerCase() === 'input') {
+      return true;
+    }
+  }
+
+  private _shouldInputLoseFocus(element: HTMLInputElement, isForward?: boolean) {
+      let selectionStart = element.selectionStart;
+      let selectionEnd = element.selectionEnd;
+      // This means that the input has text selected and we shouldn't lose focus.
+      if (selectionStart !== selectionEnd) {
+        return false;
+      } else {
+        let inputValue = element.value;
+
+        if (element) {
+          if (selectionStart === 0 && !isForward) {
+            return true;
+          } else if (selectionStart === inputValue.length && isForward) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+      }
   }
 
 }
