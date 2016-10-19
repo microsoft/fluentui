@@ -1,3 +1,4 @@
+import { IRenderFunction } from "../../common/IRenderFunction";
 export interface IDropdownProps {
   /**
    * Descriptive label for the Dropdown
@@ -27,8 +28,7 @@ export interface IDropdownProps {
   /**
    * Optional custom renderer for the dropdown item
    */
-  onRenderItem?: (item: IDropdownOption) => JSX.Element;
-
+  onRenderItem?: IRenderFunction<IDropdownOption>;
   /**
    * Whether or not the Dropdown is disabled.
    */

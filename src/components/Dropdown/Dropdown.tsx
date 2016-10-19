@@ -147,11 +147,15 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
   }
 
   private _renderDropdownOption(item: IDropdownOption): JSX.Element {
+    let defaultRenderer = (item: IDropdownOption): JSX.Element => {
+      return <span>{item.text}</span>;
+    };
+
     if (this.props.onRenderItem) {
-      return this.props.onRenderItem(item);
+      return this.props.onRenderItem(item, defaultRenderer);
     }
 
-    return (<span>{item.text}</span>);
+    return defaultRenderer(item);
   }
 
   private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number) {
