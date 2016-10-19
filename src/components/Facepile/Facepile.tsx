@@ -17,19 +17,21 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   };
 
   public render(): JSX.Element {
-    return <div className='ms-Facepile'>
-      <div className='ms-Facepile-members'>
-        {this.props.showAddButton ? this._getAddNewElement() : null}
-        {
-          this._getPersonasToDisplay(this.props.personas).map((persona: IFacepilePersona, index: number) => {
-            const personaControl: JSX.Element = this._getPersonaControl(persona);
-            return persona.onClick ?
-              this._getElementWithOnClickEvent(personaControl, persona, index) :
-              this._getElementWithoutOnClickEvent(personaControl, persona, index);
-          })
-        }
+    return (
+      <div className='ms-Facepile'>
+        <div className='ms-Facepile-members'>
+          {this.props.showAddButton ? this._getAddNewElement() : null}
+          {
+            this._getPersonasToDisplay(this.props.personas).map((persona: IFacepilePersona, index: number) => {
+              const personaControl: JSX.Element = this._getPersonaControl(persona);
+              return persona.onClick ?
+                this._getElementWithOnClickEvent(personaControl, persona, index) :
+                this._getElementWithoutOnClickEvent(personaControl, persona, index);
+            })
+          }
+        </div>
       </div>
-    </div>;
+    );
   }
 
   private _getPersonasToDisplay(personas: IFacepilePersona[]): IFacepilePersona[] {
@@ -46,7 +48,6 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   private _addNumberNotPictured(numPersonasToShow: number, hasPersonasNotPictured: boolean, numPersonasNotPictured: number, personasToShow: IFacepilePersona[]): void {
     if (hasPersonasNotPictured) {
       personasToShow.push({
-        imageUrl: null,
         imageInitials: '+' + numPersonasNotPictured,
         initialsColor: PersonaInitialsColor.black,
         personaName: this.props.personas.slice(numPersonasToShow).map((persona: IFacepilePersona, index: number) => {
@@ -74,44 +75,43 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
 
   private _getPersonaControl(persona: IFacepilePersona): JSX.Element {
     let personalDetailsHidden: boolean = this.props.personas.length > 1;
-    return <Persona
-      imageInitials={persona.imageInitials}
-      imageUrl={persona.imageUrl}
-      initialsColor={persona.initialsColor}
-      primaryText={persona.personaName}
-      size={PersonaSize.extraSmall}
-      hidePersonaDetails={personalDetailsHidden}
-      />;
+    return  <Persona
+              imageInitials={ persona.imageInitials }
+              imageUrl={ persona.imageUrl }
+              initialsColor={ persona.initialsColor }
+              primaryText={ persona.personaName }
+              size={ PersonaSize.extraSmall }
+              hidePersonaDetails={ personalDetailsHidden } />;
   }
 
   private _getElementWithOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
-    return <button
-      className='ms-Facepile-itemBtn ms-Facepile-itemBtn--member'
-      title={persona.personaName}
-      key={index}
-      onClick={this._onPersonaClick.bind(this, persona)}
-      onMouseMove={this._onPersonaMouseMove.bind(this, persona)}
-      onMouseOut={this._onPersonaMouseOut.bind(this, persona)}>
-      {personaControl}
-    </button>;
+    return  <button
+              className='ms-Facepile-itemBtn ms-Facepile-itemBtn--member'
+              title={ persona.personaName }
+              key={ index }
+              onClick={ this._onPersonaClick.bind(this, persona) }
+              onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
+              onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }>
+              { personaControl }
+            </button>;
   }
 
   private _getElementWithoutOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
-    return <div
-      className='ms-Facepile-itemBtn ms-Facepile-itemBtn--member'
-      title={persona.personaName}
-      key={index}
-      onMouseMove={this._onPersonaMouseMove.bind(this, persona)}
-      onMouseOut={this._onPersonaMouseOut.bind(this, persona)}>
-      {personaControl}
-    </div>;
+    return  <div
+              className='ms-Facepile-itemBtn ms-Facepile-itemBtn--member'
+              title={ persona.personaName }
+              key={ index }
+              onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
+              onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }>
+              { personaControl }
+            </div>;
   }
 
   private _getAddNewElement(): JSX.Element {
-    return <button className={css('ms-Facepile-itemBtn', 'ms-Persona-initials', PERSONA_INITIALS_COLOR[this.props.addUserIconColor])}
-      onMouseDown={this._onAddClick.bind(this)}>
-      <i className='ms-Icon msIcon ms-Icon--AddFriend' aria-hidden='true'></i>
-    </button>;
+    return  <button className={css('ms-Facepile-itemBtn', 'ms-Persona-initials', PERSONA_INITIALS_COLOR[this.props.addUserIconColor])}
+              onMouseDown={ this._onAddClick.bind(this) }>
+              <i className='ms-Icon msIcon ms-Icon--AddFriend' aria-hidden='true'></i>
+            </button>;
   }
 
   private _onAddClick(ev?: React.MouseEvent): void {

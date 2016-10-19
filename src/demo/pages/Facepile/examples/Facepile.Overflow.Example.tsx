@@ -29,7 +29,7 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
     facepileProps.maxDisplayablePersonas = maxDisplayablePersonas;
 
     return (
-      <div className='ms-FacePileBasicExample'>
+      <div>
         <Facepile {...facepileProps} />
         <Dropdown
           label='Max Personas Allowed:'

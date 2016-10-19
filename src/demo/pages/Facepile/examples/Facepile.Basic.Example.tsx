@@ -27,7 +27,7 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
     };
 
     return (
-      <div className='ms-FacePileBasicExample'>
+      <div>
         <Facepile {...facepileProps} />
         <Dropdown
           label='Number of Personas:'

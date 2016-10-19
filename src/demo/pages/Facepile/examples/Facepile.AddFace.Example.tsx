@@ -29,9 +29,7 @@ export class FacepileAddFaceExample extends React.Component<any, IFacepileAddFac
     };
 
     return (
-      <div className='ms-FacePileBasicExample' >
-        <Facepile {...facepileProps} />
-      </div >
+      <Facepile {...facepileProps} />
     );
   }
 }
