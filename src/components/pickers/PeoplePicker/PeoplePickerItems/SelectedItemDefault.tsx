@@ -34,6 +34,7 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
         icon={ 'Cancel' }
         buttonType={ ButtonType.icon }
         className='ms-PickerItem-content'
+        data-is-focusable={ false }
         >
       </Button>
     </div >
