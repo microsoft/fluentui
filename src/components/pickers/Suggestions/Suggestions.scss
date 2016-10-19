@@ -55,3 +55,17 @@
     line-height: 30px;
   }
 }
+
+.ms-Suggestions-spinner {
+  margin: 5px;
+  text-align: center;
+  white-space: nowrap;
+  .ms-Spinner-circle {
+    display: inline-block;
+  }
+  .ms-Spinner-label {
+    display: inline-block;
+    margin: 0px 10px;
+    vertical-align: middle;
+  }
+}
