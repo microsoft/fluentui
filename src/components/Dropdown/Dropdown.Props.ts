@@ -25,6 +25,11 @@ export interface IDropdownProps {
   onChanged?: (option: IDropdownOption, index?: number) => void;
 
   /**
+   * Optional custom renderer for the dropdown item
+   */
+  onRenderItem?: (item: IDropdownOption) => JSX.Element;
+
+  /**
    * Whether or not the Dropdown is disabled.
    */
   disabled?: boolean;
@@ -58,9 +63,4 @@ export interface IDropdownOption {
    * Whether this option is currently selected.
    */
   isSelected?: boolean;
-
-  /**
-   * Optional custom renderer for the dropdown item
-   */
-  onRender?: (item: IDropdownOption) => JSX.Element;
 }
