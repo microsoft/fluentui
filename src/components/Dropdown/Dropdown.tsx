@@ -151,7 +151,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
       return item.onRender(item);
     }
 
-    return (<span>item.text</span>);
+    return (<span>{item.text}</span>);
   }
 
   private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number) {
