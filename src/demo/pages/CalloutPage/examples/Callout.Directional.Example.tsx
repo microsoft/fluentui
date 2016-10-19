@@ -15,6 +15,7 @@ export interface ICalloutDirectionalExampleState {
   directionalHint?: DirectionalHint;
   isBeakVisible?: boolean;
   gapSpace?: number;
+  beakWidth?: number;
 }
 
 const DIRECTION_OPTIONS = [
@@ -37,6 +38,7 @@ const DIRECTION_OPTIONS = [
 export class CalloutDirectionalExample extends React.Component<any, ICalloutDirectionalExampleState> {
   private _menuButtonElement: HTMLElement;
   private _gapSize: TextField;
+  private _beakWidth: TextField;
 
   public constructor() {
     super();
@@ -62,6 +64,11 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
         <div className='ms-CalloutExample-configArea'>
           <Checkbox label='Show beak' checked={ isBeakVisible } onChange={ this._onShowBeakChange } />
           <TextField ref={ (gapSize) => this._gapSize = gapSize } label='Gap Space' placeholder='Type in the gap space' />
+          {isBeakVisible &&
+            (<TextField
+            ref={ (beakWidth) => this._beakWidth = beakWidth }
+            label='Beak Width'
+            placeholder='Type in the beak width' />) }
           <Button onClick={ this._onChangeGapSizeClicked }>Submit</Button>
           <Dropdown
             label='Directional hint'
@@ -78,6 +85,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
             gapSpace={ gapSpace }
             targetElement={ this._menuButtonElement }
             isBeakVisible={ isBeakVisible }
+            beakWidth={ this.state.beakWidth }
             onDismiss={ this._onDismiss }
             directionalHint={ directionalHint }
             >
@@ -89,7 +97,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
             <div className='ms-CalloutExample-inner'>
               <div className='ms-CalloutExample-content'>
                 <p className='ms-CalloutExample-subText'>
-                  Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
+                  Message body is optional.If help documentation is available, consider adding a link to learn more at the bottom.
                 </p>
               </div>
             </div>
@@ -123,7 +131,8 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
 
   private _onChangeGapSizeClicked() {
     this.setState({
-      gapSpace: parseInt(this._gapSize.state.value, 10)
+      gapSpace: parseInt(this._gapSize.state.value, 10),
+      beakWidth: parseInt(this._beakWidth.state.value, 10)
     });
   }
 }
