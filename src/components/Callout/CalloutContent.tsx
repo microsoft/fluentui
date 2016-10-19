@@ -77,7 +77,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       left: positions && positions.beak ? positions.beak.left : BEAK_ORIGIN_POSITION.left,
       height: beakStyleWidth,
       width: beakStyleWidth
-    }
+    };
 
     let content = (
       <div ref={ this._resolveRef('_hostElement') } className={ 'ms-Callout-container' }>
