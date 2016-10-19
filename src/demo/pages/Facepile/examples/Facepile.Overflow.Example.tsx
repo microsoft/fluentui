@@ -2,51 +2,17 @@ import * as React from 'react';
 import {
   Dropdown,
   IDropdownOption,
-  Facepile,
   IFacepileProps,
-  PersonaInitialsColor
+  Facepile
 } from '../../../../index';
+import { facepilePersonas } from './FacepileExampleData';
 
 const facepileProps: IFacepileProps = {
-  personas: [
-    {
-      personaName: 'Greta Lundberg',
-      imageInitials: 'GL',
-      initialsColor: PersonaInitialsColor.green
-    },
-    {
-      personaName: 'Annie Lindqvist',
-      imageUrl: './images/persona-female.png'
-    },
-    {
-      personaName: 'Roko Kolar',
-      imageInitials: 'RK',
-      initialsColor: PersonaInitialsColor.purple
-    },
-    {
-      personaName: 'Greta Lundberg',
-      imageInitials: 'GL',
-      initialsColor: PersonaInitialsColor.lightBlue
-    },
-    {
-      personaName: 'Annie Lindqvist',
-      imageUrl: './images/persona-female.png'
-    },
-    {
-      personaName: 'Roko Kolar',
-      imageInitials: 'RK',
-      initialsColor: PersonaInitialsColor.purple
-    },
-    {
-      personaName: 'Greta Lundberg',
-      imageInitials: 'GL',
-      initialsColor: PersonaInitialsColor.green
-    }
-  ]
+  personas: facepilePersonas
 };
 
 export interface IFacepileOverflowExampleState {
-  widthAvailable: any;
+  maxDisplayablePersonas: any;
 }
 
 export class FacepileOverflowExample extends React.Component<any, IFacepileOverflowExampleState> {
@@ -54,31 +20,32 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
     super();
 
     this.state = {
-      widthAvailable: 120
+      maxDisplayablePersonas: 5
     };
   }
 
   public render() {
-    let { widthAvailable } = this.state;
-    facepileProps.availableWidth = widthAvailable;
+    let { maxDisplayablePersonas } = this.state;
+    facepileProps.maxDisplayablePersonas = maxDisplayablePersonas;
 
     return (
       <div className='ms-FacePileBasicExample'>
         <Facepile {...facepileProps} />
         <Dropdown
-          label='Width Available:'
+          label='Max Personas Allowed:'
           options={
             [
-              { key: 40, text: '40' },
-              { key: 80, text: '80' },
-              { key: 120, text: '120' },
-              { key: 150, text: '150' },
-              { key: 180, text: '180' },
-              { key: 210, text: '210' },
-              { key: 240, text: '240' },
+              { key: 1, text: '1' },
+              { key: 2, text: '2' },
+              { key: 3, text: '3' },
+              { key: 4, text: '4' },
+              { key: 5, text: '5' },
+              { key: 6, text: '6' },
+              { key: 7, text: '7' },
+              { key: 8, text: '8' }
             ]
           }
-          selectedKey={this.state.widthAvailable}
+          selectedKey={this.state.maxDisplayablePersonas}
           onChanged={this._onDropdownChanged.bind(this)}
           />
       </div>
@@ -87,7 +54,7 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
 
   private _onDropdownChanged(option: IDropdownOption) {
     this.setState({
-      widthAvailable: option.key
+      maxDisplayablePersonas: option.key
     });
   }
 }

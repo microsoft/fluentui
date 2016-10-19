@@ -3,15 +3,10 @@ import {
   Facepile,
   IFacepileProps
 } from '../../../../index';
-
-const facepileProps: IFacepileProps = {
-  personas: [],
-  showAddButton: true,
-  onClickAddButton: (ev) => alert('add user clicked')
-};
+import { facepilePersonas } from './FacepileExampleData';
 
 export interface IFacepileAddFaceExampleState {
-  props: IFacepileProps;
+  numberOfFaces: number;
 }
 
 export class FacepileAddFaceExample extends React.Component<any, IFacepileAddFaceExampleState> {
@@ -19,15 +14,24 @@ export class FacepileAddFaceExample extends React.Component<any, IFacepileAddFac
     super();
 
     this.state = {
-      props: facepileProps
+      numberOfFaces: 1
     };
   }
 
   public render() {
+    let { numberOfFaces } = this.state;
+    let facepileProps: IFacepileProps = {
+      personas: facepilePersonas.slice(0, numberOfFaces),
+      showAddButton: true,
+      onClickAddButton: (ev) => this.setState({
+        numberOfFaces: this.state.numberOfFaces + 1
+      })
+    };
+
     return (
-      <div className='ms-FacePileBasicExample'>
-        <Facepile {...this.state.props} />
-      </div>
+      <div className='ms-FacePileBasicExample' >
+        <Facepile {...facepileProps} />
+      </div >
     );
   }
 }
