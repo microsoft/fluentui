@@ -18,6 +18,8 @@ export interface IFacepileProps extends React.Props<Facepile> {
   addUserIconColor?: PersonaInitialsColor;
 
   overflowIconColor?: PersonaInitialsColor;
+
+  onClickAddButton?: (ev?: React.MouseEvent) => void;
 }
 
 export interface IFacepilePersona {

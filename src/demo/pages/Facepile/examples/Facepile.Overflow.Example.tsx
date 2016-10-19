@@ -3,7 +3,6 @@ import {
   Dropdown,
   IDropdownOption,
   Facepile,
-  IFacepilePersona,
   IFacepileProps,
   PersonaInitialsColor
 } from '../../../../index';

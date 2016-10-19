@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {
   Facepile,
-  IFacepileProps,
-  PersonaInitialsColor
+  IFacepileProps
 } from '../../../../index';
 
 const facepileProps: IFacepileProps = {
   personas: [],
-  showAddButton: true
+  showAddButton: true,
+  onClickAddButton: (ev) => alert('add user clicked')
 };
 
 export interface IFacepileAddFaceExampleState {
