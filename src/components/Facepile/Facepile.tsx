@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Persona, PersonaSize } from '../../Persona';
 import { IFacepileProps, IFacepilePersona } from './Facepile.Props';
 import './Facepile.scss';
+import { getNativeProps, buttonProperties, divProperties } from '../../utilities/properties';
 
 export class Facepile extends React.Component<IFacepileProps, {}> {
   public render(): JSX.Element {
@@ -38,7 +39,8 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
               key={ index }
               onClick={ this._onPersonaClick.bind(this, persona) }
               onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
-              onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }>
+              onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
+              { ...getNativeProps(persona, buttonProperties) }>
               { personaControl }
             </button>;
   }
@@ -49,7 +51,8 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
               title={ persona.personaName }
               key={ index }
               onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
-              onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }>
+              onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
+              { ...getNativeProps(persona, divProperties) }>
               { personaControl }
             </div>;
   }
