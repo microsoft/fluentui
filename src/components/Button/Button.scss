@@ -13,9 +13,9 @@ $button-commandButtonHeight: 40px;
   @include focus-border();
   @include ms-font-m;
   @include ms-u-normalize;
-  color: $ms-color-neutralPrimary;
-  background-color: $ms-color-neutralLighter;
-  border: 1px solid $ms-color-neutralLighter;
+  color: $inputForeground;
+  background-color: $inputBackground;
+  border: 1px solid $inputBackground;
   cursor: pointer;
   display: inline-block;
   height: 32px;
@@ -23,8 +23,8 @@ $button-commandButtonHeight: 40px;
   padding: 4px 20px 6px;
 
   &:hover {
-    background-color: $ms-color-neutralLight;
-    border-color: $ms-color-neutralLight;
+    background-color: $inputBackgroundHover;
+    border-color: $inputBackgroundHover;
 
     .ms-Button-label {
       color: $ms-color-black;
@@ -42,8 +42,8 @@ $button-commandButtonHeight: 40px;
   }
 
   &:focus {
-    background-color: $ms-color-neutralLight;
-    border-color: $ms-color-neutralLighter;
+    background-color: $inputBackgroundHover;
+    border-color: $inputBackgroundHover;
     outline: 1px solid transparent;
 
     .ms-Button-label {
@@ -52,22 +52,22 @@ $button-commandButtonHeight: 40px;
   }
 
   &:active {
-    background-color: $ms-color-themePrimary;
-    border-color: $ms-color-themePrimary;
+    background-color: $inputEmphasizedBackground;
+    border-color: $inputEmphasizedBackground;
 
     .ms-Button-label {
-      color: $ms-color-white;
+      color: $inputEmphasizedForeground;
     }
   }
 
   &:disabled,
   &.is-disabled {
-    background-color: $ms-color-neutralLighter;
-    border-color: $ms-color-neutralLighter;
+    background-color: $disabledBackgroundColor;
+    border-color: $disabledBackgroundColor;
     cursor: default;
 
     .ms-Button-label {
-      color: $ms-color-neutralTertiary;
+      color: $disabledForegroundColor;
     }
 
     &:hover,
@@ -101,35 +101,35 @@ $button-commandButtonHeight: 40px;
 //== Modifier: Primary action button
 //
 .ms-Button.ms-Button--primary {
-  background-color: $ms-color-themePrimary;
-  border-color: $ms-color-themePrimary;
+  background-color: $inputEmphasizedBackground;
+  border-color: $inputEmphasizedBackground;
 
   .ms-Button-label {
-    color: $ms-color-white;
+    color: $inputEmphasizedForeground;
   }
 
   &:hover {
-    background-color: $ms-color-themeDark;
-    border-color: $ms-color-themeDark;
+    background-color: $inputEmphasizedBackgroundHover;
+    border-color: $inputEmphasizedBackgroundHover;
   }
 
   &:focus {
-    background-color: $ms-color-themeDark;
-    border-color: $ms-color-themePrimary;
+    background-color: $inputEmphasizedBackgroundHover;
+    border-color: $inputEmphasizedBackground;
   }
 
   &:active {
-    background-color: $ms-color-themePrimary;
-    border-color: $ms-color-themePrimary;
+    background-color: $inputEmphasizedBackground;
+    border-color: $inputEmphasizedBackground;
   }
 
   &:disabled,
   &.is-disabled {
-    background-color: $ms-color-neutralLighter;
-    border-color: $ms-color-neutralLighter;
+    background-color: $disabledBackgroundColor;
+    border-color: $disabledBackgroundColor;
 
     .ms-Button-label {
-      color: $ms-color-neutralTertiary;
+      color: $disabledForegroundColor;
     }
   }
 }

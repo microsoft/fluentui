@@ -18,6 +18,9 @@ import {
 import { Callout } from '../../../index';
 import { ColorPicker } from '../../../components/ColorPicker/index';
 
+import { Button } from '../../../components/Button/Button';
+import { ButtonType } from '../../../components/Button/Button.Props';
+import { Toggle } from '../../../components/Toggle/Toggle';
 import { TeachingBubbleBasicExample } from '../TeachingBubblePage/examples/TeachingBubble.Basic.Example';
 import { TextFieldBasicExample } from '../TextFieldPage/examples/TextField.Basic.Example';
 import { ToggleBasicExample } from '../TogglePage/examples/Toggle.Basic.Example';
@@ -70,7 +73,31 @@ export class ThemerPage extends React.Component<any, any> {
         { this._exampleSection('Input Slots',
                                'These slots are used to theme simple input controls, such as buttons, text inputs, or toggle switches.',
                                inputSlots,
-                               [<ToggleBasicExample />]) }
+                               [<div>
+                                  <Toggle
+                                    defaultChecked={ true }
+                                    label=''
+                                    onText='On'
+                                    offText='Off' />
+                                  <Toggle
+                                    defaultChecked={ false }
+                                    label=''
+                                    onText='On'
+                                    offText='Off' />
+                                  <Toggle
+                                    defaultChecked={ true }
+                                    disabled={ true }
+                                    label=''
+                                    onText='Diabled on' />
+                                  <Toggle
+                                    defaultChecked={ false }
+                                    disabled={ true }
+                                    label=''
+                                    offText='Disabled off' />
+                                </div>,
+                                <Button>Default</Button>,
+                                <Button buttonType={ ButtonType.primary }>Primary</Button>,
+                                <Button disabled={ true }>Disabled</Button>]) }
 
         <h3>Presentation Slots</h3>
         { [this._semanticSlotWidget(SemanticSlot.NeutralBackground),
@@ -79,7 +106,7 @@ export class ThemerPage extends React.Component<any, any> {
            this._semanticSlotWidget(SemanticSlot.EmphasizedForeground)] }
 
         /** the shared popup color picker for semantic slots */
-        { colorPickerVisible && colorPickerSlot && colorPickerElement &&
+        { colorPickerVisible && colorPickerSlot !== null && colorPickerSlot !== undefined && colorPickerElement &&
           <Callout
             key={ colorPickerSlot }
             gapSpace={ 10 }
@@ -150,7 +177,7 @@ export class ThemerPage extends React.Component<any, any> {
   private _onSwatchClick(slot: SemanticSlot, ev: React.MouseEvent) {
     let { colorPickerSlot, colorPickerElement } = this.state;
 
-    if (!!colorPickerSlot && !!colorPickerElement && colorPickerSlot === slot && colorPickerElement === ev.target) { // same one, close it
+    if (colorPickerSlot !== null && colorPickerSlot !== undefined && !!colorPickerElement && colorPickerSlot === slot && colorPickerElement === ev.target) { // same one, close it
       this.setState({ colorPickerVisible: false, colorPickerSlot: null, colorPickerElement: null });
     } else { // new one, open it
       this.setState({ colorPickerVisible: true, colorPickerSlot: slot, colorPickerElement: ev.target });
