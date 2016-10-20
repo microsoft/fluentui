@@ -1,4 +1,4 @@
-import { IRenderFunction } from "../../common/IRenderFunction";
+import { IRenderFunction } from '../../common/IRenderFunction';
 export interface IDropdownProps {
   /**
    * Descriptive label for the Dropdown

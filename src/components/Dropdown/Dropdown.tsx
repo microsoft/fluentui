@@ -147,8 +147,8 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
   }
 
   private _renderDropdownOption(item: IDropdownOption): JSX.Element {
-    let defaultRenderer = (item: IDropdownOption): JSX.Element => {
-      return <span>{item.text}</span>;
+    let defaultRenderer = (defaultItem: IDropdownOption): JSX.Element => {
+      return <span>{defaultItem.text}</span>;
     };
 
     if (this.props.onRenderItem) {
