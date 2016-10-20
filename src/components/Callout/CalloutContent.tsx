@@ -72,7 +72,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       beakStyleWidth = 16;
     }
 
-    let beakReactstyle: React.CSSProperties = {
+    let beakReactStyle: React.CSSProperties = {
       top: positions && positions.beak ? positions.beak.top : BEAK_ORIGIN_POSITION.top,
       left: positions && positions.beak ? positions.beak.left : BEAK_ORIGIN_POSITION.left,
       height: beakStyleWidth,
@@ -88,7 +88,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
           >
           { isBeakVisible && targetElement ? (<div
             className={ 'ms-Callout-beak'  }
-            style={ beakReactstyle }
+            style={ beakReactStyle }
             />) : (null) }
           <div className='ms-Callout-beakCurtain' />
           <Popup

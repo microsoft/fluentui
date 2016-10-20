@@ -5,9 +5,10 @@ import {
   Button,
   DirectionalHint,
   Checkbox,
-  TextField,
   Dropdown,
-  IDropdownOption
+  IDropdownOption,
+  Slider,
+  autobind
 } from '../../../../index';
 
 export interface ICalloutDirectionalExampleState {
@@ -37,39 +38,37 @@ const DIRECTION_OPTIONS = [
 
 export class CalloutDirectionalExample extends React.Component<any, ICalloutDirectionalExampleState> {
   private _menuButtonElement: HTMLElement;
-  private _gapSize: TextField;
-  private _beakWidth: TextField;
-
   public constructor() {
     super();
-
-    this._onDismiss = this._onDismiss.bind(this);
-    this._onShowMenuClicked = this._onShowMenuClicked.bind(this);
-    this._onShowBeakChange = this._onShowBeakChange.bind(this);
-    this._onDirectionalChanged = this._onDirectionalChanged.bind(this);
-    this._onChangeGapSizeClicked = this._onChangeGapSizeClicked.bind(this);
 
     this.state = {
       isCalloutVisible: false,
       isBeakVisible: true,
-      directionalHint: DirectionalHint.bottomLeftEdge
+      directionalHint: DirectionalHint.bottomLeftEdge,
+      beakWidth: 10
     };
   }
 
   public render() {
-    let { isCalloutVisible, isBeakVisible, directionalHint, gapSpace } = this.state;
+    let { isCalloutVisible, isBeakVisible, directionalHint, gapSpace, beakWidth } = this.state;
     //  ms-Callout-smallbeak is used in this directional example to reflect all the positions. Large beak will disable some position to avoid beak over the callout edge.
     return (
       <div className='ms-CalloutExample'>
         <div className='ms-CalloutExample-configArea'>
           <Checkbox label='Show beak' checked={ isBeakVisible } onChange={ this._onShowBeakChange } />
-          <TextField ref={ (gapSize) => this._gapSize = gapSize } label='Gap Space' placeholder='Type in the gap space' />
-          {isBeakVisible &&
-            (<TextField
-            ref={ (beakWidth) => this._beakWidth = beakWidth }
+          <Slider
+            max={ 20 }
+            label='Gap Space'
+            min={ 0 }
+            defaultValue={ 0 }
+            onChange={ this._onGapSlider } />
+          { isBeakVisible &&
+            (<Slider
+            max={ 50 }
             label='Beak Width'
-            placeholder='Type in the beak width' />) }
-          <Button onClick={ this._onChangeGapSizeClicked }>Submit</Button>
+            min={ 10 }
+            defaultValue={ 10 }
+            onChange={ this._onBeakWidthSlider } />) }
           <Dropdown
             label='Directional hint'
             selectedKey={ DirectionalHint[directionalHint]}
@@ -85,8 +84,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
             gapSpace={ gapSpace }
             targetElement={ this._menuButtonElement }
             isBeakVisible={ isBeakVisible }
-            beakWidth={ this.state.beakWidth }
-            onDismiss={ this._onDismiss }
+            beakWidth={ beakWidth }
             directionalHint={ directionalHint }
             >
             <div className='ms-CalloutExample-header'>
@@ -97,7 +95,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
             <div className='ms-CalloutExample-inner'>
               <div className='ms-CalloutExample-content'>
                 <p className='ms-CalloutExample-subText'>
-                  Message body is optional.If help documentation is available, consider adding a link to learn more at the bottom.
+                  Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
                 </p>
               </div>
             </div>
@@ -107,32 +105,39 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
     );
   }
 
-  private _onDismiss() {
-    this.setState({ isCalloutVisible: false });
-  }
-
+  @autobind
   private _onShowMenuClicked() {
     this.setState({
       isCalloutVisible: !this.state.isCalloutVisible
     });
   }
 
+  @autobind
   private _onShowBeakChange(ev: React.FormEvent, isVisible: boolean) {
     this.setState({
-      isBeakVisible: isVisible
+      isBeakVisible: isVisible,
+      beakWidth: 10
     });
   }
 
+  @autobind
   private _onDirectionalChanged(option: IDropdownOption) {
     this.setState({
       directionalHint: DirectionalHint[option.key]
     });
   }
 
-  private _onChangeGapSizeClicked() {
+  @autobind
+  private _onGapSlider(value: number) {
     this.setState({
-      gapSpace: parseInt(this._gapSize.state.value, 10),
-      beakWidth: parseInt(this._beakWidth.state.value, 10)
+      gapSpace: value
+    });
+  }
+
+  @autobind
+  private _onBeakWidthSlider(value: number) {
+    this.setState({
+      beakWidth: value
     });
   }
 }
