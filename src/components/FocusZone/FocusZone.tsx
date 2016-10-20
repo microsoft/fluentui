@@ -581,13 +581,14 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
   }
 
-  private _isElementInput(element?: HTMLElement): boolean {
+  private _isElementInput(element: HTMLElement): boolean {
     if (element.tagName && element.tagName.toLowerCase() === 'input') {
       return true;
     }
   }
 
   private _shouldInputLoseFocus(element: HTMLInputElement, isForward?: boolean) {
+    if (element) {
       let selectionStart = element.selectionStart;
       let selectionEnd = element.selectionEnd;
       // This means that the input has text selected and we shouldn't lose focus.
@@ -596,16 +597,15 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       } else {
         let inputValue = element.value;
 
-        if (element) {
-          if (selectionStart === 0 && !isForward) {
-            return true;
-          } else if (selectionStart === inputValue.length && isForward) {
-            return true;
-          } else {
-            return false;
-          }
+        if (selectionStart === 0 && !isForward) {
+          return true;
+        } else if (selectionStart === inputValue.length && isForward) {
+          return true;
+        } else {
+          return false;
         }
       }
+    }
   }
 
 }
