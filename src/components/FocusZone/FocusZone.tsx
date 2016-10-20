@@ -585,6 +585,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     if (element.tagName && element.tagName.toLowerCase() === 'input') {
       return true;
     }
+    return false;
   }
 
   private _shouldInputLoseFocus(element: HTMLInputElement, isForward?: boolean) {
@@ -606,6 +607,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         }
       }
     }
+    return false;
   }
 
 }
