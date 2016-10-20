@@ -10,7 +10,7 @@ export interface IFacepileProps extends React.Props<Facepile> {
   personas: IFacepilePersona[];
 }
 
-export interface IFacepilePersona {
+export interface IFacepilePersona extends React.HTMLProps<HTMLButtonElement | HTMLDivElement> {
   /**
    * Name of the person.
    */

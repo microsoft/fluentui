@@ -1,3 +1,4 @@
+import { IRenderFunction } from '../../common/IRenderFunction';
 export interface IDropdownProps {
   /**
    * Descriptive label for the Dropdown
@@ -23,6 +24,11 @@ export interface IDropdownProps {
    * Callback issues when the selected option changes
    */
   onChanged?: (option: IDropdownOption, index?: number) => void;
+
+  /**
+   * Optional custom renderer for the dropdown item
+   */
+  onRenderItem?: IRenderFunction<IDropdownOption>;
 
   /**
    * Whether or not the Dropdown is disabled.
