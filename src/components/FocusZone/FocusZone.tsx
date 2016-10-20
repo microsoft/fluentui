@@ -351,7 +351,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     let changedFocus = false;
     let isBidirectional = this.props.direction === FocusZoneDirection.bidirectional;
 
-    if (!this._activeElement) {
+    if (!element) {
       return;
     }
 
@@ -361,7 +361,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       }
     }
 
-    const activeRect = isBidirectional ? this._activeElement.getBoundingClientRect() : null;
+    const activeRect = isBidirectional ? element.getBoundingClientRect() : null;
 
     do {
       element = isForward ?
