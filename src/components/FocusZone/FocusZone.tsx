@@ -582,7 +582,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   private _isElementInput(element: HTMLElement): boolean {
-    if (element.tagName && element.tagName.toLowerCase() === 'input') {
+    if (element && element.tagName && element.tagName.toLowerCase() === 'input') {
       return true;
     }
     return false;
