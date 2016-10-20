@@ -68,6 +68,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     let { positions, slideDirectionalClassName } = this.state;
     let beakStyleWidth = beakWidth;
 
+    // This is here to support the old way of setting the beak size until version 1.0.0.
+    // beakStyle is now deprecated and will be be removed at version 1.0.0
     if (beakStyle === 'ms-Callout-smallbeak') {
       beakStyleWidth = 16;
     }
