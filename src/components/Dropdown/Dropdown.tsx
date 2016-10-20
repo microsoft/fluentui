@@ -95,7 +95,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
           aria-activedescendant={ selectedIndex >= 0 ? (id + '-list' + selectedIndex) : (id + '-list') }
           aria-controls={ id + '-list' }
           >
-          <span className='ms-Dropdown-title'>{ selectedOption ? this._renderDropdownOption(selectedOption) : '' }</span>
+          <span className='ms-Dropdown-title'>{ selectedOption ? this._onRenderItem(selectedOption) : '' }</span>
           <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown'></i>
           <ul ref={ (c: HTMLElement) => this._optionList = c }
             id={ id + '-list' }
@@ -113,7 +113,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
                 aria-selected={ selectedIndex === index ? 'true' : 'false' }
                 aria-label={ option.text }
                 >
-                { this._renderDropdownOption(option) }
+                { this._onRenderItem(option) }
               </li>
             )) }
           </ul>
@@ -146,16 +146,18 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
     }
   }
 
-  private _renderDropdownOption(item: IDropdownOption): JSX.Element {
-    let defaultRenderer = (defaultItem: IDropdownOption): JSX.Element => {
-      return <span>{defaultItem.text}</span>;
-    };
-
-    if (this.props.onRenderItem) {
-      return this.props.onRenderItem(item, defaultRenderer);
+  private _onRenderItem(item: IDropdownOption): JSX.Element {
+    let { onRenderItem } = this.props;
+    if (onRenderItem) {
+      return onRenderItem(item, this._defaultRenderer);
     }
 
-    return defaultRenderer(item);
+    return this._defaultRenderer(item);
+  }
+
+  @autobind
+  private _defaultRenderer(item: IDropdownOption): JSX.Element {
+    return <span>{item.text}</span>;
   }
 
   private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number) {
