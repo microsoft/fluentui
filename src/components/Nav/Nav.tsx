@@ -45,6 +45,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
   }
 
   public render(): React.ReactElement<{}> {
+
     if (!this.props.groups) {
       return null;
     }
@@ -207,9 +208,6 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
   }
 }
 
-// A tag used for resolving links.
-const _urlResolver = document.createElement('a');
-
 function _isLinkSelected(link: INavLink, selectedKey: string): boolean {
     if (selectedKey && link.key === selectedKey) {
       return true;
@@ -218,8 +216,8 @@ function _isLinkSelected(link: INavLink, selectedKey: string): boolean {
     if (!link.url) {
       return false;
     }
-    _urlResolver.href = link.url || '';
-    const target: string = _urlResolver.href;
+    let _urlResolverHref = link.url || '';
+    const target: string = _urlResolverHref;
 
     if (location.protocol + '//' + location.host + location.pathname === target) {
       return true;
@@ -236,9 +234,9 @@ function _isLinkSelected(link: INavLink, selectedKey: string): boolean {
       }
 
       // Match a rebased url. (e.g. #foo becomes http://hostname/foo)
-      _urlResolver.href = location.hash.substring(1);
+      _urlResolverHref = location.hash.substring(1);
 
-      return _urlResolver.href === target;
+      return _urlResolverHref === target;
     }
 
     return false;
