@@ -22,7 +22,7 @@ export interface IFacepileProps extends React.Props<Facepile> {
   onClickAddButton?: (ev?: React.MouseEvent) => void;
 }
 
-export interface IFacepilePersona {
+export interface IFacepilePersona extends React.HTMLProps<HTMLButtonElement | HTMLDivElement> {
   /**
    * Name of the person.
    */
