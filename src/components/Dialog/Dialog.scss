@@ -83,24 +83,23 @@ $Dialog-default-max-width: 340px;
 
 .ms-Dialog-header {
   position: relative;
-  display: table-row;
   width: 100%;
   box-sizing: border-box;
 }
 
 .ms-Dialog-title {
   margin: 0;
-  display: table-cell;
   @include ms-font-xl;
   color: $ms-color-neutralPrimary;
-  padding: 20px 28px 20px;
-  width: 100%;
+  @include padding(20px, 36px, 20px, 28px);
 }
 
 .ms-Dialog-topButton {
-  display: table-cell;
-  vertical-align: top;
+  position: absolute;
+  top: 0;
+  @include right(0);
   @include padding(12px, 12px, 0, 0);
+
 }
 
 .ms-Dialog-content {
