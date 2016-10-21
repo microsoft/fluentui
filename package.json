@@ -1,6 +1,6 @@
 {
   "name": "office-ui-fabric-react",
-  "version": "0.59.0",
+  "version": "0.61.0",
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -32,7 +32,8 @@
     "typescript": "^1.8.10",
     "vinyl-ftp": "0.4.5",
     "webpack-split-by-path": "0.0.10",
-    "webpack-visualizer-plugin": "0.1.5"
+    "webpack-visualizer-plugin": "0.1.5",
+    "mocha": "~2.5.3"
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.1",
