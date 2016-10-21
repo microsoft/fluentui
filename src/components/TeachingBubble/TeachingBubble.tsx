@@ -17,7 +17,6 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
   // Specify default props values
   public static defaultProps = {
     calloutProps: {
-      beakStyle: 'ms-Callout-smallbeak',
       beakWidth: 16,
       gapSpace: 0,
       setInitialFocus: true,
