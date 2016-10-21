@@ -8,16 +8,14 @@ import {
   ComponentPage
 } from '../../components/index';
 
-import { PickerCustomResultExample } from './examples/Picker.CustomResult.Example';
-import { TagPickerBasicExample } from './examples/TagPicker.Basic.Example';
+import { PeoplePickerTypesExample } from './examples/PeoplePicker.Types.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const TagPickerExampleCode = require('./examples/TagPicker.Basic.Example.tsx');
-const PickerCustomResultExampleCode = require('./examples/Picker.CustomResult.Example.tsx');
+const PeoplePickerTypesExampleCode = require('./examples/PeoplePicker.Types.Example.tsx');
 
-export class PickersPage extends React.Component<IComponentDemoPageProps, any> {
+export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -28,15 +26,12 @@ export class PickersPage extends React.Component<IComponentDemoPageProps, any> {
   public render() {
     return (
       <ComponentPage
-        title='Pickers'
-        componentName='PickersExample'
+        title='PeoplePicker'
+        componentName='PeoplePickerExample'
         exampleCards={
           <div>
-              <ExampleCard title='Tag Picker' code={ TagPickerExampleCode }>
-                <TagPickerBasicExample />
-              </ExampleCard>
-              <ExampleCard title='Custom Picker (Document Picker)' code={ PickerCustomResultExampleCode }>
-                <PickerCustomResultExample />
+              <ExampleCard title='People Pickers' code={ PeoplePickerTypesExampleCode }>
+                <PeoplePickerTypesExample />
               </ExampleCard>
           </div>
         }
@@ -45,7 +40,7 @@ export class PickersPage extends React.Component<IComponentDemoPageProps, any> {
         }
         overview={
           <div>
-            <Link target='_blank' href='http://dev.office.com/fabric/components/Pickers'> Pickers </Link>
+            <Link target='_blank' href='http://dev.office.com/fabric/components/PeoplePicker'> PeoplePicker </Link>
             <span> are used to pick recipients.</span>
           </div>
         }
