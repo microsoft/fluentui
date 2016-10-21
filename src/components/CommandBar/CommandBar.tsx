@@ -199,7 +199,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
       let item = this.props.items[i];
 
       if (!this._commandItemWidths[item.key]) {
-        let el = this.refs[item.key.toString()] as HTMLElement;
+        let el = this.refs[item.key] as HTMLElement;
 
         if (el) {
           this._commandItemWidths[item.key] = el.getBoundingClientRect().width;

@@ -196,19 +196,19 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
     });
   }
 
-  private _onLayoutChanged(ev: any, menuItem: IContextualMenuItem) {
+  private _onLayoutChanged(ev: React.MouseEvent, menuItem: IContextualMenuItem) {
     this.setState({
       layoutMode: menuItem.data
     });
   }
 
-  private _onConstrainModeChanged(ev: any, menuItem: IContextualMenuItem) {
+  private _onConstrainModeChanged(ev: React.MouseEvent, menuItem: IContextualMenuItem) {
     this.setState({
       constrainMode: menuItem.data
     });
   }
 
-  private _onSelectionChanged(ev: any, menuItem: IContextualMenuItem) {
+  private _onSelectionChanged(ev: React.MouseEvent, menuItem: IContextualMenuItem) {
     this.setState({
       selectionMode: menuItem.data
     });
