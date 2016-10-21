@@ -216,8 +216,12 @@ function _isLinkSelected(link: INavLink, selectedKey: string): boolean {
     if (!link.url) {
       return false;
     }
-    let _urlResolverHref = link.url || '';
-    const target: string = _urlResolverHref;
+
+    // A tag used for resolving links.
+    const _urlResolver = document.createElement('a');
+
+    _urlResolver.href = link.url || '';
+    const target: string = _urlResolver.href;
 
     if (location.protocol + '//' + location.host + location.pathname === target) {
       return true;
@@ -234,9 +238,9 @@ function _isLinkSelected(link: INavLink, selectedKey: string): boolean {
       }
 
       // Match a rebased url. (e.g. #foo becomes http://hostname/foo)
-      _urlResolverHref = location.hash.substring(1);
+      _urlResolver.href = location.hash.substring(1);
 
-      return _urlResolverHref === target;
+      return _urlResolver.href === target;
     }
 
     return false;
