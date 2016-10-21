@@ -12,8 +12,6 @@ $Callout-smallbeak-slant-width: 16px;
 
 @mixin calloutBeak {
   position: absolute;
-  width: $Callout-beak-slant-width;
-  height: $Callout-beak-slant-width;
   background-color: $ms-color-white;
   box-shadow:  inherit;
   border: inherit;
@@ -51,13 +49,6 @@ $Callout-smallbeak-slant-width: 16px;
 
 .ms-Callout-beak {
   @include calloutBeak;
-}
-
-.ms-Callout-smallbeak {
-  @include calloutBeak;
-
-  width: $Callout-smallbeak-slant-width;
-  height: $Callout-smallbeak-slant-width;
 }
 
 .ms-Callout-beakCurtain {
