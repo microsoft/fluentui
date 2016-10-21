@@ -22,7 +22,7 @@
 
 .ms-TeachingBubble-headline {
   margin: 0;
-  color: $counteraccentForegroundColor;
+  color: $inputEmphasizedForeground;
 
   .ms-TeachingBubble-header--large & {
     @include ms-font-xxl;
@@ -42,7 +42,7 @@
 .ms-TeachingBubble-subText {
   margin: 0;
   font-size: $ms-font-size-m;
-  color: $counteraccentForegroundColor;
+  color: $inputEmphasizedForeground;
   font-weight: $ms-font-weight-semilight;
 }
 
@@ -51,7 +51,7 @@
   right: 2px;
   top: 0;
   &.ms-Button--icon .ms-Icon {
-    color: $counteraccentForegroundColor;
+    color: $inputEmphasizedForeground;
     font-size: $ms-icon-size-s;
     padding: 10px;
   }
@@ -66,58 +66,58 @@
 // Callout Overrides
 .ms-TeachingBubble {
   .ms-Callout-main, .ms-Callout-beak, .ms-Callout-smallbeak {
-    background: $accentBackgroundColor;
+    background: $inputEmphasizedBackground;
   }
 }
 
 //Primary button style override
 .ms-Button.ms-TeachingBubble-primaryButton {
-  background-color: $counteraccentForegroundColor;
-  border-color: $counteraccentForegroundColor;
+  background-color: $inputEmphasizedForeground;
+  border-color: $inputEmphasizedForeground;
 
   .ms-Button-label {
     @include ms-font-m;
-    color: $accentBackgroundColor;
+    color: $inputEmphasizedBackground;
   }
 
   &:hover {
-    background-color: $counteraccentForegroundHoverColor;
-    border-color: $counteraccentForegroundHoverColor;
+    background-color: $inputEmphasizedForegroundHover;
+    border-color: $inputEmphasizedForegroundHover;
   }
 
   &:focus {
-    background-color:  $counteraccentForegroundHoverColor;
-    border-color: $counteraccentForegroundColor;
+    background-color:  $inputEmphasizedForegroundHover;
+    border-color: $inputEmphasizedForeground;
   }
 
   &:active {
-    background-color: $counteraccentForegroundColor;
-    border-color: $counteraccentForegroundColor;
+    background-color: $inputEmphasizedForeground;
+    border-color: $inputEmphasizedForeground;
   }
 }
 
 //Secondary button style override
 .ms-Button.ms-TeachingBubble-secondaryButton {
-  background-color: $accentBackgroundColor;
-  border-color: $counteraccentForegroundColor;
+  background-color: $inputEmphasizedBackground;
+  border-color: $inputEmphasizedForeground;
 
   .ms-Button-label {
     @include ms-font-m;
-    color: $counteraccentForegroundColor;
+    color: $inputEmphasizedForeground;
   }
 
   &:hover {
-    background-color: $accentBackgroundHoverColor;
-    border-color: $counteraccentForegroundColor;
+    background-color: $inputEmphasizedBackgroundHover;
+    border-color: $inputEmphasizedForeground;
   }
 
   &:focus {
-    background-color: $accentBackgroundHoverColor;
-    border-color: $counteraccentForegroundColor;
+    background-color: $inputEmphasizedBackgroundHover;
+    border-color: $inputEmphasizedForeground;
   }
 
   &:active {
-    background-color: $accentBackgroundColor;
-    border-color: $counteraccentForegroundColor;
+    background-color: $inputEmphasizedBackground;
+    border-color: $inputEmphasizedForeground;
   }
 }

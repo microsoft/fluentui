@@ -50,7 +50,7 @@
 
 //= State: An active textfield
 .ms-TextField.is-active {
-  border-color: $accentBackgroundColor;
+  border-color: $inputEmphasizedBackground;
 }
 
 .ms-TextField-field {
@@ -72,7 +72,7 @@
   }
 
   &:focus {
-    border-color: $accentBackgroundColor;
+    border-color: $inputEmphasizedBackground;
   }
 
   &:hover,
@@ -125,7 +125,7 @@
 
   &:active,
   &:focus {
-    border-color: $accentBackgroundColor;
+    border-color: $inputEmphasizedBackground;
   }
 
   .ms-Label {
@@ -169,7 +169,7 @@
   }
 
   &.is-active {
-    border-color: $accentBackgroundColor;
+    border-color: $inputEmphasizedBackground;
 
     @media screen and (-ms-high-contrast: active) {
       border-color: $ms-color-contrastBlackSelected;
