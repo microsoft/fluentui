@@ -12,7 +12,6 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
   // Specify default props values
   public static defaultProps = {
     calloutProps: {
-      beakStyle: 'ms-Callout-smallbeak',
       isBeakVisible: true,
       beakWidth: 16,
       gapSpace: 8,
