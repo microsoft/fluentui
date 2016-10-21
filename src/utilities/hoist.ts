@@ -12,9 +12,12 @@ const REACT_LIFECYCLE_EXCLUSIONS = [
 
 /**
  * Allows you to hoist methods, except those in an exclusion set from a source object into a destination object.
+ * @param destination The instance of the object to hoist the methods onto.
+ * @param source The instance of the object where the methods are hoisted from.
+ * @param exclusions (Optional) What methods to exclude from being hoisted.
  * @returns {string[]} An array of names of methods that were hoisted.
  */
-export function hoistMethods(destination, source, exclusions = REACT_LIFECYCLE_EXCLUSIONS): string[] {
+export function hoistMethods(destination, source, exclusions: string[] = REACT_LIFECYCLE_EXCLUSIONS): string[] {
   let hoisted: string[] = [];
   for (let methodName in source) {
     if (
