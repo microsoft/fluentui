@@ -5,47 +5,17 @@ import { BaseComponent } from '../../../../common/BaseComponent';
 
 
 import {
-  Tooltip,
+  TooltipHost,
   Button
 } from '../../../../index';
 
-export interface ITooltipBasicExampleState {
-  stateBeenSet?: boolean;
-}
-
-export class TooltipBasicExample extends BaseComponent<any, ITooltipBasicExampleState> {
-
-  private _menuButtonElement: HTMLElement;
-  public constructor() {
-    super();
-
-    this.state = {
-      stateBeenSet: false
-    }
-  }
-
-  public componentDidMount() {
-    this.setState({
-      stateBeenSet: true
-    });
-  }
+export class TooltipBasicExample extends BaseComponent<any, any> {
 
   public render() {
     return (
-      <div className='ms-TooltipExample'>
-        <div className='ms-TooltipBasicExample-buttonArea' ref={ this._resolveRef('_menuButtonElement') }>
-          <Button >{ 'Show Tooltip' }</Button>
-        </div>
-          <div>
-          { this.state.stateBeenSet && (
-            <Tooltip
-              tooltipContent= 'Files > Pictures > Colors Folder > Blue'
-              targetElement={ this._menuButtonElement }
-            >
-            </Tooltip>
-          ) }
-          </div>
-      </div>
+      <TooltipHost content='This is the tooltip'>
+        <Button>Hover Over Me</Button>
+      </TooltipHost>
     );
   }
 }

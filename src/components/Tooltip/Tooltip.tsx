@@ -7,74 +7,36 @@ import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import './Tooltip.scss';
 
-export interface ITooltipState {
-  isTooltipVisible?: boolean;
-}
-
-export class Tooltip extends BaseComponent<ITooltipProps, ITooltipState> {
+export class Tooltip extends BaseComponent<ITooltipProps, any> {
 
   // Specify default props values
   public static defaultProps = {
     calloutProps: {
+      beakStyle: 'ms-Callout-smallbeak',
       isBeakVisible: true,
-      gapSpace: 16,
+      beakWidth: 16,
+      gapSpace: 8,
       setInitialFocus: true,
       doNotLayer: false,
       directionalHint: DirectionalHint.topCenter
     }
   };
 
-  public componentDidMount() {
-    this._events.on(this.props.targetElement, 'mouseenter', this._tooltipShow);
-    this._events.on(this.props.targetElement, 'mouseleave', this._tooltipHide);
-  }
-
-  // Constructor
-  constructor(props: ITooltipProps) {
-    super(props);
-
-    this.state = {
-      isTooltipVisible: false,
-    };
-  }
-
   public render() {
-    let { targetElement, tooltipContent, calloutProps, directionalHint } = this.props;
-    let { isTooltipVisible } = this.state;
+    let { targetElement, content, calloutProps } = this.props;
 
     return (
-        <div>
-          { isTooltipVisible ? (
-            <Callout
-              className='ms-Tooltip'
-              ref={this._resolveRef('_callout')}
-              targetElement={ targetElement }
-              directionalHint={ directionalHint }
-              {...calloutProps}
-            >
-              <div className='ms-Tooltip-content'>
-                <div className='ms-Tooltip-body'>
-                  <p className='ms-Tooltip-subText'>
-                    { tooltipContent }
-                  </p>
-                </div>
-              </div>
-            </Callout>
-          ) : (null) }
+      <Callout
+        className='ms-Tooltip'
+        targetElement={ targetElement }
+        {...calloutProps}
+      >
+        <div className='ms-Tooltip-content'>
+          <p className='ms-Tooltip-subText'>
+            { content }
+          </p>
         </div>
+      </Callout>
     );
-  }
-
-
-  private _tooltipShow(ev: any) {
-    this.setState({
-      isTooltipVisible: true
-    });
-  }
-
-    private _tooltipHide(ev: any) {
-    this.setState({
-      isTooltipVisible: false
-    });
   }
 }
