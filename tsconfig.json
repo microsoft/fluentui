@@ -7,12 +7,15 @@
     "sourceMap": true,
     "experimentalDecorators": true,
     "noEmit": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "types": [
+      "mocha"
+    ]
   },
   "exclude": [
-      "node_modules",
-      "dist",
-      "lib",
-      "lib-amd"
+    "node_modules",
+    "dist",
+    "lib",
+    "lib-amd"
   ]
 }

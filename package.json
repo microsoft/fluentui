@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@microsoft/web-library-build": "^0.4.0",
+    "@types/mocha": "^2.2.32",
     "es6-promise": "3.2.1",
     "git-rev": "0.2.1",
     "gulp": "~3.9.1",
