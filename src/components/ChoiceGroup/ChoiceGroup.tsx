@@ -81,7 +81,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
                 name={ this._id }
                 disabled={ option.isDisabled || option.disabled }
                 checked={ option.key === keyChecked }
-                onChange={ this._handleInputChange.bind(this, option) }
+                onChange={ this._onChange.bind(this, option) }
                 onFocus={ this._onFocus.bind(this, option) }
                 onBlur={ this._onBlur.bind(this, option) }
                 aria-describedby={ `${this._descriptionId}-${option.key}` }
@@ -100,14 +100,14 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
     }
   }
 
-  private _onFocus(option: IChoiceGroupOption, ev: React.FocusEvent): void {
+  private _onFocus(option: IChoiceGroupOption, ev: React.FocusEvent<HTMLElement>): void {
     this.setState({
       keyFocused: option.key,
       keyChecked: this.state.keyChecked
     });
   }
 
-  private _onBlur(option: IChoiceGroupOption, ev: React.FocusEvent): void {
+  private _onBlur(option: IChoiceGroupOption, ev: React.FocusEvent<HTMLElement>): void {
     this.setState({
       keyFocused: undefined,
       keyChecked: this.state.keyChecked
@@ -159,7 +159,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
     );
   }
 
-  private _handleInputChange(option: IChoiceGroupOption, evt: React.FormEvent) {
+  private _onChange(option: IChoiceGroupOption, evt: React.FormEvent<HTMLInputElement>) {
     let { onChanged } = this.props;
 
     this.setState({

@@ -65,7 +65,6 @@ export class Dialog extends React.Component<IDialogProps, any> {
             ariaDescribedBy={ subText ? id + '-subText' : '' }
             onDismiss={ onDismiss }
             >
-            <div className={ dialogClassName }>
               <Overlay isDarkThemed={ isDarkOverlay } onClick={ isBlocking ? null : onDismiss } />
               <FocusTrapZone
                 className={ css('ms-Dialog-main', this.props.containerClassName) }
@@ -95,7 +94,6 @@ export class Dialog extends React.Component<IDialogProps, any> {
                   { groupings.footers }
                 </div>
               </FocusTrapZone>
-            </div>
           </Popup>
         </Layer>
       );
@@ -113,7 +111,7 @@ export class Dialog extends React.Component<IDialogProps, any> {
     };
 
     React.Children.map(this.props.children, child => {
-      if (typeof child === 'object' && child.type === DialogFooter) {
+      if (typeof child === 'object' && child !== null && child.type === DialogFooter) {
         groupings.footers.push(child);
       } else {
         groupings.contents.push(child);

@@ -1,4 +1,6 @@
+/* tslint:disable */
 import * as React from 'react';
+/* tslint:enable */
 import {
   ListPeoplePicker,
   NormalPeoplePicker,
@@ -7,7 +9,10 @@ import {
   Dropdown,
   IDropdownOption,
   IPersonaProps,
-  IBasePickerSuggestionsProps
+  IBasePickerSuggestionsProps,
+  BaseComponent,
+  autobind,
+  Toggle
 } from '../../../../index';
 import { IPersonaWithMenu } from '../../../../components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
 import { people } from './PeoplePickerExampleData';
@@ -15,7 +20,8 @@ import { assign } from '../../../../utilities/object';
 import './PeoplePicker.Types.Example.scss';
 
 export interface IPeoplePickerExampleState {
-  currentPicker: number | string;
+  currentPicker?: number | string;
+  delayResults?: boolean;
 }
 
 const suggestionProps: IBasePickerSuggestionsProps = {
@@ -23,7 +29,7 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   noResultsFoundText: 'No results found'
 };
 
-export class PeoplePickerTypesExample extends React.Component<any, IPeoplePickerExampleState> {
+export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerExampleState> {
   private _peopleList;
   private contextualMenuItems: IContextualMenuItem[] = [
     {
@@ -57,7 +63,6 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
 
   constructor() {
     super();
-    this._onFilterChanged = this._onFilterChanged.bind(this);
     this._peopleList = [];
     people.forEach((persona: IPersonaProps) => {
       let target: IPersonaWithMenu = {};
@@ -66,7 +71,10 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
       this._peopleList.push(target);
     });
 
-    this.state = { currentPicker: 1 };
+    this.state = {
+      currentPicker: 1,
+      delayResults: false
+    };
   }
 
   public render() {
@@ -103,8 +111,12 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
               { key: 5, text: 'Limit Search' }
             ]}
             selectedKey={ this.state.currentPicker }
-            onChanged={ this._dropDownSelected.bind(this) }
+            onChanged={ this._dropDownSelected }
             />
+          <Toggle
+            label='Delay Suggestion Results'
+            defaultChecked={ false }
+            onChanged={ this._toggleChange }/>
         </div>
       </div>
     );
@@ -163,7 +175,7 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
     limitedSearchSuggestionProps.searchForMoreText = 'Load all Results';
     return (
       <CompactPeoplePicker
-        onResolveSuggestions={ this._filterWithLimit.bind(this) }
+        onResolveSuggestions={ this._onFilterChangedWithLimit }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
         className={ 'ms-PeoplePicker' }
         onGetMoreResults={ this._onFilterChanged }
@@ -172,21 +184,61 @@ export class PeoplePickerTypesExample extends React.Component<any, IPeoplePicker
     );
   }
 
-  private _onFilterChanged(filterText: string, items: IPersonaProps[]) {
-    return filterText ? this._peopleList.filter(item => item.primaryText.toLowerCase().indexOf(filterText.toLowerCase() ) === 0).filter(item => !this._listContainsPersona(item, items)) : [];
+  @autobind
+  private _onFilterChanged(filterText: string, currentPersonas: IPersonaProps[], limitResults?: number) {
+    if (filterText) {
+      let filteredPersonas: IPersonaProps[] = this._filterPersonasByText(filterText);
+
+      filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
+      filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
+      return this._filterPromise(filteredPersonas);
+    } else {
+      return [];
+    }
   }
 
-  private _listContainsPersona(persona: IPersonaProps, items: IPersonaProps[]) {
-    if (!items || !items.length || items.length === 0) {
+  @autobind
+  private _onFilterChangedWithLimit(filterText: string, currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
+    return this._onFilterChanged(filterText, currentPersonas, 3);
+  }
+
+  private _filterPromise(personasToReturn: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
+    if (this.state.delayResults) {
+      return this._convertResultsToPromise(personasToReturn);
+    } else {
+      return personasToReturn;
+    }
+  }
+
+  private _listContainsPersona(persona: IPersonaProps, personas: IPersonaProps[]) {
+    if (!personas || !personas.length || personas.length === 0) {
       return false;
     }
-    return items.filter(item => item.primaryText === persona.primaryText).length > 0;
+    return personas.filter(item => item.primaryText === persona.primaryText).length > 0;
   }
 
-  private _filterWithLimit(filterText: string, currentItems: IPersonaProps[]) {
-    return filterText ? this._onFilterChanged(filterText, currentItems).splice(0, 2) : [];
+  private _filterPersonasByText(filterText: string): IPersonaProps[] {
+    return this._peopleList.filter(item => this._doesTextStartWith(item.primaryText, filterText));
   }
 
+  private _doesTextStartWith(text: string, filterText: string): boolean {
+    return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
+  }
+
+  private _convertResultsToPromise(results: IPersonaProps[]): Promise<IPersonaProps[]> {
+    return new Promise<IPersonaProps[]>((resolve, reject) => setTimeout(() => resolve(results), 2000));
+  }
+
+  private _removeDuplicates(personas: IPersonaProps[], possibleDupes: IPersonaProps[]) {
+    return personas.filter(persona => !this._listContainsPersona(persona, possibleDupes));
+  }
+
+  @autobind
+  private _toggleChange(toggleState: boolean) {
+    this.setState({ delayResults: toggleState });
+  }
+
+  @autobind
   private _dropDownSelected(option: IDropdownOption) {
     this.setState({ currentPicker: option.key });
   }

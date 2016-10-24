@@ -54,14 +54,8 @@
     }
   }
 
-  .ms-DocumentCardPreview.is-fileList {
+  .ms-DocumentCardPreview {
     @include border-right(1px, solid, $ms-color-neutralLight);
-  }
-
-  .ms-DocumentCardPreview-fileList {
-    li {
-      @include padding-left(24px); // Make room for icon
-    }
   }
 
   // Expand the details area to fill the remaining width
@@ -74,7 +68,7 @@
   }
 
   .ms-DocumentCardTitle {
-      padding: 0px 12px 8px 12px;
+      padding: 0px 16px 8px 16px;
       @include ms-font-m;
       line-height: 16px;
   }
