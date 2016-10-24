@@ -208,6 +208,8 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
   }
 }
 
+// A tag used for resolving links.
+let _urlResolver;
 function _isLinkSelected(link: INavLink, selectedKey: string): boolean {
     if (selectedKey && link.key === selectedKey) {
       return true;
@@ -222,8 +224,7 @@ function _isLinkSelected(link: INavLink, selectedKey: string): boolean {
       return false;
     }
 
-    // A tag used for resolving links.
-    const _urlResolver = document.createElement('a');
+    _urlResolver = _urlResolver || document.createElement('a');
 
     _urlResolver.href = link.url || '';
     const target: string = _urlResolver.href;
