@@ -30,9 +30,9 @@ export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, a
         componentName='PeoplePickerExample'
         exampleCards={
           <div>
-              <ExampleCard title='People Pickers' code={ PeoplePickerTypesExampleCode }>
-                <PeoplePickerTypesExample />
-              </ExampleCard>
+            <ExampleCard title='People Pickers' code={PeoplePickerTypesExampleCode}>
+              <PeoplePickerTypesExample />
+            </ExampleCard>
           </div>
         }
         propertiesTables={
@@ -44,8 +44,31 @@ export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, a
             <span> are used to pick recipients.</span>
           </div>
         }
-        route={ this._url }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        route={this._url}
+        isHeaderVisible={this.props.isHeaderVisible}
+        bestPractices={
+          <div></div>
+        }
+        dos={
+          <div>
+            <ul>
+              <li>Use the PeoplePicker to allow a user would need to quickly search for a few people</li>
+              <li> Use the PeoplePicker to manage a group of people</li>
+              <li>Use the MemberList PeoplePicker to display selections below the input box</li>
+              <li>Use defaultSelectedItems when some people have already been selected</li>
+            </ul>
+          </div>
+        }
+        donts={
+          <div>
+            <ul>
+              <li>Expect the PeoplePicker to be faster than your datasource</li>
+              <li>Use the PeoplePicker to select something other than people</li>
+              <li>Use the PeoplePicker to only display people</li>
+              <li>Use the PeoplePicker without sufficient space</li>
+            </ul>
+          </div>
+        }>
       </ComponentPage>
     );
   }
