@@ -168,7 +168,8 @@ let runSSRTests = build.subTask('run-ssr-tests', function(gulp, buildOptions, do
 
 let defaultTasks = build.serial(
   build.preCopy,
-  build.parallel(build.typescript, build.tslint),
+  build.sass,
+  build.parallel(build.typescript, build.tslint, build.text),
   build.postCopy,
   build.webpack,
   build.karma,
