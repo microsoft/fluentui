@@ -220,7 +220,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
     });
   }
 
-  private _getCommandItems() {
+  private _getCommandItems(): IContextualMenuItem[] {
     let { layoutMode, constrainMode, selectionMode, canResizeColumns, isLazyLoaded, isHeaderVisible } = this.state;
 
     return [
