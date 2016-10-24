@@ -25,6 +25,8 @@ $Callout-smallbeak-slant-width: 16px;
   @include ms-baseFont;
   @include drop-shadow(0,0, 15px, -5px);
   position: absolute;
+  max-height: 100vh;
+  overflow-y: auto;
   display: inline-block;
   border: 1px solid $ms-color-neutralLight;
 
@@ -44,7 +46,6 @@ $Callout-smallbeak-slant-width: 16px;
 .ms-Callout-main {
   position: relative;
   background-color: $ms-color-white;
-  box-sizing: border-box;
 }
 
 .ms-Callout-beak {
