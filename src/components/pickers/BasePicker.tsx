@@ -122,7 +122,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected renderItems(): JSX.Element[] {
-    let { onRenderItem = () => undefined } = this.props;
+    let { onRenderItem } = this.props;
     let { items } = this.state;
     return items.map((item, index) => onRenderItem({
       item,

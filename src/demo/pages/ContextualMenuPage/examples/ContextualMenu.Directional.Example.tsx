@@ -6,7 +6,9 @@ import {
   DirectionalHint,
   Dropdown,
   TextField,
-  IDropdownOption
+  IDropdownOption,
+  autobind,
+  Slider
  } from '../../../../index';
 import './ContextualMenuExample.scss';
 
@@ -15,6 +17,7 @@ export interface IContextualMenuDirectionalExampleState {
   directionalHint?: DirectionalHint;
   isBeakVisible?: boolean;
   gapSpace?: number;
+  beakWidth?: number;
 }
 
 const DIRECTION_OPTIONS = [
@@ -44,29 +47,35 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
   public constructor() {
     super();
 
-    this._onShowMenuClicked = this._onShowMenuClicked.bind(this);
-    this._onShowBeakChange = this._onShowBeakChange.bind(this);
-    this._onDirectionalChanged = this._onDirectionalChanged.bind(this);
-    this._onChangeGapSizeClicked = this._onChangeGapSizeClicked.bind(this);
-    this._onDismissMenu = this._onDismissMenu.bind(this);
-
     this.state = {
       isContextualMenuVisible: false,
       isBeakVisible: false,
       directionalHint: DirectionalHint.bottomLeftEdge,
-      gapSpace: 0
+      gapSpace: 0,
+      beakWidth: 10
     };
   }
 
   public render() {
-    let { isContextualMenuVisible, isBeakVisible, directionalHint, gapSpace } = this.state;
+    let { isContextualMenuVisible, isBeakVisible, directionalHint, gapSpace, beakWidth } = this.state;
 
     return (
       <div className='ms-ContextualMenuDirectionalExample'>
        <div className='ms-ContextualMenuDirectionalExample-configArea'>
           <Checkbox label='Show beak' checked={ isBeakVisible } onChange={ this._onShowBeakChange } />
-          <TextField ref='gapSize' label='Gap Space' placeholder='Type in the gap space' />
-          <Button onClick={ this._onChangeGapSizeClicked }>Submit</Button>
+          <Slider
+            max={ 20 }
+            label='Gap Space'
+            min={ 0 }
+            defaultValue={ 0 }
+            onChange={ this._onGapSlider } />
+          { isBeakVisible &&
+            (<Slider
+            max={ 50 }
+            label='Beak Width'
+            min={ 10 }
+            defaultValue={ 10 }
+            onChange={ this._onBeakWidthSlider } />) }
           <Dropdown
             label='Directional hint'
             selectedKey={ DirectionalHint[directionalHint] }
@@ -82,7 +91,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
           isBeakVisible={ isBeakVisible }
           directionalHint={ directionalHint }
           gapSpace={ gapSpace }
-          onDismiss={ this._onDismissMenu }
+          beakWidth={ beakWidth }
           items={
             [
               {
@@ -147,33 +156,38 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
     );
   }
 
+  @autobind
   private _onShowBeakChange(ev: React.FormEvent, isVisible: boolean) {
     this.setState({
       isBeakVisible: isVisible
     });
   }
 
+  @autobind
   private _onShowMenuClicked() {
     this.setState({
       isContextualMenuVisible: !this.state.isContextualMenuVisible
     });
   }
 
-  private _onDismissMenu(ev: any) {
-    this.setState({
-      isContextualMenuVisible: false
-    });
-  }
-
+  @autobind
   private _onDirectionalChanged(option: IDropdownOption) {
     this.setState({
       directionalHint: DirectionalHint[option.key]
     });
   }
 
-  private _onChangeGapSizeClicked() {
+  @autobind
+  private _onGapSlider(value: number) {
     this.setState({
-      gapSpace: parseInt(this.refs.gapSize.state.value, 10)
+      gapSpace: value
+    });
+  }
+
+  @autobind
+  private _onBeakWidthSlider(value: number) {
+    this.setState({
+      beakWidth: value
     });
   }
 
