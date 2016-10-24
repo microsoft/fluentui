@@ -22,7 +22,7 @@ const facepileProps: IFacepileProps = {
       imageInitials: 'RK',
       initialsColor: PersonaInitialsColor.purple,
       data: 'Emp1234',
-      onClick: (ev: React.MouseEvent, persona: IFacepilePersona) =>
+      onClick: (ev: React.MouseEvent<HTMLElement>, persona: IFacepilePersona) =>
         alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data)
     }
   ]

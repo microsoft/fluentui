@@ -103,7 +103,7 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
   }
 
   @autobind
-  private _onToggleCollapse(ev: React.MouseEvent) {
+  private _onToggleCollapse(ev: React.MouseEvent<HTMLElement>) {
     let { group, onToggleCollapse, isGroupLoading } = this.props;
     let { isCollapsed } = this.state;
 
@@ -123,7 +123,7 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
   }
 
   @autobind
-  private _onToggleSelectGroupClick(ev: React.MouseEvent) {
+  private _onToggleSelectGroupClick(ev: React.MouseEvent<HTMLElement>) {
     let { onToggleSelectGroup, group } = this.props;
 
     if (onToggleSelectGroup) {
