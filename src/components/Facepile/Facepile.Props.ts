@@ -23,7 +23,7 @@ export interface IFacepileProps extends React.Props<Facepile> {
   overflowButtonProps?: IButtonProps;
 }
 
-export interface IFacepilePersona {
+export interface IFacepilePersona extends React.HTMLProps<HTMLButtonElement | HTMLDivElement> {
   /**
    * Name of the person.
    */

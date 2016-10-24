@@ -18,7 +18,6 @@ export interface IContextualMenuState {
   dismissedMenuItemKey?: string;
   contextualMenuItems?: IContextualMenuItem[];
   contextualMenuTarget?: HTMLElement;
-  beakStyle?: any;
   submenuProps?: IContextualMenuProps;
   positions?: any;
   slideDirectionalClassName?: string;
@@ -182,7 +181,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         gapSpace={ gapSpace }
         doNotLayer={ isSubMenu }
         coverTarget={ coverTarget }
-        beakStyle='ms-Callout-smallbeak'
         className='ms-ContextualMenu-Callout'
         setInitialFocus={ true }
         onDismiss={ this.props.onDismiss }>

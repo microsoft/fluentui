@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { css } from '../../utilities/css';
+import { getNativeProps, imageProperties } from '../../utilities/properties';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import './Image.scss';
 import { IImageProps, ImageFit } from './Image.Props';
@@ -80,6 +81,7 @@ export class Image extends React.Component<IImageProps, IImageState> {
   }
 
   public render() {
+    let imageProps = getNativeProps(this.props, imageProperties);
     let { src, alt, width, height, shouldFadeIn, className, imageFit, errorSrc, role } = this.props;
     let { loadState } = this.state;
     let coverStyle = this._coverStyle;
@@ -90,7 +92,7 @@ export class Image extends React.Component<IImageProps, IImageState> {
     // If image dimensions aren't specified, the natural size of the image is used.
     return (
       <div className={ css('ms-Image', className) } style={ { width: width, height: height } }>
-        <img className={ css('ms-Image-image',
+        <img { ...imageProps } className={ css('ms-Image-image',
           (coverStyle !== undefined) && CoverStyleMap[coverStyle],
           (imageFit !== undefined) && ImageFitMap[imageFit], {
             'is-fadeIn': shouldFadeIn,
