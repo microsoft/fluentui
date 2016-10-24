@@ -27,7 +27,7 @@ const ButtonHeroExampleCode = require('./examples/Button.Hero.Example.tsx');
 const ButtonCompoundExampleCode = require('./examples/Button.Compound.Example.tsx');
 const ButtonCommandExampleCode = require('./examples/Button.Command.Example.tsx');
 const ButtonIconExampleCode = require('./examples/Button.Icon.Example.tsx');
-const ButtonAnchorExampleCode = require('./examples/Button.Icon.Example.tsx');
+const ButtonAnchorExampleCode = require('./examples/Button.Anchor.Example.tsx');
 const ButtonScreenReaderExampleCode = require('./examples/Button.ScreenReader.Example.tsx');
 
 export class ButtonPage extends React.Component<IComponentDemoPageProps, IButtonDemoPageState> {
@@ -128,7 +128,7 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
     );
   }
 
-  private _onDisabledChanged(ev: React.MouseEvent, isDisabled: boolean) {
+  private _onDisabledChanged(ev: React.MouseEvent<HTMLElement>, isDisabled: boolean) {
     this.setState({
       areButtonsDisabled: isDisabled
     });

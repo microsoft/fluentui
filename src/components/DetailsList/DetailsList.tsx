@@ -366,7 +366,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     this.setState({ isSizing: isSizing });
   }
 
-  private _onHeaderKeyDown(ev: React.KeyboardEvent) {
+  private _onHeaderKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     if (ev.which === KeyCodes.down) {
       if (this.refs.focusZone && this.refs.focusZone.focus()) {
         ev.preventDefault();
@@ -375,7 +375,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     }
   }
 
-  private _onContentKeyDown(ev: React.KeyboardEvent) {
+  private _onContentKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     if (ev.which === KeyCodes.up) {
       if (this.refs.header && this.refs.header.focus()) {
         ev.preventDefault();
@@ -622,7 +622,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
    * @param {el} row element that became active in Focus Zone
    * @param {ev} focus event from Focus Zone
    */
-  private _onActiveRowChanged(el?: HTMLElement, ev?: React.FocusEvent) {
+  private _onActiveRowChanged(el?: HTMLElement, ev?: React.FocusEvent<HTMLElement>) {
     let { items, onActiveItemChanged } = this.props;
 
     if (!onActiveItemChanged || !el) {
@@ -638,7 +638,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 export function buildColumns(
   items: any[],
   canResizeColumns?: boolean,
-  onColumnClick?: (column: IColumn, ev: React.MouseEvent) => any,
+  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => any,
   sortedColumnKey?: string,
   isSortedDescending?: boolean,
   groupedColumnKey?: string,
@@ -664,7 +664,7 @@ export function buildColumns(
           isRowHeader: false,
           columnActionsMode: ColumnActionsMode.clickable,
           isResizable: canResizeColumns,
-          onColumnClick: onColumnClick,
+          onColumnClick,
           isGrouped: groupedColumnKey === propName
         });
 

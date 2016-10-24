@@ -6,7 +6,6 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   autobind,
   css,
-  getRTL,
   elementContains
 } from '../../Utilities';
 import { getRelativePositions, IPositionInfo } from '../../utilities/positioning';
@@ -28,10 +27,9 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
   public static defaultProps = {
     isBeakVisible: true,
-    beakStyle: 'ms-Callout-beak',
     beakWidth: 28,
     gapSpace: 0,
-    directionalHint: getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge
+    directionalHint: DirectionalHint.bottomAutoEdge
   };
 
   private _didSetInitialFocus: boolean;
@@ -66,8 +64,23 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   }
 
   public render() {
-    let { className, targetElement, isBeakVisible, beakStyle, children } = this.props;
+    let { className, targetElement, isBeakVisible, beakStyle, children, beakWidth } = this.props;
     let { positions, slideDirectionalClassName } = this.state;
+    let beakStyleWidth = beakWidth;
+
+    // This is here to support the old way of setting the beak size until version 1.0.0.
+    // beakStyle is now deprecated and will be be removed at version 1.0.0
+    if (beakStyle === 'ms-Callout-smallbeak') {
+      beakStyleWidth = 16;
+    }
+
+    let beakReactStyle: React.CSSProperties = {
+      top: positions && positions.beak ? positions.beak.top : BEAK_ORIGIN_POSITION.top,
+      left: positions && positions.beak ? positions.beak.left : BEAK_ORIGIN_POSITION.left,
+      height: beakStyleWidth,
+      width: beakStyleWidth
+    };
+
     let content = (
       <div ref={ this._resolveRef('_hostElement') } className={ 'ms-Callout-container' }>
         <div
@@ -75,7 +88,11 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
           style={ ((positions) ? positions.callout : OFF_SCREEN_POSITION) }
           ref={ this._resolveRef('_calloutElement') }
           >
-          { isBeakVisible && targetElement ? (<div className={ beakStyle }  style={ ((positions) ? positions.beak : BEAK_ORIGIN_POSITION) } />) : (null) }
+          { isBeakVisible && targetElement ? (
+            <div
+              className={ 'ms-Callout-beak' }
+              style={ beakReactStyle }
+            />) : (null) }
           <div className='ms-Callout-beakCurtain' />
           <Popup
             className='ms-Callout-main'

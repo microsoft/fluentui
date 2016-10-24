@@ -3,7 +3,7 @@ import * as React from 'react';
 /**
  * TextField component props.
  */
-export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement> {
+export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement | HTMLTextAreaElement> {
   /**
    * Whether or not the textfield is a multiline textfield.
    * @default false

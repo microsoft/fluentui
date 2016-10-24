@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { BaseComponent, css, setVirtualParent } from '../../Utilities';
+import {
+  BaseComponent,
+  css,
+  divProperties,
+  getNativeProps,
+  setVirtualParent
+} from '../../Utilities';
 import { ILayerProps } from './Layer.Props';
 import './Layer.scss';
 
@@ -37,7 +43,7 @@ export class ProjectedLayer extends BaseComponent<IProjectedLayerProps, {}> {
   }
 
   public render() {
-    let remoteProps = this._remoteProps;
+    let remoteProps = getNativeProps<React.HTMLProps<HTMLDivElement>>(this._remoteProps, divProperties);
 
     return (
       <div

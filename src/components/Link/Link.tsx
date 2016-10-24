@@ -46,7 +46,7 @@ export class Link extends React.Component<ILinkProps, any> {
   }
 
   @autobind
-  private _onClick(ev: React.MouseEvent) {
+  private _onClick(ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
     let { onClick } = this.props;
 
     if (onClick) {
