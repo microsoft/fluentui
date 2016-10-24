@@ -95,9 +95,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         ref='root'
         data-focuszone-id={ this._id }
         aria-labelledby={ ariaLabelledBy }
-        onMouseDownCapture={ this._onMouseDown }
         onKeyDown={ this._onKeyDown }
         onFocus={ this._onFocus }
+        { ...{onMouseDownCapture: this._onMouseDown } }
         >
         { this.props.children }
       </div>

@@ -69,12 +69,14 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
       <div
         className='ms-SelectionZone'
         ref='root'
-        onMouseDownCapture={ this.ignoreNextFocus }
-        onFocusCapture={ this._onFocus }
         onKeyDown={ this._onKeyDown }
         onMouseDown={ this._onMouseDown }
         onClick={ this._onClick }
         onDoubleClick={ this._onDoubleClick }
+        { ...{
+          onMouseDownCapture: this.ignoreNextFocus,
+          onFocusCapture: this._onFocus
+        } }
         >
         {this.props.children }
       </div>

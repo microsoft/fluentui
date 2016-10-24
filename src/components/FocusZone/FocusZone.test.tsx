@@ -18,7 +18,7 @@ describe('FocusZone', () => {
 
   it('can use arrows vertically', () => {
     let component = ReactTestUtils.renderIntoDocument(
-      <div onFocusCapture={ _onFocus }>
+      <div { ...{ onFocusCapture: _onFocus } }>
         <FocusZone direction={ FocusZoneDirection.vertical }>
           <button className='a'>a</button>
           <button className='b'>b</button>
@@ -113,7 +113,7 @@ describe('FocusZone', () => {
 
   it('can use arrows horizontally', () => {
     let component = ReactTestUtils.renderIntoDocument(
-      <div onFocusCapture={ _onFocus }>
+      <div { ...{ onFocusCapture: _onFocus } }>
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           <button className='a'>a</button>
           <button className='b'>b</button>
@@ -208,7 +208,7 @@ describe('FocusZone', () => {
 
   it('can use arrows bidirectionally', () => {
     let component = ReactTestUtils.renderIntoDocument(
-      <div onFocusCapture={ _onFocus }>
+      <div { ...{ onFocusCapture: _onFocus } }>
         <FocusZone>
           <button className='a'>a</button>
           <button className='b'>b</button>
