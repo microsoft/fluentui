@@ -9,7 +9,8 @@
     "noEmit": true,
     "moduleResolution": "node",
     "types": [
-      "mocha"
+      "mocha",
+      "chai"
     ]
   },
   "exclude": [
