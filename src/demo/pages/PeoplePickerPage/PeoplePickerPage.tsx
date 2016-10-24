@@ -52,8 +52,8 @@ export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, a
         dos={
           <div>
             <ul>
-              <li>Use the PeoplePicker to allow a user would need to quickly search for a few people</li>
-              <li> Use the PeoplePicker to manage a group of people</li>
+              <li>Use the PeoplePicker to quickly search for a few people</li>
+              <li>Use the PeoplePicker to manage a group of people</li>
               <li>Use the MemberList PeoplePicker to display selections below the input box</li>
               <li>Use defaultSelectedItems when some people have already been selected</li>
             </ul>
@@ -62,7 +62,6 @@ export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, a
         donts={
           <div>
             <ul>
-              <li>Expect the PeoplePicker to be faster than your datasource</li>
               <li>Use the PeoplePicker to select something other than people</li>
               <li>Use the PeoplePicker to only display people</li>
               <li>Use the PeoplePicker without sufficient space</li>
