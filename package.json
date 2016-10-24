@@ -32,7 +32,8 @@
     "typescript": "2.0.3",
     "vinyl-ftp": "0.4.5",
     "webpack-split-by-path": "0.0.10",
-    "webpack-visualizer-plugin": "0.1.5"
+    "webpack-visualizer-plugin": "0.1.5",
+    "mocha": "~2.5.3"
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.1",

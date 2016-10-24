@@ -45,6 +45,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
   }
 
   public render(): React.ReactElement<{}> {
+
     if (!this.props.groups) {
       return null;
     }
@@ -208,16 +209,23 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
 }
 
 // A tag used for resolving links.
-const _urlResolver = document.createElement('a');
-
+let _urlResolver;
 function _isLinkSelected(link: INavLink, selectedKey: string): boolean {
     if (selectedKey && link.key === selectedKey) {
       return true;
     }
 
+    // resolve is not supported for ssr
+    if (typeof(window) === 'undefined') {
+      return false;
+    }
+
     if (!link.url) {
       return false;
     }
+
+    _urlResolver = _urlResolver || document.createElement('a');
+
     _urlResolver.href = link.url || '';
     const target: string = _urlResolver.href;
 
