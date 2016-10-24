@@ -6,7 +6,7 @@
     "declaration": true,
     "sourceMap": true,
     "experimentalDecorators": true,
-    "noEmit": true,
+    "noEmitOnError": true,
     "moduleResolution": "node",
     "types": [
       "chai",
