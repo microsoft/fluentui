@@ -213,6 +213,11 @@ function _isLinkSelected(link: INavLink, selectedKey: string): boolean {
       return true;
     }
 
+    // resolve is not supported for ssr
+    if (typeof(window) === 'undefined') {
+      return false;
+    }
+
     if (!link.url) {
       return false;
     }
