@@ -9,12 +9,7 @@ import { KeyCodes } from '../../../utilities/KeyCodes';
 export interface IBaseAutoFillState {
   value?: string;
 }
-// This interface is because selection direction is not currently supported by the typedefinitions even
-// though it works in IE (9 and later), Chrome, and Firefox.
-export interface IHTMLInputElementWithSelectionDirection extends HTMLInputElement {
-  selectionDirection?: string;
-  setSelectionRange(start: number, end: number, direction?: string): void;
-}
+
 const tag = 'input';
 export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFillState> {
 
@@ -28,7 +23,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   }
 
   get cursorLocation(): number {
-    let inputElement = (this._inputElement as IHTMLInputElementWithSelectionDirection);
+    let inputElement = this._inputElement;
     if (inputElement.selectionDirection !== 'forward') {
       return inputElement.selectionEnd;
     } else {
@@ -65,7 +60,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
         differenceIndex++;
       }
       if (differenceIndex > 0) {
-        (this._inputElement as IHTMLInputElementWithSelectionDirection).setSelectionRange(differenceIndex, suggestedDisplayValue.length, 'backward');
+        this._inputElement.setSelectionRange(differenceIndex, suggestedDisplayValue.length, 'backward');
       }
     }
   }
