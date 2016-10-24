@@ -37,7 +37,6 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
   private _optionList: HTMLElement;
   private _dropDown: HTMLDivElement;
   private _dropdownLabel: HTMLElement;
-  private _width: number;
 
   constructor(props?: IDropdownProps) {
     super(props, {
@@ -109,12 +108,14 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
               className='ms-Dropdown-callout'
               gapSpace={ 0 }
               doNotLayer= { false }
-              targetElement={ this._dropdownLabel }
+              targetElement={ this._dropDown }
               setInitialFocus={ true }
-              directionalHint= { DirectionalHint.bottomCenter }
+              directionalHint={ DirectionalHint.bottomLeftEdge }
+              onDismiss={ this._onDismiss }
             >
               <ul ref={ (c: HTMLElement) => this._optionList = c }
                 id={ id + '-list' }
+                style={ { width: this._dropDown.clientWidth - 2 } }
                 className='ms-Dropdown-items'
                 role='listbox'
                 aria-labelledby={ id + '-label' }>
@@ -124,7 +125,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
                     key={ option.key }
                     data-index={ index }
                     className={ css('ms-Dropdown-item', { 'is-selected': selectedIndex === index }) }
-                    onClick={ this.setSelectedIndex.bind(this, index) }
+                    onClick={ () => this._onItemClick(index) }
                     role='option'
                     aria-selected={ selectedIndex === index ? 'true' : 'false' }
                     aria-label={ option.text }
@@ -167,6 +168,18 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
   @autobind
   private _onRenderItem(item: IDropdownOption): JSX.Element {
       return <span>{item.text}</span>;
+  }
+
+  private _onItemClick(index) {
+    this.setSelectedIndex(index);
+    this.setState({
+      isOpen: false
+    });
+  }
+
+  @autobind
+  private _onDismiss() {
+    this.setState({ isOpen: false });
   }
 
   private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number) {
