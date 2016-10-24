@@ -243,7 +243,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   @autobind
-  protected onInputChange(ev: React.FormEvent) {
+  protected onInputChange(ev: React.FormEvent<HTMLElement>) {
     let value: string = (ev.target as HTMLInputElement).value;
 
     this.updateValue(value);
@@ -251,12 +251,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   @autobind
-  protected onSuggestionClick(ev: React.MouseEvent, item: any, index: number) {
+  protected onSuggestionClick(ev: React.MouseEvent<HTMLElement>, item: any, index: number) {
     this.addItemByIndex(index);
   }
 
   @autobind
-  protected onInputFocus(ev: React.FocusEvent) {
+  protected onInputFocus(ev: React.FocusEvent<HTMLElement>) {
     this.selection.setAllSelected(false);
     if (this.state.value) {
       this.setState({ suggestionsVisible: true });
@@ -264,7 +264,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   @autobind
-  protected onKeyDown(ev: React.KeyboardEvent) {
+  protected onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     let { value } = this.state;
 
     switch (ev.which) {
@@ -363,7 +363,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   // This is protected because we may expect the backspace key to work differently in a different kind of picker.
   // This lets the subclass override it and provide it's own onBackspace. For an example see the BasePickerListBelow
-  protected onBackspace(ev: React.KeyboardEvent) {
+  protected onBackspace(ev: React.KeyboardEvent<HTMLElement>) {
     let { displayValue } = this.state;
     if (ev.target === this.input) {
       if (displayValue && this.suggestionStore.hasSelectedSuggestion() && this.input.selectionStart !== this.input.selectionEnd) {
@@ -411,7 +411,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
     );
   }
 
-  protected onBackspace(ev: React.KeyboardEvent) {
+  protected onBackspace(ev: React.KeyboardEvent<HTMLElement>) {
     let { value } = this.state;
     if (ev.target === this.input) {
       if (value && this.input.selectionStart !== this.input.selectionEnd) {

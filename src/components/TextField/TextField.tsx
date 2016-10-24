@@ -174,7 +174,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     }
   }
 
-  private _onFocus(ev: React.FocusEvent) {
+  private _onFocus(ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
     if (this.props.onFocus) {
       this.props.onFocus(ev);
     }
@@ -182,7 +182,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     this.setState({ isFocused: true });
   }
 
-  private _onBlur(ev: React.FocusEvent) {
+  private _onBlur(ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
     if (this.props.onBlur) {
       this.props.onBlur(ev);
     }
@@ -255,7 +255,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     );
   }
 
-  private _onInputChange(event: React.KeyboardEvent): void {
+  private _onInputChange(event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
 

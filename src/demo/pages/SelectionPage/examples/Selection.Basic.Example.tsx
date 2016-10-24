@@ -95,13 +95,13 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
     selection.toggleAllSelected();
   }
 
-  private _onSelectionModeChanged(ev: React.MouseEvent, menuItem: IContextualMenuItem) {
+  private _onSelectionModeChanged(ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) {
     this.setState({
       selectionMode: menuItem.data
     });
   }
 
-  private _onCanSelectChanged(ev: React.MouseEvent, menuItem: IContextualMenuItem) {
+  private _onCanSelectChanged(ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) {
     let canSelectItem = (menuItem.data === 'vowels') ? this._canSelectItem : undefined;
     let newSelection = new Selection({ onSelectionChanged: this._onSelectionChanged, canSelectItem: canSelectItem });
     newSelection.setItems(this.state.items as IObjectWithKey[], false);
