@@ -157,7 +157,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
   }
 
   @autobind
-  private _onShowBeakChange(ev: React.FormEvent, isVisible: boolean) {
+  private _onShowBeakChange(ev: React.FormEvent<HTMLElement>, isVisible: boolean) {
     this.setState({
       isBeakVisible: isVisible
     });

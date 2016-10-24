@@ -196,19 +196,19 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
     });
   }
 
-  private _onLayoutChanged(ev: React.MouseEvent, menuItem: IContextualMenuItem) {
+  private _onLayoutChanged(ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) {
     this.setState({
       layoutMode: menuItem.data
     });
   }
 
-  private _onConstrainModeChanged(ev: React.MouseEvent, menuItem: IContextualMenuItem) {
+  private _onConstrainModeChanged(ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) {
     this.setState({
       constrainMode: menuItem.data
     });
   }
 
-  private _onSelectionChanged(ev: React.MouseEvent, menuItem: IContextualMenuItem) {
+  private _onSelectionChanged(ev: React.MouseEvent<HTMLElement>, menuItem: IContextualMenuItem) {
     this.setState({
       selectionMode: menuItem.data
     });
@@ -350,7 +350,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
     ];
   }
 
-  private _getContextualMenuProps(column: IColumn, ev: React.MouseEvent): IContextualMenuProps {
+  private _getContextualMenuProps(column: IColumn, ev: React.MouseEvent<HTMLElement>): IContextualMenuProps {
     let items = [
       {
         key: 'aToZ',
@@ -393,7 +393,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
     console.log('Item invoked', item, index);
   }
 
-  private _onColumnClick(column: IColumn, ev: React.MouseEvent) {
+  private _onColumnClick(column: IColumn, ev: React.MouseEvent<HTMLElement>) {
     this.setState({
       contextualMenuProps: this._getContextualMenuProps(column, ev)
     });
@@ -514,7 +514,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
   private _buildColumns(
     items: any[],
     canResizeColumns?: boolean,
-    onColumnClick?: (column: IColumn, ev: React.MouseEvent) => any,
+    onColumnClick?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => any,
     sortedColumnKey?: string,
     isSortedDescending?: boolean,
     groupedColumnKey?: string) {

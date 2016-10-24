@@ -18,7 +18,7 @@ describe('TeachingBubble', () => {
         headline='Title'
       />
     );
-    let renderedDOM = ReactDOM.findDOMNode(component);
+    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
     let titleElement = renderedDOM.querySelector('.ms-TeachingBubble-headline');
 
     expect(titleElement.textContent).to.equal('Title');

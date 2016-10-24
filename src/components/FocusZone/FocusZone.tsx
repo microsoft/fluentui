@@ -156,7 +156,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   @autobind
-  private _onFocus(ev: React.FocusEvent) {
+  private _onFocus(ev: React.FocusEvent<HTMLElement>) {
     let { onActiveElementChanged } = this.props;
 
     if (this._isImmediateDescendantOfZone(ev.target as HTMLElement)) {
@@ -188,7 +188,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   @autobind
-  private _onMouseDown(ev: React.MouseEvent) {
+  private _onMouseDown(ev: React.MouseEvent<HTMLElement>) {
     const { disabled } = this.props;
 
     if (disabled) {
@@ -219,7 +219,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
    * Handle the keystrokes.
    */
   @autobind
-  private _onKeyDown(ev: React.KeyboardEvent) {
+  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     const { direction, disabled, isInnerZoneKeystroke } = this.props;
 
     if (disabled) {

@@ -98,7 +98,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    * specially.
    */
   @autobind
-  private _onFocus(ev: React.FocusEvent) {
+  private _onFocus(ev: React.FocusEvent<HTMLElement>) {
     let target = ev.target as HTMLElement;
     let { selection, selectionMode } = this.props;
     let isToggleModifierPressed = this._isCtrlPressed || this._isMetaPressed;
@@ -124,7 +124,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   }
 
   @autobind
-  private _onMouseDown(ev: React.MouseEvent) {
+  private _onMouseDown(ev: React.MouseEvent<HTMLElement>) {
     this._updateModifiers(ev);
 
     let target = ev.target as HTMLElement;
@@ -149,7 +149,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   }
 
   @autobind
-  private _onClick(ev: React.MouseEvent) {
+  private _onClick(ev: React.MouseEvent<HTMLElement>) {
     this._updateModifiers(ev);
 
     let target = ev.target as HTMLElement;
@@ -187,7 +187,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    * we should execute the invoke handler.
    */
   @autobind
-  private _onDoubleClick(ev: React.MouseEvent) {
+  private _onDoubleClick(ev: React.MouseEvent<HTMLElement>) {
     let target = ev.target as HTMLElement;
     let { selectionMode, onItemInvoked } = this.props;
     let itemRoot = this._findItemRoot(target);
@@ -213,7 +213,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   }
 
   @autobind
-  private _onKeyDown(ev: React.KeyboardEvent) {
+  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     this._updateModifiers(ev);
 
     let target = ev.target as HTMLElement;
@@ -267,7 +267,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
   }
 
-  private _onToggleAllClick(ev: React.MouseEvent) {
+  private _onToggleAllClick(ev: React.MouseEvent<HTMLElement>) {
     let { selection, selectionMode } = this.props;
 
     if (selectionMode === SelectionMode.multiple) {
@@ -277,7 +277,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
   }
 
-  private _onToggleClick(ev: React.MouseEvent | React.KeyboardEvent, index: number) {
+  private _onToggleClick(ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, index: number) {
     let { selection, selectionMode } = this.props;
 
     if (selectionMode === SelectionMode.multiple) {
@@ -298,7 +298,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     // for checkboxes if you use a checkbox for the toggle.
   }
 
-  private _onInvokeClick(ev: React.MouseEvent | React.KeyboardEvent, index: number) {
+  private _onInvokeClick(ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, index: number) {
     let { selection, onItemInvoked } = this.props;
 
     if (onItemInvoked) {
@@ -308,7 +308,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
   }
 
-  private _onItemSurfaceClick(ev: React.SyntheticEvent, index: number) {
+  private _onItemSurfaceClick(ev: React.SyntheticEvent<HTMLElement>, index: number) {
     let { selection, selectionMode } = this.props;
     let isToggleModifierPressed = this._isCtrlPressed || this._isMetaPressed;
 
@@ -325,7 +325,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
   }
 
-  private _onInvokeMouseDown(ev: React.MouseEvent | React.KeyboardEvent, index: number) {
+  private _onInvokeMouseDown(ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, index: number) {
     let { selection } = this.props;
 
     // Only do work if item is not selected.
@@ -352,7 +352,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    * We need to track the modifier key states so that when focus events occur, which do not contain
    * modifier states in the Event object, we know how to behave.
    */
-  private _updateModifiers(ev: React.KeyboardEvent | React.MouseEvent) {
+  private _updateModifiers(ev: React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement>) {
     this._isShiftPressed = ev.shiftKey;
     this._isCtrlPressed = ev.ctrlKey;
     this._isMetaPressed = ev.metaKey;
