@@ -638,7 +638,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 export function buildColumns(
   items: any[],
   canResizeColumns?: boolean,
-  onColumnClick?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => any,
+  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => any,
   sortedColumnKey?: string,
   isSortedDescending?: boolean,
   groupedColumnKey?: string,
@@ -664,7 +664,7 @@ export function buildColumns(
           isRowHeader: false,
           columnActionsMode: ColumnActionsMode.clickable,
           isResizable: canResizeColumns,
-          onColumnClick: onColumnClick,
+          onColumnClick,
           isGrouped: groupedColumnKey === propName
         });
 

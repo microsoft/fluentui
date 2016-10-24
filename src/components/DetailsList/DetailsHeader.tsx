@@ -21,7 +21,7 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
   onColumnIsSizingChanged?: (column: IColumn, isSizing: boolean) => void;
   onColumnResized?: (column: IColumn, newWidth: number) => void;
   onColumnAutoResized?: (column: IColumn, columnIndex: number) => void;
-  onColumnClick?: (column: IColumn, ev: Event) => void;
+  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void;
   onColumnContextMenu?: (column: IColumn, ev: Event) => void;
   groupNestingDepth?: number;
   isAllCollapsed?: boolean;
@@ -363,11 +363,11 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     let { onColumnClick } = this.props;
 
     if (column.onColumnClick) {
-      column.onColumnClick(column, ev);
+      column.onColumnClick(ev, column);
     }
 
     if (onColumnClick) {
-      onColumnClick(column, ev);
+      onColumnClick(ev, column);
     }
   }
 

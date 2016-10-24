@@ -85,7 +85,7 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   onRowWillUnmount?: (item?: any, index?: number) => void;
 
   /** Callback for when the user clicks on the column header. */
-  onColumnHeaderClick?: (column?: IColumn, ev?: Event) => void;
+  onColumnHeaderClick?: (ev?: React.MouseEvent<HTMLElement>, column?: IColumn) => void;
 
   /** Callback for when the user asks for a contextual menu (usually via right click) from a column header. */
   onColumnHeaderContextMenu?: (column?: IColumn, ev?: Event) => void;
@@ -237,7 +237,7 @@ export interface IColumn {
   /**
    * If provided, will be executed when the user clicks on the column header.
    */
-  onColumnClick?: (column?: IColumn, ev?: React.MouseEvent<HTMLElement>) => any;
+  onColumnClick?: (ev?: React.MouseEvent<HTMLElement>, column?: IColumn) => any;
 
   /**
    * If provided, will be executed when the user accesses the contextmenu on a column header.

@@ -70,15 +70,3 @@ export interface ICalloutProps extends React.Props<Callout|CalloutContent>, IPos
    */
   setInitialFocus?: boolean;
 }
-
-export interface ILink {
-  /**
-   * Text to render for the link.
-   */
-  name: string;
-
-  /**
-   * URL for the link.
-   */
-  url: string;
-}
