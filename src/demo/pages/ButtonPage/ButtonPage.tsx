@@ -128,7 +128,7 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
     );
   }
 
-  private _onDisabledChanged(ev: React.MouseEvent, isDisabled: boolean) {
+  private _onDisabledChanged(ev: React.MouseEvent<HTMLElement>, isDisabled: boolean) {
     this.setState({
       areButtonsDisabled: isDisabled
     });

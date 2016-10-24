@@ -83,7 +83,7 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
     this._handleWithAnimation(this.props.onToggleComplete, 'ms-u-slideUpOut20');
   }
 
-  private _onDelete(event: React.MouseEvent): void {
+  private _onDelete(event: React.MouseEvent<HTMLElement>): void {
     this._handleWithAnimation(this.props.onDeleteItem, 'ms-u-slideUpOut20');
   }
 

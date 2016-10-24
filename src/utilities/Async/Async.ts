@@ -6,6 +6,9 @@
  * new instance of the class and remember to call dispose() during your code's dispose handler.
  */
 
+declare function setTimeout(cb: Function, delay: number): number;
+declare function setInterval(cb: Function, delay: number): number;
+
 export class Async {
   private _timeoutIds = null;
   private _immediateIds = null;
