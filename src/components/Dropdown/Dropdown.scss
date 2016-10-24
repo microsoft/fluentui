@@ -125,12 +125,6 @@ $DropDown-item-height: 36px;
   }
 }
 
-// When the dropdown is opened
-.ms-Dropdown.is-open .ms-Dropdown-items {
-  display: block;
-  position: absolute;
-}
-
 .ms-Dropdown-caretDown {
   color: $ms-color-neutralDark;
   font-size: $ms-icon-size-s;
@@ -160,14 +154,11 @@ $DropDown-item-height: 36px;
   @include ms-u-normalize;
   @include drop-shadow;
   background-color: $ms-color-white;
-  display: none;
   list-style-type: none;
-  position: absolute;
   width: 100%;
   max-height: 200px;
   z-index: ($ms-zIndex-Dropdown + $ms-zIndex-back);
   overflow-y: scroll;
-
   top: auto;
   right: auto;
   bottom: auto;
