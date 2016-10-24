@@ -117,7 +117,6 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
            className={ css('ms-Nav-compositeLink', { ' is-expanded': link.isExpanded, 'is-selected': isLinkSelected }) }>
         { (nestingLevel === 0 && link.links && link.links.length > 0 ?
           <button
-            buttonType={ ButtonType.icon }
             className='ms-Nav-chevronButton ms-Nav-chevronButton--link'
             onClick={ this._onLinkExpandClicked.bind(this, link) }
             title={ (link.isExpanded ? this.props.expandedStateText : this.props.collapsedStateText) }
