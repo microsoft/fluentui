@@ -1,8 +1,12 @@
 import * as React from 'react';
 import { css } from '../../utilities/css';
-import { IFacepileProps, IFacepilePersona } from './Facepile.Props';
-import { Persona,
-  PERSONA_INITIALS_COLOR,
+import { ButtonType } from '../Button/index';
+import {
+  IFacepileProps,
+  IFacepilePersona
+} from './Facepile.Props';
+import {
+  Persona,
   PersonaInitialsColor,
   PersonaSize
 } from '../../Persona';
@@ -10,8 +14,10 @@ import './Facepile.scss';
 
 export class Facepile extends React.Component<IFacepileProps, {}> {
   public static defaultProps: IFacepileProps = {
-    addUserIconColor: PersonaInitialsColor.blue,
-    overflowIconColor: PersonaInitialsColor.black,
+    addButtonProps: {
+      buttonType: ButtonType.icon,
+      icon: 'AddFriend'
+    },
     maxDisplayablePersonas: 5,
     personas: []
   };
@@ -52,7 +58,8 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
         initialsColor: PersonaInitialsColor.black,
         personaName: this.props.personas.slice(numPersonasToShow).map((persona: IFacepilePersona, index: number) => {
           return persona.personaName;
-        }).join(', ')
+        }).join(', '), // Intl safe?
+        onClick: this.props.overflowButtonProps && this.props.overflowButtonProps.onClick ? this.props.overflowButtonProps.onClick : null
       });
     }
   }
@@ -88,7 +95,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
     return  <button
               className='ms-Facepile-itemBtn ms-Facepile-itemBtn--member'
               title={ persona.personaName }
-              key={ index }
+              key={ persona.imageInitials + index }
               onClick={ this._onPersonaClick.bind(this, persona) }
               onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
               onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }>
@@ -100,7 +107,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
     return  <div
               className='ms-Facepile-itemBtn ms-Facepile-itemBtn--member'
               title={ persona.personaName }
-              key={ index }
+              key={ persona.imageInitials + index }
               onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
               onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }>
               { personaControl }
@@ -108,16 +115,9 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   }
 
   private _getAddNewElement(): JSX.Element {
-    return  <button className={css('ms-Facepile-itemBtn', 'ms-Persona-initials', PERSONA_INITIALS_COLOR[this.props.addUserIconColor])}
-              onMouseDown={ this._onAddClick.bind(this) }>
+    return  <button {...this.props.addButtonProps} className={css('ms-Facepile-itemBtn', 'ms-Facepile-itemBtn--member', this.props.addButtonProps.color)}>
               <i className='ms-Icon msIcon ms-Icon--AddFriend' aria-hidden='true'></i>
             </button>;
-  }
-
-  private _onAddClick(ev?: React.MouseEvent): void {
-    this.props.onClickAddButton();
-    ev.preventDefault();
-    ev.stopPropagation();
   }
 
   private _onPersonaClick(persona: IFacepilePersona, ev?: React.MouseEvent): void {

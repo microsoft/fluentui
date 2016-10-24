@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Facepile } from './Facepile';
+import { IButtonProps } from '../Button/index';
 import { PersonaInitialsColor } from '../Persona/index';
 
 export interface IFacepileProps extends React.Props<Facepile> {
@@ -15,11 +16,11 @@ export interface IFacepileProps extends React.Props<Facepile> {
   /** Show add person button */
   showAddButton?: boolean;
 
-  addUserIconColor?: PersonaInitialsColor;
+  /** Button properties for the add face button */
+  addButtonProps?: IButtonProps;
 
-  overflowIconColor?: PersonaInitialsColor;
-
-  onClickAddButton?: (ev?: React.MouseEvent) => void;
+  /** Button properties for the overflow persona */
+  overflowButtonProps?: IButtonProps;
 }
 
 export interface IFacepilePersona {

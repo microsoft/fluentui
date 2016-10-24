@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  ButtonType,
   Facepile,
   IFacepileProps
 } from '../../../../index';
@@ -23,9 +24,14 @@ export class FacepileAddFaceExample extends React.Component<any, IFacepileAddFac
     let facepileProps: IFacepileProps = {
       personas: facepilePersonas.slice(0, numberOfFaces),
       showAddButton: true,
-      onClickAddButton: (ev) => this.setState({
-        numberOfFaces: this.state.numberOfFaces + 1
-      })
+      addButtonProps: {
+        buttonType: ButtonType.icon,
+        icon: 'AddFriend',
+        title: 'Add Face',
+        onClick: (ev) => this.setState({
+          numberOfFaces: this.state.numberOfFaces + 1
+        })
+      }
     };
 
     return (

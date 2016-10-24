@@ -2,13 +2,18 @@ import * as React from 'react';
 import {
   Dropdown,
   IDropdownOption,
+  IFacepilePersona,
   IFacepileProps,
   Facepile
 } from '../../../../index';
 import { facepilePersonas } from './FacepileExampleData';
 
 const facepileProps: IFacepileProps = {
-  personas: facepilePersonas
+  personas: facepilePersonas,
+  overflowButtonProps: {
+    onClick: (ev: React.MouseEvent) =>
+      alert('overflow icon clicked')
+  }
 };
 
 export interface IFacepileOverflowExampleState {
