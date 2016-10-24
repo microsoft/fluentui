@@ -106,7 +106,7 @@ export class ThemePage extends React.Component<any, any> {
     );
   }
 
-  private _onSwatchClicked(item: any, index: number, ev: React.MouseEvent) {
+  private _onSwatchClicked(item: any, index: number, ev: React.MouseEvent<HTMLElement>) {
     this.setState({
       colorPickerProps: {
         targetElement: (ev.currentTarget as HTMLElement).children[0],

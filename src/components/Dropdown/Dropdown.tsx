@@ -156,7 +156,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
   }
 
   @autobind
-  private _onDropdownKeyDown(ev: React.KeyboardEvent) {
+  private _onDropdownKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     switch (ev.which) {
       case KeyCodes.enter:
         this.setState({
@@ -206,7 +206,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
   }
 
   @autobind
-  private _onFocusChange(ev: React.FocusEvent) {
+  private _onFocusChange(ev: React.FocusEvent<HTMLElement>) {
     if (this.state.isOpen && !elementContains(this.refs.root, ev.target as HTMLElement)) {
       this.setState({
         isOpen: false

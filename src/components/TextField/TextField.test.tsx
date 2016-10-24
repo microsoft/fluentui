@@ -9,14 +9,14 @@ const expect: Chai.ExpectStatic = chai.expect;
 
 describe('TextField', () => {
   function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
-    const component: React.Component<any, any> = ReactTestUtils.renderIntoDocument(element);
-    const renderedDOM: Element = ReactDOM.findDOMNode(component);
+    const component = ReactTestUtils.renderIntoDocument(element);
+    const renderedDOM: Element = ReactDOM.findDOMNode(component as React.ReactInstance);
     return renderedDOM as HTMLElement;
   }
 
-  function mockEvent(targetValue: string = ''): React.SyntheticEvent {
+  function mockEvent(targetValue: string = ''): React.SyntheticEvent<HTMLElement> {
     const target: EventTarget = { value: targetValue } as HTMLInputElement;
-    const event: React.SyntheticEvent = { target } as React.SyntheticEvent;
+    const event: React.SyntheticEvent<HTMLElement> = { target } as React.SyntheticEvent<HTMLElement>;
     return event;
   }
 

@@ -113,7 +113,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
   }
 
   @autobind
-  private _onShowBeakChange(ev: React.FormEvent, isVisible: boolean) {
+  private _onShowBeakChange(ev: React.FormEvent<HTMLElement>, isVisible: boolean) {
     this.setState({
       isBeakVisible: isVisible,
       beakWidth: 10
