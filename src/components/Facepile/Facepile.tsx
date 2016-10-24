@@ -53,14 +53,18 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   }
 
   private _addNumberNotPictured(numPersonasToShow: number, hasPersonasNotPictured: boolean, numPersonasNotPictured: number, personasToShow: IFacepilePersona[]): void {
+    let overflowPersonaProps: IFacepilePersona = this.props.overflowPersonaProps ? this.props.overflowPersonaProps : {};
     if (hasPersonasNotPictured) {
       personasToShow.push({
-        imageInitials: '+' + numPersonasNotPictured,
-        initialsColor: PersonaInitialsColor.black,
-        personaName: this.props.personas.slice(numPersonasToShow).map((persona: IFacepilePersona, index: number) => {
+        imageInitials: overflowPersonaProps.imageInitials || '+' + numPersonasNotPictured,
+        imageUrl: overflowPersonaProps.imageUrl,
+        initialsColor: overflowPersonaProps.initialsColor || PersonaInitialsColor.black,
+        personaName: overflowPersonaProps.personaName || this.props.personas.slice(numPersonasToShow).map((persona: IFacepilePersona, index: number) => {
           return persona.personaName;
         }).join(', '), // Intl safe?
-        onClick: this.props.overflowButtonProps && this.props.overflowButtonProps.onClick ? this.props.overflowButtonProps.onClick : null
+        onClick: overflowPersonaProps.onClick,
+        onMouseMove: overflowPersonaProps.onMouseMove,
+        onMouseOut: overflowPersonaProps.onMouseOut
       });
     }
   }

@@ -10,7 +10,7 @@ import { facepilePersonas } from './FacepileExampleData';
 
 const facepileProps: IFacepileProps = {
   personas: facepilePersonas,
-  overflowButtonProps: {
+  overflowPersonaProps: {
     onClick: (ev: React.MouseEvent) =>
       alert('overflow icon clicked')
   }
