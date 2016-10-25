@@ -223,6 +223,7 @@ export function getNativeProps<T>(props: any, allowedPropNames: string[]): T {
   return filteredAssign((propName) => {
     return (
       (propName.indexOf('data-') === 0) ||
+      (propName.indexOf('aria-') === 0) ||
       (allowedPropNames.indexOf(propName) >= 0)
     );
   },
