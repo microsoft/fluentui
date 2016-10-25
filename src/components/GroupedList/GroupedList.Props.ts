@@ -4,7 +4,7 @@ import {
 } from './GroupedList';
 import {
   IListProps
-} from '../List';
+} from '../../List';
 import { IRenderFunction } from '../../common/IRenderFunction';
 import {
   IDragDropContext,
