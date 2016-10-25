@@ -126,7 +126,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     }
 
     if (selection) {
-      this._events.on(selection, SELECTION_CHANGE, this._onSelectionChanged);
+      this._events.on(selection, SELECTION_CHANGE, this._onSelectionChange);
     }
   }
 
@@ -234,7 +234,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     return <GroupFooter { ...props } />;
   }
 
-  private _onSelectionChanged() {
+  private _onSelectionChange() {
     let { group, selection } = this.props;
     let isSelected = selection.isRangeSelected(group.startIndex, group.count);
 
