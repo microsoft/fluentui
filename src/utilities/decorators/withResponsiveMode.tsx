@@ -46,7 +46,7 @@ export function withResponsiveMode<P extends { responsiveMode?: ResponsiveMode }
       };
     }
 
-    public componentWillMount() {
+    public componentDidMount() {
       this._events.on(window, 'resize', () => {
         let responsiveMode = this._getResponsiveMode();
 

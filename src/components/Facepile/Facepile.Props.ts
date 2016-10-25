@@ -52,17 +52,17 @@ export interface IFacepilePersona extends React.HTMLProps<HTMLButtonElement | HT
    * If provided, persona will be rendered with cursor:pointer and the handler will be
    * called on click.
    */
-  onClick?: (ev?: React.MouseEvent, persona?: IFacepilePersona) => void;
+  onClick?: (ev?: React.MouseEvent<HTMLElement>, persona?: IFacepilePersona) => void;
 
   /**
    * If provided, the handler will be called on mouse move.
    */
-  onMouseMove?: (ev?: React.MouseEvent, persona?: IFacepilePersona) => void;
+  onMouseMove?: (ev?: React.MouseEvent<HTMLElement>, persona?: IFacepilePersona) => void;
 
   /**
    * If provided, the handler will be called when mouse moves out of the component.
    */
-  onMouseOut?: (ev?: React.MouseEvent, persona?: IFacepilePersona) => void;
+  onMouseOut?: (ev?: React.MouseEvent<HTMLElement>, persona?: IFacepilePersona) => void;
 
   /**
    * Extra data - not used directly but can be handy for passing additional data to custom event
