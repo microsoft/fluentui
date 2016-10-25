@@ -23,7 +23,7 @@ export const facepilePersonas: IFacepilePersona[] = [
     personaName: 'Alex Lundberg',
     initialsColor: PersonaInitialsColor.darkGreen,
     data: 'Emp1234',
-    onClick: (ev: React.MouseEvent, persona: IFacepilePersona) =>
+    onClick: (ev: React.MouseEvent<HTMLElement>, persona: IFacepilePersona) =>
       alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data)
   },
   {
@@ -44,7 +44,7 @@ export const facepilePersonas: IFacepilePersona[] = [
     personaName: 'Valentina Lovric',
     initialsColor: PersonaInitialsColor.lightBlue,
     data: 'Emp1234',
-    onClick: (ev: React.MouseEvent, persona: IFacepilePersona) =>
+    onClick: (ev: React.MouseEvent<HTMLElement>, persona: IFacepilePersona) =>
       alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data)
   },
   {
@@ -65,7 +65,7 @@ export const facepilePersonas: IFacepilePersona[] = [
     personaName: 'Aaron Reid2',
     initialsColor: PersonaInitialsColor.magenta,
     data: 'Emp1234',
-    onClick: (ev: React.MouseEvent, persona: IFacepilePersona) =>
+    onClick: (ev: React.MouseEvent<HTMLElement>, persona: IFacepilePersona) =>
       alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data)
   },
   {

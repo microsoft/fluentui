@@ -102,25 +102,27 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
 
   private _getElementWithOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
     return  <button
+              { ...getNativeProps(persona, buttonProperties) }
               className='ms-Facepile-itemBtn ms-Facepile-itemBtn--member'
               title={ persona.personaName }
               key={ persona.imageInitials + index }
               onClick={ this._onPersonaClick.bind(this, persona) }
               onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
               onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
-              { ...getNativeProps(persona, buttonProperties) }>
+              >
               { personaControl }
             </button>;
   }
 
   private _getElementWithoutOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
     return  <div
+              { ...getNativeProps(persona, divProperties) }
               className='ms-Facepile-itemBtn ms-Facepile-itemBtn--member'
               title={ persona.personaName }
               key={ persona.imageInitials + index }
               onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
               onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
-              { ...getNativeProps(persona, divProperties) }>
+              >
               { personaControl }
             </div>;
   }

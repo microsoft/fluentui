@@ -28,7 +28,7 @@ export class FacepileAddFaceExample extends React.Component<any, IFacepileAddFac
         buttonType: ButtonType.icon,
         icon: 'AddFriend',
         title: 'Add Face',
-        onClick: (ev) => this.setState({
+        onClick: (ev: React.MouseEvent<HTMLButtonElement>) => this.setState({
           numberOfFaces: this.state.numberOfFaces + 1
         })
       }
