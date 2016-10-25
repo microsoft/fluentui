@@ -428,7 +428,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
       let groupedItems = [];
       let newGroups = null;
       if (groups) {
-        newGroups = groups;
+        newGroups = groups.concat([]);
         groupedItems = this._groupByKey(newGroups, items, key);
       } else {
         groupedItems = this._groupItems(items, key);
