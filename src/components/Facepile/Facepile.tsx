@@ -24,6 +24,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   };
 
   public render(): JSX.Element {
+    let personalDetailsHidden: boolean = this.props.personas.length > 1;
     return (
       <div className='ms-Facepile'>
         <div className='ms-Facepile-members'>
@@ -36,6 +37,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
                 this._getElementWithoutOnClickEvent(personaControl, persona, index);
             })
           }
+          { this.props.chevronButtonProps && personalDetailsHidden ? this._getChevronElement() : null }
         </div>
       </div>
     );
@@ -47,7 +49,9 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
     let hasPersonasNotPictured: boolean = numPersonasNotPictured > 0;
     let personasToShow: IFacepilePersona[] = this.props.personas.slice(0, numPersonasToShow);
 
-    this._addNumberNotPictured(numPersonasToShow, hasPersonasNotPictured, numPersonasNotPictured, personasToShow);
+    if (this.props.overflowPersonaProps) {
+      this._addNumberNotPictured(numPersonasToShow, hasPersonasNotPictured, numPersonasNotPictured, personasToShow);
+    }
 
     return personasToShow;
   }
@@ -61,7 +65,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
         initialsColor: overflowPersonaProps.initialsColor || PersonaInitialsColor.black,
         personaName: overflowPersonaProps.personaName || this.props.personas.slice(numPersonasToShow).map((persona: IFacepilePersona, index: number) => {
           return persona.personaName;
-        }).join(', '), // Intl safe?
+        }).join(', '),
         onClick: overflowPersonaProps.onClick,
         onMouseMove: overflowPersonaProps.onMouseMove,
         onMouseOut: overflowPersonaProps.onMouseOut
@@ -78,7 +82,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
     }
 
     // Remove one if max exceeded for the +1 icon
-    if (this.props.personas.length > maxShownPersonas) {
+    if (this.props.overflowPersonaProps && this.props.personas.length > maxShownPersonas) {
       --maxShownPersonas;
     }
 
@@ -122,8 +126,14 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   }
 
   private _getAddNewElement(): JSX.Element {
-    return  <button {...this.props.addButtonProps} className={css('ms-Facepile-itemBtn', 'ms-Facepile-itemBtn--member', this.props.addButtonProps.color)}>
+    return  <button {...this.props.addButtonProps} className={css('ms-Facepile-addBtn', 'ms-Facepile-itemBtn', 'ms-Persona-initials')}>
               <i className='ms-Icon msIcon ms-Icon--AddFriend' aria-hidden='true'></i>
+            </button>;
+  }
+
+  private _getChevronElement(): JSX.Element {
+    return  <button {...this.props.chevronButtonProps} className={css('ms-Facepile-chevronBtn', 'ms-Facepile-itemBtn')}>
+              <i className='ms-Icon msIcon ms-Icon--ChevronDown' aria-hidden='true'></i>
             </button>;
   }
 

@@ -23,7 +23,11 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
   public render() {
     let { numberOfFaces } = this.state;
     let facepileProps: IFacepileProps = {
-      personas: facepilePersonas.slice(0, numberOfFaces)
+      personas: facepilePersonas.slice(0, numberOfFaces),
+      chevronButtonProps: {
+        onClick: (ev: React.MouseEvent) =>
+          alert('Down arrow icon clicked')
+      }
     };
 
     return (

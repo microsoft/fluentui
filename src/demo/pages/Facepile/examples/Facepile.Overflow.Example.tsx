@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   Dropdown,
   IDropdownOption,
-  IFacepilePersona,
   IFacepileProps,
   Facepile
 } from '../../../../index';
@@ -37,7 +36,7 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
       <div>
         <Facepile {...facepileProps} />
         <Dropdown
-          label='Max Personas Allowed:'
+          label='Max Personas Shown:'
           options={
             [
               { key: 1, text: '1' },

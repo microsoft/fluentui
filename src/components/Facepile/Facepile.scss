@@ -27,3 +27,25 @@ button.ms-Facepile-itemBtn {
    cursor: pointer;
    border: none;
 }
+
+button.ms-Facepile-addBtn {
+  background-color: $ms-color-themePrimary;
+
+  &:hover, &:focus {
+    background-color: $ms-color-themeDark;
+  }
+
+  &.click {
+    background-color: $ms-color-themeDarker;
+  }
+
+  &.disabled {
+    background-color: $ms-color-neutralTertiary;
+  }
+}
+
+button.ms-Facepile-chevronBtn {
+  font-size: $ms-font-size-s;
+  color: $ms-color-neutralSecondary;
+  background-color: $ms-color-neutralLight;
+}

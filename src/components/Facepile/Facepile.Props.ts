@@ -19,6 +19,9 @@ export interface IFacepileProps extends React.Props<Facepile> {
   /** Button properties for the add face button */
   addButtonProps?: IButtonProps;
 
+  /** Button properties for the chevron button */
+  chevronButtonProps?: IButtonProps;
+
   /** Properties for the overflow persona */
   overflowPersonaProps?: IFacepilePersona;
 }
