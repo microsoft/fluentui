@@ -107,7 +107,7 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
     );
   }
 
-  private _onToggleSelect(ev?: React.MouseEvent, item?: IContextualMenuItem) {
+  private _onToggleSelect(ev?: React.MouseEvent<HTMLButtonElement>, item?: IContextualMenuItem) {
     let { selection } = this.state;
 
     selection[item.key] = !selection[item.key];
@@ -117,7 +117,7 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
     });
   }
 
-  private _onClick(event: React.MouseEvent) {
+  private _onClick(event: React.MouseEvent<HTMLButtonElement>) {
     this.setState({target: {x: event.clientX, y: event.clientY}, isContextMenuVisible: true});
   }
 

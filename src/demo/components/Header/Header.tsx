@@ -90,7 +90,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     );
   }
 
-  private _onMenuClick(ev: React.MouseEvent) {
+  private _onMenuClick(ev: React.MouseEvent<HTMLElement>) {
     let { onIsMenuVisibleChanged, isMenuVisible } = this.props;
 
     if (onIsMenuVisibleChanged) {
@@ -98,7 +98,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     }
   }
 
-  private _onGearClick(ev: React.MouseEvent) {
+  private _onGearClick(ev: React.MouseEvent<HTMLElement>) {
     let { contextMenu } = this.state;
 
     this.setState({
@@ -118,7 +118,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     }];
   }
 
-  private _onRTLToggled(ev: React.MouseEvent) {
+  private _onRTLToggled(ev: React.MouseEvent<HTMLElement>) {
     let { isRTLEnabled } = this.state;
 
     setRTL(!isRTLEnabled);

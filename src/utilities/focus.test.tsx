@@ -13,8 +13,8 @@ let _visibleElement;
 let _element;
 
 function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
-  const component: React.Component<any, any> = ReactTestUtils.renderIntoDocument(element);
-  const renderedDOM: Element = ReactDOM.findDOMNode(component);
+  const component = ReactTestUtils.renderIntoDocument(element);
+  const renderedDOM: Element = ReactDOM.findDOMNode(component as React.ReactInstance);
   return renderedDOM as HTMLElement;
 }
 

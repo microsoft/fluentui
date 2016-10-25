@@ -21,7 +21,7 @@ export interface IPivotProps extends React.Props<Pivot> {
   /**
    * Callback issued when the selected pivot item is changed
    */
-  onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent) => void;
+  onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) => void;
 
   /**
    * Specify the PivotLinkSize to use (normal, large)
