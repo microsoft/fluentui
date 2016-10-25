@@ -112,9 +112,12 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
   constructor(props: IGroupedListSectionProps) {
     super(props);
 
+    let { selection, group } = props;
+
     this._subGroups = {};
     this.state = {
-      isDropping: false
+      isDropping: false,
+      isSelected: (selection && group) ? selection.isRangeSelected(group.startIndex, group.count) : false
     };
   }
 
