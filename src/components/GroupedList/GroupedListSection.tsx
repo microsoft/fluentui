@@ -17,7 +17,8 @@ import {
 
 import {
   ISelection,
-  SelectionMode
+  SelectionMode,
+  SELECTION_CHANGE
 } from '../../utilities/selection/index';
 
 import { GroupFooter } from './GroupFooter';
@@ -91,6 +92,7 @@ export interface IGroupedListSectionProps extends React.Props<GroupedListSection
 
 export interface IGroupedListSectionState {
   isDropping?: boolean;
+  isSelected?: boolean;
 }
 
 const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
@@ -117,10 +119,14 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
   }
 
   public componentDidMount() {
-    let { dragDropHelper } = this.props;
+    let { dragDropHelper, selection } = this.props;
 
     if (dragDropHelper) {
       dragDropHelper.subscribe(this.refs.root, this._events, this._getGroupDragDropOptions());
+    }
+
+    if (selection) {
+      this._events.on(selection, SELECTION_CHANGE, this._onSelectionChanged);
     }
   }
 
@@ -144,6 +150,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       onRenderGroupHeader = this._onRenderGroupHeader,
       onRenderGroupFooter = this._onRenderGroupFooter
     } = this.props;
+    let { isSelected } = this.state;
     let renderCount = group && getGroupItemLimit ? getGroupItemLimit(group) : Infinity;
     let isFooterVisible = group && !group.children && !group.isCollapsed && !group.isShowingAll && group.count > renderCount;
     let hasNestedGroups = group && group.children && group.children.length > 0;
@@ -152,6 +159,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       group: group,
       groupIndex: groupIndex,
       groupLevel: group ? group.level : 0,
+      isSelected,
       viewport: viewport,
       selectionMode: selectionMode
     };
@@ -224,6 +232,15 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
   @autobind
   private _onRenderGroupFooter(props: IGroupDividerProps) {
     return <GroupFooter { ...props } />;
+  }
+
+  private _onSelectionChanged() {
+    let { group, selection } = this.props;
+    let isSelected = selection.isRangeSelected(group.startIndex, group.count);
+
+    if (isSelected !== this.state.isSelected) {
+      this.setState({ isSelected });
+    }
   }
 
   private _onRenderGroup(renderCount: number) {
