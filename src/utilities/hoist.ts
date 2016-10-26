@@ -37,10 +37,10 @@ export function hoistMethods(destination, source, exclusions: string[] = REACT_L
 
 /**
  * Provides a method for convenience to unhoist hoisted methods.
- * @param {Object} source The source object upon which methods were hoisted.
+ * @param {any} source The source object upon which methods were hoisted.
  * @param {string[]} methodNames An array of method names to unhoist.
  */
-export function unhoistMethods(source: Object, methodNames: string[]): void {
+export function unhoistMethods(source: any, methodNames: string[]): void {
   methodNames
     .forEach((methodName) => delete source[methodName]);
 }
