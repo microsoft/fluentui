@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {
-  Dropdown,
-  IDropdownOption,
+  Slider,
   Facepile,
   IFacepileProps
 } from '../../../../index';
 import { facepilePersonas } from './FacepileExampleData';
+import './Facepile.Examples.scss';
 
 export interface IFacepileBasicExampleState {
   numberOfFaces: any;
@@ -31,30 +31,18 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
     };
 
     return (
-      <div>
+      <div className={'ms-FacepileExample'}>
         <Facepile {...facepileProps} />
-        <Dropdown
+        <Slider
           label='Number of Personas:'
-          options={
-            [
-              { key: 1, text: '1' },
-              { key: 2, text: '2' },
-              { key: 3, text: '3' },
-              { key: 4, text: '4' },
-              { key: 5, text: '5' },
-              { key: 6, text: '6' }
-            ]
-          }
-          selectedKey={this.state.numberOfFaces}
-          onChanged={this._onDropdownChanged.bind(this)}
+          min={1}
+          max={8}
+          step={1}
+          showValue={true}
+          value={this.state.numberOfFaces}
+          onChange={value => this.setState({ numberOfFaces: value })}
           />
       </div>
     );
-  }
-
-  private _onDropdownChanged(option: IDropdownOption) {
-    this.setState({
-      numberOfFaces: option.key
-    });
   }
 }

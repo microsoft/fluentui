@@ -15,10 +15,6 @@ import { getNativeProps, buttonProperties, divProperties } from '../../utilities
 
 export class Facepile extends React.Component<IFacepileProps, {}> {
   public static defaultProps: IFacepileProps = {
-    addButtonProps: {
-      buttonType: ButtonType.icon,
-      icon: 'AddFriend'
-    },
     maxDisplayablePersonas: 5,
     personas: []
   };
@@ -74,18 +70,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   }
 
   private _calulateNumPersonasToShow(): number {
-    let maxShownPersonas: number = this.props.maxDisplayablePersonas;
-
-    // Remove one for the add person button
-    if (this.props.showAddButton) {
-      --maxShownPersonas;
-    }
-
-    // Remove one if max exceeded for the +1 icon
-    if (this.props.overflowPersonaProps && this.props.personas.length > maxShownPersonas) {
-      --maxShownPersonas;
-    }
-
+    let maxShownPersonas: number = this.props.maxDisplayablePersonas != null ? this.props.maxDisplayablePersonas : Facepile.defaultProps.maxDisplayablePersonas;
     return this.props.personas.length < maxShownPersonas ? this.props.personas.length : maxShownPersonas;
   }
 
@@ -128,13 +113,13 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   }
 
   private _getAddNewElement(): JSX.Element {
-    return  <button {...this.props.addButtonProps} className={css('ms-Facepile-addBtn', 'ms-Facepile-itemBtn', 'ms-Persona-initials')}>
+    return  <button { ...getNativeProps(this.props.addButtonProps, buttonProperties) } className={css('ms-Facepile-addBtn', 'ms-Facepile-itemBtn', 'ms-Persona-initials')}>
               <i className='ms-Icon msIcon ms-Icon--AddFriend' aria-hidden='true'></i>
             </button>;
   }
 
   private _getChevronElement(): JSX.Element {
-    return  <button {...this.props.chevronButtonProps} className={css('ms-Facepile-chevronBtn', 'ms-Facepile-itemBtn')}>
+    return  <button { ...getNativeProps(this.props.chevronButtonProps, buttonProperties) } className={css('ms-Facepile-chevronBtn', 'ms-Facepile-itemBtn')}>
               <i className='ms-Icon msIcon ms-Icon--ChevronDown' aria-hidden='true'></i>
             </button>;
   }
