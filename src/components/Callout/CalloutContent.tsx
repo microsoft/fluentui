@@ -81,11 +81,20 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       width: beakStyleWidth
     };
 
+    // To prevent the inner content from being too big the outer content needs to have a height.
+    // This allows max-height: 100% to work as intended. Without a height set the inner content
+    // cannot size properly.
+    let calloutStyle: React.CSSProperties = {
+      top: positions && positions.callout ? positions.callout.top : OFF_SCREEN_POSITION.top,
+      left: positions && positions.callout ? positions.callout.left : OFF_SCREEN_POSITION.left,
+      height: this._calloutElement ? this._calloutElement.getBoundingClientRect().height : undefined
+    };
+
     let content = (
       <div ref={ this._resolveRef('_hostElement') } className={ 'ms-Callout-container' }>
         <div
           className={ css('ms-Callout', className, slideDirectionalClassName ? `ms-u-${ slideDirectionalClassName }` : '') }
-          style={ ((positions) ? positions.callout : OFF_SCREEN_POSITION) }
+          style={ calloutStyle }
           ref={ this._resolveRef('_calloutElement') }
           >
           { isBeakVisible && targetElement ? (
