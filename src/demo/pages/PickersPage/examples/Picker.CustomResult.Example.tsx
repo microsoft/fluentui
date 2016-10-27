@@ -374,7 +374,7 @@ export class DocumentPicker extends BasePicker<IFullDocumentCardProps, IDocument
     );
   }
 
-  protected _onBackspace(ev: React.KeyboardEvent) {
+  protected _onBackspace(ev: React.KeyboardEvent<HTMLElement>) {
     // override the existing backspace method to not do anything because the list items appear below.
   }
 }

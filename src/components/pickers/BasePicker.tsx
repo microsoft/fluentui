@@ -228,7 +228,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   @autobind
-  protected onInputFocus(ev: React.FocusEvent<HTMLElement>) {
+  protected onInputFocus(ev: React.FocusEvent<HTMLInputElement | BaseAutoFill>) {
     this.selection.setAllSelected(false);
     if (this.input.value) {
       this.setState({ suggestionsVisible: true });
@@ -236,7 +236,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   @autobind
-  protected onKeyDown(ev: React.KeyboardEvent) {
+  protected onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     let value = this.input.value;
 
     switch (ev.which) {
@@ -336,7 +336,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   // This is protected because we may expect the backspace key to work differently in a different kind of picker.
   // This lets the subclass override it and provide it's own onBackspace. For an example see the BasePickerListBelow
-  protected onBackspace(ev: React.KeyboardEvent) {
+  protected onBackspace(ev: React.KeyboardEvent<HTMLElement>) {
     if (this.state.items.length && !this.input.isValueSelected && this.input.cursorLocation === 0) {
       this.removeItem(this.state.items[this.state.items.length - 1]);
     } else if (this.selection.getSelectedCount() > 0) {
@@ -382,7 +382,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
     );
   }
 
-  protected onBackspace(ev: React.KeyboardEvent) {
+  protected onBackspace(ev: React.KeyboardEvent<HTMLElement>) {
     // override the existing backspace method to not do anything because the list items appear below.
   }
 }

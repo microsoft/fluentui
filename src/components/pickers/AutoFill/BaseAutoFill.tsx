@@ -109,7 +109,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   }
 
   @autobind
-  private _onKeyDown(ev: React.KeyboardEvent) {
+  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     switch (ev.which) {
       case KeyCodes.backspace:
         this._onBackspace(ev);
@@ -117,7 +117,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
     }
   }
 
-  private _onBackspace(ev: React.KeyboardEvent) {
+  private _onBackspace(ev: React.KeyboardEvent<HTMLElement>) {
     let { value } = this.state;
     if (ev.target === this._inputElement) {
       if (value && value.length > 0) {
@@ -131,7 +131,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   }
 
   @autobind
-  private _onChange(ev: React.FormEvent) {
+  private _onChange(ev: React.FormEvent<HTMLElement>) {
     let value: string = (ev.target as HTMLInputElement).value;
     this._updateValue(value);
   }
