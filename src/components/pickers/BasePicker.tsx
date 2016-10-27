@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FocusZone } from '../../FocusZone';
-import { Callout } from '../../Callout';
+import { Callout, DirectionalHint } from '../../Callout';
 import { KeyCodes } from '../../utilities/KeyCodes';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
 import { Suggestions } from './Suggestions/Suggestions';
@@ -11,6 +11,7 @@ import { IPickerItemProps } from './PickerItem.Props';
 import { BaseComponent } from '../../common/BaseComponent';
 import { css } from '../../utilities/css';
 import { autobind } from '../../utilities/autobind';
+import { getRTL } from '../../utilities/rtl';
 import './BasePicker.scss';
 
 export interface IBasePickerState {
@@ -112,7 +113,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected renderSuggestions(): JSX.Element {
     let TypedSuggestion = this.SuggestionOfProperType;
     return this.state.suggestionsVisible ? (
-      <Callout isBeakVisible={ false } gapSpace={ 0 } targetElement={ this.root } onDismiss={ this.dismissSuggestions }>
+      <Callout
+        isBeakVisible={ false }
+        gapSpace={ 0 }
+        targetElement={ this.root }
+        onDismiss={ this.dismissSuggestions }
+        directionalHint={getRTL() ? DirectionalHint.bottomRightEdge: DirectionalHint.bottomLeftEdge}>
         <TypedSuggestion
           onRenderSuggestion={ this.props.onRenderSuggestionsItem }
           onSuggestionClick={ this.onSuggestionClick }

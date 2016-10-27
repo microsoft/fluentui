@@ -60,9 +60,10 @@
   margin: 5px;
   text-align: center;
   white-space: nowrap;
-  line-height: 10px;
+  line-height: 20px;
   .ms-Spinner-circle {
     display: inline-block;
+    vertical-align: middle;
   }
   .ms-Spinner-label {
     display: inline-block;
