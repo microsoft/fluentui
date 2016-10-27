@@ -219,35 +219,8 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
 
   @autobind
   private _onToggleSelectGroup(group: IGroup) {
-    let { groups } = this.state;
-
     if (group) {
-      let isSelected = !group.isSelected;
-      this._selectGroup(group, isSelected);
-
-      this.setState({
-        groups: groups
-      });
-    }
-  }
-
-  private _selectGroup(group: IGroup, isSelected: boolean) {
-    let { groupProps } = this.props;
-
-    group.isSelected = isSelected;
-    if (group.children && group.children.length > 0) {
-      group.children.forEach((childGroup: IGroup) => {
-        this._selectGroup(childGroup, isSelected);
-      });
-    } else {
-      let getGroupItemLimit = groupProps && groupProps.getGroupItemLimit;
-      let groupItemLimit = getGroupItemLimit ? getGroupItemLimit(group) : Infinity;
-      let start = group.startIndex;
-      let end = group.startIndex + Math.min(group.count, groupItemLimit);
-      for (let idx = start; idx < end; idx++) {
-        this.props.selection.setIndexSelected(idx, isSelected, false /* shouldAnchor */);
-      }
-      this.setState({ }, this.forceUpdate);
+      this.props.selection.toggleRangeSelected(group.startIndex, group.count);
     }
   }
 
