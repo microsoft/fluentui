@@ -10,8 +10,8 @@ import './Facepile.Examples.scss';
 const facepileProps: IFacepileProps = {
   personas: facepilePersonas,
   maxDisplayablePersonas: 5,
-  overflowPersonaProps: {
-    onClick: (ev: React.MouseEvent<HTMLElement>) =>
+  overflowButtonProps: {
+    onClick: (ev: React.MouseEvent<HTMLButtonElement>) =>
       alert('overflow icon clicked')
   }
 };

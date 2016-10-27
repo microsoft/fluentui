@@ -23,7 +23,7 @@ export interface IFacepileProps extends React.Props<Facepile> {
   chevronButtonProps?: IButtonProps;
 
   /** Properties for the overflow persona */
-  overflowPersonaProps?: IFacepilePersona;
+  overflowButtonProps?: IButtonProps;
 }
 
 export interface IFacepilePersona extends React.HTMLProps<HTMLButtonElement | HTMLDivElement> {

@@ -1,13 +1,11 @@
 import * as React from 'react';
 import { css } from '../../utilities/css';
-import { ButtonType } from '../Button/index';
 import {
   IFacepileProps,
   IFacepilePersona
 } from './Facepile.Props';
 import {
   Persona,
-  PersonaInitialsColor,
   PersonaSize
 } from '../../Persona';
 import './Facepile.scss';
@@ -19,54 +17,38 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
     personas: []
   };
 
+  private numPersonasToShow: number;
+
   public render(): JSX.Element {
+    this.numPersonasToShow = this._calulateNumPersonasToShow();
     let personalDetailsHidden: boolean = this.props.personas.length > 1;
     return (
       <div className='ms-Facepile'>
         <div className='ms-Facepile-members'>
           {this.props.showAddButton ? this._getAddNewElement() : null}
           {
-            this._getPersonasToDisplay(this.props.personas).map((persona: IFacepilePersona, index: number) => {
+            this._getPersonasToDisplay().map((persona: IFacepilePersona, index: number) => {
               const personaControl: JSX.Element = this._getPersonaControl(persona);
               return persona.onClick ?
                 this._getElementWithOnClickEvent(personaControl, persona, index) :
                 this._getElementWithoutOnClickEvent(personaControl, persona, index);
             })
           }
+          { this.props.overflowButtonProps ? this._getOverflowElement() : null }
           { this.props.chevronButtonProps && personalDetailsHidden ? this._getChevronElement() : null }
         </div>
       </div>
     );
   }
 
-  private _getPersonasToDisplay(personas: IFacepilePersona[]): IFacepilePersona[] {
-    let numPersonasToShow: number = this._calulateNumPersonasToShow();
-    let numPersonasNotPictured: number = this.props.personas.length - numPersonasToShow;
-    let hasPersonasNotPictured: boolean = numPersonasNotPictured > 0;
-    let personasToShow: IFacepilePersona[] = this.props.personas.slice(0, numPersonasToShow);
-
-    if (this.props.overflowPersonaProps) {
-      this._addNumberNotPictured(numPersonasToShow, hasPersonasNotPictured, numPersonasNotPictured, personasToShow);
-    }
-
+  private _getPersonasToDisplay(): IFacepilePersona[] {
+    let personasToShow: IFacepilePersona[] = this.props.personas.slice(0, this.numPersonasToShow);
     return personasToShow;
   }
 
-  private _addNumberNotPictured(numPersonasToShow: number, hasPersonasNotPictured: boolean, numPersonasNotPictured: number, personasToShow: IFacepilePersona[]): void {
-    let overflowPersonaProps: IFacepilePersona = this.props.overflowPersonaProps ? this.props.overflowPersonaProps : {};
-    if (hasPersonasNotPictured) {
-      personasToShow.push({
-        imageInitials: overflowPersonaProps.imageInitials || '+' + numPersonasNotPictured,
-        imageUrl: overflowPersonaProps.imageUrl,
-        initialsColor: overflowPersonaProps.initialsColor || PersonaInitialsColor.black,
-        personaName: overflowPersonaProps.personaName || this.props.personas.slice(numPersonasToShow).map((persona: IFacepilePersona, index: number) => {
-          return persona.personaName;
-        }).join(', '),
-        onClick: overflowPersonaProps.onClick,
-        onMouseMove: overflowPersonaProps.onMouseMove,
-        onMouseOut: overflowPersonaProps.onMouseOut
-      });
-    }
+  private _getPersonasNotToDisplay(): IFacepilePersona[] {
+    let personasToShow: IFacepilePersona[] = this.props.personas.slice(this.numPersonasToShow);
+    return personasToShow;
   }
 
   private _calulateNumPersonasToShow(): number {
@@ -110,6 +92,20 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
               >
               { personaControl }
             </div>;
+  }
+
+  private _getOverflowElement(): JSX.Element {
+    let numPersonasNotPictured: number = this.props.personas.length - this.numPersonasToShow;
+    let hasPersonasNotPictured: boolean = numPersonasNotPictured > 0;
+    if (!this.props.overflowButtonProps || !hasPersonasNotPictured) { return null; }
+
+    return  <button { ...getNativeProps(this.props.overflowButtonProps, buttonProperties) }
+              className={ css('ms-Facepile-overflowBtn', 'ms-Facepile-itemBtn', 'ms-Persona-initials') }
+              title={ this._getPersonasNotToDisplay().map((persona: IFacepilePersona, index: number) => {
+                return persona.personaName;
+              }).join(', ') }>
+              {'+' + numPersonasNotPictured}
+            </button>;
   }
 
   private _getAddNewElement(): JSX.Element {

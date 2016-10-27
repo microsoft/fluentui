@@ -24,7 +24,7 @@ export class FacepileAddFaceExample extends React.Component<any, IFacepileAddFac
     let facepileProps: IFacepileProps = {
       personas: facepilePersonas.slice(0, numberOfFaces),
       maxDisplayablePersonas: 5,
-      overflowPersonaProps: {},
+      overflowButtonProps: {},
       showAddButton: true,
       addButtonProps: {
         onClick: (ev: React.MouseEvent<HTMLButtonElement>) => this.setState({
