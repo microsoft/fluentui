@@ -3,7 +3,6 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent } from '../../../../common/BaseComponent';
 
-
 import {
   TooltipHost,
   Button
@@ -19,5 +18,3 @@ export class TooltipBasicExample extends BaseComponent<any, any> {
     );
   }
 }
-
-

@@ -3,22 +3,18 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent } from '../../common/BaseComponent';
 import { ITooltipHostProps } from './TooltipHost.Props';
+import { autobind } from '../../utilities/autobind';
 import { Tooltip } from './index';
 
 export class TooltipHost extends BaseComponent<ITooltipHostProps, any> {
 
   public static defaultProps = {
-    delay: 1000
+    delay: 800
   };
 
   // The wrapping div that gets the hover events
   private _tooltipHost: HTMLElement;
-
-  // Attach hover events
-  public componentDidMount() {
-    this._events.on(this._tooltipHost, 'mouseenter', this._tooltipShow);
-    this._events.on(this._tooltipHost, 'mouseleave', this._tooltipHide);
-  }
+  private _tooltipDelay: number;
 
   // Constructor
   constructor(props: ITooltipHostProps) {
@@ -36,7 +32,14 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, any> {
 
     return (
         <div className='ms-TooltipHost' ref={ this._resolveRef('_tooltipHost')} >
-          { children }
+          <span
+            { ...{ onFocusCapture: this._onTooltipMouseEnter } }
+            { ...{ onBlurCapture: this._onTooltipMouseLeave } }
+            onMouseEnter={ this._onTooltipMouseEnter }
+            onMouseLeave={ this._onTooltipMouseLeave }
+          >
+            { children }
+          </span>
           { isTooltipVisible ? (
            <Tooltip
               content ={ content }
@@ -49,8 +52,12 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, any> {
   }
 
   // Show Tooltip
-  private _tooltipShow(ev: any) {
-    setTimeout( () => {
+  @autobind
+  private _onTooltipMouseEnter(ev: any) {
+    // Clear any current timers (if hover then focus)
+    this._async.clearTimeout(this._tooltipDelay);
+    // Set a new delay.
+    this._tooltipDelay = this._async.setTimeout( () => {
       this.setState({
         isTooltipVisible: true
       });
@@ -58,7 +65,9 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, any> {
   }
 
   // Hide Tooltip
-  private _tooltipHide(ev: any) {
+  @autobind
+  private _onTooltipMouseLeave(ev: any) {
+    this._async.clearTimeout(this._tooltipDelay);
     this.setState({
       isTooltipVisible: false
     });
