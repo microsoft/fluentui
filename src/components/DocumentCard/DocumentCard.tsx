@@ -41,7 +41,7 @@ export class DocumentCard extends React.Component<IDocumentCardProps, any> {
   }
 
   @autobind
-  private _onClick(ev: React.MouseEvent): void {
+  private _onClick(ev: React.MouseEvent<HTMLElement>): void {
     let { onClick, onClickHref } = this.props;
 
     if (onClick) {

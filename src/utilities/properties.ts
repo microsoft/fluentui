@@ -208,6 +208,8 @@ export const inputProperties = buttonProperties;
 
 export const textAreaProperties = buttonProperties;
 
+export const imageProperties = divProperties;
+
 /**
  * Gets native supported props for an html element provided the allowance set. Use one of the property
  * sets defined (divProperties, buttonPropertes, etc) to filter out supported properties from a given
@@ -221,6 +223,7 @@ export function getNativeProps<T>(props: any, allowedPropNames: string[]): T {
   return filteredAssign((propName) => {
     return (
       (propName.indexOf('data-') === 0) ||
+      (propName.indexOf('aria-') === 0) ||
       (allowedPropNames.indexOf(propName) >= 0)
     );
   },

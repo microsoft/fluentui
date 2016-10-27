@@ -75,11 +75,7 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
       );
     }
 
-    return (
-      <div>
-        { documentCardTitle }
-      </div>
-    );
+    return documentCardTitle;
   }
 
   @autobind

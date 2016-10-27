@@ -45,7 +45,7 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
   /**
    * Event handler for click event.
    */
-  onClick?: React.MouseEventHandler;
+  onClick?: React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement | Button>;
 
   /**
    * The aria label of the button for the benefit of screen readers.

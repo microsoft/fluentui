@@ -203,7 +203,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   };
 
   @autobind
-  private _onGotoTodayKeyDown(ev: React.KeyboardEvent) {
+  private _onGotoTodayKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     if (ev.which === KeyCodes.enter) {
       ev.preventDefault();
       this._onGotoToday();
@@ -211,7 +211,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   };
 
   @autobind
-  private _onTextFieldFocus(ev: React.FocusEvent) {
+  private _onTextFieldFocus(ev: React.FocusEvent<HTMLElement>) {
     if (!this.props.allowTextInput) {
       if (!this._preventFocusOpeningPicker) {
         this._showDatePickerPopup();
@@ -222,7 +222,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   };
 
   @autobind
-  private _onTextFieldBlur(ev: React.FocusEvent) {
+  private _onTextFieldBlur(ev: React.FocusEvent<HTMLElement>) {
     this._validateTextInput();
   };
 
@@ -241,7 +241,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   }
 
   @autobind
-  private _onTextFieldKeyDown(ev: React.KeyboardEvent) {
+  private _onTextFieldKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     switch (ev.which) {
       case KeyCodes.enter:
         ev.preventDefault();
@@ -268,7 +268,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   };
 
   @autobind
-  private _onDatePickerPopupKeyDown(ev: React.KeyboardEvent) {
+  private _onDatePickerPopupKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     switch (ev.which) {
       case KeyCodes.enter:
         ev.preventDefault();
@@ -288,14 +288,14 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   }
 
   @autobind
-  private _onClickCapture(ev: React.MouseEvent) {
+  private _onClickCapture(ev: React.MouseEvent<HTMLElement>) {
     if (!elementContains(this.refs.root, ev.target as HTMLElement)) {
       this._dismissDatePickerPopup();
     }
   }
 
   @autobind
-  private _onTextFieldClick(ev: React.MouseEvent) {
+  private _onTextFieldClick(ev: React.MouseEvent<HTMLElement>) {
     if (!this.state.isDatePickerShown) {
       this._showDatePickerPopup();
     } else {
@@ -329,7 +329,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   }
 
   @autobind
-  private _handleEscKey(ev: React.KeyboardEvent) {
+  private _handleEscKey(ev: React.KeyboardEvent<HTMLElement>) {
     this._restoreFocusToTextField();
     this._dismissDatePickerPopup();
   }

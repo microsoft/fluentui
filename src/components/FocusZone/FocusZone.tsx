@@ -95,9 +95,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         ref='root'
         data-focuszone-id={ this._id }
         aria-labelledby={ ariaLabelledBy }
-        onMouseDownCapture={ this._onMouseDown }
         onKeyDown={ this._onKeyDown }
         onFocus={ this._onFocus }
+        { ...{onMouseDownCapture: this._onMouseDown } }
         >
         { this.props.children }
       </div>
@@ -156,7 +156,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   @autobind
-  private _onFocus(ev: React.FocusEvent) {
+  private _onFocus(ev: React.FocusEvent<HTMLElement>) {
     let { onActiveElementChanged } = this.props;
 
     if (this._isImmediateDescendantOfZone(ev.target as HTMLElement)) {
@@ -188,7 +188,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   @autobind
-  private _onMouseDown(ev: React.MouseEvent) {
+  private _onMouseDown(ev: React.MouseEvent<HTMLElement>) {
     const { disabled } = this.props;
 
     if (disabled) {
@@ -219,7 +219,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
    * Handle the keystrokes.
    */
   @autobind
-  private _onKeyDown(ev: React.KeyboardEvent) {
+  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     const { direction, disabled, isInnerZoneKeystroke } = this.props;
 
     if (disabled) {
@@ -351,11 +351,17 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     let changedFocus = false;
     let isBidirectional = this.props.direction === FocusZoneDirection.bidirectional;
 
-    if (!this._activeElement) {
-      return;
+    if (!element) {
+      return false;
     }
 
-    const activeRect = isBidirectional ? this._activeElement.getBoundingClientRect() : null;
+    if (this._isElementInput(element)) {
+      if (!this._shouldInputLoseFocus(element as HTMLInputElement, isForward)) {
+        return false;
+      }
+    }
+
+    const activeRect = isBidirectional ? element.getBoundingClientRect() : null;
 
     do {
       element = isForward ?
@@ -573,6 +579,35 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       }
     }
 
+  }
+
+  private _isElementInput(element: HTMLElement): boolean {
+    if (element && element.tagName && element.tagName.toLowerCase() === 'input') {
+      return true;
+    }
+    return false;
+  }
+
+  private _shouldInputLoseFocus(element: HTMLInputElement, isForward?: boolean) {
+    if (element) {
+      let selectionStart = element.selectionStart;
+      let selectionEnd = element.selectionEnd;
+      // This means that the input has text selected and we shouldn't lose focus.
+      if (selectionStart !== selectionEnd) {
+        return false;
+      } else {
+        let inputValue = element.value;
+
+        if (selectionStart === 0 && !isForward) {
+          return true;
+        } else if (selectionStart === inputValue.length && isForward) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }
+    return false;
   }
 
 }

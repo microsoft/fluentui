@@ -74,7 +74,7 @@ export class ColorSlider extends React.Component<IColorSliderProps, IColorSlider
   }
 
   @autobind
-  private _onMouseDown(ev: React.MouseEvent) {
+  private _onMouseDown(ev: React.MouseEvent<HTMLElement>) {
     this._events.on(window, 'mousemove', this._onMouseMove, true);
     this._events.on(window, 'mouseup', this._onMouseUp, true);
 
@@ -82,7 +82,7 @@ export class ColorSlider extends React.Component<IColorSliderProps, IColorSlider
   }
 
   @autobind
-  private _onMouseMove(ev: React.MouseEvent) {
+  private _onMouseMove(ev: React.MouseEvent<HTMLElement>) {
     let { onChanged, minValue, maxValue } = this.props;
     let rectSize = this.refs.root.getBoundingClientRect();
 
@@ -103,7 +103,7 @@ export class ColorSlider extends React.Component<IColorSliderProps, IColorSlider
   }
 
   @autobind
-  private _onMouseUp(ev: React.MouseEvent) {
+  private _onMouseUp(ev: React.MouseEvent<HTMLElement>) {
     this._events.off();
 
     this.setState({
