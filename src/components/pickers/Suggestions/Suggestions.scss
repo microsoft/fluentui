@@ -60,12 +60,13 @@
   margin: 5px;
   text-align: center;
   white-space: nowrap;
+  line-height: 10px;
   .ms-Spinner-circle {
     display: inline-block;
   }
   .ms-Spinner-label {
     display: inline-block;
     margin: 0px 10px;
-    vertical-align: top;
+    vertical-align: middle;
   }
 }
