@@ -68,7 +68,7 @@ describe('connect', () => {
         </StoreHost>
       </div>
     );
-    let rootElement = ReactDOM.findDOMNode(root);
+    let rootElement = ReactDOM.findDOMNode(root as React.ReactInstance);
 
     expect(rootElement.textContent).equals('');
 

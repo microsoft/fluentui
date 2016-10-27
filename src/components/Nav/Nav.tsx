@@ -45,6 +45,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
   }
 
   public render(): React.ReactElement<{}> {
+
     if (!this.props.groups) {
       return null;
     }
@@ -116,7 +117,6 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
            className={ css('ms-Nav-compositeLink', { ' is-expanded': link.isExpanded, 'is-selected': isLinkSelected }) }>
         { (nestingLevel === 0 && link.links && link.links.length > 0 ?
           <button
-            buttonType={ ButtonType.icon }
             className='ms-Nav-chevronButton ms-Nav-chevronButton--link'
             onClick={ this._onLinkExpandClicked.bind(this, link) }
             title={ (link.isExpanded ? this.props.expandedStateText : this.props.collapsedStateText) }
@@ -173,7 +173,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
     );
   }
 
-  private _onGroupHeaderClicked(groupIndex: number, ev: React.MouseEvent): void {
+  private _onGroupHeaderClicked(groupIndex: number, ev: React.MouseEvent<HTMLElement>): void {
     let isGroupExpanded: boolean[] = this.state.isGroupExpanded;
     isGroupExpanded[groupIndex] = !isGroupExpanded[groupIndex];
     this.setState({ isGroupExpanded: isGroupExpanded });
@@ -182,7 +182,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
     ev.stopPropagation();
   }
 
-  private _onLinkExpandClicked(link: INavLink, ev: React.MouseEvent): void {
+  private _onLinkExpandClicked(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
     link.isExpanded = !link.isExpanded;
     this.setState({ isLinkExpandStateChanged: true });
 
@@ -190,7 +190,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
     ev.stopPropagation();
   }
 
-  private _onNavAnchorLinkClicked(link: INavLink, ev: React.MouseEvent): void {
+  private _onNavAnchorLinkClicked(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
     if (this.props.onLinkClick) {
       this.props.onLinkClick(ev, link);
     }
@@ -198,7 +198,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
     this.setState({ selectedKey: link.key });
   }
 
-  private _onNavButtonLinkClicked(link: INavLink, ev: React.MouseEvent): void {
+  private _onNavButtonLinkClicked(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
     if (link.onClick) {
       link.onClick(ev, link);
     }
@@ -208,16 +208,23 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
 }
 
 // A tag used for resolving links.
-const _urlResolver = document.createElement('a');
-
+let _urlResolver;
 function _isLinkSelected(link: INavLink, selectedKey: string): boolean {
     if (selectedKey && link.key === selectedKey) {
       return true;
     }
 
+    // resolve is not supported for ssr
+    if (typeof(window) === 'undefined') {
+      return false;
+    }
+
     if (!link.url) {
       return false;
     }
+
+    _urlResolver = _urlResolver || document.createElement('a');
+
     _urlResolver.href = link.url || '';
     const target: string = _urlResolver.href;
 

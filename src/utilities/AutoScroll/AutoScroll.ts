@@ -3,6 +3,8 @@ import { findScrollableParent } from '../scroll';
 import { getRect } from '../dom';
 import { IRectangle } from '../../common/IRectangle';
 
+declare function setTimeout(cb: Function, delay: number): number;
+
 const SCROLL_ITERATION_DELAY = 16;
 const SCROLL_GUTTER_HEIGHT = 100;
 const MAX_SCROLL_VELOCITY = 15;
