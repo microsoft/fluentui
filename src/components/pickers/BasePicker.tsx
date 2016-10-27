@@ -223,12 +223,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   @autobind
-  protected onSuggestionClick(ev: React.MouseEvent, item: any, index: number) {
+  protected onSuggestionClick(ev: React.MouseEvent<HTMLElement>, item: any, index: number) {
     this.addItemByIndex(index);
   }
 
   @autobind
-  protected onInputFocus(ev: React.FocusEvent) {
+  protected onInputFocus(ev: React.FocusEvent<HTMLElement>) {
     this.selection.setAllSelected(false);
     if (this.input.value) {
       this.setState({ suggestionsVisible: true });

@@ -85,7 +85,7 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   onRowWillUnmount?: (item?: any, index?: number) => void;
 
   /** Callback for when the user clicks on the column header. */
-  onColumnHeaderClick?: (column?: IColumn, ev?: Event) => void;
+  onColumnHeaderClick?: (ev?: React.MouseEvent<HTMLElement>, column?: IColumn) => void;
 
   /** Callback for when the user asks for a contextual menu (usually via right click) from a column header. */
   onColumnHeaderContextMenu?: (column?: IColumn, ev?: Event) => void;
@@ -117,7 +117,7 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   viewport?: IViewport;
 
   /** Callback for when an item in the list becomes active by clicking anywhere inside the row or navigating to it with keyboard. */
-  onActiveItemChanged?: (item?: any, index?: number, ev?: React.FocusEvent) => void;
+  onActiveItemChanged?: (item?: any, index?: number, ev?: React.FocusEvent<HTMLElement>) => void;
 
   /** The aria-label attribute to stamp out on the list header */
   ariaLabelForListHeader?: string;
@@ -237,12 +237,12 @@ export interface IColumn {
   /**
    * If provided, will be executed when the user clicks on the column header.
    */
-  onColumnClick?: (column?: IColumn, ev?: React.MouseEvent) => any;
+  onColumnClick?: (ev?: React.MouseEvent<HTMLElement>, column?: IColumn) => any;
 
   /**
    * If provided, will be executed when the user accesses the contextmenu on a column header.
    */
-  onColumnContextMenu?: (column?: IColumn, ev?: React.MouseEvent) => any;
+  onColumnContextMenu?: (column?: IColumn, ev?: React.MouseEvent<HTMLElement>) => any;
 
   /**
    * If set will show a grouped icon next to the column header name.

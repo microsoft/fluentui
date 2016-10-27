@@ -115,7 +115,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
             <TypedSuggestionsItem
               suggestionModel={ suggestion }
               RenderSuggestion={ onRenderSuggestion }
-              onClick={ (ev: React.MouseEvent) => this.props.onSuggestionClick(ev, suggestion.item, index) }
+              onClick={ (ev: React.MouseEvent<HTMLElement>) => this.props.onSuggestionClick(ev, suggestion.item, index) }
               className={ suggestionsItemClassName }
               />
           </div>) }

@@ -153,5 +153,30 @@ gulp.task('deploy', ['bundle'],  function(cb) {
 
 build.task('tslint', build.tslint);
 
+let runSSRTests = build.subTask('run-ssr-tests', function(gulp, buildOptions, done) {
+  let themeLoader = require('@microsoft/load-themed-styles');
+  themeLoader.configureLoadStyles((styles) => {
+     // noop
+  });
+
+  let Mocha = require('mocha');
+  let mocha = new Mocha();
+  mocha.files = ['ssr-test.js'];
+  mocha.run();
+  done();
+});
+
+let defaultTasks = build.serial(
+  build.preCopy,
+  build.sass,
+  build.parallel(build.typescript, build.tslint, build.text),
+  build.postCopy,
+  build.webpack,
+  build.karma,
+  runSSRTests
+  );
+
+build.task('default', defaultTasks);
+
 // initialize tasks.
 build.initialize(gulp);

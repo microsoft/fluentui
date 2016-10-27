@@ -6,6 +6,9 @@
  * new instance of the class and remember to call dispose() during your code's dispose handler.
  */
 
+declare function setTimeout(cb: Function, delay: number): number;
+declare function setInterval(cb: Function, delay: number): number;
+
 export class Async {
   private _timeoutIds = null;
   private _immediateIds = null;
@@ -13,10 +16,10 @@ export class Async {
   private _animationFrameIds: { [id: number]: boolean } = null;
   private _isDisposed = false;
   private _parent: any;
-  private _onErrorHandler: (e: Error) => void;
+  private _onErrorHandler: (e: any) => void;
   private _noop: any;
 
-  constructor(parent?: any, onError?: (e: Error) => void) {
+  constructor(parent?: any, onError?: (e: any) => void) {
     this._parent = parent || null;
     this._onErrorHandler = onError;
     this._noop = () => { /* do nothing */ };
@@ -425,7 +428,7 @@ export class Async {
     }
   }
 
-  protected _logError(e: Error) {
+  protected _logError(e: any) {
     if (this._onErrorHandler) {
       this._onErrorHandler(e);
     }
