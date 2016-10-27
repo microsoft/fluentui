@@ -4,7 +4,7 @@ import {
 } from './GroupedList';
 import {
   IListProps
-} from '../List';
+} from '../../List';
 import { IRenderFunction } from '../../common/IRenderFunction';
 import {
   IDragDropContext,
@@ -108,7 +108,8 @@ export interface IGroup {
   level?: number;
 
   /**
-   * If all the items in the group are selected.
+   * @deprecated
+   * This is no longer supported. Selection state will be controled by the selection store only. Will be removed in 1.0.0.
    */
   isSelected?: boolean;
 
@@ -181,6 +182,9 @@ export interface IGroupDividerProps {
 
   /** The indent level of the group. */
   groupLevel?: number;
+
+  /** If all items in the group are selected. */
+  isSelected?: boolean;
 
   /** A reference to the viewport in which the header is rendered. */
   viewport?: IViewport;
