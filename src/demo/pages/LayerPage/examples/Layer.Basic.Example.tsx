@@ -1,12 +1,12 @@
-import * as React from 'react';
+import * as React from 'react'; // tslint:disable-line:no-unused-variable
 import './Layer.Example.scss';
 import {
+  BaseComponent,
   Checkbox,
   Layer
 } from '../../../../index';
 
-export class LayerBasicExample extends React.Component<any, any> {
-  private _intervalId: number;
+export class LayerBasicExample extends BaseComponent<any, any> {
 
   constructor() {
     super();
@@ -17,11 +17,7 @@ export class LayerBasicExample extends React.Component<any, any> {
   }
 
   public componentDidMount() {
-    this._intervalId = setInterval(() => this.setState({ time: new Date().toLocaleTimeString() }), 1000);
-  }
-
-  public componentWillUnmount() {
-    clearInterval(this._intervalId);
+    this._async.setInterval(() => this.setState({ time: new Date().toLocaleTimeString() }), 1000);
   }
 
   public render() {

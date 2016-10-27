@@ -26,7 +26,7 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
     );
   }
 
-  private _onBreadcrumbItemClicked(ev: React.MouseEvent, item: IBreadcrumbItem) {
+  private _onBreadcrumbItemClicked(ev: React.MouseEvent<HTMLElement>, item: IBreadcrumbItem) {
     console.log(`Breadcrumb item with key "${ item.key }" has been clicked.`);
   }
 

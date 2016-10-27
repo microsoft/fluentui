@@ -178,7 +178,7 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
   /**
    * Handles the onClick event on PivotLinks
    */
-  private _onLinkClick(itemKey: string, ev: React.MouseEvent) {
+  private _onLinkClick(itemKey: string, ev: React.MouseEvent<HTMLElement>) {
     ev.preventDefault();
     this._updateSelectedItem(itemKey, ev);
   }
@@ -186,7 +186,7 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
   /**
    * Handle the onKeyPress eventon the PivotLinks
    */
-  private _onKeyPress(itemKey: string, ev: React.KeyboardEvent) {
+  private _onKeyPress(itemKey: string, ev: React.KeyboardEvent<HTMLElement>) {
     ev.preventDefault();
     if (ev.which === KeyCodes.enter) {
       this._updateSelectedItem(itemKey);
@@ -196,7 +196,7 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
   /**
    * Updates the state with the new selected index
    */
-  private _updateSelectedItem(itemKey: string, ev?: React.MouseEvent) {
+  private _updateSelectedItem(itemKey: string, ev?: React.MouseEvent<HTMLElement>) {
     this.setState({
       selectedKey: itemKey
     } as IPivotState);
