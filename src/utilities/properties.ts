@@ -214,7 +214,7 @@ export const imageProperties = divProperties;
  * Gets native supported props for an html element provided the allowance set. Use one of the property
  * sets defined (divProperties, buttonPropertes, etc) to filter out supported properties from a given
  * props set. Note that all data- and aria- prefixed attributes will be allowed.
- * NOTE: getNativeProps should always be applied first in the props passed to a react component. The
+ * NOTE: getNativeProps should always be applied first when adding props to a react component. The
  * non-native props should be applied second. This will prevent getNativeProps from overriding your custom props.
  * For example, if props passed to getNativeProps has an onClick function and getNativeProps is added to
  * the component after an onClick function is added, then the getNativeProps onClick will override it.
