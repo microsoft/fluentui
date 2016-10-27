@@ -35,12 +35,13 @@ button.ms-Facepile-addBtn {
     background-color: $ms-color-themeDark;
   }
 
-  &.pressed {
+  &:active {
     background-color: $ms-color-themeDarker;
   }
 
-  &.disabled {
-    background-color: $ms-color-neutralTertiary;
+  &:disabled,
+  &.is-disabled {
+    background-color: $ms-color-neutralTertiaryAlt;
   }
 }
 
