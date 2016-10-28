@@ -1,7 +1,7 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { Persona, PersonaSize, IPersonaProps, PersonaPresence } from '../../../Persona';
+import { Persona, PersonaSize, IPersonaProps, PersonaPresence } from '../../../../Persona';
 export const SuggestionItemNormal: (persona: IPersonaProps) => JSX.Element = (personaProps: IPersonaProps) => {
   return (
     <div className='ms-PeoplePicker-personaContent'>

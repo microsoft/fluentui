@@ -18,7 +18,6 @@ export interface IContextualMenuState {
   dismissedMenuItemKey?: string;
   contextualMenuItems?: IContextualMenuItem[];
   contextualMenuTarget?: HTMLElement;
-  beakStyle?: any;
   submenuProps?: IContextualMenuProps;
   positions?: any;
   slideDirectionalClassName?: string;
@@ -86,6 +85,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   private _events: EventGroup;
   private _async: Async;
   private _focusZone: FocusZone;
+  private _targetWindow: Window;
 
   constructor(props: IContextualMenuProps) {
     super(props);
@@ -100,6 +100,12 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     this._enterTimerId = 0;
     this._events = new EventGroup(this);
     this._async = new Async(this);
+    // This is used to allow the ContextualMenu to appear on a window other than the one the javascript is running in.
+    if (props.targetElement && props.targetElement.ownerDocument && props.targetElement.ownerDocument.defaultView) {
+      this._targetWindow = props.targetElement.ownerDocument.defaultView;
+    } else {
+      this._targetWindow = window;
+    }
 
   }
 
@@ -119,7 +125,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
 
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount() {
-    this._events.on(window, 'resize', this.dismiss);
+    this._events.on(this._targetWindow, 'resize', this.dismiss);
   }
 
   // Invoked when a component is receiving new props.
@@ -175,7 +181,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         gapSpace={ gapSpace }
         doNotLayer={ isSubMenu }
         coverTarget={ coverTarget }
-        beakStyle='ms-Callout-smallbeak'
         className='ms-ContextualMenu-Callout'
         setInitialFocus={ true }
         onDismiss={ this.props.onDismiss }>
@@ -308,7 +313,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   }
 
   @autobind
-  private _onKeyDown(ev: React.KeyboardEvent) {
+  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     let submenuCloseKey = getRTL() ? KeyCodes.right : KeyCodes.left;
 
     if (ev.which === KeyCodes.escape
@@ -322,7 +327,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     }
   }
 
-  private _onItemMouseEnter(item: any, ev: React.MouseEvent) {
+  private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>) {
     let targetElement = ev.currentTarget as HTMLElement;
 
     if (item.key !== this.state.expandedMenuItemKey) {
@@ -335,11 +340,11 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   }
 
   @autobind
-  private _onMouseLeave(ev: React.MouseEvent) {
+  private _onMouseLeave(ev: React.MouseEvent<HTMLElement>) {
     this._async.clearTimeout(this._enterTimerId);
   }
 
-  private _onItemMouseDown(item: IContextualMenuItem, ev: React.MouseEvent) {
+  private _onItemMouseDown(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
     if (item.onMouseDown) {
       item.onMouseDown(item, ev);
     }

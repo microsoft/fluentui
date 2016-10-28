@@ -18,6 +18,7 @@ export class ButtonAnchorExample extends React.Component<IButtonProps, {}> {
       <div className='ms-BasicButtonsExample'>
         <Label>Button like anchor</Label>
         <Button
+          data-automation-id='test'
           disabled={ isDisabled }
           buttonType={ ButtonType.primary }
           href='http://bing.com'

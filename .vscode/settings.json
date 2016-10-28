@@ -8,7 +8,7 @@
   // Controls if the editor should automatically close brackets after opening them
   "editor.autoClosingBrackets": false,
   // Controls whether the editor should render whitespace characters
-  "editor.renderWhitespace": true,
+  "editor.renderWhitespace": "all",
   // Controls if the editor will insert spaces for tabs. Accepted values:  "auto", true, false. If set to "auto", the value will be guessed when a file is opened.
   "editor.insertSpaces": true,
   "files.exclude": {

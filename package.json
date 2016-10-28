@@ -1,6 +1,6 @@
 {
   "name": "office-ui-fabric-react",
-  "version": "0.56.0",
+  "version": "0.63.3",
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -15,6 +15,12 @@
   },
   "devDependencies": {
     "@microsoft/web-library-build": "^0.4.0",
+    "@types/chai": "^3.4.34",
+    "@types/es6-promise": "0.0.32",
+    "@types/mocha": "^2.2.32",
+    "@types/node": "^6.0.45",
+    "@types/react-addons-test-utils": "^0.14.15",
+    "@types/webpack": "^1.12.35",
     "es6-promise": "3.2.1",
     "git-rev": "0.2.1",
     "gulp": "~3.9.1",
@@ -29,17 +35,20 @@
     "source-map-loader": "0.1.5",
     "tslint": "^3.15.1",
     "tslint-microsoft-contrib": "^2.0.9",
-    "typescript": "^1.8.10",
+    "typescript": "2.0.3",
     "vinyl-ftp": "0.4.5",
     "webpack-split-by-path": "0.0.10",
-    "webpack-visualizer-plugin": "0.1.5"
+    "webpack-visualizer-plugin": "0.1.5",
+    "mocha": "~2.5.3"
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.1",
     "react-dom": "^0.14.0 || ^15.0.1"
   },
   "dependencies": {
-    "color-functions": "^1.1.0",
-    "@microsoft/load-themed-styles": "^1.2.2"
+    "@microsoft/load-themed-styles": "^1.2.2",
+    "@types/react": "^0.14.41",
+    "@types/react-dom": "^0.14.18",
+    "color-functions": "^1.1.0"
   }
 }

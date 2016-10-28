@@ -83,7 +83,7 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
     console.log('The option has been changed.');
   }
 
-  private _onImageChoiceGroupChange(option: IChoiceGroupOption, evt?: React.SyntheticEvent) {
+  private _onImageChoiceGroupChange(option: IChoiceGroupOption, evt?: React.SyntheticEvent<HTMLElement>) {
     this.setState({
       imageKey: option.key
     });

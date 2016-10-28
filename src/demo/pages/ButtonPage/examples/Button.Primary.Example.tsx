@@ -17,7 +17,11 @@ export class ButtonPrimaryExample extends React.Component<IButtonProps, {}> {
     return (
       <div className='ms-BasicButtonsExample'>
         <Label>Primary button</Label>
-        <Button disabled={ isDisabled } buttonType={ ButtonType.primary }>Create account</Button>
+        <Button
+          data-automation-id='test'
+          disabled={ isDisabled }
+          buttonType={ ButtonType.primary }
+        >Create account</Button>
       </div>
     );
   }

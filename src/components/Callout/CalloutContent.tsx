@@ -6,7 +6,6 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   autobind,
   css,
-  getRTL,
   elementContains
 } from '../../Utilities';
 import { getRelativePositions, IPositionInfo } from '../../utilities/positioning';
@@ -28,15 +27,15 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
   public static defaultProps = {
     isBeakVisible: true,
-    beakStyle: 'ms-Callout-beak',
     beakWidth: 28,
     gapSpace: 0,
-    directionalHint: getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge
+    directionalHint: DirectionalHint.bottomAutoEdge
   };
 
   private _didSetInitialFocus: boolean;
   private _hostElement: HTMLDivElement;
   private _calloutElement: HTMLDivElement;
+  private _targetWindow: Window;
 
   constructor(props: ICalloutProps) {
     super(props);
@@ -47,6 +46,12 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       slideDirectionalClassName: null,
       calloutElementRect: null
     };
+    // This is used to allow the Callout to appear on a window other than the one the javascript is running in.
+    if (props.targetElement && props.targetElement.ownerDocument && props.targetElement.ownerDocument.defaultView) {
+      this._targetWindow = props.targetElement.ownerDocument.defaultView;
+    } else {
+      this._targetWindow = window;
+    }
   }
 
   public componentDidUpdate() {
@@ -59,8 +64,23 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   }
 
   public render() {
-    let { className, targetElement, isBeakVisible, beakStyle, children } = this.props;
+    let { className, targetElement, isBeakVisible, beakStyle, children, beakWidth } = this.props;
     let { positions, slideDirectionalClassName } = this.state;
+    let beakStyleWidth = beakWidth;
+
+    // This is here to support the old way of setting the beak size until version 1.0.0.
+    // beakStyle is now deprecated and will be be removed at version 1.0.0
+    if (beakStyle === 'ms-Callout-smallbeak') {
+      beakStyleWidth = 16;
+    }
+
+    let beakReactStyle: React.CSSProperties = {
+      top: positions && positions.beak ? positions.beak.top : BEAK_ORIGIN_POSITION.top,
+      left: positions && positions.beak ? positions.beak.left : BEAK_ORIGIN_POSITION.left,
+      height: beakStyleWidth,
+      width: beakStyleWidth
+    };
+
     let content = (
       <div ref={ this._resolveRef('_hostElement') } className={ 'ms-Callout-container' }>
         <div
@@ -68,7 +88,11 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
           style={ ((positions) ? positions.callout : OFF_SCREEN_POSITION) }
           ref={ this._resolveRef('_calloutElement') }
           >
-          { isBeakVisible && targetElement ? (<div className={ beakStyle }  style={ ((positions) ? positions.beak : BEAK_ORIGIN_POSITION) } />) : (null) }
+          { isBeakVisible && targetElement ? (
+            <div
+              className={ 'ms-Callout-beak' }
+              style={ beakReactStyle }
+            />) : (null) }
           <div className='ms-Callout-beakCurtain' />
           <Popup
             className='ms-Callout-main'
@@ -90,11 +114,11 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     }
   }
 
-  private _dismissOnLostFocus(ev: Event) {
+  protected _dismissOnLostFocus(ev: Event) {
     let { targetElement } = this.props;
     let target = ev.target as HTMLElement;
 
-    if (ev.target !== window &&
+    if (ev.target !== this._targetWindow &&
       this._hostElement &&
       !elementContains(this._hostElement, target) &&
       (!targetElement || !elementContains(targetElement, target))) {
@@ -103,7 +127,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   }
 
   @autobind
-  private _setInitialFocus() {
+  protected _setInitialFocus() {
     if (this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions) {
       this._didSetInitialFocus = true;
       focusFirstChild(this._calloutElement);
@@ -111,13 +135,13 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   }
 
   @autobind
-  private _onComponentDidMount() {
+  protected _onComponentDidMount() {
     // This is added so the callout will dismiss when the window is scrolled
     // but not when something inside the callout is scrolled.
-    this._events.on(window, 'scroll', this._dismissOnLostFocus, true);
-    this._events.on(window, 'resize', this.dismiss, true);
-    this._events.on(window, 'focus', this._dismissOnLostFocus, true);
-    this._events.on(window, 'click', this._dismissOnLostFocus, true);
+    this._events.on(this._targetWindow , 'scroll', this._dismissOnLostFocus, true);
+    this._events.on(this._targetWindow , 'resize', this.dismiss, true);
+    this._events.on(this._targetWindow , 'focus', this._dismissOnLostFocus, true);
+    this._events.on(this._targetWindow , 'click', this._dismissOnLostFocus, true);
 
     if (this.props.onLayerMounted) {
       this.props.onLayerMounted();
@@ -134,9 +158,10 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     if (hostElement && calloutElement) {
       let positionInfo: IPositionInfo = getRelativePositions(this.props, hostElement, calloutElement);
 
-      // Set the new position only when the positions are not exists or one of the new callout positions are different
+      // Set the new position only when the positions are not exists or one of the new callout positions are different.
+      // The position should not change if the position is within 2 decimal places.
       if ((!positions && positionInfo) ||
-        (positions && positionInfo && (positions.callout.top !== positionInfo.calloutPosition.top || positions.callout.left !== positionInfo.calloutPosition.left))) {
+        (positions && positionInfo && (positions.callout.top.toFixed(2) !== positionInfo.calloutPosition.top.toFixed(2) || positions.callout.left.toFixed(2) !== positionInfo.calloutPosition.left.toFixed(2)))) {
 
         this.setState({
           positions: {

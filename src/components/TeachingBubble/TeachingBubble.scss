@@ -30,6 +30,7 @@
   }
   .ms-TeachingBubble-header--small & {
     @include ms-font-m;
+    @include margin-right(10px);
     font-weight: $ms-font-weight-semibold;
   }
 }
@@ -47,7 +48,7 @@
 
 .ms-Button.ms-TeachingBubble-closebutton {
   position: absolute;
-  right: 2px;
+  @include right(2px);
   top: 0;
   &.ms-Button--icon .ms-Icon {
     color: $ms-color-white;
