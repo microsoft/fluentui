@@ -72,6 +72,7 @@ export interface ICalloutProps extends React.Props<Callout|CalloutContent>, IPos
 
   /**
    * The distance that the callout should maintain from the edge of the bounds.
+   * @default 10
    */
   spaceFromEdgeOfBounds?: number;
 }
