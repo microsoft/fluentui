@@ -1,9 +1,11 @@
 'use strict';
 
 let React = require('react');
-let library = require('./lib');
-let responsiveLib = require('./lib/utilities/decorators/withResponsiveMode');
-let appstate = require('./lib/demo/components/App/AppState').AppState;
+let build = require('@microsoft/web-library-build');
+let buildConfig = build.getConfig();
+let library = require(buildConfig.libFolder);
+let responsiveLib = require(buildConfig.libFolder + '/utilities/decorators/withResponsiveMode');
+let appstate = require(buildConfig.libFolder + '/demo/components/App/AppState').AppState;
 let ReactDOMServer = require('react-dom/server');
 
 
