@@ -69,4 +69,9 @@ export interface ICalloutProps extends React.Props<Callout|CalloutContent>, IPos
    * @returns True if focus was set, false if it was not.
    */
   setInitialFocus?: boolean;
+
+  /**
+   * The distance that the callout should maintain from the edge of the bounds.
+   */
+  spaceFromEdgeOfBounds?: number;
 }

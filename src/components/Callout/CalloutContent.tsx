@@ -8,15 +8,16 @@ import {
   css,
   elementContains
 } from '../../Utilities';
-import { getRelativePositions, IPositionInfo } from '../../utilities/positioning';
+import { getRelativePositions, IPositionInfo, IRect } from '../../utilities/positioning';
 import { focusFirstChild } from '../../utilities/focus';
+import { assign } from '../../Utilities';
 import { Popup } from '../Popup/index';
 import { BaseComponent } from '../../common/BaseComponent';
 import './Callout.scss';
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 const OFF_SCREEN_POSITION = { top: -9999, left: 0 };
-
+const borderWidth: number = 1;
 export interface ICalloutState {
   positions?: any;
   slideDirectionalClassName?: string;
@@ -29,13 +30,16 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     isBeakVisible: true,
     beakWidth: 28,
     gapSpace: 0,
-    directionalHint: DirectionalHint.bottomAutoEdge
+    directionalHint: DirectionalHint.bottomAutoEdge,
+    spaceFromEdgeOfBounds: 10
   };
 
   private _didSetInitialFocus: boolean;
   private _hostElement: HTMLDivElement;
   private _calloutElement: HTMLDivElement;
   private _targetWindow: Window;
+  private _bounds: IRect;
+  private _maxHeight: number;
 
   constructor(props: ICalloutProps) {
     super(props);
@@ -81,32 +85,26 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       width: beakStyleWidth
     };
 
-    // To prevent the inner content from being too big the outer content needs to have a height.
-    // This allows max-height: 100% to work as intended. Without a height set the inner content
-    // cannot size properly.
-    let calloutStyle: React.CSSProperties = {
-      top: positions && positions.callout ? positions.callout.top : OFF_SCREEN_POSITION.top,
-      left: positions && positions.callout ? positions.callout.left : OFF_SCREEN_POSITION.left,
-      height: this._calloutElement ? this._calloutElement.getBoundingClientRect().height : undefined
-    };
+    let contentMaxHeight: number = this._MaxHeight;
 
     let content = (
       <div ref={ this._resolveRef('_hostElement') } className={ 'ms-Callout-container' }>
         <div
-          className={ css('ms-Callout', className, slideDirectionalClassName ? `ms-u-${ slideDirectionalClassName }` : '') }
-          style={ calloutStyle }
+          className={ css('ms-Callout', className, slideDirectionalClassName ? `ms-u-${slideDirectionalClassName}` : '') }
+          style={ positions ? positions.callout : OFF_SCREEN_POSITION }
           ref={ this._resolveRef('_calloutElement') }
           >
           { isBeakVisible && targetElement ? (
             <div
               className={ 'ms-Callout-beak' }
               style={ beakReactStyle }
-            />) : (null) }
+              />) : (null) }
           <div className='ms-Callout-beakCurtain' />
           <Popup
             className='ms-Callout-main'
-            onDismiss={ (ev:any) => this.dismiss() }
-            shouldRestoreFocus={ true }>
+            onDismiss={ (ev: any) => this.dismiss() }
+            shouldRestoreFocus={ true }
+            style={ { maxHeight: contentMaxHeight } }>
             { children }
           </Popup>
         </div>
@@ -147,10 +145,10 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   protected _onComponentDidMount() {
     // This is added so the callout will dismiss when the window is scrolled
     // but not when something inside the callout is scrolled.
-    this._events.on(this._targetWindow , 'scroll', this._dismissOnLostFocus, true);
-    this._events.on(this._targetWindow , 'resize', this.dismiss, true);
-    this._events.on(this._targetWindow , 'focus', this._dismissOnLostFocus, true);
-    this._events.on(this._targetWindow , 'click', this._dismissOnLostFocus, true);
+    this._events.on(this._targetWindow, 'scroll', this._dismissOnLostFocus, true);
+    this._events.on(this._targetWindow, 'resize', this.dismiss, true);
+    this._events.on(this._targetWindow, 'focus', this._dismissOnLostFocus, true);
+    this._events.on(this._targetWindow, 'click', this._dismissOnLostFocus, true);
 
     if (this.props.onLayerMounted) {
       this.props.onLayerMounted();
@@ -165,7 +163,10 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     let calloutElement: HTMLElement = this._calloutElement;
 
     if (hostElement && calloutElement) {
-      let positionInfo: IPositionInfo = getRelativePositions(this.props, hostElement, calloutElement);
+      let currentProps: ICalloutProps;
+      currentProps = assign(currentProps, this.props);
+      currentProps.bounds = this._Bounds;
+      let positionInfo: IPositionInfo = getRelativePositions(currentProps, hostElement, calloutElement);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
@@ -181,5 +182,49 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
         });
       }
     }
+  }
+
+  private _getBounds(): IRect {
+    let currentBounds = this.props.bounds;
+
+    if (!currentBounds) {
+      currentBounds = {
+        top: 0,
+        left: 0,
+        right: this._targetWindow.innerWidth,
+        bottom: this._targetWindow.innerHeight,
+        width: this._targetWindow.innerWidth,
+        height: this._targetWindow.innerHeight
+      };
+    }
+
+    return this._modifyBoundsForPadding(currentBounds);
+  }
+
+  private _modifyBoundsForPadding(bounds: IRect): IRect {
+    let { spaceFromEdgeOfBounds } = this.props;
+
+    return {
+      top: bounds.top + spaceFromEdgeOfBounds,
+      left: bounds.left + spaceFromEdgeOfBounds,
+      right: bounds.right - spaceFromEdgeOfBounds,
+      bottom: bounds.bottom - spaceFromEdgeOfBounds,
+      width: bounds.width - spaceFromEdgeOfBounds * 2,
+      height: bounds.height - spaceFromEdgeOfBounds * 2
+    };
+  }
+
+  private get _Bounds(): IRect {
+    if (!this._bounds) {
+      this._bounds = this._getBounds();
+    }
+    return this._bounds;
+  }
+
+  private get _MaxHeight(): number {
+    if (!this._maxHeight) {
+      this._maxHeight = this._Bounds.height - borderWidth * 2;
+    }
+    return this._maxHeight;
   }
 }

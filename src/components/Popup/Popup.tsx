@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IPopupProps } from './Popup.Props';
 import { KeyCodes } from '../../utilities/KeyCodes';
 import { BaseComponent } from '../../common/BaseComponent';
+import { getNativeProps, divProperties } from '../../Utilities';
 
 /**
  * This adds accessibility to Dialog and Panel controls
@@ -53,6 +54,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
     return (
       <div
         ref='root'
+        { ...getNativeProps(this.props, divProperties) }
         className={ className }
         role={ role }
         aria-labelledby={ ariaLabelledBy }
