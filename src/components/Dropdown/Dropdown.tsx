@@ -47,14 +47,14 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
       id: getId('Dropdown'),
       isOpen: false,
       selectedIndex: this._getSelectedIndex(props.options, props.selectedKey),
-      isDisabled: this.props.isDisabled !== undefined ? this.props.isDisabled : this.props.disabled
+      isDisabled: props.isDisabled !== undefined ? props.isDisabled : props.disabled
     };
   }
 
   public componentWillReceiveProps(newProps: IDropdownProps) {
     this.setState({
       selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey),
-      isDisabled: this.props.isDisabled !== undefined ? this.props.isDisabled : this.props.disabled
+      isDisabled: newProps.isDisabled !== undefined ? newProps.isDisabled : newProps.disabled
     });
   }
 
