@@ -25,7 +25,7 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
 
   /**
    * Whether the month picker is shown beside the day picker or hidden.
-   * @defaultvalue true 
+   * @defaultvalue true
    */
   isMonthPickerVisible?: boolean;
 
@@ -67,6 +67,13 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
    * Localized strings to use in the DatePicker
    */
   strings: IDatePickerStrings;
+
+  /**
+  * Locales to use for rendering date strings, in descending order of priority.
+  * Use BCP 47 language tags (eg., 'en-us')
+  * @defaultvalue navigator.language
+  */
+  locales?: string[];
 }
 
 export enum DayOfWeek {
@@ -81,28 +88,28 @@ export enum DayOfWeek {
 
 export interface IDatePickerStrings {
   /**
-   * An array of strings for the full names of months.
-   * The array is 0-based, so months[0] should be the full name of January.
+   * @deprecated
+   * Deprecated at v0.57.0, to be removed at >= v1.0.0. Provide the appropriate locale instead.
    */
-  months: string[];
+  months?: string[];
 
   /**
-   * An array of strings for the short names of months.
-   * The array is 0-based, so shortMonths[0] should be the short name of January.
+   * @deprecated
+   * Deprecated at v0.57.0, to be removed at >= v1.0.0. Provide the appropriate locale instead.
    */
-  shortMonths: string[];
+  shortMonths?: string[];
 
   /**
-   * An array of strings for the full names of days of the week.
-   * The array is 0-based, so days[0] should be the full name of Sunday.
+   * @deprecated
+   * Deprecated at v0.57.0, to be removed at >= v1.0.0. Provide the appropriate locale instead.
    */
-  days: string[];
+  days?: string[];
 
   /**
-   * An array of strings for the initials of the days of the week.
-   * The array is 0-based, so days[0] should be the initial of Sunday.
+   * @deprecated
+   * Deprecated at v0.57.0, to be removed at >= v1.0.0. Provide the appropriate locale instead.
    */
-  shortDays: string[];
+  shortDays?: string[];
 
   /**
    * String to render for button to direct the user to today's date.

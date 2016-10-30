@@ -7,61 +7,12 @@ import {
 } from '../../../../index';
 
 const DayPickerStrings = {
-  months: [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-  ],
-
-  shortMonths: [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec'
-  ],
-
-  days: [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday'
-  ],
-
-  shortDays: [
-    'S',
-    'M',
-    'T',
-    'W',
-    'T',
-    'F',
-    'S'
-  ],
-
   goToToday: 'Go to today'
 };
 
 export interface IDatePickerBasicExampleState {
   firstDayOfWeek?: DayOfWeek;
+  locale?: string[];
 }
 
 export class DatePickerBasicExample extends React.Component<any, IDatePickerBasicExampleState> {
@@ -74,11 +25,11 @@ export class DatePickerBasicExample extends React.Component<any, IDatePickerBasi
   }
 
   public render() {
-    let { firstDayOfWeek } = this.state;
+    let { firstDayOfWeek, locale } = this.state;
 
     return (
       <div>
-        <DatePicker firstDayOfWeek={ firstDayOfWeek } strings={ DayPickerStrings } placeholder='Select a date...' />
+        <DatePicker firstDayOfWeek={ firstDayOfWeek } strings={ DayPickerStrings } locales={ locale } placeholder='Select a date...' />
         <Dropdown
           label='Select the first day of the week'
           options={ [
@@ -112,15 +63,56 @@ export class DatePickerBasicExample extends React.Component<any, IDatePickerBasi
             }
           ] }
           selectedKey={ DayOfWeek[firstDayOfWeek] }
-          onChanged={ this._onDropdownChanged.bind(this) }
+          onChanged={ this._onStartOfWeekDropdownChanged.bind(this) }
+          />
+        <Dropdown
+          label='Select the locale'
+          options={ [
+            {
+              text: 'English',
+              key: 'en-us'
+            },
+            {
+              text: 'Spanish',
+              key: 'es-es'
+            },
+            {
+              text: 'German',
+              key: 'de-de'
+            },
+            {
+              text: 'Arabic',
+              key: 'ar'
+            },
+            {
+              text: 'Chinese',
+              key: 'zh'
+            },
+            {
+              text: 'Russian',
+              key: 'ru-ru'
+            },
+            {
+              text: 'Telugu',
+              key: 'te'
+            }
+          ] }
+          selectedKey={ DayOfWeek[firstDayOfWeek] }
+          onChanged={ this._onLocaleDropdownChanged.bind(this) }
           />
       </div>
     );
   }
 
-  private _onDropdownChanged(option: IDropdownOption) {
+  private _onStartOfWeekDropdownChanged(option: IDropdownOption) {
     this.setState({
       firstDayOfWeek: DayOfWeek[option.key]
+    });
+  }
+
+  private _onLocaleDropdownChanged(option: IDropdownOption) {
+    this.setState({
+      locale: [option.key.toString()]
     });
   }
 }

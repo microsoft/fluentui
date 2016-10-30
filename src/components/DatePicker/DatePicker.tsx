@@ -27,13 +27,7 @@ export interface IDatePickerState {
 export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState> {
   public static defaultProps: IDatePickerProps = {
     allowTextInput: false,
-    formatDate: (date: Date) => {
-      if (date) {
-        return date.toDateString();
-      }
-
-      return null;
-    },
+    formatDate: null,
     parseDateFromString: (dateStr: string) => {
       const date = Date.parse(dateStr);
       if (date) {
@@ -45,7 +39,8 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     firstDayOfWeek: DayOfWeek.Sunday,
     isRequired: false,
     isMonthPickerVisible: true,
-    strings: null
+    strings: null,
+    locales: [ navigator.language ]
   };
 
   public refs: {
@@ -60,13 +55,13 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   private _focusOnSelectedDateOnUpdate: boolean;
 
   constructor(props: IDatePickerProps) {
-    super();
+    super(props);
 
-    let { formatDate, value } = props;
+    let { value } = props;
 
     this.state = {
       selectedDate: value || new Date(),
-      formattedDate: formatDate && value ? formatDate(value) : null,
+      formattedDate: value ? this._formatDate(value) : null,
       isDatePickerShown: false,
       errorMessage: ''
     };
@@ -75,12 +70,12 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   }
 
   public componentWillReceiveProps(nextProps: IDatePickerProps) {
-    let { formatDate, isRequired, strings, value } = nextProps;
+    let { isRequired, strings, value } = nextProps;
     const errorMessage = isRequired && !value ? (strings.isRequiredErrorMessage || '*') : '';
 
     this.setState({
       selectedDate: value || new Date(),
-      formattedDate: formatDate && value ? formatDate(value) : null,
+      formattedDate: value ? this._formatDate(value) : null,
       errorMessage: errorMessage
     });
   }
@@ -102,7 +97,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   public render() {
     let rootClass = 'ms-DatePicker';
-    let { firstDayOfWeek, strings, label, isRequired, ariaLabel, placeholder, allowTextInput } = this.props;
+    let { firstDayOfWeek, strings, label, isRequired, ariaLabel, placeholder, allowTextInput, locales } = this.props;
     let { isDatePickerShown, formattedDate, selectedDate, navigatedDate, errorMessage } = this.state;
 
     return (
@@ -141,11 +136,12 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
                     onNavigateDate={ this._onNavigateDate }
                     firstDayOfWeek={ firstDayOfWeek }
                     strings={ strings }
+                    locales={ locales }
                     ref='dayPicker' />
                   <DatePickerMonth
                     navigatedDate={ navigatedDate }
-                    strings={ strings }
-                    onNavigateDate={ this._onNavigateDate } />
+                    onNavigateDate={ this._onNavigateDate }
+                    locales={ locales } />
                   <span
                     className='ms-DatePicker-goToday js-goToday'
                     onClick={ this._onGotoToday }
@@ -181,12 +177,12 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   @autobind
   private _onSelectDate(date: Date) {
-    let { formatDate, onSelectDate } = this.props;
+    let { onSelectDate } = this.props;
 
     this.setState({
       selectedDate: date,
       isDatePickerShown: false,
-      formattedDate: formatDate && date ? formatDate(date) : null,
+      formattedDate: date ? this._formatDate(date) : null,
     });
 
     this._restoreFocusToTextField();
@@ -383,5 +379,21 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
         onSelectDate(date);
       }
     }
+  }
+
+  private _formatDate(date: Date) {
+    let { formatDate } = this.props;
+
+    return formatDate ? formatDate(date) : this._defaultFormatDate(date);
+  }
+
+  private _defaultFormatDate(date: Date) {
+    let { locales } = this.props;
+
+    if (date) {
+      return date.toLocaleDateString(locales);
+    }
+
+    return null;
   }
 }
