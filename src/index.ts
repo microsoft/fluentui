@@ -7,6 +7,7 @@ export * from './Breadcrumb';
 export * from './Button';
 export * from './Callout';
 export * from './Checkbox';
+export * from './ChoiceField';
 export * from './ChoiceGroup';
 export * from './ColorPicker';
 export * from './CommandBar';
