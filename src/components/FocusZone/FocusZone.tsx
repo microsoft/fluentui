@@ -70,7 +70,12 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     let parentElement = getParent(this.refs.root);
 
-    while (parentElement && parentElement !== document.body) {
+    while (
+      parentElement &&
+      parentElement !== document.body &&
+      parentElement.nodeType &&
+      parentElement.nodeType === 1
+      ) {
       if (isElementFocusZone(parentElement)) {
         this._isInnerZone = true;
         break;
@@ -97,7 +102,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         aria-labelledby={ ariaLabelledBy }
         onKeyDown={ this._onKeyDown }
         onFocus={ this._onFocus }
-        { ...{onMouseDownCapture: this._onMouseDown } }
+        { ...{ onMouseDownCapture: this._onMouseDown } }
         >
         { this.props.children }
       </div>
@@ -410,11 +415,15 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     if (this._moveFocus(true, (activeRect: ClientRect, targetRect: ClientRect) => {
       let distance = -1;
+      // ClientRect values can be floats that differe by very small fractions of a decimal.
+      // We need to round, otherwise there can be behavior where an equivalent top and bottom (ie 5.2222 and 5.222221)
+      // will not register as such.
+      let targetRectTop = Math.floor(targetRect.top);
+      let activeRectBottom = Math.floor(activeRect.bottom);
 
-      if ((targetTop === -1 && targetRect.top >= activeRect.bottom) ||
-        (targetRect.top === targetTop)) {
-
-        targetTop = targetRect.top;
+      if ((targetTop === -1 && targetRectTop >= activeRectBottom) ||
+        (targetRectTop === targetTop)) {
+        targetTop = targetRectTop;
         if (leftAlignment >= targetRect.left && leftAlignment <= (targetRect.left + targetRect.width)) {
           distance = 0;
         } else {
@@ -437,10 +446,16 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     if (this._moveFocus(false, (activeRect: ClientRect, targetRect: ClientRect) => {
       let distance = -1;
+      // ClientRect values can be floats that differe by very small fractions of a decimal.
+      // We need to round, otherwise there can be behavior where an equivalent top and bottom (ie 5.2222 and 5.222221)
+      // will not register as such.
+      let targetRectBottom = Math.floor(targetRect.bottom);
+      let targetRectTop = Math.floor(targetRect.top);
+      let activeRectTop = Math.floor(activeRect.top);
 
-      if ((targetTop === -1 && targetRect.bottom <= activeRect.top) ||
-        (targetRect.top === targetTop)) {
-        targetTop = targetRect.top;
+      if ((targetTop === -1 && targetRectBottom <= activeRectTop) ||
+        (targetRectTop === targetTop)) {
+        targetTop = targetRectTop;
         if (leftAlignment >= targetRect.left && leftAlignment <= (targetRect.left + targetRect.width)) {
           distance = 0;
         } else {
