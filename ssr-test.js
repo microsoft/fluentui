@@ -3,11 +3,10 @@
 let React = require('react');
 let build = require('@microsoft/web-library-build');
 let buildConfig = build.getConfig();
-let library = require(buildConfig.libFolder);
-let responsiveLib = require(buildConfig.libFolder + '/utilities/decorators/withResponsiveMode');
-let appstate = require(buildConfig.libFolder + '/demo/components/App/AppState').AppState;
+let library = require('./' + buildConfig.libFolder);
+let responsiveLib = require('./' + buildConfig.libFolder + '/utilities/decorators/withResponsiveMode');
+let appstate = require('./' + buildConfig.libFolder + '/demo/components/App/AppState').AppState;
 let ReactDOMServer = require('react-dom/server');
-
 
 describe('Fabric components', () => {
 
