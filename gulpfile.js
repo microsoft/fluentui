@@ -172,15 +172,13 @@ let runSSRTests = build.subTask('run-ssr-tests', function(gulp, buildOptions, do
 });
 
 let defaultTasks = build.serial(
-  build.checkReceipt,
   build.preCopy,
   build.sass,
   build.parallel(build.typescript, build.tslint, build.text),
   build.postCopy,
   build.webpack,
   build.karma,
-  runSSRTests,
-  build.updateReceipt
+  runSSRTests
   );
 
 build.task('default', defaultTasks);
