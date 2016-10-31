@@ -12,8 +12,8 @@ export class TooltipBasicExample extends BaseComponent<any, any> {
 
   public render() {
     return (
-      <TooltipHost content='This is the tooltip'>
-        <Button>Hover Over Me</Button>
+      <TooltipHost content='This is the tooltip' id='myID'>
+        <Button aria-describedby='myID'>Hover Over Me</Button>
       </TooltipHost>
     );
   }
