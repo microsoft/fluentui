@@ -13,9 +13,8 @@ export class DialogFooter extends React.Component<any, any> {
   }
 
   private _renderChildrenAsActions() {
-    let key = 0;
-    return this.props.children.map(child =>
-      <span key={ key++ } className='ms-Dialog-action'>{ child }</span>
+    return React.Children.map(this.props.children, child =>
+      <span className='ms-Dialog-action'>{ child }</span>
     );
   }
 }
