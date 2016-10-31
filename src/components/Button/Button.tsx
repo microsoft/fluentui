@@ -61,6 +61,24 @@ export class Button extends React.Component<IButtonProps, IButtonState> implemen
       ? <span className='ms-u-screenReaderOnly' id={ ariaDescriptionId }>{ ariaDescription }</span>
       : null;
 
+    // Check for ariaDescription, description or aria-describedby in the native props to determine source of aria-describedby
+    // otherwise default to null.
+    const getAriaDescribedBy = () => {
+      let ariaDescribedBy;
+
+      if (ariaDescription) {
+        ariaDescribedBy = ariaDescriptionId;
+      } else if (description) {
+        ariaDescribedBy = descriptionId;
+      } else if (nativeProps['aria-describedby']) {
+        ariaDescribedBy = nativeProps['aria-describedby'];
+      } else {
+        ariaDescribedBy = null;
+      }
+
+      return ariaDescribedBy;
+    };
+
     return React.createElement(
       tag,
       assign(
@@ -70,7 +88,7 @@ export class Button extends React.Component<IButtonProps, IButtonState> implemen
         {
           'aria-label': ariaLabel,
           'aria-labelledby': ariaLabel ? null : labelId,
-          'aria-describedby': ariaDescription ? ariaDescriptionId : description ? descriptionId : nativeProps['aria-describedby'] ? nativeProps['aria-describedby'] : null,
+          'aria-describedby': getAriaDescribedBy(),
           'ref': (c: HTMLButtonElement): HTMLButtonElement => this._buttonElement = c
         },
         onClick && { 'onClick': onClick },
