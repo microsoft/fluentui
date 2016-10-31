@@ -25,7 +25,7 @@ export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeSt
   /**
   * A callback function for when the Dialog is dismissed from the close button or light dismiss.
   */
-  onDismiss?: (ev?: React.MouseEvent) => any;
+  onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
 
   /**
   * The title text to display at the top of the dialog.

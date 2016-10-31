@@ -53,7 +53,7 @@ export interface IFocusZoneProps extends React.Props<FocusZone> {
    * intends to navigate into the inner zone. Returning true will ask the first inner zone to
    * set focus.
    */
-  isInnerZoneKeystroke?: (ev: React.KeyboardEvent) => boolean;
+  isInnerZoneKeystroke?: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
 
   /**
    * Sets the aria-labelledby attribute.
@@ -64,7 +64,7 @@ export interface IFocusZoneProps extends React.Props<FocusZone> {
    * Callback for when one of immediate children elements gets active by getting focused
    * or by having one of its respective children elements focused.
    */
-  onActiveElementChanged?: (element?: HTMLElement, ev?: React.FocusEvent) => void;
+  onActiveElementChanged?: (element?: HTMLElement, ev?: React.FocusEvent<HTMLElement>) => void;
 
   /**
    * Props mixed into the div root element that will be mixed into the root element, *before* other props are applied.
