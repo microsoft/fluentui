@@ -46,7 +46,7 @@ export class Button extends React.Component<IButtonProps, IButtonState> implemen
     });
 
     const iconSpan = icon && (buttonType === ButtonType.command || buttonType === ButtonType.hero || buttonType === ButtonType.icon)
-      ? <span className='ms-Button-icon'><i className={`ms-Icon ms-Icon--${icon}`}></i></span>
+      ? <span className='ms-Button-icon'><i className={'ms-Icon ms-Icon--${icon}'}></i></span>
       : null;
 
     // ms-Button-description is only shown when the button type is compound.
@@ -70,7 +70,7 @@ export class Button extends React.Component<IButtonProps, IButtonState> implemen
         {
           'aria-label': ariaLabel,
           'aria-labelledby': ariaLabel ? null : labelId,
-          'aria-describedby': ariaDescription ? ariaDescriptionId : description ? descriptionId : null,
+          'aria-describedby': ariaDescription ? ariaDescriptionId : description ? descriptionId : nativeProps['aria-describedby'] ? nativeProps['aria-describedby'] : null,
           'ref': (c: HTMLButtonElement): HTMLButtonElement => this._buttonElement = c
         },
         onClick && { 'onClick': onClick },

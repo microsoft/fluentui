@@ -3,13 +3,14 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent } from '../../common/BaseComponent';
 import { ITooltipHostProps } from './TooltipHost.Props';
+import { getNativeProps, divProperties } from '../../utilities/properties';
 import { autobind } from '../../utilities/autobind';
 import { Tooltip } from './index';
 
 export class TooltipHost extends BaseComponent<ITooltipHostProps, any> {
 
   public static defaultProps = {
-    delay: 800
+    delay: 300
   };
 
   // The wrapping div that gets the hover events
@@ -27,23 +28,25 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, any> {
 
   // Render
   public render() {
-    let { content, children } = this.props;
+    let { content, children, directionalHint } = this.props;
     let { isTooltipVisible } = this.state;
 
     return (
-        <div className='ms-TooltipHost' ref={ this._resolveRef('_tooltipHost')} >
-          <span
-            { ...{ onFocusCapture: this._onTooltipMouseEnter } }
-            { ...{ onBlurCapture: this._onTooltipMouseLeave } }
-            onMouseEnter={ this._onTooltipMouseEnter }
-            onMouseLeave={ this._onTooltipMouseLeave }
-          >
+        <div
+          className='ms-TooltipHost'
+          ref={ this._resolveRef('_tooltipHost')}
+          { ...{ onFocusCapture: this._onTooltipMouseEnter } }
+          { ...{ onBlurCapture: this._onTooltipMouseLeave } }
+          onMouseEnter={ this._onTooltipMouseEnter }
+          onMouseLeave={ this._onTooltipMouseLeave }
+        >
             { children }
-          </span>
           { isTooltipVisible ? (
            <Tooltip
-              content ={ content }
+              content={ content }
               targetElement={ this._tooltipHost }
+              directionalHint={ directionalHint }
+              { ...getNativeProps(this.props, divProperties) }
            >
            </Tooltip>
           ) : (null) }
