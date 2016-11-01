@@ -73,7 +73,6 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     while (
       parentElement &&
       parentElement !== document.body &&
-      parentElement.nodeType &&
       parentElement.nodeType === 1
       ) {
       if (isElementFocusZone(parentElement)) {
@@ -415,9 +414,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     if (this._moveFocus(true, (activeRect: ClientRect, targetRect: ClientRect) => {
       let distance = -1;
-      // ClientRect values can be floats that differe by very small fractions of a decimal.
-      // We need to round, otherwise there can be behavior where an equivalent top and bottom (ie 5.2222 and 5.222221)
-      // will not register as such.
+      // ClientRect values can be floats that differ by very small fractions of a decimal.
+      // If the difference between top and bottom are within a pixel then we should treat
+      // them as equivalent by using Math.floor. For instance 5.2222 and 5.222221 should be equivalent,
+      // but without Math.Floor they will be handled incorrectly.
       let targetRectTop = Math.floor(targetRect.top);
       let activeRectBottom = Math.floor(activeRect.bottom);
 
@@ -446,9 +446,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     if (this._moveFocus(false, (activeRect: ClientRect, targetRect: ClientRect) => {
       let distance = -1;
-      // ClientRect values can be floats that differe by very small fractions of a decimal.
-      // We need to round, otherwise there can be behavior where an equivalent top and bottom (ie 5.2222 and 5.222221)
-      // will not register as such.
+      // ClientRect values can be floats that differ by very small fractions of a decimal.
+      // If the difference between top and bottom are within a pixel then we should treat
+      // them as equivalent by using Math.floor. For instance 5.2222 and 5.222221 should be equivalent,
+      // but without Math.Floor they will be handled incorrectly.
       let targetRectBottom = Math.floor(targetRect.bottom);
       let targetRectTop = Math.floor(targetRect.top);
       let activeRectTop = Math.floor(activeRect.top);
