@@ -91,17 +91,17 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
   }
 
   @autobind
-  private _onFocus(ev: React.FocusEvent): void {
+  private _onFocus(ev: React.FocusEvent<HTMLInputElement>): void {
     this.setState({ isFocused: true });
   }
 
   @autobind
-  private _onBlur(ev: React.FocusEvent): void {
+  private _onBlur(ev: React.FocusEvent<HTMLInputElement>): void {
     this.setState({ isFocused: false });
   }
 
   @autobind
-  private _onChange(ev: React.FormEvent) {
+  private _onChange(ev: React.FormEvent<HTMLInputElement>) {
     const { onChange } = this.props;
     const isChecked = (ev.target as HTMLInputElement).checked;
 

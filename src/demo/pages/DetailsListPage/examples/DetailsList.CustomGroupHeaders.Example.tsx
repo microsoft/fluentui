@@ -37,7 +37,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<any, a
                   <Link
                     className='DetailsListExample-customHeaderLink'
                     onClick={ () => props.onToggleSelectGroup(props.group) }>
-                    { props.group.isSelected ? 'Remove selection' : 'Select group' }
+                    { props.isSelected ? 'Remove selection' : 'Select group' }
                   </Link>
                   <Link
                     className='DetailsListExample-customHeaderLink'

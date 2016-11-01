@@ -18,7 +18,7 @@ export class GroupFooter extends React.Component<IGroupDividerProps, {}> {
   }
 
   @autobind
-  private _onSummarizeClick(ev: React.MouseEvent) {
+  private _onSummarizeClick(ev: React.MouseEvent<HTMLElement>) {
     this.props.onToggleSummarize(this.props.group);
 
     ev.stopPropagation();

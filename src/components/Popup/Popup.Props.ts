@@ -23,7 +23,7 @@ export interface IPopupProps extends React.HTMLProps<Popup> {
   * A callback function for when the popup is dismissed from the close button or light dismiss. If provided, will
   * handle escape keypresses and call this. The event will be stopped/canceled.
   */
-  onDismiss?: (ev?: React.MouseEvent) => any;
+  onDismiss?: (ev?: React.MouseEvent<HTMLElement>) => any;
 
   /**
    *  Optional class name for the root popup div.

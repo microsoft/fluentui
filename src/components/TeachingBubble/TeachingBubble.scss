@@ -48,7 +48,7 @@
 
 .ms-Button.ms-TeachingBubble-closebutton {
   position: absolute;
-  right: 2px;
+  @include right(2px);
   top: 0;
   &.ms-Button--icon .ms-Icon {
     color: $ms-color-white;
