@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { IBaseAutoFillProps } from './BaseAutoFill.Props';
+import { IBaseAutoFillProps, IBaseAutoFill } from './BaseAutoFill.Props';
 import { BaseComponent } from '../../../common/BaseComponent';
-import { assign } from '../../../utilities/object';
-import { getNativeProps, inputProperties} from '../../../utilities/properties';
+import { getNativeProps, inputProperties } from '../../../utilities/properties';
 import { autobind } from '../../../utilities/autobind';
 import { KeyCodes } from '../../../utilities/KeyCodes';
 
@@ -10,8 +9,10 @@ export interface IBaseAutoFillState {
   value?: string;
 }
 
-const tag = 'input';
-export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFillState> {
+const SELECTION_FORWARD = 'forward';
+const SELECTION_BACKWARD = 'backward';
+
+export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFillState> implements IBaseAutoFill {
 
   private _inputElement: HTMLInputElement;
 
@@ -22,32 +23,36 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
     };
   }
 
-  get cursorLocation(): number {
-    let inputElement = this._inputElement;
-    if (inputElement.selectionDirection !== 'forward') {
-      return inputElement.selectionEnd;
+  public get cursorLocation(): number {
+    if (this._inputElement) {
+      let inputElement = this._inputElement;
+      if (inputElement.selectionDirection !== SELECTION_FORWARD) {
+        return inputElement.selectionEnd;
+      } else {
+        return inputElement.selectionStart;
+      }
     } else {
-      return inputElement.selectionStart;
+      return -1;
     }
   }
 
-  get isValueSelected() {
+  public get isValueSelected(): boolean {
     return this.inputElement.selectionStart !== this.inputElement.selectionEnd;
   }
 
-  get value(): string {
+  public get value(): string {
     return this.state.value;
   }
 
-  get selectionStart(): number {
-    return this._inputElement.selectionStart;
+  public get selectionStart(): number {
+    return this._inputElement ? this._inputElement.selectionStart : -1;
   }
 
-  get selectionEnd(): number {
-    return this._inputElement.selectionEnd;
+  public get selectionEnd(): number {
+    return this._inputElement ? this._inputElement.selectionEnd : -1;
   }
 
-  get inputElement(): HTMLInputElement {
+  public get inputElement(): HTMLInputElement {
     return this._inputElement;
   }
 
@@ -60,44 +65,33 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
         differenceIndex++;
       }
       if (differenceIndex > 0) {
-        this._inputElement.setSelectionRange(differenceIndex, suggestedDisplayValue.length, 'backward');
+        this._inputElement.setSelectionRange(differenceIndex, suggestedDisplayValue.length, SELECTION_BACKWARD);
       }
     }
   }
 
   public render() {
-    let { value } = this.state;
     let {
-      ariaDescription,
-      ariaActiveDescendant,
-      ariaOwns,
-      ariaExpanded,
-      ariaHasPopup,
+      value
+    } = this.state;
+    let {
       suggestedDisplayValue
     } = this.props;
+    let displayValue = value;
 
-    let displayValue = this.state.value;
     if (this._doesTextStartWith(suggestedDisplayValue, value)) {
       displayValue = suggestedDisplayValue;
     }
+
     const nativeProps = getNativeProps(this.props, inputProperties);
-    return React.createElement(tag,
-      assign(
-        {},
-        nativeProps,
-        {
-          'ref': this._resolveRef('_inputElement'),
-          'value': displayValue,
-          'autoCapitalize': 'off',
-          'autoComplete': 'off',
-          'onChange': this._onChange,
-          'onKeyDown': this._onKeyDown,
-          'aria-activedescendant': ariaActiveDescendant,
-          'aria-owns': ariaOwns,
-          'aria-expanded': ariaExpanded,
-          'aria-haspopup': ariaHasPopup,
-          'aria-describedby': ariaDescription
-        }));
+    return <input { ...nativeProps}
+      ref={ this._resolveRef('_inputElement') }
+      value={ displayValue }
+      autoCapitalize={ 'off' }
+      autoComplete={ 'off' }
+      onChange={ this._onChange }
+      onKeyDown={ this._onKeyDown }
+      />;
   }
 
   public focus() {
@@ -112,21 +106,19 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     switch (ev.which) {
       case KeyCodes.backspace:
-        this._onBackspace(ev);
+        this._handleBackspace(ev);
         break;
     }
   }
 
-  private _onBackspace(ev: React.KeyboardEvent<HTMLElement>) {
+  private _handleBackspace(ev: React.KeyboardEvent<HTMLElement>) {
     let { value } = this.state;
-    if (ev.target === this._inputElement) {
-      if (value && value.length > 0) {
-        this._updateValue(value.substring(0, value.length - 1));
-        // Since this effectively deletes a letter from the string we need to preventDefault so that
-        // the backspace doesn't try to delete a letter that's already been deleted. If a letter is deleted
-        // it can trigger the onChange event again which can have unintended consequences.
-        ev.preventDefault();
-      }
+    if (value && value.length > 0) {
+      this._updateValue(value.substring(0, value.length - 1));
+      // Since this effectively deletes a letter from the string we need to preventDefault so that
+      // the backspace doesn't try to delete a letter that's already been deleted. If a letter is deleted
+      // it can trigger the onChange event again which can have unintended consequences.
+      ev.preventDefault();
     }
   }
 

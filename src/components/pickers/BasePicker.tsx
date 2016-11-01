@@ -92,10 +92,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
               onFocus={ this.onInputFocus }
               onInputValueChange={ this.onInputChange }
               suggestedDisplayValue={ suggestedDisplayValue }
-              ariaActiveDescendant={ 'sug-' + this.suggestionStore.currentIndex }
-              ariaOwns='suggestion-list'
-              ariaExpanded='true'
-              ariaHasPopup='true'/>
+              aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
+              aria-owns='suggestion-list'
+              aria-expanded='true'
+              aria-haspopup='true'/>
           </FocusZone>
         </SelectionZone>
         { this.renderSuggestions() }
