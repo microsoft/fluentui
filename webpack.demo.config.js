@@ -1,7 +1,9 @@
 'use strict';
 
 /** Note: this require may need to be fixed to point to the build that exports the gulp-core-build-webpack instance. */
-let webpackTaskResources = require('@microsoft/web-library-build').webpack.resources;
+let build = require('@microsoft/web-library-build');
+let buildConfig = build.getConfig();
+let webpackTaskResources = build.webpack.resources;
 let webpack = webpackTaskResources.webpack;
 
 let path = require('path');
@@ -21,14 +23,14 @@ if (process.argv.indexOf('--production') > -1) {
 function createConfig(isProduction) {
   let minFileNamePart = isProduction ? '.min' : '';
   let webpackConfig = {
-    context: path.join(__dirname, '/lib'),
+    context: path.join(__dirname, buildConfig.libFolder),
 
     entry: {
       'demo-app': './demo/app.js'
     },
 
     output: {
-      path: path.join(__dirname, '/dist'),
+      path: path.join(__dirname, buildConfig.distFolder),
       filename: `[name]${ minFileNamePart }.js`,
       chunkFilename: `[name]${ minFileNamePart }.js`
     },
@@ -68,7 +70,7 @@ function createConfig(isProduction) {
         },
         {
           name: 'demo-components',
-          path: path.join(__dirname, 'lib', 'components')
+          path: path.join(buildConfig.libFolder, 'components')
         }
       ])
     ]
