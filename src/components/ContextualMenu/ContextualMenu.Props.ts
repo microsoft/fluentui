@@ -81,8 +81,10 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IPosi
    * If none specified no aria label will be applied to the ContextualMenu.
    */
   ariaLabel?: string;
+
   /**
    * If true do not render on a new layer. If false render on a new layer.
+   * @default false
    */
   doNotLayer?: boolean;
 
