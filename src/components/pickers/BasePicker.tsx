@@ -102,7 +102,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
               aria-expanded='true'
               aria-haspopup='true'
               autoCapitalize='off'
-              autoComplete='off'/>
+              autoComplete='off' />
           </FocusZone>
         </SelectionZone>
         { this.renderSuggestions() }
@@ -118,7 +118,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         gapSpace={ 0 }
         targetElement={ this.root }
         onDismiss={ this.dismissSuggestions }
-        directionalHint={getRTL() ? DirectionalHint.bottomRightEdge: DirectionalHint.bottomLeftEdge}>
+        directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }>
         <TypedSuggestion
           onRenderSuggestion={ this.props.onRenderSuggestionsItem }
           onSuggestionClick={ this.onSuggestionClick }
