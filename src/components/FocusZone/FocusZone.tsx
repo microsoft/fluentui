@@ -70,7 +70,11 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     let parentElement = getParent(this.refs.root);
 
-    while (parentElement && parentElement !== document.body) {
+    while (
+      parentElement &&
+      parentElement !== document.body &&
+      parentElement.nodeType === 1
+      ) {
       if (isElementFocusZone(parentElement)) {
         this._isInnerZone = true;
         break;
@@ -97,7 +101,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         aria-labelledby={ ariaLabelledBy }
         onKeyDown={ this._onKeyDown }
         onFocus={ this._onFocus }
-        { ...{onMouseDownCapture: this._onMouseDown } }
+        { ...{ onMouseDownCapture: this._onMouseDown } }
         >
         { this.props.children }
       </div>
@@ -410,11 +414,16 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     if (this._moveFocus(true, (activeRect: ClientRect, targetRect: ClientRect) => {
       let distance = -1;
+      // ClientRect values can be floats that differ by very small fractions of a decimal.
+      // If the difference between top and bottom are within a pixel then we should treat
+      // them as equivalent by using Math.floor. For instance 5.2222 and 5.222221 should be equivalent,
+      // but without Math.Floor they will be handled incorrectly.
+      let targetRectTop = Math.floor(targetRect.top);
+      let activeRectBottom = Math.floor(activeRect.bottom);
 
-      if ((targetTop === -1 && targetRect.top >= activeRect.bottom) ||
-        (targetRect.top === targetTop)) {
-
-        targetTop = targetRect.top;
+      if ((targetTop === -1 && targetRectTop >= activeRectBottom) ||
+        (targetRectTop === targetTop)) {
+        targetTop = targetRectTop;
         if (leftAlignment >= targetRect.left && leftAlignment <= (targetRect.left + targetRect.width)) {
           distance = 0;
         } else {
@@ -437,10 +446,17 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     if (this._moveFocus(false, (activeRect: ClientRect, targetRect: ClientRect) => {
       let distance = -1;
+      // ClientRect values can be floats that differ by very small fractions of a decimal.
+      // If the difference between top and bottom are within a pixel then we should treat
+      // them as equivalent by using Math.floor. For instance 5.2222 and 5.222221 should be equivalent,
+      // but without Math.Floor they will be handled incorrectly.
+      let targetRectBottom = Math.floor(targetRect.bottom);
+      let targetRectTop = Math.floor(targetRect.top);
+      let activeRectTop = Math.floor(activeRect.top);
 
-      if ((targetTop === -1 && targetRect.bottom <= activeRect.top) ||
-        (targetRect.top === targetTop)) {
-        targetTop = targetRect.top;
+      if ((targetTop === -1 && targetRectBottom <= activeRectTop) ||
+        (targetRectTop === targetTop)) {
+        targetTop = targetRectTop;
         if (leftAlignment >= targetRect.left && leftAlignment <= (targetRect.left + targetRect.width)) {
           distance = 0;
         } else {
