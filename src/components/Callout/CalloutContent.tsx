@@ -8,7 +8,8 @@ import {
   css,
   elementContains
 } from '../../Utilities';
-import { getRelativePositions, IPositionInfo, IRect } from '../../utilities/positioning';
+import { getRelativePositions, IPositionInfo } from '../../utilities/positioning';
+import { IRectangle } from '../../common/IRectangle';
 import { focusFirstChild } from '../../utilities/focus';
 import { assign } from '../../Utilities';
 import { Popup } from '../Popup/index';
@@ -17,7 +18,8 @@ import './Callout.scss';
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 const OFF_SCREEN_POSITION = { top: -9999, left: 0 };
-const borderWidth: number = 1;
+const BORDER_WIDTH: number = 1;
+const SPACE_FROM_EDGE: number = 8;
 export interface ICalloutState {
   positions?: any;
   slideDirectionalClassName?: string;
@@ -30,16 +32,16 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     isBeakVisible: true,
     beakWidth: 28,
     gapSpace: 0,
-    directionalHint: DirectionalHint.bottomAutoEdge,
-    spaceFromEdgeOfBounds: 10
+    directionalHint: DirectionalHint.bottomAutoEdge
   };
 
   private _didSetInitialFocus: boolean;
   private _hostElement: HTMLDivElement;
   private _calloutElement: HTMLDivElement;
   private _targetWindow: Window;
-  private _bounds: IRect;
+  private _bounds: IRectangle;
   private _maxHeight: number;
+  private _positionAttempts: number;
 
   constructor(props: ICalloutProps) {
     super(props);
@@ -56,6 +58,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     } else {
       this._targetWindow = window;
     }
+    this._positionAttempts = 0;
   }
 
   public componentDidUpdate() {
@@ -85,12 +88,17 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       width: beakStyleWidth
     };
 
-    let contentMaxHeight: number = this._MaxHeight;
+    let contentMaxHeight: number = this._getMaxHeight();
 
     let content = (
       <div ref={ this._resolveRef('_hostElement') } className={ 'ms-Callout-container' }>
         <div
-          className={ css('ms-Callout', className, slideDirectionalClassName ? `ms-u-${slideDirectionalClassName}` : '') }
+          className={
+            css(
+              'ms-Callout',
+              className,
+              slideDirectionalClassName ? `ms-u-${slideDirectionalClassName}` : ''
+            ) }
           style={ positions ? positions.callout : OFF_SCREEN_POSITION }
           ref={ this._resolveRef('_calloutElement') }
           >
@@ -165,14 +173,19 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     if (hostElement && calloutElement) {
       let currentProps: ICalloutProps;
       currentProps = assign(currentProps, this.props);
-      currentProps.bounds = this._Bounds;
+      currentProps.bounds = this._getBounds();
       let positionInfo: IPositionInfo = getRelativePositions(currentProps, hostElement, calloutElement);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
       if ((!positions && positionInfo) ||
-        (positions && positionInfo && (positions.callout.top.toFixed(2) !== positionInfo.calloutPosition.top.toFixed(2) || positions.callout.left.toFixed(2) !== positionInfo.calloutPosition.left.toFixed(2)))) {
-
+        (positions && positionInfo &&
+          (positions.callout.top.toFixed(2) !== positionInfo.calloutPosition.top.toFixed(2) ||
+            positions.callout.left.toFixed(2) !== positionInfo.calloutPosition.left.toFixed(2))
+          && this._positionAttempts < 10000)) {
+        // We should not reposition the callout more than a few times, if it is then the content is likely resizing
+        // and we should stop trying to reposition to prevent a stack overflow.
+        this._positionAttempts++;
         this.setState({
           positions: {
             callout: positionInfo.calloutPosition,
@@ -181,49 +194,44 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
           slideDirectionalClassName: positionInfo.directionalClassName
         });
       }
+    } else {
+      this._positionAttempts = 0;
     }
   }
 
-  private _getBounds(): IRect {
-    let currentBounds = this.props.bounds;
-
-    if (!currentBounds) {
-      currentBounds = {
-        top: 0,
-        left: 0,
-        right: this._targetWindow.innerWidth,
-        bottom: this._targetWindow.innerHeight,
-        width: this._targetWindow.innerWidth,
-        height: this._targetWindow.innerHeight
-      };
-    }
-
-    return this._modifyBoundsForPadding(currentBounds);
-  }
-
-  private _modifyBoundsForPadding(bounds: IRect): IRect {
-    let { spaceFromEdgeOfBounds } = this.props;
-
-    return {
-      top: bounds.top + spaceFromEdgeOfBounds,
-      left: bounds.left + spaceFromEdgeOfBounds,
-      right: bounds.right - spaceFromEdgeOfBounds,
-      bottom: bounds.bottom - spaceFromEdgeOfBounds,
-      width: bounds.width - spaceFromEdgeOfBounds * 2,
-      height: bounds.height - spaceFromEdgeOfBounds * 2
-    };
-  }
-
-  private get _Bounds(): IRect {
+  private _getBounds(): IRectangle {
     if (!this._bounds) {
-      this._bounds = this._getBounds();
+      let currentBounds = this.props.bounds;
+
+      if (!currentBounds) {
+        currentBounds = {
+          top: 0,
+          left: 0,
+          right: this._targetWindow.innerWidth,
+          bottom: this._targetWindow.innerHeight,
+          width: this._targetWindow.innerWidth,
+          height: this._targetWindow.innerHeight
+        };
+      }
+      this._bounds = this._modifyBoundsForPadding(currentBounds);
     }
     return this._bounds;
   }
 
-  private get _MaxHeight(): number {
+  private _modifyBoundsForPadding(bounds: IRectangle): IRectangle {
+    return {
+      top: bounds.top + SPACE_FROM_EDGE,
+      left: bounds.left + SPACE_FROM_EDGE,
+      right: bounds.right - SPACE_FROM_EDGE,
+      bottom: bounds.bottom - SPACE_FROM_EDGE,
+      width: bounds.width - SPACE_FROM_EDGE * 2,
+      height: bounds.height - SPACE_FROM_EDGE * 2
+    };
+  }
+
+  private _getMaxHeight(): number {
     if (!this._maxHeight) {
-      this._maxHeight = this._Bounds.height - borderWidth * 2;
+      this._maxHeight = this._getBounds().height - BORDER_WIDTH * 2;
     }
     return this._maxHeight;
   }
