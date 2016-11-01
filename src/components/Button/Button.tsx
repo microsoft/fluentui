@@ -46,7 +46,7 @@ export class Button extends React.Component<IButtonProps, IButtonState> implemen
     });
 
     const iconSpan = icon && (buttonType === ButtonType.command || buttonType === ButtonType.hero || buttonType === ButtonType.icon)
-      ? <span className='ms-Button-icon'><i className={'ms-Icon ms-Icon--${icon}'}></i></span>
+      ? <span className='ms-Button-icon'><i className={`ms-Icon ms-Icon--${icon}`}></i></span>
       : null;
 
     // ms-Button-description is only shown when the button type is compound.
