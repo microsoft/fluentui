@@ -81,7 +81,7 @@ export class Image extends React.Component<IImageProps, IImageState> {
   }
 
   public render() {
-    let imageProps = getNativeProps(this.props, imageProperties);
+    let imageProps = getNativeProps(this.props, imageProperties, ['width', 'height']);
     let { src, alt, width, height, shouldFadeIn, className, imageFit, errorSrc, role } = this.props;
     let { loadState } = this.state;
     let coverStyle = this._coverStyle;
@@ -92,18 +92,26 @@ export class Image extends React.Component<IImageProps, IImageState> {
     // If image dimensions aren't specified, the natural size of the image is used.
     return (
       <div className={ css('ms-Image', className) } style={ { width: width, height: height } }>
-        <img { ...imageProps } className={ css('ms-Image-image',
-          (coverStyle !== undefined) && CoverStyleMap[coverStyle],
-          (imageFit !== undefined) && ImageFitMap[imageFit], {
-            'is-fadeIn': shouldFadeIn,
-            'is-notLoaded': !loaded,
-            'is-loaded': loaded,
-            'ms-u-fadeIn400': loaded && shouldFadeIn,
-            'is-error': loadState === ImageLoadState.error,
-            'ms-Image-image--scaleWidth': (imageFit === undefined && !!width && !height),
-            'ms-Image-image--scaleHeight': (imageFit === undefined && !width && !!height),
-            'ms-Image-image--scaleWidthHeight': (imageFit === undefined && !!width && !!height),
-          }) } ref='image' src={ srcToDisplay } alt={ alt } role={ role } />
+        <img
+          { ...imageProps }
+          className={
+            css('ms-Image-image',
+              (coverStyle !== undefined) && CoverStyleMap[coverStyle],
+              (imageFit !== undefined) && ImageFitMap[imageFit], {
+                'is-fadeIn': shouldFadeIn,
+                'is-notLoaded': !loaded,
+                'is-loaded': loaded,
+                'ms-u-fadeIn400': loaded && shouldFadeIn,
+                'is-error': loadState === ImageLoadState.error,
+                'ms-Image-image--scaleWidth': (imageFit === undefined && !!width && !height),
+                'ms-Image-image--scaleHeight': (imageFit === undefined && !width && !!height),
+                'ms-Image-image--scaleWidthHeight': (imageFit === undefined && !!width && !!height),
+              }) }
+          ref='image'
+          src={ srcToDisplay }
+          alt={ alt }
+          role={ role }
+          />
       </div>
     );
   }
