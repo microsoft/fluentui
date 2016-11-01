@@ -41,4 +41,11 @@ describe('getNativeProps', () => {
     expect(result['foobar']).equals(undefined); // tslint:disable-line:no-string-literal
   });
 
+  it('can exclude properties', () => {
+    let result = getNativeProps<any>({ a: 1, b: 2}, ['a', 'b'], ['b']);
+
+    expect(result.a).to.exist;
+    expect(result.b).to.not.exist;
+  });
+
 });
