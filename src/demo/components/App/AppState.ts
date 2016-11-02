@@ -37,6 +37,7 @@ import { SpinnerPage } from '../../pages/SpinnerPage/SpinnerPage';
 import { TeachingBubblePage } from '../../pages/TeachingBubblePage/TeachingBubblePage';
 import { TextFieldPage } from '../../pages/TextFieldPage/TextFieldPage';
 import { TogglePage } from '../../pages/TogglePage/TogglePage';
+import { TooltipPage } from '../../pages/TooltipPage/TooltipPage';
 import { ThemePage } from '../../pages/ThemePage/ThemePage';
 import { DetailsListBasicExample } from '../../pages/DetailsListPage/examples/DetailsList.Basic.Example';
 
@@ -264,6 +265,13 @@ export const AppState: IAppState = {
           name: 'Toggle',
           status: ExampleStatus.beta,
           url: '#/examples/toggle'
+        },
+        {
+          component: TooltipPage,
+          key: 'Tooltip',
+          name: 'Tooltip',
+          status: ExampleStatus.beta,
+          url: '#/examples/Tooltip'
         }
       ],
       name: 'Basic components'

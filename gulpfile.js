@@ -1,9 +1,11 @@
 'use strict';
 
 let build = require('@microsoft/web-library-build');
+let buildConfig = build.getConfig();
 let gulp = require('gulp');
 let configFile = "./ftpconfig.json";
 let fs = require('fs');
+let path = require('path');
 
 let isProduction = process.argv.indexOf( '--production' ) >= 0;
 let isNuke = process.argv.indexOf( 'nuke' ) >= 0;
@@ -14,9 +16,12 @@ build.tslint.setConfig({ lintConfig: require('./tslint.json') });
 /* Configure TypeScript 2.0. */
 build.typescript.setConfig({ typescript: require('typescript') });
 
+let packageFolder = buildConfig.packageFolder || '';
+let distFolder = buildConfig.distFolder;
+
 build.postCopy.setConfig({
   copyTo: {
-    'dist': [
+    [ distFolder ]: [
       'src/**/*.png',
       'node_modules/react/dist/react.js',
       'node_modules/react-dom/dist/react-dom.js'
@@ -26,10 +31,10 @@ build.postCopy.setConfig({
 
 isProduction && build.postCopy.setConfig({
   copyTo: {
-    'dist/sass': [
+    [ path.join(distFolder, 'sass') ]: [
       'node_modules/office-ui-fabric-core/dist/sass/*.*'
     ],
-    'dist/css': [
+    [ path.join(distFolder, 'css') ]: [
       'node_modules/office-ui-fabric-core/dist/css/*.*'
     ]
   }
@@ -40,7 +45,7 @@ build.text.setConfig({ textMatch: ['src/**/*.txt', 'src/**/*.Example.tsx', 'src/
 
 if (isProduction || isNuke) {
   build.setConfig({
-    libAMDFolder: 'lib-amd'
+    libAMDFolder: path.join(packageFolder, 'lib-amd')
   });
 }
 

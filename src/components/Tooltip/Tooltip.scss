@@ -1,0 +1,20 @@
+@import '../../common/common';
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+//
+// Office UI Fabric
+// --------------------------------------------------
+// Tooltip styles
+.ms-Tooltip {
+    max-width: 364px;
+    background: $ms-color-white;
+    padding: 8px;
+    &-subText {
+        margin: 0;
+        font-size: $ms-font-size-s;
+        color: $ms-color-neutralPrimary;
+    }
+}
+
+.ms-TooltipHost {
+    display: inline-block;
+}
