@@ -8,7 +8,7 @@ let fs = require('fs');
 let path = require('path');
 
 let isProduction = process.argv.indexOf( '--production' ) >= 0;
-let isClean = process.argv.indexOf( 'clean' ) >= 0;
+let isNuke = process.argv.indexOf( 'nuke' ) >= 0;
 
 /** @todo: disable lint config. */
 build.tslint.setConfig({ lintConfig: require('./tslint.json') });
@@ -43,7 +43,7 @@ isProduction && build.postCopy.setConfig({
 // process *.Example.tsx as text.
 build.text.setConfig({ textMatch: ['src/**/*.txt', 'src/**/*.Example.tsx', 'src/**/*.Props.ts'] });
 
-if (isProduction || isClean) {
+if (isProduction || isNuke) {
   build.setConfig({
     libAMDFolder: path.join(packageFolder, 'lib-amd')
   });
@@ -180,8 +180,6 @@ let defaultTasks = build.serial(
   build.karma,
   runSSRTests
   );
-
-build.task('ts', build.typescript);
 
 build.task('default', defaultTasks);
 
