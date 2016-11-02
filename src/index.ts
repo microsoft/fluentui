@@ -30,6 +30,7 @@ export * from './MessageBar';
 export * from './MarqueeSelection';
 export * from './Nav';
 export * from './Overlay';
+export * from './Pane';
 export * from './Panel';
 export * from './Pickers';
 export * from './Persona';
