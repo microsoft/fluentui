@@ -11,4 +11,19 @@ export interface IPaneContentProps {
 
 export class PaneContent extends React.Component<IPaneContentProps, any> {
 
+  public static defaultProps: IPaneContentProps = {
+    className: ''
+  };
+
+  constructor(props: IPaneContentProps) {
+    super(props);
+  }
+
+  public render() {
+    return (
+      <div className={ this.props.className }>
+        { this.props.children }
+      </div>
+    );
+  }
 }

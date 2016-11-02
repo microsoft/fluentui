@@ -11,4 +11,19 @@ export interface IWrappedContentProps {
 
 export class WrappedContent extends React.Component<IWrappedContentProps, any> {
 
+  public static defaultProps: IWrappedContentProps = {
+    className: ''
+  };
+
+  constructor(props: IWrappedContentProps) {
+    super(props);
+  }
+
+  public render() {
+    return (
+      <div className={ this.props.className }>
+        { this.props.children }
+      </div>
+    );
+  }
 }

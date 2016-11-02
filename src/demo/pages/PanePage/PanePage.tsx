@@ -32,6 +32,12 @@ export class PanePage extends React.Component<IComponentDemoPageProps, any> {
         componentName='PaneExample'
         exampleCards={
           <div>
+            <ExampleCard title='Pane - Small Pane, Anchored Right, Fixed Width' code={ PaneSmallRightExampleCode }>
+              <PaneSmallRightExample />
+            </ExampleCard>
+            <ExampleCard title='Pane - Small Pane, Full Screen, Fluid Width' code={ PaneSmallFluidExampleCode }>
+              <PaneSmallFluidExample />
+            </ExampleCard>
           </div>
         }
         propertiesTables={
