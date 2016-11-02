@@ -3,13 +3,13 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import { BaseComponent } from '../../common/BaseComponent';
-import { IPaneProps, PaneType } from './Pane.Props';
-import { PaneContent } from './PaneContent';
 import { Popup } from '../Popup/index';
-import { WrappedContent } from './WrappedContent';
 import { css } from '../../utilities/css';
 import { getId } from '../../utilities/object';
 import { getRTL } from '../../utilities/rtl';
+import { IPaneProps, PaneType } from './Pane.Props';
+import { PaneContent } from './PaneContent';
+import { WrappedContent } from './WrappedContent';
 import './Pane.scss';
 
 export interface IPaneState {
@@ -27,12 +27,14 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
     type: PaneType.smallFixedFar
   };
 
-  private _initialContentWidth: string;
+  private _initialContentWidth: number;
+  private _contentContainer = 'content-container';
+  private _mainContent = 'main-content';
 
   constructor(props: IPaneProps) {
     super(props);
 
-    this._onPaneClick = this._onPaneClick.bind(this);
+    this._onClose = this._onClose.bind(this);
     this._onPaneRef = this._onPaneRef.bind(this);
 
     this.state = {
@@ -44,7 +46,10 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
   }
 
   public componentDidMount() {
-    this._initialContentWidth = (this.refs['content-container'] as HTMLElement).clientWidth + 'px';
+    if (this.props.isOverlay) {
+      // Set original content width for overlay mode
+      this._initialContentWidth = (this.refs[this._contentContainer] as HTMLElement).clientWidth;
+    }
 
     if (this.state.isOpen) {
       this._async.setTimeout(() => {
@@ -65,21 +70,24 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
     }
   }
 
-  public componentWillUpdate() {
-    this._async.setTimeout(() => {
-      (this.refs['content-container'] as HTMLElement).style.width = this._initialContentWidth;
-    }, 1);
+  public componentDidUpdate() {
+    if (this.props.isOverlay) {
+      // Use original content width for overlay mode
+      (this.refs[this._contentContainer] as HTMLElement).style.width = this._initialContentWidth + 'px';
+    } else {
+      // Viewport content width for push mode
+      (this.refs[this._contentContainer] as HTMLElement).style.width = this._getContainerWidth() + 'px';
+    }
   }
 
   public render() {
-    let { children, className = '', type, hasCloseButton, headerText, closeButtonAriaLabel, headerClassName = ''  } = this.props;
+    let { className = '', type, hasCloseButton, headerText, closeButtonAriaLabel, headerClassName = ''  } = this.props;
     let { isOpen, isAnimatingOpen, isAnimatingClose, id } = this.state;
     let isLeft = type === PaneType.smallFixedNear ? true : false;
     let isRTL = getRTL();
     let isOnRightSide = isRTL ? isLeft : !isLeft;
     const headerTextId = id + '-headerText';
     let pendingCommandBarContent = '';
-    let childControls = React.Children.toArray(children);
 
     let header;
     if (headerText) {
@@ -88,7 +96,7 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
 
     let closeButton;
     if (hasCloseButton) {
-      closeButton = <button className='ms-Pane-closeButton ms-PaneAction-close' onClick={ this._onPaneClick }  aria-label={ closeButtonAriaLabel } data-is-visible={ true }>
+      closeButton = <button className='ms-Pane-closeButton ms-PaneAction-close' onClick={ this._onClose }  aria-label={ closeButtonAriaLabel } data-is-visible={ true }>
         <i className='ms-Pane-closeIcon ms-Icon ms-Icon--Cancel'></i>
       </button>;
     }
@@ -104,11 +112,12 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
       }
         >
         <div
-          className={ 'main-content' }
+          className={ this._mainContent }
+          ref={ this._mainContent }
           >
           <div
-            ref='content-container'
-            className={ 'content-container' }
+            className={ this._contentContainer }
+            ref={ this._contentContainer }
             >
             { groupings.wrappedContents }
           </div>
@@ -164,16 +173,26 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
     }
   }
 
-  private _onPaneClick() {
-    this.dismiss();
+  private _getContainerWidth(): number {
+    return (this.refs[this._mainContent] as HTMLElement).clientWidth;
   }
 
-  private _onPaneRef(ref: HTMLDivElement) {
-    if (ref) {
-      this._events.on(ref, 'animationend', this._onAnimationEnd);
-    } else {
-      this._events.off();
-    }
+  private _groupChildren(): { wrappedContents: any[]; paneContents: any[]; } {
+
+    let groupings: { wrappedContents: any[]; paneContents: any[]; } = {
+      wrappedContents: [],
+      paneContents: []
+    };
+
+    React.Children.map(this.props.children, child => {
+      if (typeof child === 'object' && child.type === PaneContent) {
+        groupings.paneContents.push(child);
+      } else if (typeof child === 'object' && child.type === WrappedContent) {
+        groupings.wrappedContents.push(child);
+      }
+    });
+
+    return groupings;
   }
 
   private _onAnimationEnd(ev: AnimationEvent) {
@@ -195,21 +214,15 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
     }
   }
 
-  private _groupChildren(): { wrappedContents: any[]; paneContents: any[]; } {
+  private _onClose() {
+    this.dismiss();
+  }
 
-    let groupings: { wrappedContents: any[]; paneContents: any[]; } = {
-      wrappedContents: [],
-      paneContents: []
-    };
-
-    React.Children.map(this.props.children, child => {
-      if (typeof child === 'object' && child.type === PaneContent) {
-        groupings.paneContents.push(child);
-      } else if (typeof child === 'object' && child.type === WrappedContent) {
-        groupings.wrappedContents.push(child);
-      }
-    });
-
-    return groupings;
+  private _onPaneRef(ref: HTMLDivElement) {
+    if (ref) {
+      this._events.on(ref, 'animationend', this._onAnimationEnd);
+    } else {
+      this._events.off();
+    }
   }
 }

@@ -3,37 +3,37 @@ import { Pane } from './Pane';
 
 export interface IPaneProps extends React.Props<Pane> {
   /**
-  * Whether the pane is displayed.
-  * @default false
-  */
+   * Whether the pane is displayed.
+   * @default false
+   */
   isOpen?: boolean;
 
   /**
-  * Has the close button visible.
-  * @default true
-  */
+   * Has the close button visible.
+   * @default true
+   */
   hasCloseButton?: boolean;
 
   /**
-  * Header text for the Pane.
-  * @default ""
-  */
+   * Header text for the Pane.
+   * @default ""
+   */
   headerText?: string;
 
   /**
-  * Event handler for when the pane is closed.
-  */
+   * Event handler for when the pane is closed.
+   */
   onDismiss?: () => void;
 
   /**
-  * Additional styling options.
-  */
+   * Additional styling options.
+   */
   className?: string;
 
   /**
-  * Type of the pane.
-  * @default PaneType.smallFixedRight
-  */
+   * Type of the pane.
+   * @default PaneType.smallFixedRight
+   */
   type?: PaneType;
 
   /**
@@ -45,6 +45,11 @@ export interface IPaneProps extends React.Props<Pane> {
    * Optional parameter to provider the class name for header text
    */
   headerClassName?: string;
+
+  /**
+   * Optional parameter stating whether the content box should squish (true) or scroll (false)
+   */
+  isOverlay?: boolean;
 }
 
 export enum PaneType {

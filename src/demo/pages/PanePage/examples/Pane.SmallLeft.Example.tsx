@@ -25,7 +25,7 @@ export class PaneSmallLeftExample extends React.Component<any, any> {
           onDismiss= { this._closePane.bind(this) }
           headerText='Pane - Small, left-aligned, fixed'
           >
-          <WrappedContent className="myContent">
+          <WrappedContent className='myContent'>
             [Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block]
             [Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block]
             [Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block]

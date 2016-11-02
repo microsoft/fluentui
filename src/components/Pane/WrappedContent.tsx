@@ -2,8 +2,7 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-export interface IWrappedContentProps extends React.Props<WrappedContent>
-{
+export interface IWrappedContentProps extends React.Props<WrappedContent> {
   /**
    * Optional class name to be added to the root class
    */

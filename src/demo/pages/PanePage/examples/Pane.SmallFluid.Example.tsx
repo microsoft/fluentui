@@ -27,7 +27,7 @@ export class PaneSmallFluidExample extends React.Component<any, any> {
           onDismiss= { this._closePane.bind(this) }
           headerText='Pane - Small, right-aligned, fluid width'
           >
-          <WrappedContent className="myContent">
+          <WrappedContent className='myContent'>
             [Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block]
             [Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block]
             [Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block][Main content block]
