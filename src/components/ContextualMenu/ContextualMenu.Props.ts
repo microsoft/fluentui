@@ -112,7 +112,7 @@ export interface IContextualMenuItem {
    */
   disabled?: boolean;
   /**
-   * isDisabled is deprecated at v.65.1 and will be removed by v 1.0. Use 'disabled' instead.
+   * Deprecated at v.65.1 and will be removed by v 1.0. Use 'disabled' instead.
    */
   isDisabled?: boolean;
 
@@ -133,7 +133,7 @@ export interface IContextualMenuItem {
    */
   checked?: boolean;
   /**
-   * isDisabled is deprecated at v.65.1 and will be removed by v 1.0. Use 'checked' instead.
+   * Deprecated at v.65.1 and will be removed by v 1.0. Use 'checked' instead.
    */
   isChecked?: boolean;
 
