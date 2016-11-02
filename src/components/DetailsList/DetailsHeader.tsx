@@ -21,7 +21,7 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
   onColumnIsSizingChanged?: (column: IColumn, isSizing: boolean) => void;
   onColumnResized?: (column: IColumn, newWidth: number) => void;
   onColumnAutoResized?: (column: IColumn, columnIndex: number) => void;
-  onColumnClick?: (column: IColumn, ev: Event) => void;
+  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void;
   onColumnContextMenu?: (column: IColumn, ev: Event) => void;
   groupNestingDepth?: number;
   isAllCollapsed?: boolean;
@@ -207,7 +207,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
    * @param {number} columnIndex (index of the column user double clicked)
    * @param {React.MouseEvent} ev (mouse double click event)
    */
-  private _onSizerDoubleClick(columnIndex: number, ev: React.MouseEvent) {
+  private _onSizerDoubleClick(columnIndex: number, ev: React.MouseEvent<HTMLElement>) {
     let { onColumnAutoResized, columns } = this.props;
     if (onColumnAutoResized) {
       onColumnAutoResized(columns[columnIndex], columnIndex);
@@ -230,7 +230,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
    * @private
    * @param {React.MouseEvent} ev (mouse move event)
    */
-  private _onMove(ev: React.MouseEvent) {
+  private _onMove(ev: React.MouseEvent<HTMLElement>) {
     let {
       // use buttons property here since ev.button in some edge case is not upding well during the move.
       // but firefox doesn't support it, so we set the default value when it is not defined.
@@ -271,7 +271,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
    * @private
    * @param {React.MouseEvent} ev (mouse up event)
    */
-  private _onUp(ev: React.MouseEvent) {
+  private _onUp(ev: React.MouseEvent<HTMLElement>) {
     this.setState({
       columnResizeDetails: null,
       isSizing: false
@@ -310,7 +310,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     }
   }
 
-  private _onSizerMove(ev: React.MouseEvent) {
+  private _onSizerMove(ev: React.MouseEvent<HTMLElement>) {
     let {
       // use buttons property here since ev.button in some edge case is not upding well during the move.
       // but firefox doesn't support it, so we set the default value when it is not defined.
@@ -363,11 +363,11 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     let { onColumnClick } = this.props;
 
     if (column.onColumnClick) {
-      column.onColumnClick(column, ev);
+      column.onColumnClick(ev, column);
     }
 
     if (onColumnClick) {
-      onColumnClick(column, ev);
+      onColumnClick(ev, column);
     }
   }
 

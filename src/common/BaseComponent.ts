@@ -8,7 +8,7 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
    * External consumers should override BaseComponent.onError to hook into error messages that occur from
    * exceptions thrown from within components.
    */
-  public static onError: ((errorMessage?: string, ex?: Error) => void);
+  public static onError: ((errorMessage?: string, ex?: any) => void);
 
   private __async: Async;
   private __events: EventGroup;

@@ -112,7 +112,7 @@ export class DatePickerDay extends React.Component<IDatePickerDayProps, IDatePic
                           }) }
                             role='gridcell'
                             onClick={ selectDayCallbacks[day.key] }
-                            onKeyDown= { (ev: React.KeyboardEvent) =>
+                            onKeyDown= { (ev: React.KeyboardEvent<HTMLElement>) =>
                               this._navigateMonthEdge(ev, day.originalDate, weekIndex, dayIndex)}
                             aria-selected={ day.isSelected }
                             id={ compareDates(navigatedDate, day.originalDate) ? activeDescendantId : null }
@@ -139,7 +139,7 @@ export class DatePickerDay extends React.Component<IDatePickerDayProps, IDatePic
     }
   }
 
-  private _navigateMonthEdge(ev: React.KeyboardEvent, date: Date, weekIndex: number, dayIndex: number) {
+  private _navigateMonthEdge(ev: React.KeyboardEvent<HTMLElement>, date: Date, weekIndex: number, dayIndex: number) {
     if (weekIndex === 0 && ev.which === KeyCodes.up) {
       this.props.onNavigateDate(addWeeks(date, -1), true);
       ev.preventDefault();
@@ -155,7 +155,7 @@ export class DatePickerDay extends React.Component<IDatePickerDayProps, IDatePic
     }
   }
 
-  private _onKeyDown(callback: () => void, ev: React.KeyboardEvent) {
+  private _onKeyDown(callback: () => void, ev: React.KeyboardEvent<HTMLElement>) {
     if (ev.which === KeyCodes.enter) {
       callback();
     }

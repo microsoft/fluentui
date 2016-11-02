@@ -365,7 +365,7 @@ export class DocumentPicker extends BasePicker<IFullDocumentCardProps, IDocument
       </div>
     );
   }
-  protected _onBackspace(ev: React.KeyboardEvent) {
+  protected _onBackspace(ev: React.KeyboardEvent<HTMLElement>) {
     let { value } = this.state;
     if (ev.target === this.input) {
       if (value && this.input.selectionStart !== this.input.selectionEnd) {

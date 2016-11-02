@@ -41,6 +41,7 @@ export * from './Spinner';
 export * from './TeachingBubble';
 export * from './TextField';
 export * from './Toggle';
+export * from './Tooltip';
 export * from './Utilities';
 
 /* Special cases that will be removed once we've moved utilities out into a common location. */

@@ -1,9 +1,11 @@
 'use strict';
 
 let build = require('@microsoft/web-library-build');
+let buildConfig = build.getConfig();
 let gulp = require('gulp');
 let configFile = "./ftpconfig.json";
 let fs = require('fs');
+let path = require('path');
 
 let isProduction = process.argv.indexOf( '--production' ) >= 0;
 let isNuke = process.argv.indexOf( 'nuke' ) >= 0;
@@ -14,9 +16,12 @@ build.tslint.setConfig({ lintConfig: require('./tslint.json') });
 /* Configure TypeScript 2.0. */
 build.typescript.setConfig({ typescript: require('typescript') });
 
+let packageFolder = buildConfig.packageFolder || '';
+let distFolder = buildConfig.distFolder;
+
 build.postCopy.setConfig({
   copyTo: {
-    'dist': [
+    [ distFolder ]: [
       'src/**/*.png',
       'node_modules/react/dist/react.js',
       'node_modules/react-dom/dist/react-dom.js'
@@ -26,10 +31,10 @@ build.postCopy.setConfig({
 
 isProduction && build.postCopy.setConfig({
   copyTo: {
-    'dist/sass': [
+    [ path.join(distFolder, 'sass') ]: [
       'node_modules/office-ui-fabric-core/dist/sass/*.*'
     ],
-    'dist/css': [
+    [ path.join(distFolder, 'css') ]: [
       'node_modules/office-ui-fabric-core/dist/css/*.*'
     ]
   }
@@ -40,7 +45,7 @@ build.text.setConfig({ textMatch: ['src/**/*.txt', 'src/**/*.Example.tsx', 'src/
 
 if (isProduction || isNuke) {
   build.setConfig({
-    libAMDFolder: 'lib-amd'
+    libAMDFolder: path.join(packageFolder, 'lib-amd')
   });
 }
 
@@ -152,6 +157,31 @@ gulp.task('deploy', ['bundle'],  function(cb) {
 // build.sass.setConfig({ useCSSModules: true });
 
 build.task('tslint', build.tslint);
+
+let runSSRTests = build.subTask('run-ssr-tests', function(gulp, buildOptions, done) {
+  let themeLoader = require('@microsoft/load-themed-styles');
+  themeLoader.configureLoadStyles((styles) => {
+     // noop
+  });
+
+  let Mocha = require('mocha');
+  let mocha = new Mocha();
+  mocha.files = ['ssr-test.js'];
+  mocha.run();
+  done();
+});
+
+let defaultTasks = build.serial(
+  build.preCopy,
+  build.sass,
+  build.parallel(build.typescript, build.tslint, build.text),
+  build.postCopy,
+  build.webpack,
+  build.karma,
+  runSSRTests
+  );
+
+build.task('default', defaultTasks);
 
 // initialize tasks.
 build.initialize(gulp);

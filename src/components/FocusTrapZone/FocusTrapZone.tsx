@@ -81,7 +81,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   }
 
   @autobind
-  private _onKeyboardHandler(ev: React.KeyboardEvent) {
+  private _onKeyboardHandler(ev: React.KeyboardEvent<HTMLElement>) {
     if (ev.which !== KeyCodes.tab) {
       return;
     }

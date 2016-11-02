@@ -18,7 +18,6 @@ export interface IContextualMenuState {
   dismissedMenuItemKey?: string;
   contextualMenuItems?: IContextualMenuItem[];
   contextualMenuTarget?: HTMLElement;
-  beakStyle?: any;
   submenuProps?: IContextualMenuProps;
   positions?: any;
   slideDirectionalClassName?: string;
@@ -182,7 +181,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         gapSpace={ gapSpace }
         doNotLayer={ isSubMenu }
         coverTarget={ coverTarget }
-        beakStyle='ms-Callout-smallbeak'
         className='ms-ContextualMenu-Callout'
         setInitialFocus={ true }
         onDismiss={ this.props.onDismiss }>
@@ -315,7 +313,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   }
 
   @autobind
-  private _onKeyDown(ev: React.KeyboardEvent) {
+  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     let submenuCloseKey = getRTL() ? KeyCodes.right : KeyCodes.left;
 
     if (ev.which === KeyCodes.escape
@@ -329,7 +327,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     }
   }
 
-  private _onItemMouseEnter(item: any, ev: React.MouseEvent) {
+  private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>) {
     let targetElement = ev.currentTarget as HTMLElement;
 
     if (item.key !== this.state.expandedMenuItemKey) {
@@ -342,11 +340,11 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   }
 
   @autobind
-  private _onMouseLeave(ev: React.MouseEvent) {
+  private _onMouseLeave(ev: React.MouseEvent<HTMLElement>) {
     this._async.clearTimeout(this._enterTimerId);
   }
 
-  private _onItemMouseDown(item: IContextualMenuItem, ev: React.MouseEvent) {
+  private _onItemMouseDown(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
     if (item.onMouseDown) {
       item.onMouseDown(item, ev);
     }
