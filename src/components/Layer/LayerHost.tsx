@@ -1,6 +1,14 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { Fabric } from '../../Fabric';
-import { autobind, css, findIndex } from '../../Utilities';
+import {
+  BaseComponent,
+  autobind,
+  css,
+  findIndex,
+  getNativeProps,
+  divProperties
+} from '../../Utilities';
 import { ProjectedLayer } from './ProjectedLayer';
 import { ILayerProps } from './Layer.Props';
 import { ILayerHostProps } from './LayerHost.Props';
@@ -12,6 +20,7 @@ export interface ILayer {
   onMounted: (projectedLayer: ProjectedLayer) => void;
 }
 
+const DEFAULT_HOST_ID = '__layerHost';
 /**
  * LayerHost provides a wrapper that acts as a passthrough, rendering the given children within it, but also
  * appending a div at the end, which projects all content wrapped in the Layer components within. Projecting
@@ -29,7 +38,7 @@ export interface ILayer {
  *   <div>I will render normally.</div>
  * </LayerHost>
  **/
-export class LayerHost extends React.Component<ILayerHostProps, {}> {
+export class LayerHost extends BaseComponent<ILayerHostProps, {}> {
   public static childContextTypes = {
     layerHost: React.PropTypes.object
   };
@@ -39,7 +48,26 @@ export class LayerHost extends React.Component<ILayerHostProps, {}> {
     [key: string]: ProjectedLayer
   };
 
-  constructor(props: {}) {
+  public static getDefault(layerElement: HTMLElement): LayerHost {
+    let doc = layerElement.ownerDocument;
+    let hostElement = doc.getElementById(DEFAULT_HOST_ID);
+
+    if (hostElement) {
+      return hostElement[DEFAULT_HOST_ID] as LayerHost;
+    } else {
+      hostElement = doc.createElement('div');
+      hostElement.id = DEFAULT_HOST_ID;
+      doc.body.appendChild(hostElement);
+
+      let defaultHost = ReactDOM.render(<LayerHost />, hostElement) as LayerHost;
+
+      hostElement[DEFAULT_HOST_ID] = defaultHost;
+
+      return defaultHost;
+    }
+  }
+
+  constructor(props: ILayerHostProps) {
     super(props);
 
     this.state = {
@@ -57,20 +85,22 @@ export class LayerHost extends React.Component<ILayerHostProps, {}> {
   }
 
   public render() {
+    let divProps = getNativeProps(this.props, divProperties);
+
     return (
-      <div { ...this.props } className={ css('ms-LayerHost', this.props.className) }>
+      <div { ...divProps } className={ css('ms-LayerHost', this.props.className) }>
         <Fabric>
           { this.props.children }
           <div className='ms-LayerHost-overlay'>
             { this._layers.map(layer => (
               <ProjectedLayer
-                key={ layer.id }
+                key={layer.id }
                 layerId={ layer.id }
                 parentElement={ layer.parentElement }
                 defaultRemoteProps={ layer.props }
                 ref={ this._resolveLayer }
                 />
-            )) }
+            ))}
           </div>
         </Fabric>
       </div>
