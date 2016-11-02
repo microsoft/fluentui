@@ -59,9 +59,9 @@ export class LayerHost extends BaseComponent<ILayerHostProps, {}> {
       hostElement.id = DEFAULT_HOST_ID;
       doc.body.appendChild(hostElement);
 
-      let defaultHost = ReactDOM.render(<LayerHost id={ DEFAULT_HOST_ID } />, hostElement) as LayerHost;
+      let defaultHost = ReactDOM.render(<LayerHost id={DEFAULT_HOST_ID} />, hostElement) as LayerHost;
 
-      defaultHost[DEFAULT_HOST_ID] = defaultHost;
+      hostElement[DEFAULT_HOST_ID] = defaultHost;
 
       return defaultHost;
     }
@@ -88,17 +88,17 @@ export class LayerHost extends BaseComponent<ILayerHostProps, {}> {
     let divProps = getNativeProps(this.props, divProperties);
 
     return (
-      <div { ...divProps } className={css('ms-LayerHost', this.props.className)}>
+      <div { ...divProps } className={ css('ms-LayerHost', this.props.className) }>
         <Fabric>
-          {this.props.children}
+          { this.props.children }
           <div className='ms-LayerHost-overlay'>
-            {this._layers.map(layer => (
+            { this._layers.map(layer => (
               <ProjectedLayer
-                key={layer.id}
-                layerId={layer.id}
-                parentElement={layer.parentElement}
-                defaultRemoteProps={layer.props}
-                ref={this._resolveLayer}
+                key={layer.id }
+                layerId={ layer.id }
+                parentElement={ layer.parentElement }
+                defaultRemoteProps={ layer.props }
+                ref={ this._resolveLayer }
                 />
             ))}
           </div>
