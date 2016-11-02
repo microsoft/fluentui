@@ -11,12 +11,12 @@ export class ButtonNormalExample extends React.Component<IButtonProps, {}> {
   }
 
   public render() {
-    let { isDisabled } = this.props;
+    let { disabled } = this.props;
 
     return (
       <div className='ms-BasicButtonsExample'>
         <Label>Normal button</Label>
-        <Button data-automation-id='test' disabled={ isDisabled }>Create account</Button>
+        <Button data-automation-id='test' disabled={ disabled }>Create account</Button>
       </div>
     );
   }

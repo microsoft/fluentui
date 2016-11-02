@@ -21,7 +21,7 @@ export const DetailsRowCheck = (props: IDetailsRowCheckProps) => (
     aria-label={ props.ariaLabel }
     >
     { props.canSelect ?
-      <Check isChecked={ props.isSelected } /> :
+      <Check checked={ props.isSelected } /> :
       <div className='ms-DetailsRow-checkSpacer' />
     }
   </button>

@@ -74,7 +74,7 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
               className='ms-GroupHeader-check'
               data-selection-toggle={ true }
               onClick={ this._onToggleSelectGroupClick } >
-              <Check isChecked={ isSelected } />
+              <Check checked={ isSelected } />
             </button>
           ) : (selectionMode !== SelectionMode.none ? GroupSpacer({ count: 1 }) : null)
           }

@@ -184,7 +184,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         className='ms-ContextualMenu-Callout'
         setInitialFocus={ true }
         onDismiss={ this.props.onDismiss }>
-        <div ref={ (host: HTMLDivElement) => this._host = host} id={ id } className={ css('ms-ContextualMenu-container', className) }>
+        <div ref={ (host: HTMLDivElement) => this._host = host } id={ id } className={ css('ms-ContextualMenu-container', className) }>
           { (items && items.length) ? (
             <FocusZone
               className={ 'ms-ContextualMenu is-open' }
@@ -203,7 +203,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
                     <li
                       role='separator'
                       key={ item.key || index }
-                      className={ css('ms-ContextualMenu-divider', item.className) }/>
+                      className={ css('ms-ContextualMenu-divider', item.className) } />
                   ) : (
                       <li
                         role='menuitem'
@@ -218,7 +218,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
             </FocusZone>
           ) : (null) }
           { submenuProps ? ( // If a submenu properities exists, the submenu will be rendered.
-            <ContextualMenu { ...submenuProps }/>
+            <ContextualMenu { ...submenuProps } />
           ) : (null) }
         </div>
       </Callout>
@@ -243,11 +243,11 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         <a
           { ...getNativeProps(item, anchorProperties) }
           href={ item.href }
-          className={ css('ms-ContextualMenu-link', item.isDisabled ? 'is-disabled' : '') }
+          className={ css('ms-ContextualMenu-link', item.isDisabled || item.disabled ? 'is-disabled' : '') }
           role='menuitem'
           onClick={ this._onAnchorClick.bind(this, item) }>
           { (hasIcons) ? (
-            <span className={ 'ms-ContextualMenu-icon' + ((item.icon) ? ` ms-Icon ms-Icon--${item.icon}` : ' no-icon') }/>)
+            <span className={ 'ms-ContextualMenu-icon' + ((item.icon) ? ` ms-Icon ms-Icon--${item.icon}` : ' no-icon') } />)
             : null
           }
           <span className='ms-ContextualMenu-linkText ms-fontWeight-regular'> { item.name } </span>
@@ -276,7 +276,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
       onMouseEnter: this._onItemMouseEnter.bind(this, item),
       onMouseLeave: this._onMouseLeave,
       onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
-      disabled: item.isDisabled,
+      disabled: item.isDisabled || item.disabled,
       role: 'menuitem',
       href: item.href,
       title: item.title,
@@ -294,18 +294,23 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   private _renderMenuItemChildren(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
     return (
       <div className='ms-ContextualMenu-linkContent'>
-        {(hasCheckmarks) ? (
+        { (hasCheckmarks) ? (
           <span
             className={
-              css('ms-ContextualMenu-icon', { 'ms-Icon ms-Icon--CheckMark': item.isChecked, 'not-selected': !item.isChecked })
+              css(
+                'ms-ContextualMenu-icon',
+                {
+                  'ms-Icon ms-Icon--CheckMark': item.isChecked || item.checked,
+                  'not-selected': !item.isChecked && item.checked
+                })
             }
             onClick={ this._onItemClick.bind(this, item) } />
         ) : (null) }
-        {(hasIcons) ? (
-          <span className={ 'ms-ContextualMenu-icon' + ((item.icon) ? ` ms-Icon ms-Icon--${item.icon}` : ' no-icon') }/>
+        { (hasIcons) ? (
+          <span className={ 'ms-ContextualMenu-icon' + ((item.icon) ? ` ms-Icon ms-Icon--${item.icon}` : ' no-icon') } />
         ) : (null) }
         <span className='ms-ContextualMenu-itemText ms-fontWeight-regular'>{ item.name }</span>
-        {(item.items && item.items.length) ? (
+        { (item.items && item.items.length) ? (
           <i className={ css('ms-ContextualMenu-submenuChevron ms-Icon', getRTL() ? 'ms-Icon--ChevronLeft' : 'ms-Icon--ChevronRight') } />
         ) : (null) }
       </div>
