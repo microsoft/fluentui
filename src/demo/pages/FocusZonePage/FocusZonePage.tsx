@@ -30,22 +30,20 @@ export class FocusZonePage extends React.Component<IComponentDemoPageProps, any>
         title='FocusZone'
         componentName='FocusZoneExample'
         exampleCards={
-          [
+          <div>
             <ExampleCard title='Non-uniform photos within bidirectional FocusZone' code={ FocusZonePhotosExampleCode }>
               <FocusZonePhotosExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Nesting FocusZones in list rows' code={ FocusZoneListExampleCode }>
               <FocusZoneListExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='Disabled FocusZone' code={ FocusZoneDisabledExampleCode }>
               <FocusZoneDisabledExample />
             </ExampleCard>
-          ]
+          </div>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='FocusZone' />
-          ]
+          <PropertiesTableSet componentName='FocusZone' />
         }
         overview={
           <div>

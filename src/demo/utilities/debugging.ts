@@ -1,6 +1,6 @@
 import { beep } from './beep';
 
-export function instrumentMethod(target: Object, methodName: string) {
+export function instrumentMethod(target: any, methodName: string) {
   const originalMethod = target[methodName];
 
   target[methodName] = function() {

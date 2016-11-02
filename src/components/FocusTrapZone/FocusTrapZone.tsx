@@ -3,7 +3,9 @@ import {
   BaseComponent,
   KeyCodes,
   autobind,
-  elementContains
+  elementContains,
+  getNativeProps,
+  divProperties
 } from '../../Utilities';
 import { IFocusTrapZone, IFocusTrapZoneProps } from './FocusTrapZone.Props';
 import {
@@ -46,10 +48,11 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
 
   public render() {
     let { className, ariaLabelledBy } = this.props;
+    let divProps = getNativeProps(this.props, divProperties);
 
     return (
       <div
-        { ...this.props as any }
+        { ...divProps }
         className={ className }
         ref='root'
         aria-labelledby={ ariaLabelledBy }
@@ -78,7 +81,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   }
 
   @autobind
-  private _onKeyboardHandler(ev: React.KeyboardEvent) {
+  private _onKeyboardHandler(ev: React.KeyboardEvent<HTMLElement>) {
     if (ev.which !== KeyCodes.tab) {
       return;
     }

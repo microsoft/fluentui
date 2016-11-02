@@ -23,7 +23,7 @@ export interface IMessageBarProps extends React.HTMLProps<HTMLElement> {
    * If null, we don't show a dismiss button.
    * @defaultvalue null
    */
-  onDismiss?: (ev?: React.MouseEvent) => any;
+  onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
 
   /**
    * Determines if the message bar is multi lined.
@@ -52,8 +52,8 @@ export enum MessageBarType {
   /** Warning styled MessageBar */
   warning,
   /**
-   * Deprecated at v0.48.0, to be removed at >= v1.0.0. Use 'blocked' instead.
    * @deprecated
+   * Deprecated at v0.48.0, to be removed at >= v1.0.0. Use 'blocked' instead.
    */
   remove
 }

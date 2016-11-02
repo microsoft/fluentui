@@ -70,7 +70,11 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     let parentElement = getParent(this.refs.root);
 
-    while (parentElement && parentElement !== document.body) {
+    while (
+      parentElement &&
+      parentElement !== document.body &&
+      parentElement.nodeType === 1
+      ) {
       if (isElementFocusZone(parentElement)) {
         this._isInnerZone = true;
         break;
@@ -95,9 +99,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
         ref='root'
         data-focuszone-id={ this._id }
         aria-labelledby={ ariaLabelledBy }
-        onMouseDownCapture={ this._onMouseDown }
         onKeyDown={ this._onKeyDown }
         onFocus={ this._onFocus }
+        { ...{ onMouseDownCapture: this._onMouseDown } }
         >
         { this.props.children }
       </div>
@@ -156,7 +160,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   @autobind
-  private _onFocus(ev: React.FocusEvent) {
+  private _onFocus(ev: React.FocusEvent<HTMLElement>) {
     let { onActiveElementChanged } = this.props;
 
     if (this._isImmediateDescendantOfZone(ev.target as HTMLElement)) {
@@ -188,7 +192,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   @autobind
-  private _onMouseDown(ev: React.MouseEvent) {
+  private _onMouseDown(ev: React.MouseEvent<HTMLElement>) {
     const { disabled } = this.props;
 
     if (disabled) {
@@ -219,7 +223,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
    * Handle the keystrokes.
    */
   @autobind
-  private _onKeyDown(ev: React.KeyboardEvent) {
+  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     const { direction, disabled, isInnerZoneKeystroke } = this.props;
 
     if (disabled) {
@@ -351,11 +355,17 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     let changedFocus = false;
     let isBidirectional = this.props.direction === FocusZoneDirection.bidirectional;
 
-    if (!this._activeElement) {
-      return;
+    if (!element) {
+      return false;
     }
 
-    const activeRect = isBidirectional ? this._activeElement.getBoundingClientRect() : null;
+    if (this._isElementInput(element)) {
+      if (!this._shouldInputLoseFocus(element as HTMLInputElement, isForward)) {
+        return false;
+      }
+    }
+
+    const activeRect = isBidirectional ? element.getBoundingClientRect() : null;
 
     do {
       element = isForward ?
@@ -404,11 +414,16 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     if (this._moveFocus(true, (activeRect: ClientRect, targetRect: ClientRect) => {
       let distance = -1;
+      // ClientRect values can be floats that differ by very small fractions of a decimal.
+      // If the difference between top and bottom are within a pixel then we should treat
+      // them as equivalent by using Math.floor. For instance 5.2222 and 5.222221 should be equivalent,
+      // but without Math.Floor they will be handled incorrectly.
+      let targetRectTop = Math.floor(targetRect.top);
+      let activeRectBottom = Math.floor(activeRect.bottom);
 
-      if ((targetTop === -1 && targetRect.top >= activeRect.bottom) ||
-        (targetRect.top === targetTop)) {
-
-        targetTop = targetRect.top;
+      if ((targetTop === -1 && targetRectTop >= activeRectBottom) ||
+        (targetRectTop === targetTop)) {
+        targetTop = targetRectTop;
         if (leftAlignment >= targetRect.left && leftAlignment <= (targetRect.left + targetRect.width)) {
           distance = 0;
         } else {
@@ -431,10 +446,17 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
 
     if (this._moveFocus(false, (activeRect: ClientRect, targetRect: ClientRect) => {
       let distance = -1;
+      // ClientRect values can be floats that differ by very small fractions of a decimal.
+      // If the difference between top and bottom are within a pixel then we should treat
+      // them as equivalent by using Math.floor. For instance 5.2222 and 5.222221 should be equivalent,
+      // but without Math.Floor they will be handled incorrectly.
+      let targetRectBottom = Math.floor(targetRect.bottom);
+      let targetRectTop = Math.floor(targetRect.top);
+      let activeRectTop = Math.floor(activeRect.top);
 
-      if ((targetTop === -1 && targetRect.bottom <= activeRect.top) ||
-        (targetRect.top === targetTop)) {
-        targetTop = targetRect.top;
+      if ((targetTop === -1 && targetRectBottom <= activeRectTop) ||
+        (targetRectTop === targetTop)) {
+        targetTop = targetRectTop;
         if (leftAlignment >= targetRect.left && leftAlignment <= (targetRect.left + targetRect.width)) {
           distance = 0;
         } else {
@@ -573,6 +595,35 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       }
     }
 
+  }
+
+  private _isElementInput(element: HTMLElement): boolean {
+    if (element && element.tagName && element.tagName.toLowerCase() === 'input') {
+      return true;
+    }
+    return false;
+  }
+
+  private _shouldInputLoseFocus(element: HTMLInputElement, isForward?: boolean) {
+    if (element) {
+      let selectionStart = element.selectionStart;
+      let selectionEnd = element.selectionEnd;
+      // This means that the input has text selected and we shouldn't lose focus.
+      if (selectionStart !== selectionEnd) {
+        return false;
+      } else {
+        let inputValue = element.value;
+
+        if (selectionStart === 0 && !isForward) {
+          return true;
+        } else if (selectionStart === inputValue.length && isForward) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }
+    return false;
   }
 
 }

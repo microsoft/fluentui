@@ -14,21 +14,21 @@ describe('Breadcrumb', () => {
 
   it('can call the callback when an item is clicked', () => {
     let callbackValue;
-    const clickCallback = (key: string) => {
-      callbackValue = key;
+    const clickCallback = (ev: React.MouseEvent<HTMLElement>, item: IBreadcrumbItem) => {
+      callbackValue = item.key;
     };
 
     const items: IBreadcrumbItem[] = [
       {text: 'TestText', key: 'TestKey', onClick: clickCallback}
     ];
 
-    let component = ReactTestUtils.renderIntoDocument(
+    let component = ReactTestUtils.renderIntoDocument<Breadcrumb>(
       <Breadcrumb
         items={items}
       />
     );
 
-    let renderedDOM = ReactDOM.findDOMNode(component);
+    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
     let itemLink = renderedDOM.querySelector('.ms-Breadcrumb-itemLink');
 
     ReactTestUtils.Simulate.click(itemLink);

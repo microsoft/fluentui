@@ -1,11 +1,15 @@
 import * as React from 'react';
 import { IOverlayProps } from './Overlay.Props';
 import { css } from '../../utilities/css';
+import { getNativeProps, divProperties } from '../../utilities/properties';
+
 import './Overlay.scss';
 
 export class Overlay extends React.Component<IOverlayProps, {}> {
   public render() {
     let { isDarkThemed, className } = this.props;
+    let divProps = getNativeProps(this.props, divProperties);
+
     let modifiedClassName = css(
       'ms-Overlay',
       className,
@@ -14,7 +18,7 @@ export class Overlay extends React.Component<IOverlayProps, {}> {
       });
 
     return (
-      <div { ...this.props } className={ modifiedClassName } />
+      <div { ...divProps } className={ modifiedClassName } />
     );
   }
 }

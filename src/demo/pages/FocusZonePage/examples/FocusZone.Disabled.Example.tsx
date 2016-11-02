@@ -2,16 +2,18 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-import { FocusZone, Button, TextField } from '../../../../index';
+import { FocusZone, Button, TextField, FocusZoneDirection } from '../../../../index';
 import './FocusZone.Disabled.Example.scss';
 
 export const FocusZoneDisabledExample = () => (
   <div className='ms-FocusZoneDisabledExample'>
     <div className='ms-Row'>
-      <FocusZone>
+      <FocusZone direction={ FocusZoneDirection.horizontal }>
         <span>Enabled FocusZone: </span>
         <Button>Button 1</Button>
         <Button>Button 2</Button>
+        <TextField value='FocusZone TextField' className='ms-FocusZoneDisabledExample-textField' />
+        <Button>Button 3</Button>
       </FocusZone>
     </div>
     <div className='ms-Row'>

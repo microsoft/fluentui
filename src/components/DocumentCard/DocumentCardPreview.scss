@@ -4,6 +4,7 @@
   border-bottom: 2px solid $ms-color-neutralTertiary; // Default border color
   position: relative;
   background-color: $ms-color-neutralLighterAlt;
+  overflow: hidden;
 
   &.is-fileList {
     background-color: $ms-color-white;
@@ -26,7 +27,7 @@
     line-height: 16px; // Vertically center the text
     margin-bottom: 8px;
     overflow: hidden;
-    @include padding-left(32px); // Make room for icon
+    @include padding-left(24px); // Make room for icon
     position: relative;
     text-overflow: ellipsis;
     white-space: nowrap;

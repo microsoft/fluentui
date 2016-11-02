@@ -658,18 +658,6 @@ $personaItemHeight: 42px;
   }
 }
 
-.ms-PeoplePicker.ms-PeoplePicker--Facepile {
-  .ms-PersonaCard {
-    display: none;
-    position: absolute;
-    height: 200px;
-
-    &.is-active {
-      display: block;
-    }
-  }
-}
-
 .ms-PeoplePicker-selectedHeader,
 .ms-PeoplePicker-peopleListHeader {
   color: $ms-color-themePrimary;
