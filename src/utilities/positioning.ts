@@ -2,7 +2,7 @@ import { DirectionalHint } from '../common/DirectionalHint';
 import Rectangle from './Rectangle';
 import { getScrollbarWidth } from './scroll';
 import { assign } from '../utilities/object';
-
+import { IRectangle } from '../common/IRectangle';
 export enum RectangleEdge {
   top,
   bottom,
@@ -33,7 +33,7 @@ export interface IPositionProps {
   /**
    * The bounding rectangle for which  the contextual menu can appear in.
    */
-  bounds?: IRect;
+  bounds?: IRectangle;
 
   /**
    * The event that created the contextualmenu.
@@ -70,15 +70,6 @@ export interface IPositionInfo {
 export interface IPoint {
   x: number;
   y: number;
-}
-
-export interface IRect {
-  left: number;
-  top: number;
-  right: number;
-  bottom: number;
-  width: number;
-  height: number;
 }
 
 export class PositionData {
@@ -331,7 +322,7 @@ export module positioningFunctions {
     return _movePointOnRectangleToPoint(beakRectangle, beakPoint, finalPoint);
   }
 
-  export function _getRectangleFromIRect(rect: IRect): Rectangle {
+  export function _getRectangleFromIRect(rect: IRectangle): Rectangle {
     return new Rectangle(rect.left, rect.right, rect.top, rect.bottom);
   }
 
