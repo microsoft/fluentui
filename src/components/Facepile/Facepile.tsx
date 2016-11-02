@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Persona, PersonaSize } from '../../Persona';
 import { IFacepileProps, IFacepilePersona } from './Facepile.Props';
 import './Facepile.scss';
+import { getNativeProps, buttonProperties, divProperties } from '../../utilities/properties';
 
 export class Facepile extends React.Component<IFacepileProps, {}> {
   public render(): JSX.Element {
@@ -33,6 +34,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
 
   private _getElementWithOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
     return  <button
+              { ...getNativeProps(persona, buttonProperties) }
               className='ms-Facepile-itemBtn ms-Facepile-itemBtn--member'
               title={ persona.personaName }
               key={ index }
@@ -45,6 +47,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
 
   private _getElementWithoutOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
     return  <div
+              { ...getNativeProps(persona, divProperties) }
               className='ms-Facepile-itemBtn ms-Facepile-itemBtn--member'
               title={ persona.personaName }
               key={ index }
@@ -54,19 +57,19 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
             </div>;
   }
 
-  private _onPersonaClick(persona: IFacepilePersona, ev?: React.MouseEvent): void {
+  private _onPersonaClick(persona: IFacepilePersona, ev?: React.MouseEvent<HTMLElement>): void {
     persona.onClick(ev, persona);
     ev.preventDefault();
     ev.stopPropagation();
   }
 
-  private _onPersonaMouseMove(persona: IFacepilePersona, ev?: React.MouseEvent): void {
+  private _onPersonaMouseMove(persona: IFacepilePersona, ev?: React.MouseEvent<HTMLElement>): void {
     if (!!persona.onMouseMove) {
       persona.onMouseMove(ev, persona);
     }
   }
 
-  private _onPersonaMouseOut(persona: IFacepilePersona, ev?: React.MouseEvent): void {
+  private _onPersonaMouseOut(persona: IFacepilePersona, ev?: React.MouseEvent<HTMLElement>): void {
     if (!!persona.onMouseOut) {
       persona.onMouseOut(ev, persona);
     }

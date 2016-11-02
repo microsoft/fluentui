@@ -270,7 +270,7 @@ $CommandBarHeight: 40px;
 .ms-Panel-closeButton {
   @include button-reset();
   position: absolute;
-  right: 8px;
+  @include right(8px);
   top: 0;
   height: $CommandBarHeight;
   width: $CommandBarHeight;

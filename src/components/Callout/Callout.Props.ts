@@ -22,9 +22,9 @@ export interface ICalloutProps extends React.Props<Callout|CalloutContent>, IPos
    */
   gapSpace?: number;
 
-  /**
-   * The css className for the beak.
-   * @default 'ms-Callout-beak'
+ /**
+   * @deprecated
+   * Deprecated at v0.59.1, to be removed at >= v1.0.0. Pass in a beakWidth to dictate size.
    */
   beakStyle?: string;
 
@@ -69,16 +69,4 @@ export interface ICalloutProps extends React.Props<Callout|CalloutContent>, IPos
    * @returns True if focus was set, false if it was not.
    */
   setInitialFocus?: boolean;
-}
-
-export interface ILink {
-  /**
-   * Text to render for the link.
-   */
-  name: string;
-
-  /**
-   * URL for the link.
-   */
-  url: string;
 }

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { BaseComponent } from '../../common/BaseComponent';
 import {
   anchorProperties,
   autobind,
@@ -6,7 +7,7 @@ import {
   css,
   getNativeProps
 } from '../../Utilities';
-import { ILinkProps } from './Link.Props';
+import { ILink, ILinkProps } from './Link.Props';
 import './Link.scss';
 
 interface IMyScreen extends Screen {
@@ -16,7 +17,8 @@ interface IMyScreen extends Screen {
 
 declare var screen: IMyScreen;
 
-export class Link extends React.Component<ILinkProps, any> {
+export class Link extends BaseComponent<ILinkProps, any> implements ILink {
+  private _link: HTMLElement;
 
   public render() {
     let { disabled, children, className, href } = this.props;
@@ -29,7 +31,9 @@ export class Link extends React.Component<ILinkProps, any> {
           className={ css('ms-Link', className, {
             'is-disabled': disabled
           }) }
-          onClick={ this._onClick }>
+          onClick={ this._onClick }
+          ref={ this._resolveRef('_link') }
+        >
           { children }
         </a>
       ) : (
@@ -39,14 +43,22 @@ export class Link extends React.Component<ILinkProps, any> {
             className={ css('ms-Link', className, {
               'is-disabled': disabled
             }) }
-            onClick={ this._onClick } >
+            onClick={ this._onClick }
+            ref={ this._resolveRef('_link') }
+          >
             { children }
           </button>
         ));
   }
 
+  public focus() {
+    if (this._link) {
+      this._link.focus();
+    }
+  }
+
   @autobind
-  private _onClick(ev: React.MouseEvent) {
+  private _onClick(ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
     let { onClick } = this.props;
 
     if (onClick) {

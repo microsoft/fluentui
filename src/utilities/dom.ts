@@ -119,6 +119,23 @@ export function elementContains(parent: HTMLElement, child: HTMLElement, allowVi
   return isContained;
 }
 
+let _isSSR = false;
+
+/** Helper to set ssr mode to simulate no window object returned from getWindow helper. */
+export function setSSR(isEnabled) {
+  _isSSR = isEnabled;
+}
+
+/** Helper to get the window object. */
+export function getWindow() {
+  return _isSSR ? undefined : window;
+}
+
+/** Helper to get the document object. */
+export function getDocument() {
+  return _isSSR ? undefined : document;
+}
+
 /** Helper to get bounding client rect, works with window. */
 export function getRect(element: HTMLElement | Window): IRectangle {
   let rect: IRectangle;

@@ -1,5 +1,9 @@
 import * as React from 'react';
 import { IDropdownProps, IDropdownOption } from './Dropdown.Props';
+import { DirectionalHint } from '../../common/DirectionalHint';
+import { Callout } from '../../Callout';
+import {
+} from '../../index';
 import {
   BaseComponent,
   KeyCodes,
@@ -32,6 +36,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
 
   private _optionList: HTMLElement;
   private _dropDown: HTMLDivElement;
+  private _dropdownLabel: HTMLElement;
 
   constructor(props?: IDropdownProps) {
     super(props, {
@@ -42,14 +47,14 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
       id: getId('Dropdown'),
       isOpen: false,
       selectedIndex: this._getSelectedIndex(props.options, props.selectedKey),
-      isDisabled: this.props.isDisabled || this.props.disabled
+      isDisabled: props.isDisabled !== undefined ? props.isDisabled : props.disabled
     };
   }
 
   public componentWillReceiveProps(newProps: IDropdownProps) {
     this.setState({
       selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey),
-      isDisabled: newProps.isDisabled
+      isDisabled: newProps.isDisabled !== undefined ? newProps.isDisabled : newProps.disabled
     });
   }
 
@@ -72,14 +77,14 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
   }
 
   public render() {
-    let { label, options } = this.props;
+    let { label, options, onRenderItem = this._onRenderItem } = this.props;
     let { id, isOpen, selectedIndex, isDisabled } = this.state;
     let selectedOption = options[selectedIndex];
 
     // Need to assign role application on containing div because JAWS doesnt call OnKeyDown without this role
     return (
       <div ref='root'>
-        <label id={ id + '-label' } className='ms-Label'>{ label }</label>
+        <label id={ id + '-label' } className='ms-Label' ref={ (dropdownLabel) => this._dropdownLabel = dropdownLabel } >{ label }</label>
         <div
           data-is-focusable={ true }
           ref={ (c): HTMLElement => this._dropDown = c }
@@ -95,28 +100,42 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
           aria-activedescendant={ selectedIndex >= 0 ? (id + '-list' + selectedIndex) : (id + '-list') }
           aria-controls={ id + '-list' }
           >
-          <span className='ms-Dropdown-title'>{ selectedOption ? selectedOption.text : '' }</span>
+          <span className='ms-Dropdown-title'>{ selectedOption ? onRenderItem(selectedOption, this._onRenderItem) : '' }</span>
           <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown'></i>
-          <ul ref={ (c: HTMLElement) => this._optionList = c }
-            id={ id + '-list' }
-            className='ms-Dropdown-items'
-            role='listbox'
-            aria-labelledby={ id + '-label' }>
-            { options.map((option, index) => (
-              <li id={ id + '-list' + index.toString() }
-                ref= { Dropdown.Option + index.toString() }
-                key={ option.key }
-                data-index={ index }
-                className={ css('ms-Dropdown-item', { 'is-selected': selectedIndex === index }) }
-                onClick={ this.setSelectedIndex.bind(this, index) }
-                role='option'
-                aria-selected={ selectedIndex === index ? 'true' : 'false' }
-                aria-label={ option.text }
-                >
-                { option.text }
-              </li>
-            )) }
-          </ul>
+           { isOpen && (
+            <Callout
+              isBeakVisible = { false }
+              className='ms-Dropdown-callout'
+              gapSpace={ 0 }
+              doNotLayer= { false }
+              targetElement={ this._dropDown }
+              setInitialFocus={ true }
+              directionalHint={ DirectionalHint.bottomLeftEdge }
+              onDismiss={ this._onDismiss }
+            >
+              <ul ref={ (c: HTMLElement) => this._optionList = c }
+                id={ id + '-list' }
+                style={ { width: this._dropDown.clientWidth - 2 } }
+                className='ms-Dropdown-items'
+                role='listbox'
+                aria-labelledby={ id + '-label' }>
+                { options.map((option, index) => (
+                  <li id={ id + '-list' + index.toString() }
+                    ref= { Dropdown.Option + index.toString() }
+                    key={ option.key }
+                    data-index={ index }
+                    className={ css('ms-Dropdown-item', { 'is-selected': selectedIndex === index }) }
+                    onClick={ () => this._onItemClick(index) }
+                    role='option'
+                    aria-selected={ selectedIndex === index ? 'true' : 'false' }
+                    aria-label={ option.text }
+                    >
+                    { option.text }
+                  </li>
+                )) }
+              </ul>
+            </Callout>
+           ) }
         </div>
       </div>
     );
@@ -146,12 +165,29 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
     }
   }
 
+  @autobind
+  private _onRenderItem(item: IDropdownOption): JSX.Element {
+      return <span>{item.text}</span>;
+  }
+
+  private _onItemClick(index) {
+    this.setSelectedIndex(index);
+    this.setState({
+      isOpen: false
+    });
+  }
+
+  @autobind
+  private _onDismiss() {
+    this.setState({ isOpen: false });
+  }
+
   private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number) {
     return findIndex(options, (option => (option.isSelected || (selectedKey != null) && option.key === selectedKey)));
   }
 
   @autobind
-  private _onDropdownKeyDown(ev: React.KeyboardEvent) {
+  private _onDropdownKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     switch (ev.which) {
       case KeyCodes.enter:
         this.setState({
@@ -192,7 +228,6 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
   @autobind
   private _onDropdownClick() {
     let { isDisabled, isOpen } = this.state;
-
     if (!isDisabled) {
       this.setState({
         isOpen: !isOpen
@@ -201,7 +236,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
   }
 
   @autobind
-  private _onFocusChange(ev: React.FocusEvent) {
+  private _onFocusChange(ev: React.FocusEvent<HTMLElement>) {
     if (this.state.isOpen && !elementContains(this.refs.root, ev.target as HTMLElement)) {
       this.setState({
         isOpen: false
