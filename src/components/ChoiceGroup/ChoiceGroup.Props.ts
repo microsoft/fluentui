@@ -50,6 +50,7 @@ export interface IChoiceGroupOption {
   checked?: boolean;
 
   /**
+   * @deprecated
    * Deprecated at v.65.1 and will be removed by v 1.0. Use 'checked' instead.
    */
   isChecked?: boolean;
