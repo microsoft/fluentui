@@ -73,7 +73,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
 
     let header;
     if (headerText) {
-      header = <p className={ css('ms-Panel-headerText', headerClassName ) } id={ headerTextId }>{ headerText }</p>;
+      header = <p className={ css('ms-Panel-headerText', headerClassName) } id={ headerTextId }>{ headerText }</p>;
     }
 
     let closeButton;
