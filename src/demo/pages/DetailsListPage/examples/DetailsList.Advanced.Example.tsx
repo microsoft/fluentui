@@ -113,38 +113,38 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
 
     return (
       <div className='ms-DetailsListAdvancedExample'>
-        <CommandBar items={this._getCommandItems()} />
+        <CommandBar items={ this._getCommandItems() } />
 
         {
           (isGrouped) ?
-            <TextField label='Group Item Limit' onChanged={this._onItemLimitChanged} /> :
+            <TextField label='Group Item Limit' onChanged={ this._onItemLimitChanged } /> :
             (null)
         }
 
         <DetailsList
           ref='list'
           setKey='items'
-          items={items}
-          groups={groups}
-          columns={columns}
-          checkboxVisibility={checkboxVisibility}
-          layoutMode={layoutMode}
-          isHeaderVisible={isHeaderVisible}
-          selectionMode={selectionMode}
-          constrainMode={constrainMode}
-          groupProps={groupProps}
-          onItemInvoked={this._onItemInvoked}
+          items={ items }
+          groups={ groups }
+          columns={ columns }
+          checkboxVisibility={ checkboxVisibility }
+          layoutMode={ layoutMode }
+          isHeaderVisible={ isHeaderVisible }
+          selectionMode={ selectionMode }
+          constrainMode={ constrainMode }
+          groupProps={ groupProps }
+          onItemInvoked={ this._onItemInvoked }
           ariaLabelForListHeader='Column headers. Use menus to perform column operations like sort and filter'
           ariaLabelForSelectAllCheckbox='Toggle selection for all items'
-          onRenderMissingItem={(index) => {
+          onRenderMissingItem={ (index) => {
             this._onDataMiss(index);
             return null;
           } }
           />
 
-        {contextualMenuProps && (
+        { contextualMenuProps && (
           <ContextualMenu { ...contextualMenuProps } />
-        )}
+        ) }
       </div>
     );
   }
@@ -569,12 +569,12 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
         column.minWidth = 200;
       } else if (column.key === 'name') {
         column.onRender = (item) => (
-          <Link>{item.name}</Link>
+          <Link>{ item.name }</Link>
         );
       } else if (column.key === 'key') {
         column.columnActionsMode = ColumnActionsMode.disabled;
         column.onRender = (item) => (
-          <Link href='#'>{item.key}</Link>
+          <Link href='#'>{ item.key }</Link>
         );
         column.minWidth = 90;
         column.maxWidth = 90;
