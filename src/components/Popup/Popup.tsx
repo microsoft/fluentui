@@ -4,6 +4,7 @@ import { KeyCodes } from '../../utilities/KeyCodes';
 import { BaseComponent } from '../../common/BaseComponent';
 import { getNativeProps, divProperties } from '../../Utilities';
 import { doesElementContainFocus } from '../../utilities/focus';
+import { getDocument } from '../../utilities/dom';
 
 /**
  * This adds accessibility to Dialog and Panel controls
@@ -23,7 +24,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
   private _containsFocus: boolean;
 
   public componentWillMount() {
-    this._originalFocusedElement = document.activeElement as HTMLElement;
+    this._originalFocusedElement = getDocument().activeElement as HTMLElement;
   }
 
   public componentDidMount(): void {

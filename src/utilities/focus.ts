@@ -1,6 +1,6 @@
 /* tslint:disable:no-string-literal */
 
-import { elementContains } from './dom';
+import { elementContains, getDocument } from './dom';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_VISIBLE_ATTRIBUTE = 'data-is-visible';
@@ -166,7 +166,8 @@ export function isElementFocusZone(element?: HTMLElement): boolean {
 }
 
 export function doesElementContainFocus(element: HTMLElement) {
-  if (elementContains(element, document.activeElement as HTMLElement)) {
+  let currentActiveElement: HTMLElement = getDocument(element).activeElement as HTMLElement;
+  if (currentActiveElement && elementContains(element, currentActiveElement)) {
     return true;
   }
   return false;
