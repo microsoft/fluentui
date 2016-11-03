@@ -25,7 +25,6 @@ export enum SemanticSlot {
   DisabledBackground,
   DisabledForeground,
 
-
   EmphasizedBackground,
   EmphasizedForeground,
 

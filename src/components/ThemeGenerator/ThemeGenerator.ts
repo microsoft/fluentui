@@ -27,12 +27,14 @@ export class ThemeGenerator {
   public static insureSlots(slotRules: Array<IThemeSlotRule>) {
     // Get all the "root" rules, the ones which don't inherit. Then "set" them to trigger updating dependent slots.
     for (let ruleName in slotRules) {
-      let rule: IThemeSlotRule = slotRules[ruleName];
-      if (!rule.inherits) {
-        if (!rule.value) {
-          throw 'A theme slot that does not inherit must have a value.';
+      if (slotRules.hasOwnProperty(ruleName)) {
+        let rule: IThemeSlotRule = slotRules[ruleName];
+        if (!rule.inherits) {
+          if (!rule.value) {
+            throw 'A theme slot that does not inherit must have a value.';
+          }
+          ThemeGenerator.setSlot(rule, rule.value, slotRules);
         }
-        ThemeGenerator.setSlot(rule, rule.value, slotRules);
       }
     }
   }
@@ -44,8 +46,10 @@ export class ThemeGenerator {
   public static getTheme(slotRules: Array<IThemeSlotRule>): any {
     let theme: any = {};
     for (let ruleName in slotRules) {
-      let rule: IThemeSlotRule = slotRules[ruleName];
-      theme[rule.name] = rule.value.str;
+      if (slotRules.hasOwnProperty(ruleName)) {
+        let rule: IThemeSlotRule = slotRules[ruleName];
+        theme[rule.name] = rule.value.str;
+      }
     }
     return theme;
   }
@@ -66,9 +70,11 @@ export class ThemeGenerator {
 
     // then run through the rest of the rules and update dependent values
     for (let ruleName in slotRules) {
-      let ruleToUpdate: IThemeSlotRule = slotRules[ruleName];
-      if (ruleToUpdate.inherits === rule) {
-        ThemeGenerator._setSlot(ruleToUpdate, rule.value, slotRules, false);
+      if (slotRules.hasOwnProperty(ruleName)) {
+        let ruleToUpdate: IThemeSlotRule = slotRules[ruleName];
+        if (ruleToUpdate.inherits === rule) {
+          ThemeGenerator._setSlot(ruleToUpdate, rule.value, slotRules, false);
+        }
       }
     }
   }

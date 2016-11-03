@@ -1,4 +1,4 @@
-import { IColor } from '../../utilities/Color/IColor.ts';
+import { IColor } from '../../utilities/Color/IColor';
 
 export interface IFabricTheme {
   primaryPalette: IColor;

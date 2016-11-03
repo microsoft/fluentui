@@ -4,10 +4,8 @@ import './ThemerPage.scss';
 import { loadTheme } from '@microsoft/load-themed-styles';
 import { IColor } from '../../../utilities/Color/IColor';
 import { getContrastRatio } from '../../../utilities/Color/Shades';
-import { mapEnumByName } from '../../../utilities/object';
 
 import { ThemeGenerator } from '../../../components/ThemeGenerator/ThemeGenerator';
-import { IThemeSlotRule } from '../../../components/ThemeGenerator/IThemeSlotRule';
 import {
   ThemeRulesStandardCreator,
   PaletteSlot,
@@ -163,7 +161,7 @@ export class ThemerPage extends React.Component<any, any> {
     );
   }
 
-  private _colorPickerOnDismiss(ev: React.MouseEvent) {
+  private _colorPickerOnDismiss(ev: React.MouseEvent<HTMLElement>) {
     this.setState({ colorPickerVisible: false });
   }
 
@@ -174,7 +172,7 @@ export class ThemerPage extends React.Component<any, any> {
     this.setState({ themeRules: themeRules }, this._makeNewTheme);
   }
 
-  private _onSwatchClick(slot: SemanticSlot, ev: React.MouseEvent) {
+  private _onSwatchClick(slot: SemanticSlot, ev: React.MouseEvent<HTMLElement>) {
     let { colorPickerSlot, colorPickerElement } = this.state;
 
     if (colorPickerSlot !== null && colorPickerSlot !== undefined && !!colorPickerElement && colorPickerSlot === slot && colorPickerElement === ev.target) { // same one, close it
