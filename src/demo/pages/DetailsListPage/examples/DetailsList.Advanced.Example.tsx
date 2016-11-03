@@ -281,7 +281,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
           },
           {
             key: 'checkboxVisibility',
-            name: 'Checbox visibility',
+            name: 'Checkbox visibility',
             items: [
               {
                 key: 'checkboxVisibility.always',
