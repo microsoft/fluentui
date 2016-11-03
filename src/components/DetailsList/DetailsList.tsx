@@ -129,6 +129,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
   public componentWillReceiveProps(newProps: IDetailsListProps) {
     let {
+      checkboxVisibility,
       items,
       setKey,
       selectionMode,
@@ -154,6 +155,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     }
 
     if (
+      newProps.checkboxVisibility !== checkboxVisibility ||
       newProps.columns !== columns ||
       newProps.viewport.width !== viewport.width
     ) {

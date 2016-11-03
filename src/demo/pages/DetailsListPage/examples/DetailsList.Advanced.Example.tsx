@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  CheckboxVisibility,
   ColumnActionsMode,
   CommandBar,
   ConstrainMode,
@@ -29,19 +30,20 @@ const ITEMS_COUNT = 5000;
 let _items;
 
 export interface IDetailsListAdvancedExampleState {
-  items?: any[];
-  groups?: IGroup[];
-  layoutMode?: LayoutMode;
-  constrainMode?: ConstrainMode;
-  selectionMode?: SelectionMode;
   canResizeColumns?: boolean;
+  checkboxVisibility?: CheckboxVisibility;
   columns?: IColumn[];
-  sortedColumnKey?: string;
-  isSortedDescending?: boolean;
+  constrainMode?: ConstrainMode;
   contextualMenuProps?: IContextualMenuProps;
   groupItemLimit?: number;
-  isLazyLoaded?: boolean;
+  groups?: IGroup[];
   isHeaderVisible?: boolean;
+  isLazyLoaded?: boolean;
+  isSortedDescending?: boolean;
+  items?: any[];
+  layoutMode?: LayoutMode;
+  selectionMode?: SelectionMode;
+  sortedColumnKey?: string;
 }
 
 export class DetailsListAdvancedExample extends React.Component<any, IDetailsListAdvancedExampleState> {
@@ -71,6 +73,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
       constrainMode: ConstrainMode.horizontalConstrained,
       selectionMode: SelectionMode.multiple,
       canResizeColumns: true,
+      checkboxVisibility: CheckboxVisibility.onHover,
       columns: this._buildColumns(_items, true, this._onColumnClick, ''),
       contextualMenuProps: null,
       sortedColumnKey: 'name',
@@ -82,24 +85,25 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
 
   public render() {
     let {
-      items,
-      groups,
-      groupItemLimit,
-      layoutMode,
-      constrainMode,
-      selectionMode,
+      checkboxVisibility,
       columns,
+      constrainMode,
       contextualMenuProps,
-      isHeaderVisible
+      groupItemLimit,
+      groups,
+      isHeaderVisible,
+      items,
+      layoutMode,
+      selectionMode
     } = this.state;
 
     let isGrouped = groups && groups.length > 0;
     let groupProps = {
       getGroupItemLimit: (group: IGroup) => {
         if (group) {
-            return group.isShowingAll ? group.count : Math.min(group.count, groupItemLimit);
+          return group.isShowingAll ? group.count : Math.min(group.count, groupItemLimit);
         } else {
-            return items.length;
+          return items.length;
         }
       },
       footerProps: {
@@ -109,37 +113,38 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
 
     return (
       <div className='ms-DetailsListAdvancedExample'>
-        <CommandBar items={ this._getCommandItems() } />
+        <CommandBar items={this._getCommandItems()} />
 
         {
           (isGrouped) ?
-            <TextField label='Group Item Limit' onChanged={ this._onItemLimitChanged } /> :
+            <TextField label='Group Item Limit' onChanged={this._onItemLimitChanged} /> :
             (null)
         }
 
         <DetailsList
           ref='list'
           setKey='items'
-          items={ items }
-          groups={ groups }
-          columns={ columns }
-          layoutMode={ layoutMode }
-          isHeaderVisible={ isHeaderVisible }
-          selectionMode={ selectionMode }
-          constrainMode={ constrainMode }
-          groupProps={ groupProps }
-          onItemInvoked={ this._onItemInvoked }
+          items={items}
+          groups={groups}
+          columns={columns}
+          checkboxVisibility={checkboxVisibility}
+          layoutMode={layoutMode}
+          isHeaderVisible={isHeaderVisible}
+          selectionMode={selectionMode}
+          constrainMode={constrainMode}
+          groupProps={groupProps}
+          onItemInvoked={this._onItemInvoked}
           ariaLabelForListHeader='Column headers. Use menus to perform column operations like sort and filter'
           ariaLabelForSelectAllCheckbox='Toggle selection for all items'
-          onRenderMissingItem={ (index) => {
+          onRenderMissingItem={(index) => {
             this._onDataMiss(index);
             return null;
           } }
           />
 
-        { contextualMenuProps && (
+        {contextualMenuProps && (
           <ContextualMenu { ...contextualMenuProps } />
-        ) }
+        )}
       </div>
     );
   }
@@ -221,7 +226,15 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
   }
 
   private _getCommandItems(): IContextualMenuItem[] {
-    let { layoutMode, constrainMode, selectionMode, canResizeColumns, isLazyLoaded, isHeaderVisible } = this.state;
+    let {
+      canResizeColumns,
+      checkboxVisibility,
+      constrainMode,
+      isHeaderVisible,
+      isLazyLoaded,
+      layoutMode,
+      selectionMode
+    } = this.state;
 
     return [
       {
@@ -265,6 +278,33 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
           {
             key: 'dash',
             name: '-'
+          },
+          {
+            key: 'checkboxVisibility',
+            name: 'Checbox visibility',
+            items: [
+              {
+                key: 'checkboxVisibility.always',
+                name: 'Always',
+                canCheck: true,
+                isChecked: checkboxVisibility === CheckboxVisibility.always,
+                onClick: () => this.setState({ checkboxVisibility: CheckboxVisibility.always })
+              },
+              {
+                key: 'checkboxVisibility.onHover',
+                name: 'On hover',
+                canCheck: true,
+                isChecked: checkboxVisibility === CheckboxVisibility.onHover,
+                onClick: () => this.setState({ checkboxVisibility: CheckboxVisibility.onHover })
+              },
+              {
+                key: 'checkboxVisibility.hidden',
+                name: 'Hidden',
+                canCheck: true,
+                isChecked: checkboxVisibility === CheckboxVisibility.hidden,
+                onClick: () => this.setState({ checkboxVisibility: CheckboxVisibility.hidden })
+              },
+            ]
           },
           {
             key: 'layoutMode',
@@ -529,12 +569,12 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
         column.minWidth = 200;
       } else if (column.key === 'name') {
         column.onRender = (item) => (
-          <Link>{ item.name }</Link>
+          <Link>{item.name}</Link>
         );
       } else if (column.key === 'key') {
         column.columnActionsMode = ColumnActionsMode.disabled;
         column.onRender = (item) => (
-          <Link href='#'>{ item.key }</Link>
+          <Link href='#'>{item.key}</Link>
         );
         column.minWidth = 90;
         column.maxWidth = 90;
