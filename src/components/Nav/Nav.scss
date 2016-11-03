@@ -110,6 +110,7 @@ $linkRightPadding: 20px;
     z-index: 1;
     padding: 0;
     margin: 0;
+    color: #666666;
 
   .ms-Nav-chevron {
       position: relative;
@@ -145,7 +146,7 @@ $linkRightPadding: 20px;
       background: $selectedBackgroundColor;
 
       &:after {
-        @include border-left(2px, solid, $selectedForegroundColor);
+        @include border-left(2px, solid, $ms-color-themePrimary);
 
         content: '';
         position: absolute;
@@ -187,7 +188,7 @@ $linkRightPadding: 20px;
   @include padding-left($noExpandButtonLinkLeftPadding);
   .ms-Button-label {
     @include ms-font-m;
-    color: $ms-color-themePrimary;
+    color: #333333;
   }
 
   &.isOnExpanded {
