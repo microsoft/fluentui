@@ -176,6 +176,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       ariaLabelForListHeader,
       ariaLabelForSelectAllCheckbox,
       className,
+      checkboxVisibility,
       constrainMode,
       dragDropEvents,
       groups,
@@ -219,6 +220,10 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       }
       let isSelectAllVisible = isCollapsedGroupSelectVisible || !groups || isSomeGroupExpanded;
       selectAllVisibility = isSelectAllVisible ? SelectAllVisibility.visible : SelectAllVisibility.hidden;
+    }
+
+    if (checkboxVisibility === CheckboxVisibility.hidden) {
+      selectAllVisibility = SelectAllVisibility.none;
     }
 
     return (
