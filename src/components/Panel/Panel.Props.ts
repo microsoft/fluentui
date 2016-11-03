@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Panel } from './Panel';
+import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 
-export interface IPanelProps extends React.Props<Panel> {
+export interface IPanelProps extends React.Props<Panel>, IAccessiblePopupProps {
   /**
   * Whether the panel is displayed.
   * @default false
