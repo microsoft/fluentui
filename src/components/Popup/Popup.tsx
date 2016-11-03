@@ -3,6 +3,7 @@ import { IPopupProps } from './Popup.Props';
 import { KeyCodes } from '../../utilities/KeyCodes';
 import { BaseComponent } from '../../common/BaseComponent';
 import { getNativeProps, divProperties } from '../../Utilities';
+import { doesElementContainFocus } from '../../utilities/focus';
 
 /**
  * This adds accessibility to Dialog and Panel controls
@@ -29,6 +30,9 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
     this._events.on(this.refs.root, 'keydown', this._onKeyDown);
     this._events.on(this.refs.root, 'focus', () => this._containsFocus = true, true);
     this._events.on(this.refs.root, 'blur', () => this._containsFocus = false, true);
+    if (doesElementContainFocus(this.refs.root)) {
+      this._containsFocus = true;
+    }
   }
 
   public componentWillUnmount(): void {
