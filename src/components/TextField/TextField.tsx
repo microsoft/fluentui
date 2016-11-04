@@ -235,13 +235,13 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
   }
 
   private _renderInput(): React.ReactElement<React.HTMLProps<HTMLInputElement>> {
-    let inputProps = getNativeProps(this.props, inputProperties);
+    let inputProps = getNativeProps<React.HTMLProps<HTMLInputElement>>(this.props, inputProperties);
 
     return (
       <input
         { ...inputProps }
         id={ this._id }
-        type='text'
+        type={ inputProps.type || 'text' }
         ref={ (c): HTMLInputElement => this._field = c }
         value={ this.state.value }
         onChange={ this._onInputChange }
