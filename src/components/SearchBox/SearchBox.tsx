@@ -23,13 +23,18 @@ export class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState>
   public constructor(props: ISearchBoxProps) {
     super(props);
 
+    // Handle deprecated prop
+    if (this.props.onChanged) {
+      this.props.onChange = this.props.onChanged;
+    }
+
     this.state = {
       value: props.value,
       hasFocus: false,
       id: getId('SearchBox')
     };
     this._clearInput = this._clearInput.bind(this);
-    this._onInputChanged = this._onInputChanged.bind(this);
+    this._onInputChange = this._onInputChange.bind(this);
     this._onInputFocus = this._onInputFocus.bind(this);
     this._onInputBlur = this._onInputBlur.bind(this);
   }
@@ -55,8 +60,21 @@ export class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState>
               <i className='ms-SearchBox-icon ms-Icon ms-Icon--Search'></i>
               <span className='ms-SearchBox-text'>{ labelText }</span>
              </label> : null }
-        <input id={id} className='ms-SearchBox-field' onFocus={ this._onInputFocus } onBlur={ this._onInputBlur } onChange={ this._onInputChanged } value={value} ref='inputText' />
-        <button className='ms-SearchBox-closeButton' onMouseDown={ this._clearInput }><i className='ms-Icon ms-Icon--Clear'></i></button>
+        <input
+          id={ id }
+          className='ms-SearchBox-field'
+          onFocus={ this._onInputFocus }
+          onBlur={ this._onInputBlur }
+          onChange={ this._onInputChange }
+          value={value}
+          ref='inputText'
+          />
+        <button
+          className='ms-SearchBox-closeButton'
+          onMouseDown={ this._clearInput }
+          >
+          <i className='ms-Icon ms-Icon--Clear' />
+        </button>
       </div>
     );
   }
@@ -65,6 +83,7 @@ export class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState>
     this.setState({
       value: ''
     });
+    this._onChange('');
     ev.stopPropagation();
     ev.preventDefault();
   }
@@ -81,18 +100,18 @@ export class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState>
     });
   }
 
-  private _onInputChanged(ev: React.KeyboardEvent) {
+  private _onInputChange(ev: React.KeyboardEvent<HTMLInputElement>) {
     this.setState({
       value: this.refs.inputText.value
     });
-    this._onChanged(this.refs.inputText.value);
+    this._onChange(this.refs.inputText.value);
   }
 
-  private _onChanged(newValue: string): void {
-    let { onChanged } = this.props;
+  private _onChange(newValue: string): void {
+    let { onChange } = this.props;
 
-    if (onChanged) {
-      onChanged(newValue);
+    if (onChange) {
+      onChange(newValue);
     }
   }
 }

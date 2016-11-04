@@ -13,7 +13,7 @@ const ZERO_THRESHOLD = 0.01;
 
 export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}> {
   public static defaultProps = {
-    title: '',
+    label: '',
     description: '',
     percentComplete: 0,
     width: 180

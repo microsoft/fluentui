@@ -48,9 +48,10 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IPosi
   isBeakVisible?: boolean;
 
   /**
-   * Callback when the ContextualMenu tries to close.
+   * Callback when the ContextualMenu tries to close. If dismissAll is true then all
+   * submenus will be dismissed.
    */
-  onDismiss?: (ev?: any) => void;
+  onDismiss?: (ev?: any, dismissAll?: boolean) => void;
 
   /**
    * CSS class to apply to the context menu.
@@ -80,6 +81,12 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu>, IPosi
    * If none specified no aria label will be applied to the ContextualMenu.
    */
   ariaLabel?: string;
+
+  /**
+   * If true do not render on a new layer. If false render on a new layer.
+   * @default false
+   */
+  doNotLayer?: boolean;
 
 }
 
@@ -130,7 +137,7 @@ export interface IContextualMenuItem {
   /**
    * Callback issued when the menu item is invoked
    */
-  onClick?: (item?: IContextualMenuItem, ev?: React.MouseEvent) => void;
+  onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) => void;
 
   /**
    * An optional URL to navigate to upon selection
@@ -171,7 +178,6 @@ export interface IContextualMenuItem {
    * the commands. This should only be used in special cases when react and non-react are mixed.
    */
   onMouseDown?: (item: IContextualMenuItem, event: any) => void;
-
   /**
    * Any additional properties to use when custom rendering menu items.
    */

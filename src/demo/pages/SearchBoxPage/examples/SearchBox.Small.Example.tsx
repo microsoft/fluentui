@@ -8,7 +8,11 @@ export class SearchBoxSmallExample extends React.Component<any, any> {
   public render() {
     return (
       <div className='ms-SearchBoxSmallExample'>
-        <SearchBox />
+        <SearchBox onChange={
+          (newValue) => {
+            console.log('Search box value changed to: ' + newValue);
+          }
+        } />
       </div>
     );
   }

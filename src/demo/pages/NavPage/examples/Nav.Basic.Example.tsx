@@ -55,9 +55,8 @@ export class NavBasicExample extends React.Component<any, any> {
     );
   }
 
-  private _onClickHandler(e: React.MouseEvent) {
+  private _onClickHandler(e: React.MouseEvent<HTMLElement>) {
     alert('test');
     return false;
   }
 }
-

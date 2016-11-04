@@ -64,7 +64,7 @@ export class DatePickerMonth extends React.Component<IDatePickerMonthProps, {}> 
     );
   }
 
-  private _onKeyDown(callback: () => void, ev: React.KeyboardEvent) {
+  private _onKeyDown(callback: () => void, ev: React.KeyboardEvent<HTMLElement>) {
     if (ev.which === KeyCodes.enter) {
       callback();
     }

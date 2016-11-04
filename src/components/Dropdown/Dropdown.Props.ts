@@ -1,3 +1,4 @@
+import { IRenderFunction } from '../../common/IRenderFunction';
 export interface IDropdownProps {
   /**
    * Descriptive label for the Dropdown
@@ -25,14 +26,19 @@ export interface IDropdownProps {
   onChanged?: (option: IDropdownOption, index?: number) => void;
 
   /**
+   * Optional custom renderer for the dropdown item
+   */
+  onRenderItem?: IRenderFunction<IDropdownOption>;
+
+  /**
    * Whether or not the Dropdown is disabled.
    */
   disabled?: boolean;
 
   // @todo: Update version numbers for depriate and removal
   /**
-   * Deprecated at v0.52.0, to be removed at >= v1.0.0. Use 'disabled' instead.
    * @deprecated
+   * Deprecated at v0.52.0, to be removed at >= v1.0.0. Use 'disabled' instead.
    */
   isDisabled?: boolean;
 

@@ -9,7 +9,7 @@ export interface IChoiceGroupProps extends React.HTMLProps<HTMLElement> {
   /**
    * A callback for receiving a notification when the choice has been changed.
    */
-  onChanged?: (option: IChoiceGroupOption, evt?: React.SyntheticEvent) => void;
+  onChanged?: (option: IChoiceGroupOption, evt?: React.FormEvent<HTMLInputElement>) => void;
 
   /**
    * Descriptive label for the choice group.
@@ -56,8 +56,8 @@ export interface IChoiceGroupOption {
 
   // @todo: Update version numbers for depriate and removal
   /**
-   * Deprecated at v0.52.0, to be removed at >= v1.0.0. Use 'disabled' instead.
    * @deprecated
+   * Deprecated at v0.52.0, to be removed at >= v1.0.0. Use 'disabled' instead.
    */
   isDisabled?: boolean;
 }

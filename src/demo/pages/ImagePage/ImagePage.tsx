@@ -35,28 +35,26 @@ export class ImagePage extends React.Component<IComponentDemoPageProps, any> {
         title='Image'
         componentName='ImageExample'
         exampleCards={
-          [
+          <div>
             <ExampleCard title='Default Behavior' code={ ImageDefaultExampleCode }>
               <ImageDefaultExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='ImageFit: None' code={ ImageNoneExampleCode }>
               <ImageNoneExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='ImageFit: Center' code={ ImageCenterExampleCode }>
               <ImageCenterExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='ImageFit: Contain' code={ ImageContainExampleCode }>
               <ImageContainExample />
-            </ExampleCard>,
+            </ExampleCard>
             <ExampleCard title='ImageFit: Cover' code={ ImageCoverExampleCode }>
               <ImageCoverExample />
             </ExampleCard>
-          ]
+          </div>
         }
         propertiesTables={
-          [
-            <PropertiesTableSet componentName='Image' />
-          ]
+          <PropertiesTableSet componentName='Image' />
         }
         overview={
           <div>

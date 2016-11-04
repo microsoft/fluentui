@@ -21,6 +21,7 @@ const _indentNoExpandButton: number = 20;
 export interface INavState {
   isGroupExpanded?: boolean[];
   isLinkExpandStateChanged?: boolean;
+  selectedKey?: string;
 }
 
 export class Nav extends React.Component<INavProps, INavState> implements INav {
@@ -30,32 +31,30 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
     onRenderLink: (link: INavLink) => (<span className='ms-Nav-linkText'>{ link.name }</span>)
   };
 
-  private _selectedKey: string;
   private _hasExpandButton: boolean;
 
-  constructor() {
-    super();
+  constructor(props: INavProps) {
+    super(props);
 
     this.state = {
       isGroupExpanded: [],
-      isLinkExpandStateChanged: false
+      isLinkExpandStateChanged: false,
+      selectedKey: props.initialSelectedKey
     };
     this._hasExpandButton = false;
   }
 
   public render(): React.ReactElement<{}> {
+
     if (!this.props.groups) {
       return null;
-    }
-
-    if (this.props.initialSelectedKey) {
-      this._selectedKey = this.props.initialSelectedKey;
     }
 
     // when this.props.groups[x].name is specified or Any of the link has child link, chevorn Expand/collaps button is shown,
     // different padding is needed. _hasExpandButton marks this condition.
     this._hasExpandButton = this.props.groups.some((group: INavLinkGroup, groupIndex: number) => {
-      return !!group.name || group.links && group.links.some((link: INavLink, linkIndex: number) => { return !!link.links && link.links.length > 0; });
+      return !!group && !!group.name || group.links && group.links.some((link: INavLink, linkIndex: number) => {
+        return !!link && !!link.links && link.links.length > 0; });
     });
 
     const groupElements: React.ReactElement<{}>[] = this.props.groups.map(
@@ -72,12 +71,10 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
   }
 
   public get selectedKey(): string {
-    return this._selectedKey;
+    return this.state.selectedKey;
   }
 
   private _renderAnchorLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
-    let { onLinkClick } = this.props;
-
     // Determine the appropriate padding to add before this link.
     // In RTL, the "before" padding will go on the right instead of the left.
     const isRtl: boolean = getRTL();
@@ -89,7 +86,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
           className={ css('ms-Nav-link') }
           style={ { [isRtl ? 'paddingRight' : 'paddingLeft'] : paddingBefore } }
           href={ link.url || 'javascript:' }
-          onClick={ onLinkClick }
+          onClick={ this._onNavAnchorLinkClicked.bind(this, link) }
           aria-label={ link.ariaLabel }
           title={ link.title || link.name }
           target={ link.target }
@@ -107,23 +104,19 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
           buttonType={ ButtonType.command }
           icon={ link.icon }
           description={ link.title || link.name }
-          onClick={ link.onClick }>
+          onClick={ this._onNavButtonLinkClicked.bind(this, link) }>
           { link.name }
       </Button>);
   }
 
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
-    const isLinkSelected: boolean = _isLinkSelected(link, this._selectedKey);
-    if (isLinkSelected) {
-      this._selectedKey = link.key ? link.key : undefined;
-    }
+    const isLinkSelected: boolean = _isLinkSelected(link, this.state.selectedKey);
 
     return (
       <div key={ link.key || linkIndex }
            className={ css('ms-Nav-compositeLink', { ' is-expanded': link.isExpanded, 'is-selected': isLinkSelected }) }>
         { (nestingLevel === 0 && link.links && link.links.length > 0 ?
           <button
-            buttonType={ ButtonType.icon }
             className='ms-Nav-chevronButton ms-Nav-chevronButton--link'
             onClick={ this._onLinkExpandClicked.bind(this, link) }
             title={ (link.isExpanded ? this.props.expandedStateText : this.props.collapsedStateText) }
@@ -180,7 +173,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
     );
   }
 
-  private _onGroupHeaderClicked(groupIndex: number, ev: React.MouseEvent): void {
+  private _onGroupHeaderClicked(groupIndex: number, ev: React.MouseEvent<HTMLElement>): void {
     let isGroupExpanded: boolean[] = this.state.isGroupExpanded;
     isGroupExpanded[groupIndex] = !isGroupExpanded[groupIndex];
     this.setState({ isGroupExpanded: isGroupExpanded });
@@ -189,28 +182,51 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
     ev.stopPropagation();
   }
 
-  private _onLinkExpandClicked(link: INavLink, ev: React.MouseEvent): void {
+  private _onLinkExpandClicked(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
     link.isExpanded = !link.isExpanded;
     this.setState({ isLinkExpandStateChanged: true });
 
     ev.preventDefault();
     ev.stopPropagation();
   }
+
+  private _onNavAnchorLinkClicked(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
+    if (this.props.onLinkClick) {
+      this.props.onLinkClick(ev, link);
+    }
+
+    this.setState({ selectedKey: link.key });
+  }
+
+  private _onNavButtonLinkClicked(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
+    if (link.onClick) {
+      link.onClick(ev, link);
+    }
+
+    this.setState({ selectedKey: link.key });
+  }
 }
 
 // A tag used for resolving links.
-const _urlResolver = document.createElement('a');
-
+let _urlResolver;
 function _isLinkSelected(link: INavLink, selectedKey: string): boolean {
-    if (!link.url) {
-      return false;
-    }
-    _urlResolver.href = link.url || '';
-    const target: string = _urlResolver.href;
-
     if (selectedKey && link.key === selectedKey) {
       return true;
     }
+
+    // resolve is not supported for ssr
+    if (typeof(window) === 'undefined') {
+      return false;
+    }
+
+    if (!link.url) {
+      return false;
+    }
+
+    _urlResolver = _urlResolver || document.createElement('a');
+
+    _urlResolver.href = link.url || '';
+    const target: string = _urlResolver.href;
 
     if (location.protocol + '//' + location.host + location.pathname === target) {
       return true;

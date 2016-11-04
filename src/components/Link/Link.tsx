@@ -1,7 +1,13 @@
 import * as React from 'react';
-import { css } from '../../utilities/css';
-import { autobind } from '../../utilities/autobind';
-import { ILinkProps, IPopupWindowProps, PopupWindowPosition } from './Link.Props';
+import { BaseComponent } from '../../common/BaseComponent';
+import {
+  anchorProperties,
+  autobind,
+  buttonProperties,
+  css,
+  getNativeProps
+} from '../../Utilities';
+import { ILink, ILinkProps } from './Link.Props';
 import './Link.scss';
 
 interface IMyScreen extends Screen {
@@ -11,89 +17,52 @@ interface IMyScreen extends Screen {
 
 declare var screen: IMyScreen;
 
-export class Link extends React.Component<ILinkProps, any> {
+export class Link extends BaseComponent<ILinkProps, any> implements ILink {
+  private _link: HTMLElement;
 
   public render() {
     let { disabled, children, className, href } = this.props;
 
     return (
       href ? (
-      <a
-        role='link'
-        { ...this.props as any }
-        className={ css('ms-Link', className, {
-          'is-disabled' : disabled
-        }) }
-        onClick={ this._onClick }>
-        { children }
-      </a>
+        <a
+          role='link'
+          { ...getNativeProps(this.props, anchorProperties) }
+          className={ css('ms-Link', className, {
+            'is-disabled': disabled
+          }) }
+          onClick={ this._onClick }
+          ref={ this._resolveRef('_link') }
+        >
+          { children }
+        </a>
       ) : (
-      <button
-        role='button'
-        { ...this.props as any }
-        className={ css('ms-Link', className, {
-          'is-disabled' : disabled
-        }) }
-        onClick={ this._onClick } >
-        { children }
-      </button>
-      ));
+          <button
+            role='button'
+            { ...getNativeProps(this.props, buttonProperties) }
+            className={ css('ms-Link', className, {
+              'is-disabled': disabled
+            }) }
+            onClick={ this._onClick }
+            ref={ this._resolveRef('_link') }
+          >
+            { children }
+          </button>
+        ));
+  }
+
+  public focus() {
+    if (this._link) {
+      this._link.focus();
+    }
   }
 
   @autobind
-  private _onClick(ev: React.MouseEvent) {
-    let { popupWindowProps, onClick } = this.props;
-
-    if (popupWindowProps) {
-      this._popupWindow(popupWindowProps);
-    }
+  private _onClick(ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) {
+    let { onClick } = this.props;
 
     if (onClick) {
       onClick(ev);
     }
-  }
-
-  private _popupWindow(popupWindowProps: IPopupWindowProps) {
-      const dualScreenLeft: number = window.screenLeft !== undefined ? window.screenLeft : screen.left;
-      const dualScreenTop: number = window.screenTop !== undefined ? window.screenTop : screen.top;
-
-      const width: number = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ?
-          document.documentElement.clientWidth : screen.width;
-      const height: number = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ?
-          document.documentElement.clientHeight : screen.height;
-
-      let left: number = 0;
-      let top: number = 0;
-      switch (popupWindowProps.positionWindowPosition) {
-        case PopupWindowPosition.center:
-          left = ((width / 2) - (popupWindowProps.width / 2)) + dualScreenLeft;
-          top = ((height / 2) - (popupWindowProps.height / 2)) + dualScreenTop;
-          break;
-        case PopupWindowPosition.leftBottom:
-          left = dualScreenLeft;
-          top = (height - popupWindowProps.height) + dualScreenTop;
-          break;
-        case PopupWindowPosition.leftTop:
-          left =  dualScreenLeft;
-          top = dualScreenTop;
-          break;
-        case PopupWindowPosition.rightBottom:
-          left = (width - popupWindowProps.width) + dualScreenLeft;
-          top = (height - popupWindowProps.height) + dualScreenTop;
-          break;
-        case PopupWindowPosition.rightTop:
-          left = (width - popupWindowProps.width) + dualScreenLeft;
-          top = dualScreenTop;
-          break;
-        default:
-          break;
-      }
-
-      const newWindow = window.open(this.props.href, popupWindowProps.title, 'scrollbars=yes, width='
-          + popupWindowProps.width + ', height=' + popupWindowProps.height + ', top=' + top + ', left=' + left);
-      // Puts focus on the newWindow
-      if (window.focus && newWindow) {
-          newWindow.focus();
-      }
   }
 }
