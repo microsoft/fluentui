@@ -31,6 +31,12 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
     onRenderLink: (link: INavLink) => (<span className='ms-Nav-linkText'>{ link.name }</span>)
   };
 
+  public refs: {
+    [key: string]: React.ReactInstance;
+    root: HTMLElement;
+    last: HTMLElement;
+  };
+
   private _hasExpandButton: boolean;
 
   constructor(props: INavProps) {
@@ -42,6 +48,14 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
       selectedKey: props.initialSelectedKey
     };
     this._hasExpandButton = false;
+  }
+
+  public componentDidMount(): void {
+    if (this.props.setFocusFirst) {
+      this.refs.root.focus();
+    } else if (this.props.setFocusLast) {
+      this.refs.last.focus();
+    }
   }
 
   public render(): React.ReactElement<{}> {
@@ -61,7 +75,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
       (group: INavLinkGroup, groupIndex: number) => this._renderGroup(group, groupIndex));
 
     return (
-      <FocusZone direction={ FocusZoneDirection.vertical }>
+      <FocusZone direction={ FocusZoneDirection.vertical } ref='root'>
         <nav role='navigation'
           className={ css('ms-Nav', { 'is-onTop ms-u-slideRightIn40': this.props.isOnTop }) }>
           { groupElements }
@@ -90,6 +104,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
           aria-label={ link.ariaLabel }
           title={ link.title || link.name }
           target={ link.target }
+          ref='last'
         >
          { link.iconClassName && <i className={ css('ms-Icon', 'ms-Nav-IconLink', link.iconClassName) }></i> }
          { this.props.onRenderLink(link)}
@@ -102,6 +117,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
       <Button
         className={ css('ms-Nav-link ms-Nav-linkButton', { 'isOnExpanded': this._hasExpandButton }) }
           buttonType={ ButtonType.command }
+          ref='last'
           icon={ link.icon }
           description={ link.title || link.name }
           onClick={ this._onNavButtonLinkClicked.bind(this, link) }>
