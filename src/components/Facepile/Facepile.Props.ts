@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Facepile } from './Facepile';
+import { IButtonProps } from '../Button/index';
 import { PersonaInitialsColor } from '../Persona/index';
 
 export interface IFacepileProps extends React.Props<Facepile> {
@@ -8,9 +9,24 @@ export interface IFacepileProps extends React.Props<Facepile> {
    * is fixed at PersonaSize.extraSmall regardless of what is specified.
    */
   personas: IFacepilePersona[];
+
+  /** Maximum number of personas to show */
+  maxDisplayablePersonas?: number;
+
+  /** Show add person button */
+  showAddButton?: boolean;
+
+  /** Button properties for the add face button */
+  addButtonProps?: IButtonProps;
+
+  /** Button properties for the chevron button */
+  chevronButtonProps?: IButtonProps;
+
+  /** Properties for the overflow persona */
+  overflowButtonProps?: IButtonProps;
 }
 
-export interface IFacepilePersona {
+export interface IFacepilePersona extends React.HTMLProps<HTMLButtonElement | HTMLDivElement> {
   /**
    * Name of the person.
    */
@@ -36,17 +52,17 @@ export interface IFacepilePersona {
    * If provided, persona will be rendered with cursor:pointer and the handler will be
    * called on click.
    */
-  onClick?: (persona: IFacepilePersona, ev: React.MouseEvent) => void;
+  onClick?: (ev?: React.MouseEvent<HTMLElement>, persona?: IFacepilePersona) => void;
 
   /**
    * If provided, the handler will be called on mouse move.
    */
-  onMouseMove?: (persona: IFacepilePersona, ev: React.MouseEvent) => void;
+  onMouseMove?: (ev?: React.MouseEvent<HTMLElement>, persona?: IFacepilePersona) => void;
 
   /**
    * If provided, the handler will be called when mouse moves out of the component.
    */
-  onMouseOut?: (persona: IFacepilePersona, ev: React.MouseEvent) => void;
+  onMouseOut?: (ev?: React.MouseEvent<HTMLElement>, persona?: IFacepilePersona) => void;
 
   /**
    * Extra data - not used directly but can be handy for passing additional data to custom event

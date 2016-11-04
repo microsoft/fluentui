@@ -11,8 +11,6 @@
 }
 
 .ms-Slider-line {
-  top: 50%;
-  margin-top: -2px;
   position: relative;
   width: 100%;
 }
@@ -42,7 +40,7 @@
   }
 }
 .ms-Slider-slideBox {
-  background: inherit;
+  background: transparent;
   border: none;
   padding: 0;
   margin: 0;
@@ -66,14 +64,15 @@
   .ms-Slider-slideBox {
     flex-grow: 1;
     height: 28px;
+    line-height: 28px;
     @include focus-border();
-
+    padding: 0 8px; // Make room for thumb at ends of line
   }
 
   .ms-Label {
     flex-shrink: 1;
     width: 30px;
-    @include margin-left(12px);
+    @include margin-left(8px);
   }
 }
 

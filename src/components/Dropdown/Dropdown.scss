@@ -125,29 +125,6 @@ $DropDown-item-height: 36px;
   }
 }
 
-// When the dropdown is opened
-.ms-Dropdown.is-open .ms-Dropdown-items {
-  display: block;
-  position: absolute;
-}
-
-// Adjustments for when the dropdown is open as a panel on small screens
-.ms-Panel .ms-Dropdown-items {
-  box-shadow: none;
-  overflow-y: auto;
-  padding-top: 4px;
-  max-height: 100%;
-
-  .ms-Dropdown-item {
-    padding: 7px 16px;
-  }
-
-  &::before {
-    content: none;
-    border: 0;
-  }
-}
-
 .ms-Dropdown-caretDown {
   color: $ms-color-neutralDark;
   font-size: $ms-icon-size-s;
@@ -177,14 +154,11 @@ $DropDown-item-height: 36px;
   @include ms-u-normalize;
   @include drop-shadow;
   background-color: $ms-color-white;
-  display: none;
   list-style-type: none;
-  position: absolute;
   width: 100%;
   max-height: 200px;
   z-index: ($ms-zIndex-Dropdown + $ms-zIndex-back);
   overflow-y: scroll;
-
   top: auto;
   right: auto;
   bottom: auto;

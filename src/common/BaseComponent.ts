@@ -8,7 +8,7 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
    * External consumers should override BaseComponent.onError to hook into error messages that occur from
    * exceptions thrown from within components.
    */
-  public static onError: ((errorMessage?: string, ex?: Error) => void);
+  public static onError: ((errorMessage?: string, ex?: any) => void);
 
   private __async: Async;
   private __events: EventGroup;
@@ -48,7 +48,11 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
   public componentWillUnmount() {
     if (this.__disposables) {
       for (let i = 0, len = this._disposables.length; i < len; i++) {
-        this.__disposables[i].dispose();
+        let disposable = this.__disposables[i];
+
+        if (disposable.dispose) {
+          disposable.dispose();
+        }
       }
       this.__disposables = null;
     }
@@ -175,4 +179,7 @@ function _warnDeprecation(obj: BaseComponent<any, any>, propertyName: string, ne
   }
 }
 
-BaseComponent.onError = (errorMessage) => console.error(errorMessage);
+BaseComponent.onError = (errorMessage) => {
+  console.error(errorMessage);
+  throw errorMessage;
+};

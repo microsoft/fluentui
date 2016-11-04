@@ -46,7 +46,7 @@ export interface ICheckboxProps extends React.Props<Checkbox> {
   /**
    * Callback that is called when the checked value has changed.
    */
-  onChange?: (ev?: React.FormEvent, isChecked?: boolean) => void;
+  onChange?: (ev?: React.FormEvent<HTMLInputElement>, isChecked?: boolean) => void;
 
   /**
    * Optional input props that will be mixed into the input element, *before* other props are applied. This allows

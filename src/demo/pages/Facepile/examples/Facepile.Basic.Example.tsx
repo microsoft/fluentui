@@ -1,38 +1,48 @@
 import * as React from 'react';
 import {
+  Slider,
   Facepile,
-  IFacepilePersona,
-  IFacepileProps,
-  PersonaInitialsColor
+  IFacepileProps
 } from '../../../../index';
+import { facepilePersonas } from './FacepileExampleData';
+import './Facepile.Examples.scss';
 
-const facepileProps: IFacepileProps = {
-  personas: [
-    {
-      personaName: 'Annie Lindqvist',
-      imageUrl: './images/persona-female.png'
-    },
-    {
-      personaName: 'Greta Lundberg',
-      imageInitials: 'GL',
-      initialsColor: PersonaInitialsColor.green
-    },
-    {
-      personaName: 'Roko Kolar',
-      imageInitials: 'RK',
-      initialsColor: PersonaInitialsColor.purple,
-      data: 'Emp1234',
-      onClick: (persona: IFacepilePersona, ev: React.MouseEvent) =>
-        alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data)
-    }
-  ]
-};
+export interface IFacepileBasicExampleState {
+  numberOfFaces: any;
+}
 
-export class FacepileBasicExample extends React.Component<any, any> {
-  public render() {
-    return (
-      <Facepile {...facepileProps} />
-    );
+export class FacepileBasicExample extends React.Component<any, IFacepileBasicExampleState> {
+  public constructor() {
+    super();
+
+    this.state = {
+      numberOfFaces: 1
+    };
   }
 
+  public render() {
+    let { numberOfFaces } = this.state;
+    let facepileProps: IFacepileProps = {
+      personas: facepilePersonas.slice(0, numberOfFaces),
+      chevronButtonProps: {
+        onClick: (ev: React.MouseEvent<HTMLButtonElement>) =>
+          alert('Down arrow icon clicked')
+      }
+    };
+
+    return (
+      <div className={'ms-FacepileExample'}>
+        <Facepile {...facepileProps} />
+        <Slider
+          label='Number of Personas:'
+          min={1}
+          max={8}
+          step={1}
+          showValue={true}
+          value={this.state.numberOfFaces}
+          onChange={value => this.setState({ numberOfFaces: value })}
+          />
+      </div>
+    );
+  }
 }

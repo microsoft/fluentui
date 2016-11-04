@@ -59,7 +59,8 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
       let value = Math.max(newProps.min, Math.min(newProps.max, newProps.value));
 
       this.setState({
-        value: value
+        value: value,
+        renderedValue: value
       });
     }
   }

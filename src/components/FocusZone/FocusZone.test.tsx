@@ -18,7 +18,7 @@ describe('FocusZone', () => {
 
   it('can use arrows vertically', () => {
     let component = ReactTestUtils.renderIntoDocument(
-      <div onFocusCapture={ _onFocus }>
+      <div { ...{ onFocusCapture: _onFocus } }>
         <FocusZone direction={ FocusZoneDirection.vertical }>
           <button className='a'>a</button>
           <button className='b'>b</button>
@@ -26,7 +26,7 @@ describe('FocusZone', () => {
         </FocusZone>
       </div>
     );
-    let focusZone = ReactDOM.findDOMNode(component).firstChild as Element;
+    let focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
     let buttonA = focusZone.querySelector('.a') as HTMLElement;
     let buttonB = focusZone.querySelector('.b') as HTMLElement;
     let buttonC = focusZone.querySelector('.c') as HTMLElement;
@@ -113,7 +113,7 @@ describe('FocusZone', () => {
 
   it('can use arrows horizontally', () => {
     let component = ReactTestUtils.renderIntoDocument(
-      <div onFocusCapture={ _onFocus }>
+      <div { ...{ onFocusCapture: _onFocus } }>
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           <button className='a'>a</button>
           <button className='b'>b</button>
@@ -121,7 +121,7 @@ describe('FocusZone', () => {
         </FocusZone>
       </div>
     );
-    let focusZone = ReactDOM.findDOMNode(component).firstChild as Element;
+    let focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
     let buttonA = focusZone.querySelector('.a') as HTMLElement;
     let buttonB = focusZone.querySelector('.b') as HTMLElement;
     let buttonC = focusZone.querySelector('.c') as HTMLElement;
@@ -208,7 +208,7 @@ describe('FocusZone', () => {
 
   it('can use arrows bidirectionally', () => {
     let component = ReactTestUtils.renderIntoDocument(
-      <div onFocusCapture={ _onFocus }>
+      <div { ...{ onFocusCapture: _onFocus } }>
         <FocusZone>
           <button className='a'>a</button>
           <button className='b'>b</button>
@@ -219,7 +219,7 @@ describe('FocusZone', () => {
         </FocusZone>
       </div>
     );
-    let focusZone = ReactDOM.findDOMNode(component).firstChild as Element;
+    let focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
     let buttonA = focusZone.querySelector('.a') as HTMLElement;
     let buttonB = focusZone.querySelector('.b') as HTMLElement;
     let buttonC = focusZone.querySelector('.c') as HTMLElement;

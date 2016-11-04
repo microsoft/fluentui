@@ -2,9 +2,13 @@
 
 ##### The React-based front-end framework for building experiences for Office and Office 365.
 
+[![npm version](https://badge.fury.io/js/office-ui-fabric-react.svg)](https://badge.fury.io/js/office-ui-fabric-react)
+[![Build Status](https://travis-ci.org/OfficeDev/office-ui-fabric-react.svg?branch=master)](https://travis-ci.org/OfficeDev/office-ui-fabric-react)
+[![Dependencies](https://david-dm.org/OfficeDev/office-ui-fabric-react.svg)](https://david-dm.org/OfficeDev/office-ui-fabric-react)
+
 Fabric React is a responsive, mobile-first collection of robust components designed to make it quick and simple for you to create web experiences using the Office Design Language.
 
-**This project is in a pre-v1 state**, so we encourage you to check out the [Roadmap](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ROADMAP.md) to see what the v1 we're working towards entails and what this means for your usage of the controls set.
+**This project is in a pre-v1 state**, so we encourage you to check out the [Roadmap](#roadmap) to see what we're working towards and what this means for your usage of the control library.
 
 ## Contents
 
@@ -12,6 +16,8 @@ Fabric React is a responsive, mobile-first collection of robust components desig
 - [Get started](#get-started)
 - [Advanced usage](#advanced-usage)
 - [Roadmap](#roadmap)
+- [Trello board](#trello-board)
+- [Browser support](#browser-support)
 - [Contribute to Fabric React](#contribute-to-fabric-react)
 - [Licenses](#licenses)
 - [Changelog](#changelog)
@@ -31,7 +37,7 @@ This will open a web browser with the example page. You can make changes to the 
 ## Get started
 
 ### Tutorial
-[Here is a step by step tutorial](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/Tutorial.md) on how to build a simple React app with an Office UI Fabric React component.
+[Here is a step by step tutorial](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/README.md) on how to build a simple React app with an Office UI Fabric React component.
 
 ### Integrate into an existing project
 Integrating components into your project depends heavily on your setup. The recommended setup is to use a bundler such as Webpack which can resolve NPM package imports in your code and can bundle the specific things you import.
@@ -63,7 +69,29 @@ For advanced usage including info about module vs. path-based imports, using an 
 
 ## Roadmap
 
-As mentioned above, the project is currently in a **pre-v1 state**. Components will be in varying states with the end goal being keyboard accessible, screen reader friendly, RTL friendly, and themeable controls. To see details about the components and the desired goal, please check out the [Roadmap](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/ROADMAP.md).
+The Fabric React project is currently in a **pre-v1 state** which means that we're working hard on achieving our v1 - a set of powerful and easy to use components built to the Office Design Language that are used *in production*. We will be actively working on this set as teams across Office and Office 365 contribute, evolve, and use these components in their own products.
+
+Given the early state of the project, all things are subject to change and some components may be more stable/usable than others. Use at your own risk!
+
+Our goal is to build out the components to be:
+- Well documented
+- Have clear contracts
+- Keyboard accessible
+- Screen reader friendly
+- RTL friendly
+- Support high contrast mode
+- Generally bug-free
+
+We hope to develop more concrete goals for the project's components in the future with a primary focus on explaining which components are used in production. Stay tuned to learn more.
+
+## Trello board
+
+Fabric React contains a variety of components that are a part of the Office / Office 365 design language. If you're not seeing a component here that you'd like, first check out the [Fabric React Requests Trello board](https://trello.com/b/hBP8XdvR/office-ui-fabric-react-requests) and upvote it there (if it exists), or file an [issue on Fabric React's issue tracker](https://github.com/OfficeDev/office-ui-fabric-react/issues) to kick off a new request.
+
+
+## Browser support
+
+Fabric React supports many commonly used browsers. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/BROWSERSUPPORT.md) for more information.
 
 
 ## Contribute to Fabric React

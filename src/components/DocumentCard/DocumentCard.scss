@@ -43,18 +43,19 @@
   // Remove the usual accent color from the preview
   .ms-DocumentCardPreview {
     border-bottom: none;
-
-    .ms-Image {
-      max-height: 106px;
-      max-width: 144px
-    }
+    max-height: 106px;
+    max-width: 144px;
 
     .ms-DocumentCardPreview-icon {
       .ms-Image-image {
-        max-height: 16px;
-        max-width: 16px;
+        max-height: 32px;
+        max-width: 32px;
       }
     }
+  }
+
+  .ms-DocumentCardPreview {
+    @include border-right(1px, solid, $ms-color-neutralLight);
   }
 
   // Expand the details area to fill the remaining width
@@ -67,6 +68,8 @@
   }
 
   .ms-DocumentCardTitle {
-      padding: 0px 12px 8px 12px;
+      padding: 0px 16px 8px 16px;
+      @include ms-font-m;
+      line-height: 16px;
   }
 }

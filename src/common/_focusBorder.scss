@@ -1,12 +1,12 @@
 @import './semanticColorVariables';
 
 @mixin focus-border($padding: 0, $color: $focusedBorderColor) {
-  .ms-Fabric &::-moz-focus-inner {
+  &::-moz-focus-inner {
     // Clear the focus border in Firefox. Reference: http://stackoverflow.com/a/199319/1436671
     border: 0;
   }
 
-  .ms-Fabric & {
+  & {
     // Clear browser specific focus styles and use transparent as placeholder for focus style
     outline: transparent;
 
@@ -14,7 +14,7 @@
     position: relative;
   }
 
-  .ms-Fabric.is-focusVisible &:focus:before {
+  .ms-Fabric.is-focusVisible &:focus:after {
     // Wrap the parent element with $padding pixels.
     content: '';
     position: absolute;

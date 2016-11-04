@@ -1,3 +1,5 @@
+import { IRectangle } from '../common/IRectangle';
+
 /**
  * Attached interface for elements which support virtual references.
  * Used internally by the virtual hierarchy methods.
@@ -57,7 +59,7 @@ export function setVirtualParent(child: HTMLElement, parent: HTMLElement) {
 export function getVirtualParent(child: HTMLElement): HTMLElement {
   let parent: HTMLElement;
 
-  if (isVirtualElement(child)) {
+  if (child && isVirtualElement(child)) {
     parent = child._virtual.parent;
   }
 
@@ -75,7 +77,10 @@ export function getVirtualParent(child: HTMLElement): HTMLElement {
  * @returns {HTMLElement}
  */
 export function getParent(child: HTMLElement, allowVirtualParents: boolean = true): HTMLElement {
-  return allowVirtualParents && getVirtualParent(child) || child.parentElement;
+  return child && (
+    allowVirtualParents && getVirtualParent(child) ||
+    child.parentNode && child.parentNode as HTMLElement
+  );
 }
 
 /**
@@ -90,26 +95,81 @@ export function getParent(child: HTMLElement, allowVirtualParents: boolean = tru
  * @returns {boolean}
  */
 export function elementContains(parent: HTMLElement, child: HTMLElement, allowVirtualParents: boolean = true): boolean {
-  let isContained: boolean;
+  let isContained: boolean = false;
 
-  if (allowVirtualParents) {
-    isContained = false;
+  if (parent && child) {
+    if (allowVirtualParents) {
+      isContained = false;
 
-    while (child) {
-      let nextParent = getParent(child);
+      while (child) {
+        let nextParent = getParent(child);
 
-      if (nextParent === parent) {
-        isContained = true;
-        break;
+        if (nextParent === parent) {
+          isContained = true;
+          break;
+        }
+
+        child = nextParent;
       }
-
-      child = nextParent;
+    } else if (parent.contains) {
+      isContained = parent.contains(child);
     }
-  } else {
-    isContained = parent.contains(child);
   }
 
   return isContained;
+}
+
+let _isSSR = false;
+
+/** Helper to set ssr mode to simulate no window object returned from getWindow helper. */
+export function setSSR(isEnabled) {
+  _isSSR = isEnabled;
+}
+
+/** Helper to get the window object. */
+export function getWindow(rootElement?: HTMLElement) {
+  if (_isSSR) {
+    return undefined;
+  } else {
+    return (
+      rootElement &&
+        rootElement.ownerDocument &&
+        rootElement.ownerDocument.defaultView ?
+        rootElement.ownerDocument.defaultView :
+        window
+    );
+  }
+}
+
+/** Helper to get the document object. */
+export function getDocument(rootElement?: HTMLElement) {
+  if (_isSSR) {
+    return undefined;
+  } else {
+    return rootElement && rootElement.ownerDocument ? rootElement.ownerDocument : document;
+  }
+}
+
+/** Helper to get bounding client rect, works with window. */
+export function getRect(element: HTMLElement | Window): IRectangle {
+  let rect: IRectangle;
+
+  if (element) {
+    if (element === window) {
+      rect = {
+        left: 0,
+        top: 0,
+        width: window.innerWidth,
+        height: window.innerHeight,
+        right: window.innerWidth,
+        bottom: window.innerHeight
+      };
+    } else if ((element as HTMLElement).getBoundingClientRect) {
+      rect = (element as HTMLElement).getBoundingClientRect();
+    }
+  }
+
+  return rect;
 }
 
 /**
@@ -119,5 +179,5 @@ export function elementContains(parent: HTMLElement, child: HTMLElement, allowVi
  * @returns {element is IVirtualElement}
  */
 function isVirtualElement(element: HTMLElement | IVirtualElement): element is IVirtualElement {
-  return !!(<IVirtualElement>element)._virtual;
+  return element && !!(<IVirtualElement>element)._virtual;
 }

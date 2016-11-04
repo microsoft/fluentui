@@ -7,74 +7,48 @@
 // --------------------------------------------------
 // Spinner styles
 
+$spin-duration: 1s;
+$borderSize: 1.5px;
 
-.ms-Spinner {
-  @include ms-baseFont;
-  position: relative;
-  height: 20px;
-
-  &.ms-Spinner--large {
-    height: 28px;
-
-    .ms-Spinner-label {
-      @include left(34px);
-      top: 6px;
-    }
-  }
-}
-
-.ms-Spinner-circle {
-  position: absolute;
-  border-radius: 100px;
-  background-color: $ms-color-themePrimary;
-  opacity: 0;
-
-  @media screen and (-ms-high-contrast: active) {
-    background-color: $ms-color-white;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    background-color: $ms-color-black;
-  }
-}
-
-.ms-Spinner-label {
-  @include ms-font-s;
-  position: relative;
-  color: $ms-color-themePrimary;
-  @include left(28px);
-  top: 2px;
-}
-
-/**
-  Change from Fabric - here we are using CSS animations
-  rather than JavaScript driven animations
-*/
-$animationSpeed: 750ms;
-
-@keyframes pulse {
+@keyframes ms-Spinner-spin {
   0% {
-    opacity: 1;
+    transform: rotate(0deg);
   }
   100% {
-     opacity: 0;
+    transform: rotate(360deg);
   }
 }
 
-.ms-Spinner-circle {
-  position: absolute;
-  border-radius: 100px;
-  background-color: $ms-color-themePrimary;
-  opacity: 0;
-  animation-name: pulse;
-  animation-duration: $animationSpeed;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
+.ms-Spinner {
+  > .ms-Spinner-circle {
+    margin: auto;
+    box-sizing: border-box;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    border: 1.5px solid $ms-color-themeLight;
+    border-top-color: $ms-color-themePrimary;
+    animation: ms-Spinner-spin $spin-duration infinite linear;
+    &.ms-Spinner--normal {
+      width: 20px;
+      height: 20px;
+    }
+    &.ms-Spinner--large {
+      width: 28px;
+      height: 28px;
+    }
+  }
+  > .ms-Spinner-label {
+      color: $ms-color-themePrimary;
+      margin-top: 10px;
+      text-align: center;
+  }
 }
 
-@for $i from 1 to 8 {
-  .ms-Spinner-circle:nth-child(#{$i}) {
-    opacity: 1 - ($i / 8);
-    animation-delay: ($i / 8) * $animationSpeed;
+@media screen and (-ms-high-contrast: active) {
+  .ms-Spinner {
+    > .ms-Spinner-circle {
+        border-top-style: none;
+    }
   }
 }

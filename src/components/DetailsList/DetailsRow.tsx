@@ -181,7 +181,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
         aria-selected={ isSelected }
         >
         <FocusZone direction={ FocusZoneDirection.horizontal }>
-          { (selectionMode !== SelectionMode.none) && (
+          { (selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden) && (
             <span role='gridcell'>
               { onRenderCheck({
                 isSelected,

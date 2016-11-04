@@ -45,7 +45,10 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
     if (this.props.actions) {
       return this.props.isMultiline ?
         <div className='ms-MessageBar-actions'> { this.props.actions } </div> :
-        <div className='ms-MessageBar-actionsOneline'> { [this._getDismissDiv(), this.props.actions] } </div>;
+        <div className='ms-MessageBar-actionsOneline'>
+          { this._getDismissDiv() }
+          { this.props.actions }
+        </div>;
     }
     return null;
   }
@@ -69,7 +72,6 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
         buttonType={ ButtonType.icon }
         onClick={ this.props.onDismiss }
         icon='Cancel'
-        rootProps={ { title: 'Close' } }
         ariaLabel={ this.props.dismissButtonAriaLabel }
       />;
     }
