@@ -292,6 +292,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   }
 
   private _renderMenuItemChildren(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
+    let isItemChecked: boolean = item.isChecked || item.checked;
     return (
       <div className='ms-ContextualMenu-linkContent'>
         { (hasCheckmarks) ? (
@@ -300,8 +301,8 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
               css(
                 'ms-ContextualMenu-icon',
                 {
-                  'ms-Icon ms-Icon--CheckMark': item.isChecked || item.checked,
-                  'not-selected': !item.isChecked && item.checked
+                  'ms-Icon ms-Icon--CheckMark': isItemChecked,
+                  'not-selected': !isItemChecked
                 })
             }
             onClick={ this._onItemClick.bind(this, item) } />
