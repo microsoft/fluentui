@@ -8,14 +8,12 @@ import {
   ComponentPage
 } from '../../components/index';
 
-import { PaneSmallRightExample } from './examples/Pane.SmallRight.Example';
-import { PaneSmallFluidExample } from './examples/Pane.SmallFluid.Example';
+import { PaneBasicExample } from './examples/Pane.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const PaneSmallRightExampleCode = require('./examples/Pane.SmallRight.Example.tsx');
-const PaneSmallFluidExampleCode = require('./examples/Pane.SmallFluid.Example.tsx');
+const PaneBasicExampleCode = require('./examples/Pane.Basic.Example.tsx');
 
 export class PanePage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -32,11 +30,8 @@ export class PanePage extends React.Component<IComponentDemoPageProps, any> {
         componentName='PaneExample'
         exampleCards={
           <div>
-            <ExampleCard title='Pane - Small Pane, Anchored Right, Fixed Width' code={ PaneSmallRightExampleCode }>
-              <PaneSmallRightExample />
-            </ExampleCard>
-            <ExampleCard title='Pane - Small Pane, Full Screen, Fluid Width' code={ PaneSmallFluidExampleCode }>
-              <PaneSmallFluidExample />
+            <ExampleCard title='Pane - Small Pane, Anchored Right, Fixed Width' code={ PaneBasicExampleCode }>
+              <PaneBasicExample />
             </ExampleCard>
           </div>
         }

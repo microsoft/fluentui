@@ -27,9 +27,12 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
     type: PaneType.smallFixedFar
   };
 
+  private _contentContainer: HTMLElement;
+  private _mainContent: HTMLElement;
+
   private _initialContentWidth: number;
-  private _contentContainer = 'content-container';
-  private _mainContent = 'main-content';
+  // private _contentContainer = 'content-container';
+  // private _mainContent = 'main-content';
 
   constructor(props: IPaneProps) {
     super(props);
@@ -48,7 +51,7 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
   public componentDidMount() {
     if (this.props.isOverlay) {
       // Set original content width for overlay mode
-      this._initialContentWidth = (this.refs[this._contentContainer] as HTMLElement).clientWidth;
+      this._initialContentWidth = this._contentContainer.clientWidth;
     }
 
     if (this.state.isOpen) {
@@ -73,10 +76,10 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
   public componentDidUpdate() {
     if (this.props.isOverlay) {
       // Use original content width for overlay mode
-      (this.refs[this._contentContainer] as HTMLElement).style.width = this._initialContentWidth + 'px';
+      this._contentContainer.style.width = this._initialContentWidth + 'px';
     } else {
       // Viewport content width for push mode
-      (this.refs[this._contentContainer] as HTMLElement).style.width = this._getContainerWidth() + 'px';
+      this._contentContainer.style.width = this._getContainerWidth() + 'px';
     }
   }
 
@@ -111,14 +114,14 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
       }
         >
         <div
-          className={ this._mainContent }
-          ref={ this._mainContent }
+          className={ 'main-content' }
+          ref={ this._resolveRef('_mainContent') }
           >
           <div
-            className={ this._contentContainer }
-            ref={ this._contentContainer }
+            className={ 'content-container' }
+            ref={ this._resolveRef('_contentContainer') }
             >
-            { groupings.wrappedContents.toString() }
+            { groupings.wrappedContents }
           </div>
         </div>
         <Popup
@@ -152,7 +155,7 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
               <div className='ms-Pane-contentInner'>
                 { header }
                 <div className='ms-Pane-content'>
-                  { groupings.paneContents.toString() }
+                  { groupings.paneContents }
                 </div>
               </div>
             </div>
@@ -172,7 +175,7 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
   }
 
   private _getContainerWidth(): number {
-    return (this.refs[this._mainContent] as HTMLElement).clientWidth;
+    return this._mainContent.clientWidth - 1;
   }
 
   private _groupChildren(): { wrappedContents: any[]; paneContents: any[]; } {

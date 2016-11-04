@@ -13,33 +13,17 @@
         overflow: auto;
         display: flex;
         flex: 1 1 auto;
-        flex-direction: row;
+        flex-direction: column;
 
         > .content-container {
             display: flex;
-            flex: 1 0 auto;
+            flex: 1 1 auto;
             flex-direction: column;
         }
     }
 }
 
-.ms-Pane > .popup {
-    overflow-y: auto;
-}
-
-// [thomas.oconnor] Instead of using the current Fabric CSS implementation for the Pane,
-// we are recreating it here. The Fabic Pane will be undergoing some redesign work in the
-// near future.
-// This implementation is RTL friendly, and divides the classes so that the pane types
-// and left/right animations are in different classes. It also separates out the design
-// rules/restrictions for Pane usage so that it becomes a generic Pane. It is up to the
-// user to use the Panes properly (smLeft panes are for left navs, smFixed panes are for
-// drop down menus on mobile, knowing when it's appropriate to have a command bar or not)
-//
-// Here is the OneNote design document for this implementation of the Pane:
-//
-// https://msft.spoppe.com/collab/OSS%20Design/pcp/_layouts/15/WopiFrame.aspx?sourcedoc={9a356b27-4138-491d-b2f6-6b3e442fc6a5}&action=edit&wd=target%28%2F%2FDesign%2FToolkit.one%7C61ef427b-c38f-4ee3-a215-67758011eb67%2FSurface%20Behavior%7C376ed8fd-33f0-4661-85aa-feec8a963fa0%2F%29
-//
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
 
 //
 // Office UI Fabric
@@ -92,28 +76,6 @@ $CommandBarHeight: 40px;
     }
 }
 
-//== Modifier: Small pane, full screen (anchored left, fluid width)
-// Note: This pane should only be used for dropdown menus on small screens.
-//
-.ms-Pane.ms-Pane--smFluid {
-    .ms-Pane-main {
-        width: 100%;
-    }
-}
-
-//== Modifier: Medium, Large, Extra Largs panes (anchored right, fluid width)
-//
-.ms-Pane.ms-Pane--md,
-.ms-Pane.ms-Pane--lg,
-.ms-Pane.ms-Pane--xl {
-    .ms-Pane-main {
-        @media (min-width: $ms-screen-lg-min) {
-            @include left($Pane-margin-md);
-            width: auto;
-        }
-    }
-}
-
 //== Modifier: Medium pane (anchored right, fixed width)
 //
 .ms-Pane.ms-Pane--md {
@@ -121,16 +83,6 @@ $CommandBarHeight: 40px;
         @media (min-width: $ms-screen-xl-min) {
             @include left(auto);
             width: $Pane-width-md;
-        }
-    }
-}
-
-//== Modifier: Large pane (anchored right, fluid width)
-//
-.ms-Pane.ms-Pane--lg {
-    .ms-Pane-main {
-        @media (min-width: $ms-screen-xxl-min) {
-            @include left($Pane-margin-lg);
         }
     }
 }
@@ -146,16 +98,6 @@ $CommandBarHeight: 40px;
     }
 }
 
-//== Modifier: XLarge pane (anchored right, fluid width)
-//
-.ms-Pane.ms-Pane--xl {
-    .ms-Pane-main {
-        @media (min-width: $ms-screen-xxl-min) {
-            @include left($Pane-margin-xl);
-        }
-    }
-}
-
 //== State: When the pane is open.
 //
 .ms-Pane.is-open {
@@ -164,15 +106,6 @@ $CommandBarHeight: 40px;
         opacity: 1;
         pointer-events: auto;
         display: block;
-    }
-
-    .ms-Overlay {
-        display: block;
-        pointer-events: auto;
-
-        @media screen and (-ms-high-contrast: active) {
-            opacity: 0;
-        }
     }
 
     &.ms-Pane-animateIn {
@@ -185,10 +118,6 @@ $CommandBarHeight: 40px;
         .ms-Pane-main {
             @include ms-u-fadeOut100;
         }
-
-        .ms-Overlay {
-            display: none;
-        }
     }
     // Medium screens and up
     @media (min-width: $ms-screen-md-min) {
@@ -197,19 +126,11 @@ $CommandBarHeight: 40px;
             .ms-Pane-main {
                 @include ms-u-slideLeftIn40;
             }
-
-            .ms-Overlay {
-                @include ms-u-fadeIn200;
-            }
         }
 
         &.ms-Pane--openRight.ms-Pane-animateOut {
             .ms-Pane-main {
                 @include ms-u-slideRightOut40;
-            }
-
-            .ms-Overlay {
-                @include ms-u-fadeOut200;
             }
         }
         // Animations - Left pane (anchored left)
@@ -217,35 +138,11 @@ $CommandBarHeight: 40px;
             .ms-Pane-main {
                 @include ms-u-slideRightIn40;
             }
-
-            .ms-Overlay {
-                @include ms-u-fadeIn200;
-            }
         }
 
         &.ms-Pane--openLeft.ms-Pane-animateOut {
             .ms-Pane-main {
                 @include ms-u-slideLeftOut40;
-            }
-
-            .ms-Overlay {
-                @include ms-u-fadeOut200;
-            }
-        }
-        // Animate overlay to full opacity, activate pointer events
-        .ms-Overlay {
-            cursor: pointer;
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        &.ms-Pane--openRight.ms-Pane-animateIn,
-        &.ms-Pane--openLeft.ms-Pane-animateIn {
-            .ms-Overlay {
-                @media screen and (-ms-high-contrast: active) {
-                    opacity: 0;
-                    animation-name: none;
-                }
             }
         }
     }
