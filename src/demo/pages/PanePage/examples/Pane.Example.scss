@@ -1,0 +1,18 @@
+@import "../../../../../dist/sass/Fabric.Common";
+
+.PaneExample-content {
+  padding: 0px;
+  @include ms-font-m;
+}
+
+.PaneExample-configArea {
+  min-width: 130px;
+  display: inline-block;
+}
+
+.PaneExample-buttonArea {
+  vertical-align: bottom;
+  display: inline-block;
+  min-width: 130px;
+  margin: 10px 100px;
+}
