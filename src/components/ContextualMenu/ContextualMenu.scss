@@ -15,8 +15,6 @@ $ContextualMenu-iconWidth: 14px;
   list-style-type: none;
   margin: 0;
   padding: 0;
-  max-height: 100vh;
-  overflow-y: auto;
   line-height: 0;
 }
 
@@ -78,6 +76,7 @@ a.ms-ContextualMenu-link {
 }
 .ms-ContextualMenu-linkContent {
   white-space: nowrap;
+  height: inherit;
 }
 
 .ms-ContextualMenu-divider {
