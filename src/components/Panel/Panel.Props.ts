@@ -21,6 +21,12 @@ export interface IPanelProps extends React.Props<Panel> {
   isLightDismiss?: boolean;
 
   /**
+  * Whether the panel uses a modal overlay or not
+  * @default true
+  */
+  isBlocking?: boolean;
+
+  /**
   * Header text for the Panel.
   * @default ""
   */
@@ -64,15 +70,15 @@ export interface IPanelProps extends React.Props<Panel> {
    */
   ignoreExternalFocusing?: boolean;
 
-   /**
-   * Indicates whether Panel should force focus inside the focus trap zone
-   * @default true
-   */
+  /**
+  * Indicates whether Panel should force focus inside the focus trap zone
+  * @default true
+  */
   forceFocusInsideTrap?: boolean;
 
-   /**
-   * Indicates the selector for first focusable item
-   */
+  /**
+  * Indicates the selector for first focusable item
+  */
   firstFocusableSelector?: string;
 }
 
