@@ -7,7 +7,7 @@
 // --------------------------------------------------
 // Spinner styles
 
-$spin-duration: 1s;
+$spin-duration: 1.3s;
 $borderSize: 1.5px;
 
 @keyframes ms-Spinner-spin {
@@ -28,7 +28,7 @@ $borderSize: 1.5px;
     height: 100%;
     border: 1.5px solid $ms-color-themeLight;
     border-top-color: $ms-color-themePrimary;
-    animation: ms-Spinner-spin $spin-duration infinite linear;
+    animation: ms-Spinner-spin $spin-duration infinite cubic-bezier(.50,.30,.30,.50);
     &.ms-Spinner--normal {
       width: 20px;
       height: 20px;
