@@ -2,7 +2,7 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-export interface IPaneContentProps {
+export interface IPaneContentProps extends React.Props<PaneContent> {
   /**
    * Optional class name to be added to the root class
    */
@@ -21,8 +21,8 @@ export class PaneContent extends React.Component<IPaneContentProps, any> {
 
   public render() {
     return (
-      <div className={ this.props.className }>
-        { this.props.children }
+      <div className={this.props.className}>
+        {this.props.children}
       </div>
     );
   }
