@@ -8,7 +8,7 @@ import {
   css,
   elementContains
 } from '../../Utilities';
-import { getRelativePositions, IPositionInfo } from '../../utilities/positioning';
+import { getRelativePositions, IPositionInfo, IPositionProps } from '../../utilities/positioning';
 import { IRectangle } from '../../common/IRectangle';
 import { focusFirstChild } from '../../utilities/focus';
 import { assign } from '../../Utilities';
@@ -42,6 +42,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   private _bounds: IRectangle;
   private _maxHeight: number;
   private _positionAttempts: number;
+  private _targetElement: HTMLElement;
 
   constructor(props: ICalloutProps) {
     super(props, {'beakStyle': 'beakWidth'});
@@ -52,9 +53,16 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       slideDirectionalClassName: null,
       calloutElementRect: null
     };
+
+    if (typeof props.targetElement === 'string') {
+      this._targetElement = document.getElementById(props.targetElement);
+    } else {
+      this._targetElement = props.targetElement;
+    }
+
     // This is used to allow the Callout to appear on a window other than the one the javascript is running in.
-    if (props.targetElement && props.targetElement.ownerDocument && props.targetElement.ownerDocument.defaultView) {
-      this._targetWindow = props.targetElement.ownerDocument.defaultView;
+    if (this._targetElement && this._targetElement.ownerDocument && this._targetElement.ownerDocument.defaultView) {
+      this._targetWindow = this._targetElement.ownerDocument.defaultView;
     } else {
       this._targetWindow = window;
     }
@@ -135,13 +143,12 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   }
 
   protected _dismissOnLostFocus(ev: Event) {
-    let { targetElement } = this.props;
     let target = ev.target as HTMLElement;
 
     if (ev.target !== this._targetWindow &&
       this._hostElement &&
       !elementContains(this._hostElement, target) &&
-      (!targetElement || !elementContains(targetElement, target))) {
+      (!this._targetElement || !elementContains(this._targetElement, target))) {
       this.dismiss();
     }
   }
@@ -176,9 +183,10 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     let calloutElement: HTMLElement = this._calloutElement;
 
     if (hostElement && calloutElement) {
-      let currentProps: ICalloutProps;
+      let currentProps: IPositionProps;
       currentProps = assign(currentProps, this.props);
       currentProps.bounds = this._getBounds();
+      currentProps.targetElement = this._targetElement;
       let positionInfo: IPositionInfo = getRelativePositions(currentProps, hostElement, calloutElement);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
@@ -198,9 +206,9 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
           },
           slideDirectionalClassName: positionInfo.directionalClassName
         });
+      } else {
+        this._positionAttempts = 0;
       }
-    } else {
-      this._positionAttempts = 0;
     }
   }
 

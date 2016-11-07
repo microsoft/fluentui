@@ -88,6 +88,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _enterTimerId: number;
   private _focusZone: FocusZone;
   private _targetWindow: Window;
+  private _targetElement: HTMLElement;
 
   constructor(props: IContextualMenuProps) {
     super(props);
@@ -100,9 +101,17 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     this._isFocusingPreviousElement = false;
     this._didSetInitialFocus = false;
     this._enterTimerId = 0;
-    // This is used to allow the ContextualMenu to appear on a window other than the one the javascript is running in.
-    if (props.targetElement && props.targetElement.ownerDocument && props.targetElement.ownerDocument.defaultView) {
-      this._targetWindow = props.targetElement.ownerDocument.defaultView;
+    this._events = new EventGroup(this);
+    this._async = new Async(this);
+    if (typeof props.targetElement === 'string') {
+      this._targetElement = document.getElementById(props.targetElement);
+    } else {
+      this._targetElement = props.targetElement;
+    }
+
+    // This is used to allow the Callout to appear on a window other than the one the javascript is running in.
+    if (this._targetElement && this._targetElement.ownerDocument && this._targetElement.ownerDocument.defaultView) {
+      this._targetWindow = this._targetElement.ownerDocument.defaultView;
     } else {
       this._targetWindow = window;
     }
