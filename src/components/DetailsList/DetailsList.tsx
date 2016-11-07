@@ -129,6 +129,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
   public componentWillReceiveProps(newProps: IDetailsListProps) {
     let {
+      checkboxVisibility,
       items,
       setKey,
       selectionMode,
@@ -154,6 +155,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     }
 
     if (
+      newProps.checkboxVisibility !== checkboxVisibility ||
       newProps.columns !== columns ||
       newProps.viewport.width !== viewport.width
     ) {
@@ -176,6 +178,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       ariaLabelForListHeader,
       ariaLabelForSelectAllCheckbox,
       className,
+      checkboxVisibility,
       constrainMode,
       dragDropEvents,
       groups,
@@ -219,6 +222,10 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       }
       let isSelectAllVisible = isCollapsedGroupSelectVisible || !groups || isSomeGroupExpanded;
       selectAllVisibility = isSelectAllVisible ? SelectAllVisibility.visible : SelectAllVisibility.hidden;
+    }
+
+    if (checkboxVisibility === CheckboxVisibility.hidden) {
+      selectAllVisibility = SelectAllVisibility.none;
     }
 
     return (
