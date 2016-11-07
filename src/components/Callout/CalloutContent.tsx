@@ -89,7 +89,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     };
 
     let contentMaxHeight: number = this._getMaxHeight();
-
+    let beakVisible: boolean = isBeakVisible && !!targetElement;
     let content = (
       <div ref={ this._resolveRef('_hostElement') } className={ 'ms-Callout-container' }>
         <div
@@ -103,13 +103,13 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
           ref={ this._resolveRef('_calloutElement') }
           >
 
-          { isBeakVisible && targetElement ? (
+          { beakVisible ? (
             <div
               className={ 'ms-Callout-beak' }
               style={ beakReactStyle }
               />) : (null) }
 
-          { isBeakVisible && targetElement ?
+          { beakVisible ?
             (<div className='ms-Callout-beakCurtain' />) :
             (null) }
 
