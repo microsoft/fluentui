@@ -24,7 +24,7 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
   public static defaultProps: IPaneProps = {
     isOpen: false,
     hasCloseButton: true,
-    type: PaneType.smallFixedFar
+    type: PaneType.small
   };
 
   private _contentContainer: HTMLElement;
@@ -135,12 +135,8 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
                 'is-open': isOpen,
                 'ms-Pane-animateIn': isAnimatingOpen,
                 'ms-Pane-animateOut': isAnimatingClose,
-                'ms-Pane--smFluid': type === PaneType.smallFluid,
-                'ms-Pane--sm': type === PaneType.smallFixedFar,
-                'ms-Pane--md': type === PaneType.medium,
-                'ms-Pane--lg': type === PaneType.large || type === PaneType.largeFixed,
-                'ms-Pane--fixed': type === PaneType.largeFixed,
-                'ms-Pane--xl': type === PaneType.extraLarge
+                'ms-Pane--sm': type === PaneType.small,
+                'ms-Pane--md': type === PaneType.medium
               })
             }
             >
