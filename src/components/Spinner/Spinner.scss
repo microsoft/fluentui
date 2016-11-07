@@ -28,7 +28,7 @@ $borderSize: 1.5px;
     height: 100%;
     border: 1.5px solid $ms-color-themeLight;
     border-top-color: $ms-color-themePrimary;
-    animation: ms-Spinner-spin $spin-duration infinite cubic-bezier(.50,.30,.30,.50);
+    animation: ms-Spinner-spin $spin-duration infinite cubic-bezier(.53,.21,.29,.67);
     &.ms-Spinner--normal {
       width: 20px;
       height: 20px;
