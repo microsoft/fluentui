@@ -1,7 +1,8 @@
-@import "../../../../../dist/sass/Fabric.Common";
+@import "../../../../../node_modules/office-ui-fabric-core/dist/sass/Fabric.Common";
 
 .PaneExample-content {
   padding: 0px;
+  max-height: 400px;
   @include ms-font-m;
 }
 

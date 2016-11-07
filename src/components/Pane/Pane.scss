@@ -25,20 +25,6 @@
 
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
 
-// [thomas.oconnor] Instead of using the current Fabric CSS implementation for the Pane,
-// we are recreating it here. The Fabic Pane will be undergoing some redesign work in the
-// near future.
-// This implementation is RTL friendly, and divides the classes so that the pane types
-// and left/right animations are in different classes. It also separates out the design
-// rules/restrictions for Pane usage so that it becomes a generic Pane. It is up to the
-// user to use the Panes properly (smLeft panes are for left navs, smFixed panes are for
-// drop down menus on mobile, knowing when it's appropriate to have a command bar or not)
-//
-// Here is the OneNote design document for this implementation of the Pane:
-//
-// https://msft.spoppe.com/collab/OSS%20Design/pcp/_layouts/15/WopiFrame.aspx?sourcedoc={9a356b27-4138-491d-b2f6-6b3e442fc6a5}&action=edit&wd=target%28%2F%2FDesign%2FToolkit.one%7C61ef427b-c38f-4ee3-a215-67758011eb67%2FSurface%20Behavior%7C376ed8fd-33f0-4661-85aa-feec8a963fa0%2F%29
-//
-
 //
 // Office UI Fabric
 // --------------------------------------------------
