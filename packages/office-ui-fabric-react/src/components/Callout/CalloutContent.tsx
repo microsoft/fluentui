@@ -30,8 +30,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
   public static defaultProps = {
     isBeakVisible: true,
-    beakWidth: 28,
-    gapSpace: 0,
+    beakWidth: 16,
+    gapSpace: 16,
     directionalHint: DirectionalHint.bottomAutoEdge
   };
 
