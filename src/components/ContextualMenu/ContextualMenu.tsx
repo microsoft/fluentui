@@ -410,7 +410,8 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
           id: this.state.subMenuId,
           shouldFocusOnMount: true,
           directionalHint: getRTL() ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
-          className: this.props.className
+          className: this.props.className,
+          gapSpace: 0
         }
       });
     }
