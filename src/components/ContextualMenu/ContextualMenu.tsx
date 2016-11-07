@@ -86,6 +86,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   private _async: Async;
   private _focusZone: FocusZone;
   private _targetWindow: Window;
+  private _targetElement: HTMLElement;
 
   constructor(props: IContextualMenuProps) {
     super(props);
@@ -100,9 +101,15 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     this._enterTimerId = 0;
     this._events = new EventGroup(this);
     this._async = new Async(this);
-    // This is used to allow the ContextualMenu to appear on a window other than the one the javascript is running in.
-    if (props.targetElement && props.targetElement.ownerDocument && props.targetElement.ownerDocument.defaultView) {
-      this._targetWindow = props.targetElement.ownerDocument.defaultView;
+    if (typeof props.targetElement === 'string') {
+      this._targetElement = document.getElementById(props.targetElement);
+    } else {
+      this._targetElement = props.targetElement;
+    }
+
+    // This is used to allow the Callout to appear on a window other than the one the javascript is running in.
+    if (this._targetElement && this._targetElement.ownerDocument && this._targetElement.ownerDocument.defaultView) {
+      this._targetWindow = this._targetElement.ownerDocument.defaultView;
     } else {
       this._targetWindow = window;
     }
@@ -184,7 +191,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         className='ms-ContextualMenu-Callout'
         setInitialFocus={ true }
         onDismiss={ this.props.onDismiss }>
-        <div ref={ (host: HTMLDivElement) => this._host = host} id={ id } className={ css('ms-ContextualMenu-container', className) }>
+        <div ref={ (host: HTMLDivElement) => this._host = host } id={ id } className={ css('ms-ContextualMenu-container', className) }>
           { (items && items.length) ? (
             <FocusZone
               className={ 'ms-ContextualMenu is-open' }
@@ -203,7 +210,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
                     <li
                       role='separator'
                       key={ item.key || index }
-                      className={ css('ms-ContextualMenu-divider', item.className) }/>
+                      className={ css('ms-ContextualMenu-divider', item.className) } />
                   ) : (
                       <li
                         role='menuitem'
@@ -218,7 +225,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
             </FocusZone>
           ) : (null) }
           { submenuProps ? ( // If a submenu properities exists, the submenu will be rendered.
-            <ContextualMenu { ...submenuProps }/>
+            <ContextualMenu { ...submenuProps } />
           ) : (null) }
         </div>
       </Callout>
@@ -247,7 +254,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
           role='menuitem'
           onClick={ this._onAnchorClick.bind(this, item) }>
           { (hasIcons) ? (
-            <span className={ 'ms-ContextualMenu-icon' + ((item.icon) ? ` ms-Icon ms-Icon--${item.icon}` : ' no-icon') }/>)
+            <span className={ 'ms-ContextualMenu-icon' + ((item.icon) ? ` ms-Icon ms-Icon--${item.icon}` : ' no-icon') } />)
             : null
           }
           <span className='ms-ContextualMenu-linkText ms-fontWeight-regular'> { item.name } </span>
@@ -294,18 +301,18 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   private _renderMenuItemChildren(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
     return (
       <div className='ms-ContextualMenu-linkContent'>
-        {(hasCheckmarks) ? (
+        { (hasCheckmarks) ? (
           <span
             className={
               css('ms-ContextualMenu-icon', { 'ms-Icon ms-Icon--CheckMark': item.isChecked, 'not-selected': !item.isChecked })
             }
             onClick={ this._onItemClick.bind(this, item) } />
         ) : (null) }
-        {(hasIcons) ? (
-          <span className={ 'ms-ContextualMenu-icon' + ((item.icon) ? ` ms-Icon ms-Icon--${item.icon}` : ' no-icon') }/>
+        { (hasIcons) ? (
+          <span className={ 'ms-ContextualMenu-icon' + ((item.icon) ? ` ms-Icon ms-Icon--${item.icon}` : ' no-icon') } />
         ) : (null) }
         <span className='ms-ContextualMenu-itemText ms-fontWeight-regular'>{ item.name }</span>
-        {(item.items && item.items.length) ? (
+        { (item.items && item.items.length) ? (
           <i className={ css('ms-ContextualMenu-submenuChevron ms-Icon', getRTL() ? 'ms-Icon--ChevronLeft' : 'ms-Icon--ChevronRight') } />
         ) : (null) }
       </div>
