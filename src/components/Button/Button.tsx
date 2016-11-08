@@ -63,21 +63,17 @@ export class Button extends React.Component<IButtonProps, IButtonState> implemen
 
     // Check for ariaDescription, description or aria-describedby in the native props to determine source of aria-describedby
     // otherwise default to null.
-    const getAriaDescribedBy = () => {
-      let ariaDescribedBy;
+    let ariaDescribedBy;
 
-      if (ariaDescription) {
-        ariaDescribedBy = ariaDescriptionId;
-      } else if (description) {
-        ariaDescribedBy = descriptionId;
-      } else if (nativeProps['aria-describedby']) {
-        ariaDescribedBy = nativeProps['aria-describedby'];
-      } else {
-        ariaDescribedBy = null;
-      }
-
-      return ariaDescribedBy;
-    };
+    if (ariaDescription) {
+      ariaDescribedBy = ariaDescriptionId;
+    } else if (description) {
+      ariaDescribedBy = descriptionId;
+    } else if (nativeProps['aria-describedby']) {
+      ariaDescribedBy = nativeProps['aria-describedby'];
+    } else {
+      ariaDescribedBy = null;
+    }
 
     return React.createElement(
       tag,
@@ -88,7 +84,7 @@ export class Button extends React.Component<IButtonProps, IButtonState> implemen
         {
           'aria-label': ariaLabel,
           'aria-labelledby': ariaLabel ? null : labelId,
-          'aria-describedby': getAriaDescribedBy(),
+          'aria-describedby': ariaDescribedBy,
           'ref': (c: HTMLButtonElement): HTMLButtonElement => this._buttonElement = c
         },
         onClick && { 'onClick': onClick },
