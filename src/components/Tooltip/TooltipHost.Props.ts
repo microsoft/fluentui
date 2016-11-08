@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TooltipHost } from './TooltipHost';
-import { ITooltipProps } from '../../index';
+import { ITooltipProps, TooltipDelay } from '../../index';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
 /**
@@ -14,10 +14,10 @@ export interface ITooltipHostProps extends React.HTMLProps<HTMLDivElement | Tool
   calloutProps?: ITooltipProps;
 
   /**
-   * Number of milliseconds to wait before showing the tooltip
-   * @default 1000
+   * Length of delay
+   * @default medium
    */
-  delay?: number;
+  delay?: TooltipDelay;
 
   /**
    * String to be passed to the tooltip

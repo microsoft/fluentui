@@ -19,6 +19,12 @@ export interface ITooltipProps extends React.HTMLProps<HTMLDivElement | Tooltip>
   content?: string;
 
   /**
+   * Length of delay
+   * @default medium
+   */
+  delay?: TooltipDelay;
+
+  /**
    * Element to anchor the Tooltip to.
    */
   targetElement?: HTMLElement;
@@ -28,4 +34,10 @@ export interface ITooltipProps extends React.HTMLProps<HTMLDivElement | Tooltip>
    * @default DirectionalHint.topCenter
    */
   directionalHint?: DirectionalHint;
+}
+
+export enum TooltipDelay {
+  zero,
+  medium,
+  long
 }
