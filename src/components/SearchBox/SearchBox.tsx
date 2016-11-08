@@ -118,7 +118,6 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
     }
   }
 
-
   private _callOnChange(newValue: string): void {
     let { onChange } = this.props;
 
