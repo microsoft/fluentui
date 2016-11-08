@@ -1,5 +1,15 @@
 # Component design
 
+## Basic expectations for every component
+
+- The component can always provide `id`, `className`, `style`, `aria-*` and `data-*` attributes on the container of a component.
+
+- If the component represents a standard HTML element (e.g. Button), we should mix in the valid root props using the `getNativeProps` utility so that we can let the user use native things as expected.
+
+- If the component hosts clickable elements, there must be a way to inject `data-*` attributes onto the clickable things. This enables automation to be built downstream.
+
+- Interactable elements must be accessible via keyboard, mouse, and touch`. Nothing can be ONLY interactable by mouse.
+
 ## Build many smaller components and compose them together.
 
 Often we want to build something complex, like a CommandBar. We see a picture of what we want and we build one giant component that does this. Then we find other scenarios that have overlaps. The CommandBar contains a SearchBox, a set of left side collapsable links and right side links. We may find we have other cases that just want a set of links, without the extra overhead. We may also find cases where we just want a single command bar item with a dropdown menu.
@@ -22,6 +32,54 @@ interface IButton {
   focus(): void;
 }
 ```
+
+## Naming guidance
+
+### Flags
+
+Property flags should be as consistent as possible with given html guidelines.
+
+The names should reflect the exceptional case. If something is visible by default, the name should be `hidden`. If something is selected by default, the name should be `unselected`.
+
+If a flag needs to be targeted at a specific subject (the foo label), prefix the flag with the subject: `fooLabelHidden`. The subject should be easy to understand; avoid unclear generalizations.
+
+Avoid prefixed subjects if it pertains to the primary subject of the component. (for TextField, “disabled” is good enough for a flag controlling the disabled state of the input element.)
+
+|BAD|GOOD|Notes|
+|---|----|-----|
+|isChecked|checked|There is an HTML precidence for checked.|
+|isVisible|visible|
+|isSelected|selected|
+|isEnabled|disabled|If the state is enabled by default, it should be named for the exceptional case.|
+|isOpen|hidden|If the exceptional case should be that we hide something, call it hidden.|
+|isFooDisabled|fooButtonDisabled|If the `foo` subject is unclear, make is specific to the type.|
+|buttonDisabled|disabled|If the subject IS the component, don't give it a subject name.|
+
+### Event callbacks
+
+Event callbacks should be prefixed with `on`. If it is necessary to target a subject, the subject should be in between `on` and the event name.
+
+|BAD|GOOD|Notes|
+|---|----|-----|
+|mouseClick|onClick|
+|inputClick, onClickInput|onInputClick|
+
+
+It should also be noted that for event callbacks, the ORDER of parameters should be consistent with the precisdence if one exists. For example:
+
+|BAD|GOOD|
+|---|----|
+|`onClick: (item: any, ev: React.MouseEvent) => void`|`onClick: (ev?: React.MouseEvent<{}>, item?: any) => void`
+
+### Custom render methods
+
+In cases where you wish to give the user a way to render a custom version of a thing, follow the convention `onRenderSubject`. It should also use the `IRenderFunction` interface defined in common, which takes in `props` and a `defaultRender` function and returns a JSX element:
+
+BAD:
+`renderItem: (item: any, foo: any, bar; any) => JSX.Element`
+
+GOOD:
+`onRenderItem: IRenderFunction<IItemProps>`
 
 ## Use @autobind. Avoid ALL binds in templates
 
