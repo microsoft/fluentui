@@ -70,12 +70,12 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
           value={ value }
           ref={ this._resolveRef('_inputElement') }
           />
-        <button
+        <div
           className='ms-SearchBox-closeButton'
           onClick={ this._onClearClick }
           >
           <i className='ms-Icon ms-Icon--Clear' />
-        </button>
+        </div>
       </div>
     );
   }
@@ -88,6 +88,8 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
     this._callOnChange('');
     ev.stopPropagation();
     ev.preventDefault();
+
+    this._inputElement.focus();
   }
 
   @autobind
