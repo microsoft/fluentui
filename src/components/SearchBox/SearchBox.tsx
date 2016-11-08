@@ -109,7 +109,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
 
   private _handleDocumentFocus(ev: FocusEvent) {
     if (!elementContains(this._rootElement, ev.target as HTMLElement)) {
-      this._events.off();
+      this._events.off(getDocument().body, 'focus');
       this.setState({
         hasFocus: false
       });
