@@ -69,7 +69,7 @@ export class Dialog extends React.Component<IDialogProps, any> {
             <FocusTrapZone
               className={ css('ms-Dialog-main', this.props.containerClassName) }
               elementToFocusOnDismiss={ elementToFocusOnDismiss }
-              isClickableOutsideFocusTrap={ this.props.isClickableOutsideFocusTrap ? this.props.isClickableOutsideFocusTrap : !isBlocking }
+              isClickableOutsideFocusTrap={ isClickableOutsideFocusTrap ? isClickableOutsideFocusTrap : !isBlocking }
               ignoreExternalFocusing={ ignoreExternalFocusing }
               forceFocusInsideTrap={ forceFocusInsideTrap }
               firstFocusableSelector={ firstFocusableSelector }>
