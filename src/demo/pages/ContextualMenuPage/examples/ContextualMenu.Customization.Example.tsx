@@ -31,6 +31,7 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
             shouldFocusOnMount={ false }
             onDismiss={this._onDismiss}
             directionalHint={DirectionalHint.bottomLeftEdge}
+            className='ms-ContextualMenu-customizationExample'
             items={
               [
                 {

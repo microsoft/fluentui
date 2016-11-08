@@ -9,14 +9,17 @@ import {
   elementContains
 } from '../../Utilities';
 import { getRelativePositions, IPositionInfo } from '../../utilities/positioning';
+import { IRectangle } from '../../common/IRectangle';
 import { focusFirstChild } from '../../utilities/focus';
+import { assign } from '../../Utilities';
 import { Popup } from '../Popup/index';
 import { BaseComponent } from '../../common/BaseComponent';
 import './Callout.scss';
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 const OFF_SCREEN_POSITION = { top: -9999, left: 0 };
-
+const BORDER_WIDTH: number = 1;
+const SPACE_FROM_EDGE: number = 8;
 export interface ICalloutState {
   positions?: any;
   slideDirectionalClassName?: string;
@@ -36,6 +39,9 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   private _hostElement: HTMLDivElement;
   private _calloutElement: HTMLDivElement;
   private _targetWindow: Window;
+  private _bounds: IRectangle;
+  private _maxHeight: number;
+  private _positionAttempts: number;
 
   constructor(props: ICalloutProps) {
     super(props);
@@ -52,6 +58,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     } else {
       this._targetWindow = window;
     }
+    this._positionAttempts = 0;
   }
 
   public componentDidUpdate() {
@@ -81,23 +88,36 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       width: beakStyleWidth
     };
 
+    let contentMaxHeight: number = this._getMaxHeight();
+    let beakVisible: boolean = isBeakVisible && !!targetElement;
     let content = (
       <div ref={ this._resolveRef('_hostElement') } className={ 'ms-Callout-container' }>
         <div
-          className={ css('ms-Callout', className, slideDirectionalClassName ? `ms-u-${ slideDirectionalClassName }` : '') }
-          style={ ((positions) ? positions.callout : OFF_SCREEN_POSITION) }
+          className={
+            css(
+              'ms-Callout',
+              className,
+              slideDirectionalClassName ? `ms-u-${slideDirectionalClassName}` : ''
+            ) }
+          style={ positions ? positions.callout : OFF_SCREEN_POSITION }
           ref={ this._resolveRef('_calloutElement') }
           >
-          { isBeakVisible && targetElement ? (
+
+          { beakVisible ? (
             <div
               className={ 'ms-Callout-beak' }
               style={ beakReactStyle }
-            />) : (null) }
-          <div className='ms-Callout-beakCurtain' />
+              />) : (null) }
+
+          { beakVisible ?
+            (<div className='ms-Callout-beakCurtain' />) :
+            (null) }
+
           <Popup
             className='ms-Callout-main'
-            onDismiss={ (ev:any) => this.dismiss() }
-            shouldRestoreFocus={ true }>
+            onDismiss={ (ev: any) => this.dismiss() }
+            shouldRestoreFocus={ true }
+            style={ { maxHeight: contentMaxHeight } }>
             { children }
           </Popup>
         </div>
@@ -138,10 +158,10 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   protected _onComponentDidMount() {
     // This is added so the callout will dismiss when the window is scrolled
     // but not when something inside the callout is scrolled.
-    this._events.on(this._targetWindow , 'scroll', this._dismissOnLostFocus, true);
-    this._events.on(this._targetWindow , 'resize', this.dismiss, true);
-    this._events.on(this._targetWindow , 'focus', this._dismissOnLostFocus, true);
-    this._events.on(this._targetWindow , 'click', this._dismissOnLostFocus, true);
+    this._events.on(this._targetWindow, 'scroll', this._dismissOnLostFocus, true);
+    this._events.on(this._targetWindow, 'resize', this.dismiss, true);
+    this._events.on(this._targetWindow, 'focus', this._dismissOnLostFocus, true);
+    this._events.on(this._targetWindow, 'click', this._dismissOnLostFocus, true);
 
     if (this.props.onLayerMounted) {
       this.props.onLayerMounted();
@@ -156,13 +176,21 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     let calloutElement: HTMLElement = this._calloutElement;
 
     if (hostElement && calloutElement) {
-      let positionInfo: IPositionInfo = getRelativePositions(this.props, hostElement, calloutElement);
+      let currentProps: ICalloutProps;
+      currentProps = assign(currentProps, this.props);
+      currentProps.bounds = this._getBounds();
+      let positionInfo: IPositionInfo = getRelativePositions(currentProps, hostElement, calloutElement);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
       if ((!positions && positionInfo) ||
-        (positions && positionInfo && (positions.callout.top.toFixed(2) !== positionInfo.calloutPosition.top.toFixed(2) || positions.callout.left.toFixed(2) !== positionInfo.calloutPosition.left.toFixed(2)))) {
-
+        (positions && positionInfo &&
+          (positions.callout.top.toFixed(2) !== positionInfo.calloutPosition.top.toFixed(2) ||
+            positions.callout.left.toFixed(2) !== positionInfo.calloutPosition.left.toFixed(2))
+          && this._positionAttempts < 5)) {
+        // We should not reposition the callout more than a few times, if it is then the content is likely resizing
+        // and we should stop trying to reposition to prevent a stack overflow.
+        this._positionAttempts++;
         this.setState({
           positions: {
             callout: positionInfo.calloutPosition,
@@ -171,6 +199,34 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
           slideDirectionalClassName: positionInfo.directionalClassName
         });
       }
+    } else {
+      this._positionAttempts = 0;
     }
+  }
+
+  private _getBounds(): IRectangle {
+    if (!this._bounds) {
+      let currentBounds = this.props.bounds;
+
+      if (!currentBounds) {
+        currentBounds = {
+          top: 0 + SPACE_FROM_EDGE,
+          left: 0 + SPACE_FROM_EDGE,
+          right: this._targetWindow.innerWidth - SPACE_FROM_EDGE,
+          bottom: this._targetWindow.innerHeight - SPACE_FROM_EDGE,
+          width: this._targetWindow.innerWidth - SPACE_FROM_EDGE * 2,
+          height: this._targetWindow.innerHeight - SPACE_FROM_EDGE * 2
+        };
+      }
+      this._bounds = currentBounds;
+    }
+    return this._bounds;
+  }
+
+  private _getMaxHeight(): number {
+    if (!this._maxHeight) {
+      this._maxHeight = this._getBounds().height - BORDER_WIDTH * 2;
+    }
+    return this._maxHeight;
   }
 }

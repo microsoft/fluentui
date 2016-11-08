@@ -161,9 +161,9 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
       beakWidth,
       directionalHint,
       gapSpace,
-      isSubMenu,
       coverTarget,
-      ariaLabel } = this.props;
+      ariaLabel,
+      doNotLayer } = this.props;
 
     let { submenuProps } = this.state;
 
@@ -179,8 +179,8 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
         beakWidth={ beakWidth }
         directionalHint={ directionalHint }
         gapSpace={ gapSpace }
-        doNotLayer={ isSubMenu }
         coverTarget={ coverTarget }
+        doNotLayer={ doNotLayer }
         className='ms-ContextualMenu-Callout'
         setInitialFocus={ true }
         onDismiss={ this.props.onDismiss }>
