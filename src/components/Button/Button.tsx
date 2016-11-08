@@ -4,6 +4,7 @@ import { assign } from '../../utilities/object';
 import { IButtonProps, IButton, ButtonType } from './Button.Props';
 import { getId } from '../../utilities/object';
 import { getNativeProps, buttonProperties, anchorProperties } from '../../utilities/properties';
+import { BaseComponent } from '../../common/BaseComponent';
 import './Button.scss';
 
 export interface IButtonState {
@@ -12,14 +13,14 @@ export interface IButtonState {
   ariaDescriptionId?: string;
 }
 
-export class Button extends React.Component<IButtonProps, IButtonState> implements IButton {
+export class Button extends BaseComponent<IButtonProps, IButtonState> implements IButton {
   public static defaultProps: IButtonProps = {
     buttonType: ButtonType.normal
   };
   private _buttonElement: HTMLButtonElement;
 
   constructor(props: IButtonProps) {
-    super(props);
+    super(props, {'rootProps': null});
 
     this.state = {
       labelId: getId('Button'),

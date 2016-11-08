@@ -127,7 +127,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     return items.map((item, index) => onRenderItem({
       item,
       index,
-      isSelected: this.selection.isIndexSelected(index),
+      selected: this.selection.isIndexSelected(index),
       onRemoveItem: () => this.removeItem(item)
     }));
   }

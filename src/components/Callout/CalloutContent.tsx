@@ -44,7 +44,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   private _positionAttempts: number;
 
   constructor(props: ICalloutProps) {
-    super(props);
+    super(props, {'beakStyle': 'beakWidth'});
 
     this._didSetInitialFocus = false;
     this.state = {

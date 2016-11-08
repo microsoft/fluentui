@@ -22,11 +22,12 @@ export class ButtonAnchorExample extends React.Component<IButtonProps, {}> {
           disabled={ disabled }
           buttonType={ ButtonType.primary }
           href='http://bing.com'
-          rootProps={ { target: '_blank', title: 'Let us bing!' } }
+          target='_blank'
+          title='Let us bing!'
           description='Navigate to Bing home page.'>
           Bing
         </Button>
-      </div>
+      </div >
     );
   }
 }

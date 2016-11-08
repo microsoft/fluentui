@@ -17,7 +17,7 @@ export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>,
     return (
       <Button
         onClick={ onClick }
-        className={ css('ms-Suggestions-item', { 'is-suggested': suggestionModel.isSelected }, className) }
+        className={ css('ms-Suggestions-item', { 'is-suggested': suggestionModel.selected }, className) }
         >
         <RenderSuggestion { ...suggestionModel.item }/>
       </Button>
@@ -108,7 +108,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
     return (
       <div className='ms-Suggestions-container' id='suggestion-list' role='menu'>
         { suggestions.map((suggestion, index) =>
-          <div ref={ this._resolveRef(suggestion.isSelected ? '_selectedElement' : '') }
+          <div ref={ this._resolveRef(suggestion.selected ? '_selectedElement' : '') }
             key={ index }
             id={ 'sug-' + index }
             role='menuitem'>

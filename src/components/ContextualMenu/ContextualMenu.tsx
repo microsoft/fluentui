@@ -3,14 +3,13 @@ import { IContextualMenuProps, IContextualMenuItem } from './ContextualMenu.Prop
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { KeyCodes } from '../../utilities/KeyCodes';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { autobind } from '../../utilities/autobind';
 import { css } from '../../utilities/css';
 import { getRTL } from '../../utilities/rtl';
 import { assign, getId } from '../../utilities/object';
-import { Async } from '../../utilities/Async/Async';
 import { anchorProperties, buttonProperties, getNativeProps } from '../../utilities/properties';
 import { Callout } from '../../Callout';
+import { BaseComponent } from '../../common/BaseComponent';
 import './ContextualMenu.scss';
 
 export interface IContextualMenuState {
@@ -66,7 +65,7 @@ interface IParsedDirectionalHint {
   verticalAlignmentHint: VerticalAlignmentHint;
 }
 
-export class ContextualMenu extends React.Component<IContextualMenuProps, IContextualMenuState> {
+export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
   // The default ContextualMenu properities have no items and beak, the default submenu direction is right and top.
   public static defaultProps = {
     items: [],
@@ -82,8 +81,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
   private _isFocusingPreviousElement: boolean;
   private _didSetInitialFocus: boolean;
   private _enterTimerId: number;
-  private _events: EventGroup;
-  private _async: Async;
   private _focusZone: FocusZone;
   private _targetWindow: Window;
 
@@ -98,8 +95,6 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     this._isFocusingPreviousElement = false;
     this._didSetInitialFocus = false;
     this._enterTimerId = 0;
-    this._events = new EventGroup(this);
-    this._async = new Async(this);
     // This is used to allow the ContextualMenu to appear on a window other than the one the javascript is running in.
     if (props.targetElement && props.targetElement.ownerDocument && props.targetElement.ownerDocument.defaultView) {
       this._targetWindow = props.targetElement.ownerDocument.defaultView;
