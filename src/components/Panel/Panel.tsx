@@ -3,6 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import { BaseComponent } from '../../common/BaseComponent';
+import { FocusTrapZone } from '../FocusTrapZone/index';
 import { IPanelProps, PanelType } from './Panel.Props';
 import { Layer } from '../Layer/Layer';
 import { Overlay } from '../../Overlay';
@@ -23,6 +24,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
 
   public static defaultProps: IPanelProps = {
     isOpen: false,
+    isBlocking: true,
     hasCloseButton: true,
     type: PanelType.smallFixedFar,
   };
@@ -62,7 +64,21 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
   }
 
   public render() {
-    let { children, className = '', type, hasCloseButton, isLightDismiss, headerText, closeButtonAriaLabel, headerClassName = ''  } = this.props;
+    let {
+      children,
+      className = '',
+      type,
+      hasCloseButton,
+      isLightDismiss,
+      isBlocking,
+      headerText,
+      closeButtonAriaLabel,
+      headerClassName = '',
+      elementToFocusOnDismiss,
+      ignoreExternalFocusing,
+      forceFocusInsideTrap,
+      firstFocusableSelector
+    } = this.props;
     let { isOpen, isAnimatingOpen, isAnimatingClose, id } = this.state;
     let isLeft = type === PanelType.smallFixedNear ? true : false;
     let isRTL = getRTL();
@@ -71,26 +87,38 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
 
     let pendingCommandBarContent = '';
 
+    if (!isOpen) {
+      return null;
+    }
+
     let header;
     if (headerText) {
-      header = <p className={ css('ms-Panel-headerText', headerClassName ) } id={ headerTextId }>{ headerText }</p>;
+      header = <p className={css('ms-Panel-headerText', headerClassName)} id={headerTextId}>{headerText}</p>;
     }
 
     let closeButton;
     if (hasCloseButton) {
-      closeButton = <button className='ms-Panel-closeButton ms-PanelAction-close' onClick={ this._onPanelClick }  aria-label={ closeButtonAriaLabel } data-is-visible={ true }>
+      closeButton = <button className='ms-Panel-closeButton ms-PanelAction-close' onClick={this._onPanelClick} aria-label={closeButtonAriaLabel} data-is-visible={true}>
         <i className='ms-Panel-closeIcon ms-Icon ms-Icon--Cancel'></i>
       </button>;
+    }
+
+    let overlay;
+    if (isBlocking) {
+      overlay = <Overlay
+        isDarkThemed={false}
+        onClick={isLightDismiss ? this._onPanelClick : null}
+        />;
     }
 
     return (
       <Layer>
         <Popup
           role='dialog'
-          ariaLabelledBy={ headerText ? headerTextId : undefined }
-          onDismiss={ this.props.onDismiss }>
+          ariaLabelledBy={headerText ? headerTextId : undefined}
+          onDismiss={this.props.onDismiss}>
           <div
-            ref={ this._onPanelRef }
+            ref={this._onPanelRef}
             className={
               css('ms-Panel', className, {
                 'ms-Panel--openLeft': !isOnRightSide,  // because the RTL animations are not being used, we need to set a class
@@ -109,25 +137,31 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
             }
             >
             <Overlay
-              isDarkThemed={ false }
-              onClick={ isLightDismiss ? this._onPanelClick : null }
+              isDarkThemed={false}
+              onClick={isLightDismiss ? this._onPanelClick : null}
               />
-            <div className='ms-Panel-main'>
-              <div className='ms-Panel-commands' data-is-visible={ true } >
-                { pendingCommandBarContent }
-                { closeButton }
+            <FocusTrapZone
+              className='ms-Panel-main'
+              elementToFocusOnDismiss={elementToFocusOnDismiss}
+              isClickableOutsideFocusTrap={isLightDismiss}
+              ignoreExternalFocusing={ignoreExternalFocusing}
+              forceFocusInsideTrap={forceFocusInsideTrap}
+              firstFocusableSelector={firstFocusableSelector}
+              >
+              <div className='ms-Panel-commands' data-is-visible={true} >
+                {pendingCommandBarContent}
+                {closeButton}
               </div>
               <div className='ms-Panel-contentInner'>
-                { header }
+                {header}
                 <div className='ms-Panel-content'>
-                  { children }
+                  {children}
                 </div>
               </div>
-            </div>
+            </FocusTrapZone>
           </div>
         </Popup>
       </Layer>
-
     );
   }
 

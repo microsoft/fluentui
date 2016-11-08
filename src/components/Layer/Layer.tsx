@@ -1,12 +1,9 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { ILayerProps } from './Layer.Props';
 import { LayerHost } from './LayerHost';
 import { ProjectedLayer } from './ProjectedLayer';
 import { BaseComponent, getId } from '../../Utilities';
 import './Layer.scss';
-
-let _defaultHost: LayerHost;
 
 export class Layer extends BaseComponent<ILayerProps, {}> {
   public static contextTypes = {
@@ -29,7 +26,7 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
   }
 
   public componentDidMount() {
-    let layerHost = this.context.layerHost || _getDefaultLayerHost();
+    let layerHost = this.context.layerHost || LayerHost.getDefault(this._rootElement);
 
     this._layerHost = layerHost;
 
@@ -66,15 +63,4 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
         />
     );
   }
-}
-
-function _getDefaultLayerHost() {
-  if (!_defaultHost) {
-    let hostElement = document.createElement('div');
-
-    document.body.appendChild(hostElement);
-    _defaultHost = ReactDOM.render(<LayerHost />, hostElement) as any;
-  }
-
-  return _defaultHost;
 }
