@@ -127,13 +127,27 @@ export function setSSR(isEnabled) {
 }
 
 /** Helper to get the window object. */
-export function getWindow() {
-  return _isSSR ? undefined : window;
+export function getWindow(rootElement?: HTMLElement) {
+  if (_isSSR) {
+    return undefined;
+  } else {
+    return (
+      rootElement &&
+        rootElement.ownerDocument &&
+        rootElement.ownerDocument.defaultView ?
+        rootElement.ownerDocument.defaultView :
+        window
+    );
+  }
 }
 
 /** Helper to get the document object. */
-export function getDocument() {
-  return _isSSR ? undefined : document;
+export function getDocument(rootElement?: HTMLElement) {
+  if (_isSSR) {
+    return undefined;
+  } else {
+    return rootElement && rootElement.ownerDocument ? rootElement.ownerDocument : document;
+  }
 }
 
 /** Helper to get bounding client rect, works with window. */
