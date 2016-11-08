@@ -6,7 +6,8 @@ import {
   css,
   getId,
   elementContains,
-  getDocument
+  getDocument,
+  KeyCodes
 } from '../../Utilities';
 import './SearchBox.scss';
 
@@ -33,7 +34,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
     }
 
     this.state = {
-      value: props.value,
+      value: props.value || '',
       hasFocus: false,
       id: getId('SearchBox')
     };
@@ -55,23 +56,23 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
       <div
         ref={ this._resolveRef('_rootElement') }
         className={ css('ms-SearchBox', className, {
-          'is-active': hasFocus
+          'is-active': hasFocus,
+          'can-clear': value.length > 0
         }) }
         { ...{ onFocusCapture: this._onFocusCapture } }
         >
-        { !hasFocus && !value ? <label className='ms-SearchBox-label' htmlFor={ id }>
-          <i className='ms-SearchBox-icon ms-Icon ms-Icon--Search'></i>
-          <span className='ms-SearchBox-text'>{ labelText }</span>
-        </label> : null }
+        <i className='ms-SearchBox-icon ms-Icon ms-Icon--Search'></i>
         <input
           id={ id }
           className='ms-SearchBox-field'
+          placeholder={ labelText }
           onChange={ this._onInputChange }
+          onKeyDown={ this._onKeyDown }
           value={ value }
           ref={ this._resolveRef('_inputElement') }
           />
         <div
-          className='ms-SearchBox-closeButton'
+          className='ms-SearchBox-clearButton'
           onClick={ this._onClearClick }
           >
           <i className='ms-Icon ms-Icon--Clear' />
@@ -99,6 +100,29 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
     });
 
     this._events.on(getDocument().body, 'focus', this._handleDocumentFocus, true);
+  }
+
+  @autobind
+  private _onKeyDown(ev: React.KeyboardEvent<HTMLInputElement>) {
+    switch (ev.which) {
+
+      case KeyCodes.escape:
+        this._onClearClick(ev);
+        break;
+
+      case KeyCodes.enter:
+        if (this.props.onSearch && this.state.value.length > 0) {
+          this.props.onSearch(this.state.value);
+        }
+        break;
+
+      default:
+        return;
+    }
+
+    // We only get here if the keypress has been handled.
+    ev.preventDefault();
+    ev.stopPropagation();
   }
 
   @autobind
