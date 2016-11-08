@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   Checkbox
-  } from '../../../../Checkbox';
+} from '../../../../Checkbox';
 
 export interface ICheckboxBasicExampleState {
   isChecked: boolean;
@@ -25,7 +25,8 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
       <div>
         <Checkbox
           label='Uncontrolled checkbox'
-          onChange={ this._onCheckboxChange } />
+          onChange={ this._onCheckboxChange }
+          inputProps={ { onFocus: () => { console.log('Uncontrolled checkbox is focused'); } } } />
 
         <Checkbox
           label='Uncontrolled checkbox with defaultChecked true'
@@ -47,7 +48,7 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
   }
 
   private _onCheckboxChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean) {
-    console.log(`The option has been changed to ${ isChecked }.`);
+    console.log(`The option has been changed to ${isChecked}.`);
   }
 
 }
