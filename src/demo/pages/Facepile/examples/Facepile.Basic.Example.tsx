@@ -23,6 +23,8 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
   public render() {
     let { numberOfFaces } = this.state;
     let facepileProps: IFacepileProps = {
+      maxDisplayablePersonas: 6,
+      personaDetailsShown: false,
       personas: facepilePersonas.slice(0, numberOfFaces),
       chevronButtonProps: {
         onClick: (ev: React.MouseEvent<HTMLButtonElement>) =>
@@ -36,7 +38,7 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
         <Slider
           label='Number of Personas:'
           min={1}
-          max={8}
+          max={6}
           step={1}
           showValue={true}
           value={this.state.numberOfFaces}

@@ -17,11 +17,13 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
     personas: []
   };
 
-  private numPersonasToShow: number;
+  private _numPersonasToShow: number;
+  private _personaDetailsShown: boolean = false;
 
   public render(): JSX.Element {
-    this.numPersonasToShow = this._calulateNumPersonasToShow();
-    let personalDetailsHidden: boolean = this.props.personas.length > 1;
+    this._numPersonasToShow = this._calulateNumPersonasToShow();
+    this._personaDetailsShown = this.props.personaDetailsShown && this.props.personas.length === 1;
+
     return (
       <div className='ms-Facepile'>
         <div className='ms-Facepile-members'>
@@ -35,19 +37,19 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
             })
           }
           { this.props.overflowButtonProps ? this._getOverflowElement() : null }
-          { this.props.chevronButtonProps && personalDetailsHidden ? this._getChevronElement() : null }
+          { this.props.chevronButtonProps && !this._personaDetailsShown ? this._getChevronElement() : null }
         </div>
       </div>
     );
   }
 
   private _getPersonasToDisplay(): IFacepilePersona[] {
-    let personasToShow: IFacepilePersona[] = this.props.personas.slice(0, this.numPersonasToShow);
+    let personasToShow: IFacepilePersona[] = this.props.personas.slice(0, this._numPersonasToShow);
     return personasToShow;
   }
 
   private _getPersonasNotToDisplay(): IFacepilePersona[] {
-    let personasToShow: IFacepilePersona[] = this.props.personas.slice(this.numPersonasToShow);
+    let personasToShow: IFacepilePersona[] = this.props.personas.slice(this._numPersonasToShow);
     return personasToShow;
   }
 
@@ -57,14 +59,13 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   }
 
   private _getPersonaControl(persona: IFacepilePersona): JSX.Element {
-    let personalDetailsHidden: boolean = this.props.personas.length > 1;
     return  <Persona
               imageInitials={ persona.imageInitials }
               imageUrl={ persona.imageUrl }
               initialsColor={ persona.initialsColor }
               primaryText={ persona.personaName }
               size={ PersonaSize.extraSmall }
-              hidePersonaDetails={ personalDetailsHidden } />;
+              hidePersonaDetails={ !this._personaDetailsShown } />;
   }
 
   private _getElementWithOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
@@ -95,7 +96,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   }
 
   private _getOverflowElement(): JSX.Element {
-    let numPersonasNotPictured: number = this.props.personas.length - this.numPersonasToShow;
+    let numPersonasNotPictured: number = this.props.personas.length - this._numPersonasToShow;
     let hasPersonasNotPictured: boolean = numPersonasNotPictured > 0;
     if (!this.props.overflowButtonProps || !hasPersonasNotPictured) { return null; }
 

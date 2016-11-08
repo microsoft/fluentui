@@ -16,6 +16,9 @@ export interface IFacepileProps extends React.Props<Facepile> {
   /** Show add person button */
   showAddButton?: boolean;
 
+  /** Show persona details when only one face is present in the Facepile */
+  personaDetailsShown?: boolean;
+
   /** Button properties for the add face button */
   addButtonProps?: IButtonProps;
 
