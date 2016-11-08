@@ -73,7 +73,7 @@ export class ContextualMenu extends React.Component<IContextualMenuProps, IConte
     shouldFocusOnMount: true,
     isBeakVisible: false,
     gapSpace: 0,
-    directionalHint: DirectionalHint.rightBottomEdge,
+    directionalHint: DirectionalHint.bottomAutoEdge,
     beakWidth: 16
   };
 

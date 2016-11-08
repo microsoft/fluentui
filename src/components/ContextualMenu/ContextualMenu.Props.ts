@@ -16,7 +16,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
 
   /**
    * How the element should be positioned
-   * @default DirectionalHint.rightBottomEdge
+   * @default DirectionalHint.bottomAutoEdge
    */
   directionalHint?: DirectionalHint;
 
