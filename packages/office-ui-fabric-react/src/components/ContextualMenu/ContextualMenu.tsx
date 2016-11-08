@@ -77,7 +77,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     shouldFocusOnMount: true,
     isBeakVisible: false,
     gapSpace: 0,
-    directionalHint: DirectionalHint.rightBottomEdge,
+    directionalHint: DirectionalHint.bottomAutoEdge,
     beakWidth: 16
   };
 
