@@ -107,7 +107,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
               aria-expanded='true'
               aria-haspopup='true'
               autoCapitalize='off'
-              autoComplete='off' />
+              autoComplete='off'
+              role='combobox' />
           </FocusZone>
         </SelectionZone>
         { this.renderSuggestions() }
@@ -391,6 +392,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
                 aria-haspopup='true'
                 autoCapitalize='off'
                 autoComplete='off'
+                role='combobox'
                 />
             </div>
           </SelectionZone>
