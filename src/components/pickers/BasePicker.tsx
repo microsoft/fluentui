@@ -368,7 +368,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
     let {
       className,
       inputProps
-    } = this.props
+    } = this.props;
 
     return (
       <div>
