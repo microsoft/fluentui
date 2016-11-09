@@ -82,12 +82,21 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   public render() {
     let { suggestedDisplayValue } = this.state;
+    let {
+      className,
+      inputProps
+    } = this.props;
+
     return (
-      <div ref={ this._resolveRef('root') } className={ css('ms-BasePicker', this.props.className ? this.props.className : '') } onKeyDown={ this.onKeyDown }>
+      <div
+        ref={ this._resolveRef('root') }
+        className={ css('ms-BasePicker', className ? className : '') }
+        onKeyDown={ this.onKeyDown }>
         <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
           <FocusZone ref={ this._resolveRef('focusZone') } className='ms-BasePicker-text'>
             { this.renderItems() }
             <BaseAutoFill
+              { ...inputProps }
               className='ms-BasePicker-input'
               ref={ this._resolveRef('input') }
               onFocus={ this.onInputFocus }
@@ -356,16 +365,21 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BasePicker<T, P> {
   public render() {
     let { suggestedDisplayValue } = this.state;
+    let {
+      className,
+      inputProps
+    } = this.props
 
     return (
       <div>
         <div ref={ this._resolveRef('root') }
-          className={ css('ms-BasePicker', this.props.className ? this.props.className : '') }
+          className={ css('ms-BasePicker', className ? className : '') }
           onKeyDown={ this.onKeyDown }>
           <SelectionZone selection={ this.selection }
             selectionMode={ SelectionMode.multiple }>
             <div className='ms-BasePicker-text'>
               <BaseAutoFill
+                { ...inputProps }
                 className='ms-BasePicker-input'
                 ref={ this._resolveRef('input') }
                 onFocus={ this.onInputFocus }
