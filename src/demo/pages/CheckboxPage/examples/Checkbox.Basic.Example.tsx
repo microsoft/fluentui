@@ -26,7 +26,10 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
         <Checkbox
           label='Uncontrolled checkbox'
           onChange={ this._onCheckboxChange }
-          inputProps={ { onFocus: () => { console.log('Uncontrolled checkbox is focused'); } } } />
+          inputProps={ {
+            onFocus: () => { console.log('Uncontrolled checkbox is focused'); },
+            onBlur: () => { console.log('Uncontrolled checkbox is blured'); }
+          } } />
 
         <Checkbox
           label='Uncontrolled checkbox with defaultChecked true'
