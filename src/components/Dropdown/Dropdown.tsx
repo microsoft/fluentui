@@ -71,8 +71,10 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
   public componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState) {
     if (prevState.isOpen === false && this.state.isOpen === true) {
       this._scrollOnOpen();
+      this._focusSelectedItem();
     } else if (prevState.selectedIndex !== this.state.selectedIndex) {
       this._scrollSelectedItemIntoView();
+      this._focusSelectedItem();
     }
   }
 
@@ -83,7 +85,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
 
     // Need to assign role application on containing div because JAWS doesnt call OnKeyDown without this role
     return (
-      <div ref='root'>
+      <div role='application' ref='root'>
         <label id={ id + '-label' } className='ms-Label' ref={ (dropdownLabel) => this._dropdownLabel = dropdownLabel } >{ label }</label>
         <div
           data-is-focusable={ true }
@@ -96,23 +98,24 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
           onKeyDown={ this._onDropdownKeyDown }
           onClick={ this._onDropdownClick }
           aria-expanded={ isOpen ? 'true' : 'false' }
-          role='application'
+          role='combobox'
+          aria-label={ selectedOption ? `${label}, ${selectedOption.text}` : label }
           aria-activedescendant={ selectedIndex >= 0 ? (id + '-list' + selectedIndex) : (id + '-list') }
           aria-controls={ id + '-list' }
           >
           <span className='ms-Dropdown-title'>{ selectedOption ? onRenderItem(selectedOption, this._onRenderItem) : '' }</span>
           <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown'></i>
-           { isOpen && (
+          { isOpen && (
             <Callout
-              isBeakVisible = { false }
+              isBeakVisible={ false }
               className='ms-Dropdown-callout'
               gapSpace={ 0 }
-              doNotLayer= { false }
+              doNotLayer={ false }
               targetElement={ this._dropDown }
               setInitialFocus={ true }
               directionalHint={ DirectionalHint.bottomLeftEdge }
               onDismiss={ this._onDismiss }
-            >
+              >
               <ul ref={ (c: HTMLElement) => this._optionList = c }
                 id={ id + '-list' }
                 style={ { width: this._dropDown.clientWidth - 2 } }
@@ -121,12 +124,14 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
                 aria-labelledby={ id + '-label' }>
                 { options.map((option, index) => (
                   <li id={ id + '-list' + index.toString() }
-                    ref= { Dropdown.Option + index.toString() }
+                    ref={ Dropdown.Option + index.toString() }
                     key={ option.key }
                     data-index={ index }
                     className={ css('ms-Dropdown-item', { 'is-selected': selectedIndex === index }) }
                     onClick={ () => this._onItemClick(index) }
+                    onKeyDown={ this._onDropdownKeyDown }
                     role='option'
+                    tabIndex={ selectedIndex === index ? 0 : -1 }
                     aria-selected={ selectedIndex === index ? 'true' : 'false' }
                     aria-label={ option.text }
                     >
@@ -135,7 +140,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
                 )) }
               </ul>
             </Callout>
-           ) }
+          ) }
         </div>
       </div>
     );
@@ -167,7 +172,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
 
   @autobind
   private _onRenderItem(item: IDropdownOption): JSX.Element {
-      return <span>{item.text}</span>;
+    return <span>{ item.text }</span>;
   }
 
   private _onItemClick(index) {
@@ -180,6 +185,14 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
   @autobind
   private _onDismiss() {
     this.setState({ isOpen: false });
+  }
+
+  private _focusSelectedItem() {
+    const currentItem: HTMLElement = this.refs[Dropdown.Option + this.state.selectedIndex] as HTMLElement;
+
+    if (currentItem) {
+      currentItem.focus();
+    }
   }
 
   private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number) {
@@ -270,9 +283,11 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
     const posTop: number = currentItem ? currentItem.offsetTop : 0;
     const posBottom: number = currentItem ? posTop + currentItem.offsetHeight : 0;
 
-    return { currentItem: currentItem,
+    return {
+      currentItem: currentItem,
       posTop: posTop,
-      posBottom: posBottom };
+      posBottom: posBottom
+    };
   }
 
 }
