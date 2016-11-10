@@ -9,13 +9,19 @@ import { css } from '../../utilities/css';
 import { Popup } from '../Popup/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { getId } from '../../utilities/object';
+import { BaseComponent } from '../../common/BaseComponent';
 import './Dialog.scss';
 
-// @TODO - need to add animations, pending Fabric Team + Coulton work
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 
+export interface IDialogState {
+  isOpen?: boolean;
+  isAnimatingOpen?: boolean;
+  id?: string;
+}
+
 @withResponsiveMode
-export class Dialog extends React.Component<IDialogProps, any> {
+export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
 
   public static defaultProps: IDialogProps = {
     isOpen: false,
@@ -32,12 +38,32 @@ export class Dialog extends React.Component<IDialogProps, any> {
 
     this.state = {
       id: getId('Dialog'),
+      isAnimatingOpen: props.isOpen
     };
   }
 
+  public componentDidMount() {
+    if (this.state.isOpen) {
+      this._async.setTimeout(() => {
+        this.setState({
+          isAnimatingOpen: false
+        });
+      }, 2000);
+    }
+  }
+
+  public componentWillReceiveProps(newProps: IDialogProps) {
+    if (newProps.isOpen !== this.state.isOpen) {
+      this.setState({
+        isOpen: newProps.isOpen,
+        isAnimatingOpen: newProps.isOpen ? true : false
+      });
+    }
+  }
+
   public render() {
-    let { isOpen, type, isDarkOverlay, onDismiss, title, subText, isBlocking, responsiveMode, elementToFocusOnDismiss, ignoreExternalFocusing, forceFocusInsideTrap, firstFocusableSelector, closeButtonAriaLabel, onLayerMounted, isClickableOutsideFocusTrap} = this.props;
-    let { id } = this.state;
+    let { type, isDarkOverlay, onDismiss, title, subText, isBlocking, responsiveMode, elementToFocusOnDismiss, ignoreExternalFocusing, forceFocusInsideTrap, firstFocusableSelector, closeButtonAriaLabel, onLayerMounted, isClickableOutsideFocusTrap} = this.props;
+    let { id, isOpen, isAnimatingOpen } = this.state;
     // @TODO - the discussion on whether the Dialog contain a property for rendering itself is still being discussed
     if (!isOpen) {
       return null;
@@ -46,7 +72,9 @@ export class Dialog extends React.Component<IDialogProps, any> {
     let subTextContent;
     const dialogClassName = css('ms-Dialog', this.props.className, {
       'ms-Dialog--lgHeader': type === DialogType.largeHeader,
-      'ms-Dialog--close': type === DialogType.close
+      'ms-Dialog--close': type === DialogType.close,
+      'is-open': isOpen,
+      'ms-Dialog-animateIn': isAnimatingOpen
     });
     let groupings = this._groupChildren();
 
