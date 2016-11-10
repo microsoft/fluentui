@@ -103,6 +103,12 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
 
   @autobind
   private _onBlur(ev: React.FocusEvent<HTMLInputElement>): void {
+    const { inputProps } = this.props;
+
+    if (inputProps && inputProps.onBlur) {
+      inputProps.onBlur(ev);
+    }
+
     this.setState({ isFocused: false });
   }
 
