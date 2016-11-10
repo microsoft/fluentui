@@ -62,6 +62,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
     if (this.state.isOpen !== nextState.isOpen) {
       if (nextState.isOpen) {
         this._events.on(window, 'focus', this._onFocusChange, true);
+        this._events.on(window, 'click', this._onClickCapture, true);
       } else {
         this._events.off();
       }
@@ -273,6 +274,17 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
     return { currentItem: currentItem,
       posTop: posTop,
       posBottom: posBottom };
+  }
+
+  @autobind
+  private _onClickCapture(ev: React.MouseEvent<HTMLElement>) {
+    if (!elementContains(this.refs.root, ev.target as HTMLElement)) {
+      if (this.state.isOpen) {
+        this.setState({
+          isOpen: false
+        });
+      }
+    }
   }
 
 }
