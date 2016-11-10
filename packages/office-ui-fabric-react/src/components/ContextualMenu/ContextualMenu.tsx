@@ -2,16 +2,21 @@ import * as React from 'react';
 import { IContextualMenuProps, IContextualMenuItem } from './ContextualMenu.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { KeyCodes } from '../../utilities/KeyCodes';
-import { autobind } from '../../utilities/autobind';
-import { css } from '../../utilities/css';
-import { getRTL } from '../../utilities/rtl';
-import { assign, getId } from '../../utilities/object';
 import {
   anchorProperties,
   buttonProperties,
-  getNativeProps
-} from '../../utilities/properties';
+  getNativeProps,
+  Async,
+  assign,
+  getId,
+  getRTL,
+  css,
+  autobind,
+  EventGroup,
+  KeyCodes,
+  getDocument,
+  getWindow
+} from '../../Utilities';
 import { Callout } from '../../Callout';
 import { BaseComponent } from '../../common/BaseComponent';
 import { Icon, IconName } from '../../Icon';
@@ -101,21 +106,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     this._isFocusingPreviousElement = false;
     this._didSetInitialFocus = false;
     this._enterTimerId = 0;
-    this._events = new EventGroup(this);
-    this._async = new Async(this);
-    if (typeof props.targetElement === 'string') {
-      this._targetElement = document.getElementById(props.targetElement);
-    } else {
-      this._targetElement = props.targetElement;
-    }
-
-    // This is used to allow the Callout to appear on a window other than the one the javascript is running in.
-    if (this._targetElement && this._targetElement.ownerDocument && this._targetElement.ownerDocument.defaultView) {
-      this._targetWindow = this._targetElement.ownerDocument.defaultView;
-    } else {
-      this._targetWindow = window;
-    }
-
   }
 
   @autobind
@@ -127,9 +117,16 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
+  public componentWillUpdate(newProps: IContextualMenuProps) {
+    if (newProps.targetElement !== this.props.targetElement) {
+      this._setTargetWindowAndElement(newProps.targetElement);
+    }
+  }
+
   // Invoked once, both on the client and server, immediately before the initial rendering occurs.
   public componentWillMount() {
-    this._previousActiveElement = document.activeElement as HTMLElement;
+    this._setTargetWindowAndElement(this.props.targetElement);
+    this._previousActiveElement = this._targetWindow ? this._targetWindow.document.activeElement as HTMLElement : null;
   }
 
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
@@ -437,6 +434,16 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         expandedMenuItemKey: null,
         submenuProps: null
       });
+    }
+  }
+
+  private _setTargetWindowAndElement(targetElement: HTMLElement | string): void {
+    if (typeof targetElement === 'string') {
+      this._targetElement = getDocument().getElementById(targetElement);
+      this._targetWindow = getWindow();
+    } else {
+      this._targetElement = targetElement;
+      this._targetWindow = getWindow(targetElement);
     }
   }
 }
