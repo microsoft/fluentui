@@ -6,7 +6,9 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   autobind,
   css,
-  elementContains
+  elementContains,
+  getWindow,
+  getDocument
 } from '../../Utilities';
 import { getRelativePositions, IPositionInfo, IPositionProps } from '../../utilities/positioning';
 import { IRectangle } from '../../common/IRectangle';
@@ -53,19 +55,6 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       slideDirectionalClassName: null,
       calloutElementRect: null
     };
-
-    if (typeof props.targetElement === 'string') {
-      this._targetElement = document.getElementById(props.targetElement);
-    } else {
-      this._targetElement = props.targetElement;
-    }
-
-    // This is used to allow the Callout to appear on a window other than the one the javascript is running in.
-    if (this._targetElement && this._targetElement.ownerDocument && this._targetElement.ownerDocument.defaultView) {
-      this._targetWindow = this._targetElement.ownerDocument.defaultView;
-    } else {
-      this._targetWindow = window;
-    }
     this._positionAttempts = 0;
   }
 
@@ -74,11 +63,24 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     this._updatePosition();
   }
 
+  public componentWillMount() {
+    this._setTargetWindowAndElement(this.props.targetElement);
+  }
+
+  public componentWillUpdate(newProps: ICalloutProps) {
+    if (newProps.targetElement !== this.props.targetElement) {
+      this._setTargetWindowAndElement(newProps.targetElement);
+    }
+  }
   public componentDidMount() {
     this._onComponentDidMount();
   }
 
   public render() {
+    // If there is no target window then we are likely in server side rendering and we should not render anything.
+    if (!this._targetWindow) {
+      return null;
+    }
     let { className, targetElement, isBeakVisible, beakStyle, children, beakWidth } = this.props;
     let { positions, slideDirectionalClassName } = this.state;
     let beakStyleWidth = beakWidth;
@@ -231,5 +233,15 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       this._maxHeight = this._getBounds().height - BORDER_WIDTH * 2;
     }
     return this._maxHeight;
+  }
+
+  private _setTargetWindowAndElement(targetElement: HTMLElement | string): void {
+    if (typeof targetElement === 'string') {
+      this._targetElement = getDocument().getElementById(targetElement);
+      this._targetWindow = getWindow();
+    } else {
+      this._targetElement = targetElement;
+      this._targetWindow = getWindow(targetElement);
+    }
   }
 }
