@@ -219,13 +219,6 @@ export const AppState: IAppState = {
           url: '#/examples/pickers'
         },
         {
-          component: PeoplePickerPage,
-          key: 'PeoplePicker',
-          name: 'PeoplePicker',
-          status: ExampleStatus.started,
-          url: '#/examples/PeoplePicker'
-        },
-        {
           component: PersonaPage,
           key: 'Persona',
           name: 'Persona',
