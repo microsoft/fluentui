@@ -6,20 +6,19 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
 
   constructor() {
     super();
-    this.state = {isContextMenuVisible: false};
+    this.state = { isContextMenuVisible: false };
     this._onClick = this._onClick.bind(this);
     this._onDismiss = this._onDismiss.bind(this);
   }
 
   public render() {
     return (
-        <div>
-          <Button onClick={ this._onClick }> Click for ContextualMenu </Button>
-            { this.state.isContextMenuVisible ? (
+      <div>
+        <Button onClick={ this._onClick } id='ContextualMenuButton1'> Click for ContextualMenu </Button>
+        { this.state.isContextMenuVisible ? (
           <ContextualMenu
             shouldFocusOnMount={ true }
-            targetPoint={ this.state.target }
-            useTargetPoint={ true }
+            targetElement='ContextualMenuButton1'
             onDismiss={ this._onDismiss }
             directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }
             items={
@@ -102,8 +101,8 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                           name: 'Share to Twitter',
                           title: 'Share to Twitter',
                           icon: 'Share'
-                      },
-                  ],
+                        },
+                      ],
                     },
                   ],
                   name: 'Share'
@@ -129,16 +128,16 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                 },
               ]
             }
-          />) : (null)}
+            />) : (null) }
       </div>
     );
   }
 
   private _onClick(event: any) {
-    this.setState({target: {x: event.clientX, y: event.clientY}, isContextMenuVisible: true});
+    this.setState({ target: { x: event.clientX, y: event.clientY }, isContextMenuVisible: true });
   }
 
   private _onDismiss(event: any) {
-    this.setState({isContextMenuVisible: false});
+    this.setState({ isContextMenuVisible: false });
   }
 }
