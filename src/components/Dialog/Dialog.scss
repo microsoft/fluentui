@@ -59,8 +59,13 @@ $Dialog-default-max-width: 340px;
 }
 
 // State: The dialog is animating open
-.ms-Dialog.ms-Dialog-animateIn {
-  @include ms-u-fadeIn100;
+.ms-Dialog.is-animatingOpen {
+  @include ms-u-fadeIn200;
+}
+
+// State: The dialog is animating closed
+.ms-Dialog.is-animatingClose {
+  @include ms-u-fadeOut200;
 }
 
 // The actual dialog element
