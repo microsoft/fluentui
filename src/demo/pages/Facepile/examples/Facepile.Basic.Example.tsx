@@ -2,8 +2,6 @@ import * as React from 'react';
 import {
   Facepile,
   IFacepileProps,
-  IPersonaProps,
-  OverflowButtonType,
   Slider
 } from '../../../../index';
 import { facepilePersonas } from './FacepileExampleData';

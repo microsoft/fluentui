@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   Dropdown,
-  IDropdownOption,
   IFacepileProps,
   Facepile,
   OverflowButtonType,
