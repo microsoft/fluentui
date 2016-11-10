@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Facepile } from './Facepile';
-import { IButtonProps } from '../Button/index';
 import { PersonaInitialsColor } from '../Persona/index';
 
 export interface IFacepileProps extends React.Props<Facepile> {
@@ -9,21 +8,6 @@ export interface IFacepileProps extends React.Props<Facepile> {
    * is fixed at PersonaSize.extraSmall regardless of what is specified.
    */
   personas: IFacepilePersona[];
-
-  /** Maximum number of personas to show */
-  maxDisplayablePersonas?: number;
-
-  /** Show add person button */
-  showAddButton?: boolean;
-
-  /** Button properties for the add face button */
-  addButtonProps?: IButtonProps;
-
-  /** Button properties for the chevron button */
-  chevronButtonProps?: IButtonProps;
-
-  /** Properties for the overflow persona */
-  overflowButtonProps?: IButtonProps;
 }
 
 export interface IFacepilePersona extends React.HTMLProps<HTMLButtonElement | HTMLDivElement> {
