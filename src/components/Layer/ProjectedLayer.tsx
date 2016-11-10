@@ -49,7 +49,12 @@ export class ProjectedLayer extends BaseComponent<IProjectedLayerProps, {}> {
       <div
         { ...remoteProps }
         className={ css('ms-ProjectedLayer', remoteProps.className) }
-        ref={ this._resolveRef('_rootElement') }
+        ref={ el => {
+          if (el) {
+            setVirtualParent(el, this.props.parentElement);
+            this._rootElement = el;
+          }
+        } }
         />
     );
   }
