@@ -37,30 +37,30 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
     let rootClass = 'ExampleCard' + (this.state.isCodeVisible ? ' is-codeVisible' : '');
 
     return (
-      <div className={rootClass}>
+      <div className={ rootClass }>
         <div className='ExampleCard-header'>
-          <span className='ExampleCard-title ms-font-l'>{title}</span>
+          <span className='ExampleCard-title ms-font-l'>{ title }</span>
           <div className='ExampleCard-toggleButtons ms-font-l'>
-            {code ? (
-              <Button buttonType={ButtonType.icon} icon='Embed'
-                onClick={this._onToggleCodeClick} className={css('ExampleCard-codeButton', { 'is-active': isCodeVisible })}>
-                {this.state.isCodeVisible ? 'Hide code' : 'Show code'}
-              </Button>
-            ) : (null)}
+            { code ? (
+            <Button buttonType={ ButtonType.icon } icon='Embed'
+              onClick={ this._onToggleCodeClick } className={ css('ExampleCard-codeButton', { 'is-active': isCodeVisible }) }>
+              { this.state.isCodeVisible ? 'Hide code' : 'Show code' }
+            </Button>
+            ) : ( null ) }
           </div>
         </div>
 
         <div className='ExampleCard-code'>
           <Highlight className='javascript'>
-            {code}
+            { code }
           </Highlight>
         </div>
 
-        <div className={css('ExampleCard-example', { ' is-right-aligned': (isRightAligned) })} data-is-scrollable='true'>
-          {children}
+        <div className={ css('ExampleCard-example', { ' is-right-aligned': (isRightAligned) }) } data-is-scrollable='true'>
+          { children }
         </div>
 
-        {this._getDosAndDonts()}
+        { this._getDosAndDonts() }
       </div>
     );
   }
@@ -71,11 +71,11 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
         <div className='ExampleCard-dosAndDonts'>
           <div className='ExampleCard-dos'>
             <h4>Do</h4>
-            {this.props.dos}
+            { this.props.dos }
           </div>
           <div className='ExampleCard-donts'>
             <h4>Do not</h4>
-            {this.props.donts}
+            { this.props.donts }
           </div>
         </div>
       );

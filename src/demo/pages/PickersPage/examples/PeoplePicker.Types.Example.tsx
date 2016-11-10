@@ -26,8 +26,7 @@ export interface IPeoplePickerExampleState {
 
 const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsHeaderText: 'Suggested People',
-  noResultsFoundText: 'No results found',
-  loadingText: 'Loading'
+  noResultsFoundText: 'No results found'
 };
 
 export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerExampleState> {

@@ -27,7 +27,6 @@ import { NavPage } from '../../pages/NavPage/NavPage';
 import { OverlayPage } from '../../pages/OverlayPage/OverlayPage';
 import { PanePage } from '../../pages/PanePage/PanePage';
 import { PanelPage } from '../../pages/PanelPage/PanelPage';
-import { PeoplePickerPage } from '../../pages/PeoplePickerPage/PeoplePickerPage';
 import { PickersPage } from '../../pages/PickersPage/PickersPage';
 import { PersonaPage } from '../../pages/PersonaPage/PersonaPage';
 import { PivotPage } from '../../pages/PivotPage/PivotPage';

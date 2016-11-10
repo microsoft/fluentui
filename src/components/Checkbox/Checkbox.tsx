@@ -50,7 +50,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     return (
       <div
         className={ css('ms-Checkbox', className, { 'is-inFocus': isFocused }) }
-        >
+      >
         <input
           { ...inputProps }
           { ...(checked !== undefined && { checked }) }
@@ -65,15 +65,15 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
           onFocus={ this._onFocus }
           onBlur={ this._onBlur }
           aria-checked={ isChecked }
-          />
-        { this.props.children }
+        />
+        {this.props.children}
         <label htmlFor={ this._id }
           className={ css('ms-Checkbox-label', {
             'is-checked': isChecked,
             'is-disabled': disabled
-          })
+            })
           }
-          >
+        >
           { label && <span className='ms-Label'>{ label }</span> }
         </label>
       </div>
@@ -92,23 +92,11 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
 
   @autobind
   private _onFocus(ev: React.FocusEvent<HTMLInputElement>): void {
-    const { inputProps } = this.props;
-
-    if (inputProps && inputProps.onFocus) {
-      inputProps.onFocus(ev);
-    }
-
     this.setState({ isFocused: true });
   }
 
   @autobind
   private _onBlur(ev: React.FocusEvent<HTMLInputElement>): void {
-    const { inputProps } = this.props;
-
-    if (inputProps && inputProps.onBlur) {
-      inputProps.onBlur(ev);
-    }
-
     this.setState({ isFocused: false });
   }
 
