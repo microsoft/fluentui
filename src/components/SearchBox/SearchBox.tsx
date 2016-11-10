@@ -1,14 +1,7 @@
 import * as React from 'react';
 import { ISearchBoxProps } from './SearchBox.Props';
-import {
-  BaseComponent,
-  autobind,
-  css,
-  getId,
-  elementContains,
-  getDocument,
-  KeyCodes
-} from '../../Utilities';
+import { css } from '../../utilities/css';
+import { getId } from '../../utilities/object';
 import './SearchBox.scss';
 
 export interface ISearchBoxState {
@@ -17,13 +10,15 @@ export interface ISearchBoxState {
   id?: string;
 }
 
-export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
+export class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState> {
   public static defaultProps: ISearchBoxProps = {
     labelText: 'Search',
   };
 
-  private _rootElement: HTMLElement;
-  private _inputElement: HTMLInputElement;
+  public refs: {
+    [key: string]: React.ReactInstance;
+    inputText: HTMLInputElement;
+  };
 
   public constructor(props: ISearchBoxProps) {
     super(props);
@@ -34,10 +29,14 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
     }
 
     this.state = {
-      value: props.value || '',
+      value: props.value,
       hasFocus: false,
       id: getId('SearchBox')
     };
+    this._clearInput = this._clearInput.bind(this);
+    this._onInputChange = this._onInputChange.bind(this);
+    this._onInputFocus = this._onInputFocus.bind(this);
+    this._onInputBlur = this._onInputBlur.bind(this);
   }
 
   public componentWillReceiveProps(newProps: ISearchBoxProps) {
@@ -53,96 +52,62 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
     let { value, hasFocus, id } = this.state;
 
     return (
-      <div
-        ref={ this._resolveRef('_rootElement') }
-        className={ css('ms-SearchBox', className, {
-          'is-active': hasFocus,
-          'can-clear': value.length > 0
-        }) }
-        { ...{ onFocusCapture: this._onFocusCapture } }
-        >
-        <i className='ms-SearchBox-icon ms-Icon ms-Icon--Search'></i>
+      <div className={ css('ms-SearchBox', className, {
+          'is-active': hasFocus
+        })}
+      >
+        { !hasFocus && !value ? <label className='ms-SearchBox-label' htmlFor={id}>
+              <i className='ms-SearchBox-icon ms-Icon ms-Icon--Search'></i>
+              <span className='ms-SearchBox-text'>{ labelText }</span>
+             </label> : null }
         <input
           id={ id }
           className='ms-SearchBox-field'
-          placeholder={ labelText }
+          onFocus={ this._onInputFocus }
+          onBlur={ this._onInputBlur }
           onChange={ this._onInputChange }
-          onKeyDown={ this._onKeyDown }
-          value={ value }
-          ref={ this._resolveRef('_inputElement') }
+          value={value}
+          ref='inputText'
           />
-        <div
-          className='ms-SearchBox-clearButton'
-          onClick={ this._onClearClick }
+        <button
+          className='ms-SearchBox-closeButton'
+          onMouseDown={ this._clearInput }
           >
           <i className='ms-Icon ms-Icon--Clear' />
-        </div>
+        </button>
       </div>
     );
   }
 
-  @autobind
-  private _onClearClick(ev?: any) {
+  private _clearInput(ev?: any) {
     this.setState({
       value: ''
     });
-    this._callOnChange('');
+    this._onChange('');
     ev.stopPropagation();
     ev.preventDefault();
-
-    this._inputElement.focus();
   }
 
-  @autobind
-  private _onFocusCapture(ev: React.FocusEvent<HTMLElement>) {
+   private _onInputFocus() {
     this.setState({
       hasFocus: true
     });
-
-    this._events.on(getDocument().body, 'focus', this._handleDocumentFocus, true);
   }
 
-  @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLInputElement>) {
-    switch (ev.which) {
-
-      case KeyCodes.escape:
-        this._onClearClick(ev);
-        break;
-
-      case KeyCodes.enter:
-        if (this.props.onSearch && this.state.value.length > 0) {
-          this.props.onSearch(this.state.value);
-        }
-        break;
-
-      default:
-        return;
-    }
-
-    // We only get here if the keypress has been handled.
-    ev.preventDefault();
-    ev.stopPropagation();
+  private _onInputBlur() {
+    this.setState({
+      hasFocus: false
+    });
   }
 
-  @autobind
   private _onInputChange(ev: React.KeyboardEvent<HTMLInputElement>) {
     this.setState({
-      value: this._inputElement.value
+      value: this.refs.inputText.value
     });
-    this._callOnChange(this._inputElement.value);
+    this._onChange(this.refs.inputText.value);
   }
 
-  private _handleDocumentFocus(ev: FocusEvent) {
-    if (!elementContains(this._rootElement, ev.target as HTMLElement)) {
-      this._events.off(getDocument().body, 'focus');
-      this.setState({
-        hasFocus: false
-      });
-    }
-  }
-
-  private _callOnChange(newValue: string): void {
+  private _onChange(newValue: string): void {
     let { onChange } = this.props;
 
     if (onChange) {
