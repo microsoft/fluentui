@@ -10,7 +10,6 @@ import {
   KeyCodes,
   autobind,
   css,
-  elementContains,
   findIndex,
   getId
 } from '../../Utilities';
