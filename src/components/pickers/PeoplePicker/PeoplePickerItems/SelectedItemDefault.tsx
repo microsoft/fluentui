@@ -12,12 +12,12 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
     item,
     onRemoveItem,
     index,
-    isSelected
+    selected
   } = peoplePickerItemProps;
   return (
     <div
       className={css('ms-PickerPersona-container', {
-        'is-selected': isSelected
+        'is-selected': selected
       }) }
       data-is-focusable={ true }
       data-selection-index={ index }

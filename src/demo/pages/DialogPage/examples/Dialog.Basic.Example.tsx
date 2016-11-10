@@ -40,12 +40,12 @@ export class DialogBasicExample extends React.Component<any, any> {
               {
                 key: 'B',
                 text: 'Option B',
-                isChecked: true
+                checked: true
               },
               {
                 key: 'C',
                 text: 'Option C',
-                isDisabled: true
+                disabled: true
               }
             ] }
             onChanged={ this._onChoiceChanged }

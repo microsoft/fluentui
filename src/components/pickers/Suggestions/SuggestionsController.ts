@@ -1,6 +1,6 @@
 export interface ISuggestionModel<T> {
   item: T;
-  isSelected: boolean;
+  selected: boolean;
 }
 
 export class SuggestionsController<T> {
@@ -16,7 +16,7 @@ export class SuggestionsController<T> {
     if (newSuggestions && newSuggestions.length > 0) {
       this.suggestions = this._convertSuggestionsToSuggestionItems(newSuggestions);
       this.currentIndex = 0;
-      this.suggestions[0].isSelected = true;
+      this.suggestions[0].selected = true;
       this.currentSuggestion = this.suggestions[0];
     } else {
       this.suggestions = [];
@@ -77,21 +77,21 @@ export class SuggestionsController<T> {
 
   private _convertSuggestionsToSuggestionItems(suggestions: any[]): ISuggestionModel<T>[] {
     let converted: ISuggestionModel<T>[] = [];
-    suggestions.forEach((suggestion: any) => converted.push({ item: suggestion, isSelected: false }));
+    suggestions.forEach((suggestion: any) => converted.push({ item: suggestion, selected: false }));
     return converted;
   }
 
   private _setSelectedSuggestion(index: number): void {
     if (index > this.suggestions.length - 1 || index < 0) {
       this.currentIndex = 0;
-      this.currentSuggestion.isSelected = false;
+      this.currentSuggestion.selected = false;
       this.currentSuggestion = this.suggestions[0];
-      this.currentSuggestion.isSelected = true;
+      this.currentSuggestion.selected = true;
     } else {
       if (this.currentIndex > -1) {
-        this.suggestions[this.currentIndex].isSelected = false;
+        this.suggestions[this.currentIndex].selected = false;
       }
-      this.suggestions[index].isSelected = true;
+      this.suggestions[index].selected = true;
       this.currentIndex = index;
       this.currentSuggestion = this.suggestions[index];
     }
