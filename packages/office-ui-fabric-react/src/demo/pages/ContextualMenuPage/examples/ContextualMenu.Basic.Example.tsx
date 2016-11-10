@@ -14,12 +14,11 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
   public render() {
     return (
       <div>
-        <Button onClick={ this._onClick }> Click for ContextualMenu </Button>
+        <Button onClick={ this._onClick } id='ContextualMenuButton1'> Click for ContextualMenu </Button>
         { this.state.isContextMenuVisible ? (
           <ContextualMenu
             shouldFocusOnMount={ true }
-            targetPoint={ this.state.target }
-            useTargetPoint={ true }
+            targetElement='ContextualMenuButton1'
             onDismiss={ this._onDismiss }
             directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }
             items={
