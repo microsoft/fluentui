@@ -19,7 +19,7 @@ export interface ITooltipProps extends React.HTMLProps<HTMLDivElement | Tooltip>
   content?: string;
 
   /**
-   * Length of delay
+   * Length of delay. Can be set to zero if you do not want a delay.
    * @default medium
    */
   delay?: TooltipDelay;
@@ -38,6 +38,5 @@ export interface ITooltipProps extends React.HTMLProps<HTMLDivElement | Tooltip>
 
 export enum TooltipDelay {
   zero,
-  medium,
-  long
+  medium
 }

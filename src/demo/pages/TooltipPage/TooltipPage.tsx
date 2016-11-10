@@ -38,7 +38,7 @@ export class TooltipPage extends React.Component<any, any> {
               <TooltipBasicExample />
             </ExampleCard>
 
-            <ExampleCard title='Tooltip Bottom Direction' code={ TooltipBottomExampleCode }>
+            <ExampleCard title='Tooltip Bottom Direction. No delay' code={ TooltipBottomExampleCode }>
               <TooltipBottomExample />
             </ExampleCard>
           </LayerHost>
