@@ -12,14 +12,14 @@ export class ButtonPrimaryExample extends React.Component<IButtonProps, {}> {
   }
 
   public render() {
-    let { isDisabled } = this.props;
+    let { disabled } = this.props;
 
     return (
       <div className='ms-BasicButtonsExample'>
         <Label>Primary button</Label>
         <Button
           data-automation-id='test'
-          disabled={ isDisabled }
+          disabled={ disabled }
           buttonType={ ButtonType.primary }
         >Create account</Button>
       </div>

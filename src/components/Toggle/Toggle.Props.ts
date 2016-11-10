@@ -37,5 +37,5 @@ export interface IToggleProps extends React.HTMLProps<HTMLInputElement> {
   /**
    * onchange callback.
    */
-  onChanged?: (isChecked: boolean) => void;
+  onChanged?: (checked: boolean) => void;
 }

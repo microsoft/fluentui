@@ -44,21 +44,21 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
                 key: keys[0],
                 name: 'New',
                 canCheck: true,
-                isChecked: selection[keys[0]],
+                checked: selection[keys[0]],
                 onClick: this._onToggleSelect
               },
               {
                 key: keys[1],
                 name: 'Share',
                 canCheck: true,
-                isChecked: selection[keys[1]],
+                checked: selection[keys[1]],
                 onClick: this._onToggleSelect
               },
               {
                 key: keys[2],
                 name: 'Mobile',
                 canCheck: true,
-                isChecked: selection[keys[2]],
+                checked: selection[keys[2]],
                 onClick: this._onToggleSelect
               },
               {
@@ -70,14 +70,14 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
                 key: keys[3],
                 name: 'Print',
                 canCheck: true,
-                isChecked: selection[keys[3]],
+                checked: selection[keys[3]],
                 onClick: this._onToggleSelect
               },
               {
                 key: keys[4],
                 name: 'Music',
                 canCheck: true,
-                isChecked: selection[keys[4]],
+                checked: selection[keys[4]],
                 onClick: this._onToggleSelect
               },
               {
@@ -87,14 +87,14 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
                     key: keys[6],
                     name: 'Email message',
                     canCheck: true,
-                    isChecked: selection[keys[6]],
+                    checked: selection[keys[6]],
                     onClick: this._onToggleSelect
                   },
                   {
                     key: keys[7],
                     name: 'Calendar event',
                     canCheck: true,
-                    isChecked: selection[keys[7]],
+                    checked: selection[keys[7]],
                     onClick: this._onToggleSelect
                   }
                 ],

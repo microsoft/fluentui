@@ -58,7 +58,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     {
       key: 'disabled',
       name: 'Disabled item',
-      isDisabled: true
+      disabled: true
     }
   ];
 
