@@ -61,7 +61,7 @@ export interface IGroupedListProps extends React.Props<GroupedList> {
     nestingDepth?: number,
     item?: any,
     index?: number
-    ) => React.ReactNode;
+  ) => React.ReactNode;
 
   /** Optional selection model to track selection state.  */
   selection?: ISelection;
@@ -184,6 +184,12 @@ export interface IGroupDividerProps {
   groupLevel?: number;
 
   /** If all items in the group are selected. */
+  selected?: boolean;
+
+  /**
+   * @deprecated
+   * Deprecated at v.65.1 and will be removed by v 1.0. Use 'selected' instead.
+   */
   isSelected?: boolean;
 
   /** A reference to the viewport in which the header is rendered. */

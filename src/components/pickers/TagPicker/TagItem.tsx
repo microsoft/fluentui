@@ -9,7 +9,7 @@ import './TagItem.scss';
 export const TagItem = (props: IPickerItemProps<ITag> ) => (
   <div
   className={ css('ms-TagItem', {
-    'is-selected': props.isSelected
+    'is-selected': props.selected
   }) }
     key={ props.index }
     data-selection-index={ props.index }

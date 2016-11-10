@@ -110,6 +110,12 @@ export interface IContextualMenuItem {
    * Whether the menu item is disabled
    * @defaultvalue false
    */
+  disabled?: boolean;
+
+  /**
+   * @deprecated
+   * Deprecated at v.65.1 and will be removed by v 1.0. Use 'disabled' instead.
+   */
   isDisabled?: boolean;
 
   /**
@@ -126,6 +132,12 @@ export interface IContextualMenuItem {
   /**
    * Whether or not this menu item is currently checked.
    * @defaultvalue false
+   */
+  checked?: boolean;
+
+  /**
+   * @deprecated
+   * Deprecated at v.65.1 and will be removed by v 1.0. Use 'checked' instead.
    */
   isChecked?: boolean;
 
@@ -178,6 +190,7 @@ export interface IContextualMenuItem {
    * the commands. This should only be used in special cases when react and non-react are mixed.
    */
   onMouseDown?: (item: IContextualMenuItem, event: any) => void;
+
   /**
    * Any additional properties to use when custom rendering menu items.
    */

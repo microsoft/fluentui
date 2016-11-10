@@ -177,7 +177,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
    */
   private _getKeyChecked(options: IChoiceGroupOption[]): string {
     const optionsChecked = options.filter((option: IChoiceGroupOption) => {
-      return option.isChecked;
+      return option.isChecked || option.checked;
     });
 
     if (optionsChecked.length === 0) {
