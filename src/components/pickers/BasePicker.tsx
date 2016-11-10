@@ -12,8 +12,7 @@ import { BaseComponent } from '../../common/BaseComponent';
 import {
   css,
   autobind,
-  KeyCodes,
-  getRTL
+  KeyCodes
 } from '../../Utilities';
 import './BasePicker.scss';
 
@@ -96,9 +95,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
               aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
               aria-owns='suggestion-list'
               aria-expanded='true'
-              aria-haspopup='true'
-              autoCapitalize='off'
-              autoComplete='off' />
+              aria-haspopup='true'/>
           </FocusZone>
         </SelectionZone>
         { this.renderSuggestions() }
@@ -109,12 +106,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected renderSuggestions(): JSX.Element {
     let TypedSuggestion = this.SuggestionOfProperType;
     return this.state.suggestionsVisible ? (
-      <Callout
-        isBeakVisible={ false }
-        gapSpace={ 0 }
-        targetElement={ this.root }
-        onDismiss={ this.dismissSuggestions }
-        directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }>
+      <Callout isBeakVisible={ false } gapSpace={ 0 } targetElement={ this.root } onDismiss={ this.dismissSuggestions } directionalHint={DirectionalHint.bottomLeftEdge}>
         <TypedSuggestion
           onRenderSuggestion={ this.props.onRenderSuggestionsItem }
           onSuggestionClick={ this.onSuggestionClick }

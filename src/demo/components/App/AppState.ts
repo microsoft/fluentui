@@ -25,8 +25,8 @@ import { MarqueeSelectionPage } from '../../pages/MarqueeSelectionPage/MarqueeSe
 import { MessageBarPage } from '../../pages/MessageBarPage/MessageBarPage';
 import { NavPage } from '../../pages/NavPage/NavPage';
 import { OverlayPage } from '../../pages/OverlayPage/OverlayPage';
+import { PanePage } from '../../pages/PanePage/PanePage';
 import { PanelPage } from '../../pages/PanelPage/PanelPage';
-import { PeoplePickerPage } from '../../pages/PeoplePickerPage/PeoplePickerPage';
 import { PickersPage } from '../../pages/PickersPage/PickersPage';
 import { PersonaPage } from '../../pages/PersonaPage/PersonaPage';
 import { PivotPage } from '../../pages/PivotPage/PivotPage';
@@ -198,6 +198,13 @@ export const AppState: IAppState = {
           url: '#/examples/overlay'
         },
         {
+          component: PanePage,
+          key: 'Pane',
+          name: 'Pane',
+          status: ExampleStatus.placeholder,
+          url: '#/examples/pane'
+        },
+        {
           component: PanelPage,
           key: 'Panel',
           name: 'Panel',
@@ -210,13 +217,6 @@ export const AppState: IAppState = {
           name: 'Pickers',
           status: ExampleStatus.started,
           url: '#/examples/pickers'
-        },
-        {
-          component: PeoplePickerPage,
-          key: 'PeoplePicker',
-          name: 'PeoplePicker',
-          status: ExampleStatus.started,
-          url: '#/examples/PeoplePicker'
         },
         {
           component: PersonaPage,
