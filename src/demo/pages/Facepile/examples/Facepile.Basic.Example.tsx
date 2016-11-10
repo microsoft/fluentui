@@ -1,8 +1,10 @@
 import * as React from 'react';
 import {
-  Slider,
   Facepile,
-  IFacepileProps
+  IFacepileProps,
+  IPersonaProps,
+  OverflowButtonType,
+  Slider
 } from '../../../../index';
 import { facepilePersonas } from './FacepileExampleData';
 import './Facepile.Examples.scss';
@@ -23,13 +25,7 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
   public render() {
     let { numberOfFaces } = this.state;
     let facepileProps: IFacepileProps = {
-      maxDisplayablePersonas: 6,
-      personaDetailsShown: false,
       personas: facepilePersonas.slice(0, numberOfFaces),
-      chevronButtonProps: {
-        onClick: (ev: React.MouseEvent<HTMLButtonElement>) =>
-          alert('Down arrow icon clicked')
-      }
     };
 
     return (
@@ -38,11 +34,14 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
         <Slider
           label='Number of Personas:'
           min={1}
-          max={6}
+          max={5}
           step={1}
           showValue={true}
-          value={this.state.numberOfFaces}
-          onChange={value => this.setState({ numberOfFaces: value })}
+          value={numberOfFaces}
+          onChange={value => this.setState((prevState: IFacepileBasicExampleState) => {
+            prevState.numberOfFaces = value;
+            return prevState;
+          })}
           />
       </div>
     );

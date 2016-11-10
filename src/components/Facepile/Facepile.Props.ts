@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Facepile } from './Facepile';
 import { IButtonProps } from '../Button/index';
-import { PersonaInitialsColor } from '../Persona/index';
+import { IPersonaProps, PersonaInitialsColor } from '../Persona/index';
 
 export interface IFacepileProps extends React.Props<Facepile> {
   /**
@@ -16,17 +16,14 @@ export interface IFacepileProps extends React.Props<Facepile> {
   /** Show add person button */
   showAddButton?: boolean;
 
-  /** Show persona details when only one face is present in the Facepile */
-  personaDetailsShown?: boolean;
-
   /** Button properties for the add face button */
   addButtonProps?: IButtonProps;
 
-  /** Button properties for the chevron button */
-  chevronButtonProps?: IButtonProps;
-
-  /** Properties for the overflow persona */
+  /** Properties for the overflow icon */
   overflowButtonProps?: IButtonProps;
+
+  /** Type of overflow icon to use */
+  overflowButtonType?: OverflowButtonType;
 }
 
 export interface IFacepilePersona extends React.HTMLProps<HTMLButtonElement | HTMLDivElement> {
@@ -72,4 +69,15 @@ export interface IFacepilePersona extends React.HTMLProps<HTMLButtonElement | HT
    * handlers.
    */
   data?: any;
+}
+
+export enum OverflowButtonType {
+  /** No overflow */
+  none,
+  /** +1 overflow icon */
+  descriptive,
+  /** More overflow icon */
+  more,
+  /** Chevron overflow icon */
+  downArrow
 }
