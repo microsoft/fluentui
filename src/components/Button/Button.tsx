@@ -62,6 +62,20 @@ export class Button extends BaseComponent<IButtonProps, IButtonState> implements
       ? <span className='ms-u-screenReaderOnly' id={ ariaDescriptionId }>{ ariaDescription }</span>
       : null;
 
+    // Check for ariaDescription, description or aria-describedby in the native props to determine source of aria-describedby
+    // otherwise default to null.
+    let ariaDescribedBy;
+
+    if (ariaDescription) {
+      ariaDescribedBy = ariaDescriptionId;
+    } else if (description) {
+      ariaDescribedBy = descriptionId;
+    } else if (nativeProps['aria-describedby']) {
+      ariaDescribedBy = nativeProps['aria-describedby'];
+    } else {
+      ariaDescribedBy = null;
+    }
+
     return React.createElement(
       tag,
       assign(
@@ -71,7 +85,7 @@ export class Button extends BaseComponent<IButtonProps, IButtonState> implements
         {
           'aria-label': ariaLabel,
           'aria-labelledby': ariaLabel ? null : labelId,
-          'aria-describedby': ariaDescription ? ariaDescriptionId : description ? descriptionId : null,
+          'aria-describedby': ariaDescribedBy,
           'ref': (c: HTMLButtonElement): HTMLButtonElement => this._buttonElement = c
         },
         onClick && { 'onClick': onClick },
