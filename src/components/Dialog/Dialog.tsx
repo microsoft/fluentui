@@ -46,16 +46,6 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
     };
   }
 
-  public componentDidMount() {
-    if (this.state.isOpen) {
-      this._async.setTimeout(() => {
-        this.setState({
-          isAnimatingOpen: false
-        });
-      }, 2000);
-    }
-  }
-
   public componentWillReceiveProps(newProps: IDialogProps) {
     // Opening the dialog
     if (newProps.isOpen && !this.state.isOpen) {
@@ -177,19 +167,23 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
 
   // Watch for completed animations and set the state
   private _onAnimationEnd(ev: AnimationEvent) {
+
+    // The dialog has just opened (faded in)
     if (ev.animationName.indexOf('fadeIn') > -1) {
       this.setState({
         isOpen: true,
         isAnimatingOpen: false
       });
     }
+
+    // The dialog has just closed (faded out)
     if (ev.animationName.indexOf('fadeOut') > -1) {
       this.setState({
         isOpen: false,
         isAnimatingClose: false
       });
 
-      // Dialog has closed, call the onDismiss callback
+      // Call the onDismiss callback
       if (this.props.onDismiss) {
         this.props.onDismiss();
       }
