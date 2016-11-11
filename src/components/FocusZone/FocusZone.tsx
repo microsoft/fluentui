@@ -13,7 +13,8 @@ import {
   elementContains,
   getParent,
   getId,
-  getRTL
+  getRTL,
+  getDocument
 } from '../../Utilities';
 import {
   getNextElement,
@@ -83,6 +84,13 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     }
 
     this._events.on(windowElement, 'keydown', this._onKeyDownCapture, true);
+
+    // Assign initial tab indexes so that we can set initial focus as appropriate.
+    this._updateTabIndexes();
+
+    if (this.props.defaultActiveElement) {
+      this._activeElement = getDocument().querySelector(this.props.defaultActiveElement) as HTMLElement;
+    }
   }
 
   public componentWillUnmount() {
