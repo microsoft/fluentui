@@ -33,7 +33,7 @@ $ContextualMenu-iconWidth: 14px;
   color: inherit;
   background: none;
   border: none;
-  min-width: 100%;
+  width: 100%;
   height: $ContextualMenu-itemHeight;
   line-height: $ContextualMenu-itemHeight;
   display: block;
@@ -97,6 +97,11 @@ a.ms-ContextualMenu-link {
 }
 
 .ms-ContextualMenu-itemText {
+  width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  vertical-align: top;
   @include padding(0, 12px, 0, 4px);
 }
 
