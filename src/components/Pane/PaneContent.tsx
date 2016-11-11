@@ -1,6 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
+import { BaseComponent } from '../../common/BaseComponent';
 
 export interface IPaneContentProps {
   /**
@@ -9,7 +10,7 @@ export interface IPaneContentProps {
   className?: string;
 }
 
-export class PaneContent extends React.Component<IPaneContentProps, any> {
+export class PaneContent extends BaseComponent<IPaneContentProps, any> {
 
   public static defaultProps: IPaneContentProps = {
     className: ''

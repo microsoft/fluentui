@@ -1,6 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
+import { BaseComponent } from '../../common/BaseComponent';
 
 export interface IWrappedContentProps {
   /**
@@ -9,7 +10,7 @@ export interface IWrappedContentProps {
   className?: string;
 }
 
-export class WrappedContent extends React.Component<IWrappedContentProps, any> {
+export class WrappedContent extends BaseComponent<IWrappedContentProps, any> {
 
   public static defaultProps: IWrappedContentProps = {
     className: ''

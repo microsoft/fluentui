@@ -30,7 +30,7 @@ export class PanePage extends React.Component<IComponentDemoPageProps, any> {
         componentName='PaneExample'
         exampleCards={
           <div>
-            <ExampleCard title='Pane - Small Pane, Anchored Right, Fixed Width' code={ PaneBasicExampleCode }>
+            <ExampleCard title='Pane - Small Pane, Anchored Right, Fixed Width' code={PaneBasicExampleCode}>
               <PaneBasicExample />
             </ExampleCard>
           </div>
@@ -44,8 +44,8 @@ export class PanePage extends React.Component<IComponentDemoPageProps, any> {
             <span> are used to render a split view.</span>
           </div>
         }
-        route={ this._url }
-        isHeaderVisible={ this.props.isHeaderVisible }>
+        route={this._url}
+        isHeaderVisible={this.props.isHeaderVisible}>
       </ComponentPage>
     );
   }
