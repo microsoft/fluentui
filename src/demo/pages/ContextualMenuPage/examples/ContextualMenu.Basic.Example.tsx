@@ -62,7 +62,7 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                 {
                   key: 'disabled',
                   name: 'Disabled item',
-                  isDisabled: true,
+                  disabled: true,
                 },
                 {
                   key: 'divider_2',

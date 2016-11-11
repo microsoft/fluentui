@@ -258,21 +258,21 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
             key: 'resizing',
             name: 'Allow column resizing',
             canCheck: true,
-            isChecked: canResizeColumns,
+            checked: canResizeColumns,
             onClick: this._onToggleResizing
           },
           {
             key: 'headerVisible',
             name: 'Is header visible',
             canCheck: true,
-            isChecked: isHeaderVisible,
+            checked: isHeaderVisible,
             onClick: () => this.setState({ isHeaderVisible: !isHeaderVisible })
           },
           {
             key: 'lazyload',
             name: 'Simulate async loading',
             canCheck: true,
-            isChecked: isLazyLoaded,
+            checked: isLazyLoaded,
             onClick: this._onToggleLazyLoad
           },
           {
@@ -314,7 +314,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
                 key: LayoutMode[LayoutMode.fixedColumns],
                 name: 'Fixed columns',
                 canCheck: true,
-                isChecked: layoutMode === LayoutMode.fixedColumns,
+                checked: layoutMode === LayoutMode.fixedColumns,
                 onClick: this._onLayoutChanged,
                 data: LayoutMode.fixedColumns
               },
@@ -322,7 +322,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
                 key: LayoutMode[LayoutMode.justified],
                 name: 'Justified columns',
                 canCheck: true,
-                isChecked: layoutMode === LayoutMode.justified,
+                checked: layoutMode === LayoutMode.justified,
                 onClick: this._onLayoutChanged,
                 data: LayoutMode.justified
               }
@@ -336,7 +336,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
                 key: SelectionMode[SelectionMode.none],
                 name: 'None',
                 canCheck: true,
-                isChecked: selectionMode === SelectionMode.none,
+                checked: selectionMode === SelectionMode.none,
                 onClick: this._onSelectionChanged,
                 data: SelectionMode.none
 
@@ -345,7 +345,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
                 key: SelectionMode[SelectionMode.single],
                 name: 'Single select',
                 canCheck: true,
-                isChecked: selectionMode === SelectionMode.single,
+                checked: selectionMode === SelectionMode.single,
                 onClick: this._onSelectionChanged,
                 data: SelectionMode.single
               },
@@ -353,7 +353,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
                 key: SelectionMode[SelectionMode.multiple],
                 name: 'Multi select',
                 canCheck: true,
-                isChecked: selectionMode === SelectionMode.multiple,
+                checked: selectionMode === SelectionMode.multiple,
                 onClick: this._onSelectionChanged,
                 data: SelectionMode.multiple
               },
@@ -367,7 +367,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
                 key: ConstrainMode[ConstrainMode.unconstrained],
                 name: 'Unconstrained',
                 canCheck: true,
-                isChecked: constrainMode === ConstrainMode.unconstrained,
+                checked: constrainMode === ConstrainMode.unconstrained,
                 onClick: this._onConstrainModeChanged,
                 data: ConstrainMode.unconstrained
               },
@@ -375,7 +375,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
                 key: ConstrainMode[ConstrainMode.horizontalConstrained],
                 name: 'Horizontal constrained',
                 canCheck: true,
-                isChecked: constrainMode === ConstrainMode.horizontalConstrained,
+                checked: constrainMode === ConstrainMode.horizontalConstrained,
                 onClick: this._onConstrainModeChanged,
                 data: ConstrainMode.horizontalConstrained
               }
@@ -393,7 +393,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
         name: 'A to Z',
         icon: 'SortUp',
         canCheck: true,
-        isChecked: column.isSorted && !column.isSortedDescending,
+        checked: column.isSorted && !column.isSortedDescending,
         onClick: () => this._onSortColumn(column.key, false)
       },
       {
@@ -401,7 +401,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
         name: 'Z to A',
         icon: 'SortDown',
         canCheck: true,
-        isChecked: column.isSorted && column.isSortedDescending,
+        checked: column.isSorted && column.isSortedDescending,
         onClick: () => this._onSortColumn(column.key, true)
       }
     ];
@@ -411,7 +411,7 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
         name: 'Group By ' + column.name,
         icon: 'GroupedDescending',
         canCheck: true,
-        isChecked: column.isGrouped,
+        checked: column.isGrouped,
         onClick: () => this._onGroupByColumn(column)
       });
     }

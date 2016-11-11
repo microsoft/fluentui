@@ -118,7 +118,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                 aria-label={ ariaLabelForSelectAllCheckbox }
                 aria-pressed={ isAllSelected }
                 >
-                <Check isChecked={ isAllSelected } />
+                <Check checked={ isAllSelected } />
               </button>
             ) : null }
           </div>

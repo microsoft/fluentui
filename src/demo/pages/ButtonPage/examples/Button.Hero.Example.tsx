@@ -12,13 +12,13 @@ export class ButtonHeroExample extends React.Component<IButtonProps, {}> {
   }
 
   public render() {
-    let { isDisabled } = this.props;
+    let { disabled } = this.props;
 
     return (
       <div className='ms-BasicButtonsExample'>
         <Label>Hero button</Label>
         <Button
-          disabled={ isDisabled }
+          disabled={ disabled }
           buttonType={ ButtonType.hero }
           icon='Add' >
           Create account
