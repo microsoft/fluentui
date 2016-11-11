@@ -64,9 +64,8 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
     let { id, isOpen, selectedIndex, isDisabled } = this.state;
     let selectedOption = options[selectedIndex];
 
-    // Need to assign role application on containing div because JAWS doesnt call OnKeyDown without this role
     return (
-      <div role='application' ref='root'>
+      <div ref='root'>
         <label id={ id + '-label' } className='ms-Label' ref={ (dropdownLabel) => this._dropdownLabel = dropdownLabel } >{ label }</label>
         <div
           data-is-focusable={ true }
@@ -80,7 +79,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
           onClick={ this._onDropdownClick }
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='combobox'
-          aria-label={ selectedOption ? `${label}, ${selectedOption.text}` : label }
+          aria-label={ label }
           aria-activedescendant={ selectedIndex >= 0 ? (id + '-list' + selectedIndex) : (id + '-list') }
           aria-controls={ id + '-list' }
           >
