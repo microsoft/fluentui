@@ -12,13 +12,13 @@ export class ButtonCompoundExample extends React.Component<IButtonProps, {}> {
   }
 
   public render() {
-    let { isDisabled } = this.props;
+    let { disabled } = this.props;
 
     return (
       <div className='ms-BasicButtonsExample'>
         <Label>Compound button</Label>
         <Button
-          disabled={ isDisabled }
+          disabled={ disabled }
           buttonType={ ButtonType.compound }
           description='You can create a new account here.'>
           Create account

@@ -319,5 +319,10 @@ export enum CheckboxVisibility {
   /**
    * Visible always.
    */
-  always
+  always,
+
+  /**
+   * Hide checkboxes.
+   */
+  hidden
 }
