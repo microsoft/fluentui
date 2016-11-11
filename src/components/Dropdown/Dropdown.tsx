@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IDropdownProps, IDropdownOption } from './Dropdown.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import {
 } from '../../index';
 import {
@@ -9,7 +10,6 @@ import {
   KeyCodes,
   autobind,
   css,
-  elementContains,
   findIndex,
   getId
 } from '../../Utilities';
@@ -31,7 +31,8 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
 
   public refs: {
     [key: string]: React.ReactInstance,
-    root: HTMLElement
+    root: HTMLElement,
+    focusZone: FocusZone
   };
 
   private _optionList: HTMLElement;
@@ -58,30 +59,11 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
     });
   }
 
-  public componentWillUpdate(nextProps: IDropdownProps, nextState: IDropdownState) {
-    if (this.state.isOpen !== nextState.isOpen) {
-      if (nextState.isOpen) {
-        this._events.on(window, 'focus', this._onFocusChange, true);
-      } else {
-        this._events.off();
-      }
-    }
-  }
-
-  public componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState) {
-    if (prevState.isOpen === false && this.state.isOpen === true) {
-      this._scrollOnOpen();
-    } else if (prevState.selectedIndex !== this.state.selectedIndex) {
-      this._scrollSelectedItemIntoView();
-    }
-  }
-
   public render() {
     let { label, options, onRenderItem = this._onRenderItem } = this.props;
     let { id, isOpen, selectedIndex, isDisabled } = this.state;
     let selectedOption = options[selectedIndex];
 
-    // Need to assign role application on containing div because JAWS doesnt call OnKeyDown without this role
     return (
       <div ref='root'>
         <label id={ id + '-label' } className='ms-Label' ref={ (dropdownLabel) => this._dropdownLabel = dropdownLabel } >{ label }</label>
@@ -96,23 +78,29 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
           onKeyDown={ this._onDropdownKeyDown }
           onClick={ this._onDropdownClick }
           aria-expanded={ isOpen ? 'true' : 'false' }
-          role='application'
+          role='combobox'
+          aria-label={ label }
           aria-activedescendant={ selectedIndex >= 0 ? (id + '-list' + selectedIndex) : (id + '-list') }
           aria-controls={ id + '-list' }
           >
           <span className='ms-Dropdown-title'>{ selectedOption ? onRenderItem(selectedOption, this._onRenderItem) : '' }</span>
           <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown'></i>
-           { isOpen && (
-            <Callout
-              isBeakVisible = { false }
-              className='ms-Dropdown-callout'
-              gapSpace={ 0 }
-              doNotLayer= { false }
-              targetElement={ this._dropDown }
-              setInitialFocus={ true }
-              directionalHint={ DirectionalHint.bottomLeftEdge }
-              onDismiss={ this._onDismiss }
+        </div>
+        { isOpen && (
+          <Callout
+            isBeakVisible={ false }
+            className='ms-Dropdown-callout'
+            gapSpace={ 0 }
+            doNotLayer={ false }
+            targetElement={ this._dropDown }
+            directionalHint={ DirectionalHint.bottomLeftEdge }
+            onDismiss={ this._onDismiss }
             >
+            <FocusZone
+              ref={ fz => fz && fz.focus() }
+              direction={ FocusZoneDirection.vertical }
+              defaultActiveElement={ '#' + id + '-list' + selectedIndex }
+              >
               <ul ref={ (c: HTMLElement) => this._optionList = c }
                 id={ id + '-list' }
                 style={ { width: this._dropDown.clientWidth - 2 } }
@@ -121,11 +109,13 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
                 aria-labelledby={ id + '-label' }>
                 { options.map((option, index) => (
                   <li id={ id + '-list' + index.toString() }
-                    ref= { Dropdown.Option + index.toString() }
+                    ref={ Dropdown.Option + index.toString() }
                     key={ option.key }
                     data-index={ index }
+                    data-is-focusable={ true }
                     className={ css('ms-Dropdown-item', { 'is-selected': selectedIndex === index }) }
                     onClick={ () => this._onItemClick(index) }
+                    onFocus={ () => this.setSelectedIndex(index) }
                     role='option'
                     aria-selected={ selectedIndex === index ? 'true' : 'false' }
                     aria-label={ option.text }
@@ -134,9 +124,9 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
                   </li>
                 )) }
               </ul>
-            </Callout>
-           ) }
-        </div>
+            </FocusZone>
+          </Callout>
+        ) }
       </div>
     );
   }
@@ -167,7 +157,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
 
   @autobind
   private _onRenderItem(item: IDropdownOption): JSX.Element {
-      return <span>{item.text}</span>;
+    return <span>{ item.text }</span>;
   }
 
   private _onItemClick(index) {
@@ -233,46 +223,6 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
         isOpen: !isOpen
       });
     }
-  }
-
-  @autobind
-  private _onFocusChange(ev: React.FocusEvent<HTMLElement>) {
-    if (this.state.isOpen && !elementContains(this.refs.root, ev.target as HTMLElement)) {
-      this.setState({
-        isOpen: false
-      });
-    }
-  }
-
-  private _scrollSelectedItemIntoView() {
-    const { posTop, posBottom } = this._getCurrentItemPositionDetails();
-
-    // if the selected item is too far down
-    if (posBottom > this._optionList.offsetHeight + this._optionList.scrollTop) {
-      this._optionList.scrollTop = posBottom - this._optionList.offsetHeight;
-      // else if it's too far up
-    } else if (posTop < this._optionList.scrollTop) {
-      this._optionList.scrollTop = posTop;
-    }
-  }
-
-  private _scrollOnOpen() {
-    const { currentItem, posBottom } = this._getCurrentItemPositionDetails();
-
-    // the selected item should be in the center of the dropdown if possible
-    if (currentItem) {
-      this._optionList.scrollTop = posBottom - (currentItem.offsetHeight + this._optionList.offsetHeight) / 2;
-    }
-  }
-
-  private _getCurrentItemPositionDetails() {
-    const currentItem: HTMLElement = this.refs[Dropdown.Option + this.state.selectedIndex] as HTMLElement;
-    const posTop: number = currentItem ? currentItem.offsetTop : 0;
-    const posBottom: number = currentItem ? posTop + currentItem.offsetHeight : 0;
-
-    return { currentItem: currentItem,
-      posTop: posTop,
-      posBottom: posBottom };
   }
 
 }
