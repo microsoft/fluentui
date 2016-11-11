@@ -9,13 +9,20 @@ import { css } from '../../utilities/css';
 import { Popup } from '../Popup/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { getId } from '../../utilities/object';
+import { BaseComponent } from '../../common/BaseComponent';
 import './Dialog.scss';
 
-// @TODO - need to add animations, pending Fabric Team + Coulton work
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 
+export interface IDialogState {
+  isOpen?: boolean;
+  isAnimatingOpen?: boolean;
+  isAnimatingClose?: boolean;
+  id?: string;
+}
+
 @withResponsiveMode
-export class Dialog extends React.Component<IDialogProps, any> {
+export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
 
   public static defaultProps: IDialogProps = {
     isOpen: false,
@@ -30,14 +37,37 @@ export class Dialog extends React.Component<IDialogProps, any> {
   constructor(props: IDialogProps) {
     super(props);
 
+    this._onDialogRef = this._onDialogRef.bind(this);
+
     this.state = {
       id: getId('Dialog'),
+      isAnimatingOpen: props.isOpen,
+      isAnimatingClose: false
     };
   }
 
+  public componentWillReceiveProps(newProps: IDialogProps) {
+    // Opening the dialog
+    if (newProps.isOpen && !this.state.isOpen) {
+      this.setState({
+        isOpen: true,
+        isAnimatingOpen: true,
+        isAnimatingClose: false
+      });
+    }
+
+    // Closing the dialog
+    if (!newProps.isOpen && this.state.isOpen) {
+      this.setState({
+        isAnimatingOpen: false,
+        isAnimatingClose: true
+      });
+    }
+  }
+
   public render() {
-    let { isOpen, type, isDarkOverlay, onDismiss, title, subText, isBlocking, responsiveMode, elementToFocusOnDismiss, ignoreExternalFocusing, forceFocusInsideTrap, firstFocusableSelector, closeButtonAriaLabel, onLayerMounted } = this.props;
-    let { id } = this.state;
+    let { type, isDarkOverlay, onDismiss, title, subText, isBlocking, responsiveMode, elementToFocusOnDismiss, ignoreExternalFocusing, forceFocusInsideTrap, firstFocusableSelector, closeButtonAriaLabel, onLayerMounted, isClickableOutsideFocusTrap} = this.props;
+    let { id, isOpen, isAnimatingOpen, isAnimatingClose } = this.state;
     // @TODO - the discussion on whether the Dialog contain a property for rendering itself is still being discussed
     if (!isOpen) {
       return null;
@@ -46,12 +76,15 @@ export class Dialog extends React.Component<IDialogProps, any> {
     let subTextContent;
     const dialogClassName = css('ms-Dialog', this.props.className, {
       'ms-Dialog--lgHeader': type === DialogType.largeHeader,
-      'ms-Dialog--close': type === DialogType.close
+      'ms-Dialog--close': type === DialogType.close,
+      'is-open': isOpen,
+      'is-animatingOpen': isAnimatingOpen,
+      'is-animatingClose': isAnimatingClose
     });
     let groupings = this._groupChildren();
 
     if (subText) {
-      subTextContent = <p className='ms-Dialog-subText' id={ id + '-subText'}>{ subText }</p>;
+      subTextContent = <p className='ms-Dialog-subText' id={ id + '-subText' }>{ subText }</p>;
     }
 
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints
@@ -59,22 +92,24 @@ export class Dialog extends React.Component<IDialogProps, any> {
       return (
         <Layer onLayerMounted={ onLayerMounted }>
           <Popup
-            className= { dialogClassName }
             role='dialog'
             ariaLabelledBy={ title ? id + '-title' : '' }
             ariaDescribedBy={ subText ? id + '-subText' : '' }
             onDismiss={ onDismiss }
             >
+            <div
+              className={ dialogClassName }
+              ref={ this._onDialogRef }>
               <Overlay isDarkThemed={ isDarkOverlay } onClick={ isBlocking ? null : onDismiss } />
               <FocusTrapZone
                 className={ css('ms-Dialog-main', this.props.containerClassName) }
                 elementToFocusOnDismiss={ elementToFocusOnDismiss }
-                isClickableOutsideFocusTrap={ !isBlocking }
+                isClickableOutsideFocusTrap={ isClickableOutsideFocusTrap ? isClickableOutsideFocusTrap : !isBlocking }
                 ignoreExternalFocusing={ ignoreExternalFocusing }
                 forceFocusInsideTrap={ forceFocusInsideTrap }
                 firstFocusableSelector={ firstFocusableSelector }>
                 <div className='ms-Dialog-header'>
-                  <p className='ms-Dialog-title' id={ id + '-title'}>{ title }</p>
+                  <p className='ms-Dialog-title' id={ id + '-title' }>{ title }</p>
                   <div className='ms-Dialog-topButton'>
                     <Button
                       className='ms-Dialog-button ms-Dialog-button--close'
@@ -83,7 +118,7 @@ export class Dialog extends React.Component<IDialogProps, any> {
                       rootProps={ { title: closeButtonAriaLabel } }
                       ariaLabel={ closeButtonAriaLabel }
                       onClick={ onDismiss }
-                    />
+                      />
                   </div>
                 </div>
                 <div className='ms-Dialog-inner'>
@@ -94,6 +129,7 @@ export class Dialog extends React.Component<IDialogProps, any> {
                   { groupings.footers }
                 </div>
               </FocusTrapZone>
+            </div>
           </Popup>
         </Layer>
       );
@@ -119,5 +155,38 @@ export class Dialog extends React.Component<IDialogProps, any> {
     });
 
     return groupings;
+  }
+
+  private _onDialogRef(ref: HTMLDivElement) {
+    if (ref) {
+      this._events.on(ref, 'animationend', this._onAnimationEnd);
+    } else {
+      this._events.off();
+    }
+  }
+
+  // Watch for completed animations and set the state
+  private _onAnimationEnd(ev: AnimationEvent) {
+
+    // The dialog has just opened (faded in)
+    if (ev.animationName.indexOf('fadeIn') > -1) {
+      this.setState({
+        isOpen: true,
+        isAnimatingOpen: false
+      });
+    }
+
+    // The dialog has just closed (faded out)
+    if (ev.animationName.indexOf('fadeOut') > -1) {
+      this.setState({
+        isOpen: false,
+        isAnimatingClose: false
+      });
+
+      // Call the onDismiss callback
+      if (this.props.onDismiss) {
+        this.props.onDismiss();
+      }
+    }
   }
 }

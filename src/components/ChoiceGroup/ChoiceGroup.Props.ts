@@ -44,8 +44,14 @@ export interface IChoiceGroupOption {
   imageSize?: { width: number, height: number };
 
   /**
-   * Whether the options is checked or not.
+   * Whether or not this menu item is currently checked.
    * @defaultvalue false
+   */
+  checked?: boolean;
+
+  /**
+   * @deprecated
+   * Deprecated at v.65.1 and will be removed by v 1.0. Use 'checked' instead.
    */
   isChecked?: boolean;
 

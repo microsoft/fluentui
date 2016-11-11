@@ -3,7 +3,7 @@ import './ExampleCard.scss';
 import { Button, ButtonType } from '../../../Button';
 import { css } from '../../../utilities/css';
 
-// const Highlight = require('react-highlight');
+const Highlight = require('react-highlight');
 
 export interface IExampleCardProps {
   title: string;
@@ -51,7 +51,9 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
         </div>
 
         <div className='ExampleCard-code'>
-          { code }
+          <Highlight className='javascript'>
+            { code }
+          </Highlight>
         </div>
 
         <div className={ css('ExampleCard-example', { ' is-right-aligned': (isRightAligned) }) } data-is-scrollable='true'>

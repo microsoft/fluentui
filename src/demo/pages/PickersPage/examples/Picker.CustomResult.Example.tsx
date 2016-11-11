@@ -16,7 +16,8 @@ import {
   ImageFit,
   IBasePickerProps,
   Persona,
-  PersonaSize
+  PersonaSize,
+  BaseAutoFill
 } from '../../../../index';
 import {
   BasePicker
@@ -295,11 +296,11 @@ export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumen
     <DocumentCard
       onClick={ () => { console.log('You clicked the card.'); } }
       >
-      <DocumentCardPreview { ...documentPreviewProps }/>
-      <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com' ariaLabel='Location, Marketing Documents'/>
-      <DocumentCardTitle { ...documentTitleProps }/>
-      <DocumentCardActivity { ...documentActivityProps }/>
-      <DocumentCardActions actions={ actions }/>
+      <DocumentCardPreview { ...documentPreviewProps } />
+      <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com' ariaLabel='Location, Marketing Documents' />
+      <DocumentCardTitle { ...documentTitleProps } />
+      <DocumentCardActivity { ...documentActivityProps } />
+      <DocumentCardActions actions={ actions } />
     </DocumentCard>
   );
 };
@@ -316,7 +317,7 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
         onRenderSuggestionsItem={ SuggestedBigItem }
         onResolveSuggestions={ this._onFilterChanged }
         onRenderItem={ SelectedDocumentItem }
-        getTextFromItem={(props: any) => props.documentTitleProps.title}
+        getTextFromItem={ (props: any) => props.documentTitleProps.title }
         pickerSuggestionsProps={
           {
             suggestionsHeaderText: 'Suggested Documents',
@@ -342,18 +343,27 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
 
 export class DocumentPicker extends BasePicker<IFullDocumentCardProps, IDocumentPickerProps> {
   public render() {
-    let { displayValue } = this.state;
+    let { suggestedDisplayValue } = this.state;
 
     return (
       <div>
         <div ref={ this._resolveRef('root') } className='ms-BasePicker' onKeyDown={ this.onKeyDown }>
           <SelectionZone selection={ this.selection }>
             <div className='ms-BasePicker-text'>
-              <input ref={ this._resolveRef('input') }
-                onFocus={ this.onInputFocus }
-                onChange={ this.onInputChange }
-                value={ displayValue }
+              <BaseAutoFill
+                { ...this.props.inputProps }
                 className='ms-BasePicker-input'
+                ref={ this._resolveRef('input') }
+                onFocus={ this.onInputFocus }
+                onInputValueChange={ this.onInputChange }
+                suggestedDisplayValue={ suggestedDisplayValue }
+                aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
+                aria-owns='suggestion-list'
+                aria-expanded='true'
+                aria-haspopup='true'
+                autoCapitalize='off'
+                autoComplete='off'
+                role='combobox'
                 />
             </div>
           </SelectionZone>
@@ -365,14 +375,8 @@ export class DocumentPicker extends BasePicker<IFullDocumentCardProps, IDocument
       </div>
     );
   }
+
   protected _onBackspace(ev: React.KeyboardEvent<HTMLElement>) {
-    let { value } = this.state;
-    if (ev.target === this.input) {
-      if (value && this.input.selectionStart !== this.input.selectionEnd) {
-        this.setState({
-          displayValue: value.substring(0, this.input.selectionStart)
-        });
-      }
-    }
+    // override the existing backspace method to not do anything because the list items appear below.
   }
 }

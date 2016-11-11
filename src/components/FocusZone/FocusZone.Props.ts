@@ -37,6 +37,11 @@ export interface IFocusZoneProps extends React.Props<FocusZone> {
   direction?: FocusZoneDirection;
 
   /**
+   * Optionally provide a selector for identifying the intial active element.
+   */
+  defaultActiveElement?: string;
+
+  /**
    * If set, the FocusZone will not be tabbable and keyboard navigation will be disabled.
    * This does not affect disabled attribute of any child.
    */

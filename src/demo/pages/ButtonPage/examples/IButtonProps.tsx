@@ -1,3 +1,3 @@
 export interface IButtonProps {
-  isDisabled: boolean;
+  disabled: boolean;
 }

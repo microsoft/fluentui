@@ -8,6 +8,9 @@
     max-width: 364px;
     background: $ms-color-white;
     padding: 8px;
+    &.has-mediumDelay {
+        animation-delay: 300ms;
+    }
     &-subText {
         margin: 0;
         font-size: $ms-font-size-s;
@@ -16,5 +19,5 @@
 }
 
 .ms-TooltipHost {
-    display: inline-block;
+    display: inline;
 }

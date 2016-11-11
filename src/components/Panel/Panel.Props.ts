@@ -21,6 +21,12 @@ export interface IPanelProps extends React.Props<Panel> {
   isLightDismiss?: boolean;
 
   /**
+  * Whether the panel uses a modal overlay or not
+  * @default true
+  */
+  isBlocking?: boolean;
+
+  /**
   * Header text for the Panel.
   * @default ""
   */
@@ -51,6 +57,29 @@ export interface IPanelProps extends React.Props<Panel> {
    * Optional parameter to provider the class name for header text
    */
   headerClassName?: string;
+
+  /**
+   * Sets the HTMLElement to focus on when exiting the FocusTrapZone.
+   * @default The element.target that triggered the Panel.
+   */
+  elementToFocusOnDismiss?: HTMLElement;
+
+  /**
+   * Indicates if this Panel will ignore keeping track of HTMLElement that activated the Zone.
+   * @default false
+   */
+  ignoreExternalFocusing?: boolean;
+
+  /**
+  * Indicates whether Panel should force focus inside the focus trap zone
+  * @default true
+  */
+  forceFocusInsideTrap?: boolean;
+
+  /**
+  * Indicates the selector for first focusable item
+  */
+  firstFocusableSelector?: string;
 }
 
 export enum PanelType {
