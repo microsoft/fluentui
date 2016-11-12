@@ -102,6 +102,7 @@ a.ms-ContextualMenu-link {
   text-overflow: ellipsis;
   display: inline-block;
   vertical-align: top;
+  box-sizing: border-box;
   @include padding(0, 12px, 0, 4px);
 }
 
