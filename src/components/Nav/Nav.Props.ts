@@ -50,6 +50,16 @@ export interface INavProps {
    * (Optional) The alt text for the collapsed state text
    **/
   collapsedStateText?: string;
+
+  /**
+   * Optional flag request set focus on the first focuable nav node.
+   */
+  setFocusFirst?: boolean;
+
+  /**
+   * Optional flag request set focus on the last focusable nav node.
+   */
+  setFocusLast?: boolean;
 }
 
 export interface INavLinkGroup {

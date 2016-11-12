@@ -145,7 +145,7 @@ $linkRightPadding: 20px;
       background: $selectedBackgroundColor;
 
       &:after {
-        @include border-left(2px, solid, $selectedForegroundColor);
+        @include border-left(2px, solid, $ms-color-themePrimary);
 
         content: '';
         position: absolute;

@@ -37,7 +37,6 @@ export class NavBasicExample extends React.Component<any, any> {
                   { name: 'Pages', url: 'http://msn.com' },
                   { name: 'Notebook', url: 'http://msn.com' },
                   { name: 'Long Name Test for elipse', url: 'http://msn.com' },
-                  { name: 'Edit Link', url: 'http://example.com', iconClassName: 'ms-Icon--Edit' },
                   {
                     name: 'Edit',
                     url: '#',
@@ -50,6 +49,7 @@ export class NavBasicExample extends React.Component<any, any> {
           }
           expandedStateText={ 'expanded' }
           collapsedStateText={ 'collapsed' }
+          setFocusLast={ true }
           />
        </div>
     );
