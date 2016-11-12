@@ -4,6 +4,7 @@ import { assign } from '../../utilities/object';
 import { IButtonProps, IButton, ButtonType } from './Button.Props';
 import { getId } from '../../utilities/object';
 import { getNativeProps, buttonProperties, anchorProperties } from '../../utilities/properties';
+import { BaseComponent } from '../../common/BaseComponent';
 import './Button.scss';
 
 export interface IButtonState {
@@ -12,14 +13,14 @@ export interface IButtonState {
   ariaDescriptionId?: string;
 }
 
-export class Button extends React.Component<IButtonProps, IButtonState> implements IButton {
+export class Button extends BaseComponent<IButtonProps, IButtonState> implements IButton {
   public static defaultProps: IButtonProps = {
     buttonType: ButtonType.normal
   };
   private _buttonElement: HTMLButtonElement;
 
   constructor(props: IButtonProps) {
-    super(props);
+    super(props, {'rootProps': null});
 
     this.state = {
       labelId: getId('Button'),
@@ -61,6 +62,20 @@ export class Button extends React.Component<IButtonProps, IButtonState> implemen
       ? <span className='ms-u-screenReaderOnly' id={ ariaDescriptionId }>{ ariaDescription }</span>
       : null;
 
+    // Check for ariaDescription, description or aria-describedby in the native props to determine source of aria-describedby
+    // otherwise default to null.
+    let ariaDescribedBy;
+
+    if (ariaDescription) {
+      ariaDescribedBy = ariaDescriptionId;
+    } else if (description) {
+      ariaDescribedBy = descriptionId;
+    } else if (nativeProps['aria-describedby']) {
+      ariaDescribedBy = nativeProps['aria-describedby'];
+    } else {
+      ariaDescribedBy = null;
+    }
+
     return React.createElement(
       tag,
       assign(
@@ -70,7 +85,7 @@ export class Button extends React.Component<IButtonProps, IButtonState> implemen
         {
           'aria-label': ariaLabel,
           'aria-labelledby': ariaLabel ? null : labelId,
-          'aria-describedby': ariaDescription ? ariaDescriptionId : description ? descriptionId : null,
+          'aria-describedby': ariaDescribedBy,
           'ref': (c: HTMLButtonElement): HTMLButtonElement => this._buttonElement = c
         },
         onClick && { 'onClick': onClick },

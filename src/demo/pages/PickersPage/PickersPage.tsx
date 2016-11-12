@@ -8,7 +8,6 @@ import {
   ComponentPage
 } from '../../components/index';
 
-import { PeoplePickerTypesExample } from './examples/PeoplePicker.Types.Example';
 import { PickerCustomResultExample } from './examples/Picker.CustomResult.Example';
 import { TagPickerBasicExample } from './examples/TagPicker.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
@@ -16,7 +15,6 @@ import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const TagPickerExampleCode = require('./examples/TagPicker.Basic.Example.tsx');
-const PeoplePickerTypesExampleCode = require('./examples/PeoplePicker.Types.Example.tsx');
 const PickerCustomResultExampleCode = require('./examples/Picker.CustomResult.Example.tsx');
 
 export class PickersPage extends React.Component<IComponentDemoPageProps, any> {
@@ -34,13 +32,10 @@ export class PickersPage extends React.Component<IComponentDemoPageProps, any> {
         componentName='PickersExample'
         exampleCards={
           <div>
-              <ExampleCard title='TagPicker' code={ TagPickerExampleCode }>
+              <ExampleCard title='Tag Picker' code={ TagPickerExampleCode }>
                 <TagPickerBasicExample />
               </ExampleCard>
-              <ExampleCard title='People Pickers' code={ PeoplePickerTypesExampleCode }>
-                <PeoplePickerTypesExample />
-              </ExampleCard>
-              <ExampleCard title='Document Picker' code={ PickerCustomResultExampleCode }>
+              <ExampleCard title='Custom Picker (Document Picker)' code={ PickerCustomResultExampleCode }>
                 <PickerCustomResultExample />
               </ExampleCard>
           </div>

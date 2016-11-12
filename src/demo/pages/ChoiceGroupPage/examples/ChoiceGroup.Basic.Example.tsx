@@ -35,7 +35,7 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
             {
               key: 'B',
               text: 'Option B',
-              isChecked: true
+              checked: true
             },
             {
               key: 'C',
@@ -45,7 +45,7 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
             {
               key: 'D',
               text: 'Option D',
-              isChecked: true,
+              checked: true,
               disabled: true
             }
           ] }
@@ -58,7 +58,7 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
           options={ [
             {
               key: 'bar',
-              isChecked: this.state.imageKey === 'bar',
+              checked: this.state.imageKey === 'bar',
               imageSrc: 'dist/choicegroup-bar-unselected.png',
               selectedImageSrc: 'dist/choicegroup-bar-selected.png',
               imageSize: { width: 50, height: 50 },
@@ -66,7 +66,7 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
             },
             {
               key: 'pie',
-              isChecked: this.state.imageKey === 'pie',
+              checked: this.state.imageKey === 'pie',
               imageSrc: 'dist/choicegroup-pie-unselected.png',
               selectedImageSrc: 'dist/choicegroup-pie-selected.png',
               imageSize: { width: 50, height: 50 },

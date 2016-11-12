@@ -1,6 +1,6 @@
 {
   "name": "office-ui-fabric-react",
-  "version": "0.66.0",
+  "version": "0.69.0",
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -29,7 +29,7 @@
     "gulp-util": "3.0.7",
     "gutil": "1.6.4",
     "highlight.js": "9.6.0",
-    "office-ui-fabric-core": "^4.0.0",
+    "office-ui-fabric-core": "^5.0.1",
     "react-addons-test-utils": "^15.1.0",
     "react-highlight": "0.8.0",
     "source-map-loader": "0.1.5",

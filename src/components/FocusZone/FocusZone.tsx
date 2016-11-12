@@ -13,7 +13,8 @@ import {
   elementContains,
   getParent,
   getId,
-  getRTL
+  getRTL,
+  getDocument
 } from '../../Utilities';
 import {
   getNextElement,
@@ -74,7 +75,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       parentElement &&
       parentElement !== document.body &&
       parentElement.nodeType === 1
-      ) {
+    ) {
       if (isElementFocusZone(parentElement)) {
         this._isInnerZone = true;
         break;
@@ -83,6 +84,13 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
     }
 
     this._events.on(windowElement, 'keydown', this._onKeyDownCapture, true);
+
+    // Assign initial tab indexes so that we can set initial focus as appropriate.
+    this._updateTabIndexes();
+
+    if (this.props.defaultActiveElement) {
+      this._activeElement = getDocument().querySelector(this.props.defaultActiveElement) as HTMLElement;
+    }
   }
 
   public componentWillUnmount() {
@@ -605,25 +613,24 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   private _shouldInputLoseFocus(element: HTMLInputElement, isForward?: boolean) {
-    if (element) {
+    if (element && element.hasAttribute('selectionStart')) {
       let selectionStart = element.selectionStart;
       let selectionEnd = element.selectionEnd;
-      // This means that the input has text selected and we shouldn't lose focus.
-      if (selectionStart !== selectionEnd) {
-        return false;
-      } else {
-        let inputValue = element.value;
+      let isRangeSelected = selectionStart !== selectionEnd;
+      let inputValue = element.value;
 
-        if (selectionStart === 0 && !isForward) {
-          return true;
-        } else if (selectionStart === inputValue.length && isForward) {
-          return true;
-        } else {
-          return false;
-        }
+      // We shouldn't lose focus in the following cases:
+      // 1. There is range selected.
+      // 2. When selection start is larger than 0 and it is backward.
+      // 3. when selection start is not the end of lenght and it is forward.
+      if (isRangeSelected ||
+        (selectionStart > 0 && !isForward) ||
+        (selectionStart !== inputValue.length && isForward)) {
+        return false;
       }
     }
-    return false;
+
+    return true;
   }
 
 }
