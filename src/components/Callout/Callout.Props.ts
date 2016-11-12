@@ -6,10 +6,14 @@ import { IRectangle } from '../../common/IRectangle';
 import { IPoint } from '../../common/IPoint';
 
 export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
+
+  target?: HTMLElement | string | MouseEvent;
+
   /**
    * The element that the Callout should be positioned based on.
    * If a string is given, that is assumed to be the targetElement's Id
    * The Callout will then use document.getElementById to get the element.
+   * @deprecated use target
    */
   targetElement?: HTMLElement | string;
 

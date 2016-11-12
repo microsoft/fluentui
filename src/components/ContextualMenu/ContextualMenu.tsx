@@ -6,13 +6,11 @@ import {
     anchorProperties,
     buttonProperties,
     getNativeProps,
-    Async,
     assign,
     getId,
     getRTL,
     css,
     autobind,
-    EventGroup,
     KeyCodes,
     getDocument,
     getWindow
@@ -105,12 +103,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         this._isFocusingPreviousElement = false;
         this._didSetInitialFocus = false;
         this._enterTimerId = 0;
-        // This is used to allow the ContextualMenu to appear on a window other than the one the javascript is running in.
-        if (props.targetElement && props.targetElement.ownerDocument && props.targetElement.ownerDocument.defaultView) {
-            this._targetWindow = props.targetElement.ownerDocument.defaultView;
-        } else {
-            this._targetWindow = window;
-        }
     }
 
     @autobind
