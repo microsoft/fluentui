@@ -2,7 +2,7 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-import { FocusZone, Image } from '../../../../index';
+import { FocusZone, Image, Spinner } from '../../../../index';
 import { createArray } from '../../../../utilities/array';
 import './FocusZone.Photos.Example.scss';
 
@@ -25,6 +25,7 @@ export const FocusZonePhotosExample = () => (
         className='ms-FocusZoneExamples-photoCell'
         data-is-focusable={true}
         onClick={ () => console.log('clicked') }>
+        <Spinner data-is-focusable={true} />
         <Image src={ photo.url } width={ photo.width } height={ photo.height } />
       </div>
       )) }
