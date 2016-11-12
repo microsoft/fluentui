@@ -25,18 +25,7 @@ $Dialog-default-max-width: 340px;
   width:  100%;
   top:  0;
   @include left(0);
-
-  // Fallback for IE9
-  display: block;
-  line-height: 100vh;
-  text-align: center;
-
-  &::before {
-    @include dialogPositioningIE9Fallback();
-    content: "";
-    height: 100%;
-    width: 0;
-  }
+  display: none; // Hidden by default
 
   .ms-Button.ms-Button--compound {
     display: block;
@@ -48,6 +37,35 @@ $Dialog-default-max-width: 340px;
       opacity: 0;
     }
   }
+}
+
+// State: The dialog is open
+.ms-Dialog.is-open {
+  display: block;
+}
+
+// Fallback for IE9 when dialog is open
+.ms-Dialog.is-open {
+  display: block;
+  line-height: 100vh;
+  text-align: center;
+
+  &::before {
+    @include dialogPositioningIE9Fallback();
+    content: "";
+    height: 100%;
+    width: 0;
+  }
+}
+
+// State: The dialog is animating open
+.ms-Dialog.is-animatingOpen {
+  @include ms-u-fadeIn200;
+}
+
+// State: The dialog is animating closed
+.ms-Dialog.is-animatingClose {
+  @include ms-u-fadeOut200;
 }
 
 // The actual dialog element

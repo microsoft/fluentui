@@ -12,7 +12,7 @@ export class ButtonCommandExample extends React.Component<IButtonProps, any> {
   }
 
   public render() {
-    let { isDisabled } = this.props;
+    let { disabled } = this.props;
 
     return (
       <div className='ms-BasicButtonsExample'>
@@ -22,7 +22,7 @@ export class ButtonCommandExample extends React.Component<IButtonProps, any> {
           buttonType={ ButtonType.command }
           icon='AddFriend'
           description='Description of the action this button takes'
-          disabled={ isDisabled }
+          disabled={ disabled }
         >
           Create account
         </Button>
