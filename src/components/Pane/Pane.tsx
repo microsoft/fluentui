@@ -62,7 +62,7 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
     }
 
     public componentWillReceiveProps(newProps: IPaneProps) {
-        if (newProps.hidden === this.state.hidden) {
+        if (newProps.hidden !== this.state.hidden) {
             this.setState({
                 hidden: newProps.hidden,
                 isAnimatingOpen: newProps.hidden ? false : true,
@@ -90,12 +90,12 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
         let pendingCommandBarContent = '';
 
         let header = headerText ? (
-            <p className={css('ms-Pane-headerText', headerClassName)} id={headerTextId}>{headerText}</p>
+            <p className={ css('ms-Pane-headerText', headerClassName) } id={ headerTextId }>{ headerText }</p>
         ) : null;
 
         let closeButton = !closeButtonHidden ?
             (
-                <button className='ms-Pane-closeButton ms-PaneAction-close' onClick={this._onClose} aria-label={closeButtonAriaLabel} data-is-visible={true}>
+                <button className='ms-Pane-closeButton ms-PaneAction-close' onClick={ this._onClose } aria-label={ closeButtonAriaLabel } data-is-visible={ true }>
                     <i className='ms-Pane-closeIcon ms-Icon ms-Icon--Cancel'></i>
                 </button>
             ) : null;
@@ -111,23 +111,23 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
             }
                 >
                 <div
-                    className={'main-content'}
-                    ref={this._resolveRef('_mainContent')}
+                    className={ 'main-content' }
+                    ref={ this._resolveRef('_mainContent') }
                     >
                     <div
-                        className={'content-container'}
-                        ref={this._resolveRef('_contentContainer')}
+                        className={ 'content-container' }
+                        ref={ this._resolveRef('_contentContainer') }
                         >
-                        {groupings.wrappedContents}
+                        { groupings.wrappedContents }
                     </div>
                 </div>
                 <Popup
                     className='ms-Pane-popup'
                     role='dialog'
-                    ariaLabelledBy={headerText ? headerTextId : undefined}
-                    onDismiss={this.props.onDismiss}>
+                    ariaLabelledBy={ headerText ? headerTextId : undefined }
+                    onDismiss={ this.props.onDismiss }>
                     <div
-                        ref={this._onPaneRef}
+                        ref={ this._onPaneRef }
                         className={
                             css('ms-Pane', className, {
                                 'ms-Pane--openLeft': !isOnRightSide,  // because the RTL animations are not being used, we need to set a class
@@ -141,14 +141,14 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
                         }
                         >
                         <div className='ms-Pane-main'>
-                            <div className='ms-Pane-commands' data-is-visible={true} >
-                                {pendingCommandBarContent}
-                                {closeButton}
+                            <div className='ms-Pane-commands' data-is-visible={ true } >
+                                { pendingCommandBarContent }
+                                { closeButton }
                             </div>
                             <div className='ms-Pane-contentInner'>
-                                {header}
+                                { header }
                                 <div className='ms-Pane-content'>
-                                    {groupings.paneContents}
+                                    { groupings.paneContents }
                                 </div>
                             </div>
                         </div>
