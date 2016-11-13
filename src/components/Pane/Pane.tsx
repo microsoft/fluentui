@@ -22,7 +22,7 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
 
     public static defaultProps: IPaneProps = {
         hidden: true,
-        closeButtonHidden: true,
+        closeButtonHidden: false,
         type: PaneType.small
     };
 
