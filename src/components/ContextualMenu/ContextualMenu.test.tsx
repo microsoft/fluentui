@@ -2,7 +2,6 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
 
 let { expect } = chai;
@@ -20,13 +19,12 @@ describe('ContextualMenu', () => {
       { name: 'TestText 4', key: 'TestKey4', canCheck: true, isChecked: true },
     ];
 
-    let component = ReactTestUtils.renderIntoDocument<ContextualMenu>(
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
       <ContextualMenu
         items={ items }
         />
     );
 
-    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
     let menuList = document.querySelector('.ms-ContextualMenu-list') as HTMLUListElement;
 
     expect(menuList.scrollHeight).to.be.lte(menuList.offsetHeight, 'ContextualMenu is showing a scrollbar due to checkmark');
