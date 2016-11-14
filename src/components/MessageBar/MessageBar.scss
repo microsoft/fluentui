@@ -7,11 +7,8 @@
 // --------------------------------------------------
 // MessageBar Styles
 
-$MessageBar-padding: 8px;
-
 .ms-MessageBar {
   @include ms-baseFont;
-  padding: $MessageBar-padding;
   @include ms-bgColor-info;
   color: $ms-color-infoText;
   width: 100%;
@@ -20,6 +17,7 @@ $MessageBar-padding: 8px;
   position: relative;
 
   .ms-MessageBar-icon {
+    @include padding-right(8px);
     color: $ms-color-info;
   }
 
@@ -35,7 +33,6 @@ $MessageBar-padding: 8px;
 }
 
 .ms-MessageBar-icon {
-  @include padding-right($MessageBar-padding);
   font-size: $ms-icon-size-m;
   min-width: 16px;
   min-height: 16px;
@@ -107,6 +104,7 @@ $MessageBar-padding: 8px;
 // Shared
 
 .ms-MessageBar-content {
+  padding: 16px;
   display: flex;
   width: 100%;
   box-sizing: border-box;
@@ -134,10 +132,6 @@ $MessageBar-padding: 8px;
 
 .ms-MessageBar-actionsOneline {
   position: relative;
-}
-
-.ms-MessageBar-actions {
-  padding-top: 12px;
 }
 
 .ms-MessageBar-dismissal {
@@ -170,20 +164,18 @@ $MessageBar-padding: 8px;
 .ms-MessageBar-singleline {
   .ms-MessageBar-content {
     .ms-MessageBar-icon{
-      @include padding(16px, 8px, 16px, 0);
       align-items: center;
     }
 
-    .ms-MessageBar-text {
-      padding: 16px 0 16px 0;
-    }
-
     .ms-MessageBar-actionables > .ms-MessageBar-text {
+      justify-content: center;
+      align-items: center;
+
       .ms-MessageBar-innerText,
       .ms-MessageBar-innerTextPadding {
         max-height: 1.3em;
         line-height: 1.3em;
-        overflow: hidden;
+        overflow-x: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
