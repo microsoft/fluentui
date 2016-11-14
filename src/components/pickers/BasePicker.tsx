@@ -12,7 +12,8 @@ import { BaseComponent } from '../../common/BaseComponent';
 import {
   css,
   autobind,
-  KeyCodes
+  KeyCodes,
+  getRTL
 } from '../../Utilities';
 import './BasePicker.scss';
 
@@ -81,21 +82,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   public render() {
     let { suggestedDisplayValue } = this.state;
-    let {
-      className,
-      inputProps
-    } = this.props;
-
     return (
-      <div
-        ref={ this._resolveRef('root') }
-        className={ css('ms-BasePicker', className ? className : '') }
-        onKeyDown={ this.onKeyDown }>
+      <div ref={ this._resolveRef('root') } className={ css('ms-BasePicker', this.props.className ? this.props.className : '') } onKeyDown={ this.onKeyDown }>
         <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
           <FocusZone ref={ this._resolveRef('focusZone') } className='ms-BasePicker-text'>
             { this.renderItems() }
             <BaseAutoFill
-              { ...inputProps }
               className='ms-BasePicker-input'
               ref={ this._resolveRef('input') }
               onFocus={ this.onInputFocus }
@@ -106,8 +98,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
               aria-expanded='true'
               aria-haspopup='true'
               autoCapitalize='off'
-              autoComplete='off'
-              role='combobox' />
+              autoComplete='off' />
           </FocusZone>
         </SelectionZone>
         { this.renderSuggestions() }
@@ -118,7 +109,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected renderSuggestions(): JSX.Element {
     let TypedSuggestion = this.SuggestionOfProperType;
     return this.state.suggestionsVisible ? (
-      <Callout isBeakVisible={ false } gapSpace={ 0 } targetElement={ this.root } onDismiss={ this.dismissSuggestions } directionalHint={ DirectionalHint.bottomLeftEdge }>
+      <Callout
+        isBeakVisible={ false }
+        gapSpace={ 0 }
+        targetElement={ this.root }
+        onDismiss={ this.dismissSuggestions }
+        directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }>
         <TypedSuggestion
           onRenderSuggestion={ this.props.onRenderSuggestionsItem }
           onSuggestionClick={ this.onSuggestionClick }
@@ -360,21 +356,16 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BasePicker<T, P> {
   public render() {
     let { suggestedDisplayValue } = this.state;
-    let {
-      className,
-      inputProps
-    } = this.props;
 
     return (
       <div>
         <div ref={ this._resolveRef('root') }
-          className={ css('ms-BasePicker', className ? className : '') }
+          className={ css('ms-BasePicker', this.props.className ? this.props.className : '') }
           onKeyDown={ this.onKeyDown }>
           <SelectionZone selection={ this.selection }
             selectionMode={ SelectionMode.multiple }>
             <div className='ms-BasePicker-text'>
               <BaseAutoFill
-                { ...inputProps }
                 className='ms-BasePicker-input'
                 ref={ this._resolveRef('input') }
                 onFocus={ this.onInputFocus }
@@ -386,7 +377,6 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
                 aria-haspopup='true'
                 autoCapitalize='off'
                 autoComplete='off'
-                role='combobox'
                 />
             </div>
           </SelectionZone>

@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Pane } from './Pane';
 
 export interface IPaneProps extends React.Props<Pane> {
-<<<<<<< HEAD
     /**
      * Whether the pane is displayed.
      * @default false

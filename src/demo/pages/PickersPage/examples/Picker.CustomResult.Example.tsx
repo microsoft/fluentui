@@ -296,11 +296,11 @@ export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumen
     <DocumentCard
       onClick={ () => { console.log('You clicked the card.'); } }
       >
-      <DocumentCardPreview { ...documentPreviewProps } />
-      <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com' ariaLabel='Location, Marketing Documents' />
-      <DocumentCardTitle { ...documentTitleProps } />
-      <DocumentCardActivity { ...documentActivityProps } />
-      <DocumentCardActions actions={ actions } />
+      <DocumentCardPreview { ...documentPreviewProps }/>
+      <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com' ariaLabel='Location, Marketing Documents'/>
+      <DocumentCardTitle { ...documentTitleProps }/>
+      <DocumentCardActivity { ...documentActivityProps }/>
+      <DocumentCardActions actions={ actions }/>
     </DocumentCard>
   );
 };
@@ -317,7 +317,7 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
         onRenderSuggestionsItem={ SuggestedBigItem }
         onResolveSuggestions={ this._onFilterChanged }
         onRenderItem={ SelectedDocumentItem }
-        getTextFromItem={ (props: any) => props.documentTitleProps.title }
+        getTextFromItem={(props: any) => props.documentTitleProps.title}
         pickerSuggestionsProps={
           {
             suggestionsHeaderText: 'Suggested Documents',
@@ -351,7 +351,6 @@ export class DocumentPicker extends BasePicker<IFullDocumentCardProps, IDocument
           <SelectionZone selection={ this.selection }>
             <div className='ms-BasePicker-text'>
               <BaseAutoFill
-                { ...this.props.inputProps }
                 className='ms-BasePicker-input'
                 ref={ this._resolveRef('input') }
                 onFocus={ this.onInputFocus }
@@ -363,7 +362,6 @@ export class DocumentPicker extends BasePicker<IFullDocumentCardProps, IDocument
                 aria-haspopup='true'
                 autoCapitalize='off'
                 autoComplete='off'
-                role='combobox'
                 />
             </div>
           </SelectionZone>

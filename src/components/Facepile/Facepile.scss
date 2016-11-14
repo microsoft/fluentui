@@ -21,17 +21,15 @@
 }
 
 button.ms-Facepile-itemBtn {
-  display: inline;
-  background: none;
-  padding: 0;
-  cursor: pointer;
-  border: none;
-  color: $ms-color-neutralSecondary;
-  background-color: $ms-color-neutralLight;
+   display: inline;
+   background: none;
+   padding: 0;
+   cursor: pointer;
+   border: none;
 }
 
 button.ms-Facepile-addBtn {
-  font-size: $ms-font-size-m;
+  font-size: $ms-font-size-s;
   color: $ms-color-white;
   background-color: $ms-color-themePrimary;
 
@@ -49,10 +47,9 @@ button.ms-Facepile-addBtn {
   }
 }
 
+button.ms-Facepile-chevronBtn,
 button.ms-Facepile-overflowBtn {
-  font-size: $ms-font-size-m;
-}
-
-button.ms-Facepile-descriptiveOverflowBtn {
   font-size: $ms-font-size-s;
+  color: $ms-color-neutralSecondary;
+  background-color: $ms-color-neutralLight;
 }

@@ -52,7 +52,7 @@ This will add the fabric-react project as a dependency in your package.json file
 
 The library includes commonjs entry points under the lib folder. To use a control, you should be able to import it and use it in your render method:
 
-```js
+```
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Button } from 'office-ui-fabric-react/lib/Button';

@@ -66,7 +66,6 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
           <div className='ms-Toggle-slider'>
             <button
               ref={ (c): HTMLButtonElement => this._toggleButton = c }
-              type='button'
               id={ this._id }
               name={ this._id }
               className={ css('ms-Toggle-button', className) }

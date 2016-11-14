@@ -30,7 +30,7 @@ export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, a
         componentName='PeoplePickerExample'
         exampleCards={
           <div>
-            <ExampleCard title='People Pickers' code={ PeoplePickerTypesExampleCode }>
+            <ExampleCard title='People Pickers' code={PeoplePickerTypesExampleCode}>
               <PeoplePickerTypesExample />
             </ExampleCard>
           </div>
@@ -44,8 +44,8 @@ export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, a
             <span> are used to pick recipients.</span>
           </div>
         }
-        route={ this._url }
-        isHeaderVisible={ this.props.isHeaderVisible }
+        route={this._url}
+        isHeaderVisible={this.props.isHeaderVisible}
         bestPractices={
           <div>The PeoplePicker is used to select one or more entities, such as people or groups. Entry points for PeoplePickers are typically specialized TextField-like input fields known as a "well", which are used to search for recipients from a list. When a recipient is selected from the list, it is added to the well as a specialized Persona that can be interacted with or removed. Clicking on a Persona from the well should invoke a PersonaCard or open a profile pane for that recipient.</div>
         }
