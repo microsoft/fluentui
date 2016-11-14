@@ -26,8 +26,7 @@ export interface IPeoplePickerExampleState {
 
 const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsHeaderText: 'Suggested People',
-  noResultsFoundText: 'No results found',
-  loadingText: 'Loading'
+  noResultsFoundText: 'No results found'
 };
 
 export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerExampleState> {
@@ -102,22 +101,22 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     return (
       <div>
         { currentPicker }
-        <div className={'dropdown-div'}>
+        <div className={ 'dropdown-div' }>
           <Dropdown label='Select People Picker Type'
-            options={[
+            options={ [
               { key: 1, text: 'Normal' },
               { key: 2, text: 'Compact' },
               { key: 3, text: 'Members List' },
               { key: 4, text: 'Preselected Items' },
               { key: 5, text: 'Limit Search' }
-            ]}
+            ] }
             selectedKey={ this.state.currentPicker }
             onChanged={ this._dropDownSelected }
             />
           <Toggle
             label='Delay Suggestion Results'
             defaultChecked={ false }
-            onChanged={ this._toggleChange }/>
+            onChanged={ this._toggleChange } />
         </div>
       </div>
     );
@@ -130,7 +129,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
         className={ 'ms-PeoplePicker' }
         pickerSuggestionsProps={ suggestionProps }
-        key={'list'}
+        key={ 'list' }
         />
     );
   }
