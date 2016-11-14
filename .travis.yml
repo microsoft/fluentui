@@ -4,6 +4,8 @@ node_js:
 before_script:
   - npm install -g gulp
 script:
+  - node node_modules/@microsoft/npmx/lib/npmx.js install
+  - node node_modules/@microsoft/npmx/lib/npmx.js link
   - node node_modules/@microsoft/npmx/lib/npmx.js build --production
 deploy:
   provider: npm
