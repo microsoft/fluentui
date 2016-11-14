@@ -98,7 +98,4 @@ package
 package-deps.json
 
 
-/common/last-install.log
 /common/npm-local
-/common/local-npm
-/common/npmx-link.json
