@@ -29,7 +29,7 @@ describe('ContextualMenu', () => {
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
     let menuList = renderedDOM.querySelector('.ms-ContextualMenu-list');
 
-    expect(menuList.scrollHeight).to.be.lte(menuList.clientHeight, "ContextualMenu is showing a scrollbar due to checkmark");
+    expect(menuList.scrollHeight).to.be.lte(menuList.clientHeight, 'ContextualMenu is showing a scrollbar due to checkmark');
   });
 
 });
