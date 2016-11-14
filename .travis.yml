@@ -3,7 +3,8 @@ node_js:
   - 'node'
 before_script:
   - npm install -g gulp
-script: gulp --production
+script:
+  - node node_modules/@microsoft/npmx/lib/npmx.js build --production
 deploy:
   provider: npm
   email: dzearing@microsoft.com
