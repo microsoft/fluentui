@@ -18,7 +18,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
   };
 
   private ICON_MAP = {
-    [MessageBarType.info]:    'Info',
+    [MessageBarType.info]: 'Info',
     [MessageBarType.warning]: 'Info',
     [MessageBarType.error]: 'ErrorBadge',
     [MessageBarType.blocked]: 'Blocked',
@@ -59,8 +59,8 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
       'ms-MessageBar--error': this.props.messageBarType === MessageBarType.error,
       'ms-MessageBar--blocked': (this.props.messageBarType === MessageBarType.blocked) || (this.props.messageBarType === MessageBarType.remove), // TODO remove deprecated value at >= 1.0.0
       'ms-MessageBar--severeWarning': this.props.messageBarType === MessageBarType.severeWarning,
-      'ms-MessageBar--success' : this.props.messageBarType === MessageBarType.success,
-      'ms-MessageBar--warning' : this.props.messageBarType === MessageBarType.warning
+      'ms-MessageBar--success': this.props.messageBarType === MessageBarType.success,
+      'ms-MessageBar--warning': this.props.messageBarType === MessageBarType.warning
     });
   }
 
@@ -73,7 +73,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
         onClick={ this.props.onDismiss }
         icon='Cancel'
         ariaLabel={ this.props.dismissButtonAriaLabel }
-      />;
+        />;
     }
     return null;
   }
@@ -95,10 +95,10 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
             { this._getDismissDiv() }
             <div className='ms-MessageBar-text' id={ this.state.labelId }>
               <span className={ this._getInnerTextClassName() }>
-              {  this.props.children }
+                { this.props.children }
               </span>
             </div>
-          { this._getActionsDiv() }
+            { this._getActionsDiv() }
           </div>
         </div>
       </div>
@@ -107,17 +107,17 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
 
   private _renderSingleLine(): React.ReactElement<React.HTMLProps<HTMLAreaElement>> {
     return (
-      <div className={this._getClassName() + ' ms-MessageBar-singleline' } role='status' aria-live='polite' aria-controls='ms-MessageBar-text'>
+      <div className={ this._getClassName() + ' ms-MessageBar-singleline' } role='status' aria-live='polite' aria-controls='ms-MessageBar-text'>
         <div className='ms-MessageBar-content'>
           { this._getIconSpan() }
           <div className='ms-MessageBar-actionables'>
             <div className='ms-MessageBar-text' id={ this.state.labelId }>
               <span className={ this._getInnerTextClassName() }>
-              {  this.props.children }
+                { this.props.children }
               </span>
             </div>
-          { this._getActionsDiv() }
           </div>
+          { this._getActionsDiv() }
         </div>
       </div>
     );
