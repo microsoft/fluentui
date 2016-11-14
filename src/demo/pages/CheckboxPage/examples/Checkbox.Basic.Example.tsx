@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   Checkbox
-  } from '../../../../Checkbox';
+} from '../../../../Checkbox';
 
 export interface ICheckboxBasicExampleState {
   isChecked: boolean;
@@ -47,7 +47,7 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
   }
 
   private _onCheckboxChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean) {
-    console.log(`The option has been changed to ${ isChecked }.`);
+    console.log(`The option has been changed to ${isChecked}.`);
   }
 
 }

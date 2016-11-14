@@ -27,19 +27,19 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
     };
 
     return (
-      <div className={'ms-FacepileExample'}>
+      <div className={ 'ms-FacepileExample' }>
         <Facepile {...facepileProps} />
         <Slider
           label='Number of Personas:'
-          min={1}
-          max={5}
-          step={1}
-          showValue={true}
-          value={numberOfFaces}
-          onChange={value => this.setState((prevState: IFacepileBasicExampleState) => {
+          min={ 1 }
+          max={ 5 }
+          step={ 1 }
+          showValue={ true }
+          value={ numberOfFaces }
+          onChange={ value => this.setState((prevState: IFacepileBasicExampleState) => {
             prevState.numberOfFaces = value;
             return prevState;
-          })}
+          }) }
           />
       </div>
     );

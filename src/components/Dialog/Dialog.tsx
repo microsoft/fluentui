@@ -84,49 +84,49 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
     let groupings = this._groupChildren();
 
     if (subText) {
-      subTextContent = <p className='ms-Dialog-subText' id={id + '-subText'}>{subText}</p>;
+      subTextContent = <p className='ms-Dialog-subText' id={ id + '-subText' }>{ subText }</p>;
     }
 
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints
     if (responsiveMode >= ResponsiveMode.small) {
       return (
-        <Layer onLayerMounted={onLayerMounted}>
+        <Layer onLayerMounted={ onLayerMounted }>
           <Popup
             role='dialog'
-            ariaLabelledBy={title ? id + '-title' : ''}
-            ariaDescribedBy={subText ? id + '-subText' : ''}
-            onDismiss={onDismiss}
+            ariaLabelledBy={ title ? id + '-title' : '' }
+            ariaDescribedBy={ subText ? id + '-subText' : '' }
+            onDismiss={ onDismiss }
             >
             <div
-              className={dialogClassName}
-              ref={this._onDialogRef}>
-              <Overlay isDarkThemed={isDarkOverlay} onClick={isBlocking ? null : onDismiss} />
+              className={ dialogClassName }
+              ref={ this._onDialogRef }>
+              <Overlay isDarkThemed={ isDarkOverlay } onClick={ isBlocking ? null : onDismiss } />
               <FocusTrapZone
-                className={css('ms-Dialog-main', this.props.containerClassName)}
-                elementToFocusOnDismiss={elementToFocusOnDismiss}
-                isClickableOutsideFocusTrap={isClickableOutsideFocusTrap ? isClickableOutsideFocusTrap : !isBlocking}
-                ignoreExternalFocusing={ignoreExternalFocusing}
-                forceFocusInsideTrap={forceFocusInsideTrap}
-                firstFocusableSelector={firstFocusableSelector}>
+                className={ css('ms-Dialog-main', this.props.containerClassName) }
+                elementToFocusOnDismiss={ elementToFocusOnDismiss }
+                isClickableOutsideFocusTrap={ isClickableOutsideFocusTrap ? isClickableOutsideFocusTrap : !isBlocking }
+                ignoreExternalFocusing={ ignoreExternalFocusing }
+                forceFocusInsideTrap={ forceFocusInsideTrap }
+                firstFocusableSelector={ firstFocusableSelector }>
                 <div className='ms-Dialog-header'>
-                  <p className='ms-Dialog-title' id={id + '-title'}>{title}</p>
+                  <p className='ms-Dialog-title' id={ id + '-title' }>{ title }</p>
                   <div className='ms-Dialog-topButton'>
                     <Button
                       className='ms-Dialog-button ms-Dialog-button--close'
-                      buttonType={ButtonType.icon}
+                      buttonType={ ButtonType.icon }
                       icon='Cancel'
-                      rootProps={{ title: closeButtonAriaLabel }}
-                      ariaLabel={closeButtonAriaLabel}
-                      onClick={onDismiss}
+                      rootProps={ { title: closeButtonAriaLabel } }
+                      ariaLabel={ closeButtonAriaLabel }
+                      onClick={ onDismiss }
                       />
                   </div>
                 </div>
                 <div className='ms-Dialog-inner'>
-                  <div className={css('ms-Dialog-content', this.props.contentClassName)}>
-                    {subTextContent}
-                    {groupings.contents}
+                  <div className={ css('ms-Dialog-content', this.props.contentClassName) }>
+                    { subTextContent }
+                    { groupings.contents }
                   </div>
-                  {groupings.footers}
+                  { groupings.footers }
                 </div>
               </FocusTrapZone>
             </div>

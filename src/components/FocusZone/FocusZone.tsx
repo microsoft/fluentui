@@ -75,7 +75,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       parentElement &&
       parentElement !== document.body &&
       parentElement.nodeType === 1
-      ) {
+    ) {
       if (isElementFocusZone(parentElement)) {
         this._isInnerZone = true;
         break;

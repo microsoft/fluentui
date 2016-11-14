@@ -40,23 +40,23 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
     facepileProps.overflowButtonType = overflowButtonType;
 
     return (
-      <div className={'ms-FacepileExample'}>
+      <div className={ 'ms-FacepileExample' }>
         <Facepile {...facepileProps} />
         <Slider
           label='Number of Personas Shown:'
-          min={0}
-          max={6}
-          step={1}
-          showValue={true}
-          value={this.state.displayedPersonas}
-          onChange={value => this.setState((prevState: IFacepileOverflowExampleState) => {
+          min={ 0 }
+          max={ 6 }
+          step={ 1 }
+          showValue={ true }
+          value={ this.state.displayedPersonas }
+          onChange={ value => this.setState((prevState: IFacepileOverflowExampleState) => {
             prevState.displayedPersonas = value;
             return prevState;
-          })}
+          }) }
           />
         <Dropdown
           label='Overflow Type:'
-          selectedKey={this.state.overflowButtonType}
+          selectedKey={ this.state.overflowButtonType }
           options={
             [
               { key: OverflowButtonType.none, text: OverflowButtonType[OverflowButtonType.none] },
@@ -66,10 +66,10 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
 
             ]
           }
-          onChanged={value => this.setState((prevState: IFacepileOverflowExampleState) => {
+          onChanged={ value => this.setState((prevState: IFacepileOverflowExampleState) => {
             prevState.overflowButtonType = value.key as OverflowButtonType;
             return prevState;
-          })}
+          }) }
           />
       </div>
     );
