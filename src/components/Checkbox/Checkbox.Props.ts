@@ -54,5 +54,5 @@ export interface ICheckboxProps extends React.Props<Checkbox> {
    * Note that if you provide, for example, "disabled" as well as "inputProps.disabled", the former will take
    * precedence over the later.
    */
-  inputProps?: React.HTMLProps<HTMLInputElement>;
+  inputProps?: React.Props<HTMLInputElement>;
 }

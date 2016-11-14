@@ -613,24 +613,25 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   private _shouldInputLoseFocus(element: HTMLInputElement, isForward?: boolean) {
-    if (element && element.hasAttribute('selectionStart')) {
+    if (element) {
       let selectionStart = element.selectionStart;
       let selectionEnd = element.selectionEnd;
-      let isRangeSelected = selectionStart !== selectionEnd;
-      let inputValue = element.value;
-
-      // We shouldn't lose focus in the following cases:
-      // 1. There is range selected.
-      // 2. When selection start is larger than 0 and it is backward.
-      // 3. when selection start is not the end of lenght and it is forward.
-      if (isRangeSelected ||
-        (selectionStart > 0 && !isForward) ||
-        (selectionStart !== inputValue.length && isForward)) {
+      // This means that the input has text selected and we shouldn't lose focus.
+      if (selectionStart !== selectionEnd) {
         return false;
+      } else {
+        let inputValue = element.value;
+
+        if (selectionStart === 0 && !isForward) {
+          return true;
+        } else if (selectionStart === inputValue.length && isForward) {
+          return true;
+        } else {
+          return false;
+        }
       }
     }
-
-    return true;
+    return false;
   }
 
 }
