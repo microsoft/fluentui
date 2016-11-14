@@ -49,22 +49,22 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
         className={ className }
         aria-label={ this._ariaLabel }
         data-is-focusable={ true }
-      >
+        >
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           <div className={ css(styles.itemTaskRow, 'ms-Grid-row') }>
             <Checkbox
               label={ this.props.item.title }
               onChange={ this._onCheckboxChange }
               checked={ this.props.item.isComplete === true }
-            />
+              />
             <Button
               className={ styles.deleteButton }
-              buttonType={ButtonType.icon}
+              buttonType={ ButtonType.icon }
               icon='x'
               onClick={ this._onDelete }
               title={ strings.deleteItemTitle }
               ariaLabel={ strings.deleteItemAriaLabel }
-            />
+              />
           </div>
         </FocusZone>
       </div>
@@ -79,11 +79,11 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
     return `${completeState} ${titleString}`;
   }
 
-  private _onCheckboxChange(ev: React.FormEvent, isChecked: boolean): void {
+  private _onCheckboxChange(ev: React.FormEvent<HTMLElement>, isChecked: boolean): void {
     this._handleWithAnimation(this.props.onToggleComplete, 'ms-u-slideUpOut20');
   }
 
-  private _onDelete(event: React.MouseEvent<HTMLElement>): void {
+  private _onDelete(event: React.MouseEvent<HTMLButtonElement>): void {
     this._handleWithAnimation(this.props.onDeleteItem, 'ms-u-slideUpOut20');
   }
 

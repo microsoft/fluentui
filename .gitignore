@@ -92,3 +92,5 @@ TDSDeployConfig.json
 ftpconfig.json
 
 package
+
+*.log

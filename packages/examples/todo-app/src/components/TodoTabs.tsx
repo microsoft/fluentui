@@ -60,13 +60,13 @@ export default class TodoTabs extends React.Component<ITodoTabsProps, {}> {
       <PivotItem linkText={ `${tabName} (${tasks.length})` }>
         <FocusZone
           direction={ FocusZoneDirection.vertical }
-          isInnerZoneKeystroke={ (ev: KeyboardEvent) => ev.which === KeyCodes.right }
-        >
+          isInnerZoneKeystroke={ ev => ev.which === KeyCodes.right }
+          >
           <List
             className={ styles.todoList }
             items={ tasks }
             onRenderCell={ this._onRenderTodoItem }
-          />
+            />
         </FocusZone>
       </PivotItem>
     );
@@ -79,7 +79,7 @@ export default class TodoTabs extends React.Component<ITodoTabsProps, {}> {
         item={ item }
         onToggleComplete={ this.props.onToggleComplete }
         onDeleteItem={ this.props.onDeleteItem }
-      />
+        />
     );
   }
 }

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import Todo from './components/Todo';
 import DataProvider from './DataProvider';
 import { ITodoProps } from './types/index';
@@ -14,9 +15,13 @@ function start(): void {
     document.body.appendChild(_rootDiv);
   }
 
-  ReactDOM.render(<Todo
+  ReactDOM.render(
+    <Fabric>
+      <Todo
         dataProvider={ _dataProvider }
-      />, _rootDiv);
+        />
+    </Fabric>,
+    _rootDiv);
 }
 
 // Start the application.
