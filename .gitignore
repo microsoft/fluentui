@@ -94,3 +94,5 @@ ftpconfig.json
 package
 
 *.log
+
+package-deps.json
