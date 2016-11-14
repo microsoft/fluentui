@@ -67,12 +67,12 @@ export enum PaneType {
 
 export enum PaneMode {
   /**
-   * Pane comes into view and pushes the content over.
+   * Pane reflows the main content and shrinks the viewable area.
    */
   push,
 
   /**
-   * Pane comes into view without pushing the content over (true)
+   * Pane leaves the content unchanged and only resizes the viewable area.
    */
   overlay
 }
