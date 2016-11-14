@@ -21,7 +21,7 @@ $ContextualMenu-iconWidth: 14px;
 .ms-ContextualMenu-item {
   @include ms-font-m;
   color: $ms-color-neutralPrimary;
-
+  height: $ContextualMenu-itemHeight;
   position: relative;
   box-sizing: border-box;
 }
@@ -90,6 +90,7 @@ a.ms-ContextualMenu-link {
   color: $ms-color-themePrimary;
   display: inline-block;
   min-height: 1px;
+  max-height: $ContextualMenu-itemHeight;
   width: $ContextualMenu-iconWidth;
   text-align: center;
   vertical-align: top;
