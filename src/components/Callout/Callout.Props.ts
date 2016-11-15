@@ -2,43 +2,73 @@ import * as React from 'react';
 import { Callout } from './Callout';
 import { CalloutContent } from './CalloutContent';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IPositionProps } from '../../utilities/positioning';
+import { IRectangle } from '../../common/IRectangle';
+import { IPoint } from '../../common/IPoint';
 
-export interface ICalloutProps extends React.Props<Callout|CalloutContent>, IPositionProps {
+export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
+
+  target?: HTMLElement | string | MouseEvent;
+
   /**
-   * Element to anchor the callout to.
+   * The element that the Callout should be positioned based on.
+   * If a string is given, that is assumed to be the targetElement's Id
+   * The Callout will then use document.getElementById to get the element.
+   * @deprecated use target
    */
-  targetElement?: HTMLElement;
+  targetElement?: HTMLElement | string;
 
   /**
-   * Indicator of how the callout should be anchored to its targetElement.
-   * @default DirectionalHint.rightCenter
+   * How the element should be positioned
+   * @default DirectionalHint.BottomAutoEdge
    */
   directionalHint?: DirectionalHint;
 
   /**
-   * The gap space between the target element and the callout.
+   * The gap between the Callout and the target
    * @default 16
    */
   gapSpace?: number;
 
- /**
-   * @deprecated
-   * Deprecated at v0.59.1, to be removed at >= v1.0.0. Pass in a beakWidth to dictate size.
-   */
-  beakStyle?: string;
-
   /**
-   * The beak width of the selected beakStyle.
-   * @default 28
+   * The width of the beak.
+   * @default 16
    */
   beakWidth?: number;
 
   /**
-   * Whether the beak should be visible.
-   * @default true
+   * The bounding rectangle for which  the contextual menu can appear in.
+   */
+  bounds?: IRectangle;
+
+  /**
+   * If true use a point rather than rectangle to position the Callout.
+   * For example it can be used to position based on a click.
+   */
+  useTargetPoint?: boolean;
+
+  /**
+   * Point used to position the Callout
+   */
+  targetPoint?: IPoint;
+
+  /**
+   * If true then the beak is visible. If false it will not be shown.
+   * @default false
    */
   isBeakVisible?: boolean;
+
+  /**
+   * If true the position returned will have the menu element cover the target.
+   * If false then it will position next to the target;
+   * @default false
+   */
+  coverTarget?: boolean;
+
+  /**
+    * @deprecated
+    * Deprecated at v0.59.1, to be removed at >= v1.0.0. Pass in a beakWidth to dictate size.
+    */
+  beakStyle?: string;
 
   /**
    * CSS class to apply to the callout.

@@ -44,8 +44,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
     this.state = {
       isCalloutVisible: false,
       isBeakVisible: true,
-      directionalHint: DirectionalHint.bottomLeftEdge,
-      beakWidth: 10
+      directionalHint: DirectionalHint.bottomLeftEdge
     };
   }
 
@@ -57,21 +56,21 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
         <div className='ms-CalloutExample-configArea'>
           <Checkbox label='Show beak' checked={ isBeakVisible } onChange={ this._onShowBeakChange } />
           <Slider
-            max={ 20 }
+            max={ 30 }
             label='Gap Space'
             min={ 0 }
-            defaultValue={ 0 }
+            defaultValue={ 16 }
             onChange={ this._onGapSlider } />
           { isBeakVisible &&
             (<Slider
-            max={ 50 }
-            label='Beak Width'
-            min={ 10 }
-            defaultValue={ 10 }
-            onChange={ this._onBeakWidthSlider } />) }
+              max={ 50 }
+              label='Beak Width'
+              min={ 10 }
+              defaultValue={ 16 }
+              onChange={ this._onBeakWidthSlider } />) }
           <Dropdown
             label='Directional hint'
-            selectedKey={ DirectionalHint[directionalHint]}
+            selectedKey={ DirectionalHint[directionalHint] }
             options={ DIRECTION_OPTIONS }
             onChanged={ this._onDirectionalChanged } />
         </div>
