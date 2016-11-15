@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  Checkbox,
   Dropdown,
   Facepile,
   IFacepilePersona,
@@ -17,6 +18,7 @@ export enum ExtraDataType {
 
 export interface IFacepileBasicExampleState {
   numberOfFaces: any;
+  imagesFadeIn: boolean;
   extraDataType: ExtraDataType;
 }
 
@@ -26,6 +28,7 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
 
     this.state = {
       numberOfFaces: 3,
+      imagesFadeIn: true,
       extraDataType: ExtraDataType.none
     };
   }
@@ -37,15 +40,19 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
       getPersonaProps: (persona: IFacepilePersona) => {
         if (extraDataType === ExtraDataType.firstName) {
           return {
+            imageShouldFadeIn: this.state.imagesFadeIn,
             hidePersonaDetails: false
           }
         } else if (extraDataType === ExtraDataType.stats) {
           return {
+            imageShouldFadeIn: this.state.imagesFadeIn,
             hidePersonaDetails: false,
             primaryText: `[${persona.data}]`
           }
         }
-        return null;
+        return {
+          imageShouldFadeIn: this.state.imagesFadeIn,
+        };
       }
     };
 
@@ -64,6 +71,16 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
             return prevState;
           }) }
           />
+        <Checkbox
+          label='Fade In'
+          checked={ this.state.imagesFadeIn }
+          onChange={ (ev, checked) => {
+            this.setState((prevState: IFacepileBasicExampleState) => {
+              prevState.imagesFadeIn = checked;
+              return prevState;
+            });
+          } } />
+
         <Dropdown
           label='Additional Data:'
           selectedKey={ this.state.extraDataType }
