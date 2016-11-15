@@ -58,6 +58,8 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   display: inline;
   vertical-align: top;
   line-height: $CommandBar-height;
+  height: $CommandBar-height;
+  max-width: 100%;
   margin: 0 20px;
 }
 
