@@ -1,5 +1,4 @@
-// OneDrive:IgnoreCodeCoverage
-
+// Please keep alphabetized
 export enum IconName {
   AccessLogo,
   Add,
@@ -170,5 +169,5 @@ export enum IconName {
   Warning,
   WordLogo,
   WorkFlow,
-  ZoomIn,
+  ZoomIn
 }

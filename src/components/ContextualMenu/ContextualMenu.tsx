@@ -167,7 +167,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     let { submenuProps } = this.state;
 
-    let hasIcons = !!(items && items.some(item => !!item.icon));
+    let hasIcons = !!(items && items.some(item => !!item.icon || !!item.iconProps));
     let hasCheckmarks = !!(items && items.some(item => !!item.canCheck));
 
     return (

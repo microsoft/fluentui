@@ -63,4 +63,7 @@
 .ms-ContextualMenu-customizationExample {
   text-align: center;
   max-width: 180px;
+  .ms-ContextualMenu-item {
+    height: auto;
+  }
 }

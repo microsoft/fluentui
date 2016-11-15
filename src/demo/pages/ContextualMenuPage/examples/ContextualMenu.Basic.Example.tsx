@@ -45,8 +45,13 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                 },
                 {
                   key: 'upload',
-                  icon: 'Upload',
-                  name: 'Upload',
+                  iconProps: {
+                    iconName: IconName.Upload,
+                    style: {
+                      color: 'salmon'
+                    }
+                  },
+                  name: 'Upload (Custom Color)',
                   title: 'Upload a file'
                 },
                 {
@@ -72,12 +77,16 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                 },
                 {
                   key: 'share',
-                  icon: 'Share',
+                  iconProps: {
+                    iconName: IconName.Share
+                  },
                   items: [
                     {
                       key: 'sharetoemail',
                       name: 'Share to Email',
-                      icon: 'Mail'
+                      iconProps: {
+                        iconName: IconName.Mail
+                      },
                     },
                     {
                       key: 'sharetofacebook',
@@ -86,13 +95,17 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                     {
                       key: 'sharetotwitter',
                       name: 'Share to Twitter',
-                      icon: 'Share',
+                      iconProps: {
+                        iconName: IconName.Share
+                      },
                       items: [
                         {
                           key: 'sharetoemail_1',
                           name: 'Share to Email',
                           title: 'Share to Email',
-                          icon: 'Mail'
+                          iconProps: {
+                            iconName: IconName.Mail
+                          },
                         },
                         {
                           key: 'sharetofacebook_1',
@@ -103,7 +116,9 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                           key: 'sharetotwitter_1',
                           name: 'Share to Twitter',
                           title: 'Share to Twitter',
-                          icon: 'Share'
+                          iconProps: {
+                            iconName: IconName.Share
+                          }
                         },
                       ],
                     },
@@ -112,12 +127,16 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                 },
                 {
                   key: 'print',
-                  icon: 'Print',
+                  iconProps: {
+                    iconName: IconName.Print
+                  },
                   name: 'Print'
                 },
                 {
                   key: 'music',
-                  icon: 'MusicInCollectionFill',
+                  iconProps: {
+                    iconName: IconName.MusicInCollectionFill
+                  },
                   name: 'Music',
                 },
                 {
