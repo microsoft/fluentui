@@ -127,7 +127,7 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
             key: SelectionMode[SelectionMode.none],
             name: 'None',
             canCheck: true,
-            isChecked: selectionMode === SelectionMode.none,
+            checked: selectionMode === SelectionMode.none,
             onClick: this._onSelectionModeChanged,
             data: SelectionMode.none
 
@@ -136,7 +136,7 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
             key: SelectionMode[SelectionMode.single],
             name: 'Single select',
             canCheck: true,
-            isChecked: selectionMode === SelectionMode.single,
+            checked: selectionMode === SelectionMode.single,
             onClick: this._onSelectionModeChanged,
             data: SelectionMode.single
           },
@@ -144,7 +144,7 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
             key: SelectionMode[SelectionMode.multiple],
             name: 'Multi select',
             canCheck: true,
-            isChecked: selectionMode === SelectionMode.multiple,
+            checked: selectionMode === SelectionMode.multiple,
             onClick: this._onSelectionModeChanged,
             data: SelectionMode.multiple
           },
@@ -164,7 +164,7 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
             key: 'all',
             name: 'All items',
             canCheck: true,
-            isChecked: canSelect === 'all',
+            checked: canSelect === 'all',
             onClick: this._onCanSelectChanged,
             data: 'all'
           },
@@ -172,7 +172,7 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
             key: 'a',
             name: 'Names starting with vowels',
             canCheck: true,
-            isChecked: canSelect === 'vowels',
+            checked: canSelect === 'vowels',
             onClick: this._onCanSelectChanged,
             data: 'vowels'
           }
@@ -194,7 +194,7 @@ export class SelectionItemExample extends React.Component<ISelectionItemExampleP
       <div className='ms-SelectionItemExample'  data-selection-index={ itemIndex }>
         { (selectionMode !== SelectionMode.none) && (
           <div className='ms-SelectionItemExample-check' data-selection-toggle={ true } >
-            <Check isChecked={ isSelected } />
+            <Check checked={ isSelected } />
           </div>
         ) }
         <span className='ms-SelectionItemExample-name'>
