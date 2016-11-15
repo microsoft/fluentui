@@ -238,6 +238,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _renderAnchorMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): JSX.Element {
+    // Only present to allow continued use of item.icon which is deprecated.
     let iconProps = item.iconProps ? item.iconProps : {
       iconName: IconName[item.icon]
     };
@@ -296,6 +297,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderMenuItemChildren(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
     let isItemChecked: boolean = item.isChecked || item.checked;
+    // Only present to allow continued use of item.icon which is deprecated.
     let iconProps = item.iconProps ? item.iconProps : {
       iconName: IconName[item.icon]
     };

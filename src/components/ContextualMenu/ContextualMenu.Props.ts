@@ -108,7 +108,8 @@ export interface IContextualMenuItem {
 
   /**
    * Icon to display next to the menu item
-   * @deprecated use IconProps instead.
+   * @deprecated at .69 and will no longer exist after 1.0 use IconProps instead.
+   * If you need to change icon colors you will need to switch entirely to iconProps.
    */
   icon?: string;
 
