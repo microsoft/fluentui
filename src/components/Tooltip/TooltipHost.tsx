@@ -5,7 +5,8 @@ import { BaseComponent } from '../../common/BaseComponent';
 import { ITooltipHostProps } from './TooltipHost.Props';
 import { getNativeProps, divProperties } from '../../utilities/properties';
 import { autobind } from '../../utilities/autobind';
-import { Tooltip, TooltipDelay } from './index';
+import { Tooltip } from './Tooltip';
+import { TooltipDelay } from './Tooltip.Props';
 
 export class TooltipHost extends BaseComponent<ITooltipHostProps, any> {
 
