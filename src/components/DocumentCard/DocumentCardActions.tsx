@@ -19,7 +19,7 @@ export class DocumentCardActions extends React.Component<IDocumentCardActionsPro
           );
         }) }
 
-        { views && (
+        { views > 0 && (
         <div className='ms-DocumentCardActions-views'>
           <i className='ms-Icon ms-Icon--View' />
           { views }
