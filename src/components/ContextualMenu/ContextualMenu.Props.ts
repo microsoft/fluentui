@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ContextualMenu } from './ContextualMenu';
 import { IPositionProps } from '../../utilities/positioning';
 import { DirectionalHint } from '../../common/DirectionalHint';
-
+import { IIconProps } from '../Icon/Icon.Props';
 export { DirectionalHint } from '../../common/DirectionalHint';
 
 export interface IContextualMenuProps extends React.Props<ContextualMenu>, IPositionProps {
@@ -102,7 +102,14 @@ export interface IContextualMenuItem {
   name: string;
 
   /**
+   * Props that go to the IconComponent
+   */
+  iconProps?: IIconProps;
+
+  /**
    * Icon to display next to the menu item
+   * @deprecated at .69 and will no longer exist after 1.0 use IconProps instead.
+   * If you need to change icon colors you will need to switch entirely to iconProps.
    */
   icon?: string;
 

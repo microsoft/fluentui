@@ -21,6 +21,7 @@ export * from './Facepile';
 export * from './FocusTrapZone';
 export * from './FocusZone';
 export * from './GroupedList';
+export * from './Icon';
 export * from './Image';
 export * from './Label';
 export * from './Layer';
