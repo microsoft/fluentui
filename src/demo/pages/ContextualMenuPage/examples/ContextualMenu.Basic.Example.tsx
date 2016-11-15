@@ -1,21 +1,21 @@
 import * as React from 'react';
-import { ContextualMenu, DirectionalHint, Button, getRTL } from '../../../../index';
+import { ContextualMenu, DirectionalHint, Button, getRTL, IconName } from '../../../../index';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuBasicExample extends React.Component<any, any> {
 
   constructor() {
     super();
-    this.state = {isContextMenuVisible: false};
+    this.state = { isContextMenuVisible: false };
     this._onClick = this._onClick.bind(this);
     this._onDismiss = this._onDismiss.bind(this);
   }
 
   public render() {
     return (
-        <div>
-          <Button onClick={ this._onClick }> Click for ContextualMenu </Button>
-            { this.state.isContextMenuVisible ? (
+      <div>
+        <Button onClick={ this._onClick }> Click for ContextualMenu </Button>
+        { this.state.isContextMenuVisible ? (
           <ContextualMenu
             shouldFocusOnMount={ true }
             targetPoint={ this.state.target }
@@ -26,7 +26,9 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
               [
                 {
                   key: 'newItem',
-                  icon: 'Add',
+                  iconProps: {
+                    iconName: IconName.Add
+                  },
                   items: [
                     {
                       key: 'emailMessage',
@@ -43,8 +45,13 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                 },
                 {
                   key: 'upload',
-                  icon: 'Upload',
-                  name: 'Upload',
+                  iconProps: {
+                    iconName: IconName.Upload,
+                    style: {
+                      color: 'salmon'
+                    }
+                  },
+                  name: 'Upload (Custom Color)',
                   title: 'Upload a file'
                 },
                 {
@@ -70,12 +77,16 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                 },
                 {
                   key: 'share',
-                  icon: 'Share',
+                  iconProps: {
+                    iconName: IconName.Share
+                  },
                   items: [
                     {
                       key: 'sharetoemail',
                       name: 'Share to Email',
-                      icon: 'Mail'
+                      iconProps: {
+                        iconName: IconName.Mail
+                      },
                     },
                     {
                       key: 'sharetofacebook',
@@ -84,13 +95,17 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                     {
                       key: 'sharetotwitter',
                       name: 'Share to Twitter',
-                      icon: 'Share',
+                      iconProps: {
+                        iconName: IconName.Share
+                      },
                       items: [
                         {
                           key: 'sharetoemail_1',
                           name: 'Share to Email',
                           title: 'Share to Email',
-                          icon: 'Mail'
+                          iconProps: {
+                            iconName: IconName.Mail
+                          },
                         },
                         {
                           key: 'sharetofacebook_1',
@@ -101,21 +116,27 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                           key: 'sharetotwitter_1',
                           name: 'Share to Twitter',
                           title: 'Share to Twitter',
-                          icon: 'Share'
-                      },
-                  ],
+                          iconProps: {
+                            iconName: IconName.Share
+                          }
+                        },
+                      ],
                     },
                   ],
                   name: 'Share'
                 },
                 {
                   key: 'print',
-                  icon: 'Print',
+                  iconProps: {
+                    iconName: IconName.Print
+                  },
                   name: 'Print'
                 },
                 {
                   key: 'music',
-                  icon: 'MusicInCollectionFill',
+                  iconProps: {
+                    iconName: IconName.MusicInCollectionFill
+                  },
                   name: 'Music',
                 },
                 {
@@ -129,16 +150,16 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                 },
               ]
             }
-          />) : (null)}
+            />) : (null) }
       </div>
     );
   }
 
   private _onClick(event: any) {
-    this.setState({target: {x: event.clientX, y: event.clientY}, isContextMenuVisible: true});
+    this.setState({ target: { x: event.clientX, y: event.clientY }, isContextMenuVisible: true });
   }
 
   private _onDismiss(event: any) {
-    this.setState({isContextMenuVisible: false});
+    this.setState({ isContextMenuVisible: false });
   }
 }
