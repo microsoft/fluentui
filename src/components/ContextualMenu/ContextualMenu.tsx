@@ -7,9 +7,14 @@ import { autobind } from '../../utilities/autobind';
 import { css } from '../../utilities/css';
 import { getRTL } from '../../utilities/rtl';
 import { assign, getId } from '../../utilities/object';
-import { anchorProperties, buttonProperties, getNativeProps } from '../../utilities/properties';
+import {
+  anchorProperties,
+  buttonProperties,
+  getNativeProps
+} from '../../utilities/properties';
 import { Callout } from '../../Callout';
 import { BaseComponent } from '../../common/BaseComponent';
+import { Icon, IconName } from '../Icon';
 import './ContextualMenu.scss';
 
 export interface IContextualMenuState {
@@ -233,6 +238,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _renderAnchorMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): JSX.Element {
+    let iconProps = item.iconProps ? item.iconProps : {
+      iconName: IconName[item.icon]
+    };
     return (
       <div>
         <a
@@ -242,7 +250,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           role='menuitem'
           onClick={ this._onAnchorClick.bind(this, item) }>
           { (hasIcons) ? (
-            <span className={ 'ms-ContextualMenu-icon' + ((item.icon) ? ` ms-Icon ms-Icon--${item.icon}` : ' no-icon') } />)
+            <Icon { ...iconProps } className={ 'ms-ContextualMenu-icon' } />)
             : null
           }
           <span className='ms-ContextualMenu-linkText ms-fontWeight-regular'> { item.name } </span>
@@ -288,26 +296,23 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderMenuItemChildren(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
     let isItemChecked: boolean = item.isChecked || item.checked;
+    let iconProps = item.iconProps ? item.iconProps : {
+      iconName: IconName[item.icon]
+    };
     return (
       <div className='ms-ContextualMenu-linkContent'>
         { (hasCheckmarks) ? (
-          <span
-            className={
-              css(
-                'ms-ContextualMenu-icon',
-                {
-                  'ms-Icon ms-Icon--CheckMark': isItemChecked,
-                  'not-selected': !isItemChecked
-                })
-            }
+          <Icon
+            iconName={ isItemChecked ? IconName.CheckMark : IconName.CustomIcon }
+            className={ 'ms-ContextualMenu-icon' }
             onClick={ this._onItemClick.bind(this, item) } />
         ) : (null) }
         { (hasIcons) ? (
-          <span className={ 'ms-ContextualMenu-icon' + ((item.icon) ? ` ms-Icon ms-Icon--${item.icon}` : ' no-icon') } />
+          <Icon { ...iconProps } className={ 'ms-ContextualMenu-icon' } />
         ) : (null) }
         <span className='ms-ContextualMenu-itemText ms-fontWeight-regular'>{ item.name }</span>
         { (item.items && item.items.length) ? (
-          <i className={ css('ms-ContextualMenu-submenuChevron ms-Icon', getRTL() ? 'ms-Icon--ChevronLeft' : 'ms-Icon--ChevronRight') } />
+          <Icon className='ms-ContextualMenu-submenuChevron ms-Icon' iconName={ getRTL() ? IconName.ChevronLeft : IconName.ChevronRight } />
         ) : (null) }
       </div>
     );

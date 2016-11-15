@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ContextualMenu } from './ContextualMenu';
 import { IPositionProps } from '../../utilities/positioning';
 import { DirectionalHint } from '../../common/DirectionalHint';
-
+import { IIconProps } from '../Icon/Icon.Props';
 export { DirectionalHint } from '../../common/DirectionalHint';
 
 export interface IContextualMenuProps extends React.Props<ContextualMenu>, IPositionProps {
@@ -102,7 +102,13 @@ export interface IContextualMenuItem {
   name: string;
 
   /**
+   * Props that go to the IconComponent
+   */
+  iconProps?: IIconProps;
+
+  /**
    * Icon to display next to the menu item
+   * @deprecated use IconProps instead.
    */
   icon?: string;
 
