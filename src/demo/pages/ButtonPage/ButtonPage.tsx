@@ -50,28 +50,28 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
           <div>
             <Checkbox label='Disable buttons' checked={ this.state.areButtonsDisabled } onChange={ this._onDisabledChanged.bind(this) } />
             <ExampleCard title='Normal Button' code={ ButtonNormalExampleCode }>
-              <ButtonNormalExample isDisabled={ this.state.areButtonsDisabled } />
+              <ButtonNormalExample disabled={ this.state.areButtonsDisabled } />
             </ExampleCard>
             <ExampleCard title='Primary Button' code={ ButtonPrimaryExampleCode }>
-              <ButtonPrimaryExample isDisabled={ this.state.areButtonsDisabled } />
+              <ButtonPrimaryExample disabled={ this.state.areButtonsDisabled } />
             </ExampleCard>
             <ExampleCard title='Hero Button' code={ ButtonHeroExampleCode }>
-              <ButtonHeroExample isDisabled={ this.state.areButtonsDisabled } />
+              <ButtonHeroExample disabled={ this.state.areButtonsDisabled } />
             </ExampleCard>
             <ExampleCard title='Compound Button' code={ ButtonCompoundExampleCode }>
-              <ButtonCompoundExample isDisabled={ this.state.areButtonsDisabled } />
+              <ButtonCompoundExample disabled={ this.state.areButtonsDisabled } />
             </ExampleCard>
             <ExampleCard title='Command Button' code={ ButtonCommandExampleCode }>
-              <ButtonCommandExample isDisabled={ this.state.areButtonsDisabled } />
+              <ButtonCommandExample disabled={ this.state.areButtonsDisabled } />
             </ExampleCard>
             <ExampleCard title='Icon Button' code={ ButtonIconExampleCode }>
-              <ButtonIconExample isDisabled={ this.state.areButtonsDisabled } />
+              <ButtonIconExample disabled={ this.state.areButtonsDisabled } />
             </ExampleCard>
             <ExampleCard title='Button Like Anchor' code={ ButtonAnchorExampleCode }>
-              <ButtonAnchorExample isDisabled={ this.state.areButtonsDisabled } />
+              <ButtonAnchorExample disabled={ this.state.areButtonsDisabled } />
             </ExampleCard>
             <ExampleCard title='Button with Aria Description for Screen Reader' code={ ButtonScreenReaderExampleCode }>
-              <ButtonScreenReaderExample isDisabled={ this.state.areButtonsDisabled } />
+              <ButtonScreenReaderExample disabled={ this.state.areButtonsDisabled } />
             </ExampleCard>
           </div>
         }
@@ -128,9 +128,9 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
     );
   }
 
-  private _onDisabledChanged(ev: React.MouseEvent<HTMLElement>, isDisabled: boolean) {
+  private _onDisabledChanged(ev: React.MouseEvent<HTMLElement>, disabled: boolean) {
     this.setState({
-      areButtonsDisabled: isDisabled
+      areButtonsDisabled: disabled
     });
   }
 }

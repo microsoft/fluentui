@@ -12,21 +12,22 @@ export class ButtonAnchorExample extends React.Component<IButtonProps, {}> {
   }
 
   public render() {
-    let { isDisabled } = this.props;
+    let { disabled } = this.props;
 
     return (
       <div className='ms-BasicButtonsExample'>
         <Label>Button like anchor</Label>
         <Button
           data-automation-id='test'
-          disabled={ isDisabled }
+          disabled={ disabled }
           buttonType={ ButtonType.primary }
           href='http://bing.com'
-          rootProps={ { target: '_blank', title: 'Let us bing!' } }
+          target='_blank'
+          title='Let us bing!'
           description='Navigate to Bing home page.'>
           Bing
         </Button>
-      </div>
+      </div >
     );
   }
 }
