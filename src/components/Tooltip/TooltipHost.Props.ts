@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TooltipHost } from './TooltipHost';
-import { ITooltipProps, TooltipDelay } from '../../index';
+import { ITooltipProps, TooltipDelay } from './Tooltip.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
 /**
