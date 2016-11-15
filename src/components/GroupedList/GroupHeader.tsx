@@ -1,7 +1,5 @@
 import * as React from 'react';
-import {
-  IGroupDividerProps
-} from './index';
+import { IGroupDividerProps } from './GroupedList.Props';
 import { SelectionMode } from '../../utilities/selection/index';
 import { Check } from '../Check/Check';
 import { GroupSpacer } from './GroupSpacer';
