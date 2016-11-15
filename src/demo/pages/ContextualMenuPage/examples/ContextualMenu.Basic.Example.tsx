@@ -27,10 +27,7 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                 {
                   key: 'newItem',
                   iconProps: {
-                    iconName: IconName.Add,
-                    style: {
-                      color: 'violet'
-                    }
+                    iconName: IconName.Add
                   },
                   items: [
                     {
