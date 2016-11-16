@@ -48,10 +48,8 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
   }
 
   public componentDidMount() {
-    if (this.props.paneMode === PaneMode.overlay) {
-      // Set original content width for overlay mode
-      this._initialContentWidth = this._paneControlContainer.clientWidth;
-    }
+    // Set original content width for overlay mode
+    this._initialContentWidth = this._paneControlContainer.clientWidth;
 
     if (!this.state.hidden) {
       this._async.setTimeout(() => {
@@ -75,12 +73,16 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
   }
 
   public componentDidUpdate() {
-    if (this.props.paneMode === PaneMode.overlay) {
-      // Use original content width for overlay mode
-      this._contentContainer.style.width = this._initialContentWidth + 'px';
-    } else if (this.props.paneMode === PaneMode.push) {
-      // Viewport content width for push mode
-      this._contentContainer.style.width = this._getContainerWidth() + 'px';
+    if (!this.state.hidden) {
+      this._contentContainer.style.width = '';
+    } else {
+      if (this.props.paneMode === PaneMode.overlay) {
+        // Use original content width for overlay mode
+        this._contentContainer.style.width = this._initialContentWidth + 'px';
+      } else if (this.props.paneMode === PaneMode.push) {
+        // Viewport content width for push mode
+        this._contentContainer.style.width = this._getContainerWidth() + 'px';
+      }
     }
   }
 
@@ -200,10 +202,8 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
   }
 
   private _updateRenderedItems() {
-    if (this.props.paneMode === PaneMode.overlay) {
-      // Set original content width for overlay mode
-      this._initialContentWidth = this._paneControlContainer.clientWidth;
-    }
+    // Set original content width for overlay mode
+    this._initialContentWidth = this._paneControlContainer.clientWidth;
 
     this.setState(this.state);
   }
