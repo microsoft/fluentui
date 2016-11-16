@@ -9,7 +9,8 @@ import {
   INav,
   INavProps,
   INavLinkGroup,
-  INavLink } from './Nav.Props';
+  INavLink
+} from './Nav.Props';
 
 // The number pixels per indentation level for Nav links.
 const _indentationSize: number = 14;
@@ -39,7 +40,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
     this.state = {
       isGroupExpanded: [],
       isLinkExpandStateChanged: false,
-      selectedKey: props.initialSelectedKey
+      selectedKey: props.initialSelectedKey || props.selectedKey,
     };
     this._hasExpandButton = false;
   }
@@ -54,7 +55,8 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
     // different padding is needed. _hasExpandButton marks this condition.
     this._hasExpandButton = this.props.groups.some((group: INavLinkGroup, groupIndex: number) => {
       return !!group && !!group.name || group.links && group.links.some((link: INavLink, linkIndex: number) => {
-        return !!link && !!link.links && link.links.length > 0; });
+        return !!link && !!link.links && link.links.length > 0;
+      });
     });
 
     const groupElements: React.ReactElement<{}>[] = this.props.groups.map(
@@ -82,18 +84,18 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
       (this._hasExpandButton ? _indentWithExpandButton : _indentNoExpandButton)).toString(10) + 'px';
 
     return (
-        <a
-          className={ css('ms-Nav-link') }
-          style={ { [isRtl ? 'paddingRight' : 'paddingLeft'] : paddingBefore } }
-          href={ link.url || 'javascript:' }
-          onClick={ this._onNavAnchorLinkClicked.bind(this, link) }
-          aria-label={ link.ariaLabel }
-          title={ link.title || link.name }
-          target={ link.target }
+      <a
+        className={ css('ms-Nav-link') }
+        style={ { [isRtl ? 'paddingRight' : 'paddingLeft']: paddingBefore } }
+        href={ link.url || 'javascript:' }
+        onClick={ this._onNavAnchorLinkClicked.bind(this, link) }
+        aria-label={ link.ariaLabel }
+        title={ link.title || link.name }
+        target={ link.target }
         >
-         { link.iconClassName && <i className={ css('ms-Icon', 'ms-Nav-IconLink', link.iconClassName) }></i> }
-         { this.props.onRenderLink(link)}
-        </a>
+        { link.iconClassName && <i className={ css('ms-Icon', 'ms-Nav-IconLink', link.iconClassName) }></i> }
+        { this.props.onRenderLink(link) }
+      </a>
     );
   }
 
@@ -101,20 +103,20 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
     return (
       <Button
         className={ css('ms-Nav-link ms-Nav-linkButton', { 'isOnExpanded': this._hasExpandButton }) }
-          buttonType={ ButtonType.command }
-          icon={ link.icon }
-          description={ link.title || link.name }
-          onClick={ this._onNavButtonLinkClicked.bind(this, link) }>
-          { link.name }
+        buttonType={ ButtonType.command }
+        icon={ link.icon }
+        description={ link.title || link.name }
+        onClick={ this._onNavButtonLinkClicked.bind(this, link) }>
+        { link.name }
       </Button>);
   }
 
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
-    const isLinkSelected: boolean = _isLinkSelected(link, this.state.selectedKey);
+    const isLinkSelected: boolean = _isLinkSelected(link, this.state.selectedKey, this.props.selectedKey);
 
     return (
       <div key={ link.key || linkIndex }
-           className={ css('ms-Nav-compositeLink', { ' is-expanded': link.isExpanded, 'is-selected': isLinkSelected }) }>
+        className={ css('ms-Nav-compositeLink', { ' is-expanded': link.isExpanded, 'is-selected': isLinkSelected }) }>
         { (nestingLevel === 0 && link.links && link.links.length > 0 ?
           <button
             className='ms-Nav-chevronButton ms-Nav-chevronButton--link'
@@ -123,17 +125,17 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
             >
             <i className='ms-Nav-chevron ms-Icon ms-Icon--ChevronDown'></i>
           </button> : null
-        )}
-          { !!link.onClick ? this._renderButtonLink(link, linkIndex) : this._renderAnchorLink(link, linkIndex, nestingLevel) }
+        ) }
+        { !!link.onClick ? this._renderButtonLink(link, linkIndex) : this._renderAnchorLink(link, linkIndex, nestingLevel) }
       </div>
-     );
+    );
   }
 
   private _renderLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     return (
       <li key={ link.key || linkIndex } role='listitem'>
-         { this._renderCompositeLink(link, linkIndex, nestingLevel) }
-          { (link.isExpanded ? this._renderLinks(link.links, ++nestingLevel) : null) }
+        { this._renderCompositeLink(link, linkIndex, nestingLevel) }
+        { (link.isExpanded ? this._renderLinks(link.links, ++nestingLevel) : null) }
       </li>
     );
   }
@@ -156,15 +158,15 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
     const isGroupExpanded: boolean = this.state.isGroupExpanded[groupIndex] !== false;
 
     return (
-      <div key={ groupIndex } className={ css('ms-Nav-group', { 'is-expanded' : isGroupExpanded }) }>
+      <div key={ groupIndex } className={ css('ms-Nav-group', { 'is-expanded': isGroupExpanded }) }>
         { (group.name ?
-        <button
-          className='ms-Nav-chevronButton ms-Nav-chevronButton--group ms-Nav-groupHeaderFontSize'
-          onClick={ this._onGroupHeaderClicked.bind(this, groupIndex) }
-        >
-          <i className={ css('ms-Nav-chevron', 'ms-Icon', 'ms-Icon--ChevronDown') }></i>
-          { group.name }
-        </button> : null)
+          <button
+            className='ms-Nav-chevronButton ms-Nav-chevronButton--group ms-Nav-groupHeaderFontSize'
+            onClick={ this._onGroupHeaderClicked.bind(this, groupIndex) }
+            >
+            <i className={ css('ms-Nav-chevron', 'ms-Icon', 'ms-Icon--ChevronDown') }></i>
+            { group.name }
+          </button> : null)
         }
         <div className={ css('ms-Nav-groupContent', 'ms-u-slideDownIn20') }>
           { this._renderLinks(group.links, 0 /* nestingLevel */) }
@@ -209,44 +211,47 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
 
 // A tag used for resolving links.
 let _urlResolver;
-function _isLinkSelected(link: INavLink, selectedKey: string): boolean {
-    if (selectedKey && link.key === selectedKey) {
-      return true;
-    }
+function _isLinkSelected(link: INavLink, clickSelectedKey: string, propsSelectedKey: string): boolean {
+  // if caller passes in selectedKey, use it as first choice or
+  // if current state.selectedKey (from addressbar) is match to the link
+  if (propsSelectedKey !== undefined && link.key === propsSelectedKey ||
+    clickSelectedKey !== undefined && link.key === clickSelectedKey) {
+    return true;
+  }
 
-    // resolve is not supported for ssr
-    if (typeof(window) === 'undefined') {
-      return false;
-    }
-
-    if (!link.url) {
-      return false;
-    }
-
-    _urlResolver = _urlResolver || document.createElement('a');
-
-    _urlResolver.href = link.url || '';
-    const target: string = _urlResolver.href;
-
-    if (location.protocol + '//' + location.host + location.pathname === target) {
-      return true;
-    }
-
-    if (location.href === target) {
-      return true;
-    }
-
-    if (location.hash) {
-      // Match the hash to the url.
-      if (location.hash === link.url) {
-        return true;
-      }
-
-      // Match a rebased url. (e.g. #foo becomes http://hostname/foo)
-      _urlResolver.href = location.hash.substring(1);
-
-      return _urlResolver.href === target;
-    }
-
+  // resolve is not supported for ssr
+  if (typeof (window) === 'undefined') {
     return false;
   }
+
+  if (!link.url) {
+    return false;
+  }
+
+  _urlResolver = _urlResolver || document.createElement('a');
+
+  _urlResolver.href = link.url || '';
+  const target: string = _urlResolver.href;
+
+  if (location.href === target) {
+    return true;
+  }
+
+  if (location.protocol + '//' + location.host + location.pathname === target) {
+    return true;
+  }
+
+  if (location.hash) {
+    // Match the hash to the url.
+    if (location.hash === link.url) {
+      return true;
+    }
+
+    // Match a rebased url. (e.g. #foo becomes http://hostname/foo)
+    _urlResolver.href = location.hash.substring(1);
+
+    return _urlResolver.href === target;
+  }
+
+  return false;
+}
