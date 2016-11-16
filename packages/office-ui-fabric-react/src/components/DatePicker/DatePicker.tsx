@@ -32,7 +32,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
         return date.toDateString();
       }
 
-      return null;
+      return '';
     },
     parseDateFromString: (dateStr: string) => {
       const date = Date.parse(dateStr);
@@ -66,7 +66,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
     this.state = {
       selectedDate: value || new Date(),
-      formattedDate: formatDate && value ? formatDate(value) : null,
+      formattedDate: formatDate && value ? formatDate(value) : '',
       isDatePickerShown: false,
       errorMessage: ''
     };
@@ -80,7 +80,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
     this.setState({
       selectedDate: value || new Date(),
-      formattedDate: formatDate && value ? formatDate(value) : null,
+      formattedDate: formatDate && value ? formatDate(value) : '',
       errorMessage: errorMessage
     });
   }
@@ -130,7 +130,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
         </div>
 
         { isDatePickerShown && (
-          <div className={'ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused ' + (this.props.isMonthPickerVisible ? 'is-monthPickerVisible' : '') } >
+          <div className={ 'ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused ' + (this.props.isMonthPickerVisible ? 'is-monthPickerVisible' : '') } >
             <div className='ms-DatePicker-holder' onKeyDown={ this._onDatePickerPopupKeyDown }>
               <div className='ms-DatePicker-frame'>
                 <div className='ms-DatePicker-wrap'>
@@ -186,7 +186,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     this.setState({
       selectedDate: date,
       isDatePickerShown: false,
-      formattedDate: formatDate && date ? formatDate(date) : null,
+      formattedDate: formatDate && date ? formatDate(date) : '',
     });
 
     this._restoreFocusToTextField();
@@ -365,7 +365,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
         } else {
           this.setState({
             selectedDate: date,
-            formattedDate: formatDate && date ? formatDate(date) : null,
+            formattedDate: formatDate && date ? formatDate(date) : '',
             errorMessage: ''
           });
         }
