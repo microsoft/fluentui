@@ -47,7 +47,7 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   hideTextField?: boolean;
 
   /**
-   * Whether the DatePicker shouold be seen
+   * Whether the DatePicker should be seen
    * This field is used when hideTextField is true and an outside action
    * (like a button click) is used to open the date picker
    */
