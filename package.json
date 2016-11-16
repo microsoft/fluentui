@@ -10,7 +10,7 @@
     "postinstall": "npmx install && npmx link",
     "build": "npmx build",
     "clean": "npmx rebuild",
-    "start": "gulp --gulpfile packages/office-ui-fabric-react serve"
+    "start": "gulp --gulpfile packages/office-ui-fabric-react/gulpfile.js serve"
   },
   "license": "MIT",
   "devDependencies": {
