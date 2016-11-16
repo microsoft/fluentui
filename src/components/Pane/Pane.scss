@@ -1,26 +1,26 @@
 @import '../../common/common';
 
 .ms-Pane {
-    /** bug: pane should not ignore pointer events. */
-    pointer-events: inherit;
-    overflow: hidden;
+  /** bug: pane should not ignore pointer events. */
+  pointer-events: inherit;
+  overflow: hidden;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  height: 100%;
+
+  > .main-content {
+    overflow: auto;
     display: flex;
     flex: 1 1 auto;
-    flex-direction: row;
-    height: 100%;
+    flex-direction: column;
 
-    > .main-content {
-        overflow: auto;
-        display: flex;
-        flex: 1 1 auto;
-        flex-direction: column;
-
-        > .content-container {
-            display: flex;
-            flex: 1 1 auto;
-            flex-direction: column;
-        }
+    > .content-container {
+      display: flex;
+      flex: 1 1 auto;
+      flex-direction: column;
     }
+  }
 }
 
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
@@ -39,169 +39,173 @@ $Pane-margin-lg: 428px;
 $Pane-margin-xl: 176px;
 $CommandBarHeight: 40px;
 
+.ms-Pane-popup{
+  max-width: 100%;
+}
+
 // The pane itself, where the content goes.
 .ms-Pane-main {
-    background-color: $ms-color-white;
-    display: none;
-    width: 100%;
-    // Medium screens and up - (anchored right, fixed width)
-    @media (min-width: $ms-screen-md-min) {
-        @include border-left(1px, solid, $ms-color-neutralLight);
-        @include border-right(1px, solid, $ms-color-neutralLight);
-        pointer-events: auto;
-        width: $Pane-width-sm;
-        @include left(auto);
-    }
+  background-color: $ms-color-white;
+  display: none;
+  width: 100%;
+  // Medium screens and up - (anchored right, fixed width)
+  @media (min-width: $ms-screen-md-min) {
+    @include border-left(1px, solid, $ms-color-neutralLight);
+    @include border-right(1px, solid, $ms-color-neutralLight);
+    pointer-events: auto;
+    width: $Pane-width-sm;
+    @include left(auto);
+  }
 }
 
 //== Modifier: Small pane (anchored right, fixed width)
 //
 .ms-Pane.ms-Pane--sm {
-    .ms-Pane-main {
-        width: $Pane-width-xs;
+  .ms-Pane-main {
+    width: $Pane-width-xs;
 
-        @media (min-width: $ms-screen-md-min) {
-            width: $Pane-width-sm;
-        }
+    @media (min-width: $ms-screen-md-min) {
+      width: $Pane-width-sm;
     }
+  }
 }
 
 //== Modifier: Small pane (anchored left, fixed width)
 //
 .ms-Pane.ms-Pane--smLeft {
-    .ms-Pane-main {
-        @include right(auto);
-        @include left(0);
-        width: $Pane-width-xs;
-    }
+  .ms-Pane-main {
+    @include right(auto);
+    @include left(0);
+    width: $Pane-width-xs;
+  }
 }
 
 //== Modifier: Medium pane (anchored right, fixed width)
 //
 .ms-Pane.ms-Pane--md {
-    .ms-Pane-main {
-        @media (min-width: $ms-screen-xl-min) {
-            @include left(auto);
-            width: $Pane-width-md;
-        }
+  .ms-Pane-main {
+    @media (min-width: $ms-screen-xl-min) {
+      @include left(auto);
+      width: $Pane-width-md;
     }
+  }
 }
 
 //== Modifier: Large fixed pane (anchored right, fixed width)
 //
 .ms-Pane.ms-Pane--lg.ms-Pane--fixed {
-    .ms-Pane-main {
-        @media (min-width: $ms-screen-xxl-min) {
-            @include left(auto);
-            width: $Pane-width-lg;
-        }
+  .ms-Pane-main {
+    @media (min-width: $ms-screen-xxl-min) {
+      @include left(auto);
+      width: $Pane-width-lg;
     }
+  }
 }
 
 //== State: When the pane is open.
 //
 .ms-Pane.open {
 
+  .ms-Pane-main {
+    opacity: 1;
+    pointer-events: auto;
+    display: block;
+  }
+
+  &.ms-Pane-animateIn {
     .ms-Pane-main {
-        opacity: 1;
-        pointer-events: auto;
-        display: block;
+      @include ms-u-fadeIn100;
+    }
+  }
+
+  &.ms-Pane-animateOut {
+    .ms-Pane-main {
+      @include ms-u-fadeOut100;
+    }
+  }
+  // Medium screens and up
+  @media (min-width: $ms-screen-md-min) {
+    // Animations -- Default (anchored right)
+    &.ms-Pane--openRight.ms-Pane-animateIn {
+      .ms-Pane-main {
+        @include ms-u-slideLeftIn40;
+      }
     }
 
-    &.ms-Pane-animateIn {
-        .ms-Pane-main {
-            @include ms-u-fadeIn100;
-        }
+    &.ms-Pane--openRight.ms-Pane-animateOut {
+      .ms-Pane-main {
+        @include ms-u-slideRightOut40;
+      }
+    }
+    // Animations - Left pane (anchored left)
+    &.ms-Pane--openLeft.ms-Pane-animateIn {
+      .ms-Pane-main {
+        @include ms-u-slideRightIn40;
+      }
     }
 
-    &.ms-Pane-animateOut {
-        .ms-Pane-main {
-            @include ms-u-fadeOut100;
-        }
+    &.ms-Pane--openLeft.ms-Pane-animateOut {
+      .ms-Pane-main {
+        @include ms-u-slideLeftOut40;
+      }
     }
-    // Medium screens and up
-    @media (min-width: $ms-screen-md-min) {
-        // Animations -- Default (anchored right)
-        &.ms-Pane--openRight.ms-Pane-animateIn {
-            .ms-Pane-main {
-                @include ms-u-slideLeftIn40;
-            }
-        }
-
-        &.ms-Pane--openRight.ms-Pane-animateOut {
-            .ms-Pane-main {
-                @include ms-u-slideRightOut40;
-            }
-        }
-        // Animations - Left pane (anchored left)
-        &.ms-Pane--openLeft.ms-Pane-animateIn {
-            .ms-Pane-main {
-                @include ms-u-slideRightIn40;
-            }
-        }
-
-        &.ms-Pane--openLeft.ms-Pane-animateOut {
-            .ms-Pane-main {
-                @include ms-u-slideLeftOut40;
-            }
-        }
-    }
+  }
 }
 
 .ms-Pane-commands {
-    @include text-align(right);
+  @include text-align(right);
 }
 
 // The close button in the top right (x)
 .ms-Pane-closeButton {
-    @include button-reset();
-    @include right(8px);
-    top: 0;
-    height: $CommandBarHeight;
-    width: $CommandBarHeight;
-    line-height: $CommandBarHeight;
-    padding: 0;
-    color: $ms-color-neutralSecondary;
-    font-size: $ms-icon-size-m;
+  @include button-reset();
+  @include right(8px);
+  top: 0;
+  height: $CommandBarHeight;
+  width: $CommandBarHeight;
+  line-height: $CommandBarHeight;
+  padding: 0;
+  color: $ms-color-neutralSecondary;
+  font-size: $ms-icon-size-m;
 
-    &:hover {
-        color: $ms-color-neutralPrimary;
-    }
+  &:hover {
+    color: $ms-color-neutralPrimary;
+  }
 }
 
 // Scrollable content area
 .ms-Pane-contentInner {
-    top: $CommandBarHeight;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    @include padding(0, 16px, 20px, 0);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    /* Force hw accelleration on scrollable region */
-    transform: translateZ(0);
+  top: $CommandBarHeight;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  @include padding(0, 16px, 20px, 0);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  /* Force hw accelleration on scrollable region */
+  transform: translateZ(0);
 
-    @media (min-width: $ms-screen-lg-min) {
-        @include padding(0, 32px, 20px, 0);
-    }
+  @media (min-width: $ms-screen-lg-min) {
+    @include padding(0, 32px, 20px, 0);
+  }
 
-    @media (min-width: $ms-screen-xxl-min) {
-        @include padding(0, 40px, 20px, 0);
-    }
+  @media (min-width: $ms-screen-xxl-min) {
+    @include padding(0, 40px, 20px, 0);
+  }
 }
 
 // Header text at the top of the pane.
 .ms-Pane-headerText {
-    @include ms-font-xl;
-    color: $ms-color-neutralPrimary;
-    margin: 10px 0;
-    padding: 4px 0;
-    line-height: 1;
-    text-overflow: ellipsis;
-    overflow: hidden;
+  @include ms-font-xl;
+  color: $ms-color-neutralPrimary;
+  margin: 10px 0;
+  padding: 4px 0;
+  line-height: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
 
-    @media (min-width: $ms-screen-xl-min) {
-        margin-top: 30px;
-    }
+  @media (min-width: $ms-screen-xl-min) {
+    margin-top: 30px;
+  }
 }
