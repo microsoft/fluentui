@@ -4,15 +4,7 @@ node_js:
 before_script:
   - npm install -g gulp
 script:
-  - echo 'Installing...' && echo -en 'travis_fold:start:install\\r'
-  - node node_modules/@microsoft/npmx/lib/npmx.js install
-  - echo -en 'travis_fold:end:install\\r'
-  - echo 'Linking...' && echo -en 'travis_fold:start:link\\r'
-  - node node_modules/@microsoft/npmx/lib/npmx.js link
-  - echo -en 'travis_fold:end:link\\r'
-  - echo 'Building...' && echo -en 'travis_fold:start:build\\r'
-  - node node_modules/@microsoft/npmx/lib/npmx.js build
-  - echo -en 'travis_fold:end:build\\r'
+  - npm run build
 deploy:
   provider: npm
   email: dzearing@microsoft.com
