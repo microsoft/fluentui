@@ -19,8 +19,14 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   };
 
   public render(): JSX.Element {
-    let { maxDisplayablePersonas, overflowButtonProps, personas, showAddButton } = this.props;
+    let { chevronButtonProps, maxDisplayablePersonas, overflowButtonProps, overflowButtonType, personas, showAddButton } = this.props;
     let numPersonasToShow: number = Math.min(personas.length, maxDisplayablePersonas);
+
+    // Added for deprecating chevronButtonProps.  Can remove after v1.0
+    if(chevronButtonProps && !overflowButtonProps){
+      overflowButtonProps = chevronButtonProps;
+      overflowButtonType = OverflowButtonType.downArrow;
+    }
 
     return (
       <div className='ms-Facepile'>
