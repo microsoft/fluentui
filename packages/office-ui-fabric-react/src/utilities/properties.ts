@@ -193,16 +193,18 @@ export const baseElementProperties = [
   'wrap'
 ];
 
-export const anchorProperties = baseElementProperties.concat(baseElementEvents, [
+export const htmlElementProperties = baseElementProperties.concat(baseElementEvents);
+
+export const anchorProperties = htmlElementProperties.concat([
   'href',
   'target'
 ]);
 
-export const buttonProperties = baseElementProperties.concat(baseElementEvents, [
+export const buttonProperties = htmlElementProperties.concat([
   'disabled'
 ]);
 
-export const divProperties = baseElementProperties.concat(baseElementEvents);
+export const divProperties = htmlElementProperties.concat(['align', 'noWrap']);
 
 export const inputProperties = buttonProperties;
 
@@ -226,11 +228,11 @@ export function getNativeProps<T>(props: any, allowedPropNames: string[], exclud
   return filteredAssign((propName) => {
     return (
       (!excludedPropNames || excludedPropNames.indexOf(propName) < 0) && (
-      (propName.indexOf('data-') === 0) ||
-      (propName.indexOf('aria-') === 0) ||
-      (allowedPropNames.indexOf(propName) >= 0)
-    ));
+        (propName.indexOf('data-') === 0) ||
+        (propName.indexOf('aria-') === 0) ||
+        (allowedPropNames.indexOf(propName) >= 0)
+      ));
   },
-  {},
-  props) as T;
+    {},
+    props) as T;
 }

@@ -1,6 +1,18 @@
 {
   "name": "office-ui-fabric-react-repo",
   "version": "1.0.0",
+  "description": "Reusable React components for building experiences for Office 365.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+  },
+  "scripts": {
+    "postinstall": "npmx install && npmx link",
+    "build": "npmx build",
+    "clean": "npmx rebuild",
+    "start": "gulp --gulpfile packages/office-ui-fabric-react serve"
+  },
+  "license": "MIT",
   "devDependencies": {
     "@microsoft/npmx": "^1.2.0"
   }

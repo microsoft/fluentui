@@ -100,5 +100,8 @@ package
 # Dependency change files generated from npmx
 package-deps.json
 
-/common/npm-local
-/common/npmx-link.json
+common/npm-local
+common/npmx-link.json
+common/last-install.*
+common/npmx-recycler
+
