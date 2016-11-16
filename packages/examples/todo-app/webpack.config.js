@@ -1,7 +1,7 @@
 'use strict';
 
 /** Note: this require may need to be fixed to point to the build that exports the gulp-core-build-webpack instance. */
-let webpackTaskResources = require('web-library-build').webpack.resources;
+let webpackTaskResources = require('@microsoft/web-library-build').webpack.resources;
 let webpack = webpackTaskResources.webpack;
 
 let path = require('path');
@@ -18,7 +18,7 @@ let webpackConfig = {
   output: {
     libraryTarget: 'umd',
     path: path.join(__dirname, '/dist'),
-    filename: `[name]${ isProduction ? '.min' : '' }.js`
+    filename: `[name]${isProduction ? '.min' : ''}.js`
   },
 
   devtool: 'source-map',
@@ -30,7 +30,7 @@ let webpackConfig = {
   externals: [
     {
       'react': 'React'
-      
+
     },
     {
       'react-dom': 'ReactDOM'
@@ -43,7 +43,7 @@ let webpackConfig = {
   },
 
   plugins: [
-     //  new WebpackNotifierPlugin()
+    //  new WebpackNotifierPlugin()
   ]
 };
 

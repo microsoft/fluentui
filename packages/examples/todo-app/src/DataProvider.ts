@@ -1,4 +1,5 @@
-import update = require('react-addons-update');
+import update = require('immutability-helper');
+import { Promise } from 'es6-promise';
 import { findIndex } from 'office-ui-fabric-react/lib/utilities/array';
 import { ITodoItem, IDataProvider } from './types/index';
 
@@ -158,8 +159,8 @@ export default class DataProvider implements IDataProvider {
   }
 
   private _generateGuid(): string {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-      var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
       return v.toString(16);
     });
   }

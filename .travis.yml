@@ -3,7 +3,8 @@ node_js:
   - 'node'
 before_script:
   - npm install -g gulp
-script: gulp --production
+script:
+  - npm run build
 deploy:
   provider: npm
   email: dzearing@microsoft.com
