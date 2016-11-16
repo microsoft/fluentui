@@ -41,6 +41,7 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
 
     this.state = {
       id: getId('Dialog'),
+      isOpen: props.isOpen,
       isAnimatingOpen: props.isOpen,
       isAnimatingClose: false
     };
