@@ -6,6 +6,7 @@ import {
 } from '../../components/index';
 
 import { DatePickerBasicExample } from './examples/DatePicker.Basic.Example';
+import { DatePickerButtonExample } from './examples/DatePicker.Button.Example';
 import { DatePickerRequiredExample } from './examples/DatePicker.Required.Example';
 import { DatePickerInputExample } from './examples/DatePicker.Input.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
@@ -13,6 +14,7 @@ import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const DatePickerBasicExampleCode = require('./examples/DatePicker.Basic.Example.tsx');
+const DatePickerButtonExampleCode = require('./examples/DatePicker.Button.Example.tsx');
 const DatePickerRequiredExampleCode = require('./examples/DatePicker.Required.Example.tsx');
 const DatePickerInputExampleCode = require('./examples/DatePicker.Input.Example.tsx');
 
@@ -38,6 +40,9 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, any
             </ExampleCard>
             <ExampleCard title='DatePicker allows input date string' code={ DatePickerInputExampleCode }>
               <DatePickerInputExample />
+            </ExampleCard>
+            <ExampleCard title='DatePicker launched from a button' code={ DatePickerButtonExampleCode }>
+              <DatePickerButtonExample />
             </ExampleCard>
           </div>
         }

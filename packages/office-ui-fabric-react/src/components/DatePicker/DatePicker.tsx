@@ -27,6 +27,9 @@ export interface IDatePickerState {
 export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState> {
   public static defaultProps: IDatePickerProps = {
     allowTextInput: false,
+    hideTextField: false,
+    showDatePicker: false,
+    onDismiss: null,
     formatDate: (date: Date) => {
       if (date) {
         return date.toDateString();
@@ -75,8 +78,13 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   }
 
   public componentWillReceiveProps(nextProps: IDatePickerProps) {
-    let { formatDate, isRequired, strings, value } = nextProps;
+    let { formatDate, isRequired, strings, value, showDatePicker } = nextProps;
     const errorMessage = isRequired && !value ? (strings.isRequiredErrorMessage || '*') : '';
+
+    // If passing in showDatePicker then outside action determined it should open
+    if (showDatePicker) {
+      this._showDatePickerPopup();
+    }
 
     this.setState({
       selectedDate: value || new Date(),
@@ -102,35 +110,36 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   public render() {
     let rootClass = 'ms-DatePicker';
-    let { firstDayOfWeek, strings, label, isRequired, ariaLabel, placeholder, allowTextInput } = this.props;
+    let { firstDayOfWeek, strings, label, isRequired, ariaLabel, placeholder, allowTextInput, hideTextField } = this.props;
     let { isDatePickerShown, formattedDate, selectedDate, navigatedDate, errorMessage } = this.state;
 
     return (
       <div className={ rootClass } ref='root'>
-        <div ref='textFieldContainer'>
-          <TextField
-            ariaLabel={ ariaLabel }
-            aria-haspopup='true'
-            required={ isRequired }
-            onKeyDown={ this._onTextFieldKeyDown }
-            onFocus={ this._onTextFieldFocus }
-            onBlur={ this._onTextFieldBlur }
-            onClick={ this._onTextFieldClick }
-            onChanged={ this._onTextFieldChanged }
-            errorMessage={ errorMessage }
-            label={ label }
-            placeholder={ placeholder }
-            iconClass={ css(
-              'ms-Icon ms-Icon--Calendar',
-              label ? 'ms-DatePicker-event--with-label' : 'ms-DatePicker-event--without-label'
-            ) }
-            readOnly={ !allowTextInput }
-            value={ formattedDate }
-            ref='textField' />
-        </div>
-
+        { !hideTextField &&
+          <div ref='textFieldContainer'>
+            <TextField
+              ariaLabel={ ariaLabel }
+              aria-haspopup='true'
+              required={ isRequired }
+              onKeyDown={ this._onTextFieldKeyDown }
+              onFocus={ this._onTextFieldFocus }
+              onBlur={ this._onTextFieldBlur }
+              onClick={ this._onTextFieldClick }
+              onChanged={ this._onTextFieldChanged }
+              errorMessage={ errorMessage }
+              label={ label }
+              placeholder={ placeholder }
+              iconClass={ css(
+                'ms-Icon ms-Icon--Calendar',
+                label ? 'ms-DatePicker-event--with-label' : 'ms-DatePicker-event--without-label'
+              ) }
+              readOnly={ !allowTextInput }
+              value={ formattedDate }
+              ref='textField' />
+          </div>
+        }
         { isDatePickerShown && (
-          <div className={'ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused ' + (this.props.isMonthPickerVisible ? 'is-monthPickerVisible' : '') } >
+          <div className={ 'ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused ' + (this.props.isMonthPickerVisible ? 'is-monthPickerVisible' : '') } >
             <div className='ms-DatePicker-holder' onKeyDown={ this._onDatePickerPopupKeyDown }>
               <div className='ms-DatePicker-frame'>
                 <div className='ms-DatePicker-wrap'>
@@ -323,6 +332,10 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       this.setState({
         isDatePickerShown: false
       });
+
+      if (this.props.onDismiss != null) {
+        this.props.onDismiss();
+      }
 
       this._validateTextInput();
     }

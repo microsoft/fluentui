@@ -8,6 +8,11 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   onSelectDate?: (date: Date) => void;
 
   /**
+   * Callback issued when date picker is closed
+   */
+  onDismiss?: () => void;
+
+  /**
    * Label for the DatePicker
    */
   label?: string;
@@ -25,7 +30,7 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
 
   /**
    * Whether the month picker is shown beside the day picker or hidden.
-   * @defaultvalue true 
+   * @defaultvalue true
    */
   isMonthPickerVisible?: boolean;
 
@@ -34,6 +39,19 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
    * @defaultvalue false
    */
   allowTextInput?: boolean;
+
+  /**
+   * Whether the DatePicker should hide the TextField
+   * @defaultvalue false
+   */
+  hideTextField?: boolean;
+
+  /**
+   * Whether the DatePicker shouold be seen
+   * This field is used when hideTextField is true and an outside action
+   * (like a button click) is used to open the date picker
+   */
+  showDatePicker?: boolean;
 
   /**
    * Placeholder text for the DatePicker
