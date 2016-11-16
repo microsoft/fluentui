@@ -82,7 +82,7 @@ export class DatePickerButtonExample extends React.Component<any, IDatePickerBut
     return (
       <div>
         <Button onClick={ this._onClick }>
-          { this.state.selectedDate == null ? "Click for DatePicker" : this.state.selectedDate.toLocaleDateString() }
+          { this.state.selectedDate == null ? 'Click for DatePicker' : this.state.selectedDate.toLocaleDateString() }
         </Button>
         <DatePicker firstDayOfWeek={ DayOfWeek.Sunday } strings={ DayPickerStrings } hideTextField={ true } showDatePicker={ this.state.showDatePicker } onDismiss={ this._onDismiss } onSelectDate={ this._onSelectDate } />
       </div>
