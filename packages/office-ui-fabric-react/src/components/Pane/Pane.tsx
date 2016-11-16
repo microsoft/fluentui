@@ -49,7 +49,7 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
 
   public componentDidMount() {
     // Set original content width for overlay mode
-    this._initialContentWidth = this._paneControlContainer.clientWidth;
+    this._initialContentWidth = this._paneControlContainer.getBoundingClientRect().width;
 
     if (!this.state.hidden) {
       this._async.setTimeout(() => {
@@ -177,7 +177,6 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
   }
 
   private _getContainerWidth(): number {
-    //return this._mainContent.clientWidth - 1;
     return this._mainContent.getBoundingClientRect().width;
   }
 
@@ -203,7 +202,7 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
 
   private _updateRenderedItems() {
     // Set original content width for overlay mode
-    this._initialContentWidth = this._paneControlContainer.clientWidth;
+    this._initialContentWidth = this._paneControlContainer.getBoundingClientRect().width;
 
     this.setState(this.state);
   }
