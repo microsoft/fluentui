@@ -17,7 +17,7 @@
     "**/bower_components": true,
     "**/coverage": true,
     "**/lib-amd": true,
-    "src/**/*.scss.ts": true
+    "**/*.scss.ts": true
   },
   // Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the file.exclude setting.
   "search.exclude": {
@@ -25,14 +25,14 @@
     "**/lib": true,
     "**/lib-amd": true,
     "**/dist": true,
-    "src/**/*.scss.ts": true
+    "**/*.scss.ts": true
   },
   // Controls after how many characters the editor will wrap to the next line. Setting this to 0 turns on viewport width wrapping
   "editor.wrappingColumn": 140,
   "tslint.enable": true,
-  "tslint.rulesDirectory": "./node_modules/tslint-microsoft-contrib",
+  "tslint.rulesDirectory": "./common/node_modules/tslint-microsoft-contrib",
   // Defines space handling after opening and before closing JSX expression braces. Requires TypeScript >= 2.0.6.
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
   "editor.formatOnSave": true,
-  "typescript.tsdk": "./node_modules/typescript/lib"
+  "typescript.tsdk": "./common/node_modules/typescript/lib"
 }
