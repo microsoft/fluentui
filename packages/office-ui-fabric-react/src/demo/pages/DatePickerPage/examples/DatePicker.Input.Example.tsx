@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  Button,
   DatePicker,
   DayOfWeek
 } from '../../../../index';
@@ -64,6 +65,7 @@ const DayPickerStrings = {
 
 export interface IDatePickerInputExampleState {
   firstDayOfWeek?: DayOfWeek;
+  value?: Date;
 }
 
 export class DatePickerInputExample extends React.Component<any, IDatePickerInputExampleState> {
@@ -71,17 +73,28 @@ export class DatePickerInputExample extends React.Component<any, IDatePickerInpu
     super();
 
     this.state = {
-      firstDayOfWeek: DayOfWeek.Sunday
+      firstDayOfWeek: DayOfWeek.Sunday,
+      value: null
     };
   }
 
   public render() {
-    let { firstDayOfWeek } = this.state;
+    let { firstDayOfWeek, value } = this.state;
     const desc = 'This field is required. One of the support input formats is year dash month dash day.';
     return (
       <div>
         <p>Text input allowed by default when use keyboard navigation. Mouse click the TextField will popup DatePicker, click the TextField again will dismiss the DatePicker and allow text input.</p>
-        <DatePicker label='Start date' isRequired={ true } allowTextInput={ true } ariaLabel={ desc } firstDayOfWeek={ firstDayOfWeek } strings={ DayPickerStrings } value={ new Date() } />
+        <DatePicker
+          label='Start date'
+          isRequired={ false }
+          allowTextInput={ true }
+          ariaLabel={ desc }
+          firstDayOfWeek={ firstDayOfWeek }
+          strings={ DayPickerStrings }
+          value={ value }
+          onSelectDate={ date => this.setState({ value: date }) }
+          />
+        <Button onClick={ () => this.setState({ value: null }) }>Clear</Button>
       </div>
     );
   }

@@ -66,9 +66,9 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
     this.state = {
       selectedDate: value || new Date(),
-      formattedDate: formatDate && value ? formatDate(value) : '',
+      formattedDate: (formatDate && value) ? formatDate(value) : '',
       isDatePickerShown: false,
-      errorMessage: ''
+      errorMessage: null
     };
 
     this._preventFocusOpeningPicker = false;
@@ -76,11 +76,11 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   public componentWillReceiveProps(nextProps: IDatePickerProps) {
     let { formatDate, isRequired, strings, value } = nextProps;
-    const errorMessage = isRequired && !value ? (strings.isRequiredErrorMessage || '*') : '';
+    const errorMessage = (isRequired && !value) ? (strings.isRequiredErrorMessage || '*') : null;
 
     this.setState({
       selectedDate: value || new Date(),
-      formattedDate: formatDate && value ? formatDate(value) : '',
+      formattedDate: (formatDate && value) ? formatDate(value) : '',
       errorMessage: errorMessage
     });
   }
@@ -233,8 +233,10 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
         this._dismissDatePickerPopup();
       }
 
+      let { isRequired, value, strings } = this.props;
+
       this.setState({
-        errorMessage: '',
+        errorMessage: (isRequired && !value) ? (strings.isRequiredErrorMessage || '*') : null,
         formattedDate: newValue
       });
     }
