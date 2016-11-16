@@ -14,7 +14,7 @@ import {
 } from '../../utilities/properties';
 import { Callout } from '../../Callout';
 import { BaseComponent } from '../../common/BaseComponent';
-import { Icon, IconName } from '../Icon';
+import { Icon, IconName } from '../../Icon';
 import './ContextualMenu.scss';
 
 export interface IContextualMenuState {
