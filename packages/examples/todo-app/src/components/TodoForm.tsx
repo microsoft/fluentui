@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { Button, ButtonType } from 'office-ui-fabric-react/lib/Button';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { ITodoFormProps, ITodoFormState } from '../types/index';
@@ -33,24 +34,25 @@ export default class TodoForm extends React.Component<ITodoFormProps, ITodoFormS
         <TextField
           className={ styles.textField }
           value={ this.state.inputValue }
-          ref={(ref: TextField) => this._textField = ref}
+          ref={ ref => this._textField = ref }
           placeholder={ strings.inputBoxPlaceholder }
           onBeforeChange={ this._onBeforeTextFieldChange }
-          autoComplete= 'off'
+          autoComplete='off'
           errorMessage={ this.state.errorMessage }
-        />
+          />
         <Button
           className={ styles.addButton }
           buttonType={ ButtonType.primary }
-          type= 'submit'
-        >
+          type='submit'
+          >
           { strings.addButton }
         </Button>
       </form>
     );
   }
 
-  private _onSubmit(event: React.FormEvent): void {
+  @autobind
+  private _onSubmit(event: React.FormEvent<HTMLElement>): void {
     event.preventDefault();
 
     if (!this._getTitleErrorMessage(this._textField.value)) {
@@ -76,7 +78,7 @@ export default class TodoForm extends React.Component<ITodoFormProps, ITodoFormS
   }
 
   private _getTitleErrorMessage(title: string): string {
-    if (title.trim() === '' ) {
+    if (title.trim() === '') {
       return strings.titleEmptyErrorMessage;
     } else {
       return '';
