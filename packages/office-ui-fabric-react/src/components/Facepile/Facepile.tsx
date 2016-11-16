@@ -23,7 +23,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
     let numPersonasToShow: number = Math.min(personas.length, maxDisplayablePersonas);
 
     // Added for deprecating chevronButtonProps.  Can remove after v1.0
-    if(chevronButtonProps && !overflowButtonProps){
+    if (chevronButtonProps && !overflowButtonProps) {
       overflowButtonProps = chevronButtonProps;
       overflowButtonType = OverflowButtonType.downArrow;
     }
