@@ -613,7 +613,7 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   private _shouldInputLoseFocus(element: HTMLInputElement, isForward?: boolean) {
-    if (element && element.hasAttribute('selectionStart')) {
+    if (element && element.type && element.type.toLowerCase() === 'text') {
       let selectionStart = element.selectionStart;
       let selectionEnd = element.selectionEnd;
       let isRangeSelected = selectionStart !== selectionEnd;
