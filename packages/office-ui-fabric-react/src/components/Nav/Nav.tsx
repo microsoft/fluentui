@@ -121,7 +121,8 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
           <button
             className='ms-Nav-chevronButton ms-Nav-chevronButton--link'
             onClick={ this._onLinkExpandClicked.bind(this, link) }
-            title={ (link.isExpanded ? this.props.expandedStateText : this.props.collapsedStateText) }
+            aria-label={ this.props.expandButtonAriaLabel }
+            aria-expanded={ link.isExpanded ? 'true' : 'false' }
             >
             <i className='ms-Nav-chevron ms-Icon ms-Icon--ChevronDown'></i>
           </button> : null

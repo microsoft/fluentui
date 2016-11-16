@@ -48,11 +48,20 @@ export interface INavProps {
   ariaLabel?: string;
 
   /**
+   * (Optional) The nav container aria label.
+   */
+  expandButtonAriaLabel?: string;
+
+  /**
+   * @deprecated
+   * deprecated at v0.68.1 and will be removed at >= V1.0.0  not used.
    * (Optional) The accessibility text for the expanded state
    **/
   expandedStateText?: string;
 
   /**
+   * @deprecated
+   * deprecated at v0.68.1 and will be removed at >= V1.0.0  not used.
    * (Optional) The accessibility text for the collapsed state text
    **/
   collapsedStateText?: string;
