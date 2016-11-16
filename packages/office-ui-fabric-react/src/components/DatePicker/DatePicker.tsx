@@ -172,8 +172,10 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   }
 
   private _restoreFocusToTextField() {
-    this._preventFocusOpeningPicker = true;
-    this.refs.textField.focus();
+    if (!this.props.hideTextField) {
+      this._preventFocusOpeningPicker = true;
+      this.refs.textField.focus();
+    }
   }
 
   private _navigateDay(date: Date) {
