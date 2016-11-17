@@ -145,6 +145,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     return items.map((item, index) => onRenderItem({
       item,
       index,
+      key: index + this._getTextFromItem(item),
       selected: this.selection.isIndexSelected(index),
       onRemoveItem: () => this.removeItem(item)
     }));
@@ -167,7 +168,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected onSuggestionSelect() {
     if (this.suggestionStore.currentSuggestion) {
       let currentValue: string = this.input.value;
-      let itemValue: string = this.props.getTextFromItem(this.suggestionStore.currentSuggestion.item, currentValue);
+      let itemValue: string = this._getTextFromItem(this.suggestionStore.currentSuggestion.item, currentValue);
       this.setState({ suggestedDisplayValue: itemValue });
     }
   }
@@ -218,7 +219,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     let itemValue: string = undefined;
 
     if (this.suggestionStore.currentSuggestion) {
-      itemValue = this.props.getTextFromItem(this.suggestionStore.currentSuggestion.item, updatedValue);
+      itemValue = this._getTextFromItem(this.suggestionStore.currentSuggestion.item, updatedValue);
     }
 
     this.setState({
@@ -359,6 +360,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       this.removeItem(this.state.items[this.state.items.length - 1]);
     } else if (this.selection.getSelectedCount() > 0) {
       this.removeItems(this.selection.getSelection());
+    }
+  }
+
+  private _getTextFromItem(item: T, currentValue?: string): string {
+    if (this.props.getTextFromItem) {
+      return this.props.getTextFromItem(item, currentValue);
+    } else {
+      return '';
     }
   }
 }
