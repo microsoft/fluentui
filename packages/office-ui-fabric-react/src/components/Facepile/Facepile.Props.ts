@@ -32,6 +32,7 @@ export interface IFacepileProps extends React.Props<Facepile> {
   /** Type of overflow icon to use */
   overflowButtonType?: OverflowButtonType;
 
+  /** Method to access properties on the underlying Persona control */
   getPersonaProps?: (persona: IFacepilePersona) => IPersonaProps;
 }
 
@@ -78,8 +79,6 @@ export interface IFacepilePersona extends React.HTMLProps<HTMLButtonElement | HT
    * handlers.
    */
   data?: any;
-
-  // getPersonaProps?: (persona: IFacepilePersona) => IPersonaProps;
 }
 
 export enum OverflowButtonType {
