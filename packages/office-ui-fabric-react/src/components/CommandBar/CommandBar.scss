@@ -136,7 +136,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
     }
   }
 
-  &:hover {
+  &:hover:not[disabled] {
     color: $ms-color-neutralDark;
     background-color: $ms-color-neutralLight;
 
@@ -172,6 +172,12 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
 
   &.is-expanded:hover {
     background-color: $ms-color-neutralQuaternary;
+  }
+
+  &[disabled] {
+    color: $ms-color-neutralTertiaryAlt;
+    cursor: default;
+    pointer-events: none;
   }
 }
 
