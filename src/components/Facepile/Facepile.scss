@@ -27,29 +27,3 @@ button.ms-Facepile-itemBtn {
    cursor: pointer;
    border: none;
 }
-
-button.ms-Facepile-addBtn {
-  font-size: $ms-font-size-s;
-  color: $ms-color-white;
-  background-color: $ms-color-themePrimary;
-
-  &:hover, &:focus {
-    background-color: $ms-color-themeDark;
-  }
-
-  &:active {
-    background-color: $ms-color-themeDarker;
-  }
-
-  &:disabled,
-  &.is-disabled {
-    background-color: $ms-color-neutralTertiaryAlt;
-  }
-}
-
-button.ms-Facepile-chevronBtn,
-button.ms-Facepile-overflowBtn {
-  font-size: $ms-font-size-s;
-  color: $ms-color-neutralSecondary;
-  background-color: $ms-color-neutralLight;
-}
