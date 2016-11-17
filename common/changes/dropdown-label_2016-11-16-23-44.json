@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "comment": "Patching the project.",
+      "packageName": "office-ui-fabric-react",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
