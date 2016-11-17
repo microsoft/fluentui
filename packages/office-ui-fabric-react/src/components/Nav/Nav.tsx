@@ -103,7 +103,8 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
     return (
       <Button
         className={ css('ms-Nav-link ms-Nav-linkButton', { 'isOnExpanded': this._hasExpandButton }) }
-        buttonType={ ButtonType.command }
+        buttonType={ButtonType.command}
+        href={ link.url }
         icon={ link.icon }
         description={ link.title || link.name }
         onClick={ this._onNavButtonLinkClicked.bind(this, link) }>
@@ -112,7 +113,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
   }
 
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
-    const isLinkSelected: boolean = _isLinkSelected(link, this.state.selectedKey, this.props.selectedKey);
+    const isLinkSelected: boolean = this._isLinkSelected(link);
 
     return (
       <div key={ link.key || linkIndex }
@@ -208,51 +209,49 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
 
     this.setState({ selectedKey: link.key });
   }
-}
 
-// A tag used for resolving links.
-let _urlResolver;
-function _isLinkSelected(link: INavLink, clickSelectedKey: string, propsSelectedKey: string): boolean {
-  // if caller passes in selectedKey, use it as first choice or
-  // if current state.selectedKey (from addressbar) is match to the link
-  if (propsSelectedKey !== undefined && link.key === propsSelectedKey ||
-    clickSelectedKey !== undefined && link.key === clickSelectedKey) {
-    return true;
-  }
-
-  // resolve is not supported for ssr
-  if (typeof (window) === 'undefined') {
-    return false;
-  }
-
-  if (!link.url) {
-    return false;
-  }
-
-  _urlResolver = _urlResolver || document.createElement('a');
-
-  _urlResolver.href = link.url || '';
-  const target: string = _urlResolver.href;
-
-  if (location.href === target) {
-    return true;
-  }
-
-  if (location.protocol + '//' + location.host + location.pathname === target) {
-    return true;
-  }
-
-  if (location.hash) {
-    // Match the hash to the url.
-    if (location.hash === link.url) {
+  private _isLinkSelected(link: INavLink): boolean {
+    let _urlResolver;
+    // if caller passes in selectedKey, use it as first choice or
+    // if current state.selectedKey (from addressbar) is match to the link
+    if (this.props.selectedKey !== undefined && link.key === this.props.selectedKey ||
+        this.state.selectedKey !== undefined && link.key === this.state.selectedKey) {
       return true;
     }
 
-    // Match a rebased url. (e.g. #foo becomes http://hostname/foo)
-    _urlResolver.href = location.hash.substring(1);
+    // resolve is not supported for ssr
+    if (typeof (window) === 'undefined') {
+      return false;
+    }
 
-    return _urlResolver.href === target;
+    if (!link.url) {
+      return false;
+    }
+
+    _urlResolver = _urlResolver || document.createElement('a');
+
+    _urlResolver.href = link.url || '';
+    const target: string = _urlResolver.href;
+
+    if (location.href === target) {
+      return true;
+    }
+
+    if (location.protocol + '//' + location.host + location.pathname === target) {
+      return true;
+    }
+
+    if (location.hash) {
+      // Match the hash to the url.
+      if (location.hash === link.url) {
+        return true;
+      }
+
+      // Match a rebased url. (e.g. #foo becomes http://hostname/foo)
+      _urlResolver.href = location.hash.substring(1);
+
+      return _urlResolver.href === target;
+    }
+    return false;
   }
-
-  return false;
 }

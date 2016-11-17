@@ -41,8 +41,8 @@ export class NavBasicExample extends React.Component<any, any> {
                   { name: 'Long Name Test for elipse', url: 'http://msn.com', key: 'key6' },
                   {
                     name: 'Edit',
-                    url: '#',
-                    onClick: this._onClickHandler,
+                    url: 'http://cnn.com',
+                    onClick: this._onClickHandler2,
                     icon: 'Edit',
                     key: 'key8'
                   }
@@ -60,6 +60,10 @@ export class NavBasicExample extends React.Component<any, any> {
 
   private _onClickHandler(e: React.MouseEvent<HTMLElement>) {
     alert('test');
+    return false;
+  }
+
+  private _onClickHandler2(e: React.MouseEvent<HTMLElement>) {
     return false;
   }
 }
