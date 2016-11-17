@@ -12,7 +12,7 @@ import './Facepile.Examples.scss';
 
 export enum ExtraDataType {
   none = 0,
-  firstName,
+  name,
   stats
 }
 
@@ -38,7 +38,7 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
     let facepileProps: IFacepileProps = {
       personas: facepilePersonas.slice(0, numberOfFaces),
       getPersonaProps: (persona: IFacepilePersona) => {
-        if (extraDataType === ExtraDataType.firstName) {
+        if (extraDataType === ExtraDataType.name) {
           return {
             imageShouldFadeIn: this.state.imagesFadeIn,
             hidePersonaDetails: false
@@ -87,7 +87,7 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
           options={
             [
               { key: ExtraDataType.none, text: ExtraDataType[ExtraDataType.none] },
-              { key: ExtraDataType.firstName, text: ExtraDataType[ExtraDataType.firstName] },
+              { key: ExtraDataType.name, text: ExtraDataType[ExtraDataType.name] },
               { key: ExtraDataType.stats, text: ExtraDataType[ExtraDataType.stats] }
             ]
           }
