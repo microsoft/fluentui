@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "comment": "Facepile: updating default behavior.",
+      "packageName": "office-ui-fabric-react",
+      "type": "minor"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
