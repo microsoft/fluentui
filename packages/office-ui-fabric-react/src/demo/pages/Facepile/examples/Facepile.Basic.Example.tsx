@@ -42,13 +42,13 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
           return {
             imageShouldFadeIn: this.state.imagesFadeIn,
             hidePersonaDetails: false
-          }
+          };
         } else if (extraDataType === ExtraDataType.stats) {
           return {
             imageShouldFadeIn: this.state.imagesFadeIn,
             hidePersonaDetails: false,
             primaryText: `[${persona.data}]`
-          }
+          };
         }
         return {
           imageShouldFadeIn: this.state.imagesFadeIn,
