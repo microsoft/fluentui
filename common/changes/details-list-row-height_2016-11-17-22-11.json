@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "DetailsList: row height no longer made artificially larger by the checkbox.",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
