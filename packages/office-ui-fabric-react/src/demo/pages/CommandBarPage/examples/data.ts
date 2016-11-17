@@ -56,6 +56,13 @@ export const items = [
     name: 'Rename...',
     icon: 'Edit',
     onClick: () => { return; }
+  },
+  {
+    key: 'disabled',
+    name: 'Disabled...',
+    icon: 'Cancel',
+    disabled: true,
+    onClick: () => { return; }
   }
 ];
 
@@ -88,6 +95,12 @@ export const textOnlyItems = [
   {
     key: 'rename',
     name: 'Rename...',
+    onClick: () => { return; }
+  },
+  {
+    key: 'disabled',
+    name: 'Disabled...',
+    disabled: true,
     onClick: () => { return; }
   }
 ];
@@ -127,6 +140,12 @@ export const iconOnlyItems = [
     key: 'rename',
     name: '',
     icon: 'Edit',
+    onClick: () => { return; }
+  },
+  {
+    key: 'disabled',
+    icon: 'Cancel',
+    disabled: true,
     onClick: () => { return; }
   }
 ];
