@@ -49,6 +49,9 @@ $ContextualMenu-iconWidth: 14px;
     color: $ms-color-neutralTertiaryAlt;
     cursor: default;
     pointer-events: none;
+    .ms-ContextualMenu-icon {
+      color: $ms-color-neutralTertiaryAlt;
+    }
   }
 
   .is-focusVisible &:focus {
