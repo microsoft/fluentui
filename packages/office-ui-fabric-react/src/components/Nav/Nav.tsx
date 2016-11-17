@@ -19,6 +19,9 @@ const _indentWithExpandButton: number = 28;
 // Tne number of pixels of left margin when there is expand/collaps button
 const _indentNoExpandButton: number = 20;
 
+// global var used in _isLinkSelectedKey
+let _urlResolver;
+
 export interface INavState {
   isGroupExpanded?: boolean[];
   isLinkExpandStateChanged?: boolean;
@@ -211,7 +214,6 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
   }
 
   private _isLinkSelected(link: INavLink): boolean {
-    let _urlResolver;
     // if caller passes in selectedKey, use it as first choice or
     // if current state.selectedKey (from addressbar) is match to the link
     if (this.props.selectedKey !== undefined && link.key === this.props.selectedKey ||
