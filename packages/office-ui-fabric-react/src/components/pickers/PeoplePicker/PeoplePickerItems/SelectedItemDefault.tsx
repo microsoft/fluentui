@@ -20,8 +20,7 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
         'is-selected': selected
       }) }
       data-is-focusable={ true }
-      data-selection-index={ index }
-      key={ index } >
+      data-selection-index={ index } >
       <div className='ms-PickerItem-content'>
         <Persona
           { ...item }
