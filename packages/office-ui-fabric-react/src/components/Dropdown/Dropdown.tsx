@@ -66,7 +66,9 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
 
     return (
       <div ref='root'>
-        <label id={ id + '-label' } className='ms-Label' ref={ (dropdownLabel) => this._dropdownLabel = dropdownLabel } >{ label }</label>
+        { label && (
+          <label id={ id + '-label' } className='ms-Label' ref={ (dropdownLabel) => this._dropdownLabel = dropdownLabel } >{ label }</label>
+        ) }
         <div
           data-is-focusable={ true }
           ref={ (c): HTMLElement => this._dropDown = c }
