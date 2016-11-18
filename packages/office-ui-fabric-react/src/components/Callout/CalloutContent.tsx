@@ -247,16 +247,21 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     }
 
     private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent): void {
-        if (typeof target === 'string') {
-            this._target = getDocument().getElementById(target);
-            this._targetWindow = getWindow();
-        } else if ((target as MouseEvent).stopPropagation) {
-            this._target = target;
-            this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement);
+        if (target) {
+            if (typeof target === 'string') {
+                let currentDoc: Document = getDocument();
+                this._target = currentDoc ? currentDoc.getElementById(target) : null;
+                this._targetWindow = getWindow();
+            } else if ((target as MouseEvent).stopPropagation) {
+                this._target = target;
+                this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement);
+            } else {
+                let targetElement: HTMLElement = target as HTMLElement;
+                this._target = target;
+                this._targetWindow = getWindow(targetElement);
+            }
         } else {
-            let targetElement: HTMLElement = target as HTMLElement;
-            this._target = target;
-            this._targetWindow = getWindow(targetElement);
+            this._targetWindow = getWindow();
         }
     }
 }
