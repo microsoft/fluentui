@@ -19,7 +19,7 @@ export interface ICalendarProps extends React.Props<Calendar> {
   isMonthPickerVisible?: boolean;
 
   /**
-   * Default value of the DatePicker, if any
+   * Default value of the Calendar, if any
    */
   value?: Date;
 
@@ -30,7 +30,7 @@ export interface ICalendarProps extends React.Props<Calendar> {
   firstDayOfWeek?: DayOfWeek;
 
   /**
-   * Localized strings to use in the DatePicker
+   * Localized strings to use in the Calendar
    */
   strings: ICalendarStrings;
 }
@@ -74,14 +74,4 @@ export interface ICalendarStrings {
    * String to render for button to direct the user to today's date.
    */
   goToToday: string;
-
-  /**
-   * Error message to render for TextField if isRequired validation fails.
-   */
-  isRequiredErrorMessage?: string;
-
-  /**
-   * Error message to render for TextField if input date string parsing fails.
-   */
-  invalidInputErrorMessage?: string;
 }

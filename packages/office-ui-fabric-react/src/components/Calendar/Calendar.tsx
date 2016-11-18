@@ -14,8 +14,9 @@ import {
 import './Calendar.scss';
 
 export interface ICalendarState {
-  /** The currently focused date in the drop down, but not necessarily selected */
+  /** The currently focused date in the calendar, but not necessarily selected */
   navigatedDate?: Date;
+  /** The currently selected date in the calendar */
   selectedDate?: Date;
 }
 
