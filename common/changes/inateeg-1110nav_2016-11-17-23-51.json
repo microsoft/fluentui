@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Add SelectedKey to Nav props",
+      "type": "minor"
+    }
+  ],
+  "email": "inateeg@microsoft.com"
+}
