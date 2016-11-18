@@ -101,34 +101,34 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
         let contentMaxHeight: number = this._getMaxHeight();
         let beakVisible: boolean = isBeakVisible && !!targetElement;
         let content = (
-            <div ref={this._resolveRef('_hostElement')} className={'ms-Callout-container'}>
+            <div ref={ this._resolveRef('_hostElement') } className={ 'ms-Callout-container' }>
                 <div
                     className={
                         css(
                             'ms-Callout',
                             className,
                             slideDirectionalClassName ? `ms-u-${slideDirectionalClassName}` : ''
-                        )}
-                    style={positions ? positions.callout : OFF_SCREEN_POSITION}
-                    ref={this._resolveRef('_calloutElement')}
+                        ) }
+                    style={ positions ? positions.callout : OFF_SCREEN_POSITION }
+                    ref={ this._resolveRef('_calloutElement') }
                     >
 
-                    {beakVisible ? (
+                    { beakVisible ? (
                         <div
-                            className={'ms-Callout-beak'}
-                            style={beakReactStyle}
-                            />) : (null)}
+                            className={ 'ms-Callout-beak' }
+                            style={ beakReactStyle }
+                            />) : (null) }
 
-                    {beakVisible ?
+                    { beakVisible ?
                         (<div className='ms-Callout-beakCurtain' />) :
-                        (null)}
+                        (null) }
 
                     <Popup
                         className='ms-Callout-main'
-                        onDismiss={(ev: any) => this.dismiss()}
-                        shouldRestoreFocus={true}
-                        style={{ maxHeight: contentMaxHeight }}>
-                        {children}
+                        onDismiss={ (ev: any) => this.dismiss() }
+                        shouldRestoreFocus={ true }
+                        style={ { maxHeight: contentMaxHeight } }>
+                        { children }
                     </Popup>
                 </div>
             </div>
@@ -191,7 +191,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
             currentProps.bounds = this._getBounds();
             // Temporary to be removed when targetElement is removed. Currently deprecated.
             if (this.props.targetElement) {
-                currentProps.targetElement = this._target as HTMLElement
+                currentProps.targetElement = this._target as HTMLElement;
             } else {
                 currentProps.target = this._target;
             }
@@ -252,9 +252,9 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
             this._targetWindow = getWindow();
         } else if ((target as MouseEvent).stopPropagation) {
             this._target = target;
-            this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)
+            this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement);
         } else {
-            let targetElement: HTMLElement = target as HTMLElement
+            let targetElement: HTMLElement = target as HTMLElement;
             this._target = target;
             this._targetWindow = getWindow(targetElement);
         }

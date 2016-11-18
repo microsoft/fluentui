@@ -6,13 +6,11 @@ import {
   anchorProperties,
   buttonProperties,
   getNativeProps,
-  Async,
   assign,
   getId,
   getRTL,
   css,
   autobind,
-  EventGroup,
   KeyCodes,
   getDocument,
   getWindow
