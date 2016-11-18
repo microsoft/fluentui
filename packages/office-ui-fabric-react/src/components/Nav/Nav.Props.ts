@@ -36,18 +36,33 @@ export interface INavProps {
    * (Optional) The key of the nav item initially selected.
    */
   initialSelectedKey?: string;
+
+  /**
+   * (Optional) The key of the nav item selected by caller.
+   */
+  selectedKey?: string;
+
   /**
    * (Optional) The nav container aria label.
    */
   ariaLabel?: string;
 
   /**
-   * (Optional) The alt text for the expanded state
+   * (Optional) The nav container aria label.
+   */
+  expandButtonAriaLabel?: string;
+
+  /**
+   * @deprecated
+   * deprecated at v0.68.1 and will be removed at >= V1.0.0  not used.
+   * (Optional) The accessibility text for the expanded state
    **/
   expandedStateText?: string;
 
   /**
-   * (Optional) The alt text for the collapsed state text
+   * @deprecated
+   * deprecated at v0.68.1 and will be removed at >= V1.0.0  not used.
+   * (Optional) The accessibility text for the collapsed state text
    **/
   collapsedStateText?: string;
 }
@@ -81,6 +96,11 @@ export interface INavLink {
   url: string;
 
   /**
+   * Meta info for the link server, if negative, client side added node.
+   */
+  key?: string;
+
+  /**
    * Child links to this link, if any
    */
   links?: INavLink[];
@@ -101,11 +121,15 @@ export interface INavLink {
   iconClassName?: string;
 
   /**
+   * @deprecated
+   * deprecated at v0.68.1 and will be removed at >= V1.0.0  not used.
    * The name of the item to be used in logging engagement data
    */
   engagementName?: string;
 
   /**
+   * @deprecated
+   * deprecated at v0.68.1 and will be removed at >= V1.0.0  not used.
    * The alt text for the item
    */
   altText?: string;
@@ -126,11 +150,6 @@ export interface INavLink {
   ariaLabel?: string;
 
   /**
-   * Meta info for the link, does not involving rendering.
-   */
-  key?: string;
-
-  /**
    * title for tooltip or description
    */
   title?: string;
@@ -142,7 +161,7 @@ export interface INavLink {
 
   /**
    * Point to the parent node key.  This is used in EditNav when move node from sublink to
-   *   parent lin vs vers.
+   *   parent link vs vers.
    */
   parentId?: string;
 
