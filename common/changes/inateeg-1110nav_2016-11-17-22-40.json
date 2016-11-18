@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Support Nav props with selectedKey and selected bar with theme color",
+      "type": "patch"
+    }
+  ],
+  "email": "inateeg@microsoft.com"
+}

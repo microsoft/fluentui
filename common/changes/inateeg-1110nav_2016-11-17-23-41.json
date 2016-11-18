@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Add Nav props of selectedKey and selected bar with then color",
+      "type": "minor"
+    }
+  ],
+  "email": "inateeg@microsoft.com"
+}
