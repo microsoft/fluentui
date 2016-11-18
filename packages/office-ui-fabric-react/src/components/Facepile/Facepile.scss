@@ -10,7 +10,7 @@
   clear: both;
 }
 
-.ms-Facepile-memberBtn {
+.ms-Facepile-itemButton {
   position: relative;
   height: 32px;
   min-width: 32px;
@@ -25,7 +25,7 @@
   vertical-align: top;
 }
 
-button.ms-Facepile-memberBtn {
+button.ms-Facepile-itemButton {
   display: inline;
   background: none;
   padding: 0;
@@ -33,12 +33,7 @@ button.ms-Facepile-memberBtn {
   border: none;
 }
 
-button.ms-Facepile-itemBtn {
-  color: $ms-color-neutralSecondary;
-  background-color: $ms-color-neutralLight;
-}
-
-button.ms-Facepile-addBtn {
+button.ms-Facepile-addButton {
   font-size: $ms-font-size-m;
   color: $ms-color-white;
   background-color: $ms-color-themePrimary;
@@ -57,10 +52,14 @@ button.ms-Facepile-addBtn {
   }
 }
 
-button.ms-Facepile-overflowBtn {
+button.ms-Facepile-overflowButton {
   font-size: $ms-font-size-m;
+  color: $ms-color-neutralSecondary;
+  background-color: $ms-color-neutralLight;
 }
 
-button.ms-Facepile-descriptiveOverflowBtn {
+button.ms-Facepile-descriptiveOverflowButton {
   font-size: $ms-font-size-s;
+  color: $ms-color-neutralSecondary;
+  background-color: $ms-color-neutralLight;
 }

@@ -63,7 +63,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   private _getElementWithOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
     return <button
       { ...getNativeProps(persona, buttonProperties) }
-      className='ms-Facepile-memberBtn'
+      className='ms-Facepile-itemButton'
       title={ persona.personaName }
       key={ (!!persona.imageUrl ? 'i' : '') + index }
       onClick={ this._onPersonaClick.bind(this, persona) }
@@ -77,7 +77,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   private _getElementWithoutOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
     return <div
       { ...getNativeProps(persona, divProperties) }
-      className='ms-Facepile-memberBtn'
+      className='ms-Facepile-itemButton'
       title={ persona.personaName }
       key={ (!!persona.imageUrl ? 'i' : '') + index }
       onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
@@ -108,7 +108,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
     let personaNames: string = this.props.personas.slice(numPersonasToShow).map((p: IFacepilePersona) => p.personaName).join(', ');
 
     return <button { ...getNativeProps(this.props.overflowButtonProps, buttonProperties) }
-      className={ css('ms-Facepile-descriptiveOverflowBtn', 'ms-Facepile-memberBtn', 'ms-Facepile-itemBtn') }
+      className={ css('ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton') }
       title={ personaNames }>
       { '+' + numPersonasNotPictured }
     </button>;
@@ -116,14 +116,14 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
 
   private _getIconElement(icon: string): JSX.Element {
     return <button { ...getNativeProps(this.props.overflowButtonProps, buttonProperties) }
-      className={ css('ms-Facepile-overflowBtn', 'ms-Facepile-memberBtn', 'ms-Facepile-itemBtn') }>
+      className={ css('ms-Facepile-overflowButton', 'ms-Facepile-itemButton') }>
       <i className={ css('ms-Icon', 'msIcon', `ms-Icon ms-Icon--${icon}`) } aria-hidden='true'></i>
     </button>;
   }
 
   private _getAddNewElement(): JSX.Element {
     return <button { ...getNativeProps(this.props.addButtonProps, buttonProperties) }
-      className={ css('ms-Facepile-addBtn', 'ms-Facepile-memberBtn', 'ms-Facepile-itemBtn') }>
+      className={ css('ms-Facepile-addButton', 'ms-Facepile-itemButton') }>
       <i className='ms-Icon msIcon ms-Icon--AddFriend' aria-hidden='true'></i>
     </button>;
   }
