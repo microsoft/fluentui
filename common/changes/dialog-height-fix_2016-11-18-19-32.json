@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Remove 'height: 100%' from .ms-Dialog-inner",
+      "type": "patch"
+    }
+  ],
+  "email": "miclo@microsoft.com"
+}
