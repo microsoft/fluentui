@@ -1,10 +1,11 @@
 import * as React from 'react';
 import {
-  DayOfWeek,
   IDatePickerProps
 } from './DatePicker.Props';
-import { DatePickerDay } from './DatePickerDay';
-import { DatePickerMonth } from './DatePickerMonth';
+import {
+  Calendar,
+  DayOfWeek
+} from '../../Calendar';
 import { TextField } from '../../TextField';
 import {
   autobind,
@@ -27,9 +28,6 @@ export interface IDatePickerState {
 export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState> {
   public static defaultProps: IDatePickerProps = {
     allowTextInput: false,
-    hideTextField: false,
-    showDatePicker: false,
-    onDismiss: null,
     formatDate: (date: Date) => {
       if (date) {
         return date.toDateString();
@@ -56,7 +54,6 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     root: HTMLElement;
     textField: TextField;
     textFieldContainer: HTMLElement;
-    dayPicker: DatePickerDay;
   };
 
   private _preventFocusOpeningPicker: boolean;
@@ -78,13 +75,8 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   }
 
   public componentWillReceiveProps(nextProps: IDatePickerProps) {
-    let { formatDate, isRequired, strings, value, showDatePicker } = nextProps;
+    let { formatDate, isRequired, strings, value } = nextProps;
     const errorMessage = (isRequired && !value) ? (strings.isRequiredErrorMessage || '*') : null;
-
-    // If passing in showDatePicker then outside action determined it should open
-    if (showDatePicker) {
-      this._showDatePickerPopup();
-    }
 
     this.setState({
       selectedDate: value || new Date(),
@@ -103,91 +95,56 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   public componentDidUpdate() {
     if (this._focusOnSelectedDateOnUpdate) {
-      this.refs.dayPicker.focus();
       this._focusOnSelectedDateOnUpdate = false;
     }
   }
 
   public render() {
     let rootClass = 'ms-DatePicker';
-    let { firstDayOfWeek, strings, label, isRequired, ariaLabel, placeholder, allowTextInput, hideTextField } = this.props;
-    let { isDatePickerShown, formattedDate, selectedDate, navigatedDate, errorMessage } = this.state;
+    let { firstDayOfWeek, strings, label, isRequired, ariaLabel, placeholder, allowTextInput } = this.props;
+    let { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
     return (
       <div className={ rootClass } ref='root'>
-        { !hideTextField &&
-          <div ref='textFieldContainer'>
-            <TextField
-              ariaLabel={ ariaLabel }
-              aria-haspopup='true'
-              required={ isRequired }
-              onKeyDown={ this._onTextFieldKeyDown }
-              onFocus={ this._onTextFieldFocus }
-              onBlur={ this._onTextFieldBlur }
-              onClick={ this._onTextFieldClick }
-              onChanged={ this._onTextFieldChanged }
-              errorMessage={ errorMessage }
-              label={ label }
-              placeholder={ placeholder }
-              iconClass={ css(
-                'ms-Icon ms-Icon--Calendar',
-                label ? 'ms-DatePicker-event--with-label' : 'ms-DatePicker-event--without-label'
-              ) }
-              readOnly={ !allowTextInput }
-              value={ formattedDate }
-              ref='textField' />
-          </div>
-        }
+        <div ref='textFieldContainer'>
+          <TextField
+            ariaLabel={ ariaLabel }
+            aria-haspopup='true'
+            required={ isRequired }
+            onKeyDown={ this._onTextFieldKeyDown }
+            onFocus={ this._onTextFieldFocus }
+            onBlur={ this._onTextFieldBlur }
+            onClick={ this._onTextFieldClick }
+            onChanged={ this._onTextFieldChanged }
+            errorMessage={ errorMessage }
+            label={ label }
+            placeholder={ placeholder }
+            iconClass={ css(
+              'ms-Icon ms-Icon--Calendar',
+              label ? 'ms-DatePicker-event--with-label' : 'ms-DatePicker-event--without-label'
+            ) }
+            readOnly={ !allowTextInput }
+            value={ formattedDate }
+            ref='textField' />
+        </div>
         { isDatePickerShown && (
-          <div className={ 'ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused ' + (this.props.isMonthPickerVisible ? 'is-monthPickerVisible' : '') } >
-            <div className='ms-DatePicker-holder' onKeyDown={ this._onDatePickerPopupKeyDown }>
-              <div className='ms-DatePicker-frame'>
-                <div className='ms-DatePicker-wrap'>
-                  <DatePickerDay
-                    selectedDate={ selectedDate }
-                    navigatedDate={ navigatedDate }
-                    onSelectDate={ this._onSelectDate }
-                    onNavigateDate={ this._onNavigateDate }
-                    firstDayOfWeek={ firstDayOfWeek }
-                    strings={ strings }
-                    ref='dayPicker' />
-                  <DatePickerMonth
-                    navigatedDate={ navigatedDate }
-                    strings={ strings }
-                    onNavigateDate={ this._onNavigateDate } />
-                  <span
-                    className='ms-DatePicker-goToday js-goToday'
-                    onClick={ this._onGotoToday }
-                    onKeyDown={ this._onGotoTodayKeyDown }
-                    tabIndex={ 0 }>
-                    { strings.goToToday }
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Calendar
+            onSelectDate={ this._onSelectDate }
+            onDismiss={ this._dismissDatePickerPopup }
+            isMonthPickerVisible={ this.props.isMonthPickerVisible }
+            value={ selectedDate }
+            firstDayOfWeek={ firstDayOfWeek }
+            strings={ strings }
+            >
+          </Calendar>
         ) }
       </div>
     );
   }
 
   private _restoreFocusToTextField() {
-    if (!this.props.hideTextField) {
-      this._preventFocusOpeningPicker = true;
-      this.refs.textField.focus();
-    }
-  }
-
-  private _navigateDay(date: Date) {
-    this.setState({
-      navigatedDate: date
-    });
-  }
-
-  @autobind
-  private _onNavigateDate(date: Date, focusOnNavigatedDay: boolean) {
-    this._focusOnSelectedDateOnUpdate = this._focusOnSelectedDateOnUpdate || focusOnNavigatedDay;
-    this._navigateDay(date);
+    this._preventFocusOpeningPicker = true;
+    this.refs.textField.focus();
   }
 
   @autobind
@@ -204,20 +161,6 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
     if (onSelectDate) {
       onSelectDate(date);
-    }
-  };
-
-  @autobind
-  private _onGotoToday() {
-    this._focusOnSelectedDateOnUpdate = true;
-    this._navigateDay(new Date());
-  };
-
-  @autobind
-  private _onGotoTodayKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    if (ev.which === KeyCodes.enter) {
-      ev.preventDefault();
-      this._onGotoToday();
     }
   };
 
@@ -281,26 +224,6 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   };
 
   @autobind
-  private _onDatePickerPopupKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    switch (ev.which) {
-      case KeyCodes.enter:
-        ev.preventDefault();
-        break;
-
-      case KeyCodes.backspace:
-        ev.preventDefault();
-        break;
-
-      case KeyCodes.escape:
-        this._handleEscKey(ev);
-        break;
-
-      default:
-        break;
-    }
-  }
-
-  @autobind
   private _onClickCapture(ev: React.MouseEvent<HTMLElement>) {
     if (!elementContains(this.refs.root, ev.target as HTMLElement)) {
       this._dismissDatePickerPopup();
@@ -331,15 +254,12 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     }
   }
 
+  @autobind
   private _dismissDatePickerPopup() {
     if (this.state.isDatePickerShown) {
       this.setState({
         isDatePickerShown: false
       });
-
-      if (this.props.onDismiss != null) {
-        this.props.onDismiss();
-      }
 
       this._validateTextInput();
     }

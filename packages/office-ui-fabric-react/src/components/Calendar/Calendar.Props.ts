@@ -1,28 +1,16 @@
 import * as React from 'react';
-import { DatePicker } from './DatePicker';
-import { DayOfWeek } from '../../Calendar';
+import { Calendar } from './Calendar';
 
-export interface IDatePickerProps extends React.Props<DatePicker> {
+export interface ICalendarProps extends React.Props<Calendar> {
   /**
-   * Callback issued when a date is selected
-   */
+  * Callback issued when a date is selected
+  */
   onSelectDate?: (date: Date) => void;
 
   /**
-   * Label for the DatePicker
+   * Callback issued when date picker is closed
    */
-  label?: string;
-
-  /**
-   * Whether the DatePicker is a required field or not
-   * @defaultvalue false
-   */
-  isRequired?: boolean;
-
-  /**
-   * Aria Label for TextField of the DatePicker for screen reader users.
-   */
-  ariaLabel?: string;
+  onDismiss?: () => void;
 
   /**
    * Whether the month picker is shown beside the day picker or hidden.
@@ -31,32 +19,9 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   isMonthPickerVisible?: boolean;
 
   /**
-   * Whether the DatePicker allows input a date string directly or not
-   * @defaultvalue false
-   */
-  allowTextInput?: boolean;
-
-  /**
-   * Placeholder text for the DatePicker
-   */
-  placeholder?: string;
-
-  /**
    * Default value of the DatePicker, if any
    */
   value?: Date;
-
-  /**
-   * Optional method to format the chosen date to a string to display in the DatePicker
-   * @defaultvalue date.toString()
-   */
-  formatDate?: (date: Date) => string;
-
-  /**
-   * Optional method to parse the text input value to date, it is only useful when allowTextInput is set to true
-   * @defaultvalue new Date(Date.parse(dateStr))
-   */
-  parseDateFromString?: (dateStr: string) => Date;
 
   /**
    * The first day of the week for your locale.
@@ -67,10 +32,20 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   /**
    * Localized strings to use in the DatePicker
    */
-  strings: IDatePickerStrings;
+  strings: ICalendarStrings;
 }
 
-export interface IDatePickerStrings {
+export enum DayOfWeek {
+  Sunday,
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday
+}
+
+export interface ICalendarStrings {
   /**
    * An array of strings for the full names of months.
    * The array is 0-based, so months[0] should be the full name of January.

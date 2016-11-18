@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   Button,
-  DatePicker,
+  Calendar,
   DayOfWeek
 } from '../../../../index';
 
@@ -59,17 +59,17 @@ const DayPickerStrings = {
   goToToday: 'Go to today'
 };
 
-export interface IDatePickerButtonExampleState {
-  showDatePicker: boolean;
+export interface ICalendarButtonExampleState {
+  showCalendar: boolean;
   selectedDate: Date;
 }
 
-export class DatePickerButtonExample extends React.Component<any, IDatePickerButtonExampleState> {
+export class CalendarButtonExample extends React.Component<any, ICalendarButtonExampleState> {
   public constructor() {
     super();
 
     this.state = {
-      showDatePicker: false,
+      showCalendar: false,
       selectedDate: null
     };
 
@@ -82,30 +82,40 @@ export class DatePickerButtonExample extends React.Component<any, IDatePickerBut
     return (
       <div>
         <Button onClick={ this._onClick }>
-          { this.state.selectedDate == null ? 'Click for DatePicker' : this.state.selectedDate.toLocaleDateString() }
+          { this.state.selectedDate == null ? 'Click for Calendar' : this.state.selectedDate.toLocaleDateString() }
         </Button>
-        <DatePicker firstDayOfWeek={ DayOfWeek.Sunday } strings={ DayPickerStrings } hideTextField={ true } showDatePicker={ this.state.showDatePicker } onDismiss={ this._onDismiss } onSelectDate={ this._onSelectDate } />
+        { this.state.showCalendar && (
+          <Calendar
+            onSelectDate={ this._onSelectDate }
+            onDismiss={ this._onDismiss }
+            isMonthPickerVisible={ true }
+            value={ this.state.selectedDate }
+            firstDayOfWeek={ DayOfWeek.Sunday }
+            strings={ DayPickerStrings }
+            >
+          </Calendar>
+        ) }
       </div>
     );
   }
 
   private _onClick(event: any) {
-    this.setState((prevState: IDatePickerButtonExampleState) => {
-      prevState.showDatePicker = !prevState.showDatePicker;
+    this.setState((prevState: ICalendarButtonExampleState) => {
+      prevState.showCalendar = !prevState.showCalendar;
       return prevState;
     });
   }
 
   private _onDismiss() {
-    this.setState((prevState: IDatePickerButtonExampleState) => {
-      prevState.showDatePicker = false;
+    this.setState((prevState: ICalendarButtonExampleState) => {
+      prevState.showCalendar = false;
       return prevState;
     });
   }
 
   private _onSelectDate(date: Date) {
-    this.setState((prevState: IDatePickerButtonExampleState) => {
-      prevState.showDatePicker = false;
+    this.setState((prevState: ICalendarButtonExampleState) => {
+      prevState.showCalendar = false;
       prevState.selectedDate = date;
       return prevState;
     });

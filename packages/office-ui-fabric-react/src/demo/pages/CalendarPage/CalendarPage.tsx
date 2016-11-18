@@ -5,18 +5,14 @@ import {
   ComponentPage
 } from '../../components/index';
 
-import { DatePickerBasicExample } from './examples/DatePicker.Basic.Example';
-import { DatePickerRequiredExample } from './examples/DatePicker.Required.Example';
-import { DatePickerInputExample } from './examples/DatePicker.Input.Example';
+import { CalendarButtonExample } from './examples/Calendar.Button.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const DatePickerBasicExampleCode = require('./examples/DatePicker.Basic.Example.tsx');
-const DatePickerRequiredExampleCode = require('./examples/DatePicker.Required.Example.tsx');
-const DatePickerInputExampleCode = require('./examples/DatePicker.Input.Example.tsx');
+const CalendarButtonExampleCode = require('./examples/Calendar.Button.Example.tsx');
 
-export class DatePickerPage extends React.Component<IComponentDemoPageProps, any> {
+export class CalendarPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
   constructor() {
@@ -26,28 +22,22 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, any
   public render() {
     return (
       <ComponentPage
-        title='DatePicker'
-        componentName='DatePickerExample'
+        title='Calendar'
+        componentName='CalendarExample'
         exampleCards={
           <div>
-            <ExampleCard title='DatePicker' code={ DatePickerBasicExampleCode }>
-              <DatePickerBasicExample />
-            </ExampleCard>
-            <ExampleCard title='DatePicker as required field' code={ DatePickerRequiredExampleCode }>
-              <DatePickerRequiredExample />
-            </ExampleCard>
-            <ExampleCard title='DatePicker allows input date string' code={ DatePickerInputExampleCode }>
-              <DatePickerInputExample />
+            <ExampleCard title='Calendar launched from a button' code={ CalendarButtonExampleCode }>
+              <CalendarButtonExample />
             </ExampleCard>
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='DatePicker' />
+          <PropertiesTableSet componentName='Calendar' />
         }
         overview={
           <div>
             <p>
-              The DatePicker component enables a user to pick a date value.
+              The calendar component allows a user to browse through a calendar and pick a date value.
             </p>
           </div>
         }
@@ -60,7 +50,7 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, any
               <li>Use the control as a single entity.</li>
               <li>Set the default date to the current date unless a specific date is required for context (e.g. the date of the conference).</li>
               <li>The control is designed to resize relative to available screen width. Allow it to render in either wide or narrow as appropriate.</li>
-              <li>When the control is engaged, the DatePicker renders as a flyout and has defined widths (300px -narrow and 440px – wide). Plan your UI implementation accordingly.</li>
+              <li>When the control is engaged, the Calendar renders as a flyout and has defined widths (300px -narrow and 440px – wide). Plan your UI implementation accordingly.</li>
               <li>The control renders date in a specific format. If allowing for manual entry of date, provide helper text in the appropriate format.</li>
             </ul>
           </div>
