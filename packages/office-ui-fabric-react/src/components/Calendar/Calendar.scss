@@ -6,32 +6,10 @@
 // --------------------------------------------------
 // Date Picker styles
 
-@mixin ms-DatePicker-event() {
-  color: $ms-color-neutralSecondary;
-  font-size: $ms-icon-size-l;
-  line-height: 20px;
-  pointer-events: none;
-  position: absolute;
-  @include right(9px);
-  z-index: $ms-zIndex-middle;
-}
-
 .ms-DatePicker {
   @include ms-u-normalize;
   margin-bottom: 17px;
   z-index: $ms-zIndex-DatePicker;
-
-  .ms-TextField {
-    position: relative;
-
-    input::-ms-clear {
-      display: none;
-    }
-
-    input[readonly] {
-      cursor: pointer;
-    }
-  }
 }
 
 // Base wrapper for the date picker.
@@ -41,17 +19,6 @@
   position: relative;
   @include text-align(left);
   z-index: $ms-zIndex-back;
-}
-
-// Insert a calendar icon over the date field.
-.ms-DatePicker-event--with-label {
-  @include ms-DatePicker-event();
-  top: 35px;
-}
-
-.ms-DatePicker-event--without-label {
-  @include ms-DatePicker-event();
-  top: 7px;
 }
 
 // The holder is the only "scrollable" top-level container element.
