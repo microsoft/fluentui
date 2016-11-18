@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Change base pickers handling of promise to better handle synchronous promise  completion.",
+      "type": "patch"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}
