@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Deprecate targetElement in favor of target. Allows for a more robust set of props to be passed into callout and contextualmenu",
+      "type": "minor"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}

@@ -18,7 +18,7 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    * The element that the Callout should be positioned based on.
    * If a string is given, that is assumed to be the targetElement's Id
    * The Callout will then use document.getElementById to get the element.
-   * @deprecated use target
+   * @deprecated at version 0.72.1 and will no longer exist after 1.0 use target instead
    */
   targetElement?: HTMLElement;
 

@@ -16,10 +16,10 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
   target?: HTMLElement | string | MouseEvent;
 
   /**
-   * The element that the ContextualMenu should be positioned based on.
+   * The element that the ContextualMenu should be positioned based on.'
    * If a string is given, that is assumed to be the targetElement's Id
    * The ContextualMenu will then use document.getElementById to get the element.
-   * @deprecated use target instead
+   * @deprecated at version 0.72.1 and will no longer exist after 1.0 use target instead
    */
   targetElement?: HTMLElement;
 
