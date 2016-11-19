@@ -32,7 +32,7 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
         <Button onClick={ this._onClick } id='ContextualMenuButton2'> Click for ContextualMenu </Button>
         { this.state.isContextMenuVisible ? (
           <ContextualMenu
-            targetElement='ContextualMenuButton2'
+            target='ContextualMenuButton2'
             shouldFocusOnMount={ false }
             onDismiss={ this._onDismiss }
             directionalHint={ DirectionalHint.bottomLeftEdge }

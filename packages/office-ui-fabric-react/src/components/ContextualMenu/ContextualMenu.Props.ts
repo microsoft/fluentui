@@ -8,6 +8,11 @@ export { DirectionalHint } from '../../common/DirectionalHint';
 
 export interface IContextualMenuProps extends React.Props<ContextualMenu> {
 
+  /**
+   * The target that the ContextualMenu should try to position itself based on.
+   * It can be either an HTMLElement a string indicating the ID of a valid HTMLElement
+   * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
+   */
   target?: HTMLElement | string | MouseEvent;
 
   /**
@@ -16,7 +21,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
    * The ContextualMenu will then use document.getElementById to get the element.
    * @deprecated use target instead
    */
-  targetElement?: HTMLElement | string;
+  targetElement?: HTMLElement;
 
   /**
    * How the element should be positioned

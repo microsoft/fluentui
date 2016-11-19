@@ -7,6 +7,11 @@ import { IPoint } from '../../common/IPoint';
 
 export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
 
+  /**
+   * The target that the Callout should try to position itself based on.
+   * It can be either an HTMLElement a string indicating the ID of a valid HTMLElement
+   * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
+   */
   target?: HTMLElement | string | MouseEvent;
 
   /**
@@ -15,7 +20,7 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    * The Callout will then use document.getElementById to get the element.
    * @deprecated use target
    */
-  targetElement?: HTMLElement | string;
+  targetElement?: HTMLElement;
 
   /**
    * How the element should be positioned

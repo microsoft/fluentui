@@ -87,11 +87,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _host: HTMLElement;
   private _previousActiveElement: HTMLElement;
   private _isFocusingPreviousElement: boolean;
-  private _didSetInitialFocus: boolean;
   private _enterTimerId: number;
   private _focusZone: FocusZone;
   private _targetWindow: Window;
-  private _targetElement: HTMLElement;
+  private _target: HTMLElement | MouseEvent;
 
   constructor(props: IContextualMenuProps) {
     super(props);
@@ -102,7 +101,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     };
 
     this._isFocusingPreviousElement = false;
-    this._didSetInitialFocus = false;
     this._enterTimerId = 0;
   }
 
@@ -116,27 +114,22 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   public componentWillUpdate(newProps: IContextualMenuProps) {
-    if (newProps.targetElement !== this.props.targetElement) {
-      this._setTargetWindowAndElement(newProps.targetElement);
+    if (newProps.targetElement !== this.props.targetElement || newProps.target !== this.props.target) {
+      let newTarget = newProps.targetElement ? newProps.targetElement : newProps.target;
+      this._setTargetWindowAndElement(newProps.target);
     }
   }
 
   // Invoked once, both on the client and server, immediately before the initial rendering occurs.
   public componentWillMount() {
-    this._setTargetWindowAndElement(this.props.targetElement);
+    let target = this.props.targetElement ? this.props.targetElement : this.props.target;
+    this._setTargetWindowAndElement(target);
     this._previousActiveElement = this._targetWindow ? this._targetWindow.document.activeElement as HTMLElement : null;
   }
 
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount() {
     this._events.on(this._targetWindow, 'resize', this.dismiss);
-  }
-
-  // Invoked when a component is receiving new props.
-  public componentWillReceiveProps(newProps: IContextualMenuProps, newState: IContextualMenuState) {
-    if (newProps.targetElement !== this.props.targetElement) {
-      this._didSetInitialFocus = false;
-    }
   }
 
   // Invoked immediately before a component is unmounted from the DOM.
@@ -167,7 +160,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       gapSpace,
       coverTarget,
       ariaLabel,
-      doNotLayer } = this.props;
+      doNotLayer,
+      target } = this.props;
 
     let { submenuProps } = this.state;
 
@@ -176,6 +170,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     return (
       <Callout
+        target={ target }
         targetElement={ targetElement }
         targetPoint={ targetPoint }
         useTargetPoint={ useTargetPoint }
@@ -409,7 +404,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         expandedMenuItemKey: item.key,
         submenuProps: {
           items: item.items,
-          targetElement: target,
+          target: target,
           onDismiss: this._onSubMenuDismiss,
           isSubMenu: true,
           id: this.state.subMenuId,
@@ -435,13 +430,22 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
-  private _setTargetWindowAndElement(targetElement: HTMLElement | string): void {
-    if (typeof targetElement === 'string') {
-      this._targetElement = getDocument().getElementById(targetElement);
-      this._targetWindow = getWindow();
+  private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent): void {
+    if (target) {
+      if (typeof target === 'string') {
+        let currentDoc: Document = getDocument();
+        this._target = currentDoc ? currentDoc.getElementById(target) : null;
+        this._targetWindow = getWindow();
+      } else if ((target as MouseEvent).stopPropagation) {
+        this._target = target;
+        this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement);
+      } else {
+        let targetElement: HTMLElement = target as HTMLElement;
+        this._target = target;
+        this._targetWindow = getWindow(targetElement);
+      }
     } else {
-      this._targetElement = targetElement;
-      this._targetWindow = getWindow(targetElement);
+      this._targetWindow = getWindow();
     }
   }
 }

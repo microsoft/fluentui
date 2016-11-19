@@ -64,12 +64,14 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     }
 
     public componentWillMount() {
-        this._setTargetWindowAndElement(this.props.targetElement);
+        let target = this.props.targetElement ? this.props.targetElement : this.props.target;
+        this._setTargetWindowAndElement(target);
     }
 
     public componentWillUpdate(newProps: ICalloutProps) {
-        if (newProps.targetElement !== this.props.targetElement) {
-            this._setTargetWindowAndElement(newProps.targetElement);
+        if (newProps.targetElement !== this.props.targetElement || newProps.target !== this.props.target) {
+            let newTarget = newProps.targetElement ? newProps.targetElement : newProps.target;
+            this._setTargetWindowAndElement(newProps.target);
         }
     }
     public componentDidMount() {
@@ -81,7 +83,14 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
         if (!this._targetWindow) {
             return null;
         }
-        let { className, targetElement, isBeakVisible, beakStyle, children, beakWidth } = this.props;
+        let {
+            className,
+            target,
+            targetElement,
+            isBeakVisible,
+            beakStyle,
+            children,
+            beakWidth } = this.props;
         let { positions, slideDirectionalClassName } = this.state;
         let beakStyleWidth = beakWidth;
 
@@ -99,7 +108,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
         };
 
         let contentMaxHeight: number = this._getMaxHeight();
-        let beakVisible: boolean = isBeakVisible && !!targetElement;
+        let beakVisible: boolean = isBeakVisible && (!!targetElement || !!target);
         let content = (
             <div ref={ this._resolveRef('_hostElement') } className={ 'ms-Callout-container' }>
                 <div
@@ -150,8 +159,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
         if (ev.target !== this._targetWindow &&
             this._hostElement &&
             !elementContains(this._hostElement, target) &&
-            (!(this._target as MouseEvent).stopPropagation) &&
-            (!this._target || !elementContains(this._target as HTMLElement, target))) {
+            ((this._target as MouseEvent).stopPropagation ||
+                (!this._target || !elementContains(this._target as HTMLElement, target)))) {
             this.dismiss();
         }
     }
