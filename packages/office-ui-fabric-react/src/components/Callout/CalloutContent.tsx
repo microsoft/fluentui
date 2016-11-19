@@ -14,7 +14,7 @@ import { getRelativePositions, IPositionInfo, IPositionProps } from '../../utili
 import { IRectangle } from '../../common/IRectangle';
 import { focusFirstChild } from '../../utilities/focus';
 import { assign } from '../../Utilities';
-import { Popup } from '../Popup/index';
+import { Popup } from '../../Popup';
 import { BaseComponent } from '../../common/BaseComponent';
 import './Callout.scss';
 
