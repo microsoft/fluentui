@@ -63,15 +63,40 @@ describe('Callout', () => {
     });
 
     it('Callout target HTMLElements does not throw exception', () => {
-        let eventTarget = document.createElement('div');
-        document.body.appendChild(eventTarget);
+        let targetElement = document.createElement('div');
+        document.body.appendChild(targetElement);
         let threwException: boolean = false;
         try {
 
             ReactTestUtils.renderIntoDocument<HTMLDivElement>(
                 <div>
                     <Callout
-                        target={ eventTarget }
+                        target={ targetElement }
+                        directionalHint={ DirectionalHint.topLeftEdge }
+                        >
+                        <div>
+                            Content
+                        </div>
+                    </Callout>
+                </div>
+            );
+        } catch (e) {
+            threwException = true;
+        }
+
+        expect(threwException).to.be.false;
+    });
+
+    // Once this has been deprecated completely in v1.0 this is no longer needed.
+    it('Callout targetElement  HTMLElements does not throw exception', () => {
+        let targetElement = document.createElement('div');
+        document.body.appendChild(targetElement);
+        let threwException: boolean = false;
+        try {
+            ReactTestUtils.renderIntoDocument<HTMLDivElement>(
+                <div>
+                    <Callout
+                        targetElement={ targetElement }
                         directionalHint={ DirectionalHint.topLeftEdge }
                         >
                         <div>
