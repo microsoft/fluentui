@@ -26,7 +26,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     max: 10,
     showValue: true,
     disabled: false,
-    thumbButtonProps: {}
+    buttonProps: {}
   };
 
   public refs: {
