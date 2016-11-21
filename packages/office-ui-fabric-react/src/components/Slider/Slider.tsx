@@ -75,7 +75,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
       max,
       min,
       showValue,
-      thumbButtonProps
+      buttonProps
     } = this.props;
     const { value, renderedValue } = this.state;
     const thumbOffsetPercent: number = (renderedValue - min) / (max - min) * 100;
@@ -104,8 +104,8 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
             { ...onMouseDownProp }
             { ...onTouchStartProp }
             { ...onKeyDownProp }
-            { ...thumbButtonProps }
-            className={ css('ms-Slider-slideBox', thumbButtonProps.className, {
+            { ...buttonProps }
+            className={ css('ms-Slider-slideBox', buttonProps.className, {
               'ms-Slider-showValue': showValue,
               'ms-Slider-showTransitions': (renderedValue === value)
             }) }

@@ -63,9 +63,9 @@ export interface ISliderProps {
   className?: string;
 
   /**
-   * Optional mixin for additional props on the thumb button.
+   * Optional mixin for additional props on the thumb button within the slider.
    */
-  thumbButtonProps?: React.HTMLProps<HTMLButtonElement>;
+  buttonProps?: React.HTMLProps<HTMLButtonElement>;
 }
 
 export interface ISlider {
