@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Updates the CDN references to point to the new CDN location.",
+      "type": "patch"
+    }
+  ],
+  "email": "miwhea@microsoft.com"
+}
