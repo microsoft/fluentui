@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Make the choicegroup respect the disabled flag",
+      "type": "patch"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}
