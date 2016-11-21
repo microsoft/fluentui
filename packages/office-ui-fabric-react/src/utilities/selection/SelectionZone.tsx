@@ -3,8 +3,9 @@ import {
   BaseComponent,
   KeyCodes,
   autobind,
-  getParent
- } from '../../Utilities';
+  getParent,
+  getDocument
+} from '../../Utilities';
 import { SelectionLayout } from './SelectionLayout';
 import {
   ISelection,
@@ -12,6 +13,10 @@ import {
   SelectionDirection,
   SelectionMode
 } from './interfaces';
+import {
+  isElementTabbable
+} from '../../utilities/focus';
+
 
 // Selection definitions:
 //
@@ -62,6 +67,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   public componentDidMount() {
     // Track the latest modifier keys globally.
     this._events.on(window, 'keydown keyup', this._updateModifiers);
+    this._events.on(window, 'click', this._tryClearOnEmptyClick);
   }
 
   public render() {
@@ -78,7 +84,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
           onFocusCapture: this._onFocus
         } }
         >
-        {this.props.children }
+        { this.props.children }
       </div>
     );
   }
@@ -338,6 +344,12 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     this._clearAndSelectIndex(index);
   }
 
+  private _tryClearOnEmptyClick(ev: MouseEvent) {
+    if (this._isNonHandledClick(ev.target as HTMLElement)) {
+      this.props.selection.setAllSelected(false);
+    }
+  }
+
   private _clearAndSelectIndex(index: number) {
     let { selection } = this.props;
     let isAlreadySingleSelected = selection.getSelectedCount() === 1 && selection.isIndexSelected(index);
@@ -367,7 +379,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
       let indexValue = target.getAttribute(SELECTION_INDEX_ATTRIBUTE_NAME);
       let index = Number(indexValue);
 
-      if (indexValue !== null && index >= 0 && index < selection.getItems().length ) {
+      if (indexValue !== null && index >= 0 && index < selection.getItems().length) {
         break;
       }
 
@@ -385,7 +397,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     return Number(itemRoot.getAttribute(SELECTION_INDEX_ATTRIBUTE_NAME));
   }
 
-  private _hasAttribute(element: HTMLElement, attributeName: string) {
+  private _hasAttribute(element: HTMLElement, attributeName: string): boolean {
     let isToggle = false;
 
     while (!isToggle && element !== this.refs.root) {
@@ -396,8 +408,24 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     return isToggle;
   }
 
-  private _isInputElement(element: HTMLElement) {
+  private _isInputElement(element: HTMLElement): boolean {
     return element.tagName === 'INPUT' || element.tagName === 'TEXTAREA';
+  }
+
+  private _isNonHandledClick(element: HTMLElement): boolean {
+    let doc = getDocument();
+
+    if (doc && element) {
+      while (element !== doc.body) {
+        if (isElementTabbable(element)) {
+          return false;
+        }
+
+        element = getParent(element);
+      }
+    }
+
+    return true;
   }
 
 }
