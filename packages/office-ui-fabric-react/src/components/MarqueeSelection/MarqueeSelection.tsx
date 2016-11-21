@@ -213,6 +213,14 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
       ev.preventDefault();
       ev.stopPropagation();
     }
+
+    let clickRemovalCallback = (clickEvent) => {
+      this._events.off(ev.target, 'click', clickRemovalCallback);
+      clickEvent.preventDefault();
+      clickEvent.stopPropagation();
+    };
+
+    this._events.on(ev.target, 'click', clickRemovalCallback, true);
   }
 
   private _evaluateSelection(dragRect: IRectangle) {
