@@ -28,7 +28,7 @@ export interface ISliderProps {
    * The max value of the Slider
    * @default 10
    */
-  max: number;
+  max?: number;
 
   /**
    * The diffrrence between the two adjacent values of the Slider

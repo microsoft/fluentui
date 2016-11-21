@@ -163,9 +163,9 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
   private _onMouseMoveOrTouchMove(event: MouseEvent | TouchEvent, suppressEventCancelation?: boolean): void {
     const { max, min, step } = this.props;
     const steps: number = (max - min) / step;
-    const sliderLength: number = this.refs.sliderLine.offsetWidth;
-    const stepLength: number = sliderLength / steps;
     const sliderPositionRect: ClientRect = this.refs.sliderLine.getBoundingClientRect();
+    const sliderLength: number = sliderPositionRect.width;
+    const stepLength: number = sliderLength / steps;
     let currentSteps: number;
 
     if (event.type === 'mousedown' || event.type === 'mousemove') {
