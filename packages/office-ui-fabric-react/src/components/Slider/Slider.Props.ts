@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 export interface ISliderProps {
   /**
    * Description label of the Slider
@@ -59,6 +61,11 @@ export interface ISliderProps {
   * Optional className for slider.
   */
   className?: string;
+
+  /**
+   * Optional mixin for additional props on the thumb button.
+   */
+  thumbButtonProps?: React.HTMLProps<HTMLButtonElement>;
 }
 
 export interface ISlider {

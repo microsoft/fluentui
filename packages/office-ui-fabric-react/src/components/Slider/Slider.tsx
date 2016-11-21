@@ -25,7 +25,8 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     min: 0,
     max: 10,
     showValue: true,
-    disabled: false
+    disabled: false,
+    thumbButtonProps: {}
   };
 
   public refs: {
@@ -66,7 +67,16 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
   }
 
   public render(): React.ReactElement<{}> {
-    const { min, max, label, showValue, disabled, className, ariaLabel } = this.props;
+    const {
+      ariaLabel,
+      className,
+      disabled,
+      label,
+      max,
+      min,
+      showValue,
+      thumbButtonProps
+    } = this.props;
     const { value, renderedValue } = this.state;
     const thumbOffsetPercent: number = (renderedValue - min) / (max - min) * 100;
 
@@ -88,20 +98,21 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
         ) }
         <div className='ms-Slider-container'>
           <button
-            type='button'
-            className={ css('ms-Slider-slideBox', {
-              'ms-Slider-showValue': showValue,
-              'ms-Slider-showTransitions': (renderedValue === value)
-            }) }
-            id={ this._id }
-            role='slider'
-            disabled={ disabled }
             aria-valuenow={ value }
             aria-valuemin={ min }
             aria-valuemax={ max }
             { ...onMouseDownProp }
             { ...onTouchStartProp }
             { ...onKeyDownProp }
+            { ...thumbButtonProps }
+            className={ css('ms-Slider-slideBox', thumbButtonProps.className, {
+              'ms-Slider-showValue': showValue,
+              'ms-Slider-showTransitions': (renderedValue === value)
+            }) }
+            id={ this._id }
+            disabled={ disabled }
+            type='button'
+            role='slider'
             >
             <div
               ref='sliderLine'
