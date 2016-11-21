@@ -79,19 +79,20 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
         className={ css('ms-Slider', className, {
           'ms-Slider-enabled': !disabled,
           'ms-Slider-disabled': disabled
-        })}
+        }) }
         ref='root'>
         { label && (
-        <Label { ...ariaLabel ? {} : {'htmlFor' : this._id} }>
-          { label }
-        </Label>
+          <Label { ...ariaLabel ? {} : { 'htmlFor': this._id } }>
+            { label }
+          </Label>
         ) }
         <div className='ms-Slider-container'>
           <button
+            type='button'
             className={ css('ms-Slider-slideBox', {
               'ms-Slider-showValue': showValue,
-              'ms-Slider-showTransitions': ( renderedValue === value )
-            })}
+              'ms-Slider-showTransitions': (renderedValue === value)
+            }) }
             id={ this._id }
             role='slider'
             disabled={ disabled }
@@ -105,17 +106,17 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
             <div
               ref='sliderLine'
               className='ms-Slider-line'
-            >
+              >
               <span
                 ref='thumb'
                 className='ms-Slider-thumb'
-                { ...ariaLabel ? { 'aria-label' : ariaLabel } : { } }
+                { ...ariaLabel ? { 'aria-label': ariaLabel } : {} }
                 style={ isRTL() ?
                   { 'right': thumbOffsetPercent + '%' } :
                   { 'left': thumbOffsetPercent + '%' } }
-              />
-              <span className='ms-Slider-active' style={ {'width': thumbOffsetPercent + '%'} }></span>
-              <span className='ms-Slider-inactive' style={ {'width': (100 - thumbOffsetPercent) + '%'} }></span>
+                />
+              <span className='ms-Slider-active' style={ { 'width': thumbOffsetPercent + '%' } }></span>
+              <span className='ms-Slider-inactive' style={ { 'width': (100 - thumbOffsetPercent) + '%' } }></span>
             </div>
           </button>
           { showValue && <label className='ms-Label ms-Slider-value'>{ value }</label> }
@@ -125,9 +126,9 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
   }
 
   public focus(): void {
-      if (this.refs.thumb) {
-          this.refs.thumb.focus();
-      }
+    if (this.refs.thumb) {
+      this.refs.thumb.focus();
+    }
   }
 
   public get value(): number {
