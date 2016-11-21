@@ -17,7 +17,6 @@ import {
   isElementTabbable
 } from '../../utilities/focus';
 
-
 // Selection definitions:
 //
 // Anchor index: the point from which a range selection starts.
