@@ -24,7 +24,7 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
       <div className='ms-PickerItem-content'>
         <Persona
           { ...item }
-          presence = { item.presence ? item.presence : PersonaPresence.online }
+          presence = { item.presence != null ? item.presence : PersonaPresence.online }
           size={ PersonaSize.extraSmall }
           />
       </div>

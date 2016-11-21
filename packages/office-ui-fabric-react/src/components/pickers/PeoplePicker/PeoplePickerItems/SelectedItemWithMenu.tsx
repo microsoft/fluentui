@@ -33,7 +33,7 @@ export class SelectedItemWithMenu extends React.Component<IPeoplePickerItemWithM
         <div className='ms-PickerItem-content'>
           <Persona
             { ...item }
-            presence={ item.presence ? item.presence : PersonaPresence.online }
+            presence={ item.presence != null ? item.presence : PersonaPresence.online }
             />
         </div>
         <div ref='ellipsisRef' className='ms-PickerItem-content'>
