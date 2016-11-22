@@ -25,7 +25,7 @@ export class SliderBasicExample extends React.Component<any, any> {
           defaultValue={ 2 }
           showValue={ true }
           onChange={ (value) => console.log(value) }
-        />
+          />
 
         <Slider
           label='Disabled example:'
@@ -35,7 +35,7 @@ export class SliderBasicExample extends React.Component<any, any> {
           defaultValue={ 300 }
           showValue={ true }
           disabled={ true }
-        />
+          />
 
         <Slider
           label='Controlled example:'
@@ -43,7 +43,7 @@ export class SliderBasicExample extends React.Component<any, any> {
           value={ this.state.value }
           onChange={ value => this.setState({ value }) }
           showValue={ true }
-        />
+          />
 
       </div>
     );

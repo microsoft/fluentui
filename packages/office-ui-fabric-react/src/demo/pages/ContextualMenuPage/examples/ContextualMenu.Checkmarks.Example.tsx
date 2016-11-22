@@ -3,12 +3,11 @@ import { ContextualMenu, IContextualMenuItem, DirectionalHint, Button } from '..
 import './ContextualMenuExample.scss';
 
 export interface IContextualMenuMultiselectExampleState {
-  selection?: { [ key: string]: boolean };
-  target?: {x: number, y: number};
+  selection?: { [key: string]: boolean };
   isContextMenuVisible?: boolean;
 }
 
-let keys: string[] = [ 'newItem', 'share', 'mobile', 'enablePrint', 'enableMusic', 'newSub', 'emailMessage', 'calendarEvent' ];
+let keys: string[] = ['newItem', 'share', 'mobile', 'enablePrint', 'enableMusic', 'newSub', 'emailMessage', 'calendarEvent'];
 
 export class ContextualMenuCheckmarksExample extends React.Component<any, IContextualMenuMultiselectExampleState> {
 
@@ -30,80 +29,79 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
 
     return (
       <div>
-        <Button onClick={this._onClick}> Click for ContextualMenu </Button>
+        <Button onClick={ this._onClick } id='ContextualMenuButton2'> Click for ContextualMenu </Button>
         { this.state.isContextMenuVisible ? (
-        <ContextualMenu
-          targetPoint={this.state.target}
-          useTargetPoint={true}
-          shouldFocusOnMount={ false }
-          onDismiss={this._onDismiss}
-          directionalHint={DirectionalHint.bottomLeftEdge}
-          items={
-            [
-              {
-                key: keys[0],
-                name: 'New',
-                canCheck: true,
-                checked: selection[keys[0]],
-                onClick: this._onToggleSelect
-              },
-              {
-                key: keys[1],
-                name: 'Share',
-                canCheck: true,
-                checked: selection[keys[1]],
-                onClick: this._onToggleSelect
-              },
-              {
-                key: keys[2],
-                name: 'Mobile',
-                canCheck: true,
-                checked: selection[keys[2]],
-                onClick: this._onToggleSelect
-              },
-              {
-                key: 'divider_1',
-                name: '-',
-              },
+          <ContextualMenu
+            target='#ContextualMenuButton2'
+            shouldFocusOnMount={ false }
+            onDismiss={ this._onDismiss }
+            directionalHint={ DirectionalHint.bottomLeftEdge }
+            items={
+              [
+                {
+                  key: keys[0],
+                  name: 'New',
+                  canCheck: true,
+                  isChecked: selection[keys[0]],
+                  onClick: this._onToggleSelect
+                },
+                {
+                  key: keys[1],
+                  name: 'Share',
+                  canCheck: true,
+                  isChecked: selection[keys[1]],
+                  onClick: this._onToggleSelect
+                },
+                {
+                  key: keys[2],
+                  name: 'Mobile',
+                  canCheck: true,
+                  isChecked: selection[keys[2]],
+                  onClick: this._onToggleSelect
+                },
+                {
+                  key: 'divider_1',
+                  name: '-',
+                },
 
-              {
-                key: keys[3],
-                name: 'Print',
-                canCheck: true,
-                checked: selection[keys[3]],
-                onClick: this._onToggleSelect
-              },
-              {
-                key: keys[4],
-                name: 'Music',
-                canCheck: true,
-                checked: selection[keys[4]],
-                onClick: this._onToggleSelect
-              },
-              {
-                key: keys[5],
-                items: [
-                  {
-                    key: keys[6],
-                    name: 'Email message',
-                    canCheck: true,
-                    checked: selection[keys[6]],
-                    onClick: this._onToggleSelect
-                  },
-                  {
-                    key: keys[7],
-                    name: 'Calendar event',
-                    canCheck: true,
-                    checked: selection[keys[7]],
-                    onClick: this._onToggleSelect
-                  }
-                ],
-                name: 'New'
-              },
-            ]
-          }
-        />) : (null)}
-       </div>
+                {
+                  key: keys[3],
+                  name: 'Print',
+                  canCheck: true,
+                  isChecked: selection[keys[3]],
+                  onClick: this._onToggleSelect
+                },
+                {
+                  key: keys[4],
+                  name: 'Music',
+                  canCheck: true,
+                  isChecked: selection[keys[4]],
+                  onClick: this._onToggleSelect
+                },
+                {
+                  key: keys[5],
+                  items: [
+                    {
+                      key: keys[6],
+                      name: 'Email message',
+                      canCheck: true,
+                      isChecked: selection[keys[6]],
+                      onClick: this._onToggleSelect
+                    },
+                    {
+                      key: keys[7],
+                      name: 'Calendar event',
+                      canCheck: true,
+                      isChecked: selection[keys[7]],
+                      onClick: this._onToggleSelect
+                    }
+                  ],
+                  name: 'New'
+                },
+              ]
+            }
+            />) : (null) }
+      </div>
     );
   }
 
@@ -118,11 +116,11 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
   }
 
   private _onClick(event: React.MouseEvent<HTMLButtonElement>) {
-    this.setState({target: {x: event.clientX, y: event.clientY}, isContextMenuVisible: true});
+    this.setState({ isContextMenuVisible: true });
   }
 
   private _onDismiss() {
-    this.setState({isContextMenuVisible: false});
+    this.setState({ isContextMenuVisible: false });
   }
 
 }

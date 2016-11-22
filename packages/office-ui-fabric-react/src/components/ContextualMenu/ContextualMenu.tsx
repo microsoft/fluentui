@@ -2,19 +2,26 @@ import * as React from 'react';
 import { IContextualMenuProps, IContextualMenuItem } from './ContextualMenu.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { KeyCodes } from '../../utilities/KeyCodes';
-import { autobind } from '../../utilities/autobind';
-import { css } from '../../utilities/css';
-import { getRTL } from '../../utilities/rtl';
-import { assign, getId } from '../../utilities/object';
 import {
   anchorProperties,
   buttonProperties,
-  getNativeProps
-} from '../../utilities/properties';
+  getNativeProps,
+  assign,
+  getId,
+  getRTL,
+  css,
+  autobind,
+  KeyCodes,
+  getDocument,
+  getWindow
+} from '../../Utilities';
 import { Callout } from '../../Callout';
 import { BaseComponent } from '../../common/BaseComponent';
-import { Icon, IconName } from '../../Icon';
+import {
+  Icon,
+  IconName,
+  IIconProps
+} from '../../Icon';
 import './ContextualMenu.scss';
 
 export interface IContextualMenuState {
@@ -77,17 +84,17 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     shouldFocusOnMount: true,
     isBeakVisible: false,
     gapSpace: 0,
-    directionalHint: DirectionalHint.rightBottomEdge,
+    directionalHint: DirectionalHint.bottomAutoEdge,
     beakWidth: 16
   };
 
   private _host: HTMLElement;
   private _previousActiveElement: HTMLElement;
   private _isFocusingPreviousElement: boolean;
-  private _didSetInitialFocus: boolean;
   private _enterTimerId: number;
   private _focusZone: FocusZone;
   private _targetWindow: Window;
+  private _target: HTMLElement | MouseEvent;
 
   constructor(props: IContextualMenuProps) {
     super(props);
@@ -98,15 +105,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     };
 
     this._isFocusingPreviousElement = false;
-    this._didSetInitialFocus = false;
     this._enterTimerId = 0;
-    // This is used to allow the ContextualMenu to appear on a window other than the one the javascript is running in.
-    if (props.targetElement && props.targetElement.ownerDocument && props.targetElement.ownerDocument.defaultView) {
-      this._targetWindow = props.targetElement.ownerDocument.defaultView;
-    } else {
-      this._targetWindow = window;
-    }
-
   }
 
   @autobind
@@ -118,21 +117,23 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
+  public componentWillUpdate(newProps: IContextualMenuProps) {
+    if (newProps.targetElement !== this.props.targetElement || newProps.target !== this.props.target) {
+      let newTarget = newProps.targetElement ? newProps.targetElement : newProps.target;
+      this._setTargetWindowAndElement(newTarget);
+    }
+  }
+
   // Invoked once, both on the client and server, immediately before the initial rendering occurs.
   public componentWillMount() {
-    this._previousActiveElement = document.activeElement as HTMLElement;
+    let target = this.props.targetElement ? this.props.targetElement : this.props.target;
+    this._setTargetWindowAndElement(target);
+    this._previousActiveElement = this._targetWindow ? this._targetWindow.document.activeElement as HTMLElement : null;
   }
 
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount() {
     this._events.on(this._targetWindow, 'resize', this.dismiss);
-  }
-
-  // Invoked when a component is receiving new props.
-  public componentWillReceiveProps(newProps: IContextualMenuProps, newState: IContextualMenuState) {
-    if (newProps.targetElement !== this.props.targetElement) {
-      this._didSetInitialFocus = false;
-    }
   }
 
   // Invoked immediately before a component is unmounted from the DOM.
@@ -163,7 +164,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       gapSpace,
       coverTarget,
       ariaLabel,
-      doNotLayer } = this.props;
+      doNotLayer,
+      target } = this.props;
 
     let { submenuProps } = this.state;
 
@@ -172,6 +174,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     return (
       <Callout
+        target={ target }
         targetElement={ targetElement }
         targetPoint={ targetPoint }
         useTargetPoint={ useTargetPoint }
@@ -238,10 +241,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _renderAnchorMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): JSX.Element {
-    // Only present to allow continued use of item.icon which is deprecated.
-    let iconProps = item.iconProps ? item.iconProps : {
-      iconName: IconName[item.icon]
-    };
     return (
       <div>
         <a
@@ -251,9 +250,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           role='menuitem'
           onClick={ this._onAnchorClick.bind(this, item) }>
           { (hasIcons) ? (
-            <Icon { ...iconProps } className={ 'ms-ContextualMenu-icon' } />)
-            : null
-          }
+            this._renderIcon(item)
+          ) : (null) }
           <span className='ms-ContextualMenu-linkText ms-fontWeight-regular'> { item.name } </span>
         </a>
       </div >);
@@ -297,10 +295,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderMenuItemChildren(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
     let isItemChecked: boolean = item.isChecked || item.checked;
-    // Only present to allow continued use of item.icon which is deprecated.
-    let iconProps = item.iconProps ? item.iconProps : {
-      iconName: IconName[item.icon]
-    };
     return (
       <div className='ms-ContextualMenu-linkContent'>
         { (hasCheckmarks) ? (
@@ -310,7 +304,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             onClick={ this._onItemClick.bind(this, item) } />
         ) : (null) }
         { (hasIcons) ? (
-          <Icon { ...iconProps } className={ 'ms-ContextualMenu-icon' } />
+          this._renderIcon(item)
         ) : (null) }
         <span className='ms-ContextualMenu-itemText ms-fontWeight-regular'>{ item.name }</span>
         { (item.items && item.items.length) ? (
@@ -318,6 +312,18 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         ) : (null) }
       </div>
     );
+  }
+
+  private _renderIcon(item: IContextualMenuItem) {
+    // Only present to allow continued use of item.icon which is deprecated.
+    let iconProps: IIconProps = item.iconProps ? item.iconProps : {
+      iconName: IconName[item.icon]
+    };
+    // Use the default icon color for the known icon names
+    let iconColorClassName = iconProps.iconName === IconName.None ? '' : 'ms-ContextualMenu-iconColor';
+    let iconClassName = css('ms-ContextualMenu-icon', iconColorClassName, iconProps.className);
+
+    return <Icon { ...iconProps } className={ iconClassName } />;
   }
 
   @autobind
@@ -405,13 +411,14 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         expandedMenuItemKey: item.key,
         submenuProps: {
           items: item.items,
-          targetElement: target,
+          target: target,
           onDismiss: this._onSubMenuDismiss,
           isSubMenu: true,
           id: this.state.subMenuId,
           shouldFocusOnMount: true,
           directionalHint: getRTL() ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
-          className: this.props.className
+          className: this.props.className,
+          gapSpace: 0
         }
       });
     }
@@ -427,6 +434,25 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         expandedMenuItemKey: null,
         submenuProps: null
       });
+    }
+  }
+
+  private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent): void {
+    if (target) {
+      if (typeof target === 'string') {
+        let currentDoc: Document = getDocument();
+        this._target = currentDoc ? currentDoc.querySelector(target) as HTMLElement : null;
+        this._targetWindow = getWindow();
+      } else if ((target as MouseEvent).stopPropagation) {
+        this._target = target;
+        this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement);
+      } else {
+        let targetElement: HTMLElement = target as HTMLElement;
+        this._target = target;
+        this._targetWindow = getWindow(targetElement);
+      }
+    } else {
+      this._targetWindow = getWindow();
     }
   }
 }

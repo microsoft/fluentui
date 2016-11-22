@@ -103,6 +103,7 @@ export enum IconName {
   Mute,
   new,
   NewFolder,
+  None,
   OfficeLogo,
   OfficeVideoLogo,
   OneDrive,
