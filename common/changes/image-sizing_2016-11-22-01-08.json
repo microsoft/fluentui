@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Image: now adjusts correctly with width/height changes.",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}

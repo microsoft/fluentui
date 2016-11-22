@@ -15,15 +15,15 @@ export enum CoverStyle {
 }
 
 export const CoverStyleMap = {
-  [ CoverStyle.landscape ]: 'ms-Image-image--landscape',
-  [ CoverStyle.portrait ]: 'ms-Image-image--portrait'
+  [CoverStyle.landscape]: 'ms-Image-image--landscape',
+  [CoverStyle.portrait]: 'ms-Image-image--portrait'
 };
 
 export const ImageFitMap = {
-  [ ImageFit.center ]: 'ms-Image-image--center',
-  [ ImageFit.contain ]: 'ms-Image-image--contain',
-  [ ImageFit.cover ]: 'ms-Image-image--cover',
-  [ ImageFit.none ]: 'ms-Image-image--none'
+  [ImageFit.center]: 'ms-Image-image--center',
+  [ImageFit.contain]: 'ms-Image-image--contain',
+  [ImageFit.cover]: 'ms-Image-image--cover',
+  [ImageFit.none]: 'ms-Image-image--none'
 };
 
 export enum ImageLoadState {
@@ -65,13 +65,13 @@ export class Image extends React.Component<IImageProps, IImageState> {
     }
   }
 
-  public componentWillReceiveProps(nextProps) {
+  public componentWillReceiveProps(nextProps: IImageProps) {
     if (this.state.loadState === ImageLoadState.loaded) {
-      let { nextHeight, nextWidth } = nextProps;
+      let { height: nextHeight, width: nextWidth } = nextProps;
       let { height, width } = this.props;
 
       if (height !== nextHeight || width !== nextWidth) {
-        this._computeCoverStyle();
+        this._computeCoverStyle(nextProps);
       }
     }
   }
@@ -122,7 +122,7 @@ export class Image extends React.Component<IImageProps, IImageState> {
     let { image } = this.refs;
     let isLoaded = (src && image.naturalWidth > 0 && image.naturalHeight > 0);
 
-    this._computeCoverStyle();
+    this._computeCoverStyle(this.props);
 
     if (isLoaded && loadState !== ImageLoadState.loaded && loadState !== ImageLoadState.errorLoaded) {
       this._events.off();
@@ -134,12 +134,12 @@ export class Image extends React.Component<IImageProps, IImageState> {
     return isLoaded;
   }
 
-  private _computeCoverStyle() {
-    let { imageFit } = this.props;
+  private _computeCoverStyle(props: IImageProps) {
+    let { imageFit } = props;
     if (imageFit === ImageFit.cover || imageFit === ImageFit.contain) {
       let { image } = this.refs;
       if (image) {
-        let { width, height } = this.props;
+        let { width, height } = props;
 
         let desiredRatio = (width as number) / (height as number);
         let naturalRatio = image.naturalWidth / image.naturalHeight;
