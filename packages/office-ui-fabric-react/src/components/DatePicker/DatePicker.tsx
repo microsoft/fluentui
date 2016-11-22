@@ -13,8 +13,7 @@ import {
   autobind,
   BaseComponent,
   KeyCodes,
-  css,
-  elementContains
+  css
 } from '../../Utilities';
 import './DatePicker.scss';
 

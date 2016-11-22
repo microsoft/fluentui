@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  Button,
   Calendar,
   DayOfWeek
 } from '../../../../index';
@@ -88,7 +87,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
     return (
       <div style={ divStyle }>
         <div>
-          Selected date: <span>{ this.state.selectedDate == null ? "Not set" : this.state.selectedDate.toLocaleString() }</span>
+          Selected date: <span>{ this.state.selectedDate == null ? 'Not set' : this.state.selectedDate.toLocaleString() }</span>
         </div>
         <Calendar
           onSelectDate={ this._onSelectDate }

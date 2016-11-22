@@ -31,7 +31,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
             <ExampleCard title='Inline Calendar' code={ CalendarInlineExampleCode }>
               <CalendarInlineExample isMonthPickerVisible={ false } />
             </ExampleCard>
-            <ExampleCard title="Inline Calendar with month picker" code={ CalendarInlineExampleCode }>
+            <ExampleCard title='Inline Calendar with month picker' code={ CalendarInlineExampleCode }>
               <CalendarInlineExample isMonthPickerVisible={ true } />
             </ExampleCard>
             <ExampleCard title='Calendar launched from a button' code={ CalendarButtonExampleCode }>
