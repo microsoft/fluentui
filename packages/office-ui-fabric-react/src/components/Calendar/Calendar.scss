@@ -36,7 +36,6 @@
 .ms-DatePicker-picker.ms-DatePicker-picker--opened .ms-DatePicker-holder {
   @include ms-u-slideDownIn10;
   @include ms-u-borderBox;
-  @include drop-shadow;
   border: 1px solid $ms-color-neutralLight;
   display: block;
 }
