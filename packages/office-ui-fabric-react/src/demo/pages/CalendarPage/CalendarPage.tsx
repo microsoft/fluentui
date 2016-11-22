@@ -6,11 +6,13 @@ import {
 } from '../../components/index';
 
 import { CalendarButtonExample } from './examples/Calendar.Button.Example';
+import { CalendarNoMonthExample } from './examples/Calendar.NoMonth.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const CalendarButtonExampleCode = require('./examples/Calendar.Button.Example.tsx');
+const CalendarNoMonthExampleCode = require('./examples/Calendar.NoMonth.Example.tsx');
 
 export class CalendarPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -28,6 +30,9 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
           <div>
             <ExampleCard title='Calendar launched from a button' code={ CalendarButtonExampleCode }>
               <CalendarButtonExample />
+            </ExampleCard>
+            <ExampleCard title='Calendar without month picker' code={ CalendarNoMonthExampleCode }>
+              <CalendarNoMonthExample />
             </ExampleCard>
           </div>
         }

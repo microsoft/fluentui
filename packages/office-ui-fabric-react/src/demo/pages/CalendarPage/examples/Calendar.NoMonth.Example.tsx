@@ -59,12 +59,12 @@ const DayPickerStrings = {
   goToToday: 'Go to today'
 };
 
-export interface ICalendarButtonExampleState {
+export interface ICalendarNoMonthExampleState {
   showCalendar: boolean;
   selectedDate: Date;
 }
 
-export class CalendarButtonExample extends React.Component<any, ICalendarButtonExampleState> {
+export class CalendarNoMonthExample extends React.Component<any, ICalendarNoMonthExampleState> {
   public constructor() {
     super();
 
@@ -93,7 +93,7 @@ export class CalendarButtonExample extends React.Component<any, ICalendarButtonE
             <Calendar
               onSelectDate={ this._onSelectDate }
               onDismiss={ this._onDismiss }
-              isMonthPickerVisible={ true }
+              isMonthPickerVisible={ false }
               value={ this.state.selectedDate }
               firstDayOfWeek={ DayOfWeek.Sunday }
               strings={ DayPickerStrings }
@@ -107,21 +107,21 @@ export class CalendarButtonExample extends React.Component<any, ICalendarButtonE
   }
 
   private _onClick(event: any) {
-    this.setState((prevState: ICalendarButtonExampleState) => {
+    this.setState((prevState: ICalendarNoMonthExampleState) => {
       prevState.showCalendar = !prevState.showCalendar;
       return prevState;
     });
   }
 
   private _onDismiss() {
-    this.setState((prevState: ICalendarButtonExampleState) => {
+    this.setState((prevState: ICalendarNoMonthExampleState) => {
       prevState.showCalendar = false;
       return prevState;
     });
   }
 
   private _onSelectDate(date: Date) {
-    this.setState((prevState: ICalendarButtonExampleState) => {
+    this.setState((prevState: ICalendarNoMonthExampleState) => {
       prevState.showCalendar = false;
       prevState.selectedDate = date;
       return prevState;
