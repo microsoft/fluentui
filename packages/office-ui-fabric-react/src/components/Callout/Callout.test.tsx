@@ -1,5 +1,6 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 
 import * as ReactTestUtils from 'react-addons-test-utils';
@@ -17,10 +18,10 @@ describe('Callout', () => {
         try {
             ReactTestUtils.renderIntoDocument<HTMLDivElement>(
                 <div>
-                    <button id='target' style={ { top: '10px', left: '10px', height: '0', width: '0px' } }> target </button>
+                    <button id='target' style={{ top: '10px', left: '10px', height: '0', width: '0px' }}> target </button>
                     <Callout
                         target='#target'
-                        directionalHint={ DirectionalHint.topLeftEdge }
+                        directionalHint={DirectionalHint.topLeftEdge}
                         >
                         <div>
                             Content
@@ -46,8 +47,8 @@ describe('Callout', () => {
             ReactTestUtils.renderIntoDocument<HTMLDivElement>(
                 <div>
                     <Callout
-                        target={ eventTarget }
-                        directionalHint={ DirectionalHint.topLeftEdge }
+                        target={eventTarget}
+                        directionalHint={DirectionalHint.topLeftEdge}
                         >
                         <div>
                             Content
@@ -71,8 +72,8 @@ describe('Callout', () => {
             ReactTestUtils.renderIntoDocument<HTMLDivElement>(
                 <div>
                     <Callout
-                        target={ targetElement }
-                        directionalHint={ DirectionalHint.topLeftEdge }
+                        target={targetElement}
+                        directionalHint={DirectionalHint.topLeftEdge}
                         >
                         <div>
                             Content
@@ -96,8 +97,8 @@ describe('Callout', () => {
             ReactTestUtils.renderIntoDocument<HTMLDivElement>(
                 <div>
                     <Callout
-                        targetElement={ targetElement }
-                        directionalHint={ DirectionalHint.topLeftEdge }
+                        targetElement={targetElement}
+                        directionalHint={DirectionalHint.topLeftEdge}
                         >
                         <div>
                             Content
@@ -115,11 +116,10 @@ describe('Callout', () => {
     it('Callout without target does not throw exception', () => {
         let threwException: boolean = false;
         try {
-
             ReactTestUtils.renderIntoDocument<HTMLDivElement>(
                 <div>
                     <Callout
-                        directionalHint={ DirectionalHint.topLeftEdge }
+                        directionalHint={DirectionalHint.topLeftEdge}
                         >
                         <div>
                             Content
@@ -131,6 +131,46 @@ describe('Callout', () => {
             threwException = true;
         }
         expect(threwException).to.be.false;
+    });
+
+    it('Callout passes event to onDismiss prop', () => {
+        let threwException: boolean = false;
+        let gotEvent: boolean = false;
+        let onDismiss = (ev?: any) => {
+            if (ev) {
+                gotEvent = true;
+            }
+        };
+        // In order to have eventlisteners that have been added to the window to be called the JSX needs
+        // to be rendered into the real dom rather than the testutil simulated dom.
+        let root = document.createElement('div');
+        document.body.appendChild(root);
+        try {
+            ReactDOM.render<HTMLDivElement>(
+                <div>
+                    <button id='focustarget'> button </button>
+                    <button id='target' style={{ top: '10px', left: '10px', height: '0', width: '0px' }}> target </button>
+                    <Callout
+                        target='#target'
+                        directionalHint={DirectionalHint.topLeftEdge}
+                        onDismiss={onDismiss}
+                        >
+                        <div>
+                            Content
+                        </div>
+                    </Callout>
+                </div>, root
+            );
+        } catch (e) {
+            threwException = true;
+        }
+        expect(threwException).to.be.false;
+
+        let focusTarget = document.querySelector('#focustarget') as HTMLButtonElement;
+
+        focusTarget.focus();
+
+        expect(gotEvent).to.be.eq(true, 'Event did not get passed to dismiss event');
     });
 
 });
