@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Toggle: the labels within the toggle will not render if no text is provided.",
-      "type": "patch"
+      "comment": "Toggle: `label` property is now optional, and the labels within the toggle will not render if no text is provided.",
+      "type": "minor"
     }
   ],
   "email": "dzearing@microsoft.com"
