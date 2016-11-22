@@ -33,7 +33,7 @@ export class SelectedItemWithMenu extends React.Component<IPeoplePickerItemWithM
         <div className='ms-PickerItem-content'>
           <Persona
             { ...item }
-            presence={ item.presence != null ? item.presence : PersonaPresence.none }
+            presence={ item.presence !== undefined ? item.presence : PersonaPresence.none }
             />
         </div>
         <div ref='ellipsisRef' className='ms-PickerItem-content'>
@@ -55,7 +55,7 @@ export class SelectedItemWithMenu extends React.Component<IPeoplePickerItemWithM
             shouldFocusOnMount={ true }
             targetElement={ this.refs.ellipsisRef }
             onDismiss={ this._onCloseContextualMenu }
-            directionalHint={ DirectionalHint.bottomAutoEdge }/>)
+            directionalHint={ DirectionalHint.bottomAutoEdge } />)
           : null }
       </div>
     );

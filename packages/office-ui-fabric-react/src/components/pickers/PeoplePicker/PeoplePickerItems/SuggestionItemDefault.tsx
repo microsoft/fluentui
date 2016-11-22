@@ -7,7 +7,7 @@ export const SuggestionItemNormal: (persona: IPersonaProps) => JSX.Element = (pe
     <div className='ms-PeoplePicker-personaContent'>
       <Persona
         { ...personaProps }
-        presence={ personaProps.presence != null ? personaProps.presence : PersonaPresence.none }
+        presence={ personaProps.presence !== undefined ? personaProps.presence : PersonaPresence.none }
         size={ PersonaSize.small }
         className={ 'ms-PeoplePicker-Persona' }
         />
@@ -20,7 +20,7 @@ export const SuggestionItemSmall: (persona: IPersonaProps) => JSX.Element = (per
     <div className='ms-PeoplePicker-personaContent'>
       <Persona
         { ...personaProps }
-        presence={ personaProps.presence != null ? personaProps.presence : PersonaPresence.none }
+        presence={ personaProps.presence !== undefined ? personaProps.presence : PersonaPresence.none }
         size={ PersonaSize.extraSmall }
         className={ 'ms-PeoplePicker-Persona' }
         />
