@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 export interface ISliderProps {
   /**
    * Description label of the Slider
@@ -26,7 +28,7 @@ export interface ISliderProps {
    * The max value of the Slider
    * @default 10
    */
-  max: number;
+  max?: number;
 
   /**
    * The diffrrence between the two adjacent values of the Slider
@@ -59,6 +61,11 @@ export interface ISliderProps {
   * Optional className for slider.
   */
   className?: string;
+
+  /**
+   * Optional mixin for additional props on the thumb button within the slider.
+   */
+  buttonProps?: React.HTMLProps<HTMLButtonElement>;
 }
 
 export interface ISlider {
