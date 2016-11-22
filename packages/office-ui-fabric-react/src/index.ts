@@ -5,6 +5,7 @@
 
 export * from './Breadcrumb';
 export * from './Button';
+export * from './Calendar';
 export * from './Callout';
 export * from './Checkbox';
 export * from './ChoiceGroup';
