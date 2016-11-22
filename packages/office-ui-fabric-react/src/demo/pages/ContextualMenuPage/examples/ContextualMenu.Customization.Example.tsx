@@ -22,10 +22,10 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
   public render() {
     return (
       <div>
-        <Button onClick={ this._onClick } id='ContextualMenuButton3'> Click for ContextualMenu </Button>
+        <Button onClick={ this._onClick } className='ContextualMenuButton3'> Click for ContextualMenu </Button>
         { this.state.isContextMenuVisible ? (
           <ContextualMenu
-            target='ContextualMenuButton3'
+            target='.ContextualMenuButton3'
             shouldFocusOnMount={ false }
             onDismiss={ this._onDismiss }
             directionalHint={ DirectionalHint.bottomLeftEdge }

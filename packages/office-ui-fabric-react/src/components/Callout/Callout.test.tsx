@@ -19,7 +19,7 @@ describe('Callout', () => {
                 <div>
                     <button id='target' style={ { top: '10px', left: '10px', height: '0', width: '0px' } }> target </button>
                     <Callout
-                        target='target'
+                        target='#target'
                         directionalHint={ DirectionalHint.topLeftEdge }
                         >
                         <div>

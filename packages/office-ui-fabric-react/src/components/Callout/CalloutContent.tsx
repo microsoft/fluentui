@@ -259,7 +259,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
         if (target) {
             if (typeof target === 'string') {
                 let currentDoc: Document = getDocument();
-                this._target = currentDoc ? currentDoc.getElementById(target) : null;
+                this._target = currentDoc ? currentDoc.querySelector(target) as HTMLElement : null;
                 this._targetWindow = getWindow();
             } else if ((target as MouseEvent).stopPropagation) {
                 this._target = target;
