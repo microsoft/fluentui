@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "comment": "DetailsList: clicking on an empty area of the page should clear the selection.",
+      "packageName": "office-ui-fabric-react",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
