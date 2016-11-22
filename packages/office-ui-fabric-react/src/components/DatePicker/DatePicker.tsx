@@ -59,6 +59,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   private _datepicker: HTMLDivElement;
   private _preventFocusOpeningPicker: boolean;
+  private _focusOnSelectedDateOnUpdate: boolean;
 
   constructor(props: IDatePickerProps) {
     super();
@@ -84,14 +85,6 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       formattedDate: (formatDate && value) ? formatDate(value) : '',
       errorMessage: errorMessage
     });
-  }
-
-  public componentDidMount() {
-    this._events.on(window, 'scroll', this._dismissDatePickerPopup);
-    this._events.on(window, 'resize', this._dismissDatePickerPopup);
-    this._events.on(window, 'click', this._onClickCapture, true);
-    this._events.on(window, 'focus', this._onClickCapture, true);
-    this._events.on(window, 'touchstart', this._onClickCapture, true);
   }
 
   public render() {
@@ -130,27 +123,23 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             doNotLayer={ false }
             targetElement={ this._datepicker }
             directionalHint={ DirectionalHint.bottomLeftEdge }
-            onDismiss={ this._dismissDatePickerPopup }
-            setInitialFocus={ true }
+            onDismiss={ this._calendarDismissed }
+            setInitialFocus={ false }
             >
             <Calendar
               onSelectDate={ this._onSelectDate }
-              onDismiss={ this._dismissDatePickerPopup }
+              onDismiss={ this._calendarDismissed }
               isMonthPickerVisible={ this.props.isMonthPickerVisible }
               value={ selectedDate }
               firstDayOfWeek={ firstDayOfWeek }
               strings={ strings }
+              shouldFocusOnMount={ true }
               >
             </Calendar>
           </Callout>
         ) }
       </div>
     );
-  }
-
-  private _restoreFocusToTextField() {
-    this._preventFocusOpeningPicker = true;
-    this.refs.textField.focus();
   }
 
   @autobind
@@ -163,8 +152,6 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       formattedDate: formatDate && date ? formatDate(date) : '',
     });
 
-    this._restoreFocusToTextField();
-
     if (onSelectDate) {
       onSelectDate(date);
     }
@@ -175,9 +162,9 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     if (!this.props.allowTextInput) {
       if (!this._preventFocusOpeningPicker) {
         this._showDatePickerPopup();
+      } else {
+        this._preventFocusOpeningPicker = false;
       }
-
-      this._preventFocusOpeningPicker = false;
     }
   };
 
@@ -214,7 +201,6 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
           // When DatePicker allows input date string directly,
           // it is expected to hit another enter to close the popup
           if (this.props.allowTextInput) {
-            this._restoreFocusToTextField();
             this._dismissDatePickerPopup();
           }
         }
@@ -228,13 +214,6 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
         break;
     }
   };
-
-  @autobind
-  private _onClickCapture(ev: React.MouseEvent<HTMLElement>) {
-    if (!elementContains(this.refs.root, ev.target as HTMLElement)) {
-      this._dismissDatePickerPopup();
-    }
-  }
 
   @autobind
   private _onTextFieldClick(ev: React.MouseEvent<HTMLElement>) {
@@ -251,6 +230,8 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   private _showDatePickerPopup() {
     if (!this.state.isDatePickerShown) {
+      this._preventFocusOpeningPicker = true;
+      this._focusOnSelectedDateOnUpdate = true;
       this.setState({
         isDatePickerShown: true,
         navigatedDate: this.state.selectedDate,
@@ -270,10 +251,18 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     }
   }
 
+  /**
+   * Callback for closing the calendar callout
+   */
+  @autobind
+  private _calendarDismissed() {
+    this._preventFocusOpeningPicker = true;
+    this._dismissDatePickerPopup();
+  }
+
   @autobind
   private _handleEscKey(ev: React.KeyboardEvent<HTMLElement>) {
-    this._restoreFocusToTextField();
-    this._dismissDatePickerPopup();
+    this._calendarDismissed();
   }
 
   @autobind

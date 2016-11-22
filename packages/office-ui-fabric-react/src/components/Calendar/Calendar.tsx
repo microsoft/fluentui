@@ -56,11 +56,6 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> {
   }
 
   public componentDidMount() {
-    this._events.on(window, 'scroll', this._dismissDatePickerPopup);
-    this._events.on(window, 'resize', this._dismissDatePickerPopup);
-    this._events.on(window, 'click', this._onClickCapture, true);
-    this._events.on(window, 'focus', this._onClickCapture, true);
-    this._events.on(window, 'touchstart', this._onClickCapture, true);
     if (this.props.shouldFocusOnMount) {
       this.refs.dayPicker.focus();
     }
@@ -108,6 +103,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> {
     );
   }
 
+  @autobind
   private _navigateDay(date: Date) {
     this.setState({
       navigatedDate: date
@@ -166,20 +162,9 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> {
   }
 
   @autobind
-  private _onClickCapture(ev: React.MouseEvent<HTMLElement>) {
-    if (!elementContains(this.refs.root, ev.target as HTMLElement)) {
-      this._dismissDatePickerPopup();
-    }
-  }
-
-  private _dismissDatePickerPopup() {
-    if (this.props.onDismiss != null) {
+  private _handleEscKey(ev: React.KeyboardEvent<HTMLElement>) {
+    if (this.props.onDismiss() != null) {
       this.props.onDismiss();
     }
-  }
-
-  @autobind
-  private _handleEscKey(ev: React.KeyboardEvent<HTMLElement>) {
-    this._dismissDatePickerPopup();
   }
 }
