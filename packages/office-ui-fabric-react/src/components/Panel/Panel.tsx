@@ -136,10 +136,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
               })
             }
             >
-            <Overlay
-              isDarkThemed={false}
-              onClick={isLightDismiss ? this._onPanelClick : null}
-              />
+            { overlay }
             <FocusTrapZone
               className='ms-Panel-main'
               elementToFocusOnDismiss={elementToFocusOnDismiss}

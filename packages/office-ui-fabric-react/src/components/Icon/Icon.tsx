@@ -10,7 +10,8 @@ import {
 } from '../../Utilities';
 
 export const Icon: (props: IIconProps) => JSX.Element = (props: IIconProps) => {
-  let iconName = IconName[props.iconName];
+  let customIcon = props.iconName === IconName.None;
+  let className = css('ms-Icon', customIcon ? '' : ('ms-Icon--' + IconName[props.iconName]), props.className);
 
-  return <i { ...getNativeProps(props, htmlElementProperties) } className={ css('ms-Icon', 'ms-Icon--' + iconName, props.className) } />;
+  return <i { ...getNativeProps(props, htmlElementProperties) } className={ className } />;
 };
