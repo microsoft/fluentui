@@ -57,7 +57,6 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   };
 
   private _preventFocusOpeningPicker: boolean;
-  private _focusOnSelectedDateOnUpdate: boolean;
 
   constructor(props: IDatePickerProps) {
     super();
@@ -91,12 +90,6 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     this._events.on(window, 'click', this._onClickCapture, true);
     this._events.on(window, 'focus', this._onClickCapture, true);
     this._events.on(window, 'touchstart', this._onClickCapture, true);
-  }
-
-  public componentDidUpdate() {
-    if (this._focusOnSelectedDateOnUpdate) {
-      this._focusOnSelectedDateOnUpdate = false;
-    }
   }
 
   public render() {
@@ -245,7 +238,6 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   private _showDatePickerPopup() {
     if (!this.state.isDatePickerShown) {
-      this._focusOnSelectedDateOnUpdate = true;
       this.setState({
         isDatePickerShown: true,
         navigatedDate: this.state.selectedDate,

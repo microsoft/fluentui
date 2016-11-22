@@ -36,8 +36,6 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> {
     dayPicker: CalendarDay;
   };
 
-  private _focusOnSelectedDateOnUpdate: boolean;
-
   constructor(props: ICalendarProps) {
     super();
 
@@ -46,8 +44,6 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> {
       selectedDate: currentDate,
       navigatedDate: currentDate
     };
-
-    this._focusOnSelectedDateOnUpdate = true;
   }
 
   public componentWillReceiveProps(nextProps: ICalendarProps) {
@@ -64,13 +60,11 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> {
     this._events.on(window, 'click', this._onClickCapture, true);
     this._events.on(window, 'focus', this._onClickCapture, true);
     this._events.on(window, 'touchstart', this._onClickCapture, true);
+    this.refs.dayPicker.focus();
   }
 
   public componentDidUpdate() {
-    if (this._focusOnSelectedDateOnUpdate) {
-      this.refs.dayPicker.focus();
-      this._focusOnSelectedDateOnUpdate = false;
-    }
+    this.refs.dayPicker.focus();
   }
 
   public render() {
@@ -119,7 +113,6 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> {
 
   @autobind
   private _onNavigateDate(date: Date, focusOnNavigatedDay: boolean) {
-    this._focusOnSelectedDateOnUpdate = this._focusOnSelectedDateOnUpdate || focusOnNavigatedDay;
     this._navigateDay(date);
   }
 
@@ -138,7 +131,6 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> {
 
   @autobind
   private _onGotoToday() {
-    this._focusOnSelectedDateOnUpdate = true;
     this._navigateDay(new Date());
   };
 
