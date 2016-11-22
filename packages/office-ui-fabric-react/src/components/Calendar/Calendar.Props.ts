@@ -8,7 +8,7 @@ export interface ICalendarProps extends React.Props<Calendar> {
   onSelectDate?: (date: Date) => void;
 
   /**
-   * Callback issued when date picker is closed
+   * Callback issued when calendar is closed
    */
   onDismiss?: () => void;
 

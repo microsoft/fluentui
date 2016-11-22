@@ -70,9 +70,6 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
             </ul>
           </div>
         }
-        related={
-          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/DatePicker.md'>Fabric JS</a>
-        }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
