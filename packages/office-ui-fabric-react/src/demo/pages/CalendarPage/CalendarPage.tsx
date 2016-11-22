@@ -6,13 +6,13 @@ import {
 } from '../../components/index';
 
 import { CalendarButtonExample } from './examples/Calendar.Button.Example';
-import { CalendarNoMonthExample } from './examples/Calendar.NoMonth.Example';
+import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const CalendarButtonExampleCode = require('./examples/Calendar.Button.Example.tsx');
-const CalendarNoMonthExampleCode = require('./examples/Calendar.NoMonth.Example.tsx');
+const CalendarInlineExampleCode = require('./examples/Calendar.Inline.Example.tsx');
 
 export class CalendarPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -28,11 +28,14 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
         componentName='CalendarExample'
         exampleCards={
           <div>
+            <ExampleCard title='Inline Calendar' code={ CalendarInlineExampleCode }>
+              <CalendarInlineExample isMonthPickerVisible={ false } />
+            </ExampleCard>
+            <ExampleCard title="Inline Calendar with month picker" code={ CalendarInlineExampleCode }>
+              <CalendarInlineExample isMonthPickerVisible={ true } />
+            </ExampleCard>
             <ExampleCard title='Calendar launched from a button' code={ CalendarButtonExampleCode }>
               <CalendarButtonExample />
-            </ExampleCard>
-            <ExampleCard title='Calendar without month picker' code={ CalendarNoMonthExampleCode }>
-              <CalendarNoMonthExample />
             </ExampleCard>
           </div>
         }

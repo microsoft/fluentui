@@ -2,7 +2,9 @@ import * as React from 'react';
 import {
   Button,
   Calendar,
-  DayOfWeek
+  Callout,
+  DayOfWeek,
+  DirectionalHint
 } from '../../../../index';
 
 const DayPickerStrings = {
@@ -65,6 +67,8 @@ export interface ICalendarButtonExampleState {
 }
 
 export class CalendarButtonExample extends React.Component<any, ICalendarButtonExampleState> {
+  private _calendarButtonElement: HTMLElement;
+
   public constructor() {
     super();
 
@@ -79,17 +83,24 @@ export class CalendarButtonExample extends React.Component<any, ICalendarButtonE
   }
 
   public render() {
-    let popupDivStyle: React.CSSProperties = {
-      height: '300px'
-    };
-
     return (
       <div>
-        <Button onClick={ this._onClick }>
-          { this.state.selectedDate == null ? 'Click for Calendar' : this.state.selectedDate.toLocaleDateString() }
-        </Button>
+        <div ref={ (calendarBtn) => this._calendarButtonElement = calendarBtn }>
+          <Button onClick={ this._onClick } >
+            { this.state.selectedDate == null ? 'Click for Calendar' : this.state.selectedDate.toLocaleDateString() }
+          </Button>
+        </div>
         { this.state.showCalendar && (
-          <div style={ popupDivStyle }>
+          <Callout
+            isBeakVisible={ false }
+            className='ms-DatePicker-callout'
+            gapSpace={ 0 }
+            doNotLayer={ false }
+            targetElement={ this._calendarButtonElement }
+            directionalHint={ DirectionalHint.bottomLeftEdge }
+            onDismiss={ this._onDismiss }
+            setInitialFocus={ false }
+            >
             <Calendar
               onSelectDate={ this._onSelectDate }
               onDismiss={ this._onDismiss }
@@ -99,7 +110,7 @@ export class CalendarButtonExample extends React.Component<any, ICalendarButtonE
               strings={ DayPickerStrings }
               >
             </Calendar>
-          </div>
+          </Callout>
         )
         }
       </div>
