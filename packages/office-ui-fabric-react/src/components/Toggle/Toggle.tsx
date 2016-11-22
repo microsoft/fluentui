@@ -54,7 +54,7 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
 
     return (
       <div className={
-        css('ms-Toggle', {
+        css('ms-Toggle', className, {
           'is-checked': isChecked,
           'is-enabled': !disabled,
           'is-disabled': disabled
@@ -70,7 +70,7 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
               type='button'
               id={ this._id }
               name={ this._id }
-              className={ css('ms-Toggle-button', className) }
+              className='ms-Toggle-button'
               disabled={ disabled }
               role='checkbox'
               aria-checked={ isChecked }
