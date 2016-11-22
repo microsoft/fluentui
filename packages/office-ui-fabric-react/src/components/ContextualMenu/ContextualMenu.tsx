@@ -14,7 +14,11 @@ import {
 } from '../../utilities/properties';
 import { Callout } from '../../Callout';
 import { BaseComponent } from '../../common/BaseComponent';
-import { Icon, IconName } from '../../Icon';
+import {
+  Icon,
+  IconName,
+  IIconProps
+} from '../../Icon';
 import './ContextualMenu.scss';
 
 export interface IContextualMenuState {
@@ -238,10 +242,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _renderAnchorMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): JSX.Element {
-    // Only present to allow continued use of item.icon which is deprecated.
-    let iconProps = item.iconProps ? item.iconProps : {
-      iconName: IconName[item.icon]
-    };
     return (
       <div>
         <a
@@ -251,9 +251,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           role='menuitem'
           onClick={ this._onAnchorClick.bind(this, item) }>
           { (hasIcons) ? (
-            <Icon { ...iconProps } className={ 'ms-ContextualMenu-icon' } />)
-            : null
-          }
+            this._renderIcon(item)
+          ) : (null) }
           <span className='ms-ContextualMenu-linkText ms-fontWeight-regular'> { item.name } </span>
         </a>
       </div >);
@@ -297,10 +296,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderMenuItemChildren(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
     let isItemChecked: boolean = item.isChecked || item.checked;
-    // Only present to allow continued use of item.icon which is deprecated.
-    let iconProps = item.iconProps ? item.iconProps : {
-      iconName: IconName[item.icon]
-    };
     return (
       <div className='ms-ContextualMenu-linkContent'>
         { (hasCheckmarks) ? (
@@ -310,7 +305,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             onClick={ this._onItemClick.bind(this, item) } />
         ) : (null) }
         { (hasIcons) ? (
-          <Icon { ...iconProps } className={ 'ms-ContextualMenu-icon' } />
+          this._renderIcon(item)
         ) : (null) }
         <span className='ms-ContextualMenu-itemText ms-fontWeight-regular'>{ item.name }</span>
         { (item.items && item.items.length) ? (
@@ -318,6 +313,18 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         ) : (null) }
       </div>
     );
+  }
+
+  private _renderIcon(item: IContextualMenuItem) {
+    // Only present to allow continued use of item.icon which is deprecated.
+    let iconProps: IIconProps = item.iconProps ? item.iconProps : {
+      iconName: IconName[item.icon]
+    };
+    // Use the default icon color for the known icon names
+    let iconColorClassName = iconProps.iconName === IconName.None ? '' : 'ms-ContextualMenu-iconColor';
+    let iconClassName = css('ms-ContextualMenu-icon', iconColorClassName, iconProps.className);
+
+    return <Icon { ...iconProps } className={ iconClassName } />;
   }
 
   @autobind
