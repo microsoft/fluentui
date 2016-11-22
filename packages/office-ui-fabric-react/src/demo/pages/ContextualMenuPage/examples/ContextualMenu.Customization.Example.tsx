@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css } from '../../../../utilities/css';
-import { ContextualMenu, DirectionalHint, Button, FocusZoneDirection } from '../../../../index';
+import { ContextualMenu, DirectionalHint, Button, ButtonType, FocusZoneDirection } from '../../../../index';
 import './ContextualMenuExample.scss';
 export interface IContextualMenuMultiselectExampleState {
   selection?: { [key: string]: boolean };
@@ -211,8 +211,10 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
   }
 
   private _renderCharmMenuItem(item: any) {
-    return <i
-      className={ css('ms-Icon', 'ms-ContextualMenu-customizationExample-icon', 'ms-Icon--' + item.name) }
+    return <Button
+      buttonType={ ButtonType.icon }
+      icon={ item.name }
+      className='ms-ContextualMenu-customizationExample-icon ms-ContextualMenu-link'
       data-is-focusable={ true } />;
   }
 
