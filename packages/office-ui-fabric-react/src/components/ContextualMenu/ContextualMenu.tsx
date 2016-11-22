@@ -77,6 +77,16 @@ interface IParsedDirectionalHint {
   verticalAlignmentHint: VerticalAlignmentHint;
 }
 
+export function hasSubmenuItems(item: IContextualMenuItem) {
+  if (!item.items) {
+    return false;
+  } else if (Array.isArray(item.items)) {
+    return !!item.items.length;
+  } else {
+    return !!(item.items.items && item.items.items.length);
+  }
+}
+
 export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
   // The default ContextualMenu properities have no items and beak, the default submenu direction is right and top.
   public static defaultProps = {
@@ -85,7 +95,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     isBeakVisible: false,
     gapSpace: 0,
     directionalHint: DirectionalHint.bottomAutoEdge,
-    beakWidth: 16
+    beakWidth: 16,
+    arrowDirection: FocusZoneDirection.vertical,
   };
 
   private _host: HTMLElement;
@@ -165,6 +176,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       coverTarget,
       ariaLabel,
       doNotLayer,
+      arrowDirection,
       target } = this.props;
 
     let { submenuProps } = this.state;
@@ -191,7 +203,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           { (items && items.length) ? (
             <FocusZone
               className={ 'ms-ContextualMenu is-open' }
-              direction={ FocusZoneDirection.vertical }
+              direction={ arrowDirection }
               ariaLabelledBy={ labelElementId }
               ref={ (focusZone) => this._focusZone = focusZone }
               rootProps={ { role: 'menu' } }
@@ -274,7 +286,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     let itemButtonProperties = {
       className: css('ms-ContextualMenu-link', { 'is-expanded': (expandedMenuItemKey === item.key) }),
       onClick: this._onItemClick.bind(this, item),
-      onKeyDown: item.items && item.items.length ? this._onItemKeyDown.bind(this, item) : null,
+      onKeyDown: hasSubmenuItems(item) ? this._onItemKeyDown.bind(this, item) : null,
       onMouseEnter: this._onItemMouseEnter.bind(this, item),
       onMouseLeave: this._onMouseLeave,
       onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
@@ -283,7 +295,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       href: item.href,
       title: item.title,
       'aria-label': ariaLabel,
-      'aria-haspopup': item.items && item.items.length ? true : null,
+      'aria-haspopup': hasSubmenuItems(item) ? true : null,
       'aria-owns': item.key === expandedMenuItemKey ? subMenuId : null
     };
 
@@ -307,7 +319,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           this._renderIcon(item)
         ) : (null) }
         <span className='ms-ContextualMenu-itemText ms-fontWeight-regular'>{ item.name }</span>
-        { (item.items && item.items.length) ? (
+        { hasSubmenuItems(item) ? (
           <Icon className='ms-ContextualMenu-submenuChevron ms-Icon' iconName={ getRTL() ? IconName.ChevronLeft : IconName.ChevronRight } />
         ) : (null) }
       </div>
@@ -407,19 +419,27 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         this._onSubMenuDismiss();
       }
 
+      let onlySubmenuItemsSpecified = Array.isArray(item.items);
+
+      let submenuProps = {
+        items: onlySubmenuItemsSpecified ? item.items : null,
+        target: target,
+        onDismiss: this._onSubMenuDismiss,
+        isSubMenu: true,
+        id: this.state.subMenuId,
+        shouldFocusOnMount: true,
+        directionalHint: getRTL() ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
+        className: this.props.className,
+        gapSpace: 0
+      };
+
+      if (!onlySubmenuItemsSpecified) {
+        assign(submenuProps, item.items);
+      }
+
       this.setState({
         expandedMenuItemKey: item.key,
-        submenuProps: {
-          items: item.items,
-          target: target,
-          onDismiss: this._onSubMenuDismiss,
-          isSubMenu: true,
-          id: this.state.subMenuId,
-          shouldFocusOnMount: true,
-          directionalHint: getRTL() ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
-          className: this.props.className,
-          gapSpace: 0
-        }
+        submenuProps: submenuProps,
       });
     }
   }
