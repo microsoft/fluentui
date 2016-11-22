@@ -30,6 +30,12 @@ export interface ICalendarProps extends React.Props<Calendar> {
   firstDayOfWeek?: DayOfWeek;
 
   /**
+   * Whether to focus on the calendar when mounted.
+   * @default true
+   */
+  shouldFocusOnMount?: boolean;
+
+  /**
    * Localized strings to use in the Calendar
    */
   strings: ICalendarStrings;

@@ -27,6 +27,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> {
     isMonthPickerVisible: true,
     value: null,
     firstDayOfWeek: DayOfWeek.Sunday,
+    shouldFocusOnMount: true,
     strings: null
   };
 
@@ -60,7 +61,9 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> {
     this._events.on(window, 'click', this._onClickCapture, true);
     this._events.on(window, 'focus', this._onClickCapture, true);
     this._events.on(window, 'touchstart', this._onClickCapture, true);
-    this.refs.dayPicker.focus();
+    if (this.props.shouldFocusOnMount) {
+      this.refs.dayPicker.focus();
+    }
   }
 
   public componentDidUpdate() {
