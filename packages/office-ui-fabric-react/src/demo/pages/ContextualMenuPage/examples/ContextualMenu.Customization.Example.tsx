@@ -3,14 +3,13 @@ import { css } from '../../../../utilities/css';
 import { ContextualMenu, DirectionalHint, Button } from '../../../../index';
 import './ContextualMenuExample.scss';
 export interface IContextualMenuMultiselectExampleState {
-  selection?: { [ key: string]: boolean };
-  target?: {x: number, y: number};
+  selection?: { [key: string]: boolean };
   isContextMenuVisible?: boolean;
 }
 
 export class ContextualMenuCustomizationExample extends React.Component<any, IContextualMenuMultiselectExampleState> {
 
-    constructor() {
+  constructor() {
     super();
     this._onClick = this._onClick.bind(this);
     this._onDismiss = this._onDismiss.bind(this);
@@ -23,14 +22,13 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
   public render() {
     return (
       <div>
-        <Button onClick={this._onClick}> Click for ContextualMenu </Button>
+        <Button onClick={ this._onClick } className='ContextualMenuButton3'> Click for ContextualMenu </Button>
         { this.state.isContextMenuVisible ? (
           <ContextualMenu
-            targetPoint={this.state.target}
-            useTargetPoint={true}
+            target='.ContextualMenuButton3'
             shouldFocusOnMount={ false }
-            onDismiss={this._onDismiss}
-            directionalHint={DirectionalHint.bottomLeftEdge}
+            onDismiss={ this._onDismiss }
+            directionalHint={ DirectionalHint.bottomLeftEdge }
             className='ms-ContextualMenu-customizationExample'
             items={
               [
@@ -204,9 +202,9 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
                 }
               ]
             }
-          /> ) : null }
-        </div>
-      );
+            />) : null }
+      </div>
+    );
   }
 
   private _renderCharmMenuItem(item: any) {
@@ -217,29 +215,29 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
     return (
       <ul className='ms-ContextualMenu-customizationExample-categoriesList'>
         <li className='ms-ContextualMenu-item'>
-          { item.categoryList.map( category =>
+          { item.categoryList.map(category =>
             <button className='ms-ContextualMenu-link' role='menuitem'>
               <div>
                 <span
                   className='ms-ContextualMenu-icon ms-ContextualMenu-customizationExample-categorySwatch'
-                  style={ {backgroundColor: category.color} }/>
+                  style={ { backgroundColor: category.color } } />
                 <span className='ms-ContextualMenu-itemText ms-font-m ms-font-weight-regular'>
                   { category.name }
                 </span>
               </div>
             </button>
-          )}
+          ) }
         </li>
       </ul>
-      );
+    );
   }
 
   private _onClick(event: any) {
-    this.setState({target: {x: event.clientX, y: event.clientY}, isContextMenuVisible: true});
+    this.setState({ isContextMenuVisible: true });
   }
 
   private _onDismiss(event: any) {
-    this.setState({isContextMenuVisible: false});
+    this.setState({ isContextMenuVisible: false });
   }
 
 }
