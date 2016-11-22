@@ -1,21 +1,21 @@
 import * as React from 'react';
-import { IDatePickerStrings } from './DatePicker.Props';
+import { ICalendarStrings } from './Calendar.Props';
 import { FocusZone } from '../../FocusZone';
 import { KeyCodes } from '../../utilities/KeyCodes';
 import { addYears, setMonth } from '../../utilities/dateMath/DateMath';
 import { getRTL } from '../../utilities/rtl';
 import { css } from '../../utilities/css';
 
-export interface IDatePickerMonthProps {
-   navigatedDate: Date;
-   strings: IDatePickerStrings;
-   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
+export interface ICalendarMonthProps {
+  navigatedDate: Date;
+  strings: ICalendarStrings;
+  onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
 }
 
-export class DatePickerMonth extends React.Component<IDatePickerMonthProps, {}> {
+export class CalendarMonth extends React.Component<ICalendarMonthProps, {}> {
   private _selectMonthCallbacks: (() => void)[];
 
-  public constructor(props: IDatePickerMonthProps) {
+  public constructor(props: ICalendarMonthProps) {
     super(props);
 
     this._selectMonthCallbacks = [];
@@ -41,14 +41,14 @@ export class DatePickerMonth extends React.Component<IDatePickerMonthProps, {}> 
               onClick={ this._onSelectPrevYear }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectPrevYear) }
               tabIndex={ 0 }>
-              <i className={ css('ms-Icon', {'ms-Icon--ChevronLeft': !getRTL(), 'ms-Icon--ChevronRight': getRTL()}) }  />
+              <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': !getRTL(), 'ms-Icon--ChevronRight': getRTL() }) } />
             </span>
             <span
               className='ms-DatePicker-nextYear js-nextYear'
               onClick={ this._onSelectNextYear }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectNextYear) }
               tabIndex={ 0 }>
-              <i className={ css('ms-Icon', {'ms-Icon--ChevronLeft': getRTL(), 'ms-Icon--ChevronRight': !getRTL()}) }  />
+              <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': getRTL(), 'ms-Icon--ChevronRight': !getRTL() }) } />
             </span>
           </div>
           <div className='ms-DatePicker-currentYear js-showYearPicker'>{ navigatedDate.getFullYear() }</div>
@@ -56,7 +56,7 @@ export class DatePickerMonth extends React.Component<IDatePickerMonthProps, {}> 
         <FocusZone>
           <div className='ms-DatePicker-optionGrid'>
             { strings.shortMonths.map((month, index) => {
-              return (<span className='ms-DatePicker-monthOption' key={index} onClick={ this._selectMonthCallbacks[index] } data-is-focusable={true}>{month}</span>);
+              return (<span className='ms-DatePicker-monthOption' key={ index } onClick={ this._selectMonthCallbacks[index] } data-is-focusable={ true }>{ month }</span>);
             }) }
           </div>
         </FocusZone>
