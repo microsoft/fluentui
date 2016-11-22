@@ -134,7 +134,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
                     <Popup
                         className='ms-Callout-main'
-                        onDismiss={ (ev: any) => this.dismiss() }
+                        onDismiss={ this.dismiss }
                         shouldRestoreFocus={ true }
                         style={ { maxHeight: contentMaxHeight } }>
                         { children }
@@ -145,11 +145,12 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
         return content;
     }
 
-    public dismiss() {
+    @autobind
+    public dismiss(ev?: Event | React.MouseEvent<HTMLElement>) {
         let { onDismiss } = this.props;
 
         if (onDismiss) {
-            onDismiss();
+            onDismiss(ev);
         }
     }
 
@@ -161,7 +162,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
             !elementContains(this._hostElement, target) &&
             ((this._target as MouseEvent).stopPropagation ||
                 (!this._target || !elementContains(this._target as HTMLElement, target)))) {
-            this.dismiss();
+            this.dismiss(ev);
         }
     }
 
