@@ -36,7 +36,8 @@ export class Persona extends React.Component<IPersonaProps, any> {
       secondaryText,
       tertiaryText,
       optionalText,
-      hidePersonaDetails
+      hidePersonaDetails,
+      imageShouldFadeIn
     } = this.props;
 
     let presenceElement = null;
@@ -79,7 +80,7 @@ export class Persona extends React.Component<IPersonaProps, any> {
         { size !== PersonaSize.tiny && (
           <div className='ms-Persona-imageArea'>
             <div className={ css('ms-Persona-initials', PERSONA_INITIALS_COLOR[initialsColor]) }>{ imageInitials }</div>
-            <Image className='ms-Persona-image' imageFit={ ImageFit.cover } src={ imageUrl } />
+            <Image className='ms-Persona-image' imageFit={ ImageFit.cover } src={ imageUrl } shouldFadeIn={ imageShouldFadeIn } />
           </div>
         ) }
         { presenceElement }

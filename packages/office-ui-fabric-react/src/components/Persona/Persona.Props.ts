@@ -14,6 +14,11 @@ export interface IPersonaProps extends React.HTMLProps<Persona> {
   size?: PersonaSize;
 
   /**
+   * If true, adds the css class 'is-fadeIn' to the image.
+   */
+  imageShouldFadeIn?: boolean;
+
+  /**
    * Url to the image to use, should be a square aspect ratio and big enough to fit in the image area.
    */
   imageUrl?: string;

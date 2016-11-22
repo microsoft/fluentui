@@ -90,7 +90,6 @@ a.ms-ContextualMenu-link {
 }
 
 .ms-ContextualMenu-icon {
-  color: $ms-color-themePrimary;
   display: inline-block;
   min-height: 1px;
   max-height: $ContextualMenu-itemHeight;
@@ -98,6 +97,10 @@ a.ms-ContextualMenu-link {
   text-align: center;
   vertical-align: top;
   margin: 0px 4px;
+}
+
+.ms-ContextualMenu-iconColor {
+  color: $ms-color-themePrimary;
 }
 
 .ms-ContextualMenu-itemText {
