@@ -87,7 +87,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
         </div>
         { isContextualMenuVisible ? (
         <ContextualMenu
-          targetElement={ this.refs.menuButton }
+          target={ this.refs.menuButton }
           isBeakVisible={ isBeakVisible }
           directionalHint={ directionalHint }
           gapSpace={ gapSpace }
