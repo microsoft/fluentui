@@ -20,6 +20,8 @@ export interface ICalendarState {
 }
 
 export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> {
+    private _focusOnUpdate: boolean;
+
     public static defaultProps: ICalendarProps = {
         onSelectDate: null,
         onDismiss: null,
@@ -44,6 +46,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> {
             selectedDate: currentDate,
             navigatedDate: currentDate
         };
+
+        this._focusOnUpdate = false;
     }
 
     public componentWillReceiveProps(nextProps: ICalendarProps) {
@@ -61,7 +65,10 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> {
     }
 
     public componentDidUpdate() {
-        this.refs.dayPicker.focus();
+        if (this._focusOnUpdate) {
+            this.refs.dayPicker.focus();
+            this._focusOnUpdate = false;
+        }
     }
 
     public render() {
@@ -70,29 +77,29 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> {
         let { selectedDate, navigatedDate } = this.state;
 
         return (
-            <div className={rootClass} ref='root'>
-                <div className={'ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused ' + (this.props.isMonthPickerVisible ? 'is-monthPickerVisible' : '')} >
-                    <div className='ms-DatePicker-holder' onKeyDown={this._onDatePickerPopupKeyDown}>
+            <div className={ rootClass } ref='root'>
+                <div className={ 'ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused ' + (this.props.isMonthPickerVisible ? 'is-monthPickerVisible' : '') } >
+                    <div className='ms-DatePicker-holder' onKeyDown={ this._onDatePickerPopupKeyDown }>
                         <div className='ms-DatePicker-frame'>
                             <div className='ms-DatePicker-wrap'>
                                 <CalendarDay
-                                    selectedDate={selectedDate}
-                                    navigatedDate={navigatedDate}
-                                    onSelectDate={this._onSelectDate}
-                                    onNavigateDate={this._onNavigateDate}
-                                    firstDayOfWeek={firstDayOfWeek}
-                                    strings={strings}
+                                    selectedDate={ selectedDate }
+                                    navigatedDate={ navigatedDate }
+                                    onSelectDate={ this._onSelectDate }
+                                    onNavigateDate={ this._onNavigateDate }
+                                    firstDayOfWeek={ firstDayOfWeek }
+                                    strings={ strings }
                                     ref='dayPicker' />
                                 <CalendarMonth
-                                    navigatedDate={navigatedDate}
-                                    strings={strings}
-                                    onNavigateDate={this._onNavigateDate} />
+                                    navigatedDate={ navigatedDate }
+                                    strings={ strings }
+                                    onNavigateDate={ this._onNavigateDate } />
                                 <span
                                     className='ms-DatePicker-goToday js-goToday'
-                                    onClick={this._onGotoToday}
-                                    onKeyDown={this._onGotoTodayKeyDown}
-                                    tabIndex={0}>
-                                    {strings.goToToday}
+                                    onClick={ this._onGotoToday }
+                                    onKeyDown={ this._onGotoTodayKeyDown }
+                                    tabIndex={ 0 }>
+                                    { strings.goToToday }
                                 </span>
                             </div>
                         </div>
@@ -112,6 +119,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> {
     @autobind
     private _onNavigateDate(date: Date, focusOnNavigatedDay: boolean) {
         this._navigateDay(date);
+        this._focusOnUpdate = focusOnNavigatedDay;
     }
 
     @autobind
@@ -130,6 +138,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> {
     @autobind
     private _onGotoToday() {
         this._navigateDay(new Date());
+        this._focusOnUpdate = true;
     };
 
     @autobind
