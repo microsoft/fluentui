@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Facepile } from './Facepile';
 import { IButtonProps } from '../Button/index';
-import { PersonaInitialsColor } from '../Persona/index';
+import { IPersonaProps, PersonaInitialsColor } from '../Persona/index';
 
 export interface IFacepileProps extends React.Props<Facepile> {
   /**
@@ -31,6 +31,9 @@ export interface IFacepileProps extends React.Props<Facepile> {
 
   /** Type of overflow icon to use */
   overflowButtonType?: OverflowButtonType;
+
+  /** Method to access properties on the underlying Persona control */
+  getPersonaProps?: (persona: IFacepilePersona) => IPersonaProps;
 }
 
 export interface IFacepilePersona extends React.HTMLProps<HTMLButtonElement | HTMLDivElement> {
