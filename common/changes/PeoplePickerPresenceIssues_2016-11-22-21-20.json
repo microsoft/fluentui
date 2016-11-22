@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "persona shows incorrect presence status if presence is not provided",
+      "type": "patch"
+    }
+  ],
+  "email": "vatanaggarwal4@live.com"
+}
