@@ -9,7 +9,6 @@
 .ms-DatePicker {
   @include ms-u-normalize;
   margin-bottom: 17px;
-  z-index: $ms-zIndex-DatePicker;
 }
 
 // Base wrapper for the date picker.
@@ -18,7 +17,6 @@
   font-size: $ms-font-size-m;
   position: relative;
   @include text-align(left);
-  z-index: $ms-zIndex-back;
 }
 
 // The holder is the only "scrollable" top-level container element.
@@ -35,14 +33,12 @@
 .ms-DatePicker-picker.ms-DatePicker-picker--opened .ms-DatePicker-holder {
   @include ms-u-slideDownIn10;
   @include ms-u-borderBox;
-  border: 1px solid $ms-color-neutralLight;
   display: block;
 }
 
 // When a picker opens, always open it in front of other closed pickers
 .ms-DatePicker-picker--opened {
   position: relative;
-  z-index: $ms-zIndex-front;
 }
 
 
@@ -225,7 +221,6 @@
   position: absolute;
   top: 0px;
   width: 140px;
-  z-index: $ms-zIndex-middle;
   cursor: pointer;
 }
 

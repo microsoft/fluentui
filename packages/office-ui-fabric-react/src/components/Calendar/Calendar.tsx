@@ -20,8 +20,6 @@ export interface ICalendarState {
 }
 
 export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> {
-    private _focusOnUpdate: boolean;
-
     public static defaultProps: ICalendarProps = {
         onSelectDate: null,
         onDismiss: null,
@@ -37,6 +35,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> {
         root: HTMLElement;
         dayPicker: CalendarDay;
     };
+
+    private _focusOnUpdate: boolean;
 
     constructor(props: ICalendarProps) {
         super();

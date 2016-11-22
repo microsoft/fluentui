@@ -13,13 +13,11 @@
   pointer-events: none;
   position: absolute;
   @include right(9px);
-  z-index: $ms-zIndex-middle;
 }
 
 .ms-DatePicker {
   @include ms-u-normalize;
   margin-bottom: 17px;
-  z-index: $ms-zIndex-DatePicker;
 
   .ms-TextField {
     position: relative;
