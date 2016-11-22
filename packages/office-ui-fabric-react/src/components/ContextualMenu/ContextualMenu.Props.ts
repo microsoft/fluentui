@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ContextualMenu } from './ContextualMenu';
 import { DirectionalHint } from '../../common/DirectionalHint';
+import { FocusZoneDirection } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.Props';
 import { IRectangle } from '../../common/IRectangle';
 import { IPoint } from '../../common/IPoint';
@@ -68,6 +69,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
    */
 
   coverTarget?: boolean;
+
   /**
    * Collection of menu items.
    * @default []
@@ -120,6 +122,12 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
    * @default false
    */
   doNotLayer?: boolean;
+
+  /**
+   * Direction for arrow navigation of the ContextualMenu. Should only be specified if using custom-rendered menu items.
+   * @default FocusZoneDirection.vertical
+   */
+  arrowDirection?: FocusZoneDirection;
 
 }
 
@@ -197,9 +205,9 @@ export interface IContextualMenuItem {
   href?: string;
 
   /**
-   * A collection of submenu items
+   * A collection of submenu items, or an IContextualMenuProps object to apply for the sub menu
    */
-  items?: IContextualMenuItem[];
+  items?: IContextualMenuItem[] | IContextualMenuProps;
 
   /**
    * Additional css class to apply to the menu item
