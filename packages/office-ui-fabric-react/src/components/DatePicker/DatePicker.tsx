@@ -6,6 +6,8 @@ import {
   Calendar,
   DayOfWeek
 } from '../../Calendar';
+import { Callout } from '../../Callout';
+import { DirectionalHint } from '../../common/DirectionalHint';
 import { TextField } from '../../TextField';
 import {
   autobind,
@@ -53,9 +55,9 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     [key: string]: React.ReactInstance;
     root: HTMLElement;
     textField: TextField;
-    textFieldContainer: HTMLElement;
   };
 
+  private _datepicker: HTMLDivElement;
   private _preventFocusOpeningPicker: boolean;
 
   constructor(props: IDatePickerProps) {
@@ -99,7 +101,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
     return (
       <div className={ rootClass } ref='root'>
-        <div ref='textFieldContainer'>
+        <div ref={ (c): HTMLElement => this._datepicker = c }>
           <TextField
             ariaLabel={ ariaLabel }
             aria-haspopup='true'
@@ -121,15 +123,26 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             ref='textField' />
         </div>
         { isDatePickerShown && (
-          <Calendar
-            onSelectDate={ this._onSelectDate }
+          <Callout
+            isBeakVisible={ false }
+            className='ms-DatePicker-callout'
+            gapSpace={ 0 }
+            doNotLayer={ false }
+            targetElement={ this._datepicker }
+            directionalHint={ DirectionalHint.bottomLeftEdge }
             onDismiss={ this._dismissDatePickerPopup }
-            isMonthPickerVisible={ this.props.isMonthPickerVisible }
-            value={ selectedDate }
-            firstDayOfWeek={ firstDayOfWeek }
-            strings={ strings }
+            setInitialFocus={ true }
             >
-          </Calendar>
+            <Calendar
+              onSelectDate={ this._onSelectDate }
+              onDismiss={ this._dismissDatePickerPopup }
+              isMonthPickerVisible={ this.props.isMonthPickerVisible }
+              value={ selectedDate }
+              firstDayOfWeek={ firstDayOfWeek }
+              strings={ strings }
+              >
+            </Calendar>
+          </Callout>
         ) }
       </div>
     );

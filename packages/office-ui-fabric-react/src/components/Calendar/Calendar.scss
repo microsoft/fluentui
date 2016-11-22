@@ -26,7 +26,6 @@
   -webkit-overflow-scrolling: touch;
   @include ms-u-borderBox;
   background: $ms-color-white;
-  position: absolute;
   min-width: 300px;
   display: none;
 }
