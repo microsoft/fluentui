@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Toggle: the labels within the toggle will not render if no text is provided.",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
