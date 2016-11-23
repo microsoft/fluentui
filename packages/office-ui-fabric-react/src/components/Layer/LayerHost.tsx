@@ -12,7 +12,7 @@ import {
 import { ProjectedLayer } from './ProjectedLayer';
 import { ILayerProps } from './Layer.Props';
 import { ILayerHostProps } from './LayerHost.Props';
-import './Layerhost.scss';
+import './LayerHost.scss';
 
 export interface ILayer {
   id: string;
