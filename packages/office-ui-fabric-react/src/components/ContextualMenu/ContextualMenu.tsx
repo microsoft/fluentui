@@ -365,17 +365,16 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _onItemClick(item: any, ev: MouseEvent) {
-    if (item.key !== this.state.expandedMenuItemKey) {
-      if (!item.items || !item.items.length) { // This is an item without a menu. Click it.
-        this._executeItemClick(item, ev);
-      } else {
-        if (item.key === this.state.dismissedMenuItemKey) { // This has an expanded sub menu. collapse it.
-          this._onSubMenuDismiss(ev);
-        } else { // This has a collapsed sub menu. Expand it.
-          this._onItemSubMenuExpand(item, ev.currentTarget as HTMLElement);
-        }
+    if (!item.items || !item.items.length) { // This is an item without a menu. Click it.
+      this._executeItemClick(item, ev);
+    } else {
+      if (item.key === this.state.expandedMenuItemKey) { // This has an expanded sub menu. collapse it.
+        this._onSubMenuDismiss(ev);
+      } else { // This has a collapsed sub menu. Expand it.
+        this._onItemSubMenuExpand(item, ev.currentTarget as HTMLElement);
       }
     }
+
     ev.stopPropagation();
     ev.preventDefault();
   }
