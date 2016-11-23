@@ -46,12 +46,12 @@ export class DocumentCardPreview extends React.Component<IDocumentCardPreviewPro
         imageFit={ imageFit }
         src={ previewImage.previewImageSrc }
         errorSrc={ previewImage.errorImageSrc }
-        role='presentation' alt=''/>
+        role='presentation' alt='' />
     );
 
     let icon;
     if (previewImage.iconSrc) {
-      icon = <Image className='ms-DocumentCardPreview-icon' src={ previewImage.iconSrc } role='presentation' alt=''/>;
+      icon = <Image className='ms-DocumentCardPreview-icon' src={ previewImage.iconSrc } role='presentation' alt='' />;
     }
 
     return (
@@ -84,7 +84,7 @@ export class DocumentCardPreview extends React.Component<IDocumentCardPreviewPro
           role='presentation'
           alt=''
           width='16px'
-          height='16px'/>
+          height='16px' />
         <a href={ file.url }>{ file.name }</a>
       </li>
     ));
