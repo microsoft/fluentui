@@ -221,4 +221,15 @@ describe('TextField', () => {
 
     expect(renderedDOM.querySelector('input').value).equals('initial value');
   });
+
+  it('can render a default value as a textarea', () => {
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextField
+        defaultValue='initial value'
+        multiline={ true }
+        />
+    );
+
+    expect(renderedDOM.querySelector('textarea').value).equals('initial value');
+  });
 });
