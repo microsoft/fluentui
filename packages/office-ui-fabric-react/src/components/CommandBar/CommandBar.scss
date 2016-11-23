@@ -186,8 +186,11 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
 
 .ms-CommandBarItem-icon {
   font-size: $CommandBarItem-fontSize;
-  color: $ms-color-themeDarkAlt;
   padding: 0 4px;
+}
+
+.ms-CommandBarItem-iconColor {
+  color: $ms-color-themeDarkAlt;
 }
 
 .ms-CommandBarItem-chevronDown  {
