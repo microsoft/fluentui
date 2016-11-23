@@ -8,7 +8,6 @@ import { Button } from './Button';
 
 let { expect } = chai;
 
-
 describe('Button', () => {
 
   it('can render without an onClick.', () => {
