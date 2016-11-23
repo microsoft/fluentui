@@ -18,7 +18,7 @@ export class StoreHost extends React.Component<IStoreHostProps, {}> {
     stores: React.PropTypes.object
   };
 
-  public context: IStoreHostContext ;
+  public context: IStoreHostContext;
 
   public getChildContext(): IStoreHostContext {
     let { stores: parentStores } = this.context;
