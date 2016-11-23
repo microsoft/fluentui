@@ -4,10 +4,10 @@ import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 
 import * as ReactTestUtils from 'react-addons-test-utils';
+import { Button } from './Button';
 
 let { expect } = chai;
 
-import { Button } from './Button';
 
 describe('Button', () => {
 
@@ -32,8 +32,6 @@ describe('Button', () => {
   });
 
   it('can render with an href', () => {
-    let onClick = () => null;
-
     const button = ReactTestUtils.renderIntoDocument<Button>(
       <Button href='http://www.microsoft.com' target='_blank'>Hello</Button>
     );
