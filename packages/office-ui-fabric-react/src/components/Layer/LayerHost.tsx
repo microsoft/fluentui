@@ -12,6 +12,7 @@ import {
 import { ProjectedLayer } from './ProjectedLayer';
 import { ILayerProps } from './Layer.Props';
 import { ILayerHostProps } from './LayerHost.Props';
+import './LayerHost.scss';
 
 export interface ILayer {
   id: string;
@@ -59,7 +60,7 @@ export class LayerHost extends BaseComponent<ILayerHostProps, {}> {
       hostElement.id = DEFAULT_HOST_ID;
       doc.body.appendChild(hostElement);
 
-      let defaultHost = ReactDOM.render(<LayerHost />, hostElement) as LayerHost;
+      let defaultHost = ReactDOM.render(<LayerHost isDefault />, hostElement) as LayerHost;
 
       hostElement[DEFAULT_HOST_ID] = defaultHost;
 
@@ -88,7 +89,7 @@ export class LayerHost extends BaseComponent<ILayerHostProps, {}> {
     let divProps = getNativeProps(this.props, divProperties);
 
     return (
-      <div { ...divProps } className={ css('ms-LayerHost', this.props.className) }>
+      <div { ...divProps } className={ css('ms-LayerHost', this.props.className, { 'ms-LayerHost--default': this.props.isDefault }) }>
         <Fabric>
           { this.props.children }
           <div className='ms-LayerHost-overlay'>
