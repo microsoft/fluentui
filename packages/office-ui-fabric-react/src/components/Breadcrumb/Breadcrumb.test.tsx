@@ -19,13 +19,13 @@ describe('Breadcrumb', () => {
     };
 
     const items: IBreadcrumbItem[] = [
-      {text: 'TestText', key: 'TestKey', onClick: clickCallback}
+      { text: 'TestText', key: 'TestKey', onClick: clickCallback }
     ];
 
     let component = ReactTestUtils.renderIntoDocument<Breadcrumb>(
       <Breadcrumb
-        items={items}
-      />
+        items={ items }
+        />
     );
 
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);

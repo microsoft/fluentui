@@ -69,29 +69,29 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
       <div className={ css('ms-Breadcrumb', className) } ref='renderingArea'>
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           <ul className='ms-Breadcrumb-list'>
-          { renderedOverflowItems && renderedOverflowItems.length ? (
-            <li className='ms-Breadcrumb-overflow' key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
-              <div className='ms-Breadcrumb-overflowButton ms-Icon ms-Icon--More'
+            { renderedOverflowItems && renderedOverflowItems.length ? (
+              <li className='ms-Breadcrumb-overflow' key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
+                <div className='ms-Breadcrumb-overflowButton ms-Icon ms-Icon--More'
                   onClick={ this._onOverflowClicked }
                   data-is-focusable={ true }
                   role='button'
                   aria-haspopup='true'
                   aria-owns={ isOverflowOpen ? overflowMenuId : null } />
-              <i className={ css('ms-Breadcrumb-chevron ms-Icon', getRTL() ? 'ms-Icon--ChevronLeft' : 'ms-Icon--ChevronRight') }></i>
-            </li>
-          ) : (null) }
-          { renderedItems.map(
-                (item, index) => (
-             <li className='ms-Breadcrumb-listItem' key={ item.key || String(index) } ref={ item.key || String(index) } >
-              <a className='ms-Breadcrumb-itemLink'
-                  onClick={ item.onClick ? this._onBreadcrumbClicked.bind(this, item) : null }
-                  href={ item.href }
-                  role={ item.onClick ? 'button' : 'link' }>
-                  { item.text }
+                <i className={ css('ms-Breadcrumb-chevron ms-Icon', getRTL() ? 'ms-Icon--ChevronLeft' : 'ms-Icon--ChevronRight') }></i>
+              </li>
+            ) : (null) }
+            { renderedItems.map(
+              (item, index) => (
+                <li className='ms-Breadcrumb-listItem' key={ item.key || String(index) } ref={ item.key || String(index) } >
+                  <a className='ms-Breadcrumb-itemLink'
+                    onClick={ item.onClick ? this._onBreadcrumbClicked.bind(this, item) : null }
+                    href={ item.href }
+                    role={ item.onClick ? 'button' : 'link' }>
+                    { item.text }
                   </a>
-              <i className={ css('ms-Breadcrumb-chevron ms-Icon', getRTL() ? 'ms-Icon--ChevronLeft' : 'ms-Icon--ChevronRight') }></i>
-            </li>
-          )) }
+                  <i className={ css('ms-Breadcrumb-chevron ms-Icon', getRTL() ? 'ms-Icon--ChevronLeft' : 'ms-Icon--ChevronRight') }></i>
+                </li>
+              )) }
           </ul>
         </FocusZone>
         { isOverflowOpen ? (
@@ -99,13 +99,13 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
             targetElement={ overflowAnchor }
             isBeakVisible={ true }
             items={ renderedOverflowItems.map(
-                (item, index) => ({
-                  name: item.text,
-                  key: item.key,
-                  onClick: this._onBreadcrumbClicked.bind(this, item),
-                  href: item.href
-                })
-              ) }
+              (item, index) => ({
+                name: item.text,
+                key: item.key,
+                onClick: this._onBreadcrumbClicked.bind(this, item),
+                href: item.href
+              })
+            ) }
             id={ overflowMenuId }
             directionalHint={ DirectionalHint.bottomLeftEdge }
             onDismiss={ this._onOverflowDismissed } />
@@ -117,16 +117,16 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
   @autobind
   private _onOverflowClicked(ev: React.MouseEvent<HTMLElement>) {
     this.setState({
-      'isOverflowOpen' : !this.state.isOverflowOpen,
-      'overflowAnchor' : ev.currentTarget as HTMLElement
+      'isOverflowOpen': !this.state.isOverflowOpen,
+      'overflowAnchor': ev.currentTarget as HTMLElement
     });
   }
 
   @autobind
   private _onOverflowDismissed(ev: MouseEvent) {
     this.setState({
-      'isOverflowOpen' : false,
-      'overflowAnchor' : null
+      'isOverflowOpen': false,
+      'overflowAnchor': null
     });
   }
 

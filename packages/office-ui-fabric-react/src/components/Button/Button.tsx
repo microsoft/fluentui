@@ -20,7 +20,7 @@ export class Button extends BaseComponent<IButtonProps, IButtonState> implements
   private _buttonElement: HTMLButtonElement;
 
   constructor(props: IButtonProps) {
-    super(props, {'rootProps': null});
+    super(props, { 'rootProps': null });
 
     this.state = {
       labelId: getId('Button'),
@@ -43,11 +43,11 @@ export class Button extends BaseComponent<IButtonProps, IButtonState> implements
       'ms-Button--command': buttonType === ButtonType.command,
       'ms-Button--icon': buttonType === ButtonType.icon,
       'disabled': (renderAsAnchor && disabled) // add disable styling if it is an anchor
-                                               // if not utilize default button disabled behavior.
+      // if not utilize default button disabled behavior.
     });
 
     const iconSpan = icon && (buttonType === ButtonType.command || buttonType === ButtonType.hero || buttonType === ButtonType.icon)
-      ? <span className='ms-Button-icon'><i className={`ms-Icon ms-Icon--${icon}`}></i></span>
+      ? <span className='ms-Button-icon'><i className={ `ms-Icon ms-Icon--${icon}` }></i></span>
       : null;
 
     // ms-Button-description is only shown when the button type is compound.

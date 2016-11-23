@@ -103,19 +103,19 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
             { renderedItems.map((item, index) => (
               this._renderItemInCommandBar(item, index, expandedMenuItemKey)
             )).concat((renderedOverflowItems && renderedOverflowItems.length) ? [
-            <div className='ms-CommandBarItem' key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
-              <button
-                id={ this._id + OVERFLOW_KEY }
-                className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === OVERFLOW_KEY) }) }
-                onClick={ this._onOverflowClick }
-                role='menuitem'
-                aria-label={ this.props.elipisisAriaLabel || '' }
-                aria-haspopup={ true }
-                data-automation-id='commandBarOverflow'
-              >
-                <i className='ms-CommandBarItem-overflow ms-Icon ms-Icon--More' />
-              </button>
-            </div>
+              <div className='ms-CommandBarItem' key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
+                <button
+                  id={ this._id + OVERFLOW_KEY }
+                  className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === OVERFLOW_KEY) }) }
+                  onClick={ this._onOverflowClick }
+                  role='menuitem'
+                  aria-label={ this.props.elipisisAriaLabel || '' }
+                  aria-haspopup={ true }
+                  data-automation-id='commandBarOverflow'
+                  >
+                  <i className='ms-CommandBarItem-overflow ms-Icon ms-Icon--More' />
+                </button>
+              </div>
             ] : []) }
           </div>
           <div className='ms-CommandBar-sideCommands' ref='farCommandSurface'>
@@ -125,16 +125,16 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
           </div>
         </FocusZone>
         { (contextualMenuItems) ?
-        (<ContextualMenu
-          labelElementId={ expandedMenuId }
-          className='ms-CommandBar-menuHost'
-          items={ contextualMenuItems }
-          targetElement={ contextualMenuTarget }
-          onDismiss={ this._onContextMenuDismiss }
-          isBeakVisible={ true }
-          directionalHint={ DirectionalHint.bottomAutoEdge }
-        />
-        ) : (null)}
+          (<ContextualMenu
+            labelElementId={ expandedMenuId }
+            className='ms-CommandBar-menuHost'
+            items={ contextualMenuItems }
+            targetElement={ contextualMenuTarget }
+            onDismiss={ this._onContextMenuDismiss }
+            isBeakVisible={ true }
+            directionalHint={ DirectionalHint.bottomAutoEdge }
+            />
+          ) : (null) }
       </div>
     );
   }
@@ -149,38 +149,38 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     const classNameValue = css(className, { 'is-expanded': (expandedMenuItemKey === item.key) });
 
     return <div className={ css('ms-CommandBarItem', item.className) } key={ itemKey } ref={ itemKey }>
-             {(() => {
-               if (item.onClick || item.items) {
-                 return <button
-                         { ...getNativeProps(item, buttonProperties) }
-                         id={ this._id + item.key }
-                         className={ classNameValue }
-                         onClick={ this._onItemClick.bind(this, item) }
-                         data-command-key={ index }
-                         aria-haspopup={ !!(item.items && item.items.length) }
-                         role='menuitem'
-                         aria-label={ item.ariaLabel || item.name }
-                       >
-                         { (!!item.icon) && <span className={ `ms-CommandBarItem-icon ms-Icon ms-Icon--${ item.icon }` }></span> }
-                         { (!!item.name) && <span className='ms-CommandBarItem-commandText'>{ item.name }</span> }
-                         { (item.items && item.items.length) ? (
-                           <i className='ms-CommandBarItem-chevronDown ms-Icon ms-Icon--ChevronDown' />
-                         ) : ( null ) }
-                       </button>;
-               } else {
-                 return <div
-                         { ...getNativeProps(item, divProperties) }
-                         id={ this._id + item.key }
-                         className={ classNameValue }
-                         data-command-key={ index }
-                         aria-haspopup={ !!(item.items && item.items.length) }
-                       >
-                         <span className={ `ms-CommandBarItem-icon ms-Icon ms-Icon--${ item.icon }` }></span>
-                         <span className='ms-CommandBarItem-commandText ms-font-m ms-font-weight-regular' aria-hidden='true' role='presentation'>{ item.name }</span>
-                       </div>;
-               }
-             })()}
-           </div>;
+      { (() => {
+        if (item.onClick || item.items) {
+          return <button
+            { ...getNativeProps(item, buttonProperties) }
+            id={ this._id + item.key }
+            className={ classNameValue }
+            onClick={ this._onItemClick.bind(this, item) }
+            data-command-key={ index }
+            aria-haspopup={ !!(item.items && item.items.length) }
+            role='menuitem'
+            aria-label={ item.ariaLabel || item.name }
+            >
+            { (!!item.icon) && <span className={ `ms-CommandBarItem-icon ms-Icon ms-Icon--${item.icon}` }></span> }
+            { (!!item.name) && <span className='ms-CommandBarItem-commandText'>{ item.name }</span> }
+            { (item.items && item.items.length) ? (
+              <i className='ms-CommandBarItem-chevronDown ms-Icon ms-Icon--ChevronDown' />
+            ) : (null) }
+          </button>;
+        } else {
+          return <div
+            { ...getNativeProps(item, divProperties) }
+            id={ this._id + item.key }
+            className={ classNameValue }
+            data-command-key={ index }
+            aria-haspopup={ !!(item.items && item.items.length) }
+            >
+            <span className={ `ms-CommandBarItem-icon ms-Icon ms-Icon--${item.icon}` }></span>
+            <span className='ms-CommandBarItem-commandText ms-font-m ms-font-weight-regular' aria-hidden='true' role='presentation'>{ item.name }</span>
+          </div>;
+        }
+      })() }
+    </div>;
   }
 
   private _updateItemMeasurements() {

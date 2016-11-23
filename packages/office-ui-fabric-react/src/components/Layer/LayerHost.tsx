@@ -94,13 +94,13 @@ export class LayerHost extends BaseComponent<ILayerHostProps, {}> {
           <div className='ms-LayerHost-overlay'>
             { this._layers.map(layer => (
               <ProjectedLayer
-                key={layer.id }
+                key={ layer.id }
                 layerId={ layer.id }
                 parentElement={ layer.parentElement }
                 defaultRemoteProps={ layer.props }
                 ref={ this._resolveLayer }
                 />
-            ))}
+            )) }
           </div>
         </Fabric>
       </div>
