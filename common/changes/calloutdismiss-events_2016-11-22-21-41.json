@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Fix callout dismiss so it correctly passes the event",
+      "type": "patch"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}

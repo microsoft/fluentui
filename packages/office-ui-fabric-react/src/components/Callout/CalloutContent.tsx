@@ -131,10 +131,9 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
           { beakVisible ?
             (<div className='ms-Callout-beakCurtain' />) :
             (null) }
-
           <Popup
             className='ms-Callout-main'
-            onDismiss={ (ev: any) => this.dismiss() }
+            onDismiss={ this.dismiss }
             shouldRestoreFocus={ true }
             style={ { maxHeight: contentMaxHeight } }>
             { children }
@@ -145,23 +144,23 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     return content;
   }
 
-  public dismiss() {
+  @autobind
+  public dismiss(ev?: Event | React.MouseEvent<HTMLElement>) {
     let { onDismiss } = this.props;
 
     if (onDismiss) {
-      onDismiss();
+      onDismiss(ev);
     }
   }
 
   protected _dismissOnLostFocus(ev: Event) {
     let target = ev.target as HTMLElement;
-
     if (ev.target !== this._targetWindow &&
       this._hostElement &&
       !elementContains(this._hostElement, target) &&
       ((this._target as MouseEvent).stopPropagation ||
         (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target))))) {
-      this.dismiss();
+      this.dismiss(ev);
     }
   }
 
