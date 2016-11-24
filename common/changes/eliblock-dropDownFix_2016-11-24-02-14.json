@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Dropdown should only update state when props are actually changed",
+      "type": "patch"
+    }
+  ],
+  "email": "eliblock@microsoft.com"
+}
