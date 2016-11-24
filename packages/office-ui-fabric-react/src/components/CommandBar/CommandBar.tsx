@@ -139,7 +139,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
           isBeakVisible={ true }
           directionalHint={ DirectionalHint.bottomAutoEdge }
         />
-        ) : (null)}
+          ) : (null) }
       </div>
     );
   }
@@ -155,7 +155,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     let hasIcon = !!item.icon || !!item.iconProps;
 
     return <div className={ css('ms-CommandBarItem', item.className) } key={ itemKey } ref={ itemKey }>
-             {(() => {
+      { (() => {
                if (item.onClick || item.items) {
                  return <button
                          { ...getNativeProps(item, buttonProperties) }
@@ -171,7 +171,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
                          { (!!item.name) && <span className='ms-CommandBarItem-commandText'>{ item.name }</span> }
                          { (item.items && item.items.length) ? (
                            <i className='ms-CommandBarItem-chevronDown ms-Icon ms-Icon--ChevronDown' />
-                         ) : ( null ) }
+            ) : (null) }
                        </button>;
                } else {
                  return <div
@@ -185,7 +185,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
                          <span className='ms-CommandBarItem-commandText ms-font-m ms-font-weight-regular' aria-hidden='true' role='presentation'>{ item.name }</span>
                        </div>;
                }
-             })()}
+      })() }
            </div>;
   }
 

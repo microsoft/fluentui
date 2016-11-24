@@ -11,7 +11,7 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
 
   public render() {
     let content = (
-      <CalloutContent { ...this.props }/>
+      <CalloutContent { ...this.props } />
     );
     return this.props.doNotLayer ? content : (
       <Layer>

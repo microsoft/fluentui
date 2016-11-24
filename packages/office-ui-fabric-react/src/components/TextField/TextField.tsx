@@ -200,7 +200,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
       textFieldClassName = 'ms-TextField-field';
     }
 
-    return css(textFieldClassName, {
+    return css(textFieldClassName, this.props.inputClassName, {
       'ms-TextField-invalid': !!errorMessage
     });
   }
@@ -215,7 +215,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
   }
 
   private _renderTextArea(): React.ReactElement<React.HTMLProps<HTMLAreaElement>> {
-    let textAreaProps = getNativeProps(this.props, textAreaProperties);
+    let textAreaProps = getNativeProps(this.props, textAreaProperties, ['defaultValue']);
 
     return (
       <textarea
@@ -235,7 +235,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
   }
 
   private _renderInput(): React.ReactElement<React.HTMLProps<HTMLInputElement>> {
-    let inputProps = getNativeProps<React.HTMLProps<HTMLInputElement>>(this.props, inputProperties);
+    let inputProps = getNativeProps<React.HTMLProps<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
 
     return (
       <input

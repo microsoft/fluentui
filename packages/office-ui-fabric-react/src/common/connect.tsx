@@ -10,10 +10,10 @@ export function connect<ORIGINAL_PROPS, NEW_PROPS>(
 
   return (props: NEW_PROPS) => (
     <ConnectedHost
-      component={component}
-      componentProps={props}
-      getProps={getProps}
-      storesToSubscribe={storesToSubscribe}
+      component={ component }
+      componentProps={ props }
+      getProps={ getProps }
+      storesToSubscribe={ storesToSubscribe }
       />
   );
 }

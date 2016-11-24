@@ -99,7 +99,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     return (
       <div
         role='row'
-        aria-label= { ariaLabel }
+        aria-label={ ariaLabel }
         className={ css('ms-DetailsHeader', {
           'is-allSelected': isAllSelected,
           'is-selectAllHidden': selectAllVisibility === SelectAllVisibility.hidden,
@@ -123,12 +123,12 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
             ) : null }
           </div>
           { groupNestingDepth > 0 ? (
-          <button className='ms-DetailsHeader-cell' onClick={ this._onToggleCollapseAll }>
-            <i className={ css('ms-DetailsHeader-collapseButton ms-Icon ms-Icon--ChevronDown', {
-              'is-collapsed': isAllCollapsed
-            }) } >
-            </i>
-          </button>
+            <button className='ms-DetailsHeader-cell' onClick={ this._onToggleCollapseAll }>
+              <i className={ css('ms-DetailsHeader-collapseButton ms-Icon ms-Icon--ChevronDown', {
+                'is-collapsed': isAllCollapsed
+              }) } >
+              </i>
+            </button>
           ) : (null) }
           { GroupSpacer({ count: groupNestingDepth - 1 }) }
           { columns.map((column, columnIndex) => (
@@ -168,7 +168,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                   ) }
 
                   { column.iconClassName && (
-                    <i className= {'ms-Icon ' + column.iconClassName} />
+                    <i className={ 'ms-Icon ' + column.iconClassName } />
                   ) }
 
                   { column.name }

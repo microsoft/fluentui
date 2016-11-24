@@ -42,12 +42,12 @@ export default class Todo extends React.Component<ITodoProps, ITodoState> {
         </div>
         <TodoForm
           onSubmit={ this.props.dataProvider.createItem }
-        />
+          />
         <TodoTabs
           items={ this.state.items }
           onToggleComplete={ this.props.dataProvider.toggleComplete }
           onDeleteItem={ this.props.dataProvider.deleteItem }
-        />
+          />
         { this._renderFetchingTasksSpinner() }
       </div>
     );
@@ -56,16 +56,16 @@ export default class Todo extends React.Component<ITodoProps, ITodoState> {
   private _renderWorkingOnItSpinner(): React.ReactElement<React.HTMLProps<HTMLDivElement>> {
     return this.props.dataProvider.isLoading && this.state.items.length > 0
       ? <div className={ styles.workingOnItSpinner }>
-          <Spinner type={ SpinnerType.normal } />
-        </div>
+        <Spinner type={ SpinnerType.normal } />
+      </div>
       : undefined;
   }
 
   private _renderFetchingTasksSpinner(): React.ReactElement<React.HTMLProps<HTMLDivElement>> {
     return this.props.dataProvider.isLoading && this.state.items.length === 0
       ? <div className={ styles.fetchingTasksSpinner }>
-          <Spinner type={ SpinnerType.large } label= { strings.fetchingTasksLabel } />
-        </div>
+        <Spinner type={ SpinnerType.large } label={ strings.fetchingTasksLabel } />
+      </div>
       : undefined;
   }
 
