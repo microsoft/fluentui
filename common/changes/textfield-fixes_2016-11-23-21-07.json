@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "TextField: defaultValue no longer provides a warning.",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
