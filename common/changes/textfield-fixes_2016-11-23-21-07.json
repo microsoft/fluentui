@@ -1,8 +1,8 @@
 {
   "changes": [
     {
-      "comment": "DetailsList: clicking on an empty area of the page should clear the selection.",
       "packageName": "office-ui-fabric-react",
+      "comment": "TextField: defaultValue no longer provides a warning.",
       "type": "patch"
     }
   ],

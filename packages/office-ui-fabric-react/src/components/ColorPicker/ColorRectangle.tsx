@@ -4,7 +4,7 @@ import {
   MAX_COLOR_SATURATION,
   MAX_COLOR_VALUE,
   getFullColorString
- } from './colors';
+} from './colors';
 import { assign } from '../../utilities/object';
 import { autobind } from '../../utilities/autobind';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
@@ -15,7 +15,7 @@ export interface IColorRectangleProps {
   color: IColor;
   minSize?: number;
 
-  onSVChanged? (s: number, v: number): void;
+  onSVChanged?(s: number, v: number): void;
 }
 
 export interface IColorPickerState {
@@ -73,7 +73,7 @@ export class ColorRectangle extends React.Component<IColorRectangleProps, IColor
       <div ref='root' className='ms-ColorPicker-colorRect' style={ { minWidth: minSize, minHeight: minSize, backgroundColor: fullColorString } } onMouseDown={ this._onMouseDown }>
         <div className='ms-ColorPicker-light' />
         <div className='ms-ColorPicker-dark' />
-        <div className='ms-ColorPicker-thumb' style={ { left: color.s + '%', top: (MAX_COLOR_VALUE - color.v) + '%', backgroundColor: color.str } }/>
+        <div className='ms-ColorPicker-thumb' style={ { left: color.s + '%', top: (MAX_COLOR_VALUE - color.v) + '%', backgroundColor: color.str } } />
       </div>
     );
   }
@@ -95,12 +95,12 @@ export class ColorRectangle extends React.Component<IColorRectangleProps, IColor
     let vPercentage = (ev.clientY - rectSize.top) / rectSize.height;
 
     let newColor = assign({}, color, {
-        s: Math.min(MAX_COLOR_SATURATION, Math.max(0, sPercentage * MAX_COLOR_SATURATION)),
-        v: Math.min(MAX_COLOR_VALUE, Math.max(0, MAX_COLOR_VALUE - (vPercentage * MAX_COLOR_VALUE))),
-      });
+      s: Math.min(MAX_COLOR_SATURATION, Math.max(0, sPercentage * MAX_COLOR_SATURATION)),
+      v: Math.min(MAX_COLOR_VALUE, Math.max(0, MAX_COLOR_VALUE - (vPercentage * MAX_COLOR_VALUE))),
+    });
 
     newColor.hex = hsv2hex(newColor.h, newColor.s, newColor.v);
-    newColor.str = newColor.a === 100 ? '#' + newColor.hex : `rgba(${newColor.r}, ${newColor.g}, ${newColor.b}, ${ newColor.a / 100 })`;
+    newColor.str = newColor.a === 100 ? '#' + newColor.hex : `rgba(${newColor.r}, ${newColor.g}, ${newColor.b}, ${newColor.a / 100})`;
 
     this.setState({
       isAdjusting: true,

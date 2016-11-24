@@ -11,166 +11,166 @@ let { expect } = chai;
 
 describe('Callout', () => {
 
-    it('target id strings does not throw exception', () => {
+  it('target id strings does not throw exception', () => {
 
-        let threwException: boolean = false;
-        let exception;
-        try {
-            ReactTestUtils.renderIntoDocument<HTMLDivElement>(
-                <div>
-                    <button id='target' style={ { top: '10px', left: '10px', height: '0', width: '0px' } }> target </button>
-                    <Callout
-                        target='#target'
-                        directionalHint={ DirectionalHint.topLeftEdge }
-                        >
-                        <div>
-                            Content
+    let threwException: boolean = false;
+    let exception;
+    try {
+      ReactTestUtils.renderIntoDocument<HTMLDivElement>(
+        <div>
+          <button id='target' style={ { top: '10px', left: '10px', height: '0', width: '0px' } }> target </button>
+          <Callout
+            target='#target'
+            directionalHint={ DirectionalHint.topLeftEdge }
+            >
+            <div>
+              Content
                         </div>
-                    </Callout>
-                </div>
-            );
-        } catch (e) {
-            exception = e;
-            threwException = true;
-        }
+          </Callout>
+        </div>
+      );
+    } catch (e) {
+      exception = e;
+      threwException = true;
+    }
 
-        expect(threwException).to.be.false;
-    });
+    expect(threwException).to.be.false;
+  });
 
-    it('target MouseEvents does not throw exception', () => {
-        let mouseEvent = document.createEvent('MouseEvent');
-        let eventTarget = document.createElement('div');
-        mouseEvent.initMouseEvent('click', false, false, window, 0, 0, 0, 0, 0, false, false, false, false, 1, eventTarget);
-        let threwException: boolean = false;
-        try {
+  it('target MouseEvents does not throw exception', () => {
+    let mouseEvent = document.createEvent('MouseEvent');
+    let eventTarget = document.createElement('div');
+    mouseEvent.initMouseEvent('click', false, false, window, 0, 0, 0, 0, 0, false, false, false, false, 1, eventTarget);
+    let threwException: boolean = false;
+    try {
 
-            ReactTestUtils.renderIntoDocument<HTMLDivElement>(
-                <div>
-                    <Callout
-                        target={ eventTarget }
-                        directionalHint={ DirectionalHint.topLeftEdge }
-                        >
-                        <div>
-                            Content
+      ReactTestUtils.renderIntoDocument<HTMLDivElement>(
+        <div>
+          <Callout
+            target={ eventTarget }
+            directionalHint={ DirectionalHint.topLeftEdge }
+            >
+            <div>
+              Content
                         </div>
-                    </Callout>
-                </div>
-            );
-        } catch (e) {
-            threwException = true;
-        }
+          </Callout>
+        </div>
+      );
+    } catch (e) {
+      threwException = true;
+    }
 
-        expect(threwException).to.be.false;
-    });
+    expect(threwException).to.be.false;
+  });
 
-    it('target HTMLElements does not throw exception', () => {
-        let targetElement = document.createElement('div');
-        document.body.appendChild(targetElement);
-        let threwException: boolean = false;
-        try {
+  it('target HTMLElements does not throw exception', () => {
+    let targetElement = document.createElement('div');
+    document.body.appendChild(targetElement);
+    let threwException: boolean = false;
+    try {
 
-            ReactTestUtils.renderIntoDocument<HTMLDivElement>(
-                <div>
-                    <Callout
-                        target={ targetElement }
-                        directionalHint={ DirectionalHint.topLeftEdge }
-                        >
-                        <div>
-                            Content
+      ReactTestUtils.renderIntoDocument<HTMLDivElement>(
+        <div>
+          <Callout
+            target={ targetElement }
+            directionalHint={ DirectionalHint.topLeftEdge }
+            >
+            <div>
+              Content
                         </div>
-                    </Callout>
-                </div>
-            );
-        } catch (e) {
-            threwException = true;
-        }
+          </Callout>
+        </div>
+      );
+    } catch (e) {
+      threwException = true;
+    }
 
-        expect(threwException).to.be.false;
-    });
+    expect(threwException).to.be.false;
+  });
 
-    // Once this has been deprecated completely in v1.0 this is no longer needed.
-    it('targetElement  HTMLElements does not throw exception', () => {
-        let targetElement = document.createElement('div');
-        document.body.appendChild(targetElement);
-        let threwException: boolean = false;
-        try {
-            ReactTestUtils.renderIntoDocument<HTMLDivElement>(
-                <div>
-                    <Callout
-                        targetElement={ targetElement }
-                        directionalHint={ DirectionalHint.topLeftEdge }
-                        >
-                        <div>
-                            Content
+  // Once this has been deprecated completely in v1.0 this is no longer needed.
+  it('targetElement  HTMLElements does not throw exception', () => {
+    let targetElement = document.createElement('div');
+    document.body.appendChild(targetElement);
+    let threwException: boolean = false;
+    try {
+      ReactTestUtils.renderIntoDocument<HTMLDivElement>(
+        <div>
+          <Callout
+            targetElement={ targetElement }
+            directionalHint={ DirectionalHint.topLeftEdge }
+            >
+            <div>
+              Content
                         </div>
-                    </Callout>
-                </div>
-            );
-        } catch (e) {
-            threwException = true;
-        }
+          </Callout>
+        </div>
+      );
+    } catch (e) {
+      threwException = true;
+    }
 
-        expect(threwException).to.be.false;
-    });
+    expect(threwException).to.be.false;
+  });
 
-    it('without target does not throw exception', () => {
-        let threwException: boolean = false;
-        try {
-            ReactTestUtils.renderIntoDocument<HTMLDivElement>(
-                <div>
-                    <Callout
-                        directionalHint={ DirectionalHint.topLeftEdge }
-                        >
-                        <div>
-                            Content
+  it('without target does not throw exception', () => {
+    let threwException: boolean = false;
+    try {
+      ReactTestUtils.renderIntoDocument<HTMLDivElement>(
+        <div>
+          <Callout
+            directionalHint={ DirectionalHint.topLeftEdge }
+            >
+            <div>
+              Content
                         </div>
-                    </Callout>
-                </div>
-            );
-        } catch (e) {
-            threwException = true;
-        }
-        expect(threwException).to.be.false;
-    });
+          </Callout>
+        </div>
+      );
+    } catch (e) {
+      threwException = true;
+    }
+    expect(threwException).to.be.false;
+  });
 
-    it('passes event to onDismiss prop', () => {
-        let threwException: boolean = false;
-        let gotEvent: boolean = false;
-        let onDismiss = (ev?: any) => {
-            if (ev) {
-                gotEvent = true;
-            }
-        };
-        // In order to have eventlisteners that have been added to the window to be called the JSX needs
-        // to be rendered into the real dom rather than the testutil simulated dom.
-        let root = document.createElement('div');
-        document.body.appendChild(root);
-        try {
-            ReactDOM.render<HTMLDivElement>(
-                <div>
-                    <button id='focustarget'> button </button>
-                    <button id='target' style={ { top: '10px', left: '10px', height: '0', width: '0px' } }> target </button>
-                    <Callout
-                        target='#target'
-                        directionalHint={ DirectionalHint.topLeftEdge }
-                        onDismiss={ onDismiss }
-                        >
-                        <div>
-                            Content
+  it('passes event to onDismiss prop', () => {
+    let threwException: boolean = false;
+    let gotEvent: boolean = false;
+    let onDismiss = (ev?: any) => {
+      if (ev) {
+        gotEvent = true;
+      }
+    };
+    // In order to have eventlisteners that have been added to the window to be called the JSX needs
+    // to be rendered into the real dom rather than the testutil simulated dom.
+    let root = document.createElement('div');
+    document.body.appendChild(root);
+    try {
+      ReactDOM.render<HTMLDivElement>(
+        <div>
+          <button id='focustarget'> button </button>
+          <button id='target' style={ { top: '10px', left: '10px', height: '0', width: '0px' } }> target </button>
+          <Callout
+            target='#target'
+            directionalHint={ DirectionalHint.topLeftEdge }
+            onDismiss={ onDismiss }
+            >
+            <div>
+              Content
                         </div>
-                    </Callout>
-                </div>, root
-            );
-        } catch (e) {
-            threwException = true;
-        }
-        expect(threwException).to.be.false;
+          </Callout>
+        </div>, root
+      );
+    } catch (e) {
+      threwException = true;
+    }
+    expect(threwException).to.be.false;
 
-        let focusTarget = document.querySelector('#focustarget') as HTMLButtonElement;
+    let focusTarget = document.querySelector('#focustarget') as HTMLButtonElement;
 
-        focusTarget.focus();
+    focusTarget.focus();
 
-        expect(gotEvent).to.be.eq(true, 'Event did not get passed to dismiss event');
-    });
+    expect(gotEvent).to.be.eq(true, 'Event did not get passed to dismiss event');
+  });
 
 });

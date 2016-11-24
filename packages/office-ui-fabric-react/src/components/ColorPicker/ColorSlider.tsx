@@ -65,10 +65,10 @@ export class ColorSlider extends React.Component<IColorSliderProps, IColorSlider
         ref='root'
         className={ css('ms-ColorPicker-slider', className, {
           'is-adjusting': isAdjusting
-        })}
+        }) }
         onMouseDown={ this._onMouseDown }>
         <div className='ms-ColorPicker-sliderOverlay' style={ overlayStyle } />
-        <div className='ms-ColorPicker-thumb is-slider' style={ { left: currentPercentage + '%' } }/>
+        <div className='ms-ColorPicker-thumb is-slider' style={ { left: currentPercentage + '%' } } />
       </div>
     );
   }
