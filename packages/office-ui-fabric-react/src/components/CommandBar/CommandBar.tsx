@@ -155,7 +155,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
             { ...getNativeProps(item, buttonProperties) }
             id={ this._id + item.key }
             className={ classNameValue }
-            onClick={ this._onItemClick.bind(this, item) }
+            onClick={ (ev) => this._onItemClick(ev, item) }
             data-command-key={ index }
             aria-haspopup={ !!(item.items && item.items.length) }
             role='menuitem'
@@ -258,7 +258,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     });
   }
 
-  private _onItemClick(item, ev) {
+  private _onItemClick(ev, item) {
     if (item.key === this.state.expandedMenuItemKey || !item.items || !item.items.length) {
       this._onContextMenuDismiss();
     } else {
@@ -270,7 +270,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
       });
     }
     if (item.onClick) {
-      item.onClick(item, ev);
+      item.onClick(ev, item);
     }
   }
 
