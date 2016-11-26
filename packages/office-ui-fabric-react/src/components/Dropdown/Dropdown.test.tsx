@@ -3,8 +3,6 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 
-import * as ReactTestUtils from 'react-addons-test-utils';
-
 let { expect } = chai;
 
 import { Dropdown } from './Dropdown';
