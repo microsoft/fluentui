@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Dropdown: disabled now respects changes passed in.",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
