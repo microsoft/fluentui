@@ -2,16 +2,19 @@ import * as React from 'react';
 import { IContextualMenuProps, IContextualMenuItem } from './ContextualMenu.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { KeyCodes } from '../../utilities/KeyCodes';
-import { autobind } from '../../utilities/autobind';
-import { css } from '../../utilities/css';
-import { getRTL } from '../../utilities/rtl';
-import { assign, getId } from '../../utilities/object';
 import {
   anchorProperties,
   buttonProperties,
-  getNativeProps
-} from '../../utilities/properties';
+  getNativeProps,
+  assign,
+  getId,
+  getRTL,
+  css,
+  autobind,
+  KeyCodes,
+  getDocument,
+  getWindow
+} from '../../Utilities';
 import { Callout } from '../../Callout';
 import { BaseComponent } from '../../common/BaseComponent';
 import {
@@ -81,17 +84,17 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     shouldFocusOnMount: true,
     isBeakVisible: false,
     gapSpace: 0,
-    directionalHint: DirectionalHint.rightBottomEdge,
+    directionalHint: DirectionalHint.bottomAutoEdge,
     beakWidth: 16
   };
 
   private _host: HTMLElement;
   private _previousActiveElement: HTMLElement;
   private _isFocusingPreviousElement: boolean;
-  private _didSetInitialFocus: boolean;
   private _enterTimerId: number;
   private _focusZone: FocusZone;
   private _targetWindow: Window;
+  private _target: HTMLElement | MouseEvent;
 
   constructor(props: IContextualMenuProps) {
     super(props);
@@ -102,15 +105,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     };
 
     this._isFocusingPreviousElement = false;
-    this._didSetInitialFocus = false;
     this._enterTimerId = 0;
-    // This is used to allow the ContextualMenu to appear on a window other than the one the javascript is running in.
-    if (props.targetElement && props.targetElement.ownerDocument && props.targetElement.ownerDocument.defaultView) {
-      this._targetWindow = props.targetElement.ownerDocument.defaultView;
-    } else {
-      this._targetWindow = window;
-    }
-
   }
 
   @autobind
@@ -122,21 +117,23 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
+  public componentWillUpdate(newProps: IContextualMenuProps) {
+    if (newProps.targetElement !== this.props.targetElement || newProps.target !== this.props.target) {
+      let newTarget = newProps.targetElement ? newProps.targetElement : newProps.target;
+      this._setTargetWindowAndElement(newTarget);
+    }
+  }
+
   // Invoked once, both on the client and server, immediately before the initial rendering occurs.
   public componentWillMount() {
-    this._previousActiveElement = document.activeElement as HTMLElement;
+    let target = this.props.targetElement ? this.props.targetElement : this.props.target;
+    this._setTargetWindowAndElement(target);
+    this._previousActiveElement = this._targetWindow ? this._targetWindow.document.activeElement as HTMLElement : null;
   }
 
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount() {
     this._events.on(this._targetWindow, 'resize', this.dismiss);
-  }
-
-  // Invoked when a component is receiving new props.
-  public componentWillReceiveProps(newProps: IContextualMenuProps, newState: IContextualMenuState) {
-    if (newProps.targetElement !== this.props.targetElement) {
-      this._didSetInitialFocus = false;
-    }
   }
 
   // Invoked immediately before a component is unmounted from the DOM.
@@ -167,7 +164,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       gapSpace,
       coverTarget,
       ariaLabel,
-      doNotLayer } = this.props;
+      doNotLayer,
+      target } = this.props;
 
     let { submenuProps } = this.state;
 
@@ -176,6 +174,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     return (
       <Callout
+        target={ target }
         targetElement={ targetElement }
         targetPoint={ targetPoint }
         useTargetPoint={ useTargetPoint }
@@ -366,17 +365,16 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _onItemClick(item: any, ev: MouseEvent) {
-    if (item.key !== this.state.expandedMenuItemKey) {
-      if (!item.items || !item.items.length) { // This is an item without a menu. Click it.
-        this._executeItemClick(item, ev);
-      } else {
-        if (item.key === this.state.dismissedMenuItemKey) { // This has an expanded sub menu. collapse it.
-          this._onSubMenuDismiss(ev);
-        } else { // This has a collapsed sub menu. Expand it.
-          this._onItemSubMenuExpand(item, ev.currentTarget as HTMLElement);
-        }
+    if (!item.items || !item.items.length) { // This is an item without a menu. Click it.
+      this._executeItemClick(item, ev);
+    } else {
+      if (item.key === this.state.expandedMenuItemKey) { // This has an expanded sub menu. collapse it.
+        this._onSubMenuDismiss(ev);
+      } else { // This has a collapsed sub menu. Expand it.
+        this._onItemSubMenuExpand(item, ev.currentTarget as HTMLElement);
       }
     }
+
     ev.stopPropagation();
     ev.preventDefault();
   }
@@ -412,13 +410,14 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         expandedMenuItemKey: item.key,
         submenuProps: {
           items: item.items,
-          targetElement: target,
+          target: target,
           onDismiss: this._onSubMenuDismiss,
           isSubMenu: true,
           id: this.state.subMenuId,
           shouldFocusOnMount: true,
           directionalHint: getRTL() ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
-          className: this.props.className
+          className: this.props.className,
+          gapSpace: 0
         }
       });
     }
@@ -434,6 +433,25 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         expandedMenuItemKey: null,
         submenuProps: null
       });
+    }
+  }
+
+  private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent): void {
+    if (target) {
+      if (typeof target === 'string') {
+        let currentDoc: Document = getDocument();
+        this._target = currentDoc ? currentDoc.querySelector(target) as HTMLElement : null;
+        this._targetWindow = getWindow();
+      } else if ((target as MouseEvent).stopPropagation) {
+        this._target = target;
+        this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement);
+      } else {
+        let targetElement: HTMLElement = target as HTMLElement;
+        this._target = target;
+        this._targetWindow = getWindow(targetElement);
+      }
+    } else {
+      this._targetWindow = getWindow();
     }
   }
 }

@@ -18,7 +18,12 @@ let SLIDE_ANIMATIONS: { [key: number]: string; } = {
 };
 
 export interface IPositionProps {
-  /** The element that the callout should be positioned based on. */
+
+  target?: HTMLElement | MouseEvent;
+
+  /** The element that the callout should be positioned based on.
+   * @deprecated use target instead.
+  */
   targetElement?: HTMLElement;
 
   /** how the element should be positioned */
@@ -44,10 +49,13 @@ export interface IPositionProps {
   /**
    * If true use a point rather than rectangle to position the callout.
    * For example it can be used to position based on a click.
+   * @deprecated use target with event passed in
    */
   useTargetPoint?: boolean;
 
-  /** Point used to position */
+  /** Point used to position
+   * @deprecated use target with event passed in
+  */
   targetPoint?: IPoint;
 
   /** If true then the beak is visible. If false it will not be shown. */
@@ -140,7 +148,7 @@ export function getRelativePositions(
   let boundingRect: Rectangle = props.bounds ?
     positioningFunctions._getRectangleFromIRect(props.bounds) :
     new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
-  let targetRect: Rectangle = positioningFunctions._getTargetRect(
+  let targetRect: Rectangle = props.target ? positioningFunctions._getTargetRect(boundingRect, props.target) : positioningFunctions._getTargetRectDEPRECATED(
     boundingRect,
     props.targetElement,
     props.creationEvent,
@@ -179,7 +187,28 @@ export module positioningFunctions {
     beakPercent: number;
   }
 
-  export function _getTargetRect(bounds: Rectangle, targetElement?: HTMLElement, ev?: MouseEvent, targetPoint?: IPoint, isTargetPoint?: boolean): Rectangle {
+  export function _getTargetRect(bounds: Rectangle, target: HTMLElement | MouseEvent) {
+    let targetRectangle: Rectangle;
+
+    if ((target as MouseEvent).preventDefault) {
+      let ev: MouseEvent = target as MouseEvent;
+      targetRectangle = new Rectangle(ev.clientX, ev.clientX, ev.clientY, ev.clientY);
+    } else {
+      targetRectangle = _getRectangleFromHTMLElement(target as HTMLElement);
+    }
+
+    if (!_isRectangleWithinBounds(targetRectangle, bounds)) {
+      let outOfBounds: RectangleEdge[] = _getOutOfBoundsEdges(targetRectangle, bounds);
+
+      for (let direction of outOfBounds) {
+        targetRectangle[RectangleEdge[direction]] = bounds[RectangleEdge[direction]];
+      }
+    }
+
+    return targetRectangle;
+  }
+
+  export function _getTargetRectDEPRECATED(bounds: Rectangle, targetElement?: HTMLElement, ev?: MouseEvent, targetPoint?: IPoint, isTargetPoint?: boolean): Rectangle {
     let targetRectangle: Rectangle;
 
     if (isTargetPoint) {

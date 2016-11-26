@@ -59,7 +59,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
           className='ms-ChoiceFieldGroup'
           role='radiogroup'
           aria-labelledby={ this.props.label ? this._id + '-label' : '' }
-        >
+          >
           <div className='ms-ChoiceFieldGroup-title'>
             { this.props.label ? <label className={ titleClassName } id={ this._id + '-label' }>{ label }</label> : null }
           </div>
@@ -68,24 +68,24 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
             <div
               key={ option.key }
               className={ css('ms-ChoiceField', {
-                  'ms-ChoiceField--image': !!option.imageSrc,
-                  'is-inFocus': option.key === keyFocused
-                })
+                'ms-ChoiceField--image': !!option.imageSrc,
+                'is-inFocus': option.key === keyFocused
+              })
               }
-            >
+              >
               <input
                 ref={ (c): HTMLInputElement => this._inputElement = c }
                 id={ `${this._id}-${option.key}` }
                 className='ms-ChoiceField-input'
                 type='radio'
                 name={ this._id }
-                disabled={ option.isDisabled || option.disabled }
+                disabled={ option.isDisabled || option.disabled || this.props.disabled }
                 checked={ option.key === keyChecked }
                 onChange={ this._onChange.bind(this, option) }
                 onFocus={ this._onFocus.bind(this, option) }
                 onBlur={ this._onBlur.bind(this, option) }
                 aria-describedby={ `${this._descriptionId}-${option.key}` }
-              />
+                />
               { this._renderField(option) }
             </div>
           )) }
@@ -116,6 +116,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
 
   private _renderField(option: IChoiceGroupOption) {
     const { keyChecked } = this.state;
+    let isDisabled = option.isDisabled || option.disabled || this.props.disabled;
 
     return (
       <label
@@ -124,35 +125,35 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
           'ms-ChoiceField-field--image': !!option.imageSrc,
           'ms-ChoiceField-field': !option.imageSrc,
           'is-checked': option.key === keyChecked,
-          'is-disabled': option.isDisabled || option.disabled
+          'is-disabled': isDisabled
         }) }
-      >
+        >
         {
           option.imageSrc
             ? <div className='ms-ChoiceField-innerField'>
-                <div className={ css('ms-ChoiceField-imageWrapper', { 'is-hidden': option.key === keyChecked }) }>
-                  <Image
-                    src={ option.imageSrc }
-                    width={ option.imageSize.width }
-                    height={ option.imageSize.height }
+              <div className={ css('ms-ChoiceField-imageWrapper', { 'is-hidden': option.key === keyChecked }) }>
+                <Image
+                  src={ option.imageSrc }
+                  width={ option.imageSize.width }
+                  height={ option.imageSize.height }
                   />
-                </div>
-                <div className={ css('ms-ChoiceField-imageWrapper', { 'is-hidden': option.key !== keyChecked }) }>
-                  <Image
-                    src={ option.selectedImageSrc }
-                    width={ option.imageSize.width }
-                    height={ option.imageSize.height }
-                  />
-                </div>
               </div>
+              <div className={ css('ms-ChoiceField-imageWrapper', { 'is-hidden': option.key !== keyChecked }) }>
+                <Image
+                  src={ option.selectedImageSrc }
+                  width={ option.imageSize.width }
+                  height={ option.imageSize.height }
+                  />
+              </div>
+            </div>
             : null
         }
         {
           option.imageSrc
             ? <div className='ms-ChoiceField-labelWrapper'>
-                <i className='ms-ChoiceField-icon ms-Icon ms-Icon--CheckMark' />
-                <span id={ `${this._descriptionId}-${option.key}` } className='ms-Label'>{ option.text }</span>
-              </div>
+              <i className='ms-ChoiceField-icon ms-Icon ms-Icon--CheckMark' />
+              <span id={ `${this._descriptionId}-${option.key}` } className='ms-Label'>{ option.text }</span>
+            </div>
             : <span id={ `${this._descriptionId}-${option.key}` } className='ms-Label'>{ option.text }</span>
         }
       </label>

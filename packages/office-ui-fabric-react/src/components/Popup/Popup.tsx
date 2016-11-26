@@ -63,7 +63,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
         className={ className }
         role={ role }
         aria-labelledby={ ariaLabelledBy }
-        aria-desribedby={ ariaDescribedBy }>
+        aria-describedby={ ariaDescribedBy }>
         { this.props.children }
       </div>
     );

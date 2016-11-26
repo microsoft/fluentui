@@ -46,14 +46,14 @@ export class ColorPicker extends React.Component<IColorPickerProps, any> {
     return (
       <div className='ms-ColorPicker'>
         <div className='ms-ColorPicker-panel'>
-          <ColorRectangle color={ color } onSVChanged={ this._onSVChanged }/>
+          <ColorRectangle color={ color } onSVChanged={ this._onSVChanged } />
           <ColorSlider
             className='is-hue'
             minValue={ 0 }
             maxValue={ MAX_COLOR_HUE }
             initialValue={ color.h }
             onChanged={ this._onHChanged }
-          />
+            />
           <ColorSlider
             className='is-alpha'
             overlayStyle={ { background: `linear-gradient(to right, transparent 0, ${color.str} 100%)` } }
@@ -61,7 +61,7 @@ export class ColorPicker extends React.Component<IColorPickerProps, any> {
             maxValue={ 100 }
             initialValue={ color.a }
             onChanged={ this._onAChanged }
-          />
+            />
           <table className='ms-ColorPicker-table' cellPadding='0' cellSpacing='0'>
             <thead>
               <tr className='ms-font-s'>
@@ -75,7 +75,7 @@ export class ColorPicker extends React.Component<IColorPickerProps, any> {
             <tbody>
               <tr>
                 <td><TextField className='ms-ColorPicker-input' value={ color.hex } /></td>
-                <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ color.r }/></td>
+                <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ color.r } /></td>
                 <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ color.g } /></td>
                 <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ color.b } /></td>
                 <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ color.a } /></td>
