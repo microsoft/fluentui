@@ -59,9 +59,11 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
       });
     }
 
-    if (newProps.isDisabled !== this.props.isDisabled) {
+    let newDisabled = newProps.isDisabled !== undefined ? newProps.isDisabled : newProps.disabled;
+
+    if (newDisabled !== this.state.isDisabled) {
       this.setState({
-        isDisabled: newProps.isDisabled !== undefined ? newProps.isDisabled : newProps.disabled
+        isDisabled: newDisabled
       });
     }
   }
