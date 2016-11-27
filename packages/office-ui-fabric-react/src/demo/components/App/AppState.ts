@@ -22,6 +22,7 @@ import { LayerPage } from '../../pages/LayerPage/LayerPage';
 import { LinkPage } from '../../pages/LinkPage/LinkPage';
 import { ListPage } from '../../pages/ListPage/ListPage';
 import { MarqueeSelectionPage } from '../../pages/MarqueeSelectionPage/MarqueeSelectionPage';
+import { MenuPage } from '../../pages/MenuPage/MenuPage';
 import { MessageBarPage } from '../../pages/MessageBarPage/MessageBarPage';
 import { NavPage } from '../../pages/NavPage/NavPage';
 import { OverlayPage } from '../../pages/OverlayPage/OverlayPage';
@@ -182,6 +183,13 @@ export const AppState: IAppState = {
           name: 'List',
           status: ExampleStatus.beta,
           url: '#/examples/list'
+        },
+        {
+          component: MenuPage,
+          key: 'Menu',
+          name: 'Menu',
+          status: ExampleStatus.started,
+          url: '#/examples/menu'
         },
         {
           component: MessageBarPage,

@@ -27,6 +27,7 @@ export * from './Label';
 export * from './Layer';
 export * from './Link';
 export * from './List';
+export * from './Menu';
 export * from './MessageBar';
 export * from './MarqueeSelection';
 export * from './Nav';
