@@ -3,6 +3,10 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import * as ReactTestUtils from 'react-addons-test-utils';
+import {
+  KeyCodes,
+} from '../../Utilities';
+import { FocusZoneDirection } from '../../FocusZone';
 
 let { expect } = chai;
 
@@ -10,6 +14,12 @@ import { ContextualMenu } from './ContextualMenu';
 import { IContextualMenuItem } from './ContextualMenu.Props';
 
 describe('ContextualMenu', () => {
+
+  afterEach(() => {
+    while (window.document.body.children.length) {
+      window.document.body.removeChild(window.document.body.children[0]);
+    }
+  });
 
   it('does not have a scrollbar due to an overflowing icon', () => {
     const items: IContextualMenuItem[] = [
@@ -30,4 +40,80 @@ describe('ContextualMenu', () => {
     expect(menuList.scrollHeight).to.be.lte(menuList.offsetHeight, 'ContextualMenu is showing a scrollbar due to checkmark');
   });
 
+  it('closes on left arrow if it is a submenu', () => {
+    const items: IContextualMenuItem[] = [
+      { name: 'TestText 1', key: 'TestKey1' },
+      { name: 'TestText 2', key: 'TestKey2' },
+      { name: 'TestText 3', key: 'TestKey3' },
+      { name: 'TestText 4', key: 'TestKey4' },
+    ];
+
+    let spyCalled = false;
+    let onDismissSpy = (ev?: any, dismissAll?: boolean) => { spyCalled = true; };
+
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ items }
+        isSubMenu={ true }
+        onDismiss={ onDismissSpy }
+        />
+    );
+
+    let menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
+    ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.left });
+
+    expect(spyCalled).to.be.true;
+  });
+
+  it('does not close on left arrow if it is a submenu with horizontal arrowDirection', () => {
+    const items: IContextualMenuItem[] = [
+      { name: 'TestText 1', key: 'TestKey1' },
+      { name: 'TestText 2', key: 'TestKey2' },
+      { name: 'TestText 3', key: 'TestKey3' },
+      { name: 'TestText 4', key: 'TestKey4' },
+    ];
+
+    let spyCalled = false;
+    let onDismissSpy = (ev?: any, dismissAll?: boolean) => { spyCalled = true; };
+
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ items }
+        isSubMenu={ true }
+        onDismiss={ onDismissSpy }
+        arrowDirection={ FocusZoneDirection.horizontal }
+        />
+    );
+
+    let menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
+    ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.left });
+
+    expect(spyCalled).to.be.false;
+  });
+
+  it('does not close on left arrow if it is a submenu with bidirectional arrowDirection', () => {
+    const items: IContextualMenuItem[] = [
+      { name: 'TestText 1', key: 'TestKey1' },
+      { name: 'TestText 2', key: 'TestKey2' },
+      { name: 'TestText 3', key: 'TestKey3' },
+      { name: 'TestText 4', key: 'TestKey4' },
+    ];
+
+    let spyCalled = false;
+    let onDismissSpy = (ev?: any, dismissAll?: boolean) => { spyCalled = true; };
+
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ items }
+        isSubMenu={ true }
+        onDismiss={ onDismissSpy }
+        arrowDirection={ FocusZoneDirection.horizontal }
+        />
+    );
+
+    let menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
+    ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.left });
+
+    expect(spyCalled).to.be.false;
+  });
 });
