@@ -1,4 +1,6 @@
+/* tslint:disable */
 import * as React from 'react';
+/* tslint:enable */
 import { IMenuItemProps } from '../MenuItem.Props';
 import {
   buttonProperties,
@@ -20,11 +22,11 @@ export function ButtonMenuItem(
         { (item.hasCheckmarks) ? (
           <Icon
             iconName={ item.checked ? IconName.CheckMark : IconName.CustomIcon }
-            className={ 'ms-Menu-icon' }
+            className={ 'ms-Menu-checkmark ms-Icon' }
             onClick={ item.onClick } />
         ) : (null) }
         { (item.hasIcons) ? (
-          <Icon {...item.iconProps} />
+          <Icon {...item.iconProps} className={css(item.className, 'ms-Menu-icon')} />
         ) : (null) }
         <span className='ms-Menu-itemText ms-fontWeight-regular'>{ item.name }</span>
         { (item.items && item.items.length) ? (

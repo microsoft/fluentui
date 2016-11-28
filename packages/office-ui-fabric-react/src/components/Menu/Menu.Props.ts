@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { IIconProps } from '../Icon/Icon.Props';
 import { IMenuItemProps } from './MenuItem.Props';
 
 export interface IMenuProps extends React.HTMLProps<HTMLElement> {
@@ -27,8 +26,9 @@ export interface IMenuProps extends React.HTMLProps<HTMLElement> {
    */
   id?: string;
 
-  onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IMenuItemProps) => void;
-
+  /** 
+   * An aria label for usability.
+   */
   ariaLabel?: string;
 
 }

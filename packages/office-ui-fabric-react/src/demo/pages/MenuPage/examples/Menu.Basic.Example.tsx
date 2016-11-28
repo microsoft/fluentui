@@ -3,19 +3,14 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import {
-  Checkbox,
-  Selection,
-  MarqueeSelection,
-  css,
   Menu,
   IMenuItemProps,
   IconName
 } from '../../../../index';
-import { createArray } from '../../../../utilities/array';
 import './MenuExample.scss';
 
 export class MenuBasicExample extends React.Component<{}, {}> {
-  render() {
+  public render() {
     return <Menu
     className='menu-BasicExample'
     items={
@@ -148,7 +143,7 @@ export class MenuBasicExample extends React.Component<{}, {}> {
           onClick: this._onClick
         }
       ]
-    } />
+    } />;
   }
 
   private _onClick(ev?: any, item?: IMenuItemProps) {

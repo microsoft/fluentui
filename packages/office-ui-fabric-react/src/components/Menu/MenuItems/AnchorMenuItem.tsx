@@ -1,4 +1,6 @@
+/* tslint:disable */
 import * as React from 'react';
+/* tslint:enable */
 import { IMenuItemProps } from '../MenuItem.Props';
 import {
   anchorProperties,

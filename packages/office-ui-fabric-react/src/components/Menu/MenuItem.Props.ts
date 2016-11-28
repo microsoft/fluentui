@@ -68,14 +68,26 @@ export interface IMenuItemProps extends React.HTMLProps<HTMLButtonElement> {
 
   /**
    * Method to custom render this menu item
-   * @defaultvalue undefined
+   * @default undefined
    */
   onRender?: (item: any) => React.ReactNode;
 
-  index?: number;
+  /**
+   * Whether or not the item should be spaced as though it has checkmarks.
+   * @default false
+   */
   hasCheckmarks?: boolean;
+
+  /**
+  * Whether or not the item should be spaced as though it has checkmarks.
+  * @default false
+  */
   hasIcons?: boolean;
 
+  /**
+   * Whether or not the menu item has an open submenu.
+   * @default false
+   */
   submenuOpen?: boolean;
 
   /**

@@ -3,25 +3,14 @@ import { IMenuProps } from './Menu.Props';
 import { IMenuItemProps } from './MenuItem.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import {
-  anchorProperties,
-  buttonProperties,
-  getNativeProps,
-  assign,
   getId,
   getRTL,
   css,
   autobind,
-  KeyCodes,
-  getDocument,
-  getWindow
+  KeyCodes
 } from '../../Utilities';
 import { IContextualMenuProps, ContextualMenu, DirectionalHint } from '../../ContextualMenu';
 import { BaseComponent } from '../../common/BaseComponent';
-import {
-  Icon,
-  IconName,
-  IIconProps
-} from '../../Icon';
 import { AnchorMenuItem } from './MenuItems/AnchorMenuItem';
 import { ButtonMenuItem } from './MenuItems/ButtonMenuItem';
 import './Menu.scss';
@@ -54,8 +43,7 @@ export class Menu extends BaseComponent<IMenuProps, IMenuState> {
   public render() {
     let { className,
       items,
-      id,
-      target } = this.props;
+      id } = this.props;
 
     let { submenuProps } = this.state;
 
@@ -63,7 +51,8 @@ export class Menu extends BaseComponent<IMenuProps, IMenuState> {
     let hasCheckmarks = !!(items && items.some(item => !!item.canCheck));
 
     return (
-      <div className={ css(className, 'ms-Menu') }>
+      <div className={ css(className, 'ms-Menu') }
+        id={ id }>
         { (items && items.length) ? (
           <FocusZone
             direction={ FocusZoneDirection.vertical }
@@ -78,13 +67,13 @@ export class Menu extends BaseComponent<IMenuProps, IMenuState> {
                 item.name === '-' ? (
                   <li
                     role='separator'
-                    key={ item.key || index }
+                    key={ item.key || index + item.name }
                     className={ css('ms-Menu-divider', item.className) } />
                 ) : (
                     <li
                       role='menuitem'
                       title={ item.title }
-                      key={ item.key || index }
+                      key={ item.key || index + item.name }
                       className={ css('ms-Menu-item', item.className) }>
                       { this._renderMenuItem(item, index, hasCheckmarks, hasIcons) }
                     </li>
@@ -104,14 +93,21 @@ export class Menu extends BaseComponent<IMenuProps, IMenuState> {
       return <AnchorMenuItem
         {...item}
         onClick={ (ev: React.MouseEvent<HTMLAnchorElement>) => this._onAnchorClick(item, ev) }
+        hasCheckmarks={ hasCheckmarks }
+        onKeyDown={ item.items && item.items.length ? this._onItemKeyDown.bind(this, item) : null }
+        hasIcons={ hasIcons }
         onMouseEnter={ this._onItemMouseEnter.bind(this, item) }
-        key={ index + name } />;
+        key={ index + item.name } />;
     }
     return <ButtonMenuItem
       {...item}
       onClick={ (ev: React.MouseEvent<HTMLElement>) => this._onItemClick(item, ev) }
+      hasCheckmarks={ hasCheckmarks }
+      hasIcons={ hasIcons }
+      onKeyDown={ item.items && item.items.length ? this._onItemKeyDown.bind(this, item) : null }
       onMouseEnter={ this._onItemMouseEnter.bind(this, item) }
-      key={ index + name } />;
+      onMouseLeave={ this._onMouseLeave }
+      key={ index + item.name } />;
   }
 
   private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>) {
