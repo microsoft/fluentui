@@ -19,7 +19,7 @@ export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>,
         onClick={ onClick }
         className={ css('ms-Suggestions-item', { 'is-suggested': suggestionModel.selected }, className) }
         >
-        <RenderSuggestion { ...suggestionModel.item }/>
+        <RenderSuggestion { ...suggestionModel.item } />
       </Button>
     );
   }
@@ -42,6 +42,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
 
   public render() {
     let {
+      onRenderNoResultFound,
       suggestionsHeaderText,
       searchForMoreText,
       className,
@@ -62,13 +63,13 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
           (<div className='ms-Suggestions-title'>
             { suggestionsHeaderText }
           </div>) : (null) }
-          { isLoading && (
-            <Spinner
-              className='ms-Suggestions-spinner'
-              label={ loadingText }
-              /> ) }
-        { (!suggestions || !suggestions.length) && !isLoading  ?
-          noResults :
+        { isLoading && (
+          <Spinner
+            className='ms-Suggestions-spinner'
+            label={ loadingText }
+            />) }
+        { (!suggestions || !suggestions.length) && !isLoading ?
+          (onRenderNoResultFound ? onRenderNoResultFound() : noResults) :
           this._renderSuggestions()
         }
         { searchForMoreText && moreSuggestionsAvailable ?

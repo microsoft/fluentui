@@ -52,6 +52,10 @@ export interface IBasePickerProps<T> extends React.Props<any> {
 
 export interface IBasePickerSuggestionsProps {
   /**
+  * How the "no result found" should look in the suggestion list.
+  */
+  onRenderNoResultFound?: () => JSX.Element;
+  /**
    * The text that should appear at the top of the suggestion box.
    */
   suggestionsHeaderText?: string;
