@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Reduce specificity of selectors for Button modifier classes ",
+      "type": "patch"
+    }
+  ],
+  "email": "miwhea@microsoft.com"
+}
