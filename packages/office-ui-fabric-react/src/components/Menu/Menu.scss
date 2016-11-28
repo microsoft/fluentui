@@ -9,6 +9,11 @@ $Menu-iconWidth: 14px;
 .ms-Menu {
   background-color: $Menu-background;
   min-width: 180px;
+    border: 1px solid $ms-color-neutralLight;
+}
+
+.ms-Menu-subMenu {
+  border: none;
 }
 
 .ms-Menu-list {

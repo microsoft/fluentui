@@ -8,13 +8,17 @@ import {
   MarqueeSelection,
   css,
   Menu,
+  IMenuItemProps,
   IconName
 } from '../../../../index';
 import { createArray } from '../../../../utilities/array';
+import './MenuExample.scss';
 
 export class MenuBasicExample extends React.Component<{}, {}> {
   render() {
-    return <Menu items={
+    return <Menu
+    className='menu-BasicExample'
+    items={
       [
         {
           key: 'newItem',
@@ -25,7 +29,8 @@ export class MenuBasicExample extends React.Component<{}, {}> {
             {
               key: 'emailMessage',
               name: 'Email message',
-              title: 'Create an email'
+              title: 'Create an email',
+              onClick: this._onClick,
             },
             {
               key: 'calendarEvent',
@@ -43,6 +48,7 @@ export class MenuBasicExample extends React.Component<{}, {}> {
               color: 'salmon'
             }
           },
+          onClick: this._onClick,
           name: 'Upload (Custom Color)',
           title: 'Upload a file'
         },
@@ -138,9 +144,14 @@ export class MenuBasicExample extends React.Component<{}, {}> {
         {
           key: 'Bing',
           name: 'Go to Bing',
-          href: 'http://www.bing.com'
+          href: 'http://www.bing.com',
+          onClick: this._onClick
         }
       ]
     } />
+  }
+
+  private _onClick(ev?: any, item?: IMenuItemProps) {
+    console.log(item.name);
   }
 }

@@ -38,13 +38,8 @@ export class Menu extends BaseComponent<IMenuProps, IMenuState> {
     items: [],
   };
 
-  private _host: HTMLElement;
-  private _previousActiveElement: HTMLElement;
-  private _isFocusingPreviousElement: boolean;
   private _enterTimerId: number;
   private _focusZone: FocusZone;
-  private _targetWindow: Window;
-  private _target: HTMLElement | MouseEvent;
 
   constructor(props: IMenuProps) {
     super(props);
@@ -68,67 +63,55 @@ export class Menu extends BaseComponent<IMenuProps, IMenuState> {
     let hasCheckmarks = !!(items && items.some(item => !!item.canCheck));
 
     return (
-        <div>
-          { (items && items.length) ? (
-            <FocusZone
-              className={ 'ms- is-open' }
-              direction={ FocusZoneDirection.vertical }
-              ref={ (focusZone) => this._focusZone = focusZone }
-              rootProps={ { role: 'menu' } }
-              >
-              <ul
-                className='ms-Menu-list is-open'
-                onKeyDown={ this._onKeyDown }
-                aria-label={ this.props.ariaLabel } >
-                { items.map((item, index) => (
-                  // If the item name is equal to '-', a divider will be generated.
-                  item.name === '-' ? (
+      <div className={ css(className, 'ms-Menu') }>
+        { (items && items.length) ? (
+          <FocusZone
+            direction={ FocusZoneDirection.vertical }
+            ref={ (focusZone) => this._focusZone = focusZone }
+            rootProps={ { role: 'menu' } }
+            >
+            <ul
+              className='ms-Menu-list'
+              aria-label={ this.props.ariaLabel } >
+              { items.map((item, index) => (
+                // If the item name is equal to '-', a divider will be generated.
+                item.name === '-' ? (
+                  <li
+                    role='separator'
+                    key={ item.key || index }
+                    className={ css('ms-Menu-divider', item.className) } />
+                ) : (
                     <li
-                      role='separator'
+                      role='menuitem'
+                      title={ item.title }
                       key={ item.key || index }
-                      className={ css('ms-Menu-divider', item.className) } />
-                  ) : (
-                      <li
-                        role='menuitem'
-                        title={ item.title }
-                        key={ item.key || index }
-                        className={ css('ms-Menu-item', item.className) }>
-                        { this._renderMenuItem(item, index, hasCheckmarks, hasIcons) }
-                      </li>
-                    )
-                )) }
-              </ul>
-            </FocusZone>
-          ) : (null) }
-          { submenuProps ? ( // If a submenu properities exists, the submenu will be rendered.
-            <ContextualMenu { ...submenuProps } />
-          ) : (null) }
-        </div>
+                      className={ css('ms-Menu-item', item.className) }>
+                      { this._renderMenuItem(item, index, hasCheckmarks, hasIcons) }
+                    </li>
+                  )
+              )) }
+            </ul>
+          </FocusZone>
+        ) : (null) }
+        { submenuProps ? ( // If a submenu properities exists, the submenu will be rendered.
+          <ContextualMenu { ...submenuProps } />
+        ) : (null) }
+      </div>
     );
   }
-private _renderMenuItem(item, index, hasCheckmarks, hasIcons) {
-      if (item.href) {
+  private _renderMenuItem(item, index, hasCheckmarks, hasIcons) {
+    if (item.href) {
       return <AnchorMenuItem
         {...item}
-        key={index + name}/>;
+        onClick={ (ev: React.MouseEvent<HTMLAnchorElement>) => this._onAnchorClick(item, ev) }
+        onMouseEnter={ this._onItemMouseEnter.bind(this, item) }
+        key={ index + name } />;
     }
     return <ButtonMenuItem
-        {...item}
-        key={index + name} />;
-}
-
-  @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    let submenuCloseKey = getRTL() ? KeyCodes.right : KeyCodes.left;
-
-    if (ev.which === KeyCodes.escape
-      || ev.which === KeyCodes.tab
-      || (ev.which === submenuCloseKey && this.props.isSubMenu)) {
-      // When a user presses escape, we will try to refocus the previous focused element.
-      this._isFocusingPreviousElement = true;
-      ev.preventDefault();
-      ev.stopPropagation();
-    }
+      {...item}
+      onClick={ (ev: React.MouseEvent<HTMLElement>) => this._onItemClick(item, ev) }
+      onMouseEnter={ this._onItemMouseEnter.bind(this, item) }
+      key={ index + name } />;
   }
 
   private _onItemMouseEnter(item: any, ev: React.MouseEvent<HTMLElement>) {
@@ -148,10 +131,10 @@ private _renderMenuItem(item, index, hasCheckmarks, hasIcons) {
     this._async.clearTimeout(this._enterTimerId);
   }
 
-  private _onItemClick(item: any, ev: MouseEvent) {
+  private _onItemClick(item: any, ev: React.MouseEvent<HTMLElement>) {
     if (item.key !== this.state.expandedMenuItemKey) {
       if (!item.items || !item.items.length) { // This is an item without a menu. Click it.
-        this._executeItemClick(item, ev);
+        this._executeItemClick(item, ev.nativeEvent as MouseEvent);
       } else {
         if (item.key === this.state.dismissedMenuItemKey) { // This has an expanded sub menu. collapse it.
           this._onSubMenuDismiss(ev);
@@ -164,8 +147,8 @@ private _renderMenuItem(item, index, hasCheckmarks, hasIcons) {
     ev.preventDefault();
   }
 
-  private _onAnchorClick(item: IMenuItemProps, ev: MouseEvent) {
-    this._executeItemClick(item, ev);
+  private _onAnchorClick(item: IMenuItemProps, ev: React.MouseEvent<HTMLAnchorElement>) {
+    this._executeItemClick(item, ev.nativeEvent as MouseEvent);
     ev.stopPropagation();
   }
 
@@ -200,7 +183,7 @@ private _renderMenuItem(item, index, hasCheckmarks, hasIcons) {
           id: this.state.subMenuId,
           shouldFocusOnMount: true,
           directionalHint: getRTL() ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
-          className: this.props.className,
+          className: css('ms-Menu-subMenu', this.props.className),
           gapSpace: 0
         }
       });
@@ -209,11 +192,11 @@ private _renderMenuItem(item, index, hasCheckmarks, hasIcons) {
 
   @autobind
   private _onSubMenuDismiss(ev?: any, dismissAll?: boolean) {
-      this.setState({
-        dismissedMenuItemKey: this.state.expandedMenuItemKey,
-        expandedMenuItemKey: null,
-        submenuProps: null
-      });
-      }
+    this.setState({
+      dismissedMenuItemKey: this.state.expandedMenuItemKey,
+      expandedMenuItemKey: null,
+      submenuProps: null
+    });
+  }
 
 }

@@ -14,14 +14,14 @@ export function AnchorMenuItem(item: IMenuItemProps): JSX.Element {
     <div>
       <a
         { ...getNativeProps(item, anchorProperties) }
-        href={item.href}
+        href={ item.href }
         role='menuitem'
-        onClick={item.onClick}
-        className={css('ms-Menu-link', item.className)}>
-        {(item.hasIcons) ? (
+        onClick={ item.onClick }
+        className={ css('ms-Menu-link', item.className) }>
+        { (item.hasIcons) ? (
           <Icon { ...item.iconProps} />
-        ) : (null)}
-        <span className='ms-Menu-linkText ms-fontWeight-regular'> {item.name} </span>
+        ) : (null) }
+        <span className='ms-Menu-linkText ms-fontWeight-regular'> { item.name } </span>
       </a>
     </div >);
 }
