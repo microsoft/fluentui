@@ -32,7 +32,7 @@ describe('TextField', () => {
       <TextField
         label={ exampleLabel }
         value={ exampleValue }
-      />
+        />
     );
 
     // Assert on the input element.
@@ -60,7 +60,7 @@ describe('TextField', () => {
       <TextField
         label='text-field-label'
         value='whatever value'
-      />
+        />
     );
 
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
@@ -105,7 +105,7 @@ describe('TextField', () => {
           label='text-field-label'
           value='whatever value'
           onGetErrorMessage={ validator }
-        />
+          />
       );
 
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
@@ -125,7 +125,7 @@ describe('TextField', () => {
           label='text-field-label'
           value='whatever value'
           onGetErrorMessage={ validator }
-        />
+          />
       );
 
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
@@ -141,7 +141,7 @@ describe('TextField', () => {
           label='text-field-label'
           value='whatever value'
           onGetErrorMessage={ () => errorMessage }
-        />
+          />
       );
 
       assertErrorMessage(renderedDOM, errorMessage);
@@ -153,7 +153,7 @@ describe('TextField', () => {
           label='text-field-label'
           value='whatever value'
           onGetErrorMessage={ () => Promise.resolve(errorMessage) }
-        />
+          />
       );
 
       // The Promise based validation need to assert with async pattern.
@@ -166,7 +166,7 @@ describe('TextField', () => {
           label='text-field-label'
           value='whatever value'
           onGetErrorMessage={ () => '' }
-        />
+          />
       );
 
       assertErrorMessage(renderedDOM, /* exist */ false);
@@ -179,7 +179,7 @@ describe('TextField', () => {
         <TextField
           label='text-field-label'
           onGetErrorMessage={ (value: string) => actualValue = value }
-        />
+          />
       );
 
       assertErrorMessage(renderedDOM, /* exist */ false);
@@ -195,7 +195,7 @@ describe('TextField', () => {
         <TextField
           value='initial value'
           onGetErrorMessage={ validator }
-        />
+          />
       );
 
       assertErrorMessage(renderedDOM, errorMessage);
@@ -204,11 +204,32 @@ describe('TextField', () => {
         <TextField
           value=''
           onGetErrorMessage={ validator }
-        />,
+          />,
         renderedDOM.parentElement
       );
 
       return delay(250).then(() => assertErrorMessage(renderedDOM, /* exist */ false));
     });
+  });
+
+  it('can render a default value', () => {
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextField
+        defaultValue='initial value'
+        />
+    );
+
+    expect(renderedDOM.querySelector('input').value).equals('initial value');
+  });
+
+  it('can render a default value as a textarea', () => {
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextField
+        defaultValue='initial value'
+        multiline={ true }
+        />
+    );
+
+    expect(renderedDOM.querySelector('textarea').value).equals('initial value');
   });
 });

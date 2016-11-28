@@ -167,7 +167,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
       <div
         ref='root'
         role='row'
-        aria-label= { ariaLabel }
+        aria-label={ ariaLabel }
         className={ css('ms-DetailsRow ms-u-fadeIn400', droppingClassName, {
           'is-selected': isSelected,
           'is-check-visible': checkboxVisibility === CheckboxVisibility.always
@@ -205,7 +205,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
           { columnMeasureInfo && (
             <span className='ms-DetailsRow-cellMeasurer ms-DetailsRow-cell' ref='cellMeasurer'>
               <DetailsRowFields
-                columns={ [ columnMeasureInfo.column ] }
+                columns={ [columnMeasureInfo.column] }
                 item={ item }
                 itemIndex={ itemIndex }
                 onRenderItemColumn={ onRenderItemColumn } />

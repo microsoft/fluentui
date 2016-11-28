@@ -29,8 +29,8 @@ export class Check extends React.Component<ICheckProps, {}> {
 
     return (
       <div className={ css('ms-Check', {
-          'is-checked': isChecked || checked
-        }) }>
+        'is-checked': isChecked || checked
+      }) }>
         <div className='ms-Icon ms-Check-background'>
         </div>
         <i className='ms-Check-check ms-Icon ms-Icon--CheckMark'></i>

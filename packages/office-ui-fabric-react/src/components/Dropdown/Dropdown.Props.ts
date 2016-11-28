@@ -11,7 +11,13 @@ export interface IDropdownProps {
   id?: string;
 
   /**
-   * The key of the initially selected option
+   * The key that will be initially used to set a selected item.
+   */
+  defaultSelectedKey?: string | number;
+
+  /**
+   * The key of the selected item. If you provide this, you must maintain selection
+   * state by observing onChange events and passing a new value in when changed.
    */
   selectedKey?: string | number;
 

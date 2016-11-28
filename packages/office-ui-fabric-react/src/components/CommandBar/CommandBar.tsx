@@ -8,6 +8,11 @@ import { autobind } from '../../utilities/autobind';
 import { css } from '../../utilities/css';
 import { getId } from '../../utilities/object';
 import { buttonProperties, divProperties, getNativeProps } from '../../utilities/properties';
+import {
+  Icon,
+  IconName,
+  IIconProps
+} from '../../Icon';
 import './CommandBar.scss';
 
 const OVERFLOW_KEY = 'overflow';
@@ -147,6 +152,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     const itemKey = item.key || String(index);
     const className = css(item.onClick ? 'ms-CommandBarItem-link' : 'ms-CommandBarItem-text', !item.name && 'ms-CommandBarItem--noName');
     const classNameValue = css(className, { 'is-expanded': (expandedMenuItemKey === item.key) });
+    let hasIcon = !!item.icon || !!item.iconProps;
 
     return <div className={ css('ms-CommandBarItem', item.className) } key={ itemKey } ref={ itemKey }>
       { (() => {
@@ -155,13 +161,13 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
             { ...getNativeProps(item, buttonProperties) }
             id={ this._id + item.key }
             className={ classNameValue }
-            onClick={ this._onItemClick.bind(this, item) }
+            onClick={ (ev) => this._onItemClick(ev, item) }
             data-command-key={ index }
             aria-haspopup={ hasSubmenuItems(item) }
             role='menuitem'
             aria-label={ item.ariaLabel || item.name }
             >
-            { (!!item.icon) && <span className={ `ms-CommandBarItem-icon ms-Icon ms-Icon--${item.icon}` }></span> }
+            { (hasIcon) ? this._renderIcon(item) : (null) }
             { (!!item.name) && <span className='ms-CommandBarItem-commandText'>{ item.name }</span> }
             { hasSubmenuItems(item) ? (
               <i className='ms-CommandBarItem-chevronDown ms-Icon ms-Icon--ChevronDown' />
@@ -175,12 +181,24 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
             data-command-key={ index }
             aria-haspopup={ hasSubmenuItems(item) }
             >
-            <span className={ `ms-CommandBarItem-icon ms-Icon ms-Icon--${item.icon}` }></span>
+            { (hasIcon) ? this._renderIcon(item) : (null) }
             <span className='ms-CommandBarItem-commandText ms-font-m ms-font-weight-regular' aria-hidden='true' role='presentation'>{ item.name }</span>
           </div>;
         }
       })() }
     </div>;
+  }
+
+  private _renderIcon(item: IContextualMenuItem) {
+    // Only present to allow continued use of item.icon which is deprecated.
+    let iconProps: IIconProps = item.iconProps ? item.iconProps : {
+      iconName: IconName[item.icon]
+    };
+    // Use the default icon color for the known icon names
+    let iconColorClassName = iconProps.iconName === IconName.None ? '' : 'ms-CommandBarItem-iconColor';
+    let iconClassName = css('ms-CommandBarItem-icon', iconColorClassName, iconProps.className);
+
+    return <Icon { ...iconProps } className={ iconClassName } />;
   }
 
   private _updateItemMeasurements() {
@@ -258,7 +276,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     });
   }
 
-  private _onItemClick(item, ev) {
+  private _onItemClick(ev, item) {
     if (item.key === this.state.expandedMenuItemKey || !item.items || !item.items.length) {
       this._onContextMenuDismiss();
     } else {
@@ -270,7 +288,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
       });
     }
     if (item.onClick) {
-      item.onClick(item, ev);
+      item.onClick(ev, item);
     }
   }
 

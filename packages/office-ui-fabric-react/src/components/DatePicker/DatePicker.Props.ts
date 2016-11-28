@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { DatePicker } from './DatePicker';
+import { DayOfWeek } from '../../Calendar';
 
 export interface IDatePickerProps extends React.Props<DatePicker> {
   /**
@@ -25,7 +26,7 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
 
   /**
    * Whether the month picker is shown beside the day picker or hidden.
-   * @defaultvalue true 
+   * @defaultvalue true
    */
   isMonthPickerVisible?: boolean;
 
@@ -67,16 +68,6 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
    * Localized strings to use in the DatePicker
    */
   strings: IDatePickerStrings;
-}
-
-export enum DayOfWeek {
-  Sunday,
-  Monday,
-  Tuesday,
-  Wednesday,
-  Thursday,
-  Friday,
-  Saturday
 }
 
 export interface IDatePickerStrings {
