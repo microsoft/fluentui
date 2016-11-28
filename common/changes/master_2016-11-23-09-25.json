@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Getting CommandBar use the Icon component",
+      "type": "patch"
+    }
+  ],
+  "email": "serkan.inci@hotmail.com"
+}
