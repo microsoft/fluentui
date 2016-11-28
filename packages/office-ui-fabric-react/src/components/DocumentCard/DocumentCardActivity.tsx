@@ -14,9 +14,9 @@ export class DocumentCardActivity extends React.Component<IDocumentCardActivityP
 
     return (
       people && people.length > 0 &&
-      <div className={css('ms-DocumentCardActivity', {
+      <div className={ css('ms-DocumentCardActivity', {
         'ms-DocumentCardActivity--multiplePeople': people.length > 1
-      })}>
+      }) }>
         { this._renderAvatars(people) }
         <div className='ms-DocumentCardActivity-details'>
           <span className='ms-DocumentCardActivity-name'>{ this._getNameString(people) }</span>
@@ -46,7 +46,7 @@ export class DocumentCardActivity extends React.Component<IDocumentCardActivityP
           </div>
         ) }
         { person.profileImageSrc && (
-          <Image src={ person.profileImageSrc } role='presentation' alt=''/>
+          <Image src={ person.profileImageSrc } role='presentation' alt='' />
         ) }
       </div>
     );

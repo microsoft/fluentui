@@ -97,6 +97,16 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement | HTML
   deferredValidationTime?: number;
 
   /**
+   * Optional class anme that is added to the container of the component.
+   */
+  className?: string;
+
+  /**
+   * Optional class name that is added specifically to the input/textarea element.
+   */
+  inputClassName?: string;
+
+  /**
    * Aria Label for textfield, if any.
    */
   ariaLabel?: string;

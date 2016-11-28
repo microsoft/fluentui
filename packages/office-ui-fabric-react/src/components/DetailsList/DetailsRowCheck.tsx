@@ -20,6 +20,7 @@ export const DetailsRowCheck = (props: IDetailsRowCheckProps) => {
   let selected = props.isSelected || props.selected;
   return (
     <button
+      type='button'
       className='ms-DetailsRow-check'
       role='button'
       aria-pressed={ selected }

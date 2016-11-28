@@ -100,7 +100,7 @@ $button-commandButtonHeight: 40px;
 
 //== Modifier: Primary action button
 //
-.ms-Button.ms-Button--primary {
+.ms-Button--primary {
   background-color: $ms-color-themePrimary;
   border-color: $ms-color-themePrimary;
 
@@ -134,7 +134,7 @@ $button-commandButtonHeight: 40px;
   }
 }
 
-.ms-Fabric.is-focusVisible .ms-Button.ms-Button--primary {
+.ms-Fabric.is-focusVisible .ms-Button--primary {
   &:focus {
     color: $ms-color-white;
 
@@ -146,7 +146,7 @@ $button-commandButtonHeight: 40px;
 
 //== Modifier: Hero button
 //
-.ms-Button.ms-Button--hero {
+.ms-Button--hero {
   background-color: transparent;
   border: 0;
   height: auto;
@@ -203,7 +203,7 @@ $button-commandButtonHeight: 40px;
 
 //== Modifier: Compound button
 //
-.ms-Button.ms-Button--compound {
+.ms-Button--compound {
   display: block;
   height: auto;
   max-width: 280px;
@@ -276,7 +276,7 @@ $button-commandButtonHeight: 40px;
 
 //== Modifier: Command button
 //
-.ms-Button.ms-Button--command {
+.ms-Button--command {
   @include text-align(left);
   background-color: transparent;
   border: none;
@@ -334,7 +334,7 @@ $button-commandButtonHeight: 40px;
   }
 }
 
-.ms-Button.ms-Button--icon {
+.ms-Button--icon {
   @include focus-border(0px);
   background-color: transparent;
   color: $ms-color-neutralSecondary;
@@ -379,7 +379,7 @@ $button-commandButtonHeight: 40px;
 
 // this is added because we have an anchor styled like a button and there is no
 // disabled attribute so we're adding a css class with the same functionality instead
-.ms-Button.ms-Button--primary.disabled {
+.ms-Button--primary.disabled {
   background-color: $ms-color-neutralLighter;
   border-color: $ms-color-neutralLighter;
   pointer-events: none;
@@ -395,7 +395,7 @@ $button-commandButtonHeight: 40px;
 }
 
 // Add space between adjacent command buttons.
-.ms-Button.ms-Button--command + .ms-Button.ms-Button--command {
+.ms-Button--command + .ms-Button--command {
   @include margin-left(14px);
 }
 
