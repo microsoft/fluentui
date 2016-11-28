@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { css } from '../../../../utilities/css';
 import { ContextualMenu, DirectionalHint, Button, ButtonType, FocusZoneDirection } from '../../../../index';
 import './ContextualMenuExample.scss';
 export interface IContextualMenuMultiselectExampleState {
