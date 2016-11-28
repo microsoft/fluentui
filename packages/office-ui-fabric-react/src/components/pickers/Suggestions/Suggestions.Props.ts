@@ -7,6 +7,10 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
    */
   onRenderSuggestion: (props: any) => JSX.Element;
   /**
+  * How the "no result found" should look in the suggestion list.
+  */
+  onRenderNoResultFound: (props: any) => JSX.Element;
+  /**
    * What should occur when a suggestion is clicked
    */
   onSuggestionClick: (ev?: React.MouseEvent<HTMLElement>, item?: any, index?: number) => void;
