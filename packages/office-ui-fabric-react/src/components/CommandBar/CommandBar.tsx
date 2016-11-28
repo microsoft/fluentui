@@ -8,6 +8,11 @@ import { autobind } from '../../utilities/autobind';
 import { css } from '../../utilities/css';
 import { getId } from '../../utilities/object';
 import { buttonProperties, divProperties, getNativeProps } from '../../utilities/properties';
+import {
+  Icon,
+  IconName,
+  IIconProps
+} from '../../Icon';
 import './CommandBar.scss';
 
 const OVERFLOW_KEY = 'overflow';
@@ -103,19 +108,19 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
             { renderedItems.map((item, index) => (
               this._renderItemInCommandBar(item, index, expandedMenuItemKey)
             )).concat((renderedOverflowItems && renderedOverflowItems.length) ? [
-            <div className='ms-CommandBarItem' key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
-              <button
-                id={ this._id + OVERFLOW_KEY }
-                className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === OVERFLOW_KEY) }) }
-                onClick={ this._onOverflowClick }
-                role='menuitem'
-                aria-label={ this.props.elipisisAriaLabel || '' }
-                aria-haspopup={ true }
-                data-automation-id='commandBarOverflow'
-              >
-                <i className='ms-CommandBarItem-overflow ms-Icon ms-Icon--More' />
-              </button>
-            </div>
+              <div className='ms-CommandBarItem' key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
+                <button
+                  id={ this._id + OVERFLOW_KEY }
+                  className={ css('ms-CommandBarItem-link', { 'is-expanded': (expandedMenuItemKey === OVERFLOW_KEY) }) }
+                  onClick={ this._onOverflowClick }
+                  role='menuitem'
+                  aria-label={ this.props.elipisisAriaLabel || '' }
+                  aria-haspopup={ true }
+                  data-automation-id='commandBarOverflow'
+                  >
+                  <i className='ms-CommandBarItem-overflow ms-Icon ms-Icon--More' />
+                </button>
+              </div>
             ] : []) }
           </div>
           <div className='ms-CommandBar-sideCommands' ref='farCommandSurface'>
@@ -125,16 +130,16 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
           </div>
         </FocusZone>
         { (contextualMenuItems) ?
-        (<ContextualMenu
-          labelElementId={ expandedMenuId }
-          className='ms-CommandBar-menuHost'
-          items={ contextualMenuItems }
-          targetElement={ contextualMenuTarget }
-          onDismiss={ this._onContextMenuDismiss }
-          isBeakVisible={ true }
-          directionalHint={ DirectionalHint.bottomAutoEdge }
-        />
-        ) : (null)}
+          (<ContextualMenu
+            labelElementId={ expandedMenuId }
+            className='ms-CommandBar-menuHost'
+            items={ contextualMenuItems }
+            targetElement={ contextualMenuTarget }
+            onDismiss={ this._onContextMenuDismiss }
+            isBeakVisible={ true }
+            directionalHint={ DirectionalHint.bottomAutoEdge }
+            />
+          ) : (null) }
       </div>
     );
   }
@@ -147,40 +152,53 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     const itemKey = item.key || String(index);
     const className = css(item.onClick ? 'ms-CommandBarItem-link' : 'ms-CommandBarItem-text', !item.name && 'ms-CommandBarItem--noName');
     const classNameValue = css(className, { 'is-expanded': (expandedMenuItemKey === item.key) });
+    let hasIcon = !!item.icon || !!item.iconProps;
 
     return <div className={ css('ms-CommandBarItem', item.className) } key={ itemKey } ref={ itemKey }>
-             {(() => {
-               if (item.onClick || item.items) {
-                 return <button
-                         { ...getNativeProps(item, buttonProperties) }
-                         id={ this._id + item.key }
-                         className={ classNameValue }
-                         onClick={ this._onItemClick.bind(this, item) }
-                         data-command-key={ index }
-                         aria-haspopup={ !!(item.items && item.items.length) }
-                         role='menuitem'
-                         aria-label={ item.ariaLabel || item.name }
-                       >
-                         { (!!item.icon) && <span className={ `ms-CommandBarItem-icon ms-Icon ms-Icon--${ item.icon }` }></span> }
-                         { (!!item.name) && <span className='ms-CommandBarItem-commandText'>{ item.name }</span> }
-                         { (item.items && item.items.length) ? (
-                           <i className='ms-CommandBarItem-chevronDown ms-Icon ms-Icon--ChevronDown' />
-                         ) : ( null ) }
-                       </button>;
-               } else {
-                 return <div
-                         { ...getNativeProps(item, divProperties) }
-                         id={ this._id + item.key }
-                         className={ classNameValue }
-                         data-command-key={ index }
-                         aria-haspopup={ !!(item.items && item.items.length) }
-                       >
-                         <span className={ `ms-CommandBarItem-icon ms-Icon ms-Icon--${ item.icon }` }></span>
-                         <span className='ms-CommandBarItem-commandText ms-font-m ms-font-weight-regular' aria-hidden='true' role='presentation'>{ item.name }</span>
-                       </div>;
-               }
-             })()}
-           </div>;
+      { (() => {
+        if (item.onClick || item.items) {
+          return <button
+            { ...getNativeProps(item, buttonProperties) }
+            id={ this._id + item.key }
+            className={ classNameValue }
+            onClick={ (ev) => this._onItemClick(ev, item) }
+            data-command-key={ index }
+            aria-haspopup={ !!(item.items && item.items.length) }
+            role='menuitem'
+            aria-label={ item.ariaLabel || item.name }
+            >
+            { (hasIcon) ? this._renderIcon(item) : (null) }
+            { (!!item.name) && <span className='ms-CommandBarItem-commandText'>{ item.name }</span> }
+            { (item.items && item.items.length) ? (
+              <i className='ms-CommandBarItem-chevronDown ms-Icon ms-Icon--ChevronDown' />
+            ) : (null) }
+          </button>;
+        } else {
+          return <div
+            { ...getNativeProps(item, divProperties) }
+            id={ this._id + item.key }
+            className={ classNameValue }
+            data-command-key={ index }
+            aria-haspopup={ !!(item.items && item.items.length) }
+            >
+            { (hasIcon) ? this._renderIcon(item) : (null) }
+            <span className='ms-CommandBarItem-commandText ms-font-m ms-font-weight-regular' aria-hidden='true' role='presentation'>{ item.name }</span>
+          </div>;
+        }
+      })() }
+    </div>;
+  }
+
+  private _renderIcon(item: IContextualMenuItem) {
+    // Only present to allow continued use of item.icon which is deprecated.
+    let iconProps: IIconProps = item.iconProps ? item.iconProps : {
+      iconName: IconName[item.icon]
+    };
+    // Use the default icon color for the known icon names
+    let iconColorClassName = iconProps.iconName === IconName.None ? '' : 'ms-CommandBarItem-iconColor';
+    let iconClassName = css('ms-CommandBarItem-icon', iconColorClassName, iconProps.className);
+
+    return <Icon { ...iconProps } className={ iconClassName } />;
   }
 
   private _updateItemMeasurements() {
@@ -258,7 +276,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     });
   }
 
-  private _onItemClick(item, ev) {
+  private _onItemClick(ev, item) {
     if (item.key === this.state.expandedMenuItemKey || !item.items || !item.items.length) {
       this._onContextMenuDismiss();
     } else {
@@ -270,7 +288,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
       });
     }
     if (item.onClick) {
-      item.onClick(item, ev);
+      item.onClick(ev, item);
     }
   }
 

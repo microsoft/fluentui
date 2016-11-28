@@ -54,32 +54,35 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
 
     return (
       <div className={
-        css('ms-Toggle', {
+        css('ms-Toggle', className, {
           'is-checked': isChecked,
           'is-enabled': !disabled,
           'is-disabled': disabled
         })
       }>
         <div className='ms-Toggle-innerContainer'>
-          <Label className='ms-Toggle-label' htmlFor={ this._id }>{ label }</Label>
-
+          { label && (
+            <Label className='ms-Toggle-label' htmlFor={ this._id }>{ label }</Label>
+          ) }
           <div className='ms-Toggle-slider'>
             <button
               ref={ (c): HTMLButtonElement => this._toggleButton = c }
               type='button'
               id={ this._id }
               name={ this._id }
-              className={ css('ms-Toggle-button', className) }
+              className='ms-Toggle-button'
               disabled={ disabled }
               role='checkbox'
               aria-checked={ isChecked }
               onClick={ this._onClick }
-            />
+              />
             <div className='ms-Toggle-background'>
               <div className='ms-Toggle-focus' />
               <div className='ms-Toggle-thumb' />
             </div>
-            <Label className='ms-Toggle-stateText'>{ stateText }</Label>
+            { stateText && (
+              <Label className='ms-Toggle-stateText'>{ stateText }</Label>
+            ) }
           </div>
 
         </div>
@@ -88,9 +91,9 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
   }
 
   public focus() {
-      if (this._toggleButton) {
-          this._toggleButton.focus();
-      }
+    if (this._toggleButton) {
+      this._toggleButton.focus();
+    }
   }
 
   @autobind

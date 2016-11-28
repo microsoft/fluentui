@@ -7,7 +7,7 @@ export interface IToggleProps extends React.HTMLProps<HTMLInputElement> {
   /**
    * A label for the toggle.
    */
-  label: string;
+  label?: string;
 
   /**
    * Text to display when toggle is ON.
