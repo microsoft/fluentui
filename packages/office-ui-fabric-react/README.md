@@ -35,6 +35,12 @@ This will run `gulp serve` from the office-ui-fabric-react package folder, which
 
 To build all packages in the repo, you can use `npm run build`.
 
+To run other Gulp commands such as clean or deploy, just prepend the command with `npm run gulp` and this will run the command from within the project context.
+
+`npm run gulp clean`
+`npm run gulp deploy`
+...
+
 ## Get started
 
 ### Tutorial
@@ -104,7 +110,7 @@ We're excited to share our development of this project with folks outside of the
 
 All files on the Office UI Fabric React GitHub repository are subject to the MIT license. Please read the License file at the root of the project.
 
-Usage of the fonts referenced in Office UI Fabric files is subject to the [license](https://static2.sharepointonline.com/files/fabric/assets/license.txt).
+Usage of the fonts and icons referenced in Office UI Fabric is subject to the terms of the [assets license agreement](http://aka.ms/fabric-assets-license).
 
 
 ## Changelog

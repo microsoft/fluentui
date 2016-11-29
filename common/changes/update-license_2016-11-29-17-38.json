@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Updates the link to the asset license and clarifies that it covers both fonts and icons",
+      "type": "minor"
+    }
+  ],
+  "email": "miwhea@microsoft.com"
+}
