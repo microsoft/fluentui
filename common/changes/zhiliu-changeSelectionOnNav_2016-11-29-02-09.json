@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Nav accepts selected key from props as trueth to get currently selected link",
+      "type": "patch"
+    }
+  ],
+  "email": "zhiliu@microsoft.com"
+}
