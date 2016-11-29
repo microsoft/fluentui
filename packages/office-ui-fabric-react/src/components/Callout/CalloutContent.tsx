@@ -19,7 +19,7 @@ import { BaseComponent } from '../../common/BaseComponent';
 import './Callout.scss';
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
-const OFF_SCREEN_POSITION = { top: 0, left: -9999 };
+const OFF_SCREEN_POSITION = { top: -9999, left: 0 };
 const BORDER_WIDTH: number = 1;
 const SPACE_FROM_EDGE: number = 8;
 export interface ICalloutState {
