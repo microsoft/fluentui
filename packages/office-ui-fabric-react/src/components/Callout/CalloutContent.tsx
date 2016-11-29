@@ -153,6 +153,12 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     }
   }
 
+  protected _dismissOnScroll(ev: Event) {
+    if (this.state.positions) {
+      this._dismissOnLostFocus(ev);
+    }
+  }
+
   protected _dismissOnLostFocus(ev: Event) {
     let target = ev.target as HTMLElement;
     if (ev.target !== this._targetWindow &&
@@ -176,7 +182,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   protected _onComponentDidMount() {
     // This is added so the callout will dismiss when the window is scrolled
     // but not when something inside the callout is scrolled.
-    this._events.on(this._targetWindow, 'scroll', this._dismissOnLostFocus, true);
+    this._events.on(this._targetWindow, 'scroll', this._dismissOnScroll, true);
     this._events.on(this._targetWindow, 'resize', this.dismiss, true);
     this._events.on(this._targetWindow, 'focus', this._dismissOnLostFocus, true);
     this._events.on(this._targetWindow, 'click', this._dismissOnLostFocus, true);
@@ -224,6 +230,9 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
         });
       } else {
         this._positionAttempts = 0;
+        if (this.props.onPositioned) {
+          this.props.onPositioned();
+        }
       }
     }
   }
