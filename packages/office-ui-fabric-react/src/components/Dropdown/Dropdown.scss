@@ -165,6 +165,7 @@ $DropDown-item-height: 36px;
   max-width: 100%;
   box-shadow: 0 0px 15px -5px rgba(0, 0, 0, 0.4);
   border: 1px solid $ms-color-neutralLight;
+  user-select: none;
 
   &::before {
     content: '';
