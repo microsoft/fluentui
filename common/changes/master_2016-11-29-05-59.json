@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "comment": "Dropdown: removing extra overflow.",
+      "packageName": "office-ui-fabric-react",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
