@@ -34,16 +34,18 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
                 {
                   key: 'newItem',
                   icon: 'Add',
-                  items: [
-                    {
-                      key: 'emailMessage',
-                      name: 'Email message',
-                    },
-                    {
-                      key: 'calendarEvent',
-                      name: 'Calendar event',
-                    }
-                  ],
+                  subMenuProps: {
+                    items: [
+                      {
+                        key: 'emailMessage',
+                        name: 'Email message',
+                      },
+                      {
+                        key: 'calendarEvent',
+                        name: 'Calendar event',
+                      }
+                    ],
+                  },
                   name: 'New'
                 },
                 {
@@ -59,7 +61,7 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
                   key: 'charm',
                   name: 'Charm',
                   className: 'Charm-List',
-                  items: {
+                  subMenuProps: {
                     arrowDirection: FocusZoneDirection.bidirectional,
                     items: [
                       {
@@ -156,51 +158,53 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
                 {
                   key: 'categories',
                   name: 'Categorize',
-                  items: [
-                    {
-                      key: 'categories',
-                      name: 'categories',
-                      categoryList: [
-                        {
-                          name: 'Personal',
-                          color: 'yellow'
-                        },
-                        {
-                          name: 'Work',
-                          color: 'green'
-                        },
-                        {
-                          name: 'Birthday',
-                          color: 'blue'
-                        },
-                        {
-                          name: 'Spam',
-                          color: 'grey'
-                        },
-                        {
-                          name: 'Urgent',
-                          color: 'red'
-                        },
-                        {
-                          name: 'Hobbies',
-                          color: 'black'
-                        },
-                      ],
-                      onRender: this._renderCategoriesList
-                    },
-                    {
-                      key: 'divider_1',
-                      name: '-',
-                    },
-                    {
-                      key: 'clear',
-                      name: 'Clear categories'
-                    },
-                    {
-                      key: 'manage',
-                      name: 'Manage categories'
-                    }
-                  ]
+                  subMenuProps: {
+                    items: [
+                      {
+                        key: 'categories',
+                        name: 'categories',
+                        categoryList: [
+                          {
+                            name: 'Personal',
+                            color: 'yellow'
+                          },
+                          {
+                            name: 'Work',
+                            color: 'green'
+                          },
+                          {
+                            name: 'Birthday',
+                            color: 'blue'
+                          },
+                          {
+                            name: 'Spam',
+                            color: 'grey'
+                          },
+                          {
+                            name: 'Urgent',
+                            color: 'red'
+                          },
+                          {
+                            name: 'Hobbies',
+                            color: 'black'
+                          },
+                        ],
+                        onRender: this._renderCategoriesList
+                      },
+                      {
+                        key: 'divider_1',
+                        name: '-',
+                      },
+                      {
+                        key: 'clear',
+                        name: 'Clear categories'
+                      },
+                      {
+                        key: 'manage',
+                        name: 'Manage categories'
+                      }
+                    ]
+                  },
                 }
               ]
             }
