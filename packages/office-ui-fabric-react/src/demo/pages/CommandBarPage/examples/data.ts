@@ -6,19 +6,21 @@ export const items = [
     ariaLabel: 'New. Use left and right arrow keys to navigate',
     onClick: () => { return; },
     ['data-automation-id']: 'newItemMenu',
-    items: [
-      {
-        key: 'emailMessage',
-        name: 'Email message',
-        icon: 'Mail',
-        ['data-automation-id']: 'newEmailButton'
-      },
-      {
-        key: 'calendarEvent',
-        name: 'Calendar event',
-        icon: 'Calendar'
-      }
-    ]
+    subMenuProps: {
+      items: [
+        {
+          key: 'emailMessage',
+          name: 'Email message',
+          icon: 'Mail',
+          ['data-automation-id']: 'newEmailButton'
+        },
+        {
+          key: 'calendarEvent',
+          name: 'Calendar event',
+          icon: 'Calendar'
+        }
+      ],
+    },
   },
   {
     key: 'upload',

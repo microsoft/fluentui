@@ -80,22 +80,24 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
                 },
                 {
                   key: keys[5],
-                  items: [
-                    {
-                      key: keys[6],
-                      name: 'Email message',
-                      canCheck: true,
-                      isChecked: selection[keys[6]],
-                      onClick: this._onToggleSelect
-                    },
-                    {
-                      key: keys[7],
-                      name: 'Calendar event',
-                      canCheck: true,
-                      isChecked: selection[keys[7]],
-                      onClick: this._onToggleSelect
-                    }
-                  ],
+                  subMenuProps: {
+                    items: [
+                      {
+                        key: keys[6],
+                        name: 'Email message',
+                        canCheck: true,
+                        isChecked: selection[keys[6]],
+                        onClick: this._onToggleSelect
+                      },
+                      {
+                        key: keys[7],
+                        name: 'Calendar event',
+                        canCheck: true,
+                        isChecked: selection[keys[7]],
+                        onClick: this._onToggleSelect
+                      }
+                    ],
+                  },
                   name: 'New'
                 },
               ]

@@ -205,9 +205,18 @@ export interface IContextualMenuItem {
   href?: string;
 
   /**
-   * A collection of submenu items, or an IContextualMenuProps object to apply for the sub menu
+   * @deprecated
+   * Deprecated at v.80.0 and will be removed by v 1.0. Use 'subMenuProps' instead.
    */
-  items?: IContextualMenuItem[] | IContextualMenuProps;
+  items?: IContextualMenuItem[];
+
+  /**
+   * Properties to apply to a submenu to this item.
+   * The ContextualMenu will provide default values for 'target', 'onDismiss', 'isSubMenu',
+   *  'id', 'shouldFocusOnMount', 'directionalHint', 'className', and 'gapSpace', all of which
+   *  can be overridden.
+   */
+  subMenuProps?: IContextualMenuProps;
 
   /**
    * Additional css class to apply to the menu item

@@ -253,135 +253,145 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
         key: 'configure',
         name: 'Configure',
         icon: 'Settings',
-        items: [
-          {
-            key: 'resizing',
-            name: 'Allow column resizing',
-            canCheck: true,
-            checked: canResizeColumns,
-            onClick: this._onToggleResizing
-          },
-          {
-            key: 'headerVisible',
-            name: 'Is header visible',
-            canCheck: true,
-            checked: isHeaderVisible,
-            onClick: () => this.setState({ isHeaderVisible: !isHeaderVisible })
-          },
-          {
-            key: 'lazyload',
-            name: 'Simulate async loading',
-            canCheck: true,
-            checked: isLazyLoaded,
-            onClick: this._onToggleLazyLoad
-          },
-          {
-            key: 'dash',
-            name: '-'
-          },
-          {
-            key: 'checkboxVisibility',
-            name: 'Checkbox visibility',
-            items: [
-              {
-                key: 'checkboxVisibility.always',
-                name: 'Always',
-                canCheck: true,
-                isChecked: checkboxVisibility === CheckboxVisibility.always,
-                onClick: () => this.setState({ checkboxVisibility: CheckboxVisibility.always })
-              },
-              {
-                key: 'checkboxVisibility.onHover',
-                name: 'On hover',
-                canCheck: true,
-                isChecked: checkboxVisibility === CheckboxVisibility.onHover,
-                onClick: () => this.setState({ checkboxVisibility: CheckboxVisibility.onHover })
-              },
-              {
-                key: 'checkboxVisibility.hidden',
-                name: 'Hidden',
-                canCheck: true,
-                isChecked: checkboxVisibility === CheckboxVisibility.hidden,
-                onClick: () => this.setState({ checkboxVisibility: CheckboxVisibility.hidden })
-              },
-            ]
-          },
-          {
-            key: 'layoutMode',
-            name: 'Layout mode',
-            items: [
-              {
-                key: LayoutMode[LayoutMode.fixedColumns],
-                name: 'Fixed columns',
-                canCheck: true,
-                checked: layoutMode === LayoutMode.fixedColumns,
-                onClick: this._onLayoutChanged,
-                data: LayoutMode.fixedColumns
-              },
-              {
-                key: LayoutMode[LayoutMode.justified],
-                name: 'Justified columns',
-                canCheck: true,
-                checked: layoutMode === LayoutMode.justified,
-                onClick: this._onLayoutChanged,
-                data: LayoutMode.justified
+        subMenuProps: {
+          items: [
+            {
+              key: 'resizing',
+              name: 'Allow column resizing',
+              canCheck: true,
+              checked: canResizeColumns,
+              onClick: this._onToggleResizing
+            },
+            {
+              key: 'headerVisible',
+              name: 'Is header visible',
+              canCheck: true,
+              checked: isHeaderVisible,
+              onClick: () => this.setState({ isHeaderVisible: !isHeaderVisible })
+            },
+            {
+              key: 'lazyload',
+              name: 'Simulate async loading',
+              canCheck: true,
+              checked: isLazyLoaded,
+              onClick: this._onToggleLazyLoad
+            },
+            {
+              key: 'dash',
+              name: '-'
+            },
+            {
+              key: 'checkboxVisibility',
+              name: 'Checkbox visibility',
+              subMenuProps: {
+                items: [
+                  {
+                    key: 'checkboxVisibility.always',
+                    name: 'Always',
+                    canCheck: true,
+                    isChecked: checkboxVisibility === CheckboxVisibility.always,
+                    onClick: () => this.setState({ checkboxVisibility: CheckboxVisibility.always })
+                  },
+                  {
+                    key: 'checkboxVisibility.onHover',
+                    name: 'On hover',
+                    canCheck: true,
+                    isChecked: checkboxVisibility === CheckboxVisibility.onHover,
+                    onClick: () => this.setState({ checkboxVisibility: CheckboxVisibility.onHover })
+                  },
+                  {
+                    key: 'checkboxVisibility.hidden',
+                    name: 'Hidden',
+                    canCheck: true,
+                    isChecked: checkboxVisibility === CheckboxVisibility.hidden,
+                    onClick: () => this.setState({ checkboxVisibility: CheckboxVisibility.hidden })
+                  },
+                ]
               }
-            ]
-          },
-          {
-            key: 'selectionMode',
-            name: 'Selection mode',
-            items: [
-              {
-                key: SelectionMode[SelectionMode.none],
-                name: 'None',
-                canCheck: true,
-                checked: selectionMode === SelectionMode.none,
-                onClick: this._onSelectionChanged,
-                data: SelectionMode.none
+            },
+            {
+              key: 'layoutMode',
+              name: 'Layout mode',
+              subMenuProps: {
+                items: [
+                  {
+                    key: LayoutMode[LayoutMode.fixedColumns],
+                    name: 'Fixed columns',
+                    canCheck: true,
+                    checked: layoutMode === LayoutMode.fixedColumns,
+                    onClick: this._onLayoutChanged,
+                    data: LayoutMode.fixedColumns
+                  },
+                  {
+                    key: LayoutMode[LayoutMode.justified],
+                    name: 'Justified columns',
+                    canCheck: true,
+                    checked: layoutMode === LayoutMode.justified,
+                    onClick: this._onLayoutChanged,
+                    data: LayoutMode.justified
+                  }
+                ]
+              }
+            },
+            {
+              key: 'selectionMode',
+              name: 'Selection mode',
+              subMenuProps: {
+                items: [
+                  {
+                    key: SelectionMode[SelectionMode.none],
+                    name: 'None',
+                    canCheck: true,
+                    checked: selectionMode === SelectionMode.none,
+                    onClick: this._onSelectionChanged,
+                    data: SelectionMode.none
 
-              },
-              {
-                key: SelectionMode[SelectionMode.single],
-                name: 'Single select',
-                canCheck: true,
-                checked: selectionMode === SelectionMode.single,
-                onClick: this._onSelectionChanged,
-                data: SelectionMode.single
-              },
-              {
-                key: SelectionMode[SelectionMode.multiple],
-                name: 'Multi select',
-                canCheck: true,
-                checked: selectionMode === SelectionMode.multiple,
-                onClick: this._onSelectionChanged,
-                data: SelectionMode.multiple
-              },
-            ]
-          },
-          {
-            key: 'constrainMode',
-            name: 'Constrain mode',
-            items: [
-              {
-                key: ConstrainMode[ConstrainMode.unconstrained],
-                name: 'Unconstrained',
-                canCheck: true,
-                checked: constrainMode === ConstrainMode.unconstrained,
-                onClick: this._onConstrainModeChanged,
-                data: ConstrainMode.unconstrained
-              },
-              {
-                key: ConstrainMode[ConstrainMode.horizontalConstrained],
-                name: 'Horizontal constrained',
-                canCheck: true,
-                checked: constrainMode === ConstrainMode.horizontalConstrained,
-                onClick: this._onConstrainModeChanged,
-                data: ConstrainMode.horizontalConstrained
+                  },
+                  {
+                    key: SelectionMode[SelectionMode.single],
+                    name: 'Single select',
+                    canCheck: true,
+                    checked: selectionMode === SelectionMode.single,
+                    onClick: this._onSelectionChanged,
+                    data: SelectionMode.single
+                  },
+                  {
+                    key: SelectionMode[SelectionMode.multiple],
+                    name: 'Multi select',
+                    canCheck: true,
+                    checked: selectionMode === SelectionMode.multiple,
+                    onClick: this._onSelectionChanged,
+                    data: SelectionMode.multiple
+                  },
+                ]
               }
-            ]
-          }
-        ]
+            },
+            {
+              key: 'constrainMode',
+              name: 'Constrain mode',
+              subMenuProps: {
+                items: [
+                  {
+                    key: ConstrainMode[ConstrainMode.unconstrained],
+                    name: 'Unconstrained',
+                    canCheck: true,
+                    checked: constrainMode === ConstrainMode.unconstrained,
+                    onClick: this._onConstrainModeChanged,
+                    data: ConstrainMode.unconstrained
+                  },
+                  {
+                    key: ConstrainMode[ConstrainMode.horizontalConstrained],
+                    name: 'Horizontal constrained',
+                    canCheck: true,
+                    checked: constrainMode === ConstrainMode.horizontalConstrained,
+                    onClick: this._onConstrainModeChanged,
+                    data: ConstrainMode.horizontalConstrained
+                  }
+                ]
+              }
+            }
+          ]
+        }
       }
     ];
   }

@@ -78,13 +78,9 @@ interface IParsedDirectionalHint {
 }
 
 export function hasSubmenuItems(item: IContextualMenuItem) {
-  if (!item.items) {
-    return false;
-  } else if (Array.isArray(item.items)) {
-    return !!item.items.length;
-  } else {
-    return !!(item.items.items && item.items.items.length);
-  }
+  let submenuItems = item.subMenuProps ? item.subMenuProps.items : item.items;
+
+  return !!(submenuItems && submenuItems.length);
 }
 
 export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
@@ -411,17 +407,15 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
-  private _onItemSubMenuExpand(item: any, target: HTMLElement) {
+  private _onItemSubMenuExpand(item: IContextualMenuItem, target: HTMLElement) {
     if (this.state.expandedMenuItemKey !== item.key) {
 
       if (this.state.submenuProps) {
         this._onSubMenuDismiss();
       }
 
-      let onlySubmenuItemsSpecified = Array.isArray(item.items);
-
       let submenuProps = {
-        items: onlySubmenuItemsSpecified ? item.items : null,
+        items: item.items,
         target: target,
         onDismiss: this._onSubMenuDismiss,
         isSubMenu: true,
@@ -432,8 +426,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         gapSpace: 0
       };
 
-      if (!onlySubmenuItemsSpecified) {
-        assign(submenuProps, item.items);
+      if (item.subMenuProps) {
+        assign(submenuProps, item.subMenuProps);
       }
 
       this.setState({
