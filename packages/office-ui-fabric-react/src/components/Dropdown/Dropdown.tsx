@@ -34,6 +34,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
     focusZone: FocusZone
   };
 
+  private _focusZone: FocusZone;
   private _optionList: HTMLElement;
   private _dropDown: HTMLDivElement;
   private _dropdownLabel: HTMLElement;
@@ -107,9 +108,10 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
             targetElement={ this._dropDown }
             directionalHint={ DirectionalHint.bottomLeftEdge }
             onDismiss={ this._onDismiss }
+            onPositioned={ this._onPositioned }
             >
             <FocusZone
-              ref={ fz => fz && fz.focus() }
+              ref={ this._resolveRef('_focusZone') }
               direction={ FocusZoneDirection.vertical }
               defaultActiveElement={ '#' + id + '-list' + selectedIndex }
               >
@@ -170,6 +172,11 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
   @autobind
   private _onRenderItem(item: IDropdownOption): JSX.Element {
     return <span>{ item.text }</span>;
+  }
+
+  @autobind
+  private _onPositioned() {
+    this._focusZone.focus();
   }
 
   private _onItemClick(index) {
