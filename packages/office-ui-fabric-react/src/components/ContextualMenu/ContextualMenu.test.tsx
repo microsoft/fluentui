@@ -116,4 +116,60 @@ describe('ContextualMenu', () => {
 
     expect(spyCalled).to.be.false;
   });
+
+  it('opens a submenu item on right arrow', () => {
+    const items: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        subMenuProps: {
+          items: [
+            {
+              name: 'SubmenuText 1',
+              key: 'SubmenuKey1',
+              className: 'SubMenuClass'
+            }
+          ]
+        }
+      },
+    ];
+
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ items }
+        />
+    );
+
+    let menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
+    ReactTestUtils.Simulate.keyDown(menuItem, { which: KeyCodes.right });
+
+    expect(document.querySelector('.SubMenuClass')).to.exist;
+  });
+
+  it('still works with deprecated IContextualMenuItem.items property', () => {
+    const items: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        items: [
+          {
+            name: 'SubmenuText 1',
+            key: 'SubmenuKey1',
+            className: 'SubMenuClass'
+          }
+        ]
+      },
+    ];
+
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ items }
+        />
+    );
+
+    let menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
+    ReactTestUtils.Simulate.keyDown(menuItem, { which: KeyCodes.right });
+
+    expect(document.querySelector('.SubMenuClass')).to.exist;
+  });
 });
