@@ -357,7 +357,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     let targetElement = ev.currentTarget as HTMLElement;
 
     if (item.key !== this.state.expandedMenuItemKey) {
-      if (item.items && item.items.length) {
+      if (hasSubmenuItems(item)) {
         this._enterTimerId = this._async.setTimeout(() => this._onItemSubMenuExpand(item, targetElement), 500);
       } else {
         this._enterTimerId = this._async.setTimeout(() => this._onSubMenuDismiss(ev), 500);
