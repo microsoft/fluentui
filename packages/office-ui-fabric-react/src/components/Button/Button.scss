@@ -111,6 +111,10 @@ $button-commandButtonHeight: 40px;
   &:hover {
     background-color: $ms-color-themeDark;
     border-color: $ms-color-themeDark;
+
+    .ms-Button-label {
+      color: $ms-color-white;
+    }
   }
 
   &:focus {
@@ -169,6 +173,8 @@ $button-commandButtonHeight: 40px;
 
   &:hover,
   &:focus {
+    background-color: transparent;
+
     .ms-Button-icon {
       color: $ms-color-themeDark;
     }
@@ -309,6 +315,8 @@ $button-commandButtonHeight: 40px;
 
   &:hover,
   &:focus {
+    background-color: transparent;
+
     .ms-Button-icon,
     .ms-Button-label {
       color: $ms-color-themeDarker;
