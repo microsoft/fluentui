@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Popup: Avoid restoring focus when focus has been set explicitly elsewhere in the app.",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
