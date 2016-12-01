@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "SelectionZone: now supports data-selection-disabled flag to disable selection event handling at a particular place in the DOM.",
+      "type": "minor"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
