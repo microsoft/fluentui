@@ -56,6 +56,9 @@ export class SelectionPage extends React.Component<IComponentDemoPageProps, any>
               <li>
                 <b>data-selection-toggle-all</b>: this boolean flag indicates that clicking it should toggle all selection.
               </li>
+              <li>
+                <b>data-selection-disabled</b>: allows a branch of the DOM to be marked to ignore input events that alter selections.
+              </li>
             </ul>
           </div>
         }

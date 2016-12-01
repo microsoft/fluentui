@@ -33,6 +33,7 @@ import {
 // If you click index 8
 //    The anchor and focus are set to 8.
 
+const SELECTION_DISABLED_ATTRIBUTE_NAME = 'data-selection-disabled';
 const SELECTION_INDEX_ATTRIBUTE_NAME = 'data-selection-index';
 const SELECTION_TOGGLE_ATTRIBUTE_NAME = 'data-selection-toggle';
 const SELECTION_INVOKE_ATTRIBUTE_NAME = 'data-selection-invoke';
@@ -165,6 +166,11 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     let target = ev.target as HTMLElement;
     let itemRoot = this._findItemRoot(target);
 
+    // No-op if selection is disabled
+    if (this._isSelectionDisabled(target)) {
+      return;
+    }
+
     while (target !== this.refs.root) {
       if (this._hasAttribute(target, SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME)) {
         this._onToggleAllClick(ev);
@@ -192,6 +198,17 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
   }
 
+  private _isSelectionDisabled(target: HTMLElement): boolean {
+    while (target !== this.refs.root) {
+      if (this._hasAttribute(target, SELECTION_DISABLED_ATTRIBUTE_NAME)) {
+        return true;
+      }
+      target = getParent(target);
+    }
+
+    return false;
+  }
+
   /**
    * In multi selection, if you double click within an item's root (but not within the invoke element or input elements),
    * we should execute the invoke handler.
@@ -199,6 +216,11 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   @autobind
   private _onDoubleClick(ev: React.MouseEvent<HTMLElement>) {
     let target = ev.target as HTMLElement;
+
+    if (this._isSelectionDisabled(target)) {
+      return;
+    }
+
     let { selectionMode, onItemInvoked } = this.props;
     let itemRoot = this._findItemRoot(target);
 
@@ -227,6 +249,11 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     this._updateModifiers(ev);
 
     let target = ev.target as HTMLElement;
+
+    if (this._isSelectionDisabled(target)) {
+      return;
+    }
+
     let { selection, selectionMode } = this.props;
     let isSelectAllKey = ev.which === KeyCodes.a && (this._isCtrlPressed || this._isMetaPressed);
     let isClearSelectionKey = ev.which === KeyCodes.escape;
