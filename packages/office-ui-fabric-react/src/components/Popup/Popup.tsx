@@ -49,7 +49,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
         if (this._originalFocusedElement && getDocument().activeElement === getDocument().body) {
           this._originalFocusedElement.focus();
         }
-      }, 20);
+      }, 0);
     }
   }
 
