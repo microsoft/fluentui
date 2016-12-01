@@ -445,7 +445,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     let doc = getDocument();
 
     if (doc && element) {
-      while (element !== doc.body) {
+      while (element && element !== doc.documentElement) {
         if (isElementTabbable(element)) {
           return false;
         }
