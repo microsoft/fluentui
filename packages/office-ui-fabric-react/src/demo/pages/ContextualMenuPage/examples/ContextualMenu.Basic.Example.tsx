@@ -18,7 +18,7 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
         { this.state.isContextMenuVisible ? (
           <ContextualMenu
             shouldFocusOnMount={ true }
-            target={this.state.target}
+            target={ this.state.target }
             onDismiss={ this._onDismiss }
             directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }
             items={
@@ -28,18 +28,20 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                   iconProps: {
                     iconName: IconName.Add
                   },
-                  items: [
-                    {
-                      key: 'emailMessage',
-                      name: 'Email message',
-                      title: 'Create an email'
-                    },
-                    {
-                      key: 'calendarEvent',
-                      name: 'Calendar event',
-                      title: 'Create a calendar event',
-                    }
-                  ],
+                  subMenuProps: {
+                    items: [
+                      {
+                        key: 'emailMessage',
+                        name: 'Email message',
+                        title: 'Create an email'
+                      },
+                      {
+                        key: 'calendarEvent',
+                        name: 'Calendar event',
+                        title: 'Create a calendar event',
+                      }
+                    ],
+                  },
                   name: 'New'
                 },
                 {
@@ -79,49 +81,53 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                   iconProps: {
                     iconName: IconName.Share
                   },
-                  items: [
-                    {
-                      key: 'sharetoemail',
-                      name: 'Share to Email',
-                      iconProps: {
-                        iconName: IconName.Mail
+                  subMenuProps: {
+                    items: [
+                      {
+                        key: 'sharetoemail',
+                        name: 'Share to Email',
+                        iconProps: {
+                          iconName: IconName.Mail
+                        },
                       },
-                    },
-                    {
-                      key: 'sharetofacebook',
-                      name: 'Share to Facebook',
-                    },
-                    {
-                      key: 'sharetotwitter',
-                      name: 'Share to Twitter',
-                      iconProps: {
-                        iconName: IconName.Share
+                      {
+                        key: 'sharetofacebook',
+                        name: 'Share to Facebook',
                       },
-                      items: [
-                        {
-                          key: 'sharetoemail_1',
-                          name: 'Share to Email',
-                          title: 'Share to Email',
-                          iconProps: {
-                            iconName: IconName.Mail
-                          },
+                      {
+                        key: 'sharetotwitter',
+                        name: 'Share to Twitter',
+                        iconProps: {
+                          iconName: IconName.Share
                         },
-                        {
-                          key: 'sharetofacebook_1',
-                          name: 'Share to Facebook',
-                          title: 'Share to Facebook',
+                        subMenuProps: {
+                          items: [
+                            {
+                              key: 'sharetoemail_1',
+                              name: 'Share to Email',
+                              title: 'Share to Email',
+                              iconProps: {
+                                iconName: IconName.Mail
+                              },
+                            },
+                            {
+                              key: 'sharetofacebook_1',
+                              name: 'Share to Facebook',
+                              title: 'Share to Facebook',
+                            },
+                            {
+                              key: 'sharetotwitter_1',
+                              name: 'Share to Twitter',
+                              title: 'Share to Twitter',
+                              iconProps: {
+                                iconName: IconName.Share
+                              }
+                            },
+                          ],
                         },
-                        {
-                          key: 'sharetotwitter_1',
-                          name: 'Share to Twitter',
-                          title: 'Share to Twitter',
-                          iconProps: {
-                            iconName: IconName.Share
-                          }
-                        },
-                      ],
-                    },
-                  ],
+                      },
+                    ],
+                  },
                   name: 'Share'
                 },
                 {

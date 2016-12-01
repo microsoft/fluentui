@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ICommandBar, ICommandBarProps } from './CommandBar.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { ContextualMenu, IContextualMenuItem } from '../../ContextualMenu';
+import { ContextualMenu, IContextualMenuItem, hasSubmenuItems } from '../../ContextualMenu';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { autobind } from '../../utilities/autobind';
@@ -163,13 +163,13 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
             className={ classNameValue }
             onClick={ (ev) => this._onItemClick(ev, item) }
             data-command-key={ index }
-            aria-haspopup={ !!(item.items && item.items.length) }
+            aria-haspopup={ hasSubmenuItems(item) }
             role='menuitem'
             aria-label={ item.ariaLabel || item.name }
             >
             { (hasIcon) ? this._renderIcon(item) : (null) }
             { (!!item.name) && <span className='ms-CommandBarItem-commandText'>{ item.name }</span> }
-            { (item.items && item.items.length) ? (
+            { hasSubmenuItems(item) ? (
               <i className='ms-CommandBarItem-chevronDown ms-Icon ms-Icon--ChevronDown' />
             ) : (null) }
           </button>;
@@ -179,7 +179,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
             id={ this._id + item.key }
             className={ classNameValue }
             data-command-key={ index }
-            aria-haspopup={ !!(item.items && item.items.length) }
+            aria-haspopup={ hasSubmenuItems(item) }
             >
             { (hasIcon) ? this._renderIcon(item) : (null) }
             <span className='ms-CommandBarItem-commandText ms-font-m ms-font-weight-regular' aria-hidden='true' role='presentation'>{ item.name }</span>
