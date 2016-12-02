@@ -6,6 +6,7 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
 import { Callout } from './Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
+import { Async } from '../../utilities/Async/Async';
 
 let { expect } = chai;
 
@@ -141,6 +142,7 @@ describe('Callout', () => {
         gotEvent = true;
       }
     };
+    let async = new Async(this);
     // In order to have eventlisteners that have been added to the window to be called the JSX needs
     // to be rendered into the real dom rather than the testutil simulated dom.
     let root = document.createElement('div');
@@ -152,12 +154,12 @@ describe('Callout', () => {
           <button id='target' style={ { top: '10px', left: '10px', height: '0', width: '0px' } }> target </button>
           <Callout
             target='#target'
-            directionalHint={ DirectionalHint.topLeftEdge }
+            directionalHint={ DirectionalHint.topRightEdge }
             onDismiss={ onDismiss }
             >
             <div>
               Content
-                        </div>
+            </div>
           </Callout>
         </div>, root
       );
@@ -169,8 +171,9 @@ describe('Callout', () => {
     let focusTarget = document.querySelector('#focustarget') as HTMLButtonElement;
 
     focusTarget.focus();
-
-    expect(gotEvent).to.be.eq(true, 'Event did not get passed to dismiss event');
+    async.setTimeout(() => {
+      expect(gotEvent).to.be.eq(true, 'Event did not get passed to dismiss event');
+    }, 20);
   });
 
 });
