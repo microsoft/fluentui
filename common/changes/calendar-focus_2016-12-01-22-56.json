@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dropdown: Fixing an issue causing Safari to avoid opening the items in scroll cases.",
+      "comment": "DatePicker: now renders correctly when scrolled down in Safari.",
       "type": "minor"
     }
   ],

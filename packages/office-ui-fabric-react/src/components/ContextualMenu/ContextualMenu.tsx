@@ -77,6 +77,12 @@ interface IParsedDirectionalHint {
   verticalAlignmentHint: VerticalAlignmentHint;
 }
 
+export function hasSubmenuItems(item: IContextualMenuItem) {
+  let submenuItems = item.subMenuProps ? item.subMenuProps.items : item.items;
+
+  return !!(submenuItems && submenuItems.length);
+}
+
 export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
   // The default ContextualMenu properities have no items and beak, the default submenu direction is right and top.
   public static defaultProps = {
@@ -85,7 +91,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     isBeakVisible: false,
     gapSpace: 0,
     directionalHint: DirectionalHint.bottomAutoEdge,
-    beakWidth: 16
+    beakWidth: 16,
+    arrowDirection: FocusZoneDirection.vertical,
   };
 
   private _host: HTMLElement;
@@ -165,6 +172,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       coverTarget,
       ariaLabel,
       doNotLayer,
+      arrowDirection,
       target } = this.props;
 
     let { submenuProps } = this.state;
@@ -191,7 +199,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           { (items && items.length) ? (
             <FocusZone
               className={ 'ms-ContextualMenu is-open' }
-              direction={ FocusZoneDirection.vertical }
+              direction={ arrowDirection }
               ariaLabelledBy={ labelElementId }
               ref={ (focusZone) => this._focusZone = focusZone }
               rootProps={ { role: 'menu' } }
@@ -274,7 +282,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     let itemButtonProperties = {
       className: css('ms-ContextualMenu-link', { 'is-expanded': (expandedMenuItemKey === item.key) }),
       onClick: this._onItemClick.bind(this, item),
-      onKeyDown: item.items && item.items.length ? this._onItemKeyDown.bind(this, item) : null,
+      onKeyDown: hasSubmenuItems(item) ? this._onItemKeyDown.bind(this, item) : null,
       onMouseEnter: this._onItemMouseEnter.bind(this, item),
       onMouseLeave: this._onMouseLeave,
       onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
@@ -283,7 +291,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       href: item.href,
       title: item.title,
       'aria-label': ariaLabel,
-      'aria-haspopup': item.items && item.items.length ? true : null,
+      'aria-haspopup': hasSubmenuItems(item) ? true : null,
       'aria-owns': item.key === expandedMenuItemKey ? subMenuId : null
     };
 
@@ -307,7 +315,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           this._renderIcon(item)
         ) : (null) }
         <span className='ms-ContextualMenu-itemText ms-fontWeight-regular'>{ item.name }</span>
-        { (item.items && item.items.length) ? (
+        { hasSubmenuItems(item) ? (
           <Icon className='ms-ContextualMenu-submenuChevron ms-Icon' iconName={ getRTL() ? IconName.ChevronLeft : IconName.ChevronRight } />
         ) : (null) }
       </div>
@@ -332,7 +340,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     if (ev.which === KeyCodes.escape
       || ev.which === KeyCodes.tab
-      || (ev.which === submenuCloseKey && this.props.isSubMenu)) {
+      || (ev.which === submenuCloseKey && this.props.isSubMenu && this.props.arrowDirection === FocusZoneDirection.vertical)) {
       // When a user presses escape, we will try to refocus the previous focused element.
       this._isFocusingPreviousElement = true;
       ev.preventDefault();
@@ -345,7 +353,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     let targetElement = ev.currentTarget as HTMLElement;
 
     if (item.key !== this.state.expandedMenuItemKey) {
-      if (item.items && item.items.length) {
+      if (hasSubmenuItems(item)) {
         this._enterTimerId = this._async.setTimeout(() => this._onItemSubMenuExpand(item, targetElement), 500);
       } else {
         this._enterTimerId = this._async.setTimeout(() => this._onSubMenuDismiss(ev), 500);
@@ -365,7 +373,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _onItemClick(item: any, ev: MouseEvent) {
-    if (!item.items || !item.items.length) { // This is an item without a menu. Click it.
+    let items = (item.subMenuProps && item.subMenuProps.items) ? item.subMenuProps.items : item.items;
+
+    if (!items || !items.length) { // This is an item without a menu. Click it.
       this._executeItemClick(item, ev);
     } else {
       if (item.key === this.state.expandedMenuItemKey) { // This has an expanded sub menu. collapse it.
@@ -399,26 +409,32 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
-  private _onItemSubMenuExpand(item: any, target: HTMLElement) {
+  private _onItemSubMenuExpand(item: IContextualMenuItem, target: HTMLElement) {
     if (this.state.expandedMenuItemKey !== item.key) {
 
       if (this.state.submenuProps) {
         this._onSubMenuDismiss();
       }
 
+      let submenuProps = {
+        items: item.items,
+        target: target,
+        onDismiss: this._onSubMenuDismiss,
+        isSubMenu: true,
+        id: this.state.subMenuId,
+        shouldFocusOnMount: true,
+        directionalHint: getRTL() ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
+        className: this.props.className,
+        gapSpace: 0
+      };
+
+      if (item.subMenuProps) {
+        assign(submenuProps, item.subMenuProps);
+      }
+
       this.setState({
         expandedMenuItemKey: item.key,
-        submenuProps: {
-          items: item.items,
-          target: target,
-          onDismiss: this._onSubMenuDismiss,
-          isSubMenu: true,
-          id: this.state.subMenuId,
-          shouldFocusOnMount: true,
-          directionalHint: getRTL() ? DirectionalHint.leftTopEdge : DirectionalHint.rightTopEdge,
-          className: this.props.className,
-          gapSpace: 0
-        }
+        submenuProps: submenuProps,
       });
     }
   }

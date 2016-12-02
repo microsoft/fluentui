@@ -19,7 +19,7 @@ import { BaseComponent } from '../../common/BaseComponent';
 import './Callout.scss';
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
-const OFF_SCREEN_POSITION = { top: -9999, left: 0 };
+const OFF_SCREEN_STYLE = { opacity: 0 };
 const BORDER_WIDTH: number = 1;
 const SPACE_FROM_EDGE: number = 8;
 export interface ICalloutState {
@@ -118,7 +118,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
               className,
               slideDirectionalClassName ? `ms-u-${slideDirectionalClassName}` : ''
             ) }
-          style={ positions ? positions.callout : OFF_SCREEN_POSITION }
+          style={ positions ? positions.callout : OFF_SCREEN_STYLE }
           ref={ this._resolveRef('_calloutElement') }
           >
 

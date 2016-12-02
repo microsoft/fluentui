@@ -48,10 +48,11 @@
 
 .ms-Slider-slideBox .ms-Slider-thumb {
   border: 2px solid $ms-color-neutralSecondary;
+  box-sizing: border-box;
   background: $ms-color-white;
   display: block;
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
   position: absolute;
   top: -6px;
   border-radius: 10px;
