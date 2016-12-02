@@ -226,6 +226,7 @@ $ms-Persona-presenceSizeXl: 28px;
   @include text-align(left);
   @include padding-left($ms-Persona-sizeMd + $ms-Persona-imageDetailsLgSpace);
   display: table-cell;
+  width: 100%;
 }
 
 .ms-Persona-primaryText,
