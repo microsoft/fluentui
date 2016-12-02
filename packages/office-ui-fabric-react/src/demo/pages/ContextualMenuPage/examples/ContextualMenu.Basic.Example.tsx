@@ -1,17 +1,22 @@
 import * as React from 'react';
-import { ContextualMenu, DirectionalHint, Button, getRTL, IconName } from '../../../../index';
+import { ContextualMenu, DirectionalHint, Button, getRTL, IconName, Callout } from '../../../../index';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuBasicExample extends React.Component<any, any> {
 
   constructor() {
     super();
-    this.state = { isContextMenuVisible: false };
+    this.state = {
+      isContextMenuVisible: false,
+      showCallout: false
+    };
     this._onClick = this._onClick.bind(this);
     this._onDismiss = this._onDismiss.bind(this);
   }
 
   public render() {
+    let { showCallout } = this.state;
+
     return (
       <div>
         <Button onClick={ this._onClick } id='ContextualMenuButton1'> Click for ContextualMenu </Button>
@@ -46,6 +51,9 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                 },
                 {
                   key: 'upload',
+                  onClick: () => {
+                    this.setState({ showCallout: true });
+                  },
                   iconProps: {
                     iconName: IconName.Upload,
                     style: {
@@ -156,12 +164,21 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
               ]
             }
             />) : (null) }
+
+        { showCallout && (
+          <Callout
+            setInitialFocus={ true }
+            onDismiss={ () => this.setState({ showCallout: false }) }
+            >
+            <Button onClick={ () => this.setState({ showCallout: false }) }>Hello world</Button>
+          </Callout>
+        ) }
       </div>
     );
   }
 
   private _onClick(event: React.MouseEvent<any>) {
-    this.setState({ target: event.nativeEvent, isContextMenuVisible: true });
+    this.setState({ target: event.target, isContextMenuVisible: true });
   }
 
   private _onDismiss(event: any) {
