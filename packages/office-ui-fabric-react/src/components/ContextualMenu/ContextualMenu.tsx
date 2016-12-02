@@ -373,7 +373,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _onItemClick(item: any, ev: MouseEvent) {
-    if (!item.items || !item.items.length) { // This is an item without a menu. Click it.
+    let items = (item.subMenuProps && item.subMenuProps.items) ? item.subMenuProps.items : item.items;
+
+    if (!items || !items.length) { // This is an item without a menu. Click it.
       this._executeItemClick(item, ev);
     } else {
       if (item.key === this.state.expandedMenuItemKey) { // This has an expanded sub menu. collapse it.
