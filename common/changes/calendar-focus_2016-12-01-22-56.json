@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "DatePicker: now renders correctly when scrolled down in Safari.",
+      "type": "minor"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
