@@ -133,6 +133,35 @@ describe('ContextualMenu', () => {
         }
       },
     ];
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ items }
+        />
+    );
+
+    let menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
+
+    ReactTestUtils.Simulate.keyDown(menuItem, { which: KeyCodes.right });
+
+    expect(document.querySelector('.SubMenuClass')).to.exist;
+  });
+
+  it('opens a submenu item on click', () => {
+    const items: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        subMenuProps: {
+          items: [
+            {
+              name: 'SubmenuText 1',
+              key: 'SubmenuKey1',
+              className: 'SubMenuClass'
+            }
+          ]
+        }
+      },
+    ];
 
     ReactTestUtils.renderIntoDocument<ContextualMenu>(
       <ContextualMenu
@@ -141,7 +170,8 @@ describe('ContextualMenu', () => {
     );
 
     let menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
-    ReactTestUtils.Simulate.keyDown(menuItem, { which: KeyCodes.right });
+
+    ReactTestUtils.Simulate.click(menuItem);
 
     expect(document.querySelector('.SubMenuClass')).to.exist;
   });

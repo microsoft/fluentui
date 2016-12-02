@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "ContextualMenu: submenus now expand correctly again.",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
