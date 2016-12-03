@@ -46,7 +46,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
       // apply the correct focus. Without the setTimeout, we end up focusing the correct thing, and then React wants
       // to reset the focus back to the thing it thinks should have been focused.
       setTimeout(() => {
-        if (this._originalFocusedElement) {
+        if (this._originalFocusedElement && getDocument().activeElement === getDocument().body) {
           this._originalFocusedElement.focus();
         }
       }, 0);
