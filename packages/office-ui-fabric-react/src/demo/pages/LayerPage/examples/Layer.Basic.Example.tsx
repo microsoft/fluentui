@@ -6,12 +6,18 @@ import {
   Layer
 } from '../../../../index';
 
-export class LayerBasicExample extends BaseComponent<any, any> {
+export class LayerContentExample extends BaseComponent<any, any> {
+  public static contextTypes = {
+    message: React.PropTypes.string
+  };
+
+  public context: {
+    message: string;
+  };
 
   constructor() {
     super();
     this.state = {
-      showLayer: false,
       time: new Date().toLocaleTimeString()
     };
   }
@@ -21,13 +27,37 @@ export class LayerBasicExample extends BaseComponent<any, any> {
   }
 
   public render() {
-    let { showLayer, time } = this.state;
-    let content = (
+    return (
       <div className='LayerExample-content ms-u-scaleUpIn100'>
-        <div className='LayerExample-textContent'>This is example layer content.</div>
-        <div>{ time }</div>
+        <div className='LayerExample-textContent'>{ this.context.message }</div>
+        <div>{ this.state.time }</div>
       </div>
+
     );
+  }
+}
+export class LayerBasicExample extends BaseComponent<any, any> {
+
+  public static childContextTypes = {
+    message: React.PropTypes.string
+  };
+
+  constructor() {
+    super();
+    this.state = {
+      showLayer: false
+    };
+  }
+
+  public getChildContext() {
+    return {
+      'message': 'Hello world.'
+    };
+  }
+
+
+  public render() {
+    let { showLayer } = this.state;
 
     return (
       <div>
@@ -37,9 +67,16 @@ export class LayerBasicExample extends BaseComponent<any, any> {
           checked={ showLayer }
           onChange={ (ev, checked) => this.setState({ showLayer: checked }) } />
 
-        { showLayer ? <Layer>{ content }</Layer> : content }
+        { showLayer ? (
+          <Layer>
+            <LayerContentExample />
+          </Layer>
+        ) : (
+            <LayerContentExample />
+          ) }
 
       </div>
     );
   }
 }
+

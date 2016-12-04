@@ -1,22 +1,19 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+
+import { Fabric } from '../../Fabric';
 import { ILayerProps } from './Layer.Props';
-import { LayerHost } from './LayerHost';
-import { ProjectedLayer } from './ProjectedLayer';
-import { BaseComponent, getId } from '../../Utilities';
+import { BaseComponent, getId, getDocument, setVirtualParent } from '../../Utilities';
 import './Layer.scss';
 
 export class Layer extends BaseComponent<ILayerProps, {}> {
-  public static contextTypes = {
-    layerHost: React.PropTypes.object
-  };
 
-  public context: {
-    layerHost: LayerHost;
+  public static defaultProps = {
+    onLayerMounted: () => undefined
   };
 
   private _rootElement: HTMLElement;
-  private _projectedLayer: ProjectedLayer;
-  private _layerHost: LayerHost;
+  private _layerElement: HTMLElement;
   private _id: string;
 
   constructor(props?: ILayerProps) {
@@ -26,33 +23,31 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
   }
 
   public componentDidMount() {
-    let layerHost = this.context.layerHost || LayerHost.getDefault(this._rootElement);
+    const doc = getDocument(this._rootElement);
 
-    this._layerHost = layerHost;
+    this._layerElement = doc.createElement('div');
+    this._layerElement.className = 'ms-Layer';
+    doc.body.appendChild(this._layerElement);
 
-    layerHost.addLayer(this._id, this._rootElement, this.props, (projectedLayer) => {
-      this._projectedLayer = projectedLayer;
+    setVirtualParent(this._layerElement, this._rootElement);
 
-      if (this.props.onLayerMounted) {
-        this.props.onLayerMounted();
-      }
-    });
+    this.componentDidUpdate();
   }
 
   public componentWillUnmount() {
-    this._layerHost.removeLayer(this._id);
+    ReactDOM.unmountComponentAtNode(this._layerElement);
+    this._layerElement.remove();
   }
 
-  public componentWillReceiveProps(newProps: ILayerProps) {
-    if (this._projectedLayer) {
-      this._projectedLayer.projectProps(newProps);
-    }
-  }
-
-  public forceUpdate() {
-    if (this._projectedLayer) {
-      this._projectedLayer.forceUpdate();
-    }
+  public componentDidUpdate() {
+    ReactDOM.unstable_renderSubtreeIntoContainer(
+      this,
+      <Fabric style={ { visibility: 'visible' } }>
+        { this.props.children }
+      </Fabric>,
+      this._layerElement,
+      () => this.props.onLayerMounted()
+    );
   }
 
   public render() {
