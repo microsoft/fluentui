@@ -63,9 +63,9 @@ describe('isElementTabbable', () => {
   it('returns false on disabled buttons', () => {
     let button = document.createElement('button');
 
-    button.disabled = true;
+    button.setAttribute('disabled', 'true');
 
-    expect(isElementTabbable(button)).is.true;
+    expect(isElementTabbable(button)).is.false;
 
   });
 
@@ -101,12 +101,21 @@ describe('isElementTabbable', () => {
     expect(isElementTabbable(div)).is.true;
   });
 
-  it('works with role=button divs', () => {
+  it('returns true with role=button divs', () => {
     let div = document.createElement('div');
 
     div.setAttribute('role', 'button');
 
     expect(isElementTabbable(div)).is.true;
+  });
+
+  it('returns false with role=button disabled buttons', () => {
+    let button = document.createElement('button');
+
+    button.setAttribute('role', 'button');
+    button.setAttribute('disabled', 'true');
+
+    expect(isElementTabbable(button)).is.false;
   });
 
 });

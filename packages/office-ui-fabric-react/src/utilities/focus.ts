@@ -152,12 +152,18 @@ export function isElementVisible(element: HTMLElement): boolean {
 }
 
 export function isElementTabbable(element: HTMLElement): boolean {
+
+  // If this element is disabled, it is not considered tabbable.
+  if ((element as HTMLButtonElement).disabled) {
+    return false;
+  }
+
   return (
     !!element &&
     (element.tagName === 'A' ||
-      (element.tagName === 'BUTTON' && !(element as HTMLButtonElement).disabled) ||
-      (element.tagName === 'INPUT' && !(element as HTMLInputElement).disabled) ||
-      (element.tagName === 'TEXTAREA' && !(element as HTMLTextAreaElement).disabled) ||
+      (element.tagName === 'BUTTON') ||
+      (element.tagName === 'INPUT') ||
+      (element.tagName === 'TEXTAREA') ||
       (element.tabIndex >= 0) ||
       (element.getAttribute && (
         element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true') ||
