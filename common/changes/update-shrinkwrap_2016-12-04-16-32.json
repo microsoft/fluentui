@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "SelectionZone: removing infinite loop.",
+      "comment": "Updating project dependencies.",
       "type": "patch"
     }
   ],
