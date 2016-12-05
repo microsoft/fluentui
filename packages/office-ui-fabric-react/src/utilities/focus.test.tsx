@@ -6,7 +6,7 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
 let { expect } = chai;
 
-import { isElementVisible } from './focus';
+import { isElementVisible, isElementTabbable } from './focus';
 
 let _hiddenElement;
 let _visibleElement;
@@ -49,6 +49,64 @@ describe('isElementVisible', () => {
 
   it('returns true if data-is-visible is undefined but element is visible', () => {
     expect(isElementVisible(_element)).equals(true, 'Element is visible but data-is-visible is undefined');
+  });
+
+});
+
+describe('isElementTabbable', () => {
+  it('returns false on normal divs', () => {
+    let div = document.createElement('div');
+
+    expect(isElementTabbable(div)).is.false;
+  });
+
+  it('returns false on disabled buttons', () => {
+    let button = document.createElement('button');
+
+    button.disabled = true;
+
+    expect(isElementTabbable(button)).is.true;
+
+  });
+
+  it('returns true on buttons', () => {
+    let button = document.createElement('button');
+
+    expect(isElementTabbable(button)).is.true;
+  });
+
+  it('returns true on anchors', () => {
+    let anchor = document.createElement('a');
+
+    expect(isElementTabbable(anchor)).is.true;
+  });
+
+  it('returns true on input elements', () => {
+    let input = document.createElement('input');
+
+    expect(isElementTabbable(input)).is.true;
+  });
+
+  it('returns true on textarea elements', () => {
+    let textarea = document.createElement('textarea');
+
+    expect(isElementTabbable(textarea)).is.true;
+  });
+
+  it('works with tabbable divs', () => {
+    let div = document.createElement('div');
+
+    div.tabIndex = 0;
+
+    expect(isElementTabbable(div)).is.true;
+  });
+
+  it('works with role=button divs', () => {
+    let div = document.createElement('div');
+
+    div.setAttribute('role', 'button');
+
+    expect(isElementTabbable(div)).is.true;
   });
 
 });
