@@ -20,7 +20,6 @@ const REPO_DETAILS = {
   repo: "office-ui-fabric-react"
 };
 
-const REPO_AUTH_TOKEN = 'fda82e69666925bae58529020b0f0d98167eb356';
 const SHOULD_PATCH = argv.patch;
 const SHOULD_APPLY = argv.apply;
 
