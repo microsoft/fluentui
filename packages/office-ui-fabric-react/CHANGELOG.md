@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sun, 04 Dec 2016 17:07:31 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Dec 2016 04:02:30 GMT and should not be manually modified.
+
+## 0.81.1
+Mon, 05 Dec 2016 04:02:30 GMT
+
+### Patches
+
+- Callout: Updating dismiss logic to be less sensitive to focus change on render.
+- CommandBar: added `max-width: 100%` to prevent horizontal scroll scenarios.
+- Updating project dependencies.
 
 ## 0.81.0
 
