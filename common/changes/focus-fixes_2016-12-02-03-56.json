@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Callout: Updating dismiss logic to be less sensitive to focus change on render.",
+      "type": "patch"
+    }
+  ],
+  "email": ""
+}
