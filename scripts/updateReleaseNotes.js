@@ -198,7 +198,22 @@ function updateReleaseNotes(shouldPatchChangelog) {
         if (!hasBeenReleased) {
           console.log(`Creating release notes for ${entry.name} ${entry.version}`);
           count++;
+
           if (SHOULD_APPLY) {
+            github.repos.createRelease(releaseDetails, (err, cb) => {
+              if (err) {
+                throw new Error(`Failed to commit release notes for ${entry.name} ${entry.version}.${EOL}${err}`);
+              }
+
+              console.log(`Successfully created release notes for ${entry.name} ${entry.version}`);
+            });
+          }
+        } else if (SHOULD_PATCH) {
+          console.log(`Patching release notes for ${entry.name} ${entry.version}`);
+          count++;
+
+          if (SHOULD_APPLY) {
+            releaseDetails.id = releases.get(tag).id;
             github.repos.editRelease(releaseDetails, (err, cb) => {
               if (err) {
                 throw new Error(`Failed to commit release notes for ${entry.name} ${entry.version}.${EOL}${err}`);
