@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 05 Dec 2016 04:02:30 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Dec 2016 20:20:56 GMT and should not be manually modified.
+
+## 0.81.2
+Mon, 05 Dec 2016 20:20:56 GMT
+
+### Patches
+
+- DetailsList/SelectionZone: selection is no longer cleared when clicking on DIVs that have `tabIndex >= 0` or `role=button`.
 
 ## 0.81.1
 Mon, 05 Dec 2016 04:02:30 GMT

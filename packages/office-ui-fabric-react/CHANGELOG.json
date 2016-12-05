@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "0.81.2",
+      "tag": "office-ui-fabric-react_v0.81.2",
+      "date": "Mon, 05 Dec 2016 20:20:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "e38afa74d5affb3f93f6a04f9c03c6c25a65c788",
+            "comment": "DetailsList/SelectionZone: selection is no longer cleared when clicking on DIVs that have `tabIndex >= 0` or `role=button`."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.81.1",
       "tag": "office-ui-fabric-react_v0.81.1",
       "date": "Mon, 05 Dec 2016 04:02:30 GMT",
