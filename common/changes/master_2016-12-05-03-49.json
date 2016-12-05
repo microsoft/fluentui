@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "CommandBar: added `max-width: 100%` to prevent horizontal scroll scenarios.",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
