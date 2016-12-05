@@ -9,7 +9,7 @@
 let path = require('path');
 let fs = require('fs');
 let argv = require('yargs').argv;
-let { execSync } = require('child_process');
+let execSync = require('child_process').execSync;
 let GitHubApi = require('github');
 let github = new GitHubApi({ debug: false });
 
