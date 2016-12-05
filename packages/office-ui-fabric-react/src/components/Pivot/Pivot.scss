@@ -68,6 +68,11 @@
     visibility: hidden;
   }
 
+  .ms-Pivot-text,
+  .ms-Pivot-count {
+    display: inline-block;
+  }
+
   // Spacing between text and count
   .ms-Pivot-count {
     @include margin-left(4px);
