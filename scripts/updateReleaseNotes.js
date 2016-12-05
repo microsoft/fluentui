@@ -11,7 +11,6 @@ let fs = require('fs');
 let argv = require('yargs').argv;
 let execSync = require('child_process').execSync;
 let GitHubApi = require('github');
-let github = new GitHubApi({ debug: false });
 
 const EOL = '\n';
 
@@ -33,6 +32,8 @@ if (!SHOULD_APPLY) {
 }
 
 // Authenticate with github.
+let github = new GitHubApi({ debug: argv.debug });
+
 github.authenticate({
   type: 'token',
   token: argv.token
@@ -198,7 +199,13 @@ function updateReleaseNotes(shouldPatchChangelog) {
           console.log(`Creating release notes for ${entry.name} ${entry.version}`);
           count++;
           if (SHOULD_APPLY) {
-            github.repos.editRelease(releaseDetails);
+            github.repos.editRelease(releaseDetails, (err, cb) => {
+              if (err) {
+                throw new Error(`Failed to commit release notes for ${entry.name} ${entry.version}.${EOL}${err}`);
+              }
+
+              console.log(`Successfully updated release notes for ${entry.name} ${entry.version}`);
+            });
           }
         }
       }
