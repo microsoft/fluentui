@@ -153,8 +153,8 @@ export function isElementVisible(element: HTMLElement): boolean {
 
 export function isElementTabbable(element: HTMLElement): boolean {
 
-  // If this element is disabled, it is not considered tabbable.
-  if ((element as HTMLButtonElement).disabled) {
+  // If this element is null or is disabled, it is not considered tabbable.
+  if (!element || (element as HTMLButtonElement).disabled) {
     return false;
   }
 

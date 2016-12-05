@@ -54,6 +54,11 @@ describe('isElementVisible', () => {
 });
 
 describe('isElementTabbable', () => {
+
+  it('returns false on null', () => {
+    expect(isElementVisible(null)).is.false;
+  });
+
   it('returns false on normal divs', () => {
     let div = document.createElement('div');
 
