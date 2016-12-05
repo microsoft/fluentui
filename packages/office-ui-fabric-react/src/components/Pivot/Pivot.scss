@@ -68,6 +68,11 @@
     visibility: hidden;
   }
 
+  // Spacing between text and count
+  .ms-Pivot-count {
+    @include margin-left(4px);
+  }
+
   //== State: Selected
   &.is-selected {
     font-weight: $ms-font-weight-semibold;
@@ -129,10 +134,6 @@
 .ms-Pivot.ms-Pivot--large {
   .ms-Pivot-link {
     font-size: $ms-font-size-l;
-
-    .ms-Pivot-count {
-      @include margin-left(4px);
-    }
   }
 
   .ms-Pivot-link.ms-Pivot-link--overflow {
