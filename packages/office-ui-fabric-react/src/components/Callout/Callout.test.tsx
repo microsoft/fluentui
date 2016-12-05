@@ -133,7 +133,7 @@ describe('Callout', () => {
     expect(threwException).to.be.false;
   });
 
-  it('passes event to onDismiss prop', () => {
+  it('passes event to onDismiss prop', (done) => {
     let threwException: boolean = false;
     let gotEvent: boolean = false;
     let onDismiss = (ev?: any) => {
@@ -141,6 +141,7 @@ describe('Callout', () => {
         gotEvent = true;
       }
     };
+
     // In order to have eventlisteners that have been added to the window to be called the JSX needs
     // to be rendered into the real dom rather than the testutil simulated dom.
     let root = document.createElement('div');
@@ -157,7 +158,7 @@ describe('Callout', () => {
             >
             <div>
               Content
-                        </div>
+            </div>
           </Callout>
         </div>, root
       );
@@ -168,9 +169,17 @@ describe('Callout', () => {
 
     let focusTarget = document.querySelector('#focustarget') as HTMLButtonElement;
 
-    focusTarget.focus();
+    // Move focus
+    setTimeout(() => {
+      try {
+        focusTarget.focus();
+        expect(gotEvent).to.be.eq(true, 'Event did not get passed to dismiss event');
+      } catch (e) {
+        done(e);
+      }
 
-    expect(gotEvent).to.be.eq(true, 'Event did not get passed to dismiss event');
+      done();
+    }, 100);
   });
 
 });
