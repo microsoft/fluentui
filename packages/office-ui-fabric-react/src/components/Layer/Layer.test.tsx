@@ -62,7 +62,7 @@ describe('Layer', () => {
       }
     }
 
-    let app = ReactTestUtils.renderIntoDocument(<App />) as React.ReactInstance;;
+    let app = ReactTestUtils.renderIntoDocument(<App />) as React.ReactInstance;
     let appElement = ReactDOM.findDOMNode(app);
     let parentElement = appElement.querySelector('#parent');
 

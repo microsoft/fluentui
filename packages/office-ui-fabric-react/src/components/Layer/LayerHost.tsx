@@ -1,12 +1,11 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import {
   BaseComponent,
   css,
   getNativeProps,
   divProperties
 } from '../../Utilities';
-import { ILayerProps, ILayerRenderer } from './Layer.Props';
+import { ILayerRenderer } from './Layer.Props';
 import { ILayerHostProps } from './LayerHost.Props';
 import './LayerHost.scss';
 

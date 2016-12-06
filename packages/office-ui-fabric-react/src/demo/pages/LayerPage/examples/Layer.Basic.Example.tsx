@@ -55,7 +55,6 @@ export class LayerBasicExample extends BaseComponent<any, any> {
     };
   }
 
-
   public render() {
     let { showLayer } = this.state;
 
@@ -79,4 +78,3 @@ export class LayerBasicExample extends BaseComponent<any, any> {
     );
   }
 }
-
