@@ -2,33 +2,36 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import { Fabric } from '../../Fabric';
-import { ILayerProps } from './Layer.Props';
-import { BaseComponent, getId, getDocument, setVirtualParent } from '../../Utilities';
+import { ILayerProps, ILayerRenderer } from './Layer.Props';
+import { css, BaseComponent, getDocument, setVirtualParent } from '../../Utilities';
 import './Layer.scss';
 
 export class Layer extends BaseComponent<ILayerProps, {}> {
+  public static contextTypes = {
+    layerRenderer: React.PropTypes.object
+  };
 
   public static defaultProps = {
     onLayerMounted: () => undefined
   };
 
+  public context: {
+    layerRenderer: ILayerRenderer
+  };
+
   private _rootElement: HTMLElement;
   private _layerElement: HTMLElement;
-  private _id: string;
-
-  constructor(props?: ILayerProps) {
-    super(props);
-
-    this._id = getId();
-  }
 
   public componentDidMount() {
+    const container: Node = this._getContainer();
     const doc = getDocument(this._rootElement);
 
     this._layerElement = doc.createElement('div');
-    this._layerElement.className = 'ms-Layer';
-    doc.body.appendChild(this._layerElement);
+    this._layerElement.className = css('ms-Layer', {
+      'ms-Layer--fixed': !this.context.layerRenderer
+    });
 
+    container.appendChild(this._layerElement);
     setVirtualParent(this._layerElement, this._rootElement);
 
     this.componentDidUpdate();
@@ -42,7 +45,7 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
   public componentDidUpdate() {
     ReactDOM.unstable_renderSubtreeIntoContainer(
       this,
-      <Fabric style={ { visibility: 'visible' } }>
+      <Fabric className='ms-Layer-content'>
         { this.props.children }
       </Fabric>,
       this._layerElement,
@@ -58,4 +61,9 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
         />
     );
   }
+
+  private _getContainer(): Node {
+    return this.context.layerRenderer ? this.context.layerRenderer.getContainer() : getDocument(this._rootElement).body;
+  }
+
 }
