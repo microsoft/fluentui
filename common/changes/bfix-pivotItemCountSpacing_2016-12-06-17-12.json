@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Pivot: Add space between text and count (if used) for PivotItem. Also fixes rtl display of text and count.",
+      "type": "patch"
+    }
+  ],
+  "email": "cschleid@microsoft.com"
+}
