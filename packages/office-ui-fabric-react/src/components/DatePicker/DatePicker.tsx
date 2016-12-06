@@ -56,6 +56,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     textField: TextField;
   };
 
+  private _calendar: Calendar;
   private _datepicker: HTMLDivElement;
   private _preventFocusOpeningPicker: boolean;
   private _focusOnSelectedDateOnUpdate: boolean;
@@ -123,7 +124,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             targetElement={ this._datepicker }
             directionalHint={ DirectionalHint.bottomLeftEdge }
             onDismiss={ this._calendarDismissed }
-            setInitialFocus={ false }
+            onPositioned={ this._onCalloutPositioned }
             >
             <Calendar
               onSelectDate={ this._onSelectDate }
@@ -132,7 +133,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               value={ selectedDate }
               firstDayOfWeek={ firstDayOfWeek }
               strings={ strings }
-              shouldFocusOnMount={ true }
+              ref={ this._resolveRef('_calendar') }
               >
             </Calendar>
           </Callout>
@@ -155,6 +156,11 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
       onSelectDate(date);
     }
   };
+
+  @autobind
+  private _onCalloutPositioned() {
+    this._calendar.focus();
+  }
 
   @autobind
   private _onTextFieldFocus(ev: React.FocusEvent<HTMLElement>) {

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
   DayOfWeek,
+  ICalendar,
   ICalendarProps
 } from './Calendar.Props';
 import { CalendarDay } from './CalendarDay';
@@ -19,14 +20,13 @@ export interface ICalendarState {
   selectedDate?: Date;
 }
 
-export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> {
+export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> implements ICalendar {
   public static defaultProps: ICalendarProps = {
     onSelectDate: null,
     onDismiss: null,
     isMonthPickerVisible: true,
     value: null,
     firstDayOfWeek: DayOfWeek.Sunday,
-    shouldFocusOnMount: true,
     strings: null
   };
 
@@ -56,12 +56,6 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> {
     this.setState({
       selectedDate: value || new Date()
     });
-  }
-
-  public componentDidMount() {
-    if (this.props.shouldFocusOnMount) {
-      this.refs.dayPicker.focus();
-    }
   }
 
   public componentDidUpdate() {
@@ -107,6 +101,12 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> {
         </div>
       </div>
     );
+  }
+
+  public focus() {
+    if (this.refs.dayPicker) {
+      this.refs.dayPicker.focus();
+    }
   }
 
   @autobind

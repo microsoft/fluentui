@@ -19,7 +19,7 @@ import { BaseComponent } from '../../common/BaseComponent';
 import './Callout.scss';
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
-const OFF_SCREEN_POSITION = { top: -9999, left: 0 };
+const OFF_SCREEN_STYLE = { opacity: 0 };
 const BORDER_WIDTH: number = 1;
 const SPACE_FROM_EDGE: number = 8;
 export interface ICalloutState {
@@ -118,7 +118,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
               className,
               slideDirectionalClassName ? `ms-u-${slideDirectionalClassName}` : ''
             ) }
-          style={ positions ? positions.callout : OFF_SCREEN_POSITION }
+          style={ positions ? positions.callout : OFF_SCREEN_STYLE }
           ref={ this._resolveRef('_calloutElement') }
           >
 
@@ -161,9 +161,12 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
   protected _dismissOnLostFocus(ev: Event) {
     let target = ev.target as HTMLElement;
-    if (ev.target !== this._targetWindow &&
-      this._hostElement &&
-      !elementContains(this._hostElement, target) &&
+    let clickedOutsideCallout = this._hostElement && !elementContains(this._hostElement, target);
+
+    if (
+      (!this._target && clickedOutsideCallout) ||
+      ev.target !== this._targetWindow &&
+      clickedOutsideCallout &&
       ((this._target as MouseEvent).stopPropagation ||
         (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target))))) {
       this.dismiss(ev);
@@ -181,11 +184,15 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   @autobind
   protected _onComponentDidMount() {
     // This is added so the callout will dismiss when the window is scrolled
-    // but not when something inside the callout is scrolled.
-    this._events.on(this._targetWindow, 'scroll', this._dismissOnScroll, true);
-    this._events.on(this._targetWindow, 'resize', this.dismiss, true);
-    this._events.on(this._targetWindow, 'focus', this._dismissOnLostFocus, true);
-    this._events.on(this._targetWindow, 'click', this._dismissOnLostFocus, true);
+    // but not when something inside the callout is scrolled. The delay seems
+    // to be required to avoid React firing an async focus event in IE from
+    // the target changing focus quickly prior to rendering the callout.
+    this._async.setTimeout(() => {
+      this._events.on(this._targetWindow, 'scroll', this._dismissOnScroll, true);
+      this._events.on(this._targetWindow, 'resize', this.dismiss, true);
+      this._events.on(this._targetWindow, 'focus', this._dismissOnLostFocus, true);
+      this._events.on(this._targetWindow, 'click', this._dismissOnLostFocus, true);
+    }, 0);
 
     if (this.props.onLayerMounted) {
       this.props.onLayerMounted();
