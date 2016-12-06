@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Persona: remove unneeded width property from .ms-Persona-detail",
+      "type": "patch"
+    }
+  ],
+  "email": "miclo@microsoft.com"
+}
