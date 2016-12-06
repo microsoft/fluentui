@@ -7,7 +7,6 @@ import {
 } from '../../Utilities';
 import { ILayerRenderer } from './Layer.Props';
 import { ILayerHostProps } from './LayerHost.Props';
-import './LayerHost.scss';
 
 export interface ILayerHostContext {
   layerRenderer: ILayerRenderer;
