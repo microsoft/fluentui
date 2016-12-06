@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IPivotProps } from './Pivot.Props';
-import { IPivotItemProps} from './PivotItem.Props';
+import { IPivotItemProps } from './PivotItem.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { KeyCodes } from '../../utilities/KeyCodes';
 import { PivotItem } from './PivotItem';
@@ -118,7 +118,7 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
         role='tab'
         aria-controls={ id + '-panel' }
         aria-selected={ this.state.selectedKey === itemKey }>
-        { link.linkText }
+        <span className='ms-Pivot-text'>{ link.linkText }</span>
         { countText }
       </a>
     );

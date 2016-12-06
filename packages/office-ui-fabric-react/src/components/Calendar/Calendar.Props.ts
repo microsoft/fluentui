@@ -1,6 +1,11 @@
 import * as React from 'react';
 import { Calendar } from './Calendar';
 
+export interface ICalendar {
+  /** Sets focus to the selected date. */
+  focus(): void;
+}
+
 export interface ICalendarProps extends React.Props<Calendar> {
   /**
   * Callback issued when a date is selected
@@ -30,8 +35,9 @@ export interface ICalendarProps extends React.Props<Calendar> {
   firstDayOfWeek?: DayOfWeek;
 
   /**
-   * Whether to focus on the calendar when mounted.
-   * @default true
+   * @deprecated
+   * This property has been removed at 0.80.0 in place of the focus method, to be removed @ 1.0.0.
+   *
    */
   shouldFocusOnMount?: boolean;
 
