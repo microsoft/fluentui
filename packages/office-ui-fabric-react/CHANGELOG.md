@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 05 Dec 2016 20:20:56 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Dec 2016 04:07:11 GMT and should not be manually modified.
+
+## 0.81.3
+Wed, 07 Dec 2016 04:07:11 GMT
+
+### Patches
+
+- Pivot: Add space between text and count (if used) for PivotItem. Also fixes rtl display of text and count.
+- Persona: remove unneeded width property from .ms-Persona-detail
 
 ## 0.81.2
 Mon, 05 Dec 2016 20:20:56 GMT
