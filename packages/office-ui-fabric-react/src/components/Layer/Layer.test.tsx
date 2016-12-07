@@ -11,7 +11,7 @@ let { expect } = chai;
 
 describe('Layer', () => {
 
-  it('can pass context through', () => {
+  it('can render in a targeted LayerHost and pass context through', () => {
 
     class Child extends React.Component<{}, {}> {
       public static contextTypes = {
@@ -41,7 +41,7 @@ describe('Layer', () => {
       public render() {
         return (
           <div id='parent'>
-            <Layer>
+            <Layer hostId='foo'>
               <Child />
             </Layer>
           </div>
@@ -54,24 +54,31 @@ describe('Layer', () => {
       public render() {
         return (
           <div id='app'>
-            <LayerHost>
-              <Parent />
-            </LayerHost>
+            <Parent />
+            <LayerHost id='foo' />
           </div>
         );
       }
     }
 
-    let app = ReactTestUtils.renderIntoDocument(<App />) as React.ReactInstance;
-    let appElement = ReactDOM.findDOMNode(app);
-    let parentElement = appElement.querySelector('#parent');
+    let appElement = document.createElement('div');
 
-    expect(parentElement).is.not.empty;
-    expect(parentElement.ownerDocument).is.not.empty;
+    try {
+      document.body.appendChild(appElement);
+      ReactDOM.render(<App />, appElement);
 
-    let childElement = appElement.querySelector('#child');
+      let parentElement = appElement.querySelector('#parent');
 
-    expect(childElement.textContent).equals('foo');
+      expect(parentElement).is.not.empty;
+      expect(parentElement.ownerDocument).is.not.empty;
+
+      let childElement = appElement.querySelector('#child');
+
+      expect(childElement.textContent).equals('foo');
+    } finally {
+      ReactDOM.unmountComponentAtNode(appElement);
+      appElement.remove();
+    }
   });
 
 });
