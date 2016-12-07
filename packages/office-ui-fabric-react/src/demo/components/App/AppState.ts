@@ -3,6 +3,7 @@ import { ButtonPage } from '../../pages/ButtonPage/ButtonPage';
 import { CalloutPage } from '../../pages/CalloutPage/CalloutPage';
 import { ColorPickerPage } from '../../pages/ColorPickerPage/ColorPickerPage';
 import { DocumentCardPage } from '../../pages/DocumentCardPage/DocumentCardPage';
+import { CalendarPage } from '../../pages/CalendarPage/CalendarPage';
 import { CheckboxPage } from '../../pages/CheckboxPage/CheckboxPage';
 import { ChoiceGroupPage } from '../../pages/ChoiceGroupPage/ChoiceGroupPage';
 import { CommandBarPage } from '../../pages/CommandBarPage/CommandBarPage';
@@ -85,6 +86,13 @@ export const AppState: IAppState = {
           name: 'Button',
           status: ExampleStatus.beta,
           url: '#/examples/button'
+        },
+        {
+          component: CalendarPage,
+          key: 'Calendar',
+          name: 'Calendar',
+          status: ExampleStatus.started,
+          url: '#/examples/calendar'
         },
         {
           component: CalloutPage,

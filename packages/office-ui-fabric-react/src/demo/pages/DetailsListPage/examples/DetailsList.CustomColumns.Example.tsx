@@ -41,8 +41,8 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
         columns={ columns }
         onRenderItemColumn={ _renderItemColumn }
         onColumnHeaderClick={ this._onColumnClick.bind(this) }
-        onItemInvoked={ (item, index) => alert(`Item ${ item.name } at index ${ index } has been invoked.`) }
-        onColumnHeaderContextMenu={ (column, ev) => console.log(`column ${ column.key } contextmenu opened.`) } />
+        onItemInvoked={ (item, index) => alert(`Item ${item.name} at index ${index} has been invoked.`) }
+        onColumnHeaderContextMenu={ (column, ev) => console.log(`column ${column.key} contextmenu opened.`) } />
     );
   }
 
@@ -106,7 +106,7 @@ function _renderItemColumn(item, index, column) {
       return <Link href='#'>{ fieldContent }</Link>;
 
     case 'color':
-      return <span style={ { color: fieldContent } }>{ fieldContent }</span>;
+      return <span data-selection-disabled={ true } style={ { color: fieldContent } }>{ fieldContent }</span>;
 
     default:
       return <span>{ fieldContent }</span>;

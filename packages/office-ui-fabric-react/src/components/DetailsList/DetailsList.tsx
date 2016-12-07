@@ -61,7 +61,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   };
 
   public refs: {
-    [ key: string]: React.ReactInstance,
+    [key: string]: React.ReactInstance,
     header: DetailsHeader,
     root: HTMLElement,
     groupedList: GroupedList,
@@ -233,7 +233,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       // with JAWS.
       <div
         ref='root'
-        className={css('ms-DetailsList', className, {
+        className={ css('ms-DetailsList', className, {
           'is-fixed': layoutMode === DetailsListLayoutMode.fixedColumns,
           'is-horizontalConstrained': constrainMode === ConstrainMode.horizontalConstrained
         }) }

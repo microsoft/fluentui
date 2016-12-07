@@ -6,18 +6,20 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   autobind,
   css,
-  elementContains
+  elementContains,
+  getWindow,
+  getDocument
 } from '../../Utilities';
-import { getRelativePositions, IPositionInfo } from '../../utilities/positioning';
+import { getRelativePositions, IPositionInfo, IPositionProps } from '../../utilities/positioning';
 import { IRectangle } from '../../common/IRectangle';
 import { focusFirstChild } from '../../utilities/focus';
 import { assign } from '../../Utilities';
-import { Popup } from '../Popup/index';
+import { Popup } from '../../Popup';
 import { BaseComponent } from '../../common/BaseComponent';
 import './Callout.scss';
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
-const OFF_SCREEN_POSITION = { top: -9999, left: 0 };
+const OFF_SCREEN_STYLE = { opacity: 0 };
 const BORDER_WIDTH: number = 1;
 const SPACE_FROM_EDGE: number = 8;
 export interface ICalloutState {
@@ -30,8 +32,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
   public static defaultProps = {
     isBeakVisible: true,
-    beakWidth: 28,
-    gapSpace: 0,
+    beakWidth: 16,
+    gapSpace: 16,
     directionalHint: DirectionalHint.bottomAutoEdge
   };
 
@@ -42,9 +44,10 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   private _bounds: IRectangle;
   private _maxHeight: number;
   private _positionAttempts: number;
+  private _target: HTMLElement | MouseEvent;
 
   constructor(props: ICalloutProps) {
-    super(props, {'beakStyle': 'beakWidth'});
+    super(props, { 'beakStyle': 'beakWidth' });
 
     this._didSetInitialFocus = false;
     this.state = {
@@ -52,12 +55,6 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       slideDirectionalClassName: null,
       calloutElementRect: null
     };
-    // This is used to allow the Callout to appear on a window other than the one the javascript is running in.
-    if (props.targetElement && props.targetElement.ownerDocument && props.targetElement.ownerDocument.defaultView) {
-      this._targetWindow = props.targetElement.ownerDocument.defaultView;
-    } else {
-      this._targetWindow = window;
-    }
     this._positionAttempts = 0;
   }
 
@@ -66,12 +63,34 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     this._updatePosition();
   }
 
+  public componentWillMount() {
+    let target = this.props.targetElement ? this.props.targetElement : this.props.target;
+    this._setTargetWindowAndElement(target);
+  }
+
+  public componentWillUpdate(newProps: ICalloutProps) {
+    if (newProps.targetElement !== this.props.targetElement || newProps.target !== this.props.target) {
+      let newTarget = newProps.targetElement ? newProps.targetElement : newProps.target;
+      this._setTargetWindowAndElement(newTarget);
+    }
+  }
   public componentDidMount() {
     this._onComponentDidMount();
   }
 
   public render() {
-    let { className, targetElement, isBeakVisible, beakStyle, children, beakWidth } = this.props;
+    // If there is no target window then we are likely in server side rendering and we should not render anything.
+    if (!this._targetWindow) {
+      return null;
+    }
+    let {
+      className,
+      target,
+      targetElement,
+      isBeakVisible,
+      beakStyle,
+      children,
+      beakWidth } = this.props;
     let { positions, slideDirectionalClassName } = this.state;
     let beakStyleWidth = beakWidth;
 
@@ -89,7 +108,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     };
 
     let contentMaxHeight: number = this._getMaxHeight();
-    let beakVisible: boolean = isBeakVisible && !!targetElement;
+    let beakVisible: boolean = isBeakVisible && (!!targetElement || !!target);
     let content = (
       <div ref={ this._resolveRef('_hostElement') } className={ 'ms-Callout-container' }>
         <div
@@ -99,7 +118,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
               className,
               slideDirectionalClassName ? `ms-u-${slideDirectionalClassName}` : ''
             ) }
-          style={ positions ? positions.callout : OFF_SCREEN_POSITION }
+          style={ positions ? positions.callout : OFF_SCREEN_STYLE }
           ref={ this._resolveRef('_calloutElement') }
           >
 
@@ -112,10 +131,9 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
           { beakVisible ?
             (<div className='ms-Callout-beakCurtain' />) :
             (null) }
-
           <Popup
             className='ms-Callout-main'
-            onDismiss={ (ev: any) => this.dismiss() }
+            onDismiss={ this.dismiss }
             shouldRestoreFocus={ true }
             style={ { maxHeight: contentMaxHeight } }>
             { children }
@@ -126,23 +144,32 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     return content;
   }
 
-  public dismiss() {
+  @autobind
+  public dismiss(ev?: Event | React.MouseEvent<HTMLElement>) {
     let { onDismiss } = this.props;
 
     if (onDismiss) {
-      onDismiss();
+      onDismiss(ev);
+    }
+  }
+
+  protected _dismissOnScroll(ev: Event) {
+    if (this.state.positions) {
+      this._dismissOnLostFocus(ev);
     }
   }
 
   protected _dismissOnLostFocus(ev: Event) {
-    let { targetElement } = this.props;
     let target = ev.target as HTMLElement;
+    let clickedOutsideCallout = this._hostElement && !elementContains(this._hostElement, target);
 
-    if (ev.target !== this._targetWindow &&
-      this._hostElement &&
-      !elementContains(this._hostElement, target) &&
-      (!targetElement || !elementContains(targetElement, target))) {
-      this.dismiss();
+    if (
+      (!this._target && clickedOutsideCallout) ||
+      ev.target !== this._targetWindow &&
+      clickedOutsideCallout &&
+      ((this._target as MouseEvent).stopPropagation ||
+        (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target))))) {
+      this.dismiss(ev);
     }
   }
 
@@ -157,11 +184,15 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   @autobind
   protected _onComponentDidMount() {
     // This is added so the callout will dismiss when the window is scrolled
-    // but not when something inside the callout is scrolled.
-    this._events.on(this._targetWindow, 'scroll', this._dismissOnLostFocus, true);
-    this._events.on(this._targetWindow, 'resize', this.dismiss, true);
-    this._events.on(this._targetWindow, 'focus', this._dismissOnLostFocus, true);
-    this._events.on(this._targetWindow, 'click', this._dismissOnLostFocus, true);
+    // but not when something inside the callout is scrolled. The delay seems
+    // to be required to avoid React firing an async focus event in IE from
+    // the target changing focus quickly prior to rendering the callout.
+    this._async.setTimeout(() => {
+      this._events.on(this._targetWindow, 'scroll', this._dismissOnScroll, true);
+      this._events.on(this._targetWindow, 'resize', this.dismiss, true);
+      this._events.on(this._targetWindow, 'focus', this._dismissOnLostFocus, true);
+      this._events.on(this._targetWindow, 'click', this._dismissOnLostFocus, true);
+    }, 0);
 
     if (this.props.onLayerMounted) {
       this.props.onLayerMounted();
@@ -176,9 +207,15 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     let calloutElement: HTMLElement = this._calloutElement;
 
     if (hostElement && calloutElement) {
-      let currentProps: ICalloutProps;
+      let currentProps: IPositionProps;
       currentProps = assign(currentProps, this.props);
       currentProps.bounds = this._getBounds();
+      // Temporary to be removed when targetElement is removed. Currently deprecated.
+      if (this.props.targetElement) {
+        currentProps.targetElement = this._target as HTMLElement;
+      } else {
+        currentProps.target = this._target;
+      }
       let positionInfo: IPositionInfo = getRelativePositions(currentProps, hostElement, calloutElement);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
@@ -198,9 +235,12 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
           },
           slideDirectionalClassName: positionInfo.directionalClassName
         });
+      } else {
+        this._positionAttempts = 0;
+        if (this.props.onPositioned) {
+          this.props.onPositioned();
+        }
       }
-    } else {
-      this._positionAttempts = 0;
     }
   }
 
@@ -228,5 +268,24 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       this._maxHeight = this._getBounds().height - BORDER_WIDTH * 2;
     }
     return this._maxHeight;
+  }
+
+  private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent): void {
+    if (target) {
+      if (typeof target === 'string') {
+        let currentDoc: Document = getDocument();
+        this._target = currentDoc ? currentDoc.querySelector(target) as HTMLElement : null;
+        this._targetWindow = getWindow();
+      } else if ((target as MouseEvent).stopPropagation) {
+        this._target = target;
+        this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement);
+      } else {
+        let targetElement: HTMLElement = target as HTMLElement;
+        this._target = target;
+        this._targetWindow = getWindow(targetElement);
+      }
+    } else {
+      this._targetWindow = getWindow();
+    }
   }
 }

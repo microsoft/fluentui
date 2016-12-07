@@ -16,12 +16,11 @@ import {
 import './Dropdown.scss';
 
 export interface IDropdownState {
-  isOpen: boolean;
-  selectedIndex: number;
-  isDisabled: boolean;
+  isOpen?: boolean;
+  selectedIndex?: number;
 }
 
-export class Dropdown extends BaseComponent<IDropdownProps, any> {
+export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
 
   public static defaultProps = {
     options: []
@@ -35,53 +34,67 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
     focusZone: FocusZone
   };
 
+  private _focusZone: FocusZone;
   private _optionList: HTMLElement;
   private _dropDown: HTMLDivElement;
   private _dropdownLabel: HTMLElement;
+  private _id: string;
 
   constructor(props?: IDropdownProps) {
     super(props, {
       'isDisabled': 'disabled'
     });
 
+    this._id = getId('Dropdown');
+
+    let selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
+
     this.state = {
-      id: getId('Dropdown'),
       isOpen: false,
-      selectedIndex: this._getSelectedIndex(props.options, props.selectedKey),
-      isDisabled: props.isDisabled !== undefined ? props.isDisabled : props.disabled
+      selectedIndex: this._getSelectedIndex(props.options, selectedKey)
     };
   }
 
   public componentWillReceiveProps(newProps: IDropdownProps) {
-    this.setState({
-      selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey),
-      isDisabled: newProps.isDisabled !== undefined ? newProps.isDisabled : newProps.disabled
-    });
+    if (newProps.selectedKey !== this.props.selectedKey) {
+      this.setState({
+        selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey)
+      });
+    }
+
   }
 
   public render() {
-    let { label, options, onRenderItem = this._onRenderItem } = this.props;
-    let { id, isOpen, selectedIndex, isDisabled } = this.state;
+    let id = this._id;
+    let { label, options, disabled, isDisabled, onRenderItem = this._onRenderItem } = this.props;
+    let { isOpen, selectedIndex } = this.state;
     let selectedOption = options[selectedIndex];
+
+    // Remove this deprecation workaround at 1.0.0
+    if (isDisabled !== undefined) {
+      disabled = isDisabled;
+    }
 
     return (
       <div ref='root'>
-        <label id={ id + '-label' } className='ms-Label' ref={ (dropdownLabel) => this._dropdownLabel = dropdownLabel } >{ label }</label>
+        { label && (
+          <label id={ id + '-label' } className='ms-Label' ref={ (dropdownLabel) => this._dropdownLabel = dropdownLabel } >{ label }</label>
+        ) }
         <div
-          data-is-focusable={ true }
+          data-is-focusable={ disabled }
           ref={ (c): HTMLElement => this._dropDown = c }
           id={ id }
           className={ css('ms-Dropdown', {
-            'is-open': isOpen, 'is-disabled': isDisabled
+            'is-open': isOpen, 'is-disabled': disabled
           }) }
-          tabIndex={ isDisabled ? -1 : 0 }
+          tabIndex={ disabled ? -1 : 0 }
           onKeyDown={ this._onDropdownKeyDown }
           onClick={ this._onDropdownClick }
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='combobox'
           aria-label={ label }
-          aria-activedescendant={ selectedIndex >= 0 ? (id + '-list' + selectedIndex) : (id + '-list') }
-          aria-controls={ id + '-list' }
+          aria-activedescendant={ selectedIndex >= 0 ? (this._id + '-list' + selectedIndex) : (this._id + '-list') }
+          aria-controls={ this._id + '-list' }
           >
           <span className='ms-Dropdown-title'>{ selectedOption ? onRenderItem(selectedOption, this._onRenderItem) : '' }</span>
           <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown'></i>
@@ -95,9 +108,10 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
             targetElement={ this._dropDown }
             directionalHint={ DirectionalHint.bottomLeftEdge }
             onDismiss={ this._onDismiss }
+            onPositioned={ this._onPositioned }
             >
             <FocusZone
-              ref={ fz => fz && fz.focus() }
+              ref={ this._resolveRef('_focusZone') }
               direction={ FocusZoneDirection.vertical }
               defaultActiveElement={ '#' + id + '-list' + selectedIndex }
               >
@@ -160,6 +174,11 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
     return <span>{ item.text }</span>;
   }
 
+  @autobind
+  private _onPositioned() {
+    this._focusZone.focus();
+  }
+
   private _onItemClick(index) {
     this.setSelectedIndex(index);
     this.setState({
@@ -217,8 +236,15 @@ export class Dropdown extends BaseComponent<IDropdownProps, any> {
 
   @autobind
   private _onDropdownClick() {
-    let { isDisabled, isOpen } = this.state;
-    if (!isDisabled) {
+    let { disabled, isDisabled } = this.props;
+    let { isOpen } = this.state;
+
+    // Remove this deprecation workaround at 1.0.0
+    if (isDisabled !== undefined) {
+      disabled = isDisabled;
+    }
+
+    if (!disabled) {
       this.setState({
         isOpen: !isOpen
       });

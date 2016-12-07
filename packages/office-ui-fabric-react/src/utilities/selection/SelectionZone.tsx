@@ -3,8 +3,10 @@ import {
   BaseComponent,
   KeyCodes,
   autobind,
-  getParent
- } from '../../Utilities';
+  getParent,
+  getDocument,
+  getWindow
+} from '../../Utilities';
 import { SelectionLayout } from './SelectionLayout';
 import {
   ISelection,
@@ -12,6 +14,9 @@ import {
   SelectionDirection,
   SelectionMode
 } from './interfaces';
+import {
+  isElementTabbable
+} from '../../utilities/focus';
 
 // Selection definitions:
 //
@@ -28,6 +33,7 @@ import {
 // If you click index 8
 //    The anchor and focus are set to 8.
 
+const SELECTION_DISABLED_ATTRIBUTE_NAME = 'data-selection-disabled';
 const SELECTION_INDEX_ATTRIBUTE_NAME = 'data-selection-index';
 const SELECTION_TOGGLE_ATTRIBUTE_NAME = 'data-selection-toggle';
 const SELECTION_INVOKE_ATTRIBUTE_NAME = 'data-selection-invoke';
@@ -60,8 +66,11 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _shouldIgnoreFocus: boolean;
 
   public componentDidMount() {
+    let win = getWindow(this.refs.root);
+
     // Track the latest modifier keys globally.
-    this._events.on(window, 'keydown keyup', this._updateModifiers);
+    this._events.on(win, 'keydown keyup', this._updateModifiers);
+    this._events.on(win, 'click', this._tryClearOnEmptyClick);
   }
 
   public render() {
@@ -78,7 +87,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
           onFocusCapture: this._onFocus
         } }
         >
-        {this.props.children }
+        { this.props.children }
       </div>
     );
   }
@@ -157,6 +166,11 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     let target = ev.target as HTMLElement;
     let itemRoot = this._findItemRoot(target);
 
+    // No-op if selection is disabled
+    if (this._isSelectionDisabled(target)) {
+      return;
+    }
+
     while (target !== this.refs.root) {
       if (this._hasAttribute(target, SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME)) {
         this._onToggleAllClick(ev);
@@ -184,6 +198,17 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
   }
 
+  private _isSelectionDisabled(target: HTMLElement): boolean {
+    while (target !== this.refs.root) {
+      if (this._hasAttribute(target, SELECTION_DISABLED_ATTRIBUTE_NAME)) {
+        return true;
+      }
+      target = getParent(target);
+    }
+
+    return false;
+  }
+
   /**
    * In multi selection, if you double click within an item's root (but not within the invoke element or input elements),
    * we should execute the invoke handler.
@@ -191,6 +216,11 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   @autobind
   private _onDoubleClick(ev: React.MouseEvent<HTMLElement>) {
     let target = ev.target as HTMLElement;
+
+    if (this._isSelectionDisabled(target)) {
+      return;
+    }
+
     let { selectionMode, onItemInvoked } = this.props;
     let itemRoot = this._findItemRoot(target);
 
@@ -219,6 +249,11 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     this._updateModifiers(ev);
 
     let target = ev.target as HTMLElement;
+
+    if (this._isSelectionDisabled(target)) {
+      return;
+    }
+
     let { selection, selectionMode } = this.props;
     let isSelectAllKey = ev.which === KeyCodes.a && (this._isCtrlPressed || this._isMetaPressed);
     let isClearSelectionKey = ev.which === KeyCodes.escape;
@@ -338,6 +373,12 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     this._clearAndSelectIndex(index);
   }
 
+  private _tryClearOnEmptyClick(ev: MouseEvent) {
+    if (this._isNonHandledClick(ev.target as HTMLElement)) {
+      this.props.selection.setAllSelected(false);
+    }
+  }
+
   private _clearAndSelectIndex(index: number) {
     let { selection } = this.props;
     let isAlreadySingleSelected = selection.getSelectedCount() === 1 && selection.isIndexSelected(index);
@@ -367,7 +408,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
       let indexValue = target.getAttribute(SELECTION_INDEX_ATTRIBUTE_NAME);
       let index = Number(indexValue);
 
-      if (indexValue !== null && index >= 0 && index < selection.getItems().length ) {
+      if (indexValue !== null && index >= 0 && index < selection.getItems().length) {
         break;
       }
 
@@ -385,7 +426,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     return Number(itemRoot.getAttribute(SELECTION_INDEX_ATTRIBUTE_NAME));
   }
 
-  private _hasAttribute(element: HTMLElement, attributeName: string) {
+  private _hasAttribute(element: HTMLElement, attributeName: string): boolean {
     let isToggle = false;
 
     while (!isToggle && element !== this.refs.root) {
@@ -396,8 +437,24 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     return isToggle;
   }
 
-  private _isInputElement(element: HTMLElement) {
+  private _isInputElement(element: HTMLElement): boolean {
     return element.tagName === 'INPUT' || element.tagName === 'TEXTAREA';
+  }
+
+  private _isNonHandledClick(element: HTMLElement): boolean {
+    let doc = getDocument();
+
+    if (doc && element) {
+      while (element && element !== doc.documentElement) {
+        if (isElementTabbable(element)) {
+          return false;
+        }
+
+        element = getParent(element);
+      }
+    }
+
+    return true;
   }
 
 }

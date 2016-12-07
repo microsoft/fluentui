@@ -5,16 +5,16 @@ import {
   ComponentPage
 } from '../../components/index';
 
-import { FacepileBasicExample } from './examples/Facepile.Basic.Example';
 import { FacepileAddFaceExample } from './examples/Facepile.AddFace.Example';
+import { FacepileBasicExample } from './examples/Facepile.Basic.Example';
 import { FacepileOverflowExample } from './examples/Facepile.Overflow.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
+const FacepileAddFaceExampleCode = require('./examples/Facepile.AddFace.Example.tsx');
 const FacepileBasicExampleCode = require('./examples/Facepile.Basic.Example.tsx');
 const FacepileOverflowExampleCode = require('./examples/Facepile.Overflow.Example.tsx');
-const FacepileAddFaceExampleCode = require('./examples/Facepile.AddFace.Example.tsx');
 
 export class FacepilePage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -31,13 +31,13 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, any> 
         componentName='FacepileExample'
         exampleCards={
           <div>
-            <ExampleCard title='Facepile' code={FacepileBasicExampleCode}>
+            <ExampleCard title='Facepile with Extras' code={ FacepileBasicExampleCode }>
               <FacepileBasicExample />
             </ExampleCard>
-            <ExampleCard title='Facepile with Overflow' code={FacepileOverflowExampleCode}>
+            <ExampleCard title='Facepile with Overflow' code={ FacepileOverflowExampleCode }>
               <FacepileOverflowExample />
             </ExampleCard>
-            <ExampleCard title='Facepile with Add Face' code={FacepileAddFaceExampleCode}>
+            <ExampleCard title='Facepile with Add Face' code={ FacepileAddFaceExampleCode }>
               <FacepileAddFaceExample />
             </ExampleCard>
           </div>

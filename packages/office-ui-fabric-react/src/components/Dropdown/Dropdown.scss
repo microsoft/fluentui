@@ -158,8 +158,6 @@ $DropDown-item-height: 36px;
   background-color: $ms-color-white;
   list-style-type: none;
   width: 100%;
-  max-height: 200px;
-  overflow-y: scroll;
   top: auto;
   right: auto;
   bottom: auto;
@@ -167,6 +165,7 @@ $DropDown-item-height: 36px;
   max-width: 100%;
   box-shadow: 0 0px 15px -5px rgba(0, 0, 0, 0.4);
   border: 1px solid $ms-color-neutralLight;
+  user-select: none;
 
   &::before {
     content: '';

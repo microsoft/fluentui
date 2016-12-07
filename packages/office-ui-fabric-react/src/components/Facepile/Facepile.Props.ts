@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Facepile } from './Facepile';
 import { IButtonProps } from '../Button/index';
-import { PersonaInitialsColor } from '../Persona/index';
+import { IPersonaProps, PersonaInitialsColor } from '../Persona/index';
 
 export interface IFacepileProps extends React.Props<Facepile> {
   /**
@@ -19,11 +19,21 @@ export interface IFacepileProps extends React.Props<Facepile> {
   /** Button properties for the add face button */
   addButtonProps?: IButtonProps;
 
-  /** Button properties for the chevron button */
+  /**
+   * @deprecated
+   * Deprecated at v0.70, to be removed at >= v1.0.0. User overflowButtonProps instead;
+   * Button properties for the chevron button
+   */
   chevronButtonProps?: IButtonProps;
 
-  /** Properties for the overflow persona */
+  /** Properties for the overflow icon */
   overflowButtonProps?: IButtonProps;
+
+  /** Type of overflow icon to use */
+  overflowButtonType?: OverflowButtonType;
+
+  /** Method to access properties on the underlying Persona control */
+  getPersonaProps?: (persona: IFacepilePersona) => IPersonaProps;
 }
 
 export interface IFacepilePersona extends React.HTMLProps<HTMLButtonElement | HTMLDivElement> {
@@ -69,4 +79,15 @@ export interface IFacepilePersona extends React.HTMLProps<HTMLButtonElement | HT
    * handlers.
    */
   data?: any;
+}
+
+export enum OverflowButtonType {
+  /** No overflow */
+  none,
+  /** +1 overflow icon */
+  descriptive,
+  /** More overflow icon */
+  more,
+  /** Chevron overflow icon */
+  downArrow
 }

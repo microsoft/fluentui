@@ -2,34 +2,39 @@
 
 .ms-Facepile {
   position: relative;
-  height: 32px;
+  min-height: 32px;
   width: auto;
 }
 
-.ms-Facepile-itemBtn {
+.ms-Facepile-clear {
+  clear: both;
+}
+
+.ms-Facepile-itemButton {
   position: relative;
   height: 32px;
-  width: 32px;
+  min-width: 32px;
   line-height: 32px;
   text-align: center;
   @include float(left);
   padding: 0;
   @include margin-right(4px);
+  margin-bottom: 4px;
   outline: transparent;
   border-radius: 50%;
   vertical-align: top;
 }
 
-button.ms-Facepile-itemBtn {
-   display: inline;
-   background: none;
-   padding: 0;
-   cursor: pointer;
-   border: none;
+button.ms-Facepile-itemButton {
+  display: inline;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  border: none;
 }
 
-button.ms-Facepile-addBtn {
-  font-size: $ms-font-size-s;
+button.ms-Facepile-addButton {
+  font-size: $ms-font-size-m;
   color: $ms-color-white;
   background-color: $ms-color-themePrimary;
 
@@ -47,8 +52,13 @@ button.ms-Facepile-addBtn {
   }
 }
 
-button.ms-Facepile-chevronBtn,
-button.ms-Facepile-overflowBtn {
+button.ms-Facepile-overflowButton {
+  font-size: $ms-font-size-m;
+  color: $ms-color-neutralSecondary;
+  background-color: $ms-color-neutralLight;
+}
+
+button.ms-Facepile-descriptiveOverflowButton {
   font-size: $ms-font-size-s;
   color: $ms-color-neutralSecondary;
   background-color: $ms-color-neutralLight;

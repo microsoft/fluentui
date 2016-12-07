@@ -64,12 +64,15 @@
     flex-direction: column;
     flex: 1;
     justify-content: space-between;
-    padding: 12px 0;
   }
 
   .ms-DocumentCardTitle {
-      padding: 0px 16px 8px 16px;
+      padding: 12px 16px 8px 16px;
       @include ms-font-m;
       line-height: 16px;
+  }
+
+  .ms-DocumentCardActivity{
+    padding-bottom: 12px;
   }
 }

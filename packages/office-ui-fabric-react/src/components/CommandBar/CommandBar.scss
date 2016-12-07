@@ -58,6 +58,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   display: inline;
   vertical-align: top;
   line-height: $CommandBar-height;
+  max-width: 100%;
   margin: 0 20px;
 }
 
@@ -136,7 +137,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
     }
   }
 
-  &:hover {
+  &:hover:not[disabled] {
     color: $ms-color-neutralDark;
     background-color: $ms-color-neutralLight;
 
@@ -173,12 +174,24 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   &.is-expanded:hover {
     background-color: $ms-color-neutralQuaternary;
   }
+
+  &[disabled] {
+    color: $ms-color-neutralTertiaryAlt;
+    cursor: default;
+    pointer-events: none;
+    .ms-CommandBarItem-icon {
+      color: $ms-color-neutralTertiaryAlt;
+    }
+  }
 }
 
 .ms-CommandBarItem-icon {
   font-size: $CommandBarItem-fontSize;
-  color: $ms-color-themeDarkAlt;
   padding: 0 4px;
+}
+
+.ms-CommandBarItem-iconColor {
+  color: $ms-color-themeDarkAlt;
 }
 
 .ms-CommandBarItem-chevronDown  {
