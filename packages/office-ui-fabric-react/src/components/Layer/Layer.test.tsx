@@ -3,7 +3,6 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 
-import * as ReactTestUtils from 'react-addons-test-utils';
 import { Layer } from './Layer';
 import { LayerHost } from './LayerHost';
 
