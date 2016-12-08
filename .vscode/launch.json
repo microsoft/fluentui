@@ -8,7 +8,6 @@
       "program": "${workspaceRoot}/node_modules/gulp/bin/gulp.js",
       "stopOnEntry": false,
       "args": [
-        "serve"
       ],
       "cwd": "${workspaceRoot}",
       "runtimeExecutable": null,
