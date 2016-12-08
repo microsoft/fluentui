@@ -111,6 +111,7 @@ export enum IconName {
   OneNoteLogo,
   Org,
   OutlookLogo,
+  Package,
   Page,
   Pause,
   PDF,
