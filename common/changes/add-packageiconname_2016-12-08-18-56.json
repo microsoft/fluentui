@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Adding icon enum",
+      "type": "patch"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}
