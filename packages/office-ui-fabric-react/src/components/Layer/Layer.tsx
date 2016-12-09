@@ -23,7 +23,7 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
   private _hasMounted: boolean;
   /**
    * Used for notifying applicable Layers that a host is available/unavailable and to re-evaluate Layers that
-   * case about the specific host.
+   * care about the specific host.
    */
   public static notifyHostChanged(id: string) {
     if (_layersByHostId[id]) {
