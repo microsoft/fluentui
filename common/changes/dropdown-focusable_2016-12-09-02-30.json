@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Dropdown: data-is-focusable now gets set correctly.",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
