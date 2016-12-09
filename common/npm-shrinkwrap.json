@@ -35,9 +35,9 @@
       "resolved": "https://registry.npmjs.org/@microsoft/gulp-core-build-serve/-/gulp-core-build-serve-1.0.1.tgz"
     },
     "@microsoft/gulp-core-build-typescript": {
-      "version": "1.1.1",
+      "version": "1.1.2",
       "from": "@microsoft/gulp-core-build-typescript@>=1.0.1 <2.0.0",
-      "resolved": "https://registry.npmjs.org/@microsoft/gulp-core-build-typescript/-/gulp-core-build-typescript-1.1.1.tgz",
+      "resolved": "https://registry.npmjs.org/@microsoft/gulp-core-build-typescript/-/gulp-core-build-typescript-1.1.2.tgz",
       "dependencies": {
         "lodash": {
           "version": "4.15.0",
@@ -117,9 +117,9 @@
       "resolved": "https://registry.npmjs.org/@types/q/-/q-0.0.32.tgz"
     },
     "@types/react": {
-      "version": "0.14.52",
+      "version": "0.14.53",
       "from": "@types/react@>=0.14.41 <0.15.0",
-      "resolved": "https://registry.npmjs.org/@types/react/-/react-0.14.52.tgz"
+      "resolved": "https://registry.npmjs.org/@types/react/-/react-0.14.53.tgz"
     },
     "@types/react-addons-test-utils": {
       "version": "0.14.15",
@@ -572,9 +572,9 @@
       "resolved": "https://registry.npmjs.org/camelcase-keys/-/camelcase-keys-2.1.0.tgz"
     },
     "caniuse-db": {
-      "version": "1.0.30000591",
+      "version": "1.0.30000592",
       "from": "caniuse-db@>=1.0.30000488 <2.0.0",
-      "resolved": "https://registry.npmjs.org/caniuse-db/-/caniuse-db-1.0.30000591.tgz"
+      "resolved": "https://registry.npmjs.org/caniuse-db/-/caniuse-db-1.0.30000592.tgz"
     },
     "cardinal": {
       "version": "1.0.0",
@@ -2507,9 +2507,9 @@
       "resolved": "https://registry.npmjs.org/http-errors/-/http-errors-1.5.1.tgz"
     },
     "http-proxy": {
-      "version": "1.16.1",
+      "version": "1.16.2",
       "from": "http-proxy@>=1.13.0 <2.0.0",
-      "resolved": "https://registry.npmjs.org/http-proxy/-/http-proxy-1.16.1.tgz"
+      "resolved": "https://registry.npmjs.org/http-proxy/-/http-proxy-1.16.2.tgz"
     },
     "http-signature": {
       "version": "1.1.1",
@@ -3816,9 +3816,9 @@
       "resolved": "https://registry.npmjs.org/object.pick/-/object.pick-1.2.0.tgz"
     },
     "office-ui-fabric-core": {
-      "version": "5.0.1",
+      "version": "5.1.0",
       "from": "office-ui-fabric-core@>=5.0.1 <6.0.0",
-      "resolved": "https://registry.npmjs.org/office-ui-fabric-core/-/office-ui-fabric-core-5.0.1.tgz"
+      "resolved": "https://registry.npmjs.org/office-ui-fabric-core/-/office-ui-fabric-core-5.1.0.tgz"
     },
     "on-finished": {
       "version": "2.3.0",
@@ -5015,9 +5015,9 @@
       }
     },
     "tslint-microsoft-contrib": {
-      "version": "2.0.13",
+      "version": "2.0.14",
       "from": "tslint-microsoft-contrib@>=2.0.9 <3.0.0",
-      "resolved": "https://registry.npmjs.org/tslint-microsoft-contrib/-/tslint-microsoft-contrib-2.0.13.tgz"
+      "resolved": "https://registry.npmjs.org/tslint-microsoft-contrib/-/tslint-microsoft-contrib-2.0.14.tgz"
     },
     "tsscmp": {
       "version": "1.0.5",
@@ -5384,6 +5384,11 @@
       "version": "0.0.10",
       "from": "webpack-split-by-path@0.0.10",
       "resolved": "https://registry.npmjs.org/webpack-split-by-path/-/webpack-split-by-path-0.0.10.tgz"
+    },
+    "webpack-stats-plugin": {
+      "version": "0.1.4",
+      "from": "webpack-stats-plugin@>=0.1.4 <0.2.0",
+      "resolved": "https://registry.npmjs.org/webpack-stats-plugin/-/webpack-stats-plugin-0.1.4.tgz"
     },
     "webpack-visualizer-plugin": {
       "version": "0.1.5",
