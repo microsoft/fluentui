@@ -158,13 +158,16 @@ export function isElementTabbable(element: HTMLElement): boolean {
     return false;
   }
 
+  // In IE, element.tabIndex is default to 0. We need to use element get tabIndex attribute to get the correct tabIndex
+  const tabIndex = !!element && (element.getAttribute ? parseInt(element.getAttribute('tabIndex'), 10) : element.tabIndex);
+
   return (
     !!element &&
     (element.tagName === 'A' ||
       (element.tagName === 'BUTTON') ||
       (element.tagName === 'INPUT') ||
       (element.tagName === 'TEXTAREA') ||
-      (element.tabIndex >= 0) ||
+      (tabIndex >= 0) ||
       (element.getAttribute && (
         element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true') ||
         element.getAttribute('role') === 'button')
