@@ -31,6 +31,7 @@
     "gulp-util": "3.0.7",
     "gutil": "1.6.4",
     "highlight.js": "9.6.0",
+    "mocha": "~2.5.3",
     "office-ui-fabric-core": "^5.0.1",
     "react-addons-test-utils": "^15.1.0",
     "react-highlight": "0.8.0",
@@ -40,8 +41,8 @@
     "typescript": "^2.0.6",
     "vinyl-ftp": "0.4.5",
     "webpack-split-by-path": "0.0.10",
-    "webpack-visualizer-plugin": "0.1.5",
-    "mocha": "~2.5.3"
+    "webpack-stats-plugin": "^0.1.4",
+    "webpack-visualizer-plugin": "0.1.5"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.2.2",
