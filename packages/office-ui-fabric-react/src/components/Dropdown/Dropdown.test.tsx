@@ -26,7 +26,7 @@ describe('Dropdown', () => {
     let dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
 
     expect(dropdownRoot.className).not.contains('is-disabled', `shouldn't be disabled`);
-    expect(dropdownRoot.getAttribute('data-is-focusable')).equals('false', 'data-is-focusable');
+    expect(dropdownRoot.getAttribute('data-is-focusable')).equals('true', 'data-is-focusable');
 
     ReactDOM.render(
       <Dropdown
@@ -37,7 +37,7 @@ describe('Dropdown', () => {
       container);
 
     expect(dropdownRoot.className).contains('is-disabled', `should be disabled`);
-    expect(dropdownRoot.getAttribute('data-is-focusable')).equals('true', 'data-is-focusable');
+    expect(dropdownRoot.getAttribute('data-is-focusable')).equals('false', 'data-is-focusable');
   });
 
 });
