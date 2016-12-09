@@ -159,7 +159,11 @@ export function isElementTabbable(element: HTMLElement): boolean {
   }
 
   // In IE, element.tabIndex is default to 0. We need to use element get tabIndex attribute to get the correct tabIndex
-  const tabIndex = !!element && (element.getAttribute ? parseInt(element.getAttribute('tabIndex'), 10) : element.tabIndex);
+  let tabIndex = -1;
+
+  if (element && element.getAttribute) {
+    tabIndex = parseInt(element.getAttribute('tabIndex'), 10);
+  }
 
   return (
     !!element &&
