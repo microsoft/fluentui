@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Dropdown: The `data-is-focusable` attribute now gets set correctly on the .ms-Dropdown div container.",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
