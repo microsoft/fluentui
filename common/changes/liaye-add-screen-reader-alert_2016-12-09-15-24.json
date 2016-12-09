@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Add a new component in UTILITIES group named ScreenReaderAlert.",
+      "type": "minor"
+    }
+  ],
+  "email": "liaye@microsoft.com"
+}

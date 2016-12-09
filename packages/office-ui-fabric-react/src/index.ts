@@ -37,6 +37,7 @@ export * from './Pickers';
 export * from './Persona';
 export * from './Pivot';
 export * from './ProgressIndicator';
+export * from './ScreenReaderAlert';
 export * from './SearchBox';
 export * from './Slider';
 export * from './Spinner';

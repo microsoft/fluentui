@@ -1,0 +1,11 @@
+// To hide content while still making it readable by screen readers (Accessibility)
+@mixin ms-u-screenReaderOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}

@@ -32,6 +32,7 @@ import { PickersPage } from '../../pages/PickersPage/PickersPage';
 import { PersonaPage } from '../../pages/PersonaPage/PersonaPage';
 import { PivotPage } from '../../pages/PivotPage/PivotPage';
 import { ProgressIndicatorPage } from '../../pages/ProgressIndicatorPage/ProgressIndicatorPage';
+import { ScreenReaderAlertPage } from '../../pages/ScreenReaderAlertPage/ScreenReaderAlertPage';
 import { SearchBoxPage } from '../../pages/SearchBoxPage/SearchBoxPage';
 import { SelectionPage } from '../../pages/SelectionPage/SelectionPage';
 import { SliderPage } from '../../pages/SliderPage/SliderPage';
@@ -361,6 +362,13 @@ export const AppState: IAppState = {
           name: 'MarqueeSelection',
           status: ExampleStatus.beta,
           url: '#examples/marqueeselection'
+        },
+        {
+          component: ScreenReaderAlertPage,
+          key: 'ScreenReaderAlert',
+          name: 'ScreenReaderAlert',
+          status: ExampleStatus.beta,
+          url: '#/examples/screenreaderalert'
         },
         {
           component: SelectionPage,
