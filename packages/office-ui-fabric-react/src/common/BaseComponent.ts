@@ -13,7 +13,7 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
   private __async: Async;
   private __events: EventGroup;
   private __disposables: IDisposable[];
-  private __resolves: { [ name: string ]: (ref: any) => any };
+  private __resolves: { [name: string]: (ref: any) => any };
 
   /**
    * BaseComponent constructor
@@ -122,7 +122,9 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
       this.__resolves = {};
     }
     if (!this.__resolves[refName]) {
-      this.__resolves[refName] = (ref) => this[refName] = ref;
+      this.__resolves[refName] = (ref) => {
+        return this[refName] = ref;
+      };
     }
     return this.__resolves[refName];
   }
@@ -144,7 +146,7 @@ function _makeSafe(obj: BaseComponent<any, any>, prototype: Object, methodName: 
   let prototypeMethod = prototype[methodName];
 
   if (classMethod || prototypeMethod) {
-    obj[methodName] = function() {
+    obj[methodName] = function () {
       let retVal;
 
       try {
@@ -155,7 +157,7 @@ function _makeSafe(obj: BaseComponent<any, any>, prototype: Object, methodName: 
           retVal = classMethod.apply(this, arguments);
         }
       } catch (e) {
-        const errorMessage = `Exception in ${ obj.className }.${ methodName }(): ${ typeof e === 'string' ? e : e.stack }`;
+        const errorMessage = `Exception in ${obj.className}.${methodName}(): ${typeof e === 'string' ? e : e.stack}`;
 
         if (BaseComponent.onError) {
           BaseComponent.onError(errorMessage, e);
@@ -169,10 +171,10 @@ function _makeSafe(obj: BaseComponent<any, any>, prototype: Object, methodName: 
 
 function _warnDeprecation(obj: BaseComponent<any, any>, propertyName: string, newPropertyName: string) {
   if (console && console.warn) {
-    let deprecationMessage = `${ obj.className } property '${ propertyName }' was used but has been deprecated.`;
+    let deprecationMessage = `${obj.className} property '${propertyName}' was used but has been deprecated.`;
 
     if (newPropertyName) {
-      deprecationMessage += ` Use '${ newPropertyName }' instead.`;
+      deprecationMessage += ` Use '${newPropertyName}' instead.`;
     }
 
     console.warn(deprecationMessage);
