@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Slider: adding up/down/home/end support.",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
