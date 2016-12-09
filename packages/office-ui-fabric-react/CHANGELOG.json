@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "0.82.0",
+      "tag": "office-ui-fabric-react_v0.82.0",
+      "date": "Fri, 09 Dec 2016 04:06:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "be98c9ce3771d9f1b383b4f110b560f728235992",
+            "comment": "Adding icon enum"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "075d877c6434633c4d016b9d2a3cd97e1bdcdf00",
+            "comment": "Dropdown: The `data-is-focusable` attribute now gets set correctly on the .ms-Dropdown div container."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "52765a05be21f976dbac24e892fd29350f04d36c",
+            "comment": "Slider: adding up/down/home/end support."
+          }
+        ],
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "a86981aceb790e9d616bd04f0727432c6c1e36af",
+            "comment": "Layer/LayerHost: Now supports React context passing through. Also all Layers not nested within a LayerHost will be positioned fixed as currently, but will not be if nested within a LayerHost."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.81.3",
       "tag": "office-ui-fabric-react_v0.81.3",
       "date": "Wed, 07 Dec 2016 04:07:11 GMT",
