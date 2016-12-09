@@ -120,6 +120,10 @@ $button-commandButtonHeight: 40px;
   &:focus {
     background-color: $ms-color-themeDark;
     border-color: $ms-color-themePrimary;
+
+    .ms-Button-label {
+      color: $ms-color-white;
+    }
   }
 
   &:active {

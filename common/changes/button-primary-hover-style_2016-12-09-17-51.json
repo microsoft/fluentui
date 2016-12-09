@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Fix text color of primary button on focus",
+      "type": "patch"
+    }
+  ],
+  "email": "miclo@microsoft.com"
+}
