@@ -20,16 +20,18 @@ export class CheckboxBasicExample extends React.Component<{}, ICheckboxBasicExam
 
   public render() {
     let { isChecked } = this.state;
+    let uncontrolledCheckboxInputProps = {
+      onFocus: () => { console.log('Uncontrolled checkbox is focused'); },
+      onBlur: () => { console.log('Uncontrolled checkbox is blured'); },
+      'aria-label': 'Uncontrolled checkbox'
+    };
 
     return (
       <div>
         <Checkbox
           label='Uncontrolled checkbox'
           onChange={ this._onCheckboxChange }
-          inputProps={ {
-            onFocus: () => { console.log('Uncontrolled checkbox is focused'); },
-            onBlur: () => { console.log('Uncontrolled checkbox is blured'); }
-          } } />
+          inputProps={ uncontrolledCheckboxInputProps } />
 
         <Checkbox
           label='Uncontrolled checkbox with defaultChecked true'
