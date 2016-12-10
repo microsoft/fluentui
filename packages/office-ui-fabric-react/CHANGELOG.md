@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 09 Dec 2016 04:06:51 GMT and should not be manually modified.
+This log was last generated on Sat, 10 Dec 2016 04:05:34 GMT and should not be manually modified.
+
+## 0.82.1
+Sat, 10 Dec 2016 04:05:34 GMT
+
+### Patches
+
+- Fix text color of primary button on focus
+- Focus: IE will now return false for elements that are not tabbable.
 
 ## 0.82.0
 Fri, 09 Dec 2016 04:06:51 GMT
