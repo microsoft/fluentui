@@ -1,6 +1,27 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 07 Dec 2016 04:07:11 GMT and should not be manually modified.
+This log was last generated on Sat, 10 Dec 2016 04:05:34 GMT and should not be manually modified.
+
+## 0.82.1
+Sat, 10 Dec 2016 04:05:34 GMT
+
+### Patches
+
+- Fix text color of primary button on focus
+- Focus: IE will now return false for elements that are not tabbable.
+
+## 0.82.0
+Fri, 09 Dec 2016 04:06:51 GMT
+
+### Minor changes
+
+- Layer/LayerHost: Now supports React context passing through. Also all Layers not nested within a LayerHost will be positioned fixed as currently, but will not be if nested within a LayerHost.
+
+### Patches
+
+- Adding icon enum
+- Dropdown: The `data-is-focusable` attribute now gets set correctly on the .ms-Dropdown div container.
+- Slider: adding up/down/home/end support.
 
 ## 0.81.3
 Wed, 07 Dec 2016 04:07:11 GMT

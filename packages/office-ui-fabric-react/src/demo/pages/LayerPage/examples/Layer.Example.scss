@@ -20,9 +20,17 @@
 }
 
 .ms-LayerHost.LayerExample-customHost {
+  height: 100px;
+  padding: 20px;
+  background: rgba(255, 0, 0, .2);
+  border: 1px dashed black;
   position: relative;
+}
 
-  .ms-LayerHost-overlay {
-    position: relative;
-  }
+.LayerExample-customHost:before {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  content: 'I am a LayerHost with id=layerhost1'
 }
