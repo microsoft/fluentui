@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Calendar: handle invalid starting dates",
+      "type": "patch"
+    }
+  ],
+  "email": "miclo@microsoft.com"
+}
