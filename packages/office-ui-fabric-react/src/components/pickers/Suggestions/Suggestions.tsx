@@ -42,7 +42,6 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
 
   public render() {
     let {
-      onRenderNoResultFound,
       suggestionsHeaderText,
       searchForMoreText,
       className,
@@ -50,10 +49,11 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       noResultsFoundText,
       suggestions,
       isLoading,
-      loadingText
+      loadingText,
+      onRenderNoResultFound,
     } = this.props;
 
-    let noResults: JSX.Element = noResultsFoundText ? <div className='ms-Suggestions-none'>
+    let noResults: () => JSX.Element = noResultsFoundText ? () => <div className='ms-Suggestions-none'>
       { noResultsFoundText }
     </div> : null;
 
@@ -69,7 +69,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
             label={ loadingText }
             />) }
         { (!suggestions || !suggestions.length) && !isLoading ?
-          (onRenderNoResultFound ? onRenderNoResultFound() : noResults) :
+          (onRenderNoResultFound ? onRenderNoResultFound(null, noResults) : noResults) :
           this._renderSuggestions()
         }
         { searchForMoreText && moreSuggestionsAvailable ?

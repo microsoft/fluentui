@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IPickerItemProps } from './PickerItem.Props';
+import { IRenderFunction } from '../../common/IRenderFunction';
 
 // Type T is the type of the item that is displayed
 // and searched for by the people picker. For example, if the picker is
@@ -54,7 +55,7 @@ export interface IBasePickerSuggestionsProps {
   /**
   * Function that specifies what to render when no results are found.
   */
-  onRenderNoResultFound?: () => JSX.Element;
+  onRenderNoResultFound?: IRenderFunction<void>;
   /**
    * The text that should appear at the top of the suggestion box.
    */
