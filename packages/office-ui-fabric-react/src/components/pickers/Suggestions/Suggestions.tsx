@@ -69,7 +69,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
             label={ loadingText }
             />) }
         { (!suggestions || !suggestions.length) && !isLoading ?
-          (onRenderNoResultFound ? onRenderNoResultFound(null, noResults) : noResults) :
+          (onRenderNoResultFound ? onRenderNoResultFound(null, noResults) : noResults()) :
           this._renderSuggestions()
         }
         { searchForMoreText && moreSuggestionsAvailable ?
