@@ -1,0 +1,182 @@
+@import '../../common/common';
+
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
+//
+// Office UI Fabric
+// --------------------------------------------------
+// Toggle styles
+
+@mixin highContrast-bgColor($active-color, $bw-color) {
+  @media screen and (-ms-high-contrast: active) {
+    background-color: $active-color;
+  }
+
+  @media screen and (-ms-high-contrast: black-on-white) {
+    background-color: $bw-color;
+  }
+}
+
+// Toggle
+.ms-Toggle {
+  @include ms-baseFont;
+  @include ms-font-m;
+  @include ms-u-normalize;
+  color: $ms-color-neutralPrimary;
+
+  position: relative;
+  display: block;
+  margin-bottom: 8px;
+  user-select: none;
+
+  // Interactive overrides
+  &.is-enabled {
+
+    .ms-Toggle-button {
+      cursor: pointer;
+    }
+
+    .ms-Toggle-background {
+      border: 1px solid $ms-color-neutralSecondaryAlt;
+    }
+
+    .ms-Toggle-thumb {
+      @include highContrast-bgColor($ms-color-white, $ms-color-black);
+    }
+
+    .ms-Toggle-slider:hover {
+      .ms-Toggle-background {
+        border: 1px solid $ms-color-black;
+      }
+
+      .ms-Toggle-thumb {
+        background: $ms-color-black;
+      }
+    }
+
+    &.is-checked {
+      .ms-Toggle-background {
+        background: $ms-color-themePrimary;
+        border: 1px solid $ms-color-themePrimary;
+        @include highContrast-bgColor($ms-color-white, $ms-color-black);
+      }
+
+      .ms-Toggle-thumb {
+        background: $ms-color-white;
+        @include left(28px);
+        @include highContrast-bgColor($ms-color-black, $ms-color-white);
+      }
+
+      .ms-Toggle-slider:hover {
+        .ms-Toggle-background {
+          border: 1px solid $ms-color-themePrimary;
+          background: $ms-color-themeSecondary;
+        }
+        .ms-Toggle-thumb {
+          background: $ms-color-white;
+        }
+      }
+    }
+
+  }
+
+  // Disabled overrides
+  &.is-disabled {
+    .ms-Toggle-thumb {
+      background: $ms-color-neutralTertiaryAlt;
+      @include highContrast-bgColor($ms-color-contrastBlackDisabled, $ms-color-contrastWhiteDisabled);
+    }
+
+    .ms-Toggle-background {
+      border: 1px solid $ms-color-neutralTertiaryAlt;
+
+      @media screen and (-ms-high-contrast: active) {
+        border-color: $ms-color-contrastBlackDisabled;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        border-color: $ms-color-contrastWhiteDisabled;
+      }
+    }
+
+    &.is-checked {
+      .ms-Toggle-background {
+        background: $ms-color-neutralTertiaryAlt;
+        border: 1px solid transparent;
+        @include highContrast-bgColor($ms-color-contrastBlackDisabled, $ms-color-contrastWhiteDisabled);
+      }
+
+      .ms-Toggle-thumb {
+        background: $ms-color-neutralLight;
+        @include left(28px);
+        @include highContrast-bgColor($ms-color-black, $ms-color-white);
+      }
+    }
+  }
+}
+
+.ms-Toggle-innerContainer {
+  display: inline-block;
+}
+
+.ms-Fabric.is-focusVisible .ms-Toggle.is-enabled  .ms-Toggle-button:focus + .ms-Toggle-background .ms-Toggle-focus {
+  border: 1px solid $focusedBorderColor;
+}
+
+.ms-Toggle-button {
+  position: absolute;
+  opacity: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.ms-Toggle-slider {
+  position: relative;
+  min-height: 20px;
+}
+
+.ms-Toggle-background {
+  display: inline-block;
+  position: absolute;
+  width: 44px;
+  height: 20px;
+  box-sizing: border-box;
+  vertical-align: middle;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  pointer-events: none;
+}
+
+.ms-Toggle-thumb {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  top: 4px;
+  @include left(4px);
+  background: $ms-color-neutralSecondary;
+  transition: all 0.1s ease;
+}
+
+.ms-Toggle-stateText.ms-Label {
+  display: inline-block;
+  vertical-align: top;
+  line-height: 20px;
+  @include margin-left(54px);
+  padding: 0;
+}
+
+.ms-Toggle-focus {
+  position: absolute;
+  left: -3px;
+  top: -3px;
+  right: -3px;
+  bottom: -3px;
+  box-sizing: border-box;
+  outline: transparent;
+}
