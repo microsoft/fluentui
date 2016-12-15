@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Fix for jump in panel when animating in. Fix for panel removal in IE.",
+      "type": "patch"
+    }
+  ],
+  "email": "willdo@microsoft.com"
+}
