@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "adding 'enter' key to select pivot item.",
+      "comment": "adding screenreader for dropdown when not expanded",
       "type": "minor"
     }
   ],
