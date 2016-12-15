@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "fixes panel jump in chrome and safari",
+      "type": "patch"
+    }
+  ],
+  "email": "willdo@microsoft.com"
+}
