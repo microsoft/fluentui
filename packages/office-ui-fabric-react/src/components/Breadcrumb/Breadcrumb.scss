@@ -1,4 +1,5 @@
 @import '../../common/common';
+@import 'Breadcrumb.Tokens';
 
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
 
@@ -26,7 +27,7 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
 
 .ms-Breadcrumb-chevron {
   font-size: $ms-font-size-s;
-  color: $ms-color-neutralSecondary;
+  color: blue;
   vertical-align: top;
   margin: 11px 7px;
   line-height: 1;

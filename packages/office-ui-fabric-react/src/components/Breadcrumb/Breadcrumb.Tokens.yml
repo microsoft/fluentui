@@ -1,0 +1,9 @@
+global:
+  category: breadcrumb
+  type: color
+aliases:
+  foo: "red"
+props:
+  BREADCRUMB:
+    value: "{!foo}"
+
