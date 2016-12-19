@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Adding css so that contextualmenu properly sizes for long text",
+      "type": "patch"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}
