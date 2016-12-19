@@ -30,17 +30,19 @@ function onResolveSuggestions(text: string): ITag[] {
 
 const basicRenderer = (props) => {
   return <div> { props.item.name } </div>;
-}
+};
 
 const basicSuggestionRenderer = (props) => {
   return <div> { props.name } </div>;
-}
+};
 
 export interface ISimple {
   key: string;
   name: string;
 }
+
 export type TypedBasePicker = BasePicker<ISimple, IBasePickerProps<ISimple>>;
+
 describe('Pickers', () => {
   describe('BasePicker', () => {
     const BasePickerWithType = BasePicker as new (props: IBasePickerProps<ISimple>) => BasePicker<ISimple, IBasePickerProps<ISimple>>;
