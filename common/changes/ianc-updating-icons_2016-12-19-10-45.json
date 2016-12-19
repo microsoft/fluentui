@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Including missing icons, and sorting the existing icons.",
+      "type": "patch"
+    }
+  ],
+  "email": "ianc@microsoft.com"
+}
