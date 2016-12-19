@@ -108,12 +108,12 @@ a.ms-ContextualMenu-link {
 
 .ms-ContextualMenu-itemText {
   margin: 0 4px;
-    vertical-align: middle;
+  vertical-align: middle;
   display: inline-block;
   flex-grow: 1;
   text-overflow: ellipsis;
   overflow: hidden;
-    white-space: nowrap;
+  white-space: nowrap;
 }
 
 .ms-ContextualMenu-linkText {
@@ -123,7 +123,7 @@ a.ms-ContextualMenu-link {
   white-space: nowrap;
 }
 
-.ms-Icon.ms-ContextualMenu-submenuChevron {
+.ms-ContextualMenu-submenuChevron {
   height: $ContextualMenu-itemHeight;
   line-height: $ContextualMenu-itemHeight;
   text-align: center;
