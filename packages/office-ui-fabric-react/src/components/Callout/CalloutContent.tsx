@@ -221,7 +221,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
       if ((!positions && newPositions) ||
-        (positions && newPositions && this._arePositonsEqual(positions, newPositions)
+        (positions && newPositions && this._arePositionsEqual(positions, newPositions)
           && this._positionAttempts < 5)) {
         // We should not reposition the callout more than a few times, if it is then the content is likely resizing
         // and we should stop trying to reposition to prevent a stack overflow.
@@ -264,7 +264,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     return this._maxHeight;
   }
 
-  private _arePositonsEqual(positions: IPositionInfo, newPosition: IPositionInfo) {
+  private _arePositionsEqual(positions: IPositionInfo, newPosition: IPositionInfo) {
     if (positions.calloutPosition.top.toFixed(2) !== newPosition.calloutPosition.top.toFixed(2)) {
       return false;
     }
