@@ -64,6 +64,27 @@ describe('Calendar', () => {
     goToToday: 'Go to today'
   };
 
+  it('can handle invalid starting dates', () => {
+    // Arrange
+    let defaultDate = new Date('invalid');
+
+    // Act
+    try {
+      let renderedComponent = ReactTestUtils.renderIntoDocument(
+        <Calendar
+          strings={ dayPickerStrings }
+          isMonthPickerVisible={ true }
+          value={ defaultDate }
+          />) as Calendar;
+
+      let today = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-day--today') as HTMLElement;
+
+      expect(+today.innerText).to.be.equal(new Date().getDate());
+    } catch (err) {
+      expect.fail(err, null, 'Encountered error trying to render a Calendar with an invalid date');
+    }
+  });
+
   describe('Test rendering simplest calendar', () => {
     let renderedComponent: Calendar;
 
