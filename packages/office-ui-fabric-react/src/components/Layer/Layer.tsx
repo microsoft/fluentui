@@ -119,7 +119,10 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
       this.props.onLayerWillUnmount();
 
       ReactDOM.unmountComponentAtNode(this._layerElement);
-      this._layerElement.remove();
+      let parentNode = this._layerElement.parentNode;
+      if (parentNode) {
+        parentNode.removeChild(this._layerElement);
+      }
       this._layerElement = undefined;
       this._hasMounted = false;
     }
