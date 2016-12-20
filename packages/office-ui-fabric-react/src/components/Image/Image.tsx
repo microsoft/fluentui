@@ -41,6 +41,7 @@ export class Image extends React.Component<IImageProps, IImageState> {
   public refs: {
     [key: string]: React.ReactInstance;
     image: HTMLImageElement;
+    frame: HTMLElement;
   };
 
   private _events: EventGroup;
@@ -91,7 +92,7 @@ export class Image extends React.Component<IImageProps, IImageState> {
 
     // If image dimensions aren't specified, the natural size of the image is used.
     return (
-      <div className={ css('ms-Image', className) } style={ { width: width, height: height } }>
+      <div className={ css('ms-Image', className) } style={ { width: width, height: height } } ref='frame'>
         <img
           { ...imageProps }
           className={
@@ -137,11 +138,11 @@ export class Image extends React.Component<IImageProps, IImageState> {
   private _computeCoverStyle(props: IImageProps) {
     let { imageFit } = props;
     if (imageFit === ImageFit.cover || imageFit === ImageFit.contain) {
-      let { image } = this.refs;
+      let { image, frame } = this.refs;
       if (image) {
         let { width, height } = props;
 
-        let desiredRatio = (width as number) / (height as number);
+        let desiredRatio = frame.clientWidth / frame.clientHeight;
         let naturalRatio = image.naturalWidth / image.naturalHeight;
 
         if (naturalRatio > desiredRatio) {
