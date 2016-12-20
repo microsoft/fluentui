@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Pass defaultRender parameter to DetailsList onRenderRow prop.",
+      "type": "patch"
+    }
+  ],
+  "email": "cschleid@microsoft.com"
+}

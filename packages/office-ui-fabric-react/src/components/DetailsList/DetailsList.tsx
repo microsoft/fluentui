@@ -362,7 +362,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       checkboxVisibility: checkboxVisibility,
       getRowAriaLabel: getRowAriaLabel,
       checkButtonAriaLabel: checkButtonAriaLabel
-    });
+    }, this._onRenderRow);
   }
 
   private _onGroupExpandStateChanged(isSomeGroupExpanded: boolean) {
