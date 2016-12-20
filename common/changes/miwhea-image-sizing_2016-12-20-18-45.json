@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "When computing a cover style for the Image component, the desired ratio is determined by looking at the image frame's size, rather than the (optional) width and height props.",
+      "type": "patch"
+    }
+  ],
+  "email": "miwhea@microsoft.com"
+}
