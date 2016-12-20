@@ -53,7 +53,7 @@ describe('ComponentName', () => {
 
 ## Some Common Problems
 
-* Window/document based measuring, like getBoundingClientRect, are not working.
-  * Measurements based on the Window or document do not work as expected with ReactTestUtils since the component is never rendered. If you need to get those values, you should render the objects inside the actual dom. Please see the [Example Without ReactTestUtils](#basic-example-without-reacttestutils) for more information.
+* Browser methods aren't working.
+  * Using browser methods like getBoundingClientRect won't work when using ReactTestUtils to render a document fragment. It's possible to mock this method out if you need, see the FocusZone unit tests as an example. You can also render the objects inside the actual dom, see [Example Without ReactTestUtils](#basic-example-without-reacttestutils) for more information.
 * My event isn't being triggered.
   * React uses synthetic events, so you should will need to use the synthetic events. For example ReactTestUtils.Simulate.change(<yourelement>)
