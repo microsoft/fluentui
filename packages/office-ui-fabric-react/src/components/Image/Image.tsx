@@ -140,8 +140,6 @@ export class Image extends React.Component<IImageProps, IImageState> {
     if (imageFit === ImageFit.cover || imageFit === ImageFit.contain) {
       let { image, frame } = this.refs;
       if (image) {
-        let { width, height } = props;
-
         let desiredRatio = frame.clientWidth / frame.clientHeight;
         let naturalRatio = image.naturalWidth / image.naturalHeight;
 
