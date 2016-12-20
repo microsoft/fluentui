@@ -54,6 +54,6 @@ describe('ComponentName', () => {
 ## Some Common Problems
 
 * Window/document based measuring, like getBoundingClientRect, are not working.
-  * Measurements based on the Window or document do not work as expected with ReactTestUtils since the component is never rendered. If you need to get those values, you should render the objects inside the actual dom. Please see the [Example Without ReactTestUtils](#Basic-Example-Without-ReactTestUtils) for more information.
+  * Measurements based on the Window or document do not work as expected with ReactTestUtils since the component is never rendered. If you need to get those values, you should render the objects inside the actual dom. Please see the [Example Without ReactTestUtils](#basic-example-without-reacttestutils) for more information.
 * My event isn't being triggered.
   * React uses synthetic events, so you should will need to use the synthetic events. For example ReactTestUtils.Simulate.change(<yourelement>)
