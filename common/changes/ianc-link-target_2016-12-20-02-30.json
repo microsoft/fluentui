@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Including the \"target\" property in the Link component.",
+      "type": "patch"
+    }
+  ],
+  "email": "ianc@microsoft.com"
+}
