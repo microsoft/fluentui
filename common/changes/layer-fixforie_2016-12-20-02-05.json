@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Layer used node/element.remove() which is not present in ie. This change has it use parentnode.removeChild(childnode) instead",
+      "type": "patch"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}
