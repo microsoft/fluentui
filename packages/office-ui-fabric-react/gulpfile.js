@@ -167,10 +167,12 @@ gulp.task('theo', function () {
         let resolveNestedProps = (props, parent = "") => {
           let flatProps = {};
           _.forEach(props, (value, key) => {
-            if (typeof value !== 'string') {
+            if (typeof value == 'object') {
               let propName = (parent === "" ? "" : parent + "_") + key
               flatProps = Object.assign(flatProps, resolveNestedProps(value, propName))
-              flatProps[propName] = value
+              if (value.value) {
+                flatProps[propName] = value
+              }
             }
           })
           return flatProps;
