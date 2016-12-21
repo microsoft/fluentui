@@ -4,5 +4,5 @@ import { IconType } from './IconType';
 export interface IIconProps extends React.HTMLProps<HTMLElement> {
   iconName: IconName;
   iconType?: IconType;
-  imageCss?: string;
+  imageClassName?: string;
 }

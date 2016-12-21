@@ -8,19 +8,20 @@ import { IconType } from './IconType';
 import {
   css,
   getNativeProps,
-  htmlElementProperties
+  htmlElementProperties,
+  imageProperties
 } from '../../Utilities';
 
 export const Icon: (props: IIconProps) => JSX.Element = (props: IIconProps) => {
   let customIcon = props.iconName === IconName.None;
 
   if (props.iconType === IconType.IconSheet) {
-    let containerClassName = css('ms-Icon', 'ms-Icon-ImageContainer', props.className);
-    let imageClassName = css('ms-Icon', 'ms-Icon-Image', props.imageCss);
+    let containerClassName = css('ms-Icon', 'ms-Icon-imageContainer', props.className);
+    let imageClassName = css('ms-Icon', 'ms-Icon-Image', props.imageClassName);
 
     return (
       <div className={ containerClassName }>
-        <img { ...getNativeProps(props, htmlElementProperties) } className={ imageClassName } />
+        <img { ...getNativeProps(props, imageProperties) } className={ imageClassName } />
       </div>
     );
   } else {
