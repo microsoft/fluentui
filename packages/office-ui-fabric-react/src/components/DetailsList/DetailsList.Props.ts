@@ -4,6 +4,7 @@ import {
   ISelection,
   SelectionMode
 } from '../../utilities/selection/index';
+import { IRenderFunction } from '../../common/IRenderFunction';
 import {
   IDragDropEvents,
   IDragDropContext,
@@ -99,7 +100,7 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /**
    *  If provided, will allow the caller to override the default row rendering.
    */
-  onRenderRow?: (props: IDetailsRowProps, defaultRender?: (props: IDetailsRowProps) => JSX.Element) => JSX.Element;
+  onRenderRow?: IRenderFunction<IDetailsRowProps>;
 
   /**
    * If provided, will be the "default" item column renderer method. This affects cells within the rows; not the rows themselves.
