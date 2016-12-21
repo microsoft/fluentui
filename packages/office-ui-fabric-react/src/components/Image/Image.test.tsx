@@ -23,46 +23,46 @@ describe('Image', () => {
     );
   });
 
-  it('can render a covered square image in landscape', (done) => {
-    let component = ReactTestUtils.renderIntoDocument(
-      <Image
-        src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
-        width={ 3 }
-        height={ 1 }
-        imageFit={ ImageFit.cover }
-        onLoad={ () => {
-          let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-          let image = renderedDOM.querySelector('.ms-Image-image');
-
-          try {
-            expect(image.className).to.contain('ms-Image-image--portrait');
-          } catch (e) { done(e); }
-
-          done();
-        } }
-        />
-    );
-  });
-
-  it('can render a covered square image in portrait', (done) => {
-    let component = ReactTestUtils.renderIntoDocument(
+  it('can cover a portrait (tall) frame with a square image', (done) => {
+    let root = document.createElement('div');
+    document.body.appendChild(root);
+    ReactDOM.render<HTMLDivElement>(
       <Image
         src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
         width={ 1 }
         height={ 3 }
         imageFit={ ImageFit.cover }
-        onLoad={ () => {
-          let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-          let image = renderedDOM.querySelector('.ms-Image-image');
-
-          try {
-            expect(image.className).to.contain('ms-Image-image--landscape');
-          } catch (e) { done(e); }
-
-          done();
-        } }
-        />
+        className='is-portraitFrame'
+        />, root
     );
+
+    let image = document.querySelector('.ms-Image.is-portraitFrame .ms-Image-image');
+    try {
+      expect(image.className).to.contain('ms-Image-image--landscape');
+    } catch (e) { done(e); }
+
+    done();
+  });
+
+  it('can cover a landscape (wide) frame with a square image', (done) => {
+    let root = document.createElement('div');
+    document.body.appendChild(root);
+    ReactDOM.render<HTMLDivElement>(
+      <Image
+        src='data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+        width={ 3 }
+        height={ 1 }
+        imageFit={ ImageFit.cover }
+        className='is-landscapeFrame'
+        />, root
+    );
+
+    let image = document.querySelector('.ms-Image.is-landscapeFrame .ms-Image-image');
+    try {
+      expect(image.className).to.contain('ms-Image-image--portrait');
+    } catch (e) { done(e); }
+
+    done();
   });
 
 });
