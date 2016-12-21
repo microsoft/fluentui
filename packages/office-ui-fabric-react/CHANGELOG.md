@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 10 Dec 2016 04:05:34 GMT and should not be manually modified.
+This log was last generated on Sat, 17 Dec 2016 04:05:00 GMT and should not be manually modified.
+
+## 0.82.2
+Sat, 17 Dec 2016 04:05:00 GMT
+
+### Patches
+
+- Calendar: handle invalid starting dates
+- fixes panel jump in chrome and safari
 
 ## 0.82.1
 Sat, 10 Dec 2016 04:05:34 GMT
