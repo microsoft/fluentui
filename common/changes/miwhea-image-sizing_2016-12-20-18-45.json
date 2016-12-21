@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "When computing a cover style for the Image component, the desired ratio is determined by looking at the image frame's size, rather than the (optional) width and height props.",
+      "comment": "When computing a cover style for the Image component, if the width and height props aren't provided it will now measure the element. The Image component now extends from BaseComponent to more safely handle refs.",
       "type": "patch"
     }
   ],
