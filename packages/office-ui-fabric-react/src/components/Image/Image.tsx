@@ -136,13 +136,24 @@ export class Image extends React.Component<IImageProps, IImageState> {
   }
 
   private _computeCoverStyle(props: IImageProps) {
-    let { imageFit } = props;
+    let { imageFit, width, height } = props;
     if (imageFit === ImageFit.cover || imageFit === ImageFit.contain) {
       let { image, frame } = this.refs;
+
       if (image) {
-        let desiredRatio = frame.clientWidth / frame.clientHeight;
+        // Determine the desired ratio using the width and height props.
+        // If those props aren't available, measure measure the frame.
+        let desiredRatio;
+        if (!!width && !!height) {
+          desiredRatio = (width as number) / (height as number);
+        } else {
+          desiredRatio = frame.clientWidth / frame.clientHeight;
+        }
+
+        // Examine the source image to determine its original ratio.
         let naturalRatio = image.naturalWidth / image.naturalHeight;
 
+        // Should we crop from the top or the sides?
         if (naturalRatio > desiredRatio) {
           this._coverStyle = CoverStyle.landscape;
         } else {
@@ -159,5 +170,4 @@ export class Image extends React.Component<IImageProps, IImageState> {
       });
     }
   }
-
 }
