@@ -14,6 +14,7 @@ Fabric React is a responsive, mobile-first collection of robust components desig
 
 - [View the docs](#view-the-docs)
 - [Get started](#get-started)
+- [Testing](#testing)
 - [Advanced usage](#advanced-usage)
 - [Roadmap](#roadmap)
 - [Trello board](#trello-board)
@@ -68,6 +69,10 @@ const MyPage = () => (<div><Button>I am a button.</Button></div>);
 
 ReactDOM.render(<MyPage />, document.body.firstChild);
 ```
+
+## Testing
+
+For testing see our [testing documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/TESTING.md).
 
 ## Advanced usage
 
