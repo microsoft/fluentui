@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "[DropDwon][A11y]Remove aria-controls label for drop down.",
+      "type": "patch"
+    }
+  ],
+  "email": "yudma@microsoft.com"
+}
