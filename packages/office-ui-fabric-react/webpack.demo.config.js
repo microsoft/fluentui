@@ -7,7 +7,7 @@ let webpackTaskResources = build.webpack.resources;
 let webpack = webpackTaskResources.webpack;
 
 let path = require('path');
-var SplitByPathPlugin = require('webpack-split-by-path');
+let SplitByPathPlugin = require('webpack-split-by-path');
 
 // Create an array of configs, prepopulated with a debug (non-minified) build.
 let configs = [
@@ -66,11 +66,11 @@ function createConfig(isProduction) {
       new SplitByPathPlugin([
         {
           name: 'demo-vendor',
-          path: path.join(__dirname, 'node_modules'),
+          path: path.resolve(__dirname, '../../common/node_modules'),
         },
         {
           name: 'demo-components',
-          path: path.join(buildConfig.libFolder, 'components')
+          path: path.resolve(__dirname, buildConfig.libFolder, 'components')
         }
       ])
     ]

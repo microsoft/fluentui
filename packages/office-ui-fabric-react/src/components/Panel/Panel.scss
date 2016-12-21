@@ -210,6 +210,7 @@ $CommandBarHeight: 40px;
     // Animations -- Default (anchored right)
     &.ms-Panel--openRight.ms-Panel-animateIn {
       .ms-Panel-main {
+        position: fixed; // fixes panel jump in chrome and safari
         @include ms-u-slideLeftIn40;
       }
 
