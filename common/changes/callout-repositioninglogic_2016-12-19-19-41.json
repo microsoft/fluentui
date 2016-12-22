@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "fixed an issue where the beak would not reposition",
+      "type": "patch"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}
