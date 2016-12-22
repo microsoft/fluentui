@@ -6,11 +6,15 @@ import {
 } from '../../components/index';
 
 import { IconBasicExample } from './examples/Icon.Basic.Example';
+import { IconColorExample } from './examples/Icon.Color.Example';
+import { IconImageSheetExample } from './examples/Icon.ImageSheet.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const IconBasicExampleCode = require('./examples/Icon.Basic.Example.tsx');
+const IconColorExampleCode = require('./examples/Icon.Color.Example.tsx');
+const IconImageSheetExampleCode = require('./examples/Icon.ImageSheet.Example.tsx');
 
 export class IconPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -24,14 +28,22 @@ export class IconPage extends React.Component<IComponentDemoPageProps, any> {
     return (
       <ComponentPage
         title='Icon'
-        componentName='LabelExample'
+        componentName='IconExample'
         exampleCards={
-          <ExampleCard title='Label' code={ IconBasicExampleCode }>
-            <IconBasicExample />
-          </ExampleCard>
+          <div>
+            <ExampleCard title='Icon' code={ IconBasicExampleCode }>
+              <IconBasicExample />
+            </ExampleCard>
+            <ExampleCard title='Icon with custom color' code={ IconColorExampleCode }>
+              <IconColorExample />
+            </ExampleCard>
+            <ExampleCard title='Icon using image sheet' code={ IconImageSheetExampleCode }>
+              <IconImageSheetExample />
+            </ExampleCard>
+          </div>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='Label' />
+          <PropertiesTableSet componentName='Icon' />
         }
         overview={
           <div>
@@ -59,9 +71,6 @@ export class IconPage extends React.Component<IComponentDemoPageProps, any> {
               <li>Don’t use full sentences or complex punctuation (colons, semicolons, etc.).</li>
             </ul>
           </div>
-        }
-        related={
-          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Label.md'>Fabric JS</a>
         }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
