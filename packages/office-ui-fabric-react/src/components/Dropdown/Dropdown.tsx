@@ -81,7 +81,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
           <label id={ id + '-label' } className='ms-Label' ref={ (dropdownLabel) => this._dropdownLabel = dropdownLabel } >{ label }</label>
         ) }
         <div
-          data-is-focusable={ disabled }
+          data-is-focusable={ !disabled }
           ref={ (c): HTMLElement => this._dropDown = c }
           id={ id }
           className={ css('ms-Dropdown', {

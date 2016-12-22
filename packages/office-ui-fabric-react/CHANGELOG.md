@@ -1,6 +1,45 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 07 Dec 2016 04:07:11 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Dec 2016 16:04:44 GMT and should not be manually modified.
+
+## 0.82.3
+Wed, 21 Dec 2016 16:04:44 GMT
+
+### Patches
+
+- Pass defaultRender parameter to DetailsList onRenderRow prop.
+- Adding css so that contextualmenu properly sizes for long text
+- Including the "target" property in the Link component.
+- Layer used node/element.remove() which is not present in ie. This change has it use parentnode.removeChild(childnode) instead
+
+## 0.82.2
+Sat, 17 Dec 2016 04:05:00 GMT
+
+### Patches
+
+- Calendar: handle invalid starting dates
+- fixes panel jump in chrome and safari
+
+## 0.82.1
+Sat, 10 Dec 2016 04:05:34 GMT
+
+### Patches
+
+- Fix text color of primary button on focus
+- Focus: IE will now return false for elements that are not tabbable.
+
+## 0.82.0
+Fri, 09 Dec 2016 04:06:51 GMT
+
+### Minor changes
+
+- Layer/LayerHost: Now supports React context passing through. Also all Layers not nested within a LayerHost will be positioned fixed as currently, but will not be if nested within a LayerHost.
+
+### Patches
+
+- Adding icon enum
+- Dropdown: The `data-is-focusable` attribute now gets set correctly on the .ms-Dropdown div container.
+- Slider: adding up/down/home/end support.
 
 ## 0.81.3
 Wed, 07 Dec 2016 04:07:11 GMT
