@@ -48,7 +48,7 @@ export class IconPage extends React.Component<IComponentDemoPageProps, any> {
         overview={
           <div>
             <p>
-              Labels give a name or title to a component or group of components. Labels should be in close proximity to the component or group they are paired with. Some components, such as TextField, Dropdown, or Toggle, already have Labels incorporated, but other components may optionally add a Label if it helps inform the user of the component’s purpose.
+              In a computer's graphical user interface ( GUI ), an icon is an image that represents an application, a capability, or some other concept or specific entity with meaning for the user. An icon is usually selectable but can also be a nonselectable image such as a company's logo.
             </p>
           </div>
         }
@@ -58,17 +58,16 @@ export class IconPage extends React.Component<IComponentDemoPageProps, any> {
         dos={
           <div>
             <ul>
-              <li>Use sentence casing, e.g. “First name”.</li>
-              <li>Be short and concise.</li>
-              <li>When adding a Label to components, use the text as a noun or short noun phrase.</li>
+              <li>Adjust to proper size to highlight importance but not occupying too much space.</li>
+              <li>Be simple and concise.</li>
             </ul>
           </div>
         }
         donts={
           <div>
             <ul>
-              <li>Use Labels as instructional text, e.g. “Click to get started”.</li>
-              <li>Don’t use full sentences or complex punctuation (colons, semicolons, etc.).</li>
+              <li>Use Icons to show pictures.</li>
+              <li>Use photos or long sentences as icons.</li>
             </ul>
           </div>
         }
