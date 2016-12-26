@@ -62,7 +62,8 @@
   font-size: $ms-font-size-m;
   color: $ms-color-neutralPrimary;
   height: 32px;
-  @include padding(6px, 12px, 7px, 12px);
+  line-height: 32px;
+  @include padding(0, 12px, 0, 12px);
   width: 100%;
   outline: 0;
   text-overflow: ellipsis;
