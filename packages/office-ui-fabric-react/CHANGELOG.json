@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "0.82.4",
+      "tag": "office-ui-fabric-react_v0.82.4",
+      "date": "Fri, 23 Dec 2016 04:04:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "531b0b993cb551634db831b1f4b75a3d958235b7",
+            "comment": "fixed an issue where the beak would not reposition"
+          },
+          {
+            "author": "William Do <do.william@yahoo.com>",
+            "commit": "7c15d59f502d4ef87dde5cfc25e444919fd4e353",
+            "comment": "Fix for when enterint tooltip target from direction of tooltip's position"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.82.3",
       "tag": "office-ui-fabric-react_v0.82.3",
       "date": "Wed, 21 Dec 2016 16:04:44 GMT",
