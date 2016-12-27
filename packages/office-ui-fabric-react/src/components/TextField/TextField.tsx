@@ -127,7 +127,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         { label && <Label htmlFor={ this._id }>{ label }</Label> }
         { iconClass && <i className={ iconClass }></i> }
         { multiline ? this._renderTextArea() : this._renderInput() }
-        { errorMessage && <div aria-live='assertive' className='ms-u-screenReaderOnly' data-automation-id='error-message'>{ errorMessage }</div> }
+        { <div aria-live='assertive' className='ms-u-screenReaderOnly' data-automation-id='error-message'>{ errorMessage }</div> }
         { (description || errorMessage) &&
           <span id={ this._descriptionId }>
             { description && <span className='ms-TextField-description'>{ description }</span> }
