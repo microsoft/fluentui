@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IContextualMenuProps, IContextualMenuItem } from './ContextualMenu.Props';
+import { IContextualMenuProps, IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import {
@@ -212,7 +212,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 aria-label={ ariaLabel } >
                 { items.map((item, index) => (
                   // If the item name is equal to '-', a divider will be generated.
-                  item.name === '-' ? (
+                  item.name === '-' || item.itemType === ContextualMenuItemType.Divider ? (
                     <li
                       role='separator'
                       key={ item.key || index }
@@ -243,11 +243,21 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       return item.onRender(item);
     }
 
+    if (item.itemType === ContextualMenuItemType.Header) {
+      return this._renderHeaderMenuItem(item, index, hasCheckmarks, hasIcons);
+    }
     // If the item is disabled then it should render as the button for proper styling.
     if (item.href) {
       return this._renderAnchorMenuItem(item, index, hasCheckmarks, hasIcons);
     }
     return this._renderButtonItem(item, index, hasCheckmarks, hasIcons);
+  }
+
+  private _renderHeaderMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): JSX.Element {
+    return (
+      <div className='ms-ContextualMenu-header'>
+        <span className='ms-ContextualMenu-linkText ms-fontWeight-regular'> { item.name } </span>
+      </div>)
   }
 
   private _renderAnchorMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): JSX.Element {
@@ -264,7 +274,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           ) : (null) }
           <span className='ms-ContextualMenu-linkText ms-fontWeight-regular'> { item.name } </span>
         </a>
-      </div >);
+      </div>);
   }
 
   private _renderButtonItem(

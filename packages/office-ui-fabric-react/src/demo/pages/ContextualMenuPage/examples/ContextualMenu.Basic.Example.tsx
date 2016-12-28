@@ -61,7 +61,8 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                     }
                   },
                   name: 'Upload (Custom Color)',
-                  title: 'Upload a file'
+                  title: 'Upload a file',
+                  itemType: 2
                 },
                 {
                   key: 'divider_1',

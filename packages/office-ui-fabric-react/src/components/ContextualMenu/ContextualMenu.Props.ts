@@ -6,7 +6,11 @@ import { IIconProps } from '../Icon/Icon.Props';
 import { IRectangle } from '../../common/IRectangle';
 import { IPoint } from '../../common/IPoint';
 export { DirectionalHint } from '../../common/DirectionalHint';
-
+export enum ContextualMenuItemType {
+  Normal,
+  Divider,
+  Header
+}
 export interface IContextualMenuProps extends React.Props<ContextualMenu> {
 
   /**
@@ -141,6 +145,8 @@ export interface IContextualMenuItem {
    * Text description for the menu item to display
    */
   name: string;
+
+  itemType?: ContextualMenuItemType;
 
   /**
    * Props that go to the IconComponent

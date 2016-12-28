@@ -66,6 +66,26 @@ $ContextualMenu-iconWidth: 14px;
   }
 }
 
+.ms-ContextualMenu-header {
+  @include focus-border();
+
+  font: inherit;
+  color: lime;
+  background: none;
+  border: none;
+  width: 100%;
+  height: $ContextualMenu-itemHeight;
+  line-height: $ContextualMenu-itemHeight;
+  display: inline-block;
+  cursor: default;
+  padding: 0px 6px;
+  @include text-align(left);
+
+  .is-focusVisible &:focus {
+    background: $ContextualMenu-itemHover;
+  }
+}
+
 a.ms-ContextualMenu-link {
   padding: 0px 6px;
   text-rendering: auto;
