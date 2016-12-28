@@ -46,6 +46,19 @@ export class TextFieldErrorMessageExample extends React.Component<{}, {}> {
           onGetErrorMessage={ this._getErrorMessage }
           deferredValidationTime={ 2000 }
         />
+        <TextField
+          label='TextField that validates only on focus and blur. Hint: the length of the input string must be less than 3.'
+          placeholder='Validation will start after users stop typing for 2 seconds.'
+          onGetErrorMessage={ this._getErrorMessage }
+          validateOnFocusIn = { true }
+          validateOnFocusOut = { true }
+        />
+        <TextField
+          label='TextField that validates only on blur. Hint: the length of the input string must be less than 3.'
+          placeholder='Validation will start after users stop typing for 2 seconds.'
+          onGetErrorMessage={ this._getErrorMessage }
+          validateOnFocusOut = { true }
+        />
         <NumberTextField
           label='Number TextField with valid initial value'
           initialValue='100'

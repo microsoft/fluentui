@@ -110,4 +110,16 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement | HTML
    * Aria Label for textfield, if any.
    */
   ariaLabel?: string;
+
+  /**
+   * Run validation only on input focus
+   * @default false
+   */
+  validateOnFocusIn?: boolean;
+
+  /**
+   * Run validation only on input focus out
+   * @default false
+   */
+  validateOnFocusOut?: boolean;
 }

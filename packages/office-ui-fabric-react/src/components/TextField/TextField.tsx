@@ -36,7 +36,9 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     onNotifyValidationResult: () => { /* noop */ },
     onGetErrorMessage: () => undefined,
     deferredValidationTime: 200,
-    errorMessage: ''
+    errorMessage: '',
+    validateOnFocusIn: false,
+    validateOnFocusOut: false
   };
 
   private _id: string;
@@ -180,6 +182,9 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     }
 
     this.setState({ isFocused: true });
+    if (this.props.validateOnFocusIn) {
+      this._delayedValidate(this.state.value);
+    }
   }
 
   private _onBlur(ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -188,6 +193,9 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     }
 
     this.setState({ isFocused: false });
+    if (this.props.validateOnFocusOut) {
+      this._delayedValidate(this.state.value);
+    }
   }
 
   private get _fieldClassName(): string {
@@ -264,7 +272,11 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
       errorMessage: ''
     } as ITextFieldState);
     this._willMountTriggerValidation = false;
-    this._delayedValidate(value);
+    const { validateOnFocusIn, validateOnFocusOut } = this.props;
+    if (!(validateOnFocusIn || validateOnFocusOut)) {
+        this._delayedValidate(value);
+    }
+
     const { onBeforeChange } = this.props;
     onBeforeChange(value);
   }
