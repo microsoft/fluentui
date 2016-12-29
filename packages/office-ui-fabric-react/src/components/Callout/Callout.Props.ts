@@ -104,7 +104,7 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
 
   /**
    * @deprecated
-   * Deprecated at  v0.72.1 and will no longer exist after 1.0 use target instead.
+   * Deprecated at v0.72.1 and will no longer exist after 1.0 use target instead.
    */
   targetElement?: HTMLElement;
 }
