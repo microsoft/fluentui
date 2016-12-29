@@ -8,12 +8,6 @@ props:
     CHEVRON:
       FG:
         value: "{!neutralSecondary}"
-    ITEMBUTTON:
-      FG:
-        value: "{!neutralPrimary}"
-    OVERFLOWBUTTON:
-      FG:
-        value: "{!themePrimary}"
     BUTTON:
       HOVER:
         BG:
@@ -30,7 +24,12 @@ props:
           value: "{!neutralTertiaryAlt}"
         FG:
           value: "{!neutralPrimary}"
-
+    ITEMBUTTON:
+      FG:
+        value: "{!neutralPrimary}"
+    OVERFLOWBUTTON:
+      FG:
+        value: "{!themePrimary}"
 
 
 
