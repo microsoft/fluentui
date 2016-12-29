@@ -31,13 +31,27 @@ export interface IColor {
   str: string;
 }
 
-export class ColorPicker extends React.Component<IColorPickerProps, any> {
+export class ColorPicker extends React.Component<IColorPickerProps, IColorPickerState> {
   constructor(props: IColorPickerProps) {
     super(props);
 
     this.state = {
       color: getColorFromString(props.color)
-    };
+    } as IColorPickerState;
+  }
+
+  public componentWillReceiveProps(newProps: IColorPickerProps) {
+    const { onColorChanged } = this.props;
+
+    if (newProps.color !== undefined && newProps.color !== this.state.color.str) {
+      if (onColorChanged) {
+        onColorChanged(newProps.color);
+      }
+
+      this.setState({
+        color: getColorFromString(newProps.color),
+      } as IColorPickerState);
+    }
   }
 
   public render() {
@@ -75,10 +89,10 @@ export class ColorPicker extends React.Component<IColorPickerProps, any> {
             <tbody>
               <tr>
                 <td><TextField className='ms-ColorPicker-input' value={ color.hex } /></td>
-                <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ color.r } /></td>
-                <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ color.g } /></td>
-                <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ color.b } /></td>
-                <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ color.a } /></td>
+                <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ String(color.r) } /></td>
+                <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ String(color.g) } /></td>
+                <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ String(color.b) } /></td>
+                <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ String(color.a) } /></td>
               </tr>
             </tbody>
           </table>
@@ -108,7 +122,7 @@ export class ColorPicker extends React.Component<IColorPickerProps, any> {
     if (newColor.str !== this.state.color.str) {
       this.setState({
         color: newColor
-      });
+      } as IColorPickerState);
 
       if (onColorChanged) {
         onColorChanged(newColor.str);
