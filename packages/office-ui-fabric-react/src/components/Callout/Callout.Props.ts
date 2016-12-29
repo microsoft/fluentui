@@ -15,12 +15,6 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   target?: HTMLElement | string | MouseEvent;
 
   /**
-   * The element that the Callout should be positioned based on.
-   * @deprecated at version 0.72.1 and will no longer exist after 1.0 use target instead
-   */
-  targetElement?: HTMLElement;
-
-  /**
    * How the element should be positioned
    * @default DirectionalHint.BottomAutoEdge
    */
@@ -68,12 +62,6 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   coverTarget?: boolean;
 
   /**
-    * @deprecated
-    * Deprecated at v0.59.1, to be removed at >= v1.0.0. Pass in a beakWidth to dictate size.
-    */
-  beakStyle?: string;
-
-  /**
    * CSS class to apply to the callout.
    * @default null
    */
@@ -107,4 +95,16 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    * @returns True if focus was set, false if it was not.
    */
   setInitialFocus?: boolean;
+
+  /**
+    * @deprecated
+    * Deprecated at v0.59.1, to be removed at >= v1.0.0. Pass in a beakWidth to dictate size.
+    */
+  beakStyle?: string;
+
+  /**
+   * @deprecated
+   * Deprecated at  v0.72.1 and will no longer exist after 1.0 use target instead.
+   */
+  targetElement?: HTMLElement;
 }
