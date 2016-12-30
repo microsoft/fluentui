@@ -25,7 +25,7 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
   };
 
   public render() {
-    let { targetElement, content, calloutProps, directionalHint, delay } = this.props;
+    let { targetElement, content, calloutProps, directionalHint, delay, id } = this.props;
 
     return (
       <Callout
@@ -36,7 +36,7 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
         { ...getNativeProps(this.props, divProperties) }
       >
         <div className='ms-Tooltip-content'>
-          <p className='ms-Tooltip-subText'>
+          <p className='ms-Tooltip-subText' id={ id } role='tooltip'>
             { content }
           </p>
         </div>
