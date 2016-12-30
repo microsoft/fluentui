@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "TextField enhancement - auto adjust height",
+      "type": "patch"
+    }
+  ],
+  "email": "manishda@microsoft.com"
+}
