@@ -565,7 +565,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       let maxWidth = column.maxWidth;
       let minWidth = column.minWidth || maxWidth || MIN_COLUMN_WIDTH;
       let spaceLeft = availableWidth - totalWidth;
-      let increment = Math.min(spaceLeft, maxWidth - minWidth);
+      let increment = maxWidth ? Math.min(spaceLeft, maxWidth - minWidth) : spaceLeft;
 
       // Add remaining space to the last column.
       if (i === (adjustedColumns.length - 1)) {
