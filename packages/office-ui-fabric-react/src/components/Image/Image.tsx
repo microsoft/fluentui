@@ -82,7 +82,11 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
 
     // If image dimensions aren't specified, the natural size of the image is used.
     return (
-      <div className={ css('ms-Image', className) } style={ { width: width, height: height } } ref={ this._resolveRef('_frameElement') }>
+      <div
+        className={ css('ms-Image', className) }
+        style={ { width: width, height: height } }
+        ref={ this._resolveRef('_frameElement') }
+        >
         <img
           { ...imageProps }
           className={
