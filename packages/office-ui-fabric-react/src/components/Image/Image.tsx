@@ -1,7 +1,8 @@
+/* tslint:disable:no-unused-variable */
 import * as React from 'react';
+/* tslint:enable:no-unused-variable */
 import { css } from '../../utilities/css';
 import { BaseComponent } from '../../common/BaseComponent';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { getNativeProps, imageProperties } from '../../utilities/properties';
 import { IImageProps, ImageFit } from './Image.Props';
 
