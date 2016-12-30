@@ -17,6 +17,7 @@ export class ImageNoneExample extends React.Component<any, any> {
 
     return (
       <div>
+        <p>By setting the imageFit property to "none", the image will remain at its natural size, even if the frame is made larger or smaller by setting the width and height props.</p>
         <Label>The image is larger than the frame, so it is cropped to fit. The image is positioned at the upper left of the frame.</Label>
         <Image  { ...imageProps as any } />
         <br />
