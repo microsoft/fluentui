@@ -41,16 +41,8 @@ export class ColorPicker extends React.Component<IColorPickerProps, IColorPicker
   }
 
   public componentWillReceiveProps(newProps: IColorPickerProps) {
-    const { onColorChanged } = this.props;
-
-    if (newProps.color !== undefined && newProps.color !== this.state.color.str) {
-      if (onColorChanged) {
-        onColorChanged(newProps.color);
-      }
-
-      this.setState({
-        color: getColorFromString(newProps.color),
-      } as IColorPickerState);
+    if (newProps.color) {
+      this._updateColor(getColorFromString(newProps.color));
     }
   }
 
@@ -122,12 +114,11 @@ export class ColorPicker extends React.Component<IColorPickerProps, IColorPicker
     if (newColor.str !== this.state.color.str) {
       this.setState({
         color: newColor
-      } as IColorPickerState);
-
-      if (onColorChanged) {
-        onColorChanged(newColor.str);
-      }
+      } as IColorPickerState, () => {
+        if (onColorChanged) {
+          onColorChanged(newColor.str);
+        }
+      });
     }
   }
-
 }
