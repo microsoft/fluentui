@@ -41,6 +41,7 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
 
     this.state = {
       id: getId('Dialog'),
+      isOpen: props.isOpen,
       isAnimatingOpen: props.isOpen,
       isAnimatingClose: false
     };
@@ -66,7 +67,23 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
   }
 
   public render() {
-    let { type, isDarkOverlay, onDismiss, title, subText, isBlocking, responsiveMode, elementToFocusOnDismiss, ignoreExternalFocusing, forceFocusInsideTrap, firstFocusableSelector, closeButtonAriaLabel, onLayerMounted, isClickableOutsideFocusTrap} = this.props;
+    let {
+      closeButtonAriaLabel,
+      elementToFocusOnDismiss,
+      firstFocusableSelector,
+      forceFocusInsideTrap,
+      ignoreExternalFocusing,
+      isBlocking,
+      isClickableOutsideFocusTrap,
+      isDarkOverlay,
+      onDismiss,
+      onLayerDidMount,
+      onLayerMounted,
+      responsiveMode,
+      subText,
+      title,
+      type
+    } = this.props;
     let { id, isOpen, isAnimatingOpen, isAnimatingClose } = this.state;
     // @TODO - the discussion on whether the Dialog contain a property for rendering itself is still being discussed
     if (!isOpen) {
@@ -90,7 +107,7 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints
     if (responsiveMode >= ResponsiveMode.small) {
       return (
-        <Layer onLayerMounted={ onLayerMounted }>
+        <Layer onLayerDidMount={ onLayerMounted || onLayerDidMount }>
           <Popup
             role='dialog'
             ariaLabelledBy={ title ? id + '-title' : '' }

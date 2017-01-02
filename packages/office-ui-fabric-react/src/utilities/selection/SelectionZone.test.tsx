@@ -66,7 +66,7 @@ function _initializeSelection(selectionMode = SelectionMode.multiple) {
   _toggle1 = _componentElement.querySelector('#toggle1');
   _invoke2 = _componentElement.querySelector('#invoke2');
   _toggle2 = _componentElement.querySelector('#toggle2');
-  _surface3 =  _componentElement.querySelector('#surface3');
+  _surface3 = _componentElement.querySelector('#surface3');
 
   _onItemInvokeCalled = 0;
   _lastItemInvoked = undefined;
@@ -176,7 +176,7 @@ describe('SelectionZone', () => {
     expect(_selection.getSelectedCount()).equals(3, 'There were not 3 selected items');
   });
 
-  it ('selects all on ctrl-a', () => {
+  it('selects all on ctrl-a', () => {
     ReactTestUtils.Simulate.keyDown(_componentElement, { ctrlKey: true, which: KeyCodes.a });
     expect(_selection.isAllSelected()).equals(true, 'Expecting that all is selected aftr ctrl-a');
   });
@@ -214,6 +214,15 @@ describe('SelectionZone', () => {
   it('does not select the row when clicking on a toggle within an invoke element', () => {
     ReactTestUtils.Simulate.mouseDown(_toggle2);
     expect(_selection.isIndexSelected(2)).equals(false, 'Item 2 should have been unselected');
+  });
+
+  it('can remove selection if you click on dead space', () => {
+    _selection.setAllSelected(true);
+
+    // Raise real browser event.
+    document.documentElement.click();
+
+    expect(_selection.getSelectedCount()).equals(0, 'Expecting selection to be cleared');
   });
 });
 

@@ -1,0 +1,401 @@
+{
+  "name": "office-ui-fabric-react",
+  "entries": [
+    {
+      "version": "0.82.4",
+      "tag": "office-ui-fabric-react_v0.82.4",
+      "date": "Fri, 23 Dec 2016 04:04:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "531b0b993cb551634db831b1f4b75a3d958235b7",
+            "comment": "fixed an issue where the beak would not reposition"
+          },
+          {
+            "author": "William Do <do.william@yahoo.com>",
+            "commit": "7c15d59f502d4ef87dde5cfc25e444919fd4e353",
+            "comment": "Fix for when enterint tooltip target from direction of tooltip's position"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.82.3",
+      "tag": "office-ui-fabric-react_v0.82.3",
+      "date": "Wed, 21 Dec 2016 16:04:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "1fff18418e20363a3feb5b822cf889797536a021",
+            "comment": "Pass defaultRender parameter to DetailsList onRenderRow prop."
+          },
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "c8ede4486233704a038a3bd3a854608846d56219",
+            "comment": "Adding css so that contextualmenu properly sizes for long text"
+          },
+          {
+            "author": "Ian Clanton-Thuon <iclantonthuon@outlook.com>",
+            "commit": "61ecdc6e358b367e435830f139dfea2495327e54",
+            "comment": "Including the \"target\" property in the Link component."
+          },
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "a5e64397ad87649484a5f93a64c731540bb68acc",
+            "comment": "Layer used node/element.remove() which is not present in ie. This change has it use parentnode.removeChild(childnode) instead"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.82.2",
+      "tag": "office-ui-fabric-react_v0.82.2",
+      "date": "Sat, 17 Dec 2016 04:05:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "REDMOND\\miclo <miclo@microsoft.com>",
+            "commit": "1016523c36dfcd344cc95c6ae05ac17336390082",
+            "comment": "Calendar: handle invalid starting dates"
+          },
+          {
+            "author": "William Do <do.william@yahoo.com>",
+            "commit": "a906f4899182ebaa70a2db056498e8da42174528",
+            "comment": "fixes panel jump in chrome and safari"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.82.1",
+      "tag": "office-ui-fabric-react_v0.82.1",
+      "date": "Sat, 10 Dec 2016 04:05:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "4ad82c3345b75b6e8e17a7d255dff7f368e975df",
+            "comment": "Fix text color of primary button on focus"
+          },
+          {
+            "author": "Yimin Wu <yimwu@microsoft.com>",
+            "commit": "cac91cfb3e82cbe251f933a3691b857e843b60dd",
+            "comment": "Focus: IE will now return false for elements that are not tabbable."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.82.0",
+      "tag": "office-ui-fabric-react_v0.82.0",
+      "date": "Fri, 09 Dec 2016 04:06:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "be98c9ce3771d9f1b383b4f110b560f728235992",
+            "comment": "Adding icon enum"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "075d877c6434633c4d016b9d2a3cd97e1bdcdf00",
+            "comment": "Dropdown: The `data-is-focusable` attribute now gets set correctly on the .ms-Dropdown div container."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "52765a05be21f976dbac24e892fd29350f04d36c",
+            "comment": "Slider: adding up/down/home/end support."
+          }
+        ],
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "a86981aceb790e9d616bd04f0727432c6c1e36af",
+            "comment": "Layer/LayerHost: Now supports React context passing through. Also all Layers not nested within a LayerHost will be positioned fixed as currently, but will not be if nested within a LayerHost."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.81.3",
+      "tag": "office-ui-fabric-react_v0.81.3",
+      "date": "Wed, 07 Dec 2016 04:07:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "75814e03401c0d76b78d623fe9c783bbefe3990d",
+            "comment": "Pivot: Add space between text and count (if used) for PivotItem. Also fixes rtl display of text and count."
+          },
+          {
+            "author": "REDMOND\\miclo <miclo@microsoft.com>",
+            "commit": "dbadfde8d9094455df1b8b2ea8f079a633a8db34",
+            "comment": "Persona: remove unneeded width property from .ms-Persona-detail"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.81.2",
+      "tag": "office-ui-fabric-react_v0.81.2",
+      "date": "Mon, 05 Dec 2016 20:20:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "e38afa74d5affb3f93f6a04f9c03c6c25a65c788",
+            "comment": "DetailsList/SelectionZone: selection is no longer cleared when clicking on DIVs that have `tabIndex >= 0` or `role=button`."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.81.1",
+      "tag": "office-ui-fabric-react_v0.81.1",
+      "date": "Mon, 05 Dec 2016 04:02:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Callout: Updating dismiss logic to be less sensitive to focus change on render."
+          },
+          {
+            "comment": "CommandBar: added `max-width: 100%` to prevent horizontal scroll scenarios."
+          },
+          {
+            "comment": "Updating project dependencies."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.81.0",
+      "tag": "office-ui-fabric-react_v0.81.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DatePicker: now renders correctly when scrolled down in Safari."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.80.1",
+      "tag": "office-ui-fabric-react_v0.80.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ContextualMenu: submenus now expand correctly again."
+          },
+          {
+            "comment": "SelectionZone: removing infinite loop."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.80.0",
+      "tag": "office-ui-fabric-react_v0.80.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "ContextualMenu: Allow users to specify FocusZone direction on ContextualMenus."
+          },
+          {
+            "comment": "ContextualMenu: the `items` property has been deprecated in favor of providing `subMenuProps`."
+          },
+          {
+            "comment": "SelectionZone: now supports data-selection-disabled flag to disable selection event handling at a particular place in the DOM."
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Button: Hover styles now render correctly."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.79.0",
+      "tag": "office-ui-fabric-react_v0.79.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Dropdown: Fixing an issue causing Safari to avoid opening the items in scroll cases."
+          },
+          {
+            "comment": "Updates the link to the asset license and clarifies that it covers both fonts and icons"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.78.2",
+      "tag": "office-ui-fabric-react_v0.78.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: removing horizontal overflow."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.78.1",
+      "tag": "office-ui-fabric-react_v0.78.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CommandBar: now uses `Icon` component."
+          },
+          {
+            "comment": "Nav: now accepts `selectedKey` from props (if provided) as truth to derive selected link."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.78.0",
+      "tag": "office-ui-fabric-react_v0.78.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Dropdown: disabled now respects changes passed in."
+          },
+          {
+            "comment": "Dropdown: removing horizontal overflow."
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Button: Reduce specificity of selectors for Button modifier classes."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.77.1",
+      "tag": "office-ui-fabric-react_v0.77.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Callout: dismiss now correctly passes event args to onDismiss."
+          },
+          {
+            "comment": "Dropdown: now only updates state when props are actually changed."
+          },
+          {
+            "comment": "TextField: defaultValue no longer provides a warning."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.77.0",
+      "tag": "office-ui-fabric-react_v0.77.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "LayerHost: Changing default LayerHost to render on a fixed position high zindex surface. Fixing a bug in the logic of determining if focus moves should cause Callout to dismiss (it shouldn't if the focused element is the callout target.) Removing max height from Dropdown ul/li.LayerHost: default host now renders on fixed high z-index surface."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.76.0",
+      "tag": "office-ui-fabric-react_v0.76.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DatePicker: factored out a Calendar component and moved the picker portion to render in a Callout."
+          }
+        ],
+        "patch": [
+          {
+            "comment": "DetailsList: clicking on an empty area of the page should clear the selection."
+          },
+          {
+            "comment": "Persona: now shows correct presence status if presence is not provided."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.75.0",
+      "tag": "office-ui-fabric-react_v0.75.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Toggle: `label` property is now optional, and the labels within the toggle will not render if no text is provided."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.74.0",
+      "tag": "office-ui-fabric-react_v0.74.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Callout: Deprecate `targetElement` in favor of `target`, which takes an Element, a MouseEvent, or a string selector. This makes it a lot easier to use Callout for pointing to a target without setting up refs and potentially having timing issues."
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Choicegroup: Now turns all choices disabled when `disabled` flag is set."
+          },
+          {
+            "comment": "Image: now adjusts correctly with width/height changes."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.73.0",
+      "tag": "office-ui-fabric-react_v0.73.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Icon: Adding `None` value to `IconName` to support custom icons."
+          },
+          {
+            "comment": "Slider: `type='button'` now added by the default to thumb button. Also added thumbButtonProps for mixing in settings on the thumb button."
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Updates the CDN references to point to the new CDN location."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.72.0",
+      "tag": "office-ui-fabric-react_v0.72.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Nav: adding support for `selectedKey`. "
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Nav: adjusting selection band to be themePrimary."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.71.0",
+      "tag": "office-ui-fabric-react_v0.71.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Facepile: updating default behavior."
+          }
+        ]
+      }
+    }
+  ]
+}

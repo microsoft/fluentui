@@ -9,7 +9,7 @@ import {
   IDropdownOption,
   autobind,
   Slider
- } from '../../../../index';
+} from '../../../../index';
 import './ContextualMenuExample.scss';
 
 export interface IContextualMenuDirectionalExampleState {
@@ -61,7 +61,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
 
     return (
       <div className='ms-ContextualMenuDirectionalExample'>
-       <div className='ms-ContextualMenuDirectionalExample-configArea'>
+        <div className='ms-ContextualMenuDirectionalExample-configArea'>
           <Checkbox label='Show beak' checked={ isBeakVisible } onChange={ this._onShowBeakChange } />
           <Slider
             max={ 20 }
@@ -71,11 +71,11 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
             onChange={ this._onGapSlider } />
           { isBeakVisible &&
             (<Slider
-            max={ 50 }
-            label='Beak Width'
-            min={ 10 }
-            defaultValue={ 10 }
-            onChange={ this._onBeakWidthSlider } />) }
+              max={ 50 }
+              label='Beak Width'
+              min={ 10 }
+              defaultValue={ 10 }
+              onChange={ this._onBeakWidthSlider } />) }
           <Dropdown
             label='Directional hint'
             selectedKey={ DirectionalHint[directionalHint] }
@@ -83,74 +83,76 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
             onChanged={ this._onDirectionalChanged } />
         </div>
         <div className='ms-ContextualMenuDirectionalExample-buttonArea' ref='menuButton'>
-          <Button onClick={ this._onShowMenuClicked }>{ isContextualMenuVisible ? 'Hide context menu' : 'Show context menu'}</Button>
+          <Button onClick={ this._onShowMenuClicked }>{ isContextualMenuVisible ? 'Hide context menu' : 'Show context menu' }</Button>
         </div>
         { isContextualMenuVisible ? (
-        <ContextualMenu
-          targetElement={ this.refs.menuButton }
-          isBeakVisible={ isBeakVisible }
-          directionalHint={ directionalHint }
-          gapSpace={ gapSpace }
-          beakWidth={ beakWidth }
-          items={
-            [
-              {
-                key: 'newItem',
-                name: 'New',
-                icon: 'Add',
-                items: [
-                  {
-                    key: 'emailMessage',
-                    name: 'Email message',
+          <ContextualMenu
+            target={ this.refs.menuButton }
+            isBeakVisible={ isBeakVisible }
+            directionalHint={ directionalHint }
+            gapSpace={ gapSpace }
+            beakWidth={ beakWidth }
+            items={
+              [
+                {
+                  key: 'newItem',
+                  name: 'New',
+                  icon: 'Add',
+                  subMenuProps: {
+                    items: [
+                      {
+                        key: 'emailMessage',
+                        name: 'Email message',
+                      },
+                      {
+                        key: 'calendarEvent',
+                        name: 'Calendar event',
+                      }
+                    ]
                   },
-                  {
-                    key: 'calendarEvent',
-                    name: 'Calendar event',
-                  }
-                ]
-              },
-              {
-                key: 'upload',
-                name: 'Upload',
-                icon: 'Upload'
-              },
-              {
-                key: 'rename',
-                name: 'Rename',
-              },
-              {
-                key: '-',
-                name: '-',
-              },
-              {
-                key: 'share',
-                name: 'Share',
-                icon: 'Share',
-                items: [
-                  {
-                    key: 'sharetoemail',
-                    name: 'Share to Email',
-                    icon: 'Mail'
-                  },
-                  {
-                    key: 'sharetofacebook',
-                    name: 'Share to Facebook',
-                  },
-                  {
-                    key: 'sharetotwitter',
-                    name: 'Share to Twitter',
-                    icon: 'Share'
-                  },
-                ]
-              },
-              {
-                key: 'print',
-                name: 'Print',
-                icon: 'Print'
-              },
-            ]
-          }
-        />
+                },
+                {
+                  key: 'upload',
+                  name: 'Upload',
+                  icon: 'Upload'
+                },
+                {
+                  key: 'rename',
+                  name: 'Rename',
+                },
+                {
+                  key: '-',
+                  name: '-',
+                },
+                {
+                  key: 'share',
+                  name: 'Share',
+                  icon: 'Share',
+                  items: [
+                    {
+                      key: 'sharetoemail',
+                      name: 'Share to Email',
+                      icon: 'Mail'
+                    },
+                    {
+                      key: 'sharetofacebook',
+                      name: 'Share to Facebook',
+                    },
+                    {
+                      key: 'sharetotwitter',
+                      name: 'Share to Twitter',
+                      icon: 'Share'
+                    },
+                  ]
+                },
+                {
+                  key: 'print',
+                  name: 'Print',
+                  icon: 'Print'
+                },
+              ]
+            }
+            />
         ) : (null) }
       </div>
     );

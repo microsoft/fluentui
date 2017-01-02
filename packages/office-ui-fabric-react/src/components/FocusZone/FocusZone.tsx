@@ -36,6 +36,7 @@ interface IPoint {
   left: number;
   top: number;
 }
+const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url', 'search'];
 
 export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFocusZone {
 
@@ -613,7 +614,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   }
 
   private _shouldInputLoseFocus(element: HTMLInputElement, isForward?: boolean) {
-    if (element && element.hasAttribute('selectionStart')) {
+    if (element &&
+      element.type &&
+      ALLOWED_INPUT_TYPES.indexOf(element.type.toLowerCase()) > -1) {
       let selectionStart = element.selectionStart;
       let selectionEnd = element.selectionEnd;
       let isRangeSelected = selectionStart !== selectionEnd;

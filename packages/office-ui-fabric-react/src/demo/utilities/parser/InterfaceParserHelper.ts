@@ -132,7 +132,9 @@ export class InterfaceParserHelper extends BaseParser {
               deprecatedMessage
             });
 
-            comment = identifierName = type = defaultValue = '';
+            // resets
+            comment = identifierName = type = defaultValue = deprecatedMessage = '';
+            isDeprecated = false;
           }
           break;
       }

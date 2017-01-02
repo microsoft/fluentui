@@ -1,9 +1,12 @@
+/* tslint:disable:no-unused-variable */
 import * as React from 'react';
+/* tslint:enable:no-unused-variable */
 import { css } from '../../utilities/css';
+import { BaseComponent } from '../../common/BaseComponent';
 import { getNativeProps, imageProperties } from '../../utilities/properties';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
-import './Image.scss';
 import { IImageProps, ImageFit } from './Image.Props';
+
+import './Image.scss';
 
 export interface IImageState {
   loadState?: ImageLoadState;
@@ -15,15 +18,15 @@ export enum CoverStyle {
 }
 
 export const CoverStyleMap = {
-  [ CoverStyle.landscape ]: 'ms-Image-image--landscape',
-  [ CoverStyle.portrait ]: 'ms-Image-image--portrait'
+  [CoverStyle.landscape]: 'ms-Image-image--landscape',
+  [CoverStyle.portrait]: 'ms-Image-image--portrait'
 };
 
 export const ImageFitMap = {
-  [ ImageFit.center ]: 'ms-Image-image--center',
-  [ ImageFit.contain ]: 'ms-Image-image--contain',
-  [ ImageFit.cover ]: 'ms-Image-image--cover',
-  [ ImageFit.none ]: 'ms-Image-image--none'
+  [ImageFit.center]: 'ms-Image-image--center',
+  [ImageFit.contain]: 'ms-Image-image--contain',
+  [ImageFit.cover]: 'ms-Image-image--cover',
+  [ImageFit.none]: 'ms-Image-image--none'
 };
 
 export enum ImageLoadState {
@@ -33,18 +36,14 @@ export enum ImageLoadState {
   errorLoaded
 }
 
-export class Image extends React.Component<IImageProps, IImageState> {
+export class Image extends BaseComponent<IImageProps, IImageState> {
   public static defaultProps = {
     shouldFadeIn: true
   };
 
-  public refs: {
-    [key: string]: React.ReactInstance;
-    image: HTMLImageElement;
-  };
-
-  private _events: EventGroup;
   private _coverStyle: CoverStyle;
+  private _imageElement: HTMLImageElement;
+  private _frameElement: HTMLDivElement;
 
   constructor(props: IImageProps) {
     super(props);
@@ -52,32 +51,24 @@ export class Image extends React.Component<IImageProps, IImageState> {
     this.state = {
       loadState: ImageLoadState.notLoaded
     };
-
-    this._events = new EventGroup(this);
   }
 
   public componentDidMount() {
-    let { image } = this.refs;
-
     if (!this._evaluateImage()) {
-      this._events.on(image, 'load', this._evaluateImage);
-      this._events.on(image, 'error', this._setError);
+      this._events.on(this._imageElement, 'load', this._evaluateImage);
+      this._events.on(this._imageElement, 'error', this._setError);
     }
   }
 
-  public componentWillReceiveProps(nextProps) {
+  public componentWillReceiveProps(nextProps: IImageProps) {
     if (this.state.loadState === ImageLoadState.loaded) {
-      let { nextHeight, nextWidth } = nextProps;
+      let { height: nextHeight, width: nextWidth } = nextProps;
       let { height, width } = this.props;
 
       if (height !== nextHeight || width !== nextWidth) {
-        this._computeCoverStyle();
+        this._computeCoverStyle(nextProps);
       }
     }
-  }
-
-  public componentWillUnmount() {
-    this._events.dispose();
   }
 
   public render() {
@@ -91,7 +82,11 @@ export class Image extends React.Component<IImageProps, IImageState> {
 
     // If image dimensions aren't specified, the natural size of the image is used.
     return (
-      <div className={ css('ms-Image', className) } style={ { width: width, height: height } }>
+      <div
+        className={ css('ms-Image', className) }
+        style={ { width: width, height: height } }
+        ref={ this._resolveRef('_frameElement') }
+        >
         <img
           { ...imageProps }
           className={
@@ -107,7 +102,7 @@ export class Image extends React.Component<IImageProps, IImageState> {
                 'ms-Image-image--scaleHeight': (imageFit === undefined && !width && !!height),
                 'ms-Image-image--scaleWidthHeight': (imageFit === undefined && !!width && !!height),
               }) }
-          ref='image'
+          ref={ this._resolveRef('_imageElement') }
           src={ srcToDisplay }
           alt={ alt }
           role={ role }
@@ -119,10 +114,9 @@ export class Image extends React.Component<IImageProps, IImageState> {
   private _evaluateImage(): boolean {
     let { src } = this.props;
     let { loadState } = this.state;
-    let { image } = this.refs;
-    let isLoaded = (src && image.naturalWidth > 0 && image.naturalHeight > 0);
+    let isLoaded = (src && this._imageElement.naturalWidth > 0 && this._imageElement.naturalHeight > 0);
 
-    this._computeCoverStyle();
+    this._computeCoverStyle(this.props);
 
     if (isLoaded && loadState !== ImageLoadState.loaded && loadState !== ImageLoadState.errorLoaded) {
       this._events.off();
@@ -134,16 +128,23 @@ export class Image extends React.Component<IImageProps, IImageState> {
     return isLoaded;
   }
 
-  private _computeCoverStyle() {
-    let { imageFit } = this.props;
+  private _computeCoverStyle(props: IImageProps) {
+    let { imageFit, width, height } = props;
     if (imageFit === ImageFit.cover || imageFit === ImageFit.contain) {
-      let { image } = this.refs;
-      if (image) {
-        let { width, height } = this.props;
+      if (this._imageElement) {
+        // Determine the desired ratio using the width and height props.
+        // If those props aren't available, measure measure the frame.
+        let desiredRatio;
+        if (!!width && !!height) {
+          desiredRatio = (width as number) / (height as number);
+        } else {
+          desiredRatio = this._frameElement.clientWidth / this._frameElement.clientHeight;
+        }
 
-        let desiredRatio = (width as number) / (height as number);
-        let naturalRatio = image.naturalWidth / image.naturalHeight;
+        // Examine the source image to determine its original ratio.
+        let naturalRatio = this._imageElement.naturalWidth / this._imageElement.naturalHeight;
 
+        // Should we crop from the top or the sides?
         if (naturalRatio > desiredRatio) {
           this._coverStyle = CoverStyle.landscape;
         } else {
@@ -160,5 +161,4 @@ export class Image extends React.Component<IImageProps, IImageState> {
       });
     }
   }
-
 }

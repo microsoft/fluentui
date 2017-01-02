@@ -6,19 +6,21 @@ export const items = [
     ariaLabel: 'New. Use left and right arrow keys to navigate',
     onClick: () => { return; },
     ['data-automation-id']: 'newItemMenu',
-    items: [
-      {
-        key: 'emailMessage',
-        name: 'Email message',
-        icon: 'Mail',
-        ['data-automation-id']: 'newEmailButton'
-      },
-      {
-        key: 'calendarEvent',
-        name: 'Calendar event',
-        icon: 'Calendar'
-      }
-    ]
+    subMenuProps: {
+      items: [
+        {
+          key: 'emailMessage',
+          name: 'Email message',
+          icon: 'Mail',
+          ['data-automation-id']: 'newEmailButton'
+        },
+        {
+          key: 'calendarEvent',
+          name: 'Calendar event',
+          icon: 'Calendar'
+        }
+      ],
+    },
   },
   {
     key: 'upload',
@@ -56,6 +58,13 @@ export const items = [
     name: 'Rename...',
     icon: 'Edit',
     onClick: () => { return; }
+  },
+  {
+    key: 'disabled',
+    name: 'Disabled...',
+    icon: 'Cancel',
+    disabled: true,
+    onClick: () => { return; }
   }
 ];
 
@@ -88,6 +97,12 @@ export const textOnlyItems = [
   {
     key: 'rename',
     name: 'Rename...',
+    onClick: () => { return; }
+  },
+  {
+    key: 'disabled',
+    name: 'Disabled...',
+    disabled: true,
     onClick: () => { return; }
   }
 ];
@@ -127,6 +142,12 @@ export const iconOnlyItems = [
     key: 'rename',
     name: '',
     icon: 'Edit',
+    onClick: () => { return; }
+  },
+  {
+    key: 'disabled',
+    icon: 'Cancel',
+    disabled: true,
     onClick: () => { return; }
   }
 ];

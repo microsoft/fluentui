@@ -16,16 +16,15 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
   } = peoplePickerItemProps;
   return (
     <div
-      className={css('ms-PickerPersona-container', {
+      className={ css('ms-PickerPersona-container', {
         'is-selected': selected
       }) }
       data-is-focusable={ true }
-      data-selection-index={ index }
-      key={ index } >
+      data-selection-index={ index } >
       <div className='ms-PickerItem-content'>
         <Persona
           { ...item }
-          presence = { item.presence ? item.presence : PersonaPresence.online }
+          presence={ item.presence !== undefined ? item.presence : PersonaPresence.none }
           size={ PersonaSize.extraSmall }
           />
       </div>

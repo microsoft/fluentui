@@ -61,7 +61,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   };
 
   public refs: {
-    [ key: string]: React.ReactInstance,
+    [key: string]: React.ReactInstance,
     header: DetailsHeader,
     root: HTMLElement,
     groupedList: GroupedList,
@@ -233,7 +233,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       // with JAWS.
       <div
         ref='root'
-        className={css('ms-DetailsList', className, {
+        className={ css('ms-DetailsList', className, {
           'is-fixed': layoutMode === DetailsListLayoutMode.fixedColumns,
           'is-horizontalConstrained': constrainMode === ConstrainMode.horizontalConstrained
         }) }
@@ -362,7 +362,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       checkboxVisibility: checkboxVisibility,
       getRowAriaLabel: getRowAriaLabel,
       checkButtonAriaLabel: checkButtonAriaLabel
-    });
+    }, this._onRenderRow);
   }
 
   private _onGroupExpandStateChanged(isSomeGroupExpanded: boolean) {
@@ -565,7 +565,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       let maxWidth = column.maxWidth;
       let minWidth = column.minWidth || maxWidth || MIN_COLUMN_WIDTH;
       let spaceLeft = availableWidth - totalWidth;
-      let increment = Math.min(spaceLeft, maxWidth - minWidth);
+      let increment = maxWidth ? Math.min(spaceLeft, maxWidth - minWidth) : spaceLeft;
 
       // Add remaining space to the last column.
       if (i === (adjustedColumns.length - 1)) {

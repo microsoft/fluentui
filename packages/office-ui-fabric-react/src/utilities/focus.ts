@@ -152,13 +152,30 @@ export function isElementVisible(element: HTMLElement): boolean {
 }
 
 export function isElementTabbable(element: HTMLElement): boolean {
+
+  // If this element is null or is disabled, it is not considered tabbable.
+  if (!element || (element as HTMLButtonElement).disabled) {
+    return false;
+  }
+
+  // In IE, element.tabIndex is default to 0. We need to use element get tabIndex attribute to get the correct tabIndex
+  let tabIndex = -1;
+
+  if (element && element.getAttribute) {
+    tabIndex = parseInt(element.getAttribute('tabIndex'), 10);
+  }
+
   return (
     !!element &&
     (element.tagName === 'A' ||
-      (element.tagName === 'BUTTON' && !(element as HTMLButtonElement).disabled) ||
-      (element.tagName === 'INPUT' && !(element as HTMLInputElement).disabled) ||
-      (element.tagName === 'TEXTAREA' && !(element as HTMLTextAreaElement).disabled) ||
-      (element.getAttribute && element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true')));
+      (element.tagName === 'BUTTON') ||
+      (element.tagName === 'INPUT') ||
+      (element.tagName === 'TEXTAREA') ||
+      (tabIndex >= 0) ||
+      (element.getAttribute && (
+        element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true') ||
+        element.getAttribute('role') === 'button')
+    ));
 }
 
 export function isElementFocusZone(element?: HTMLElement): boolean {
