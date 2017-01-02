@@ -1,6 +1,32 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 10 Dec 2016 04:05:34 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Dec 2016 04:04:09 GMT and should not be manually modified.
+
+## 0.82.4
+Fri, 23 Dec 2016 04:04:09 GMT
+
+### Patches
+
+- fixed an issue where the beak would not reposition
+- Fix for when enterint tooltip target from direction of tooltip's position
+
+## 0.82.3
+Wed, 21 Dec 2016 16:04:44 GMT
+
+### Patches
+
+- Pass defaultRender parameter to DetailsList onRenderRow prop.
+- Adding css so that contextualmenu properly sizes for long text
+- Including the "target" property in the Link component.
+- Layer used node/element.remove() which is not present in ie. This change has it use parentnode.removeChild(childnode) instead
+
+## 0.82.2
+Sat, 17 Dec 2016 04:05:00 GMT
+
+### Patches
+
+- Calendar: handle invalid starting dates
+- fixes panel jump in chrome and safari
 
 ## 0.82.1
 Sat, 10 Dec 2016 04:05:34 GMT

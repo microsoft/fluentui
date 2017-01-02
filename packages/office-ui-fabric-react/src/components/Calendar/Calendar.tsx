@@ -41,7 +41,9 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   constructor(props: ICalendarProps) {
     super();
 
-    let currentDate = props.value || new Date();
+    let currentDate = props.value && !isNaN(props.value.getTime()) ?
+      props.value
+      : new Date();
     this.state = {
       selectedDate: currentDate,
       navigatedDate: currentDate
