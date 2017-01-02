@@ -19,54 +19,54 @@ export class TextFieldErrorMessageExample extends React.Component<{}, {}> {
         <TextField
           label='TextField with a string-based validator. Hint: the length of the input string must be less than 3.'
           onGetErrorMessage={ this._getErrorMessage }
-        />
+          />
         <TextField
           label='TextField with a Promise-based validator. Hint: the length of the input string must be less than 3.'
           onGetErrorMessage={ this._getErrorMessagePromise }
-        />
+          />
         <TextField
           label='TextField with a string-based validator. Hint: the length of the input string must be less than 3.'
           value='It should show an error message under this error message on render.'
           onGetErrorMessage={ this._getErrorMessage }
-        />
+          />
         <TextField
           label='TextField with a Promise-based validator. Hint: the length of the input string must be less than 3.'
           value='It should show an error message under this error message 5 seconds after render.'
           onGetErrorMessage={ this._getErrorMessagePromise }
-        />
+          />
         <TextField
           label='TextField has both description and error message.'
           value='It should show description and error message on render at the same time.'
           description='This field has description and error message both under the input box.'
           onGetErrorMessage={ this._getErrorMessage }
-        />
+          />
         <TextField
           label='TextField with a string-based validator. Hint: the length of the input string must be less than 3.'
           placeholder='Validation will start after users stop typing for 2 seconds.'
           onGetErrorMessage={ this._getErrorMessage }
           deferredValidationTime={ 2000 }
-        />
+          />
         <TextField
           label='TextField that validates only on focus and blur. Hint: the length of the input string must be less than 3.'
           placeholder='Validation will start after users stop typing for 2 seconds.'
           onGetErrorMessage={ this._getErrorMessage }
-          validateOnFocusIn = { true }
-          validateOnFocusOut = { true }
-        />
+          validateOnFocusIn
+          validateOnFocusOut
+          />
         <TextField
           label='TextField that validates only on blur. Hint: the length of the input string must be less than 3.'
           placeholder='Validation will start after users stop typing for 2 seconds.'
           onGetErrorMessage={ this._getErrorMessage }
-          validateOnFocusOut = { true }
-        />
+          validateOnFocusOut
+          />
         <NumberTextField
           label='Number TextField with valid initial value'
           initialValue='100'
-        />
+          />
         <NumberTextField
           label='Number TextField with invalid initial value'
           initialValue='Not a number'
-        />
+          />
       </div>
     );
   }

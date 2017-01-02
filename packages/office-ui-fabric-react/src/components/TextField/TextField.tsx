@@ -129,7 +129,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         { label && <Label htmlFor={ this._id }>{ label }</Label> }
         { iconClass && <i className={ iconClass }></i> }
         { multiline ? this._renderTextArea() : this._renderInput() }
-        { <div aria-live='assertive' className='ms-u-screenReaderOnly' data-automation-id='error-message'>{ errorMessage }</div> }
+        { errorMessage && <div aria-live='assertive' className='ms-u-screenReaderOnly' data-automation-id='error-message'>{ errorMessage }</div> }
         { (description || errorMessage) &&
           <span id={ this._descriptionId }>
             { description && <span className='ms-TextField-description'>{ description }</span> }
@@ -274,7 +274,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     this._willMountTriggerValidation = false;
     const { validateOnFocusIn, validateOnFocusOut } = this.props;
     if (!(validateOnFocusIn || validateOnFocusOut)) {
-        this._delayedValidate(value);
+      this._delayedValidate(value);
     }
 
     const { onBeforeChange } = this.props;
