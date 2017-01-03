@@ -5,7 +5,7 @@ import './Icon.scss'
 import { IIconProps } from './Icon.Props';
 import { IconName } from './IconName';
 import { IconType } from './IconType';
-import { Image } from '../Image/Image'
+import { Image } from '../Image/Image';
 import {
   css,
   getNativeProps,
