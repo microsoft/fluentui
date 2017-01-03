@@ -54,6 +54,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     };
   }
 
+  public get items(): T[] {
+    return this.state.items;
+  }
+
   public componentWillReceiveProps(newProps: IBasePickerProps<T>, newState: IBasePickerState) {
     if (newState.items && newState.items !== this.state.items) {
       this.selection.setItems(newState.items);
@@ -147,7 +151,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       index,
       key: index + this._getTextFromItem(item),
       selected: this.selection.isIndexSelected(index),
-      onRemoveItem: () => this.removeItem(item)
+      onRemoveItem: () => this.removeItem(item),
+      onItemChange: this.onItemChange
     }));
   }
 
@@ -295,6 +300,18 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           }
         }
         break;
+    }
+  }
+
+  @autobind
+  protected onItemChange(changedItem: T, index: number) {
+    let { items } = this.state;
+
+    if (index >= 0) {
+      let newItems: T[] = items;
+      newItems[index] = changedItem;
+
+      this.setState({ items: newItems }, () => this.onChange());
     }
   }
 

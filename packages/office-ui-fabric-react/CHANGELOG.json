@@ -2,6 +2,54 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "0.82.4",
+      "tag": "office-ui-fabric-react_v0.82.4",
+      "date": "Fri, 23 Dec 2016 04:04:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "531b0b993cb551634db831b1f4b75a3d958235b7",
+            "comment": "fixed an issue where the beak would not reposition"
+          },
+          {
+            "author": "William Do <do.william@yahoo.com>",
+            "commit": "7c15d59f502d4ef87dde5cfc25e444919fd4e353",
+            "comment": "Fix for when enterint tooltip target from direction of tooltip's position"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.82.3",
+      "tag": "office-ui-fabric-react_v0.82.3",
+      "date": "Wed, 21 Dec 2016 16:04:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "1fff18418e20363a3feb5b822cf889797536a021",
+            "comment": "Pass defaultRender parameter to DetailsList onRenderRow prop."
+          },
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "c8ede4486233704a038a3bd3a854608846d56219",
+            "comment": "Adding css so that contextualmenu properly sizes for long text"
+          },
+          {
+            "author": "Ian Clanton-Thuon <iclantonthuon@outlook.com>",
+            "commit": "61ecdc6e358b367e435830f139dfea2495327e54",
+            "comment": "Including the \"target\" property in the Link component."
+          },
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "a5e64397ad87649484a5f93a64c731540bb68acc",
+            "comment": "Layer used node/element.remove() which is not present in ie. This change has it use parentnode.removeChild(childnode) instead"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.82.2",
       "tag": "office-ui-fabric-react_v0.82.2",
       "date": "Sat, 17 Dec 2016 04:05:00 GMT",
