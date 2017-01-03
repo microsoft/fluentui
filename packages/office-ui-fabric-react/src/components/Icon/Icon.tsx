@@ -5,23 +5,22 @@ import './Icon.scss'
 import { IIconProps } from './Icon.Props';
 import { IconName } from './IconName';
 import { IconType } from './IconType';
+import { Image } from '../Image/Image'
 import {
   css,
   getNativeProps,
-  htmlElementProperties,
-  imageProperties
+  htmlElementProperties
 } from '../../Utilities';
 
 export const Icon: (props: IIconProps) => JSX.Element = (props: IIconProps) => {
   let customIcon = props.iconName === IconName.None;
 
-  if (props.iconType === IconType.IconSheet) {
+  if (props.iconType === IconType.Image) {
     let containerClassName = css('ms-Icon', 'ms-Icon-imageContainer', props.className);
-    let imageClassName = css('ms-Icon', 'ms-Icon-Image', props.imageClassName);
 
     return (
-      <div className={ containerClassName }>
-        <img { ...getNativeProps(props, imageProperties) } className={ imageClassName } />
+      <div className={ containerClassName } >
+        <Image { ...props.imageProps as any } />
       </div>
     );
   } else {
