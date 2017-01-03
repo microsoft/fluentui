@@ -236,8 +236,6 @@ $ms-Persona-presenceSizeXl: 28px;
 .ms-Persona-tertiaryText,
 .ms-Persona-optionalText {
   @include noWrap();
-  overflow: hidden;
-  text-overflow: ellipsis;
   width: 100%;
 }
 
