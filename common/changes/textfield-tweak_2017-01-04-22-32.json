@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "TextField: Multiline now respects rows attribute.",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
