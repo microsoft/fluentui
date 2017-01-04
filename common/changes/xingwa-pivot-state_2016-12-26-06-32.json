@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Pivot: state updates may be asynchronous",
+      "type": "minor"
+    }
+  ],
+  "email": "xingwa@microsoft.com"
+}
