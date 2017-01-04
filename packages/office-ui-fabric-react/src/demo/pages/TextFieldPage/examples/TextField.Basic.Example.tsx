@@ -14,6 +14,7 @@ export class TextFieldBasicExample extends React.Component<any, any> {
         <TextField label='TextField with a placeholder' placeholder='Now I am a Placeholder' ariaLabel='Please enter text here' />
         <TextField label='Multiline TextField' multiline />
         <TextField label='Multiline TextField Unresizable' multiline resizable={ false } />
+        <TextField label='Multiline TextField with auto adjust height' multiline autoAdjustHeight />
         <TextField label='Underlined TextField' underlined />
       </div>
     );
