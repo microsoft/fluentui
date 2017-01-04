@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Fixed typo in change log",
+      "type": "patch"
+    }
+  ],
+  "email": "willdo@microsoft.com"
+}

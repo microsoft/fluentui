@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Bug fix for interface parser where all fields are marked deprecated",
+      "type": "patch"
+    }
+  ],
+  "email": "manishda@microsoft.com"
+}
