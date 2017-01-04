@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "[ChoiceGroup][A11y]:Use aria-label instead of aria-description for choice group choice.",
+      "type": "patch"
+    }
+  ],
+  "email": "yudma@microsoft.com"
+}
