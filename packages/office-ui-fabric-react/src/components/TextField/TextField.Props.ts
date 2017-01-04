@@ -17,6 +17,12 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement | HTML
   resizable?: boolean;
 
   /**
+   * Whether or not to auto adjust textField height. Applies only to multiline textfield.
+   * @default false
+   */
+  autoAdjustHeight?: boolean;
+
+  /**
    * Whether or not the textfield is underlined.
    * @default false
    */
