@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Add 'focus' method to SearchBox component",
+      "type": "minor"
+    }
+  ],
+  "email": "cschleid@microsoft.com"
+}
