@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseAutoFill } from './BaseAutoFill';
-
+import { KeyCodes } from '../../../utilities/KeyCodes';
 export interface IBaseAutoFill {
 
   /**
@@ -49,5 +49,14 @@ export interface IBaseAutoFillProps extends React.HTMLProps<HTMLInputElement | B
    * A callback for when the current input value changes.
    */
   onInputValueChange?: (newValue?: string) => void;
+
+  /**
+   * When the user uses left arrow, right arrow, clicks, or deletes text autofill is disabled
+   * Since the user has taken control. It is automatically reenabled when the user enters text and the
+   * cursor is at the end of the text in the input box. This specifies other key presses that will reenabled
+   * autofill.
+   * @default [KeyCodes.down, KeyCodes.up]
+   */
+  enableAutoFillOnKeyPress?: KeyCodes[];
 
 }

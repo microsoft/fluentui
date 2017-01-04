@@ -107,7 +107,7 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
     }
 
     return (
-      <a
+      <button
         id={ id + '-tab' }
         key={ itemKey }
         className={ css('ms-Pivot-link', { 'is-selected': this.state.selectedKey === itemKey }) }
@@ -119,7 +119,7 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
         aria-selected={ this.state.selectedKey === itemKey }>
         <span className='ms-Pivot-text'>{ link.linkText }</span>
         { countText }
-      </a>
+      </button>
     );
   }
 
