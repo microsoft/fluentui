@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ISuggestionModel } from './SuggestionsController';
+import { IRenderFunction } from '../../../common/IRenderFunction';
 
 export interface ISuggestionsProps<T> extends React.Props<any> {
   /**
@@ -14,6 +15,10 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
    * The list of Suggestions that will be displayed
    */
   suggestions: ISuggestionModel<T>[];
+  /**
+  * How the "no result found" should look in the suggestion list.
+  */
+  onRenderNoResultFound?: IRenderFunction<void>;
   /**
    * The text that appears at the top of the suggestions list.
    */
