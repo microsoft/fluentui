@@ -3,7 +3,7 @@
     {
       "packageName": "office-ui-fabric-react",
       "comment": "TextField enhancement - auto adjust height",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "email": "manishda@microsoft.com"
