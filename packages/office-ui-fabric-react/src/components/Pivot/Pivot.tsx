@@ -63,6 +63,7 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
 
   public componentWillReceiveProps(nextProps: IPivotProps) {
     const links: IPivotItemProps[] = this._getPivotLinks(nextProps);
+
     let selectedKey: string;
     if (this._isKeyValid(nextProps.selectedKey)) {
       selectedKey = nextProps.selectedKey;
@@ -72,10 +73,12 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
       selectedKey = links[0].itemKey;
     }
 
-    this.setState({
-      links,
-      selectedKey
-    } as IPivotState);
+    this.setState((prevState, props) => ({
+      links: links,
+      selectedKey: this._isKeyValid(prevState.selectedKey)
+        ? prevState.selectedKey
+        : links[0].itemKey
+    }) as IPivotState);
   }
 
   public render() {
@@ -115,7 +118,7 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
     }
 
     return (
-      <a
+      <button
         id={ id + '-tab' }
         key={ itemKey }
         className={ css('ms-Pivot-link', { 'is-selected': this.state.selectedKey === itemKey }) }
@@ -127,7 +130,7 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
         aria-selected={ this.state.selectedKey === itemKey }>
         <span className='ms-Pivot-text'>{ link.linkText }</span>
         { countText }
-      </a>
+      </button>
     );
   }
 
