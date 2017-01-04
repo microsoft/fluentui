@@ -6,7 +6,7 @@ import { autobind } from '../../../utilities/autobind';
 import { KeyCodes } from '../../../utilities/KeyCodes';
 
 export interface IBaseAutoFillState {
-  value?: string;
+  displayValue?: string;
 }
 
 const SELECTION_FORWARD = 'forward';
@@ -14,12 +14,19 @@ const SELECTION_BACKWARD = 'backward';
 
 export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFillState> implements IBaseAutoFill {
 
+  public static defaultProps = {
+    enableAutoFillOnKeyPress: [KeyCodes.down, KeyCodes.up]
+  };
+
   private _inputElement: HTMLInputElement;
+  private _autoFillEnabled: boolean = true;
+  private _value: string;
 
   constructor(props: IBaseAutoFillProps) {
     super(props);
+    this._value = '';
     this.state = {
-      value: ''
+      displayValue: ''
     };
   }
 
@@ -41,7 +48,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   }
 
   public get value(): string {
-    return this.state.value;
+    return this._value;
   }
 
   public get selectionStart(): number {
@@ -56,11 +63,17 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
     return this._inputElement;
   }
 
+  public componentWillReceiveProps(nextProps: IBaseAutoFillProps) {
+    if (this._autoFillEnabled && this._doesTextStartWith(nextProps.suggestedDisplayValue, this._value)) {
+      this.setState({ displayValue: nextProps.suggestedDisplayValue });
+    }
+  }
+
   public componentDidUpdate() {
-    let { value } = this.state;
+    let value = this._value;
     let { suggestedDisplayValue } = this.props;
     let differenceIndex = 0;
-    if (value && suggestedDisplayValue && this._doesTextStartWith(suggestedDisplayValue, value)) {
+    if (this._autoFillEnabled && value && suggestedDisplayValue && this._doesTextStartWith(suggestedDisplayValue, value)) {
       while (differenceIndex < value.length && value[differenceIndex].toLocaleLowerCase() === suggestedDisplayValue[differenceIndex].toLocaleLowerCase()) {
         differenceIndex++;
       }
@@ -72,16 +85,8 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
 
   public render() {
     let {
-      value
+      displayValue
     } = this.state;
-    let {
-      suggestedDisplayValue
-    } = this.props;
-    let displayValue = value;
-
-    if (this._doesTextStartWith(suggestedDisplayValue, value)) {
-      displayValue = suggestedDisplayValue;
-    }
 
     const nativeProps = getNativeProps(this.props, inputProperties);
     return <input { ...nativeProps}
@@ -91,6 +96,7 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
       autoComplete={ 'off' }
       onChange={ this._onChange }
       onKeyDown={ this._onKeyDown }
+      onClick={ this._onClick }
       />;
   }
 
@@ -99,32 +105,49 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   }
 
   public clear() {
+    this._autoFillEnabled = true;
     this._updateValue('');
+  }
+
+  @autobind
+  private _onClick() {
+    if (this._value && this._value !== '' && this._autoFillEnabled) {
+      this._autoFillEnabled = false;
+    }
   }
 
   @autobind
   private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     switch (ev.which) {
       case KeyCodes.backspace:
-        this._handleBackspace(ev);
+        this._autoFillEnabled = false;
         break;
-    }
-  }
-
-  private _handleBackspace(ev: React.KeyboardEvent<HTMLElement>) {
-    let { value } = this.state;
-    if (value && value.length > 0) {
-      this._updateValue(value.substring(0, value.length - 1));
-      // Since this effectively deletes a letter from the string we need to preventDefault so that
-      // the backspace doesn't try to delete a letter that's already been deleted. If a letter is deleted
-      // it can trigger the onChange event again which can have unintended consequences.
-      ev.preventDefault();
+      case KeyCodes.left:
+        if (this._autoFillEnabled) {
+          this._autoFillEnabled = false;
+        }
+        break;
+      case KeyCodes.right:
+        if (this._autoFillEnabled) {
+          this._autoFillEnabled = false;
+        }
+        break;
+      default:
+        if (!this._autoFillEnabled) {
+          if (this.props.enableAutoFillOnKeyPress.indexOf(ev.which) !== -1) {
+            this._autoFillEnabled = true;
+          }
+        }
+        break;
     }
   }
 
   @autobind
   private _onChange(ev: React.FormEvent<HTMLElement>) {
     let value: string = (ev.target as HTMLInputElement).value;
+    if (value && (ev.target as HTMLInputElement).selectionStart === value.length && !this._autoFillEnabled && value.length > this._value.length) {
+      this._autoFillEnabled = true;
+    }
     this._updateValue(value);
   }
 
@@ -135,8 +158,15 @@ export class BaseAutoFill extends BaseComponent<IBaseAutoFillProps, IBaseAutoFil
   }
 
   private _updateValue(newValue: string) {
+    this._value = newValue;
+    let displayValue = newValue;
+    if (this.props.suggestedDisplayValue &&
+      this._doesTextStartWith(this.props.suggestedDisplayValue, displayValue)
+      && this._autoFillEnabled) {
+      displayValue = this.props.suggestedDisplayValue;
+    }
     this.setState({
-      value: newValue
+      displayValue: newValue
     }, () => this._notifyInputChange(newValue));
   }
 
