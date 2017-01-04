@@ -81,6 +81,15 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
     );
   }
 
+  /**
+   * Sets focus to the search box input field
+   */
+  public focus() {
+    if (this._inputElement) {
+      this._inputElement.focus();
+    }
+  }
+
   @autobind
   private _onClearClick(ev?: any) {
     this.setState({
