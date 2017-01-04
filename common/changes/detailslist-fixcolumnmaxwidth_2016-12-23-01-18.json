@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Fixed a bug where if no width was passed into a column there would be a nan error thrown.",
+      "type": "patch"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}
