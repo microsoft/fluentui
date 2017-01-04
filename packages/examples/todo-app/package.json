@@ -25,7 +25,7 @@
     "es6-promise": ">=3.2.1 <4.0.0",
     "immutability-helper": "^2.0.0",
     "office-ui-fabric-core": ">=5.0.1 <6.0.0",
-    "office-ui-fabric-react": ">=0.82.3 <1.0.0",
+    "office-ui-fabric-react": ">=0.82.4 <1.0.0",
     "react": ">=15.3.2 <16.0.0",
     "react-dom": ">=15.3.2 <16.0.0",
     "typescript": "^2.0.6"

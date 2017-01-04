@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix for when enterint tooltip target from direction of tooltip's position",
+      "comment": "Fixed typo in change log",
       "type": "patch"
     }
   ],
