@@ -18,7 +18,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
   };
 
   private _id: string;
-  private _descriptionId: string;
+  private _labelId: string;
   private _inputElement: HTMLInputElement;
 
   constructor(props: IChoiceGroupProps) {
@@ -30,7 +30,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
     };
 
     this._id = getId('ChoiceGroup');
-    this._descriptionId = getId('ChoiceGroupDescription');
+    this._labelId = getId('ChoiceGroupLabel');
   }
 
   public componentWillReceiveProps(newProps: IChoiceGroupProps) {
@@ -84,7 +84,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
                 onChange={ this._onChange.bind(this, option) }
                 onFocus={ this._onFocus.bind(this, option) }
                 onBlur={ this._onBlur.bind(this, option) }
-                aria-describedby={ `${this._descriptionId}-${option.key}` }
+                aria-labelledby={ `${this._labelId}-${option.key}` }
                 />
               { this._renderField(option) }
             </div>
@@ -152,9 +152,9 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
           option.imageSrc
             ? <div className='ms-ChoiceField-labelWrapper'>
               <i className='ms-ChoiceField-icon ms-Icon ms-Icon--CheckMark' />
-              <span id={ `${this._descriptionId}-${option.key}` } className='ms-Label'>{ option.text }</span>
+              <span id={ `${this._labelId}-${option.key}` } className='ms-Label'>{ option.text }</span>
             </div>
-            : <span id={ `${this._descriptionId}-${option.key}` } className='ms-Label'>{ option.text }</span>
+            : <span id={ `${this._labelId}-${option.key}` } className='ms-Label'>{ option.text }</span>
         }
       </label>
     );
