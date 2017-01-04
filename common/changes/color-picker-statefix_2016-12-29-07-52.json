@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Fix for color picker not responding to prop changes",
+      "type": "patch"
+    }
+  ],
+  "email": "manishda@microsoft.com"
+}
