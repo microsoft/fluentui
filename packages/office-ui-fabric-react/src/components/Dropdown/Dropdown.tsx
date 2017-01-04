@@ -94,7 +94,6 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
           role='combobox'
           aria-label={ label }
           aria-activedescendant={ selectedIndex >= 0 ? (this._id + '-list' + selectedIndex) : (this._id + '-list') }
-          aria-controls={ this._id + '-list' }
           >
           <span
             className='ms-Dropdown-title'
