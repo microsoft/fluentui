@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "adding screenreader for dropdown when not expanded",
+      "type": "minor"
+    }
+  ],
+  "email": "xingwa@microsoft.com"
+}
