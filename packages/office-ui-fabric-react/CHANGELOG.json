@@ -15,7 +15,7 @@
           {
             "author": "William Do <do.william@yahoo.com>",
             "commit": "7c15d59f502d4ef87dde5cfc25e444919fd4e353",
-            "comment": "Fix for when enterint tooltip target from direction of tooltip's position"
+            "comment": "Fixed an issue where the tooltip would quickly remove itself if the tooltip target was entered from the direction of the tooltip's position"
           }
         ]
       }
