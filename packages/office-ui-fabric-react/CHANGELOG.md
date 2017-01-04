@@ -1,6 +1,30 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 23 Dec 2016 04:04:09 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Jan 2017 19:05:07 GMT and should not be manually modified.
+
+## 0.83.0
+Wed, 04 Jan 2017 19:05:07 GMT
+
+### Minor changes
+
+- Made lots of improvements to autofill
+- Icon: Add support for Image Sheet using Icon
+- adding 'enter' key to select pivot item.
+- TextField enhancement - auto adjust height
+- adding screenreader for dropdown when not expanded
+- Pivot: state updates may be asynchronous
+
+### Patches
+
+- Fixed location of deprecated props
+- Fix for color picker not responding to prop changes
+- Fixed a bug where if no width was passed into a column there would be a nan error thrown.
+- Bug fix for interface parser where all fields are marked deprecated
+- [ChoiceGroup][A11y]:Use aria-label instead of aria-description for choice group choice.
+- Fixed TextField clip issue
+- When computing a cover style for the Image component, if the width and height props aren't provided it will now measure the element. The Image component now extends from BaseComponent to more safely handle refs.
+- Fixed typo in change log
+- [DropDown][A11y] Remove aria-controls label for drop down.
 
 ## 0.82.4
 Fri, 23 Dec 2016 04:04:09 GMT
@@ -8,7 +32,7 @@ Fri, 23 Dec 2016 04:04:09 GMT
 ### Patches
 
 - fixed an issue where the beak would not reposition
-- Fix for when enterint tooltip target from direction of tooltip's position
+- Fixed an issue where the tooltip would quickly remove itself if the tooltip target was entered from the direction of the tooltip's position
 
 ## 0.82.3
 Wed, 21 Dec 2016 16:04:44 GMT
