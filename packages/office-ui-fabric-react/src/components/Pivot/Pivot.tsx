@@ -75,9 +75,7 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
 
     this.setState((prevState, props) => ({
       links: links,
-      selectedKey: this._isKeyValid(prevState.selectedKey)
-        ? prevState.selectedKey
-        : links[0].itemKey
+      selectedKey
     }) as IPivotState);
   }
 
