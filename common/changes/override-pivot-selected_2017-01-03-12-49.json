@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Add optional selectedKey to Pivot",
+      "type": "minor"
+    }
+  ],
+  "email": "asmundg@big-oil.org"
+}
