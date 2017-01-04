@@ -95,7 +95,14 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
           aria-label={ label }
           aria-activedescendant={ selectedIndex >= 0 ? (this._id + '-list' + selectedIndex) : (this._id + '-list') }
           >
-          <span className='ms-Dropdown-title'>{ selectedOption ? onRenderItem(selectedOption, this._onRenderItem) : '' }</span>
+          <span
+            className='ms-Dropdown-title'
+            key={ selectedIndex }
+            aria-live={ disabled || isOpen ? 'off' : 'polite' }
+            aria-atomic={ true }
+            >
+            { selectedOption ? onRenderItem(selectedOption, this._onRenderItem) : '' }
+          </span>
           <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown'></i>
         </div>
         { isOpen && (
