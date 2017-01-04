@@ -23,7 +23,7 @@ const OFF_SCREEN_STYLE = { opacity: 0 };
 const BORDER_WIDTH: number = 1;
 const SPACE_FROM_EDGE: number = 8;
 export interface ICalloutState {
-  positions?: any;
+  positions?: IPositionInfo;
   slideDirectionalClassName?: string;
   calloutElementRect?: ClientRect;
 }
@@ -101,8 +101,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     }
 
     let beakReactStyle: React.CSSProperties = {
-      top: positions && positions.beak ? positions.beak.top : BEAK_ORIGIN_POSITION.top,
-      left: positions && positions.beak ? positions.beak.left : BEAK_ORIGIN_POSITION.left,
+      top: positions && positions.beakPosition ? positions.beakPosition.top : BEAK_ORIGIN_POSITION.top,
+      left: positions && positions.beakPosition ? positions.beakPosition.left : BEAK_ORIGIN_POSITION.left,
       height: beakStyleWidth,
       width: beakStyleWidth
     };
@@ -118,7 +118,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
               className,
               slideDirectionalClassName ? `ms-u-${slideDirectionalClassName}` : ''
             ) }
-          style={ positions ? positions.callout : OFF_SCREEN_STYLE }
+          style={ positions ? positions.calloutPosition : OFF_SCREEN_STYLE }
           ref={ this._resolveRef('_calloutElement') }
           >
 
@@ -216,24 +216,18 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       } else {
         currentProps.target = this._target;
       }
-      let positionInfo: IPositionInfo = getRelativePositions(currentProps, hostElement, calloutElement);
+      let newPositions: IPositionInfo = getRelativePositions(currentProps, hostElement, calloutElement);
 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
-      if ((!positions && positionInfo) ||
-        (positions && positionInfo &&
-          (positions.callout.top.toFixed(2) !== positionInfo.calloutPosition.top.toFixed(2) ||
-            positions.callout.left.toFixed(2) !== positionInfo.calloutPosition.left.toFixed(2))
+      if ((!positions && newPositions) ||
+        (positions && newPositions && this._arePositionsEqual(positions, newPositions)
           && this._positionAttempts < 5)) {
         // We should not reposition the callout more than a few times, if it is then the content is likely resizing
         // and we should stop trying to reposition to prevent a stack overflow.
         this._positionAttempts++;
         this.setState({
-          positions: {
-            callout: positionInfo.calloutPosition,
-            beak: positionInfo.beakPosition,
-          },
-          slideDirectionalClassName: positionInfo.directionalClassName
+          positions: newPositions
         });
       } else {
         this._positionAttempts = 0;
@@ -268,6 +262,24 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       this._maxHeight = this._getBounds().height - BORDER_WIDTH * 2;
     }
     return this._maxHeight;
+  }
+
+  private _arePositionsEqual(positions: IPositionInfo, newPosition: IPositionInfo) {
+    if (positions.calloutPosition.top.toFixed(2) !== newPosition.calloutPosition.top.toFixed(2)) {
+      return false;
+    }
+    if (positions.calloutPosition.left.toFixed(2) !== newPosition.calloutPosition.left.toFixed(2)) {
+      return false;
+    }
+    if (positions.beakPosition.top.toFixed(2) !== newPosition.beakPosition.top.toFixed(2)) {
+      return false;
+    }
+    if (positions.beakPosition.top.toFixed(2) !== newPosition.beakPosition.top.toFixed(2)) {
+      return false;
+    }
+
+    return true;
+
   }
 
   private _setTargetWindowAndElement(target: HTMLElement | string | MouseEvent): void {

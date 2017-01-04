@@ -5,11 +5,12 @@
       "name": "Launch",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}/node_modules/gulp/bin/gulp.js",
+      "program": "${workspaceRoot}/packages/office-ui-fabric-react/node_modules/gulp/bin/gulp.js",
       "stopOnEntry": false,
       "args": [
+        "webpack"
       ],
-      "cwd": "${workspaceRoot}",
+      "cwd": "${workspaceRoot}/packages/office-ui-fabric-react",
       "runtimeExecutable": null,
       "runtimeArgs": [
         "--nolazy",

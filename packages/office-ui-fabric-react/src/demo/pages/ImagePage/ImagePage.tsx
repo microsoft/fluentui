@@ -36,7 +36,7 @@ export class ImagePage extends React.Component<IComponentDemoPageProps, any> {
         componentName='ImageExample'
         exampleCards={
           <div>
-            <ExampleCard title='Default Behavior' code={ ImageDefaultExampleCode }>
+            <ExampleCard title='ImageFit: Not specified' code={ ImageDefaultExampleCode }>
               <ImageDefaultExample />
             </ExampleCard>
             <ExampleCard title='ImageFit: None' code={ ImageNoneExampleCode }>

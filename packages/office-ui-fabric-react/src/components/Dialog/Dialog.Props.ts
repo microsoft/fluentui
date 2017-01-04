@@ -61,6 +61,12 @@ export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeSt
   /**
    * A callback function for when the Dialog content is mounted on the overlay layer
    */
+  onLayerDidMount?: () => void;
+
+  /**
+   * @deprecated
+   * Use onLayerDidMount instead. Deprecated at 0.81.2, to be removed at 1.0.0.
+   */
   onLayerMounted?: () => void;
 }
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IPivotProps } from './Pivot.Props';
-import { IPivotItemProps} from './PivotItem.Props';
+import { IPivotItemProps } from './PivotItem.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { KeyCodes } from '../../utilities/KeyCodes';
 import { PivotItem } from './PivotItem';
@@ -61,14 +61,13 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
 
   public componentWillReceiveProps(nextProps: IPivotProps) {
     const links: IPivotItemProps[] = this._getPivotLinks(nextProps);
-    const selectedKey: string = this._isKeyValid(this.state.selectedKey)
-      ? this.state.selectedKey
-      : links[0].itemKey;
 
-    this.setState({
-      links,
-      selectedKey
-    } as IPivotState);
+    this.setState((prevState, props) => ({
+      links: links,
+      selectedKey: this._isKeyValid(prevState.selectedKey)
+        ? prevState.selectedKey
+        : links[0].itemKey
+    }) as IPivotState);
   }
 
   public render() {
@@ -108,7 +107,7 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
     }
 
     return (
-      <a
+      <button
         id={ id + '-tab' }
         key={ itemKey }
         className={ css('ms-Pivot-link', { 'is-selected': this.state.selectedKey === itemKey }) }
@@ -118,9 +117,9 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
         role='tab'
         aria-controls={ id + '-panel' }
         aria-selected={ this.state.selectedKey === itemKey }>
-        { link.linkText }
+        <span className='ms-Pivot-text'>{ link.linkText }</span>
         { countText }
-      </a>
+      </button>
     );
   }
 
