@@ -65,6 +65,9 @@ export class ScreenReaderAlertPage extends React.Component<IComponentDemoPagePro
                 <br />
                 Note: ReadingMode.ReadAfterOtherContent option is currently not supported in ChromeVOX, text will be read immediately.
               </li>
+              <li>
+                4. <strong>Narrator in windows 10 Enterprise 14393.577</strong> with <strong>Edge 38.14393.0.0</strong>.
+              </li>
             </ul>
 
             <p>

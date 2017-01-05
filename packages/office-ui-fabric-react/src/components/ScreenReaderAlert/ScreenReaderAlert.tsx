@@ -18,6 +18,7 @@ import './ScreenReaderAlert.scss';
  * 1. JAWS 18.
  * 2. NVDA 2016.4.
  * 3. ChromeVOX v53. (Not support ReadingMode.ReadAfterOtherContent option for ChromeVOX, it will read immediately)
+ * 4. Narrator in windows 10.
  *
  * @example
  * <ScreenReaderAlert>
