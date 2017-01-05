@@ -55,11 +55,15 @@ export class ScreenReaderAlertPage extends React.Component<IComponentDemoPagePro
             </p>
             <ul>
               <li>
-                <p>1. <strong>JAWS 18</strong> with <strong>IE 11</strong>.</p>
+                1. <strong>JAWS 18</strong> with <strong>IE 11</strong>.
               </li>
               <li>
-                <p>2. <strong>Chrome VOX v53</strong> with <strong>Chrome v54</strong>.</p>
-                <p>    Note: ReadingMode.ReadAfterOtherContent option is currently not supported in ChromeVOX, text will be read immediately.</p>
+                2. <strong>NVDA 2016.4</strong> with <strong>FireFox v50.1.0</strong>.
+              </li>
+              <li>
+                3. <strong>Chrome VOX v53</strong> with <strong>Chrome v54</strong>.
+                <br />
+                Note: ReadingMode.ReadAfterOtherContent option is currently not supported in ChromeVOX, text will be read immediately.
               </li>
             </ul>
 

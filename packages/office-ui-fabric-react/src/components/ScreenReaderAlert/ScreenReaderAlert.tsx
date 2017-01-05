@@ -16,7 +16,8 @@ import './ScreenReaderAlert.scss';
  *
  * All functionalities of this component is tested through:
  * 1. JAWS 18.
- * 2. ChromeVOX v53. (Not support ReadingMode.ReadAfterOtherContent option for ChromeVOX, it will read immediately)
+ * 2. NVDA 2016.4.
+ * 3. ChromeVOX v53. (Not support ReadingMode.ReadAfterOtherContent option for ChromeVOX, it will read immediately)
  *
  * @example
  * <ScreenReaderAlert>
