@@ -42,19 +42,22 @@ export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, 
   }
 
   public shouldComponentUpdate(nextProps: IScreenReaderAlertProps): boolean {
-    return this.props.readingMode !== ReadingMode.DoNotRead &&
-      (this.props.indicator !== nextProps.indicator || !this._isSameText(this.props, nextProps));
+    return (this.props.indicator !== nextProps.indicator || !this._isSameText(this.props, nextProps));
   }
 
   public render(): JSX.Element {
     return (
-      <div className='ms-ScreenReaderAlert' role='presentation' key={ this._renderIndex++ }>
-        <p
-          role={ this._role }
-          aria-live={ this._ariaLive }
-          aria-atomic={ true }>
-          { this._alertMessages }
-        </p>
+      <div className='ms-ScreenReaderAlert' key={ this._renderIndex++ }>
+        {
+          this.props.readingMode !== ReadingMode.DoNotRead && (
+            <p
+              role={ this._role }
+              aria-live={ this._ariaLive }
+              aria-atomic={ true }>
+              { this._alertMessages }
+            </p>
+          )
+        }
       </div>
     );
   }
