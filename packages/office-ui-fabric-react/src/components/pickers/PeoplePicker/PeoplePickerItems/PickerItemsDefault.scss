@@ -3,7 +3,7 @@
 .ms-PickerPersona-container {
   @include focus-border();
 
-  display: inline-block;
+  display: inline-flex;
   vertical-align: top;
   background: $ms-color-neutralLighter;
   margin: 1px;
@@ -28,5 +28,10 @@
     vertical-align: middle;
   }
 
-
+  .ms-Persona.ms-Persona--xs {
+    .ms-Persona-details {
+      flex-direction: row;
+      flex: 1 0 auto;
+    }
+  }
 }

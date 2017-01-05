@@ -69,10 +69,14 @@ $ms-Persona-presenceSizeXl: 28px;
   line-height: 1;
   position: relative;
   height: $ms-Persona-sizeMd;
-  display: table;
-  table-layout: fixed;
-  border-collapse: separate;
-  width: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
 
   .ms-ContextualHost {
     display: none;
@@ -80,16 +84,12 @@ $ms-Persona-presenceSizeXl: 28px;
 }
 
 .ms-Persona-imageArea {
-  position: absolute;
+  position: relative;
   overflow: hidden;
   text-align: center;
-  max-width: $ms-Persona-sizeMd;
-  height: $ms-Persona-sizeMd;
+  flex: 0 0 $ms-Persona-sizeMd;
   border-radius: 50%;
   z-index: $ms-zIndex-back;
-  width: $ms-Persona-sizeMd;
-  top: 0;
-  @include left(0);
 
   @media screen and (-ms-high-contrast: active) {
     border: 1px solid $ms-color-white;
@@ -222,21 +222,21 @@ $ms-Persona-presenceSizeXl: 28px;
 }
 
 .ms-Persona-details {
-  box-sizing: border-box;
-  padding: 0 12px;
-  vertical-align: middle;
+  padding: 0;
+  @include padding-right(24px);
+  @include padding-left(12px);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
   @include text-align(left);
-  @include padding-left($ms-Persona-sizeMd + $ms-Persona-imageDetailsLgSpace);
-  display: table-cell;
-  width: 100%;
 }
 
 .ms-Persona-primaryText,
 .ms-Persona-secondaryText,
 .ms-Persona-tertiaryText,
-.ms-Persona-optionalText {
+.ms-Persona-optionalText,
+.ms-Persona-primaryTextContent {
   @include noWrap();
-  width: 100%;
 }
 
 .ms-Persona-primaryText {
@@ -272,7 +272,6 @@ $ms-Persona-presenceSizeXl: 28px;
 //
 .ms-Persona.ms-Persona--tiny {
   height: $ms-Persona-sizeTiny;
-  display: inline-block;
 
   .ms-Persona-imageArea {
     overflow: visible;
@@ -299,12 +298,11 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .ms-Persona-details {
     @include padding-left(20px);
-    display: inline-block;
   }
 
   .ms-Persona-primaryText {
     font-size: $ms-font-size-m;
-    padding-top: 9px;
+    padding-top: 4px;
   }
 
   .ms-Persona-secondaryText {
@@ -334,9 +332,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .ms-Persona-imageArea,
   .ms-Persona-image {
-    max-width: $ms-Persona-sizeXs;
-    width: $ms-Persona-sizeXs;
-    height: $ms-Persona-sizeXs;
+    flex: 0 0 $ms-Persona-sizeXs;
   }
 
   .ms-Persona-placeholder {
@@ -351,10 +347,6 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .ms-Persona-presence {
     @include left(19px);
-  }
-
-  .ms-Persona-details {
-    @include padding-left($ms-Persona-sizeXs + $ms-Persona-imageDetailsSmSpace);
   }
 
   .ms-Persona-primaryText {
@@ -376,9 +368,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .ms-Persona-imageArea,
   .ms-Persona-image {
-    max-width: $ms-Persona-sizeSm;
-    width: $ms-Persona-sizeSm;
-    height: $ms-Persona-sizeSm;
+    flex: 0 0 $ms-Persona-sizeSm;
   }
 
   .ms-Persona-placeholder {
@@ -393,10 +383,6 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .ms-Persona-presence {
     @include left(27px);
-  }
-
-  .ms-Persona-details {
-    @include padding-left($ms-Persona-sizeSm + $ms-Persona-imageDetailsSmSpace);
   }
 
   .ms-Persona-primaryText {
@@ -418,9 +404,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .ms-Persona-imageArea,
   .ms-Persona-image {
-    max-width: $ms-Persona-sizeLg;
-    width: $ms-Persona-sizeLg;
-    height: $ms-Persona-sizeLg;
+    flex: 0 0 $ms-Persona-sizeLg;
   }
 
   .ms-Persona-placeholder {
@@ -445,10 +429,6 @@ $ms-Persona-presenceSizeXl: 28px;
     font-size: $ms-font-size-m;
   }
 
-  .ms-Persona-details {
-    @include padding-left($ms-Persona-sizeLg + $ms-Persona-imageDetailsLgSpace);
-  }
-
   .ms-Persona-secondaryText {
     padding-top: 3px;
   }
@@ -466,9 +446,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .ms-Persona-imageArea,
   .ms-Persona-image {
-    max-width: $ms-Persona-sizeXl;
-    width: $ms-Persona-sizeXl;
-    height: $ms-Persona-sizeXl;
+    flex: 0 0 $ms-Persona-sizeXl;
   }
 
   .ms-Persona-placeholder {
@@ -493,10 +471,6 @@ $ms-Persona-presenceSizeXl: 28px;
     font-size: $ms-font-size-xl;
     position: relative;
     top: 1px;
-  }
-
-  .ms-Persona-details {
-    @include padding-left($ms-Persona-sizeXl + $ms-Persona-imageDetailsXlSpace);
   }
 
   .ms-Persona-primaryText {
