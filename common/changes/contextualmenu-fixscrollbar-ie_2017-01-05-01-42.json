@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "changed ms-contextualmenu-link from inline-block to block to prevent scrollbars from appearing incorrectly",
+      "type": "patch"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}
