@@ -1,8 +1,10 @@
 import * as React from 'react';
 import {
   ScreenReaderAlert,
+  ReadingMode,
   Button,
   ButtonType,
+  Toggle,
   autobind
 } from '../../../../index';
 
@@ -14,7 +16,8 @@ const alertMessages: string[] = [
 ];
 
 export interface IScreenReaderAlertBasicExampleState {
-  messageIndex: number;
+  shouldRead?: boolean;
+  messageIndex?: number;
 }
 
 export class ScreenReaderAlertBasicExample extends React.Component<any, IScreenReaderAlertBasicExampleState> {
@@ -22,6 +25,7 @@ export class ScreenReaderAlertBasicExample extends React.Component<any, IScreenR
     super(props);
 
     this.state = {
+      shouldRead: true,
       messageIndex: 0
     };
   }
@@ -31,9 +35,16 @@ export class ScreenReaderAlertBasicExample extends React.Component<any, IScreenR
 
     return (
       <div>
-        <ScreenReaderAlert>
+        <ScreenReaderAlert readingMode={ this.state.shouldRead ? ReadingMode.ReadImmediately : ReadingMode.DoNotRead }>
           { currentMessage }
         </ScreenReaderAlert>
+        <Toggle
+          defaultChecked={ true }
+          onChanged={ this._onToggleChanged }
+          label='Should read screen reader alert'
+          onText='Enabled'
+          offText='Disabled'
+          />
         <Button
           onClick={ this._onButtonClicked }
           buttonType={ ButtonType.primary }
@@ -56,6 +67,13 @@ export class ScreenReaderAlertBasicExample extends React.Component<any, IScreenR
 
     this.setState({
       messageIndex: nextIndex
+    });
+  }
+
+  @autobind
+  private _onToggleChanged(checked: boolean): void {
+    this.setState({
+      shouldRead: checked
     });
   }
 }

@@ -48,7 +48,7 @@ export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, 
 
   public render(): JSX.Element {
     return (
-      <div className='ms-ScreenReaderAlert' key={ this._renderIndex++ }>
+      <div className='ms-ScreenReaderAlert' role='presentation' key={ this._renderIndex++ }>
         <p
           role={ this._role }
           aria-live={ this._ariaLive }
