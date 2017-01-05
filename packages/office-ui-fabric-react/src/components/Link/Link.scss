@@ -10,7 +10,6 @@
 
 @mixin ms-Link {
   @include ms-baseFont;
-  @include focus-border();
   color: $ms-color-themePrimary;
   text-decoration: none;
   cursor: pointer;
@@ -41,6 +40,11 @@
 
   &:active {
     color: $ms-color-themePrimary;
+  }
+
+  &:focus {
+    outline-offset: 1px;
+    outline: 1px solid $ms-color-neutralSecondary;
   }
 }
 
