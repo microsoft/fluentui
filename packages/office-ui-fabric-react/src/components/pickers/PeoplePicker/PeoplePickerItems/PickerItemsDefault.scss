@@ -28,6 +28,7 @@
     vertical-align: middle;
   }
 
+  // People Picker specific override to prevent truncation of Persona name
   .ms-Persona.ms-Persona--xs {
     .ms-Persona-details {
       flex-direction: row;

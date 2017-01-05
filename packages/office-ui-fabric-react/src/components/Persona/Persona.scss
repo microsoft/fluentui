@@ -69,13 +69,9 @@ $ms-Persona-presenceSizeXl: 28px;
   line-height: 1;
   position: relative;
   height: $ms-Persona-sizeMd;
-  display: -webkit-flex;
   display: flex;
-  -webkit-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
   align-items: center;
-  -webkit-justify-content: flex-start;
   justify-content: flex-start;
 
   .ms-ContextualHost {
@@ -222,11 +218,7 @@ $ms-Persona-presenceSizeXl: 28px;
 }
 
 .ms-Persona-details {
-  padding: 0;
-  @include padding-right(24px);
-  @include padding-left(12px);
-  display: flex;
-  flex-direction: column;
+  @include padding(0, 24px, 0, 12px);
   min-width: 0;
   @include text-align(left);
 }
