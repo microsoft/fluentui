@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "changed ms-contextualmenu-link from inline-block to block to prevent scrollbars from appearing incorrectly",
+      "comment": "Altered css so that ContextualMenu does not have scrollbar in IE",
       "type": "patch"
     }
   ],
