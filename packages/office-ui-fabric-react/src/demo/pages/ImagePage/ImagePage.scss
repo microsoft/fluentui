@@ -1,5 +1,6 @@
 @import '../../../common/common';
 
 .ImageExample .ms-Image {
-  border: 1px solid $ms-color-neutralLight;
+  border: 2px solid $ms-color-neutralSecondary;
+  margin-bottom: 20px;
 }

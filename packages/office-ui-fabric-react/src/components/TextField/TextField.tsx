@@ -30,6 +30,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
   public static defaultProps: ITextFieldProps = {
     multiline: false,
     resizable: true,
+    autoAdjustHeight: false,
     underlined: false,
     onChanged: () => { /* noop */ },
     onBeforeChange: () => { /* noop */ },
@@ -87,6 +88,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
 
   public componentDidMount() {
     this._isMounted = true;
+    this._adjustInputHeight();
   }
 
   public componentWillReceiveProps(newProps: ITextFieldProps) {
@@ -270,7 +272,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     this.setState({
       value: value,
       errorMessage: ''
-    } as ITextFieldState);
+    } as ITextFieldState, this._adjustInputHeight);
     this._willMountTriggerValidation = false;
     const { validateOnFocusIn, validateOnFocusOut } = this.props;
     if (!(validateOnFocusIn || validateOnFocusOut)) {
@@ -322,6 +324,15 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
       }
     } else {
       this._willMountTriggerValidation = false;
+    }
+  }
+
+  private _adjustInputHeight(): void {
+    if (this._field && this.props.autoAdjustHeight && this.props.multiline) {
+      const textField = this._field as HTMLElement;
+      textField.style.height = '';
+      let scrollHeight = textField.scrollHeight + 2; // +2 to avoid vertical scroll bars
+      textField.style.height = scrollHeight + 'px';
     }
   }
 }
