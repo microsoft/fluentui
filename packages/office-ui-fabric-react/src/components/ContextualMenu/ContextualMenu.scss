@@ -33,7 +33,7 @@ $ContextualMenu-iconWidth: 14px;
   color: inherit;
   background: none;
   border: none;
-  min-width: 100%;
+  width: 100%;
   height: $ContextualMenu-itemHeight;
   line-height: $ContextualMenu-itemHeight;
   display: block;
@@ -80,6 +80,9 @@ a.ms-ContextualMenu-link {
 .ms-ContextualMenu-linkContent {
   white-space: nowrap;
   height: inherit;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
 }
 
 .ms-ContextualMenu-divider {
@@ -94,9 +97,9 @@ a.ms-ContextualMenu-link {
   min-height: 1px;
   max-height: $ContextualMenu-itemHeight;
   width: $ContextualMenu-iconWidth;
-  text-align: center;
-  vertical-align: top;
-  margin: 0px 4px;
+  margin: 0 4px;
+  vertical-align: middle;
+  flex-shrink: 0;
 }
 
 .ms-ContextualMenu-iconColor {
@@ -104,7 +107,13 @@ a.ms-ContextualMenu-link {
 }
 
 .ms-ContextualMenu-itemText {
-  @include padding(0, 12px, 0, 4px);
+  margin: 0 4px;
+  vertical-align: middle;
+  display: inline-block;
+  flex-grow: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .ms-ContextualMenu-linkText {
@@ -114,12 +123,12 @@ a.ms-ContextualMenu-link {
   white-space: nowrap;
 }
 
-.ms-Icon.ms-ContextualMenu-submenuChevron {
-  position: absolute;
+.ms-ContextualMenu-submenuChevron {
   height: $ContextualMenu-itemHeight;
   line-height: $ContextualMenu-itemHeight;
-  vertical-align: middle;
-  @include right(8px);
   text-align: center;
   font-size: $ms-icon-size-xs;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
 }

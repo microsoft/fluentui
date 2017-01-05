@@ -81,7 +81,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
           <label id={ id + '-label' } className='ms-Label' ref={ (dropdownLabel) => this._dropdownLabel = dropdownLabel } >{ label }</label>
         ) }
         <div
-          data-is-focusable={ disabled }
+          data-is-focusable={ !disabled }
           ref={ (c): HTMLElement => this._dropDown = c }
           id={ id }
           className={ css('ms-Dropdown', {
@@ -94,9 +94,15 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
           role='combobox'
           aria-label={ label }
           aria-activedescendant={ selectedIndex >= 0 ? (this._id + '-list' + selectedIndex) : (this._id + '-list') }
-          aria-controls={ this._id + '-list' }
           >
-          <span className='ms-Dropdown-title'>{ selectedOption ? onRenderItem(selectedOption, this._onRenderItem) : '' }</span>
+          <span
+            className='ms-Dropdown-title'
+            key={ selectedIndex }
+            aria-live={ disabled || isOpen ? 'off' : 'polite' }
+            aria-atomic={ true }
+            >
+            { selectedOption ? onRenderItem(selectedOption, this._onRenderItem) : '' }
+          </span>
           <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown'></i>
         </div>
         { isOpen && (

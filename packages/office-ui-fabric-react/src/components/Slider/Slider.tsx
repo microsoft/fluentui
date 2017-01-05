@@ -225,17 +225,33 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
 
   @autobind
   private _onKeyDown(event: KeyboardEvent): void {
-    const value: number = this.state.value;
+    let value: number = this.state.value;
     const { max, min, step } = this.props;
 
     let diff: number = 0;
-    if (event.which === getRTLSafeKeyCode(KeyCodes.left)) {
-      diff = -step;
-    } else if (event.which === getRTLSafeKeyCode(KeyCodes.right)) {
-      diff = step;
-    } else {
-      return;
+
+    switch (event.which) {
+      case getRTLSafeKeyCode(KeyCodes.left):
+      case KeyCodes.down:
+        diff = -step;
+        break;
+      case getRTLSafeKeyCode(KeyCodes.right):
+      case KeyCodes.up:
+        diff = step;
+        break;
+
+      case KeyCodes.home:
+        value = min;
+        break;
+
+      case KeyCodes.end:
+        value = max;
+        break;
+
+      default:
+        return;
     }
+
     const newValue: number = Math.min(max, Math.max(min, value + diff));
 
     this._updateValue(newValue, newValue);

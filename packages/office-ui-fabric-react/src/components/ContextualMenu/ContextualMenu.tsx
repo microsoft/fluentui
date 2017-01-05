@@ -173,7 +173,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       ariaLabel,
       doNotLayer,
       arrowDirection,
-      target } = this.props;
+      target,
+      bounds } = this.props;
 
     let { submenuProps } = this.state;
 
@@ -194,7 +195,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         doNotLayer={ doNotLayer }
         className='ms-ContextualMenu-Callout'
         setInitialFocus={ true }
-        onDismiss={ this.props.onDismiss }>
+        onDismiss={ this.props.onDismiss }
+        bounds={ bounds }>
         <div ref={ (host: HTMLDivElement) => this._host = host } id={ id } className={ css('ms-ContextualMenu-container', className) }>
           { (items && items.length) ? (
             <FocusZone
@@ -324,8 +326,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderIcon(item: IContextualMenuItem) {
     // Only present to allow continued use of item.icon which is deprecated.
+
     let iconProps: IIconProps = item.iconProps ? item.iconProps : {
-      iconName: IconName[item.icon]
+      iconName: IconName.CustomIcon,
+      className: 'ms-Icon--' + item.icon
     };
     // Use the default icon color for the known icon names
     let iconColorClassName = iconProps.iconName === IconName.None ? '' : 'ms-ContextualMenu-iconColor';

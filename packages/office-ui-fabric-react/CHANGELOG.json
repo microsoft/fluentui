@@ -2,6 +2,245 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "0.84.0",
+      "tag": "office-ui-fabric-react_v0.84.0",
+      "date": "Thu, 05 Jan 2017 04:07:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "a023b0db455f4326a683535cc61015d66e9c3df2",
+            "comment": "Add 'focus' method to SearchBox component"
+          },
+          {
+            "author": "Åsmund Grammeltvedt <asmundg@big-oil.org>",
+            "commit": "b69908b33e685a102e2b8d11b89359aebd15da24",
+            "comment": "Add optional selectedKey to Pivot"
+          }
+        ],
+        "patch": [
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "5979887505ea02d4404f6a0b15adc859d7f150dc",
+            "comment": "Altered css so that ContextualMenu does not have scrollbar in IE"
+          },
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "5cfe8ca093fb0c6a7fc4701a3cd5c8a92eba7e3d",
+            "comment": "Contextualmenu now correctly passes bounds to callout"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "d6100b1f530e99901d6710bd158240bb9080a1ba",
+            "comment": "TextField: Multiline now respects rows attribute."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.83.0",
+      "tag": "office-ui-fabric-react_v0.83.0",
+      "date": "Wed, 04 Jan 2017 19:05:07 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "4ecd013914bf04e3c3f0ed9289b7345268ef6f81",
+            "comment": "Made lots of improvements to autofill"
+          },
+          {
+            "author": "zuzhan <zuzhanzzm@gmail.com>",
+            "commit": "6114a34e5816fe9e4b5c38cef5a9390abec28d42",
+            "comment": "Icon: Add support for Image Sheet using Icon"
+          },
+          {
+            "author": "gggjtgxing <xingwa@microsoft.com>",
+            "commit": "81e4bb6d8a39c7dd4796686d539438cc98cbb2e6",
+            "comment": "adding 'enter' key to select pivot item."
+          },
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "6b47fe877346fe6651fa4ed0f8a8d19c5c1d720a",
+            "comment": "TextField enhancement - auto adjust height"
+          },
+          {
+            "author": "gggjtgxing <xingwa@microsoft.com>",
+            "commit": "91e06e0bf4a19dc9787436e8a86c0c519556690c",
+            "comment": "adding screenreader for dropdown when not expanded"
+          },
+          {
+            "author": "gggjtgxing <xingwa@microsoft.com>",
+            "commit": "7d4fd8010ee52c13af6dbfa410ef0f7cf9475381",
+            "comment": "Pivot: state updates may be asynchronous"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "82983ad8797a9df1450716e97850dbf5d0186370",
+            "comment": "Fixed location of deprecated props"
+          },
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "d84b6bf3acc3b068558620461ac736fb14a450b9",
+            "comment": "Fix for color picker not responding to prop changes"
+          },
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "8a57eabfaebee6222ea7cc6b38fa861cead2a70f",
+            "comment": "Fixed a bug where if no width was passed into a column there would be a nan error thrown."
+          },
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "ae215d3bf15b782618f532ef183556acc60f3e1d",
+            "comment": "Bug fix for interface parser where all fields are marked deprecated"
+          },
+          {
+            "author": "Yudma <yudma@microsoft.com>",
+            "commit": "40e6fab8606a137729b51fcd9ae799f9e6c6b642",
+            "comment": "[ChoiceGroup][A11y]:Use aria-label instead of aria-description for choice group choice."
+          },
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "084f8c9cc3f48913f1c922f0b08a1e84e13f27bd",
+            "comment": "Fixed TextField clip issue"
+          },
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "6c63fd193c321b6c216dde30a58fecbeb7ed9926",
+            "comment": "When computing a cover style for the Image component, if the width and height props aren't provided it will now measure the element. The Image component now extends from BaseComponent to more safely handle refs."
+          },
+          {
+            "author": "William Do <willdo@microsoft.com>",
+            "commit": "e550d51d8d17c265995785ca4ee18efd9d5c620f",
+            "comment": "Fixed typo in change log"
+          },
+          {
+            "author": "Yudma <yudma@microsoft.com>",
+            "commit": "e01203dca080151e1c3f087d202daae641f56eb1",
+            "comment": "[DropDown][A11y] Remove aria-controls label for drop down."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.82.4",
+      "tag": "office-ui-fabric-react_v0.82.4",
+      "date": "Fri, 23 Dec 2016 04:04:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "531b0b993cb551634db831b1f4b75a3d958235b7",
+            "comment": "fixed an issue where the beak would not reposition"
+          },
+          {
+            "author": "William Do <do.william@yahoo.com>",
+            "commit": "7c15d59f502d4ef87dde5cfc25e444919fd4e353",
+            "comment": "Fixed an issue where the tooltip would quickly remove itself if the tooltip target was entered from the direction of the tooltip's position"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.82.3",
+      "tag": "office-ui-fabric-react_v0.82.3",
+      "date": "Wed, 21 Dec 2016 16:04:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "1fff18418e20363a3feb5b822cf889797536a021",
+            "comment": "Pass defaultRender parameter to DetailsList onRenderRow prop."
+          },
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "c8ede4486233704a038a3bd3a854608846d56219",
+            "comment": "Adding css so that contextualmenu properly sizes for long text"
+          },
+          {
+            "author": "Ian Clanton-Thuon <iclantonthuon@outlook.com>",
+            "commit": "61ecdc6e358b367e435830f139dfea2495327e54",
+            "comment": "Including the \"target\" property in the Link component."
+          },
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "a5e64397ad87649484a5f93a64c731540bb68acc",
+            "comment": "Layer used node/element.remove() which is not present in ie. This change has it use parentnode.removeChild(childnode) instead"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.82.2",
+      "tag": "office-ui-fabric-react_v0.82.2",
+      "date": "Sat, 17 Dec 2016 04:05:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "REDMOND\\miclo <miclo@microsoft.com>",
+            "commit": "1016523c36dfcd344cc95c6ae05ac17336390082",
+            "comment": "Calendar: handle invalid starting dates"
+          },
+          {
+            "author": "William Do <do.william@yahoo.com>",
+            "commit": "a906f4899182ebaa70a2db056498e8da42174528",
+            "comment": "fixes panel jump in chrome and safari"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.82.1",
+      "tag": "office-ui-fabric-react_v0.82.1",
+      "date": "Sat, 10 Dec 2016 04:05:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "4ad82c3345b75b6e8e17a7d255dff7f368e975df",
+            "comment": "Fix text color of primary button on focus"
+          },
+          {
+            "author": "Yimin Wu <yimwu@microsoft.com>",
+            "commit": "cac91cfb3e82cbe251f933a3691b857e843b60dd",
+            "comment": "Focus: IE will now return false for elements that are not tabbable."
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.82.0",
+      "tag": "office-ui-fabric-react_v0.82.0",
+      "date": "Fri, 09 Dec 2016 04:06:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "be98c9ce3771d9f1b383b4f110b560f728235992",
+            "comment": "Adding icon enum"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "075d877c6434633c4d016b9d2a3cd97e1bdcdf00",
+            "comment": "Dropdown: The `data-is-focusable` attribute now gets set correctly on the .ms-Dropdown div container."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "52765a05be21f976dbac24e892fd29350f04d36c",
+            "comment": "Slider: adding up/down/home/end support."
+          }
+        ],
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "a86981aceb790e9d616bd04f0727432c6c1e36af",
+            "comment": "Layer/LayerHost: Now supports React context passing through. Also all Layers not nested within a LayerHost will be positioned fixed as currently, but will not be if nested within a LayerHost."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.81.3",
       "tag": "office-ui-fabric-react_v0.81.3",
       "date": "Wed, 07 Dec 2016 04:07:11 GMT",

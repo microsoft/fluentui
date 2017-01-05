@@ -16,6 +16,7 @@ import { FacepilePage } from '../../pages/Facepile/FacepilePage';
 import { FocusZonePage } from '../../pages/FocusZonePage/FocusZonePage';
 import { FocusTrapZonePage } from '../../pages/FocusTrapZonePage/FocusTrapZonePage';
 import { GroupedListPage } from '../../pages/GroupedListPage/GroupedListPage';
+import { IconPage } from '../../pages/IconPage/IconPage';
 import { ImagePage } from '../../pages/ImagePage/ImagePage';
 import { INavLink, INavLinkGroup } from '../../../components/Nav/index';
 import { LabelPage } from '../../pages/LabelPage/LabelPage';
@@ -170,6 +171,13 @@ export const AppState: IAppState = {
           name: 'Facepile',
           status: ExampleStatus.started,
           url: '#/examples/facepile'
+        },
+        {
+          component: IconPage,
+          key: 'Icon',
+          name: 'Icon',
+          status: ExampleStatus.beta,
+          url: '#/examples/icon'
         },
         {
           component: LabelPage,
