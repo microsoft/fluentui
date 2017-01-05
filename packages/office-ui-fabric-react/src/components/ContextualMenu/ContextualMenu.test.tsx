@@ -202,4 +202,15 @@ describe('ContextualMenu', () => {
 
     expect(document.querySelector('.SubMenuClass')).to.exist;
   });
+
+  it('does not return a value if no items are given', () => {
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ [] }
+        />
+    );
+    let menuList = document.querySelector('.ms-ContextualMenu-list');
+
+    expect(menuList).to.be.eq(null, 'ContextualMenu is showing a scrollbar due to checkmark');
+  });
 });
