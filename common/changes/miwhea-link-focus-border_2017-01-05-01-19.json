@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Fix an issue where the focus border around a Link was positioned incorrectly.",
+      "type": "patch"
+    }
+  ],
+  "email": "miwhea@microsoft.com"
+}
