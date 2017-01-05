@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Altered css so that ContextualMenu does not have scrollbar in IE",
+      "type": "patch"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}
