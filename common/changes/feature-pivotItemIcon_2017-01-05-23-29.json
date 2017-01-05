@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Add icon property to PivotItem",
+      "type": "minor"
+    }
+  ],
+  "email": "cschleid@microsoft.com"
+}
