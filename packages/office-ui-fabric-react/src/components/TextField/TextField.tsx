@@ -183,7 +183,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
 
     this.setState({ isFocused: true });
     if (this.props.validateOnFocusIn) {
-      this._delayedValidate(this.state.value);
+      this._validate(this.state.value);
     }
   }
 
@@ -194,7 +194,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
 
     this.setState({ isFocused: false });
     if (this.props.validateOnFocusOut) {
-      this._delayedValidate(this.state.value);
+      this._validate(this.state.value);
     }
   }
 
