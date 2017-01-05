@@ -50,6 +50,8 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
   private _willMountTriggerValidation;
   private _field;
 
+  private _noOpHandler = () => { };
+
   public constructor(props: ITextFieldProps) {
     super(props);
 
@@ -225,7 +227,8 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         id={ this._id }
         ref={ (c): HTMLTextAreaElement => this._field = c }
         value={ this.state.value }
-        onChange={ this._onInputChange }
+        onInput={ this._onInputChange }
+        onChange={ this._noOpHandler }
         className={ this._fieldClassName }
         aria-label={ this.props.ariaLabel }
         aria-describedby={ this._descriptionId }
@@ -246,7 +249,8 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         id={ this._id }
         ref={ (c): HTMLInputElement => this._field = c }
         value={ this.state.value }
-        onChange={ this._onInputChange }
+        onInput={ this._onInputChange }
+        onChange={ this._noOpHandler }
         className={ this._fieldClassName }
         aria-label={ this.props.ariaLabel }
         aria-describedby={ this._descriptionId }
