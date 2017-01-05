@@ -48,14 +48,14 @@ export class TextFieldErrorMessageExample extends React.Component<{}, {}> {
           />
         <TextField
           label='TextField that validates only on focus and blur. Hint: the length of the input string must be less than 3.'
-          placeholder='Validation will start after users stop typing for 2 seconds.'
+          placeholder='Validation will start only on input focus and blur'
           onGetErrorMessage={ this._getErrorMessage }
           validateOnFocusIn
           validateOnFocusOut
           />
         <TextField
           label='TextField that validates only on blur. Hint: the length of the input string must be less than 3.'
-          placeholder='Validation will start after users stop typing for 2 seconds.'
+          placeholder='Validation will start only on input blur.'
           onGetErrorMessage={ this._getErrorMessage }
           validateOnFocusOut
           />
