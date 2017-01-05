@@ -2,6 +2,42 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "0.84.0",
+      "tag": "office-ui-fabric-react_v0.84.0",
+      "date": "Thu, 05 Jan 2017 04:07:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "a023b0db455f4326a683535cc61015d66e9c3df2",
+            "comment": "Add 'focus' method to SearchBox component"
+          },
+          {
+            "author": "Åsmund Grammeltvedt <asmundg@big-oil.org>",
+            "commit": "b69908b33e685a102e2b8d11b89359aebd15da24",
+            "comment": "Add optional selectedKey to Pivot"
+          }
+        ],
+        "patch": [
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "5979887505ea02d4404f6a0b15adc859d7f150dc",
+            "comment": "Altered css so that ContextualMenu does not have scrollbar in IE"
+          },
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "5cfe8ca093fb0c6a7fc4701a3cd5c8a92eba7e3d",
+            "comment": "Contextualmenu now correctly passes bounds to callout"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "d6100b1f530e99901d6710bd158240bb9080a1ba",
+            "comment": "TextField: Multiline now respects rows attribute."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.83.0",
       "tag": "office-ui-fabric-react_v0.83.0",
       "date": "Wed, 04 Jan 2017 19:05:07 GMT",
