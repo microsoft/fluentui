@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix an issue where the focus border around a Link was positioned incorrectly.",
+      "comment": "Link: focus border is now positioned correctly when the link spans multiple lines.",
       "type": "patch"
     }
   ],
