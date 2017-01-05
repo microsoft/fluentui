@@ -216,7 +216,7 @@ describe('TextField', () => {
       let validatorSpy = value => {
         validationCallCount++;
         return value.length > 3 ? errorMessage : '';
-      }
+      };
 
       const renderedDOM: HTMLElement = renderIntoDocument(
         <TextField
@@ -239,7 +239,7 @@ describe('TextField', () => {
       let validatorSpy = value => {
         validationCallCount++;
         return value.length > 3 ? errorMessage : '';
-      }
+      };
 
       const renderedDOM: HTMLElement = renderIntoDocument(
         <TextField
@@ -263,7 +263,7 @@ describe('TextField', () => {
       let validatorSpy = value => {
         validationCallCount++;
         return value.length > 3 ? errorMessage : '';
-      }
+      };
 
       const renderedDOM: HTMLElement = renderIntoDocument(
         <TextField
