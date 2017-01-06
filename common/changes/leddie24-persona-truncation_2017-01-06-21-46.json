@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Persona: Truncates long lines of text",
+      "type": "minor"
+    }
+  ],
+  "email": "v-edwliu@microsoft.com"
+}
