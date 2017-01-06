@@ -43,7 +43,7 @@ describe('CommandBar', () => {
     ) as React.Component<CommandBar, {}>;
     document.body.appendChild(ReactDOM.findDOMNode(renderedContent));
 
-    let menuItem = (renderedContent.refs['TestKey1'] as HTMLDivElement).querySelector('button') as HTMLButtonElement;
+    let menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
     ReactTestUtils.Simulate.click(menuItem);
 
     expect(document.querySelector('.SubMenuClass')).to.exist;
@@ -73,7 +73,7 @@ describe('CommandBar', () => {
     ) as React.Component<CommandBar, {}>;
     document.body.appendChild(ReactDOM.findDOMNode(renderedContent));
 
-    let menuItem = (renderedContent.refs['TestKey1'] as HTMLDivElement).querySelector('button') as HTMLButtonElement;
+    let menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
     ReactTestUtils.Simulate.click(menuItem);
 
     expect(document.querySelector('.SubMenuClass')).to.exist;
