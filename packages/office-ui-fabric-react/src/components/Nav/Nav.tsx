@@ -49,26 +49,27 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
   }
 
   public render(): React.ReactElement<{}> {
+    const { groups, className, isOnTop } = this.props;
 
-    if (!this.props.groups) {
+    if (!groups) {
       return null;
     }
 
     // when this.props.groups[x].name is specified or Any of the link has child link, chevorn Expand/collaps button is shown,
     // different padding is needed. _hasExpandButton marks this condition.
-    this._hasExpandButton = this.props.groups.some((group: INavLinkGroup, groupIndex: number) => {
+    this._hasExpandButton = groups.some((group: INavLinkGroup, groupIndex: number) => {
       return !!group && !!group.name || group.links && group.links.some((link: INavLink, linkIndex: number) => {
         return !!link && !!link.links && link.links.length > 0;
       });
     });
 
-    const groupElements: React.ReactElement<{}>[] = this.props.groups.map(
+    const groupElements: React.ReactElement<{}>[] = groups.map(
       (group: INavLinkGroup, groupIndex: number) => this._renderGroup(group, groupIndex));
 
     return (
       <FocusZone direction={ FocusZoneDirection.vertical }>
         <nav role='navigation'
-          className={ css('ms-Nav', { 'is-onTop ms-u-slideRightIn40': this.props.isOnTop }) }>
+          className={ css('ms-Nav', className, { 'is-onTop ms-u-slideRightIn40': isOnTop }) }>
           { groupElements }
         </nav>
       </FocusZone>

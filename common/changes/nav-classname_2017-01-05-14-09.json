@@ -2,9 +2,9 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add optional selectedKey to Pivot",
+      "comment": "Nav: add className to allow styling",
       "type": "minor"
     }
   ],
-  "email": "asmundg@big-oil.org"
+  "email": "manishda@microsoft.com"
 }

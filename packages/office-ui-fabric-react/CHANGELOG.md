@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 04 Jan 2017 19:05:07 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Jan 2017 04:07:37 GMT and should not be manually modified.
+
+## 0.84.0
+Thu, 05 Jan 2017 04:07:37 GMT
+
+### Minor changes
+
+- Add 'focus' method to SearchBox component
+- Add optional selectedKey to Pivot
+
+### Patches
+
+- Altered css so that ContextualMenu does not have scrollbar in IE
+- Contextualmenu now correctly passes bounds to callout
+- TextField: Multiline now respects rows attribute.
 
 ## 0.83.0
 Wed, 04 Jan 2017 19:05:07 GMT
