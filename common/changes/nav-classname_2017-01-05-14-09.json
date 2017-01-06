@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Nav: add className to allow styling",
+      "type": "minor"
+    }
+  ],
+  "email": "manishda@microsoft.com"
+}
