@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "ContextualMenu: Now returns null if no items are provided rather than rendering an empty callout",
+      "type": "patch"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}
