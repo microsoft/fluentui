@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "SearchBox: Remove line-height to show correct cursor size in iOS",
+      "type": "patch"
+    }
+  ],
+  "email": "cschleid@microsoft.com"
+}
