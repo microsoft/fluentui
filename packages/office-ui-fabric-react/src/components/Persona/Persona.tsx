@@ -66,9 +66,7 @@ export class Persona extends React.Component<IPersonaProps, any> {
 
     let divProps = getNativeProps(this.props, divProperties);
     let personaDetails = <div className='ms-Persona-details'>
-      <div className='ms-Persona-primaryText'>
-        <div className='ms-Persona-primaryTextContent'>{ primaryText }</div>
-      </div>
+      <div className='ms-Persona-primaryText'>{ primaryText }</div>
       { secondaryText ? (
         <div className='ms-Persona-secondaryText'>{ secondaryText }</div>
       ) : (null) }

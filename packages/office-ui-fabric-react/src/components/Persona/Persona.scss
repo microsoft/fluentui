@@ -85,7 +85,6 @@ $ms-Persona-presenceSizeXl: 28px;
   text-align: center;
   flex: 0 0 $ms-Persona-sizeMd;
   border-radius: 50%;
-  z-index: $ms-zIndex-back;
 
   @media screen and (-ms-high-contrast: active) {
     border: 1px solid $ms-color-white;

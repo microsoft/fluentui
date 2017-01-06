@@ -31,7 +31,6 @@
   // People Picker specific override to prevent truncation of Persona name
   .ms-Persona.ms-Persona--xs {
     .ms-Persona-details {
-      flex-direction: row;
       flex: 1 0 auto;
     }
   }
