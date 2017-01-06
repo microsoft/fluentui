@@ -69,21 +69,21 @@ $ContextualMenu-iconWidth: 14px;
 .ms-ContextualMenu-header {
   @include focus-border();
 
-  font: inherit;
-  color: lime;
+  @include ms-font-s;
+  font-weight: $ms-font-weight-semibold;
+  color: $ms-color-themePrimary;
   background: none;
   border: none;
-  width: 100%;
   height: $ContextualMenu-itemHeight;
   line-height: $ContextualMenu-itemHeight;
-  display: inline-block;
   cursor: default;
   padding: 0px 6px;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   @include text-align(left);
 
-  .is-focusVisible &:focus {
-    background: $ContextualMenu-itemHover;
-  }
 }
 
 a.ms-ContextualMenu-link {

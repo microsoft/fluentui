@@ -211,21 +211,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 onKeyDown={ this._onKeyDown }
                 aria-label={ ariaLabel } >
                 { items.map((item, index) => (
-                  // If the item name is equal to '-', a divider will be generated.
-                  item.name === '-' || item.itemType === ContextualMenuItemType.Divider ? (
-                    <li
-                      role='separator'
-                      key={ item.key || index }
-                      className={ css('ms-ContextualMenu-divider', item.className) } />
-                  ) : (
-                      <li
-                        role='menuitem'
-                        title={ item.title }
-                        key={ item.key || index }
-                        className={ css('ms-ContextualMenu-item', item.className) }>
-                        { this._renderMenuItem(item, index, hasCheckmarks, hasIcons) }
-                      </li>
-                    )
+                  this._renderMenuItem(item, index, hasCheckmarks, hasIcons)
                 )) }
               </ul>
             </FocusZone>
@@ -238,29 +224,69 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     );
   }
 
-  private _renderMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
-    if (item.onRender) {
-      return item.onRender(item);
+  private _renderMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
+    let renderedItems: React.ReactNode[] = [];
+
+    if (item.name === '-') {
+      item.itemType = ContextualMenuItemType.Divider;
     }
 
-    if (item.itemType === ContextualMenuItemType.Header) {
-      return this._renderHeaderMenuItem(item, index, hasCheckmarks, hasIcons);
+    switch (item.itemType) {
+      case ContextualMenuItemType.Divider:
+        renderedItems.push(this._renderSeparator(index, item.className));
+        break;
+      case ContextualMenuItemType.Header:
+        renderedItems.push(this._renderSeparator(index));
+        let headerItem = this._renderHeaderMenuItem(item, index, hasCheckmarks, hasIcons);
+        renderedItems.push(this._renderListItem(headerItem, item.key || index, item.className, item.title));
+        break;
+      default:
+        let menuItem = this._renderNormalItem(item, index, hasCheckmarks, hasIcons);
+        renderedItems.push(this._renderListItem(menuItem, item.key || index, item.className, item.title));
+        break;
     }
-    // If the item is disabled then it should render as the button for proper styling.
+
+    return renderedItems;
+  }
+
+  private _renderListItem(content: React.ReactNode, key: string | number, className?: string, title?: string) {
+    return <li
+      role='menuitem'
+      title={ title }
+      key={ key }
+      className={ css('ms-ContextualMenu-item', className) }>
+      { content }
+    </li>;
+  }
+
+  private _renderSeparator(index: number, className?: string): React.ReactNode {
+    if (index > 0) {
+      return <li
+        role='separator'
+        key={ 'separator-' + index }
+        className={ css('ms-ContextualMenu-divider', className) } />;
+    }
+    return null;
+  }
+
+  private _renderNormalItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
+    if (item.onRender) {
+      return [item.onRender(item)];
+    }
     if (item.href) {
       return this._renderAnchorMenuItem(item, index, hasCheckmarks, hasIcons);
     }
     return this._renderButtonItem(item, index, hasCheckmarks, hasIcons);
   }
 
-  private _renderHeaderMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): JSX.Element {
+  private _renderHeaderMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     return (
       <div className='ms-ContextualMenu-header'>
-        <span className='ms-ContextualMenu-linkText ms-fontWeight-regular'> { item.name } </span>
-      </div>)
+        { this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons) }
+      </div>);
   }
 
-  private _renderAnchorMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): JSX.Element {
+  private _renderAnchorMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     return (
       <div>
         <a
@@ -272,7 +298,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           { (hasIcons) ? (
             this._renderIcon(item)
           ) : (null) }
-          <span className='ms-ContextualMenu-linkText ms-fontWeight-regular'> { item.name } </span>
+          <span className='ms-ContextualMenu-linkText'> { item.name } </span>
         </a>
       </div>);
   }
@@ -326,7 +352,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         { (hasIcons) ? (
           this._renderIcon(item)
         ) : (null) }
-        <span className='ms-ContextualMenu-itemText ms-fontWeight-regular'>{ item.name }</span>
+        <span className='ms-ContextualMenu-itemText'>{ item.name }</span>
         { hasSubmenuItems(item) ? (
           <Icon className='ms-ContextualMenu-submenuChevron ms-Icon' iconName={ getRTL() ? IconName.ChevronLeft : IconName.ChevronRight } />
         ) : (null) }
