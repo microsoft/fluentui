@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Added an attribute to prevent focuszone focus",
+      "comment": "FocusZone: Added an data-not-focusable attribute to prevent focus",
       "type": "minor"
     }
   ],
