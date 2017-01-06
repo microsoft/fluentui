@@ -214,6 +214,6 @@ describe('ContextualMenu', () => {
     );
     let menuList = document.querySelector('.ms-ContextualMenu-list');
 
-    expect(menuList).to.be.eq(null, 'ContextualMenu is showing a scrollbar due to checkmark');
+    expect(menuList).to.be.eq(null, 'ContextualMenu is not return null even though no items are provided');
   });
 });
