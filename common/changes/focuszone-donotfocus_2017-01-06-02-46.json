@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Added an attribute to prevent focuszone focus",
+      "type": "minor"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}
