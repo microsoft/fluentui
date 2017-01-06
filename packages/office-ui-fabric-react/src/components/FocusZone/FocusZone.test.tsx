@@ -317,4 +317,67 @@ describe('FocusZone', () => {
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.up });
     assert(_lastFocusedElement === buttonA, 'pressing up did not focus a');
   });
+
+  it('correctly skips data-not-focusable elements', () => {
+    let component = ReactTestUtils.renderIntoDocument(
+      <div { ...{ onFocusCapture: _onFocus } }>
+        <FocusZone>
+          <button className='a'>a</button>
+          <button className='b' data-not-focusable>b</button>
+          <button className='c'>c</button>
+        </FocusZone>
+      </div>
+    );
+    let focusZone = ReactDOM.findDOMNode(component as React.ReactInstance).firstChild as Element;
+    let buttonA = focusZone.querySelector('.a') as HTMLElement;
+    let buttonB = focusZone.querySelector('.b') as HTMLElement;
+    let buttonC = focusZone.querySelector('.c') as HTMLElement;
+
+    // Set up a grid like so:
+    // A B
+    // C hiddenButton
+    // D E
+    //
+    // We will iterate from A to B, press down to skip hidden and go to C,
+    // down again to E, left to D, then back up to A.
+    buttonA.getBoundingClientRect = () => ({
+      left: 0, right: 20,
+      top: 0, bottom: 20,
+      width: 20,
+      height: 20
+    } as ClientRect);
+    (buttonA as any).isVisible = true;
+    buttonA.focus = () => ReactTestUtils.Simulate.focus(buttonA);
+
+    buttonB.getBoundingClientRect = () => ({
+      left: 20, right: 40,
+      top: 0, bottom: 20,
+      width: 20,
+      height: 20
+    } as ClientRect);
+    (buttonB as any).isVisible = true;
+    buttonB.focus = () => ReactTestUtils.Simulate.focus(buttonB);
+
+    buttonC.getBoundingClientRect = () => ({
+      left: 0, right: 20,
+      top: 20, bottom: 40,
+      width: 20,
+      height: 20
+    } as ClientRect);
+    (buttonC as any).isVisible = true;
+    buttonC.focus = () => ReactTestUtils.Simulate.focus(buttonC);
+
+    // Focus the first button.
+    ReactTestUtils.Simulate.focus(buttonA);
+    assert(_lastFocusedElement === buttonA, 'buttonA was not focused');
+
+    // Pressing right should go to b.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.down });
+    assert(_lastFocusedElement === buttonC, 'pressing down did not focus c');
+
+    // Pressing down should go to c.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.up });
+    assert(_lastFocusedElement === buttonA, 'pressing down did not focus a');
+  });
+
 });
