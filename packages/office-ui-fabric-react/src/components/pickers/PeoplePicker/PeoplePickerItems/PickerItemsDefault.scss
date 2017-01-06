@@ -4,7 +4,7 @@
   @include focus-border();
 
   display: inline-flex;
-  vertical-align: top;
+  align-items: center;
   background: $ms-color-neutralLighter;
   margin: 1px;
   vertical-align: top;
@@ -29,7 +29,7 @@
   }
 
   // People Picker specific override to prevent truncation of Persona name
-  .ms-Persona.ms-Persona--xs {
+  .ms-Persona {
     .ms-Persona-details {
       flex: 1 0 auto;
     }

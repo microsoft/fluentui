@@ -70,9 +70,7 @@ $ms-Persona-presenceSizeXl: 28px;
   position: relative;
   height: $ms-Persona-sizeMd;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
 
   .ms-ContextualHost {
     display: none;
