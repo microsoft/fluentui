@@ -27,18 +27,18 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
   };
 
   private _id: string;
+  private _initialContentWidth: number;
   private _contentContainer: HTMLElement;
   private _paneControlContainer: HTMLElement;
   private _mainContent: HTMLElement;
-  private _initialContentWidth: number;
 
   constructor(props: IPaneProps) {
     super(props);
 
+    this._id = getId('Pane');
+
     this._onClose = this._onClose.bind(this);
     this._onPaneRef = this._onPaneRef.bind(this);
-
-    this._id = getId('Pane');
 
     this.state = {
       hidden: props.hidden,
@@ -48,8 +48,8 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
   }
 
   public componentDidMount() {
-    // Set original content width for overlay mode
-    this._initialContentWidth = this._paneControlContainer.getBoundingClientRect().width;
+      // Set original content width for overlay mode
+      this._initialContentWidth = this._paneControlContainer.getBoundingClientRect().width;
 
     if (!this.state.hidden) {
       this._async.setTimeout(() => {
@@ -73,9 +73,6 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
   }
 
   public componentDidUpdate() {
-    if (!this.state.hidden) {
-      this._contentContainer.style.width = '';
-    } else {
       if (this.props.paneMode === PaneMode.overlay) {
         // Use original content width for overlay mode
         this._contentContainer.style.width = this._initialContentWidth + 'px';
@@ -83,7 +80,6 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
         // Viewport content width for push mode
         this._contentContainer.style.width = this._getContainerWidth() + 'px';
       }
-    }
   }
 
   public componentWillUnmount() {
@@ -98,16 +94,19 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
     const headerTextId = this._id + '-headerText';
     let pendingCommandBarContent = '';
 
-    let header = headerText ? (
-      <p className={ css('ms-Pane-headerText', headerClassName) } id={ headerTextId }>{ headerText }</p>
-    ) : null;
+    let header = !!headerText &&
+      (
+        <p className={ css('ms-Pane-headerText', headerClassName) } id={ headerTextId }>
+          { headerText }
+        </p>
+      );
 
-    let closeButton = closeButtonVisible ?
+    let closeButton = !!closeButtonVisible &&
       (
         <button className='ms-Pane-closeButton ms-PaneAction-close' onClick={ this._onClose } aria-label={ closeButtonAriaLabel } data-is-visible={ true }>
           <i className='ms-Pane-closeIcon ms-Icon ms-Icon--Cancel'></i>
         </button>
-      ) : null;
+      );
 
     let groupings = this._groupChildren();
 
