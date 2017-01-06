@@ -210,6 +210,80 @@ describe('TextField', () => {
 
       return delay(250).then(() => assertErrorMessage(renderedDOM, /* exist */ false));
     });
+
+    it('should trigger validation only on focus', () => {
+      let validationCallCount = 0;
+      let validatorSpy = value => {
+        validationCallCount++;
+        return value.length > 3 ? errorMessage : '';
+      };
+
+      const renderedDOM: HTMLElement = renderIntoDocument(
+        <TextField
+          value='initial value'
+          onGetErrorMessage={ validatorSpy }
+          validateOnFocusIn
+          />
+      );
+
+      const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+      ReactTestUtils.Simulate.change(inputDOM, mockEvent('the input value'));
+      expect(validationCallCount).to.equal(1);
+
+      ReactTestUtils.Simulate.focus(inputDOM);
+      expect(validationCallCount).to.equal(2);
+    });
+
+    it('should trigger validation only on blur', () => {
+      let validationCallCount = 0;
+      let validatorSpy = value => {
+        validationCallCount++;
+        return value.length > 3 ? errorMessage : '';
+      };
+
+      const renderedDOM: HTMLElement = renderIntoDocument(
+        <TextField
+          value='initial value'
+          onGetErrorMessage={ validatorSpy }
+          validateOnFocusOut
+          />
+      );
+
+      const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+      ReactTestUtils.Simulate.focus(inputDOM);
+      ReactTestUtils.Simulate.change(inputDOM, mockEvent('the input value'));
+      expect(validationCallCount).to.equal(1);
+
+      ReactTestUtils.Simulate.blur(inputDOM);
+      expect(validationCallCount).to.equal(2);
+    });
+
+    it('should trigger validation on both blur and focus', () => {
+      let validationCallCount = 0;
+      let validatorSpy = value => {
+        validationCallCount++;
+        return value.length > 3 ? errorMessage : '';
+      };
+
+      const renderedDOM: HTMLElement = renderIntoDocument(
+        <TextField
+          value='initial value'
+          onGetErrorMessage={ validatorSpy }
+          validateOnFocusOut
+          validateOnFocusIn
+          />
+      );
+
+      const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+      ReactTestUtils.Simulate.change(inputDOM, mockEvent('value before focus'));
+      expect(validationCallCount).to.equal(1);
+
+      ReactTestUtils.Simulate.focus(inputDOM);
+      expect(validationCallCount).to.equal(2);
+      ReactTestUtils.Simulate.change(inputDOM, mockEvent('value before blur'));
+      ReactTestUtils.Simulate.blur(inputDOM);
+      expect(validationCallCount).to.equal(3);
+    });
   });
 
   it('can render a default value', () => {
