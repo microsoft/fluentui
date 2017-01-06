@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Contextualmenu: Added header item so that the contextualmenu can now have headers",
+      "type": "minor"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}
