@@ -323,7 +323,7 @@ describe('FocusZone', () => {
       <div { ...{ onFocusCapture: _onFocus } }>
         <FocusZone>
           <button className='a'>a</button>
-          <button className='b' data-not-focusable>b</button>
+          <button className='b' data-not-focusable={ false }>b</button>
           <button className='c'>c</button>
         </FocusZone>
       </div>

@@ -3,7 +3,6 @@
 import { elementContains, getDocument } from './dom';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
-const NOT_FOCUSABLE_ATTRIBUTE = 'data-not-focusable';
 const IS_VISIBLE_ATTRIBUTE = 'data-is-visible';
 const FOCUSZONE_ID_ATTRIBUTE = 'data-focuszone-id';
 
@@ -166,15 +165,17 @@ export function isElementTabbable(element: HTMLElement): boolean {
     tabIndex = parseInt(element.getAttribute('tabIndex'), 10);
   }
 
+  let isFocusableAttribute: string = element.getAttribute ? element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) : null;
+
   return (
-    !!element && element.getAttribute(NOT_FOCUSABLE_ATTRIBUTE) !== 'true' &&
+    !!element && isFocusableAttribute !== 'false' &&
     (element.tagName === 'A' ||
       (element.tagName === 'BUTTON') ||
       (element.tagName === 'INPUT') ||
       (element.tagName === 'TEXTAREA') ||
       (tabIndex >= 0) ||
       (element.getAttribute && (
-        element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true') ||
+        isFocusableAttribute === 'true') ||
         element.getAttribute('role') === 'button')
     ));
 }
