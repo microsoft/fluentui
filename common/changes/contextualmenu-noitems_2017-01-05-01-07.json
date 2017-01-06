@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Made it so that the contextualmenu will not display if no items are given",
+      "comment": "ContextualMenu: Now returns null if no items are provided rather than rendering an empty callout",
       "type": "patch"
     }
   ],
