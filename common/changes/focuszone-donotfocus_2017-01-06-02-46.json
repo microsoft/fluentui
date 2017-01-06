@@ -3,7 +3,7 @@
     {
       "packageName": "office-ui-fabric-react",
       "comment": "FocusZone: Changed focus and focus zone to respect when data-is-focusable attribute is false",
-      "type": "minor"
+      "type": "patch"
     }
   ],
   "email": "joschect@microsoft.com"
