@@ -68,7 +68,6 @@ $ContextualMenu-iconWidth: 14px;
 
 .ms-ContextualMenu-header {
   @include focus-border();
-
   @include ms-font-s;
   font-weight: $ms-font-weight-semibold;
   color: $ms-color-themePrimary;
@@ -83,7 +82,6 @@ $ContextualMenu-iconWidth: 14px;
   -webkit-user-select: none;
   -ms-user-select: none;
   @include text-align(left);
-
 }
 
 a.ms-ContextualMenu-link {
