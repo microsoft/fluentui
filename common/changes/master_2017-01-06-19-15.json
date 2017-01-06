@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Fix the prescribed use of submenuProps.items for CommandBar items",
+      "type": "patch"
+    }
+  ],
+  "email": "miclo@microsoft.com"
+}

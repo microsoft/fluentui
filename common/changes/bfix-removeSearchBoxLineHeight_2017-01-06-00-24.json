@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add 'focus' method to SearchBox component",
-      "type": "minor"
+      "comment": "SearchBox: Remove line-height to show correct cursor size in iOS",
+      "type": "patch"
     }
   ],
   "email": "cschleid@microsoft.com"
