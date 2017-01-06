@@ -208,10 +208,15 @@ describe('ContextualMenu', () => {
       {
         name: 'TestText 1',
         key: 'TestKey1',
+        itemType: ContextualMenuItemType.Header
       },
       {
         name: 'TestText 2',
-        key: 'TestKey2',
+        key: 'TestKey3'
+      },
+      {
+        name: 'TestText 3',
+        key: 'TestKey3',
         itemType: ContextualMenuItemType.Header
       }
     ];
@@ -222,7 +227,16 @@ describe('ContextualMenu', () => {
         />
     );
 
-    let menuItem = document.querySelector('div.ms-ContextualMenu-header');
-    expect(!!menuItem).to.be.eq(true, 'Header does not exist');
+    let menuItems = document.querySelectorAll('li');
+
+    expect(menuItems.length).to.be.eq(4, 'This menu has an incorrect number of items');
+    let headerOne = menuItems[0];
+    let dividerOne = menuItems[2];
+    let headerTwo = menuItems[3];
+
+    expect(headerOne.className).to.not.contain('divider', 'The first item is a divider and it should be a header');
+    expect(headerOne.firstElementChild.className).to.contain('header', 'The first item was not a header');
+    expect(dividerOne.className).to.contain('divider', 'The third item in the contextualmenu was not a divider');
+    expect(headerTwo.firstElementChild.className).to.contain('header', 'The final item was not a header');
   });
 });
