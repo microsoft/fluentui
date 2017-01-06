@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ICommandBar, ICommandBarProps } from './CommandBar.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { ContextualMenu, IContextualMenuItem, hasSubmenuItems } from '../../ContextualMenu';
+import { ContextualMenu, IContextualMenuItem, getSubmenuItems, hasSubmenuItems } from '../../ContextualMenu';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { autobind } from '../../utilities/autobind';
@@ -156,7 +156,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
 
     return <div className={ css('ms-CommandBarItem', item.className) } key={ itemKey } ref={ itemKey }>
       { (() => {
-        if (item.onClick || item.items) {
+        if (item.onClick || hasSubmenuItems(item)) {
           return <button
             { ...getNativeProps(item, buttonProperties) }
             id={ this._id + item.key }
@@ -277,13 +277,13 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
   }
 
   private _onItemClick(ev, item) {
-    if (item.key === this.state.expandedMenuItemKey || !item.items || !item.items.length) {
+    if (item.key === this.state.expandedMenuItemKey || !hasSubmenuItems(item)) {
       this._onContextMenuDismiss();
     } else {
       this.setState({
         expandedMenuId: ev.currentTarget.id,
         expandedMenuItemKey: item.key,
-        contextualMenuItems: item.items,
+        contextualMenuItems: getSubmenuItems(item),
         contextualMenuTarget: ev.currentTarget
       });
     }

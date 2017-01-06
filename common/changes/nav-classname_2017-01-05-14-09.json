@@ -2,9 +2,9 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Made lots of improvements to autofill",
+      "comment": "Nav: add className to allow styling",
       "type": "minor"
     }
   ],
-  "email": "joschect@microsoft.com"
+  "email": "manishda@microsoft.com"
 }

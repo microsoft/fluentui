@@ -36,7 +36,7 @@ $ContextualMenu-iconWidth: 14px;
   width: 100%;
   height: $ContextualMenu-itemHeight;
   line-height: $ContextualMenu-itemHeight;
-  display: inline-block;
+  display: block;
   cursor: pointer;
   padding: 0px 6px;
   @include text-align(left);

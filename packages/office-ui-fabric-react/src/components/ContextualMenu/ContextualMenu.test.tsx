@@ -16,8 +16,11 @@ import { IContextualMenuItem } from './ContextualMenu.Props';
 describe('ContextualMenu', () => {
 
   afterEach(() => {
-    while (window.document.body.children.length) {
-      window.document.body.removeChild(window.document.body.children[0]);
+    for (let i = 0; i < document.body.children.length; i++) {
+      if (document.body.children[i].tagName === 'DIV') {
+        document.body.removeChild(document.body.children[i]);
+        i--;
+      }
     }
   });
 

@@ -78,9 +78,13 @@ interface IParsedDirectionalHint {
 }
 
 export function hasSubmenuItems(item: IContextualMenuItem) {
-  let submenuItems = item.subMenuProps ? item.subMenuProps.items : item.items;
+  let submenuItems = getSubmenuItems(item);
 
   return !!(submenuItems && submenuItems.length);
+}
+
+export function getSubmenuItems(item: IContextualMenuItem) {
+  return item.subMenuProps ? item.subMenuProps.items : item.items;
 }
 
 export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
@@ -173,7 +177,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       ariaLabel,
       doNotLayer,
       arrowDirection,
-      target } = this.props;
+      target,
+      bounds } = this.props;
 
     let { submenuProps } = this.state;
 
@@ -194,7 +199,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         doNotLayer={ doNotLayer }
         className='ms-ContextualMenu-Callout'
         setInitialFocus={ true }
-        onDismiss={ this.props.onDismiss }>
+        onDismiss={ this.props.onDismiss }
+        bounds={ bounds }>
         <div ref={ (host: HTMLDivElement) => this._host = host } id={ id } className={ css('ms-ContextualMenu-container', className) }>
           { (items && items.length) ? (
             <FocusZone
@@ -375,7 +381,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _onItemClick(item: any, ev: MouseEvent) {
-    let items = (item.subMenuProps && item.subMenuProps.items) ? item.subMenuProps.items : item.items;
+    let items = getSubmenuItems(item);
 
     if (!items || !items.length) { // This is an item without a menu. Click it.
       this._executeItemClick(item, ev);
@@ -419,7 +425,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       }
 
       let submenuProps = {
-        items: item.items,
+        items: getSubmenuItems(item),
         target: target,
         onDismiss: this._onSubMenuDismiss,
         isSubMenu: true,

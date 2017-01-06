@@ -1,21 +1,8 @@
 {
-  "name": "office-ui-fabric-react",
-  "version": "0.84.0",
-  "description": "Reusable React components for building experiences for Office 365.",
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
-  },
-  "license": "MIT",
-  "scripts": {
-    "build": "gulp",
-    "clean": "gulp clean",
-    "start": "gulp serve",
-    "test": "gulp"
-  },
-  "devDependencies": {
+  "name": "rush-office-ui-fabric-react",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
     "@microsoft/web-library-build": ">=1.1.0 < 2.0.0",
     "@types/chai": "^3.4.34",
     "@types/es6-promise": "0.0.32",
@@ -42,9 +29,7 @@
     "vinyl-ftp": "0.4.5",
     "webpack-split-by-path": "0.0.10",
     "webpack-stats-plugin": "^0.1.4",
-    "webpack-visualizer-plugin": "0.1.5"
-  },
-  "dependencies": {
+    "webpack-visualizer-plugin": "0.1.5",
     "@microsoft/load-themed-styles": "^1.2.2",
     "@types/react": "^0.14.41",
     "@types/react-dom": "^0.14.18",
