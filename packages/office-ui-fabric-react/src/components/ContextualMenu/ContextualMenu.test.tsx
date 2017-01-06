@@ -11,7 +11,7 @@ import { FocusZoneDirection } from '../../FocusZone';
 let { expect } = chai;
 
 import { ContextualMenu } from './ContextualMenu';
-import { IContextualMenuItem } from './ContextualMenu.Props';
+import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.Props';
 
 describe('ContextualMenu', () => {
 
@@ -201,5 +201,28 @@ describe('ContextualMenu', () => {
     ReactTestUtils.Simulate.keyDown(menuItem, { which: KeyCodes.right });
 
     expect(document.querySelector('.SubMenuClass')).to.exist;
+  });
+
+  it('renders headers properly', () => {
+    const items: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+      },
+      {
+        name: 'TestText 2',
+        key: 'TestKey2',
+        itemType: ContextualMenuItemType.Header
+      }
+    ];
+
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ items }
+        />
+    );
+
+    let menuItem = document.querySelector('div.ms-ContextualMenu-header');
+    expect(!!menuItem).to.be.eq(true, 'Header does not exist');
   });
 });
