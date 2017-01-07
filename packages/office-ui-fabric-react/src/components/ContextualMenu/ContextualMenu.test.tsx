@@ -16,8 +16,11 @@ import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.Pr
 describe('ContextualMenu', () => {
 
   afterEach(() => {
-    while (window.document.body.children.length) {
-      window.document.body.removeChild(window.document.body.children[0]);
+    for (let i = 0; i < document.body.children.length; i++) {
+      if (document.body.children[i].tagName === 'DIV') {
+        document.body.removeChild(document.body.children[i]);
+        i--;
+      }
     }
   });
 
@@ -238,5 +241,17 @@ describe('ContextualMenu', () => {
     expect(headerOne.firstElementChild.className).to.contain('header', 'The first item was not a header');
     expect(dividerOne.className).to.contain('divider', 'The third item in the contextualmenu was not a divider');
     expect(headerTwo.firstElementChild.className).to.contain('header', 'The final item was not a header');
+  });
+
+  it('does not return a value if no items are given', () => {
+    ReactTestUtils.renderIntoDocument<ContextualMenu>(
+      <ContextualMenu
+        items={ [] }
+        />
+    );
+    let menuList = document.querySelector('.ms-ContextualMenu-list');
+
+    expect(menuList).to.be.eq(null, 'ContextualMenu is not return null even though no items are provided');
+
   });
 });

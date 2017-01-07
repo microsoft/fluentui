@@ -78,9 +78,13 @@ interface IParsedDirectionalHint {
 }
 
 export function hasSubmenuItems(item: IContextualMenuItem) {
-  let submenuItems = item.subMenuProps ? item.subMenuProps.items : item.items;
+  let submenuItems = getSubmenuItems(item);
 
   return !!(submenuItems && submenuItems.length);
+}
+
+export function getSubmenuItems(item: IContextualMenuItem) {
+  return item.subMenuProps ? item.subMenuProps.items : item.items;
 }
 
 export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
@@ -181,47 +185,52 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     let hasIcons = !!(items && items.some(item => !!item.icon || !!item.iconProps));
     let hasCheckmarks = !!(items && items.some(item => !!item.canCheck));
 
-    return (
-      <Callout
-        target={ target }
-        targetElement={ targetElement }
-        targetPoint={ targetPoint }
-        useTargetPoint={ useTargetPoint }
-        isBeakVisible={ isBeakVisible }
-        beakWidth={ beakWidth }
-        directionalHint={ directionalHint }
-        gapSpace={ gapSpace }
-        coverTarget={ coverTarget }
-        doNotLayer={ doNotLayer }
-        className='ms-ContextualMenu-Callout'
-        setInitialFocus={ true }
-        onDismiss={ this.props.onDismiss }
-        bounds={ bounds }>
-        <div ref={ (host: HTMLDivElement) => this._host = host } id={ id } className={ css('ms-ContextualMenu-container', className) }>
-          { (items && items.length) ? (
-            <FocusZone
-              className={ 'ms-ContextualMenu is-open' }
-              direction={ arrowDirection }
-              ariaLabelledBy={ labelElementId }
-              ref={ (focusZone) => this._focusZone = focusZone }
-              rootProps={ { role: 'menu' } }
-              >
-              <ul
-                className='ms-ContextualMenu-list is-open'
-                onKeyDown={ this._onKeyDown }
-                aria-label={ ariaLabel } >
-                { items.map((item, index) => (
-                  this._renderMenuItem(item, index, hasCheckmarks, hasIcons)
-                )) }
-              </ul>
-            </FocusZone>
-          ) : (null) }
-          { submenuProps ? ( // If a submenu properities exists, the submenu will be rendered.
-            <ContextualMenu { ...submenuProps } />
-          ) : (null) }
-        </div>
-      </Callout>
-    );
+    // The menu should only return if items were provided, if no items were provided then it should not appear.
+    if (items && items.length > 0) {
+      return (
+        <Callout
+          target={ target }
+          targetElement={ targetElement }
+          targetPoint={ targetPoint }
+          useTargetPoint={ useTargetPoint }
+          isBeakVisible={ isBeakVisible }
+          beakWidth={ beakWidth }
+          directionalHint={ directionalHint }
+          gapSpace={ gapSpace }
+          coverTarget={ coverTarget }
+          doNotLayer={ doNotLayer }
+          className='ms-ContextualMenu-Callout'
+          setInitialFocus={ true }
+          onDismiss={ this.props.onDismiss }
+          bounds={ bounds }>
+          <div ref={ (host: HTMLDivElement) => this._host = host } id={ id } className={ css('ms-ContextualMenu-container', className) }>
+            { (items && items.length) ? (
+              <FocusZone
+                className={ 'ms-ContextualMenu is-open' }
+                direction={ arrowDirection }
+                ariaLabelledBy={ labelElementId }
+                ref={ (focusZone) => this._focusZone = focusZone }
+                rootProps={ { role: 'menu' } }
+                >
+                <ul
+                  className='ms-ContextualMenu-list is-open'
+                  onKeyDown={ this._onKeyDown }
+                  aria-label={ ariaLabel } >
+                  { items.map((item, index) => (
+                    this._renderMenuItem(item, index, hasCheckmarks, hasIcons)
+                  )) }
+                </ul>
+              </FocusZone>
+            ) : (null) }
+            { submenuProps ? ( // If a submenu properities exists, the submenu will be rendered.
+              <ContextualMenu { ...submenuProps } />
+            ) : (null) }
+          </div>
+        </Callout>
+      );
+    } else {
+      return null;
+    }
   }
 
   private _renderMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
@@ -413,7 +422,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   }
 
   private _onItemClick(item: any, ev: MouseEvent) {
-    let items = (item.subMenuProps && item.subMenuProps.items) ? item.subMenuProps.items : item.items;
+    let items = getSubmenuItems(item);
 
     if (!items || !items.length) { // This is an item without a menu. Click it.
       this._executeItemClick(item, ev);
@@ -457,7 +466,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       }
 
       let submenuProps = {
-        items: item.items,
+        items: getSubmenuItems(item),
         target: target,
         onDismiss: this._onSubMenuDismiss,
         isSubMenu: true,
