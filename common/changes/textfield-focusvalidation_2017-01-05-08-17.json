@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "TextField: Validate only on focus or Blur",
+      "type": "minor"
+    }
+  ],
+  "email": "manishda@microsoft.com"
+}
