@@ -19,7 +19,7 @@ const ContextualMenuBasicExampleCode = require('./examples/ContextualMenu.Basic.
 const ContextualMenuCheckmarksExampleCode = require('./examples/ContextualMenu.Checkmarks.Example.tsx');
 const ContextualMenuDirectionalExampleCode = require('./examples/ContextualMenu.Directional.Example.tsx');
 const ContextualMenuCustomizationExampleCode = require('./examples/ContextualMenu.Customization.Example.tsx');
-// const ContextualMenuHeaderExampleCode = require('./examples/ContextualMenu.Header.Example.tsx');
+const ContextualMenuHeaderExampleCode = require('./examples/ContextualMenu.Header.Example.tsx');
 
 export class ContextualMenuPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -48,7 +48,7 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
             <ExampleCard title='ContextualMenu customization example' code={ ContextualMenuCustomizationExampleCode }>
               <ContextualMenuCustomizationExample />
             </ExampleCard>
-            <ExampleCard title='ContextualMenu header example'>
+            <ExampleCard title='ContextualMenu header example' code={ ContextualMenuHeaderExampleCode }>
               <ContextualMenuHeaderExample />
             </ExampleCard>
           </div>

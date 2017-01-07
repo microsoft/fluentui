@@ -78,9 +78,6 @@ $ContextualMenu-iconWidth: 14px;
   cursor: default;
   padding: 0px 6px;
   user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
   @include text-align(left);
 }
 
