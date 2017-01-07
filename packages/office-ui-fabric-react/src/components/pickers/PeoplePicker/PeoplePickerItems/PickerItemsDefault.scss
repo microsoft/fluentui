@@ -7,8 +7,6 @@
   align-items: center;
   background: $ms-color-neutralLighter;
   margin: 1px;
-  vertical-align: top;
-  white-space: nowrap;
   cursor: default;
   user-select: none;
 
@@ -23,15 +21,7 @@
     }
   }
 
-  .ms-PickerItem-content {
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-  // People Picker specific override to prevent truncation of Persona name
-  .ms-Persona {
-    .ms-Persona-details {
-      flex: 1 0 auto;
-    }
+  .ms-Persona-details {
+    flex: 1 0 auto;
   }
 }
