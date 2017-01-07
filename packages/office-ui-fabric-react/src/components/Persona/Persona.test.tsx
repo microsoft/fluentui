@@ -7,7 +7,7 @@ import * as chai from 'chai';
 
 const { expect } = chai;
 
-describe.only('Persona', () => {
+describe('Persona', () => {
   describe('initials and colors', () => {
     beforeEach(() => {
       setRTL(false);
