@@ -44,6 +44,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
   private _coverStyle: CoverStyle;
   private _imageElement: HTMLImageElement;
   private _frameElement: HTMLDivElement;
+  private _eventsAttached: boolean;
 
   constructor(props: IImageProps) {
     super(props);
@@ -51,19 +52,37 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
     this.state = {
       loadState: ImageLoadState.notLoaded
     };
+    this._eventsAttached = false;
   }
 
   public componentDidMount() {
     if (!this._evaluateImage()) {
       this._events.on(this._imageElement, 'load', this._evaluateImage);
       this._events.on(this._imageElement, 'error', this._setError);
+      this._eventsAttached = true;
     }
   }
 
   public componentWillReceiveProps(nextProps: IImageProps) {
-    // If the image is not loaded, recompute the cover style.
-    if (this.state.loadState === ImageLoadState.loaded) {
+    if (this.state.loadState !== ImageLoadState.notLoaded && nextProps.src !== this.props.src) {
+      this.setState({
+        loadState: ImageLoadState.notLoaded
+      });
+    } else if (this.state.loadState === ImageLoadState.loaded) {
+      // If the image is not loaded, recompute the cover style.
       this._computeCoverStyle(nextProps);
+    }
+  }
+
+  public componentDidUpdate(prevProps: IImageProps, prevState: IImageState) {
+    if (prevState.loadState !== ImageLoadState.notLoaded && prevProps.src !== this.props.src) {
+      if (!this._evaluateImage()) {
+        if (!this._eventsAttached) {
+          this._events.on(this._imageElement, 'load', this._evaluateImage);
+          this._events.on(this._imageElement, 'error', this._setError);
+          this._eventsAttached = true;
+        }
+      }
     }
   }
 
@@ -116,6 +135,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
 
     if (isLoaded && loadState !== ImageLoadState.loaded && loadState !== ImageLoadState.errorLoaded) {
       this._events.off();
+      this._eventsAttached = false;
       this.setState({
         loadState: loadState === ImageLoadState.error ? ImageLoadState.errorLoaded : ImageLoadState.loaded
       });
