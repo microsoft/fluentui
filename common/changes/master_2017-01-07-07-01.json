@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Persona now has a default way of generating initials and colors ",
+      "type": "patch"
+    }
+  ],
+  "email": "zihankoh@microsoft.com"
+}

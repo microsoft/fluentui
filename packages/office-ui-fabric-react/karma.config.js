@@ -10,7 +10,7 @@ let configResources = build.karma.resources;
 let bindPolyfillPath = configResources.bindPolyfillPath;
 let debugRun = (process.argv.indexOf('--debug') > -1);
 
-module.exports = function(config) {
+module.exports = function (config) {
   let karmaConfig = {
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -31,6 +31,7 @@ module.exports = function(config) {
 
     // webpack config for bundling tests.
     webpack: {
+      devtool: 'inline-source-map',
       module: {
         loaders: [
           {
@@ -43,6 +44,12 @@ module.exports = function(config) {
           exclude: /(test|node_modules|bower_components)/,
           loader: configResources.istanbulInstrumenterLoaderPath
         }]
+      },
+      externals: {
+        'cheerio': 'window',
+        'react/addons': true,
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': true
       },
       resolve: {
         modulesDirectories: [
@@ -60,7 +67,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      [ path.join(buildConfig.libFolder, '/**/*.js') ]: ['webpack']
+      [path.join(buildConfig.libFolder, '/**/*.js')]: ['webpack']
     },
 
     plugins: configResources.plugins.concat([
