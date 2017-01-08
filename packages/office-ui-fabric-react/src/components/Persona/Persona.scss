@@ -72,6 +72,7 @@ $ms-Persona-presenceSizeXl: 28px;
   display: table;
   table-layout: fixed;
   border-collapse: separate;
+  width: 100%;
 
   .ms-ContextualHost {
     display: none;
@@ -221,11 +222,13 @@ $ms-Persona-presenceSizeXl: 28px;
 }
 
 .ms-Persona-details {
+  box-sizing: border-box;
   padding: 0 12px;
   vertical-align: middle;
   @include text-align(left);
   @include padding-left($ms-Persona-sizeMd + $ms-Persona-imageDetailsLgSpace);
   display: table-cell;
+  width: 100%;
 }
 
 .ms-Persona-primaryText,
@@ -233,8 +236,6 @@ $ms-Persona-presenceSizeXl: 28px;
 .ms-Persona-tertiaryText,
 .ms-Persona-optionalText {
   @include noWrap();
-  overflow: hidden;
-  text-overflow: ellipsis;
   width: 100%;
 }
 
@@ -298,6 +299,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .ms-Persona-details {
     @include padding-left(20px);
+    display: inline-block;
   }
 
   .ms-Persona-primaryText {
