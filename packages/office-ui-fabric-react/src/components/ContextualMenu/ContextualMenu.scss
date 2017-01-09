@@ -36,7 +36,7 @@ $ContextualMenu-iconWidth: 14px;
   width: 100%;
   height: $ContextualMenu-itemHeight;
   line-height: $ContextualMenu-itemHeight;
-  display: inline-block;
+  display: block;
   cursor: pointer;
   padding: 0px 6px;
   @include text-align(left);
@@ -64,6 +64,21 @@ $ContextualMenu-iconWidth: 14px;
     color: $ms-color-black;
     font-weight: $ms-font-weight-semibold;
   }
+}
+
+.ms-ContextualMenu-header {
+  @include focus-border();
+  @include ms-font-s;
+  font-weight: $ms-font-weight-semibold;
+  color: $ms-color-themePrimary;
+  background: none;
+  border: none;
+  height: $ContextualMenu-itemHeight;
+  line-height: $ContextualMenu-itemHeight;
+  cursor: default;
+  padding: 0px 6px;
+  user-select: none;
+  @include text-align(left);
 }
 
 a.ms-ContextualMenu-link {
