@@ -56,7 +56,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
    * still need to be wired to avoid React console errors
    * TODO: Check if issue is resolved when React 16 is available.
    */
-  private _noOpHandler = () => { /* noop */ };
+  private _noOpHandler: () => void;
 
   public constructor(props: ITextFieldProps) {
     super(props);
@@ -78,6 +78,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     this._delayedValidate = this._async.debounce(this._validate, this.props.deferredValidationTime);
     this._lastValidation = 0;
     this._willMountTriggerValidation = false;
+    this._noOpHandler = () => { /* noop */ };
   }
 
   /**
