@@ -227,7 +227,7 @@ describe('TextField', () => {
       );
 
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-      ReactTestUtils.Simulate.change(inputDOM, mockEvent('the input value'));
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('the input value'));
       expect(validationCallCount).to.equal(1);
 
       ReactTestUtils.Simulate.focus(inputDOM);
@@ -251,7 +251,7 @@ describe('TextField', () => {
 
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
       ReactTestUtils.Simulate.focus(inputDOM);
-      ReactTestUtils.Simulate.change(inputDOM, mockEvent('the input value'));
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('the input value'));
       expect(validationCallCount).to.equal(1);
 
       ReactTestUtils.Simulate.blur(inputDOM);
@@ -275,12 +275,12 @@ describe('TextField', () => {
       );
 
       const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
-      ReactTestUtils.Simulate.change(inputDOM, mockEvent('value before focus'));
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('value before focus'));
       expect(validationCallCount).to.equal(1);
 
       ReactTestUtils.Simulate.focus(inputDOM);
       expect(validationCallCount).to.equal(2);
-      ReactTestUtils.Simulate.change(inputDOM, mockEvent('value before blur'));
+      ReactTestUtils.Simulate.input(inputDOM, mockEvent('value before blur'));
       ReactTestUtils.Simulate.blur(inputDOM);
       expect(validationCallCount).to.equal(3);
     });
