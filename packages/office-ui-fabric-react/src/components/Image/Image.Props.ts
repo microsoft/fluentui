@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export interface IImageProps extends React.HTMLProps<HTMLImageElement>  {
+export interface IImageProps extends React.HTMLProps<HTMLImageElement> {
   /**
    * If true, adds the css class 'is-fadeIn' to the image.
    */
@@ -22,6 +22,11 @@ export interface IImageProps extends React.HTMLProps<HTMLImageElement>  {
    * Image source to display if an error occurs loading the image indicated by src.
    */
   errorSrc?: string;
+
+  /**
+   * If true, the image frame will expand to fill its parent container.
+   */
+  shouldMaximizeFrame?: boolean;
 }
 
 /**
