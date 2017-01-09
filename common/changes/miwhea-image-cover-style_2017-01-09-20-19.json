@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Image: Recompute the cover style, even if no width or height is provided",
+      "type": "patch"
+    }
+  ],
+  "email": "miwhea@microsoft.com"
+}
