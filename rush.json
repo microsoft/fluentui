@@ -1,0 +1,19 @@
+{
+  "npmVersion": "3.10.9",
+  "rushMinimumVersion": "1.4.0",
+  "nodeSupportedVersionRange": ">=4.3.0",
+  "commonFolder": "common",
+  "projectFolderMinDepth": 1,
+  "projectFolderMaxDepth": 999,
+  "projects": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "projectFolder": "packages/office-ui-fabric-react",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "todo-app",
+      "projectFolder": "packages/examples/todo-app"
+    }
+  ]
+}

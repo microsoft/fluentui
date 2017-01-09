@@ -1,0 +1,33 @@
+{
+  "name": "todo-app",
+  "description": "Sample todo app using office-ui-fabric-react.",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "gulp",
+    "clean": "gulp clean",
+    "start": "gulp serve",
+    "test": "gulp test"
+  },
+  "devDependencies": {
+    "@microsoft/web-library-build": ">=1.1.0 < 2.0.0"
+  },
+  "dependencies": {
+    "@microsoft/load-themed-styles": ">=1.2.2 <2.0.0",
+    "@types/chai": "^3.4.34",
+    "@types/es6-promise": "0.0.32",
+    "@types/immutability-helper": "^2.0.15",
+    "@types/mocha": "^2.2.32",
+    "@types/node": "^6.0.45",
+    "@types/react": "^0.14.47",
+    "@types/react-addons-test-utils": "^0.14.15",
+    "@types/react-dom": "^0.14.18",
+    "@types/webpack": "^1.12.35",
+    "es6-promise": ">=3.2.1 <4.0.0",
+    "immutability-helper": "^2.0.0",
+    "office-ui-fabric-core": ">=5.0.1 <6.0.0",
+    "office-ui-fabric-react": ">=0.85.0 <1.0.0",
+    "react": ">=15.3.2 <16.0.0",
+    "react-dom": ">=15.3.2 <16.0.0",
+    "typescript": "^2.0.6"
+  }
+}

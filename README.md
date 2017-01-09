@@ -14,6 +14,7 @@ Fabric React is a responsive, mobile-first collection of robust components desig
 
 - [View the docs](#view-the-docs)
 - [Get started](#get-started)
+- [Testing](#testing)
 - [Advanced usage](#advanced-usage)
 - [Roadmap](#roadmap)
 - [Trello board](#trello-board)
@@ -29,10 +30,17 @@ Before you get started, make sure you have [node.js](https://nodejs.org/), [gulp
 
 1. `git clone https://github.com/OfficeDev/office-ui-fabric-react.git`
 2. `npm install`
-3. `gulp serve`
+3. `npm start`
 
-This will open a web browser with the example page. You can make changes to the code which will automatically build and refresh the page using live-reload.
+This will run `gulp serve` from the office-ui-fabric-react package folder, which will open a web browser with the example page. You can make changes to the code which will automatically build and refresh the page using live-reload.
 
+To build all packages in the repo, you can use `npm run build`.
+
+To run other Gulp commands such as clean or deploy, just prepend the command with `npm run gulp` and this will run the command from within the project context.
+
+`npm run gulp clean`
+`npm run gulp deploy`
+...
 
 ## Get started
 
@@ -52,7 +60,7 @@ This will add the fabric-react project as a dependency in your package.json file
 
 The library includes commonjs entry points under the lib folder. To use a control, you should be able to import it and use it in your render method:
 
-```
+```js
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Button } from 'office-ui-fabric-react/lib/Button';
@@ -61,6 +69,10 @@ const MyPage = () => (<div><Button>I am a button.</Button></div>);
 
 ReactDOM.render(<MyPage />, document.body.firstChild);
 ```
+
+## Testing
+
+For testing see our [testing documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/TESTING.md).
 
 ## Advanced usage
 
@@ -103,7 +115,7 @@ We're excited to share our development of this project with folks outside of the
 
 All files on the Office UI Fabric React GitHub repository are subject to the MIT license. Please read the License file at the root of the project.
 
-Usage of the fonts referenced in Office UI Fabric files is subject to the [license](http://appsforoffice.microsoft.com/fabric/Segoe_UI_and_Fabric_CDN_License.txt).
+Usage of the fonts and icons referenced in Office UI Fabric is subject to the terms of the [assets license agreement](http://aka.ms/fabric-assets-license).
 
 
 ## Changelog

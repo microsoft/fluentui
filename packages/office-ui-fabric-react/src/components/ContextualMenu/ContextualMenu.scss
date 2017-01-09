@@ -1,0 +1,149 @@
+@import '../../common/common';
+
+$ContextualMenu-background: $ms-color-white;
+$ContextualMenu-itemHover: $ms-color-neutralLighter;
+$ContextualMenu-expandedItemBackground: $ms-color-neutralQuaternaryAlt;
+$ContextualMenu-itemHeight: 36px;
+$ContextualMenu-iconWidth: 14px;
+
+.ms-ContextualMenu {
+  background-color: $ContextualMenu-background;
+  min-width: 180px;
+}
+
+.ms-ContextualMenu-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+
+.ms-ContextualMenu-item {
+  @include ms-font-m;
+  color: $ms-color-neutralPrimary;
+  height: $ContextualMenu-itemHeight;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.ms-ContextualMenu-link {
+  @include focus-border();
+
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  width: 100%;
+  height: $ContextualMenu-itemHeight;
+  line-height: $ContextualMenu-itemHeight;
+  display: block;
+  cursor: pointer;
+  padding: 0px 6px;
+  @include text-align(left);
+
+  &:hover:not([disabled]) {
+    background: $ContextualMenu-itemHover;
+  }
+  &.is-disabled,
+  &[disabled] {
+    color: $ms-color-neutralTertiaryAlt;
+    cursor: default;
+    pointer-events: none;
+    .ms-ContextualMenu-icon {
+      color: $ms-color-neutralTertiaryAlt;
+    }
+  }
+
+  .is-focusVisible &:focus {
+    background: $ContextualMenu-itemHover;
+  }
+
+  &.is-expanded,
+  &.is-expanded:hover {
+    background: $ContextualMenu-expandedItemBackground;
+    color: $ms-color-black;
+    font-weight: $ms-font-weight-semibold;
+  }
+}
+
+.ms-ContextualMenu-header {
+  @include focus-border();
+  @include ms-font-s;
+  font-weight: $ms-font-weight-semibold;
+  color: $ms-color-themePrimary;
+  background: none;
+  border: none;
+  height: $ContextualMenu-itemHeight;
+  line-height: $ContextualMenu-itemHeight;
+  cursor: default;
+  padding: 0px 6px;
+  user-select: none;
+  @include text-align(left);
+}
+
+a.ms-ContextualMenu-link {
+  padding: 0px 6px;
+  text-rendering: auto;
+  color: inherit;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  box-sizing: border-box;
+}
+.ms-ContextualMenu-linkContent {
+  white-space: nowrap;
+  height: inherit;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+}
+
+.ms-ContextualMenu-divider {
+  display: block;
+  height: 1px;
+  background-color: $dividerColor;
+  position: relative;
+}
+
+.ms-ContextualMenu-icon {
+  display: inline-block;
+  min-height: 1px;
+  max-height: $ContextualMenu-itemHeight;
+  width: $ContextualMenu-iconWidth;
+  margin: 0 4px;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.ms-ContextualMenu-iconColor {
+  color: $ms-color-themePrimary;
+}
+
+.ms-ContextualMenu-itemText {
+  margin: 0 4px;
+  vertical-align: middle;
+  display: inline-block;
+  flex-grow: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ms-ContextualMenu-linkText {
+  margin: 0px 4px;
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.ms-ContextualMenu-submenuChevron {
+  height: $ContextualMenu-itemHeight;
+  line-height: $ContextualMenu-itemHeight;
+  text-align: center;
+  font-size: $ms-icon-size-xs;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
