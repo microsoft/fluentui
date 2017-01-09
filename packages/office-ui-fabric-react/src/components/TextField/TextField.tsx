@@ -50,7 +50,13 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
   private _willMountTriggerValidation;
   private _field;
 
-  private _noOpHandler = () => { };
+  /**
+   * https://github.com/facebook/react/issues/7027.
+   * Using the native onInput handler fixes the issue but onChange
+   * still need to be wired to avoid React console errors
+   * TODO: Check if issue is resolved when React 16 is available.
+   */
+  private _noOpHandler = () => { /* noop */ };
 
   public constructor(props: ITextFieldProps) {
     super(props);
