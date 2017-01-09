@@ -363,7 +363,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         ) : (null) }
         <span className='ms-ContextualMenu-itemText'>{ item.name }</span>
         { hasSubmenuItems(item) ? (
-          <Icon className='ms-ContextualMenu-submenuChevron ms-Icon' iconName={ getRTL() ? IconName.ChevronLeft : IconName.ChevronRight } />
+          <Icon
+            iconName={ getRTL() ? IconName.ChevronLeft : IconName.ChevronRight }
+            { ...item.submenuIconProps }
+            className={ css('ms-ContextualMenu-submenuIcon', item.submenuIconProps ? item.submenuIconProps.className : '') } />
         ) : (null) }
       </div>
     );
