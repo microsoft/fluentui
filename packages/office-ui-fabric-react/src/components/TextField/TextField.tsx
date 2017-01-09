@@ -50,6 +50,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
   private _lastValidation: number;
   private _latestValidateValue;
   private _willMountTriggerValidation;
+  private _isDescriptionAvailable: boolean;
   private _field;
 
   public constructor(props: ITextFieldProps) {
@@ -72,6 +73,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     this._delayedValidate = this._async.debounce(this._validate, this.props.deferredValidationTime);
     this._lastValidation = 0;
     this._willMountTriggerValidation = false;
+    this._isDescriptionAvailable = false;
   }
 
   /**
@@ -117,6 +119,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     let { disabled, required, multiline, underlined, label, description, iconClass, className } = this.props;
     let { isFocused } = this.state;
     const errorMessage: string = this._errorMessage;
+    this._isDescriptionAvailable = Boolean(description || errorMessage);
 
     const textFieldClassName = css('ms-TextField', className, {
       'is-required': required,
@@ -132,7 +135,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         { iconClass && <i className={ iconClass }></i> }
         { multiline ? this._renderTextArea() : this._renderInput() }
         { errorMessage && <div aria-live='assertive' className='ms-u-screenReaderOnly' data-automation-id='error-message'>{ errorMessage }</div> }
-        { (description || errorMessage) &&
+        { this._isDescriptionAvailable &&
           <span id={ this._descriptionId }>
             { description && <span className='ms-TextField-description'>{ description }</span> }
             { errorMessage && <p className='ms-TextField-errorMessage ms-u-slideDownIn20'>{ errorMessage }</p> }
@@ -236,7 +239,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         onChange={ this._onInputChange }
         className={ this._fieldClassName }
         aria-label={ this.props.ariaLabel }
-        aria-describedby={ this._descriptionId }
+        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
         aria-invalid={ !!this.state.errorMessage }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
@@ -257,7 +260,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         onChange={ this._onInputChange }
         className={ this._fieldClassName }
         aria-label={ this.props.ariaLabel }
-        aria-describedby={ this._descriptionId }
+        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
         aria-invalid={ !!this.state.errorMessage }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }

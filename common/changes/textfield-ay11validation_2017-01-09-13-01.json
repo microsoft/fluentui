@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "TextField: aria-describedby value is set to unavailable dom element",
+      "type": "patch"
+    }
+  ],
+  "email": "manishda@microsoft.com"
+}
