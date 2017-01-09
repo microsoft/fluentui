@@ -1,56 +1,53 @@
 @import '../../common/common';
 
-// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+// When focus is set using the keyboard, apply an outline.
+@mixin focus-outline {
+  .ms-Fabric.is-focusVisible &:focus {
+    outline: 1px solid $focusedBorderColor;
+  }
+}
 
-//
-// Office UI Fabric
-// --------------------------------------------------
-// Link (anchor) styles
-
-
-@mixin ms-Link {
+.ms-Link {
   @include ms-baseFont;
-  @include focus-border();
   color: $ms-color-themePrimary;
-  text-decoration: none;
-  cursor: pointer;
-  padding: 0;
   margin: 0;
-  background: none;
-  @include text-align(left);
-  display: inline;
-  border: none;
-
-  // need to support ellipsis truncation, so we do this by default.
-  width: auto;
-  max-width: 100%;
-
   overflow: inherit;
+  padding: 0;
   text-overflow: inherit;
 
+  // State: The button is not disabled.
+  &:not(.is-disabled) {
+    &:hover,
+    &:focus {
+      color: $ms-color-themeDarker;
+    }
+
+    &:active {
+      color: $ms-color-themePrimary;
+    }
+  }
+
+  // State: The button is disabled.
   &.is-disabled {
     color: $ms-color-neutralTertiary;
     pointer-events: none;
     cursor: default;
   }
-
-  &:hover,
-  &:focus {
-    color: $ms-color-themeDarker;
-  }
-
-  &:active {
-    color: $ms-color-themePrimary;
-  }
 }
 
-.ms-Link {
-  @include ms-Link;
-}
-
-// For button links, we need to ensure by default that we inherit the font size.
-// Otherwise, the browser's default font size will be applied.
-
+// Link implemented as a button.
 button.ms-Link {
-  font-size: inherit;
+  @include focus-border;
+  @include text-align(left);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline;
+  font-size: inherit; // Ensure that we inherit font size, rather than the browser's default.
+}
+
+// Link implemented as an anchor.
+a.ms-Link {
+  @include focus-outline;
+  text-decoration: none;
 }
