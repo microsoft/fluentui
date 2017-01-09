@@ -61,13 +61,9 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
   }
 
   public componentWillReceiveProps(nextProps: IImageProps) {
+    // If the image is not loaded, recompute the cover style.
     if (this.state.loadState === ImageLoadState.loaded) {
-      let { height: nextHeight, width: nextWidth } = nextProps;
-      let { height, width } = this.props;
-
-      if (height !== nextHeight || width !== nextWidth) {
-        this._computeCoverStyle(nextProps);
-      }
+      this._computeCoverStyle(nextProps);
     }
   }
 
