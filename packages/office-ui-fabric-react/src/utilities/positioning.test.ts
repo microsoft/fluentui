@@ -151,10 +151,48 @@ describe('Callout Positioning', () => {
 
   it('Correctly determines max height', () => {
     let getMaxHeight = positioningFunctions._getMaxHeightFromTargetRectangle;
-    let targetRectangle = new Rectangle(0, 0, 0, 0);
+    let targetTop;
+    let targetBot;
+    let targetRight = targetBot = 20;
+    let targetLeft = targetTop = 10;
+    let targetRectangle = new Rectangle(targetLeft, targetRight, targetTop, targetBot);
     let bounds = new Rectangle(0, 1000, 0, 1000);
 
-    assert(getMaxHeight(targetRectangle, DirectionalHint.bottomCenter, 0, bounds) === 1000);
+    let testMax = getMaxHeight(targetRectangle, DirectionalHint.bottomCenter, 0, bounds);
+    assert(testMax === 1000 - targetBot,
+      `Test for maxHeight from bottom of target to bottom of bounds: maxHeight was ${testMax} and it should have been ${1000 - targetBot}`);
+
+    testMax = getMaxHeight(targetRectangle, DirectionalHint.topCenter, 0, bounds);
+    assert(testMax === targetTop,
+      `Test for maxHeight from top of target to top of bounds: maxHeight was ${testMax} and it should have been ${targetTop}`);
+
+    testMax = getMaxHeight(targetRectangle, DirectionalHint.rightCenter, 0, bounds);
+    assert(testMax === 1000 - targetTop,
+      `Test for maxHeight from top of target to bottom of bounds: maxHeight was ${testMax} and it should have been ${1000 - targetTop}`);
+  });
+
+  it('Correctly determines max height with a gapSpace included', () => {
+    let getMaxHeight = positioningFunctions._getMaxHeightFromTargetRectangle;
+    let targetTop;
+    let targetBot;
+    let targetRight = targetBot = 200;
+    let targetLeft = targetTop = 100;
+    let targetRectangle = new Rectangle(targetLeft, targetRight, targetTop, targetBot);
+    let bounds = new Rectangle(0, 1000, 0, 1000);
+    let gapSpace = 10;
+
+    let testMax = getMaxHeight(targetRectangle, DirectionalHint.bottomCenter, gapSpace, bounds);
+
+    assert(testMax === 1000 - targetBot - gapSpace,
+      `Test for maxHeight from bottom of target to bottom of bounds: maxHeight was ${testMax} and it should have been ${1000 - targetBot - gapSpace}`);
+
+    testMax = getMaxHeight(targetRectangle, DirectionalHint.topCenter, gapSpace, bounds);
+    assert(testMax === targetTop - gapSpace,
+      `Test for maxHeight from top of target to top of bounds: maxHeight was ${testMax} and it should have been ${targetTop - gapSpace}`);
+
+    testMax = getMaxHeight(targetRectangle, DirectionalHint.rightCenter, gapSpace, bounds);
+    assert(testMax === 1000 - targetTop - gapSpace,
+      `Test for maxHeight from top of target to bottom of bounds: maxHeight was ${testMax} and it should have been ${1000 - targetTop - gapSpace}`);
   });
 
 });

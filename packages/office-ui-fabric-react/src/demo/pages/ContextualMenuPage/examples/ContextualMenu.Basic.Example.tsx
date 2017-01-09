@@ -26,7 +26,6 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
             target={ this.state.target }
             onDismiss={ this._onDismiss }
             directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }
-            isEdgeFixed={ true }
             items={
               [
                 {

@@ -218,19 +218,31 @@ export module positioningFunctions {
     beakPercent: number;
   }
 
-  /** */
+  /**
+   * If max height is less than zero it returns the bounds height instead.
+   */
   export function _getMaxHeightFromTargetRectangle(targetRectangle: Rectangle, targetEdge: DirectionalHint, gapSpace: number, bounds: Rectangle) {
-    switch (targetEdge) {
+    let maxHeight = 0;
 
+    switch (targetEdge) {
       case DirectionalHint.bottomAutoEdge:
       case DirectionalHint.bottomCenter:
       case DirectionalHint.bottomLeftEdge:
       case DirectionalHint.bottomRightEdge:
-        return bounds.bottom - targetRectangle.bottom - gapSpace;
-
+        maxHeight = bounds.bottom - targetRectangle.bottom - gapSpace;
+        break;
+      case DirectionalHint.topAutoEdge:
+      case DirectionalHint.topCenter:
+      case DirectionalHint.topLeftEdge:
+      case DirectionalHint.topRightEdge:
+        maxHeight = targetRectangle.top - bounds.top - gapSpace;
+        break;
       default:
-        return targetRectangle.top - bounds.top - gapSpace;
+        maxHeight = bounds.bottom - targetRectangle.top - gapSpace;
+        break;
     }
+
+    return maxHeight > 0 ? maxHeight : bounds.height;
   }
 
   export function _getTargetRect(bounds: Rectangle, target: HTMLElement | MouseEvent) {
