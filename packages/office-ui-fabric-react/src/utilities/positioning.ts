@@ -42,6 +42,7 @@ export interface IPositionProps {
 
   /**
    * The event that created the contextualmenu.
+   * @deprecated use target with event passed in.
    * @default null
    */
   creationEvent?: MouseEvent;
@@ -66,6 +67,13 @@ export interface IPositionProps {
    * If false then it will position next to the target;
    */
   coverTarget?: boolean;
+
+  /**
+   * If true the position will not change edges in an attempt to fit the rectangle within bounds.
+   * It will still attempt to align it to whatever bounds are given.
+   * @default false
+   */
+  isEdgeFixed?: boolean;
 }
 
 export interface IPositionInfo {
@@ -165,7 +173,8 @@ export function getRelativePositions(
     boundingRect,
     positionData,
     gap,
-    props.coverTarget);
+    props.coverTarget,
+    props.isEdgeFixed);
   let beakPositioned: Rectangle = positioningFunctions._positionBeak(beakWidth, positionedCallout, targetRect, borderWidth);
   let finalizedCallout: Rectangle = positioningFunctions._finalizeCalloutPosition(positionedCallout.calloutRectangle, hostElement);
 
@@ -176,6 +185,28 @@ export function getRelativePositions(
     submenuDirection: positionedCallout.calloutEdge === RectangleEdge.right ? DirectionalHint.leftBottomEdge : DirectionalHint.rightBottomEdge
   };
 }
+/**
+ * Get's the maximum height that a rectangle can have in order to fit below or above a target.
+ * If the directional hint specifies a left or right edge (i.e. leftCenter) it will limit the height to the topBorder
+ * of the target given.
+ * If no bounds are provided then the window is treated as the bounds.
+ */
+export function getMaxHeight(target: HTMLElement | MouseEvent, targetEdge: DirectionalHint, gapSpace: number = 0, bounds?: IRectangle) {
+  let mouseTarget: MouseEvent = target as MouseEvent;
+  let elementTarget: HTMLElement = target as HTMLElement;
+  let targetRect: Rectangle;
+  let boundingRectangle = bounds ?
+    positioningFunctions._getRectangleFromIRect(bounds) :
+    new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
+
+  if (mouseTarget.stopPropagation) {
+    targetRect = new Rectangle(mouseTarget.clientX, mouseTarget.clientX, mouseTarget.clientY, mouseTarget.clientY);
+  } else {
+    targetRect = positioningFunctions._getRectangleFromHTMLElement(elementTarget);
+  }
+
+  return positioningFunctions._getMaxHeightFromTargetRectangle(targetRect, targetEdge, gapSpace, boundingRectangle);
+}
 
 export module positioningFunctions {
 
@@ -185,6 +216,21 @@ export module positioningFunctions {
     targetEdge: RectangleEdge;
     alignPercent: number;
     beakPercent: number;
+  }
+
+  /** */
+  export function _getMaxHeightFromTargetRectangle(targetRectangle: Rectangle, targetEdge: DirectionalHint, gapSpace: number, bounds: Rectangle) {
+    switch (targetEdge) {
+
+      case DirectionalHint.bottomAutoEdge:
+      case DirectionalHint.bottomCenter:
+      case DirectionalHint.bottomLeftEdge:
+      case DirectionalHint.bottomRightEdge:
+        return bounds.bottom - targetRectangle.bottom - gapSpace;
+
+      default:
+        return targetRectangle.top - bounds.top - gapSpace;
+    }
   }
 
   export function _getTargetRect(bounds: Rectangle, target: HTMLElement | MouseEvent) {
@@ -252,7 +298,8 @@ export module positioningFunctions {
     boundingRectangle: Rectangle,
     directionalInfo: PositionData,
     gap: number = 0,
-    coverTarget?: boolean): ICallout {
+    coverTarget?: boolean,
+    isEdgeFixed?: boolean): ICallout {
     let estimatedRectangle: Rectangle = _moveRectangleToAnchorRectangle(calloutRectangle,
       directionalInfo.calloutDirection,
       directionalInfo.calloutPercent,
@@ -264,7 +311,14 @@ export module positioningFunctions {
     if (_isRectangleWithinBounds(estimatedRectangle, boundingRectangle)) {
       return { calloutRectangle: estimatedRectangle, calloutEdge: directionalInfo.calloutDirection, targetEdge: directionalInfo.targetDirection, alignPercent: directionalInfo.calloutPercent, beakPercent: directionalInfo.beakPercent };
     } else {
-      return _getBestRectangleFitWithinBounds(estimatedRectangle, targetRectangle, boundingRectangle, directionalInfo, gap, coverTarget);
+      return _getBestRectangleFitWithinBounds(
+        estimatedRectangle,
+        targetRectangle,
+        boundingRectangle,
+        directionalInfo,
+        gap,
+        coverTarget,
+        isEdgeFixed);
     }
   }
 
@@ -274,7 +328,8 @@ export module positioningFunctions {
     boundingRectangle: Rectangle,
     directionalInfo: PositionData,
     gap: number,
-    coverTarget?: boolean): ICallout {
+    coverTarget?: boolean,
+    isEdgeFixed?: boolean): ICallout {
     let callout: ICallout = {
       calloutRectangle: estimatedPosition,
       calloutEdge: directionalInfo.calloutDirection,
@@ -288,7 +343,7 @@ export module positioningFunctions {
       return callout;
     }
 
-    if (!coverTarget) {
+    if (!coverTarget && !isEdgeFixed) {
       callout = _flipRectangleToFit(
         callout,
         targetRectangle,

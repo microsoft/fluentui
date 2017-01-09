@@ -88,6 +88,13 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   doNotLayer?: boolean;
 
   /**
+   * If true the position will not change edges in an attempt to fit the callout within bounds.
+   * It will still attempt to align it to whatever bounds are given.
+   * @default false
+   */
+  isEdgeFixed?: boolean;
+
+  /**
    * If true then the callout will attempt to focus the first focusable element that it contains.
    * If it doesn't find an element, no focus will be set and the method will return false.
    * This means that it's the contents responsibility to either set focus or have

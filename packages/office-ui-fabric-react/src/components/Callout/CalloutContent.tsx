@@ -10,7 +10,7 @@ import {
   getWindow,
   getDocument
 } from '../../Utilities';
-import { getRelativePositions, IPositionInfo, IPositionProps } from '../../utilities/positioning';
+import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight } from '../../utilities/positioning';
 import { IRectangle } from '../../common/IRectangle';
 import { focusFirstChild } from '../../utilities/focus';
 import { assign } from '../../Utilities';
@@ -259,7 +259,12 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
   private _getMaxHeight(): number {
     if (!this._maxHeight) {
-      this._maxHeight = this._getBounds().height - BORDER_WIDTH * 2;
+      if (this.props.isEdgeFixed && this._target) {
+        let beakWidth = this.props.isBeakVisible ? this.props.beakWidth : 0;
+        this._maxHeight = getMaxHeight(this._target, this.props.directionalHint, beakWidth, this._getBounds());
+      } else {
+        this._maxHeight = this._getBounds().height - BORDER_WIDTH * 2;
+      }
     }
     return this._maxHeight;
   }

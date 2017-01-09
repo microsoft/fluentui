@@ -39,6 +39,7 @@ export class CalloutBasicExample extends React.Component<any, ICalloutBaiscExamp
             targetElement={ this._menuButtonElement }
             onDismiss={ this._onCalloutDismiss }
             setInitialFocus={ true }
+            isEdgeFixed={ true }
             >
             <div className='ms-CalloutExample-header'>
               <p className='ms-CalloutExample-title'>
