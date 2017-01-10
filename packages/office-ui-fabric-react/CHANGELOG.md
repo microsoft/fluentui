@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 07 Jan 2017 04:06:13 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Jan 2017 04:09:41 GMT and should not be manually modified.
+
+## 0.86.0
+Tue, 10 Jan 2017 04:09:41 GMT
+
+### Minor changes
+
+- Persona: Truncates long lines of text
+- Image: Add a prop to fit the image's frame to the parent element. Recompute the cover style when image changes, even if no width or height is provided.
 
 ## 0.85.0
 Sat, 07 Jan 2017 04:06:13 GMT
