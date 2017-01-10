@@ -11,6 +11,7 @@ import { ImageCenterExample } from './examples/Image.Center.Example';
 import { ImageContainExample } from './examples/Image.Contain.Example';
 import { ImageCoverExample } from './examples/Image.Cover.Example';
 import { ImageNoneExample } from './examples/Image.None.Example';
+import { ImageMaximizeFrameExample } from './examples/Image.MaximizeFrame.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
@@ -20,6 +21,7 @@ const ImageCenterExampleCode = require('./examples/Image.Center.Example.tsx');
 const ImageContainExampleCode = require('./examples/Image.Contain.Example.tsx');
 const ImageCoverExampleCode = require('./examples/Image.Cover.Example.tsx');
 const ImageNoneExampleCode = require('./examples/Image.None.Example.tsx');
+const ImageMaximizeFrameExampleCode = require('./examples/Image.MaximizeFrame.Example.tsx');
 
 export class ImagePage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -50,6 +52,9 @@ export class ImagePage extends React.Component<IComponentDemoPageProps, any> {
             </ExampleCard>
             <ExampleCard title='ImageFit: Cover' code={ ImageCoverExampleCode }>
               <ImageCoverExample />
+            </ExampleCard>
+            <ExampleCard title='Maximizing the image frame' code={ ImageMaximizeFrameExampleCode }>
+              <ImageMaximizeFrameExample />
             </ExampleCard>
           </div>
         }
