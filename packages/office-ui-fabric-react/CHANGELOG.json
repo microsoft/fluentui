@@ -2,6 +2,57 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "0.85.0",
+      "tag": "office-ui-fabric-react_v0.85.0",
+      "date": "Sat, 07 Jan 2017 04:06:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christopher Schleiden <cschleid@microsoft.com>",
+            "commit": "a8a6792be4f44cc4b6a3317616f7154aae83925f",
+            "comment": "SearchBox: Remove line-height to show correct cursor size in iOS"
+          },
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "8d83c728866e4c061f247e3a9d172781fd168e07",
+            "comment": "ContextualMenu: Now returns null if no items are provided rather than rendering an empty callout"
+          },
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "a68f064271095685b2b1f7071839c4d0685a4ff1",
+            "comment": "FocusZone: Changed focus and focus zone to respect when data-is-focusable attribute is false"
+          },
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "6ba54e29bd333b6de1d064c7cfb12366691b91c3",
+            "comment": "Fix the prescribed use of submenuProps.items for CommandBar items"
+          },
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "be86e05d1e03fd37b32c6b205253cb02589dbad0",
+            "comment": "Link: focus border is now positioned correctly when the link spans multiple lines."
+          }
+        ],
+        "minor": [
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "f7730bab89da48e202bbf51fcfecb3bcf2cec71c",
+            "comment": "ContextualMenu: Added header item so that the ContextualMenu can now have headers"
+          },
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "1f2cb1939f57defb1f578f1b54d308cb2bcdf37e",
+            "comment": "Nav: add className to allow styling"
+          },
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "2d31882bae2cc2450a88060f3cf13dae90f0cfd3",
+            "comment": "TextField: Validate only on focus or Blur"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.84.0",
       "tag": "office-ui-fabric-react_v0.84.0",
       "date": "Thu, 05 Jan 2017 04:07:37 GMT",
