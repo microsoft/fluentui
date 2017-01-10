@@ -23,6 +23,10 @@
   outline: transparent;
   border-radius: 50%;
   vertical-align: top;
+
+  .ms-Persona-details {
+    flex: 1 0 auto;
+  }
 }
 
 button.ms-Facepile-itemButton {
