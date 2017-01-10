@@ -1,0 +1,81 @@
+@import '../../common/common';
+
+$defaultColor: $ms-color-neutralTertiary;
+$selectedColor: $ms-color-black;
+$hoverColor: $ms-color-themeDarkAlt;
+$disabledColor: $ms-color-neutralTertiaryAlt;
+
+// Hide input field
+.ms-Rating-input {
+  position: absolute;
+  opacity: 0;
+  top: 0px;
+}
+
+.ms-Rating-container {
+  position: relative;
+  display: inline-block;
+
+  &:hover {
+    .ms-Rating-star:not(.is-disabled) {
+      color: $selectedColor;
+
+      &.ms-Rating-star:hover {
+        color: $hoverColor;
+
+        & ~ .ms-Rating-star {
+        // Set default color for any star after hovered one
+          color: $defaultColor;
+        }
+      }
+    }
+  }
+
+  .ms-Rating-star {
+    display: inline-block;
+
+    text-align: center;
+
+    color: $defaultColor;
+
+    &.is-selected {
+      color: $selectedColor;
+    }
+
+    &.is-disabled {
+      cursor: default;
+
+      color: $disabledColor;
+    }
+
+    .ms-Rating-label {
+      display: inline-block;
+
+      font-size: 16px;
+      padding: 12px 0px;
+
+      cursor: pointer;
+
+      // Reserve space for focus styling
+      border: 1px solid transparent;
+    }
+  }
+
+  &.large {
+    .ms-Rating-star {
+      .ms-Rating-label {
+        font-size: 20px;
+
+        padding-left: 2px;
+        padding-right: 2px;
+        padding-top: 6px;
+        padding-bottom: 9px;
+      }
+    }
+  }
+}
+
+// Highlight focused star
+.is-focusVisible .is-inFocus .ms-Rating-label {
+  border: 1px solid $ms-color-neutralPrimary;
+}
