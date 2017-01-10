@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Image: Recompute the cover style, even if no width or height is provided",
-      "type": "patch"
+      "comment": "Image: Add a prop to fit the image's frame to the parent element. Recompute the cover style when image changes, even if no width or height is provided.",
+      "type": "minor"
     }
   ],
   "email": "miwhea@microsoft.com"
