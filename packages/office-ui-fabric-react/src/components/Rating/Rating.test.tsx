@@ -30,11 +30,11 @@ describe('Rating', () => {
 
     let ratingInputs = renderedDOM.querySelectorAll('.ms-Rating-input');
 
-    const checkState = (rating: number, state: boolean) => {
-      expect((ratingInputs[rating - 1] as HTMLInputElement).checked).to.be.eq(
+    const checkState = (ratingToCheck: number, state: boolean) => {
+      expect((ratingInputs[ratingToCheck - 1] as HTMLInputElement).checked).to.be.eq(
         state,
-        `Rating ${rating} should be ${!state && 'selected' || ''} selected`);
-    }
+        `Rating ${ratingToCheck} should be ${!state && 'selected' || ''} selected`);
+    };
 
     checkState(1, false);
     checkState(2, true);
