@@ -4,6 +4,12 @@
   overflow: hidden;
 }
 
+// Modifier: The image frame should fill its parent element.
+.ms-Image--maximizeFrame {
+  height: 100%;
+  width: 100%;
+}
+
 .ms-Image-image {
   display: block;
   opacity: 0;
