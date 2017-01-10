@@ -93,12 +93,14 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='combobox'
           aria-label={ label }
+          aria-describedby={ id + '-option' }
           aria-activedescendant={ selectedIndex >= 0 ? (this._id + '-list' + selectedIndex) : (this._id + '-list') }
           >
           <span
+            id={ id + '-option' }
             className='ms-Dropdown-title'
             key={ selectedIndex }
-            aria-live={ disabled || isOpen ? 'off' : 'polite' }
+            aria-live={ disabled || isOpen ? 'off' : 'assertive' }
             aria-atomic={ true }
             >
             { selectedOption ? onRenderItem(selectedOption, this._onRenderItem) : '' }
