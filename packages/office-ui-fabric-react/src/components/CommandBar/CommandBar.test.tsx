@@ -1,0 +1,81 @@
+/* tslint:disable:no-unused-variable */
+import * as React from 'react';
+/* tslint:enable:no-unused-variable */
+
+import * as ReactDOM from 'react-dom';
+import * as ReactTestUtils from 'react-addons-test-utils';
+
+let { expect } = chai;
+
+import { CommandBar } from './CommandBar';
+import { IContextualMenuItem } from '../ContextualMenu/ContextualMenu.Props';
+
+describe('CommandBar', () => {
+
+  afterEach(() => {
+    for (let i = 0; i < document.body.children.length; i++) {
+      if (document.body.children[i].tagName === 'DIV') {
+        document.body.removeChild(document.body.children[i]);
+        i--;
+      }
+    }
+  });
+
+  it('opens a menu with deprecated IContextualMenuItem.items property', () => {
+    const items: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        items: [
+          {
+            name: 'SubmenuText 1',
+            key: 'SubmenuKey1',
+            className: 'SubMenuClass'
+          }
+        ]
+      },
+    ];
+
+    let renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(
+      <CommandBar
+        items={ items }
+        />
+    ) as React.Component<CommandBar, {}>;
+    document.body.appendChild(ReactDOM.findDOMNode(renderedContent));
+
+    let menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
+    ReactTestUtils.Simulate.click(menuItem);
+
+    expect(document.querySelector('.SubMenuClass')).to.exist;
+  });
+
+  it('opens a menu with IContextualMenuItem.subMenuProps.items property', () => {
+    const items: IContextualMenuItem[] = [
+      {
+        name: 'TestText 1',
+        key: 'TestKey1',
+        subMenuProps: {
+          items: [
+            {
+              name: 'SubmenuText 1',
+              key: 'SubmenuKey1',
+              className: 'SubMenuClass'
+            }
+          ]
+        }
+      },
+    ];
+
+    let renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(
+      <CommandBar
+        items={ items }
+        />
+    ) as React.Component<CommandBar, {}>;
+    document.body.appendChild(ReactDOM.findDOMNode(renderedContent));
+
+    let menuItem = (ReactDOM.findDOMNode(renderedContent) as HTMLElement).querySelector('button') as HTMLButtonElement;
+    ReactTestUtils.Simulate.click(menuItem);
+
+    expect(document.querySelector('.SubMenuClass')).to.exist;
+  });
+});
