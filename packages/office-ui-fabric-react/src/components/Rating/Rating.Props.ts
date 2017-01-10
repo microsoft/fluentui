@@ -33,6 +33,11 @@ export interface IRatingProps extends React.HTMLProps<HTMLElement> {
    * Callback when the rating has changed
    */
   onChanged?: (rating: number) => void;
+
+  /**
+   * Optional text for star ratings, will be read by screen readers, defaults to 'Star'.
+   */
+  ratingText?: string;
 }
 
 export enum RatingSize {

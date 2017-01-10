@@ -76,6 +76,7 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
         onBlur={ this._onBlur.bind(this, rating) }
         />
       <label className='ms-Rating-label' htmlFor={ inputId }>
+        { this._getLabel(rating) }
         { this._getIcon() }
       </label>
     </div>;
@@ -102,6 +103,12 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
     if (onChanged) {
       onChanged(rating);
     }
+  }
+
+  private _getLabel(rating: number): JSX.Element {
+    const text = this.props.ratingText || "Star";
+
+    return <span id={ `${this._labelId}-${rating}` } className="ms-Rating-labelText">{ `${rating} ${text}` }</span>;
   }
 
   private _getIcon(): JSX.Element {
