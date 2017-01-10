@@ -75,6 +75,10 @@ $disabledColor: $ms-color-neutralTertiaryAlt;
   }
 }
 
+.ms-Rating-labelText {
+  @include ms-u-screenReaderOnly();
+}
+
 // Highlight focused star
 .is-focusVisible .is-inFocus .ms-Rating-label {
   border: 1px solid $ms-color-neutralPrimary;
