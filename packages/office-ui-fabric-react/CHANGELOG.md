@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 10 Jan 2017 04:09:41 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Jan 2017 16:17:33 GMT and should not be manually modified.
+
+## 0.86.1
+Tue, 10 Jan 2017 16:17:33 GMT
+
+### Patches
+
+- TextField: Misses keystroke in IE11 when validation is in progress
 
 ## 0.86.0
 Tue, 10 Jan 2017 04:09:41 GMT
