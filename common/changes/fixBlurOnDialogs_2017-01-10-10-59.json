@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Fixed blur event inside Popups",
+      "type": "patch"
+    }
+  ],
+  "email": "v-panu@microsoft.com"
+}
