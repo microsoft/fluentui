@@ -26,7 +26,7 @@ export interface IImageProps extends React.HTMLProps<HTMLImageElement> {
   /**
    * If true, the image frame will expand to fill its parent container.
    */
-  shouldMaximizeFrame?: boolean;
+  maximizeFrame?: boolean;
 }
 
 /**

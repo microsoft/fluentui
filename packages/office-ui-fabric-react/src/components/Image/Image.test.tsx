@@ -79,7 +79,7 @@ describe('Image', () => {
         <Image
           className='is-frameMaximizedPortrait'
           imageFit={ ImageFit.cover }
-          shouldMaximizeFrame
+          maximizeFrame
           src={ testImage1x1 }
           />
       </div>, root
@@ -102,7 +102,7 @@ describe('Image', () => {
           src={ testImage1x1 }
           imageFit={ ImageFit.cover }
           className='is-frameMaximizedLandscape'
-          shouldMaximizeFrame
+          maximizeFrame
           />
       </div>, root
     );
