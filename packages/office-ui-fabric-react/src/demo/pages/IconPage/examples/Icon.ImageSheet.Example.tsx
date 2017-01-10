@@ -4,7 +4,6 @@ import * as React from 'react';
 
 import {
   Icon,
-  IconName,
   IconType
 } from '../../../../index';
 import './IconExample.scss';
@@ -14,7 +13,7 @@ export class IconImageSheetExample extends React.Component<any, any> {
     return (
       <div>
         <Icon
-          iconName={ IconName.None }
+          iconName={ 'None' }
           iconType={ IconType.Image }
           className={ 'ms-IconImageSheetExample-one' }
           imageProps={ {
@@ -23,7 +22,7 @@ export class IconImageSheetExample extends React.Component<any, any> {
           } }
           />
         <Icon
-          iconName={ IconName.None }
+          iconName={ 'None' }
           iconType={ IconType.Image }
           className={ 'ms-IconImageSheetExample-check' }
           imageProps={ {
@@ -32,7 +31,7 @@ export class IconImageSheetExample extends React.Component<any, any> {
           } }
           />
         <Icon
-          iconName={ IconName.None }
+          iconName={ 'None' }
           iconType={ IconType.Image }
           className={ 'ms-IconImageSheetExample-lock' }
           imageProps={ {

@@ -192,10 +192,10 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
   private _renderIcon(item: IContextualMenuItem) {
     // Only present to allow continued use of item.icon which is deprecated.
     let iconProps: IIconProps = item.iconProps ? item.iconProps : {
-      iconName: IconName[item.icon]
+      iconName: item.icon as IconName
     };
     // Use the default icon color for the known icon names
-    let iconColorClassName = iconProps.iconName === IconName.None ? '' : 'ms-CommandBarItem-iconColor';
+    let iconColorClassName = iconProps.iconName === 'None' ? '' : 'ms-CommandBarItem-iconColor';
     let iconClassName = css('ms-CommandBarItem-icon', iconColorClassName, iconProps.className);
 
     return <Icon { ...iconProps } className={ iconClassName } />;
