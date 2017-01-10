@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Pivot: Fix a11y - duplicate tabIds, aria-controls linking",
+      "type": "patch"
+    }
+  ],
+  "email": "manishda@microsoft.com"
+}
