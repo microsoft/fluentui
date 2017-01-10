@@ -208,36 +208,53 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
         this.setState({
           isOpen: !this.state.isOpen
         });
+
+        ev.stopPropagation();
+        ev.preventDefault();
         break;
 
       case KeyCodes.escape:
-        this.setState({
-          isOpen: false
-        });
+        if (this.state.isOpen) {
+          this.setState({
+            isOpen: false
+          });
+          ev.stopPropagation();
+          ev.preventDefault();
+        }
+
         break;
 
       case KeyCodes.up:
         this.setSelectedIndex(this.state.selectedIndex - 1);
+
+        ev.stopPropagation();
+        ev.preventDefault();
         break;
 
       case KeyCodes.down:
         this.setSelectedIndex(this.state.selectedIndex + 1);
+
+        ev.stopPropagation();
+        ev.preventDefault();
         break;
 
       case KeyCodes.home:
         this.setSelectedIndex(0);
+
+        ev.stopPropagation();
+        ev.preventDefault();
         break;
 
       case KeyCodes.end:
         this.setSelectedIndex(this.props.options.length - 1);
+
+        ev.stopPropagation();
+        ev.preventDefault();
         break;
 
       default:
         return;
     }
-
-    ev.stopPropagation();
-    ev.preventDefault();
   }
 
   @autobind
