@@ -2,6 +2,39 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "0.86.1",
+      "tag": "office-ui-fabric-react_v0.86.1",
+      "date": "Tue, 10 Jan 2017 16:17:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "b0a5f875b88e5f2553b2b99dc6256304fc9d8696",
+            "comment": "TextField: Misses keystroke in IE11 when validation is in progress"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.86.0",
+      "tag": "office-ui-fabric-react_v0.86.0",
+      "date": "Tue, 10 Jan 2017 04:09:41 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "15c4a0f4d3b512bbc0b59e3e92cb19063aef2062",
+            "comment": "Persona: Truncates long lines of text"
+          },
+          {
+            "author": "Mike Wheaton <miwhea@microsoft.com>",
+            "commit": "603bc228198dd2a32633b45f16b1d3cc52b6d4f1",
+            "comment": "Image: Add a prop to fit the image's frame to the parent element. Recompute the cover style when image changes, even if no width or height is provided."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.85.0",
       "tag": "office-ui-fabric-react_v0.85.0",
       "date": "Sat, 07 Jan 2017 04:06:13 GMT",

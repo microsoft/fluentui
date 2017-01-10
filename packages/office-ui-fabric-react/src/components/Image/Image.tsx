@@ -61,19 +61,15 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
   }
 
   public componentWillReceiveProps(nextProps: IImageProps) {
+    // If the image is not loaded, recompute the cover style.
     if (this.state.loadState === ImageLoadState.loaded) {
-      let { height: nextHeight, width: nextWidth } = nextProps;
-      let { height, width } = this.props;
-
-      if (height !== nextHeight || width !== nextWidth) {
-        this._computeCoverStyle(nextProps);
-      }
+      this._computeCoverStyle(nextProps);
     }
   }
 
   public render() {
     let imageProps = getNativeProps(this.props, imageProperties, ['width', 'height']);
-    let { src, alt, width, height, shouldFadeIn, className, imageFit, errorSrc, role } = this.props;
+    let { src, alt, width, height, shouldFadeIn, className, imageFit, errorSrc, role, maximizeFrame} = this.props;
     let { loadState } = this.state;
     let coverStyle = this._coverStyle;
     let loaded = loadState === ImageLoadState.loaded || loadState === ImageLoadState.errorLoaded;
@@ -83,7 +79,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
     // If image dimensions aren't specified, the natural size of the image is used.
     return (
       <div
-        className={ css('ms-Image', className) }
+        className={ css('ms-Image', className, { 'ms-Image--maximizeFrame': maximizeFrame }) }
         style={ { width: width, height: height } }
         ref={ this._resolveRef('_frameElement') }
         >
