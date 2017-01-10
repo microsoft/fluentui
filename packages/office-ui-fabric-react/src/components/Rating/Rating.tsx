@@ -106,9 +106,9 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   private _getLabel(rating: number): JSX.Element {
-    const text = this.props.ratingText || "Star";
+    const text = this.props.ratingText || 'Star';
 
-    return <span id={ `${this._labelId}-${rating}` } className="ms-Rating-labelText">{ `${rating} ${text}` }</span>;
+    return <span id={ `${this._labelId}-${rating}` } className='ms-Rating-labelText'>{ `${rating} ${text}` }</span>;
   }
 
   private _getIcon(): JSX.Element {
