@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ContextualMenu, DirectionalHint, Button, getRTL, IconName } from '../../../../index';
+import { ContextualMenu, DirectionalHint, Button, getRTL } from '../../../../index';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuHeaderExample extends React.Component<any, any> {
