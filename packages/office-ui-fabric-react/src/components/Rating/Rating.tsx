@@ -2,10 +2,6 @@ import * as React from 'react';
 import './Rating.scss';
 import { IRatingProps, RatingSize } from './Rating.Props';
 import { BaseComponent } from '../../common/BaseComponent';
-import {
-  Icon,
-  IconName
-} from '../../Icon';
 import { getId } from '../../utilities/object';
 import { css } from '../../utilities/css';
 
@@ -109,15 +105,7 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   private _getIcon(): JSX.Element {
-    let iconName = IconName.FavoriteStarFill;
-    let iconClass: string;
-
-    if (this.props.icon) {
-      iconName = IconName.None;
-      iconClass = this.props.icon;
-    }
-
-    return <Icon iconName={ iconName } className={ iconClass } />;
+    return <i className={ css('ms-Icon', this.props.icon || 'ms-Icon--FavoriteStarFill') } />;
   }
 
   private _getInitialValue(props: IRatingProps) {
