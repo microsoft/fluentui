@@ -52,6 +52,14 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
   private _willMountTriggerValidation;
   private _field;
 
+  /**
+   * https://github.com/facebook/react/issues/7027.
+   * Using the native onInput handler fixes the issue but onChange
+   * still need to be wired to avoid React console errors
+   * TODO: Check if issue is resolved when React 16 is available.
+   */
+  private _noOpHandler: () => void;
+
   public constructor(props: ITextFieldProps) {
     super(props);
 
@@ -72,6 +80,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     this._delayedValidate = this._async.debounce(this._validate, this.props.deferredValidationTime);
     this._lastValidation = 0;
     this._willMountTriggerValidation = false;
+    this._noOpHandler = () => { /* noop */ };
   }
 
   /**
@@ -233,7 +242,8 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         id={ this._id }
         ref={ (c): HTMLTextAreaElement => this._field = c }
         value={ this.state.value }
-        onChange={ this._onInputChange }
+        onInput={ this._onInputChange }
+        onChange={ this._noOpHandler }
         className={ this._fieldClassName }
         aria-label={ this.props.ariaLabel }
         aria-describedby={ this._descriptionId }
@@ -254,7 +264,8 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         id={ this._id }
         ref={ (c): HTMLInputElement => this._field = c }
         value={ this.state.value }
-        onChange={ this._onInputChange }
+        onInput={ this._onInputChange }
+        onChange={ this._noOpHandler }
         className={ this._fieldClassName }
         aria-label={ this.props.ariaLabel }
         aria-describedby={ this._descriptionId }
