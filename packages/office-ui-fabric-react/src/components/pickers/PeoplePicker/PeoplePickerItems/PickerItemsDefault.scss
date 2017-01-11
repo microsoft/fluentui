@@ -3,12 +3,10 @@
 .ms-PickerPersona-container {
   @include focus-border();
 
-  display: inline-block;
-  vertical-align: top;
+  display: inline-flex;
+  align-items: center;
   background: $ms-color-neutralLighter;
   margin: 1px;
-  vertical-align: top;
-  white-space: nowrap;
   cursor: default;
   user-select: none;
 
@@ -23,10 +21,7 @@
     }
   }
 
-  .ms-PickerItem-content {
-    display: inline-block;
-    vertical-align: middle;
+  .ms-Persona-details {
+    flex: 1 0 auto;
   }
-
-
 }
