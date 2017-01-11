@@ -111,11 +111,22 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
    * Renders a pivot link
    */
   private _renderLink(link: IPivotItemProps) {
-    const { itemKey, itemCount } = link;
-    let tabId = this._keyToTabIds[itemKey];
-    let countText;
-    if (itemCount !== undefined && this.props.linkFormat !== PivotLinkFormat.tabs) {
-      countText = <span className='ms-Pivot-count'>({ itemCount })</span>;
+    const { itemKey, itemCount, itemIcon, linkText } = link;
+    const tabId = this._keyToTabIds[itemKey];
+
+    let count;
+    if (itemCount !== undefined) {
+      count = <span className='ms-Pivot-count'>({ itemCount })</span>;
+    }
+
+    let icon: JSX.Element;
+    if (itemIcon !== undefined) {
+      icon = <span className='ms-Pivot-icon'><i className={ `ms-Icon ms-Icon--${itemIcon}` }></i></span>;
+    }
+
+    let text: JSX.Element;
+    if (linkText !== undefined) {
+      text = <span className='ms-Pivot-text'>{ link.linkText }</span>;
     }
 
     return (
@@ -128,8 +139,9 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
         aria-label={ link.ariaLabel }
         role='tab'
         aria-selected={ this.state.selectedKey === itemKey }>
-        <span className='ms-Pivot-text'>{ link.linkText }</span>
-        { countText }
+        { icon }
+        { text }
+        { count }
       </button>
     );
   }
@@ -169,7 +181,8 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
           linkText: pivotItem.props.linkText,
           ariaLabel: pivotItem.props.ariaLabel,
           itemKey: itemKey,
-          itemCount: pivotItem.props.itemCount
+          itemCount: pivotItem.props.itemCount,
+          itemIcon: pivotItem.props.itemIcon
         });
         this._keyToIndexMapping[itemKey] = index;
         this._keyToTabIds[itemKey] = this._pivotId + `-Tab${index}`;
