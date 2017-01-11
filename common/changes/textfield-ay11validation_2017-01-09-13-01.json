@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "TextField: aria-describedby value is set to unavailable dom element",
+      "comment": "TextField: aria-describedby is only set when a description is available.",
       "type": "patch"
     }
   ],
