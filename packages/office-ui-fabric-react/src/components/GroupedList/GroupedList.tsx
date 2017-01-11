@@ -210,8 +210,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
 
       group.isCollapsed = !group.isCollapsed;
       this._updateIsSomeGroupExpanded();
-      // this.forceUpdate();
-      this.setState({}, this.forceUpdate);
+      this.forceUpdate();
     }
   }
 
