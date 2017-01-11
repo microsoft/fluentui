@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "0.86.2",
+      "tag": "office-ui-fabric-react_v0.86.2",
+      "date": "Wed, 11 Jan 2017 04:04:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Pablo Núñez <pablonete@gmail.com>",
+            "commit": "1c299525bde2502a9ce551e1954b2250926c3249",
+            "comment": "Fixed blur event inside Popups"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.86.1",
       "tag": "office-ui-fabric-react_v0.86.1",
       "date": "Tue, 10 Jan 2017 16:17:33 GMT",
