@@ -6,6 +6,7 @@ import {
 } from '../../components/index';
 
 import { PivotBasicExample } from './examples/Pivot.Basic.Example';
+import { PivotIconCountExample } from './examples/Pivot.IconCount.Example';
 import { PivotLargeExample } from './examples/Pivot.Large.Example';
 import { PivotTabsExample } from './examples/Pivot.Tabs.Example';
 import { PivotTabsLargeExample } from './examples/Pivot.TabsLarge.Example';
@@ -24,6 +25,7 @@ const PivotTabsExampleCode = require('./examples/Pivot.Tabs.Example.tsx');
 const PivotTabsLargesExampleCode = require('./examples/Pivot.TabsLarge.Example.tsx');
 const PivotFabricExampleCode = require('./examples/Pivot.Fabric.Example.tsx');
 const PivotOnChangeExampleCode = require('./examples/Pivot.OnChange.Example.tsx');
+const PivotIconCountExampleCode = require('./examples/Pivot.IconCount.Example.tsx');
 const PivotOverrideExampleCode = require('./examples/Pivot.Override.Example.tsx');
 
 export class PivotPage extends React.Component<IComponentDemoPageProps, any> {
@@ -43,6 +45,9 @@ export class PivotPage extends React.Component<IComponentDemoPageProps, any> {
           <div>
             <ExampleCard title='Basic example' code={ PivotBasicExampleCode }>
               <PivotBasicExample />
+            </ExampleCard>
+            <ExampleCard title='Count and Icon' code={ PivotIconCountExampleCode }>
+              <PivotIconCountExample />
             </ExampleCard>
             <ExampleCard title='Large link size' code={ PivotLargeExampleCode }>
               <PivotLargeExample />
