@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Set explicit height for ms-Persona-ImageArea and ms-Persona-Image",
+      "comment": "Persona: Set an explicit height for the image area and image.",
       "type": "patch"
     }
   ],
