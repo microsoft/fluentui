@@ -36,7 +36,7 @@ export interface IPivotState {
 export class Pivot extends React.Component<IPivotProps, IPivotState> {
   private _keyToIndexMapping: { [key: string]: number };
   private _keyToTabIds: { [key: string]: string };
-  private _pivotId;
+  private _pivotId: string;
 
   constructor(props: IPivotProps) {
     super(props);
