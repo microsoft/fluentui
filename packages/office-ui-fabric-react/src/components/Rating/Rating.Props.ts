@@ -35,9 +35,9 @@ export interface IRatingProps extends React.HTMLProps<HTMLElement> {
   onChanged?: (rating: number) => void;
 
   /**
-   * Optional text for star ratings, will be read by screen readers, defaults to 'Star'.
+   * Optional label for star ratings, will be read by screen readers, defaults to 'Star'.
    */
-  ratingText?: string;
+  ariaLabelIcon?: string;
 }
 
 export enum RatingSize {
