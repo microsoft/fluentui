@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "TextField: aria-describedby is only set when a description is available.",
+      "type": "patch"
+    }
+  ],
+  "email": "manishda@microsoft.com"
+}
