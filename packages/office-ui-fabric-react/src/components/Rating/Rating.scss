@@ -1,9 +1,12 @@
 @import '../../common/common';
 
-$defaultColor: $ms-color-neutralTertiary;
-$selectedColor: $ms-color-black;
-$hoverColor: $ms-color-themeDarkAlt;
-$disabledColor: $ms-color-neutralTertiaryAlt;
+$Rating-defaultColor: $ms-color-neutralTertiary;
+$Rating-selectedColor: $ms-color-black;
+$Rating-hoverColor: $ms-color-themeDarkAlt;
+$Rating-disabledColor: $ms-color-neutralTertiaryAlt;
+
+$Rating-smallIconSize: 16px;
+$Rating-largeIconSize: 20px;
 
 // Hide input field
 .ms-Rating-input {
@@ -18,14 +21,14 @@ $disabledColor: $ms-color-neutralTertiaryAlt;
 
   &:hover {
     .ms-Rating-star:not(.is-disabled) {
-      color: $selectedColor;
+      color: $Rating-selectedColor;
 
       &.ms-Rating-star:hover {
-        color: $hoverColor;
+        color: $Rating-hoverColor;
 
         & ~ .ms-Rating-star {
         // Set default color for any star after hovered one
-          color: $defaultColor;
+          color: $Rating-defaultColor;
         }
       }
     }
@@ -36,41 +39,36 @@ $disabledColor: $ms-color-neutralTertiaryAlt;
 
     text-align: center;
 
-    color: $defaultColor;
+    color: $Rating-defaultColor;
 
     &.is-selected {
-      color: $selectedColor;
+      color: $Rating-selectedColor;
     }
 
     &.is-disabled {
-      cursor: default;
+      color: $Rating-disabledColor;
 
-      color: $disabledColor;
+      .ms-Rating-label {
+        cursor: default;
+      }
     }
 
     .ms-Rating-label {
       display: inline-block;
-
-      font-size: 16px;
-      padding: 12px 0px;
-
       cursor: pointer;
+
+      font-size: $Rating-smallIconSize;
+      padding: 12px 0px;
 
       // Reserve space for focus styling
       border: 1px solid transparent;
     }
   }
 
-  &.large {
-    .ms-Rating-star {
-      .ms-Rating-label {
-        font-size: 20px;
-
-        padding-left: 2px;
-        padding-right: 2px;
-        padding-top: 6px;
-        padding-bottom: 9px;
-      }
+  .ms-Rating--large & {
+    .ms-Rating-label {
+      font-size: $Rating-largeIconSize;
+      padding: 6px 2px 9px 2px;
     }
   }
 }
@@ -81,5 +79,5 @@ $disabledColor: $ms-color-neutralTertiaryAlt;
 
 // Highlight focused star
 .is-focusVisible .is-inFocus .ms-Rating-label {
-  border: 1px solid $ms-color-neutralPrimary;
+  border: 1px solid $focusedBorderColor;
 }

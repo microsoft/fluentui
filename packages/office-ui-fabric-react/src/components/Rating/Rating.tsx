@@ -45,10 +45,10 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
       stars.push(this._renderStar(i));
     }
 
-    return <div className={ css('ms-Rating', this.props.className) } role='application'>
-      <div className={ css('ms-Rating-container', {
-        'large': this.props.size === RatingSize.Large
-      }) } role='radiogroup'>
+    return <div className={ css('ms-Rating', this.props.className, {
+      'ms-Rating--large': this.props.size === RatingSize.Large
+    }) } role='application'>
+      <div className={ 'ms-Rating-container' } role='radiogroup'>
         { stars }
       </div>
     </div>;
@@ -106,7 +106,7 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   private _getLabel(rating: number): JSX.Element {
-    const text = this.props.ratingText || 'Star';
+    const text = this.props.ariaLabelIcon || 'Star';
 
     return <span id={ `${this._labelId}-${rating}` } className='ms-Rating-labelText'>{ `${rating} ${text}` }</span>;
   }

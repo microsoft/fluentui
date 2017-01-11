@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Rating: new ratings component",
+      "comment": "New component: Rating",
       "type": "minor"
     }
   ],
