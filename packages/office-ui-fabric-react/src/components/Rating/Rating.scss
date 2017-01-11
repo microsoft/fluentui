@@ -27,7 +27,7 @@ $Rating-largeIconSize: 20px;
         color: $Rating-hoverColor;
 
         & ~ .ms-Rating-star {
-        // Set default color for any star after hovered one
+          // Set default color for any star after hovered one
           color: $Rating-defaultColor;
         }
       }

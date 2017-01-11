@@ -5,7 +5,7 @@ import * as React from 'react';
  */
 export interface IRatingProps extends React.HTMLProps<HTMLElement> {
   /**
-   * Selected rating
+   * Selected rating, has to be an integer between min and max
    */
   rating?: number;
 
@@ -15,7 +15,7 @@ export interface IRatingProps extends React.HTMLProps<HTMLElement> {
   min?: number;
 
   /**
-   * Maximum rating, defaults to 5, has to be <= min
+   * Maximum rating, defaults to 5, has to be >= min
    */
   max?: number;
 
@@ -38,6 +38,11 @@ export interface IRatingProps extends React.HTMLProps<HTMLElement> {
    * Optional label for star ratings, will be read by screen readers, defaults to 'Star'.
    */
   ariaLabelIcon?: string;
+
+  /**
+   * Optional id of label describing this instance of Rating
+   */
+  ariaLabelId?: string;
 }
 
 export enum RatingSize {

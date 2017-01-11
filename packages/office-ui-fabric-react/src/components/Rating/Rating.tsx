@@ -48,7 +48,7 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
     return <div className={ css('ms-Rating', this.props.className, {
       'ms-Rating--large': this.props.size === RatingSize.Large
     }) } role='application'>
-      <div className={ 'ms-Rating-container' } role='radiogroup'>
+      <div className={ 'ms-Rating-container' } role='radiogroup' aria-labelledby={ this.props.ariaLabelId }>
         { stars }
       </div>
     </div>;
@@ -128,6 +128,8 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   private _getClampedRating(rating: number): number {
+    rating = Math.floor(rating);
+
     return Math.min(Math.max(rating, this.props.min), this.props.max);
   }
 }
