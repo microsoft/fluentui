@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 10 Jan 2017 16:17:33 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Jan 2017 04:04:04 GMT and should not be manually modified.
+
+## 0.86.2
+Wed, 11 Jan 2017 04:04:04 GMT
+
+### Patches
+
+- Fixed blur event inside Popups
 
 ## 0.86.1
 Tue, 10 Jan 2017 16:17:33 GMT
