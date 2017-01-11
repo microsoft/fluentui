@@ -30,10 +30,25 @@ describe('Persona', () => {
     });
 
     it('calculates an expected initials in LTR if one was not specified', () => {
-      const wrapper = shallow(<Persona primaryText='Kat Larrson' />);
+      let wrapper = shallow(<Persona primaryText='Kat Larrson' />);
       let result = wrapper.find('.ms-Persona-initials');
       expect(result).to.have.length(1);
       expect(result.text()).to.equal('KL');
+
+      wrapper = shallow(<Persona primaryText='David Zearing-Goff' />);
+      result = wrapper.find('.ms-Persona-initials');
+      expect(result).to.have.length(1);
+      expect(result.text()).to.equal('DZ');
+
+      wrapper = shallow(<Persona primaryText='4lex 4loo' />);
+      result = wrapper.find('.ms-Persona-initials');
+      expect(result).to.have.length(1);
+      expect(result.text()).to.equal('44');
+
+      wrapper = shallow(<Persona primaryText='David (The man) Goff' />);
+      result = wrapper.find('.ms-Persona-initials');
+      expect(result).to.have.length(1);
+      expect(result.text()).to.equal('D');
     });
 
     it('calculates an expected initials in RTL if one was not specified', () => {
@@ -42,6 +57,8 @@ describe('Persona', () => {
       let result = wrapper.find('.ms-Persona-initials');
       expect(result).to.have.length(1);
       expect(result.text()).to.equal('LK');
+
+      setRTL(false);
     });
 
     it('uses provided initial', () => {
@@ -50,6 +67,8 @@ describe('Persona', () => {
       let result = wrapper.find('.ms-Persona-initials');
       expect(result).to.have.length(1);
       expect(result.text()).to.equal('AT');
+
+      setRTL(false);
     });
   });
 
