@@ -83,7 +83,6 @@ function groupBy(items, fieldName) {
   return groups;
 }
 
-
 export class DetailsListGroupedExample extends React.Component<any, any> {
   constructor() {
     super();
