@@ -263,7 +263,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
   private _getMaxHeight(): number {
     if (!this._maxHeight) {
-      if (this.props.isEdgeFixed && this._target) {
+      if (this.props.directionalHintFixed && this._target) {
         let beakWidth = this.props.isBeakVisible ? this.props.beakWidth : 0;
         let gapSpace = this.props.gapSpace ? this.props.gapSpace : 0;
         this._maxHeight = getMaxHeight(this._target, this.props.directionalHint, beakWidth + gapSpace, this._getBounds());

@@ -73,7 +73,7 @@ export interface IPositionProps {
    * It will still attempt to align it to whatever bounds are given.
    * @default false
    */
-  isEdgeFixed?: boolean;
+  directionalHintFixed?: boolean;
 }
 
 export interface IPositionInfo {
@@ -174,7 +174,7 @@ export function getRelativePositions(
     positionData,
     gap,
     props.coverTarget,
-    props.isEdgeFixed);
+    props.directionalHintFixed);
   let beakPositioned: Rectangle = positioningFunctions._positionBeak(beakWidth, positionedCallout, targetRect, borderWidth);
   let finalizedCallout: Rectangle = positioningFunctions._finalizeCalloutPosition(positionedCallout.calloutRectangle, hostElement);
 
@@ -311,7 +311,7 @@ export module positioningFunctions {
     directionalInfo: PositionData,
     gap: number = 0,
     coverTarget?: boolean,
-    isEdgeFixed?: boolean): ICallout {
+    directionalHintFixed?: boolean): ICallout {
     let estimatedRectangle: Rectangle = _moveRectangleToAnchorRectangle(calloutRectangle,
       directionalInfo.calloutDirection,
       directionalInfo.calloutPercent,
@@ -330,7 +330,7 @@ export module positioningFunctions {
         directionalInfo,
         gap,
         coverTarget,
-        isEdgeFixed);
+        directionalHintFixed);
     }
   }
 
@@ -341,7 +341,7 @@ export module positioningFunctions {
     directionalInfo: PositionData,
     gap: number,
     coverTarget?: boolean,
-    isEdgeFixed?: boolean): ICallout {
+    directionalHintFixed?: boolean): ICallout {
     let callout: ICallout = {
       calloutRectangle: estimatedPosition,
       calloutEdge: directionalInfo.calloutDirection,
@@ -355,7 +355,7 @@ export module positioningFunctions {
       return callout;
     }
 
-    if (!coverTarget && !isEdgeFixed) {
+    if (!coverTarget && !directionalHintFixed) {
       callout = _flipRectangleToFit(
         callout,
         targetRectangle,

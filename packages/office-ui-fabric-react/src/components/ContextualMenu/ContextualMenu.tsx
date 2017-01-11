@@ -179,7 +179,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       arrowDirection,
       target,
       bounds,
-      isEdgeFixed } = this.props;
+      directionalHintFixed } = this.props;
 
     let { submenuProps } = this.state;
 
@@ -204,7 +204,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           setInitialFocus={ true }
           onDismiss={ this.props.onDismiss }
           bounds={ bounds }
-          isEdgeFixed={ isEdgeFixed }>
+          directionalHintFixed={ directionalHintFixed }>
           <div ref={ (host: HTMLDivElement) => this._host = host } id={ id } className={ css('ms-ContextualMenu-container', className) }>
             { (items && items.length) ? (
               <FocusZone

@@ -95,7 +95,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
             directionalHint={ directionalHint }
             gapSpace={ gapSpace }
             beakWidth={ beakWidth }
-            isEdgeFixed={ edgeFixed }
+            directionalHintFixed={ edgeFixed }
             items={
               [
                 {
