@@ -82,6 +82,7 @@ $ms-Persona-presenceSizeXl: 28px;
   overflow: hidden;
   text-align: center;
   flex: 0 0 $ms-Persona-sizeMd;
+  height: $ms-Persona-sizeMd;
   border-radius: 50%;
 
   @media screen and (-ms-high-contrast: active) {
@@ -321,6 +322,7 @@ $ms-Persona-presenceSizeXl: 28px;
   .ms-Persona-imageArea,
   .ms-Persona-image {
     flex: 0 0 $ms-Persona-sizeXs;
+    height: $ms-Persona-sizeXs;
   }
 
   .ms-Persona-placeholder {
@@ -357,6 +359,7 @@ $ms-Persona-presenceSizeXl: 28px;
   .ms-Persona-imageArea,
   .ms-Persona-image {
     flex: 0 0 $ms-Persona-sizeSm;
+    height: $ms-Persona-sizeSm;
   }
 
   .ms-Persona-placeholder {
@@ -393,6 +396,7 @@ $ms-Persona-presenceSizeXl: 28px;
   .ms-Persona-imageArea,
   .ms-Persona-image {
     flex: 0 0 $ms-Persona-sizeLg;
+    height: $ms-Persona-sizeLg;
   }
 
   .ms-Persona-placeholder {
@@ -435,6 +439,7 @@ $ms-Persona-presenceSizeXl: 28px;
   .ms-Persona-imageArea,
   .ms-Persona-image {
     flex: 0 0 $ms-Persona-sizeXl;
+    height: $ms-Persona-sizeXl;
   }
 
   .ms-Persona-placeholder {
