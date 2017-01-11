@@ -18,6 +18,7 @@ export interface IContextualMenuDirectionalExampleState {
   isBeakVisible?: boolean;
   gapSpace?: number;
   beakWidth?: number;
+  edgeFixed?: boolean;
 }
 
 const DIRECTION_OPTIONS = [
@@ -52,17 +53,19 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
       isBeakVisible: false,
       directionalHint: DirectionalHint.bottomLeftEdge,
       gapSpace: 0,
-      beakWidth: 10
+      beakWidth: 10,
+      edgeFixed: false
     };
   }
 
   public render() {
-    let { isContextualMenuVisible, isBeakVisible, directionalHint, gapSpace, beakWidth } = this.state;
+    let { isContextualMenuVisible, isBeakVisible, directionalHint, gapSpace, beakWidth, edgeFixed } = this.state;
 
     return (
       <div className='ms-ContextualMenuDirectionalExample'>
         <div className='ms-ContextualMenuDirectionalExample-configArea'>
           <Checkbox label='Show beak' checked={ isBeakVisible } onChange={ this._onShowBeakChange } />
+          <Checkbox label='Fix Edge' checked={ edgeFixed } onChange={ this._onFixEdgeChange } />
           <Slider
             max={ 20 }
             label='Gap Space'
@@ -92,6 +95,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
             directionalHint={ directionalHint }
             gapSpace={ gapSpace }
             beakWidth={ beakWidth }
+            directionalHintFixed={ edgeFixed }
             items={
               [
                 {
@@ -150,6 +154,14 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
                   name: 'Print',
                   icon: 'Print'
                 },
+                {
+                  key: 'display',
+                  name: 'display'
+                },
+                {
+                  key: 'properties',
+                  name: 'Properties'
+                },
               ]
             }
             />
@@ -162,6 +174,13 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
   private _onShowBeakChange(ev: React.FormEvent<HTMLElement>, isVisible: boolean) {
     this.setState({
       isBeakVisible: isVisible
+    });
+  }
+
+  @autobind
+  private _onFixEdgeChange(ev: React.FormEvent<HTMLElement>, isVisible: boolean) {
+    this.setState({
+      edgeFixed: isVisible
     });
   }
 
