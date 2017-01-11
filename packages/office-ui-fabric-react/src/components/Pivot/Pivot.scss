@@ -73,6 +73,13 @@
   .ms-Pivot-text,
   .ms-Pivot-count {
     display: inline-block;
+
+    vertical-align: top;
+  }
+
+  // Spacing between icon and text/count
+  .ms-Pivot-icon + .ms-Pivot-text {
+    @include margin-left(4px);
   }
 
   // Spacing between text and count
