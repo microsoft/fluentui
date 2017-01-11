@@ -112,12 +112,12 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
     let { id } = this.state;
 
     let count;
-    if (itemCount !== undefined && this.props.linkFormat !== PivotLinkFormat.tabs) {
+    if (itemCount !== undefined) {
       count = <span className='ms-Pivot-count'>({ itemCount })</span>;
     }
 
     let icon: JSX.Element;
-    if (itemIcon !== undefined && this.props.linkFormat !== PivotLinkFormat.tabs) {
+    if (itemIcon !== undefined) {
       icon = <span className='ms-Pivot-icon'><i className={ `ms-Icon ms-Icon--${itemIcon}` }></i></span>;
     }
 

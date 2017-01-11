@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add icon property to PivotItem",
+      "comment": "Pivot: Add icon to PivotItem",
       "type": "minor"
     }
   ],
