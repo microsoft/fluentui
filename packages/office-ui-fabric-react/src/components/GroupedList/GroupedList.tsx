@@ -159,7 +159,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     return (!group || group.count > 0) ? (
       <GroupedListSection
         ref={ 'group_' + groupIndex }
-        key={ this._getGroupKey(group) }
+        key={ group.key }
         dragDropEvents={ dragDropEvents }
         dragDropHelper={ dragDropHelper }
         eventsToRegister={ eventsToRegister }
@@ -178,14 +178,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
         selection={ selection }
         viewport={ viewport }
         />
-      ) : null;
-  }
-
-  @autobind
-  private _getGroupKey(group: IGroup): string {
-    return 'group-' + (group ?
-      group.key + '-' + group.count :
-      '');
+    ) : null;
   }
 
   private _getGroupNestingDepth(): number {
@@ -213,7 +206,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
 
       group.isCollapsed = !group.isCollapsed;
       this._updateIsSomeGroupExpanded();
-      this.setState({ }, this.forceUpdate);
+      this.setState({}, this.forceUpdate);
     }
   }
 

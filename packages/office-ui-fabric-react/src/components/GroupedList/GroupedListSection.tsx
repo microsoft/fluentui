@@ -290,7 +290,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     return (!subGroup || subGroup.count > 0) ? (
       <GroupedListSection
         ref={ 'subGroup_' + subGroupIndex }
-        key={ this._getGroupKey(subGroup, subGroupIndex) }
+        key={ subGroup.key }
         dragDropEvents={ dragDropEvents }
         dragDropHelper={ dragDropHelper }
         eventsToRegister={ eventsToRegister }
@@ -308,12 +308,6 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         viewport={ viewport }
         />
     ) : null;
-  }
-
-  private _getGroupKey(group: IGroup, groupIndex: number): string {
-    return 'group-' + (group ?
-      group.key + '-' + group.count :
-      '');
   }
 
   /**
