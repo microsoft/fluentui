@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "ContextualMenu: added in submenuIconProps to specify how the submenuIcon looks",
+      "type": "minor"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}
