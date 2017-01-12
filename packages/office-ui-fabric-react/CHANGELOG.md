@@ -1,6 +1,45 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 05 Jan 2017 04:07:37 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Jan 2017 04:04:04 GMT and should not be manually modified.
+
+## 0.86.2
+Wed, 11 Jan 2017 04:04:04 GMT
+
+### Patches
+
+- Fixed blur event inside Popups
+
+## 0.86.1
+Tue, 10 Jan 2017 16:17:33 GMT
+
+### Patches
+
+- TextField: Misses keystroke in IE11 when validation is in progress
+
+## 0.86.0
+Tue, 10 Jan 2017 04:09:41 GMT
+
+### Minor changes
+
+- Persona: Truncates long lines of text
+- Image: Add a prop to fit the image's frame to the parent element. Recompute the cover style when image changes, even if no width or height is provided.
+
+## 0.85.0
+Sat, 07 Jan 2017 04:06:13 GMT
+
+### Minor changes
+
+- ContextualMenu: Added header item so that the ContextualMenu can now have headers
+- Nav: add className to allow styling
+- TextField: Validate only on focus or Blur
+
+### Patches
+
+- SearchBox: Remove line-height to show correct cursor size in iOS
+- ContextualMenu: Now returns null if no items are provided rather than rendering an empty callout
+- FocusZone: Changed focus and focus zone to respect when data-is-focusable attribute is false
+- Fix the prescribed use of submenuProps.items for CommandBar items
+- Link: focus border is now positioned correctly when the link spans multiple lines.
 
 ## 0.84.0
 Thu, 05 Jan 2017 04:07:37 GMT

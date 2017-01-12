@@ -33,6 +33,7 @@ import { PickersPage } from '../../pages/PickersPage/PickersPage';
 import { PersonaPage } from '../../pages/PersonaPage/PersonaPage';
 import { PivotPage } from '../../pages/PivotPage/PivotPage';
 import { ProgressIndicatorPage } from '../../pages/ProgressIndicatorPage/ProgressIndicatorPage';
+import { RatingPage } from '../../pages/RatingPage/RatingPage';
 import { ScreenReaderAlertPage } from '../../pages/ScreenReaderAlertPage/ScreenReaderAlertPage';
 import { SearchBoxPage } from '../../pages/SearchBoxPage/SearchBoxPage';
 import { SelectionPage } from '../../pages/SelectionPage/SelectionPage';
@@ -255,6 +256,13 @@ export const AppState: IAppState = {
           name: 'ProgressIndicator',
           status: ExampleStatus.beta,
           url: '#/examples/progressindicator'
+        },
+        {
+          component: RatingPage,
+          key: 'Rating',
+          name: 'Rating',
+          status: ExampleStatus.started,
+          url: '#/examples/rating'
         },
         {
           component: SearchBoxPage,

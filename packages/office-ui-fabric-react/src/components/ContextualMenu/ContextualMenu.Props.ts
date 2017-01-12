@@ -7,6 +7,12 @@ import { IRectangle } from '../../common/IRectangle';
 import { IPoint } from '../../common/IPoint';
 export { DirectionalHint } from '../../common/DirectionalHint';
 
+export enum ContextualMenuItemType {
+  Normal,
+  Divider,
+  Header
+}
+
 export interface IContextualMenuProps extends React.Props<ContextualMenu> {
 
   /**
@@ -129,6 +135,13 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
    */
   arrowDirection?: FocusZoneDirection;
 
+  /**
+   * If true the position will not change sides in an attempt to fit the ContextualMenu within bounds.
+   * It will still attempt to align it to whatever bounds are given.
+   * @default false
+   */
+  directionalHintFixed?: boolean;
+
 }
 
 export interface IContextualMenuItem {
@@ -141,6 +154,8 @@ export interface IContextualMenuItem {
    * Text description for the menu item to display
    */
   name: string;
+
+  itemType?: ContextualMenuItemType;
 
   /**
    * Props that go to the IconComponent

@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "New component: Rating",
+      "type": "minor"
+    }
+  ],
+  "email": "cschleid@microsoft.com"
+}

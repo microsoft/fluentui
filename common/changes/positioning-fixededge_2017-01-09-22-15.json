@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Positioning/Callout: Can now set a fixed edge so the callout does not flip.",
+      "type": "minor"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}
