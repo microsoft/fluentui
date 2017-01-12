@@ -3,7 +3,7 @@
     {
       "packageName": "office-ui-fabric-react",
       "comment": "Icon: -BREAKING CHANGE- Change IconName from an enum to type to greatly reduce file size. Any component that is currently consuming the icon enum will break.",
-      "type": "minor"
+      "type": "major"
     }
   ],
   "email": "joschect@microsoft.com"
