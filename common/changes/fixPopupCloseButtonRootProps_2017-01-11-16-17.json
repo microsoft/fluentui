@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Clean deprecated rootProps from Dialog Close button.",
+      "type": "patch"
+    }
+  ],
+  "email": "v-panu@microsoft.com"
+}
