@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Image: Changes to src are now respected.",
+      "type": "patch"
+    }
+  ],
+  "email": "dagoff@microsoft.com"
+}
