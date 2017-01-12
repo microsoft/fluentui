@@ -5,8 +5,10 @@ let build = require('@microsoft/web-library-build');
 let webpackTaskResources = build.webpack.resources;
 let webpack = webpackTaskResources.webpack;
 let path = require('path');
-let VisualizerPlugin = require('webpack-visualizer-plugin');
 let buildConfig = build.getConfig();
+let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+const BUNDLE_NAME = 'office-ui-fabric-react';
 
 // Create an array of configs, prepopulated with a debug (non-minified) build.
 let configs = [
@@ -24,7 +26,7 @@ function createConfig(isProduction) {
     context: buildConfig.libFolder,
 
     entry: {
-      'office-ui-fabric-react': './index.js',
+      [BUNDLE_NAME]: './index.js',
     },
 
     output: {
@@ -59,7 +61,11 @@ function createConfig(isProduction) {
     },
 
     plugins: [
-      new VisualizerPlugin({ filename: 'office-ui-fabric-react.stats.html' })
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'static',
+        reportFilename: BUNDLE_NAME + '.stats.html',
+        openAnalyzer: false
+      })
     ]
   };
 
