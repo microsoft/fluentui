@@ -27,8 +27,11 @@ const DetailsListCustomGroupHeadersExampleCode = require('./examples/DetailsList
 import { DetailsListAdvancedExample } from './examples/DetailsList.Advanced.Example';
 const DetailsListAdvancedExampleCode = require('./examples/DetailsList.Advanced.Example.tsx');
 
+import { DetailsListGroupedExample } from './examples/DetailsList.Grouped.Example';
+const DetailsListGroupedExampleCode = require('./examples/DetailsList.Grouped.Example.tsx');
+
 export class DetailsListPage extends React.Component<IComponentDemoPageProps, any> {
- private _url: string;
+  private _url: string;
 
   constructor() {
     super();
@@ -44,6 +47,9 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, an
           <div>
             <ExampleCard title='Simple DetailsList with 500 items, filtering, marquee selection' isOptIn={ true } code={ DetailsListBasicExampleCode }>
               <DetailsListBasicExample />
+            </ExampleCard>
+            <ExampleCard title='Simple Grouped DetailsList' isOptIn={ true } code={ DetailsListGroupedExampleCode }>
+              <DetailsListGroupedExample />
             </ExampleCard>
             <ExampleCard title='Rendering custom item columns with sorting' isOptIn={ true } code={ DetailsListCustomColumnsExampleCode }>
               <DetailsListCustomColumnsExample />

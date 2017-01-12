@@ -177,7 +177,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       doNotLayer,
       arrowDirection,
       target,
-      bounds } = this.props;
+      bounds,
+      directionalHintFixed } = this.props;
 
     let { submenuProps } = this.state;
 
@@ -201,7 +202,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           className='ms-ContextualMenu-Callout'
           setInitialFocus={ true }
           onDismiss={ this.props.onDismiss }
-          bounds={ bounds }>
+          bounds={ bounds }
+          directionalHintFixed={ directionalHintFixed }>
           <div ref={ (host: HTMLDivElement) => this._host = host } id={ id } className={ css('ms-ContextualMenu-container', className) }>
             { (items && items.length) ? (
               <FocusZone
@@ -362,7 +364,10 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         ) : (null) }
         <span className='ms-ContextualMenu-itemText'>{ item.name }</span>
         { hasSubmenuItems(item) ? (
-          <Icon className='ms-ContextualMenu-submenuChevron ms-Icon' iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' } />
+          <Icon
+            iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
+            { ...item.submenuIconProps }
+            className={ css('ms-ContextualMenu-submenuIcon', item.submenuIconProps ? item.submenuIconProps.className : '') } />
         ) : (null) }
       </div>
     );
