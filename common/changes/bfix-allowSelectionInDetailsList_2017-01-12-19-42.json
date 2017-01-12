@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "DetailsList: Only prevent text selection in multiple selection mode",
+      "type": "patch"
+    }
+  ],
+  "email": "cschleid@microsoft.com"
+}
