@@ -7,36 +7,25 @@ import {
 export const facepilePersonas: IFacepilePersona[] = [
   {
     imageUrl: './images/persona-female.png',
-    imageInitials: 'PV',
     personaName: 'Annie Lindqvist',
-    initialsColor: PersonaInitialsColor.blue,
     data: '50%'
   },
   {
     imageUrl: './images/persona-male.png',
-    imageInitials: 'AR',
     personaName: 'Aaron Reid',
-    initialsColor: PersonaInitialsColor.darkBlue,
     data: '$1,000'
   },
   {
-    imageUrl: './images/persona-male.png',
-    imageInitials: 'AL',
     personaName: 'Alex Lundberg',
-    initialsColor: PersonaInitialsColor.darkGreen,
     data: '75%',
     onClick: (ev: React.MouseEvent<HTMLElement>, persona: IFacepilePersona) =>
       alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data)
   },
   {
-    imageUrl: './images/persona-male.png',
-    imageInitials: 'RK',
     personaName: 'Roko Kolar',
-    initialsColor: PersonaInitialsColor.darkRed,
     data: '4 hrs'
   },
   {
-    imageUrl: './images/persona-male.png',
     imageInitials: 'CB',
     personaName: 'Christian Bergqvist',
     initialsColor: PersonaInitialsColor.green,

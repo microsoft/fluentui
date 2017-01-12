@@ -1,6 +1,33 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 10 Jan 2017 16:17:33 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Jan 2017 04:06:30 GMT and should not be manually modified.
+
+## 0.87.0
+Thu, 12 Jan 2017 04:06:30 GMT
+
+### Minor changes
+
+- ContextualMenu: added in submenuIconProps to specify how the submenuIcon looks
+- Pivot: Add icon to PivotItem
+- New component: Rating
+- Positioning/Callout: Can now set a fixed edge so the callout does not flip.
+
+### Patches
+
+- Image: Changes to src are now respected.
+- DetailsList: when adding new items in a grouped DetailsList scenario, the group is no longer recreated.
+- Dialog: Removing deprecated rootProps usage for the close button.
+- Persona: Set an explicit height for the image area and image.
+- Persona now has a default way of generating initials and colors 
+- Pivot: Fix a11y - duplicate tabIds, aria-controls linking
+- TextField: aria-describedby is only set when a description is available.
+
+## 0.86.2
+Wed, 11 Jan 2017 04:04:04 GMT
+
+### Patches
+
+- Fixed blur event inside Popups
 
 ## 0.86.1
 Tue, 10 Jan 2017 16:17:33 GMT

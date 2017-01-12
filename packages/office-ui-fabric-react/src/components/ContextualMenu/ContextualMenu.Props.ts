@@ -135,6 +135,13 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
    */
   arrowDirection?: FocusZoneDirection;
 
+  /**
+   * If true the position will not change sides in an attempt to fit the ContextualMenu within bounds.
+   * It will still attempt to align it to whatever bounds are given.
+   * @default false
+   */
+  directionalHintFixed?: boolean;
+
 }
 
 export interface IContextualMenuItem {
@@ -154,6 +161,11 @@ export interface IContextualMenuItem {
    * Props that go to the IconComponent
    */
   iconProps?: IIconProps;
+
+  /**
+   * Props that go to the IconComponent used for the chevron.
+   */
+  submenuIconProps?: IIconProps;
 
   /**
    * Icon to display next to the menu item

@@ -25,7 +25,7 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
   @include focus-border();
   display: inline-block;
   cursor: default;
-  padding: 8px;
+  padding: 6px;
   transform: translateY(50%);
   margin-top: -12px;
   box-sizing: border-box;

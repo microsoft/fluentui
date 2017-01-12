@@ -36,7 +36,7 @@ export class DocumentCardActivity extends React.Component<IDocumentCardActivityP
   }
 
   private _renderAvatar(person: IDocumentCardActivityPerson) {
-    let initialsColor = person.initialsColor ? person.initialsColor : PersonaInitialsColor.blue;
+    let initialsColor = person.initialsColor === undefined || person.initialsColor === null ? PersonaInitialsColor.blue : person.initialsColor;
 
     return (
       <div className='ms-DocumentCardActivity-avatar'>
