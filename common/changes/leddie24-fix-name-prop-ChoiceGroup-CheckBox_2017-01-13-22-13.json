@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ChoiceGroup and CheckBox: Fix `name` prop not being set properly on radio and input elements",
-      "type": "patch"
+      "comment": "ChoiceGroup and CheckBox: Added props to set a custom 'name' attribute on rendered elements.",
+      "type": "minor"
     }
   ],
   "email": "v-edwliu@microsoft.com"
