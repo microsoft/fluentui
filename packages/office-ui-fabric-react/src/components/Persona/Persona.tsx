@@ -77,6 +77,14 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
     };
   }
 
+  componentWillReceiveProps(nextProps: IPersonaProps) {
+    if (nextProps.imageUrl !== this.props.imageUrl) {
+      this.setState({
+        isImageLoaded: false,
+      });
+    }
+  }
+
   public render() {
     let {
       className,
