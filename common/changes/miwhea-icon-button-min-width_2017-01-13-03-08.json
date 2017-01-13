@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Button: Set the icon button's width correctly in Safari.",
+      "type": "patch"
+    }
+  ],
+  "email": "miwhea@microsoft.com"
+}
