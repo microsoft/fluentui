@@ -23,6 +23,8 @@ export enum ReadingMode {
 export interface IScreenReaderAlertProps extends React.Props<HTMLElement> {
   /**
    * Use readingMode to specify whether to read the alert, or read before/after normal screen reader content.
+   *
+   * @default ReadingMode.ReadAfterOtherContent
    */
   readingMode?: ReadingMode;
 
@@ -37,6 +39,6 @@ export interface IScreenReaderAlertProps extends React.Props<HTMLElement> {
 }
 
 export const defaultScreenReaderAlertProps: IScreenReaderAlertProps = {
-  readingMode: ReadingMode.ReadImmediately,
+  readingMode: ReadingMode.ReadAfterOtherContent,
   indicator: undefined
 };

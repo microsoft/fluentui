@@ -15,10 +15,10 @@ import './ScreenReaderAlert.scss';
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions Live Region in MDN}
  *
  * All functionalities of this component is tested through:
- * 1. JAWS 18.
- * 2. NVDA 2016.4.
- * 3. ChromeVOX v53. (Not support ReadingMode.ReadAfterOtherContent option for ChromeVOX, it will read immediately)
- * 4. Narrator in windows 10.
+ * 1. Narrator in windows 10.
+ * 2. JAWS 18.
+ * 3. NVDA 2016.4.
+ * 4. ChromeVOX v53. (Not support ReadingMode.ReadAfterOtherContent option for ChromeVOX, it will read immediately)
  *
  * @example
  * <ScreenReaderAlert>

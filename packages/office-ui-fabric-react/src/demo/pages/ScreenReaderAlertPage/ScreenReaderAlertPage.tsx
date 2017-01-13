@@ -51,11 +51,14 @@ export class ScreenReaderAlertPage extends React.Component<IComponentDemoPagePro
               ScreenReaderAlerts are used to read out the notifications on the page to the blind people with the help of screen readers like JAWS, Chrome VOX and NVDA. It is implemented by live region and overcomes some known issues about live region when using with React.
             </p>
             <p>
+              It renders an addition element for screen reader only, so using this component while the text/ui is visible will duplicate the text in the DOM. You should use vanilla live region attributes instead if you don't want this duplicate element.
+            </p>
+            <p>
               This component has been tested through following combination of screen readers and browsers:
             </p>
             <ul>
               <li>
-                1. <strong>JAWS 18</strong> with <strong>IE 11</strong>.
+                1. <strong>Narrator in windows 10 Enterprise 14393.577</strong> with <strong>Edge 38.14393.0.0</strong>.
               </li>
               <li>
                 2. <strong>NVDA 2016.4</strong> with <strong>FireFox v50.1.0</strong>.
@@ -66,7 +69,7 @@ export class ScreenReaderAlertPage extends React.Component<IComponentDemoPagePro
                 Note: ReadingMode.ReadAfterOtherContent option is currently not supported in ChromeVOX, text will be read immediately.
               </li>
               <li>
-                4. <strong>Narrator in windows 10 Enterprise 14393.577</strong> with <strong>Edge 38.14393.0.0</strong>.
+                4. <strong>JAWS 18</strong> with <strong>IE 11</strong>.
               </li>
             </ul>
 
