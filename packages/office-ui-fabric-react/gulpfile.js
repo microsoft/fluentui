@@ -158,7 +158,7 @@ gulp.task('deploy', ['bundle'], function (cb) {
   }
 });
 
-build.task('theo', function () {
+gulp.task('theo', function () {
   let gutil = require('gulp-util');
   gulp.src('src/components/**/*.Tokens.yml')
     .pipe(theo.plugins.transform('web', {
@@ -192,8 +192,8 @@ build.task('theo', function () {
           gutil.log(`Gulp: ${prop.name} is missing a theme variable. Do not use raw hex values in component tokens.`);
         }
         // Turn on when supporting slot values
-        prop.value = `"[slot: ${prop.name}, theme: ${theme} default: ${prop.value}]"`;
-        //prop.value = `"[theme: ${theme}, default: ${prop.value}]"`;
+        //prop.value = `"[slot: ${prop.name}, theme: ${theme} default: ${prop.value}]"`;
+        prop.value = `"[theme: ${theme}, default: ${prop.value}]"`;
         return prop;
       }
     }))
@@ -221,7 +221,6 @@ let runSSRTests = build.subTask('run-ssr-tests', function (gulp, buildOptions, d
 
 let defaultTasks = build.serial(
   build.preCopy,
-  build.theo,
   build.sass,
   build.parallel(build.typescript, build.tslint, build.text),
   build.postCopy,
