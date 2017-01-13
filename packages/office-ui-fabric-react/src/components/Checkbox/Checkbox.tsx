@@ -46,7 +46,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
 
     const { isFocused } = this.state;
     const isChecked = checked === undefined ? this.state.isChecked : checked;
-
+    const inputName = (inputProps && inputProps.name) ? inputProps.name : this._id;
     return (
       <div
         className={ css('ms-Checkbox', className, { 'is-inFocus': isFocused }) }
@@ -58,7 +58,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
           disabled={ disabled }
           ref={ this._resolveRef('_checkBox') }
           id={ this._id }
-          name={ this._id }
+          name={ inputName }
           className='ms-Checkbox-input'
           type='checkbox'
           onChange={ this._onChange }
