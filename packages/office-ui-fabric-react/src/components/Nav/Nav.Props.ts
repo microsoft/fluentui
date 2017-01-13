@@ -43,7 +43,7 @@ export interface INavProps {
   selectedKey?: string;
 
   /**
-   * (Optional) The nav links horizontal orentation flag.
+   * (Optional) The nav links horizontal orientation flag.
    */
   horizontal?: boolean;
 
