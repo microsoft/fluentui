@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 12 Jan 2017 04:06:30 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Jan 2017 04:05:19 GMT and should not be manually modified.
+
+## 0.87.1
+Fri, 13 Jan 2017 04:05:19 GMT
+
+### Patches
+
+- DetailsList: Only prevent text selection in multiple selection mode
+- Dropdown: Avoid calling stopPropagation on pressing escape if the dropdown is not expanded
 
 ## 0.87.0
 Thu, 12 Jan 2017 04:06:30 GMT
