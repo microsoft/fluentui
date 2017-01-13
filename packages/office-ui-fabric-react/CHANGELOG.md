@@ -1,6 +1,37 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 04 Jan 2017 19:05:07 GMT and should not be manually modified.
+This log was last generated on Sat, 07 Jan 2017 04:06:13 GMT and should not be manually modified.
+
+## 0.85.0
+Sat, 07 Jan 2017 04:06:13 GMT
+
+### Minor changes
+
+- ContextualMenu: Added header item so that the ContextualMenu can now have headers
+- Nav: add className to allow styling
+- TextField: Validate only on focus or Blur
+
+### Patches
+
+- SearchBox: Remove line-height to show correct cursor size in iOS
+- ContextualMenu: Now returns null if no items are provided rather than rendering an empty callout
+- FocusZone: Changed focus and focus zone to respect when data-is-focusable attribute is false
+- Fix the prescribed use of submenuProps.items for CommandBar items
+- Link: focus border is now positioned correctly when the link spans multiple lines.
+
+## 0.84.0
+Thu, 05 Jan 2017 04:07:37 GMT
+
+### Minor changes
+
+- Add 'focus' method to SearchBox component
+- Add optional selectedKey to Pivot
+
+### Patches
+
+- Altered css so that ContextualMenu does not have scrollbar in IE
+- Contextualmenu now correctly passes bounds to callout
+- TextField: Multiline now respects rows attribute.
 
 ## 0.83.0
 Wed, 04 Jan 2017 19:05:07 GMT
