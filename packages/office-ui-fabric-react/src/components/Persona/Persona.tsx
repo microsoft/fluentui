@@ -9,6 +9,9 @@ import {
   PersonaSize
 } from './Persona.Props';
 import {
+  autobind,
+} from '../../Utilities';
+import {
   PERSONA_INITIALS_COLOR,
   PERSONA_PRESENCE,
   PERSONA_SIZE
@@ -55,12 +58,24 @@ const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
 
 const COLOR_SWATCHES_NUM_ENTRIES = COLOR_SWATCHES_LOOKUP.length;
 
-export class Persona extends React.Component<IPersonaProps, any> {
+export interface IPersonaState {
+  isImageLoaded?: boolean;
+}
+
+export class Persona extends React.Component<IPersonaProps, IPersonaState> {
   public static defaultProps: IPersonaProps = {
     primaryText: '',
     size: PersonaSize.regular,
     presence: PersonaPresence.none
   };
+
+  constructor(props: IPersonaProps) {
+    super(props);
+
+    this.state = {
+      isImageLoaded: false,
+    };
+  }
 
   public render() {
     let {
@@ -122,8 +137,12 @@ export class Persona extends React.Component<IPersonaProps, any> {
       <div { ...divProps } className={ css('ms-Persona', className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence]) }>
         { size !== PersonaSize.tiny && (
           <div className='ms-Persona-imageArea'>
-            <div className={ css('ms-Persona-initials', PERSONA_INITIALS_COLOR[initialsColor]) }>{ imageInitials }</div>
-            <Image className='ms-Persona-image' imageFit={ ImageFit.cover } src={ imageUrl } shouldFadeIn={ imageShouldFadeIn } />
+            {
+              !this.state.isImageLoaded &&
+              (<div className={ css('ms-Persona-initials', PERSONA_INITIALS_COLOR[initialsColor]) }>{ imageInitials }</div>)
+            }
+            <Image className='ms-Persona-image' imageFit={ ImageFit.cover } src={ imageUrl } shouldFadeIn={ imageShouldFadeIn }
+              onLoad={ this._onPhotoLoad } />
           </div>
         ) }
         { presenceElement }
@@ -182,5 +201,12 @@ export class Persona extends React.Component<IPersonaProps, any> {
     color = COLOR_SWATCHES_LOOKUP[hashCode % COLOR_SWATCHES_NUM_ENTRIES];
 
     return color;
+  }
+
+  @autobind
+  private _onPhotoLoad(ev: React.SyntheticEvent<HTMLImageElement>) {
+    this.setState({
+      isImageLoaded: true
+    });
   }
 }
