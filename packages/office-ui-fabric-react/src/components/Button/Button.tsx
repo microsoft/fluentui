@@ -15,7 +15,7 @@ export interface IButtonState {
 
 export class Button extends BaseComponent<IButtonProps, IButtonState> implements IButton {
   public static defaultProps: IButtonProps = {
-    buttonType: ButtonType.normal
+    buttonType: ButtonType.default
   };
   private _buttonElement: HTMLButtonElement;
 
@@ -37,6 +37,7 @@ export class Button extends BaseComponent<IButtonProps, IButtonState> implements
     const tag = renderAsAnchor ? 'a' : 'button';
     const nativeProps = getNativeProps(this.props.rootProps || this.props, renderAsAnchor ? anchorProperties : buttonProperties);
     const className = css((this.props.className), 'ms-Button', {
+      'ms-Button--default': buttonType === ButtonType.default,
       'ms-Button--primary': buttonType === ButtonType.primary,
       'ms-Button--hero': buttonType === ButtonType.hero,
       'ms-Button--compound': buttonType === ButtonType.compound,
