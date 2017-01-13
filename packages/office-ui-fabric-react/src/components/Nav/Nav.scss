@@ -97,7 +97,7 @@ $linkRightPadding: 20px;
 }
 
 .ms-Nav-linkHorizontal {
-  float: left;
+  @include float(left);
   display: inline;
 }
 

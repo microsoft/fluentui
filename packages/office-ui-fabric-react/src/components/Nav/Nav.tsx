@@ -36,7 +36,6 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
   };
 
   private _hasExpandButton: boolean;
-  private _horizontal: boolean;
 
   constructor(props: INavProps) {
     super(props);
@@ -47,7 +46,6 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
       selectedKey: props.initialSelectedKey || props.selectedKey,
     };
     this._hasExpandButton = false;
-    this._horizontal = Boolean(props.horizontal);
   }
 
   public render(): React.ReactElement<{}> {
@@ -140,7 +138,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
 
   private _renderLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     return (
-      <li key={ link.key || linkIndex } role='listitem' className={ this._horizontal ? css('ms-Nav-linkHorizontal') : '' } >
+      <li key={ link.key || linkIndex } role='listitem' className={ this.props.horizontal ? css('ms-Nav-linkHorizontal') : '' } >
         { this._renderCompositeLink(link, linkIndex, nestingLevel) }
         { (link.isExpanded ? this._renderLinks(link.links, ++nestingLevel) : null) }
       </li>

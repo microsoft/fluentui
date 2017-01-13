@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Support Nav horizontal orentation rendering",
+      "comment": "Nav: Now adding the ability to render the Nav horizontally, if the horizontal attribute is provided.",
       "type": "patch"
     }
   ],

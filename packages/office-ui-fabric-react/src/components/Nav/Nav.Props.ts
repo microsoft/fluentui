@@ -28,7 +28,7 @@ export interface INavProps {
   onLinkClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
 
   /**
-   * Indicates whether the navigation component renders on top of other content in the UI (T-Narrow case)
+   * Indicates whether the navigation component renders on top of other content in the UI (when device is in mobile/narrow width.)
    */
   isOnTop?: boolean;
 
