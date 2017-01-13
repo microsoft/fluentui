@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { getFullColorString } from '../../utilities/Color/Colors';
 import {
   EventGroup,
   assign,
@@ -10,7 +11,7 @@ import {
   MAX_COLOR_VALUE,
   getFullColorString,
   hsv2hex
-} from './colors';
+} from '../../utilities/Color/IColor';
 
 export interface IColorRectangleProps {
   color: IColor;

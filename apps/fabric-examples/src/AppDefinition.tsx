@@ -332,6 +332,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Theme',
           name: 'Themes',
           url: '#examples/themes'
+        },
+        {
+          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/ThemerPage/ThemerPage').ThemerPage)),
+          key: 'Theming',
+          name: 'Theming',
+          url: '#examples/theming'
         }
       ],
       name: 'Utilities'
