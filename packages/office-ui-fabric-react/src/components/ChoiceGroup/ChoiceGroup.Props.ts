@@ -19,7 +19,7 @@ export interface IChoiceGroupProps extends React.HTMLProps<HTMLElement> {
   /**
    * HTML Attribute for choice group options
    */
-  choiceGroupName?: string;
+  name?: string;
 }
 
 export interface IChoiceGroupOption {

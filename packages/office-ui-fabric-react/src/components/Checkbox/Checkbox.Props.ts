@@ -55,4 +55,9 @@ export interface ICheckboxProps extends React.Props<Checkbox> {
    * precedence over the later.
    */
   inputProps?: React.HTMLProps<HTMLInputElement>;
+
+  /**
+   * Name attribute for inputs
+   */
+  name?: string;
 }
