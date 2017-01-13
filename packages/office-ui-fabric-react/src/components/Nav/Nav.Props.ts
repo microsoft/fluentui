@@ -28,7 +28,7 @@ export interface INavProps {
   onLinkClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
 
   /**
-   * Indicates whether the navigation component renders on top of other content in the UI
+   * Indicates whether the navigation component renders on top of other content in the UI (T-Narrow case)
    */
   isOnTop?: boolean;
 
@@ -41,6 +41,11 @@ export interface INavProps {
    * (Optional) The key of the nav item selected by caller.
    */
   selectedKey?: string;
+
+  /**
+   * (Optional) The nav links horizontal orentation flag.
+   */
+  horizontal?: boolean;
 
   /**
    * (Optional) The nav container aria label.

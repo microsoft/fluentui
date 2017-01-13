@@ -96,6 +96,11 @@ $linkRightPadding: 20px;
   vertical-align: middle;
 }
 
+.ms-Nav-linkHorizontal {
+  float: left;
+  display: inline;
+}
+
 .ms-Nav-compositeLink {
   display: block;
   position: relative;
