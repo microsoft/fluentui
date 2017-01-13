@@ -10,7 +10,7 @@ import {
   getWindow,
   getDocument
 } from '../../Utilities';
-import { getRelativePositions, IPositionInfo, IPositionProps } from '../../utilities/positioning';
+import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight } from '../../utilities/positioning';
 import { IRectangle } from '../../common/IRectangle';
 import { focusFirstChild } from '../../utilities/focus';
 import { assign } from '../../Utilities';
@@ -71,7 +71,11 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   public componentWillUpdate(newProps: ICalloutProps) {
     if (newProps.targetElement !== this.props.targetElement || newProps.target !== this.props.target) {
       let newTarget = newProps.targetElement ? newProps.targetElement : newProps.target;
+      this._maxHeight = undefined;
       this._setTargetWindowAndElement(newTarget);
+    }
+    if (newProps.gapSpace !== this.props.gapSpace || this.props.beakWidth !== newProps.beakWidth) {
+      this._maxHeight = undefined;
     }
   }
   public componentDidMount() {
@@ -221,7 +225,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       // Set the new position only when the positions are not exists or one of the new callout positions are different.
       // The position should not change if the position is within 2 decimal places.
       if ((!positions && newPositions) ||
-        (positions && newPositions && this._arePositionsEqual(positions, newPositions)
+        (positions && newPositions && !this._arePositionsEqual(positions, newPositions)
           && this._positionAttempts < 5)) {
         // We should not reposition the callout more than a few times, if it is then the content is likely resizing
         // and we should stop trying to reposition to prevent a stack overflow.
@@ -259,7 +263,13 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
   private _getMaxHeight(): number {
     if (!this._maxHeight) {
-      this._maxHeight = this._getBounds().height - BORDER_WIDTH * 2;
+      if (this.props.directionalHintFixed && this._target) {
+        let beakWidth = this.props.isBeakVisible ? this.props.beakWidth : 0;
+        let gapSpace = this.props.gapSpace ? this.props.gapSpace : 0;
+        this._maxHeight = getMaxHeight(this._target, this.props.directionalHint, beakWidth + gapSpace, this._getBounds());
+      } else {
+        this._maxHeight = this._getBounds().height - BORDER_WIDTH * 2;
+      }
     }
     return this._maxHeight;
   }

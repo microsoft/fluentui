@@ -44,6 +44,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
   private _coverStyle: CoverStyle;
   private _imageElement: HTMLImageElement;
   private _frameElement: HTMLDivElement;
+  private _eventsAttached: boolean;
 
   constructor(props: IImageProps) {
     super(props);
@@ -51,29 +52,43 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
     this.state = {
       loadState: ImageLoadState.notLoaded
     };
+    this._eventsAttached = false;
   }
 
   public componentDidMount() {
     if (!this._evaluateImage()) {
       this._events.on(this._imageElement, 'load', this._evaluateImage);
       this._events.on(this._imageElement, 'error', this._setError);
+      this._eventsAttached = true;
     }
   }
 
   public componentWillReceiveProps(nextProps: IImageProps) {
-    if (this.state.loadState === ImageLoadState.loaded) {
-      let { height: nextHeight, width: nextWidth } = nextProps;
-      let { height, width } = this.props;
+    if (this.state.loadState !== ImageLoadState.notLoaded && nextProps.src !== this.props.src) {
+      this.setState({
+        loadState: ImageLoadState.notLoaded
+      });
+    } else if (this.state.loadState === ImageLoadState.loaded) {
+      // If the image is not loaded, recompute the cover style.
+      this._computeCoverStyle(nextProps);
+    }
+  }
 
-      if (height !== nextHeight || width !== nextWidth) {
-        this._computeCoverStyle(nextProps);
+  public componentDidUpdate(prevProps: IImageProps, prevState: IImageState) {
+    if (prevState.loadState !== ImageLoadState.notLoaded && prevProps.src !== this.props.src) {
+      if (!this._evaluateImage()) {
+        if (!this._eventsAttached) {
+          this._events.on(this._imageElement, 'load', this._evaluateImage);
+          this._events.on(this._imageElement, 'error', this._setError);
+          this._eventsAttached = true;
+        }
       }
     }
   }
 
   public render() {
     let imageProps = getNativeProps(this.props, imageProperties, ['width', 'height']);
-    let { src, alt, width, height, shouldFadeIn, className, imageFit, errorSrc, role } = this.props;
+    let { src, alt, width, height, shouldFadeIn, className, imageFit, errorSrc, role, maximizeFrame} = this.props;
     let { loadState } = this.state;
     let coverStyle = this._coverStyle;
     let loaded = loadState === ImageLoadState.loaded || loadState === ImageLoadState.errorLoaded;
@@ -83,7 +98,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
     // If image dimensions aren't specified, the natural size of the image is used.
     return (
       <div
-        className={ css('ms-Image', className) }
+        className={ css('ms-Image', className, { 'ms-Image--maximizeFrame': maximizeFrame }) }
         style={ { width: width, height: height } }
         ref={ this._resolveRef('_frameElement') }
         >
@@ -120,6 +135,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
 
     if (isLoaded && loadState !== ImageLoadState.loaded && loadState !== ImageLoadState.errorLoaded) {
       this._events.off();
+      this._eventsAttached = false;
       this.setState({
         loadState: loadState === ImageLoadState.error ? ImageLoadState.errorLoaded : ImageLoadState.loaded
       });

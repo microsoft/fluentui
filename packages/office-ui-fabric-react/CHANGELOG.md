@@ -1,6 +1,56 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 07 Jan 2017 04:06:13 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Jan 2017 04:05:19 GMT and should not be manually modified.
+
+## 0.87.1
+Fri, 13 Jan 2017 04:05:19 GMT
+
+### Patches
+
+- DetailsList: Only prevent text selection in multiple selection mode
+- Dropdown: Avoid calling stopPropagation on pressing escape if the dropdown is not expanded
+
+## 0.87.0
+Thu, 12 Jan 2017 04:06:30 GMT
+
+### Minor changes
+
+- ContextualMenu: added in submenuIconProps to specify how the submenuIcon looks
+- Pivot: Add icon to PivotItem
+- New component: Rating
+- Positioning/Callout: Can now set a fixed edge so the callout does not flip.
+
+### Patches
+
+- Image: Changes to src are now respected.
+- DetailsList: when adding new items in a grouped DetailsList scenario, the group is no longer recreated.
+- Dialog: Removing deprecated rootProps usage for the close button.
+- Persona: Set an explicit height for the image area and image.
+- Persona now has a default way of generating initials and colors 
+- Pivot: Fix a11y - duplicate tabIds, aria-controls linking
+- TextField: aria-describedby is only set when a description is available.
+
+## 0.86.2
+Wed, 11 Jan 2017 04:04:04 GMT
+
+### Patches
+
+- Fixed blur event inside Popups
+
+## 0.86.1
+Tue, 10 Jan 2017 16:17:33 GMT
+
+### Patches
+
+- TextField: Misses keystroke in IE11 when validation is in progress
+
+## 0.86.0
+Tue, 10 Jan 2017 04:09:41 GMT
+
+### Minor changes
+
+- Persona: Truncates long lines of text
+- Image: Add a prop to fit the image's frame to the parent element. Recompute the cover style when image changes, even if no width or height is provided.
 
 ## 0.85.0
 Sat, 07 Jan 2017 04:06:13 GMT
