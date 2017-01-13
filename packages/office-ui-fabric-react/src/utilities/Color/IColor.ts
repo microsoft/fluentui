@@ -10,6 +10,7 @@ export interface IColor {
   str: string;
 }
 
-export const MAX_COLOR_SATURATION = 100;
+export const MAX_COLOR_RGBA = 255;
 export const MAX_COLOR_HUE = 359;
+export const MAX_COLOR_SATURATION = 100;
 export const MAX_COLOR_VALUE = 100;
