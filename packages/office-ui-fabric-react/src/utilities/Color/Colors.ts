@@ -156,7 +156,6 @@ export function getColorFromString(color: string): IColor {
     str: color,
     v: v
   };
-
 }
 
 export function getFullColorString(color: IColor): string {

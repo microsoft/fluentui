@@ -1,5 +1,9 @@
 import * as React from 'react';
 import {
+  getFullColorString,
+  hsv2hex
+} from '../../utilities/Color/Colors';
+import {
   BaseComponent,
   assign,
   autobind,
@@ -8,10 +12,8 @@ import {
 import {
   IColor,
   MAX_COLOR_SATURATION,
-  MAX_COLOR_VALUE,
-  getFullColorString,
-  hsv2hex
-} from './colors';
+  MAX_COLOR_VALUE
+} from '../../utilities/Color/IColor';
 import styles = require('./ColorPicker.scss');
 
 export interface IColorRectangleProps {

@@ -1,0 +1,58 @@
+@import '../../../common/common';
+
+/* TEMP CODE FOR THEMING DEMO */
+html > body {
+  background-color: $backgroundColor;
+  color: $foregroundColor;
+}
+.ms-Label.ms-Label {
+  color: $foregroundColor;
+}
+/* end temp code */
+
+.ms-themer {
+  padding: 12px;
+}
+.ms-themer h3 {
+  margin: 0;
+}
+
+.ms-themer-paletteSlot {
+  text-align: center;
+}
+
+.ms-themer-swatch {
+  display: inline-block;
+  flex-shrink: 0;
+  height: 36px;
+  width: 36px;
+  margin: 4px;
+}
+
+.ms-themer-swatchBg {
+  padding: 4px;
+  display: inline-block;
+  font-size: 0;
+}
+
+.ms-themer-example {
+  padding: 20px;
+  max-width: 40%;
+}
+
+.ms-themer-accessibilityTable td {
+  padding: 4px;
+  text-align: right;
+}
+
+.ms-themer-slot {
+  display: flex;
+  align-items: center;
+  overflow: auto;
+}
+.ms-themer-exampleTable {
+  display: flex;
+  > div {
+    padding: 8px;
+  }
+}
