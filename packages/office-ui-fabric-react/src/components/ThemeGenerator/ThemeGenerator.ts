@@ -1,3 +1,4 @@
+<<<<<<< 7ba880a79ce0bdd18f4cdf4385841226549f87d5
 import {
   IColor,
   getColorFromString
@@ -8,10 +9,17 @@ import {
   getBackgroundShade
 } from '../../utilities/color/Shades';
 import { format } from '../../Utilities';
+=======
+import { IColor } from '../../utilities/Color/IColor';
+import { getColorFromString } from '../../utilities/Color/Colors';
+import { getShade } from '../../utilities/Color/Shades';
+import { format } from '../../utilities/string';
+>>>>>>> semantic theming infrastructure
 
 import { IThemeSlotRule } from './IThemeSlotRule';
 
 export class ThemeGenerator {
+<<<<<<< 7ba880a79ce0bdd18f4cdf4385841226549f87d5
 
   /* isCustomized should be true only if it's a user action, and indicates overwriting the slot's inheritance (if any)
      overwriteCustomValue: a slot could have a generated value based on its inheritance rules (isCustomized is false), or a custom value
@@ -37,6 +45,21 @@ export class ThemeGenerator {
     } else if (rule.value) {
       ThemeGenerator._setSlot(rule, rule.value, slotRules, true, false);
     }
+=======
+  public static setSlot(
+    rule: IThemeSlotRule,
+    value: string | IColor,
+    slotRules: Array<IThemeSlotRule>
+  ) {
+    let valueAsIColor: IColor;
+    if (typeof value === 'string') {
+      valueAsIColor = getColorFromString(value);
+    } else {
+      valueAsIColor = value;
+    }
+
+    ThemeGenerator._setSlot(rule, valueAsIColor, slotRules, true);
+>>>>>>> semantic theming infrastructure
   }
 
   /* Sets the color of each slot based on its rule. Slots that don't inherit must have a value already.
@@ -52,7 +75,11 @@ export class ThemeGenerator {
           if (!rule.value) {
             throw 'A theme slot that does not inherit must have a value.';
           }
+<<<<<<< 7ba880a79ce0bdd18f4cdf4385841226549f87d5
           ThemeGenerator.setSlot(rule, rule.value, slotRules, true, false);
+=======
+          ThemeGenerator.setSlot(rule, rule.value, slotRules);
+>>>>>>> semantic theming infrastructure
         }
       }
     }
@@ -95,12 +122,16 @@ export class ThemeGenerator {
     return output;
   }
 
+<<<<<<< 7ba880a79ce0bdd18f4cdf4385841226549f87d5
   /* Sets the given slot's value to the appropriate value, shading it if necessary.
      Then, iterates through all other rules (that are this rule's dependents) to update them accordingly. */
+=======
+>>>>>>> semantic theming infrastructure
   private static _setSlot(
     rule: IThemeSlotRule,
     value: IColor,
     slotRules: Array<IThemeSlotRule>,
+<<<<<<< 7ba880a79ce0bdd18f4cdf4385841226549f87d5
     isCustomized: boolean, // this property isn't changed on the rule if overwriteCustomValue is false
     overwriteCustomValue = true
   ) {
@@ -117,13 +148,28 @@ export class ThemeGenerator {
       }
       rule.isCustomized = isCustomized;
     }
+=======
+    isCustomized: boolean
+  ) {
+    // set the appropriate properties on the slot rule first
+    if (!rule.asShade) {
+      rule.value = value;
+    } else {
+      rule.value = getShade(value, rule.asShade);
+    }
+    rule.isCustomized = isCustomized;
+>>>>>>> semantic theming infrastructure
 
     // then run through the rest of the rules and update dependent values
     for (let ruleName in slotRules) {
       if (slotRules.hasOwnProperty(ruleName)) {
         let ruleToUpdate: IThemeSlotRule = slotRules[ruleName];
         if (ruleToUpdate.inherits === rule) {
+<<<<<<< 7ba880a79ce0bdd18f4cdf4385841226549f87d5
           ThemeGenerator._setSlot(ruleToUpdate, rule.value, slotRules, false, overwriteCustomValue);
+=======
+          ThemeGenerator._setSlot(ruleToUpdate, rule.value, slotRules, false);
+>>>>>>> semantic theming infrastructure
         }
       }
     }
