@@ -15,11 +15,6 @@ export interface IChoiceGroupProps extends React.HTMLProps<HTMLElement> {
    * Descriptive label for the choice group.
    */
   label?: string;
-
-  /**
-   * HTML Attribute for choice group options
-   */
-  name?: string;
 }
 
 export interface IChoiceGroupOption {

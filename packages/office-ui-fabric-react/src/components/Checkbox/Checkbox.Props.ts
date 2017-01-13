@@ -15,7 +15,7 @@ export interface ICheckbox {
 /**
  * Checkbox properties.
  */
-export interface ICheckboxProps extends React.Props<Checkbox> {
+export interface ICheckboxProps extends React.HTMLProps<HTMLElement> {
   /**
    * Additional class name to provide on the root element, in addition to the ms-Checkbox class.
    */
@@ -55,9 +55,4 @@ export interface ICheckboxProps extends React.Props<Checkbox> {
    * precedence over the later.
    */
   inputProps?: React.HTMLProps<HTMLInputElement>;
-
-  /**
-   * Name attribute for inputs
-   */
-  name?: string;
 }
