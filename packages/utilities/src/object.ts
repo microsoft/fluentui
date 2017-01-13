@@ -73,3 +73,15 @@ export function getId(prefix?: string): string {
 
   return (prefix || '') + index;
 }
+
+/* Takes and enum and iterates over each value of the enum (as a string), running the callback on each, returning a mapped array.
+ * The callback takes as a first parameter the string that represents the name of the entry, and the second parameter is the
+ * value of that entry, which is the value you'd normally use when using the enum.
+ * */
+export function mapEnumByName(theEnum: Object, callback: (string?, number?) => {}) {
+  return Object.keys(theEnum).map((p) => {
+    if (String(Number(p)) !== p) {
+      return callback(p, theEnum[p]);
+    }
+  }).filter(v => !!v);
+}
