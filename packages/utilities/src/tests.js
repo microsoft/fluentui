@@ -9,7 +9,7 @@ console.error = console.warn = function (warning) {
   throw new Error(warning);
 }
 
-var context = require.context('..', true, /.+\.test\.js?$/);
+var context = require.context('.', true, /.+\.test\.js?$/);
 
 context.keys().forEach(context);
 module.exports = context;

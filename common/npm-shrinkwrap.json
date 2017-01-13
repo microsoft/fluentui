@@ -52,14 +52,14 @@
       }
     },
     "@microsoft/gulp-core-build-webpack": {
-      "version": "1.0.3",
+      "version": "1.0.4",
       "from": "@microsoft/gulp-core-build-webpack@>=1.0.1 <2.0.0",
-      "resolved": "https://registry.npmjs.org/@microsoft/gulp-core-build-webpack/-/gulp-core-build-webpack-1.0.3.tgz",
+      "resolved": "https://registry.npmjs.org/@microsoft/gulp-core-build-webpack/-/gulp-core-build-webpack-1.0.4.tgz",
       "dependencies": {
         "@microsoft/gulp-core-build": {
-          "version": "2.0.0",
-          "from": "@microsoft/gulp-core-build@>=2.0.0 <3.0.0",
-          "resolved": "https://registry.npmjs.org/@microsoft/gulp-core-build/-/gulp-core-build-2.0.0.tgz"
+          "version": "2.0.1",
+          "from": "@microsoft/gulp-core-build@>=2.0.1 <3.0.0",
+          "resolved": "https://registry.npmjs.org/@microsoft/gulp-core-build/-/gulp-core-build-2.0.1.tgz"
         },
         "es6-promise": {
           "version": "3.1.2",
@@ -589,9 +589,9 @@
       "resolved": "https://registry.npmjs.org/camelcase-keys/-/camelcase-keys-2.1.0.tgz"
     },
     "caniuse-db": {
-      "version": "1.0.30000607",
+      "version": "1.0.30000609",
       "from": "caniuse-db@>=1.0.30000488 <2.0.0",
-      "resolved": "https://registry.npmjs.org/caniuse-db/-/caniuse-db-1.0.30000607.tgz"
+      "resolved": "https://registry.npmjs.org/caniuse-db/-/caniuse-db-1.0.30000609.tgz"
     },
     "cardinal": {
       "version": "1.0.0",
@@ -3577,7 +3577,7 @@
     },
     "loose-envify": {
       "version": "1.3.0",
-      "from": "loose-envify@>=1.0.0 <2.0.0",
+      "from": "loose-envify@>=1.1.0 <2.0.0",
       "resolved": "https://registry.npmjs.org/loose-envify/-/loose-envify-1.3.0.tgz"
     },
     "loud-rejection": {
@@ -4398,7 +4398,7 @@
     },
     "react": {
       "version": "15.4.2",
-      "from": "react@>=0.14.0 <0.15.0||>=15.0.0 <16.0.0",
+      "from": "react@>=15.0.0 <16.0.0",
       "resolved": "https://registry.npmjs.org/react/-/react-15.4.2.tgz"
     },
     "react-addons-test-utils": {
@@ -4408,7 +4408,7 @@
     },
     "react-dom": {
       "version": "15.4.2",
-      "from": "react-dom@>=0.14.0 <0.15.0||>=15.0.0 <16.0.0",
+      "from": "react-dom@>=15.0.0 <16.0.0",
       "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-15.4.2.tgz"
     },
     "react-highlight": {
