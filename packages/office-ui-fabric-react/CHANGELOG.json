@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "0.87.1",
+      "tag": "office-ui-fabric-react_v0.87.1",
+      "date": "Fri, 13 Jan 2017 04:05:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christopher Schleiden <cschleid@microsoft.com>",
+            "commit": "3c34f32dfef9f1f7126f4896f1f5ceb52e5c3771",
+            "comment": "DetailsList: Only prevent text selection in multiple selection mode"
+          },
+          {
+            "author": "gggjtgxing <xingwa@microsoft.com>",
+            "commit": "de37662950ec7155c8562ec0f572f5296e46d5c3",
+            "comment": "Dropdown: Avoid calling stopPropagation on pressing escape if the dropdown is not expanded"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.87.0",
       "tag": "office-ui-fabric-react_v0.87.0",
       "date": "Thu, 12 Jan 2017 04:06:30 GMT",
