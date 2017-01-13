@@ -4629,6 +4629,11 @@
       "from": "temp_modules/rush-todo-app",
       "resolved": "file:temp_modules/rush-todo-app"
     },
+    "rush-utilities": {
+      "version": "0.0.0",
+      "from": "temp_modules/rush-utilities",
+      "resolved": "file:temp_modules/rush-utilities"
+    },
     "rx-lite": {
       "version": "3.1.2",
       "from": "rx-lite@>=3.1.2 <4.0.0",
