@@ -211,6 +211,10 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
         break;
 
       case KeyCodes.escape:
+        if (!this.state.isOpen) {
+          return;
+        }
+
         this.setState({
           isOpen: false
         });
