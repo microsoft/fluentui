@@ -150,7 +150,7 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
               (<div className={ css('ms-Persona-initials', PERSONA_INITIALS_COLOR[initialsColor]) }>{ imageInitials }</div>)
             }
             <Image className='ms-Persona-image' imageFit={ ImageFit.cover } src={ imageUrl } shouldFadeIn={ imageShouldFadeIn }
-              onLoad={ this._onPhotoLoad } />
+              onImageLoad={ this._onPhotoLoad } />
           </div>
         ) }
         { presenceElement }
@@ -212,9 +212,9 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
   }
 
   @autobind
-  private _onPhotoLoad(ev: React.SyntheticEvent<HTMLImageElement>) {
+  private _onPhotoLoad(success: boolean) {
     this.setState({
-      isImageLoaded: true
+      isImageLoaded: success
     });
   }
 }

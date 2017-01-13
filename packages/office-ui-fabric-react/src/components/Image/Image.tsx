@@ -127,7 +127,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
   }
 
   private _evaluateImage(): boolean {
-    let { src } = this.props;
+    let { src, onImageLoad } = this.props;
     let { loadState } = this.state;
     let isLoaded = (src && this._imageElement.naturalWidth > 0 && this._imageElement.naturalHeight > 0);
 
@@ -136,6 +136,11 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
     if (isLoaded && loadState !== ImageLoadState.loaded && loadState !== ImageLoadState.errorLoaded) {
       this._events.off();
       this._eventsAttached = false;
+
+      if (onImageLoad) {
+        onImageLoad(loadState !== ImageLoadState.error);
+      }
+
       this.setState({
         loadState: loadState === ImageLoadState.error ? ImageLoadState.errorLoaded : ImageLoadState.loaded
       });

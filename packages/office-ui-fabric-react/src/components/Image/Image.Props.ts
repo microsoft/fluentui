@@ -27,6 +27,12 @@ export interface IImageProps extends React.HTMLProps<HTMLImageElement> {
    * If true, the image frame will expand to fill its parent container.
    */
   maximizeFrame?: boolean;
+
+  /**
+   * Optional callback method for when the image is loaded or is in error.
+   * The 'success' parameter indicates whether the loading was successful or in error.
+   */
+  onImageLoad?: (success: boolean) => void;
 }
 
 /**
