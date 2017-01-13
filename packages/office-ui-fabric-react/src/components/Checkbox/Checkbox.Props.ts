@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Checkbox } from './Checkbox';
 
 /**
  * Checkbox class interface.
