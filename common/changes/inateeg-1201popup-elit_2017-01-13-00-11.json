@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Support Nav horizontal orentation rendering",
+      "type": "patch"
+    }
+  ],
+  "email": "inateeg@microsoft.com"
+}
