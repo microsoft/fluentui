@@ -19,5 +19,6 @@ export * from './math';
 export * from './object';
 export * from './properties';
 export * from './resources';
+export * from './rtl';
 export * from './scroll';
 export * from './string';
