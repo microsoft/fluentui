@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Added defined width to ms-Persona-imageArea so that the DOM width of the control reflects the true width of the content",
+      "type": "patch"
+    }
+  ],
+  "email": "miclo@microsoft.com"
+}
