@@ -2,6 +2,91 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "0.87.1",
+      "tag": "office-ui-fabric-react_v0.87.1",
+      "date": "Fri, 13 Jan 2017 04:05:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christopher Schleiden <cschleid@microsoft.com>",
+            "commit": "3c34f32dfef9f1f7126f4896f1f5ceb52e5c3771",
+            "comment": "DetailsList: Only prevent text selection in multiple selection mode"
+          },
+          {
+            "author": "gggjtgxing <xingwa@microsoft.com>",
+            "commit": "de37662950ec7155c8562ec0f572f5296e46d5c3",
+            "comment": "Dropdown: Avoid calling stopPropagation on pressing escape if the dropdown is not expanded"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.87.0",
+      "tag": "office-ui-fabric-react_v0.87.0",
+      "date": "Thu, 12 Jan 2017 04:06:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "c41f5e5b8013839cb7fe4134d01237bc43ef9c92",
+            "comment": "ContextualMenu: added in submenuIconProps to specify how the submenuIcon looks"
+          },
+          {
+            "author": "Christopher Schleiden <cschleid@microsoft.com>",
+            "commit": "89000c2c5b81de7067d9a415c95234e798c4d392",
+            "comment": "Pivot: Add icon to PivotItem"
+          },
+          {
+            "author": "Christopher Schleiden <cschleid@microsoft.com>",
+            "commit": "b8657364652f414851a04c56e349252abe35c200",
+            "comment": "New component: Rating"
+          },
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "0de482b932e5973bf70696ac18f78c62cb11f092",
+            "comment": "Positioning/Callout: Can now set a fixed edge so the callout does not flip."
+          }
+        ],
+        "patch": [
+          {
+            "author": "dagoff <dagoff@users.noreply.github.com>",
+            "commit": "b8f0d19dde4b52663d5b2308b72b1060915d1322",
+            "comment": "Image: Changes to src are now respected."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "ee59343410e10b924e1b57e789f62df9a292ae70",
+            "comment": "DetailsList: when adding new items in a grouped DetailsList scenario, the group is no longer recreated."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "27ff1846a4cc642ad603e28353da83818c0c34fe",
+            "comment": "Dialog: Removing deprecated rootProps usage for the close button."
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "2b0e8a721e3c28b3b9a9da982812e2520de28634",
+            "comment": "Persona: Set an explicit height for the image area and image."
+          },
+          {
+            "author": "Cliff Koh <cliffkoh@users.noreply.github.com>",
+            "commit": "40a949fab0a3069be76d0410b520e8030cd1bf41",
+            "comment": "Persona now has a default way of generating initials and colors "
+          },
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "9ff5c79854d08c67ac82b961c16b3d2a2cffa9c3",
+            "comment": "Pivot: Fix a11y - duplicate tabIds, aria-controls linking"
+          },
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "58b9a0a72ba347bf37cc74210cf8232449eaa23d",
+            "comment": "TextField: aria-describedby is only set when a description is available."
+          }
+        ]
+      }
+    },
+    {
       "version": "0.86.2",
       "tag": "office-ui-fabric-react_v0.86.2",
       "date": "Wed, 11 Jan 2017 04:04:04 GMT",

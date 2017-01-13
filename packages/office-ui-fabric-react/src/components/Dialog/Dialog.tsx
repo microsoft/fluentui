@@ -132,7 +132,6 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
                       className='ms-Dialog-button ms-Dialog-button--close'
                       buttonType={ ButtonType.icon }
                       icon='Cancel'
-                      rootProps={ { title: closeButtonAriaLabel } }
                       ariaLabel={ closeButtonAriaLabel }
                       onClick={ onDismiss }
                       />

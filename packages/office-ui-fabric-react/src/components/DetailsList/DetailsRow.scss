@@ -16,8 +16,6 @@ $unselectedHoverColor: $ms-color-neutralLighter;
   vertical-align: top;
   white-space: nowrap;
   padding: 0;
-  user-select: none;
-  cursor: default;
   box-sizing: border-box;
 
   background: none;
@@ -28,6 +26,11 @@ $unselectedHoverColor: $ms-color-neutralLighter;
 
   &.ms-DetailsRow.is-selected {
     background: $selectedColor;
+  }
+
+  &.is-contentUnselectable {
+    user-select: none;
+    cursor: default;
   }
 }
 
