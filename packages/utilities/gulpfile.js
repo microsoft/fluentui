@@ -1,8 +1,9 @@
 'use strict';
 
+let gulp = require('gulp');
+let path = require('path');
 let build = require('@microsoft/web-library-build');
 let buildConfig = build.getConfig();
-let gulp = require('gulp');
 
 let isProduction = process.argv.indexOf('--production') >= 0;
 let isClean = process.argv.indexOf('clean') >= 0;
