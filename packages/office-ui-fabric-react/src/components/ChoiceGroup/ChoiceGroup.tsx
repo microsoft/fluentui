@@ -161,13 +161,15 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
   }
 
   private _onChange(option: IChoiceGroupOption, evt: React.FormEvent<HTMLInputElement>) {
-    let { onChanged } = this.props;
+    let { onChanged, onChange } = this.props;
 
     this.setState({
       keyChecked: option.key
     });
 
-    if (onChanged) {
+    if (onChange) {
+      onChange(evt, option);
+    } else if (onChanged) {
       onChanged(option);
     }
   }
