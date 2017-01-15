@@ -1,13 +1,17 @@
 import * as React from 'react';
+import {
+  EventGroup,
+  autobind,
+  buttonProperties,
+  css,
+  divProperties,
+  getId,
+  getNativeProps
+} from '../../Utilities';
 import { ICommandBar, ICommandBarProps } from './CommandBar.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu, IContextualMenuItem, getSubmenuItems, hasSubmenuItems } from '../../ContextualMenu';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { autobind } from '../../utilities/autobind';
-import { css } from '../../utilities/css';
-import { getId } from '../../utilities/object';
-import { buttonProperties, divProperties, getNativeProps } from '../../utilities/properties';
 import {
   Icon,
   IconName,

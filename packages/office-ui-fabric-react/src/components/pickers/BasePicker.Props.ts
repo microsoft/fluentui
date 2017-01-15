@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IPickerItemProps } from './PickerItem.Props';
-import { IRenderFunction } from '../../common/IRenderFunction';
+import { IRenderFunction } from '../../Utilities';
 
 // Type T is the type of the item that is displayed
 // and searched for by the people picker. For example, if the picker is

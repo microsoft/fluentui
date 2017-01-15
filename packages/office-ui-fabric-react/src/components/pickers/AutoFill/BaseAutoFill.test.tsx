@@ -4,8 +4,8 @@ import * as React from 'react';
 
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
+import { KeyCodes } from '../../../Utilities';
 import { BaseAutoFill } from './BaseAutoFill';
-import { KeyCodes } from '../../../utilities/KeyCodes';
 
 let { assert } = chai;
 describe('BaseAutoFill', () => {

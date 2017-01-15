@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { BaseComponent } from '../../../../common/BaseComponent';
+import { BaseComponent } from '../../../../Utilities';
 import { DirectionalHint } from '../../../../common/DirectionalHint';
 
 import {

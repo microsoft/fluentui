@@ -1,6 +1,6 @@
 import * as React from 'react';
+import { IRectangle } from '../../Utilities';
 import { List } from './List';
-import { IRectangle } from '../../common/IRectangle';
 
 export interface IListProps extends React.Props<List> {
   /** Optional classname to append to root list. */

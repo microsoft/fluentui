@@ -11,17 +11,15 @@ import {
   autobind,
   css,
   elementContains,
-  getParent,
+  getDocument,
   getId,
-  getRTL,
-  getDocument
-} from '../../Utilities';
-import {
   getNextElement,
+  getParent,
   getPreviousElement,
+  getRTL,
   isElementFocusZone,
   isElementTabbable
-} from '../../utilities/focus';
+} from '../../Utilities';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_ENTER_DISABLED_ATTRIBUTE = 'data-disable-click-on-enter';
