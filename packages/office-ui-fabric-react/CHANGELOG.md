@@ -1,6 +1,26 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 12 Jan 2017 04:06:30 GMT and should not be manually modified.
+This log was last generated on Sat, 14 Jan 2017 04:10:15 GMT and should not be manually modified.
+
+## 0.88.0
+Sat, 14 Jan 2017 04:10:15 GMT
+
+### Minor changes
+
+- ChoiceGroup and CheckBox: Added props to set a custom 'name' attribute on rendered elements.
+
+### Patches
+
+- Button: Set the icon button's width correctly in Safari.
+- Added defined width to ms-Persona-imageArea so that the DOM width of the control reflects the true width of the content
+
+## 0.87.1
+Fri, 13 Jan 2017 04:05:19 GMT
+
+### Patches
+
+- DetailsList: Only prevent text selection in multiple selection mode
+- Dropdown: Avoid calling stopPropagation on pressing escape if the dropdown is not expanded
 
 ## 0.87.0
 Thu, 12 Jan 2017 04:06:30 GMT

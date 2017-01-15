@@ -43,7 +43,8 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       defaultChecked,
       disabled,
       inputProps,
-      label
+      label,
+      name
     } = this.props;
 
     const { isFocused } = this.state;
@@ -60,7 +61,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
           disabled={ disabled }
           ref={ this._resolveRef('_checkBox') }
           id={ this._id }
-          name={ this._id }
+          name={ name || this._id }
           className='ms-Checkbox-input'
           type='checkbox'
           onChange={ this._onChange }
