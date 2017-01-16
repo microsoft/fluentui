@@ -84,7 +84,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
           data-is-focusable={ !disabled }
           ref={ (c): HTMLElement => this._dropDown = c }
           id={ id }
-          className={ css('ms-Dropdown', {
+          className={ css((this.props.className), 'ms-Dropdown', {
             'is-open': isOpen, 'is-disabled': disabled
           }) }
           tabIndex={ disabled ? -1 : 0 }
