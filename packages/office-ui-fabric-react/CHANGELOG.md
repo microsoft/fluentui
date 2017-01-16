@@ -1,6 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 14 Jan 2017 04:10:15 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Jan 2017 21:57:33 GMT and should not be manually modified.
+
+## 1.0.0
+Mon, 16 Jan 2017 21:57:33 GMT
+
+### Breaking changes
+
+- Icon: -BREAKING CHANGE- Change IconName from an enum to type to greatly reduce file size. Any component that is currently consuming the icon enum will break.
+- Most utilities have moved to `@uifabric/utilities`. If you refer directly to things like `/lib/utilities/autobind` you will now need to pull them directly from that package, or from the `office-ui-fabric-react/lib/Utilities` top-level import which should continue to work as expected. We are planning to split up more chunks of Fabric into smaller packages that can imported separately, but will also continue to maintain the `office-ui-fabric-react` package and its top-level imports.
+
+### Minor changes
+
+- Dropdown: Add className prop to component
+
+### Patches
+
+- DetailsRow: Change width to 100% to fix GroupedList component not extending to parent container's width
 
 ## 0.88.0
 Sat, 14 Jan 2017 04:10:15 GMT

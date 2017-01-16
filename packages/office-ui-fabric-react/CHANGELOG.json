@@ -2,6 +2,44 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "1.0.0",
+      "tag": "office-ui-fabric-react_v1.0.0",
+      "date": "Mon, 16 Jan 2017 21:57:33 GMT",
+      "comments": {
+        "major": [
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "67f2ab7c3bcc35350f78337b2b2b202b29abba76",
+            "comment": "Icon: -BREAKING CHANGE- Change IconName from an enum to type to greatly reduce file size. Any component that is currently consuming the icon enum will break."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "24d41e3383bb3cfe3ee8a557665e6d5976c40f8d",
+            "comment": "Most utilities have moved to `@uifabric/utilities`. If you refer directly to things like `/lib/utilities/autobind` you will now need to pull them directly from that package, or from the `office-ui-fabric-react/lib/Utilities` top-level import which should continue to work as expected. We are planning to split up more chunks of Fabric into smaller packages that can imported separately, but will also continue to maintain the `office-ui-fabric-react` package and its top-level imports."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "45a8939093c777fec32f063a544c4c2ece5dad56",
+            "comment": "Dropdown: Add className prop to component"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "59349d39f11f039f5d2c74d6757afe84143fc2f9",
+            "comment": "DetailsRow: Change width to 100% to fix GroupedList component not extending to parent container's width"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=1.0.0 <2.0.0` to `>=1.0.0 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.88.0",
       "tag": "office-ui-fabric-react_v0.88.0",
       "date": "Sat, 14 Jan 2017 04:10:15 GMT",
