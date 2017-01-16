@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css } from '../../utilities/css';
+import { css } from '../../Utilities';
 import './Check.scss';
 
 export interface ICheckProps extends React.Props<Check> {

@@ -160,6 +160,7 @@ gulp.task('deploy', ['bundle'], function (cb) {
 // build.sass.setConfig({ useCSSModules: true });
 
 build.task('tslint', build.tslint);
+build.task('ts', build.typescript);
 
 let runSSRTests = build.subTask('run-ssr-tests', function (gulp, buildOptions, done) {
   let themeLoader = require('@microsoft/load-themed-styles');

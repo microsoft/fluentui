@@ -1,12 +1,14 @@
 import * as React from 'react';
-import { BaseComponent } from '../../common/BaseComponent';
+import {
+  BaseComponent,
+  css,
+  getRTL
+} from '../../Utilities';
 import { IColumn, DetailsListLayoutMode, ColumnActionsMode } from './DetailsList.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Check } from '../Check/Check';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
-import { css } from '../../utilities/css';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
-import { getRTL } from '../../utilities/rtl';
 import './DetailsHeader.scss';
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button

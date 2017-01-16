@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseAutoFill } from './BaseAutoFill';
-import { KeyCodes } from '../../../utilities/KeyCodes';
+import { KeyCodes } from '../../../Utilities';
 export interface IBaseAutoFill {
 
   /**

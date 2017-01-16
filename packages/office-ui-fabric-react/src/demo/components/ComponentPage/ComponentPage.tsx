@@ -1,9 +1,11 @@
 import * as React from 'react';
 import {
+  css
+} from '../../../Utilities';
+import {
   Link
-} from '../../../index';
+} from '../../../Link';
 import './ComponentPage.scss';
-import { css } from '../../../utilities/css';
 
 export interface IComponentPageProps {
   title: string;
@@ -157,7 +159,7 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     }
 
     if (this.props.bestPractices || (this.props.dos && this.props.donts)) {
-      return(
+      return (
         <div className='ComponentPage-bestPracticesSection'>
           { dosAndDonts }
         </div>

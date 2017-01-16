@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { css } from '../../utilities/css';
+import {
+  buttonProperties,
+  css,
+  divProperties,
+  getNativeProps
+} from '../../Utilities';
 import {
   IFacepileProps,
   IFacepilePersona,
@@ -10,7 +15,6 @@ import {
   PersonaSize
 } from '../../Persona';
 import './Facepile.scss';
-import { getNativeProps, buttonProperties, divProperties } from '../../utilities/properties';
 
 export class Facepile extends React.Component<IFacepileProps, {}> {
   public static defaultProps: IFacepileProps = {
