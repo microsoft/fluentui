@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Dropdown: Add className prop to component",
+      "type": "minor"
+    }
+  ],
+  "email": "v-edwliu@microsoft.com"
+}
