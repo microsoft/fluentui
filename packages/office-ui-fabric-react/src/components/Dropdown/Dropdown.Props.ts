@@ -11,6 +11,11 @@ export interface IDropdownProps {
   id?: string;
 
   /**
+   * If provided, additional class name to provide on the root element.
+   */
+  className?: string;
+
+  /**
    * The key that will be initially used to set a selected item.
    */
   defaultSelectedKey?: string | number;
