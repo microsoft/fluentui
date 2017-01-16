@@ -19,7 +19,6 @@ import {
 import { Callout } from '../../Callout';
 import {
   Icon,
-  IconName,
   IIconProps
 } from '../../Icon';
 import './ContextualMenu.scss';
@@ -356,7 +355,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       <div className='ms-ContextualMenu-linkContent'>
         { (hasCheckmarks) ? (
           <Icon
-            iconName={ isItemChecked ? IconName.CheckMark : IconName.CustomIcon }
+            iconName={ isItemChecked ? 'CheckMark' : 'CustomIcon' }
             className={ 'ms-ContextualMenu-icon' }
             onClick={ this._onItemClick.bind(this, item) } />
         ) : (null) }
@@ -366,7 +365,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         <span className='ms-ContextualMenu-itemText'>{ item.name }</span>
         { hasSubmenuItems(item) ? (
           <Icon
-            iconName={ getRTL() ? IconName.ChevronLeft : IconName.ChevronRight }
+            iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
             { ...item.submenuIconProps }
             className={ css('ms-ContextualMenu-submenuIcon', item.submenuIconProps ? item.submenuIconProps.className : '') } />
         ) : (null) }
@@ -378,11 +377,11 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     // Only present to allow continued use of item.icon which is deprecated.
 
     let iconProps: IIconProps = item.iconProps ? item.iconProps : {
-      iconName: IconName.CustomIcon,
+      iconName: 'CustomIcon',
       className: 'ms-Icon--' + item.icon
     };
     // Use the default icon color for the known icon names
-    let iconColorClassName = iconProps.iconName === IconName.None ? '' : 'ms-ContextualMenu-iconColor';
+    let iconColorClassName = iconProps.iconName === 'None' ? '' : 'ms-ContextualMenu-iconColor';
     let iconClassName = css('ms-ContextualMenu-icon', iconColorClassName, iconProps.className);
 
     return <Icon { ...iconProps } className={ iconClassName } />;
