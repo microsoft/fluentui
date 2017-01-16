@@ -1,10 +1,14 @@
 import * as React from 'react';
-import { css } from '../../utilities/css';
-import { assign } from '../../utilities/object';
+import {
+  BaseComponent,
+  css,
+  assign,
+  getId,
+  getNativeProps,
+  buttonProperties,
+  anchorProperties
+} from '../../Utilities';
 import { IButtonProps, IButton, ButtonType } from './Button.Props';
-import { getId } from '../../utilities/object';
-import { getNativeProps, buttonProperties, anchorProperties } from '../../utilities/properties';
-import { BaseComponent } from '../../common/BaseComponent';
 import './Button.scss';
 
 export interface IButtonState {

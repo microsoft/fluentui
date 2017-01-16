@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { Image } from '../../Image';
 import { IChoiceGroupOption, IChoiceGroupProps } from './ChoiceGroup.Props';
-import { css } from '../../utilities/css';
-import { getId } from '../../utilities/object';
+import {
+  css,
+  getId
+} from '../../Utilities';
 import './ChoiceGroup.scss';
 
 export interface IChoiceGroupState {

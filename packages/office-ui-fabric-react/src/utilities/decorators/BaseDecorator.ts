@@ -1,6 +1,9 @@
 import * as React from 'react';
-import { hoistMethods, unhoistMethods } from '../hoist';
-import { BaseComponent } from '../../common/BaseComponent';
+import {
+  BaseComponent,
+  hoistMethods,
+  unhoistMethods
+} from '../../Utilities';
 
 export class BaseDecorator<P, S> extends BaseComponent<P, S> {
   protected _composedComponentInstance: React.Component<P, S>;

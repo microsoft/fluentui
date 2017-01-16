@@ -1,9 +1,11 @@
 import * as React from 'react';
+import {
+  css,
+  getId
+} from '../../Utilities';
 import { Button, ButtonType } from '../../Button';
-import './MessageBar.scss';
-import { css } from '../../utilities/css';
 import { IMessageBarProps, MessageBarType } from './MessageBar.Props';
-import { getId } from '../../utilities/object';
+import './MessageBar.scss';
 
 export interface IMessageBarState {
   labelId?: string;

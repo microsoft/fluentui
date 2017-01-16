@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   Link
-} from '../../../index';
+} from '../../../Link';
 import {
   ExampleCard,
   PropertiesTableSet,
@@ -40,10 +40,10 @@ export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, 
               <FocusTrapZoneBoxExample />
             </ExampleCard>
             <ExampleCard title='Simple Box with focus on custom focusable element' code={ FocusTrapZoneBoxExampleWithFocusableItemCode }>
-                <FocusTrapZoneBoxExampleWithFocusableItem />
+              <FocusTrapZoneBoxExampleWithFocusableItem />
             </ExampleCard>
             <ExampleCard title='Simple Box with Clicking outside Trap Zone enabled' code={ FocusTrapZoneBoxClickExampleCode }>
-              <FocusTrapZoneBoxClickExample/>
+              <FocusTrapZoneBoxClickExample />
             </ExampleCard>
           </div>
         }

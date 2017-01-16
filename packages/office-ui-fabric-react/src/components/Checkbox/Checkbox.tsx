@@ -1,12 +1,14 @@
 import * as React from 'react';
-import { BaseComponent } from '../../common/BaseComponent';
+import {
+  BaseComponent,
+  autobind,
+  css,
+  getId
+} from '../../Utilities';
 import {
   ICheckbox,
   ICheckboxProps
 } from './Checkbox.Props';
-import { autobind } from '../../utilities/autobind';
-import { css } from '../../utilities/css';
-import { getId } from '../../utilities/object';
 import './Checkbox.scss';
 
 export interface ICheckboxState {

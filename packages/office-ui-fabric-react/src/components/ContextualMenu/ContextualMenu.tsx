@@ -3,6 +3,7 @@ import { IContextualMenuProps, IContextualMenuItem, ContextualMenuItemType } fro
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import {
+  BaseComponent,
   anchorProperties,
   buttonProperties,
   getNativeProps,
@@ -16,7 +17,6 @@ import {
   getWindow
 } from '../../Utilities';
 import { Callout } from '../../Callout';
-import { BaseComponent } from '../../common/BaseComponent';
 import {
   Icon,
   IconName,
