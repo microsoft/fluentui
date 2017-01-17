@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { css } from '@uifabric/utilities';
 import './ExampleCard.scss';
 import { Button, ButtonType } from '../../../Button';
-import { css } from '../../../utilities/css';
 
 const Highlight = require('react-highlight');
 
@@ -42,11 +42,11 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
           <span className='ExampleCard-title ms-font-l'>{ title }</span>
           <div className='ExampleCard-toggleButtons ms-font-l'>
             { code ? (
-            <Button buttonType={ ButtonType.icon } icon='Embed'
-              onClick={ this._onToggleCodeClick } className={ css('ExampleCard-codeButton', { 'is-active': isCodeVisible }) }>
-              { this.state.isCodeVisible ? 'Hide code' : 'Show code' }
-            </Button>
-            ) : ( null ) }
+              <Button buttonType={ ButtonType.icon } icon='Embed'
+                onClick={ this._onToggleCodeClick } className={ css('ExampleCard-codeButton', { 'is-active': isCodeVisible }) }>
+                { this.state.isCodeVisible ? 'Hide code' : 'Show code' }
+              </Button>
+            ) : (null) }
           </div>
         </div>
 

@@ -1,5 +1,13 @@
 import * as React from 'react';
 import {
+  EventGroup,
+  KeyCodes,
+  assign,
+  autobind,
+  css,
+  getRTLSafeKeyCode
+} from '../../Utilities';
+import {
   IDetailsListProps,
   ColumnActionsMode,
   ConstrainMode,
@@ -14,10 +22,6 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { GroupedList } from '../../GroupedList';
 import { List } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
-import { assign } from '../../utilities/object';
-import { css } from '../../utilities/css';
-import { autobind } from '../../utilities/autobind';
-
 import {
   IObjectWithKey,
   ISelection,
@@ -25,9 +29,6 @@ import {
   SelectionMode,
   SelectionZone
 } from '../../utilities/selection/index';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
-import { getRTLSafeKeyCode } from '../../utilities/rtl';
-import { KeyCodes } from '../../utilities/KeyCodes';
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
 import './DetailsList.scss';
 

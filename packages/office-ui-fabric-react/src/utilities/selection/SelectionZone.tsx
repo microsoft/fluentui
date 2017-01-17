@@ -5,7 +5,8 @@ import {
   autobind,
   getParent,
   getDocument,
-  getWindow
+  getWindow,
+  isElementTabbable
 } from '../../Utilities';
 import { SelectionLayout } from './SelectionLayout';
 import {
@@ -14,9 +15,6 @@ import {
   SelectionDirection,
   SelectionMode
 } from './interfaces';
-import {
-  isElementTabbable
-} from '../../utilities/focus';
 
 // Selection definitions:
 //

@@ -22,12 +22,14 @@
     "highlight.js": "9.6.0",
     "mocha": "~2.5.3",
     "office-ui-fabric-core": "^5.0.1",
+    "react": ">=15.0.0 <16.0.0",
     "react-addons-test-utils": "^15.1.0",
+    "react-dom": ">=15.0.0 <16.0.0",
     "react-highlight": "0.8.0",
     "source-map-loader": "0.1.5",
     "tslint": "^3.15.1",
     "tslint-microsoft-contrib": "^2.0.9",
-    "typescript": "^2.1.0",
+    "typescript": "~2.1.0",
     "vinyl-ftp": "0.4.5",
     "webpack-bundle-analyzer": "^2.2.1",
     "webpack-split-by-path": "0.0.10",
@@ -35,5 +37,8 @@
     "@types/react": "^0.14.41",
     "@types/react-dom": "^0.14.18",
     "color-functions": "^1.1.0"
+  },
+  "rushDependencies": {
+    "@uifabric/utilities": ">=1.0.0 <2.0.0"
   }
 }

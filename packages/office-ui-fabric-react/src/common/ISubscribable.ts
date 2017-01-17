@@ -1,4 +1,4 @@
-import { IDisposable } from './IDisposable';
+import { IDisposable } from '../Utilities';
 
 export interface IEmptyFunction {
   (): void;
