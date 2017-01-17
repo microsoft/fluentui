@@ -218,29 +218,26 @@ $button-silhouetteButtonHeight: 40px;
   border: 0;
   padding: 10px 0px;
   height: auto;
-
-  .ms-Icon {
-    line-height: $button-silhouetteButtonHeight;
-  }
+  display: flex;
+  align-items: center;
 
   .ms-Button-icon {
     color: $ms-color-white;
     background-color: $ms-color-themePrimary;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     @include margin-right(8px);
     height: $button-silhouetteButtonHeight;
     width: $button-silhouetteButtonHeight;
     border-radius: 50%;
-    vertical-align: middle;
     font-size: $ms-icon-size-l;
-    text-align: center;
   }
 
   .ms-Button-label {
     @include ms-font-m-plus;
     color: $ms-color-themePrimary;
     font-weight: $ms-font-weight-light;
-    vertical-align: middle;
   }
 
   &:hover,
@@ -279,6 +276,7 @@ $button-silhouetteButtonHeight: 40px;
       color: $ms-color-neutralTertiary;
     }
   }
+}
 
 //== Modifier: Compound button
 //
