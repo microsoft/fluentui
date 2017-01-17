@@ -9,6 +9,7 @@
 
 .ms-Button {
   @include focus-border();
+  @include ms-font-m;
   @include ms-u-normalize;
   & + & {
     @include margin-left(6px);
