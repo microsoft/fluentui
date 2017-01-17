@@ -1,10 +1,8 @@
 import * as React from 'react';
 import {
   css
-} from '../../../Utilities';
-import {
-  Link
-} from '../../../Link';
+} from '@uifabric/utilities';
+import { Link } from 'office-ui-fabric-react/lib/Link';
 import './ComponentPage.scss';
 
 export interface IComponentPageProps {
