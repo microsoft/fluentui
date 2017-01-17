@@ -1,20 +1,18 @@
 import * as React from 'react';
 import {
+  autobind,
   css,
   divProperties,
   getNativeProps,
   getRTL
 } from '../../Utilities';
-import { Image, ImageFit } from '../../Image';
+import { Image, ImageFit, ImageLoadState } from '../../Image';
 import {
   IPersonaProps,
   PersonaInitialsColor,
   PersonaPresence,
   PersonaSize
 } from './Persona.Props';
-import {
-  autobind,
-} from '../../Utilities';
 import {
   PERSONA_INITIALS_COLOR,
   PERSONA_PRESENCE,
@@ -77,14 +75,6 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
     this.state = {
       isImageLoaded: false,
     };
-  }
-
-  public componentWillReceiveProps(nextProps: IPersonaProps) {
-    if (nextProps.imageUrl !== this.props.imageUrl) {
-      this.setState({
-        isImageLoaded: false,
-      });
-    }
   }
 
   public render() {
@@ -151,8 +141,12 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
               !this.state.isImageLoaded &&
               (<div className={ css('ms-Persona-initials', PERSONA_INITIALS_COLOR[initialsColor]) }>{ imageInitials }</div>)
             }
-            <Image className='ms-Persona-image' imageFit={ ImageFit.cover } src={ imageUrl } shouldFadeIn={ imageShouldFadeIn }
-              onImageLoad={ this._onPhotoLoad } />
+            <Image
+              className='ms-Persona-image'
+              imageFit={ ImageFit.cover }
+              src={ imageUrl }
+              shouldFadeIn={ imageShouldFadeIn }
+              onLoadingStateChange={ this._onPhotoLoadingStateChange } />
           </div>
         ) }
         { presenceElement }
@@ -214,9 +208,9 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
   }
 
   @autobind
-  private _onPhotoLoad(success: boolean) {
+  private _onPhotoLoadingStateChange(loadState: ImageLoadState) {
     this.setState({
-      isImageLoaded: success
+      isImageLoaded: loadState === ImageLoadState.loaded
     });
   }
 }

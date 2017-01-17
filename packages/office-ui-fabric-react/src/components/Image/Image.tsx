@@ -7,7 +7,7 @@ import {
   getNativeProps,
   imageProperties
 } from '../../Utilities';
-import { IImageProps, ImageFit } from './Image.Props';
+import { IImageProps, ImageFit, ImageLoadState } from './Image.Props';
 
 import './Image.scss';
 
@@ -31,13 +31,6 @@ export const ImageFitMap = {
   [ImageFit.cover]: 'ms-Image-image--cover',
   [ImageFit.none]: 'ms-Image-image--none'
 };
-
-export enum ImageLoadState {
-  notLoaded,
-  loaded,
-  error,
-  errorLoaded
-}
 
 export class Image extends BaseComponent<IImageProps, IImageState> {
   public static defaultProps = {
@@ -87,6 +80,11 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
         }
       }
     }
+
+    if (this.props.onLoadingStateChange
+      && prevState.loadState !== this.state.loadState) {
+      this.props.onLoadingStateChange(this.state.loadState);
+    }
   }
 
   public render() {
@@ -130,7 +128,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
   }
 
   private _evaluateImage(): boolean {
-    let { src, onImageLoad } = this.props;
+    let { src } = this.props;
     let { loadState } = this.state;
     let isLoaded = (src && this._imageElement.naturalWidth > 0 && this._imageElement.naturalHeight > 0);
 
@@ -139,10 +137,6 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
     if (isLoaded && loadState !== ImageLoadState.loaded && loadState !== ImageLoadState.errorLoaded) {
       this._events.off();
       this._eventsAttached = false;
-
-      if (onImageLoad) {
-        onImageLoad(loadState !== ImageLoadState.error);
-      }
 
       this.setState({
         loadState: loadState === ImageLoadState.error ? ImageLoadState.errorLoaded : ImageLoadState.loaded

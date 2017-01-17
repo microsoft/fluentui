@@ -29,10 +29,10 @@ export interface IImageProps extends React.HTMLProps<HTMLImageElement> {
   maximizeFrame?: boolean;
 
   /**
-   * Optional callback method for when the image is loaded or is in error.
-   * The 'success' parameter indicates whether the loading was successful or in error.
+   * Optional callback method for when the image load state has changes
+   * The 'loadState' parameter indicates the current state of the Image
    */
-  onImageLoad?: (success: boolean) => void;
+  onLoadingStateChange?: (loadState: ImageLoadState) => void;
 }
 
 /**
@@ -62,4 +62,26 @@ export enum ImageFit {
    * frame will have empty space.
    */
   none
+}
+
+export enum ImageLoadState {
+  /**
+   * The image has not yet been loaded, and there is no error yet.
+   */
+  notLoaded,
+
+  /**
+   * The image has been loaded successfully.
+   */
+  loaded,
+
+  /**
+   * An error has been encountered while loading the image.
+   */
+  error,
+
+  /**
+   * The image was not successfully loaded due to an error.
+   */
+  errorLoaded
 }
