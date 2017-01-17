@@ -39,6 +39,7 @@ export class Button extends BaseComponent<IButtonProps, IButtonState> implements
     const className = css((this.props.className), 'ms-Button', {
       'ms-Button--primary': buttonType === ButtonType.primary,
       'ms-Button--hero': buttonType === ButtonType.hero,
+      'ms-Button--silhouette': buttonType === ButtonType.silhouette,
       'ms-Button--compound': buttonType === ButtonType.compound,
       'ms-Button--command': buttonType === ButtonType.command,
       'ms-Button--icon': buttonType === ButtonType.icon,
@@ -46,7 +47,7 @@ export class Button extends BaseComponent<IButtonProps, IButtonState> implements
       // if not utilize default button disabled behavior.
     });
 
-    const iconSpan = icon && (buttonType === ButtonType.command || buttonType === ButtonType.hero || buttonType === ButtonType.icon)
+    const iconSpan = icon && (buttonType === ButtonType.command || buttonType === ButtonType.hero || buttonType === ButtonType.silhouette || buttonType === ButtonType.icon)
       ? <span className='ms-Button-icon'><i className={ `ms-Icon ms-Icon--${icon}` }></i></span>
       : null;
 

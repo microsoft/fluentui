@@ -8,6 +8,7 @@
 // Button styles
 
 $button-commandButtonHeight: 40px;
+$button-silhouetteButtonHeight: 40px;
 
 .ms-Button {
   @include focus-border();
@@ -210,6 +211,74 @@ $button-commandButtonHeight: 40px;
   }
 }
 
+//== Modifier: Silhouette button
+//
+.ms-Button--silhouette {
+  background-color: transparent;
+  border: 0;
+  padding: 10px 0px;
+  height: auto;
+
+  .ms-Icon {
+    line-height: $button-silhouetteButtonHeight;
+  }
+
+  .ms-Button-icon {
+    color: $ms-color-white;
+    background-color: $ms-color-themePrimary;
+    display: inline-block;
+    @include margin-right(8px);
+    height: $button-silhouetteButtonHeight;
+    width: $button-silhouetteButtonHeight;
+    border-radius: 50%;
+    vertical-align: middle;
+    font-size: $ms-icon-size-l;
+    text-align: center;
+  }
+
+  .ms-Button-label {
+    @include ms-font-m-plus;
+    color: $ms-color-themePrimary;
+    font-weight: $ms-font-weight-light;
+    vertical-align: middle;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+
+    .ms-Button-icon {
+      color: $ms-color-white;
+      background-color: $ms-color-themeDark;
+    }
+
+    .ms-Button-label {
+      color: $ms-color-themeDarker;
+    }
+  }
+
+  &:active {
+    .ms-Button-icon {
+      color: $ms-color-white;
+      background-color: $ms-color-themePrimary;
+    }
+
+    .ms-Button-label {
+      color: $ms-color-themePrimary;
+    }
+  }
+
+  &:disabled,
+  &.is-disabled {
+    .ms-Button-icon {
+      color: $ms-color-white;
+      background-color: $ms-color-neutralTertiaryAlt;
+    }
+
+    .ms-Button-label {
+      color: $ms-color-neutralTertiary;
+    }
+  }
 
 //== Modifier: Compound button
 //
