@@ -16,7 +16,7 @@ export interface IButtonState {
   ariaDescriptionId?: string;
 }
 
-export class ButtonBase extends BaseComponent<IButtonProps, IButtonState> implements IButton {
+export abstract class ButtonBase extends BaseComponent<IButtonProps, IButtonState> implements IButton {
   public static defaultProps: IButtonProps = {
     buttonType: ButtonType.default
   };
