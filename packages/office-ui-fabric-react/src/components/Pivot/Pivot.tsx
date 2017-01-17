@@ -1,15 +1,16 @@
 import * as React from 'react';
+import {
+  KeyCodes,
+  css,
+  getId
+} from '../../Utilities';
 import { IPivotProps } from './Pivot.Props';
 import { IPivotItemProps } from './PivotItem.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { KeyCodes } from '../../utilities/KeyCodes';
 import { PivotItem } from './PivotItem';
 import { PivotLinkFormat } from './Pivot.Props';
 import { PivotLinkSize } from './Pivot.Props';
-import { getId } from '../../utilities/object';
-
 import './Pivot.scss';
-import { css } from '../../utilities/css';
 
 /**
  *  Usage:

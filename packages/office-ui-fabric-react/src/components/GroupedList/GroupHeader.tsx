@@ -1,12 +1,14 @@
 import * as React from 'react';
+import {
+  autobind,
+  css
+} from '../../Utilities';
 import { IGroupDividerProps } from './GroupedList.Props';
 import { SelectionMode } from '../../utilities/selection/index';
 import { Check } from '../Check/Check';
 import { GroupSpacer } from './GroupSpacer';
 import { Spinner } from '../../Spinner';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { css } from '../../utilities/css';
-import { autobind } from '../../utilities/autobind';
 import './GroupHeader.scss';
 
 export interface IGroupHeaderState {

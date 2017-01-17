@@ -6,7 +6,7 @@ import { App } from './components/App/App';
 import { AppState } from './components/App/AppState';
 import { Router, Route } from '../utilities/router/index';
 import { GettingStartedPage } from './pages/GettingStartedPage/GettingStartedPage';
-import { setBaseUrl } from '../utilities/resources';
+import { setBaseUrl } from '../Utilities';
 import { Fabric } from '../Fabric';
 import * as Debugging from './utilities/debugging';
 

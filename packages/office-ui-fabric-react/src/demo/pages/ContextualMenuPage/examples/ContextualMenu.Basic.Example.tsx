@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ContextualMenu, DirectionalHint, Button, getRTL, IconName, Callout } from '../../../../index';
+import { ContextualMenu, DirectionalHint, Button, getRTL, Callout } from '../../../../index';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuBasicExample extends React.Component<any, any> {
@@ -31,7 +31,7 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                 {
                   key: 'newItem',
                   iconProps: {
-                    iconName: IconName.Add
+                    iconName: 'Add'
                   },
                   subMenuProps: {
                     items: [
@@ -55,7 +55,7 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                     this.setState({ showCallout: true });
                   },
                   iconProps: {
-                    iconName: IconName.Upload,
+                    iconName: 'Upload',
                     style: {
                       color: 'salmon'
                     }
@@ -87,7 +87,7 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                 {
                   key: 'share',
                   iconProps: {
-                    iconName: IconName.Share
+                    iconName: 'Share'
                   },
                   subMenuProps: {
                     items: [
@@ -95,7 +95,7 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                         key: 'sharetoemail',
                         name: 'Share to Email',
                         iconProps: {
-                          iconName: IconName.Mail
+                          iconName: 'Mail'
                         },
                       },
                       {
@@ -106,7 +106,7 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                         key: 'sharetotwitter',
                         name: 'Share to Twitter',
                         iconProps: {
-                          iconName: IconName.Share
+                          iconName: 'Share'
                         },
                         subMenuProps: {
                           items: [
@@ -115,7 +115,7 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                               name: 'Share to Email',
                               title: 'Share to Email',
                               iconProps: {
-                                iconName: IconName.Mail
+                                iconName: 'Mail'
                               },
                             },
                             {
@@ -128,7 +128,7 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                               name: 'Share to Twitter',
                               title: 'Share to Twitter',
                               iconProps: {
-                                iconName: IconName.Share
+                                iconName: 'Share'
                               }
                             },
                           ],
@@ -141,14 +141,14 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                 {
                   key: 'print',
                   iconProps: {
-                    iconName: IconName.Print
+                    iconName: 'Print'
                   },
                   name: 'Print'
                 },
                 {
                   key: 'music',
                   iconProps: {
-                    iconName: IconName.MusicInCollectionFill
+                    iconName: 'MusicInCollectionFill'
                   },
                   name: 'Music',
                 },

@@ -3,8 +3,10 @@ import { ContextualMenu } from './ContextualMenu';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZoneDirection } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.Props';
-import { IRectangle } from '../../common/IRectangle';
-import { IPoint } from '../../common/IPoint';
+import {
+  IPoint,
+  IRectangle
+} from '../../Utilities';
 export { DirectionalHint } from '../../common/DirectionalHint';
 
 export enum ContextualMenuItemType {
