@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ChoiceGroup: onChanged deprecated and replaced with onchange",
+      "comment": "ChoiceGroup: onChanged deprecated and replaced with onChange",
       "type": "minor"
     },
     {

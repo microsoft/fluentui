@@ -8,7 +8,7 @@ export interface IChoiceGroupProps extends React.HTMLProps<HTMLElement> {
 
   /**
    * @deprecated
-   * Deprecated and will be removed by v 1.0. Use 'onChange' instead.
+   * Deprecated and will be removed by 07/17/2017 Use 'onChange' instead.
    */
   onChanged?: (option: IChoiceGroupOption, evt?: React.FormEvent<HTMLInputElement>) => void;
 
