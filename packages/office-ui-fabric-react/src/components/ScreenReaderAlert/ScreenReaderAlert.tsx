@@ -51,7 +51,7 @@ export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, 
 
     this.state = {
       alertText: ''
-    }
+    };
   }
 
   public componentWillReceiveProps(nextProps: IScreenReaderAlertProps): void {
@@ -63,7 +63,7 @@ export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, 
 
     this.setState({
       alertText: this._getTextContentFromReactChild(React.Children.toArray(nextProps.children))
-    })
+    });
   }
 
   public shouldComponentUpdate(nextProps: IScreenReaderAlertProps, nextState: IScreenReaderAlertState): boolean {
@@ -78,7 +78,7 @@ export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, 
         alertText: ''
       });
       this._clearTextTimeout = undefined;
-    }, 500)
+    }, 500);
   }
 
   public render(): JSX.Element {
