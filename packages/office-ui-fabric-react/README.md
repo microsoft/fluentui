@@ -4,6 +4,7 @@
 
 [![npm version](https://badge.fury.io/js/office-ui-fabric-react.svg)](https://badge.fury.io/js/office-ui-fabric-react)
 [![Build Status](https://travis-ci.org/OfficeDev/office-ui-fabric-react.svg?branch=master)](https://travis-ci.org/OfficeDev/office-ui-fabric-react)
+[![Dependencies](https://david-dm.org/OfficeDev/office-ui-fabric-react.svg)](https://david-dm.org/OfficeDev/office-ui-fabric-react)
 
 Fabric React is a responsive, mobile-first collection of robust components designed to make it quick and simple for you to create web experiences using the Office Design Language.
 
