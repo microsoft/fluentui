@@ -18,7 +18,7 @@ import { FocusTrapZonePage } from '../../pages/FocusTrapZonePage/FocusTrapZonePa
 import { GroupedListPage } from '../../pages/GroupedListPage/GroupedListPage';
 import { IconPage } from '../../pages/IconPage/IconPage';
 import { ImagePage } from '../../pages/ImagePage/ImagePage';
-import { INavLink, INavLinkGroup } from 'office-ui-fabric-react/lib/Nav';
+import { INavLink, INavLinkGroup } from '../../../components/Nav/index';
 import { LabelPage } from '../../pages/LabelPage/LabelPage';
 import { LayerPage } from '../../pages/LayerPage/LayerPage';
 import { LinkPage } from '../../pages/LinkPage/LinkPage';
