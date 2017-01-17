@@ -22,6 +22,6 @@
     "typescript": "^2.0.6"
   },
   "rushDependencies": {
-    "office-ui-fabric-react": ">=0.88.0 <1.0.0"
+    "office-ui-fabric-react": ">=1.0.0 <2.0.0"
   }
 }

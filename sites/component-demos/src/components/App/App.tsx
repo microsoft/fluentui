@@ -1,16 +1,11 @@
 import * as React from 'react';
-import {
-  css,
-  Fabric,
-  Panel,
-  PanelType
-} from '../../../index';
-import {
-  Header
-} from '../index';
-import { Nav } from '../../../Nav';
+import { css } from '@uifabric/utilities';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { Nav } from 'office-ui-fabric-react/lib/Nav';
+import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
+import { withResponsiveMode, ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
+import { Header } from '../Header/Header';
 import { AppState, ExampleStatus } from './AppState';
-import { withResponsiveMode, ResponsiveMode } from '../../../utilities/decorators/withResponsiveMode';
 import './App.scss';
 
 export interface IAppProps extends React.Props<App> {
@@ -39,13 +34,13 @@ export class App extends React.Component<IAppProps, any> {
     let { isMenuVisible } = this.state;
 
     let navPanel = (
-      <Nav groups={ AppState.examplePages } onLinkClick={ this._onLinkClick } onRenderLink={(link) => ([
+      <Nav groups={ AppState.examplePages } onLinkClick={ this._onLinkClick } onRenderLink={ (link) => ([
         <span key={ 1 } className='Nav-linkText'>{ link.name }</span>,
         (link.status !== undefined ?
-          <span key={ 2 } className={ 'Nav-linkFlair ' + 'is-state' + link.status } >{ ExampleStatus[link.status]}</span> :
+          <span key={ 2 } className={ 'Nav-linkFlair ' + 'is-state' + link.status } >{ ExampleStatus[link.status] }</span> :
           null)
       ]) }
-        />
+      />
     );
 
     return (
@@ -57,7 +52,7 @@ export class App extends React.Component<IAppProps, any> {
             sideLinks={ AppState.headerLinks }
             isMenuVisible={ isMenuVisible }
             onIsMenuVisibleChanged={ this._onIsMenuVisibleChanged }
-            />
+          />
         </div>
 
         { (responsiveMode > ResponsiveMode.large) ? (

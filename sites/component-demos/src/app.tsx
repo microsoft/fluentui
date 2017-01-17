@@ -2,12 +2,12 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import * as ReactDOM from 'react-dom';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { Router, Route } from 'office-ui-fabric-react/lib/utilities/router/index';
+import { setBaseUrl } from '@uifabric/utilities';
 import { App } from './components/App/App';
 import { AppState } from './components/App/AppState';
-import { Router, Route } from '../utilities/router/index';
 import { GettingStartedPage } from './pages/GettingStartedPage/GettingStartedPage';
-import { setBaseUrl } from '../Utilities';
-import { Fabric } from '../Fabric';
 import * as Debugging from './utilities/debugging';
 
 import './app.scss';
