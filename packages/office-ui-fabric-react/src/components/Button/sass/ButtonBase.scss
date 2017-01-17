@@ -5,7 +5,7 @@
 // --------------------------------------------------
 // Button styles
 
-@import '../../common/common';
+@import '../../../common/common';
 
 .ms-Button {
   @include focus-border();
@@ -47,10 +47,3 @@
     display: none;
   }
 }
-
-@import 'variants/ButtonCommand';
-@import 'variants/ButtonCompound';
-@import 'variants/ButtonDefault';
-@import 'variants/ButtonHero';
-@import 'variants/ButtonIcon';
-@import 'variants/ButtonPrimary';

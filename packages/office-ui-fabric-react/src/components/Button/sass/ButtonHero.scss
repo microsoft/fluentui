@@ -1,4 +1,4 @@
-@import 'ButtonCore.scss';
+@import '../../../common/common';
 
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
 
@@ -7,51 +7,48 @@
 // --------------------------------------------------
 // Button styles
 
-$button-commandButtonHeight: 40px;
-
-.ms-Button--command {
-  @include text-align(left);
-  & + & {
-    @include margin-left(14px);
-  }
+//== Modifier: Hero button
+//
+.ms-Button--hero {
   background-color: transparent;
-  border: none;
-  height: $button-commandButtonHeight;
-  padding: 0 8px;
-
-  .ms-Icon {
-    line-height: $button-commandButtonHeight;
-  }
-
-  .ms-Button-label {
-    @include ms-font-m;
-    font-weight: $ms-font-weight-regular;
-    color: $ms-color-neutralPrimary;
-    line-height: $button-commandButtonHeight;
-  }
+  border: 0;
+  padding: 4px 20px 6px;
 
   .ms-Button-icon {
-    vertical-align: top;
-    @include text-align(left);
     color: $ms-color-themePrimary;
     display: inline-block;
     @include margin-right(8px);
-    position: relative;
-    font-size: $ms-icon-size-m;
+    padding-top: 5px;
+    font-size: $ms-icon-size-l;
+    line-height: 1; // FireFox vertical offset
+  }
+
+  .ms-Button-label {
+    color: $ms-color-themePrimary;
+    font-size: $ms-font-size-xl;
+    font-weight: $ms-font-weight-light;
+    vertical-align: top;
+    display: inline-block;
   }
 
   &:hover,
   &:focus {
     background-color: transparent;
 
-    .ms-Button-icon,
+    .ms-Button-icon {
+      color: $ms-color-themeDark;
+    }
+
     .ms-Button-label {
       color: $ms-color-themeDarker;
     }
   }
 
   &:active {
-    .ms-Button-icon,
+    .ms-Button-icon {
+      color: $ms-color-themePrimary;
+    }
+
     .ms-Button-label {
       color: $ms-color-themePrimary;
     }
@@ -62,8 +59,9 @@ $button-commandButtonHeight: 40px;
     .ms-Button-icon {
       color: $ms-color-neutralTertiaryAlt;
     }
-  }
-  & + & {
-    @include margin-left(14px);
+
+    .ms-Button-label {
+      color: $ms-color-neutralTertiary;
+    }
   }
 }

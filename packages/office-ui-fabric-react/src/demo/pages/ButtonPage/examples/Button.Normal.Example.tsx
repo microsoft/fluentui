@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  Button,
+  DefaultButton,
   Label
 } from '../../../../index';
 import { IButtonProps } from './IButtonProps';
@@ -16,7 +16,7 @@ export class ButtonNormalExample extends React.Component<IButtonProps, {}> {
     return (
       <div className='ms-BasicButtonsExample'>
         <Label>Normal button</Label>
-        <Button data-automation-id='test' disabled={ disabled }>Create account</Button>
+        <DefaultButton data-automation-id='test' disabled={ disabled }>Create account</DefaultButton>
       </div>
     );
   }
