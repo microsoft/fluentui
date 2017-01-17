@@ -17,6 +17,7 @@
     "trailing-comma": [
       false
     ],
-    "no-internal-module": false
+    "no-internal-module": false,
+    "prefer-const": false
   }
 }

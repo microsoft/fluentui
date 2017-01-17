@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
+import { EventGroup } from '../../Utilities';
 
 export interface IDragDropHelper {
   subscribe: (root: HTMLElement, events: EventGroup, options: IDragDropOptions) => void;

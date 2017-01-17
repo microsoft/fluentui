@@ -4,7 +4,7 @@ import {
   ISelection,
   SelectionMode
 } from '../../utilities/selection/index';
-import { IRenderFunction } from '../../common/IRenderFunction';
+import { IRenderFunction } from '../../Utilities';
 import {
   IDragDropEvents,
   IDragDropContext,

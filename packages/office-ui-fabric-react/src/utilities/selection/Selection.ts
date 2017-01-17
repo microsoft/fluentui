@@ -1,5 +1,5 @@
 import { IObjectWithKey, ISelection, SELECTION_CHANGE } from './interfaces';
-import { EventGroup } from '../eventGroup/EventGroup';
+import { EventGroup } from '../../Utilities';
 
 export interface ISelectionOptions {
   onSelectionChanged?: () => void;

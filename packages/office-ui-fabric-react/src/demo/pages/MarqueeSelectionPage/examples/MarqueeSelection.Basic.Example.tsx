@@ -3,12 +3,14 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import {
+  css,
+  createArray
+} from '@uifabric/utilities';
+import {
   Checkbox,
   Selection,
-  MarqueeSelection,
-  css
+  MarqueeSelection
 } from '../../../../index';
-import { createArray } from '../../../../utilities/array';
 import './MarqueeSelection.Basic.Example.scss';
 
 const PHOTOS = createArray(250, () => {
@@ -36,11 +38,13 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
       isMarqueeEnabled: true
     };
 
-    this._selection = new Selection({ onSelectionChanged: () => {
-      if (this._isMounted) {
-        this.forceUpdate();
+    this._selection = new Selection({
+      onSelectionChanged: () => {
+        if (this._isMounted) {
+          this.forceUpdate();
+        }
       }
-    }});
+    });
 
     this._selection.setItems(PHOTOS);
   }

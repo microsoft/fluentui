@@ -1,6 +1,6 @@
 import * as React from 'react';
+import { css } from '../../Utilities';
 import { ISpinnerProps, SpinnerType } from './Spinner.Props';
-import { css } from '../../utilities/css';
 import './Spinner.scss';
 
 export class Spinner extends React.Component<ISpinnerProps, any> {
@@ -14,12 +14,12 @@ export class Spinner extends React.Component<ISpinnerProps, any> {
     return (
       <div className={ css('ms-Spinner', className) }>
         <div className={ css('ms-Spinner-circle',
-            { 'ms-Spinner--normal': type === SpinnerType.normal },
-            { 'ms-Spinner--large': type === SpinnerType.large })
-          }>
+          { 'ms-Spinner--normal': type === SpinnerType.normal },
+          { 'ms-Spinner--large': type === SpinnerType.large })
+        }>
         </div>
         { label && (
-          <div className='ms-Spinner-label'>{label}</div>
+          <div className='ms-Spinner-label'>{ label }</div>
         ) }
       </div>
     );

@@ -1,12 +1,14 @@
 import * as React from 'react';
-import { BaseComponent } from '../../common/BaseComponent';
+import {
+  BaseComponent,
+  autobind,
+  css,
+  getId
+} from '../../Utilities';
 import {
   ICheckbox,
   ICheckboxProps
 } from './Checkbox.Props';
-import { autobind } from '../../utilities/autobind';
-import { css } from '../../utilities/css';
-import { getId } from '../../utilities/object';
 import './Checkbox.scss';
 
 export interface ICheckboxState {
@@ -41,7 +43,8 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
       defaultChecked,
       disabled,
       inputProps,
-      label
+      label,
+      name
     } = this.props;
 
     const { isFocused } = this.state;
@@ -58,7 +61,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
           disabled={ disabled }
           ref={ this._resolveRef('_checkBox') }
           id={ this._id }
-          name={ this._id }
+          name={ name || this._id }
           className='ms-Checkbox-input'
           type='checkbox'
           onChange={ this._onChange }

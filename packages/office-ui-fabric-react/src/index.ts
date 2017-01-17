@@ -47,10 +47,3 @@ export * from './TextField';
 export * from './Toggle';
 export * from './Tooltip';
 export * from './Utilities';
-
-/* Special cases that will be removed once we've moved utilities out into a common location. */
-export * from './utilities/css';
-export * from './utilities/KeyCodes';
-export * from './utilities/eventGroup/EventGroup';
-export * from './utilities/Async/Async';
-export * from './utilities/rtl';

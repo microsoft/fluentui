@@ -66,7 +66,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
 
   public render() {
     let id = this._id;
-    let { label, options, disabled, isDisabled, onRenderItem = this._onRenderItem } = this.props;
+    let { className, label, options, disabled, isDisabled, onRenderItem = this._onRenderItem } = this.props;
     let { isOpen, selectedIndex } = this.state;
     let selectedOption = options[selectedIndex];
 
@@ -84,7 +84,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
           data-is-focusable={ !disabled }
           ref={ (c): HTMLElement => this._dropDown = c }
           id={ id }
-          className={ css('ms-Dropdown', {
+          className={ css('ms-Dropdown', className, {
             'is-open': isOpen, 'is-disabled': disabled
           }) }
           tabIndex={ disabled ? -1 : 0 }

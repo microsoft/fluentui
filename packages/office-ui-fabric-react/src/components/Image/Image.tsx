@@ -1,9 +1,12 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { css } from '../../utilities/css';
-import { BaseComponent } from '../../common/BaseComponent';
-import { getNativeProps, imageProperties } from '../../utilities/properties';
+import {
+  BaseComponent,
+  css,
+  getNativeProps,
+  imageProperties
+} from '../../Utilities';
 import { IImageProps, ImageFit } from './Image.Props';
 
 import './Image.scss';

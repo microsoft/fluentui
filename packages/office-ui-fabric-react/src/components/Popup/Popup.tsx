@@ -1,10 +1,13 @@
 import * as React from 'react';
+import {
+  BaseComponent,
+  KeyCodes,
+  divProperties,
+  doesElementContainFocus,
+  getDocument,
+  getNativeProps
+} from '../../Utilities';
 import { IPopupProps } from './Popup.Props';
-import { KeyCodes } from '../../utilities/KeyCodes';
-import { BaseComponent } from '../../common/BaseComponent';
-import { getNativeProps, divProperties } from '../../Utilities';
-import { doesElementContainFocus } from '../../utilities/focus';
-import { getDocument } from '../../utilities/dom';
 
 /**
  * This adds accessibility to Dialog and Panel controls

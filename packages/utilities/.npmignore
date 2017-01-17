@@ -1,6 +1,7 @@
 *.config.js
 *.nuspec
 *.yml
+*.test.*
 .editorconfig
 .gitattributes
 .gitignore

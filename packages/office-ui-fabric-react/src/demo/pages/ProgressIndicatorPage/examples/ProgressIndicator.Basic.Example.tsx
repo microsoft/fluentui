@@ -2,10 +2,10 @@ import * as React from 'react';
 import {
   ProgressIndicator
 } from '../../../../index';
-import { Async } from '../../../../utilities/Async/Async';
+import { Async } from '@uifabric/utilities';
 
 export interface IProgressIndicatorBasicExampleState {
-    percentComplete: number;
+  percentComplete: number;
 }
 
 const INTERVAL_DELAY: number = 100;
@@ -23,7 +23,7 @@ export class ProgressIndicatorBasicExample extends React.Component<any, IProgres
     this._async = new Async(this);
 
     this.state = {
-        percentComplete: 0
+      percentComplete: 0
     };
     this._startProgressDemo = this._startProgressDemo.bind(this);
   }
@@ -50,7 +50,7 @@ export class ProgressIndicatorBasicExample extends React.Component<any, IProgres
   private _startProgressDemo() {
     // reset the demo
     this.setState({
-        percentComplete: 0
+      percentComplete: 0
     });
 
     // update progress
@@ -64,7 +64,7 @@ export class ProgressIndicatorBasicExample extends React.Component<any, IProgres
         this._async.setTimeout(this._startProgressDemo, RESTART_WAIT_TIME);
       }
       this.setState({
-          percentComplete: percentComplete
+        percentComplete: percentComplete
       });
     }, INTERVAL_DELAY);
   }

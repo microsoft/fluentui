@@ -1,13 +1,16 @@
 import * as React from 'react';
+import {
+  EventGroup,
+  assign,
+  css,
+  shallowCompare
+} from '../../Utilities';
 import { IColumn, CheckboxVisibility } from './DetailsList.Props';
 import { DetailsRowCheck, IDetailsRowCheckProps } from './DetailsRowCheck';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { DetailsRowFields } from './DetailsRowFields';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
-import { shallowCompare, assign } from '../../utilities/object';
-import { css } from '../../utilities/css';
 import {
   IDragDropHelper,
   IDragDropEvents,
