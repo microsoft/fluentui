@@ -1,6 +1,10 @@
 import * as React from 'react';
-import { css } from '../../utilities/css';
-import { getRTL } from '../../utilities/rtl';
+import {
+  css,
+  divProperties,
+  getNativeProps,
+  getRTL
+} from '../../Utilities';
 import { Image, ImageFit } from '../../Image';
 import {
   IPersonaProps,
@@ -16,8 +20,6 @@ import {
   PERSONA_PRESENCE,
   PERSONA_SIZE
 } from './PersonaConsts';
-import { getNativeProps, divProperties } from '../../utilities/properties';
-
 import './Persona.scss';
 
 /** Regex to detect words within paraenthesis in a string where gi implies global and case-insensitive. */

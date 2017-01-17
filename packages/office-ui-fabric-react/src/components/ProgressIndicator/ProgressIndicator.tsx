@@ -2,9 +2,11 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
+import {
+  BaseComponent,
+  css
+} from '../../Utilities';
 import { IProgressIndicatorProps } from './ProgressIndicator.Props';
-import { BaseComponent } from '../../common/BaseComponent';
-import { css } from '../../utilities/css';
 import './ProgressIndicator.scss';
 
 // if the percentComplete is near 0, don't animate it.
@@ -41,8 +43,8 @@ export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}
         <div className='ms-ProgressIndicator-itemProgress'>
           <div className='ms-ProgressIndicator-progressTrack'></div>
           <div className={ css('ms-ProgressIndicator-progressBar', {
-              'smoothTransition': percentComplete > ZERO_THRESHOLD
-            })}
+            'smoothTransition': percentComplete > ZERO_THRESHOLD
+          }) }
             style={ { width: percentComplete + '%' } }
             role='progressbar'
             aria-valuemin='0'

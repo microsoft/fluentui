@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-addons-test-utils';
 import { setResponsiveMode, withResponsiveMode, ResponsiveMode } from './withResponsiveMode';
-import { setSSR } from '../dom';
+import { setSSR } from '../../Utilities';
 
 let { expect } = chai;
 

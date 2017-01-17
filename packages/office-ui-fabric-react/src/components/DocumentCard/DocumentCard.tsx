@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { IDocumentCardProps, DocumentCardType } from './DocumentCard.Props';
-import { css } from '../../utilities/css';
+import {
+  autobind,
+  css
+} from '../../Utilities';
 import './DocumentCard.scss';
-import { autobind } from '../../utilities/autobind';
 
 export class DocumentCard extends React.Component<IDocumentCardProps, any> {
   public static defaultProps: IDocumentCardProps = {

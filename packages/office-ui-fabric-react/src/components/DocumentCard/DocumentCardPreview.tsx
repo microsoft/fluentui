@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { IDocumentCardPreviewProps, IDocumentCardPreviewImage } from './DocumentCard.Props';
 import { Image } from '../../Image';
-import { css } from '../../utilities/css';
-import { autobind } from '../../utilities/autobind';
+import {
+  autobind,
+  css
+} from '../../Utilities';
 import './DocumentCardPreview.scss';
 
 const LIST_ITEM_COUNT = 3;

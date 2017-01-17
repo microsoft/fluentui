@@ -1,5 +1,9 @@
 import * as React from 'react';
-import { createArray } from '../../../../utilities/array';
+import {
+  KeyCodes,
+  createArray,
+  getRTLSafeKeyCode
+} from '@uifabric/utilities';
 import {
   Button,
   FocusZone,
@@ -8,8 +12,6 @@ import {
   Link
 } from '../../../../index';
 import { DetailsRow } from '../../../../components/DetailsList/DetailsRow';
-import { KeyCodes } from '../../../../utilities/KeyCodes';
-import { getRTLSafeKeyCode } from '../../../../utilities/rtl';
 import { Selection, SelectionMode } from '../../../../utilities/selection/index';
 import './FocusZone.List.Example.scss';
 

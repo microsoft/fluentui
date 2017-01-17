@@ -1,15 +1,16 @@
 import * as React from 'react';
-import { AutoScroll } from '../../utilities/AutoScroll/AutoScroll';
-import { BaseComponent } from '../../common/BaseComponent';
+import {
+  AutoScroll,
+  BaseComponent,
+  IPoint,
+  IRectangle,
+  autobind,
+  css,
+  findScrollableParent,
+  getDistanceBetweenPoints,
+  getRTL
+} from '../../Utilities';
 import { IMarqueeSelectionProps } from './MarqueeSelection.Props';
-import { IPoint } from '../../common/IPoint';
-import { IRectangle } from '../../common/IRectangle';
-import { css } from '../../utilities/css';
-import { findScrollableParent } from '../../utilities/scroll';
-import { getDistanceBetweenPoints } from '../../utilities/math';
-import { getRTL } from '../../utilities/rtl';
-import { autobind } from '../../utilities/autobind';
-
 import './MarqueeSelection.scss';
 
 export interface IMarqueeSelectionState {

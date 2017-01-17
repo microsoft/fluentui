@@ -1,11 +1,15 @@
 import * as React from 'react';
-import { css } from '../../utilities/css';
+import {
+  BaseComponent,
+  KeyCodes,
+  css,
+  getId,
+  getRTL,
+  getRTLSafeKeyCode
+} from '../../Utilities';
 import { DayOfWeek, ICalendarStrings } from './Calendar.Props';
 import { FocusZone } from '../../FocusZone';
-import { KeyCodes } from '../../utilities/KeyCodes';
 import { addDays, addWeeks, addMonths, compareDates } from '../../utilities/dateMath/DateMath';
-import { getRTL, getRTLSafeKeyCode } from '../../utilities/rtl';
-import { getId } from '../../utilities/object';
 
 const DAYS_IN_WEEK = 7;
 
@@ -32,7 +36,7 @@ export interface ICalendarDayState {
   weeks?: IDayInfo[][];
 }
 
-export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDayState> {
+export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDayState> {
   public refs: {
     [key: string]: React.ReactInstance;
     navigatedDay: HTMLElement;

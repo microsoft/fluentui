@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { BaseDecorator } from './BaseDecorator';
-import { findScrollableParent } from '../../utilities/scroll';
-import { getRect } from '../../utilities/dom';
+import {
+  findScrollableParent,
+  getRect
+} from '../../Utilities';
 
 export interface IViewport {
   width: number;

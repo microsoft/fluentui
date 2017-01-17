@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { assign } from '@uifabric/utilities';
 import { CommandBar } from '../../../../CommandBar';
 import { Toggle } from '../../../../Toggle';
-import { assign } from '../../../../utilities/object';
 
 export class CommandBarBasicExample extends React.Component<any, any> {
 
@@ -36,7 +36,7 @@ export class CommandBarBasicExample extends React.Component<any, any> {
           onChanged={ isSearchBoxVisible => this.setState({ isSearchBoxVisible }) }
           onText='Visible'
           offText='Hidden'
-        />
+          />
         <Toggle
           label='Show names'
           checked={ namesVisible }

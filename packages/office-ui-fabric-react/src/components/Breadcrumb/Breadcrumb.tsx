@@ -1,13 +1,15 @@
 import * as React from 'react';
-import { BaseComponent } from '../../common/BaseComponent';
+import {
+  BaseComponent,
+  autobind,
+  css,
+  getId,
+  getRTL
+} from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu } from '../../ContextualMenu';
 import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { getRTL } from '../../utilities/rtl';
-import { getId } from '../../utilities/object';
-import { css } from '../../utilities/css';
-import { autobind } from '../../utilities/autobind';
 import './Breadcrumb.scss';
 
 export interface IBreadcrumbState {
