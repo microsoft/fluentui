@@ -9,6 +9,10 @@ import * as React from 'react';
 import { IScreenReaderAlertProps, defaultScreenReaderAlertProps, ReadingMode } from './ScreenReaderAlert.Props';
 import './ScreenReaderAlert.scss';
 
+export interface IScreenReaderAlertState {
+  alertText: string;
+}
+
 /**
  * This is a screen reader alert component for developers to easily add screen reader feature to there web site.
  * This component is a wrapper, you would like to wrap the texts for screen reader to read.
@@ -26,7 +30,8 @@ import './ScreenReaderAlert.scss';
  *   { yourSecondAlertText }
  * </ScreenReaderAlert>
  */
-export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, {}> {
+export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, IScreenReaderAlertState> {
+  // The default props will automatically be applied to this component.
   public static defaultProps: IScreenReaderAlertProps = defaultScreenReaderAlertProps;
 
   /**
@@ -39,24 +44,53 @@ export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, 
    */
   private _renderIndex: number = 0;
 
+  private _clearTextTimeout: number;
+
   constructor(props: IScreenReaderAlertProps) {
     super(props);
+
+    this.state = {
+      alertText: ''
+    }
   }
 
-  public shouldComponentUpdate(nextProps: IScreenReaderAlertProps): boolean {
-    return (this.props.indicator !== nextProps.indicator || !this._isSameText(this.props, nextProps));
+  public componentWillReceiveProps(nextProps: IScreenReaderAlertProps): void {
+    if (this._clearTextTimeout) {
+      // Clear the timeout of removing text to avoid the new text being removed.
+      window.clearTimeout(this._clearTextTimeout);
+      this._clearTextTimeout = undefined;
+    }
+
+    this.setState({
+      alertText: this._getTextContentFromReactChild(React.Children.toArray(nextProps.children))
+    })
+  }
+
+  public shouldComponentUpdate(nextProps: IScreenReaderAlertProps, nextState: IScreenReaderAlertState): boolean {
+    return (this.props.indicator !== nextProps.indicator || this.state.alertText !== nextState.alertText);
+  }
+
+  public componentDidUpdate(nextProps: IScreenReaderAlertProps): void {
+    // Set a timeout to remove the text to avoid the text persisting in the DOM which can be confusing.
+    // It will be cleared if props updating is occured before the text being cleared.
+    this._clearTextTimeout = window.setTimeout(() => {
+      this.setState({
+        alertText: ''
+      });
+      this._clearTextTimeout = undefined;
+    }, 500)
   }
 
   public render(): JSX.Element {
     return (
       <div className='ms-ScreenReaderAlert' key={ this._renderIndex++ }>
         {
-          this.props.readingMode !== ReadingMode.DoNotRead && (
+          this.props.readingMode !== ReadingMode.DoNotRead && this.state.alertText && (
             <p
               role={ this._role }
               aria-live={ this._ariaLive }
               aria-atomic={ true }>
-              { this._alertMessages }
+              { this.state.alertText }
             </p>
           )
         }
@@ -81,23 +115,8 @@ export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, 
     }
   }
 
-  private get _alertMessages(): React.ReactElement<HTMLSpanElement>[] {
-    return React.Children.map(this.props.children, (child: string, index: number) =>
-      // Use index as key to avoid React warnings, it doesn't affect actual rendering since the key of their
-      // parent is always changed during each rendering.
-      child && <span key={ index }>{ child }</span>
-    );
-  }
-
-  private _isSameText(prevProps: IScreenReaderAlertProps, nextProps: IScreenReaderAlertProps): boolean {
-    const prevText: string = this._getTextContentFromReactChild(React.Children.toArray(prevProps.children));
-    const nextText: string = this._getTextContentFromReactChild(React.Children.toArray(nextProps.children));
-
-    return prevText === nextText;
-  }
-
   private _getTextContentFromReactChild(root: React.ReactChild | React.ReactChild[]): string {
-    let text: string;
+    let text: string = '';
     if (typeof root === 'string' || typeof root === 'number') {
       text += root;
     } else if (Array.isArray(root)) {
