@@ -459,7 +459,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     if (ev.which === openKey) {
       this._onItemSubMenuExpand(item, ev.currentTarget as HTMLElement);
-    }
+      ev.preventDefault();
+    } 
   }
 
   private _onItemSubMenuExpand(item: IContextualMenuItem, target: HTMLElement) {
