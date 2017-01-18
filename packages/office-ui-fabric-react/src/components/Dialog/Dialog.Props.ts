@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Dialog } from './Dialog';
+import { IButtonProps } from '../Button';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 
@@ -68,6 +69,11 @@ export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeSt
    * Use onLayerDidMount instead. Deprecated at 0.81.2, to be removed at 1.0.0.
    */
   onLayerMounted?: () => void;
+
+  /**
+   * Other top buttons that will show up next to the close button
+   */
+  topButtonsProps?: IButtonProps[];
 }
 
 export enum DialogType {

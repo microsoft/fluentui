@@ -112,11 +112,16 @@ $Dialog-default-max-width: 340px;
 }
 
 .ms-Dialog-topButton {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   position: absolute;
   top: 0;
   @include right(0);
   @include padding(12px, 12px, 0, 0);
-
+  > * {
+    flex: 0 0 auto;
+  }
 }
 
 .ms-Dialog-content {
