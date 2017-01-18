@@ -218,8 +218,12 @@ $button-silhouetteButtonHeight: 40px;
   border: 0;
   padding: 10px 0px;
   height: auto;
-  display: flex;
-  align-items: center;
+
+  // Use flexbox on div element instead of button to avoid Firefox bug
+  .ms-Button-container {
+    display: flex;
+    align-items: center;
+  }
 
   .ms-Button-icon {
     color: $ms-color-white;

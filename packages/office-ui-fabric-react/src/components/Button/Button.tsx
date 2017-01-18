@@ -77,6 +77,18 @@ export class Button extends BaseComponent<IButtonProps, IButtonState> implements
       ariaDescribedBy = null;
     }
 
+    // Firefox bug 984869 (https://bugzilla.mozilla.org/show_bug.cgi?id=984869) causes the contents of a button to wrap when using flexbox.
+    // Until the fix ships (probably in March 2017), wrap the button contents in a div to allow using flexbox.
+    // More information: http://stackoverflow.com/questions/30979265/css-flexbox-wraps-content-in-firefox-not-chrome
+    const containerDiv = React.createElement(
+      'div',
+      { className: 'ms-Button-container' },
+      iconSpan,
+      <span className='ms-Button-label' id={ labelId } >{ children }</span>,
+      descriptionSpan,
+      ariaDescriptionSpan
+    )
+
     return React.createElement(
       tag,
       assign(
@@ -92,10 +104,7 @@ export class Button extends BaseComponent<IButtonProps, IButtonState> implements
         onClick && { 'onClick': onClick },
         disabled && { 'disabled': disabled },
         { className }),
-      iconSpan,
-      <span className='ms-Button-label' id={ labelId } >{ children }</span>,
-      descriptionSpan,
-      ariaDescriptionSpan
+      containerDiv
     );
   }
 
