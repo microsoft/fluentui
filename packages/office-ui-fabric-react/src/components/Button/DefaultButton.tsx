@@ -13,17 +13,4 @@ import './sass/ButtonDefault.scss';
 
 export class DefaultButton extends ButtonBase {
   protected getRootClassName() { return 'ms-Button--default'; }
-
-  public render() {
-    let { children } = this.props;
-
-    return (
-      <ButtonBase
-        className={ css('ms-Button', this.getRootClassName()) }
-        { ...getNativeProps(this.props, buttonProperties) }
-      >
-        { children }
-      </ButtonBase>
-    );
-  }
 }

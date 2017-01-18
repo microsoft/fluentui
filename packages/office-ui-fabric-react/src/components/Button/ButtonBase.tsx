@@ -22,6 +22,8 @@ export abstract class ButtonBase extends BaseComponent<IButtonProps, IButtonStat
   };
   private _buttonElement: HTMLButtonElement;
 
+  protected getRootClassName() { return ''; }
+
   constructor(props: IButtonProps) {
     super(props, { 'rootProps': null });
 
@@ -39,7 +41,7 @@ export abstract class ButtonBase extends BaseComponent<IButtonProps, IButtonStat
     const renderAsAnchor: boolean = !!href;
     const tag = renderAsAnchor ? 'a' : 'button';
     const nativeProps = getNativeProps(this.props.rootProps || this.props, renderAsAnchor ? anchorProperties : buttonProperties);
-    const className = css((this.props.className));
+    const className = css((this.props.className), 'ms-Button', this.getRootClassName());
 
     const iconSpan = icon && (buttonType === ButtonType.command || buttonType === ButtonType.hero || buttonType === ButtonType.icon)
       ? <span className='ms-Button-icon'><i className={ `ms-Icon ms-Icon--${icon}` }></i></span>
