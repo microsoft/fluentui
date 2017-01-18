@@ -2,8 +2,10 @@ import * as React from 'react';
 import { Image } from '../../Image';
 import { IChoiceGroupOption, IChoiceGroupProps } from './ChoiceGroup.Props';
 import { BaseComponent } from '../../common/BaseComponent';
-import { css } from '../../utilities/css';
-import { getId } from '../../utilities/object';
+import {
+  css,
+  getId
+} from '../../Utilities';
 import './ChoiceGroup.scss';
 
 export interface IChoiceGroupState {
@@ -79,7 +81,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                 id={ `${this._id}-${option.key}` }
                 className='ms-ChoiceField-input'
                 type='radio'
-                name={ this._id }
+                name={ this.props.name || this._id }
                 disabled={ option.isDisabled || option.disabled || this.props.disabled }
                 checked={ option.key === keyChecked }
                 onChange={ this._onChange.bind(this, option) }

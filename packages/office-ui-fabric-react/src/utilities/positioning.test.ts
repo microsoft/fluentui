@@ -1,7 +1,6 @@
-import Rectangle from './Rectangle';
+import { Rectangle } from '../Utilities';
 import { positioningFunctions, RectangleEdge } from './positioning';
 import { DirectionalHint } from '../common/DirectionalHint';
-import { areRectanglesEqual } from './Rectangle.test';
 interface ITestValidation {
   callout: Rectangle;
   beak: Rectangle;
@@ -27,16 +26,16 @@ function positionCalloutTest(testValues: ITestValues, alignment: DirectionalHint
 
   let beak: Rectangle = positioningFunctions._positionBeak(beakWidth, result, target, 0);
 
-  assert(areRectanglesEqual(result.calloutRectangle, validate.callout), 'Callout not alligned with target ' + stringifyResults(validate.callout, result.calloutRectangle));
+  assert(result.calloutRectangle.equals(validate.callout), 'Callout not alligned with target ' + stringifyResults(validate.callout, result.calloutRectangle));
 
-  assert(areRectanglesEqual(beak, validate.beak), 'Beak is improperly positioned. ' + stringifyResults(validate.beak, beak));
+  assert(beak.equals(validate.beak), 'Beak is improperly positioned. ' + stringifyResults(validate.beak, beak));
 }
 
 function validateNoBeakTest(testValues: ITestValues, alignment: DirectionalHint, validate: ITestValidation) {
   let {callout, target, bounds, beakWidth} = testValues;
   let result: positioningFunctions.ICallout = positioningFunctions._positionCalloutWithinBounds(callout, target, bounds, positioningFunctions._getPositionData(alignment, target, bounds), beakWidth);
 
-  assert(areRectanglesEqual(result.calloutRectangle, validate.callout), 'No Beak: Callout not alligned with target ' + stringifyResults(validate.callout, result.calloutRectangle));
+  assert(result.calloutRectangle.equals(validate.callout), 'No Beak: Callout not alligned with target ' + stringifyResults(validate.callout, result.calloutRectangle));
 }
 
 describe('Callout Positioning', () => {

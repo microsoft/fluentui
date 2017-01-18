@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ISuggestionModel } from './SuggestionsController';
-import { IRenderFunction } from '../../../common/IRenderFunction';
+import { IRenderFunction } from '../../../Utilities';
 
 export interface ISuggestionsProps<T> extends React.Props<any> {
   /**

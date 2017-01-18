@@ -1,5 +1,5 @@
 import { ISubscribable } from './ISubscribable';
-import { IDisposable } from './IDisposable';
+import { IDisposable } from '../Utilities';
 
 let _instanceId = 0;
 
