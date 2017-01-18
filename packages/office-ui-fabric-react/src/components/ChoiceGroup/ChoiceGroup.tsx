@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Image } from '../../Image';
 import { IChoiceGroupOption, IChoiceGroupProps } from './ChoiceGroup.Props';
-import { BaseComponent } from '../../common/BaseComponent';
 import {
   css,
-  getId
+  getId,
+  BaseComponent
 } from '../../Utilities';
 import './ChoiceGroup.scss';
 
