@@ -91,7 +91,7 @@ export class Button extends BaseComponent<IButtonProps, IButtonState> implements
       <span className='ms-Button-label' id={ labelId } >{ children }</span>,
       descriptionSpan,
       ariaDescriptionSpan
-    )
+    );
 
     return React.createElement(
       tag,
