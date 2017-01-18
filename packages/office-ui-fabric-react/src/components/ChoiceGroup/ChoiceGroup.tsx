@@ -3,7 +3,8 @@ import { Image } from '../../Image';
 import { IChoiceGroupOption, IChoiceGroupProps } from './ChoiceGroup.Props';
 import {
   css,
-  getId
+  getId,
+  BaseComponent
 } from '../../Utilities';
 import './ChoiceGroup.scss';
 
@@ -14,7 +15,7 @@ export interface IChoiceGroupState {
   keyFocused?: string;
 }
 
-export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroupState> {
+export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupState> {
   public static defaultProps = {
     options: []
   };
@@ -23,8 +24,8 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
   private _labelId: string;
   private _inputElement: HTMLInputElement;
 
-  constructor(props: IChoiceGroupProps) {
-    super();
+  constructor(props: IChoiceGroupProps, ) {
+    super(props, { ['onChanged']: 'onChange' });
 
     this.state = {
       keyChecked: this._getKeyChecked(props.options),
@@ -163,13 +164,16 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
   }
 
   private _onChange(option: IChoiceGroupOption, evt: React.FormEvent<HTMLInputElement>) {
-    let { onChanged } = this.props;
+    let { onChanged, onChange } = this.props;
 
     this.setState({
       keyChecked: option.key
     });
 
-    if (onChanged) {
+    // TODO: onChanged deprecated, remove else if after 07/17/2017 when onChanged has been removed.
+    if (onChange) {
+      onChange(evt, option);
+    } else if (onChanged) {
       onChanged(option);
     }
   }
