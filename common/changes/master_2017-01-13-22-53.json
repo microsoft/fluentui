@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Persona: Hide the initials if the provided photo successfully loads",
+      "type": "minor"
+    }
+  ],
+  "email": "miclo@microsoft.com"
+}
