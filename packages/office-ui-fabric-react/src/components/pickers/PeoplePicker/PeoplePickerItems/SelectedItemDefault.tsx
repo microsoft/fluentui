@@ -1,10 +1,10 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
+import { css } from '@uifabric/utilities';
 import { Persona, PersonaSize, PersonaPresence } from '../../../../Persona';
 import { IPeoplePickerItemProps } from './PeoplePickerItem.Props';
 import { Button, ButtonType } from '../../../../Button';
-import { css } from '../../../../utilities/css';
 import './PickerItemsDefault.scss';
 
 export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element = (peoplePickerItemProps: IPeoplePickerItemProps) => {

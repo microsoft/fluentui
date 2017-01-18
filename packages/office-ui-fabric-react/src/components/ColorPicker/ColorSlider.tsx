@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { autobind } from '../../utilities/autobind';
-import { css } from '../../utilities/css';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
+import {
+  EventGroup,
+  autobind,
+  css
+} from '../../Utilities';
 
 export interface IColorSliderProps {
   minValue?: number;

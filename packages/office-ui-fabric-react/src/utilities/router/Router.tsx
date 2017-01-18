@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { EventGroup } from '../eventGroup/EventGroup';
+import { EventGroup } from '../../Utilities';
 
 export interface IRouterProps {
   replaceState?: boolean;
@@ -58,7 +58,7 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
 function _getComponent(matchPath, children) {
   let path = matchPath;
   if (children && children.$$typeof) {
-    children = [ children ];
+    children = [children];
   }
 
   // Check if an in page anchor link was passed to the Url #/example/route#inPageAnchorLink

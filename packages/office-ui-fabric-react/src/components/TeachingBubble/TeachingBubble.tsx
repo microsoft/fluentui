@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { BaseComponent } from '../../common/BaseComponent';
+import { BaseComponent } from '../../Utilities';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
 import { ITeachingBubbleProps } from './TeachingBubble.Props';
 import { Callout } from '../../Callout';
@@ -37,14 +37,14 @@ export class TeachingBubble extends BaseComponent<ITeachingBubbleProps, ITeachin
     let { calloutProps, targetElement } = this.props;
 
     return (
-        <Callout
-          className='ms-TeachingBubble'
-          ref={this._resolveRef('_callout')}
-          targetElement={ targetElement }
-          {...calloutProps}
+      <Callout
+        className='ms-TeachingBubble'
+        ref={ this._resolveRef('_callout') }
+        targetElement={ targetElement }
+        {...calloutProps}
         >
-          <TeachingBubbleContent { ...this.props }/>
-        </Callout>
+        <TeachingBubbleContent { ...this.props } />
+      </Callout>
     );
   }
 }

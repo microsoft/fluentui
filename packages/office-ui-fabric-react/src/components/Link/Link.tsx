@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { BaseComponent } from '../../common/BaseComponent';
 import {
+  BaseComponent,
   anchorProperties,
   autobind,
   buttonProperties,

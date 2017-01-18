@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { IRectangle } from '../../common/IRectangle';
-import { IListProps, IPage } from './List.Props';
 import {
   BaseComponent,
+  IRectangle,
   assign,
   css,
   findIndex,
+  findScrollableParent,
   getParent
 } from '../../Utilities';
-import { findScrollableParent } from '../../utilities/scroll';
+import { IListProps, IPage } from './List.Props';
 
 const RESIZE_DELAY = 16;
 const MIN_SCROLL_UPDATE_DELAY = 100;

@@ -1,5 +1,5 @@
 import { IColor } from './IColor';
-import { assign } from '../../utilities/object';
+import { assign } from '../../Utilities';
 
 let cssColor = require('color-functions/lib/css-color');
 let rgb2hex = require('color-functions/lib/rgb2hex');
@@ -42,7 +42,7 @@ export function getColorFromString(color: string): IColor {
 }
 
 export function getFullColorString(color: IColor): string {
-  return `#${ hsv2hex(color.h, MAX_COLOR_SATURATION, MAX_COLOR_VALUE) }`;
+  return `#${hsv2hex(color.h, MAX_COLOR_SATURATION, MAX_COLOR_VALUE)}`;
 }
 
 export function updateSV(color: IColor, s: number, v: number): IColor {
@@ -57,9 +57,9 @@ export function updateSV(color: IColor, s: number, v: number): IColor {
     hex: hex,
     r: r,
     s: s,
-    str: (color.a === 100) ? `#${ hex }` : `rgba(${r}, ${g}, ${b}, ${color.a / 100})`,
+    str: (color.a === 100) ? `#${hex}` : `rgba(${r}, ${g}, ${b}, ${color.a / 100})`,
     v: v
-   };
+  };
 }
 
 export function updateH(color: IColor, h: number): IColor {
@@ -74,14 +74,14 @@ export function updateH(color: IColor, h: number): IColor {
     hex: hex,
     r: r,
     s: color.s,
-    str: (color.a === 100) ? `#${ hex }` : `rgba(${r}, ${g}, ${b}, ${color.a / 100})`,
+    str: (color.a === 100) ? `#${hex}` : `rgba(${r}, ${g}, ${b}, ${color.a / 100})`,
     v: color.v
-   };
+  };
 }
 
 export function updateA(color: IColor, a: number): IColor {
   return assign({}, color, {
     a: a,
-    str: (a === 100) ? `#${ color.hex }` : `rgba(${color.r}, ${color.g}, ${color.b}, ${a / 100})`
-   });
+    str: (a === 100) ? `#${color.hex}` : `rgba(${color.r}, ${color.g}, ${color.b}, ${a / 100})`
+  });
 }

@@ -1,9 +1,11 @@
 import * as React from 'react';
+import {
+  BaseComponent,
+  css
+} from '../../../Utilities';
 import { Button, ButtonType } from '../../../Button';
-import { css } from '../../../utilities/css';
-import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.Props';
-import { BaseComponent } from '../../../common/BaseComponent';
 import { Spinner } from '../../../Spinner';
+import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.Props';
 import './Suggestions.scss';
 
 export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>, {}> {

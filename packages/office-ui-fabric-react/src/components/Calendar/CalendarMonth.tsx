@@ -1,10 +1,12 @@
 import * as React from 'react';
+import {
+  KeyCodes,
+  css,
+  getRTL
+} from '../../Utilities';
 import { ICalendarStrings } from './Calendar.Props';
 import { FocusZone } from '../../FocusZone';
-import { KeyCodes } from '../../utilities/KeyCodes';
 import { addYears, setMonth } from '../../utilities/dateMath/DateMath';
-import { getRTL } from '../../utilities/rtl';
-import { css } from '../../utilities/css';
 
 export interface ICalendarMonthProps {
   navigatedDate: Date;

@@ -1,8 +1,9 @@
 import * as React from 'react';
+import { autobind } from '@uifabric/utilities';
 import {
-  Rating, RatingSize
+  Rating,
+  RatingSize
 } from '../../../../index';
-import { autobind } from '../../../../utilities/autobind';
 
 import './Rating.Basic.Example.scss';
 

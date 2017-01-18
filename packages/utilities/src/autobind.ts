@@ -1,5 +1,5 @@
 /**
- * Autobind is a decorator for binding methods in a class. This simplifies tagging methods as being "bound" to the this pointer
+ * Autobind is a utility for binding methods in a class. This simplifies tagging methods as being "bound" to the this pointer
  * so that they can be used in scenarios that simply require a function callback.
  *
  * @example

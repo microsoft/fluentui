@@ -1,10 +1,11 @@
 import * as React from 'react';
+import {
+  autobind,
+  css,
+  getId
+} from '../../Utilities';
 import { IToggleProps } from './Toggle.Props';
-import { css } from '../../utilities/css';
 import { Label } from '../../Label';
-import { getId } from '../../utilities/object';
-import { autobind } from '../../utilities/autobind';
-
 import './Toggle.scss';
 
 export interface IToggleState {
