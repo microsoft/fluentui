@@ -31,7 +31,7 @@
     cursor: default;
   }
 
-  @include ms-input-placeholder {
+  &::placeholder {
     color: $ms-color-neutralTertiary;
   }
 }
@@ -42,8 +42,8 @@
     @include ms-Label-is-required
   }
 
-  @include ms-input-placeholder {
-    @include ms-Label-is-required
+  &::placeholder {
+    @include ms-Label-is-required();
   }
 }
 
@@ -91,7 +91,7 @@
     cursor: default;
   }
 
-  @include ms-input-placeholder {
+  &::placeholder {
     color: $ms-color-neutralSecondary;
   }
 }
@@ -184,7 +184,6 @@
 //
 .ms-TextField.ms-TextField--multiline .ms-TextField-field {
   color: $ms-color-neutralPrimary;
-  font-family: $ms-font-family-base;
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
   line-height: 17px;
