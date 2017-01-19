@@ -1,5 +1,7 @@
 import { IColor } from '../../utilities/Color/IColor';
 
+/* todo phkuo: might need to remove, I don't use this anywhere */
+
 export interface IFabricTheme {
   primaryPalette: IColor;
   secondaryPalette: IColor;
