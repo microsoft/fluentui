@@ -237,14 +237,14 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         ref={ (c): HTMLTextAreaElement => this._field = c }
         value={ this.state.value }
         onInput={ this._onInputChange }
-        onChange={ this._onChange }
+        onChange={ this._onInputChange }
         className={ this._fieldClassName }
         aria-label={ this.props.ariaLabel }
         aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
         aria-invalid={ !!this.state.errorMessage }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
-        />
+      />
     );
   }
 
@@ -259,20 +259,23 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         ref={ (c): HTMLInputElement => this._field = c }
         value={ this.state.value }
         onInput={ this._onInputChange }
-        onChange={ this._onChange }
+        onChange={ this._onInputChange }
         className={ this._fieldClassName }
         aria-label={ this.props.ariaLabel }
         aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
         aria-invalid={ !!this.state.errorMessage }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
-        />
+      />
     );
   }
 
   private _onInputChange(event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
+    if (value === this.state.value) {
+      return;
+    }
 
     this.setState({
       value: value,
@@ -339,15 +342,5 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
       let scrollHeight = textField.scrollHeight + 2; // +2 to avoid vertical scroll bars
       textField.style.height = scrollHeight + 'px';
     }
-  }
-
-  private _onChange(): void {
-    /**
-     * A noop input change handler.
-     * https://github.com/facebook/react/issues/7027.
-     * Using the native onInput handler fixes the issue but onChange
-     * still need to be wired to avoid React console errors
-     * TODO: Check if issue is resolved when React 16 is available.
-     */
   }
 }
