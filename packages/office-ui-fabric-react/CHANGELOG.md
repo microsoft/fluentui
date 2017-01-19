@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 16 Jan 2017 21:57:33 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Jan 2017 04:08:35 GMT and should not be manually modified.
+
+## 1.2.0
+Thu, 19 Jan 2017 04:08:35 GMT
+
+### Minor changes
+
+- DetailsList: adding `selectionPreservedOnEmptyClick` attribute for overriding the default behavior of clearing selection when clicks occur on non-focusable targets (body, spans, etc).
+
+## 1.1.0
+Thu, 19 Jan 2017 00:12:21 GMT
+
+### Minor changes
+
+- ChoiceGroup: onChanged deprecated and replaced with onChange
+- Persona: Hide the initials if the provided photo successfully loads
 
 ## 1.0.0
 Mon, 16 Jan 2017 21:57:33 GMT
