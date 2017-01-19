@@ -107,6 +107,9 @@
       outline: 1px solid transparent;
     }
   }
+  td.extra-padding-week {
+    height: 40px;
+  }
 }
 
 
@@ -337,6 +340,11 @@
     line-height: 28px;
     font-weight: $ms-font-weight-semibold;
     font-size: $ms-font-size-s;
+  }
+
+  // Calendar extra-padding-week is smaller.
+   .ms-DatePicker-table td.extra-padding-week {
+    height: 30px;
   }
 
   // Size the month components to the day picker's new width
