@@ -69,6 +69,7 @@ export interface IPersonaProps extends React.HTMLProps<Persona> {
 
 export enum PersonaSize {
   tiny,
+  extraExtraSmall,
   extraSmall,
   small,
   regular,

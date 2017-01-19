@@ -6,6 +6,7 @@ import {
 
 export const PERSONA_SIZE = {
   [PersonaSize.tiny]: 'ms-Persona--tiny',
+  [PersonaSize.extraExtraSmall]: 'ms-Persona--xxs',
   [PersonaSize.extraSmall]: 'ms-Persona--xs',
   [PersonaSize.small]: 'ms-Persona--sm',
   [PersonaSize.regular]: '',

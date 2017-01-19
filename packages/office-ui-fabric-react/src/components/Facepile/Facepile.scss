@@ -2,7 +2,6 @@
 
 .ms-Facepile {
   position: relative;
-  min-height: 32px;
   width: auto;
 }
 
@@ -12,9 +11,6 @@
 
 .ms-Facepile-itemButton {
   position: relative;
-  height: 32px;
-  min-width: 32px;
-  line-height: 32px;
   text-align: center;
   @include float(left);
   padding: 0;

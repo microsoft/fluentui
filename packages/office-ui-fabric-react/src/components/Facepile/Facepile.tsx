@@ -11,6 +11,7 @@ import {
   OverflowButtonType
 } from './Facepile.Props';
 import {
+  IPersonaProps,
   Persona,
   PersonaSize
 } from '../../Persona';
@@ -23,14 +24,8 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   };
 
   public render(): JSX.Element {
-    let { chevronButtonProps, maxDisplayablePersonas, overflowButtonProps, overflowButtonType, personas, showAddButton } = this.props;
+    let { maxDisplayablePersonas, overflowButtonProps, personas, showAddButton } = this.props;
     let numPersonasToShow: number = Math.min(personas.length, maxDisplayablePersonas);
-
-    // Added for deprecating chevronButtonProps.  Can remove after v1.0
-    if (chevronButtonProps && !overflowButtonProps) {
-      overflowButtonProps = chevronButtonProps;
-      overflowButtonType = OverflowButtonType.downArrow;
-    }
 
     return (
       <div className='ms-Facepile'>
@@ -53,12 +48,13 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
 
   private _getPersonaControl(persona: IFacepilePersona): JSX.Element {
     let { getPersonaProps } = this.props;
+    let personaProps: IPersonaProps = getPersonaProps ? getPersonaProps(persona) : null;
     return <Persona
       imageInitials={ persona.imageInitials }
       imageUrl={ persona.imageUrl }
       initialsColor={ persona.initialsColor }
       primaryText={ persona.personaName }
-      size={ PersonaSize.extraSmall }
+      size={ personaProps && personaProps.size ? personaProps.size : PersonaSize.extraSmall }
       hidePersonaDetails={ true }
       {...(getPersonaProps ? getPersonaProps(persona) : null) }
       />;

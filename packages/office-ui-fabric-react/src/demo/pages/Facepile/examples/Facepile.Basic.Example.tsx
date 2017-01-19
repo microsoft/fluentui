@@ -5,6 +5,7 @@ import {
   Facepile,
   IFacepilePersona,
   IFacepileProps,
+  PersonaSize,
   Slider
 } from '../../../../index';
 import { facepilePersonas } from './FacepileExampleData';
@@ -20,6 +21,7 @@ export interface IFacepileBasicExampleState {
   numberOfFaces: any;
   imagesFadeIn: boolean;
   extraDataType: ExtraDataType;
+  personaSize: PersonaSize;
 }
 
 export class FacepileBasicExample extends React.Component<any, IFacepileBasicExampleState> {
@@ -29,29 +31,33 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
     this.state = {
       numberOfFaces: 3,
       imagesFadeIn: true,
-      extraDataType: ExtraDataType.none
+      extraDataType: ExtraDataType.none,
+      personaSize: PersonaSize.extraSmall
     };
   }
 
   public render() {
-    let { extraDataType, numberOfFaces } = this.state;
+    let { extraDataType, numberOfFaces, personaSize } = this.state;
     let facepileProps: IFacepileProps = {
       personas: facepilePersonas.slice(0, numberOfFaces),
       getPersonaProps: (persona: IFacepilePersona) => {
         if (extraDataType === ExtraDataType.name) {
           return {
             imageShouldFadeIn: this.state.imagesFadeIn,
-            hidePersonaDetails: false
+            hidePersonaDetails: false,
+            size: personaSize
           };
         } else if (extraDataType === ExtraDataType.stats) {
           return {
             imageShouldFadeIn: this.state.imagesFadeIn,
             hidePersonaDetails: false,
-            primaryText: `[${persona.data}]`
+            primaryText: `[${persona.data}]`,
+            size: personaSize
           };
         }
         return {
           imageShouldFadeIn: this.state.imagesFadeIn,
+          size: personaSize
         };
       }
     };
@@ -80,6 +86,21 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
               return prevState;
             });
           } } />
+
+        <Dropdown
+          label='Persona Size:'
+          selectedKey={ this.state.personaSize }
+          options={
+            [
+              { key: PersonaSize.extraSmall, text: PersonaSize[PersonaSize.extraSmall] },
+              { key: PersonaSize.extraExtraSmall, text: PersonaSize[PersonaSize.extraExtraSmall] }
+            ]
+          }
+          onChanged={ value => this.setState((prevState: IFacepileBasicExampleState) => {
+            prevState.personaSize = value.key as PersonaSize;
+            return prevState;
+          }) }
+          />
 
         <Dropdown
           label='Additional Data:'
