@@ -10,6 +10,7 @@ import { ColorRectangle } from './ColorRectangle';
 import { ColorSlider } from './ColorSlider';
 import {
   getColorFromString,
+  getColorFromRGBA,
   updateA,
   updateH,
   updateSV
@@ -38,6 +39,12 @@ export interface IColor {
 }
 
 export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerState> {
+  private hexText: TextField;
+  private rText: TextField;
+  private gText: TextField;
+  private bText: TextField;
+  private aText: TextField;
+
   constructor(props: IColorPickerProps) {
     super(props);
 
@@ -88,6 +95,7 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
             </thead>
             <tbody>
               <tr>
+<<<<<<< 10428ec4c8fbc8e9e601578b6aa2bb2e0ce0414f
                 <td>
                   <TextField className={ css('ms-ColorPicker-input', styles.input) } value={ color.hex } />
                 </td>
@@ -108,6 +116,18 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                     <TextField className={ css('ms-ColorPicker-input', styles.input) } value={ String(color.a) } />
                   </td>
                 ) }
+=======
+                <td><TextField className='ms-ColorPicker-input' value={ color.hex } ref={ (ref) => this.hexText = ref } onBlur={ this._onHexChanged } /></td>
+                <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' onBlur={ this._onRGBAChanged }
+                  value={ String(color.r) } ref={ (ref) => this.rText = ref } /></td>
+                <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' onBlur={ this._onRGBAChanged }
+                  value={ String(color.g) } ref={ (ref) => this.gText = ref } /></td>
+                <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' onBlur={ this._onRGBAChanged }
+                  value={ String(color.b) } ref={ (ref) => this.bText = ref } /></td>
+                { !this.props.alphaSliderHidden && (
+                  <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' onBlur={ this._onRGBAChanged }
+                    value={ String(color.a) } ref={ (ref) => this.aText = ref } /></td>) }
+>>>>>>> switch over to use the correct semantic slots, and many bugfixes
               </tr>
             </tbody>
           </table>
@@ -129,6 +149,21 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
   @autobind
   private _onAChanged(a: number) {
     this._updateColor(updateA(this.state.color, a));
+  }
+
+  @autobind
+  private _onHexChanged() {
+    this._updateColor(getColorFromString("#" + this.hexText.value));
+  }
+
+  @autobind
+  private _onRGBAChanged() {
+    this._updateColor(getColorFromRGBA({
+      r: Number(this.rText.value),
+      g: Number(this.gText.value),
+      b: Number(this.bText.value),
+      a: Number(this.aText.value)
+    }));
   }
 
   private _updateColor(newColor: IColor) {

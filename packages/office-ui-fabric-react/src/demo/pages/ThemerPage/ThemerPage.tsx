@@ -5,12 +5,12 @@ import { loadTheme } from '@microsoft/load-themed-styles';
 import { IColor } from '../../../utilities/Color/IColor';
 import { getContrastRatio } from '../../../utilities/Color/Shades';
 
+import { IThemeSlotRule } from '../../../components/ThemeGenerator/IThemeSlotRule';
 import { ThemeGenerator } from '../../../components/ThemeGenerator/ThemeGenerator';
 import {
   ThemeRulesStandardCreator,
-  PaletteSlot,
-  PaletteName,
-  SemanticSlot
+  BaseSlots,
+  SemanticColorSlots
 } from '../../../components/ThemeGenerator/ThemeRulesStandard';
 
 import { Callout } from '../../../index';
@@ -32,45 +32,54 @@ export class ThemerPage extends React.Component<any, any> {
 
     this.state = {
       themeRules: themeRules,
-      colorPickerSlot: null,
+      colorPickerSlotRule: null,
       colorPickerElement: null,
       colorPickerVisible: false
     };
   }
 
   public render() {
-    let { themeRules, colorPickerVisible, colorPickerSlot, colorPickerElement } = this.state;
+    let { colorPickerVisible, colorPickerSlotRule, colorPickerElement } = this.state;
 
     /*let slotsList = mapEnumByName(SemanticSlot, (x, slot) => {
       return this._semanticSlotWidget(slot);
     });*/
 
-    let basicSlots = [this._semanticSlotWidget(SemanticSlot.Background),
-    this._semanticSlotWidget(SemanticSlot.Foreground)];
-    let inputSlots = [this._semanticSlotWidget(SemanticSlot.InputBackground),
-    this._semanticSlotWidget(SemanticSlot.InputBackgroundHover),
-    this._semanticSlotWidget(SemanticSlot.InputForeground),
-    this._semanticSlotWidget(SemanticSlot.InputForegroundHover),
-    this._semanticSlotWidget(SemanticSlot.InputEmphasizedBackground),
-    this._semanticSlotWidget(SemanticSlot.InputEmphasizedBackgroundHover),
-    this._semanticSlotWidget(SemanticSlot.InputEmphasizedForeground),
-    this._semanticSlotWidget(SemanticSlot.InputEmphasizedForegroundHover),
-    this._semanticSlotWidget(SemanticSlot.DisabledBackground),
-    this._semanticSlotWidget(SemanticSlot.DisabledForeground)];
+    let basicSlots = [this._semanticSlotWidget(SemanticColorSlots.bodyBackground),
+    this._semanticSlotWidget(SemanticColorSlots.bodyText)]; // todo
+
+    let controlSlots = [this._semanticSlotWidget(SemanticColorSlots.controlBackground),
+    this._semanticSlotWidget(SemanticColorSlots.controlFilled)]; // todo
 
     return (
       <div className='ms-themer'>
-        <div style={ { display: 'flex', flexDirection: 'row' } }>
-          { [this._oneColor(PaletteSlot.Primary), this._oneColor(PaletteSlot.Neutral)] }
+
+        {/* the shared popup color picker for semantic slots */ }
+        { colorPickerVisible && colorPickerSlotRule !== null && colorPickerSlotRule !== undefined && colorPickerElement &&
+          <Callout
+            key={ colorPickerSlotRule.name }
+            gapSpace={ 10 }
+            targetElement={ colorPickerElement }
+            setInitialFocus={ true }
+            onDismiss={ this._colorPickerOnDismiss.bind(this) }>
+            <ColorPicker
+              color={ colorPickerSlotRule.value.str }
+              onColorChanged={ this._semanticSlotRuleChanged.bind(this, colorPickerSlotRule) } />
+          </Callout>
+        }
+
+        {/* the three base slots, prominently displayed at the top of the page */ }
+        <div style={ { display: 'flex' } }>
+          { [this._baseColorSlotPicker(BaseSlots.primaryColor), this._baseColorSlotPicker(BaseSlots.backgroundColor), this._baseColorSlotPicker(BaseSlots.foregroundColor)] }
         </div>
         <br />
 
         { this._exampleSection('Basic Slots',
-          'Basic theme slots for page background and default text color.',
+          'Basic theme slots for page background and default text colors.',
           basicSlots) }
-        { this._exampleSection('Input Slots',
-          'These slots are used to theme simple input controls, such as buttons, text inputs, or toggle switches.',
-          inputSlots,
+        { this._exampleSection('Control Slots',
+          'These slots TODO TODO',
+          controlSlots,
           [<div>
             <Toggle
               defaultChecked={ true }
@@ -97,25 +106,9 @@ export class ThemerPage extends React.Component<any, any> {
           <Button buttonType={ ButtonType.primary }>Primary</Button>,
           <Button disabled={ true }>Disabled</Button>]) }
 
-        <h3>Presentation Slots</h3>
-        { [this._semanticSlotWidget(SemanticSlot.NeutralBackground),
-        this._semanticSlotWidget(SemanticSlot.NeutralForeground),
-        this._semanticSlotWidget(SemanticSlot.EmphasizedBackground),
-        this._semanticSlotWidget(SemanticSlot.EmphasizedForeground)] }
-
-        /** the shared popup color picker for semantic slots */
-        { colorPickerVisible && colorPickerSlot !== null && colorPickerSlot !== undefined && colorPickerElement &&
-          <Callout
-            key={ colorPickerSlot }
-            gapSpace={ 10 }
-            targetElement={ colorPickerElement }
-            setInitialFocus={ true }
-            onDismiss={ this._colorPickerOnDismiss.bind(this) }>
-            <ColorPicker
-              color={ themeRules[SemanticSlot[colorPickerSlot]].value.str }
-              onColorChanged={ this._semanticSlotChanged.bind(this, colorPickerSlot) } />
-          </Callout>
-        }
+        <h3>todo</h3>
+        { [this._semanticSlotWidget(SemanticColorSlots.errorText),
+        this._semanticSlotWidget(SemanticColorSlots.bodyTextStrong)] }
 
         <div style={ { display: 'flex', flexDirection: 'row' } }>
           <div className='ms-themer-example'><TextFieldBasicExample /></div>
@@ -126,13 +119,10 @@ export class ThemerPage extends React.Component<any, any> {
         <h3>Accessibility</h3>
         <p>Each pair of colors below should produce legible text and have a minimum contrast ratio of 4.5 [TBD verify formula].</p>
         <table className='ms-themer-accessibilityTable'>
-          { [this._accessibilityRow(SemanticSlot.DisabledForeground, SemanticSlot.DisabledBackground),
-          this._accessibilityRow(SemanticSlot.EmphasizedForeground, SemanticSlot.EmphasizedBackground),
-          this._accessibilityRow(SemanticSlot.InputEmphasizedForeground, SemanticSlot.InputEmphasizedBackground),
-          this._accessibilityRow(SemanticSlot.Foreground, SemanticSlot.NeutralBackground),
-          this._accessibilityRow(SemanticSlot.Foreground, SemanticSlot.Background),
-          this._accessibilityRow(SemanticSlot.NeutralForeground, SemanticSlot.NeutralBackground)
-          ] }
+          { [this._accessibilityRow(SemanticColorSlots.bodyTextDisabled, SemanticColorSlots.bodyBackground),
+          this._accessibilityRow(SemanticColorSlots.bodyText, SemanticColorSlots.bodyBackground),
+          this._accessibilityRow(SemanticColorSlots.controlText, SemanticColorSlots.bodyBackground),
+          this._accessibilityRow(SemanticColorSlots.controlText, SemanticColorSlots.controlBackground)] }
         </table>
 
         { this._outputSection() }
@@ -167,48 +157,58 @@ export class ThemerPage extends React.Component<any, any> {
     this.setState({ colorPickerVisible: false });
   }
 
-  private _semanticSlotChanged(slot: SemanticSlot, color: string) {
+  private _semanticSlotRuleChanged(slotRule: IThemeSlotRule, color: string) {
     let { themeRules } = this.state;
 
-    ThemeGenerator.setSlot(themeRules[SemanticSlot[slot]], color, themeRules);
+    console.log("dbg: _semanticSlotRuleChanged called on " + JSON.stringify(slotRule));
+    console.log("dbg: new color is " + color);
+
+    ThemeGenerator.setSlot(slotRule, color, themeRules);
     this.setState({ themeRules: themeRules }, this._makeNewTheme);
   }
 
-  private _onSwatchClick(slot: SemanticSlot, ev: React.MouseEvent<HTMLElement>) {
-    let { colorPickerSlot, colorPickerElement } = this.state;
+  private _onSwatchClick(slotRule: IThemeSlotRule, ev: React.MouseEvent<HTMLElement>) {
+    let { colorPickerSlotRule, colorPickerElement } = this.state;
 
-    if (colorPickerSlot !== null && colorPickerSlot !== undefined && !!colorPickerElement && colorPickerSlot === slot && colorPickerElement === ev.target) { // same one, close it
-      this.setState({ colorPickerVisible: false, colorPickerSlot: null, colorPickerElement: null });
+    if (colorPickerSlotRule !== null && colorPickerSlotRule !== undefined && !!colorPickerElement && colorPickerSlotRule === slotRule && colorPickerElement === ev.target) { // same one, close it
+      this.setState({ colorPickerVisible: false, colorPickerSlotRule: null, colorPickerElement: null });
     } else { // new one, open it
-      this.setState({ colorPickerVisible: true, colorPickerSlot: slot, colorPickerElement: ev.target });
+      this.setState({ colorPickerVisible: true, colorPickerSlotRule: slotRule, colorPickerElement: ev.target });
     }
   }
 
-  private _semanticSlotWidget(semanticSlot: SemanticSlot) {
+  private _semanticSlotWidget(semanticSlot: SemanticColorSlots) {
     let themeRules = this.state.themeRules;
-    let thisSlot = themeRules[SemanticSlot[semanticSlot]];
+    let thisSlotRule = themeRules[SemanticColorSlots[semanticSlot]];
 
     return (
       <div key={ semanticSlot } className='ms-themer-slot'>
-        <div
-          className='ms-themer-swatch'
-          style={ { backgroundColor: thisSlot.value.str } }
-          onClick={ this._onSwatchClick.bind(this, semanticSlot) }>
-        </div>
+        { this._colorSquareSwatchWidget(thisSlotRule) }
         <div>
-          <div>{ SemanticSlot[semanticSlot] }</div>
-          { !thisSlot.isCustomized ?
-            <div>Inherits from: { thisSlot.inherits.name }</div>
+          <div>{ SemanticColorSlots[semanticSlot] }</div>
+          { !thisSlotRule.isCustomized ?
+            <div>Inherits from: { thisSlotRule.inherits.name }</div>
             : <div>Custom value</div> }
         </div>
       </div>
     );
   }
 
-  private _accessibilityRow(foreground: SemanticSlot, background: SemanticSlot) {
+  private _colorSquareSwatchWidget(slotRule: IThemeSlotRule) {
+    return (
+      <div
+        key={ slotRule.name }
+        className='ms-themer-swatch'
+        style={ { backgroundColor: slotRule.value.str } }
+        onClick={ this._onSwatchClick.bind(this, slotRule) }>
+      </div>
+    );
+  }
+
+  private _accessibilityRow(foreground: SemanticColorSlots, background: SemanticColorSlots) {
     let themeRules = this.state.themeRules;
-    let bgc: IColor = themeRules[SemanticSlot[background]].value;
-    let fgc: IColor = themeRules[SemanticSlot[foreground]].value;
+    let bgc: IColor = themeRules[SemanticColorSlots[background]].value;
+    let fgc: IColor = themeRules[SemanticColorSlots[foreground]].value;
 
     let contrastRatio = getContrastRatio(bgc, fgc);
     let contrastRatioString = String(contrastRatio);
@@ -221,7 +221,7 @@ export class ThemerPage extends React.Component<any, any> {
       <tr key={ String(foreground) + String(background) }>
         <td style={ { backgroundColor: bgc.str, color: fgc.str } }>The quick brown fox jumps over the lazy dog.</td>
         <td>{ contrastRatioString }</td>
-        <td>{ SemanticSlot[foreground] + ' + ' + SemanticSlot[background] }</td>
+        <td>{ SemanticColorSlots[foreground] + ' + ' + SemanticColorSlots[background] }</td>
       </tr>
     );
   }
@@ -230,10 +230,10 @@ export class ThemerPage extends React.Component<any, any> {
     return (
       <div>
         <h2>Output</h2>
-        <textarea style={ { height: '300px', width: '300px' } } spellCheck={ false }
+        <textarea readOnly={ true } style={ { height: '300px', width: '300px' } } spellCheck={ false }
           value={ JSON.stringify(ThemeGenerator.getThemeAsJson(this.state.themeRules), void 0, 2) }>
         </textarea>
-        <textarea style={ { height: '300px', width: '800px' } } spellCheck={ false }
+        <textarea readOnly={ true } style={ { height: '300px', width: '800px' } } spellCheck={ false }
           value={ ThemeGenerator.getThemeAsSass(this.state.themeRules) }>
         </textarea>
       </div>
@@ -245,26 +245,27 @@ export class ThemerPage extends React.Component<any, any> {
     loadTheme(ThemeGenerator.getThemeAsJson(this.state.themeRules));
   }
 
-  private _oneColor(paletteSlot: PaletteSlot) {
+  private _baseColorSlotPicker(baseSlot: BaseSlots) {
     function _onColorChanged(newColor: string) {
       let themeRules = this.state.themeRules;
-      ThemeGenerator.setSlot(themeRules[PaletteSlot[paletteSlot] + PaletteName], newColor, themeRules);
+      ThemeGenerator.setSlot(themeRules[BaseSlots[baseSlot]], newColor, themeRules);
       this.setState({ themeRules: themeRules }, this._makeNewTheme);
     }
 
     return (
-      <div className='ms-themer-paletteSlot' key={ paletteSlot }>
-        <h3>{ PaletteSlot[paletteSlot] }</h3>
+      <div className='ms-themer-paletteSlot' key={ baseSlot }>
+        <h3>{ BaseSlots[baseSlot] }</h3>
         <ColorPicker
-          color={ this.state.themeRules[PaletteSlot[paletteSlot] + PaletteName].value.str }
+          key={ "baseslotcolorpicker" + baseSlot }
+          color={ this.state.themeRules[BaseSlots[baseSlot]].value.str }
           onColorChanged={ _onColorChanged.bind(this) } />
-        <div className='ms-themer-swatchBg' style={ { backgroundColor: this.state.themeRules[PaletteSlot[paletteSlot] + PaletteName].value.str } }>
-          <div className='ms-themer-swatch' style={ { backgroundColor: this.state.themeRules[PaletteSlot[paletteSlot] + PaletteName].value.str } }></div>
-          <div className='ms-themer-swatch' style={ { backgroundColor: this.state.themeRules[PaletteSlot[paletteSlot] + 'Lightest'].value.str } }></div>
-          <div className='ms-themer-swatch' style={ { backgroundColor: this.state.themeRules[PaletteSlot[paletteSlot] + 'Lighter'].value.str } }></div>
-          <div className='ms-themer-swatch' style={ { backgroundColor: this.state.themeRules[PaletteSlot[paletteSlot] + 'Medium'].value.str } }></div>
-          <div className='ms-themer-swatch' style={ { backgroundColor: this.state.themeRules[PaletteSlot[paletteSlot] + 'Darker'].value.str } }></div>
-          <div className='ms-themer-swatch' style={ { backgroundColor: this.state.themeRules[PaletteSlot[paletteSlot] + 'Darkest'].value.str } }></div>
+        <div className='ms-themer-swatchBg' style={ { backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].value.str } }>
+          <div className='ms-themer-swatch' style={ { backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].value.str } }></div>
+          { [this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Lightest']),
+          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Lighter']),
+          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Medium']),
+          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Darker']),
+          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Darkest'])] }
         </div>
       </div>
     );
