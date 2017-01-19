@@ -55,7 +55,7 @@
     left: 8px;
     position: absolute;
     right: 8px;
-    transition: background-color $ms-duration2 $ms-ease2;
+    transition: background-color $ms-animation-duration-2 $ms-animation-ease-2;
   }
 
   // Make room for the heavier text of the selected state

@@ -58,7 +58,7 @@ $CommandBarHeight: 40px;
     pointer-events: none;
     opacity: 1;
     cursor: pointer;
-    transition: opacity $ms-duration3 $ms-ease1;
+    transition: opacity $ms-animation-duration-3 $ms-animation-ease-1;
   }
 }
 

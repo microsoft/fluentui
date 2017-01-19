@@ -80,7 +80,7 @@ input.ms-SearchBox-field {
   @include padding(6px, 38px, 7px, 31px);
   width: 100%;
   background-color: transparent;
-  transition: padding-left $ms-duration1;
+  transition: padding-left $ms-animation-duration-1;
 
   &:focus {
     @include padding-right(32px);

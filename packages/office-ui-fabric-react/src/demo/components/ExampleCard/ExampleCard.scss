@@ -31,7 +31,7 @@
     line-height: 1;
     padding: 4px 12px;
     min-width: 100px;
-    transition: border $ms-duration3 $ms-ease1;
+    transition: border $ms-animation-duration-3 $ms-animation-ease-1;
 
     .ms-Button-icon {
       position: relative;
@@ -84,7 +84,7 @@
     margin: 0;
     max-height: 0;
     overflow: auto;
-    transition: all $ms-duration3 $ms-ease1;
+    transition: all $ms-animation-duration-3 $ms-animation-ease-1;
   }
 
   code {
