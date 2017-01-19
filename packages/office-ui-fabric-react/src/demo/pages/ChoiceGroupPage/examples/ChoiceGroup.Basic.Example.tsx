@@ -1,7 +1,8 @@
 import * as React from 'react';
 import {
   ChoiceGroup,
-  IChoiceGroupOption
+  IChoiceGroupOption,
+  autobind
 } from '../../../../index';
 
 /**
@@ -19,7 +20,6 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
       imageKey: ''
     };
 
-    this._onChanged = this._onChanged.bind(this);
     this._onImageChoiceGroupChange = this._onImageChoiceGroupChange.bind(this);
   }
 
@@ -49,10 +49,10 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
               disabled: true
             }
           ] }
-          onChanged={ this._onChanged }
+          onChange={ this._onChange }
           label='Pick one'
           required={ true }
-        />
+          />
         <ChoiceGroup
           label='Pick one image'
           options={ [
@@ -73,17 +73,18 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
               text: 'Pie chart'
             }
           ] }
-          onChanged={ this._onImageChoiceGroupChange }
-        />
+          onChange={ this._onImageChoiceGroupChange }
+          />
       </div>
     );
   }
 
-  private _onChanged() {
-    console.log('The option has been changed.');
+  @autobind
+  private _onChange(ev: React.FormEvent<HTMLInputElement>, option: any) {
+    console.dir(option);
   }
 
-  private _onImageChoiceGroupChange(option: IChoiceGroupOption, evt?: React.SyntheticEvent<HTMLElement>) {
+  private _onImageChoiceGroupChange(ev: React.SyntheticEvent<HTMLElement>, option: IChoiceGroupOption) {
     this.setState({
       imageKey: option.key
     });
