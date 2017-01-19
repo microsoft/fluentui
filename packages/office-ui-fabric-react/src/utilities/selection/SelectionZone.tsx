@@ -43,6 +43,7 @@ export interface ISelectionZoneProps extends React.Props<SelectionZone> {
   selection: ISelection;
   layout?: ISelectionLayout;
   selectionMode?: SelectionMode;
+  selectionPreservedOnEmptyClick?: boolean;
   isSelectedOnFocus?: boolean;
   onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
 }
@@ -374,7 +375,10 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   }
 
   private _tryClearOnEmptyClick(ev: MouseEvent) {
-    if (this._isNonHandledClick(ev.target as HTMLElement)) {
+    if (
+      !this.props.selectionPreservedOnEmptyClick &&
+      this._isNonHandledClick(ev.target as HTMLElement)
+    ) {
       this.props.selection.setAllSelected(false);
     }
   }

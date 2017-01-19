@@ -189,6 +189,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       onColumnHeaderClick,
       onColumnHeaderContextMenu,
       selectionMode,
+      selectionPreservedOnEmptyClick,
       ariaLabel,
       ariaLabelForGrid,
       rowElementEventMap,
@@ -274,6 +275,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
               <SelectionZone
                 ref='selectionZone'
                 selection={ selection }
+                selectionPreservedOnEmptyClick={ selectionPreservedOnEmptyClick }
                 selectionMode={ selectionMode }
                 onItemInvoked={ onItemInvoked }>
                 { groups ? (
