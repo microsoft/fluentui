@@ -31,7 +31,7 @@
     cursor: default;
   }
 
-  @include input-placeholder {
+  @include ms-input-placeholder {
     color: $ms-color-neutralTertiary;
   }
 }
@@ -42,7 +42,7 @@
     @include ms-Label-is-required
   }
 
-  @include input-placeholder {
+  @include ms-input-placeholder {
     @include ms-Label-is-required
   }
 }
@@ -91,7 +91,7 @@
     cursor: default;
   }
 
-  @include input-placeholder {
+  @include ms-input-placeholder {
     color: $ms-color-neutralSecondary;
   }
 }
@@ -198,7 +198,7 @@
 .ms-TextField-errorMessage {
   @include ms-font-s;
   @include ms-fontColor-redDark;
-  @include resetMargins;
+  @include ms-reset-margins;
   padding-top: 5px;
 }
 

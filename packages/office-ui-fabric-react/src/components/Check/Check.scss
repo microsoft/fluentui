@@ -15,7 +15,7 @@ $checkBoxHeight: 24px;
   height: $checkBoxHeight;
   vertical-align: top;
   position: relative;
-  @include user-select(none);
+  @include ms-user-select(none);
 
   &.is-checked {
     .ms-Check-background {

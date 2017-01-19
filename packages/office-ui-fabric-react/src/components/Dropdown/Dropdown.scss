@@ -154,7 +154,7 @@ $DropDown-item-height: 36px;
 // Container for the dropdown items, displayed as a panel on small screens.
 .ms-Dropdown-items {
   @include ms-normalize;
-  @include drop-shadow;
+  @include ms-drop-shadow;
   background-color: $ms-color-white;
   list-style-type: none;
   width: 100%;

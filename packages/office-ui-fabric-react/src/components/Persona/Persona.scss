@@ -225,7 +225,7 @@ $ms-Persona-presenceSizeXl: 28px;
 .ms-Persona-tertiaryText,
 .ms-Persona-optionalText,
 .ms-Persona-primaryTextContent {
-  @include noWrap();
+  @include ms-no-wrap();
 }
 
 .ms-Persona-primaryText {

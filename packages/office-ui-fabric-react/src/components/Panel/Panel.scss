@@ -78,7 +78,7 @@ $CommandBarHeight: 40px;
     border-right: 1px solid $ms-color-neutralLight;
     pointer-events: auto;
     width: $Panel-width-sm;
-    @include drop-shadow(-30px, 0px, 30px, -30px, .2);
+    @include ms-drop-shadow(-30px, 0px, 30px, -30px, .2);
     @include left(auto);
   }
 }
@@ -269,7 +269,7 @@ $CommandBarHeight: 40px;
 
 // The close button in the top right (x)
 .ms-Panel-closeButton {
-  @include button-reset();
+  @include ms-button-reset();
   position: absolute;
   @include right(8px);
   top: 0;

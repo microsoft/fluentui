@@ -1,7 +1,7 @@
 @import '../../../common/common';
 
 .ms-SearchMore-button {
-  @include button-reset();
+  @include ms-button-reset();
   height: auto;
   text-align: center;
   margin: 0;

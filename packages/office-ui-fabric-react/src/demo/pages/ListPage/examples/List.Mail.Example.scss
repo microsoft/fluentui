@@ -20,7 +20,7 @@
 .ms-ListItem-primaryText,
 .ms-ListItem-secondaryText,
 .ms-ListItem-tertiaryText {
-  @include noWrap;
+  @include ms-no-wrap;
   display: block;
 }
 
@@ -206,7 +206,7 @@
 
   // Primary text, typically the name.
   .ms-ListItem-primaryText {
-    @include noWrap;
+    @include ms-no-wrap;
     font-size: $ms-font-size-m;
     padding-top: 15px;
     padding-right: 0;
@@ -215,7 +215,7 @@
 
   // Secondary text, typically the modified date or some other metadata.
   .ms-ListItem-secondaryText {
-    @include noWrap;
+    @include ms-no-wrap;
     @include ms-font-xs;
     padding-top: 6px;
   }

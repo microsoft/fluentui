@@ -70,7 +70,7 @@ $Dialog-default-max-width: 340px;
 // The actual dialog element
 .ms-Dialog-main {
   @include dialogPositioningIE9Fallback();
-  @include drop-shadow();
+  @include ms-drop-shadow();
   background-color: $ms-color-white;
   box-sizing: border-box;
   line-height: 1.35;
