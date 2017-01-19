@@ -40,12 +40,13 @@ export class DetailsListBasicExample extends React.Component<any, any> {
         <TextField
           label='Filter by name:'
           onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
-        />
+          />
         <MarqueeSelection selection={ this._selection }>
           <DetailsList
             items={ items }
             setKey='set'
             selection={ this._selection }
+            selectionPreservedOnEmptyClick={ true }
             onItemInvoked={ (item) => alert(`Item invoked: ${item.name}`) }
             onRenderItemColumn={ this._onRenderItemColumn }
             />
@@ -71,7 +72,7 @@ export class DetailsListBasicExample extends React.Component<any, any> {
       case 1:
         return '1 item selected: ' + (this._selection.getSelection()[0] as any).name;
       default:
-        return `${ selectionCount } items selected`;
+        return `${selectionCount} items selected`;
     }
   }
 }
