@@ -85,16 +85,45 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
             </thead>
             <tbody>
               <tr>
-                <td><TextField className='ms-ColorPicker-input' value={ color.hex } ref={ (ref) => this.hexText = ref } onBlur={ this._onHexChanged } /></td>
-                <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' onBlur={ this._onRGBAChanged }
-                  value={ String(color.r) } ref={ (ref) => this.rText = ref } /></td>
-                <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' onBlur={ this._onRGBAChanged }
-                  value={ String(color.g) } ref={ (ref) => this.gText = ref } /></td>
-                <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' onBlur={ this._onRGBAChanged }
-                  value={ String(color.b) } ref={ (ref) => this.bText = ref } /></td>
+                <td>
+                  <TextField
+                    className={ css('ms-ColorPicker-input', styles.input) }
+                    value={ color.hex }
+                    ref={ (ref) => this.hexText = ref }
+                    onBlur={ this._onHexChanged }
+                  />
+                </td>
+                <td style={ { width: '18%' } }>
+                  <TextField
+                    className={ css('ms-ColorPicker-input', styles.input) }
+                    onBlur={ this._onRGBAChanged }
+                    value={ String(color.r) }
+                    ref={ (ref) => this.rText = ref }
+                  />
+                </td>
+                <td style={ { width: '18%' } }>
+                  <TextField
+                    className={ css('ms-ColorPicker-input', styles.input) }
+                    onBlur={ this._onRGBAChanged }
+                    value={ String(color.g) } ref={ (ref) => this.gText = ref }
+                  />
+                </td>
+                <td style={ { width: '18%' } }>
+                  <TextField
+                    className={ css('ms-ColorPicker-input', styles.input) }
+                    onBlur={ this._onRGBAChanged }
+                    value={ String(color.b) } ref={ (ref) => this.bText = ref }
+                  />
+                </td>
                 { !this.props.alphaSliderHidden && (
-                  <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' onBlur={ this._onRGBAChanged }
-                    value={ String(color.a) } ref={ (ref) => this.aText = ref } /></td>) }
+                  <td style={ { width: '18%' } }>
+                    <TextField
+                      className={ css('ms-ColorPicker-input', styles.input) }
+                      onBlur={ this._onRGBAChanged }
+                      value={ String(color.a) } ref={ (ref) => this.aText = ref }
+                    />
+                  </td>
+                ) }
               </tr>
             </tbody>
           </table>
