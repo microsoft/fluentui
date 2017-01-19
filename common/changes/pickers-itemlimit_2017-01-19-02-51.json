@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Pickers: New property to restrict amount of items that can be selected",
+      "type": "minor"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}
