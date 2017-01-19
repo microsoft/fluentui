@@ -49,3 +49,46 @@ $disabledForegroundColor: "[theme:DisabledForeground, default: #a6a6a6]"; // $ms
 $neutralBackgroundColor: "[theme:NeutralBackground, default: #767676]"; // $ms-color-neutralTertiaryAlt
 $neutralForegroundColor: "[theme:NeutralForeground, default: #a6a6a6]"; // $ms-color-neutralTertiary
 // just use normal foreground: $neutralForegroundHoverColor: "[theme:, default: #333]"; // $ms-color-black;
+
+$primaryColorColor:	"[theme: primaryColor,	default: #0078d7]";
+$primaryColorLightestColor:	"[theme: primaryColorLightest,	default: #c4e4ff]";
+$primaryColorLighterColor:	"[theme: primaryColorLighter,	default: #89caff]";
+$primaryColorMediumColor:	"[theme: primaryColorMedium,	default: #4eafff]";
+$primaryColorDarkerColor:	"[theme: primaryColorDarker,	default: #0058a1]";
+$primaryColorDarkestColor:	"[theme: primaryColorDarkest,	default: #003b6b]";
+$backgroundColorColor:	"[theme: backgroundColor,	default: #eeeeee]";
+$backgroundColorLightestColor:	"[theme: backgroundColorLightest,	default: #d5d5d5]";
+$backgroundColorLighterColor:	"[theme: backgroundColorLighter,	default: #b2b2b2]";
+$backgroundColorMediumColor:	"[theme: backgroundColorMedium,	default: #777777]";
+$backgroundColorDarkerColor:	"[theme: backgroundColorDarker,	default: #3b3b3b]";
+$backgroundColorDarkestColor:	"[theme: backgroundColorDarkest,	default: #181818]";
+$foregroundColorColor:	"[theme: foregroundColor,	default: #333333]";
+$foregroundColorLightestColor:	"[theme: foregroundColorLightest,	default: #d6d6d6]";
+$foregroundColorLighterColor:	"[theme: foregroundColorLighter,	default: #adadad]";
+$foregroundColorMediumColor:	"[theme: foregroundColorMedium,	default: #858585]";
+$foregroundColorDarkerColor:	"[theme: foregroundColorDarker,	default: #262626]";
+$foregroundColorDarkestColor:	"[theme: foregroundColorDarkest,	default: #1a1a1a]";
+$errorTextColor:	"[theme: errorText,	default: #ff0000]";
+$bodyBackgroundColor:	"[theme: bodyBackground,	default: #ffffff]";
+$bodyTextColor:	"[theme: bodyText,	default: #333333]";
+$bodyTextAltColor:	"[theme: bodyTextAlt,	default: #858585]";
+$bodyTextDisabledColor:	"[theme: bodyTextDisabled,	default: #adadad]";
+$bodyTextHoverColor:	"[theme: bodyTextHover,	default: #1a1a1a]";
+$bodyTextPrimaryColor:	"[theme: bodyTextPrimary,	default: #0078d7]";
+$bodyTextPrimaryAltColor:	"[theme: bodyTextPrimaryAlt,	default: #4eafff]";
+$bodyTextStrongColor:	"[theme: bodyTextStrong,	default: #1a1a1a]";
+$focusBorderColor:	"[theme: focusBorder,	default: #1a1a1a]";
+$controlTextColor:	"[theme: controlText,	default: #333333]";
+$controlBackgroundColor:	"[theme: controlBackground,	default: #ffffff]";
+$controlBackgroundDisabledColor:	"[theme: controlBackgroundDisabled,	default: #d5d5d5]";
+$controlBackgroundHoverColor:	"[theme: controlBackgroundHover,	default: #ffffff]";
+$controlBackgroundSelectedColor:	"[theme: controlBackgroundSelected,	default: #ffffff]";
+$controlBackgroundSelectedHoverColor:	"[theme: controlBackgroundSelectedHover,	default: #ffffff]";
+$controlForegroundSelectedColor:	"[theme: controlForegroundSelected,	default: #0078d7]";
+$controlForegroundDisabledColor:	"[theme: controlForegroundDisabled,	default: #d6d6d6]";
+$controlBorderColor:	"[theme: controlBorder,	default: #858585]";
+$controlBorderDisabledColor:	"[theme: controlBorderDisabled,	default: #d6d6d6]";
+$controlBorderHoverColor:	"[theme: controlBorderHover,	default: #1a1a1a]";
+$controlUnfilledColor:	"[theme: controlUnfilled,	default: #c4e4ff]";
+$controlFilledColor:	"[theme: controlFilled,	default: #0078d7]";
+$controlFilledHoverColor:	"[theme: controlFilledHover,	default: #0058a1]";
