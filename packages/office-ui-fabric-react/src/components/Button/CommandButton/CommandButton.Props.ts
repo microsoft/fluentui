@@ -1,7 +1,7 @@
+/* tslint:disable:no-unused-variable no-unused-imports */
 import * as React from 'react';
-import { CommandButton } from './CommandButton';
+/* tslint:enable:no-unused-variable no-unused-imports*/
 import { IButtonProps } from '../ButtonBase/ButtonBase.Props';
-
 
 export interface ICommandButtonProps extends IButtonProps {
   /**

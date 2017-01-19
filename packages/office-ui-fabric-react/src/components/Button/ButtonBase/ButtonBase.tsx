@@ -1,4 +1,6 @@
+/* tslint:disable:no-unused-variable no-unused-imports */
 import * as React from 'react';
+/* tslint:enable:no-unused-variable no-unused-imports*/
 import {
   BaseComponent,
   css,
@@ -32,7 +34,7 @@ export class ButtonBase extends BaseComponent<IButtonProps, IButtonState> implem
 
   public render(): JSX.Element {
     let {  children, ariaLabel, ariaDescription, href, disabled, onClick } = this.props;
-    let { labelId, descriptionId, ariaDescriptionId } = this.state;
+    let { labelId, ariaDescriptionId } = this.state;
 
     const renderAsAnchor: boolean = !!href;
     const tag = renderAsAnchor ? 'a' : 'button';

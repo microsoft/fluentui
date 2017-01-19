@@ -1,4 +1,6 @@
+/* tslint:disable:no-unused-variable no-unused-imports */
 import * as React from 'react';
+/* tslint:enable:no-unused-variable no-unused-imports*/
 import { ButtonBase } from './ButtonBase';
 
 export interface IButton {

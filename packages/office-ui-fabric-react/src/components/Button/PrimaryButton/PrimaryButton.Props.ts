@@ -1,7 +1,7 @@
+/* tslint:disable:no-unused-variable no-unused-imports */
 import * as React from 'react';
-import { PrimaryButton } from './PrimaryButton';
+/* tslint:enable:no-unused-variable no-unused-imports*/
 import { IButtonProps } from '../ButtonBase/ButtonBase.Props';
-
 
 export interface IPrimaryButtonProps extends IButtonProps {
 

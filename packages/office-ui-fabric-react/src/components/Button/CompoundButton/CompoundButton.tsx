@@ -1,9 +1,8 @@
-/* tslint:disable:no-unused-variable */
+/* tslint:disable:no-unused-variable no-unused-imports */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
+/* tslint:enable:no-unused-variable no-unused-imports*/
 import {
   BaseComponent,
-  css,
   getNativeProps,
   anchorProperties,
   buttonProperties
@@ -14,7 +13,6 @@ import { ICompoundButtonProps } from './CompoundButton.Props';
 import './CompoundButton.scss';
 
 export class CompoundButton extends BaseComponent<ICompoundButtonProps, any> {
-  private _buttonElement: HTMLButtonElement;
   public render() {
     let { description } = this.props;
     return (
@@ -29,4 +27,3 @@ export class CompoundButton extends BaseComponent<ICompoundButtonProps, any> {
     );
   }
 }
-

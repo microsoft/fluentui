@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   PrimaryButton,
-  ButtonType,
   Label
 } from '../../../../index';
 import { IButtonProps } from './IButtonProps';

@@ -1,9 +1,8 @@
-/* tslint:disable:no-unused-variable */
+/* tslint:disable:no-unused-variable no-unused-imports */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
+/* tslint:enable:no-unused-variable no-unused-imports*/
 import {
   BaseComponent,
-  css,
   getNativeProps,
   anchorProperties,
   buttonProperties
@@ -14,7 +13,6 @@ import { IIconButtonProps } from './IconButton.Props';
 import './IconButton.scss';
 
 export class IconButton extends BaseComponent<IIconButtonProps, any> {
-
   public render() {
     let { icon } = this.props;
     return (
@@ -28,4 +26,3 @@ export class IconButton extends BaseComponent<IIconButtonProps, any> {
     );
   }
 }
-

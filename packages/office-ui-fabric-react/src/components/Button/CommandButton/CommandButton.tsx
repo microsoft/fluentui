@@ -1,9 +1,8 @@
-/* tslint:disable:no-unused-variable */
+/* tslint:disable:no-unused-variable no-unused-imports */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
+/* tslint:enable:no-unused-variable no-unused-imports*/
 import {
   BaseComponent,
-  css,
   getNativeProps,
   anchorProperties,
   buttonProperties
@@ -29,4 +28,3 @@ export class CommandButton extends BaseComponent<ICommandButtonProps, any> {
     );
   }
 }
-
