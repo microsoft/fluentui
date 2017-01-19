@@ -63,7 +63,7 @@ export class Button extends BaseComponent<IButtonProps, IButtonState> implements
     // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
     // otherwise it will be assigned to descriptionSpan.
     const ariaDescriptionSpan: React.ReactElement<React.HTMLProps<HTMLSpanElement>> = ariaDescription
-      ? <span className='ms-u-screenReaderOnly' id={ ariaDescriptionId }>{ ariaDescription }</span>
+      ? <span className='ms-screenReaderOnly' id={ ariaDescriptionId }>{ ariaDescription }</span>
       : null;
 
     // Check for ariaDescription, description or aria-describedby in the native props to determine source of aria-describedby

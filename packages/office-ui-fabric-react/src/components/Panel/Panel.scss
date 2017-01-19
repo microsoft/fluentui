@@ -191,13 +191,13 @@ $CommandBarHeight: 40px;
 
   &.ms-Panel-animateIn {
     .ms-Panel-main {
-      @include ms-u-fadeIn100;
+      @include ms-fadeIn100;
     }
   }
 
   &.ms-Panel-animateOut {
     .ms-Panel-main {
-      @include ms-u-fadeOut100;
+      @include ms-fadeOut100;
     }
 
     .ms-Overlay {
@@ -211,40 +211,40 @@ $CommandBarHeight: 40px;
     &.ms-Panel--openRight.ms-Panel-animateIn {
       .ms-Panel-main {
         position: fixed; // fixes panel jump in chrome and safari
-        @include ms-u-slideLeftIn40;
+        @include ms-slideLeftIn40;
       }
 
       .ms-Overlay {
-        @include ms-u-fadeIn200;
+        @include ms-fadeIn200;
       }
     }
 
     &.ms-Panel--openRight.ms-Panel-animateOut {
       .ms-Panel-main {
-        @include ms-u-slideRightOut40;
+        @include ms-slideRightOut40;
       }
       .ms-Overlay {
-        @include ms-u-fadeOut200;
+        @include ms-fadeOut200;
       }
     }
 
     // Animations - Left panel (anchored left)
     &.ms-Panel--openLeft.ms-Panel-animateIn {
       .ms-Panel-main {
-        @include ms-u-slideRightIn40;
+        @include ms-slideRightIn40;
       }
 
       .ms-Overlay {
-        @include ms-u-fadeIn200;
+        @include ms-fadeIn200;
       }
     }
 
     &.ms-Panel--openLeft.ms-Panel-animateOut {
       .ms-Panel-main {
-        @include ms-u-slideLeftOut40;
+        @include ms-slideLeftOut40;
       }
       .ms-Overlay {
-        @include ms-u-fadeOut200;
+        @include ms-fadeOut200;
       }
     }
 

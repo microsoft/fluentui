@@ -32,7 +32,7 @@ $DropDown-item-height: 36px;
 }
 
 .ms-Dropdown {
-  @include ms-u-normalize;
+  @include ms-normalize;
   @include ms-font-m;
   color: $ms-color-neutralPrimary;
 
@@ -137,7 +137,7 @@ $DropDown-item-height: 36px;
 
 // Style the new, replacement component
 .ms-Dropdown-title {
-  @include ms-u-normalize;
+  @include ms-normalize;
   background: $ms-color-white;
   border: 1px solid $ms-color-neutralTertiaryAlt;
   cursor: pointer;
@@ -153,7 +153,7 @@ $DropDown-item-height: 36px;
 
 // Container for the dropdown items, displayed as a panel on small screens.
 .ms-Dropdown-items {
-  @include ms-u-normalize;
+  @include ms-normalize;
   @include drop-shadow;
   background-color: $ms-color-white;
   list-style-type: none;

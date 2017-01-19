@@ -12,7 +12,7 @@ $button-commandButtonHeight: 40px;
 .ms-Button {
   @include focus-border();
   @include ms-font-m;
-  @include ms-u-normalize;
+  @include ms-normalize;
   color: $ms-color-neutralPrimary;
   background-color: $ms-color-neutralLighter;
   border: 1px solid $ms-color-neutralLighter;

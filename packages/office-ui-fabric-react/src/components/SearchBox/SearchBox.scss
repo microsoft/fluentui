@@ -13,7 +13,7 @@ $SearchBox-height: 36px;
 
 .ms-SearchBox {
   @include ms-font-m;
-  @include ms-u-normalize;
+  @include ms-normalize;
   color: $ms-color-neutralPrimary;
   position: relative;
   margin-bottom: 10px;
@@ -69,7 +69,7 @@ $SearchBox-height: 36px;
 
 input.ms-SearchBox-field {
   position: relative;
-  @include ms-u-normalize;
+  @include ms-normalize;
   border: none;
   outline: transparent 1px solid;
   font-weight: inherit;

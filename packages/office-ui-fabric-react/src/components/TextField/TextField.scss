@@ -11,7 +11,7 @@
 
 .ms-TextField {
   @include ms-baseFont;
-  @include ms-u-normalize;
+  @include ms-normalize;
   color: $ms-color-neutralPrimary;
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
@@ -54,7 +54,7 @@
 }
 
 .ms-TextField-field {
-  @include ms-u-normalize;
+  @include ms-normalize;
   @include ms-baseFont;
   border: 1px solid $ms-color-neutralTertiaryAlt;
   border-radius: 0;
@@ -211,7 +211,7 @@
   @include ms-borderColor-redDark;
 }
 
-.ms-u-screenReaderOnly {
+.ms-screenReaderOnly {
   position: absolute;
   text-indent: -9999px;
   width: 1px;

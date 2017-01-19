@@ -120,7 +120,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
             css(
               'ms-Callout',
               className,
-              slideDirectionalClassName ? `ms-u-${slideDirectionalClassName}` : ''
+              slideDirectionalClassName ? `ms-${slideDirectionalClassName}` : ''
             ) }
           style={ positions ? positions.calloutPosition : OFF_SCREEN_STYLE }
           ref={ this._resolveRef('_calloutElement') }

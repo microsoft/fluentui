@@ -71,7 +71,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
     return (
       <FocusZone direction={ FocusZoneDirection.vertical }>
         <nav role='navigation'
-          className={ css('ms-Nav', className, { 'is-onTop ms-u-slideRightIn40': isOnTop }) }>
+          className={ css('ms-Nav', className, { 'is-onTop ms-slideRightIn40': isOnTop }) }>
           { groupElements }
         </nav>
       </FocusZone>
@@ -176,7 +176,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
             { group.name }
           </button> : null)
         }
-        <div className={ css('ms-Nav-groupContent', 'ms-u-slideDownIn20') }>
+        <div className={ css('ms-Nav-groupContent', 'ms-slideDownIn20') }>
           { this._renderLinks(group.links, 0 /* nestingLevel */) }
         </div>
       </div>

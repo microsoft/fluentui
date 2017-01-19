@@ -7,7 +7,7 @@
 // Calendar styles
 
 .ms-DatePicker {
-  @include ms-u-normalize;
+  @include ms-normalize;
   margin-bottom: 17px;
 }
 
@@ -22,7 +22,7 @@
 // The holder is the only "scrollable" top-level container element.
 .ms-DatePicker-holder {
   -webkit-overflow-scrolling: touch;
-  @include ms-u-borderBox;
+  @include ms-borderBox;
   background: $ms-color-white;
   min-width: 300px;
   display: none;
@@ -31,8 +31,8 @@
 
 // When the picker opens, reveal the content.
 .ms-DatePicker-picker.ms-DatePicker-picker--opened .ms-DatePicker-holder {
-  @include ms-u-slideDownIn10;
-  @include ms-u-borderBox;
+  @include ms-slideDownIn10;
+  @include ms-borderBox;
   display: block;
 }
 
@@ -388,7 +388,7 @@
     }
     // Contains the calendar view for picking a day.
     .ms-DatePicker-dayPicker {
-      @include ms-u-borderBox;
+      @include ms-borderBox;
       @include border-right(1px, solid, $ms-color-neutralLight);
       width: 220px;
     }
@@ -448,7 +448,7 @@
     }
     // Position the "Go to today" button below the month picker.
     .ms-DatePicker-goToday {
-      @include ms-u-borderBox;
+      @include ms-borderBox;
       font-size: 12px;
       height: 30px;
       line-height: 30px;

@@ -10,8 +10,8 @@
 
 .ms-ListItem {
   @include ms-font-m;
-  @include ms-u-normalize;
-  @include ms-u-clearfix;
+  @include ms-normalize;
+  @include ms-clearfix;
   padding: 9px 28px 3px;
   position: relative;
   display: block;
