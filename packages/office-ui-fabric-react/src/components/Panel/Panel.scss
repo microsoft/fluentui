@@ -73,7 +73,7 @@ $CommandBarHeight: 40px;
   width: 100%;
 
   // Medium screens and up - (anchored right, fixed width)
-  @media (min-width: $ms-screen-md-min) {
+  @media (min-width: $ms-screen-min-md) {
     border-left: 1px solid $ms-color-neutralLight;
     border-right: 1px solid $ms-color-neutralLight;
     pointer-events: auto;
@@ -89,7 +89,7 @@ $CommandBarHeight: 40px;
   .ms-Panel-main {
     width: $Panel-width-xs;
 
-    @media (min-width: $ms-screen-md-min) {
+    @media (min-width: $ms-screen-min-md) {
       width: $Panel-width-sm;
     }
   }
@@ -120,7 +120,7 @@ $CommandBarHeight: 40px;
 .ms-Panel.ms-Panel--lg,
 .ms-Panel.ms-Panel--xl {
   .ms-Panel-main {
-    @media (min-width: $ms-screen-lg-min) {
+    @media (min-width: $ms-screen-min-lg) {
       @include left($Panel-margin-md);
       width: auto;
     }
@@ -131,7 +131,7 @@ $CommandBarHeight: 40px;
 //
 .ms-Panel.ms-Panel--md {
   .ms-Panel-main {
-    @media (min-width: $ms-screen-xl-min) {
+    @media (min-width: $ms-screen-min-xl) {
       @include left(auto);
       width: $Panel-width-md;
     }
@@ -142,7 +142,7 @@ $CommandBarHeight: 40px;
 //
 .ms-Panel.ms-Panel--lg {
   .ms-Panel-main {
-    @media (min-width: $ms-screen-xxl-min) {
+    @media (min-width: $ms-screen-min-xxl) {
       @include left($Panel-margin-lg);
     }
   }
@@ -152,7 +152,7 @@ $CommandBarHeight: 40px;
 //
 .ms-Panel.ms-Panel--lg.ms-Panel--fixed {
   .ms-Panel-main {
-    @media (min-width: $ms-screen-xxl-min) {
+    @media (min-width: $ms-screen-min-xxl) {
       @include left(auto);
       width: $Panel-width-lg;
     }
@@ -163,7 +163,7 @@ $CommandBarHeight: 40px;
 //
 .ms-Panel.ms-Panel--xl {
   .ms-Panel-main {
-    @media (min-width: $ms-screen-xxl-min) {
+    @media (min-width: $ms-screen-min-xxl) {
       @include left($Panel-margin-xl);
     }
   }
@@ -206,7 +206,7 @@ $CommandBarHeight: 40px;
   }
 
   // Medium screens and up
-  @media (min-width: $ms-screen-md-min) {
+  @media (min-width: $ms-screen-min-md) {
     // Animations -- Default (anchored right)
     &.ms-Panel--openRight.ms-Panel-animateIn {
       .ms-Panel-main {
@@ -300,11 +300,11 @@ $CommandBarHeight: 40px;
   /* Force hw accelleration on scrollable region */
   transform: translateZ(0);
 
-  @media (min-width: $ms-screen-lg-min) {
+  @media (min-width: $ms-screen-min-lg) {
     padding: 0 32px 20px;
   }
 
-  @media (min-width: $ms-screen-xxl-min) {
+  @media (min-width: $ms-screen-min-xxl) {
     padding: 0 40px 20px;
   }
 }
@@ -319,7 +319,7 @@ $CommandBarHeight: 40px;
   text-overflow: ellipsis;
   overflow: hidden;
 
-  @media (min-width: $ms-screen-xl-min) {
+  @media (min-width: $ms-screen-min-xl) {
     margin-top: 30px;
   }
 }

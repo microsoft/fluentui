@@ -207,7 +207,7 @@ $Dialog-default-max-width: 340px;
   }
 }
 
-@media (min-width: $ms-screen-md-min) {
+@media (min-width: $ms-screen-min-md) {
   // Allow wider dialog on larger screens
   .ms-Dialog-main {
     width: auto;

@@ -96,7 +96,7 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
   }
 }
 
-@media screen and (max-width: $ms-screen-md-max) {
+@media screen and (max-width: $ms-screen-max-md) {
   margin: 11px 0 1px;
 
   .ms-Breadcrumb-listItem .ms-Breadcrumb-itemLink {
@@ -114,7 +114,7 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
   }
 }
 
-@media screen and (max-width: $ms-screen-sm-max) {
+@media screen and (max-width: $ms-screen-max-sm) {
   .ms-Breadcrumb-listItem .ms-Breadcrumb-itemLink {
     font-size: $ms-font-size-m;
     max-width: $Breadcrumb-itemMaxWidth-sm;
