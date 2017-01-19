@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
   EventGroup,
+  autobind,
   assign,
   css,
   shallowCompare
@@ -185,7 +186,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
         data-automationid='DetailsRow'
         style={ { minWidth: viewport ? viewport.width : 0 } }
         aria-selected={ isSelected }
-        onContextMenu={ this._onItemContextMenu.bind(this, this.props.item, this.props.itemIndex) }
+        onContextMenu={ (ev) => { this._onItemContextMenu(this.props.item, this.props.itemIndex, ev); } }
       >
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           { (selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden) && (
@@ -292,8 +293,9 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
     return options;
   }
 
+  @autobind
   private _onItemContextMenu(item, index, ev) {
-    let { onItemContextMenu } = this.props;
+    const { onItemContextMenu } = this.props;
 
     if (onItemContextMenu) {
       onItemContextMenu(item, index, ev);
