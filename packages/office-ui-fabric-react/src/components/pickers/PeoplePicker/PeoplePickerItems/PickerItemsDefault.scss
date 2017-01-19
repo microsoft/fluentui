@@ -3,12 +3,13 @@
 .ms-PickerPersona-container {
   @include focus-border();
 
-  display: inline-flex;
+  display: flex;
   align-items: center;
   background: $ms-color-neutralLighter;
   margin: 1px;
   cursor: default;
   user-select: none;
+  max-width: 100%;
 
   &:hover {
     background: $ms-color-neutralLight;
@@ -21,7 +22,15 @@
     }
   }
 
+  .ms-PickerItem-content {
+    flex: 0 1 auto;
+    min-width: 0px;
+    &.ms-Button {
+      flex: 0 0 auto;
+    }
+  }
+
   .ms-Persona-details {
-    flex: 1 0 auto;
+    flex: 0 1 auto;
   }
 }
