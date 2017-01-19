@@ -19,7 +19,6 @@
 
 // Toggle
 .ms-Toggle {
-  @include ms-baseFont;
   @include ms-font-m;
   @include ms-normalize;
   color: $ms-color-neutralPrimary;

@@ -359,6 +359,5 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
 
 .ms-CommandBarSearch-input,
 .ms-CommandBarSearch-input::-webkit-input-placeholder {
-  @include ms-baseFont;
   font-size: $ms-font-size-m;
 }

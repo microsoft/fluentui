@@ -8,7 +8,6 @@
 // MessageBar Styles
 
 .ms-MessageBar {
-  @include ms-baseFont;
   @include ms-bgColor-info;
   color: $ms-color-infoText;
   width: 100%;

@@ -15,7 +15,6 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 //
 
 .ms-ChoiceFieldGroup {
-  @include ms-baseFont;
   margin-bottom: 4px;
 
   .ms-ChoiceFieldGroup-list {

@@ -10,7 +10,6 @@
 @import '../Label/Label.scss';
 
 .ms-TextField {
-  @include ms-baseFont;
   @include ms-normalize;
   color: $ms-color-neutralPrimary;
   font-size: $ms-font-size-m;
@@ -55,7 +54,6 @@
 
 .ms-TextField-field {
   @include ms-normalize;
-  @include ms-baseFont;
   border: 1px solid $ms-color-neutralTertiaryAlt;
   border-radius: 0;
   font-weight: $ms-font-weight-regular;
@@ -185,7 +183,6 @@
 //== Modifier: Multiline textfield
 //
 .ms-TextField.ms-TextField--multiline .ms-TextField-field {
-  @include ms-baseFont;
   color: $ms-color-neutralPrimary;
   font-family: $ms-font-family-base;
   font-size: $ms-font-size-m;

@@ -18,7 +18,6 @@ $Dialog-default-max-width: 340px;
 }
 
 .ms-Dialog {
-  @include ms-baseFont;
   background-color: transparent;
   position: fixed;
   height: 100%;

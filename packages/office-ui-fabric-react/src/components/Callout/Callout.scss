@@ -22,7 +22,6 @@ $Callout-smallbeak-slant-width: 16px;
 }
 
 .ms-Callout {
-  @include ms-baseFont;
   @include drop-shadow(0,0, 15px, -5px);
   position: absolute;
   border: 1px solid $ms-color-neutralLight;

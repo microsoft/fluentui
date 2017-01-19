@@ -61,7 +61,6 @@ $ms-Persona-presenceSizeXl: 28px;
 
 
 .ms-Persona {
-  @include ms-baseFont;
   @include ms-normalize;
   color: $ms-color-neutralPrimary;
   font-size: $ms-font-size-m;
