@@ -263,7 +263,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                 ariaLabel={ ariaLabelForListHeader }
                 ariaLabelForSelectAllCheckbox={ ariaLabelForSelectAllCheckbox }
                 selectAllVisibility={ selectAllVisibility }
-                />
+              />
             ) }
           </div>
           <div ref='contentContainer' onKeyDown={ this._onContentKeyDown } role='presentation'>
@@ -272,7 +272,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
               direction={ FocusZoneDirection.vertical }
               isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }
               onActiveElementChanged={ this._onActiveRowChanged }
-              >
+            >
               <SelectionZone
                 ref='selectionZone'
                 selection={ selection }
@@ -293,14 +293,14 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                     listProps={ additionalListProps }
                     onGroupExpandStateChanged={ this._onGroupExpandStateChanged }
                     ref='groupedList'
-                    />
+                  />
                 ) : (
                     <List
                       items={ items }
                       onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex) }
                       { ...additionalListProps }
                       ref='list'
-                      />
+                    />
                   )
                 }
               </SelectionZone>
@@ -327,6 +327,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       rowElementEventMap: eventsToRegister,
       onRenderMissingItem,
       onRenderItemColumn,
+      onItemContextMenu,
       onRenderRow = this._onRenderRow,
       selectionMode,
       viewport,
@@ -358,6 +359,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       onDidMount: this._onRowDidMount,
       onWillUnmount: this._onRowWillUnmount,
       onRenderItemColumn: onRenderItemColumn,
+      onItemContextMenu: onItemContextMenu,
       eventsToRegister: eventsToRegister,
       dragDropEvents: dragDropEvents,
       dragDropHelper: dragDropHelper,
