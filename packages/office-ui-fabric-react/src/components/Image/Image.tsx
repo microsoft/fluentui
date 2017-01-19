@@ -39,9 +39,6 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
     shouldFadeIn: true
   };
 
-  private static nextKey: number = 0;
-
-  private _currentKey: number;
   private _coverStyle: CoverStyle;
   private _imageElement: HTMLImageElement;
   private _frameElement: HTMLDivElement;
@@ -52,8 +49,6 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
     this.state = {
       loadState: ImageLoadState.notLoaded
     };
-    this._currentKey = Image.nextKey;
-    Image.nextKey += 1;
   }
 
   public componentDidMount() {
@@ -65,8 +60,6 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
 
   public componentWillReceiveProps(nextProps: IImageProps) {
     if (nextProps.src !== this.props.src) {
-      this._currentKey = Image.nextKey;
-      Image.nextKey += 1;
       this._events.off();
       this.setState({
         loadState: ImageLoadState.notLoaded
@@ -108,7 +101,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
         >
         <img
           { ...imageProps }
-          key={ KEY_PREFIX + this._currentKey }
+          key={ KEY_PREFIX + this.props.src || '' }
           className={
             css('ms-Image-image',
               (coverStyle !== undefined) && CoverStyleMap[coverStyle],
