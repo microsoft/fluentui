@@ -1,15 +1,18 @@
 import { IColor } from '../../utilities/Color/IColor';
 import { getColorFromString } from '../../utilities/Color/Colors';
-import { getShade } from '../../utilities/Color/Shades';
+import { isValidShade, getShade } from '../../utilities/Color/Shades';
 import { format } from '../../utilities/string';
 
 import { IThemeSlotRule } from './IThemeSlotRule';
 
 export class ThemeGenerator {
+
+  /* isCustomized should be true only if it's a user action */
   public static setSlot(
     rule: IThemeSlotRule,
     value: string | IColor,
-    slotRules: Array<IThemeSlotRule>
+    slotRules: Array<IThemeSlotRule>,
+    isCustomized = false
   ) {
     let valueAsIColor: IColor;
     if (typeof value === 'string') {
@@ -17,6 +20,8 @@ export class ThemeGenerator {
     } else {
       valueAsIColor = value;
     }
+
+    rule.isCustomized = !rule.inherits || isCustomized; // it's always customized if it doesn't inherit
 
     ThemeGenerator._setSlot(rule, valueAsIColor, slotRules, true);
   }
@@ -34,7 +39,7 @@ export class ThemeGenerator {
           if (!rule.value) {
             throw 'A theme slot that does not inherit must have a value.';
           }
-          ThemeGenerator.setSlot(rule, rule.value, slotRules);
+          ThemeGenerator.setSlot(rule, rule.value, slotRules, true);
         }
       }
     }
@@ -84,7 +89,7 @@ export class ThemeGenerator {
     isCustomized: boolean
   ) {
     // set the appropriate properties on the slot rule first
-    if (!rule.asShade) {
+    if (isCustomized || !isValidShade(rule.asShade)) {
       rule.value = value;
     } else {
       rule.value = getShade(value, rule.asShade);
