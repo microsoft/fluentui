@@ -10,19 +10,20 @@ import {
 } from '../../../Utilities';
 
 import { ButtonBase } from '../ButtonBase/ButtonBase';
-import { IPrimaryButtonProps } from './PrimaryButton.Props';
-import './PrimaryButton.scss';
+import { IIconButtonProps } from './IconButton.Props';
+import './IconButton.scss';
 
-export class PrimaryButton extends BaseComponent<IPrimaryButtonProps, any> {
-  private _buttonElement: HTMLButtonElement;
+export class IconButton extends BaseComponent<IIconButtonProps, any> {
+
   public render() {
+    let { icon } = this.props;
     return (
       <ButtonBase
-        className='ms-Button--primary'
+        className='ms-Button--icon'
         { ...getNativeProps(this.props, anchorProperties || buttonProperties) }
         { ...this.props }
       >
-        <span className='ms-Button-label'>{ this.props.children }</span>
+        <span className='ms-Button-icon'><i className={ `ms-Icon ms-Icon--${icon}` }></i></span>
       </ButtonBase>
     );
   }

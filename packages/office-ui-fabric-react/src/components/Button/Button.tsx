@@ -9,6 +9,7 @@ import {
   anchorProperties
 } from '../../Utilities';
 import { IButtonProps, IButton, ButtonType } from './Button.Props';
+import './Button.scss';
 
 export interface IButtonState {
   labelId?: string;

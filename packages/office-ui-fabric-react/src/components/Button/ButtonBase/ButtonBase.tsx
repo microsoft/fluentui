@@ -37,7 +37,7 @@ export class ButtonBase extends BaseComponent<IButtonProps, IButtonState> implem
     const renderAsAnchor: boolean = !!href;
     const tag = renderAsAnchor ? 'a' : 'button';
     const nativeProps = getNativeProps(this.props.rootProps || this.props, renderAsAnchor ? anchorProperties : buttonProperties);
-    const className = css((this.props.className), 'ms-Button');
+    const className = css((this.props.className), 'ms-Button', { 'disabled': (renderAsAnchor && disabled) });
 
     // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
     // otherwise it will be assigned to descriptionSpan.
