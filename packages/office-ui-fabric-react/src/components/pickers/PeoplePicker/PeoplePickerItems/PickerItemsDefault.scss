@@ -3,7 +3,7 @@
 .ms-PickerPersona-container {
   @include focus-border();
 
-  display: flex;
+  display: inline-flex;
   align-items: center;
   background: $ms-color-neutralLighter;
   margin: 1px;
