@@ -12,7 +12,7 @@ import {
 } from '../../../Utilities';
 import { IButtonProps, IButton } from './ButtonBase.Props';
 import './ButtonBase.scss';
-
+// @TODO Impilment descriptionId/labelId. It used to be passed directly to the button label, but now each instance of the button handles the label.
 export interface IButtonState {
   labelId?: string;
   descriptionId?: string;
