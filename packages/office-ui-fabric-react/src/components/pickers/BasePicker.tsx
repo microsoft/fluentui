@@ -88,7 +88,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     let { suggestedDisplayValue } = this.state;
     let {
       className,
-      inputProps
+      inputProps,
+      itemLimit
     } = this.props;
 
     return (
@@ -112,7 +113,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
               aria-haspopup='true'
               autoCapitalize='off'
               autoComplete='off'
-              role='combobox' />
+              role='combobox'
+              disabled={ this.state.items.length >= itemLimit } />
           </FocusZone>
         </SelectionZone>
         { this.renderSuggestions() }

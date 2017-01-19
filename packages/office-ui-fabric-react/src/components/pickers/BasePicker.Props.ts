@@ -49,6 +49,13 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * @default undefined
    */
   inputProps?: React.HTMLProps<HTMLInputElement>;
+
+  /**
+   * The amount of items that can be selected. Once the limit is reached the input will
+   * be disabled and you can no longer search for items.
+   * @default No Limit
+   */
+  itemLimit?: number;
 }
 
 export interface IBasePickerSuggestionsProps {
