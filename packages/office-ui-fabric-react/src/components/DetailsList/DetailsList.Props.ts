@@ -55,6 +55,7 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /**
    * By default, selection is cleared when clicking on an empty (non-focusable) section of the screen. Setting this value to true
    * overrides that behavior and maintains selection.
+   * @default false
    **/
   selectionPreservedOnEmptyClick?: boolean;
 
