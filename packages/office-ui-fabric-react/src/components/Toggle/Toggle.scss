@@ -7,6 +7,29 @@
 // --------------------------------------------------
 // Toggle styles
 
+$toggle-textColor: $controlTextColor;
+
+$toggle-off-thumbColor: $controlBorderColor;
+$toggle-off-border: $controlBorderColor;
+$toggle-off-hover-borderColor: $controlBorderHoverColor;
+$toggle-off-hover-thumbColor: $controlBorderHoverColor;
+
+// todo: review ON state mappings with new slots
+$toggle-on-backgroundColor: $controlFilledColor;
+$toggle-on-borderColor: $controlFilledColor;
+$toggle-on-thumbColor: $controlBackgroundSelectedColor;
+$toggle-on-hover-backgroundColor: $controlFilledHoverColor;
+$toggle-on-hover-borderColor: $controlFilledHoverColor;
+$toggle-on-hover-thumbColor: $controlBackgroundSelectedHoverColor;
+
+$toggle-disabled-off-thumbColor: $controlBorderDisabledColor;
+$toggle-disabled-off-borderColor: $controlBorderDisabledColor;
+$toggle-disabled-on-backgroundColor: $controlBackgroundDisabledColor;
+$toggle-disabled-on-thumbColor: $bodyTextDisabledColor;
+$toggle-disabled-on-borderColor: $bodyTextDisabledColor;
+
+$toggle-focusBorderColor: $focusBorderColor;
+
 @mixin highContrast-bgColor($active-color, $bw-color) {
   @media screen and (-ms-high-contrast: active) {
     background-color: $active-color;
@@ -22,22 +45,22 @@
   @include ms-baseFont;
   @include ms-font-m;
   @include ms-u-normalize;
-  color: $ms-color-neutralPrimary;
+  color: $toggle-textColor;
 
   position: relative;
   display: block;
   margin-bottom: 8px;
   user-select: none;
 
-  // Interactive overrides
   &.is-enabled {
 
+    // off state
     .ms-Toggle-button {
       cursor: pointer;
     }
 
     .ms-Toggle-background {
-      border: 1px solid $ms-color-neutralSecondaryAlt;
+      border: 1px solid $toggle-off-border;
     }
 
     .ms-Toggle-thumb {
@@ -46,49 +69,51 @@
 
     .ms-Toggle-slider:hover {
       .ms-Toggle-background {
-        border: 1px solid $ms-color-black;
+        border: 1px solid $toggle-off-hover-borderColor;
       }
 
       .ms-Toggle-thumb {
-        background: $ms-color-black;
+        background: $toggle-off-hover-thumbColor;
       }
     }
 
+    // on state
     &.is-checked {
       .ms-Toggle-background {
-        background: $ms-color-themePrimary;
-        border: 1px solid $ms-color-themePrimary;
+        background: $toggle-on-backgroundColor;
+        border: 1px solid $toggle-on-borderColor;
         @include highContrast-bgColor($ms-color-white, $ms-color-black);
       }
 
       .ms-Toggle-thumb {
-        background: $ms-color-white;
+        background: $toggle-on-thumbColor;
         @include left(28px);
         @include highContrast-bgColor($ms-color-black, $ms-color-white);
       }
 
       .ms-Toggle-slider:hover {
         .ms-Toggle-background {
-          border: 1px solid $ms-color-themePrimary;
-          background: $ms-color-themeSecondary;
+          border: 1px solid $toggle-on-hover-borderColor;
+          background: $toggle-on-hover-backgroundColor;
         }
         .ms-Toggle-thumb {
-          background: $ms-color-white;
+          background: $toggle-on-hover-thumbColor;
         }
       }
     }
 
   }
 
-  // Disabled overrides
+  // disabled state
   &.is-disabled {
+    // off state
     .ms-Toggle-thumb {
-      background: $ms-color-neutralTertiaryAlt;
+      background: $toggle-disabled-off-thumbColor;
       @include highContrast-bgColor($ms-color-contrastBlackDisabled, $ms-color-contrastWhiteDisabled);
     }
 
     .ms-Toggle-background {
-      border: 1px solid $ms-color-neutralTertiaryAlt;
+      border: 1px solid $toggle-disabled-off-borderColor;
 
       @media screen and (-ms-high-contrast: active) {
         border-color: $ms-color-contrastBlackDisabled;
@@ -99,15 +124,16 @@
       }
     }
 
+    // on state
     &.is-checked {
       .ms-Toggle-background {
-        background: $ms-color-neutralTertiaryAlt;
+        background: $toggle-disabled-on-backgroundColor;
         border: 1px solid transparent;
         @include highContrast-bgColor($ms-color-contrastBlackDisabled, $ms-color-contrastWhiteDisabled);
       }
 
       .ms-Toggle-thumb {
-        background: $ms-color-neutralLight;
+        background: $toggle-disabled-on-thumbColor;
         @include left(28px);
         @include highContrast-bgColor($ms-color-black, $ms-color-white);
       }
@@ -120,7 +146,7 @@
 }
 
 .ms-Fabric.is-focusVisible .ms-Toggle.is-enabled  .ms-Toggle-button:focus + .ms-Toggle-background .ms-Toggle-focus {
-  border: 1px solid $focusedBorderColor;
+  border: 1px solid $toggle-focusBorderColor;
 }
 
 .ms-Toggle-button {
@@ -159,7 +185,7 @@
   border-radius: 10px;
   top: 4px;
   @include left(4px);
-  background: $ms-color-neutralSecondary;
+  background: $toggle-off-thumbColor;
   transition: all 0.1s ease;
 }
 
