@@ -9,13 +9,6 @@ import {
   anchorProperties
 } from '../../Utilities';
 import { IButtonProps, IButton, ButtonType } from './Button.Props';
-import './sass/ButtonBase.scss';
-import './sass/ButtonCommand.scss';
-import './sass/ButtonCompound.scss';
-import './sass/ButtonDefault.scss';
-import './sass/ButtonHero.scss';
-import './sass/ButtonIcon.scss';
-import './sass/ButtonPrimary.scss';
 
 export interface IButtonState {
   labelId?: string;

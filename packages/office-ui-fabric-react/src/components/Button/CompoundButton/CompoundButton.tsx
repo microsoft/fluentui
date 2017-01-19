@@ -5,12 +5,10 @@ import {
   css,
   getNativeProps,
   buttonProperties
-} from '../../Utilities';
+} from '../../../Utilities';
 
-import { ButtonBase } from './ButtonBase';
-import './sass/ButtonBase.scss';
-import './sass/ButtonCompound.scss';
+import { ButtonBase } from '../ButtonBase/ButtonBase';
 
 export class CompoundButton extends ButtonBase {
-  protected getRootClassName() { return 'ms-Button--compound'; }
+
 }

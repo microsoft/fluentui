@@ -7,8 +7,9 @@ import {
   getNativeProps,
   buttonProperties,
   anchorProperties
-} from '../../Utilities';
-import { IButtonProps, IButton, ButtonType } from './Button.Props';
+} from '../../../Utilities';
+import { IButtonProps, IButton } from './ButtonBase.Props';
+import './ButtonBase.scss';
 
 export interface IButtonState {
   labelId?: string;
@@ -16,13 +17,8 @@ export interface IButtonState {
   ariaDescriptionId?: string;
 }
 
-export abstract class ButtonBase extends BaseComponent<IButtonProps, IButtonState> implements IButton {
-  public static defaultProps: IButtonProps = {
-    buttonType: ButtonType.default
-  };
+export class ButtonBase extends BaseComponent<IButtonProps, IButtonState> implements IButton {
   private _buttonElement: HTMLButtonElement;
-
-  protected getRootClassName() { return ''; }
 
   constructor(props: IButtonProps) {
     super(props, { 'rootProps': null });
@@ -35,23 +31,13 @@ export abstract class ButtonBase extends BaseComponent<IButtonProps, IButtonStat
   }
 
   public render(): JSX.Element {
-    let { buttonType, children, icon, description, ariaLabel, ariaDescription, href, disabled, onClick } = this.props;
+    let {  children, ariaLabel, ariaDescription, href, disabled, onClick } = this.props;
     let { labelId, descriptionId, ariaDescriptionId } = this.state;
 
     const renderAsAnchor: boolean = !!href;
     const tag = renderAsAnchor ? 'a' : 'button';
     const nativeProps = getNativeProps(this.props.rootProps || this.props, renderAsAnchor ? anchorProperties : buttonProperties);
-    const className = css((this.props.className), 'ms-Button', this.getRootClassName());
-
-    const iconSpan = icon && (buttonType === ButtonType.command || buttonType === ButtonType.hero || buttonType === ButtonType.icon)
-      ? <span className='ms-Button-icon'><i className={ `ms-Icon ms-Icon--${icon}` }></i></span>
-      : null;
-
-    // ms-Button-description is only shown when the button type is compound.
-    // In other cases it will not be displayed.
-    const descriptionSpan: React.ReactElement<React.HTMLProps<HTMLSpanElement>> = description
-      ? <span className='ms-Button-description' id={ descriptionId }>{ description }</span>
-      : null;
+    const className = css((this.props.className), 'ms-Button');
 
     // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
     // otherwise it will be assigned to descriptionSpan.
@@ -65,8 +51,6 @@ export abstract class ButtonBase extends BaseComponent<IButtonProps, IButtonStat
 
     if (ariaDescription) {
       ariaDescribedBy = ariaDescriptionId;
-    } else if (description) {
-      ariaDescribedBy = descriptionId;
     } else if (nativeProps['aria-describedby']) {
       ariaDescribedBy = nativeProps['aria-describedby'];
     } else {
@@ -88,9 +72,7 @@ export abstract class ButtonBase extends BaseComponent<IButtonProps, IButtonStat
         onClick && { 'onClick': onClick },
         disabled && { 'disabled': disabled },
         { className }),
-      iconSpan,
-      <span className='ms-Button-label' id={ labelId } >{ children }</span>,
-      descriptionSpan,
+      children,
       ariaDescriptionSpan
     );
   }
