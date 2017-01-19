@@ -7,6 +7,29 @@
 // --------------------------------------------------
 // Toggle styles
 
+$toggle-textColor: $controlTextColor;
+
+$toggle-off-thumbColor: $controlBorderColor;
+$toggle-off-border: $controlBorderColor;
+$toggle-off-hover-borderColor: $controlBorderHoverColor;
+$toggle-off-hover-thumbColor: $controlBorderHoverColor;
+
+// todo: review ON state mappings with new slots
+$toggle-on-backgroundColor: $controlFilledColor;
+$toggle-on-borderColor: $controlFilledColor;
+$toggle-on-thumbColor: $controlBackgroundSelectedColor;
+$toggle-on-hover-backgroundColor: $controlFilledHoverColor;
+$toggle-on-hover-borderColor: $controlFilledHoverColor;
+$toggle-on-hover-thumbColor: $controlBackgroundSelectedHoverColor;
+
+$toggle-disabled-off-thumbColor: $controlBorderDisabledColor;
+$toggle-disabled-off-borderColor: $controlBorderDisabledColor;
+$toggle-disabled-on-backgroundColor: $controlBackgroundDisabledColor;
+$toggle-disabled-on-thumbColor: $bodyTextDisabledColor;
+$toggle-disabled-on-borderColor: $bodyTextDisabledColor;
+
+$toggle-focusBorderColor: $focusBorderColor;
+
 @mixin highContrast-bgColor($active-color, $bw-color) {
   @media screen and (-ms-high-contrast: active) {
     background-color: $active-color;
@@ -22,7 +45,7 @@
   @include ms-baseFont;
   @include ms-font-m;
   @include ms-u-normalize;
-  color: $ms-color-neutralPrimary;
+  color: $toggle-textColor;
 
   position: relative;
   display: block;
@@ -161,7 +184,7 @@
   border-radius: 10px;
   top: 4px;
   @include left(4px);
-  background: $ms-color-neutralSecondary;
+  background: $toggle-off-thumbColor;
   transition: all 0.1s ease;
 }
 
