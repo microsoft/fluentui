@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   EventGroup,
-  autobind,
   assign,
   css,
   shallowCompare
@@ -185,7 +184,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
         data-automationid='DetailsRow'
         style={ { minWidth: viewport ? viewport.width : 0 } }
         aria-selected={ isSelected }
-      >
+        >
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           { (selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden) && (
             <span role='gridcell'>
