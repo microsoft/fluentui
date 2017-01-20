@@ -20,7 +20,7 @@ export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>,
       <Button
         onClick={ onClick }
         className={ css('ms-Suggestions-item', { 'is-suggested': suggestionModel.selected }, className) }
-        >
+      >
         <RenderSuggestion { ...suggestionModel.item } />
       </Button>
     );
@@ -55,9 +55,12 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       onRenderNoResultFound,
     } = this.props;
 
-    let noResults: () => JSX.Element = noResultsFoundText ? () => <div className='ms-Suggestions-none'>
-      { noResultsFoundText }
-    </div> : null;
+    let noResults: () => JSX.Element = () => {
+      return noResultsFoundText ?
+        <div className='ms-Suggestions-none'>
+          { noResultsFoundText }
+        </div> : null;
+    };
 
     return (
       <div className={ css('ms-Suggestions', className ? className : '') }>
@@ -69,7 +72,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
           <Spinner
             className='ms-Suggestions-spinner'
             label={ loadingText }
-            />) }
+          />) }
         { (!suggestions || !suggestions.length) && !isLoading ?
           (onRenderNoResultFound ? onRenderNoResultFound(null, noResults) : noResults()) :
           this._renderSuggestions()
@@ -120,7 +123,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
               RenderSuggestion={ onRenderSuggestion }
               onClick={ (ev: React.MouseEvent<HTMLElement>) => this.props.onSuggestionClick(ev, suggestion.item, index) }
               className={ suggestionsItemClassName }
-              />
+            />
           </div>) }
       </div>);
   }
