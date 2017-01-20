@@ -84,13 +84,23 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
             ) : (null) }
             { renderedItems.map(
               (item, index) => (
-                <li className='ms-Breadcrumb-listItem' key={ item.key || String(index) } ref={ item.key || String(index) } >
-                  <a className='ms-Breadcrumb-itemLink'
-                    onClick={ item.onClick ? this._onBreadcrumbClicked.bind(this, item) : null }
-                    href={ item.href }
-                    role={ item.onClick ? 'button' : 'link' }>
-                    { item.text }
-                  </a>
+                <li className='ms-Breadcrumb-listItem' key={ item.key || String(index) } ref={ item.key || String(index) }>
+                  { (() => {
+                    if (item.onClick) {
+                      return <a className='ms-Breadcrumb-itemLink'
+                              onClick={ this._onBreadcrumbClicked.bind(this, item) }
+                              href={ item.href }
+                              role={ item.onClick ? 'button' : 'link' }>
+                              { item.text }
+                            </a>
+                    } else {
+                      return <span className='ms-Breadcrumb-itemLink'
+                              href={ item.href }
+                              role={ item.onClick ? 'button' : 'link' }>
+                              { item.text }
+                            </span>
+                    }
+                  })() }
                   <i className={ css('ms-Breadcrumb-chevron ms-Icon', getRTL() ? 'ms-Icon--ChevronLeft' : 'ms-Icon--ChevronRight') }></i>
                 </li>
               )) }
@@ -104,7 +114,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
               (item, index) => ({
                 name: item.text,
                 key: item.key,
-                onClick: this._onBreadcrumbClicked.bind(this, item),
+                onClick: item.onClick ? this._onBreadcrumbClicked.bind(this, item) : null,
                 href: item.href
               })
             ) }

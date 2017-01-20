@@ -74,11 +74,7 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
   vertical-align: top;
 }
 
-.ms-Breadcrumb-itemLink,
-.ms-Breadcrumb-overflowButton {
-  text-decoration: none;
-  outline: transparent;
-
+a.ms-Breadcrumb-itemLink {
   &:hover {
     background-color: $selectedHoverBackgroundColor;
     color: $Breadcrumb-buttonHoverColor;
@@ -94,6 +90,16 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
     outline: transparent;
     background-color: $selectedActiveBackgroundColor;
     color: $selectedActiveForegroundColor;
+  }
+}
+
+.ms-Breadcrumb-itemLink,
+.ms-Breadcrumb-overflowButton {
+  text-decoration: none;
+  outline: transparent;
+
+  &:hover {
+    cursor: default;
   }
 }
 
