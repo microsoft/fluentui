@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Suggestions: Fixed an error which would occur if noResultsFound string was not passed to suggestions\"",
+      "type": "patch"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}
