@@ -4,6 +4,6 @@ global:
   category: callout
   type: color
 props:
-  CALLOUT:
-    BG:
-      value: {!white}
+  callout:
+    bg:
+      value: "{!white}"
