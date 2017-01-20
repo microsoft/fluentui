@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "ContextualMenu: fix bug where an icon would have ms-icon--undefined in it's classname'",
+      "type": "patch"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}
