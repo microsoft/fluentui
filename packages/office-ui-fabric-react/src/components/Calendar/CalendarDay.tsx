@@ -129,7 +129,6 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                   ) }
                 </tr>
               ) }
-              {weeks.length === 4 ? <tr><td className='extra-padding-week'></td></tr> : null }
             </tbody>
           </table>
         </FocusZone>
