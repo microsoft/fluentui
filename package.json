@@ -18,9 +18,7 @@
     "@microsoft/rush": "^1.4.0",
     "github": "^7.0.0",
     "yargs": "^6.5.0",
-    "theo": "^5.0.0-rc.4"
-  },
-  "dependencies": {
+    "theo": "^5.0.0",
     "underscore": "^1.8.3"
   }
 }
