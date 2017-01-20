@@ -187,6 +187,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       items,
       isHeaderVisible,
       onItemInvoked,
+      onItemContextMenu,
       onColumnHeaderClick,
       onColumnHeaderContextMenu,
       selectionMode,
@@ -278,7 +279,9 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                 selection={ selection }
                 selectionPreservedOnEmptyClick={ selectionPreservedOnEmptyClick }
                 selectionMode={ selectionMode }
-                onItemInvoked={ onItemInvoked }>
+                onItemInvoked={ onItemInvoked }
+                onItemContextMenu={ onItemContextMenu }
+              >
                 { groups ? (
                   <GroupedList
                     groups={ groups }
@@ -359,7 +362,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       onDidMount: this._onRowDidMount,
       onWillUnmount: this._onRowWillUnmount,
       onRenderItemColumn: onRenderItemColumn,
-      onItemContextMenu: onItemContextMenu,
       eventsToRegister: eventsToRegister,
       dragDropEvents: dragDropEvents,
       dragDropHelper: dragDropHelper,
