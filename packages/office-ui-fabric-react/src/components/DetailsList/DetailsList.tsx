@@ -330,7 +330,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       rowElementEventMap: eventsToRegister,
       onRenderMissingItem,
       onRenderItemColumn,
-      onItemContextMenu,
       onRenderRow = this._onRenderRow,
       selectionMode,
       viewport,
