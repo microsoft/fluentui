@@ -1,5 +1,9 @@
 import * as React from 'react';
 import {
+  css,
+  getRTL
+} from '@uifabric/utilities';
+import {
   FocusZone,
   FocusZoneDirection,
   TextField,
@@ -7,8 +11,6 @@ import {
   ImageFit,
   List
 } from '../../../../index';
-import { css } from '../../../../utilities/css';
-import { getRTL } from '../../../../utilities/rtl';
 import './List.Basic.Example.scss';
 
 export interface IListBasicExampleProps {
@@ -35,35 +37,35 @@ export class ListBasicExample extends React.Component<IListBasicExampleProps, an
   public render() {
     let { items: originalItems } = this.props;
     let { items } = this.state;
-    let resultCountText = items.length === originalItems.length ? '' : ` (${ items.length } of ${ originalItems.length } shown)`;
+    let resultCountText = items.length === originalItems.length ? '' : ` (${items.length} of ${originalItems.length} shown)`;
 
     return (
       <FocusZone direction={ FocusZoneDirection.vertical }>
         <TextField label={ 'Filter by name' + resultCountText } onBeforeChange={ this._onFilterChanged } />
-          <List
-            items={ items }
-            onRenderCell={ (item, index) => (
-              <div className='ms-ListBasicExample-itemCell' data-is-focusable={ true }>
-                <Image
-                  className='ms-ListBasicExample-itemImage'
-                  src={ item.thumbnail }
-                  width={ 50 }
-                  height={ 50 }
-                  imageFit={ ImageFit.cover }
-                 />
-                <div className='ms-ListBasicExample-itemContent'>
-                  <div className='ms-ListBasicExample-itemName ms-font-xl'>{ item.name }</div>
-                  <div className='ms-ListBasicExample-itemIndex'>{ `Item ${ index }` }</div>
-                  <div className='ms-ListBasicExample-itemDesc ms-font-s'>{ item.description }</div>
-                </div>
-                <i className={ css('ms-ListBasicExample-chevron ms-Icon', {
-                  'ms-Icon--chevronRight': !getRTL(),
-                  'ms-Icon--chevronLeft': getRTL()
-                }) } />
+        <List
+          items={ items }
+          onRenderCell={ (item, index) => (
+            <div className='ms-ListBasicExample-itemCell' data-is-focusable={ true }>
+              <Image
+                className='ms-ListBasicExample-itemImage'
+                src={ item.thumbnail }
+                width={ 50 }
+                height={ 50 }
+                imageFit={ ImageFit.cover }
+                />
+              <div className='ms-ListBasicExample-itemContent'>
+                <div className='ms-ListBasicExample-itemName ms-font-xl'>{ item.name }</div>
+                <div className='ms-ListBasicExample-itemIndex'>{ `Item ${index}` }</div>
+                <div className='ms-ListBasicExample-itemDesc ms-font-s'>{ item.description }</div>
               </div>
-            ) }
+              <i className={ css('ms-ListBasicExample-chevron ms-Icon', {
+                'ms-Icon--chevronRight': !getRTL(),
+                'ms-Icon--chevronLeft': getRTL()
+              }) } />
+            </div>
+          ) }
           />
-        </FocusZone>
+      </FocusZone>
     );
   }
 

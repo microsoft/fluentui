@@ -1,11 +1,14 @@
 import * as React from 'react';
+import {
+  BaseComponent,
+  autobind
+} from '../../Utilities';
 import { Link } from '../../Link';
 import { IGroupDividerProps } from './GroupedList.Props';
 import { GroupSpacer } from './GroupSpacer';
-import { autobind } from '../../utilities/autobind';
 import './GroupFooter.scss';
 
-export class GroupFooter extends React.Component<IGroupDividerProps, {}> {
+export class GroupFooter extends BaseComponent<IGroupDividerProps, {}> {
   public render() {
     let { group, groupLevel, showAllLinkText } = this.props;
 

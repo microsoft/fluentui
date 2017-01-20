@@ -1,4 +1,11 @@
 import * as React from 'react';
+import {
+  BaseComponent,
+  KeyCodes,
+  autobind,
+  css,
+  getRTL
+} from '../../Utilities';
 import { FocusZone } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
@@ -8,13 +15,6 @@ import { SuggestionsController } from './Suggestions/SuggestionsController';
 import { IBasePickerProps } from './BasePicker.Props';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 import { IPickerItemProps } from './PickerItem.Props';
-import { BaseComponent } from '../../common/BaseComponent';
-import {
-  css,
-  autobind,
-  KeyCodes,
-  getRTL
-} from '../../Utilities';
 import './BasePicker.scss';
 
 export interface IBasePickerState {

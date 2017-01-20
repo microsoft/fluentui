@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
+import { EventGroup } from '../../Utilities';
 import {
   IDragDropHelper,
   IDragDropTarget,

@@ -19,6 +19,13 @@ export interface IPivotProps extends React.Props<Pivot> {
   initialSelectedKey?: string;
 
   /**
+   * The key of the selected pivot item.
+   *
+   * If set, this will override the Pivot's selected item state.
+   */
+  selectedKey?: string;
+
+  /**
    * Callback issued when the selected pivot item is changed
    */
   onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) => void;

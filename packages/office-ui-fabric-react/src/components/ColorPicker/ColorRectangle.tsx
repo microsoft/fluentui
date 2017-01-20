@@ -1,13 +1,15 @@
 import * as React from 'react';
 import {
+  EventGroup,
+  assign,
+  autobind
+} from '../../Utilities';
+import {
   IColor,
   MAX_COLOR_SATURATION,
   MAX_COLOR_VALUE,
   getFullColorString
 } from './colors';
-import { assign } from '../../utilities/object';
-import { autobind } from '../../utilities/autobind';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 
 let hsv2hex = require('color-functions/lib/hsv2hex');
 

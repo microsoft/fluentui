@@ -49,12 +49,13 @@ export interface IFacepilePersona extends React.HTMLProps<HTMLButtonElement | HT
 
   /**
    * The user's initials to display in the image area when there is no image.
+   * @defaultvalue [Derived from personaName]
    */
   imageInitials?: string;
 
   /**
    * The background color when the user's initials are displayed.
-   * @defaultvalue PersonaInitialsColor.blue
+   * @defaultvalue [Derived from personaName]
    */
   initialsColor?: PersonaInitialsColor;
 

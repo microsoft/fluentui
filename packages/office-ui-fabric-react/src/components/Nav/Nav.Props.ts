@@ -17,6 +17,11 @@ export interface INavProps {
   groups: INavLinkGroup[];
 
   /**
+   * Optional class name to allow styling.
+   */
+  className?: string;
+
+  /**
    * Used to customize how content inside the link tag is rendered
    * @defaultvalue Default link rendering
    */
@@ -166,7 +171,7 @@ export interface INavLink {
   parentId?: string;
 
   /**
-   * Any additional properties to apply to the rendered links.
+   * (Optional) Any additional properties to apply to the rendered links.
    */
   [propertyName: string]: any;
 }

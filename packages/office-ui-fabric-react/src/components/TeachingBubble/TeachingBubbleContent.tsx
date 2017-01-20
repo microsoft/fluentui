@@ -1,12 +1,15 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { BaseComponent } from '../../common/BaseComponent';
+import {
+  BaseComponent,
+  css,
+  getId
+} from '../../Utilities';
 import { ITeachingBubbleProps } from './TeachingBubble.Props';
 import { ITeachingBubbleState } from './TeachingBubble';
 import { Button, ButtonType } from '../../Button';
 import { Image, ImageFit } from '../../Image';
-import { css, getId } from '../../Utilities';
 import './TeachingBubble.scss';
 
 export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState> {
@@ -44,18 +47,18 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
 
     if (illustrationImage && illustrationImage.src) {
       imageContent = (
-         <div className='ms-TeachingBubble-header'>
-            <Image { ...illustrationImage as any } />
-         </div>
+        <div className='ms-TeachingBubble-header'>
+          <Image { ...illustrationImage as any } />
+        </div>
       );
-     }
+    }
 
     if (headline) {
       headerContent = (
         <div className={ css(
-              'ms-TeachingBubble-header',
-              hasCondensedHeadline ? 'ms-TeachingBubble-header--small' : 'ms-TeachingBubble-header--large'
-             ) }>
+          'ms-TeachingBubble-header',
+          hasCondensedHeadline ? 'ms-TeachingBubble-header--small' : 'ms-TeachingBubble-header--large'
+        ) }>
           <p className='ms-TeachingBubble-headline' >
             { headline }
           </p>
@@ -69,7 +72,7 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
           <p className='ms-TeachingBubble-subText'>
             { this.props.children }
           </p>
-         </div>
+        </div>
       );
     }
 
@@ -91,20 +94,20 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
           title={ closeButtonAriaLabel }
           ariaLabel={ closeButtonAriaLabel }
           onClick={ onDismiss }
-        />
+          />
       );
     }
 
     return (
-        <div className='ms-TeachingBubble-content'>
-          { imageContent }
-          { closeButton }
-          <div className='ms-TeachingBubble-bodycontent'>
-            { headerContent }
-            { bodyContent   }
-            { footerContent }
-          </div>
+      <div className='ms-TeachingBubble-content'>
+        { imageContent }
+        { closeButton }
+        <div className='ms-TeachingBubble-bodycontent'>
+          { headerContent }
+          { bodyContent }
+          { footerContent }
         </div>
+      </div>
     );
   }
 }

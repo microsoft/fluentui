@@ -11,17 +11,15 @@ import {
   autobind,
   css,
   elementContains,
-  getParent,
+  getDocument,
   getId,
-  getRTL,
-  getDocument
-} from '../../Utilities';
-import {
   getNextElement,
+  getParent,
   getPreviousElement,
+  getRTL,
   isElementFocusZone,
   isElementTabbable
-} from '../../utilities/focus';
+} from '../../Utilities';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_ENTER_DISABLED_ATTRIBUTE = 'data-disable-click-on-enter';
@@ -584,6 +582,10 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       const child = childNodes[childIndex] as HTMLElement;
 
       if (!isElementFocusZone(child)) {
+        // If the item is explicitly set to not be focusable then TABINDEX needs to be set to -1.
+        if (child.getAttribute && child.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'false') {
+          child.setAttribute(TABINDEX, '-1');
+        }
         if (isElementTabbable(child)) {
           if (this.props.disabled) {
             child.setAttribute(TABINDEX, '-1');

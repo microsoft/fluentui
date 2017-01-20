@@ -2,9 +2,11 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
+import {
+  BaseComponent,
+  autobind
+} from '../../Utilities';
 import { IDocumentCardTitleProps } from './DocumentCard.Props';
-import { BaseComponent } from '../../common/BaseComponent';
-import { autobind } from '../../utilities/autobind';
 import './DocumentCardTitle.scss';
 
 export interface IDocumentCardTitleState {

@@ -1,13 +1,16 @@
 import * as React from 'react';
+import {
+  BaseComponent,
+  KeyCodes,
+  autobind,
+  css,
+  getId,
+  getRTL,
+  getRTLSafeKeyCode
+} from '../../Utilities';
 import './Slider.scss';
 import { ISliderProps, ISlider } from './Slider.Props';
-import { BaseComponent } from '../../common/BaseComponent';
-import { KeyCodes } from '../../utilities/KeyCodes';
 import { Label } from '../../Label';
-import { css } from '../../utilities/css';
-import { getRTL as isRTL, getRTLSafeKeyCode } from '../../utilities/rtl';
-import { getId } from '../../utilities/object';
-import { autobind } from '../../utilities/autobind';
 
 export interface ISliderState {
   value?: number;
@@ -122,7 +125,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
                 ref='thumb'
                 className='ms-Slider-thumb'
                 { ...ariaLabel ? { 'aria-label': ariaLabel } : {} }
-                style={ isRTL() ?
+                style={ getRTL() ?
                   { 'right': thumbOffsetPercent + '%' } :
                   { 'left': thumbOffsetPercent + '%' } }
                 />
@@ -169,11 +172,11 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     let currentSteps: number;
 
     if (event.type === 'mousedown' || event.type === 'mousemove') {
-      currentSteps = isRTL() ?
+      currentSteps = getRTL() ?
         (sliderPositionRect.right - (event as MouseEvent).clientX) / stepLength :
         ((event as MouseEvent).clientX - sliderPositionRect.left) / stepLength;
     } else if (event.type === 'touchstart' || event.type === 'touchmove') {
-      currentSteps = isRTL() ?
+      currentSteps = getRTL() ?
         (sliderPositionRect.right - (event as TouchEvent).touches[0].clientX) / stepLength :
         ((event as TouchEvent).touches[0].clientX - sliderPositionRect.left) / stepLength;
     }

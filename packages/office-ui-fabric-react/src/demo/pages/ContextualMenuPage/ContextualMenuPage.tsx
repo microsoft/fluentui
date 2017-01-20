@@ -9,6 +9,7 @@ import { ContextualMenuBasicExample } from './examples/ContextualMenu.Basic.Exam
 import { ContextualMenuCheckmarksExample } from './examples/ContextualMenu.Checkmarks.Example';
 import { ContextualMenuDirectionalExample } from './examples/ContextualMenu.Directional.Example';
 import { ContextualMenuCustomizationExample } from './examples/ContextualMenu.Customization.Example';
+import { ContextualMenuHeaderExample } from './examples/ContextualMenu.Header.Example';
 
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
@@ -18,6 +19,7 @@ const ContextualMenuBasicExampleCode = require('./examples/ContextualMenu.Basic.
 const ContextualMenuCheckmarksExampleCode = require('./examples/ContextualMenu.Checkmarks.Example.tsx');
 const ContextualMenuDirectionalExampleCode = require('./examples/ContextualMenu.Directional.Example.tsx');
 const ContextualMenuCustomizationExampleCode = require('./examples/ContextualMenu.Customization.Example.tsx');
+const ContextualMenuHeaderExampleCode = require('./examples/ContextualMenu.Header.Example.tsx');
 
 export class ContextualMenuPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -34,7 +36,7 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
         componentName='ContextualMenuExample'
         exampleCards={
           <div>
-            <ExampleCard title='ContextualMenu' code= { ContextualMenuBasicExampleCode }>
+            <ExampleCard title='ContextualMenu' code={ ContextualMenuBasicExampleCode }>
               <ContextualMenuBasicExample />
             </ExampleCard>
             <ExampleCard title='ContextualMenu checked menus example' code={ ContextualMenuCheckmarksExampleCode }>
@@ -45,6 +47,9 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
             </ExampleCard>
             <ExampleCard title='ContextualMenu customization example' code={ ContextualMenuCustomizationExampleCode }>
               <ContextualMenuCustomizationExample />
+            </ExampleCard>
+            <ExampleCard title='ContextualMenu header example' code={ ContextualMenuHeaderExampleCode }>
+              <ContextualMenuHeaderExample />
             </ExampleCard>
           </div>
         }

@@ -2,8 +2,10 @@ import * as React from 'react';
 import { Callout } from './Callout';
 import { CalloutContent } from './CalloutContent';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IRectangle } from '../../common/IRectangle';
-import { IPoint } from '../../common/IPoint';
+import {
+  IPoint,
+  IRectangle
+} from '../../Utilities';
 
 export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
 
@@ -13,12 +15,6 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
    */
   target?: HTMLElement | string | MouseEvent;
-
-  /**
-   * The element that the Callout should be positioned based on.
-   * @deprecated at version 0.72.1 and will no longer exist after 1.0 use target instead
-   */
-  targetElement?: HTMLElement;
 
   /**
    * How the element should be positioned
@@ -68,12 +64,6 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   coverTarget?: boolean;
 
   /**
-    * @deprecated
-    * Deprecated at v0.59.1, to be removed at >= v1.0.0. Pass in a beakWidth to dictate size.
-    */
-  beakStyle?: string;
-
-  /**
    * CSS class to apply to the callout.
    * @default null
    */
@@ -100,6 +90,13 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   doNotLayer?: boolean;
 
   /**
+   * If true the position will not change sides in an attempt to fit the callout within bounds.
+   * It will still attempt to align it to whatever bounds are given.
+   * @default false
+   */
+  directionalHintFixed?: boolean;
+
+  /**
    * If true then the callout will attempt to focus the first focusable element that it contains.
    * If it doesn't find an element, no focus will be set and the method will return false.
    * This means that it's the contents responsibility to either set focus or have
@@ -107,4 +104,16 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    * @returns True if focus was set, false if it was not.
    */
   setInitialFocus?: boolean;
+
+  /**
+    * @deprecated
+    * Deprecated at v0.59.1, to be removed at >= v1.0.0. Pass in a beakWidth to dictate size.
+    */
+  beakStyle?: string;
+
+  /**
+   * @deprecated
+   * Deprecated at v0.72.1 and will no longer exist after 1.0 use target instead.
+   */
+  targetElement?: HTMLElement;
 }

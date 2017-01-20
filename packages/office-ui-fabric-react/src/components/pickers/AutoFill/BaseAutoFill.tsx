@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { IBaseAutoFillProps, IBaseAutoFill } from './BaseAutoFill.Props';
-import { BaseComponent } from '../../../common/BaseComponent';
-import { getNativeProps, inputProperties } from '../../../utilities/properties';
-import { autobind } from '../../../utilities/autobind';
-import { KeyCodes } from '../../../utilities/KeyCodes';
+import {
+  BaseComponent,
+  KeyCodes,
+  autobind,
+  getNativeProps,
+  inputProperties
+} from '../../../Utilities';
 
 export interface IBaseAutoFillState {
   displayValue?: string;

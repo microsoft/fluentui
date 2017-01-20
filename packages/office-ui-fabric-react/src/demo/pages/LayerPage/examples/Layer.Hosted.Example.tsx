@@ -36,7 +36,7 @@ export class LayerHostedExample extends React.Component<any, any> {
         ) }
 
         <p id='foo'>
-          In some cases, you may need to contain layered content within an area. Wrap the area with a LayerHost, and it will render content at the end of host's area.
+          In some cases, you may need to contain layered content within an area. Create an instance of a LayerHost along with an id, and provide a hostId on the layer to render it within the specific host. (Note that it's important that you don't include children within the LayerHost. It's meant to contain Layered content only.)
         </p>
 
         <Checkbox

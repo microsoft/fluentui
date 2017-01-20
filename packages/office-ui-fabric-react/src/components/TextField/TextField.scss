@@ -62,7 +62,7 @@
   font-size: $ms-font-size-m;
   color: $ms-color-neutralPrimary;
   height: 32px;
-  @include padding(6px, 12px, 7px, 12px);
+  @include padding(0, 12px, 0, 12px);
   width: 100%;
   outline: 0;
   text-overflow: ellipsis;
@@ -184,18 +184,17 @@
 
 //== Modifier: Multiline textfield
 //
-.ms-TextField.ms-TextField--multiline {
-  .ms-TextField-field {
-    @include ms-baseFont;
-    color: $ms-color-neutralPrimary;
-    font-family: $ms-font-family-base;
-    font-size: $ms-font-size-m;
-    font-weight: $ms-font-weight-regular;
-    line-height: 17px;
-    min-height: 60px;
-    padding-top: 6px;
-    overflow: auto;
-  }
+.ms-TextField.ms-TextField--multiline .ms-TextField-field {
+  @include ms-baseFont;
+  color: $ms-color-neutralPrimary;
+  font-family: $ms-font-family-base;
+  font-size: $ms-font-size-m;
+  font-weight: $ms-font-weight-regular;
+  line-height: 17px;
+  min-height: 60px;
+  height: auto;
+  padding-top: 6px;
+  overflow: auto;
 }
 
 // @todo: https://github.com/OfficeDev/Office-UI-Fabric/issues/359

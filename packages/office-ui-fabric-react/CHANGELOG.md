@@ -1,6 +1,161 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 23 Dec 2016 04:04:09 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Jan 2017 04:03:22 GMT and should not be manually modified.
+
+## 1.2.1
+Fri, 20 Jan 2017 04:03:22 GMT
+
+### Patches
+
+- ContextualMenu: fix bug where an icon would have ms-icon--undefined in it's classname'
+
+## 1.2.0
+Thu, 19 Jan 2017 04:08:35 GMT
+
+### Minor changes
+
+- DetailsList: adding `selectionPreservedOnEmptyClick` attribute for overriding the default behavior of clearing selection when clicks occur on non-focusable targets (body, spans, etc).
+
+## 1.1.0
+Thu, 19 Jan 2017 00:12:21 GMT
+
+### Minor changes
+
+- ChoiceGroup: onChanged deprecated and replaced with onChange
+- Persona: Hide the initials if the provided photo successfully loads
+
+## 1.0.0
+Mon, 16 Jan 2017 21:57:33 GMT
+
+### Breaking changes
+
+- Icon: -BREAKING CHANGE- Change IconName from an enum to type to greatly reduce file size. Any component that is currently consuming the icon enum will break.
+- Most utilities have moved to `@uifabric/utilities`. If you refer directly to things like `/lib/utilities/autobind` you will now need to pull them directly from that package, or from the `office-ui-fabric-react/lib/Utilities` top-level import which should continue to work as expected. We are planning to split up more chunks of Fabric into smaller packages that can imported separately, but will also continue to maintain the `office-ui-fabric-react` package and its top-level imports.
+
+### Minor changes
+
+- Dropdown: Add className prop to component
+
+### Patches
+
+- DetailsRow: Change width to 100% to fix GroupedList component not extending to parent container's width
+
+## 0.88.0
+Sat, 14 Jan 2017 04:10:15 GMT
+
+### Minor changes
+
+- ChoiceGroup and CheckBox: Added props to set a custom 'name' attribute on rendered elements.
+
+### Patches
+
+- Button: Set the icon button's width correctly in Safari.
+- Added defined width to ms-Persona-imageArea so that the DOM width of the control reflects the true width of the content
+
+## 0.87.1
+Fri, 13 Jan 2017 04:05:19 GMT
+
+### Patches
+
+- DetailsList: Only prevent text selection in multiple selection mode
+- Dropdown: Avoid calling stopPropagation on pressing escape if the dropdown is not expanded
+
+## 0.87.0
+Thu, 12 Jan 2017 04:06:30 GMT
+
+### Minor changes
+
+- ContextualMenu: added in submenuIconProps to specify how the submenuIcon looks
+- Pivot: Add icon to PivotItem
+- New component: Rating
+- Positioning/Callout: Can now set a fixed edge so the callout does not flip.
+
+### Patches
+
+- Image: Changes to src are now respected.
+- DetailsList: when adding new items in a grouped DetailsList scenario, the group is no longer recreated.
+- Dialog: Removing deprecated rootProps usage for the close button.
+- Persona: Set an explicit height for the image area and image.
+- Persona now has a default way of generating initials and colors 
+- Pivot: Fix a11y - duplicate tabIds, aria-controls linking
+- TextField: aria-describedby is only set when a description is available.
+
+## 0.86.2
+Wed, 11 Jan 2017 04:04:04 GMT
+
+### Patches
+
+- Fixed blur event inside Popups
+
+## 0.86.1
+Tue, 10 Jan 2017 16:17:33 GMT
+
+### Patches
+
+- TextField: Misses keystroke in IE11 when validation is in progress
+
+## 0.86.0
+Tue, 10 Jan 2017 04:09:41 GMT
+
+### Minor changes
+
+- Persona: Truncates long lines of text
+- Image: Add a prop to fit the image's frame to the parent element. Recompute the cover style when image changes, even if no width or height is provided.
+
+## 0.85.0
+Sat, 07 Jan 2017 04:06:13 GMT
+
+### Minor changes
+
+- ContextualMenu: Added header item so that the ContextualMenu can now have headers
+- Nav: add className to allow styling
+- TextField: Validate only on focus or Blur
+
+### Patches
+
+- SearchBox: Remove line-height to show correct cursor size in iOS
+- ContextualMenu: Now returns null if no items are provided rather than rendering an empty callout
+- FocusZone: Changed focus and focus zone to respect when data-is-focusable attribute is false
+- Fix the prescribed use of submenuProps.items for CommandBar items
+- Link: focus border is now positioned correctly when the link spans multiple lines.
+
+## 0.84.0
+Thu, 05 Jan 2017 04:07:37 GMT
+
+### Minor changes
+
+- Add 'focus' method to SearchBox component
+- Add optional selectedKey to Pivot
+
+### Patches
+
+- Altered css so that ContextualMenu does not have scrollbar in IE
+- Contextualmenu now correctly passes bounds to callout
+- TextField: Multiline now respects rows attribute.
+
+## 0.83.0
+Wed, 04 Jan 2017 19:05:07 GMT
+
+### Minor changes
+
+- Made lots of improvements to autofill
+- Icon: Add support for Image Sheet using Icon
+- adding 'enter' key to select pivot item.
+- TextField enhancement - auto adjust height
+- adding screenreader for dropdown when not expanded
+- Pivot: state updates may be asynchronous
+
+### Patches
+
+- Fixed location of deprecated props
+- Fix for color picker not responding to prop changes
+- Fixed a bug where if no width was passed into a column there would be a nan error thrown.
+- Bug fix for interface parser where all fields are marked deprecated
+- [ChoiceGroup][A11y]:Use aria-label instead of aria-description for choice group choice.
+- Fixed TextField clip issue
+- When computing a cover style for the Image component, if the width and height props aren't provided it will now measure the element. The Image component now extends from BaseComponent to more safely handle refs.
+- Fixed typo in change log
+- [DropDown][A11y] Remove aria-controls label for drop down.
 
 ## 0.82.4
 Fri, 23 Dec 2016 04:04:09 GMT
@@ -8,7 +163,7 @@ Fri, 23 Dec 2016 04:04:09 GMT
 ### Patches
 
 - fixed an issue where the beak would not reposition
-- Fix for when enterint tooltip target from direction of tooltip's position
+- Fixed an issue where the tooltip would quickly remove itself if the tooltip target was entered from the direction of the tooltip's position
 
 ## 0.82.3
 Wed, 21 Dec 2016 16:04:44 GMT

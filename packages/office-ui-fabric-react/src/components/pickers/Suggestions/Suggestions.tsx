@@ -1,9 +1,11 @@
 import * as React from 'react';
+import {
+  BaseComponent,
+  css
+} from '../../../Utilities';
 import { Button, ButtonType } from '../../../Button';
-import { css } from '../../../utilities/css';
-import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.Props';
-import { BaseComponent } from '../../../common/BaseComponent';
 import { Spinner } from '../../../Spinner';
+import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.Props';
 import './Suggestions.scss';
 
 export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>, {}> {
@@ -19,7 +21,7 @@ export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>,
         onClick={ onClick }
         className={ css('ms-Suggestions-item', { 'is-suggested': suggestionModel.selected }, className) }
         >
-        <RenderSuggestion { ...suggestionModel.item }/>
+        <RenderSuggestion { ...suggestionModel.item } />
       </Button>
     );
   }
@@ -49,10 +51,11 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       noResultsFoundText,
       suggestions,
       isLoading,
-      loadingText
+      loadingText,
+      onRenderNoResultFound,
     } = this.props;
 
-    let noResults: JSX.Element = noResultsFoundText ? <div className='ms-Suggestions-none'>
+    let noResults: () => JSX.Element = noResultsFoundText ? () => <div className='ms-Suggestions-none'>
       { noResultsFoundText }
     </div> : null;
 
@@ -62,13 +65,13 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
           (<div className='ms-Suggestions-title'>
             { suggestionsHeaderText }
           </div>) : (null) }
-          { isLoading && (
-            <Spinner
-              className='ms-Suggestions-spinner'
-              label={ loadingText }
-              /> ) }
-        { (!suggestions || !suggestions.length) && !isLoading  ?
-          noResults :
+        { isLoading && (
+          <Spinner
+            className='ms-Suggestions-spinner'
+            label={ loadingText }
+            />) }
+        { (!suggestions || !suggestions.length) && !isLoading ?
+          (onRenderNoResultFound ? onRenderNoResultFound(null, noResults) : noResults()) :
           this._renderSuggestions()
         }
         { searchForMoreText && moreSuggestionsAvailable ?

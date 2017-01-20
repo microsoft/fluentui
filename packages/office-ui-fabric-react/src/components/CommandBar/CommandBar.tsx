@@ -1,13 +1,17 @@
 import * as React from 'react';
+import {
+  EventGroup,
+  autobind,
+  buttonProperties,
+  css,
+  divProperties,
+  getId,
+  getNativeProps
+} from '../../Utilities';
 import { ICommandBar, ICommandBarProps } from './CommandBar.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { ContextualMenu, IContextualMenuItem, hasSubmenuItems } from '../../ContextualMenu';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
+import { ContextualMenu, IContextualMenuItem, getSubmenuItems, hasSubmenuItems } from '../../ContextualMenu';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { autobind } from '../../utilities/autobind';
-import { css } from '../../utilities/css';
-import { getId } from '../../utilities/object';
-import { buttonProperties, divProperties, getNativeProps } from '../../utilities/properties';
 import {
   Icon,
   IconName,
@@ -156,7 +160,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
 
     return <div className={ css('ms-CommandBarItem', item.className) } key={ itemKey } ref={ itemKey }>
       { (() => {
-        if (item.onClick || item.items) {
+        if (item.onClick || hasSubmenuItems(item)) {
           return <button
             { ...getNativeProps(item, buttonProperties) }
             id={ this._id + item.key }
@@ -192,10 +196,10 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
   private _renderIcon(item: IContextualMenuItem) {
     // Only present to allow continued use of item.icon which is deprecated.
     let iconProps: IIconProps = item.iconProps ? item.iconProps : {
-      iconName: IconName[item.icon]
+      iconName: item.icon as IconName
     };
     // Use the default icon color for the known icon names
-    let iconColorClassName = iconProps.iconName === IconName.None ? '' : 'ms-CommandBarItem-iconColor';
+    let iconColorClassName = iconProps.iconName === 'None' ? '' : 'ms-CommandBarItem-iconColor';
     let iconClassName = css('ms-CommandBarItem-icon', iconColorClassName, iconProps.className);
 
     return <Icon { ...iconProps } className={ iconClassName } />;
@@ -277,13 +281,13 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
   }
 
   private _onItemClick(ev, item) {
-    if (item.key === this.state.expandedMenuItemKey || !item.items || !item.items.length) {
+    if (item.key === this.state.expandedMenuItemKey || !hasSubmenuItems(item)) {
       this._onContextMenuDismiss();
     } else {
       this.setState({
         expandedMenuId: ev.currentTarget.id,
         expandedMenuItemKey: item.key,
-        contextualMenuItems: item.items,
+        contextualMenuItems: getSubmenuItems(item),
         contextualMenuTarget: ev.currentTarget
       });
     }

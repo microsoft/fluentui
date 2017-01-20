@@ -1,6 +1,6 @@
 import update = require('immutability-helper');
 import { Promise } from 'es6-promise';
-import { findIndex } from 'office-ui-fabric-react/lib/utilities/array';
+import { findIndex } from 'office-ui-fabric-react/lib/Utilities';
 import { ITodoItem, IDataProvider } from './types/index';
 
 const ADD_ITEMS_DELAY = 500;

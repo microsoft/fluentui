@@ -1,13 +1,16 @@
 import * as React from 'react';
+import {
+  EventGroup,
+  assign,
+  css,
+  shallowCompare
+} from '../../Utilities';
 import { IColumn, CheckboxVisibility } from './DetailsList.Props';
 import { DetailsRowCheck, IDetailsRowCheckProps } from './DetailsRowCheck';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { DetailsRowFields } from './DetailsRowFields';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
-import { shallowCompare, assign } from '../../utilities/object';
-import { css } from '../../utilities/css';
 import {
   IDragDropHelper,
   IDragDropEvents,
@@ -143,7 +146,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
   }
 
   public render() {
-    let {
+    const {
       columns,
       dragDropEvents,
       item,
@@ -157,11 +160,12 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
       checkButtonAriaLabel,
       selection
     } = this.props;
-    let { selectionState: { isSelected, anySelected }, columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
-    let isDraggable = Boolean(dragDropEvents && dragDropEvents.canDrag && dragDropEvents.canDrag(item));
-    let droppingClassName = isDropping ? (this._droppingClassNames ? this._droppingClassNames : DEFAULT_DROPPING_CSS_CLASS) : '';
-    let ariaLabel = getRowAriaLabel ? getRowAriaLabel(item) : null;
-    let canSelect = selection.canSelectItem(item);
+    const { selectionState: { isSelected, anySelected }, columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
+    const isDraggable = Boolean(dragDropEvents && dragDropEvents.canDrag && dragDropEvents.canDrag(item));
+    const droppingClassName = isDropping ? (this._droppingClassNames ? this._droppingClassNames : DEFAULT_DROPPING_CSS_CLASS) : '';
+    const ariaLabel = getRowAriaLabel ? getRowAriaLabel(item) : null;
+    const canSelect = selection.canSelectItem(item);
+    const isContentUnselectable = selectionMode === SelectionMode.multiple;
 
     return (
       <div
@@ -169,6 +173,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
         role='row'
         aria-label={ ariaLabel }
         className={ css('ms-DetailsRow ms-u-fadeIn400', droppingClassName, {
+          'is-contentUnselectable': isContentUnselectable,
           'is-selected': isSelected,
           'is-check-visible': checkboxVisibility === CheckboxVisibility.always
         }) }

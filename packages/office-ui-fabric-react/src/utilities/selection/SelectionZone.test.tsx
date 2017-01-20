@@ -7,7 +7,7 @@ import * as ReactTestUtils from 'react-addons-test-utils';
 let { expect } = chai;
 
 import { SelectionZone, Selection, SelectionMode } from './index';
-import { KeyCodes } from '../KeyCodes';
+import { KeyCodes } from '../../Utilities';
 
 let _selection: Selection;
 let _selectionZone: any;

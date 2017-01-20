@@ -5,14 +5,12 @@ import {
   autobind,
   elementContains,
   getNativeProps,
-  divProperties
-} from '../../Utilities';
-import { IFocusTrapZone, IFocusTrapZoneProps } from './FocusTrapZone.Props';
-import {
+  divProperties,
   getFirstFocusable,
   getLastFocusable,
   getNextElement
-} from '../../utilities/focus';
+} from '../../Utilities';
+import { IFocusTrapZone, IFocusTrapZoneProps } from './FocusTrapZone.Props';
 
 export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
 

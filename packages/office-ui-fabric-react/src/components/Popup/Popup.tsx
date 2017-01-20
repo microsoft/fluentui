@@ -1,10 +1,13 @@
 import * as React from 'react';
+import {
+  BaseComponent,
+  KeyCodes,
+  divProperties,
+  doesElementContainFocus,
+  getDocument,
+  getNativeProps
+} from '../../Utilities';
 import { IPopupProps } from './Popup.Props';
-import { KeyCodes } from '../../utilities/KeyCodes';
-import { BaseComponent } from '../../common/BaseComponent';
-import { getNativeProps, divProperties } from '../../Utilities';
-import { doesElementContainFocus } from '../../utilities/focus';
-import { getDocument } from '../../utilities/dom';
 
 /**
  * This adds accessibility to Dialog and Panel controls
@@ -29,8 +32,8 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
 
   public componentDidMount(): void {
     this._events.on(this.refs.root, 'keydown', this._onKeyDown);
-    this._events.on(this.refs.root, 'focus', () => this._containsFocus = true, true);
-    this._events.on(this.refs.root, 'blur', () => this._containsFocus = false, true);
+    this._events.on(this.refs.root, 'focus', this._onFocus, true);
+    this._events.on(this.refs.root, 'blur', this._onBlur, true);
     if (doesElementContainFocus(this.refs.root)) {
       this._containsFocus = true;
     }
@@ -80,5 +83,13 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
 
         break;
     }
+  }
+
+  private _onFocus() {
+    this._containsFocus = true;
+  }
+
+  private _onBlur() {
+    this._containsFocus = false;
   }
 }

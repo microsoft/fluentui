@@ -4,7 +4,7 @@ export interface IPivotItemProps extends React.HTMLProps<HTMLDivElement> {
   /**
    * The text displayed of each pivot link.
    */
-  linkText: string;
+  linkText?: string;
 
   /**
    * An required key to uniquely identify a pivot item.
@@ -27,4 +27,8 @@ export interface IPivotItemProps extends React.HTMLProps<HTMLDivElement> {
    */
   itemCount?: number;
 
+  /**
+   * An optional icon to show next to the pivot link.
+   */
+  itemIcon?: string;
 }

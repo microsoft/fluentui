@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { css } from '../../utilities/css';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
-import { KeyCodes } from '../../utilities/KeyCodes';
+import {
+  EventGroup,
+  KeyCodes,
+  css
+} from '../../Utilities';
 
 const DIRECTIONAL_KEY_CODES = [
   KeyCodes.up,

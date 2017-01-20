@@ -5,7 +5,7 @@ import {
 import {
   IListProps
 } from '../../List';
-import { IRenderFunction } from '../../common/IRenderFunction';
+import { IRenderFunction } from '../../Utilities';
 import {
   IDragDropContext,
   IDragDropEvents,

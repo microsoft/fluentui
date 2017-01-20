@@ -310,10 +310,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     ) : null;
   }
 
-  private _getGroupKey(group: IGroup, groupIndex: number): string {
-    return 'group-' + (group ?
-      group.key + '-' + group.count :
-      '');
+  private _getGroupKey(group, index) {
+    return 'group-' + ((group && group.key) ? group.key : String(group.level) + String(index));
   }
 
   /**

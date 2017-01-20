@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { Image } from '../../Image';
 import { IChoiceGroupOption, IChoiceGroupProps } from './ChoiceGroup.Props';
-import { css } from '../../utilities/css';
-import { getId } from '../../utilities/object';
+import {
+  css,
+  getId,
+  BaseComponent
+} from '../../Utilities';
 import './ChoiceGroup.scss';
 
 export interface IChoiceGroupState {
@@ -12,17 +15,17 @@ export interface IChoiceGroupState {
   keyFocused?: string;
 }
 
-export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroupState> {
+export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupState> {
   public static defaultProps = {
     options: []
   };
 
   private _id: string;
-  private _descriptionId: string;
+  private _labelId: string;
   private _inputElement: HTMLInputElement;
 
-  constructor(props: IChoiceGroupProps) {
-    super();
+  constructor(props: IChoiceGroupProps, ) {
+    super(props, { ['onChanged']: 'onChange' });
 
     this.state = {
       keyChecked: this._getKeyChecked(props.options),
@@ -30,7 +33,7 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
     };
 
     this._id = getId('ChoiceGroup');
-    this._descriptionId = getId('ChoiceGroupDescription');
+    this._labelId = getId('ChoiceGroupLabel');
   }
 
   public componentWillReceiveProps(newProps: IChoiceGroupProps) {
@@ -78,13 +81,13 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
                 id={ `${this._id}-${option.key}` }
                 className='ms-ChoiceField-input'
                 type='radio'
-                name={ this._id }
+                name={ this.props.name || this._id }
                 disabled={ option.isDisabled || option.disabled || this.props.disabled }
                 checked={ option.key === keyChecked }
                 onChange={ this._onChange.bind(this, option) }
                 onFocus={ this._onFocus.bind(this, option) }
                 onBlur={ this._onBlur.bind(this, option) }
-                aria-describedby={ `${this._descriptionId}-${option.key}` }
+                aria-labelledby={ `${this._labelId}-${option.key}` }
                 />
               { this._renderField(option) }
             </div>
@@ -152,22 +155,25 @@ export class ChoiceGroup extends React.Component<IChoiceGroupProps, IChoiceGroup
           option.imageSrc
             ? <div className='ms-ChoiceField-labelWrapper'>
               <i className='ms-ChoiceField-icon ms-Icon ms-Icon--CheckMark' />
-              <span id={ `${this._descriptionId}-${option.key}` } className='ms-Label'>{ option.text }</span>
+              <span id={ `${this._labelId}-${option.key}` } className='ms-Label'>{ option.text }</span>
             </div>
-            : <span id={ `${this._descriptionId}-${option.key}` } className='ms-Label'>{ option.text }</span>
+            : <span id={ `${this._labelId}-${option.key}` } className='ms-Label'>{ option.text }</span>
         }
       </label>
     );
   }
 
   private _onChange(option: IChoiceGroupOption, evt: React.FormEvent<HTMLInputElement>) {
-    let { onChanged } = this.props;
+    let { onChanged, onChange } = this.props;
 
     this.setState({
       keyChecked: option.key
     });
 
-    if (onChanged) {
+    // TODO: onChanged deprecated, remove else if after 07/17/2017 when onChanged has been removed.
+    if (onChange) {
+      onChange(evt, option);
+    } else if (onChanged) {
       onChanged(option);
     }
   }

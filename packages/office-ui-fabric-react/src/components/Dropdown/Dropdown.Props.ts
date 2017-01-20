@@ -1,4 +1,4 @@
-import { IRenderFunction } from '../../common/IRenderFunction';
+import { IRenderFunction } from '../../Utilities';
 export interface IDropdownProps {
   /**
    * Descriptive label for the Dropdown
@@ -9,6 +9,11 @@ export interface IDropdownProps {
   * Id of the drop down
   */
   id?: string;
+
+  /**
+   * If provided, additional class name to provide on the root element.
+   */
+  className?: string;
 
   /**
    * The key that will be initially used to set a selected item.

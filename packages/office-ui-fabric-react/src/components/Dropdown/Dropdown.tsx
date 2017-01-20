@@ -66,7 +66,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
 
   public render() {
     let id = this._id;
-    let { label, options, disabled, isDisabled, onRenderItem = this._onRenderItem } = this.props;
+    let { className, label, options, disabled, isDisabled, onRenderItem = this._onRenderItem } = this.props;
     let { isOpen, selectedIndex } = this.state;
     let selectedOption = options[selectedIndex];
 
@@ -84,7 +84,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
           data-is-focusable={ !disabled }
           ref={ (c): HTMLElement => this._dropDown = c }
           id={ id }
-          className={ css('ms-Dropdown', {
+          className={ css('ms-Dropdown', className, {
             'is-open': isOpen, 'is-disabled': disabled
           }) }
           tabIndex={ disabled ? -1 : 0 }
@@ -94,9 +94,15 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
           role='combobox'
           aria-label={ label }
           aria-activedescendant={ selectedIndex >= 0 ? (this._id + '-list' + selectedIndex) : (this._id + '-list') }
-          aria-controls={ this._id + '-list' }
           >
-          <span className='ms-Dropdown-title'>{ selectedOption ? onRenderItem(selectedOption, this._onRenderItem) : '' }</span>
+          <span
+            className='ms-Dropdown-title'
+            key={ selectedIndex }
+            aria-live={ disabled || isOpen ? 'off' : 'polite' }
+            aria-atomic={ true }
+            >
+            { selectedOption ? onRenderItem(selectedOption, this._onRenderItem) : '' }
+          </span>
           <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown'></i>
         </div>
         { isOpen && (
@@ -205,6 +211,10 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
         break;
 
       case KeyCodes.escape:
+        if (!this.state.isOpen) {
+          return;
+        }
+
         this.setState({
           isOpen: false
         });

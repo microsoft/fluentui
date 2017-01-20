@@ -25,12 +25,13 @@ export interface IPersonaProps extends React.HTMLProps<Persona> {
 
   /**
    * The user's initials to display in the image area when there is no image.
+   * @defaultvalue [Derived from primaryText]
    */
   imageInitials?: string;
 
   /**
    * The background color when the user's initials are displayed.
-   * @defaultvalue PersonaInitialsColor.blue
+   * @defaultvalue [Derived from primaryText]
    */
   initialsColor?: PersonaInitialsColor;
 

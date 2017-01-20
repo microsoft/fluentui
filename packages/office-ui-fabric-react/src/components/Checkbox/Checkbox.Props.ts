@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Checkbox } from './Checkbox';
 
 /**
  * Checkbox class interface.
@@ -15,7 +14,7 @@ export interface ICheckbox {
 /**
  * Checkbox properties.
  */
-export interface ICheckboxProps extends React.Props<Checkbox> {
+export interface ICheckboxProps extends React.HTMLProps<HTMLElement> {
   /**
    * Additional class name to provide on the root element, in addition to the ms-Checkbox class.
    */
