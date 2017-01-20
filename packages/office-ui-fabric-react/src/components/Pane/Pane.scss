@@ -11,9 +11,6 @@
 
   > .main-content {
     overflow: auto;
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
 
     > .content-container {
       display: flex;
@@ -168,6 +165,10 @@ $CommandBarHeight: 40px;
   color: $ms-color-neutralSecondary;
   font-size: $ms-icon-size-m;
 
+  &:focus {
+      outline: 1px solid $focusedBorderColor;
+  }
+
   &:hover {
     color: $ms-color-neutralPrimary;
   }
@@ -184,14 +185,13 @@ $CommandBarHeight: 40px;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   /* Force hw accelleration on scrollable region */
-  transform: translateZ(0);
 
   @media (min-width: $ms-screen-lg-min) {
-    @include padding(0, 32px, 20px, 0);
+    @include padding(0, 32px, 20px, 32px);
   }
 
   @media (min-width: $ms-screen-xxl-min) {
-    @include padding(0, 40px, 20px, 0);
+    @include padding(0, 40px, 20px, 40px);
   }
 }
 

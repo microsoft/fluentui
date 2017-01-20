@@ -2,12 +2,15 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-import { BaseComponent } from '../../common/BaseComponent';
+import {
+  BaseComponent,
+  autobind,
+  css,
+  getId,
+  getRTL
+} from '../../Utilities';
 import { IPaneProps, PaneMode, PaneType } from './Pane.Props';
 import { Popup } from '../Popup/index';
-import { css } from '../../utilities/css';
-import { getId } from '../../utilities/object';
-import { getRTL } from '../../utilities/rtl';
 import { PaneContent } from './PaneContent';
 import { WrappedContent } from './WrappedContent';
 import './Pane.scss';
@@ -37,9 +40,6 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
 
     this._id = getId('Pane');
 
-    this._onClose = this._onClose.bind(this);
-    this._onPaneRef = this._onPaneRef.bind(this);
-
     this.state = {
       hidden: props.hidden,
       isAnimatingOpen: !!props.hidden,
@@ -48,8 +48,8 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
   }
 
   public componentDidMount() {
-      // Set original content width for overlay mode
-      this._initialContentWidth = this._paneControlContainer.getBoundingClientRect().width;
+    // Set original content width for overlay mode
+    this._initialContentWidth = this._paneControlContainer.getBoundingClientRect().width;
 
     if (!this.state.hidden) {
       this._async.setTimeout(() => {
@@ -73,6 +73,10 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
   }
 
   public componentDidUpdate() {
+    if (this.state.hidden) {
+      // Reset content container width
+      this._contentContainer.style.width = '';
+    } else {
       if (this.props.paneMode === PaneMode.overlay) {
         // Use original content width for overlay mode
         this._contentContainer.style.width = this._initialContentWidth + 'px';
@@ -80,6 +84,7 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
         // Viewport content width for push mode
         this._contentContainer.style.width = this._getContainerWidth() + 'px';
       }
+    }
   }
 
   public componentWillUnmount() {
@@ -139,7 +144,7 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
             className={
               css('ms-Pane', className, {
                 'ms-Pane--openLeft': !isOnRightSide,  // because the RTL animations are not being used, we need to set a class
-                'ms-Pane--openRight': isOnRightSide,  // because the RTL animations are not being used, we need to set a class
+                'ms-Pane--openRight': isOnRightSide,
                 'open': !hidden,
                 'ms-Pane-animateIn': isAnimatingOpen,
                 'ms-Pane-animateOut': isAnimatingClose,
@@ -199,6 +204,7 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
     return groupings;
   }
 
+  @autobind
   private _updateRenderedItems() {
     // Set original content width for overlay mode
     this._initialContentWidth = this._paneControlContainer.getBoundingClientRect().width;
@@ -206,6 +212,7 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
     this.setState(this.state);
   }
 
+  @autobind
   private _onAnimationEnd(ev: AnimationEvent) {
     if (ev.animationName.indexOf('In') > -1) {
       this.setState({
@@ -225,10 +232,12 @@ export class Pane extends BaseComponent<IPaneProps, IPaneState> {
     }
   }
 
+  @autobind
   private _onClose() {
     this.dismiss();
   }
 
+  @autobind
   private _onPaneRef(ref: HTMLDivElement) {
     if (ref) {
       this._events.on(ref, 'animationend', this._onAnimationEnd);

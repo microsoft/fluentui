@@ -1,7 +1,8 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { BaseComponent } from '../../common/BaseComponent';
+
+import { BaseComponent } from '../../Utilities';
 
 export interface IWrappedContentProps extends React.Props<WrappedContent> {
   /**
