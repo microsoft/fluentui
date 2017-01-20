@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 19 Jan 2017 04:08:35 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Jan 2017 04:03:22 GMT and should not be manually modified.
+
+## 1.2.1
+Fri, 20 Jan 2017 04:03:22 GMT
+
+### Patches
+
+- ContextualMenu: fix bug where an icon would have ms-icon--undefined in it's classname'
 
 ## 1.2.0
 Thu, 19 Jan 2017 04:08:35 GMT
