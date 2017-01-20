@@ -30,7 +30,6 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   onDidMount?: (row?: DetailsRow) => void;
   onWillUnmount?: (row?: DetailsRow) => void;
   onRenderCheck?: (props: IDetailsRowCheckProps) => JSX.Element;
-  onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void;
   onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
   dragDropEvents?: IDragDropEvents;
   dragDropHelper?: IDragDropHelper;
@@ -186,7 +185,6 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
         data-automationid='DetailsRow'
         style={ { minWidth: viewport ? viewport.width : 0 } }
         aria-selected={ isSelected }
-        onContextMenu={ (ev) => { this._onItemContextMenu(this.props.item, this.props.itemIndex, ev); } }
       >
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           { (selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden) && (
@@ -291,16 +289,6 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
       updateDropState: this._updateDroppingState
     };
     return options;
-  }
-
-  @autobind
-  private _onItemContextMenu(item, index, ev) {
-    const { onItemContextMenu } = this.props;
-
-    if (onItemContextMenu) {
-      onItemContextMenu(item, index, ev);
-      ev.preventDefault();
-    }
   }
 
   /**
