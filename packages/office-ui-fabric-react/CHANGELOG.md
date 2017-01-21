@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 20 Jan 2017 04:03:22 GMT and should not be manually modified.
+This log was last generated on Sat, 21 Jan 2017 04:06:35 GMT and should not be manually modified.
+
+## 1.2.2
+Sat, 21 Jan 2017 04:06:35 GMT
+
+### Patches
+
+- PeoplePicker: personas now correctly truncate when the input field is too small.
+- Pickers: Fixed a bug where you could not delete multiple selected items"
+- Suggestions: Fixed an error which would occur if noResultsFound string was not passed to suggestions"
 
 ## 1.2.1
 Fri, 20 Jan 2017 04:03:22 GMT
