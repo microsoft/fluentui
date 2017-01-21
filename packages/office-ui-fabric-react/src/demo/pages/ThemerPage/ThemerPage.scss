@@ -2,11 +2,11 @@
 
 /* TEMP CODE FOR THEMING DEMO */
 html > body {
-  background-color: $backgroundColor;
-  color: $foregroundColor;
+  background-color: $bodyBackgroundColor;
+  color: $bodyTextColor;
 }
 .ms-Label.ms-Label {
-  color: $foregroundColor;
+  color: $bodyTextColor;
 }
 /* end temp code */
 

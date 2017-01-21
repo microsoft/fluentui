@@ -7,28 +7,28 @@
 // --------------------------------------------------
 // Toggle styles
 
-$toggle-textColor: $controlTextColor;
+$toggle-text-color: $controlTextColor;
 
-$toggle-off-thumbColor: $controlBorderColor;
-$toggle-off-border: $controlBorderColor;
-$toggle-off-hover-borderColor: $controlBorderHoverColor;
-$toggle-off-hover-thumbColor: $controlBorderHoverColor;
+$toggle-thumb-off-color: $controlBorderColor;
+$toggle-border-off-color: $controlBorderColor;
+$toggle-border-off-hover-color: $controlBorderHoverColor;
+$toggle-thumb-off-hover-color: $controlBorderHoverColor;
 
 // todo: review ON state mappings with new slots
-$toggle-on-backgroundColor: $controlFilledColor;
-$toggle-on-borderColor: $controlFilledColor;
-$toggle-on-thumbColor: $controlBackgroundSelectedColor;
-$toggle-on-hover-backgroundColor: $controlFilledHoverColor;
-$toggle-on-hover-borderColor: $controlFilledHoverColor;
-$toggle-on-hover-thumbColor: $controlBackgroundSelectedHoverColor;
+$toggle-background-on-color: $controlFilledColor;
+$toggle-border-on-color: $controlFilledColor;
+$toggle-thumb-on-color: $controlBackgroundSelectedColor;
+$toggle-background-on-hover-color: $controlFilledHoverColor;
+$toggle-border-on-hover-color: $controlFilledHoverColor;
+$toggle-thumb-on-hover-color: $controlBackgroundSelectedHoverColor;
 
-$toggle-disabled-off-thumbColor: $controlBorderDisabledColor;
-$toggle-disabled-off-borderColor: $controlBorderDisabledColor;
-$toggle-disabled-on-backgroundColor: $controlBackgroundDisabledColor;
-$toggle-disabled-on-thumbColor: $bodyTextDisabledColor;
-$toggle-disabled-on-borderColor: $bodyTextDisabledColor;
+$toggle-thumb-off-disabled-color: $controlBorderDisabledColor;
+$toggle-border-off-disabled-color: $controlBorderDisabledColor;
+$toggle-background-on-disabled-color: $controlBackgroundDisabledColor;
+$toggle-thumb-on-disabled-color: $bodyTextDisabledColor;
+$toggle-border-on-disabled-color: $bodyTextDisabledColor;
 
-$toggle-focusBorderColor: $focusBorderColor;
+$toggle-focusBorder-color: $focusBorderColor;
 
 @mixin highContrast-bgColor($active-color, $bw-color) {
   @media screen and (-ms-high-contrast: active) {
@@ -45,7 +45,7 @@ $toggle-focusBorderColor: $focusBorderColor;
   @include ms-baseFont;
   @include ms-font-m;
   @include ms-u-normalize;
-  color: $toggle-textColor;
+  color: $toggle-text-color;
 
   position: relative;
   display: block;
@@ -184,7 +184,7 @@ $toggle-focusBorderColor: $focusBorderColor;
   border-radius: 10px;
   top: 4px;
   @include left(4px);
-  background: $toggle-off-thumbColor;
+  background: $toggle-thumb-off-color;
   transition: all 0.1s ease;
 }
 
