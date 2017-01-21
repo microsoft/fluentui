@@ -10,8 +10,8 @@
 // Component Slots
 $progressIndicator-description-color: $bodyTextAltColor;
 $progressIndicator-title-color: $bodyTextStrongColor;
-$progressIndicator-background-color: $controlUnfilledColor;
-$progressIndicator-foreground-color: $controlFilledColor;
+$progressIndicator-background-color: $controlUnfilledColor; // empty track color
+$progressIndicator-foreground-color: $controlFilledColor; // filled progress track
 
 //
 
