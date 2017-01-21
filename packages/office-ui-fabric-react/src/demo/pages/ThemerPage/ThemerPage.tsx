@@ -49,10 +49,24 @@ export class ThemerPage extends React.Component<any, any> {
     });*/
 
     let basicSlots = [this._semanticSlotWidget(SemanticColorSlots.bodyBackground),
-    this._semanticSlotWidget(SemanticColorSlots.bodyText)]; // todo
+    this._semanticSlotWidget(SemanticColorSlots.bodyText),
+    this._semanticSlotWidget(SemanticColorSlots.bodyTextAlt),
+    this._semanticSlotWidget(SemanticColorSlots.bodyTextDisabled),
+    this._semanticSlotWidget(SemanticColorSlots.bodyTextPrimary)]; // todo
 
     let controlSlots = [this._semanticSlotWidget(SemanticColorSlots.controlBackground),
-    this._semanticSlotWidget(SemanticColorSlots.controlFilled)]; // todo
+    this._semanticSlotWidget(SemanticColorSlots.controlBackgroundDisabled),
+    this._semanticSlotWidget(SemanticColorSlots.controlBackgroundHover),
+    this._semanticSlotWidget(SemanticColorSlots.controlBackgroundSelected),
+    this._semanticSlotWidget(SemanticColorSlots.controlBackgroundSelectedHover),
+    this._semanticSlotWidget(SemanticColorSlots.controlForegroundSelected),
+    this._semanticSlotWidget(SemanticColorSlots.controlForegroundDisabled),
+    this._semanticSlotWidget(SemanticColorSlots.controlBorder),
+    this._semanticSlotWidget(SemanticColorSlots.controlBorderDisabled),
+    this._semanticSlotWidget(SemanticColorSlots.controlBorderHover),
+    this._semanticSlotWidget(SemanticColorSlots.controlUnfilled),
+    this._semanticSlotWidget(SemanticColorSlots.controlFilled),
+    this._semanticSlotWidget(SemanticColorSlots.controlFilledHover)];
 
     return (
       <div className='ms-themer'>
