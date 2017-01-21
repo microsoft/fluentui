@@ -74,6 +74,10 @@ $ms-Persona-presenceSizeXl: 28px;
   display: flex;
   align-items: center;
 
+  &:focus {
+    outline: 1px solid $focusedBorderColor;
+  }
+
   .ms-ContextualHost {
     display: none;
   }
