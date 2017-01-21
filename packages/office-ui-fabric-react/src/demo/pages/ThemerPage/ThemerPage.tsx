@@ -16,9 +16,10 @@ import {
 import { Callout } from '../../../index';
 import { ColorPicker } from '../../../components/ColorPicker/index';
 
-import { Button } from '../../../components/Button/Button';
-import { ButtonType } from '../../../components/Button/Button.Props';
+//import { Button } from '../../../components/Button/Button';
+//import { ButtonType } from '../../../components/Button/Button.Props';
 import { Toggle } from '../../../components/Toggle/Toggle';
+import { ChoiceGroup } from '../../../components/ChoiceGroup/ChoiceGroup';
 import { TeachingBubbleBasicExample } from '../TeachingBubblePage/examples/TeachingBubble.Basic.Example';
 import { TextFieldBasicExample } from '../TextFieldPage/examples/TextField.Basic.Example';
 import { ToggleBasicExample } from '../TogglePage/examples/Toggle.Basic.Example';
@@ -102,9 +103,36 @@ export class ThemerPage extends React.Component<any, any> {
               label=''
               offText='Disabled off' />
           </div>,
-          <Button>Default</Button>,
-          <Button buttonType={ ButtonType.primary }>Primary</Button>,
-          <Button disabled={ true }>Disabled</Button>]) }
+          <ChoiceGroup
+            options={ [
+              {
+                key: 'A',
+                text: 'Option A'
+              },
+              {
+                key: 'B',
+                text: 'Option B',
+                checked: true
+              }] }
+            label='Pick one'
+            required={ true }
+          />,
+          <ChoiceGroup
+            options={ [
+              {
+                key: 'C',
+                text: 'Option C',
+                disabled: true
+              },
+              {
+                key: 'D',
+                text: 'Option D',
+                checked: true,
+                disabled: true
+              }] }
+            label='Pick one'
+            required={ true }
+          />]) }
 
         <h3>todo</h3>
         { [this._semanticSlotWidget(SemanticColorSlots.errorText),
