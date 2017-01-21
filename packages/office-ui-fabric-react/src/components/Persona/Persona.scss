@@ -118,7 +118,8 @@ $ms-Persona-presenceSizeXl: 28px;
   color: $ms-color-white;
   font-size: $ms-font-size-l;
   font-weight: $ms-font-weight-light;
-  line-height: 48px;
+  line-height: 46px;
+  height: 48px;
 
   &.ms-Persona-initials--lightBlue {
     background-color: $ms-color-initials-lightBlue;
@@ -274,6 +275,7 @@ $ms-Persona-presenceSizeXl: 28px;
 //
 .ms-Persona.ms-Persona--tiny {
   height: $ms-Persona-sizeTiny;
+  min-width: $ms-Persona-sizeTiny;
 
   .ms-Persona-imageArea {
     overflow: visible;
@@ -331,6 +333,7 @@ $ms-Persona-presenceSizeXl: 28px;
 //
 .ms-Persona.ms-Persona--xxs {
   height: $ms-Persona-sizeXxs;
+  min-width: $ms-Persona-sizeXxs;
   margin-right: 4px;
 
   .ms-Persona-imageArea,
@@ -347,7 +350,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .ms-Persona-initials {
     font-size: $ms-font-size-s;
-    line-height: $ms-Persona-sizeXxs;
+    line-height: 22px;
   }
 
   .ms-Persona-presence {
@@ -378,6 +381,7 @@ $ms-Persona-presenceSizeXl: 28px;
 //
 .ms-Persona.ms-Persona--xs {
   height: $ms-Persona-sizeXs;
+  min-width: $ms-Persona-sizeXs;
 
   .ms-Persona-imageArea,
   .ms-Persona-image {
@@ -416,6 +420,7 @@ $ms-Persona-presenceSizeXl: 28px;
 //
 .ms-Persona.ms-Persona--sm {
   height: $ms-Persona-sizeSm;
+  min-width: $ms-Persona-sizeSm;
 
   .ms-Persona-imageArea,
   .ms-Persona-image {
@@ -454,6 +459,7 @@ $ms-Persona-presenceSizeXl: 28px;
 //
 .ms-Persona.ms-Persona--lg {
   height: $ms-Persona-sizeLg;
+  min-width: $ms-Persona-sizeLg;
 
   .ms-Persona-imageArea,
   .ms-Persona-image {
@@ -498,6 +504,7 @@ $ms-Persona-presenceSizeXl: 28px;
 //
 .ms-Persona.ms-Persona--xl {
   height: $ms-Persona-sizeXl;
+  min-width: $ms-Persona-sizeXl;
 
   .ms-Persona-imageArea,
   .ms-Persona-image {

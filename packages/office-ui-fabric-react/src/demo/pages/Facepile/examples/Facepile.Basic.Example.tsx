@@ -13,8 +13,7 @@ import './Facepile.Examples.scss';
 
 export enum ExtraDataType {
   none = 0,
-  name,
-  stats
+  name
 }
 
 export interface IFacepileBasicExampleState {
@@ -39,25 +38,17 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
   public render() {
     let { extraDataType, numberOfFaces, personaSize } = this.state;
     let facepileProps: IFacepileProps = {
+      personaSize: personaSize,
       personas: facepilePersonas.slice(0, numberOfFaces),
       getPersonaProps: (persona: IFacepilePersona) => {
         if (extraDataType === ExtraDataType.name) {
           return {
             imageShouldFadeIn: this.state.imagesFadeIn,
-            hidePersonaDetails: false,
-            size: personaSize
-          };
-        } else if (extraDataType === ExtraDataType.stats) {
-          return {
-            imageShouldFadeIn: this.state.imagesFadeIn,
-            hidePersonaDetails: false,
-            primaryText: `[${persona.data}]`,
-            size: personaSize
+            hidePersonaDetails: false
           };
         }
         return {
-          imageShouldFadeIn: this.state.imagesFadeIn,
-          size: personaSize
+          imageShouldFadeIn: this.state.imagesFadeIn
         };
       }
     };
@@ -65,18 +56,20 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
     return (
       <div className={ 'ms-FacepileExample' }>
         <Facepile {...facepileProps} />
-        <Slider
-          label='Number of Personas:'
-          min={ 1 }
-          max={ 5 }
-          step={ 1 }
-          showValue={ true }
-          value={ numberOfFaces }
-          onChange={ value => this.setState((prevState: IFacepileBasicExampleState) => {
-            prevState.numberOfFaces = value;
-            return prevState;
-          }) }
-          />
+        <div className={ 'control' }>
+          <Slider
+            label='Number of Personas:'
+            min={ 1 }
+            max={ 5 }
+            step={ 1 }
+            showValue={ true }
+            value={ numberOfFaces }
+            onChange={ value => this.setState((prevState: IFacepileBasicExampleState) => {
+              prevState.numberOfFaces = value;
+              return prevState;
+            }) }
+            />
+        </div>
         <Checkbox
           label='Fade In'
           checked={ this.state.imagesFadeIn }
@@ -108,8 +101,7 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
           options={
             [
               { key: ExtraDataType.none, text: ExtraDataType[ExtraDataType.none] },
-              { key: ExtraDataType.name, text: ExtraDataType[ExtraDataType.name] },
-              { key: ExtraDataType.stats, text: ExtraDataType[ExtraDataType.stats] }
+              { key: ExtraDataType.name, text: ExtraDataType[ExtraDataType.name] }
             ]
           }
           onChanged={ value => this.setState((prevState: IFacepileBasicExampleState) => {
