@@ -23,6 +23,8 @@ import { ChoiceGroup } from '../../../components/ChoiceGroup/ChoiceGroup';
 import { TeachingBubbleBasicExample } from '../TeachingBubblePage/examples/TeachingBubble.Basic.Example';
 import { TextFieldBasicExample } from '../TextFieldPage/examples/TextField.Basic.Example';
 import { ToggleBasicExample } from '../TogglePage/examples/Toggle.Basic.Example';
+import { ProgressIndicatorBasicExample } from '../ProgressIndicatorPage/examples/ProgressIndicator.Basic.Example';
+const ProgressIndicatorBasicExampleCode = require('../ProgressIndicatorPage/examples/ProgressIndicator.Basic.Example.tsx');
 
 export class ThemerPage extends React.Component<any, any> {
   constructor() {
@@ -132,17 +134,18 @@ export class ThemerPage extends React.Component<any, any> {
               }] }
             label='Pick one'
             required={ true }
-          />]) }
+          />,
+          <ProgressIndicatorBasicExample />]) }
 
         <h3>todo</h3>
         { [this._semanticSlotWidget(SemanticColorSlots.errorText),
         this._semanticSlotWidget(SemanticColorSlots.bodyTextStrong)] }
 
-        <div style={ { display: 'flex', flexDirection: 'row' } }>
+        { /* <div style={ { display: 'flex', flexDirection: 'row' } }>
           <div className='ms-themer-example'><TextFieldBasicExample /></div>
           <div className='ms-themer-example'><ToggleBasicExample /></div>
           <div className='ms-themer-example'><TeachingBubbleBasicExample /></div>
-        </div>
+        </div> */ }
 
         <h3>Accessibility</h3>
         <p>Each pair of colors below should produce legible text and have a minimum contrast ratio of 4.5 [TBD verify formula].</p>
