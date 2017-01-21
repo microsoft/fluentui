@@ -133,7 +133,8 @@ export function ThemeRulesStandardCreator() {
   slotRules[BaseSlots[BaseSlots.foregroundColor]].value = getColorFromString('#333');
 
   /*** SEMANTIC SLOTS */
-  // create the SlotRule for a semantic slot, it will automatically find the right shade SlotRule to point at
+  // create the SlotRule for a semantic slot, it will automatically find the right shade SlotRule to point at,
+  //   and not actually inherit the given slot as a shade
   function _makeSemanticSlotRule(semanticSlot: SemanticColorSlots, inheritedBase: BaseSlots, shade: Shade) {
     slotRules[SemanticColorSlots[semanticSlot]] = {
       name: SemanticColorSlots[semanticSlot],
@@ -205,12 +206,12 @@ export function ThemeRulesStandardCreator() {
 
   _makeSemanticSlotRule(SemanticColorSlots.controlText, BaseSlots.foregroundColor, Shade.Unshaded);
   _makeSemanticSlotRule(SemanticColorSlots.controlBackground, BaseSlots.backgroundColor, Shade.Unshaded);
-  _makeSemanticSlotRule(SemanticColorSlots.controlBackgroundDisabled, BaseSlots.backgroundColor, Shade.Lightest);
+  _makeSemanticSlotRule(SemanticColorSlots.controlBackgroundDisabled, BaseSlots.foregroundColor, Shade.Lightest);
   _makeSemanticSlotRule(SemanticColorSlots.controlBackgroundHover, BaseSlots.backgroundColor, Shade.Unshaded);
   _makeSemanticSlotRule(SemanticColorSlots.controlBackgroundSelected, BaseSlots.backgroundColor, Shade.Unshaded);
   _makeSemanticSlotRule(SemanticColorSlots.controlBackgroundSelectedHover, BaseSlots.backgroundColor, Shade.Unshaded);
   _makeSemanticSlotRule(SemanticColorSlots.controlForegroundSelected, BaseSlots.primaryColor, Shade.Unshaded);
-  _makeSemanticSlotRule(SemanticColorSlots.controlForegroundDisabled, BaseSlots.foregroundColor, Shade.Lightest);
+  _makeSemanticSlotRule(SemanticColorSlots.controlForegroundDisabled, BaseSlots.foregroundColor, Shade.Lighter);
   _makeSemanticSlotRule(SemanticColorSlots.controlBorder, BaseSlots.foregroundColor, Shade.Medium);
   _makeSemanticSlotRule(SemanticColorSlots.controlBorderDisabled, BaseSlots.foregroundColor, Shade.Lightest);
   _makeSemanticSlotRule(SemanticColorSlots.controlBorderHover, BaseSlots.foregroundColor, Shade.Darkest);

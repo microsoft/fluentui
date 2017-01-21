@@ -7,6 +7,23 @@
 // --------------------------------------------------
 // ChoiceField styles
 
+/* ChoiceField component slots */
+$radioButton-text-color: $controlTextColor;
+$radioButton-text-disabled-color: $bodyTextDisabledColor;
+
+$radioButton-border-color: $controlBorderColor;
+$radioButton-border-hover-color: $controlBorderHoverColor;
+$radioButton-border-active-color: $ms-color-neutralSecondaryAlt; // todo: no semantic token yet for control active states
+$radioButton-border-selected-color: $controlFilledColor;
+$radioButton-border-disabled-color: $controlBorderDisabledColor;
+
+$radioButton-dot-color: $controlFilledColor;
+$radioButton-dot-disabled-color: $controlForegroundDisabledColor;
+
+$radioButton-background-disabled-color: $controlBackgroundDisabledColor;
+
+//
+
 $ms-choiceField-field-size: 20px;
 $ms-choiceField-iconField-size: 96px;
 $ms-choiceField-transition-duration: 200ms;
@@ -23,7 +40,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
 .choiceField {
   box-sizing: border-box;
-  color: $ms-color-neutralPrimary;
+  color: $radioButton-text-color;
   font-family: $ms-font-family-base;
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
@@ -133,8 +150,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   //
   &.fieldIsChecked {
     &::before {
-      border: 2px solid $ms-color-themePrimary;
-      background-color: transparent;
+      border: 2px solid $radioButton-border-selected-color;
 
       @media screen and (-ms-high-contrast: active) {
         border-color: $ms-color-contrastBlackSelected;
@@ -146,7 +162,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
     }
 
     &::after {
-      background-color: $ms-color-themePrimary;
+      background-color: $radioButton-dot-color;
       top: 5px;
       @include left(5px);
       width: 10px;
@@ -160,13 +176,6 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
         background-color: $ms-color-contrastWhiteSelected;
       }
     }
-
-    &:hover,
-    &:focus {
-      &::before {
-        border-color: $ms-color-themeDarkAlt;
-      }
-    }
   }
 
   //== State: A disabled choiceField
@@ -174,17 +183,9 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   &.fieldIsDisabled {
     cursor: default;
 
-    &:hover,
-    &:focus {
-      &::before {
-        border-color: $ms-color-neutralTertiaryAlt;
-      }
-    }
-
     &::before {
-      background-color: $ms-color-neutralTertiaryAlt;
-      border-color: $ms-color-neutralTertiaryAlt;
-      color: $ms-color-neutralTertiaryAlt;
+      background-color: $radioButton-background-disabled-color;
+      border-color: $radioButton-border-disabled-color;
 
       @media screen and (-ms-high-contrast: active) {
         border-color: $ms-color-contrastBlackDisabled;
