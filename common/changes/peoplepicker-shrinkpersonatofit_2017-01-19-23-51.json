@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "PeoplePicker: personas now correctly truncate when the input field is too small.",
+      "type": "patch"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}
