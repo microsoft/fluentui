@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Checkbox: Correctly pass aria-label to the input element in the checkbox.",
+      "type": "patch"
+    }
+  ],
+  "email": "yimwu@microsoft.com"
+}
