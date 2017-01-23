@@ -199,17 +199,18 @@ $ms-Persona-presenceSizeXl: 28px;
   border: 2px solid $ms-color-white;
   text-align: center;
   box-sizing: content-box;
+  -ms-high-contrast-adjust: none;
 
   @media screen and (-ms-high-contrast: active) {
     border-color: $ms-color-black;
-    box-shadow: 0 0 0 1px $ms-color-contrastBlackSelected inset;
+    // box-shadow: 0 0 0 1px $ms-color-contrastBlackSelected inset;
     color: $ms-color-black;
     background-color: $ms-color-white;
   }
 
   @media screen and (-ms-high-contrast: black-on-white) {
     border-color: $ms-color-white;
-    box-shadow: 0 0 0 1px $ms-color-contrastWhiteSelected inset;
+    // box-shadow: 0 0 0 1px $ms-color-contrastWhiteSelected inset;
     color: $ms-color-white;
     background-color: $ms-color-black;
   }
@@ -222,12 +223,10 @@ $ms-Persona-presenceSizeXl: 28px;
 
     @media screen and (-ms-high-contrast: active) {
       color: $ms-color-black;
-      background-color: $ms-color-white;
     }
 
     @media screen and (-ms-high-contrast: black-on-white) {
       color: $ms-color-white;
-      background-color: $ms-color-black;
     }
   }
 }
@@ -619,7 +618,7 @@ $ms-Persona-presenceSizeXl: 28px;
     }
 
     @media screen and (-ms-high-contrast: black-on-white) {
-      background-color: $ms-color-contrastWhiteDisabled;
+      background-color: $ms-color-black;
     }
   }
 
@@ -635,6 +634,30 @@ $ms-Persona-presenceSizeXl: 28px;
 .ms-Persona.ms-Persona--blocked {
   .ms-Persona-presence {
     background-color: $ms-color-white;
+
+    &::before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      @include left(0);
+      box-shadow: 0 0 0 2px $ms-color-presence-busy-average inset;
+      border-radius: 50%;
+    }
+
+    &::after {
+      content: '';
+      width: 100%;
+      height: 2px;
+      background-color: $ms-color-presence-busy-average;
+      transform: rotate(-45deg);
+      position: absolute;
+      top: 5px;
+      @include left(0);
+    }
+
+
 
     @media screen and (-ms-high-contrast: active) {
       color: $ms-color-contrastBlackDisabled;
@@ -660,28 +683,6 @@ $ms-Persona-presenceSizeXl: 28px;
       &::after {
         background-color: $ms-color-contrastWhiteDisabled;
       }
-    }
-
-    &::before {
-      content: '';
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      @include left(0);
-      box-shadow: 0 0 0 2px $ms-color-presence-busy-average inset;
-      border-radius: 50%;
-    }
-
-    &::after {
-      content: '';
-      width: 100%;
-      height: 2px;
-      background-color: $ms-color-presence-busy-average;
-      transform: rotate(-45deg);
-      position: absolute;
-      top: 5px;
-      @include left(0);
     }
   }
 
