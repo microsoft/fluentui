@@ -21,7 +21,7 @@ export class FabricJSPage extends React.Component<any, any> {
                 <p className={ styles.overviewText }>This open source project includes components that don&rsquo;t require a framework. You can use them to create simple experiences or extend them with the framework of your choice.</p>
               </div>
               <div className={ css('ms-Grid-col ms-u-sm12 ms-u-lg4', styles.overviewImageWrapper) }>
-                <img src={ baseURL + 'dist/images/logo-js-black.svg' } width='200' height='200' />
+                <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/logo-js-black.svg' } width='200' height='200' />
               </div>
             </div>
           </div>

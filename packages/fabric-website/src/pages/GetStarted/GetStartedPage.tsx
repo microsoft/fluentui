@@ -40,17 +40,17 @@ export class GetStartedPage extends React.Component<any, any> {
           <div className='ms-Grid ms-Grid--wide'>
             <div className='ms-Grid-row'>
               <div className={ css('ms-Grid-col ms-u-lg4', styles.feature) }>
-                <img src={ baseURL + 'dist/images/get-started-styles.svg' } alt='Illustration of Typography and color swatches.'/>
+                <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-styles.svg' } alt='Illustration of Typography and color swatches.'/>
                 <div className={ styles.title }>Styles</div>
                 <div className={ styles.description }>Fabric gives you access to Segoe, Microsoft&rsquo;s official typeface, along with the color palette, type ramp, icons, and responsive grid for Office 365.</div>
               </div>
               <div className={ css('ms-Grid-col ms-u-lg4', styles.feature) }>
-                <img src={ baseURL + 'dist/images/get-started-icons.svg' } alt='Illustration of Icons'/>
+                <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-icons.svg' } alt='Illustration of Icons'/>
                 <div className={ styles.title }>Icons</div>
                 <div className={ styles.description }>Fabric includes Office&rsquo;s official product icons. Fabric also provides a suite of product and document symbols, so you can use the same metaphors we use.</div>
               </div>
               <div className={ css('ms-Grid-col ms-u-lg4', styles.feature) }>
-                <img src={ baseURL + 'dist/images/get-started-components.svg' }alt='Illustration of Components' />
+                <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-components.svg' }alt='Illustration of Components' />
                 <div className={ styles.title }>Components</div>
                 <div className={ styles.description }>Components are the building blocks of your UI. Fabric has a variety of components, including navigation, commands, containers, and content.</div>
               </div>
@@ -62,7 +62,7 @@ export class GetStartedPage extends React.Component<any, any> {
           <h2>Choose the version of Fabric that&rsquo;s right for you</h2>
           <div className={ diagramStyles.diagram }>
             <div className={ diagramStyles.core }>
-              <img src={ baseURL + 'dist/images/diagram-core.svg' } />
+              <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-core.svg' } />
               <div className={ diagramStyles.text }>
                 <span className={ diagramStyles.headline }>Fabric Core Styles</span>
                 <span className={ diagramStyles.description }>Core elements of the design language, including icons, colors, type, and grid</span>
@@ -73,8 +73,8 @@ export class GetStartedPage extends React.Component<any, any> {
             <ul className={ diagramStyles.components }>
               <li className={ css(diagramStyles.component, diagramStyles.featuredComponent) }>
                 <div className={ diagramStyles.graphics }>
-                  <img className={ diagramStyles.componentImage } src={ baseURL + 'dist/images/diagram-components-many.svg' } width='175' height='90' alt='Illustrated Diagram of many components'/>
-                  <img className={ diagramStyles.coreImage } src={ baseURL + 'dist/images/diagram-core.svg' }alt='Illustrated representation of Fabric cores styles and libraries.'/>
+                  <img className={ diagramStyles.componentImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-components-many.svg' } width='175' height='90' alt='Illustrated Diagram of many components'/>
+                  <img className={ diagramStyles.coreImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-core.svg' }alt='Illustrated representation of Fabric cores styles and libraries.'/>
                 </div>
                 <div className={ diagramStyles.content }>
                   <span className={ diagramStyles.headline }>Fabric React</span>
@@ -84,8 +84,8 @@ export class GetStartedPage extends React.Component<any, any> {
               </li>
               <li className={ diagramStyles.component }>
                 <div className={ diagramStyles.graphics }>
-                  <img className={ diagramStyles.componentImage } src={ baseURL + 'dist/images/diagram-components-few.svg' }width='175' height='90' alt='Illustrated Diagram of few components'/>
-                  <img className={ diagramStyles.coreImage } src={ baseURL + 'dist/images/diagram-core.svg' }alt='Illustrated representation of Fabric cores styles and libraries.'/>
+                  <img className={ diagramStyles.componentImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-components-few.svg' }width='175' height='90' alt='Illustrated Diagram of few components'/>
+                  <img className={ diagramStyles.coreImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-core.svg' }alt='Illustrated representation of Fabric cores styles and libraries.'/>
                 </div>
                 <div className={ diagramStyles.content }>
                   <span className={ diagramStyles.headline }>Fabric JS</span>
@@ -95,8 +95,8 @@ export class GetStartedPage extends React.Component<any, any> {
               </li>
               <li className={ diagramStyles.component }>
                 <div className={ diagramStyles.graphics }>
-                  <img className={ diagramStyles.componentImage } src={ baseURL + 'dist/images/diagram-components-few.svg' } width='175' height='90'  alt='Illustrated Diagram of few components'/>
-                  <img className={ diagramStyles.coreImage } src={ baseURL + 'dist/images/diagram-core.svg' }alt='Illustrated representation of Fabric cores styles and libraries.'/>
+                  <img className={ diagramStyles.componentImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-components-few.svg' } width='175' height='90'  alt='Illustrated Diagram of few components'/>
+                  <img className={ diagramStyles.coreImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-core.svg' }alt='Illustrated representation of Fabric cores styles and libraries.'/>
                 </div>
                 <div className={ diagramStyles.content }>
                   <span className={ diagramStyles.headline }>AngularJS</span>

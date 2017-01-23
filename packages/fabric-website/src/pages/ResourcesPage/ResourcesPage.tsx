@@ -34,7 +34,7 @@ export class ResourcesPage extends React.Component<any, any> {
             <div className='ms-Grid-row'>
               <div className={ css('ms-Grid-col ms-u-sm-12 ms-u-lg6', styles.channel) }>
                 <div className={ styles.imageWrapper }>
-                  <img src={ baseURL + 'dist/images/logo-github.svg' }width='128' height='128' alt='Github logo' />
+                  <img src={'https://static2.sharepointonline.com/files/fabric/fabric-website/images/logo-github.svg' }width='128' height='128' alt='Github logo' />
                 </div>
                 <span className={ styles.title }>GitHub</span>
                 <span className={ styles.description }>We&rsquo;re on GitHub, so you can file issues and contribute to the projects.</span>
@@ -42,7 +42,7 @@ export class ResourcesPage extends React.Component<any, any> {
               </div>
               <div className={ css('ms-Grid-col ms-u-sm-12 ms-u-lg6', styles.channel) }>
                 <div className={ styles.imageWrapper }>
-                  <img src={ baseURL + 'dist/images/logo-twitter.svg' } width='128' height='128' alt='Twitter logo'/>
+                  <img src={ baseURL + ' https://static2.sharepointonline.com/files/fabric/fabric-website/images/logo-twitter.svg' } width='128' height='128' alt='Twitter logo'/>
                 </div>
                 <span className={ styles.title }>Twitter</span>
                 <span className={ styles.description }>Follow us for the latest news, and tweet us with your questions and suggestions.</span>

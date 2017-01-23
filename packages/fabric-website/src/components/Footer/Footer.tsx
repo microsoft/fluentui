@@ -37,7 +37,7 @@ export class Footer extends React.Component<IFooterProps, IFooterState> {
             <li><a href='http://www.microsoft.com/library/toolbar/3.0/trademarks/en-us.mspx' target='_blank'>Trademarks</a></li>
           </ul>
           <div className='od-OfficeFooter-microsoft'>
-            <img src={ baseURL + 'dist/images/logo-microsoft.png' } width='123' height='24' alt='Microsoft logo' />
+            <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/logo-microsoft.png' } width='123' height='24' alt='Microsoft logo' />
             <div>&copy; 2016 Microsoft</div>
           </div>
         </div>

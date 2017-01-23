@@ -21,7 +21,7 @@ export class AngularJSPage extends React.Component<any, any> {
                 <p className={ styles.overviewText }>ngOfficeUIFabric is a community effort to build components for Angular-based apps. Watch the Channel 9 video, <a href='https://channel9.msdn.com/Shows/Office-Dev-Show/Office-Dev-Show-Episode-25-Angular-Directives-for-Office-UI-Fabric'>Angular Directives for Office UI Fabric</a>, to learn more about the project.</p>
               </div>
               <div className={ css('ms-Grid-col ms-u-sm12 ms-u-lg4', styles.overviewImageWrapper) }>
-                <img src={ baseURL +  'dist/images/logo-angular-black.svg' } width='200' height='200' />
+                <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/logo-angular-black.svg' } width='200' height='200' />
               </div>
             </div>
           </div>
