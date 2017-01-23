@@ -11,28 +11,33 @@
   @include focus-border();
   @include ms-font-m;
   @include ms-u-normalize;
-  & + & {
-    @include margin-left(6px);
-  }
   text-decoration: none;
   text-align: center;
   cursor: pointer;
   display: inline-block;
   border-style: solid;
+
+  & + & {
+    @include margin-left(6px);
+  }
+
   @media screen and (-ms-high-contrast: active) {
     color: $ms-color-contrastBlackSelected;
     border-color: $ms-color-contrastBlackSelected;
   }
+
   @media screen and (-ms-high-contrast: black-on-white) {
     color: $ms-color-contrastWhiteSelected;
     border-color: $ms-color-contrastWhiteSelected;
   }
+
   &:disabled,
   &.disabled {
     background-color: $ms-color-neutralLighter;
     border-color: $ms-color-neutralLighter;
     cursor: default;
     pointer-events: none;
+
     .ms-Button-label {
       color: $ms-color-neutralTertiary;
     }

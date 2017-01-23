@@ -9,10 +9,10 @@ import {
 } from '../../../Utilities';
 
 import { ButtonBase } from '../ButtonBase/ButtonBase';
-import { IDefaultButtonProps } from './DefaultButton.Props';
+import { IButtonProps } from '../ButtonBase/ButtonBase.Props';
 import './DefaultButton.scss';
 
-export class DefaultButton extends BaseComponent<IDefaultButtonProps, any> {
+export class DefaultButton extends BaseComponent<IButtonProps, any> {
   public render() {
     return (
       <ButtonBase
