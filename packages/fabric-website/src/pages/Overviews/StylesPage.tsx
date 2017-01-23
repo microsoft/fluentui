@@ -2,7 +2,6 @@ import * as React from 'react';
 import { css } from '../../utilities/css';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import styles from './Overviews.module.scss';
-import { baseURL } from '../../appConfig';
 
 export class StylesPage extends React.Component<any, any> {
   public render() {

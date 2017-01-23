@@ -5,7 +5,6 @@ import { Table } from '../../../components/Table/Table';
 import { IconGrid } from '../../../components/IconGrid/IconGrid';
 import styles from './BrandIconsPage.module.scss';
 import pageStyles from '../../PageStyles.module.scss';
-import { baseURL } from '../../../appConfig';
 
 const svgResolutionData = require('json!../../../data/brand-icons-svg-resolutions.json');
 const pngResolutionData = require('json!../../../data/brand-icons-png-resolutions.json');

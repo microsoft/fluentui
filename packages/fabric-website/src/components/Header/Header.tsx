@@ -2,7 +2,6 @@ import * as React from 'react';
 import './Header.scss';
 import { DONavigation } from '../DONavigation/DONavigation';
 import { DOSearchBox } from '../DOSearchBox/DOSearchBox';
-import { baseURL } from '../../appConfig';
 
 export interface IHeaderProps {
 }
@@ -18,7 +17,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
         <div className='od-Header-banner'>
           <div className='od-Header-logo'>
             <a className='od-Logo-link' href='http://dev.office.com/' aria-label='Back to Office Dev Center website'>
-              <img src={ baseURL +  'dist/images/logo-office-dev.svg' } width='190' height='48' alt='Office dev center logo image' />
+              <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/logo-office-dev.svg' } width='190' height='48' alt='Office dev center logo image' />
             </a>
           </div>
           <div className='od-Header-searchContainer'>

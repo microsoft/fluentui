@@ -64,42 +64,6 @@ if (isProduction || isNuke) {
   });
 }
 
-// @todo: Make sure these credentials are removed before this repo is ever made public
-gulp.task('deploy', ['bundle'], function (cb) {
-  let ftp = require('vinyl-ftp');
-  let git = require('git-rev');
-  let debug = require('gulp-debug');
-  let gutil = require('gulp-util');
-  let os = require('os');
-  let currentBranch;
-
-  git.branch(function (branch) {
-    currentBranch = os.hostname().split('.')[0] + '-' + branch.replace('/', '-');
-    let ftpConnection = ftp.create({
-      host: 'waws-prod-bay-049.ftp.azurewebsites.windows.net',
-      user: "fabricreact\\$fabricreact",
-      pass: 'GwncXS8DEF2WmAQ8bF9JpvX4osSk8ssMGdHeEkhiSdyu9KiPdZD109Phy3Ye',
-      parallel: 10,
-      secure: true,
-      idleTimeout: 10000
-    });
-    let globs = [
-      './index.html',
-      './dist/**/*'
-    ];
-    if (process.env.masterBuildLink || isProduction) {
-      currentBranch = 'master';
-    }
-    let stream = gulp.src(globs, { base: '.', buffer: false })
-      .pipe(debug({ title: 'Copying file to Azure' }))
-      .pipe(ftpConnection.dest('/site/wwwroot/fabric-react/' + currentBranch))
-      .on("end", function () {
-        gutil.log('http://fabricreact.azurewebsites.net/fabric-react/' + currentBranch + '/');
-        cb();
-      });
-  });
-});
-
 let defaultTasks = build.serial(
   build.preCopy,
   build.sass,

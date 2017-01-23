@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { css } from '../../utilities/css';
 import styles from './HomePage.module.scss';
-import { baseURL } from '../../appConfig';
 
 const packageData = require('json!../../../package.json');
 
@@ -64,19 +63,19 @@ export class HomePage extends React.Component<any, any> {
           <ul className={ styles.featureList } aria-label='List of highlighted features'>
             <li>
               <a href='#/styles/icons'>
-                <img src={ baseURL +  'dist/images/home-highlights-icons.svg'} width='240' height='112' alt='Illustrations of <icons className=""></icons>'/>
+                <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-highlights-icons.svg'} width='240' height='112' alt='Illustrations of <icons className=""></icons>'/>
                 <span>Icons</span>
               </a>
             </li>
             <li>
               <a href='#/styles/typography'>
-                <img src={ baseURL +  'dist/images/home-highlights-typography.svg' }width='240' height='112' alt='Illustration of different font weights.'/>
+                <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/images/home-highlights-typography.svg' }width='240' height='112' alt='Illustration of different font weights.'/>
                 <span>Typography</span>
               </a>
             </li>
             <li>
               <a href='#/styles/brand-icons'>
-                <img src={ baseURL +  'dist/images/home-highlights-brand.svg' } width='240' height='112' alt='Word, Excel, OneNote, PowerPoint icons.' />
+                <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/images/home-highlights-brand.svg' } width='240' height='112' alt='Word, Excel, OneNote, PowerPoint icons.' />
                 <span>Brand icons</span>
               </a>
             </li>

@@ -4,7 +4,6 @@ import { css } from '../../utilities/css';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import styles from './GetStartedPage.module.scss';
 import diagramStyles from './GetStartedPage.diagram.module.scss';
-import { baseURL } from '../../appConfig';
 
 export class GetStartedPage extends React.Component<any, any> {
   public render() {

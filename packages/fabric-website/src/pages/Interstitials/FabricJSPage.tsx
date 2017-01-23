@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { css } from '../../utilities/css';
 import styles from './Interstitials.module.scss';
-import { baseURL } from '../../appConfig';
 
 export class FabricJSPage extends React.Component<any, any> {
   public render() {

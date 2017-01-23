@@ -1,6 +1,5 @@
 import * as React from 'react';
 import './Footer.scss';
-import { baseURL } from '../../appConfig';
 
 export interface IFooterProps {
 }
