@@ -3,13 +3,19 @@ import {
   buttonProperties,
   css,
   divProperties,
-  getNativeProps
+  KeyCodes,
+  getNativeProps,
+  getRTLSafeKeyCode
 } from '../../Utilities';
 import {
   IFacepileProps,
   IFacepilePersona,
   OverflowButtonType
 } from './Facepile.Props';
+import {
+  FocusZone,
+  FocusZoneDirection
+} from '../FocusZone';
 import {
   Persona,
   PersonaSize
@@ -34,15 +40,18 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
       <div className='ms-Facepile'>
         <div className='ms-Facepile-members'>
           { showAddButton ? this._getAddNewElement() : null }
-          {
-            personas.slice(0, numPersonasToShow).map((persona: IFacepilePersona, index: number) => {
-              const personaControl: JSX.Element = this._getPersonaControl(persona);
-              return persona.onClick ?
-                this._getElementWithOnClickEvent(personaControl, persona, index) :
-                this._getElementWithoutOnClickEvent(personaControl, persona, index);
-            })
-          }
-          { overflowButtonProps ? this._getOverflowElement(numPersonasToShow) : null }
+          <FocusZone
+            direction={ FocusZoneDirection.horizontal }>
+            {
+              personas.slice(0, numPersonasToShow).map((persona: IFacepilePersona, index: number) => {
+                const personaControl: JSX.Element = this._getPersonaControl(persona);
+                return persona.onClick ?
+                  this._getElementWithOnClickEvent(personaControl, persona, index) :
+                  this._getElementWithoutOnClickEvent(personaControl, persona, index);
+              })
+            }
+            { overflowButtonProps ? this._getOverflowElement(numPersonasToShow) : null }
+          </FocusZone>
         </div>
         <div className='ms-Facepile-clear'></div>
       </div>
@@ -58,7 +67,6 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
       primaryText={ persona.personaName }
       size={ personaSize }
       hidePersonaDetails={ true }
-      tabIndex={ 1 }
       {...(getPersonaProps ? getPersonaProps(persona) : null) }
       />;
   }
@@ -69,7 +77,6 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
       className='ms-Facepile-itemButton'
       title={ persona.personaName }
       key={ (!!persona.imageUrl ? 'i' : '') + index }
-      tabIndex={ -1 }
       onClick={ this._onPersonaClick.bind(this, persona) }
       onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
       onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
@@ -79,7 +86,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   }
 
   private _getElementWithoutOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
-    return <div
+    return <button
       { ...getNativeProps(persona, divProperties) }
       className='ms-Facepile-itemButton'
       title={ persona.personaName }
@@ -88,7 +95,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
       onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
       >
       { personaControl }
-    </div>;
+    </button>;
   }
 
   private _getOverflowElement(numPersonasToShow: number): JSX.Element {
@@ -115,7 +122,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
     return <button { ...getNativeProps(this.props.overflowButtonProps, buttonProperties) }
       className={ css('ms-Persona', PERSONA_SIZE[personaSize], 'ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton') }
       title={ personaNames }
-      tabIndex={ 1 }>
+      >
       { '+' + numPersonasNotPictured }
     </button>;
   }
@@ -123,7 +130,8 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   private _getIconElement(icon: string): JSX.Element {
     let { personaSize } = this.props;
     return <button { ...getNativeProps(this.props.overflowButtonProps, buttonProperties) }
-      className={ css('ms-Persona', PERSONA_SIZE[personaSize], 'ms-Facepile-overflowButton', 'ms-Facepile-itemButton') }>
+      className={ css('ms-Persona', PERSONA_SIZE[personaSize], 'ms-Facepile-overflowButton', 'ms-Facepile-itemButton') }
+      >
       <i className={ css('ms-Icon', 'msIcon', `ms-Icon ms-Icon--${icon}`) } aria-hidden='true'></i>
     </button>;
   }
@@ -132,7 +140,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
     let { personaSize } = this.props;
     return <button { ...getNativeProps(this.props.addButtonProps, buttonProperties) }
       className={ css('ms-Persona', PERSONA_SIZE[personaSize], 'ms-Facepile-addButton', 'ms-Facepile-itemButton') }
-      tabIndex={ 2 }>
+      tabIndex={ 0 }>
       <i className='ms-Icon msIcon ms-Icon--AddFriend' aria-hidden='true'></i>
     </button>;
   }

@@ -16,9 +16,12 @@
   padding: 0;
   @include margin-right(4px);
   margin-bottom: 4px;
-  outline: transparent;
   border-radius: 50%;
   vertical-align: top;
+
+  &:focus {
+    outline: 1px solid $focusedBorderColor;
+  }
 
   .ms-Persona-details {
     flex: 1 0 auto;
