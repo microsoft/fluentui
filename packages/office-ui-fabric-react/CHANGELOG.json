@@ -2,6 +2,44 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "1.2.2",
+      "tag": "office-ui-fabric-react_v1.2.2",
+      "date": "Sat, 21 Jan 2017 04:06:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "d64667ad892203b75e954c66d6110a4a7e5d9a73",
+            "comment": "PeoplePicker: personas now correctly truncate when the input field is too small."
+          },
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "4249b1248072bec213bccae166c16307f351df32",
+            "comment": "Pickers: Fixed a bug where you could not delete multiple selected items\""
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "bb43bf3c0c2b378c0ceb8566318ab30e95ac9aa9",
+            "comment": "Suggestions: Fixed an error which would occur if noResultsFound string was not passed to suggestions\""
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.2.1",
+      "tag": "office-ui-fabric-react_v1.2.1",
+      "date": "Fri, 20 Jan 2017 04:03:22 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "7c12ea814375f20df4550f80afc561b295bb68e5",
+            "comment": "ContextualMenu: fix bug where an icon would have ms-icon--undefined in it's classname'"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.2.0",
       "tag": "office-ui-fabric-react_v1.2.0",
       "date": "Thu, 19 Jan 2017 04:08:35 GMT",
