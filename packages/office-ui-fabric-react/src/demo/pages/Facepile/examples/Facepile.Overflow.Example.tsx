@@ -14,6 +14,7 @@ const facepileProps: IFacepileProps = {
   maxDisplayablePersonas: 5,
   overflowButtonType: OverflowButtonType.downArrow,
   overflowButtonProps: {
+    ariaLabel: 'More info',
     onClick: (ev: React.MouseEvent<HTMLButtonElement>) =>
       alert('overflow icon clicked')
   }

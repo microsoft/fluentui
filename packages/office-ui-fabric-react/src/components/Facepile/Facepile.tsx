@@ -40,8 +40,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
       <div className='ms-Facepile'>
         <div className='ms-Facepile-members'>
           { showAddButton ? this._getAddNewElement() : null }
-          <FocusZone
-            direction={ FocusZoneDirection.horizontal }>
+          <FocusZone direction={ FocusZoneDirection.horizontal }>
             {
               personas.slice(0, numPersonasToShow).map((persona: IFacepilePersona, index: number) => {
                 const personaControl: JSX.Element = this._getPersonaControl(persona);
