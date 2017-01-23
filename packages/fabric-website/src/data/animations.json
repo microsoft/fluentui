@@ -1,0 +1,389 @@
+{
+  "headers": [
+    "Name",
+    "Class",
+    "Bezier",
+    "Duration",
+    "Animation"
+  ],
+  "data": [
+    [
+      {
+        "value": "Slide right 10px and fade in"
+      },
+      {
+        "value": "ms-u-slideRightIn10"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.9, 0.2, 1)"
+      },
+      {
+        "value": "0.367s"
+      }
+    ],
+    [
+      {
+        "value": "Slide right 20px and fade in"
+      },
+      {
+        "value": "ms-u-slideRightIn20"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.9, 0.2, 1)"
+      },
+      {
+        "value": "0.367s"
+      }
+    ],
+    [
+      {
+        "value": "Slide right 40px and fade in"
+      },
+      {
+        "value": "ms-u-slideRightIn40"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.9, 0.2, 1)"
+      },
+      {
+        "value": "0.367s"
+      }
+    ],
+    [
+      {
+        "value": "Slide left 10px and fade in"
+      },
+      {
+        "value": "ms-u-slideLeftIn10"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.9, 0.2, 1)"
+      },
+      {
+        "value": "0.367s"
+      }
+    ],
+    [
+      {
+        "value": "Slide left 20px and fade in"
+      },
+      {
+        "value": "ms-u-slideLeftIn20"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.9, 0.2, 1)"
+      },
+      {
+        "value": "0.367s"
+      }
+    ],
+    [
+      {
+        "value": "Slide right 40px and fade in"
+      },
+      {
+        "value": "ms-u-slideLeftIn40"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.9, 0.2, 1)"
+      },
+      {
+        "value": "0.367s"
+      }
+    ],
+    [
+      {
+        "value": "Slide up 20px and fade in"
+      },
+      {
+        "value": "ms-u-slideUpIn20"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.9, 0.2, 1)"
+      },
+      {
+        "value": "0.367s"
+      }
+    ],
+    [
+      {
+        "value": "Slide right 10 and fade in"
+      },
+      {
+        "value": "ms-u-slideUpIn10"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.25, 0.75, 0.9)"
+      },
+      {
+        "value": "0.167s"
+      }
+    ],
+    [
+      {
+        "value": "Slide down 20px and fade in"
+      },
+      {
+        "value": "ms-u-slideDownIn20"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.9, 0.2, 1)"
+      },
+      {
+        "value": "0.367s"
+      }
+    ],
+    [
+      {
+        "value": "Slide down 10px and fade in"
+      },
+      {
+        "value": "ms-u-slideDownIn10"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.25, 0.75, 0.9)"
+      },
+      {
+        "value": "0.167s"
+      }
+    ],
+    [
+      {
+        "value": "Slide right 40px and fade out"
+      },
+      {
+        "value": "ms-u-slideRightOut40"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.25, 0.75, 0.9)"
+      },
+      {
+        "value": "0.167s"
+      }
+    ],
+    [
+      {
+        "value": "Slide left 40px and fade out"
+      },
+      {
+        "value": "ms-u-slideLeftOut40"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.25, 0.75, 0.9)"
+      },
+      {
+        "value": "0.167s"
+      }
+    ],
+    [
+      {
+        "value": "Slide up 20px and fade out"
+      },
+      {
+        "value": "ms-u-slideUpOut10"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.25, 0.75, 0.9)"
+      },
+      {
+        "value": "0.167s"
+      }
+    ],
+    [
+      {
+        "value": "Slide up 10px and fade out"
+      },
+      {
+        "value": "ms-u-slideUpOut10"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.25, 0.75, 0.9)"
+      },
+      {
+        "value": "0.167s"
+      }
+    ],
+    [
+      {
+        "value": "Slide down 20px and fade out"
+      },
+      {
+        "value": "ms-u-slideDownOut20"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.25, 0.75, 0.9)"
+      },
+      {
+        "value": "0.167s"
+      }
+    ],
+    [
+      {
+        "value": "Slide down 10px and fade out"
+      },
+      {
+        "value": "ms-u-slideDownOut10"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.25, 0.75, 0.9)"
+      },
+      {
+        "value": "0.167s"
+      }
+    ],
+    [
+      {
+        "value": "Scale up to 100% and fade in"
+      },
+      {
+        "value": "ms-u-scaleUpIn100"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.9, 0.2, 1)"
+      },
+      {
+        "value": "0.167s"
+      }
+    ],
+    [
+      {
+        "value": "Slide down to 100% and fade in"
+      },
+      {
+        "value": "ms-u-scaleDownIn100"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.9, 0.2, 1)"
+      },
+      {
+        "value": "0.367s"
+      }
+    ],
+    [
+      {
+        "value": "Scale up to 103% and fade out"
+      },
+      {
+        "value": "ms-u-scaleUpOut103"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.25, 0.75, 0.9)"
+      },
+      {
+        "value": "0.167s"
+      }
+    ],
+    [
+      {
+        "value": "Slide right 98% and fade out"
+      },
+      {
+        "value": "ms-u-scaleDownOut98"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.25, 0.75, 0.9)"
+      },
+      {
+        "value": "0.167s"
+      }
+    ],
+    [
+      {
+        "value": "Fade in"
+      },
+      {
+        "value": "ms-u-fadeIn100"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.25, 0.75, 0.9)"
+      },
+      {
+        "value": "0.167s"
+      }
+    ],
+    [
+      {
+        "value": "Fade in"
+      },
+      {
+        "value": "ms-u-fadeIn200"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.25, 0.75, 0.9)"
+      },
+      {
+        "value": "0.267s"
+      }
+    ],
+    [
+      {
+        "value": "Fade in"
+      },
+      {
+        "value": "ms-u-fadeIn400"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.25, 0.75, 0.9)"
+      },
+      {
+        "value": "0.367s"
+      }
+    ],
+    [
+      {
+        "value": "Fade in"
+      },
+      {
+        "value": "ms-u-fadeIn500"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.25, 0.75, 0.9)"
+      },
+      {
+        "value": "0.467s"
+      }
+    ],
+    [
+      {
+        "value": "Fade out"
+      },
+      {
+        "value": "ms-u-fadeOut100"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.25, 0.75, 0.9)"
+      },
+      {
+        "value": "0.167s"
+      }
+    ],
+    [
+      {
+        "value": "Fade out"
+      },
+      {
+        "value": "ms-u-fadeOut200"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.25, 0.75, 0.9)"
+      },
+      {
+        "value": "0.267s"
+      }
+    ],
+    [
+      {
+        "value": "Fade out"
+      },
+      {
+        "value": "ms-u-fadeOut400"
+      },
+      {
+        "value": "cubic-bezier(0.1, 0.25, 0.75, 0.9)"
+      },
+      {
+        "value": "0.367s"
+      }
+    ]
+  ]
+}

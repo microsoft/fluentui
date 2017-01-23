@@ -1,0 +1,36 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="186.2" height="200" viewBox="0 0 186.2 200">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        opacity: 0.9;
+      }
+      
+      @media screen and (-ms-high-contrast: active) {
+        .cls-1 {
+          fill: #fff;
+        }
+      }
+      
+      @media screen and (-ms-high-contrast: black-on-white) {
+        .cls-1 {
+          fill: #000000;
+        }
+      }
+    </style>
+  </defs>
+  <title>logo-angular-white</title>
+  <g>
+    <g>
+      <polygon class="cls-1" points="93.1 123.4 68.4 123.4 56.7 152.6 56.7 152.6 35 152.6 34.9 152.6 93.1 22.1 93.1 22.2 93.1 22.2 93.1 0 93.1 0 0 33.2 14.2 156.3 93.1 200 93.1 200 93.1 123.4"/>
+      <polygon class="cls-1" points="76.1 105.4 93.1 105.4 93.1 105.4 93.1 64.5 76.1 105.4"/>
+    </g>
+    <g class="cls-2">
+      <polygon class="cls-1" points="93.1 123.4 117.8 123.4 129.5 152.6 129.5 152.6 151.2 152.6 151.3 152.6 93.1 22.1 93.1 22.2 93.1 22.2 93.1 0 93.1 0 186.2 33.2 172 156.3 93.1 200 93.1 200 93.1 123.4"/>
+      <polygon class="cls-1" points="110.1 105.4 93.1 105.4 93.1 105.4 93.1 64.5 110.1 105.4"/>
+    </g>
+  </g>
+</svg>
