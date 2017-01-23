@@ -149,9 +149,9 @@
       "resolved": "https://registry.npmjs.org/@types/mocha/-/mocha-2.2.38.tgz"
     },
     "@types/node": {
-      "version": "6.0.60",
+      "version": "6.0.61",
       "from": "@types/node@>=6.0.45 <7.0.0",
-      "resolved": "https://registry.npmjs.org/@types/node/-/node-6.0.60.tgz"
+      "resolved": "https://registry.npmjs.org/@types/node/-/node-6.0.61.tgz"
     },
     "@types/orchestrator": {
       "version": "0.0.30",
@@ -1461,9 +1461,9 @@
       "resolved": "https://registry.npmjs.org/errorhandler/-/errorhandler-1.4.3.tgz"
     },
     "es-abstract": {
-      "version": "1.6.1",
+      "version": "1.7.0",
       "from": "es-abstract@>=1.6.1 <2.0.0",
-      "resolved": "https://registry.npmjs.org/es-abstract/-/es-abstract-1.6.1.tgz"
+      "resolved": "https://registry.npmjs.org/es-abstract/-/es-abstract-1.7.0.tgz"
     },
     "es-to-primitive": {
       "version": "1.1.1",
@@ -1728,9 +1728,9 @@
       "resolved": "https://registry.npmjs.org/filename-regex/-/filename-regex-2.0.0.tgz"
     },
     "filesize": {
-      "version": "3.4.2",
+      "version": "3.4.3",
       "from": "filesize@>=3.3.0 <4.0.0",
-      "resolved": "https://registry.npmjs.org/filesize/-/filesize-3.4.2.tgz"
+      "resolved": "https://registry.npmjs.org/filesize/-/filesize-3.4.3.tgz"
     },
     "fill-range": {
       "version": "2.2.3",
@@ -5306,9 +5306,28 @@
       }
     },
     "serve-static": {
-      "version": "1.11.1",
+      "version": "1.11.2",
       "from": "serve-static@>=1.11.1 <1.12.0",
-      "resolved": "https://registry.npmjs.org/serve-static/-/serve-static-1.11.1.tgz"
+      "resolved": "https://registry.npmjs.org/serve-static/-/serve-static-1.11.2.tgz",
+      "dependencies": {
+        "debug": {
+          "version": "2.2.0",
+          "from": "debug@>=2.2.0 <2.3.0",
+          "resolved": "https://registry.npmjs.org/debug/-/debug-2.2.0.tgz",
+          "dependencies": {
+            "ms": {
+              "version": "0.7.1",
+              "from": "ms@0.7.1",
+              "resolved": "https://registry.npmjs.org/ms/-/ms-0.7.1.tgz"
+            }
+          }
+        },
+        "send": {
+          "version": "0.14.2",
+          "from": "send@0.14.2",
+          "resolved": "https://registry.npmjs.org/send/-/send-0.14.2.tgz"
+        }
+      }
     },
     "set-blocking": {
       "version": "2.0.0",
