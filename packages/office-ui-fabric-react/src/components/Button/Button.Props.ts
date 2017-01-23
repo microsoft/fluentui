@@ -17,7 +17,7 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
 
   /**
    * The type of button to render.
-   * @defaultvalue ButtonType.normal
+   * @defaultvalue ButtonType.default
    */
   buttonType?: ButtonType;
 

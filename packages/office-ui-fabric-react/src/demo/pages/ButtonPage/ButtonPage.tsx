@@ -7,7 +7,7 @@ import {
 
 import { Checkbox } from '../../../index';
 
-import { ButtonNormalExample } from './examples/Button.Normal.Example';
+import { ButtonDefaultExample } from './examples/Button.Default.Example';
 import { ButtonPrimaryExample } from './examples/Button.Primary.Example';
 import { ButtonCompoundExample } from './examples/Button.Compound.Example';
 import { ButtonCommandExample } from './examples/Button.Command.Example';
@@ -20,7 +20,7 @@ import { IComponentDemoPageProps } from '../../components/ComponentPage/ICompone
 import { IButtonDemoPageState } from './examples/IButtonDemoPageState';
 import './examples/Button.Basic.Example.scss';
 
-const ButtonNormalExampleCode = require('./examples/Button.Normal.Example.tsx');
+const ButtonDefaultExampleCode = require('./examples/Button.Default.Example.tsx');
 const ButtonPrimaryExampleCode = require('./examples/Button.Primary.Example.tsx');
 const ButtonCompoundExampleCode = require('./examples/Button.Compound.Example.tsx');
 const ButtonCommandExampleCode = require('./examples/Button.Command.Example.tsx');
@@ -47,8 +47,8 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
         exampleCards={
           <div>
             <Checkbox label='Disable buttons' checked={ this.state.areButtonsDisabled } onChange={ this._onDisabledChanged.bind(this) } />
-            <ExampleCard title='Normal Button' code={ ButtonNormalExampleCode }>
-              <ButtonNormalExample disabled={ this.state.areButtonsDisabled } />
+            <ExampleCard title='Default Button' code={ ButtonDefaultExampleCode }>
+              <ButtonDefaultExample disabled={ this.state.areButtonsDisabled } />
             </ExampleCard>
             <ExampleCard title='Primary Button' code={ ButtonPrimaryExampleCode }>
               <ButtonPrimaryExample disabled={ this.state.areButtonsDisabled } />

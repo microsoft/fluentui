@@ -5,7 +5,7 @@ import {
 } from '../../../../index';
 import { IButtonProps } from './IButtonProps';
 
-export class ButtonNormalExample extends React.Component<IButtonProps, {}> {
+export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
   public constructor() {
     super();
   }
@@ -15,7 +15,7 @@ export class ButtonNormalExample extends React.Component<IButtonProps, {}> {
 
     return (
       <div className='ms-BasicButtonsExample'>
-        <Label>Normal button</Label>
+        <Label>Default button</Label>
         <DefaultButton data-automation-id='test' disabled={ disabled }>Create account</DefaultButton>
       </div>
     );
