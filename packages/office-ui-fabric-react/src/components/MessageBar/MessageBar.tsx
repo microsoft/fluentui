@@ -104,8 +104,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
       <div
         className={ this._getClassName() + ' ms-MessageBar-multiline' }
         role='status'
-        aria-live={ this._getAnnoucementPriority() }
-        aria-controls='ms-MessageBar-text'>
+        aria-live={ this._getAnnoucementPriority() }>
         <div className='ms-MessageBar-content'>
           { this._getIconSpan() }
           <div className='ms-MessageBar-actionables'>
@@ -126,8 +125,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
     return (
       <div className={ this._getClassName() + ' ms-MessageBar-singleline' }
         role='status'
-        aria-live={ this._getAnnoucementPriority() }
-        aria-controls='ms-MessageBar-text'>
+        aria-live={ this._getAnnoucementPriority() }>
         <div className='ms-MessageBar-content'>
           { this._getIconSpan() }
           <div className='ms-MessageBar-actionables'>
