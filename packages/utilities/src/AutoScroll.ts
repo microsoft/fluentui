@@ -1,7 +1,7 @@
-import { EventGroup } from '../eventGroup/EventGroup';
-import { findScrollableParent } from '../scroll';
-import { getRect } from '../dom';
-import { IRectangle } from '../../common/IRectangle';
+import { EventGroup } from './EventGroup';
+import { findScrollableParent } from './scroll';
+import { getRect } from './dom';
+import { IRectangle } from './IRectangle';
 
 declare function setTimeout(cb: Function, delay: number): number;
 
@@ -51,7 +51,7 @@ export class AutoScroll {
       this._scrollVelocity = Math.max(
         -MAX_SCROLL_VELOCITY,
         -MAX_SCROLL_VELOCITY * ((SCROLL_GUTTER_HEIGHT - (ev.clientY - scrollRectTop)) / SCROLL_GUTTER_HEIGHT
-      ));
+        ));
     } else if (ev.clientY > scrollClientBottom) {
       this._scrollVelocity = Math.min(
         MAX_SCROLL_VELOCITY,

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Async } from '../utilities/Async/Async';
-import { EventGroup } from '../utilities/eventGroup/EventGroup';
+import { Async } from './Async';
+import { EventGroup } from './EventGroup';
 import { IDisposable } from './IDisposable';
 
 export class BaseComponent<P, S> extends React.Component<P, S> {

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import './PropertiesTable.scss';
+import { assign } from '../../../Utilities';
 import { DetailsList, DetailsListLayoutMode, IColumn, IGroup } from '../../../DetailsList';
 import { SelectionMode } from '../../../utilities/selection/interfaces';
-import { assign } from '../../../utilities/object';
+import './PropertiesTable.scss';
 
 export interface IProperty {
   name: string;
@@ -113,9 +113,9 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
     super(props);
 
     let properties = (props.properties as any[])
-        .map((prop, index) => assign({ key: index }, prop))
-        .sort((a, b) => (a.name > b.name) ? -1 : 1)
-        .sort((a, b) => (a.interfacePropertyType < b.interfacePropertyType) ? -1 : 1);
+      .map((prop, index) => assign({ key: index }, prop))
+      .sort((a, b) => (a.name > b.name) ? -1 : 1)
+      .sort((a, b) => (a.interfacePropertyType < b.interfacePropertyType) ? -1 : 1);
 
     let groups = null;
 
@@ -148,7 +148,7 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
         ) : (
             <div className='PropertiesTable-noProperties'>This component is missing properties. Please provide properties or remove the table from the example.</div>
           ) }
-        </div>
+      </div>
     );
   }
 
@@ -167,7 +167,7 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
     let group: IGroup;
 
     while (index < props.length) {
-      let prop = props[index] ;
+      let prop = props[index];
 
       if (prop.interfacePropertyType !== typeToCompare) {
         break;

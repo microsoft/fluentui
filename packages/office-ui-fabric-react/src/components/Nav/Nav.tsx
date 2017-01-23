@@ -1,7 +1,9 @@
 import * as React from 'react';
+import {
+  css,
+  getRTL
+} from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { css } from '../../utilities/css';
-import { getRTL } from '../../utilities/rtl';
 import { Button, ButtonType } from '../../Button';
 import './Nav.scss';
 

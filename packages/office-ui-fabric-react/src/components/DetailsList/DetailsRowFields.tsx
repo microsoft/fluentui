@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IColumn } from './DetailsList.Props';
-import { css } from '../../utilities/css';
+import { css } from '../../Utilities';
 
 export interface IDetailsRowFieldsProps {
   item: any;

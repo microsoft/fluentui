@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseDecorator } from './BaseDecorator';
-import { getWindow } from '../dom';
+import { getWindow } from '../../Utilities';
 
 export interface IWithResponsiveModeState {
   responsiveMode?: ResponsiveMode;

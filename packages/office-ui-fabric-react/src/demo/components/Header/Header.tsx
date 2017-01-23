@@ -1,10 +1,10 @@
 import * as React from 'react';
+import { getRTL, setRTL } from '../../../Utilities';
 import { } from '../../../utilities/decorators/withResponsiveMode';
 import {
   ContextualMenu,
   IContextualMenuItem
-  } from '../../../ContextualMenu';
-import { getRTL, setRTL } from '../../../utilities/rtl';
+} from '../../../ContextualMenu';
 import { DirectionalHint } from '../../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection } from '../../../FocusZone';
 import { withResponsiveMode, ResponsiveMode } from '../../../utilities/decorators/withResponsiveMode';
@@ -50,7 +50,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
 
     // In medium and below scenarios, hide the side links.
     if (responsiveMode <= ResponsiveMode.large) {
-      sideLinks = [ ];
+      sideLinks = [];
     }
 
     return (
@@ -58,7 +58,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
         <div className='Header'>
           { (responsiveMode <= ResponsiveMode.large) && (
             <button className='Header-button' onClick={ this._onMenuClick }>
-              <i className='ms-Icon ms-Icon--GlobalNavButton'/>
+              <i className='ms-Icon ms-Icon--GlobalNavButton' />
             </button>
           ) }
           <div className='Header-title ms-font-xl ms-fontColor-white'>
@@ -71,20 +71,20 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
                 <a key={ linkIndex } className='Header-button ms-fontColor-white' href={ link.url }>{ link.name }</a>
               )).concat([
                 <button key='headerButton' className='Header-button' onClick={ this._onGearClick }>
-                  <i className='ms-Icon ms-Icon--Settings'/>
+                  <i className='ms-Icon ms-Icon--Settings' />
                 </button>
               ]) }
             </FocusZone>
           </div>
         </div>
         { contextMenu ? (
-        <ContextualMenu
-          items={ contextMenu.items }
-          isBeakVisible={ true }
-          targetElement={ contextMenu.target }
-          directionalHint={ DirectionalHint.bottomAutoEdge }
-          gapSpace={ 5 }
-          onDismiss={ this._onDismiss } />
+          <ContextualMenu
+            items={ contextMenu.items }
+            isBeakVisible={ true }
+            targetElement={ contextMenu.target }
+            directionalHint={ DirectionalHint.bottomAutoEdge }
+            gapSpace={ 5 }
+            onDismiss={ this._onDismiss } />
         ) : (null) }
       </div>
     );
@@ -112,7 +112,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
   private _getOptionMenuItems(): IContextualMenuItem[] {
     return [{
       key: 'isRTL',
-      name: `Render in ${ this.state.isRTLEnabled ? 'LTR' : 'RTL' }`,
+      name: `Render in ${this.state.isRTLEnabled ? 'LTR' : 'RTL'}`,
       icon: 'Settings',
       onClick: this._onRTLToggled
     }];

@@ -7,7 +7,7 @@ import {
 } from 'office-ui-fabric-react/lib/Pivot';
 import { FocusZone, FocusZoneDirection, IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
 import { List } from 'office-ui-fabric-react/lib/List';
-import { KeyCodes } from 'office-ui-fabric-react/lib/utilities/KeyCodes';
+import { KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
 import TodoItem from './TodoItem';
 import { ITodoItem, ITodoItemProps, ITodoTabsProps } from '../types/index';
 

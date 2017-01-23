@@ -1,8 +1,11 @@
 import { DirectionalHint } from '../common/DirectionalHint';
-import Rectangle from './Rectangle';
-import { getScrollbarWidth } from './scroll';
-import { assign } from '../utilities/object';
-import { IRectangle } from '../common/IRectangle';
+import {
+  IRectangle,
+  assign,
+  getScrollbarWidth,
+  Rectangle
+} from '../Utilities';
+
 export enum RectangleEdge {
   top,
   bottom,

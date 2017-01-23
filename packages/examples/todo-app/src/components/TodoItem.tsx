@@ -3,7 +3,7 @@ import { Button, ButtonType } from 'office-ui-fabric-react/lib/Button';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { DocumentCardActivity } from 'office-ui-fabric-react/lib/DocumentCard';
-import { css } from 'office-ui-fabric-react/lib/utilities/css';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { ITodoItem, ITodoItemProps } from '../types/index';
 
 import styles from './Todo.module.scss';

@@ -1,6 +1,6 @@
 /* tslint:disable-next-line:no-unused-variable */
 import * as React from 'react';
-import { setRTL } from '../../utilities/rtl';
+import { setRTL } from '../../Utilities';
 import { Persona, PersonaInitialsColor } from './index';
 import { shallow } from 'enzyme';
 import * as chai from 'chai';

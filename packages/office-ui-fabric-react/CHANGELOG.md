@@ -1,6 +1,73 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 12 Jan 2017 04:06:30 GMT and should not be manually modified.
+This log was last generated on Sat, 21 Jan 2017 04:06:35 GMT and should not be manually modified.
+
+## 1.2.2
+Sat, 21 Jan 2017 04:06:35 GMT
+
+### Patches
+
+- PeoplePicker: personas now correctly truncate when the input field is too small.
+- Pickers: Fixed a bug where you could not delete multiple selected items"
+- Suggestions: Fixed an error which would occur if noResultsFound string was not passed to suggestions"
+
+## 1.2.1
+Fri, 20 Jan 2017 04:03:22 GMT
+
+### Patches
+
+- ContextualMenu: fix bug where an icon would have ms-icon--undefined in it's classname'
+
+## 1.2.0
+Thu, 19 Jan 2017 04:08:35 GMT
+
+### Minor changes
+
+- DetailsList: adding `selectionPreservedOnEmptyClick` attribute for overriding the default behavior of clearing selection when clicks occur on non-focusable targets (body, spans, etc).
+
+## 1.1.0
+Thu, 19 Jan 2017 00:12:21 GMT
+
+### Minor changes
+
+- ChoiceGroup: onChanged deprecated and replaced with onChange
+- Persona: Hide the initials if the provided photo successfully loads
+
+## 1.0.0
+Mon, 16 Jan 2017 21:57:33 GMT
+
+### Breaking changes
+
+- Icon: -BREAKING CHANGE- Change IconName from an enum to type to greatly reduce file size. Any component that is currently consuming the icon enum will break.
+- Most utilities have moved to `@uifabric/utilities`. If you refer directly to things like `/lib/utilities/autobind` you will now need to pull them directly from that package, or from the `office-ui-fabric-react/lib/Utilities` top-level import which should continue to work as expected. We are planning to split up more chunks of Fabric into smaller packages that can imported separately, but will also continue to maintain the `office-ui-fabric-react` package and its top-level imports.
+
+### Minor changes
+
+- Dropdown: Add className prop to component
+
+### Patches
+
+- DetailsRow: Change width to 100% to fix GroupedList component not extending to parent container's width
+
+## 0.88.0
+Sat, 14 Jan 2017 04:10:15 GMT
+
+### Minor changes
+
+- ChoiceGroup and CheckBox: Added props to set a custom 'name' attribute on rendered elements.
+
+### Patches
+
+- Button: Set the icon button's width correctly in Safari.
+- Added defined width to ms-Persona-imageArea so that the DOM width of the control reflects the true width of the content
+
+## 0.87.1
+Fri, 13 Jan 2017 04:05:19 GMT
+
+### Patches
+
+- DetailsList: Only prevent text selection in multiple selection mode
+- Dropdown: Avoid calling stopPropagation on pressing escape if the dropdown is not expanded
 
 ## 0.87.0
 Thu, 12 Jan 2017 04:06:30 GMT

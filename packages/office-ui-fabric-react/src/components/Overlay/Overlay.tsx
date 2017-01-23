@@ -1,7 +1,10 @@
 import * as React from 'react';
+import {
+  css,
+  getNativeProps,
+  divProperties
+} from '../../Utilities';
 import { IOverlayProps } from './Overlay.Props';
-import { css } from '../../utilities/css';
-import { getNativeProps, divProperties } from '../../utilities/properties';
 
 import './Overlay.scss';
 

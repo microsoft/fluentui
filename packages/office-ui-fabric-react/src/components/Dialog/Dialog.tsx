@@ -1,15 +1,17 @@
 import * as React from 'react';
+import {
+  BaseComponent,
+  css,
+  getId
+} from '../../Utilities';
 import { FocusTrapZone } from '../FocusTrapZone/index';
 import { IDialogProps, DialogType } from './Dialog.Props';
 import { Overlay } from '../../Overlay';
 import { Layer } from '../../Layer';
 import { Button, ButtonType } from '../../Button';
 import { DialogFooter } from './DialogFooter';
-import { css } from '../../utilities/css';
 import { Popup } from '../Popup/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import { getId } from '../../utilities/object';
-import { BaseComponent } from '../../common/BaseComponent';
 import './Dialog.scss';
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)

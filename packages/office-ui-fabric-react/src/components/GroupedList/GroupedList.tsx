@@ -1,5 +1,11 @@
 import * as React from 'react';
 import {
+  BaseComponent,
+  autobind,
+  assign,
+  css
+} from '../../Utilities';
+import {
   IGroupedList,
   IGroupedListProps,
   IGroup
@@ -7,19 +13,12 @@ import {
 import {
   GroupedListSection
 } from './GroupedListSection';
-
-import { css } from '../../utilities/css';
 import {
   List
 } from '../../List';
 import {
   SelectionMode
 } from '../../utilities/selection/index';
-import {
-  BaseComponent,
-  autobind,
-  assign
-} from '../../Utilities';
 import './GroupedList.scss';
 
 export interface IGroupedListState {

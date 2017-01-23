@@ -1,9 +1,11 @@
 import * as React from 'react';
-import './Rating.scss';
+import {
+  BaseComponent,
+  css,
+  getId
+} from '../../Utilities';
 import { IRatingProps, RatingSize } from './Rating.Props';
-import { BaseComponent } from '../../common/BaseComponent';
-import { getId } from '../../utilities/object';
-import { css } from '../../utilities/css';
+import './Rating.scss';
 
 export interface IRatingState {
   rating: number;

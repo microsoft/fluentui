@@ -4,18 +4,18 @@ import * as React from 'react';
 import { ICalloutProps } from './Callout.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
+  BaseComponent,
+  IRectangle,
+  assign,
   autobind,
   css,
   elementContains,
+  focusFirstChild,
   getWindow,
   getDocument
 } from '../../Utilities';
 import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight } from '../../utilities/positioning';
-import { IRectangle } from '../../common/IRectangle';
-import { focusFirstChild } from '../../utilities/focus';
-import { assign } from '../../Utilities';
 import { Popup } from '../../Popup';
-import { BaseComponent } from '../../common/BaseComponent';
 import './Callout.scss';
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };

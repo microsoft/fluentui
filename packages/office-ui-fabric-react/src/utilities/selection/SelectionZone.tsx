@@ -5,7 +5,8 @@ import {
   autobind,
   getParent,
   getDocument,
-  getWindow
+  getWindow,
+  isElementTabbable
 } from '../../Utilities';
 import { SelectionLayout } from './SelectionLayout';
 import {
@@ -14,9 +15,6 @@ import {
   SelectionDirection,
   SelectionMode
 } from './interfaces';
-import {
-  isElementTabbable
-} from '../../utilities/focus';
 
 // Selection definitions:
 //
@@ -43,6 +41,7 @@ export interface ISelectionZoneProps extends React.Props<SelectionZone> {
   selection: ISelection;
   layout?: ISelectionLayout;
   selectionMode?: SelectionMode;
+  selectionPreservedOnEmptyClick?: boolean;
   isSelectedOnFocus?: boolean;
   onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
 }
@@ -374,7 +373,10 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   }
 
   private _tryClearOnEmptyClick(ev: MouseEvent) {
-    if (this._isNonHandledClick(ev.target as HTMLElement)) {
+    if (
+      !this.props.selectionPreservedOnEmptyClick &&
+      this._isNonHandledClick(ev.target as HTMLElement)
+    ) {
       this.props.selection.setAllSelected(false);
     }
   }

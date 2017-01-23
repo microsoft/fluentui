@@ -1,15 +1,16 @@
 import * as React from 'react';
-import { AutoScroll } from '../../utilities/AutoScroll/AutoScroll';
-import { BaseComponent } from '../../common/BaseComponent';
+import {
+  AutoScroll,
+  BaseComponent,
+  IPoint,
+  IRectangle,
+  autobind,
+  css,
+  findScrollableParent,
+  getDistanceBetweenPoints,
+  getRTL
+} from '../../Utilities';
 import { IMarqueeSelectionProps } from './MarqueeSelection.Props';
-import { IPoint } from '../../common/IPoint';
-import { IRectangle } from '../../common/IRectangle';
-import { css } from '../../utilities/css';
-import { findScrollableParent } from '../../utilities/scroll';
-import { getDistanceBetweenPoints } from '../../utilities/math';
-import { getRTL } from '../../utilities/rtl';
-import { autobind } from '../../utilities/autobind';
-
 import './MarqueeSelection.scss';
 
 export interface IMarqueeSelectionState {
@@ -137,7 +138,8 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
         this._selectedIndicies = {};
         this._events.on(window, 'mousemove', this._onMouseMove);
         this._events.on(this._scrollableParent, 'scroll', this._onMouseMove);
-        this._events.on(window, 'mouseup', this._onMouseUp, true);
+        this._events.on(window, 'click', this._onMouseUp, true);
+
         this._autoScroll = new AutoScroll(this.refs.root);
         this._scrollTop = this._scrollableSurface.scrollTop;
         this._rootRect = this.refs.root.getBoundingClientRect();
@@ -206,15 +208,6 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     this._autoScroll = this._dragOrigin = this._lastMouseEvent = this._selectedIndicies = this._itemRectCache = undefined;
 
     if (this.state.dragRect) {
-
-      // When we've moused up from selection, make sure the click doesn't get executed.
-      let clickRemovalCallback = (clickEvent) => {
-        this._events.off(ev.target, 'click', clickRemovalCallback);
-        clickEvent.preventDefault();
-        clickEvent.stopPropagation();
-      };
-
-      this._events.on(ev.target, 'click', clickRemovalCallback, true);
 
       this.setState({
         dragRect: undefined

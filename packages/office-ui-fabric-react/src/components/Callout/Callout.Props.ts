@@ -2,8 +2,10 @@ import * as React from 'react';
 import { Callout } from './Callout';
 import { CalloutContent } from './CalloutContent';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IRectangle } from '../../common/IRectangle';
-import { IPoint } from '../../common/IPoint';
+import {
+  IPoint,
+  IRectangle
+} from '../../Utilities';
 
 export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
 

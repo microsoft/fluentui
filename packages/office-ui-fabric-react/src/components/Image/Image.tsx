@@ -1,10 +1,13 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { css } from '../../utilities/css';
-import { BaseComponent } from '../../common/BaseComponent';
-import { getNativeProps, imageProperties } from '../../utilities/properties';
-import { IImageProps, ImageFit } from './Image.Props';
+import {
+  BaseComponent,
+  css,
+  getNativeProps,
+  imageProperties
+} from '../../Utilities';
+import { IImageProps, ImageFit, ImageLoadState } from './Image.Props';
 
 import './Image.scss';
 
@@ -28,13 +31,6 @@ export const ImageFitMap = {
   [ImageFit.cover]: 'ms-Image-image--cover',
   [ImageFit.none]: 'ms-Image-image--none'
 };
-
-export enum ImageLoadState {
-  notLoaded,
-  loaded,
-  error,
-  errorLoaded
-}
 
 export class Image extends BaseComponent<IImageProps, IImageState> {
   public static defaultProps = {
@@ -83,6 +79,11 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
           this._eventsAttached = true;
         }
       }
+    }
+
+    if (this.props.onLoadingStateChange
+      && prevState.loadState !== this.state.loadState) {
+      this.props.onLoadingStateChange(this.state.loadState);
     }
   }
 
@@ -136,6 +137,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
     if (isLoaded && loadState !== ImageLoadState.loaded && loadState !== ImageLoadState.errorLoaded) {
       this._events.off();
       this._eventsAttached = false;
+
       this.setState({
         loadState: loadState === ImageLoadState.error ? ImageLoadState.errorLoaded : ImageLoadState.loaded
       });

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ContextualMenu, DirectionalHint, Button, getRTL, IconName } from '../../../../index';
+import { ContextualMenu, DirectionalHint, Button, getRTL } from '../../../../index';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuHeaderExample extends React.Component<any, any> {
@@ -34,7 +34,7 @@ export class ContextualMenuHeaderExample extends React.Component<any, any> {
                 {
                   key: 'upload',
                   iconProps: {
-                    iconName: IconName.Upload,
+                    iconName: 'Upload',
                     style: {
                       color: 'salmon'
                     }
@@ -49,7 +49,7 @@ export class ContextualMenuHeaderExample extends React.Component<any, any> {
                 {
                   key: 'share',
                   iconProps: {
-                    iconName: IconName.Share
+                    iconName: 'Share'
                   },
                   subMenuProps: {
                     items: [
@@ -57,7 +57,7 @@ export class ContextualMenuHeaderExample extends React.Component<any, any> {
                         key: 'sharetoemail',
                         name: 'Share to Email',
                         iconProps: {
-                          iconName: IconName.Mail
+                          iconName: 'Mail'
                         },
                       },
                       {
@@ -68,7 +68,7 @@ export class ContextualMenuHeaderExample extends React.Component<any, any> {
                         key: 'sharetotwitter',
                         name: 'Share to Twitter',
                         iconProps: {
-                          iconName: IconName.Share
+                          iconName: 'Share'
                         },
                       },
                     ],
@@ -87,7 +87,7 @@ export class ContextualMenuHeaderExample extends React.Component<any, any> {
                 {
                   key: 'print',
                   iconProps: {
-                    iconName: IconName.Print
+                    iconName: 'Print'
                   },
                   name: 'Print'
                 },

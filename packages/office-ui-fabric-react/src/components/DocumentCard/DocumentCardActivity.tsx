@@ -1,11 +1,11 @@
 import * as React from 'react';
+import { css } from '../../Utilities';
 import { IDocumentCardActivityProps, IDocumentCardActivityPerson } from './DocumentCard.Props';
 import { Image } from '../../Image';
 import {
   PERSONA_INITIALS_COLOR,
   PersonaInitialsColor
 } from '../../Persona';
-import { css } from '../../utilities/css';
 import './DocumentCardActivity.scss';
 
 export class DocumentCardActivity extends React.Component<IDocumentCardActivityProps, any> {

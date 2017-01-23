@@ -1,4 +1,4 @@
-import { IRectangle } from '../common/IRectangle';
+import { IRectangle } from './IRectangle';
 
 /**
  * Attached interface for elements which support virtual references.

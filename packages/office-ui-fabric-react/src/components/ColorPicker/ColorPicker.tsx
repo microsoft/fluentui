@@ -1,9 +1,9 @@
 import * as React from 'react';
+import { autobind } from '../../Utilities';
 import { IColorPickerProps } from './ColorPicker.Props';
 import { TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle';
 import { ColorSlider } from './ColorSlider';
-import { autobind } from '../../utilities/autobind';
 import {
   IColor,
   MAX_COLOR_HUE,
