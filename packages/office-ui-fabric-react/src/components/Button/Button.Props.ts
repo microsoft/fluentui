@@ -16,12 +16,6 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
   href?: string;
 
   /**
-   * The type of button to render.
-   * @defaultvalue ButtonType.default
-   */
-  buttonType?: ButtonType;
-
-  /**
    * The button icon shown in command or hero type.
    */
   icon?: string;
@@ -58,6 +52,14 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
    * Besides the compound button, other button types will need more information provided to screen reader.
    */
   ariaDescription?: string;
+
+  /**
+   * The type of button to render.
+   * @defaultvalue ButtonType.default
+   * @deprecated
+   * Deprecated at v1.2.3, to be removed at >= v2.0.0. Use specific button component instead
+   */
+  buttonType?: ButtonType;
 
   /**
    * @deprecated
