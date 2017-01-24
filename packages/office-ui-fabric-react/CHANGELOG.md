@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 21 Jan 2017 04:06:35 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Jan 2017 04:11:19 GMT and should not be manually modified.
+
+## 1.2.3
+Tue, 24 Jan 2017 04:11:19 GMT
+
+### Patches
+
+- ToolTip: Dismiss tooltip on scroll
 
 ## 1.2.2
 Sat, 21 Jan 2017 04:06:35 GMT
