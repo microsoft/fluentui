@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Image: Load state is erroneously set as loaded when changing the src prop",
+      "type": "patch"
+    }
+  ],
+  "email": "dagoff@microsoft.com"
+}
