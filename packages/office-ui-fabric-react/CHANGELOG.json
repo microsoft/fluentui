@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "1.2.3",
+      "tag": "office-ui-fabric-react_v1.2.3",
+      "date": "Tue, 24 Jan 2017 04:11:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "f770de56baa72cdda02c4d1876ba53b8009778cb",
+            "comment": "ToolTip: Dismiss tooltip on scroll"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.2.2",
       "tag": "office-ui-fabric-react_v1.2.2",
       "date": "Sat, 21 Jan 2017 04:06:35 GMT",
