@@ -33,8 +33,14 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   };
 
   public render(): JSX.Element {
-    let { maxDisplayablePersonas, overflowButtonProps, personas, showAddButton } = this.props;
+    let { chevronButtonProps, maxDisplayablePersonas, overflowButtonProps, overflowButtonType, personas, showAddButton } = this.props;
     let numPersonasToShow: number = Math.min(personas.length, maxDisplayablePersonas);
+
+    // Added for deprecating chevronButtonProps.  Can remove after v1.0
+    if (chevronButtonProps && !overflowButtonProps) {
+      overflowButtonProps = chevronButtonProps;
+      overflowButtonType = OverflowButtonType.downArrow;
+    }
 
     return (
       <div className='ms-Facepile'>
@@ -74,7 +80,6 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
     return <button
       { ...getNativeProps(persona, buttonProperties) }
       className='ms-Facepile-itemButton'
-      title={ persona.personaName }
       key={ (!!persona.imageUrl ? 'i' : '') + index }
       onClick={ this._onPersonaClick.bind(this, persona) }
       onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
@@ -88,7 +93,6 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
     return <button
       { ...getNativeProps(persona, divProperties) }
       className='ms-Facepile-itemButton'
-      title={ persona.personaName }
       key={ (!!persona.imageUrl ? 'i' : '') + index }
       onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
       onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
