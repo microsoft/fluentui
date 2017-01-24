@@ -138,7 +138,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           moreSuggestionsAvailable={ this.state.moreSuggestionsAvailable }
           isLoading={ this.state.suggestionsLoading }
           { ...this.props.pickerSuggestionsProps }
-          />
+        />
       </Callout>
     ) : (null);
   }
@@ -375,9 +375,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   // This lets the subclass override it and provide it's own onBackspace. For an example see the BasePickerListBelow
   protected onBackspace(ev: React.KeyboardEvent<HTMLElement>) {
     if (this.state.items.length && !this.input.isValueSelected && this.input.cursorLocation === 0) {
-      this.removeItem(this.state.items[this.state.items.length - 1]);
-    } else if (this.selection.getSelectedCount() > 0) {
-      this.removeItems(this.selection.getSelection());
+      if (this.selection.getSelectedCount() > 0) {
+        this.removeItems(this.selection.getSelection());
+      } else {
+        this.removeItem(this.state.items[this.state.items.length - 1]);
+      }
     }
   }
 
@@ -420,7 +422,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
                 autoCapitalize='off'
                 autoComplete='off'
                 role='combobox'
-                />
+              />
             </div>
           </SelectionZone>
         </div>

@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ChoiceGroup: onChanged deprecated and replaced with onChange",
+      "comment": "Update Button Component to use individual varient components rather than buttonType property",
       "type": "minor"
     },
     {
@@ -11,5 +11,5 @@
       "type": "none"
     }
   ],
-  "email": "joschect@microsoft.com"
+  "email": "micahgodbolt@gmail.com"
 }
