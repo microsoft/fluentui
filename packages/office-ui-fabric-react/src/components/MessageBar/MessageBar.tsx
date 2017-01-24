@@ -47,7 +47,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
 
   public componentDidMount() {
     /**
-     * Live regions need an update to annouce content.
+     * Live regions need an update to announce content.
      */
     setTimeout(() => {
       this.setState({ showContent: true });
@@ -104,7 +104,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
       <div
         className={ this._getClassName() + ' ms-MessageBar-multiline' }
         role='status'
-        aria-live={ this._getAnnoucementPriority() }>
+        aria-live={ this._getAnnouncementPriority() }>
         <div className='ms-MessageBar-content'>
           { this._getIconSpan() }
           <div className='ms-MessageBar-actionables'>
@@ -125,7 +125,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
     return (
       <div className={ this._getClassName() + ' ms-MessageBar-singleline' }
         role='status'
-        aria-live={ this._getAnnoucementPriority() }>
+        aria-live={ this._getAnnouncementPriority() }>
         <div className='ms-MessageBar-content'>
           { this._getIconSpan() }
           <div className='ms-MessageBar-actionables'>
@@ -141,7 +141,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
     );
   }
 
-  private _getAnnoucementPriority() {
+  private _getAnnouncementPriority(): string {
     switch (this.props.messageBarType) {
       case MessageBarType.blocked:
       case MessageBarType.error:
