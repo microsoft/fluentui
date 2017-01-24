@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Breadcrumb: Fix focus rect",
+      "comment": "Breadcrumb: Fix focus rect by removing outline from .ms-Breadcrumb-itemLink on focus state.",
       "type": "patch"
     }
   ],
