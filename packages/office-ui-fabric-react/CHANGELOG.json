@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "1.2.4",
+      "tag": "office-ui-fabric-react_v1.2.4",
+      "date": "Tue, 24 Jan 2017 16:20:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "dagoff <dagoff@users.noreply.github.com>",
+            "commit": "f4b5a19544a794bf3723c0b4257694903482d3af",
+            "comment": "Image: Load state is erroneously set as loaded when changing the src prop"
+          },
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "a5717e071b897167fdca9b68e6f449f5b43ed3f0",
+            "comment": "MessageBar: fix first time message annoucement"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.2.3",
       "tag": "office-ui-fabric-react_v1.2.3",
       "date": "Tue, 24 Jan 2017 04:11:19 GMT",
