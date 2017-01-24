@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DOSearchBox } from '../DOSearchBox/DOSearchBox';
 import { DONavigationLink } from './DONavigationLink';
 import './DONavigation.scss';
-const links = require('json!../../data/DoNavigationLinkData.json');
+const links = require('json!../../data/DONavigationLinkData.json');
 
 export interface IDONavigationProps {
 }
