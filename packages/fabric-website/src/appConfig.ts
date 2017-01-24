@@ -1,1 +1,1 @@
-export let baseURL = '/Modules/DevOffice.Fabric/';
+export let baseURL = ' https://static2.sharepointonline.com/files/fabric/';

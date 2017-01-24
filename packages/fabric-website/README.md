@@ -41,7 +41,7 @@ This will open a web browser with the home page. You can make changes to the cod
 14. Git checkout the `deploy` branch of the Fabric Website.
 15. Git checkout a new release branch named in the form `release/[new-version-number]`.
 16. Merge the latest commits from `master` into this new branch you created.
- - Have any new URLs been added? Prepend `/Modules/DevOffice.Fabric/` to the URL so that the paths are correct on dev.office.com. For example: `dist/images/logo-office-dev.svg` becomes `/Modules/DevOffice.Fabric/dist/images/logo-office-dev.svg`
+ - Make sure to use the CDN for images and scripts.
 17. Run `gulp serve` to build and test the site locally.
 18. Log in via FTP (credentials are in our team's OneNote) and replace the current files with `index.html`, `dist/` and `images/`.
 19. You've deployed the website! Test the live site one final time (and ask others to do the same) to be sure there are no unexpected issues.

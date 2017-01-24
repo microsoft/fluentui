@@ -30,14 +30,12 @@
 <body>
   <div id="main">
     <div class="loading">
-      <img class="loadingImage" src="" alt="Loading" width="32" height="32" />
+      <img class="loadingImage" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/loading.gif" alt="Loading" width="32" height="32" />
     </div>
   </div>
 
   <script type="text/javascript">
       var isProduction = false;
-      var baseURL = '/Modules/DevOffice.Fabric/';
-
       switch(true) {
         case location.hostname === 'dev.office.com':
           isProduction = true;
@@ -49,8 +47,6 @@
           isProduction = true;
           break;
       }
-
-      document.querySelector('.loadingImage').setAttribute('src', baseURL + 'dist/images/loading.gif');
 
       function loadScript(n) {
         for (var i = 0; i < n.length; i++) {
