@@ -142,7 +142,7 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
           <div className='ms-Persona-imageArea'>
             {
               !this.state.isImageLoaded &&
-              (<div aria-hidden className={ css('ms-Persona-initials', PERSONA_INITIALS_COLOR[initialsColor]) }>{ imageInitials }</div>)
+              (<div className={ css('ms-Persona-initials', PERSONA_INITIALS_COLOR[initialsColor]) } aria-hidden='true'>{ imageInitials }</div>)
             }
             <Image
               className='ms-Persona-image'
