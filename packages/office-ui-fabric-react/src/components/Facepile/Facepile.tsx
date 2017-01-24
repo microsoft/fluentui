@@ -3,9 +3,7 @@ import {
   buttonProperties,
   css,
   divProperties,
-  KeyCodes,
-  getNativeProps,
-  getRTLSafeKeyCode
+  getNativeProps
 } from '../../Utilities';
 import {
   IFacepileProps,
