@@ -8,6 +8,7 @@
 // Button styles
 
 $button-commandButtonHeight: 40px;
+$button-silhouetteButtonHeight: 40px;
 
 .ms-Button {
   @include focus-border();
@@ -210,6 +211,76 @@ $button-commandButtonHeight: 40px;
   }
 }
 
+//== Modifier: Silhouette button
+//
+.ms-Button--silhouette {
+  background-color: transparent;
+  border: 0;
+  padding: 10px 0px;
+  height: auto;
+
+  // Use flexbox on div element instead of button to avoid Firefox bug
+  .ms-Button-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .ms-Button-icon {
+    color: $ms-color-white;
+    background-color: $ms-color-themePrimary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include margin-right(8px);
+    height: $button-silhouetteButtonHeight;
+    width: $button-silhouetteButtonHeight;
+    border-radius: 50%;
+    font-size: $ms-icon-size-l;
+  }
+
+  .ms-Button-label {
+    @include ms-font-m-plus;
+    color: $ms-color-themePrimary;
+    font-weight: $ms-font-weight-light;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+
+    .ms-Button-icon {
+      color: $ms-color-white;
+      background-color: $ms-color-themeDark;
+    }
+
+    .ms-Button-label {
+      color: $ms-color-themeDarker;
+    }
+  }
+
+  &:active {
+    .ms-Button-icon {
+      color: $ms-color-white;
+      background-color: $ms-color-themePrimary;
+    }
+
+    .ms-Button-label {
+      color: $ms-color-themePrimary;
+    }
+  }
+
+  &:disabled,
+  &.is-disabled {
+    .ms-Button-icon {
+      color: $ms-color-white;
+      background-color: $ms-color-neutralTertiaryAlt;
+    }
+
+    .ms-Button-label {
+      color: $ms-color-neutralTertiary;
+    }
+  }
+}
 
 //== Modifier: Compound button
 //

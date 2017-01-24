@@ -10,6 +10,7 @@ import { Checkbox } from '../../../index';
 import { ButtonNormalExample } from './examples/Button.Normal.Example';
 import { ButtonPrimaryExample } from './examples/Button.Primary.Example';
 import { ButtonHeroExample } from './examples/Button.Hero.Example';
+import { ButtonSilhouetteExample } from './examples/Button.Silhouette.Example';
 import { ButtonCompoundExample } from './examples/Button.Compound.Example';
 import { ButtonCommandExample } from './examples/Button.Command.Example';
 import { ButtonIconExample } from './examples/Button.Icon.Example';
@@ -24,6 +25,7 @@ import './examples/Button.Basic.Example.scss';
 const ButtonNormalExampleCode = require('./examples/Button.Normal.Example.tsx');
 const ButtonPrimaryExampleCode = require('./examples/Button.Primary.Example.tsx');
 const ButtonHeroExampleCode = require('./examples/Button.Hero.Example.tsx');
+const ButtonSilhouetteExampleCode = require('./examples/Button.Silhouette.Example.tsx');
 const ButtonCompoundExampleCode = require('./examples/Button.Compound.Example.tsx');
 const ButtonCommandExampleCode = require('./examples/Button.Command.Example.tsx');
 const ButtonIconExampleCode = require('./examples/Button.Icon.Example.tsx');
@@ -57,6 +59,9 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
             </ExampleCard>
             <ExampleCard title='Hero Button' code={ ButtonHeroExampleCode }>
               <ButtonHeroExample disabled={ this.state.areButtonsDisabled } />
+            </ExampleCard>
+            <ExampleCard title='Silhouette Button' code={ ButtonSilhouetteExampleCode }>
+              <ButtonSilhouetteExample disabled={ this.state.areButtonsDisabled } />
             </ExampleCard>
             <ExampleCard title='Compound Button' code={ ButtonCompoundExampleCode }>
               <ButtonCompoundExample disabled={ this.state.areButtonsDisabled } />

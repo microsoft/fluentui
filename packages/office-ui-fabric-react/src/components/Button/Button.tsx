@@ -43,6 +43,7 @@ export class Button extends BaseComponent<IButtonProps, IButtonState> implements
     const className = css((this.props.className), 'ms-Button', {
       'ms-Button--primary': buttonType === ButtonType.primary,
       'ms-Button--hero': buttonType === ButtonType.hero,
+      'ms-Button--silhouette': buttonType === ButtonType.silhouette,
       'ms-Button--compound': buttonType === ButtonType.compound,
       'ms-Button--command': buttonType === ButtonType.command,
       'ms-Button--icon': buttonType === ButtonType.icon,
@@ -50,7 +51,7 @@ export class Button extends BaseComponent<IButtonProps, IButtonState> implements
       // if not utilize default button disabled behavior.
     });
 
-    const iconSpan = icon && (buttonType === ButtonType.command || buttonType === ButtonType.hero || buttonType === ButtonType.icon)
+    const iconSpan = icon && (buttonType === ButtonType.command || buttonType === ButtonType.hero || buttonType === ButtonType.silhouette || buttonType === ButtonType.icon)
       ? <span className='ms-Button-icon'><i className={ `ms-Icon ms-Icon--${icon}` }></i></span>
       : null;
 
@@ -80,6 +81,18 @@ export class Button extends BaseComponent<IButtonProps, IButtonState> implements
       ariaDescribedBy = null;
     }
 
+    // Firefox bug 984869 (https://bugzilla.mozilla.org/show_bug.cgi?id=984869) causes the contents of a button to wrap when using flexbox.
+    // Until the fix ships (probably in March 2017), wrap the button contents in a div to allow using flexbox.
+    // More information: http://stackoverflow.com/questions/30979265/css-flexbox-wraps-content-in-firefox-not-chrome
+    const containerDiv = React.createElement(
+      'div',
+      { className: 'ms-Button-container' },
+      iconSpan,
+      <span className='ms-Button-label' id={ labelId } >{ children }</span>,
+      descriptionSpan,
+      ariaDescriptionSpan
+    );
+
     return React.createElement(
       tag,
       assign(
@@ -95,10 +108,7 @@ export class Button extends BaseComponent<IButtonProps, IButtonState> implements
         onClick && { 'onClick': onClick },
         disabled && { 'disabled': disabled },
         { className }),
-      iconSpan,
-      <span className='ms-Button-label' id={ labelId } >{ children }</span>,
-      descriptionSpan,
-      ariaDescriptionSpan
+      containerDiv
     );
   }
 

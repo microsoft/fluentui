@@ -80,5 +80,6 @@ export enum ButtonType {
   hero,
   compound,
   command,
-  icon
+  icon,
+  silhouette
 }
