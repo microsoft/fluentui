@@ -1,4 +1,5 @@
 @import '../../../common/common';
+@import '../ButtonCore/ButtonCoreVars';
 
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
 
@@ -8,9 +9,9 @@
 // Primary Button styles
 
 .ms-Button--primary {
-  height: 32px;
-  min-width: 80px;
-  padding: 4px 20px 6px;
+  height: $button-core-default-height;
+  min-width: $button-core-default-minWidth;
+  padding: $button-core-default-padding;
   background-color: $ms-color-themePrimary;
   border-color: $ms-color-themePrimary;
 

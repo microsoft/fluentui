@@ -9,7 +9,12 @@ import {
   anchorProperties
 } from '../../Utilities';
 import { IButtonProps, IButton, ButtonType } from './Button.Props';
-import './Button.scss';
+import './ButtonCore/ButtonCore.scss';
+import './CommandButton/CommandButton.scss';
+import './CompoundButton/CompoundButton.scss';
+import './DefaultButton/DefaultButton.scss';
+import './IconButton/IconButton.scss';
+import './PrimaryButton/PrimaryButton.scss';
 
 export interface IButtonState {
   labelId?: string;
@@ -79,6 +84,27 @@ export class Button extends BaseComponent<IButtonProps, IButtonState> implements
       ariaDescribedBy = nativeProps['aria-describedby'];
     } else {
       ariaDescribedBy = null;
+    }
+
+    if (buttonType === ButtonType.clean) {
+      return React.createElement(
+        tag,
+        assign(
+          {},
+          nativeProps,
+          href ? { href } : null,
+          {
+            'aria-label': ariaLabel,
+            'aria-labelledby': ariaLabel ? null : labelId,
+            'aria-describedby': ariaDescribedBy,
+            'ref': (c: HTMLButtonElement): HTMLButtonElement => this._buttonElement = c
+          },
+          onClick && { 'onClick': onClick },
+          disabled && { 'disabled': disabled },
+          { className }),
+        children,
+        ariaDescriptionSpan
+      );
     }
 
     return React.createElement(

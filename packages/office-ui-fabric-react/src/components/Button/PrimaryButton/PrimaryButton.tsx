@@ -8,20 +8,22 @@ import {
   buttonProperties
 } from '../../../Utilities';
 
-import { ButtonBase } from '../ButtonBase/ButtonBase';
-import { IButtonProps } from '../ButtonBase/ButtonBase.Props';
+import { Button, IButtonProps, ButtonType } from '../index';
+
 import './PrimaryButton.scss';
+import '../ButtonCore/ButtonCore.scss';
 
 export class PrimaryButton extends BaseComponent<IButtonProps, any> {
   public render() {
     return (
-      <ButtonBase
-        className='ms-Button--primary'
+      <Button
+        className='ms-Button--primary ms-Button'
+        buttonType={ ButtonType.clean }
         { ...getNativeProps(this.props, anchorProperties || buttonProperties) }
         { ...this.props }
       >
         <span className='ms-Button-label'>{ this.props.children }</span>
-      </ButtonBase>
+      </Button>
     );
   }
 }

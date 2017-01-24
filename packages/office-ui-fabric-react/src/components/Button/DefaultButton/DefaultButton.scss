@@ -1,4 +1,5 @@
 @import '../../../common/common';
+@import '../ButtonCore/ButtonCoreVars';
 
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
 
@@ -10,9 +11,9 @@
 .ms-Button--default {
   background-color: $ms-color-neutralLighter;
   border: 1px solid $ms-color-neutralLighter;
-  height: 32px;
-  min-width: 80px;
-  padding: 4px 20px 6px;
+  height: $button-core-default-height;
+  min-width: $button-core-default-minWidth;
+  padding: $button-core-default-padding;
 
   &:hover {
     background-color: $ms-color-neutralLight;

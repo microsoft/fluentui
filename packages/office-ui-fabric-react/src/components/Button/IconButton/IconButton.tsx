@@ -8,21 +8,23 @@ import {
   buttonProperties
 } from '../../../Utilities';
 
-import { ButtonBase } from '../ButtonBase/ButtonBase';
+import { Button, ButtonType } from '../index';
 import { IIconButtonProps } from './IconButton.Props';
 import './IconButton.scss';
+import '../ButtonCore/ButtonCore.scss';
 
 export class IconButton extends BaseComponent<IIconButtonProps, any> {
   public render() {
     let { icon } = this.props;
     return (
-      <ButtonBase
+      <Button
         className='ms-Button--icon'
+        buttonType={ ButtonType.clean }
         { ...getNativeProps(this.props, anchorProperties || buttonProperties) }
         { ...this.props }
       >
         <span className='ms-Button-icon'><i className={ `ms-Icon ms-Icon--${icon}` }></i></span>
-      </ButtonBase>
+      </Button>
     );
   }
 }

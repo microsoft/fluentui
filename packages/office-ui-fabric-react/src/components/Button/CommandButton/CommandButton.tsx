@@ -8,23 +8,25 @@ import {
   buttonProperties
 } from '../../../Utilities';
 
-import { ButtonBase } from '../ButtonBase/ButtonBase';
+import { Button, ButtonType } from '../index';
 import { ICommandButtonProps } from './CommandButton.Props';
 import './CommandButton.scss';
+import '../ButtonCore/ButtonCore.scss';
 
 export class CommandButton extends BaseComponent<ICommandButtonProps, any> {
 
   public render() {
     let { icon } = this.props;
     return (
-      <ButtonBase
+      <Button
         className='ms-Button--command'
+        buttonType={ ButtonType.clean }
         { ...getNativeProps(this.props, anchorProperties || buttonProperties) }
         { ...this.props }
       >
         <span className='ms-Button-icon'><i className={ `ms-Icon ms-Icon--${icon}` }></i></span>
         <span className='ms-Button-label'>{ this.props.children }</span>
-      </ButtonBase>
+      </Button>
     );
   }
 }
