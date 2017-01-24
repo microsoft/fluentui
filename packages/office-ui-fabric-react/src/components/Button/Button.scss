@@ -152,65 +152,6 @@ $button-commandButtonHeight: 40px;
   }
 }
 
-//== Modifier: Hero button
-//
-.ms-Button--hero {
-  background-color: transparent;
-  border: 0;
-  height: auto;
-
-  .ms-Button-icon {
-    color: $ms-color-themePrimary;
-    display: inline-block;
-    @include margin-right(8px);
-    padding-top: 5px;
-    font-size: $ms-icon-size-l;
-    line-height: 1; // FireFox vertical offset
-  }
-
-  .ms-Button-label {
-    color: $ms-color-themePrimary;
-    font-size: $ms-font-size-xl;
-    font-weight: $ms-font-weight-light;
-    vertical-align: top;
-  }
-
-  &:hover,
-  &:focus {
-    background-color: transparent;
-
-    .ms-Button-icon {
-      color: $ms-color-themeDark;
-    }
-
-    .ms-Button-label {
-      color: $ms-color-themeDarker;
-    }
-  }
-
-  &:active {
-    .ms-Button-icon {
-      color: $ms-color-themePrimary;
-    }
-
-    .ms-Button-label {
-      color: $ms-color-themePrimary;
-    }
-  }
-
-  &:disabled,
-  &.is-disabled {
-    .ms-Button-icon {
-      color: $ms-color-neutralTertiaryAlt;
-    }
-
-    .ms-Button-label {
-      color: $ms-color-neutralTertiary;
-    }
-  }
-}
-
-
 //== Modifier: Compound button
 //
 .ms-Button--compound {

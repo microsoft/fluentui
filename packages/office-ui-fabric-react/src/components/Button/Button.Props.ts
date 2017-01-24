@@ -22,7 +22,7 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
   buttonType?: ButtonType;
 
   /**
-   * The button icon shown in command or hero type.
+   * The button icon shown in command type.
    */
   icon?: string;
 
@@ -77,7 +77,6 @@ export enum ElementType {
 export enum ButtonType {
   normal,
   primary,
-  hero,
   compound,
   command,
   icon

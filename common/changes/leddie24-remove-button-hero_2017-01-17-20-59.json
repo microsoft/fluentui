@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Button: Remove Hero variant",
+      "type": "minor"
+    }
+  ],
+  "email": "v-edwliu@microsoft.com"
+}
