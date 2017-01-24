@@ -1,0 +1,111 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.od-OfficeFooter {
+  background: $ms-color-black;
+  color: $ms-color-white;
+  font-family: $ms-font-system-base;
+  font-weight: $ms-font-weight-regular;
+  font-size: $ms-font-size-m;
+  padding: 32px 20px;
+  position: relative;
+
+  ul, li {
+    list-style: none;
+    @include margin-left(0);
+    @include padding-left(0);
+  }
+}
+
+.od-OfficeFooter-primary,
+.od-OfficeFooter-secondary {
+  display: flex;
+  margin: 0 auto;
+  max-width: 1300px;
+}
+
+.od-OfficeFooter-primary {
+  flex-direction: column;
+  position: relative;
+}
+
+.od-OfficeFooter-secondary {
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.od-OfficeFooter-heading {
+  font-family: $ms-font-system-base;
+  font-weight: $ms-font-weight-semibold;
+  font-size: $ms-font-size-l;
+  white-space: nowrap;
+}
+
+.od-OfficeFooter-linkList {
+  margin-bottom: 40px;
+}
+
+.od-OfficeFooter-list {
+  li {
+    margin: 16px 0;
+    padding: 4px 0;
+  }
+
+  li a {
+    color: $ms-color-white;
+    display: block;
+  }
+}
+
+.od-OfficeFooter-list--secondary {
+  margin-bottom: 0;
+
+  li {
+    margin: 4px 0;
+  }
+}
+
+.od-OfficeFooter-microsoft {
+  margin-bottom: 8px;
+  @include margin-left(8px);
+  @include text-align(right);
+
+  img {
+    margin-bottom: 12px;
+  }
+}
+
+@media (min-width: $ms-screen-md-min) {
+
+  .od-OfficeFooter-primary {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .od-OfficeFooter-linkList {
+    margin-bottom: 0;
+    @include padding-right(40px);
+  }
+
+  .od-OfficeFooter-list--secondary {
+    margin-bottom: 0;
+    flex-grow: 1;
+    justify-content: flex-end;
+    display: flex;
+    flex-direction: row;
+    
+    li {
+      @include margin-left(20px);
+    }
+  }
+}
+
+@media (min-width: $ms-screen-lg-min) {
+  .od-OfficeFooter-primary {
+    justify-content: flex-start;
+  }
+  
+  .od-OfficeFooter-linkList {
+    @include margin-right(120px);
+  }
+}
