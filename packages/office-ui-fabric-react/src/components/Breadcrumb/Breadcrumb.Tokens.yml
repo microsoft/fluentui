@@ -1,0 +1,35 @@
+imports:
+  - '../../common/Tokens/GlobalTokens.yml'
+global:
+  category: breadcrumb
+  type: color
+props:
+  breadcrumb:
+    chevron:
+      fg:
+        value: "{!neutralSecondary}"
+    button:
+      hover:
+        bg:
+          value: "{!neutralLighterAlt}"
+        fg:
+          value: "{!themeDark}"
+      focus:
+        fg:
+          value: "{!neutralDark}"
+        outline:
+          value: "{!neutralSecondaryAlt}"
+      active:
+        bg:
+          value: "{!neutralTertiaryAlt}"
+        fg:
+          value: "{!neutralPrimary}"
+    itembutton:
+      fg:
+        value: "{!neutralPrimary}"
+    overflowbutton:
+      fg:
+        value: "{!themePrimary}"
+
+
+

@@ -1,4 +1,5 @@
 @import '../../common/common';
+@import 'Breadcrumb.Tokens';
 
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
 
@@ -7,9 +8,7 @@
 // --------------------------------------------------
 // Breadcrumb styles
 
-$Breadcrumb-overflowButtonColor: $ms-color-themePrimary;
 $Breadcrumb-overflowButtonSize: 16px;
-$Breadcrumb-buttonHoverColor: $ms-color-themeDark;
 $Breadcrumb-itemMaxWidth: 160px;
 $Breadcrumb-itemMaxWidth-sm: 116px;
 
@@ -26,7 +25,7 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
 
 .ms-Breadcrumb-chevron {
   font-size: $ms-font-size-s;
-  color: $ms-color-neutralSecondary;
+  color: $breadcrumb-chevron-fg;
   vertical-align: top;
   margin: 11px 7px;
   line-height: 1;
@@ -49,7 +48,7 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
   .ms-Breadcrumb-itemLink {
     @include focus-border;
     @include ms-font-xl;
-    color: $ms-color-neutralPrimary;
+    color: $breadcrumb-itembutton-fg;
     display: inline-block;
     padding: 0 4px;
     max-width: $Breadcrumb-itemMaxWidth;
@@ -68,7 +67,7 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
 .ms-Breadcrumb-overflowButton {
   font-size: $Breadcrumb-overflowButtonSize;
   display: inline-block;
-  color: $Breadcrumb-overflowButtonColor;
+  color: $breadcrumb-overflowbutton-fg;
   padding: 8px;
   cursor: pointer;
   vertical-align: top;
@@ -80,20 +79,20 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
   outline: transparent;
 
   &:hover {
-    background-color: $selectedHoverBackgroundColor;
-    color: $Breadcrumb-buttonHoverColor;
+    background-color: $breadcrumb-button-hover-bg;
+    color: $breadcrumb-button-hover-fg;
     cursor: pointer;
   }
 
   &:focus {
-    outline: $ms-color-neutralSecondaryAlt solid 1px;
-    color: $ms-color-neutralDark;
+    outline: $breadcrumb-button-focus-outline solid 1px;
+    color: $breadcrumb-button-focus-fg;
   }
 
   &:active {
     outline: transparent;
-    background-color: $selectedActiveBackgroundColor;
-    color: $selectedActiveForegroundColor;
+    background-color: $breadcrumb-button-active-bg;
+    color: $breadcrumb-button-active-fg;
   }
 }
 
