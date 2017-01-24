@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Added new XXS Persona size, also usable in Facepile.. Made accessibility improvements to Persona and Facepile controls.",
+      "type": "minor"
+    }
+  ],
+  "email": "v-mattli@microsoft.com"
+}
