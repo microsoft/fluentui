@@ -1,0 +1,48 @@
+@import '../../../common/common';
+@import '../ButtonCore/ButtonCoreVars';
+
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
+//
+// Office UI Fabric
+// --------------------------------------------------
+// Primary Button styles
+
+.ms-Button--primary {
+  height: $button-core-default-height;
+  min-width: $button-core-default-minWidth;
+  padding: $button-core-default-padding;
+  background-color: $ms-color-themePrimary;
+  border-color: $ms-color-themePrimary;
+
+  .ms-Button-label {
+    @include ms-font-m;
+    color: $ms-color-white;
+  }
+
+  &:hover {
+    background-color: $ms-color-themeDark;
+    border-color: $ms-color-themeDark;
+  }
+
+  &:focus {
+    background-color: $ms-color-themeDark;
+    border-color: $ms-color-themePrimary;
+  }
+
+  &:active {
+    background-color: $ms-color-themePrimary;
+    border-color: $ms-color-themePrimary;
+  }
+
+}
+
+.ms-Fabric.is-focusVisible .ms-Button--primary {
+  &:focus {
+    color: $ms-color-white;
+
+    &:before {
+      border-color: $ms-color-themeDarker;
+    }
+  }
+}
