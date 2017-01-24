@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 24 Jan 2017 04:11:19 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Jan 2017 16:20:54 GMT and should not be manually modified.
+
+## 1.2.4
+Tue, 24 Jan 2017 16:20:54 GMT
+
+### Patches
+
+- Image: Load state is erroneously set as loaded when changing the src prop
+- MessageBar: fix first time message annoucement
 
 ## 1.2.3
 Tue, 24 Jan 2017 04:11:19 GMT
