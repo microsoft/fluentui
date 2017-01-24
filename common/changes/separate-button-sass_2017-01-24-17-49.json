@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "MessageBar: fix first time message annoucement",
-      "type": "patch"
+      "comment": "Update Button Component to use individual varient components rather than buttonType property",
+      "type": "minor"
     },
     {
       "comment": "",
@@ -11,5 +11,5 @@
       "type": "none"
     }
   ],
-  "email": "manishda@microsoft.com"
+  "email": "micahgodbolt@gmail.com"
 }
