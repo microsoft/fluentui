@@ -88,7 +88,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   }
 
   private _getElementWithoutOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
-    return <button
+    return <div
       { ...getNativeProps(persona, divProperties) }
       className='ms-Facepile-itemButton'
       key={ (!!persona.imageUrl ? 'i' : '') + index }
@@ -96,7 +96,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
       onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
       >
       { personaControl }
-    </button>;
+    </div>;
   }
 
   private _getOverflowElement(numPersonasToShow: number): JSX.Element {
@@ -140,8 +140,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   private _getAddNewElement(): JSX.Element {
     let { personaSize } = this.props;
     return <button { ...getNativeProps(this.props.addButtonProps, buttonProperties) }
-      className={ css('ms-Persona', PERSONA_SIZE[personaSize], 'ms-Facepile-addButton', 'ms-Facepile-itemButton') }
-      tabIndex={ 0 }>
+      className={ css('ms-Persona', PERSONA_SIZE[personaSize], 'ms-Facepile-addButton', 'ms-Facepile-itemButton') }>
       <i className='ms-Icon msIcon ms-Icon--AddFriend' aria-hidden='true'></i>
     </button>;
   }

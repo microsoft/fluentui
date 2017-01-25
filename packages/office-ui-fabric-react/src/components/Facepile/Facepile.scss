@@ -10,6 +10,7 @@
 }
 
 .ms-Facepile-itemButton {
+  @include focus-outline();
   position: relative;
   text-align: center;
   @include float(left);
@@ -18,10 +19,6 @@
   margin-bottom: 4px;
   border-radius: 50%;
   vertical-align: top;
-
-  &:focus {
-    outline: 1px solid $focusedBorderColor;
-  }
 
   .ms-Persona-details {
     flex: 1 0 auto;
