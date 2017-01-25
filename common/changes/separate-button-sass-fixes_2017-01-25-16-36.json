@@ -3,7 +3,7 @@
     {
       "packageName": "office-ui-fabric-react",
       "comment": "Restored Hero variant and added normal button as an alias of default",
-      "type": "minor"
+      "type": "patch"
     },
     {
       "comment": "",
