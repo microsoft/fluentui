@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "DetailsList: onItemContextMenu now works as expected.",
+      "type": "minor"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
