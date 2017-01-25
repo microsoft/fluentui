@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 24 Jan 2017 16:20:54 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Jan 2017 04:11:36 GMT and should not be manually modified.
+
+## 1.3.0
+Wed, 25 Jan 2017 04:11:36 GMT
+
+### Minor changes
+
+- DetailsList: onItemContextMenu now works as expected.
+- List: add 'scrollToIndex' method
+- Update Button Component to use individual varient components rather than buttonType property
+
+### Patches
+
+- Breadcrumb: Fix focus rect by removing outline from .ms-Breadcrumb-itemLink on focus state.
 
 ## 1.2.4
 Tue, 24 Jan 2017 16:20:54 GMT
