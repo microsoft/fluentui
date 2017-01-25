@@ -45,13 +45,13 @@ export class Button extends BaseComponent<IButtonProps, IButtonState> implements
     const renderAsAnchor: boolean = !!href;
     const tag = renderAsAnchor ? 'a' : 'button';
     const nativeProps = getNativeProps(this.props.rootProps || this.props, renderAsAnchor ? anchorProperties : buttonProperties);
-    const className = css((this.props.className), 'ms-Button', {
-      'ms-Button--default': buttonType === ButtonType.default || buttonType === ButtonType.normal,
-      'ms-Button--primary': buttonType === ButtonType.primary,
-      'ms-Button--hero': buttonType === ButtonType.hero,
-      'ms-Button--compound': buttonType === ButtonType.compound,
-      'ms-Button--command': buttonType === ButtonType.command,
-      'ms-Button--icon': buttonType === ButtonType.icon,
+    const className = css((this.props.className), {
+      'ms-Button ms-Button--default': buttonType === ButtonType.default || buttonType === ButtonType.normal,
+      'ms-Button ms-Button--primary': buttonType === ButtonType.primary,
+      'ms-Button ms-Button--hero': buttonType === ButtonType.hero,
+      'ms-Button ms-Button--compound': buttonType === ButtonType.compound,
+      'ms-Button ms-Button--command': buttonType === ButtonType.command,
+      'ms-Button ms-Button--icon': buttonType === ButtonType.icon,
       'disabled': (renderAsAnchor && disabled) // add disable styling if it is an anchor
       // if not utilize default button disabled behavior.
     });
