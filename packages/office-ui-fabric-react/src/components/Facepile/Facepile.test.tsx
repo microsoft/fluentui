@@ -8,7 +8,7 @@ import * as chai from 'chai';
 let { expect } = chai;
 
 import { Facepile } from './Facepile';
-import { IFacepilePersona, IFacepileProps, OverflowButtonType } from './Facepile.Props';
+import { IFacepilePersona, OverflowButtonType } from './Facepile.Props';
 
 describe('Facepile', () => {
   const facepilePersonas: IFacepilePersona[] = [

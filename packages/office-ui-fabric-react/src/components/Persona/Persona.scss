@@ -376,7 +376,6 @@ $ms-Persona-presenceSizeXl: 28px;
 }
 
 
-
 //== Modifier: Extra Small Persona
 //
 .ms-Persona.ms-Persona--xs {
@@ -416,7 +415,6 @@ $ms-Persona-presenceSizeXl: 28px;
 }
 
 
-
 //== Modifier: Small Persona
 //
 .ms-Persona.ms-Persona--sm {
@@ -454,7 +452,6 @@ $ms-Persona-presenceSizeXl: 28px;
     padding-top: 1px;
   }
 }
-
 
 
 //== Modifier: Large Persona
@@ -502,6 +499,7 @@ $ms-Persona-presenceSizeXl: 28px;
     display: block;
   }
 }
+
 
 //== Modifier: Extra Large Persona
 //
@@ -558,6 +556,7 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 }
 
+
 //== Modifier: Persona with darker text
 //
 // Note: Typically applied when the component has a colored background.
@@ -572,6 +571,7 @@ $ms-Persona-presenceSizeXl: 28px;
     color: $ms-color-neutralPrimary;
   }
 }
+
 
 //== Modifier: Selectable Persona
 //
@@ -704,6 +704,7 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 }
 
+
 //== Modifier: Persona with busy presence
 //
 .ms-Persona.ms-Persona--busy {
@@ -719,6 +720,7 @@ $ms-Persona-presenceSizeXl: 28px;
     }
   }
 }
+
 
 //== Modifier: Persona with do not disturb presence
 //
