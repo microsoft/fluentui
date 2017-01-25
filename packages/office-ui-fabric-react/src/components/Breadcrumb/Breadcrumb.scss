@@ -48,6 +48,10 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
 
   .ms-Breadcrumb-itemLink {
     @include focus-border;
+  }
+
+  .ms-Breadcrumb-item,
+  .ms-Breadcrumb-itemLink {
     @include ms-font-xl;
     color: $ms-color-neutralPrimary;
     display: inline-block;
@@ -74,7 +78,13 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
   vertical-align: top;
 }
 
-a.ms-Breadcrumb-itemLink {
+.ms-Breadcrumb-item {
+  &:hover {
+    cursor: default;
+  }
+}
+
+.ms-Breadcrumb-itemLink {
   &:hover {
     background-color: $selectedHoverBackgroundColor;
     color: $Breadcrumb-buttonHoverColor;
@@ -97,10 +107,6 @@ a.ms-Breadcrumb-itemLink {
 .ms-Breadcrumb-overflowButton {
   text-decoration: none;
   outline: transparent;
-
-  &:hover {
-    cursor: default;
-  }
 }
 
 @media screen and (max-width: $ms-screen-md-max) {

@@ -86,17 +86,15 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
               (item, index) => (
                 <li className='ms-Breadcrumb-listItem' key={ item.key || String(index) } ref={ item.key || String(index) }>
                   { (() => {
-                    if (item.onClick) {
+                    if (item.onClick || item.href) {
                       return (<a className='ms-Breadcrumb-itemLink'
                               onClick={ this._onBreadcrumbClicked.bind(this, item) }
-                              href={ item.href }
+                              href={ item.href ? item.href : null }
                               role={ item.onClick ? 'button' : 'link' }>
                               { item.text }
                             </a>);
                     } else {
-                      return (<span className='ms-Breadcrumb-itemLink'
-                              href={ item.href }
-                              role={ item.onClick ? 'button' : 'link' }>
+                      return (<span className='ms-Breadcrumb-item'>
                               { item.text }
                             </span>);
                     }
