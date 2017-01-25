@@ -391,6 +391,7 @@
       @include ms-u-borderBox;
       @include border-right(1px, solid, $ms-color-neutralLight);
       width: 220px;
+      min-height: 230px; // Ensure the same height for months that span 4 and 5 weeks.
     }
 
 

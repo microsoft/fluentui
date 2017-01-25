@@ -33,7 +33,6 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, any> {
   public render() {
     let { content, children, directionalHint, delay } = this.props;
     let { isTooltipVisible } = this.state;
-
     return (
       <div
         className='ms-TooltipHost'
@@ -42,7 +41,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, any> {
         { ...{ onBlurCapture: this._onTooltipMouseLeave } }
         onMouseEnter={ this._onTooltipMouseEnter }
         onMouseLeave={ this._onTooltipMouseLeave }
-        >
+      >
         { children }
         { isTooltipVisible ? (
           <Tooltip
@@ -50,8 +49,9 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, any> {
             content={ content }
             targetElement={ this._tooltipHost }
             directionalHint={ directionalHint }
+            calloutProps={ { onDismiss: this._onTooltipCallOutDismiss } }
             { ...getNativeProps(this.props, divProperties) }
-            >
+          >
           </Tooltip>
         ) : (null) }
       </div>
@@ -69,6 +69,14 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, any> {
   // Hide Tooltip
   @autobind
   private _onTooltipMouseLeave(ev: any) {
+    this.setState({
+      isTooltipVisible: false
+    });
+  }
+
+  // Hide Tooltip
+  @autobind
+  private _onTooltipCallOutDismiss() {
     this.setState({
       isTooltipVisible: false
     });

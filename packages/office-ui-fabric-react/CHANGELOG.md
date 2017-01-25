@@ -1,6 +1,43 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 20 Jan 2017 04:03:22 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Jan 2017 04:11:36 GMT and should not be manually modified.
+
+## 1.3.0
+Wed, 25 Jan 2017 04:11:36 GMT
+
+### Minor changes
+
+- DetailsList: onItemContextMenu now works as expected.
+- List: add 'scrollToIndex' method
+- Update Button Component to use individual varient components rather than buttonType property
+
+### Patches
+
+- Breadcrumb: Fix focus rect by removing outline from .ms-Breadcrumb-itemLink on focus state.
+
+## 1.2.4
+Tue, 24 Jan 2017 16:20:54 GMT
+
+### Patches
+
+- Image: Load state is erroneously set as loaded when changing the src prop
+- MessageBar: fix first time message annoucement
+
+## 1.2.3
+Tue, 24 Jan 2017 04:11:19 GMT
+
+### Patches
+
+- ToolTip: Dismiss tooltip on scroll
+
+## 1.2.2
+Sat, 21 Jan 2017 04:06:35 GMT
+
+### Patches
+
+- PeoplePicker: personas now correctly truncate when the input field is too small.
+- Pickers: Fixed a bug where you could not delete multiple selected items"
+- Suggestions: Fixed an error which would occur if noResultsFound string was not passed to suggestions"
 
 ## 1.2.1
 Fri, 20 Jan 2017 04:03:22 GMT

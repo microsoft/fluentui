@@ -145,6 +145,35 @@ export class List extends BaseComponent<IListProps, IListState> {
     this._scrollingToIndex = -1;
   }
 
+  /**
+   * Scroll to the given index.
+   *
+   * Note: with items of variable height and no passed in `getPageHeight` method, the list might jump after scrolling
+   * when windows before/ahead are being rendered, and the estimated height is replaced using actual elements.
+   *
+   * @param index Index of item to scroll to
+   */
+  public scrollToIndex(index: number): void {
+    const { startIndex } = this.props;
+    const renderCount = this._getRenderCount();
+    const endIndex = startIndex + renderCount;
+
+    let scrollTop = 0;
+
+    let itemsPerPage = 1;
+    for (let itemIndex = startIndex; itemIndex < endIndex; itemIndex += itemsPerPage) {
+      itemsPerPage = this._getItemCountForPage(itemIndex, this._allowedRect);
+
+      const requestedIndexIsInPage = itemIndex <= index && (itemIndex + itemsPerPage) > index;
+      if (requestedIndexIsInPage) {
+        this._scrollElement.scrollTop = scrollTop;
+        break;
+      }
+
+      scrollTop += this._getPageHeight(itemIndex, itemsPerPage, this._surfaceRect);
+    }
+  }
+
   public componentDidMount() {
 
     this._updatePages();
