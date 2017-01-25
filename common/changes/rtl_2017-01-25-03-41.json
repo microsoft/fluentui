@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "rtl utility should read rtl attribute on first read.",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}

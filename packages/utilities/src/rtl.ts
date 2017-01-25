@@ -1,7 +1,8 @@
 import { KeyCodes } from './KeyCodes';
 import { getDocument } from './dom';
 
-let _isRTL: boolean = false;
+// Default to undefined so that we initialize on first read.
+let _isRTL: boolean;
 
 /**
  * Gets the rtl state of the page (returns true if in rtl.)
@@ -16,7 +17,7 @@ export function getRTL(): boolean {
       throw new Error(
         'getRTL was called in a server environment without setRTL being called first. ' +
         'Call setRTL to set the correct direction first.'
-        );
+      );
     }
   }
 
