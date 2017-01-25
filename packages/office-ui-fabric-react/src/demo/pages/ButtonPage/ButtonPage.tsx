@@ -13,6 +13,7 @@ import { ButtonCompoundExample } from './examples/Button.Compound.Example';
 import { ButtonCommandExample } from './examples/Button.Command.Example';
 import { ButtonIconExample } from './examples/Button.Icon.Example';
 import { ButtonAnchorExample } from './examples/Button.Anchor.Example';
+import { ButtonHeroExample } from './examples/Button.Hero.Example';
 import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
@@ -24,6 +25,7 @@ const ButtonDefaultExampleCode = require('./examples/Button.Default.Example.tsx'
 const ButtonPrimaryExampleCode = require('./examples/Button.Primary.Example.tsx');
 const ButtonCompoundExampleCode = require('./examples/Button.Compound.Example.tsx');
 const ButtonCommandExampleCode = require('./examples/Button.Command.Example.tsx');
+const ButtonHeroExampleCode = require('./examples/Button.Hero.Example.tsx');
 const ButtonIconExampleCode = require('./examples/Button.Icon.Example.tsx');
 const ButtonAnchorExampleCode = require('./examples/Button.Anchor.Example.tsx');
 const ButtonScreenReaderExampleCode = require('./examples/Button.ScreenReader.Example.tsx');
@@ -52,6 +54,9 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
             </ExampleCard>
             <ExampleCard title='Primary Button' code={ ButtonPrimaryExampleCode }>
               <ButtonPrimaryExample disabled={ this.state.areButtonsDisabled } />
+            </ExampleCard>
+            <ExampleCard title='Hero Button' code={ ButtonHeroExampleCode }>
+              <ButtonHeroExample disabled={ this.state.areButtonsDisabled } />
             </ExampleCard>
             <ExampleCard title='Compound Button' code={ ButtonCompoundExampleCode }>
               <ButtonCompoundExample disabled={ this.state.areButtonsDisabled } />
