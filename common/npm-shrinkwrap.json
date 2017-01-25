@@ -5881,7 +5881,7 @@
     },
     "typescript": {
       "version": "2.1.5",
-      "from": "typescript@>=2.0.6 <3.0.0",
+      "from": "typescript@>=2.1.5 <3.0.0",
       "resolved": "https://registry.npmjs.org/typescript/-/typescript-2.1.5.tgz"
     },
     "ua-parser-js": {
