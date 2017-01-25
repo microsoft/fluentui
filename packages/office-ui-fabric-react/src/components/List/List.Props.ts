@@ -25,7 +25,7 @@ export interface IListProps extends React.Props<List> {
    * Method called by the list to get the pixel height for a given page. By default, we measure the first
    * page's height and default all other pages to that height when calculating the surface space. It is
    * ideal to be able to adequately predict page heights in order to keep the surface space from jumping
-   * in pixels, which has been seen to cause browser perforamnce issues.
+   * in pixels, which has been seen to cause browser performance issues.
    */
   getPageHeight?: (itemIndex?: number, visibleRect?: IRectangle) => number;
 
