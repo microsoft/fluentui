@@ -278,13 +278,13 @@ function _hex3(str) {
 function _hsl(str) {
   if (str.indexOf('hsl(') === 0) {
     str = str.match(/hsl\(([^)]+)\)/)[1];
-    var parts = str.split(/ *, */);
+    const parts = str.split(/ *, */);
 
-    var h = parseInt(parts[0], 10);
-    var s = parseInt(parts[1], 10);
-    var l = parseInt(parts[2], 10);
+    const h = parseInt(parts[0], 10);
+    const s = parseInt(parts[1], 10);
+    const l = parseInt(parts[2], 10);
 
-    var rgba = hsl2rgb(h, s, l);
+    const rgba = hsl2rgb(h, s, l);
     rgba.a = 100;
 
     return rgba;
