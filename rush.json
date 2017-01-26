@@ -22,7 +22,7 @@
     },
     {
       "packageName": "fabric-website",
-      "projectFolder": "packages/fabric-website",
+      "projectFolder": "apps/fabric-website",
       "shouldPublish": false
     }
   ]
