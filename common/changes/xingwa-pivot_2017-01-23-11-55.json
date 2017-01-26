@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Pivot: state updates may be asynchronous, and it should not rely on this.state for calculating the next state.",
+      "type": "patch"
+    }
+  ],
+  "email": "xingwa@microsoft.com"
+}
