@@ -78,6 +78,11 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   vertical-align: top;
   padding: 0 4px;
 
+  &:hover {
+    background-color: $ms-color-neutralLight;
+    color: $ms-color-neutralPrimary;
+  }
+
   @media screen and (-ms-high-contrast: active) {
     @include highContrastBorder($ms-color-black);
     height: 38px;
