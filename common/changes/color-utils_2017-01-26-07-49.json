@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "ColorPicker: now is AMD friendly and uses local typesafe utilities that will be built with the rest of the code.",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
