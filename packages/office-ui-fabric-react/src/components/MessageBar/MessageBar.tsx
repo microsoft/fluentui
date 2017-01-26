@@ -9,6 +9,7 @@ import './MessageBar.scss';
 
 export interface IMessageBarState {
   labelId?: string;
+  showContent?: boolean;
 }
 
 export class MessageBar extends React.Component<IMessageBarProps, IMessageBarState> {
@@ -33,7 +34,8 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
     super(props);
 
     this.state = {
-      labelId: getId('MessageBar')
+      labelId: getId('MessageBar'),
+      showContent: false
     };
   }
 
@@ -41,6 +43,15 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
     let { isMultiline } = this.props;
 
     return isMultiline ? this._renderMultiLine() : this._renderSingleLine();
+  }
+
+  public componentDidMount() {
+    /**
+     * Live regions need an update to announce content.
+     */
+    setTimeout(() => {
+      this.setState({ showContent: true });
+    }, 10);
   }
 
   private _getActionsDiv(): JSX.Element {
@@ -75,7 +86,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
         onClick={ this.props.onDismiss }
         icon='Cancel'
         ariaLabel={ this.props.dismissButtonAriaLabel }
-        />;
+      />;
     }
     return null;
   }
@@ -90,14 +101,17 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
 
   private _renderMultiLine(): React.ReactElement<React.HTMLProps<HTMLAreaElement>> {
     return (
-      <div className={ this._getClassName() + ' ms-MessageBar-multiline' } role='status' aria-live='polite' aria-controls='ms-MessageBar-text'>
+      <div
+        className={ this._getClassName() + ' ms-MessageBar-multiline' }
+        role='status'
+        aria-live={ this._getAnnouncementPriority() }>
         <div className='ms-MessageBar-content'>
           { this._getIconSpan() }
           <div className='ms-MessageBar-actionables'>
             { this._getDismissDiv() }
             <div className='ms-MessageBar-text' id={ this.state.labelId }>
               <span className={ this._getInnerTextClassName() }>
-                { this.props.children }
+                { this.state.showContent && this.props.children }
               </span>
             </div>
             { this._getActionsDiv() }
@@ -109,13 +123,15 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
 
   private _renderSingleLine(): React.ReactElement<React.HTMLProps<HTMLAreaElement>> {
     return (
-      <div className={ this._getClassName() + ' ms-MessageBar-singleline' } role='status' aria-live='polite' aria-controls='ms-MessageBar-text'>
+      <div className={ this._getClassName() + ' ms-MessageBar-singleline' }
+        role='status'
+        aria-live={ this._getAnnouncementPriority() }>
         <div className='ms-MessageBar-content'>
           { this._getIconSpan() }
           <div className='ms-MessageBar-actionables'>
             <div className='ms-MessageBar-text' id={ this.state.labelId }>
               <span className={ this._getInnerTextClassName() }>
-                { this.props.children }
+                { this.state.showContent && this.props.children }
               </span>
             </div>
           </div>
@@ -123,5 +139,15 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
         </div>
       </div>
     );
+  }
+
+  private _getAnnouncementPriority(): string {
+    switch (this.props.messageBarType) {
+      case MessageBarType.blocked:
+      case MessageBarType.error:
+      case MessageBarType.severeWarning:
+        return 'assertive';
+    }
+    return 'polite';
   }
 }

@@ -41,8 +41,10 @@ export interface ISelectionZoneProps extends React.Props<SelectionZone> {
   selection: ISelection;
   layout?: ISelectionLayout;
   selectionMode?: SelectionMode;
+  selectionPreservedOnEmptyClick?: boolean;
   isSelectedOnFocus?: boolean;
   onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
+  onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void;
 }
 
 export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
@@ -80,11 +82,12 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         onMouseDown={ this._onMouseDown }
         onClick={ this._onClick }
         onDoubleClick={ this._onDoubleClick }
+        onContextMenu={ this._onContextMenu }
         { ...{
           onMouseDownCapture: this.ignoreNextFocus,
           onFocusCapture: this._onFocus
         } }
-        >
+      >
         { this.props.children }
       </div>
     );
@@ -193,6 +196,22 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
       }
 
       target = getParent(target);
+    }
+  }
+
+  @autobind
+  private _onContextMenu(ev: React.MouseEvent<HTMLElement>) {
+    const target = ev.target as HTMLElement;
+
+    const { onItemContextMenu, selection } = this.props;
+    if (onItemContextMenu) {
+      const itemRoot = this._findItemRoot(target);
+
+      if (itemRoot) {
+        const index = this._getItemIndex(itemRoot);
+        onItemContextMenu(selection.getItems()[index], index, ev.nativeEvent);
+        ev.preventDefault();
+      }
     }
   }
 
@@ -372,7 +391,10 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   }
 
   private _tryClearOnEmptyClick(ev: MouseEvent) {
-    if (this._isNonHandledClick(ev.target as HTMLElement)) {
+    if (
+      !this.props.selectionPreservedOnEmptyClick &&
+      this._isNonHandledClick(ev.target as HTMLElement)
+    ) {
       this.props.selection.setAllSelected(false);
     }
   }
