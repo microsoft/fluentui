@@ -1,11 +1,12 @@
 import { IColor } from './IColor';
 import { assign } from '../../Utilities';
 
-let cssColor = require('color-functions/lib/css-color');
-let rgb2hex = require('color-functions/lib/rgb2hex');
-let hsv2hex = require('color-functions/lib/hsv2hex');
-let rgb2hsv = require('color-functions/lib/rgb2hsv');
-let hsv2rgb = require('color-functions/lib/hsv2rgb');
+// These will be cleaned up.
+let cssColor = require('color-functions/lib/css-color') as any;
+let rgb2hex = require('color-functions/lib/rgb2hex') as any;
+let hsv2hex = require('color-functions/lib/hsv2hex') as any;
+let rgb2hsv = require('color-functions/lib/rgb2hsv') as any;
+let hsv2rgb = require('color-functions/lib/hsv2rgb') as any;
 
 export const MAX_COLOR_SATURATION = 100;
 export const MAX_COLOR_HUE = 359;

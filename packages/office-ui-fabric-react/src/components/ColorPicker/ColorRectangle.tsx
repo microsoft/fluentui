@@ -11,7 +11,7 @@ import {
   getFullColorString
 } from './colors';
 
-let hsv2hex = require('color-functions/lib/hsv2hex');
+let hsv2hex = require('color-functions/lib/hsv2hex') as any;
 
 export interface IColorRectangleProps {
   color: IColor;
