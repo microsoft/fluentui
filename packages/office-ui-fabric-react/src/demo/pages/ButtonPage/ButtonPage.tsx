@@ -21,14 +21,14 @@ import { IComponentDemoPageProps } from '../../components/ComponentPage/ICompone
 import { IButtonDemoPageState } from './examples/IButtonDemoPageState';
 import './examples/Button.Basic.Example.scss';
 
-const ButtonDefaultExampleCode = require('./examples/Button.Default.Example.tsx');
-const ButtonPrimaryExampleCode = require('./examples/Button.Primary.Example.tsx');
-const ButtonCompoundExampleCode = require('./examples/Button.Compound.Example.tsx');
-const ButtonCommandExampleCode = require('./examples/Button.Command.Example.tsx');
-const ButtonHeroExampleCode = require('./examples/Button.Hero.Example.tsx');
-const ButtonIconExampleCode = require('./examples/Button.Icon.Example.tsx');
-const ButtonAnchorExampleCode = require('./examples/Button.Anchor.Example.tsx');
-const ButtonScreenReaderExampleCode = require('./examples/Button.ScreenReader.Example.tsx');
+const ButtonDefaultExampleCode = require('./examples/Button.Default.Example.tsx') as string;
+const ButtonPrimaryExampleCode = require('./examples/Button.Primary.Example.tsx') as string;
+const ButtonCompoundExampleCode = require('./examples/Button.Compound.Example.tsx') as string;
+const ButtonCommandExampleCode = require('./examples/Button.Command.Example.tsx') as string;
+const ButtonHeroExampleCode = require('./examples/Button.Hero.Example.tsx') as string;
+const ButtonIconExampleCode = require('./examples/Button.Icon.Example.tsx') as string;
+const ButtonAnchorExampleCode = require('./examples/Button.Anchor.Example.tsx') as string;
+const ButtonScreenReaderExampleCode = require('./examples/Button.ScreenReader.Example.tsx') as string;
 
 export class ButtonPage extends React.Component<IComponentDemoPageProps, IButtonDemoPageState> {
   private _url: string;

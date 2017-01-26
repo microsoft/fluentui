@@ -10,7 +10,7 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const MessageBarBasicExampleCode = require('./examples/MessageBar.Basic.Example.tsx');
+const MessageBarBasicExampleCode = require('./examples/MessageBar.Basic.Example.tsx') as string;
 
 export class MessageBarPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;

@@ -156,9 +156,9 @@
       "resolved": "https://registry.npmjs.org/@types/mocha/-/mocha-2.2.38.tgz"
     },
     "@types/node": {
-      "version": "6.0.61",
+      "version": "6.0.62",
       "from": "@types/node@>=6.0.45 <7.0.0",
-      "resolved": "https://registry.npmjs.org/@types/node/-/node-6.0.61.tgz"
+      "resolved": "https://registry.npmjs.org/@types/node/-/node-6.0.62.tgz"
     },
     "@types/orchestrator": {
       "version": "0.0.30",
@@ -195,30 +195,20 @@
       "from": "@types/semver@>=5.3.30 <6.0.0",
       "resolved": "https://registry.npmjs.org/@types/semver/-/semver-5.3.30.tgz"
     },
-    "@types/source-map": {
-      "version": "0.5.0",
-      "from": "@types/source-map@*",
-      "resolved": "https://registry.npmjs.org/@types/source-map/-/source-map-0.5.0.tgz"
-    },
     "@types/through2": {
       "version": "2.0.32",
       "from": "@types/through2@>=2.0.31 <3.0.0",
       "resolved": "https://registry.npmjs.org/@types/through2/-/through2-2.0.32.tgz"
-    },
-    "@types/uglify-js": {
-      "version": "2.6.28",
-      "from": "@types/uglify-js@*",
-      "resolved": "https://registry.npmjs.org/@types/uglify-js/-/uglify-js-2.6.28.tgz"
     },
     "@types/vinyl": {
       "version": "1.2.30",
       "from": "@types/vinyl@>=1.2.30 <2.0.0",
       "resolved": "https://registry.npmjs.org/@types/vinyl/-/vinyl-1.2.30.tgz"
     },
-    "@types/webpack": {
-      "version": "1.12.36",
-      "from": "@types/webpack@>=1.12.35 <2.0.0",
-      "resolved": "https://registry.npmjs.org/@types/webpack/-/webpack-1.12.36.tgz"
+    "@types/webpack-env": {
+      "version": "1.13.0",
+      "from": "@types/webpack-env@>=1.13.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/@types/webpack-env/-/webpack-env-1.13.0.tgz"
     },
     "@types/yargs": {
       "version": "0.0.34",
@@ -636,9 +626,9 @@
       "resolved": "https://registry.npmjs.org/camelcase-keys/-/camelcase-keys-2.1.0.tgz"
     },
     "caniuse-db": {
-      "version": "1.0.30000613",
+      "version": "1.0.30000617",
       "from": "caniuse-db@>=1.0.30000488 <2.0.0",
-      "resolved": "https://registry.npmjs.org/caniuse-db/-/caniuse-db-1.0.30000613.tgz"
+      "resolved": "https://registry.npmjs.org/caniuse-db/-/caniuse-db-1.0.30000617.tgz"
     },
     "capture-stack-trace": {
       "version": "1.0.0",
@@ -1735,9 +1725,9 @@
       "resolved": "https://registry.npmjs.org/filename-regex/-/filename-regex-2.0.0.tgz"
     },
     "filesize": {
-      "version": "3.4.3",
+      "version": "3.5.4",
       "from": "filesize@>=3.3.0 <4.0.0",
-      "resolved": "https://registry.npmjs.org/filesize/-/filesize-3.4.3.tgz"
+      "resolved": "https://registry.npmjs.org/filesize/-/filesize-3.5.4.tgz"
     },
     "fill-range": {
       "version": "2.2.3",
@@ -4144,9 +4134,9 @@
       "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-1.6.3.tgz"
     },
     "node-forge": {
-      "version": "0.6.47",
+      "version": "0.6.48",
       "from": "node-forge@>=0.6.42 <0.7.0",
-      "resolved": "https://registry.npmjs.org/node-forge/-/node-forge-0.6.47.tgz"
+      "resolved": "https://registry.npmjs.org/node-forge/-/node-forge-0.6.48.tgz"
     },
     "node-gyp": {
       "version": "3.5.0",
