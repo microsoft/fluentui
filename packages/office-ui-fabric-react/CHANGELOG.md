@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 25 Jan 2017 04:11:36 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Jan 2017 04:03:12 GMT and should not be manually modified.
+
+## 1.3.1
+Thu, 26 Jan 2017 04:03:12 GMT
+
+### Patches
+
+- Button: Restored Hero variant and added normal button as an alias of default. Fixes issues introduced in #811
 
 ## 1.3.0
 Wed, 25 Jan 2017 04:11:36 GMT
