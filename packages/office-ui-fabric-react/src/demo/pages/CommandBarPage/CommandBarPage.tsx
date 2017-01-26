@@ -12,8 +12,8 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const CommandBarBasicExampleCode = require('./examples/CommandBar.Basic.Example.tsx');
-const CommandBarNoFocusableItemsExampleCode = require('./examples/CommandBar.NonFocusable.Example.tsx');
+const CommandBarBasicExampleCode = require('./examples/CommandBar.Basic.Example.tsx') as string;
+const CommandBarNoFocusableItemsExampleCode = require('./examples/CommandBar.NonFocusable.Example.tsx') as string;
 
 export class CommandBarPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -33,7 +33,7 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, any
         exampleCards={
           <div>
             <ExampleCard title='CommandBar with search box and overflowing menu items' code={ CommandBarBasicExampleCode }>
-              <CommandBarBasicExample {... cmdBarParamsTextAndIcons} />
+              <CommandBarBasicExample {...cmdBarParamsTextAndIcons} />
             </ExampleCard>
             <ExampleCard title='CommandBar with non-focusable items' code={ CommandBarNoFocusableItemsExampleCode }>
               <CommandBarNonFocusableItemsExample />

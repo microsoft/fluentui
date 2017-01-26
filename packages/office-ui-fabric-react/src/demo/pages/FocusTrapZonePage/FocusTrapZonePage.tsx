@@ -13,13 +13,13 @@ import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 import FocusTrapZoneBoxExample from './examples/FocusTrapZone.Box.Example';
-let FocusTrapZoneBoxExampleCode = require('./examples/FocusTrapZone.Box.Example.tsx');
+let FocusTrapZoneBoxExampleCode = require('./examples/FocusTrapZone.Box.Example.tsx') as string;
 
 import FocusTrapZoneBoxExampleWithFocusableItem from './examples/FocusTrapZone.Box.FocusOnCustomElement.Example';
-let FocusTrapZoneBoxExampleWithFocusableItemCode = require('./examples/FocusTrapZone.Box.FocusOnCustomElement.Example.tsx');
+let FocusTrapZoneBoxExampleWithFocusableItemCode = require('./examples/FocusTrapZone.Box.FocusOnCustomElement.Example.tsx') as string;
 
 import FocusTrapZoneBoxClickExample from './examples/FocusTrapZone.Box.Click.Example';
-let FocusTrapZoneBoxClickExampleCode = require('./examples/FocusTrapZone.Box.Click.Example.tsx');
+let FocusTrapZoneBoxClickExampleCode = require('./examples/FocusTrapZone.Box.Click.Example.tsx') as string;
 
 export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
