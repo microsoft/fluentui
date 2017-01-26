@@ -8,7 +8,7 @@ export interface IButton {
   focus();
 }
 
-export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAnchorElement | Button> {
+export interface IButtonProps extends React.HTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
   /**
    * If provided, this component will be rendered as an anchor.
    * @default ElementType.anchor
@@ -28,7 +28,7 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
   /**
    * Event handler for click event.
    */
-  onClick?: React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement | Button>;
+  onClick?: React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
 
   /**
    * The aria label of the button for the benefit of screen readers.
@@ -80,7 +80,7 @@ export enum ElementType {
 }
 
 export enum ButtonType {
-  default,
+  normal,
   primary,
   hero,
   compound,
