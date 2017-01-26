@@ -197,16 +197,12 @@ build.clean.isEnabled = () => isProduction;
 
 // alternative serve approach.
 // Set up a "rushBuild" subTask that will spawn rush build
-let spawn = require('child_process').spawn;
-let rawStdout = new fs.SyncWriteStream(1, { autoClose: false });
+let exec = require('child_process').exec;
 
 let rushBuild = build.subTask('rushbuild', (gulp, options, done) => {
-  let child = spawn(
-    'rush',
-    ['build', '--to', 'office-ui-fabric-react']
-  );
+  let child = exec('rush build --to office-ui-fabric-react');
 
-  child.stdout.on('data', data => rawStdout.write(data));
+  child.stdout.on('data', data => process.stdout.write(data));
   child.on('close', done);
 });
 
