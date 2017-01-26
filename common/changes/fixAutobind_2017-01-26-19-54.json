@@ -1,0 +1,15 @@
+{
+  "changes": [
+    {
+      "comment": "",
+      "packageName": "office-ui-fabric-react",
+      "type": "none"
+    },
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "autobind: Does not re-bind every time a decorated method is accessed anymore.",
+      "type": "patch"
+    }
+  ],
+  "email": "cschleid@microsoft.com"
+}
