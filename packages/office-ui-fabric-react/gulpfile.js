@@ -176,6 +176,8 @@ let runSSRTests = build.subTask('run-ssr-tests', function (gulp, buildOptions, d
   done();
 });
 
+runSSRTests.isEnabled = () => isProduction;
+
 let defaultTasks = build.serial(
   build.preCopy,
   build.sass,
@@ -188,9 +190,10 @@ let defaultTasks = build.serial(
 
 build.task('default', defaultTasks);
 
-// Disable certain subtasks to speed up serve.
+// Disable certain subtasks in non production builds to speed up serve.
 build.karma.isEnabled = () => isProduction;
 build.tslint.isEnabled = () => isProduction;
+build.clean.isEnabled = () => isProduction;
 
 // alternative serve approach.
 // Set up a "rushBuild" subTask that will spawn rush build
