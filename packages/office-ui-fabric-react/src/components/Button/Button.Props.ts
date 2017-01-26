@@ -80,6 +80,7 @@ export enum ElementType {
 }
 
 export enum ButtonType {
+  default,
   normal,
   primary,
   hero,
