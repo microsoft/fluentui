@@ -10,7 +10,7 @@
     "postinstall": "rush install && rush link",
     "test": "rush build",
     "start": "gulp --gulpfile packages/office-ui-fabric-react/gulpfile.js serve",
-    "gulp": "gulp --gulpfile packages/office-ui-fabric-react/gulpfile.js",
+    "build": "rush build --production --clean",
     "change": "rush change"
   },
   "license": "MIT",
