@@ -11,8 +11,8 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const TextFieldBasicExampleCode = require('./examples/TextField.Basic.Example.tsx');
-const TextFieldErrorMessageExampleCode = require('./examples/TextField.ErrorMessage.Example.tsx');
+const TextFieldBasicExampleCode = require('./examples/TextField.Basic.Example.tsx') as string;
+const TextFieldErrorMessageExampleCode = require('./examples/TextField.ErrorMessage.Example.tsx') as string;
 
 export class TextFieldPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
