@@ -1,0 +1,15 @@
+{
+  "changes": [
+    {
+      "comment": "",
+      "packageName": "office-ui-fabric-react",
+      "type": "none"
+    },
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "SelectionZone: clicking in a non-interactive area clears selection only within the scrollable parent area. This refines the clear behavior slightly.",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
