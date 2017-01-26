@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Added a menu component",
+      "type": "minor"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}
