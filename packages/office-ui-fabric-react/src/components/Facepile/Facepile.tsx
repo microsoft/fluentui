@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  autobind,
   buttonProperties,
   css,
   divProperties,
@@ -73,6 +74,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
       onClick={ this._onPersonaClick.bind(this, persona) }
       onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
       onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
+      ref={ (el: HTMLElement) => this._refHandler(persona, el) }
       >
       { personaControl }
     </button>;
@@ -86,6 +88,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
       key={ (!!persona.imageUrl ? 'i' : '') + index }
       onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
       onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
+      ref={ (el: HTMLElement) => this._refHandler(persona, el) }
       >
       { personaControl }
     </div>;
@@ -147,6 +150,13 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   private _onPersonaMouseOut(persona: IFacepilePersona, ev?: React.MouseEvent<HTMLElement>): void {
     if (!!persona.onMouseOut) {
       persona.onMouseOut(ev, persona);
+    }
+  }
+
+  @autobind
+  private _refHandler(persona: IFacepilePersona, el: HTMLElement): void {
+    if (!!persona.refHandler) {
+      persona.refHandler(el, persona);
     }
   }
 }

@@ -76,6 +76,11 @@ export interface IFacepilePersona extends React.HTMLProps<HTMLButtonElement | HT
   onMouseOut?: (ev?: React.MouseEvent<HTMLElement>, persona?: IFacepilePersona) => void;
 
   /**
+   * If provided, the handler will be called when the component is mounted or unmounted
+   */
+  refHandler?: (el?: HTMLElement, persona?: IFacepilePersona) => void;
+
+  /**
    * Extra data - not used directly but can be handy for passing additional data to custom event
    * handlers.
    */
