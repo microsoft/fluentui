@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dropdown-fix:screen reader should read out current selected option when first time focus on dropdown with an option selected.",
+      "comment": "Dropdown: screen reader now will read out the current selected option on first focus of dropdown with an option selected.",
       "type": "patch"
     }
   ],
