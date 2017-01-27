@@ -154,7 +154,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   }
 
   @autobind
-  private _refHandler(el: HTMLElement, persona: IFacepilePersona,): void {
+  private _refHandler(el: HTMLElement, persona: IFacepilePersona): void {
     if (!!persona.refHandler) {
       persona.refHandler(el, persona);
     }
