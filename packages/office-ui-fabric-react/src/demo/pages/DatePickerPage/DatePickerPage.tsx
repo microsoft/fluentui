@@ -12,9 +12,9 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const DatePickerBasicExampleCode = require('./examples/DatePicker.Basic.Example.tsx');
-const DatePickerRequiredExampleCode = require('./examples/DatePicker.Required.Example.tsx');
-const DatePickerInputExampleCode = require('./examples/DatePicker.Input.Example.tsx');
+const DatePickerBasicExampleCode = require('./examples/DatePicker.Basic.Example.tsx') as string;
+const DatePickerRequiredExampleCode = require('./examples/DatePicker.Required.Example.tsx') as string;
+const DatePickerInputExampleCode = require('./examples/DatePicker.Input.Example.tsx') as string;
 
 export class DatePickerPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;

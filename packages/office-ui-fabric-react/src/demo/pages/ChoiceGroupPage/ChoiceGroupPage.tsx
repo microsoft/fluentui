@@ -10,7 +10,7 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const ChoiceGroupBasicExampleCode = require('./examples/ChoiceGroup.Basic.Example.tsx');
+const ChoiceGroupBasicExampleCode = require('./examples/ChoiceGroup.Basic.Example.tsx') as string;
 
 export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;

@@ -3,7 +3,7 @@ import { css } from '@uifabric/utilities';
 import './ExampleCard.scss';
 import { Button, ButtonType } from '../../../Button';
 
-const Highlight = require('react-highlight');
+const Highlight = require('react-highlight') as any;
 
 export interface IExampleCardProps {
   title: string;

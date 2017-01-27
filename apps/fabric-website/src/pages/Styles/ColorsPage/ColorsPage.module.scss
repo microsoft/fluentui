@@ -1,0 +1,8 @@
+@import '../../../styles/variables';
+
+// XL and up
+@media screen and (min-width: $ms-screen-xl-min) {
+  .accentGroup {
+    min-height: 320px; // Set a minimum height to prevent groups from wrapping poorly (they are floated)
+  }
+}

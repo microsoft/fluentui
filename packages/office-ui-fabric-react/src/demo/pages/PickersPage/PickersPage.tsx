@@ -14,8 +14,8 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const TagPickerExampleCode = require('./examples/TagPicker.Basic.Example.tsx');
-const PickerCustomResultExampleCode = require('./examples/Picker.CustomResult.Example.tsx');
+const TagPickerExampleCode = require('./examples/TagPicker.Basic.Example.tsx') as string;
+const PickerCustomResultExampleCode = require('./examples/Picker.CustomResult.Example.tsx') as string;
 
 export class PickersPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -32,12 +32,12 @@ export class PickersPage extends React.Component<IComponentDemoPageProps, any> {
         componentName='PickersExample'
         exampleCards={
           <div>
-              <ExampleCard title='Tag Picker' code={ TagPickerExampleCode }>
-                <TagPickerBasicExample />
-              </ExampleCard>
-              <ExampleCard title='Custom Picker (Document Picker)' code={ PickerCustomResultExampleCode }>
-                <PickerCustomResultExample />
-              </ExampleCard>
+            <ExampleCard title='Tag Picker' code={ TagPickerExampleCode }>
+              <TagPickerBasicExample />
+            </ExampleCard>
+            <ExampleCard title='Custom Picker (Document Picker)' code={ PickerCustomResultExampleCode }>
+              <PickerCustomResultExample />
+            </ExampleCard>
           </div>
         }
         propertiesTables={

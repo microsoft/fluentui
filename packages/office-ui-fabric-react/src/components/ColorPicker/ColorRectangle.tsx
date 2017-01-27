@@ -8,10 +8,9 @@ import {
   IColor,
   MAX_COLOR_SATURATION,
   MAX_COLOR_VALUE,
-  getFullColorString
+  getFullColorString,
+  hsv2hex
 } from './colors';
-
-let hsv2hex = require('color-functions/lib/hsv2hex');
 
 export interface IColorRectangleProps {
   color: IColor;
