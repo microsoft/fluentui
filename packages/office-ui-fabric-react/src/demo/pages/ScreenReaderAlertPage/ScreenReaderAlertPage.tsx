@@ -31,13 +31,13 @@ export class ScreenReaderAlertPage extends React.Component<IComponentDemoPagePro
         componentName='ScreenReaderAlertExample'
         exampleCards={
           <div>
-            <ExampleCard title='ScreenReaderAlert basic' code={ ScreenReaderAlertBasicExampleCode }>
+            <ExampleCard title='ScreenReaderAlert basic' code={ ScreenReaderAlertBasicExampleCode as string }>
               <ScreenReaderAlertBasicExample />
             </ExampleCard>
-            <ExampleCard title='ScreenReaderAlert repeat same message' code={ ScreenReaderAlertRepeatExampleCode }>
+            <ExampleCard title='ScreenReaderAlert repeat same message' code={ ScreenReaderAlertRepeatExampleCode as string }>
               <ScreenReaderAlertRepeatExample />
             </ExampleCard>
-            <ExampleCard title='ScreenReaderAlert with Spinner' code={ ScreenReaderAlertSpinnerExampleCode }>
+            <ExampleCard title='ScreenReaderAlert with Spinner' code={ ScreenReaderAlertSpinnerExampleCode as string }>
               <ScreenReaderAlertSpinnerExample />
             </ExampleCard>
           </div>
@@ -75,7 +75,7 @@ export class ScreenReaderAlertPage extends React.Component<IComponentDemoPagePro
 
             <p>
               To try the demo in this page, you should at least using one kind of screen reader. E.g. JAWS, ChromeVOX, NVDA.
-              Better use the browser recommendated by the screen reader you're using. E.g. IE11 with JAWS, Chrome with ChromeVOX, FireFox with NVDA.
+              Better use the browser recommended by the screen reader you're using. E.g. IE11 with JAWS, Chrome with ChromeVOX, FireFox with NVDA.
             </p>
           </div>
         }

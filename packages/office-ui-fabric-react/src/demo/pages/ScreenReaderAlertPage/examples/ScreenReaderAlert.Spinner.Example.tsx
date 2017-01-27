@@ -38,7 +38,7 @@ export class ScreenReaderAlertSpinnerExample extends React.Component<any, IScree
         <Button
           onClick={ this._onButtonClicked }
           buttonType={ ButtonType.primary }
-          >
+        >
           { 'Read spinner status.' }
         </Button>
         { this.state.loadingStatus > 0 && (
@@ -61,7 +61,7 @@ export class ScreenReaderAlertSpinnerExample extends React.Component<any, IScree
       loadingStatus: 1
     });
 
-    const interval: NodeJS.Timer = setInterval(() => {
+    const interval: number = window.setInterval(() => {
       const currentStatus: number = this.state.loadingStatus;
       const newStatus: number = (currentStatus + 1) % 4;
       this.setState({
