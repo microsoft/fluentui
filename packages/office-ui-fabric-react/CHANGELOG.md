@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 26 Jan 2017 16:10:53 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Jan 2017 04:09:14 GMT and should not be manually modified.
+
+## 1.3.3
+Fri, 27 Jan 2017 04:09:14 GMT
+
+### Patches
+
+- Callout: Add back in animations
+- Dropdown: now supports a custom option renderer.
 
 ## 1.3.2
 Thu, 26 Jan 2017 16:10:53 GMT
