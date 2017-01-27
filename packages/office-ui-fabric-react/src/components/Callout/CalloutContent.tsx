@@ -111,6 +111,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       width: beakStyleWidth
     };
 
+    let directionalClassName = positions && positions.directionalClassName ? `ms-u-${positions.directionalClassName}` : ''
+
     let contentMaxHeight: number = this._getMaxHeight();
     let beakVisible: boolean = isBeakVisible && (!!targetElement || !!target);
     let content = (
@@ -120,17 +122,17 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
             css(
               'ms-Callout',
               className,
-              slideDirectionalClassName ? `ms-u-${slideDirectionalClassName}` : ''
+              directionalClassName
             ) }
           style={ positions ? positions.calloutPosition : OFF_SCREEN_STYLE }
           ref={ this._resolveRef('_calloutElement') }
-          >
+        >
 
           { beakVisible ? (
             <div
               className={ 'ms-Callout-beak' }
               style={ beakReactStyle }
-              />) : (null) }
+            />) : (null) }
 
           { beakVisible ?
             (<div className='ms-Callout-beakCurtain' />) :
