@@ -134,13 +134,14 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
           constrainMode={ constrainMode }
           groupProps={ groupProps }
           onItemInvoked={ this._onItemInvoked }
+          onItemContextMenu={ this._onItemContextMenu }
           ariaLabelForListHeader='Column headers. Use menus to perform column operations like sort and filter'
           ariaLabelForSelectAllCheckbox='Toggle selection for all items'
           onRenderMissingItem={ (index) => {
             this._onDataMiss(index);
             return null;
           } }
-          />
+        />
 
         { contextualMenuProps && (
           <ContextualMenu { ...contextualMenuProps } />
@@ -438,6 +439,11 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
   @autobind
   private _onItemInvoked(item: any, index: number) {
     console.log('Item invoked', item, index);
+  }
+
+  @autobind
+  private _onItemContextMenu(item: any, index: number) {
+    console.log('Item context menu invoked', item, index);
   }
 
   @autobind

@@ -10,7 +10,7 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-let LinkBasicExampleCode = require('./examples/Link.Basic.Example.tsx');
+let LinkBasicExampleCode = require('./examples/Link.Basic.Example.tsx') as string;
 
 export class LinkPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;

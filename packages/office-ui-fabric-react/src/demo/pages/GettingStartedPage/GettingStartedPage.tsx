@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from '../../../index';
 import './GettingStartedPage.scss';
 
-const Highlight = require('react-highlight');
+const Highlight = require('react-highlight') as any;
 
 export class GettingStartedPage extends React.Component<any, any> {
   public render() {
@@ -26,7 +26,7 @@ export class GettingStartedPage extends React.Component<any, any> {
 
         <h2>Getting started</h2>
 
-        <p>{ `Integrating components into your project depends heavily on your setup. The recommended setup is to use a bundler such as ` }<Link href='https://webpack.github.io/' target='_blank'>Webpack</Link>{` which can resolve NPM package imports in your code and can bundle the specific things you import.` }</p>
+        <p>{ `Integrating components into your project depends heavily on your setup. The recommended setup is to use a bundler such as ` }<Link href='https://webpack.github.io/' target='_blank'>Webpack</Link>{ ` which can resolve NPM package imports in your code and can bundle the specific things you import.` }</p>
 
         <p>{
           `Within an npm project, you should install the package and save it as a dependency:`
@@ -46,7 +46,7 @@ export class GettingStartedPage extends React.Component<any, any> {
 
         <div className='ms-GettingStartedPage-code'>
           <Highlight className='typescript'>{
-`import * as React from 'react';
+            `import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Button } from 'office-ui-fabric-react/lib/Button';
 
@@ -65,11 +65,11 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`
           <Highlight className='typescript'>{ `import { Button } from 'office-ui-fabric-react';` }</Highlight>
         </div>
 
-        <p>{`...this would work, but then unless you are using a tree-shaking bundler such as Rollup.js or Webpack 2, Webpack will assume you want every module exported from the main entry file to be included in your final bundle, which produces unnecessary large bundles and slows your page load down. Instead you can import the specific paths to trim down your bundle size:`}</p>
+        <p>{ `...this would work, but then unless you are using a tree-shaking bundler such as Rollup.js or Webpack 2, Webpack will assume you want every module exported from the main entry file to be included in your final bundle, which produces unnecessary large bundles and slows your page load down. Instead you can import the specific paths to trim down your bundle size:` }</p>
 
         <div className='ms-GettingStartedPage-code'>
           <Highlight className='typescript'>{
-`import { Button } from 'office-ui-fabric-react/lib/Button';
+            `import { Button } from 'office-ui-fabric-react/lib/Button';
 import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
 import { List } from 'office-ui-fabric-react/lib/List';`
           }</Highlight>
