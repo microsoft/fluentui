@@ -13,7 +13,7 @@ describe('Persona', () => {
       setRTL(false);
     });
 
-    it('renders with expected initialsColor if none were provided', () => {
+    it('renders with expected initialsColor if none was provided', () => {
       const wrapper = shallow(<Persona primaryText='Kat Larrson' />);
       let result = wrapper.find('.ms-Persona-initials--red');
       expect(result).to.have.length(1);
