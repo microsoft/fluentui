@@ -1,0 +1,37 @@
+@import '../../styles/variables';
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  li {
+    align-items: center;
+    color: $ms-color-neutralPrimaryAlt;
+    display: flex;
+    flex-direction: column;
+    font-size: $font-size-bigger;
+    height: 80px;
+    justify-content: space-around;
+    padding: 8px;
+    width: 80px;
+
+    span {
+      color: $ms-color-neutralPrimary;
+      font-size: $ms-font-size-xs;
+      opacity: 0;
+      transition: opacity $ms-duration2 $ms-ease1;
+    }
+
+    &:hover {
+      span {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.searchBox {
+  margin: 20px 0;
+  max-width: 320px;
+}

@@ -1,0 +1,78 @@
+// Import the Fabric variables and mixins
+@import '../../node_modules/office-ui-fabric-core/src/sass/_Fabric.Common';
+
+// Colors (all taken from the MDL2 palette)
+$color-home-darker: #004e8c;
+$color-home-dark: #0063b1;
+$color-home-medium: #0078d7;
+$color-home-light: #3a96dd;
+$color-home-lighter: #b3dbf2;
+
+$color-getStarted-darker: #5c126b;
+$color-getStarted-dark: #721481;
+$color-getStarted-medium: #881798;
+$color-getStarted-light: #b146c2;
+$color-getStarted-lighter: #dea2ed;
+
+$color-styles-darker: #006f94;
+$color-styles-dark: #0099bc;
+$color-styles-medium: #00bcf2;
+$color-styles-light: #31d2f7;
+$color-styles-lighter: #99ecff;
+
+$color-components-darker: #038387;
+$color-components-dark: #009ca4;
+$color-components-medium: #00b7c3;
+$color-components-light: #30c6cc;
+$color-components-lighter: #91e5df;
+
+$color-resources-darker: #b05e0d;
+$color-resources-dark: #d47300;
+$color-resources-medium: #ff8c00;
+$color-resources-light: #ffaa44;
+$color-resources-lighter: #ffdabb;
+
+$color-blog-darker: #73aa24;
+$color-blog-dark: #8cbd18;
+$color-blog-medium: #a4cf0c;
+$color-blog-light: #bad80a;
+$color-blog-lighter: #d1ec3c;
+
+// Component variables
+$App-maximumWidth: 1300px;
+$App-mobileNavBarHeight: 48px;
+
+$CodeBlock-toggleButtonHeight: 28px;
+
+$Header-backgroundColor: $ms-color-black;
+$Header-height: 50px;
+
+$Nav-width: 208px;
+
+$PageHeader-attachedTitleHeight: 80px;
+$PageHeader-navHeight: 48px;
+$PageHeader-titleHeight: 188px;
+$PageHeader-fullHeight: $PageHeader-titleHeight + $PageHeader-navHeight;
+
+// High contrast colors
+// @todo: Shouldn't these, and the mixins, be in Fabric Core?
+$high-contrast-blueBG: #0000c0;
+$high-contrast-purpleBG: #37006e;
+$high-contrast-cyan: #1aebff;
+$high-contrast-yellow: #ffff00;
+$high-contrast-green: #3ff23f;
+
+// Extended type ramp
+$font-size-big: 24px;
+$font-size-bigger: 36px;
+$font-size-biggest: 48px;
+$font-size-huge: 72px;
+
+// Padding of content (distance from content to edge of screen on different devices)
+$contentPadding-sm: 16px;
+$contentPadding-lg: 32px;
+$contentPadding-xl: 40px;
+$contentPaddingBottom: 100px;
+
+
+$baseURL: ' https://static2.sharepointonline.com/files/fabric/';
