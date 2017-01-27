@@ -128,15 +128,14 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
           ref={ this._resolveRef('_calloutElement') }
         >
 
-          { beakVisible ? (
+          { beakVisible && (
             <div
               className={ 'ms-Callout-beak' }
               style={ beakReactStyle }
-            />) : (null) }
+            />) }
 
-          { beakVisible ?
-            (<div className='ms-Callout-beakCurtain' />) :
-            (null) }
+          { beakVisible &&
+            (<div className='ms-Callout-beakCurtain' />) }
           <Popup
             className='ms-Callout-main'
             onDismiss={ this.dismiss }
