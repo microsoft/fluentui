@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "CommandBar: Render link element if item has href prop",
+      "type": "patch"
+    }
+  ],
+  "email": "v-edwliu@microsoft.com"
+}
