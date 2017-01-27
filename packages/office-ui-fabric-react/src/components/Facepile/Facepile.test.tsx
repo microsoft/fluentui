@@ -9,6 +9,7 @@ let { expect } = chai;
 
 import { Facepile } from './Facepile';
 import { IFacepilePersona, OverflowButtonType } from './Facepile.Props';
+import { Persona, PersonaSize } from '../Persona';
 
 describe('Facepile', () => {
   const facepilePersonas: IFacepilePersona[] = [
@@ -41,7 +42,7 @@ describe('Facepile', () => {
           personas={ [] }
           addButtonProps={ {} }
           showAddButton={ true }
-          />);
+        />);
       let addButton = wrapper.find('.ms-Icon--AddFriend');
       expect(addButton).to.have.length(1, 'Add button should render');
       let buttons = wrapper.find('.ms-Facepile-itemButton');
@@ -54,7 +55,7 @@ describe('Facepile', () => {
           personas={ [] }
           overflowButtonProps={ {} }
           overflowButtonType={ OverflowButtonType.downArrow }
-          />);
+        />);
       let overflowButton = wrapper.find('.ms-Icon--ChevronDown');
       expect(overflowButton).to.have.length(1, 'Overflow button should render');
       let buttons = wrapper.find('.ms-Facepile-itemButton');
@@ -67,7 +68,7 @@ describe('Facepile', () => {
           personas={ [] }
           overflowButtonProps={ {} }
           overflowButtonType={ OverflowButtonType.more }
-          />);
+        />);
       let overflowButton = wrapper.find('.ms-Icon--More');
       expect(overflowButton).to.have.length(1, 'Overflow button should render');
       let buttons = wrapper.find('.ms-Facepile-itemButton');
@@ -79,7 +80,7 @@ describe('Facepile', () => {
         <Facepile personas={ [] }
           overflowButtonProps={ {} }
           overflowButtonType={ OverflowButtonType.descriptive }
-          />);
+        />);
       let overflowButton = wrapper.find('.ms-Facepile-descriptiveOverflowButton');
       expect(overflowButton).to.have.length(0, 'Overflow button should not render');
       let buttons = wrapper.find('.ms-Facepile-itemButton');
@@ -94,7 +95,7 @@ describe('Facepile', () => {
           maxDisplayablePersonas={ 5 }
           overflowButtonProps={ {} }
           overflowButtonType={ OverflowButtonType.descriptive }
-          />);
+        />);
       let overflowButton = wrapper.find('.ms-Facepile-descriptiveOverflowButton');
       expect(overflowButton).to.have.length(1, 'Overflow button should render');
       let buttons = wrapper.find('.ms-Facepile-itemButton');
@@ -106,7 +107,7 @@ describe('Facepile', () => {
         <Facepile
           personas={ facepilePersonas.concat(facepilePersonas, facepilePersonas, facepilePersonas) }
           maxDisplayablePersonas={ 2 }
-          />);
+        />);
       let buttons = wrapper.find('.ms-Facepile-itemButton');
       expect(buttons).to.have.length(2, 'Only two buttons should be rendered');
     });
@@ -123,11 +124,57 @@ describe('Facepile', () => {
       const wrapper = mount(
         <Facepile
           personas={ personas }
-          />);
+        />);
       let buttons = wrapper.find('.ms-Facepile-itemButton');
       expect(buttons).to.have.length(1, 'Clickable Persona should render');
       buttons.simulate('click');
       expect(clicked).to.be.equal(1, 'Persona should have been clickable');
+    });
+
+    it('personas and buttons render default size if not specified', () => {
+      const wrapper = shallow(
+        <Facepile
+          personas={ facepilePersonas }
+          addButtonProps={ {} }
+          showAddButton={ true }
+          overflowButtonProps={ {} }
+          overflowButtonType={ OverflowButtonType.downArrow }
+        />);
+      let addButton = wrapper.find('.ms-Persona.ms-Persona--xs.ms-Facepile-addButton.ms-Facepile-itemButton');
+      expect(addButton).to.have.length(1, 'Add button should render');
+      let faces = wrapper.find(Persona);
+      expect(faces).to.have.length(facepilePersonas.length, 'personas should render');
+      wrapper.find(Persona).forEach(function (node) {
+        expect(node.html()).to.contain('ms-Persona--xs');
+      });
+      let overflowButton = wrapper.find('.ms-Persona.ms-Persona--xs.ms-Facepile-overflowButton.ms-Facepile-itemButton');
+      expect(overflowButton).to.have.length(1, 'Overflow button should render');
+    });
+
+    it('personas and buttons render specified size', () => {
+      // Test XXS size renders
+      let wrapper = shallow(
+        <Facepile
+          personas={ facepilePersonas }
+          personaSize={ PersonaSize.extraExtraSmall }
+        />);
+      let faces = wrapper.find(Persona);
+      expect(faces).to.have.length(facepilePersonas.length, 'XXSmall personas should render');
+      wrapper.find(Persona).forEach(function (node) {
+        expect(node.html()).to.contain('ms-Persona--xxs');
+      });
+
+      // Test small size renders
+      wrapper = shallow(
+        <Facepile
+          personas={ facepilePersonas }
+          personaSize={ PersonaSize.small }
+        />);
+      faces = wrapper.find(Persona);
+      expect(faces).to.have.length(facepilePersonas.length, 'Small personas should render');
+      wrapper.find(Persona).forEach(function (node) {
+        expect(node.html()).to.contain('ms-Persona--sm');
+      });
     });
   });
 });
