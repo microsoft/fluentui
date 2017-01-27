@@ -6,6 +6,7 @@
 // Base Button styles
 
 @import '../../../common/common';
+@import './ButtonCoreVars';
 
 .ms-Button {
   @include focus-border();
@@ -16,6 +17,7 @@
   cursor: pointer;
   display: inline-block;
   border-style: solid;
+  padding: $button-core-default-padding;
 
   & + & {
     @include margin-left(6px);

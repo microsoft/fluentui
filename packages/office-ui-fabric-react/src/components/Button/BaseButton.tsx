@@ -86,6 +86,7 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
         {
           className: css(
             className,
+            this._baseClassName,
             this._variantClassName,
             {
               'disabled': (renderAsAnchor && disabled) // add disable styling if it is an anchor
