@@ -138,7 +138,8 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
         this._selectedIndicies = {};
         this._events.on(window, 'mousemove', this._onMouseMove);
         this._events.on(this._scrollableParent, 'scroll', this._onMouseMove);
-        this._events.on(window, 'mouseup', this._onMouseUp, true);
+        this._events.on(window, 'click', this._onMouseUp, true);
+
         this._autoScroll = new AutoScroll(this.refs.root);
         this._scrollTop = this._scrollableSurface.scrollTop;
         this._rootRect = this.refs.root.getBoundingClientRect();
@@ -207,15 +208,6 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     this._autoScroll = this._dragOrigin = this._lastMouseEvent = this._selectedIndicies = this._itemRectCache = undefined;
 
     if (this.state.dragRect) {
-
-      // When we've moused up from selection, make sure the click doesn't get executed.
-      let clickRemovalCallback = (clickEvent) => {
-        this._events.off(ev.target, 'click', clickRemovalCallback);
-        clickEvent.preventDefault();
-        clickEvent.stopPropagation();
-      };
-
-      this._events.on(ev.target, 'click', clickRemovalCallback, true);
 
       this.setState({
         dragRect: undefined

@@ -7,13 +7,13 @@ import {
 
 import { Checkbox } from '../../../index';
 
-import { ButtonNormalExample } from './examples/Button.Normal.Example';
+import { ButtonDefaultExample } from './examples/Button.Default.Example';
 import { ButtonPrimaryExample } from './examples/Button.Primary.Example';
-import { ButtonHeroExample } from './examples/Button.Hero.Example';
 import { ButtonCompoundExample } from './examples/Button.Compound.Example';
 import { ButtonCommandExample } from './examples/Button.Command.Example';
 import { ButtonIconExample } from './examples/Button.Icon.Example';
 import { ButtonAnchorExample } from './examples/Button.Anchor.Example';
+import { ButtonHeroExample } from './examples/Button.Hero.Example';
 import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
@@ -21,14 +21,14 @@ import { IComponentDemoPageProps } from '../../components/ComponentPage/ICompone
 import { IButtonDemoPageState } from './examples/IButtonDemoPageState';
 import './examples/Button.Basic.Example.scss';
 
-const ButtonNormalExampleCode = require('./examples/Button.Normal.Example.tsx');
-const ButtonPrimaryExampleCode = require('./examples/Button.Primary.Example.tsx');
-const ButtonHeroExampleCode = require('./examples/Button.Hero.Example.tsx');
-const ButtonCompoundExampleCode = require('./examples/Button.Compound.Example.tsx');
-const ButtonCommandExampleCode = require('./examples/Button.Command.Example.tsx');
-const ButtonIconExampleCode = require('./examples/Button.Icon.Example.tsx');
-const ButtonAnchorExampleCode = require('./examples/Button.Anchor.Example.tsx');
-const ButtonScreenReaderExampleCode = require('./examples/Button.ScreenReader.Example.tsx');
+const ButtonDefaultExampleCode = require('./examples/Button.Default.Example.tsx') as string;
+const ButtonPrimaryExampleCode = require('./examples/Button.Primary.Example.tsx') as string;
+const ButtonCompoundExampleCode = require('./examples/Button.Compound.Example.tsx') as string;
+const ButtonCommandExampleCode = require('./examples/Button.Command.Example.tsx') as string;
+const ButtonHeroExampleCode = require('./examples/Button.Hero.Example.tsx') as string;
+const ButtonIconExampleCode = require('./examples/Button.Icon.Example.tsx') as string;
+const ButtonAnchorExampleCode = require('./examples/Button.Anchor.Example.tsx') as string;
+const ButtonScreenReaderExampleCode = require('./examples/Button.ScreenReader.Example.tsx') as string;
 
 export class ButtonPage extends React.Component<IComponentDemoPageProps, IButtonDemoPageState> {
   private _url: string;
@@ -49,8 +49,8 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
         exampleCards={
           <div>
             <Checkbox label='Disable buttons' checked={ this.state.areButtonsDisabled } onChange={ this._onDisabledChanged.bind(this) } />
-            <ExampleCard title='Normal Button' code={ ButtonNormalExampleCode }>
-              <ButtonNormalExample disabled={ this.state.areButtonsDisabled } />
+            <ExampleCard title='Default Button' code={ ButtonDefaultExampleCode }>
+              <ButtonDefaultExample disabled={ this.state.areButtonsDisabled } />
             </ExampleCard>
             <ExampleCard title='Primary Button' code={ ButtonPrimaryExampleCode }>
               <ButtonPrimaryExample disabled={ this.state.areButtonsDisabled } />

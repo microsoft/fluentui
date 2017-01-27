@@ -52,6 +52,13 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /** Controls how/if the details list manages selection. */
   selectionMode?: SelectionMode;
 
+  /**
+   * By default, selection is cleared when clicking on an empty (non-focusable) section of the screen. Setting this value to true
+   * overrides that behavior and maintains selection.
+   * @default false
+   **/
+  selectionPreservedOnEmptyClick?: boolean;
+
   /** Controls how the columns are adjusted. */
   layoutMode?: DetailsListLayoutMode;
 
