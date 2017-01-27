@@ -11,8 +11,8 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const PersonaInitialsExampleCode = require('./examples/Persona.Initials.Example.tsx');
-const PersonaBasicExampleCode = require('./examples/Persona.Basic.Example.tsx');
+const PersonaInitialsExampleCode = require('./examples/Persona.Initials.Example.tsx') as string;
+const PersonaBasicExampleCode = require('./examples/Persona.Basic.Example.tsx') as string;
 
 export class PersonaPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;

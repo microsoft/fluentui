@@ -9,7 +9,7 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const BreadcrumbBasicExampleCode = require('./examples/Breadcrumb.Basic.Example.tsx');
+const BreadcrumbBasicExampleCode = require('./examples/Breadcrumb.Basic.Example.tsx') as string;
 
 export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
