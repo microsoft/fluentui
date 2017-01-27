@@ -12,9 +12,9 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const FacepileAddFaceExampleCode = require('./examples/Facepile.AddFace.Example.tsx');
-const FacepileBasicExampleCode = require('./examples/Facepile.Basic.Example.tsx');
-const FacepileOverflowExampleCode = require('./examples/Facepile.Overflow.Example.tsx');
+const FacepileAddFaceExampleCode = require('./examples/Facepile.AddFace.Example.tsx') as string;
+const FacepileBasicExampleCode = require('./examples/Facepile.Basic.Example.tsx') as string;
+const FacepileOverflowExampleCode = require('./examples/Facepile.Overflow.Example.tsx') as string;
 
 export class FacepilePage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;

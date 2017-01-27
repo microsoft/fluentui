@@ -10,7 +10,7 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const DropdownBasicExampleCode = require('./examples/Dropdown.Basic.Example.tsx');
+const DropdownBasicExampleCode = require('./examples/Dropdown.Basic.Example.tsx') as string;
 
 export class DropdownPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 25 Jan 2017 04:11:36 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Jan 2017 04:09:14 GMT and should not be manually modified.
+
+## 1.0.2
+Fri, 27 Jan 2017 04:09:14 GMT
+
+### Patches
+
+- autobind: Does not re-bind every time a decorated method is accessed anymore.
 
 ## 1.0.1
 Wed, 25 Jan 2017 04:11:36 GMT

@@ -14,10 +14,10 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const CalloutBasicExampleCode = require('./examples/Callout.Basic.Example.tsx');
-const CalloutNestedExampleCode = require('./examples/Callout.Nested.Example.tsx');
-const CalloutDirectionalExampleCode = require('./examples/Callout.Directional.Example.tsx');
-const CalloutCoverExampleCode = require('./examples/Callout.Cover.Example.tsx');
+const CalloutBasicExampleCode = require('./examples/Callout.Basic.Example.tsx') as string;
+const CalloutNestedExampleCode = require('./examples/Callout.Nested.Example.tsx') as string;
+const CalloutDirectionalExampleCode = require('./examples/Callout.Directional.Example.tsx') as string;
+const CalloutCoverExampleCode = require('./examples/Callout.Cover.Example.tsx') as string;
 
 export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -40,7 +40,7 @@ export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
               <CalloutBasicExample />
             </ExampleCard>
             <ExampleCard title='Nested callout... Callout with a commandbar with a sub menu' code={ CalloutNestedExampleCode }>
-              <CalloutNestedExample { ...cmdBarParamsTextAndIcons }/>
+              <CalloutNestedExample { ...cmdBarParamsTextAndIcons } />
             </ExampleCard>
             <ExampleCard title='Callout directional example' code={ CalloutDirectionalExampleCode }>
               <CalloutDirectionalExample />

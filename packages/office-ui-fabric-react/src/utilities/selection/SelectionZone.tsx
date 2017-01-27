@@ -3,6 +3,7 @@ import {
   BaseComponent,
   KeyCodes,
   autobind,
+  findScrollableParent,
   getParent,
   getDocument,
   getWindow,
@@ -67,10 +68,11 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 
   public componentDidMount() {
     let win = getWindow(this.refs.root);
+    let scrollElement = findScrollableParent(this.refs.root);
 
     // Track the latest modifier keys globally.
     this._events.on(win, 'keydown keyup', this._updateModifiers);
-    this._events.on(win, 'click', this._tryClearOnEmptyClick);
+    this._events.on(scrollElement, 'click', this._tryClearOnEmptyClick);
   }
 
   public render() {
