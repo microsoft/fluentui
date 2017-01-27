@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { loadTheme, ITheme } from '@microsoft/load-themed-styles';
-let Highlight = require('react-highlight');
+let Highlight = require('react-highlight') as any;
 import { defaultTheme } from './defaultTheme';
 import {
   Callout,
@@ -16,7 +16,7 @@ const ThemeCodeExample = require('./ThemeCodeExample.txt');
 export class ThemePage extends React.Component<any, any> {
 
   public refs: {
-    [ key: string ]: React.ReactInstance;
+    [key: string]: React.ReactInstance;
     list: DetailsList;
   };
 
@@ -56,7 +56,7 @@ export class ThemePage extends React.Component<any, any> {
             items={ colors }
             selectionMode={ SelectionMode.none }
             layoutMode={ LayoutMode.fixedColumns }
-            columns={[
+            columns={ [
               {
                 key: 'name',
                 name: 'Name',
@@ -82,22 +82,22 @@ export class ThemePage extends React.Component<any, any> {
                 fieldName: 'description',
                 minWidth: 90
               }
-            ]}
+            ] }
           />
 
           { colorPickerProps && (
-          <Callout
-            isBeakVisible={ false }
-            gapSpace={ 10 }
-            targetElement={ colorPickerProps.targetElement }
-            onDismiss={ this._onPickerDismiss }>
+            <Callout
+              isBeakVisible={ false }
+              gapSpace={ 10 }
+              targetElement={ colorPickerProps.targetElement }
+              onDismiss={ this._onPickerDismiss }>
 
-            <ColorPicker
-              color={ colorPickerProps.value }
-              onColorChanged={ this._onColorChanged.bind(this, colorPickerProps.index) }
-            />
+              <ColorPicker
+                color={ colorPickerProps.value }
+                onColorChanged={ this._onColorChanged.bind(this, colorPickerProps.index) }
+              />
 
-          </Callout>
+            </Callout>
           ) }
 
         </div>
