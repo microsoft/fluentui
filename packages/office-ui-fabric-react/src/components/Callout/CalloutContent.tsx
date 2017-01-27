@@ -95,7 +95,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       beakStyle,
       children,
       beakWidth } = this.props;
-    let { positions, slideDirectionalClassName } = this.state;
+    let { positions } = this.state;
     let beakStyleWidth = beakWidth;
 
     // This is here to support the old way of setting the beak size until version 1.0.0.
@@ -111,7 +111,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       width: beakStyleWidth
     };
 
-    let directionalClassName = positions && positions.directionalClassName ? `ms-u-${positions.directionalClassName}` : ''
+    let directionalClassName = positions && positions.directionalClassName ? `ms-u-${positions.directionalClassName}` : '';
 
     let contentMaxHeight: number = this._getMaxHeight();
     let beakVisible: boolean = isBeakVisible && (!!targetElement || !!target);
