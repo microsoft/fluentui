@@ -154,7 +154,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
 
   private _renderItemInCommandBar(item: IContextualMenuItem, index: number, expandedMenuItemKey: string, isFarItem?: boolean) {
     const itemKey = item.key || String(index);
-    const className = css(item.onClick ? 'ms-CommandBarItem-link' : 'ms-CommandBarItem-text', !item.name && 'ms-CommandBarItem--noName');
+    const className = css(item.onClick || item.href ? 'ms-CommandBarItem-link' : 'ms-CommandBarItem-text', !item.name && 'ms-CommandBarItem--noName');
     const classNameValue = css(className, { 'is-expanded': (expandedMenuItemKey === item.key) });
     let hasIcon = !!item.icon || !!item.iconProps;
 
@@ -186,7 +186,21 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
             aria-haspopup={ hasSubmenuItems(item) }
             >
             { (hasIcon) ? this._renderIcon(item) : (null) }
-            <span className='ms-CommandBarItem-commandText ms-font-m ms-font-weight-regular' aria-hidden='true' role='presentation'>{ item.name }</span>
+            { (() => {
+              if (item.href) {
+                return (<a className={ classNameValue }
+                        href={ item.href }
+                        role='link'>
+                        { item.name }
+                      </a>);
+              } else {
+                return (<span className={ classNameValue }
+                  aria-hidden='true'
+                  role='presentation'>
+                  { item.name }
+                  </span>);
+              }
+            })() }
           </div>;
         }
       })() }
