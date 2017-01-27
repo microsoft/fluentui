@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "dropdown: Add support for custom option renderer.",
+      "comment": "Dropdown: now supports a custom option renderer.",
       "type": "patch"
     }
   ],
