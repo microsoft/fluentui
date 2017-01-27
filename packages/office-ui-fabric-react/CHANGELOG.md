@@ -1,6 +1,76 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 19 Jan 2017 04:08:35 GMT and should not be manually modified.
+This log was last generated on Fri, 27 Jan 2017 04:09:14 GMT and should not be manually modified.
+
+## 1.3.3
+Fri, 27 Jan 2017 04:09:14 GMT
+
+### Patches
+
+- Callout: Add back in animations
+- Dropdown: now supports a custom option renderer.
+
+## 1.3.2
+Thu, 26 Jan 2017 16:10:53 GMT
+
+### Patches
+
+- ColorPicker: now is AMD friendly and uses local typesafe utilities that will be built with the rest of the code.
+- ContextualMenu: keydown events now call preventDefault to prevent the browser from doing unnecessary things.
+- SelectionZone: clicking in a non-interactive area clears selection only within the scrollable parent area. This refines the clear behavior slightly.
+- Dropdown: screen reader now will read out the current selected option on first focus of dropdown with an option selected.
+- Pivot: state updates may be asynchronous, and it should not rely on this.state for calculating the next state.
+
+## 1.3.1
+Thu, 26 Jan 2017 04:03:12 GMT
+
+### Patches
+
+- Button: Restored Hero variant and added normal button as an alias of default. Fixes issues introduced in #811
+
+## 1.3.0
+Wed, 25 Jan 2017 04:11:36 GMT
+
+### Minor changes
+
+- DetailsList: onItemContextMenu now works as expected.
+- List: add 'scrollToIndex' method
+- Update Button Component to use individual varient components rather than buttonType property
+
+### Patches
+
+- Breadcrumb: Fix focus rect by removing outline from .ms-Breadcrumb-itemLink on focus state.
+
+## 1.2.4
+Tue, 24 Jan 2017 16:20:54 GMT
+
+### Patches
+
+- Image: Load state is erroneously set as loaded when changing the src prop
+- MessageBar: fix first time message annoucement
+
+## 1.2.3
+Tue, 24 Jan 2017 04:11:19 GMT
+
+### Patches
+
+- ToolTip: Dismiss tooltip on scroll
+
+## 1.2.2
+Sat, 21 Jan 2017 04:06:35 GMT
+
+### Patches
+
+- PeoplePicker: personas now correctly truncate when the input field is too small.
+- Pickers: Fixed a bug where you could not delete multiple selected items"
+- Suggestions: Fixed an error which would occur if noResultsFound string was not passed to suggestions"
+
+## 1.2.1
+Fri, 20 Jan 2017 04:03:22 GMT
+
+### Patches
+
+- ContextualMenu: fix bug where an icon would have ms-icon--undefined in it's classname'
 
 ## 1.2.0
 Thu, 19 Jan 2017 04:08:35 GMT

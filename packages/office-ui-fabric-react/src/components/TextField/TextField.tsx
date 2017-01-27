@@ -244,7 +244,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         aria-invalid={ !!this.state.errorMessage }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
-        />
+      />
     );
   }
 
@@ -266,7 +266,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         aria-invalid={ !!this.state.errorMessage }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
-        />
+      />
     );
   }
 
