@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Dropdown: now supports a custom option renderer.",
+      "type": "patch"
+    }
+  ],
+  "email": "sferg@microsoft.com"
+}
