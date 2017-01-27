@@ -13,7 +13,7 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const PeoplePickerTypesExampleCode = require('./examples/PeoplePicker.Types.Example.tsx');
+const PeoplePickerTypesExampleCode = require('./examples/PeoplePicker.Types.Example.tsx') as string;
 
 export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -30,7 +30,7 @@ export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, a
         componentName='PeoplePickerExample'
         exampleCards={
           <div>
-            <ExampleCard title='People Pickers' code={PeoplePickerTypesExampleCode}>
+            <ExampleCard title='People Pickers' code={ PeoplePickerTypesExampleCode }>
               <PeoplePickerTypesExample />
             </ExampleCard>
           </div>
@@ -44,8 +44,8 @@ export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, a
             <span> are used to pick recipients.</span>
           </div>
         }
-        route={this._url}
-        isHeaderVisible={this.props.isHeaderVisible}
+        route={ this._url }
+        isHeaderVisible={ this.props.isHeaderVisible }
         related={
           <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/PeoplePicker.md'>Fabric JS</a>
         }

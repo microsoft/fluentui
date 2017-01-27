@@ -16,8 +16,8 @@ import { AppState } from '../../components/App/AppState';
 
 import './TooltipPage.scss';
 
-const TooltipBasicExampleCode = require('./examples/Tooltip.Basic.Example.tsx');
-const TooltipBottomExampleCode = require('./examples/Tooltip.Bottom.Example.tsx');
+const TooltipBasicExampleCode = require('./examples/Tooltip.Basic.Example.tsx') as string;
+const TooltipBottomExampleCode = require('./examples/Tooltip.Bottom.Example.tsx') as string;
 
 export class TooltipPage extends React.Component<any, any> {
   private _url: string;

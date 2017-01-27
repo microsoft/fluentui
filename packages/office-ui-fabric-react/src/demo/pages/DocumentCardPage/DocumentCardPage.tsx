@@ -12,9 +12,9 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const DocumentCardBasicExampleCode = require('./examples/DocumentCard.Basic.Example.tsx');
-const DocumentCardCompleteExampleCode = require('./examples/DocumentCard.Complete.Example.tsx');
-const DocumentCardCompactExampleCode = require('./examples/DocumentCard.Compact.Example.tsx');
+const DocumentCardBasicExampleCode = require('./examples/DocumentCard.Basic.Example.tsx') as string;
+const DocumentCardCompleteExampleCode = require('./examples/DocumentCard.Complete.Example.tsx') as string;
+const DocumentCardCompactExampleCode = require('./examples/DocumentCard.Compact.Example.tsx') as string;
 
 export class DocumentCardPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;

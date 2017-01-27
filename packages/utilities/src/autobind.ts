@@ -14,14 +14,29 @@
 export function autobind<T extends Function>(target: any, key: string, descriptor: TypedPropertyDescriptor<T>) {
   let fn = descriptor.value;
 
+  let defining = false;
+
   return {
     configurable: true,
 
     get() {
-      if (this === fn.prototype) {
+      if (defining || this === fn.prototype || this.hasOwnProperty(key)) {
         return fn;
       }
-      return fn.bind(this);
+
+      // Bind method only once, and update the property to return the bound value from now on
+      let fnBound = fn.bind(this);
+
+      defining = true;
+      Object.defineProperty(this, key, {
+        configurable: true,
+        writable: true,
+        enumerable: true,
+        value: fnBound
+      });
+      defining = false;
+
+      return fnBound;
     },
 
     set(newValue) {

@@ -66,7 +66,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
 
   public render() {
     let id = this._id;
-    let { className, label, options, disabled, isDisabled, onRenderItem = this._onRenderItem } = this.props;
+    let { className, label, options, disabled, isDisabled, onRenderItem = this._onRenderItem, onRenderOption = this._onRenderOption } = this.props;
     let { isOpen, selectedIndex } = this.state;
     let selectedOption = options[selectedIndex];
 
@@ -92,15 +92,17 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
           onClick={ this._onDropdownClick }
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='combobox'
+          aria-live={ disabled || isOpen ? 'off' : 'assertive' }
           aria-label={ label }
+          aria-describedby={ id + '-option' }
           aria-activedescendant={ selectedIndex >= 0 ? (this._id + '-list' + selectedIndex) : (this._id + '-list') }
-          >
+        >
           <span
+            id={ id + '-option' }
             className='ms-Dropdown-title'
             key={ selectedIndex }
-            aria-live={ disabled || isOpen ? 'off' : 'polite' }
             aria-atomic={ true }
-            >
+          >
             { selectedOption ? onRenderItem(selectedOption, this._onRenderItem) : '' }
           </span>
           <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown'></i>
@@ -115,12 +117,12 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
             directionalHint={ DirectionalHint.bottomLeftEdge }
             onDismiss={ this._onDismiss }
             onPositioned={ this._onPositioned }
-            >
+          >
             <FocusZone
               ref={ this._resolveRef('_focusZone') }
               direction={ FocusZoneDirection.vertical }
               defaultActiveElement={ '#' + id + '-list' + selectedIndex }
-              >
+            >
               <ul ref={ (c: HTMLElement) => this._optionList = c }
                 id={ id + '-list' }
                 style={ { width: this._dropDown.clientWidth - 2 } }
@@ -139,8 +141,8 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
                     role='option'
                     aria-selected={ selectedIndex === index ? 'true' : 'false' }
                     aria-label={ option.text }
-                    >
-                    { option.text }
+                  >
+                    { onRenderOption(option, this._onRenderOption) }
                   </li>
                 )) }
               </ul>
@@ -177,6 +179,11 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
 
   @autobind
   private _onRenderItem(item: IDropdownOption): JSX.Element {
+    return <span>{ item.text }</span>;
+  }
+
+  @autobind
+  private _onRenderOption(item: IDropdownOption): JSX.Element {
     return <span>{ item.text }</span>;
   }
 
