@@ -185,15 +185,18 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
             data-command-key={ index }
             aria-haspopup={ hasSubmenuItems(item) }
             >
-            { (hasIcon) ? this._renderIcon(item) : (null) }
             { (() => {
               if (item.href) {
                 return (<a className={ classNameValue }
                         href={ item.href }
                         role='link'>
-                        { item.name }
+                        { (hasIcon) ? this._renderIcon(item) : (null) }
+                        <span className='ms-CommandBar-linkText'
+                              aria-hidden='true'
+                              role='presentation'>{ item.name }</span>
                       </a>);
               } else {
+                { (hasIcon) ? this._renderIcon(item) : (null) }
                 return (<span className={ classNameValue }
                   aria-hidden='true'
                   role='presentation'>
