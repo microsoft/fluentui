@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  BaseComponent,
   buttonProperties,
   css,
   divProperties,
@@ -16,15 +17,53 @@ import {
 } from '../../Persona';
 import './Facepile.scss';
 
-export class Facepile extends React.Component<IFacepileProps, {}> {
+export interface IFacepileState {
+  maxDisplayablePersonas: number;
+}
+
+export class Facepile extends BaseComponent<IFacepileProps, IFacepileState> {
   public static defaultProps: IFacepileProps = {
+    availableWidth: 0,
     maxDisplayablePersonas: 5,
     personas: []
   };
 
+  private _members: HTMLElement;
+  private _lastPersonaRefKey: string;
+
+  public constructor(props: IFacepileProps) {
+    super(props);
+
+    this.state = {
+      maxDisplayablePersonas: props.maxDisplayablePersonas
+    };
+  }
+
+  public componentDidMount() {
+    this._rerenderDownToSize();
+  }
+
+  public componentDidUpdate() {
+    this._rerenderDownToSize();
+  }
+
+  public componentWillReceiveProps(nextProps: IFacepileProps) {
+    if (nextProps.availableWidth) {
+      this.setState({
+        maxDisplayablePersonas: nextProps.maxDisplayablePersonas
+      });
+    }
+  }
+
   public render(): JSX.Element {
-    let { chevronButtonProps, maxDisplayablePersonas, overflowButtonProps, overflowButtonType, personas, showAddButton } = this.props;
-    let numPersonasToShow: number = Math.min(personas.length, maxDisplayablePersonas);
+    let { chevronButtonProps, overflowButtonProps, overflowButtonType, personas, showAddButton } = this.props;
+
+    let maxShownPersonas: number = this.state.maxDisplayablePersonas;
+    if (this.props.availableWidth) {
+      maxShownPersonas = Math.floor(this.props.availableWidth / this._calculatePersonaWidth());
+      maxShownPersonas = Math.min(this.state.maxDisplayablePersonas, maxShownPersonas);
+    }
+    let numPersonasToShow: number = Math.min(personas.length, maxShownPersonas);
 
     // Added for deprecating chevronButtonProps.  Can remove after v1.0
     if (chevronButtonProps && !overflowButtonProps) {
@@ -34,7 +73,10 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
 
     return (
       <div className='ms-Facepile'>
-        <div className='ms-Facepile-members'>
+        <div
+          className='ms-Facepile-members'
+          ref={ this._resolveRef('_members') }
+          >
           { showAddButton ? this._getAddNewElement() : null }
           {
             personas.slice(0, numPersonasToShow).map((persona: IFacepilePersona, index: number) => {
@@ -51,6 +93,17 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
     );
   }
 
+  private _calculatePersonaWidth(): number {
+    let padding: number = 10;
+    return 32 + padding;
+  }
+
+  private _calculateUsedWidth(): number {
+    let offsetLeft: number = (this.refs[this._lastPersonaRefKey] as HTMLElement).offsetLeft;
+    let offsetWidth: number = (this.refs[this._lastPersonaRefKey] as HTMLElement).offsetWidth;
+    return offsetLeft + offsetWidth;
+  }
+
   private _getPersonaControl(persona: IFacepilePersona): JSX.Element {
     let { getPersonaProps } = this.props;
     return <Persona
@@ -65,6 +118,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   }
 
   private _getElementWithOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
+    this._lastPersonaRefKey = (!!persona.imageUrl ? 'i' : '') + index;
     return <button
       { ...getNativeProps(persona, buttonProperties) }
       className='ms-Facepile-itemButton'
@@ -79,6 +133,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   }
 
   private _getElementWithoutOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
+    this._lastPersonaRefKey = (!!persona.imageUrl ? 'i' : '') + index;
     return <div
       { ...getNativeProps(persona, divProperties) }
       className='ms-Facepile-itemButton'
@@ -130,6 +185,27 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
       className={ css('ms-Facepile-addButton', 'ms-Facepile-itemButton') }>
       <i className='ms-Icon msIcon ms-Icon--AddFriend' aria-hidden='true'></i>
     </button>;
+  }
+
+  private _rerenderDownToSize(): void {
+    if (!this.props.availableWidth) { return; }
+    // Grab all personas and calculate width usage
+    let usedWidth: number = this._calculateUsedWidth();
+    let maxPersonasAvailable: number = this.props.personas.length;
+
+    if (usedWidth > this.props.availableWidth) {
+      if (this.state.maxDisplayablePersonas > 1) {
+        if (maxPersonasAvailable < this.state.maxDisplayablePersonas) {
+          this.setState({
+            maxDisplayablePersonas: maxPersonasAvailable - 1
+          });
+        } else {
+          this.setState({
+            maxDisplayablePersonas: this.state.maxDisplayablePersonas - 1
+          });
+        }
+      }
+    }
   }
 
   private _onPersonaClick(persona: IFacepilePersona, ev?: React.MouseEvent<HTMLElement>): void {
