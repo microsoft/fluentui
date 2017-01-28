@@ -2,12 +2,12 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Added new XXS Persona size.  Fixed broken presence icons.",
+      "comment": "Added new XXS Persona size.  Fixed broken presence icons in high contrast mode.",
       "type": "minor"
     },
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Updated Facepile to be able to use new XXS Persona.  Made accessibility improvements to Facepile control.",
+      "comment": "Updated Facepile to be able to use new XXS Persona.",
       "type": "minor"
     }
   ],

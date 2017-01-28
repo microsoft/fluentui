@@ -7,7 +7,7 @@ import {
 } from '../../../../index';
 
 const examplePersona = {
-  imageUrl: './images/persona-female.png',
+  imageUrl: './images1/persona-female.png',
   imageInitials: 'AL',
   primaryText: 'Annie Lindqvist',
   secondaryText: 'Software Engineer',
