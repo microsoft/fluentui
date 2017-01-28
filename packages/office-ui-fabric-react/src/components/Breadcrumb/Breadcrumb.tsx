@@ -85,20 +85,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
             { renderedItems.map(
               (item, index) => (
                 <li className='ms-Breadcrumb-listItem' key={ item.key || String(index) } ref={ item.key || String(index) }>
-                  { (() => {
-                    if (item.onClick || item.href) {
-                      return (<a className='ms-Breadcrumb-itemLink'
-                              onClick={ this._onBreadcrumbClicked.bind(this, item) }
-                              href={ item.href ? item.href : null }
-                              role={ item.onClick ? 'button' : 'link' }>
-                              { item.text }
-                            </a>);
-                    } else {
-                      return (<span className='ms-Breadcrumb-item'>
-                              { item.text }
-                            </span>);
-                    }
-                  })() }
+                  { this._renderItem(item) }
                   <i className={ css('ms-Breadcrumb-chevron ms-Icon', getRTL() ? 'ms-Icon--ChevronLeft' : 'ms-Icon--ChevronRight') }></i>
                 </li>
               )) }
@@ -122,6 +109,21 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
         ) : (null) }
       </div>
     );
+  }
+
+  private _renderItem(item: IBreadcrumbItem) {
+    if (item.onClick || item.href) {
+      return (<a className='ms-Breadcrumb-itemLink'
+              onClick={ this._onBreadcrumbClicked.bind(this, item) }
+              href={ item.href ? item.href : null }
+              role={ item.onClick ? 'button' : 'link' }>
+              { item.text }
+            </a>);
+    } else {
+      return (<span className='ms-Breadcrumb-item'>
+              { item.text }
+            </span>);
+    }
   }
 
   @autobind
