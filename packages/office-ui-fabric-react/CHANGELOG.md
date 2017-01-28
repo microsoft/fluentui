@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 27 Jan 2017 04:09:14 GMT and should not be manually modified.
+This log was last generated on Sat, 28 Jan 2017 04:09:51 GMT and should not be manually modified.
+
+## 1.3.4
+Sat, 28 Jan 2017 04:09:51 GMT
+
+### Patches
+
+- Command Bar: context menus stay open after update if the open menu is still in the new props. Also, propagates most properties from subMenuProps to opened ContextualMenus
 
 ## 1.3.3
 Fri, 27 Jan 2017 04:09:14 GMT
