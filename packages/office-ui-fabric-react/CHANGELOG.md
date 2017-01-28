@@ -1,6 +1,39 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 25 Jan 2017 04:11:36 GMT and should not be manually modified.
+This log was last generated on Sat, 28 Jan 2017 04:09:51 GMT and should not be manually modified.
+
+## 1.3.4
+Sat, 28 Jan 2017 04:09:51 GMT
+
+### Patches
+
+- Command Bar: context menus stay open after update if the open menu is still in the new props. Also, propagates most properties from subMenuProps to opened ContextualMenus
+
+## 1.3.3
+Fri, 27 Jan 2017 04:09:14 GMT
+
+### Patches
+
+- Callout: Add back in animations
+- Dropdown: now supports a custom option renderer.
+
+## 1.3.2
+Thu, 26 Jan 2017 16:10:53 GMT
+
+### Patches
+
+- ColorPicker: now is AMD friendly and uses local typesafe utilities that will be built with the rest of the code.
+- ContextualMenu: keydown events now call preventDefault to prevent the browser from doing unnecessary things.
+- SelectionZone: clicking in a non-interactive area clears selection only within the scrollable parent area. This refines the clear behavior slightly.
+- Dropdown: screen reader now will read out the current selected option on first focus of dropdown with an option selected.
+- Pivot: state updates may be asynchronous, and it should not rely on this.state for calculating the next state.
+
+## 1.3.1
+Thu, 26 Jan 2017 04:03:12 GMT
+
+### Patches
+
+- Button: Restored Hero variant and added normal button as an alias of default. Fixes issues introduced in #811
 
 ## 1.3.0
 Wed, 25 Jan 2017 04:11:36 GMT

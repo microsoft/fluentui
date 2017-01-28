@@ -11,8 +11,8 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const SearchBoxSmallExampleCode = require('./examples/SearchBox.Small.Example.tsx');
-const SearchBoxFullSizeExampleCode = require('./examples/SearchBox.FullSize.Example.tsx');
+const SearchBoxSmallExampleCode = require('./examples/SearchBox.Small.Example.tsx') as string;
+const SearchBoxFullSizeExampleCode = require('./examples/SearchBox.FullSize.Example.tsx') as string;
 
 export class SearchBoxPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;

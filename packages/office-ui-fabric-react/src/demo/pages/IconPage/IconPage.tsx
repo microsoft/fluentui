@@ -12,9 +12,9 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const IconBasicExampleCode = require('./examples/Icon.Basic.Example.tsx');
-const IconColorExampleCode = require('./examples/Icon.Color.Example.tsx');
-const IconImageSheetExampleCode = require('./examples/Icon.ImageSheet.Example.tsx');
+const IconBasicExampleCode = require('./examples/Icon.Basic.Example.tsx') as string;
+const IconColorExampleCode = require('./examples/Icon.Color.Example.tsx') as string;
+const IconImageSheetExampleCode = require('./examples/Icon.ImageSheet.Example.tsx') as string;
 
 export class IconPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;

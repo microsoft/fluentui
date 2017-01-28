@@ -16,12 +16,12 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const ImageDefaultExampleCode = require('./examples/Image.Default.Example.tsx');
-const ImageCenterExampleCode = require('./examples/Image.Center.Example.tsx');
-const ImageContainExampleCode = require('./examples/Image.Contain.Example.tsx');
-const ImageCoverExampleCode = require('./examples/Image.Cover.Example.tsx');
-const ImageNoneExampleCode = require('./examples/Image.None.Example.tsx');
-const ImageMaximizeFrameExampleCode = require('./examples/Image.MaximizeFrame.Example.tsx');
+const ImageDefaultExampleCode = require('./examples/Image.Default.Example.tsx') as string;
+const ImageCenterExampleCode = require('./examples/Image.Center.Example.tsx') as string;
+const ImageContainExampleCode = require('./examples/Image.Contain.Example.tsx') as string;
+const ImageCoverExampleCode = require('./examples/Image.Cover.Example.tsx') as string;
+const ImageNoneExampleCode = require('./examples/Image.None.Example.tsx') as string;
+const ImageMaximizeFrameExampleCode = require('./examples/Image.MaximizeFrame.Example.tsx') as string;
 
 export class ImagePage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
