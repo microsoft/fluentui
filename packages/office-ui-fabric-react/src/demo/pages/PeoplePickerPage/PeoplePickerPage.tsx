@@ -70,6 +70,9 @@ export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, a
               <li>Use the PeoplePicker without sufficient space</li>
             </ul>
           </div>
+        }
+        related={
+          <a href='https://dev.office.com/fabric-js/Components/PeoplePicker/PeoplePicker.html'>Fabric JS</a>
         }>
       </ComponentPage>
     );
