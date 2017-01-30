@@ -28,7 +28,6 @@ export class Facepile extends BaseComponent<IFacepileProps, IFacepileState> {
     personas: []
   };
 
-  private _members: HTMLElement;
   private _lastPersonaRefKey: string;
 
   public constructor(props: IFacepileProps) {
@@ -75,7 +74,6 @@ export class Facepile extends BaseComponent<IFacepileProps, IFacepileState> {
       <div className='ms-Facepile'>
         <div
           className='ms-Facepile-members'
-          ref={ this._resolveRef('_members') }
           >
           { showAddButton ? this._getAddNewElement() : null }
           {
@@ -99,9 +97,13 @@ export class Facepile extends BaseComponent<IFacepileProps, IFacepileState> {
   }
 
   private _calculateUsedWidth(): number {
-    let offsetLeft: number = (this.refs[this._lastPersonaRefKey] as HTMLElement).offsetLeft;
-    let offsetWidth: number = (this.refs[this._lastPersonaRefKey] as HTMLElement).offsetWidth;
-    return offsetLeft + offsetWidth;
+    let control = (this.refs[this._lastPersonaRefKey] as HTMLElement);
+    if (control) {
+      let offsetLeft: number = control.offsetLeft;
+      let offsetWidth: number = control.offsetWidth;
+      return offsetLeft + offsetWidth;
+    }
+    return 0;
   }
 
   private _getPersonaControl(persona: IFacepilePersona): JSX.Element {

@@ -21,6 +21,7 @@ const facepileProps: IFacepileProps = {
 };
 
 export interface IFacepileOverflowExampleState {
+  availableWidth: number;
   displayedPersonas: any;
   overflowButtonType: OverflowButtonType;
 }
@@ -30,13 +31,15 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
     super();
 
     this.state = {
+      availableWidth: 200,
       displayedPersonas: 5,
-      overflowButtonType: OverflowButtonType.none
+      overflowButtonType: OverflowButtonType.descriptive
     };
   }
 
   public render() {
-    let { displayedPersonas, overflowButtonType } = this.state;
+    let { availableWidth, displayedPersonas, overflowButtonType } = this.state;
+    facepileProps.availableWidth = availableWidth;
     facepileProps.maxDisplayablePersonas = displayedPersonas;
     facepileProps.overflowButtonType = overflowButtonType;
 
@@ -46,12 +49,24 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
         <Slider
           label='Maximum number of Personas Shown:'
           min={ 0 }
-          max={ 6 }
+          max={ 7 }
           step={ 1 }
           showValue={ true }
           value={ this.state.displayedPersonas }
           onChange={ value => this.setState((prevState: IFacepileOverflowExampleState) => {
             prevState.displayedPersonas = value;
+            return prevState;
+          }) }
+          />
+        <Slider
+          label='Maximum width available:'
+          min={ 10 }
+          max={ 300 }
+          step={ 25 }
+          showValue={ true }
+          value={ this.state.availableWidth }
+          onChange={ value => this.setState((prevState: IFacepileOverflowExampleState) => {
+            prevState.availableWidth = value;
             return prevState;
           }) }
           />

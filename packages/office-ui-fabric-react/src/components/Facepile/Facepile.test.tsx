@@ -9,7 +9,6 @@ let { expect } = chai;
 
 import { Facepile } from './Facepile';
 import { IFacepilePersona, OverflowButtonType } from './Facepile.Props';
-import { Persona, PersonaSize } from '../Persona';
 
 describe('Facepile', () => {
   const facepilePersonas: IFacepilePersona[] = [
@@ -142,7 +141,7 @@ describe('Facepile', () => {
         <Facepile
           personas={ facepilePersonas.concat(facepilePersonas, facepilePersonas, facepilePersonas) }
           maxDisplayablePersonas={ 99 }
-          availableWidth={ 100 }
+          availableWidth={ 140 }
           />);
       let buttons = wrapper.find('.ms-Facepile-itemButton');
       expect(buttons).to.have.length(3, 'Only three personas should be rendered');
