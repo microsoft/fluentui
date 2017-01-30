@@ -10,7 +10,7 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const RatingBasicExampleCode = require('./examples/Rating.Basic.Example.tsx');
+const RatingBasicExampleCode = require('./examples/Rating.Basic.Example.tsx') as string;
 
 export class RatingPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;

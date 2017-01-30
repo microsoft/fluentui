@@ -3,6 +3,7 @@ import {
   BaseComponent,
   KeyCodes,
   autobind,
+  findScrollableParent,
   getParent,
   getDocument,
   getWindow,
@@ -44,6 +45,7 @@ export interface ISelectionZoneProps extends React.Props<SelectionZone> {
   selectionPreservedOnEmptyClick?: boolean;
   isSelectedOnFocus?: boolean;
   onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
+  onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void;
 }
 
 export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
@@ -66,10 +68,11 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 
   public componentDidMount() {
     let win = getWindow(this.refs.root);
+    let scrollElement = findScrollableParent(this.refs.root);
 
     // Track the latest modifier keys globally.
     this._events.on(win, 'keydown keyup', this._updateModifiers);
-    this._events.on(win, 'click', this._tryClearOnEmptyClick);
+    this._events.on(scrollElement, 'click', this._tryClearOnEmptyClick);
   }
 
   public render() {
@@ -81,11 +84,12 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         onMouseDown={ this._onMouseDown }
         onClick={ this._onClick }
         onDoubleClick={ this._onDoubleClick }
+        onContextMenu={ this._onContextMenu }
         { ...{
           onMouseDownCapture: this.ignoreNextFocus,
           onFocusCapture: this._onFocus
         } }
-        >
+      >
         { this.props.children }
       </div>
     );
@@ -194,6 +198,22 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
       }
 
       target = getParent(target);
+    }
+  }
+
+  @autobind
+  private _onContextMenu(ev: React.MouseEvent<HTMLElement>) {
+    const target = ev.target as HTMLElement;
+
+    const { onItemContextMenu, selection } = this.props;
+    if (onItemContextMenu) {
+      const itemRoot = this._findItemRoot(target);
+
+      if (itemRoot) {
+        const index = this._getItemIndex(itemRoot);
+        onItemContextMenu(selection.getItems()[index], index, ev.nativeEvent);
+        ev.preventDefault();
+      }
     }
   }
 

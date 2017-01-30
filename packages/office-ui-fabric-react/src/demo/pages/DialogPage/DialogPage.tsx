@@ -13,10 +13,10 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const DialogBasicExampleCode = require('./examples/Dialog.Basic.Example.tsx');
-const DialogLargeHeaderExampleCode = require('./examples/Dialog.LargeHeader.Example.tsx');
-const DialogCloseExampleCode = require('./examples/Dialog.Close.Example.tsx');
-const DialogBlockingExampleCode = require('./examples/Dialog.Blocking.Example.tsx');
+const DialogBasicExampleCode = require('./examples/Dialog.Basic.Example.tsx') as string;
+const DialogLargeHeaderExampleCode = require('./examples/Dialog.LargeHeader.Example.tsx') as string;
+const DialogCloseExampleCode = require('./examples/Dialog.Close.Example.tsx') as string;
+const DialogBlockingExampleCode = require('./examples/Dialog.Blocking.Example.tsx') as string;
 
 export class DialogPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
