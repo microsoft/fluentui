@@ -19,6 +19,11 @@
     {
       "packageName": "todo-app",
       "projectFolder": "packages/examples/todo-app"
+    },
+    {
+      "packageName": "fabric-website",
+      "projectFolder": "apps/fabric-website",
+      "shouldPublish": false
     }
   ]
 }

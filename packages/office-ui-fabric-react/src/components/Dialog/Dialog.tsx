@@ -33,7 +33,8 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
     isBlocking: false,
     className: '',
     containerClassName: '',
-    contentClassName: ''
+    contentClassName: '',
+    topButtonsProps: []
   };
 
   constructor(props: IDialogProps) {
@@ -115,7 +116,7 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
             ariaLabelledBy={ title ? id + '-title' : '' }
             ariaDescribedBy={ subText ? id + '-subText' : '' }
             onDismiss={ onDismiss }
-            >
+          >
             <div
               className={ dialogClassName }
               ref={ this._onDialogRef }>
@@ -130,13 +131,16 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
                 <div className='ms-Dialog-header'>
                   <p className='ms-Dialog-title' id={ id + '-title' }>{ title }</p>
                   <div className='ms-Dialog-topButton'>
+                    { this.props.topButtonsProps.map((props) => (
+                      <Button {...props} />
+                    )) }
                     <Button
                       className='ms-Dialog-button ms-Dialog-button--close'
                       buttonType={ ButtonType.icon }
                       icon='Cancel'
                       ariaLabel={ closeButtonAriaLabel }
                       onClick={ onDismiss }
-                      />
+                    />
                   </div>
                 </div>
                 <div className='ms-Dialog-inner'>

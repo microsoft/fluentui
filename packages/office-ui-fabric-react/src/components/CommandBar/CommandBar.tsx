@@ -10,7 +10,7 @@ import {
 } from '../../Utilities';
 import { ICommandBar, ICommandBarProps } from './CommandBar.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { ContextualMenu, IContextualMenuItem, getSubmenuItems, hasSubmenuItems } from '../../ContextualMenu';
+import { ContextualMenu, IContextualMenuProps, IContextualMenuItem, hasSubmenuItems } from '../../ContextualMenu';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   Icon,
@@ -27,7 +27,7 @@ export interface ICommandBarState {
   renderedOverflowItems?: IContextualMenuItem[];
   expandedMenuItemKey?: string;
   expandedMenuId?: string;
-  contextualMenuItems?: IContextualMenuItem[];
+  contextualMenuProps?: IContextualMenuProps;
   contextualMenuTarget?: HTMLElement;
   renderedFarItems?: IContextualMenuItem[];
 }
@@ -87,7 +87,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
 
   public render() {
     const { isSearchBoxVisible, searchPlaceholderText, className } = this.props;
-    const { renderedItems, contextualMenuItems, expandedMenuItemKey, expandedMenuId, renderedOverflowItems, contextualMenuTarget, renderedFarItems } = this.state;
+    const { renderedItems, contextualMenuProps, expandedMenuItemKey, expandedMenuId, renderedOverflowItems, contextualMenuTarget, renderedFarItems } = this.state;
     let searchBox;
 
     if (isSearchBoxVisible) {
@@ -133,15 +133,15 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
             )) }
           </div>
         </FocusZone>
-        { (contextualMenuItems) ?
+        { (contextualMenuProps) ?
           (<ContextualMenu
-            labelElementId={ expandedMenuId }
             className='ms-CommandBar-menuHost'
-            items={ contextualMenuItems }
-            targetElement={ contextualMenuTarget }
-            onDismiss={ this._onContextMenuDismiss }
             isBeakVisible={ true }
             directionalHint={ DirectionalHint.bottomAutoEdge }
+            { ...contextualMenuProps }
+            targetElement={ contextualMenuTarget }
+            labelElementId={ expandedMenuId }
+            onDismiss={ this._onContextMenuDismiss }
             />
           ) : (null) }
       </div>
@@ -271,12 +271,16 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
 
     }
 
+    let renderedContextualMenuProps = this._getContextualMenuPropsAfterUpdate(
+      renderedItems.concat(this.state.renderedFarItems),
+      renderedOverflowItems);
+
     this.setState({
       renderedItems: renderedItems,
       renderedOverflowItems: renderedOverflowItems,
-      expandedMenuItemKey: null,
-      contextualMenuItems: null,
-      contextualMenuTarget: null
+      expandedMenuItemKey: renderedContextualMenuProps ? this.state.expandedMenuItemKey : null,
+      contextualMenuProps: renderedContextualMenuProps,
+      contextualMenuTarget: renderedContextualMenuProps ? this.state.contextualMenuTarget : null
     });
   }
 
@@ -287,7 +291,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
       this.setState({
         expandedMenuId: ev.currentTarget.id,
         expandedMenuItemKey: item.key,
-        contextualMenuItems: getSubmenuItems(item),
+        contextualMenuProps: this._getContextualMenuPropsFromItem(item),
         contextualMenuTarget: ev.currentTarget
       });
     }
@@ -304,7 +308,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
       this.setState({
         expandedMenuId: ev.currentTarget.id,
         expandedMenuItemKey: OVERFLOW_KEY,
-        contextualMenuItems: this.state.renderedOverflowItems,
+        contextualMenuProps: { items: this.state.renderedOverflowItems },
         contextualMenuTarget: ev.currentTarget
       });
     }
@@ -313,9 +317,12 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
   @autobind
   private _onContextMenuDismiss(ev?: any) {
     if (!ev || !ev.relatedTarget || !this.refs.commandSurface.contains(ev.relatedTarget as HTMLElement)) {
+      if (this.state.contextualMenuProps.onDismiss) {
+        this.state.contextualMenuProps.onDismiss(ev);
+      }
       this.setState({
         expandedMenuItemKey: null,
-        contextualMenuItems: null,
+        contextualMenuProps: null,
         contextualMenuTarget: null
       });
     } else {
@@ -328,8 +335,32 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     return {
       renderedItems: nextProps.items || [],
       renderedOverflowItems: null,
-      contextualMenuItems: null,
+      contextualMenuProps: this._getContextualMenuPropsAfterUpdate(
+        nextProps.items.concat(nextProps.farItems),
+        nextProps.overflowItems),
       renderedFarItems: nextProps.farItems || null
     };
+  }
+
+  private _getContextualMenuPropsAfterUpdate(renderedItems: IContextualMenuItem[], overflowItems: IContextualMenuItem[]) {
+    if (this.state && this.state.expandedMenuItemKey) {
+      if (this.state.expandedMenuItemKey === OVERFLOW_KEY) {
+        // Keep the overflow menu open
+        return { items: overflowItems };
+      } else {
+        // Find the currently open key in the new props
+        let matchingItem = renderedItems.filter(item => item.key === this.state.expandedMenuItemKey);
+
+        if (matchingItem.length === 1) {
+          return this._getContextualMenuPropsFromItem(matchingItem[0]);
+        }
+      }
+    }
+
+    return null;
+  }
+
+  private _getContextualMenuPropsFromItem(item: IContextualMenuItem) {
+    return item.subMenuProps || (item.items && { items: item.items });
   }
 }

@@ -1,0 +1,77 @@
+{
+  "headers": [
+    "Class",
+    "Result"
+  ],
+  "data": [
+    [
+      {
+        "value": "ms-u-screenReaderOnly"
+      },
+      {
+        "value": "Visually Hides content while still keeping it accessible for screen readers."
+      }
+    ],
+    [
+      {
+        "value": "ms-u-borderBox"
+      },
+      {
+        "value": "Set the value of 'box-sizing' to 'border-box', so that the element's padding and border are included in its width."
+      }
+    ],
+    [
+      {
+        "value": "ms-u-clearfix"
+      },
+      {
+        "value": "Prevents the container of a floated element from collapsing."
+      }
+    ],
+    
+    [
+      {
+        "value": "ms-u-textAlignLeft"
+      },
+      {
+        "value": "Sets the value of 'text-align' to 'left'."
+      }
+    ],
+    
+    [
+      {
+        "value": "ms-u-textAlignCenter"
+      },
+      {
+        "value": "Sets the value of 'text-align' to 'center'."
+      }
+    ],
+    
+    [
+      {
+        "value": "ms-u-textAlignRight"
+      },
+      {
+        "value": "Sets the value of 'text-align' to 'right'."
+      }
+    ],
+    
+    [
+      {
+        "value": "ms-u-borderBase"
+      },
+      {
+        "value": "Applies a solid, 1px wide border to the element. A border color class can then be used to set a color for the border."
+      }
+    ],
+    
+    [
+      {
+        "value": "ms-u-normalize"
+      },
+      {
+        "value": "Sets a variety of baseline styles for the element. This helper applies 'border-box' box sizing, removes any margins and padding, and removes box shadow."
+      }
+    ]
+  ]
+}
