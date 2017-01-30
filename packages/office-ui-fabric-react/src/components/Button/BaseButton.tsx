@@ -36,7 +36,7 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
   }
 
   public render(): JSX.Element {
-    const { className, children, icon, description, ariaLabel, ariaDescription, href, disabled } = this.props;
+    const { className, description, ariaLabel, ariaDescription, href, disabled } = this.props;
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
     const renderAsAnchor: boolean = !!href;
     const tag = renderAsAnchor ? 'a' : 'button';
@@ -81,9 +81,10 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
           'aria-describedby': ariaDescribedBy
         }),
       this.onRenderIcon(),
-      this.onRenderText(),
+      this.onRenderLabel(),
       this.onRenderDescription(),
-      ariaDescriptionSpan
+      ariaDescriptionSpan,
+      this.onRenderChildren(),
     );
   }
 
@@ -105,14 +106,23 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
       );
   }
 
-  protected onRenderText() {
+  protected onRenderChildren() {
+    let { label, children } = this.props;
+
+    // If you provide a label, we will render children; otherwise we assume that the label is
+    // pulled from children and as such we should avoid redundantly rendering trhe children.
+    return label ? children : null;
+  }
+
+  protected onRenderLabel() {
     let { children, label } = this.props;
 
-    return (
+    return [
       <span className={ `${this._baseClassName}-label` } id={ this._labelId } >
         { label ? label : children }
-      </span>
-    );
+      </span>,
+      (label ? children : null)
+    ];
   }
 
   protected onRenderDescription() {

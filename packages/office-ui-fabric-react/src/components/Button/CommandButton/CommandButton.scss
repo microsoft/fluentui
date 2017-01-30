@@ -11,9 +11,7 @@ $button-commandButtonHeight: 40px;
 
 .ms-Button--command {
   @include text-align(left);
-  & + & {
-    @include margin-left(14px);
-  }
+
   background-color: transparent;
   border: none;
   height: $button-commandButtonHeight;
@@ -62,8 +60,5 @@ $button-commandButtonHeight: 40px;
     .ms-Button-icon {
       color: $ms-color-neutralTertiaryAlt;
     }
-  }
-  & + & {
-    @include margin-left(14px);
   }
 }

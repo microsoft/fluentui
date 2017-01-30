@@ -10,13 +10,14 @@
 
 .ms-Button--primary {
   height: $button-core-default-height;
+  line-height: $button-core-default-height;
   min-width: $button-core-default-minWidth;
   background-color: $ms-color-themePrimary;
   border-color: $ms-color-themePrimary;
+  color: $ms-color-white;
 
   .ms-Button-label {
     @include ms-font-m;
-    color: $ms-color-white;
   }
 
   &:hover {
@@ -41,7 +42,7 @@
     color: $ms-color-white;
 
     &:before {
-      border-color: $ms-color-themeDarker;
+      border-color: $ms-color-themeLighter;
     }
   }
 }
