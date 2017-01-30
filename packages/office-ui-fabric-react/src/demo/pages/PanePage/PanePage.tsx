@@ -13,7 +13,7 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const PaneBasicExampleCode = require('./examples/Pane.Basic.Example.tsx');
+const PaneBasicExampleCode = require('./examples/Pane.Basic.Example.tsx') as string;
 
 export class PanePage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
