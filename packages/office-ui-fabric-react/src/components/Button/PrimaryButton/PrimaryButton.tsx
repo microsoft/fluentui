@@ -4,4 +4,8 @@ import '../ButtonCore/ButtonCore.scss';
 
 export class PrimaryButton extends BaseButton {
   protected _variantClassName = 'ms-Button--primary';
+
+  protected onRenderDescription() {
+    return null;
+  }
 }

@@ -42,22 +42,6 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     const tag = renderAsAnchor ? 'a' : 'button';
     const nativeProps = getNativeProps(this.props.rootProps || this.props, renderAsAnchor ? anchorProperties : buttonProperties);
 
-    const iconSpan = icon ? (
-      <span className={ `${this._baseClassName}-icon` }>
-        <i className={ `ms-Icon ms-Icon--${icon}` } />
-      </span>
-    ) : (
-        null
-      );
-
-    // ms-Button-description is only shown when the button type is compound.
-    // In other cases it will not be displayed.
-    const descriptionSpan: React.ReactElement<React.HTMLProps<HTMLSpanElement>> = description ? (
-      <span className={ `${this._baseClassName}-description` } id={ _descriptionId }>{ description }</span>
-    ) : (
-        null
-      );
-
     // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
     // otherwise it will be assigned to descriptionSpan.
     const ariaDescriptionSpan: React.ReactElement<React.HTMLProps<HTMLSpanElement>> = ariaDescription
@@ -96,9 +80,9 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
           'aria-labelledby': ariaLabel ? null : _labelId,
           'aria-describedby': ariaDescribedBy
         }),
-      iconSpan,
-      <span className={ `${this._baseClassName}-label` } id={ _labelId } >{ children }</span>,
-      descriptionSpan,
+      this.onRenderIcon(),
+      this.onRenderText(),
+      this.onRenderDescription(),
       ariaDescriptionSpan
     );
   }
@@ -107,5 +91,39 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     if (this._buttonElement) {
       this._buttonElement.focus();
     }
+  }
+
+  protected onRenderIcon() {
+    let { icon } = this.props;
+
+    return icon ? (
+      <span className={ `${this._baseClassName}-icon` }>
+        <i className={ `ms-Icon ms-Icon--${icon}` } />
+      </span>
+    ) : (
+        null
+      );
+  }
+
+  protected onRenderText() {
+    let { children, label } = this.props;
+
+    return (
+      <span className={ `${this._baseClassName}-label` } id={ this._labelId } >
+        { label ? label : children }
+      </span>
+    );
+  }
+
+  protected onRenderDescription() {
+    let { description } = this.props;
+
+    // ms-Button-description is only shown when the button type is compound.
+    // In other cases it will not be displayed.
+    return description ? (
+      <span className={ `${this._baseClassName}-description` } id={ this._descriptionId }>{ description }</span>
+    ) : (
+        null
+      );
   }
 }

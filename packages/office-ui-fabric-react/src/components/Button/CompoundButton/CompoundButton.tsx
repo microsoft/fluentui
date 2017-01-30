@@ -4,4 +4,8 @@ import '../ButtonCore/ButtonCore.scss';
 
 export class CompoundButton extends BaseButton {
   protected _variantClassName = 'ms-Button--compound';
+
+  protected onRenderIcon() {
+    return null;
+  }
 }
