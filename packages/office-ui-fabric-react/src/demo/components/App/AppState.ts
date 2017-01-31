@@ -351,7 +351,7 @@ export const AppState: IAppState = {
         },
         {
           getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/ThemePage/ThemePage').ThemePage)),
-          key: 'Themes',
+          key: 'Theme',
           name: 'Themes',
           url: '#examples/themes'
         }

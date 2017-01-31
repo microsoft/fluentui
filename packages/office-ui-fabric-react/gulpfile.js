@@ -172,11 +172,12 @@ let runSSRTests = build.subTask('run-ssr-tests', function (gulp, buildOptions, d
   let Mocha = require('mocha');
   let mocha = new Mocha();
   mocha.files = ['ssr-test.js'];
-  mocha.run();
-  done();
+  mocha.run(done);
 });
 
 runSSRTests.isEnabled = () => isProduction;
+
+build.task('ssr', runSSRTests);
 
 let defaultTasks = build.serial(
   build.preCopy,
