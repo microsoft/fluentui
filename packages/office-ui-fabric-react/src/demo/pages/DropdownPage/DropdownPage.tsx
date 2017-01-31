@@ -56,7 +56,7 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, any> 
           <div></div>
         }
         related={
-          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Dropdown.md'>Fabric JS</a>
+          <a href='https://dev.office.com/fabric-js/Components/Dropdown/Dropdown.html'>Fabric JS</a>
         }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>

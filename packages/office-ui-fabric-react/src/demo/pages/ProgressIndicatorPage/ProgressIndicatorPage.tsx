@@ -84,7 +84,7 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
           </div>
         }
         related={
-          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/ProgressIndicator.md'>Fabric JS</a>
+          <a href='https://dev.office.com/fabric-js/Components/ProgressIndicator/ProgressIndicator.html'>Fabric JS</a>
         }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
