@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Fixing utility import to be AMD friendly.",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
