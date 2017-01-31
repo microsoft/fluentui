@@ -41,7 +41,7 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
           </div>
         }
         related={
-          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Breadcrumb.md'>Fabric JS</a>
+          <a href='https://dev.office.com/fabric-js/Components/Breadcrumb/Breadcrumb.html'>Fabric JS</a>
         }
         bestPractices={
           <div></div>
