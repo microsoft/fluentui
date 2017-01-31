@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Adding Deffered Highlight to fabric react.",
+      "type": "patch"
+    }
+  ],
+  "email": "miljo@microsoft.com"
+}
