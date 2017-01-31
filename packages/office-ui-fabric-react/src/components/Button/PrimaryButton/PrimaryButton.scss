@@ -9,6 +9,8 @@
 // Primary Button styles
 
 .ms-Button--primary {
+  @include focus-border(1px, $ms-color-white);
+
   height: $button-core-default-height;
   line-height: $button-core-default-height;
   min-width: $button-core-default-minWidth;
@@ -17,7 +19,8 @@
   color: $ms-color-white;
 
   .ms-Button-label {
-    @include ms-font-m;
+    font-weight: $ms-font-weight-semibold;
+    font-size: $ms-font-size-m;
   }
 
   &:hover {

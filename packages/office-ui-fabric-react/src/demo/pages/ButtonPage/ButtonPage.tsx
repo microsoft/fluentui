@@ -13,7 +13,6 @@ import { ButtonCompoundExample } from './examples/Button.Compound.Example';
 import { ButtonCommandExample } from './examples/Button.Command.Example';
 import { ButtonIconExample } from './examples/Button.Icon.Example';
 import { ButtonAnchorExample } from './examples/Button.Anchor.Example';
-import { ButtonHeroExample } from './examples/Button.Hero.Example';
 import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
@@ -54,9 +53,6 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
             </ExampleCard>
             <ExampleCard title='Primary Button' code={ ButtonPrimaryExampleCode }>
               <ButtonPrimaryExample disabled={ this.state.areButtonsDisabled } />
-            </ExampleCard>
-            <ExampleCard title='Hero Button' code={ ButtonHeroExampleCode }>
-              <ButtonHeroExample disabled={ this.state.areButtonsDisabled } />
             </ExampleCard>
             <ExampleCard title='Compound Button' code={ ButtonCompoundExampleCode }>
               <ButtonCompoundExample disabled={ this.state.areButtonsDisabled } />

@@ -11,8 +11,7 @@
 .ms-Button {
   @include focus-border();
   @include ms-font-m;
-
-  // @include ms-u-normalize;
+  user-select: none;
 
   border-width: 0;
   text-decoration: none;

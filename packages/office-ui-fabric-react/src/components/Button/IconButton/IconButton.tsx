@@ -7,11 +7,15 @@ import '../ButtonCore/ButtonCore.scss';
 export class IconButton extends BaseButton {
   protected _variantClassName = 'ms-Button--icon';
 
-  protected onRenderText() {
+  protected onRenderLabel() {
     return null;
   }
 
   protected onRenderDescription() {
+    return null;
+  }
+
+  protected onRenderChildren() {
     return null;
   }
 }

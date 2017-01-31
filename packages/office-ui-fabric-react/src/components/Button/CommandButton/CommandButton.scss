@@ -57,7 +57,10 @@ $button-commandButtonHeight: 40px;
 
   &:disabled,
   &.is-disabled {
-    .ms-Button-icon {
+    background-color: transparent;
+
+    .ms-Button-icon,
+    .ms-Button-label {
       color: $ms-color-neutralTertiaryAlt;
     }
   }

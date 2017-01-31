@@ -42,12 +42,6 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     const tag = renderAsAnchor ? 'a' : 'button';
     const nativeProps = getNativeProps(this.props.rootProps || this.props, renderAsAnchor ? anchorProperties : buttonProperties);
 
-    // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
-    // otherwise it will be assigned to descriptionSpan.
-    const ariaDescriptionSpan: React.ReactElement<React.HTMLProps<HTMLSpanElement>> = ariaDescription
-      ? <span className='ms-u-screenReaderOnly' id={ _ariaDescriptionId }>{ ariaDescription }</span>
-      : null;
-
     // Check for ariaDescription, description or aria-describedby in the native props to determine source of aria-describedby
     // otherwise default to null.
     let ariaDescribedBy;
@@ -80,11 +74,7 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
           'aria-labelledby': ariaLabel ? null : _labelId,
           'aria-describedby': ariaDescribedBy
         }),
-      this.onRenderIcon(),
-      this.onRenderLabel(),
-      this.onRenderDescription(),
-      ariaDescriptionSpan,
-      this.onRenderChildren(),
+      this.onRenderContent()
     );
   }
 
@@ -92,6 +82,16 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     if (this._buttonElement) {
       this._buttonElement.focus();
     }
+  }
+
+  protected onRenderContent() {
+    return [
+      this.onRenderIcon(),
+      this.onRenderLabel(),
+      this.onRenderDescription(),
+      this.onRenderAriaDescription(),
+      this.onRenderChildren()
+    ];
   }
 
   protected onRenderIcon() {
@@ -106,14 +106,6 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
       );
   }
 
-  protected onRenderChildren() {
-    let { label, children } = this.props;
-
-    // If you provide a label, we will render children; otherwise we assume that the label is
-    // pulled from children and as such we should avoid redundantly rendering trhe children.
-    return label ? children : null;
-  }
-
   protected onRenderLabel() {
     let { children, label } = this.props;
 
@@ -125,6 +117,14 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     ];
   }
 
+  protected onRenderChildren() {
+    let { label, children } = this.props;
+
+    // If you provide a label, we will render children; otherwise we assume that the label is
+    // pulled from children and as such we should avoid redundantly rendering the children.
+    return label ? children : null;
+  }
+
   protected onRenderDescription() {
     let { description } = this.props;
 
@@ -132,6 +132,18 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     // In other cases it will not be displayed.
     return description ? (
       <span className={ `${this._baseClassName}-description` } id={ this._descriptionId }>{ description }</span>
+    ) : (
+        null
+      );
+  }
+
+  protected onRenderAriaDescription() {
+    let { ariaDescription } = this.props;
+
+    // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
+    // otherwise it will be assigned to descriptionSpan.
+    return ariaDescription ? (
+      <span className='ms-u-screenReaderOnly' id={ this._ariaDescriptionId }>{ ariaDescription }</span>
     ) : (
         null
       );
