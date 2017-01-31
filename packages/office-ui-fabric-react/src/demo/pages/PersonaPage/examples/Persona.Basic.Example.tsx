@@ -2,9 +2,9 @@ import * as React from 'react';
 import {
   Persona,
   PersonaSize,
-  PersonaPresence,
-  Checkbox
-} from '../../../../index';
+  PersonaPresence
+} from '../../../../Persona';
+import { Checkbox } from '../../../../Checkbox';
 
 const examplePersona = {
   imageUrl: './images/persona-female.png',
@@ -32,7 +32,7 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
           <Checkbox
             label='Include persona details'
             checked={ renderPersonaDetails }
-            onChange={ (ev, checked) => { this.setState({ renderPersonaDetails: checked }); }} />
+            onChange={ (ev, checked) => { this.setState({ renderPersonaDetails: checked }); } } />
         </div>
         <Persona
           { ...examplePersona }

@@ -3,14 +3,12 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import * as ReactDOM from 'react-dom';
-import { FocusTrapZone } from '../../../../index';
+import { Button } from '../../../../Button';
+import { FocusTrapZone } from '../../../../FocusTrapZone';
+import { Link } from '../../../../Link';
+import { TextField } from '../../../../TextField';
+import { Toggle } from '../../../../Toggle';
 import './FocusTrapZone.Box.Example.scss';
-import {
-  Button,
-  Link,
-  TextField,
-  Toggle
-} from '../../../../index';
 
 export interface IBoxNoClickExampleExampleState {
   isToggled: boolean;
@@ -36,13 +34,13 @@ export default class BoxNoClickExample extends React.Component<React.HTMLProps<H
       <div>
         <Button description='Focuses inside the FocusTrapZone' onClick={ this._onButtonClickHandler.bind(this) }>Go to Trap Zone</Button>
 
-        {(() => {
+        { (() => {
           if (isToggled) {
             return (
               <FocusTrapZone isClickableOutsideFocusTrap={ true } forceFocusInsideTrap={ false }>
                 { this._internalContents() }
               </FocusTrapZone>
-              );
+            );
           } else {
             return (
               <div>
@@ -50,7 +48,7 @@ export default class BoxNoClickExample extends React.Component<React.HTMLProps<H
               </div>
             );
           }
-        })()}
+        })() }
       </div>
     );
   }
@@ -69,13 +67,13 @@ export default class BoxNoClickExample extends React.Component<React.HTMLProps<H
           label='Focus Trap Zone'
           onText='On'
           offText='Off' />
-        {(() => {
+        { (() => {
           if (isToggled) {
             return (
               <Button description='Exit Focus Trap Zone' onClick={ this._onExitButtonClickHandler.bind(this) }>Exit Focus Trap Zone</Button>
             );
           }
-        })()}
+        })() }
       </div>
     );
   }

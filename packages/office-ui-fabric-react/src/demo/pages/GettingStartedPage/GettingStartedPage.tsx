@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from '../../../index';
+import { Link } from '../../../Link';
 import './GettingStartedPage.scss';
 
 const Highlight = require('react-highlight') as any;

@@ -1,48 +1,4 @@
-import { BreadcrumbPage } from '../../pages/BreadcrumbPage/BreadcrumbPage';
-import { ButtonPage } from '../../pages/ButtonPage/ButtonPage';
-import { CalloutPage } from '../../pages/CalloutPage/CalloutPage';
-import { ColorPickerPage } from '../../pages/ColorPickerPage/ColorPickerPage';
-import { DocumentCardPage } from '../../pages/DocumentCardPage/DocumentCardPage';
-import { CalendarPage } from '../../pages/CalendarPage/CalendarPage';
-import { CheckboxPage } from '../../pages/CheckboxPage/CheckboxPage';
-import { ChoiceGroupPage } from '../../pages/ChoiceGroupPage/ChoiceGroupPage';
-import { CommandBarPage } from '../../pages/CommandBarPage/CommandBarPage';
-import { ContextualMenuPage } from '../../pages/ContextualMenuPage/ContextualMenuPage';
-import { DatePickerPage } from '../../pages/DatePickerPage/DatePickerPage';
-import { DetailsListPage } from '../../pages/DetailsListPage/DetailsListPage';
-import { DialogPage } from '../../pages/DialogPage/DialogPage';
-import { DropdownPage } from '../../pages/DropdownPage/DropdownPage';
-import { FacepilePage } from '../../pages/Facepile/FacepilePage';
-import { FocusZonePage } from '../../pages/FocusZonePage/FocusZonePage';
-import { FocusTrapZonePage } from '../../pages/FocusTrapZonePage/FocusTrapZonePage';
-import { GroupedListPage } from '../../pages/GroupedListPage/GroupedListPage';
-import { IconPage } from '../../pages/IconPage/IconPage';
-import { ImagePage } from '../../pages/ImagePage/ImagePage';
 import { INavLink, INavLinkGroup } from '../../../components/Nav/index';
-import { LabelPage } from '../../pages/LabelPage/LabelPage';
-import { LayerPage } from '../../pages/LayerPage/LayerPage';
-import { LinkPage } from '../../pages/LinkPage/LinkPage';
-import { ListPage } from '../../pages/ListPage/ListPage';
-import { MarqueeSelectionPage } from '../../pages/MarqueeSelectionPage/MarqueeSelectionPage';
-import { MessageBarPage } from '../../pages/MessageBarPage/MessageBarPage';
-import { NavPage } from '../../pages/NavPage/NavPage';
-import { OverlayPage } from '../../pages/OverlayPage/OverlayPage';
-import { PanelPage } from '../../pages/PanelPage/PanelPage';
-import { PeoplePickerPage } from '../../pages/PeoplePickerPage/PeoplePickerPage';
-import { PickersPage } from '../../pages/PickersPage/PickersPage';
-import { PersonaPage } from '../../pages/PersonaPage/PersonaPage';
-import { PivotPage } from '../../pages/PivotPage/PivotPage';
-import { ProgressIndicatorPage } from '../../pages/ProgressIndicatorPage/ProgressIndicatorPage';
-import { RatingPage } from '../../pages/RatingPage/RatingPage';
-import { SearchBoxPage } from '../../pages/SearchBoxPage/SearchBoxPage';
-import { SelectionPage } from '../../pages/SelectionPage/SelectionPage';
-import { SliderPage } from '../../pages/SliderPage/SliderPage';
-import { SpinnerPage } from '../../pages/SpinnerPage/SpinnerPage';
-import { TeachingBubblePage } from '../../pages/TeachingBubblePage/TeachingBubblePage';
-import { TextFieldPage } from '../../pages/TextFieldPage/TextFieldPage';
-import { TogglePage } from '../../pages/TogglePage/TogglePage';
-import { TooltipPage } from '../../pages/TooltipPage/TooltipPage';
-import { ThemePage } from '../../pages/ThemePage/ThemePage';
 import { DetailsListBasicExample } from '../../pages/DetailsListPage/examples/DetailsList.Basic.Example';
 
 export enum ExampleStatus {
@@ -52,11 +8,20 @@ export enum ExampleStatus {
   release
 }
 
+export interface IAppLink extends INavLink {
+  getComponent?: (cb: (obj: any) => void) => any;
+  component?: any;
+}
+
+export interface IAppLinkGroup extends INavLinkGroup {
+  links: IAppLink[];
+}
+
 export interface IAppState {
   appTitle: string;
   testPages: any[];
-  examplePages: INavLinkGroup[];
-  headerLinks: INavLink[];
+  examplePages: IAppLinkGroup[];
+  headerLinks: IAppLink[];
 }
 
 export const AppState: IAppState = {
@@ -70,236 +35,235 @@ export const AppState: IAppState = {
       url: '#/tests/detailslistbasicexample'
     }
   ],
-
   examplePages: [
     {
       links: [
         {
-          component: BreadcrumbPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/BreadcrumbPage/BreadcrumbPage').BreadcrumbPage)),
           key: 'Breadcrumb',
           name: 'Breadcrumb',
           status: ExampleStatus.beta,
           url: '#/examples/breadcrumb'
         },
         {
-          component: ButtonPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/ButtonPage/ButtonPage').ButtonPage)),
           key: 'Button',
           name: 'Button',
           status: ExampleStatus.beta,
           url: '#/examples/button'
         },
         {
-          component: CalendarPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/CalendarPage/CalendarPage').CalendarPage)),
           key: 'Calendar',
           name: 'Calendar',
           status: ExampleStatus.started,
           url: '#/examples/calendar'
         },
         {
-          component: CalloutPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/CalloutPage/CalloutPage').CalloutPage)),
           key: 'Callout',
           name: 'Callout',
           status: ExampleStatus.beta,
           url: '#/examples/callout'
         },
         {
-          component: CheckboxPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/CheckboxPage/CheckboxPage').CheckboxPage)),
           key: 'Checkbox',
           name: 'Checkbox',
           status: ExampleStatus.beta,
           url: '#/examples/checkbox'
         },
         {
-          component: ChoiceGroupPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/ChoiceGroupPage/ChoiceGroupPage').ChoiceGroupPage)),
           key: 'ChoiceGroup',
           name: 'ChoiceGroup',
           status: ExampleStatus.beta,
           url: '#/examples/choicegroup'
         },
         {
-          component: CommandBarPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/CommandBarPage/CommandBarPage').CommandBarPage)),
           key: 'CommandBar',
           name: 'CommandBar',
           status: ExampleStatus.beta,
           url: '#/examples/commandbar'
         },
         {
-          component: ContextualMenuPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/ContextualMenuPage/ContextualMenuPage').ContextualMenuPage)),
           key: 'ContextualMenu',
           name: 'ContextualMenu',
           status: ExampleStatus.beta,
           url: '#/examples/contextmenu'
         },
         {
-          component: DatePickerPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/DatePickerPage/DatePickerPage').DatePickerPage)),
           key: 'DatePicker',
           name: 'DatePicker',
           status: ExampleStatus.beta,
           url: '#/examples/datepicker'
         },
         {
-          component: DetailsListPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/DetailsListPage/DetailsListPage').DetailsListPage)),
           key: 'DetailsList',
           name: 'DetailsList',
           status: ExampleStatus.beta,
           url: '#/examples/detailslist'
         },
         {
-          component: DialogPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/DialogPage/DialogPage').DialogPage)),
           key: 'Dialog',
           name: 'Dialog',
           status: ExampleStatus.beta,
           url: '#/examples/dialog'
         },
         {
-          component: DocumentCardPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/DocumentCardPage/DocumentCardPage').DocumentCardPage)),
           key: 'DocumentCard',
           name: 'DocumentCard',
           status: ExampleStatus.beta,
           url: '#/examples/documentcard'
         },
         {
-          component: DropdownPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/DropdownPage/DropdownPage').DropdownPage)),
           key: 'Dropdown',
           name: 'Dropdown',
           status: ExampleStatus.beta,
           url: '#/examples/dropdown'
         },
         {
-          component: FacepilePage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/FacepilePage/FacepilePage').FacepilePage)),
           key: 'Facepile',
           name: 'Facepile',
           status: ExampleStatus.started,
           url: '#/examples/facepile'
         },
         {
-          component: IconPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/IconPage/IconPage').IconPage)),
           key: 'Icon',
           name: 'Icon',
           status: ExampleStatus.beta,
           url: '#/examples/icon'
         },
         {
-          component: LabelPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/LabelPage/LabelPage').LabelPage)),
           key: 'Label',
           name: 'Label',
           status: ExampleStatus.beta,
           url: '#/examples/label'
         },
         {
-          component: LinkPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/LinkPage/LinkPage').LinkPage)),
           key: 'Link',
           name: 'Link',
           status: ExampleStatus.beta,
           url: '#/examples/link'
         },
         {
-          component: ListPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/ListPage/ListPage').ListPage)),
           key: 'List',
           name: 'List',
           status: ExampleStatus.beta,
           url: '#/examples/list'
         },
         {
-          component: MessageBarPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/MessageBarPage/MessageBarPage').MessageBarPage)),
           key: 'MessageBar',
           name: 'MessageBar',
           status: ExampleStatus.placeholder,
           url: '#/examples/messagebar'
         },
         {
-          component: OverlayPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/OverlayPage/OverlayPage').OverlayPage)),
           key: 'Overlay',
           name: 'Overlay',
           status: ExampleStatus.beta,
           url: '#/examples/overlay'
         },
         {
-          component: PanelPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/PanelPage/PanelPage').PanelPage)),
           key: 'Panel',
           name: 'Panel',
           status: ExampleStatus.beta,
           url: '#/examples/panel'
         },
         {
-          component: PickersPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/PickersPage/PickersPage').PickersPage)),
           key: 'Pickers',
           name: 'Pickers',
           status: ExampleStatus.started,
           url: '#/examples/pickers'
         },
         {
-          component: PeoplePickerPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/PeoplePickerPage/PeoplePickerPage').PeoplePickerPage)),
           key: 'PeoplePicker',
           name: 'PeoplePicker',
           status: ExampleStatus.started,
           url: '#/examples/PeoplePicker'
         },
         {
-          component: PersonaPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/PersonaPage/PersonaPage').PersonaPage)),
           key: 'Persona',
           name: 'Persona',
           status: ExampleStatus.beta,
           url: '#/examples/persona'
         },
         {
-          component: PivotPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/PivotPage/PivotPage').PivotPage)),
           key: 'Pivot',
           name: 'Pivot',
           status: ExampleStatus.started,
           url: '#/examples/pivot'
         },
         {
-          component: ProgressIndicatorPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/ProgressIndicatorPage/ProgressIndicatorPage').ProgressIndicatorPage)),
           key: 'ProgressIndicator',
           name: 'ProgressIndicator',
           status: ExampleStatus.beta,
           url: '#/examples/progressindicator'
         },
         {
-          component: RatingPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/RatingPage/RatingPage').RatingPage)),
           key: 'Rating',
           name: 'Rating',
           status: ExampleStatus.started,
           url: '#/examples/rating'
         },
         {
-          component: SearchBoxPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/SearchBoxPage/SearchBoxPage').SearchBoxPage)),
           key: 'SearchBox',
           name: 'SearchBox',
           status: ExampleStatus.started,
           url: '#/examples/searchbox'
         },
         {
-          component: SpinnerPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/SpinnerPage/SpinnerPage').SpinnerPage)),
           key: 'Spinner',
           name: 'Spinner',
           status: ExampleStatus.beta,
           url: '#/examples/spinner'
         },
         {
-          component: TeachingBubblePage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/TeachingBubblePage/TeachingBubblePage').TeachingBubblePage)),
           key: 'TeachingBubble',
           name: 'TeachingBubble',
           status: ExampleStatus.beta,
           url: '#/examples/teachingbubble'
         },
         {
-          component: TextFieldPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/TextFieldPage/TextFieldPage').TextFieldPage)),
           key: 'TextField',
           name: 'TextField',
           status: ExampleStatus.beta,
           url: '#/examples/textfield'
         },
         {
-          component: TogglePage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/TogglePage/TogglePage').TogglePage)),
           key: 'Toggle',
           name: 'Toggle',
           status: ExampleStatus.beta,
           url: '#/examples/toggle'
         },
         {
-          component: TooltipPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/TooltipPage/TooltipPage').TooltipPage)),
           key: 'Tooltip',
           name: 'Tooltip',
           status: ExampleStatus.beta,
@@ -311,42 +275,42 @@ export const AppState: IAppState = {
     {
       links: [
         {
-          component: ColorPickerPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/ColorPickerPage/ColorPickerPage').ColorPickerPage)),
           key: 'ColorPicker',
           name: 'ColorPicker',
           status: ExampleStatus.started,
           url: '#/examples/colorpicker'
         },
         {
-          component: GroupedListPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/GroupedListPage/GroupedListPage').GroupedListPage)),
           key: 'GroupedList',
           name: 'GroupedList',
           status: ExampleStatus.started,
           url: '#examples/groupedlist'
         },
         {
-          component: ImagePage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/ImagePage/ImagePage').ImagePage)),
           key: 'Image',
           name: 'Image',
           status: ExampleStatus.beta,
           url: '#/examples/image'
         },
         {
-          component: LayerPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/LayerPage/LayerPage').LayerPage)),
           key: 'Layer',
           name: 'Layer',
           status: ExampleStatus.beta,
           url: '#/examples/layer'
         },
         {
-          component: NavPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/NavPage/NavPage').NavPage)),
           key: 'Nav',
           name: 'Nav',
           status: ExampleStatus.started,
           url: '#/examples/nav'
         },
         {
-          component: SliderPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/SliderPage/SliderPage').SliderPage)),
           key: 'Slider',
           name: 'Slider',
           status: ExampleStatus.beta,
@@ -358,35 +322,35 @@ export const AppState: IAppState = {
     {
       links: [
         {
-          component: FocusTrapZonePage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/FocusTrapZonePage/FocusTrapZonePage').FocusTrapZonePage)),
           key: 'FocusTrapZone',
           name: 'FocusTrapZone',
           status: ExampleStatus.beta,
           url: '#examples/focustrapzone'
         },
         {
-          component: FocusZonePage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/FocusZonePage/FocusZonePage').FocusZonePage)),
           key: 'FocusZone',
           name: 'FocusZone',
           status: ExampleStatus.beta,
           url: '#examples/focuszone'
         },
         {
-          component: MarqueeSelectionPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/MarqueeSelectionPage/MarqueeSelectionPage').MarqueeSelectionPage)),
           key: 'MarqueeSelection',
           name: 'MarqueeSelection',
           status: ExampleStatus.beta,
           url: '#examples/marqueeselection'
         },
         {
-          component: SelectionPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/SelectionPage/SelectionPage').SelectionPage)),
           key: 'Selection',
           name: 'Selection',
           status: ExampleStatus.beta,
           url: '#examples/selection'
         },
         {
-          component: ThemePage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/ThemePage/ThemePage').ThemePage)),
           key: 'Themes',
           name: 'Themes',
           url: '#examples/themes'

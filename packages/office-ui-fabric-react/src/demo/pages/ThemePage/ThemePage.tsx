@@ -2,13 +2,10 @@ import * as React from 'react';
 import { loadTheme, ITheme } from '@microsoft/load-themed-styles';
 let Highlight = require('react-highlight') as any;
 import { defaultTheme } from './defaultTheme';
-import {
-  Callout,
-  DetailsList,
-  DetailsListLayoutMode as LayoutMode
-} from '../../../index';
-import { SelectionMode } from '../../../utilities/selection/interfaces';
-import { ColorPicker } from '../../../components/ColorPicker/index';
+import { Callout } from '../../../Callout';
+import { DetailsList, DetailsListLayoutMode as LayoutMode } from '../../../DetailsList';
+import { SelectionMode } from '../../../Selection';
+import { ColorPicker } from '../../../ColorPicker';
 import './ThemePage.scss';
 
 const ThemeCodeExample = require('./ThemeCodeExample.txt');

@@ -1,8 +1,11 @@
 import * as React from 'react';
 import {
-  PrimaryButton,
+  PrimaryButton
+} from '../../../../Button';
+import {
   Label
-} from '../../../../index';
+} from '../../../../Label';
+
 import { IButtonProps } from './IButtonProps';
 
 export class ButtonAnchorExample extends React.Component<IButtonProps, {}> {

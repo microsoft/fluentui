@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { ContextualMenu, DirectionalHint, Button, getRTL } from '../../../../index';
+import { Button } from '../../../../Button';
+import { ContextualMenu, DirectionalHint } from '../../../../ContextualMenu';
+import { getRTL } from '../../../../Utilities';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuHeaderExample extends React.Component<any, any> {
@@ -99,7 +101,7 @@ export class ContextualMenuHeaderExample extends React.Component<any, any> {
                 },
               ]
             }
-            />) : (null) }
+          />) : (null) }
       </div>
     );
   }

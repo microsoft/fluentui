@@ -3,7 +3,7 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { PanelSmallRightExample } from './examples/Panel.SmallRight.Example';
 import { PanelSmallLeftExample } from './examples/Panel.SmallLeft.Example';

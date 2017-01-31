@@ -3,9 +3,8 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
-
-import { Checkbox } from '../../../index';
+} from '../../components/demoComponents';
+import { Checkbox } from '../../../Checkbox';
 
 import { ButtonDefaultExample } from './examples/Button.Default.Example';
 import { ButtonPrimaryExample } from './examples/Button.Primary.Example';

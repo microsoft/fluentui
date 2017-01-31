@@ -4,8 +4,6 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import {
-} from '../../index';
-import {
   BaseComponent,
   KeyCodes,
   autobind,

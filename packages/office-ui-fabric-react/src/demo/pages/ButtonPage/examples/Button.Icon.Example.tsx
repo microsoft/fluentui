@@ -1,9 +1,6 @@
 import * as React from 'react';
-import {
-  IconButton,
-  Label
-} from '../../../../index';
-import { IButtonProps } from './IButtonProps';
+import { IconButton, IButtonProps } from '../../../../Button';
+import { Label } from '../../../../Label';
 
 export class ButtonIconExample extends React.Component<IButtonProps, {}> {
   public constructor() {
