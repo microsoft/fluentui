@@ -24,7 +24,6 @@ const ButtonDefaultExampleCode = require('./examples/Button.Default.Example.tsx'
 const ButtonPrimaryExampleCode = require('./examples/Button.Primary.Example.tsx') as string;
 const ButtonCompoundExampleCode = require('./examples/Button.Compound.Example.tsx') as string;
 const ButtonCommandExampleCode = require('./examples/Button.Command.Example.tsx') as string;
-const ButtonHeroExampleCode = require('./examples/Button.Hero.Example.tsx') as string;
 const ButtonIconExampleCode = require('./examples/Button.Icon.Example.tsx') as string;
 const ButtonAnchorExampleCode = require('./examples/Button.Anchor.Example.tsx') as string;
 const ButtonScreenReaderExampleCode = require('./examples/Button.ScreenReader.Example.tsx') as string;
