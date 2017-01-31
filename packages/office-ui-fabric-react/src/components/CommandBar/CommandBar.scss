@@ -126,6 +126,11 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   @include CommandBarItem-text;
   cursor: pointer;
 
+  .ms-CommandBar-linkText {
+    display: inline-block;
+    vertical-align: top;
+  }
+
   &:hover,
   &.is-expanded {
     @media screen and (-ms-high-contrast: active) {
