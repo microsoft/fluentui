@@ -141,7 +141,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
 
   private _renderLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     return (
-      <li key={ link.key || linkIndex } role='listitem'>
+      <li key={ link.key || linkIndex } role='listitem' className={ this.props.horizontal ? css('ms-Nav-linkHorizontal') : '' } >
         { this._renderCompositeLink(link, linkIndex, nestingLevel) }
         { (link.isExpanded ? this._renderLinks(link.links, ++nestingLevel) : null) }
       </li>
