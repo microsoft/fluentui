@@ -8,8 +8,7 @@
       "program": "${workspaceRoot}/packages/office-ui-fabric-react/node_modules/gulp/bin/gulp.js",
       "stopOnEntry": false,
       "args": [
-        "ssr",
-        "--production"
+        "webpack"
       ],
       "cwd": "${workspaceRoot}/packages/office-ui-fabric-react",
       "runtimeExecutable": null,
