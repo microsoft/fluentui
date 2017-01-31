@@ -31,8 +31,9 @@ function createConfig(isProduction) {
 
     output: {
       path: path.join(__dirname, buildConfig.distFolder),
-      filename: `[name]${ minFileNamePart }.js`,
-      chunkFilename: `[name]${ minFileNamePart }.js`
+      filename: `[name]${minFileNamePart}.js`,
+      chunkFilename: `fabric-split-[name]${minFileNamePart}.js`,
+      publicPath: '/dist/',
     },
 
     devtool: 'source-map',

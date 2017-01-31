@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Link } from '../../../index';
 import './GettingStartedPage.scss';
-
-const Highlight = require('react-highlight') as any;
+import { DeferredHighlight } from '../../components/ExampleCard/DeferredHighlight';
 
 export class GettingStartedPage extends React.Component<any, any> {
   public render() {
@@ -33,7 +32,7 @@ export class GettingStartedPage extends React.Component<any, any> {
         }</p>
 
         <div className='ms-GettingStartedPage-code'>
-          <Highlight className='bash'>npm install --save office-ui-fabric-react</Highlight>
+          <DeferredHighlight className='bash'>npm install --save office-ui-fabric-react</DeferredHighlight>
         </div>
 
         <p>{
@@ -45,7 +44,7 @@ export class GettingStartedPage extends React.Component<any, any> {
         }</p>
 
         <div className='ms-GettingStartedPage-code'>
-          <Highlight className='typescript'>{
+          <DeferredHighlight className='typescript'>{
             `import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Button } from 'office-ui-fabric-react/lib/Button';
@@ -53,7 +52,7 @@ import { Button } from 'office-ui-fabric-react/lib/Button';
 const MyPage = () => (<div><Button>I am a button.</Button></div>);
 
 ReactDOM.render(<MyPage />, document.body.firstChild);`
-          }</Highlight>
+          }</DeferredHighlight>
         </div>
 
         <h2>Notes on module vs path-based imports</h2>
@@ -62,17 +61,17 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`
         }</p>
 
         <div className='ms-GettingStartedPage-code'>
-          <Highlight className='typescript'>{ `import { Button } from 'office-ui-fabric-react';` }</Highlight>
+          <DeferredHighlight className='typescript'>{ `import { Button } from 'office-ui-fabric-react';` }</DeferredHighlight>
         </div>
 
         <p>{ `...this would work, but then unless you are using a tree-shaking bundler such as Rollup.js or Webpack 2, Webpack will assume you want every module exported from the main entry file to be included in your final bundle, which produces unnecessary large bundles and slows your page load down. Instead you can import the specific paths to trim down your bundle size:` }</p>
 
         <div className='ms-GettingStartedPage-code'>
-          <Highlight className='typescript'>{
+          <DeferredHighlight className='typescript'>{
             `import { Button } from 'office-ui-fabric-react/lib/Button';
 import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
 import { List } from 'office-ui-fabric-react/lib/List';`
-          }</Highlight>
+          }</DeferredHighlight>
         </div>
 
         <h2>Using an AMD bundler like r.js</h2>
