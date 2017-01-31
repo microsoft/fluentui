@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Image: Does not handle loaded event correctly in Edge for SVG files",
+      "type": "patch"
+    }
+  ],
+  "email": "dagoff@microsoft.com"
+}
