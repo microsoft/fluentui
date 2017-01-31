@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 31 Jan 2017 01:16:17 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Jan 2017 17:04:31 GMT and should not be manually modified.
+
+## 1.3.6
+Tue, 31 Jan 2017 17:04:31 GMT
+
+### Patches
+
+- CommandBar: no longer throws nullref in dismiss handling.
 
 ## 1.3.5
 Tue, 31 Jan 2017 01:16:17 GMT
