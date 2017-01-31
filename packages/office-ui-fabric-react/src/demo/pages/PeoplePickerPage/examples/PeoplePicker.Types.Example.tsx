@@ -5,7 +5,7 @@ import {
   BaseComponent,
   assign,
   autobind
-} from '@uifabric/utilities';
+} from '../../../../Utilities';
 import {
   CompactPeoplePicker,
   Dropdown,
@@ -115,7 +115,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
             ] }
             selectedKey={ this.state.currentPicker }
             onChanged={ this._dropDownSelected }
-            />
+          />
           <Toggle
             label='Delay Suggestion Results'
             defaultChecked={ false }
@@ -133,7 +133,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         className={ 'ms-PeoplePicker' }
         pickerSuggestionsProps={ suggestionProps }
         key={ 'list' }
-        />
+      />
     );
   }
 
@@ -145,7 +145,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         pickerSuggestionsProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
         key={ 'normal' }
-        />
+      />
     );
   }
 
@@ -156,7 +156,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
         pickerSuggestionsProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
-        />
+      />
     );
   }
 
@@ -169,7 +169,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         defaultSelectedItems={ people.splice(0, 3) }
         key={ 'list' }
         pickerSuggestionsProps={ suggestionProps }
-        />
+      />
     );
   }
 
@@ -183,7 +183,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         className={ 'ms-PeoplePicker' }
         onGetMoreResults={ this._onFilterChanged }
         pickerSuggestionsProps={ limitedSearchSuggestionProps }
-        />
+      />
     );
   }
 
