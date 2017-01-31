@@ -1,4 +1,4 @@
-let { expect } = chai;
+let { expect, should } = chai;
 import { autobind } from './autobind';
 
 class Greeter {
@@ -16,5 +16,14 @@ describe('autobind', () => {
     let sayHello = greeter.sayHello;
 
     expect(sayHello()).equals('hello', 'autobind did not bind the sayHello method to the object instance.');
+  });
+
+  it('does not bind again every time method is called', () => {
+    let greeter = new Greeter();
+
+    const sayHello1 = greeter.sayHello;
+    const sayHello2 = greeter.sayHello;
+
+    expect(sayHello1).equals(sayHello2, 'autobind did not cache the bound method.');
   });
 });
