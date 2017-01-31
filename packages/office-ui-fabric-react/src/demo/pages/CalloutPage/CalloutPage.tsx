@@ -66,7 +66,7 @@ export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         related={
-          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Callout.md'>Fabric JS</a>
+          <a href='https://dev.office.com/fabric-js/Components/Callout/Callout.html'>Fabric JS</a>
         }
         bestPractices={
           <div></div>

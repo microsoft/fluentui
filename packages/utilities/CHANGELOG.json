@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "1.0.2",
+      "tag": "@uifabric/utilities_v1.0.2",
+      "date": "Fri, 27 Jan 2017 04:09:14 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "2b3336fffbab0dc1802049a2c7aaae5c5875da01",
+            "comment": "autobind: Does not re-bind every time a decorated method is accessed anymore."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.0.1",
       "tag": "@uifabric/utilities_v1.0.1",
       "date": "Wed, 25 Jan 2017 04:11:36 GMT",

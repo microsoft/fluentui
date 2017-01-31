@@ -1,0 +1,63 @@
+// Standard text size and spacing
+body {
+  color: $ms-color-neutralPrimary;
+  font-family: $ms-font-family-base;
+  font-size: $ms-font-size-m;
+  line-height: 1.5;
+}
+
+// Headings
+h2, h3, h4, h5 {
+  color: $ms-color-black;
+  font-weight: $ms-font-weight-semilight;
+  margin-bottom: 16px;
+}
+
+h2 {
+  font-size: $font-size-big;
+  font-weight: $ms-font-weight-light;
+  margin-bottom: 4px;
+  margin-top: 48px;
+}
+
+h3 {
+  font-size: $ms-font-size-l;
+  margin: 40px 0 8px 0;
+}
+
+h4 {
+  color: $ms-color-neutralDark;
+  font-size: $ms-font-size-m;
+  font-weight: $ms-font-weight-semibold;
+  margin: 8px 0;
+}
+
+// Paragraphs and lists
+p, ul, ol {
+  font-size: $ms-font-size-m;
+  font-weight: $ms-font-weight-regular;
+  margin-bottom: 12px;
+}
+
+ol {
+  list-style-position: inside;
+  list-style-type: decimal;
+}
+
+// Inline text elements
+a {
+  color: $ms-color-themePrimary;
+  text-decoration: none;
+}
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: $ms-font-weight-semibold;
+}
+
+code {
+  font-family: monospace;
+}

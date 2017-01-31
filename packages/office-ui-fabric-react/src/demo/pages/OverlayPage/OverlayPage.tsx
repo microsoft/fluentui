@@ -66,7 +66,7 @@ export class OverlayPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         related={
-          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Overlay.md'>Fabric JS</a>
+          <a href='https://dev.office.com/fabric-js/Components/Overlay/Overlay.html'>Fabric JS</a>
         }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
