@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { loadTheme, ITheme } from '@microsoft/load-themed-styles';
-let Highlight = require('react-highlight') as any;
+import { Highlight } from '../../components/Highlight/Highlight';
 import { defaultTheme } from './defaultTheme';
 import { Callout } from '../../../Callout';
 import { DetailsList, DetailsListLayoutMode as LayoutMode } from '../../../DetailsList';
