@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   ProgressIndicator
 } from '../../../../index';
-import { Async } from '@uifabric/utilities';
+import { Async } from '../../../../Utilities';
 
 export interface IProgressIndicatorBasicExampleState {
   percentComplete: number;
