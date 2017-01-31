@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   css,
   getRTL
-} from '@uifabric/utilities';
+} from '../../../../Utilities';
 import {
   FocusZone,
   FocusZoneDirection,
@@ -52,7 +52,7 @@ export class ListBasicExample extends React.Component<IListBasicExampleProps, an
                 width={ 50 }
                 height={ 50 }
                 imageFit={ ImageFit.cover }
-                />
+              />
               <div className='ms-ListBasicExample-itemContent'>
                 <div className='ms-ListBasicExample-itemName ms-font-xl'>{ item.name }</div>
                 <div className='ms-ListBasicExample-itemIndex'>{ `Item ${index}` }</div>
@@ -64,7 +64,7 @@ export class ListBasicExample extends React.Component<IListBasicExampleProps, an
               }) } />
             </div>
           ) }
-          />
+        />
       </FocusZone>
     );
   }
