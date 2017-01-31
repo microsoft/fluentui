@@ -137,11 +137,12 @@ describe('Facepile', () => {
     });
 
     it('renders no more than maximum allowed width', () => {
+      // TODO: Need to set width with css?
       const wrapper = shallow(
         <Facepile
           personas={ facepilePersonas.concat(facepilePersonas, facepilePersonas, facepilePersonas) }
           maxDisplayablePersonas={ 99 }
-          availableWidth={ 140 }
+          useOnlyAvailableWidth={ true }
           />);
       let buttons = wrapper.find('.ms-Facepile-itemButton');
       expect(buttons).to.have.length(3, 'Only three personas should be rendered');

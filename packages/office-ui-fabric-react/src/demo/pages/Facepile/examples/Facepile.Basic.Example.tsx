@@ -80,7 +80,6 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
               return prevState;
             });
           } } />
-
         <Dropdown
           label='Additional Data:'
           selectedKey={ this.state.extraDataType }

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  Checkbox,
   Dropdown,
   IFacepileProps,
   Facepile,
@@ -12,7 +13,7 @@ import './Facepile.Examples.scss';
 const facepileProps: IFacepileProps = {
   personas: facepilePersonas,
   maxDisplayablePersonas: 5,
-  availableWidth: 200,
+  useOnlyAvailableWidth: false,
   overflowButtonType: OverflowButtonType.downArrow,
   overflowButtonProps: {
     onClick: (ev: React.MouseEvent<HTMLButtonElement>) =>
@@ -21,7 +22,7 @@ const facepileProps: IFacepileProps = {
 };
 
 export interface IFacepileOverflowExampleState {
-  availableWidth: number;
+  useOnlyAvailableWidth: boolean;
   displayedPersonas: any;
   overflowButtonType: OverflowButtonType;
 }
@@ -31,15 +32,15 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
     super();
 
     this.state = {
-      availableWidth: 200,
-      displayedPersonas: 5,
+      useOnlyAvailableWidth: false,
+      displayedPersonas: 1,
       overflowButtonType: OverflowButtonType.descriptive
     };
   }
 
   public render() {
-    let { availableWidth, displayedPersonas, overflowButtonType } = this.state;
-    facepileProps.availableWidth = availableWidth;
+    let { useOnlyAvailableWidth, displayedPersonas, overflowButtonType } = this.state;
+    facepileProps.useOnlyAvailableWidth = useOnlyAvailableWidth;
     facepileProps.maxDisplayablePersonas = displayedPersonas;
     facepileProps.overflowButtonType = overflowButtonType;
 
@@ -49,7 +50,7 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
         <Slider
           label='Maximum number of Personas Shown:'
           min={ 0 }
-          max={ 7 }
+          max={ 10 }
           step={ 1 }
           showValue={ true }
           value={ this.state.displayedPersonas }
@@ -58,18 +59,15 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
             return prevState;
           }) }
           />
-        <Slider
-          label='Maximum width available:'
-          min={ 10 }
-          max={ 300 }
-          step={ 36 }
-          showValue={ true }
-          value={ this.state.availableWidth }
-          onChange={ value => this.setState((prevState: IFacepileOverflowExampleState) => {
-            prevState.availableWidth = value;
-            return prevState;
-          }) }
-          />
+        <Checkbox
+          label='Use only width available'
+          checked={ this.state.useOnlyAvailableWidth }
+          onChange={ (ev, checked) => {
+            this.setState((prevState: IFacepileOverflowExampleState) => {
+              prevState.useOnlyAvailableWidth = checked;
+              return prevState;
+            });
+          } } />
         <Dropdown
           label='Overflow Type:'
           selectedKey={ this.state.overflowButtonType }
