@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { BaseComponent } from '../../Utilities';
-import { Route } from './Route';
 
 export interface IRouterProps {
   replaceState?: boolean;

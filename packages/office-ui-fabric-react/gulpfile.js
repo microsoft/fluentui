@@ -200,7 +200,7 @@ build.clean.isEnabled = () => isProduction;
 let exec = require('child_process').exec;
 
 let rushBuild = build.subTask('rushbuild', (gulp, options, done) => {
-  let child = exec('rush build --to office-ui-fabric-react');
+  let child = exec('rush build --to office-ui-fabric-react' + (isProduction ? ' --production' : ''));
 
   child.stdout.on('data', data => process.stdout.write(data));
   child.on('close', done);
