@@ -62,7 +62,7 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
           label='Maximum width available:'
           min={ 10 }
           max={ 300 }
-          step={ 25 }
+          step={ 36 }
           showValue={ true }
           value={ this.state.availableWidth }
           onChange={ value => this.setState((prevState: IFacepileOverflowExampleState) => {
