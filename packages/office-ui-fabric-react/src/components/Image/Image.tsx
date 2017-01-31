@@ -127,7 +127,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
   private _evaluateImage(): boolean {
     let { src } = this.props;
     let { loadState } = this.state;
-    let isLoaded = (src && this._imageElement.naturalWidth > 0 && this._imageElement.naturalHeight > 0);
+    let isLoaded = (src && this._imageElement.complete);
 
     this._computeCoverStyle(this.props);
 
