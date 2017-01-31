@@ -3,7 +3,7 @@ import {
   KeyCodes,
   createArray,
   getRTLSafeKeyCode
-} from '@uifabric/utilities';
+} from '../../../../Utilities';
 import {
   Button,
   FocusZone,

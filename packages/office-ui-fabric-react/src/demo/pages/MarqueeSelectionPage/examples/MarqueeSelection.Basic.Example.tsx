@@ -5,7 +5,7 @@ import * as React from 'react';
 import {
   css,
   createArray
-} from '@uifabric/utilities';
+} from '../../../../Utilities';
 import {
   Checkbox,
   Selection,

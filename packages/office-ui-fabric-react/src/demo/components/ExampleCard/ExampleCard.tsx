@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css } from '@uifabric/utilities';
+import { css } from '../../../Utilities';
 import './ExampleCard.scss';
 import { Button, ButtonType } from '../../../Button';
 import { DeferredHighlight } from './DeferredHighlight';
