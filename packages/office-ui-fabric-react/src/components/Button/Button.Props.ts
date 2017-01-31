@@ -2,7 +2,6 @@ import * as React from 'react';
 import { BaseButton } from './BaseButton';
 import { Button } from './Button';
 
-
 export interface IButton {
   /**
    * Focuses the button.

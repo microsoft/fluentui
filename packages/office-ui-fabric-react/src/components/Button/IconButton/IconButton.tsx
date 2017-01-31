@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { BaseButton } from '../BaseButton';
 
 import './IconButton.scss';
