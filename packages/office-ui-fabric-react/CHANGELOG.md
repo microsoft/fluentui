@@ -1,6 +1,28 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 27 Jan 2017 04:09:14 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Jan 2017 17:04:31 GMT and should not be manually modified.
+
+## 1.3.6
+Tue, 31 Jan 2017 17:04:31 GMT
+
+### Patches
+
+- CommandBar: no longer throws nullref in dismiss handling.
+
+## 1.3.5
+Tue, 31 Jan 2017 01:16:17 GMT
+
+### Patches
+
+- Fixing utility import to be AMD friendly.
+- Documentation: Update component pages "Also available in" link to point to new JS site
+
+## 1.3.4
+Sat, 28 Jan 2017 04:09:51 GMT
+
+### Patches
+
+- Command Bar: context menus stay open after update if the open menu is still in the new props. Also, propagates most properties from subMenuProps to opened ContextualMenus
 
 ## 1.3.3
 Fri, 27 Jan 2017 04:09:14 GMT

@@ -1,7 +1,7 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { css } from '@uifabric/utilities';
+import { css } from '../../../../Utilities';
 import { Persona, PersonaSize, PersonaPresence } from '../../../../Persona';
 import { IPeoplePickerItemProps } from './PeoplePickerItem.Props';
 import { Button, ButtonType } from '../../../../Button';
@@ -26,7 +26,7 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
           { ...item }
           presence={ item.presence !== undefined ? item.presence : PersonaPresence.none }
           size={ PersonaSize.extraSmall }
-          />
+        />
       </div>
       <Button
         onClick={ () => { if (onRemoveItem) { onRemoveItem(); } } }
@@ -34,7 +34,7 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
         buttonType={ ButtonType.icon }
         className='ms-PickerItem-content'
         data-is-focusable={ false }
-        >
+      >
       </Button>
     </div >
   );
