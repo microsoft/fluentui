@@ -33,12 +33,12 @@ export interface IPanelProps extends React.Props<Panel> {
   headerText?: string;
 
   /**
-  * A callback function for when the panel is closed.
+  * A callback function for when the panel is closed, before the animation completes.
   */
   onDismiss?: () => void;
 
   /**
-   * A callback function which is called after the Panel is dismissed.
+   * A callback function which is called after the Panel is dismissed and the animation is complete.
    */
   onDismissed?: () => void;
 

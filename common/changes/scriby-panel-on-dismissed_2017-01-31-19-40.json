@@ -3,7 +3,7 @@
     {
       "packageName": "office-ui-fabric-react",
       "comment": "Panel: Call onDismissed callback function when panel close animation finishes.",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "email": "chscribn@microsoft.com"

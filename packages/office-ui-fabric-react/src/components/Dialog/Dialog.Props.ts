@@ -24,12 +24,12 @@ export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeSt
   isDarkOverlay?: boolean;
 
   /**
-  * A callback function for when the Dialog is dismissed from the close button or light dismiss.
+  * A callback function for when the Dialog is dismissed from the close button or light dismiss, before the animation completes.
   */
   onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
 
   /**
-   * A callback function which is called after the Dialog is dismissed.
+   * A callback function which is called after the Dialog is dismissed and the animation is complete.
    */
   onDismissed?: () => any;
 
