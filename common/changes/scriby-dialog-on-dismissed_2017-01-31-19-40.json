@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Dialog: Call onDismissed callback function when dialog close animation finishes.",
+      "type": "patch"
+    }
+  ],
+  "email": "chscribn@microsoft.com"
+}
