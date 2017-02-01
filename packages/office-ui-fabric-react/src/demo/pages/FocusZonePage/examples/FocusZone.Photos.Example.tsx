@@ -2,7 +2,7 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-import { createArray } from '@uifabric/utilities';
+import { createArray } from '../../../../Utilities';
 import { FocusZone, Image } from '../../../../index';
 import './FocusZone.Photos.Example.scss';
 

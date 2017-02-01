@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Documentation: Update component pages \"Also available in\" link to point to new JS site",
+      "comment": "Breadcrumb: Fix hover style to match OneDrive",
       "type": "patch"
     }
   ],
