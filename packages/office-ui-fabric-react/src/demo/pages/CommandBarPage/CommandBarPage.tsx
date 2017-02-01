@@ -3,7 +3,7 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 import { items, farItems } from './examples/data';
 
 import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';

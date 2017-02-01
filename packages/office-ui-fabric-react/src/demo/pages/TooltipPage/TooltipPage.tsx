@@ -1,13 +1,11 @@
 import * as React from 'react';
-import {
-  Link,
-  LayerHost
-} from '../../../index';
+import { Link } from '../../../Link';
+import { LayerHost } from '../../../Layer';
 import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { TooltipBottomExample } from './examples/Tooltip.Bottom.Example';
 import { TooltipBasicExample } from './examples/Tooltip.Basic.Example';

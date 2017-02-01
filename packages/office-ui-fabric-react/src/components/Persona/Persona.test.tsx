@@ -1,7 +1,8 @@
 /* tslint:disable-next-line:no-unused-variable */
 import * as React from 'react';
 import { setRTL } from '../../Utilities';
-import { Persona, PersonaInitialsColor } from './index';
+import { Persona } from './Persona';
+import { PersonaInitialsColor } from './Persona.Props';
 import { shallow } from 'enzyme';
 import * as chai from 'chai';
 

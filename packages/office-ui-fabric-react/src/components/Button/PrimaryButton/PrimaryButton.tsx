@@ -8,7 +8,8 @@ import {
   buttonProperties
 } from '../../../Utilities';
 
-import { Button, IButtonProps, ButtonType } from '../index';
+import { Button } from '../Button';
+import { IButtonProps, ButtonType } from '../Button.Props';
 
 import './PrimaryButton.scss';
 import '../ButtonCore/ButtonCore.scss';

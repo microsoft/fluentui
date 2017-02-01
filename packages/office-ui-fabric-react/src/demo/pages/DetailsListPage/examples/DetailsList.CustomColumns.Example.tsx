@@ -1,15 +1,15 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
+import { createListItems } from '../../../utilities/data';
+
+import { Link } from '../../../../Link';
+import { Image, ImageFit } from '../../../../Image';
 import {
   DetailsList,
-  Link,
-  Image,
-  ImageFit,
   buildColumns,
   IColumn
-} from '../../../../index';
-import { createListItems } from '../../../utilities/data';
+} from '../../../../DetailsList';
 
 let _items: any[];
 

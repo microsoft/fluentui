@@ -1,8 +1,10 @@
 import * as React from 'react';
 import {
   CommandButton,
+} from '../../../../Button';
+import {
   Label
-} from '../../../../index';
+} from '../../../../Label';
 import { IButtonProps } from './IButtonProps';
 
 export class ButtonCommandExample extends React.Component<IButtonProps, any> {

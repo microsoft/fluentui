@@ -3,7 +3,7 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { ToggleBasicExample } from './examples/Toggle.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';

@@ -1,6 +1,9 @@
 import * as React from 'react';
-import { ContextualMenu, DirectionalHint, Button, ButtonType, FocusZoneDirection } from '../../../../index';
+import { ContextualMenu, DirectionalHint } from '../../../../ContextualMenu';
+import { Button, ButtonType } from '../../../../Button';
+import { FocusZoneDirection } from '../../../../FocusZone';
 import './ContextualMenuExample.scss';
+
 export interface IContextualMenuMultiselectExampleState {
   selection?: { [key: string]: boolean };
   isContextMenuVisible?: boolean;
@@ -208,7 +211,7 @@ export class ContextualMenuCustomizationExample extends React.Component<any, ICo
                 }
               ]
             }
-            />) : null }
+          />) : null }
       </div>
     );
   }

@@ -1,8 +1,6 @@
 import * as React from 'react';
-import {
-  Button,
-  TextField
-} from '../../../../index';
+import { Button } from '../../../../Button';
+import { TextField } from '../../../../TextField';
 import './NumberTextField.scss';
 
 export interface INumberTextFieldProps {
@@ -32,13 +30,13 @@ export class NumberTextField extends React.Component<INumberTextFieldProps, INum
       <div className='NumberTextField'>
         <TextField
           className='NumberTextField-textField'
-          label={this.props.label}
-          value={this.state.value}
-          onChanged={this._onChanged}
-          onGetErrorMessage={this._validateNumber}
+          label={ this.props.label }
+          value={ this.state.value }
+          onChanged={ this._onChanged }
+          onGetErrorMessage={ this._validateNumber }
         />
         <div className='NumberTextField-restoreButton'>
-          <Button onClick={this._restore}>
+          <Button onClick={ this._restore }>
             Restore
           </Button>
         </div>

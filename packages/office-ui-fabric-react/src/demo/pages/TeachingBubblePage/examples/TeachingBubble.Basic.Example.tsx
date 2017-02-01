@@ -2,12 +2,8 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-import {
-  TeachingBubble,
-  Button,
-  ButtonType,
-  IButtonProps
-} from '../../../../index';
+import { Button, ButtonType, IButtonProps } from '../../../../Button';
+import { TeachingBubble } from '../../../../TeachingBubble';
 
 export interface ITeachingBubbleBasicExampleState {
   isTeachingBubbleVisible?: boolean;

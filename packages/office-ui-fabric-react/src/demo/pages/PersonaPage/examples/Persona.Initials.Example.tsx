@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   Persona,
   PersonaInitialsColor,
-} from '../../../../index';
+} from '../../../../Persona';
 
 const examplePersona = {
   secondaryText: 'Designer',
@@ -23,19 +23,19 @@ export class PersonaInitialsExample extends React.Component<any, any> {
         <Persona
           { ...examplePersona  }
           primaryText='Kat Larrson'
-          />
+        />
         <Persona
           { ...examplePersona  }
           primaryText='Annie Lindqvist'
-          />
+        />
         <Persona
           { ...personaWithInitials  }
           initialsColor={ PersonaInitialsColor.lightBlue }
-          />
+        />
         <Persona
           { ...personaWithInitials  }
           initialsColor={ PersonaInitialsColor.teal }
-          />
+        />
       </div>
     );
   }

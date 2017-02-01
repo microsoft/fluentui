@@ -1,11 +1,8 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-
-import {
-  TeachingBubble,
-  Button
-} from '../../../../index';
+import { Button } from '../../../../Button';
+import { TeachingBubble } from '../../../../TeachingBubble';
 
 export interface ITeachingBubbleCondensedExampleState {
   isTeachingBubbleVisible?: boolean;

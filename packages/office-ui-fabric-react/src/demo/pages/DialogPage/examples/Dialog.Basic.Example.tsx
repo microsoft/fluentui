@@ -1,12 +1,7 @@
 import * as React from 'react';
-import {
-  Dialog,
-  DialogType,
-  DialogFooter,
-  Button,
-  ButtonType,
-  ChoiceGroup
-} from '../../../../index';
+import { Dialog, DialogType, DialogFooter } from '../../../../Dialog';
+import { Button, ButtonType } from '../../../../Button';
+import { ChoiceGroup } from '../../../../ChoiceGroup';
 import './Dialog.Basic.Example.scss';
 
 export class DialogBasicExample extends React.Component<any, any> {
@@ -52,8 +47,8 @@ export class DialogBasicExample extends React.Component<any, any> {
           />
           { null /** You can also include null values as the result of conditionals */ }
           <DialogFooter>
-            <Button buttonType={ ButtonType.primary } onClick={this._closeDialog.bind(this)}>Save</Button>
-            <Button onClick={this._closeDialog.bind(this)}>Cancel</Button>
+            <Button buttonType={ ButtonType.primary } onClick={ this._closeDialog.bind(this) }>Save</Button>
+            <Button onClick={ this._closeDialog.bind(this) }>Cancel</Button>
           </DialogFooter>
         </Dialog>
       </div>
@@ -61,14 +56,14 @@ export class DialogBasicExample extends React.Component<any, any> {
   }
 
   private _showDialog() {
-    this.setState( {showDialog: true } );
+    this.setState({ showDialog: true });
   }
 
   private _closeDialog() {
-    this.setState( {showDialog: false } );
+    this.setState({ showDialog: false });
   }
 
   private _onChoiceChanged() {
-    console.log( 'Choice option change' );
+    console.log('Choice option change');
   }
 }

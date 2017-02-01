@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { ContextualMenu, IContextualMenuItem, DirectionalHint, Button } from '../../../../index';
+import { ContextualMenu, IContextualMenuItem, DirectionalHint } from '../../../../ContextualMenu';
+import { Button } from '../../../../Button';
 import './ContextualMenuExample.scss';
 
 export interface IContextualMenuMultiselectExampleState {
@@ -102,7 +103,7 @@ export class ContextualMenuCheckmarksExample extends React.Component<any, IConte
                 },
               ]
             }
-            />) : (null) }
+          />) : (null) }
       </div>
     );
   }

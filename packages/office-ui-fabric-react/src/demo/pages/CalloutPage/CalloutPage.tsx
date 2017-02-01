@@ -3,7 +3,7 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 import { textOnlyItems } from '../CommandBarPage/examples/data';
 
 import { CalloutBasicExample } from './examples/Callout.Basic.Example';

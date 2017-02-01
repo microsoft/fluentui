@@ -3,7 +3,7 @@ import { autobind } from '../../../../Utilities';
 import {
   Rating,
   RatingSize
-} from '../../../../index';
+} from '../../../../Rating';
 
 import './Rating.Basic.Example.scss';
 
