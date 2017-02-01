@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 31 Jan 2017 17:04:31 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Feb 2017 04:04:05 GMT and should not be manually modified.
+
+## 1.3.7
+Wed, 01 Feb 2017 04:04:05 GMT
+
+### Patches
+
+- Breadcrumb: Fix hover style to match OneDrive
+- CommandBar: Add hover state to ms-CommandBarItem
 
 ## 1.3.6
 Tue, 31 Jan 2017 17:04:31 GMT
