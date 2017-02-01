@@ -58,7 +58,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
   public componentWillReceiveProps(newProps: IPanelProps) {
     if (newProps.isOpen !== this.state.isOpen) {
       this.setState({
-        isOpen: newProps.isOpen,
+        isOpen: true,
         isAnimatingOpen: newProps.isOpen ? true : false,
         isAnimatingClose: newProps.isOpen ? false : true
       });

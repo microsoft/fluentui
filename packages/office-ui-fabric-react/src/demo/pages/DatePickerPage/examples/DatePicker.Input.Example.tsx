@@ -1,9 +1,6 @@
 import * as React from 'react';
-import {
-  Button,
-  DatePicker,
-  DayOfWeek
-} from '../../../../index';
+import { Button } from '../../../../Button';
+import { DatePicker, DayOfWeek } from '../../../../DatePicker';
 
 const DayPickerStrings = {
   months: [
@@ -93,7 +90,7 @@ export class DatePickerInputExample extends React.Component<any, IDatePickerInpu
           strings={ DayPickerStrings }
           value={ value }
           onSelectDate={ date => this.setState({ value: date }) }
-          />
+        />
         <Button onClick={ () => this.setState({ value: null }) }>Clear</Button>
       </div>
     );

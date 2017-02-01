@@ -1,11 +1,8 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import {
-  DetailsList,
-  IGroup,
-  Link
-} from '../../../../index';
+import { Link } from '../../../../Link';
+import { DetailsList, IGroup } from '../../../../DetailsList';
 import { createListItems, createGroups } from '../../../utilities/data';
 import './DetailsListExample.scss';
 
@@ -27,12 +24,12 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<any, a
     return (
       <div>
         <DetailsList
-          items={_items}
-          groups={_groups}
-          groupProps={{
+          items={ _items }
+          groups={ _groups }
+          groupProps={ {
             onRenderHeader: props => (
               <div className='DetailsListExample-customHeader'>
-                <div className='DetailsListExample-customHeaderTitle'>{`I am a custom header for: ${props.group.name}`}</div>
+                <div className='DetailsListExample-customHeaderTitle'>{ `I am a custom header for: ${props.group.name}` }</div>
                 <div className='DetailsListExample-customHeaderLinkSet'>
                   <Link
                     className='DetailsListExample-customHeaderLink'
@@ -41,7 +38,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<any, a
                   </Link>
                   <Link
                     className='DetailsListExample-customHeaderLink'
-                    onClick={() => props.onToggleCollapse(props.group)}>
+                    onClick={ () => props.onToggleCollapse(props.group) }>
                     { props.group.isCollapsed ? 'Expand group' : 'Collapse group' }
                   </Link>
                 </div>
@@ -49,11 +46,11 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<any, a
             ),
             onRenderFooter: props => (
               <div className='DetailsListExample-customHeader'>
-                <div className='DetailsListExample-customHeaderTitle'>{`I'm a custom footer for: ${props.group.name}`}</div>
+                <div className='DetailsListExample-customHeaderTitle'>{ `I'm a custom footer for: ${props.group.name}` }</div>
               </div>
             )
-          }}
-          />
+          } }
+        />
       </div>
     );
   }

@@ -3,14 +3,12 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import * as ReactDOM from 'react-dom';
-import { FocusTrapZone } from '../../../../index';
+import { Button } from '../../../../Button';
+import { FocusTrapZone } from '../../../../FocusTrapZone';
+import { Link } from '../../../../Link';
+import { TextField } from '../../../../TextField';
+import { Toggle } from '../../../../Toggle';
 import './FocusTrapZone.Box.Example.scss';
-import {
-  Button,
-  Link,
-  TextField,
-  Toggle
-} from '../../../../index';
 
 export interface IBoxExampleExampleState {
   isChecked: boolean;
@@ -35,13 +33,13 @@ export default class BoxExample extends React.Component<React.HTMLProps<HTMLDivE
       <div>
         <Button description='Focuses inside the FocusTrapZone' onClick={ this._onButtonClickHandler.bind(this) }>Go to Trap Zone</Button>
 
-        {(() => {
+        { (() => {
           if (isChecked) {
             return (
               <FocusTrapZone>
                 { this._internalContents() }
               </FocusTrapZone>
-              );
+            );
           } else {
             return (
               <div>
@@ -49,7 +47,7 @@ export default class BoxExample extends React.Component<React.HTMLProps<HTMLDivE
               </div>
             );
           }
-        })()}
+        })() }
       </div>
     );
   }
@@ -68,13 +66,13 @@ export default class BoxExample extends React.Component<React.HTMLProps<HTMLDivE
           label='Focus Trap Zone'
           onText='On'
           offText='Off' />
-        {(() => {
+        { (() => {
           if (isChecked) {
             return (
               <Button description='Exit Focus Trap Zone' onClick={ this._onExitButtonClickHandler.bind(this) }>Exit Focus Trap Zone</Button>
             );
           }
-        })()}
+        })() }
       </div>
     );
   }

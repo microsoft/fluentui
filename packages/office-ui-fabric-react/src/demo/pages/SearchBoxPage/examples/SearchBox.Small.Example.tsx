@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   SearchBox
-} from '../../../../index';
+} from '../../../../SearchBox';
 import './SearchBox.Small.Example.scss';
 
 export class SearchBoxSmallExample extends React.Component<any, any> {
@@ -11,7 +11,7 @@ export class SearchBoxSmallExample extends React.Component<any, any> {
         <SearchBox
           onChange={ (newValue) => console.log('SearchBox onChange fired: ' + newValue) }
           onSearch={ (newValue) => console.log('SearchBox onSearch fired: ' + newValue) }
-          />
+        />
       </div>
     );
   }

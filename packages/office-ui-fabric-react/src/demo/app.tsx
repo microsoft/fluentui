@@ -55,10 +55,17 @@ function _getRoutes() {
 
   AppState.examplePages.forEach(group => {
     group.links
-      .filter(link => link.hasOwnProperty('component'))
+      .filter(link => link.hasOwnProperty('component') || link.hasOwnProperty('getComponent'))
       .forEach((link, linkIndex) => {
-        let { component } = link;
-        appRoutes.push(<Route key={ link.key } path={ link.url } component={ component } />);
+        const { component, getComponent } = link;
+
+        appRoutes.push(
+          <Route
+            key={ link.key }
+            path={ link.url }
+            component={ component }
+            getComponent={ getComponent }
+          />);
       });
   });
 

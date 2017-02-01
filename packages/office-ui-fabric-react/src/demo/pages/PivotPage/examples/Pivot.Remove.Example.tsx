@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {
-  Label,
-  Button,
   Pivot,
   PivotItem,
   PivotLinkFormat,
   PivotLinkSize,
   IPivotItemProps
-} from '../../../../index';
+} from '../../../../Pivot';
+import { Button } from '../../../../Button';
+import { Label } from '../../../../Label';
 
 export interface IPivotOnChangeExampleState {
   shouldShowFirstPivotItem: boolean;
