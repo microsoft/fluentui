@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "BasePickerBelow: add support for focuszone innerkeystroke\"",
+      "type": "patch"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}
