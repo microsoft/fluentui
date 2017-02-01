@@ -24,19 +24,19 @@ export class Button extends BaseComponent<IButtonProps, {}> implements IButton {
 
     switch (props.buttonType) {
       case ButtonType.command:
-        return <CommandButton ref={ this._resolveRef('_button') } { ...props } />;
+        return <CommandButton { ...props } ref={ this._resolveRef('_button') } />;
 
       case ButtonType.compound:
-        return <CompoundButton ref={ this._resolveRef('_button') } { ...props } />;
+        return <CompoundButton { ...props } ref={ this._resolveRef('_button') } />;
 
       case ButtonType.icon:
-        return <IconButton ref={ this._resolveRef('_button') } { ...props } />;
+        return <IconButton { ...props } ref={ this._resolveRef('_button') } />;
 
       case ButtonType.primary:
-        return <PrimaryButton ref={ this._resolveRef('_button') } { ...props } />;
+        return <PrimaryButton { ...props } ref={ this._resolveRef('_button') } />;
 
       default:
-        return <DefaultButton ref={ this._resolveRef('_button') } { ...props } />;
+        return <DefaultButton { ...props } ref={ this._resolveRef('_button') } />;
     }
   }
 
