@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {
-  Checkbox,
-  Dropdown,
   IFacepileProps,
   Facepile,
   OverflowButtonType,
-  Slider
-} from '../../../../index';
+} from '../../../../Facepile';
+import { Checkbox } from '../../../../Checkbox';
+import { Dropdown } from '../../../../Dropdown';
+import { Slider } from '../../../../Slider';
 import { facepilePersonas } from './FacepileExampleData';
 import './Facepile.Examples.scss';
 
@@ -55,7 +55,7 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
             prevState.displayedPersonas = value;
             return prevState;
           }) }
-          />
+        />
         <Checkbox
           label='Use only width available'
           checked={ useOnlyAvailableWidth }
@@ -81,7 +81,7 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
             prevState.overflowButtonType = value.key as OverflowButtonType;
             return prevState;
           }) }
-          />
+        />
       </div>
     );
   }

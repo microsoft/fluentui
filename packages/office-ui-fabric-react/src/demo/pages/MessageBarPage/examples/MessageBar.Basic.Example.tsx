@@ -1,13 +1,10 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import {
-  Button,
-  MessageBar,
-  MessageBarType,
-  Label,
-  Link
-} from '../../../../index';
+import { Button } from '../../../../Button';
+import { Link } from '../../../../Link';
+import { Label } from '../../../../Label';
+import { MessageBar, MessageBarType } from '../../../../MessageBar';
 import './MessageBar.Basic.Example.scss';
 
 export const MessageBarBasicExample = () => (

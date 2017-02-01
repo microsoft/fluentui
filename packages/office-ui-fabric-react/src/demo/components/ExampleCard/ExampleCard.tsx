@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { css } from '@uifabric/utilities';
+import { css } from '../../../Utilities';
 import './ExampleCard.scss';
 import { Button, ButtonType } from '../../../Button';
-
-const Highlight = require('react-highlight') as any;
+import { Highlight } from '../Highlight/Highlight';
 
 export interface IExampleCardProps {
   title: string;
@@ -44,16 +43,18 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
             { code ? (
               <Button buttonType={ ButtonType.icon } icon='Embed'
                 onClick={ this._onToggleCodeClick } className={ css('ExampleCard-codeButton', { 'is-active': isCodeVisible }) }>
-                { this.state.isCodeVisible ? 'Hide code' : 'Show code' }
+                { isCodeVisible ? 'Hide code' : 'Show code' }
               </Button>
             ) : (null) }
           </div>
         </div>
 
         <div className='ExampleCard-code'>
-          <Highlight className='javascript'>
-            { code }
-          </Highlight>
+          { isCodeVisible && (
+            <Highlight>
+              { code }
+            </Highlight>
+          ) }
         </div>
 
         <div className={ css('ExampleCard-example', { ' is-right-aligned': (isRightAligned) }) } data-is-scrollable='true'>

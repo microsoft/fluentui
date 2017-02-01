@@ -3,7 +3,7 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 import './ImagePage.scss';
 
 import { ImageDefaultExample } from './examples/Image.Default.Example';

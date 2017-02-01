@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Tooltip } from './Tooltip';
-import { ICalloutProps } from '../../index';
+import { ICalloutProps } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
 /**

@@ -2,8 +2,9 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-import { createArray } from '@uifabric/utilities';
-import { FocusZone, Image } from '../../../../index';
+import { createArray } from '../../../../Utilities';
+import { FocusZone } from '../../../../FocusZone';
+import { Image } from '../../../../Image';
 import './FocusZone.Photos.Example.scss';
 
 const PHOTOS = createArray(25, () => {

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   DatePicker,
   DayOfWeek
-} from '../../../../index';
+} from '../../../../DatePicker';
 
 const DayPickerStrings = {
   months: [

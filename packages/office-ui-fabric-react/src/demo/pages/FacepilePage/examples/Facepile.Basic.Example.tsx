@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {
-  Checkbox,
-  Dropdown,
   Facepile,
   IFacepilePersona,
-  IFacepileProps,
-  Slider
-} from '../../../../index';
+  IFacepileProps
+} from '../../../../Facepile';
+import { Checkbox } from '../../../../Checkbox';
+import { Dropdown } from '../../../../Dropdown';
+import { Slider } from '../../../../Slider';
 import { facepilePersonas } from './FacepileExampleData';
 import './Facepile.Examples.scss';
 
@@ -70,7 +70,7 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
             prevState.numberOfFaces = value;
             return prevState;
           }) }
-          />
+        />
         <Checkbox
           label='Fade In'
           checked={ this.state.imagesFadeIn }
@@ -94,7 +94,7 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
             prevState.extraDataType = value.key as ExtraDataType;
             return prevState;
           }) }
-          />
+        />
       </div>
     );
   }

@@ -2,13 +2,9 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-import {
-  TeachingBubble,
-  Button,
-  ButtonType,
-  IImageProps,
-  IButtonProps,
-} from '../../../../index';
+import { IImageProps } from '../../../../Image';
+import { Button, ButtonType, IButtonProps } from '../../../../Button';
+import { TeachingBubble } from '../../../../TeachingBubble';
 
 export interface ITeachingBubbleIllustrationExampleState {
   isTeachingBubbleVisible?: boolean;
@@ -29,7 +25,7 @@ export class TeachingBubbleIllustrationExample extends React.Component<any, ITea
 
   public render() {
     let { isTeachingBubbleVisible } = this.state;
-    let exampleImageProps: IImageProps = { src: 'http://placehold.it/364x140'};
+    let exampleImageProps: IImageProps = { src: 'http://placehold.it/364x140' };
     let examplePrimaryButton: IButtonProps = {
       buttonType: ButtonType.primary,
       children: 'Try it out',

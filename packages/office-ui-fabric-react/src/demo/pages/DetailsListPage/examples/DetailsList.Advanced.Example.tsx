@@ -1,24 +1,26 @@
 import * as React from 'react';
+import { Link } from '../../../../Link';
+import { TextField } from '../../../../TextField';
+import { CommandBar } from '../../../../CommandBar';
+import {
+  IContextualMenuProps,
+  IContextualMenuItem,
+  DirectionalHint,
+  ContextualMenu,
+} from '../../../../ContextualMenu';
+import { autobind } from '../../../../Utilities';
 import {
   CheckboxVisibility,
   ColumnActionsMode,
-  CommandBar,
   ConstrainMode,
-  ContextualMenu,
   DetailsList,
   DetailsListLayoutMode as LayoutMode,
-  DirectionalHint,
   IColumn,
-  IContextualMenuItem,
-  IContextualMenuProps,
   IGroup,
-  Link,
   Selection,
-  TextField,
-  autobind,
+  SelectionMode,
   buildColumns
-} from '../../../../index';
-import { SelectionMode } from '../../../../utilities/selection/interfaces';
+} from '../../../../DetailsList';
 import { createListItems, isGroupable } from '../../../utilities/data';
 import './DetailsList.Advanced.Example.scss';
 

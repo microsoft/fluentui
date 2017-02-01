@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   Calendar,
   DayOfWeek
-} from '../../../../index';
+} from '../../../../Calendar';
 
 const DayPickerStrings = {
   months: [
@@ -96,7 +96,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           value={ this.state.selectedDate }
           firstDayOfWeek={ DayOfWeek.Sunday }
           strings={ DayPickerStrings }
-          >
+        >
         </Calendar>
       </div>
     );
