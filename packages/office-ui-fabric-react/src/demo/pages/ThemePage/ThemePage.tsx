@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { loadTheme, ITheme } from '@microsoft/load-themed-styles';
-let Highlight = require('react-highlight') as any;
+import { DeferredHighlight } from '../../components/ExampleCard/DeferredHighlight';
 import { defaultTheme } from './defaultTheme';
 import {
   Callout,
@@ -45,9 +45,9 @@ export class ThemePage extends React.Component<any, any> {
         <p>The entire color pallete of the controls are themeable. We provide a set of sensible defaults, but you can override all colors individually.</p>
         <p>To override the themes, you need to call <span className='code'>loadTheme()</span> with the appropriate set of overrides:</p>
 
-        <Highlight className='typescript'>
+        <DeferredHighlight className='typescript'>
           { ThemeCodeExample }
-        </Highlight>
+        </DeferredHighlight>
 
         <h1 className='ms-font-xl'>Define a theme</h1>
         <div>

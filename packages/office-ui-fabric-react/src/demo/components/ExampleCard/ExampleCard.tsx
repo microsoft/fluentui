@@ -2,8 +2,7 @@ import * as React from 'react';
 import { css } from '../../../Utilities';
 import './ExampleCard.scss';
 import { Button, ButtonType } from '../../../Button';
-
-const Highlight = require('react-highlight') as any;
+import { DeferredHighlight } from './DeferredHighlight';
 
 export interface IExampleCardProps {
   title: string;
@@ -51,9 +50,11 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
         </div>
 
         <div className='ExampleCard-code'>
-          <Highlight className='javascript'>
-            { code }
-          </Highlight>
+          { this.state.isCodeVisible && (
+            <DeferredHighlight className='javascript'>
+              { code }
+            </DeferredHighlight>
+          ) }
         </div>
 
         <div className={ css('ExampleCard-example', { ' is-right-aligned': (isRightAligned) }) } data-is-scrollable='true'>

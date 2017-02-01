@@ -10,7 +10,7 @@
     "@types/mocha": "^2.2.32",
     "@types/node": "^6.0.45",
     "@types/react-addons-test-utils": "^0.14.15",
-    "@types/webpack": "^1.12.35",
+    "@types/webpack-env": "^1.13.0",
     "es6-promise": "3.2.1",
     "git-rev": "0.2.1",
     "gulp": "~3.9.1",
