@@ -1,7 +1,5 @@
 import * as React from 'react';
-import {
-  Link
-} from '../../../../index';
+import { Link } from '../../../../Link';
 
 export class LinkBasicExample extends React.Component<any, any> {
   public render() {

@@ -8,7 +8,8 @@ import {
   buttonProperties
 } from '../../../Utilities';
 
-import { Button, ButtonType } from '../index';
+import { Button } from '../Button';
+import { ButtonType } from '../Button.Props';
 import { ICommandButtonProps } from './CommandButton.Props';
 import './CommandButton.scss';
 import '../ButtonCore/ButtonCore.scss';

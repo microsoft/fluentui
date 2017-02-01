@@ -1,12 +1,8 @@
 import * as React from 'react';
 import './CalloutExample.scss';
-import {
-  Callout,
-  Button,
-  DirectionalHint,
-  Dropdown,
-  IDropdownOption
-} from '../../../../index';
+import { Button } from '../../../../Button';
+import { Callout, DirectionalHint } from '../../../../Callout';
+import { Dropdown, IDropdownOption } from '../../../../Dropdown';
 
 export interface ICalloutCoverExampleState {
   isCalloutVisible?: boolean;
@@ -51,7 +47,7 @@ export class CalloutCoverExample extends React.Component<any, ICalloutCoverExamp
     // ms-Callout-smallbeak is used in this directional example to reflect all the positions. Large beak will disable some position to avoid beak over the callout edge.
     return (
       <div className='ms-CalloutExample'>
-         <div className='ms-CalloutExample-configArea'>
+        <div className='ms-CalloutExample-configArea'>
           <Dropdown
             label='Directional hint'
             selectedKey={ DirectionalHint[directionalHint] }
@@ -62,15 +58,15 @@ export class CalloutCoverExample extends React.Component<any, ICalloutCoverExamp
           <Button onClick={ this._onShowMenuClicked } >{ isCalloutVisible ? 'Hide callout' : 'Show callout' }</Button>
         </div>
         { isCalloutVisible ? (
-        <Callout
-          className='ms-CalloutExample-callout'
-          onDismiss={ this._onDismiss }
-          targetElement={ this._menuButtonElement }
-          directionalHint={ directionalHint }
-          coverTarget={ true }
-          isBeakVisible={ false }
-          gapSpace={ 0 }
-         >
+          <Callout
+            className='ms-CalloutExample-callout'
+            onDismiss={ this._onDismiss }
+            targetElement={ this._menuButtonElement }
+            directionalHint={ directionalHint }
+            coverTarget={ true }
+            isBeakVisible={ false }
+            gapSpace={ 0 }
+          >
             <div className='ms-CalloutExample-header'>
               <p className='ms-CalloutExample-title'>
                 I'm covering the target!
@@ -78,10 +74,10 @@ export class CalloutCoverExample extends React.Component<any, ICalloutCoverExamp
             </div>
             <div className='ms-CalloutExample-inner'>
               <div className='ms-CalloutExample-content'>
-              <Button onClick={ this._onShowMenuClicked }> Click to dismiss </Button>
+                <Button onClick={ this._onShowMenuClicked }> Click to dismiss </Button>
               </div>
             </div>
-         </Callout>
+          </Callout>
         ) : (null) }
       </div>
     );

@@ -6,7 +6,10 @@ import * as ReactTestUtils from 'react-addons-test-utils';
 
 let { expect } = chai;
 
-import { TagPicker, ITag, BasePicker, IBasePickerProps, IPickerItemProps } from './index';
+import { TagPicker, ITag } from './TagPicker/TagPicker';
+import { IBasePickerProps } from './BasePicker.Props';
+import { BasePicker } from './BasePicker';
+import { IPickerItemProps } from './PickerItem.Props';
 
 function onResolveSuggestions(text: string): ITag[] {
   return [
@@ -54,7 +57,7 @@ describe('Pickers', () => {
           onResolveSuggestions={ onResolveSuggestions }
           onRenderItem={ (props: IPickerItemProps<{ key: string, name: string }>) => <div key={ props.item.name }>{ basicRenderer(props) }</div> }
           onRenderSuggestionsItem={ basicSuggestionRenderer }
-          />,
+        />,
         root
       ) as TypedBasePicker;
       let input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
@@ -88,7 +91,7 @@ describe('Pickers', () => {
       let picker: TagPicker = ReactDOM.render(
         <TagPicker
           onResolveSuggestions={ onResolveSuggestions }
-          />,
+        />,
         root
       ) as TagPicker;
       let input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;

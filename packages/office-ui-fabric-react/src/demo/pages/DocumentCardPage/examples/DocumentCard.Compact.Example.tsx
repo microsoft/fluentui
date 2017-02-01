@@ -6,12 +6,12 @@ import {
   DocumentCardTitle,
   IDocumentCardPreviewProps,
   DocumentCardType
-} from '../../../../index';
+} from '../../../../DocumentCard';
 
 export class DocumentCardCompactExample extends React.Component<any, any> {
   public render() {
     let previewProps: IDocumentCardPreviewProps = {
-      getOverflowDocumentCountText: (overflowCount: number) => `+${ overflowCount } more`,
+      getOverflowDocumentCountText: (overflowCount: number) => `+${overflowCount} more`,
       previewImages: [
         {
           name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
@@ -51,7 +51,7 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
           <div className='ms-DocumentCard-details'>
             <DocumentCardTitle
               title='4 files were uploaded'
-              shouldTruncate={ true }/>
+              shouldTruncate={ true } />
             <DocumentCardActivity
               activity='Created a few minutes ago'
               people={
@@ -62,13 +62,13 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
             />
           </div>
         </DocumentCard>
-        <p/>
+        <p />
         <DocumentCard type={ DocumentCardType.compact } onClickHref='http://bing.com' accentColor='#ce4b1f'>
-          <DocumentCardPreview previewImages={ [previewProps.previewImages[0]] }  />
+          <DocumentCardPreview previewImages={ [previewProps.previewImages[0]] } />
           <div className='ms-DocumentCard-details'>
             <DocumentCardTitle
               title='Revenue stream proposal fiscal year 2016 version02.pptx'
-              shouldTruncate={ true }/>
+              shouldTruncate={ true } />
             <DocumentCardActivity
               activity='Created a few minutes ago'
               people={

@@ -5,25 +5,32 @@ let build = require('@microsoft/web-library-build');
 let buildConfig = build.getConfig();
 let library = require('./' + buildConfig.libFolder);
 let responsiveLib = require('./' + buildConfig.libFolder + '/utilities/decorators/withResponsiveMode');
-let appstate = require('./' + buildConfig.libFolder + '/demo/components/App/AppState').AppState;
+let AppState = require('./' + buildConfig.libFolder + '/demo/components/App/AppState').AppState;
 let ReactDOMServer = require('react-dom/server');
 
 describe('Fabric components', () => {
+  // set required settings
+  library.setSSR(true);
+  library.setRTL(false);
+  responsiveLib.setResponsiveMode(responsiveLib.ResponsiveMode.large);
 
-  it('are SSR compliant on import', () => { });
+  for (let i = 0; i < AppState.examplePages.length; i++) {
+    let links = AppState.examplePages[i].links;
 
-  it('are SSR compliant on render', () => {
-    // set required settings
-    library.setSSR(true);
-    library.setRTL(false);
-    responsiveLib.setResponsiveMode(responsiveLib.ResponsiveMode.large);
+    for (let j = 0; j < links.length; j++) {
+      let componentName = links[j].key;
 
-    for (var i = 0; i < appstate.examplePages.length; i++) {
-      var links = appstate.examplePages[i].links;
-      for (var j = 0; j < links.length; j++) {
-        var elem = React.createElement(links[j].component);
-        ReactDOMServer.renderToString(elem);
-      }
+      testRender(componentName);
     }
-  });
+  }
 });
+
+function testRender(componentName) {
+  it(`${componentName} can render in a server environment`, () => {
+    let componentPath = './' + buildConfig.libFolder + `/demo/pages/${componentName}Page/${componentName}Page`;
+    let component = require(componentPath)[componentName + 'Page'];
+    let elem = React.createElement(component);
+
+    ReactDOMServer.renderToString(elem);
+  });
+}

@@ -1,8 +1,6 @@
 import * as React from 'react';
-import {
-  Button,
-  Overlay
-} from '../../../../index';
+import { Button } from '../../../../Button';
+import { Overlay } from '../../../../Overlay';
 
 import './Overlay.Example.scss';
 
@@ -24,12 +22,12 @@ export class OverlayDarkExample extends React.Component<any, any> {
       <div>
         <Button onClick={ this._onClick }>Show the overlay</Button>
         { isOverlayVisible && (
-        <Overlay isDarkThemed={ true } onClick={ this._onClick }>
-          <div className='OverlayExample-content'>
-            <p>I am content within the overlay.</p>
-          </div>
-        </Overlay>
-        )}
+          <Overlay isDarkThemed={ true } onClick={ this._onClick }>
+            <div className='OverlayExample-content'>
+              <p>I am content within the overlay.</p>
+            </div>
+          </Overlay>
+        ) }
       </div>
     );
   }

@@ -3,14 +3,10 @@ import {
   css,
   getRTL
 } from '../../../../Utilities';
-import {
-  FocusZone,
-  FocusZoneDirection,
-  TextField,
-  Image,
-  ImageFit,
-  List
-} from '../../../../index';
+import { FocusZone, FocusZoneDirection } from '../../../../FocusZone';
+import { TextField } from '../../../../TextField';
+import { Image, ImageFit } from '../../../../Image';
+import { List } from '../../../../List';
 import './List.Basic.Example.scss';
 
 export interface IListBasicExampleProps {
