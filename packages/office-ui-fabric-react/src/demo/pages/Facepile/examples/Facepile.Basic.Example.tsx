@@ -27,7 +27,7 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
     super();
 
     this.state = {
-      numberOfFaces: 3,
+      numberOfFaces: 5,
       imagesFadeIn: true,
       extraDataType: ExtraDataType.none
     };
