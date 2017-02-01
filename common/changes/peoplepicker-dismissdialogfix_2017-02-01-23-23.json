@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Pickers and Popup: Fixed a bug where having a picker in a dialog could cause the dialog to be dismissed on escape press",
+      "type": "patch"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}
