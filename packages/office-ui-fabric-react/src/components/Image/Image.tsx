@@ -39,6 +39,8 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
     shouldFadeIn: true
   };
 
+  private static _svgRegex = /\.svg$/i;
+
   private _coverStyle: CoverStyle;
   private _imageElement: HTMLImageElement;
   private _frameElement: HTMLDivElement;
@@ -127,7 +129,13 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
   private _evaluateImage(): boolean {
     let { src } = this.props;
     let { loadState } = this.state;
-    let isLoaded = (src && this._imageElement.complete);
+
+    // testing if naturalWidth and naturalHeight are greater than zero is better than checking
+    // .complete, because .complete will also be set to true if the image breaks. However,
+    // for some browsers, SVG images do not have a naturalWidth or naturalHeight, so fall back
+    // to checking .complete for these images.
+    let isLoaded: boolean = src && (this._imageElement.naturalWidth > 0 && this._imageElement.naturalHeight > 0) ||
+      (this._imageElement.complete && Image._svgRegex.test(src));
 
     this._computeCoverStyle(this.props);
 
