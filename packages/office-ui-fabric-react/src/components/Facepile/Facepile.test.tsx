@@ -98,7 +98,7 @@ describe('Facepile', () => {
       let overflowButton = wrapper.find('.ms-Facepile-descriptiveOverflowButton');
       expect(overflowButton).to.have.length(1, 'Overflow button should render');
       let buttons = wrapper.find('.ms-Facepile-itemButton');
-      expect(buttons).to.have.length(6, 'All six personas and overflow button should be rendered');
+      expect(buttons).to.have.length(5, 'Four personas and overflow button should be rendered');
     });
 
     it('persona is clickable if onClick property is set', () => {
@@ -136,15 +136,19 @@ describe('Facepile', () => {
       expect(buttons).to.have.length(2, 'Only two personas should be rendered');
     });
 
-    it('renders no more than maximum allowed width', () => {
-      // TODO: Need to set width with css?
-      const wrapper = shallow(
-        <Facepile
-          personas={ facepilePersonas.concat(facepilePersonas, facepilePersonas, facepilePersonas) }
-          maxDisplayablePersonas={ 99 }
-          useOnlyAvailableWidth={ true }
-          />);
-      let buttons = wrapper.find('.ms-Facepile-itemButton');
+    xit('renders no more than maximum allowed width', () => {
+      const wrapper = mount(
+        <div style={ { 'width': '100px' } }>
+          <Facepile
+            personas={ facepilePersonas.concat(facepilePersonas, facepilePersonas, facepilePersonas) }
+            maxDisplayablePersonas={ 99 }
+            useOnlyAvailableWidth={ true }
+            />
+        </div>
+      );
+
+      let facepile = wrapper.find(Facepile);
+      let buttons = facepile.find('.ms-Facepile-itemButton');
       expect(buttons).to.have.length(3, 'Only three personas should be rendered');
     });
   });

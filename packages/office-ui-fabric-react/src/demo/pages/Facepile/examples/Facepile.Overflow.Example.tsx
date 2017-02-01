@@ -12,9 +12,6 @@ import './Facepile.Examples.scss';
 
 const facepileProps: IFacepileProps = {
   personas: facepilePersonas,
-  maxDisplayablePersonas: 5,
-  useOnlyAvailableWidth: false,
-  overflowButtonType: OverflowButtonType.downArrow,
   overflowButtonProps: {
     onClick: (ev: React.MouseEvent<HTMLButtonElement>) =>
       alert('overflow icon clicked')
@@ -33,8 +30,8 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
 
     this.state = {
       useOnlyAvailableWidth: false,
-      displayedPersonas: 1,
-      overflowButtonType: OverflowButtonType.descriptive
+      displayedPersonas: 5,
+      overflowButtonType: OverflowButtonType.none
     };
   }
 
@@ -53,7 +50,7 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
           max={ 10 }
           step={ 1 }
           showValue={ true }
-          value={ this.state.displayedPersonas }
+          value={ displayedPersonas }
           onChange={ value => this.setState((prevState: IFacepileOverflowExampleState) => {
             prevState.displayedPersonas = value;
             return prevState;
@@ -61,7 +58,7 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
           />
         <Checkbox
           label='Use only width available'
-          checked={ this.state.useOnlyAvailableWidth }
+          checked={ useOnlyAvailableWidth }
           onChange={ (ev, checked) => {
             this.setState((prevState: IFacepileOverflowExampleState) => {
               prevState.useOnlyAvailableWidth = checked;
@@ -70,7 +67,7 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
           } } />
         <Dropdown
           label='Overflow Type:'
-          selectedKey={ this.state.overflowButtonType }
+          selectedKey={ overflowButtonType }
           options={
             [
               { key: OverflowButtonType.none, text: OverflowButtonType[OverflowButtonType.none] },
