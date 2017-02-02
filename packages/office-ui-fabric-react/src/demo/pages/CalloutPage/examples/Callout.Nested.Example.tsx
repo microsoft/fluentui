@@ -1,10 +1,9 @@
 import * as React from 'react';
+import { Button } from '../../../../Button';
+import { Callout } from '../../../../Callout';
+import { CommandBar } from '../../../../CommandBar';
 import './CalloutExample.scss';
-import {
-  Callout,
-  Button,
-  CommandBar
-} from '../../../../index';
+
 import { items } from '../../CommandBarPage/examples/data';
 
 export interface ICalloutBaiscExampleState {
@@ -40,7 +39,7 @@ export class CalloutNestedExample extends React.Component<any, ICalloutBaiscExam
               targetElement={ this._menuButtonElement }
               onDismiss={ (ev: any) => { this._onDismiss(ev); } }
               setInitialFocus={ true }
-              >
+            >
               <div className='ms-CalloutExample-header'>
                 <p className='ms-CalloutExample-title'>
                   Callout title here

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {
-  IFacepilePersona,
-  PersonaInitialsColor
-} from '../../../../index';
+  IFacepilePersona
+} from '../../../../Facepile';
+import { PersonaInitialsColor } from '../../../../Persona';
 
 export const facepilePersonas: IFacepilePersona[] = [
   {

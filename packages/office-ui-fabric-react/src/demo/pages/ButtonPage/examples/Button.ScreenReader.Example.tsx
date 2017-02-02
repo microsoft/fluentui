@@ -1,9 +1,6 @@
 import * as React from 'react';
-import {
-  PrimaryButton,
-  Label
-} from '../../../../index';
-import { IButtonProps } from './IButtonProps';
+import { PrimaryButton, IButtonProps } from '../../../../Button';
+import { Label } from '../../../../Label';
 
 export class ButtonScreenReaderExample extends React.Component<IButtonProps, {}> {
   public constructor() {

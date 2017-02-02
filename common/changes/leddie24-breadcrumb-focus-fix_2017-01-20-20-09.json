@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Breadcrumb: Fix hover style to match OneDrive",
+      "comment": "Breadcrumb: Change item to render as span if it doesn't have onClick",
       "type": "patch"
     }
   ],

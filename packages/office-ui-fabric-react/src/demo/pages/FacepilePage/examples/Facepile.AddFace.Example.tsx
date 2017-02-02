@@ -3,7 +3,7 @@ import {
   Facepile,
   IFacepileProps,
   OverflowButtonType
-} from '../../../../index';
+} from '../../../../Facepile';
 import { facepilePersonas } from './FacepileExampleData';
 
 export interface IFacepileAddFaceExampleState {

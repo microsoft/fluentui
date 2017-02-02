@@ -1,12 +1,7 @@
 import * as React from 'react';
-import {
-  Dialog,
-  DialogType,
-  DialogFooter,
-  Button,
-  ButtonType,
-  ChoiceGroup
-} from '../../../../index';
+import { Dialog, DialogType, DialogFooter } from '../../../../Dialog';
+import { Button, ButtonType } from '../../../../Button';
+import { ChoiceGroup } from '../../../../ChoiceGroup';
 
 export class DialogCloseExample extends React.Component<any, any> {
 
@@ -36,7 +31,7 @@ export class DialogCloseExample extends React.Component<any, any> {
             ariaLabel: 'More',
             onClick: this._onMoreButtonClicked.bind(this)
           }] }
-          >
+        >
           <ChoiceGroup
             options={ [
               {
@@ -55,7 +50,7 @@ export class DialogCloseExample extends React.Component<any, any> {
               }
             ] }
             onChanged={ this._onChoiceChanged }
-            />
+          />
           <DialogFooter>
             <Button buttonType={ ButtonType.primary } onClick={ this._closeDialog.bind(this) }>Save</Button>
             <Button onClick={ this._closeDialog.bind(this) }>Cancel</Button>

@@ -8,6 +8,7 @@ let webpack = webpackTaskResources.webpack;
 
 let path = require('path');
 let SplitByPathPlugin = require('webpack-split-by-path');
+let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 // Create an array of configs, prepopulated with a debug (non-minified) build.
 let configs = [
@@ -31,8 +32,9 @@ function createConfig(isProduction) {
 
     output: {
       path: path.join(__dirname, buildConfig.distFolder),
-      filename: `[name]${ minFileNamePart }.js`,
-      chunkFilename: `[name]${ minFileNamePart }.js`
+      publicPath: '/dist/',
+      filename: `[name]${minFileNamePart}.js`,
+      chunkFilename: `demo-app-split-[name]${minFileNamePart}.js`
     },
 
     devtool: 'source-map',
@@ -63,16 +65,11 @@ function createConfig(isProduction) {
     },
 
     plugins: [
-      new SplitByPathPlugin([
-        {
-          name: 'demo-vendor',
-          path: path.resolve(__dirname, '../../common/node_modules'),
-        },
-        {
-          name: 'demo-components',
-          path: path.resolve(__dirname, buildConfig.libFolder, 'components')
-        }
-      ])
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'static',
+        reportFilename: 'demo-app.stats.html',
+        openAnalyzer: false
+      })
     ]
   };
 

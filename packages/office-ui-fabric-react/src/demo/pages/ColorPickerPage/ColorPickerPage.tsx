@@ -3,7 +3,7 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { ColorPickerBasicExample } from './examples/ColorPicker.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';

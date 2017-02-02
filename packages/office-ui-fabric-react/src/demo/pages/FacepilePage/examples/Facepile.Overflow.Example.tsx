@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {
-  Dropdown,
   IFacepileProps,
   Facepile,
   OverflowButtonType,
-  Slider
-} from '../../../../index';
+} from '../../../../Facepile';
+import { Dropdown } from '../../../../Dropdown';
+import { Slider } from '../../../../Slider';
 import { facepilePersonas } from './FacepileExampleData';
 import './Facepile.Examples.scss';
 

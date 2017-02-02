@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {
-  Nav,
-  INavProps
-} from '../../../../index';
+import { Nav, INavProps } from '../../../../Nav';
 import './Nav.Basic.Example.scss';
 
 export class NavBasicExample extends React.Component<any, any> {
@@ -21,23 +18,23 @@ export class NavBasicExample extends React.Component<any, any> {
                 links:
                 [
                   {
-                  name: 'Home',
-                  url: 'http://example.com',
-                  links: [{
-                    name: 'Activity',
-                    url: 'http://msn.com',
-                    key: 'key1'
+                    name: 'Home',
+                    url: 'http://example.com',
+                    links: [{
+                      name: 'Activity',
+                      url: 'http://msn.com',
+                      key: 'key1'
                     },
                     {
                       name: 'News',
                       url: 'http://msn.com',
                       key: 'key2'
                     }],
-                  isExpanded: true
+                    isExpanded: true
                   },
                   { name: 'Documents', url: 'http://example.com', key: 'key3', isExpanded: true },
                   { name: 'Pages', url: 'http://msn.com', key: 'key4' },
-                  { name: 'Notebook', url: 'http://msn.com', key: 'key5'  },
+                  { name: 'Notebook', url: 'http://msn.com', key: 'key5' },
                   { name: 'Long Name Test for elipse', url: 'http://msn.com', key: 'key6' },
                   {
                     name: 'Edit',
@@ -51,10 +48,10 @@ export class NavBasicExample extends React.Component<any, any> {
             ]
           }
           expandedStateText={ 'expanded' }
-          collapsedStateText={'collapsed'}
+          collapsedStateText={ 'collapsed' }
           selectedKey={ 'key3' }
-          />
-       </div>
+        />
+      </div>
     );
   }
 

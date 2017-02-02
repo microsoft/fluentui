@@ -78,8 +78,8 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
               prevState.imagesFadeIn = checked;
               return prevState;
             });
-          } } />
-
+          } }
+          />
         <Dropdown
           label='Persona Size:'
           selectedKey={ this.state.personaSize }
@@ -94,7 +94,6 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
             return prevState;
           }) }
           />
-
         <Dropdown
           label='Additional Data:'
           selectedKey={ this.state.extraDataType }
@@ -108,7 +107,7 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
             prevState.extraDataType = value.key as ExtraDataType;
             return prevState;
           }) }
-          />
+        />
       </div>
     );
   }

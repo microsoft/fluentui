@@ -4,15 +4,10 @@ import {
   createArray,
   getRTLSafeKeyCode
 } from '../../../../Utilities';
-import {
-  Button,
-  FocusZone,
-  FocusZoneDirection,
-  IColumn,
-  Link
-} from '../../../../index';
-import { DetailsRow } from '../../../../components/DetailsList/DetailsRow';
-import { Selection, SelectionMode } from '../../../../utilities/selection/index';
+import { Button } from '../../../../Button';
+import { Link } from '../../../../Link';
+import { FocusZone, FocusZoneDirection } from '../../../../FocusZone';
+import { DetailsRow, IColumn, Selection, SelectionMode } from '../../../../DetailsList';
 import './FocusZone.List.Example.scss';
 
 const ITEMS = createArray(10, (index) => ({

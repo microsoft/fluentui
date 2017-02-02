@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "ContextualMenu: `shouldFocusOnMount` is now properly handled as expected.",
+      "type": "patch"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}

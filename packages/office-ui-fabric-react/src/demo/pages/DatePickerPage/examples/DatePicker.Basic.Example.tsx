@@ -1,10 +1,6 @@
 import * as React from 'react';
-import {
-  DatePicker,
-  DayOfWeek,
-  Dropdown,
-  IDropdownOption
-} from '../../../../index';
+import { Dropdown, IDropdownOption } from '../../../../Dropdown';
+import { DatePicker, DayOfWeek } from '../../../../DatePicker';
 
 const DayPickerStrings = {
   months: [
@@ -113,7 +109,7 @@ export class DatePickerBasicExample extends React.Component<any, IDatePickerBasi
           ] }
           selectedKey={ DayOfWeek[firstDayOfWeek] }
           onChanged={ this._onDropdownChanged.bind(this) }
-          />
+        />
       </div>
     );
   }
