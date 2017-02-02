@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ColorPicker
-} from '../../../../index';
+} from '../../../../ColorPicker';
 import './ColorPicker.Basic.Example.scss';
 
 export interface IBasicColorPickerExampleState {
@@ -13,7 +13,7 @@ export class ColorPickerBasicExample extends React.Component<any, IBasicColorPic
   public render() {
 
     return (
-        <ColorPicker color='#FFFFFF'/>
+      <ColorPicker color='#FFFFFF' />
     );
   }
 }

@@ -1,5 +1,4 @@
 import { BaseButton } from '../BaseButton';
-
 import './IconButton.scss';
 import '../ButtonCore/ButtonCore.scss';
 

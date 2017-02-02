@@ -3,7 +3,7 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { PivotBasicExample } from './examples/Pivot.Basic.Example';
 import { PivotIconCountExample } from './examples/Pivot.IconCount.Example';

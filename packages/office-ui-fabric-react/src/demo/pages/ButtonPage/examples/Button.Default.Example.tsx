@@ -1,7 +1,5 @@
 import * as React from 'react';
-import {
-  DefaultButton,
-} from '../../../../index';
+import { DefaultButton } from '../../../../Button';
 import { IButtonProps } from './IButtonProps';
 
 export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {

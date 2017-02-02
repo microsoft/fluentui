@@ -3,7 +3,7 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { RatingBasicExample } from './examples/Rating.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';

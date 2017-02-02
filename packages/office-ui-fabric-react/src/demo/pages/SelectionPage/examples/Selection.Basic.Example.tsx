@@ -1,13 +1,15 @@
 import * as React from 'react';
-import { CommandBar, IContextualMenuItem, MarqueeSelection } from '../../../../index';
-import { Check } from '../../../../components/Check/Check';
+import { CommandBar } from '../../../../CommandBar';
+import { Check } from '../../../../Check';
+import { IContextualMenuItem } from '../../../../ContextualMenu';
+import { MarqueeSelection } from '../../../../MarqueeSelection';
 import {
   IObjectWithKey,
   ISelection,
   Selection,
   SelectionMode,
   SelectionZone
-} from '../../../../utilities/selection/index';
+} from '../../../../Selection';
 import { createListItems } from '../../../utilities/data';
 
 import './Selection.Example.scss';
@@ -76,7 +78,7 @@ export class SelectionBasicExample extends React.Component<any, ISelectionBasicE
                 itemIndex={ index }
                 selectionMode={ selectionMode }
                 selection={ selection }
-                />
+              />
             )) }
           </SelectionZone>
         </MarqueeSelection>
@@ -191,7 +193,7 @@ export class SelectionItemExample extends React.Component<ISelectionItemExampleP
     let isSelected = selection.isIndexSelected(itemIndex);
 
     return (
-      <div className='ms-SelectionItemExample'  data-selection-index={ itemIndex }>
+      <div className='ms-SelectionItemExample' data-selection-index={ itemIndex }>
         { (selectionMode !== SelectionMode.none) && (
           <div className='ms-SelectionItemExample-check' data-selection-toggle={ true } >
             <Check checked={ isSelected } />

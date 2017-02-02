@@ -3,7 +3,7 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { ListBasicExample } from './examples/List.Basic.Example';
 import { ListMailExample } from './examples/List.Mail.Example';

@@ -1,12 +1,10 @@
 import * as React from 'react';
-import {
-  Link
-} from '../../../index';
+import { Link } from '../../../Link';
 import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { PeoplePickerTypesExample } from './examples/PeoplePicker.Types.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';

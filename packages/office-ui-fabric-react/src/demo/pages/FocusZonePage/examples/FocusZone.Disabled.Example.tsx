@@ -2,7 +2,9 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-import { FocusZone, Button, TextField, FocusZoneDirection } from '../../../../index';
+import { Button } from '../../../../Button';
+import { FocusZone, FocusZoneDirection } from '../../../../FocusZone';
+import { TextField } from '../../../../TextField';
 import './FocusZone.Disabled.Example.scss';
 
 export const FocusZoneDisabledExample = () => (
@@ -20,7 +22,7 @@ export const FocusZoneDisabledExample = () => (
       <Button>Tabbable Element 1</Button>
     </div>
     <div className='ms-Row'>
-      <FocusZone disabled={true}>
+      <FocusZone disabled={ true }>
         <span>Disabled FocusZone: </span>
         <Button>Button 1</Button>
         <Button>Button 2</Button>

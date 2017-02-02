@@ -2,9 +2,9 @@ import * as React from 'react';
 import {
   Image,
   IImageProps,
-  ImageFit,
-  Label
-} from '../../../../index';
+  ImageFit
+} from '../../../../Image';
+import { Label } from '../../../../Label';
 
 export class ImageCoverExample extends React.Component<any, any> {
   public render() {

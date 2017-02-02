@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ProgressIndicator
-} from '../../../../index';
+} from '../../../../ProgressIndicator';
 import { Async } from '../../../../Utilities';
 
 export interface IProgressIndicatorBasicExampleState {

@@ -1,8 +1,6 @@
 import * as React from 'react';
-import {
-  Image,
-  Label
-} from '../../../../index';
+import { Image } from '../../../../Image';
+import { Label } from '../../../../Label';
 
 export class ImageDefaultExample extends React.Component<any, any> {
   public render() {

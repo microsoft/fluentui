@@ -6,17 +6,16 @@ import {
   assign,
   autobind
 } from '../../../../Utilities';
+import { Dropdown, IDropdownOption } from '../../../../Dropdown';
+import { Toggle } from '../../../../Toggle';
+import { IPersonaProps } from '../../../../Persona';
+import { IContextualMenuItem } from '../../../../ContextualMenu';
 import {
   CompactPeoplePicker,
-  Dropdown,
   IBasePickerSuggestionsProps,
-  IContextualMenuItem,
-  IDropdownOption,
-  IPersonaProps,
   ListPeoplePicker,
-  NormalPeoplePicker,
-  Toggle
-} from '../../../../index';
+  NormalPeoplePicker
+} from '../../../../Pickers';
 import { IPersonaWithMenu } from '../../../../components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
 import { people } from './PeoplePickerExampleData';
 import './PeoplePicker.Types.Example.scss';
