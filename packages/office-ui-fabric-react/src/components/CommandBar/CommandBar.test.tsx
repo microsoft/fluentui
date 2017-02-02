@@ -39,7 +39,7 @@ describe('CommandBar', () => {
     let renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(
       <CommandBar
         items={ items }
-        />
+      />
     ) as React.Component<CommandBar, {}>;
     document.body.appendChild(ReactDOM.findDOMNode(renderedContent));
 
@@ -69,7 +69,7 @@ describe('CommandBar', () => {
     let renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(
       <CommandBar
         items={ items }
-        />
+      />
     ) as React.Component<CommandBar, {}>;
     document.body.appendChild(ReactDOM.findDOMNode(renderedContent));
 
@@ -103,7 +103,7 @@ describe('CommandBar', () => {
       let renderedContent = ReactDOM.render(
         <CommandBar
           items={ items }
-          />,
+        />,
         renderContainer
       ) as React.Component<CommandBar, {}>;
 
@@ -122,7 +122,7 @@ describe('CommandBar', () => {
       renderedContent = ReactDOM.render(
         <CommandBar
           items={ items }
-          />,
+        />,
         renderContainer
       ) as React.Component<CommandBar, {}>;
 
@@ -158,7 +158,7 @@ describe('CommandBar', () => {
       let renderedContent = ReactDOM.render(
         <CommandBar
           items={ items }
-          />,
+        />,
         renderContainer
       ) as React.Component<CommandBar, {}>;
 
@@ -166,7 +166,7 @@ describe('CommandBar', () => {
       ReactTestUtils.Simulate.click(menuItem);
 
       // Make sure the menu is open before the re-render
-      expect(document.querySelector('.SubMenuClass')).to.exist;
+      expect(!!document.querySelector('.SubMenuClass')).to.eq(true, 'The submenu does not exist when it should exist');
 
       // Update the props, and re-render
       items = [{
@@ -177,12 +177,12 @@ describe('CommandBar', () => {
       renderedContent = ReactDOM.render(
         <CommandBar
           items={ items }
-          />,
+        />,
         renderContainer
       ) as React.Component<CommandBar, {}>;
 
       // Make sure the menu is still open after the re-render
-      expect(document.querySelector('.SubMenuClass')).not.to.exist;
+      expect(!!document.querySelector('.SubMenuClass')).to.eq(false, 'The submenu does exist when it should have dismissed');
     } finally {
       ReactDOM.unmountComponentAtNode(renderContainer);
       document.body.removeChild(renderContainer);
@@ -213,7 +213,7 @@ describe('CommandBar', () => {
       let renderedContent = ReactDOM.render(
         <CommandBar
           items={ items }
-          />,
+        />,
         renderContainer
       ) as React.Component<CommandBar, {}>;
 
@@ -229,7 +229,7 @@ describe('CommandBar', () => {
       renderedContent = ReactDOM.render(
         <CommandBar
           items={ items }
-          />,
+        />,
         renderContainer
       ) as React.Component<CommandBar, {}>;
 
