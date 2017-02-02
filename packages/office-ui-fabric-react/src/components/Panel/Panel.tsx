@@ -198,8 +198,8 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
         isAnimatingClose: false
       });
 
-      if (this.props.onDismiss) {
-        this.props.onDismiss();
+      if (this.props.onDismissed) {
+        this.props.onDismissed();
       }
     }
   }
