@@ -3,7 +3,7 @@ import {
   BaseComponent,
   css
 } from '../../../Utilities';
-import { Button, ButtonType } from '../../../Button';
+import { DefaultButton, ButtonType } from '../../../Button';
 import { Spinner } from '../../../Spinner';
 import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.Props';
 import './Suggestions.scss';
@@ -17,19 +17,19 @@ export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>,
       className
     } = this.props;
     return (
-      <Button
+      <DefaultButton
         onClick={ onClick }
         className={ css('ms-Suggestions-item', { 'is-suggested': suggestionModel.selected }, className) }
       >
         <RenderSuggestion { ...suggestionModel.item } />
-      </Button>
+      </DefaultButton>
     );
   }
 }
 
 export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
 
-  protected _searchForMoreButton: Button;
+  protected _searchForMoreButton: DefaultButton;
   protected _selectedElement: HTMLDivElement;
   private SuggestionsItemOfProperType = SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
 
@@ -78,14 +78,14 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
           this._renderSuggestions()
         }
         { searchForMoreText && moreSuggestionsAvailable ?
-          (<Button
+          (<DefaultButton
             onClick={ this._getMoreResults.bind(this) }
             className={ 'ms-SearchMore-button' }
             buttonType={ ButtonType.icon }
             icon={ 'Search' }
             ref={ this._resolveRef('_searchForMoreButton') } >
             { searchForMoreText }
-          </Button>) : (null)
+          </DefaultButton>) : (null)
         }
       </div>
     );

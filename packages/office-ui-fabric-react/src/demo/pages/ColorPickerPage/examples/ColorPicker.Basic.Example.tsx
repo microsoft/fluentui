@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   ColorPicker
 } from '../../../../ColorPicker';
-import './ColorPicker.Basic.Example.scss';
 
 export interface IBasicColorPickerExampleState {
   color: string;
