@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Panel: Call onDismissed callback function when panel close animation finishes.",
+      "comment": "Panel: new `onDismissed` callback added to be called when the dismiss animation is complete.",
       "type": "minor"
     }
   ],
