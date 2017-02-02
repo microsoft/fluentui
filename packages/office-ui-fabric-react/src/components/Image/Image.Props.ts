@@ -29,8 +29,8 @@ export interface IImageProps extends React.HTMLProps<HTMLImageElement> {
   maximizeFrame?: boolean;
 
   /**
-   * Optional callback method for when the image load state has changes
-   * The 'loadState' parameter indicates the current state of the Image
+   * Optional callback method for when the image load state has changed.
+   * The 'loadState' parameter indicates the current state of the Image.
    */
   onLoadingStateChange?: (loadState: ImageLoadState) => void;
 }
