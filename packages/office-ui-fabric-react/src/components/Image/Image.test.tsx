@@ -7,7 +7,7 @@ import * as ReactTestUtils from 'react-addons-test-utils';
 
 import 'es6-promise';
 
-let { expect, assert } = chai;
+let { expect } = chai;
 
 import { Image } from './Image';
 import { ImageFit, ImageLoadState } from './Image.Props';
