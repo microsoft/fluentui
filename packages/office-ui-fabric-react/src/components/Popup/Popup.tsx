@@ -5,7 +5,8 @@ import {
   divProperties,
   doesElementContainFocus,
   getDocument,
-  getNativeProps
+  getNativeProps,
+  autobind
 } from '../../Utilities';
 import { IPopupProps } from './Popup.Props';
 
@@ -35,7 +36,6 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
       this._containsFocus = true;
       this._events.on(this.refs.root, 'keydown', this._onKeyDown);
       this._events.on(this.refs.root, 'focus', this._onFocus, true);
-      this._events.on(this.refs.root, 'blur', this._onBlur, true);
     }
   }
 
@@ -65,6 +65,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
         role={ role }
         aria-labelledby={ ariaLabelledBy }
         aria-describedby={ ariaDescribedBy }
+        onBlur={ this._onBlur }
       >
         { this.props.children }
       </div>
@@ -86,10 +87,12 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
     }
   }
 
+
   private _onFocus() {
     this._containsFocus = true;
   }
 
+  @autobind
   private _onBlur() {
     this._containsFocus = false;
   }
