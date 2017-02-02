@@ -4,7 +4,6 @@
 
 [![npm version](https://badge.fury.io/js/office-ui-fabric-react.svg)](https://badge.fury.io/js/office-ui-fabric-react)
 [![Build Status](https://travis-ci.org/OfficeDev/office-ui-fabric-react.svg?branch=master)](https://travis-ci.org/OfficeDev/office-ui-fabric-react)
-[![Dependencies](https://david-dm.org/OfficeDev/office-ui-fabric-react.svg)](https://david-dm.org/OfficeDev/office-ui-fabric-react)
 
 Fabric React is a responsive, mobile-first collection of robust components designed to make it quick and simple for you to create web experiences using the Office Design Language.
 
@@ -35,12 +34,6 @@ Before you get started, make sure you have [node.js](https://nodejs.org/), [gulp
 This will run `gulp serve` from the office-ui-fabric-react package folder, which will open a web browser with the example page. You can make changes to the code which will automatically build and refresh the page using live-reload.
 
 To build all packages in the repo, you can use `npm run build`.
-
-To run other Gulp commands such as clean or deploy, just prepend the command with `npm run gulp` and this will run the command from within the project context.
-
-`npm run gulp clean`
-`npm run gulp deploy`
-...
 
 ## Get started
 

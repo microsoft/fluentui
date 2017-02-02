@@ -3,7 +3,7 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { DialogBasicExample } from './examples/Dialog.Basic.Example';
 import { DialogLargeHeaderExample } from './examples/Dialog.LargeHeader.Example';
@@ -13,10 +13,10 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const DialogBasicExampleCode = require('./examples/Dialog.Basic.Example.tsx');
-const DialogLargeHeaderExampleCode = require('./examples/Dialog.LargeHeader.Example.tsx');
-const DialogCloseExampleCode = require('./examples/Dialog.Close.Example.tsx');
-const DialogBlockingExampleCode = require('./examples/Dialog.Blocking.Example.tsx');
+const DialogBasicExampleCode = require('./examples/Dialog.Basic.Example.tsx') as string;
+const DialogLargeHeaderExampleCode = require('./examples/Dialog.LargeHeader.Example.tsx') as string;
+const DialogCloseExampleCode = require('./examples/Dialog.Close.Example.tsx') as string;
+const DialogBlockingExampleCode = require('./examples/Dialog.Blocking.Example.tsx') as string;
 
 export class DialogPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -96,7 +96,7 @@ export class DialogPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         related={
-          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Dialog.md'>Fabric JS</a>
+          <a href='https://dev.office.com/fabric-js/Components/Dialog/Dialog.html'>Fabric JS</a>
         }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>

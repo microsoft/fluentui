@@ -3,14 +3,14 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { DropdownBasicExample } from './examples/Dropdown.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const DropdownBasicExampleCode = require('./examples/Dropdown.Basic.Example.tsx');
+const DropdownBasicExampleCode = require('./examples/Dropdown.Basic.Example.tsx') as string;
 
 export class DropdownPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -56,7 +56,7 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, any> 
           <div></div>
         }
         related={
-          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Dropdown.md'>Fabric JS</a>
+          <a href='https://dev.office.com/fabric-js/Components/Dropdown/Dropdown.html'>Fabric JS</a>
         }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>

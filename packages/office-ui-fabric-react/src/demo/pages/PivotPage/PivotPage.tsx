@@ -3,7 +3,7 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { PivotBasicExample } from './examples/Pivot.Basic.Example';
 import { PivotIconCountExample } from './examples/Pivot.IconCount.Example';
@@ -18,15 +18,15 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const PivotRemoveExampleCode = require('./examples/Pivot.Remove.Example.tsx');
-const PivotBasicExampleCode = require('./examples/Pivot.Basic.Example.tsx');
-const PivotLargeExampleCode = require('./examples/Pivot.Large.Example.tsx');
-const PivotTabsExampleCode = require('./examples/Pivot.Tabs.Example.tsx');
-const PivotTabsLargesExampleCode = require('./examples/Pivot.TabsLarge.Example.tsx');
-const PivotFabricExampleCode = require('./examples/Pivot.Fabric.Example.tsx');
-const PivotOnChangeExampleCode = require('./examples/Pivot.OnChange.Example.tsx');
-const PivotIconCountExampleCode = require('./examples/Pivot.IconCount.Example.tsx');
-const PivotOverrideExampleCode = require('./examples/Pivot.Override.Example.tsx');
+const PivotRemoveExampleCode = require('./examples/Pivot.Remove.Example.tsx') as string;
+const PivotBasicExampleCode = require('./examples/Pivot.Basic.Example.tsx') as string;
+const PivotLargeExampleCode = require('./examples/Pivot.Large.Example.tsx') as string;
+const PivotTabsExampleCode = require('./examples/Pivot.Tabs.Example.tsx') as string;
+const PivotTabsLargesExampleCode = require('./examples/Pivot.TabsLarge.Example.tsx') as string;
+const PivotFabricExampleCode = require('./examples/Pivot.Fabric.Example.tsx') as string;
+const PivotOnChangeExampleCode = require('./examples/Pivot.OnChange.Example.tsx') as string;
+const PivotIconCountExampleCode = require('./examples/Pivot.IconCount.Example.tsx') as string;
+const PivotOverrideExampleCode = require('./examples/Pivot.Override.Example.tsx') as string;
 
 export class PivotPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -118,7 +118,7 @@ export class PivotPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         related={
-          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Pivot.md'>Fabric JS</a>
+          <a href='https://dev.office.com/fabric-js/Components/Pivot/Pivot.html'>Fabric JS</a>
         }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>

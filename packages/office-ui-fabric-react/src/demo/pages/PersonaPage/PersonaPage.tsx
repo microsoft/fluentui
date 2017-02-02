@@ -3,7 +3,7 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { PersonaInitialsExample } from './examples/Persona.Initials.Example';
 import { PersonaBasicExample } from './examples/Persona.Basic.Example';
@@ -11,8 +11,8 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const PersonaInitialsExampleCode = require('./examples/Persona.Initials.Example.tsx');
-const PersonaBasicExampleCode = require('./examples/Persona.Basic.Example.tsx');
+const PersonaInitialsExampleCode = require('./examples/Persona.Initials.Example.tsx') as string;
+const PersonaBasicExampleCode = require('./examples/Persona.Basic.Example.tsx') as string;
 
 export class PersonaPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -68,7 +68,7 @@ export class PersonaPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         related={
-          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Persona.md'>Fabric JS</a>
+          <a href='https://dev.office.com/fabric-js/Components/Persona/Persona.html'>Fabric JS</a>
         }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>

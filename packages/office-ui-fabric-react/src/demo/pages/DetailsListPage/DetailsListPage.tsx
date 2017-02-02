@@ -1,34 +1,32 @@
 import * as React from 'react';
-import {
-  Link
-} from '../../../index';
+import { Link } from '../../../Link';
 import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 import { DetailsListBasicExample } from './examples/DetailsList.Basic.Example';
-const DetailsListBasicExampleCode = require('./examples/DetailsList.Basic.Example.tsx');
+const DetailsListBasicExampleCode = require('./examples/DetailsList.Basic.Example.tsx') as string;
 
 import { DetailsListCustomColumnsExample } from './examples/DetailsList.CustomColumns.Example';
-const DetailsListCustomColumnsExampleCode = require('./examples/DetailsList.CustomColumns.Example.tsx');
+const DetailsListCustomColumnsExampleCode = require('./examples/DetailsList.CustomColumns.Example.tsx') as string;
 
 import { DetailsListCustomRowsExample } from './examples/DetailsList.CustomRows.Example';
-const DetailsListCustomRowsExampleCode = require('./examples/DetailsList.CustomRows.Example.tsx');
+const DetailsListCustomRowsExampleCode = require('./examples/DetailsList.CustomRows.Example.tsx') as string;
 
 import { DetailsListCustomGroupHeadersExample } from './examples/DetailsList.CustomGroupHeaders.Example';
-const DetailsListCustomGroupHeadersExampleCode = require('./examples/DetailsList.CustomGroupHeaders.Example.tsx');
+const DetailsListCustomGroupHeadersExampleCode = require('./examples/DetailsList.CustomGroupHeaders.Example.tsx') as string;
 
 import { DetailsListAdvancedExample } from './examples/DetailsList.Advanced.Example';
-const DetailsListAdvancedExampleCode = require('./examples/DetailsList.Advanced.Example.tsx');
+const DetailsListAdvancedExampleCode = require('./examples/DetailsList.Advanced.Example.tsx') as string;
 
 import { DetailsListGroupedExample } from './examples/DetailsList.Grouped.Example';
-const DetailsListGroupedExampleCode = require('./examples/DetailsList.Grouped.Example.tsx');
+const DetailsListGroupedExampleCode = require('./examples/DetailsList.Grouped.Example.tsx') as string;
 
 export class DetailsListPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;

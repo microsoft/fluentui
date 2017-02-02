@@ -6,6 +6,9 @@
 // --------------------------------------------------
 // Calendar styles
 
+$Calendar-day:40px;
+$Calendar-dayPicker-margin: 10px;
+
 .ms-DatePicker {
   @include ms-u-normalize;
   margin-bottom: 17px;
@@ -63,7 +66,7 @@
 
 // The header containing the month and year.
 .ms-DatePicker-header {
-  height: 40px;
+  height: $Calendar-day;
   line-height: 44px;
 }
 
@@ -112,10 +115,10 @@
 
 // The days on the calendar.
 .ms-DatePicker-day, .ms-DatePicker-weekday {
-  width: 40px;
-  height: 40px;
+  width: $Calendar-day;
+  height: $Calendar-day;
   padding: 0;
-  line-height: 40px;
+  line-height: $Calendar-day;
   @include ms-font-m-plus;
   color: $ms-color-neutralPrimary;
 }
@@ -194,12 +197,12 @@
 .ms-DatePicker-nextYear,
 .ms-DatePicker-prevDecade,
 .ms-DatePicker-nextDecade {
-  width: 40px;
-  height: 40px;
+  width: $Calendar-day;
+  height: $Calendar-day;
   display: block;
   @include margin-left(10px);
   text-align: center;
-  line-height: 40px;
+  line-height: $Calendar-day;
   text-align: center;
   font-size: $ms-icon-size-m;
   color: $ms-color-neutralSecondary;
@@ -216,7 +219,7 @@
 // Without modifying the Pickadate JS, this transparent
 // button is necessary to toggle the month view.
 .ms-DatePicker-headerToggleView {
-  height: 40px;
+  height: $Calendar-day;
   @include left(0px);
   position: absolute;
   top: 0px;
@@ -231,8 +234,8 @@
   display: block;
   @include ms-font-xl;
   color: $ms-color-neutralPrimary;
-  height: 40px;
-  line-height: 42px;
+  height: $Calendar-day;
+  line-height: $Calendar-day;
   @include margin-left(15px);
 }
 
@@ -322,18 +325,20 @@
 // On screens that can fit it, we show the month picker next to the day picker if we have it enabled.
 @media (min-width: 460px) {
 
+    $Calendar-day: 30px;
+
     // Update the spacing and text for the day and month pickers
 
     .ms-DatePicker-header {
-      height: 30px;
-      line-height: 28px;
+      height: $Calendar-day;
+      line-height: $Calendar-day;
     }
 
   // Calendar day cells are smaller.
   .ms-DatePicker-day,
   .ms-DatePicker-weekday {
-    width: 30px;
-    height: 30px;
+    width: $Calendar-day;
+    height: $Calendar-day;
     line-height: 28px;
     font-weight: $ms-font-weight-semibold;
     font-size: $ms-font-size-s;
@@ -383,14 +388,15 @@
   .is-monthPickerVisible {
     // Swap margin for padding so that the border extends the full height.
     .ms-DatePicker-dayPicker {
-      margin: -10px 0;
-      padding: 10px 0;
+      margin: -$Calendar-dayPicker-margin 0;
+      padding: $Calendar-dayPicker-margin 0;
     }
     // Contains the calendar view for picking a day.
     .ms-DatePicker-dayPicker {
       @include ms-u-borderBox;
       @include border-right(1px, solid, $ms-color-neutralLight);
       width: 220px;
+      min-height: ( $Calendar-day * 8 ) - $Calendar-dayPicker-margin; 
     }
 
 
@@ -428,7 +434,7 @@
     .ms-DatePicker-currentDecade {
       font-size: 17px;
       margin: 0;
-      height: 30px;
+      height: $Calendar-day;
       line-height: 26px;
       padding: 0 10px;
       display: inline-block;
@@ -450,8 +456,8 @@
     .ms-DatePicker-goToday {
       @include ms-u-borderBox;
       font-size: 12px;
-      height: 30px;
-      line-height: 30px;
+      height: $Calendar-day;
+      line-height: $Calendar-day;
       padding: 0 10px;
       @include right(10px);
       @include text-align(right);

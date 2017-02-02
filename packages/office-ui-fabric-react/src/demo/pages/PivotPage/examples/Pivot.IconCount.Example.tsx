@@ -1,9 +1,9 @@
 import * as React from 'react';
+import { Label } from '../../../../Label';
 import {
-  Label,
-  Pivot,
-  PivotItem
-} from '../../../../index';
+  PivotItem,
+  Pivot
+} from '../../../../Pivot';
 
 export class PivotIconCountExample extends React.Component<any, any> {
   public render() {

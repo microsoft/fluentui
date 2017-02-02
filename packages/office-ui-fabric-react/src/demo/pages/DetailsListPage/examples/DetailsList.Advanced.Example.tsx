@@ -1,24 +1,26 @@
 import * as React from 'react';
+import { Link } from '../../../../Link';
+import { TextField } from '../../../../TextField';
+import { CommandBar } from '../../../../CommandBar';
+import {
+  IContextualMenuProps,
+  IContextualMenuItem,
+  DirectionalHint,
+  ContextualMenu,
+} from '../../../../ContextualMenu';
+import { autobind } from '../../../../Utilities';
 import {
   CheckboxVisibility,
   ColumnActionsMode,
-  CommandBar,
   ConstrainMode,
-  ContextualMenu,
   DetailsList,
   DetailsListLayoutMode as LayoutMode,
-  DirectionalHint,
   IColumn,
-  IContextualMenuItem,
-  IContextualMenuProps,
   IGroup,
-  Link,
   Selection,
-  TextField,
-  autobind,
+  SelectionMode,
   buildColumns
-} from '../../../../index';
-import { SelectionMode } from '../../../../utilities/selection/interfaces';
+} from '../../../../DetailsList';
 import { createListItems, isGroupable } from '../../../utilities/data';
 import './DetailsList.Advanced.Example.scss';
 
@@ -134,13 +136,14 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
           constrainMode={ constrainMode }
           groupProps={ groupProps }
           onItemInvoked={ this._onItemInvoked }
+          onItemContextMenu={ this._onItemContextMenu }
           ariaLabelForListHeader='Column headers. Use menus to perform column operations like sort and filter'
           ariaLabelForSelectAllCheckbox='Toggle selection for all items'
           onRenderMissingItem={ (index) => {
             this._onDataMiss(index);
             return null;
           } }
-          />
+        />
 
         { contextualMenuProps && (
           <ContextualMenu { ...contextualMenuProps } />
@@ -438,6 +441,11 @@ export class DetailsListAdvancedExample extends React.Component<any, IDetailsLis
   @autobind
   private _onItemInvoked(item: any, index: number) {
     console.log('Item invoked', item, index);
+  }
+
+  @autobind
+  private _onItemContextMenu(item: any, index: number) {
+    console.log('Item context menu invoked', item, index);
   }
 
   @autobind

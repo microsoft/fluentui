@@ -51,7 +51,7 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
     @include ms-font-xl;
     color: $ms-color-neutralPrimary;
     display: inline-block;
-    padding: 0 4px;
+    padding: 0 8px;
     max-width: $Breadcrumb-itemMaxWidth;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -81,7 +81,6 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
 
   &:hover {
     background-color: $selectedHoverBackgroundColor;
-    color: $Breadcrumb-buttonHoverColor;
     cursor: pointer;
   }
 

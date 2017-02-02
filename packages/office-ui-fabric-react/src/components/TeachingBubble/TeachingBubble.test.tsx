@@ -4,10 +4,9 @@ import * as React from 'react';
 
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
+import { TeachingBubbleContent } from './TeachingBubbleContent';
 
 let { expect } = chai;
-
-import { TeachingBubbleContent } from './index';
 
 describe('TeachingBubble', () => {
 

@@ -3,7 +3,7 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { ListBasicExample } from './examples/List.Basic.Example';
 import { ListMailExample } from './examples/List.Mail.Example';
@@ -70,6 +70,9 @@ export class ListPage extends React.Component<IComponentDemoPageProps, any> {
               Lists break down the set of items passed in into pages. Only pages within a "materialized window" are actually rendered. As that window changes due to scroll events, pages that fall outside that window are removed, and their layout space is remembered and pushed into spacer elements. This gives the user the experience of browsing massive amounts of content but only using a small number of actual elements. This gives the browser much less layout to resolve, and gives React DOM diffing much less content to worry about.
             </p>
           </div>
+        }
+        related={
+          <a href='https://dev.office.com/fabric-js/Components/List/List.html'>Fabric JS</a>
         }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>

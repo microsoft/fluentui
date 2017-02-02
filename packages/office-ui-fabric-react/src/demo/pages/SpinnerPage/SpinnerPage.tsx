@@ -3,14 +3,14 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { SpinnerBasicExample } from './examples/Spinner.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const SpinnerBasicExampleCode = require('./examples/Spinner.Basic.Example.tsx');
+const SpinnerBasicExampleCode = require('./examples/Spinner.Basic.Example.tsx') as string;
 
 export class SpinnerPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -65,7 +65,7 @@ export class SpinnerPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         related={
-          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Spinner.md'>Fabric JS</a>
+          <a href='https://dev.office.com/fabric-js/Components/Spinner/Spinner.html'>Fabric JS</a>
         }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>

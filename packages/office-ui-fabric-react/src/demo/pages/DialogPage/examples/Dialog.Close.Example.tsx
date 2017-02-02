@@ -1,12 +1,7 @@
 import * as React from 'react';
-import {
-  Dialog,
-  DialogType,
-  DialogFooter,
-  Button,
-  ButtonType,
-  ChoiceGroup
-} from '../../../../index';
+import { Dialog, DialogType, DialogFooter } from '../../../../Dialog';
+import { Button, ButtonType } from '../../../../Button';
+import { ChoiceGroup } from '../../../../ChoiceGroup';
 
 export class DialogCloseExample extends React.Component<any, any> {
 
@@ -29,6 +24,13 @@ export class DialogCloseExample extends React.Component<any, any> {
           subText='Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
           isBlocking={ false }
           closeButtonAriaLabel='Close'
+          topButtonsProps={ [{
+            key: 'More',
+            buttonType: ButtonType.icon,
+            icon: 'More',
+            ariaLabel: 'More',
+            onClick: this._onMoreButtonClicked.bind(this)
+          }] }
         >
           <ChoiceGroup
             options={ [
@@ -50,8 +52,8 @@ export class DialogCloseExample extends React.Component<any, any> {
             onChanged={ this._onChoiceChanged }
           />
           <DialogFooter>
-            <Button buttonType={ ButtonType.primary } onClick={this._closeDialog.bind(this)}>Save</Button>
-            <Button onClick={this._closeDialog.bind(this)}>Cancel</Button>
+            <Button buttonType={ ButtonType.primary } onClick={ this._closeDialog.bind(this) }>Save</Button>
+            <Button onClick={ this._closeDialog.bind(this) }>Cancel</Button>
           </DialogFooter>
         </Dialog>
       </div>
@@ -59,14 +61,18 @@ export class DialogCloseExample extends React.Component<any, any> {
   }
 
   private _showDialog() {
-    this.setState( {showDialog: true } );
+    this.setState({ showDialog: true });
   }
 
   private _closeDialog() {
-    this.setState( {showDialog: false } );
+    this.setState({ showDialog: false });
   }
 
   private _onChoiceChanged() {
-    console.log( 'Choice option change' );
+    console.log('Choice option change');
+  }
+
+  private _onMoreButtonClicked() {
+    console.log('More button clicked');
   }
 }

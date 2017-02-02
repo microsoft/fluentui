@@ -1,13 +1,11 @@
 import * as React from 'react';
-import {
-  Link,
-  LayerHost
-} from '../../../index';
+import { Link } from '../../../Link';
+import { LayerHost } from '../../../Layer';
 import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { TeachingBubbleBasicExample } from './examples/TeachingBubble.Basic.Example';
 import { TeachingBubbleCondensedExample } from './examples/TeachingBubble.Condensed.Example';
@@ -15,9 +13,9 @@ import { TeachingBubbleIllustrationExample } from './examples/TeachingBubble.Ill
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 
-const TeachingBubbleBasicExampleCode = require('./examples/TeachingBubble.Basic.Example.tsx');
-const TeachingBubbleCondensedExampleCode = require('./examples/TeachingBubble.Condensed.Example.tsx');
-const TeachingBubbleIllustrationExampleCode = require('./examples/TeachingBubble.Basic.Example.tsx');
+const TeachingBubbleBasicExampleCode = require('./examples/TeachingBubble.Basic.Example.tsx') as string;
+const TeachingBubbleCondensedExampleCode = require('./examples/TeachingBubble.Condensed.Example.tsx') as string;
+const TeachingBubbleIllustrationExampleCode = require('./examples/TeachingBubble.Basic.Example.tsx') as string;
 
 export class TeachingBubblePage extends React.Component<any, any> {
   private _url: string;

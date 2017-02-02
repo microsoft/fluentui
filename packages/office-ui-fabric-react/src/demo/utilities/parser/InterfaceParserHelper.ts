@@ -1,5 +1,5 @@
 import { BaseParser } from './BaseParser';
-import { IInterfaceProperty, InterfacePropertyType } from '../../components/index';
+import { IInterfaceProperty, InterfacePropertyType } from '../../components/demoComponents';
 
 const JSDOC_DEFAULT = '@default';
 const JSDOC_DEFAULTVALUE = '@defaultvalue';
@@ -53,7 +53,7 @@ export class InterfaceParserHelper extends BaseParser {
           } else if (this.eat('}')) {
             // closing
             break;
-          }else {
+          } else {
             this._state = ParseState.declaration;
           }
 

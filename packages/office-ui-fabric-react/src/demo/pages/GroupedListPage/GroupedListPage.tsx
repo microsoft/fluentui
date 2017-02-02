@@ -3,7 +3,7 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { GroupedListBasicExample } from './examples/GroupedList.Basic.Example';
 import { GroupedListCustomExample } from './examples/GroupedList.Custom.Example';
@@ -11,8 +11,8 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const GroupedListBasicExampleCode = require('./examples/GroupedList.Basic.Example.tsx');
-const GroupedListCustomExampleCode = require('./examples/GroupedList.Custom.Example.tsx');
+const GroupedListBasicExampleCode = require('./examples/GroupedList.Basic.Example.tsx') as string;
+const GroupedListCustomExampleCode = require('./examples/GroupedList.Custom.Example.tsx') as string;
 
 export class GroupedListPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -38,7 +38,7 @@ export class GroupedListPage extends React.Component<IComponentDemoPageProps, an
           </div>
         }
         propertiesTables={
-            <PropertiesTableSet componentName='GroupedList' />
+          <PropertiesTableSet componentName='GroupedList' />
         }
         overview={
           <p>Allows you to render a set of items as multiple lists with various grouping properties.</p>
