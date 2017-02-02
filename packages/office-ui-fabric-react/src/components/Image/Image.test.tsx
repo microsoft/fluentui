@@ -5,7 +5,6 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
 
-
 let { expect } = chai;
 
 import { Image } from './Image';
