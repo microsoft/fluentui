@@ -5,10 +5,12 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
 
-let { expect } = chai;
+import 'es6-promise';
+
+let { expect, assert } = chai;
 
 import { Image } from './Image';
-import { ImageFit } from './Image.Props';
+import { ImageFit, ImageLoadState } from './Image.Props';
 
 /* tslint:disable:no-unused-variable */
 const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
@@ -31,6 +33,15 @@ describe('Image', () => {
 
   it('can cover a portrait (tall) frame with a square image', (done) => {
     let root = document.createElement('div');
+    let onLoadingStateChange = (loadState: ImageLoadState) => {
+      if (loadState === ImageLoadState.loaded) {
+        let image = document.querySelector('.ms-Image.is-portraitFrame .ms-Image-image');
+        try {
+          expect(image.className).to.contain('ms-Image-image--landscape');
+        } catch (e) { done(e); }
+        done();
+      }
+    };
     document.body.appendChild(root);
     ReactDOM.render<HTMLDivElement>(
       <Image
@@ -39,19 +50,22 @@ describe('Image', () => {
         height={ 3 }
         imageFit={ ImageFit.cover }
         className='is-portraitFrame'
+        onLoadingStateChange={ onLoadingStateChange }
         />, root
     );
-
-    let image = document.querySelector('.ms-Image.is-portraitFrame .ms-Image-image');
-    try {
-      expect(image.className).to.contain('ms-Image-image--landscape');
-    } catch (e) { done(e); }
-
-    done();
   });
 
   it('can cover a landscape (wide) frame with a square image', (done) => {
     let root = document.createElement('div');
+    let onLoadingStateChange = (loadState: ImageLoadState) => {
+      if (loadState === ImageLoadState.loaded) {
+        let image = document.querySelector('.ms-Image.is-landscapeFrame .ms-Image-image');
+        try {
+          expect(image.className).to.contain('ms-Image-image--portrait');
+        } catch (e) { done(e); }
+        done();
+      }
+    };
     document.body.appendChild(root);
     ReactDOM.render<HTMLDivElement>(
       <Image
@@ -60,19 +74,22 @@ describe('Image', () => {
         height={ 1 }
         imageFit={ ImageFit.cover }
         className='is-landscapeFrame'
+        onLoadingStateChange={ onLoadingStateChange }
         />, root
     );
-
-    let image = document.querySelector('.ms-Image.is-landscapeFrame .ms-Image-image');
-    try {
-      expect(image.className).to.contain('ms-Image-image--portrait');
-    } catch (e) { done(e); }
-
-    done();
   });
 
   it('can cover a landscape (wide) parent element with a square image', (done) => {
     let root = document.createElement('div');
+    let onLoadingStateChange = (loadState: ImageLoadState) => {
+      if (loadState === ImageLoadState.loaded) {
+        let image = document.querySelector('.ms-Image.is-frameMaximizedPortrait .ms-Image-image');
+        try {
+          expect(image.className).to.contain('ms-Image-image--portrait');
+        } catch (e) { done(e); }
+        done();
+      }
+    };
     document.body.appendChild(root);
     ReactDOM.render<HTMLDivElement>(
       <div style={ { width: '20px', height: '10px' } }>
@@ -81,20 +98,23 @@ describe('Image', () => {
           imageFit={ ImageFit.cover }
           maximizeFrame
           src={ testImage1x1 }
+          onLoadingStateChange={ onLoadingStateChange }
           />
       </div>, root
     );
-
-    let image = document.querySelector('.ms-Image.is-frameMaximizedPortrait .ms-Image-image');
-    try {
-      expect(image.className).to.contain('ms-Image-image--portrait');
-    } catch (e) { done(e); }
-
-    done();
   });
 
   it('can cover a portrait (tall) parent element with a square image', (done) => {
     let root = document.createElement('div');
+    let onLoadingStateChange = (loadState: ImageLoadState) => {
+      if (loadState === ImageLoadState.loaded) {
+        let image = document.querySelector('.ms-Image.is-frameMaximizedLandscape .ms-Image-image');
+        try {
+          expect(image.className).to.contain('ms-Image-image--landscape');
+        } catch (e) { done(e); }
+        done();
+      }
+    };
     document.body.appendChild(root);
     ReactDOM.render<HTMLDivElement>(
       <div style={ { width: '10px', height: '20px' } }>
@@ -102,17 +122,11 @@ describe('Image', () => {
           src={ testImage1x1 }
           imageFit={ ImageFit.cover }
           className='is-frameMaximizedLandscape'
+          onLoadingStateChange={ onLoadingStateChange }
           maximizeFrame
           />
       </div>, root
     );
-
-    let image = document.querySelector('.ms-Image.is-frameMaximizedLandscape .ms-Image-image');
-    try {
-      expect(image.className).to.contain('ms-Image-image--landscape');
-    } catch (e) { done(e); }
-
-    done();
   });
 
 });
