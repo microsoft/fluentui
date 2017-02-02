@@ -11,7 +11,7 @@ let { expect } = chai;
 describe('Button', () => {
 
   it('can render without an onClick.', () => {
-    const button = ReactTestUtils.renderIntoDocument<Button>(
+    const button = ReactTestUtils.renderIntoDocument<any>(
       <Button>Hello</Button>
     );
     const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
@@ -22,7 +22,7 @@ describe('Button', () => {
   it('can render with an onClick.', () => {
     let onClick = () => null;
 
-    const button = ReactTestUtils.renderIntoDocument<Button>(
+    const button = ReactTestUtils.renderIntoDocument<any>(
       <Button onClick={ onClick }>Hello</Button>
     );
     const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
@@ -31,7 +31,7 @@ describe('Button', () => {
   });
 
   it('can render with an href', () => {
-    const button = ReactTestUtils.renderIntoDocument<Button>(
+    const button = ReactTestUtils.renderIntoDocument<any>(
       <Button href='http://www.microsoft.com' target='_blank'>Hello</Button>
     );
     const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
