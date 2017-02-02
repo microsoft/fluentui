@@ -5,7 +5,6 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
 
-import 'es6-promise';
 
 let { expect } = chai;
 
@@ -16,6 +15,7 @@ import { ImageFit, ImageLoadState } from './Image.Props';
 const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 const testImage1x2 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEklEQVQImWP4////fyYGBgYGAB32A/+PRyXoAAAAAElFTkSuQmCC';
 const testImage2x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAABCAYAAAD0In+KAAAAEUlEQVQImWP8////fwYGBgYAGfgD/hEzDhoAAAAASUVORK5CYII=';
+const brokenImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 /* tslint:enable:no-unused-variable */
 
 describe('Image', () => {
@@ -129,4 +129,14 @@ describe('Image', () => {
     );
   });
 
+  it('allows onError events to be attached', (done) => {
+    ReactTestUtils.renderIntoDocument(
+      <Image
+        src={ brokenImage }
+        onError={ () => {
+          done();
+        } }
+        />
+    );
+  });
 });
