@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Dropdown: changes to include id and ariaLabel",
+      "type": "minor"
+    }
+  ],
+  "email": "bhrayala@microsoft.com"
+}

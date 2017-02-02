@@ -8,34 +8,38 @@
 // Compound Button styles
 
 .ms-Button--compound {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+
+  width: 100%;
   max-width: 280px;
   min-height: 72px;
-  padding: 20px;
+
+  padding: 16px 20px;
   background: $ms-color-neutralLighter;
-  border: 1px solid $ms-color-neutralLighter;
+
+  @include text-align(left);
 
   .ms-Button-label {
     @include ms-font-m;
-    @include text-align(left);
     display: block;
     font-weight: $ms-font-weight-semibold;
     color: $ms-color-black;
-    margin-top: -5px;
+    margin: 0 0 2px;
   }
 
   .ms-Button-description {
-    @include text-align(left);
     @include ms-font-s;
     color: $ms-color-neutralSecondary;
     display: block;
-    position: relative;
-    top: 3px;
   }
 
   &:hover {
     background-color: $ms-color-neutralLight;
     border-color: $ms-color-neutralLight;
+
     .ms-Button-description {
       color: $ms-color-neutralDark;
     }
@@ -65,19 +69,9 @@
 
   &:disabled,
   &.disabled {
+    .ms-Button-label,
     .ms-Button-description {
       color: $ms-color-neutralTertiary;
-    }
-
-    &:focus,
-    &:active {
-      border-color: $ms-color-neutralLighter;
-      background-color: $ms-color-neutralLighter;
-
-      .ms-Button-label,
-      .ms-Button-description {
-        color: $ms-color-neutralTertiary;
-      }
     }
   }
 }

@@ -14,6 +14,7 @@ const facepileProps: IFacepileProps = {
   maxDisplayablePersonas: 5,
   overflowButtonType: OverflowButtonType.downArrow,
   overflowButtonProps: {
+    ariaLabel: 'More info',
     onClick: (ev: React.MouseEvent<HTMLButtonElement>) =>
       alert('overflow icon clicked')
   }
@@ -42,18 +43,20 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
     return (
       <div className={ 'ms-FacepileExample' }>
         <Facepile {...facepileProps} />
-        <Slider
-          label='Number of Personas Shown:'
-          min={ 0 }
-          max={ 6 }
-          step={ 1 }
-          showValue={ true }
-          value={ this.state.displayedPersonas }
-          onChange={ value => this.setState((prevState: IFacepileOverflowExampleState) => {
-            prevState.displayedPersonas = value;
-            return prevState;
-          }) }
-        />
+        <div className={ 'control' }>
+          <Slider
+            label='Number of Personas Shown:'
+            min={ 0 }
+            max={ 6 }
+            step={ 1 }
+            showValue={ true }
+            value={ this.state.displayedPersonas }
+            onChange={ value => this.setState((prevState: IFacepileOverflowExampleState) => {
+              prevState.displayedPersonas = value;
+              return prevState;
+            }) }
+            />
+        </div>
         <Dropdown
           label='Overflow Type:'
           selectedKey={ this.state.overflowButtonType }
@@ -70,7 +73,7 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
             prevState.overflowButtonType = value.key as OverflowButtonType;
             return prevState;
           }) }
-        />
+          />
       </div>
     );
   }

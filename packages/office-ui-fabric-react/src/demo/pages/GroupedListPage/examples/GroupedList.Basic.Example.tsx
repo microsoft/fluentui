@@ -19,21 +19,24 @@ import {
   createGroups
 } from '../../../utilities/data';
 
-const groupCount = 15;
+const groupCount = 3;
 const groupDepth = 3;
-const items = createListItems(Math.pow(groupCount, groupDepth + 1));
+
+let _items: any[];
+let _groups: IGroup[];
 
 export class GroupedListBasicExample extends React.Component<any, any> {
   private _selection: Selection;
-  private _groups: IGroup[];
 
   constructor() {
     super();
+
+    _items = _items || createListItems(Math.pow(groupCount, groupDepth + 1));
+    _groups = _groups || createGroups(groupCount, groupDepth, 0, groupCount);
+
     this._onRenderCell = this._onRenderCell.bind(this);
     this._selection = new Selection;
-    this._selection.setItems(items);
-
-    this._groups = createGroups(groupCount, groupDepth, 0, groupCount);
+    this._selection.setItems(_items);
   }
 
   public render() {
@@ -42,14 +45,14 @@ export class GroupedListBasicExample extends React.Component<any, any> {
         <SelectionZone
           selection={ this._selection }
           selectionMode={ SelectionMode.multiple }
-          >
+        >
           <GroupedList
-            items={ items }
+            items={ _items }
             onRenderCell={ this._onRenderCell }
             selection={ this._selection }
             selectionMode={ SelectionMode.multiple }
-            groups={ this._groups }
-            />
+            groups={ _groups }
+          />
         </SelectionZone>
       </FocusZone>
     );
@@ -76,7 +79,7 @@ export class GroupedListBasicExample extends React.Component<any, any> {
         itemIndex={ itemIndex }
         selection={ selection }
         selectionMode={ SelectionMode.multiple }
-        />
+      />
     );
   }
 }

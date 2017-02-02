@@ -431,7 +431,9 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
           </SelectionZone>
         </div>
         { this.renderSuggestions() }
-        <FocusZone ref={ this._resolveRef('focusZone') } className='ms-BasePicker-selectedItems'>
+        <FocusZone ref={ this._resolveRef('focusZone') }
+          className='ms-BasePicker-selectedItems'
+          isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke } >
           { this.renderItems() }
         </FocusZone>
 
@@ -441,5 +443,14 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
 
   protected onBackspace(ev: React.KeyboardEvent<HTMLElement>) {
     // override the existing backspace method to not do anything because the list items appear below.
+  }
+
+  @autobind
+  private _isFocusZoneInnerKeystroke(ev: React.KeyboardEvent<HTMLElement>): boolean {
+    switch (ev.which) {
+      case KeyCodes.down:
+        return true;
+    }
+    return false;
   }
 }
