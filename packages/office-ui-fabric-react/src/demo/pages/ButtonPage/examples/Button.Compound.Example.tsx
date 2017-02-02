@@ -1,8 +1,6 @@
 import * as React from 'react';
-import {
-  CompoundButton,
-  Label
-} from '../../../../index';
+import { CompoundButton } from '../../../../Button';
+import { Label } from '../../../../Label';
 import { IButtonProps } from './IButtonProps';
 
 export class ButtonCompoundExample extends React.Component<IButtonProps, {}> {

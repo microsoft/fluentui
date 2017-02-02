@@ -1,6 +1,29 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 28 Jan 2017 04:09:51 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Feb 2017 04:04:05 GMT and should not be manually modified.
+
+## 1.3.7
+Wed, 01 Feb 2017 04:04:05 GMT
+
+### Patches
+
+- Breadcrumb: Fix hover style to match OneDrive
+- CommandBar: Add hover state to ms-CommandBarItem
+
+## 1.3.6
+Tue, 31 Jan 2017 17:04:31 GMT
+
+### Patches
+
+- CommandBar: no longer throws nullref in dismiss handling.
+
+## 1.3.5
+Tue, 31 Jan 2017 01:16:17 GMT
+
+### Patches
+
+- Fixing utility import to be AMD friendly.
+- Documentation: Update component pages "Also available in" link to point to new JS site
 
 ## 1.3.4
 Sat, 28 Jan 2017 04:09:51 GMT

@@ -1,10 +1,8 @@
 import * as React from 'react';
+import { Button } from '../../../../Button';
+import { Callout } from '../../../../Callout';
+import { Link } from '../../../../Link';
 import './CalloutExample.scss';
-import {
-  Callout,
-  Button,
-  Link
-} from '../../../../index';
 
 export interface ICalloutBaiscExampleState {
   isCalloutVisible?: boolean;
@@ -39,7 +37,7 @@ export class CalloutBasicExample extends React.Component<any, ICalloutBaiscExamp
             targetElement={ this._menuButtonElement }
             onDismiss={ this._onCalloutDismiss }
             setInitialFocus={ true }
-            >
+          >
             <div className='ms-CalloutExample-header'>
               <p className='ms-CalloutExample-title'>
                 All of your favorite people

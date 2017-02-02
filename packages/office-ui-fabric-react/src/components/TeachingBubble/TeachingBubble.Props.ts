@@ -4,13 +4,13 @@ import { TeachingBubbleContent } from './TeachingBubbleContent';
 import { IImageProps } from '../../Image';
 import { IButtonProps } from '../../Button';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
-import { ICalloutProps } from '../../index';
+import { ICalloutProps } from '../../Callout';
 
 /**
  * TeachingBubble component props.
  */
 
-export interface ITeachingBubbleProps extends React.Props<TeachingBubble|TeachingBubbleContent>, IAccessiblePopupProps {
+export interface ITeachingBubbleProps extends React.Props<TeachingBubble | TeachingBubbleContent>, IAccessiblePopupProps {
   /**
    * Properties to pass through for Callout, reference detail properties in ICalloutProps
    */

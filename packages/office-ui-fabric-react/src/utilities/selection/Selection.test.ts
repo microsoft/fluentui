@@ -1,9 +1,10 @@
 let { expect } = chai;
 
-import { Selection, IObjectWithKey } from './index';
+import { Selection } from './Selection';
+import { IObjectWithKey } from './interfaces';
 
-let setA = [ { key: 'a' }, { key: 'b' }, { key: 'c' } ];
-let setB = [ { key: 'a' }, { key: 'd' }, { key: 'b' } ];
+let setA = [{ key: 'a' }, { key: 'b' }, { key: 'c' }];
+let setB = [{ key: 'a' }, { key: 'd' }, { key: 'b' }];
 
 describe('Selection', () => {
 
@@ -70,7 +71,7 @@ describe('Selection', () => {
     expect(changeEvents).to.equal(0, 'changeEvents were not 0');
   });
 
-  it ('resets unselectable count on setting new items', () => {
+  it('resets unselectable count on setting new items', () => {
     let canSelect = false;
     let selection = new Selection({
       canSelectItem: (item: IObjectWithKey) => canSelect

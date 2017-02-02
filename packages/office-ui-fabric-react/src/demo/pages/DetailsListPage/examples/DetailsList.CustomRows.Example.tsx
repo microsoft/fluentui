@@ -1,12 +1,8 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import {
-  DetailsList,
-  DetailsRow,
-  css,
-  autobind
-} from '../../../../index';
+import { DetailsList, DetailsRow } from '../../../../DetailsList';
+import { autobind, css } from '../../../../Utilities';
 import { createListItems } from '../../../utilities/data';
 import './DetailsListExample.scss';
 
@@ -25,7 +21,7 @@ export class DetailsListCustomRowsExample extends React.Component<any, any> {
         items={ _items }
         setKey='set'
         onRenderRow={ this._onRenderRow }
-        />
+      />
     );
   }
 
@@ -46,11 +42,11 @@ export class DetailsListCustomRowsExample extends React.Component<any, any> {
         aria-pressed={ props.isSelected }
         data-selection-toggle={ true }
         aria-label={ props.ariaLabel }
-        >
+      >
         <input
           type='checkbox'
           checked={ props.isSelected }
-          />
+        />
       </div>
     );
   }

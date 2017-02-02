@@ -121,7 +121,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
                   aria-label={ this.props.elipisisAriaLabel || '' }
                   aria-haspopup={ true }
                   data-automation-id='commandBarOverflow'
-                  >
+                >
                   <i className='ms-CommandBarItem-overflow ms-Icon ms-Icon--More' />
                 </button>
               </div>
@@ -142,7 +142,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
             targetElement={ contextualMenuTarget }
             labelElementId={ expandedMenuId }
             onDismiss={ this._onContextMenuDismiss }
-            />
+          />
           ) : (null) }
       </div>
     );
@@ -170,7 +170,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
             aria-haspopup={ hasSubmenuItems(item) }
             role='menuitem'
             aria-label={ item.ariaLabel || item.name }
-            >
+          >
             { (hasIcon) ? this._renderIcon(item) : (null) }
             { (!!item.name) && <span className='ms-CommandBarItem-commandText'>{ item.name }</span> }
             { hasSubmenuItems(item) ? (
@@ -184,7 +184,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
             className={ classNameValue }
             data-command-key={ index }
             aria-haspopup={ hasSubmenuItems(item) }
-            >
+          >
             { (hasIcon) ? this._renderIcon(item) : (null) }
             <span className='ms-CommandBarItem-commandText ms-font-m ms-font-weight-regular' aria-hidden='true' role='presentation'>{ item.name }</span>
           </div>;
@@ -317,9 +317,12 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
   @autobind
   private _onContextMenuDismiss(ev?: any) {
     if (!ev || !ev.relatedTarget || !this.refs.commandSurface.contains(ev.relatedTarget as HTMLElement)) {
-      if (this.state.contextualMenuProps.onDismiss) {
+      let { contextualMenuProps } = this.state;
+
+      if (contextualMenuProps && contextualMenuProps.onDismiss) {
         this.state.contextualMenuProps.onDismiss(ev);
       }
+
       this.setState({
         expandedMenuItemKey: null,
         contextualMenuProps: null,
