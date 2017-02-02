@@ -91,7 +91,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='combobox'
           aria-live={ disabled || isOpen ? 'off' : 'assertive' }
-          aria-label={ ariaLabel }
+          aria-label={ ariaLabel || label }
           aria-describedby={ id + '-option' }
           aria-activedescendant={ selectedIndex >= 0 ? (this._id + '-list' + selectedIndex) : (this._id + '-list') }
         >
