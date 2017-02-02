@@ -4,8 +4,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { App } from './components/App/App';
 import { AppState } from './components/App/AppState';
-import { Route } from 'office-ui-fabric-react/lib/utilities/router/index';
-import { Router } from './utilities/router/Router';
+import { Route, Router } from 'office-ui-fabric-react/lib/utilities/router/index';
 import { setBaseUrl } from '@uifabric/utilities/lib/resources';
 import { HomePage } from './pages/HomePage/HomePage';
 import WindowWidthUtility from './utilities/WindowWidthUtility';
@@ -66,7 +65,7 @@ function _onLoad() {
   _getBreakpoint();
 
   ReactDOM.render(
-    <Router routerDidMount={ _routerDidMount }>
+    <Router onNewRouteLoaded={ _routerDidMount }>
       <Route component={ App }>
         { _getAppRoutes() }
       </Route>

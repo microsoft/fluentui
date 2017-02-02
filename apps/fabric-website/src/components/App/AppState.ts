@@ -1,69 +1,3 @@
-// Main pages
-import { BlogPage } from '../../pages/BlogPage/BlogPage';
-import { BlogPost } from '../../pages/BlogPage/BlogPost';
-import { GetStartedPage } from '../../pages/GetStarted/GetStartedPage';
-import { HomePage } from '../../pages/HomePage/HomePage';
-import { ResourcesPage } from '../../pages/ResourcesPage/ResourcesPage';
-import { StylesPage } from '../../pages/Overviews/StylesPage';
-import { ComponentsPage } from '../../pages/Overviews/ComponentsPage';
-
-// Style pages
-import { AnimationsPage } from '../../pages/Styles/AnimationsPage/AnimationsPage';
-import { BrandIconsPage } from '../../pages/Styles/BrandIconsPage/BrandIconsPage';
-import { ColorsPage } from '../../pages/Styles/ColorsPage/ColorsPage';
-import { IconsPage } from '../../pages/Styles/IconsPage/IconsPage';
-import { LayoutPage } from '../../pages/Styles/LayoutPage/LayoutPage';
-import { LocalizationPage } from '../../pages/Styles/LocalizationPage/LocalizationPage';
-import { TypographyPage } from '../../pages/Styles/TypographyPage/TypographyPage';
-import { UtilitiesPage } from '../../pages/Styles/UtilitiesPage/UtilitiesPage';
-
-// Component pages
-import { BreadcrumbComponentPage } from '../../pages/Components/BreadcrumbComponentPage';
-import { ButtonComponentPage } from '../../pages/Components/ButtonComponentPage';
-import { CalloutComponentPage } from '../../pages/Components/CalloutComponentPage';
-import { CheckboxComponentPage } from '../../pages/Components/CheckboxComponentPage';
-import { ChoiceGroupComponentPage } from '../../pages/Components/ChoiceGroupComponentPage';
-import { ColorPickerComponentPage } from '../../pages/Components/ColorPickerComponentPage';
-import { CommandBarComponentPage } from '../../pages/Components/CommandBarComponentPage';
-import { ContextualMenuComponentPage } from '../../pages/Components/ContextualMenuComponentPage';
-import { DatePickerComponentPage } from '../../pages/Components/DatePickerComponentPage';
-import { DetailsListComponentPage } from '../../pages/Components/DetailsListComponentPage';
-import { DialogComponentPage } from '../../pages/Components/DialogComponentPage';
-import { DocumentCardComponentPage } from '../../pages/Components/DocumentCardComponentPage';
-import { DropdownComponentPage } from '../../pages/Components/DropdownComponentPage';
-import { FacepileComponentPage } from '../../pages/Components/FacepileComponentPage';
-import { GroupedListComponentPage } from '../../pages/Components/GroupedListComponentPage';
-import { ImageComponentPage } from '../../pages/Components/ImageComponentPage';
-import { LabelComponentPage } from '../../pages/Components/LabelComponentPage';
-import { LayerComponentPage } from '../../pages/Components/LayerComponentPage';
-import { LinkComponentPage } from '../../pages/Components/LinkComponentPage';
-import { ListComponentPage } from '../../pages/Components/ListComponentPage';
-import { MessageBarComponentPage } from '../../pages/Components/MessageBarComponentPage';
-import { NavComponentPage } from '../../pages/Components/NavComponentPage';
-import { OverlayComponentPage } from '../../pages/Components/OverlayComponentPage';
-import { PanelComponentPage } from '../../pages/Components/PanelComponentPage';
-import { PersonaComponentPage } from '../../pages/Components/PersonaComponentPage';
-import { PivotComponentPage } from '../../pages/Components/PivotComponentPage';
-import { ProgressIndicatorComponentPage } from '../../pages/Components/ProgressIndicatorComponentPage';
-import { SearchBoxComponentPage } from '../../pages/Components/SearchBoxComponentPage';
-import { SliderComponentPage } from '../../pages/Components/SliderComponentPage';
-import { SpinnerComponentPage } from '../../pages/Components/SpinnerComponentPage';
-import { TextFieldComponentPage } from '../../pages/Components/TextFieldComponentPage';
-import { ToggleComponentPage } from '../../pages/Components/ToggleComponentPage';
-import { PickersComponentPage } from '../../pages/Components/PickersComponentPage';
-import { PeoplePickerComponentPage } from '../../pages/Components/PeoplePickerComponentPage';
-import { ComponentUtilitiesPage } from '../../pages/Components/ComponentUtilitiesPage';
-import { FocusTrapZoneUtilityPage } from '../../pages/Components/FocusTrapZoneUtilityPage';
-import { FocusZoneUtilityPage } from '../../pages/Components/FocusZoneUtilityPage';
-import { MarqueeSelectionUtilityPage } from '../../pages/Components/MarqueeSelectionUtilityPage';
-import { SelectionUtilityPage } from '../../pages/Components/SelectionUtilityPage';
-import { ThemesUtilityPage } from '../../pages/Components/ThemesUtilityPage';
-
-// Interstitial pages
-import { AngularJSPage } from '../../pages/Interstitials/AngularJSPage';
-import { FabricIOSPage } from '../../pages/Interstitials/FabricIOSPage';
-import { FabricJSPage } from '../../pages/Interstitials/FabricJSPage';
-
 // Props
 import { INavPage } from '../Nav/Nav.Props';
 
@@ -79,60 +13,60 @@ export const AppState: IAppState = {
       title: 'Fabric',
       url: '#/',
       className: 'fabricPage',
-      component: HomePage,
+      getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/HomePage/HomePage').HomePage)),
       isHomePage: true
     },
     {
       title: 'Get started',
       url: '#/get-started',
       className: 'getStartedPage',
-      component: GetStartedPage
+      getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/GetStarted/GetStartedPage').GetStartedPage)),
     },
     {
       title: 'Styles',
       url: '#/styles',
       className: 'stylesPage',
-      component: StylesPage,
+      getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Overviews/StylesPage').StylesPage)),
       pages: [
         {
           title: 'Animations',
           url: '#/styles/animations',
-          component: AnimationsPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Styles/AnimationsPage/AnimationsPage').AnimationsPage))
         },
         {
           title: 'Brand icons',
           url: '#/styles/brand-icons',
-          component: BrandIconsPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Styles/BrandIconsPage/BrandIconsPage').BrandIconsPage))
         },
         {
           title: 'Colors',
           url: '#/styles/colors',
-          component: ColorsPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Styles/ColorsPage/ColorsPage').ColorsPage))
         },
         {
           title: 'Icons',
           url: '#/styles/icons',
-          component: IconsPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Styles/IconsPage/IconsPage').IconsPage))
         },
         {
           title: 'Layout',
           url: '#/styles/layout',
-          component: LayoutPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Styles/LayoutPage/LayoutPage').LayoutPage))
         },
         {
           title: 'Localization',
           url: '#/styles/localization',
-          component: LocalizationPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Styles/LocalizationPage/LocalizationPage').LocalizationPage))
         },
         {
           title: 'Typography',
           url: '#/styles/typography',
-          component: TypographyPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Styles/TypographyPage/TypographyPage').TypographyPage))
         },
         {
           title: 'Utilities',
           url: '#/styles/utilities',
-          component: UtilitiesPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Styles/UtilitiesPage/UtilitiesPage').UtilitiesPage))
         }
       ]
     },
@@ -140,207 +74,215 @@ export const AppState: IAppState = {
       title: 'Components',
       url: '#/components',
       className: 'componentsPage',
-      component: ComponentsPage,
+      getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Overviews/ComponentsPage').ComponentsPage)),
       pages: [
         {
           title: 'Breadcrumb',
           url: '#/components/breadcrumb',
-          component: BreadcrumbComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/BreadcrumbComponentPage').BreadcrumbComponentPage))
         },
         {
           title: 'Button',
           url: '#/components/button',
-          component: ButtonComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/ButtonComponentPage').ButtonComponentPage)),
+
         },
         {
           title: 'Callout',
           url: '#/components/callout',
-          component: CalloutComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/CalloutComponentPage').CalloutComponentPage))
+
         },
         {
           title: 'Checkbox',
           url: '#/components/checkbox',
-          component: CheckboxComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/CheckboxComponentPage').CheckboxComponentPage))
         },
         {
           title: 'ChoiceGroup',
           url: '#/components/choicegroup',
-          component: ChoiceGroupComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/ChoiceGroupComponentPage').ChoiceGroupComponentPage))
+
         },
         {
           title: 'ColorPicker',
           url: '#/components/colorpicker',
-          component: ColorPickerComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/ColorPickerComponentPage').ColorPickerComponentPage))
         },
         {
           title: 'CommandBar',
           url: '#/components/commandbar',
-          component: CommandBarComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/CommandBarComponentPage').CommandBarComponentPage))
         },
         {
           title: 'ContextualMenu',
           url: '#/components/contextualmenu',
-          component: ContextualMenuComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/ContextualMenuComponentPage').ContextualMenuComponentPage))
+
         },
         {
           title: 'DatePicker',
           url: '#/components/datepicker',
-          component: DatePickerComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/DatePickerComponentPage').DatePickerComponentPage))
         },
         {
           title: 'DetailsList',
           url: '#/components/detailslist',
-          component: DetailsListComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/DetailsListComponentPage').DetailsListComponentPage))
         },
         {
           title: 'Dialog',
           url: '#/components/dialog',
-          component: DialogComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/DialogComponentPage').DialogComponentPage))
         },
         {
           title: 'DocumentCard',
           url: '#/components/documentcard',
-          component: DocumentCardComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/DocumentCardComponentPage').DocumentCardComponentPage))
         },
         {
           title: 'Dropdown',
           url: '#/components/dropdown',
-          component: DropdownComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/DropdownComponentPage').DropdownComponentPage))
+
         },
         {
           title: 'Facepile',
           url: '#/components/facepile',
-          component: FacepileComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/FacepileComponentPage').FacepileComponentPage))
+
         },
         {
           title: 'GroupedList',
           url: '#/components/groupedlist',
-          component: GroupedListComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/GroupedListComponentPage').GroupedListComponentPage))
+
         },
         {
           title: 'Image',
           url: '#/components/image',
-          component: ImageComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/ImageComponentPage').ImageComponentPage))
         },
         {
           title: 'Label',
           url: '#/components/label',
-          component: LabelComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/LabelComponentPage').LabelComponentPage))
         },
         {
           title: 'Layer',
           url: '#/components/layer',
-          component: LayerComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/LayerComponentPage').LayerComponentPage))
+
         },
         {
           title: 'Link',
           url: '#/components/link',
-          component: LinkComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/LinkComponentPage').LinkComponentPage))
         },
         {
           title: 'List',
           url: '#/components/list',
-          component: ListComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/ListComponentPage').ListComponentPage))
         },
         {
           title: 'MessageBar',
           url: '#/components/messagebar',
-          component: MessageBarComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/MessageBarComponentPage').MessageBarComponentPage))
         },
         {
           title: 'Nav',
           url: '#/components/nav',
-          component: NavComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/NavComponentPage').NavComponentPage))
         },
         {
           title: 'Overlay',
           url: '#/components/overlay',
-          component: OverlayComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/OverlayComponentPage').OverlayComponentPage))
         },
         {
           title: 'Panel',
           url: '#/components/panel',
-          component: PanelComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/PanelComponentPage').PanelComponentPage))
         },
         {
           title: 'Persona',
           url: '#/components/persona',
-          component: PersonaComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/PersonaComponentPage').PersonaComponentPage))
         },
         {
           title: 'Pickers',
           url: '#/components/pickers',
-          component: PickersComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/PickersComponentPage').PickersComponentPage))
         },
         {
           title: 'PeoplePicker',
           url: '#/components/peoplepicker',
-          component: PeoplePickerComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/PeoplePickerComponentPage').PeoplePickerComponentPage))
         },
         {
           title: 'Pivot',
           url: '#/components/pivot',
-          component: PivotComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/PivotComponentPage').PivotComponentPage))
         },
         {
           title: 'ProgressIndicator',
           url: '#/components/progressindicator',
-          component: ProgressIndicatorComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/ProgressIndicatorComponentPage').ProgressIndicatorComponentPage))
         },
         {
           title: 'SearchBox',
           url: '#/components/searchbox',
-          component: SearchBoxComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/SearchBoxComponentPage').SearchBoxComponentPage))
         },
         {
           title: 'Slider',
           url: '#/components/slider',
-          component: SliderComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/SliderComponentPage').SliderComponentPage))
         },
         {
           title: 'Spinner',
           url: '#/components/spinner',
-          component: SpinnerComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/SpinnerComponentPage').SpinnerComponentPage))
         },
         {
           title: 'TextField',
           url: '#/components/textfield',
-          component: TextFieldComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/TextFieldComponentPage').TextFieldComponentPage))
         },
         {
           title: 'Toggle',
           url: '#/components/toggle',
-          component: ToggleComponentPage
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/ToggleComponentPage').ToggleComponentPage))
         },
         {
           title: 'Utilities',
           url: '#/components/utilities',
-          component: ComponentUtilitiesPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/ComponentUtilitiesPage').UtilitiesComponentPage)),
           pages: [
             {
               title: 'FocusTrapZone',
               url: '#/components/focustrapzone',
-              component: FocusTrapZoneUtilityPage
+              getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/FocusTrapZoneUtilityPage').FocusTrapZoneComponentPage))
             },
             {
               title: 'FocusZone',
               url: '#/components/focuszone',
-              component: FocusZoneUtilityPage
+              getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/FocusZoneUtilityPage').FocusZoneComponentPage))
             },
             {
               title: 'MarqueeSelection',
               url: '#/components/marqueeselection',
-              component: MarqueeSelectionUtilityPage
+              getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/MarqueeSelectionUtilityPage').MarqueeSelectionComponentPage))
             },
             {
               title: 'Selection',
               url: '#/components/selection',
-              component: SelectionUtilityPage
+              getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/SelectionUtilityPage').SelectionComponentPage))
             },
             {
               title: 'Themes',
               url: '#/components/themes',
-              component: ThemesUtilityPage
+              getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/ThemesUtilityPage').ThemesComponentPage))
             }
           ]
         }
@@ -350,41 +292,41 @@ export const AppState: IAppState = {
       title: 'Resources',
       url: '#/resources',
       className: 'resourcesPage',
-      component: ResourcesPage
+      getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/ResourcesPage/ResourcesPage').ResourcesComponentPage))
     },
     {
       title: 'Blog',
       url: '#/blog',
       className: 'blogPage',
-      component: BlogPage
+      getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/BlogPage/BlogPage').BlogComponentPage))
     },
     {
       title: 'Blog Post',
       url: '#/blog/blog-post',
       className: 'blogPostPage',
-      component: BlogPost,
-      isHiddenFromMainNav: true
+      isHiddenFromMainNav: true,
+      getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/BlogPage/BlogPost').BlogPostComponentPage))
     },
     {
       title: 'Fabric JS',
       url: '#/fabric-js',
       className: 'fabricJsPage',
-      component: FabricJSPage,
-      isHiddenFromMainNav: true
+      isHiddenFromMainNav: true,
+      getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Interstitials/FabricJSPage').FabricJSPageComponentPage))
     },
     {
       title: 'Angular JS',
       url: '#/angular-js',
       className: 'angularJsPage',
-      component: AngularJSPage,
-      isHiddenFromMainNav: true
+      isHiddenFromMainNav: true,
+      getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Interstitials/AngularJSPage').AngularJSPageComponentPage))
     },
     {
       title: 'Fabric iOS',
       url: '#/fabric-ios',
       className: 'fabricIosPage',
-      component: FabricIOSPage,
-      isHiddenFromMainNav: true
+      isHiddenFromMainNav: true,
+      getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Interstitials/FabricIOSPage').FabricIOSPageComponentPage))
     }
   ]
 };

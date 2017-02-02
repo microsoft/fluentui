@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "dependencies": {
     "@microsoft/api-extractor": {
-      "version": "1.1.5",
+      "version": "1.1.6",
       "from": "@microsoft/api-extractor@>=1.1.4 <2.0.0",
-      "resolved": "https://registry.npmjs.org/@microsoft/api-extractor/-/api-extractor-1.1.5.tgz",
+      "resolved": "https://registry.npmjs.org/@microsoft/api-extractor/-/api-extractor-1.1.6.tgz",
       "dependencies": {
         "@types/z-schema": {
           "version": "3.16.31",
@@ -195,30 +195,15 @@
       "from": "@types/semver@>=5.3.30 <6.0.0",
       "resolved": "https://registry.npmjs.org/@types/semver/-/semver-5.3.30.tgz"
     },
-    "@types/source-map": {
-      "version": "0.5.0",
-      "from": "@types/source-map@*",
-      "resolved": "https://registry.npmjs.org/@types/source-map/-/source-map-0.5.0.tgz"
-    },
     "@types/through2": {
       "version": "2.0.32",
       "from": "@types/through2@>=2.0.31 <3.0.0",
       "resolved": "https://registry.npmjs.org/@types/through2/-/through2-2.0.32.tgz"
     },
-    "@types/uglify-js": {
-      "version": "2.6.28",
-      "from": "@types/uglify-js@*",
-      "resolved": "https://registry.npmjs.org/@types/uglify-js/-/uglify-js-2.6.28.tgz"
-    },
     "@types/vinyl": {
       "version": "1.2.30",
       "from": "@types/vinyl@>=1.2.30 <2.0.0",
       "resolved": "https://registry.npmjs.org/@types/vinyl/-/vinyl-1.2.30.tgz"
-    },
-    "@types/webpack": {
-      "version": "1.12.36",
-      "from": "@types/webpack@>=1.12.35 <2.0.0",
-      "resolved": "https://registry.npmjs.org/@types/webpack/-/webpack-1.12.36.tgz"
     },
     "@types/webpack-env": {
       "version": "1.13.0",
@@ -1718,9 +1703,9 @@
       "resolved": "https://registry.npmjs.org/faye-websocket/-/faye-websocket-0.10.0.tgz"
     },
     "fbjs": {
-      "version": "0.8.8",
+      "version": "0.8.9",
       "from": "fbjs@>=0.8.4 <0.9.0",
-      "resolved": "https://registry.npmjs.org/fbjs/-/fbjs-0.8.8.tgz",
+      "resolved": "https://registry.npmjs.org/fbjs/-/fbjs-0.8.9.tgz",
       "dependencies": {
         "core-js": {
           "version": "1.2.7",
@@ -5021,8 +5006,8 @@
     },
     "rush-fabric-website": {
       "version": "0.0.0",
-      "from": "temp_modules/rush-fabric-website",
-      "resolved": "file:temp_modules/rush-fabric-website"
+      "from": "temp_modules\\rush-fabric-website",
+      "resolved": "file:temp_modules\\rush-fabric-website"
     },
     "rush-office-ui-fabric-react": {
       "version": "0.0.0",
@@ -5052,9 +5037,9 @@
           }
         },
         "@microsoft/gulp-core-build-karma": {
-          "version": "2.1.2",
+          "version": "2.1.3",
           "from": "@microsoft/gulp-core-build-karma@>=2.1.0 <3.0.0",
-          "resolved": "https://registry.npmjs.org/@microsoft/gulp-core-build-karma/-/gulp-core-build-karma-2.1.2.tgz"
+          "resolved": "https://registry.npmjs.org/@microsoft/gulp-core-build-karma/-/gulp-core-build-karma-2.1.3.tgz"
         },
         "@microsoft/gulp-core-build-sass": {
           "version": "2.0.3",
@@ -6245,9 +6230,9 @@
       }
     },
     "webpack-dev-middleware": {
-      "version": "1.9.0",
+      "version": "1.10.0",
       "from": "webpack-dev-middleware@>=1.0.11 <2.0.0",
-      "resolved": "https://registry.npmjs.org/webpack-dev-middleware/-/webpack-dev-middleware-1.9.0.tgz"
+      "resolved": "https://registry.npmjs.org/webpack-dev-middleware/-/webpack-dev-middleware-1.10.0.tgz"
     },
     "webpack-split-by-path": {
       "version": "0.0.10",
