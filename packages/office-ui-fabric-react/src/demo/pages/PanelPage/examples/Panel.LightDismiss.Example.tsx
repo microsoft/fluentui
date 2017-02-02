@@ -1,8 +1,6 @@
 import * as React from 'react';
-import {
-  Panel,
-  Button
-} from '../../../../index';
+import { Button } from '../../../../Button';
+import { Panel } from '../../../../Panel';
 
 export class PanelLightDismissExample extends React.Component<any, any> {
 
@@ -20,7 +18,7 @@ export class PanelLightDismissExample extends React.Component<any, any> {
         <Panel
           isOpen={ this.state.showPanel }
           isLightDismiss={ true }
-          onDismiss= { this._closePanel.bind(this) }
+          onDismiss={ this._closePanel.bind(this) }
           headerText='Light Dismiss Panel'
         >
           <span className='ms-font-m'>Light Dismiss usage is meant for the Contextual Menu on mobile sized breakpoints.</span>
@@ -30,9 +28,9 @@ export class PanelLightDismissExample extends React.Component<any, any> {
   }
 
   private _showPanel() {
-    this.setState( {showPanel: true } );
+    this.setState({ showPanel: true });
   }
   private _closePanel() {
-    this.setState( {showPanel: false } );
+    this.setState({ showPanel: false });
   }
 }

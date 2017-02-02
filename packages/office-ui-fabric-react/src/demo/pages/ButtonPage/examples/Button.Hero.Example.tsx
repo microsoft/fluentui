@@ -1,10 +1,6 @@
 import * as React from 'react';
-import {
-  Button,
-  ButtonType,
-  Label
-} from '../../../../index';
-import { IButtonProps } from './IButtonProps';
+import { IButtonProps, Button, ButtonType } from '../../../../Button';
+import { Label } from '../../../../Label';
 
 export class ButtonHeroExample extends React.Component<IButtonProps, {}> {
   public constructor() {

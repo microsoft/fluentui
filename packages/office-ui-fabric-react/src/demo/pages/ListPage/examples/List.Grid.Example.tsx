@@ -1,8 +1,6 @@
 import * as React from 'react';
-import {
-  FocusZone,
-  List
-} from '../../../../index';
+import { FocusZone } from '../../../../FocusZone';
+import { List } from '../../../../List';
 import './List.Grid.Example.scss';
 
 export interface IListGridExampleProps {
@@ -42,14 +40,14 @@ export class ListGridExample extends React.Component<IListGridExampleProps, any>
               style={ {
                 width: (100 / this._columnCount) + '%'
               } }>
-                <div className='ms-ListGridExample-sizer'>
-                  <div className='msListGridExample-padder'>
-                    <img src={ item.thumbnail } className='ms-ListGridExample-image' />
-                    <span className='ms-ListGridExample-label'>
-                    { `item ${ index }` }
-                    </span>
-                  </div>
+              <div className='ms-ListGridExample-sizer'>
+                <div className='msListGridExample-padder'>
+                  <img src={ item.thumbnail } className='ms-ListGridExample-image' />
+                  <span className='ms-ListGridExample-label'>
+                    { `item ${index}` }
+                  </span>
                 </div>
+              </div>
             </div>
           ) }
         />

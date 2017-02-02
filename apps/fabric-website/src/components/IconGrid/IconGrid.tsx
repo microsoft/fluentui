@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SearchBox } from 'office-ui-fabric-react/lib/components/SearchBox/index';
+import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import styles from './IconGrid.module.scss';
 
 export interface IIconGridProps {
@@ -36,8 +36,8 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
           { icons
             .filter(icon => icon.name.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1)
             .map((icon, iconIndex) => (
-              <li key={ iconIndex } aria-label={icon.name + ' icon'}>
-                <i className={`ms-Icon ms-Icon--${icon.name}`} title={`${icon.name}`} aria-hidden='true'></i>
+              <li key={ iconIndex } aria-label={ icon.name + ' icon' }>
+                <i className={ `ms-Icon ms-Icon--${icon.name}` } title={ `${icon.name}` } aria-hidden='true'></i>
                 <span>{ icon.name }</span>
               </li>
             ))

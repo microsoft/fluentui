@@ -3,9 +3,8 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
-
-import { Checkbox } from '../../../index';
+} from '../../components/demoComponents';
+import { Checkbox } from '../../../Checkbox';
 
 import { ButtonDefaultExample } from './examples/Button.Default.Example';
 import { ButtonPrimaryExample } from './examples/Button.Primary.Example';
@@ -89,7 +88,7 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
           </div>
         }
         related={
-          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Button.md'>Fabric JS</a>
+          <a href='https://dev.office.com/fabric-js/Components/Button/Button.html'>Fabric JS</a>
         }
         bestPractices={
           <div></div>

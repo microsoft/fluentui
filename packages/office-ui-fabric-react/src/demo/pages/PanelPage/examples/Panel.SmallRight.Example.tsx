@@ -1,9 +1,6 @@
 import * as React from 'react';
-import {
-  Panel,
-  PanelType,
-  Button
-} from '../../../../index';
+import { Button } from '../../../../Button';
+import { Panel, PanelType } from '../../../../Panel';
 
 export class PanelSmallRightExample extends React.Component<any, any> {
 
@@ -21,7 +18,7 @@ export class PanelSmallRightExample extends React.Component<any, any> {
         <Panel
           isOpen={ this.state.showPanel }
           type={ PanelType.smallFixedFar }
-          onDismiss= { this._closePanel.bind(this) }
+          onDismiss={ this._closePanel.bind(this) }
           headerText='Panel - Small, right-aligned, fixed'
         >
           <span className='ms-font-m'>Content goes here.</span>
@@ -31,9 +28,9 @@ export class PanelSmallRightExample extends React.Component<any, any> {
   }
 
   private _showPanel() {
-    this.setState( {showPanel: true } );
+    this.setState({ showPanel: true });
   }
   private _closePanel() {
-    this.setState( {showPanel: false } );
+    this.setState({ showPanel: false });
   }
 }

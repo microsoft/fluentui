@@ -5,18 +5,17 @@ import {
   BaseComponent,
   assign,
   autobind
-} from '@uifabric/utilities';
+} from '../../../../Utilities';
+import { Dropdown, IDropdownOption } from '../../../../Dropdown';
+import { Toggle } from '../../../../Toggle';
+import { IPersonaProps } from '../../../../Persona';
+import { IContextualMenuItem } from '../../../../ContextualMenu';
 import {
   CompactPeoplePicker,
-  Dropdown,
   IBasePickerSuggestionsProps,
-  IContextualMenuItem,
-  IDropdownOption,
-  IPersonaProps,
   ListPeoplePicker,
-  NormalPeoplePicker,
-  Toggle
-} from '../../../../index';
+  NormalPeoplePicker
+} from '../../../../Pickers';
 import { IPersonaWithMenu } from '../../../../components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
 import { people } from './PeoplePickerExampleData';
 import './PeoplePicker.Types.Example.scss';
@@ -115,7 +114,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
             ] }
             selectedKey={ this.state.currentPicker }
             onChanged={ this._dropDownSelected }
-            />
+          />
           <Toggle
             label='Delay Suggestion Results'
             defaultChecked={ false }
@@ -133,7 +132,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         className={ 'ms-PeoplePicker' }
         pickerSuggestionsProps={ suggestionProps }
         key={ 'list' }
-        />
+      />
     );
   }
 
@@ -145,7 +144,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         pickerSuggestionsProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
         key={ 'normal' }
-        />
+      />
     );
   }
 
@@ -156,7 +155,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
         pickerSuggestionsProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
-        />
+      />
     );
   }
 
@@ -169,7 +168,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         defaultSelectedItems={ people.splice(0, 3) }
         key={ 'list' }
         pickerSuggestionsProps={ suggestionProps }
-        />
+      />
     );
   }
 
@@ -183,7 +182,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         className={ 'ms-PeoplePicker' }
         onGetMoreResults={ this._onFilterChanged }
         pickerSuggestionsProps={ limitedSearchSuggestionProps }
-        />
+      />
     );
   }
 

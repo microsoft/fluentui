@@ -3,7 +3,7 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { LabelBasicExample } from './examples/Label.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
@@ -61,7 +61,7 @@ export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         related={
-          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Label.md'>Fabric JS</a>
+          <a href='https://dev.office.com/fabric-js/Components/Label/Label.html'>Fabric JS</a>
         }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>

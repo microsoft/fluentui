@@ -1,5 +1,5 @@
 import { BaseParser } from './BaseParser';
-import { IEnumProperty } from '../../components/index';
+import { IEnumProperty } from '../../components/demoComponents';
 
 /**
  * Supporting enum for the parser, used internally within the parser only.

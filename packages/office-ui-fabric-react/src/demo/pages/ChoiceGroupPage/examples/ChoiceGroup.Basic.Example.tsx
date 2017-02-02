@@ -1,9 +1,6 @@
 import * as React from 'react';
-import {
-  ChoiceGroup,
-  IChoiceGroupOption,
-  autobind
-} from '../../../../index';
+import { ChoiceGroup, IChoiceGroupOption } from '../../../../ChoiceGroup';
+import { autobind } from '../../../../Utilities';
 
 /**
  * Interface for ChoiceGroupBasicExample state.
@@ -52,7 +49,7 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
           onChange={ this._onChange }
           label='Pick one'
           required={ true }
-          />
+        />
         <ChoiceGroup
           label='Pick one image'
           options={ [
@@ -74,7 +71,7 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
             }
           ] }
           onChange={ this._onImageChoiceGroupChange }
-          />
+        />
       </div>
     );
   }
