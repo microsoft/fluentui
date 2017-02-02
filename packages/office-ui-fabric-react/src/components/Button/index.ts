@@ -1,5 +1,6 @@
-export * from './Button';
+export * from './BaseButton';
 export * from './Button.Props';
+export * from './Button';
 export * from './CommandButton/CommandButton';
 export * from './CompoundButton/CompoundButton';
 export * from './DefaultButton/DefaultButton';
