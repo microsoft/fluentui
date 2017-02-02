@@ -46,7 +46,7 @@ export class Facepile extends BaseComponent<IFacepileProps, any> {
         <div
           className='ms-Facepile-members'
           ref={ this._resolveRef('_members') }
-          >
+        >
           { showAddButton ? this._getAddNewElement() : null }
           {
             numPersonasToShow ? (
@@ -57,7 +57,7 @@ export class Facepile extends BaseComponent<IFacepileProps, any> {
                   this._getElementWithoutOnClickEvent(personaControl, persona, index);
               })) : null
           }
-          { !OverflowButtonType.none ? this._getOverflowElement(numPersonasToShow) : null }
+          { overflowButtonType !== OverflowButtonType.none ? this._getOverflowElement(numPersonasToShow) : null }
         </div>
         <div className='ms-Facepile-clear'></div>
       </div>
@@ -73,7 +73,7 @@ export class Facepile extends BaseComponent<IFacepileProps, any> {
     // Make room for buttons
     numPersonasToShow = numPersonasToShow < 1 ? 1 : numPersonasToShow;
     if (this.props.showAddButton) { numPersonasToShow--; }
-    if (this.props.overflowButtonProps && this.props.overflowButtonType) { numPersonasToShow--; }
+    if (this.props.overflowButtonType) { numPersonasToShow--; }
     return numPersonasToShow < 0 ? 0 : numPersonasToShow;
   }
 
@@ -122,7 +122,7 @@ export class Facepile extends BaseComponent<IFacepileProps, any> {
       size={ PersonaSize.extraSmall }
       hidePersonaDetails={ true }
       {...(getPersonaProps ? getPersonaProps(persona) : null) }
-      />;
+    />;
   }
 
   private _getElementWithOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
