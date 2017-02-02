@@ -11,10 +11,10 @@ import { ListGridExample } from './examples/List.Grid.Example';
 import { ListScrollingExample } from './examples/List.Scrolling.Example';
 import { createListItems } from '../../utilities/data';
 
-const ListBasicExampleCode = require('./examples/List.Basic.Example.tsx');
-const ListMailExampleCode = require('./examples/List.Mail.Example.tsx');
-const ListGridExampleCode = require('./examples/List.Grid.Example.tsx');
-const ListScrollingExampleCode = require('./examples/List.Scrolling.Example.tsx');
+const ListBasicExampleCode = require('./examples/List.Basic.Example.tsx') as string;
+const ListMailExampleCode = require('./examples/List.Mail.Example.tsx') as string;
+const ListGridExampleCode = require('./examples/List.Grid.Example.tsx') as string;
+const ListScrollingExampleCode = require('./examples/List.Scrolling.Example.tsx') as string;
 
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
