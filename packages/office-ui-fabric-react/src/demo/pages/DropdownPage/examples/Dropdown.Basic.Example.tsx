@@ -18,6 +18,8 @@ export class DropdownBasicExample extends React.Component<any, any> {
 
         <Dropdown
           label='Basic example:'
+          id='Basicdrop1'
+          ariaLabel='Basic dropdown example'
           options={
             [
               { key: 'A', text: 'Option a' },

@@ -9,6 +9,7 @@ let { expect } = chai;
 
 import { Facepile } from './Facepile';
 import { IFacepilePersona, OverflowButtonType } from './Facepile.Props';
+import { Persona, PersonaSize } from '../Persona';
 
 describe('Facepile', () => {
   const facepilePersonas: IFacepilePersona[] = [
@@ -118,6 +119,54 @@ describe('Facepile', () => {
       expect(buttons).to.have.length(1, 'Clickable Persona should render');
       buttons.simulate('click');
       expect(clicked).to.be.equal(1, 'Persona should have been clickable');
+    });
+  });
+
+  describe('Renders personas the correct size', ()=>{
+    it('personas and buttons render default size if not specified', () => {
+      const wrapper = shallow(
+        <Facepile
+          personas={ facepilePersonas }
+          addButtonProps={ {} }
+          showAddButton={ true }
+          overflowButtonProps={ {} }
+          overflowButtonType={ OverflowButtonType.downArrow }
+          />);
+      let addButton = wrapper.find('.ms-Persona.ms-Persona--xs.ms-Facepile-addButton.ms-Facepile-itemButton');
+      expect(addButton).to.have.length(1, 'Add button should render');
+      let faces = wrapper.find(Persona);
+      expect(faces).to.have.length(facepilePersonas.length, 'personas should render');
+      wrapper.find(Persona).forEach((node) => {
+        expect(node.html()).to.contain('ms-Persona--xs');
+      });
+      let overflowButton = wrapper.find('.ms-Persona.ms-Persona--xs.ms-Facepile-overflowButton.ms-Facepile-itemButton');
+      expect(overflowButton).to.have.length(1, 'Overflow button should render');
+    });
+
+    it('personas and buttons render specified size', () => {
+      // Test XXS size renders
+      let wrapper = shallow(
+        <Facepile
+          personas={ facepilePersonas }
+          personaSize={ PersonaSize.extraExtraSmall }
+          />);
+      let faces = wrapper.find(Persona);
+      expect(faces).to.have.length(facepilePersonas.length, 'XXSmall personas should render');
+      wrapper.find(Persona).forEach((node) => {
+        expect(node.html()).to.contain('ms-Persona--xxs');
+      });
+
+      // Test small size renders
+      wrapper = shallow(
+        <Facepile
+          personas={ facepilePersonas }
+          personaSize={ PersonaSize.small }
+          />);
+      faces = wrapper.find(Persona);
+      expect(faces).to.have.length(facepilePersonas.length, 'Small personas should render');
+      wrapper.find(Persona).forEach((node) => {
+        expect(node.html()).to.contain('ms-Persona--sm');
+      });
     });
   });
 

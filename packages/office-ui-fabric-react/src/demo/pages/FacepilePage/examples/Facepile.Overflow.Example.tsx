@@ -13,6 +13,7 @@ import './Facepile.Examples.scss';
 const facepileProps: IFacepileProps = {
   personas: facepilePersonas,
   overflowButtonProps: {
+    ariaLabel: 'More info',
     onClick: (ev: React.MouseEvent<HTMLButtonElement>) =>
       alert('overflow icon clicked')
   }
@@ -44,18 +45,20 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
     return (
       <div className={ 'ms-FacepileExample' }>
         <Facepile {...facepileProps} />
-        <Slider
-          label='Maximum number of Personas Shown:'
-          min={ 0 }
-          max={ 10 }
-          step={ 1 }
-          showValue={ true }
-          value={ displayedPersonas }
-          onChange={ value => this.setState((prevState: IFacepileOverflowExampleState) => {
-            prevState.displayedPersonas = value;
-            return prevState;
-          }) }
-        />
+        <div className={ 'control' }>
+          <Slider
+            label='Maximum number of Personas Shown:'
+            min={ 0 }
+            max={ 10 }
+            step={ 1 }
+            showValue={ true }
+            value={ displayedPersonas }
+            onChange={ value => this.setState((prevState: IFacepileOverflowExampleState) => {
+              prevState.displayedPersonas = value;
+              return prevState;
+            }) }
+          />
+        </div>
         <Checkbox
           label='Use only width available'
           checked={ useOnlyAvailableWidth }
@@ -81,7 +84,7 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
             prevState.overflowButtonType = value.key as OverflowButtonType;
             return prevState;
           }) }
-        />
+          />
       </div>
     );
   }
