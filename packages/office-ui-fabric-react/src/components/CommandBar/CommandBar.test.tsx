@@ -166,7 +166,7 @@ describe('CommandBar', () => {
       ReactTestUtils.Simulate.click(menuItem);
 
       // Make sure the menu is open before the re-render
-      expect(!!document.querySelector('.SubMenuClass testext')).to.eq(true, 'The submenu does not exist when it should exist');
+      expect(!!document.querySelector('.SubMenuClass')).to.eq(true, 'The submenu does not exist when it should exist');
 
       // Update the props, and re-render
       items = [{
