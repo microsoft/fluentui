@@ -40,7 +40,12 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
     const renderAsAnchor: boolean = !!href;
     const tag = renderAsAnchor ? 'a' : 'button';
-    const nativeProps = getNativeProps(this.props.rootProps || this.props, renderAsAnchor ? anchorProperties : buttonProperties);
+    const nativeProps = getNativeProps(
+      this.props.rootProps || this.props,
+      renderAsAnchor ? anchorProperties : buttonProperties,
+      [
+        'disabled' // Let disabled buttons be focused and styled as disabled.
+      ]);
 
     // Check for ariaDescription, description or aria-describedby in the native props to determine source of aria-describedby
     // otherwise default to null.
@@ -56,26 +61,23 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
       ariaDescribedBy = null;
     }
 
-    return React.createElement(
-      tag,
-      assign(
-        {},
-        nativeProps,
-        {
-          className: css(
-            className,
-            this._baseClassName,
-            this._variantClassName,
-            {
-              'disabled': (renderAsAnchor && disabled) // add disable styling if it is an anchor
-            }),
-          ref: this._resolveRef('_buttonElement'),
-          'aria-label': ariaLabel,
-          'aria-labelledby': ariaLabel ? null : _labelId,
-          'aria-describedby': ariaDescribedBy
-        }),
-      this.onRenderContent()
+    let buttonProps = assign(
+      nativeProps,
+      {
+        className: css(
+          className,
+          this._baseClassName,
+          this._variantClassName,
+          { 'disabled': disabled }
+        ),
+        ref: this._resolveRef('_buttonElement'),
+        'aria-label': ariaLabel,
+        'aria-labelledby': ariaLabel ? null : _labelId,
+        'aria-describedby': ariaDescribedBy
+      }
     );
+
+    return this.onRenderContent(tag, buttonProps);
   }
 
   public focus(): void {
@@ -84,14 +86,16 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     }
   }
 
-  protected onRenderContent() {
-    return [
+  protected onRenderContent(tag, buttonProps): JSX.Element {
+    return React.createElement(
+      tag,
+      buttonProps,
       this.onRenderIcon(),
       this.onRenderLabel(),
       this.onRenderDescription(),
       this.onRenderAriaDescription(),
       this.onRenderChildren()
-    ];
+    );
   }
 
   protected onRenderIcon() {
@@ -109,20 +113,23 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
   protected onRenderLabel() {
     let { children, label } = this.props;
 
-    return [
+    // For backwards compat, we should continue to take in the label content from children.
+    if (!label && typeof (children) === 'string') {
+      label = children;
+    }
+
+    return label ? (
       <span className={ `${this._baseClassName}-label` } id={ this._labelId } >
-        { label ? label : children }
-      </span>,
-      (label ? children : null)
-    ];
+        { label }
+      </span>
+    ) : (null);
   }
 
   protected onRenderChildren() {
-    let { label, children } = this.props;
-
-    // If you provide a label, we will render children; otherwise we assume that the label is
-    // pulled from children and as such we should avoid redundantly rendering the children.
-    return label ? children : null;
+    // By default, a single string child will be rendered in the label. But having
+    // this overridable allows us to create more ellaborate buttons that can render
+    // children ouside of the label.
+    return null;
   }
 
   protected onRenderDescription() {
