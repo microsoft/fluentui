@@ -5,8 +5,7 @@ import {
   divProperties,
   doesElementContainFocus,
   getDocument,
-  getNativeProps,
-  autobind
+  getNativeProps
 } from '../../Utilities';
 import { IPopupProps } from './Popup.Props';
 
