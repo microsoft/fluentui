@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Contextualmenu: Fix bug where it wouldn't correctly pass shouldfocusonmount through to callout.",
+      "type": "patch"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}
