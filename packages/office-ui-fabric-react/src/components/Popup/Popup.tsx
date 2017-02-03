@@ -32,6 +32,8 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
   }
 
   public componentDidMount(): void {
+    this._events.on(this.refs.root, 'focus', this._onFocus, true);
+    this._events.on(this.refs.root, 'blur', this._onBlur, true);
     if (doesElementContainFocus(this.refs.root)) {
       this._containsFocus = true;
     }
@@ -63,9 +65,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
         role={ role }
         aria-labelledby={ ariaLabelledBy }
         aria-describedby={ ariaDescribedBy }
-        onKeyDown={ this._onKeyDown }
-        onBlur={ this._onBlur }
-        onFocus={ this._onFocus }>
+        onKeyDown={ this._onKeyDown }>
         { this.props.children }
       </div>
     );
@@ -87,12 +87,10 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
     }
   }
 
-  @autobind
   private _onFocus() {
     this._containsFocus = true;
   }
 
-  @autobind
   private _onBlur() {
     this._containsFocus = false;
   }
