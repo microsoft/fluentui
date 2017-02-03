@@ -39,7 +39,8 @@ export interface IPropertiesTableProps {
 }
 
 export enum PropertyType {
-  enum, interface
+  enum = 0,
+  interface = 1
 }
 
 const DEFAULT_COLUMNS: IColumn[] = [

@@ -70,9 +70,9 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
 
 export enum ElementType {
   /** <button> element. */
-  button,
+  button = 0,
   /** <a> element. */
-  anchor
+  anchor = 1
 }
 
 export enum ButtonType {
