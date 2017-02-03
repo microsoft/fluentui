@@ -2,10 +2,10 @@ import { INavLink, INavLinkGroup } from '../../../components/Nav/index';
 import { DetailsListBasicExample } from '../../pages/DetailsListPage/examples/DetailsList.Basic.Example';
 
 export enum ExampleStatus {
-  placeholder,
-  started,
-  beta,
-  release
+  placeholder = 0,
+  started = 1,
+  beta = 2,
+  release = 3
 }
 
 export interface IAppLink extends INavLink {

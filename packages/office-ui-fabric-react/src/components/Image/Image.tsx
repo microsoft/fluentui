@@ -16,8 +16,8 @@ export interface IImageState {
 }
 
 export enum CoverStyle {
-  landscape,
-  portrait
+  landscape = 0,
+  portrait = 1
 }
 
 export const CoverStyleMap = {

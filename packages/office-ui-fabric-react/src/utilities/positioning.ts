@@ -7,10 +7,10 @@ import {
 } from '../Utilities';
 
 export enum RectangleEdge {
-  top,
-  bottom,
-  left,
-  right
+  top = 0,
+  bottom = 1,
+  left = 2,
+  right = 3
 }
 
 let SLIDE_ANIMATIONS: { [key: number]: string; } = {
