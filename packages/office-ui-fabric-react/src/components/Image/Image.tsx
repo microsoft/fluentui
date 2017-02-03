@@ -40,6 +40,8 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
     shouldFadeIn: true
   };
 
+  private static _svgRegex = /\.svg$/i;
+
   private _coverStyle: CoverStyle;
   private _imageElement: HTMLImageElement;
   private _frameElement: HTMLDivElement;
@@ -63,6 +65,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
   }
 
   public componentDidUpdate(prevProps: IImageProps, prevState: IImageState) {
+    this._checkImageLoaded();
     if (this.props.onLoadingStateChange
       && prevState.loadState !== this.state.loadState) {
       this.props.onLoadingStateChange(this.state.loadState);
@@ -113,23 +116,48 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
   }
 
   @autobind
-  private _onImageLoaded(ev: React.SyntheticEvent<HTMLImageElement>): boolean {
+  private _onImageLoaded(ev: React.SyntheticEvent<HTMLImageElement>): void {
     let { src, onLoad } = this.props;
-    let { loadState } = this.state;
-
     if (onLoad) {
       onLoad(ev);
     }
 
     this._computeCoverStyle(this.props);
 
-    if (src && loadState !== ImageLoadState.loaded && loadState !== ImageLoadState.errorLoaded) {
-        this.setState({
-        loadState: loadState === ImageLoadState.error ? ImageLoadState.errorLoaded : ImageLoadState.loaded
+    if (src) {
+      this._setStateToLoadedOrErrorLoaded();
+    }
+  }
+
+  private _checkImageLoaded(): void {
+    let { src } = this.props;
+    let { loadState } = this.state;
+
+    if (loadState === ImageLoadState.notLoaded || loadState === ImageLoadState.error) {
+      // testing if naturalWidth and naturalHeight are greater than zero is better than checking
+      // .complete, because .complete will also be set to true if the image breaks. However,
+      // for some browsers, SVG images do not have a naturalWidth or naturalHeight, so fall back
+      // to checking .complete for these images.
+      let isLoaded: boolean = src && (this._imageElement.naturalWidth > 0 && this._imageElement.naturalHeight > 0) ||
+        (this._imageElement.complete && Image._svgRegex.test(src));
+
+      if (isLoaded) {
+        this._computeCoverStyle(this.props);
+        this._setStateToLoadedOrErrorLoaded();
+      }
+    }
+  }
+
+  private _setStateToLoadedOrErrorLoaded(): void {
+    if (this.state.loadState === ImageLoadState.notLoaded) {
+      this.setState({
+        loadState: ImageLoadState.loaded
+      });
+    } else if (this.state.loadState === ImageLoadState.error) {
+      this.setState({
+        loadState: ImageLoadState.errorLoaded
       });
     }
-
-    return !!src;
   }
 
   private _computeCoverStyle(props: IImageProps) {
