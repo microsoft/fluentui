@@ -1,32 +1,4 @@
 import { INavLink, INavLinkGroup } from '../../../components/Nav/index';
-<<<<<<< HEAD
-import { LabelPage } from '../../pages/LabelPage/LabelPage';
-import { LayerPage } from '../../pages/LayerPage/LayerPage';
-import { LinkPage } from '../../pages/LinkPage/LinkPage';
-import { ListPage } from '../../pages/ListPage/ListPage';
-import { MarqueeSelectionPage } from '../../pages/MarqueeSelectionPage/MarqueeSelectionPage';
-import { MessageBarPage } from '../../pages/MessageBarPage/MessageBarPage';
-import { NavPage } from '../../pages/NavPage/NavPage';
-import { OverlayPage } from '../../pages/OverlayPage/OverlayPage';
-import { PanelPage } from '../../pages/PanelPage/PanelPage';
-import { PeoplePickerPage } from '../../pages/PeoplePickerPage/PeoplePickerPage';
-import { PickersPage } from '../../pages/PickersPage/PickersPage';
-import { PersonaPage } from '../../pages/PersonaPage/PersonaPage';
-import { PivotPage } from '../../pages/PivotPage/PivotPage';
-import { ProgressIndicatorPage } from '../../pages/ProgressIndicatorPage/ProgressIndicatorPage';
-import { RatingPage } from '../../pages/RatingPage/RatingPage';
-import { ScreenReaderAlertPage } from '../../pages/ScreenReaderAlertPage/ScreenReaderAlertPage';
-import { SearchBoxPage } from '../../pages/SearchBoxPage/SearchBoxPage';
-import { SelectionPage } from '../../pages/SelectionPage/SelectionPage';
-import { SliderPage } from '../../pages/SliderPage/SliderPage';
-import { SpinnerPage } from '../../pages/SpinnerPage/SpinnerPage';
-import { TeachingBubblePage } from '../../pages/TeachingBubblePage/TeachingBubblePage';
-import { TextFieldPage } from '../../pages/TextFieldPage/TextFieldPage';
-import { TogglePage } from '../../pages/TogglePage/TogglePage';
-import { TooltipPage } from '../../pages/TooltipPage/TooltipPage';
-import { ThemePage } from '../../pages/ThemePage/ThemePage';
-=======
->>>>>>> d9a11176975a5a420126e8715c14332b6ceea5c3
 import { DetailsListBasicExample } from '../../pages/DetailsListPage/examples/DetailsList.Basic.Example';
 
 export enum ExampleStatus {
@@ -371,18 +343,14 @@ export const AppState: IAppState = {
           url: '#examples/marqueeselection'
         },
         {
-<<<<<<< HEAD
-          component: ScreenReaderAlertPage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/ScreenReaderAlertPage/ScreenReaderAlertPage'))),
           key: 'ScreenReaderAlert',
           name: 'ScreenReaderAlert',
           status: ExampleStatus.beta,
           url: '#/examples/screenreaderalert'
         },
         {
-          component: SelectionPage,
-=======
           getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/SelectionPage/SelectionPage').SelectionPage)),
->>>>>>> d9a11176975a5a420126e8715c14332b6ceea5c3
           key: 'Selection',
           name: 'Selection',
           status: ExampleStatus.beta,
