@@ -6206,9 +6206,9 @@
       "resolved": "https://registry.npmjs.org/webpack-bundle-analyzer/-/webpack-bundle-analyzer-2.2.1.tgz",
       "dependencies": {
         "acorn": {
-          "version": "4.0.5",
+          "version": "4.0.7",
           "from": "acorn@>=4.0.3 <5.0.0",
-          "resolved": "https://registry.npmjs.org/acorn/-/acorn-4.0.5.tgz"
+          "resolved": "https://registry.npmjs.org/acorn/-/acorn-4.0.7.tgz"
         },
         "lodash": {
           "version": "4.17.4",
