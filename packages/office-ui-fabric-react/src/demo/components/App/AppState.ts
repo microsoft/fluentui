@@ -343,7 +343,7 @@ export const AppState: IAppState = {
           url: '#examples/marqueeselection'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/ScreenReaderAlertPage/ScreenReaderAlertPage'))),
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/ScreenReaderAlertPage/ScreenReaderAlertPage').ScreenReaderAlertPage)),
           key: 'ScreenReaderAlert',
           name: 'ScreenReaderAlert',
           status: ExampleStatus.beta,
