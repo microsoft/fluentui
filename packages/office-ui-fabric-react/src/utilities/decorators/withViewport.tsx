@@ -47,17 +47,17 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
 
       this._events.on(window, 'resize', this._onAsyncResize);
 
-      this._observer = new MutationObserver((mutations)=>{
+      this._observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
-        if (mutation.type === 'attributes'){
-          if (mutation.attributeName === 'style' ){
+        if (mutation.type === 'attributes') {
+          if (mutation.attributeName === 'style') {
             if ((mutation.oldValue.indexOf('display:none') !== -1) || (mutation.oldValue.indexOf('visibility:hidden') !== -1)){
               this._updateViewport(true);
               return;
             }
           }
           if (mutation.attributeName === 'class') {
-            if (mutation.oldValue.indexOf('hide') !== -1){
+            if (mutation.oldValue.indexOf('hide') !== -1) {
               this._updateViewport(true);
             }
           }
