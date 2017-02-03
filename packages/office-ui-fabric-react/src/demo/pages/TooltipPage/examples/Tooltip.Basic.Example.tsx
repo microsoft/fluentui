@@ -2,10 +2,10 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent } from '../../../../Utilities';
+import { Button } from '../../../../Button';
 import {
-  TooltipHost,
-  Button
-} from '../../../../index';
+  TooltipHost
+} from '../../../../Tooltip';
 
 export class TooltipBasicExample extends BaseComponent<any, any> {
 

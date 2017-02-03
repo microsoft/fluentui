@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "PeoplePicker: Improve demo page and the way menuitembelow works",
+      "type": "patch"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}

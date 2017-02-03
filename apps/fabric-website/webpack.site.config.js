@@ -5,7 +5,7 @@ let webpackTaskResources = require('@microsoft/web-library-build').webpack.resou
 let webpack = webpackTaskResources.webpack;
 
 let path = require('path');
-var SplitByPathPlugin = require('webpack-split-by-path');
+let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 // Create an array of configs, prepopulated with a debug (non-minified) build.
 let configs = [
@@ -29,8 +29,8 @@ function createConfig(isProduction) {
 
     output: {
       path: path.join(__dirname, '/dist'),
-      filename: `[name]${ minFileNamePart }.js`,
-      chunkFilename: `[name]${ minFileNamePart }.js`
+      filename: `[name]${minFileNamePart}.js`,
+      chunkFilename: `[name]${minFileNamePart}.js`
     },
 
     devtool: 'source-map',
@@ -61,12 +61,11 @@ function createConfig(isProduction) {
     },
 
     plugins: [
-      new SplitByPathPlugin([
-        {
-          name: 'fabric-vendor',
-          path: path.join(__dirname, 'node_modules'),
-        }
-      ])
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'static',
+        reportFilename: 'fabric-site.stats.html',
+        openAnalyzer: false
+      })
     ]
   };
 

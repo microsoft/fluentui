@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   ExampleCard,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { SelectionBasicExample } from './examples/Selection.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';

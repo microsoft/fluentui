@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { BaseButton } from './BaseButton';
 import { Button } from './Button';
 
 export interface IButton {
@@ -8,7 +9,7 @@ export interface IButton {
   focus();
 }
 
-export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAnchorElement | Button> {
+export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAnchorElement | BaseButton | Button> {
   /**
    * If provided, this component will be rendered as an anchor.
    * @default ElementType.anchor
@@ -24,11 +25,6 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
    * If provided, additional class name to provide on the root element.
    */
   className?: string;
-
-  /**
-   * Event handler for click event.
-   */
-  onClick?: React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement | Button>;
 
   /**
    * The aria label of the button for the benefit of screen readers.

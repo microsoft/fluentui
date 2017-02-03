@@ -1,11 +1,9 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import {
-  Button,
-  DetailsList,
-  Fabric
-} from '../../../../index';
+import { Button } from '../../../../Button';
+import { Fabric } from '../../../../Fabric';
+import { DetailsList } from '../../../../DetailsList';
 
 let _columns = [
   {
@@ -102,7 +100,7 @@ export class DetailsListGroupedExample extends React.Component<any, any> {
           items={ items }
           groups={ groupBy(items, 'color') }
           columns={ _columns }
-          />
+        />
       </Fabric>
     );
   }

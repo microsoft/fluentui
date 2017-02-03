@@ -172,11 +172,12 @@ let runSSRTests = build.subTask('run-ssr-tests', function (gulp, buildOptions, d
   let Mocha = require('mocha');
   let mocha = new Mocha();
   mocha.files = ['ssr-test.js'];
-  mocha.run();
-  done();
+  mocha.run(done);
 });
 
 runSSRTests.isEnabled = () => isProduction;
+
+build.task('ssr', runSSRTests);
 
 let defaultTasks = build.serial(
   build.preCopy,
@@ -200,7 +201,7 @@ build.clean.isEnabled = () => isProduction;
 let exec = require('child_process').exec;
 
 let rushBuild = build.subTask('rushbuild', (gulp, options, done) => {
-  let child = exec('rush build --to office-ui-fabric-react');
+  let child = exec('rush build --to office-ui-fabric-react' + (isProduction ? ' --production' : ''));
 
   child.stdout.on('data', data => process.stdout.write(data));
   child.on('close', done);

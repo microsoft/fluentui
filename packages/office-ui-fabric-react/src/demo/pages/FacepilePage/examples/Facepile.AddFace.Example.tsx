@@ -3,7 +3,7 @@ import {
   Facepile,
   IFacepileProps,
   OverflowButtonType
-} from '../../../../index';
+} from '../../../../Facepile';
 import { facepilePersonas } from './FacepileExampleData';
 
 export interface IFacepileAddFaceExampleState {
@@ -28,6 +28,7 @@ export class FacepileAddFaceExample extends React.Component<any, IFacepileAddFac
       overflowButtonType: OverflowButtonType.descriptive,
       showAddButton: true,
       addButtonProps: {
+        ariaLabel: 'Add a new person',
         onClick: (ev: React.MouseEvent<HTMLButtonElement>) => this.setState({
           numberOfFaces: this.state.numberOfFaces + 1
         })

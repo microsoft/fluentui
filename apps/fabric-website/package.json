@@ -40,8 +40,7 @@
     "tslint-microsoft-contrib": "^2.0.9",
     "typescript": "^2.1.5",
     "vinyl-ftp": "0.4.5",
-    "webpack-split-by-path": "0.0.10",
-    "webpack-visualizer-plugin": "0.1.5"
+    "webpack-bundle-analyzer": "^2.2.1"
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.1",
@@ -52,7 +51,7 @@
     "json-loader": "^0.5.4",
     "load-themed-styles": "~1.1.0",
     "office-ui-fabric-core": "5.1.0",
-    "office-ui-fabric-react": "^1.3.4",
+    "office-ui-fabric-react": "^1.3.7",
     "@types/react": "^0.14.41",
     "@types/react-dom": "^0.14.18",
     "@uifabric/utilities": ">=1.0.0 <2.0.0"

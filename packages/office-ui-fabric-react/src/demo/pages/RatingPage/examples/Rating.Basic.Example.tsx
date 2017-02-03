@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { autobind } from '@uifabric/utilities';
+import { autobind } from '../../../../Utilities';
 import {
   Rating,
   RatingSize
-} from '../../../../index';
+} from '../../../../Rating';
 
 import './Rating.Basic.Example.scss';
 
@@ -24,7 +24,7 @@ export class RatingBasicExample extends React.Component<any, any> {
           max={ 5 }
           rating={ this.state.rating }
           onChanged={ this._onChanged }
-          />
+        />
 
         <Rating
           min={ 1 }
@@ -32,7 +32,7 @@ export class RatingBasicExample extends React.Component<any, any> {
           size={ RatingSize.Large }
           rating={ this.state.rating }
           onChanged={ this._onChanged }
-          />
+        />
 
         <Rating
           min={ 1 }
@@ -40,7 +40,7 @@ export class RatingBasicExample extends React.Component<any, any> {
           size={ RatingSize.Large }
           rating={ this.state.rating }
           onChanged={ this._onChanged }
-          />
+        />
 
         Disabled:
         <Rating
@@ -49,7 +49,7 @@ export class RatingBasicExample extends React.Component<any, any> {
           rating={ this.state.rating }
           onChanged={ this._onChanged }
           disabled={ true }
-          />
+        />
       </div>
     );
   }

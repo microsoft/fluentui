@@ -3,7 +3,7 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { SearchBoxSmallExample } from './examples/SearchBox.Small.Example';
 import { SearchBoxFullSizeExample } from './examples/SearchBox.FullSize.Example';
@@ -125,7 +125,7 @@ export class SearchBoxPage extends React.Component<IComponentDemoPageProps, any>
           </div>
         }
         related={
-          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/SearchBox.md'>Fabric JS</a>
+          <a href='https://dev.office.com/fabric-js/Components/SearchBox/SearchBox.html'>Fabric JS</a>
         }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
