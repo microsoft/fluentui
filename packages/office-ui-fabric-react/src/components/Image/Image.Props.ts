@@ -19,7 +19,10 @@ export interface IImageProps extends React.HTMLProps<HTMLImageElement> {
   imageFit?: ImageFit;
 
   /**
-   * Image source to display if an error occurs loading the image indicated by src.
+   * @deprecated
+   * Deprecated at v1.3.6, to be removed at >= v2.0.0.
+   * To replace the src in case of errors, use onLoadingStateChange instead and rerender the Image with a 
+   * difference src.
    */
   errorSrc?: string;
 
@@ -81,8 +84,10 @@ export enum ImageLoadState {
   error,
 
   /**
-   * The src provided did not load correctly, so an attempt to load from errorSrc was made
-   * and it was successful.
+   * @deprecated
+   * Deprecated at v1.3.6, to be removed at >= v2.0.0.
+   * To replace the src in case of errors, use onLoadingStateChange instead and rerender the Image with a 
+   * difference src.
    */
   errorLoaded
 }

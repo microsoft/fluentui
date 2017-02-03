@@ -59,7 +59,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
       this.setState({
         loadState: ImageLoadState.notLoaded
       });
-    } else if (this.state.loadState === ImageLoadState.loaded || this.state.loadState === ImageLoadState.errorLoaded) {
+    } else if (this.state.loadState === ImageLoadState.loaded) {
       this._computeCoverStyle(nextProps);
     }
   }
@@ -74,12 +74,10 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
 
   public render() {
     let imageProps = getNativeProps(this.props, imageProperties, ['width', 'height']);
-    let { src, alt, width, height, shouldFadeIn, className, imageFit, errorSrc, role, maximizeFrame} = this.props;
+    let { src, alt, width, height, shouldFadeIn, className, imageFit, role, maximizeFrame} = this.props;
     let { loadState } = this.state;
     let coverStyle = this._coverStyle;
-    let loaded = loadState === ImageLoadState.loaded || loadState === ImageLoadState.errorLoaded;
-    let srcToDisplay: string =
-      (loadState === ImageLoadState.error || loadState === ImageLoadState.errorLoaded) ? errorSrc : src;
+    let loaded = loadState === ImageLoadState.loaded;
 
     // If image dimensions aren't specified, the natural size of the image is used.
     return (
@@ -107,7 +105,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
                 'ms-Image-image--scaleWidthHeight': (imageFit === undefined && !!width && !!height),
               }) }
           ref={ this._resolveRef('_imageElement') }
-          src={ srcToDisplay }
+          src={ src }
           alt={ alt }
           role={ role }
           />
@@ -125,7 +123,9 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
     this._computeCoverStyle(this.props);
 
     if (src) {
-      this._setStateToLoadedOrErrorLoaded();
+      this.setState({
+        loadState: ImageLoadState.loaded
+      });
     }
   }
 
@@ -133,7 +133,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
     let { src } = this.props;
     let { loadState } = this.state;
 
-    if (loadState === ImageLoadState.notLoaded || loadState === ImageLoadState.error) {
+    if (loadState === ImageLoadState.notLoaded) {
       // testing if naturalWidth and naturalHeight are greater than zero is better than checking
       // .complete, because .complete will also be set to true if the image breaks. However,
       // for some browsers, SVG images do not have a naturalWidth or naturalHeight, so fall back
@@ -143,20 +143,10 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
 
       if (isLoaded) {
         this._computeCoverStyle(this.props);
-        this._setStateToLoadedOrErrorLoaded();
+        this.setState({
+          loadState: ImageLoadState.loaded
+        });
       }
-    }
-  }
-
-  private _setStateToLoadedOrErrorLoaded(): void {
-    if (this.state.loadState === ImageLoadState.notLoaded) {
-      this.setState({
-        loadState: ImageLoadState.loaded
-      });
-    } else if (this.state.loadState === ImageLoadState.error) {
-      this.setState({
-        loadState: ImageLoadState.errorLoaded
-      });
     }
   }
 
@@ -191,10 +181,8 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
     if (this.props.onError) {
       this.props.onError(ev);
     }
-    if (this.state.loadState !== ImageLoadState.error && this.state.loadState !== ImageLoadState.errorLoaded) {
-      this.setState({
-        loadState: ImageLoadState.error
-      });
-    }
+    this.setState({
+      loadState: ImageLoadState.error
+    });
   }
 }
