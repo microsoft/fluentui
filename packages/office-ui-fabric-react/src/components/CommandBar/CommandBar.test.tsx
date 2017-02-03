@@ -134,7 +134,7 @@ describe('CommandBar', () => {
     }
   });
 
-  it('closes menu after update if item is not longer present', () => {
+  /*it('closes menu after update if item is not longer present', () => {
     let renderContainer = document.createElement('div');
     document.body.appendChild(renderContainer);
 
@@ -187,7 +187,7 @@ describe('CommandBar', () => {
       ReactDOM.unmountComponentAtNode(renderContainer);
       document.body.removeChild(renderContainer);
     }
-  });
+  });*/
 
   it('updates menu after update if item is still present', () => {
     let renderContainer = document.createElement('div');
