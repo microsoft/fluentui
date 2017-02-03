@@ -81,7 +81,8 @@ export enum ImageLoadState {
   error,
 
   /**
-   * The image was not successfully loaded due to an error.
+   * The src provided did not load correctly, so an attempt to load from errorSrc was made
+   * and it was successful.
    */
   errorLoaded
 }
