@@ -83,9 +83,9 @@ export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeSt
 
 export enum DialogType {
   /** Standard dialog */
-  normal,
+  normal = 0,
   /** Dialog with large header banner */
-  largeHeader,
+  largeHeader = 1,
   /** Dialog with an 'x' close button in the upper-right corner */
-  close
+  close = 2
 }

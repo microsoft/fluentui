@@ -40,20 +40,20 @@ export interface IMessageBarProps extends React.HTMLProps<HTMLElement> {
 
 export enum MessageBarType {
   /** Info styled MessageBar */
-  info,
+  info = 0,
   /** Error styled MessageBar */
-  error,
+  error = 1,
   /** Blocked styled MessageBar */
-  blocked,
+  blocked = 2,
   /** SevereWarning styled MessageBar */
-  severeWarning,
+  severeWarning = 3,
   /** Success styled MessageBar */
-  success,
+  success = 4,
   /** Warning styled MessageBar */
-  warning,
+  warning = 5,
   /**
    * @deprecated
    * Deprecated at v0.48.0, to be removed at >= v1.0.0. Use 'blocked' instead.
    */
-  remove
+  remove = 6
 }

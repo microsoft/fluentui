@@ -37,6 +37,6 @@ export interface ITooltipProps extends React.HTMLProps<HTMLDivElement | Tooltip>
 }
 
 export enum TooltipDelay {
-  zero,
-  medium
+  zero = 0,
+  medium = 1
 }
