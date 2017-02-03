@@ -3,7 +3,7 @@
     {
       "packageName": "office-ui-fabric-react",
       "comment": "Updated all enums to use explicit numbers",
-      "type": "patch"
+      "type": "minor"
     },
     {
       "comment": "",
