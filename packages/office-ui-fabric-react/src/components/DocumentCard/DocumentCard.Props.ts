@@ -43,11 +43,11 @@ export enum DocumentCardType {
   /**
    * Standard DocumentCard.
    */
-  normal,
+  normal = 0,
   /**
    * Compact layout. Displays the preview beside the details, rather than above.
    */
-  compact
+  compact = 1
 }
 
 export interface IDocumentCardPreviewProps extends React.Props<DocumentCardPreview> {

@@ -46,12 +46,12 @@ export enum PivotLinkFormat {
   /**
    * Display Pivot Links as links
    */
-  links,
+  links = 0,
 
   /**
    * Display Pivot Links as Tabs
    */
-  tabs
+  tabs = 1
 }
 
 export enum PivotLinkSize {
@@ -59,10 +59,10 @@ export enum PivotLinkSize {
   /**
    * Display Link using normal font size
    */
-  normal,
+  normal = 0,
 
   /**
    * Display links using large font size
    */
-  large
+  large = 1
 }

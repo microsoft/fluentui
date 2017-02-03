@@ -36,9 +36,9 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
 }
 
 export enum SelectAllVisibility {
-  none,
-  hidden,
-  visible
+  none = 0,
+  hidden = 1,
+  visible = 2
 }
 
 export interface IDetailsHeaderState {
