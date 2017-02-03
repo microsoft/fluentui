@@ -76,12 +76,11 @@ export enum ElementType {
 }
 
 export enum ButtonType {
-  default,
-  normal,
-  primary,
-  hero,
-  compound,
-  command,
-  icon,
-  clean
+  normal = 0,
+  primary = 1,
+  hero = 2,
+  compound = 3,
+  command = 4,
+  icon = 5,
+  default = 6
 }
