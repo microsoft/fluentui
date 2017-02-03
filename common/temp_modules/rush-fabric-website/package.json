@@ -29,6 +29,7 @@
     "typescript": "^2.1.5",
     "vinyl-ftp": "0.4.5",
     "webpack-bundle-analyzer": "^2.2.1",
+    "webpack-bundle-analyzer": "^2.2.1",
     "color-functions": "1.1.0",
     "json-loader": "^0.5.4",
     "load-themed-styles": "~1.1.0",
