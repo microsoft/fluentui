@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 03 Feb 2017 04:10:11 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Feb 2017 19:02:12 GMT and should not be manually modified.
+
+## 1.5.0
+Fri, 03 Feb 2017 19:02:12 GMT
+
+### Minor changes
+
+- Updated all enums to use explicit numbers
+
+### Patches
+
+- Fixing Facepile imports to be AMD friendly
 
 ## 1.4.0
 Fri, 03 Feb 2017 04:10:11 GMT
