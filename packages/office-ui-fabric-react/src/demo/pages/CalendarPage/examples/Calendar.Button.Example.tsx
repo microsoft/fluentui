@@ -1,11 +1,10 @@
 import * as React from 'react';
+import { Button } from '../../../../Button';
+import { Callout, DirectionalHint } from '../../../../Callout';
 import {
-  Button,
   Calendar,
-  Callout,
-  DayOfWeek,
-  DirectionalHint
-} from '../../../../index';
+  DayOfWeek
+} from '../../../../Calendar';
 
 const DayPickerStrings = {
   months: [
@@ -100,7 +99,7 @@ export class CalendarButtonExample extends React.Component<any, ICalendarButtonE
             directionalHint={ DirectionalHint.bottomLeftEdge }
             onDismiss={ this._onDismiss }
             setInitialFocus={ false }
-            >
+          >
             <Calendar
               onSelectDate={ this._onSelectDate }
               onDismiss={ this._onDismiss }
@@ -108,7 +107,7 @@ export class CalendarButtonExample extends React.Component<any, ICalendarButtonE
               value={ this.state.selectedDate }
               firstDayOfWeek={ DayOfWeek.Sunday }
               strings={ DayPickerStrings }
-              >
+            >
             </Calendar>
           </Callout>
         )

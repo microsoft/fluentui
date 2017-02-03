@@ -1,10 +1,10 @@
 import * as React from 'react';
+import { Label } from '../../../../Label';
+import { Button } from '../../../../Button';
 import {
-  Label,
-  Button,
   Pivot,
   PivotItem
-} from '../../../../index';
+} from '../../../../Pivot';
 
 export class PivotOverrideExample extends React.Component<any, any> {
   constructor(props: any) {
@@ -20,7 +20,7 @@ export class PivotOverrideExample extends React.Component<any, any> {
   public render() {
     return (
       <div>
-        <Pivot selectedKey={`${this.state.selectedKey}`}>
+        <Pivot selectedKey={ `${this.state.selectedKey}` }>
           <PivotItem linkText='My Files' itemKey='0'>
             <Label>Pivot #1</Label>
           </PivotItem>

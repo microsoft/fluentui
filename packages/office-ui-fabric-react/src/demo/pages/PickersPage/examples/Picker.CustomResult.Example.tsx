@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { FocusZone } from '../../../../FocusZone';
+import { SelectionZone } from '../../../../DetailsList';
 import {
   IDocumentCardActionsProps,
   IDocumentCardPreviewProps,
@@ -10,21 +12,16 @@ import {
   DocumentCardActivity,
   DocumentCardLocation,
   DocumentCardPreview,
-  DocumentCardTitle,
-  SelectionZone,
-  FocusZone,
-  ImageFit,
+  DocumentCardTitle
+} from '../../../../DocumentCard';
+import { ImageFit } from '../../../../Image';
+import { Persona, PersonaSize } from '../../../../Persona';
+import {
   IBasePickerProps,
-  Persona,
-  PersonaSize,
-  BaseAutoFill
-} from '../../../../index';
-import {
-  BasePicker
-} from '../../../../components/pickers/BasePicker';
-import {
+  BasePicker,
+  BaseAutoFill,
   IPickerItemProps
-} from '../../../../components/pickers/PickerItem.Props';
+} from '../../../../Pickers';
 import './Picker.CustomResult.Example.scss';
 
 export interface IPeoplePickerExampleState {
@@ -295,7 +292,7 @@ export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumen
   return (
     <DocumentCard
       onClick={ () => { console.log('You clicked the card.'); } }
-      >
+    >
       <DocumentCardPreview { ...documentPreviewProps } />
       <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com' ariaLabel='Location, Marketing Documents' />
       <DocumentCardTitle { ...documentTitleProps } />
@@ -325,7 +322,7 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
             suggestionsItemClassName: 'ms-DocumentPicker-bigSuggestion'
           }
         }
-        />
+      />
     );
   }
 
@@ -364,7 +361,7 @@ export class DocumentPicker extends BasePicker<IFullDocumentCardProps, IDocument
                 autoCapitalize='off'
                 autoComplete='off'
                 role='combobox'
-                />
+              />
             </div>
           </SelectionZone>
         </div>

@@ -206,8 +206,8 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
       });
 
       // Call the onDismiss callback
-      if (this.props.onDismiss) {
-        this.props.onDismiss();
+      if (this.props.onDismissed) {
+        this.props.onDismissed();
       }
     }
   }

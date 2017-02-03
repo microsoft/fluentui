@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { assign } from '@uifabric/utilities';
+import { assign } from '../../../../Utilities';
 import { CommandBar } from '../../../../CommandBar';
 import { Toggle } from '../../../../Toggle';
 
@@ -36,7 +36,7 @@ export class CommandBarBasicExample extends React.Component<any, any> {
           onChanged={ isSearchBoxVisible => this.setState({ isSearchBoxVisible }) }
           onText='Visible'
           offText='Hidden'
-          />
+        />
         <Toggle
           label='Show names'
           checked={ namesVisible }
@@ -55,7 +55,7 @@ export class CommandBarBasicExample extends React.Component<any, any> {
           elipisisAriaLabel='More options'
           items={ filteredItems }
           farItems={ filteredFarItems }
-          />
+        />
       </div>
     );
   }

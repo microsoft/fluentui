@@ -5,6 +5,7 @@ import {
   Facepile,
   IFacepilePersona,
   IFacepileProps,
+  PersonaSize,
   Slider
 } from '../../../../index';
 import { facepilePersonas } from './FacepileExampleData';
@@ -12,14 +13,14 @@ import './Facepile.Examples.scss';
 
 export enum ExtraDataType {
   none = 0,
-  name,
-  stats
+  name
 }
 
 export interface IFacepileBasicExampleState {
   numberOfFaces: any;
   imagesFadeIn: boolean;
   extraDataType: ExtraDataType;
+  personaSize: PersonaSize;
 }
 
 export class FacepileBasicExample extends React.Component<any, IFacepileBasicExampleState> {
@@ -29,13 +30,15 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
     this.state = {
       numberOfFaces: 3,
       imagesFadeIn: true,
-      extraDataType: ExtraDataType.none
+      extraDataType: ExtraDataType.none,
+      personaSize: PersonaSize.extraSmall
     };
   }
 
   public render() {
-    let { extraDataType, numberOfFaces } = this.state;
+    let { extraDataType, numberOfFaces, personaSize } = this.state;
     let facepileProps: IFacepileProps = {
+      personaSize: personaSize,
       personas: facepilePersonas.slice(0, numberOfFaces),
       getPersonaProps: (persona: IFacepilePersona) => {
         if (extraDataType === ExtraDataType.name) {
@@ -43,15 +46,9 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
             imageShouldFadeIn: this.state.imagesFadeIn,
             hidePersonaDetails: false
           };
-        } else if (extraDataType === ExtraDataType.stats) {
-          return {
-            imageShouldFadeIn: this.state.imagesFadeIn,
-            hidePersonaDetails: false,
-            primaryText: `[${persona.data}]`
-          };
         }
         return {
-          imageShouldFadeIn: this.state.imagesFadeIn,
+          imageShouldFadeIn: this.state.imagesFadeIn
         };
       }
     };
@@ -59,18 +56,20 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
     return (
       <div className={ 'ms-FacepileExample' }>
         <Facepile {...facepileProps} />
-        <Slider
-          label='Number of Personas:'
-          min={ 1 }
-          max={ 5 }
-          step={ 1 }
-          showValue={ true }
-          value={ numberOfFaces }
-          onChange={ value => this.setState((prevState: IFacepileBasicExampleState) => {
-            prevState.numberOfFaces = value;
-            return prevState;
-          }) }
-          />
+        <div className={ 'control' }>
+          <Slider
+            label='Number of Personas:'
+            min={ 1 }
+            max={ 5 }
+            step={ 1 }
+            showValue={ true }
+            value={ numberOfFaces }
+            onChange={ value => this.setState((prevState: IFacepileBasicExampleState) => {
+              prevState.numberOfFaces = value;
+              return prevState;
+            }) }
+            />
+        </div>
         <Checkbox
           label='Fade In'
           checked={ this.state.imagesFadeIn }
@@ -79,23 +78,36 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
               prevState.imagesFadeIn = checked;
               return prevState;
             });
-          } } />
-
+          } }
+          />
+        <Dropdown
+          label='Persona Size:'
+          selectedKey={ this.state.personaSize }
+          options={
+            [
+              { key: PersonaSize.extraSmall, text: PersonaSize[PersonaSize.extraSmall] },
+              { key: PersonaSize.extraExtraSmall, text: PersonaSize[PersonaSize.extraExtraSmall] }
+            ]
+          }
+          onChanged={ value => this.setState((prevState: IFacepileBasicExampleState) => {
+            prevState.personaSize = value.key as PersonaSize;
+            return prevState;
+          }) }
+          />
         <Dropdown
           label='Additional Data:'
           selectedKey={ this.state.extraDataType }
           options={
             [
               { key: ExtraDataType.none, text: ExtraDataType[ExtraDataType.none] },
-              { key: ExtraDataType.name, text: ExtraDataType[ExtraDataType.name] },
-              { key: ExtraDataType.stats, text: ExtraDataType[ExtraDataType.stats] }
+              { key: ExtraDataType.name, text: ExtraDataType[ExtraDataType.name] }
             ]
           }
           onChanged={ value => this.setState((prevState: IFacepileBasicExampleState) => {
             prevState.extraDataType = value.key as ExtraDataType;
             return prevState;
           }) }
-          />
+        />
       </div>
     );
   }

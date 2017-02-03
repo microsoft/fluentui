@@ -1,8 +1,6 @@
 import * as React from 'react';
-import {
-  autobind,
-  TextField
-} from '../../../../index';
+import { TextField } from '../../../../TextField';
+import { autobind } from '../../../../Utilities';
 
 export class TextFieldBasicExample extends React.Component<any, any> {
   public render() {

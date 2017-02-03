@@ -5,12 +5,9 @@ import * as React from 'react';
 import {
   css,
   createArray
-} from '@uifabric/utilities';
-import {
-  Checkbox,
-  Selection,
-  MarqueeSelection
-} from '../../../../index';
+} from '../../../../Utilities';
+import { Checkbox } from '../../../../Checkbox';
+import { MarqueeSelection, Selection } from '../../../../MarqueeSelection';
 import './MarqueeSelection.Basic.Example.scss';
 
 const PHOTOS = createArray(250, () => {

@@ -2,13 +2,12 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent } from '../../../../Utilities';
-import { DirectionalHint } from '../../../../common/DirectionalHint';
-
+import { Button } from '../../../../Button';
 import {
   TooltipHost,
   TooltipDelay,
-  Button
-} from '../../../../index';
+  DirectionalHint
+} from '../../../../Tooltip';
 
 export class TooltipBottomExample extends BaseComponent<any, any> {
 

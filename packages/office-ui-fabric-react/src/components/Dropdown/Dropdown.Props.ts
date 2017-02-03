@@ -6,6 +6,11 @@ export interface IDropdownProps {
   label: string;
 
   /**
+  * Aria Label for the Dropdown for screen reader users.
+  */
+  ariaLabel?: string;
+
+  /**
   * Id of the drop down
   */
   id?: string;

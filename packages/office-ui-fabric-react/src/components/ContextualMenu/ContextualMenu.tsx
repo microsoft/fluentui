@@ -178,7 +178,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       arrowDirection,
       target,
       bounds,
-      directionalHintFixed } = this.props;
+      directionalHintFixed,
+      shouldFocusOnMount } = this.props;
 
     let { submenuProps } = this.state;
 
@@ -200,7 +201,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           coverTarget={ coverTarget }
           doNotLayer={ doNotLayer }
           className='ms-ContextualMenu-Callout'
-          setInitialFocus={ true }
+          setInitialFocus={ shouldFocusOnMount }
           onDismiss={ this.props.onDismiss }
           bounds={ bounds }
           directionalHintFixed={ directionalHintFixed }>

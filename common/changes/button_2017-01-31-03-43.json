@@ -1,0 +1,15 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Button: major css cleanup, refactoring out BaseButton so that variants are cheap to build from bytes perspective.",
+      "type": "minor"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/utilities",
+      "type": "none"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
