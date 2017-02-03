@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "BaseButton: Make it correctly render children",
+      "comment": "BaseButton: Resolving an issue where Buttons would not render children.",
       "type": "patch"
     }
   ],
