@@ -17,35 +17,27 @@
   background-color: $ms-color-themePrimary;
   border-color: $ms-color-themePrimary;
   color: $ms-color-white;
+  font-weight: $ms-font-weight-semibold;
+  font-size: $ms-font-size-m;
 
-  .ms-Button-label {
-    font-weight: $ms-font-weight-semibold;
-    font-size: $ms-font-size-m;
-  }
-
-  &:hover {
-    background-color: $ms-color-themeDark;
-    border-color: $ms-color-themeDark;
-  }
-
-  &:focus {
-    background-color: $ms-color-themeDark;
-    border-color: $ms-color-themePrimary;
-  }
-
-  &:active {
-    background-color: $ms-color-themePrimary;
-    border-color: $ms-color-themePrimary;
-  }
-
-}
-
-.ms-Fabric.is-focusVisible .ms-Button--primary {
-  &:focus {
-    color: $ms-color-white;
-
-    &:before {
-      border-color: $ms-color-themeLighter;
+  &.is-enabled {
+    &:hover {
+      background-color: $ms-color-themeDark;
+      border-color: $ms-color-themeDark;
     }
+
+    &:focus {
+      background-color: $ms-color-themeDark;
+      border-color: $ms-color-themePrimary;
+    }
+
+    &:active {
+      background-color: $ms-color-themePrimary;
+      border-color: $ms-color-themePrimary;
+    }
+  }
+
+  &.is-disabled {
+    @include focus-border();
   }
 }

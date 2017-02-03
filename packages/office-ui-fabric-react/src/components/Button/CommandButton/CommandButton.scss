@@ -38,24 +38,25 @@ $button-commandButtonHeight: 40px;
     font-size: $ms-icon-size-m;
   }
 
-  &:hover,
-  &:focus {
-    background-color: transparent;
+  &.is-enabled {
+    &:hover,
+    &:focus {
+      background-color: transparent;
 
-    .ms-Button-icon,
-    .ms-Button-label {
-      color: $ms-color-themeDarker;
+      .ms-Button-icon,
+      .ms-Button-label {
+        color: $ms-color-themeDarker;
+      }
+    }
+
+    &:active {
+      .ms-Button-icon,
+      .ms-Button-label {
+        color: $ms-color-themePrimary;
+      }
     }
   }
 
-  &:active {
-    .ms-Button-icon,
-    .ms-Button-label {
-      color: $ms-color-themePrimary;
-    }
-  }
-
-  &:disabled,
   &.is-disabled {
     background-color: transparent;
 

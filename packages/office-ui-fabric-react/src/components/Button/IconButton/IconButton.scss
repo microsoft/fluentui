@@ -17,18 +17,19 @@
   height: $button-core-default-height;
   line-height: $button-core-default-height;
 
-  &:hover,
-  &:active {
-    background-color: transparent;
-    color: $ms-color-neutralPrimary;
+  &.is-enabled {
+    &:hover,
+    &:active {
+      background-color: transparent;
+      color: $ms-color-neutralPrimary;
+    }
+
+    &:focus {
+      background-color: transparent;
+    }
   }
 
-  &:focus {
-    background-color: transparent;
-  }
-
-  &.is-disabled,
-  &:disabled {
+  &.is-disabled {
     color: $ms-color-neutralTertiaryAlt;
     background-color: transparent;
   }
