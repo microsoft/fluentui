@@ -114,7 +114,7 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     let { children, label } = this.props;
 
     // For backwards compat, we should continue to take in the label content from children.
-    if (!label && typeof (children) === 'string') {
+    if (label === undefined && typeof (children) === 'string') {
       label = children;
     }
 
@@ -131,7 +131,7 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     // There is no label and the label will be rendered, we don't want the label to appear twice.
     // If there is a label and the children are of type string it was likely intentional and both
     // should render.
-    if (!label && typeof (children) === 'string') {
+    if (label === undefined && typeof (children) === 'string') {
       return null;
     }
 
