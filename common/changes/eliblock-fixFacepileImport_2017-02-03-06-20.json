@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Fixing Facepile imports to be AMD friendly",
+      "type": "patch"
+    }
+  ],
+  "email": "eliblock@microsoft.com"
+}
