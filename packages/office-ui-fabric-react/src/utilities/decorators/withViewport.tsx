@@ -51,7 +51,7 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
         mutations.forEach((mutation) => {
         if (mutation.type === 'attributes') {
           if (mutation.attributeName === 'style') {
-            if ((mutation.oldValue.indexOf('display:none') !== -1) || (mutation.oldValue.indexOf('visibility:hidden') !== -1)){
+            if ((mutation.oldValue.indexOf('display:none') !== -1) || (mutation.oldValue.indexOf('visibility:hidden') !== -1)) {
               this._updateViewport(true);
               return;
             }
