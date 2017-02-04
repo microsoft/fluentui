@@ -10,7 +10,6 @@
 
 .ms-Button--default {
   background-color: $ms-color-neutralLighter;
-  border: 1px solid $ms-color-neutralLighter;
   height: $button-core-default-height;
   line-height: $button-core-default-height;
   font-weight: $ms-font-weight-semibold;
@@ -22,13 +21,11 @@
   &.is-enabled {
     &:hover {
       background-color: $ms-color-neutralLight;
-      border-color: $ms-color-neutralLight;
       color: $ms-color-black;
     }
 
     &:focus {
       background-color: $ms-color-neutralLight;
-      border-color: $ms-color-neutralLighter;
       outline: 1px solid transparent;
       color: $ms-color-black;
 
@@ -36,7 +33,6 @@
 
     &:active {
       background-color: $ms-color-themePrimary;
-      border-color: $ms-color-themePrimary;
       color: $ms-color-white;
     }
   }

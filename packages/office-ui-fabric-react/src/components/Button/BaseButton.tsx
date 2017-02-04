@@ -76,7 +76,8 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
         onClick: this._onClick,
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabel ? null : _labelId,
-        'aria-describedby': ariaDescribedBy
+        'aria-describedby': ariaDescribedBy,
+        'aria-disabled': disabled
       }
     );
 

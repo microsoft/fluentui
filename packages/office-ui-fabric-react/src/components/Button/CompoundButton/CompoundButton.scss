@@ -39,7 +39,6 @@
   &.is-enabled {
     &:hover {
       background-color: $ms-color-neutralLight;
-      border-color: $ms-color-neutralLight;
 
       .ms-Button-description {
         color: $ms-color-neutralDark;
@@ -47,7 +46,6 @@
     }
 
     &:focus {
-      border-color: $ms-color-themePrimary;
       background-color: $ms-color-neutralLighter;
 
       .ms-Button-label {
