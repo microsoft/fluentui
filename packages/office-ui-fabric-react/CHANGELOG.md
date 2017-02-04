@@ -1,6 +1,54 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 01 Feb 2017 04:04:05 GMT and should not be manually modified.
+This log was last generated on Sat, 04 Feb 2017 04:05:32 GMT and should not be manually modified.
+
+## 1.5.2
+Sat, 04 Feb 2017 04:05:32 GMT
+
+### Patches
+
+- Image: Now correctly loads SVG images in Edge.
+- Pickers and Popup: Fixed a bug where having a picker in a dialog could cause the dialog to be dismissed on escape press
+
+## 1.5.1
+Sat, 04 Feb 2017 00:27:49 GMT
+
+### Patches
+
+- BaseButton: Resolving an issue where Buttons would not render children.
+
+## 1.5.0
+Fri, 03 Feb 2017 19:02:12 GMT
+
+### Minor changes
+
+- Updated all enums to use explicit numbers
+
+### Patches
+
+- Fixing Facepile imports to be AMD friendly
+
+## 1.4.0
+Fri, 03 Feb 2017 04:10:11 GMT
+
+### Minor changes
+
+- Button: major css cleanup, refactoring out BaseButton so that variants are cheap to build from bytes perspective.
+- Dropdown: changes to include id and ariaLabel
+- List: allow scrolling invidual items into view
+- Router: adding support for asynchronously loading components via the `getComponent` prop in the `<Route>` component.
+- Dialog: new `onDismissed` callback added to be called when the dismiss animation is complete.
+- Panel: new `onDismissed` callback added to be called when the dismiss animation is complete.
+- Persona: Added new xxs Persona size.  Fixed broken presence icons in high contrast mode.
+- Facepile: Updated to be able to use new xxs size for Persona.
+
+### Patches
+
+- BasePickerBelow: add support for focuszone innerkeystroke"
+- ContextualMenu: `shouldFocusOnMount` is now properly handled as expected.
+- Breadcrumb: Change item to render as span if it doesn't have onClick
+- PeoplePicker: Improve demo page and the way menuitembelow works
+- TextField: minor code cleanup, added ITextField interface and documentation.
 
 ## 1.3.7
 Wed, 01 Feb 2017 04:04:05 GMT
