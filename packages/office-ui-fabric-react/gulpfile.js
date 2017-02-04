@@ -19,9 +19,16 @@ build.tslint.setConfig({ lintConfig: require('./tslint.json') });
 // Configure TypeScript 2.0.
 build.typescript.setConfig({ typescript: require('typescript') });
 
+// Disable unnecessary subtasks.
+build.preCopy.isEnabled = () => false;
+build.text.isEnabled = () => false;
+build.postCopy.isEnabled = () => isProduction;
+
+// Until typings work.
+//build.apiExtractor.isEnabled = () => false;
 
 // Copy fabric-core to dist to be published with fabric-react.
-isProduction && build.postCopy.setConfig({
+build.postCopy.setConfig({
   copyTo: {
     [path.join(distFolder, 'sass')]: [
       'node_modules/office-ui-fabric-core/dist/sass/*.*'
@@ -54,18 +61,8 @@ let runSSRTests = build.subTask('run-ssr-tests', function (gulp, buildOptions, d
 
 runSSRTests.isEnabled = () => isProduction;
 
-let defaultTasks = build.serial(
-  build.preCopy,
-  build.sass,
-  build.parallel(build.typescript, build.tslint, build.text),
-  build.postCopy,
-  build.webpack,
-  build.karma,
-  runSSRTests
-);
-
-// Intertwin ssr tests into default build task.
-build.task('default', defaultTasks);
+// Append ssr tests into default build task.
+build.task('default', build.serial(build.defaultTasks, runSSRTests));
 
 // Disable certain subtasks in non production builds to speed up serve.
 build.karma.isEnabled = () => isProduction;
