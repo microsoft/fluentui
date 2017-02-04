@@ -7,20 +7,19 @@ let gulp = require('gulp');
 let configFile = "./ftpconfig.json";
 let fs = require('fs');
 let path = require('path');
-
+let pkg = require('./package.json');
 let isProduction = process.argv.indexOf('--production') >= 0;
 let isNuke = process.argv.indexOf('nuke') >= 0;
 
-/** @todo: disable lint config. */
+// Configur custom lint rules.
 build.tslint.setConfig({ lintConfig: require('./tslint.json') });
 
-/* Configure TypeScript 2.0. */
+// Configure TypeScript 2.0.
 build.typescript.setConfig({ typescript: require('typescript') });
 
-/* Shortcut aliases to run specific individual subtasks. */
-build.task('webpack', build.webpack);
-build.task('tslint', build.tslint);
-build.task('ts', build.typescript);
+// Disable karma unit tests.
+build.karma.isEnabled = () => false;
+
 
 let packageFolder = buildConfig.packageFolder || '';
 let distFolder = buildConfig.distFolder;
@@ -151,7 +150,7 @@ gulp.task('deploy', ['bundle'], function (cb) {
 let exec = require('child_process').exec;
 
 let rushBuild = build.subTask('rushbuild', (gulp, options, done) => {
-  let child = exec('rush build --to office-ui-fabric-react' + (isProduction ? ' --production' : ''));
+  let child = exec(`rush build --to ${pkg.name} ${isProduction ? '--production' : ''}`);
 
   child.stdout.on('data', data => process.stdout.write(data));
   child.on('close', done);
@@ -169,6 +168,11 @@ build.task('serve', serial(
     rushBuild,
     build.reload
   ))));
+
+// Shortcuts for individual subtasks.
+build.task('webpack', build.webpack);
+build.task('tslint', build.tslint);
+build.task('ts', build.typescript);
 
 // initialize tasks.
 build.initialize(gulp);

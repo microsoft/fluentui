@@ -1,4 +1,4 @@
-import { INavLink, INavLinkGroup } from '../../../components/Nav/index';
+import { INavLink, INavLinkGroup } from 'office-ui-fabric-react/lib/Nav';
 import { DetailsListBasicExample } from '../../pages/DetailsListPage/examples/DetailsList.Basic.Example';
 
 export enum ExampleStatus {

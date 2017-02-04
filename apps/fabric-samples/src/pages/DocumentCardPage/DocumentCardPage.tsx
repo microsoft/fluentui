@@ -8,8 +8,6 @@ import {
 import { DocumentCardBasicExample } from './examples/DocumentCard.Basic.Example';
 import { DocumentCardCompleteExample } from './examples/DocumentCard.Complete.Example';
 import { DocumentCardCompactExample } from './examples/DocumentCard.Compact.Example';
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const DocumentCardBasicExampleCode = require('./examples/DocumentCard.Basic.Example.tsx') as string;
@@ -17,13 +15,6 @@ const DocumentCardCompleteExampleCode = require('./examples/DocumentCard.Complet
 const DocumentCardCompactExampleCode = require('./examples/DocumentCard.Compact.Example.tsx') as string;
 
 export class DocumentCardPage extends React.Component<IComponentDemoPageProps, any> {
-  private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'DocumentCard');
-  }
-
   public render() {
     return (
       <ComponentPage
@@ -81,7 +72,6 @@ export class DocumentCardPage extends React.Component<IComponentDemoPageProps, a
             </ul>
           </div>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

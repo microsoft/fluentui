@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { FocusZone } from '../../../../FocusZone';
-import { List } from '../../../../List';
+import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
+import { List } from 'office-ui-fabric-react/lib/List';
 import './List.Grid.Example.scss';
 
 export interface IListGridExampleProps {

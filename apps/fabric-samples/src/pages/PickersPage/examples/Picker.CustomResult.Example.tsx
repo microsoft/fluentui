@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { FocusZone } from '../../../../FocusZone';
-import { SelectionZone } from '../../../../DetailsList';
+import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
+import { SelectionZone } from 'office-ui-fabric-react/lib/DetailsList';
 import {
   IDocumentCardActionsProps,
   IDocumentCardPreviewProps,
@@ -13,15 +13,15 @@ import {
   DocumentCardLocation,
   DocumentCardPreview,
   DocumentCardTitle
-} from '../../../../DocumentCard';
-import { ImageFit } from '../../../../Image';
-import { Persona, PersonaSize } from '../../../../Persona';
+} from 'office-ui-fabric-react/lib/DocumentCard';
+import { ImageFit } from 'office-ui-fabric-react/lib/Image';
+import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 import {
   IBasePickerProps,
   BasePicker,
   BaseAutoFill,
   IPickerItemProps
-} from '../../../../Pickers';
+} from 'office-ui-fabric-react/lib/Pickers';
 import './Picker.CustomResult.Example.scss';
 
 export interface IPeoplePickerExampleState {

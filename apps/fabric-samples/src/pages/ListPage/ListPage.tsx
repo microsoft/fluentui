@@ -16,22 +16,15 @@ const ListMailExampleCode = require('./examples/List.Mail.Example.tsx') as strin
 const ListGridExampleCode = require('./examples/List.Grid.Example.tsx') as string;
 const ListScrollingExampleCode = require('./examples/List.Scrolling.Example.tsx') as string;
 
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 let _cachedItems;
 
 export class ListPage extends React.Component<IComponentDemoPageProps, any> {
-  private _url: string;
-
   constructor() {
     super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'List');
 
-    if (!_cachedItems) {
-      _cachedItems = createListItems(5000);
-    }
+    _cachedItems = _cachedItems || createListItems(5000);
   }
 
   public render() {
@@ -74,7 +67,6 @@ export class ListPage extends React.Component<IComponentDemoPageProps, any> {
         related={
           <a href='https://dev.office.com/fabric-js/Components/List/List.html'>Fabric JS</a>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

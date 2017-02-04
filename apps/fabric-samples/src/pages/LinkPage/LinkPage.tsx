@@ -6,20 +6,11 @@ import {
 } from '../../components/demoComponents';
 
 import { LinkBasicExample } from './examples/Link.Basic.Example';
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 let LinkBasicExampleCode = require('./examples/Link.Basic.Example.tsx') as string;
 
 export class LinkPage extends React.Component<IComponentDemoPageProps, any> {
-  private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'Link');
-  }
-
   public render() {
     return (
       <ComponentPage
@@ -69,7 +60,6 @@ export class LinkPage extends React.Component<IComponentDemoPageProps, any> {
         related={
           <a href='https://dev.office.com/fabric-js/Components/Link/Link.html'>Fabric JS</a>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

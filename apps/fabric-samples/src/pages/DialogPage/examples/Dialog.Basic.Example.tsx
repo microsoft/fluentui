@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Dialog, DialogType, DialogFooter } from '../../../../Dialog';
-import { Button, ButtonType } from '../../../../Button';
-import { ChoiceGroup } from '../../../../ChoiceGroup';
+import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
+import { Button, ButtonType } from 'office-ui-fabric-react/lib/Button';
+import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import './Dialog.Basic.Example.scss';
 
 export class DialogBasicExample extends React.Component<any, any> {

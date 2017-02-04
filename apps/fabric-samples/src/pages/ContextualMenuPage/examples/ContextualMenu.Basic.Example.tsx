@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ContextualMenu } from '../../../../ContextualMenu';
-import { Callout, DirectionalHint } from '../../../../Callout';
-import { Button } from '../../../../Button';
-import { getRTL } from '../../../../Utilities';
+import { ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { Button } from 'office-ui-fabric-react/lib/Button';
+import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuBasicExample extends React.Component<any, any> {

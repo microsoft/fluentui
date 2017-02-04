@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { assign } from '../../../Utilities';
-import { DetailsList, DetailsListLayoutMode, IColumn, IGroup } from '../../../DetailsList';
-import { SelectionMode } from '../../../utilities/selection/interfaces';
+import { assign } from 'office-ui-fabric-react/lib/Utilities';
+import { DetailsList, DetailsListLayoutMode, IColumn, IGroup } from 'office-ui-fabric-react/lib/DetailsList';
+import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import './PropertiesTable.scss';
 
 export interface IProperty {
@@ -145,7 +145,7 @@ export class PropertiesTable extends React.Component<IPropertiesTableProps, any>
             items={ properties }
             groups={ groups }
             columns={ isEnum ? ENUM_COLUMNS : DEFAULT_COLUMNS }
-            />
+          />
         ) : (
             <div className='PropertiesTable-noProperties'>This component is missing properties. Please provide properties or remove the table from the example.</div>
           ) }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from '../../../Link';
+import { Link } from 'office-ui-fabric-react/lib/Link';
 import {
   ExampleCard,
   PropertiesTableSet,
@@ -7,20 +7,11 @@ import {
 } from '../../components/demoComponents';
 
 import { PeoplePickerTypesExample } from './examples/PeoplePicker.Types.Example';
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const PeoplePickerTypesExampleCode = require('./examples/PeoplePicker.Types.Example.tsx') as string;
 
 export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, any> {
-  private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'PeoplePicker');
-  }
-
   public render() {
     return (
       <ComponentPage
@@ -42,7 +33,6 @@ export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, a
             <span> are used to pick recipients.</span>
           </div>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }
         related={
           <a href='https://dev.office.com/fabric-js/Components/PeoplePicker/PeoplePicker.html'>Fabric JS</a>

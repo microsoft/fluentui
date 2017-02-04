@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { List } from '../../../../List';
+import { List } from 'office-ui-fabric-react/lib/List';
 import './List.Mail.Example.scss';
 
 export class MailTile extends React.Component<any, any> {

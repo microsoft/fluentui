@@ -24,6 +24,11 @@
       "packageName": "fabric-website",
       "projectFolder": "apps/fabric-website",
       "shouldPublish": false
+    },
+    {
+      "packageName": "fabric-samples",
+      "projectFolder": "apps/fabric-samples",
+      "shouldPublish": false
     }
   ]
 }

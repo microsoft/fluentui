@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Button } from '../../../../Button';
-import { Callout } from '../../../../Callout';
-import { CommandBar } from '../../../../CommandBar';
+import { Button } from 'office-ui-fabric-react/lib/Button';
+import { Callout } from 'office-ui-fabric-react/lib/Callout';
+import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import './CalloutExample.scss';
 
 import { items } from '../../CommandBarPage/examples/data';

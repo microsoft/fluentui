@@ -3,8 +3,8 @@ import {
   GroupedList,
   IGroup,
   IGroupDividerProps
-} from '../../../../components/GroupedList/index';
-import { Link } from '../../../../Link';
+} from 'office-ui-fabric-react/lib/components/GroupedList/index';
+import { Link } from 'office-ui-fabric-react/lib/Link';
 import { createListItems, createGroups } from '../../../utilities/data';
 import './GroupedList.Custom.Example.scss';
 

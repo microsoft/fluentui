@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Label } from '../../../../Label';
+import { Label } from 'office-ui-fabric-react/lib/Label';
 import {
   PivotLinkSize,
   PivotLinkFormat,
   PivotItem,
   Pivot
-} from '../../../../Pivot';
+} from 'office-ui-fabric-react/lib/Pivot';
 
 import { CalloutBasicExample } from '../../CalloutPage/examples/Callout.Basic.Example';
 import { SpinnerBasicExample } from '../../SpinnerPage/examples/Spinner.Basic.Example';

@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { getRTL, setRTL } from '../../../Utilities';
-import { } from '../../../utilities/decorators/withResponsiveMode';
+import { getRTL, setRTL } from 'office-ui-fabric-react/lib/Utilities';
 import {
   ContextualMenu,
+  DirectionalHint,
   IContextualMenuItem
-} from '../../../ContextualMenu';
-import { DirectionalHint } from '../../../common/DirectionalHint';
-import { FocusZone, FocusZoneDirection } from '../../../FocusZone';
-import { withResponsiveMode, ResponsiveMode } from '../../../utilities/decorators/withResponsiveMode';
+} from 'office-ui-fabric-react/lib/ContextualMenu';
+import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
+import { withResponsiveMode, ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import './Header.scss';
 
 export interface IHeaderProps {

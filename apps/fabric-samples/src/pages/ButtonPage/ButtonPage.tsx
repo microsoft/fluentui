@@ -4,7 +4,7 @@ import {
   PropertiesTableSet,
   ComponentPage
 } from '../../components/demoComponents';
-import { Checkbox } from '../../../Checkbox';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 
 import { ButtonDefaultExample } from './examples/Button.Default.Example';
 import { ButtonPrimaryExample } from './examples/Button.Primary.Example';
@@ -13,8 +13,6 @@ import { ButtonCommandExample } from './examples/Button.Command.Example';
 import { ButtonIconExample } from './examples/Button.Icon.Example';
 import { ButtonAnchorExample } from './examples/Button.Anchor.Example';
 import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Example';
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 import { IButtonDemoPageState } from './examples/IButtonDemoPageState';
 import './examples/Button.Basic.Example.scss';
@@ -28,14 +26,11 @@ const ButtonAnchorExampleCode = require('./examples/Button.Anchor.Example.tsx') 
 const ButtonScreenReaderExampleCode = require('./examples/Button.ScreenReader.Example.tsx') as string;
 
 export class ButtonPage extends React.Component<IComponentDemoPageProps, IButtonDemoPageState> {
-  private _url: string;
-
   constructor() {
     super();
     this.state = {
       areButtonsDisabled: false
     };
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'Button');
   }
 
   public render() {
@@ -116,7 +111,6 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
             </ul>
           </div>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

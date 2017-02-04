@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Button } from '../../../../Button';
-import { TextField } from '../../../../TextField';
+import { Button } from 'office-ui-fabric-react/lib/Button';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import './NumberTextField.scss';
 
 export interface INumberTextFieldProps {

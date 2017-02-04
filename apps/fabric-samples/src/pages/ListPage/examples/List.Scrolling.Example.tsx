@@ -9,7 +9,7 @@ import {
   Button,
   TextField,
   List
-} from '../../../../index';
+} from 'office-ui-fabric-react/lib/index';
 import './List.Scrolling.Example.scss';
 
 export interface IListScrollingExampleProps {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   SearchBox
-} from '../../../../SearchBox';
+} from 'office-ui-fabric-react/lib/SearchBox';
 import './SearchBox.Small.Example.scss';
 
 export class SearchBoxSmallExample extends React.Component<any, any> {

@@ -7,7 +7,7 @@ import {
   IFacepileProps,
   PersonaSize,
   Slider
-} from '../../../../index';
+} from 'office-ui-fabric-react/lib/index';
 import { facepilePersonas } from './FacepileExampleData';
 import './Facepile.Examples.scss';
 

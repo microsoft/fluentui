@@ -3,7 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import {
   Breadcrumb, IBreadcrumbItem
-} from '../../../../Breadcrumb';
+} from 'office-ui-fabric-react/lib/Breadcrumb';
 
 export class BreadcrumbBasicExample extends React.Component<any, any> {
   constructor() {

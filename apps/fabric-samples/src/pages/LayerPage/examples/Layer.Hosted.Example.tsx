@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Checkbox } from '../../../../Checkbox';
-import { Layer, LayerHost } from '../../../../Layer';
-import { Toggle } from '../../../../Toggle';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Layer, LayerHost } from 'office-ui-fabric-react/lib/Layer';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import './Layer.Example.scss';
 
 export class LayerHostedExample extends React.Component<any, any> {

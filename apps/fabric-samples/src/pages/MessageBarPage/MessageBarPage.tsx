@@ -6,20 +6,11 @@ import {
 } from '../../components/demoComponents';
 
 import { MessageBarBasicExample } from './examples/MessageBar.Basic.Example';
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const MessageBarBasicExampleCode = require('./examples/MessageBar.Basic.Example.tsx') as string;
 
 export class MessageBarPage extends React.Component<IComponentDemoPageProps, any> {
-  private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'MessageBar');
-  }
-
   public render() {
     return (
       <ComponentPage
@@ -70,7 +61,6 @@ export class MessageBarPage extends React.Component<IComponentDemoPageProps, any
         related={
           <a href='https://dev.office.com/fabric-js/Components/MessageBar/MessageBar.html'>Fabric JS</a>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

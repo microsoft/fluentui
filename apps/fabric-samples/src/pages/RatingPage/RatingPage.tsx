@@ -6,20 +6,11 @@ import {
 } from '../../components/demoComponents';
 
 import { RatingBasicExample } from './examples/Rating.Basic.Example';
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const RatingBasicExampleCode = require('./examples/Rating.Basic.Example.tsx') as string;
 
 export class RatingPage extends React.Component<IComponentDemoPageProps, any> {
-  private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'Slider');
-  }
-
   public render() {
     return (
       <ComponentPage
@@ -57,7 +48,6 @@ export class RatingPage extends React.Component<IComponentDemoPageProps, any> {
             </ul>
           </div>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

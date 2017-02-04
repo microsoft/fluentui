@@ -2,9 +2,9 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-import { createArray } from '../../../../Utilities';
-import { FocusZone } from '../../../../FocusZone';
-import { Image } from '../../../../Image';
+import { createArray } from 'office-ui-fabric-react/lib/Utilities';
+import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
+import { Image } from 'office-ui-fabric-react/lib/Image';
 import './FocusZone.Photos.Example.scss';
 
 const PHOTOS = createArray(25, () => {

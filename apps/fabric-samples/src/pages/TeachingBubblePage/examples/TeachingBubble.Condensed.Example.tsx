@@ -1,8 +1,8 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { Button } from '../../../../Button';
-import { TeachingBubble } from '../../../../TeachingBubble';
+import { Button } from 'office-ui-fabric-react/lib/Button';
+import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 
 export interface ITeachingBubbleCondensedExampleState {
   isTeachingBubbleVisible?: boolean;

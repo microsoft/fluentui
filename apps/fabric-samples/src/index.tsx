@@ -4,13 +4,13 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { App } from './components/App/App';
 import { AppState } from './components/App/AppState';
-import { Router, Route } from '../utilities/router/index';
+import { Router, Route } from 'office-ui-fabric-react/lib/utilities/router/index';
 import { GettingStartedPage } from './pages/GettingStartedPage/GettingStartedPage';
-import { setBaseUrl } from '../Utilities';
-import { Fabric } from '../Fabric';
+import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import * as Debugging from './utilities/debugging';
 
-import './app.scss';
+import './index.scss';
 import './ColorStyles.scss';
 
 setBaseUrl('./dist/');

@@ -12,8 +12,6 @@ import { ImageContainExample } from './examples/Image.Contain.Example';
 import { ImageCoverExample } from './examples/Image.Cover.Example';
 import { ImageNoneExample } from './examples/Image.None.Example';
 import { ImageMaximizeFrameExample } from './examples/Image.MaximizeFrame.Example';
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const ImageDefaultExampleCode = require('./examples/Image.Default.Example.tsx') as string;
@@ -24,13 +22,6 @@ const ImageNoneExampleCode = require('./examples/Image.None.Example.tsx') as str
 const ImageMaximizeFrameExampleCode = require('./examples/Image.MaximizeFrame.Example.tsx') as string;
 
 export class ImagePage extends React.Component<IComponentDemoPageProps, any> {
-  private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'Image');
-  }
-
   public render() {
     return (
       <ComponentPage
@@ -66,7 +57,6 @@ export class ImagePage extends React.Component<IComponentDemoPageProps, any> {
             Images render an image. The borders have been added to these examples in order to help visualize empty space in the image frame.
           </div>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

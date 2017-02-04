@@ -7,21 +7,12 @@ import {
 
 import { TextFieldBasicExample } from './examples/TextField.Basic.Example';
 import { TextFieldErrorMessageExample } from './examples/TextField.ErrorMessage.Example';
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const TextFieldBasicExampleCode = require('./examples/TextField.Basic.Example.tsx') as string;
 const TextFieldErrorMessageExampleCode = require('./examples/TextField.ErrorMessage.Example.tsx') as string;
 
 export class TextFieldPage extends React.Component<IComponentDemoPageProps, any> {
-  private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'TextField');
-  }
-
   public render() {
     return (
       <ComponentPage
@@ -82,7 +73,6 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, any>
         related={
           <a href='https://dev.office.com/fabric-js/Components/TextField/TextField.html'>Fabric JS</a>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

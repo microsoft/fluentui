@@ -1,13 +1,13 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { Link } from '../../../../Link';
-import { TextField } from '../../../../TextField';
+import { Link } from 'office-ui-fabric-react/lib/Link';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import {
   DetailsList,
   Selection
-} from '../../../../DetailsList';
-import { MarqueeSelection } from '../../../../MarqueeSelection';
+} from 'office-ui-fabric-react/lib/DetailsList';
+import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { createListItems } from '../../../utilities/data';
 
 let _items: any[];

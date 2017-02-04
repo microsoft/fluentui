@@ -6,20 +6,11 @@ import {
 } from '../../components/demoComponents';
 
 import { CheckboxBasicExample } from './examples/Checkbox.Basic.Example';
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const CheckboxBasicExampleCode = require('./examples/Checkbox.Basic.Example.tsx') as string;
 
 export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> {
-  private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'Checkbox');
-  }
-
   public render() {
     return (
       <ComponentPage
@@ -78,7 +69,6 @@ export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> 
         related={
           <a href='https://dev.office.com/fabric-js/Components/CheckBox/CheckBox.html'>Fabric JS</a>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

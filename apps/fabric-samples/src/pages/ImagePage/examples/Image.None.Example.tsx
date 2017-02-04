@@ -3,8 +3,8 @@ import {
   Image,
   IImageProps,
   ImageFit
-} from '../../../../Image';
-import { Label } from '../../../../Label';
+} from 'office-ui-fabric-react/lib/Image';
+import { Label } from 'office-ui-fabric-react/lib/Label';
 
 export class ImageNoneExample extends React.Component<any, any> {
   public render() {

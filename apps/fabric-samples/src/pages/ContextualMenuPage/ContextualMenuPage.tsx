@@ -11,8 +11,6 @@ import { ContextualMenuDirectionalExample } from './examples/ContextualMenu.Dire
 import { ContextualMenuCustomizationExample } from './examples/ContextualMenu.Customization.Example';
 import { ContextualMenuHeaderExample } from './examples/ContextualMenu.Header.Example';
 
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const ContextualMenuBasicExampleCode = require('./examples/ContextualMenu.Basic.Example.tsx') as string;
@@ -22,13 +20,6 @@ const ContextualMenuCustomizationExampleCode = require('./examples/ContextualMen
 const ContextualMenuHeaderExampleCode = require('./examples/ContextualMenu.Header.Example.tsx') as string;
 
 export class ContextualMenuPage extends React.Component<IComponentDemoPageProps, any> {
-  private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'ContextualMenu');
-  }
-
   public render() {
     return (
       <ComponentPage
@@ -98,7 +89,6 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
         related={
           <a href='https://dev.office.com/fabric-js/Components/ContextualMenu/ContextualMenu.html'>Fabric JS</a>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

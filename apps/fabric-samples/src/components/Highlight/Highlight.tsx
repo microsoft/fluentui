@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as hljs from 'highlight.js/lib/highlight';
 import * as javascript from 'highlight.js/lib/languages/javascript';
-import { BaseComponent } from '../../../Utilities';
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 
 hljs.registerLanguage('javascript', javascript);
 

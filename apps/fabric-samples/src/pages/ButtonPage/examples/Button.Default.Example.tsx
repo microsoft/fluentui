@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from '../../../../Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { IButtonProps } from './IButtonProps';
 
 export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {

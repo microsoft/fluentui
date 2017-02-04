@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {
   IFacepilePersona
-} from '../../../../Facepile';
-import { PersonaInitialsColor } from '../../../../Persona';
+} from 'office-ui-fabric-react/lib/Facepile';
+import { PersonaInitialsColor } from 'office-ui-fabric-react/lib/Persona';
 
 export const facepilePersonas: IFacepilePersona[] = [
   {

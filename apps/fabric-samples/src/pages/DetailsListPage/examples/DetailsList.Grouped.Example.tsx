@@ -1,9 +1,9 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { Button } from '../../../../Button';
-import { Fabric } from '../../../../Fabric';
-import { DetailsList } from '../../../../DetailsList';
+import { Button } from 'office-ui-fabric-react/lib/Button';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { DetailsList } from 'office-ui-fabric-react/lib/DetailsList';
 
 let _columns = [
   {

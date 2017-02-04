@@ -3,8 +3,8 @@ import {
   Persona,
   PersonaSize,
   PersonaPresence
-} from '../../../../Persona';
-import { Checkbox } from '../../../../Checkbox';
+} from 'office-ui-fabric-react/lib/Persona';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 
 const examplePersona = {
   imageUrl: './images/persona-female.png',

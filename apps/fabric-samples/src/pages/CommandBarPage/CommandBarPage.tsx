@@ -8,21 +8,12 @@ import { items, farItems } from './examples/data';
 
 import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
 import { CommandBarNonFocusableItemsExample } from './examples/CommandBar.NonFocusable.Example';
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const CommandBarBasicExampleCode = require('./examples/CommandBar.Basic.Example.tsx') as string;
 const CommandBarNoFocusableItemsExampleCode = require('./examples/CommandBar.NonFocusable.Example.tsx') as string;
 
 export class CommandBarPage extends React.Component<IComponentDemoPageProps, any> {
-  private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'CommandBar');
-  }
-
   public render() {
     let cmdBarParamsTextAndIcons: any = { items: items, farItems: farItems };
 
@@ -85,7 +76,6 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, any
         related={
           <a href='https://dev.office.com/fabric-js/Components/CommandBar/CommandBar.html'>Fabric JS</a>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Label } from '../../../../Label';
+import { Label } from 'office-ui-fabric-react/lib/Label';
 import {
   Pivot,
   PivotItem,
   PivotLinkSize
-} from '../../../../Pivot';
+} from 'office-ui-fabric-react/lib/Pivot';
 
 export class PivotLargeExample extends React.Component<any, any> {
   public render() {

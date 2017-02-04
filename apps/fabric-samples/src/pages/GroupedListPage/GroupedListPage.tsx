@@ -7,21 +7,12 @@ import {
 
 import { GroupedListBasicExample } from './examples/GroupedList.Basic.Example';
 import { GroupedListCustomExample } from './examples/GroupedList.Custom.Example';
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const GroupedListBasicExampleCode = require('./examples/GroupedList.Basic.Example.tsx') as string;
 const GroupedListCustomExampleCode = require('./examples/GroupedList.Custom.Example.tsx') as string;
 
 export class GroupedListPage extends React.Component<IComponentDemoPageProps, any> {
-  private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'GroupedList');
-  }
-
   public render() {
     return (
       <ComponentPage
@@ -43,7 +34,6 @@ export class GroupedListPage extends React.Component<IComponentDemoPageProps, an
         overview={
           <p>Allows you to render a set of items as multiple lists with various grouping properties.</p>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

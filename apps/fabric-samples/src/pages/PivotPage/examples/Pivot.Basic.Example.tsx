@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Label } from '../../../../Label';
-import { Pivot, PivotItem } from '../../../../Pivot';
+import { Label } from 'office-ui-fabric-react/lib/Label';
+import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 
 export class PivotBasicExample extends React.Component<any, any> {
   public render() {

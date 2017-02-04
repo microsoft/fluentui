@@ -19,9 +19,9 @@ export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps
     let properties: IProperty[] = [];
 
     if (componentPath) {
-      src = require('../../../' + componentPath + componentName + '.Props.ts');
+      src = ''; // require('../../../' + componentPath + componentName + '.Props.ts');
     } else {
-      src = require('../../../components/' + componentName + '/' + componentName + '.Props.ts');
+      src = ''; // require('../../../components/' + componentName + '/' + componentName + '.Props.ts');
     }
 
     if (props.renderOnly) {
@@ -41,7 +41,7 @@ export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps
     return this.state.properties.map((item: IProperty) =>
       (<PropertiesTable
         key={ item.propertyName }
-        title={ item.name === ('I' + this.props.componentName) ? (this.props.componentName + ' class') : item.propertyName}
+        title={ item.name === ('I' + this.props.componentName) ? (this.props.componentName + ' class') : item.propertyName }
         properties={ item.property }
         renderAsEnum={ item.propertyType === PropertyType.enum } />));
   }

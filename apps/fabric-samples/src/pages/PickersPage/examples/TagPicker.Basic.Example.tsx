@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   TagPicker
-} from '../../../../components/pickers/TagPicker/TagPicker';
+} from 'office-ui-fabric-react/lib/components/pickers/TagPicker/TagPicker';
 
 let _testTags = [
   'black',

@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { CommandBar } from '../../../../CommandBar';
-import { Check } from '../../../../Check';
-import { IContextualMenuItem } from '../../../../ContextualMenu';
-import { MarqueeSelection } from '../../../../MarqueeSelection';
+import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
+import { Check } from 'office-ui-fabric-react/lib/Check';
+import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import {
   IObjectWithKey,
   ISelection,
   Selection,
   SelectionMode,
   SelectionZone
-} from '../../../../Selection';
+} from 'office-ui-fabric-react/lib/Selection';
 import { createListItems } from '../../../utilities/data';
 
 import './Selection.Example.scss';

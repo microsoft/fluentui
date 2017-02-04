@@ -5,8 +5,6 @@ import {
   ComponentPage
 } from '../../components/demoComponents';
 
-import { AppState } from '../../components/App/AppState';
-import { getPageRouteFromState } from '../../utilities/pageroute';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 import { OverlayDarkExample } from './examples/Overlay.Dark.Example';
 import { OverlayLightExample } from './examples/Overlay.Light.Example';
@@ -15,13 +13,6 @@ const OverlayLightExampleCode = require('./examples/Overlay.Light.Example.tsx') 
 const OverlayDarkExampleCode = require('./examples/Overlay.Dark.Example.tsx') as string;
 
 export class OverlayPage extends React.Component<IComponentDemoPageProps, any> {
-  private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'Overlay');
-  }
-
   public render() {
     return (
       <ComponentPage
@@ -68,7 +59,6 @@ export class OverlayPage extends React.Component<IComponentDemoPageProps, any> {
         related={
           <a href='https://dev.office.com/fabric-js/Components/Overlay/Overlay.html'>Fabric JS</a>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

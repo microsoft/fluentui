@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Button } from '../../../../Button';
-import { ContextualMenu, DirectionalHint } from '../../../../ContextualMenu';
-import { getRTL } from '../../../../Utilities';
+import { Button } from 'office-ui-fabric-react/lib/Button';
+import { ContextualMenu, DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuHeaderExample extends React.Component<any, any> {

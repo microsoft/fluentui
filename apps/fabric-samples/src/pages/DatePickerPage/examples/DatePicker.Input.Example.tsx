@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Button } from '../../../../Button';
-import { DatePicker, DayOfWeek } from '../../../../DatePicker';
+import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DatePicker, DayOfWeek } from 'office-ui-fabric-react/lib/DatePicker';
 
 const DayPickerStrings = {
   months: [

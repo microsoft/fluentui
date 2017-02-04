@@ -1,13 +1,13 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { BaseComponent } from '../../../../Utilities';
-import { Button } from '../../../../Button';
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
+import { Button } from 'office-ui-fabric-react/lib/Button';
 import {
   TooltipHost,
   TooltipDelay,
   DirectionalHint
-} from '../../../../Tooltip';
+} from 'office-ui-fabric-react/lib/Tooltip';
 
 export class TooltipBottomExample extends BaseComponent<any, any> {
 

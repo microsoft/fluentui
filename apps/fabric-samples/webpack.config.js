@@ -5,10 +5,11 @@ let build = require('@microsoft/web-library-build');
 let buildConfig = build.getConfig();
 let webpackTaskResources = build.webpack.resources;
 let webpack = webpackTaskResources.webpack;
-
 let path = require('path');
 let SplitByPathPlugin = require('webpack-split-by-path');
 let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+const BUNDLE_NAME = 'fabric-samples';
 
 // Create an array of configs, prepopulated with a debug (non-minified) build.
 let configs = [
@@ -27,14 +28,14 @@ function createConfig(isProduction) {
     context: path.join(__dirname, buildConfig.libFolder),
 
     entry: {
-      'demo-app': './app.js'
+      [BUNDLE_NAME]: './index.js'
     },
 
     output: {
       path: path.join(__dirname, buildConfig.distFolder),
       publicPath: '/dist/',
       filename: `[name]${minFileNamePart}.js`,
-      chunkFilename: `demo-app-split-[name]${minFileNamePart}.js`
+      chunkFilename: `${BUNDLE_NAME}-[name]${minFileNamePart}.js`
     },
 
     devtool: 'source-map',
@@ -67,7 +68,7 @@ function createConfig(isProduction) {
     plugins: [
       new BundleAnalyzerPlugin({
         analyzerMode: 'static',
-        reportFilename: 'demo-app.stats.html',
+        reportFilename: `${BUNDLE_NAME}.stats.html`,
         openAnalyzer: false
       })
     ]

@@ -5,18 +5,18 @@ import {
   BaseComponent,
   assign,
   autobind
-} from '../../../../Utilities';
-import { Dropdown, IDropdownOption } from '../../../../Dropdown';
-import { Toggle } from '../../../../Toggle';
-import { IPersonaProps } from '../../../../Persona';
-import { IContextualMenuItem } from '../../../../ContextualMenu';
+} from 'office-ui-fabric-react/lib/Utilities';
+import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import {
   CompactPeoplePicker,
   IBasePickerSuggestionsProps,
   ListPeoplePicker,
   NormalPeoplePicker
-} from '../../../../Pickers';
-import { IPersonaWithMenu } from '../../../../components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
+} from 'office-ui-fabric-react/lib/Pickers';
+import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
 import { people } from './PeoplePickerExampleData';
 import './PeoplePicker.Types.Example.scss';
 

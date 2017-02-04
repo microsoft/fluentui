@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Button } from '../../../../Button';
-import { Callout, DirectionalHint } from '../../../../Callout';
+import { Button } from 'office-ui-fabric-react/lib/Button';
+import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import {
   Calendar,
   DayOfWeek
-} from '../../../../Calendar';
+} from 'office-ui-fabric-react/lib/Calendar';
 
 const DayPickerStrings = {
   months: [

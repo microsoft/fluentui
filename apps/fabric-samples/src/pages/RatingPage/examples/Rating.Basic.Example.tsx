@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { autobind } from '../../../../Utilities';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import {
   Rating,
   RatingSize
-} from '../../../../Rating';
+} from 'office-ui-fabric-react/lib/Rating';
 
 import './Rating.Basic.Example.scss';
 

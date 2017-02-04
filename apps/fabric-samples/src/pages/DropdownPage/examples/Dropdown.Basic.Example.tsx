@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dropdown } from '../../../../Dropdown';
+import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
 import './Dropdown.Basic.Example.scss';
 
 export class DropdownBasicExample extends React.Component<any, any> {

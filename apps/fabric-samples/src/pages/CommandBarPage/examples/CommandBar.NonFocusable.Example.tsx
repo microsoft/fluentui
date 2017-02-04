@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CommandBar } from '../../../../CommandBar';
+import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { itemsNonFocusable, farItemsNonFocusable } from './data-nonFocusable';
 
 export class CommandBarNonFocusableItemsExample extends React.Component<any, any> {

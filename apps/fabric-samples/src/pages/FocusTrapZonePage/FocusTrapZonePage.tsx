@@ -1,15 +1,13 @@
 import * as React from 'react';
 import {
   Link
-} from '../../../Link';
+} from 'office-ui-fabric-react/lib/Link';
 import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
 } from '../../components/demoComponents';
 
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 import FocusTrapZoneBoxExample from './examples/FocusTrapZone.Box.Example';
@@ -22,13 +20,6 @@ import FocusTrapZoneBoxClickExample from './examples/FocusTrapZone.Box.Click.Exa
 let FocusTrapZoneBoxClickExampleCode = require('./examples/FocusTrapZone.Box.Click.Example.tsx') as string;
 
 export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, any> {
-  private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'FocusTrapZone');
-  }
-
   public render() {
     return (
       <ComponentPage
@@ -58,7 +49,6 @@ export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, 
             <span> is used to trap the focus in any html element. Pressing tab will circle focus within the inner focusable elements of the FocusTrapZone.</span>
           </div>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

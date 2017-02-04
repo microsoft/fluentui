@@ -1,10 +1,11 @@
 import * as React from 'react';
 import {
-  css
-} from '../../../Utilities';
+  css,
+  getDocument
+} from 'office-ui-fabric-react/lib/Utilities';
 import {
   Link
-} from '../../../Link';
+} from 'office-ui-fabric-react/lib/Link';
 import './ComponentPage.scss';
 
 export interface IComponentPageProps {
@@ -17,7 +18,6 @@ export interface IComponentPageProps {
   donts?: JSX.Element;
   overview: JSX.Element;
   related?: JSX.Element;
-  route: string;
   isHeaderVisible?: boolean;
   className?: string;
 }
@@ -27,8 +27,13 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     isHeaderVisible: true
   };
 
+  private _baseUrl: string;
+
   constructor(props: IComponentPageProps) {
     super(props);
+
+    let doc = getDocument();
+    this._baseUrl = doc ? document.location.href : '';
   }
 
   public render() {
@@ -81,14 +86,13 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     let {
       bestPractices,
       dos,
-      donts,
-      route
+      donts
     } = this.props;
 
     if (bestPractices && dos && donts) {
       links.push(
         <div className='ComponentPage-navLink' key='nav-link'>
-          <Link href={ route + '#Best Practices' }>Best Practices</Link>
+          <Link href={ this._baseUrl + '#Best Practices' }>Best Practices</Link>
         </div>
       );
     }
@@ -96,14 +100,14 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     return (
       <div className='ComponentPage-navigation'>
         <div className='ComponentPage-navLink'>
-          <Link href={ route + '#Overview' }>Overview</Link>
+          <Link href={ this._baseUrl + '#Overview' }>Overview</Link>
         </div>
         { links }
         <div className='ComponentPage-navLink'>
-          <Link href={ route + '#Variants' }>Variants</Link>
+          <Link href={ this._baseUrl + '#Variants' }>Variants</Link>
         </div>
         <div className='ComponentPage-navLink'>
-          <Link href={ route + '#Implementation' }>Implementation</Link>
+          <Link href={ this._baseUrl + '#Implementation' }>Implementation</Link>
         </div>
       </div>
     );

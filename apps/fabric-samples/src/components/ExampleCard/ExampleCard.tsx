@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { css } from '../../../Utilities';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 import './ExampleCard.scss';
-import { Button, ButtonType } from '../../../Button';
+import { Button, ButtonType } from 'office-ui-fabric-react/lib/Button';
 import { Highlight } from '../Highlight/Highlight';
 
 export interface IExampleCardProps {

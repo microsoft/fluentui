@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IconButton, IButtonProps } from '../../../../Button';
-import { Label } from '../../../../Label';
+import { IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { Label } from 'office-ui-fabric-react/lib/Label';
 
 export class ButtonIconExample extends React.Component<IButtonProps, {}> {
   public constructor() {

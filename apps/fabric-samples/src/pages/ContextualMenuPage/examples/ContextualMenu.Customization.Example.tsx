@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ContextualMenu, DirectionalHint } from '../../../../ContextualMenu';
-import { Button, ButtonType } from '../../../../Button';
-import { FocusZoneDirection } from '../../../../FocusZone';
+import { ContextualMenu, DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { Button, ButtonType } from 'office-ui-fabric-react/lib/Button';
+import { FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import './ContextualMenuExample.scss';
 
 export interface IContextualMenuMultiselectExampleState {

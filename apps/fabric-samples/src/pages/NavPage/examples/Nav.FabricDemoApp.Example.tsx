@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AppState, ExampleStatus } from '../../../components/App/AppState';
-import { Nav } from '../../../../Nav';
+import { Nav } from 'office-ui-fabric-react/lib/Nav';
 
 export class NavFabricDemoAppExample extends React.Component<any, any> {
   public render() {

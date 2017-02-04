@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {
   css
-} from '../../../Utilities';
-import { Fabric } from '../../../Fabric';
-import { Panel, PanelType } from '../../../Panel';
-import { Nav } from '../../../Nav';
-import { withResponsiveMode, ResponsiveMode } from '../../../utilities/decorators/withResponsiveMode';
+} from 'office-ui-fabric-react/lib/Utilities';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
+import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
+import { Nav } from 'office-ui-fabric-react/lib/Nav';
+import { withResponsiveMode, ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 
 import {
   Header

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {
   PrimaryButton
-} from '../../../../Button';
+} from 'office-ui-fabric-react/lib/Button';
 import {
   Label
-} from '../../../../Label';
+} from 'office-ui-fabric-react/lib/Label';
 
 import { IButtonProps } from './IButtonProps';
 

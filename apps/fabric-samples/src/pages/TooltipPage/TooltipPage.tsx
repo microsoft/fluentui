@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Link } from '../../../Link';
-import { LayerHost } from '../../../Layer';
+import { Link } from 'office-ui-fabric-react/lib/Link';
+import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import {
   ExampleCard,
   PropertiesTableSet,
@@ -9,8 +9,6 @@ import {
 
 import { TooltipBottomExample } from './examples/Tooltip.Bottom.Example';
 import { TooltipBasicExample } from './examples/Tooltip.Basic.Example';
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 
 import './TooltipPage.scss';
 
@@ -18,13 +16,6 @@ const TooltipBasicExampleCode = require('./examples/Tooltip.Basic.Example.tsx') 
 const TooltipBottomExampleCode = require('./examples/Tooltip.Bottom.Example.tsx') as string;
 
 export class TooltipPage extends React.Component<any, any> {
-  private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'Tooltip');
-  }
-
   public render() {
     return (
       <ComponentPage
@@ -50,8 +41,7 @@ export class TooltipPage extends React.Component<any, any> {
             <span> supplement content associated with a specific UI component.</span>
           </div>
         }
-        route={ this._url }>
-      </ComponentPage>
+      />
     );
   }
 }

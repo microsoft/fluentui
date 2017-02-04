@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Link } from '../../../Link';
-import { LayerHost } from '../../../Layer';
+import { Link } from 'office-ui-fabric-react/lib/Link';
+import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import {
   ExampleCard,
   PropertiesTableSet,
@@ -10,21 +10,12 @@ import {
 import { TeachingBubbleBasicExample } from './examples/TeachingBubble.Basic.Example';
 import { TeachingBubbleCondensedExample } from './examples/TeachingBubble.Condensed.Example';
 import { TeachingBubbleIllustrationExample } from './examples/TeachingBubble.Illustration.Example';
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 
 const TeachingBubbleBasicExampleCode = require('./examples/TeachingBubble.Basic.Example.tsx') as string;
 const TeachingBubbleCondensedExampleCode = require('./examples/TeachingBubble.Condensed.Example.tsx') as string;
 const TeachingBubbleIllustrationExampleCode = require('./examples/TeachingBubble.Basic.Example.tsx') as string;
 
 export class TeachingBubblePage extends React.Component<any, any> {
-  private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'TeachingBubble');
-  }
-
   public render() {
     return (
       <ComponentPage
@@ -52,8 +43,7 @@ export class TeachingBubblePage extends React.Component<any, any> {
             <span> allow the user to display important hints on their web pages with a callout box.</span>
           </div>
         }
-        route={ this._url }>
-      </ComponentPage>
+      />
     );
   }
 }

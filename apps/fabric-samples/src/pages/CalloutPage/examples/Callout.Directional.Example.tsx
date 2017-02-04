@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Button } from '../../../../Button';
-import { Callout, DirectionalHint } from '../../../../Callout';
-import { Dropdown, IDropdownOption } from '../../../../Dropdown';
-import { Checkbox } from '../../../../Checkbox';
-import { Slider } from '../../../../Slider';
-import { autobind } from '../../../../Utilities';
+import { Button } from 'office-ui-fabric-react/lib/Button';
+import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Slider } from 'office-ui-fabric-react/lib/Slider';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import './CalloutExample.scss';
 
 export interface ICalloutDirectionalExampleState {

@@ -1,6 +1,6 @@
 import 'es6-promise';
 import * as React from 'react';
-import { TextField } from '../../../../TextField';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { NumberTextField } from './NumberTextField';
 
 export class TextFieldErrorMessageExample extends React.Component<{}, {}> {

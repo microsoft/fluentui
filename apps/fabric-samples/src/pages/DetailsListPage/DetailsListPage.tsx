@@ -1,13 +1,11 @@
 import * as React from 'react';
-import { Link } from '../../../Link';
+import { Link } from 'office-ui-fabric-react/lib/Link';
 import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
 } from '../../components/demoComponents';
 
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 import { DetailsListBasicExample } from './examples/DetailsList.Basic.Example';
@@ -29,13 +27,6 @@ import { DetailsListGroupedExample } from './examples/DetailsList.Grouped.Exampl
 const DetailsListGroupedExampleCode = require('./examples/DetailsList.Grouped.Example.tsx') as string;
 
 export class DetailsListPage extends React.Component<IComponentDemoPageProps, any> {
-  private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'DetailsList');
-  }
-
   public render() {
     return (
       <ComponentPage
@@ -101,7 +92,6 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, an
             </ul>
           </div>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

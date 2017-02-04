@@ -2,9 +2,9 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-import { IImageProps } from '../../../../Image';
-import { Button, ButtonType, IButtonProps } from '../../../../Button';
-import { TeachingBubble } from '../../../../TeachingBubble';
+import { IImageProps } from 'office-ui-fabric-react/lib/Image';
+import { Button, ButtonType, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 
 export interface ITeachingBubbleIllustrationExampleState {
   isTeachingBubbleVisible?: boolean;

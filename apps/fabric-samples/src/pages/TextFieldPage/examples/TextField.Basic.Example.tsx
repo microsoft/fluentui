@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { TextField } from '../../../../TextField';
-import { autobind } from '../../../../Utilities';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 export class TextFieldBasicExample extends React.Component<any, any> {
   public render() {

@@ -1,9 +1,9 @@
 {
-  "name": "@uifabric/samples",
+  "name": "fabric-samples",
   "version": "1.5.2",
   "description": "Samples for office-ui-fabric-react",
-  "main": "lib/app.js",
-  "typings": "lib/app.d.ts",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"

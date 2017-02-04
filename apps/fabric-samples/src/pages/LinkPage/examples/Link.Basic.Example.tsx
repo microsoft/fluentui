@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from '../../../../Link';
+import { Link } from 'office-ui-fabric-react/lib/Link';
 
 export class LinkBasicExample extends React.Component<any, any> {
   public render() {

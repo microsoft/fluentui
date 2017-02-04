@@ -14,8 +14,6 @@ import { PanelLargeFixedExample } from './examples/Panel.LargeFixed.Example';
 import { PanelExtraLargeExample } from './examples/Panel.ExtraLarge.Example';
 import { PanelLightDismissExample } from './examples/Panel.LightDismiss.Example';
 import { PanelNonModalExample } from './examples/Panel.NonModal.Example';
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const PanelSmallRightExampleCode = require('./examples/Panel.SmallRight.Example.tsx') as string;
@@ -29,13 +27,6 @@ const PanelLightDismissExampleCode = require('./examples/Panel.LightDismiss.Exam
 const PanelNonModalExampleCode = require('./examples/Panel.NonModal.Example.tsx') as string;
 
 export class PanelPage extends React.Component<IComponentDemoPageProps, any> {
-  private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'Panel');
-  }
-
   public render() {
     return (
       <ComponentPage
@@ -114,7 +105,6 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, any> {
         related={
           <a href='https://dev.office.com/fabric-js/Components/Panel/Panel.html'>Fabric JS</a>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

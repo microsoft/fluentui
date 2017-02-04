@@ -3,9 +3,9 @@ import {
   IFacepileProps,
   Facepile,
   OverflowButtonType,
-} from '../../../../Facepile';
-import { Dropdown } from '../../../../Dropdown';
-import { Slider } from '../../../../Slider';
+} from 'office-ui-fabric-react/lib/Facepile';
+import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
+import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { facepilePersonas } from './FacepileExampleData';
 import './Facepile.Examples.scss';
 

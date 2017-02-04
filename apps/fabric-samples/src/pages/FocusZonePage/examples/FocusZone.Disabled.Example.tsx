@@ -2,9 +2,9 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-import { Button } from '../../../../Button';
-import { FocusZone, FocusZoneDirection } from '../../../../FocusZone';
-import { TextField } from '../../../../TextField';
+import { Button } from 'office-ui-fabric-react/lib/Button';
+import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import './FocusZone.Disabled.Example.scss';
 
 export const FocusZoneDisabledExample = () => (

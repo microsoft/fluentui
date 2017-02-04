@@ -2,11 +2,11 @@ import * as React from 'react';
 import {
   css,
   getRTL
-} from '../../../../Utilities';
-import { FocusZone, FocusZoneDirection } from '../../../../FocusZone';
-import { TextField } from '../../../../TextField';
-import { Image, ImageFit } from '../../../../Image';
-import { List } from '../../../../List';
+} from 'office-ui-fabric-react/lib/Utilities';
+import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
+import { List } from 'office-ui-fabric-react/lib/List';
 import './List.Basic.Example.scss';
 
 export interface IListBasicExampleProps {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   Checkbox
-} from '../../../../Checkbox';
+} from 'office-ui-fabric-react/lib/Checkbox';
 
 export interface ICheckboxBasicExampleState {
   isChecked: boolean;

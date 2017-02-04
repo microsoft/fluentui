@@ -2,17 +2,17 @@ import * as React from 'react';
 import {
   GroupedList,
   IGroup
-} from '../../../../components/GroupedList/index';
-import { IColumn } from '../../../../DetailsList';
-import { DetailsRow } from '../../../../components/DetailsList/DetailsRow';
+} from 'office-ui-fabric-react/lib/components/GroupedList/index';
+import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsRow } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsRow';
 import {
   FocusZone
-} from '../../../../FocusZone';
+} from 'office-ui-fabric-react/lib/FocusZone';
 import {
   Selection,
   SelectionMode,
   SelectionZone
-} from '../../../../utilities/selection/index';
+} from 'office-ui-fabric-react/lib/utilities/selection/index';
 
 import {
   createListItems,

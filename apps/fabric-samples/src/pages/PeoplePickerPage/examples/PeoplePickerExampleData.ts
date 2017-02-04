@@ -1,4 +1,4 @@
-import { IPersonaProps } from '../../../../Persona';
+import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 
 export const people: IPersonaProps[] = [
   {

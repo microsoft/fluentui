@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Button } from '../../../../Button';
-import { Overlay } from '../../../../Overlay';
+import { Button } from 'office-ui-fabric-react/lib/Button';
+import { Overlay } from 'office-ui-fabric-react/lib/Overlay';
 
 import './Overlay.Example.scss';
 

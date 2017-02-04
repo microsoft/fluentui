@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Slider } from '../../../../Slider';
+import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import './Slider.Basic.Example.scss';
 
 export class SliderBasicExample extends React.Component<any, any> {

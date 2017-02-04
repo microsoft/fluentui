@@ -5,9 +5,9 @@ import * as React from 'react';
 import {
   css,
   createArray
-} from '../../../../Utilities';
-import { Checkbox } from '../../../../Checkbox';
-import { MarqueeSelection, Selection } from '../../../../MarqueeSelection';
+} from 'office-ui-fabric-react/lib/Utilities';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { MarqueeSelection, Selection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import './MarqueeSelection.Basic.Example.scss';
 
 const PHOTOS = createArray(250, () => {

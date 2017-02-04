@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Label } from '../../../../Label';
+import { Label } from 'office-ui-fabric-react/lib/Label';
 import {
   PivotItem,
   Pivot
-} from '../../../../Pivot';
+} from 'office-ui-fabric-react/lib/Pivot';
 
 export class PivotIconCountExample extends React.Component<any, any> {
   public render() {

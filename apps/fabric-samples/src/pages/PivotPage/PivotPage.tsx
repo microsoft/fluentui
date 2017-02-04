@@ -14,8 +14,6 @@ import { PivotFabricExample } from './examples/Pivot.Fabric.Example';
 import { PivotOnChangeExample } from './examples/Pivot.OnChange.Example';
 import { PivotRemoveExample } from './examples/Pivot.Remove.Example';
 import { PivotOverrideExample } from './examples/Pivot.Override.Example';
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const PivotRemoveExampleCode = require('./examples/Pivot.Remove.Example.tsx') as string;
@@ -29,13 +27,6 @@ const PivotIconCountExampleCode = require('./examples/Pivot.IconCount.Example.ts
 const PivotOverrideExampleCode = require('./examples/Pivot.Override.Example.tsx') as string;
 
 export class PivotPage extends React.Component<IComponentDemoPageProps, any> {
-  private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'Pivot');
-  }
-
   public render() {
     return (
       <ComponentPage
@@ -120,7 +111,6 @@ export class PivotPage extends React.Component<IComponentDemoPageProps, any> {
         related={
           <a href='https://dev.office.com/fabric-js/Components/Pivot/Pivot.html'>Fabric JS</a>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   DatePicker,
   DayOfWeek
-} from '../../../../DatePicker';
+} from 'office-ui-fabric-react/lib/DatePicker';
 
 const DayPickerStrings = {
   months: [

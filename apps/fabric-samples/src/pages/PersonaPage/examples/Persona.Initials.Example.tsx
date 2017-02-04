@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   Persona,
   PersonaInitialsColor,
-} from '../../../../Persona';
+} from 'office-ui-fabric-react/lib/Persona';
 
 const examplePersona = {
   secondaryText: 'Designer',

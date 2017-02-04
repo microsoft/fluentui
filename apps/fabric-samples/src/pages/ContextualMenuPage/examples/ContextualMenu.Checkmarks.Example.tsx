@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ContextualMenu, IContextualMenuItem, DirectionalHint } from '../../../../ContextualMenu';
-import { Button } from '../../../../Button';
+import { ContextualMenu, IContextualMenuItem, DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { Button } from 'office-ui-fabric-react/lib/Button';
 import './ContextualMenuExample.scss';
 
 export interface IContextualMenuMultiselectExampleState {

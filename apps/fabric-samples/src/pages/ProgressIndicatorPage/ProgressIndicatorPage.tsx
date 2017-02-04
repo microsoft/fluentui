@@ -5,20 +5,11 @@ import {
   ComponentPage
 } from '../../components/demoComponents';
 
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 import { ProgressIndicatorBasicExample } from './examples/ProgressIndicator.Basic.Example';
 const ProgressIndicatorBasicExampleCode = require('./examples/ProgressIndicator.Basic.Example.tsx') as string;
 
 export class ProgressIndicatorPage extends React.Component<IComponentDemoPageProps, any> {
-  private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'ProgressIndicator');
-  }
-
   public render() {
     return (
       <ComponentPage
@@ -86,7 +77,6 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
         related={
           <a href='https://dev.office.com/fabric-js/Components/ProgressIndicator/ProgressIndicator.html'>Fabric JS</a>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

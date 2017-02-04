@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Button } from '../../../../Button';
-import { Panel, PanelType } from '../../../../Panel';
+import { Button } from 'office-ui-fabric-react/lib/Button';
+import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 
 export class PanelSmallLeftExample extends React.Component<any, any> {
 

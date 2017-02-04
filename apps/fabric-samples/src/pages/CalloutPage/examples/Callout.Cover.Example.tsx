@@ -1,8 +1,8 @@
 import * as React from 'react';
 import './CalloutExample.scss';
-import { Button } from '../../../../Button';
-import { Callout, DirectionalHint } from '../../../../Callout';
-import { Dropdown, IDropdownOption } from '../../../../Dropdown';
+import { Button } from 'office-ui-fabric-react/lib/Button';
+import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 
 export interface ICalloutCoverExampleState {
   isCalloutVisible?: boolean;

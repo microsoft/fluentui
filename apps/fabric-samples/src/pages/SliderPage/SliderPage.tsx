@@ -6,20 +6,11 @@ import {
 } from '../../components/demoComponents';
 
 import { SliderBasicExample } from './examples/Slider.Basic.Example';
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const SliderBasicExampleCode = require('./examples/Slider.Basic.Example.tsx') as string;
 
 export class SliderPage extends React.Component<IComponentDemoPageProps, any> {
-  private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'Slider');
-  }
-
   public render() {
     return (
       <ComponentPage
@@ -67,7 +58,6 @@ export class SliderPage extends React.Component<IComponentDemoPageProps, any> {
             </ul>
           </div>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
