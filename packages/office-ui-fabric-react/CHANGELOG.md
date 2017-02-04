@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 03 Feb 2017 19:02:12 GMT and should not be manually modified.
+This log was last generated on Sat, 04 Feb 2017 00:27:49 GMT and should not be manually modified.
+
+## 1.5.1
+Sat, 04 Feb 2017 00:27:49 GMT
+
+### Patches
+
+- BaseButton: Resolving an issue where Buttons would not render children.
 
 ## 1.5.0
 Fri, 03 Feb 2017 19:02:12 GMT
