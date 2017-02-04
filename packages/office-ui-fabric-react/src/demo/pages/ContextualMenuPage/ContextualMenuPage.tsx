@@ -12,7 +12,6 @@ import { ContextualMenuCustomizationExample } from './examples/ContextualMenu.Cu
 import { ContextualMenuHeaderExample } from './examples/ContextualMenu.Header.Example';
 
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const ContextualMenuBasicExampleCode = require('./examples/ContextualMenu.Basic.Example.tsx') as string;
@@ -26,7 +25,6 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
 
   constructor() {
     super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'ContextualMenu');
   }
 
   public render() {

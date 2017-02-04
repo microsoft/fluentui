@@ -68,6 +68,7 @@ export const AppState: IAppState = {
           url: '#/styles/utilities',
           getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Styles/UtilitiesPage/UtilitiesPage').UtilitiesPage))
         }
+        
       ]
     },
     {
@@ -81,6 +82,7 @@ export const AppState: IAppState = {
           url: '#/components/breadcrumb',
           getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Components/BreadcrumbComponentPage').BreadcrumbComponentPage))
         },
+        /*
         {
           title: 'Button',
           url: '#/components/button',
@@ -286,8 +288,10 @@ export const AppState: IAppState = {
             }
           ]
         }
+  */      
       ]
     },
+    /*
     {
       title: 'Resources',
       url: '#/resources',
@@ -328,5 +332,6 @@ export const AppState: IAppState = {
       isHiddenFromMainNav: true,
       getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/Interstitials/FabricIOSPage').FabricIOSPageComponentPage))
     }
+    */
   ]
 };

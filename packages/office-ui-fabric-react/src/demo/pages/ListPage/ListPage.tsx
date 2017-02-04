@@ -17,7 +17,7 @@ const ListGridExampleCode = require('./examples/List.Grid.Example.tsx') as strin
 const ListScrollingExampleCode = require('./examples/List.Scrolling.Example.tsx') as string;
 
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
+
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 let _cachedItems;
@@ -27,7 +27,6 @@ export class ListPage extends React.Component<IComponentDemoPageProps, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'List');
 
     if (!_cachedItems) {
       _cachedItems = createListItems(5000);

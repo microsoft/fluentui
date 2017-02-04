@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
-  css
+  css,
+  getDocument
 } from '../../../Utilities';
 import {
   Link
@@ -17,18 +18,24 @@ export interface IComponentPageProps {
   donts?: JSX.Element;
   overview: JSX.Element;
   related?: JSX.Element;
-  route: string;
   isHeaderVisible?: boolean;
   className?: string;
+  route?: string;
 }
 
 export class ComponentPage extends React.Component<IComponentPageProps, {}> {
+  private _route: string;
+
   public static defaultProps = {
     isHeaderVisible: true
   };
 
   constructor(props: IComponentPageProps) {
     super(props);
+
+    let doc = getDocument();
+
+    this._route = doc ? doc.location.href : '';
   }
 
   public render() {
@@ -81,14 +88,13 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     let {
       bestPractices,
       dos,
-      donts,
-      route
+      donts
     } = this.props;
 
     if (bestPractices && dos && donts) {
       links.push(
         <div className='ComponentPage-navLink' key='nav-link'>
-          <Link href={ route + '#Best Practices' }>Best Practices</Link>
+          <Link href={ this._route + '#Best Practices' }>Best Practices</Link>
         </div>
       );
     }
@@ -96,14 +102,14 @@ export class ComponentPage extends React.Component<IComponentPageProps, {}> {
     return (
       <div className='ComponentPage-navigation'>
         <div className='ComponentPage-navLink'>
-          <Link href={ route + '#Overview' }>Overview</Link>
+          <Link href={ this._route + '#Overview' }>Overview</Link>
         </div>
         { links }
         <div className='ComponentPage-navLink'>
-          <Link href={ route + '#Variants' }>Variants</Link>
+          <Link href={ this._route + '#Variants' }>Variants</Link>
         </div>
         <div className='ComponentPage-navLink'>
-          <Link href={ route + '#Implementation' }>Implementation</Link>
+          <Link href={ this._route + '#Implementation' }>Implementation</Link>
         </div>
       </div>
     );

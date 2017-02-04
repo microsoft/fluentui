@@ -7,18 +7,13 @@ import {
 
 import { LinkBasicExample } from './examples/Link.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
+
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 let LinkBasicExampleCode = require('./examples/Link.Basic.Example.tsx') as string;
 
 export class LinkPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'Link');
-  }
 
   public render() {
     return (

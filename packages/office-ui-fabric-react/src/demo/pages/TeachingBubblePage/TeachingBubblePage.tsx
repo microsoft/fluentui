@@ -11,7 +11,7 @@ import { TeachingBubbleBasicExample } from './examples/TeachingBubble.Basic.Exam
 import { TeachingBubbleCondensedExample } from './examples/TeachingBubble.Condensed.Example';
 import { TeachingBubbleIllustrationExample } from './examples/TeachingBubble.Illustration.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
+
 
 const TeachingBubbleBasicExampleCode = require('./examples/TeachingBubble.Basic.Example.tsx') as string;
 const TeachingBubbleCondensedExampleCode = require('./examples/TeachingBubble.Condensed.Example.tsx') as string;
@@ -19,11 +19,6 @@ const TeachingBubbleIllustrationExampleCode = require('./examples/TeachingBubble
 
 export class TeachingBubblePage extends React.Component<any, any> {
   private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'TeachingBubble');
-  }
 
   public render() {
     return (

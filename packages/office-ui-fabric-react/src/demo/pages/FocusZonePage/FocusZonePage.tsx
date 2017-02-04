@@ -9,7 +9,6 @@ import { FocusZonePhotosExample } from './examples/FocusZone.Photos.Example';
 import { FocusZoneListExample } from './examples/FocusZone.List.Example';
 import { FocusZoneDisabledExample } from './examples/FocusZone.Disabled.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const FocusZonePhotosExampleCode = require('./examples/FocusZone.Photos.Example.tsx') as string;
@@ -18,11 +17,6 @@ const FocusZoneDisabledExampleCode = require('./examples/FocusZone.Disabled.Exam
 
 export class FocusZonePage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'FocusZone');
-  }
 
   public render() {
     return (
@@ -52,7 +46,6 @@ export class FocusZonePage extends React.Component<IComponentDemoPageProps, any>
             <p>Using a FocusZone is simple. Just wrap a bunch of content inside of a FocusZone, and arrows and tabbling will be handled for you! See examples below.</p>
           </div>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

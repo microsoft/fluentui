@@ -5,7 +5,7 @@ import {
   ComponentPage
 } from '../../components/demoComponents';
 
-import { AppState } from '../../components/App/AppState';
+
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 import { OverlayDarkExample } from './examples/Overlay.Dark.Example';
@@ -16,11 +16,6 @@ const OverlayDarkExampleCode = require('./examples/Overlay.Dark.Example.tsx') as
 
 export class OverlayPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'Overlay');
-  }
 
   public render() {
     return (

@@ -10,8 +10,6 @@ import { CalloutBasicExample } from './examples/Callout.Basic.Example';
 import { CalloutNestedExample } from './examples/Callout.Nested.Example';
 import { CalloutDirectionalExample } from './examples/Callout.Directional.Example';
 import { CalloutCoverExample } from './examples/Callout.Cover.Example';
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const CalloutBasicExampleCode = require('./examples/Callout.Basic.Example.tsx') as string;
@@ -24,7 +22,6 @@ export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
 
   constructor() {
     super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'Callout');
   }
 
   public render() {
@@ -97,7 +94,6 @@ export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
             </ul>
           </div>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

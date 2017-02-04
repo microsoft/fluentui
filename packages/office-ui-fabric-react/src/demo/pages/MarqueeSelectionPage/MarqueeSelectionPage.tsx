@@ -6,18 +6,13 @@ import {
 
 import { MarqueeSelectionBasicExample } from './examples/MarqueeSelection.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
+
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const MarqueeSelectionBasicExampleCode = require('./examples/MarqueeSelection.Basic.Example.tsx') as string;
 
 export class MarqueeSelectionPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'MarqueeSelection');
-  }
 
   public render() {
     return (

@@ -8,7 +8,7 @@ import {
 import { GroupedListBasicExample } from './examples/GroupedList.Basic.Example';
 import { GroupedListCustomExample } from './examples/GroupedList.Custom.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
+
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const GroupedListBasicExampleCode = require('./examples/GroupedList.Basic.Example.tsx') as string;
@@ -16,11 +16,6 @@ const GroupedListCustomExampleCode = require('./examples/GroupedList.Custom.Exam
 
 export class GroupedListPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'GroupedList');
-  }
 
   public render() {
     return (

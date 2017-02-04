@@ -9,7 +9,7 @@ import {
 import { PickerCustomResultExample } from './examples/Picker.CustomResult.Example';
 import { TagPickerBasicExample } from './examples/TagPicker.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
+
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const TagPickerExampleCode = require('./examples/TagPicker.Basic.Example.tsx') as string;
@@ -17,11 +17,6 @@ const PickerCustomResultExampleCode = require('./examples/Picker.CustomResult.Ex
 
 export class PickersPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'PeoplePicker');
-  }
 
   public render() {
     return (

@@ -9,7 +9,6 @@ import {
 } from '../../components/demoComponents';
 
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 import FocusTrapZoneBoxExample from './examples/FocusTrapZone.Box.Example';
@@ -23,11 +22,6 @@ let FocusTrapZoneBoxClickExampleCode = require('./examples/FocusTrapZone.Box.Cli
 
 export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'FocusTrapZone');
-  }
 
   public render() {
     return (
@@ -58,7 +52,6 @@ export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, 
             <span> is used to trap the focus in any html element. Pressing tab will circle focus within the inner focusable elements of the FocusTrapZone.</span>
           </div>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

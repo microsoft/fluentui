@@ -35,7 +35,7 @@ function createConfig(isProduction) {
       chunkFilename: `[name]${minFileNamePart}.js`
     },
 
-    devtool: 'source-map',
+    //devtool: 'source-map',
 
     devServer: {
       stats: 'none'
@@ -63,12 +63,13 @@ function createConfig(isProduction) {
     },
 
     plugins: [
-      new BundleAnalyzerPlugin({
+      /*
         analyzerMode: 'static',
         reportFilename: 'fabric-site.stats.html',
         openAnalyzer: false
       }),
       new BundleAnalyzerPlugin()
+      */
     ]
   };
 

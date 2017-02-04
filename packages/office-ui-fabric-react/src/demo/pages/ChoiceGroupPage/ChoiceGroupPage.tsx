@@ -7,7 +7,6 @@ import {
 
 import { ChoiceGroupBasicExample } from './examples/ChoiceGroup.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const ChoiceGroupBasicExampleCode = require('./examples/ChoiceGroup.Basic.Example.tsx') as string;
@@ -17,7 +16,6 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, an
 
   constructor() {
     super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'ChoiceGroup');
   }
 
   public render() {
@@ -75,7 +73,6 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, an
         related={
           <a href='https://dev.office.com/fabric-js/Components/ChoiceFieldGroup/ChoiceFieldGroup.html'>Fabric JS</a>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

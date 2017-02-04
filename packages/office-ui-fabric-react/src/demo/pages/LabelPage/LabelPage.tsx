@@ -7,18 +7,13 @@ import {
 
 import { LabelBasicExample } from './examples/Label.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
+
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const LabelBasicExampleCode = require('./examples/Label.Basic.Example.tsx') as string;
 
 export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'Label');
-  }
 
   public render() {
     return (

@@ -10,7 +10,7 @@ import { NavFabricDemoAppExample } from './examples/Nav.FabricDemoApp.Example';
 import { NavNestedExample } from './examples/Nav.Nested.Example';
 import { NavByKeysExample } from './examples/Nav.ByKeys.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
+
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const NavBasicExampleCode = require('./examples/Nav.Basic.Example.tsx') as string;
@@ -20,11 +20,6 @@ const NavByKeysExampleCode = require('./examples/Nav.ByKeys.Example.tsx') as str
 
 export class NavPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'Checkbox');
-  }
 
   public render() {
     return (

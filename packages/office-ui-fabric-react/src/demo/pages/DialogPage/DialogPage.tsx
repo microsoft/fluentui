@@ -10,7 +10,6 @@ import { DialogLargeHeaderExample } from './examples/Dialog.LargeHeader.Example'
 import { DialogCloseExample } from './examples/Dialog.Close.Example';
 import { DialogBlockingExample } from './examples/Dialog.Blocking.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const DialogBasicExampleCode = require('./examples/Dialog.Basic.Example.tsx') as string;
@@ -20,11 +19,6 @@ const DialogBlockingExampleCode = require('./examples/Dialog.Blocking.Example.ts
 
 export class DialogPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'Dialog');
-  }
 
   public render() {
     return (
@@ -98,7 +92,6 @@ export class DialogPage extends React.Component<IComponentDemoPageProps, any> {
         related={
           <a href='https://dev.office.com/fabric-js/Components/Dialog/Dialog.html'>Fabric JS</a>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
