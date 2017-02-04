@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "1.5.2",
+      "tag": "office-ui-fabric-react_v1.5.2",
+      "date": "Sat, 04 Feb 2017 04:05:32 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "dagoff <dagoff@users.noreply.github.com>",
+            "commit": "6aca2debc2048782503bc71382bc5d2915dd755e",
+            "comment": "Image: Now correctly loads SVG images in Edge."
+          },
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "829e6fd25fc7452d51dcccc56242da3c0f0ab24d",
+            "comment": "Pickers and Popup: Fixed a bug where having a picker in a dialog could cause the dialog to be dismissed on escape press"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.5.1",
       "tag": "office-ui-fabric-react_v1.5.1",
       "date": "Sat, 04 Feb 2017 00:27:49 GMT",
