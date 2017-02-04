@@ -27,7 +27,7 @@ function createConfig(isProduction) {
     context: path.join(__dirname, buildConfig.libFolder),
 
     entry: {
-      'demo-app': './demo/app.js'
+      'demo-app': './app.js'
     },
 
     output: {
