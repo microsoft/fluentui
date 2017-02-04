@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 04 Feb 2017 00:27:49 GMT and should not be manually modified.
+This log was last generated on Sat, 04 Feb 2017 04:05:32 GMT and should not be manually modified.
+
+## 1.5.2
+Sat, 04 Feb 2017 04:05:32 GMT
+
+### Patches
+
+- Image: Now correctly loads SVG images in Edge.
+- Pickers and Popup: Fixed a bug where having a picker in a dialog could cause the dialog to be dismissed on escape press
 
 ## 1.5.1
 Sat, 04 Feb 2017 00:27:49 GMT
