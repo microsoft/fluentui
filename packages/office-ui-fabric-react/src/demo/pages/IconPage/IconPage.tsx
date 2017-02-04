@@ -9,7 +9,7 @@ import { IconBasicExample } from './examples/Icon.Basic.Example';
 import { IconColorExample } from './examples/Icon.Color.Example';
 import { IconImageSheetExample } from './examples/Icon.ImageSheet.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
+
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const IconBasicExampleCode = require('./examples/Icon.Basic.Example.tsx') as string;
@@ -18,11 +18,6 @@ const IconImageSheetExampleCode = require('./examples/Icon.ImageSheet.Example.ts
 
 export class IconPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'Icon');
-  }
 
   public render() {
     return (

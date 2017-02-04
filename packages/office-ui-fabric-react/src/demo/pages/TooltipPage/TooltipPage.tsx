@@ -10,7 +10,7 @@ import {
 import { TooltipBottomExample } from './examples/Tooltip.Bottom.Example';
 import { TooltipBasicExample } from './examples/Tooltip.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
+
 
 import './TooltipPage.scss';
 
@@ -19,11 +19,6 @@ const TooltipBottomExampleCode = require('./examples/Tooltip.Bottom.Example.tsx'
 
 export class TooltipPage extends React.Component<any, any> {
   private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'Tooltip');
-  }
 
   public render() {
     return (

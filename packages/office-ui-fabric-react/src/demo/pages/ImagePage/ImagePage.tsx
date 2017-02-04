@@ -13,7 +13,7 @@ import { ImageCoverExample } from './examples/Image.Cover.Example';
 import { ImageNoneExample } from './examples/Image.None.Example';
 import { ImageMaximizeFrameExample } from './examples/Image.MaximizeFrame.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
+
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const ImageDefaultExampleCode = require('./examples/Image.Default.Example.tsx') as string;
@@ -25,11 +25,6 @@ const ImageMaximizeFrameExampleCode = require('./examples/Image.MaximizeFrame.Ex
 
 export class ImagePage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'Image');
-  }
 
   public render() {
     return (

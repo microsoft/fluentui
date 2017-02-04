@@ -9,7 +9,6 @@ import { FacepileAddFaceExample } from './examples/Facepile.AddFace.Example';
 import { FacepileBasicExample } from './examples/Facepile.Basic.Example';
 import { FacepileOverflowExample } from './examples/Facepile.Overflow.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const FacepileAddFaceExampleCode = require('./examples/Facepile.AddFace.Example.tsx') as string;
@@ -18,11 +17,6 @@ const FacepileOverflowExampleCode = require('./examples/Facepile.Overflow.Exampl
 
 export class FacepilePage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'Facepile');
-  }
 
   public render() {
     return (
@@ -104,7 +98,6 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, any> 
         related={
           <a href='https://dev.office.com/fabric-js/Components/FacePile/FacePile.html'>Fabric JS</a>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

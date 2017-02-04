@@ -5,20 +5,11 @@ import {
   ComponentPage
 } from '../../components/demoComponents';
 import { BreadcrumbBasicExample } from './examples/Breadcrumb.Basic.Example';
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const BreadcrumbBasicExampleCode = require('./examples/Breadcrumb.Basic.Example.tsx') as string;
 
 export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any> {
-  private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'Breadcrumb');
-  }
-
   public render() {
     return (
       <ComponentPage
@@ -60,7 +51,6 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
             </ul>
           </div>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

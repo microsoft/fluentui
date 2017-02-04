@@ -7,8 +7,6 @@ import {
 
 import { CalendarButtonExample } from './examples/Calendar.Button.Example';
 import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const CalendarButtonExampleCode = require('./examples/Calendar.Button.Example.tsx') as string;
@@ -19,7 +17,6 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
 
   constructor() {
     super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'DatePicker');
   }
   public render() {
     return (

@@ -9,7 +9,7 @@ import {
 import { LayerBasicExample } from './examples/Layer.Basic.Example';
 import { LayerHostedExample } from './examples/Layer.Hosted.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
+
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const LayerBasicExampleCode = require('./examples/Layer.Basic.Example.tsx') as string;
@@ -17,11 +17,6 @@ const LayerHostedExampleCode = require('./examples/Layer.Hosted.Example.tsx') as
 
 export class LayerPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'Layer');
-  }
 
   public render() {
     return (

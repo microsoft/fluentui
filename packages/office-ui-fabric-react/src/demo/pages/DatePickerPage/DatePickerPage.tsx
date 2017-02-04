@@ -9,7 +9,6 @@ import { DatePickerBasicExample } from './examples/DatePicker.Basic.Example';
 import { DatePickerRequiredExample } from './examples/DatePicker.Required.Example';
 import { DatePickerInputExample } from './examples/DatePicker.Input.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const DatePickerBasicExampleCode = require('./examples/DatePicker.Basic.Example.tsx') as string;
@@ -19,10 +18,6 @@ const DatePickerInputExampleCode = require('./examples/DatePicker.Input.Example.
 export class DatePickerPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
 
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'DatePicker');
-  }
   public render() {
     return (
       <ComponentPage
@@ -78,7 +73,6 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, any
         related={
           <a href='https://dev.office.com/fabric-js/Components/DatePicker/DatePicker.html'>Fabric JS</a>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );

@@ -8,7 +8,7 @@ import {
 import { TextFieldBasicExample } from './examples/TextField.Basic.Example';
 import { TextFieldErrorMessageExample } from './examples/TextField.ErrorMessage.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
+
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const TextFieldBasicExampleCode = require('./examples/TextField.Basic.Example.tsx') as string;
@@ -16,11 +16,6 @@ const TextFieldErrorMessageExampleCode = require('./examples/TextField.ErrorMess
 
 export class TextFieldPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'TextField');
-  }
 
   public render() {
     return (

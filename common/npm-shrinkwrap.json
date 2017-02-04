@@ -3837,7 +3837,7 @@
     "log4js": {
       "version": "0.6.38",
       "from": "log4js@>=0.6.31 <0.7.0",
-      "resolved": "https://registry.npmjs.com/log4js/-/log4js-0.6.38.tgz",
+      "resolved": "https://registry.npmjs.org/log4js/-/log4js-0.6.38.tgz",
       "dependencies": {
         "readable-stream": {
           "version": "1.0.34",
@@ -6206,9 +6206,9 @@
       "resolved": "https://registry.npmjs.org/webpack-bundle-analyzer/-/webpack-bundle-analyzer-2.2.1.tgz",
       "dependencies": {
         "acorn": {
-          "version": "4.0.7",
+          "version": "4.0.8",
           "from": "acorn@>=4.0.3 <5.0.0",
-          "resolved": "https://registry.npmjs.org/acorn/-/acorn-4.0.7.tgz"
+          "resolved": "https://registry.npmjs.org/acorn/-/acorn-4.0.8.tgz"
         },
         "lodash": {
           "version": "4.17.4",

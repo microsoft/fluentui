@@ -7,7 +7,6 @@ import {
 } from '../../components/demoComponents';
 
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 import { DetailsListBasicExample } from './examples/DetailsList.Basic.Example';
@@ -30,11 +29,6 @@ const DetailsListGroupedExampleCode = require('./examples/DetailsList.Grouped.Ex
 
 export class DetailsListPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
-
-  constructor() {
-    super();
-    this._url = getPageRouteFromState(AppState, 'Basic components', 'DetailsList');
-  }
 
   public render() {
     return (
@@ -101,7 +95,6 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, an
             </ul>
           </div>
         }
-        route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
