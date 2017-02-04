@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Image: Now correctly loads SVG images in Edge.",
+      "type": "patch"
+    }
+  ],
+  "email": "dagoff@microsoft.com"
+}

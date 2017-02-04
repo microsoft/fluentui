@@ -19,7 +19,10 @@ export interface IImageProps extends React.HTMLProps<HTMLImageElement> {
   imageFit?: ImageFit;
 
   /**
-   * Image source to display if an error occurs loading the image indicated by src.
+   * @deprecated
+   * Deprecated at v1.3.6, to be removed at >= v2.0.0.
+   * To replace the src in case of errors, use onLoadingStateChange instead and rerender the Image with a 
+   * difference src.
    */
   errorSrc?: string;
 
@@ -29,8 +32,8 @@ export interface IImageProps extends React.HTMLProps<HTMLImageElement> {
   maximizeFrame?: boolean;
 
   /**
-   * Optional callback method for when the image load state has changes
-   * The 'loadState' parameter indicates the current state of the Image
+   * Optional callback method for when the image load state has changed.
+   * The 'loadState' parameter indicates the current state of the Image.
    */
   onLoadingStateChange?: (loadState: ImageLoadState) => void;
 }
@@ -81,7 +84,10 @@ export enum ImageLoadState {
   error = 2,
 
   /**
-   * The image was not successfully loaded due to an error.
+   * @deprecated
+   * Deprecated at v1.3.6, to be removed at >= v2.0.0.
+   * To replace the src in case of errors, use onLoadingStateChange instead and rerender the Image with a 
+   * difference src.
    */
   errorLoaded = 3
 }
