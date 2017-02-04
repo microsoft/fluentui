@@ -39,7 +39,7 @@ describe('CommandBar', () => {
     let renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(
       <CommandBar
         items={ items }
-        />
+      />
     ) as React.Component<CommandBar, {}>;
     document.body.appendChild(ReactDOM.findDOMNode(renderedContent));
 
@@ -69,7 +69,7 @@ describe('CommandBar', () => {
     let renderedContent = ReactTestUtils.renderIntoDocument<CommandBar>(
       <CommandBar
         items={ items }
-        />
+      />
     ) as React.Component<CommandBar, {}>;
     document.body.appendChild(ReactDOM.findDOMNode(renderedContent));
 
@@ -103,7 +103,7 @@ describe('CommandBar', () => {
       let renderedContent = ReactDOM.render(
         <CommandBar
           items={ items }
-          />,
+        />,
         renderContainer
       ) as React.Component<CommandBar, {}>;
 
@@ -122,7 +122,7 @@ describe('CommandBar', () => {
       renderedContent = ReactDOM.render(
         <CommandBar
           items={ items }
-          />,
+        />,
         renderContainer
       ) as React.Component<CommandBar, {}>;
 
@@ -158,7 +158,7 @@ describe('CommandBar', () => {
       let renderedContent = ReactDOM.render(
         <CommandBar
           items={ items }
-          />,
+        />,
         renderContainer
       ) as React.Component<CommandBar, {}>;
 
@@ -177,7 +177,7 @@ describe('CommandBar', () => {
       renderedContent = ReactDOM.render(
         <CommandBar
           items={ items }
-          />,
+        />,
         renderContainer
       ) as React.Component<CommandBar, {}>;
 
@@ -213,7 +213,7 @@ describe('CommandBar', () => {
       let renderedContent = ReactDOM.render(
         <CommandBar
           items={ items }
-          />,
+        />,
         renderContainer
       ) as React.Component<CommandBar, {}>;
 
@@ -229,7 +229,7 @@ describe('CommandBar', () => {
       renderedContent = ReactDOM.render(
         <CommandBar
           items={ items }
-          />,
+        />,
         renderContainer
       ) as React.Component<CommandBar, {}>;
 

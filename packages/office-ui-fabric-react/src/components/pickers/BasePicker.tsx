@@ -266,12 +266,16 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
     switch (ev.which) {
       case KeyCodes.escape:
-        this.dismissSuggestions();
+        if (this.state.suggestionsVisible) {
+          this.dismissSuggestions();
+          ev.preventDefault();
+          ev.stopPropagation();
+        }
         break;
 
       case KeyCodes.tab:
       case KeyCodes.enter:
-        if (value && this.suggestionStore.hasSelectedSuggestion()) {
+        if (value && this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible) {
           this.completeSuggestion();
           ev.preventDefault();
           ev.stopPropagation();
@@ -284,7 +288,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         break;
 
       case KeyCodes.up:
-        if (ev.target === this.input.inputElement && this.suggestionStore.previousSuggestion()) {
+        if (ev.target === this.input.inputElement && this.suggestionStore.previousSuggestion() && this.state.suggestionsVisible) {
           ev.preventDefault();
           ev.stopPropagation();
           this.onSuggestionSelect();
@@ -292,7 +296,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         break;
 
       case KeyCodes.down:
-        if (ev.target === this.input.inputElement) {
+        if (ev.target === this.input.inputElement && this.state.suggestionsVisible) {
           if (this.suggestionStore.nextSuggestion()) {
             ev.preventDefault();
             ev.stopPropagation();
