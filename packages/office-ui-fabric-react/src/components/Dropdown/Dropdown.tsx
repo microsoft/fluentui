@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { IDropdownProps, IDropdownOption } from './Dropdown.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { Callout, ICalloutProps } from '../../Callout';
-import { BaseButton, IButtonProps } from '../../Button';
-import { List, IListProps } from '../../List';
-import { Panel, IPanelProps } from '../../Panel';
+import { Callout } from '../../Callout';
+import { BaseButton } from '../../Button';
+import { List } from '../../List';
+import { Panel } from '../../Panel';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import {
   BaseComponent,
@@ -36,7 +36,6 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
   };
 
   private _focusZone: FocusZone;
-  private _optionList: HTMLElement;
   private _dropDown: HTMLDivElement;
   private _dropdownLabel: HTMLElement;
   private _id: string;
@@ -175,7 +174,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
         />
       </FocusZone>
     );
-
+    // TODO Setup responsive, add props to panel
     return (
       isSmall ?
         <Panel{ ...this.props  }>{ content } </Panel> :
@@ -210,7 +209,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
         aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
         aria-label={ item.text }
       > { onRenderOption(item, this._onRenderOption) }</BaseButton>
-    )
+    );
   }
 
   @autobind
