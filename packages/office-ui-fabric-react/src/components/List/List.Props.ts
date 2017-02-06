@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IRectangle } from '../../Utilities';
 import { List } from './List';
 
-export interface IListProps extends React.Props<List> {
+export interface IListProps extends React.HTMLProps<List> {
   /** Optional classname to append to root list. */
   className?: string;
 

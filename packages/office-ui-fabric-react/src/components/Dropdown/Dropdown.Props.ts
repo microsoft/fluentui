@@ -44,6 +44,11 @@ export interface IDropdownProps {
   /**
    * Optional custom renderer for the selected dropdown item
    */
+  onRenderTitle?: IRenderFunction<IDropdownOption>;
+
+  /**
+   * Optional custom renderer for the selected dropdown item
+   */
   onRenderItem?: IRenderFunction<IDropdownOption>;
 
   /**

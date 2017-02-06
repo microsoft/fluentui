@@ -68,8 +68,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
   public render() {
     let id = this._id;
     let { className, label, options, disabled, isDisabled, ariaLabel,
-      onRenderItem = this._onRenderItem,
-      onRenderOption = this._onRenderOption,
+      onRenderTitle = this._onRenderTitle,
       onRenderContainer = this._onRenderContainer
     } = this.props;
     let { isOpen, selectedIndex } = this.state;
@@ -108,12 +107,14 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
             key={ selectedIndex }
             aria-atomic={ true }
           >
-            { selectedOption ? onRenderItem(selectedOption, this._onRenderItem) : '' }
+            { selectedOption && (
+              onRenderTitle(selectedOption, this._onRenderTitle)
+            ) }
           </span>
           <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown'></i>
         </div>
         { isOpen && (
-          { onRenderContainer(props, this._onRenderContainer) }
+          onRenderContainer(this.props, this._onRenderContainer)
         ) }
       </div>
     );
@@ -149,25 +150,71 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
       onRenderItem = this._onRenderItem
     } = this.props;
 
-    let isSmall = true; // fake it for now
-    let selectedOption = this.props.options[this.state.selectedIndex];
+    let isSmall = false; // fake it for now
+    let id = this._id;
+    let { selectedIndex } = this.state;
 
     let content = (
-      <FocusZone>
+      <FocusZone
+        ref={ this._resolveRef('_focusZone') }
+        direction={ FocusZoneDirection.vertical }
+        defaultActiveElement={ '#' + id + '-list' + selectedIndex }
+      >
         <List
-          onRenderCell={ (item, index) => onRenderItem(selectedOption, this._onRenderItem) }
+          id={ id + '-list' }
+          style={ { width: this._dropDown.clientWidth - 2 } }
+          className='ms-Dropdown-items'
+          aria-labelledby={ id + '-label' }
+          items={ props.options }
+          onRenderCell={
+            (item: IDropdownOption, index: number) => {
+              item.index = index;
+              return onRenderItem(item, this._onRenderItem);
+            }
+          }
         />
       </FocusZone>
     );
 
-    return (isSmall ?
-      <Panel{ ...this.props  }>{ content } </Panel> :
-      <Callout{ ...this.props }> { content } </Callout>
+    return (
+      isSmall ?
+        <Panel{ ...this.props  }>{ content } </Panel> :
+        <Callout
+          isBeakVisible={ false }
+          className='ms-Dropdown-callout'
+          gapSpace={ 0 }
+          doNotLayer={ false }
+          targetElement={ this._dropDown }
+          directionalHint={ DirectionalHint.bottomLeftEdge }
+          onDismiss={ this._onDismiss }
+          onPositioned={ this._onPositioned }
+        > { content } </Callout>
     );
   }
 
   @autobind
   private _onRenderItem(item: IDropdownOption): JSX.Element {
+    let {  onRenderOption = this._onRenderOption } = this.props;
+    let id = this._id;
+    return (
+      <BaseButton
+        id={ id + '-list' + item.index }
+        ref={ Dropdown.Option + item.index }
+        key={ item.key }
+        data-index={ item.index }
+        data-is-focusable={ true }
+        className={ css('ms-Dropdown-item', { 'is-selected': this.state.selectedIndex === item.index }) }
+        onClick={ () => this._onItemClick(item.index) }
+        onFocus={ () => this.setSelectedIndex(item.index) }
+        role='option'
+        aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
+        aria-label={ item.text }
+      > { onRenderOption(item, this._onRenderOption) }</BaseButton>
+    )
+  }
+
+  @autobind
+  private _onRenderTitle(item: IDropdownOption): JSX.Element {
     return <span>{ item.text }</span>;
   }
 

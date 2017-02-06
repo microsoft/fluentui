@@ -187,9 +187,12 @@ $DropDown-item-height: 36px;
 }
 
 .ms-Dropdown-item {
+  background: transparent;
   box-sizing: border-box;
   cursor: pointer;
   display: block;
+  width: 100%;
+  text-align: left;
   min-height: $DropDown-item-height;
   line-height: 20px;
   padding: 6px 12px;

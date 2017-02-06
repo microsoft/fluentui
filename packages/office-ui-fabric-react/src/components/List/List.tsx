@@ -285,7 +285,7 @@ export class List extends BaseComponent<IListProps, IListState> {
   }
 
   public render() {
-    let { className } = this.props;
+    let { className, id, style } = this.props;
     let { pages } = this.state;
     let pageElements = [];
 
@@ -294,7 +294,7 @@ export class List extends BaseComponent<IListProps, IListState> {
     }
 
     return (
-      <div ref='root' className={ css('ms-List', className) } >
+      <div ref='root' id={ id } style={ style } className={ css('ms-List', className) } >
         <div ref='surface' className='ms-List-surface'>
           { pageElements }
         </div>
