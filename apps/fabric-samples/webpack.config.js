@@ -9,17 +9,13 @@ let path = require('path');
 let SplitByPathPlugin = require('webpack-split-by-path');
 let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
+const IS_PRODUCTION = process.argv.indexOf('--production') >= 0;
 const BUNDLE_NAME = 'fabric-samples';
 
 // Create an array of configs, prepopulated with a debug (non-minified) build.
 let configs = [
-  createConfig(false)
+  createConfig(IS_PRODUCTION)
 ];
-
-// Create a production config if applicable.
-if (process.argv.indexOf('--production') > -1) {
-  configs.push(createConfig(true));
-}
 
 // Helper to create the config.
 function createConfig(isProduction) {
@@ -55,13 +51,12 @@ function createConfig(isProduction) {
 
     module: {
       noParse: [/autoit.js/],
-      preLoaders: [
+      rules: [
         {
+          enforce: 'pre',
           test: /\.js$/,
           loader: "source-map-loader"
         }
-      ],
-      loaders: [
       ]
     },
 
@@ -78,7 +73,16 @@ function createConfig(isProduction) {
     webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({
       minimize: true,
       compress: {
-        warnings: false
+        warnings: false,
+        screw_ie8: true,
+        conditionals: true,
+        unused: true,
+        comparisons: true,
+        sequences: true,
+        dead_code: true,
+        evaluate: true,
+        if_return: true,
+        join_vars: true
       }
     }));
   }

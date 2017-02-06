@@ -21,7 +21,6 @@ build.typescript.setConfig({ typescript: require('typescript') });
 
 // Disable unnecessary subtasks.
 build.preCopy.isEnabled = () => false;
-build.text.isEnabled = () => false;
 build.postCopy.isEnabled = () => isProduction;
 
 // Until typings work.
@@ -38,6 +37,9 @@ build.postCopy.setConfig({
     ]
   }
 });
+
+// process *.Props.tsx as text.
+build.text.setConfig({ textMatch: ['src/**/*.Props.ts'] });
 
 // Produce AMD bits in lib-amd on production builds.
 if (isProduction || isNuke) {

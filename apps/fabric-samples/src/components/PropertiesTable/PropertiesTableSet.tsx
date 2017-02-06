@@ -19,9 +19,9 @@ export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps
     let properties: IProperty[] = [];
 
     if (componentPath) {
-      src = ''; // require('../../../' + componentPath + componentName + '.Props.ts');
+      src = require('office-ui-fabric-react/lib/' + componentPath + componentName + '.Props.ts');
     } else {
-      src = ''; // require('../../../components/' + componentName + '/' + componentName + '.Props.ts');
+      src = require('office-ui-fabric-react/lib/components/' + componentName + '/' + componentName + '.Props.ts');
     }
 
     if (props.renderOnly) {

@@ -9,6 +9,7 @@ let buildConfig = build.getConfig();
 let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const BUNDLE_NAME = 'office-ui-fabric-react';
+const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
 
 // Create an array of configs, prepopulated with a debug (non-minified) build.
 let configs = [
@@ -16,7 +17,7 @@ let configs = [
 ];
 
 // Create a production config if applicable.
-if (process.argv.indexOf('--production') > -1) {
+if (IS_PRODUCTION) {
   configs.push(createConfig(true));
 }
 

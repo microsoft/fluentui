@@ -17,6 +17,9 @@ build.tslint.setConfig({ lintConfig: require('./tslint.json') });
 // Configure TypeScript 2.0.
 build.typescript.setConfig({ typescript: require('typescript') });
 
+// Configure Webpack 2.
+build.webpack.setConfig({ webpack: require('webpack') });
+
 // Disable karma unit tests.
 build.karma.isEnabled = () => false;
 
@@ -34,8 +37,8 @@ build.postCopy.setConfig({
   }
 });
 
-// process *.Example.tsx as text.
-build.text.setConfig({ textMatch: ['src/**/*.txt', 'src/**/*.Example.tsx', 'src/**/*.Props.ts'] });
+// process *.Example.tsx as text for examples.
+build.text.setConfig({ textMatch: ['src/**/*.Example.tsx'] });
 
 /* Define deploy subtask */
 gulp.task('install-deploy', function (cb) {
