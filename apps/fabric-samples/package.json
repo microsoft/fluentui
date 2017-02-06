@@ -1,6 +1,6 @@
 {
   "name": "fabric-samples",
-  "version": "1.5.2",
+  "version": "1.0.0",
   "description": "Samples for office-ui-fabric-react",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",

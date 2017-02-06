@@ -37,6 +37,7 @@
     "@types/react-dom": "^0.14.18"
   },
   "rushDependencies": {
+    "fabric-samples": ">=1.0.0 <2.0.0",
     "office-ui-fabric-react": "^1.5.2",
     "@uifabric/utilities": ">=1.0.0 <2.0.0"
   }

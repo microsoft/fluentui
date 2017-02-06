@@ -23,6 +23,7 @@
     "@types/node": "^6.0.45",
     "@types/react-addons-test-utils": "^0.14.15",
     "@types/webpack": "^1.12.35",
+    "fabric-samples": ">=1.0.0 <2.0.0",
     "es6-promise": "3.2.1",
     "git-rev": "0.2.1",
     "gulp": "~3.9.1",

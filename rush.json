@@ -18,7 +18,7 @@
     },
     {
       "packageName": "todo-app",
-      "projectFolder": "packages/examples/todo-app"
+      "projectFolder": "apps/todo-app"
     },
     {
       "packageName": "fabric-website",
