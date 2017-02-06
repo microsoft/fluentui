@@ -67,7 +67,6 @@ runSSRTests.isEnabled = () => isProduction;
 build.task('default', build.serial(build.defaultTasks, runSSRTests));
 
 // Disable certain subtasks in non production builds to speed up serve.
-build.karma.isEnabled = () => isProduction;
 build.tslint.isEnabled = () => isProduction;
 build.clean.isEnabled = () => isProduction;
 

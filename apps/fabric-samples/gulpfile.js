@@ -17,9 +17,6 @@ build.tslint.setConfig({ lintConfig: require('./tslint.json') });
 // Configure TypeScript 2.0.
 build.typescript.setConfig({ typescript: require('typescript') });
 
-// Configure Webpack 2.
-build.webpack.setConfig({ webpack: require('webpack') });
-
 // Disable karma unit tests.
 build.karma.isEnabled = () => false;
 
@@ -151,26 +148,62 @@ gulp.task('deploy', ['bundle'], function (cb) {
 // alternative serve approach.
 // Set up a "rushBuild" subTask that will spawn rush build
 let exec = require('child_process').exec;
+const sourceMatch = [
+  'apps/fabric-samples/src/**/*.{ts,tsx,scss,js,txt,html}',
+  '!apps/fabric-samples/src/**/*.scss.ts',
+  'packages/office-ui-fabric-react/src/**/*.{ts,tsx,scss,js,txt,html}',
+  '!packages/office-ui-fabric-react/src/**/*.scss.ts',
+];
 
-let rushBuild = build.subTask('rushbuild', (gulp, options, done) => {
+let rushBuild = build.subTask('rushBuild', (gulp, options, done) => {
   let child = exec(`rush build --to ${pkg.name} ${isProduction ? '--production' : ''}`);
 
   child.stdout.on('data', data => process.stdout.write(data));
   child.on('close', done);
 });
 
-const sourceMatch = [
-  'src/**/*.{ts,tsx,scss,js,txt,html}',
-  '!src/**/*.scss.ts'
-];
+let customWatch = build.subTask('customWatch', (gulp, options, done) => {
+  let gaze = require('gaze');
+  let isBuilding = false;
+  let buildEnqueued = false;
+
+  function startRun() {
+    if (!isBuilding) {
+      isBuilding = true;
+      buildEnqueued = false;
+
+      console.log('Starting build...');
+
+      rushBuild.execute(build.getConfig()).then(() => {
+        isBuilding = false;
+
+        // After build is complete, trigger reload.
+        build.reload.execute(build.getConfig());
+
+        if (buildEnqueued) {
+          startRun();
+        }
+      });
+    } else {
+      buildEnqueued = true;
+    }
+  };
+
+  // Start watch at root of repo.
+  let rootPath = path.resolve(__dirname, '../..');
+  console.log(`Starting watch in ${rootPath}`);
+  gaze(sourceMatch, { cwd: rootPath }, function () {
+    this.on('all', startRun);
+  });
+});
+
+build.task('w', customWatch);
 
 build.task('serve', serial(
   rushBuild,
   build.serve,
-  build.watch(sourceMatch, serial(
-    rushBuild,
-    build.reload
-  ))));
+  customWatch
+));
 
 // Shortcuts for individual subtasks.
 build.task('webpack', build.webpack);
