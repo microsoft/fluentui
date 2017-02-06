@@ -5,9 +5,9 @@ export interface IObjectWithKey {
 export const SELECTION_CHANGE = 'change';
 
 export enum SelectionMode {
-  none,
-  single,
-  multiple
+  none = 0,
+  single = 1,
+  multiple = 2
 }
 
 export interface ISelection {

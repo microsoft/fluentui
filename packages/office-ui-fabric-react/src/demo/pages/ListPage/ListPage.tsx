@@ -3,16 +3,18 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { ListBasicExample } from './examples/List.Basic.Example';
 import { ListMailExample } from './examples/List.Mail.Example';
 import { ListGridExample } from './examples/List.Grid.Example';
+import { ListScrollingExample } from './examples/List.Scrolling.Example';
 import { createListItems } from '../../utilities/data';
 
 const ListBasicExampleCode = require('./examples/List.Basic.Example.tsx') as string;
 const ListMailExampleCode = require('./examples/List.Mail.Example.tsx') as string;
 const ListGridExampleCode = require('./examples/List.Grid.Example.tsx') as string;
+const ListScrollingExampleCode = require('./examples/List.Scrolling.Example.tsx') as string;
 
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
@@ -47,6 +49,9 @@ export class ListPage extends React.Component<IComponentDemoPageProps, any> {
             </ExampleCard>
             <ExampleCard title='Fixed list of 5000 email tiles' isOptIn={ true } code={ ListMailExampleCode }>
               <ListMailExample items={ _cachedItems } />
+            </ExampleCard>
+            <ExampleCard title='Scrolling items into view' isOptIn={ true } code={ ListScrollingExampleCode }>
+              <ListScrollingExample items={ _cachedItems } />
             </ExampleCard>
           </div>
         }

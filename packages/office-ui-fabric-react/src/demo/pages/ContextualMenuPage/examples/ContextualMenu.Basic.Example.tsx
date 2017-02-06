@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { ContextualMenu, DirectionalHint, Button, getRTL, Callout } from '../../../../index';
+import { ContextualMenu } from '../../../../ContextualMenu';
+import { Callout, DirectionalHint } from '../../../../Callout';
+import { Button } from '../../../../Button';
+import { getRTL } from '../../../../Utilities';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuBasicExample extends React.Component<any, any> {
@@ -163,13 +166,13 @@ export class ContextualMenuBasicExample extends React.Component<any, any> {
                 },
               ]
             }
-            />) : (null) }
+          />) : (null) }
 
         { showCallout && (
           <Callout
             setInitialFocus={ true }
             onDismiss={ () => this.setState({ showCallout: false }) }
-            >
+          >
             <Button onClick={ () => this.setState({ showCallout: false }) }>Hello world</Button>
           </Callout>
         ) }

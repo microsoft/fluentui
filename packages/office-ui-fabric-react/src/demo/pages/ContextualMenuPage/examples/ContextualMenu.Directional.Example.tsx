@@ -1,15 +1,11 @@
 import * as React from 'react';
-import {
-  Button,
-  Checkbox,
-  ContextualMenu,
-  DirectionalHint,
-  Dropdown,
-  TextField,
-  IDropdownOption,
-  autobind,
-  Slider
-} from '../../../../index';
+import { Button } from '../../../../Button';
+import { Checkbox } from '../../../../Checkbox';
+import { ContextualMenu, DirectionalHint } from '../../../../ContextualMenu';
+import { Dropdown, IDropdownOption } from '../../../../Dropdown';
+import { Slider } from '../../../../Slider';
+import { TextField } from '../../../../TextField';
+import { autobind } from '../../../../Utilities';
 import './ContextualMenuExample.scss';
 
 export interface IContextualMenuDirectionalExampleState {
@@ -164,7 +160,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
                 },
               ]
             }
-            />
+          />
         ) : (null) }
       </div>
     );

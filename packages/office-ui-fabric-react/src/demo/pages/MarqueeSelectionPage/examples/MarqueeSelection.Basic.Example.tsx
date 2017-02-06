@@ -6,11 +6,8 @@ import {
   css,
   createArray
 } from '../../../../Utilities';
-import {
-  Checkbox,
-  Selection,
-  MarqueeSelection
-} from '../../../../index';
+import { Checkbox } from '../../../../Checkbox';
+import { MarqueeSelection, Selection } from '../../../../MarqueeSelection';
 import './MarqueeSelection.Basic.Example.scss';
 
 const PHOTOS = createArray(250, () => {

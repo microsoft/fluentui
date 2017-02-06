@@ -5,6 +5,7 @@ import { IPeoplePickerItemWithMenuProps } from './PeoplePickerItem.Props';
 import { Persona, PersonaPresence } from '../../../../Persona';
 import { ContextualMenu, DirectionalHint } from '../../../../ContextualMenu';
 import { Button, ButtonType } from '../../../../Button';
+import { FocusZone } from '../../../../FocusZone';
 
 export interface IPeoplePickerItemState {
   contextualMenuVisible: boolean;
@@ -29,34 +30,36 @@ export class SelectedItemWithMenu extends React.Component<IPeoplePickerItemWithM
       onRemoveItem
     } = this.props;
     return (
-      <div className='ms-PickerPersona-container'>
-        <div className='ms-PickerItem-content'>
-          <Persona
-            { ...item }
-            presence={ item.presence !== undefined ? item.presence : PersonaPresence.none }
+      <div data-is-focusable={ true } className='ms-PickerItem-container'>
+        <FocusZone className='ms-PickerPersona-container' >
+          <div className='ms-PickerItem-content'>
+            <Persona
+              { ...item }
+              presence={ item.presence !== undefined ? item.presence : PersonaPresence.none }
             />
-        </div>
-        <div ref='ellipsisRef' className='ms-PickerItem-content'>
-          <Button
-            icon={ 'More' }
-            buttonType={ ButtonType.icon } onClick={ this.onContextualMenu }
+          </div>
+          <div ref='ellipsisRef' className='ms-PickerItem-content'>
+            <Button
+              icon={ 'More' }
+              buttonType={ ButtonType.icon } onClick={ this.onContextualMenu }
             />
-        </div>
-        <div className='ms-PickerItem-content'>
-          <Button
-            icon={ 'Cancel' }
-            buttonType={ ButtonType.icon }
-            onClick={ onRemoveItem }
+          </div>
+          <div className='ms-PickerItem-content'>
+            <Button
+              icon={ 'Cancel' }
+              buttonType={ ButtonType.icon }
+              onClick={ onRemoveItem }
             />
-        </div>
-        { this.state.contextualMenuVisible ? (
-          <ContextualMenu
-            items={ item.menuItems }
-            shouldFocusOnMount={ true }
-            targetElement={ this.refs.ellipsisRef }
-            onDismiss={ this._onCloseContextualMenu }
-            directionalHint={ DirectionalHint.bottomAutoEdge } />)
-          : null }
+          </div>
+          { this.state.contextualMenuVisible ? (
+            <ContextualMenu
+              items={ item.menuItems }
+              shouldFocusOnMount={ true }
+              targetElement={ this.refs.ellipsisRef }
+              onDismiss={ this._onCloseContextualMenu }
+              directionalHint={ DirectionalHint.bottomAutoEdge } />)
+            : null }
+        </FocusZone>
       </div>
     );
   }

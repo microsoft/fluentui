@@ -18,8 +18,8 @@ export interface ISliderState {
 }
 
 export enum ValuePosition {
-  Previous,
-  Next
+  Previous = 0,
+  Next = 1
 }
 
 export class Slider extends BaseComponent<ISliderProps, ISliderState> implements ISlider {

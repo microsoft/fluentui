@@ -2,9 +2,7 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
-import {
-  Label
-} from '../../../../index';
+import { Label } from '../../../../Label';
 
 export const LabelBasicExample = () => (
   <div>

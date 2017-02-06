@@ -3,9 +3,8 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
-
-import { Checkbox } from '../../../index';
+} from '../../components/demoComponents';
+import { Checkbox } from '../../../Checkbox';
 
 import { ButtonDefaultExample } from './examples/Button.Default.Example';
 import { ButtonPrimaryExample } from './examples/Button.Primary.Example';
@@ -13,7 +12,6 @@ import { ButtonCompoundExample } from './examples/Button.Compound.Example';
 import { ButtonCommandExample } from './examples/Button.Command.Example';
 import { ButtonIconExample } from './examples/Button.Icon.Example';
 import { ButtonAnchorExample } from './examples/Button.Anchor.Example';
-import { ButtonHeroExample } from './examples/Button.Hero.Example';
 import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
@@ -25,7 +23,6 @@ const ButtonDefaultExampleCode = require('./examples/Button.Default.Example.tsx'
 const ButtonPrimaryExampleCode = require('./examples/Button.Primary.Example.tsx') as string;
 const ButtonCompoundExampleCode = require('./examples/Button.Compound.Example.tsx') as string;
 const ButtonCommandExampleCode = require('./examples/Button.Command.Example.tsx') as string;
-const ButtonHeroExampleCode = require('./examples/Button.Hero.Example.tsx') as string;
 const ButtonIconExampleCode = require('./examples/Button.Icon.Example.tsx') as string;
 const ButtonAnchorExampleCode = require('./examples/Button.Anchor.Example.tsx') as string;
 const ButtonScreenReaderExampleCode = require('./examples/Button.ScreenReader.Example.tsx') as string;
@@ -54,9 +51,6 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
             </ExampleCard>
             <ExampleCard title='Primary Button' code={ ButtonPrimaryExampleCode }>
               <ButtonPrimaryExample disabled={ this.state.areButtonsDisabled } />
-            </ExampleCard>
-            <ExampleCard title='Hero Button' code={ ButtonHeroExampleCode }>
-              <ButtonHeroExample disabled={ this.state.areButtonsDisabled } />
             </ExampleCard>
             <ExampleCard title='Compound Button' code={ ButtonCompoundExampleCode }>
               <ButtonCompoundExample disabled={ this.state.areButtonsDisabled } />
