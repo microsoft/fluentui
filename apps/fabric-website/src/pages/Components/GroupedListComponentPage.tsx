@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { GroupedListPage } from 'office-ui-fabric-react/lib/demo/pages/GroupedListPage/GroupedListPage';
+import { GroupedListPage } from 'fabric-samples/lib/pages/GroupedListPage/GroupedListPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 
@@ -10,25 +10,25 @@ export class GroupedListComponentPage extends React.Component<any, any> {
         <ComponentPage>
           <PageHeader pageTitle='GroupedList' backgroundColor='#038387'
             links={
-            [
-              {
-                'text': 'Overview',
-                'location': 'Overview'
-              },
-              {
-                'text': 'Best Practices',
-                'location': 'Best Practices'
-              },
-              {
-                'text': 'Variants',
-                'location': 'Variants'
-              },
-              {
-                'text': 'Implementation',
-                'location': 'Implementation'
-              }
-            ]
-          }/>
+              [
+                {
+                  'text': 'Overview',
+                  'location': 'Overview'
+                },
+                {
+                  'text': 'Best Practices',
+                  'location': 'Best Practices'
+                },
+                {
+                  'text': 'Variants',
+                  'location': 'Variants'
+                },
+                {
+                  'text': 'Implementation',
+                  'location': 'Implementation'
+                }
+              ]
+            } />
           <GroupedListPage isHeaderVisible={ false } />
         </ComponentPage>
       </div>

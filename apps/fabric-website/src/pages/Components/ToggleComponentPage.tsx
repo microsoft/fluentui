@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TogglePage } from 'office-ui-fabric-react/lib/demo/pages/TogglePage/TogglePage';
+import { TogglePage } from 'fabric-samples/lib/pages/TogglePage/TogglePage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 
@@ -9,22 +9,22 @@ export class ToggleComponentPage extends React.Component<any, any> {
       <div ref='pageElement'>
         <ComponentPage>
           <PageHeader pageTitle='Toggle' backgroundColor='#038387'
-          links={
-            [
-              {
-                'text': 'Overview',
-                'location': 'Overview'
-              },
-              {
-                'text': 'Variants',
-                'location': 'Variants'
-              },
-              {
-                'text': 'Implementation',
-                'location': 'Implementation'
-              }
-            ]
-          }/>
+            links={
+              [
+                {
+                  'text': 'Overview',
+                  'location': 'Overview'
+                },
+                {
+                  'text': 'Variants',
+                  'location': 'Variants'
+                },
+                {
+                  'text': 'Implementation',
+                  'location': 'Implementation'
+                }
+              ]
+            } />
           <TogglePage isHeaderVisible={ false } />
         </ComponentPage>
       </div>

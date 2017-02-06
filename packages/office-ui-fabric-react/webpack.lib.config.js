@@ -56,11 +56,6 @@ function createConfig(isProduction) {
       }
     ],
 
-    module: {
-      loaders: [
-      ]
-    },
-
     plugins: [
       new BundleAnalyzerPlugin({
         analyzerMode: 'static',

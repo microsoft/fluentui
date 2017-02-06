@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SelectionPage } from 'office-ui-fabric-react/lib/demo/pages/SelectionPage/SelectionPage';
+import { SelectionPage } from 'fabric-samples/lib/pages/SelectionPage/SelectionPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 
@@ -9,23 +9,23 @@ export class SelectionUtilityPage extends React.Component<any, any> {
       <div ref='pageElement'>
         <ComponentPage>
           <PageHeader pageTitle='Selection' backgroundColor='#038387'
-          links={
-            [
-              {
-                'text': 'Overview',
-                'location': 'Overview'
-              },
-              {
-                'text': 'Variants',
-                'location': 'Variants'
-              },
-              {
-                'text': 'Implementation',
-                'location': 'Implementation'
-              }
-            ]
-          }/>
-          <SelectionPage isHeaderVisible={ false }/>
+            links={
+              [
+                {
+                  'text': 'Overview',
+                  'location': 'Overview'
+                },
+                {
+                  'text': 'Variants',
+                  'location': 'Variants'
+                },
+                {
+                  'text': 'Implementation',
+                  'location': 'Implementation'
+                }
+              ]
+            } />
+          <SelectionPage isHeaderVisible={ false } />
         </ComponentPage>
       </div>
     );
