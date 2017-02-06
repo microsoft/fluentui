@@ -3,7 +3,7 @@
 /** Note: this require may need to be fixed to point to the build that exports the gulp-core-build-webpack instance. */
 let webpackTaskResources = require('@microsoft/web-library-build').webpack.resources;
 let webpack = webpackTaskResources.webpack;
-let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 let path = require('path');
 var SplitByPathPlugin = require('webpack-split-by-path');
@@ -52,6 +52,7 @@ function createConfig(isProduction) {
 
     module: {
       noParse: [/autoit.js/],
+
       preLoaders: [
         {
           test: /\.js$/,
@@ -63,15 +64,7 @@ function createConfig(isProduction) {
     },
 
     plugins: [
-      /*
-      new SplitByPathPlugin([
-        {
-          name: 'fabric-vendor',
-          path: path.join(__dirname, 'node_modules'),
-        }
-      ]),
-      new BundleAnalyzerPlugin()
-      */
+      new  BundleAnalyzerPlugin()
     ]
   };
 
