@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { IDropdownProps, IDropdownOption } from './Dropdown.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { Callout } from '../../Callout';
+import { Callout, ICalloutProps } from '../../Callout';
+import { BaseButton, IButtonProps } from '../../Button';
+import { List, IListProps } from '../../List';
+import { Panel, IPanelProps } from '../../Panel';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import {
   BaseComponent,
@@ -64,7 +67,11 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
 
   public render() {
     let id = this._id;
-    let { className, label, options, disabled, isDisabled, ariaLabel, onRenderItem = this._onRenderItem, onRenderOption = this._onRenderOption } = this.props;
+    let { className, label, options, disabled, isDisabled, ariaLabel,
+      onRenderItem = this._onRenderItem,
+      onRenderOption = this._onRenderOption,
+      onRenderContainer = this._onRenderContainer
+    } = this.props;
     let { isOpen, selectedIndex } = this.state;
     let selectedOption = options[selectedIndex];
 
@@ -106,46 +113,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
           <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown'></i>
         </div>
         { isOpen && (
-          <Callout
-            isBeakVisible={ false }
-            className='ms-Dropdown-callout'
-            gapSpace={ 0 }
-            doNotLayer={ false }
-            targetElement={ this._dropDown }
-            directionalHint={ DirectionalHint.bottomLeftEdge }
-            onDismiss={ this._onDismiss }
-            onPositioned={ this._onPositioned }
-          >
-            <FocusZone
-              ref={ this._resolveRef('_focusZone') }
-              direction={ FocusZoneDirection.vertical }
-              defaultActiveElement={ '#' + id + '-list' + selectedIndex }
-            >
-              <ul ref={ (c: HTMLElement) => this._optionList = c }
-                id={ id + '-list' }
-                style={ { width: this._dropDown.clientWidth - 2 } }
-                className='ms-Dropdown-items'
-                role='listbox'
-                aria-labelledby={ id + '-label' }>
-                { options.map((option, index) => (
-                  <li id={ id + '-list' + index.toString() }
-                    ref={ Dropdown.Option + index.toString() }
-                    key={ option.key }
-                    data-index={ index }
-                    data-is-focusable={ true }
-                    className={ css('ms-Dropdown-item', { 'is-selected': selectedIndex === index }) }
-                    onClick={ () => this._onItemClick(index) }
-                    onFocus={ () => this.setSelectedIndex(index) }
-                    role='option'
-                    aria-selected={ selectedIndex === index ? 'true' : 'false' }
-                    aria-label={ option.text }
-                  >
-                    { onRenderOption(option, this._onRenderOption) }
-                  </li>
-                )) }
-              </ul>
-            </FocusZone>
-          </Callout>
+          { onRenderContainer(props, this._onRenderContainer) }
         ) }
       </div>
     );
@@ -173,6 +141,29 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
         onChanged(options[index], index);
       }
     }
+  }
+
+  @autobind
+  private _onRenderContainer(props: IDropdownProps): JSX.Element {
+    let {
+      onRenderItem = this._onRenderItem
+    } = this.props;
+
+    let isSmall = true; // fake it for now
+    let selectedOption = this.props.options[this.state.selectedIndex];
+
+    let content = (
+      <FocusZone>
+        <List
+          onRenderCell={ (item, index) => onRenderItem(selectedOption, this._onRenderItem) }
+        />
+      </FocusZone>
+    );
+
+    return (isSmall ?
+      <Panel{ ...this.props  }>{ content } </Panel> :
+      <Callout{ ...this.props }> { content } </Callout>
+    );
   }
 
   @autobind

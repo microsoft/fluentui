@@ -52,6 +52,10 @@ export interface IDropdownProps {
   onRenderOption?: IRenderFunction<IDropdownOption>;
 
   /**
+    * Optional custom renderer for the dropdown container
+    */
+  onRenderContainer?: IRenderFunction<IDropdownProps>;
+  /**
    * Whether or not the Dropdown is disabled.
    */
   disabled?: boolean;
