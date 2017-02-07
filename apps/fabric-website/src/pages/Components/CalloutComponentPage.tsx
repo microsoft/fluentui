@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CalloutPage } from 'fabric-samples/lib/pages/CalloutPage/CalloutPage';
+import { CalloutPage } from 'fabric-examples/lib/pages/CalloutPage/CalloutPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

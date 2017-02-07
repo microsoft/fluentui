@@ -2,7 +2,7 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
@@ -12,7 +12,7 @@ import { LayerHostedExample } from './examples/Layer.Hosted.Example';
 const LayerBasicExampleCode = require('./examples/Layer.Basic.Example.tsx') as string;
 const LayerHostedExampleCode = require('./examples/Layer.Hosted.Example.tsx') as string;
 
-export class LayerPage extends React.Component<IComponentPageProps, {}> {
+export class LayerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
@@ -24,7 +24,7 @@ const ButtonIconExampleCode = require('./examples/Button.Icon.Example.tsx') as s
 const ButtonAnchorExampleCode = require('./examples/Button.Anchor.Example.tsx') as string;
 const ButtonScreenReaderExampleCode = require('./examples/Button.ScreenReader.Example.tsx') as string;
 
-export class ButtonPage extends React.Component<IComponentPageProps, IButtonDemoPageState> {
+export class ButtonPage extends React.Component<IComponentDemoPageProps, IButtonDemoPageState> {
   constructor() {
     super();
     this.state = {

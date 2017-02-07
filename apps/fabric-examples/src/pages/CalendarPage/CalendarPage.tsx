@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   ComponentPage,
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 
@@ -12,7 +12,7 @@ import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
 const CalendarButtonExampleCode = require('./examples/Calendar.Button.Example.tsx') as string;
 const CalendarInlineExampleCode = require('./examples/Calendar.Inline.Example.tsx') as string;
 
-export class CalendarPage extends React.Component<IComponentPageProps, any> {
+export class CalendarPage extends React.Component<IComponentDemoPageProps, any> {
   public render() {
     return (
       <ComponentPage

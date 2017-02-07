@@ -2,14 +2,14 @@ import * as React from 'react';
 import {
   ExampleCard,
   ComponentPage,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { ToggleBasicExample } from './examples/Toggle.Basic.Example';
 
 const ToggleBasicExampleCode = require('./examples/Toggle.Basic.Example.tsx') as string;
 
-export class TogglePage extends React.Component<IComponentPageProps, {}> {
+export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

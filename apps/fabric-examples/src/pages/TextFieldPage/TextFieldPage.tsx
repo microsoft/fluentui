@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   ExampleCard,
   ComponentPage,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { TextFieldBasicExample } from './examples/TextField.Basic.Example';
@@ -11,7 +11,7 @@ import { TextFieldErrorMessageExample } from './examples/TextField.ErrorMessage.
 const TextFieldBasicExampleCode = require('./examples/TextField.Basic.Example.tsx') as string;
 const TextFieldErrorMessageExampleCode = require('./examples/TextField.ErrorMessage.Example.tsx') as string;
 
-export class TextFieldPage extends React.Component<IComponentPageProps, {}> {
+export class TextFieldPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

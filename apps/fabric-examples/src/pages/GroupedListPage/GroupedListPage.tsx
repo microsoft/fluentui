@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
@@ -11,7 +11,7 @@ import { GroupedListCustomExample } from './examples/GroupedList.Custom.Example'
 const GroupedListBasicExampleCode = require('./examples/GroupedList.Basic.Example.tsx') as string;
 const GroupedListCustomExampleCode = require('./examples/GroupedList.Custom.Example.tsx') as string;
 
-export class GroupedListPage extends React.Component<IComponentPageProps, {}> {
+export class GroupedListPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

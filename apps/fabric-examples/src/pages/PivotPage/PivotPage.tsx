@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   ExampleCard,
   ComponentPage,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { PivotBasicExample } from './examples/Pivot.Basic.Example';
@@ -25,7 +25,7 @@ const PivotOnChangeExampleCode = require('./examples/Pivot.OnChange.Example.tsx'
 const PivotIconCountExampleCode = require('./examples/Pivot.IconCount.Example.tsx') as string;
 const PivotOverrideExampleCode = require('./examples/Pivot.Override.Example.tsx') as string;
 
-export class PivotPage extends React.Component<IComponentPageProps, {}> {
+export class PivotPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

@@ -3,7 +3,7 @@ import { Link } from 'office-ui-fabric-react/lib/Link';
 import {
   ExampleCard,
   ComponentPage,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { PickerCustomResultExample } from './examples/Picker.CustomResult.Example';
@@ -12,7 +12,7 @@ import { TagPickerBasicExample } from './examples/TagPicker.Basic.Example';
 const TagPickerExampleCode = require('./examples/TagPicker.Basic.Example.tsx') as string;
 const PickerCustomResultExampleCode = require('./examples/Picker.CustomResult.Example.tsx') as string;
 
-export class PickersPage extends React.Component<IComponentPageProps, {}> {
+export class PickersPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   ComponentPage,
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { textOnlyItems } from '../CommandBarPage/examples/data';
@@ -17,7 +17,7 @@ const CalloutNestedExampleCode = require('./examples/Callout.Nested.Example.tsx'
 const CalloutDirectionalExampleCode = require('./examples/Callout.Directional.Example.tsx') as string;
 const CalloutCoverExampleCode = require('./examples/Callout.Cover.Example.tsx') as string;
 
-export class CalloutPage extends React.Component<IComponentPageProps, any> {
+export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
   public render() {
     let cmdBarParamsTextAndIcons: any = { items: textOnlyItems, farItems: null };
 

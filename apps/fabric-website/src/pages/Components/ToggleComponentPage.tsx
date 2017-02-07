@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TogglePage } from 'fabric-samples/lib/pages/TogglePage/TogglePage';
+import { TogglePage } from 'fabric-examples/lib/pages/TogglePage/TogglePage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

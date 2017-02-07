@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
@@ -15,7 +15,7 @@ const DialogLargeHeaderExampleCode = require('./examples/Dialog.LargeHeader.Exam
 const DialogCloseExampleCode = require('./examples/Dialog.Close.Example.tsx') as string;
 const DialogBlockingExampleCode = require('./examples/Dialog.Blocking.Example.tsx') as string;
 
-export class DialogPage extends React.Component<IComponentPageProps, {}> {
+export class DialogPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

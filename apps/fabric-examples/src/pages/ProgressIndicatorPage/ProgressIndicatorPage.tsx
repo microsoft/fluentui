@@ -2,13 +2,13 @@ import * as React from 'react';
 import {
   ExampleCard,
   ComponentPage,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { ProgressIndicatorBasicExample } from './examples/ProgressIndicator.Basic.Example';
 const ProgressIndicatorBasicExampleCode = require('./examples/ProgressIndicator.Basic.Example.tsx') as string;
 
-export class ProgressIndicatorPage extends React.Component<IComponentPageProps, {}> {
+export class ProgressIndicatorPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

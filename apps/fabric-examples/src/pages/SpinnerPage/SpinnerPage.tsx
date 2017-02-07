@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
@@ -9,7 +9,7 @@ import { SpinnerBasicExample } from './examples/Spinner.Basic.Example';
 
 const SpinnerBasicExampleCode = require('./examples/Spinner.Basic.Example.tsx') as string;
 
-export class SpinnerPage extends React.Component<IComponentPageProps, {}> {
+export class SpinnerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

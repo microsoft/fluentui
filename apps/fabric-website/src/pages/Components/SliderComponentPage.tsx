@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SliderPage } from 'fabric-samples/lib/pages/SliderPage/SliderPage';
+import { SliderPage } from 'fabric-examples/lib/pages/SliderPage/SliderPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

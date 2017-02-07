@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
@@ -9,7 +9,7 @@ import { CheckboxBasicExample } from './examples/Checkbox.Basic.Example';
 
 const CheckboxBasicExampleCode = require('./examples/Checkbox.Basic.Example.tsx') as string;
 
-export class CheckboxPage extends React.Component<IComponentPageProps, any> {
+export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> {
   public render() {
     return (
       <ComponentPage

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   ExampleCard,
   ComponentPage,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { OverlayDarkExample } from './examples/Overlay.Dark.Example';
@@ -11,7 +11,7 @@ import { OverlayLightExample } from './examples/Overlay.Light.Example';
 const OverlayLightExampleCode = require('./examples/Overlay.Light.Example.tsx') as string;
 const OverlayDarkExampleCode = require('./examples/Overlay.Dark.Example.tsx') as string;
 
-export class OverlayPage extends React.Component<IComponentPageProps, {}> {
+export class OverlayPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

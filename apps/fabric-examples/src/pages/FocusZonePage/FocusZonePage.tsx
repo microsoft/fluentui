@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
@@ -13,7 +13,7 @@ const FocusZonePhotosExampleCode = require('./examples/FocusZone.Photos.Example.
 const FocusZoneListExampleCode = require('./examples/FocusZone.List.Example.tsx') as string;
 const FocusZoneDisabledExampleCode = require('./examples/FocusZone.Disabled.Example.tsx') as string;
 
-export class FocusZonePage extends React.Component<IComponentPageProps, {}> {
+export class FocusZonePage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

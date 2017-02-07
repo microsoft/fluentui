@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
@@ -15,7 +15,7 @@ const NavFabricDemoAppExampleCode = require('./examples/Nav.FabricDemoApp.Exampl
 const NavNestedExampleCode = require('./examples/Nav.Nested.Example.tsx') as string;
 const NavByKeysExampleCode = require('./examples/Nav.ByKeys.Example.tsx') as string;
 
-export class NavPage extends React.Component<IComponentPageProps, {}> {
+export class NavPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

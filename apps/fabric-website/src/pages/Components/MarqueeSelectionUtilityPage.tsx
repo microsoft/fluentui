@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MarqueeSelectionPage } from 'fabric-samples/lib/pages/MarqueeSelectionPage/MarqueeSelectionPage';
+import { MarqueeSelectionPage } from 'fabric-examples/lib/pages/MarqueeSelectionPage/MarqueeSelectionPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

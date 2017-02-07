@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   ExampleCard,
   ComponentPage,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { PanelSmallRightExample } from './examples/Panel.SmallRight.Example';
@@ -25,7 +25,7 @@ const PanelExtraLargeExampleCode = require('./examples/Panel.ExtraLarge.Example.
 const PanelLightDismissExampleCode = require('./examples/Panel.LightDismiss.Example.tsx') as string;
 const PanelNonModalExampleCode = require('./examples/Panel.NonModal.Example.tsx') as string;
 
-export class PanelPage extends React.Component<IComponentPageProps, {}> {
+export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

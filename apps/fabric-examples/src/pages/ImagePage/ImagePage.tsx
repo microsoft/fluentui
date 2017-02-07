@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
@@ -20,7 +20,7 @@ const ImageCoverExampleCode = require('./examples/Image.Cover.Example.tsx') as s
 const ImageNoneExampleCode = require('./examples/Image.None.Example.tsx') as string;
 const ImageMaximizeFrameExampleCode = require('./examples/Image.MaximizeFrame.Example.tsx') as string;
 
-export class ImagePage extends React.Component<IComponentPageProps, {}> {
+export class ImagePage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

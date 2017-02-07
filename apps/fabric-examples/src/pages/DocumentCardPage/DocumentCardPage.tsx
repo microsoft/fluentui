@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
@@ -13,7 +13,7 @@ const DocumentCardBasicExampleCode = require('./examples/DocumentCard.Basic.Exam
 const DocumentCardCompleteExampleCode = require('./examples/DocumentCard.Complete.Example.tsx') as string;
 const DocumentCardCompactExampleCode = require('./examples/DocumentCard.Compact.Example.tsx') as string;
 
-export class DocumentCardPage extends React.Component<IComponentPageProps, {}> {
+export class DocumentCardPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

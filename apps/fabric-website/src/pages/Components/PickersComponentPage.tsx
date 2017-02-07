@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PickersPage } from 'fabric-samples/lib/pages/PickersPage/PickersPage';
+import { PickersPage } from 'fabric-examples/lib/pages/PickersPage/PickersPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

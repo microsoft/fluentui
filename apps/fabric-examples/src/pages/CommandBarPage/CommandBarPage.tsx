@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
@@ -12,7 +12,7 @@ import { CommandBarNonFocusableItemsExample } from './examples/CommandBar.NonFoc
 const CommandBarBasicExampleCode = require('./examples/CommandBar.Basic.Example.tsx') as string;
 const CommandBarNoFocusableItemsExampleCode = require('./examples/CommandBar.NonFocusable.Example.tsx') as string;
 
-export class CommandBarPage extends React.Component<IComponentPageProps, {}> {
+export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     let cmdBarParamsTextAndIcons: any = { items: items, farItems: farItems };
 

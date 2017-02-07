@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
@@ -9,7 +9,7 @@ import { MessageBarBasicExample } from './examples/MessageBar.Basic.Example';
 
 const MessageBarBasicExampleCode = require('./examples/MessageBar.Basic.Example.tsx') as string;
 
-export class MessageBarPage extends React.Component<IComponentPageProps, {}> {
+export class MessageBarPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

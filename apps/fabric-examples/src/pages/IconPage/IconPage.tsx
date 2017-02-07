@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
@@ -13,7 +13,7 @@ const IconBasicExampleCode = require('./examples/Icon.Basic.Example.tsx') as str
 const IconColorExampleCode = require('./examples/Icon.Color.Example.tsx') as string;
 const IconImageSheetExampleCode = require('./examples/Icon.ImageSheet.Example.tsx') as string;
 
-export class IconPage extends React.Component<IComponentPageProps, {}> {
+export class IconPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

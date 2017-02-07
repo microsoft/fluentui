@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ChoiceGroupPage } from 'fabric-samples/lib/pages/ChoiceGroupPage/ChoiceGroupPage';
+import { ChoiceGroupPage } from 'fabric-examples/lib/pages/ChoiceGroupPage/ChoiceGroupPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
@@ -9,7 +9,7 @@ import { ColorPickerBasicExample } from './examples/ColorPicker.Basic.Example';
 
 const ColorPickerBasicExampleCode = require('./examples/ColorPicker.Basic.Example.tsx') as string;
 
-export class ColorPickerPage extends React.Component<IComponentPageProps, {}> {
+export class ColorPickerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

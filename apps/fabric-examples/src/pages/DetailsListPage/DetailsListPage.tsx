@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import {
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
@@ -24,7 +24,7 @@ const DetailsListAdvancedExampleCode = require('./examples/DetailsList.Advanced.
 import { DetailsListGroupedExample } from './examples/DetailsList.Grouped.Example';
 const DetailsListGroupedExampleCode = require('./examples/DetailsList.Grouped.Example.tsx') as string;
 
-export class DetailsListPage extends React.Component<IComponentPageProps, {}> {
+export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

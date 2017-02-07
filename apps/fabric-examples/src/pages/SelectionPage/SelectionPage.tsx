@@ -2,14 +2,14 @@ import * as React from 'react';
 import {
   ExampleCard,
   ComponentPage,
-  IComponentPageProps
+  IComponentDemoPageProps
 } from '@uifabric/example-app-base';
 
 import { SelectionBasicExample } from './examples/Selection.Basic.Example';
 
 const SelectionBasicExampleCode = require('./examples/Selection.Basic.Example.tsx') as string;
 
-export class SelectionPage extends React.Component<IComponentPageProps, {}> {
+export class SelectionPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

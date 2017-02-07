@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
@@ -9,7 +9,7 @@ import { LinkBasicExample } from './examples/Link.Basic.Example';
 
 let LinkBasicExampleCode = require('./examples/Link.Basic.Example.tsx') as string;
 
-export class LinkPage extends React.Component<IComponentPageProps, {}> {
+export class LinkPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

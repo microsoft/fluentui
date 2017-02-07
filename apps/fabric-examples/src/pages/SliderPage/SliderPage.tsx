@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
@@ -9,7 +9,7 @@ import { SliderBasicExample } from './examples/Slider.Basic.Example';
 
 const SliderBasicExampleCode = require('./examples/Slider.Basic.Example.tsx') as string;
 
-export class SliderPage extends React.Component<IComponentPageProps, {}> {
+export class SliderPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

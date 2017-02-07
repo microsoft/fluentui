@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
@@ -9,7 +9,7 @@ import { ChoiceGroupBasicExample } from './examples/ChoiceGroup.Basic.Example';
 
 const ChoiceGroupBasicExampleCode = require('./examples/ChoiceGroup.Basic.Example.tsx') as string;
 
-export class ChoiceGroupPage extends React.Component<IComponentPageProps, {}> {
+export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

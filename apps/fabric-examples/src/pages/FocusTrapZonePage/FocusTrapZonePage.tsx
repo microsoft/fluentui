@@ -4,7 +4,7 @@ import {
 } from 'office-ui-fabric-react/lib/Link';
 import {
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
@@ -17,7 +17,7 @@ let FocusTrapZoneBoxExampleWithFocusableItemCode = require('./examples/FocusTrap
 import FocusTrapZoneBoxClickExample from './examples/FocusTrapZone.Box.Click.Example';
 let FocusTrapZoneBoxClickExampleCode = require('./examples/FocusTrapZone.Box.Click.Example.tsx') as string;
 
-export class FocusTrapZonePage extends React.Component<IComponentPageProps, {}> {
+export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

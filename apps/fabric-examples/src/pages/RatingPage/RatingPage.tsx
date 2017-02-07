@@ -2,14 +2,14 @@ import * as React from 'react';
 import {
   ExampleCard,
   ComponentPage,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { RatingBasicExample } from './examples/Rating.Basic.Example';
 
 const RatingBasicExampleCode = require('./examples/Rating.Basic.Example.tsx') as string;
 
-export class RatingPage extends React.Component<IComponentPageProps, {}> {
+export class RatingPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

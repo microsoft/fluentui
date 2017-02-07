@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
@@ -10,7 +10,7 @@ import { BreadcrumbBasicExample } from './examples/Breadcrumb.Basic.Example';
 
 const BreadcrumbBasicExampleCode = require('./examples/Breadcrumb.Basic.Example.tsx') as string;
 
-export class BreadcrumbPage extends React.Component<IComponentPageProps, any> {
+export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any> {
   public render() {
     return (
       <ComponentPage

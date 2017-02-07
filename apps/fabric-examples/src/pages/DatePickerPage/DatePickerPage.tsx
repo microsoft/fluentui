@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
@@ -13,7 +13,7 @@ const DatePickerBasicExampleCode = require('./examples/DatePicker.Basic.Example.
 const DatePickerRequiredExampleCode = require('./examples/DatePicker.Required.Example.tsx') as string;
 const DatePickerInputExampleCode = require('./examples/DatePicker.Input.Example.tsx') as string;
 
-export class DatePickerPage extends React.Component<IComponentPageProps, {}> {
+export class DatePickerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PivotPage } from 'fabric-samples/lib/pages/PivotPage/PivotPage';
+import { PivotPage } from 'fabric-examples/lib/pages/PivotPage/PivotPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

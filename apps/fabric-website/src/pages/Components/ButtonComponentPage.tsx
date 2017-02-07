@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ButtonPage } from 'fabric-samples/lib/pages/ButtonPage/ButtonPage';
+import { ButtonPage } from 'fabric-examples/lib/pages/ButtonPage/ButtonPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

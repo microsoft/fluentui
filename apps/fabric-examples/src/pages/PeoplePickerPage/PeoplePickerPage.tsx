@@ -3,14 +3,14 @@ import { Link } from 'office-ui-fabric-react/lib/Link';
 import {
   ExampleCard,
   ComponentPage,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { PeoplePickerTypesExample } from './examples/PeoplePicker.Types.Example';
 
 const PeoplePickerTypesExampleCode = require('./examples/PeoplePicker.Types.Example.tsx') as string;
 
-export class PeoplePickerPage extends React.Component<IComponentPageProps, {}> {
+export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

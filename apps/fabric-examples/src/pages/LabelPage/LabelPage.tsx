@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
@@ -9,7 +9,7 @@ import { LabelBasicExample } from './examples/Label.Basic.Example';
 
 const LabelBasicExampleCode = require('./examples/Label.Basic.Example.tsx') as string;
 
-export class LabelPage extends React.Component<IComponentPageProps, any> {
+export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
   public render() {
     return (
       <ComponentPage

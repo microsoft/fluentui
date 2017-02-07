@@ -1,5 +1,6 @@
 export * from './components/App/App';
 export * from './components/ComponentPage/ComponentPage';
+export * from './components/ComponentPage/IComponentDemoPageProps';
 export * from './components/ExampleCard/ExampleCard';
 export * from './components/Header/Header';
 export * from './components/Highlight/Highlight';

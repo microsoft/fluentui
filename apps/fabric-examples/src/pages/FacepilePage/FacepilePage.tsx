@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
@@ -13,7 +13,7 @@ const FacepileAddFaceExampleCode = require('./examples/Facepile.AddFace.Example.
 const FacepileBasicExampleCode = require('./examples/Facepile.Basic.Example.tsx') as string;
 const FacepileOverflowExampleCode = require('./examples/Facepile.Overflow.Example.tsx') as string;
 
-export class FacepilePage extends React.Component<IComponentPageProps, {}> {
+export class FacepilePage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
       <ComponentPage

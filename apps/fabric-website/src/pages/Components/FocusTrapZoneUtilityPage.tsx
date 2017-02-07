@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FocusTrapZonePage } from 'fabric-samples/lib/pages/FocusTrapZonePage/FocusTrapZonePage';
+import { FocusTrapZonePage } from 'fabric-examples/lib/pages/FocusTrapZonePage/FocusTrapZonePage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

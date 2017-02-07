@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MessageBarPage } from 'fabric-samples/lib/pages/MessageBarPage/MessageBarPage';
+import { MessageBarPage } from 'fabric-examples/lib/pages/MessageBarPage/MessageBarPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

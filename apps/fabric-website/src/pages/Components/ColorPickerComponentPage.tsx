@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ColorPickerPage } from 'fabric-samples/lib/pages/ColorPickerPage/ColorPickerPage';
+import { ColorPickerPage } from 'fabric-examples/lib/pages/ColorPickerPage/ColorPickerPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

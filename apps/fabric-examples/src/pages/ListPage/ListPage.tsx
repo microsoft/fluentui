@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  IComponentPageProps,
+  IComponentDemoPageProps,
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
@@ -18,7 +18,7 @@ const ListScrollingExampleCode = require('./examples/List.Scrolling.Example.tsx'
 
 let _cachedItems;
 
-export class ListPage extends React.Component<IComponentPageProps, {}> {
+export class ListPage extends React.Component<IComponentDemoPageProps, {}> {
   constructor() {
     super();
 
