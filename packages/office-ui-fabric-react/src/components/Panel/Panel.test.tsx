@@ -15,25 +15,38 @@ describe('Panel', () => {
     expect(document.querySelector('.ms-Panel')).to.be.null;
   });
 
-  it('Fires dismissed after closing', () => {
+  it('Fires the correct events when closing', () => {
     let dismissedCalled = false;
+    let dismissCalled = false;
 
     const handleDismissed = () => {
       dismissedCalled = true;
     };
 
     const div = document.createElement('div');
-    ReactDOM.render(<Panel isOpen={true} onDismissed={handleDismissed} />, div);
-    ReactDOM.render(<Panel isOpen={false} onDismissed={handleDismissed} />, div);
+
+    let panel: Panel = ReactDOM.render(
+      <Panel
+        isOpen={ true }
+        onDismiss={ () => { dismissCalled = true; } }
+        onDismissed={ handleDismissed } />,
+      div) as any;
+
+    panel.dismiss();
+
+    expect(dismissCalled).equals(true, 'onDismiss was not called');
+    expect(dismissedCalled).equals(false, 'onDismissed was called prematurely');
+
+    // Genrate event
     const event = document.createEvent('CustomEvent'); // AnimationEvent is not supported by PhantomJS
     event.initCustomEvent('animationend', true, true, {});
     (event as any).animationName = 'fadeOut';
 
-    const panel = document.querySelector('.ms-Panel');
+    const panelElement = document.querySelector('.ms-Panel');
     expect(panel).not.to.be.null;
 
-    panel.dispatchEvent(event);
+    panelElement.dispatchEvent(event);
 
-    expect(dismissedCalled).to.be.true;
+    expect(dismissedCalled).equals(true, 'onDismissed was not called');
   });
 });
