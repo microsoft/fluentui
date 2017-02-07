@@ -179,6 +179,15 @@ export const AppState: IAppState = {
           url: '#/examples/overlay'
         },
         {
+          component: PanePage,
+          getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/PanePage/PanePage').PanePage)),
+          key: 'Pane',
+          name: 'Pane',
+          status: ExampleStatus.placeholder,
+          url: '#/examples/pane'
+        },
+        {
+          component: PanelPage,
           getComponent: cb => require.ensure([], () => cb(require<any>('../../pages/PanelPage/PanelPage').PanelPage)),
           key: 'Panel',
           name: 'Panel',
