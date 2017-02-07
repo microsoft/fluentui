@@ -157,9 +157,11 @@ $DropDown-item-height: 36px;
 }
 
 .ms-Dropdown-panel {
+  // Force drop shadow even under medium breakpoint
   .ms-Panel-main {
-    box-shadow: 0 0px 15px -5px rgba(0, 0, 0, 0.4);
+    @include drop-shadow(-30px, 0px, 30px, -30px, .2);
   }
+  // Remove padding as items have their own padding and bg
   .ms-Panel-contentInner {
     padding: 0 0 20px
   }
