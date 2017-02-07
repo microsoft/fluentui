@@ -7,7 +7,7 @@ import {
   IRectangle
 } from '../../Utilities';
 
-export interface ICalloutProps extends React.Props<Callout | CalloutContent | HTMLElement> {
+export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
 
   /**
    * The target that the Callout should try to position itself based on.
