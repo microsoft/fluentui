@@ -1,20 +1,19 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  IComponentPageProps,
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { FocusZonePhotosExample } from './examples/FocusZone.Photos.Example';
 import { FocusZoneListExample } from './examples/FocusZone.List.Example';
 import { FocusZoneDisabledExample } from './examples/FocusZone.Disabled.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const FocusZonePhotosExampleCode = require('./examples/FocusZone.Photos.Example.tsx') as string;
 const FocusZoneListExampleCode = require('./examples/FocusZone.List.Example.tsx') as string;
 const FocusZoneDisabledExampleCode = require('./examples/FocusZone.Disabled.Example.tsx') as string;
 
-export class FocusZonePage extends React.Component<IComponentDemoPageProps, any> {
+export class FocusZonePage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -34,7 +33,11 @@ export class FocusZonePage extends React.Component<IComponentDemoPageProps, any>
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='FocusZone' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/FocusZone/FocusZone.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

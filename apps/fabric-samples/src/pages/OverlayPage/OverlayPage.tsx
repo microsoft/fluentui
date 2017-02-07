@@ -1,18 +1,17 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
+  ComponentPage,
+  IComponentPageProps,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { OverlayDarkExample } from './examples/Overlay.Dark.Example';
 import { OverlayLightExample } from './examples/Overlay.Light.Example';
 
 const OverlayLightExampleCode = require('./examples/Overlay.Light.Example.tsx') as string;
 const OverlayDarkExampleCode = require('./examples/Overlay.Dark.Example.tsx') as string;
 
-export class OverlayPage extends React.Component<IComponentDemoPageProps, any> {
+export class OverlayPage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -29,7 +28,11 @@ export class OverlayPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='Overlay' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/Overlay/Overlay.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

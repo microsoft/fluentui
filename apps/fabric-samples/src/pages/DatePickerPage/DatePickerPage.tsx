@@ -1,20 +1,19 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  IComponentPageProps,
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { DatePickerBasicExample } from './examples/DatePicker.Basic.Example';
 import { DatePickerRequiredExample } from './examples/DatePicker.Required.Example';
 import { DatePickerInputExample } from './examples/DatePicker.Input.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const DatePickerBasicExampleCode = require('./examples/DatePicker.Basic.Example.tsx') as string;
 const DatePickerRequiredExampleCode = require('./examples/DatePicker.Required.Example.tsx') as string;
 const DatePickerInputExampleCode = require('./examples/DatePicker.Input.Example.tsx') as string;
 
-export class DatePickerPage extends React.Component<IComponentDemoPageProps, any> {
+export class DatePickerPage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -34,7 +33,11 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, any
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='DatePicker' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/DatePicker/DatePicker.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

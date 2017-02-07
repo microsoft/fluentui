@@ -1,17 +1,15 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  IComponentPageProps,
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { ContextualMenuBasicExample } from './examples/ContextualMenu.Basic.Example';
 import { ContextualMenuCheckmarksExample } from './examples/ContextualMenu.Checkmarks.Example';
 import { ContextualMenuDirectionalExample } from './examples/ContextualMenu.Directional.Example';
 import { ContextualMenuCustomizationExample } from './examples/ContextualMenu.Customization.Example';
 import { ContextualMenuHeaderExample } from './examples/ContextualMenu.Header.Example';
-
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const ContextualMenuBasicExampleCode = require('./examples/ContextualMenu.Basic.Example.tsx') as string;
 const ContextualMenuCheckmarksExampleCode = require('./examples/ContextualMenu.Checkmarks.Example.tsx') as string;
@@ -19,7 +17,7 @@ const ContextualMenuDirectionalExampleCode = require('./examples/ContextualMenu.
 const ContextualMenuCustomizationExampleCode = require('./examples/ContextualMenu.Customization.Example.tsx') as string;
 const ContextualMenuHeaderExampleCode = require('./examples/ContextualMenu.Header.Example.tsx') as string;
 
-export class ContextualMenuPage extends React.Component<IComponentDemoPageProps, any> {
+export class ContextualMenuPage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -45,10 +43,12 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
           </div>
         }
         propertiesTables={
-          <div>
-            <PropertiesTableSet componentName='ContextualMenu' />
-            <PropertiesTableSet componentName='Callout' renderOnly={ ['DirectionalHint'] } />
-          </div>
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/ContextualMenu/ContextualMenu.Props.ts'),
+              require<string>('office-ui-fabric-react/lib/components/Callout/Callout.Props.ts'),
+            ] }
+          />
         }
         overview={
           <div>

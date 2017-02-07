@@ -3,10 +3,9 @@ import { Link } from 'office-ui-fabric-react/lib/Link';
 import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { TooltipBottomExample } from './examples/Tooltip.Bottom.Example';
 import { TooltipBasicExample } from './examples/Tooltip.Basic.Example';
 
@@ -33,7 +32,11 @@ export class TooltipPage extends React.Component<any, any> {
           </LayerHost>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='Tooltip' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/Tooltip/Tooltip.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

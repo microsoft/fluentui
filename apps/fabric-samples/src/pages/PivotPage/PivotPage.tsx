@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  ComponentPage,
+  IComponentPageProps,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { PivotBasicExample } from './examples/Pivot.Basic.Example';
 import { PivotIconCountExample } from './examples/Pivot.IconCount.Example';
 import { PivotLargeExample } from './examples/Pivot.Large.Example';
@@ -14,7 +14,6 @@ import { PivotFabricExample } from './examples/Pivot.Fabric.Example';
 import { PivotOnChangeExample } from './examples/Pivot.OnChange.Example';
 import { PivotRemoveExample } from './examples/Pivot.Remove.Example';
 import { PivotOverrideExample } from './examples/Pivot.Override.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const PivotRemoveExampleCode = require('./examples/Pivot.Remove.Example.tsx') as string;
 const PivotBasicExampleCode = require('./examples/Pivot.Basic.Example.tsx') as string;
@@ -26,7 +25,7 @@ const PivotOnChangeExampleCode = require('./examples/Pivot.OnChange.Example.tsx'
 const PivotIconCountExampleCode = require('./examples/Pivot.IconCount.Example.tsx') as string;
 const PivotOverrideExampleCode = require('./examples/Pivot.Override.Example.tsx') as string;
 
-export class PivotPage extends React.Component<IComponentDemoPageProps, any> {
+export class PivotPage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -64,10 +63,12 @@ export class PivotPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         propertiesTables={
-          <div>
-            <PropertiesTableSet componentName='Pivot' />
-            <PropertiesTableSet componentPath='components/Pivot/' componentName='PivotItem' />
-          </div>
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/Pivot/Pivot.Props.ts'),
+              require<string>('office-ui-fabric-react/lib/components/Pivot/PivotItem.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

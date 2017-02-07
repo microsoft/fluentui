@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { IProperty, PropertyType, PropertiesTable } from './PropertiesTable';
+import { IProperty, PropertyType } from '../../utilities/parser/index';
+import { PropertiesTable } from './PropertiesTable';
 import { IPropertiesTableSetProps } from './PropertiesTableSet.Props';
 import { parse } from '../../utilities/parser/index';
 
@@ -14,14 +15,17 @@ export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps
 
   constructor(props: IPropertiesTableSetProps) {
     super(props);
-    let { componentName, componentPath } = props;
+    let { componentName, componentPath, sources } = props;
     let src;
     let properties: IProperty[] = [];
 
-    if (componentPath) {
-      src = require('office-ui-fabric-react/lib/' + componentPath + componentName + '.Props.ts');
+    if (sources) {
+      src = '';
+      sources.forEach(source => src += source);
+    } else if (componentPath && componentName) {
+      src = require(componentPath + componentName + '.Props.ts');
     } else {
-      src = require('office-ui-fabric-react/lib/components/' + componentName + '/' + componentName + '.Props.ts');
+      throw new Error('PropertiesTableSet was used without source or a componentPath/name');
     }
 
     if (props.renderOnly) {

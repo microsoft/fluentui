@@ -1,16 +1,15 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  IComponentPageProps,
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { DropdownBasicExample } from './examples/Dropdown.Basic.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const DropdownBasicExampleCode = require('./examples/Dropdown.Basic.Example.tsx') as string;
 
-export class DropdownPage extends React.Component<IComponentDemoPageProps, any> {
+export class DropdownPage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -22,7 +21,11 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, any> 
           </ExampleCard>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='Dropdown' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/Dropdown/Dropdown.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

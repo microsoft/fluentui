@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { loadTheme, ITheme } from '@microsoft/load-themed-styles';
-import { Highlight } from '../../components/Highlight/Highlight';
+import { Highlight } from '@uifabric/example-app-base';
 import { defaultTheme } from './defaultTheme';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { DetailsList, DetailsListLayoutMode as LayoutMode } from 'office-ui-fabric-react/lib/DetailsList';

@@ -1,26 +1,24 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  IComponentPageProps,
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { ListBasicExample } from './examples/List.Basic.Example';
 import { ListMailExample } from './examples/List.Mail.Example';
 import { ListGridExample } from './examples/List.Grid.Example';
 import { ListScrollingExample } from './examples/List.Scrolling.Example';
-import { createListItems } from '../../utilities/data';
+import { createListItems } from '@uifabric/example-app-base';
 
 const ListBasicExampleCode = require('./examples/List.Basic.Example.tsx') as string;
 const ListMailExampleCode = require('./examples/List.Mail.Example.tsx') as string;
 const ListGridExampleCode = require('./examples/List.Grid.Example.tsx') as string;
 const ListScrollingExampleCode = require('./examples/List.Scrolling.Example.tsx') as string;
 
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
-
 let _cachedItems;
 
-export class ListPage extends React.Component<IComponentDemoPageProps, any> {
+export class ListPage extends React.Component<IComponentPageProps, {}> {
   constructor() {
     super();
 
@@ -49,7 +47,11 @@ export class ListPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='List' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/List/List.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

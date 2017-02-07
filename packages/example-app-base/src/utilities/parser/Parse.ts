@@ -1,4 +1,4 @@
-import { IProperty, PropertyType } from '../../components/demoComponents';
+import { IProperty, PropertyType } from './interfaces';
 import { InterfaceParserHelper } from './InterfaceParserHelper';
 import { EnumParserHelper } from './EnumParserHelper';
 

@@ -2,18 +2,17 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  IComponentPageProps,
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { LayerBasicExample } from './examples/Layer.Basic.Example';
 import { LayerHostedExample } from './examples/Layer.Hosted.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const LayerBasicExampleCode = require('./examples/Layer.Basic.Example.tsx') as string;
 const LayerHostedExampleCode = require('./examples/Layer.Hosted.Example.tsx') as string;
 
-export class LayerPage extends React.Component<IComponentDemoPageProps, any> {
+export class LayerPage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -30,7 +29,11 @@ export class LayerPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='Layer' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/Layer/Layer.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

@@ -3,10 +3,9 @@ import { Link } from 'office-ui-fabric-react/lib/Link';
 import { LayerHost } from 'office-ui-fabric-react/lib/Layer';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { TeachingBubbleBasicExample } from './examples/TeachingBubble.Basic.Example';
 import { TeachingBubbleCondensedExample } from './examples/TeachingBubble.Condensed.Example';
 import { TeachingBubbleIllustrationExample } from './examples/TeachingBubble.Illustration.Example';
@@ -35,7 +34,11 @@ export class TeachingBubblePage extends React.Component<any, any> {
           </LayerHost>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='TeachingBubble' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/TeachingBubble/TeachingBubble.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

@@ -2,18 +2,17 @@ import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  ComponentPage,
+  IComponentPageProps,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { PickerCustomResultExample } from './examples/Picker.CustomResult.Example';
 import { TagPickerBasicExample } from './examples/TagPicker.Basic.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const TagPickerExampleCode = require('./examples/TagPicker.Basic.Example.tsx') as string;
 const PickerCustomResultExampleCode = require('./examples/Picker.CustomResult.Example.tsx') as string;
 
-export class PickersPage extends React.Component<IComponentDemoPageProps, any> {
+export class PickersPage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -30,7 +29,11 @@ export class PickersPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='BasePicker' componentPath='components/pickers/' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/pickers/BasePicker.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

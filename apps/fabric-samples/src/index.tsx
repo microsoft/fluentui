@@ -2,22 +2,16 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import * as ReactDOM from 'react-dom';
-import { App } from './components/App/App';
-import { AppState } from './components/App/AppState';
+import { App, AppDefinition } from './AppDefinition';
 import { Router, Route } from 'office-ui-fabric-react/lib/utilities/router/index';
 import { GettingStartedPage } from './pages/GettingStartedPage/GettingStartedPage';
 import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import * as Debugging from './utilities/debugging';
 
 import './index.scss';
 import './ColorStyles.scss';
 
 setBaseUrl('./dist/');
-
-/* tslint:disable:no-string-literal */
-window['Debugging'] = Debugging;
-/* tslint:enable:no-string-literal */
 
 let rootElement;
 
@@ -50,10 +44,10 @@ function _onLoad() {
 }
 
 function _getRoutes() {
-  let routes = AppState.testPages.map(page => <Route key={ page.key } path={ page.url } component={ page.component } />);
+  let routes = AppDefinition.testPages.map(page => <Route key={ page.key } path={ page.url } component={ page.component } />);
   let appRoutes = [];
 
-  AppState.examplePages.forEach(group => {
+  AppDefinition.examplePages.forEach(group => {
     group.links
       .filter(link => link.hasOwnProperty('component') || link.hasOwnProperty('getComponent'))
       .forEach((link, linkIndex) => {

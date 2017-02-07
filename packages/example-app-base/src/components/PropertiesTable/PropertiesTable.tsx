@@ -3,44 +3,17 @@ import { assign } from 'office-ui-fabric-react/lib/Utilities';
 import { DetailsList, DetailsListLayoutMode, IColumn, IGroup } from 'office-ui-fabric-react/lib/DetailsList';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import './PropertiesTable.scss';
-
-export interface IProperty {
-  name: string;
-  propertyName: string;
-  propertyType: PropertyType;
-  property: IInterfaceProperty[] | IEnumProperty[];
-}
-
-export interface IInterfaceProperty {
-  name: string;
-  type: string;
-  defaultValue: string;
-  description: string;
-  interfacePropertyType: InterfacePropertyType;
-  deprecatedMessage: string;
-}
-
-export enum InterfacePropertyType {
-  required = 0,
-  optional = 1,
-  deprecated = 2
-}
-
-export interface IEnumProperty {
-  name: string;
-  description: string;
-}
+import {
+  IInterfaceProperty,
+  IEnumProperty,
+  InterfacePropertyType
+} from '../../utilities/parser/index';
 
 export interface IPropertiesTableProps {
   title?: string;
   properties: IInterfaceProperty[] | IEnumProperty[];
   renderAsEnum?: boolean;
   key?: string;
-}
-
-export enum PropertyType {
-  enum = 0,
-  interface = 1
 }
 
 const DEFAULT_COLUMNS: IColumn[] = [

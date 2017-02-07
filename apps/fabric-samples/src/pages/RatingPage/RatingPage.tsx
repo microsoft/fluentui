@@ -1,16 +1,15 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  ComponentPage,
+  IComponentPageProps,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { RatingBasicExample } from './examples/Rating.Basic.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const RatingBasicExampleCode = require('./examples/Rating.Basic.Example.tsx') as string;
 
-export class RatingPage extends React.Component<IComponentDemoPageProps, any> {
+export class RatingPage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -22,7 +21,11 @@ export class RatingPage extends React.Component<IComponentDemoPageProps, any> {
           </ExampleCard>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='Rating' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/Rating/Rating.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

@@ -1,18 +1,17 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  IComponentPageProps,
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { GroupedListBasicExample } from './examples/GroupedList.Basic.Example';
 import { GroupedListCustomExample } from './examples/GroupedList.Custom.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const GroupedListBasicExampleCode = require('./examples/GroupedList.Basic.Example.tsx') as string;
 const GroupedListCustomExampleCode = require('./examples/GroupedList.Custom.Example.tsx') as string;
 
-export class GroupedListPage extends React.Component<IComponentDemoPageProps, any> {
+export class GroupedListPage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -29,7 +28,11 @@ export class GroupedListPage extends React.Component<IComponentDemoPageProps, an
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='GroupedList' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/GroupedList/GroupedList.Props.ts')
+            ] }
+          />
         }
         overview={
           <p>Allows you to render a set of items as multiple lists with various grouping properties.</p>

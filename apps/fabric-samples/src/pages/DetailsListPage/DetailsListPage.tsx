@@ -2,12 +2,10 @@ import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
-
+  IComponentPageProps,
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { DetailsListBasicExample } from './examples/DetailsList.Basic.Example';
 const DetailsListBasicExampleCode = require('./examples/DetailsList.Basic.Example.tsx') as string;
 
@@ -26,7 +24,7 @@ const DetailsListAdvancedExampleCode = require('./examples/DetailsList.Advanced.
 import { DetailsListGroupedExample } from './examples/DetailsList.Grouped.Example';
 const DetailsListGroupedExampleCode = require('./examples/DetailsList.Grouped.Example.tsx') as string;
 
-export class DetailsListPage extends React.Component<IComponentDemoPageProps, any> {
+export class DetailsListPage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -55,7 +53,11 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, an
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='DetailsList' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/DetailsList/DetailsList.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

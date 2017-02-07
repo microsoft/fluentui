@@ -2,16 +2,15 @@ import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  ComponentPage,
+  IComponentPageProps,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { PeoplePickerTypesExample } from './examples/PeoplePicker.Types.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const PeoplePickerTypesExampleCode = require('./examples/PeoplePicker.Types.Example.tsx') as string;
 
-export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, any> {
+export class PeoplePickerPage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -25,7 +24,11 @@ export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, a
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='BasePicker' componentPath='components/pickers/' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/pickers/BasePicker.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

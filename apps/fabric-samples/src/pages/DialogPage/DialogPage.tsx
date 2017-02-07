@@ -1,22 +1,21 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  IComponentPageProps,
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { DialogBasicExample } from './examples/Dialog.Basic.Example';
 import { DialogLargeHeaderExample } from './examples/Dialog.LargeHeader.Example';
 import { DialogCloseExample } from './examples/Dialog.Close.Example';
 import { DialogBlockingExample } from './examples/Dialog.Blocking.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const DialogBasicExampleCode = require('./examples/Dialog.Basic.Example.tsx') as string;
 const DialogLargeHeaderExampleCode = require('./examples/Dialog.LargeHeader.Example.tsx') as string;
 const DialogCloseExampleCode = require('./examples/Dialog.Close.Example.tsx') as string;
 const DialogBlockingExampleCode = require('./examples/Dialog.Blocking.Example.tsx') as string;
 
-export class DialogPage extends React.Component<IComponentDemoPageProps, any> {
+export class DialogPage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -48,9 +47,11 @@ export class DialogPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         propertiesTables={
-          <div>
-            <PropertiesTableSet componentName='Dialog' />
-          </div>
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/Dialog/Dialog.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

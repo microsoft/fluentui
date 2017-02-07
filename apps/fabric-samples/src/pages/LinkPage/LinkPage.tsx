@@ -1,16 +1,15 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  IComponentPageProps,
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { LinkBasicExample } from './examples/Link.Basic.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 let LinkBasicExampleCode = require('./examples/Link.Basic.Example.tsx') as string;
 
-export class LinkPage extends React.Component<IComponentDemoPageProps, any> {
+export class LinkPage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -22,7 +21,11 @@ export class LinkPage extends React.Component<IComponentDemoPageProps, any> {
           </ExampleCard>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='Link' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/Link/Link.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  ComponentPage,
+  IComponentPageProps,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { PanelSmallRightExample } from './examples/Panel.SmallRight.Example';
 import { PanelSmallLeftExample } from './examples/Panel.SmallLeft.Example';
 import { PanelSmallFluidExample } from './examples/Panel.SmallFluid.Example';
@@ -14,7 +14,6 @@ import { PanelLargeFixedExample } from './examples/Panel.LargeFixed.Example';
 import { PanelExtraLargeExample } from './examples/Panel.ExtraLarge.Example';
 import { PanelLightDismissExample } from './examples/Panel.LightDismiss.Example';
 import { PanelNonModalExample } from './examples/Panel.NonModal.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const PanelSmallRightExampleCode = require('./examples/Panel.SmallRight.Example.tsx') as string;
 const PanelSmallLeftExampleCode = require('./examples/Panel.SmallLeft.Example.tsx') as string;
@@ -26,7 +25,7 @@ const PanelExtraLargeExampleCode = require('./examples/Panel.ExtraLarge.Example.
 const PanelLightDismissExampleCode = require('./examples/Panel.LightDismiss.Example.tsx') as string;
 const PanelNonModalExampleCode = require('./examples/Panel.NonModal.Example.tsx') as string;
 
-export class PanelPage extends React.Component<IComponentDemoPageProps, any> {
+export class PanelPage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -64,7 +63,11 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='Panel' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/Panel/Panel.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

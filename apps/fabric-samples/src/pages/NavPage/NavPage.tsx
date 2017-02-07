@@ -1,22 +1,21 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  IComponentPageProps,
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { NavBasicExample } from './examples/Nav.Basic.Example';
 import { NavFabricDemoAppExample } from './examples/Nav.FabricDemoApp.Example';
 import { NavNestedExample } from './examples/Nav.Nested.Example';
 import { NavByKeysExample } from './examples/Nav.ByKeys.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const NavBasicExampleCode = require('./examples/Nav.Basic.Example.tsx') as string;
 const NavFabricDemoAppExampleCode = require('./examples/Nav.FabricDemoApp.Example.tsx') as string;
 const NavNestedExampleCode = require('./examples/Nav.Nested.Example.tsx') as string;
 const NavByKeysExampleCode = require('./examples/Nav.ByKeys.Example.tsx') as string;
 
-export class NavPage extends React.Component<IComponentDemoPageProps, any> {
+export class NavPage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -39,7 +38,11 @@ export class NavPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='Nav' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/Nav/Nav.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

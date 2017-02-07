@@ -1,18 +1,17 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  ComponentPage,
+  IComponentPageProps,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { TextFieldBasicExample } from './examples/TextField.Basic.Example';
 import { TextFieldErrorMessageExample } from './examples/TextField.ErrorMessage.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const TextFieldBasicExampleCode = require('./examples/TextField.Basic.Example.tsx') as string;
 const TextFieldErrorMessageExampleCode = require('./examples/TextField.ErrorMessage.Example.tsx') as string;
 
-export class TextFieldPage extends React.Component<IComponentDemoPageProps, any> {
+export class TextFieldPage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -29,7 +28,11 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, any>
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='TextField' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/TextField/TextField.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

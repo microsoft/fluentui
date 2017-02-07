@@ -3,7 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { DetailsList, IGroup } from 'office-ui-fabric-react/lib/DetailsList';
-import { createListItems, createGroups } from '../../../utilities/data';
+import { createListItems, createGroups } from '@uifabric/example-app-base';
 import './DetailsListExample.scss';
 
 const ITEMS_PER_GROUP = 20;

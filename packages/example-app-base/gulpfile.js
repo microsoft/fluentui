@@ -16,6 +16,9 @@ build.typescript.setConfig({ typescript: require('typescript') });
 /** Disable webpack. */
 build.webpack.isEnabled = () => false;
 
+/** Disable tests until we need them. */
+build.karma.isEnabled = () => false;
+
 let packageFolder = buildConfig.packageFolder || '';
 let distFolder = buildConfig.distFolder;
 

@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { AppState, ExampleStatus } from '../../../components/App/AppState';
+import { ExampleStatus } from '@uifabric/example-app-base';
+import { AppDefinition } from '../../../AppDefinition';
 import { Nav } from 'office-ui-fabric-react/lib/Nav';
 
 export class NavFabricDemoAppExample extends React.Component<any, any> {
   public render() {
     return (
-      <Nav groups={ AppState.examplePages } onRenderLink={ (link) => ([
+      <Nav groups={ AppDefinition.examplePages } onRenderLink={ (link) => ([
         <span key={ 1 } className='Nav-linkText'>{ link.name }</span>,
         (link.status !== undefined ?
           <span key={ 2 } className={ 'Nav-linkFlair ' + 'is-state' + link.status } >{ ExampleStatus[link.status] }</span> :

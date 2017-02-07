@@ -17,7 +17,7 @@ import {
 import {
   createListItems,
   createGroups
-} from '../../../utilities/data';
+} from '@uifabric/example-app-base';
 
 const groupCount = 3;
 const groupDepth = 3;

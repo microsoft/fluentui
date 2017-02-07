@@ -1,19 +1,18 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
+  IComponentPageProps,
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { items, farItems } from './examples/data';
-
 import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
 import { CommandBarNonFocusableItemsExample } from './examples/CommandBar.NonFocusable.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const CommandBarBasicExampleCode = require('./examples/CommandBar.Basic.Example.tsx') as string;
 const CommandBarNoFocusableItemsExampleCode = require('./examples/CommandBar.NonFocusable.Example.tsx') as string;
 
-export class CommandBarPage extends React.Component<IComponentDemoPageProps, any> {
+export class CommandBarPage extends React.Component<IComponentPageProps, {}> {
   public render() {
     let cmdBarParamsTextAndIcons: any = { items: items, farItems: farItems };
 
@@ -32,10 +31,12 @@ export class CommandBarPage extends React.Component<IComponentDemoPageProps, any
           </div>
         }
         propertiesTables={
-          <div>
-            <PropertiesTableSet componentName='CommandBar' />
-            <PropertiesTableSet componentName='ContextualMenu' renderOnly={ ['IContextualMenuItem'] } />
-          </div>
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/CommandBar/CommandBar.Props.ts'),
+              require<string>('office-ui-fabric-react/lib/components/ContextualMenu/ContextualMenu.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

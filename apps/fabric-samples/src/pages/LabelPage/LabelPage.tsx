@@ -1,17 +1,15 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  IComponentPageProps,
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { LabelBasicExample } from './examples/Label.Basic.Example';
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const LabelBasicExampleCode = require('./examples/Label.Basic.Example.tsx') as string;
 
-export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
+export class LabelPage extends React.Component<IComponentPageProps, any> {
   public render() {
     return (
       <ComponentPage
@@ -23,7 +21,11 @@ export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
           </ExampleCard>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='Label' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/Label/Label.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

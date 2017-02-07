@@ -1,16 +1,15 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  IComponentPageProps,
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { SpinnerBasicExample } from './examples/Spinner.Basic.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const SpinnerBasicExampleCode = require('./examples/Spinner.Basic.Example.tsx') as string;
 
-export class SpinnerPage extends React.Component<IComponentDemoPageProps, any> {
+export class SpinnerPage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -24,7 +23,11 @@ export class SpinnerPage extends React.Component<IComponentDemoPageProps, any> {
           </ExampleCard>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='Spinner' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/Spinner/Spinner.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

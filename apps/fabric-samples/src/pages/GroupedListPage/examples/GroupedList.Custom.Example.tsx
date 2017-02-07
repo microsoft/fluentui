@@ -5,7 +5,7 @@ import {
   IGroupDividerProps
 } from 'office-ui-fabric-react/lib/components/GroupedList/index';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { createListItems, createGroups } from '../../../utilities/data';
+import { createListItems, createGroups } from '@uifabric/example-app-base';
 import './GroupedList.Custom.Example.scss';
 
 let _items: any[];

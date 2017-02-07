@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
+  IComponentPageProps,
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-
 import { ButtonDefaultExample } from './examples/Button.Default.Example';
 import { ButtonPrimaryExample } from './examples/Button.Primary.Example';
 import { ButtonCompoundExample } from './examples/Button.Compound.Example';
@@ -13,7 +13,6 @@ import { ButtonCommandExample } from './examples/Button.Command.Example';
 import { ButtonIconExample } from './examples/Button.Icon.Example';
 import { ButtonAnchorExample } from './examples/Button.Anchor.Example';
 import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 import { IButtonDemoPageState } from './examples/IButtonDemoPageState';
 import './examples/Button.Basic.Example.scss';
 
@@ -25,7 +24,7 @@ const ButtonIconExampleCode = require('./examples/Button.Icon.Example.tsx') as s
 const ButtonAnchorExampleCode = require('./examples/Button.Anchor.Example.tsx') as string;
 const ButtonScreenReaderExampleCode = require('./examples/Button.ScreenReader.Example.tsx') as string;
 
-export class ButtonPage extends React.Component<IComponentDemoPageProps, IButtonDemoPageState> {
+export class ButtonPage extends React.Component<IComponentPageProps, IButtonDemoPageState> {
   constructor() {
     super();
     this.state = {
@@ -66,7 +65,11 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
         }
         propertiesTables={
           <div>
-            <PropertiesTableSet componentName='Button' />
+            <PropertiesTableSet
+              sources={ [
+                require<string>('office-ui-fabric-react/lib/components/Button/Button.Props.ts')
+              ] }
+            />
             <p>Besides the above properties, the <code>Button</code> component accepts all properties that the React <code>button</code> and <code>a</code> components accept.</p>
           </div>
         }

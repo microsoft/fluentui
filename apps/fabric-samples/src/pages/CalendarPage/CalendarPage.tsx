@@ -1,18 +1,18 @@
 import * as React from 'react';
 import {
+  ComponentPage,
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
+  IComponentPageProps,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 
 import { CalendarButtonExample } from './examples/Calendar.Button.Example';
 import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const CalendarButtonExampleCode = require('./examples/Calendar.Button.Example.tsx') as string;
 const CalendarInlineExampleCode = require('./examples/Calendar.Inline.Example.tsx') as string;
 
-export class CalendarPage extends React.Component<IComponentDemoPageProps, any> {
+export class CalendarPage extends React.Component<IComponentPageProps, any> {
   public render() {
     return (
       <ComponentPage
@@ -32,7 +32,11 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='Calendar' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/Calendar/Calendar.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

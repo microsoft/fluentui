@@ -1,20 +1,19 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  IComponentPageProps,
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { FacepileAddFaceExample } from './examples/Facepile.AddFace.Example';
 import { FacepileBasicExample } from './examples/Facepile.Basic.Example';
 import { FacepileOverflowExample } from './examples/Facepile.Overflow.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const FacepileAddFaceExampleCode = require('./examples/Facepile.AddFace.Example.tsx') as string;
 const FacepileBasicExampleCode = require('./examples/Facepile.Basic.Example.tsx') as string;
 const FacepileOverflowExampleCode = require('./examples/Facepile.Overflow.Example.tsx') as string;
 
-export class FacepilePage extends React.Component<IComponentDemoPageProps, any> {
+export class FacepilePage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -34,7 +33,11 @@ export class FacepilePage extends React.Component<IComponentDemoPageProps, any> 
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='Facepile' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/Facepile/Facepile.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

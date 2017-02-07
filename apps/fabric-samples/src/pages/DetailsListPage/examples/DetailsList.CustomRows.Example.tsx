@@ -3,7 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { DetailsList, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
 import { autobind, css } from 'office-ui-fabric-react/lib/Utilities';
-import { createListItems } from '../../../utilities/data';
+import { createListItems } from '@uifabric/example-app-base';
 import './DetailsListExample.scss';
 
 let _items: any[];

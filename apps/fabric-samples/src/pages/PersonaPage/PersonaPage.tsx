@@ -1,18 +1,17 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  ComponentPage,
+  IComponentPageProps,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { PersonaInitialsExample } from './examples/Persona.Initials.Example';
 import { PersonaBasicExample } from './examples/Persona.Basic.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const PersonaInitialsExampleCode = require('./examples/Persona.Initials.Example.tsx') as string;
 const PersonaBasicExampleCode = require('./examples/Persona.Basic.Example.tsx') as string;
 
-export class PersonaPage extends React.Component<IComponentDemoPageProps, any> {
+export class PersonaPage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -29,7 +28,11 @@ export class PersonaPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='Persona' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/Persona/Persona.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

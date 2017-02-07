@@ -1,18 +1,17 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
+  IComponentPageProps,
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import './ImagePage.scss';
-
 import { ImageDefaultExample } from './examples/Image.Default.Example';
 import { ImageCenterExample } from './examples/Image.Center.Example';
 import { ImageContainExample } from './examples/Image.Contain.Example';
 import { ImageCoverExample } from './examples/Image.Cover.Example';
 import { ImageNoneExample } from './examples/Image.None.Example';
 import { ImageMaximizeFrameExample } from './examples/Image.MaximizeFrame.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const ImageDefaultExampleCode = require('./examples/Image.Default.Example.tsx') as string;
 const ImageCenterExampleCode = require('./examples/Image.Center.Example.tsx') as string;
@@ -21,7 +20,7 @@ const ImageCoverExampleCode = require('./examples/Image.Cover.Example.tsx') as s
 const ImageNoneExampleCode = require('./examples/Image.None.Example.tsx') as string;
 const ImageMaximizeFrameExampleCode = require('./examples/Image.MaximizeFrame.Example.tsx') as string;
 
-export class ImagePage extends React.Component<IComponentDemoPageProps, any> {
+export class ImagePage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -50,7 +49,11 @@ export class ImagePage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='Image' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/Image/Image.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

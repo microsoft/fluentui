@@ -1,5 +1,5 @@
 import { BaseParser } from './BaseParser';
-import { IInterfaceProperty, InterfacePropertyType } from '../../components/demoComponents';
+import { IInterfaceProperty, InterfacePropertyType } from './interfaces';
 
 const JSDOC_DEFAULT = '@default';
 const JSDOC_DEFAULTVALUE = '@defaultvalue';

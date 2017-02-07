@@ -1,15 +1,16 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
+  IComponentPageProps,
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
+
 import { BreadcrumbBasicExample } from './examples/Breadcrumb.Basic.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const BreadcrumbBasicExampleCode = require('./examples/Breadcrumb.Basic.Example.tsx') as string;
 
-export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any> {
+export class BreadcrumbPage extends React.Component<IComponentPageProps, any> {
   public render() {
     return (
       <ComponentPage
@@ -23,7 +24,11 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
           </ExampleCard>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='Breadcrumb' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/Breadcrumb/Breadcrumb.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

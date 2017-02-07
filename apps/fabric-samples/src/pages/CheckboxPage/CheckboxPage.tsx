@@ -1,16 +1,15 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  IComponentPageProps,
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { CheckboxBasicExample } from './examples/Checkbox.Basic.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const CheckboxBasicExampleCode = require('./examples/Checkbox.Basic.Example.tsx') as string;
 
-export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> {
+export class CheckboxPage extends React.Component<IComponentPageProps, any> {
   public render() {
     return (
       <ComponentPage
@@ -22,7 +21,11 @@ export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> 
           </ExampleCard>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='Checkbox' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/Checkbox/Checkbox.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

@@ -1,16 +1,15 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  ComponentPage,
+  IComponentPageProps,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { ToggleBasicExample } from './examples/Toggle.Basic.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const ToggleBasicExampleCode = require('./examples/Toggle.Basic.Example.tsx') as string;
 
-export class TogglePage extends React.Component<IComponentDemoPageProps, any> {
+export class TogglePage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -22,7 +21,11 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, any> {
           </ExampleCard>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='Toggle' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/Toggle/Toggle.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

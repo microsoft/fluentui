@@ -1,16 +1,15 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  IComponentPageProps,
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { SliderBasicExample } from './examples/Slider.Basic.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const SliderBasicExampleCode = require('./examples/Slider.Basic.Example.tsx') as string;
 
-export class SliderPage extends React.Component<IComponentDemoPageProps, any> {
+export class SliderPage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -22,7 +21,11 @@ export class SliderPage extends React.Component<IComponentDemoPageProps, any> {
           </ExampleCard>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='Slider' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/Slider/Slider.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

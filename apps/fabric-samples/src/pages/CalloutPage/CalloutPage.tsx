@@ -1,23 +1,23 @@
 import * as React from 'react';
 import {
+  ComponentPage,
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
+  IComponentPageProps,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { textOnlyItems } from '../CommandBarPage/examples/data';
 
 import { CalloutBasicExample } from './examples/Callout.Basic.Example';
 import { CalloutNestedExample } from './examples/Callout.Nested.Example';
 import { CalloutDirectionalExample } from './examples/Callout.Directional.Example';
 import { CalloutCoverExample } from './examples/Callout.Cover.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const CalloutBasicExampleCode = require('./examples/Callout.Basic.Example.tsx') as string;
 const CalloutNestedExampleCode = require('./examples/Callout.Nested.Example.tsx') as string;
 const CalloutDirectionalExampleCode = require('./examples/Callout.Directional.Example.tsx') as string;
 const CalloutCoverExampleCode = require('./examples/Callout.Cover.Example.tsx') as string;
 
-export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
+export class CalloutPage extends React.Component<IComponentPageProps, any> {
   public render() {
     let cmdBarParamsTextAndIcons: any = { items: textOnlyItems, farItems: null };
 
@@ -43,7 +43,11 @@ export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
         }
         propertiesTables={
           <div>
-            <PropertiesTableSet componentName='Callout' />
+            <PropertiesTableSet
+              sources={ [
+                require<string>('office-ui-fabric-react/lib/components/Callout/Callout.Props.ts')
+              ] }
+            />
             <p>Besides the above properties, the <code>Callout</code> component accepts all properties that the React <code>button</code> and <code>a</code> components accept.</p>
           </div>
         }

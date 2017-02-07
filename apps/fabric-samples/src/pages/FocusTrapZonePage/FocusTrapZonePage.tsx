@@ -4,12 +4,10 @@ import {
 } from 'office-ui-fabric-react/lib/Link';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
-
+  IComponentPageProps,
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import FocusTrapZoneBoxExample from './examples/FocusTrapZone.Box.Example';
 let FocusTrapZoneBoxExampleCode = require('./examples/FocusTrapZone.Box.Example.tsx') as string;
 
@@ -19,7 +17,7 @@ let FocusTrapZoneBoxExampleWithFocusableItemCode = require('./examples/FocusTrap
 import FocusTrapZoneBoxClickExample from './examples/FocusTrapZone.Box.Click.Example';
 let FocusTrapZoneBoxClickExampleCode = require('./examples/FocusTrapZone.Box.Click.Example.tsx') as string;
 
-export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, any> {
+export class FocusTrapZonePage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -39,9 +37,11 @@ export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, 
           </div>
         }
         propertiesTables={
-          <div>
-            <PropertiesTableSet componentName='FocusTrapZone' />
-          </div>
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/FocusTrapZone/FocusTrapZone.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

@@ -1,18 +1,17 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  ComponentPage,
+  IComponentPageProps,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { SearchBoxSmallExample } from './examples/SearchBox.Small.Example';
 import { SearchBoxFullSizeExample } from './examples/SearchBox.FullSize.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const SearchBoxSmallExampleCode = require('./examples/SearchBox.Small.Example.tsx') as string;
 const SearchBoxFullSizeExampleCode = require('./examples/SearchBox.FullSize.Example.tsx') as string;
 
-export class SearchBoxPage extends React.Component<IComponentDemoPageProps, any> {
+export class SearchBoxPage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -29,9 +28,11 @@ export class SearchBoxPage extends React.Component<IComponentDemoPageProps, any>
           </div>
         }
         propertiesTables={
-          <div>
-            <PropertiesTableSet componentName='SearchBox' />
-          </div>
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/SearchBox/SearchBox.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

@@ -1,20 +1,19 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  IComponentPageProps,
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { IconBasicExample } from './examples/Icon.Basic.Example';
 import { IconColorExample } from './examples/Icon.Color.Example';
 import { IconImageSheetExample } from './examples/Icon.ImageSheet.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const IconBasicExampleCode = require('./examples/Icon.Basic.Example.tsx') as string;
 const IconColorExampleCode = require('./examples/Icon.Color.Example.tsx') as string;
 const IconImageSheetExampleCode = require('./examples/Icon.ImageSheet.Example.tsx') as string;
 
-export class IconPage extends React.Component<IComponentDemoPageProps, any> {
+export class IconPage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -34,7 +33,11 @@ export class IconPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='Icon' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/Icon/Icon.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>

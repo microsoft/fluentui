@@ -1,16 +1,15 @@
 import * as React from 'react';
 import {
   ExampleCard,
-  PropertiesTableSet,
-  ComponentPage
-} from '../../components/demoComponents';
-
+  IComponentPageProps,
+  ComponentPage,
+  PropertiesTableSet
+} from '@uifabric/example-app-base';
 import { ColorPickerBasicExample } from './examples/ColorPicker.Basic.Example';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
 const ColorPickerBasicExampleCode = require('./examples/ColorPicker.Basic.Example.tsx') as string;
 
-export class ColorPickerPage extends React.Component<IComponentDemoPageProps, any> {
+export class ColorPickerPage extends React.Component<IComponentPageProps, {}> {
   public render() {
     return (
       <ComponentPage
@@ -24,7 +23,11 @@ export class ColorPickerPage extends React.Component<IComponentDemoPageProps, an
           </ExampleCard>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='ColorPicker' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/ColorPicker/ColorPicker.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>ColorPicker is used to allow a user to select a color</div>
