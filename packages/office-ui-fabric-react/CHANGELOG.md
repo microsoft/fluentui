@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 04 Feb 2017 04:05:32 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Feb 2017 01:57:25 GMT and should not be manually modified.
+
+## 1.5.3
+Tue, 07 Feb 2017 01:57:25 GMT
+
+### Patches
+
+- Button: removing vertical-align top which was causing alignment problems.
 
 ## 1.5.2
 Sat, 04 Feb 2017 04:05:32 GMT
