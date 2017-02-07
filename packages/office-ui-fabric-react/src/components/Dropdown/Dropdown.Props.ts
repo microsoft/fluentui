@@ -45,7 +45,7 @@ export interface IDropdownProps extends React.Props<Dropdown>, IWithResponsiveMo
   onChanged?: (option: IDropdownOption, index?: number) => void;
 
   /**
-   * Optional custom renderer for the selected dropdown item
+   * Optional custom renderer for selected option displayed in input
    */
   onRenderTitle?: IRenderFunction<IDropdownOption>;
 
@@ -55,17 +55,17 @@ export interface IDropdownProps extends React.Props<Dropdown>, IWithResponsiveMo
   onRenderContainer?: IRenderFunction<IDropdownProps>;
 
   /**
-    * Optional custom renderer for the dropdown container
+    * Optional custom renderer for the dropdown list
     */
   onRenderList?: IRenderFunction<IDropdownProps>;
 
   /**
-   * Optional custom renderer for the selected dropdown item
+   * Optional custom renderer for the dropdown options
    */
   onRenderItem?: IRenderFunction<IDropdownOption>;
 
   /**
-   * Optional custom renderer for the dropdown options
+   * Optional custom renderer for the dropdown option content
    */
   onRenderOption?: IRenderFunction<IDropdownOption>;
 
