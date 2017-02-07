@@ -35,7 +35,7 @@ export class Facepile extends BaseComponent<IFacepileProps, any> {
   private _members: HTMLElement;
 
   public componentWillMount() {
-    // Re-render after initial mount to get true count based on actual size the mounted persona will take up.
+    // Re-render when mounting to get a true count based on actual size the mounted persona will take up.
     this.forceUpdate();
   }
 
