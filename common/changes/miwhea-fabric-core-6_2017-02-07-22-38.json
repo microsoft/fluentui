@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Update to Fabric Core 6.0.0",
+      "type": "patch"
+    }
+  ],
+  "email": "mike@mikewheaton.ca"
+}
