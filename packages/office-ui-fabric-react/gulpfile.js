@@ -48,33 +48,15 @@ if (isProduction || isNuke) {
   });
 }
 
-// Define the ssr tests subtask.
-let runSSRTests = build.subTask('run-ssr-tests', function (gulp, buildOptions, done) {
-  let themeLoader = require('@microsoft/load-themed-styles');
-  themeLoader.configureLoadStyles((styles) => {
-    // noop
-  });
-
-  let Mocha = require('mocha');
-  let mocha = new Mocha();
-  mocha.files = ['ssr-test.js'];
-  mocha.run(done);
-});
-
-runSSRTests.isEnabled = () => isProduction;
-
-// Append ssr tests into default build task.
-build.task('default', build.serial(build.defaultTasks, runSSRTests));
-
 // Disable certain subtasks in non production builds to speed up serve.
 build.tslint.isEnabled = () => isProduction;
+build.webpack.isEnabled = () => isProduction;
 build.clean.isEnabled = () => isProduction;
 
 // Short aliases for subtasks.
 build.task('webpack', build.webpack);
 build.task('tslint', build.tslint);
 build.task('ts', build.typescript);
-build.task('ssr', runSSRTests);
 
 // initialize tasks.
 build.initialize(gulp);

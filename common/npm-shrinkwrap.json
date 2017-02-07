@@ -104,9 +104,9 @@
       "resolved": "https://registry.npmjs.org/@types/chalk/-/chalk-0.4.31.tgz"
     },
     "@types/enzyme": {
-      "version": "2.7.2",
+      "version": "2.7.3",
       "from": "@types/enzyme@>=2.7.1 <3.0.0",
-      "resolved": "https://registry.npmjs.org/@types/enzyme/-/enzyme-2.7.2.tgz"
+      "resolved": "https://registry.npmjs.org/@types/enzyme/-/enzyme-2.7.3.tgz"
     },
     "@types/es6-promise": {
       "version": "0.0.32",
@@ -164,9 +164,9 @@
       "resolved": "https://registry.npmjs.org/@types/react-addons-test-utils/-/react-addons-test-utils-0.14.17.tgz"
     },
     "@types/react-dom": {
-      "version": "0.14.22",
+      "version": "0.14.23",
       "from": "@types/react-dom@>=0.14.18 <0.15.0",
-      "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-0.14.22.tgz"
+      "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-0.14.23.tgz"
     },
     "@types/rimraf": {
       "version": "0.0.28",
@@ -4867,6 +4867,11 @@
           "resolved": "https://registry.npmjs.org/object-assign/-/object-assign-3.0.0.tgz"
         }
       }
+    },
+    "rush-ssr-tests": {
+      "version": "0.0.0",
+      "from": "temp_modules/rush-ssr-tests",
+      "resolved": "file:temp_modules/rush-ssr-tests"
     },
     "rush-todo-app": {
       "version": "0.0.0",
