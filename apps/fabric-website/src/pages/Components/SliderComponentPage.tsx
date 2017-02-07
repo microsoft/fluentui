@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SliderPage } from 'office-ui-fabric-react/lib/demo/pages/SliderPage/SliderPage';
+import { SliderPage } from 'fabric-examples/lib/pages/SliderPage/SliderPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 
@@ -9,26 +9,26 @@ export class SliderComponentPage extends React.Component<any, any> {
       <div ref='pageElement'>
         <ComponentPage>
           <PageHeader pageTitle='Slider' backgroundColor='#038387'
-           links={
-            [
-              {
-                'text': 'Overview',
-                'location': 'Overview'
-              },
-              {
-                'text': 'Best Practices',
-                'location': 'Best Practices'
-              },
-              {
-                'text': 'Variants',
-                'location': 'Variants'
-              },
-              {
-                'text': 'Implementation',
-                'location': 'Implementation'
-              }
-            ]
-          }/>
+            links={
+              [
+                {
+                  'text': 'Overview',
+                  'location': 'Overview'
+                },
+                {
+                  'text': 'Best Practices',
+                  'location': 'Best Practices'
+                },
+                {
+                  'text': 'Variants',
+                  'location': 'Variants'
+                },
+                {
+                  'text': 'Implementation',
+                  'location': 'Implementation'
+                }
+              ]
+            } />
           <SliderPage isHeaderVisible={ false } />
         </ComponentPage>
       </div>

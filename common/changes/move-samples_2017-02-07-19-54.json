@@ -1,0 +1,20 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Moved all examples from this package into a separate app, so that we can fix imports in the code examples to be the correct imports.",
+      "type": "patch"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/utilities",
+      "type": "none"
+    },
+    {
+      "packageName": "@uifabric/example-app-base",
+      "comment": "Adding new package to host all example app base code, which allows us to share common doc website code across many projects.",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
