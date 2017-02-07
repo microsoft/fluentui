@@ -82,8 +82,16 @@ export class EnumParserHelper extends BaseParser {
         case ParseState.declaration:
           {
             this.eatSpacesAndNewlines();
-            let tmp = this.eatUntil(/[,\s]/);
-            this.next();
+            let tmp = this.eatUntil(/[=,\}]/);
+            if (this.eat('=')) {
+              this.eatUntil(/[0-9]/);
+              this.eatUntil(/[,\s]/);
+            }
+
+            if (this.peek() !== '}') {
+              this.next();
+            }
+
             identifierName = tmp.trim();
 
             this._state = ParseState.default;
