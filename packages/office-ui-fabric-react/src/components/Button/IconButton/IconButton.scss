@@ -14,8 +14,12 @@
   padding: 0 4px;
   font-size: $ms-icon-size-m;
 
-  height: $button-core-default-height;
-  line-height: $button-core-default-height;
+  .ms-Button,
+  .ms-Button-label,
+  .ms-Button-icon {
+    height: $button-core-default-height;
+    line-height: $button-core-default-height;
+  }
 
   &:hover,
   &:active {
