@@ -169,7 +169,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
           isOpen={ true }
           isLightDismiss={ true }
           onDismissed={ this._onDismiss }
-          hasCloseButton={ true }
+          hasCloseButton={ false }
         >
           { onRenderList(props, this._onRenderList) }
         </Panel>
