@@ -1,0 +1,15 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Panel: onDismiss correctly called now before animation starts.",
+      "type": "patch"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/utilities",
+      "type": "none"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
