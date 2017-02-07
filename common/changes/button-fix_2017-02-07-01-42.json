@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Button: removing vertical-align top which was causing alignment problems.",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
