@@ -5,7 +5,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
 import { KeyCodes } from '../../Utilities';
-import { FocusZone, FocusZoneDirection } from './index';
+
+import { FocusZone } from './FocusZone';
+import { FocusZoneDirection } from './FocusZone.Props';
 
 let { assert } = chai;
 let _lastFocusedElement;

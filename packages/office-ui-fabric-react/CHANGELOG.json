@@ -2,6 +2,395 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "1.5.3",
+      "tag": "office-ui-fabric-react_v1.5.3",
+      "date": "Tue, 07 Feb 2017 01:57:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "7073d2ab45e48876820eba2be5fcbbf60e379745",
+            "comment": "Button: removing vertical-align top which was causing alignment problems."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.5.2",
+      "tag": "office-ui-fabric-react_v1.5.2",
+      "date": "Sat, 04 Feb 2017 04:05:32 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "dagoff <dagoff@users.noreply.github.com>",
+            "commit": "6aca2debc2048782503bc71382bc5d2915dd755e",
+            "comment": "Image: Now correctly loads SVG images in Edge."
+          },
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "829e6fd25fc7452d51dcccc56242da3c0f0ab24d",
+            "comment": "Pickers and Popup: Fixed a bug where having a picker in a dialog could cause the dialog to be dismissed on escape press"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.5.1",
+      "tag": "office-ui-fabric-react_v1.5.1",
+      "date": "Sat, 04 Feb 2017 00:27:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "0f8b758207e793e77f904484487956a096fc1e8f",
+            "comment": "BaseButton: Resolving an issue where Buttons would not render children."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.5.0",
+      "tag": "office-ui-fabric-react_v1.5.0",
+      "date": "Fri, 03 Feb 2017 19:02:12 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "d077c0dee38983906dfb50328fe7f687ad1570d7",
+            "comment": "Updated all enums to use explicit numbers"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Eli Block <eliblock@microsoft.com>",
+            "commit": "cfe572c76f050cf39c95cf74657bcb3daaabc22b",
+            "comment": "Fixing Facepile imports to be AMD friendly"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.4.0",
+      "tag": "office-ui-fabric-react_v1.4.0",
+      "date": "Fri, 03 Feb 2017 04:10:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "e2b95b2c376231dc9fd0916a7bf0337eaecc97b3",
+            "comment": "BasePickerBelow: add support for focuszone innerkeystroke\""
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "50c7f122960e86bef3be0deb366e6dcb970a435d",
+            "comment": "ContextualMenu: `shouldFocusOnMount` is now properly handled as expected."
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "6db3f2eb375583f0dde046af87d84557479caa45",
+            "comment": "Breadcrumb: Change item to render as span if it doesn't have onClick"
+          },
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "704f0225c0298323e738434a63033a8aa3ca5c8c",
+            "comment": "PeoplePicker: Improve demo page and the way menuitembelow works"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "d0fa6cc183a0e89597d59df0931c01d7f8bbd9c6",
+            "comment": "TextField: minor code cleanup, added ITextField interface and documentation."
+          }
+        ],
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "0859b57d68263004fd6ffc3c035520c7d98b9dd6",
+            "comment": "Button: major css cleanup, refactoring out BaseButton so that variants are cheap to build from bytes perspective."
+          },
+          {
+            "author": "Bharadwaj <bharay@users.noreply.github.com>",
+            "commit": "274edb8904c891ac689f09518ddb38cc24feb946",
+            "comment": "Dropdown: changes to include id and ariaLabel"
+          },
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "e12b5e4a00d6e712dbf694e14e20fcb81d2ea69e",
+            "comment": "List: allow scrolling invidual items into view"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "beebc6e81d2c13cbeb3253f2d7b3dabc863fd5cb",
+            "comment": "Router: adding support for asynchronously loading components via the `getComponent` prop in the `<Route>` component."
+          },
+          {
+            "author": "scriby <scriby@gmail.com>",
+            "commit": "bf08c907e0c4b44a1a05b6c9900791d7b2b44310",
+            "comment": "Dialog: new `onDismissed` callback added to be called when the dismiss animation is complete."
+          },
+          {
+            "author": "scriby <scriby@gmail.com>",
+            "commit": "bf08c907e0c4b44a1a05b6c9900791d7b2b44310",
+            "comment": "Panel: new `onDismissed` callback added to be called when the dismiss animation is complete."
+          },
+          {
+            "author": "Matt Lind <revelationmedia@gmail.com>",
+            "commit": "55e34e43248adc10571568635a99bc804631a0dd",
+            "comment": "Persona: Added new xxs Persona size.  Fixed broken presence icons in high contrast mode."
+          },
+          {
+            "author": "Matt Lind <revelationmedia@gmail.com>",
+            "commit": "55e34e43248adc10571568635a99bc804631a0dd",
+            "comment": "Facepile: Updated to be able to use new xxs size for Persona."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.3.7",
+      "tag": "office-ui-fabric-react_v1.3.7",
+      "date": "Wed, 01 Feb 2017 04:04:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "e84471b17f608e7e6b8f8ea20d1952e17c1e6f14",
+            "comment": "Breadcrumb: Fix hover style to match OneDrive"
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "bb3d7306f5198199f927d6cd8817f3b4c553bb89",
+            "comment": "CommandBar: Add hover state to ms-CommandBarItem"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.3.6",
+      "tag": "office-ui-fabric-react_v1.3.6",
+      "date": "Tue, 31 Jan 2017 17:04:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "497db36db6bc665c479c53c817b29e560783bd60",
+            "comment": "CommandBar: no longer throws nullref in dismiss handling."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.3.5",
+      "tag": "office-ui-fabric-react_v1.3.5",
+      "date": "Tue, 31 Jan 2017 01:16:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "618e061e4446d851d1a55536a0917439e353e819",
+            "comment": "Fixing utility import to be AMD friendly."
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "8747c78b117488470e255efb81a0312ca4efe1d1",
+            "comment": "Documentation: Update component pages \"Also available in\" link to point to new JS site"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.3.4",
+      "tag": "office-ui-fabric-react_v1.3.4",
+      "date": "Sat, 28 Jan 2017 04:09:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "98d218881c0a0e8e277225ed3a4af83c2ec63eb6",
+            "comment": "Command Bar: context menus stay open after update if the open menu is still in the new props. Also, propagates most properties from subMenuProps to opened ContextualMenus"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.3.3",
+      "tag": "office-ui-fabric-react_v1.3.3",
+      "date": "Fri, 27 Jan 2017 04:09:14 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "40c4cf8ca46e24caf2e091d2ae6fec06f3306208",
+            "comment": "Callout: Add back in animations"
+          },
+          {
+            "author": "Sean Ferguson <sferg-msft@users.noreply.github.com>",
+            "commit": "d160aec4b7ba091c96e69431d93fd074d0c35ae4",
+            "comment": "Dropdown: now supports a custom option renderer."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=1.0.0 <2.0.0` to `>=1.0.2 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.3.2",
+      "tag": "office-ui-fabric-react_v1.3.2",
+      "date": "Thu, 26 Jan 2017 16:10:53 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "ddd4bdad577841eb53034d67608691d9daa9922d",
+            "comment": "ColorPicker: now is AMD friendly and uses local typesafe utilities that will be built with the rest of the code."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "f8ba2dee6abc3d5e743288ea3889d1734429c63c",
+            "comment": "ContextualMenu: keydown events now call preventDefault to prevent the browser from doing unnecessary things."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c74e900ed4c936c556d8a81a2aab29ab5f1560c0",
+            "comment": "SelectionZone: clicking in a non-interactive area clears selection only within the scrollable parent area. This refines the clear behavior slightly."
+          },
+          {
+            "author": "gggjtgxing <xingwa@microsoft.com>",
+            "commit": "31a35399dfbd0216452f0ac97725d7b2cdc917ff",
+            "comment": "Dropdown: screen reader now will read out the current selected option on first focus of dropdown with an option selected."
+          },
+          {
+            "author": "gggjtgxing <xingwa@microsoft.com>",
+            "commit": "a497ebc9b33fafd1305abf29f7df39f567bf5032",
+            "comment": "Pivot: state updates may be asynchronous, and it should not rely on this.state for calculating the next state."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.3.1",
+      "tag": "office-ui-fabric-react_v1.3.1",
+      "date": "Thu, 26 Jan 2017 04:03:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "294164389bfd4bf47f8de61ddce6ad781d52ba3e",
+            "comment": "Button: Restored Hero variant and added normal button as an alias of default. Fixes issues introduced in #811"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.3.0",
+      "tag": "office-ui-fabric-react_v1.3.0",
+      "date": "Wed, 25 Jan 2017 04:11:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "aed23b7c7aa853d5e0afc4c2599c1469056e610e",
+            "comment": "DetailsList: onItemContextMenu now works as expected."
+          },
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "8034da957b65c24d02a0b7edcb641466e8cb4263",
+            "comment": "List: add 'scrollToIndex' method"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "e6e412d6ebc39c8f946a9f4d92d81f8d571caac5",
+            "comment": "Update Button Component to use individual varient components rather than buttonType property"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "81a4c8df0e2f98d33f680d483bd9325bedccc50d",
+            "comment": "Breadcrumb: Fix focus rect by removing outline from .ms-Breadcrumb-itemLink on focus state."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=1.0.0 <2.0.0` to `>=1.0.0 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.2.4",
+      "tag": "office-ui-fabric-react_v1.2.4",
+      "date": "Tue, 24 Jan 2017 16:20:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "dagoff <dagoff@users.noreply.github.com>",
+            "commit": "f4b5a19544a794bf3723c0b4257694903482d3af",
+            "comment": "Image: Load state is erroneously set as loaded when changing the src prop"
+          },
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "a5717e071b897167fdca9b68e6f449f5b43ed3f0",
+            "comment": "MessageBar: fix first time message annoucement"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.2.3",
+      "tag": "office-ui-fabric-react_v1.2.3",
+      "date": "Tue, 24 Jan 2017 04:11:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "f770de56baa72cdda02c4d1876ba53b8009778cb",
+            "comment": "ToolTip: Dismiss tooltip on scroll"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.2.2",
+      "tag": "office-ui-fabric-react_v1.2.2",
+      "date": "Sat, 21 Jan 2017 04:06:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "d64667ad892203b75e954c66d6110a4a7e5d9a73",
+            "comment": "PeoplePicker: personas now correctly truncate when the input field is too small."
+          },
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "4249b1248072bec213bccae166c16307f351df32",
+            "comment": "Pickers: Fixed a bug where you could not delete multiple selected items\""
+          },
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "bb43bf3c0c2b378c0ceb8566318ab30e95ac9aa9",
+            "comment": "Suggestions: Fixed an error which would occur if noResultsFound string was not passed to suggestions\""
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.2.1",
+      "tag": "office-ui-fabric-react_v1.2.1",
+      "date": "Fri, 20 Jan 2017 04:03:22 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "7c12ea814375f20df4550f80afc561b295bb68e5",
+            "comment": "ContextualMenu: fix bug where an icon would have ms-icon--undefined in it's classname'"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.2.0",
       "tag": "office-ui-fabric-react_v1.2.0",
       "date": "Thu, 19 Jan 2017 04:08:35 GMT",

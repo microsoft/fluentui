@@ -1,12 +1,5 @@
 @import '../../common/common';
 
-// When focus is set using the keyboard, apply an outline.
-@mixin focus-outline {
-  .ms-Fabric.is-focusVisible &:focus {
-    outline: 1px solid $focusedBorderColor;
-  }
-}
-
 .ms-Link {
   color: $ms-color-themePrimary;
   margin: 0;

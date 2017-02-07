@@ -1,7 +1,5 @@
 import * as React from 'react';
-import {
-  Dropdown
-} from '../../../../index';
+import { Dropdown } from '../../../../Dropdown';
 import './Dropdown.Basic.Example.scss';
 
 export class DropdownBasicExample extends React.Component<any, any> {
@@ -20,6 +18,8 @@ export class DropdownBasicExample extends React.Component<any, any> {
 
         <Dropdown
           label='Basic example:'
+          id='Basicdrop1'
+          ariaLabel='Basic dropdown example'
           options={
             [
               { key: 'A', text: 'Option a' },
@@ -35,7 +35,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
             ]
           }
           onChanged={ (item) => this.setState({ selectedItem: item }) }
-          />
+        />
         <div>{ `Item selected: ${selectedItem ? selectedItem.text : '<none>'}` }</div>
 
         <Dropdown
@@ -53,7 +53,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
             ]
           }
           disabled={ true }
-          />
+        />
       </div>
     );
   }

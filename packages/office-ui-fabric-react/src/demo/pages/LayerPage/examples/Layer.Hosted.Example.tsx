@@ -1,11 +1,8 @@
 import * as React from 'react';
+import { Checkbox } from '../../../../Checkbox';
+import { Layer, LayerHost } from '../../../../Layer';
+import { Toggle } from '../../../../Toggle';
 import './Layer.Example.scss';
-import {
-  Checkbox,
-  Layer,
-  Toggle,
-  LayerHost
-} from '../../../../index';
 
 export class LayerHostedExample extends React.Component<any, any> {
   constructor() {
@@ -49,7 +46,7 @@ export class LayerHostedExample extends React.Component<any, any> {
             hostId='layerhost1'
             onLayerDidMount={ () => console.log('didmount') }
             onLayerWillUnmount={ () => console.log('willunmount') }
-            >
+          >
             { content }
           </Layer>
         ) : content }

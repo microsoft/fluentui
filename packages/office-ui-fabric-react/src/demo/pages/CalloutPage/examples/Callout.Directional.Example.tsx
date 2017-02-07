@@ -1,15 +1,11 @@
 import * as React from 'react';
+import { Button } from '../../../../Button';
+import { Callout, DirectionalHint } from '../../../../Callout';
+import { Dropdown, IDropdownOption } from '../../../../Dropdown';
+import { Checkbox } from '../../../../Checkbox';
+import { Slider } from '../../../../Slider';
+import { autobind } from '../../../../Utilities';
 import './CalloutExample.scss';
-import {
-  Callout,
-  Button,
-  DirectionalHint,
-  Checkbox,
-  Dropdown,
-  IDropdownOption,
-  Slider,
-  autobind
-} from '../../../../index';
 
 export interface ICalloutDirectionalExampleState {
   isCalloutVisible?: boolean;
@@ -85,7 +81,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
             isBeakVisible={ isBeakVisible }
             beakWidth={ beakWidth }
             directionalHint={ directionalHint }
-            >
+          >
             <div className='ms-CalloutExample-header'>
               <p className='ms-CalloutExample-title'>
                 All of your favorite people

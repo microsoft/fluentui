@@ -3,7 +3,7 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { NavBasicExample } from './examples/Nav.Basic.Example';
 import { NavFabricDemoAppExample } from './examples/Nav.FabricDemoApp.Example';
@@ -13,10 +13,10 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const NavBasicExampleCode = require('./examples/Nav.Basic.Example.tsx');
-const NavFabricDemoAppExampleCode = require('./examples/Nav.FabricDemoApp.Example.tsx');
-const NavNestedExampleCode = require('./examples/Nav.Nested.Example.tsx');
-const NavByKeysExampleCode = require('./examples/Nav.ByKeys.Example.tsx');
+const NavBasicExampleCode = require('./examples/Nav.Basic.Example.tsx') as string;
+const NavFabricDemoAppExampleCode = require('./examples/Nav.FabricDemoApp.Example.tsx') as string;
+const NavNestedExampleCode = require('./examples/Nav.Nested.Example.tsx') as string;
+const NavByKeysExampleCode = require('./examples/Nav.ByKeys.Example.tsx') as string;
 
 export class NavPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;

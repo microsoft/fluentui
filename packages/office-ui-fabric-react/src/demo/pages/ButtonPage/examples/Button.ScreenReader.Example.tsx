@@ -1,10 +1,6 @@
 import * as React from 'react';
-import {
-  Button,
-  ButtonType,
-  Label
-} from '../../../../index';
-import { IButtonProps } from './IButtonProps';
+import { PrimaryButton, IButtonProps } from '../../../../Button';
+import { Label } from '../../../../Label';
 
 export class ButtonScreenReaderExample extends React.Component<IButtonProps, {}> {
   public constructor() {
@@ -17,13 +13,12 @@ export class ButtonScreenReaderExample extends React.Component<IButtonProps, {}>
     return (
       <div className='ms-BasicButtonsExample'>
         <Label>Button with aria description for screen reader</Label>
-        <Button
+        <PrimaryButton
           data-automation-id='test'
           disabled={ disabled }
-          buttonType={ ButtonType.primary }
           ariaDescription='This is aria description used for screen reader.'>
           Aria Description
-        </Button>
+        </PrimaryButton>
       </div>
     );
   }

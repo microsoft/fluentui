@@ -3,7 +3,7 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { ContextualMenuBasicExample } from './examples/ContextualMenu.Basic.Example';
 import { ContextualMenuCheckmarksExample } from './examples/ContextualMenu.Checkmarks.Example';
@@ -15,11 +15,11 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const ContextualMenuBasicExampleCode = require('./examples/ContextualMenu.Basic.Example.tsx');
-const ContextualMenuCheckmarksExampleCode = require('./examples/ContextualMenu.Checkmarks.Example.tsx');
-const ContextualMenuDirectionalExampleCode = require('./examples/ContextualMenu.Directional.Example.tsx');
-const ContextualMenuCustomizationExampleCode = require('./examples/ContextualMenu.Customization.Example.tsx');
-const ContextualMenuHeaderExampleCode = require('./examples/ContextualMenu.Header.Example.tsx');
+const ContextualMenuBasicExampleCode = require('./examples/ContextualMenu.Basic.Example.tsx') as string;
+const ContextualMenuCheckmarksExampleCode = require('./examples/ContextualMenu.Checkmarks.Example.tsx') as string;
+const ContextualMenuDirectionalExampleCode = require('./examples/ContextualMenu.Directional.Example.tsx') as string;
+const ContextualMenuCustomizationExampleCode = require('./examples/ContextualMenu.Customization.Example.tsx') as string;
+const ContextualMenuHeaderExampleCode = require('./examples/ContextualMenu.Header.Example.tsx') as string;
 
 export class ContextualMenuPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -96,7 +96,7 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
           </div>
         }
         related={
-          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/ContextualMenu.md'>Fabric JS</a>
+          <a href='https://dev.office.com/fabric-js/Components/ContextualMenu/ContextualMenu.html'>Fabric JS</a>
         }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>

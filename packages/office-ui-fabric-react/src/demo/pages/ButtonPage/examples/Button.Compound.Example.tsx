@@ -1,9 +1,6 @@
 import * as React from 'react';
-import {
-  Button,
-  ButtonType,
-  Label
-} from '../../../../index';
+import { CompoundButton } from '../../../../Button';
+import { Label } from '../../../../Label';
 import { IButtonProps } from './IButtonProps';
 
 export class ButtonCompoundExample extends React.Component<IButtonProps, {}> {
@@ -17,12 +14,12 @@ export class ButtonCompoundExample extends React.Component<IButtonProps, {}> {
     return (
       <div className='ms-BasicButtonsExample'>
         <Label>Compound button</Label>
-        <Button
+        <CompoundButton
+          description='You can create a new account here.'
           disabled={ disabled }
-          buttonType={ ButtonType.compound }
-          description='You can create a new account here.'>
+        >
           Create account
-        </Button>
+        </CompoundButton>
       </div>
     );
   }

@@ -2,6 +2,7 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import {
+  autobind,
   BaseComponent,
   css,
   getNativeProps,
@@ -16,8 +17,8 @@ export interface IImageState {
 }
 
 export enum CoverStyle {
-  landscape,
-  portrait
+  landscape = 0,
+  portrait = 1
 }
 
 export const CoverStyleMap = {
@@ -32,15 +33,18 @@ export const ImageFitMap = {
   [ImageFit.none]: 'ms-Image-image--none'
 };
 
+const KEY_PREFIX: string = 'fabricImage';
+
 export class Image extends BaseComponent<IImageProps, IImageState> {
   public static defaultProps = {
     shouldFadeIn: true
   };
 
+  private static _svgRegex = /\.svg$/i;
+
   private _coverStyle: CoverStyle;
   private _imageElement: HTMLImageElement;
   private _frameElement: HTMLDivElement;
-  private _eventsAttached: boolean;
 
   constructor(props: IImageProps) {
     super(props);
@@ -48,39 +52,20 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
     this.state = {
       loadState: ImageLoadState.notLoaded
     };
-    this._eventsAttached = false;
-  }
-
-  public componentDidMount() {
-    if (!this._evaluateImage()) {
-      this._events.on(this._imageElement, 'load', this._evaluateImage);
-      this._events.on(this._imageElement, 'error', this._setError);
-      this._eventsAttached = true;
-    }
   }
 
   public componentWillReceiveProps(nextProps: IImageProps) {
-    if (this.state.loadState !== ImageLoadState.notLoaded && nextProps.src !== this.props.src) {
+    if (nextProps.src !== this.props.src) {
       this.setState({
         loadState: ImageLoadState.notLoaded
       });
     } else if (this.state.loadState === ImageLoadState.loaded) {
-      // If the image is not loaded, recompute the cover style.
       this._computeCoverStyle(nextProps);
     }
   }
 
   public componentDidUpdate(prevProps: IImageProps, prevState: IImageState) {
-    if (prevState.loadState !== ImageLoadState.notLoaded && prevProps.src !== this.props.src) {
-      if (!this._evaluateImage()) {
-        if (!this._eventsAttached) {
-          this._events.on(this._imageElement, 'load', this._evaluateImage);
-          this._events.on(this._imageElement, 'error', this._setError);
-          this._eventsAttached = true;
-        }
-      }
-    }
-
+    this._checkImageLoaded();
     if (this.props.onLoadingStateChange
       && prevState.loadState !== this.state.loadState) {
       this.props.onLoadingStateChange(this.state.loadState);
@@ -89,12 +74,10 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
 
   public render() {
     let imageProps = getNativeProps(this.props, imageProperties, ['width', 'height']);
-    let { src, alt, width, height, shouldFadeIn, className, imageFit, errorSrc, role, maximizeFrame} = this.props;
+    let { src, alt, width, height, shouldFadeIn, className, imageFit, role, maximizeFrame} = this.props;
     let { loadState } = this.state;
     let coverStyle = this._coverStyle;
-    let loaded = loadState === ImageLoadState.loaded || loadState === ImageLoadState.errorLoaded;
-    let srcToDisplay: string =
-      (loadState === ImageLoadState.error || loadState === ImageLoadState.errorLoaded) ? errorSrc : src;
+    let loaded = loadState === ImageLoadState.loaded;
 
     // If image dimensions aren't specified, the natural size of the image is used.
     return (
@@ -105,6 +88,9 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
         >
         <img
           { ...imageProps }
+          onLoad={ this._onImageLoaded }
+          onError={ this._onImageError }
+          key={ KEY_PREFIX + this.props.src || '' }
           className={
             css('ms-Image-image',
               (coverStyle !== undefined) && CoverStyleMap[coverStyle],
@@ -119,7 +105,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
                 'ms-Image-image--scaleWidthHeight': (imageFit === undefined && !!width && !!height),
               }) }
           ref={ this._resolveRef('_imageElement') }
-          src={ srcToDisplay }
+          src={ src }
           alt={ alt }
           role={ role }
           />
@@ -127,23 +113,41 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
     );
   }
 
-  private _evaluateImage(): boolean {
-    let { src } = this.props;
-    let { loadState } = this.state;
-    let isLoaded = (src && this._imageElement.naturalWidth > 0 && this._imageElement.naturalHeight > 0);
+  @autobind
+  private _onImageLoaded(ev: React.SyntheticEvent<HTMLImageElement>): void {
+    let { src, onLoad } = this.props;
+    if (onLoad) {
+      onLoad(ev);
+    }
 
     this._computeCoverStyle(this.props);
 
-    if (isLoaded && loadState !== ImageLoadState.loaded && loadState !== ImageLoadState.errorLoaded) {
-      this._events.off();
-      this._eventsAttached = false;
-
+    if (src) {
       this.setState({
-        loadState: loadState === ImageLoadState.error ? ImageLoadState.errorLoaded : ImageLoadState.loaded
+        loadState: ImageLoadState.loaded
       });
     }
+  }
 
-    return isLoaded;
+  private _checkImageLoaded(): void {
+    let { src } = this.props;
+    let { loadState } = this.state;
+
+    if (loadState === ImageLoadState.notLoaded) {
+      // testing if naturalWidth and naturalHeight are greater than zero is better than checking
+      // .complete, because .complete will also be set to true if the image breaks. However,
+      // for some browsers, SVG images do not have a naturalWidth or naturalHeight, so fall back
+      // to checking .complete for these images.
+      let isLoaded: boolean = src && (this._imageElement.naturalWidth > 0 && this._imageElement.naturalHeight > 0) ||
+        (this._imageElement.complete && Image._svgRegex.test(src));
+
+      if (isLoaded) {
+        this._computeCoverStyle(this.props);
+        this.setState({
+          loadState: ImageLoadState.loaded
+        });
+      }
+    }
   }
 
   private _computeCoverStyle(props: IImageProps) {
@@ -172,11 +176,13 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
     }
   }
 
-  private _setError() {
-    if (this.state.loadState !== ImageLoadState.error && this.state.loadState !== ImageLoadState.errorLoaded) {
-      this.setState({
-        loadState: ImageLoadState.error
-      });
+  @autobind
+  private _onImageError(ev: React.SyntheticEvent<HTMLImageElement>) {
+    if (this.props.onError) {
+      this.props.onError(ev);
     }
+    this.setState({
+      loadState: ImageLoadState.error
+    });
   }
 }

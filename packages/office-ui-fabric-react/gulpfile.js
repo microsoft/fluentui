@@ -1,6 +1,7 @@
 'use strict';
 
 let build = require('@microsoft/web-library-build');
+let serial = build.serial;
 let buildConfig = build.getConfig();
 let gulp = require('gulp');
 let configFile = "./ftpconfig.json";
@@ -171,9 +172,12 @@ let runSSRTests = build.subTask('run-ssr-tests', function (gulp, buildOptions, d
   let Mocha = require('mocha');
   let mocha = new Mocha();
   mocha.files = ['ssr-test.js'];
-  mocha.run();
-  done();
+  mocha.run(done);
 });
+
+runSSRTests.isEnabled = () => isProduction;
+
+build.task('ssr', runSSRTests);
 
 let defaultTasks = build.serial(
   build.preCopy,
@@ -186,6 +190,35 @@ let defaultTasks = build.serial(
 );
 
 build.task('default', defaultTasks);
+
+// Disable certain subtasks in non production builds to speed up serve.
+build.karma.isEnabled = () => isProduction;
+build.tslint.isEnabled = () => isProduction;
+build.clean.isEnabled = () => isProduction;
+
+// alternative serve approach.
+// Set up a "rushBuild" subTask that will spawn rush build
+let exec = require('child_process').exec;
+
+let rushBuild = build.subTask('rushbuild', (gulp, options, done) => {
+  let child = exec('rush build --to office-ui-fabric-react' + (isProduction ? ' --production' : ''));
+
+  child.stdout.on('data', data => process.stdout.write(data));
+  child.on('close', done);
+});
+
+const sourceMatch = [
+  'src/**/*.{ts,tsx,scss,js,txt,html}',
+  '!src/**/*.scss.ts'
+];
+
+build.task('serve', serial(
+  rushBuild,
+  build.serve,
+  build.watch(sourceMatch, serial(
+    rushBuild,
+    build.reload
+  ))));
 
 // initialize tasks.
 build.initialize(gulp);

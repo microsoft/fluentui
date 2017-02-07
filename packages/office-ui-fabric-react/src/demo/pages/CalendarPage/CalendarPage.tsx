@@ -3,7 +3,7 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { CalendarButtonExample } from './examples/Calendar.Button.Example';
 import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
@@ -11,8 +11,8 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const CalendarButtonExampleCode = require('./examples/Calendar.Button.Example.tsx');
-const CalendarInlineExampleCode = require('./examples/Calendar.Inline.Example.tsx');
+const CalendarButtonExampleCode = require('./examples/Calendar.Button.Example.tsx') as string;
+const CalendarInlineExampleCode = require('./examples/Calendar.Inline.Example.tsx') as string;
 
 export class CalendarPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;

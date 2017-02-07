@@ -1,0 +1,69 @@
+@import '../../../common/common';
+
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
+//
+// Office UI Fabric
+// --------------------------------------------------
+// Command Button styles
+
+$button-commandButtonHeight: 40px;
+
+.ms-Button--command {
+  @include text-align(left);
+
+  background-color: transparent;
+  border: none;
+  padding: 0 4px;
+
+  &,
+  .ms-Button-label,
+  .ms-Button-icon {
+    height: $button-commandButtonHeight;
+    line-height: $button-commandButtonHeight;
+  }
+
+  .ms-Button-label {
+    @include ms-font-m;
+    font-weight: $ms-font-weight-regular;
+    color: $ms-color-neutralPrimary;
+  }
+
+  .ms-Button-icon {
+    vertical-align: top;
+    color: $ms-color-themePrimary;
+    display: inline-block;
+    font-size: $ms-icon-size-m;
+    position: relative;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+
+    &,
+    .ms-Button-icon,
+    .ms-Button-label {
+      color: $ms-color-themeDarker;
+    }
+  }
+
+  &:active {
+    &,
+    .ms-Button-icon,
+    .ms-Button-label {
+      color: $ms-color-themePrimary;
+    }
+  }
+
+  &:disabled,
+  &.is-disabled {
+    background-color: transparent;
+
+    &,
+    .ms-Button-icon,
+    .ms-Button-label {
+      color: $ms-color-neutralTertiaryAlt;
+    }
+  }
+}

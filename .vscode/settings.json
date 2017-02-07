@@ -19,6 +19,7 @@
   },
   // Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the file.exclude setting.
   "search.exclude": {
+    "common": true,
     "**/node_modules": true,
     "**/lib": true,
     "**/lib-amd": true,

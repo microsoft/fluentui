@@ -1,10 +1,6 @@
 import * as React from 'react';
-import {
-  Button,
-  ButtonType,
-  Label
-} from '../../../../index';
-import { IButtonProps } from './IButtonProps';
+import { IconButton, IButtonProps } from '../../../../Button';
+import { Label } from '../../../../Label';
 
 export class ButtonIconExample extends React.Component<IButtonProps, {}> {
   public constructor() {
@@ -17,9 +13,8 @@ export class ButtonIconExample extends React.Component<IButtonProps, {}> {
     return (
       <div className='ms-BasicButtonsExample'>
         <Label>Icon button</Label>
-        <Button
+        <IconButton
           disabled={ disabled }
-          buttonType={ ButtonType.icon }
           icon='Emoji2'
           title='Emoji'
           ariaLabel='Emoji' />

@@ -1,13 +1,13 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
+import { Link } from '../../../../Link';
+import { TextField } from '../../../../TextField';
 import {
   DetailsList,
-  MarqueeSelection,
-  Selection,
-  TextField,
-  Link
-} from '../../../../index';
+  Selection
+} from '../../../../DetailsList';
+import { MarqueeSelection } from '../../../../MarqueeSelection';
 import { createListItems } from '../../../utilities/data';
 
 let _items: any[];
@@ -40,7 +40,7 @@ export class DetailsListBasicExample extends React.Component<any, any> {
         <TextField
           label='Filter by name:'
           onChanged={ text => this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items }) }
-          />
+        />
         <MarqueeSelection selection={ this._selection }>
           <DetailsList
             items={ items }
@@ -49,7 +49,7 @@ export class DetailsListBasicExample extends React.Component<any, any> {
             selectionPreservedOnEmptyClick={ true }
             onItemInvoked={ (item) => alert(`Item invoked: ${item.name}`) }
             onRenderItemColumn={ this._onRenderItemColumn }
-            />
+          />
         </MarqueeSelection>
       </div>
     );

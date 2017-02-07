@@ -38,6 +38,7 @@ const EMPTY_RECT = {
 // Naming expensive measures so that they're named in profiles.
 const _measurePageRect = (element: HTMLElement) => element.getBoundingClientRect();
 const _measureSurfaceRect = _measurePageRect;
+const _measureScrollRect = _measurePageRect;
 
 /**
  * The List renders virtualized pages of items. Each page's item count is determined by the getItemCountForPage callback if
@@ -143,6 +144,82 @@ export class List extends BaseComponent<IListProps, IListState> {
     this._estimatedPageHeight = 0;
     this._focusedIndex = -1;
     this._scrollingToIndex = -1;
+  }
+
+  /**
+   * Scroll to the given index. By default will bring the page the specified item is on into the view. If a callback
+   * to measure the height of an individual item is specified, will only scroll to bring the specific item into view.
+   *
+   * Note: with items of variable height and no passed in `getPageHeight` method, the list might jump after scrolling
+   * when windows before/ahead are being rendered, and the estimated height is replaced using actual elements.
+   *
+   * @param index Index of item to scroll to
+   * @param measureItem Optional callback to measure the height of an individual item
+   */
+  public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number): void {
+    const { startIndex } = this.props;
+    const renderCount = this._getRenderCount();
+    const endIndex = startIndex + renderCount;
+
+    let scrollTop = 0;
+
+    let itemsPerPage = 1;
+    for (let itemIndex = startIndex; itemIndex < endIndex; itemIndex += itemsPerPage) {
+      itemsPerPage = this._getItemCountForPage(itemIndex, this._allowedRect);
+
+      const requestedIndexIsInPage = itemIndex <= index && (itemIndex + itemsPerPage) > index;
+      if (requestedIndexIsInPage) {
+        // We have found the page. If the user provided a way to measure an individual item, we will try to scroll in just
+        // the given item, otherwise we'll only bring the page into view
+        if (measureItem) {
+          // Adjust for actual item position within page
+          const itemPositionWithinPage = index - itemIndex;
+          for (let itemIndexInPage = 0; itemIndexInPage < itemPositionWithinPage; ++itemIndexInPage) {
+            scrollTop += measureItem(itemIndex + itemIndexInPage);
+          }
+          const scrollBottom = scrollTop + measureItem(index);
+
+          const scrollRect = _measureScrollRect(this._scrollElement);
+          const scrollWindow = {
+            top: this._scrollElement.scrollTop,
+            bottom: this._scrollElement.scrollTop + scrollRect.height
+          };
+
+          const itemIsFullyVisible = scrollTop >= scrollWindow.top && scrollBottom <= scrollWindow.bottom;
+          if (itemIsFullyVisible) {
+            // Item is already visible, do nothing.
+            return;
+          }
+
+          const itemIsPartiallyAbove = scrollTop < scrollWindow.top;
+          const itemIsPartiallyBelow = scrollBottom > scrollWindow.bottom;
+
+          if (itemIsPartiallyAbove) {
+            // We will just scroll to 'scrollTop'
+            //  ______
+            // |Item  |   - scrollTop
+            // |  ____|_
+            // |_|____| | - scrollWindow.top
+            //   |      |
+            //   |______|
+          } else if (itemIsPartiallyBelow) {
+            // Adjust scrollTop position to just bring in the element
+            //  ______   - scrollTop
+            // |      |
+            // |  ____|_  - scrollWindow.bottom
+            // |_|____| |
+            //   | Item |
+            //   |______| - scrollBottom
+            scrollTop = this._scrollElement.scrollTop + (scrollBottom - scrollWindow.bottom);
+          }
+        }
+
+        this._scrollElement.scrollTop = scrollTop;
+        break;
+      }
+
+      scrollTop += this._getPageHeight(itemIndex, itemsPerPage, this._surfaceRect);
+    }
   }
 
   public componentDidMount() {

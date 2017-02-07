@@ -5,7 +5,8 @@ import {
   divProperties,
   doesElementContainFocus,
   getDocument,
-  getNativeProps
+  getNativeProps,
+  autobind
 } from '../../Utilities';
 import { IPopupProps } from './Popup.Props';
 
@@ -31,7 +32,6 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
   }
 
   public componentDidMount(): void {
-    this._events.on(this.refs.root, 'keydown', this._onKeyDown);
     this._events.on(this.refs.root, 'focus', this._onFocus, true);
     this._events.on(this.refs.root, 'blur', this._onBlur, true);
     if (doesElementContainFocus(this.refs.root)) {
@@ -64,12 +64,14 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
         className={ className }
         role={ role }
         aria-labelledby={ ariaLabelledBy }
-        aria-describedby={ ariaDescribedBy }>
+        aria-describedby={ ariaDescribedBy }
+        onKeyDown={ this._onKeyDown }>
         { this.props.children }
       </div>
     );
   }
 
+  @autobind
   private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     switch (ev.which) {
       case KeyCodes.escape:

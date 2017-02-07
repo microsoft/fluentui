@@ -3,7 +3,7 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { TextFieldBasicExample } from './examples/TextField.Basic.Example';
 import { TextFieldErrorMessageExample } from './examples/TextField.ErrorMessage.Example';
@@ -11,8 +11,8 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const TextFieldBasicExampleCode = require('./examples/TextField.Basic.Example.tsx');
-const TextFieldErrorMessageExampleCode = require('./examples/TextField.ErrorMessage.Example.tsx');
+const TextFieldBasicExampleCode = require('./examples/TextField.Basic.Example.tsx') as string;
+const TextFieldErrorMessageExampleCode = require('./examples/TextField.ErrorMessage.Example.tsx') as string;
 
 export class TextFieldPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -80,7 +80,7 @@ export class TextFieldPage extends React.Component<IComponentDemoPageProps, any>
           </div>
         }
         related={
-          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/TextField.md'>Fabric JS</a>
+          <a href='https://dev.office.com/fabric-js/Components/TextField/TextField.html'>Fabric JS</a>
         }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>

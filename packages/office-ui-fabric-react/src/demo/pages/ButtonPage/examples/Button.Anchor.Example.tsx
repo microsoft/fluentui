@@ -1,9 +1,11 @@
 import * as React from 'react';
 import {
-  Button,
-  ButtonType,
+  PrimaryButton
+} from '../../../../Button';
+import {
   Label
-} from '../../../../index';
+} from '../../../../Label';
+
 import { IButtonProps } from './IButtonProps';
 
 export class ButtonAnchorExample extends React.Component<IButtonProps, {}> {
@@ -17,16 +19,14 @@ export class ButtonAnchorExample extends React.Component<IButtonProps, {}> {
     return (
       <div className='ms-BasicButtonsExample'>
         <Label>Button like anchor</Label>
-        <Button
+        <PrimaryButton
           data-automation-id='test'
           disabled={ disabled }
-          buttonType={ ButtonType.primary }
           href='http://bing.com'
           target='_blank'
-          title='Let us bing!'
-          description='Navigate to Bing home page.'>
+          title='Let us bing!'>
           Bing
-        </Button>
+        </PrimaryButton>
       </div >
     );
   }

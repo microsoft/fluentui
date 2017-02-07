@@ -3,7 +3,7 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { AppState } from '../../components/App/AppState';
 import { getPageRouteFromState } from '../../utilities/pageroute';
@@ -11,8 +11,8 @@ import { IComponentDemoPageProps } from '../../components/ComponentPage/ICompone
 import { OverlayDarkExample } from './examples/Overlay.Dark.Example';
 import { OverlayLightExample } from './examples/Overlay.Light.Example';
 
-const OverlayLightExampleCode = require('./examples/Overlay.Light.Example.tsx');
-const OverlayDarkExampleCode = require('./examples/Overlay.Dark.Example.tsx');
+const OverlayLightExampleCode = require('./examples/Overlay.Light.Example.tsx') as string;
+const OverlayDarkExampleCode = require('./examples/Overlay.Dark.Example.tsx') as string;
 
 export class OverlayPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -66,7 +66,7 @@ export class OverlayPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         related={
-          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Overlay.md'>Fabric JS</a>
+          <a href='https://dev.office.com/fabric-js/Components/Overlay/Overlay.html'>Fabric JS</a>
         }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>

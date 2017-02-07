@@ -8,39 +8,40 @@ import { Link } from '../../../../Link';
 import { createListItems, createGroups } from '../../../utilities/data';
 import './GroupedList.Custom.Example.scss';
 
+let _items: any[];
+let _groups: IGroup[];
+
 export class GroupedListCustomExample extends React.Component<any, any> {
-  private _items: any[];
-  private _groups: IGroup[];
 
   constructor() {
     super();
 
-    this._items = createListItems(20);
-    this._groups = createGroups(4, 0, 0, 5);
+    _items = _items || createListItems(20);
+    _groups = createGroups(4, 0, 0, 5);
   }
 
   public render() {
     return (
       <GroupedList
         ref='groupedList'
-        items={this._items}
-        onRenderCell={this._onRenderCell}
+        items={ _items }
+        onRenderCell={ this._onRenderCell }
         groupProps={
           {
             onRenderHeader: this._onRenderHeader,
             onRenderFooter: this._onRenderFooter
           }
         }
-        groups={this._groups}
-        />
+        groups={ _groups }
+      />
     );
   }
 
   private _onRenderCell(nestingDepth: number, item: any, itemIndex: number) {
     return (
-      <div data-selection-index={itemIndex}>
+      <div data-selection-index={ itemIndex }>
         <span className='ms-GroupedListExample-name'>
-          {item.name}
+          { item.name }
         </span>
       </div>
     );
@@ -49,7 +50,7 @@ export class GroupedListCustomExample extends React.Component<any, any> {
   private _onRenderHeader(props: IGroupDividerProps): JSX.Element {
     return (
       <div className='ms-GroupedListExample-header ms-font-xl'>
-        This is a custom header for {props.group.name}
+        This is a custom header for { props.group.name }
         (<Link onClick={ () => props.onToggleCollapse(props.group) }>{ props.group.isCollapsed ? 'Expand' : 'Collapse' }</Link>)
       </div>
     );
@@ -58,7 +59,7 @@ export class GroupedListCustomExample extends React.Component<any, any> {
   private _onRenderFooter(props: IGroupDividerProps): JSX.Element {
     return (
       <div className='ms-GroupedListExample-footer ms-font-xl'>
-        This is a custom footer for {props.group.name}
+        This is a custom footer for { props.group.name }
       </div>
     );
   }

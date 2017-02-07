@@ -1,10 +1,6 @@
 import * as React from 'react';
-import {
-  Button,
-  ButtonType,
-  Label
-} from '../../../../index';
-import { IButtonProps } from './IButtonProps';
+import { PrimaryButton, IButtonProps } from '../../../../Button';
+import { Label } from '../../../../Label';
 
 export class ButtonPrimaryExample extends React.Component<IButtonProps, {}> {
   public constructor() {
@@ -17,11 +13,10 @@ export class ButtonPrimaryExample extends React.Component<IButtonProps, {}> {
     return (
       <div className='ms-BasicButtonsExample'>
         <Label>Primary button</Label>
-        <Button
+        <PrimaryButton
           data-automation-id='test'
           disabled={ disabled }
-          buttonType={ ButtonType.primary }
-        >Create account</Button>
+        >Create account</PrimaryButton>
       </div>
     );
   }

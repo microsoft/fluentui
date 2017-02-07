@@ -43,6 +43,7 @@ $ms-color-presence-busy-average:       #D93B3B;
 
 // Persona Sizes
 $ms-Persona-sizeTiny: 30px;
+$ms-Persona-sizeXxs:  24px;
 $ms-Persona-sizeXs:   32px;
 $ms-Persona-sizeSm:   40px;
 $ms-Persona-sizeMd:   48px;
@@ -55,6 +56,7 @@ $ms-Persona-imageDetailsLgSpace: 12px;
 $ms-Persona-imageDetailsXlSpace: 20px;
 
 // Presence Sizes
+$ms-Persona-presenceSizeXxs: 8px;
 $ms-Persona-presenceSizeMd: 12px;
 $ms-Persona-presenceSizeLg: 20px;
 $ms-Persona-presenceSizeXl: 28px;
@@ -115,7 +117,8 @@ $ms-Persona-presenceSizeXl: 28px;
   color: $ms-color-white;
   font-size: $ms-font-size-l;
   font-weight: $ms-font-weight-light;
-  line-height: 48px;
+  line-height: 46px;
+  height: $ms-Persona-sizeMd;
 
   &.ms-Persona-initials--lightBlue {
     background-color: $ms-color-initials-lightBlue;
@@ -191,17 +194,18 @@ $ms-Persona-presenceSizeXl: 28px;
   border: 2px solid $ms-color-white;
   text-align: center;
   box-sizing: content-box;
+  // Setting -ms-high-contrast-adjust to none Overrides the default behaviors of high contrast more in the Edge browser.
+  -ms-high-contrast-adjust: none;
+  // This is a temporary local fix and should be removed once Fabric Core 6.0 is released.
 
   @media screen and (-ms-high-contrast: active) {
     border-color: $ms-color-black;
-    box-shadow: 0 0 0 1px $ms-color-contrastBlackSelected inset;
     color: $ms-color-black;
     background-color: $ms-color-white;
   }
 
   @media screen and (-ms-high-contrast: black-on-white) {
     border-color: $ms-color-white;
-    box-shadow: 0 0 0 1px $ms-color-contrastWhiteSelected inset;
     color: $ms-color-white;
     background-color: $ms-color-black;
   }
@@ -211,6 +215,14 @@ $ms-Persona-presenceSizeXl: 28px;
     font-size: 8px;
     line-height: $ms-Persona-presenceSizeMd;
     vertical-align: top;
+
+    @media screen and (-ms-high-contrast: active) {
+      color: $ms-color-black;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      color: $ms-color-white;
+    }
   }
 }
 
@@ -261,6 +273,7 @@ $ms-Persona-presenceSizeXl: 28px;
 //
 .ms-Persona.ms-Persona--tiny {
   height: $ms-Persona-sizeTiny;
+  min-width: $ms-Persona-sizeTiny;
 
   .ms-Persona-imageArea {
     overflow: visible;
@@ -316,8 +329,59 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Extra Small Persona
 //
+.ms-Persona.ms-Persona--xxs {
+  height: $ms-Persona-sizeXxs;
+  line-height: $ms-Persona-sizeXxs;
+  min-width: $ms-Persona-sizeXxs;
+  margin-right: 4px;
+
+  .ms-Persona-imageArea,
+  .ms-Persona-image {
+    flex: 0 0 $ms-Persona-sizeXxs;
+    height: $ms-Persona-sizeXxs;
+    width: $ms-Persona-sizeXxs;
+  }
+
+  .ms-Persona-placeholder {
+    font-size: 18px;
+    top: 4px;
+  }
+
+  .ms-Persona-initials {
+    font-size: $ms-font-size-xs;
+    height: $ms-Persona-sizeXxs;
+    line-height: $ms-Persona-sizeXxs;
+  }
+
+  .ms-Persona-presence {
+    height: $ms-Persona-presenceSizeXxs;
+    width: $ms-Persona-presenceSizeXxs;
+    border: 1px solid #ffffff;
+    @include left(16px);
+  }
+
+  .ms-Persona-presenceIcon {
+    font-size: 6px;
+    line-height: 9px;
+  }
+
+  .ms-Persona-primaryText {
+    font-size: $ms-font-size-m;
+    padding-top: 3px;
+  }
+
+  .ms-Persona-secondaryText {
+    display: none;
+  }
+}
+
+
+//== Modifier: Extra Small Persona
+//
 .ms-Persona.ms-Persona--xs {
   height: $ms-Persona-sizeXs;
+  line-height: $ms-Persona-sizeXs;
+  min-width: $ms-Persona-sizeXs;
 
   .ms-Persona-imageArea,
   .ms-Persona-image {
@@ -333,6 +397,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .ms-Persona-initials {
     font-size: $ms-font-size-s;
+    height: $ms-Persona-sizeXs;
     line-height: $ms-Persona-sizeXs;
   }
 
@@ -351,11 +416,12 @@ $ms-Persona-presenceSizeXl: 28px;
 }
 
 
-
 //== Modifier: Small Persona
 //
 .ms-Persona.ms-Persona--sm {
   height: $ms-Persona-sizeSm;
+  line-height: $ms-Persona-sizeSm;
+  min-width: $ms-Persona-sizeSm;
 
   .ms-Persona-imageArea,
   .ms-Persona-image {
@@ -371,6 +437,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .ms-Persona-initials {
     font-size: $ms-font-size-m;
+    height: $ms-Persona-sizeSm;
     line-height: $ms-Persona-sizeSm;
   }
 
@@ -389,11 +456,12 @@ $ms-Persona-presenceSizeXl: 28px;
 }
 
 
-
 //== Modifier: Large Persona
 //
 .ms-Persona.ms-Persona--lg {
   height: $ms-Persona-sizeLg;
+  line-height: $ms-Persona-sizeLg;
+  min-width: $ms-Persona-sizeLg;
 
   .ms-Persona-imageArea,
   .ms-Persona-image {
@@ -409,7 +477,8 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .ms-Persona-initials {
     font-size: $ms-font-size-xxl;
-    line-height: $ms-Persona-sizeLg;
+    height: $ms-Persona-sizeLg;
+    line-height: 70px;
   }
 
   .ms-Persona-presence {
@@ -434,10 +503,13 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 }
 
+
 //== Modifier: Extra Large Persona
 //
 .ms-Persona.ms-Persona--xl {
   height: $ms-Persona-sizeXl;
+  line-height: $ms-Persona-sizeXl;
+  min-width: $ms-Persona-sizeXl;
 
   .ms-Persona-imageArea,
   .ms-Persona-image {
@@ -453,7 +525,8 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .ms-Persona-initials {
     font-size: $ms-font-size-su;
-    line-height: $ms-Persona-sizeXl;
+    height: $ms-Persona-sizeXl;
+    line-height: 96px;
   }
 
   .ms-Persona-presence {
@@ -487,6 +560,7 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 }
 
+
 //== Modifier: Persona with darker text
 //
 // Note: Typically applied when the component has a colored background.
@@ -501,6 +575,7 @@ $ms-Persona-presenceSizeXl: 28px;
     color: $ms-color-neutralPrimary;
   }
 }
+
 
 //== Modifier: Selectable Persona
 //
@@ -525,6 +600,14 @@ $ms-Persona-presenceSizeXl: 28px;
 .ms-Persona.ms-Persona--available {
   .ms-Persona-presence {
     background-color: $ms-color-presence-available;
+
+    @media screen and (-ms-high-contrast: active) {
+      background-color: $ms-color-white;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      background-color: $ms-color-contrastWhiteDisabled;
+    }
   }
 }
 
@@ -534,6 +617,14 @@ $ms-Persona-presenceSizeXl: 28px;
 .ms-Persona.ms-Persona--away {
   .ms-Persona-presence {
     background-color: $ms-color-presence-away;
+
+    @media screen and (-ms-high-contrast: active) {
+      background-color: $ms-color-white;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      background-color: $ms-color-black;
+    }
   }
 
   .ms-Persona-presenceIcon {
@@ -570,6 +661,34 @@ $ms-Persona-presenceSizeXl: 28px;
       top: 5px;
       @include left(0);
     }
+
+
+
+    @media screen and (-ms-high-contrast: active) {
+      color: $ms-color-contrastBlackDisabled;
+      background-color: $ms-color-black;
+
+      &::before {
+        box-shadow: 0 0 0 2px $ms-color-contrastBlackDisabled inset;
+      }
+
+      &::after {
+        background-color: $ms-color-contrastBlackDisabled;
+      }
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      color: $ms-color-contrastWhiteDisabled;
+      background-color: $ms-color-white;
+
+      &::before {
+        box-shadow: 0 0 0 2px $ms-color-contrastWhiteDisabled inset;
+      }
+
+      &::after {
+        background-color: $ms-color-contrastWhiteDisabled;
+      }
+    }
   }
 
   &.ms-Persona--lg {
@@ -589,6 +708,7 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 }
 
+
 //== Modifier: Persona with busy presence
 //
 .ms-Persona.ms-Persona--busy {
@@ -596,20 +716,38 @@ $ms-Persona-presenceSizeXl: 28px;
     background-color: $ms-color-presence-busy-average;
 
     @media screen and (-ms-high-contrast: active) {
-      background-color: $ms-color-contrastBlackSelected;
+      background-color: $ms-color-contrastBlackDisabled;
     }
 
     @media screen and (-ms-high-contrast: black-on-white) {
-      background-color: $ms-color-contrastWhiteSelected;
+      background-color: $ms-color-contrastWhiteDisabled;
     }
   }
 }
+
 
 //== Modifier: Persona with do not disturb presence
 //
 .ms-Persona.ms-Persona--dnd {
   .ms-Persona-presence {
     background-color: $ms-color-presence-dnd-background;
+
+    @media screen and (-ms-high-contrast: active) {
+      color: $ms-color-black;
+      background-color: $ms-color-contrastBlackDisabled;
+
+      &::before {
+        background-color: $ms-color-contrastBlackDisabled;
+      }
+
+      &::after {
+        background-color: $ms-color-contrastBlackDisabled;
+      }
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      background-color: $ms-color-contrastWhiteDisabled;
+    }
   }
 }
 
@@ -621,7 +759,7 @@ $ms-Persona-presenceSizeXl: 28px;
     background-color: $ms-color-presence-offline;
 
     @media screen and (-ms-high-contrast: active) {
-      background-color: $ms-color-black;
+      background-color: $ms-color-contrastBlackDisabled;
       box-shadow: 0 0 0 1px $ms-color-white inset;
     }
 

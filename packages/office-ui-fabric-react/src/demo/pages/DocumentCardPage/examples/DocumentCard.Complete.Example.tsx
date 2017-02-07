@@ -1,20 +1,19 @@
 import * as React from 'react';
 import {
   DocumentCard,
-  IDocumentCardPreviewProps,
-  ImageFit
-} from '../../../../index';
-
-import { DocumentCardActions } from '../../../../components/DocumentCard/DocumentCardActions';
-import { DocumentCardActivity } from '../../../../components/DocumentCard/DocumentCardActivity';
-import { DocumentCardLocation } from '../../../../components/DocumentCard/DocumentCardLocation';
-import { DocumentCardPreview } from '../../../../components/DocumentCard/DocumentCardPreview';
-import { DocumentCardTitle } from '../../../../components/DocumentCard/DocumentCardTitle';
+  DocumentCardActions,
+  DocumentCardActivity,
+  DocumentCardLocation,
+  DocumentCardPreview,
+  DocumentCardTitle,
+  IDocumentCardPreviewProps
+} from '../../../../DocumentCard';
+import { ImageFit } from '../../../../Image';
 
 export class DocumentCardCompleteExample extends React.Component<any, any> {
   public render() {
     let previewProps: IDocumentCardPreviewProps = {
-      getOverflowDocumentCountText: (overflowCount: number) => `+${ overflowCount } more`,
+      getOverflowDocumentCountText: (overflowCount: number) => `+${overflowCount} more`,
       previewImages: [
         {
           name: '2016 Conference Presentation',
@@ -81,23 +80,23 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
     };
 
     return (
-        <DocumentCard
-          onClick={ () => { console.log('You clicked the card.'); } }
-        >
-          <DocumentCardPreview { ...previewProps }/>
-          <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com' ariaLabel='Location, Marketing Documents'/>
-          <DocumentCardTitle title='6 files were uploaded'/>
-          <DocumentCardActivity
-            activity='Created Feb 23, 2016'
-            people={
-              [
-                { name: 'Annie Lindqvist', profileImageSrc: 'images/persona-female.png' },
-                { name: 'Roko Kolar', profileImageSrc: '', initials: 'JH' },
-                { name: 'Greta Lundberg', profileImageSrc: 'images/persona-female.png' }
-              ]
-            }
-          />
-          <DocumentCardActions
+      <DocumentCard
+        onClick={ () => { console.log('You clicked the card.'); } }
+      >
+        <DocumentCardPreview { ...previewProps } />
+        <DocumentCardLocation location='Marketing Documents' locationHref='http://microsoft.com' ariaLabel='Location, Marketing Documents' />
+        <DocumentCardTitle title='6 files were uploaded' />
+        <DocumentCardActivity
+          activity='Created Feb 23, 2016'
+          people={
+            [
+              { name: 'Annie Lindqvist', profileImageSrc: 'images/persona-female.png' },
+              { name: 'Roko Kolar', profileImageSrc: '', initials: 'JH' },
+              { name: 'Greta Lundberg', profileImageSrc: 'images/persona-female.png' }
+            ]
+          }
+        />
+        <DocumentCardActions
           actions={
             [
               {
@@ -129,9 +128,9 @@ export class DocumentCardCompleteExample extends React.Component<any, any> {
               },
             ]
           }
-            views={ 432 }
-          />
-        </DocumentCard>
+          views={ 432 }
+        />
+      </DocumentCard>
     );
   }
 

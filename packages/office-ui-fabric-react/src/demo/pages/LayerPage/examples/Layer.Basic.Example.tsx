@@ -1,10 +1,8 @@
 import * as React from 'react'; // tslint:disable-line:no-unused-variable
 import './Layer.Example.scss';
-import {
-  BaseComponent,
-  Checkbox,
-  Layer
-} from '../../../../index';
+import { BaseComponent } from '../../../../Utilities';
+import { Checkbox } from '../../../../Checkbox';
+import { Layer } from '../../../../Layer';
 
 export class LayerContentExample extends BaseComponent<any, any> {
   public static contextTypes = {

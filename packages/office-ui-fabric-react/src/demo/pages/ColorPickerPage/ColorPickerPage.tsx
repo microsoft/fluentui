@@ -3,14 +3,14 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { ColorPickerBasicExample } from './examples/ColorPicker.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const ColorPickerBasicExampleCode = require('./examples/ColorPicker.Basic.Example.tsx');
+const ColorPickerBasicExampleCode = require('./examples/ColorPicker.Basic.Example.tsx') as string;
 
 export class ColorPickerPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;

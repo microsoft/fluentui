@@ -1,9 +1,6 @@
 import * as React from 'react';
-import {
-  Panel,
-  PanelType,
-  Button
-} from '../../../../index';
+import { Button } from '../../../../Button';
+import { Panel, PanelType } from '../../../../Panel';
 
 export class PanelNonModalExample extends React.Component<any, any> {
 
@@ -21,7 +18,7 @@ export class PanelNonModalExample extends React.Component<any, any> {
         <Panel
           isBlocking={ false }
           isOpen={ this.state.showPanel }
-          onDismiss= { this._closePanel.bind(this) }
+          onDismiss={ this._closePanel.bind(this) }
           type={ PanelType.medium }
           headerText='Non-Modal Panel'
           closeButtonAriaLabel='Close'
@@ -33,9 +30,9 @@ export class PanelNonModalExample extends React.Component<any, any> {
   }
 
   private _showPanel() {
-    this.setState( {showPanel: true } );
+    this.setState({ showPanel: true });
   }
   private _closePanel() {
-    this.setState( {showPanel: false } );
+    this.setState({ showPanel: false });
   }
 }

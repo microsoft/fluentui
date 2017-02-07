@@ -3,7 +3,7 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { PanelSmallRightExample } from './examples/Panel.SmallRight.Example';
 import { PanelSmallLeftExample } from './examples/Panel.SmallLeft.Example';
@@ -18,15 +18,15 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const PanelSmallRightExampleCode = require('./examples/Panel.SmallRight.Example.tsx');
-const PanelSmallLeftExampleCode = require('./examples/Panel.SmallLeft.Example.tsx');
-const PanelSmallFluidExampleCode = require('./examples/Panel.SmallFluid.Example.tsx');
-const PanelMediumExampleCode = require('./examples/Panel.Medium.Example.tsx');
-const PanelLargeExampleCode = require('./examples/Panel.Large.Example.tsx');
-const PanelLargeFixedExampleCode = require('./examples/Panel.LargeFixed.Example.tsx');
-const PanelExtraLargeExampleCode = require('./examples/Panel.ExtraLarge.Example.tsx');
-const PanelLightDismissExampleCode = require('./examples/Panel.LightDismiss.Example.tsx');
-const PanelNonModalExampleCode = require('./examples/Panel.NonModal.Example.tsx');
+const PanelSmallRightExampleCode = require('./examples/Panel.SmallRight.Example.tsx') as string;
+const PanelSmallLeftExampleCode = require('./examples/Panel.SmallLeft.Example.tsx') as string;
+const PanelSmallFluidExampleCode = require('./examples/Panel.SmallFluid.Example.tsx') as string;
+const PanelMediumExampleCode = require('./examples/Panel.Medium.Example.tsx') as string;
+const PanelLargeExampleCode = require('./examples/Panel.Large.Example.tsx') as string;
+const PanelLargeFixedExampleCode = require('./examples/Panel.LargeFixed.Example.tsx') as string;
+const PanelExtraLargeExampleCode = require('./examples/Panel.ExtraLarge.Example.tsx') as string;
+const PanelLightDismissExampleCode = require('./examples/Panel.LightDismiss.Example.tsx') as string;
+const PanelNonModalExampleCode = require('./examples/Panel.NonModal.Example.tsx') as string;
 
 export class PanelPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -112,7 +112,7 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         related={
-          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Panel.md'>Fabric JS</a>
+          <a href='https://dev.office.com/fabric-js/Components/Panel/Panel.html'>Fabric JS</a>
         }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>

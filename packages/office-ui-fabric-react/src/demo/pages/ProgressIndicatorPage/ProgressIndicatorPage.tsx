@@ -3,13 +3,13 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 import { ProgressIndicatorBasicExample } from './examples/ProgressIndicator.Basic.Example';
-const ProgressIndicatorBasicExampleCode = require('./examples/ProgressIndicator.Basic.Example.tsx');
+const ProgressIndicatorBasicExampleCode = require('./examples/ProgressIndicator.Basic.Example.tsx') as string;
 
 export class ProgressIndicatorPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -21,7 +21,7 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
 
   public render() {
     return (
-     <ComponentPage
+      <ComponentPage
         title='ProgressIndicator'
         componentName='ProgressIndicatorExample'
         exampleCards={
@@ -30,7 +30,7 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
           </ExampleCard>
         }
         propertiesTables={
-            <PropertiesTableSet componentName='ProgressIndicator' />
+          <PropertiesTableSet componentName='ProgressIndicator' />
         }
         overview={
           <div>
@@ -66,10 +66,10 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
         dos={
           <div>
             <ul>
-            <li>Use a ProgressIndicator when the total units to completion is known</li>
-            <li>Display operation description</li>
-            <li>Show text above and/or below the bar</li>
-            <li>Combine steps of a single operation into one bar</li>
+              <li>Use a ProgressIndicator when the total units to completion is known</li>
+              <li>Display operation description</li>
+              <li>Show text above and/or below the bar</li>
+              <li>Combine steps of a single operation into one bar</li>
             </ul>
           </div>
         }
@@ -84,10 +84,10 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
           </div>
         }
         related={
-          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/ProgressIndicator.md'>Fabric JS</a>
+          <a href='https://dev.office.com/fabric-js/Components/ProgressIndicator/ProgressIndicator.html'>Fabric JS</a>
         }
         route={ this._url }
-         isHeaderVisible={ this.props.isHeaderVisible }>
+        isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
   }

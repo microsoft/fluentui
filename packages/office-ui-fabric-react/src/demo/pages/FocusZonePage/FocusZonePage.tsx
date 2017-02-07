@@ -3,7 +3,7 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { FocusZonePhotosExample } from './examples/FocusZone.Photos.Example';
 import { FocusZoneListExample } from './examples/FocusZone.List.Example';
@@ -12,9 +12,9 @@ import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const FocusZonePhotosExampleCode = require('./examples/FocusZone.Photos.Example.tsx');
-const FocusZoneListExampleCode = require('./examples/FocusZone.List.Example.tsx');
-const FocusZoneDisabledExampleCode = require('./examples/FocusZone.Disabled.Example.tsx');
+const FocusZonePhotosExampleCode = require('./examples/FocusZone.Photos.Example.tsx') as string;
+const FocusZoneListExampleCode = require('./examples/FocusZone.List.Example.tsx') as string;
+const FocusZoneDisabledExampleCode = require('./examples/FocusZone.Disabled.Example.tsx') as string;
 
 export class FocusZonePage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -26,7 +26,7 @@ export class FocusZonePage extends React.Component<IComponentDemoPageProps, any>
 
   public render() {
     return (
-       <ComponentPage
+      <ComponentPage
         title='FocusZone'
         componentName='FocusZoneExample'
         exampleCards={

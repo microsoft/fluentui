@@ -2,14 +2,14 @@ import * as React from 'react';
 import {
   ExampleCard,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { MarqueeSelectionBasicExample } from './examples/MarqueeSelection.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const MarqueeSelectionBasicExampleCode = require('./examples/MarqueeSelection.Basic.Example.tsx');
+const MarqueeSelectionBasicExampleCode = require('./examples/MarqueeSelection.Basic.Example.tsx') as string;
 
 export class MarqueeSelectionPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -21,7 +21,7 @@ export class MarqueeSelectionPage extends React.Component<IComponentDemoPageProp
 
   public render() {
     return (
-       <ComponentPage
+      <ComponentPage
         title='MarqueeSelection'
         componentName='MarqueeSelectionExample'
         exampleCards={

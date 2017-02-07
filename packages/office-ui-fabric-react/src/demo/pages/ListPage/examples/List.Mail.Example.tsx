@@ -1,7 +1,5 @@
 import * as React from 'react';
-import {
-  List
-} from '../../../../index';
+import { List } from '../../../../List';
 import './List.Mail.Example.scss';
 
 export class MailTile extends React.Component<any, any> {
@@ -20,7 +18,7 @@ export class MailTile extends React.Component<any, any> {
           <div className='ms-ListItem-action'></div>
           <div className='ms-ListItem-action'></div>
         </div>
-    </div>
+      </div>
     );
   }
 }
@@ -39,7 +37,7 @@ export class ListMailExample extends React.Component<IListMailExampleProps, any>
             items={ this.props.items }
             onRenderCell={ (item, index) => (
               <MailTile item={ item } />
-            )}
+            ) }
           />
         </div>
       </div>

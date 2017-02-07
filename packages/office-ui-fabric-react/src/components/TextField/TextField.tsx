@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ITextFieldProps } from './TextField.Props';
+import { ITextField, ITextFieldProps } from './TextField.Props';
 import { Label } from '../../Label';
 import {
-  Async,
+  BaseComponent,
   getId,
   css,
   getNativeProps,
@@ -26,7 +26,7 @@ export interface ITextFieldState {
   errorMessage?: string;
 }
 
-export class TextField extends React.Component<ITextFieldProps, ITextFieldState> {
+export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> implements ITextField {
   public static defaultProps: ITextFieldProps = {
     multiline: false,
     resizable: true,
@@ -44,21 +44,19 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
 
   private _id: string;
   private _descriptionId: string;
-  private _async: Async;
   private _delayedValidate: (value: string) => void;
   private _isMounted: boolean;
   private _lastValidation: number;
   private _latestValidateValue;
   private _willMountTriggerValidation;
   private _isDescriptionAvailable: boolean;
-  private _field;
+  private _textElement: HTMLInputElement | HTMLTextAreaElement;
 
   public constructor(props: ITextFieldProps) {
     super(props);
 
     this._id = getId('TextField');
     this._descriptionId = getId('TextFieldDescription');
-    this._async = new Async(this);
 
     this.state = {
       value: props.value || props.defaultValue || '',
@@ -111,12 +109,20 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
   }
 
   public componentWillUnmount() {
-    this._async.dispose();
     this._isMounted = false;
   }
 
   public render() {
-    let { disabled, required, multiline, underlined, label, description, iconClass, className } = this.props;
+    let {
+      className,
+      description,
+      disabled,
+      iconClass,
+      label,
+      multiline,
+      required,
+      underlined
+    } = this.props;
     let { isFocused } = this.state;
     const errorMessage: string = this._errorMessage;
     this._isDescriptionAvailable = Boolean(description || errorMessage);
@@ -149,8 +155,8 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
    * Sets focus on the text field
    */
   public focus() {
-    if (this._field) {
-      this._field.focus();
+    if (this._textElement) {
+      this._textElement.focus();
     }
   }
 
@@ -158,8 +164,8 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
    * Selects the text field
    */
   public select() {
-    if (this._field) {
-      this._field.select();
+    if (this._textElement) {
+      this._textElement.select();
     }
   }
 
@@ -167,8 +173,8 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
    * Sets the selection start of the text field to a specified value
    */
   public setSelectionStart(value: number) {
-    if (this._field) {
-      this._field.selectionStart = value;
+    if (this._textElement) {
+      this._textElement.selectionStart = value;
     }
   }
 
@@ -176,8 +182,8 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
    * Sets the selection end of the text field to a specified value
    */
   public setSelectionEnd(value: number) {
-    if (this._field) {
-      this._field.selectionEnd = value;
+    if (this._textElement) {
+      this._textElement.selectionEnd = value;
     }
   }
 
@@ -203,7 +209,7 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
     }
   }
 
-  private get _fieldClassName(): string {
+  private get _textElementClassName(): string {
     const errorMessage: string = this._errorMessage;
     let textFieldClassName: string;
 
@@ -234,17 +240,17 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
       <textarea
         { ...textAreaProps }
         id={ this._id }
-        ref={ (c): HTMLTextAreaElement => this._field = c }
+        ref={ this._resolveRef('_textElement') }
         value={ this.state.value }
         onInput={ this._onInputChange }
         onChange={ this._onChange }
-        className={ this._fieldClassName }
+        className={ this._textElementClassName }
         aria-label={ this.props.ariaLabel }
         aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
         aria-invalid={ !!this.state.errorMessage }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
-        />
+      />
     );
   }
 
@@ -256,17 +262,17 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
         type={ 'text' }
         { ...inputProps }
         id={ this._id }
-        ref={ (c): HTMLInputElement => this._field = c }
+        ref={ this._resolveRef('_textElement') }
         value={ this.state.value }
         onInput={ this._onInputChange }
         onChange={ this._onChange }
-        className={ this._fieldClassName }
+        className={ this._textElementClassName }
         aria-label={ this.props.ariaLabel }
         aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
         aria-invalid={ !!this.state.errorMessage }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
-        />
+      />
     );
   }
 
@@ -333,8 +339,8 @@ export class TextField extends React.Component<ITextFieldProps, ITextFieldState>
   }
 
   private _adjustInputHeight(): void {
-    if (this._field && this.props.autoAdjustHeight && this.props.multiline) {
-      const textField = this._field as HTMLElement;
+    if (this._textElement && this.props.autoAdjustHeight && this.props.multiline) {
+      const textField = this._textElement as HTMLElement;
       textField.style.height = '';
       let scrollHeight = textField.scrollHeight + 2; // +2 to avoid vertical scroll bars
       textField.style.height = scrollHeight + 'px';

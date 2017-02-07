@@ -3,14 +3,14 @@ import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { LabelBasicExample } from './examples/Label.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const LabelBasicExampleCode = require('./examples/Label.Basic.Example.tsx');
+const LabelBasicExampleCode = require('./examples/Label.Basic.Example.tsx') as string;
 
 export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
@@ -27,11 +27,11 @@ export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
         componentName='LabelExample'
         exampleCards={
           <ExampleCard title='Label' code={ LabelBasicExampleCode }>
-            <LabelBasicExample/>
+            <LabelBasicExample />
           </ExampleCard>
         }
         propertiesTables={
-            <PropertiesTableSet componentName='Label' />
+          <PropertiesTableSet componentName='Label' />
         }
         overview={
           <div>
@@ -61,7 +61,7 @@ export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
           </div>
         }
         related={
-          <a href='https://github.com/OfficeDev/office-ui-fabric-js/blob/master/ghdocs/components/Label.md'>Fabric JS</a>
+          <a href='https://dev.office.com/fabric-js/Components/Label/Label.html'>Fabric JS</a>
         }
         route={ this._url }
         isHeaderVisible={ this.props.isHeaderVisible }>

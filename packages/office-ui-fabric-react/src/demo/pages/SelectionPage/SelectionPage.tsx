@@ -2,14 +2,14 @@ import * as React from 'react';
 import {
   ExampleCard,
   ComponentPage
-} from '../../components/index';
+} from '../../components/demoComponents';
 
 import { SelectionBasicExample } from './examples/Selection.Basic.Example';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { AppState } from '../../components/App/AppState';
 import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
 
-const SelectionBasicExampleCode = require('./examples/Selection.Basic.Example.tsx');
+const SelectionBasicExampleCode = require('./examples/Selection.Basic.Example.tsx') as string;
 
 export class SelectionPage extends React.Component<IComponentDemoPageProps, any> {
   private _url: string;
