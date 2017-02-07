@@ -13,7 +13,7 @@ import './Facepile.Examples.scss';
 
 export enum ExtraDataType {
   none = 0,
-  name
+  name = 1
 }
 
 export interface IFacepileBasicExampleState {
