@@ -404,9 +404,9 @@
       "resolved": "https://registry.npmjs.org/aws-sign2/-/aws-sign2-0.6.0.tgz"
     },
     "aws4": {
-      "version": "1.5.0",
+      "version": "1.6.0",
       "from": "aws4@>=1.2.1 <2.0.0",
-      "resolved": "https://registry.npmjs.org/aws4/-/aws4-1.5.0.tgz"
+      "resolved": "https://registry.npmjs.org/aws4/-/aws4-1.6.0.tgz"
     },
     "backo2": {
       "version": "1.0.2",
@@ -5484,10 +5484,10 @@
       "from": "temp_modules/rush-example-app-base",
       "resolved": "file:temp_modules/rush-example-app-base"
     },
-    "rush-fabric-samples": {
+    "rush-fabric-examples": {
       "version": "0.0.0",
-      "from": "temp_modules/rush-fabric-samples",
-      "resolved": "file:temp_modules/rush-fabric-samples",
+      "from": "temp_modules/rush-fabric-examples",
+      "resolved": "file:temp_modules/rush-fabric-examples",
       "dependencies": {
         "dateformat": {
           "version": "1.0.12",
@@ -6547,9 +6547,9 @@
       "resolved": "https://registry.npmjs.org/webpack-bundle-analyzer/-/webpack-bundle-analyzer-2.2.1.tgz",
       "dependencies": {
         "acorn": {
-          "version": "4.0.9",
+          "version": "4.0.11",
           "from": "acorn@>=4.0.3 <5.0.0",
-          "resolved": "https://registry.npmjs.org/acorn/-/acorn-4.0.9.tgz"
+          "resolved": "https://registry.npmjs.org/acorn/-/acorn-4.0.11.tgz"
         },
         "lodash": {
           "version": "4.17.4",

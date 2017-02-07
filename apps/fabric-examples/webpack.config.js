@@ -10,7 +10,7 @@ let SplitByPathPlugin = require('webpack-split-by-path');
 let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const IS_PRODUCTION = process.argv.indexOf('--production') >= 0;
-const BUNDLE_NAME = 'fabric-samples';
+const BUNDLE_NAME = 'fabric-examples';
 
 // Create an array of configs, prepopulated with a debug (non-minified) build.
 let configs = [

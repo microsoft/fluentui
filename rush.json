@@ -31,8 +31,8 @@
       "shouldPublish": false
     },
     {
-      "packageName": "fabric-samples",
-      "projectFolder": "apps/fabric-samples",
+      "packageName": "fabric-examples",
+      "projectFolder": "apps/fabric-examples",
       "shouldPublish": false
     }
   ]

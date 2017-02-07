@@ -148,12 +148,20 @@ gulp.task('deploy', ['bundle'], function (cb) {
 // alternative serve approach.
 // Set up a "rushBuild" subTask that will spawn rush build
 let exec = require('child_process').exec;
-const sourceMatch = [
-  'apps/fabric-samples/src/**/*.{ts,tsx,scss,js,txt,html}',
-  '!apps/fabric-samples/src/**/*.scss.ts',
-  'packages/office-ui-fabric-react/src/**/*.{ts,tsx,scss,js,txt,html}',
-  '!packages/office-ui-fabric-react/src/**/*.scss.ts',
+
+const projectMatch = [
+  'apps/fabric-examples',
+  'packages/office-ui-fabric-react',
+  'packages/example-app-base',
+  'packages/utilities'
 ];
+
+const sourceMatch = [];
+
+projectMatch.forEach(project => sourceMatch.push(
+  `${project}/src/**/*.{ts,tsx,scss,js,txt,html}`,
+  `!${project}/src/**/*.scss.ts`
+));
 
 let rushBuild = build.subTask('rushBuild', (gulp, options, done) => {
   let child = exec(`rush build --to ${pkg.name} ${isProduction ? '--production' : ''}`);

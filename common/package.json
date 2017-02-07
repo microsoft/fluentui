@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "rush-example-app-base": "file:./temp_modules/rush-example-app-base",
-    "rush-fabric-samples": "file:./temp_modules/rush-fabric-samples",
+    "rush-fabric-examples": "file:./temp_modules/rush-fabric-examples",
     "rush-fabric-website": "file:./temp_modules/rush-fabric-website",
     "rush-office-ui-fabric-react": "file:./temp_modules/rush-office-ui-fabric-react",
     "rush-todo-app": "file:./temp_modules/rush-todo-app",

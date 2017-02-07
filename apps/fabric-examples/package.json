@@ -1,5 +1,5 @@
 {
-  "name": "fabric-samples",
+  "name": "fabric-examples",
   "version": "1.0.0",
   "description": "Samples for office-ui-fabric-react",
   "main": "lib/index.js",
