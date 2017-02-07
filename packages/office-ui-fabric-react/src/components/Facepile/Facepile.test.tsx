@@ -198,6 +198,22 @@ describe('Facepile', () => {
 
       let facepile = wrapper.find(Facepile);
       let buttons = facepile.find('.ms-Facepile-itemButton');
+      let index: number = 0;
+
+      buttons.forEach(node => {
+        node.instance().context.property.getBoundingClientRect = () => ({
+          left: 32 * index,
+          top: 0,
+          right: 32,
+          bottom: 32,
+          width: 32,
+          height: 32
+        });
+        index++;
+      });
+
+      wrapper.update();
+      buttons = facepile.find('.ms-Facepile-itemButton');
       expect(buttons).to.have.length(3, 'Only three personas should be rendered');
     });
   });
