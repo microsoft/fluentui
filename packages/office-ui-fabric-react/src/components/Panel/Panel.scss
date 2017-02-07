@@ -288,12 +288,15 @@ $CommandBarHeight: 40px;
 // Scrollable content area
 .ms-Panel-contentInner {
   position: absolute;
-  top: $CommandBarHeight;
+  top: 4px;
   bottom: 0;
   left: 0;
   right: 0;
   padding: 0 16px 20px;
   overflow-y: auto;
+  .ms-Panel--hasCloseButton & {
+    top: $CommandBarHeight;
+  }
 
   -webkit-overflow-scrolling: touch;
 

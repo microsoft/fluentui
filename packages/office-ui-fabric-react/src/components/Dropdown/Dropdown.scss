@@ -151,10 +151,23 @@ $DropDown-item-height: 36px;
   text-overflow: ellipsis;
 }
 
+.ms-Dropdown-callout {
+  box-shadow: 0 0px 15px -5px rgba(0, 0, 0, 0.4);
+  border: 1px solid $ms-color-neutralLight;
+}
+
+.ms-Dropdown-panel {
+  .ms-Panel-main {
+    box-shadow: 0 0px 15px -5px rgba(0, 0, 0, 0.4);
+  }
+  .ms-Panel-contentInner {
+    padding: 0 0 20px
+  }
+}
+
 // Container for the dropdown items, displayed as a panel on small screens.
 .ms-Dropdown-items {
   @include ms-u-normalize;
-  @include drop-shadow;
   background-color: $ms-color-white;
   list-style-type: none;
   width: 100%;
@@ -163,10 +176,7 @@ $DropDown-item-height: 36px;
   bottom: auto;
   left: auto;
   max-width: 100%;
-  box-shadow: 0 0px 15px -5px rgba(0, 0, 0, 0.4);
-  border: 1px solid $ms-color-neutralLight;
   user-select: none;
-
   &::before {
     content: '';
     position: absolute;
@@ -195,10 +205,11 @@ $DropDown-item-height: 36px;
   text-align: left;
   min-height: $DropDown-item-height;
   line-height: 20px;
-  padding: 6px 12px;
+  padding: 9px 20px;
   position: relative;
   border: 1px solid transparent;
   word-wrap: break-word;
+  font-size: $ms-font-size-m;
 
   @media screen and (-ms-high-contrast: active) {
     border-color: $ms-color-black;

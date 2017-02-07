@@ -6,6 +6,7 @@ import { BaseButton } from '../../Button';
 import { List } from '../../List';
 import { Panel } from '../../Panel';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import {
   BaseComponent,
   KeyCodes,
@@ -21,6 +22,7 @@ export interface IDropdownState {
   selectedIndex?: number;
 }
 
+@withResponsiveMode
 export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
 
   public static defaultProps = {
@@ -64,6 +66,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
 
   }
 
+  // Primary Render
   public render() {
     let id = this._id;
     let { className, label, options, disabled, isDisabled, ariaLabel,
@@ -143,17 +146,62 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
     }
   }
 
+  // Render text in dropdown input
+  @autobind
+  private _onRenderTitle(item: IDropdownOption): JSX.Element {
+    return <span>{ item.text }</span>;
+  }
+
+  // Render Callout or Panel container and pass in list
   @autobind
   private _onRenderContainer(props: IDropdownProps): JSX.Element {
+    let {
+      onRenderList = this._onRenderList,
+      responsiveMode
+    } = this.props;
+
+    let isSmall = responsiveMode <= ResponsiveMode.medium;
+
+    return (
+      isSmall ?
+        <Panel
+          className='ms-Dropdown-panel'
+          isOpen={ true }
+          isLightDismiss={ true }
+          onDismissed={ this._onDismiss }
+          hasCloseButton={ true }
+        >
+          { onRenderList(props, this._onRenderList) }
+        </Panel>
+        :
+        <Callout
+          isBeakVisible={ false }
+          className='ms-Dropdown-callout'
+          gapSpace={ 0 }
+          doNotLayer={ false }
+          targetElement={ this._dropDown }
+          directionalHint={ DirectionalHint.bottomLeftEdge }
+          onDismiss={ this._onDismiss }
+          onPositioned={ this._onPositioned }
+        >
+          <div style={ { width: this._dropDown.clientWidth - 2 } }>
+            { onRenderList(props, this._onRenderList) }
+          </div>
+        </Callout>
+    );
+  }
+
+  // Render List of items
+  @autobind
+  private _onRenderList(props: IDropdownProps): JSX.Element {
     let {
       onRenderItem = this._onRenderItem
     } = this.props;
 
-    let isSmall = false; // fake it for now
     let id = this._id;
     let { selectedIndex } = this.state;
 
-    let content = (
+    return (
       <FocusZone
         ref={ this._resolveRef('_focusZone') }
         direction={ FocusZoneDirection.vertical }
@@ -161,7 +209,6 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
       >
         <List
           id={ id + '-list' }
-          style={ { width: this._dropDown.clientWidth - 2 } }
           className='ms-Dropdown-items'
           aria-labelledby={ id + '-label' }
           items={ props.options }
@@ -174,23 +221,9 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
         />
       </FocusZone>
     );
-    // TODO Setup responsive, add props to panel
-    return (
-      isSmall ?
-        <Panel{ ...this.props  }>{ content } </Panel> :
-        <Callout
-          isBeakVisible={ false }
-          className='ms-Dropdown-callout'
-          gapSpace={ 0 }
-          doNotLayer={ false }
-          targetElement={ this._dropDown }
-          directionalHint={ DirectionalHint.bottomLeftEdge }
-          onDismiss={ this._onDismiss }
-          onPositioned={ this._onPositioned }
-        > { content } </Callout>
-    );
   }
 
+  // Render Items
   @autobind
   private _onRenderItem(item: IDropdownOption): JSX.Element {
     let {  onRenderOption = this._onRenderOption } = this.props;
@@ -212,11 +245,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
     );
   }
 
-  @autobind
-  private _onRenderTitle(item: IDropdownOption): JSX.Element {
-    return <span>{ item.text }</span>;
-  }
-
+  // Render content of item (i.e. text/icon inside of button)
   @autobind
   private _onRenderOption(item: IDropdownOption): JSX.Element {
     return <span>{ item.text }</span>;
