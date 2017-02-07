@@ -2,6 +2,34 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "1.5.4",
+      "tag": "office-ui-fabric-react_v1.5.4",
+      "date": "Tue, 07 Feb 2017 20:34:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "0bd5cb1153eabda5ee7193640884dea758e8450e",
+            "comment": "Panel: onDismiss correctly called now before animation starts."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.5.3",
+      "tag": "office-ui-fabric-react_v1.5.3",
+      "date": "Tue, 07 Feb 2017 01:57:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "7073d2ab45e48876820eba2be5fcbbf60e379745",
+            "comment": "Button: removing vertical-align top which was causing alignment problems."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.5.2",
       "tag": "office-ui-fabric-react_v1.5.2",
       "date": "Sat, 04 Feb 2017 04:05:32 GMT",

@@ -165,6 +165,15 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
     );
   }
 
+  public componentDidUpdate(prevProps, prevState) {
+    if (
+      prevState.isAnimatingClose === false &&
+      this.state.isAnimatingClose === true &&
+      this.props.onDismiss) {
+      this.props.onDismiss();
+    }
+  }
+
   public dismiss() {
     if (this.state.isOpen) {
       this.setState({

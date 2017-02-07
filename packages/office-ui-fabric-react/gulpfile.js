@@ -192,7 +192,7 @@ let defaultTasks = build.serial(
 build.task('default', defaultTasks);
 
 // Disable certain subtasks in non production builds to speed up serve.
-build.karma.isEnabled = () => isProduction;
+build.karma.isEnabled = () => true;
 build.tslint.isEnabled = () => isProduction;
 build.clean.isEnabled = () => isProduction;
 
