@@ -11,11 +11,15 @@
 .ms-Button--default {
   background-color: $ms-color-neutralLighter;
   border: 1px solid $ms-color-neutralLighter;
-  height: $button-core-default-height;
-  line-height: $button-core-default-height;
-
   min-width: $button-core-default-minWidth;
   color: $ms-color-neutralPrimary;
+
+  &,
+  .ms-Button-label,
+  .ms-Button-icon {
+    height: $button-core-default-height;
+    line-height: $button-core-default-height;
+  }
 
   &:hover {
     background-color: $ms-color-neutralLight;
