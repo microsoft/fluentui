@@ -21,7 +21,7 @@
   @include high-contrast {
     border: 1px solid $ms-color-white;
   }
-  
+
   @include high-contrast-black-on-white  {
     border: 1px solid $ms-color-black;
   }
@@ -41,7 +41,7 @@
   border: 0;
   color: transparent;
   position: absolute;
-  @include right(0);
+  @include ms-right(0);
   top: 0;
   height: $od-Header-searchHeight - 4px;
   width: $od-Header-searchHeight;
