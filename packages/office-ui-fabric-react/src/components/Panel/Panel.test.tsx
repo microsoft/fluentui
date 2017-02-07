@@ -37,7 +37,7 @@ describe('Panel', () => {
     expect(dismissCalled).equals(true, 'onDismiss was not called');
     expect(dismissedCalled).equals(false, 'onDismissed was called prematurely');
 
-    // Genrate event
+    // Generate animation event to simulate animation completing.
     const event = document.createEvent('CustomEvent'); // AnimationEvent is not supported by PhantomJS
     event.initCustomEvent('animationend', true, true, {});
     (event as any).animationName = 'fadeOut';
