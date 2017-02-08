@@ -37,26 +37,28 @@ $button-commandButtonHeight: 40px;
     position: relative;
   }
 
-  &:hover,
-  &:focus {
-    background-color: transparent;
+  &.is-enabled {
 
-    &,
-    .ms-Button-icon,
-    .ms-Button-label {
-      color: $ms-color-themeDarker;
+    &:hover,
+    &:focus {
+      background-color: transparent;
+
+      &,
+      .ms-Button-icon,
+      .ms-Button-label {
+        color: $ms-color-themeDarker;
+      }
+    }
+
+    &:active {
+      &,
+      .ms-Button-icon,
+      .ms-Button-label {
+        color: $ms-color-themePrimary;
+      }
     }
   }
 
-  &:active {
-    &,
-    .ms-Button-icon,
-    .ms-Button-label {
-      color: $ms-color-themePrimary;
-    }
-  }
-
-  &:disabled,
   &.is-disabled {
     background-color: transparent;
 

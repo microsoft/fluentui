@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
   BaseComponent,
+  autobind,
   css,
   assign,
   getId,
@@ -68,12 +69,15 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
           className,
           this._baseClassName,
           this._variantClassName,
-          { 'disabled': disabled }
+          { 'is-disabled': disabled },
+          { 'is-enabled': !disabled }
         ),
         ref: this._resolveRef('_buttonElement'),
+        onClick: this._onClick,
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabel ? null : _labelId,
-        'aria-describedby': ariaDescribedBy
+        'aria-describedby': ariaDescribedBy,
+        'aria-disabled': disabled
       }
     );
 
@@ -160,5 +164,18 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     ) : (
         null
       );
+  }
+
+  @autobind
+  private _onClick(ev) {
+    let { disabled, onClick } = this.props;
+
+    if (disabled) {
+      ev.preventDefault();
+    } else {
+      if (onClick) {
+        onClick(ev);
+      }
+    }
   }
 }

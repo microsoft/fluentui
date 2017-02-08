@@ -13,8 +13,9 @@
 
   min-width: $button-core-default-minWidth;
   background-color: $ms-color-themePrimary;
-  border-color: $ms-color-themePrimary;
   color: $ms-color-white;
+  font-weight: $ms-font-weight-semibold;
+  font-size: $ms-font-size-m;
 
   &,
   .ms-Button-label,
@@ -23,34 +24,28 @@
     line-height: $button-core-default-height;
   }
 
-  .ms-Button-label {
-    font-weight: $ms-font-weight-semibold;
-    font-size: $ms-font-size-m;
-  }
+  &.is-enabled {
 
-  &:hover {
-    background-color: $ms-color-themeDark;
-    border-color: $ms-color-themeDark;
-  }
-
-  &:focus {
-    background-color: $ms-color-themeDark;
-    border-color: $ms-color-themePrimary;
-  }
-
-  &:active {
-    background-color: $ms-color-themePrimary;
-    border-color: $ms-color-themePrimary;
-  }
-
-}
-
-.ms-Fabric.is-focusVisible .ms-Button--primary {
-  &:focus {
-    color: $ms-color-white;
-
-    &:before {
-      border-color: $ms-color-themeLighter;
+    .ms-Button-label {
+      font-weight: $ms-font-weight-semibold;
+      font-size: $ms-font-size-m;
     }
+
+    &:hover {
+      background-color: $ms-color-themeDark;
+    }
+
+    &:focus {
+      background-color: $ms-color-themeDark;
+    }
+
+    &:active {
+      background-color: $ms-color-themePrimary;
+    }
+  }
+
+  // When primary button is disabled, we should use the default focus border color.
+  &.is-disabled {
+    @include focus-border();
   }
 }

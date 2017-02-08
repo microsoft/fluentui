@@ -20,14 +20,18 @@ describe('Button', () => {
   });
 
   it('can render with an onClick.', () => {
-    let onClick = () => null;
+    let didClick = false;
 
     const button = ReactTestUtils.renderIntoDocument<any>(
-      <Button onClick={ onClick }>Hello</Button>
+      <Button onClick={ () => { didClick = true; } }>Hello</Button>
     );
     const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
-    console.log(renderedDOM.tagName);
+
     expect(renderedDOM.tagName).equals('BUTTON', 'A Button with onClick renders as a button');
+
+    ReactTestUtils.Simulate.click(renderedDOM);
+
+    expect(didClick).equals(true, 'The onClick callback was not called');
   });
 
   it('can render with an href', () => {
@@ -37,6 +41,18 @@ describe('Button', () => {
     const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
     console.log(renderedDOM.tagName);
     expect(renderedDOM.tagName).equals('A', 'A Button with an href renders as an anchor');
+  });
+
+  it('does not call onClick when disabled', () => {
+    let didClick = false;
+
+    const button: any = ReactTestUtils.renderIntoDocument<any>(
+      <Button disabled onClick={ () => { didClick = true; } }>Click me</Button>
+    );
+    const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
+
+    ReactTestUtils.Simulate.click(renderedDOM);
+    expect(didClick).equals(false, 'The onClick callback was called on a disabled button');
   });
 
 });
