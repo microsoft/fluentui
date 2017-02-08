@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 07 Feb 2017 01:57:25 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Feb 2017 20:34:17 GMT and should not be manually modified.
+
+## 1.5.4
+Tue, 07 Feb 2017 20:34:17 GMT
+
+### Patches
+
+- Panel: onDismiss correctly called now before animation starts.
 
 ## 1.5.3
 Tue, 07 Feb 2017 01:57:25 GMT

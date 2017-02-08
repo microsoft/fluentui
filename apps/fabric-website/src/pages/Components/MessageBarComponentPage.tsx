@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MessageBarPage } from 'office-ui-fabric-react/lib/demo/pages/MessageBarPage/MessageBarPage';
+import { MessageBarPage } from 'fabric-examples/lib/pages/MessageBarPage/MessageBarPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 
@@ -9,22 +9,22 @@ export class MessageBarComponentPage extends React.Component<any, any> {
       <div ref='pageElement'>
         <ComponentPage>
           <PageHeader pageTitle='MessageBar' backgroundColor='#038387'
-          links={
-            [
-              {
-                'text': 'Overview',
-                'location': 'Overview'
-              },
-              {
-                'text': 'Variants',
-                'location': 'Variants'
-              },
-              {
-                'text': 'Implementation',
-                'location': 'Implementation'
-              }
-            ]
-          }/>
+            links={
+              [
+                {
+                  'text': 'Overview',
+                  'location': 'Overview'
+                },
+                {
+                  'text': 'Variants',
+                  'location': 'Variants'
+                },
+                {
+                  'text': 'Implementation',
+                  'location': 'Implementation'
+                }
+              ]
+            } />
           <MessageBarPage isHeaderVisible={ false } />
         </ComponentPage>
       </div>

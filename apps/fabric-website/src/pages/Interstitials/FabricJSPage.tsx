@@ -9,7 +9,7 @@ export class FabricJSPage extends React.Component<any, any> {
         <div className={ styles.header }>
           <h1>Office UI Fabric JS</h1>
           <span>Simple components that focus on appearance and styling</span>
-          <a href='https://github.com/OfficeDev/office-ui-fabric-js' className={ styles.button }>View Fabric JS on GitHub</a>
+          <a href='https://dev.office.com/fabric-js/' className={ styles.button }>View Fabric JS</a>
         </div>
 
         <div className={ styles.overview }>

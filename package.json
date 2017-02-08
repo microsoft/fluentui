@@ -9,7 +9,7 @@
   "scripts": {
     "postinstall": "rush install && rush link",
     "test": "rush build --production",
-    "start": "gulp --gulpfile packages/office-ui-fabric-react/gulpfile.js serve",
+    "start": "gulp --gulpfile apps/fabric-examples/gulpfile.js serve",
     "build": "rush build --production --clean",
     "change": "rush change"
   },
