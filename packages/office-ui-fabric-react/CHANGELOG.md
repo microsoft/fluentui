@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 07 Feb 2017 20:34:17 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Feb 2017 05:10:53 GMT and should not be manually modified.
+
+## 1.5.5
+Wed, 08 Feb 2017 05:10:53 GMT
+
+### Patches
+
+- Moved all examples from this package into a separate app, so that we can fix imports in the code examples to be the correct imports.
 
 ## 1.5.4
 Tue, 07 Feb 2017 20:34:17 GMT
