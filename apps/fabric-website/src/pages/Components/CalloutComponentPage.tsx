@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CalloutPage } from 'office-ui-fabric-react/lib/demo/pages/CalloutPage/CalloutPage';
+import { CalloutPage } from 'fabric-examples/lib/pages/CalloutPage/CalloutPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 
@@ -9,26 +9,26 @@ export class CalloutComponentPage extends React.Component<any, any> {
       <div ref='pageElement'>
         <ComponentPage>
           <PageHeader pageTitle='Callout' backgroundColor='#038387'
-           links={
-            [
-              {
-                'text': 'Overview',
-                'location': 'Overview'
-              },
-              {
-                'text': 'Best Practices',
-                'location': 'Best Practices'
-              },
-              {
-                'text': 'Variants',
-                'location': 'Variants'
-              },
-              {
-                'text': 'Implementation',
-                'location': 'Implementation'
-              }
-            ]
-          }/>
+            links={
+              [
+                {
+                  'text': 'Overview',
+                  'location': 'Overview'
+                },
+                {
+                  'text': 'Best Practices',
+                  'location': 'Best Practices'
+                },
+                {
+                  'text': 'Variants',
+                  'location': 'Variants'
+                },
+                {
+                  'text': 'Implementation',
+                  'location': 'Implementation'
+                }
+              ]
+            } />
           <CalloutPage isHeaderVisible={ false } />
         </ComponentPage>
       </div>

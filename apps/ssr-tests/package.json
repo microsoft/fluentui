@@ -1,0 +1,29 @@
+{
+  "name": "ssr-tests",
+  "version": "1.0.0",
+  "description": "Reusable React components for building experiences for Office 365.",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+  },
+  "scripts": {
+    "build": "node ./node_modules/mocha/bin/mocha && echo Ignored parameters: ",
+    "test": "node ./node_modules/mocha/bin/mocha && echo Ignored parameters: ",
+    "clean": "",
+    "start": ""
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@microsoft/load-themed-styles": "^1.2.2",
+    "@types/chai": "^3.4.34",
+    "@types/mocha": "^2.2.32",
+    "fabric-examples": ">=1.0.0 <2.0.0",
+    "office-ui-fabric-react": ">=1.5.5 <2.0.0",
+    "mocha": "~2.5.3",
+    "react": ">=15.0.0 <16.0.0",
+    "react-dom": ">=15.0.0 <16.0.0"
+  },
+  "dependencies": {}
+}
