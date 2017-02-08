@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { scopeClassName } from '../../common/scope';
 import {
   BaseComponent,
   css,
@@ -65,6 +66,7 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
       nativeProps,
       {
         className: css(
+          scopeClassName,
           className,
           this._baseClassName,
           this._variantClassName,

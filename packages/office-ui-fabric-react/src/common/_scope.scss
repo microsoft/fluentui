@@ -1,0 +1,8 @@
+// Variable is set during gulp task as comma seperated list. i.e. 5,1,0
+$ms-fabric-scope-class: '.msfr1';
+
+@mixin scope-fabric {
+  #{$ms-fabric-scope-class} {
+    @content;
+  }
+}
