@@ -36,7 +36,11 @@ export class ScreenReaderAlertPage extends React.Component<IComponentDemoPagePro
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet componentName='ScreenReaderAlert' />
+          <PropertiesTableSet
+            sources={ [
+              require<string>('office-ui-fabric-react/lib/components/ScreenReaderAlert/ScreenReaderAlert.Props.ts')
+            ] }
+          />
         }
         overview={
           <div>
