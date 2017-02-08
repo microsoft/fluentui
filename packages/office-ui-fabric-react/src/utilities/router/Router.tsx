@@ -46,15 +46,18 @@ export class Router extends BaseComponent<IRouterProps, {}> {
         if (getComponent) {
           let asynchronouslyResolved = false;
 
-          component = null;
+          component = getComponent.component;
 
-          getComponent((resolved) => {
-            component = resolved;
-            if (asynchronouslyResolved) {
-              this.forceUpdate();
-            }
-          });
+          if (!component) {
+            getComponent((resolved) => {
+              component = getComponent.component = resolved;
 
+              if (asynchronouslyResolved) {
+                this.forceUpdate();
+              }
+            });
+          }
+          // Note: in webpack 2, this ends up always async.
           asynchronouslyResolved = true;
         }
 
