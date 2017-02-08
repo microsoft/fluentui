@@ -87,6 +87,7 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
 .ms-Link.ms-Breadcrumb-itemLink {
   &:hover {
     background-color: $selectedHoverBackgroundColor;
+    color: initial;
     cursor: pointer;
   }
 
