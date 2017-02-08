@@ -9,8 +9,8 @@
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
   },
   "scripts": {
-    "build": "node_modules/mocha/bin/mocha && echo Ignored parameters: ",
-    "test": "node_modules/mocha/bin/mocha && echo Ignored parameters: ",
+    "build": "node ./node_modules/mocha/bin/mocha && echo Ignored parameters: ",
+    "test": "node ./node_modules/mocha/bin/mocha && echo Ignored parameters: ",
     "clean": "",
     "start": ""
   },
