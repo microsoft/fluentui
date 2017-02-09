@@ -8,53 +8,52 @@
 // --------------------------------------------------
 // Primary Button styles
 
-.ms-Button{
-  &.ms-Button--primary {
-    @include focus-border(1px, $ms-color-white);
 
-    min-width: $button-core-default-minWidth;
-    background-color: $ms-color-themePrimary;
-    border-color: $ms-color-themePrimary;
-    color: $ms-color-white;
+.ms-Button.ms-Button--primary {
+  @include focus-border(1px, $ms-color-white);
 
-    .ms-Button-label,
-    .ms-Button-icon {
-      height: $button-core-default-height;
-      line-height: $button-core-default-height;
-    }
+  min-width: $button-core-default-minWidth;
+  background-color: $ms-color-themePrimary;
+  border-color: $ms-color-themePrimary;
+  color: $ms-color-white;
 
-    .ms-Button-label {
-      font-weight: $ms-font-weight-semibold;
-      font-size: $ms-font-size-m;
-    }
-
-    &:hover {
-      background-color: $ms-color-themeDark;
-      border-color: $ms-color-themeDark;
-    }
-
-    &:focus {
-      background-color: $ms-color-themeDark;
-      border-color: $ms-color-themePrimary;
-    }
-
-    &:active {
-      background-color: $ms-color-themePrimary;
-      border-color: $ms-color-themePrimary;
-    }
-
-    &:disabled, &.disabled {
-      @include core-button-disabled;
-    }
+  .ms-Button-label,
+  .ms-Button-icon {
+    height: $button-core-default-height;
+    line-height: $button-core-default-height;
   }
 
-  .ms-Fabric.is-focusVisible .ms-Button--primary {
-    &:focus {
-      color: $ms-color-white;
+  .ms-Button-label {
+    font-weight: $ms-font-weight-semibold;
+    font-size: $ms-font-size-m;
+  }
 
-      &:before {
-        border-color: $ms-color-themeLighter;
-      }
+  &:hover {
+    background-color: $ms-color-themeDark;
+    border-color: $ms-color-themeDark;
+  }
+
+  &:focus {
+    background-color: $ms-color-themeDark;
+    border-color: $ms-color-themePrimary;
+  }
+
+  &:active {
+    background-color: $ms-color-themePrimary;
+    border-color: $ms-color-themePrimary;
+  }
+
+  &:disabled, &.disabled {
+    @include core-button-disabled;
+  }
+}
+
+.ms-Fabric.is-focusVisible .ms-Button--primary {
+  &:focus {
+    color: $ms-color-white;
+
+    &:before {
+      border-color: $ms-color-themeLighter;
     }
   }
 }
