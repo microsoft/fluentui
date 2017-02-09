@@ -138,6 +138,11 @@ export interface IGroup {
    * If none is specified, the arai-label attribute will contain the group name
    */
   ariaLabel?: string;
+
+  /**
+   * If Throttled groupview display has more data to fetch in the group.
+   */
+  hasMoreData?: boolean;
 }
 
 export interface IGroupRenderProps {

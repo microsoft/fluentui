@@ -91,7 +91,7 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
 
           <div className='ms-GroupHeader-title ms-font-xl'>
             <span>{ group.name } </span>
-            <span>({ group.count }) </span>
+            <span>({ group.count }{ group.hasMoreData && '+' }) </span>
           </div>
 
           <div className={ css('ms-GroupHeader-loading', { 'is-loading': isLoadingVisible }) }>
