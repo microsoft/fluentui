@@ -8,51 +8,56 @@
 // --------------------------------------------------
 // Default Button styles
 
-.ms-Button--default {
-  background-color: $ms-color-neutralLighter;
-  border: 1px solid $ms-color-neutralLighter;
-  min-width: $button-core-default-minWidth;
-  color: $ms-color-neutralPrimary;
+.ms-Button{
+  &.ms-Button--default {
+    background-color: $ms-color-neutralLighter;
+    border: 1px solid $ms-color-neutralLighter;
+    min-width: $button-core-default-minWidth;
+    color: $ms-color-neutralPrimary;
 
-  &,
-  .ms-Button-label,
-  .ms-Button-icon {
-    height: $button-core-default-height;
-    line-height: $button-core-default-height;
-  }
+    .ms-Button-label,
+    .ms-Button-icon {
+      height: $button-core-default-height;
+      line-height: $button-core-default-height;
+    }
 
-  &:hover {
-    background-color: $ms-color-neutralLight;
-    border-color: $ms-color-neutralLight;
-    color: $ms-color-black;
-  }
+    &:hover {
+      background-color: $ms-color-neutralLight;
+      border-color: $ms-color-neutralLight;
+      color: $ms-color-black;
+    }
 
-  &:focus {
-    background-color: $ms-color-neutralLight;
-    border-color: $ms-color-neutralLighter;
-    outline: 1px solid transparent;
-    color: $ms-color-black;
+    &:focus {
+      background-color: $ms-color-neutralLight;
+      border-color: $ms-color-neutralLighter;
+      outline: 1px solid transparent;
+      color: $ms-color-black;
 
-  }
+    }
 
-  &:active {
-    background-color: $ms-color-themePrimary;
-    border-color: $ms-color-themePrimary;
-    color: $ms-color-white;
-  }
-
-  .ms-Button-label {
-    font-weight: $ms-font-weight-semibold;
-    font-size: $ms-font-size-m;
-  }
-}
-
-.ms-Fabric.is-focusVisible .ms-Button {
-  &:focus {
-    color: $ms-color-black;
-
-    &:before {
+    &:active {
+      background-color: $ms-color-themePrimary;
       border-color: $ms-color-themePrimary;
+      color: $ms-color-white;
+    }
+
+    .ms-Button-label {
+      font-weight: $ms-font-weight-semibold;
+      font-size: $ms-font-size-m;
+    }
+
+    &:disabled, &.disabled {
+      @include core-button-disabled;
+    }
+  }
+
+  .ms-Fabric.is-focusVisible .ms-Button {
+    &:focus {
+      color: $ms-color-black;
+
+      &:before {
+        border-color: $ms-color-themePrimary;
+      }
     }
   }
 }
