@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "exit 0",
+    "test": "npm start & wdio wdio.conf.js",
     "start": "start-storybook -p 9001 -c .storybook",
     "build": "build-storybook -c .storybook -o .out",
     "clean": "echo \"All Clean Here\" && exit 0"
@@ -15,6 +15,12 @@
     "@kadira/storybook": "^2.21.0",
     "office-ui-fabric-react": "^1.5.5",
     "react": "^0.14.7 || ^15.0.0",
-    "react-dom": "^0.14.7 || ^15.0.0"
+    "react-dom": "^0.14.7 || ^15.0.0",
+    "chai": "^3.5.0",
+    "wdio-browserstack-service": "^0.1.4",
+    "wdio-mocha-framework": "^0.5.8",
+    "wdio-selenium-standalone-service": "0.0.7",
+    "wdio-spec-reporter": "0.0.5",
+    "webdriverio": "^4.6.1"
   }
 }

@@ -1,0 +1,19 @@
+{
+  "name": "rush-office-ui-fabric-storybook",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@kadira/storybook": "^2.21.0",
+    "react": "^0.14.7 || ^15.0.0",
+    "react-dom": "^0.14.7 || ^15.0.0",
+    "chai": "^3.5.0",
+    "wdio-browserstack-service": "^0.1.4",
+    "wdio-mocha-framework": "^0.5.8",
+    "wdio-selenium-standalone-service": "0.0.7",
+    "wdio-spec-reporter": "0.0.5",
+    "webdriverio": "^4.6.1"
+  },
+  "rushDependencies": {
+    "office-ui-fabric-react": "^1.5.5"
+  }
+}
