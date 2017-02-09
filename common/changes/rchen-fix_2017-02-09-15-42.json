@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Add support for throttled grouping listviwe",
+      "type": "minor"
+    }
+  ],
+  "email": "rchen@microsoft.com"
+}
