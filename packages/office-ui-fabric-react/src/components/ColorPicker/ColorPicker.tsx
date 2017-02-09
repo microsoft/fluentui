@@ -59,15 +59,16 @@ export class ColorPicker extends React.Component<IColorPickerProps, IColorPicker
             maxValue={ MAX_COLOR_HUE }
             initialValue={ color.h }
             onChanged={ this._onHChanged }
-            />
-          <ColorSlider
-            className='is-alpha'
-            overlayStyle={ { background: `linear-gradient(to right, transparent 0, ${color.str} 100%)` } }
-            minValue={ 0 }
-            maxValue={ 100 }
-            initialValue={ color.a }
-            onChanged={ this._onAChanged }
-            />
+          />
+          { !this.props.hideAlphaControl && (
+            <ColorSlider
+              className='is-alpha'
+              overlayStyle={ { background: `linear-gradient(to right, transparent 0, ${color.str} 100%)` } }
+              minValue={ 0 }
+              maxValue={ 100 }
+              initialValue={ color.a }
+              onChanged={ this._onAChanged }
+            />) }
           <table className='ms-ColorPicker-table' cellPadding='0' cellSpacing='0'>
             <thead>
               <tr className='ms-font-s'>
@@ -75,7 +76,8 @@ export class ColorPicker extends React.Component<IColorPickerProps, IColorPicker
                 <td>Red</td>
                 <td>Green</td>
                 <td>Blue</td>
-                <td>Alpha</td>
+                { !this.props.hideAlphaControl && (
+                  <td>Alpha</td>) }
               </tr>
             </thead>
             <tbody>
@@ -84,7 +86,8 @@ export class ColorPicker extends React.Component<IColorPickerProps, IColorPicker
                 <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ String(color.r) } /></td>
                 <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ String(color.g) } /></td>
                 <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ String(color.b) } /></td>
-                <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ String(color.a) } /></td>
+                { !this.props.hideAlphaControl && (
+                  <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ String(color.a) } /></td>) }
               </tr>
             </tbody>
           </table>

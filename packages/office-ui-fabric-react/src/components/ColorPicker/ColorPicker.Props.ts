@@ -8,4 +8,9 @@ export interface IColorPickerProps {
    * Callback issued when the user changes the color.
    */
   onColorChanged?: (color: string) => void;
+
+  /**
+   * The setting of whether hide alpha control slider.
+   */
+  hideAlphaControl?: boolean;
 }

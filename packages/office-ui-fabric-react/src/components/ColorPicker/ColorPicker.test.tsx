@@ -13,6 +13,7 @@ describe('ColorPicker', () => {
     ) as ColorPicker;
 
     expect(component.state.color.hex).to.equal('ffffff');
+    expect(component.props.hideAlphaControl).to.equal(undefined);
   });
 
   it('Reacts to props changes', () => {
@@ -35,5 +36,13 @@ describe('ColorPicker', () => {
 
     expect(component.state.color.hex).to.equal('aeaeae');
     expect(color).to.equal(newColor);
+  });
+
+  it('Hide alpha control slider', () => {
+    let component = ReactTestUtils.renderIntoDocument(
+      <ColorPicker color='#FFFFFF' hideAlphaControl={ true } />
+    ) as ColorPicker;
+
+    expect(component.props.hideAlphaControl).to.equal(true);
   });
 });
