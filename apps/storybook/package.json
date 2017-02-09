@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npm start & wdio wdio.conf.js",
-    "start": "start-storybook -p 9001 -c .storybook",
-    "build": "build-storybook -c .storybook -o .out",
+    "test": "npm serve & wdio wdio.conf.js",
+    "serve": "start-storybook -p 9001 -c .storybook",
+    "start": "",
+    "build": "",
     "clean": "echo \"All Clean Here\" && exit 0"
   },
   "author": "",
