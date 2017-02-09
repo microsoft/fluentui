@@ -1,0 +1,18 @@
+@import '../../common/common';
+
+.ms-DocumentCardLocation {
+  @include ms-font-s;
+  color: $ms-color-neutralPrimary;
+  display: block;
+  padding: 8px 16px;
+  position: relative;
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &:hover {
+    color: $ms-color-themePrimary;
+    cursor: pointer;
+  }
+}

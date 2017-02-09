@@ -1,0 +1,14 @@
+@import '../../common/common';
+
+$DocumentCard-title-lineHeight: 21px;
+
+.ms-DocumentCardTitle {
+  padding: 8px 16px;
+  display: block;
+  @include ms-font-l;
+  color: $ms-color-neutralPrimary;
+  height: 38px; // Two lines of text, making sure the third line is hidden
+  line-height: $DocumentCard-title-lineHeight;
+  overflow: hidden;
+  word-wrap: break-word;
+}

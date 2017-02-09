@@ -1,9 +1,0 @@
-@import '../../../../common/common';
-
-.ms-NavExample-LeftPane {
-  width: 207px;
-  height: 400px;
-  box-sizing: border-box;
-  @include border-right(1px, solid, #EEE);
-  overflow-y: auto;
-}

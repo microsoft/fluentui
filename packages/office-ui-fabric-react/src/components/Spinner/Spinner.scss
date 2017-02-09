@@ -1,0 +1,54 @@
+@import '../../common/common';
+
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
+//
+// Office UI Fabric
+// --------------------------------------------------
+// Spinner styles
+
+$spin-duration: 1.3s;
+$borderSize: 1.5px;
+
+@keyframes ms-Spinner-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.ms-Spinner {
+  > .ms-Spinner-circle {
+    margin: auto;
+    box-sizing: border-box;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    border: 1.5px solid $ms-color-themeLight;
+    border-top-color: $ms-color-themePrimary;
+    animation: ms-Spinner-spin $spin-duration infinite cubic-bezier(.53,.21,.29,.67);
+    &.ms-Spinner--normal {
+      width: 20px;
+      height: 20px;
+    }
+    &.ms-Spinner--large {
+      width: 28px;
+      height: 28px;
+    }
+  }
+  > .ms-Spinner-label {
+      color: $ms-color-themePrimary;
+      margin-top: 10px;
+      text-align: center;
+  }
+}
+
+@media screen and (-ms-high-contrast: active) {
+  .ms-Spinner {
+    > .ms-Spinner-circle {
+        border-top-style: none;
+    }
+  }
+}

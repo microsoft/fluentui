@@ -1,0 +1,196 @@
+@import '../../common/common';
+
+$navnode-height: 36px;
+$hasExpandButtonLinkLeftPadding: 28px;
+$noExpandButtonLinkLeftPadding: 20px;
+$linkRightPadding: 20px;
+
+.ms-Nav {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  user-select: none;
+}
+
+.ms-Nav.is-onTop {
+  position: absolute;
+}
+
+.ms-Nav ul {
+  list-style-type: none;
+}
+
+.ms-Nav ul,
+.ms-Nav ul > li {
+  padding: 0;
+}
+
+.ms-Nav-groupContent {
+  display: none;
+  margin-bottom: 40px;
+}
+
+.ms-Nav-group.is-expanded .ms-Nav-groupContent {
+  display: block;
+}
+
+.ms-Nav-Icon {
+  padding: 0px;
+  color: $selectedForegroundColor;
+  background: $selectedBackgroundColor;
+  transition: transform .1s linear;
+}
+
+.ms-Nav-IconLink {
+  @include margin-right(4px);
+}
+
+.ms-Nav-chevronButton {
+  display: block;
+
+  font-weight: $ms-font-weight-regular;
+  font-size: $ms-font-size-s;
+
+  @include text-align(left);
+  line-height: $navnode-height;
+  margin: 5px 0;
+  @include padding(0px, $linkRightPadding, 0px, $hasExpandButtonLinkLeftPadding);
+  background: none;
+  border: none;
+
+  text-transform: uppercase;
+  cursor: pointer;
+
+  color: $unselectedForegroundColor;
+  background: $unselectedBackgroundColor;
+
+  &:visited {
+    color: inherit;
+  }
+
+  &:hover {
+    color: $unselectedHoverForegroundColor;
+    background: $unselectedHoverBackgroundColor;
+  }
+
+  &.ms-Nav-chevronButton--group {
+    width: 100%;
+    height: $navnode-height;
+    border-bottom: 1px solid $dividerColor;
+  }
+}
+
+.ms-Nav-chevron.ms-Icon {
+  position: absolute;
+  @include left(8px);
+  height: $navnode-height;
+  line-height: $navnode-height;
+  font-size: 12px;
+  transition: transform .1s linear;
+}
+
+.ms-Nav-group.is-expanded .ms-Nav-chevronButton--group .ms-Nav-chevron  {
+  transform: rotate(-180deg);
+}
+
+.ms-Nav-linkText {
+  vertical-align: middle;
+}
+
+.ms-Nav-compositeLink {
+  display: block;
+  position: relative;
+
+  .ms-Nav-chevronButton.ms-Nav-chevronButton--link {
+    display: block;
+    width: $hasExpandButtonLinkLeftPadding;
+    height: $navnode-height;
+    position: absolute;
+    top: 0;
+    @include left(0);
+    z-index: 1;
+    padding: 0;
+    margin: 0;
+
+  .ms-Nav-chevron {
+      position: relative;
+    }
+  }
+
+  & a {
+   color: $unselectedForegroundColor;
+  }
+  color: $unselectedForegroundColor;
+  background: $unselectedBackgroundColor;
+
+  &:hover {
+
+     & a,
+     & .ms-Nav-chevronButton {
+       background: $unselectedHoverBackgroundColor;
+       color: $unselectedHoverForegroundColor;
+     }
+  }
+
+  &.is-expanded {
+    .ms-Nav-chevron {
+      transform: rotate(-180deg);
+    }
+  }
+
+  &.is-selected {
+    & a,
+    & .ms-Nav-chevronButton {
+
+      color: $ms-color-themePrimary;
+      background: $selectedBackgroundColor;
+
+      &:after {
+        @include border-left(2px, solid, $ms-color-themePrimary);
+
+        content: '';
+        position: absolute;
+        top: 0;
+        @include right(0);
+        bottom: 0;
+        @include left(0);
+      }
+    }
+  }
+}
+
+.ms-Nav-link {
+  display: block;
+  position: relative;
+  height: $navnode-height;
+  line-height: $navnode-height;
+  text-decoration: none;
+  padding: 0 20px;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.ms-Nav-groupHeaderFontSize {
+  @include ms-font-l;
+}
+
+.ms-Nav-chevronButton,
+.ms-Nav-chevronButton--group,
+.ms-Nav-chevronButton--link,
+.ms-Nav-link {
+  @include focus-border();
+}
+
+.ms-Nav-linkButton.ms-Button--command {
+  @include padding-left($noExpandButtonLinkLeftPadding);
+  .ms-Button-label {
+    @include ms-font-m;
+    color: $ms-color-themePrimary;
+  }
+
+  &.isOnExpanded {
+  @include padding-left($hasExpandButtonLinkLeftPadding);
+  }
+}
