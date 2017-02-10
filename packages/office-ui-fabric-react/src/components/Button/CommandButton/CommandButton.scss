@@ -9,14 +9,13 @@
 
 $button-commandButtonHeight: 40px;
 
-.ms-Button--command {
+.ms-Button.ms-Button--command {
   @include text-align(left);
 
   background-color: transparent;
   border: none;
   padding: 0 4px;
 
-  &,
   .ms-Button-label,
   .ms-Button-icon {
     height: $button-commandButtonHeight;
@@ -57,10 +56,9 @@ $button-commandButtonHeight: 40px;
   }
 
   &:disabled,
-  &.is-disabled {
+  &.disabled {
     background-color: transparent;
 
-    &,
     .ms-Button-icon,
     .ms-Button-label {
       color: $ms-color-neutralTertiaryAlt;
