@@ -42,13 +42,7 @@ $Panel-margin-lg: 428px;
 $Panel-margin-xl: 176px;
 $CommandBarHeight: 40px;
 
-// The panel covers the entire screen.
 .ms-Panel {
-  bottom: 0;
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
   display: none;
   pointer-events: none;
 
@@ -210,7 +204,6 @@ $CommandBarHeight: 40px;
     // Animations -- Default (anchored right)
     &.ms-Panel--openRight.ms-Panel-animateIn {
       .ms-Panel-main {
-        position: fixed; // fixes panel jump in chrome and safari
         @include ms-slideLeftIn40;
       }
 
