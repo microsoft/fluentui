@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "ColorPicker: adding `alphaSliderHidden` property to hide the alpha slider.",
+      "type": "minor"
+    }
+  ],
+  "email": "timto@microsoft.com"
+}

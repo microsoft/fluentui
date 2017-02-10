@@ -26,7 +26,6 @@ export class Link extends BaseComponent<ILinkProps, any> implements ILink {
     return (
       href ? (
         <a
-          role='link'
           { ...getNativeProps(this.props, anchorProperties) }
           className={ css('ms-Link', className, {
             'is-disabled': disabled
@@ -34,19 +33,18 @@ export class Link extends BaseComponent<ILinkProps, any> implements ILink {
           onClick={ this._onClick }
           ref={ this._resolveRef('_link') }
           target={ this.props.target }
-          >
+        >
           { children }
         </a>
       ) : (
           <button
-            role='button'
             { ...getNativeProps(this.props, buttonProperties) }
             className={ css('ms-Link', className, {
               'is-disabled': disabled
             }) }
             onClick={ this._onClick }
             ref={ this._resolveRef('_link') }
-            >
+          >
             { children }
           </button>
         ));
