@@ -13,21 +13,33 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
 
   public render() {
     return (
-      <Breadcrumb
-        items={ [
-          {text: 'Files', 'key': 'Files', onClick: this._onBreadcrumbItemClicked},
-          {text: 'This is folder 1', 'key': 'f1', onClick: this._onBreadcrumbItemClicked},
-          {text: 'This is folder 2', 'key': 'f2', onClick: this._onBreadcrumbItemClicked},
-          {text: 'This is folder 3', 'key': 'f3', onClick: this._onBreadcrumbItemClicked},
-          {text: 'This is folder 4', 'key': 'f4', onClick: this._onBreadcrumbItemClicked},
-          {text: 'This is folder 5', 'key': 'f5', onClick: this._onBreadcrumbItemClicked},
-        ] }
-        maxDisplayedItems={ 3 } />
+      <div>
+        <Breadcrumb
+          items={ [
+            { text: 'Files', 'key': 'Files', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 1', 'key': 'f1', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 2', 'key': 'f2', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 3', 'key': 'f3', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 4', 'key': 'f4', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is folder 5', 'key': 'f5', onClick: this._onBreadcrumbItemClicked },
+          ] }
+          maxDisplayedItems={ 3 } />
+        <Breadcrumb
+          items={ [
+            { text: 'Files', 'key': 'Files', href: '#/examples/breadcrumb', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is link 1', 'key': 'l1', href: '#/examples/breadcrumb', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is link 2', 'key': 'l2', href: '#/examples/breadcrumb', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is link 3', 'key': 'l3', href: '#/examples/breadcrumb', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is link 4', 'key': 'l4', href: '#/examples/breadcrumb', onClick: this._onBreadcrumbItemClicked },
+            { text: 'This is link 5', 'key': 'l5', href: '#/examples/breadcrumb', onClick: this._onBreadcrumbItemClicked },
+          ] }
+          maxDisplayedItems={ 3 } />
+      </div>
     );
   }
 
   private _onBreadcrumbItemClicked(ev: React.MouseEvent<HTMLElement>, item: IBreadcrumbItem) {
-    console.log(`Breadcrumb item with key "${ item.key }" has been clicked.`);
+    console.log(`Breadcrumb item with key "${item.key}" has been clicked.`);
   }
 
 }

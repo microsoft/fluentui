@@ -29,20 +29,6 @@
     color: $ms-color-contrastWhiteSelected;
     border-color: $ms-color-contrastWhiteSelected;
   }
-
-  &:disabled,
-  &.disabled {
-    background-color: $ms-color-neutralLighter;
-    border-color: $ms-color-neutralLighter;
-    cursor: default;
-    pointer-events: none;
-    color: $ms-color-neutralTertiary;
-
-    &:hover,
-    &:focus {
-      outline: 0;
-    }
-  }
 }
 
 .ms-Button-icon {
