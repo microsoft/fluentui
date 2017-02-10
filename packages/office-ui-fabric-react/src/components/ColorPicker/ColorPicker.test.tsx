@@ -38,7 +38,7 @@ describe('ColorPicker', () => {
     expect(color).to.equal(newColor);
   });
 
-  it('Hide alpha control slider', () => {
+  it('Hides alpha control slider', () => {
     let component = ReactTestUtils.renderIntoDocument(
       <ColorPicker color='#FFFFFF' alphaSliderHidden={ true } />
     ) as ColorPicker;
