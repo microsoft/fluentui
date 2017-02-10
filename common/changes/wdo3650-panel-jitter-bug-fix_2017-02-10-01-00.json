@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix for Panel animation jitter bug. Removal of unused CSS in Panel",
+      "comment": "Panel: animation no longer styled fixed, which was causing issues downstream with opening it.",
       "type": "patch"
     },
     {
