@@ -78,6 +78,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
     return <button
       { ...getNativeProps(persona, buttonProperties) }
       className='ms-Facepile-itemButton'
+      title={ persona.personaName }
       key={ (!!persona.imageUrl ? 'i' : '') + index }
       onClick={ this._onPersonaClick.bind(this, persona) }
       onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
@@ -91,6 +92,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
     return <div
       { ...getNativeProps(persona, divProperties) }
       className='ms-Facepile-itemButton'
+      title={ persona.personaName }
       key={ (!!persona.imageUrl ? 'i' : '') + index }
       onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
       onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
