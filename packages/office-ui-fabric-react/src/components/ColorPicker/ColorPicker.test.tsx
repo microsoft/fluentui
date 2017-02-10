@@ -1,5 +1,6 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 /* tslint:enable:no-unused-variable */
 import * as ReactTestUtils from 'react-addons-test-utils';
 import { ColorPicker } from './ColorPicker';
@@ -13,7 +14,6 @@ describe('ColorPicker', () => {
     ) as ColorPicker;
 
     expect(component.state.color.hex).to.equal('ffffff');
-    expect(component.props.hideAlphaControl).to.equal(undefined);
   });
 
   it('Reacts to props changes', () => {
@@ -40,9 +40,16 @@ describe('ColorPicker', () => {
 
   it('Hide alpha control slider', () => {
     let component = ReactTestUtils.renderIntoDocument(
-      <ColorPicker color='#FFFFFF' hideAlphaControl={ true } />
+      <ColorPicker color='#FFFFFF' alphaSliderHidden={ true } />
     ) as ColorPicker;
 
-    expect(component.props.hideAlphaControl).to.equal(true);
+    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
+    let alphaSlider = renderedDOM.querySelector(".is-alpha");
+    let alphaTableHeader = renderedDOM.querySelector(".ms-ColorPicker-table > thead > tr > td:nth-child(5)");
+    let alphaTableInput = renderedDOM.querySelector(".ms-ColorPicker-table > tbody> tr > td:nth-child(5)");
+
+    expect(alphaSlider).to.be.eq(null);
+    expect(alphaTableHeader).to.be.eq(null);
+    expect(alphaTableInput).to.be.eq(null);
   });
 });

@@ -12,5 +12,5 @@ export interface IColorPickerProps {
   /**
    * The setting of whether hide alpha control slider.
    */
-  hideAlphaControl?: boolean;
+  alphaSliderHidden?: boolean;
 }

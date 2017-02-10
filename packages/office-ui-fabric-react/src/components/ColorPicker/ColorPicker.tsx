@@ -60,7 +60,7 @@ export class ColorPicker extends React.Component<IColorPickerProps, IColorPicker
             initialValue={ color.h }
             onChanged={ this._onHChanged }
           />
-          { !this.props.hideAlphaControl && (
+          { !this.props.alphaSliderHidden && (
             <ColorSlider
               className='is-alpha'
               overlayStyle={ { background: `linear-gradient(to right, transparent 0, ${color.str} 100%)` } }
@@ -76,7 +76,7 @@ export class ColorPicker extends React.Component<IColorPickerProps, IColorPicker
                 <td>Red</td>
                 <td>Green</td>
                 <td>Blue</td>
-                { !this.props.hideAlphaControl && (
+                { !this.props.alphaSliderHidden && (
                   <td>Alpha</td>) }
               </tr>
             </thead>
@@ -86,7 +86,7 @@ export class ColorPicker extends React.Component<IColorPickerProps, IColorPicker
                 <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ String(color.r) } /></td>
                 <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ String(color.g) } /></td>
                 <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ String(color.b) } /></td>
-                { !this.props.hideAlphaControl && (
+                { !this.props.alphaSliderHidden && (
                   <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ String(color.a) } /></td>) }
               </tr>
             </tbody>
