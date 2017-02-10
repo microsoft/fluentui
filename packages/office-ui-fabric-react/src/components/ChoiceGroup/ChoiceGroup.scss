@@ -271,6 +271,10 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
           display: inline-block;
         }
       }
+      .ms-ChoiceField-iconWrapper {
+        font-size: $ms-font-size-su;
+        line-height: $ms-font-size-su;
+      }
     }
 
     .ms-ChoiceField-labelWrapper {
@@ -304,6 +308,9 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
       .ms-ChoiceField-labelWrapper .ms-ChoiceField-icon {
         display: inline-block;
+      }
+      .ms-ChoiceField-iconWrapper {
+        @include ms-fontColor-themeDark;
       }
     }
   }
