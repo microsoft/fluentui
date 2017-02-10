@@ -39,6 +39,11 @@
       "packageName": "ssr-tests",
       "projectFolder": "apps/ssr-tests",
       "shouldPublish": false
+    },
+    {
+      "packageName": "component-demo",
+      "projectFolder": "apps/component-demo",
+      "shouldPublish": false
     }
   ]
 }
