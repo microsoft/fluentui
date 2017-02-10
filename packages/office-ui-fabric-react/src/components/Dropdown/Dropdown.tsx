@@ -58,7 +58,8 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
   }
 
   public componentWillReceiveProps(newProps: IDropdownProps) {
-    if (newProps.selectedKey !== this.props.selectedKey) {
+    if (newProps.selectedKey !== this.props.selectedKey ||
+      newProps.options !== this.props.options) {
       this.setState({
         selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey)
       });
