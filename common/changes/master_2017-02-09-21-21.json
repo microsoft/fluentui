@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Button: Fix various bugs in button styling particularly to do with disabled states.",
+      "type": "patch"
+    }
+  ],
+  "email": "zihankoh@microsoft.com"
+}

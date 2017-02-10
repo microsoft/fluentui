@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "FacePile, Persona: Reverted changes to title attribute from #875",
+      "type": "patch"
+    }
+  ],
+  "email": "v-mattli@microsoft.com"
+}

@@ -110,7 +110,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
       overlay = <Overlay
         isDarkThemed={ false }
         onClick={ isLightDismiss ? this._onPanelClick : null }
-        />;
+      />;
     }
 
     return (
@@ -137,7 +137,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
                 'ms-Panel--xl': type === PanelType.extraLarge,
               })
             }
-            >
+          >
             { overlay }
             <FocusTrapZone
               className='ms-Panel-main'
@@ -146,7 +146,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
               ignoreExternalFocusing={ ignoreExternalFocusing }
               forceFocusInsideTrap={ forceFocusInsideTrap }
               firstFocusableSelector={ firstFocusableSelector }
-              >
+            >
               <div className='ms-Panel-commands' data-is-visible={ true } >
                 { pendingCommandBarContent }
                 { closeButton }
@@ -162,6 +162,15 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
         </Popup>
       </Layer>
     );
+  }
+
+  public componentDidUpdate(prevProps, prevState) {
+    if (
+      prevState.isAnimatingClose === false &&
+      this.state.isAnimatingClose === true &&
+      this.props.onDismiss) {
+      this.props.onDismiss();
+    }
   }
 
   public dismiss() {
