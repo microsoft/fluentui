@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { IIconProps } from '../../Icon';
 
 export interface IChoiceGroupProps extends React.HTMLProps<HTMLElement> {
   /**
@@ -33,6 +34,11 @@ export interface IChoiceGroupOption {
    * The text string for the option.
    */
   text: string;
+
+  /**
+   * The Icon component props for choice field
+   */
+  iconProps?: IIconProps;
 
   /**
    * The src of image for choice field.
