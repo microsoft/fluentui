@@ -1,3 +1,16 @@
 $button-core-default-height: 32px;
 $button-core-default-minWidth: 80px;
 $button-core-default-padding: 0 16px;
+
+@mixin core-button-disabled {
+  background-color: $ms-color-neutralLighter;
+  border-color: $ms-color-neutralLighter;
+  cursor: default;
+  pointer-events: none;
+  color: $ms-color-neutralTertiary;
+
+  &:hover,
+  &:focus {
+    outline: 0;
+  }
+}
