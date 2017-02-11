@@ -1,6 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 08 Feb 2017 05:10:53 GMT and should not be manually modified.
+This log was last generated on Sat, 11 Feb 2017 04:10:39 GMT and should not be manually modified.
+
+## 1.6.0
+Sat, 11 Feb 2017 04:10:39 GMT
+
+### Minor changes
+
+- ColorPicker: adding `alphaSliderHidden` property to hide the alpha slider.
+
+### Patches
+
+- Breadcrumb: Fixed keyboard activation of items
+- Dropdown: update selectedIndex when options change
+- ChoiceGroup: Adding ability to use Icons
+- Button: Fix various bugs in button styling particularly to do with disabled states.
+- FacePile, Persona: Reverted changes to title attribute from #875
+- Panel: animation no longer styled fixed, which was causing issues downstream with opening it.
 
 ## 1.5.5
 Wed, 08 Feb 2017 05:10:53 GMT
