@@ -113,7 +113,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
     let directionalClassName = positions && positions.directionalClassName ? `ms-u-${positions.directionalClassName}` : '';
 
-    let contentMaxHeight: number = this._getMaxHeight();
+    let contentMaxHeight: number = this.props.maxHeight || this._getMaxHeight();
     let beakVisible: boolean = isBeakVisible && (!!targetElement || !!target);
     let content = (
       <div ref={ this._resolveRef('_hostElement') } className={ 'ms-Callout-container' }>

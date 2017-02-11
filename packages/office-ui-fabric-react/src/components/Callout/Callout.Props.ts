@@ -106,6 +106,11 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   setInitialFocus?: boolean;
 
   /**
+   * Set the max height of Callout component.
+   */
+  maxHeight?: number;
+
+  /**
     * @deprecated
     * Deprecated at v0.59.1, to be removed at >= v1.0.0. Pass in a beakWidth to dictate size.
     */

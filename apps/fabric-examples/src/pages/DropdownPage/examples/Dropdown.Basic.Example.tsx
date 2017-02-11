@@ -37,7 +37,42 @@ export class DropdownBasicExample extends React.Component<any, any> {
           onChanged={ (item) => this.setState({ selectedItem: item }) }
         />
         <div>{ `Item selected: ${selectedItem ? selectedItem.text : '<none>'}` }</div>
-
+        <Dropdown
+          label='With max dropdown item limit example:'
+          id='Basicdrop2'
+          ariaLabel='Basic dropdown with max dropdown item limit example'
+          options={
+            [
+              { key: 'A', text: 'Option a' },
+              { key: 'B', text: 'Option b' },
+              { key: 'C', text: 'Option c' },
+              { key: 'D', text: 'Option d' },
+              { key: 'E', text: 'Option e' },
+              { key: 'F', text: 'Option f' },
+              { key: 'G', text: 'Option g' },
+              { key: 'H', text: 'Option h' },
+              { key: 'I', text: 'Option i' },
+              { key: 'J', text: 'Option j' },
+              { key: 'K', text: 'Option k' },
+              { key: 'L', text: 'Option l' },
+              { key: 'M', text: 'Option m' },
+              { key: 'N', text: 'Option n' },
+              { key: 'O', text: 'Option o' },
+              { key: 'P', text: 'Option p' },
+              { key: 'Q', text: 'Option q' },
+              { key: 'R', text: 'Option r' },
+              { key: 'S', text: 'Option s' },
+              { key: 'T', text: 'Option t' },
+              { key: 'U', text: 'Option u' },
+              { key: 'V', text: 'Option v' },
+              { key: 'W', text: 'Option w' },
+              { key: 'X', text: 'Option x' },
+              { key: 'Y', text: 'Option y' },
+              { key: 'Z', text: 'Option z' }
+            ]
+          }
+          maxDisplayItems={ 10 }
+        />
         <Dropdown
           label='Disabled example:'
           defaultSelectedKey='D'
@@ -59,3 +94,4 @@ export class DropdownBasicExample extends React.Component<any, any> {
   }
 
 }
+
