@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export interface IChoiceGroupProps extends React.HTMLProps<HTMLElement> {
+export interface IChoiceGroupProps extends React.HTMLProps<HTMLElement | HTMLInputElement> {
   /**
    * The options for the choice group.
    */
@@ -10,12 +10,12 @@ export interface IChoiceGroupProps extends React.HTMLProps<HTMLElement> {
    * @deprecated
    * Deprecated and will be removed by 07/17/2017 Use 'onChange' instead.
    */
-  onChanged?: (option: IChoiceGroupOption, evt?: React.FormEvent<HTMLElement>) => void;
+  onChanged?: (option: IChoiceGroupOption, evt?: React.FormEvent<HTMLElement | HTMLInputElement>) => void;
 
   /**
    * A callback for receiving a notification when the choice has been changed.
    */
-  onChange?: (ev?: React.FormEvent<HTMLElement>, option?: IChoiceGroupOption) => void;
+  onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, option?: IChoiceGroupOption) => void;
 
   /**
    * Descriptive label for the choice group.

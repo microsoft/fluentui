@@ -14,7 +14,7 @@ export interface ICheckbox {
 /**
  * Checkbox properties.
  */
-export interface ICheckboxProps extends React.HTMLProps<HTMLElement> {
+export interface ICheckboxProps extends React.HTMLProps<HTMLElement | HTMLInputElement> {
   /**
    * Additional class name to provide on the root element, in addition to the ms-Checkbox class.
    */
@@ -45,7 +45,7 @@ export interface ICheckboxProps extends React.HTMLProps<HTMLElement> {
   /**
    * Callback that is called when the checked value has changed.
    */
-  onChange?: (ev?: React.FormEvent<HTMLElement>, checked?: boolean) => void;
+  onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
 
   /**
    * Optional input props that will be mixed into the input element, *before* other props are applied. This allows
@@ -53,5 +53,5 @@ export interface ICheckboxProps extends React.HTMLProps<HTMLElement> {
    * Note that if you provide, for example, "disabled" as well as "inputProps.disabled", the former will take
    * precedence over the later.
    */
-  inputProps?: React.HTMLProps<HTMLElement>;
+  inputProps?: React.HTMLProps<HTMLElement | HTMLInputElement>;
 }
