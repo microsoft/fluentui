@@ -134,9 +134,9 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
     </div>;
 
     return (
-      <div { ...divProps }
+      <div
+        { ...divProps }
         className={ css('ms-Persona', className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence]) }
-        title={ primaryText }
         >
         { size !== PersonaSize.tiny && (
           <div className='ms-Persona-imageArea'>
