@@ -46,6 +46,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
     });
 
     this._id = props.id || getId('Dropdown');
+    this._scrollbarOffset = 0;
 
     let selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
 
@@ -177,41 +178,34 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
     }
   }
 
-  protected _calculateMaxCalloutHeight() {
-    let { selectedIndex } = this.state;
-    if (selectedIndex === -1) {
-      selectedIndex = 0;
-    }
-
-    let maxHeight = null;
+  protected _setMaxCalloutComponentHeight() {
+    this._scrollbarOffset = 0;
+    this._calloutMaxHeight = null;
     if (this.props.maxDisplayItems && this.props.maxDisplayItems > 0) {
-      let lastHeight = 0;
+      let totalItemCount = this._optionList.children.length;
+      let { selectedIndex } = this.state;
+
+      if (this.props.maxDisplayItems < totalItemCount) {
+        this._scrollbarOffset = 16;
+      }
+
+      if (selectedIndex + this.props.maxDisplayItems > totalItemCount) {
+        selectedIndex = totalItemCount - this.props.maxDisplayItems;
+      }
+
+      if (selectedIndex < 0) {
+        selectedIndex = 0;
+      }
+
+      let maxHeight = null;
       for (let i = selectedIndex; i < this.props.maxDisplayItems + selectedIndex; i++) {
         let liItem = this.refs[Dropdown.Option + i] as HTMLLIElement;
         if (liItem) {
-          lastHeight = liItem.clientHeight;
           maxHeight += liItem.clientHeight;
         }
-        else {
-          maxHeight += lastHeight;
-        }
-      }
-    }
-
-    return maxHeight;
-  }
-
-  protected _setScrollbarOffset() {
-    this._scrollbarOffset = 0;
-    if (this.props.maxDisplayItems && this.props.maxDisplayItems > 0) {
-      let totalHeight = 0;
-      for (let i = 0; i < this._optionList.children.length; i++) {
-        totalHeight += this._optionList.children[i].clientHeight;
       }
 
-      if (totalHeight > this._calloutMaxHeight) {
-        this._scrollbarOffset = 16;
-      }
+      this._calloutMaxHeight = maxHeight;
     }
   }
 
@@ -227,8 +221,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
 
   @autobind
   private _onPositioned() {
-    this._calloutMaxHeight = this._calculateMaxCalloutHeight();
-    this._setScrollbarOffset();
+    this._setMaxCalloutComponentHeight();
     this._focusZone.focus();
   }
 
