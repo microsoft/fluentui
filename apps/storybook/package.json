@@ -1,0 +1,27 @@
+{
+  "name": "office-ui-fabric-storybook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm serve & wdio wdio.conf.js",
+    "serve": "start-storybook -p 9001 -c .storybook",
+    "start": "",
+    "build": "",
+    "clean": "echo \"All Clean Here\" && exit 0"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@kadira/storybook": "^2.21.0",
+    "office-ui-fabric-react": "^1.5.5",
+    "react": "^0.14.7 || ^15.0.0",
+    "react-dom": "^0.14.7 || ^15.0.0",
+    "chai": "^3.5.0",
+    "wdio-browserstack-service": "^0.1.4",
+    "wdio-mocha-framework": "^0.5.8",
+    "wdio-selenium-standalone-service": "0.0.7",
+    "wdio-spec-reporter": "0.0.5",
+    "webdriverio": "^4.6.1"
+  }
+}

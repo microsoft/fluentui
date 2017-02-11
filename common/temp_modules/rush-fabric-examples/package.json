@@ -39,8 +39,8 @@
     "@types/react-dom": "^0.14.18"
   },
   "rushDependencies": {
-    "@uifabric/example-app-base": ">=1.0.0 <2.0.0",
-    "office-ui-fabric-react": ">=1.0.0 <2.0.0",
+    "@uifabric/example-app-base": ">=1.0.1 <2.0.0",
+    "office-ui-fabric-react": ">=1.5.5 <2.0.0",
     "@uifabric/utilities": ">=1.0.2 <2.0.0"
   }
 }

@@ -31,6 +31,11 @@
       "shouldPublish": false
     },
     {
+      "packageName": "office-ui-fabric-storybook",
+      "projectFolder": "apps/storybook",
+      "shouldPublish": false
+    },
+    {
       "packageName": "fabric-examples",
       "projectFolder": "apps/fabric-examples",
       "shouldPublish": false
