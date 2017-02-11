@@ -3,7 +3,7 @@ export interface IDropdownProps {
   /**
    * Descriptive label for the Dropdown
    */
-  label: string;
+  label?: string;
 
   /**
   * Aria Label for the Dropdown for screen reader users.
@@ -50,6 +50,11 @@ export interface IDropdownProps {
    * Optional custom renderer for the dropdown options
    */
   onRenderOption?: IRenderFunction<IDropdownOption>;
+
+  /**
+   * Optional maximum display items in dropdown list.
+   */
+  maxDisplayItems?: number;
 
   /**
    * Whether or not the Dropdown is disabled.

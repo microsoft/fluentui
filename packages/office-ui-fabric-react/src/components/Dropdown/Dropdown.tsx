@@ -37,6 +37,8 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
   private _dropDown: HTMLDivElement;
   private _dropdownLabel: HTMLElement;
   private _id: string;
+  private _calloutMaxHeight: number;
+  private _scrollbarOffset: number;
 
   constructor(props?: IDropdownProps) {
     super(props, {
@@ -60,7 +62,6 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
         selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey)
       });
     }
-
   }
 
   public render() {
@@ -116,6 +117,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
             directionalHint={ DirectionalHint.bottomLeftEdge }
             onDismiss={ this._onDismiss }
             onPositioned={ this._onPositioned }
+            maxHeight={ this._calloutMaxHeight }
           >
             <FocusZone
               ref={ this._resolveRef('_focusZone') }
@@ -124,7 +126,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
             >
               <ul ref={ (c: HTMLElement) => this._optionList = c }
                 id={ id + '-list' }
-                style={ { width: this._dropDown.clientWidth - 2 } }
+                style={ { width: this._dropDown.clientWidth - 2 - this._scrollbarOffset } }
                 className='ms-Dropdown-items'
                 role='listbox'
                 aria-labelledby={ id + '-label' }>
@@ -176,6 +178,44 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
     }
   }
 
+  protected _calculateMaxCalloutHeight() {
+    let { selectedIndex } = this.state;
+    if (selectedIndex === -1) {
+      selectedIndex = 0;
+    }
+
+    let maxHeight = null;
+    if (this.props.maxDisplayItems && this.props.maxDisplayItems > 0) {
+      let lastHeight = 0;
+      for (let i = selectedIndex; i < this.props.maxDisplayItems + selectedIndex; i++) {
+        let liItem = this.refs[Dropdown.Option + i] as HTMLLIElement;
+        if (liItem) {
+          lastHeight = liItem.clientHeight;
+          maxHeight += liItem.clientHeight;
+        }
+        else {
+          maxHeight += lastHeight;
+        }
+      }
+    }
+
+    return maxHeight;
+  }
+
+  protected _setScrollbarOffset() {
+    this._scrollbarOffset = 0;
+    if (this.props.maxDisplayItems && this.props.maxDisplayItems > 0) {
+      let totalHeight = 0;
+      for (let i = 0; i < this._optionList.children.length; i++) {
+        totalHeight += this._optionList.children[i].clientHeight;
+      }
+
+      if (totalHeight > this._calloutMaxHeight) {
+        this._scrollbarOffset = 16;
+      }
+    }
+  }
+
   @autobind
   private _onRenderItem(item: IDropdownOption): JSX.Element {
     return <span>{ item.text }</span>;
@@ -188,6 +228,8 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
 
   @autobind
   private _onPositioned() {
+    this._calloutMaxHeight = this._calculateMaxCalloutHeight();
+    this._setScrollbarOffset();
     this._focusZone.focus();
   }
 
