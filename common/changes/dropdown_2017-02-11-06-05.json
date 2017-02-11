@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Dropdown: add new property: maxDisplayItems to set limit number of dropdown items to display(with scrollbar) when the dropdown list is big.",
+      "type": "minor"
+    }
+  ],
+  "email": "timto@microsoft.com"
+}
