@@ -3,6 +3,7 @@
 /** Note: this require may need to be fixed to point to the build that exports the gulp-core-build-webpack instance. */
 let webpackTaskResources = require('@microsoft/web-library-build').webpack.resources;
 let webpack = webpackTaskResources.webpack;
+let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 let path = require('path');
 let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -29,11 +30,12 @@ function createConfig(isProduction) {
 
     output: {
       path: path.join(__dirname, '/dist'),
+      publicPath: 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/',
       filename: `[name]${minFileNamePart}.js`,
-      chunkFilename: `[name]${minFileNamePart}.js`
+      chunkFilename: `fabric-site-[name]${minFileNamePart}.js`
     },
 
-    devtool: 'source-map',
+    //devtool: 'source-map',
 
     devServer: {
       stats: 'none'
@@ -50,6 +52,7 @@ function createConfig(isProduction) {
 
     module: {
       noParse: [/autoit.js/],
+
       preLoaders: [
         {
           test: /\.js$/,

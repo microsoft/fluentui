@@ -2,6 +2,21 @@
   "name": "rush-common",
   "version": "0.0.0",
   "dependencies": {
+<<<<<<< HEAD
+    "@microsoft/api-extractor": {
+      "version": "1.1.8",
+      "from": "@microsoft/api-extractor@>=1.1.4 <2.0.0",
+      "resolved": "https://registry.npmjs.org/@microsoft/api-extractor/-/api-extractor-1.1.8.tgz",
+      "dependencies": {
+        "@types/z-schema": {
+          "version": "3.16.31",
+          "from": "@types/z-schema@>=3.16.31 <3.17.0",
+          "resolved": "https://registry.npmjs.org/@types/z-schema/-/z-schema-3.16.31.tgz"
+        }
+      }
+    },
+=======
+>>>>>>> upstream/master
     "@microsoft/gulp-core-build": {
       "version": "1.1.0",
       "from": "@microsoft/gulp-core-build@>=1.0.1 <2.0.0",
@@ -178,30 +193,15 @@
       "from": "@types/semver@>=5.3.30 <6.0.0",
       "resolved": "https://registry.npmjs.org/@types/semver/-/semver-5.3.30.tgz"
     },
-    "@types/source-map": {
-      "version": "0.5.0",
-      "from": "@types/source-map@*",
-      "resolved": "https://registry.npmjs.org/@types/source-map/-/source-map-0.5.0.tgz"
-    },
     "@types/through2": {
       "version": "2.0.32",
       "from": "@types/through2@>=2.0.31 <3.0.0",
       "resolved": "https://registry.npmjs.org/@types/through2/-/through2-2.0.32.tgz"
     },
-    "@types/uglify-js": {
-      "version": "2.6.28",
-      "from": "@types/uglify-js@*",
-      "resolved": "https://registry.npmjs.org/@types/uglify-js/-/uglify-js-2.6.28.tgz"
-    },
     "@types/vinyl": {
       "version": "1.2.30",
       "from": "@types/vinyl@>=1.2.30 <2.0.0",
       "resolved": "https://registry.npmjs.org/@types/vinyl/-/vinyl-1.2.30.tgz"
-    },
-    "@types/webpack": {
-      "version": "1.12.36",
-      "from": "@types/webpack@>=1.12.35 <2.0.0",
-      "resolved": "https://registry.npmjs.org/@types/webpack/-/webpack-1.12.36.tgz"
     },
     "@types/webpack-env": {
       "version": "1.13.0",
@@ -604,9 +604,20 @@
       "resolved": "https://registry.npmjs.org/camelcase-keys/-/camelcase-keys-2.1.0.tgz"
     },
     "caniuse-db": {
+<<<<<<< HEAD
+      "version": "1.0.30000621",
+      "from": "caniuse-db@>=1.0.30000488 <2.0.0",
+      "resolved": "https://registry.npmjs.org/caniuse-db/-/caniuse-db-1.0.30000621.tgz"
+    },
+    "capture-stack-trace": {
+      "version": "1.0.0",
+      "from": "capture-stack-trace@>=1.0.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/capture-stack-trace/-/capture-stack-trace-1.0.0.tgz"
+=======
       "version": "1.0.30000622",
       "from": "caniuse-db@>=1.0.30000488 <2.0.0",
       "resolved": "https://registry.npmjs.org/caniuse-db/-/caniuse-db-1.0.30000622.tgz"
+>>>>>>> upstream/master
     },
     "cardinal": {
       "version": "1.0.0",
@@ -2178,7 +2189,7 @@
         "event-stream": {
           "version": "3.3.4",
           "from": "event-stream@>=3.3.2 <4.0.0",
-          "resolved": "https://registry.npmjs.org/event-stream/-/event-stream-3.3.4.tgz"
+          "resolved": "https://registry.npmjs.com/event-stream/-/event-stream-3.3.4.tgz"
         },
         "finalhandler": {
           "version": "0.4.0",
@@ -3967,7 +3978,7 @@
     },
     "nan": {
       "version": "2.5.1",
-      "from": "nan@>=2.3.0 <3.0.0",
+      "from": "nan@>=2.3.2 <3.0.0",
       "resolved": "https://registry.npmjs.org/nan/-/nan-2.5.1.tgz"
     },
     "natives": {
@@ -4479,6 +4490,19 @@
       "from": "pretty-hrtime@>=1.0.2 <1.1.0",
       "resolved": "https://registry.npmjs.org/pretty-hrtime/-/pretty-hrtime-1.0.3.tgz"
     },
+<<<<<<< HEAD
+    "prettysize": {
+      "version": "0.0.3",
+      "from": "prettysize@0.0.3",
+      "resolved": "https://registry.npmjs.org/prettysize/-/prettysize-0.0.3.tgz"
+    },
+    "private": {
+      "version": "0.1.7",
+      "from": "private@>=0.1.6 <0.2.0",
+      "resolved": "https://registry.npmjs.org/private/-/private-0.1.7.tgz"
+    },
+=======
+>>>>>>> upstream/master
     "process": {
       "version": "0.11.9",
       "from": "process@>=0.11.0 <0.12.0",
@@ -4777,13 +4801,56 @@
       "from": "run-async@>=0.1.0 <0.2.0",
       "resolved": "https://registry.npmjs.org/run-async/-/run-async-0.1.0.tgz"
     },
+<<<<<<< HEAD
+    "rush-fabric-website": {
+      "version": "0.0.0",
+      "from": "temp_modules\\rush-fabric-website",
+      "resolved": "file:temp_modules\\rush-fabric-website"
+    },
+    "rush-office-ui-fabric-react": {
+      "version": "0.0.0",
+      "from": "temp_modules\\rush-office-ui-fabric-react",
+      "resolved": "file:temp_modules\\rush-office-ui-fabric-react"
+=======
     "rush-example-app-base": {
       "version": "0.0.0",
       "from": "temp_modules/rush-example-app-base",
       "resolved": "file:temp_modules/rush-example-app-base"
+>>>>>>> upstream/master
     },
     "rush-fabric-examples": {
       "version": "0.0.0",
+<<<<<<< HEAD
+      "from": "temp_modules\\rush-todo-app",
+      "resolved": "file:temp_modules\\rush-todo-app",
+      "dependencies": {
+        "@microsoft/gulp-core-build": {
+          "version": "2.1.1",
+          "from": "@microsoft/gulp-core-build@>=2.1.1 <3.0.0",
+          "resolved": "https://registry.npmjs.org/@microsoft/gulp-core-build/-/gulp-core-build-2.1.1.tgz",
+          "dependencies": {
+            "es6-promise": {
+              "version": "3.1.2",
+              "from": "es6-promise@>=3.1.2 <3.2.0",
+              "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-3.1.2.tgz"
+            },
+            "node-notifier": {
+              "version": "4.5.0",
+              "from": "node-notifier@>=4.5.0 <4.6.0",
+              "resolved": "https://registry.npmjs.org/node-notifier/-/node-notifier-4.5.0.tgz"
+            }
+          }
+        },
+        "@microsoft/gulp-core-build-karma": {
+          "version": "2.1.3",
+          "from": "@microsoft/gulp-core-build-karma@>=2.1.0 <3.0.0",
+          "resolved": "https://registry.npmjs.org/@microsoft/gulp-core-build-karma/-/gulp-core-build-karma-2.1.3.tgz"
+        },
+        "@microsoft/gulp-core-build-sass": {
+          "version": "2.0.3",
+          "from": "@microsoft/gulp-core-build-sass@>=2.0.0 <3.0.0",
+          "resolved": "https://registry.npmjs.org/@microsoft/gulp-core-build-sass/-/gulp-core-build-sass-2.0.3.tgz"
+=======
       "from": "temp_modules/rush-fabric-examples",
       "resolved": "file:temp_modules/rush-fabric-examples",
       "dependencies": {
@@ -4791,6 +4858,7 @@
           "version": "1.0.12",
           "from": "dateformat@>=1.0.11 <2.0.0",
           "resolved": "https://registry.npmjs.org/dateformat/-/dateformat-1.0.12.tgz"
+>>>>>>> upstream/master
         },
         "gaze": {
           "version": "1.1.2",
@@ -4880,8 +4948,8 @@
     },
     "rush-utilities": {
       "version": "0.0.0",
-      "from": "temp_modules/rush-utilities",
-      "resolved": "file:temp_modules/rush-utilities"
+      "from": "temp_modules\\rush-utilities",
+      "resolved": "file:temp_modules\\rush-utilities"
     },
     "rx-lite": {
       "version": "3.1.2",
@@ -5850,9 +5918,15 @@
       "resolved": "https://registry.npmjs.org/webpack-bundle-analyzer/-/webpack-bundle-analyzer-2.2.1.tgz",
       "dependencies": {
         "acorn": {
+<<<<<<< HEAD
+          "version": "4.0.8",
+          "from": "acorn@>=4.0.3 <5.0.0",
+          "resolved": "https://registry.npmjs.org/acorn/-/acorn-4.0.8.tgz"
+=======
           "version": "4.0.11",
           "from": "acorn@>=4.0.3 <5.0.0",
           "resolved": "https://registry.npmjs.org/acorn/-/acorn-4.0.11.tgz"
+>>>>>>> upstream/master
         },
         "lodash": {
           "version": "4.17.4",
