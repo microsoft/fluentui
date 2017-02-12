@@ -30,7 +30,7 @@ function createConfig(isProduction) {
 
     output: {
       path: path.join(__dirname, '/dist'),
-      publicPath: '/dist/',
+      publicPath: 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/',
       filename: `[name]${minFileNamePart}.js`,
       chunkFilename: `fabric-site-[name]${minFileNamePart}.js`
     },
@@ -64,7 +64,7 @@ function createConfig(isProduction) {
     },
 
     plugins: [
-      new  BundleAnalyzerPlugin()
+      new BundleAnalyzerPlugin()
     ]
   };
 
