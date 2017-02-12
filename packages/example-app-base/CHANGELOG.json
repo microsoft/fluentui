@@ -1,0 +1,24 @@
+{
+  "name": "@uifabric/example-app-base",
+  "entries": [
+    {
+      "version": "1.0.1",
+      "tag": "@uifabric/example-app-base_v1.0.1",
+      "date": "Wed, 08 Feb 2017 05:10:53 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "82a1b7ec536b607fefc0067111e7a9d23dfc4ca6",
+            "comment": "Adding new package to host all example app base code, which allows us to share common doc website code across many projects."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=1.0.0 <2.0.0` to `>=1.5.5 <2.0.0`"
+          }
+        ]
+      }
+    }
+  ]
+}

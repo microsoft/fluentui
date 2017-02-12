@@ -1,5 +1,5 @@
 // Please keep alphabetized
 export enum IconType {
-  Default,
-  Image
+  Default = 0,
+  Image = 1
 }

@@ -43,7 +43,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
       'isDisabled': 'disabled'
     });
 
-    this._id = getId('Dropdown');
+    this._id = props.id || getId('Dropdown');
 
     let selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
 
@@ -54,7 +54,8 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
   }
 
   public componentWillReceiveProps(newProps: IDropdownProps) {
-    if (newProps.selectedKey !== this.props.selectedKey) {
+    if (newProps.selectedKey !== this.props.selectedKey ||
+      newProps.options !== this.props.options) {
       this.setState({
         selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey)
       });
@@ -64,7 +65,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
 
   public render() {
     let id = this._id;
-    let { className, label, options, disabled, isDisabled, onRenderItem = this._onRenderItem, onRenderOption = this._onRenderOption } = this.props;
+    let { className, label, options, disabled, isDisabled, ariaLabel, onRenderItem = this._onRenderItem, onRenderOption = this._onRenderOption } = this.props;
     let { isOpen, selectedIndex } = this.state;
     let selectedOption = options[selectedIndex];
 
@@ -91,7 +92,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='combobox'
           aria-live={ disabled || isOpen ? 'off' : 'assertive' }
-          aria-label={ label }
+          aria-label={ ariaLabel || label }
           aria-describedby={ id + '-option' }
           aria-activedescendant={ selectedIndex >= 0 ? (this._id + '-list' + selectedIndex) : (this._id + '-list') }
         >

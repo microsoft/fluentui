@@ -2,70 +2,70 @@ export enum DirectionalHint {
   /**
    * Appear above the target element, with the left edges of the callout and target aligning.
    */
-  topLeftEdge,
+  topLeftEdge = 0,
 
   /**
    * Appear above the target element, with the centers of the callout and target aligning.
    */
-  topCenter,
+  topCenter = 1,
 
   /**
    * Appear above the target element, with the right edges of the callout and target aligning.
    */
-  topRightEdge,
+  topRightEdge = 2,
 
   /**
    * Appear above the target element, aligning with the target element such that the callout tends toward the center of the screen.
    */
-  topAutoEdge,
+  topAutoEdge = 3,
 
   /**
    * Appear below the target element, with the left edges of the callout and target aligning.
    */
-  bottomLeftEdge,
+  bottomLeftEdge = 4,
 
   /**
    * Appear below the target element, with the centers of the callout and target aligning.
    */
-  bottomCenter,
+  bottomCenter = 5,
 
   /**
    * Appear below the target element, with the right edges of the callout and target aligning.
    */
-  bottomRightEdge,
+  bottomRightEdge = 6,
 
   /**
    * Appear below the target element, aligning with the target element such that the callout tends toward the center of the screen.
    */
-  bottomAutoEdge,
+  bottomAutoEdge = 7,
 
   /**
    * Appear to the left of the target element, with the top edges of the callout and target aligning.
    */
-  leftTopEdge,
+  leftTopEdge = 8,
 
   /**
    * Appear to the left of the target element, with the centers of the callout and target aligning.
    */
-  leftCenter,
+  leftCenter = 9,
 
   /**
    * Appear to the left of the target element, with the bottom edges of the callout and target aligning.
    */
-  leftBottomEdge,
+  leftBottomEdge = 10,
 
   /**
    * Appear to the right of the target element, with the top edges of the callout and target aligning.
    */
-  rightTopEdge,
+  rightTopEdge = 11,
 
   /**
    * Appear to the right of the target element, with the centers of the callout and target aligning.
    */
-  rightCenter,
+  rightCenter = 12,
 
   /**
    * Appear to the right of the target element, with the bottom edges of the callout and target aligning.
    */
-  rightBottomEdge
+  rightBottomEdge = 13
 }

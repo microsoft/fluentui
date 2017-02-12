@@ -1,19 +1,25 @@
 @import '../../../common/common';
+@import '../ButtonCore/ButtonCoreVars';
 
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
-
 //
 // Office UI Fabric
 // --------------------------------------------------
 // Icon Button styles
 
 
-.ms-Button--icon {
+.ms-Button.ms-Button--icon {
   @include focus-border(0px);
   background-color: transparent;
   color: $ms-color-neutralSecondary;
-  padding: 0;
-  border: 0;
+  padding: 0 4px;
+  font-size: $ms-icon-size-m;
+
+  .ms-Button-label,
+  .ms-Button-icon {
+    height: $button-core-default-height;
+    line-height: $button-core-default-height;
+  }
 
   &:hover,
   &:active {
@@ -25,16 +31,7 @@
     background-color: transparent;
   }
 
-  .ms-Icon {
-    font-size: $ms-icon-size-m;
-    padding: 8px;
-  }
-
-  .ms-Button-icon {
-    display: inline;
-  }
-
-  &.is-disabled,
+  &.disabled,
   &:disabled {
     color: $ms-color-neutralTertiaryAlt;
     background-color: transparent;
@@ -48,3 +45,4 @@
     color: $ms-color-blueMid;
   }
 }
+

@@ -6,7 +6,7 @@ let webpack = webpackTaskResources.webpack;
 let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 let path = require('path');
-var SplitByPathPlugin = require('webpack-split-by-path');
+let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 // Create an array of configs, prepopulated with a debug (non-minified) build.
 let configs = [
@@ -64,7 +64,11 @@ function createConfig(isProduction) {
     },
 
     plugins: [
-      new BundleAnalyzerPlugin()
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'static',
+        reportFilename: 'fabric-site.stats.html',
+        openAnalyzer: false
+      })
     ]
   };
 

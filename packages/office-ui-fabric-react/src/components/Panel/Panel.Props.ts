@@ -33,9 +33,14 @@ export interface IPanelProps extends React.Props<Panel> {
   headerText?: string;
 
   /**
-  * Event handler for when the panel is closed.
+  * A callback function for when the panel is closed, before the animation completes.
   */
   onDismiss?: () => void;
+
+  /**
+   * A callback function which is called after the Panel is dismissed and the animation is complete.
+   */
+  onDismissed?: () => void;
 
   /**
   * Additional styling options.
@@ -92,7 +97,7 @@ export enum PanelType {
    * XLarge: <unused>
    * XXLarge: <unused>
    */
-  smallFluid,
+  smallFluid = 0,
 
   /**
    * Renders the panel in 'small' mode, anchored to the far side (right in LTR mode), and has a fixed width.
@@ -102,7 +107,7 @@ export enum PanelType {
    * XLarge: 340px width, 32px Left/Right padding
    * XXLarge: 340px width, 40px Left/Right padding
    */
-  smallFixedFar,
+  smallFixedFar = 1,
 
   /**
    * Renders the panel in 'small' mode, anchored to the near side (left in LTR mode), and has a fixed width.
@@ -112,7 +117,7 @@ export enum PanelType {
    * XLarge: 272px width, 32px Left/Right padding
    * XXLarge: 272px width, 32px Left/Right padding
    */
-  smallFixedNear,
+  smallFixedNear = 2,
 
   /**
    * Renders the panel in 'medium' mode, anchored to the far side (right in LTR mode).
@@ -122,7 +127,7 @@ export enum PanelType {
    * XLarge: 644px width, 32px Left/Right padding
    * XXLarge: 643px width, 40px Left/Right padding
    */
-  medium,
+  medium = 3,
 
   /**
    * Renders the panel in 'large' mode, anchored to the far side (right in LTR mode), and is fluid at XXX-Large breakpoint.
@@ -133,7 +138,7 @@ export enum PanelType {
    * XXLarge: 48px fixed left margin, 32px Left/Right padding
    * XXXLarge: 48px fixed left margin, (no redlines for padding, assuming previous breakpoint)
    */
-  large,
+  large = 4,
 
   /**
    * Renders the panel in 'large' mode, anchored to the far side (right in LTR mode), and is fixed at XXX-Large breakpoint.
@@ -144,7 +149,7 @@ export enum PanelType {
    * XXLarge: 48px fixed left margin, 32px Left/Right padding
    * XXXLarge: 940px width, (no redlines for padding, assuming previous breakpoint)
    */
-  largeFixed,
+  largeFixed = 5,
 
   /**
    * Renders the panel in 'extra large' mode, anchored to the far side (right in LTR mode).
@@ -155,5 +160,5 @@ export enum PanelType {
    * XXLarge: 176px fixed left margin, 40px Left/Right padding
    * XXXLarge: 176px fixed left margin, 40px Left/Right padding
    */
-  extraLarge
+  extraLarge = 6
 }

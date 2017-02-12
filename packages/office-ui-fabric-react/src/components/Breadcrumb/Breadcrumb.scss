@@ -46,8 +46,8 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
     }
   }
 
+  .ms-Breadcrumb-item,
   .ms-Breadcrumb-itemLink {
-    @include focus-border;
     @include ms-font-xl;
     color: $ms-color-neutralPrimary;
     display: inline-block;
@@ -74,13 +74,16 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
   vertical-align: top;
 }
 
-.ms-Breadcrumb-itemLink,
-.ms-Breadcrumb-overflowButton {
-  text-decoration: none;
-  outline: transparent;
+.ms-Breadcrumb-item {
+  &:hover {
+    cursor: default;
+  }
+}
 
+.ms-Link.ms-Breadcrumb-itemLink {
   &:hover {
     background-color: $selectedHoverBackgroundColor;
+    color: initial;
     cursor: pointer;
   }
 
@@ -93,6 +96,12 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
     background-color: $selectedActiveBackgroundColor;
     color: $selectedActiveForegroundColor;
   }
+}
+
+.ms-Breadcrumb-itemLink,
+.ms-Breadcrumb-overflowButton {
+  text-decoration: none;
+  outline: transparent;
 }
 
 @media screen and (max-width: $ms-screen-md-max) {
