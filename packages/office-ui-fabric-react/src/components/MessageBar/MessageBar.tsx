@@ -55,13 +55,20 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
   }
 
   private _getActionsDiv(): JSX.Element {
-    if (this.props.actions) {
-      return this.props.isMultiline ?
-        <div className='ms-MessageBar-actions'> { this.props.actions } </div> :
-        <div className='ms-MessageBar-actionsOneline'>
+    if (this.props.isMultiline) {
+      if (this.props.actions) {
+        return <div className='ms-MessageBar-actions'>
+          { this.props.actions }
+        </div>;
+      }
+    }
+    else {
+      if (this.props.actions || (this.props.onDismiss != null)) {
+        return <div className='ms-MessageBar-actionsOneline'>
           { this._getDismissDiv() }
           { this.props.actions }
         </div>;
+      }
     }
     return null;
   }
