@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { IIconProps } from '../../Icon';
 
-export interface IChoiceGroupProps extends React.HTMLProps<HTMLElement> {
+export interface IChoiceGroupProps extends React.HTMLProps<HTMLElement | HTMLInputElement> {
   /**
    * The options for the choice group.
    */
@@ -10,12 +11,12 @@ export interface IChoiceGroupProps extends React.HTMLProps<HTMLElement> {
    * @deprecated
    * Deprecated and will be removed by 07/17/2017 Use 'onChange' instead.
    */
-  onChanged?: (option: IChoiceGroupOption, evt?: React.FormEvent<HTMLInputElement>) => void;
+  onChanged?: (option: IChoiceGroupOption, evt?: React.FormEvent<HTMLElement | HTMLInputElement>) => void;
 
   /**
    * A callback for receiving a notification when the choice has been changed.
    */
-  onChange?: (ev?: React.FormEvent<HTMLInputElement>, option?: IChoiceGroupOption) => void;
+  onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, option?: IChoiceGroupOption) => void;
 
   /**
    * Descriptive label for the choice group.
@@ -33,6 +34,11 @@ export interface IChoiceGroupOption {
    * The text string for the option.
    */
   text: string;
+
+  /**
+   * The Icon component props for choice field
+   */
+  iconProps?: IIconProps;
 
   /**
    * The src of image for choice field.
