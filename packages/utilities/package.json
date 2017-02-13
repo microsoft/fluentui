@@ -20,7 +20,9 @@
     "@types/enzyme": "^2.7.1",
     "@types/es6-promise": "0.0.32",
     "@types/mocha": "^2.2.32",
+    "@types/react": "^0.14.57",
     "@types/react-addons-test-utils": "^0.14.15",
+    "@types/react-dom": "^0.14.23",
     "enzyme": "^2.7.0",
     "es6-promise": "3.2.1",
     "gulp": "~3.9.1",
@@ -33,10 +35,7 @@
     "tslint-microsoft-contrib": "^2.0.9",
     "typescript": "~2.1.0"
   },
-  "dependencies": {
-    "@types/react": "^0.14.41",
-    "@types/react-dom": "^0.14.18"
-  },
+  "dependencies": {},
   "peerDependencies": {
     "react": "^15.0.1 || ^0.14",
     "react-dom": "^15.0.1 || ^0.14"
