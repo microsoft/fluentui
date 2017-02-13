@@ -71,7 +71,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
               { key: 'Z', text: 'Option z' }
             ]
           }
-          maxDisplayItems={ 10 }
+          pageSize={ 10 }
         />
         <Dropdown
           label='Disabled example:'

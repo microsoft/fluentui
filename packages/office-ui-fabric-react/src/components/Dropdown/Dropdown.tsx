@@ -182,16 +182,16 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
   protected _setMaxCalloutComponentHeight() {
     this._scrollbarOffset = 0;
     this._calloutMaxHeight = null;
-    if (this.props.maxDisplayItems && this.props.maxDisplayItems > 0) {
+    if (this.props.pageSize && this.props.pageSize > 0) {
       let totalItemCount = this._optionList.children.length;
       let { selectedIndex } = this.state;
 
-      if (this.props.maxDisplayItems < totalItemCount) {
+      if (this.props.pageSize < totalItemCount) {
         this._scrollbarOffset = 16;
       }
 
-      if (selectedIndex + this.props.maxDisplayItems > totalItemCount) {
-        selectedIndex = totalItemCount - this.props.maxDisplayItems;
+      if (selectedIndex + this.props.pageSize > totalItemCount) {
+        selectedIndex = totalItemCount - this.props.pageSize;
       }
 
       if (selectedIndex < 0) {
@@ -199,7 +199,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
       }
 
       let maxHeight = null;
-      for (let i = selectedIndex; i < this.props.maxDisplayItems + selectedIndex; i++) {
+      for (let i = selectedIndex; i < this.props.pageSize + selectedIndex; i++) {
         let liItem = this.refs[Dropdown.Option + i] as HTMLLIElement;
         if (liItem) {
           maxHeight += liItem.clientHeight;
