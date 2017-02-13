@@ -59,7 +59,7 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
 .ms-Checkbox-label::before {
   content: '';
   display: inline-block;
-  border: 2px solid $ms-color-neutralTertiary;
+  border: 1px solid $ms-color-neutralTertiary;
   width: $ms-checkbox-label-size;
   height: $ms-checkbox-label-size;
   font-weight: normal;
