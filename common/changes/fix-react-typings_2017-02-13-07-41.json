@@ -1,0 +1,20 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Updating package.json dependencies to exclude typings packages.",
+      "type": "patch"
+    },
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "Updating package.json dependencies to exclude typings packages.",
+      "type": "patch"
+    },
+    {
+      "packageName": "@uifabric/example-app-base",
+      "comment": "Updating package.json dependencies to exclude typings packages.",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
