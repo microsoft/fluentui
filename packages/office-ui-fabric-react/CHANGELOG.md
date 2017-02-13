@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 11 Feb 2017 04:10:39 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Feb 2017 08:15:53 GMT and should not be manually modified.
+
+## 1.7.0
+Mon, 13 Feb 2017 08:15:53 GMT
+
+### Minor changes
+
+- Changes to Checkbox Props and ChoiceGroup Props to support StrictNullChecks
+
+### Patches
+
+- Updating package.json dependencies to exclude typings packages.
 
 ## 1.6.0
 Sat, 11 Feb 2017 04:10:39 GMT
