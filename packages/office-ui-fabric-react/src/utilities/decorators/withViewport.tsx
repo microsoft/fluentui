@@ -24,8 +24,12 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
       [key: string]: React.ReactInstance;
     };
 
+    private _observer;
+
     constructor() {
       super();
+
+      this._observer;
 
       this.state = {
         viewport: {
@@ -44,11 +48,39 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
         });
 
       this._events.on(window, 'resize', this._onAsyncResize);
+
+      this._observer = new MutationObserver((mutations)=>{
+        mutations.forEach((mutation) => {
+        if (mutation.type == "attributes"){
+          if(mutation.attributeName == "style" ){
+            if((mutation.oldValue.indexOf("display:none") !== -1) || (mutation.oldValue.indexOf("visibility:hidden") !== -1)){
+              this._updateViewport(true);
+              return;
+            }
+          } 
+          if(mutation.attributeName == "class") {
+            if(mutation.oldValue.indexOf("hide") !== -1){
+              this._updateViewport(true);
+            }
+          }
+         }
+        });
+      });
+
+      let observerConfig ={
+        attributes : true,
+        subtree: false,
+        attributeOldValue: true
+      }
+
+
       this._updateViewport();
+      this._observer.observe((this.refs as any).root, observerConfig);
     }
 
     public componentWillUnmount() {
       this._events.dispose();
+      this._observer.disconnect();
     }
 
     public render() {
@@ -69,17 +101,18 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
     }
 
     private _onAsyncResize() {
-      this._updateViewport();
+      this._updateViewport(true);
     }
 
     private _updateViewport(withForceUpdate?: boolean) {
       let { viewport } = this.state;
       let viewportElement = (this.refs as any).root;
+      let isViewportVisible = (viewportElement.style.display !== "none" && viewportElement.style.visibility !== "hidden");
       let scrollElement = findScrollableParent(viewportElement);
       let scrollRect = getRect(scrollElement);
       let clientRect = getRect(viewportElement);
       let updateComponent = () => {
-        if (withForceUpdate && this._composedComponentInstance) {
+        if (withForceUpdate && this._composedComponentInstance && isViewportVisible == true) {
           this._composedComponentInstance.forceUpdate();
         }
       };
