@@ -19,15 +19,8 @@ build.tslint.setConfig({ lintConfig: require('./tslint.json') });
 // Configure TypeScript 2.0.
 build.typescript.setConfig({ typescript: require('typescript') });
 
-// Disable karma.
-build.karma.isEnabled = () => false;
-
 // Use css modules.
 build.sass.setConfig({ useCSSModules: true });
-build.sass.getCleanMatch = (buildConfig, taskConfig) => {
-  console.log('what')
-  return ['src/**/*.scss.ts'];
-};
 
 // Disable unnecessary subtasks.
 build.preCopy.isEnabled = () => false;
