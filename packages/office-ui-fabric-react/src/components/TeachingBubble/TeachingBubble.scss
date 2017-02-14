@@ -26,11 +26,11 @@
     margin: 0;
     color: $ms-color-white;
 
-    .ms-TeachingBubble-header--large & {
+    :global(.ms-TeachingBubble-header--large) & {
       @include ms-font-xxl;
       font-weight: $ms-font-weight-light;
     }
-    .ms-TeachingBubble-header--small & {
+    :global(.ms-TeachingBubble-header--small) & {
       @include ms-font-m;
       @include margin-right(10px);
       font-weight: $ms-font-weight-semibold;

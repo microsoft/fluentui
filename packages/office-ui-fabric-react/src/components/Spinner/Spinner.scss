@@ -12,7 +12,7 @@ $borderSize: 1.5px;
 
 :global {
 
-  @keyframes ms-Spinner-spin {
+  @keyframes :global(ms-Spinner-spin) {
     0% {
       transform: rotate(0deg);
     }

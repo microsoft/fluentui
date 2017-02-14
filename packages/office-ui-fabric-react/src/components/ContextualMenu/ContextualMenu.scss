@@ -55,7 +55,7 @@ $ContextualMenu-iconWidth: 14px;
       }
     }
 
-    .is-focusVisible &:focus {
+    :global(.is-focusVisible) &:focus {
       background: $ContextualMenu-itemHover;
     }
 

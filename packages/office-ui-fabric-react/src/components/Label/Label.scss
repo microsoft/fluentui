@@ -7,16 +7,7 @@
 // --------------------------------------------------
 // Form field label styles
 
-@mixin ms-Label-is-disabled {
-  color: $ms-color-neutralTertiary;
-}
-
-@mixin ms-Label-is-required {
-  &::after {
-    content: ' *';
-    color: $ms-color-error;
-  }
-}
+@import './LabelMixins';
 
 .root {
   @include ms-font-m;

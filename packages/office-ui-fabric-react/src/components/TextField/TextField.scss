@@ -6,8 +6,7 @@
 // Office UI Fabric
 // --------------------------------------------------
 // Single line (input) and multiline (textarea) form field styles
-
-@import '../Label/Label.scss';
+@import '../Label/LabelMixins.scss';
 
 :global {
   .ms-TextField {

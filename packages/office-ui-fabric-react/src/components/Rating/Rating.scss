@@ -67,7 +67,7 @@ $Rating-largeIconSize: 20px;
       }
     }
 
-    .ms-Rating--large & {
+    :global(.ms-Rating--large) & {
       .ms-Rating-label {
         font-size: $Rating-largeIconSize;
         padding: 6px 2px 9px 2px;
