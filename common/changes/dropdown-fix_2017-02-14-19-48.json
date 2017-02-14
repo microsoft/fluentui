@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Checkbox: reducing border width to 1px.",
+      "comment": "Dropdown: uncontrolled dropdowns now correctly set the selected item as expected. Test coverage added.",
       "type": "patch"
     },
     {
@@ -16,5 +16,5 @@
       "type": "none"
     }
   ],
-  "email": "betrue@microsoft.com"
+  "email": "dzearing@microsoft.com"
 }

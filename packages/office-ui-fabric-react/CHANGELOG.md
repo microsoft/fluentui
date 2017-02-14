@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 13 Feb 2017 08:15:53 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Feb 2017 04:12:27 GMT and should not be manually modified.
+
+## 1.7.1
+Tue, 14 Feb 2017 04:12:27 GMT
+
+### Patches
+
+- Checkbox: reducing border width to 1px.
 
 ## 1.7.0
 Mon, 13 Feb 2017 08:15:53 GMT
