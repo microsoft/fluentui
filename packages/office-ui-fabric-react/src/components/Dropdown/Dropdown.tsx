@@ -54,6 +54,8 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
   }
 
   public componentWillReceiveProps(newProps: IDropdownProps) {
+    // In controlled component usage where selectedKey is provided, update the selectedIndex
+    // state if the key or options change.
     if (newProps.selectedKey !== undefined &&
       (newProps.selectedKey !== this.props.selectedKey || newProps.options !== this.props.options)) {
       this.setState({
