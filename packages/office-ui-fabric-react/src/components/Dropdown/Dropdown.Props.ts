@@ -1,8 +1,7 @@
 import { IRenderFunction } from '../../Utilities';
 import { Dropdown } from './Dropdown';
-import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 
-export interface IDropdownProps extends React.Props<Dropdown>, IWithResponsiveModeState {
+export interface IDropdownProps extends React.Props<Dropdown> {
   /**
    * Descriptive label for the Dropdown
    */
@@ -62,7 +61,7 @@ export interface IDropdownProps extends React.Props<Dropdown>, IWithResponsiveMo
   /**
    * Optional custom renderer for the dropdown options
    */
-  onRenderItem?: IRenderFunction<IDropdownOption>;
+  onRenderOptionContainer?: IRenderFunction<IDropdownOption>;
 
   /**
    * Optional custom renderer for the dropdown option content

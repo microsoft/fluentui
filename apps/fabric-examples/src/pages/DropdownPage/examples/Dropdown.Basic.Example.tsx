@@ -20,20 +20,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
           label='Basic example:'
           id='Basicdrop1'
           ariaLabel='Basic dropdown example'
-          options={
-            [
-              { key: 'A', text: 'Option a' },
-              { key: 'B', text: 'Option b' },
-              { key: 'C', text: 'Option c' },
-              { key: 'D', text: 'Option d' },
-              { key: 'E', text: 'Option e' },
-              { key: 'F', text: 'Option f' },
-              { key: 'G', text: 'Option g' },
-              { key: 'H', text: 'Option h' },
-              { key: 'I', text: 'Option i' },
-              { key: 'J', text: 'Option j' },
-            ]
-          }
+          options={ this.makeList(10) }
           onChanged={ (item) => this.setState({ selectedItem: item }) }
         />
         <div>{ `Item selected: ${selectedItem ? selectedItem.text : '<none>'}` }</div>
@@ -56,6 +43,14 @@ export class DropdownBasicExample extends React.Component<any, any> {
         />
       </div>
     );
+  }
+
+  public makeList(items) {
+    let list = [];
+    for (var i = 0; i < items; i++) {
+      list.push({ key: i, text: 'Option ' + i })
+    };
+    return list;
   }
 
 }

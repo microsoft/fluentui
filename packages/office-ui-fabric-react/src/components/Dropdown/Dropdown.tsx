@@ -7,6 +7,7 @@ import { List } from '../../List';
 import { Panel } from '../../Panel';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import {
   BaseComponent,
   KeyCodes,
@@ -17,13 +18,18 @@ import {
 } from '../../Utilities';
 import './Dropdown.scss';
 
+// Internal only props iterface to support mixing in responsive mode
+export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
+
+}
+
 export interface IDropdownState {
   isOpen?: boolean;
   selectedIndex?: number;
 }
 
 @withResponsiveMode
-export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
+export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownState> {
 
   public static defaultProps = {
     options: []
@@ -196,7 +202,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
   @autobind
   private _onRenderList(props: IDropdownProps): JSX.Element {
     let {
-      onRenderItem = this._onRenderItem
+      onRenderOptionContainer = this._onRenderOptionContainer
     } = this.props;
 
     let id = this._id;
@@ -216,7 +222,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
           onRenderCell={
             (item: IDropdownOption, index: number) => {
               item.index = index;
-              return onRenderItem(item, this._onRenderItem);
+              return onRenderOptionContainer(item, this._onRenderOptionContainer);
             }
           }
         />
@@ -226,8 +232,8 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
 
   // Render Items
   @autobind
-  private _onRenderItem(item: IDropdownOption): JSX.Element {
-    let {  onRenderOption = this._onRenderOption } = this.props;
+  private _onRenderOptionContainer(item: IDropdownOption): JSX.Element {
+    let { onRenderOption = this._onRenderOption } = this.props;
     let id = this._id;
     return (
       <BaseButton
