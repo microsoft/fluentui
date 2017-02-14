@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 14 Feb 2017 04:12:27 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Feb 2017 20:57:58 GMT and should not be manually modified.
+
+## 1.7.2
+Tue, 14 Feb 2017 20:57:58 GMT
+
+### Patches
+
+- Dropdown: uncontrolled dropdowns now correctly set the selected item as expected. Test coverage added.
 
 ## 1.7.1
 Tue, 14 Feb 2017 04:12:27 GMT
