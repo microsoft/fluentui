@@ -12,7 +12,7 @@ $Header-fabricWebsiteHeaderColor: #272630;
   user-select: none;
 }
 
-@media (max-width: $ms-screen-lg-max) {
+@media (max-width: $ms-screen-max-lg) {
   .Header {
     padding: 0;
   }
@@ -65,7 +65,7 @@ $Header-fabricWebsiteHeaderColor: #272630;
   }
 }
 
-@media (max-width: $ms-screen-lg-max) {
+@media (max-width: $ms-screen-max-lg) {
   .Header-button {
     margin: 0;
 

@@ -9,8 +9,7 @@
 
 
 .ms-Pivot {
-  @include ms-baseFont;
-  @include ms-u-normalize;
+  @include ms-normalize;
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
   position: relative;
@@ -56,7 +55,7 @@
     left: 8px;
     position: absolute;
     right: 8px;
-    transition: background-color $ms-duration2 $ms-ease2;
+    transition: background-color $ms-animation-duration-2 $ms-animation-ease-2;
   }
 
   // Make room for the heavier text of the selected state
@@ -215,7 +214,7 @@
 
 // @TODO: Confirm that this component is not responsive.
 //
-// @media (min-width: $ms-screen-lg-min) {
+// @media (min-width: $ms-screen-min-lg) {
 //   .ms-Pivot-link {
 //     font-size: $ms-font-size-m;
 //   }

@@ -31,12 +31,12 @@
 
 .ms-Slider-showTransitions {
   .ms-Slider-thumb {
-    transition: left $ms-duration3 $ms-ease1;
+    transition: left $ms-animation-duration-3 $ms-animation-ease-1;
   }
 
   .ms-Slider-active,
   .ms-Slider-inactive {
-    transition: width $ms-duration3 $ms-ease1;
+    transition: width $ms-animation-duration-3 $ms-animation-ease-1;
   }
 }
 .ms-Slider-slideBox {

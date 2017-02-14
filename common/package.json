@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "rush-component-demo": "file:./temp_modules/rush-component-demo",
     "rush-example-app-base": "file:./temp_modules/rush-example-app-base",
     "rush-fabric-examples": "file:./temp_modules/rush-fabric-examples",
     "rush-fabric-website": "file:./temp_modules/rush-fabric-website",

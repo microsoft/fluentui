@@ -5,7 +5,7 @@
 // --------------------------------------------------
 // Tooltip styles
 .ms-Tooltip {
-    @include ms-u-fadeIn200;
+    @include ms-fadeIn200;
     max-width: 364px;
     background: $ms-color-white;
     padding: 8px;

@@ -135,7 +135,7 @@
     },
     "@types/node": {
       "version": "6.0.63",
-      "from": "@types/node@>=6.0.46 <7.0.0",
+      "from": "@types/node@>=6.0.45 <7.0.0",
       "resolved": "https://registry.npmjs.org/@types/node/-/node-6.0.63.tgz"
     },
     "@types/node-notifier": {
@@ -155,7 +155,7 @@
     },
     "@types/react": {
       "version": "0.14.57",
-      "from": "@types/react@>=0.14.41 <0.15.0",
+      "from": "@types/react@>=0.14.47 <0.15.0",
       "resolved": "https://registry.npmjs.org/@types/react/-/react-0.14.57.tgz"
     },
     "@types/react-addons-test-utils": {
@@ -1377,9 +1377,9 @@
       "resolved": "https://registry.npmjs.org/es-to-primitive/-/es-to-primitive-1.1.1.tgz"
     },
     "es6-promise": {
-      "version": "3.2.1",
-      "from": "es6-promise@3.2.1",
-      "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-3.2.1.tgz"
+      "version": "3.3.1",
+      "from": "es6-promise@>=3.2.1 <4.0.0",
+      "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-3.3.1.tgz"
     },
     "escape-html": {
       "version": "1.0.3",
@@ -3708,7 +3708,7 @@
     },
     "loose-envify": {
       "version": "1.3.1",
-      "from": "loose-envify@>=1.1.0 <2.0.0",
+      "from": "loose-envify@>=1.0.0 <2.0.0",
       "resolved": "https://registry.npmjs.org/loose-envify/-/loose-envify-1.3.1.tgz"
     },
     "loud-rejection": {
@@ -4128,9 +4128,9 @@
       "resolved": "https://registry.npmjs.org/object.values/-/object.values-1.0.4.tgz"
     },
     "office-ui-fabric-core": {
-      "version": "5.1.0",
-      "from": "office-ui-fabric-core@>=5.0.0 <6.0.0",
-      "resolved": "https://registry.npmjs.org/office-ui-fabric-core/-/office-ui-fabric-core-5.1.0.tgz"
+      "version": "6.0.0",
+      "from": "office-ui-fabric-core@6.0.0",
+      "resolved": "https://registry.npmjs.org/office-ui-fabric-core/-/office-ui-fabric-core-6.0.0.tgz"
     },
     "on-finished": {
       "version": "2.3.0",
@@ -4544,7 +4544,7 @@
     },
     "react": {
       "version": "15.4.2",
-      "from": "react@>=15.0.0 <16.0.0",
+      "from": "react@>=15.3.2 <16.0.0",
       "resolved": "https://registry.npmjs.org/react/-/react-15.4.2.tgz"
     },
     "react-addons-test-utils": {
@@ -4554,7 +4554,7 @@
     },
     "react-dom": {
       "version": "15.4.2",
-      "from": "react-dom@>=15.0.0 <16.0.0",
+      "from": "react-dom@>=15.3.2 <16.0.0",
       "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-15.4.2.tgz"
     },
     "react-highlight": {
@@ -4765,10 +4765,22 @@
       "from": "run-async@>=0.1.0 <0.2.0",
       "resolved": "https://registry.npmjs.org/run-async/-/run-async-0.1.0.tgz"
     },
+    "rush-component-demo": {
+      "version": "0.0.0",
+      "from": "temp_modules/rush-component-demo",
+      "resolved": "file:temp_modules/rush-component-demo"
+    },
     "rush-example-app-base": {
       "version": "0.0.0",
       "from": "temp_modules/rush-example-app-base",
-      "resolved": "file:temp_modules/rush-example-app-base"
+      "resolved": "file:temp_modules/rush-example-app-base",
+      "dependencies": {
+        "es6-promise": {
+          "version": "3.2.1",
+          "from": "es6-promise@3.2.1",
+          "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-3.2.1.tgz"
+        }
+      }
     },
     "rush-fabric-examples": {
       "version": "0.0.0",
@@ -4779,6 +4791,11 @@
           "version": "1.0.12",
           "from": "dateformat@>=1.0.11 <2.0.0",
           "resolved": "https://registry.npmjs.org/dateformat/-/dateformat-1.0.12.tgz"
+        },
+        "es6-promise": {
+          "version": "3.2.1",
+          "from": "es6-promise@3.2.1",
+          "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-3.2.1.tgz"
         },
         "gaze": {
           "version": "1.1.2",
@@ -4817,6 +4834,11 @@
           "from": "dateformat@>=1.0.11 <2.0.0",
           "resolved": "https://registry.npmjs.org/dateformat/-/dateformat-1.0.12.tgz"
         },
+        "es6-promise": {
+          "version": "3.2.1",
+          "from": "es6-promise@3.2.1",
+          "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-3.2.1.tgz"
+        },
         "gulp-util": {
           "version": "3.0.7",
           "from": "gulp-util@3.0.7",
@@ -4844,6 +4866,11 @@
           "from": "dateformat@>=1.0.11 <2.0.0",
           "resolved": "https://registry.npmjs.org/dateformat/-/dateformat-1.0.12.tgz"
         },
+        "es6-promise": {
+          "version": "3.2.1",
+          "from": "es6-promise@3.2.1",
+          "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-3.2.1.tgz"
+        },
         "gulp-util": {
           "version": "3.0.7",
           "from": "gulp-util@3.0.7",
@@ -4869,7 +4896,14 @@
     "rush-utilities": {
       "version": "0.0.0",
       "from": "temp_modules/rush-utilities",
-      "resolved": "file:temp_modules/rush-utilities"
+      "resolved": "file:temp_modules/rush-utilities",
+      "dependencies": {
+        "es6-promise": {
+          "version": "3.2.1",
+          "from": "es6-promise@3.2.1",
+          "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-3.2.1.tgz"
+        }
+      }
     },
     "rx-lite": {
       "version": "3.1.2",
@@ -5436,7 +5470,7 @@
     },
     "tslint": {
       "version": "3.15.1",
-      "from": "tslint@>=3.15.1 <4.0.0",
+      "from": "tslint@>=3.15.1 <3.16.0",
       "resolved": "https://registry.npmjs.org/tslint/-/tslint-3.15.1.tgz",
       "dependencies": {
         "colors": {
@@ -5465,7 +5499,7 @@
     },
     "tslint-microsoft-contrib": {
       "version": "2.0.14",
-      "from": "tslint-microsoft-contrib@>=2.0.9 <3.0.0",
+      "from": "tslint-microsoft-contrib@>=2.0.10 <2.1.0",
       "resolved": "https://registry.npmjs.org/tslint-microsoft-contrib/-/tslint-microsoft-contrib-2.0.14.tgz"
     },
     "tsscmp": {
@@ -5511,7 +5545,7 @@
     },
     "typescript": {
       "version": "2.1.6",
-      "from": "typescript@>=2.1.0 <2.2.0",
+      "from": "typescript@>=2.0.6 <3.0.0",
       "resolved": "https://registry.npmjs.org/typescript/-/typescript-2.1.6.tgz"
     },
     "ua-parser-js": {

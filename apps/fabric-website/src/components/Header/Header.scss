@@ -14,12 +14,12 @@
   top: 0;
   width: 100%;
   z-index: 600;
-  
+
   @include high-contrast {
     border: 1px solid $ms-color-white;
     border-top: 0;
   }
-  
+
   @include high-contrast-black-on-white  {
     border: 1px solid $ms-color-black;
     border-top: 0;
@@ -39,7 +39,7 @@
 
 @media (min-width: $od-Header-bannerWidth) {
   .od-Header-logo {
-    @include padding-left(8px);
+    @include ms-padding-left(8px);
   }
 }
 
@@ -51,7 +51,7 @@
   height: $od-Header-searchHeight;
   display: none;
 
-   @media screen and (min-width: $ms-screen-xxl-min) {
+   @media screen and (min-width: $ms-screen-min-xxl) {
      display: block;
    }
 }
@@ -74,7 +74,7 @@
     border: 1px solid $ms-color-white;
     border-top: 0;
   }
-  
+
   @include high-contrast-black-on-white  {
     border: 1px solid $ms-color-black;
     border-top: 0;
@@ -97,11 +97,11 @@
 
   &:focus {
     box-shadow: inset 0px 0px 0px 1px $ms-color-white;
-    
+
     @include high-contrast {
       box-shadow: inset 0px 0px 0px 1px $ms-color-white;
     }
-    
+
     @include high-contrast-black-on-white  {
       box-shadow: inset 0px 0px 0px 1px $high-contrast-purpleBG;
     }
