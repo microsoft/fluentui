@@ -7,30 +7,21 @@
 // --------------------------------------------------
 // Form field label styles
 
-@mixin ms-Label-is-disabled {
-  color: $ms-color-neutralTertiary;
-}
-
-@mixin ms-Label-is-required {
-  &::after {
-    content: ' *';
-    color: $ms-color-error;
-  }
-}
-
-.ms-Label {
+.root {
   @include ms-font-m;
   @include ms-u-normalize;
   color: $ms-color-neutralPrimary;
   box-sizing: border-box;
   display: block;
   padding: 5px 0;
-
-  &.is-required {
-    @include ms-Label-is-required;
-  }
-
-  &.is-disabled {
-    @include ms-Label-is-disabled;
-  }
 }
+
+.isRequired::after {
+    content: ' *';
+    color: $ms-color-error;
+}
+
+.isDisabled {
+  color: $ms-color-neutralTertiary;
+}
+
