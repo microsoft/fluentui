@@ -40,6 +40,9 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /** Optional class name to add to the root element. */
   className?: string;
 
+  /** Optional id of parent to watch for display events. */
+  parentToWatchByID?: string;
+
   /** Optional grouping instructions. The definition for IGroup can be found under the GroupedList component. */
   groups?: IGroup[];
 

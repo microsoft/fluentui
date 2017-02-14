@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { BaseDecorator } from './BaseDecorator';
+import { IDetailsListProps } from '../../DetailsList';
 import {
   findScrollableParent,
   getRect
@@ -12,6 +13,7 @@ export interface IViewport {
 
 export interface IWithViewportState {
   viewport?: IViewport;
+  parentToWatchByID?: string;
 }
 
 const RESIZE_DELAY = 500;
@@ -33,7 +35,8 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
         viewport: {
           width: 0,
           height: 0
-        }
+        },
+        parentToWatchByID: null
       };
     }
 
@@ -46,38 +49,15 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
         });
 
       this._events.on(window, 'resize', this._onAsyncResize);
-
-      this._observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-        if (mutation.type === 'attributes') {
-          if (mutation.attributeName === 'style') {
-            if ((mutation.oldValue.indexOf('display:none') !== -1) || (mutation.oldValue.indexOf('visibility:hidden') !== -1)) {
-              this._updateViewport(true);
-              return;
-            }
-          }
-          if (mutation.attributeName === 'class') {
-            if (mutation.oldValue.indexOf('hide') !== -1) {
-              this._updateViewport(true);
-            }
-          }
-         }
-        });
-      });
-
-      let observerConfig = {
-        attributes : true,
-        subtree: false,
-        attributeOldValue: true
-      };
-
-      this._observer.observe((this.refs as any).root, observerConfig);
+      this._attachDisplayListeners();
       this._updateViewport();
     }
 
     public componentWillUnmount() {
       this._events.dispose();
-      this._observer.disconnect();
+      if (this._observer) {
+        this._observer.disconnect();
+      }
     }
 
     public render() {
@@ -86,8 +66,10 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
 
       return (
         <div className='ms-Viewport' ref='root' style={ { minWidth: 1, minHeight: 1 } }>
-          { isViewportVisible && (
-            <ComposedComponent ref={ this._updateComposedComponentRef } viewport={ viewport } { ...this.props } />
+          { this._saveComposedComponentProps(this.props) && isViewportVisible && (
+            <ComposedComponent
+              ref={ this._updateComposedComponentRef } viewport={ viewport } { ...this.props }
+            />
           ) }
         </div>
       );
@@ -128,6 +110,57 @@ export function withViewport<P extends { viewport?: IViewport }, S>(ComposedComp
       } else {
         updateComponent();
       }
+    }
+
+    private _saveComposedComponentProps(props?: Object) {
+      if (props.hasOwnProperty('parentToWatchByID')) {
+        var p = props as IDetailsListProps;
+        this.state.parentToWatchByID = p.parentToWatchByID;
+      }
+      return true;
+    }
+
+    private _attachDisplayListeners() {
+      this._observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.type === 'attributes') {
+            if (mutation.attributeName === 'style') {
+              if ((mutation.oldValue.indexOf('display:none') !== -1) || (mutation.oldValue.indexOf('visibility:hidden') !== -1)) {
+                this._updateViewport(true);
+                return;
+              }
+            }
+            if (mutation.attributeName === 'class') {
+              if (mutation.oldValue.indexOf('hide') !== -1 || mutation.oldValue.indexOf('hidden') !== -1) {
+                this._updateViewport(true);
+              }
+            }
+          }
+        });
+      });
+
+      let observerConfig = {
+        attributes: true,
+        subtree: false,
+        attributeOldValue: true
+      };
+
+      var ele;
+      if (this.state.parentToWatchByID && this.state.parentToWatchByID.substr(0, 1) === '#') {
+        ele = document.querySelector(this.state.parentToWatchByID) as HTMLDivElement;
+      } else {
+        ele = document.querySelector('#' + this.state.parentToWatchByID) as HTMLDivElement;
+      }
+
+      if (ele != null) {
+        // observe the element passed in by the user
+        this._observer.observe(ele, observerConfig);
+      } else {
+        // observe the viewport
+        this._observer.observe((this.refs as any).root, observerConfig);
+      }
+
+      return true;
     }
   };
 }
