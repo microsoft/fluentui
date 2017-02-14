@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "1.7.1",
+      "tag": "office-ui-fabric-react_v1.7.1",
+      "date": "Tue, 14 Feb 2017 04:12:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Ben Truelove <betrue@microsoft.com>",
+            "commit": "3207527dd4f9dd763328108cc6dd17550a1dd123",
+            "comment": "Checkbox: reducing border width to 1px."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.7.0",
       "tag": "office-ui-fabric-react_v1.7.0",
       "date": "Mon, 13 Feb 2017 08:15:53 GMT",
