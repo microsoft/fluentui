@@ -63,7 +63,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
       }
     }
     else {
-      if (this.props.actions || (this.props.onDismiss != null)) {
+      if (this.props.actions || this.props.onDismiss) {
         return <div className='ms-MessageBar-actionsOneline'>
           { this._getDismissDiv() }
           { this.props.actions }
