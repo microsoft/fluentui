@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/example-app-base",
-  "version": "1.0.2",
+  "version": "1.0.1",
   "description": "Office UI Fabric example app base utilities for building example sites.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -21,8 +21,8 @@
     "@types/es6-promise": "0.0.32",
     "@types/mocha": "^2.2.32",
     "@types/react-addons-test-utils": "^0.14.15",
-    "@types/react": "^0.14.41",
-    "@types/react-dom": "^0.14.18",
+    "@types/react": "^0.14.57",
+    "@types/react-dom": "^0.14.23",
     "@types/webpack-env": "^1.13.0",
     "enzyme": "^2.7.0",
     "es6-promise": "3.2.1",
