@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Dialog } from './Dialog';
-import { IButtonProps } from '../Button';
+import { IButtonProps } from '../Button/Button.Props';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 
@@ -83,9 +83,9 @@ export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeSt
 
 export enum DialogType {
   /** Standard dialog */
-  normal,
+  normal = 0,
   /** Dialog with large header banner */
-  largeHeader,
+  largeHeader = 1,
   /** Dialog with an 'x' close button in the upper-right corner */
-  close
+  close = 2
 }

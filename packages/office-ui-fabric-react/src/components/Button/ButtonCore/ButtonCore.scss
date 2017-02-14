@@ -18,7 +18,6 @@
   text-align: center;
   cursor: pointer;
   display: inline-block;
-  vertical-align: top;
   padding: $button-core-default-padding;
 
   @media screen and (-ms-high-contrast: active) {
@@ -29,20 +28,6 @@
   @media screen and (-ms-high-contrast: black-on-white) {
     color: $ms-color-contrastWhiteSelected;
     border-color: $ms-color-contrastWhiteSelected;
-  }
-
-  &:disabled,
-  &.disabled {
-    background-color: $ms-color-neutralLighter;
-    border-color: $ms-color-neutralLighter;
-    cursor: default;
-    pointer-events: none;
-    color: $ms-color-neutralTertiary;
-
-    &:hover,
-    &:focus {
-      outline: 0;
-    }
   }
 }
 

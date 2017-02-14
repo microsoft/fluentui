@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 27 Jan 2017 04:09:14 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Feb 2017 08:15:53 GMT and should not be manually modified.
+
+## 1.0.3
+Mon, 13 Feb 2017 08:15:53 GMT
+
+### Patches
+
+- Updating package.json dependencies to exclude typings packages.
 
 ## 1.0.2
 Fri, 27 Jan 2017 04:09:14 GMT

@@ -9,15 +9,16 @@
 
 $button-commandButtonHeight: 40px;
 
-.ms-Button--command {
+.ms-Button.ms-Button--command {
   @include text-align(left);
 
   background-color: transparent;
   border: none;
-  height: $button-commandButtonHeight;
-  padding: 0 8px;
+  padding: 0 4px;
 
-  .ms-Icon {
+  .ms-Button-label,
+  .ms-Button-icon {
+    height: $button-commandButtonHeight;
     line-height: $button-commandButtonHeight;
   }
 
@@ -25,23 +26,21 @@ $button-commandButtonHeight: 40px;
     @include ms-font-m;
     font-weight: $ms-font-weight-regular;
     color: $ms-color-neutralPrimary;
-    line-height: $button-commandButtonHeight;
   }
 
   .ms-Button-icon {
     vertical-align: top;
-    @include text-align(left);
     color: $ms-color-themePrimary;
     display: inline-block;
-    @include margin-right(8px);
-    position: relative;
     font-size: $ms-icon-size-m;
+    position: relative;
   }
 
   &:hover,
   &:focus {
     background-color: transparent;
 
+    &,
     .ms-Button-icon,
     .ms-Button-label {
       color: $ms-color-themeDarker;
@@ -49,6 +48,7 @@ $button-commandButtonHeight: 40px;
   }
 
   &:active {
+    &,
     .ms-Button-icon,
     .ms-Button-label {
       color: $ms-color-themePrimary;
@@ -56,7 +56,7 @@ $button-commandButtonHeight: 40px;
   }
 
   &:disabled,
-  &.is-disabled {
+  &.disabled {
     background-color: transparent;
 
     .ms-Button-icon,

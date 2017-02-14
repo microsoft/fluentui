@@ -8,6 +8,7 @@ import {
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu } from '../../ContextualMenu';
+import { Link } from '../../Link';
 import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import './Breadcrumb.scss';
@@ -113,16 +114,16 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
 
   private _renderItem(item: IBreadcrumbItem) {
     if (item.onClick || item.href) {
-      return (<a className='ms-Breadcrumb-itemLink'
-              onClick={ this._onBreadcrumbClicked.bind(this, item) }
-              href={ item.href ? item.href : null }
-              role={ item.onClick ? 'button' : 'link' }>
-              { item.text }
-            </a>);
+      return <Link
+        className='ms-Breadcrumb-itemLink'
+        href={ item.href }
+        onClick={ this._onBreadcrumbClicked.bind(this, item) }>
+        { item.text }
+      </Link>
     } else {
       return (<span className='ms-Breadcrumb-item'>
-              { item.text }
-            </span>);
+        { item.text }
+      </span>);
     }
   }
 

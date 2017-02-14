@@ -1,0 +1,43 @@
+{
+  "name": "@uifabric/example-app-base",
+  "entries": [
+    {
+      "version": "1.0.2",
+      "tag": "@uifabric/example-app-base_v1.0.2",
+      "date": "Mon, 13 Feb 2017 08:15:53 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "e5168866a9ca21698b95593d908eabe575e0cdbe",
+            "comment": "Updating package.json dependencies to exclude typings packages."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=1.6.0 <2.0.0` to `>=1.7.0 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.0.1",
+      "tag": "@uifabric/example-app-base_v1.0.1",
+      "date": "Wed, 08 Feb 2017 05:10:53 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "82a1b7ec536b607fefc0067111e7a9d23dfc4ca6",
+            "comment": "Adding new package to host all example app base code, which allows us to share common doc website code across many projects."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=1.0.0 <2.0.0` to `>=1.5.5 <2.0.0`"
+          }
+        ]
+      }
+    }
+  ]
+}
