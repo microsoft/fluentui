@@ -12,6 +12,6 @@
   },
   "rushDependencies": {
     "fabric-examples": ">=1.0.0 <2.0.0",
-    "office-ui-fabric-react": ">=1.0.0 <2.0.0"
+    "office-ui-fabric-react": ">=1.6.0 <2.0.0"
   }
 }
