@@ -140,7 +140,8 @@ export interface IGroup {
   ariaLabel?: string;
 
   /**
-   * If Throttled groupview display has more data to fetch in the group.
+   * Optional flag to indicate the group has more data to load. This can be used to indicate that a plus should
+   * be rendered next to the group count in the header.
    */
   hasMoreData?: boolean;
 }
