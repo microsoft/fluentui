@@ -2,6 +2,106 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "1.7.2",
+      "tag": "office-ui-fabric-react_v1.7.2",
+      "date": "Tue, 14 Feb 2017 20:57:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "2783d9aa2292a8287a8d318925fa8a7acbf2d7d1",
+            "comment": "Dropdown: uncontrolled dropdowns now correctly set the selected item as expected. Test coverage added."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.7.1",
+      "tag": "office-ui-fabric-react_v1.7.1",
+      "date": "Tue, 14 Feb 2017 04:12:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Ben Truelove <betrue@microsoft.com>",
+            "commit": "3207527dd4f9dd763328108cc6dd17550a1dd123",
+            "comment": "Checkbox: reducing border width to 1px."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.7.0",
+      "tag": "office-ui-fabric-react_v1.7.0",
+      "date": "Mon, 13 Feb 2017 08:15:53 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "e5168866a9ca21698b95593d908eabe575e0cdbe",
+            "comment": "Updating package.json dependencies to exclude typings packages."
+          }
+        ],
+        "minor": [
+          {
+            "author": "lahuey <huey253@uw.edu>",
+            "commit": "f6be06e0dee66c73294d0388d5ff6912e794cb8f",
+            "comment": "Changes to Checkbox Props and ChoiceGroup Props to support StrictNullChecks"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=1.0.2 <2.0.0` to `>=1.0.3 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.6.0",
+      "tag": "office-ui-fabric-react_v1.6.0",
+      "date": "Sat, 11 Feb 2017 04:10:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "5cbf6363834529e05f418a3df70d07f45ce80c30",
+            "comment": "Breadcrumb: Fixed keyboard activation of items"
+          },
+          {
+            "author": "Aditi Mandal <aditima@microsoft.com>",
+            "commit": "b92d6eea1df94771f7bfd4b48177dc083503872d",
+            "comment": "Dropdown: update selectedIndex when options change"
+          },
+          {
+            "author": "Aniket Handa <atneik@users.noreply.github.com>",
+            "commit": "3f94592c8aa0c16f86c51f941e639a54af5463b6",
+            "comment": "ChoiceGroup: Adding ability to use Icons"
+          },
+          {
+            "author": "Cliff Koh <cliffkoh@users.noreply.github.com>",
+            "commit": "f1fa9227f15d31404dc9427598e38c18b1655526",
+            "comment": "Button: Fix various bugs in button styling particularly to do with disabled states."
+          },
+          {
+            "author": "Matt Lind <revelationmedia@gmail.com>",
+            "commit": "869a025a9c6b135ad8f4f3ddba67a1ff08cb16de",
+            "comment": "FacePile, Persona: Reverted changes to title attribute from #875"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "fe6cf3fb5c369e9a8fb5deb3dff2cbce43962fcc",
+            "comment": "Panel: animation no longer styled fixed, which was causing issues downstream with opening it."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "8cd60f2d45cb5c68795363d73bd71f48769dfba7",
+            "comment": "ColorPicker: adding `alphaSliderHidden` property to hide the alpha slider."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.5.5",
       "tag": "office-ui-fabric-react_v1.5.5",
       "date": "Wed, 08 Feb 2017 05:10:53 GMT",

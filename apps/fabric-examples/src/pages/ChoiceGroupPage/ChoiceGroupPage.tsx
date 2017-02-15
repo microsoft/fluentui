@@ -6,8 +6,12 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { ChoiceGroupBasicExample } from './examples/ChoiceGroup.Basic.Example';
+import { ChoiceGroupImageExample } from './examples/ChoiceGroup.Image.Example';
+import { ChoiceGroupIconExample } from './examples/ChoiceGroup.Icon.Example';
 
 const ChoiceGroupBasicExampleCode = require('./examples/ChoiceGroup.Basic.Example.tsx') as string;
+const ChoiceGroupImageExampleCode = require('./examples/ChoiceGroup.Image.Example.tsx') as string;
+const ChoiceGroupIconExampleCode = require('./examples/ChoiceGroup.Icon.Example.tsx') as string;
 
 export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -16,9 +20,17 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}
         title='ChoiceGroup'
         componentName='ChoiceGroupExample'
         exampleCards={
-          <ExampleCard title='ChoiceGroups' code={ ChoiceGroupBasicExampleCode }>
-            <ChoiceGroupBasicExample />
-          </ExampleCard>
+          <div>
+            <ExampleCard title='ChoiceGroups' code={ ChoiceGroupBasicExampleCode }>
+              <ChoiceGroupBasicExample />
+            </ExampleCard>
+            <ExampleCard title='ChoiceGroups using Images' code={ ChoiceGroupImageExampleCode }>
+              <ChoiceGroupImageExample />
+            </ExampleCard>
+            <ExampleCard title='ChoiceGroups using Icons' code={ ChoiceGroupIconExampleCode }>
+              <ChoiceGroupIconExample />
+            </ExampleCard>
+          </div>
         }
         propertiesTables={
           <PropertiesTableSet
