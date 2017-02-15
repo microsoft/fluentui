@@ -10,6 +10,7 @@
 $button-commandButtonHeight: 40px;
 
 :global {
+  
   .ms-Button.ms-Button--command {
     @include text-align(left);
 
@@ -66,4 +67,5 @@ $button-commandButtonHeight: 40px;
       }
     }
   }
+
 }
