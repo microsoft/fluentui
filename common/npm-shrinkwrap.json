@@ -886,9 +886,9 @@
       "resolved": "https://registry.npmjs.org/content-type/-/content-type-1.0.2.tgz"
     },
     "convert-source-map": {
-      "version": "1.3.0",
+      "version": "1.4.0",
       "from": "convert-source-map@>=1.1.1 <2.0.0",
-      "resolved": "https://registry.npmjs.org/convert-source-map/-/convert-source-map-1.3.0.tgz"
+      "resolved": "https://registry.npmjs.org/convert-source-map/-/convert-source-map-1.4.0.tgz"
     },
     "cookie": {
       "version": "0.3.1",
@@ -1635,7 +1635,7 @@
     },
     "filesize": {
       "version": "3.5.4",
-      "from": "filesize@>=3.3.0 <4.0.0",
+      "from": "filesize@>=3.5.4 <4.0.0",
       "resolved": "https://registry.npmjs.org/filesize/-/filesize-3.5.4.tgz"
     },
     "fill-range": {
@@ -3955,7 +3955,7 @@
     },
     "nan": {
       "version": "2.5.1",
-      "from": "nan@>=2.3.0 <3.0.0",
+      "from": "nan@>=2.3.2 <3.0.0",
       "resolved": "https://registry.npmjs.org/nan/-/nan-2.5.1.tgz"
     },
     "natives": {
@@ -4158,9 +4158,9 @@
       "resolved": "https://registry.npmjs.org/open/-/open-0.0.5.tgz"
     },
     "opener": {
-      "version": "1.4.2",
+      "version": "1.4.3",
       "from": "opener@>=1.4.2 <2.0.0",
-      "resolved": "https://registry.npmjs.org/opener/-/opener-1.4.2.tgz"
+      "resolved": "https://registry.npmjs.org/opener/-/opener-1.4.3.tgz"
     },
     "optimist": {
       "version": "0.6.1",
@@ -4406,9 +4406,9 @@
       "resolved": "https://registry.npmjs.org/plur/-/plur-2.1.2.tgz"
     },
     "postcss": {
-      "version": "5.2.12",
+      "version": "5.2.13",
       "from": "postcss@>=5.0.21 <6.0.0",
-      "resolved": "https://registry.npmjs.org/postcss/-/postcss-5.2.12.tgz",
+      "resolved": "https://registry.npmjs.org/postcss/-/postcss-5.2.13.tgz",
       "dependencies": {
         "source-map": {
           "version": "0.5.6",
@@ -4767,13 +4767,13 @@
     },
     "rush-example-app-base": {
       "version": "0.0.0",
-      "from": "temp_modules/rush-example-app-base",
-      "resolved": "file:temp_modules/rush-example-app-base"
+      "from": "temp_modules\\rush-example-app-base",
+      "resolved": "file:temp_modules\\rush-example-app-base"
     },
     "rush-fabric-examples": {
       "version": "0.0.0",
-      "from": "temp_modules/rush-fabric-examples",
-      "resolved": "file:temp_modules/rush-fabric-examples",
+      "from": "temp_modules\\rush-fabric-examples",
+      "resolved": "file:temp_modules\\rush-fabric-examples",
       "dependencies": {
         "dateformat": {
           "version": "1.0.12",
@@ -4809,8 +4809,8 @@
     },
     "rush-fabric-website": {
       "version": "0.0.0",
-      "from": "temp_modules/rush-fabric-website",
-      "resolved": "file:temp_modules/rush-fabric-website",
+      "from": "temp_modules\\rush-fabric-website",
+      "resolved": "file:temp_modules\\rush-fabric-website",
       "dependencies": {
         "dateformat": {
           "version": "1.0.12",
@@ -4836,8 +4836,8 @@
     },
     "rush-office-ui-fabric-react": {
       "version": "0.0.0",
-      "from": "temp_modules/rush-office-ui-fabric-react",
-      "resolved": "file:temp_modules/rush-office-ui-fabric-react",
+      "from": "temp_modules\\rush-office-ui-fabric-react",
+      "resolved": "file:temp_modules\\rush-office-ui-fabric-react",
       "dependencies": {
         "dateformat": {
           "version": "1.0.12",
@@ -4858,18 +4858,18 @@
     },
     "rush-ssr-tests": {
       "version": "0.0.0",
-      "from": "temp_modules/rush-ssr-tests",
-      "resolved": "file:temp_modules/rush-ssr-tests"
+      "from": "temp_modules\\rush-ssr-tests",
+      "resolved": "file:temp_modules\\rush-ssr-tests"
     },
     "rush-todo-app": {
       "version": "0.0.0",
-      "from": "temp_modules/rush-todo-app",
-      "resolved": "file:temp_modules/rush-todo-app"
+      "from": "temp_modules\\rush-todo-app",
+      "resolved": "file:temp_modules\\rush-todo-app"
     },
     "rush-utilities": {
       "version": "0.0.0",
-      "from": "temp_modules/rush-utilities",
-      "resolved": "file:temp_modules/rush-utilities"
+      "from": "temp_modules\\rush-utilities",
+      "resolved": "file:temp_modules\\rush-utilities"
     },
     "rx-lite": {
       "version": "3.1.2",
@@ -5833,18 +5833,18 @@
       }
     },
     "webpack-bundle-analyzer": {
-      "version": "2.2.3",
+      "version": "2.3.0",
       "from": "webpack-bundle-analyzer@>=2.2.1 <3.0.0",
-      "resolved": "https://registry.npmjs.org/webpack-bundle-analyzer/-/webpack-bundle-analyzer-2.2.3.tgz",
+      "resolved": "https://registry.npmjs.org/webpack-bundle-analyzer/-/webpack-bundle-analyzer-2.3.0.tgz",
       "dependencies": {
         "acorn": {
           "version": "4.0.11",
-          "from": "acorn@>=4.0.3 <5.0.0",
+          "from": "acorn@>=4.0.11 <5.0.0",
           "resolved": "https://registry.npmjs.org/acorn/-/acorn-4.0.11.tgz"
         },
         "lodash": {
           "version": "4.17.4",
-          "from": "lodash@>=4.17.2 <5.0.0",
+          "from": "lodash@>=4.17.4 <5.0.0",
           "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.4.tgz"
         }
       }

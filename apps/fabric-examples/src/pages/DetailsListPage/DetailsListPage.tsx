@@ -1,16 +1,13 @@
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { Link } from '../../../Link';
-import { Button, ButtonType } from '../../../Button';
+import { Button, ButtonType } from 'office-ui-fabric-react/lib/Button';
 import {
   ExampleCard,
   PropertiesTableSet,
   ComponentPage
-} from '../../components/demoComponents';
+} from '@uifabric/example-app-base';
 
-import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
-import { IComponentDemoPageProps } from '../../components/ComponentPage/IComponentDemoPageProps';
+import { IComponentDemoPageProps } from '@uifabric/example-app-base';
 
 import { DetailsListBasicExample } from './examples/DetailsList.Basic.Example';
 const DetailsListBasicExampleCode = require('./examples/DetailsList.Basic.Example.tsx') as string;
