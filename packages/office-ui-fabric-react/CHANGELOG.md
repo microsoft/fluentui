@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 14 Feb 2017 20:57:58 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Feb 2017 18:10:58 GMT and should not be manually modified.
+
+## 1.8.0
+Wed, 15 Feb 2017 18:10:58 GMT
+
+### Minor changes
+
+- In order to protect customers that bundle 2 different versions of the same component on the page, we are moving the rules defined by fabric components to CSS modules. This first change only affects the `Toggle` and `Label` components, which have been updated to scope their rules inside of hash-safe class names. No existing class names (`ms-Toggle` for example) have been removed, so any customer customizations should continue to work as expected. This means if you render an old v1 Toggle with a new v2 Toggle compoennt, their class definitions will not conflict.
 
 ## 1.7.2
 Tue, 14 Feb 2017 20:57:58 GMT
