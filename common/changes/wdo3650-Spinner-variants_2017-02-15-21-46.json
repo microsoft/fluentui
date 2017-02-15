@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Added extra small, small and medium variants to Spinner control",
+      "comment": "Additional Spinner Variants (extra small, small and medium). Normal Variant Deprecation",
       "type": "minor"
     },
     {
