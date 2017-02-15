@@ -5,7 +5,7 @@ import './Spinner.scss';
 
 export class Spinner extends React.Component<ISpinnerProps, any> {
   public static defaultProps: ISpinnerProps = {
-    type: SpinnerType.normal
+    type: SpinnerType.medium
   };
 
   public render() {
@@ -15,7 +15,7 @@ export class Spinner extends React.Component<ISpinnerProps, any> {
       <div className={ css('ms-Spinner', className) }>
         <div className={ css('ms-Spinner-circle',
           { 'ms-Spinner--xSmall': type === SpinnerType.xSmall },
-          { 'ms-Spinner--small': type === SpinnerType.small },
+          { 'ms-Spinner--small': type === SpinnerType.small }, // TODO remove deprecated value at >= 2.0.0
           { 'ms-Spinner--medium': type === SpinnerType.medium },
           { 'ms-Spinner--large': type === SpinnerType.large })
         }>

@@ -39,6 +39,7 @@ $borderSize: 1.5px;
         width: 16px;
         height: 16px;
       }
+      //= Note: ms-Spinner--normal is deprecated and will be removed at >= 2.0.0
       &.ms-Spinner--normal,
       &.ms-Spinner--medium {
         width: 20px;
