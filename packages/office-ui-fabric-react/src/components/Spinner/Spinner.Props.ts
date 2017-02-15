@@ -9,7 +9,7 @@ export interface ISpinnerProps extends React.Props<Spinner> {
   type?: SpinnerType;
 
   /**
-  * The label to show next to the spinner.
+  * The label to show next to the Spinner.
   */
   label?: string;
 
