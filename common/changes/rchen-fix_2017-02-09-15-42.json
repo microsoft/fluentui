@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "GroupedList: Add support for rendering a plus character for groups that have indeterminate counts.",
+      "comment": "GroupedList: Added `hasMoreData` flag to `IGroup` for rendering a plus character for groups that have indeterminate counts.",
       "type": "minor"
     }
   ],
