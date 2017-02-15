@@ -155,7 +155,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     } = this.props;
     let { isSelected } = this.state;
     let renderCount = group && getGroupItemLimit ? getGroupItemLimit(group) : Infinity;
-    let isFooterVisible = group && !group.children && !group.isCollapsed && !group.isShowingAll && group.count > renderCount;
+    let isFooterVisible = group && !group.children && !group.isCollapsed && !group.isShowingAll &&
+      (group.count > renderCount || group.hasMoreData);
     let hasNestedGroups = group && group.children && group.children.length > 0;
 
     let dividerProps: IGroupDividerProps = {
@@ -173,7 +174,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       <div
         ref='root'
         className={ css('ms-GroupedList-group', this._getDroppingClassName()) }
-        >
+      >
         { onRenderGroupHeader(groupHeaderProps, this._onRenderGroupHeader) }
         {
           group && group.isCollapsed ?
@@ -186,7 +187,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
                     items={ group.children }
                     onRenderCell={ this._renderSubGroup }
                     getItemCountForPage={ () => 1 }
-                    />
+                  />
                 ) :
                 this._onRenderGroup(renderCount)
             )
@@ -265,7 +266,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         renderCount={ Math.min(count, renderCount) }
         startIndex={ startIndex }
         { ...listProps }
-        />
+      />
     );
   }
 
@@ -306,7 +307,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         selection={ selection }
         selectionMode={ selectionMode }
         viewport={ viewport }
-        />
+      />
     ) : null;
   }
 
