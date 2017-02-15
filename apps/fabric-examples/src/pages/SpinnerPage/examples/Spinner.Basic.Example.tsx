@@ -10,7 +10,13 @@ export class SpinnerBasicExample extends React.Component<any, any> {
   public render() {
     return (
       <div className='ms-BasicSpinnersExample'>
-        <Label>Normal Spinner</Label>
+        <Label>Extra Small Spinner</Label>
+        <Spinner type={ SpinnerType.xSmall } />
+
+        <Label>Small Spinner</Label>
+        <Spinner type={ SpinnerType.small } />
+
+        <Label>Medium Spinner</Label>
         <Spinner />
 
         <Label>Large Spinner</Label>

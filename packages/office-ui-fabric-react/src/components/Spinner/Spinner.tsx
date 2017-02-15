@@ -14,7 +14,9 @@ export class Spinner extends React.Component<ISpinnerProps, any> {
     return (
       <div className={ css('ms-Spinner', className) }>
         <div className={ css('ms-Spinner-circle',
-          { 'ms-Spinner--normal': type === SpinnerType.normal },
+          { 'ms-Spinner--xSmall': type === SpinnerType.xSmall },
+          { 'ms-Spinner--small': type === SpinnerType.small },
+          { 'ms-Spinner--medium': type === SpinnerType.medium },
           { 'ms-Spinner--large': type === SpinnerType.large })
         }>
         </div>

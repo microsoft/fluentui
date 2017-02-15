@@ -2,15 +2,15 @@ import * as React from 'react';
 import { Spinner } from './Spinner';
 
 export interface ISpinnerProps extends React.Props<Spinner> {
- /**
- * The type of the button to render. { normal, large }
- * @default SpinnerType.normal
- */
+  /**
+  * The type of the button to render. { normal, large }
+  * @default SpinnerType.normal
+  */
   type?: SpinnerType;
 
- /**
- * The label to show next to the spinner.
- */
+  /**
+  * The label to show next to the spinner.
+  */
   label?: string;
 
   /**
@@ -20,6 +20,9 @@ export interface ISpinnerProps extends React.Props<Spinner> {
 }
 
 export enum SpinnerType {
-  normal = 0,
-  large = 1
+  xSmall = 0,
+  small = 1,
+  normal = 2,
+  medium = 2,
+  large = 3
 }
