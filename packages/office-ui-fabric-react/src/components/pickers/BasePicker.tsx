@@ -196,7 +196,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     // If the returned value is not an array then check to see if it's a promise or PromiseLike. If it is then resolve it asynchronously.
     if (Array.isArray(suggestionsArray)) {
       this.resolveNewValue(updatedValue, suggestionsArray);
-    } else if (suggestionsPromiseLike.then) {
+    } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
       if (!this.loadingTimer) {
         this.loadingTimer = this._async.setTimeout(() => this.setState({
           suggestionsLoading: true
