@@ -3,7 +3,7 @@ import { Spinner } from './Spinner';
 
 export interface ISpinnerProps extends React.Props<Spinner> {
   /**
-  * The type of the button to render. { extraSmall, small, medium, normal, large }
+  * The type of the Spinner to render. { extraSmall, small, medium, normal, large }
   * @default SpinnerType.medium
   */
   type?: SpinnerType;
