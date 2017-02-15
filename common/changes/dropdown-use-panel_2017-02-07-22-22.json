@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Updated dropdown component to be composed of several onRender functions, and  for render container to use panel under medium breakpoint",
+      "comment": "Dropdown: Updated dropdown component to be composed of several onRender functions, and  for render container to use panel under medium breakpoint",
       "type": "minor"
     },
     {

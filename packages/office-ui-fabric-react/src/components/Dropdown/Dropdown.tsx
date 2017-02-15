@@ -204,7 +204,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   @autobind
   private _onRenderList(props: IDropdownProps): JSX.Element {
     let {
-      onRenderOptionContainer = this._onRenderOptionContainer
+      onRenderItem = this._onRenderItem
     } = this.props;
 
     let id = this._id;
@@ -224,7 +224,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           onRenderCell={
             (item: IDropdownOption, index: number) => {
               item.index = index;
-              return onRenderOptionContainer(item, this._onRenderOptionContainer);
+              return onRenderItem(item, this._onRenderItem);
             }
           }
         />
@@ -234,7 +234,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   // Render Items
   @autobind
-  private _onRenderOptionContainer(item: IDropdownOption): JSX.Element {
+  private _onRenderItem(item: IDropdownOption): JSX.Element {
     let { onRenderOption = this._onRenderOption } = this.props;
     let id = this._id;
     return (

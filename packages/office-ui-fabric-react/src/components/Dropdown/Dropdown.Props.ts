@@ -61,7 +61,7 @@ export interface IDropdownProps extends React.Props<Dropdown> {
   /**
    * Optional custom renderer for the dropdown options
    */
-  onRenderOptionContainer?: IRenderFunction<IDropdownOption>;
+  onRenderItem?: IRenderFunction<IDropdownOption>;
 
   /**
    * Optional custom renderer for the dropdown option content
