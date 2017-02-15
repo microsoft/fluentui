@@ -91,6 +91,9 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
 
           <div className='ms-GroupHeader-title ms-font-xl'>
             <span>{ group.name } </span>
+            {/* hasMoreData flag is set when grouping is throttle by SPO server which in turn resorts to regular sorting to simulate
+                grouping behaviors, in which case group count is the number of items returned so far. That's the reasons we need to
+                use "+" to show we might have more items than count indicates. */}
             <span>({ group.count }{ group.hasMoreData && '+' }) </span>
           </div>
 

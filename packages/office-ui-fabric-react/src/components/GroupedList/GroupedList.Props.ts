@@ -140,7 +140,10 @@ export interface IGroup {
   ariaLabel?: string;
 
   /**
-   * If Throttled groupview display has more data to fetch in the group.
+   * Optional flag to indicate the group has more data to load than the current group count indicated.
+   * This flag depends on the server implementation of grouping. If server uses order by to simulate the
+   * grouping behavior, group count will be the number of current items in the current fetched data set.
+   * As such we need this flag which can be used to render a plus next to group count in group header.
    */
   hasMoreData?: boolean;
 }
