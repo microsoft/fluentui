@@ -125,29 +125,29 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
 
     let personaNames: string = this.props.personas.slice(numPersonasToShow).map((p: IFacepilePersona) => p.personaName).join(', ');
 
-    return <button { ...getNativeProps(this.props.overflowButtonProps, buttonProperties) }
+    return <BaseButton { ...getNativeProps(this.props.overflowButtonProps, buttonProperties) }
       className={ css('ms-Persona', PERSONA_SIZE[personaSize], 'ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton') }
       title={ personaNames }
     >
       { '+' + numPersonasNotPictured }
-    </button>;
+    </BaseButton>;
   }
 
   private _getIconElement(icon: string): JSX.Element {
     let { personaSize } = this.props;
-    return <button { ...getNativeProps(this.props.overflowButtonProps, buttonProperties) }
+    return <BaseButton { ...getNativeProps(this.props.overflowButtonProps, buttonProperties) }
       className={ css('ms-Persona', PERSONA_SIZE[personaSize], 'ms-Facepile-overflowButton', 'ms-Facepile-itemButton') }
     >
       <i className={ css('ms-Icon', 'msIcon', `ms-Icon ms-Icon--${icon}`) } aria-hidden='true'></i>
-    </button>;
+    </BaseButton>;
   }
 
   private _getAddNewElement(): JSX.Element {
     let { personaSize } = this.props;
-    return <button { ...getNativeProps(this.props.addButtonProps, buttonProperties) }
+    return <BaseButton { ...getNativeProps(this.props.addButtonProps, buttonProperties) }
       className={ css('ms-Persona', PERSONA_SIZE[personaSize], 'ms-Facepile-addButton', 'ms-Facepile-itemButton') }>
       <i className='ms-Icon msIcon ms-Icon--AddFriend' aria-hidden='true'></i>
-    </button>;
+    </BaseButton>;
   }
 
   private _onPersonaClick(persona: IFacepilePersona, ev?: React.MouseEvent<HTMLElement>): void {
