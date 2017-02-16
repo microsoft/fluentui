@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "MessageBar: now allows dismiss action for single line messages.",
+      "type": "patch"
+    }
+  ],
+  "email": "jdh@microsoft.com"
+}
