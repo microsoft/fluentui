@@ -77,7 +77,7 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   /**
    * Optional callback that is called once the callout has been correctly positioned.
    */
-  onPositioned?: () => void;
+  onPositioned?: (hostElement?: HTMLDivElement) => void;
 
   /**
    * Callback when the Callout tries to close.
