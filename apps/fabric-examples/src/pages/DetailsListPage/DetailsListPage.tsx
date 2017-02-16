@@ -1,11 +1,14 @@
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
+import { Button, ButtonType } from 'office-ui-fabric-react/lib/Button';
 import {
   ExampleCard,
-  IComponentDemoPageProps,
-  ComponentPage,
-  PropertiesTableSet
+  PropertiesTableSet,
+  ComponentPage
 } from '@uifabric/example-app-base';
+
+import { IComponentDemoPageProps } from '@uifabric/example-app-base';
+
 import { DetailsListBasicExample } from './examples/DetailsList.Basic.Example';
 const DetailsListBasicExampleCode = require('./examples/DetailsList.Basic.Example.tsx') as string;
 
@@ -50,6 +53,20 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}
             <ExampleCard title='Advanced DetailsList of 5000 items, variable row heights' isOptIn={ true } code={ DetailsListAdvancedExampleCode }>
               <DetailsListAdvancedExample />
             </ExampleCard>
+            <div>
+              <p className='ExampleCard-title ms-font-xxl'>Simple DetailsList that watches a parent for visibility/render changes </p>
+              <p>
+                <Button buttonType={ ButtonType.normal } onClick={ this._onToggleParentClick } >
+                  Toggle Parent Div
+              </Button>
+              </p>
+              <span className='ExampleCard-title ms-font-l'>Set the 'parentToWatchByID' property on the DetailsListExample and the DetailsListExample will render when the parent is displayed. </span>
+              <div id='hiddenExample' className='is-hidden'>
+                <ExampleCard title='Parent aware DetialsList' isOptIn={ true } code={ DetailsListAdvancedExampleCode }>
+                  <DetailsListBasicExample parentToWatchByID='#hiddenExample' />
+                </ExampleCard>
+              </div>
+            </div>
           </div>
         }
         propertiesTables={
@@ -97,5 +114,14 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}
         isHeaderVisible={ this.props.isHeaderVisible }>
       </ComponentPage>
     );
+  }
+
+  private _onToggleParentClick() {
+    var ele = document.querySelector('#hiddenExample') as HTMLDivElement;
+    if (ele.className.indexOf('hidden') === -1) {
+      ele.className = 'is-hidden';
+    } else {
+      ele.className = 'is-showing';
+    }
   }
 }

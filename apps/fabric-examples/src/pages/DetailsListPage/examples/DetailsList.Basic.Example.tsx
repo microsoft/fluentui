@@ -44,6 +44,7 @@ export class DetailsListBasicExample extends React.Component<any, any> {
         <MarqueeSelection selection={ this._selection }>
           <DetailsList
             items={ items }
+            parentToWatchByID={ this.props.parentToWatchByID }
             setKey='set'
             selection={ this._selection }
             selectionPreservedOnEmptyClick={ true }

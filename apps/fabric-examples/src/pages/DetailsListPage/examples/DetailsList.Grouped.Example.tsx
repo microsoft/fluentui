@@ -98,6 +98,7 @@ export class DetailsListGroupedExample extends React.Component<any, any> {
         <Button onClick={ () => this._addItem() }>Add an item</Button>
         <DetailsList
           items={ items }
+          parentToWatchByID={ this.props.parentToWatchByID }
           groups={ groupBy(items, 'color') }
           columns={ _columns }
         />
