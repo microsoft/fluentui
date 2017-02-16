@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 15 Feb 2017 18:10:58 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Feb 2017 04:04:41 GMT and should not be manually modified.
+
+## 1.9.0
+Thu, 16 Feb 2017 04:04:41 GMT
+
+### Minor changes
+
+- GroupedList: Added `hasMoreData` flag to `IGroup` for rendering a plus character for groups that have indeterminate counts.
 
 ## 1.8.0
 Wed, 15 Feb 2017 18:10:58 GMT
