@@ -42,7 +42,7 @@ export interface IGroupedListProps extends React.Props<GroupedList> {
   dragDropHelper?: IDragDropHelper;
 
   /** Event names and corresponding callbacks that will be registered to groups and rendered elements */
-  eventsToRegister?: [{ eventName: string, callback: (context: IDragDropContext, event?: any) => void }];
+  eventsToRegister?: { eventName: string, callback: (context: IDragDropContext, event?: any) => void }[];
 
   /** Optional override properties to render groups. */
   groupProps?: IGroupRenderProps;

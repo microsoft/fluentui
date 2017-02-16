@@ -5,7 +5,8 @@ import {
   IDragDropHelper,
   IDragDropTarget,
   IDragDropOptions,
-  IDragDropEvent
+  IDragDropEvent,
+  IDragDropContext
 } from './interfaces';
 import { ISelection } from '../../utilities/selection/interfaces';
 
@@ -31,11 +32,13 @@ export class DragDropHelper implements IDragDropHelper {
   private _selection: ISelection;
   private _activeTargets: { [key: string]: IDragDropTarget };
   private _events: EventGroup;
+  private _lastId: number;
 
   constructor(params: IDragDropHelperParams) {
     this._selection = params.selection;
     this._dragEnterCounts = {};
     this._activeTargets = {};
+    this._lastId = 0;
 
     this._events = new EventGroup(this);
     // clear drag data when mouse up, use capture event to ensure it will be run
@@ -47,68 +50,130 @@ export class DragDropHelper implements IDragDropHelper {
     this._events.dispose();
   }
 
-  public subscribe(root: HTMLElement, events: EventGroup, dragDropOptions: IDragDropOptions) {
+  public subscribe(root: HTMLElement, events: EventGroup, dragDropOptions: IDragDropOptions): {
+    dispose(): void;
+  } {
+    const key = `${++this._lastId}`;
+
+    const handlers: {
+      callback: (context: IDragDropContext, event?: any) => void;
+      eventName: string;
+    }[] = [];
+
+    let onDragLeave: (event: DragEvent) => void;
+    let onDragEnter: (event: DragEvent) => void;
+    let onDragEnd: (event: DragEvent) => void;
+    let onDrop: (event: DragEvent) => void;
+    let onMouseDown: (event: MouseEvent) => void;
+
+    let isDraggable: boolean;
+    let isDroppable: boolean;
+
     if (dragDropOptions && root) {
-      let { key, eventMap, context, updateDropState } = dragDropOptions;
-      let dragDropTarget = { root: root, options: dragDropOptions };
-      let isDraggable = this._isDraggable(dragDropTarget);
-      let isDroppable = this._isDroppable(dragDropTarget);
+      const {
+        eventMap,
+        context,
+        updateDropState
+      } = dragDropOptions;
+
+      const dragDropTarget: IDragDropTarget = {
+        root: root,
+        options: dragDropOptions,
+        key: key
+      };
+
+      isDraggable = this._isDraggable(dragDropTarget);
+      isDroppable = this._isDroppable(dragDropTarget);
 
       if (isDraggable || isDroppable) {
         this._activeTargets[key] = dragDropTarget;
 
         if (eventMap) {
-          for (let event of eventMap) {
-            this._events.on(root, event.eventName, event.callback.bind(null, context));
+          for (const event of eventMap) {
+            const handler = {
+              callback: event.callback.bind(null, context),
+              eventName: event.eventName
+            };
+
+            handlers.push(handler);
+
+            this._events.on(root, handler.eventName, handler.callback);
           }
         }
       }
 
       if (isDroppable) {
+        onDragLeave = (event: DragEvent) => {
+          if (!(event as IDragDropEvent).isHandled) {
+            (event as IDragDropEvent).isHandled = true;
+            this._dragEnterCounts[key]--;
+            if (this._dragEnterCounts[key] === 0) {
+              updateDropState(false /* isDropping */, event);
+            }
+          }
+        };
+
+        onDragEnter = (event: DragEvent) => {
+          event.preventDefault(); // needed for IE
+          if (!(event as IDragDropEvent).isHandled) {
+            (event as IDragDropEvent).isHandled = true;
+            this._dragEnterCounts[key]++;
+            if (this._dragEnterCounts[key] === 1) {
+              updateDropState(true /* isDropping */, event);
+            }
+          }
+        };
+
+        onDragEnd = (event: DragEvent) => {
+          this._dragEnterCounts[key] = 0;
+          updateDropState(false /* isDropping */, event);
+        };
+
+        onDrop = (event: DragEvent) => {
+          this._dragEnterCounts[key] = 0;
+          updateDropState(false /* isDropping */, event);
+        };
+
         this._dragEnterCounts[key] = 0;
+
         // dragenter and dragleave will be fired when hover to the child element
         // but we only want to change state when enter or leave the current element
         // use the count to ensure it.
-        events.onAll(root, {
-          'dragenter': (event: DragEvent) => {
-            event.preventDefault(); // needed for IE
-            if (!(event as IDragDropEvent).isHandled) {
-              (event as IDragDropEvent).isHandled = true;
-              this._dragEnterCounts[key]++;
-              if (this._dragEnterCounts[key] === 1) {
-                updateDropState(true /* isDropping */, event);
-              }
-            }
-          },
-          'dragleave': (event: DragEvent) => {
-            if (!(event as IDragDropEvent).isHandled) {
-              (event as IDragDropEvent).isHandled = true;
-              this._dragEnterCounts[key]--;
-              if (this._dragEnterCounts[key] === 0) {
-                updateDropState(false /* isDropping */, event);
-              }
-            }
-          },
-          'dragend': (event: DragEvent) => {
-            this._dragEnterCounts[key] = 0;
-            updateDropState(false /* isDropping */, event);
-          },
-          'drop': (event: DragEvent) => {
-            this._dragEnterCounts[key] = 0;
-            updateDropState(false /* isDropping */, event);
-          }
-        });
+        events.on(root, 'dragenter', onDragEnter);
+        events.on(root, 'dragleave', onDragLeave);
+        events.on(root, 'dragend', onDragEnd);
+        events.on(root, 'drop', onDrop);
       }
 
       if (isDraggable) {
-        events.on(root, 'mousedown', this._onMouseDown.bind(this, dragDropTarget));
+        onMouseDown = this._onMouseDown.bind(this, dragDropTarget);
+
+        events.on(root, 'mousedown', onMouseDown);
       }
     }
-  }
 
-  public unsubscribe(root: HTMLElement, key: string) {
-    delete this._activeTargets[key];
-    this._events.off(root);
+    return {
+      dispose: () => {
+        delete this._activeTargets[key];
+
+        if (root) {
+          for (const handler of handlers) {
+            this._events.off(root, handler.eventName, handler.callback);
+          }
+
+          if (isDroppable) {
+            events.off(root, 'dragenter', onDragEnter);
+            events.off(root, 'dragleave', onDragLeave);
+            events.off(root, 'dragend', onDragEnd);
+            events.off(root, 'drop', onDrop);
+          }
+
+          if (isDraggable) {
+            events.off(root, 'mousedown', onMouseDown);
+          }
+        }
+      }
+    };
   }
 
   /**
@@ -162,7 +227,7 @@ export class DragDropHelper implements IDragDropHelper {
       return;
     }
 
-    let { root, options } = target;
+    let { root, options, key } = target;
     if (this._isDragging) {
       if (this._isDroppable(target)) {
         // we can have nested drop targets in the DOM, like a folder inside a group. In that case, when we drag into
@@ -170,7 +235,7 @@ export class DragDropHelper implements IDragDropHelper {
         // outer target too, and we need to prevent the outer one from taking over.
         // So, check if the last dropTarget is not a child of the current.
         if (this._dragData.dropTarget &&
-          this._dragData.dropTarget.options.key !== options.key &&
+          this._dragData.dropTarget.key !== key &&
           !this._isChild(root, this._dragData.dropTarget.root)) {
           EventGroup.raise(this._dragData.dropTarget.root, 'dragleave');
           this._dragData.dropTarget = null;
@@ -203,7 +268,7 @@ export class DragDropHelper implements IDragDropHelper {
    */
   private _onMouseLeave(target: IDragDropTarget, event: MouseEvent) {
     if (this._isDragging) {
-      if (this._dragData && this._dragData.dropTarget && this._dragData.dropTarget.options.key === target.options.key) {
+      if (this._dragData && this._dragData.dropTarget && this._dragData.dropTarget.key === target.key) {
         EventGroup.raise(target.root, 'dragleave');
         this._dragData.dropTarget = null;
       }
