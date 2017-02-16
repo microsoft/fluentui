@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 11 Feb 2017 04:10:39 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Feb 2017 16:06:51 GMT and should not be manually modified.
+
+## 1.9.1
+Thu, 16 Feb 2017 16:06:51 GMT
+
+### Patches
+
+- DatePicker: Makes props optional, sets default props for strings
+- MessageBar: now allows dismiss action for single line messages.
+
+## 1.9.0
+Thu, 16 Feb 2017 04:04:41 GMT
+
+### Minor changes
+
+- GroupedList: Added `hasMoreData` flag to `IGroup` for rendering a plus character for groups that have indeterminate counts.
 
 ## 1.6.0
 Sat, 11 Feb 2017 04:10:39 GMT
