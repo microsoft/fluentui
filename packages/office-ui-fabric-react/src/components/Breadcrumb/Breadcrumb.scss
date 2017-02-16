@@ -12,7 +12,7 @@ $Breadcrumb-overflowButtonSize: 16px;
 $Breadcrumb-buttonHoverColor: $ms-color-themeDark;
 $Breadcrumb-itemMaxWidth: 160px;
 $Breadcrumb-itemMaxWidth-sm: 116px;
-$Breadcrumb-chevron-m: 8px;
+$Breadcrumb-chevron-sm: 8px;
 
 :global {
 
@@ -134,7 +134,7 @@ $Breadcrumb-chevron-m: 8px;
     }
 
     .ms-Breadcrumb-chevron {
-      font-size: $Breadcrumb-chevron-m;
+      font-size: $Breadcrumb-chevron-sm;
       margin: 5px 4px;
       margin: 7px 0;
     }
