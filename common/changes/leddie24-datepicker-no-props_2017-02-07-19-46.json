@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "DatePicker: Makes props optional, sets default props for strings",
+      "type": "patch"
+    }
+  ],
+  "email": "v-edwliu@microsoft.com"
+}
