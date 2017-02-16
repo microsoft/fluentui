@@ -16,6 +16,8 @@ import './Dropdown.scss';
 export interface IDropdownState {
   isOpen?: boolean;
   selectedIndex?: number;
+  scrollbarOffset?: number;
+  calloutMaxHeight?: number;
 }
 
 export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
@@ -49,7 +51,9 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
 
     this.state = {
       isOpen: false,
-      selectedIndex: this._getSelectedIndex(props.options, selectedKey)
+      selectedIndex: this._getSelectedIndex(props.options, selectedKey),
+      scrollbarOffset: 0,
+      calloutMaxHeight: null
     };
   }
 
@@ -62,13 +66,12 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
         selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey)
       });
     }
-
   }
 
   public render() {
     let id = this._id;
     let { className, label, options, disabled, isDisabled, ariaLabel, onRenderItem = this._onRenderItem, onRenderOption = this._onRenderOption } = this.props;
-    let { isOpen, selectedIndex } = this.state;
+    let { isOpen, selectedIndex, scrollbarOffset, calloutMaxHeight } = this.state;
     let selectedOption = options[selectedIndex];
 
     // Remove this deprecation workaround at 1.0.0
@@ -118,6 +121,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
             directionalHint={ DirectionalHint.bottomLeftEdge }
             onDismiss={ this._onDismiss }
             onPositioned={ this._onPositioned }
+            maxHeight={ calloutMaxHeight }
           >
             <FocusZone
               ref={ this._resolveRef('_focusZone') }
@@ -126,7 +130,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
             >
               <ul ref={ (c: HTMLElement) => this._optionList = c }
                 id={ id + '-list' }
-                style={ { width: this._dropDown.clientWidth - 2 } }
+                style={ { width: this._dropDown.clientWidth - 2 - scrollbarOffset } }
                 className='ms-Dropdown-items'
                 role='listbox'
                 aria-labelledby={ id + '-label' }>
@@ -178,6 +182,50 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
     }
   }
 
+  protected _setMaxCalloutComponentHeight() {
+    let {calloutMaxHeight} = this.state;
+    if (this.props.pageSize && this.props.pageSize > 0) {
+      let totalItemCount = this._optionList.children.length;
+      let { selectedIndex } = this.state;
+
+      if (selectedIndex + this.props.pageSize > totalItemCount) {
+        selectedIndex = totalItemCount - this.props.pageSize;
+      }
+
+      if (selectedIndex < 0) {
+        selectedIndex = 0;
+      }
+
+      let maxHeight = null;
+      for (let i = selectedIndex; i < this.props.pageSize + selectedIndex; i++) {
+        let liItem = this.refs[Dropdown.Option + i] as HTMLLIElement;
+        if (liItem) {
+          maxHeight += liItem.offsetHeight;
+        }
+      }
+
+      if (maxHeight !== calloutMaxHeight) {
+        this.setState({ calloutMaxHeight: maxHeight });
+      }
+    }
+  }
+
+
+  protected _setCalloutWidth(hostElement?: HTMLDivElement) {
+    if (this.props.pageSize && this.props.pageSize > 0) {
+      let totalItemCount = this._optionList.children.length;
+      if (this.props.pageSize < totalItemCount) {
+        var mainPanel = hostElement.querySelector('.ms-Callout-main') as HTMLDivElement;
+        if (mainPanel) {
+          if (mainPanel.offsetWidth > this._dropDown.clientWidth) {
+            let offset = mainPanel.offsetWidth - this._dropDown.clientWidth + 2;
+            this.setState({ scrollbarOffset: offset });
+          }
+        }
+      }
+    }
+  }
+
   @autobind
   private _onRenderItem(item: IDropdownOption): JSX.Element {
     return <span>{ item.text }</span>;
@@ -189,7 +237,9 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
   }
 
   @autobind
-  private _onPositioned() {
+  private _onPositioned(hostElement?: HTMLDivElement) {
+    this._setMaxCalloutComponentHeight();
+    this._setCalloutWidth(hostElement);
     this._focusZone.focus();
   }
 

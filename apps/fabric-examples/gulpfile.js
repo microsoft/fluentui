@@ -20,6 +20,7 @@ build.typescript.setConfig({ typescript: require('typescript') });
 // Disable karma unit tests.
 build.karma.isEnabled = () => false;
 
+
 let packageFolder = buildConfig.packageFolder || '';
 let distFolder = buildConfig.distFolder;
 
@@ -187,11 +188,6 @@ let customWatch = build.subTask('customWatch', (gulp, options, done) => {
         // After build is complete, trigger reload.
         build.reload.execute(build.getConfig());
 
-        if (buildEnqueued) {
-          startRun();
-        }
-      }).catch(() => {
-        isBuilding = false;
         if (buildEnqueued) {
           startRun();
         }

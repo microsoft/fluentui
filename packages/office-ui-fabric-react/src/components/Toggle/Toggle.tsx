@@ -6,7 +6,7 @@ import {
 } from '../../Utilities';
 import { IToggleProps } from './Toggle.Props';
 import { Label } from '../../Label';
-import styles from './Toggle.scss';
+import './Toggle.scss';
 
 export interface IToggleState {
   isChecked: boolean;
@@ -55,38 +55,34 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
 
     return (
       <div className={
-        css(styles.root, 'ms-Toggle', className, {
+        css('ms-Toggle', className, {
           'is-checked': isChecked,
           'is-enabled': !disabled,
-          'is-disabled': disabled,
-          [styles.isChecked]: isChecked,
-          [styles.isEnabled]: !disabled,
-          [styles.isDisabled]: disabled,
-
+          'is-disabled': disabled
         })
       }>
-        <div className={ css(styles.innerContainer, 'ms-Toggle-innerContainer') }>
+        <div className='ms-Toggle-innerContainer'>
           { label && (
             <Label className='ms-Toggle-label' htmlFor={ this._id }>{ label }</Label>
           ) }
-          <div className={ css(styles.slider, 'ms-Toggle-slider') }>
+          <div className='ms-Toggle-slider'>
             <button
               ref={ (c): HTMLButtonElement => this._toggleButton = c }
               type='button'
               id={ this._id }
               name={ this._id }
-              className={ css(styles.button, 'ms-Toggle-button') }
+              className='ms-Toggle-button'
               disabled={ disabled }
               role='checkbox'
               aria-checked={ isChecked }
               onClick={ this._onClick }
-            />
-            <div className={ css(styles.background, 'ms-Toggle-background') }>
-              <div className={ css(styles.focus, 'ms-Toggle-focus') } />
-              <div className={ css(styles.thumb, 'ms-Toggle-thumb') } />
+              />
+            <div className='ms-Toggle-background'>
+              <div className='ms-Toggle-focus' />
+              <div className='ms-Toggle-thumb' />
             </div>
             { stateText && (
-              <Label className={ css(styles.stateText, 'ms-Toggle-stateText' )}>{ stateText }</Label>
+              <Label className='ms-Toggle-stateText'>{ stateText }</Label>
             ) }
           </div>
 

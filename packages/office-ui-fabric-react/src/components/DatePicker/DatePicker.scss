@@ -15,32 +15,30 @@
   @include right(9px);
 }
 
-:global {
-  .ms-DatePicker {
-    @include ms-u-normalize;
-    margin-bottom: 17px;
+.ms-DatePicker {
+  @include ms-u-normalize;
+  margin-bottom: 17px;
 
-    .ms-TextField {
-      position: relative;
+  .ms-TextField {
+    position: relative;
 
-      input::-ms-clear {
-        display: none;
-      }
+    input::-ms-clear {
+      display: none;
+    }
 
-      input[readonly] {
-        cursor: pointer;
-      }
+    input[readonly] {
+      cursor: pointer;
     }
   }
+}
 
-  // Insert a calendar icon over the date field.
-  .ms-DatePicker-event--with-label {
-    @include ms-DatePicker-event();
-    top: 35px;
-  }
+// Insert a calendar icon over the date field.
+.ms-DatePicker-event--with-label {
+  @include ms-DatePicker-event();
+  top: 35px;
+}
 
-  .ms-DatePicker-event--without-label {
-    @include ms-DatePicker-event();
-    top: 7px;
-  }
+.ms-DatePicker-event--without-label {
+  @include ms-DatePicker-event();
+  top: 7px;
 }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Dialog } from './Dialog';
-import { IButtonProps } from '../Button/Button.Props';
+import { IButtonProps } from '../Button';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 

@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@microsoft/web-library-build": ">=1.0.0 <2.0.0",
+    "@microsoft/load-themed-styles": ">=1.2.2 <2.0.0",
     "@types/chai": "^3.4.34",
     "@types/es6-promise": "0.0.32",
     "@types/immutability-helper": "^2.0.15",
@@ -13,7 +14,6 @@
     "@types/react-addons-test-utils": "^0.14.15",
     "@types/react-dom": "^0.14.18",
     "@types/webpack-env": "^1.13.0",
-    "@microsoft/load-themed-styles": ">=1.2.2 <2.0.0",
     "es6-promise": ">=3.2.1 <4.0.0",
     "immutability-helper": "^2.0.0",
     "office-ui-fabric-core": ">=5.0.1 <6.0.0",
@@ -22,6 +22,6 @@
     "typescript": "^2.0.6"
   },
   "rushDependencies": {
-    "office-ui-fabric-react": ">=1.6.0 <2.0.0"
+    "office-ui-fabric-react": ">=1.5.3 <2.0.0"
   }
 }

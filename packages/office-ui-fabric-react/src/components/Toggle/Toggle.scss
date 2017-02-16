@@ -18,7 +18,7 @@
 }
 
 // Toggle
-.root {
+.ms-Toggle {
   @include ms-baseFont;
   @include ms-font-m;
   @include ms-u-normalize;
@@ -28,103 +28,102 @@
   display: block;
   margin-bottom: 8px;
   user-select: none;
-}
 
-// Interactive overrides
-.isEnabled {
+  // Interactive overrides
+  &.is-enabled {
 
-  .button {
-    cursor: pointer;
-  }
-
-  .background {
-    border: 1px solid $ms-color-neutralSecondaryAlt;
-  }
-
-  .thumb {
-    @include highContrast-bgColor($ms-color-white, $ms-color-black);
-  }
-
-  .slider:hover {
-    .background {
-      border: 1px solid $ms-color-black;
+    .ms-Toggle-button {
+      cursor: pointer;
     }
 
-    .thumb {
-      background: $ms-color-black;
+    .ms-Toggle-background {
+      border: 1px solid $ms-color-neutralSecondaryAlt;
     }
-  }
 
-  &.isChecked {
-    .background {
-      background: $ms-color-themePrimary;
-      border: 1px solid $ms-color-themePrimary;
+    .ms-Toggle-thumb {
       @include highContrast-bgColor($ms-color-white, $ms-color-black);
     }
 
-    .thumb {
-      background: $ms-color-white;
-      @include left(28px);
-      @include highContrast-bgColor($ms-color-black, $ms-color-white);
+    .ms-Toggle-slider:hover {
+      .ms-Toggle-background {
+        border: 1px solid $ms-color-black;
+      }
+
+      .ms-Toggle-thumb {
+        background: $ms-color-black;
+      }
     }
 
-    .slider:hover {
-      .background {
+    &.is-checked {
+      .ms-Toggle-background {
+        background: $ms-color-themePrimary;
         border: 1px solid $ms-color-themePrimary;
-        background: $ms-color-themeSecondary;
+        @include highContrast-bgColor($ms-color-white, $ms-color-black);
       }
-      .thumb {
+
+      .ms-Toggle-thumb {
         background: $ms-color-white;
+        @include left(28px);
+        @include highContrast-bgColor($ms-color-black, $ms-color-white);
+      }
+
+      .ms-Toggle-slider:hover {
+        .ms-Toggle-background {
+          border: 1px solid $ms-color-themePrimary;
+          background: $ms-color-themeSecondary;
+        }
+        .ms-Toggle-thumb {
+          background: $ms-color-white;
+        }
       }
     }
+
   }
 
-}
-
-// Disabled overrides
-.isDisabled {
-  .thumb {
-    background: $ms-color-neutralTertiaryAlt;
-    @include highContrast-bgColor($ms-color-contrastBlackDisabled, $ms-color-contrastWhiteDisabled);
-  }
-
-  .background {
-    border: 1px solid $ms-color-neutralTertiaryAlt;
-
-    @media screen and (-ms-high-contrast: active) {
-      border-color: $ms-color-contrastBlackDisabled;
-    }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-      border-color: $ms-color-contrastWhiteDisabled;
-    }
-  }
-
-  &.isChecked {
-    .background {
+  // Disabled overrides
+  &.is-disabled {
+    .ms-Toggle-thumb {
       background: $ms-color-neutralTertiaryAlt;
-      border: 1px solid transparent;
       @include highContrast-bgColor($ms-color-contrastBlackDisabled, $ms-color-contrastWhiteDisabled);
     }
 
-    .thumb {
-      background: $ms-color-neutralLight;
-      @include left(28px);
-      @include highContrast-bgColor($ms-color-black, $ms-color-white);
+    .ms-Toggle-background {
+      border: 1px solid $ms-color-neutralTertiaryAlt;
+
+      @media screen and (-ms-high-contrast: active) {
+        border-color: $ms-color-contrastBlackDisabled;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        border-color: $ms-color-contrastWhiteDisabled;
+      }
+    }
+
+    &.is-checked {
+      .ms-Toggle-background {
+        background: $ms-color-neutralTertiaryAlt;
+        border: 1px solid transparent;
+        @include highContrast-bgColor($ms-color-contrastBlackDisabled, $ms-color-contrastWhiteDisabled);
+      }
+
+      .ms-Toggle-thumb {
+        background: $ms-color-neutralLight;
+        @include left(28px);
+        @include highContrast-bgColor($ms-color-black, $ms-color-white);
+      }
     }
   }
 }
 
-
-.innerContainer {
+.ms-Toggle-innerContainer {
   display: inline-block;
 }
 
-:global(.ms-Fabric.is-focusVisible) .root.isEnabled .button:focus + .background .focus {
+.ms-Fabric.is-focusVisible .ms-Toggle.is-enabled  .ms-Toggle-button:focus + .ms-Toggle-background .ms-Toggle-focus {
   border: 1px solid $focusedBorderColor;
 }
 
-.button {
+.ms-Toggle-button {
   position: absolute;
   opacity: 0;
   left: 0;
@@ -135,12 +134,12 @@
   padding: 0;
 }
 
-.slider {
+.ms-Toggle-slider {
   position: relative;
   min-height: 20px;
 }
 
-.background {
+.ms-Toggle-background {
   display: inline-block;
   position: absolute;
   width: 44px;
@@ -153,7 +152,7 @@
   pointer-events: none;
 }
 
-.thumb {
+.ms-Toggle-thumb {
   position: absolute;
   width: 10px;
   height: 10px;
@@ -164,7 +163,7 @@
   transition: all 0.1s ease;
 }
 
-.stateText {
+.ms-Toggle-stateText.ms-Label {
   display: inline-block;
   vertical-align: top;
   line-height: 20px;
@@ -172,7 +171,7 @@
   padding: 0;
 }
 
-.focus {
+.ms-Toggle-focus {
   position: absolute;
   left: -3px;
   top: -3px;

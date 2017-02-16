@@ -1,37 +1,35 @@
 @import '../../common/common';
 
-:global {
-  .ms-DetailsList {
-    position: relative;
-    font-size: $ms-font-size-s;
+.ms-DetailsList {
+  position: relative;
+  font-size: $ms-font-size-s;
 
-    BUTTON {
-      font-family: inherit;
-      background-color: transparent;
-    }
-
-    > .ms-FocusZone {
-      display: inline-block;
-      vertical-align: top;
-      min-width: 1px;
-      min-height: 1px;
-    }
-
+  BUTTON {
+    font-family: inherit;
+    background-color: transparent;
   }
 
-  .ms-DetailsList.is-horizontalConstrained {
-    overflow-x: auto;
-    overflow-y: visible;
-
-    -webkit-overflow-scrolling: touch;
+  > .ms-FocusZone {
+    display: inline-block;
+    vertical-align: top;
+    min-width: 1px;
+    min-height: 1px;
   }
 
-  .ms-DetailsList-cell {
-      word-break: break-word;
-  }
+}
 
-  /* Set the min height for a row to 38px so even rendering empty cells takes that space. */
-  .ms-DetailsList .ms-List-cell {
-    min-height: 38px;
-  }
+.ms-DetailsList.is-horizontalConstrained {
+  overflow-x: auto;
+  overflow-y: visible;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+.ms-DetailsList-cell {
+    word-break: break-word;
+}
+
+/* Set the min height for a row to 38px so even rendering empty cells takes that space. */
+.ms-DetailsList .ms-List-cell {
+  min-height: 38px;
 }

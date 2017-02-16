@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { css, divProperties, getNativeProps } from '../../Utilities';
 import { ILabelProps } from './Label.Props';
-import styles from './Label.scss';
+import './Label.scss';
 
 export class Label extends React.Component<ILabelProps, any> {
   public render() {
@@ -10,11 +10,9 @@ export class Label extends React.Component<ILabelProps, any> {
     return (
       <label
         { ...getNativeProps(this.props, divProperties) }
-        className={ css(styles.root, 'ms-Label', className, {
+        className={ css('ms-Label', className, {
           'is-disabled': disabled,
-          'is-required': required,
-          [styles.isDisabled]: disabled,
-          [styles.isRequired]: required
+          'is-required': required
         }) }>
         { children }
       </label>
