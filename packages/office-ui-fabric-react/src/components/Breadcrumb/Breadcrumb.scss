@@ -12,6 +12,7 @@ $Breadcrumb-overflowButtonSize: 16px;
 $Breadcrumb-buttonHoverColor: $ms-color-themeDark;
 $Breadcrumb-itemMaxWidth: 160px;
 $Breadcrumb-itemMaxWidth-sm: 116px;
+$Breadcrumb-chevron-m: 8px;
 
 :global {
 
@@ -30,7 +31,7 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
     font-size: $ms-font-size-s;
     color: $ms-color-neutralSecondary;
     vertical-align: top;
-    margin: 11px 7px;
+    margin: 11px 0px;
     line-height: 1;
   }
 
@@ -71,9 +72,10 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
     font-size: $Breadcrumb-overflowButtonSize;
     display: inline-block;
     color: $Breadcrumb-overflowButtonColor;
-    padding: 8px;
+    padding: 9px 8px;
     cursor: pointer;
     vertical-align: top;
+    line-height: 1;
   }
 
   .ms-Breadcrumb-item {
@@ -115,12 +117,13 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
 
     .ms-Breadcrumb-chevron {
       font-size: $ms-font-size-mi;
-      margin: 8px 5px;
+      margin: 8px 0;
     }
 
     .ms-Breadcrumb-overflowButton {
       font-size: $ms-font-size-m-plus;
-      padding: 5px 4px;
+      padding: 6px 8px;
+      line-height: 1;
     }
   }
 
@@ -131,11 +134,13 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
     }
 
     .ms-Breadcrumb-chevron {
+      font-size: $Breadcrumb-chevron-m;
       margin: 5px 4px;
+      margin: 7px 0;
     }
 
     .ms-Breadcrumb-overflowButton {
-      padding: 2px 4px;
+      padding: 4px 6px;
     }
   }
 
