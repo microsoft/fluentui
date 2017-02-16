@@ -237,7 +237,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       } else {
         this._positionAttempts = 0;
         if (this.props.onPositioned) {
-          this.props.onPositioned();
+          this.props.onPositioned(this._hostElement);
         }
       }
     }
