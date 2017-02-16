@@ -80,6 +80,7 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
             targetElement={ this._menuButtonElement }
             isBeakVisible={ isBeakVisible }
             beakWidth={ beakWidth }
+            onDismiss={ this._onCalloutDismiss }
             directionalHint={ directionalHint }
           >
             <div className='ms-CalloutExample-header'>
@@ -98,6 +99,13 @@ export class CalloutDirectionalExample extends React.Component<any, ICalloutDire
         ) : (null) }
       </div>
     );
+  }
+
+  @autobind
+  private _onCalloutDismiss() {
+    this.setState({
+      isCalloutVisible: false
+    });
   }
 
   @autobind
