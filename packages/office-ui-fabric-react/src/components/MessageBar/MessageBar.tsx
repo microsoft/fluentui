@@ -55,20 +55,10 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
   }
 
   private _getActionsDiv(): JSX.Element {
-    if (this.props.isMultiline) {
-      if (this.props.actions) {
-        return <div className='ms-MessageBar-actions'>
-          { this.props.actions }
-        </div>;
-      }
-    }
-    else {
-      if (this.props.actions || this.props.onDismiss) {
-        return <div className='ms-MessageBar-actionsOneline'>
-          { this._getDismissDiv() }
-          { this.props.actions }
-        </div>;
-      }
+    if (this.props.actions) {
+      return <div className={ this.props.isMultiline ? 'ms-MessageBar-actions' : 'ms-MessageBar-actionsOneline' }>
+        { this.props.actions }
+      </div>;
     }
     return null;
   }
@@ -115,13 +105,13 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
         <div className='ms-MessageBar-content'>
           { this._getIconSpan() }
           <div className='ms-MessageBar-actionables'>
-            { this._getDismissDiv() }
             <div className='ms-MessageBar-text' id={ this.state.labelId }>
               <span className={ this._getInnerTextClassName() }>
                 { this.state.showContent && this.props.children }
               </span>
             </div>
             { this._getActionsDiv() }
+            { this._getDismissDiv() }
           </div>
         </div>
       </div>
@@ -143,6 +133,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
             </div>
           </div>
           { this._getActionsDiv() }
+          { this._getDismissDiv() }
         </div>
       </div>
     );
