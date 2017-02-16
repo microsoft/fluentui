@@ -1,11 +1,25 @@
+import { css } from '../../../Utilities';
 import { BaseButton } from '../BaseButton';
-import './DefaultButton.scss';
-import '../ButtonCore/ButtonCore.scss';
+import styles from './DefaultButton.scss';
 
 export class DefaultButton extends BaseButton {
-  protected _variantClassName = 'ms-Button--default';
+  protected getRootClassName() {
+    let { disabled } = this.props;
 
-  protected onRenderDescription() {
-    return null;
+    return css(
+      super.getRootClassName(),
+      'ms-Button--default',
+      styles.root,
+      {
+        [styles.isActive]: !disabled,
+        [styles.isDisabled]: disabled
+      });
   }
+
+  protected getIconClassName() { return styles.icon; }
+
+  protected getLabelClassName() { return styles.label; }
+
+  protected onRenderDescription() { return null; }
+
 }

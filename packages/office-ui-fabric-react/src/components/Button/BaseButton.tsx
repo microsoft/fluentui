@@ -9,6 +9,7 @@ import {
   anchorProperties
 } from '../../Utilities';
 import { IButtonProps, IButton } from './Button.Props';
+import styles from './BaseButton.scss';
 
 export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButton {
 
@@ -36,7 +37,7 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
   }
 
   public render(): JSX.Element {
-    const { className, description, ariaLabel, ariaDescription, href, disabled } = this.props;
+    const { description, ariaLabel, ariaDescription, href, disabled } = this.props;
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
     const renderAsAnchor: boolean = !!href;
     const tag = renderAsAnchor ? 'a' : 'button';
@@ -64,16 +65,13 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     let buttonProps = assign(
       nativeProps,
       {
-        className: css(
-          className,
-          this._baseClassName,
-          this._variantClassName,
-          { 'disabled': disabled }
-        ),
+        className: this.getRootClassName(),
         ref: this._resolveRef('_buttonElement'),
+        'disabled': disabled,
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabel ? null : _labelId,
-        'aria-describedby': ariaDescribedBy
+        'aria-describedby': ariaDescribedBy,
+        'aria-disabled': disabled
       }
     );
 
@@ -86,28 +84,52 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     }
   }
 
-  protected onRenderContent(tag, buttonProps): JSX.Element {
+  protected getRootClassName(): string {
+    return css(
+      this.props.className,
+      this._baseClassName,
+      this._variantClassName,
+      {
+        'disabled': this.props.disabled
+      }
+    );
+  }
+
+  protected getFlexContainerClassName(): string {
+    return styles.flexContainer;
+  }
+
+  protected onRenderContent(tag: any, buttonProps: IButtonProps): JSX.Element {
     return React.createElement(
       tag,
       buttonProps,
-      this.onRenderIcon(),
-      this.onRenderLabel(),
-      this.onRenderDescription(),
-      this.onRenderAriaDescription(),
-      this.onRenderChildren()
-    );
+      React.createElement('div', { className: this.getFlexContainerClassName() },
+        this.onRenderIcon(),
+        this.onRenderLabel(),
+        this.onRenderDescription(),
+        this.onRenderAriaDescription(),
+        this.onRenderChildren()
+      ));
+  }
+
+  protected getIconClassName(): string {
+    return '';
   }
 
   protected onRenderIcon() {
     let { icon } = this.props;
 
     return icon ? (
-      <span className={ `${this._baseClassName}-icon` }>
+      <span className={ css(`${this._baseClassName}-icon`, this.getIconClassName()) }>
         <i className={ `ms-Icon ms-Icon--${icon}` } />
       </span>
     ) : (
         null
       );
+  }
+
+  protected getLabelClassName(): string {
+    return '';
   }
 
   protected onRenderLabel() {
@@ -119,7 +141,7 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     }
 
     return label ? (
-      <span className={ `${this._baseClassName}-label` } id={ this._labelId } >
+      <span className={ css(`${this._baseClassName}-label`, this.getLabelClassName()) } id={ this._labelId } >
         { label }
       </span>
     ) : (null);
