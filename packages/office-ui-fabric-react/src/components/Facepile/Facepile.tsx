@@ -15,6 +15,9 @@ import {
   FocusZoneDirection
 } from '../../FocusZone';
 import {
+  BaseButton
+} from '../../Button';
+import {
   Persona,
   PersonaSize
 } from '../../Persona';
@@ -75,7 +78,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   }
 
   private _getElementWithOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
-    return <button
+    return <BaseButton
       { ...getNativeProps(persona, buttonProperties) }
       className='ms-Facepile-itemButton'
       title={ persona.personaName }
@@ -85,7 +88,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
       onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
     >
       { personaControl }
-    </button>;
+    </BaseButton>;
   }
 
   private _getElementWithoutOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
