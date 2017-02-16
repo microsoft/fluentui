@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Addition of extra small, small, and medium Spinner variants as well as normal variant deprecation",
+      "comment": "Deprecation of SpinnerType in favor of more semantic SpinnerSize. Extra small, small and medium variants added.",
       "type": "minor"
     },
     {

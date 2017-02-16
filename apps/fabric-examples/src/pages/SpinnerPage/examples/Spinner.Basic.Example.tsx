@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   Spinner,
-  SpinnerType
+  SpinnerSize
 } from 'office-ui-fabric-react/lib/Spinner';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import './Spinner.Basic.Example.scss';
@@ -11,22 +11,22 @@ export class SpinnerBasicExample extends React.Component<any, any> {
     return (
       <div className='ms-BasicSpinnersExample'>
         <Label>Extra Small Spinner</Label>
-        <Spinner type={ SpinnerType.xSmall } />
+        <Spinner size={ SpinnerSize.xSmall } />
 
         <Label>Small Spinner</Label>
-        <Spinner type={ SpinnerType.small } />
+        <Spinner size={ SpinnerSize.small } />
 
         <Label>Medium Spinner</Label>
-        <Spinner />
+        <Spinner size={ SpinnerSize.medium } />
 
         <Label>Large Spinner</Label>
-        <Spinner type={ SpinnerType.large } />
+        <Spinner size={ SpinnerSize.large } />
 
         <Label>Spinner With Label</Label>
         <Spinner label='I am definitely loading...' />
 
         <Label>Large Spinner With Label</Label>
-        <Spinner type={ SpinnerType.large } label='Seriously, still loading...' />
+        <Spinner size={ SpinnerSize.large } label='Seriously, still loading...' />
       </div>
     );
   }

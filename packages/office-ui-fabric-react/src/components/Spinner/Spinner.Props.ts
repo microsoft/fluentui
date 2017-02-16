@@ -2,11 +2,18 @@ import * as React from 'react';
 import { Spinner } from './Spinner';
 
 export interface ISpinnerProps extends React.Props<Spinner> {
+
   /**
-  * The type of Spinner to render. { extraSmall, small, medium, normal, large }
+   * @deprecated
+   * Deprecated and will be removed at >= 2.0.0. Use SpinnerSize instead.
+   */
+  type?: SpinnerType;
+
+  /**
+  * The size of Spinner to render. { extraSmall, small, medium, large }
   * @default SpinnerType.medium
   */
-  type?: SpinnerType;
+  size?: SpinnerSize;
 
   /**
   * The label to show next to the Spinner.
@@ -19,8 +26,7 @@ export interface ISpinnerProps extends React.Props<Spinner> {
   className?: string;
 }
 
-export enum SpinnerType {
-
+export enum SpinnerSize {
   /**
    * 12px Spinner diameter
    */
@@ -37,13 +43,23 @@ export enum SpinnerType {
   medium = 2,
 
   /**
-   * @deprecated
-   * Deprecated and will be removed at >= 2.0.0. Use medium instead.
-   */
-  normal = 2,
-
-  /**
    * 28px Spinner diameter
    */
   large = 3
+}
+
+/**
+ * @deprecated
+ * Deprecated and will be removed at >= 2.0.0. Use SpinnerSize instead.
+ */
+export enum SpinnerType {
+  /**
+   * Deprecated and will be removed at >= 2.0.0. Use SpinnerSize.medium instead.
+   */
+  normal = 0,
+
+  /**
+   * Deprecated and will be removed at >= 2.0.0. Use SpinnerSize.large instead.
+   */
+  large = 1
 }
