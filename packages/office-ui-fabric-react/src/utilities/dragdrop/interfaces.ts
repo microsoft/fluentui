@@ -3,8 +3,10 @@ import { EventGroup } from '../../Utilities';
 
 export interface IDragDropHelper {
   subscribe: (root: HTMLElement, events: EventGroup, options: IDragDropOptions) => {
+    key: string;
     dispose: () => void;
   };
+  unsubscribe: (root: HTMLElement, key: string) => void;
   dispose: () => void;
 }
 
@@ -30,6 +32,7 @@ export interface IDragDropTarget {
 }
 
 export interface IDragDropOptions {
+  key?: string;
   eventMap?: { eventName: string, callback: (context: IDragDropContext, event?: any) => void }[];
   selectionIndex: number;
   context: IDragDropContext;
