@@ -30,7 +30,12 @@ export class DragDropHelper implements IDragDropHelper {
     dragTarget?: IDragDropTarget;
   };
   private _selection: ISelection;
-  private _activeTargets: { [key: string]: IDragDropTarget };
+  private _activeTargets: {
+    [key: string]: {
+      target: IDragDropTarget;
+      dispose: () => void;
+    };
+  };
   private _events: EventGroup;
   private _lastId: number;
 
@@ -51,9 +56,12 @@ export class DragDropHelper implements IDragDropHelper {
   }
 
   public subscribe(root: HTMLElement, events: EventGroup, dragDropOptions: IDragDropOptions): {
+    key: string;
     dispose(): void;
   } {
-    const key = `${++this._lastId}`;
+    const {
+      key = `${++this._lastId}`
+    } = dragDropOptions;
 
     const handlers: {
       callback: (context: IDragDropContext, event?: any) => void;
@@ -68,6 +76,11 @@ export class DragDropHelper implements IDragDropHelper {
 
     let isDraggable: boolean;
     let isDroppable: boolean;
+
+    let activeTarget: {
+      target: IDragDropTarget;
+      dispose: () => void;
+    };
 
     if (dragDropOptions && root) {
       const {
@@ -86,8 +99,6 @@ export class DragDropHelper implements IDragDropHelper {
       isDroppable = this._isDroppable(dragDropTarget);
 
       if (isDraggable || isDroppable) {
-        this._activeTargets[key] = dragDropTarget;
-
         if (eventMap) {
           for (const event of eventMap) {
             const handler = {
@@ -103,6 +114,7 @@ export class DragDropHelper implements IDragDropHelper {
       }
 
       if (isDroppable) {
+        // If the target is droppable, wire up global event listeners to track drop-related events.
         onDragLeave = (event: DragEvent) => {
           if (!(event as IDragDropEvent).isHandled) {
             (event as IDragDropEvent).isHandled = true;
@@ -146,34 +158,57 @@ export class DragDropHelper implements IDragDropHelper {
       }
 
       if (isDraggable) {
+        // If the target is draggable, wire up local event listeners for mouse events.
         onMouseDown = this._onMouseDown.bind(this, dragDropTarget);
 
         events.on(root, 'mousedown', onMouseDown);
       }
+
+      activeTarget = {
+        target: dragDropTarget,
+        dispose: () => {
+          if (this._activeTargets[key] === activeTarget) {
+            delete this._activeTargets[key];
+          }
+
+          if (root) {
+            for (const handler of handlers) {
+              this._events.off(root, handler.eventName, handler.callback);
+            }
+
+            if (isDroppable) {
+              events.off(root, 'dragenter', onDragEnter);
+              events.off(root, 'dragleave', onDragLeave);
+              events.off(root, 'dragend', onDragEnd);
+              events.off(root, 'drop', onDrop);
+            }
+
+            if (isDraggable) {
+              events.off(root, 'mousedown', onMouseDown);
+            }
+          }
+        }
+      };
+
+      this._activeTargets[key] = activeTarget;
     }
 
     return {
+      key: key,
       dispose: () => {
-        delete this._activeTargets[key];
-
-        if (root) {
-          for (const handler of handlers) {
-            this._events.off(root, handler.eventName, handler.callback);
-          }
-
-          if (isDroppable) {
-            events.off(root, 'dragenter', onDragEnter);
-            events.off(root, 'dragleave', onDragLeave);
-            events.off(root, 'dragend', onDragEnd);
-            events.off(root, 'drop', onDrop);
-          }
-
-          if (isDraggable) {
-            events.off(root, 'mousedown', onMouseDown);
-          }
+        if (activeTarget) {
+          activeTarget.dispose();
         }
       }
     };
+  }
+
+  public unsubscribe(root: HTMLElement, key: string): void {
+    const activeTarget = this._activeTargets[key];
+
+    if (activeTarget) {
+      activeTarget.dispose();
+    }
   }
 
   /**
@@ -182,13 +217,12 @@ export class DragDropHelper implements IDragDropHelper {
   private _onMouseUp(event: MouseEvent) {
     this._isDragging = false;
     if (this._dragData) {
-      for (let key in this._activeTargets) {
-        if (this._activeTargets.hasOwnProperty(key)) {
-          let target = this._activeTargets[key];
-          if (target && target.root) {
-            this._events.off(target.root, 'mousemove');
-            this._events.off(target.root, 'mouseleave');
-          }
+      for (const key of Object.keys(this._activeTargets)) {
+        const activeTarget = this._activeTargets[key];
+
+        if (activeTarget.target.root) {
+          this._events.off(activeTarget.target.root, 'mousemove');
+          this._events.off(activeTarget.target.root, 'mouseleave');
         }
       }
 
@@ -292,13 +326,11 @@ export class DragDropHelper implements IDragDropHelper {
         dragTarget: target
       };
 
-      for (let key in this._activeTargets) {
-        if (this._activeTargets.hasOwnProperty(key)) {
-          let activeTarget = this._activeTargets[key];
-          if (activeTarget && activeTarget.root) {
-            this._events.on(activeTarget.root, 'mousemove', this._onMouseMove.bind(this, activeTarget));
-            this._events.on(activeTarget.root, 'mouseleave', this._onMouseLeave.bind(this, activeTarget));
-          }
+      for (const key of Object.keys(this._activeTargets)) {
+        const activeTarget = this._activeTargets[key];
+        if (activeTarget.target.root) {
+          this._events.on(activeTarget.target.root, 'mousemove', this._onMouseMove.bind(this, activeTarget.target));
+          this._events.on(activeTarget.target.root, 'mouseleave', this._onMouseLeave.bind(this, activeTarget.target));
         }
       }
     } else {
