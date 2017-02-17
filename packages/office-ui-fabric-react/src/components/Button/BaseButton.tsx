@@ -11,18 +11,26 @@ import {
 import { IButtonProps, IButton } from './Button.Props';
 import styles from './BaseButton.scss';
 
+export interface IBaseButtonClassNames {
+  base: string;
+  variant: string;
+  isDisabled: string;
+  isEnabled: string;
+  description?: string;
+  flexContainer?: string;
+  icon?: string;
+  label?: string;
+  root?: string;
+};
+
 export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButton {
 
-  /**
-   * _baseClassName can be overridden by subclasses to provide a unique class prefix to the class name used for
-   * sub parts of the render template.
-   */
-  protected _baseClassName = 'ms-Button';
-
-  /**
-   * _variantClassName can be overridden by subclasses to add an extra default class name to the root element.
-   */
-  protected _variantClassName = '';
+  protected classNames: IBaseButtonClassNames = {
+    base: 'ms-Button',
+    variant: '',
+    isEnabled: '',
+    isDisabled: ''
+  };
 
   private _buttonElement: HTMLButtonElement;
   private _labelId: string;
@@ -65,7 +73,16 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     let buttonProps = assign(
       nativeProps,
       {
-        className: this.getRootClassName(),
+        className: css(
+          this.props.className,
+          this.classNames.base,
+          this.classNames.variant,
+          this.classNames.root,
+          {
+            'disabled': disabled,
+            [this.classNames.isDisabled]: disabled,
+            [this.classNames.isEnabled]: !disabled
+          }),
         ref: this._resolveRef('_buttonElement'),
         'disabled': disabled,
         'aria-label': ariaLabel,
@@ -84,26 +101,11 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     }
   }
 
-  protected getRootClassName(): string {
-    return css(
-      this.props.className,
-      this._baseClassName,
-      this._variantClassName,
-      {
-        'disabled': this.props.disabled
-      }
-    );
-  }
-
-  protected getFlexContainerClassName(): string {
-    return styles.flexContainer;
-  }
-
   protected onRenderContent(tag: any, buttonProps: IButtonProps): JSX.Element {
     return React.createElement(
       tag,
       buttonProps,
-      React.createElement('div', { className: this.getFlexContainerClassName() },
+      React.createElement('div', { className: css(styles.flexContainer, this.classNames.flexContainer) },
         this.onRenderIcon(),
         this.onRenderLabel(),
         this.onRenderDescription(),
@@ -112,24 +114,16 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
       ));
   }
 
-  protected getIconClassName(): string {
-    return '';
-  }
-
   protected onRenderIcon() {
     let { icon } = this.props;
 
     return icon ? (
-      <span className={ css(`${this._baseClassName}-icon`, this.getIconClassName()) }>
+      <span className={ css(`${this.classNames.base}-icon`, this.classNames.icon) }>
         <i className={ `ms-Icon ms-Icon--${icon}` } />
       </span>
     ) : (
         null
       );
-  }
-
-  protected getLabelClassName(): string {
-    return '';
   }
 
   protected onRenderLabel() {
@@ -141,7 +135,7 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     }
 
     return label ? (
-      <span className={ css(`${this._baseClassName}-label`, this.getLabelClassName()) } id={ this._labelId } >
+      <span className={ css(`${this.classNames.base}-label`, this.classNames.label) } id={ this._labelId } >
         { label }
       </span>
     ) : (null);
@@ -166,7 +160,12 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     // ms-Button-description is only shown when the button type is compound.
     // In other cases it will not be displayed.
     return description ? (
-      <span className={ `${this._baseClassName}-description` } id={ this._descriptionId }>{ description }</span>
+      <span
+        className={ css(`${this.classNames.base}-description`, this.classNames.description) }
+        id={ this._descriptionId }
+      >
+        { description }
+      </span>
     ) : (
         null
       );

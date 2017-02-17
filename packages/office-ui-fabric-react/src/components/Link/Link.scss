@@ -11,7 +11,7 @@
 }
 
 // State: The button is not disabled.
-:not(.isDisabled) {
+.isEnabled {
   &:hover,
   &:focus {
     color: $ms-color-themeDarker;

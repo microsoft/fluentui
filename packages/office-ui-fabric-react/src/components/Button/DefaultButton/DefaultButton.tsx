@@ -3,23 +3,15 @@ import { BaseButton } from '../BaseButton';
 import styles from './DefaultButton.scss';
 
 export class DefaultButton extends BaseButton {
-  protected getRootClassName() {
-    let { disabled } = this.props;
-
-    return css(
-      super.getRootClassName(),
-      'ms-Button--default',
-      styles.root,
-      {
-        [styles.isActive]: !disabled,
-        [styles.isDisabled]: disabled
-      });
-  }
-
-  protected getIconClassName() { return styles.icon; }
-
-  protected getLabelClassName() { return styles.label; }
+  protected classNames = {
+    base: 'ms-Button',
+    variant: 'ms-Button--default',
+    icon: styles.icon,
+    isDisabled: styles.isDisabled,
+    isEnabled: styles.isEnabled,
+    label: styles.label,
+    root: styles.root
+  };
 
   protected onRenderDescription() { return null; }
-
 }

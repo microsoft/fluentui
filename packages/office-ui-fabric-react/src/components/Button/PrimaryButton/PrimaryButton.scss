@@ -1,13 +1,12 @@
-@import '../../../common/common';
-@import '../ButtonCore/ButtonCore';
-@import '../ButtonCore/ButtonCoreVars';
-
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
-
 //
 // Office UI Fabric
 // --------------------------------------------------
 // Default Button styles
+
+@import '../../../common/common';
+@import '../ButtonCore/ButtonCore';
+@import '../ButtonCore/ButtonCoreVars';
 
 .root {
   @include button-core-root-styles;
@@ -31,7 +30,7 @@
   @include button-core-icon-styles;
 }
 
-.isActive {
+.isEnabled {
 
   &:hover {
     background-color: $ms-color-themeDark;
@@ -45,14 +44,4 @@
 
 .isDisabled {
   @include button-core-disabled;
-}
-
-.ms-Fabric.is-focusVisible .ms-Button--primary {
-  &:focus {
-    color: $ms-color-white;
-
-    &:before {
-      border-color: $ms-color-themeLighter;
-    }
-  }
 }
