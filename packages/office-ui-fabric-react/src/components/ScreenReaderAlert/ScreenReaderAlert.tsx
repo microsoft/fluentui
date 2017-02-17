@@ -44,13 +44,22 @@ export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, 
    */
   private _renderIndex: number = 0;
 
+  /**
+   * The non-empty string which represents the latest string readout by ATs.
+   *
+   * The reason of having this variable is that we have a 500ms timeout to clear the text in the live region.
+   * We shouldn't let ATs read the same string if the indicator is not changed. Use this to let React render
+   * the live region only when text passed from props is changed or the indicator is changed.
+   */
+  private _previousValidString: string = '';
+
   private _clearTextTimeout: number;
 
   constructor(props: IScreenReaderAlertProps) {
     super(props);
 
     this.state = {
-      alertText: ''
+      alertText: this._getTextContentFromReactChild(React.Children.toArray(props.children))
     };
   }
 
@@ -67,18 +76,20 @@ export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, 
   }
 
   public shouldComponentUpdate(nextProps: IScreenReaderAlertProps, nextState: IScreenReaderAlertState): boolean {
-    return (this.props.indicator !== nextProps.indicator || this.state.alertText !== nextState.alertText);
+    // When indicator not changed, do NOT need to render if the string read out by ATs is same as the previous valid one (not empty).
+    const isValidStringChanged: boolean = nextState.alertText !== this._previousValidString;
+
+    return (this.props.indicator !== nextProps.indicator || isValidStringChanged);
   }
 
   public componentDidUpdate(nextProps: IScreenReaderAlertProps): void {
-    // Set a timeout to remove the text to avoid the text persisting in the DOM which can be confusing.
-    // It will be cleared if props updating is occured before the text being cleared.
-    this._clearTextTimeout = window.setTimeout(() => {
-      this.setState({
-        alertText: ''
-      });
-      this._clearTextTimeout = undefined;
-    }, 500);
+    this._clearTextByTimeout();
+    this._updateValidString();
+  }
+
+  public componentDidMount(): void {
+    this._clearTextByTimeout();
+    this._updateValidString();
   }
 
   public render(): JSX.Element {
@@ -122,15 +133,28 @@ export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, 
     } else if (Array.isArray(root)) {
       root.forEach((child: React.ReactChild) => text += this._getTextContentFromReactChild(child));
     } else if (root && root.props) {
-      const children: any = root.props;
-
-      if (Array.isArray(children)) {
-        children.forEach((child: React.ReactChild) => text += this._getTextContentFromReactChild(child));
-      } else {
-        text += this._getTextContentFromReactChild(children);
-      }
+      React.Children.forEach(root.props, (child: React.ReactChild) => {
+        text += this._getTextContentFromReactChild(child);
+      });
     }
 
     return text;
+  }
+
+  private _updateValidString(): void {
+    this._previousValidString = this.state.alertText || this._previousValidString;
+  }
+
+  // Set a timeout to remove the text to avoid the text persisting in the DOM which can be confusing.
+  // It will be cleared if props updating is occured before the text being cleared.
+  private _clearTextByTimeout(): void {
+    if (this.state.alertText) {
+      this._clearTextTimeout = window.setTimeout(() => {
+        this.setState({
+          alertText: ''
+        });
+        this._clearTextTimeout = undefined;
+      }, 500);
+    }
   }
 }

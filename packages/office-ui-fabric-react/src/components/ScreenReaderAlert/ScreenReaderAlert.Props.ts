@@ -4,20 +4,20 @@ export enum ReadingMode {
   /**
    * Do not read the content at all.
    */
-  DoNotRead,
+  DoNotRead = 0,
 
   /**
    * The content in this component will read out after other reading tasks of screen reader.
    * E.g. first read the information of currently focus control, then this content.
    * NOTE: ReadingMode.ReadAfterOtherContent doesn't support ChromeVOX v53.
    */
-  ReadAfterOtherContent,
+  ReadAfterOtherContent = 1,
 
   /**
    * Read immediately after this component is triggered rendering and updated.
    * Most screen readers will announce the word 'alert' before or after the whole sentence.
    */
-  ReadImmediately,
+  ReadImmediately = 2,
 }
 
 export interface IScreenReaderAlertProps extends React.Props<HTMLElement> {
