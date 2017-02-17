@@ -1,5 +1,3 @@
-@import '../../../common/common';
-
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
 
 //
@@ -7,65 +5,41 @@
 // --------------------------------------------------
 // Command Button styles
 
+@import '../../../common/common';
+@import '../ButtonCore/ButtonCore';
+@import '../ButtonCore/ButtonCoreVars';
+
 $button-commandButtonHeight: 40px;
 
-:global {
-  
-  .ms-Button.ms-Button--command {
-    @include text-align(left);
+.root {
+  @include button-core-root-styles;
 
-    background-color: transparent;
-    border: none;
-    padding: 0 4px;
+  background-color: transparent;
+  padding: 0 4px;
+  height: $button-commandButtonHeight;
+}
 
-    .ms-Button-label,
-    .ms-Button-icon {
-      height: $button-commandButtonHeight;
-      line-height: $button-commandButtonHeight;
-    }
+.label {
+  @include button-core-label-styles;
+}
 
-    .ms-Button-label {
-      @include ms-font-m;
-      font-weight: $ms-font-weight-regular;
-      color: $ms-color-neutralPrimary;
-    }
+.icon {
+  @include button-core-icon-styles;
+}
 
-    .ms-Button-icon {
-      vertical-align: top;
-      color: $ms-color-themePrimary;
-      display: inline-block;
-      font-size: $ms-icon-size-m;
-      position: relative;
-    }
+.isEnabled {
 
-    &:hover,
-    &:focus {
-      background-color: transparent;
-
-      &,
-      .ms-Button-icon,
-      .ms-Button-label {
-        color: $ms-color-themeDarker;
-      }
-    }
-
-    &:active {
-      &,
-      .ms-Button-icon,
-      .ms-Button-label {
-        color: $ms-color-themePrimary;
-      }
-    }
-
-    &:disabled,
-    &.disabled {
-      background-color: transparent;
-
-      .ms-Button-icon,
-      .ms-Button-label {
-        color: $ms-color-neutralTertiaryAlt;
-      }
-    }
+  &:hover {
+    color: $ms-color-themeDarker;
   }
 
+  &:active {
+    color: $ms-color-themePrimary;
+  }
 }
+
+.isDisabled {
+  @include button-core-disabled;
+  background-color: transparent;
+}
+
