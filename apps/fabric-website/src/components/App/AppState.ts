@@ -58,6 +58,7 @@ import { FocusZoneUtilityPage } from '../../pages/Components/FocusZoneUtilityPag
 import { MarqueeSelectionUtilityPage } from '../../pages/Components/MarqueeSelectionUtilityPage';
 import { SelectionUtilityPage } from '../../pages/Components/SelectionUtilityPage';
 import { ThemesUtilityPage } from '../../pages/Components/ThemesUtilityPage';
+// todo themer
 
 // Interstitial pages
 import { AngularJSPage } from '../../pages/Interstitials/AngularJSPage';
@@ -341,6 +342,7 @@ export const AppState: IAppState = {
               title: 'Themes',
               url: '#/components/themes',
               component: ThemesUtilityPage
+              // todo themer
             }
           ]
         }

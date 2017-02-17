@@ -5,33 +5,19 @@ import { TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle';
 import { ColorSlider } from './ColorSlider';
 import {
+  MAX_COLOR_HUE,
+  IColor,
   getColorFromString,
   getColorFromRGBA,
   updateA,
   updateH,
   updateSV
-} from '../../utilities/Color/Colors';
-import {
-  IColor,
-  MAX_COLOR_HUE
-} from '../../utilities/Color/IColor';
+} from '../../utilities/color/Colors';
 import './ColorPicker.scss';
 
 export interface IColorPickerState {
   isOpen: boolean;
   color: IColor;
-}
-
-export interface IColor {
-  r: number;
-  g: number;
-  b: number;
-  a: number;
-  h: number;
-  s: number;
-  v: number;
-  hex: string;
-  str: string;
 }
 
 export class ColorPicker extends React.Component<IColorPickerProps, IColorPickerState> {
