@@ -7,7 +7,7 @@
 import * as React from 'react';
 
 import { IScreenReaderAlertProps, defaultScreenReaderAlertProps, ReadingMode } from './ScreenReaderAlert.Props';
-import './ScreenReaderAlert.scss';
+import styles from './ScreenReaderAlert.scss';
 
 export interface IScreenReaderAlertState {
   alertText: string;
@@ -94,7 +94,7 @@ export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, 
 
   public render(): JSX.Element {
     return (
-      <div className='screenReaderAlert' key={ this._renderIndex++ }>
+      <div className={ styles.screenReaderAlert } key={ this._renderIndex++ }>
         {
           this.props.readingMode !== ReadingMode.DoNotRead && this.state.alertText && (
             <p
