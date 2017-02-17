@@ -32,6 +32,10 @@ export interface INavPage {
    * The component to render for this page's content.
    */
   component?: any;
+  /**
+   *  Loads the component using require.ensure;
+   */
+  getComponent?: (cb: (obj: any) => void) => any;
 
   /**
    * Optional array of child pages belonging to this one.
