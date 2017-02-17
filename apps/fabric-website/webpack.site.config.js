@@ -6,7 +6,6 @@ let webpack = webpackTaskResources.webpack;
 let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 let path = require('path');
-let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 // Create an array of configs, prepopulated with a debug (non-minified) build.
 let configs = [
