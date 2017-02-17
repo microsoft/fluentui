@@ -178,15 +178,30 @@
       "from": "@types/semver@>=5.3.30 <6.0.0",
       "resolved": "https://registry.npmjs.org/@types/semver/-/semver-5.3.30.tgz"
     },
+    "@types/source-map": {
+      "version": "0.5.0",
+      "from": "@types/source-map@*",
+      "resolved": "https://registry.npmjs.org/@types/source-map/-/source-map-0.5.0.tgz"
+    },
     "@types/through2": {
       "version": "2.0.32",
       "from": "@types/through2@>=2.0.31 <3.0.0",
       "resolved": "https://registry.npmjs.org/@types/through2/-/through2-2.0.32.tgz"
     },
+    "@types/uglify-js": {
+      "version": "2.6.28",
+      "from": "@types/uglify-js@*",
+      "resolved": "https://registry.npmjs.org/@types/uglify-js/-/uglify-js-2.6.28.tgz"
+    },
     "@types/vinyl": {
       "version": "1.2.30",
       "from": "@types/vinyl@>=1.2.30 <2.0.0",
       "resolved": "https://registry.npmjs.org/@types/vinyl/-/vinyl-1.2.30.tgz"
+    },
+    "@types/webpack": {
+      "version": "1.12.36",
+      "from": "@types/webpack@>=1.12.35 <2.0.0",
+      "resolved": "https://registry.npmjs.org/@types/webpack/-/webpack-1.12.36.tgz"
     },
     "@types/webpack-env": {
       "version": "1.13.0",
@@ -4391,9 +4406,9 @@
       "resolved": "https://registry.npmjs.org/plur/-/plur-2.1.2.tgz"
     },
     "postcss": {
-      "version": "5.2.13",
+      "version": "5.2.14",
       "from": "postcss@>=5.0.21 <6.0.0",
-      "resolved": "https://registry.npmjs.org/postcss/-/postcss-5.2.13.tgz",
+      "resolved": "https://registry.npmjs.org/postcss/-/postcss-5.2.14.tgz",
       "dependencies": {
         "source-map": {
           "version": "0.5.6",

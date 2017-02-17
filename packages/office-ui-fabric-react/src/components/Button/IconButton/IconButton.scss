@@ -7,42 +7,44 @@
 // --------------------------------------------------
 // Icon Button styles
 
+:global {
 
-.ms-Button.ms-Button--icon {
-  @include focus-border(0px);
-  background-color: transparent;
-  color: $ms-color-neutralSecondary;
-  padding: 0 4px;
-  font-size: $ms-icon-size-m;
-
-  .ms-Button-label,
-  .ms-Button-icon {
-    height: $button-core-default-height;
-    line-height: $button-core-default-height;
-  }
-
-  &:hover,
-  &:active {
+  .ms-Button.ms-Button--icon {
+    @include focus-border(0px);
     background-color: transparent;
-    color: $ms-color-neutralPrimary;
+    color: $ms-color-neutralSecondary;
+    padding: 0 4px;
+    font-size: $ms-icon-size-m;
+
+    .ms-Button-label,
+    .ms-Button-icon {
+      height: $button-core-default-height;
+      line-height: $button-core-default-height;
+    }
+
+    &:hover,
+    &:active {
+      background-color: transparent;
+      color: $ms-color-neutralPrimary;
+    }
+
+    &:focus {
+      background-color: transparent;
+    }
+
+    &.disabled,
+    &:disabled {
+      color: $ms-color-neutralTertiaryAlt;
+      background-color: transparent;
+    }
+
+    @media screen and (-ms-high-contrast: active) {
+      color: $ms-color-yellowLight;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      color: $ms-color-blueMid;
+    }
   }
 
-  &:focus {
-    background-color: transparent;
-  }
-
-  &.disabled,
-  &:disabled {
-    color: $ms-color-neutralTertiaryAlt;
-    background-color: transparent;
-  }
-
-  @media screen and (-ms-high-contrast: active) {
-    color: $ms-color-yellowLight;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    color: $ms-color-blueMid;
-  }
 }
-

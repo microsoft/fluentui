@@ -26,6 +26,60 @@ export interface IDatePickerState {
   errorMessage?: string;
 }
 
+const DEFAULT_STRINGS = {
+  months: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ],
+
+  shortMonths: [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec'
+  ],
+
+  days: [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday'
+  ],
+
+  shortDays: [
+    'S',
+    'M',
+    'T',
+    'W',
+    'T',
+    'F',
+    'S'
+  ],
+
+  goToToday: 'Go to today'
+};
+
 export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState> {
   public static defaultProps: IDatePickerProps = {
     allowTextInput: false,
@@ -47,7 +101,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     firstDayOfWeek: DayOfWeek.Sunday,
     isRequired: false,
     isMonthPickerVisible: true,
-    strings: null
+    strings: DEFAULT_STRINGS
   };
 
   public refs: {

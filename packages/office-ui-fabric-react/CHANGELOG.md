@@ -1,6 +1,53 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 11 Feb 2017 04:10:39 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Feb 2017 16:06:51 GMT and should not be manually modified.
+
+## 1.9.1
+Thu, 16 Feb 2017 16:06:51 GMT
+
+### Patches
+
+- DatePicker: Makes props optional, sets default props for strings
+- MessageBar: now allows dismiss action for single line messages.
+
+## 1.9.0
+Thu, 16 Feb 2017 04:04:41 GMT
+
+### Minor changes
+
+- GroupedList: Added `hasMoreData` flag to `IGroup` for rendering a plus character for groups that have indeterminate counts.
+
+## 1.8.0
+Wed, 15 Feb 2017 18:10:58 GMT
+
+### Minor changes
+
+- In order to protect customers that bundle 2 different versions of the same component on the page, we are moving the rules defined by fabric components to CSS modules. This first change only affects the `Toggle` and `Label` components, which have been updated to scope their rules inside of hash-safe class names. No existing class names (`ms-Toggle` for example) have been removed, so any customer customizations should continue to work as expected. This means if you render an old v1 Toggle with a new v2 Toggle compoennt, their class definitions will not conflict.
+
+## 1.7.2
+Tue, 14 Feb 2017 20:57:58 GMT
+
+### Patches
+
+- Dropdown: uncontrolled dropdowns now correctly set the selected item as expected. Test coverage added.
+
+## 1.7.1
+Tue, 14 Feb 2017 04:12:27 GMT
+
+### Patches
+
+- Checkbox: reducing border width to 1px.
+
+## 1.7.0
+Mon, 13 Feb 2017 08:15:53 GMT
+
+### Minor changes
+
+- Changes to Checkbox Props and ChoiceGroup Props to support StrictNullChecks
+
+### Patches
+
+- Updating package.json dependencies to exclude typings packages.
 
 ## 1.6.0
 Sat, 11 Feb 2017 04:10:39 GMT

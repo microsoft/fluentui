@@ -27,6 +27,6 @@
     "highlight.js": "^9.9.0"
   },
   "rushDependencies": {
-    "office-ui-fabric-react": ">=1.6.0 <2.0.0"
+    "office-ui-fabric-react": ">=1.9.1 <2.0.0"
   }
 }

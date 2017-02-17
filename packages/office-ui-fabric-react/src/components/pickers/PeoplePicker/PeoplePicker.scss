@@ -1,27 +1,30 @@
 @import '../../../common/common';
 
-.ms-PickerPersona-Container {
-  display: inline-block;
-}
+:global {
 
-.ms-Picker-MenuItem.ms-result-content{
-  display: table-row;
-  .ms-result-item {
-    display: table-cell;
-    vertical-align: bottom;
+  .ms-PickerPersona-Container {
+    display: inline-block;
   }
-}
 
-.ms-PeoplePicker-Persona {
-  width: 180px;
-
-  .ms-Persona-details {
-    width: 100%;
+  .ms-Picker-MenuItem.ms-result-content{
+    display: table-row;
+    .ms-result-item {
+      display: table-cell;
+      vertical-align: bottom;
+    }
   }
-}
 
-.ms-PeoplePicker {
-  .ms-BasePicker-text {
-    min-height: 40px;
+  .ms-PeoplePicker-Persona {
+    width: 180px;
+
+    .ms-Persona-details {
+      width: 100%;
+    }
+  }
+
+  .ms-PeoplePicker {
+    .ms-BasePicker-text {
+      min-height: 40px;
+    }
   }
 }
