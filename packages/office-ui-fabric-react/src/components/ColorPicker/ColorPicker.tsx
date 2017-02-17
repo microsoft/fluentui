@@ -9,6 +9,8 @@ import { TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle';
 import { ColorSlider } from './ColorSlider';
 import {
+  MAX_COLOR_HUE,
+  IColor,
   getColorFromString,
   getColorFromRGBA,
   updateA,
@@ -24,18 +26,6 @@ import styles = require('./ColorPicker.scss');
 export interface IColorPickerState {
   isOpen: boolean;
   color: IColor;
-}
-
-export interface IColor {
-  r: number;
-  g: number;
-  b: number;
-  a: number;
-  h: number;
-  s: number;
-  v: number;
-  hex: string;
-  str: string;
 }
 
 export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerState> {
@@ -95,28 +85,6 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
             </thead>
             <tbody>
               <tr>
-<<<<<<< 10428ec4c8fbc8e9e601578b6aa2bb2e0ce0414f
-                <td>
-                  <TextField className={ css('ms-ColorPicker-input', styles.input) } value={ color.hex } />
-                </td>
-                <td style={ { width: '18%' } }>
-                  <TextField
-                    className={ css('ms-ColorPicker-input', styles.input) }
-                    value={ String(color.r) }
-                  />
-                </td>
-                <td style={ { width: '18%' } }>
-                  <TextField className={ css('ms-ColorPicker-input', styles.input) } value={ String(color.g) } />
-                </td>
-                <td style={ { width: '18%' } }>
-                  <TextField className={ css('ms-ColorPicker-input', styles.input) } value={ String(color.b) } />
-                </td>
-                { !this.props.alphaSliderHidden && (
-                  <td style={ { width: '18%' } }>
-                    <TextField className={ css('ms-ColorPicker-input', styles.input) } value={ String(color.a) } />
-                  </td>
-                ) }
-=======
                 <td><TextField className='ms-ColorPicker-input' value={ color.hex } ref={ (ref) => this.hexText = ref } onBlur={ this._onHexChanged } /></td>
                 <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' onBlur={ this._onRGBAChanged }
                   value={ String(color.r) } ref={ (ref) => this.rText = ref } /></td>
@@ -127,7 +95,6 @@ export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerSt
                 { !this.props.alphaSliderHidden && (
                   <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' onBlur={ this._onRGBAChanged }
                     value={ String(color.a) } ref={ (ref) => this.aText = ref } /></td>) }
->>>>>>> switch over to use the correct semantic slots, and many bugfixes
               </tr>
             </tbody>
           </table>

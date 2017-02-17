@@ -4,6 +4,7 @@ import { COLOR_VALUES } from './colorValues';
 export const MAX_COLOR_SATURATION = 100;
 export const MAX_COLOR_HUE = 359;
 export const MAX_COLOR_VALUE = 100;
+export const MAX_COLOR_RGBA = 255;
 
 export interface IRGB {
   r: number;
@@ -91,6 +92,19 @@ export function hsl2hsv(h: number, s: number, l: number): IHSV {
   };
 }
 
+export function hsv2hsl(h: number, s: number, v: number): { h: number, s: number, l: number } {
+  s /= MAX_COLOR_SATURATION;
+  v /= MAX_COLOR_VALUE;
+
+  let l = (2 - s) * v;
+  let sl = s * v;
+  sl /= (l <= 1) ? l : 2 - l;
+  sl = sl || 0;
+  l /= 2;
+
+  return { h: h, s: sl * 100, l: l * 100 };
+}
+
 export function hsl2rgb(h: number, s: number, l: number): IRGB {
   const hsv = hsl2hsv(h, s, l);
 
@@ -135,9 +149,9 @@ export function hsv2rgb(h: number, s: number, v: number): IRGB {
   }
 
   return {
-    r: Math.round(255 * (rgb[0] + m)),
-    g: Math.round(255 * (rgb[1] + m)),
-    b: Math.round(255 * (rgb[2] + m))
+    r: Math.round(MAX_COLOR_RGBA * (rgb[0] + m)),
+    g: Math.round(MAX_COLOR_RGBA * (rgb[1] + m)),
+    b: Math.round(MAX_COLOR_RGBA * (rgb[2] + m))
   };
 }
 
@@ -154,6 +168,24 @@ export function getColorFromString(color: string): IColor {
     r: r,
     s: s,
     str: color,
+    v: v
+  };
+}
+
+export function getColorFromRGBA(rgba: { a: number, b: number, g: number, r: number }): IColor {
+  let { a, b, g, r } = rgba;
+  let { h, s, v } = rgb2hsv(r, g, b);
+
+  let hex = rgb2hex(r, g, b);
+  return {
+    a: a,
+    b: b,
+    g: g,
+    h: h,
+    hex: hex,
+    r: r,
+    s: s,
+    str: (a === 100) ? `#${hex}` : `rgba(${r}, ${g}, ${b}, ${a / 100})`,
     v: v
   };
 }

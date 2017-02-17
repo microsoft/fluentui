@@ -1,6 +1,6 @@
-import { Shade } from '../../utilities/Color/Shades';
-import { getColorFromString } from '../../utilities/Color/Colors';
-import { mapEnumByName } from '../../utilities/object';
+import { Shade } from '../../utilities/color/Shades';
+import { getColorFromString } from '../../utilities/color/Colors';
+import { mapEnumByName } from '../../Utilities';
 
 import { IThemeSlotRule } from './IThemeSlotRule';
 
@@ -129,7 +129,7 @@ export function ThemeRulesStandardCreator() {
 
   // set default colors for the palette
   slotRules[BaseSlots[BaseSlots.primaryColor]].value = getColorFromString('#0078d7');
-  slotRules[BaseSlots[BaseSlots.backgroundColor]].value = getColorFromString('#eee'); // todo: our current library has divide-by-0 bug with #fff
+  slotRules[BaseSlots[BaseSlots.backgroundColor]].value = getColorFromString('#fff'); // todo: our current library has divide-by-0 bug with #fff
   slotRules[BaseSlots[BaseSlots.foregroundColor]].value = getColorFromString('#333');
 
   /*** SEMANTIC SLOTS */
