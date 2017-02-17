@@ -120,12 +120,12 @@ describe('ScreenReaderAlert', () => {
     expect(divElement.querySelector('p')).to.not.be.null;
     expect(divElement.textContent).to.contain('alert-message-clear-string');
 
-    // The timeout for clearing text is 500ms, set 600ms here to verify the text is removed.
+    // The timeout for clearing text is 500ms, set 1100ms here to verify the text is removed.
     setTimeout(() => {
       expect(divElement.querySelector('p')).to.be.null;
       expect(divElement.textContent).to.not.contain('alert-message-clear-string');
       done();
-    }, 600);
+    }, 1100);
   });
 
   it('should trigger re-render when indicator props is changed', () => {

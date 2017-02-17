@@ -154,7 +154,7 @@ export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, 
           alertText: ''
         });
         this._clearTextTimeout = undefined;
-      }, 500);
+      }, 1000);
     }
   }
 }
