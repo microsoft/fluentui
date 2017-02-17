@@ -1,12 +1,9 @@
 import {
   IColor,
   MAX_COLOR_RGBA
-} from './IColor';
+} from './Colors';
 import * as Colors from './Colors';
-import { assign } from '../object';
-
-let hsv2hsl = require('color-functions/lib/hsv2hsl');
-let hsl2rgb = require('color-functions/lib/hsl2rgb');
+import { assign } from '../../Utilities';
 
 // Various constants used for generating shades of a color
 const WhiteShadeTable = [0.95, 0.85, 0.75, 0.65, 0.50];
@@ -88,7 +85,7 @@ export function getShade(color: IColor, shade: Shade) {
     return color;
   }
 
-  let hsl = hsv2hsl(color.h, color.s, color.v);
+  let hsl = Colors.hsv2hsl(color.h, color.s, color.v);
   let tableIndex = shade - 1;
   if (_isWhite(color)) { // white
     hsl = _darken(hsl, WhiteShadeTable[tableIndex]);
@@ -106,7 +103,7 @@ export function getShade(color: IColor, shade: Shade) {
     }
   }
 
-  return Colors.getColorFromRGBA(assign(hsl2rgb(hsl.h, hsl.s, hsl.l), { a: color.a }));
+  return Colors.getColorFromRGBA(assign(Colors.hsl2rgb(hsl.h, hsl.s, hsl.l), { a: color.a }));
 }
 
 /* Calculates the contrast ratio between two colors. Used for verifying

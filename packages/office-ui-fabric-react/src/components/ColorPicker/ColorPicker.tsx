@@ -9,16 +9,14 @@ import { TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle';
 import { ColorSlider } from './ColorSlider';
 import {
+  MAX_COLOR_HUE,
+  IColor,
   getColorFromString,
   getColorFromRGBA,
   updateA,
   updateH,
   updateSV
-} from '../../utilities/Color/Colors';
-import {
-  IColor,
-  MAX_COLOR_HUE
-} from '../../utilities/Color/IColor';
+} from '../../utilities/color/Colors';
 import './ColorPicker.scss';
 import styles = require('./ColorPicker.scss');
 

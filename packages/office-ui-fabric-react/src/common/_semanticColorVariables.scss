@@ -50,6 +50,8 @@ $neutralBackgroundColor: "[theme:NeutralBackground, default: #767676]"; // $ms-c
 $neutralForegroundColor: "[theme:NeutralForeground, default: #a6a6a6]"; // $ms-color-neutralTertiary
 // just use normal foreground: $neutralForegroundHoverColor: "[theme:, default: #333]"; // $ms-color-black;
 
+// new semantic slots
+
 $primaryColorColor:	"[theme: primaryColor,	default: #0078d7]";
 $primaryColorLightestColor:	"[theme: primaryColorLightest,	default: #c4e4ff]";
 $primaryColorLighterColor:	"[theme: primaryColorLighter,	default: #89caff]";

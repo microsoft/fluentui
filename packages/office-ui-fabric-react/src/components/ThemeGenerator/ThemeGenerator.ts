@@ -1,7 +1,9 @@
-import { IColor } from '../../utilities/Color/IColor';
-import { getColorFromString } from '../../utilities/Color/Colors';
-import { isValidShade, getShade } from '../../utilities/Color/Shades';
-import { format } from '../../utilities/string';
+import {
+  IColor,
+  getColorFromString
+} from '../../utilities/color/Colors';
+import { isValidShade, getShade } from '../../utilities/color/Shades';
+import { format } from '../../Utilities';
 
 import { IThemeSlotRule } from './IThemeSlotRule';
 

@@ -2,24 +2,26 @@ import * as React from 'react';
 import './ThemerPage.scss';
 
 import { loadTheme } from '@microsoft/load-themed-styles';
-import { IColor } from '../../../utilities/Color/IColor';
-import { getContrastRatio } from '../../../utilities/Color/Shades';
-
-import { IThemeSlotRule } from '../../../components/ThemeGenerator/IThemeSlotRule';
-import { ThemeGenerator } from '../../../components/ThemeGenerator/ThemeGenerator';
 import {
+  IColor,
+  getContrastRatio
+} from 'office-ui-fabric-react/lib/utilities/color/index';
+
+import {
+  ThemeGenerator,
   ThemeRulesStandardCreator,
   BaseSlots,
-  SemanticColorSlots
-} from '../../../components/ThemeGenerator/ThemeRulesStandard';
+  SemanticColorSlots,
+  IThemeSlotRule
+} from 'office-ui-fabric-react/lib/ThemeGenerator';
 
-import { Callout } from '../../../index';
-import { ColorPicker } from '../../../components/ColorPicker/index';
+import { Callout } from 'office-ui-fabric-react/lib/Callout';
+import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
 
 //import { Button } from '../../../components/Button/Button';
 //import { ButtonType } from '../../../components/Button/Button.Props';
-import { Toggle } from '../../../components/Toggle/Toggle';
-import { ChoiceGroup } from '../../../components/ChoiceGroup/ChoiceGroup';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { TeachingBubbleBasicExample } from '../TeachingBubblePage/examples/TeachingBubble.Basic.Example';
 import { TextFieldBasicExample } from '../TextFieldPage/examples/TextField.Basic.Example';
 import { ToggleBasicExample } from '../TogglePage/examples/Toggle.Basic.Example';
@@ -155,11 +157,11 @@ export class ThemerPage extends React.Component<any, any> {
         { [this._semanticSlotWidget(SemanticColorSlots.errorText),
         this._semanticSlotWidget(SemanticColorSlots.bodyTextStrong)] }
 
-        { /* <div style={ { display: 'flex', flexDirection: 'row' } }>
+        { <div style={ { display: 'flex', flexDirection: 'row' } }>
           <div className='ms-themer-example'><TextFieldBasicExample /></div>
           <div className='ms-themer-example'><ToggleBasicExample /></div>
           <div className='ms-themer-example'><TeachingBubbleBasicExample /></div>
-        </div> */ }
+        </div> }
 
         <h3>Accessibility</h3>
         <p>Each pair of colors below should produce legible text and have a minimum contrast ratio of 4.5 [TBD verify formula].</p>
@@ -204,9 +206,6 @@ export class ThemerPage extends React.Component<any, any> {
 
   private _semanticSlotRuleChanged(slotRule: IThemeSlotRule, color: string) {
     let { themeRules } = this.state;
-
-    console.log("dbg: _semanticSlotRuleChanged called on " + JSON.stringify(slotRule));
-    console.log("dbg: new color is " + color);
 
     ThemeGenerator.setSlot(slotRule, color, themeRules);
     this.setState({ themeRules: themeRules }, this._makeNewTheme);
@@ -286,8 +285,11 @@ export class ThemerPage extends React.Component<any, any> {
   }
 
   private _makeNewTheme() {
-    console.log('New theme', ThemeGenerator.getThemeAsJson(this.state.themeRules));
-    loadTheme(ThemeGenerator.getThemeAsJson(this.state.themeRules));
+    let themeAsJson = ThemeGenerator.getThemeAsJson(this.state.themeRules);
+    //console.log('New theme', themeAsJson);
+    document.body.style.backgroundColor = themeAsJson.backgroundColor; // todo
+    document.body.style.color = themeAsJson.bodyText; // todo
+    loadTheme(themeAsJson);
   }
 
   private _baseColorSlotPicker(baseSlot: BaseSlots) {
