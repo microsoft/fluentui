@@ -94,7 +94,7 @@ export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, 
 
   public render(): JSX.Element {
     return (
-      <div className='ms-ScreenReaderAlert' key={ this._renderIndex++ }>
+      <div className='screenReaderAlert' key={ this._renderIndex++ }>
         {
           this.props.readingMode !== ReadingMode.DoNotRead && this.state.alertText && (
             <p
