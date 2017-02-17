@@ -304,7 +304,7 @@ export function ThemeRulesStandardCreator() {
 
   // Basics simple content slots
   _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, BaseSlots.backgroundColor, Shade.Unshaded);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyText, BaseSlots.foregroundColor, Shade.Unshaded);<<<<<<< 7bcf0024ee6711f7b03d4b6fbf6d1c35d4de3e34
+  _makeSemanticSlotRule(SemanticColorSlots.bodyText, BaseSlots.foregroundColor, Shade.Unshaded);
   _makeSemanticSlotRule(SemanticColorSlots.bodyTextAlt, BaseSlots.foregroundColor, Shade.Shade1);
   _makeSemanticSlotRule(SemanticColorSlots.bodyTextDisabled, BaseSlots.foregroundColor, Shade.Shade1);
   _makeSemanticSlotRule(SemanticColorSlots.bodyTextHover, BaseSlots.foregroundColor, Shade.Shade1);
