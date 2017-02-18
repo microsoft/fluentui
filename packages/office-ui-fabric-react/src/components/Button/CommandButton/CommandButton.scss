@@ -17,6 +17,7 @@ $button-commandButtonHeight: 40px;
   background-color: transparent;
   padding: 0 4px;
   height: $button-commandButtonHeight;
+  color: $ms-color-neutralPrimary;
 }
 
 .label {
@@ -34,6 +35,10 @@ $button-commandButtonHeight: 40px;
   }
 
   &:active {
+    color: $ms-color-themePrimary;
+  }
+
+  .icon {
     color: $ms-color-themePrimary;
   }
 }
