@@ -14,330 +14,332 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 //== Component: Choicefield group
 //
 
-.ms-ChoiceFieldGroup {
-  @include ms-baseFont;
-  margin-bottom: 4px;
+:global {
+  .ms-ChoiceFieldGroup {
+    @include ms-baseFont;
+    margin-bottom: 4px;
 
-  .ms-ChoiceFieldGroup-list {
-    padding: 0;
-    margin: 0;
+    .ms-ChoiceFieldGroup-list {
+      padding: 0;
+      margin: 0;
+    }
   }
-}
 
-.ms-ChoiceField {
-  box-sizing: border-box;
-  color: $ms-color-neutralPrimary;
-  font-family: $ms-font-family-base;
-  font-size: $ms-font-size-m;
-  font-weight: $ms-font-weight-regular;
-  min-height: 36px;
-  border: 1px solid transparent;
-  position: relative;
-  @include padding-left(8px);
-
-  .ms-Label {
+  .ms-ChoiceField {
+    box-sizing: border-box;
+    color: $ms-color-neutralPrimary;
+    font-family: $ms-font-family-base;
     font-size: $ms-font-size-m;
-    @include padding(0, 0, 0, 26px);
+    font-weight: $ms-font-weight-regular;
+    min-height: 36px;
+    border: 1px solid transparent;
+    position: relative;
+    @include padding-left(8px);
+
+    .ms-Label {
+      font-size: $ms-font-size-m;
+      @include padding(0, 0, 0, 26px);
+      display: inline-block;
+    }
+  }
+
+  // The hidden input
+  .ms-ChoiceField-input {
+    position: absolute;
+    opacity: 0;
+    top: 8px
+  }
+
+  // The choiceField container
+  .ms-ChoiceField-field::before {
+    content: '';
     display: inline-block;
-  }
-}
-
-// The hidden input
-.ms-ChoiceField-input {
-  position: absolute;
-  opacity: 0;
-  top: 8px
-}
-
-// The choiceField container
-.ms-ChoiceField-field::before {
-  content: '';
-  display: inline-block;
-  border: 2px solid $ms-color-neutralTertiary;
-  width: $ms-choiceField-field-size;
-  height: $ms-choiceField-field-size;
-  font-weight: normal;
-  position: absolute;
-  box-sizing: border-box;
-  transition-property: background, border, border-color;
-  transition-duration: $ms-choiceField-transition-duration;
-  transition-timing-function: $ms-choiceField-transition-timing;
-  border-radius: 50%;
-}
-
-// The circle
-.ms-ChoiceField-field::after {
-  content: '';
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  position: absolute;
-  top: $ms-choiceField-field-size / 2;
-  @include left($ms-choiceField-field-size / 2);
-  bottom: 0;
-  @include right(0);
-  transition-property: top, left, right, width, height;
-  transition-duration: $ms-choiceField-transition-duration-inner;
-  transition-timing-function: $ms-choiceField-transition-timing;
-  box-sizing: border-box;
-
- @media screen and (-ms-high-contrast: active) {
-    color: $ms-color-contrastBlackDisabled;
+    border: 2px solid $ms-color-neutralTertiary;
+    width: $ms-choiceField-field-size;
+    height: $ms-choiceField-field-size;
+    font-weight: normal;
+    position: absolute;
+    box-sizing: border-box;
+    transition-property: background, border, border-color;
+    transition-duration: $ms-choiceField-transition-duration;
+    transition-timing-function: $ms-choiceField-transition-timing;
+    border-radius: 50%;
   }
 
-  @media screen and (-ms-high-contrast: black-on-white) {
-    color: $ms-color-contrastWhiteDisabled;
-  }
-}
+  // The circle
+  .ms-ChoiceField-field::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    position: absolute;
+    top: $ms-choiceField-field-size / 2;
+    @include left($ms-choiceField-field-size / 2);
+    bottom: 0;
+    @include right(0);
+    transition-property: top, left, right, width, height;
+    transition-duration: $ms-choiceField-transition-duration-inner;
+    transition-timing-function: $ms-choiceField-transition-timing;
+    box-sizing: border-box;
 
-// The choiceField field
-.ms-ChoiceField-field {
-  display: inline-block;
-  cursor: pointer;
-  margin-top: 8px;
-  position: relative;
-  vertical-align: top;
-  user-select: none;
-
-  &:hover {
-    &::before {
-      border-color: $ms-color-neutralSecondaryAlt;
+    @media screen and (-ms-high-contrast: active) {
+      color: $ms-color-contrastBlackDisabled;
     }
 
-    .ms-Label {
-      color: $ms-color-black;
+    @media screen and (-ms-high-contrast: black-on-white) {
+      color: $ms-color-contrastWhiteDisabled;
     }
   }
 
-  &:focus {
-    &::before {
-      border-color: $ms-color-neutralSecondaryAlt;
-    }
+  // The choiceField field
+  .ms-ChoiceField-field {
+    display: inline-block;
+    cursor: pointer;
+    margin-top: 8px;
+    position: relative;
+    vertical-align: top;
+    user-select: none;
 
-    &.is-disabled::before {
-      border-color: $ms-color-neutralTertiaryAlt;
-    }
-
-    &.is-checked::before {
-      border-color: $ms-color-themeDarkAlt;
-    }
-  }
-  &:active {
-    &::before {
-      border-color: $ms-color-neutralSecondaryAlt;
-    }
-
-    .ms-Label {
-      color: $ms-color-black;
-    }
-  }
-
-  //== State: A choiceField is checked
-  //
-  &.is-checked {
-    &::before {
-      border: 2px solid $ms-color-themePrimary;
-      background-color: transparent;
-
-      @media screen and (-ms-high-contrast: active) {
-        border-color: $ms-color-contrastBlackSelected;
+    &:hover {
+      &::before {
+        border-color: $ms-color-neutralSecondaryAlt;
       }
 
-      @media screen and (-ms-high-contrast: black-on-white) {
-        border-color: $ms-color-contrastWhiteSelected;
+      .ms-Label {
+        color: $ms-color-black;
       }
     }
 
-    &::after {
-      background-color: $ms-color-themePrimary;
-      top: 5px;
-      @include left(5px);
-      width: 10px;
-      height: 10px;
-
-      @media screen and (-ms-high-contrast: active) {
-        background-color: $ms-color-contrastBlackSelected;
-      }
-
-      @media screen and (-ms-high-contrast: black-on-white) {
-        background-color: $ms-color-contrastWhiteSelected;
-      }
-    }
-
-    &:hover,
     &:focus {
       &::before {
+        border-color: $ms-color-neutralSecondaryAlt;
+      }
+
+      &.is-disabled::before {
+        border-color: $ms-color-neutralTertiaryAlt;
+      }
+
+      &.is-checked::before {
+        border-color: $ms-color-themeDarkAlt;
+      }
+    }
+    &:active {
+      &::before {
+        border-color: $ms-color-neutralSecondaryAlt;
+      }
+
+      .ms-Label {
+        color: $ms-color-black;
+      }
+    }
+
+    //== State: A choiceField is checked
+    //
+    &.is-checked {
+      &::before {
+        border: 2px solid $ms-color-themePrimary;
+        background-color: transparent;
+
+        @media screen and (-ms-high-contrast: active) {
+          border-color: $ms-color-contrastBlackSelected;
+        }
+
+        @media screen and (-ms-high-contrast: black-on-white) {
+          border-color: $ms-color-contrastWhiteSelected;
+        }
+      }
+
+      &::after {
+        background-color: $ms-color-themePrimary;
+        top: 5px;
+        @include left(5px);
+        width: 10px;
+        height: 10px;
+
+        @media screen and (-ms-high-contrast: active) {
+          background-color: $ms-color-contrastBlackSelected;
+        }
+
+        @media screen and (-ms-high-contrast: black-on-white) {
+          background-color: $ms-color-contrastWhiteSelected;
+        }
+      }
+
+      &:hover,
+      &:focus {
+        &::before {
+          border-color: $ms-color-themeDarkAlt;
+        }
+      }
+    }
+
+    //== State: A disabled choiceField
+    //
+    &.is-disabled {
+      cursor: default;
+
+      &:hover,
+      &:focus {
+        &::before {
+          border-color: $ms-color-neutralTertiaryAlt;
+        }
+      }
+
+      &::before {
+        background-color: $ms-color-neutralTertiaryAlt;
+        border-color: $ms-color-neutralTertiaryAlt;
+        color: $ms-color-neutralTertiaryAlt;
+
+        @media screen and (-ms-high-contrast: active) {
+          border-color: $ms-color-contrastBlackDisabled;
+        }
+
+        @media screen and (-ms-high-contrast: black-on-white) {
+          border-color: $ms-color-contrastWhiteDisabled;
+        }
+      }
+
+      .ms-Label {
+        color: $ms-color-neutralTertiary;
+
+        @media screen and (-ms-high-contrast: active) {
+          color: $ms-color-contrastBlackDisabled;
+        }
+
+        @media screen and (-ms-high-contrast: black-on-white) {
+          color: $ms-color-contrastWhiteDisabled;
+        }
+      }
+    }
+
+    //== State: A choiceField in focus
+    //
+    &.is-inFocus {
+      &::before {
+        border-color: $ms-color-neutralSecondaryAlt;
+      }
+
+      &.is-disabled::before {
+        border-color: $ms-color-neutralTertiaryAlt;
+      }
+
+      &.is-checked::before {
         border-color: $ms-color-themeDarkAlt;
       }
     }
   }
 
-  //== State: A disabled choiceField
-  //
-  &.is-disabled {
-    cursor: default;
+  .ms-ChoiceField--image, .ms-ChoiceField--icon {
+    $fieldMinWidth: 96px;
+    $fieldPadding: 4px;
 
-    &:hover,
-    &:focus {
-      &::before {
-        border-color: $ms-color-neutralTertiaryAlt;
-      }
-    }
+    display: inline-flex;
 
-    &::before {
-      background-color: $ms-color-neutralTertiaryAlt;
-      border-color: $ms-color-neutralTertiaryAlt;
-      color: $ms-color-neutralTertiaryAlt;
+    font-size: 0;
 
-      @media screen and (-ms-high-contrast: active) {
-        border-color: $ms-color-contrastBlackDisabled;
-      }
+    @include margin(0, 2px, 2px, 0);
+    @include padding-left(0px);
+    @include ms-bgColor-neutralLighter;
 
-      @media screen and (-ms-high-contrast: black-on-white) {
-        border-color: $ms-color-contrastWhiteDisabled;
-      }
-    }
-
-    .ms-Label {
-      color: $ms-color-neutralTertiary;
-
-      @media screen and (-ms-high-contrast: active) {
-        color: $ms-color-contrastBlackDisabled;
-      }
-
-      @media screen and (-ms-high-contrast: black-on-white) {
-        color: $ms-color-contrastWhiteDisabled;
-      }
-    }
-  }
-
-  //== State: A choiceField in focus
-  //
-  &.is-inFocus {
-    &::before {
-      border-color: $ms-color-neutralSecondaryAlt;
-    }
-
-    &.is-disabled::before {
-      border-color: $ms-color-neutralTertiaryAlt;
-    }
-
-    &.is-checked::before {
-      border-color: $ms-color-themeDarkAlt;
-    }
-  }
-}
-
-.ms-ChoiceField--image, .ms-ChoiceField--icon {
-  $fieldMinWidth: 96px;
-  $fieldPadding: 4px;
-
-  display: inline-flex;
-
-  font-size: 0;
-
-  @include margin(0, 2px, 2px, 0);
-  @include padding-left(0px);
-  @include ms-bgColor-neutralLighter;
-
-  .ms-ChoiceField-field--image, .ms-ChoiceField-field--icon {
-    $radioButtonSpacing: 5px;
-    $radioButtonInnerSize: 5px;
-
-    display: inline-block;
-    box-sizing: border-box;
-    min-width: $fieldMinWidth;
-    cursor: pointer;
-    padding: $fieldPadding;
-    padding-top: 24px;
-    margin: 0;
-    text-align: center;
-    transition: all $ms-choiceField-transition-duration ease;
-
-    &.is-disabled {
-      cursor: default;
-
-      .ms-ChoiceField-innerField {
-        opacity: 0.25;
-      }
-    }
-
-    .ms-ChoiceField-innerField {
-      position: relative;
-      padding: 0 28px;
-
-      .ms-ChoiceField-imageWrapper {
-        transition: opacity $ms-choiceField-transition-duration ease;
-
-        &.is-hidden {
-          position: absolute;
-          @include left(0);
-          top: 0;
-          width: 100%;
-          height: 100%;
-          overflow: hidden;
-          opacity: 0;
-        }
-
-        .ms-Image {
-          display: inline-block;
-        }
-      }
-    }
-
-    .ms-ChoiceField-labelWrapper {
-      $lineHeight: 16px;
+    .ms-ChoiceField-field--image, .ms-ChoiceField-field--icon {
+      $radioButtonSpacing: 5px;
+      $radioButtonInnerSize: 5px;
 
       display: inline-block;
-      position: relative;
-      margin: 4px 0 0 0;
-      height: $lineHeight * 2;
-      line-height: $lineHeight;
+      box-sizing: border-box;
+      min-width: $fieldMinWidth;
+      cursor: pointer;
+      padding: $fieldPadding;
+      padding-top: 24px;
+      margin: 0;
+      text-align: center;
+      transition: all $ms-choiceField-transition-duration ease;
 
-      @include ms-font-m;
-    }
+      &.is-disabled {
+        cursor: default;
 
-    .ms-Label {
-      padding: 0;
-    }
+        .ms-ChoiceField-innerField {
+          opacity: 0.25;
+        }
+      }
 
-    &::before {
-      top: $radioButtonSpacing;
-      @include left($radioButtonSpacing);
-    }
+      .ms-ChoiceField-innerField {
+        position: relative;
+        padding: 0 28px;
 
-    &::after {
-      top: $radioButtonSpacing + ($radioButtonInnerSize * 2);
-      @include left($radioButtonSpacing + ($radioButtonInnerSize * 2));
-    }
+        .ms-ChoiceField-imageWrapper {
+          transition: opacity $ms-choiceField-transition-duration ease;
 
-    &.is-checked {
+          &.is-hidden {
+            position: absolute;
+            @include left(0);
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            opacity: 0;
+          }
+
+          .ms-Image {
+            display: inline-block;
+          }
+        }
+      }
+
+      .ms-ChoiceField-labelWrapper {
+        $lineHeight: 16px;
+
+        display: inline-block;
+        position: relative;
+        margin: 4px 0 0 0;
+        height: $lineHeight * 2;
+        line-height: $lineHeight;
+
+        @include ms-font-m;
+      }
+
+      .ms-Label {
+        padding: 0;
+      }
+
+      &::before {
+        top: $radioButtonSpacing;
+        @include left($radioButtonSpacing);
+      }
+
       &::after {
-        top: $radioButtonSpacing + $radioButtonInnerSize;
-        @include left($radioButtonSpacing + $radioButtonInnerSize);
+        top: $radioButtonSpacing + ($radioButtonInnerSize * 2);
+        @include left($radioButtonSpacing + ($radioButtonInnerSize * 2));
+      }
+
+      &.is-checked {
+        &::after {
+          top: $radioButtonSpacing + $radioButtonInnerSize;
+          @include left($radioButtonSpacing + $radioButtonInnerSize);
+        }
       }
     }
   }
-}
 
-.ms-ChoiceField--icon {
-  $iconSize: 32px;
+  .ms-ChoiceField--icon {
+    $iconSize: 32px;
 
-  .ms-ChoiceField-iconWrapper {
-    font-size: $iconSize;
-    line-height: $iconSize;
-    height: $iconSize;
-  }
+    .ms-ChoiceField-iconWrapper {
+      font-size: $iconSize;
+      line-height: $iconSize;
+      height: $iconSize;
+    }
 
-  .ms-ChoiceField-field--icon {
-    &.is-checked {
-      .ms-ChoiceField-iconWrapper {
-        @include ms-fontColor-themeDark;
+    .ms-ChoiceField-field--icon {
+      &.is-checked {
+        .ms-ChoiceField-iconWrapper {
+          @include ms-fontColor-themeDark;
+        }
       }
     }
   }
-}
 
-.is-focusVisible .ms-ChoiceField.is-inFocus {
-  border: 1px solid $ms-color-neutralPrimary;
+  .is-focusVisible .ms-ChoiceField.is-inFocus {
+    border: 1px solid $ms-color-neutralPrimary;
+  }
 }
