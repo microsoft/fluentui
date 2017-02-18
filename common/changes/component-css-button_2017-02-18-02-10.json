@@ -4,6 +4,11 @@
       "packageName": "office-ui-fabric-react",
       "comment": "Button variants: the styles are now scoped within css modules. All class names that were previously on buttons still remain unchanged, but the styles have moved into a type safe hashed class name. This allows 2 different versions of any Button variant to live on the same page without having rules collide. The style rules for the variants were also tweaked. Content is now aligned using flexbox, which means more consistent centering when injecting inline, inline-block, or block elements. Second, all line-heights were removed and content now correctly centers within buttons, so if you change the height of the container (e.g. you make CommandButtons render in 36px instead of 40px) things will center correctly.",
       "type": "minor"
+    },
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Link: the styles are now scoped within css modules. All class names that were previously on buttons still remain unchanged, but the styles have moved into a type safe hashed class name.",
+      "type": "minor"
     }
   ],
   "email": "dzearing@microsoft.com"
