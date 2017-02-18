@@ -33,7 +33,6 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   min-height: 36px;
   border: 1px solid transparent;
   position: relative;
-  line-height: $ms-choiceField-field-size;
   @include padding-left(8px);
 
   .ms-Label {
@@ -229,30 +228,43 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   }
 }
 
-.ms-ChoiceField--image {
-  $fieldMinWidth: 164px;
-  $fieldPadding: 20px;
+.ms-ChoiceField--image, .ms-ChoiceField--icon {
+  $fieldMinWidth: 96px;
+  $fieldPadding: 4px;
 
-  display: inline-block;
+  display: inline-flex;
 
   font-size: 0;
 
-  @include margin-right(6px);
+  @include margin(0, 2px, 2px, 0);
   @include padding-left(0px);
   @include ms-bgColor-neutralLighter;
 
-  .ms-ChoiceField-field--image {
-    display: inline-block;
+  .ms-ChoiceField-field--image, .ms-ChoiceField-field--icon {
+    $radioButtonSpacing: 5px;
+    $radioButtonInnerSize: 5px;
 
+    display: inline-block;
     box-sizing: border-box;
     min-width: $fieldMinWidth;
     cursor: pointer;
-    padding: $fieldPadding $fieldPadding 12px $fieldPadding;
+    padding: $fieldPadding;
+    padding-top: 24px;
+    margin: 0;
     text-align: center;
     transition: all $ms-choiceField-transition-duration ease;
 
+    &.is-disabled {
+      cursor: default;
+
+      .ms-ChoiceField-innerField {
+        opacity: 0.25;
+      }
+    }
+
     .ms-ChoiceField-innerField {
       position: relative;
+      padding: 0 28px;
 
       .ms-ChoiceField-imageWrapper {
         transition: opacity $ms-choiceField-transition-duration ease;
@@ -271,44 +283,54 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
           display: inline-block;
         }
       }
-      .ms-ChoiceField-iconWrapper {
-        font-size: $ms-font-size-su;
-        line-height: $ms-font-size-su;
-      }
     }
 
     .ms-ChoiceField-labelWrapper {
+      $lineHeight: 16px;
+
       display: inline-block;
       position: relative;
-      margin: 10px 0 0 0;
-      padding: 0 24px;
+      margin: 4px 0 0 0;
+      height: $lineHeight * 2;
+      line-height: $lineHeight;
 
-      .ms-ChoiceField-icon {
-        display: none;
-        position: absolute;
-        @include left(0);
-        line-height: $ms-font-size-s;
+      @include ms-font-m;
+    }
 
-        @include ms-fontSize-l;
-        @include ms-fontColor-themeDark;
-      }
+    .ms-Label {
+      padding: 0;
+    }
 
-      .ms-Label {
-        display: inline-block;
-        padding: 0;
-        line-height: $ms-font-size-s;
+    &::before {
+      top: $radioButtonSpacing;
+      @include left($radioButtonSpacing);
+    }
 
-        @include ms-fontWeight-semibold;
-        @include ms-fontColor-neutralPrimary;
-      }
+    &::after {
+      top: $radioButtonSpacing + ($radioButtonInnerSize * 2);
+      @include left($radioButtonSpacing + ($radioButtonInnerSize * 2));
     }
 
     &.is-checked {
-      @include ms-bgColor-themeLighter;
-
-      .ms-ChoiceField-labelWrapper .ms-ChoiceField-icon {
-        display: inline-block;
+      &::after {
+        top: $radioButtonSpacing + $radioButtonInnerSize;
+        @include left($radioButtonSpacing + $radioButtonInnerSize);
       }
+    }
+  }
+}
+
+.ms-ChoiceField--icon {
+  $iconSize: 32px;
+
+  .ms-ChoiceField-iconWrapper {
+    font-size: $iconSize;
+    line-height: $iconSize;
+    height: $iconSize;
+  }
+
+  .ms-ChoiceField-field--icon {
+    &.is-checked {
       .ms-ChoiceField-iconWrapper {
         @include ms-fontColor-themeDark;
       }
