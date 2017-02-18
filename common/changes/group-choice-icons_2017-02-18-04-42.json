@@ -1,8 +1,8 @@
 {
   "changes": [
     {
+      "comment": "ChoiceGroup: Update styles",
       "packageName": "office-ui-fabric-react",
-      "comment": "ChoiceGroup: Adding ability to use Icons",
       "type": "patch"
     }
   ],
