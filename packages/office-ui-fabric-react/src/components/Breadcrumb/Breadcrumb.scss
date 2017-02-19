@@ -12,6 +12,7 @@ $Breadcrumb-overflowButtonSize: 16px;
 $Breadcrumb-buttonHoverColor: $ms-color-themeDark;
 $Breadcrumb-itemMaxWidth: 160px;
 $Breadcrumb-itemMaxWidth-sm: 116px;
+$Breadcrumb-chevron-sm: 8px;
 
 .root {
   @include ms-baseFont;
@@ -28,7 +29,7 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
   font-size: $ms-font-size-s;
   color: $ms-color-neutralSecondary;
   vertical-align: top;
-  margin: 11px 7px;
+  margin: 11px 0px;
   line-height: 1;
 }
 
@@ -69,9 +70,10 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
   font-size: $Breadcrumb-overflowButtonSize;
   display: inline-block;
   color: $Breadcrumb-overflowButtonColor;
-  padding: 8px;
+  padding: 9px 8px;
   cursor: pointer;
   vertical-align: top;
+  line-height: 1;
 }
 
 .item {
@@ -105,7 +107,7 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
 }
 
 @media screen and (max-width: $ms-screen-md-max) {
-  margin: 11px 0 1px;
+  // margin: 11px 0 1px;
 
   .listItem .itemLink {
     font-size: $ms-font-size-l;
@@ -113,12 +115,13 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
 
   .chevron {
     font-size: $ms-font-size-mi;
-    margin: 8px 5px;
+    margin: 8px 0;
   }
 
   .overflowButton {
     font-size: $ms-font-size-m-plus;
-    padding: 5px 4px;
+    padding: 6px 8px;
+    line-height: 1;
   }
 }
 
@@ -129,11 +132,12 @@ $Breadcrumb-itemMaxWidth-sm: 116px;
   }
 
   .chevron {
-    margin: 5px 4px;
+    font-size: $Breadcrumb-chevron-sm;
+    margin: 7px 0;
   }
 
   .overflowButton {
-    padding: 2px 4px;
+    padding: 4px 6px;
   }
 }
 
