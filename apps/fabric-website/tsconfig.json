@@ -12,7 +12,7 @@
       "chai",
       "mocha",
       "node",
-      "webpack"
+      "webpack-env"
     ]
   },
   "exclude": [
