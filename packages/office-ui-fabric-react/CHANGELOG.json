@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "1.9.2",
+      "tag": "office-ui-fabric-react_v1.9.2",
+      "date": "Mon, 20 Feb 2017 16:07:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "William Do <do.william@yahoo.com>",
+            "commit": "85b6613349c3ea9f9927e3f47dbd7dc084b763ab",
+            "comment": "Aligning Breadcrumb to design guidance and fix for chevron position at smaller breakpoints"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.9.1",
       "tag": "office-ui-fabric-react_v1.9.1",
       "date": "Thu, 16 Feb 2017 16:06:51 GMT",
