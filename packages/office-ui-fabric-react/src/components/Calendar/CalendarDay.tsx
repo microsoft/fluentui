@@ -71,8 +71,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     return (
       <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) }>
         <div className={ css('ms-DatePicker-header', styles.header) }>
-          <div className={ css('ms-DatePicker-month', styles.month) }> { strings.months[navigatedDate.getMonth()] }</div>
-          <div className={ css('ms-DatePicker-year', styles.year) }> { navigatedDate.getFullYear() }</div>
+          <div className={ css('ms-DatePicker-month', styles.month) }>{ strings.months[navigatedDate.getMonth()] }</div>
+          <div className={ css('ms-DatePicker-year', styles.year) }>{ navigatedDate.getFullYear() }</div>
         </div>
         <div className={ css('ms-DatePicker-monthComponents', styles.monthComponents) }>
           <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
