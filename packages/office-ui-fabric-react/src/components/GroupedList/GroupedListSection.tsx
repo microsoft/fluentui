@@ -32,6 +32,7 @@ import {
 } from './../../utilities/dragdrop/interfaces';
 import { assign, css } from '../../Utilities';
 import { IViewport } from '../../utilities/decorators/withViewport';
+import styles from './GroupedList.scss';
 
 export interface IGroupedListSectionProps extends React.Props<GroupedListSection> {
   /** Map of callback functions related to drag and drop functionality. */
@@ -173,7 +174,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     return (
       <div
         ref='root'
-        className={ css('ms-GroupedList-group', this._getDroppingClassName()) }
+        className={ css('ms-GroupedList-group', styles.group, this._getDroppingClassName()) }
       >
         { onRenderGroupHeader(groupHeaderProps, this._onRenderGroupHeader) }
         {
@@ -373,7 +374,11 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     let { isDropping } = this.state;
     let { group } = this.props;
 
-    let droppingClass = group && isDropping ? DEFAULT_DROPPING_CSS_CLASS : '';
-    return droppingClass;
+    isDropping = !!(group && isDropping);
+
+    return css(
+      isDropping && DEFAULT_DROPPING_CSS_CLASS,
+      isDropping && styles.isDropping
+    );
   }
 }

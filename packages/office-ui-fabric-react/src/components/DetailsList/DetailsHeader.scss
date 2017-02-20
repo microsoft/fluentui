@@ -37,6 +37,7 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
 }
 
 .cell {
+  background: inherit;
   color: $disabledForegroundColor;
 
   @include focus-border();

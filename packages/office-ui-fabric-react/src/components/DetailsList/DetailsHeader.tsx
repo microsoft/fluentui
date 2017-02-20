@@ -149,7 +149,10 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
           ) : (null) }
           { GroupSpacer({ count: groupNestingDepth - 1 }) }
           { columns.map((column, columnIndex) => (
-            <div className={ css('ms-DetailsHeader-cellWrapper', styles.cellWrapper) } role='columnheader'>
+            <div
+              key={ column.key }
+              className={ css('ms-DetailsHeader-cellWrapper', styles.cellWrapper) }
+              role='columnheader'>
               <button
                 type='button'
                 key={ column.fieldName }
