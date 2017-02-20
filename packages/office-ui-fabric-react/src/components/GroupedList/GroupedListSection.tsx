@@ -33,6 +33,7 @@ import {
 import { assign, css } from '../../Utilities';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import styles from './GroupedList.scss';
+import { IDisposable } from '@uifabric/utilities';
 
 export interface IGroupedListSectionProps extends React.Props<GroupedListSection> {
   /** Map of callback functions related to drag and drop functionality. */
@@ -42,7 +43,7 @@ export interface IGroupedListSectionProps extends React.Props<GroupedListSection
   dragDropHelper?: IDragDropHelper;
 
   /** Event names and corresponding callbacks that will be registered to the group and the rendered elements */
-  eventsToRegister?: [{ eventName: string, callback: (context: IDragDropContext, event?: any) => void }];
+  eventsToRegister?: { eventName: string, callback: (context: IDragDropContext, event?: any) => void }[];
 
   /** Information to pass in to the group footer. */
   footerProps?: IGroupDividerProps;
@@ -108,7 +109,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
   private _subGroups: {
     [key: string]: GroupedListSection;
   };
-  private _dragDropKey: string;
+  private _dragDropSubscription: IDisposable;
 
   constructor(props: IGroupedListSectionProps) {
     super(props);
@@ -126,7 +127,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     let { dragDropHelper, selection } = this.props;
 
     if (dragDropHelper) {
-      dragDropHelper.subscribe(this.refs.root, this._events, this._getGroupDragDropOptions());
+      this._dragDropSubscription = dragDropHelper.subscribe(this.refs.root, this._events, this._getGroupDragDropOptions());
     }
 
     if (selection) {
@@ -135,10 +136,23 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
   }
 
   public componentWillUnmount() {
-    let { dragDropHelper } = this.props;
+    if (this._dragDropSubscription) {
+      this._dragDropSubscription.dispose();
+    }
+  }
 
-    if (dragDropHelper) {
-      dragDropHelper.unsubscribe(this.refs.root, this._dragDropKey);
+  public componentDidUpdate(previousProps: IGroupedListSectionProps) {
+    if (this.props.group !== previousProps.group ||
+      this.props.groupIndex !== previousProps.groupIndex ||
+      this.props.dragDropHelper !== previousProps.dragDropHelper) {
+      if (this._dragDropSubscription) {
+        this._dragDropSubscription.dispose();
+        delete this._dragDropSubscription;
+      }
+
+      if (this.props.dragDropHelper) {
+        this._dragDropSubscription = this.props.dragDropHelper.subscribe(this.refs.root, this._events, this._getGroupDragDropOptions());
+      }
     }
   }
 
@@ -322,13 +336,11 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
   @autobind
   private _getGroupDragDropOptions(): IDragDropOptions {
     let { group, groupIndex, dragDropEvents, eventsToRegister } = this.props;
-    this._dragDropKey = 'group-' + (group ? group.key : String(groupIndex));
     let options = {
-      key: this._dragDropKey,
       eventMap: eventsToRegister,
       selectionIndex: -1,
       context: { data: group, index: groupIndex, isGroup: true },
-      canDrag: () => { return false; }, // cannot drag groups
+      canDrag: () => false, // cannot drag groups
       canDrop: dragDropEvents.canDrop,
       onDragStart: null,
       updateDropState: this._updateDroppingState
