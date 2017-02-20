@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 16 Feb 2017 16:06:51 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Feb 2017 16:07:02 GMT and should not be manually modified.
+
+## 1.9.2
+Mon, 20 Feb 2017 16:07:02 GMT
+
+### Patches
+
+- Aligning Breadcrumb to design guidance and fix for chevron position at smaller breakpoints
 
 ## 1.9.1
 Thu, 16 Feb 2017 16:06:51 GMT
