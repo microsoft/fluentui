@@ -172,7 +172,6 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                 onContextMenu={ this._onColumnContextMenu.bind(this, column) }
                 aria-haspopup={ column.columnActionsMode === ColumnActionsMode.hasDropdown }
                 aria-label={ column.ariaLabel || column.name }
-                aria-sort={ column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none' }
                 data-automationid='ColumnsHeaderColumn'
                 data-item-key={ column.key }
               >

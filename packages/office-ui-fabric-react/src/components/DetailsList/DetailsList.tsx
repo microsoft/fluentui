@@ -244,7 +244,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
         data-automationid='DetailsList'
         data-is-scrollable='false'
         aria-label={ ariaLabel }
-        role={ shouldApplyApplicationRole ? 'application' : '' }>
+        { ...(shouldApplyApplicationRole ? { role: 'application' } : {}) }>
         <div role='grid' aria-label={ ariaLabelForGrid }>
           <div onKeyDown={ this._onHeaderKeyDown } role='presentation'>
             { isHeaderVisible && (
