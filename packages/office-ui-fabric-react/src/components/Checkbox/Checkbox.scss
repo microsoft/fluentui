@@ -218,8 +218,8 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
     position: absolute;
     top: 0px;
     bottom: 0px;
-    @include right(0px);
-    @include left(-8px);
+    left: 0;
+    right: 0;
     border: 1px solid $focusedBorderColor;
     @include highContrast-border($ms-color-white, $ms-color-black, 1px);
   }
