@@ -37,8 +37,23 @@ $SearchBox-iconSize: 16px;
 $SearchBox-sidePadding: 8px; // padding in input on left and right sides without icons
 
 @mixin highContrastBorder($color) {
-    @include border-left(1px, solid, $color);
-    @include border-right(1px, solid, $color);
+  position: relative;
+
+  &::after {
+    // Wrap the parent element with $padding pixels.
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    // Make the content not respond to mouse/touch event. Reference: https://css-tricks.com/almanac/properties/p/pointer-events/
+    pointer-events: none;
+
+    // Add focus border with $color
+    border: 1px solid $color;
+  }
 }
 
 .root {
@@ -82,18 +97,6 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
     background-color: $ms-color-neutralLight;
     color: $ms-color-neutralPrimary;
   }
-
-  @media screen and (-ms-high-contrast: active) {
-    @include highContrastBorder($ms-color-black);
-    height: 38px;
-    outline: none;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    @include highContrastBorder($ms-color-white);
-    height: 38px;
-    outline: none;
-  }
 }
 
 .itemChevronDown,
@@ -130,14 +133,11 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
 .itemLink {
   @include CommandBarItem-text;
   cursor: pointer;
-
   &:hover,
   &.itemLinkIsExpanded {
     @media screen and (-ms-high-contrast: active) {
-      @include highContrastBorder($ms-color-white);
-        margin-left: -1px; 
-        margin-right: -1px; 
-    }
+         @include highContrastBorder($ms-color-white);
+       }
 
     @media screen and (-ms-high-contrast: black-on-white) {
       @include highContrastBorder($ms-color-black);
