@@ -2,6 +2,103 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "1.11.0",
+      "tag": "office-ui-fabric-react_v1.11.0",
+      "date": "Tue, 21 Feb 2017 16:15:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "9f28812040cd84d941a572344d47b117c716b111",
+            "comment": "Dialog: Accessibility fix for confirmation dialogs"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "f54a87dc2bd11888df49e73dd06b12836c86d167",
+            "comment": "Return suggested items to original padding values, add display block to fix following space due to inline-block"
+          },
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "f8299c5f98d211bf985b4ecbdeed7912cfb0792b",
+            "comment": "Support to pass id to TextField and Toggle"
+          },
+          {
+            "author": "Ruslan Semenov <ruslan@rsemenov.com>",
+            "commit": "241a5e55b06bb4d33639a8f71c03c5d33b5fc301",
+            "comment": "Fix keyboard focus order in MessageBar"
+          }
+        ],
+        "minor": [
+          {
+            "author": "William Do <do.william@yahoo.com>",
+            "commit": "d8084249e91b0d60e7fc42551b69bfefe692aedb",
+            "comment": "Deprecation of SpinnerType in favor of more semantic SpinnerSize. Extra small, small and medium variants added."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.10.0",
+      "tag": "office-ui-fabric-react_v1.10.0",
+      "date": "Tue, 21 Feb 2017 04:15:21 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Thomas Michon <tmichon@microsoft.com>",
+            "commit": "c6602a25533798799926bd3130590cba27681e74",
+            "comment": "Fixed issues with drag/drop after item refresh."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.9.2",
+      "tag": "office-ui-fabric-react_v1.9.2",
+      "date": "Mon, 20 Feb 2017 16:07:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "William Do <do.william@yahoo.com>",
+            "commit": "85b6613349c3ea9f9927e3f47dbd7dc084b763ab",
+            "comment": "Aligning Breadcrumb to design guidance and fix for chevron position at smaller breakpoints"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.9.1",
+      "tag": "office-ui-fabric-react_v1.9.1",
+      "date": "Thu, 16 Feb 2017 16:06:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "f3ebc66b18b43b1c5fcbe7ff99e2a266d33e4ee5",
+            "comment": "DatePicker: Makes props optional, sets default props for strings"
+          },
+          {
+            "author": "JD Huntington <jdhuntington@gmail.com>",
+            "commit": "63389426f7118fdbf22280d954bd6b6de4dc3973",
+            "comment": "MessageBar: now allows dismiss action for single line messages."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.9.0",
+      "tag": "office-ui-fabric-react_v1.9.0",
+      "date": "Thu, 16 Feb 2017 04:04:41 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "zhenguang66 <wo8888@hotmail.com>",
+            "commit": "e077d26efca3f29e83fc8ada2ed5b0e947e19fff",
+            "comment": "GroupedList: Added `hasMoreData` flag to `IGroup` for rendering a plus character for groups that have indeterminate counts."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.8.0",
       "tag": "office-ui-fabric-react_v1.8.0",
       "date": "Wed, 15 Feb 2017 18:10:58 GMT",

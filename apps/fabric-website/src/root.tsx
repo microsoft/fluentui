@@ -4,8 +4,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { App } from './components/App/App';
 import { AppState } from './components/App/AppState';
-import { Route } from 'office-ui-fabric-react/lib/utilities/router/index';
-import { Router } from './utilities/router/Router';
+import { Route, Router } from 'office-ui-fabric-react/lib/utilities/router/index';
 import { setBaseUrl } from '@uifabric/utilities/lib/resources';
 import { HomePage } from './pages/HomePage/HomePage';
 import WindowWidthUtility from './utilities/WindowWidthUtility';
@@ -66,7 +65,7 @@ function _onLoad() {
   _getBreakpoint();
 
   ReactDOM.render(
-    <Router routerDidMount={ _routerDidMount }>
+    <Router onNewRouteLoaded={ _routerDidMount }>
       <Route component={ App }>
         { _getAppRoutes() }
       </Route>
@@ -79,18 +78,18 @@ function _getAppRoutes() {
 
   // Create a route for each top level page, and all of its sub pages
   AppState.pages.forEach((page, pageIndex) => {
-    routes.push(<Route key={ pageIndex } path={ page.url } component={ page.component } />);
+    routes.push(<Route key={ pageIndex } path={ page.url } getComponent={ page.getComponent } />);
 
     if (page.pages) {
       page.pages.forEach((childPage, childPageIndex) => {
-        routes.push(<Route key={ childPageIndex } path={ childPage.url } component={ childPage.component } />);
+        routes.push(<Route key={ childPageIndex } path={ childPage.url } getComponent={ childPage.getComponent } />);
 
         // Third level of nav
         // @todo: This is the same logic as above, and could be placed in function
         //        to allow for unlimited levels of nav.
         if (childPage.pages) {
           childPage.pages.forEach((grandchildPage, grandchildPageIndex) => {
-            routes.push(<Route key={ grandchildPageIndex } path={ grandchildPage.url } component={ grandchildPage.component } />);
+            routes.push(<Route key={ grandchildPageIndex } path={ grandchildPage.url } getComponent={ grandchildPage.getComponent } />);
           });
         }
       });

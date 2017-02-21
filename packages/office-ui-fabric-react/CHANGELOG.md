@@ -1,6 +1,49 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 15 Feb 2017 18:10:58 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Feb 2017 16:15:42 GMT and should not be manually modified.
+
+## 1.11.0
+Tue, 21 Feb 2017 16:15:42 GMT
+
+### Minor changes
+
+- Deprecation of SpinnerType in favor of more semantic SpinnerSize. Extra small, small and medium variants added.
+
+### Patches
+
+- Dialog: Accessibility fix for confirmation dialogs
+- Return suggested items to original padding values, add display block to fix following space due to inline-block
+- Support to pass id to TextField and Toggle
+- Fix keyboard focus order in MessageBar
+
+## 1.10.0
+Tue, 21 Feb 2017 04:15:21 GMT
+
+### Minor changes
+
+- Fixed issues with drag/drop after item refresh.
+
+## 1.9.2
+Mon, 20 Feb 2017 16:07:02 GMT
+
+### Patches
+
+- Aligning Breadcrumb to design guidance and fix for chevron position at smaller breakpoints
+
+## 1.9.1
+Thu, 16 Feb 2017 16:06:51 GMT
+
+### Patches
+
+- DatePicker: Makes props optional, sets default props for strings
+- MessageBar: now allows dismiss action for single line messages.
+
+## 1.9.0
+Thu, 16 Feb 2017 04:04:41 GMT
+
+### Minor changes
+
+- GroupedList: Added `hasMoreData` flag to `IGroup` for rendering a plus character for groups that have indeterminate counts.
 
 ## 1.8.0
 Wed, 15 Feb 2017 18:10:58 GMT
