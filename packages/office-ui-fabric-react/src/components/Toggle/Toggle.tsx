@@ -31,8 +31,7 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
     this.state = {
       isChecked: !!(props.checked || props.defaultChecked)
     };
-    const { id } = getNativeProps(props, buttonProperties) as React.HTMLProps<HTMLButtonElement>;
-    this._id = id || getId('Toggle');
+    this._id = props.id || getId('Toggle');
   }
 
   /**
