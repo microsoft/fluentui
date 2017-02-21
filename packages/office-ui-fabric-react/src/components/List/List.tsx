@@ -6,7 +6,9 @@ import {
   css,
   findIndex,
   findScrollableParent,
-  getParent
+  getParent,
+  divProperties,
+  getNativeProps
 } from '../../Utilities';
 import { IListProps, IPage } from './List.Props';
 
@@ -285,16 +287,17 @@ export class List extends BaseComponent<IListProps, IListState> {
   }
 
   public render() {
-    let { className, id, style } = this.props;
+    let { className } = this.props;
     let { pages } = this.state;
     let pageElements = [];
+    let divProps = getNativeProps(this.props, divProperties);
 
     for (let i = 0; i < pages.length; i++) {
       pageElements.push(this._renderPage(pages[i]));
     }
 
     return (
-      <div ref='root' id={ id } style={ style } className={ css('ms-List', className) } >
+      <div ref='root' { ...divProps } className={ css('ms-List', className) } >
         <div ref='surface' className='ms-List-surface'>
           { pageElements }
         </div>
