@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 20 Feb 2017 16:07:02 GMT and should not be manually modified.
+This log was last generated on Tue, 21 Feb 2017 04:15:21 GMT and should not be manually modified.
+
+## 1.10.0
+Tue, 21 Feb 2017 04:15:21 GMT
+
+### Minor changes
+
+- Fixed issues with drag/drop after item refresh.
 
 ## 1.9.2
 Mon, 20 Feb 2017 16:07:02 GMT
