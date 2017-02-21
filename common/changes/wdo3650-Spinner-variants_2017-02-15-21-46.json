@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Aligning Breadcrumb to design guidance and fix for chevron position at smaller breakpoints",
-      "type": "patch"
+      "comment": "Deprecation of SpinnerType in favor of more semantic SpinnerSize. Extra small, small and medium variants added.",
+      "type": "minor"
     },
     {
       "comment": "",

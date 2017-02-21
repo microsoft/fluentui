@@ -1,0 +1,15 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Return suggested items to original padding values, add display block to fix following space due to inline-block",
+      "type": "patch"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/example-app-base",
+      "type": "none"
+    }
+  ],
+  "email": "micahgodbolt@gmail.com"
+}

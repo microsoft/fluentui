@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Fix keyboard focus order in MessageBar",
+      "type": "patch"
+    }
+  ],
+  "email": "rsemenov@microsoft.com"
+}
