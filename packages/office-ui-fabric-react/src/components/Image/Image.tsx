@@ -10,7 +10,7 @@ import {
 } from '../../Utilities';
 import { IImageProps, ImageFit, ImageLoadState } from './Image.Props';
 
-import './Image.scss';
+import styles from './Image.scss';
 
 export interface IImageState {
   loadState?: ImageLoadState;
@@ -22,15 +22,15 @@ export enum CoverStyle {
 }
 
 export const CoverStyleMap = {
-  [CoverStyle.landscape]: 'ms-Image-image--landscape',
-  [CoverStyle.portrait]: 'ms-Image-image--portrait'
+  [CoverStyle.landscape]: 'ms-Image-image--landscape ' + styles.imageLandscape,
+  [CoverStyle.portrait]: 'ms-Image-image--portrait ' + styles.imagePortrait
 };
 
 export const ImageFitMap = {
-  [ImageFit.center]: 'ms-Image-image--center',
-  [ImageFit.contain]: 'ms-Image-image--contain',
-  [ImageFit.cover]: 'ms-Image-image--cover',
-  [ImageFit.none]: 'ms-Image-image--none'
+  [ImageFit.center]: 'ms-Image-image--center ' + styles.imageCenter,
+  [ImageFit.contain]: 'ms-Image-image--contain ' + styles.imageContain,
+  [ImageFit.cover]: 'ms-Image-image--cover ' + styles.imageCover,
+  [ImageFit.none]: 'ms-Image-image--none ' + styles.imageNone
 };
 
 const KEY_PREFIX: string = 'fabricImage';
@@ -82,33 +82,42 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
     // If image dimensions aren't specified, the natural size of the image is used.
     return (
       <div
-        className={ css('ms-Image', className, { 'ms-Image--maximizeFrame': maximizeFrame }) }
+        className={ css(
+          'ms-Image',
+          styles.root,
+          className,
+          {
+            ['ms-Image--maximizeFrame ' + styles.maximizeFrame]: maximizeFrame
+          })
+        }
         style={ { width: width, height: height } }
         ref={ this._resolveRef('_frameElement') }
-        >
+      >
         <img
           { ...imageProps }
           onLoad={ this._onImageLoaded }
           onError={ this._onImageError }
           key={ KEY_PREFIX + this.props.src || '' }
           className={
-            css('ms-Image-image',
+            css(
+              'ms-Image-image',
+              styles.image,
               (coverStyle !== undefined) && CoverStyleMap[coverStyle],
               (imageFit !== undefined) && ImageFitMap[imageFit], {
                 'is-fadeIn': shouldFadeIn,
                 'is-notLoaded': !loaded,
-                'is-loaded': loaded,
+                ['is-loaded ' + styles.isLoaded]: loaded,
                 'ms-u-fadeIn400': loaded && shouldFadeIn,
                 'is-error': loadState === ImageLoadState.error,
-                'ms-Image-image--scaleWidth': (imageFit === undefined && !!width && !height),
-                'ms-Image-image--scaleHeight': (imageFit === undefined && !width && !!height),
-                'ms-Image-image--scaleWidthHeight': (imageFit === undefined && !!width && !!height),
+                ['ms-Image-image--scaleWidth ' + styles.imageScaleWidth]: (imageFit === undefined && !!width && !height),
+                ['ms-Image-image--scaleHeight ' + styles.imageScaleHeight]: (imageFit === undefined && !width && !!height),
+                ['ms-Image-image--scaleWidthHeight ' + styles.imageScaleWidthHeight]: (imageFit === undefined && !!width && !!height),
               }) }
           ref={ this._resolveRef('_imageElement') }
           src={ src }
           alt={ alt }
           role={ role }
-          />
+        />
       </div>
     );
   }

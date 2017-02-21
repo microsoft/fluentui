@@ -11,7 +11,7 @@ import {
   findIndex,
   getId
 } from '../../Utilities';
-import './Dropdown.scss';
+import styles from './Dropdown.scss';
 
 export interface IDropdownState {
   isOpen?: boolean;
@@ -85,8 +85,9 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
           data-is-focusable={ !disabled }
           ref={ (c): HTMLElement => this._dropDown = c }
           id={ id }
-          className={ css('ms-Dropdown', className, {
-            'is-open': isOpen, 'is-disabled': disabled
+          className={ css('ms-Dropdown', styles.root, className, {
+            'is-open': isOpen,
+            ['is-disabled ' + styles.isDisabled]: disabled
           }) }
           tabIndex={ disabled ? -1 : 0 }
           onKeyDown={ this._onDropdownKeyDown }
@@ -100,18 +101,18 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
         >
           <span
             id={ id + '-option' }
-            className='ms-Dropdown-title'
+            className={ css('ms-Dropdown-title', styles.title) }
             key={ selectedIndex }
             aria-atomic={ true }
           >
             { selectedOption ? onRenderItem(selectedOption, this._onRenderItem) : '' }
           </span>
-          <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown'></i>
+          <i className={ css('ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown', styles.caretDown) }></i>
         </div>
         { isOpen && (
           <Callout
             isBeakVisible={ false }
-            className='ms-Dropdown-callout'
+            className={ css('ms-Dropdown-callout') }
             gapSpace={ 0 }
             doNotLayer={ false }
             targetElement={ this._dropDown }
@@ -127,7 +128,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
               <ul ref={ (c: HTMLElement) => this._optionList = c }
                 id={ id + '-list' }
                 style={ { width: this._dropDown.clientWidth - 2 } }
-                className='ms-Dropdown-items'
+                className={ css('ms-Dropdown-items', styles.items) }
                 role='listbox'
                 aria-labelledby={ id + '-label' }>
                 { options.map((option, index) => (
@@ -136,7 +137,9 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
                     key={ option.key }
                     data-index={ index }
                     data-is-focusable={ true }
-                    className={ css('ms-Dropdown-item', { 'is-selected': selectedIndex === index }) }
+                    className={ css('ms-Dropdown-item', styles.item, {
+                      ['is-selected ' + styles.isSelected]: selectedIndex === index
+                    }) }
                     onClick={ () => this._onItemClick(index) }
                     onFocus={ () => this.setSelectedIndex(index) }
                     role='option'

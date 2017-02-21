@@ -9,7 +9,7 @@ import {
   ICheckbox,
   ICheckboxProps
 } from './Checkbox.Props';
-import './Checkbox.scss';
+import styles from './Checkbox.scss';
 
 export interface ICheckboxState {
   /** Is true when the control has focus. */
@@ -52,8 +52,15 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
 
     return (
       <div
-        className={ css('ms-Checkbox', className, { 'is-inFocus': isFocused }) }
-        >
+        className={ css(
+          'ms-Checkbox',
+          styles.root,
+          className,
+          {
+            'is-inFocus': isFocused,
+            [styles.isInFocus]: isFocused
+          }) }
+      >
         <input
           { ...inputProps }
           { ...(checked !== undefined && { checked }) }
@@ -62,22 +69,24 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
           ref={ this._resolveRef('_checkBox') }
           id={ this._id }
           name={ name || this._id }
-          className='ms-Checkbox-input'
+          className={ css('ms-Checkbox-input', styles.input) }
           type='checkbox'
           onChange={ this._onChange }
           onFocus={ this._onFocus }
           onBlur={ this._onBlur }
           aria-checked={ isChecked }
-          />
+        />
         { this.props.children }
         <label htmlFor={ this._id }
-          className={ css('ms-Checkbox-label', {
+          className={ css('ms-Checkbox-label', styles.checkboxLabel, {
             'is-checked': isChecked,
-            'is-disabled': disabled
+            'is-disabled': disabled,
+            [styles.isChecked]: isChecked,
+            [styles.isDisabled]: disabled
           })
           }
-          >
-          { label && <span className='ms-Label'>{ label }</span> }
+        >
+          { label && <span className={ styles.textLabel }>{ label }</span> }
         </label>
       </div>
     );
