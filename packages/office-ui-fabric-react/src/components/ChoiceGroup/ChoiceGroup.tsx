@@ -176,11 +176,14 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
         }
         {
           option.imageSrc || option.iconProps
-            ? <div className={ css('ms-ChoiceField-labelWrapper', styles.labelWrapper) }>
-              <Icon iconName='CheckMark' />
+            ? (
+              <div className={ css('ms-ChoiceField-labelWrapper', styles.labelWrapper) }>
+                <Icon className={ css('ms-ChoiceField-icon', styles.icon) } iconName='CheckMark' />
+                <span id={ `${this._labelId}-${option.key}` } className='ms-Label'>{ option.text }</span>
+              </div>
+            ) : (
               <span id={ `${this._labelId}-${option.key}` } className='ms-Label'>{ option.text }</span>
-            </div>
-            : <span id={ `${this._labelId}-${option.key}` } className='ms-Label'>{ option.text }</span>
+            )
         }
       </label>
     );
