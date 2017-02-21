@@ -17,6 +17,7 @@ import {
   IDragDropOptions,
 } from './../../utilities/dragdrop/interfaces';
 import { IViewport } from '../../utilities/decorators/withViewport';
+import { IDisposable } from '@uifabric/utilities';
 import './DetailsRow.scss';
 
 export interface IDetailsRowProps extends React.Props<DetailsRow> {
@@ -25,7 +26,7 @@ export interface IDetailsRowProps extends React.Props<DetailsRow> {
   columns: IColumn[];
   selectionMode: SelectionMode;
   selection: ISelection;
-  eventsToRegister?: [{ eventName: string, callback: (item?: any, index?: number, event?: any) => void }];
+  eventsToRegister?: { eventName: string, callback: (item?: any, index?: number, event?: any) => void }[];
   onDidMount?: (row?: DetailsRow) => void;
   onWillUnmount?: (row?: DetailsRow) => void;
   onRenderCheck?: (props: IDetailsRowCheckProps) => JSX.Element;
@@ -68,7 +69,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
   private _hasSetFocus: boolean;
   private _droppingClassNames: string;
   private _hasMounted: boolean;
-  private _dragDropKey: string;
+  private _dragDropSubscription: IDisposable;
 
   constructor(props) {
     super(props);
@@ -89,8 +90,9 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
 
   public componentDidMount() {
     let { dragDropHelper } = this.props;
+
     if (dragDropHelper) {
-      dragDropHelper.subscribe(this.refs.root, this._events, this._getRowDragDropOptions());
+      this._dragDropSubscription = dragDropHelper.subscribe(this.refs.root, this._events, this._getRowDragDropOptions());
     }
 
     this._events.on(this.props.selection, SELECTION_CHANGE, this._onSelectionChanged);
@@ -102,10 +104,23 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
     }
   }
 
-  public componentDidUpdate() {
+  public componentDidUpdate(previousProps: IDetailsRowProps) {
     let state = this.state;
     let { item, onDidMount } = this.props;
     let { columnMeasureInfo } = state;
+
+    if (this.props.itemIndex !== previousProps.itemIndex ||
+      this.props.item !== previousProps.item ||
+      this.props.dragDropHelper !== previousProps.dragDropHelper) {
+      if (this._dragDropSubscription) {
+        this._dragDropSubscription.dispose();
+        delete this._dragDropSubscription;
+      }
+
+      if (this.props.dragDropHelper) {
+        this.props.dragDropHelper.subscribe(this.refs.root, this._events, this._getRowDragDropOptions());
+      }
+    }
 
     if (columnMeasureInfo && columnMeasureInfo.index >= 0) {
       let newWidth = this.refs.cellMeasurer.getBoundingClientRect().width;
@@ -124,7 +139,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
   }
 
   public componentWillUnmount() {
-    let { item, onWillUnmount, dragDropHelper } = this.props;
+    let { item, onWillUnmount } = this.props;
 
     this._events.dispose();
 
@@ -133,8 +148,9 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
       onWillUnmount(this);
     }
 
-    if (dragDropHelper) {
-      dragDropHelper.unsubscribe(this.refs.root, this._dragDropKey);
+    if (this._dragDropSubscription) {
+      this._dragDropSubscription.dispose();
+      delete this._dragDropSubscription;
     }
   }
 
@@ -184,7 +200,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
         data-automationid='DetailsRow'
         style={ { minWidth: viewport ? viewport.width : 0 } }
         aria-selected={ isSelected }
-        >
+      >
         <FocusZone direction={ FocusZoneDirection.horizontal }>
           { (selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden) && (
             <span role='gridcell'>
@@ -275,10 +291,13 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
   }
 
   private _getRowDragDropOptions(): IDragDropOptions {
-    let { item, itemIndex, dragDropEvents, eventsToRegister } = this.props;
-    this._dragDropKey = 'row-' + itemIndex;
+    const {
+      item,
+      itemIndex,
+      dragDropEvents,
+      eventsToRegister
+    } = this.props;
     let options = {
-      key: this._dragDropKey,
       eventMap: eventsToRegister,
       selectionIndex: itemIndex,
       context: { data: item, index: itemIndex },
