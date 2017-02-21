@@ -9,7 +9,7 @@ import {
   inputProperties,
   textAreaProperties
 } from '../../Utilities';
-import './TextField.scss';
+import styles from './TextField.scss';
 
 export interface ITextFieldState {
   value?: string;
@@ -127,12 +127,12 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     const errorMessage: string = this._errorMessage;
     this._isDescriptionAvailable = Boolean(description || errorMessage);
 
-    const textFieldClassName = css('ms-TextField', className, {
-      'is-required': required,
-      'is-disabled': disabled,
-      'is-active': isFocused,
-      'ms-TextField--multiline': multiline,
-      'ms-TextField--underlined': underlined
+    const textFieldClassName = css('ms-TextField', styles.root, className, {
+      ['is-required ' + styles.isRequired]: required,
+      ['is-disabled ' + styles.isDisabled]: disabled,
+      ['is-active ' + styles.isActive]: isFocused,
+      ['ms-TextField--multiline ' + styles.isMultiline]: multiline,
+      ['ms-TextField--underlined ' + styles.isUnderlined]: underlined
     });
 
     return (
@@ -143,8 +143,13 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         { errorMessage && <div aria-live='assertive' className='ms-u-screenReaderOnly' data-automation-id='error-message'>{ errorMessage }</div> }
         { this._isDescriptionAvailable &&
           <span id={ this._descriptionId }>
-            { description && <span className='ms-TextField-description'>{ description }</span> }
-            { errorMessage && <p className='ms-TextField-errorMessage ms-u-slideDownIn20'>{ errorMessage }</p> }
+            { description && <span className={ css('ms-TextField-description', styles.description) }>{ description }</span> }
+            { errorMessage && (
+              <p
+                className={ css('ms-TextField-errorMessage ms-u-slideDownIn20', styles.errorMessage) }
+              >
+                { errorMessage }
+              </p>) }
           </span>
         }
       </div>
@@ -209,18 +214,18 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     }
   }
 
-  private get _textElementClassName(): string {
+  private _getTextElementClassName(): string {
     const errorMessage: string = this._errorMessage;
     let textFieldClassName: string;
 
     if (this.props.multiline && !this.props.resizable) {
-      textFieldClassName = 'ms-TextField-field ms-TextField-field--unresizable';
+      textFieldClassName = css('ms-TextField-field ms-TextField-field--unresizable', styles.field, styles.isUnresizable);
     } else {
-      textFieldClassName = 'ms-TextField-field';
+      textFieldClassName = css('ms-TextField-field', styles.field);
     }
 
     return css(textFieldClassName, this.props.inputClassName, {
-      'ms-TextField-invalid': !!errorMessage
+      ['ms-TextField-invalid ' + styles.invalid]: !!errorMessage
     });
   }
 
@@ -244,7 +249,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         value={ this.state.value }
         onInput={ this._onInputChange }
         onChange={ this._onChange }
-        className={ this._textElementClassName }
+        className={ this._getTextElementClassName() }
         aria-label={ this.props.ariaLabel }
         aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
         aria-invalid={ !!this.state.errorMessage }
@@ -266,7 +271,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         value={ this.state.value }
         onInput={ this._onInputChange }
         onChange={ this._onChange }
-        className={ this._textElementClassName }
+        className={ this._getTextElementClassName() }
         aria-label={ this.props.ariaLabel }
         aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
         aria-invalid={ !!this.state.errorMessage }
