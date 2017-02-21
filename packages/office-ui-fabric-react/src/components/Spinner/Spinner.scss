@@ -31,7 +31,17 @@ $borderSize: 1.5px;
       border: 1.5px solid $ms-color-themeLight;
       border-top-color: $ms-color-themePrimary;
       animation: ms-Spinner-spin $spin-duration infinite cubic-bezier(.53,.21,.29,.67);
-      &.ms-Spinner--normal {
+      &.ms-Spinner--xSmall {
+        width: 12px;
+        height: 12px;
+      }
+      &.ms-Spinner--small {
+        width: 16px;
+        height: 16px;
+      }
+      //= Note: ms-Spinner--normal is deprecated and will be removed at >= 2.0.0
+      &.ms-Spinner--normal,
+      &.ms-Spinner--medium {
         width: 20px;
         height: 20px;
       }

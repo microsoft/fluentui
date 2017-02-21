@@ -23,6 +23,7 @@
     "@types/node": "^6.0.45",
     "@types/react": "^0.14.57",
     "@types/react-addons-test-utils": "^0.14.15",
+    "@types/webpack-env": "^1.13.0",
     "@types/react-dom": "^0.14.23",
     "@types/webpack": "^1.12.35",
     "fabric-examples": ">=1.0.0 <2.0.0",
@@ -54,7 +55,7 @@
     "json-loader": "^0.5.4",
     "load-themed-styles": "~1.1.0",
     "office-ui-fabric-core": "5.1.0",
-    "office-ui-fabric-react": "^1.9.1",
+    "office-ui-fabric-react": "^1.11.0",
     "@uifabric/utilities": ">=1.0.3 <2.0.0"
   }
 }
