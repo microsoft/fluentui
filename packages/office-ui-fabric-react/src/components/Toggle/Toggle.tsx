@@ -2,7 +2,9 @@ import * as React from 'react';
 import {
   autobind,
   css,
-  getId
+  getId,
+  buttonProperties,
+  getNativeProps
 } from '../../Utilities';
 import { IToggleProps } from './Toggle.Props';
 import { Label } from '../../Label';
@@ -29,8 +31,8 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
     this.state = {
       isChecked: !!(props.checked || props.defaultChecked)
     };
-
-    this._id = getId('Toggle');
+    const { id } = getNativeProps(props, buttonProperties) as React.HTMLProps<HTMLButtonElement>;
+    this._id = id || getId('Toggle');
   }
 
   /**
@@ -72,13 +74,11 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
           <div className={ css(styles.slider, 'ms-Toggle-slider') }>
             <button
               ref={ (c): HTMLButtonElement => this._toggleButton = c }
-              type='button'
               id={ this._id }
               name={ this._id }
               className={ css(styles.button, 'ms-Toggle-button') }
               disabled={ disabled }
-              role='checkbox'
-              aria-checked={ isChecked }
+              aria-pressed={ isChecked }
               onClick={ this._onClick }
             />
             <div className={ css(styles.background, 'ms-Toggle-background') }>
@@ -86,10 +86,9 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
               <div className={ css(styles.thumb, 'ms-Toggle-thumb') } />
             </div>
             { stateText && (
-              <Label className={ css(styles.stateText, 'ms-Toggle-stateText' )}>{ stateText }</Label>
+              <Label className={ css(styles.stateText, 'ms-Toggle-stateText') }>{ stateText }</Label>
             ) }
           </div>
-
         </div>
       </div>
     );
