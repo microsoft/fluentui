@@ -98,10 +98,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
           aria-describedby={ id + '-option' }
           aria-activedescendant={ isOpen && selectedIndex >= 0 ? (this._id + '-list' + selectedIndex) : null }
         >
-          <DummyListBox />
           <span
-            role='textbox'
-            aria-readonly={ true }
             id={ id + '-option' }
             className='ms-Dropdown-title'
             key={ selectedIndex }
@@ -273,10 +270,3 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
   }
 
 }
-
-const DummyListBox = (): JSX.Element =>
-  <div role='textbox'>
-    <span role='listbox'>
-      <span role='option' />
-    </span>
-  </div>
