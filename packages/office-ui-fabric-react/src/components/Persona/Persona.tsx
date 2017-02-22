@@ -136,22 +136,16 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
     return (
       <div
         { ...divProps }
-        className={ css(
-          'ms-Persona',
-          styles.root,
-          className,
-          PERSONA_SIZE[size],
-          PERSONA_PRESENCE[presence]
-        ) }
-      >
+        className={ css(styles.root, className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence]) }
+        >
         { size !== PersonaSize.tiny && (
-          <div className='ms-Persona-imageArea'>
+          <div className={ css(styles.imageArea) }>
             {
               !this.state.isImageLoaded &&
-              (<div className={ css('ms-Persona-initials', PERSONA_INITIALS_COLOR[initialsColor]) } aria-hidden='true'>{ imageInitials }</div>)
+              (<div className={ css(styles.initials, PERSONA_INITIALS_COLOR[initialsColor]) } aria-hidden='true'>{ imageInitials }</div>)
             }
             <Image
-              className='ms-Persona-image'
+              className={ css(styles.image) }
               imageFit={ ImageFit.cover }
               src={ imageUrl }
               shouldFadeIn={ imageShouldFadeIn }
