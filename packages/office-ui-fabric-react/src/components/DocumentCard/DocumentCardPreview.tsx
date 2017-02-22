@@ -5,7 +5,7 @@ import {
   autobind,
   css
 } from '../../Utilities';
-import './DocumentCardPreview.scss';
+import styles from './DocumentCardPreview.scss';
 
 const LIST_ITEM_COUNT = 3;
 
@@ -32,7 +32,7 @@ export class DocumentCardPreview extends React.Component<IDocumentCardPreviewPro
     }
 
     return (
-      <div className={ css('ms-DocumentCardPreview', isFileList && 'is-fileList') } style={ style }>
+      <div className={ css('ms-DocumentCardPreview', styles.root, isFileList && ('is-fileList ' + styles.isFileList)) } style={ style }>
         { preview }
       </div>
     );
@@ -52,7 +52,7 @@ export class DocumentCardPreview extends React.Component<IDocumentCardPreviewPro
 
     let icon;
     if (previewImage.iconSrc) {
-      icon = <Image className='ms-DocumentCardPreview-icon' src={ previewImage.iconSrc } role='presentation' alt='' />;
+      icon = <Image className={ css('ms-DocumentCardPreview-icon', styles.icon) } src={ previewImage.iconSrc } role='presentation' alt='' />;
     }
 
     return (
@@ -80,7 +80,7 @@ export class DocumentCardPreview extends React.Component<IDocumentCardPreviewPro
     let fileListItems = previewImages.slice(0, LIST_ITEM_COUNT).map((file, fileIndex) => (
       <li key={ fileIndex }>
         <Image
-          className='ms-DocumentCardPreview-fileListIcon'
+          className={ css('ms-DocumentCardPreview-fileListIcon', styles.fileListIcon) }
           src={ file.iconSrc }
           role='presentation'
           alt=''
@@ -92,11 +92,11 @@ export class DocumentCardPreview extends React.Component<IDocumentCardPreviewPro
 
     return (
       <div>
-        <ul className='ms-DocumentCardPreview-fileList'>
+        <ul className={ css('ms-DocumentCardPreview-fileList', styles.fileList) }>
           { fileListItems }
         </ul>
         { overflowText &&
-          <span className='ms-DocumentCardPreview-fileListMore'>{ overflowText }</span>
+          <span className={ css('ms-DocumentCardPreview-fileListMore', styles.fileListMore) }>{ overflowText }</span>
         }
       </div>
     );
