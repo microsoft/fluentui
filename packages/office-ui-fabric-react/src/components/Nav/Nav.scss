@@ -79,7 +79,7 @@ ul > li {
   }
 }
 
-:global(.chevron.ms-Icon) {
+.chevronIcon {
   position: absolute;
   @include left(8px);
   height: $navnode-height;
@@ -88,7 +88,7 @@ ul > li {
   transition: transform .1s linear;
 }
 
-.group.isExpanded .chevronButtonGroup .chevron  {
+.chevronIsExpanded {
   transform: rotate(-180deg);
 }
 

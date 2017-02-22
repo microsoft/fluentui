@@ -184,7 +184,9 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
             className={css('ms-Nav-chevronButton ms-Nav-chevronButton--group ms-Nav-groupHeaderFontSize', styles.chevronButton, styles.chevronButtonGroup, styles.groupHeaderFontSize)}
             onClick={ this._onGroupHeaderClicked.bind(this, groupIndex) }
             >
-            <i className={ css('ms-Nav-chevron', 'ms-Icon', 'ms-Icon--ChevronDown', styles.chevron) }></i>
+            <i className={ css('ms-Nav-chevron', 'ms-Icon', 'ms-Icon--ChevronDown', styles.chevronIcon, 
+            {[styles.chevronIsExpanded]: isGroupExpanded }) 
+            }></i>
             { group.name }
           </button> : null)
         }
