@@ -52,7 +52,7 @@
 
 //== Modifier: Warning message
 //
-.root.isRootWarning {
+.root.rootIsWarning {
   @include ms-bgColor-warning;
   color: $ms-color-warningText;
 }
@@ -60,7 +60,7 @@
 
 //== Modifier: Severe Warning message
 //
-.root.isRootSevereWarning {
+.root.rootIsSevereWarning {
   @include ms-bgColor-severeWarning;
   color: $ms-color-severeWarningText;
 
@@ -72,7 +72,7 @@
 
 //== Modifier: Error message
 //
-.root.isRootError {
+.root.rootIsError {
   @include ms-bgColor-error;
   color: $ms-color-errorText;
 
@@ -84,7 +84,7 @@
 
 //== Modifier: Blocked message
 //
-.root.isRootBlocked {
+.root.rootIsBlocked {
   @include ms-bgColor-error;
   color: $ms-color-errorText;
 
@@ -96,7 +96,7 @@
 
 //== Modifier: Success message
 //
-.root.isRootSuccess {
+.root.rootIsSuccess {
   @include ms-bgColor-success;
   color: $ms-color-successText;
 

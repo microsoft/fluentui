@@ -18,7 +18,7 @@ export class Overlay extends React.Component<IOverlayProps, {}> {
       styles.root,
       className,
       {
-        ['ms-Overlay--dark ' + styles.isRootDark]: isDarkThemed,
+        ['ms-Overlay--dark ' + styles.rootIsDark]: isDarkThemed,
       });
 
     return (

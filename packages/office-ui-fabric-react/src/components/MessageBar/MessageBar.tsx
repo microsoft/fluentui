@@ -68,12 +68,12 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
   private _getClassName(): string {
     return css(this.props.className, 'ms-MessageBar', styles.root, {
       ['ms-MessageBar ' + styles.root]: this.props.messageBarType === MessageBarType.info,
-      ['ms-MessageBar--error ' + styles.isRootError]: this.props.messageBarType === MessageBarType.error,
-      ['ms-MessageBar--blocked ' + styles.isRootBlocked]: (this.props.messageBarType === MessageBarType.blocked) ||
+      ['ms-MessageBar--error ' + styles.rootIsError]: this.props.messageBarType === MessageBarType.error,
+      ['ms-MessageBar--blocked ' + styles.rootIsBlocked]: (this.props.messageBarType === MessageBarType.blocked) ||
       (this.props.messageBarType === MessageBarType.remove), // TODO remove deprecated value at >= 1.0.0
-      ['ms-MessageBar--severeWarning ' + styles.isRootSevereWarning]: this.props.messageBarType === MessageBarType.severeWarning,
-      ['ms-MessageBar--success ' + styles.isRootSuccess]: this.props.messageBarType === MessageBarType.success,
-      ['ms-MessageBar--warning ' + styles.isRootWarning]: this.props.messageBarType === MessageBarType.warning
+      ['ms-MessageBar--severeWarning ' + styles.rootIsSevereWarning]: this.props.messageBarType === MessageBarType.severeWarning,
+      ['ms-MessageBar--success ' + styles.rootIsSuccess]: this.props.messageBarType === MessageBarType.success,
+      ['ms-MessageBar--warning ' + styles.rootIsWarning]: this.props.messageBarType === MessageBarType.warning
     });
   }
 

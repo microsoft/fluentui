@@ -17,13 +17,13 @@
 
 //== Modifier: Hidden overlay
   //
-  &.isRootNone {
+  &.rootIsNone {
     visibility: hidden;
   }
 
   //== Modifier: Dark overlay
   //
-  &.isRootDark {
+  &.rootIsDark {
     background-color: $ms-color-blackTranslucent40;
   }
 }
