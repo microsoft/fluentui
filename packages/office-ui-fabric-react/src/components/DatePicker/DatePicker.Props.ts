@@ -67,7 +67,7 @@ export interface IDatePickerProps extends React.Props<DatePicker> {
   /**
    * Localized strings to use in the DatePicker
    */
-  strings: IDatePickerStrings;
+  strings?: IDatePickerStrings;
 }
 
 export interface IDatePickerStrings {

@@ -9,14 +9,15 @@
   "scripts": {
     "postinstall": "rush install && rush link",
     "test": "rush build --production",
-    "start": "gulp --gulpfile packages/office-ui-fabric-react/gulpfile.js serve",
+    "start": "gulp --gulpfile apps/fabric-examples/gulpfile.js serve",
     "build": "rush build --production --clean",
     "change": "rush change"
   },
   "license": "MIT",
   "devDependencies": {
-    "@microsoft/rush": "^1.4.0",
+    "@microsoft/rush": "^1.5.1",
     "github": "^7.0.0",
+    "gulp": "^3.9.1",
     "yargs": "^6.5.0"
   }
 }

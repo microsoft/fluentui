@@ -47,7 +47,6 @@ export class DocumentCardPreview extends React.Component<IDocumentCardPreviewPro
         height={ height }
         imageFit={ imageFit }
         src={ previewImage.previewImageSrc }
-        errorSrc={ previewImage.errorImageSrc }
         role='presentation' alt='' />
     );
 

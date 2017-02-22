@@ -10,9 +10,9 @@ import {
 export { DirectionalHint } from '../../common/DirectionalHint';
 
 export enum ContextualMenuItemType {
-  Normal,
-  Divider,
-  Header
+  Normal = 0,
+  Divider = 1,
+  Header = 2
 }
 
 export interface IContextualMenuProps extends React.Props<ContextualMenu> {

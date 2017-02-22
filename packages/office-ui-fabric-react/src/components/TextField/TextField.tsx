@@ -238,8 +238,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
 
     return (
       <textarea
-        { ...textAreaProps }
         id={ this._id }
+        { ...textAreaProps }
         ref={ this._resolveRef('_textElement') }
         value={ this.state.value }
         onInput={ this._onInputChange }
@@ -260,8 +260,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     return (
       <input
         type={ 'text' }
-        { ...inputProps }
         id={ this._id }
+        { ...inputProps }
         ref={ this._resolveRef('_textElement') }
         value={ this.state.value }
         onInput={ this._onInputChange }

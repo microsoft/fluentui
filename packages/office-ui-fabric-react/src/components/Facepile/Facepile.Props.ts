@@ -94,11 +94,11 @@ export interface IFacepilePersona extends React.HTMLProps<HTMLButtonElement | HT
 
 export enum OverflowButtonType {
   /** No overflow */
-  none,
+  none = 0,
   /** +1 overflow icon */
-  descriptive,
+  descriptive = 1,
   /** More overflow icon */
-  more,
+  more = 2,
   /** Chevron overflow icon */
-  downArrow
+  downArrow = 3
 }

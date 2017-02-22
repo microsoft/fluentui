@@ -14,11 +14,11 @@ import {
 import {
   FocusZone,
   FocusZoneDirection
-} from '../FocusZone';
+} from '../../FocusZone';
 import {
   Persona,
   PersonaSize
-} from '../Persona';
+} from '../../Persona';
 import {
   PERSONA_SIZE
 } from '../Persona/PersonaConsts';
@@ -153,7 +153,7 @@ public render(): JSX.Element {
       size={ personaSize }
       hidePersonaDetails={ true }
       {...(getPersonaProps ? getPersonaProps(persona) : null) }
-      />;
+    />;
   }
 
   private _getElementWithOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
@@ -164,7 +164,8 @@ public render(): JSX.Element {
       key={ (!!persona.imageUrl ? 'i' : '') + index }
       onClick={ this._onPersonaClick.bind(this, persona) }
       onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
-      onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }>
+      onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
+    >
       { personaControl }
     </button>;
   }
@@ -176,7 +177,8 @@ public render(): JSX.Element {
       title={ persona.personaName }
       key={ (!!persona.imageUrl ? 'i' : '') + index }
       onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
-      onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }>
+      onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
+    >
       { personaControl }
     </div>;
   }
@@ -204,7 +206,8 @@ public render(): JSX.Element {
 
     return <button { ...getNativeProps(this.props.overflowButtonProps, buttonProperties) }
       className={ css('ms-Persona', PERSONA_SIZE[personaSize], 'ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton') }
-      title={ personaNames }>
+      title={ personaNames }
+    >
       { '+' + numPersonasNotPictured }
     </button>;
   }
@@ -212,7 +215,8 @@ public render(): JSX.Element {
   private _getIconElement(icon: string): JSX.Element {
     let { personaSize } = this.props;
     return <button { ...getNativeProps(this.props.overflowButtonProps, buttonProperties) }
-      className={ css('ms-Persona', PERSONA_SIZE[personaSize], 'ms-Facepile-overflowButton', 'ms-Facepile-itemButton') }>
+      className={ css('ms-Persona', PERSONA_SIZE[personaSize], 'ms-Facepile-overflowButton', 'ms-Facepile-itemButton') }
+    >
       <i className={ css('ms-Icon', 'msIcon', `ms-Icon ms-Icon--${icon}`) } aria-hidden='true'></i>
     </button>;
   }
