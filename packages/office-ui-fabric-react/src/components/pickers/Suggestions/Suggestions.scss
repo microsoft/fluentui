@@ -69,11 +69,11 @@
   white-space: nowrap;
   line-height: 20px;
 
-  :global .ms-Spinner-circle {
+  :global(.ms-Spinner-circle) {
     display: inline-block;
     vertical-align: middle;
   }
-  :global .ms-Spinner-label {
+  :global(.ms-Spinner-label) {
     display: inline-block;
     margin: 0px 10px;
     vertical-align: middle;
