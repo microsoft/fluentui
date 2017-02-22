@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "TextField: Fixed IE10 documentation input change behavior",
+      "type": "patch"
+    }
+  ],
+  "email": "manishda@microsoft.com"
+}
