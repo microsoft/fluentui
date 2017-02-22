@@ -5,7 +5,7 @@
 }
 
 // Modifier: The image frame should fill its parent element.
-.maximizeFrame {
+.rootIsMaximizeFrame {
   height: 100%;
   width: 100%;
 }
@@ -14,14 +14,14 @@
   display: block;
   opacity: 0;
 
-  &.isLoaded {
+  &.imageIsLoaded {
     opacity: 1;
   }
 }
 
-.imageCenter,
-.imageContain,
-.imageCover {
+.imageIsCenter,
+.imageIsContain,
+.imageIsCover {
   position: relative;
   @include left(50%);
   top: 50%;
@@ -34,47 +34,47 @@
   }
 }
 
-.imageContain {
-  &.imageLandscape {
+.imageIsContain {
+  &.imageIsLandscape {
     width: 100%;
     height: auto;
   }
 
-  &.imagePortrait {
+  &.imageIsPortrait {
     height: 100%;
     width: auto;
   }
 }
 
-.imageCover {
+.imageIsCover {
   &.imageLandscape {
     height: 100%;
     width: auto;
   }
 
-  &.imagePortrait {
+  &.imageIsPortrait {
     width: 100%;
     height: auto;
   }
 }
 
-.imageNone {
+.imageIsNone {
   height: auto;
   width: auto;
 }
 
 /** This is identical to the default behavior. */
-.imageScaleWidthHeight {
+.imageIsScaleWidthHeight {
   height: 100%;
   width: 100%;
 }
 
-.imageScaleWidth {
+.imageIsScaleWidth {
   height: auto;
   width: 100%;
 }
 
-.imageScaleHeight {
+.imageIsScaleHeight {
   height: 100%;
   width: auto;
 }

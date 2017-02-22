@@ -41,11 +41,11 @@ $Rating-largeIconSize: 20px;
 
     color: $Rating-defaultColor;
 
-    &.isSelected {
+    &.starIsSelected {
       color: $Rating-selectedColor;
     }
 
-    &.isDisabled {
+    &.starIsDisabled {
       color: $Rating-disabledColor;
 
       .label {
@@ -65,7 +65,7 @@ $Rating-largeIconSize: 20px;
     }
   }
 
-  .isLarge & {
+  .rootIsLarge & {
     .label {
       font-size: $Rating-largeIconSize;
       padding: 6px 2px 9px 2px;
@@ -78,6 +78,6 @@ $Rating-largeIconSize: 20px;
 }
 
 // Highlight focused star
-:global(.ms-Fabric.is-focusVisible) .isInFocus .label {
+:global(.ms-Fabric.is-focusVisible) .starIsInFocus .label {
   border: 1px solid $focusedBorderColor;
 }

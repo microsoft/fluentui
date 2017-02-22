@@ -54,7 +54,7 @@ export class ColorPicker extends React.Component<IColorPickerProps, IColorPicker
         <div className={ css('ms-ColorPicker-panel', styles.panel) }>
           <ColorRectangle color={ color } onSVChanged={ this._onSVChanged } />
           <ColorSlider
-            className={ css('is-hue', styles.isHue) }
+            className={ css('is-hue', styles.colorSliderIsHue) }
             minValue={ 0 }
             maxValue={ MAX_COLOR_HUE }
             initialValue={ color.h }
@@ -62,7 +62,7 @@ export class ColorPicker extends React.Component<IColorPickerProps, IColorPicker
           />
           { !this.props.alphaSliderHidden && (
             <ColorSlider
-              className={ css('is-alpha', styles.isAlpha) }
+              className={ css('is-alpha', styles.colorSliderIsAlpha) }
               overlayStyle={ { background: `linear-gradient(to right, transparent 0, ${color.str} 100%)` } }
               minValue={ 0 }
               maxValue={ 100 }

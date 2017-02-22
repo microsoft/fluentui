@@ -48,7 +48,7 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
     }
 
     return <div className={ css('ms-Rating', this.props.className, {
-      ['ms-Rating--large ' + styles.isLarge]: this.props.size === RatingSize.Large
+      ['ms-Rating--large ' + styles.rootIsLarge]: this.props.size === RatingSize.Large
     }) } role='application'>
       <div className={ css('ms-Rating-container', styles.container) } role='radiogroup' aria-labelledby={ this.props.ariaLabelId }>
         { stars }
@@ -60,9 +60,9 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
     const inputId = `${this._id}-${rating}`;
 
     return <div className={ css('ms-Rating-star', styles.star, {
-      ['is-selected ' + styles.isSelected]: rating <= this.state.rating,
-      ['is-inFocus ' + styles.isInFocus]: rating === this.state.focusedRating,
-      ['is-disabled ' + styles.isDisabled]: this.props.disabled
+      ['is-selected ' + styles.starIsSelected]: rating <= this.state.rating,
+      ['is-inFocus ' + styles.starIsInFocus]: rating === this.state.focusedRating,
+      ['is-disabled ' + styles.starIsDisabled]: this.props.disabled
     }) } key={ rating }>
       <input
         className={ css('ms-Rating-input', styles.input) }

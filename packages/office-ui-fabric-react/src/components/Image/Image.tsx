@@ -22,15 +22,15 @@ export enum CoverStyle {
 }
 
 export const CoverStyleMap = {
-  [CoverStyle.landscape]: 'ms-Image-image--landscape ' + styles.imageLandscape,
-  [CoverStyle.portrait]: 'ms-Image-image--portrait ' + styles.imagePortrait
+  [CoverStyle.landscape]: 'ms-Image-image--landscape ' + styles.imageIsLandscape,
+  [CoverStyle.portrait]: 'ms-Image-image--portrait ' + styles.imageIsPortrait
 };
 
 export const ImageFitMap = {
-  [ImageFit.center]: 'ms-Image-image--center ' + styles.imageCenter,
-  [ImageFit.contain]: 'ms-Image-image--contain ' + styles.imageContain,
-  [ImageFit.cover]: 'ms-Image-image--cover ' + styles.imageCover,
-  [ImageFit.none]: 'ms-Image-image--none ' + styles.imageNone
+  [ImageFit.center]: 'ms-Image-image--center ' + styles.imageIsCenter,
+  [ImageFit.contain]: 'ms-Image-image--contain ' + styles.imageIsContain,
+  [ImageFit.cover]: 'ms-Image-image--cover ' + styles.imageIsCover,
+  [ImageFit.none]: 'ms-Image-image--none ' + styles.imageIsNone
 };
 
 const KEY_PREFIX: string = 'fabricImage';
@@ -87,7 +87,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
           styles.root,
           className,
           {
-            ['ms-Image--maximizeFrame ' + styles.maximizeFrame]: maximizeFrame
+            ['ms-Image--maximizeFrame ' + styles.rootIsMaximizeFrame]: maximizeFrame
           })
         }
         style={ { width: width, height: height } }
@@ -106,12 +106,12 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
               (imageFit !== undefined) && ImageFitMap[imageFit], {
                 'is-fadeIn': shouldFadeIn,
                 'is-notLoaded': !loaded,
-                ['is-loaded ' + styles.isLoaded]: loaded,
+                ['is-loaded ' + styles.imageIsLoaded]: loaded,
                 'ms-u-fadeIn400': loaded && shouldFadeIn,
                 'is-error': loadState === ImageLoadState.error,
-                ['ms-Image-image--scaleWidth ' + styles.imageScaleWidth]: (imageFit === undefined && !!width && !height),
-                ['ms-Image-image--scaleHeight ' + styles.imageScaleHeight]: (imageFit === undefined && !width && !!height),
-                ['ms-Image-image--scaleWidthHeight ' + styles.imageScaleWidthHeight]: (imageFit === undefined && !!width && !!height),
+                ['ms-Image-image--scaleWidth ' + styles.imageIsScaleWidth]: (imageFit === undefined && !!width && !height),
+                ['ms-Image-image--scaleHeight ' + styles.imageIsScaleHeight]: (imageFit === undefined && !width && !!height),
+                ['ms-Image-image--scaleWidthHeight ' + styles.imageIsScaleWidthHeight]: (imageFit === undefined && !!width && !!height),
               }) }
           ref={ this._resolveRef('_imageElement') }
           src={ src }

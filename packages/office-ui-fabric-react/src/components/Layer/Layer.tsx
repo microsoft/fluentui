@@ -76,7 +76,7 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
 
         this._layerElement = doc.createElement('div');
         this._layerElement.className = css('ms-Layer', {
-          ['ms-Layer--fixed ' + styles.fixed]: !this.props.hostId
+          ['ms-Layer--fixed ' + styles.rootIsFixed]: !this.props.hostId
         });
 
         host.appendChild(this._layerElement);
