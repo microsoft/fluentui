@@ -110,11 +110,11 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
       border-color: $ms-color-neutralSecondaryAlt;
     }
 
-    &.isDisabled::before {
+    &.fieldIsDisabled::before {
       border-color: $ms-color-neutralTertiaryAlt;
     }
 
-    &.isChecked::before {
+    &.fieldIsChecked::before {
       border-color: $ms-color-themeDarkAlt;
     }
   }
@@ -130,7 +130,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
   //== State: A choiceField is checked
   //
-  &.isChecked {
+  &.fieldIsChecked {
     &::before {
       border: 2px solid $ms-color-themePrimary;
       background-color: transparent;
@@ -170,7 +170,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
   //== State: A disabled choiceField
   //
-  &.isDisabled {
+  &.fieldIsDisabled {
     cursor: default;
 
     &:hover,
@@ -209,22 +209,22 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
   //== State: A choiceField in focus
   //
-  &.isInFocus {
+  &.choiceFieldIsInFocus {
     &::before {
       border-color: $ms-color-neutralSecondaryAlt;
     }
 
-    &.isDisabled::before {
+    &.fieldIsDisabled::before {
       border-color: $ms-color-neutralTertiaryAlt;
     }
 
-    &.isChecked::before {
+    &.fieldIsChecked::before {
       border-color: $ms-color-themeDarkAlt;
     }
   }
 }
 
-.imageChoiceField {
+.choiceFieldIsImage {
   $fieldMinWidth: 164px;
   $fieldPadding: 20px;
 
@@ -236,7 +236,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   @include padding-left(0px);
   @include ms-bgColor-neutralLighter;
 
-  .imageField {
+  .fieldIsImage {
     display: inline-block;
 
     box-sizing: border-box;
@@ -252,7 +252,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
       .imageWrapper {
         transition: opacity $ms-choiceField-transition-duration ease;
 
-        &.isHidden {
+        &.imageWrapperIsHidden {
           position: absolute;
           left: 0;
           top: 0;
@@ -299,7 +299,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
       }
     }
 
-    &.isChecked {
+    &.fieldIsChecked {
       @include ms-bgColor-themeLighter;
 
       .labelWrapper .icon {
@@ -312,6 +312,6 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   }
 }
 
-:global(.ms-Fabric.is-focusVisible) .isInFocus {
+:global(.ms-Fabric.is-focusVisible) .choiceFieldIsInFocus {
   border: 1px solid $ms-color-neutralPrimary;
 }

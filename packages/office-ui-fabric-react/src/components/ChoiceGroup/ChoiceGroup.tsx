@@ -73,8 +73,8 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
             <div
               key={ option.key }
               className={ css('ms-ChoiceField', styles.choiceField, {
-                ['ms-ChoiceField--image ' + styles.imageChoiceField]: !!option.imageSrc || !!option.iconProps,
-                ['is-inFocus' + styles.isInFocus]: option.key === keyFocused
+                ['ms-ChoiceField--image ' + styles.choiceFieldIsImage]: !!option.imageSrc || !!option.iconProps,
+                ['is-inFocus ' + styles.choiceFieldIsInFocus]: option.key === keyFocused
               })
               }
             >
@@ -127,10 +127,10 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
       <label
         htmlFor={ this._id + '-' + option.key }
         className={ css({
-          ['ms-ChoiceField-field--image ' + styles.imageField]: !!option.imageSrc || !!option.iconProps,
           ['ms-ChoiceField-field ' + styles.field]: !option.imageSrc && !option.iconProps,
-          ['is-checked ' + styles.isChecked]: option.key === keyChecked,
-          ['is-disabled ' + styles.isDisabled]: isDisabled
+          ['ms-ChoiceField-field--image ' + styles.fieldIsImage]: !!option.imageSrc || !!option.iconProps,
+          ['is-checked ' + styles.fieldIsChecked]: option.key === keyChecked,
+          ['is-disabled ' + styles.fieldIsDisabled]: isDisabled
         }) }
       >
         {
@@ -140,7 +140,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                 'ms-ChoiceField-imageWrapper',
                 styles.imageWrapper,
                 {
-                  ['is-hidden ' + styles.isHidden]: option.key === keyChecked
+                  ['is-hidden ' + styles.imageWrapperIsHidden]: option.key === keyChecked
                 }) }
               >
                 <Image
@@ -153,7 +153,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                 'ms-ChoiceField-imageWrapper',
                 styles.imageWrapper,
                 {
-                  ['is-hidden ' + styles.isHidden]: option.key !== keyChecked
+                  ['is-hidden ' + styles.imageWrapperIsHidden]: option.key !== keyChecked
                 }) }
               >
                 <Image
