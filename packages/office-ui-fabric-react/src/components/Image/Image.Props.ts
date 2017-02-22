@@ -7,6 +7,11 @@ export interface IImageProps extends React.HTMLProps<HTMLImageElement> {
   shouldFadeIn?: boolean;
 
   /**
+   * If true, the image starts as visible and is hidden on error. Otherwise, the image is hidden until it is successfully loaded.
+   */
+  shouldStartVisible?: boolean
+
+  /**
    * If provided, adds the indicated css class to the image.
    */
   className?: string;
