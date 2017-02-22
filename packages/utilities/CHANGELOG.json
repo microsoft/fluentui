@@ -1,0 +1,61 @@
+{
+  "name": "@uifabric/utilities",
+  "entries": [
+    {
+      "version": "1.0.3",
+      "tag": "@uifabric/utilities_v1.0.3",
+      "date": "Mon, 13 Feb 2017 08:15:53 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "e5168866a9ca21698b95593d908eabe575e0cdbe",
+            "comment": "Updating package.json dependencies to exclude typings packages."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.0.2",
+      "tag": "@uifabric/utilities_v1.0.2",
+      "date": "Fri, 27 Jan 2017 04:09:14 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "2b3336fffbab0dc1802049a2c7aaae5c5875da01",
+            "comment": "autobind: Does not re-bind every time a decorated method is accessed anymore."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.0.1",
+      "tag": "@uifabric/utilities_v1.0.1",
+      "date": "Wed, 25 Jan 2017 04:11:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "d6cf8a3bcc1e2468d32d3feab458e0361c959b0b",
+            "comment": "rtl utility should read rtl attribute on first read."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.0.0",
+      "tag": "@uifabric/utilities_v1.0.0",
+      "date": "Mon, 16 Jan 2017 21:57:33 GMT",
+      "comments": {
+        "major": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "24d41e3383bb3cfe3ee8a557665e6d5976c40f8d",
+            "comment": "Introducing a new package to contain all baseline utilities that are commonly used amongst Fabric components."
+          }
+        ]
+      }
+    }
+  ]
+}

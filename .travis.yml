@@ -3,12 +3,5 @@ node_js:
   - 'node'
 before_script:
   - npm install -g gulp
-script: gulp --production
-deploy:
-  provider: npm
-  email: dzearing@microsoft.com
-  api_key:
-    secure: kLwlKSvDBoGsYP0p+64JnW5kmSpZfSmt2YxKKwWFcThlsiftbZtUILWFVpPd7A5yymsYuOONZTXppaW00OWaH1Bqs6yVHOn3kVQzE7VK/FtVwGZnqFfF0ea0pYYfto3OIFnyZ86vZ0M8u2A+3FGqjGYT1y3RDbG5GqhURBNd+KBhHrMS+pSaGDgEjskslLeQ+QtQ1/t17j0ZQZeYpxl+qFKislR1djeF0pkOjaoJ8wAUB77E0RhVyKP4cOyvtiF9E8nmnaurNYuabZqFMzOg0PgzMhh6xWv10aGF7jNzgojzCix/grCJR1gdfaE6epPGkrufK1nFjCVb60Z+jHZmuhXrW80Qa9AsMbNkXLlm9g6OLm63Ub2xqNQ5338NteGygWj8FRYe7ZngQ/vAY7SK44oA6+QRJAcpV6ieUFeIN8oEoZ42TJjUuKa6xaRVxuRQs2yobB3GzE4QioWLtqlDo+jbkzc0uFUpQHfErH5pHa7+qHDawiY9sO41lKvds6KfD3PXqHJxdokQh5nRB28k0eN+rFiSyvimDmerqBeG0U2oVJuYGVwGZSMKkOXGoZjZaCOFkPaZcS+HQZ+iDYpqEoB1jF1iYgkknZQLDlprWywjXEy/u2C2Bkd1K31aFCwYxrxkgGquii1ugUFVrjCpNLbeeoKALx5JapDfyAUVF+U=
-  on:
-    tags: true
-    repo: OfficeDev/office-ui-fabric-react
+script:
+  - npm run test

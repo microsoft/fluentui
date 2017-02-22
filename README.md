@@ -4,16 +4,16 @@
 
 [![npm version](https://badge.fury.io/js/office-ui-fabric-react.svg)](https://badge.fury.io/js/office-ui-fabric-react)
 [![Build Status](https://travis-ci.org/OfficeDev/office-ui-fabric-react.svg?branch=master)](https://travis-ci.org/OfficeDev/office-ui-fabric-react)
-[![Dependencies](https://david-dm.org/OfficeDev/office-ui-fabric-react.svg)](https://david-dm.org/OfficeDev/office-ui-fabric-react)
 
 Fabric React is a responsive, mobile-first collection of robust components designed to make it quick and simple for you to create web experiences using the Office Design Language.
 
-**This project is in a pre-v1 state**, so we encourage you to check out the [Roadmap](#roadmap) to see what we're working towards and what this means for your usage of the control library.
+**This project is in a pre-release state**, so we encourage you to check out the [Roadmap](#roadmap) to see what we're working towards and what this means for your usage of the control library.
 
 ## Contents
 
 - [View the docs](#view-the-docs)
 - [Get started](#get-started)
+- [Testing](#testing)
 - [Advanced usage](#advanced-usage)
 - [Roadmap](#roadmap)
 - [Trello board](#trello-board)
@@ -29,10 +29,11 @@ Before you get started, make sure you have [node.js](https://nodejs.org/), [gulp
 
 1. `git clone https://github.com/OfficeDev/office-ui-fabric-react.git`
 2. `npm install`
-3. `gulp serve`
+3. `npm start`
 
-This will open a web browser with the example page. You can make changes to the code which will automatically build and refresh the page using live-reload.
+This will run `gulp serve` from the office-ui-fabric-react package folder, which will open a web browser with the example page. You can make changes to the code which will automatically build and refresh the page using live-reload.
 
+To build all packages in the repo, you can use `npm run build`.
 
 ## Get started
 
@@ -52,7 +53,7 @@ This will add the fabric-react project as a dependency in your package.json file
 
 The library includes commonjs entry points under the lib folder. To use a control, you should be able to import it and use it in your render method:
 
-```
+```js
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Button } from 'office-ui-fabric-react/lib/Button';
@@ -61,6 +62,10 @@ const MyPage = () => (<div><Button>I am a button.</Button></div>);
 
 ReactDOM.render(<MyPage />, document.body.firstChild);
 ```
+
+## Testing
+
+For testing see our [testing documentation](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/ghdocs/TESTING.md).
 
 ## Advanced usage
 
@@ -103,7 +108,7 @@ We're excited to share our development of this project with folks outside of the
 
 All files on the Office UI Fabric React GitHub repository are subject to the MIT license. Please read the License file at the root of the project.
 
-Usage of the fonts referenced in Office UI Fabric files is subject to the [license](http://appsforoffice.microsoft.com/fabric/Segoe_UI_and_Fabric_CDN_License.txt).
+Usage of the fonts and icons referenced in Office UI Fabric is subject to the terms of the [assets license agreement](http://aka.ms/fabric-assets-license).
 
 
 ## Changelog
