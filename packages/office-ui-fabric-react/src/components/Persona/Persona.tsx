@@ -18,7 +18,7 @@ import {
   PERSONA_PRESENCE,
   PERSONA_SIZE
 } from './PersonaConsts';
-import './Persona.scss';
+import styles from './Persona.scss';
 
 /** Regex to detect words within paraenthesis in a string where gi implies global and case-insensitive. */
 const CHARS_WITHIN_PARENTHESIS_REGEX: RegExp = new RegExp('\\(([^)]*)\\)', 'gi');
@@ -136,8 +136,14 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
     return (
       <div
         { ...divProps }
-        className={ css('ms-Persona', className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence]) }
-        >
+        className={ css(
+          'ms-Persona',
+          styles.root,
+          className,
+          PERSONA_SIZE[size],
+          PERSONA_PRESENCE[presence]
+        ) }
+      >
         { size !== PersonaSize.tiny && (
           <div className='ms-Persona-imageArea'>
             {
