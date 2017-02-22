@@ -239,15 +239,15 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     return (
       <textarea
         id={ this._id }
+        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
+        aria-invalid={ !!this.state.errorMessage }
+        aria-label={ this.props.ariaLabel }
         { ...textAreaProps }
         ref={ this._resolveRef('_textElement') }
         value={ this.state.value }
         onInput={ this._onInputChange }
         onChange={ this._onChange }
         className={ this._textElementClassName }
-        aria-label={ this.props.ariaLabel }
-        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
-        aria-invalid={ !!this.state.errorMessage }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
       />
@@ -261,15 +261,15 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       <input
         type={ 'text' }
         id={ this._id }
+        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
+        aria-label={ this.props.ariaLabel }
+        aria-invalid={ !!this.state.errorMessage }
         { ...inputProps }
         ref={ this._resolveRef('_textElement') }
         value={ this.state.value }
         onInput={ this._onInputChange }
         onChange={ this._onChange }
         className={ this._textElementClassName }
-        aria-label={ this.props.ariaLabel }
-        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
-        aria-invalid={ !!this.state.errorMessage }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
       />
