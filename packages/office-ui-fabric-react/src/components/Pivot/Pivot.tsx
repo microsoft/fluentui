@@ -10,7 +10,7 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { PivotItem } from './PivotItem';
 import { PivotLinkFormat } from './Pivot.Props';
 import { PivotLinkSize } from './Pivot.Props';
-import './Pivot.scss';
+import styles from './Pivot.scss';
 
 /**
  *  Usage:
@@ -100,9 +100,9 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
   private _renderPivotLinks() {
     return (
       <FocusZone direction={ FocusZoneDirection.horizontal }>
-        <ul className={ css('ms-Pivot',
-          { 'ms-Pivot--large': this.props.linkSize === PivotLinkSize.large },
-          { 'ms-Pivot--tabs': this.props.linkFormat === PivotLinkFormat.tabs }) }
+        <ul className={ css('ms-Pivot', styles.root,
+          { ['ms-Pivot--large ' + styles.isRootLarge]: this.props.linkSize === PivotLinkSize.large },
+          { ['ms-Pivot--tabs ' + styles.isRootTabs]: this.props.linkFormat === PivotLinkFormat.tabs }) }
           role='tablist'>
           { this.state.links.map(this._renderLink) }
         </ul>
@@ -119,24 +119,24 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
 
     let count;
     if (itemCount !== undefined) {
-      count = <span className='ms-Pivot-count'>({ itemCount })</span>;
+      count = <span className={ css('ms-Pivot-count', styles.count) }>({ itemCount })</span>;
     }
 
     let icon: JSX.Element;
     if (itemIcon !== undefined) {
-      icon = <span className='ms-Pivot-icon'><i className={ `ms-Icon ms-Icon--${itemIcon}` }></i></span>;
+      icon = <span className={ css('ms-Pivot-icon', styles.icon) }><i className={ `ms-Icon ms-Icon--${itemIcon}` }></i></span>;
     }
 
     let text: JSX.Element;
     if (linkText !== undefined) {
-      text = <span className='ms-Pivot-text'>{ link.linkText }</span>;
+      text = <span className={ css('ms-Pivot-text', styles.text) }>{ link.linkText }</span>;
     }
 
     return (
       <button
         id={ tabId }
         key={ itemKey }
-        className={ css('ms-Pivot-link', { 'is-selected': this.state.selectedKey === itemKey }) }
+        className={ css('ms-Pivot-link', styles.link, { ['is-selected ' + styles.isSelected]: this.state.selectedKey === itemKey }) }
         onClick={ this._onLinkClick.bind(this, itemKey) }
         onKeyPress={ this._onKeyPress.bind(this, itemKey) }
         aria-label={ link.ariaLabel }
