@@ -21,7 +21,7 @@ import {
 import {
   PERSONA_SIZE
 } from '../Persona/PersonaConsts';
-import './Facepile.scss';
+import styles from './Facepile.scss';
 
 export class Facepile extends React.Component<IFacepileProps, {}> {
   public static defaultProps: IFacepileProps = {
@@ -41,8 +41,8 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
     }
 
     return (
-      <div className='ms-Facepile'>
-        <div className='ms-Facepile-members'>
+      <div className={css('ms-Facepile', styles.root)}>
+        <div className={css('ms-Facepile-members')}>
           { showAddButton ? this._getAddNewElement() : null }
           <FocusZone direction={ FocusZoneDirection.horizontal }>
             {
@@ -56,7 +56,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
             { overflowButtonProps ? this._getOverflowElement(numPersonasToShow) : null }
           </FocusZone>
         </div>
-        <div className='ms-Facepile-clear'></div>
+        <div className={css('ms-Facepile-clear', styles.clear)}></div>
       </div>
     );
   }
@@ -77,7 +77,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   private _getElementWithOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
     return <button
       { ...getNativeProps(persona, buttonProperties) }
-      className='ms-Facepile-itemButton'
+      className={css('ms-Facepile-itemButton', styles.itemButton)}
       title={ persona.personaName }
       key={ (!!persona.imageUrl ? 'i' : '') + index }
       onClick={ this._onPersonaClick.bind(this, persona) }
@@ -91,7 +91,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   private _getElementWithoutOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
     return <div
       { ...getNativeProps(persona, divProperties) }
-      className='ms-Facepile-itemButton'
+      className={css('ms-Facepile-itemButton', styles.itemButton)}
       title={ persona.personaName }
       key={ (!!persona.imageUrl ? 'i' : '') + index }
       onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
@@ -123,7 +123,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
     let personaNames: string = this.props.personas.slice(numPersonasToShow).map((p: IFacepilePersona) => p.personaName).join(', ');
 
     return <button { ...getNativeProps(this.props.overflowButtonProps, buttonProperties) }
-      className={ css('ms-Persona', PERSONA_SIZE[personaSize], 'ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton') }
+      className={ css('ms-Persona', PERSONA_SIZE[personaSize], 'ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton', styles.descriptiveOverflowButton, styles.itemButton) }
       title={ personaNames }
     >
       { '+' + numPersonasNotPictured }
@@ -133,7 +133,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   private _getIconElement(icon: string): JSX.Element {
     let { personaSize } = this.props;
     return <button { ...getNativeProps(this.props.overflowButtonProps, buttonProperties) }
-      className={ css('ms-Persona', PERSONA_SIZE[personaSize], 'ms-Facepile-overflowButton', 'ms-Facepile-itemButton') }
+      className={ css('ms-Persona', PERSONA_SIZE[personaSize], 'ms-Facepile-overflowButton', 'ms-Facepile-itemButton', styles.overflowButton, styles.itemButton) }
     >
       <i className={ css('ms-Icon', 'msIcon', `ms-Icon ms-Icon--${icon}`) } aria-hidden='true'></i>
     </button>;
@@ -142,7 +142,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   private _getAddNewElement(): JSX.Element {
     let { personaSize } = this.props;
     return <button { ...getNativeProps(this.props.addButtonProps, buttonProperties) }
-      className={ css('ms-Persona', PERSONA_SIZE[personaSize], 'ms-Facepile-addButton', 'ms-Facepile-itemButton') }>
+      className={ css('ms-Persona', PERSONA_SIZE[personaSize], 'ms-Facepile-addButton', 'ms-Facepile-itemButton', styles.addButton, styles.itemButton) }>
       <i className='ms-Icon msIcon ms-Icon--AddFriend' aria-hidden='true'></i>
     </button>;
   }
