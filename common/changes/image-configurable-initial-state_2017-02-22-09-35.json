@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Allow Persona to start with visible image",
+      "type": "minor"
+    }
+  ],
+  "email": "asmundg@big-oil.org"
+}
