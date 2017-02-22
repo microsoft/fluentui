@@ -418,7 +418,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Small Persona
 //
-.root.isRootSm {
+.root.isRootSmall {
   height: $ms-Persona-sizeSm;
   line-height: $ms-Persona-sizeSm;
   min-width: $ms-Persona-sizeSm;
@@ -458,7 +458,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Large Persona
 //
-.root.isRootLg {
+.root.isRootLarge {
   height: $ms-Persona-sizeLg;
   line-height: $ms-Persona-sizeLg;
   min-width: $ms-Persona-sizeLg;
@@ -506,7 +506,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Extra Large Persona
 //
-.root.isRootXl {
+.root.isRootExtraLarge {
   height: $ms-Persona-sizeXl;
   line-height: $ms-Persona-sizeXl;
   min-width: $ms-Persona-sizeXl;
@@ -583,7 +583,7 @@ $ms-Persona-presenceSizeXl: 28px;
   cursor: pointer;
   padding: 0 10px;
 
-  &:not(.isRootXl) {
+  &:not(.isRootExtraLarge) {
     &:hover,
     &:focus {
       background-color: $ms-color-themeLighter;
