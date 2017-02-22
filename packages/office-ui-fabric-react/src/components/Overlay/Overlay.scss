@@ -7,25 +7,23 @@
 // --------------------------------------------------
 // Modal overlay styles
 
-:global {
-  .ms-Overlay {
-    background-color: $ms-color-whiteTranslucent40;
-    position: absolute;
-    bottom: 0;
-    left:   0;
-    right:  0;
-    top:    0;
+.root {
+  background-color: $ms-color-whiteTranslucent40;
+  position: absolute;
+  bottom: 0;
+  left:   0;
+  right:  0;
+  top:    0;
 
-    //== Modifier: Hidden overlay
-    //
-    &.ms-Overlay--none {
-      visibility: hidden;
-    }
+//== Modifier: Hidden overlay
+  //
+  &.isRootNone {
+    visibility: hidden;
+  }
 
-    //== Modifier: Dark overlay
-    //
-    &.ms-Overlay--dark {
-      background-color: $ms-color-blackTranslucent40;
-    }
+  //== Modifier: Dark overlay
+  //
+  &.isRootDark {
+    background-color: $ms-color-blackTranslucent40;
   }
 }
