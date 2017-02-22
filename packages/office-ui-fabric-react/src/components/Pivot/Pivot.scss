@@ -169,8 +169,8 @@
     padding: 0 10px;
     vertical-align: top;
 
-    &:hover:not(.isSelected):not(.isLinkOverFlow),
-    &:focus:not(.isSelected):not(.isLinkOverFlow) {
+    &:hover:not(.isSelected):not(.isLinkOverflow),
+    &:focus:not(.isSelected):not(.isLinkOverflow) {
       color: $ms-color-black;
     }
 
@@ -192,7 +192,7 @@
     }
   }
 
-  .link.isLinkOverFlow {
+  .link.isLinkOverflow {
     &:hover:not(.isSelected),
     &:focus:not(.isSelected) {
       background-color: $ms-color-white;
@@ -219,7 +219,7 @@
 //     font-size: $ms-font-size-m;
 //   }
 
-//   .ms-Pivot-link.ms-Pivot-isLinkOverFlow {
+//   .ms-Pivot-link.ms-Pivot-isLinkOverflow {
 //     &:after {
 //       font-size: $ms-font-size-m;
 //     }
