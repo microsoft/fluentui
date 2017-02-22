@@ -1,9 +1,6 @@
 @import '../../../common/common';
-.peoplePickerPersonaContainer {
-  display: inline-block;
-}
 
-.peoplePickerMenuItem.resultContent {
+.pickerMenuItem.resultContent {
   display: table-row;
   .resultItem {
     display: table-cell;
