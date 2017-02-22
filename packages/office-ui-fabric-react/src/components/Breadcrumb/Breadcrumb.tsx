@@ -8,6 +8,7 @@ import {
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu } from '../../ContextualMenu';
+import { Link } from '../../Link';
 import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import './Breadcrumb.scss';
@@ -84,13 +85,8 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
             ) : (null) }
             { renderedItems.map(
               (item, index) => (
-                <li className='ms-Breadcrumb-listItem' key={ item.key || String(index) } ref={ item.key || String(index) } >
-                  <a className='ms-Breadcrumb-itemLink'
-                    onClick={ item.onClick ? this._onBreadcrumbClicked.bind(this, item) : null }
-                    href={ item.href }
-                    role={ item.onClick ? 'button' : 'link' }>
-                    { item.text }
-                  </a>
+                <li className='ms-Breadcrumb-listItem' key={ item.key || String(index) } ref={ item.key || String(index) }>
+                  { this._renderItem(item) }
                   <i className={ css('ms-Breadcrumb-chevron ms-Icon', getRTL() ? 'ms-Icon--ChevronLeft' : 'ms-Icon--ChevronRight') }></i>
                 </li>
               )) }
@@ -104,7 +100,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
               (item, index) => ({
                 name: item.text,
                 key: item.key,
-                onClick: this._onBreadcrumbClicked.bind(this, item),
+                onClick: item.onClick ? this._onBreadcrumbClicked.bind(this, item) : null,
                 href: item.href
               })
             ) }
@@ -114,6 +110,21 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
         ) : (null) }
       </div>
     );
+  }
+
+  private _renderItem(item: IBreadcrumbItem) {
+    if (item.onClick || item.href) {
+      return <Link
+        className='ms-Breadcrumb-itemLink'
+        href={ item.href }
+        onClick={ this._onBreadcrumbClicked.bind(this, item) }>
+        { item.text }
+      </Link>
+    } else {
+      return (<span className='ms-Breadcrumb-item'>
+        { item.text }
+      </span>);
+    }
   }
 
   @autobind

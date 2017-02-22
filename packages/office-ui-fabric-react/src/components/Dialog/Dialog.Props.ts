@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Dialog } from './Dialog';
+import { IButtonProps } from '../Button/Button.Props';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 
@@ -23,9 +24,14 @@ export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeSt
   isDarkOverlay?: boolean;
 
   /**
-  * A callback function for when the Dialog is dismissed from the close button or light dismiss.
+  * A callback function for when the Dialog is dismissed from the close button or light dismiss, before the animation completes.
   */
   onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
+
+  /**
+   * A callback function which is called after the Dialog is dismissed and the animation is complete.
+   */
+  onDismissed?: () => any;
 
   /**
   * The title text to display at the top of the dialog.
@@ -68,13 +74,18 @@ export interface IDialogProps extends React.Props<Dialog>, IWithResponsiveModeSt
    * Use onLayerDidMount instead. Deprecated at 0.81.2, to be removed at 1.0.0.
    */
   onLayerMounted?: () => void;
+
+  /**
+   * Other top buttons that will show up next to the close button
+   */
+  topButtonsProps?: IButtonProps[];
 }
 
 export enum DialogType {
   /** Standard dialog */
-  normal,
+  normal = 0,
   /** Dialog with large header banner */
-  largeHeader,
+  largeHeader = 1,
   /** Dialog with an 'x' close button in the upper-right corner */
-  close
+  close = 2
 }

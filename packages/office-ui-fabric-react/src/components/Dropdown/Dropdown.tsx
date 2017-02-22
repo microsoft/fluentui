@@ -4,8 +4,6 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import {
-} from '../../index';
-import {
   BaseComponent,
   KeyCodes,
   autobind,
@@ -45,7 +43,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
       'isDisabled': 'disabled'
     });
 
-    this._id = getId('Dropdown');
+    this._id = props.id || getId('Dropdown');
 
     let selectedKey = props.defaultSelectedKey !== undefined ? props.defaultSelectedKey : props.selectedKey;
 
@@ -56,7 +54,10 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
   }
 
   public componentWillReceiveProps(newProps: IDropdownProps) {
-    if (newProps.selectedKey !== this.props.selectedKey) {
+    // In controlled component usage where selectedKey is provided, update the selectedIndex
+    // state if the key or options change.
+    if (newProps.selectedKey !== undefined &&
+      (newProps.selectedKey !== this.props.selectedKey || newProps.options !== this.props.options)) {
       this.setState({
         selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey)
       });
@@ -66,7 +67,7 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
 
   public render() {
     let id = this._id;
-    let { className, label, options, disabled, isDisabled, onRenderItem = this._onRenderItem } = this.props;
+    let { className, label, options, disabled, isDisabled, ariaLabel, onRenderItem = this._onRenderItem, onRenderOption = this._onRenderOption } = this.props;
     let { isOpen, selectedIndex } = this.state;
     let selectedOption = options[selectedIndex];
 
@@ -92,15 +93,17 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
           onClick={ this._onDropdownClick }
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='combobox'
-          aria-label={ label }
+          aria-live={ disabled || isOpen ? 'off' : 'assertive' }
+          aria-label={ ariaLabel || label }
+          aria-describedby={ id + '-option' }
           aria-activedescendant={ selectedIndex >= 0 ? (this._id + '-list' + selectedIndex) : (this._id + '-list') }
-          >
+        >
           <span
+            id={ id + '-option' }
             className='ms-Dropdown-title'
             key={ selectedIndex }
-            aria-live={ disabled || isOpen ? 'off' : 'polite' }
             aria-atomic={ true }
-            >
+          >
             { selectedOption ? onRenderItem(selectedOption, this._onRenderItem) : '' }
           </span>
           <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown'></i>
@@ -115,12 +118,12 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
             directionalHint={ DirectionalHint.bottomLeftEdge }
             onDismiss={ this._onDismiss }
             onPositioned={ this._onPositioned }
-            >
+          >
             <FocusZone
               ref={ this._resolveRef('_focusZone') }
               direction={ FocusZoneDirection.vertical }
               defaultActiveElement={ '#' + id + '-list' + selectedIndex }
-              >
+            >
               <ul ref={ (c: HTMLElement) => this._optionList = c }
                 id={ id + '-list' }
                 style={ { width: this._dropDown.clientWidth - 2 } }
@@ -139,8 +142,8 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
                     role='option'
                     aria-selected={ selectedIndex === index ? 'true' : 'false' }
                     aria-label={ option.text }
-                    >
-                    { option.text }
+                  >
+                    { onRenderOption(option, this._onRenderOption) }
                   </li>
                 )) }
               </ul>
@@ -177,6 +180,11 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
 
   @autobind
   private _onRenderItem(item: IDropdownOption): JSX.Element {
+    return <span>{ item.text }</span>;
+  }
+
+  @autobind
+  private _onRenderOption(item: IDropdownOption): JSX.Element {
     return <span>{ item.text }</span>;
   }
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Tooltip } from './Tooltip';
-import { ICalloutProps } from '../../index';
+import { ICalloutProps } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
 /**
@@ -37,6 +37,6 @@ export interface ITooltipProps extends React.HTMLProps<HTMLDivElement | Tooltip>
 }
 
 export enum TooltipDelay {
-  zero,
-  medium
+  zero = 0,
+  medium = 1
 }

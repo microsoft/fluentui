@@ -58,7 +58,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
   public componentWillReceiveProps(newProps: IPanelProps) {
     if (newProps.isOpen !== this.state.isOpen) {
       this.setState({
-        isOpen: newProps.isOpen,
+        isOpen: true,
         isAnimatingOpen: newProps.isOpen ? true : false,
         isAnimatingClose: newProps.isOpen ? false : true
       });
@@ -110,7 +110,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
       overlay = <Overlay
         isDarkThemed={ false }
         onClick={ isLightDismiss ? this._onPanelClick : null }
-        />;
+      />;
     }
 
     return (
@@ -137,7 +137,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
                 'ms-Panel--xl': type === PanelType.extraLarge,
               })
             }
-            >
+          >
             { overlay }
             <FocusTrapZone
               className='ms-Panel-main'
@@ -146,7 +146,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
               ignoreExternalFocusing={ ignoreExternalFocusing }
               forceFocusInsideTrap={ forceFocusInsideTrap }
               firstFocusableSelector={ firstFocusableSelector }
-              >
+            >
               <div className='ms-Panel-commands' data-is-visible={ true } >
                 { pendingCommandBarContent }
                 { closeButton }
@@ -162,6 +162,15 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
         </Popup>
       </Layer>
     );
+  }
+
+  public componentDidUpdate(prevProps, prevState) {
+    if (
+      prevState.isAnimatingClose === false &&
+      this.state.isAnimatingClose === true &&
+      this.props.onDismiss) {
+      this.props.onDismiss();
+    }
   }
 
   public dismiss() {
@@ -198,8 +207,8 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
         isAnimatingClose: false
       });
 
-      if (this.props.onDismiss) {
-        this.props.onDismiss();
+      if (this.props.onDismissed) {
+        this.props.onDismissed();
       }
     }
   }

@@ -1,7 +1,7 @@
 {
   "npmVersion": "3.10.9",
-  "rushMinimumVersion": "1.4.0",
-  "nodeSupportedVersionRange": ">=4.3.0",
+  "rushMinimumVersion": "1.5.1",
+  "nodeSupportedVersionRange": ">=6.9.0 <8.0.0",
   "commonFolder": "common",
   "projectFolderMinDepth": 1,
   "projectFolderMaxDepth": 999,
@@ -17,8 +17,28 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@uifabric/example-app-base",
+      "projectFolder": "packages/example-app-base",
+      "shouldPublish": true
+    },
+    {
       "packageName": "todo-app",
-      "projectFolder": "packages/examples/todo-app"
+      "projectFolder": "apps/todo-app"
+    },
+    {
+      "packageName": "fabric-website",
+      "projectFolder": "apps/fabric-website",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "fabric-examples",
+      "projectFolder": "apps/fabric-examples",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "ssr-tests",
+      "projectFolder": "apps/ssr-tests",
+      "shouldPublish": false
     }
   ]
 }

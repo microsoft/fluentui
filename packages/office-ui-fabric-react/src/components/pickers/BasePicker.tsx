@@ -138,7 +138,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           moreSuggestionsAvailable={ this.state.moreSuggestionsAvailable }
           isLoading={ this.state.suggestionsLoading }
           { ...this.props.pickerSuggestionsProps }
-          />
+        />
       </Callout>
     ) : (null);
   }
@@ -196,7 +196,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     // If the returned value is not an array then check to see if it's a promise or PromiseLike. If it is then resolve it asynchronously.
     if (Array.isArray(suggestionsArray)) {
       this.resolveNewValue(updatedValue, suggestionsArray);
-    } else if (suggestionsPromiseLike.then) {
+    } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
       if (!this.loadingTimer) {
         this.loadingTimer = this._async.setTimeout(() => this.setState({
           suggestionsLoading: true
@@ -266,12 +266,16 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
     switch (ev.which) {
       case KeyCodes.escape:
-        this.dismissSuggestions();
+        if (this.state.suggestionsVisible) {
+          this.dismissSuggestions();
+          ev.preventDefault();
+          ev.stopPropagation();
+        }
         break;
 
       case KeyCodes.tab:
       case KeyCodes.enter:
-        if (value && this.suggestionStore.hasSelectedSuggestion()) {
+        if (value && this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible) {
           this.completeSuggestion();
           ev.preventDefault();
           ev.stopPropagation();
@@ -284,7 +288,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         break;
 
       case KeyCodes.up:
-        if (ev.target === this.input.inputElement && this.suggestionStore.previousSuggestion()) {
+        if (ev.target === this.input.inputElement && this.suggestionStore.previousSuggestion() && this.state.suggestionsVisible) {
           ev.preventDefault();
           ev.stopPropagation();
           this.onSuggestionSelect();
@@ -292,7 +296,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         break;
 
       case KeyCodes.down:
-        if (ev.target === this.input.inputElement) {
+        if (ev.target === this.input.inputElement && this.state.suggestionsVisible) {
           if (this.suggestionStore.nextSuggestion()) {
             ev.preventDefault();
             ev.stopPropagation();
@@ -375,9 +379,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   // This lets the subclass override it and provide it's own onBackspace. For an example see the BasePickerListBelow
   protected onBackspace(ev: React.KeyboardEvent<HTMLElement>) {
     if (this.state.items.length && !this.input.isValueSelected && this.input.cursorLocation === 0) {
-      this.removeItem(this.state.items[this.state.items.length - 1]);
-    } else if (this.selection.getSelectedCount() > 0) {
-      this.removeItems(this.selection.getSelection());
+      if (this.selection.getSelectedCount() > 0) {
+        this.removeItems(this.selection.getSelection());
+      } else {
+        this.removeItem(this.state.items[this.state.items.length - 1]);
+      }
     }
   }
 
@@ -420,12 +426,14 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
                 autoCapitalize='off'
                 autoComplete='off'
                 role='combobox'
-                />
+              />
             </div>
           </SelectionZone>
         </div>
         { this.renderSuggestions() }
-        <FocusZone ref={ this._resolveRef('focusZone') } className='ms-BasePicker-selectedItems'>
+        <FocusZone ref={ this._resolveRef('focusZone') }
+          className='ms-BasePicker-selectedItems'
+          isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke } >
           { this.renderItems() }
         </FocusZone>
 
@@ -435,5 +443,14 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
 
   protected onBackspace(ev: React.KeyboardEvent<HTMLElement>) {
     // override the existing backspace method to not do anything because the list items appear below.
+  }
+
+  @autobind
+  private _isFocusZoneInnerKeystroke(ev: React.KeyboardEvent<HTMLElement>): boolean {
+    switch (ev.which) {
+      case KeyCodes.down:
+        return true;
+    }
+    return false;
   }
 }

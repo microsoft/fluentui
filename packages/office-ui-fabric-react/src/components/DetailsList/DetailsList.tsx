@@ -187,9 +187,11 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       items,
       isHeaderVisible,
       onItemInvoked,
+      onItemContextMenu,
       onColumnHeaderClick,
       onColumnHeaderContextMenu,
       selectionMode,
+      selectionPreservedOnEmptyClick,
       ariaLabel,
       ariaLabelForGrid,
       rowElementEventMap,
@@ -241,7 +243,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
         data-automationid='DetailsList'
         data-is-scrollable='false'
         aria-label={ ariaLabel }
-        role={ shouldApplyApplicationRole ? 'application' : '' }>
+        { ...(shouldApplyApplicationRole ? { role: 'application' } : {}) }>
         <div role='grid' aria-label={ ariaLabelForGrid }>
           <div onKeyDown={ this._onHeaderKeyDown } role='presentation'>
             { isHeaderVisible && (
@@ -262,7 +264,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                 ariaLabel={ ariaLabelForListHeader }
                 ariaLabelForSelectAllCheckbox={ ariaLabelForSelectAllCheckbox }
                 selectAllVisibility={ selectAllVisibility }
-                />
+              />
             ) }
           </div>
           <div ref='contentContainer' onKeyDown={ this._onContentKeyDown } role='presentation'>
@@ -271,12 +273,15 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
               direction={ FocusZoneDirection.vertical }
               isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }
               onActiveElementChanged={ this._onActiveRowChanged }
-              >
+            >
               <SelectionZone
                 ref='selectionZone'
                 selection={ selection }
+                selectionPreservedOnEmptyClick={ selectionPreservedOnEmptyClick }
                 selectionMode={ selectionMode }
-                onItemInvoked={ onItemInvoked }>
+                onItemInvoked={ onItemInvoked }
+                onItemContextMenu={ onItemContextMenu }
+              >
                 { groups ? (
                   <GroupedList
                     groups={ groups }
@@ -291,14 +296,14 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                     listProps={ additionalListProps }
                     onGroupExpandStateChanged={ this._onGroupExpandStateChanged }
                     ref='groupedList'
-                    />
+                  />
                 ) : (
                     <List
                       items={ items }
                       onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex) }
                       { ...additionalListProps }
                       ref='list'
-                      />
+                    />
                   )
                 }
               </SelectionZone>

@@ -68,38 +68,39 @@ export interface IPersonaProps extends React.HTMLProps<Persona> {
 }
 
 export enum PersonaSize {
-  tiny,
-  extraSmall,
-  small,
-  regular,
-  large,
-  extraLarge
+  tiny = 0,
+  extraExtraSmall = 1,
+  extraSmall = 2,
+  small = 3,
+  regular = 4,
+  large = 5,
+  extraLarge = 6
 }
 
 export enum PersonaPresence {
-  none,
-  offline,
-  online,
-  away,
-  dnd,
-  blocked,
-  busy
+  none = 0,
+  offline = 1,
+  online = 2,
+  away = 3,
+  dnd = 4,
+  blocked = 5,
+  busy = 6
 }
 
 export enum PersonaInitialsColor {
-  lightBlue,
-  blue,
-  darkBlue,
-  teal,
-  lightGreen,
-  green,
-  darkGreen,
-  lightPink,
-  pink,
-  magenta,
-  purple,
-  black,
-  orange,
-  red,
-  darkRed
+  lightBlue = 0,
+  blue = 1,
+  darkBlue = 2,
+  teal = 3,
+  lightGreen = 4,
+  green = 5,
+  darkGreen = 6,
+  lightPink = 7,
+  pink = 8,
+  magenta = 9,
+  purple = 10,
+  black = 11,
+  orange = 12,
+  red = 13,
+  darkRed = 14
 }

@@ -52,6 +52,13 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /** Controls how/if the details list manages selection. */
   selectionMode?: SelectionMode;
 
+  /**
+   * By default, selection is cleared when clicking on an empty (non-focusable) section of the screen. Setting this value to true
+   * overrides that behavior and maintains selection.
+   * @default false
+   **/
+  selectionPreservedOnEmptyClick?: boolean;
+
   /** Controls how the columns are adjusted. */
   layoutMode?: DetailsListLayoutMode;
 
@@ -74,7 +81,7 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   constrainMode?: ConstrainMode;
 
   /** Event names and corresponding callbacks that will be registered to rendered row elements. */
-  rowElementEventMap?: [{ eventName: string, callback: (context: IDragDropContext, event?: any) => void }];
+  rowElementEventMap?: { eventName: string, callback: (context: IDragDropContext, event?: any) => void }[];
 
   /** Callback for when the details list has been updated. Useful for telemetry tracking externally. */
   onDidUpdate?: (detailsList?: DetailsList) => any;
@@ -275,55 +282,55 @@ export enum ColumnActionsMode {
   /**
    * Renders the column header as disabled.
    */
-  disabled,
+  disabled = 0,
 
   /**
    * Renders the column header is clickable.
    */
-  clickable,
+  clickable = 1,
 
   /**
    * Renders the column header ias clickable and displays the dropdown cheveron.
    */
-  hasDropdown
+  hasDropdown = 2
 }
 
 export enum ConstrainMode {
   /** If specified, lets the content grow which allows the page to manage scrolling. */
-  unconstrained,
+  unconstrained = 0,
 
   /**
    * If specified, constrains the list to the given layout space.
    */
-  horizontalConstrained
+  horizontalConstrained = 1
 }
 
 export enum DetailsListLayoutMode {
   /**
    * Lets the user resize columns and makes not attempt to fit them.
    */
-  fixedColumns,
+  fixedColumns = 0,
 
   /**
    * Manages which columns are visible, tries to size them according to their min/max rules and drops
    * off columns that can't fit and have isCollapsable set.
    */
-  justified
+  justified = 1
 }
 
 export enum CheckboxVisibility {
   /**
    * Visible on hover.
    */
-  onHover,
+  onHover = 0,
 
   /**
    * Visible always.
    */
-  always,
+  always = 1,
 
   /**
    * Hide checkboxes.
    */
-  hidden
+  hidden = 2
 }

@@ -1,110 +1,48 @@
+/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import {
-  BaseComponent,
-  css,
-  assign,
-  getId,
-  getNativeProps,
-  buttonProperties,
-  anchorProperties
-} from '../../Utilities';
-import { IButtonProps, IButton, ButtonType } from './Button.Props';
-import './Button.scss';
+/* tslint:enable:no-unused-variable */
 
-export interface IButtonState {
-  labelId?: string;
-  descriptionId?: string;
-  ariaDescriptionId?: string;
-}
+import { BaseComponent } from '../../Utilities';
+import { ButtonType, IButton, IButtonProps } from './Button.Props';
+import { BaseButton } from './BaseButton';
 
-export class Button extends BaseComponent<IButtonProps, IButtonState> implements IButton {
-  public static defaultProps: IButtonProps = {
-    buttonType: ButtonType.normal
-  };
-  private _buttonElement: HTMLButtonElement;
+import { DefaultButton } from './DefaultButton/DefaultButton';
+import { CommandButton } from './CommandButton/CommandButton';
+import { CompoundButton } from './CompoundButton/CompoundButton';
+import { IconButton } from './IconButton/IconButton';
+import { PrimaryButton } from './PrimaryButton/PrimaryButton';
 
-  constructor(props: IButtonProps) {
-    super(props, { 'rootProps': null });
+/**
+ * @deprecated
+ * This class is deprecated. Use the individual *Button components instead.
+ */
+export class Button extends BaseComponent<IButtonProps, {}> implements IButton {
+  private _button: BaseButton;
 
-    this.state = {
-      labelId: getId('Button'),
-      descriptionId: getId('Button'),
-      ariaDescriptionId: getId('Button')
-    };
-  }
+  public render() {
+    let props = this.props;
 
-  public render(): JSX.Element {
-    let { buttonType, children, icon, description, ariaLabel, ariaDescription, href, disabled, onClick } = this.props;
-    let { labelId, descriptionId, ariaDescriptionId } = this.state;
+    switch (props.buttonType) {
+      case ButtonType.command:
+        return <CommandButton { ...props } ref={ this._resolveRef('_button') } />;
 
-    const renderAsAnchor: boolean = !!href;
-    const tag = renderAsAnchor ? 'a' : 'button';
-    const nativeProps = getNativeProps(this.props.rootProps || this.props, renderAsAnchor ? anchorProperties : buttonProperties);
-    const className = css((this.props.className), 'ms-Button', {
-      'ms-Button--primary': buttonType === ButtonType.primary,
-      'ms-Button--hero': buttonType === ButtonType.hero,
-      'ms-Button--compound': buttonType === ButtonType.compound,
-      'ms-Button--command': buttonType === ButtonType.command,
-      'ms-Button--icon': buttonType === ButtonType.icon,
-      'disabled': (renderAsAnchor && disabled) // add disable styling if it is an anchor
-      // if not utilize default button disabled behavior.
-    });
+      case ButtonType.compound:
+        return <CompoundButton { ...props } ref={ this._resolveRef('_button') } />;
 
-    const iconSpan = icon && (buttonType === ButtonType.command || buttonType === ButtonType.hero || buttonType === ButtonType.icon)
-      ? <span className='ms-Button-icon'><i className={ `ms-Icon ms-Icon--${icon}` }></i></span>
-      : null;
+      case ButtonType.icon:
+        return <IconButton { ...props } ref={ this._resolveRef('_button') } />;
 
-    // ms-Button-description is only shown when the button type is compound.
-    // In other cases it will not be displayed.
-    const descriptionSpan: React.ReactElement<React.HTMLProps<HTMLSpanElement>> = description
-      ? <span className='ms-Button-description' id={ descriptionId }>{ description }</span>
-      : null;
+      case ButtonType.primary:
+        return <PrimaryButton { ...props } ref={ this._resolveRef('_button') } />;
 
-    // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
-    // otherwise it will be assigned to descriptionSpan.
-    const ariaDescriptionSpan: React.ReactElement<React.HTMLProps<HTMLSpanElement>> = ariaDescription
-      ? <span className='ms-u-screenReaderOnly' id={ ariaDescriptionId }>{ ariaDescription }</span>
-      : null;
-
-    // Check for ariaDescription, description or aria-describedby in the native props to determine source of aria-describedby
-    // otherwise default to null.
-    let ariaDescribedBy;
-
-    if (ariaDescription) {
-      ariaDescribedBy = ariaDescriptionId;
-    } else if (description) {
-      ariaDescribedBy = descriptionId;
-    } else if (nativeProps['aria-describedby']) {
-      ariaDescribedBy = nativeProps['aria-describedby'];
-    } else {
-      ariaDescribedBy = null;
+      default:
+        return <DefaultButton { ...props } ref={ this._resolveRef('_button') } />;
     }
-
-    return React.createElement(
-      tag,
-      assign(
-        {},
-        nativeProps,
-        href ? { href } : null,
-        {
-          'aria-label': ariaLabel,
-          'aria-labelledby': ariaLabel ? null : labelId,
-          'aria-describedby': ariaDescribedBy,
-          'ref': (c: HTMLButtonElement): HTMLButtonElement => this._buttonElement = c
-        },
-        onClick && { 'onClick': onClick },
-        disabled && { 'disabled': disabled },
-        { className }),
-      iconSpan,
-      <span className='ms-Button-label' id={ labelId } >{ children }</span>,
-      descriptionSpan,
-      ariaDescriptionSpan
-    );
   }
 
-  public focus(): void {
-    if (this._buttonElement) {
-      this._buttonElement.focus();
+  public focus() {
+    if (this._button) {
+      this._button.focus();
     }
   }
 }

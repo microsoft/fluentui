@@ -89,11 +89,11 @@ export interface IFocusZoneProps extends React.Props<FocusZone> {
 
 export enum FocusZoneDirection {
   /** Only react to up/down arrows. */
-  vertical,
+  vertical = 0,
 
   /** Only react to left/right arrows. */
-  horizontal,
+  horizontal = 1,
 
   /** React to all arrows. */
-  bidirectional
+  bidirectional = 2
 }

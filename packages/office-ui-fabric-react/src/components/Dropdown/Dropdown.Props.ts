@@ -6,6 +6,11 @@ export interface IDropdownProps {
   label: string;
 
   /**
+  * Aria Label for the Dropdown for screen reader users.
+  */
+  ariaLabel?: string;
+
+  /**
   * Id of the drop down
   */
   id?: string;
@@ -37,9 +42,14 @@ export interface IDropdownProps {
   onChanged?: (option: IDropdownOption, index?: number) => void;
 
   /**
-   * Optional custom renderer for the dropdown item
+   * Optional custom renderer for the selected dropdown item
    */
   onRenderItem?: IRenderFunction<IDropdownOption>;
+
+  /**
+   * Optional custom renderer for the dropdown options
+   */
+  onRenderOption?: IRenderFunction<IDropdownOption>;
 
   /**
    * Whether or not the Dropdown is disabled.

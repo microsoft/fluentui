@@ -178,7 +178,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       arrowDirection,
       target,
       bounds,
-      directionalHintFixed } = this.props;
+      directionalHintFixed,
+      shouldFocusOnMount } = this.props;
 
     let { submenuProps } = this.state;
 
@@ -200,7 +201,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           coverTarget={ coverTarget }
           doNotLayer={ doNotLayer }
           className='ms-ContextualMenu-Callout'
-          setInitialFocus={ true }
+          setInitialFocus={ shouldFocusOnMount }
           onDismiss={ this.props.onDismiss }
           bounds={ bounds }
           directionalHintFixed={ directionalHintFixed }>
@@ -212,7 +213,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 ariaLabelledBy={ labelElementId }
                 ref={ (focusZone) => this._focusZone = focusZone }
                 rootProps={ { role: 'menu' } }
-                >
+              >
                 <ul
                   className='ms-ContextualMenu-list is-open'
                   onKeyDown={ this._onKeyDown }
@@ -378,7 +379,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     let iconProps: IIconProps = item.iconProps ? item.iconProps : {
       iconName: 'CustomIcon',
-      className: 'ms-Icon--' + item.icon
+      className: item.icon ? 'ms-Icon--' + item.icon : ''
     };
     // Use the default icon color for the known icon names
     let iconColorClassName = iconProps.iconName === 'None' ? '' : 'ms-ContextualMenu-iconColor';
@@ -459,6 +460,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
     if (ev.which === openKey) {
       this._onItemSubMenuExpand(item, ev.currentTarget as HTMLElement);
+      ev.preventDefault();
     }
   }
 

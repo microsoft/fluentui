@@ -36,9 +36,9 @@ export interface IDetailsHeaderProps extends React.Props<DetailsHeader> {
 }
 
 export enum SelectAllVisibility {
-  none,
-  hidden,
-  visible
+  none = 0,
+  hidden = 1,
+  visible = 2
 }
 
 export interface IDetailsHeaderState {
@@ -119,7 +119,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                 onClick={ this._onSelectAllClicked }
                 aria-label={ ariaLabelForSelectAllCheckbox }
                 aria-pressed={ isAllSelected }
-                >
+              >
                 <Check checked={ isAllSelected } />
               </button>
             ) : null }
@@ -149,10 +149,9 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                   onContextMenu={ this._onColumnContextMenu.bind(this, column) }
                   aria-haspopup={ column.columnActionsMode === ColumnActionsMode.hasDropdown }
                   aria-label={ column.ariaLabel || column.name }
-                  aria-sort={ column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none' }
                   data-automationid='ColumnsHeaderColumn'
                   data-item-key={ column.key }
-                  >
+                >
 
                   { column.isFiltered && (
                     <i className='ms-Icon ms-Icon--filter' />
@@ -187,7 +186,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                     'is-resizing': columnResizeDetails && columnResizeDetails.columnIndex === columnIndex && isSizing
                   }) }
                   onDoubleClick={ this._onSizerDoubleClick.bind(this, columnIndex) }
-                  />
+                />
               ) : (null) }
             </div>
           )) }
