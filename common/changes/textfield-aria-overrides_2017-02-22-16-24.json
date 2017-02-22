@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "TextField - Allow aria attributes override",
+      "type": "patch"
+    }
+  ],
+  "email": "manishda@microsoft.com"
+}
