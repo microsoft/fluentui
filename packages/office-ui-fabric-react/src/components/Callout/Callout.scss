@@ -1,0 +1,64 @@
+@import '../../common/common';
+
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
+//
+// Office UI Fabric
+// --------------------------------------------------
+// Callout styles
+
+$Callout-beak-slant-width: 28px;
+$Callout-smallbeak-slant-width: 16px;
+
+@mixin calloutBeak {
+  position: absolute;
+  background-color: $ms-color-white;
+  box-shadow:  inherit;
+  border: inherit;
+  box-sizing: border-box;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+:global {
+  .ms-Callout {
+    @include ms-baseFont;
+    @include drop-shadow(0,0, 15px, -5px);
+    position: absolute;
+    border: 1px solid $ms-color-neutralLight;
+    box-sizing: border-box;
+
+    @media screen and (-ms-high-contrast: active) {
+      border: 1px solid $ms-color-white;
+    }
+    @media screen and (-ms-high-contrast: black-on-white) {
+      border: 1px solid $ms-color-black;
+    }
+  }
+
+  .ms-Callout-container {
+    position: relative;
+  }
+
+  // The actual callout element
+  .ms-Callout-main {
+    background-color: $ms-color-white;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+  }
+
+  .ms-Callout-beak {
+    @include calloutBeak;
+  }
+
+  .ms-Callout-beakCurtain {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $ms-color-white;
+  }
+}

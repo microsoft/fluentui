@@ -1,0 +1,79 @@
+@import '../../../common/common';
+
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
+//
+// Office UI Fabric
+// --------------------------------------------------
+// Compound Button styles
+
+:global {
+  .ms-Button.ms-Button--compound {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+
+    width: 100%;
+    max-width: 280px;
+    min-height: 72px;
+
+    padding: 16px 20px;
+    background: $ms-color-neutralLighter;
+
+    @include text-align(left);
+
+    .ms-Button-label {
+      @include ms-font-m;
+      display: block;
+      font-weight: $ms-font-weight-semibold;
+      color: $ms-color-black;
+      margin: 0 0 2px;
+    }
+
+    .ms-Button-description {
+      @include ms-font-s;
+      color: $ms-color-neutralSecondary;
+      display: block;
+    }
+
+    &:hover {
+      background-color: $ms-color-neutralLight;
+      border-color: $ms-color-neutralLight;
+
+      .ms-Button-description {
+        color: $ms-color-neutralDark;
+      }
+    }
+
+    &:focus {
+      border-color: $ms-color-themePrimary;
+      background-color: $ms-color-neutralLighter;
+
+      .ms-Button-label {
+        color: $ms-color-neutralPrimary;
+      }
+
+      .ms-Button-description {
+        color: $ms-color-neutralSecondary;
+      }
+    }
+
+    &:active {
+      background-color: $ms-color-themePrimary;
+
+      .ms-Button-description,
+      .ms-Button-label {
+        color: $ms-color-white;
+      }
+    }
+
+    &:disabled,
+    &.disabled {
+      .ms-Button-label,
+      .ms-Button-description {
+        color: $ms-color-neutralTertiary;
+      }
+    }
+  }
+}
