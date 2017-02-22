@@ -226,21 +226,21 @@ $ms-Persona-presenceSizeXl: 28px;
   }
 }
 
-.ms-Persona-details {
+.details {
   @include padding(0, 24px, 0, 12px);
   min-width: 0;
   @include text-align(left);
 }
 
-.ms-Persona-primaryText,
-.ms-Persona-secondaryText,
-.ms-Persona-tertiaryText,
-.ms-Persona-optionalText,
-.ms-Persona-primaryTextContent {
+.primaryText,
+.secondaryText,
+.tertiaryText,
+.optionalText,
+.textContent {
   @include noWrap();
 }
 
-.ms-Persona-primaryText {
+.primaryText {
   color: $ms-color-neutralPrimary;
   font-weight: $ms-font-weight-regular;
   font-size: $ms-font-size-l;
@@ -248,9 +248,9 @@ $ms-Persona-presenceSizeXl: 28px;
   line-height: 1.4;
 }
 
-.ms-Persona-secondaryText,
-.ms-Persona-tertiaryText,
-.ms-Persona-optionalText {
+.secondaryText,
+.tertiaryText,
+.optionalText {
   color: $ms-color-neutralSecondary;
   font-weight: $ms-font-weight-regular;
   font-size: $ms-font-size-s;
@@ -258,12 +258,12 @@ $ms-Persona-presenceSizeXl: 28px;
   line-height: 1.3;
 }
 
-.ms-Persona-secondaryText {
+.secondaryText {
   padding-top: 3px;
 }
 
-.ms-Persona-tertiaryText,
-.ms-Persona-optionalText {
+.tertiaryText,
+.optionalText {
   padding-top: 5px;
   display: none; // Hidden on default persona
 }
@@ -271,18 +271,18 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Tiny Persona
 //
-.ms-Persona.ms-Persona--tiny {
+.root.isRootTiny {
   height: $ms-Persona-sizeTiny;
   min-width: $ms-Persona-sizeTiny;
 
-  .ms-Persona-imageArea {
+  .imageArea {
     overflow: visible;
     background: transparent;
     height: 0;
     width: 0;
   }
 
-  .ms-Persona-presence {
+  .presence {
     @include right(auto);
     top: 10px;
     @include left(0);
@@ -298,16 +298,16 @@ $ms-Persona-presenceSizeXl: 28px;
     }
   }
 
-  .ms-Persona-details {
+  .details {
     @include padding-left(20px);
   }
 
-  .ms-Persona-primaryText {
+  .primaryText {
     font-size: $ms-font-size-m;
     padding-top: 4px;
   }
 
-  .ms-Persona-secondaryText {
+  .secondaryText {
     display: none;
   }
 }
@@ -317,11 +317,11 @@ $ms-Persona-presenceSizeXl: 28px;
 //
 // This variant includes a semicolon, and is
 // most often presented within a People Picker.
-.ms-Persona.ms-Persona--tiny.ms-Persona--readonly {
+.root.isRootTiny.isRootReadonly {
   padding: 0;
   background-color: transparent;
 
-  .ms-Persona-primaryText:after {
+  .primaryText:after {
     content: ';';
   }
 }
@@ -329,48 +329,48 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Extra Small Persona
 //
-.ms-Persona.ms-Persona--xxs {
+.root.isRootExtraExtraSmall {
   height: $ms-Persona-sizeXxs;
   line-height: $ms-Persona-sizeXxs;
   min-width: $ms-Persona-sizeXxs;
   margin-right: 4px;
 
-  .ms-Persona-imageArea,
-  .ms-Persona-image {
+  .imageArea,
+  .image {
     flex: 0 0 $ms-Persona-sizeXxs;
     height: $ms-Persona-sizeXxs;
     width: $ms-Persona-sizeXxs;
   }
 
-  .ms-Persona-placeholder {
+  .placeholder {
     font-size: 18px;
     top: 4px;
   }
 
-  .ms-Persona-initials {
+  .initials {
     font-size: $ms-font-size-xs;
     height: $ms-Persona-sizeXxs;
     line-height: $ms-Persona-sizeXxs;
   }
 
-  .ms-Persona-presence {
+  .presence {
     height: $ms-Persona-presenceSizeXxs;
     width: $ms-Persona-presenceSizeXxs;
     border: 1px solid #ffffff;
     @include left(16px);
   }
 
-  .ms-Persona-presenceIcon {
+  .presenceIcon {
     font-size: 6px;
     line-height: 9px;
   }
 
-  .ms-Persona-primaryText {
+  .primaryText {
     font-size: $ms-font-size-m;
     padding-top: 3px;
   }
 
-  .ms-Persona-secondaryText {
+  .secondaryText {
     display: none;
   }
 }
@@ -378,39 +378,39 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Extra Small Persona
 //
-.ms-Persona.ms-Persona--xs {
+.root.isRootExtraSmall {
   height: $ms-Persona-sizeXs;
   line-height: $ms-Persona-sizeXs;
   min-width: $ms-Persona-sizeXs;
 
-  .ms-Persona-imageArea,
-  .ms-Persona-image {
+  .imageArea,
+  .image {
     flex: 0 0 $ms-Persona-sizeXs;
     height: $ms-Persona-sizeXs;
     width: $ms-Persona-sizeXs;
   }
 
-  .ms-Persona-placeholder {
+  .placeholder {
     font-size: 28px;
     top: 6px;
   }
 
-  .ms-Persona-initials {
+  .initials {
     font-size: $ms-font-size-s;
     height: $ms-Persona-sizeXs;
     line-height: $ms-Persona-sizeXs;
   }
 
-  .ms-Persona-presence {
+  .presence {
     @include left(19px);
   }
 
-  .ms-Persona-primaryText {
+  .primaryText {
     font-size: $ms-font-size-m;
     padding-top: 3px;
   }
 
-  .ms-Persona-secondaryText {
+  .secondaryText {
     display: none;
   }
 }
