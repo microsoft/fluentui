@@ -52,6 +52,11 @@ export interface IDropdownProps {
   onRenderOption?: IRenderFunction<IDropdownOption>;
 
   /**
+   * Optional page size of the dropdown list.
+   */
+  pageSize?: number;
+
+  /**
    * Whether or not the Dropdown is disabled.
    */
   disabled?: boolean;
