@@ -106,7 +106,7 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   setInitialFocus?: boolean;
 
   /**
-   * Set the max height of Callout component.
+   * Set the max height in pixels of Callout component.
   */
   maxHeight?: number;
 
