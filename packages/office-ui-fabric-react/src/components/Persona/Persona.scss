@@ -120,54 +120,54 @@ $ms-Persona-presenceSizeXl: 28px;
   line-height: 46px;
   height: $ms-Persona-sizeMd;
 
-  &.ms-Persona-initials--lightBlue {
+  &.isRootInitialsLightBlue {
     background-color: $ms-color-initials-lightBlue;
   }
-  &.ms-Persona-initials--blue {
+  &.isRootInitialsBlue {
     background-color: $ms-color-initials-blue;
   }
-  &.ms-Persona-initials--darkBlue {
+  &.isRootInitialsDarkBlue {
     background-color: $ms-color-initials-darkBlue;
   }
-  &.ms-Persona-initials--teal {
+  &.isRootInitialsTeal {
     background-color: $ms-color-initials-teal;
   }
-  &.ms-Persona-initials--lightGreen {
+  &.isRootInitialsLightGreen {
     background-color: $ms-color-initials-lightGreen;
   }
-  &.ms-Persona-initials--green {
+  &.isRootInitialsGreen {
     background-color: $ms-color-initials-green;
   }
-  &.ms-Persona-initials--darkGreen {
+  &.isRootInitialsDarkGreen {
     background-color: $ms-color-initials-darkGreen;
   }
-  &.ms-Persona-initials--lightPink {
+  &.isRootInitialsLightPink {
     background-color: $ms-color-initials-lightPink;
   }
-  &.ms-Persona-initials--pink {
+  &.isRootInitialsPink {
     background-color: $ms-color-initials-pink;
   }
-  &.ms-Persona-initials--magenta {
+  &.isRootInitialsMagenta {
     background-color: $ms-color-initials-magenta;
   }
-  &.ms-Persona-initials--purple {
+  &.isRootInitialsPurple {
     background-color: $ms-color-initials-purple;
   }
-  &.ms-Persona-initials--black {
+  &.isRootInitialsBlack {
     background-color: $ms-color-initials-black;
   }
-  &.ms-Persona-initials--orange {
+  &.isRootInitialsOrange {
     background-color: $ms-color-initials-orange;
   }
-  &.ms-Persona-initials--red {
+  &.isRootInitialsRed {
     background-color: $ms-color-initials-red;
   }
-  &.ms-Persona-initials--darkRed {
+  &.isRootInitialsDarkRed {
     background-color: $ms-color-initials-darkRed;
   }
 }
 
-.ms-Persona-image {
+.image {
   @include margin-right(10px);
   position: absolute;
   top: 0;
@@ -178,11 +178,11 @@ $ms-Persona-presenceSizeXl: 28px;
   perspective: 1px;
 }
 
-.ms-Persona-image[src=""] {
+.image[src=""] {
   display: none;
 }
 
-.ms-Persona-presence {
+.presence {
   background-color: $ms-color-presence-available;
   position: absolute;
   height: $ms-Persona-presenceSizeMd;
@@ -210,7 +210,7 @@ $ms-Persona-presenceSizeXl: 28px;
     background-color: $ms-color-black;
   }
 
-  .ms-Persona-presenceIcon {
+  .presenceIcon {
     color: $ms-color-white;
     font-size: 8px;
     line-height: $ms-Persona-presenceSizeMd;
