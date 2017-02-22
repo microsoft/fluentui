@@ -5,7 +5,7 @@ import { css } from '../../../../Utilities';
 import { Persona, PersonaSize, PersonaPresence } from '../../../../Persona';
 import { IPeoplePickerItemProps } from './PeoplePickerItem.Props';
 import { Button, ButtonType } from '../../../../Button';
-import './PickerItemsDefault.scss';
+import styles from './PickerItemsDefault.scss';
 
 export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element = (peoplePickerItemProps: IPeoplePickerItemProps) => {
   let {
@@ -16,12 +16,12 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
   } = peoplePickerItemProps;
   return (
     <div
-      className={ css('ms-PickerPersona-container', {
-        'is-selected': selected
+      className={ css('ms-PickerPersona-container', styles.pickerPersonaContainer, {
+        ['is-selected ' + styles.isSelected]: selected
       }) }
       data-is-focusable={ true }
       data-selection-index={ index } >
-      <div className='ms-PickerItem-content'>
+      <div className={ css('ms-PickerItem-content', styles.pickerItemContent) } >
         <Persona
           { ...item }
           presence={ item.presence !== undefined ? item.presence : PersonaPresence.none }
@@ -32,7 +32,7 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
         onClick={ () => { if (onRemoveItem) { onRemoveItem(); } } }
         icon={ 'Cancel' }
         buttonType={ ButtonType.icon }
-        className='ms-PickerItem-content'
+        className={ css('ms-PickerItem-content', styles.pickerItemContent) }
         data-is-focusable={ false }
       >
       </Button>

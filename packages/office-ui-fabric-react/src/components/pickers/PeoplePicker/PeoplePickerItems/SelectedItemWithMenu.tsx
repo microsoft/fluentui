@@ -1,11 +1,13 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
+import { css } from '../../../../Utilities';
 import { IPeoplePickerItemWithMenuProps } from './PeoplePickerItem.Props';
 import { Persona, PersonaPresence } from '../../../../Persona';
 import { ContextualMenu, DirectionalHint } from '../../../../ContextualMenu';
 import { Button, ButtonType } from '../../../../Button';
 import { FocusZone } from '../../../../FocusZone';
+import styles from './PickerItemsDefault.scss';
 
 export interface IPeoplePickerItemState {
   contextualMenuVisible: boolean;
@@ -30,21 +32,21 @@ export class SelectedItemWithMenu extends React.Component<IPeoplePickerItemWithM
       onRemoveItem
     } = this.props;
     return (
-      <div data-is-focusable={ true } className='ms-PickerItem-container'>
-        <FocusZone className='ms-PickerPersona-container' >
-          <div className='ms-PickerItem-content'>
+      <div data-is-focusable={ true } className={ css('ms-PickerItem-container', styles.pickerItemContainer) }>
+        <FocusZone className={ css('ms-PickerPersona-container', styles.pickerPersonaContainer) } >
+          <div className={ css('ms-PickerItem-content', styles.pickerItemContent) }>
             <Persona
               { ...item }
               presence={ item.presence !== undefined ? item.presence : PersonaPresence.none }
             />
           </div>
-          <div ref='ellipsisRef' className='ms-PickerItem-content'>
+          <div ref='ellipsisRef' className={ css('ms-PickerItem-content', styles.pickerItemContent) }>
             <Button
               icon={ 'More' }
               buttonType={ ButtonType.icon } onClick={ this.onContextualMenu }
             />
           </div>
-          <div className='ms-PickerItem-content'>
+          <div className={ css('ms-PickerItem-content', styles.pickerItemContent) }>
             <Button
               icon={ 'Cancel' }
               buttonType={ ButtonType.icon }

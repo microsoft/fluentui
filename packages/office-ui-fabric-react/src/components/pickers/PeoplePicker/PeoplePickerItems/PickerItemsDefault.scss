@@ -1,42 +1,34 @@
 @import '../../../../common/common';
-
-:global {
-  .ms-PickerPersona-container {
-    @include focus-border();
-
-    display: inline-flex;
-    align-items: center;
-    background: $ms-color-neutralLighter;
-    margin: 1px;
-    cursor: default;
-    user-select: none;
-    max-width: 100%;
-
+.pickerPersonaContainer {
+  @include focus-border();
+  display: inline-flex;
+  align-items: center;
+  background: $ms-color-neutralLighter;
+  margin: 1px;
+  cursor: default;
+  user-select: none;
+  max-width: 100%;
+  &:hover {
+    background: $ms-color-neutralLight;
+  }
+  &.isSelected {
+    background: $ms-color-neutralQuaternary;
     &:hover {
-      background: $ms-color-neutralLight;
-    }
-
-    &.is-selected {
-      background: $ms-color-neutralQuaternary;
-      &:hover {
-        background: $ms-color-neutralQuaternaryAlt;
-      }
-    }
-
-    .ms-PickerItem-content {
-      flex: 0 1 auto;
-      min-width: 0px;
-      &.ms-Button {
-        flex: 0 0 auto;
-      }
-    }
-
-    .ms-Persona-details {
-      flex: 0 1 auto;
+      background: $ms-color-neutralQuaternaryAlt;
     }
   }
-
-  .ms-PickerItem-container {
-    display: inline-block;
+  .pickerItemContent {
+    flex: 0 1 auto;
+    min-width: 0px;
+    &:global(.ms-Button) {
+      flex: 0 0 auto;
+    }
   }
+  .personaDetails {
+    flex: 0 1 auto;
+  }
+}
+
+.pickerItemContainer {
+  display: inline-block;
 }
