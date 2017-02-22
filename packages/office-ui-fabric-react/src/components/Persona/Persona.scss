@@ -614,8 +614,8 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Persona with away presence
 //
-.ms-Persona.ms-Persona--away {
-  .ms-Persona-presence {
+.root.isRootAway {
+  .presence {
     background-color: $ms-color-presence-away;
 
     @media screen and (-ms-high-contrast: active) {
@@ -627,7 +627,7 @@ $ms-Persona-presenceSizeXl: 28px;
     }
   }
 
-  .ms-Persona-presenceIcon {
+  .presenceIcon {
     position: relative;
     @include left(1px);
   }
@@ -636,8 +636,8 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Persona with blocked presence
 //
-.ms-Persona.ms-Persona--blocked {
-  .ms-Persona-presence {
+.root.isRootBlocked {
+  .presence {
     background-color: $ms-color-white;
 
     &::before {
@@ -691,16 +691,16 @@ $ms-Persona-presenceSizeXl: 28px;
     }
   }
 
-  &.ms-Persona--lg {
-    .ms-Persona-presence {
+  &.isRootLarge {
+    .presence {
       &::after {
         top: 9px;
       }
     }
   }
 
-  &.ms-Persona--xl {
-    .ms-Persona-presence {
+  &.isRootExtraLarge {
+    .presence {
       &::after {
         top: 13px;
       }
@@ -711,8 +711,8 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Persona with busy presence
 //
-.ms-Persona.ms-Persona--busy {
-  .ms-Persona-presence {
+.root.isRootBusy {
+  .presence {
     background-color: $ms-color-presence-busy-average;
 
     @media screen and (-ms-high-contrast: active) {
@@ -728,8 +728,8 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Persona with do not disturb presence
 //
-.ms-Persona.ms-Persona--dnd {
-  .ms-Persona-presence {
+.root.isRootDoNotDisturb {
+  .presence {
     background-color: $ms-color-presence-dnd-background;
 
     @media screen and (-ms-high-contrast: active) {
@@ -754,8 +754,8 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Persona with offline presence
 //
-.ms-Persona.ms-Persona--offline {
-  .ms-Persona-presence {
+.root.isRootOffline {
+  .presence {
     background-color: $ms-color-presence-offline;
 
     @media screen and (-ms-high-contrast: active) {
