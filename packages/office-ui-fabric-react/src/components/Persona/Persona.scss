@@ -61,7 +61,7 @@ $ms-Persona-presenceSizeMd: 12px;
 $ms-Persona-presenceSizeLg: 20px;
 $ms-Persona-presenceSizeXl: 28px;
 
-.ms-Persona {
+.root {
   @include ms-baseFont;
   @include ms-u-normalize;
   color: $ms-color-neutralPrimary;
@@ -73,12 +73,12 @@ $ms-Persona-presenceSizeXl: 28px;
   display: flex;
   align-items: center;
 
-  .ms-ContextualHost {
+  .contextualHost {
     display: none;
   }
 }
 
-.ms-Persona-imageArea {
+.imageArea {
   position: relative;
   overflow: hidden;
   text-align: center;
@@ -95,7 +95,7 @@ $ms-Persona-presenceSizeXl: 28px;
     border: 1px solid $ms-color-black;
   }
 
-  .ms-Image {
+  .image {
     border: 0px;
   }
 }
@@ -103,7 +103,7 @@ $ms-Persona-presenceSizeXl: 28px;
 //= Note: The doughboy placeholder is being deprecated.
 // The initials color block (.ms-Persona-initials) will be used going forward
 // as a fallback when the persona does not have an image.
-.ms-Persona-placeholder {
+.placeholder {
   color: $ms-color-white;
   position: absolute;
   right: 0;
@@ -113,7 +113,7 @@ $ms-Persona-presenceSizeXl: 28px;
   z-index: $ms-zIndex-middle;
 }
 
-.ms-Persona-initials {
+.initials {
   color: $ms-color-white;
   font-size: $ms-font-size-l;
   font-weight: $ms-font-weight-light;
