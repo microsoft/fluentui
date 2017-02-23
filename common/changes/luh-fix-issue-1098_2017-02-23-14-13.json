@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "comment": "Fix a logic check issue in function isElementTabbable of focus.ts",
+      "packageName": "@uifabric/utilities",
+      "type": "none"
+    }
+  ],
+  "email": "luh@microsoft.com"
+}
