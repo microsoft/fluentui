@@ -189,12 +189,9 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
         role='row'
         aria-label={ ariaLabel }
         className={ css('ms-DetailsRow ms-u-fadeIn400', styles.root, droppingClassName, {
-          'is-contentUnselectable': isContentUnselectable,
-          'is-selected': isSelected,
-          'is-check-visible': checkboxVisibility === CheckboxVisibility.always,
-          [styles.isContentUnselectable]: isContentUnselectable,
-          [styles.isSelected]: isSelected,
-          [styles.isCheckVisible]: checkboxVisibility === CheckboxVisibility.always
+          ['is-contentUnselectable ' + styles.rootIsContentUnselectable]: isContentUnselectable,
+          ['is-selected ' + styles.rootIsSelected]: isSelected,
+          ['is-check-visible ' + styles.rootIsCheckVisible]: checkboxVisibility === CheckboxVisibility.always
         }) }
         data-is-focusable={ true }
         data-selection-index={ itemIndex }

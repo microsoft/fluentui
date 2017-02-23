@@ -17,17 +17,17 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   cursor: default;
   user-select: none;
 
-  &.isSelectAllHidden {
+  &.rootIsSelectAllHidden {
     @include padding-left(36px);
   }
 }
 
-.cell.isCheck :global(.ms-Check-background) {
+.cell.cellIsCheck :global(.ms-Check-background) {
   opacity: 0;
 }
 
-.cell.isCheck:hover :global(.ms-Check-background),
-.root.isAllSelected :global(.ms-Check-background) {
+.cell.cellIsCheck:hover :global(.ms-Check-background),
+.root.rootIsAllSelected :global(.ms-Check-background) {
   opacity: 1;
 }
 
@@ -57,13 +57,13 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   text-overflow: ellipsis;
   @include text-align(left);
 
-  &.isCheck {
+  &.cellIsCheck {
     position: relative;
     padding: 6px;
     margin: 0;
   }
 
-  &.isActionable {
+  &.cellIsActionable {
     color: $actionableHeaderForegroundColor;
 
     &:hover {
@@ -76,7 +76,7 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
     }
   }
 
-  &.isSizer {
+  &.cellIsSizer {
     position: absolute;
     width: 16px;
     @include margin-left(-10px);
@@ -87,12 +87,12 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
     background: transparent;
   }
 
-  &.isEmpty {
+  &.cellIsEmpty {
     text-overflow: clip;
   }
 }
 
-.cell.isSizer:after {
+.cell.cellIsSizer:after {
   content: '';
   position: absolute;
   left: 50%;
@@ -103,8 +103,8 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   opacity: 0;
 }
 
-.cell.isSizer:hover:after,
-.cell.isSizer.isResizing:after {
+.cell.cellIsSizer:hover:after,
+.cell.cellIsSizer.cellIsResizing:after {
   opacity: 1;
   transition: opacity .3s linear;
 }
@@ -117,14 +117,9 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   width: 20px;
   outline: 0;
 
-  &.isCollapsed {
+  &.collapseButtonIsCollapsed {
     transform: rotate(0deg);
   }
-}
-
-.isSortedDescending {
-  transform: rotate(-180deg);
-  transform-origin: 50% 50%;
 }
 
 .cell .nearIcon {

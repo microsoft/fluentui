@@ -238,8 +238,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
         ref='root'
         className={ css('ms-DetailsList', styles.root, className, {
           'is-fixed': layoutMode === DetailsListLayoutMode.fixedColumns,
-          'is-horizontalConstrained': constrainMode === ConstrainMode.horizontalConstrained,
-          [styles.isHorizontalConstrained]: constrainMode === ConstrainMode.horizontalConstrained
+          ['is-horizontalConstrained ' + styles.rootIsHorizontalConstrained]: constrainMode === ConstrainMode.horizontalConstrained
         }) }
         data-automationid='DetailsList'
         data-is-scrollable='false'

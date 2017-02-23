@@ -108,11 +108,9 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         role='row'
         aria-label={ ariaLabel }
         className={ css('ms-DetailsHeader', styles.root, {
-          'is-allSelected': isAllSelected,
-          'is-selectAllHidden': selectAllVisibility === SelectAllVisibility.hidden,
+          ['is-allSelected ' + styles.rootIsAllSelected]: isAllSelected,
+          ['is-selectAllHidden ' + styles.rootIsSelectAllHidden]: selectAllVisibility === SelectAllVisibility.hidden,
           'is-resizingColumn': !!columnResizeDetails && isSizing,
-          [styles.isAllSelected]: isAllSelected,
-          [styles.isSelectAllHidden]: selectAllVisibility === SelectAllVisibility.hidden
         }) }
         ref='root'
         onMouseMove={ this._onRootMouseMove }
@@ -122,7 +120,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
             { (selectAllVisibility === SelectAllVisibility.visible) ? (
               <button
                 type='button'
-                className={ css('ms-DetailsHeader-cell is-check', styles.cell, styles.isCheck) }
+                className={ css('ms-DetailsHeader-cell is-check', styles.cell, styles.cellIsCheck) }
                 onClick={ this._onSelectAllClicked }
                 aria-label={ ariaLabelForSelectAllCheckbox }
                 aria-pressed={ isAllSelected }
@@ -140,8 +138,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                 className={ css(
                   'ms-DetailsHeader-collapseButton',
                   styles.collapseButton,
-                  isAllCollapsed && 'is-collapsed',
-                  isAllCollapsed && styles.isCollapsed
+                  isAllCollapsed && ('is-collapsed ' + styles.collapseButtonIsCollapsed)
                 ) }
                 iconName='ChevronDown'
               />
@@ -161,11 +158,9 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                   'ms-DetailsHeader-cell',
                   styles.cell,
                   column.headerClassName, {
-                    'is-actionable': column.columnActionsMode !== ColumnActionsMode.disabled,
-                    'is-empty': !column.name,
-                    'is-icon-visible': column.isSorted || column.isGrouped || column.isFiltered,
-                    [styles.isActionable]: column.columnActionsMode !== ColumnActionsMode.disabled,
-                    [styles.isEmpty]: !column.name
+                    ['is-actionable ' + styles.cellIsActionable]: column.columnActionsMode !== ColumnActionsMode.disabled,
+                    ['is-empty ' + styles.cellIsEmpty]: !column.name,
+                    'is-icon-visible': column.isSorted || column.isGrouped || column.isFiltered
                   }) }
                 style={ { width: column.calculatedWidth + INNER_PADDING } }
                 onClick={ this._onColumnClick.bind(this, column) }
@@ -207,10 +202,9 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                   className={ css(
                     'ms-DetailsHeader-cell is-sizer',
                     styles.cell,
-                    styles.isSizer,
+                    styles.cellIsSizer,
                     {
-                      'is-resizing': isSizing && columnResizeDetails.columnIndex === columnIndex,
-                      [styles.isResizing]: isSizing && columnResizeDetails.columnIndex === columnIndex
+                      ['is-resizing ' + styles.cellIsResizing]: isSizing && columnResizeDetails.columnIndex === columnIndex
                     }) }
                   onDoubleClick={ this._onSizerDoubleClick.bind(this, columnIndex) }
                 />

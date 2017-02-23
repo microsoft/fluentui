@@ -29,7 +29,7 @@ $unselectedHoverColor: $ms-color-neutralLighter;
   }
 }
 
-.isSelected {
+.rootIsSelected {
   background: $selectedColor;
 
   &:hover {
@@ -37,7 +37,7 @@ $unselectedHoverColor: $ms-color-neutralLighter;
   }
 }
 
-.isContentUnselectable {
+.rootIsContentUnselectable {
   user-select: none;
   cursor: default;
 }
@@ -79,8 +79,8 @@ $unselectedHoverColor: $ms-color-neutralLighter;
 }
 
 .root:hover .check,
-.isSelected .check,
-.isCheckVisible .check {
+.rootIsSelected .check,
+.rootIsCheckVisible .check {
   opacity: 1;
 }
 
