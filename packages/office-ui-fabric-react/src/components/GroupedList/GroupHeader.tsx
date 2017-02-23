@@ -62,8 +62,7 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
     return group && (
       <div
         className={ css('ms-GroupHeader', styles.root, {
-          'is-selected': currentlySelected,
-          [styles.isSelected]: currentlySelected
+          ['is-selected ' + styles.rootIsSelected]: currentlySelected
         }) }
         style={ viewport ? { minWidth: viewport.width } : {} }
         onClick={ this._onHeaderClick }
@@ -94,8 +93,7 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
             onClick={ this._onToggleCollapse }>
             <Icon
               className={ css(
-                isCollapsed && 'is-collapsed',
-                isCollapsed && styles.isCollapsed
+                isCollapsed && ('is-collapsed ' + styles.expandIsCollapsed)
               ) }
               iconName='ChevronDown'
             />
@@ -116,8 +114,7 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
             className={ css(
               'ms-GroupHeader-loading',
               styles.loading,
-              isLoadingVisible && 'is-loading',
-              isLoadingVisible && styles.isLoading,
+              isLoadingVisible && ('is-loading ' + styles.loadingIsVisible)
             ) }
           >
             <Spinner label={ loadingText } />
