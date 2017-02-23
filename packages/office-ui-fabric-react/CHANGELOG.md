@@ -1,6 +1,31 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 21 Feb 2017 04:15:21 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Feb 2017 04:11:45 GMT and should not be manually modified.
+
+## 1.12.0
+Thu, 23 Feb 2017 04:11:45 GMT
+
+### Minor changes
+
+- Dropdown: Updated dropdown component to be composed of several onRender functions, and  for render container to use panel under medium breakpoint
+
+### Patches
+
+- TextField - Allow aria attributes override
+
+## 1.11.0
+Tue, 21 Feb 2017 16:15:42 GMT
+
+### Minor changes
+
+- Deprecation of SpinnerType in favor of more semantic SpinnerSize. Extra small, small and medium variants added.
+
+### Patches
+
+- Dialog: Accessibility fix for confirmation dialogs
+- Return suggested items to original padding values, add display block to fix following space due to inline-block
+- Support to pass id to TextField and Toggle
+- Fix keyboard focus order in MessageBar
 
 ## 1.10.0
 Tue, 21 Feb 2017 04:15:21 GMT

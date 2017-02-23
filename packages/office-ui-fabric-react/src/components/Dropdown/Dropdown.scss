@@ -152,48 +152,33 @@ $DropDown-item-height: 36px;
     text-overflow: ellipsis;
   }
 
-  // Container for the dropdown items, displayed as a panel on small screens.
-  .ms-Dropdown-items {
-    @include ms-u-normalize;
-    @include drop-shadow;
-    background-color: $ms-color-white;
-    list-style-type: none;
-    width: 100%;
-    top: auto;
-    right: auto;
-    bottom: auto;
-    left: auto;
-    max-width: 100%;
+  .ms-Dropdown-callout {
     box-shadow: 0 0px 15px -5px rgba(0, 0, 0, 0.4);
     border: 1px solid $ms-color-neutralLight;
-    user-select: none;
+  }
 
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border: none;
+  .ms-Dropdown-panel {
+    // Force drop shadow even under medium breakpoint
+    .ms-Panel-main {
+      @include drop-shadow(-30px, 0px, 30px, -30px, .2);
     }
-
-    @media screen and (-ms-high-contrast: active) {
-      border: 1px solid $ms-color-white;
-    }
-
-    @media screen and (-ms-high-contrast: black-on-white) {
-      border: 1px solid $ms-color-black;
+    // Remove padding as items have their own padding and bg
+    .ms-Panel-contentInner {
+      padding: 0 0 20px
     }
   }
 
+  // Container for the dropdown items, displayed as a panel on small screens.
   .ms-Dropdown-item {
+    background: transparent;
     box-sizing: border-box;
     cursor: pointer;
     display: block;
+    width: 100%;
+    text-align: left;
     min-height: $DropDown-item-height;
     line-height: 20px;
-    padding: 6px 12px;
+    padding: 5px 16px;
     position: relative;
     border: 1px solid transparent;
     word-wrap: break-word;

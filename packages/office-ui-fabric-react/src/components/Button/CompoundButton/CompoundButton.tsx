@@ -1,11 +1,17 @@
+import { css } from '../../../Utilities';
 import { BaseButton } from '../BaseButton';
-import './CompoundButton.scss';
-import '../ButtonCore/ButtonCore.scss';
+import styles from './CompoundButton.scss';
 
 export class CompoundButton extends BaseButton {
-  protected _variantClassName = 'ms-Button--compound';
-
-  protected onRenderIcon() {
-    return null;
-  }
+  protected classNames = {
+    base: 'ms-Button',
+    variant: 'ms-Button--compound',
+    description: styles.description,
+    flexContainer: styles.flexContainer,
+    icon: null,
+    isDisabled: styles.isDisabled,
+    isEnabled: styles.isEnabled,
+    label: styles.label,
+    root: styles.root
+  };
 }
