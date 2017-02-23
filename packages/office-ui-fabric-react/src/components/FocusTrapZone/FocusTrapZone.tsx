@@ -118,7 +118,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   }
 
   private _forceFocusInTrap(ev: FocusEvent) {
-    if (FocusTrapZone._priorityStack.length && this === FocusTrapZone._priorityStack[0]) {
+      if (FocusTrapZone._priorityStack.length && this === FocusTrapZone._priorityStack[FocusTrapZone._priorityStack.length - 1]) {
       const focusedElement = document.activeElement as HTMLElement;
 
       if (!elementContains(this.refs.root, focusedElement)) {
