@@ -151,7 +151,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
 
   private _renderLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     return (
-      <li key={ link.key || linkIndex } role='listitem'>
+      <li key={ link.key || linkIndex } role='listitem' className={ css(styles.unorderedListItem)}>
         { this._renderCompositeLink(link, linkIndex, nestingLevel) }
         { (link.isExpanded ? this._renderLinks(link.links, ++nestingLevel) : null) }
       </li>
@@ -166,7 +166,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
       (link: INavLink, linkIndex: number) => this._renderLink(link, linkIndex, nestingLevel));
 
     return (
-      <ul role='list' aria-label={ this.props.ariaLabel }>
+      <ul role='list' aria-label={ this.props.ariaLabel }  className={ css(styles.unorderedList)}>
         { linkElements }
       </ul>
     );

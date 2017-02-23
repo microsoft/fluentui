@@ -15,12 +15,12 @@ $linkRightPadding: 20px;
   position: absolute;
 }
 
-ul {
+.unorderedList {
   list-style-type: none;
 }
 
-ul,
-ul > li {
+.unorderedList,
+.unorderedList > .unorderedListItem {
   padding: 0;
 }
 
