@@ -16,7 +16,7 @@
   padding: 20px;
 }
 
-.isLarge:not(:last-child) {
+.headerIsLarge:not(:last-child) {
   margin-bottom: 14px;
 }
 
@@ -24,12 +24,12 @@
   margin: 0;
   color: $ms-color-white;
 
-  .isLarge & {
+  .headerIsLarge & {
     @include ms-font-xxl;
     font-weight: $ms-font-weight-light;
   }
 
-  .isSmall & {
+  .headerIsSmall & {
     @include ms-font-m;
     @include margin-right(10px);
     font-weight: $ms-font-weight-semibold;
