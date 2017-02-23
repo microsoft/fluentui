@@ -34,8 +34,7 @@ export class Check extends React.Component<ICheckProps, {}> {
         'ms-Check',
         styles.root,
         {
-          'is-checked': isChecked,
-          [styles.isChecked]: isChecked
+          ['is-checked ' + styles.rootIsChecked]: isChecked
         }) }>
         <div className={ css('ms-Icon ms-Check-background', styles.background) }>
         </div>

@@ -17,7 +17,7 @@ $checkBoxHeight: 24px;
   position: relative;
   @include user-select(none);
 
-  &.isChecked {
+  &.rootIsChecked {
     .background {
       &:before {
         color: $ms-color-themePrimary;
