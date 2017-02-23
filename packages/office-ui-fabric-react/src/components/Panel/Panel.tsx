@@ -135,6 +135,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
                 'ms-Panel--lg': type === PanelType.large || type === PanelType.largeFixed,
                 'ms-Panel--fixed': type === PanelType.largeFixed,
                 'ms-Panel--xl': type === PanelType.extraLarge,
+                'ms-Panel--hasCloseButton': hasCloseButton
               })
             }
           >
