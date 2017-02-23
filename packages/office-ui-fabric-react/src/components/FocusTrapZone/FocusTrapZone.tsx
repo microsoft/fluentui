@@ -20,6 +20,16 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   };
 
   private _previouslyFocusedElement: HTMLElement;
+  private static _priorityStack: FocusTrapZone[] = [];
+  private _isInStack: boolean = false;
+
+  public componentWillMount() {
+    if (this.props.forceFocusInsideTrap) {
+      this._isInStack = true;
+      FocusTrapZone._priorityStack.push(this);
+    }
+    // todo: add to the stack
+  }
 
   public componentDidMount() {
     let { elementToFocusOnDismiss, isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true } = this.props;
@@ -38,6 +48,13 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
 
   public componentWillUnmount() {
     let { ignoreExternalFocusing } = this.props;
+
+    this._events.dispose();
+    if (this._isInStack) {
+      FocusTrapZone._priorityStack = FocusTrapZone._priorityStack.filter((value: FocusTrapZone) => {
+          return this !== value;
+      });
+    }
 
     if (!ignoreExternalFocusing && this._previouslyFocusedElement) {
       this._previouslyFocusedElement.focus();
@@ -101,12 +118,14 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   }
 
   private _forceFocusInTrap(ev: FocusEvent) {
-    const focusedElement = document.activeElement as HTMLElement;
+    if (FocusTrapZone._priorityStack.length && this === FocusTrapZone._priorityStack[0]) {
+      const focusedElement = document.activeElement as HTMLElement;
 
-    if (!elementContains(this.refs.root, focusedElement)) {
-      this.focus();
-      ev.preventDefault();
-      ev.stopPropagation();
+      if (!elementContains(this.refs.root, focusedElement)) {
+        this.focus();
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
     }
   }
 
