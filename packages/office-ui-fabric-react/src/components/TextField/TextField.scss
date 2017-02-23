@@ -23,7 +23,7 @@
 }
 
 //= State: A disabled textfield
-.root.isDisabled {
+.root.rootIsDisabled {
   :global(.field) {
     background-color: $ms-color-neutralLighter;
     border-color: $ms-color-neutralLighter;
@@ -37,7 +37,7 @@
 }
 
 //= State: A required textfield
-.root.isRequired {
+.root.rootIsRequired {
   :global(.ms-Label) {
     @include ms-Label-is-required
   }
@@ -48,7 +48,7 @@
 }
 
 //= State: An active textfield
-.root.isActive {
+.root.rootIsActive {
   border-color: $ms-color-themePrimary;
 }
 
@@ -105,7 +105,7 @@
 
 //== Modifier: Single line (default), underlined
 //
-.root.isUnderlined {
+.root.rootIsUnderlined {
   border-bottom: 1px solid $ms-color-neutralTertiaryAlt;
   display: table;
   width: 100%;
@@ -154,7 +154,7 @@
     }
   }
 
-  &.isDisabled {
+  &.rootIsDisabled {
     border-bottom-color: $ms-color-neutralLight;
 
     :global(.ms-Label) {
@@ -167,7 +167,7 @@
     }
   }
 
-  &.isActive {
+  &.rootIsActive {
     border-color: $ms-color-themePrimary;
 
     @media screen and (-ms-high-contrast: active) {
@@ -183,7 +183,7 @@
 
 //== Modifier: Multiline textfield
 //
-.root.isMultiline .field {
+.root.rootIsMultiline .field {
   @include ms-baseFont;
   color: $ms-color-neutralPrimary;
   font-family: $ms-font-family-base;
@@ -224,7 +224,7 @@
 }
 */
 
-.root.isUnderlined {
+.root.rootIsUnderlined {
 
   :global(.ms-Label) {
     @include padding-left(12px);
@@ -236,9 +236,9 @@
   }
 }
 
-.root.isMultiline {
+.root.rootIsMultiline {
 
-  .field.isUnresizable {
+  .field.fieldIsUnresizable {
     resize: none;
   }
 }

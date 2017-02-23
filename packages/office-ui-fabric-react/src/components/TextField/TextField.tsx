@@ -128,11 +128,11 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     this._isDescriptionAvailable = Boolean(description || errorMessage);
 
     const textFieldClassName = css('ms-TextField', styles.root, className, {
-      ['is-required ' + styles.isRequired]: required,
-      ['is-disabled ' + styles.isDisabled]: disabled,
-      ['is-active ' + styles.isActive]: isFocused,
-      ['ms-TextField--multiline ' + styles.isMultiline]: multiline,
-      ['ms-TextField--underlined ' + styles.isUnderlined]: underlined
+      ['is-required ' + styles.rootIsRequired]: required,
+      ['is-disabled ' + styles.rootIsDisabled]: disabled,
+      ['is-active ' + styles.rootIsActive]: isFocused,
+      ['ms-TextField--multiline ' + styles.rootIsMultiline]: multiline,
+      ['ms-TextField--underlined ' + styles.rootIsUnderlined]: underlined
     });
 
     return (
@@ -219,7 +219,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     let textFieldClassName: string;
 
     if (this.props.multiline && !this.props.resizable) {
-      textFieldClassName = css('ms-TextField-field ms-TextField-field--unresizable', styles.field, styles.isUnresizable);
+      textFieldClassName = css('ms-TextField-field ms-TextField-field--unresizable', styles.field, styles.fieldIsUnresizable);
     } else {
       textFieldClassName = css('ms-TextField-field', styles.field);
     }
