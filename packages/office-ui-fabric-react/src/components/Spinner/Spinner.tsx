@@ -15,12 +15,12 @@ export class Spinner extends React.Component<ISpinnerProps, any> {
       <div className={ css('ms-Spinner', styles.root, className) }>
         <div className={ css('ms-Spinner-circle', styles.circle,
           {
-            ['ms-Spinner--xSmall ' + styles.isXSmall]: size === SpinnerSize.xSmall,
-            ['ms-Spinner--small ' + styles.isSmall]: size === SpinnerSize.small,
-            ['ms-Spinner--medium ' + styles.isMedium]: size === SpinnerSize.medium,
-            ['ms-Spinner--large ' + styles.isLarge]: size === SpinnerSize.large,
-            ['ms-Spinner--normal ' + styles.isTypeMedium]: type === SpinnerType.normal, // TODO remove deprecated value at >= 2.0.0
-            ['ms-Spinner--large ' + styles.isTypeLarge]: type === SpinnerType.large // TODO remove deprecated value at >= 2.0.0
+            ['ms-Spinner--xSmall ' + styles.circleIsXSmall]: size === SpinnerSize.xSmall,
+            ['ms-Spinner--small ' + styles.circleIsSmall]: size === SpinnerSize.small,
+            ['ms-Spinner--medium ' + styles.circleIsMedium]: size === SpinnerSize.medium,
+            ['ms-Spinner--large ' + styles.circleIsLarge]: size === SpinnerSize.large,
+            ['ms-Spinner--normal ' + styles.circleIsTypeMedium]: type === SpinnerType.normal, // TODO remove deprecated value at >= 2.0.0
+            ['ms-Spinner--large ' + styles.circleIsTypeLarge]: type === SpinnerType.large // TODO remove deprecated value at >= 2.0.0
           })
         }>
         </div>

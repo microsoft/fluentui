@@ -29,21 +29,21 @@ $borderSize: 1.5px;
     border: 1.5px solid $ms-color-themeLight;
     border-top-color: $ms-color-themePrimary;
     animation: spinAnimation $spin-duration infinite cubic-bezier(.53,.21,.29,.67);
-    &.isXSmall {
+    &.circleIsXSmall {
       width: 12px;
       height: 12px;
     }
-    &.isSmall {
+    &.circleIsSmall {
       width: 16px;
       height: 16px;
     }
-    &.isTypeMedium,
-    &.isMedium {
+    &.circleIsTypeMedium,
+    &.circleIsMedium {
       width: 20px;
       height: 20px;
     }
-    &.isTypeLarge,
-    &.isLarge {
+    &.circleIsTypeLarge,
+    &.circleIsLarge {
       width: 28px;
       height: 28px;
     }
