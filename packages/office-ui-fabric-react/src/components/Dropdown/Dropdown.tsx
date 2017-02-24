@@ -16,7 +16,7 @@ import {
   findIndex,
   getId
 } from '../../Utilities';
-import './Dropdown.scss';
+import styles from './Dropdown.scss';
 
 // Internal only props iterface to support mixing in responsive mode
 export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
@@ -99,8 +99,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           data-is-focusable={ !disabled }
           ref={ (c): HTMLElement => this._dropDown = c }
           id={ id }
-          className={ css('ms-Dropdown', className, {
-            'is-open': isOpen, 'is-disabled': disabled
+          className={ css('ms-Dropdown', styles.root, className, {
+            'is-open': isOpen,
+            ['is-disabled ' + styles.isDisabled]: disabled
           }) }
           tabIndex={ disabled ? -1 : 0 }
           onKeyDown={ this._onDropdownKeyDown }
@@ -114,7 +115,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         >
           <span
             id={ id + '-option' }
-            className='ms-Dropdown-title'
+            className={ css('ms-Dropdown-title', styles.title) }
             key={ selectedIndex }
             aria-atomic={ true }
           >
@@ -122,7 +123,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               onRenderTitle(selectedOption, this._onRenderTitle)
             ) }
           </span>
-          <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown'></i>
+          <i className={ css('ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown', styles.caretDown) }></i>
         </div>
         { isOpen && (
           onRenderContainer(this.props, this._onRenderContainer)
@@ -174,7 +175,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     return (
       isSmall ?
         <Panel
-          className='ms-Dropdown-panel'
+          className={ css('ms-Dropdown-panel', styles.panel) }
           isOpen={ true }
           isLightDismiss={ true }
           onDismissed={ this._onDismiss }
@@ -185,7 +186,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         :
         <Callout
           isBeakVisible={ false }
-          className='ms-Dropdown-callout'
+          className={ css('ms-Dropdown-callout', styles.callout) }
           gapSpace={ 0 }
           doNotLayer={ false }
           targetElement={ this._dropDown }
@@ -218,7 +219,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       >
         <List
           id={ id + '-list' }
-          className='ms-Dropdown-items'
+          className={ css('ms-Dropdown-items', styles.items) }
           aria-labelledby={ id + '-label' }
           items={ props.options }
           onRenderCell={
@@ -244,7 +245,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         key={ item.key }
         data-index={ item.index }
         data-is-focusable={ true }
-        className={ css('ms-Dropdown-item', { 'is-selected': this.state.selectedIndex === item.index }) }
+        className={ css(
+            'ms-Dropdown-item', styles.item, {
+              ['is-selected ' + styles.isSelected]: this.state.selectedIndex === item.index
+            }
+        )}
         onClick={ () => this._onItemClick(item.index) }
         onFocus={ () => this.setSelectedIndex(item.index) }
         role='option'

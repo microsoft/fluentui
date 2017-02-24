@@ -105,7 +105,7 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     return React.createElement(
       tag,
       buttonProps,
-      React.createElement('div', { className: css(styles.flexContainer, this.classNames.flexContainer) },
+      React.createElement('div', { className: css( this.classNames.base + '-flexContainer', styles.flexContainer, this.classNames.flexContainer) },
         this.onRenderIcon(),
         this.onRenderLabel(),
         this.onRenderDescription(),
