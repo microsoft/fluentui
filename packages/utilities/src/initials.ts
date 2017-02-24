@@ -45,15 +45,7 @@ function getInitialsAsian(displayName: string): string {
 function getInitialsLatin(displayName: string, isRtl: boolean): string {
   let initials = '';
 
-  // Do not consider the suffixes within parenthesis while computing the initials.
-  let personaName: string = displayName.replace(CHARS_WITHIN_PARENTHESIS_REGEX, '');
-  personaName = personaName.replace(UNICODE_ALPHANUMERIC_CHARS_REGEX, '');
-  personaName = personaName.replace(MULTIPLE_WHITESPACES_REGEX_TOKEN, ' ');
-
-  // Trim leading and trailing spaces if any.
-  personaName = personaName.trim();
-
-  const splits: string[] = personaName.split(' ');
+  const splits: string[] = displayName.split(' ');
 
   if (splits.length === 2) {
     initials += splits[0].charAt(0).toUpperCase();
@@ -72,11 +64,27 @@ function getInitialsLatin(displayName: string, isRtl: boolean): string {
   return initials;
 }
 
+function cleanupDisplayName(displayName: string): string {
+  // Do not consider the suffixes within parenthesis while computing the initials.
+  displayName = displayName.replace(CHARS_WITHIN_PARENTHESIS_REGEX, '');
+
+  // Ignore non-word characters
+  displayName = displayName.replace(UNICODE_ALPHANUMERIC_CHARS_REGEX, '');
+
+  // Make whitespace consistent
+  displayName = displayName.replace(MULTIPLE_WHITESPACES_REGEX_TOKEN, ' ');
+  displayName = displayName.trim();
+
+  return displayName;
+}
+
 /** Get (up to 2 characters) initials based on display name of the persona. */
 export function getInitials(displayName: string, isRtl: boolean): string {
   if (displayName == null) {
     return '';
   }
+
+  displayName = cleanupDisplayName(displayName);
 
   if (ARABIC_LANGUAGE_REGEX.test(displayName)) {
     return getInitialsArabic(displayName, isRtl);
