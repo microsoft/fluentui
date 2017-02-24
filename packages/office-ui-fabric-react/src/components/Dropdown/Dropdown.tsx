@@ -103,7 +103,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             'is-open': isOpen, 'is-disabled': disabled
           }) }
           tabIndex={ disabled ? -1 : 0 }
-            onKeyDown={ this._onDropdownKeyDown }
+          onKeyDown={ this._onDropdownKeyDown }
           onClick={ this._onDropdownClick }
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='combobox'
