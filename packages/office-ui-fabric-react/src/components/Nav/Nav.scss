@@ -11,16 +11,16 @@ $linkRightPadding: 20px;
   user-select: none;
 }
 
-.isOnTop {
+.rootIsOnTop {
   position: absolute;
 }
 
-.unorderedList {
+.navItems {
   list-style-type: none;
 }
 
-.unorderedList,
-.unorderedList > .unorderedListItem {
+.navItems,
+.navItems > .navItem {
   padding: 0;
 }
 
@@ -29,7 +29,7 @@ $linkRightPadding: 20px;
   margin-bottom: 40px;
 }
 
-.group.isExpanded .groupContent {
+.group.groupIsExpanded .groupContent {
   display: block;
 }
 
@@ -72,7 +72,7 @@ $linkRightPadding: 20px;
     background: $unselectedHoverBackgroundColor;
   }
 
-  &.chevronButtonGroup {
+  &.chevronButtonIsGroup {
     width: 100%;
     height: $navnode-height;
     border-bottom: 1px solid $dividerColor;
@@ -131,13 +131,13 @@ $linkRightPadding: 20px;
     }
   }
 
-  &.isExpanded {
+  &.compositeLinkIsExpanded {
     .chevron {
       transform: rotate(-180deg);
     }
   }
 
-  &.isSelected {
+  &.compositeLinkIsSelected {
     & a,
     & .chevronButton {
 
@@ -183,7 +183,7 @@ $linkRightPadding: 20px;
   @include focus-border();
 }
 
-:global(.linkButton.ms-Button--command) {
+:global(.ms-Nav-LinkButton.ms-Button--command) {
   @include padding-left($noExpandButtonLinkLeftPadding);
   :global(.ms-Button-label) {
     @include ms-font-m;

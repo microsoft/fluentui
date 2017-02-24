@@ -73,7 +73,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
         <nav role='navigation'
           className={ css('ms-Nav', styles.root, className, { 
             'is-onTop ms-u-slideRightIn40': isOnTop,
-            [styles.isOnTop]: isOnTop
+            [styles.rootIsOnTop]: isOnTop
             }) }>
           { groupElements }
         </nav>
@@ -132,8 +132,8 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
         className={ css('ms-Nav-compositeLink', styles.compositeLink, { 
           ' is-expanded': link.isExpanded, 
           'is-selected': isLinkSelected,
-          [styles.isExpanded]: link.isExpanded,
-          [styles.isSelected]: isLinkSelected }) }>
+          [styles.compositeLinkIsExpanded]: link.isExpanded,
+          [styles.compositeLinkIsSelected]: isLinkSelected }) }>
         { (nestingLevel === 0 && link.links && link.links.length > 0 ?
           <button
             className={css('ms-Nav-chevronButton ms-Nav-chevronButton--link', styles.chevronButton, styles.chevronButtonLink)}
@@ -151,7 +151,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
 
   private _renderLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     return (
-      <li key={ link.key || linkIndex } role='listitem' className={ css(styles.unorderedListItem)}>
+      <li key={ link.key || linkIndex } role='listitem' className={ css(styles.navItem)}>
         { this._renderCompositeLink(link, linkIndex, nestingLevel) }
         { (link.isExpanded ? this._renderLinks(link.links, ++nestingLevel) : null) }
       </li>
@@ -166,7 +166,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
       (link: INavLink, linkIndex: number) => this._renderLink(link, linkIndex, nestingLevel));
 
     return (
-      <ul role='list' aria-label={ this.props.ariaLabel }  className={ css(styles.unorderedList)}>
+      <ul role='list' aria-label={ this.props.ariaLabel }  className={ css(styles.navItems)}>
         { linkElements }
       </ul>
     );
@@ -178,10 +178,10 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
     return (
       <div key={ groupIndex } className={ css('ms-Nav-group', styles.group, { 
         'is-expanded': isGroupExpanded,
-        [styles.isExpanded]: isGroupExpanded }) }>
+        [styles.groupIsExpanded]: isGroupExpanded }) }>
         { (group.name ?
           <button
-            className={css('ms-Nav-chevronButton ms-Nav-chevronButton--group ms-Nav-groupHeaderFontSize', styles.chevronButton, styles.chevronButtonGroup, styles.groupHeaderFontSize)}
+            className={css('ms-Nav-chevronButton ms-Nav-chevronButton--group ms-Nav-groupHeaderFontSize', styles.chevronButton, styles.chevronButtonIsGroup, styles.groupHeaderFontSize)}
             onClick={ this._onGroupHeaderClicked.bind(this, groupIndex) }
             >
             <i className={ css('ms-Nav-chevron', 'ms-Icon', 'ms-Icon--ChevronDown', styles.chevronIcon, 
