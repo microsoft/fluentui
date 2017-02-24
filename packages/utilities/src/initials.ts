@@ -30,16 +30,16 @@ function getInitialsArabic(displayName: string, isRtl: boolean): string {
   return isRtl ? name[name.length - 1] : name[0];
 }
 
-function getInitialsAsian(displayName: string): string {
+function getInitialsAsian(displayName: string, isRtl: boolean): string {
   const name = displayName.replace(/\s/, '');
 
   // For short names, only display a single character of the family name
   if (name.length <= 2) {
-    return name[name.length - 1];
+    return isRtl ? name[0] : name[name.length - 1];
   }
 
   // For long names, display the two most significant characters of the family name
-  return name.substr(name.length - 2, name.length);
+  return isRtl ? name.substr(0, 2) : name.substr(name.length - 2, name.length);
 }
 
 function getInitialsLatin(displayName: string, isRtl: boolean): string {
@@ -91,7 +91,7 @@ export function getInitials(displayName: string, isRtl: boolean): string {
   }
 
   if (KOREAN_LANGUAGE_REGEX.test(displayName) || CHINESE_LANGUAGE_REGEX.test(displayName)) {
-    return getInitialsAsian(displayName);
+    return getInitialsAsian(displayName, isRtl);
   }
 
   return getInitialsLatin(displayName, isRtl);
