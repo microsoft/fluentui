@@ -21,7 +21,7 @@ import {
   Icon,
   IIconProps
 } from '../../Icon';
-import './ContextualMenu.scss';
+import styles from './ContextualMenu.scss';
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
@@ -208,14 +208,14 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           <div ref={ (host: HTMLDivElement) => this._host = host } id={ id } className={ css('ms-ContextualMenu-container', className) }>
             { (items && items.length) ? (
               <FocusZone
-                className={ 'ms-ContextualMenu is-open' }
+                className={ css('ms-ContextualMenu is-open', styles.root) }
                 direction={ arrowDirection }
                 ariaLabelledBy={ labelElementId }
                 ref={ (focusZone) => this._focusZone = focusZone }
                 rootProps={ { role: 'menu' } }
               >
                 <ul
-                  className='ms-ContextualMenu-list is-open'
+                  className={ css('ms-ContextualMenu-list is-open', styles.list) }
                   onKeyDown={ this._onKeyDown }
                   aria-label={ ariaLabel } >
                   { items.map((item, index) => (
@@ -265,7 +265,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       role='menuitem'
       title={ title }
       key={ key }
-      className={ css('ms-ContextualMenu-item', className) }>
+      className={ css('ms-ContextualMenu-item', styles.item, className) }>
       { content }
     </li>;
   }
@@ -275,7 +275,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       return <li
         role='separator'
         key={ 'separator-' + index }
-        className={ css('ms-ContextualMenu-divider', className) } />;
+        className={ css('ms-ContextualMenu-divider', styles.divider, className) } />;
     }
     return null;
   }
@@ -292,7 +292,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderHeaderMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     return (
-      <div className='ms-ContextualMenu-header'>
+      <div className={ css('ms-ContextualMenu-header', styles.header) }>
         { this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons) }
       </div>);
   }
@@ -303,13 +303,16 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
         <a
           { ...getNativeProps(item, anchorProperties) }
           href={ item.href }
-          className={ css('ms-ContextualMenu-link', item.isDisabled || item.disabled ? 'is-disabled' : '') }
+          className={ css(
+            'ms-ContextualMenu-link',
+            styles.link,
+            (item.isDisabled || item.disabled) && 'is-disabled') }
           role='menuitem'
           onClick={ this._onAnchorClick.bind(this, item) }>
           { (hasIcons) ? (
             this._renderIcon(item)
           ) : (null) }
-          <span className='ms-ContextualMenu-linkText'> { item.name } </span>
+          <span className={ css('ms-ContextualMenu-linkText', styles.linkText) }> { item.name } </span>
         </a>
       </div>);
   }
@@ -329,7 +332,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
 
     let itemButtonProperties = {
-      className: css('ms-ContextualMenu-link', { 'is-expanded': (expandedMenuItemKey === item.key) }),
+      className: css('ms-ContextualMenu-link', styles.link, {
+        ['is-expanded ' + styles.isExpanded]: (expandedMenuItemKey === item.key)
+      }),
       onClick: this._onItemClick.bind(this, item),
       onKeyDown: hasSubmenuItems(item) ? this._onItemKeyDown.bind(this, item) : null,
       onMouseEnter: this._onItemMouseEnter.bind(this, item),
@@ -353,22 +358,22 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _renderMenuItemChildren(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean) {
     let isItemChecked: boolean = item.isChecked || item.checked;
     return (
-      <div className='ms-ContextualMenu-linkContent'>
+      <div className={ css('ms-ContextualMenu-linkContent', styles.linkContent) }>
         { (hasCheckmarks) ? (
           <Icon
             iconName={ isItemChecked ? 'CheckMark' : 'CustomIcon' }
-            className={ 'ms-ContextualMenu-icon' }
+            className={ css('ms-ContextualMenu-icon', styles.icon) }
             onClick={ this._onItemClick.bind(this, item) } />
         ) : (null) }
         { (hasIcons) ? (
           this._renderIcon(item)
         ) : (null) }
-        <span className='ms-ContextualMenu-itemText'>{ item.name }</span>
+        <span className={ css('ms-ContextualMenu-itemText', styles.itemText) }>{ item.name }</span>
         { hasSubmenuItems(item) ? (
           <Icon
             iconName={ getRTL() ? 'ChevronLeft' : 'ChevronRight' }
             { ...item.submenuIconProps }
-            className={ css('ms-ContextualMenu-submenuIcon', item.submenuIconProps ? item.submenuIconProps.className : '') } />
+            className={ css('ms-ContextualMenu-submenuIcon', styles.submenuIcon, item.submenuIconProps ? item.submenuIconProps.className : '') } />
         ) : (null) }
       </div>
     );
@@ -382,8 +387,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       className: item.icon ? 'ms-Icon--' + item.icon : ''
     };
     // Use the default icon color for the known icon names
-    let iconColorClassName = iconProps.iconName === 'None' ? '' : 'ms-ContextualMenu-iconColor';
-    let iconClassName = css('ms-ContextualMenu-icon', iconColorClassName, iconProps.className);
+    let iconColorClassName = iconProps.iconName === 'None' ? '' : ('ms-ContextualMenu-iconColor ' + styles.iconColor);
+    let iconClassName = css('ms-ContextualMenu-icon', styles.icon, iconColorClassName, iconProps.className);
 
     return <Icon { ...iconProps } className={ iconClassName } />;
   }

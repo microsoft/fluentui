@@ -4,12 +4,14 @@ import * as React from 'react';
 import {
   BaseComponent,
   autobind,
+  css,
   divProperties,
   getNativeProps
 } from '../../Utilities';
 import { ITooltipHostProps } from './TooltipHost.Props';
 import { Tooltip } from './Tooltip';
 import { TooltipDelay } from './Tooltip.Props';
+import styles from './Tooltip.scss';
 
 export class TooltipHost extends BaseComponent<ITooltipHostProps, any> {
 
@@ -35,7 +37,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, any> {
     let { isTooltipVisible } = this.state;
     return (
       <div
-        className='ms-TooltipHost'
+        className={ css('ms-TooltipHost', styles.host) }
         ref={ this._resolveRef('_tooltipHost') }
         { ...{ onFocusCapture: this._onTooltipMouseEnter } }
         { ...{ onBlurCapture: this._onTooltipMouseLeave } }
