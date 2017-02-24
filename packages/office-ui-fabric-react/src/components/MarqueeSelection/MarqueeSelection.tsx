@@ -11,7 +11,7 @@ import {
   getRTL
 } from '../../Utilities';
 import { IMarqueeSelectionProps } from './MarqueeSelection.Props';
-import './MarqueeSelection.scss';
+import styles from './MarqueeSelection.scss';
 
 export interface IMarqueeSelectionState {
   dragOrigin?: IPoint;
@@ -82,14 +82,14 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
     return (
       <div
         { ...rootProps }
-        className={ css('ms-MarqueeSelection', rootProps.className) }
+        className={ css('ms-MarqueeSelection', styles.root, rootProps.className) }
         ref='root'
-        >
+      >
         { children }
-        { dragRect && (<div className='ms-MarqueeSelection-dragMask' />) }
+        { dragRect && (<div className={ css('ms-MarqueeSelection-dragMask', styles.dragMask) } />) }
         { dragRect && (
-          <div className='ms-MarqueeSelection-box' style={ dragRect }>
-            <div className='ms-MarqueeSelection-boxFill' />
+          <div className={ css('ms-MarqueeSelection-box', styles.box) } style={ dragRect }>
+            <div className={ css('ms-MarqueeSelection-boxFill', styles.boxFill) } />
           </div>
         ) }
       </div>
