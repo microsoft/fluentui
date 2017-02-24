@@ -8,79 +8,76 @@ $Rating-disabledColor: $ms-color-neutralTertiaryAlt;
 $Rating-smallIconSize: 16px;
 $Rating-largeIconSize: 20px;
 
-:global {
+// Hide input field
+.input {
+  position: absolute;
+  opacity: 0;
+  top: 0px;
+}
 
-  // Hide input field
-  .ms-Rating-input {
-    position: absolute;
-    opacity: 0;
-    top: 0px;
+.container {
+  position: relative;
+  display: inline-block;
+
+  &:hover {
+    .star:not(.isDisabled) {
+      color: $Rating-selectedColor;
+
+      &.star:hover {
+        color: $Rating-hoverColor;
+
+        & ~ .star {
+          // Set default color for any star after hovered one
+          color: $Rating-defaultColor;
+        }
+      }
+    }
   }
 
-  .ms-Rating-container {
-    position: relative;
+  .star {
     display: inline-block;
 
-    &:hover {
-      .ms-Rating-star:not(.is-disabled) {
-        color: $Rating-selectedColor;
+    text-align: center;
 
-        &.ms-Rating-star:hover {
-          color: $Rating-hoverColor;
+    color: $Rating-defaultColor;
 
-          & ~ .ms-Rating-star {
-            // Set default color for any star after hovered one
-            color: $Rating-defaultColor;
-          }
-        }
+    &.starIsSelected {
+      color: $Rating-selectedColor;
+    }
+
+    &.starIsDisabled {
+      color: $Rating-disabledColor;
+
+      .label {
+        cursor: default;
       }
     }
 
-    .ms-Rating-star {
+    .label {
       display: inline-block;
+      cursor: pointer;
 
-      text-align: center;
+      font-size: $Rating-smallIconSize;
+      padding: 12px 0px;
 
-      color: $Rating-defaultColor;
-
-      &.is-selected {
-        color: $Rating-selectedColor;
-      }
-
-      &.is-disabled {
-        color: $Rating-disabledColor;
-
-        .ms-Rating-label {
-          cursor: default;
-        }
-      }
-
-      .ms-Rating-label {
-        display: inline-block;
-        cursor: pointer;
-
-        font-size: $Rating-smallIconSize;
-        padding: 12px 0px;
-
-        // Reserve space for focus styling
-        border: 1px solid transparent;
-      }
-    }
-
-    :global(.ms-Rating--large) & {
-      .ms-Rating-label {
-        font-size: $Rating-largeIconSize;
-        padding: 6px 2px 9px 2px;
-      }
+      // Reserve space for focus styling
+      border: 1px solid transparent;
     }
   }
 
-  .ms-Rating-labelText {
-    @include ms-u-screenReaderOnly();
+  .rootIsLarge & {
+    .label {
+      font-size: $Rating-largeIconSize;
+      padding: 6px 2px 9px 2px;
+    }
   }
+}
 
-  // Highlight focused star
-  .is-focusVisible .is-inFocus .ms-Rating-label {
-    border: 1px solid $focusedBorderColor;
-  }
+.labelText {
+  @include ms-u-screenReaderOnly();
+}
+
+// Highlight focused star
+:global(.ms-Fabric.is-focusVisible) .starIsInFocus .label {
+  border: 1px solid $focusedBorderColor;
 }
