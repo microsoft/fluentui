@@ -36,13 +36,6 @@ build.postCopy.setConfig({
   }
 });
 
-build.postCopy.setConfig({
-  copyTo: {
-    [distFolder + '/images']: [
-      'src/images/**/*'
-    ]
-  }
-});
 
 isProduction && build.postCopy.setConfig({
   copyTo: {
