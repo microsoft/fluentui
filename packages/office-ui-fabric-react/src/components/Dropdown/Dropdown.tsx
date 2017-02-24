@@ -103,7 +103,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
             'is-open': isOpen, 'is-disabled': disabled
           }) }
           tabIndex={ disabled ? -1 : 0 }
-          onKeyDown={ this._onDropdownKeyDown }
+            onKeyDown={ this._onDropdownKeyDown }
           onClick={ this._onDropdownClick }
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='combobox'
@@ -216,18 +216,22 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         direction={ FocusZoneDirection.vertical }
         defaultActiveElement={ '#' + id + '-list' + selectedIndex }
       >
-        <List
-          id={ id + '-list' }
-          className='ms-Dropdown-items'
-          aria-labelledby={ id + '-label' }
-          items={ props.options }
-          onRenderCell={
-            (item: IDropdownOption, index: number) => {
-              item.index = index;
-              return onRenderItem(item, this._onRenderItem);
+        <div
+          onKeyDown={ this._onDropdownKeyDown }
+        >
+          <List
+            id={ id + '-list' }
+            className='ms-Dropdown-items'
+            aria-labelledby={ id + '-label' }
+            items={ props.options }
+            onRenderCell={
+              (item: IDropdownOption, index: number) => {
+                item.index = index;
+                return onRenderItem(item, this._onRenderItem);
+              }
             }
-          }
-        />
+          />
+        </div>
       </FocusZone>
     );
   }
@@ -283,45 +287,64 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   @autobind
   private _onDropdownKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
-    switch (ev.which) {
-      case KeyCodes.enter:
-        this.setState({
-          isOpen: !this.state.isOpen
-        });
-        break;
+    if (this.state.isOpen) {
+      if (ev.altKey) {
+        switch (ev.which) {
+          case KeyCodes.up:
+          case KeyCodes.down:
+            this.setState({
+              isOpen: false
+            });
+            break;
 
-      case KeyCodes.escape:
-        if (!this.state.isOpen) {
-          return;
+          default:
+            return;
         }
 
-        this.setState({
-          isOpen: false
-        });
-        break;
+        ev.stopPropagation();
+        ev.preventDefault();
+      }
+    } else {
+      switch (ev.which) {
+        case KeyCodes.enter:
+          this.setState({
+            isOpen: !this.state.isOpen
+          });
+          break;
 
-      case KeyCodes.up:
-        this.setSelectedIndex(this.state.selectedIndex - 1);
-        break;
+        case KeyCodes.escape:
+          if (!this.state.isOpen) {
+            return;
+          }
 
-      case KeyCodes.down:
-        this.setSelectedIndex(this.state.selectedIndex + 1);
-        break;
+          this.setState({
+            isOpen: false
+          });
+          break;
 
-      case KeyCodes.home:
-        this.setSelectedIndex(0);
-        break;
+        case KeyCodes.up:
+          this.setSelectedIndex(this.state.selectedIndex - 1);
+          break;
 
-      case KeyCodes.end:
-        this.setSelectedIndex(this.props.options.length - 1);
-        break;
+        case KeyCodes.down:
+          this.setSelectedIndex(this.state.selectedIndex + 1);
+          break;
 
-      default:
-        return;
+        case KeyCodes.home:
+          this.setSelectedIndex(0);
+          break;
+
+        case KeyCodes.end:
+          this.setSelectedIndex(this.props.options.length - 1);
+          break;
+
+        default:
+          return;
+      }
+
+      ev.stopPropagation();
+      ev.preventDefault();
     }
-
-    ev.stopPropagation();
-    ev.preventDefault();
   }
 
   @autobind
