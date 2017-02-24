@@ -135,7 +135,10 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
           { GroupSpacer({ count: groupNestingDepth - 1 }) }
           { columns.map((column, columnIndex) => (
             <div key={ column.key } className='ms-DetailsHeader-cellSizeWrapper'>
-              <div className='ms-DetailsHeader-cellWrapper' role='columnheader'>
+              <div
+                className='ms-DetailsHeader-cellWrapper'
+                role='columnheader'
+                aria-sort={ column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none' }>
                 <button
                   key={ column.fieldName }
                   disabled={ column.columnActionsMode === ColumnActionsMode.disabled }
