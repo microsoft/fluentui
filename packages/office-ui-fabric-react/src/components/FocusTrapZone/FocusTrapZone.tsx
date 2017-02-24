@@ -24,11 +24,11 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   private _isInStack: boolean = false;
 
   public componentWillMount() {
-    if (this.props.forceFocusInsideTrap) {
+    let { forceFocusInsideTrap = true } = this.props;
+    if (forceFocusInsideTrap) {
       this._isInStack = true;
       FocusTrapZone._priorityStack.push(this);
     }
-    // todo: add to the stack
   }
 
   public componentDidMount() {
@@ -52,7 +52,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     this._events.dispose();
     if (this._isInStack) {
       FocusTrapZone._priorityStack = FocusTrapZone._priorityStack.filter((value: FocusTrapZone) => {
-          return this !== value;
+        return this !== value;
       });
     }
 
@@ -118,7 +118,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   }
 
   private _forceFocusInTrap(ev: FocusEvent) {
-      if (FocusTrapZone._priorityStack.length && this === FocusTrapZone._priorityStack[FocusTrapZone._priorityStack.length - 1]) {
+    if (FocusTrapZone._priorityStack.length && this === FocusTrapZone._priorityStack[FocusTrapZone._priorityStack.length - 1]) {
       const focusedElement = document.activeElement as HTMLElement;
 
       if (!elementContains(this.refs.root, focusedElement)) {
