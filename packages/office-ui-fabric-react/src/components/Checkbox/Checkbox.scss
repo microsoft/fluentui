@@ -57,7 +57,7 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
 }
 
 // The checkbox square container
-.checkboxLabel::before {
+.label::before {
   content: '';
   display: inline-block;
   border: 1px solid $ms-color-neutralTertiary;
@@ -72,7 +72,7 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
 }
 
 // The check mark icon
-.checkboxLabel::after {
+.label::after {
   @include ms-Icon--CheckMark;
   font-family: 'FabricMDL2Icons';
   display: none;
@@ -88,7 +88,7 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
 }
 
 // The checkbox label
-.checkboxLabel {
+.label {
   display: inline-block;
   cursor: pointer;
   margin-top: 8px;
@@ -114,11 +114,11 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
       border-color: $ms-color-neutralSecondaryAlt;
     }
 
-    &.isDisabled::before {
+    &.labelIsDisabled::before {
       border-color: $ms-color-neutralTertiaryAlt;
     }
 
-    &.isChecked::before {
+    &.labelIsChecked::before {
       border-color: $ms-color-themeDarkAlt;
     }
   }
@@ -135,7 +135,7 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
 
   //== State: A checkbox is checked
   //
-  &.isChecked {
+  &.labelIsChecked {
     &::before {
       border: 10px solid $ms-color-themePrimary;
       background-color: $ms-color-themePrimary;
@@ -167,7 +167,7 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
 
   //== State: A disabled checkbox
   //
-  &.isDisabled {
+  &.labelIsDisabled {
     cursor: default;
 
     &:hover,
@@ -197,16 +197,16 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
 
     //== State: A checkbox in focus
   //
-  &.isInFocus {
+  &.labelIsInFocus {
     &::before {
       border-color: $ms-color-neutralSecondaryAlt;
     }
 
-    &.isDisabled::before {
+    &.labelIsDisabled::before {
       border-color: $ms-color-neutralTertiaryAlt;
     }
 
-    &.isChecked::before {
+    &.labelIsChecked::before {
       border-color: $ms-color-themeDarkAlt;
     }
   }
