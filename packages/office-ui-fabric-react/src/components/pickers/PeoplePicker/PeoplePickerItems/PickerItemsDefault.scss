@@ -1,6 +1,6 @@
 @import '../../../../common/common';
 
-.pickerPersonaContainer {
+.personaContainer {
   @include focus-border();
   display: inline-flex;
   align-items: center;
@@ -18,7 +18,7 @@
       background: $ms-color-neutralQuaternaryAlt;
     }
   }
-  .pickerItemContent {
+  .itemContent {
     flex: 0 1 auto;
     min-width: 0px;
     &:global(.ms-Button) {
@@ -30,6 +30,6 @@
   }
 }
 
-.pickerItemContainer {
+.itemContainer {
   display: inline-block;
 }

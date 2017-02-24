@@ -32,21 +32,21 @@ export class SelectedItemWithMenu extends React.Component<IPeoplePickerItemWithM
       onRemoveItem
     } = this.props;
     return (
-      <div data-is-focusable={ true } className={ css('ms-PickerItem-container', styles.pickerItemContainer) }>
-        <FocusZone className={ css('ms-PickerPersona-container', styles.pickerPersonaContainer) } >
-          <div className={ css('ms-PickerItem-content', styles.pickerItemContent) }>
+      <div data-is-focusable={ true } className={ css('ms-PickerItem-container', styles.itemContainer) }>
+        <FocusZone className={ css('ms-PickerPersona-container', styles.personaContainer) } >
+          <div className={ css('ms-PickerItem-content', styles.itemContent) }>
             <Persona
               { ...item }
               presence={ item.presence !== undefined ? item.presence : PersonaPresence.none }
             />
           </div>
-          <div ref='ellipsisRef' className={ css('ms-PickerItem-content', styles.pickerItemContent) }>
+          <div ref='ellipsisRef' className={ css('ms-PickerItem-content', styles.itemContent) }>
             <Button
               icon={ 'More' }
               buttonType={ ButtonType.icon } onClick={ this.onContextualMenu }
             />
           </div>
-          <div className={ css('ms-PickerItem-content', styles.pickerItemContent) }>
+          <div className={ css('ms-PickerItem-content', styles.itemContent) }>
             <Button
               icon={ 'Cancel' }
               buttonType={ ButtonType.icon }
