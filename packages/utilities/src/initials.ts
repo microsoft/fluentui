@@ -33,12 +33,12 @@ function getInitialsArabic(displayName: string, isRtl: boolean): string {
 function getInitialsAsian(displayName: string): string {
   const name = displayName.replace(/\s/, '');
 
-  // for short names, only display a single character of the family name
+  // For short names, only display a single character of the family name
   if (name.length <= 2) {
     return name[name.length - 1];
   }
 
-  // for long names, display the two most significant characters of the family name
+  // For long names, display the two most significant characters of the family name
   return name.substr(name.length - 2, name.length);
 }
 
