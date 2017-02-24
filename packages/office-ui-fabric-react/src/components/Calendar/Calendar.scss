@@ -33,14 +33,14 @@ $Calendar-dayPicker-margin: 10px;
 
 
 // When the picker opens, reveal the content.
-.picker.pickerOpened .holder {
+.picker.pickerIsOpened .holder {
   @include ms-u-slideDownIn10;
   @include ms-u-borderBox;
   display: block;
 }
 
 // When a picker opens, always open it in front of other closed pickers
-.pickerOpened {
+.pickerIsOpened {
   position: relative;
 }
 
@@ -125,28 +125,28 @@ $Calendar-dayPicker-margin: 10px;
 
 
 // Today.
-.dayToday {
+.dayIsToday {
   position: relative;
   background-color: $ms-color-themeLight;
 }
 
 
 // Disabled day.
-.dayDisabled:before {
+.dayIsDisabled:before {
   border-top-color: $ms-color-neutralTertiary;
 }
 
 
 // Out of focus days.
-.dayOutfocus {
+.dayIsUnfocused {
   color: $ms-color-neutralTertiary;
   font-weight: $ms-font-weight-regular;
 }
 
 
 // Hovered date picker items.
-.dayInfocus:hover,
-.dayOutfocus:hover {
+.dayIsFocused:hover,
+.dayIsUnfocused:hover {
   cursor: pointer;
   color: $ms-color-black;
   background: $ms-color-neutralLight;
@@ -154,8 +154,8 @@ $Calendar-dayPicker-margin: 10px;
 
 
 // Highlighted and hovered/focused dates.
-.dayHighlighted:hover,
-.pickerFocused .dayHighlighted {
+.dayIsHighlighted:hover,
+.pickerIsFocused .dayIsHighlighted {
   cursor: pointer;
   color: $ms-color-white;
   background: $ms-color-themePrimary;
@@ -163,8 +163,8 @@ $Calendar-dayPicker-margin: 10px;
 
 
 // Disabled and highlighted dates.
-.dayHighlighted.dayDisabled,
-.dayHighlighted.dayDisabled:hover {
+.dayIsHighlighted.dayDisabled,
+.dayIsHighlighted.dayDisabled:hover {
   background: $ms-color-neutralTertiary;
 }
 
@@ -385,7 +385,7 @@ $Calendar-dayPicker-margin: 10px;
 
 
   // Show the month picker, if enabled
-  .isMonthPickerVisible {
+  .pickerIsMonthPickerVisible {
     // Swap margin for padding so that the border extends the full height.
     .dayPicker {
       margin: -$Calendar-dayPicker-margin 0;

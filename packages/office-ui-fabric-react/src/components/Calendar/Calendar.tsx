@@ -78,10 +78,10 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
         <div className={ css(
           'ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused ',
           styles.picker,
-          styles.pickerOpened,
-          styles.pickerFocused,
+          styles.pickerIsOpened,
+          styles.pickerIsFocused,
           this.props.onDismiss && 'is-monthPickerVisible',
-          this.props.onDismiss && styles.isMonthPickerVisible
+          this.props.onDismiss && styles.pickerIsMonthPickerVisible
         ) } >
           <div className={ css('ms-DatePicker-holder', styles.holder) } onKeyDown={ this._onDatePickerPopupKeyDown }>
             <div className={ css('ms-DatePicker-frame', styles.frame) }>

@@ -123,15 +123,11 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                         className={ css(
                           'ms-DatePicker-day',
                           styles.day,
-                          day.isInMonth && styles.dayInfocus,
-                          !day.isInMonth && styles.dayOutfocus,
-                          day.isToday && styles.dayToday,
-                          day.isSelected && styles.dayHighlighted,
                           {
-                            'ms-DatePicker-day--infocus': day.isInMonth,
-                            'ms-DatePicker-day--outfocus': !day.isInMonth,
-                            'ms-DatePicker-day--today': day.isToday,
-                            'ms-DatePicker-day--highlighted': day.isSelected
+                            ['ms-DatePicker-day--infocus ' + styles.dayIsFocused]: day.isInMonth,
+                            ['ms-DatePicker-day--outfocus ' + styles.dayIsUnfocused]: !day.isInMonth,
+                            ['ms-DatePicker-day--today ' + styles.dayIsToday]: day.isToday,
+                            ['ms-DatePicker-day--highlighted ' + styles.dayIsHighlighted]: day.isSelected
                           }) }
                         role='gridcell'
                         onClick={ selectDayCallbacks[day.key] }
