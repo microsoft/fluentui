@@ -90,12 +90,13 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
       tertiaryText,
       optionalText,
       hidePersonaDetails,
-      imageShouldFadeIn
+      imageShouldFadeIn,
+      onRenderInitials = this._onRenderInitials,
     } = this.props;
 
     let isRTL = getRTL();
 
-    imageInitials = imageInitials || this._getInitials(primaryText, isRTL);
+
     initialsColor = initialsColor !== undefined && initialsColor !== null ? initialsColor : this._getColorFromName(primaryText);
 
     let presenceElement = null;
@@ -137,12 +138,12 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
       <div
         { ...divProps }
         className={ css('ms-Persona', styles.root, className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence]) }
-        >
+      >
         { size !== PersonaSize.tiny && (
           <div className={ css('ms-Persona-imageArea', styles.imageArea) }>
             {
               !this.state.isImageLoaded &&
-              (<div className={ css('ms-Persona-initials', styles.initials, PERSONA_INITIALS_COLOR[initialsColor]) } aria-hidden='true'>{ imageInitials }</div>)
+              (<div className={ css('ms-Persona-initials', styles.initials, PERSONA_INITIALS_COLOR[initialsColor]) } aria-hidden='true'>{ onRenderInitials(this.props, this._onRenderInitials) }</div>)
             }
             <Image
               className={ css('ms-Persona-image', styles.image) }
@@ -155,6 +156,21 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
         { presenceElement }
         { (!hidePersonaDetails || (size === PersonaSize.tiny)) && personaDetails }
       </div>
+    );
+  }
+
+  @autobind
+  private _onRenderInitials(props: IPersonaProps): JSX.Element {
+    let {
+      imageInitials,
+      primaryText
+    } = props;
+
+    let isRTL = getRTL();
+
+    imageInitials = imageInitials || this._getInitials(primaryText, isRTL);
+    return (
+      <span>{ imageInitials }</span>
     );
   }
 

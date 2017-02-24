@@ -120,49 +120,49 @@ $ms-Persona-presenceSizeXl: 28px;
   line-height: 46px;
   height: $ms-Persona-sizeMd;
 
-  &.isRootInitialsLightBlue {
+  &.initialsIsLightBlue {
     background-color: $ms-color-initials-lightBlue;
   }
-  &.isRootInitialsBlue {
+  &.initialsIsBlue {
     background-color: $ms-color-initials-blue;
   }
-  &.isRootInitialsDarkBlue {
+  &.initialsIsDarkBlue {
     background-color: $ms-color-initials-darkBlue;
   }
-  &.isRootInitialsTeal {
+  &.initialsIsTeal {
     background-color: $ms-color-initials-teal;
   }
-  &.isRootInitialsLightGreen {
+  &.initialsIsLightGreen {
     background-color: $ms-color-initials-lightGreen;
   }
-  &.isRootInitialsGreen {
+  &.initialsIsGreen {
     background-color: $ms-color-initials-green;
   }
-  &.isRootInitialsDarkGreen {
+  &.initialsIsDarkGreen {
     background-color: $ms-color-initials-darkGreen;
   }
-  &.isRootInitialsLightPink {
+  &.initialsIsLightPink {
     background-color: $ms-color-initials-lightPink;
   }
-  &.isRootInitialsPink {
+  &.initialsIsPink {
     background-color: $ms-color-initials-pink;
   }
-  &.isRootInitialsMagenta {
+  &.initialsIsMagenta {
     background-color: $ms-color-initials-magenta;
   }
-  &.isRootInitialsPurple {
+  &.initialsIsPurple {
     background-color: $ms-color-initials-purple;
   }
-  &.isRootInitialsBlack {
+  &.initialsIsBlack {
     background-color: $ms-color-initials-black;
   }
-  &.isRootInitialsOrange {
+  &.initialsIsOrange {
     background-color: $ms-color-initials-orange;
   }
-  &.isRootInitialsRed {
+  &.initialsIsRed {
     background-color: $ms-color-initials-red;
   }
-  &.isRootInitialsDarkRed {
+  &.initialsIsDarkRed {
     background-color: $ms-color-initials-darkRed;
   }
 }
@@ -271,7 +271,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Tiny Persona
 //
-.root.isRootTiny {
+.root.rootIsTiny {
   height: $ms-Persona-sizeTiny;
   min-width: $ms-Persona-sizeTiny;
 
@@ -317,7 +317,7 @@ $ms-Persona-presenceSizeXl: 28px;
 //
 // This variant includes a semicolon, and is
 // most often presented within a People Picker.
-.root.isRootTiny.isRootReadonly {
+.root.rootIsTiny.rootReadonly {
   padding: 0;
   background-color: transparent;
 
@@ -329,7 +329,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Extra Small Persona
 //
-.root.isRootExtraExtraSmall {
+.root.rootIsExtraExtraSmall {
   height: $ms-Persona-sizeXxs;
   line-height: $ms-Persona-sizeXxs;
   min-width: $ms-Persona-sizeXxs;
@@ -378,7 +378,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Extra Small Persona
 //
-.root.isRootExtraSmall {
+.root.rootIsExtraSmall {
   height: $ms-Persona-sizeXs;
   line-height: $ms-Persona-sizeXs;
   min-width: $ms-Persona-sizeXs;
@@ -418,7 +418,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Small Persona
 //
-.root.isRootSmall {
+.root.rootIsSmall {
   height: $ms-Persona-sizeSm;
   line-height: $ms-Persona-sizeSm;
   min-width: $ms-Persona-sizeSm;
@@ -458,7 +458,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Large Persona
 //
-.root.isRootLarge {
+.root.rootIsLarge {
   height: $ms-Persona-sizeLg;
   line-height: $ms-Persona-sizeLg;
   min-width: $ms-Persona-sizeLg;
@@ -506,7 +506,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Extra Large Persona
 //
-.root.isRootExtraLarge {
+.root.rootIsExtraLarge {
   height: $ms-Persona-sizeXl;
   line-height: $ms-Persona-sizeXl;
   min-width: $ms-Persona-sizeXl;
@@ -564,7 +564,7 @@ $ms-Persona-presenceSizeXl: 28px;
 //== Modifier: Persona with darker text
 //
 // Note: Typically applied when the component has a colored background.
-.root.isRootDarkText {
+.root.rootIsDarkText {
   .primaryText {
     color: $ms-color-neutralDark;
   }
@@ -579,11 +579,11 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Selectable Persona
 //
-.root.isRootSelectable {
+.root.rootIsSelectable {
   cursor: pointer;
   padding: 0 10px;
 
-  &:not(.isRootExtraLarge) {
+  &:not(.rootExtraLarge) {
     &:hover,
     &:focus {
       background-color: $ms-color-themeLighter;
@@ -597,7 +597,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Persona with available presence
 //
-.root.isRootAvailable {
+.root.rootIsAvailable {
   .presence {
     background-color: $ms-color-presence-available;
 
@@ -614,7 +614,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Persona with away presence
 //
-.root.isRootAway {
+.root.rootIsAway {
   .presence {
     background-color: $ms-color-presence-away;
 
@@ -636,7 +636,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Persona with blocked presence
 //
-.root.isRootBlocked {
+.root.rootIsBlocked {
   .presence {
     background-color: $ms-color-white;
 
@@ -691,7 +691,7 @@ $ms-Persona-presenceSizeXl: 28px;
     }
   }
 
-  &.isRootLarge {
+  &.rootIsLarge {
     .presence {
       &::after {
         top: 9px;
@@ -699,7 +699,7 @@ $ms-Persona-presenceSizeXl: 28px;
     }
   }
 
-  &.isRootExtraLarge {
+  &.rootIsExtraLarge {
     .presence {
       &::after {
         top: 13px;
@@ -711,7 +711,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Persona with busy presence
 //
-.root.isRootBusy {
+.root.rootIsBusy {
   .presence {
     background-color: $ms-color-presence-busy-average;
 
@@ -728,7 +728,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Persona with do not disturb presence
 //
-.root.isRootDoNotDisturb {
+.root.rootIsDoNotDisturb {
   .presence {
     background-color: $ms-color-presence-dnd-background;
 
@@ -754,7 +754,7 @@ $ms-Persona-presenceSizeXl: 28px;
 
 //== Modifier: Persona with offline presence
 //
-.root.isRootOffline {
+.root.rootIsOffline {
   .presence {
     background-color: $ms-color-presence-offline;
 

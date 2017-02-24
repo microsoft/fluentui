@@ -17,17 +17,17 @@ describe('Persona', () => {
 
     it('renders with expected initialsColor if none was provided', () => {
       const wrapper = shallow(<Persona primaryText='Kat Larrson' />);
-      let result = wrapper.find('.' + styles.isRootInitialsRed);
+      let result = wrapper.find('.' + styles.initialsIsRed);
       expect(result).to.have.length(1);
 
       const wrapper2 = shallow(<Persona primaryText='Annie Lindqvist' />);
-      result = wrapper2.find('.' + styles.isRootInitialsDarkRed);
+      result = wrapper2.find('.' + styles.initialsIsDarkRed);
       expect(result).to.have.length(1);
     });
 
     it('uses provided initialsColor if one was specified', () => {
       const wrapper = shallow(<Persona primaryText='Kat Larrson' initialsColor={ PersonaInitialsColor.lightBlue } />);
-      let result = wrapper.find('.' + styles.isRootInitialsLightBlue);
+      let result = wrapper.find('.' + styles.initialsIsLightBlue);
       expect(result).to.have.length(1);
     });
 
