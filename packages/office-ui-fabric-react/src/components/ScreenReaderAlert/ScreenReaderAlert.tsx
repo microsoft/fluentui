@@ -76,7 +76,8 @@ export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, 
   }
 
   public shouldComponentUpdate(nextProps: IScreenReaderAlertProps, nextState: IScreenReaderAlertState): boolean {
-    // When indicator not changed, do NOT need to render if the string read out by ATs is same as the previous valid one (not empty).
+    // When indicator is not changed, do NOT need to render if the string read out by ATs
+    // is same as the previous valid one (not empty).
     const isValidStringChanged: boolean = nextState.alertText !== this._previousValidString;
 
     return (this.props.indicator !== nextProps.indicator || isValidStringChanged);

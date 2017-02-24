@@ -1,64 +1,60 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-addons-test-utils';
-
-let { expect } = chai;
+import { expect } from 'chai';
 
 import { ScreenReaderAlert } from './ScreenReaderAlert';
-import { IScreenReaderAlertProps, ReadingMode } from './ScreenReaderAlert.Props';
+import { ReadingMode } from './ScreenReaderAlert.Props';
 
 describe('ScreenReaderAlert', () => {
   interface IRenderOptions {
-    message: string,
-    readingMode?: ReadingMode,
-    indicator?: number
-    container?: HTMLElement
+    message: string;
+    readingMode?: ReadingMode;
+    indicator?: number;
+    container?: HTMLElement;
   }
 
-  const renderComponent = (renderOptions: IRenderOptions): React.ReactInstance => {
-    const { message, readingMode, indicator, container} = renderOptions;
+  const renderComponent: (renderOptions: IRenderOptions) => React.ReactInstance =
+    (renderOptions: IRenderOptions) => {
+      let threwException: boolean = false;
+      let screenReaderAlert: React.ReactInstance;
 
-    let threwException = false;
-    let screenReaderAlert;
+      try {
+        const component: JSX.Element = (
+          <ScreenReaderAlert readingMode={ renderOptions.readingMode } indicator={ renderOptions.indicator }>
+            { renderOptions.message }
+          </ScreenReaderAlert>
+        );
 
-    try {
-      const component: JSX.Element = (
-        <ScreenReaderAlert readingMode={ readingMode } indicator={ indicator }>
-          { message }
-        </ScreenReaderAlert>
-      );
+        const container: HTMLElement = renderOptions.container || document.createElement('div');
+        screenReaderAlert = ReactDOM.render(component, container) as React.ReactInstance;
+      } catch (e) {
+        threwException = true;
+      }
 
-      screenReaderAlert = container
-        ? screenReaderAlert = ReactDOM.render(component, container)
-        : ReactTestUtils.renderIntoDocument<ScreenReaderAlert>(component);
-    } catch (e) {
-      threwException = true;
-    }
+      expect(threwException).to.be.false;
 
-    expect(threwException).to.be.false;
-
-    return screenReaderAlert;
-  }
+      return screenReaderAlert;
+    };
 
   it('should not render the live region when reading mode is DoNotRead', () => {
-    const screenReaderAlert = renderComponent({
+    const screenReaderAlert: React.ReactInstance = renderComponent({
       message: 'alert-message-do-not-read',
       readingMode: ReadingMode.DoNotRead
-    })
+    });
 
-    let renderedDOM = ReactDOM.findDOMNode(screenReaderAlert as React.ReactInstance);
+    const renderedDOM: Element = ReactDOM.findDOMNode(screenReaderAlert as React.ReactInstance);
 
     expect(renderedDOM.querySelector('p')).to.be.null;
     expect(renderedDOM.textContent).to.be.empty;
   });
 
   it('should assign proper live region attributes when reading mode is ReadAfterOtherContent', () => {
-    const screenReaderAlert = renderComponent({
+    const screenReaderAlert: React.ReactInstance = renderComponent({
       message: 'alert-message-read-after-other-content',
       readingMode: ReadingMode.ReadAfterOtherContent
-    })
+    });
 
-    let renderedDOM = ReactDOM.findDOMNode(screenReaderAlert as React.ReactInstance);
+    const renderedDOM: Element = ReactDOM.findDOMNode(screenReaderAlert as React.ReactInstance);
 
     const paragraphElement: HTMLParagraphElement = renderedDOM.querySelector('p');
     expect(paragraphElement).to.not.be.null;
@@ -69,12 +65,12 @@ describe('ScreenReaderAlert', () => {
   });
 
   it('should assign proper live region attributes when reading mode is ReadImmediately', () => {
-    const screenReaderAlert = renderComponent({
+    const screenReaderAlert: React.ReactInstance = renderComponent({
       message: 'alert-message-read-immediately',
       readingMode: ReadingMode.ReadImmediately
-    })
+    });
 
-    let renderedDOM = ReactDOM.findDOMNode(screenReaderAlert as React.ReactInstance);
+    const renderedDOM: Element = ReactDOM.findDOMNode(screenReaderAlert as React.ReactInstance);
 
     const paragraphElement: HTMLParagraphElement = renderedDOM.querySelector('p');
     expect(paragraphElement).to.not.be.null;
@@ -90,7 +86,7 @@ describe('ScreenReaderAlert', () => {
     renderComponent({
       message: 'alert-message-same-message',
       container: divElement
-    })
+    });
 
     const firstParagraphElement: HTMLParagraphElement = divElement.querySelector('p');
     expect(divElement.querySelector('p')).to.not.be.null;
@@ -99,7 +95,7 @@ describe('ScreenReaderAlert', () => {
     renderComponent({
       message: 'alert-message-same-message',
       container: divElement
-    })
+    });
 
     const secondParagraphElement: HTMLParagraphElement = divElement.querySelector('p');
     expect(divElement.querySelector('p')).to.not.be.null;
@@ -112,10 +108,10 @@ describe('ScreenReaderAlert', () => {
   it('should clear the string from DOM after a timeout', (done) => {
     const divElement: HTMLDivElement = document.createElement('div');
 
-    const screenReaderAlert = renderComponent({
+    const screenReaderAlert: React.ReactInstance = renderComponent({
       message: 'alert-message-clear-string',
       container: divElement
-    })
+    });
 
     expect(divElement.querySelector('p')).to.not.be.null;
     expect(divElement.textContent).to.contain('alert-message-clear-string');
@@ -135,7 +131,7 @@ describe('ScreenReaderAlert', () => {
       message: 'alert-message-change-indicator',
       indicator: 0,
       container: divElement
-    })
+    });
 
     const firstParagraphElement: HTMLParagraphElement = divElement.querySelector('p');
     expect(divElement.querySelector('p')).to.not.be.null;
@@ -145,7 +141,7 @@ describe('ScreenReaderAlert', () => {
       message: 'alert-message-change-indicator',
       indicator: 1,
       container: divElement
-    })
+    });
 
     const secondParagraphElement: HTMLParagraphElement = divElement.querySelector('p');
     expect(divElement.querySelector('p')).to.not.be.null;
@@ -161,7 +157,7 @@ describe('ScreenReaderAlert', () => {
     renderComponent({
       message: 'alert-message-first-string',
       container: divElement
-    })
+    });
 
     const firstParagraphElement: HTMLParagraphElement = divElement.querySelector('p');
     expect(divElement.querySelector('p')).to.not.be.null;
@@ -170,7 +166,7 @@ describe('ScreenReaderAlert', () => {
     renderComponent({
       message: 'alert-message-second-different-string',
       container: divElement
-    })
+    });
 
     const secondParagraphElement: HTMLParagraphElement = divElement.querySelector('p');
     expect(divElement.querySelector('p')).to.not.be.null;

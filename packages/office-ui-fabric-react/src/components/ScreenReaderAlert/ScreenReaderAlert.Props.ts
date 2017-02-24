@@ -17,7 +17,7 @@ export enum ReadingMode {
    * Read immediately after this component is triggered rendering and updated.
    * Most screen readers will announce the word 'alert' before or after the whole sentence.
    */
-  ReadImmediately = 2,
+  ReadImmediately = 2
 }
 
 export interface IScreenReaderAlertProps extends React.Props<HTMLElement> {
