@@ -25,13 +25,13 @@ const KOREAN_LANGUAGE_REGEX = new RegExp('[\u1100-\u11FF|\u3130-\u318F|\uA960-\u
 const CHINESE_LANGUAGE_REGEX = new RegExp('[\u4E00-\u9FCC\u3400-\u4DB5\uFA0E\uFA0F\uFA11\uFA13\uFA14\uFA1F\uFA21\uFA23\uFA24\uFA27-\uFA29]|[\ud840-\ud868][\udc00-\udfff]|\ud869[\udc00-\uded6\udf00-\udfff]|[\ud86a-\ud86c][\udc00-\udfff]|\ud86d[\udc00-\udf34\udf40-\udfff]|\ud86e[\udc00-\udc1d]');
 
 function getInitialsArabic(displayName: string, isRtl: boolean): string {
-  let name = displayName.replace(/\s/, '');
+  const name = displayName.replace(/\s/, '');
 
   return isRtl ? name[name.length - 1] : name[0];
 }
 
 function getInitialsAsian(displayName: string): string {
-  let name = displayName.replace(/\s/, '');
+  const name = displayName.replace(/\s/, '');
 
   // for short names, only display a single character of the family name
   if (name.length <= 2) {
