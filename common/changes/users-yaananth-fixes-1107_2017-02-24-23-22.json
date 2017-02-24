@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Updating Link props so that we can use Object spread syntax",
+      "type": "patch"
+    }
+  ],
+  "email": "yaananth@microsoft.com"
+}
