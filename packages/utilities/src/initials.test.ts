@@ -47,6 +47,9 @@ describe('getInitials', () => {
 
     result = getInitials('佳', false);
     expect(result).to.equal('佳');
+
+    result = getInitials('宋智洋', false);
+    expect(result).to.equal('智洋');
   });
 
   it('calculates an expected initials for Korean names', () => {
