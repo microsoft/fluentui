@@ -18,7 +18,7 @@ import {
   PERSONA_PRESENCE,
   PERSONA_SIZE
 } from './PersonaConsts';
-import './Persona.scss';
+import styles from './Persona.scss';
 
 /** Regex to detect words within paraenthesis in a string where gi implies global and case-insensitive. */
 const CHARS_WITHIN_PARENTHESIS_REGEX: RegExp = new RegExp('\\(([^)]*)\\)', 'gi');
@@ -116,36 +116,36 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
           userPresence = '';
       }
       if (userPresence) {
-        let iconClass = `ms-Persona-presenceIcon ms-Icon ms-Icon--${userPresence}`;
+        let iconClass = css(`ms-Persona-presenceIcon ms-Icon ms-Icon--${userPresence}`, styles.presenceIcon);
         statusIcon = <i className={ iconClass }></i>;
       }
-      presenceElement = <div className='ms-Persona-presence'>{ statusIcon }</div>;
+      presenceElement = <div className={ css('ms-Persona-presence', styles.presence) }>{ statusIcon }</div>;
     }
 
     let divProps = getNativeProps(this.props, divProperties);
-    let personaDetails = <div className='ms-Persona-details'>
-      <div className='ms-Persona-primaryText'>{ primaryText }</div>
+    let personaDetails = <div className={ css('ms-Persona-details', styles.details) }>
+      <div className={ css('ms-Persona-primaryText', styles.primaryText) }>{ primaryText }</div>
       { secondaryText ? (
-        <div className='ms-Persona-secondaryText'>{ secondaryText }</div>
+        <div className={ css('ms-Persona-secondaryText', styles.secondaryText) }>{ secondaryText }</div>
       ) : (null) }
-      <div className='ms-Persona-tertiaryText'>{ tertiaryText }</div>
-      <div className='ms-Persona-optionalText'>{ optionalText }</div>
+      <div className={ css('ms-Persona-tertiaryText', styles.tertiaryText) }>{ tertiaryText }</div>
+      <div className={ css('ms-Persona-optionalText', styles.optionalText) }>{ optionalText }</div>
       { this.props.children }
     </div>;
 
     return (
       <div
         { ...divProps }
-        className={ css('ms-Persona', className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence]) }
+        className={ css('ms-Persona', styles.root, className, PERSONA_SIZE[size], PERSONA_PRESENCE[presence]) }
         >
         { size !== PersonaSize.tiny && (
-          <div className='ms-Persona-imageArea'>
+          <div className={ css('ms-Persona-imageArea', styles.imageArea) }>
             {
               !this.state.isImageLoaded &&
-              (<div className={ css('ms-Persona-initials', PERSONA_INITIALS_COLOR[initialsColor]) } aria-hidden='true'>{ imageInitials }</div>)
+              (<div className={ css('ms-Persona-initials', styles.initials, PERSONA_INITIALS_COLOR[initialsColor]) } aria-hidden='true'>{ imageInitials }</div>)
             }
             <Image
-              className='ms-Persona-image'
+              className={ css('ms-Persona-image', styles.image) }
               imageFit={ ImageFit.cover }
               src={ imageUrl }
               shouldFadeIn={ imageShouldFadeIn }
