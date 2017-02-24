@@ -70,18 +70,17 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   public render() {
     let rootClass = 'ms-DatePicker';
-    let { firstDayOfWeek, strings } = this.props;
+    let { firstDayOfWeek, strings, isMonthPickerVisible } = this.props;
     let { selectedDate, navigatedDate } = this.state;
 
     return (
       <div className={ css(rootClass, styles.root) } ref='root'>
         <div className={ css(
-          'ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused ',
+          'ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused',
           styles.picker,
           styles.pickerIsOpened,
           styles.pickerIsFocused,
-          this.props.onDismiss && 'is-monthPickerVisible',
-          this.props.onDismiss && styles.pickerIsMonthPickerVisible
+          isMonthPickerVisible && ('is-monthPickerVisible ' + styles.pickerIsMonthPickerVisible)
         ) } >
           <div className={ css('ms-DatePicker-holder', styles.holder) } onKeyDown={ this._onDatePickerPopupKeyDown }>
             <div className={ css('ms-DatePicker-frame', styles.frame) }>
