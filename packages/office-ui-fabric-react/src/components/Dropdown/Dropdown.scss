@@ -94,7 +94,7 @@ $DropDown-item-height: 36px;
 }
 
 //== State: A disabled dropdown
-.root.isDisabled {
+.root.rootIsDisabled {
   .title {
     background-color: $ms-color-neutralLighter;
     border-color: $ms-color-neutralLighter;
@@ -211,7 +211,7 @@ $DropDown-item-height: 36px;
     color: $ms-color-black;
   }
 
-  &.is-disabled {
+  &.itemIsDisabled {
     background: $ms-color-white;
     color: $ms-color-neutralTertiary;
     cursor: default;
@@ -222,7 +222,7 @@ $DropDown-item-height: 36px;
 }
 
 //== State: A selected dropdown item
-.item.isSelected {
+.item.itemIsSelected {
   background-color: $Dropdown-selectedItem-bg;
   color: $ms-color-black;
 

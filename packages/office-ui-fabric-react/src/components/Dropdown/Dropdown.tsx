@@ -101,7 +101,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           id={ id }
           className={ css('ms-Dropdown', styles.root, className, {
             'is-open': isOpen,
-            ['is-disabled ' + styles.isDisabled]: disabled
+            ['is-disabled ' + styles.rootIsDisabled]: disabled
           }) }
           tabIndex={ disabled ? -1 : 0 }
           onKeyDown={ this._onDropdownKeyDown }
@@ -246,10 +246,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         data-index={ item.index }
         data-is-focusable={ true }
         className={ css(
-            'ms-Dropdown-item', styles.item, {
-              ['is-selected ' + styles.isSelected]: this.state.selectedIndex === item.index
-            }
-        )}
+          'ms-Dropdown-item', styles.item, {
+            ['is-selected ' + styles.itemIsSelected]: this.state.selectedIndex === item.index,
+            ['is-disabled ' + styles.itemIsDisabled]: this.props.disabled === true
+          }
+        ) }
         onClick={ () => this._onItemClick(item.index) }
         onFocus={ () => this.setSelectedIndex(item.index) }
         role='option'
