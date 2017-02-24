@@ -390,7 +390,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
 
     return css(
       isDropping && DEFAULT_DROPPING_CSS_CLASS,
-      isDropping && styles.isDropping
+      isDropping && styles.groupIsDropping
     );
   }
 }
