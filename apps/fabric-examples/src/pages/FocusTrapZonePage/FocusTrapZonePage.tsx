@@ -8,14 +8,9 @@ import {
   ComponentPage,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
-import FocusTrapZoneBoxExample from './examples/FocusTrapZone.Box.Example';
-let FocusTrapZoneBoxExampleCode = require('./examples/FocusTrapZone.Box.Example.tsx') as string;
 
-import FocusTrapZoneBoxExampleWithFocusableItem from './examples/FocusTrapZone.Box.FocusOnCustomElement.Example';
-let FocusTrapZoneBoxExampleWithFocusableItemCode = require('./examples/FocusTrapZone.Box.FocusOnCustomElement.Example.tsx') as string;
-
-import FocusTrapZoneBoxClickExample from './examples/FocusTrapZone.Box.Click.Example';
-let FocusTrapZoneBoxClickExampleCode = require('./examples/FocusTrapZone.Box.Click.Example.tsx') as string;
+import FocusTrapZoneBestExample from './examples/FocusTrapZone.Best.Example';
+let FocusTrapZoneBestExampleCode = require('./examples/FocusTrapZone.Best.Example.tsx') as string;
 
 export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -25,14 +20,8 @@ export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, 
         componentName='FocusTrapZoneExample'
         exampleCards={
           <div>
-            <ExampleCard title='Simple Box' code={ FocusTrapZoneBoxExampleCode }>
-              <FocusTrapZoneBoxExample />
-            </ExampleCard>
-            <ExampleCard title='Simple Box with focus on custom focusable element' code={ FocusTrapZoneBoxExampleWithFocusableItemCode }>
-              <FocusTrapZoneBoxExampleWithFocusableItem />
-            </ExampleCard>
-            <ExampleCard title='Simple Box with Clicking outside Trap Zone enabled' code={ FocusTrapZoneBoxClickExampleCode }>
-              <FocusTrapZoneBoxClickExample />
+            <ExampleCard title='Best Example' code={ FocusTrapZoneBestExampleCode }>
+              <FocusTrapZoneBestExample />
             </ExampleCard>
           </div>
         }

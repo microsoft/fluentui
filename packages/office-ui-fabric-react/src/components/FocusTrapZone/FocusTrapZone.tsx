@@ -20,14 +20,20 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   };
 
   private _previouslyFocusedElement: HTMLElement;
-  private static _priorityStack: FocusTrapZone[] = [];
-  private _isInStack: boolean = false;
+  private static _focusStack: FocusTrapZone[] = [];
+  private _isInFocusStack: boolean = false;
+  private static _clickStack: FocusTrapZone[] = [];
+  private _isInClickStack: boolean = false;
 
   public componentWillMount() {
-    let { forceFocusInsideTrap = true } = this.props;
+    let { isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true } = this.props;
     if (forceFocusInsideTrap) {
-      this._isInStack = true;
-      FocusTrapZone._priorityStack.push(this);
+      this._isInFocusStack = true;
+      FocusTrapZone._focusStack.push(this);
+    }
+    if (!isClickableOutsideFocusTrap) {
+      this._isInClickStack = true;
+      FocusTrapZone._clickStack.push(this);
     }
   }
 
@@ -50,10 +56,16 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     let { ignoreExternalFocusing } = this.props;
 
     this._events.dispose();
-    if (this._isInStack) {
-      FocusTrapZone._priorityStack = FocusTrapZone._priorityStack.filter((value: FocusTrapZone) => {
+    if (this._isInFocusStack || this._isInClickStack) {
+      let filter = (value: FocusTrapZone) => {
         return this !== value;
-      });
+      };
+      if (this._isInFocusStack) {
+        FocusTrapZone._focusStack = FocusTrapZone._focusStack.filter(filter);
+      }
+      if (this._isInClickStack) {
+        FocusTrapZone._clickStack = FocusTrapZone._clickStack.filter(filter);
+      }
     }
 
     if (!ignoreExternalFocusing && this._previouslyFocusedElement) {
@@ -118,7 +130,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   }
 
   private _forceFocusInTrap(ev: FocusEvent) {
-    if (FocusTrapZone._priorityStack.length && this === FocusTrapZone._priorityStack[FocusTrapZone._priorityStack.length - 1]) {
+    if (FocusTrapZone._focusStack.length && this === FocusTrapZone._focusStack[FocusTrapZone._focusStack.length - 1]) {
       const focusedElement = document.activeElement as HTMLElement;
 
       if (!elementContains(this.refs.root, focusedElement)) {
@@ -130,12 +142,14 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   }
 
   private _forceClickInTrap(ev: MouseEvent) {
-    const clickedElement = ev.target as HTMLElement;
+    if (FocusTrapZone._clickStack.length && this === FocusTrapZone._clickStack[FocusTrapZone._clickStack.length - 1]) {
+      const clickedElement = ev.target as HTMLElement;
 
-    if (clickedElement && !elementContains(this.refs.root, clickedElement)) {
-      this.focus();
-      ev.preventDefault();
-      ev.stopPropagation();
+      if (clickedElement && !elementContains(this.refs.root, clickedElement)) {
+        this.focus();
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
     }
   }
 }
