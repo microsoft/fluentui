@@ -12,7 +12,7 @@
   &:hover {
     background: $ms-color-neutralLight;
   }
-  &.isSelected {
+  &.personaContainerIsSelected {
     background: $ms-color-neutralQuaternary;
     &:hover {
       background: $ms-color-neutralQuaternaryAlt;
