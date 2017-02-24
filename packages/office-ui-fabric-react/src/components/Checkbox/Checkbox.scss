@@ -212,7 +212,7 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
   }
 }
 
-:global(.ms-Fabric.is-focusVisible) .isInFocus {
+:global(.ms-Fabric.is-focusVisible) .rootIsInFocus {
   &::before {
     content: '';
     position: absolute;

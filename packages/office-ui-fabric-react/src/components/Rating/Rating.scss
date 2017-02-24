@@ -20,7 +20,7 @@ $Rating-largeIconSize: 20px;
   display: inline-block;
 
   &:hover {
-    .star:not(.isDisabled) {
+    .star:not(.starIsDisabled) {
       color: $Rating-selectedColor;
 
       &.star:hover {

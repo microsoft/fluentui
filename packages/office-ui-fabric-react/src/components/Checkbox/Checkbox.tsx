@@ -58,7 +58,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
           className,
           {
             'is-inFocus': isFocused,
-            [styles.labelIsInFocus]: isFocused
+            [styles.rootIsInFocus]: isFocused
           }) }
       >
         <input
@@ -81,6 +81,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
           className={ css('ms-Checkbox-label', styles.label, {
             'is-checked': isChecked,
             'is-disabled': disabled,
+            [styles.labelIsInFocus]: isFocused,
             [styles.labelIsChecked]: isChecked,
             [styles.labelIsDisabled]: disabled
           })

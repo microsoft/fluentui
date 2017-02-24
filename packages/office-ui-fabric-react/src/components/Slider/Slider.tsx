@@ -90,8 +90,8 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
     return (
       <div
         className={ css('ms-Slider', styles.root, className, {
-          ['ms-Slider-enabled ' + styles.isEnabled]: !disabled,
-          ['ms-Slider-disabled ' + styles.isDisabled]: disabled
+          ['ms-Slider-enabled ' + styles.rootIsEnabled]: !disabled,
+          ['ms-Slider-disabled ' + styles.rootIsDisabled]: disabled
         }) }
         ref='root'>
         { label && (
@@ -129,8 +129,8 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
                   { 'right': thumbOffsetPercent + '%' } :
                   { 'left': thumbOffsetPercent + '%' } }
               />
-              <span className={ css('ms-Slider-active', styles.active) } style={ { 'width': thumbOffsetPercent + '%' } }></span>
-              <span className={ css('ms-Slider-inactive', styles.inactive) } style={ { 'width': (100 - thumbOffsetPercent) + '%' } }></span>
+              <span className={ css('ms-Slider-active', styles.activeSection) } style={ { 'width': thumbOffsetPercent + '%' } }></span>
+              <span className={ css('ms-Slider-inactive', styles.inactiveSection) } style={ { 'width': (100 - thumbOffsetPercent) + '%' } }></span>
             </div>
           </button>
           { showValue && <Label className={ css('ms-Slider-value', styles.valueLabel) }>{ value }</Label> }

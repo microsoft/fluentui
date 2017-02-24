@@ -20,11 +20,11 @@
   border-radius: 4px;
 }
 
-.active {
+.activeSection {
   background: $ms-color-neutralSecondary;
 }
 
-.inactive {
+.inactiveSection {
   background: $ms-color-neutralTertiaryAlt;
 }
 
@@ -33,8 +33,8 @@
     transition: left $ms-duration3 $ms-ease1;
   }
 
-  .active,
-  .inactive {
+  .activeSection,
+  .inactiveSection {
     transition: width $ms-duration3 $ms-ease1;
   }
 }
@@ -80,7 +80,7 @@
   line-height: 1;
 }
 
-.isEnabled {
+.rootIsEnabled {
 
   .slideBox:hover,
   .slideBox:active {
@@ -88,12 +88,11 @@
     .thumb {
       border: 2px solid $ms-color-themePrimary;
     }
-
-    .active {
+    .activeSection {
       background-color: $ms-color-themePrimary;
     }
 
-    .inactive {
+    .inactiveSection {
       background-color: $ms-color-themeLight;
     }
 
@@ -103,20 +102,20 @@
     .thumb {
       border: 2px solid $ms-color-themeDarkAlt;
     }
-    .active {
+    .activeSection {
       background-color: $ms-color-themeDarkAlt;
     }
   }
 }
 
-.isDisabled {
+.rootIsDisabled {
   .thumb {
     border-color: $ms-color-neutralTertiaryAlt;
   }
-  .active {
+  .activeSection {
     background: $ms-color-neutralTertiaryAlt;
   }
-  .inactive {
+  .inactiveSection {
     background: $ms-color-neutralLight;
   }
 }
