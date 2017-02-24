@@ -17,28 +17,30 @@ const MULTIPLE_WHITESPACES_REGEX_TOKEN: RegExp = new RegExp('\\s+', 'gi');
 
 /** Get (up to 2 characters) initials based on display name of the persona. */
 export function getInitials(displayName: string, isRtl: boolean): string {
+  if (displayName == null) {
+    return '';
+  }
+
   let initials = '';
 
-  if (displayName != null) {
-    // Do not consider the suffixes within parenthesis while computing the initials.
-    let personaName: string = displayName.replace(CHARS_WITHIN_PARENTHESIS_REGEX, '');
-    personaName = personaName.replace(UNICODE_ALPHANUMERIC_CHARS_REGEX, '');
-    personaName = personaName.replace(MULTIPLE_WHITESPACES_REGEX_TOKEN, ' ');
+  // Do not consider the suffixes within parenthesis while computing the initials.
+  let personaName: string = displayName.replace(CHARS_WITHIN_PARENTHESIS_REGEX, '');
+  personaName = personaName.replace(UNICODE_ALPHANUMERIC_CHARS_REGEX, '');
+  personaName = personaName.replace(MULTIPLE_WHITESPACES_REGEX_TOKEN, ' ');
 
-    // Trim leading and trailing spaces if any.
-    personaName = personaName.trim();
+  // Trim leading and trailing spaces if any.
+  personaName = personaName.trim();
 
-    const splits: string[] = personaName.split(' ');
+  const splits: string[] = personaName.split(' ');
 
-    if (splits.length === 2) {
-      initials += splits[0].charAt(0).toUpperCase();
-      initials += splits[1].charAt(0).toUpperCase();
-    } else if (splits.length === 3) {
-      initials += splits[0].charAt(0).toUpperCase();
-      initials += splits[2].charAt(0).toUpperCase();
-    } else if (splits.length !== 0) {
-      initials += splits[0].charAt(0).toUpperCase();
-    }
+  if (splits.length === 2) {
+    initials += splits[0].charAt(0).toUpperCase();
+    initials += splits[1].charAt(0).toUpperCase();
+  } else if (splits.length === 3) {
+    initials += splits[0].charAt(0).toUpperCase();
+    initials += splits[2].charAt(0).toUpperCase();
+  } else if (splits.length !== 0) {
+    initials += splits[0].charAt(0).toUpperCase();
   }
 
   if (isRtl && initials.length > 1) {

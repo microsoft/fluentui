@@ -3,6 +3,14 @@ import { getInitials } from './initials';
 let { expect } = chai;
 
 describe('getInitials', () => {
+  it('handles null inputs', () => {
+    let result = getInitials(null, false);
+    expect(result).to.equal('');
+
+    result = getInitials(undefined, false);
+    expect(result).to.equal('');
+  });
+
   it('calculates an expected initials in LTR', () => {
     let result = getInitials('Kat Larrson', false);
     expect(result).to.equal('KL');
