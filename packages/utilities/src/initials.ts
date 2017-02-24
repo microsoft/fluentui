@@ -15,12 +15,34 @@ const UNICODE_ALPHANUMERIC_CHARS_REGEX =
 /** Regex to detect multiple spaces in a string where gi implies global and case-insensitive. */
 const MULTIPLE_WHITESPACES_REGEX_TOKEN: RegExp = new RegExp('\\s+', 'gi');
 
-/** Get (up to 2 characters) initials based on display name of the persona. */
-export function getInitials(displayName: string, isRtl: boolean): string {
-  if (displayName == null) {
-    return '';
+/** Regex to detect Arabic text. */
+const ARABIC_LANGUAGE_REGEX = new RegExp('[\u0621-\u064A\u0660-\u0669]');
+
+/** Regex to detect Korean text. */
+const KOREAN_LANGUAGE_REGEX = new RegExp('[\u1100-\u11FF|\u3130-\u318F|\uA960-\uA97F|\uAC00-\uD7AF|\uD7B0-\uD7FF]');
+
+/** Regex to detect Chinese text. */
+const CHINESE_LANGUAGE_REGEX = new RegExp('[\u4E00-\u9FCC\u3400-\u4DB5\uFA0E\uFA0F\uFA11\uFA13\uFA14\uFA1F\uFA21\uFA23\uFA24\uFA27-\uFA29]|[\ud840-\ud868][\udc00-\udfff]|\ud869[\udc00-\uded6\udf00-\udfff]|[\ud86a-\ud86c][\udc00-\udfff]|\ud86d[\udc00-\udf34\udf40-\udfff]|\ud86e[\udc00-\udc1d]');
+
+function getInitialsArabic(displayName: string, isRtl: boolean): string {
+  let name = displayName.replace(/\s/, '');
+
+  return isRtl ? name[name.length - 1] : name[0];
+}
+
+function getInitialsAsian(displayName: string): string {
+  let name = displayName.replace(/\s/, '');
+
+  // for short names, only display a single character of the family name
+  if (name.length <= 2) {
+    return name[name.length - 1];
   }
 
+  // for long names, display the two most significant characters of the family name
+  return name.substr(name.length - 2, name.length);
+}
+
+function getInitialsLatin(displayName: string, isRtl: boolean): string {
   let initials = '';
 
   // Do not consider the suffixes within parenthesis while computing the initials.
@@ -48,4 +70,21 @@ export function getInitials(displayName: string, isRtl: boolean): string {
   }
 
   return initials;
+}
+
+/** Get (up to 2 characters) initials based on display name of the persona. */
+export function getInitials(displayName: string, isRtl: boolean): string {
+  if (displayName == null) {
+    return '';
+  }
+
+  if (ARABIC_LANGUAGE_REGEX.test(displayName)) {
+    return getInitialsArabic(displayName, isRtl);
+  }
+
+  if (KOREAN_LANGUAGE_REGEX.test(displayName) || CHINESE_LANGUAGE_REGEX.test(displayName)) {
+    return getInitialsAsian(displayName);
+  }
+
+  return getInitialsLatin(displayName, isRtl);
 }
