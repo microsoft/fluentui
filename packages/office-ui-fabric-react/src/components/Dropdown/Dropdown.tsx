@@ -305,43 +305,56 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         ev.preventDefault();
       }
     } else {
-      switch (ev.which) {
-        case KeyCodes.enter:
-          this.setState({
-            isOpen: !this.state.isOpen
-          });
-          break;
+        if (ev.altKey) {
+          switch (ev.which) {
+            case KeyCodes.up:
+            case KeyCodes.down:
+              this.setState({
+                isOpen: true
+              });
+              break;
 
-        case KeyCodes.escape:
-          if (!this.state.isOpen) {
-            return;
+            default:
+              return;
           }
+        } else {
+            switch (ev.which) {
+              case KeyCodes.enter:
+                this.setState({
+                  isOpen: !this.state.isOpen
+                });
+                break;
 
-          this.setState({
-            isOpen: false
-          });
-          break;
+              case KeyCodes.escape:
+                if (!this.state.isOpen) {
+                  return;
+                }
 
-        case KeyCodes.up:
-          this.setSelectedIndex(this.state.selectedIndex - 1);
-          break;
+                this.setState({
+                  isOpen: false
+                });
+                break;
 
-        case KeyCodes.down:
-          this.setSelectedIndex(this.state.selectedIndex + 1);
-          break;
+              case KeyCodes.up:
+                this.setSelectedIndex(this.state.selectedIndex - 1);
+                break;
 
-        case KeyCodes.home:
-          this.setSelectedIndex(0);
-          break;
+              case KeyCodes.down:
+                this.setSelectedIndex(this.state.selectedIndex + 1);
+                break;
 
-        case KeyCodes.end:
-          this.setSelectedIndex(this.props.options.length - 1);
-          break;
+              case KeyCodes.home:
+                this.setSelectedIndex(0);
+                break;
 
-        default:
-          return;
-      }
+              case KeyCodes.end:
+                this.setSelectedIndex(this.props.options.length - 1);
+                break;
 
+              default:
+                return;
+          }
+        }
       ev.stopPropagation();
       ev.preventDefault();
     }
