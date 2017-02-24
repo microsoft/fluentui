@@ -63,9 +63,9 @@ const MyPage = () => (<div><Button>I am a button.</Button></div>);
 ReactDOM.render(<MyPage />, document.body.firstChild);
 ```
 
-## Using in a server side rendering scenario
+## Rendering Fabric components on the server (SSR)
 
-If you need to use Fabric components on the server side, there is a way to do this. The basic idea is that you need to tell the styles loader to pipe styles into a variable, which you can later use to inject into your page. Example:
+If you need to render Fabric components on the server side in a node environment, there is a way to do this. The basic idea is that you need to tell the styles loader to pipe styles into a variable, which you can later use to inject into your page. Example:
 
 ```ts
 import { configureLoadStyles } from '@microsoft/load-themed-styles';
