@@ -52,17 +52,12 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   public render() {
     let { labelText, className } = this.props;
     let { value, hasFocus, id } = this.state;
-    const isActive = styles.isActive;
-    const canClear = styles.canClear;
-
     return (
       <div
         ref={ this._resolveRef('_rootElement') }
         className={ css('ms-SearchBox', className, styles.root, {
-          'is-active': hasFocus,
-          'can-clear': value.length > 0,
-          [isActive]: hasFocus,
-          [canClear]: value.length > 0
+          ['is-active ' + styles.rootIsActive]: hasFocus,
+          ['can-clear ' + styles.rootCanClear]: value.length > 0,
         }) }
         { ...{ onFocusCapture: this._onFocusCapture } }
       >

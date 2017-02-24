@@ -35,7 +35,7 @@ $SearchBox-height: 36px;
 }
 
 // State: Active searchbox
-.root.isActive {
+.rootIsActive {
   border-color: $ms-color-themeDarker;
 
   .field {
@@ -48,7 +48,7 @@ $SearchBox-height: 36px;
 }
 
  // State: Disabled searchbox
-.root.isDisabled {
+.rootIsDisabled {
   border-color: $ms-color-neutralLighter;
 
   .icon {
@@ -62,11 +62,11 @@ $SearchBox-height: 36px;
   }
 }
 
-.root.canClear .clearButton {
+.rootCanClear .clearButton {
   display: block;
 }
 
-input.field {
+.field {
   position: relative;
   @include ms-u-normalize;
   border: none;
