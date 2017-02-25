@@ -23,7 +23,7 @@ describe('ScreenReaderAlert', () => {
             <ScreenReaderAlert
               readingMode={ renderOptions.readingMode }
               indicator={ renderOptions.indicator }
-              ref={ (instance) => resolve(instance) }
+              ref={ (instance) => resolve(ReactDOM.findDOMNode(instance)) }
             >
               { renderOptions.message }
             </ScreenReaderAlert>
@@ -43,9 +43,7 @@ describe('ScreenReaderAlert', () => {
     renderComponent({
       message: 'alert-message-do-not-read',
       readingMode: ReadingMode.DoNotRead
-    }).then((screenReaderAlert: Element) => {
-      const renderedDOM: Element = ReactDOM.findDOMNode(screenReaderAlert);
-
+    }).then((renderedDOM: Element) => {
       expect(renderedDOM.querySelector('p')).to.be.null;
       expect(renderedDOM.textContent).to.be.empty;
       done();
@@ -56,9 +54,7 @@ describe('ScreenReaderAlert', () => {
     renderComponent({
       message: 'alert-message-read-after-other-content',
       readingMode: ReadingMode.ReadAfterOtherContent
-    }).then((screenReaderAlert: Element) => {
-      const renderedDOM: Element = ReactDOM.findDOMNode(screenReaderAlert);
-
+    }).then((renderedDOM: Element) => {
       const paragraphElement: HTMLParagraphElement = renderedDOM.querySelector('p');
       expect(paragraphElement).to.not.be.null;
       expect(renderedDOM.textContent).to.contain('alert-message-read-after-other-content');
@@ -73,9 +69,7 @@ describe('ScreenReaderAlert', () => {
     renderComponent({
       message: 'alert-message-read-immediately',
       readingMode: ReadingMode.ReadImmediately
-    }).then((screenReaderAlert: Element) => {
-      const renderedDOM: Element = ReactDOM.findDOMNode(screenReaderAlert);
-
+    }).then((renderedDOM: Element) => {
       const paragraphElement: HTMLParagraphElement = renderedDOM.querySelector('p');
       expect(paragraphElement).to.not.be.null;
       expect(renderedDOM.textContent).to.contain('alert-message-read-immediately');
