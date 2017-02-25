@@ -13,166 +13,178 @@ describe('ScreenReaderAlert', () => {
     container?: HTMLElement;
   }
 
-  const renderComponent: (renderOptions: IRenderOptions) => React.ReactInstance =
+  const renderComponent: (renderOptions: IRenderOptions) => Promise<Element> =
     (renderOptions: IRenderOptions) => {
       let threwException: boolean = false;
-      let screenReaderAlert: React.ReactInstance;
 
-      try {
-        const component: JSX.Element = (
-          <ScreenReaderAlert readingMode={ renderOptions.readingMode } indicator={ renderOptions.indicator }>
-            { renderOptions.message }
-          </ScreenReaderAlert>
-        );
+      return new Promise<Element>((resolve, reject) => {
+        try {
+          const component: JSX.Element = (
+            <ScreenReaderAlert
+              readingMode={ renderOptions.readingMode }
+              indicator={ renderOptions.indicator }
+              ref={ (instance) => resolve(instance) }
+            >
+              { renderOptions.message }
+            </ScreenReaderAlert>
+          );
 
-        const container: HTMLElement = renderOptions.container || document.createElement('div');
-        screenReaderAlert = ReactDOM.render(component, container) as React.ReactInstance;
-      } catch (e) {
-        threwException = true;
-      }
+          const container: HTMLElement = renderOptions.container || document.createElement('div');
+          ReactDOM.render(component, container);
+        } catch (e) {
+          threwException = true;
+        }
 
-      expect(threwException).to.be.false;
-
-      return screenReaderAlert;
+        expect(threwException).to.be.false;
+      });
     };
 
-  it('should not render the live region when reading mode is DoNotRead', () => {
-    const screenReaderAlert: React.ReactInstance = renderComponent({
+  it('should not render the live region when reading mode is DoNotRead', (done) => {
+    renderComponent({
       message: 'alert-message-do-not-read',
       readingMode: ReadingMode.DoNotRead
+    }).then((screenReaderAlert: Element) => {
+      const renderedDOM: Element = ReactDOM.findDOMNode(screenReaderAlert);
+
+      expect(renderedDOM.querySelector('p')).to.be.null;
+      expect(renderedDOM.textContent).to.be.empty;
+      done();
     });
-
-    const renderedDOM: Element = ReactDOM.findDOMNode(screenReaderAlert as React.ReactInstance);
-
-    expect(renderedDOM.querySelector('p')).to.be.null;
-    expect(renderedDOM.textContent).to.be.empty;
   });
 
-  it('should assign proper live region attributes when reading mode is ReadAfterOtherContent', () => {
-    const screenReaderAlert: React.ReactInstance = renderComponent({
+  it('should assign proper live region attributes when reading mode is ReadAfterOtherContent', (done) => {
+    renderComponent({
       message: 'alert-message-read-after-other-content',
       readingMode: ReadingMode.ReadAfterOtherContent
+    }).then((screenReaderAlert: Element) => {
+      const renderedDOM: Element = ReactDOM.findDOMNode(screenReaderAlert);
+
+      const paragraphElement: HTMLParagraphElement = renderedDOM.querySelector('p');
+      expect(paragraphElement).to.not.be.null;
+      expect(renderedDOM.textContent).to.contain('alert-message-read-after-other-content');
+      expect(paragraphElement.getAttribute('role')).to.be.null;
+      expect(paragraphElement.getAttribute('aria-live')).to.equal('polite');
+      expect(paragraphElement.getAttribute('aria-atomic')).to.equal('true');
+      done();
     });
-
-    const renderedDOM: Element = ReactDOM.findDOMNode(screenReaderAlert as React.ReactInstance);
-
-    const paragraphElement: HTMLParagraphElement = renderedDOM.querySelector('p');
-    expect(paragraphElement).to.not.be.null;
-    expect(renderedDOM.textContent).to.contain('alert-message-read-after-other-content');
-    expect(paragraphElement.getAttribute('role')).to.be.null;
-    expect(paragraphElement.getAttribute('aria-live')).to.equal('polite');
-    expect(paragraphElement.getAttribute('aria-atomic')).to.equal('true');
   });
 
-  it('should assign proper live region attributes when reading mode is ReadImmediately', () => {
-    const screenReaderAlert: React.ReactInstance = renderComponent({
+  it('should assign proper live region attributes when reading mode is ReadImmediately', (done) => {
+    renderComponent({
       message: 'alert-message-read-immediately',
       readingMode: ReadingMode.ReadImmediately
+    }).then((screenReaderAlert: Element) => {
+      const renderedDOM: Element = ReactDOM.findDOMNode(screenReaderAlert);
+
+      const paragraphElement: HTMLParagraphElement = renderedDOM.querySelector('p');
+      expect(paragraphElement).to.not.be.null;
+      expect(renderedDOM.textContent).to.contain('alert-message-read-immediately');
+      expect(paragraphElement.getAttribute('role')).to.equal('alert');
+      expect(paragraphElement.getAttribute('aria-live')).to.equal('assertive');
+      expect(paragraphElement.getAttribute('aria-atomic')).to.equal('true');
+      done();
     });
-
-    const renderedDOM: Element = ReactDOM.findDOMNode(screenReaderAlert as React.ReactInstance);
-
-    const paragraphElement: HTMLParagraphElement = renderedDOM.querySelector('p');
-    expect(paragraphElement).to.not.be.null;
-    expect(renderedDOM.textContent).to.contain('alert-message-read-immediately');
-    expect(paragraphElement.getAttribute('role')).to.equal('alert');
-    expect(paragraphElement.getAttribute('aria-live')).to.equal('assertive');
-    expect(paragraphElement.getAttribute('aria-atomic')).to.equal('true');
   });
 
-  it('should not trigger re-render when string is not updated when indicator props keeps same', () => {
+  it('should not trigger re-render when string is not updated when indicator props keeps same', (done) => {
     const divElement: HTMLDivElement = document.createElement('div');
+    let firstParagraphElement: HTMLParagraphElement;
 
     renderComponent({
       message: 'alert-message-same-message',
       container: divElement
+    }).then(() => {
+      firstParagraphElement = divElement.querySelector('p');
+      expect(divElement.querySelector('p')).to.not.be.null;
+      expect(divElement.textContent).to.contain('alert-message-same-message');
+
+      return renderComponent({
+        message: 'alert-message-same-message',
+        container: divElement
+      });
+    }).then(() => {
+      const secondParagraphElement: HTMLParagraphElement = divElement.querySelector('p');
+      expect(divElement.querySelector('p')).to.not.be.null;
+      expect(divElement.textContent).to.contain('alert-message-same-message');
+
+      // If rerendered, the paragraph element will be differnt.
+      expect(firstParagraphElement.isSameNode(secondParagraphElement)).to.be.true;
+      done();
     });
-
-    const firstParagraphElement: HTMLParagraphElement = divElement.querySelector('p');
-    expect(divElement.querySelector('p')).to.not.be.null;
-    expect(divElement.textContent).to.contain('alert-message-same-message');
-
-    renderComponent({
-      message: 'alert-message-same-message',
-      container: divElement
-    });
-
-    const secondParagraphElement: HTMLParagraphElement = divElement.querySelector('p');
-    expect(divElement.querySelector('p')).to.not.be.null;
-    expect(divElement.textContent).to.contain('alert-message-same-message');
-
-    // If rerendered, the paragraph element will be differnt.
-    expect(firstParagraphElement.isSameNode(secondParagraphElement)).to.be.true;
   });
 
   it('should clear the string from DOM after a timeout', (done) => {
     const divElement: HTMLDivElement = document.createElement('div');
 
-    const screenReaderAlert: React.ReactInstance = renderComponent({
+    renderComponent({
       message: 'alert-message-clear-string',
       container: divElement
+    }).then(() => {
+      expect(divElement.querySelector('p')).to.not.be.null;
+      expect(divElement.textContent).to.contain('alert-message-clear-string');
+
+      // The timeout for clearing text is 500ms, set 1100ms here to verify the text is removed.
+      setTimeout(() => {
+        expect(divElement.querySelector('p')).to.be.null;
+        expect(divElement.textContent).to.not.contain('alert-message-clear-string');
+        done();
+      }, 1100);
     });
-
-    expect(divElement.querySelector('p')).to.not.be.null;
-    expect(divElement.textContent).to.contain('alert-message-clear-string');
-
-    // The timeout for clearing text is 500ms, set 1100ms here to verify the text is removed.
-    setTimeout(() => {
-      expect(divElement.querySelector('p')).to.be.null;
-      expect(divElement.textContent).to.not.contain('alert-message-clear-string');
-      done();
-    }, 1100);
   });
 
-  it('should trigger re-render when indicator props is changed', () => {
+  it('should trigger re-render when indicator props is changed', (done) => {
     const divElement: HTMLDivElement = document.createElement('div');
+    let firstParagraphElement: HTMLParagraphElement;
 
     renderComponent({
       message: 'alert-message-change-indicator',
       indicator: 0,
       container: divElement
+    }).then(() => {
+      firstParagraphElement = divElement.querySelector('p');
+      expect(divElement.querySelector('p')).to.not.be.null;
+      expect(divElement.textContent).to.contain('alert-message-change-indicator');
+
+      return renderComponent({
+        message: 'alert-message-change-indicator',
+        indicator: 1,
+        container: divElement
+      });
+    }).then(() => {
+      const secondParagraphElement: HTMLParagraphElement = divElement.querySelector('p');
+      expect(divElement.querySelector('p')).to.not.be.null;
+      expect(divElement.textContent).to.contain('alert-message-change-indicator');
+
+      // If rerendered, the paragraph element will be differnt.
+      expect(firstParagraphElement.isSameNode(secondParagraphElement)).to.be.false;
+      done();
     });
-
-    const firstParagraphElement: HTMLParagraphElement = divElement.querySelector('p');
-    expect(divElement.querySelector('p')).to.not.be.null;
-    expect(divElement.textContent).to.contain('alert-message-change-indicator');
-
-    renderComponent({
-      message: 'alert-message-change-indicator',
-      indicator: 1,
-      container: divElement
-    });
-
-    const secondParagraphElement: HTMLParagraphElement = divElement.querySelector('p');
-    expect(divElement.querySelector('p')).to.not.be.null;
-    expect(divElement.textContent).to.contain('alert-message-change-indicator');
-
-    // If rerendered, the paragraph element will be differnt.
-    expect(firstParagraphElement.isSameNode(secondParagraphElement)).to.be.false;
   });
 
-  it('should trigger re-render when string is updated', () => {
+  it('should trigger re-render when string is updated', (done) => {
     const divElement: HTMLDivElement = document.createElement('div');
+    let firstParagraphElement: HTMLParagraphElement;
 
     renderComponent({
       message: 'alert-message-first-string',
       container: divElement
+    }).then(() => {
+      firstParagraphElement = divElement.querySelector('p');
+      expect(divElement.querySelector('p')).to.not.be.null;
+      expect(divElement.textContent).to.contain('alert-message-first-string');
+
+      return renderComponent({
+        message: 'alert-message-second-different-string',
+        container: divElement
+      });
+    }).then(() => {
+      const secondParagraphElement: HTMLParagraphElement = divElement.querySelector('p');
+      expect(divElement.querySelector('p')).to.not.be.null;
+      expect(divElement.textContent).to.contain('alert-message-second-different-string');
+
+      // If rerendered, the paragraph element will be differnt.
+      expect(firstParagraphElement.isSameNode(secondParagraphElement)).to.be.false;
+      done();
     });
-
-    const firstParagraphElement: HTMLParagraphElement = divElement.querySelector('p');
-    expect(divElement.querySelector('p')).to.not.be.null;
-    expect(divElement.textContent).to.contain('alert-message-first-string');
-
-    renderComponent({
-      message: 'alert-message-second-different-string',
-      container: divElement
-    });
-
-    const secondParagraphElement: HTMLParagraphElement = divElement.querySelector('p');
-    expect(divElement.querySelector('p')).to.not.be.null;
-    expect(divElement.textContent).to.contain('alert-message-second-different-string');
-
-    // If rerendered, the paragraph element will be differnt.
-    expect(firstParagraphElement.isSameNode(secondParagraphElement)).to.be.false;
   });
 });

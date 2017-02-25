@@ -14,12 +14,19 @@ export interface IScreenReaderAlertState {
 }
 
 /**
- * This is a screen reader alert component for developers to easily add screen reader feature to there web site.
+ * The period of timeout used to clear the text after each rendering.
+ *
+ * More than 1000ms is critical for NVDA to read the text properly.
+ */
+const clearTextTime: number = 1000;
+
+/**
+ * This is a screen reader alert component for developers to easily add screen reader feature to their web site.
  * This component is a wrapper, you would like to wrap the texts for screen reader to read.
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions Live Region in MDN}
  *
- * All functionalities of this component is tested through:
- * 1. Narrator in windows 10.
+ * All functionalities of this component are tested through:
+ * 1. Narrator in Windows 10.
  * 2. JAWS 18.
  * 3. NVDA 2016.4.
  * 4. ChromeVOX v53. (Not support ReadingMode.ReadAfterOtherContent option for ChromeVOX, it will read immediately)
@@ -45,11 +52,11 @@ export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, 
   private _renderIndex: number = 0;
 
   /**
-   * The non-empty string which represents the latest string readout by ATs.
+   * The non-empty string which represents the latest string readout by screen readers.
    *
-   * The reason of having this variable is that we have a 500ms timeout to clear the text in the live region.
-   * We shouldn't let ATs read the same string if the indicator is not changed. Use this to let React render
-   * the live region only when text passed from props is changed or the indicator is changed.
+   * The reason of having this variable is that we have a timeout to clear the text in the live region.
+   * We shouldn't let screen readers read the same string if the indicator is not changed. Use this to let React
+   * render the live region only when text passed from props is changed or the indicator is changed.
    */
   private _previousValidString: string = '';
 
@@ -59,7 +66,7 @@ export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, 
     super(props);
 
     this.state = {
-      alertText: this._getTextContentFromReactChild(React.Children.toArray(props.children))
+      alertText: this._getTextFromProps(React.Children.toArray(props.children))
     };
   }
 
@@ -71,13 +78,12 @@ export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, 
     }
 
     this.setState({
-      alertText: this._getTextContentFromReactChild(React.Children.toArray(nextProps.children))
+      alertText: this._getTextFromProps(React.Children.toArray(nextProps.children))
     });
   }
 
   public shouldComponentUpdate(nextProps: IScreenReaderAlertProps, nextState: IScreenReaderAlertState): boolean {
-    // When indicator is not changed, do NOT need to render if the string read out by ATs
-    // is same as the previous valid one (not empty).
+    // When indicator is not changed, do NOT need to render the string if it's same with the previous non-empty string.
     const isValidStringChanged: boolean = nextState.alertText !== this._previousValidString;
 
     return (this.props.indicator !== nextProps.indicator || isValidStringChanged);
@@ -127,16 +133,12 @@ export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, 
     }
   }
 
-  private _getTextContentFromReactChild(root: React.ReactChild | React.ReactChild[]): string {
+  private _getTextFromProps(root: React.ReactChild | React.ReactChild[]): string {
     let text: string = '';
     if (typeof root === 'string' || typeof root === 'number') {
       text += root;
     } else if (Array.isArray(root)) {
-      root.forEach((child: React.ReactChild) => text += this._getTextContentFromReactChild(child));
-    } else if (root && root.props) {
-      React.Children.forEach(root.props, (child: React.ReactChild) => {
-        text += this._getTextContentFromReactChild(child);
-      });
+      root.forEach((child: React.ReactChild) => text += this._getTextFromProps(child));
     }
 
     return text;
@@ -155,7 +157,7 @@ export class ScreenReaderAlert extends React.Component<IScreenReaderAlertProps, 
           alertText: ''
         });
         this._clearTextTimeout = undefined;
-      }, 1000);
+      }, clearTextTime);
     }
   }
 }
