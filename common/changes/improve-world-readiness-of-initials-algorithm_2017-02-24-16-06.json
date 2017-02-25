@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Improve abbreviation of non-Latin names in Persona component",
-      "type": "minor"
+      "comment": "Persona: Improve default manner of abbreviating non-Latin names.",
+      "type": "patch"
     }
   ],
   "email": "clewolff@microsoft.com"
