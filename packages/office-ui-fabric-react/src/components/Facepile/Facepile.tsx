@@ -122,20 +122,47 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
 
     let personaNames: string = this.props.personas.slice(numPersonasToShow).map((p: IFacepilePersona) => p.personaName).join(', ');
 
-    return <button { ...getNativeProps(this.props.overflowButtonProps, buttonProperties) }
-      className={ css('ms-Persona', PERSONA_SIZE[personaSize], 'ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton', styles.descriptiveOverflowButton, styles.itemButton) }
-      title={ personaNames }
+    return <button
+      { ...getNativeProps(this.props.overflowButtonProps, buttonProperties) }
+      className={ css('ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton', styles.descriptiveOverflowButton, styles.itemButton) }
     >
-      { '+' + numPersonasNotPictured }
+      <Persona
+        title={ personaNames }
+        className={ css('ms-Facepile-addButton', 'ms-Facepile-itemButton', styles.addButton) }
+        size={ personaSize }
+        hidePersonaDetails={ true }
+        onRenderInitials={ () => {
+          return (
+            <span>{ '+' + numPersonasNotPictured }</span>
+          )
+        } }
+      >
+
+      </Persona>
+
     </button>;
   }
 
   private _getIconElement(icon: string): JSX.Element {
     let { personaSize } = this.props;
-    return <button { ...getNativeProps(this.props.overflowButtonProps, buttonProperties) }
-      className={ css('ms-Persona', PERSONA_SIZE[personaSize], 'ms-Facepile-overflowButton', 'ms-Facepile-itemButton', styles.overflowButton, styles.itemButton) }
+
+    return <button
+      { ...getNativeProps(this.props.overflowButtonProps, buttonProperties) }
+      className={ css('ms-Facepile-overflowButton', 'ms-Facepile-itemButton', styles.overflowButton, styles.itemButton) }
     >
-      <i className={ css('ms-Icon', 'msIcon', `ms-Icon ms-Icon--${icon}`) } aria-hidden='true'></i>
+      <Persona
+        className={ css('ms-Facepile-addButton', 'ms-Facepile-itemButton', styles.addButton) }
+        size={ personaSize }
+        hidePersonaDetails={ true }
+        onRenderInitials={ () => {
+          return (
+            <i className={ css('ms-Icon', 'msIcon', `ms-Icon ms-Icon--${icon}`) } aria-hidden='true'></i>
+          )
+        } }
+      >
+
+      </Persona>
+
     </button>;
   }
 
@@ -148,8 +175,14 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
       <Persona
         className={ css('ms-Facepile-addButton', 'ms-Facepile-itemButton', styles.addButton) }
         size={ personaSize }
+        hidePersonaDetails={ true }
+        onRenderInitials={ () => {
+          return (
+            <i className='ms-Icon msIcon ms-Icon--AddFriend' aria-hidden='true'></i>
+          )
+        } }
       >
-        <i className='ms-Icon msIcon ms-Icon--AddFriend' aria-hidden='true'></i>
+
       </Persona>
 
     </button>;
