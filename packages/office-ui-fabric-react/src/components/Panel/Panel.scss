@@ -289,7 +289,7 @@
     right: 0;
     padding: 0 16px 20px;
     overflow-y: auto;
-    .ms-Panel--hasCloseButton & {
+    :global(.ms-Panel--hasCloseButton) & {
       top: $CommandBarHeight;
     }
 
