@@ -78,10 +78,6 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
       onRenderInitials = this._onRenderInitials,
     } = this.props;
 
-    let isRTL = getRTL();
-
-    imageInitials = imageInitials || getInitials(primaryText, isRTL);
-
     initialsColor = initialsColor !== undefined && initialsColor !== null ? initialsColor : this._getColorFromName(primaryText);
 
     let presenceElement = null;
@@ -128,7 +124,18 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
           <div className={ css('ms-Persona-imageArea', styles.imageArea) }>
             {
               !this.state.isImageLoaded &&
-              (<div className={ css('ms-Persona-initials', styles.initials, PERSONA_INITIALS_COLOR[initialsColor]) } aria-hidden='true'>{ onRenderInitials(this.props, this._onRenderInitials) }</div>)
+              (
+                <div
+                  className={ css(
+                    'ms-Persona-initials',
+                    styles.initials,
+                    PERSONA_INITIALS_COLOR[initialsColor]
+                  ) }
+                  aria-hidden='true'
+                >
+                  { onRenderInitials(this.props, this._onRenderInitials) }
+                </div>
+              )
             }
             <Image
               className={ css('ms-Persona-image', styles.image) }
@@ -153,43 +160,11 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
 
     let isRTL = getRTL();
 
-    imageInitials = imageInitials || this._getInitials(primaryText, isRTL);
+    imageInitials = imageInitials || getInitials(primaryText, isRTL);
+
     return (
       <span>{ imageInitials }</span>
     );
-  }
-
-  /** Get (up to 2 characters) initials based on display name of the persona. */
-  private _getInitials(displayName: string, isRtl: boolean): string {
-    let initials = '';
-
-    if (displayName != null) {
-      // Do not consider the suffixes within parenthesis while computing the initials.
-      let personaName: string = displayName.replace(CHARS_WITHIN_PARENTHESIS_REGEX, '');
-      personaName = personaName.replace(UNICODE_ALPHANUMERIC_CHARS_REGEX, '');
-      personaName = personaName.replace(MULTIPLE_WHITESPACES_REGEX_TOKEN, ' ');
-
-      // Trim leading and trailing spaces if any.
-      personaName = personaName.trim();
-
-      const splits: string[] = personaName.split(' ');
-
-      if (splits.length === 2) {
-        initials += splits[0].charAt(0).toUpperCase();
-        initials += splits[1].charAt(0).toUpperCase();
-      } else if (splits.length === 3) {
-        initials += splits[0].charAt(0).toUpperCase();
-        initials += splits[2].charAt(0).toUpperCase();
-      } else if (splits.length !== 0) {
-        initials += splits[0].charAt(0).toUpperCase();
-      }
-    }
-
-    if (isRtl && initials.length > 1) {
-      return initials.charAt(1) + initials.charAt(0);
-    }
-
-    return initials;
   }
 
   private _getColorFromName(displayName: string): PersonaInitialsColor {
