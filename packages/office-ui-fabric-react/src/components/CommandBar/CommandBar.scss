@@ -76,7 +76,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   height: $CommandBarItem-height;
   outline: transparent;
   vertical-align: top;
-  padding: 0 4px;
+  margin: 0 4px;
 
   &:hover {
     background-color: $ms-color-neutralLight;
@@ -118,7 +118,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   display: block;
   height: 100%;
 
-  &.isItemNoName {
+  &.itemLinkIsNoName {
     padding: 0 8px;
   }
 }
@@ -132,7 +132,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   cursor: pointer;
 
   &:hover,
-  &.isExpanded {
+  &.itemLinkIsExpanded {
     @media screen and (-ms-high-contrast: active) {
       @include highContrastBorder($ms-color-white);
     }
@@ -159,7 +159,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
     }
   }
 
-  &.isExpanded {
+  &.itemLinkIsExpanded {
     background-color: $ms-color-neutralQuaternaryAlt;
     color: $ms-color-black;
 
@@ -176,7 +176,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
     }
   }
 
-  &.isExpanded:hover {
+  &.itemLinkIsExpanded:hover {
     background-color: $ms-color-neutralQuaternary;
   }
 
