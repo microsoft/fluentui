@@ -46,8 +46,7 @@ button.addButton {
     background-color: $ms-color-themeDarker;
   }
 
-  &:disabled,
-  &.isDisabled {
+  &:disabled {
     background-color: $ms-color-neutralTertiaryAlt;
   }
 }
