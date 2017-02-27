@@ -34,7 +34,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
 
   public static defaultProps: INavProps = {
     groups: null,
-    onRenderLink: (link: INavLink) => (<span className={css('ms-Nav-linkText', styles.linkText)}>{ link.name }</span>)
+    onRenderLink: (link: INavLink) => (<span className={ css('ms-Nav-linkText', styles.linkText) }>{ link.name }</span>)
   };
 
   private _hasExpandButton: boolean;
@@ -71,10 +71,10 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
     return (
       <FocusZone direction={ FocusZoneDirection.vertical }>
         <nav role='navigation'
-          className={ css('ms-Nav', styles.root, className, { 
+          className={ css('ms-Nav', styles.root, className, {
             'is-onTop ms-u-slideRightIn40': isOnTop,
             [styles.rootIsOnTop]: isOnTop
-            }) }>
+          }) }>
           { groupElements }
         </nav>
       </FocusZone>
@@ -101,7 +101,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
         aria-label={ link.ariaLabel }
         title={ link.title || link.name }
         target={ link.target }
-        >
+      >
         { link.iconClassName && <i className={ css('ms-Icon', 'ms-Nav-IconLink', link.iconClassName, styles.iconLink) }></i> }
         { this.props.onRenderLink(link) }
       </a>
@@ -111,10 +111,10 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
   private _renderButtonLink(link: INavLink, linkIndex: number) {
     return (
       <Button
-        className={ css('ms-Nav-link ms-Nav-linkButton', styles.link,  { 
+        className={ css('ms-Nav-link ms-Nav-linkButton', styles.link, {
           'isOnExpanded': this._hasExpandButton,
-          [styles.isOnExpanded] :this._hasExpandButton 
-          }) }
+          [styles.isOnExpanded]: this._hasExpandButton
+        }) }
         buttonType={ ButtonType.command }
         href={ link.url }
         icon={ link.icon }
@@ -129,19 +129,20 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
 
     return (
       <div key={ link.key || linkIndex }
-        className={ css('ms-Nav-compositeLink', styles.compositeLink, { 
-          ' is-expanded': link.isExpanded, 
+        className={ css('ms-Nav-compositeLink', styles.compositeLink, {
+          ' is-expanded': link.isExpanded,
           'is-selected': isLinkSelected,
           [styles.compositeLinkIsExpanded]: link.isExpanded,
-          [styles.compositeLinkIsSelected]: isLinkSelected }) }>
+          [styles.compositeLinkIsSelected]: isLinkSelected
+        }) }>
         { (nestingLevel === 0 && link.links && link.links.length > 0 ?
           <button
-            className={css('ms-Nav-chevronButton ms-Nav-chevronButton--link', styles.chevronButton, styles.chevronButtonLink)}
+            className={ css('ms-Nav-chevronButton ms-Nav-chevronButton--link', styles.chevronButton, styles.chevronButtonLink) }
             onClick={ this._onLinkExpandClicked.bind(this, link) }
             aria-label={ this.props.expandButtonAriaLabel }
             aria-expanded={ link.isExpanded ? 'true' : 'false' }
-            >
-            <i className={ css ('ms-Nav-chevron ms-Icon ms-Icon--ChevronDown', styles.chevron)}></i>
+          >
+            <i className={ css('ms-Nav-chevron ms-Icon ms-Icon--ChevronDown', styles.chevronIcon) }></i>
           </button> : null
         ) }
         { !!link.onClick ? this._renderButtonLink(link, linkIndex) : this._renderAnchorLink(link, linkIndex, nestingLevel) }
@@ -151,7 +152,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
 
   private _renderLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     return (
-      <li key={ link.key || linkIndex } role='listitem' className={ css(styles.navItem)}>
+      <li key={ link.key || linkIndex } role='listitem' className={ css(styles.navItem) }>
         { this._renderCompositeLink(link, linkIndex, nestingLevel) }
         { (link.isExpanded ? this._renderLinks(link.links, ++nestingLevel) : null) }
       </li>
@@ -166,7 +167,7 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
       (link: INavLink, linkIndex: number) => this._renderLink(link, linkIndex, nestingLevel));
 
     return (
-      <ul role='list' aria-label={ this.props.ariaLabel }  className={ css(styles.navItems)}>
+      <ul role='list' aria-label={ this.props.ariaLabel } className={ css(styles.navItems) }>
         { linkElements }
       </ul>
     );
@@ -176,17 +177,21 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
     const isGroupExpanded: boolean = this.state.isGroupExpanded[groupIndex] !== false;
 
     return (
-      <div key={ groupIndex } className={ css('ms-Nav-group', styles.group, { 
+      <div key={ groupIndex } className={ css('ms-Nav-group', styles.group, {
         'is-expanded': isGroupExpanded,
-        [styles.groupIsExpanded]: isGroupExpanded }) }>
+        [styles.groupIsExpanded]: isGroupExpanded
+      }) }>
         { (group.name ?
           <button
-            className={css('ms-Nav-chevronButton ms-Nav-chevronButton--group ms-Nav-groupHeaderFontSize', styles.chevronButton, styles.chevronButtonIsGroup, styles.groupHeaderFontSize)}
+            className={ css('ms-Nav-chevronButton ms-Nav-chevronButton--group ms-Nav-groupHeaderFontSize', styles.chevronButton, styles.chevronButtonIsGroup, styles.groupHeaderFontSize) }
             onClick={ this._onGroupHeaderClicked.bind(this, groupIndex) }
-            >
-            <i className={ css('ms-Nav-chevron', 'ms-Icon', 'ms-Icon--ChevronDown', styles.chevronIcon, 
-            {[styles.chevronIsExpanded]: isGroupExpanded }) 
-            }></i>
+          >
+            <i
+              className={ css(
+                'ms-Nav-chevron ms-Icon ms-Icon--ChevronDown',
+                styles.chevronIcon
+              ) }
+            />
             { group.name }
           </button> : null)
         }
