@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "1.12.1",
+      "tag": "office-ui-fabric-react_v1.12.1",
+      "date": "Sat, 25 Feb 2017 04:11:32 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Surendhar <surensivam93@gmail.com>",
+            "commit": "01b7d964568151e27f5ca598844ceeba888d3eb2",
+            "comment": "move aria-sort attr of detailsList headerColum to the right place"
+          },
+          {
+            "author": "Clemens Wolff <clemens.wolff+git@gmail.com>",
+            "commit": "a58e88d70572d140def712890af8a1abd3b2be9f",
+            "comment": "Persona: Improve default manner of abbreviating non-Latin names."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.12.0",
       "tag": "office-ui-fabric-react_v1.12.0",
       "date": "Thu, 23 Feb 2017 04:11:45 GMT",
