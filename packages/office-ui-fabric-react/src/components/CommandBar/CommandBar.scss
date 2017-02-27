@@ -309,45 +309,6 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   z-index: $ms-zIndex-front;
 }
 
-//== State: Puts search in an active state
-//
-.isSearchActive {
-  background-color: $ms-color-themeLight;
-  color: $ms-color-black;
-
-  &:hover {
-    background-color: $ms-color-themeLight;
-    color: $ms-color-black;
-  }
-
-  .searchInput {
-    cursor: text;
-    @include padding-right($SearchBox-height); // leave room for the X
-    @include border-left-width($SearchBox-sidePadding);
-  }
-
-  &.hasSearchBack .searchInput {
-    @include border-left-width($SearchBox-height); // leave room for arrow
-  }
-
-  // when focused, remove the search icon and possibly show arrow icon
-  & .searchIconSearchWrapper {
-    display: none;
-  }
-
-  &.hasSearchBack .searchIconArrowWrapper {
-    display: block;
-  }
-
-  .searchInput {
-    @include padding-right($SearchBox-height);
-  }
-
-  .searchIconClearWrapper {
-    display: block;
-  }
-}
-
 .searchIconWrapper {
   height: $SearchBox-height;
   line-height: $SearchBox-height;
