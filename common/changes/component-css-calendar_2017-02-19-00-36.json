@@ -1,0 +1,20 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Calendar and PeoplePicker: styles moved to css modules to allow instances of Calendar and PeoplePicker to live on the same page containing newer/older versions without classname conflicts. This should change no styling rules (no rules were modified) or impact existing customizations (no class names were removed.",
+      "type": "patch"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/utilities",
+      "type": "none"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/example-app-base",
+      "type": "none"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
