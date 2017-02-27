@@ -102,11 +102,11 @@ $linkRightPadding: 20px;
 
   .chevronButton.chevronButtonLink {
     display: block;
-    width: $hasExpandButtonLinkLeftPadding;
-    height: $navnode-height;
+    width: $hasExpandButtonLinkLeftPadding - 2;
+    height: $navnode-height - 2;
     position: absolute;
-    top: 0;
-    @include left(0);
+    top: 1px;
+    @include left(1px);
     z-index: 1;
     padding: 0;
     margin: 0;
@@ -183,14 +183,14 @@ $linkRightPadding: 20px;
   @include focus-border();
 }
 
-:global(.ms-Nav-LinkButton.ms-Button--command) {
+.root .link {
   @include padding-left($noExpandButtonLinkLeftPadding);
   :global(.ms-Button-label) {
     @include ms-font-m;
     color: $ms-color-themePrimary;
   }
 
-  &.isOnExpanded {
+  &.linkIsOnExpanded {
   @include padding-left($hasExpandButtonLinkLeftPadding);
   }
 }
