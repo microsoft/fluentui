@@ -87,7 +87,7 @@
   }
 
   //== State: Selected
-  &.isSelected {
+  &.linkIsSelected {
     font-weight: $ms-font-weight-semibold;
 
     // Show the underline
@@ -97,7 +97,7 @@
   }
 
   //== State: Disabled
-  &.isDisabled {
+  &.linkIsDisabled {
     color: $ms-color-neutralTertiary;
   }
 }
@@ -111,15 +111,15 @@
 // @TODO: Determine if any of the styles below this are necessary anymore.
 
 // Overflow (ellipsis)
-.link.isLinkOverflow {
+.link.linkIsOverflow {
   color: $ms-color-neutralSecondary;
 
-  &.isSelected {
+  &.linkIsSelected {
     color: $ms-color-themePrimary;
   }
 
-  &:hover:not(.isSelected),
-  &:focus:not(.isSelected) {
+  &:hover:not(.linkIsSelected),
+  &:focus:not(.linkIsSelected) {
     color: $ms-color-neutralDark;
   }
 
@@ -144,12 +144,12 @@
 
 //== Modifier: Large Pivots
 //
-.root.isRootLarge {
+.root.rootIsLarge {
   .link {
     font-size: $ms-font-size-l;
   }
 
-  .link.isLinkOverflow {
+  .link.linkIsOverflow {
     &::after {
       font-size: $ms-font-size-l;
     }
@@ -158,8 +158,7 @@
 
 //== Modifier: Tabs
 //
-.root.isRootTabs {
-
+.root.rootIsTabs {
   .link {
     @include focus-border();
     @include margin-right(0px);
@@ -169,8 +168,8 @@
     padding: 0 10px;
     vertical-align: top;
 
-    &:hover:not(.isSelected):not(.isLinkOverflow),
-    &:focus:not(.isSelected):not(.isLinkOverflow) {
+    &:hover:not(.linkIsSelected):not(.linkIsOverflow),
+    &:focus:not(.linkIsSelected):not(.linkIsOverflow) {
       color: $ms-color-black;
     }
 
@@ -180,7 +179,7 @@
     }
 
     //== State: Selected
-    &.isSelected {
+    &.linkIsSelected {
       background-color: $ms-color-themePrimary;
       color: $ms-color-white;
       font-weight: $ms-font-weight-semilight;
@@ -192,9 +191,9 @@
     }
   }
 
-  .link.isLinkOverflow {
-    &:hover:not(.isSelected),
-    &:focus:not(.isSelected) {
+  .link.linkIsOverflow {
+    &:hover:not(.linkIsSelected),
+    &:focus:not(.linkIsSelected) {
       background-color: $ms-color-white;
     }
 
@@ -204,7 +203,7 @@
   }
 }
 
-:global(.ms-Fabric.is-focusVisible) .root.isRootTabs .link:focus {
+:global(.ms-Fabric.is-focusVisible) .root.rootIsTabs .link:focus {
   &:before {
     height: auto;
     background: transparent;
@@ -215,11 +214,11 @@
 // @TODO: Confirm that this component is not responsive.
 //
 // @media (min-width: $ms-screen-lg-min) {
-//   .ms-Pivot-link {
+//   .link {
 //     font-size: $ms-font-size-m;
 //   }
 
-//   .ms-Pivot-link.ms-Pivot-isLinkOverflow {
+//   .link.linkIsOverflow {
 //     &:after {
 //       font-size: $ms-font-size-m;
 //     }
@@ -228,9 +227,9 @@
 
 // All high contrast styling rules
 @media screen and (-ms-high-contrast: active) {
-  .root.isRootTabs {
+  .root.rootIsTabs {
     .link {
-      &.isSelected {
+      &.linkIsSelected {
         font-weight: $ms-font-weight-semibold;
       }
     }

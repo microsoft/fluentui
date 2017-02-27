@@ -101,8 +101,8 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
     return (
       <FocusZone direction={ FocusZoneDirection.horizontal }>
         <ul className={ css('ms-Pivot', styles.root,
-          { ['ms-Pivot--large ' + styles.isRootLarge]: this.props.linkSize === PivotLinkSize.large },
-          { ['ms-Pivot--tabs ' + styles.isRootTabs]: this.props.linkFormat === PivotLinkFormat.tabs }) }
+          { ['ms-Pivot--large ' + styles.rootIsLarge]: this.props.linkSize === PivotLinkSize.large },
+          { ['ms-Pivot--tabs ' + styles.rootIsTabs]: this.props.linkFormat === PivotLinkFormat.tabs }) }
           role='tablist'>
           { this.state.links.map(this._renderLink) }
         </ul>
@@ -136,7 +136,7 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
       <button
         id={ tabId }
         key={ itemKey }
-        className={ css('ms-Pivot-link', styles.link, { ['is-selected ' + styles.isSelected]: this.state.selectedKey === itemKey }) }
+        className={ css('ms-Pivot-link', styles.link, { ['is-selected ' + styles.linkIsSelected]: this.state.selectedKey === itemKey }) }
         onClick={ this._onLinkClick.bind(this, itemKey) }
         onKeyPress={ this._onKeyPress.bind(this, itemKey) }
         aria-label={ link.ariaLabel }
