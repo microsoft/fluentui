@@ -77,7 +77,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   private _getElementWithOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
     return <button
       { ...getNativeProps(persona, buttonProperties) }
-      className={ css('ms-Facepile-itemButton', styles.itemButton) }
+      className={ css('ms-Facepile-itemButton ms-Facepile-person', styles.itemButton) }
       title={ persona.personaName }
       key={ (!!persona.imageUrl ? 'i' : '') + index }
       onClick={ this._onPersonaClick.bind(this, persona) }
@@ -91,7 +91,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   private _getElementWithoutOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
     return <div
       { ...getNativeProps(persona, divProperties) }
-      className={ css('ms-Facepile-itemButton', styles.itemButton) }
+      className={ css('ms-Facepile-itemButton ms-Facepile-person', styles.itemButton) }
       title={ persona.personaName }
       key={ (!!persona.imageUrl ? 'i' : '') + index }
       onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
@@ -128,7 +128,6 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
     >
       <Persona
         title={ personaNames }
-        className={ css('ms-Facepile-addButton', 'ms-Facepile-itemButton', styles.addButton) }
         size={ personaSize }
         hidePersonaDetails={ true }
         onRenderInitials={ () => {
@@ -151,7 +150,6 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
       className={ css('ms-Facepile-overflowButton', 'ms-Facepile-itemButton', styles.overflowButton, styles.itemButton) }
     >
       <Persona
-        className={ css('ms-Facepile-addButton', 'ms-Facepile-itemButton', styles.addButton) }
         size={ personaSize }
         hidePersonaDetails={ true }
         onRenderInitials={ () => {
@@ -170,10 +168,9 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
     let { personaSize } = this.props;
     return <button
       { ...getNativeProps(this.props.addButtonProps, buttonProperties) }
-      className={ css('ms-Facepile-itemButton', styles.itemButton) }
+      className={ css('ms-Facepile-addButton', 'ms-Facepile-itemButton', styles.itemButton, styles.addButton) }
     >
       <Persona
-        className={ css('ms-Facepile-addButton', 'ms-Facepile-itemButton', styles.addButton) }
         size={ personaSize }
         hidePersonaDetails={ true }
         onRenderInitials={ () => {
