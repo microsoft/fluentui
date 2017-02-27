@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { IRenderFunction } from '../../Utilities';
 import { Persona } from './Persona';
 
 export interface IPersonaProps extends React.HTMLProps<Persona> {
@@ -28,6 +29,11 @@ export interface IPersonaProps extends React.HTMLProps<Persona> {
    * @defaultvalue [Derived from primaryText]
    */
   imageInitials?: string;
+
+  /**
+   * Optional custom renderer for the initials
+   */
+  onRenderInitials?: IRenderFunction<IPersonaProps>;
 
   /**
    * The background color when the user's initials are displayed.

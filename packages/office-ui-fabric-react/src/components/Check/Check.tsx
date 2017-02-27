@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css } from '../../Utilities';
-import './Check.scss';
+import styles from './Check.scss';
 
 export interface ICheckProps extends React.Props<Check> {
   /**
@@ -27,13 +27,18 @@ export class Check extends React.Component<ICheckProps, {}> {
   public render() {
     let { isChecked, checked } = this.props;
 
+    isChecked = isChecked || checked;
+
     return (
-      <div className={ css('ms-Check', {
-        'is-checked': isChecked || checked
-      }) }>
-        <div className='ms-Icon ms-Check-background'>
+      <div className={ css(
+        'ms-Check',
+        styles.root,
+        {
+          ['is-checked ' + styles.rootIsChecked]: isChecked
+        }) }>
+        <div className={ css('ms-Icon ms-Check-background', styles.background) }>
         </div>
-        <i className='ms-Check-check ms-Icon ms-Icon--CheckMark'></i>
+        <i className={ css('ms-Check-check ms-Icon ms-Icon--CheckMark', styles.check) }></i>
       </div>
     );
   }
