@@ -36,7 +36,6 @@ describe('Persona', () => {
       let result = wrapper.find('.' + styles.initials);
       expect(result).to.have.length(1);
       expect(result.text()).to.equal('KL');
-<<<<<<< HEAD
 
       wrapper = shallow(<Persona primaryText='David Zearing-Goff' />);
       result = wrapper.find('.' + styles.initials);
@@ -52,8 +51,6 @@ describe('Persona', () => {
       result = wrapper.find('.' + styles.initials);
       expect(result).to.have.length(1);
       expect(result.text()).to.equal('D');
-=======
->>>>>>> module-css-updates
     });
 
     it('calculates an expected initials in RTL if one was not specified', () => {
