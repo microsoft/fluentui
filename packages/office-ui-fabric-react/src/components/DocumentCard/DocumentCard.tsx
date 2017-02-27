@@ -30,8 +30,8 @@ export class DocumentCard extends React.Component<IDocumentCardProps, any> {
             'ms-DocumentCard',
             styles.root,
             {
-              ['ms-DocumentCard--actionable ' + styles.isRootActionable]: actionable,
-              ['ms-DocumentCard--compact ' + styles.isRootCompact]: type === DocumentCardType.compact ? true : false
+              ['ms-DocumentCard--actionable ' + styles.rootIsActionable]: actionable,
+              ['ms-DocumentCard--compact ' + styles.rootIsCompact]: type === DocumentCardType.compact ? true : false
             },
             className
           )

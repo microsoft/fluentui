@@ -15,7 +15,7 @@ export class DocumentCardActivity extends React.Component<IDocumentCardActivityP
     return (
       people && people.length > 0 &&
       <div className={ css('ms-DocumentCardActivity', styles.root, {
-        ['ms-DocumentCardActivity--multiplePeople ' + styles.isRootMultiplePeople]: people.length > 1
+        ['ms-DocumentCardActivity--multiplePeople ' + styles.rootIsMultiplePeople]: people.length > 1
       }) }>
         { this._renderAvatars(people) }
         <div className={ css('ms-DocumentCardActivity-details', styles.details) }>

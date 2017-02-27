@@ -11,7 +11,7 @@
   position: relative;
 }
 
-.isRootActionable:hover {
+.rootIsActionable:hover {
   cursor: pointer;
   border-color: $ms-color-neutralTertiaryAlt;
 
@@ -34,19 +34,19 @@
 }
 
 // Modifier: Compact layout
-.isRootCompact {
+.rootIsCompact {
   border-bottom: 2px solid $ms-color-neutralTertiary; // Default border color
   display: flex;
   max-width: 480px;
   height: 109px;
 
   // Remove the usual accent color from the preview
-  .preview {
+  :global(.ms-DocumentCardPreview) {
     border-bottom: none;
     max-height: 106px;
     max-width: 144px;
 
-    .icon {
+    :global(.ms-DocumentCardPreview-icon) {
       :global(.ms-Image-image) {
         max-height: 32px;
         max-width: 32px;
@@ -54,25 +54,25 @@
     }
   }
 
-  .preview {
+  :global(.ms-DocumentCardPreview) {
     @include border-right(1px, solid, $ms-color-neutralLight);
   }
 
   // Expand the details area to fill the remaining width
-  .details {
+  :global(.ms-DocumentCard-details) {
     display: flex;
     flex-direction: column;
     flex: 1;
     justify-content: space-between;
   }
 
-  .title {
+  :global(.ms-DocumentCardTitle) {
       padding: 12px 16px 8px 16px;
       @include ms-font-m;
       line-height: 16px;
   }
 
-  .activity {
+  :global(.ms-DocumentCardActivity) {
     padding-bottom: 12px;
   }
 }

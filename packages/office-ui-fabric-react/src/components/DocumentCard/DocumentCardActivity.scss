@@ -10,7 +10,7 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
   position: relative;
 }
 
-.isRootMultiplePeople {
+.rootIsMultiplePeople {
   .avatar:nth-of-type(2) {
     @include margin-left(-16px);
   }
