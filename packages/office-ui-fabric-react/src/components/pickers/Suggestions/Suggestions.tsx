@@ -6,7 +6,7 @@ import {
 import { DefaultButton, ButtonType } from '../../../Button';
 import { Spinner } from '../../../Spinner';
 import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.Props';
-import './Suggestions.scss';
+import styles from './Suggestions.scss';
 
 export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>, {}> {
   public render() {
@@ -19,7 +19,12 @@ export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>,
     return (
       <DefaultButton
         onClick={ onClick }
-        className={ css('ms-Suggestions-item', { 'is-suggested': suggestionModel.selected }, className) }
+        className={ css(
+          'ms-Suggestions-item',
+          { 'is-suggested': suggestionModel.selected },
+          suggestionModel.selected && styles.isSuggested,
+          className,
+          styles.suggestionsItem) }
       >
         <RenderSuggestion { ...suggestionModel.item } />
       </DefaultButton>
@@ -57,20 +62,23 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
 
     let noResults: () => JSX.Element = () => {
       return noResultsFoundText ?
-        <div className='ms-Suggestions-none'>
+        <div className={ css('ms-Suggestions-none', styles.suggestionsNone) }>
           { noResultsFoundText }
         </div> : null;
     };
 
     return (
-      <div className={ css('ms-Suggestions', className ? className : '') }>
+      <div className={ css(
+        'ms-Suggestions',
+        className ? className : '',
+        styles.root) }>
         { suggestionsHeaderText ?
-          (<div className='ms-Suggestions-title'>
+          (<div className={ css('ms-Suggestions-title', styles.suggestionsTitle) }>
             { suggestionsHeaderText }
           </div>) : (null) }
         { isLoading && (
           <Spinner
-            className='ms-Suggestions-spinner'
+            className={ css('ms-Suggestions-spinner', styles.suggestionsSpinner) }
             label={ loadingText }
           />) }
         { (!suggestions || !suggestions.length) && !isLoading ?
@@ -80,7 +88,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
         { searchForMoreText && moreSuggestionsAvailable ?
           (<DefaultButton
             onClick={ this._getMoreResults.bind(this) }
-            className={ 'ms-SearchMore-button' }
+            className={ css('ms-SearchMore-button', styles.searchMoreButton) }
             buttonType={ ButtonType.icon }
             icon={ 'Search' }
             ref={ this._resolveRef('_searchForMoreButton') } >
@@ -112,7 +120,10 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
     let TypedSuggestionsItem = this.SuggestionsItemOfProperType;
 
     return (
-      <div className='ms-Suggestions-container' id='suggestion-list' role='menu'>
+      <div
+        className={ css('ms-Suggestions-container', styles.suggestionsContainer) }
+        id='suggestion-list'
+        role='menu'>
         { suggestions.map((suggestion, index) =>
           <div ref={ this._resolveRef(suggestion.selected ? '_selectedElement' : '') }
             key={ index }

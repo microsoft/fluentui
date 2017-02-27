@@ -1,29 +1,27 @@
 @import '../../common/common';
 
-:global {
-  .ms-BasePicker-text {
-    display: flex;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-    border: 1px solid $ms-color-neutralLight;
-    min-width: 180px;
-    padding: 1px;
+.pickerText {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  border: 1px solid $ms-color-neutralLight;
+  min-width: 180px;
+  padding: 1px;
 
-    &:hover {
-      border-color: $ms-color-themeLight;
-    }
-
-    &.inputFocused {
-      border-color: $ms-color-themePrimary;
-    }
+  &:hover {
+    border-color: $ms-color-themeLight;
   }
 
-  .ms-BasePicker-input {
-    border: none;
-    min-height: 28px;
-    flex-grow: 1;
-    outline: none;
-    padding: 0 6px;
-    margin: 1px;
+  &.inputFocused {
+    border-color: $ms-color-themePrimary;
   }
+}
+
+.pickerInput {
+  border: none;
+  min-height: 28px;
+  flex-grow: 1;
+  outline: none;
+  padding: 0 6px;
+  margin: 1px;
 }
