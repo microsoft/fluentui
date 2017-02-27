@@ -2,7 +2,12 @@ import * as React from 'react';
 import { IDropdownProps, IDropdownOption } from './Dropdown.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
+import { BaseButton } from '../../Button';
+import { List } from '../../List';
+import { Panel } from '../../Panel';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import {
   BaseComponent,
   KeyCodes,
@@ -11,14 +16,20 @@ import {
   findIndex,
   getId
 } from '../../Utilities';
-import './Dropdown.scss';
+import styles from './Dropdown.scss';
+
+// Internal only props iterface to support mixing in responsive mode
+export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
+
+}
 
 export interface IDropdownState {
   isOpen?: boolean;
   selectedIndex?: number;
 }
 
-export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
+@withResponsiveMode
+export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownState> {
 
   public static defaultProps = {
     options: []
@@ -33,7 +44,6 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
   };
 
   private _focusZone: FocusZone;
-  private _optionList: HTMLElement;
   private _dropDown: HTMLDivElement;
   private _dropdownLabel: HTMLElement;
   private _id: string;
@@ -65,9 +75,13 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
 
   }
 
+  // Primary Render
   public render() {
     let id = this._id;
-    let { className, label, options, disabled, isDisabled, ariaLabel, onRenderItem = this._onRenderItem, onRenderOption = this._onRenderOption } = this.props;
+    let { className, label, options, disabled, isDisabled, ariaLabel,
+      onRenderTitle = this._onRenderTitle,
+      onRenderContainer = this._onRenderContainer
+    } = this.props;
     let { isOpen, selectedIndex } = this.state;
     let selectedOption = options[selectedIndex];
 
@@ -85,8 +99,9 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
           data-is-focusable={ !disabled }
           ref={ (c): HTMLElement => this._dropDown = c }
           id={ id }
-          className={ css('ms-Dropdown', className, {
-            'is-open': isOpen, 'is-disabled': disabled
+          className={ css('ms-Dropdown', styles.root, className, {
+            'is-open': isOpen,
+            ['is-disabled ' + styles.rootIsDisabled]: disabled
           }) }
           tabIndex={ disabled ? -1 : 0 }
           onKeyDown={ this._onDropdownKeyDown }
@@ -100,55 +115,18 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
         >
           <span
             id={ id + '-option' }
-            className='ms-Dropdown-title'
+            className={ css('ms-Dropdown-title', styles.title) }
             key={ selectedIndex }
             aria-atomic={ true }
           >
-            { selectedOption ? onRenderItem(selectedOption, this._onRenderItem) : '' }
+            { selectedOption && (
+              onRenderTitle(selectedOption, this._onRenderTitle)
+            ) }
           </span>
-          <i className='ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown'></i>
+          <i className={ css('ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown', styles.caretDown) }></i>
         </div>
         { isOpen && (
-          <Callout
-            isBeakVisible={ false }
-            className='ms-Dropdown-callout'
-            gapSpace={ 0 }
-            doNotLayer={ false }
-            targetElement={ this._dropDown }
-            directionalHint={ DirectionalHint.bottomLeftEdge }
-            onDismiss={ this._onDismiss }
-            onPositioned={ this._onPositioned }
-          >
-            <FocusZone
-              ref={ this._resolveRef('_focusZone') }
-              direction={ FocusZoneDirection.vertical }
-              defaultActiveElement={ '#' + id + '-list' + selectedIndex }
-            >
-              <ul ref={ (c: HTMLElement) => this._optionList = c }
-                id={ id + '-list' }
-                style={ { width: this._dropDown.clientWidth - 2 } }
-                className='ms-Dropdown-items'
-                role='listbox'
-                aria-labelledby={ id + '-label' }>
-                { options.map((option, index) => (
-                  <li id={ id + '-list' + index.toString() }
-                    ref={ Dropdown.Option + index.toString() }
-                    key={ option.key }
-                    data-index={ index }
-                    data-is-focusable={ true }
-                    className={ css('ms-Dropdown-item', { 'is-selected': selectedIndex === index }) }
-                    onClick={ () => this._onItemClick(index) }
-                    onFocus={ () => this.setSelectedIndex(index) }
-                    role='option'
-                    aria-selected={ selectedIndex === index ? 'true' : 'false' }
-                    aria-label={ option.text }
-                  >
-                    { onRenderOption(option, this._onRenderOption) }
-                  </li>
-                )) }
-              </ul>
-            </FocusZone>
-          </Callout>
+          onRenderContainer(this.props, this._onRenderContainer)
         ) }
       </div>
     );
@@ -178,11 +156,111 @@ export class Dropdown extends BaseComponent<IDropdownProps, IDropdownState> {
     }
   }
 
+  // Render text in dropdown input
   @autobind
-  private _onRenderItem(item: IDropdownOption): JSX.Element {
+  private _onRenderTitle(item: IDropdownOption): JSX.Element {
     return <span>{ item.text }</span>;
   }
 
+  // Render Callout or Panel container and pass in list
+  @autobind
+  private _onRenderContainer(props: IDropdownProps): JSX.Element {
+    let {
+      onRenderList = this._onRenderList,
+      responsiveMode
+    } = this.props;
+
+    let isSmall = responsiveMode <= ResponsiveMode.medium;
+
+    return (
+      isSmall ?
+        <Panel
+          className={ css('ms-Dropdown-panel', styles.panel) }
+          isOpen={ true }
+          isLightDismiss={ true }
+          onDismissed={ this._onDismiss }
+          hasCloseButton={ false }
+        >
+          { onRenderList(props, this._onRenderList) }
+        </Panel>
+        :
+        <Callout
+          isBeakVisible={ false }
+          className={ css('ms-Dropdown-callout', styles.callout) }
+          gapSpace={ 0 }
+          doNotLayer={ false }
+          targetElement={ this._dropDown }
+          directionalHint={ DirectionalHint.bottomLeftEdge }
+          onDismiss={ this._onDismiss }
+          onPositioned={ this._onPositioned }
+        >
+          <div style={ { width: this._dropDown.clientWidth - 2 } }>
+            { onRenderList(props, this._onRenderList) }
+          </div>
+        </Callout>
+    );
+  }
+
+  // Render List of items
+  @autobind
+  private _onRenderList(props: IDropdownProps): JSX.Element {
+    let {
+      onRenderItem = this._onRenderItem
+    } = this.props;
+
+    let id = this._id;
+    let { selectedIndex } = this.state;
+
+    return (
+      <FocusZone
+        ref={ this._resolveRef('_focusZone') }
+        direction={ FocusZoneDirection.vertical }
+        defaultActiveElement={ '#' + id + '-list' + selectedIndex }
+      >
+        <List
+          id={ id + '-list' }
+          className={ css('ms-Dropdown-items', styles.items) }
+          aria-labelledby={ id + '-label' }
+          items={ props.options }
+          onRenderCell={
+            (item: IDropdownOption, index: number) => {
+              item.index = index;
+              return onRenderItem(item, this._onRenderItem);
+            }
+          }
+        />
+      </FocusZone>
+    );
+  }
+
+  // Render Items
+  @autobind
+  private _onRenderItem(item: IDropdownOption): JSX.Element {
+    let { onRenderOption = this._onRenderOption } = this.props;
+    let id = this._id;
+    return (
+      <BaseButton
+        id={ id + '-list' + item.index }
+        ref={ Dropdown.Option + item.index }
+        key={ item.key }
+        data-index={ item.index }
+        data-is-focusable={ true }
+        className={ css(
+          'ms-Dropdown-item', styles.item, {
+            ['is-selected ' + styles.itemIsSelected]: this.state.selectedIndex === item.index,
+            ['is-disabled ' + styles.itemIsDisabled]: this.props.disabled === true
+          }
+        ) }
+        onClick={ () => this._onItemClick(item.index) }
+        onFocus={ () => this.setSelectedIndex(item.index) }
+        role='option'
+        aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
+        aria-label={ item.text }
+      > { onRenderOption(item, this._onRenderOption) }</BaseButton>
+    );
+  }
+
+  // Render content of item (i.e. text/icon inside of button)
   @autobind
   private _onRenderOption(item: IDropdownOption): JSX.Element {
     return <span>{ item.text }</span>;

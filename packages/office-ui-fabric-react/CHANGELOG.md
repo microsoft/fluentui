@@ -1,6 +1,25 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 21 Feb 2017 16:15:42 GMT and should not be manually modified.
+This log was last generated on Sat, 25 Feb 2017 04:11:32 GMT and should not be manually modified.
+
+## 1.12.1
+Sat, 25 Feb 2017 04:11:32 GMT
+
+### Patches
+
+- move aria-sort attr of detailsList headerColum to the right place
+- Persona: Improve default manner of abbreviating non-Latin names.
+
+## 1.12.0
+Thu, 23 Feb 2017 04:11:45 GMT
+
+### Minor changes
+
+- Dropdown: Updated dropdown component to be composed of several onRender functions, and  for render container to use panel under medium breakpoint
+
+### Patches
+
+- TextField - Allow aria attributes override
 
 ## 1.11.0
 Tue, 21 Feb 2017 16:15:42 GMT

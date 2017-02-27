@@ -1,0 +1,8 @@
+{
+  "changes": [{
+    "packageName": "office-ui-fabric-react",
+    "comment": "Update People Picker with module css.",
+    "type": "patch"
+  }],
+  "email": "luh@microsoft.com"
+}
