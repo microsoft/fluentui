@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 23 Feb 2017 04:11:45 GMT and should not be manually modified.
+This log was last generated on Sat, 25 Feb 2017 04:11:32 GMT and should not be manually modified.
+
+## 1.12.1
+Sat, 25 Feb 2017 04:11:32 GMT
+
+### Patches
+
+- move aria-sort attr of detailsList headerColum to the right place
+- Persona: Improve default manner of abbreviating non-Latin names.
 
 ## 1.12.0
 Thu, 23 Feb 2017 04:11:45 GMT

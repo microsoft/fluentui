@@ -149,7 +149,9 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
             <div
               key={ column.key }
               className={ css('ms-DetailsHeader-cellWrapper', styles.cellWrapper) }
-              role='columnheader'>
+              role='columnheader'
+              aria-sort={ column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none' }
+            >
               <button
                 type='button'
                 key={ column.fieldName }
