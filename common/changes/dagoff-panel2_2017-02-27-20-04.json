@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix Panel does not close when you click on the X",
+      "comment": "Panel: minor css fix for the close button to ensure it receives clicks correctly.",
       "type": "patch"
     },
     {
