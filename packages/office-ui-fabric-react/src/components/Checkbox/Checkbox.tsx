@@ -19,6 +19,8 @@ export interface ICheckboxState {
   isChecked?: boolean;
 }
 
+
+
 export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> implements ICheckbox {
   public static defaultProps: ICheckboxProps = {
   };
