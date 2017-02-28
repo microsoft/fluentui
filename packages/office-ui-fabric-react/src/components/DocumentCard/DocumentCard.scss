@@ -39,7 +39,12 @@
   display: flex;
   max-width: 480px;
   height: 109px;
-
+  :global(.ms-DocumentCard-details) {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+  }
   // Remove the usual accent color from the preview
   .preview {
     border-bottom: none;
