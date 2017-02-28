@@ -32,7 +32,7 @@ export class DocumentCardPreview extends React.Component<IDocumentCardPreviewPro
     }
 
     return (
-      <div className={ css('ms-DocumentCardPreview', styles.preview, isFileList && ('is-fileList ' + styles.isFileList)) } style={ style }>
+      <div className={ css('ms-DocumentCardPreview', styles.preview, isFileList && ('is-fileList ' + styles.previewIsFileList)) } style={ style }>
         { preview }
       </div>
     );
