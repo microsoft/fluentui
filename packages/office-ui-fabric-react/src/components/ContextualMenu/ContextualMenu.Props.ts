@@ -261,7 +261,7 @@ export interface IContextualMenuItem {
    * Method to custom render this menu item
    * @defaultvalue undefined
    */
-  onRender?: (item: any) => React.ReactNode;
+  onRender?: (item: any, index?: number, hasCheckmarks?: boolean, hasIcons?: boolean) => React.ReactNode;
 
   /**
    * A function to be executed onMouseDown. This is executed before an onClick event and can
