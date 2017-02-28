@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "1.13.0",
+      "tag": "office-ui-fabric-react_v1.13.0",
+      "date": "Tue, 28 Feb 2017 16:10:27 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "4dd5704695305c6b76608b14416edb1223ca0675",
+            "comment": "TextField - Option to supress validation on load"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.12.2",
       "tag": "office-ui-fabric-react_v1.12.2",
       "date": "Tue, 28 Feb 2017 04:07:31 GMT",

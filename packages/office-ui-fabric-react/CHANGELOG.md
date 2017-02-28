@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 28 Feb 2017 04:07:31 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Feb 2017 16:10:27 GMT and should not be manually modified.
+
+## 1.13.0
+Tue, 28 Feb 2017 16:10:27 GMT
+
+### Minor changes
+
+- TextField - Option to supress validation on load
 
 ## 1.12.2
 Tue, 28 Feb 2017 04:07:31 GMT
