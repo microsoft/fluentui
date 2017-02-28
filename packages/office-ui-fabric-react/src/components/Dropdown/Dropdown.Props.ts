@@ -1,5 +1,7 @@
 import { IRenderFunction } from '../../Utilities';
-export interface IDropdownProps {
+import { Dropdown } from './Dropdown';
+
+export interface IDropdownProps extends React.Props<Dropdown> {
   /**
    * Descriptive label for the Dropdown
    */
@@ -42,12 +44,27 @@ export interface IDropdownProps {
   onChanged?: (option: IDropdownOption, index?: number) => void;
 
   /**
-   * Optional custom renderer for the selected dropdown item
+   * Optional custom renderer for selected option displayed in input
+   */
+  onRenderTitle?: IRenderFunction<IDropdownOption>;
+
+  /**
+    * Optional custom renderer for the dropdown container
+    */
+  onRenderContainer?: IRenderFunction<IDropdownProps>;
+
+  /**
+    * Optional custom renderer for the dropdown list
+    */
+  onRenderList?: IRenderFunction<IDropdownProps>;
+
+  /**
+   * Optional custom renderer for the dropdown options
    */
   onRenderItem?: IRenderFunction<IDropdownOption>;
 
   /**
-   * Optional custom renderer for the dropdown options
+   * Optional custom renderer for the dropdown option content
    */
   onRenderOption?: IRenderFunction<IDropdownOption>;
 

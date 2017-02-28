@@ -1,6 +1,41 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 21 Feb 2017 16:15:42 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Feb 2017 16:10:27 GMT and should not be manually modified.
+
+## 1.13.0
+Tue, 28 Feb 2017 16:10:27 GMT
+
+### Minor changes
+
+- TextField - Option to supress validation on load
+
+## 1.12.2
+Tue, 28 Feb 2017 04:07:31 GMT
+
+### Patches
+
+- Panel: minor css fix for the close button to ensure it receives clicks correctly.
+- TextField: Fixed IE10 documentation input change behavior
+- Updating Link props so that we can use Object spread syntax
+
+## 1.12.1
+Sat, 25 Feb 2017 04:11:32 GMT
+
+### Patches
+
+- move aria-sort attr of detailsList headerColum to the right place
+- Persona: Improve default manner of abbreviating non-Latin names.
+
+## 1.12.0
+Thu, 23 Feb 2017 04:11:45 GMT
+
+### Minor changes
+
+- Dropdown: Updated dropdown component to be composed of several onRender functions, and  for render container to use panel under medium breakpoint
+
+### Patches
+
+- TextField - Allow aria attributes override
 
 ## 1.11.0
 Tue, 21 Feb 2017 16:15:42 GMT
