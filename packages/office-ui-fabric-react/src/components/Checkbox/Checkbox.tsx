@@ -19,6 +19,8 @@ export interface ICheckboxState {
   isChecked?: boolean;
 }
 
+
+
 export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> implements ICheckbox {
   public static defaultProps: ICheckboxProps = {
   };
@@ -32,7 +34,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     this._id = getId('checkbox-');
     this.state = {
       isFocused: false,
-      isChecked: props.defaultChecked || false
+      isChecked: !!(props.checked !== undefined ? props.checked : props.defaultChecked)
     };
   }
 
@@ -48,7 +50,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     } = this.props;
 
     const { isFocused } = this.state;
-    const isChecked = checked === undefined ? this.state.isFocused : checked;
+    const isChecked = checked === undefined ? this.state.isChecked : checked;
 
     return (
       <div
@@ -79,11 +81,9 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
         { this.props.children }
         <label htmlFor={ this._id }
           className={ css('ms-Checkbox-label', styles.label, {
-            'is-checked': isChecked,
-            'is-disabled': disabled,
-            [styles.labelIsInFocus]: isFocused,
-            [styles.labelIsChecked]: isChecked,
-            [styles.labelIsDisabled]: disabled
+            ['is-checked ' + styles.labelIsChecked]: isChecked,
+            ['is-disabled ' + styles.labelIsDisabled]: disabled,
+            [styles.labelIsInFocus]: isFocused
           })
           }
         >
