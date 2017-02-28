@@ -6,7 +6,7 @@ import {
   PERSONA_INITIALS_COLOR,
   PersonaInitialsColor
 } from '../../Persona';
-import styles from './DocumentCardActivity.scss';
+import styles from './DocumentCard.scss';
 
 export class DocumentCardActivity extends React.Component<IDocumentCardActivityProps, any> {
   public render() {
@@ -14,13 +14,13 @@ export class DocumentCardActivity extends React.Component<IDocumentCardActivityP
 
     return (
       people && people.length > 0 &&
-      <div className={ css('ms-DocumentCardActivity', styles.root, {
-        ['ms-DocumentCardActivity--multiplePeople ' + styles.rootIsMultiplePeople]: people.length > 1
+      <div className={ css('ms-DocumentCardActivity', styles.activity, {
+        ['ms-DocumentCardActivity--multiplePeople ' + styles.activityIsMultiplePeople]: people.length > 1
       }) }>
         { this._renderAvatars(people) }
-        <div className={ css('ms-DocumentCardActivity-details', styles.details) }>
+        <div className={ css('ms-DocumentCardActivity-details', styles.activityDetails) }>
           <span className={ css('ms-DocumentCardActivity-name', styles.name) }>{ this._getNameString(people) }</span>
-          <span className={ css('ms-DocumentCardActivity-activity', styles.activity) }>{ activity }</span>
+          <span className={ css('ms-DocumentCardActivity-activity', styles.activityActivity) }>{ activity }</span>
         </div>
       </div>
     );

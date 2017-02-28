@@ -2,14 +2,14 @@ import * as React from 'react';
 import { css } from '../../Utilities';
 import { IDocumentCardActionsProps } from './DocumentCard.Props';
 import { Button, ButtonType } from '../../Button';
-import styles from './DocumentCardActions.scss';
+import styles from './DocumentCard.scss';
 
 export class DocumentCardActions extends React.Component<IDocumentCardActionsProps, any> {
   public render() {
     let { actions, views } = this.props;
 
     return (
-      <div className={ css('ms-DocumentCardActions', styles.root) }>
+      <div className={ css('ms-DocumentCardActions', styles.actions) }>
 
         { actions && actions.map((action, index) => {
           action.buttonType = ButtonType.icon;

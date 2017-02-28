@@ -8,7 +8,7 @@ import {
   css
 } from '../../Utilities';
 import { IDocumentCardTitleProps } from './DocumentCard.Props';
-import styles from './DocumentCardTitle.scss';
+import styles from './DocumentCard.scss';
 
 export interface IDocumentCardTitleState {
   truncatedTitleFirstPiece?: string;
@@ -70,11 +70,11 @@ export class DocumentCardTitle extends BaseComponent<IDocumentCardTitleProps, ID
     let documentCardTitle;
     if (shouldTruncate && this._isTruncated) {
       documentCardTitle = (
-        <div className={ css('ms-DocumentCardTitle', styles.root) } ref={ this._resolveRef('_titleElement') } title={ title }>{ truncatedTitleFirstPiece }&hellip;{ truncatedTitleSecondPiece }</div>
+        <div className={ css('ms-DocumentCardTitle', styles.title) } ref={ this._resolveRef('_titleElement') } title={ title }>{ truncatedTitleFirstPiece }&hellip;{ truncatedTitleSecondPiece }</div>
       );
     } else {
       documentCardTitle = (
-        <div className={ css('ms-DocumentCardTitle', styles.root) } ref={ this._resolveRef('_titleElement') } title={ title }>{ title }</div>
+        <div className={ css('ms-DocumentCardTitle', styles.title) } ref={ this._resolveRef('_titleElement') } title={ title }>{ title }</div>
       );
     }
 
