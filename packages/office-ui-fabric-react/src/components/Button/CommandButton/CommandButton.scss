@@ -20,6 +20,10 @@ $button-commandButtonHeight: 40px;
   color: $ms-color-neutralPrimary;
 }
 
+.flexContainer {
+  justify-content: flex-start;
+}
+
 .label {
   @include button-core-label-styles;
 }

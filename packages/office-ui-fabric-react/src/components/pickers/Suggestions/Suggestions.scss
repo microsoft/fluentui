@@ -5,10 +5,12 @@
 }
 
 .suggestionsItem {
-  height: auto;
+  height: 36px;
+  line-height: 36px;
   width: 100%;
   @include text-align(left);
-  padding: 4px 20px 6px;
+  padding: 0 20px;
+
   display: block;
   border: none;
   &:hover {

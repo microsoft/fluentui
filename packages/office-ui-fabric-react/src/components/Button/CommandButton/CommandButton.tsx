@@ -9,7 +9,8 @@ export class CommandButton extends BaseButton {
     isDisabled: styles.isDisabled,
     isEnabled: styles.isEnabled,
     label: styles.label,
-    root: styles.root
+    root: styles.root,
+    flexContainer: styles.flexContainer
   };
 
   protected onRenderDescription() { return null; }
