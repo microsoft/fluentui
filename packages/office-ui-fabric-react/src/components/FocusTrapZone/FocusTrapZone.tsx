@@ -25,7 +25,10 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     let { elementToFocusOnDismiss, isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true } = this.props;
 
     this._previouslyFocusedElement = elementToFocusOnDismiss ? elementToFocusOnDismiss : document.activeElement as HTMLElement;
-    this.focus();
+
+    if (!elementContains(this.refs.root, this._previouslyFocusedElement)) {
+      this.focus();
+    }
 
     if (forceFocusInsideTrap) {
       this._events.on(window, 'focus', this._forceFocusInTrap, true);

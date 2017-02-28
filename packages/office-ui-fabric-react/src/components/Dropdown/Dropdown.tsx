@@ -2,8 +2,7 @@ import * as React from 'react';
 import { IDropdownProps, IDropdownOption } from './Dropdown.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
-import { BaseButton } from '../../Button';
-import { List } from '../../List';
+import { CommandButton } from '../../Button';
 import { Panel } from '../../Panel';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
@@ -72,7 +71,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         selectedIndex: this._getSelectedIndex(newProps.options, newProps.selectedKey)
       });
     }
+  }
 
+  public componentDidUpdate(prevProps: IDropdownProps, prevState: IDropdownState) {
+    if (prevState.isOpen === true && this.state.isOpen === false) {
+      this._dropDown.focus();
+    }
   }
 
   // Primary Render
@@ -97,7 +101,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         ) }
         <div
           data-is-focusable={ !disabled }
-          ref={ (c): HTMLElement => this._dropDown = c }
+          ref={ this._resolveRef('_dropDown') }
           id={ id }
           className={ css('ms-Dropdown', styles.root, className, {
             'is-open': isOpen,
@@ -216,19 +220,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         ref={ this._resolveRef('_focusZone') }
         direction={ FocusZoneDirection.vertical }
         defaultActiveElement={ '#' + id + '-list' + selectedIndex }
+        id={ id + '-list' }
+        className={ css('ms-Dropdown-items', styles.items) }
+        aria-labelledby={ id + '-label' }
+        onKeyDown={ this._onZoneKeyDown }
       >
-        <List
-          id={ id + '-list' }
-          className={ css('ms-Dropdown-items', styles.items) }
-          aria-labelledby={ id + '-label' }
-          items={ props.options }
-          onRenderCell={
-            (item: IDropdownOption, index: number) => {
-              item.index = index;
-              return onRenderItem(item, this._onRenderItem);
-            }
-          }
-        />
+        { this.props.options.map((item, index) => onRenderItem({ ...item, index }, this._onRenderItem)) }
       </FocusZone>
     );
   }
@@ -239,7 +236,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     let { onRenderOption = this._onRenderOption } = this.props;
     let id = this._id;
     return (
-      <BaseButton
+      <CommandButton
         id={ id + '-list' + item.index }
         ref={ Dropdown.Option + item.index }
         key={ item.key }
@@ -252,11 +249,10 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           }
         ) }
         onClick={ () => this._onItemClick(item.index) }
-        onFocus={ () => this.setSelectedIndex(item.index) }
         role='option'
         aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
         aria-label={ item.text }
-      > { onRenderOption(item, this._onRenderOption) }</BaseButton>
+      > { onRenderOption(item, this._onRenderOption) }</CommandButton>
     );
   }
 
@@ -281,6 +277,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   @autobind
   private _onDismiss() {
     this.setState({ isOpen: false });
+    this._dropDown.focus();
   }
 
   private _getSelectedIndex(options: IDropdownOption[], selectedKey: string | number) {
@@ -311,7 +308,11 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         break;
 
       case KeyCodes.down:
-        this.setSelectedIndex(this.state.selectedIndex + 1);
+        if (ev.altKey || ev.metaKey) {
+          this.setState({ isOpen: true });
+        } else {
+          this.setSelectedIndex(this.state.selectedIndex + 1);
+        }
         break;
 
       case KeyCodes.home:
@@ -320,6 +321,30 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
       case KeyCodes.end:
         this.setSelectedIndex(this.props.options.length - 1);
+        break;
+
+      default:
+        return;
+    }
+
+    ev.stopPropagation();
+    ev.preventDefault();
+  }
+
+  @autobind
+  private _onZoneKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
+    switch (ev.which) {
+
+      case KeyCodes.up:
+        if (ev.altKey || ev.metaKey) {
+          this.setState({ isOpen: false });
+          break;
+        }
+
+        return;
+
+      case KeyCodes.escape:
+        this.setState({ isOpen: false });
         break;
 
       default:
