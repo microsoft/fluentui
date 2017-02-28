@@ -4,7 +4,7 @@ import {
   autobind,
   css
 } from '../../Utilities';
-import './DocumentCard.scss';
+import styles from './DocumentCard.scss';
 
 export class DocumentCard extends React.Component<IDocumentCardProps, any> {
   public static defaultProps: IDocumentCardProps = {
@@ -28,9 +28,10 @@ export class DocumentCard extends React.Component<IDocumentCardProps, any> {
         className={
           css(
             'ms-DocumentCard',
+            styles.root,
             {
-              'ms-DocumentCard--actionable': actionable,
-              'ms-DocumentCard--compact': type === DocumentCardType.compact ? true : false
+              ['ms-DocumentCard--actionable ' + styles.rootIsActionable]: actionable,
+              ['ms-DocumentCard--compact ' + styles.rootIsCompact]: type === DocumentCardType.compact ? true : false
             },
             className
           )
