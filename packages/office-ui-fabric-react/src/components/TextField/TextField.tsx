@@ -39,7 +39,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     deferredValidationTime: 200,
     errorMessage: '',
     validateOnFocusIn: false,
-    validateOnFocusOut: false
+    validateOnFocusOut: false,
+    validateOnLoad: true,
   };
 
   private _id: string;
@@ -48,7 +49,6 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   private _isMounted: boolean;
   private _lastValidation: number;
   private _latestValidateValue;
-  private _willMountTriggerValidation;
   private _isDescriptionAvailable: boolean;
   private _textElement: HTMLInputElement | HTMLTextAreaElement;
 
@@ -70,7 +70,6 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
 
     this._delayedValidate = this._async.debounce(this._validate, this.props.deferredValidationTime);
     this._lastValidation = 0;
-    this._willMountTriggerValidation = false;
     this._isDescriptionAvailable = false;
   }
 
@@ -82,8 +81,9 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   }
 
   public componentWillMount() {
-    this._willMountTriggerValidation = true;
-    this._validate(this.state.value);
+    if (this.props.validateOnLoad) {
+      this._validate(this.state.value);
+    }
   }
 
   public componentDidMount() {
@@ -287,7 +287,6 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       value: value,
       errorMessage: ''
     } as ITextFieldState, this._adjustInputHeight);
-    this._willMountTriggerValidation = false;
     const { validateOnFocusIn, validateOnFocusOut } = this.props;
     if (!(validateOnFocusIn || validateOnFocusOut)) {
       this._delayedValidate(value);
@@ -329,15 +328,13 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   }
 
   private _notifyAfterValidate(value: string, errorMessage: string): void {
-    if (!this._willMountTriggerValidation && value === this.state.value) {
+    if (value === this.state.value) {
       const { onNotifyValidationResult } = this.props;
       onNotifyValidationResult(errorMessage, value);
       if (!errorMessage) {
         const { onChanged } = this.props;
         onChanged(value);
       }
-    } else {
-      this._willMountTriggerValidation = false;
     }
   }
 
