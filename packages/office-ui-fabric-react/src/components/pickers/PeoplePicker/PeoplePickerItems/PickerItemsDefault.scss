@@ -18,13 +18,18 @@
       background: $ms-color-neutralQuaternaryAlt;
     }
   }
+
   .itemContent {
     flex: 0 1 auto;
     min-width: 0px;
-    &:global(.ms-Button) {
-      flex: 0 0 auto;
-    }
   }
+
+  .removeButton {
+    flex: 0 0 auto;
+    width: 32px;
+    height: 32px;
+  }
+
   .personaDetails {
     flex: 0 1 auto;
   }

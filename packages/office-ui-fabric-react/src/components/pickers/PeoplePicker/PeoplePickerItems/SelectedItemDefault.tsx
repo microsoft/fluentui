@@ -4,7 +4,7 @@ import * as React from 'react';
 import { css } from '../../../../Utilities';
 import { Persona, PersonaSize, PersonaPresence } from '../../../../Persona';
 import { IPeoplePickerItemProps } from './PeoplePickerItem.Props';
-import { Button, ButtonType } from '../../../../Button';
+import { IconButton } from '../../../../Button';
 import styles from './PickerItemsDefault.scss';
 
 export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element = (peoplePickerItemProps: IPeoplePickerItemProps) => {
@@ -28,14 +28,13 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
           size={ PersonaSize.extraSmall }
         />
       </div>
-      <Button
+      <IconButton
         onClick={ () => { if (onRemoveItem) { onRemoveItem(); } } }
         icon={ 'Cancel' }
-        buttonType={ ButtonType.icon }
-        className={ css('ms-PickerItem-content', styles.itemContent) }
+        className={ css('ms-PickerItem-content', styles.removeButton, styles.itemContent) }
         data-is-focusable={ false }
       >
-      </Button>
+      </IconButton>
     </div >
   );
 };
