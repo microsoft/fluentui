@@ -14,6 +14,7 @@ import './Image.scss';
 
 export interface IImageState {
   loadState?: ImageLoadState;
+  cached: boolean;
 }
 
 export enum CoverStyle {
@@ -50,14 +51,16 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
     super(props);
 
     this.state = {
-      loadState: ImageLoadState.notLoaded
+      loadState: ImageLoadState.notLoaded,
+      cached: this._isImageCached(props.src)
     };
   }
 
   public componentWillReceiveProps(nextProps: IImageProps) {
     if (nextProps.src !== this.props.src) {
       this.setState({
-        loadState: ImageLoadState.notLoaded
+        loadState: ImageLoadState.notLoaded,
+        cached: this._isImageCached(nextProps.src)
       });
     } else if (this.state.loadState === ImageLoadState.loaded) {
       this._computeCoverStyle(nextProps);
@@ -75,9 +78,9 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
   public render() {
     let imageProps = getNativeProps(this.props, imageProperties, ['width', 'height']);
     let { src, alt, width, height, shouldFadeIn, className, imageFit, role, maximizeFrame} = this.props;
-    let { loadState } = this.state;
+    let { loadState, cached } = this.state;
     let coverStyle = this._coverStyle;
-    let loaded = loadState === ImageLoadState.loaded;
+    let loaded = loadState === ImageLoadState.loaded || cached;
 
     // If image dimensions aren't specified, the natural size of the image is used.
     return (
@@ -124,9 +127,16 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
 
     if (src) {
       this.setState({
-        loadState: ImageLoadState.loaded
+        loadState: ImageLoadState.loaded,
+        cached: true
       });
     }
+  }
+
+  private _isImageCached(src: string): boolean {
+    const img = document.createElement("img");
+    img.src = src;
+    return img.complete && img.naturalHeight > 0;
   }
 
   private _checkImageLoaded(): void {
@@ -144,7 +154,8 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
       if (isLoaded) {
         this._computeCoverStyle(this.props);
         this.setState({
-          loadState: ImageLoadState.loaded
+          loadState: ImageLoadState.loaded,
+          cached: true
         });
       }
     }
@@ -182,7 +193,8 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
       this.props.onError(ev);
     }
     this.setState({
-      loadState: ImageLoadState.error
+      loadState: ImageLoadState.error,
+      cached: false
     });
   }
 }

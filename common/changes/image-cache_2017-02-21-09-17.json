@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Add cache check when mounting or changing Image",
+      "type": "patch"
+    }
+  ],
+  "email": "asmundg@big-oil.org"
+}
