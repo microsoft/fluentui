@@ -15,6 +15,7 @@ export * from './css';
 export * from './dom';
 export * from './focus';
 export * from './hoist';
+export * from './initials';
 export * from './math';
 export * from './object';
 export * from './properties';
