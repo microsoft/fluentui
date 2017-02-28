@@ -42,7 +42,7 @@ export interface IGroupedListProps extends React.Props<GroupedList> {
   dragDropHelper?: IDragDropHelper;
 
   /** Event names and corresponding callbacks that will be registered to groups and rendered elements */
-  eventsToRegister?: [{ eventName: string, callback: (context: IDragDropContext, event?: any) => void }];
+  eventsToRegister?: { eventName: string, callback: (context: IDragDropContext, event?: any) => void }[];
 
   /** Optional override properties to render groups. */
   groupProps?: IGroupRenderProps;
@@ -138,6 +138,12 @@ export interface IGroup {
    * If none is specified, the arai-label attribute will contain the group name
    */
   ariaLabel?: string;
+
+  /**
+   * Optional flag to indicate the group has more data to load than the current group count indicated.
+   * This can be used to indicate that a plus should be rendered next to the group count in the header.
+   */
+  hasMoreData?: boolean;
 }
 
 export interface IGroupRenderProps {

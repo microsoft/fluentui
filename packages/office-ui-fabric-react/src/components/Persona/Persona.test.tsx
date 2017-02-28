@@ -1,7 +1,8 @@
 /* tslint:disable-next-line:no-unused-variable */
 import * as React from 'react';
 import { setRTL } from '../../Utilities';
-import { Persona, PersonaInitialsColor } from './index';
+import { Persona } from './Persona';
+import { PersonaInitialsColor } from './Persona.Props';
 import { shallow } from 'enzyme';
 import * as chai from 'chai';
 
@@ -34,21 +35,6 @@ describe('Persona', () => {
       let result = wrapper.find('.ms-Persona-initials');
       expect(result).to.have.length(1);
       expect(result.text()).to.equal('KL');
-
-      wrapper = shallow(<Persona primaryText='David Zearing-Goff' />);
-      result = wrapper.find('.ms-Persona-initials');
-      expect(result).to.have.length(1);
-      expect(result.text()).to.equal('DZ');
-
-      wrapper = shallow(<Persona primaryText='4lex 4loo' />);
-      result = wrapper.find('.ms-Persona-initials');
-      expect(result).to.have.length(1);
-      expect(result.text()).to.equal('44');
-
-      wrapper = shallow(<Persona primaryText='David (The man) Goff' />);
-      result = wrapper.find('.ms-Persona-initials');
-      expect(result).to.have.length(1);
-      expect(result.text()).to.equal('D');
     });
 
     it('calculates an expected initials in RTL if one was not specified', () => {

@@ -112,7 +112,7 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
       return (
         <Layer onLayerDidMount={ onLayerMounted || onLayerDidMount }>
           <Popup
-            role='dialog'
+            role={ isBlocking ? 'alertdialog' : 'dialog' }
             ariaLabelledBy={ title ? id + '-title' : '' }
             ariaDescribedBy={ subText ? id + '-subText' : '' }
             onDismiss={ onDismiss }
@@ -206,8 +206,8 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
       });
 
       // Call the onDismiss callback
-      if (this.props.onDismiss) {
-        this.props.onDismiss();
+      if (this.props.onDismissed) {
+        this.props.onDismissed();
       }
     }
   }

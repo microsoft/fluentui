@@ -3,7 +3,6 @@ import { css } from '../../utilities/css';
 import { EventGroup } from '../../utilities/eventGroup/EventGroup';
 import styles from './PageHeader.module.scss';
 import { getPageRouteFromState } from '../../utilities/pageroute';
-import { AppState } from '../../components/App/AppState';
 import { PageHeaderLink } from '../../components/PageHeaderLink/PageHeaderLink';
 
 const FULL_HEADER_HEIGHT = 236;
@@ -85,7 +84,7 @@ export class PageHeader extends React.Component<IPageHeaderProps, IPageHeaderSta
     let { pageTitle, links, backgroundColor, backgroundImage } = this.props;
     let { isAttached } = this.state;
     let baseRoute: string = getPageRouteFromState(
-      AppState, this.props.pageTitle
+      this.props.pageTitle
     );
 
     let backgroundStyle;

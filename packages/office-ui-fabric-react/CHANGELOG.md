@@ -1,6 +1,194 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 01 Feb 2017 04:04:05 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Feb 2017 04:07:31 GMT and should not be manually modified.
+
+## 1.12.2
+Tue, 28 Feb 2017 04:07:31 GMT
+
+### Patches
+
+- Panel: minor css fix for the close button to ensure it receives clicks correctly.
+- TextField: Fixed IE10 documentation input change behavior
+- Updating Link props so that we can use Object spread syntax
+
+## 1.12.1
+Sat, 25 Feb 2017 04:11:32 GMT
+
+### Patches
+
+- move aria-sort attr of detailsList headerColum to the right place
+- Persona: Improve default manner of abbreviating non-Latin names.
+
+## 1.12.0
+Thu, 23 Feb 2017 04:11:45 GMT
+
+### Minor changes
+
+- Dropdown: Updated dropdown component to be composed of several onRender functions, and  for render container to use panel under medium breakpoint
+
+### Patches
+
+- TextField - Allow aria attributes override
+
+## 1.11.0
+Tue, 21 Feb 2017 16:15:42 GMT
+
+### Minor changes
+
+- Deprecation of SpinnerType in favor of more semantic SpinnerSize. Extra small, small and medium variants added.
+
+### Patches
+
+- Dialog: Accessibility fix for confirmation dialogs
+- Return suggested items to original padding values, add display block to fix following space due to inline-block
+- Support to pass id to TextField and Toggle
+- Fix keyboard focus order in MessageBar
+
+## 1.10.0
+Tue, 21 Feb 2017 04:15:21 GMT
+
+### Minor changes
+
+- Fixed issues with drag/drop after item refresh.
+
+## 1.9.2
+Mon, 20 Feb 2017 16:07:02 GMT
+
+### Patches
+
+- Aligning Breadcrumb to design guidance and fix for chevron position at smaller breakpoints
+
+## 1.9.1
+Thu, 16 Feb 2017 16:06:51 GMT
+
+### Patches
+
+- DatePicker: Makes props optional, sets default props for strings
+- MessageBar: now allows dismiss action for single line messages.
+
+## 1.9.0
+Thu, 16 Feb 2017 04:04:41 GMT
+
+### Minor changes
+
+- GroupedList: Added `hasMoreData` flag to `IGroup` for rendering a plus character for groups that have indeterminate counts.
+
+## 1.8.0
+Wed, 15 Feb 2017 18:10:58 GMT
+
+### Minor changes
+
+- In order to protect customers that bundle 2 different versions of the same component on the page, we are moving the rules defined by fabric components to CSS modules. This first change only affects the `Toggle` and `Label` components, which have been updated to scope their rules inside of hash-safe class names. No existing class names (`ms-Toggle` for example) have been removed, so any customer customizations should continue to work as expected. This means if you render an old v1 Toggle with a new v2 Toggle compoennt, their class definitions will not conflict.
+
+## 1.7.2
+Tue, 14 Feb 2017 20:57:58 GMT
+
+### Patches
+
+- Dropdown: uncontrolled dropdowns now correctly set the selected item as expected. Test coverage added.
+
+## 1.7.1
+Tue, 14 Feb 2017 04:12:27 GMT
+
+### Patches
+
+- Checkbox: reducing border width to 1px.
+
+## 1.7.0
+Mon, 13 Feb 2017 08:15:53 GMT
+
+### Minor changes
+
+- Changes to Checkbox Props and ChoiceGroup Props to support StrictNullChecks
+
+### Patches
+
+- Updating package.json dependencies to exclude typings packages.
+
+## 1.6.0
+Sat, 11 Feb 2017 04:10:39 GMT
+
+### Minor changes
+
+- ColorPicker: adding `alphaSliderHidden` property to hide the alpha slider.
+
+### Patches
+
+- Breadcrumb: Fixed keyboard activation of items
+- Dropdown: update selectedIndex when options change
+- ChoiceGroup: Adding ability to use Icons
+- Button: Fix various bugs in button styling particularly to do with disabled states.
+- FacePile, Persona: Reverted changes to title attribute from #875
+- Panel: animation no longer styled fixed, which was causing issues downstream with opening it.
+
+## 1.5.5
+Wed, 08 Feb 2017 05:10:53 GMT
+
+### Patches
+
+- Moved all examples from this package into a separate app, so that we can fix imports in the code examples to be the correct imports.
+
+## 1.5.4
+Tue, 07 Feb 2017 20:34:17 GMT
+
+### Patches
+
+- Panel: onDismiss correctly called now before animation starts.
+
+## 1.5.3
+Tue, 07 Feb 2017 01:57:25 GMT
+
+### Patches
+
+- Button: removing vertical-align top which was causing alignment problems.
+
+## 1.5.2
+Sat, 04 Feb 2017 04:05:32 GMT
+
+### Patches
+
+- Image: Now correctly loads SVG images in Edge.
+- Pickers and Popup: Fixed a bug where having a picker in a dialog could cause the dialog to be dismissed on escape press
+
+## 1.5.1
+Sat, 04 Feb 2017 00:27:49 GMT
+
+### Patches
+
+- BaseButton: Resolving an issue where Buttons would not render children.
+
+## 1.5.0
+Fri, 03 Feb 2017 19:02:12 GMT
+
+### Minor changes
+
+- Updated all enums to use explicit numbers
+
+### Patches
+
+- Fixing Facepile imports to be AMD friendly
+
+## 1.4.0
+Fri, 03 Feb 2017 04:10:11 GMT
+
+### Minor changes
+
+- Button: major css cleanup, refactoring out BaseButton so that variants are cheap to build from bytes perspective.
+- Dropdown: changes to include id and ariaLabel
+- List: allow scrolling invidual items into view
+- Router: adding support for asynchronously loading components via the `getComponent` prop in the `<Route>` component.
+- Dialog: new `onDismissed` callback added to be called when the dismiss animation is complete.
+- Panel: new `onDismissed` callback added to be called when the dismiss animation is complete.
+- Persona: Added new xxs Persona size.  Fixed broken presence icons in high contrast mode.
+- Facepile: Updated to be able to use new xxs size for Persona.
+
+### Patches
+
+- BasePickerBelow: add support for focuszone innerkeystroke"
+- ContextualMenu: `shouldFocusOnMount` is now properly handled as expected.
+- Breadcrumb: Change item to render as span if it doesn't have onClick
+- PeoplePicker: Improve demo page and the way menuitembelow works
+- TextField: minor code cleanup, added ITextField interface and documentation.
 
 ## 1.3.7
 Wed, 01 Feb 2017 04:04:05 GMT

@@ -4,7 +4,6 @@
 
 [![npm version](https://badge.fury.io/js/office-ui-fabric-react.svg)](https://badge.fury.io/js/office-ui-fabric-react)
 [![Build Status](https://travis-ci.org/OfficeDev/office-ui-fabric-react.svg?branch=master)](https://travis-ci.org/OfficeDev/office-ui-fabric-react)
-[![Dependencies](https://david-dm.org/OfficeDev/office-ui-fabric-react.svg)](https://david-dm.org/OfficeDev/office-ui-fabric-react)
 
 Fabric React is a responsive, mobile-first collection of robust components designed to make it quick and simple for you to create web experiences using the Office Design Language.
 
@@ -63,6 +62,42 @@ const MyPage = () => (<div><Button>I am a button.</Button></div>);
 
 ReactDOM.render(<MyPage />, document.body.firstChild);
 ```
+
+## Rendering Fabric components on the server (SSR)
+
+If you need to render Fabric components on the server side in a node environment, there is a way to do this. The basic idea is that you need to tell the styles loader to pipe styles into a variable, which you can later use to inject into your page. Example:
+
+```ts
+import { configureLoadStyles } from '@microsoft/load-themed-styles';
+ 
+// Store registered styles in a variable used later for injection.
+let _allStyles = '';
+
+// Push styles into variables for injecting later.
+configureLoadStyles((styles: string) => {
+  _allStyles += styles;
+});
+ 
+import * as React from 'react';
+import * as ReactDOMServer from 'react-dom/server';
+import { Button } from 'office-ui-fabric-react/lib/Button'; 
+ 
+let body = ReactDOMServer.renderToString(<Button>hello</Button>);
+ 
+console.log(
+  `
+  <html>
+  <head>
+    <style>${ _allStyles}</style>
+  </head>
+  <body>
+    ${ body}
+  </body>
+  </html>
+  `);
+```
+
+Note: we are evaluating a more robust theming and style loading approach, which will allow a much more flexible server rendering approach, so this syntax may be simplified in the future.
 
 ## Testing
 

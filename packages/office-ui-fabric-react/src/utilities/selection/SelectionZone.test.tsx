@@ -6,7 +6,9 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
 let { expect } = chai;
 
-import { SelectionZone, Selection, SelectionMode } from './index';
+import { SelectionZone } from './SelectionZone';
+import { Selection } from './Selection';
+import { SelectionMode } from './interfaces';
 import { KeyCodes } from '../../Utilities';
 
 let _selection: Selection;

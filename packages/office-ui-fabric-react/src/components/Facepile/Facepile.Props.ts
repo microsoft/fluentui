@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { Facepile } from './Facepile';
 import { IButtonProps } from '../Button/index';
-import { IPersonaProps, PersonaInitialsColor } from '../Persona/index';
+import {
+  IPersonaProps,
+  PersonaInitialsColor,
+  PersonaSize
+} from '../Persona/index';
 
 export interface IFacepileProps extends React.Props<Facepile> {
   /**
@@ -12,6 +16,9 @@ export interface IFacepileProps extends React.Props<Facepile> {
 
   /** Maximum number of personas to show */
   maxDisplayablePersonas?: number;
+
+  /** Size to display the personas */
+  personaSize?: PersonaSize;
 
   /** Show add person button */
   showAddButton?: boolean;
@@ -84,11 +91,11 @@ export interface IFacepilePersona extends React.HTMLProps<HTMLButtonElement | HT
 
 export enum OverflowButtonType {
   /** No overflow */
-  none,
+  none = 0,
   /** +1 overflow icon */
-  descriptive,
+  descriptive = 1,
   /** More overflow icon */
-  more,
+  more = 2,
   /** Chevron overflow icon */
-  downArrow
+  downArrow = 3
 }

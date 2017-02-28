@@ -175,8 +175,9 @@ export function isElementTabbable(element: HTMLElement): boolean {
       (element.tagName === 'TEXTAREA') ||
       (tabIndex >= 0) ||
       (element.getAttribute && (
-        isFocusableAttribute === 'true') ||
-        element.getAttribute('role') === 'button')
+        isFocusableAttribute === 'true' ||
+        element.getAttribute('role') === 'button'
+      ))
     ));
 }
 
