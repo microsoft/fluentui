@@ -246,7 +246,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         ref={ this._resolveRef('_textElement') }
         value={ this.state.value }
         onInput={ this._onInputChange }
-        onChange={ this._onChange }
+        onChange={ this._onInputChange }
         className={ this._textElementClassName }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
@@ -268,7 +268,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         ref={ this._resolveRef('_textElement') }
         value={ this.state.value }
         onInput={ this._onInputChange }
-        onChange={ this._onChange }
+        onChange={ this._onInputChange }
         className={ this._textElementClassName }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
@@ -279,6 +279,9 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   private _onInputChange(event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
+    if (value === this.state.value) {
+      return;
+    }
 
     this.setState({
       value: value,
@@ -345,15 +348,5 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       let scrollHeight = textField.scrollHeight + 2; // +2 to avoid vertical scroll bars
       textField.style.height = scrollHeight + 'px';
     }
-  }
-
-  private _onChange(): void {
-    /**
-     * A noop input change handler.
-     * https://github.com/facebook/react/issues/7027.
-     * Using the native onInput handler fixes the issue but onChange
-     * still need to be wired to avoid React console errors
-     * TODO: Check if issue is resolved when React 16 is available.
-     */
   }
 }
