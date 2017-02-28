@@ -161,6 +161,12 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
   }
 }
 
+.avatarInitials {
+  background: $ms-color-themePrimary;
+  color: $ms-color-white;
+  font-weight: 100;
+}
+
 .activityDetails {
   @include left($ms-DocumentCardActivity-horizontalPadding + $ms-DocumentCardActivity-imageSize + $ms-DocumentCardActivity-personaTextGutter);
   height: $ms-DocumentCardActivity-imageSize;
