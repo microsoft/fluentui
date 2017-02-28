@@ -6,7 +6,7 @@ import {
   PERSONA_INITIALS_COLOR,
   PersonaInitialsColor
 } from '../../Persona';
-import './DocumentCardActivity.scss';
+import styles from './DocumentCard.scss';
 
 export class DocumentCardActivity extends React.Component<IDocumentCardActivityProps, any> {
   public render() {
@@ -14,13 +14,13 @@ export class DocumentCardActivity extends React.Component<IDocumentCardActivityP
 
     return (
       people && people.length > 0 &&
-      <div className={ css('ms-DocumentCardActivity', {
-        'ms-DocumentCardActivity--multiplePeople': people.length > 1
+      <div className={ css('ms-DocumentCardActivity', styles.activity, {
+        ['ms-DocumentCardActivity--multiplePeople ' + styles.activityIsMultiplePeople]: people.length > 1
       }) }>
         { this._renderAvatars(people) }
-        <div className='ms-DocumentCardActivity-details'>
-          <span className='ms-DocumentCardActivity-name'>{ this._getNameString(people) }</span>
-          <span className='ms-DocumentCardActivity-activity'>{ activity }</span>
+        <div className={ css('ms-DocumentCardActivity-details', styles.activityDetails) }>
+          <span className={ css('ms-DocumentCardActivity-name', styles.name) }>{ this._getNameString(people) }</span>
+          <span className={ css('ms-DocumentCardActivity-activity', styles.activityActivity) }>{ activity }</span>
         </div>
       </div>
     );
@@ -28,7 +28,7 @@ export class DocumentCardActivity extends React.Component<IDocumentCardActivityP
 
   private _renderAvatars(people: IDocumentCardActivityPerson[]): React.ReactElement<{}> {
     return (
-      <div className='ms-DocumentCardActivity-avatars'>
+      <div className={ css('ms-DocumentCardActivity-avatars', styles.avatars) }>
         { people.length > 1 ? this._renderAvatar(people[1]) : null }
         { this._renderAvatar(people[0]) }
       </div>
@@ -39,9 +39,9 @@ export class DocumentCardActivity extends React.Component<IDocumentCardActivityP
     let initialsColor = person.initialsColor === undefined || person.initialsColor === null ? PersonaInitialsColor.blue : person.initialsColor;
 
     return (
-      <div className='ms-DocumentCardActivity-avatar'>
+      <div className={ css('ms-DocumentCardActivity-avatar', styles.avatar) }>
         { person.initials && (
-          <div className={ css('ms-Persona-initials', PERSONA_INITIALS_COLOR[initialsColor]) } role='presentation'>
+          <div className={ css('ms-Persona-initials', styles.avatarInitials) } role='presentation'>
             { person.initials }
           </div>
         ) }

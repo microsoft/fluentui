@@ -48,7 +48,7 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
       <div>
         <DocumentCard type={ DocumentCardType.compact } onClickHref='http://bing.com' accentColor='#ce4b1f'>
           <DocumentCardPreview { ...previewProps } />
-          <div className='ms-DocumentCard-details'>
+          <div className="ms-DocumentCard-details">
             <DocumentCardTitle
               title='4 files were uploaded'
               shouldTruncate={ true } />
@@ -65,7 +65,7 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
         <p />
         <DocumentCard type={ DocumentCardType.compact } onClickHref='http://bing.com' accentColor='#ce4b1f'>
           <DocumentCardPreview previewImages={ [previewProps.previewImages[0]] } />
-          <div className='ms-DocumentCard-details'>
+          <div className="ms-DocumentCard-details">
             <DocumentCardTitle
               title='Revenue stream proposal fiscal year 2016 version02.pptx'
               shouldTruncate={ true } />
