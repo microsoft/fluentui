@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Toggle - support for aria attributes, fix button type",
+      "type": "patch"
+    }
+  ],
+  "email": "manishda@microsoft.com"
+}
