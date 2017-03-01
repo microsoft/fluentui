@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 28 Feb 2017 16:10:27 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Mar 2017 20:31:22 GMT and should not be manually modified.
+
+## 1.13.1
+Wed, 01 Mar 2017 20:31:22 GMT
+
+### Patches
+
+- Persona: previous published version was referring to an old utilities library without the getInitials utility function. Updating to this build will pull the correct utilities version which should fix the build error.
+- Toggle - support for aria attributes, fix button type
 
 ## 1.13.0
 Tue, 28 Feb 2017 16:10:27 GMT
