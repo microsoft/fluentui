@@ -1,0 +1,15 @@
+{
+  "changes": [
+    {
+      "comment": "Persona: previous published version was referring to an old utilities library without the getInitials utility function. Updating to this build will pull the correct utilities version which should fix the build error.",
+      "packageName": "office-ui-fabric-react",
+      "type": "patch"
+    },
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "Utilities: adding getInitials utility.",
+      "type": "minor"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
