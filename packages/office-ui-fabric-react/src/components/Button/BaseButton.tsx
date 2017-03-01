@@ -105,7 +105,7 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     return React.createElement(
       tag,
       buttonProps,
-      React.createElement('div', { className: css( this.classNames.base + '-flexContainer', styles.flexContainer, this.classNames.flexContainer) },
+      React.createElement('div', { className: css(this.classNames.base + '-flexContainer', styles.flexContainer, this.classNames.flexContainer) },
         this.onRenderIcon(),
         this.onRenderLabel(),
         this.onRenderDescription(),
@@ -127,27 +127,26 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
   }
 
   protected onRenderLabel() {
-    let { children, label } = this.props;
+    let { children, text } = this.props;
 
-    // For backwards compat, we should continue to take in the label content from children.
-    if (label === undefined && typeof (children) === 'string') {
-      label = children;
+    // For backwards compat, we should continue to take in the text content from children.
+    if (text === undefined && typeof (children) === 'string') {
+      text = children;
     }
 
-    return label ? (
+    return text && (
       <span className={ css(`${this.classNames.base}-label`, this.classNames.label) } id={ this._labelId } >
-        { label }
+        { text }
       </span>
-    ) : (null);
+    );
   }
 
   protected onRenderChildren() {
-    let { children, label } = this.props;
+    let { children } = this.props;
 
-    // There is no label and the label will be rendered, we don't want the label to appear twice.
-    // If there is a label and the children are of type string it was likely intentional and both
-    // should render.
-    if (label === undefined && typeof (children) === 'string') {
+    // If children is just a string, either it or the text will be rendered via onRenderLabel
+    // If children is another component, it will be rendered after text
+    if (typeof (children) === 'string') {
       return null;
     }
 
