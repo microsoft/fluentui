@@ -5,7 +5,7 @@ import { css } from '../../../../Utilities';
 import { IPeoplePickerItemWithMenuProps } from './PeoplePickerItem.Props';
 import { Persona, PersonaPresence } from '../../../../Persona';
 import { ContextualMenu, DirectionalHint } from '../../../../ContextualMenu';
-import { Button, ButtonType } from '../../../../Button';
+import { IconButton } from '../../../../Button';
 import { FocusZone } from '../../../../FocusZone';
 import styles from './PickerItemsDefault.scss';
 
@@ -41,15 +41,14 @@ export class SelectedItemWithMenu extends React.Component<IPeoplePickerItemWithM
             />
           </div>
           <div ref='ellipsisRef' className={ css('ms-PickerItem-content', styles.itemContent) }>
-            <Button
+            <IconButton
               icon={ 'More' }
-              buttonType={ ButtonType.icon } onClick={ this.onContextualMenu }
+              onClick={ this.onContextualMenu }
             />
           </div>
           <div className={ css('ms-PickerItem-content', styles.itemContent) }>
-            <Button
+            <IconButton
               icon={ 'Cancel' }
-              buttonType={ ButtonType.icon }
               onClick={ onRemoveItem }
             />
           </div>

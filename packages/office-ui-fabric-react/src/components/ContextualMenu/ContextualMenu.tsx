@@ -212,7 +212,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 direction={ arrowDirection }
                 ariaLabelledBy={ labelElementId }
                 ref={ (focusZone) => this._focusZone = focusZone }
-                rootProps={ { role: 'menu' } }
+                role='menu'
               >
                 <ul
                   className={ css('ms-ContextualMenu-list is-open', styles.list) }
