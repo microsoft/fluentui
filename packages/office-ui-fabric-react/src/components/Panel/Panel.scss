@@ -204,7 +204,7 @@ $CommandBarHeight: 40px;
 }
 
 // Scrollable content area
-.contentInner {
+.inner {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -213,7 +213,7 @@ $CommandBarHeight: 40px;
   padding: 0 16px 20px;
   overflow-y: auto;
 
-  .rootHasCloseButton & {
+  &.innerHasTopPadding {
     top: $CommandBarHeight;
   }
 

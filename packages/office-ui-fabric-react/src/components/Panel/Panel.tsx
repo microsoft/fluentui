@@ -39,6 +39,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
     isOpen: false,
     isBlocking: true,
     hasCloseButton: true,
+    hasTopPadding: true,
     type: PanelType.smallFixedFar,
   };
 
@@ -82,6 +83,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
       className = '',
       type,
       hasCloseButton,
+      hasTopPadding,
       isLightDismiss,
       isBlocking,
       headerText,
@@ -155,8 +157,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
                 ['ms-Panel--md ' + styles.rootIsMedium]: type === PanelType.medium,
                 ['ms-Panel--lg ' + styles.rootIsLarge]: type === PanelType.large || type === PanelType.largeFixed,
                 ['ms-Panel--fixed ' + styles.rootIsFixed]: type === PanelType.largeFixed,
-                ['ms-Panel--xl ' + styles.rootIsXLarge]: type === PanelType.extraLarge,
-                ['ms-Panel--hasCloseButton ' + styles.rootHasCloseButton]: hasCloseButton
+                ['ms-Panel--xl ' + styles.rootIsXLarge]: type === PanelType.extraLarge
               })
             }
           >
@@ -182,7 +183,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
                 { pendingCommandBarContent }
                 { closeButton }
               </div>
-              <div className={ css('ms-Panel-contentInner', styles.contentInner) }>
+              <div className={ css('ms-Panel-contentInner', styles.inner, hasTopPadding && styles.innerHasTopPadding) }>
                 { header }
                 <div className={ css('ms-Panel-content') }>
                   { children }
