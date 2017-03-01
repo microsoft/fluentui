@@ -28,7 +28,7 @@ const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
   PersonaInitialsColor.lightPink,
   PersonaInitialsColor.green,
   PersonaInitialsColor.darkGreen,
-  PersonaInitialsColor.lightPink,
+  PersonaInitialsColor.pink,
   PersonaInitialsColor.magenta,
   PersonaInitialsColor.purple,
   PersonaInitialsColor.black,
