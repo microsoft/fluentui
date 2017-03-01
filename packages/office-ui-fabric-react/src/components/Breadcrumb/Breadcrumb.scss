@@ -74,6 +74,10 @@ $Breadcrumb-chevron-sm: 8px;
   cursor: pointer;
   vertical-align: top;
   line-height: 1;
+  &:hover {
+    cursor: pointer;
+    background-color: $ms-color-neutralLighter;
+  }
 }
 
 .item {
