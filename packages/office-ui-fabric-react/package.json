@@ -1,6 +1,6 @@
 {
   "name": "office-ui-fabric-react",
-  "version": "2.0.0-beta1",
+  "version": "2.0.0-beta2",
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -50,7 +50,7 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.2.2",
-    "@uifabric/utilities": ">=1.0.3 <2.0.0"
+    "@uifabric/utilities": ">=1.1.0 <2.0.0"
   },
   "peerDependencies": {
     "react": "^15.0.1 || ^0.14",
