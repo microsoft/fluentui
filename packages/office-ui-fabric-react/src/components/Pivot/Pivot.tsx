@@ -99,8 +99,6 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
    * Renders the set of links to route between pivots
    */
   private _renderPivotLinks() {
-    const { } = this.props;
-
     return (
       <FocusZone direction={ FocusZoneDirection.horizontal }>
         <ul className={ css('ms-Pivot',
@@ -148,25 +146,10 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
   private _renderLinkContent(link: IPivotItemProps): JSX.Element {
     const { itemCount, itemIcon, linkText } = link;
 
-    let count: JSX.Element;
-    if (itemCount !== undefined) {
-      count = <span className='ms-Pivot-count'>({ itemCount })</span>;
-    }
-
-    let icon: JSX.Element;
-    if (itemIcon !== undefined) {
-      icon = <span className='ms-Pivot-icon'><i className={ `ms-Icon ms-Icon--${itemIcon}` }></i></span>;
-    }
-
-    let text: JSX.Element;
-    if (linkText !== undefined) {
-      text = <span className='ms-Pivot-text'>{ link.linkText }</span>;
-    }
-
     return <span className='ms-Pivot-link-content'>
-      { icon }
-      { text }
-      { count }
+      { itemIcon !== undefined && <span className='ms-Pivot-icon'><i className={ `ms-Icon ms-Icon--${itemIcon}` }></i></span> }
+      { linkText !== undefined && <span className='ms-Pivot-text'>{ link.linkText }</span> }
+      { itemCount !== undefined && <span className='ms-Pivot-count'>({ itemCount })</span> }
     </span>;
   }
 
