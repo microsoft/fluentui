@@ -53,7 +53,7 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
     let { label, onText, offText, className, disabled } = this.props;
     let { isChecked } = this.state;
     let stateText = isChecked ? onText : offText;
-
+    const toggleNativeProps = getNativeProps(this.props, buttonProperties, ['label']);
     return (
       <div className={
         css(styles.root, 'ms-Toggle', className, {
@@ -73,7 +73,9 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
           <div className={ css(styles.slider, 'ms-Toggle-slider') }>
             <button
               ref={ (c): HTMLButtonElement => this._toggleButton = c }
+              type='button'
               id={ this._id }
+              { ...toggleNativeProps }
               name={ this._id }
               className={ css(styles.button, 'ms-Toggle-button') }
               disabled={ disabled }
