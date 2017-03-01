@@ -4,7 +4,7 @@ import styles from './CommandButton.scss';
 export class CommandButton extends BaseButton {
   protected classNames = {
     base: 'ms-Button',
-    variant: 'ms-Button--default',
+    variant: 'ms-Button--command',
     icon: styles.icon,
     isDisabled: styles.isDisabled,
     isEnabled: styles.isEnabled,

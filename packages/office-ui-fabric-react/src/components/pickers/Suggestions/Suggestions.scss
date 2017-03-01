@@ -5,10 +5,8 @@
 }
 
 .suggestionsItem {
-  height: 36px;
-  line-height: 36px;
+  height: 50px;
   width: 100%;
-  @include text-align(left);
   padding: 0 20px;
 
   display: block;
@@ -17,7 +15,7 @@
     background: $ms-color-neutralLight;
   }
 
-  &.isSuggested {
+  &.suggestionsItemIsSuggested {
     background: $ms-color-neutralQuaternary;
     &:hover {
       background: $ms-color-neutralQuaternaryAlt;

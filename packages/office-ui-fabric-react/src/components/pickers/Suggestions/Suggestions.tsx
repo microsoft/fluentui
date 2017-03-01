@@ -21,10 +21,12 @@ export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>,
         onClick={ onClick }
         className={ css(
           'ms-Suggestions-item',
-          { 'is-suggested': suggestionModel.selected },
-          suggestionModel.selected && styles.isSuggested,
-          className,
-          styles.suggestionsItem) }
+          styles.suggestionsItem,
+          {
+            ['is-suggested ' + styles.suggestionsItemIsSuggested]: suggestionModel.selected
+          },
+          className
+        ) }
       >
         <RenderSuggestion { ...suggestionModel.item } />
       </CommandButton>
