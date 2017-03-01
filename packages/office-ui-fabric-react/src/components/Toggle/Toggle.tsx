@@ -53,7 +53,7 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
     let { label, onText, offText, className, disabled } = this.props;
     let { isChecked } = this.state;
     let stateText = isChecked ? onText : offText;
-    const toggleNativeProps = getNativeProps(this.props, buttonProperties, ['label']);
+    const toggleNativeProps = getNativeProps(this.props, buttonProperties);
     return (
       <div className={
         css(styles.root, 'ms-Toggle', className, {
