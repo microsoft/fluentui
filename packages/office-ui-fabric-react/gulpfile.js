@@ -23,7 +23,7 @@ build.typescript.setConfig({ typescript: require('typescript') });
 build.sass.setConfig({ useCSSModules: true });
 
 // Use Karma Tests - Disable during develoment if prefered
-build.karma.isEnabled = () => false;
+build.karma.isEnabled = () => true;
 
 // Disable unnecessary subtasks.
 build.preCopy.isEnabled = () => false;
