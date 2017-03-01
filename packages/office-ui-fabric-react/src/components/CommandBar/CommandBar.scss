@@ -240,7 +240,6 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
     bottom: 0;
     left: 0;
     margin: 0 8px;
-    border-bottom: 1px solid $ms-color-neutralLight;
   }
 
   &:hover {
@@ -252,6 +251,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
 
     @media screen and (-ms-high-contrast: black-on-white) {
       @include highContrastBorder($ms-color-black);
+      @include border-right(0px, solid, $ms-color-black);
     }
   }
 }
