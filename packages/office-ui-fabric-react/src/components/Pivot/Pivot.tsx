@@ -2,7 +2,8 @@ import * as React from 'react';
 import {
   KeyCodes,
   css,
-  getId
+  getId,
+  autobind
 } from '../../Utilities';
 import { IPivotProps } from './Pivot.Props';
 import { IPivotItemProps } from './PivotItem.Props';
@@ -98,6 +99,8 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
    * Renders the set of links to route between pivots
    */
   private _renderPivotLinks() {
+    const { } = this.props;
+
     return (
       <FocusZone direction={ FocusZoneDirection.horizontal }>
         <ul className={ css('ms-Pivot',
@@ -113,11 +116,39 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
   /**
    * Renders a pivot link
    */
+  @autobind
   private _renderLink(link: IPivotItemProps) {
-    const { itemKey, itemCount, itemIcon, linkText } = link;
+    const { itemKey } = link;
     const tabId = this._keyToTabIds[itemKey];
 
-    let count;
+    const { onRenderItemLink } = link;
+    let linkContent: JSX.Element;
+    if (onRenderItemLink) {
+      linkContent = onRenderItemLink(link, this._renderLinkContent);
+    } else {
+      linkContent = this._renderLinkContent(link);
+    }
+
+    return (
+      <button
+        id={ tabId }
+        key={ itemKey }
+        className={ css('ms-Pivot-link', { 'is-selected': this.state.selectedKey === itemKey }) }
+        onClick={ this._onLinkClick.bind(this, itemKey) }
+        onKeyPress={ this._onKeyPress.bind(this, itemKey) }
+        aria-label={ link.ariaLabel }
+        role='tab'
+        aria-selected={ this.state.selectedKey === itemKey }>
+        { linkContent }
+      </button>
+    );
+  }
+
+  @autobind
+  private _renderLinkContent(link: IPivotItemProps): JSX.Element {
+    const { itemCount, itemIcon, linkText } = link;
+
+    let count: JSX.Element;
     if (itemCount !== undefined) {
       count = <span className='ms-Pivot-count'>({ itemCount })</span>;
     }
@@ -132,21 +163,11 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
       text = <span className='ms-Pivot-text'>{ link.linkText }</span>;
     }
 
-    return (
-      <button
-        id={ tabId }
-        key={ itemKey }
-        className={ css('ms-Pivot-link', { 'is-selected': this.state.selectedKey === itemKey }) }
-        onClick={ this._onLinkClick.bind(this, itemKey) }
-        onKeyPress={ this._onKeyPress.bind(this, itemKey) }
-        aria-label={ link.ariaLabel }
-        role='tab'
-        aria-selected={ this.state.selectedKey === itemKey }>
-        { icon }
-        { text }
-        { count }
-      </button>
-    );
+    return <span className='ms-Pivot-link-content'>
+      { icon }
+      { text }
+      { count }
+    </span>;
   }
 
   /**
@@ -185,7 +206,8 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
           ariaLabel: pivotItem.props.ariaLabel,
           itemKey: itemKey,
           itemCount: pivotItem.props.itemCount,
-          itemIcon: pivotItem.props.itemIcon
+          itemIcon: pivotItem.props.itemIcon,
+          onRenderItemLink: pivotItem.props.onRenderItemLink
         });
         this._keyToIndexMapping[itemKey] = index;
         this._keyToTabIds[itemKey] = this._pivotId + `-Tab${index}`;
