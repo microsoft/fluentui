@@ -31,205 +31,207 @@ $DropDown-item-height: 36px;
   }
 }
 
-:global {
-  .ms-Dropdown {
-    @include ms-u-normalize;
-    @include ms-font-m;
-    color: $ms-color-neutralPrimary;
+.root {
+  @include ms-u-normalize;
+  @include ms-font-m;
+  color: $ms-color-neutralPrimary;
 
-    margin-bottom: 10px;
-    position: relative;
-    outline: 0;
-    user-select: none;
+  margin-bottom: 10px;
+  position: relative;
+  outline: 0;
+  user-select: none;
 
-    &:hover,
-    &:focus,
-    &:active {
-      .ms-Dropdown-title,
-      .ms-Dropdown-caretDown {
-        color: $ms-color-black;
-
-        @media screen and (-ms-high-contrast: active) {
-          color: $ms-color-contrastBlackSelected;
-        }
-
-        @media screen and (-ms-high-contrast: black-on-white) {
-          color: $ms-color-contrastWhiteSelected;
-        }
-      }
-    }
-
-    &:hover,
-    &:active {
-      .ms-Dropdown-title {
-        border-color: $ms-color-themePrimary;
-
-        @media screen and (-ms-high-contrast: active) {
-          border-color: $ms-color-contrastBlackSelected;
-        }
-
-        @media screen and (-ms-high-contrast: black-on-white) {
-          border-color: $ms-color-contrastWhiteSelected;
-        }
-      }
-    }
-
-    &:focus {
-      .ms-Dropdown-title {
-        border-color: $ms-color-themePrimary;
-
-        @media screen and (-ms-high-contrast: active) {
-          border-color: $ms-color-contrastBlackSelected;
-        }
-
-        @media screen and (-ms-high-contrast: black-on-white) {
-          border-color: $ms-color-contrastWhiteSelected;
-        }
-      }
-    }
-
-    .ms-Label {
-      display: inline-block;
-      margin-bottom: 8px;
-    }
-  }
-
-  //== State: A disabled dropdown
-  .ms-Dropdown.is-disabled {
-    .ms-Dropdown-title {
-      background-color: $ms-color-neutralLighter;
-      border-color: $ms-color-neutralLighter;
-      color: $ms-color-neutralTertiary;
-      cursor: default;
+  &:hover,
+  &:focus,
+  &:active {
+    .title,
+    .caretDown {
+      color: $ms-color-black;
 
       @media screen and (-ms-high-contrast: active) {
-        border-color: $ms-color-contrastBlackDisabled;
-        color: $ms-color-contrastBlackDisabled;
+        color: $ms-color-contrastBlackSelected;
       }
 
       @media screen and (-ms-high-contrast: black-on-white) {
-        border-color: $ms-color-contrastWhiteDisabled;
-        color: $ms-color-contrastWhiteDisabled;
+        color: $ms-color-contrastWhiteSelected;
       }
     }
+  }
 
-    .ms-Dropdown-caretDown {
-      color: $ms-color-neutralTertiary;
+  &:hover,
+  &:active {
+    .title {
+      border-color: $ms-color-themePrimary;
 
       @media screen and (-ms-high-contrast: active) {
-        color: $ms-color-contrastBlackDisabled;
+        border-color: $ms-color-contrastBlackSelected;
       }
 
       @media screen and (-ms-high-contrast: black-on-white) {
-        color: $ms-color-contrastWhiteDisabled;
+        border-color: $ms-color-contrastWhiteSelected;
       }
     }
   }
 
-  .ms-Dropdown-caretDown {
-    color: $ms-color-neutralDark;
-    font-size: $ms-icon-size-s;
-    position: absolute;
-    top: 0px;
-    @include right(12px);
-    pointer-events: none;
-    line-height: $DropDown-height;
+  &:focus {
+    .title {
+      border-color: $ms-color-themePrimary;
+
+      @media screen and (-ms-high-contrast: active) {
+        border-color: $ms-color-contrastBlackSelected;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        border-color: $ms-color-contrastWhiteSelected;
+      }
+    }
   }
 
-  // Style the new, replacement component
-  .ms-Dropdown-title {
-    @include ms-u-normalize;
-    background: $ms-color-white;
-    border: 1px solid $ms-color-neutralTertiaryAlt;
-    cursor: pointer;
-    display: block;
-    height: $DropDown-height;
-    line-height: $DropDown-height - 2px; // height minus the border
-    @include padding(0, $DropDown-height, 0, 12px);
-    position: relative;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+  :global(.ms-Label) {
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+}
+
+//== State: A disabled dropdown
+.root.rootIsDisabled {
+  .title {
+    background-color: $ms-color-neutralLighter;
+    border-color: $ms-color-neutralLighter;
+    color: $ms-color-neutralTertiary;
+    cursor: default;
+
+    @media screen and (-ms-high-contrast: active) {
+      border-color: $ms-color-contrastBlackDisabled;
+      color: $ms-color-contrastBlackDisabled;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      border-color: $ms-color-contrastWhiteDisabled;
+      color: $ms-color-contrastWhiteDisabled;
+    }
   }
 
-  .ms-Dropdown-callout {
-    box-shadow: 0 0px 15px -5px rgba(0, 0, 0, 0.4);
-    border: 1px solid $ms-color-neutralLight;
-  }
+  .caretDown {
+    color: $ms-color-neutralTertiary;
 
-  .ms-Dropdown-panel {
+    @media screen and (-ms-high-contrast: active) {
+      color: $ms-color-contrastBlackDisabled;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+      color: $ms-color-contrastWhiteDisabled;
+    }
+  }
+}
+
+.caretDown {
+  color: $ms-color-neutralDark;
+  font-size: $ms-icon-size-s;
+  position: absolute;
+  top: 0px;
+  @include right(12px);
+  pointer-events: none;
+  line-height: $DropDown-height;
+}
+
+// Style the new, replacement component
+.title {
+  @include ms-u-normalize;
+  background: $ms-color-white;
+  border: 1px solid $ms-color-neutralTertiaryAlt;
+  cursor: pointer;
+  display: block;
+  height: $DropDown-height;
+  line-height: $DropDown-height - 2px; // height minus the border
+  @include padding(0, $DropDown-height, 0, 12px);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.panel {
     // Force drop shadow even under medium breakpoint
-    .ms-Panel-main {
+    :global(.ms-Panel-main) {
       @include drop-shadow(-30px, 0px, 30px, -30px, .2);
     }
     // Remove padding as items have their own padding and bg
-    .ms-Panel-contentInner {
+    :global(.ms-Panel-contentInner) {
       padding: 0 0 20px
     }
   }
 
-  // Container for the dropdown items, displayed as a panel on small screens.
-  .ms-Dropdown-item {
-    background: transparent;
-    box-sizing: border-box;
-    cursor: pointer;
-    display: block;
-    width: 100%;
-    text-align: left;
-    min-height: $DropDown-item-height;
-    line-height: 20px;
-    padding: 5px 16px;
-    position: relative;
-    border: 1px solid transparent;
-    word-wrap: break-word;
+.callout {
+  box-shadow: 0 0px 15px -5px rgba(0, 0, 0, 0.4);
+  border: 1px solid $ms-color-neutralLight;
+}
 
-    @media screen and (-ms-high-contrast: active) {
-      border-color: $ms-color-black;
-    }
+.items {
+  display: block;
+}
 
-    @media screen and (-ms-high-contrast: black-on-white) {
-      border-color: $ms-color-white;
-    }
+// Container for the dropdown items, displayed as a panel on small screens.
+.item {
+  background: transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  height: 36px;
+  min-height: $DropDown-item-height;
+  line-height: 20px;
+  padding: 5px 16px;
+  position: relative;
+  border: 1px solid transparent;
+  word-wrap: break-word;
 
-    &:hover {
-      background-color: $Dropdown-selectedItem-hover-bg;
-      color: $ms-color-black;
-
-      @include highContrastListItemState;
-    }
-
-    @include focus-border();
-
-    &:focus {
-      background-color: $ms-color-neutralLighter;
-    }
-
-    &:active {
-      background-color: $Dropdown-selectedItem-hover-bg;
-      color: $ms-color-black;
-    }
-
-    &.is-disabled {
-      background: $ms-color-white;
-      color: $ms-color-neutralTertiary;
-      cursor: default;
-    }
+  @media screen and (-ms-high-contrast: active) {
+    border-color: $ms-color-black;
   }
 
-  //== State: A selected dropdown item
-  // Note: .ms-Dropdown-item--selected is deprecated and will be removed in a future version.
-  // Use .is-selected instead.
-  .ms-Dropdown-item.is-selected,
-  .ms-Dropdown-item.ms-Dropdown-item--selected {
-    background-color: $Dropdown-selectedItem-bg;
+  @media screen and (-ms-high-contrast: black-on-white) {
+    border-color: $ms-color-white;
+  }
+
+  &:hover {
+    background-color: $Dropdown-selectedItem-hover-bg;
     color: $ms-color-black;
-
-    &:hover {
-      background-color: $Dropdown-selectedItem-bg;
-    }
-
-    @include focus-border();
 
     @include highContrastListItemState;
   }
+
+  @include focus-border();
+
+  &:focus {
+    background-color: $ms-color-neutralLighter;
+  }
+
+  &:active {
+    background-color: $Dropdown-selectedItem-hover-bg;
+    color: $ms-color-black;
+  }
+
+  &.itemIsDisabled {
+    background: $ms-color-white;
+    color: $ms-color-neutralTertiary;
+    cursor: default;
+  }
+  :global(.ms-Button-flexContainer) {
+    justify-content: flex-start;
+  }
+}
+
+//== State: A selected dropdown item
+.item.itemIsSelected {
+  background-color: $Dropdown-selectedItem-bg;
+  color: $ms-color-black;
+
+  &:hover {
+    background-color: $Dropdown-selectedItem-bg;
+  }
+
+  @include focus-border();
+
+  @include highContrastListItemState;
 }

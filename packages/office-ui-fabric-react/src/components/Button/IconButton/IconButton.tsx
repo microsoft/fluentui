@@ -1,19 +1,17 @@
 import { BaseButton } from '../BaseButton';
-import './IconButton.scss';
-import '../ButtonCore/ButtonCore.scss';
+import styles from './IconButton.scss';
 
 export class IconButton extends BaseButton {
-  protected _variantClassName = 'ms-Button--icon';
+  protected classNames = {
+    base: 'ms-Button',
+    variant: 'ms-Button--icon',
+    icon: styles.icon,
+    isDisabled: styles.isDisabled,
+    isEnabled: styles.isEnabled,
+    root: styles.root
+  };
 
-  protected onRenderLabel() {
-    return null;
-  }
-
-  protected onRenderDescription() {
-    return null;
-  }
-
-  protected onRenderChildren() {
-    return null;
-  }
+  protected onRenderLabel() { return null; }
+  protected onRenderDescription() { return null; }
+  protected onRenderChildren() { return null; }
 }

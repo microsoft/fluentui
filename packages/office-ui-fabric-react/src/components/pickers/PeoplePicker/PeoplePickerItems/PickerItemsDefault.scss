@@ -1,42 +1,40 @@
 @import '../../../../common/common';
 
-:global {
-  .ms-PickerPersona-container {
-    @include focus-border();
-
-    display: inline-flex;
-    align-items: center;
-    background: $ms-color-neutralLighter;
-    margin: 1px;
-    cursor: default;
-    user-select: none;
-    max-width: 100%;
-
+.personaContainer {
+  @include focus-border();
+  display: inline-flex;
+  align-items: center;
+  background: $ms-color-neutralLighter;
+  margin: 1px;
+  cursor: default;
+  user-select: none;
+  max-width: 100%;
+  &:hover {
+    background: $ms-color-neutralLight;
+  }
+  &.personaContainerIsSelected {
+    background: $ms-color-neutralQuaternary;
     &:hover {
-      background: $ms-color-neutralLight;
-    }
-
-    &.is-selected {
-      background: $ms-color-neutralQuaternary;
-      &:hover {
-        background: $ms-color-neutralQuaternaryAlt;
-      }
-    }
-
-    .ms-PickerItem-content {
-      flex: 0 1 auto;
-      min-width: 0px;
-      &.ms-Button {
-        flex: 0 0 auto;
-      }
-    }
-
-    .ms-Persona-details {
-      flex: 0 1 auto;
+      background: $ms-color-neutralQuaternaryAlt;
     }
   }
 
-  .ms-PickerItem-container {
-    display: inline-block;
+  .itemContent {
+    flex: 0 1 auto;
+    min-width: 0px;
   }
+
+  .removeButton {
+    flex: 0 0 auto;
+    width: 32px;
+    height: 32px;
+  }
+
+  .personaDetails {
+    flex: 0 1 auto;
+  }
+}
+
+.itemContainer {
+  display: inline-block;
 }

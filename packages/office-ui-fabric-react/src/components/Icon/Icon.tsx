@@ -1,6 +1,6 @@
 /* tslint:disable */
 import * as React from 'react';
-import './Icon.scss'
+import styles from './Icon.scss'
 /* tslint:enable */
 import { IIconProps } from './Icon.Props';
 import { IconType } from './IconType';
@@ -15,7 +15,7 @@ export const Icon: (props: IIconProps) => JSX.Element = (props: IIconProps) => {
   let customIcon = props.iconName === 'None';
 
   if (props.iconType === IconType.Image) {
-    let containerClassName = css('ms-Icon', 'ms-Icon-imageContainer', props.className);
+    let containerClassName = css('ms-Icon', 'ms-Icon-imageContainer', styles.imageContainer, props.className);
 
     return (
       <div className={ containerClassName } >
