@@ -48,7 +48,15 @@ export class Link extends BaseComponent<ILinkProps, any> implements ILink {
             onClick={ this._onClick }
             ref={ this._resolveRef('_link') }
           >
-            { children }
+            <a href=""
+              { ...getNativeProps(this.props, buttonProperties) }
+              className={ css('ms-Link', styles.root, className, {
+                'is-disabled': disabled,
+                [styles.isDisabled]: disabled
+              }) }
+            >
+              { children }
+            </a>
           </button>
         ));
   }
