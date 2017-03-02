@@ -21,7 +21,7 @@ export interface IBaseButtonClassNames {
   icon?: string;
   label?: string;
   root?: string;
-};
+}
 
 export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButton {
 

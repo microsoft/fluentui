@@ -64,5 +64,8 @@ build.task('webpack', build.webpack);
 build.task('tslint', build.tslint);
 build.task('ts', build.typescript);
 
+// Workaround, tslint seems to be gone.
+build.task('default', build.serial(build.defaultTasks, build.tslint));
+
 // initialize tasks.
 build.initialize(gulp);

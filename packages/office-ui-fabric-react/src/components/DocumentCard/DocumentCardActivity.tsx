@@ -2,10 +2,6 @@ import * as React from 'react';
 import { css } from '../../Utilities';
 import { IDocumentCardActivityProps, IDocumentCardActivityPerson } from './DocumentCard.Props';
 import { Image } from '../../Image';
-import {
-  PERSONA_INITIALS_COLOR,
-  PersonaInitialsColor
-} from '../../Persona';
 import styles from './DocumentCard.scss';
 
 export class DocumentCardActivity extends React.Component<IDocumentCardActivityProps, any> {
@@ -36,7 +32,6 @@ export class DocumentCardActivity extends React.Component<IDocumentCardActivityP
   }
 
   private _renderAvatar(person: IDocumentCardActivityPerson) {
-    let initialsColor = person.initialsColor === undefined || person.initialsColor === null ? PersonaInitialsColor.blue : person.initialsColor;
 
     return (
       <div className={ css('ms-DocumentCardActivity-avatar', styles.avatar) }>

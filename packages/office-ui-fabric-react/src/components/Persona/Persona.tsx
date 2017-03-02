@@ -66,7 +66,6 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
       className,
       size,
       imageUrl,
-      imageInitials,
       initialsColor,
       presence,
       primaryText,

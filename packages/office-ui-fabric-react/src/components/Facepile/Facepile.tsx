@@ -18,9 +18,6 @@ import {
   Persona,
   PersonaSize
 } from '../../Persona';
-import {
-  PERSONA_SIZE
-} from '../Persona/PersonaConsts';
 import styles from './Facepile.scss';
 
 export class Facepile extends React.Component<IFacepileProps, {}> {
@@ -133,7 +130,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
         onRenderInitials={ () => {
           return (
             <span>{ '+' + numPersonasNotPictured }</span>
-          )
+          );
         } }
       >
 
@@ -152,11 +149,9 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
       <Persona
         size={ personaSize }
         hidePersonaDetails={ true }
-        onRenderInitials={ () => {
-          return (
-            <i className={ css('ms-Icon', 'msIcon', `ms-Icon ms-Icon--${icon}`) } aria-hidden='true'></i>
-          )
-        } }
+        onRenderInitials={ () => (
+          <i className={ css('ms-Icon', 'msIcon', `ms-Icon ms-Icon--${icon}`) } aria-hidden='true' />
+        ) }
       >
 
       </Persona>
@@ -173,11 +168,9 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
       <Persona
         size={ personaSize }
         hidePersonaDetails={ true }
-        onRenderInitials={ () => {
-          return (
-            <i className='ms-Icon msIcon ms-Icon--AddFriend' aria-hidden='true'></i>
-          )
-        } }
+        onRenderInitials={ () => (
+          <i className='ms-Icon msIcon ms-Icon--AddFriend' aria-hidden='true' />
+        ) }
       >
 
       </Persona>

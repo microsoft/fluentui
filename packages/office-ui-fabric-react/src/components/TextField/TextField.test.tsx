@@ -292,7 +292,7 @@ describe('TextField', () => {
         return '';
       };
 
-      const renderedDOM: HTMLElement = renderIntoDocument(
+      renderIntoDocument(
         <TextField
           value='initial value'
           onGetErrorMessage={ validatorSpy }

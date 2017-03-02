@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Image } from '../../Image';
 import { Label } from '../../Label';
-import { Icon, IIconProps } from '../../Icon';
+import { Icon } from '../../Icon';
 import { IChoiceGroupOption, IChoiceGroupProps } from './ChoiceGroup.Props';
 import {
   css,
@@ -52,10 +52,6 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
   public render() {
     let { label, options, className, required } = this.props;
     let { keyChecked, keyFocused } = this.state;
-
-    const titleClassName = css('ms-Label', className, {
-      'is-required': required
-    });
 
     return (
       // Need to assign role application on containing div because JAWS doesnt call OnKeyDown without this role

@@ -24,9 +24,7 @@ export interface IPanelState {
 }
 
 // Animation class constants.
-const FADE_IN_100 = 'ms-u-fadeIn100';
 const FADE_IN_200 = 'ms-u-fadeIn200';
-const FADE_OUT_100 = 'ms-u-fadeOut100';
 const FADE_OUT_200 = 'ms-u-fadeOut200';
 const SLIDE_LEFT_IN_40 = 'ms-u-slideLeftIn40';
 const SLIDE_LEFT_OUT_40 = 'ms-u-slideLeftOut40';

@@ -141,7 +141,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
             </div>
           </div>
           { this._getActionsDiv() }
-          <div className={ css("ms-MessageBar-dismissalOneline", styles.dismissalOneline) }>
+          <div className={ css('ms-MessageBar-dismissalOneline', styles.dismissalOneline) }>
             { this._getDismissDiv() }
           </div>
         </div>
