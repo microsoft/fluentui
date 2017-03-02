@@ -42,7 +42,10 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
 
   private static _svgRegex = /\.svg$/i;
 
-  private _coverStyle: CoverStyle;
+  // Make an initial assumption about the image layout until we can
+  // check the rendered element. The value here only takes effect when
+  // shouldStartVisible is true.
+  private _coverStyle: CoverStyle = CoverStyle.portrait;
   private _imageElement: HTMLImageElement;
   private _frameElement: HTMLDivElement;
 
@@ -93,7 +96,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
           key={ KEY_PREFIX + this.props.src || '' }
           className={
             css('ms-Image-image',
-              (coverStyle !== undefined) && CoverStyleMap[coverStyle],
+              CoverStyleMap[coverStyle],
               (imageFit !== undefined) && ImageFitMap[imageFit], {
                 'is-fadeIn': shouldFadeIn,
                 'is-notLoaded': !loaded,
