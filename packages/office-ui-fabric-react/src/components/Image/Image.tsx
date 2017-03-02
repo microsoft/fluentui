@@ -42,6 +42,9 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
 
   private static _svgRegex = /\.svg$/i;
 
+  // Make an initial assumption about the image layout until we can
+  // check the rendered element. The value here only takes effect when
+  // shouldStartVisible is true.
   private _coverStyle: CoverStyle = CoverStyle.portrait;
   private _imageElement: HTMLImageElement;
   private _frameElement: HTMLDivElement;
