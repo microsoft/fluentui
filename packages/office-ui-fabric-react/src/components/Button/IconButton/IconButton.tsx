@@ -13,5 +13,4 @@ export class IconButton extends BaseButton {
 
   protected onRenderLabel() { return null; }
   protected onRenderDescription() { return null; }
-  protected onRenderChildren() { return null; }
 }
