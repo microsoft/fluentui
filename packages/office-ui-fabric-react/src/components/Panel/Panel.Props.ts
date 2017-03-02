@@ -15,6 +15,12 @@ export interface IPanelProps extends React.Props<Panel> {
   hasCloseButton?: boolean;
 
   /**
+  * Has top padding needed to show the close button
+  * @default true
+  */
+  hasTopPadding?: boolean;
+
+  /**
   * Whether the panel can be light dismissed.
   * @default false
   */

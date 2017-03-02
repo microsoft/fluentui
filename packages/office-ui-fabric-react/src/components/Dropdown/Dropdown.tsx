@@ -184,6 +184,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           isLightDismiss={ true }
           onDismissed={ this._onDismiss }
           hasCloseButton={ false }
+          hasTopPadding={ false }
         >
           { onRenderList(props, this._onRenderList) }
         </Panel>
