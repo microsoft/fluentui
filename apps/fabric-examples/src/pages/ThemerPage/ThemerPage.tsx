@@ -308,11 +308,14 @@ export class ThemerPage extends React.Component<any, any> {
           onColorChanged={ _onColorChanged.bind(this) } />
         <div className='ms-themer-swatchBg' style={ { backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].value.str } }>
           <div className='ms-themer-swatch' style={ { backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].value.str } }></div>
-          { [this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Lightest']),
-          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Lighter']),
-          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Medium']),
-          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Darker']),
-          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Darkest'])] }
+          { [this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade1']),
+          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade2']),
+          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade3']),
+          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade4']),
+          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade5']),
+          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade6']),
+          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade7']),
+          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade8'])] }
         </div>
       </div>
     );

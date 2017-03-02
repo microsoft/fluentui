@@ -5,24 +5,36 @@ import {
 import * as Colors from './Colors';
 import { assign } from '../../Utilities';
 
-// Various constants used for generating shades of a color
-const WhiteShadeTable = [0.95, 0.85, 0.75, 0.65, 0.50];
-const BlackTintTable = [0.50, 0.65, 0.75, 0.85, 0.95];
-const ColorTintTable = [0.20, 0.40, 0.60];
-const ColorShadeTable = [0.75, 0.50];
-const LumTintTable = [0.10, 0.25, 0.50, 0.75, 0.90];
-const LumShadeTable = [0.90, 0.75, 0.50, 0.25, 0.10];
+/* original constants for generating shades
+const WhiteShadeTable = [0.95, 0.85, 0.75, 0.65, 0.50]; // white
+const BlackTintTable = [0.50, 0.65, 0.75, 0.85, 0.95]; // black
+const LumTintTable = [0.10, 0.25, 0.50, 0.75, 0.90]; // light shade (strongen all)
+const LumShadeTable = [0.90, 0.75, 0.50, 0.25, 0.10]; // dark shade (soften all)
+const ColorTintTable = [0.20, 0.40, 0.60]; // default soften
+const ColorShadeTable = [0.75, 0.50]; // default strongen*/
 const c_LuminanceLow = 0.2;
 const c_LuminanceHigh = 0.8;
+
+// Various constants used for generating shades of a color
+const WhiteShadeTable = [.973, .957, .918, .855, .816, .784, .651, .463]; // white
+const BlackTintTable = [.463, .651, .784, .816, .855, .918, .957, .973]; // black
+const LumTintTable = [.10, .20, .30, .40, .55, .70, .80, .90]; // light shade (strongen all)
+const LumShadeTable = [.90, .80, .70, .57, .43, .30, .20, .10]; // dark shade (soften all)
+const ColorTintTable = [.050, .100, .200, .42, .90]; // default soften
+const ColorShadeTable = [.90, .70, .550]; // default strongen
 
 /** Shades of a given color, from Lightest to Darkest. */
 export enum Shade {
   Unshaded = 0,
-  Lightest = 1,
-  Lighter = 2,
-  Medium = 3,
-  Darker = 4,
-  Darkest = 5
+  Shade1 = 1,
+  Shade2 = 2,
+  Shade3 = 3,
+  Shade4 = 4,
+  Shade5 = 5,
+  Shade6 = 6,
+  Shade7 = 7,
+  Shade8 = 8,
+  // remember to update isValidShade()!
 }
 
 /**
@@ -31,7 +43,7 @@ export enum Shade {
  */
 export function isValidShade(shade: Shade): boolean {
   'use strict';
-  return (typeof shade === 'number') && (shade >= Shade.Unshaded) && (shade <= Shade.Darkest);
+  return (typeof shade === 'number') && (shade >= Shade.Unshaded) && (shade <= Shade.Shade8);
 }
 
 function _isBlack(color: IColor): boolean {
