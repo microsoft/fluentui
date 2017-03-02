@@ -18,7 +18,11 @@ const c_LuminanceHigh = 0.8;
 // Various constants used for generating shades of a color
 const WhiteShadeTable = [.973, .957, .918, .855, .816, .784, .651, .463]; // white
 const BlackTintTable = [.463, .651, .784, .816, .855, .918, .957, .973]; // black
+<<<<<<< cb8aeb2ef90b7552b7d30e100ee3f07cc4aff6d3
 const LumTintTable = [.10, .20, .30, .43, .57, .70, .80, .90]; // light shade (strongen all)
+=======
+const LumTintTable = [.10, .20, .30, .40, .55, .70, .80, .90]; // light shade (strongen all)
+>>>>>>> change to 8 shades, temp math for that, hardcoded default theme, and misc stuff
 const LumShadeTable = [.90, .80, .70, .57, .43, .30, .20, .10]; // dark shade (soften all)
 const ColorTintTable = [.050, .100, .200, .42, .90]; // default soften
 const ColorShadeTable = [.90, .70, .550]; // default strongen
