@@ -1,6 +1,35 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 28 Feb 2017 04:07:31 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Mar 2017 04:10:04 GMT and should not be manually modified.
+
+## 1.14.0
+Thu, 02 Mar 2017 04:10:04 GMT
+
+### Minor changes
+
+- Pivot: support custom rendering for pivot links
+- Persona: adding a flag to avoid the fade in of images persona thumbnails.
+
+### Patches
+
+- Persona: Make it possible to have pink backgrounds.
+- FocusTrapZone: Fixed a scenario where multiple instances would fight over focus.
+- Dialog: empty aria attributes if no subtext is provided
+
+## 1.13.1
+Wed, 01 Mar 2017 20:31:22 GMT
+
+### Patches
+
+- Persona: previous published version was referring to an old utilities library without the getInitials utility function. Updating to this build will pull the correct utilities version which should fix the build error.
+- Toggle - support for aria attributes, fix button type
+
+## 1.13.0
+Tue, 28 Feb 2017 16:10:27 GMT
+
+### Minor changes
+
+- TextField - Option to supress validation on load
 
 ## 1.12.2
 Tue, 28 Feb 2017 04:07:31 GMT

@@ -117,7 +117,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
       <Layer>
         <Popup
           role='dialog'
-          ariaLabelledBy={ headerText ? headerTextId : undefined }
+          ariaLabelledBy={ headerText && headerTextId }
           onDismiss={ this.props.onDismiss }>
           <div
             ref={ this._onPanelRef }

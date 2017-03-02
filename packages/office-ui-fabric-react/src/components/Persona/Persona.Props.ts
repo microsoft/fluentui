@@ -19,6 +19,13 @@ export interface IPersonaProps extends React.HTMLProps<Persona> {
   imageShouldFadeIn?: boolean;
 
   /**
+   * If true, the image starts as visible and is hidden on error. Otherwise, the image is hidden until
+   * it is successfully loaded. This disables imageShouldFadeIn.
+   * @defaultvalue false
+   */
+  imageShouldStartVisible?: boolean;
+
+  /**
    * Url to the image to use, should be a square aspect ratio and big enough to fit in the image area.
    */
   imageUrl?: string;
