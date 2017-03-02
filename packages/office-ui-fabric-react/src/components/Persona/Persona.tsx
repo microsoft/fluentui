@@ -28,7 +28,7 @@ const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
   PersonaInitialsColor.lightPink,
   PersonaInitialsColor.green,
   PersonaInitialsColor.darkGreen,
-  PersonaInitialsColor.lightPink,
+  PersonaInitialsColor.pink,
   PersonaInitialsColor.magenta,
   PersonaInitialsColor.purple,
   PersonaInitialsColor.black,
@@ -74,7 +74,8 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
       tertiaryText,
       optionalText,
       hidePersonaDetails,
-      imageShouldFadeIn
+      imageShouldFadeIn,
+      imageShouldStartVisible
     } = this.props;
 
     let isRTL = getRTL();
@@ -133,6 +134,7 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
               imageFit={ ImageFit.cover }
               src={ imageUrl }
               shouldFadeIn={ imageShouldFadeIn }
+              shouldStartVisible={ imageShouldStartVisible }
               onLoadingStateChange={ this._onPhotoLoadingStateChange } />
           </div>
         ) }

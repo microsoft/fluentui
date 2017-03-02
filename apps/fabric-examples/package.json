@@ -39,7 +39,7 @@
     "highlight.js": "^9.6.0",
     "mocha": "~2.5.3",
     "office-ui-fabric-core": ">=5.0.0 <6.0.0",
-    "office-ui-fabric-react": ">=1.13.0 <2.0.0",
+    "office-ui-fabric-react": ">=1.14.0 <2.0.0",
     "react": ">=15.0.0 <16.0.0",
     "react-addons-test-utils": "^15.1.0",
     "react-dom": ">=15.0.0 <16.0.0",
@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.2.2",
-    "@uifabric/utilities": ">=1.0.3 <2.0.0"
+    "@uifabric/utilities": ">=1.1.0 <2.0.0"
   },
   "peerDependencies": {
     "react": "^15.0.1 || ^0.14",
