@@ -17,7 +17,7 @@ export class ButtonPrimaryExample extends React.Component<IButtonProps, {}> {
           data-automation-id='test'
           disabled={ disabled }
           text="Create account"
-        >Text Overrides a Child String</PrimaryButton>
+        />
       </div>
     );
   }
