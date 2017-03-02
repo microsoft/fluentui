@@ -9,23 +9,30 @@ import { IThemeSlotRule } from './IThemeSlotRule';
 
 export class ThemeGenerator {
 
-  /* isCustomized should be true only if it's a user action */
+  /* isCustomized should be true only if it's a user action, and indicates overwriting the slot's inheritance (if any)
+     overwriteCustomValue: a slot could have a generated value based on its inheritance rules (isCustomized is false), or a custom value
+                            based on user input (isCustomized is true), this bool tells us whether to override existing customized values */
   public static setSlot(
     rule: IThemeSlotRule,
     value: string | IColor,
     slotRules: Array<IThemeSlotRule>,
-    isCustomized = false
+    isCustomized = false,
+    overwriteCustomValue = true
   ) {
-    let valueAsIColor: IColor;
-    if (typeof value === 'string') {
-      valueAsIColor = getColorFromString(value);
-    } else {
-      valueAsIColor = value;
-    }
 
     rule.isCustomized = !rule.inherits || isCustomized; // it's always customized if it doesn't inherit
 
-    ThemeGenerator._setSlot(rule, valueAsIColor, slotRules, true);
+    if (overwriteCustomValue) {
+      let valueAsIColor: IColor;
+      if (typeof value === 'string') {
+        valueAsIColor = getColorFromString(value);
+      } else {
+        valueAsIColor = value;
+      }
+      ThemeGenerator._setSlot(rule, valueAsIColor, slotRules, true);
+    } else if (rule.value) {
+      ThemeGenerator._setSlot(rule, rule.value, slotRules, true, false);
+    }
   }
 
   /* Sets the color of each slot based on its rule. Slots that don't inherit must have a value already.
@@ -41,7 +48,7 @@ export class ThemeGenerator {
           if (!rule.value) {
             throw 'A theme slot that does not inherit must have a value.';
           }
-          ThemeGenerator.setSlot(rule, rule.value, slotRules, true);
+          ThemeGenerator.setSlot(rule, rule.value, slotRules, true, false);
         }
       }
     }
@@ -84,26 +91,31 @@ export class ThemeGenerator {
     return output;
   }
 
+  /* Sets the given slot's value to the given value, shading it if necessary.
+     Then, iterates through all other rules (that are this rule's dependents) to update them accordingly. */
   private static _setSlot(
     rule: IThemeSlotRule,
     value: IColor,
     slotRules: Array<IThemeSlotRule>,
-    isCustomized: boolean
+    isCustomized: boolean, // this property isn't changed on the rule if overwriteCustomValue is false
+    overwriteCustomValue = true
   ) {
-    // set the appropriate properties on the slot rule first
-    if (isCustomized || !isValidShade(rule.asShade)) {
-      rule.value = value;
-    } else {
-      rule.value = getShade(value, rule.asShade);
+    if (overwriteCustomValue || !rule.value) { // set a value under these conditions
+      if (isCustomized || !isValidShade(rule.asShade)) {
+        // if it's customized (or the rule is invalid), just set it to the raw value
+        rule.value = value;
+      } else { // not customized, so use the asShade +
+        rule.value = getShade(value, rule.asShade);
+      }
+      rule.isCustomized = isCustomized;
     }
-    rule.isCustomized = isCustomized;
 
     // then run through the rest of the rules and update dependent values
     for (let ruleName in slotRules) {
       if (slotRules.hasOwnProperty(ruleName)) {
         let ruleToUpdate: IThemeSlotRule = slotRules[ruleName];
         if (ruleToUpdate.inherits === rule) {
-          ThemeGenerator._setSlot(ruleToUpdate, rule.value, slotRules, false);
+          ThemeGenerator._setSlot(ruleToUpdate, rule.value, slotRules, false, overwriteCustomValue);
         }
       }
     }
