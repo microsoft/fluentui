@@ -77,7 +77,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
     let { src, alt, width, height, shouldFadeIn, className, imageFit, role, maximizeFrame} = this.props;
     let { loadState } = this.state;
     let coverStyle = this._coverStyle;
-    let loaded = loadState === ImageLoadState.loaded;
+    let loaded = loadState === ImageLoadState.loaded || (loadState == ImageLoadState.notLoaded && this.props.shouldStartVisible);
 
     // If image dimensions aren't specified, the natural size of the image is used.
     return (
