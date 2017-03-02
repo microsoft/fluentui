@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Assume images are portraits until proven otherwise",
+      "type": "patch"
+    }
+  ],
+  "email": "asmundg@big-oil.org"
+}
