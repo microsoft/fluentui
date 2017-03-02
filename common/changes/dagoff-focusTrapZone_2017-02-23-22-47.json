@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "FocusTrapZone: Fixed a scenario where multiple instances would fight over focus.",
+      "type": "patch"
+    }
+  ],
+  "email": "dagoff@microsoft.com"
+}
