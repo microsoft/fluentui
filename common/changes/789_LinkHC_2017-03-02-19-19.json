@@ -1,0 +1,20 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "LinkComponent: Adds a and href to button to allow for proper coloring in HighContrast mode",
+      "type": "patch"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/utilities",
+      "type": "none"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/example-app-base",
+      "type": "none"
+    }
+  ],
+  "email": "v-algemb@microsoft.com"
+}
