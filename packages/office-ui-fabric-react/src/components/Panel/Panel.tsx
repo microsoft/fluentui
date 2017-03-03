@@ -78,17 +78,18 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
     let {
       children,
       className = '',
-      type,
-      hasCloseButton,
-      isLightDismiss,
-      isBlocking,
-      headerText,
       closeButtonAriaLabel,
-      headerClassName = '',
       elementToFocusOnDismiss,
-      ignoreExternalFocusing,
+      firstFocusableSelector,
       forceFocusInsideTrap,
-      firstFocusableSelector
+      hasCloseButton,
+      headerClassName = '',
+      headerText,
+      ignoreExternalFocusing,
+      isBlocking,
+      isLightDismiss,
+      layerProps,
+      type
     } = this.props;
     let { isOpen, isAnimatingOpen, isAnimatingClose, id } = this.state;
     let isLeft = type === PanelType.smallFixedNear ? true : false;
@@ -136,7 +137,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
     }
 
     return (
-      <Layer>
+      <Layer { ...layerProps }>
         <Popup
           role='dialog'
           ariaLabelledBy={ headerText ? headerTextId : undefined }
@@ -165,8 +166,8 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
                 styles.main,
                 {
                   [SLIDE_RIGHT_IN_40]: isAnimatingOpen && !isOnRightSide,
-                  [SLIDE_LEFT_OUT_40]: isAnimatingClose && !isOnRightSide,
                   [SLIDE_LEFT_IN_40]: isAnimatingOpen && isOnRightSide,
+                  [SLIDE_LEFT_OUT_40]: isAnimatingClose && !isOnRightSide,
                   [SLIDE_RIGHT_OUT_40]: isAnimatingClose && isOnRightSide
                 }
               ) }

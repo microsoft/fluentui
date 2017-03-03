@@ -1,22 +1,5 @@
 @import '../../common/common';
 
-.root {
-  /** bug: panel should not ignore pointer events. */
-  pointer-events: inherit;
-  overflow: hidden;
-}
-
-.root .main {
-  position: absolute;
-
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-// [thomas.oconnor] Instead of using the current Fabric CSS implementation for the Panel,
-// we are recreating it here. The Fabic Panel will be undergoing some redesign work in the
-// near future.
 // This implementation is RTL friendly, and divides the classes so that the panel types
 // and left/right animations are in different classes. It also separates out the design
 // rules/restrictions for Panel usage so that it becomes a generic Panel. It is up to the
@@ -46,6 +29,13 @@ $CommandBarHeight: 40px;
   display: none;
   pointer-events: none;
 
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+
   // Overlay used within panel
   .overlay {
     display: none;
@@ -59,12 +49,18 @@ $CommandBarHeight: 40px;
 // The panel itself, where the content goes.
 .main {
   background-color: $ms-color-white;
-  bottom: 0;
-  position: fixed;
+
+  position: absolute;
   @include right(0);
-  top: 0;
-  display: none;
   width: 100%;
+  bottom: 0;
+  top: 0;
+
+  display: none;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 
   // Medium screens and up - (anchored right, fixed width)
   @media (min-width: $ms-screen-md-min) {
@@ -108,7 +104,7 @@ $CommandBarHeight: 40px;
   }
 }
 
-//== Modifier: Medium, Large, Extra Largs panels (anchored right, fluid width)
+//== Modifier: Medium, Large, Extra Large panels (anchored right, fluid width)
 //
 .root.rootIsMedium,
 .root.rootIsLarge,
