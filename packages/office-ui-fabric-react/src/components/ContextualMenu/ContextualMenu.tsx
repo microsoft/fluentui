@@ -292,7 +292,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
 
   private _renderHeaderMenuItem(item: IContextualMenuItem, index: number, hasCheckmarks: boolean, hasIcons: boolean): React.ReactNode {
     return (
-      <div className={ css('ms-ContextualMenu-header', styles.header) }>
+      <div className={ css('ms-ContextualMenu-header', styles.header) } style={ item.style }>
         { this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons) }
       </div>);
   }
@@ -308,6 +308,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             styles.link,
             (item.isDisabled || item.disabled) && 'is-disabled') }
           role='menuitem'
+          style={ item.style }
           onClick={ this._onAnchorClick.bind(this, item) }>
           { (hasIcons) ? (
             this._renderIcon(item)
@@ -346,7 +347,8 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       title: item.title,
       'aria-label': ariaLabel,
       'aria-haspopup': hasSubmenuItems(item) ? true : null,
-      'aria-owns': item.key === expandedMenuItemKey ? subMenuId : null
+      'aria-owns': item.key === expandedMenuItemKey ? subMenuId : null,
+      style: item.style,
     };
 
     return React.createElement(
