@@ -336,6 +336,7 @@ describe('TextField', () => {
       />
     );
 
+    expect(callCount).to.equal(0);
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
 
     ReactTestUtils.Simulate.input(inputDOM, mockEvent('value change'));
