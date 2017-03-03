@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Add switch: execOnChangedOnError to allow onChanged callback when Validation rule failed.",
+      "type": "minor"
+    }
+  ],
+  "email": "timto@microsoft.com"
+}
