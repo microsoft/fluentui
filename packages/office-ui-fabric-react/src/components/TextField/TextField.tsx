@@ -37,6 +37,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     onNotifyValidationResult: () => { /* noop */ },
     onGetErrorMessage: () => undefined,
     deferredValidationTime: 200,
+    forceOnChangedCallback: false,
     errorMessage: '',
     validateOnFocusIn: false,
     validateOnFocusOut: false,
@@ -329,9 +330,9 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
 
   private _notifyAfterValidate(value: string, errorMessage: string): void {
     if (value === this.state.value) {
-      const { onNotifyValidationResult } = this.props;
+      const { onNotifyValidationResult, forceOnChangedCallback } = this.props;
       onNotifyValidationResult(errorMessage, value);
-      if (!errorMessage) {
+      if (!errorMessage || forceOnChangedCallback) {
         const { onChanged } = this.props;
         onChanged(value);
       }

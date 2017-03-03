@@ -67,6 +67,12 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement | HTML
   errorMessage?: string;
 
   /**
+   * Force call onChanged event callback on get error message.
+   * @default false
+   */
+  forceOnChangedCallback?: boolean;
+
+  /**
    * Callback for the onChanged event.
    */
   onChanged?: (newValue: any) => void;
