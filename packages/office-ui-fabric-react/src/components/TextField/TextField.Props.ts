@@ -128,6 +128,12 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement | HTML
    * @default false
    */
   validateOnFocusOut?: boolean;
+
+  /**
+   * Optional flag to disable onload validation
+   * @default true
+   */
+  validateOnLoad?: boolean;
 }
 
 export interface ITextField {

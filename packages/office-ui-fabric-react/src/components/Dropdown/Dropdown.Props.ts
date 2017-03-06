@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IRenderFunction } from '../../Utilities';
 import { Dropdown } from './Dropdown';
 

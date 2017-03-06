@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/example-app-base",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Office UI Fabric example app base utilities for building example sites.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -29,7 +29,7 @@
     "gulp": "~3.9.1",
     "mocha": "~2.5.3",
     "office-ui-fabric-core": ">=5.0.0 <6.0.0",
-    "office-ui-fabric-react": ">=1.12.0 <2.0.0",
+    "office-ui-fabric-react": ">=1.14.1 <2.0.0",
     "react": ">=15.0.0 <16.0.0",
     "react-addons-test-utils": "^15.1.0",
     "react-dom": ">=15.0.0 <16.0.0",
@@ -39,7 +39,6 @@
     "typescript": "~2.1.0"
   },
   "peerDependencies": {
-    "office-ui-fabric-core": ">=5.0.0 <6.0.0",
     "office-ui-fabric-react": ">=1.0.0 <2.0.0",
     "react": "^15.0.1 || ^0.14",
     "react-dom": "^15.0.1 || ^0.14"
