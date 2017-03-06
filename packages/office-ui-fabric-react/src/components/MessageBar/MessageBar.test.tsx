@@ -9,7 +9,10 @@ let { expect } = chai;
 import { MessageBar } from './MessageBar';
 
 describe('MessageBar', () => {
-  let noop = () => { /* no-op */ };
+  let noop = () => {
+    /* no-op */
+  };
+
   function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
     const component = ReactTestUtils.renderIntoDocument(element);
     const renderedDOM: Element = ReactDOM.findDOMNode(component as React.ReactInstance);

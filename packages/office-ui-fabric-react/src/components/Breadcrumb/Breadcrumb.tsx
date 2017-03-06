@@ -123,9 +123,11 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
         </Link>
       );
     } else {
-      return (<span className={ css('ms-Breadcrumb-item', styles.item) }>
-        { item.text }
-      </span>);
+      return (
+        <span className={ css('ms-Breadcrumb-item', styles.item) }>
+          { item.text }
+        </span>
+      );
     }
   }
 
