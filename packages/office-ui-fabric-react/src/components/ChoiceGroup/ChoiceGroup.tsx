@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Image } from '../../Image';
+import { Label } from '../../Label';
 import { Icon, IIconProps } from '../../Icon';
 import { IChoiceGroupOption, IChoiceGroupProps } from './ChoiceGroup.Props';
 import {
@@ -52,10 +53,6 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
     let { label, options, className, required } = this.props;
     let { keyChecked, keyFocused } = this.state;
 
-    const titleClassName = css('ms-Label', className, {
-      'is-required': required
-    });
-
     return (
       // Need to assign role application on containing div because JAWS doesnt call OnKeyDown without this role
       <div role='application' className={ className }>
@@ -65,7 +62,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
           aria-labelledby={ this.props.label ? this._id + '-label' : '' }
         >
           <div className='ms-ChoiceFieldGroup-title'>
-            { this.props.label ? <label className={ titleClassName } id={ this._id + '-label' }>{ label }</label> : null }
+            { this.props.label ? <Label id={ this._id + '-label' } required={required}>{ label }</Label> : null }
           </div>
 
           { options.map((option) => (
