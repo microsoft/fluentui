@@ -80,15 +80,13 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     return this.state.value;
   }
 
-  public componentWillMount() {
-    if (this.props.validateOnLoad) {
-      this._validate(this.state.value);
-    }
-  }
-
   public componentDidMount() {
     this._isMounted = true;
     this._adjustInputHeight();
+
+    if (this.props.validateOnLoad) {
+      this._validate(this.state.value);
+    }
   }
 
   public componentWillReceiveProps(newProps: ITextFieldProps) {
@@ -291,7 +289,14 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     this.setState({
       value: value,
       errorMessage: ''
-    } as ITextFieldState, this._adjustInputHeight);
+    } as ITextFieldState,
+      () => {
+        this._adjustInputHeight;
+        if (this.props.onChanged) {
+          this.props.onChanged(value);
+        }
+      });
+
     const { validateOnFocusIn, validateOnFocusOut } = this.props;
     if (!(validateOnFocusIn || validateOnFocusOut)) {
       this._delayedValidate(value);
@@ -333,13 +338,10 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   }
 
   private _notifyAfterValidate(value: string, errorMessage: string): void {
-    if (value === this.state.value) {
-      const { onNotifyValidationResult } = this.props;
-      onNotifyValidationResult(errorMessage, value);
-      if (!errorMessage) {
-        const { onChanged } = this.props;
-        onChanged(value);
-      }
+    if (this._isMounted &&
+      value === this.state.value &&
+      this.props.onNotifyValidationResult) {
+      this.props.onNotifyValidationResult(errorMessage, value);
     }
   }
 

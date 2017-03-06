@@ -2,6 +2,61 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "1.14.1",
+      "tag": "office-ui-fabric-react_v1.14.1",
+      "date": "Fri, 03 Mar 2017 16:09:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "e09761c2a2b4b28386f2854fe33555578029f360",
+            "comment": "TextField: fix onchanged trigger issue"
+          },
+          {
+            "author": "Åsmund Grammeltvedt <asmundg@big-oil.org>",
+            "commit": "91b02c890728f963efa1847684e18f10945dd2d7",
+            "comment": "Assume images are portraits until proven otherwise"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.14.0",
+      "tag": "office-ui-fabric-react_v1.14.0",
+      "date": "Thu, 02 Mar 2017 04:10:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Clemens Wolff <clemens.wolff+git@gmail.com>",
+            "commit": "b9778b2c1489693931cefdf900aa697dbbff1e87",
+            "comment": "Persona: Make it possible to have pink backgrounds."
+          },
+          {
+            "author": "dagoff <dagoff@users.noreply.github.com>",
+            "commit": "a40d24f3a60288f26902940816865dc4c5cad5d2",
+            "comment": "FocusTrapZone: Fixed a scenario where multiple instances would fight over focus."
+          },
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "49cc1a25c3326973d1401094243c597473a2263a",
+            "comment": "Dialog: empty aria attributes if no subtext is provided"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Christopher Schleiden <cschleiden@live.de>",
+            "commit": "227f3d3686e23fe6a60429c2ef18f4094f800754",
+            "comment": "Pivot: support custom rendering for pivot links"
+          },
+          {
+            "author": "Åsmund Grammeltvedt <asmundg@big-oil.org>",
+            "commit": "977c7ae928a4518c4d9d4dc96e718652632e0e9a",
+            "comment": "Persona: adding a flag to avoid the fade in of images persona thumbnails."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.13.1",
       "tag": "office-ui-fabric-react_v1.13.1",
       "date": "Wed, 01 Mar 2017 20:31:22 GMT",
