@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './App.scss';
 import { AppState } from './AppState';
-import { css } from '../../utilities/css';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { Fabric } from 'office-ui-fabric-react/lib/components/Fabric';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
