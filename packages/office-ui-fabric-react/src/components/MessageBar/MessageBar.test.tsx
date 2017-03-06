@@ -7,7 +7,6 @@ import * as ReactTestUtils from 'react-addons-test-utils';
 let { expect } = chai;
 
 import { MessageBar } from './MessageBar';
-import { MessageBarType } from './MessageBar.Props';
 
 describe('MessageBar', () => {
   let noop = () => {
