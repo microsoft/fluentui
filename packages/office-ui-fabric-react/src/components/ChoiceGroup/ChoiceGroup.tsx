@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { Image } from '../../Image';
-<<<<<<< HEAD
 import { Label } from '../../Label';
-=======
->>>>>>> 8332486ec9801b78bf398f4d85164c8fc89b79c3
 import { Icon } from '../../Icon';
 import { IChoiceGroupOption, IChoiceGroupProps } from './ChoiceGroup.Props';
 import {
