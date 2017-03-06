@@ -80,7 +80,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
     let { src, alt, width, height, shouldFadeIn, className, imageFit, role, maximizeFrame} = this.props;
     let { loadState } = this.state;
     let coverStyle = this._coverStyle;
-    let loaded = loadState === ImageLoadState.loaded || (loadState == ImageLoadState.notLoaded && this.props.shouldStartVisible);
+    let loaded = loadState === ImageLoadState.loaded || (loadState === ImageLoadState.notLoaded && this.props.shouldStartVisible);
 
     // If image dimensions aren't specified, the natural size of the image is used.
     return (
@@ -88,7 +88,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
         className={ css('ms-Image', className, { 'ms-Image--maximizeFrame': maximizeFrame }) }
         style={ { width: width, height: height } }
         ref={ this._resolveRef('_frameElement') }
-        >
+      >
         <img
           { ...imageProps }
           onLoad={ this._onImageLoaded }
@@ -111,7 +111,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
           src={ src }
           alt={ alt }
           role={ role }
-          />
+        />
       </div>
     );
   }

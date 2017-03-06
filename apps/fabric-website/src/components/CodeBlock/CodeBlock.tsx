@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css } from '../../utilities/css';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 import styles from './CodeBlock.module.scss';
 
 const Highlight = require('react-highlight');
@@ -59,11 +59,11 @@ export class CodeBlock extends React.Component<ICodeBlockProps, ICodeBlockState>
 
     return (
       <div className={ css(
-          styles.codeBlock,
-          isCollapsible ? styles.isCollapsible : '',
-          isOpen ? styles.isOpen : '',
-          isLightTheme ? styles.isLightTheme : styles.isDarkTheme
-        ) }>
+        styles.codeBlock,
+        isCollapsible ? styles.isCollapsible : '',
+        isOpen ? styles.isOpen : '',
+        isLightTheme ? styles.isLightTheme : styles.isDarkTheme
+      ) }>
         { toggleButton }
         <div className={ styles.code }>
           <Highlight className={ language }>
