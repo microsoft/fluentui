@@ -332,7 +332,7 @@ describe('TextField', () => {
       <TextField
         defaultValue='initial value'
         onChanged={ onChangedSpy }
-        onGetErrorMessage={ value => value.length > 0 ? "" : "error" }
+        onGetErrorMessage={ value => value.length > 0 ? '' : 'error' }
       />
     );
 

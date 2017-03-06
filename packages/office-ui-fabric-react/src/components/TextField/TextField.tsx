@@ -291,7 +291,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       errorMessage: ''
     } as ITextFieldState,
       () => {
-        this._adjustInputHeight;
+        this._adjustInputHeight();
+
         if (this.props.onChanged) {
           this.props.onChanged(value);
         }
