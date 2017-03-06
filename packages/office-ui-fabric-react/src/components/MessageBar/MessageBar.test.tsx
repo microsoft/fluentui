@@ -10,7 +10,10 @@ import { MessageBar } from './MessageBar';
 import { MessageBarType } from './MessageBar.Props';
 
 describe('MessageBar', () => {
-  var noop = () => { };
+  let noop = () => {
+    /* no-op */
+  };
+
   function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
     const component = ReactTestUtils.renderIntoDocument(element);
     const renderedDOM: Element = ReactDOM.findDOMNode(component as React.ReactInstance);
