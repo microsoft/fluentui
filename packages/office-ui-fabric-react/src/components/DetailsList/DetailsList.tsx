@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  BaseComponent,
   EventGroup,
   KeyCodes,
   assign,
@@ -52,7 +53,7 @@ const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
 const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
 
 @withViewport
-export class DetailsList extends React.Component<IDetailsListProps, IDetailsListState> implements IDetailsList {
+export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListState> implements IDetailsList {
   public static defaultProps = {
     layoutMode: DetailsListLayoutMode.justified,
     selectionMode: SelectionMode.multiple,
@@ -71,7 +72,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     selectionZone: SelectionZone
   };
 
-  private _events: EventGroup;
   private _selection: ISelection;
   private _activeRows: { [key: string]: DetailsRow };
   private _dragDropHelper: DragDropHelper;
@@ -108,7 +108,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       isSomeGroupExpanded: props.groupProps && !props.groupProps.isAllGroupsCollapsed
     };
 
-    this._events = new EventGroup(this);
     this._selection = props.selection || new Selection({ onSelectionChanged: null, getKey: props.getKey });
     this._selection.setItems(props.items as IObjectWithKey[], false);
     this._dragDropHelper = props.dragDropEvents ? new DragDropHelper({ selection: this._selection }) : null;
@@ -116,7 +115,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   }
 
   public componentWillUnmount() {
-    this._events.dispose();
     if (this._dragDropHelper) {
       this._dragDropHelper.dispose();
     }
@@ -421,7 +419,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       if (this.refs.selectionZone) {
         this.refs.selectionZone.ignoreNextFocus();
       }
-      row.focus();
+      this._async.setTimeout(() => row.focus(), 0);
 
       delete this._initialFocusedIndex;
     }
