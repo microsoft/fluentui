@@ -185,7 +185,7 @@ describe('Facepile', () => {
       expect(buttons).to.have.length(2, 'Only two personas should be rendered');
     });
 
-    xit('renders no more than maximum allowed width', () => {
+    it('renders no more than maximum allowed width', () => {
       const wrapper = mount(
         <div style={ { 'width': '100px' } }>
           <Facepile
