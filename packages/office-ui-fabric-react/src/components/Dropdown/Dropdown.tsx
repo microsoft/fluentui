@@ -79,7 +79,14 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   // Primary Render
   public render() {
     let id = this._id;
-    let { className, label, options, disabled, isDisabled, ariaLabel, required,
+    let {
+      className,
+      label,
+      options,
+      disabled,
+      isDisabled,
+      ariaLabel,
+      required,
       onRenderTitle = this._onRenderTitle,
       onRenderContainer = this._onRenderContainer
     } = this.props;
@@ -94,7 +101,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     return (
       <div ref='root'>
         { label && (
-          <Label id={ id + '-label' } ref={ (dropdownLabel) => this._dropdownLabel = dropdownLabel } required={required}>{ label }</Label>
+          <Label id={ id + '-label' } ref={ this._resolveRef('_dropdownLabel') } required={ required }>{ label }</Label>
         ) }
         <div
           data-is-focusable={ !disabled }
