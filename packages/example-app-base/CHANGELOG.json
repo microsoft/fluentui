@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "1.0.3",
+      "tag": "@uifabric/example-app-base_v1.0.3",
+      "date": "Mon, 27 Feb 2017 21:45:53 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "27d7fd036429d1c1bb0847eedae00d115c31b31e",
+            "comment": "Removing fabric-core from peer deps"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.0.2",
       "tag": "@uifabric/example-app-base_v1.0.2",
       "date": "Mon, 13 Feb 2017 08:15:53 GMT",

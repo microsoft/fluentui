@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css } from '../../utilities/css';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 import styles from './Interstitials.module.scss';
 
 export class AngularJSPage extends React.Component<any, any> {

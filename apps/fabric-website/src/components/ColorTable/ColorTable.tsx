@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css } from '../../utilities/css';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 import styles from './ColorTable.module.scss';
 
 export interface IColorTableProps {
@@ -26,7 +26,7 @@ export class ColorTable extends React.Component<IColorTableProps, IColorTableSta
         </thead>
         <tbody>
           { content.map((row, rowIndex) => (
-            <tr className={ css( ('ms-bgColor-' + row.name), row.labelColorClass ) } key={ rowIndex }>
+            <tr className={ css(('ms-bgColor-' + row.name), row.labelColorClass) } key={ rowIndex }>
               <td>{ row.name }</td>
               <td>{ row.value }</td>
             </tr>

@@ -1,9 +1,10 @@
 import * as React from 'react';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 import styles from './Nav.module.scss';
 import {
   INavProps,
-  INavPage } from './Nav.Props';
-import { css } from '../../utilities/css';
+  INavPage
+} from './Nav.Props';
 
 export interface INavState {
 }
@@ -49,7 +50,7 @@ export class Nav extends React.Component<INavProps, INavState> {
           title={ title }
           aria-label={ ariaLabel }
         >
-         { page.title }
+          { page.title }
         </a>
         { childLinks }
       </li>
@@ -60,7 +61,7 @@ export class Nav extends React.Component<INavProps, INavState> {
     const links: React.ReactElement<{}>[] = pages
       .filter(page => !page.hasOwnProperty('isHiddenFromMainNav'))
       .map(
-        (page: INavPage, linkIndex: number) => this._renderLink(page, linkIndex)
+      (page: INavPage, linkIndex: number) => this._renderLink(page, linkIndex)
       );
 
     return (

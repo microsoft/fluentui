@@ -39,7 +39,8 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     deferredValidationTime: 200,
     errorMessage: '',
     validateOnFocusIn: false,
-    validateOnFocusOut: false
+    validateOnFocusOut: false,
+    validateOnLoad: true,
   };
 
   private _id: string;
@@ -48,7 +49,6 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   private _isMounted: boolean;
   private _lastValidation: number;
   private _latestValidateValue;
-  private _willMountTriggerValidation;
   private _isDescriptionAvailable: boolean;
   private _textElement: HTMLInputElement | HTMLTextAreaElement;
 
@@ -70,7 +70,6 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
 
     this._delayedValidate = this._async.debounce(this._validate, this.props.deferredValidationTime);
     this._lastValidation = 0;
-    this._willMountTriggerValidation = false;
     this._isDescriptionAvailable = false;
   }
 
@@ -81,14 +80,13 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     return this.state.value;
   }
 
-  public componentWillMount() {
-    this._willMountTriggerValidation = true;
-    this._validate(this.state.value);
-  }
-
   public componentDidMount() {
     this._isMounted = true;
     this._adjustInputHeight();
+
+    if (this.props.validateOnLoad) {
+      this._validate(this.state.value);
+    }
   }
 
   public componentWillReceiveProps(newProps: ITextFieldProps) {
@@ -239,15 +237,15 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     return (
       <textarea
         id={ this._id }
+        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
+        aria-invalid={ !!this.state.errorMessage }
+        aria-label={ this.props.ariaLabel }
         { ...textAreaProps }
         ref={ this._resolveRef('_textElement') }
         value={ this.state.value }
         onInput={ this._onInputChange }
-        onChange={ this._onChange }
+        onChange={ this._onInputChange }
         className={ this._textElementClassName }
-        aria-label={ this.props.ariaLabel }
-        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
-        aria-invalid={ !!this.state.errorMessage }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
       />
@@ -261,15 +259,15 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       <input
         type={ 'text' }
         id={ this._id }
+        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
+        aria-label={ this.props.ariaLabel }
+        aria-invalid={ !!this.state.errorMessage }
         { ...inputProps }
         ref={ this._resolveRef('_textElement') }
         value={ this.state.value }
         onInput={ this._onInputChange }
-        onChange={ this._onChange }
+        onChange={ this._onInputChange }
         className={ this._textElementClassName }
-        aria-label={ this.props.ariaLabel }
-        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
-        aria-invalid={ !!this.state.errorMessage }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
       />
@@ -279,12 +277,21 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   private _onInputChange(event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
+    if (value === this.state.value) {
+      return;
+    }
 
     this.setState({
       value: value,
       errorMessage: ''
-    } as ITextFieldState, this._adjustInputHeight);
-    this._willMountTriggerValidation = false;
+    } as ITextFieldState,
+      () => {
+        this._adjustInputHeight();
+        if (this.props.onChanged) {
+          this.props.onChanged(value);
+        }
+      });
+
     const { validateOnFocusIn, validateOnFocusOut } = this.props;
     if (!(validateOnFocusIn || validateOnFocusOut)) {
       this._delayedValidate(value);
@@ -326,15 +333,10 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   }
 
   private _notifyAfterValidate(value: string, errorMessage: string): void {
-    if (!this._willMountTriggerValidation && value === this.state.value) {
-      const { onNotifyValidationResult } = this.props;
-      onNotifyValidationResult(errorMessage, value);
-      if (!errorMessage) {
-        const { onChanged } = this.props;
-        onChanged(value);
-      }
-    } else {
-      this._willMountTriggerValidation = false;
+    if (this._isMounted &&
+      value === this.state.value &&
+      this.props.onNotifyValidationResult) {
+      this.props.onNotifyValidationResult(errorMessage, value);
     }
   }
 
@@ -345,15 +347,5 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
       let scrollHeight = textField.scrollHeight + 2; // +2 to avoid vertical scroll bars
       textField.style.height = scrollHeight + 'px';
     }
-  }
-
-  private _onChange(): void {
-    /**
-     * A noop input change handler.
-     * https://github.com/facebook/react/issues/7027.
-     * Using the native onInput handler fixes the issue but onChange
-     * still need to be wired to avoid React console errors
-     * TODO: Check if issue is resolved when React 16 is available.
-     */
   }
 }
