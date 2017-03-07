@@ -44,9 +44,9 @@ describe('ColorPicker', () => {
     ) as ColorPicker;
 
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let alphaSlider = renderedDOM.querySelector(".is-alpha");
-    let alphaTableHeader = renderedDOM.querySelector(".ms-ColorPicker-table > thead > tr > td:nth-child(5)");
-    let alphaTableInput = renderedDOM.querySelector(".ms-ColorPicker-table > tbody> tr > td:nth-child(5)");
+    let alphaSlider = renderedDOM.querySelector('.is-alpha');
+    let alphaTableHeader = renderedDOM.querySelector('.ms-ColorPicker-table > thead > tr > td:nth-child(5)');
+    let alphaTableInput = renderedDOM.querySelector('.ms-ColorPicker-table > tbody> tr > td:nth-child(5)');
 
     expect(alphaSlider).to.be.eq(null);
     expect(alphaTableHeader).to.be.eq(null);
