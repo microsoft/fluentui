@@ -14,18 +14,18 @@
 // This file should be trimmed down or replaced once the DefinitelyTyped files have been fixed.
 import { OutputSettings } from 'resemblejs';
 
-export interface CasperMouse {
+export interface ICasperMouse {
   down(selector: string): void;
   move(selector: string): void;
 }
 
 export type Casper = {
-  mouse: CasperMouse;
-  test: Tester;
-  options: CasperOptions;
+  mouse: ICasperMouse;
+  test: ITester;
+  options: ICasperOptions;
 
   // Properties
-  __utils__: ClientUtils;
+  __utils__: IClientUtils;
 
   // Methods
   back(): Casper;
@@ -33,10 +33,10 @@ export type Casper = {
   bypass(nb: number): any;
   click(selector: string): boolean;
   clickLabel(label: string, tag?: string): boolean;
-  capture(targetFilePath: string, clipRect: ClipRect): Casper;
+  capture(targetFilePath: string, clipRect: IClipRect): Casper;
   captureBase64(format: string): string;
   captureBase64(format: string, area: string): string;
-  captureBase64(format: string, area: ClipRect): string;
+  captureBase64(format: string, area: IClipRect): string;
   captureBase64(format: string, area: any): string;
   captureSelector(targetFile: string, selector: string): Casper;
   clear(): Casper;
@@ -59,18 +59,18 @@ export type Casper = {
   getCurrentUrl(): string;
   getElementAttribute(selector: string, attribute: string): string;
   getElementsAttribute(selector: string, attribute: string): string;
-  getElementBounds(selector: string): ElementBounds;
-  getElementsBounds(selector: string): ElementBounds[];
-  getElementInfo(selector: string): ElementInfo;
-  getElementsInfo(selector: string): ElementInfo;
+  getElementBounds(selector: string): IElementBounds;
+  getElementsBounds(selector: string): IElementBounds[];
+  getElementInfo(selector: string): IElementInfo;
+  getElementsInfo(selector: string): IElementInfo;
   getFormValues(selector: string): any;
   getGlobal(name: string): any;
   getHTML(selector?: string, outer?: boolean): string;
   getPageContent(): string;
   getTitle(): string;
   mouseEvent(type: string, selector: string): boolean;
-  open(location: string, settings: OpenSettings): Casper;
-  reload(then?: (response: HttpResponse) => void): Casper;
+  open(location: string, settings: IOpenSettings): Casper;
+  reload(then?: (response: IHttpResponse) => void): Casper;
   repeat(times: number, then: Function): Casper;
   resourceExists(test: Function): boolean;
   resourceExists(test: string): boolean;
@@ -79,7 +79,7 @@ export type Casper = {
   scrollToBottom(): Casper;
   sendKeys(selector: string, keys: string, options?: any): Casper;
   setHttpAuth(username: string, password: string): Casper;
-  start(url?: string, then?: (response: HttpResponse) => void): Casper;
+  start(url?: string, then?: (response: IHttpResponse) => void): Casper;
   status(asString: boolean): any;
   then(fn: (this: Casper) => void): Casper;
   thenBypass(nb: number): Casper;
@@ -87,8 +87,8 @@ export type Casper = {
   thenBypassUnless(condition: any, nb: number): Casper;
   thenClick(selector: string): Casper;
   thenEvaluate(fn: () => any, ...args: any[]): Casper;
-  thenOpen(location: string, then?: (response: HttpResponse) => void): Casper;
-  thenOpen(location: string, options?: OpenSettings, then?: (response: HttpResponse) => void): Casper;
+  thenOpen(location: string, then?: (response: IHttpResponse) => void): Casper;
+  thenOpen(location: string, options?: IOpenSettings, then?: (response: IHttpResponse) => void): Casper;
   thenOpenAndEvaluate(location: string, then?: Function, ...args: any[]): Casper;
   toString(): string;
   unwait(): Casper;
@@ -117,9 +117,9 @@ export type Casper = {
   zoom(factor: number): Casper;
   removeAllFilters(filter: string): Casper;
   setFilter(filter: string, cb: Function): boolean;
-}
+};
 
-export interface HttpResponse {
+export interface IHttpResponse {
   contentType: string;
   headers: any[];
   id: number;
@@ -131,20 +131,20 @@ export interface HttpResponse {
   url: string;
 }
 
-export interface OpenSettings {
+export interface IOpenSettings {
   method: string;
   data: any;
   headers: any;
 }
 
-export interface ElementBounds {
+export interface IElementBounds {
   top: number;
   left: number;
   width: number;
   height: number;
 }
 
-export interface ElementInfo {
+export interface IElementInfo {
   nodeName: string;
   attributes: any;
   tag: string;
@@ -157,7 +157,7 @@ export interface ElementInfo {
   visible: boolean;
 }
 
-export interface CasperOptions {
+export interface ICasperOptions {
   clientScripts?: any[];
   exitOnError?: boolean;
   httpStatusHandlers?: any;
@@ -173,7 +173,7 @@ export interface CasperOptions {
   onStepTimeout?: Function;
   onTimeout?: Function;
   onWaitTimeout?: Function;
-  page?: WebPage;
+  page?: IWebPage;
   pageSettings?: any;
   remoteScripts?: any[];
   safeLogs?: boolean;
@@ -186,7 +186,7 @@ export interface CasperOptions {
   waitTimeout?: number;
 }
 
-export interface ClientUtils {
+export interface IClientUtils {
   echo(message: string): void;
   encode(contents: string): void;
   exists(selector: string): void;
@@ -207,12 +207,12 @@ export interface ClientUtils {
   visible(selector: string): void;
 }
 
-export interface Colorizer {
+export interface IColorizer {
   colorize(text: string, styleName: string): void;
   format(text: string, style: any): void;
 }
 
-export interface Tester {
+export interface ITester {
   assert(condition: boolean, message?: string): any;
   assertDoesntExist(selector: string, message?: string): any;
   assertElementCount(selctor: string, expected: number, message?: string): any;
@@ -258,8 +258,8 @@ export interface Tester {
   error(message: string): any;
   fail(message: string): any;
   formatMessage(message: string, style: string): any;
-  getFailures(): Cases;
-  getPasses(): Cases;
+  getFailures(): ICases;
+  getPasses(): ICases;
   info(message: string): any;
   pass(message: string): any;
   renderResults(exit: boolean, status: number, save: string): any;
@@ -269,25 +269,25 @@ export interface Tester {
   tearDown(fn: Function): any;
 }
 
-export interface Cases {
+export interface ICases {
   length: number;
-  cases: Case[];
+  cases: ICase[];
 }
 
-export interface Case {
+export interface ICase {
   success: boolean;
   type: string;
   standard: string;
   file: string;
-  values: CaseValues;
+  values: ICaseValues;
 }
 
-export interface CaseValues {
+export interface ICaseValues {
   subject: boolean;
   expected: boolean;
 }
 
-export interface Utils {
+export interface IUtils {
   betterTypeOf(input: any): any;
   dump(value: any): any;
   fileExt(file: string): any;
@@ -316,9 +316,11 @@ export interface Utils {
   unique(array: any[]): any;
 }
 
-export interface PhantomCSS {
-  init(options: PhantomCSSOptions): void;
-  update(options: PhantomCSSOptions): void;
+export interface IPhantomCSS {
+  outputSettings?: OutputSettings;
+
+  init(options: IPhantomCSSOptions): void;
+  update(options: IPhantomCSSOptions): void;
 
   /**
    * Take a screenshot of the targeted HTML element
@@ -330,7 +332,7 @@ export interface PhantomCSS {
    * Take a screenshot of the targeted HTML element
    * FileName is required if addIteratorToImage option is set to false
    */
-  screenshot(target: ClipRect, fileName?: string): void;
+  screenshot(target: IClipRect, fileName?: string): void;
   /**
    * Take a screenshot of the targeted HTML element
    * FileName is required if addIteratorToImage option is set to false
@@ -349,8 +351,8 @@ export interface PhantomCSS {
    * Compare image diffs generated in this test run only
    */
   compareSession(list?: any[]): void;
-  compareFiles(baseFile: string, diffFiles: string): PhantomCSSTest;
-  waitForTests(tests: PhantomCSSTest[]): void;
+  compareFiles(baseFile: string, diffFiles: string): IPhantomCSSTest;
+  waitForTests(tests: IPhantomCSSTest[]): void;
   done(): void;
   /**
    * Turn off CSS transitions and jQuery animations
@@ -361,10 +363,9 @@ export interface PhantomCSS {
    * Get a list of image diffs generated in this test run
    */
   getCreatedDiffFiles(): Array<string>;
-  outputSettings?: OutputSettings;
 }
 
-export interface PhantomCSSTest {
+export interface IPhantomCSSTest {
   filename?: string;
   error?: boolean;
   fail?: boolean;
@@ -373,7 +374,7 @@ export interface PhantomCSSTest {
   mismatch?: any;
 }
 
-export interface PhantomCSSOptions {
+export interface IPhantomCSSOptions {
   /**
       Rebase is useful when you want to create new baseline
       images without manually deleting the files
@@ -423,32 +424,29 @@ export interface PhantomCSSOptions {
    */
   addLabelToFailedImage?: boolean;
   /**
-  * Change the output screenshot filenames for your specific
-  * integration
+  Prefix the screenshot number to the filename, instead of suffixing it
   */
-  fileNameGetter?: (rootPath: string, fileName?: string) => string;
+  prefixCount?: boolean;
 
+  hideElements?: string;
   /**
   Mismatch tolerance defaults to  0.05%. Increasing this value
   will decrease test coverage
   */
   mismatchTolerance?: number;
-
-  onPass?: (test: PhantomCSSTest) => void;
-  onFail?: (test: PhantomCSSTest) => void;
-  onTimeout?: (test: PhantomCSSTest) => void;
-  onComplete?: (tests: PhantomCSSTest[], noOfFails: number, noOfErrors: number) => void;
+  /**
+  * Change the output screenshot filenames for your specific
+  * integration
+  */
+  fileNameGetter?: (rootPath: string, fileName?: string) => string;
+  onPass?: (test: IPhantomCSSTest) => void;
+  onFail?: (test: IPhantomCSSTest) => void;
+  onTimeout?: (test: IPhantomCSSTest) => void;
+  onComplete?: (tests: IPhantomCSSTest[], noOfFails: number, noOfErrors: number) => void;
   /**
   Called when creating new baseline images
   */
-  onNewImage?: (test: PhantomCSSTest) => void;
-
-  /**
- Prefix the screenshot number to the filename, instead of suffixing it
- */
-  prefixCount?: boolean;
-
-  hideElements?: string;
+  onNewImage?: (test: IPhantomCSSTest) => void;
 }
 
 // Type definitions for PhantomJS API 1.9
@@ -458,11 +456,11 @@ export interface PhantomCSSOptions {
 
 // declare function require(module: string): any;
 
-export interface Phantom {
+export interface IPhantom {
 
   // Properties
   args: string[];  // DEPRECATED
-  cookies: Cookie[];
+  cookies: ICookie[];
   cookiesEnabled: boolean;
   libraryPath: string;
   scriptName: string;  // DEPRECATED
@@ -472,18 +470,18 @@ export interface Phantom {
     patch: number;
   };
 
+  // Callbacks
+  onError: (msg: string, trace: string[]) => any;
+
   // Functions
-  addCookie(cookie: Cookie): boolean;
+  addCookie(cookie: ICookie): boolean;
   clearCookies(): void;
   deleteCookie(cookieName: string): boolean;
   exit(returnValue?: any): boolean;
   injectJs(filename: string): boolean;
-
-  // Callbacks
-  onError: (msg: string, trace: string[]) => any;
 }
 
-export interface System {
+export interface ISystem {
   pid: number;
   platform: string;
   os: {
@@ -495,14 +493,14 @@ export interface System {
   args: string[];
 }
 
-export interface WebPage {
+export interface IWebPage {
 
   // Properties
   canGoBack: boolean;
   canGoForward: boolean;
-  clipRect: ClipRect;
+  clipRect: IClipRect;
   content: string;
-  cookies: Cookie[];
+  cookies: ICookie[];
   customHeaders: { [name: string]: string; };
   event: any; // :TODO: elaborate this when documentation improves
   focusedFrameName: string;
@@ -518,20 +516,39 @@ export interface WebPage {
   offlineStoragePath: string;
   offlineStorageQuota: number;
   ownsPages: boolean;
-  pages: WebPage[];
+  pages: IWebPage[];
   pagesWindowName: string;
-  paperSize: PaperSize;
+  paperSize: IPaperSize;
   plainText: string;
-  scrollPosition: TopLeft;
-  settings: WebPageSettings;
+  scrollPosition: ITopLeft;
+  settings: IWebPageSettings;
   title: string;
   url: string;
-  viewportSize: Size;
+  viewportSize: ISize;
   windowName: string;
   zoomFactor: number;
+  onCallback: Function;  // EXPERIMENTAL
+
+  // Callbacks
+  onAlert: (msg: string) => any;
+  onClosing: (closingPage: IWebPage) => any;
+  onConfirm: (msg: string) => boolean;
+  onConsoleMessage: (msg: string, lineNum?: number, sourceId?: string) => any;
+  onError: (msg: string, trace: string[]) => any;
+  onFilePicker: (oldFile: string) => string;
+  onInitialized: () => any;
+  onLoadFinished: (status: string) => any;
+  onLoadStarted: () => any;
+  onNavigationRequested: (url: string, type: string, willNavigate: boolean, main: boolean) => any;
+  onPageCreated: (newPage: IWebPage) => any;
+  onPrompt: (msg: string, defaultVal: string) => string;
+  onResourceError: (resourceError: IResourceError) => any;
+  onResourceReceived: (response: IResourceResponse) => any;
+  onResourceRequested: (requestData: IResourceRequest, networkRequest: INetworkRequest) => any;
+  onUrlChanged: (targetUrl: string) => any;
 
   // Functions
-  addCookie(cookie: Cookie): boolean;
+  addCookie(cookie: ICookie): boolean;
   childFramesCount(): number;  // DEPRECATED
   childFramesName(): string;  // DEPRECATED
   clearCookies(): void;
@@ -541,7 +558,7 @@ export interface WebPage {
   evaluate(fn: Function, ...args: any[]): any;
   evaluateAsync(fn: Function): void;
   evaluateJavaScript(str: string): any; // :TODO: elaborate this when documentation improves
-  getPage(windowName: string): WebPage;
+  getPage(windowName: string): IWebPage;
   go(index: number): void;
   goBack(): void;
   goForward(): void;
@@ -568,47 +585,28 @@ export interface WebPage {
   switchToParentFrame(): void;  // DEPRECATED
   uploadFile(selector: string, filename: string): void;
 
-  // Callbacks
-  onAlert: (msg: string) => any;
-  onCallback: Function;  // EXPERIMENTAL
-  onClosing: (closingPage: WebPage) => any;
-  onConfirm: (msg: string) => boolean;
-  onConsoleMessage: (msg: string, lineNum?: number, sourceId?: string) => any;
-  onError: (msg: string, trace: string[]) => any;
-  onFilePicker: (oldFile: string) => string;
-  onInitialized: () => any;
-  onLoadFinished: (status: string) => any;
-  onLoadStarted: () => any;
-  onNavigationRequested: (url: string, type: string, willNavigate: boolean, main: boolean) => any;
-  onPageCreated: (newPage: WebPage) => any;
-  onPrompt: (msg: string, defaultVal: string) => string;
-  onResourceError: (resourceError: ResourceError) => any;
-  onResourceReceived: (response: ResourceResponse) => any;
-  onResourceRequested: (requestData: ResourceRequest, networkRequest: NetworkRequest) => any;
-  onUrlChanged: (targetUrl: string) => any;
-
   // Callback triggers
-  closing(closingPage: WebPage): void;
+  closing(closingPage: IWebPage): void;
   initialized(): void;
   javaScriptAlertSent(msg: string): void;
   javaScriptConsoleMessageSent(msg: string, lineNum?: number, sourceId?: string): void;
   loadFinished(status: string): void;
   loadStarted(): void;
   navigationRequested(url: string, type: string, willNavigate: boolean, main: boolean): void;
-  rawPageCreated(newPage: WebPage): void;
-  resourceReceived(response: ResourceResponse): void;
-  resourceRequested(requestData: ResourceRequest, networkRequest: NetworkRequest): void;
+  rawPageCreated(newPage: IWebPage): void;
+  resourceReceived(response: IResourceResponse): void;
+  resourceRequested(requestData: IResourceRequest, networkRequest: INetworkRequest): void;
   urlChanged(targetUrl: string): void;
 }
 
-export interface ResourceError {
+export interface IResourceError {
   id: number;
   url: string;
   errorCode: string;
   errorString: string;
 }
 
-export interface ResourceResponse {
+export interface IResourceResponse {
   id: number;
   url: string;
   time: Date;
@@ -621,7 +619,7 @@ export interface ResourceResponse {
   statusText: string;
 }
 
-export interface ResourceRequest {
+export interface IResourceRequest {
   id: number;
   method: string;
   url: string;
@@ -629,13 +627,13 @@ export interface ResourceRequest {
   headers: { [name: string]: string; };
 }
 
-export interface NetworkRequest {
+export interface INetworkRequest {
   abort(): void;
   changeUrl(url: string): void;
   setHeader(name: string, value: string): void;
 }
 
-export interface PaperSize {
+export interface IPaperSize {
   width?: string;
   height?: string;
   border: string;
@@ -643,7 +641,7 @@ export interface PaperSize {
   orientation?: string;
 }
 
-export interface WebPageSettings {
+export interface IWebPageSettings {
   javascriptEnabled: boolean;
   loadImages: boolean;
   localToRemoteUrlAccessEnabled: boolean;
@@ -655,7 +653,7 @@ export interface WebPageSettings {
   resourceTimeout: number;
 }
 
-export interface FileSystem {
+export interface IFileSystem {
 
   // Properties
   separator: string;
@@ -685,8 +683,8 @@ export interface FileSystem {
   copyTree(source: string, destination: string): void;
 
   // File Functions
-  open(path: string, mode: string): Stream;
-  open(path: string, options: { mode: string; charset?: string; }): Stream;
+  open(path: string, mode: string): IStream;
+  open(path: string, options: { mode: string; charset?: string; }): IStream;
   read(path: string): string;
   write(path: string, content: string, mode: string): void;
   size(path: string): number;
@@ -696,7 +694,7 @@ export interface FileSystem {
   touch(path: string): void;
 }
 
-export interface Stream {
+export interface IStream {
   atEnd(): boolean;
   close(): void;
   flush(): void;
@@ -707,14 +705,14 @@ export interface Stream {
   writeLine(data: string): void;
 }
 
-export interface WebServer {
+export interface IWebServer {
   port: number;
-  listen(port: number, cb?: (request: WebServerRequest, response: WebServerResponse) => void): boolean;
-  listen(ipAddressPort: string, cb?: (request: WebServerRequest, response: WebServerResponse) => void): boolean;
+  listen(port: number, cb?: (request: IWebServerRequest, response: IWebServerResponse) => void): boolean;
+  listen(ipAddressPort: string, cb?: (request: IWebServerRequest, response: IWebServerResponse) => void): boolean;
   close(): void;
 }
 
-export interface WebServerRequest {
+export interface IWebServerRequest {
   method: string;
   url: string;
   httpVersion: number;
@@ -723,11 +721,11 @@ export interface WebServerRequest {
   postRaw: string;
 }
 
-export interface WebServerResponse {
+export interface IWebServerResponse {
   headers: { [name: string]: string; };
+  statusCode: number;
   setHeader(name: string, value: string): void;
   header(name: string): string;
-  statusCode: number;
   setEncoding(encoding: string): void;
   write(data: string): void;
   writeHead(statusCode: number, headers?: { [name: string]: string; }): void;
@@ -735,20 +733,20 @@ export interface WebServerResponse {
   closeGracefully(): void;
 }
 
-export interface TopLeft {
+export interface ITopLeft {
   top: number;
   left: number;
 }
 
-export interface Size {
+export interface ISize {
   width: number;
   height: number;
 }
 
-export interface ClipRect extends TopLeft, Size {
+export interface IClipRect extends ITopLeft, ISize {
 }
 
-export interface Cookie {
+export interface ICookie {
   name: string;
   value: string;
   domain?: string;

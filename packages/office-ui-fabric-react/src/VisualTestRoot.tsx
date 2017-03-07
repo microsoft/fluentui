@@ -13,6 +13,8 @@ let currentBreakpoint;
 let scrollDistance;
 let requireContext = require.context('./components', true, /visualtestpage$/);
 
+// This is mostly taken from the react-website project.
+
 function _routerDidMount() {
   if (_hasAnchorLink(window.location.hash)) {
     let hash = _extractAnchorLink(window.location.hash);
@@ -65,7 +67,7 @@ function _getAppRoutes() {
       <Route
         key={ pathIndex }
         path={ '#/' + url }
-        getComponent={ getPath('' + path) } />);
+        getComponent={ getPath(path) } />);
   });
   return routes;
 }
@@ -74,7 +76,6 @@ function getPath(path) {
   return (cb => require.ensure([], () => cb((requireContext(path) as any).default)));
   // return cb => require.ensure([], (require) => cb(require<any>('./components/' + path + '/.visualtestpage').default));
 }
-
 
 function _onUnload() {
   if (rootElement) {

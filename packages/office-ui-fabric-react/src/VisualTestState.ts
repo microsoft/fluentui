@@ -6,4 +6,4 @@ export const VisualTestState: IVisualTestState = {
   componentPath: [
     './Button/Button.visualtestpage'
   ]
-}
+};
