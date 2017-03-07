@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Image } from '../../Image';
-import { Icon, IIconProps } from '../../Icon';
+import { Icon } from '../../Icon';
 import { IChoiceGroupOption, IChoiceGroupProps } from './ChoiceGroup.Props';
 import {
   css,
@@ -85,6 +85,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                 name={ this.props.name || this._id }
                 disabled={ option.isDisabled || option.disabled || this.props.disabled }
                 checked={ option.key === keyChecked }
+                required={ required }
                 onChange={ this._onChange.bind(this, option) }
                 onFocus={ this._onFocus.bind(this, option) }
                 onBlur={ this._onBlur.bind(this, option) }

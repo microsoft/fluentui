@@ -20,6 +20,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
           label='Basic uncontrolled example:'
           id='Basicdrop1'
           ariaLabel='Basic dropdown example'
+          onChanged={ (item) => this.setState({ selectedItem: item }) }
           options={
             [
               { key: 'A', text: 'Option a' },
@@ -73,6 +74,15 @@ export class DropdownBasicExample extends React.Component<any, any> {
       </div>
 
     );
+  }
+
+  public makeList(items) {
+    let list = [];
+    for (let i = 0; i < items; i++) {
+      list.push({ key: i, text: 'Option ' + i });
+    }
+
+    return list;
   }
 
 }

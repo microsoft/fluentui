@@ -5,6 +5,12 @@
 - __Package version(s)__: (fill this out)
 - __Browser and OS versions__: (fill this out if relevant)
 
+#### Priorities and help requested (not applicable if asking question):
+
+Are you willing to submit a PR to fix? (Yes, No)
+
+Requested priority: (Blocking, High, Normal, Low) 
+
 #### Describe the issue:
 
 <!-- fill this out -->

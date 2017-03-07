@@ -1,6 +1,71 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 21 Feb 2017 16:15:42 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Mar 2017 16:09:20 GMT and should not be manually modified.
+
+## 1.14.1
+Fri, 03 Mar 2017 16:09:20 GMT
+
+### Patches
+
+- TextField: fix onchanged trigger issue
+- Assume images are portraits until proven otherwise
+
+## 1.14.0
+Thu, 02 Mar 2017 04:10:04 GMT
+
+### Minor changes
+
+- Pivot: support custom rendering for pivot links
+- Persona: adding a flag to avoid the fade in of images persona thumbnails.
+
+### Patches
+
+- Persona: Make it possible to have pink backgrounds.
+- FocusTrapZone: Fixed a scenario where multiple instances would fight over focus.
+- Dialog: empty aria attributes if no subtext is provided
+
+## 1.13.1
+Wed, 01 Mar 2017 20:31:22 GMT
+
+### Patches
+
+- Persona: previous published version was referring to an old utilities library without the getInitials utility function. Updating to this build will pull the correct utilities version which should fix the build error.
+- Toggle - support for aria attributes, fix button type
+
+## 1.13.0
+Tue, 28 Feb 2017 16:10:27 GMT
+
+### Minor changes
+
+- TextField - Option to supress validation on load
+
+## 1.12.2
+Tue, 28 Feb 2017 04:07:31 GMT
+
+### Patches
+
+- Panel: minor css fix for the close button to ensure it receives clicks correctly.
+- TextField: Fixed IE10 documentation input change behavior
+- Updating Link props so that we can use Object spread syntax
+
+## 1.12.1
+Sat, 25 Feb 2017 04:11:32 GMT
+
+### Patches
+
+- move aria-sort attr of detailsList headerColum to the right place
+- Persona: Improve default manner of abbreviating non-Latin names.
+
+## 1.12.0
+Thu, 23 Feb 2017 04:11:45 GMT
+
+### Minor changes
+
+- Dropdown: Updated dropdown component to be composed of several onRender functions, and  for render container to use panel under medium breakpoint
+
+### Patches
+
+- TextField - Allow aria attributes override
 
 ## 1.11.0
 Tue, 21 Feb 2017 16:15:42 GMT
