@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css } from '../../utilities/css';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import styles from './Overviews.module.scss';
 

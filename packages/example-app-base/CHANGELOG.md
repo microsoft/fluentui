@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 13 Feb 2017 08:15:53 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Feb 2017 21:45:53 GMT and should not be manually modified.
+
+## 1.0.3
+Mon, 27 Feb 2017 21:45:53 GMT
+
+### Patches
+
+- Removing fabric-core from peer deps
 
 ## 1.0.2
 Mon, 13 Feb 2017 08:15:53 GMT

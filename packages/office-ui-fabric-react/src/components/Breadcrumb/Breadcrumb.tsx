@@ -114,16 +114,20 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
 
   private _renderItem(item: IBreadcrumbItem) {
     if (item.onClick || item.href) {
-      return <Link
-        className='ms-Breadcrumb-itemLink'
-        href={ item.href }
-        onClick={ this._onBreadcrumbClicked.bind(this, item) }>
-        { item.text }
-      </Link>
+      return (
+        <Link
+          className='ms-Breadcrumb-itemLink'
+          href={ item.href }
+          onClick={ this._onBreadcrumbClicked.bind(this, item) }>
+          { item.text }
+        </Link>
+      );
     } else {
-      return (<span className='ms-Breadcrumb-item'>
-        { item.text }
-      </span>);
+      return (
+        <span className='ms-Breadcrumb-item'>
+          { item.text }
+        </span>
+      );
     }
   }
 
