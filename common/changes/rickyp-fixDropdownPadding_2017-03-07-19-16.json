@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Fixed Label for Dropdowns so that it aligns with DatePicker and TextField",
+      "type": "patch"
+    }
+  ],
+  "email": "rickyp@microsoft.com"
+}
