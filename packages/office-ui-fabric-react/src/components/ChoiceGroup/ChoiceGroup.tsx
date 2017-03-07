@@ -62,7 +62,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
           aria-labelledby={ this.props.label ? this._id + '-label' : '' }
         >
           <div className='ms-ChoiceFieldGroup-title'>
-            { this.props.label ? <Label id={ this._id + '-label' } required={required}>{ label }</Label> : null }
+            { this.props.label ? <Label id={ this._id + '-label' } required={ required }>{ label }</Label> : null }
           </div>
 
           { options.map((option) => (

@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "ChoiceGroup: Adding use of Label component.",
+      "type": "patch"
+    }
+  ],
+  "email": "ihor3000@gmail.com"
+}
