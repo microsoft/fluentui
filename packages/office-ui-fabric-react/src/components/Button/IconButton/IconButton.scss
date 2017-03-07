@@ -9,7 +9,7 @@
 @import '../ButtonCore/ButtonCore';
 @import '../ButtonCore/ButtonCoreVars';
 
-$button-iconButtonSize: 40px;
+$button-iconButtonSize: $button-core-default-height;
 
 .root {
   @include button-core-root-styles;

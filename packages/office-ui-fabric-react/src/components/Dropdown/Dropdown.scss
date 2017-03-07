@@ -178,13 +178,14 @@ $DropDown-item-height: 36px;
   cursor: pointer;
   display: block;
   width: 100%;
-  height: 36px;
+  height: auto;
   min-height: $DropDown-item-height;
   line-height: 20px;
   padding: 5px 16px;
   position: relative;
   border: 1px solid transparent;
   word-wrap: break-word;
+  text-align: left;
 
   @media screen and (-ms-high-contrast: active) {
     border-color: $ms-color-black;
