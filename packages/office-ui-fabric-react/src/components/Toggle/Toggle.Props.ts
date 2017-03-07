@@ -1,9 +1,9 @@
 import * as React from 'react';
-
+import { Toggle } from './Toggle';
 /**
  * Toggle component props.
  */
-export interface IToggleProps extends React.HTMLProps<HTMLInputElement> {
+export interface IToggleProps extends React.HTMLProps<HTMLInputElement | Toggle> {
   /**
    * A label for the toggle.
    */

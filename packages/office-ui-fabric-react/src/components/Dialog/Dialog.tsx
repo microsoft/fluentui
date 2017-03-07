@@ -113,8 +113,8 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
         <Layer onLayerDidMount={ onLayerMounted || onLayerDidMount }>
           <Popup
             role={ isBlocking ? 'alertdialog' : 'dialog' }
-            ariaLabelledBy={ title ? id + '-title' : '' }
-            ariaDescribedBy={ subText ? id + '-subText' : '' }
+            ariaLabelledBy={ title && id + '-title' }
+            ariaDescribedBy={ subText && id + '-subText' }
             onDismiss={ onDismiss }
           >
             <div

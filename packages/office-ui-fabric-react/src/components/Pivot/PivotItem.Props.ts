@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { IRenderFunction } from '../../Utilities';
 
 export interface IPivotItemProps extends React.HTMLProps<HTMLDivElement> {
   /**
@@ -31,4 +32,9 @@ export interface IPivotItemProps extends React.HTMLProps<HTMLDivElement> {
    * An optional icon to show next to the pivot link.
    */
   itemIcon?: string;
+
+  /**
+   * Optional custom renderer for the pivot item link
+   */
+  onRenderItemLink?: IRenderFunction<IPivotItemProps>;
 }
