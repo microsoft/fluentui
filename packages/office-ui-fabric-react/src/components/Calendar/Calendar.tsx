@@ -8,10 +8,11 @@ import { CalendarDay } from './CalendarDay';
 import { CalendarMonth } from './CalendarMonth';
 import {
   autobind,
+  css,
   BaseComponent,
   KeyCodes
 } from '../../Utilities';
-import './Calendar.scss';
+import styles from './Calendar.scss';
 
 export interface ICalendarState {
   /** The currently focused date in the calendar, but not necessarily selected */
@@ -73,11 +74,18 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     let { selectedDate, navigatedDate } = this.state;
 
     return (
-      <div className={ rootClass } ref='root'>
-        <div className={ 'ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused ' + (this.props.isMonthPickerVisible ? 'is-monthPickerVisible' : '') } >
-          <div className='ms-DatePicker-holder' onKeyDown={ this._onDatePickerPopupKeyDown }>
-            <div className='ms-DatePicker-frame'>
-              <div className='ms-DatePicker-wrap'>
+      <div className={ css(rootClass, styles.root) } ref='root'>
+        <div className={ css(
+          'ms-DatePicker-picker ms-DatePicker-picker--opened ms-DatePicker-picker--focused ',
+          styles.picker,
+          styles.pickerOpened,
+          styles.pickerFocused,
+          this.props.onDismiss && 'is-monthPickerVisible',
+          this.props.onDismiss && styles.isMonthPickerVisible
+        ) } >
+          <div className={ css('ms-DatePicker-holder', styles.holder) } onKeyDown={ this._onDatePickerPopupKeyDown }>
+            <div className={ css('ms-DatePicker-frame', styles.frame) }>
+              <div className={ css('ms-DatePicker-wrap', styles.wrap) }>
                 <CalendarDay
                   selectedDate={ selectedDate }
                   navigatedDate={ navigatedDate }
@@ -91,7 +99,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   strings={ strings }
                   onNavigateDate={ this._onNavigateDate } />
                 <span
-                  className='ms-DatePicker-goToday js-goToday'
+                  className={ css('ms-DatePicker-goToday js-goToday', styles.goToday) }
                   onClick={ this._onGotoToday }
                   onKeyDown={ this._onGotoTodayKeyDown }
                   tabIndex={ 0 }>

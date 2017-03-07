@@ -10,6 +10,7 @@ import {
 import { DayOfWeek, ICalendarStrings } from './Calendar.Props';
 import { FocusZone } from '../../FocusZone';
 import { addDays, addWeeks, addMonths, compareDates } from '../../utilities/dateMath/DateMath';
+import styles from './Calendar.scss';
 
 const DAYS_IN_WEEK = 7;
 
@@ -68,36 +69,47 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     weeks.map((week, index) => week.map(day => selectDayCallbacks[day.key] = onSelectDate.bind(this, day.originalDate)));
 
     return (
-      <div className='ms-DatePicker-dayPicker'>
-        <div className='ms-DatePicker-header'>
-          <div className='ms-DatePicker-month'>{ strings.months[navigatedDate.getMonth()] }</div>
-          <div className='ms-DatePicker-year'>{ navigatedDate.getFullYear() }</div>
+      <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) }>
+        <div className={ css('ms-DatePicker-header', styles.header) }>
+          <div className={ css('ms-DatePicker-month', styles.month) }>{ strings.months[navigatedDate.getMonth()] }</div>
+          <div className={ css('ms-DatePicker-year', styles.year) }>{ navigatedDate.getFullYear() }</div>
         </div>
-        <div className='ms-DatePicker-monthComponents'>
-          <div className='ms-DatePicker-navContainer'>
+        <div className={ css('ms-DatePicker-monthComponents', styles.monthComponents) }>
+          <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
             <span
-              className='ms-DatePicker-prevMonth js-prevMonth'
+              className={ css('ms-DatePicker-prevMonth js-prevMonth', styles.prevMonth) }
               onClick={ this._onSelectPrevMonth }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectPrevMonth) }
               tabIndex={ 0 }>
               <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': !getRTL(), 'ms-Icon--ChevronRight': getRTL() }) } />
-            </span>
+            </span >
             <span
-              className='ms-DatePicker-nextMonth js-nextMonth'
+              className={ css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth) }
               onClick={ this._onSelectNextMonth }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectNextMonth) }
               tabIndex={ 0 }>
               <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': getRTL(), 'ms-Icon--ChevronRight': !getRTL() }) } />
-            </span>
-          </div>
-          <div className='ms-DatePicker-headerToggleView js-showMonthPicker'></div>
-        </div>
+            </span >
+          </div >
+          <div className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) } />
+        </div >
         <FocusZone>
-          <table className='ms-DatePicker-table' role='grid' aria-readonly='true' aria-multiselectable='false' aria-activedescendant={ activeDescendantId }>
+          <table
+            className={ css('ms-DatePicker-table', styles.table) }
+            role='grid'
+            aria-readonly='true'
+            aria-multiselectable='false'
+            aria-activedescendant={ activeDescendantId }
+          >
             <thead>
               <tr>
                 { strings.shortDays.map((val, index) =>
-                  <th className='ms-DatePicker-weekday' scope='col' key={ index } title={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }>
+                  <th
+                    className={ css('ms-DatePicker-weekday', styles.weekday) }
+                    scope='col'
+                    key={ index }
+                    title={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
+                  >
                     { strings.shortDays[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
                   </th>) }
               </tr>
@@ -108,12 +120,19 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                   { week.map((day, dayIndex) =>
                     <td role='presentation' key={ day.key }>
                       <div
-                        className={ css('ms-DatePicker-day', {
-                          'ms-DatePicker-day--infocus': day.isInMonth,
-                          'ms-DatePicker-day--outfocus': !day.isInMonth,
-                          'ms-DatePicker-day--today': day.isToday,
-                          'ms-DatePicker-day--highlighted': day.isSelected
-                        }) }
+                        className={ css(
+                          'ms-DatePicker-day',
+                          styles.day,
+                          day.isInMonth && styles.dayInfocus,
+                          !day.isInMonth && styles.dayOutfocus,
+                          day.isToday && styles.dayToday,
+                          day.isSelected && styles.dayHighlighted,
+                          {
+                            'ms-DatePicker-day--infocus': day.isInMonth,
+                            'ms-DatePicker-day--outfocus': !day.isInMonth,
+                            'ms-DatePicker-day--today': day.isToday,
+                            'ms-DatePicker-day--highlighted': day.isSelected
+                          }) }
                         role='gridcell'
                         onClick={ selectDayCallbacks[day.key] }
                         onKeyDown={ (ev: React.KeyboardEvent<HTMLElement>) =>
@@ -132,7 +151,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             </tbody>
           </table>
         </FocusZone>
-      </div>
+      </div >
     );
   }
 
