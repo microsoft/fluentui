@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 02 Mar 2017 04:10:04 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Mar 2017 16:09:20 GMT and should not be manually modified.
+
+## 1.14.1
+Fri, 03 Mar 2017 16:09:20 GMT
+
+### Patches
+
+- TextField: fix onchanged trigger issue
+- Assume images are portraits until proven otherwise
 
 ## 1.14.0
 Thu, 02 Mar 2017 04:10:04 GMT

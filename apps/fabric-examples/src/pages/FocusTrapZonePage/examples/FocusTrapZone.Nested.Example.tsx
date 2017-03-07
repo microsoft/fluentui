@@ -2,6 +2,8 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
+/* tslint:disable:no-string-literal */
+
 import * as ReactDOM from 'react-dom';
 import { Button } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
@@ -27,7 +29,7 @@ class FocusTrapComponent extends React.Component<IFocusTrapComponentProps, IFocu
     toggle: HTMLElement;
   };
 
-  render() {
+  public render() {
     let contents = (
       <div className='ms-FocusTrapComponent'>
         <Button onClick={ this._onStringButtonClicked } >
@@ -50,10 +52,10 @@ class FocusTrapComponent extends React.Component<IFocusTrapComponentProps, IFocu
 
     if (this.props.isActive) {
       return (
-        <FocusTrapZone forceFocusInsideTrap={false}>
-        {
-          contents
-        }
+        <FocusTrapZone forceFocusInsideTrap={ false }>
+          {
+            contents
+          }
         </FocusTrapZone>
       );
     }
@@ -73,7 +75,9 @@ class FocusTrapComponent extends React.Component<IFocusTrapComponentProps, IFocu
 }
 
 export interface IFocusTrapZoneNestedExampleState {
-  stateMap: any;
+  stateMap: {
+    [key: string]: boolean;
+  };
 }
 
 const NAMES: string[] = ['One', 'Two', 'Three', 'Four', 'Five'];
@@ -89,17 +93,16 @@ export default class FocusTrapZoneNestedExample extends React.Component<React.HT
   }
 
   public render() {
+    let { stateMap } = this.state;
+
     return (
       <div>
-        <FocusTrapComponent name={ 'One' } isActive={ !!this.state.stateMap['One']} setIsActive={ this._setIsActive } >
-          <FocusTrapComponent name={ 'Two' } isActive={ !!this.state.stateMap['Two']} setIsActive={ this._setIsActive } >
-            <FocusTrapComponent name={ 'Three' } isActive={ !!this.state.stateMap['Three']} setIsActive={ this._setIsActive } >
-            </FocusTrapComponent>
-            <FocusTrapComponent name={ 'Four' } isActive={ !!this.state.stateMap['Four']} setIsActive={ this._setIsActive } >
-            </FocusTrapComponent>
+        <FocusTrapComponent name={ 'One' } isActive={ !!stateMap['One'] } setIsActive={ this._setIsActive } >
+          <FocusTrapComponent name={ 'Two' } isActive={ !!stateMap['Two'] } setIsActive={ this._setIsActive } >
+            <FocusTrapComponent name={ 'Three' } isActive={ !!stateMap['Three'] } setIsActive={ this._setIsActive } />
+            <FocusTrapComponent name={ 'Four' } isActive={ !!stateMap['Four'] } setIsActive={ this._setIsActive } />
           </FocusTrapComponent>
-          <FocusTrapComponent name={ 'Five' } isActive={ !!this.state.stateMap['Five']} setIsActive={ this._setIsActive } >
-          </FocusTrapComponent>
+          <FocusTrapComponent name={ 'Five' } isActive={ !!stateMap['Five'] } setIsActive={ this._setIsActive } />
         </FocusTrapComponent>
         <Button onClick={ this._randomize }>Randomize</Button>
       </div>
@@ -114,13 +117,11 @@ export default class FocusTrapZoneNestedExample extends React.Component<React.HT
 
   @autobind
   private _randomize(): void {
-    for (let i in NAMES) {
-      let newVal: boolean = Math.random() < .5 ? false : true;
-      this.state.stateMap[NAMES[i]] = newVal;
-    }
+    NAMES.forEach((name) => {
+      this.state.stateMap[name] = Math.random() >= .5;
+    });
+
     this.forceUpdate();
   }
 
 }
-
-
