@@ -3,6 +3,7 @@ import { IDropdownProps, IDropdownOption } from './Dropdown.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
 import { BaseButton } from '../../Button';
+import { Label } from '../../Label';
 import { List } from '../../List';
 import { Panel } from '../../Panel';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -45,7 +46,6 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
   private _focusZone: FocusZone;
   private _dropDown: HTMLDivElement;
-  private _dropdownLabel: HTMLElement;
   private _id: string;
 
   constructor(props?: IDropdownProps) {
@@ -92,9 +92,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
     return (
       <div ref='root'>
-        { label && (
-          <label id={ id + '-label' } className='ms-Label' ref={ (dropdownLabel) => this._dropdownLabel = dropdownLabel } >{ label }</label>
-        ) }
+        { label && (<Label htmlFor={ id }>{ label }</Label>) }
         <div
           data-is-focusable={ !disabled }
           ref={ (c): HTMLElement => this._dropDown = c }
