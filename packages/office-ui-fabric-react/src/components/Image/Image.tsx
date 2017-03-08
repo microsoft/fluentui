@@ -42,7 +42,10 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
 
   private static _svgRegex = /\.svg$/i;
 
-  private _coverStyle: CoverStyle;
+  // Make an initial assumption about the image layout until we can
+  // check the rendered element. The value here only takes effect when
+  // shouldStartVisible is true.
+  private _coverStyle: CoverStyle = CoverStyle.portrait;
   private _imageElement: HTMLImageElement;
   private _frameElement: HTMLDivElement;
 
@@ -77,7 +80,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
     let { src, alt, width, height, shouldFadeIn, className, imageFit, role, maximizeFrame} = this.props;
     let { loadState } = this.state;
     let coverStyle = this._coverStyle;
-    let loaded = loadState === ImageLoadState.loaded;
+    let loaded = loadState === ImageLoadState.loaded || (loadState === ImageLoadState.notLoaded && this.props.shouldStartVisible);
 
     // If image dimensions aren't specified, the natural size of the image is used.
     return (
@@ -85,7 +88,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
         className={ css('ms-Image', className, { 'ms-Image--maximizeFrame': maximizeFrame }) }
         style={ { width: width, height: height } }
         ref={ this._resolveRef('_frameElement') }
-        >
+      >
         <img
           { ...imageProps }
           onLoad={ this._onImageLoaded }
@@ -93,7 +96,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
           key={ KEY_PREFIX + this.props.src || '' }
           className={
             css('ms-Image-image',
-              (coverStyle !== undefined) && CoverStyleMap[coverStyle],
+              CoverStyleMap[coverStyle],
               (imageFit !== undefined) && ImageFitMap[imageFit], {
                 'is-fadeIn': shouldFadeIn,
                 'is-notLoaded': !loaded,
@@ -108,7 +111,7 @@ export class Image extends BaseComponent<IImageProps, IImageState> {
           src={ src }
           alt={ alt }
           role={ role }
-          />
+        />
       </div>
     );
   }

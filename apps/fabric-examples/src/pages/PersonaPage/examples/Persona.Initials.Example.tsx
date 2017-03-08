@@ -29,6 +29,18 @@ export class PersonaInitialsExample extends React.Component<any, any> {
           primaryText='Annie Lindqvist'
         />
         <Persona
+          { ...examplePersona  }
+          primaryText='宋智洋'
+        />
+        <Persona
+          { ...examplePersona  }
+          primaryText='남궁 성종'
+        />
+        <Persona
+          { ...examplePersona  }
+          primaryText='خسرو رحیمی'
+        />
+        <Persona
           { ...personaWithInitials  }
           initialsColor={ PersonaInitialsColor.lightBlue }
         />
