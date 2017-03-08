@@ -10,7 +10,6 @@ import {
   KeyCodes
 } from '../../Utilities';
 import './SearchBox.scss';
-import styles from './SearchBox.scss';
 
 export interface ISearchBoxState {
   value?: string;
@@ -52,30 +51,31 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   public render() {
     let { labelText, className } = this.props;
     let { value, hasFocus, id } = this.state;
+
     return (
       <div
         ref={ this._resolveRef('_rootElement') }
-        className={ css('ms-SearchBox', className, styles.root, {
-          ['is-active ' + styles.rootIsActive]: hasFocus,
-          ['can-clear ' + styles.rootCanClear]: value.length > 0,
+        className={ css('ms-SearchBox', className, {
+          'is-active': hasFocus,
+          'can-clear': value.length > 0
         }) }
         { ...{ onFocusCapture: this._onFocusCapture } }
-      >
-        <i className={ css('ms-SearchBox-icon', 'ms-Icon', 'ms-Icon--Search', styles.icon) }></i>
+        >
+        <i className='ms-SearchBox-icon ms-Icon ms-Icon--Search'></i>
         <input
           id={ id }
-          className={ css('ms-SearchBox-field', styles.field) }
+          className='ms-SearchBox-field'
           placeholder={ labelText }
           onChange={ this._onInputChange }
           onKeyDown={ this._onKeyDown }
           value={ value }
           ref={ this._resolveRef('_inputElement') }
-        />
+          />
         <div
-          className={ css('ms-SearchBox-clearButton', styles.clearButton) }
+          className='ms-SearchBox-clearButton'
           onClick={ this._onClearClick }
-        >
-          <i className={ css('ms-Icon', 'ms-Icon--Clear') } />
+          >
+          <i className='ms-Icon ms-Icon--Clear' />
         </div>
       </div>
     );
