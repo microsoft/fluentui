@@ -4,21 +4,30 @@
 let webpackTaskResources = require('@microsoft/web-library-build').webpack.resources;
 let webpack = webpackTaskResources.webpack;
 let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
+let isProduction = process.argv.indexOf('--production') > -1;
 let path = require('path');
+
+let publicPath = 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/';
+
+if (!isProduction) {
+  publicPath = "/dist/";
+}
 
 // Create an array of configs, prepopulated with a debug (non-minified) build.
 let configs = [
-  createConfig(false)
+  createConfig(false, publicPath)
 ];
 
 // Create a production config if applicable.
-if (process.argv.indexOf('--production') > -1) {
-  configs.push(createConfig(true));
+if (isProduction) {
+  configs.push(createConfig(true, publicPath));
 }
 
+
 // Helper to create the config.
-function createConfig(isProduction) {
+function createConfig(isProduction, publicPath) {
+  let today = new Date();
+  let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
   let minFileNamePart = isProduction ? '.min' : '';
   let webpackConfig = {
     context: path.join(__dirname, '/lib'),
@@ -29,9 +38,9 @@ function createConfig(isProduction) {
 
     output: {
       path: path.join(__dirname, '/dist'),
-      publicPath: 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/',
-      filename: `[name]${minFileNamePart}.js`,
-      chunkFilename: `fabric-site-[name]${minFileNamePart}.js`
+      publicPath: publicPath,
+      filename: `[name]${minFileNamePart}.js?date=` + date,
+      chunkFilename: `fabric-site-[name]${minFileNamePart}.js?date=` + date
     },
 
     //devtool: 'source-map',
