@@ -229,6 +229,7 @@ $ms-Persona-presenceSizeXl: 28px;
 .details {
   @include padding(0, 24px, 0, 12px);
   min-width: 0;
+  width: 100%;
   @include text-align(left);
 }
 
