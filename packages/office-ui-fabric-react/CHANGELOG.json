@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "1.14.2",
+      "tag": "office-ui-fabric-react_v1.14.2",
+      "date": "Wed, 08 Mar 2017 04:07:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "02dcdaa8ca512738ff79d362e6a47988f53f7ef0",
+            "comment": "Updated facepile button to use BaseButton so it inherits all the base button styles"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.14.1",
       "tag": "office-ui-fabric-react_v1.14.1",
       "date": "Fri, 03 Mar 2017 16:09:20 GMT",

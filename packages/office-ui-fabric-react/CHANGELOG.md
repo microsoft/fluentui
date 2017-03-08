@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 03 Mar 2017 16:09:20 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Mar 2017 04:07:13 GMT and should not be manually modified.
+
+## 1.14.2
+Wed, 08 Mar 2017 04:07:13 GMT
+
+### Patches
+
+- Updated facepile button to use BaseButton so it inherits all the base button styles
 
 ## 1.14.1
 Fri, 03 Mar 2017 16:09:20 GMT
