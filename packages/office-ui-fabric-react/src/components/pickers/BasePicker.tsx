@@ -263,7 +263,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     let value = this.input.value;
-    const isShiftPressed = ev.shiftKey;
 
     switch (ev.which) {
       case KeyCodes.escape:
@@ -275,11 +274,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         break;
 
       case KeyCodes.tab:
-        if (isShiftPressed) {
-          break;
-        }
       case KeyCodes.enter:
-        if (value && this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible) {
+        if (!ev.shiftKey && value && this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible) {
           this.completeSuggestion();
           ev.preventDefault();
           ev.stopPropagation();
