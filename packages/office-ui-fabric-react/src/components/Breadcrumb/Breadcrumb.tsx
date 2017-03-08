@@ -86,7 +86,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
             { renderedItems.map(
               (item, index) => (
                 <li className='ms-Breadcrumb-listItem' key={ item.key || String(index) } ref={ item.key || String(index) }>
-                  { this._renderItem(item) }
+                  { this.props.onRenderItem ? this.props.onRenderItem(item) : this._renderItem(item) }
                   <i className={ css('ms-Breadcrumb-chevron ms-Icon', getRTL() ? 'ms-Icon--ChevronLeft' : 'ms-Icon--ChevronRight') }></i>
                 </li>
               )) }

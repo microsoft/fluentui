@@ -20,6 +20,9 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
    * If not specified, all breadcrumbs will be rendered.
    */
   maxDisplayedItems?: number;
+
+  /** Method to call when trying to render an item. */
+  onRenderItem?: (item?: IBreadcrumbItem) => React.ReactNode;
 }
 
 export interface IBreadcrumbItem {
@@ -43,4 +46,9 @@ export interface IBreadcrumbItem {
    * Url to navigate to when this breadcrumb is clicked.
    */
   href?: string;
+
+  /**
+   * Optional arbitrary user-defined data
+   */
+  data?: any;
 }
