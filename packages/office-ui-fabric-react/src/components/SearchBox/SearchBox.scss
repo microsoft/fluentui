@@ -21,6 +21,13 @@ $SearchBox-height: 36px;
     margin-bottom: 10px;
     border: 1px solid $ms-color-themeTertiary;
 
+    @media screen and (-ms-high-contrast: active) {
+        border: 1px solid $ms-color-black;
+      } 
+    @media screen and (-ms-high-contrast: black-on-white) {
+        border: 1px solid $ms-color-white;
+      } 
+
     &.is-active {
       border-color: $ms-color-themeDarker;
 
