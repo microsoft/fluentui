@@ -74,6 +74,7 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
       nativeProps,
       {
         className: css(
+          styles.root,
           this.props.className,
           this.classNames.base,
           this.classNames.variant,

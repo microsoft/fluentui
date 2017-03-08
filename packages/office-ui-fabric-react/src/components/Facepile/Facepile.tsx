@@ -15,6 +15,9 @@ import {
   FocusZoneDirection
 } from '../../FocusZone';
 import {
+  BaseButton
+} from '../../Button';
+import {
   Persona,
   PersonaSize
 } from '../../Persona';
@@ -72,7 +75,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   }
 
   private _getElementWithOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
-    return <button
+    return <BaseButton
       { ...getNativeProps(persona, buttonProperties) }
       className={ css('ms-Facepile-itemButton ms-Facepile-person', styles.itemButton) }
       title={ persona.personaName }
@@ -82,7 +85,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
       onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
     >
       { personaControl }
-    </button>;
+    </BaseButton>;
   }
 
   private _getElementWithoutOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
@@ -119,7 +122,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
 
     let personaNames: string = this.props.personas.slice(numPersonasToShow).map((p: IFacepilePersona) => p.personaName).join(', ');
 
-    return <button
+    return <BaseButton
       { ...getNativeProps(this.props.overflowButtonProps, buttonProperties) }
       className={ css('ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton', styles.descriptiveOverflowButton, styles.itemButton) }
     >
@@ -136,13 +139,13 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
 
       </Persona>
 
-    </button>;
+    </BaseButton>;
   }
 
   private _getIconElement(icon: string): JSX.Element {
     let { personaSize } = this.props;
 
-    return <button
+    return <BaseButton
       { ...getNativeProps(this.props.overflowButtonProps, buttonProperties) }
       className={ css('ms-Facepile-overflowButton', 'ms-Facepile-itemButton', styles.overflowButton, styles.itemButton) }
     >
@@ -155,13 +158,12 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
       >
 
       </Persona>
-
-    </button>;
+    </BaseButton>;
   }
 
   private _getAddNewElement(): JSX.Element {
     let { personaSize } = this.props;
-    return <button
+    return <BaseButton
       { ...getNativeProps(this.props.addButtonProps, buttonProperties) }
       className={ css('ms-Facepile-addButton', 'ms-Facepile-itemButton', styles.itemButton, styles.addButton) }
     >
@@ -175,7 +177,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
 
       </Persona>
 
-    </button>;
+    </BaseButton>;
   }
 
   private _onPersonaClick(persona: IFacepilePersona, ev?: React.MouseEvent<HTMLElement>): void {
