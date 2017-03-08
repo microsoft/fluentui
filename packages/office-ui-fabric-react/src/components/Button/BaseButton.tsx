@@ -6,7 +6,7 @@ import {
   getId,
   getNativeProps,
   buttonProperties,
-  anchorProperties,
+  anchorProperties
 } from '../../Utilities';
 import { IButtonProps, IButton } from './Button.Props';
 
