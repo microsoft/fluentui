@@ -2,18 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Updated BaseButton to support rootProps mixed with props",
+      "comment": "BaseButton: `rootProps` is now correctly mixed in with `props`. Please note that `rootProps` is deprecated and should not be used, but this fix simply ensures that the deprecated backwards compatibility works.",
       "type": "patch"
-    },
-    {
-      "comment": "",
-      "packageName": "@uifabric/utilities",
-      "type": "none"
-    },
-    {
-      "comment": "",
-      "packageName": "@uifabric/example-app-base",
-      "type": "none"
     }
   ],
   "email": "micahgodbolt@gmail.com"
