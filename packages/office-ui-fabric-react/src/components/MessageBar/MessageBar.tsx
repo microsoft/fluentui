@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  BaseComponent,
   css,
   getId
 } from '../../Utilities';
@@ -12,7 +13,7 @@ export interface IMessageBarState {
   showContent?: boolean;
 }
 
-export class MessageBar extends React.Component<IMessageBarProps, IMessageBarState> {
+export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState> {
 
   public static defaultProps: IMessageBarProps = {
     messageBarType: MessageBarType.info,
@@ -49,7 +50,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
     /**
      * Live regions need an update to announce content.
      */
-    setTimeout(() => {
+    this._async.setTimeout(() => {
       this.setState({ showContent: true });
     }, 10);
   }
