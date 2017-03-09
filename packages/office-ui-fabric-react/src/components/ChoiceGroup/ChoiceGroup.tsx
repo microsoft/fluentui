@@ -81,6 +81,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                 type='radio'
                 name={ this.props.name || this._id }
                 disabled={ option.isDisabled || option.disabled || this.props.disabled }
+                aria-disabled={ option.isDisabled || option.disabled || this.props.disabled }
                 checked={ option.key === keyChecked }
                 required={ required }
                 onChange={ this._onChange.bind(this, option) }
@@ -129,6 +130,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
           ['is-checked ' + styles.fieldIsChecked]: option.key === keyChecked,
           ['is-disabled ' + styles.fieldIsDisabled]: isDisabled
         }) }
+        aria-disabled={ isDisabled }
       >
         {
           option.imageSrc && (
