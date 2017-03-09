@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "comment": "ChoiceGroup: Update styles",
+      "packageName": "office-ui-fabric-react",
+      "type": "patch"
+    }
+  ],
+  "email": "anihan@microsoft.com"
+}
