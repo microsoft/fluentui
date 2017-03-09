@@ -2,18 +2,6 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
-      "version": "1.0.4",
-      "tag": "@uifabric/example-app-base_v1.0.4",
-      "date": "Thu, 09 Mar 2017 01:57:07 GMT",
-      "comments": {
-        "dependency": [
-          {
-            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=1.14.3 <2.0.0` to `>=3.0.0 <4.0.0`"
-          }
-        ]
-      }
-    },
-    {
       "version": "1.0.3",
       "tag": "@uifabric/example-app-base_v1.0.3",
       "date": "Mon, 27 Feb 2017 21:45:53 GMT",
