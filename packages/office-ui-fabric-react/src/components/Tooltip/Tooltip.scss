@@ -5,26 +5,24 @@
 // --------------------------------------------------
 // Tooltip styles
 
-:global {
+.root {
+  max-width: 364px;
+  background: $ms-color-white;
+  padding: 8px;
+  pointer-events: none;
 
-  .ms-Tooltip {
-      @include ms-u-fadeIn200;
-      max-width: 364px;
-      background: $ms-color-white;
-      padding: 8px;
-      pointer-events: none;
-      &.has-mediumDelay {
-          animation-delay: 300ms;
-      }
-      &-subText {
-          margin: 0;
-          font-size: $ms-font-size-s;
-          color: $ms-color-neutralPrimary;
-      }
+  &.hasMediumDelay {
+    animation-delay: 300ms;
   }
-
-  .ms-TooltipHost {
-      display: inline;
-  }
-
 }
+
+.subText {
+  margin: 0;
+  font-size: $ms-font-size-s;
+  color: $ms-color-neutralPrimary;
+}
+
+.host {
+  display: inline;
+}
+

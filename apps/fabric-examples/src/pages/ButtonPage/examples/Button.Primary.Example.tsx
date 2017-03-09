@@ -16,7 +16,8 @@ export class ButtonPrimaryExample extends React.Component<IButtonProps, {}> {
         <PrimaryButton
           data-automation-id='test'
           disabled={ disabled }
-        >Create account</PrimaryButton>
+          text='Create account'
+        />
       </div>
     );
   }

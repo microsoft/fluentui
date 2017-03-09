@@ -11,7 +11,7 @@ import { ContextualMenu } from '../../ContextualMenu';
 import { Link } from '../../Link';
 import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import './Breadcrumb.scss';
+import styles from './Breadcrumb.scss';
 
 export interface IBreadcrumbState {
   isOverflowOpen: boolean;
@@ -71,25 +71,25 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
     let { onRenderItem = this._onRenderItem } = this.props;
 
     return (
-      <div className={ css('ms-Breadcrumb', className) } ref='renderingArea'>
+      <div className={ css('ms-Breadcrumb', className, styles.root) } ref='renderingArea'>
         <FocusZone direction={ FocusZoneDirection.horizontal }>
-          <ul className='ms-Breadcrumb-list'>
+          <ul className={ css('ms-Breadcrumb-list', styles.list) }>
             { renderedOverflowItems && renderedOverflowItems.length ? (
-              <li className='ms-Breadcrumb-overflow' key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
-                <div className='ms-Breadcrumb-overflowButton ms-Icon ms-Icon--More'
+              <li className={ css('ms-Breadcrumb-overflow', styles.overflow) } key={ OVERFLOW_KEY } ref={ OVERFLOW_KEY }>
+                <div className={ css('ms-Breadcrumb-overflowButton ms-Icon ms-Icon--More', styles.overflowButton) }
                   onClick={ this._onOverflowClicked }
                   data-is-focusable={ true }
                   role='button'
                   aria-haspopup='true'
                   aria-owns={ isOverflowOpen ? overflowMenuId : null } />
-                <i className={ css('ms-Breadcrumb-chevron ms-Icon', getRTL() ? 'ms-Icon--ChevronLeft' : 'ms-Icon--ChevronRight') }></i>
+                <i className={ css('ms-Breadcrumb-chevron ms-Icon', styles.chevron, getRTL() ? 'ms-Icon--ChevronLeft' : 'ms-Icon--ChevronRight') }></i>
               </li>
             ) : (null) }
             { renderedItems.map(
               (item, index) => (
-                <li className='ms-Breadcrumb-listItem' key={ item.key || String(index) } ref={ item.key || String(index) }>
+                <li className={ css('ms-Breadcrumb-listItem', styles.listItem) } key={ item.key || String(index) } ref={ item.key || String(index) }>
                   { onRenderItem(item, this._defaultRenderItem) }
-                  <i className={ css('ms-Breadcrumb-chevron ms-Icon', getRTL() ? 'ms-Icon--ChevronLeft' : 'ms-Icon--ChevronRight') }></i>
+                  <i className={ css('ms-Breadcrumb-chevron ms-Icon', styles.chevron, getRTL() ? 'ms-Icon--ChevronLeft' : 'ms-Icon--ChevronRight') }></i>
                 </li>
               )) }
           </ul>
@@ -124,7 +124,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
     if (item.onClick || item.href) {
       return (
         <Link
-          className='ms-Breadcrumb-itemLink'
+          className={ css('ms-Breadcrumb-itemLink', styles.itemLink) }
           href={ item.href }
           onClick={ this._onBreadcrumbClicked.bind(this, item) }>
           { item.text }
@@ -132,7 +132,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
       );
     } else {
       return (
-        <span className='ms-Breadcrumb-item'>
+        <span className={ css('ms-Breadcrumb-item', styles.item) }>
           { item.text }
         </span>
       );
