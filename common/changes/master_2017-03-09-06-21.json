@@ -1,0 +1,20 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "No changes, required republish.",
+      "type": "patch"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/utilities",
+      "type": "none"
+    },
+    {
+      "packageName": "@uifabric/example-app-base",
+      "comment": "No changes, required republish.",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
