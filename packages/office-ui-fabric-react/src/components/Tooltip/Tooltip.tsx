@@ -10,7 +10,7 @@ import {
 import { ITooltipProps, TooltipDelay } from './Tooltip.Props';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import './Tooltip.scss';
+import styles from './Tooltip.scss';
 
 export class Tooltip extends BaseComponent<ITooltipProps, any> {
 
@@ -32,18 +32,20 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
 
     return (
       <Callout
-        className={ css('ms-Tooltip', `has-${TooltipDelay[delay]}Delay`) }
+        className={ css('ms-Tooltip ms-u-fadeIn200', styles.root, {
+          [styles.hasMediumDelay]: delay === TooltipDelay.medium
+        }) }
         targetElement={ targetElement }
         directionalHint={ directionalHint }
         {...calloutProps}
         { ...getNativeProps(this.props, divProperties) }
-        >
-        <div className='ms-Tooltip-content'>
-          <p className='ms-Tooltip-subText' id={ id } role='tooltip'>
+      >
+        <div className={ css('ms-Tooltip-content') }>
+          <p className={ css('ms-Tooltip-subText', styles.subText) } id={ id } role='tooltip'>
             { content }
           </p>
         </div>
-      </Callout>
+      </Callout >
     );
   }
 }

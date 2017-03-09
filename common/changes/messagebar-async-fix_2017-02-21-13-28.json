@@ -1,0 +1,15 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Dropdown - Remove aria-activedescendant when not dropped",
+      "type": "patch"
+    },
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "MessageBar - Fix timeout issue",
+      "type": "patch"
+    }
+  ],
+  "email": "manishda@microsoft.com"
+}

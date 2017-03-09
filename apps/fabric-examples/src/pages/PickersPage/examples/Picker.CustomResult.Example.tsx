@@ -18,7 +18,7 @@ import { ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 import {
   IBasePickerProps,
-  BasePicker,
+  BasePickerListBelow,
   BaseAutoFill,
   IPickerItemProps
 } from 'office-ui-fabric-react/lib/Pickers';
@@ -338,42 +338,5 @@ export class PickerCustomResultExample extends React.Component<any, IPeoplePicke
   }
 }
 
-export class DocumentPicker extends BasePicker<IFullDocumentCardProps, IDocumentPickerProps> {
-  public render() {
-    let { suggestedDisplayValue } = this.state;
-
-    return (
-      <div>
-        <div ref={ this._resolveRef('root') } className='ms-BasePicker' onKeyDown={ this.onKeyDown }>
-          <SelectionZone selection={ this.selection }>
-            <div className='ms-BasePicker-text'>
-              <BaseAutoFill
-                { ...this.props.inputProps }
-                className='ms-BasePicker-input'
-                ref={ this._resolveRef('input') }
-                onFocus={ this.onInputFocus }
-                onInputValueChange={ this.onInputChange }
-                suggestedDisplayValue={ suggestedDisplayValue }
-                aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
-                aria-owns='suggestion-list'
-                aria-expanded='true'
-                aria-haspopup='true'
-                autoCapitalize='off'
-                autoComplete='off'
-                role='combobox'
-              />
-            </div>
-          </SelectionZone>
-        </div>
-        <FocusZone ref={ this._resolveRef('focusZone') }>
-          { this.renderItems() }
-        </FocusZone>
-        { this.renderSuggestions() }
-      </div>
-    );
-  }
-
-  protected _onBackspace(ev: React.KeyboardEvent<HTMLElement>) {
-    // override the existing backspace method to not do anything because the list items appear below.
-  }
+export class DocumentPicker extends BasePickerListBelow<IFullDocumentCardProps, IDocumentPickerProps> {
 }
