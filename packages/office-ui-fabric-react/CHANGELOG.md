@@ -1,6 +1,37 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 09 Mar 2017 00:16:39 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Mar 2017 06:11:07 GMT and should not be manually modified.
+
+## 2.0.0
+Thu, 09 Mar 2017 06:11:07 GMT
+
+### Breaking changes
+
+- IMPORTANT: 
+
+This pull request converts ALL components over to use module css. What does this mean?
+
+* All classnames, such as ms-Button, will now be obfuscated to be unique.
+* Pages that host multiple versions of the same component will not stomp on each other and will be safe.
+* All existing class names are left intact, so current customizations should not break.
+
+Going forward, we will adhere to using local scoped module rules specifically to avoid breaking ourselves when multiple versions. Additionally we are evaluating a much more robust and contractual way of defining our styles.
+
+Problems that still exist:
+
+1. You must rely on class names to customize, and if those class names change, your customizations are broken.
+2. Specificity of our rules is an implicit contract that is easy to break. It is often unclear and partners usually give up early fighting the specificity war and use `!important` to stomp on it, which is not ideal. If a partner does use "more specific" rules today, tomorrow they many not be specific enough.
+3. RTL rules in particular are very specific. When something that was once not RTL specific is changed to RTL, it becomes implicitly more specific, and thus breaks specificity contract.
+4. The bundles themselves have a lot of duplicate css. Because we generate rtl rules and theme tokens at build time rather than at runtime, we must download extra code, which bulks up the download size.
+5. Fabric core rules, which we implicitly rely on, are a hard thing to chase. If your page depends on core 6, and you're also using react components, you will find bugs. We'd like to eliminate this dependency so that it is reliable and contractual to use components. If you use a `ContextualMenu`, it should animate without depending on fabric-core css to be loaded.
+
+We are planning to address these and evaluating library options. Issue being tracked here: #983 
+
+
+### Minor changes
+
+- Button: the `label` property used to be meant to render text within the button, but it overlaps with the html `label` attribute. While `label` will still exist, it will now push content into the button label attribute, and we've added a `text` property  to allow for a formal way of defining the textual content displayed within the button. Passing in a child string to the button will still work, but `text` wil
+- IContextualMenuItemProps: the `styles` property can now be passed through to apply styling to menu items.
 
 ## 1.14.3
 Thu, 09 Mar 2017 00:16:39 GMT
