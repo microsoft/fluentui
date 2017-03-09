@@ -2,6 +2,25 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "1.0.6",
+      "tag": "@uifabric/example-app-base_v1.0.6",
+      "date": "Thu, 09 Mar 2017 22:06:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "48b2706784b0f98aaf3d92ca9b1cbdcb2c0e2762",
+            "comment": "Fixing version of peer dependency of fabric-react."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=2.0.2 <3.0.0` to `>=2.1.0 <3.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.0.5",
       "tag": "@uifabric/example-app-base_v1.0.5",
       "date": "Thu, 09 Mar 2017 06:33:00 GMT",

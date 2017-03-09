@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 09 Mar 2017 16:17:07 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Mar 2017 22:06:44 GMT and should not be manually modified.
+
+## 2.1.0
+Thu, 09 Mar 2017 22:06:44 GMT
+
+### Minor changes
+
+- Breadcrumb: Implement onRenderItem
 
 ## 2.0.2
 Thu, 09 Mar 2017 16:17:07 GMT
