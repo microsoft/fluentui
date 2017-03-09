@@ -292,7 +292,7 @@ describe('TextField', () => {
         return '';
       };
 
-      const renderedDOM: HTMLElement = renderIntoDocument(
+      renderIntoDocument(
         <TextField
           value='initial value'
           onGetErrorMessage={ validatorSpy }
@@ -322,5 +322,27 @@ describe('TextField', () => {
     );
 
     expect(renderedDOM.querySelector('textarea').value).equals('initial value');
+  });
+
+  it('should call onChanged handler for input change', () => {
+    let callCount = 0;
+    let onChangedSpy = value => { callCount++; };
+
+    const renderedDOM: HTMLElement = renderIntoDocument(
+      <TextField
+        defaultValue='initial value'
+        onChanged={ onChangedSpy }
+        onGetErrorMessage={ value => value.length > 0 ? '' : 'error' }
+      />
+    );
+
+    expect(callCount).to.equal(0);
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+
+    ReactTestUtils.Simulate.input(inputDOM, mockEvent('value change'));
+    expect(callCount).to.equal(1);
+
+    ReactTestUtils.Simulate.input(inputDOM, mockEvent(''));
+    expect(callCount).to.equal(2);
   });
 });

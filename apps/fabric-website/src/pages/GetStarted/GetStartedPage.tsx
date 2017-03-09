@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CodeBlock } from '../../components/CodeBlock/CodeBlock';
-import { css } from '../../utilities/css';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import styles from './GetStartedPage.module.scss';
 import diagramStyles from './GetStartedPage.diagram.module.scss';
@@ -39,17 +39,17 @@ export class GetStartedPage extends React.Component<any, any> {
           <div className='ms-Grid ms-Grid--wide'>
             <div className='ms-Grid-row'>
               <div className={ css('ms-Grid-col ms-u-lg4', styles.feature) }>
-                <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-styles.svg' } alt='Illustration of Typography and color swatches.'/>
+                <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-styles.svg' } alt='Illustration of Typography and color swatches.' />
                 <div className={ styles.title }>Styles</div>
                 <div className={ styles.description }>Fabric gives you access to Segoe, Microsoft&rsquo;s official typeface, along with the color palette, type ramp, icons, and responsive grid for Office 365.</div>
               </div>
               <div className={ css('ms-Grid-col ms-u-lg4', styles.feature) }>
-                <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-icons.svg' } alt='Illustration of Icons'/>
+                <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-icons.svg' } alt='Illustration of Icons' />
                 <div className={ styles.title }>Icons</div>
                 <div className={ styles.description }>Fabric includes Office&rsquo;s official product icons. Fabric also provides a suite of product and document symbols, so you can use the same metaphors we use.</div>
               </div>
               <div className={ css('ms-Grid-col ms-u-lg4', styles.feature) }>
-                <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-components.svg' }alt='Illustration of Components' />
+                <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/get-started-components.svg' } alt='Illustration of Components' />
                 <div className={ styles.title }>Components</div>
                 <div className={ styles.description }>Components are the building blocks of your UI. Fabric has a variety of components, including navigation, commands, containers, and content.</div>
               </div>
@@ -72,8 +72,8 @@ export class GetStartedPage extends React.Component<any, any> {
             <ul className={ diagramStyles.components }>
               <li className={ css(diagramStyles.component, diagramStyles.featuredComponent) }>
                 <div className={ diagramStyles.graphics }>
-                  <img className={ diagramStyles.componentImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-components-many.svg' } width='175' height='90' alt='Illustrated Diagram of many components'/>
-                  <img className={ diagramStyles.coreImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-core.svg' }alt='Illustrated representation of Fabric cores styles and libraries.'/>
+                  <img className={ diagramStyles.componentImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-components-many.svg' } width='175' height='90' alt='Illustrated Diagram of many components' />
+                  <img className={ diagramStyles.coreImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-core.svg' } alt='Illustrated representation of Fabric cores styles and libraries.' />
                 </div>
                 <div className={ diagramStyles.content }>
                   <span className={ diagramStyles.headline }>Fabric React</span>
@@ -83,8 +83,8 @@ export class GetStartedPage extends React.Component<any, any> {
               </li>
               <li className={ diagramStyles.component }>
                 <div className={ diagramStyles.graphics }>
-                  <img className={ diagramStyles.componentImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-components-few.svg' }width='175' height='90' alt='Illustrated Diagram of few components'/>
-                  <img className={ diagramStyles.coreImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-core.svg' }alt='Illustrated representation of Fabric cores styles and libraries.'/>
+                  <img className={ diagramStyles.componentImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-components-few.svg' } width='175' height='90' alt='Illustrated Diagram of few components' />
+                  <img className={ diagramStyles.coreImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-core.svg' } alt='Illustrated representation of Fabric cores styles and libraries.' />
                 </div>
                 <div className={ diagramStyles.content }>
                   <span className={ diagramStyles.headline }>Fabric JS</span>
@@ -94,8 +94,8 @@ export class GetStartedPage extends React.Component<any, any> {
               </li>
               <li className={ diagramStyles.component }>
                 <div className={ diagramStyles.graphics }>
-                  <img className={ diagramStyles.componentImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-components-few.svg' } width='175' height='90'  alt='Illustrated Diagram of few components'/>
-                  <img className={ diagramStyles.coreImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-core.svg' }alt='Illustrated representation of Fabric cores styles and libraries.'/>
+                  <img className={ diagramStyles.componentImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-components-few.svg' } width='175' height='90' alt='Illustrated Diagram of few components' />
+                  <img className={ diagramStyles.coreImage } src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-core.svg' } alt='Illustrated representation of Fabric cores styles and libraries.' />
                 </div>
                 <div className={ diagramStyles.content }>
                   <span className={ diagramStyles.headline }>AngularJS</span>
@@ -115,8 +115,8 @@ export class GetStartedPage extends React.Component<any, any> {
             <li>
               <p>To install the Fabric React NPM package, from the root of your project, run:</p>
               <CodeBlock language='bash' isLightTheme={ true }>
-                  {
-`npm --save install office-ui-fabric-react`
+                {
+                  `npm --save install office-ui-fabric-react`
                 }
               </CodeBlock>
             </li>
@@ -124,7 +124,7 @@ export class GetStartedPage extends React.Component<any, any> {
               <p>With office-ui-fabric-react as a dependency in your package.json file, you can now start using components and styling. To reference a component, import it and use it in your render method:</p>
               <CodeBlock language='javascript' isLightTheme={ true }>
                 {
-`import * as React from 'react';
+                  `import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Button } from 'office-ui-fabric-react/lib/Button';
 
@@ -139,7 +139,7 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`
               <p>You can also reference type styles for any text element:</p>
               <CodeBlock language='html' isLightTheme={ true }>
                 {
-`<span class="ms-font-su ms-fontColor-themePrimary">Big blue text</span>`
+                  `<span class="ms-font-su ms-fontColor-themePrimary">Big blue text</span>`
                 }
               </CodeBlock>
             </li>
@@ -147,7 +147,7 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`
               <p>Reference icons by using the appropriate icon classes:</p>
               <CodeBlock language='html' isLightTheme={ true }>
                 {
-`<i class="ms-Icon ms-Icon--Mail" aria-hidden="true"></i>`
+                  `<i class="ms-Icon ms-Icon--Mail" aria-hidden="true"></i>`
                 }
               </CodeBlock>
               <p>Components, type, and icons are just a small part of what Fabric has to offer. To reference other assets, including colors, product symbols, and more, see the <a href='#/styles'>styles page</a>.</p>
@@ -168,7 +168,7 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`
               <p>Add the following line to the &lt;head&gt; of your webpage:</p>
               <CodeBlock language='html' isLightTheme={ true }>
                 {
-`<link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/4.1.0/css/fabric.min.css">`
+                  `<link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/4.1.0/css/fabric.min.css">`
                 }
               </CodeBlock>
             </li>
@@ -176,7 +176,7 @@ ReactDOM.render(<MyPage />, document.body.firstChild);`
               <p>Reference core Fabric styles:</p>
               <CodeBlock language='html' isLightTheme={ true }>
                 {
-`<span class="ms-font-su ms-fontColor-themePrimary">Big blue text</span>`
+                  `<span class="ms-font-su ms-fontColor-themePrimary">Big blue text</span>`
                 }
               </CodeBlock>
               <p>To reference all the assets available in Fabric Core, see the <a href='#/styles'>styles page</a>. To use components, see <a href='#/get-started#react'>Fabric React</a>, <a href='#/fabric-js'>Fabric JS</a>, or <a href='#/angular-js'>ngOfficeUIFabric</a>.</p>

@@ -12,8 +12,9 @@ import { FocusTrapZone } from '../FocusTrapZone/index';
 import { IPanelProps, PanelType } from './Panel.Props';
 import { Layer } from '../Layer/Layer';
 import { Overlay } from '../../Overlay';
-import { Popup } from '../Popup/index';
-import './Panel.scss';
+import { Popup } from '../../Popup';
+import { IconButton } from '../../Button';
+import styles from './Panel.scss';
 
 export interface IPanelState {
   isOpen?: boolean;
@@ -21,6 +22,14 @@ export interface IPanelState {
   isAnimatingClose?: boolean;
   id?: string;
 }
+
+// Animation class constants.
+const FADE_IN_200 = 'ms-u-fadeIn200';
+const FADE_OUT_200 = 'ms-u-fadeOut200';
+const SLIDE_LEFT_IN_40 = 'ms-u-slideLeftIn40';
+const SLIDE_LEFT_OUT_40 = 'ms-u-slideLeftOut40';
+const SLIDE_RIGHT_IN_40 = 'ms-u-slideRightIn40';
+const SLIDE_RIGHT_OUT_40 = 'ms-u-slideRightOut40';
 
 export class Panel extends BaseComponent<IPanelProps, IPanelState> {
 
@@ -69,17 +78,18 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
     let {
       children,
       className = '',
-      type,
-      hasCloseButton,
-      isLightDismiss,
-      isBlocking,
-      headerText,
       closeButtonAriaLabel,
-      headerClassName = '',
       elementToFocusOnDismiss,
-      ignoreExternalFocusing,
+      firstFocusableSelector,
       forceFocusInsideTrap,
-      firstFocusableSelector
+      hasCloseButton,
+      headerClassName = '',
+      headerText,
+      ignoreExternalFocusing,
+      isBlocking,
+      isLightDismiss,
+      layerProps,
+      type
     } = this.props;
     let { isOpen, isAnimatingOpen, isAnimatingClose, id } = this.state;
     let isLeft = type === PanelType.smallFixedNear ? true : false;
@@ -95,66 +105,85 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
 
     let header;
     if (headerText) {
-      header = <p className={ css('ms-Panel-headerText', headerClassName) } id={ headerTextId }>{ headerText }</p>;
+      header = <p className={ css('ms-Panel-headerText', styles.headerText, headerClassName) } id={ headerTextId }>{ headerText }</p>;
     }
 
     let closeButton;
     if (hasCloseButton) {
-      closeButton = <button className='ms-Panel-closeButton ms-PanelAction-close' onClick={ this._onPanelClick } aria-label={ closeButtonAriaLabel } data-is-visible={ true }>
-        <i className='ms-Panel-closeIcon ms-Icon ms-Icon--Cancel'></i>
-      </button>;
+      closeButton = (
+        <IconButton
+          className={ css('ms-Panel-closeButton ms-PanelAction-close', styles.closeButton) }
+          onClick={ this._onPanelClick }
+          aria-label={ closeButtonAriaLabel }
+          data-is-visible={ true } icon='Cancel'
+        />
+      );
     }
 
     let overlay;
     if (isBlocking) {
-      overlay = <Overlay
-        isDarkThemed={ false }
-        onClick={ isLightDismiss ? this._onPanelClick : null }
-      />;
+      overlay = (
+        <Overlay
+          className={ css(
+            styles.overlay,
+            {
+              [FADE_IN_200]: isAnimatingOpen,
+              [FADE_OUT_200]: isAnimatingClose
+            }) }
+          isDarkThemed={ false }
+          onClick={ isLightDismiss ? this._onPanelClick : null }
+        />
+      );
     }
 
     return (
-      <Layer>
+      <Layer { ...layerProps }>
         <Popup
           role='dialog'
-          ariaLabelledBy={ headerText ? headerTextId : undefined }
+          ariaLabelledBy={ headerText && headerTextId }
           onDismiss={ this.props.onDismiss }>
           <div
             ref={ this._onPanelRef }
             className={
-              css('ms-Panel', className, {
-                'ms-Panel--openLeft': !isOnRightSide,  // because the RTL animations are not being used, we need to set a class
-                'ms-Panel--openRight': isOnRightSide,  // because the RTL animations are not being used, we need to set a class
-                'is-open': isOpen,
-                'ms-Panel-animateIn': isAnimatingOpen,
-                'ms-Panel-animateOut': isAnimatingClose,
-                'ms-Panel--smFluid': type === PanelType.smallFluid,
-                'ms-Panel--smLeft': type === PanelType.smallFixedNear,
-                'ms-Panel--sm': type === PanelType.smallFixedFar,
-                'ms-Panel--md': type === PanelType.medium,
-                'ms-Panel--lg': type === PanelType.large || type === PanelType.largeFixed,
-                'ms-Panel--fixed': type === PanelType.largeFixed,
-                'ms-Panel--xl': type === PanelType.extraLarge,
-                'ms-Panel--hasCloseButton': hasCloseButton
+              css('ms-Panel', styles.root, className, {
+                // because the RTL animations are not being used, we need to set a class
+                ['is-open ' + styles.rootIsOpen]: isOpen,
+                ['ms-Panel--smFluid ' + styles.rootIsSmallFluid]: type === PanelType.smallFluid,
+                ['ms-Panel--smLeft ' + styles.rootIsSmallLeft]: type === PanelType.smallFixedNear,
+                ['ms-Panel--sm ' + styles.rootIsSmall]: type === PanelType.smallFixedFar,
+                ['ms-Panel--md ' + styles.rootIsMedium]: type === PanelType.medium,
+                ['ms-Panel--lg ' + styles.rootIsLarge]: type === PanelType.large || type === PanelType.largeFixed,
+                ['ms-Panel--fixed ' + styles.rootIsFixed]: type === PanelType.largeFixed,
+                ['ms-Panel--xl ' + styles.rootIsXLarge]: type === PanelType.extraLarge,
+                ['ms-Panel--hasCloseButton ' + styles.rootHasCloseButton]: hasCloseButton
               })
             }
           >
             { overlay }
             <FocusTrapZone
-              className='ms-Panel-main'
+              className={ css(
+                'ms-Panel-main',
+                styles.main,
+                {
+                  [SLIDE_RIGHT_IN_40]: isAnimatingOpen && !isOnRightSide,
+                  [SLIDE_LEFT_IN_40]: isAnimatingOpen && isOnRightSide,
+                  [SLIDE_LEFT_OUT_40]: isAnimatingClose && !isOnRightSide,
+                  [SLIDE_RIGHT_OUT_40]: isAnimatingClose && isOnRightSide
+                }
+              ) }
               elementToFocusOnDismiss={ elementToFocusOnDismiss }
               isClickableOutsideFocusTrap={ isLightDismiss }
               ignoreExternalFocusing={ ignoreExternalFocusing }
               forceFocusInsideTrap={ forceFocusInsideTrap }
               firstFocusableSelector={ firstFocusableSelector }
             >
-              <div className='ms-Panel-commands' data-is-visible={ true } >
+              <div className={ css('ms-Panel-commands') } data-is-visible={ true } >
                 { pendingCommandBarContent }
                 { closeButton }
               </div>
-              <div className='ms-Panel-contentInner'>
+              <div className={ css('ms-Panel-contentInner', styles.contentInner) }>
                 { header }
-                <div className='ms-Panel-content'>
+                <div className={ css('ms-Panel-content') }>
                   { children }
                 </div>
               </div>

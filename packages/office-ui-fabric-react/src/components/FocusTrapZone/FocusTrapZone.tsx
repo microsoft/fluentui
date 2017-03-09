@@ -14,18 +14,38 @@ import { IFocusTrapZone, IFocusTrapZoneProps } from './FocusTrapZone.Props';
 
 export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
 
+  private static _focusStack: FocusTrapZone[] = [];
+  private static _clickStack: FocusTrapZone[] = [];
+
   public refs: {
     [key: string]: React.ReactInstance,
     root: HTMLElement
   };
 
   private _previouslyFocusedElement: HTMLElement;
+  private _isInFocusStack: boolean = false;
+  private _isInClickStack: boolean = false;
+
+  public componentWillMount() {
+    let { isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true } = this.props;
+    if (forceFocusInsideTrap) {
+      this._isInFocusStack = true;
+      FocusTrapZone._focusStack.push(this);
+    }
+    if (!isClickableOutsideFocusTrap) {
+      this._isInClickStack = true;
+      FocusTrapZone._clickStack.push(this);
+    }
+  }
 
   public componentDidMount() {
     let { elementToFocusOnDismiss, isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true } = this.props;
 
     this._previouslyFocusedElement = elementToFocusOnDismiss ? elementToFocusOnDismiss : document.activeElement as HTMLElement;
-    this.focus();
+
+    if (!elementContains(this.refs.root, this._previouslyFocusedElement)) {
+      this.focus();
+    }
 
     if (forceFocusInsideTrap) {
       this._events.on(window, 'focus', this._forceFocusInTrap, true);
@@ -38,6 +58,19 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
 
   public componentWillUnmount() {
     let { ignoreExternalFocusing } = this.props;
+
+    this._events.dispose();
+    if (this._isInFocusStack || this._isInClickStack) {
+      let filter = (value: FocusTrapZone) => {
+        return this !== value;
+      };
+      if (this._isInFocusStack) {
+        FocusTrapZone._focusStack = FocusTrapZone._focusStack.filter(filter);
+      }
+      if (this._isInClickStack) {
+        FocusTrapZone._clickStack = FocusTrapZone._clickStack.filter(filter);
+      }
+    }
 
     if (!ignoreExternalFocusing && this._previouslyFocusedElement) {
       this._previouslyFocusedElement.focus();
@@ -101,22 +134,26 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
   }
 
   private _forceFocusInTrap(ev: FocusEvent) {
-    const focusedElement = document.activeElement as HTMLElement;
+    if (FocusTrapZone._focusStack.length && this === FocusTrapZone._focusStack[FocusTrapZone._focusStack.length - 1]) {
+      const focusedElement = document.activeElement as HTMLElement;
 
-    if (!elementContains(this.refs.root, focusedElement)) {
-      this.focus();
-      ev.preventDefault();
-      ev.stopPropagation();
+      if (!elementContains(this.refs.root, focusedElement)) {
+        this.focus();
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
     }
   }
 
   private _forceClickInTrap(ev: MouseEvent) {
-    const clickedElement = ev.target as HTMLElement;
+    if (FocusTrapZone._clickStack.length && this === FocusTrapZone._clickStack[FocusTrapZone._clickStack.length - 1]) {
+      const clickedElement = ev.target as HTMLElement;
 
-    if (clickedElement && !elementContains(this.refs.root, clickedElement)) {
-      this.focus();
-      ev.preventDefault();
-      ev.stopPropagation();
+      if (clickedElement && !elementContains(this.refs.root, clickedElement)) {
+        this.focus();
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
     }
   }
 }

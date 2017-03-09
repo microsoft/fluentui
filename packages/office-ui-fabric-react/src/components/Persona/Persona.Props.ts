@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { IRenderFunction } from '../../Utilities';
 import { Persona } from './Persona';
 
 export interface IPersonaProps extends React.HTMLProps<Persona> {
@@ -19,6 +20,13 @@ export interface IPersonaProps extends React.HTMLProps<Persona> {
   imageShouldFadeIn?: boolean;
 
   /**
+   * If true, the image starts as visible and is hidden on error. Otherwise, the image is hidden until
+   * it is successfully loaded. This disables imageShouldFadeIn.
+   * @defaultvalue false
+   */
+  imageShouldStartVisible?: boolean;
+
+  /**
    * Url to the image to use, should be a square aspect ratio and big enough to fit in the image area.
    */
   imageUrl?: string;
@@ -28,6 +36,11 @@ export interface IPersonaProps extends React.HTMLProps<Persona> {
    * @defaultvalue [Derived from primaryText]
    */
   imageInitials?: string;
+
+  /**
+   * Optional custom renderer for the initials
+   */
+  onRenderInitials?: IRenderFunction<IPersonaProps>;
 
   /**
    * The background color when the user's initials are displayed.
