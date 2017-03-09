@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "ChoiceGroup: Adds aria-disabled attribute to disabled label and field",
+      "type": "patch"
+    }
+  ],
+  "email": "v-algemb@microsoft.com"
+}
