@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "1.14.3",
+      "tag": "office-ui-fabric-react_v1.14.3",
+      "date": "Thu, 09 Mar 2017 00:16:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "3e8bacae1f1bea04ea982c754ca009686ac1e1f5",
+            "comment": "BaseButton: `rootProps` is now correctly mixed in with `props`. Please note that `rootProps` is deprecated and should not be used, but this fix simply ensures that the deprecated backwards compatibility works."
+          },
+          {
+            "author": "Liaoliang Ye <supersingerman@126.com>",
+            "commit": "29a098a149c7220e07d45b569e51569b59f89af9",
+            "comment": "fix base picker shift + tab resolving the people, should move focus instead."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.14.2",
       "tag": "office-ui-fabric-react_v1.14.2",
       "date": "Wed, 08 Mar 2017 04:07:13 GMT",
