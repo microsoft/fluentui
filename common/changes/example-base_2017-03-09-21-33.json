@@ -1,0 +1,20 @@
+{
+  "changes": [
+    {
+      "comment": "",
+      "packageName": "office-ui-fabric-react",
+      "type": "none"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/utilities",
+      "type": "none"
+    },
+    {
+      "packageName": "@uifabric/example-app-base",
+      "comment": "Fixing version of peer dependency of fabric-react.",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
