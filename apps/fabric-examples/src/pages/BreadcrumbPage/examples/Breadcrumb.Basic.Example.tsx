@@ -39,11 +39,11 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
           maxDisplayedItems={ 3 } />
         <Breadcrumb
           items={ [
-            { text: 'Files', 'key': 'files', onClick: this._onBreadcrumbItemClicked, data: { icon: 'OneDrive' } },
-            { text: 'Folder 1', 'key': 'f1', onClick: this._onBreadcrumbItemClicked, data: { icon: 'Folder' } },
-            { text: 'Folder 2', 'key': 'f2', onClick: this._onBreadcrumbItemClicked, data: { icon: 'Folder' } },
-            { text: 'Folder 3', 'key': 'f3', onClick: this._onBreadcrumbItemClicked, data: { icon: 'Folder' } },
-            { text: 'Link', 'key': 'l', onClick: this._onBreadcrumbItemClicked, data: { icon: 'Link' } }
+            { text: 'Files', 'key': 'files', onClick: this._onBreadcrumbItemClicked },
+            { text: 'Folder 1', 'key': 'f1', onClick: this._onBreadcrumbItemClicked },
+            { text: 'Folder 2', 'key': 'f2', onClick: this._onBreadcrumbItemClicked },
+            { text: 'Folder 3', 'key': 'f3', onClick: this._onBreadcrumbItemClicked },
+            { text: 'Link', 'key': 'l', onClick: this._onBreadcrumbItemClicked }
           ] }
           onRenderItem={ this._onRenderBreadcrumbItem }
           maxDisplayedItems={ 3 } />
@@ -56,13 +56,23 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
   }
 
   private _onRenderBreadcrumbItem(item: IBreadcrumbItem, defaultRender?: (item?: IBreadcrumbItem) => JSX.Element): JSX.Element {
+    let getIcon = (key: string) => {
+      if (key === 'files') {
+        return <Icon iconName={ 'OneDrive' } />;
+      } else if (key[0] === 'f') {
+        return <Icon iconName={ 'Folder' } />;
+      } else {
+        return <Icon iconName={ 'Link' } />;
+      }
+    };
+
     return (
       <span>
         <Link
           className='ms-Breadcrumb-itemLink'
           href={ item.href }
           onClick={ item.onClick }>
-          <Icon iconName={ item.data.icon } />
+          { getIcon(item.key) }
         </Link>
         { defaultRender(item) }
       </span>

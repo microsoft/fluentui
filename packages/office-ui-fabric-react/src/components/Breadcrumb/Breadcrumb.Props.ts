@@ -47,9 +47,4 @@ export interface IBreadcrumbItem {
    * Url to navigate to when this breadcrumb is clicked.
    */
   href?: string;
-
-  /**
-   * Optional arbitrary user-defined data
-   */
-  data?: any;
 }

@@ -68,6 +68,8 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
     let { isOverflowOpen, overflowAnchor, renderedItems, renderedOverflowItems } = this.state;
     let overflowMenuId = this._id + '-overflow';
 
+    let { onRenderItem = this._onRenderItem } = this.props;
+
     return (
       <div className={ css('ms-Breadcrumb', className) } ref='renderingArea'>
         <FocusZone direction={ FocusZoneDirection.horizontal }>
@@ -86,7 +88,7 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
             { renderedItems.map(
               (item, index) => (
                 <li className='ms-Breadcrumb-listItem' key={ item.key || String(index) } ref={ item.key || String(index) }>
-                  { this.props.onRenderItem ? this.props.onRenderItem(item, this._renderItem) : this._renderItem(item) }
+                  { onRenderItem(item, this._defaultRenderItem) }
                   <i className={ css('ms-Breadcrumb-chevron ms-Icon', getRTL() ? 'ms-Icon--ChevronLeft' : 'ms-Icon--ChevronRight') }></i>
                 </li>
               )) }
@@ -113,7 +115,12 @@ export class Breadcrumb extends BaseComponent<IBreadcrumbProps, IBreadcrumbState
   }
 
   @autobind
-  private _renderItem(item: IBreadcrumbItem) {
+  private _onRenderItem(item: IBreadcrumbItem, defaultRender?: (item?: IBreadcrumbItem) => JSX.Element): JSX.Element {
+    return this._defaultRenderItem(item);
+  }
+
+  @autobind
+  private _defaultRenderItem(item: IBreadcrumbItem) {
     if (item.onClick || item.href) {
       return (
         <Link
