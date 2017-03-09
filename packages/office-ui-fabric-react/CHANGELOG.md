@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 08 Mar 2017 04:07:13 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Mar 2017 00:16:39 GMT and should not be manually modified.
+
+## 1.14.3
+Thu, 09 Mar 2017 00:16:39 GMT
+
+### Patches
+
+- BaseButton: `rootProps` is now correctly mixed in with `props`. Please note that `rootProps` is deprecated and should not be used, but this fix simply ensures that the deprecated backwards compatibility works.
+- fix base picker shift + tab resolving the people, should move focus instead.
 
 ## 1.14.2
 Wed, 08 Mar 2017 04:07:13 GMT
