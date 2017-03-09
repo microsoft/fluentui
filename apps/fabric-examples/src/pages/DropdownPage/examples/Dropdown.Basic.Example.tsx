@@ -20,7 +20,6 @@ export class DropdownBasicExample extends React.Component<any, any> {
           label='Basic uncontrolled example:'
           id='Basicdrop1'
           ariaLabel='Basic dropdown example'
-          onChanged={ (item) => this.setState({ selectedItem: item }) }
           options={
             [
               { key: 'A', text: 'Option a' },
