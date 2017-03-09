@@ -55,15 +55,17 @@ export class BreadcrumbBasicExample extends React.Component<any, any> {
     console.log(`Breadcrumb item with key "${item.key}" has been clicked.`);
   }
 
-  private _onRenderBreadcrumbItem(item?: IBreadcrumbItem): React.ReactNode {
+  private _onRenderBreadcrumbItem(item: IBreadcrumbItem, defaultRender?: (item?: IBreadcrumbItem) => JSX.Element): JSX.Element {
     return (
-      <Link
-        className='ms-Breadcrumb-itemLink'
-        href={ item.href }
-        onClick={ item.onClick }>
-        <Icon iconName={ item.data.icon } />
-        <span>{ item.text }</span>
-      </Link>
+      <span>
+        <Link
+          className='ms-Breadcrumb-itemLink'
+          href={ item.href }
+          onClick={ item.onClick }>
+          <Icon iconName={ item.data.icon } />
+        </Link>
+        { defaultRender(item) }
+      </span>
     );
   }
 }

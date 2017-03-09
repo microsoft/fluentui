@@ -2,6 +2,7 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { Breadcrumb } from './Breadcrumb';
+import { IRenderFunction } from '../../Utilities';
 
 export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
 
@@ -22,7 +23,7 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
   maxDisplayedItems?: number;
 
   /** Method to call when trying to render an item. */
-  onRenderItem?: (item?: IBreadcrumbItem) => React.ReactNode;
+  onRenderItem?: IRenderFunction<IBreadcrumbItem>;
 }
 
 export interface IBreadcrumbItem {

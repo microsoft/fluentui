@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Implement onRenderItem in Breadcrumb Control",
+      "comment": "Breadcrumb: Implement onRenderItem",
       "type": "minor"
     }
   ],
