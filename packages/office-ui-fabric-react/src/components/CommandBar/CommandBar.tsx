@@ -170,6 +170,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
             aria-haspopup={ hasSubmenuItems(item) }
             role='menuitem'
             aria-label={ item.ariaLabel || item.name }
+            aria-disabled={ item.disabled }
           >
             { (hasIcon) ? this._renderIcon(item) : (null) }
             { (!!item.name) && <span className='ms-CommandBarItem-commandText'>{ item.name }</span> }
