@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 09 Mar 2017 06:33:00 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Mar 2017 16:17:07 GMT and should not be manually modified.
+
+## 2.0.2
+Thu, 09 Mar 2017 16:17:07 GMT
+
+### Patches
+
+- CommandBar: Set aria-disabled="true" for disabled menu items
+- Dropdown - Remove aria-activedescendant when not dropped
+- MessageBar - Fix timeout issue
 
 ## 2.0.1
 Thu, 09 Mar 2017 06:33:00 GMT
