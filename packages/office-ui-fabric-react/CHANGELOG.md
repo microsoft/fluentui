@@ -1,6 +1,50 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 09 Mar 2017 00:16:39 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Mar 2017 01:57:07 GMT and should not be manually modified.
+
+## 3.0.0
+Thu, 09 Mar 2017 01:57:07 GMT
+
+### Breaking changes
+
+- IMPORTANT: 
+
+This pull request converts ALL components over to use module css. What does this mean?
+
+* All classnames, such as ms-Button, will now be obfuscated to be unique.
+* Pages that host multiple versions of the same component will not stomp on each other and will be safe.
+* All existing class names are left intact, so current customizations should not break.
+
+Going forward, we will adhere to using local scoped module rules specifically to avoid breaking ourselves when multiple versions. Additionally we are evaluating a much more robust and contractual way of defining our styles.
+
+Problems that still exist:
+
+1. You must rely on class names to customize, and if those class names change, your customizations are broken.
+2. Specificity of our rules is an implicit contract that is easy to break. It is often unclear and partners usually give up early fighting the specificity war and use `!important` to stomp on it, which is not ideal. If a partner does use "more specific" rules today, tomorrow they many not be specific enough.
+3. RTL rules in particular are very specific. When something that was once not RTL specific is changed to RTL, it becomes implicitly more specific, and thus breaks specificity contract.
+4. The bundles themselves have a lot of duplicate css. Because we generate rtl rules and theme tokens at build time rather than at runtime, we must download extra code, which bulks up the download size.
+5. Fabric core rules, which we implicitly rely on, are a hard thing to chase. If your page depends on core 6, and you're also using react components, you will find bugs. We'd like to eliminate this dependency so that it is reliable and contractual to use components. If you use a `ContextualMenu`, it should animate without depending on fabric-core css to be loaded.
+
+We are planning to address these and evaluating library options. Issue being tracked here: #983 
+
+
+### Minor changes
+
+- Button variants: the styles are now scoped within css modules. All class names that were previously on buttons still remain unchanged, but the styles have moved into a type safe hashed class name. This allows 2 different versions of any Button variant to live on the same page without having rules collide. The style rules for the variants were also tweaked. Content is now aligned using flexbox, which means more consistent centering when injecting inline, inline-block, or block elements. Second, all line-heights were removed and content now correctly centers within buttons, so if you change the height of the container (e.g. you make CommandButtons render in 36px instead of 40px) things will center correctly.
+- Link: the styles are now scoped within css modules. All class names that were previously on buttons still remain unchanged, but the styles have moved into a type safe hashed class name.
+- Contextual Menu: allow developers to specify inline styles for menu items
+- pivot css module
+- Pickers: css modularized all the components
+
+### Patches
+
+- adds pseudo:after class to highContrastBorder mixin, renders border on hover
+- CommandBar: Improves accessibility by making borders visible in high contrast mode
+- Breadcrumb: styles moved to css modules to allow Breadcrumbs to live side by side other versions without classname conflicts. This should change no styling rules (no rules were modified) or impact existing customizations (no class names were removed.)
+- Calendar and PeoplePicker: styles moved to css modules to allow instances of Calendar and PeoplePicker to live on the same page containing newer/older versions without classname conflicts. This should change no styling rules (no rules were modified) or impact existing customizations (no class names were removed.
+- DetailsList and GroupedList: styles moved to css modules to allow components to live side by side other versions without class name conflicts. This should change no styling rules (no rules were modified) or impact existing customizations (no existing class names were removed.)
+- DetailsList: header sizing now works correctly in Safari. Resizing also now correctly captures mouse movement and soaks events during the resize.)
+- Update People Picker with module css.
 
 ## 1.14.3
 Thu, 09 Mar 2017 00:16:39 GMT
