@@ -1,15 +1,18 @@
 import * as React from 'react';
 import {
   BaseComponent,
+  autobind,
   css,
   getRTL
 } from '../../Utilities';
 import { IColumn, DetailsListLayoutMode, ColumnActionsMode } from './DetailsList.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { Check } from '../Check/Check';
+import { Check } from '../../Check';
+import { Icon } from '../../Icon';
+import { Layer } from '../../Layer';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
-import './DetailsHeader.scss';
+import styles from './DetailsHeader.scss';
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
@@ -83,7 +86,9 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     let { selection } = this.props;
 
     this._events.on(selection, SELECTION_CHANGE, this._onSelectionChanged);
-    this._events.on(this.refs.root, 'mousedown', this._onSizerDown);
+
+    // We need to use native on this to avoid MarqueeSelection from handling the event before us.
+    this._events.on(this.refs.root, 'mousedown', this._onRootMouseDown);
   }
 
   public componentWillReceiveProps(newProps) {
@@ -102,20 +107,20 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
       <div
         role='row'
         aria-label={ ariaLabel }
-        className={ css('ms-DetailsHeader', {
-          'is-allSelected': isAllSelected,
-          'is-selectAllHidden': selectAllVisibility === SelectAllVisibility.hidden,
-          'is-resizingColumn': !!columnResizeDetails && isSizing
+        className={ css('ms-DetailsHeader', styles.root, {
+          ['is-allSelected ' + styles.rootIsAllSelected]: isAllSelected,
+          ['is-selectAllHidden ' + styles.rootIsSelectAllHidden]: selectAllVisibility === SelectAllVisibility.hidden,
+          'is-resizingColumn': !!columnResizeDetails && isSizing,
         }) }
-        onMouseMove={ this._onMove.bind(this) }
-        onMouseUp={ this._onUp.bind(this) }
         ref='root'
+        onMouseMove={ this._onRootMouseMove }
         data-automationid='DetailsHeader'>
         <FocusZone ref='focusZone' direction={ FocusZoneDirection.horizontal }>
-          <div className='ms-DetailsHeader-cellWrapper' role='columnheader'>
+          <div className={ css('ms-DetailsHeader-cellWrapper', styles.cellWrapper) } role='columnheader'>
             { (selectAllVisibility === SelectAllVisibility.visible) ? (
               <button
-                className='ms-DetailsHeader-cell is-check'
+                type='button'
+                className={ css('ms-DetailsHeader-cell is-check', styles.cell, styles.cellIsCheck) }
                 onClick={ this._onSelectAllClicked }
                 aria-label={ ariaLabelForSelectAllCheckbox }
                 aria-pressed={ isAllSelected }
@@ -125,75 +130,99 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
             ) : null }
           </div>
           { groupNestingDepth > 0 ? (
-            <button className='ms-DetailsHeader-cell' onClick={ this._onToggleCollapseAll }>
-              <i className={ css('ms-DetailsHeader-collapseButton ms-Icon ms-Icon--ChevronDown', {
-                'is-collapsed': isAllCollapsed
-              }) } >
-              </i>
+            <button
+              type='button'
+              className={ css('ms-DetailsHeader-cell', styles.cell) }
+              onClick={ this._onToggleCollapseAll }>
+              <Icon
+                className={ css(
+                  'ms-DetailsHeader-collapseButton',
+                  styles.collapseButton,
+                  isAllCollapsed && ('is-collapsed ' + styles.collapseButtonIsCollapsed)
+                ) }
+                iconName='ChevronDown'
+              />
             </button>
           ) : (null) }
           { GroupSpacer({ count: groupNestingDepth - 1 }) }
           { columns.map((column, columnIndex) => (
-            <div key={ column.key } className='ms-DetailsHeader-cellSizeWrapper'>
-              <div
-                className='ms-DetailsHeader-cellWrapper'
-                role='columnheader'
-                aria-sort={ column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none' }>
-                <button
-                  key={ column.fieldName }
-                  disabled={ column.columnActionsMode === ColumnActionsMode.disabled }
-                  className={ css('ms-DetailsHeader-cell', column.headerClassName, {
-                    'is-actionable': column.columnActionsMode !== ColumnActionsMode.disabled,
-                    'is-empty': !column.name,
+            <div
+              key={ column.key }
+              className={ css('ms-DetailsHeader-cellWrapper', styles.cellWrapper) }
+              role='columnheader'
+              aria-sort={ column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none' }
+            >
+              <button
+                type='button'
+                key={ column.fieldName }
+                disabled={ column.columnActionsMode === ColumnActionsMode.disabled }
+                className={ css(
+                  'ms-DetailsHeader-cell',
+                  styles.cell,
+                  column.headerClassName, {
+                    ['is-actionable ' + styles.cellIsActionable]: column.columnActionsMode !== ColumnActionsMode.disabled,
+                    ['is-empty ' + styles.cellIsEmpty]: !column.name,
                     'is-icon-visible': column.isSorted || column.isGrouped || column.isFiltered
                   }) }
-                  style={ { width: column.calculatedWidth + INNER_PADDING } }
-                  onClick={ this._onColumnClick.bind(this, column) }
-                  onContextMenu={ this._onColumnContextMenu.bind(this, column) }
-                  aria-haspopup={ column.columnActionsMode === ColumnActionsMode.hasDropdown }
-                  aria-label={ column.ariaLabel || column.name }
-                  data-automationid='ColumnsHeaderColumn'
-                  data-item-key={ column.key }
-                >
+                style={ { width: column.calculatedWidth + INNER_PADDING } }
+                onClick={ this._onColumnClick.bind(this, column) }
+                onContextMenu={ this._onColumnContextMenu.bind(this, column) }
+                aria-haspopup={ column.columnActionsMode === ColumnActionsMode.hasDropdown }
+                aria-label={ column.ariaLabel || column.name }
+                data-automationid='ColumnsHeaderColumn'
+                data-item-key={ column.key }
+              >
 
-                  { column.isFiltered && (
-                    <i className='ms-Icon ms-Icon--filter' />
-                  ) }
+                { column.isFiltered && (
+                  <Icon className={ styles.nearIcon } iconName='Filter' />
+                ) }
 
-                  { column.isSorted && (
-                    <i className={ css('ms-Icon', {
-                      'ms-Icon--SortUp': !column.isSortedDescending,
-                      'ms-Icon--SortDown': column.isSortedDescending
-                    }) } />
-                  ) }
+                { column.isSorted && (
+                  <Icon className={ styles.nearIcon } iconName={ column.isSortedDescending ? 'SortDown' : 'SortUp' } />
+                ) }
 
-                  { column.isGrouped && (
-                    <i className='ms-Icon ms-Icon--GroupedDescending' />
-                  ) }
+                { column.isGrouped && (
+                  <Icon className={ styles.nearIcon } iconName='GroupedDescending' />
+                ) }
 
-                  { column.iconClassName && (
-                    <i className={ 'ms-Icon ' + column.iconClassName } />
-                  ) }
+                { column.iconClassName && (
+                  <Icon className={ styles.nearIcon } iconName={ column.iconClassName as any } />
+                ) }
 
-                  { column.name }
+                { column.name }
 
-                  { column.columnActionsMode === ColumnActionsMode.hasDropdown && (
-                    <i className='ms-DetailsHeader-filterChevron ms-Icon ms-Icon--ChevronDown' />
-                  ) }
-                </button>
-              </div>
-              { (column.isResizable) ? (
+                { column.columnActionsMode === ColumnActionsMode.hasDropdown && (
+                  <Icon
+                    className={ css('ms-DetailsHeader-filterChevron', styles.filterChevron) }
+                    iconName='ChevronDown'
+                  />
+                ) }
+              </button>
+              { (column.isResizable) && (
                 <div
                   data-sizer-index={ columnIndex }
-                  className={ css('ms-DetailsHeader-cell is-sizer', {
-                    'is-resizing': columnResizeDetails && columnResizeDetails.columnIndex === columnIndex && isSizing
-                  }) }
+                  className={ css(
+                    'ms-DetailsHeader-cell is-sizer',
+                    styles.cell,
+                    styles.cellIsSizer,
+                    {
+                      ['is-resizing ' + styles.cellIsResizing]: isSizing && columnResizeDetails.columnIndex === columnIndex
+                    }) }
                   onDoubleClick={ this._onSizerDoubleClick.bind(this, columnIndex) }
                 />
-              ) : (null) }
+              ) }
             </div>
           )) }
         </FocusZone>
+        { isSizing && (
+          <Layer>
+            <div
+              className={ css(isSizing && styles.sizingOverlay) }
+              onMouseMove={ this._onSizerMouseMove }
+              onMouseUp={ this._onSizerMouseUp }
+            />
+          </Layer>
+        ) }
       </div>
     );
   }
@@ -221,68 +250,16 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
   /**
    * Called when the select all toggle is clicked.
    */
+
+  @autobind
   private _onSelectAllClicked() {
     let { selection } = this.props;
 
     selection.toggleAllSelected();
   }
 
-  /**
-   * mouse move event handler in the header
-   * it will set isSizing state to true when user clicked on the sizer and move the mouse.
-   *
-   * @private
-   * @param {React.MouseEvent} ev (mouse move event)
-   */
-  private _onMove(ev: React.MouseEvent<HTMLElement>) {
-    let {
-      // use buttons property here since ev.button in some edge case is not upding well during the move.
-      // but firefox doesn't support it, so we set the default value when it is not defined.
-      buttons = MOUSEMOVE_PRIMARY_BUTTON
-    } = ev;
-
-    let { onColumnIsSizingChanged, columns } = this.props;
-    let { columnResizeDetails, isSizing } = this.state;
-
-    if (columnResizeDetails) {
-      if (buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
-        // cancel mouse down event and return early when the primary button is not pressed
-        this._onUp(ev);
-        return;
-      }
-
-      if (!isSizing && ev.clientX !== columnResizeDetails.originX) {
-        isSizing = true;
-
-        this._events.on(window, 'mousemove', this._onSizerMove, true);
-        this._events.on(window, 'mouseup', this._onSizerUp, true);
-
-        this.setState({ isSizing: isSizing });
-
-        if (onColumnIsSizingChanged) {
-          onColumnIsSizingChanged(columns[columnResizeDetails.columnIndex], true);
-        }
-
-      }
-    }
-  }
-
-  /**
-   * mouse up event handler in the header
-   * clear the resize related state.
-   * This is to ensure we can catch double click event
-   *
-   * @private
-   * @param {React.MouseEvent} ev (mouse up event)
-   */
-  private _onUp(ev: React.MouseEvent<HTMLElement>) {
-    this.setState({
-      columnResizeDetails: null,
-      isSizing: false
-    });
-  }
-
-  private _onSizerDown(ev: MouseEvent) {
+  @autobind
+  private _onRootMouseDown(ev: MouseEvent) {
     let columnIndexAttr = (ev.target as HTMLElement).getAttribute('data-sizer-index');
     let columnIndex = Number(columnIndexAttr);
     let { columns } = this.props;
@@ -304,54 +281,71 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
     ev.stopPropagation();
   }
 
-  private _onSelectionChanged() {
-    let isAllSelected = this.props.selection.isAllSelected();
+  @autobind
+  private _onRootMouseMove(ev: React.MouseEvent<HTMLElement>) {
+    let { columnResizeDetails, isSizing } = this.state;
 
-    if (this.state.isAllSelected !== isAllSelected) {
-      this.setState({
-        isAllSelected: isAllSelected
-      });
+    if (columnResizeDetails && !isSizing && ev.clientX !== columnResizeDetails.originX) {
+      this.setState({ isSizing: true });
     }
   }
 
-  private _onSizerMove(ev: React.MouseEvent<HTMLElement>) {
+  /**
+   * mouse move event handler in the header
+   * it will set isSizing state to true when user clicked on the sizer and move the mouse.
+   *
+   * @private
+   * @param {React.MouseEvent} ev (mouse move event)
+   */
+  @autobind
+  private _onSizerMouseMove(ev: React.MouseEvent<HTMLElement>) {
     let {
       // use buttons property here since ev.button in some edge case is not upding well during the move.
       // but firefox doesn't support it, so we set the default value when it is not defined.
-      buttons = MOUSEMOVE_PRIMARY_BUTTON
+      buttons
     } = ev;
-
+    let { onColumnIsSizingChanged, onColumnResized, columns } = this.props;
     let { columnResizeDetails } = this.state;
 
-    if (columnResizeDetails) {
-      if (buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
-        // cancel mouse down event and return early when the primary button is not pressed
-        this._onSizerUp();
-        return;
-      }
+    if (buttons !== undefined && buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
+      // cancel mouse down event and return early when the primary button is not pressed
+      this._onSizerMouseUp(ev);
+      return;
+    }
 
-      let { onColumnResized, columns } = this.props;
-
-      if (onColumnResized) {
-        let movement = ev.clientX - columnResizeDetails.originX;
-
-        if (getRTL()) {
-          movement = -movement;
-        }
-
-        onColumnResized(
-          columns[columnResizeDetails.columnIndex],
-          columnResizeDetails.columnMinWidth + movement
-        );
+    if (ev.clientX !== columnResizeDetails.originX) {
+      if (onColumnIsSizingChanged) {
+        onColumnIsSizingChanged(columns[columnResizeDetails.columnIndex], true);
       }
     }
+
+    if (onColumnResized) {
+      let movement = ev.clientX - columnResizeDetails.originX;
+
+      if (getRTL()) {
+        movement = -movement;
+      }
+
+      onColumnResized(
+        columns[columnResizeDetails.columnIndex],
+        columnResizeDetails.columnMinWidth + movement
+      );
+    }
+
   }
 
-  private _onSizerUp() {
+  /**
+   * mouse up event handler in the header
+   * clear the resize related state.
+   * This is to ensure we can catch double click event
+   *
+   * @private
+   * @param {React.MouseEvent} ev (mouse up event)
+   */
+  @autobind
+  private _onSizerMouseUp(ev: React.MouseEvent<HTMLElement>) {
     let { columns, onColumnIsSizingChanged } = this.props;
     let { columnResizeDetails } = this.state;
-
-    this._events.off(window);
 
     this.setState({
       columnResizeDetails: null,
@@ -360,6 +354,16 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
 
     if (onColumnIsSizingChanged) {
       onColumnIsSizingChanged(columns[columnResizeDetails.columnIndex], false);
+    }
+  }
+
+  private _onSelectionChanged() {
+    let isAllSelected = this.props.selection.isAllSelected();
+
+    if (this.state.isAllSelected !== isAllSelected) {
+      this.setState({
+        isAllSelected: isAllSelected
+      });
     }
   }
 

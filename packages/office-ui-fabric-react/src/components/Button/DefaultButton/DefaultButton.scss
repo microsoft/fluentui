@@ -1,63 +1,48 @@
-@import '../../../common/common';
-@import '../ButtonCore/ButtonCoreVars';
-
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
-
 //
 // Office UI Fabric
 // --------------------------------------------------
 // Default Button styles
 
-:global {
-  .ms-Button.ms-Button--default {
-    background-color: $ms-color-neutralLighter;
-    border: 1px solid $ms-color-neutralLighter;
-    min-width: $button-core-default-minWidth;
-    color: $ms-color-neutralPrimary;
+@import '../../../common/common';
+@import '../ButtonCore/ButtonCore';
+@import '../ButtonCore/ButtonCoreVars';
 
-    .ms-Button-label,
-    .ms-Button-icon {
-      height: $button-core-default-height;
-      line-height: $button-core-default-height;
-    }
+.root {
+  @include button-core-root-styles;
 
-    &:hover {
-      background-color: $ms-color-neutralLight;
-      border-color: $ms-color-neutralLight;
-      color: $ms-color-black;
-    }
+  background-color: $ms-color-neutralLighter;
+  color: $ms-color-neutralPrimary;
 
-    &:focus {
-      background-color: $ms-color-neutralLight;
-      border-color: $ms-color-neutralLighter;
-      outline: 1px solid transparent;
-      color: $ms-color-black;
+  min-width: $button-core-default-minWidth;
+  height: $button-core-default-height;
 
-    }
+  font-weight: $ms-font-weight-semibold;
+  font-size: $ms-font-size-m;
+}
 
-    &:active {
-      background-color: $ms-color-themePrimary;
-      border-color: $ms-color-themePrimary;
-      color: $ms-color-white;
-    }
+.label {
+  @include button-core-label-styles;
+}
 
-    .ms-Button-label {
-      font-weight: $ms-font-weight-semibold;
-      font-size: $ms-font-size-m;
-    }
+.icon {
+  @include button-core-icon-styles;
+}
 
-    &:disabled, &.disabled {
-      @include core-button-disabled;
-    }
+.isEnabled {
+
+  &:hover {
+    background-color: $ms-color-neutralLight;
+    color: $ms-color-black;
   }
 
-  .ms-Fabric.is-focusVisible .ms-Button {
-    &:focus {
-      color: $ms-color-black;
-
-      &:before {
-        border-color: $ms-color-themePrimary;
-      }
-    }
+  &:active {
+    background-color: $ms-color-themePrimary;
+    color: $ms-color-white;
   }
 }
+
+.isDisabled {
+  @include button-core-disabled;
+}
+
