@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 10 Mar 2017 16:16:07 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Mar 2017 20:41:05 GMT and should not be manually modified.
+
+## 2.2.0
+Fri, 10 Mar 2017 20:41:04 GMT
+
+### Minor changes
+
+- Dropdown: Adding a required property which will be passed into the Label.
+- Adjusting React peer dependency to include v16.0.0-0 in the acceptable range for testing with v16.
 
 ## 2.1.1
 Fri, 10 Mar 2017 16:16:07 GMT
