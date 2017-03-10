@@ -206,9 +206,9 @@ $CommandBarHeight: 40px;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 0 16px 20px;
-  overflow-y: auto;
-
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
   .rootHasCloseButton & {
     top: $CommandBarHeight;
   }
@@ -217,27 +217,54 @@ $CommandBarHeight: 40px;
 
   /* Force hw accelleration on scrollable region */
   transform: translateZ(0);
+}
+
+.header, .content, .footerContainer {
+  padding-left: 16px;
+  padding-right: 16px;
 
   @media (min-width: $ms-screen-lg-min) {
-    padding: 0 32px 20px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
 
   @media (min-width: $ms-screen-xxl-min) {
-    padding: 0 40px 20px;
+    padding-left: 40px;
+    padding-right: 40px;
   }
+}
+
+.header {
+  margin: 14px 0;
+  @media (min-width: $ms-screen-xl-min) {
+    margin-top: 30px;
+  }
+}
+
+.content {
+  margin-bottom: 0;
+  overflow-y: auto;
+}
+
+.footer {
+  border-top: 1px solid transparent;
+}
+
+.footerContainer {
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+.footerIsSticky {
+  background: $ms-color-white;
+  border-top-color: $ms-color-neutralLight;
 }
 
 // Header text at the top of the panel.
 .headerText {
   @include ms-font-xl;
   color: $ms-color-neutralPrimary;
-  margin: 10px 0;
-  padding: 4px 0;
   line-height: 1;
+  margin: 0;
   text-overflow: ellipsis;
   overflow: hidden;
-
-  @media (min-width: $ms-screen-xl-min) {
-    margin-top: 30px;
-  }
 }

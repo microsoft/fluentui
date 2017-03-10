@@ -1,8 +1,15 @@
 import * as React from 'react';
 import { Panel } from './Panel';
+import { IRenderFunction } from '../../Utilities';
 import { ILayerProps } from '../../Layer';
 
 export interface IPanelProps extends React.Props<Panel> {
+
+  onRenderNavigation?: IRenderFunction<IPanelProps>;
+  onRenderHeader?: IRenderFunction<IPanelProps>;
+  onRenderBody?: IRenderFunction<IPanelProps>;
+  onRenderFooter?: IRenderFunction<IPanelProps>;
+
   /**
   * Whether the panel is displayed.
   * @default false
