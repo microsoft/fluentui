@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "2.1.1",
+      "tag": "office-ui-fabric-react_v2.1.1",
+      "date": "Fri, 10 Mar 2017 16:16:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Aleksandr Gembinski <v-algemb@microsoft.com>",
+            "commit": "d2c93b5014d3b8e65952a3a8da0c7bb8170f69d0",
+            "comment": "Dropdown: Updates the `aria-disabled` attribute based on disabled state."
+          }
+        ]
+      }
+    },
+    {
       "version": "2.1.0",
       "tag": "office-ui-fabric-react_v2.1.0",
       "date": "Thu, 09 Mar 2017 22:06:44 GMT",
