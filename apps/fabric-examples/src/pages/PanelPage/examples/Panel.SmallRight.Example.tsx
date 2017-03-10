@@ -15,22 +15,22 @@ export class PanelSmallRightExample extends React.Component<any, any> {
   public render() {
     return (
       <div>
-        <Button description='Opens the Sample Panel' onClick={ this._showPanel.bind(this) }>Open Panel</Button>
+        <Button description='Opens the Sample Panel' onClick={ this._onShowPanel }>Open Panel</Button>
         <Panel
           isOpen={ this.state.showPanel }
           type={ PanelType.smallFixedFar }
-          onDismiss={ this._closePanel.bind(this) }
+          onDismiss={ this._onClosePanel }
           headerText='Panel - Small, right-aligned, fixed, with footer'
           onRenderFooterContent={ () => {
             return (
               <div>
                 <PrimaryButton
-                  onClick={ this._closePanel.bind(this) }
+                  onClick={ this._onClosePanel }
                   style={ { 'marginRight': '8px' } } >
                   Save
                 </PrimaryButton>
                 <DefaultButton
-                  onClick={ this._closePanel.bind(this) }
+                  onClick={ this._onClosePanel }
                 >
                   Cancel
                 </DefaultButton>
@@ -69,10 +69,11 @@ export class PanelSmallRightExample extends React.Component<any, any> {
     );
   }
 
-  private _showPanel() {
-    this.setState({ showPanel: true });
-  }
-  private _closePanel() {
+  private _onClosePanel = () => {
     this.setState({ showPanel: false });
+  }
+
+  private _onShowPanel = () => {
+    this.setState({ showPanel: true });
   }
 }
