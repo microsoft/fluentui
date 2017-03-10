@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 09 Mar 2017 22:06:44 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Mar 2017 20:41:05 GMT and should not be manually modified.
+
+## 1.1.0
+Fri, 10 Mar 2017 20:41:05 GMT
+
+### Minor changes
+
+- Adjusting React peer dependency to i
 
 ## 1.0.6
 Thu, 09 Mar 2017 22:06:44 GMT
