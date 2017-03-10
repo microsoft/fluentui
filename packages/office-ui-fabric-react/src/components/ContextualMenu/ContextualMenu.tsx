@@ -307,7 +307,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             'ms-ContextualMenu-link',
             styles.link,
             (item.isDisabled || item.disabled) && 'is-disabled') }
-          role='menuitem'
           style={ item.style }
           onClick={ this._onAnchorClick.bind(this, item) }>
           { (hasIcons) ? (
@@ -342,7 +341,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       onMouseLeave: this._onMouseLeave,
       onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
       disabled: item.isDisabled || item.disabled,
-      role: 'menuitem',
       href: item.href,
       title: item.title,
       'aria-label': ariaLabel,
