@@ -219,7 +219,7 @@ $CommandBarHeight: 40px;
   transform: translateZ(0);
 }
 
-.header, .content, .footerContainer {
+.header, .content, .footerInner {
   padding-left: 16px;
   padding-right: 16px;
 
@@ -236,6 +236,8 @@ $CommandBarHeight: 40px;
 
 .header {
   margin: 14px 0;
+  // Ensure that title doesn't shrink if screen is too small
+  flex-grow: 0;
   @media (min-width: $ms-screen-xl-min) {
     margin-top: 30px;
   }
@@ -247,10 +249,13 @@ $CommandBarHeight: 40px;
 }
 
 .footer {
+  // Ensure that footer doesn't shrink if screen is too small
+  flex-grow: 0;
   border-top: 1px solid transparent;
+  transition: border $ms-duration3 $ms-ease2;
 }
 
-.footerContainer {
+.footerInner {
   padding-bottom: 20px;
   padding-top: 20px;
 }

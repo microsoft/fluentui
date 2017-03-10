@@ -14,7 +14,6 @@ import { IPanelProps, PanelType } from './Panel.Props';
 import { Layer } from '../Layer/Layer';
 import { Overlay } from '../../Overlay';
 import { Popup } from '../../Popup';
-import { PrimaryButton, DefaultButton } from '../../Button';
 import { IconButton } from '../../Button';
 import styles from './Panel.scss';
 
@@ -187,15 +186,9 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
                 { onRenderNavigation(this.props, this._onRenderNavigation) }
               </div>
               <div className={ css('ms-Panel-contentInner', styles.contentInner) } >
-                <div className={ css('ms-Panel-header', styles.header) }>
-                  { onRenderHeader(this.props, this._onRenderHeader) }
-                </div>
-                <div className={ css('ms-Panel-content', styles.content) } ref='content'>
-                  { onRenderBody(this.props, this._onRenderBody) }
-                </div>
-                <div className={ css('ms-Panel-footer', styles.footer, footerIsSticky && styles.footerIsSticky) } >
-                  { onRenderFooter(this.props, this._onRenderFooter) }
-                </div>
+                { onRenderHeader(this.props, this._onRenderHeader) }
+                { onRenderBody(this.props, this._onRenderBody) }
+                { onRenderFooter(this.props, this._onRenderFooter) }
               </div>
             </FocusTrapZone>
           </div>
@@ -239,25 +232,33 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
     } = props;
     return (
       headerText &&
-      <p className={ css('ms-Panel-headerText', styles.headerText, headerClassName) } id={ headerTextId }>
-        { headerText }
-      </p>
+      <div className={ css('ms-Panel-header', styles.header) }>
+        <p className={ css('ms-Panel-headerText', styles.headerText, headerClassName) } id={ headerTextId }>
+          { headerText }
+        </p>
+      </div>
     );
   }
 
   @autobind
   private _onRenderBody(props): JSX.Element {
     return (
-      props.children
+      <div className={ css('ms-Panel-content', styles.content) } ref='content'>
+        { props.children }
+      </div>
     );
   }
 
   @autobind
   private _onRenderFooter(props): JSX.Element {
+    let { footerIsSticky } = this.state;
+    let { onRenderFooterContent = null } = this.props;
     return (
-      <div className={ css('ms-Panel-footerContainer', styles.footerContainer) }>
-        <PrimaryButton>Save</PrimaryButton>
-        <DefaultButton>Cancel</DefaultButton>
+      onRenderFooterContent != null &&
+      <div className={ css('ms-Panel-footer', styles.footer, footerIsSticky && styles.footerIsSticky) } >
+        <div className={ css('ms-Panel-footerInner', styles.footerInner) }>
+          { onRenderFooterContent() }
+        </div>
       </div>
     );
   }
@@ -266,16 +267,6 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
     let height = this.refs.content.clientHeight;
     let innerHeight = this.refs.content.scrollHeight;
     let footerIsSticky = false;
-
-
-
-    // for (let i = 0; i < innerContent.children.length; i++) {
-    //   let childStyles = window.getComputedStyle(innerContent.children[i]);
-    //   totalHeight = totalHeight + parseInt(childStyles.height, 10) + parseInt(childStyles.marginTop, 10) + parseInt(childStyles.marginBottom, 10);
-    // }
-
-    // footerIsSticky = totalHeight > parseInt(innerContentStyle.height, 10) ? true : false;
-
     this.setState({
       footerIsSticky: height < innerHeight ? true : false
     });
