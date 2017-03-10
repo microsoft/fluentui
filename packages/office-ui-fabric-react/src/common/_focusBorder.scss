@@ -37,3 +37,23 @@
     outline: 1px solid $focusedBorderColor;
   }
 }
+
+// When focus is set using the keyboard, in high contrast apply an outline.
+@mixin high-Contrast-Focus-Border($color) {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    // Make the content not respond to mouse/touch event. Reference: https://css-tricks.com/almanac/properties/p/pointer-events/
+    pointer-events: none;
+
+    // Add focus border with $color
+    border: 1px solid $color;
+  }
+}
