@@ -39,7 +39,7 @@
 }
 
 // When focus is set using the keyboard, in high contrast apply an outline.
-@mixin high-Contrast-Focus-Border($color) {
+@mixin pseudo-border($color) {
   position: relative;
 
   &::after {

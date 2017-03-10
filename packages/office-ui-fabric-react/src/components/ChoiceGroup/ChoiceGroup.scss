@@ -322,5 +322,5 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 }
 
 :global(.ms-Fabric.is-focusVisible) .choiceFieldIsInFocus {
-   @include high-Contrast-Focus-Border($ms-color-neutralPrimary);
+   @include pseudo-border($ms-color-neutralPrimary);
 }
