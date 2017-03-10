@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Dropdown: Adding a required property which will be passed into the Label.",
+      "type": "minor"
+    }
+  ],
+  "email": "ihor3000@gmail.com"
+}
