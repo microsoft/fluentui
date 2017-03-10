@@ -18,7 +18,7 @@ import { IconButton } from '../../Button';
 import styles from './Panel.scss';
 
 export interface IPanelState {
-  footerIsSticky?: boolean;
+  isFooterSticky?: boolean;
   isOpen?: boolean;
   isAnimatingOpen?: boolean;
   isAnimatingClose?: boolean;
@@ -42,9 +42,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
     type: PanelType.smallFixedFar,
   };
 
-  public refs: {
-    content: HTMLElement;
-  };
+  private _content: HTMLElement;
 
   constructor(props: IPanelProps) {
     super(props);
@@ -53,7 +51,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
     this._onPanelRef = this._onPanelRef.bind(this);
 
     this.state = {
-      footerIsSticky: false,
+      isFooterSticky: false,
       isOpen: !!props.isOpen,
       isAnimatingOpen: props.isOpen,
       isAnimatingClose: false,
@@ -115,7 +113,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
       onRenderBody = this._onRenderBody,
       onRenderFooter = this._onRenderFooter
     } = this.props;
-    let { isOpen, isAnimatingOpen, isAnimatingClose, id, footerIsSticky } = this.state;
+    let { isOpen, isAnimatingOpen, isAnimatingClose, id, isFooterSticky } = this.state;
     let isLeft = type === PanelType.smallFixedNear ? true : false;
     let isRTL = getRTL();
     let isOnRightSide = isRTL ? isLeft : !isLeft;
@@ -243,7 +241,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
   @autobind
   private _onRenderBody(props): JSX.Element {
     return (
-      <div className={ css('ms-Panel-content', styles.content) } ref='content'>
+      <div className={ css('ms-Panel-content', styles.content) } ref={ this._resolveRef('_content') }>
         { props.children }
       </div>
     );
@@ -251,11 +249,11 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
 
   @autobind
   private _onRenderFooter(props): JSX.Element {
-    let { footerIsSticky } = this.state;
+    let { isFooterSticky } = this.state;
     let { onRenderFooterContent = null } = this.props;
     return (
       onRenderFooterContent != null &&
-      <div className={ css('ms-Panel-footer', styles.footer, footerIsSticky && styles.footerIsSticky) } >
+      <div className={ css('ms-Panel-footer', styles.footer, isFooterSticky && styles.footerIsSticky) } >
         <div className={ css('ms-Panel-footerInner', styles.footerInner) }>
           { onRenderFooterContent() }
         </div>
@@ -264,11 +262,12 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
   }
 
   private _updateFooterPosition() {
-    let height = this.refs.content.clientHeight;
-    let innerHeight = this.refs.content.scrollHeight;
-    let footerIsSticky = false;
+    let _content = this._content;
+    let height = _content.clientHeight;
+    let innerHeight = _content.scrollHeight;
+
     this.setState({
-      footerIsSticky: height < innerHeight ? true : false
+      isFooterSticky: height < innerHeight ? true : false
     });
   }
 
