@@ -116,6 +116,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           aria-label={ ariaLabel || label }
           aria-describedby={ id + '-option' }
           aria-activedescendant={ isOpen && selectedIndex >= 0 ? (this._id + '-list' + selectedIndex) : null }
+          aria-disabled={ disabled }
         >
           <span
             id={ id + '-option' }
