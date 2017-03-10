@@ -3,17 +3,17 @@
     {
       "packageName": "office-ui-fabric-react",
       "comment": "Adjusting React peer dependency to include v16.0.0-0 in the acceptable range for testing with v16.",
-      "type": "patch"
+      "type": "minor"
     },
     {
       "packageName": "@uifabric/utilities",
       "comment": "Adjusting React peer dependency to i",
-      "type": "patch"
+      "type": "minor"
     },
     {
       "packageName": "@uifabric/example-app-base",
       "comment": "Adjusting React peer dependency to i",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "email": "dzearing@microsoft.com"
