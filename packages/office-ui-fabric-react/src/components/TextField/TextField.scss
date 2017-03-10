@@ -95,10 +95,6 @@
   @include input-placeholder {
     color: $ms-color-neutralSecondary;
   }
-
-  &::-ms-clear {
-    display: none;
-  }
 }
 
 .description {
