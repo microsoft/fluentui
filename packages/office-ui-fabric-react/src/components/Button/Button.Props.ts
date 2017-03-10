@@ -39,6 +39,11 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
   ariaDescription?: string;
 
   /**
+  * Text to render button label. If text is supplied, it will override any string in button children. Other children components will be passed through after the text.
+  */
+  text?: string;
+
+  /**
    * The button icon shown in command or hero type.
    * Deprecated at v1.2.3, to be removed at >= v2.0.0. Use IconButton instead.
    */
