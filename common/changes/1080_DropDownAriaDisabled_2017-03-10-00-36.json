@@ -2,18 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DropDown Component: Adds aria-disabled attribut to disabled component",
+      "comment": "Dropdown: Updates the `aria-disabled` attribute based on disabled state.",
       "type": "patch"
-    },
-    {
-      "comment": "",
-      "packageName": "@uifabric/utilities",
-      "type": "none"
-    },
-    {
-      "comment": "",
-      "packageName": "@uifabric/example-app-base",
-      "type": "none"
     }
   ],
   "email": "v-algemb@microsoft.com"
