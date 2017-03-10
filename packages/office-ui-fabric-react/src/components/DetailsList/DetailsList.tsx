@@ -504,7 +504,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     if (layoutMode === DetailsListLayoutMode.fixedColumns) {
       adjustedColumns = this._getFixedColumns(newColumns);
     } else {
-      adjustedColumns = this._getJustifiedColumns(newColumns, viewportWidth);
+      adjustedColumns = this._getJusotifiedColumns(newColumns, viewportWidth);
     }
 
     // Preserve adjusted column calculated widths.
@@ -593,7 +593,9 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
 
   private _onColumnResized(resizingColumn: IColumn, newWidth: number) {
     let newCalculatedWidth = Math.max(resizingColumn.minWidth || MIN_COLUMN_WIDTH, newWidth);
-    this.props.onColumnResize(resizingColumn, newCalculatedWidth);
+    if (this.props.onColumnResize) {
+      this.props.onColumnResize(resizingColumn, newCalculatedWidth);
+    }
     this._columnOverrides[resizingColumn.key].calculatedWidth = newCalculatedWidth;
     this._adjustColumns(this.props, true, DetailsListLayoutMode.fixedColumns);
     this._forceListUpdates();
