@@ -313,6 +313,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
           if (ev.which === KeyCodes.enter) {
             this._onInvokeClick(ev, index);
           } else if (ev.which === KeyCodes.space) {
+            ev.preventDefault();
             this._onToggleClick(ev, index);
           }
           break;
