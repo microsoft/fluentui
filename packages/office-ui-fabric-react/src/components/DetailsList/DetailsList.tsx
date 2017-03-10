@@ -592,9 +592,9 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   }
 
   private _onColumnResized(resizingColumn: IColumn, newWidth: number) {
-    this._columnOverrides[resizingColumn.key].calculatedWidth = Math.max(
-      resizingColumn.minWidth || MIN_COLUMN_WIDTH,
-      newWidth);
+    let newCalculatedWidth = Math.max(resizingColumn.minWidth || MIN_COLUMN_WIDTH, newWidth);
+    this.props.onColumnResize(resizingColumn, newCalculatedWidth);
+    this._columnOverrides[resizingColumn.key].calculatedWidth = newCalculatedWidth;
     this._adjustColumns(this.props, true, DetailsListLayoutMode.fixedColumns);
     this._forceListUpdates();
   }
