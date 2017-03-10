@@ -189,12 +189,19 @@
       &::before {
         background-color: transparent;
         transition: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        content: '';
+        height: auto;
 
         @media screen and (-ms-high-contrast: active) {
-          border-bottom: 2px solid $ms-color-white;
+          border: 1px solid $ms-color-white;
         }
         @media screen and (-ms-high-contrast: black-on-white) {
-          border-bottom: 2px solid $ms-color-black;
+          border: 1px solid $ms-color-black;
         }
       }
     }
