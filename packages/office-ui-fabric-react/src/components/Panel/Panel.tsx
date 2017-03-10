@@ -44,7 +44,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
 
   public refs: {
     content: HTMLElement;
-  }
+  };
 
   constructor(props: IPanelProps) {
     super(props);
