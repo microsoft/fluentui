@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Dropdown: Updates the `aria-disabled` attribute based on disabled state.",
+      "type": "patch"
+    }
+  ],
+  "email": "v-algemb@microsoft.com"
+}
