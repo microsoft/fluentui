@@ -22,6 +22,11 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@uifabric/example-component",
+      "projectFolder": "packages/example-component",
+      "shouldPublish": false
+    },
+    {
       "packageName": "todo-app",
       "projectFolder": "apps/todo-app"
     },
