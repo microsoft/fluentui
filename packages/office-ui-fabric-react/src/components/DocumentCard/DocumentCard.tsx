@@ -25,7 +25,7 @@ export class DocumentCard extends React.Component<IDocumentCardProps, any> {
     }
 
     // if this element is actionable it should have an aria role
-    let role = actionable ? (onClick ? "button" : "link") : null;
+    let role = actionable ? (onClick ? 'button' : 'link') : null;
     let tabIndex = actionable ? 0 : null;
 
     return (
@@ -59,7 +59,7 @@ export class DocumentCard extends React.Component<IDocumentCardProps, any> {
   @autobind
   private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>): void {
     if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
-        this._onAction(ev);
+      this._onAction(ev);
     }
   }
 
