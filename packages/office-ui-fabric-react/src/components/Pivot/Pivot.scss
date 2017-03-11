@@ -94,10 +94,11 @@
     &::before {
       background-color: $ms-color-themePrimary;
 
-       @media screen and (-ms-high-contrast: active) {
-         background-color: transparent;
-         border-bottom: 2px solid $ms-color-white;
-         }
+      @media screen and (-ms-high-contrast: active) {
+        background-color: transparent;
+        border-bottom: 2px solid $ms-color-white;
+      }
+      
       @media screen and (-ms-high-contrast: black-on-white) {
         background-color: transparent;
         border-bottom: 2px solid $ms-color-black;
