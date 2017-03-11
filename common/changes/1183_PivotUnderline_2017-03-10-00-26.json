@@ -2,18 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Pivot Component: Fixes selected underline not visible in HC mode",
+      "comment": "Pivot: selected underline is now visible in high contrast mode.",
       "type": "patch"
-    },
-    {
-      "comment": "",
-      "packageName": "@uifabric/utilities",
-      "type": "none"
-    },
-    {
-      "comment": "",
-      "packageName": "@uifabric/example-app-base",
-      "type": "none"
     }
   ],
   "email": "v-algemb@microsoft.com"
