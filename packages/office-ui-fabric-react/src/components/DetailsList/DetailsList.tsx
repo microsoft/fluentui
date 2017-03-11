@@ -504,7 +504,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     if (layoutMode === DetailsListLayoutMode.fixedColumns) {
       adjustedColumns = this._getFixedColumns(newColumns);
     } else {
-      adjustedColumns = this._getJusotifiedColumns(newColumns, viewportWidth);
+      adjustedColumns = this._getJustifiedColumns(newColumns, viewportWidth);
     }
 
     // Preserve adjusted column calculated widths.
