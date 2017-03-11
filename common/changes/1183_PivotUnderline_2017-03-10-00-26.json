@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Pivot: selected underline is now visible in high contrast mode.",
+      "type": "patch"
+    }
+  ],
+  "email": "v-algemb@microsoft.com"
+}
