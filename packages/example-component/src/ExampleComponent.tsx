@@ -24,6 +24,7 @@ export class ExampleComponent extends BaseComponent<IExampleComponentProps, {}> 
   public render() {
     return (
       <div className={ styles.root }>
+
         <div>I am ExampleComponent</div>
         { this.props.children }
       </div>
