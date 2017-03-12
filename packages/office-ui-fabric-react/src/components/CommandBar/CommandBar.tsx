@@ -172,7 +172,10 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
 
     return <div className={ css('ms-CommandBarItem', styles.item, item.className) } key={ itemKey } ref={ itemKey }>
       { (() => {
-        if (item.onClick || hasSubmenuItems(item)) {
+        if (item.onRender) {
+          return item.onRender(item);
+        }
+        else if (item.onClick || hasSubmenuItems(item)) {
           return <button
             { ...getNativeProps(item, buttonProperties) }
             id={ this._id + item.key }
