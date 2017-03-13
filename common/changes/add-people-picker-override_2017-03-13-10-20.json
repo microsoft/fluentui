@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "PeoplePicker: Add rendering overrides",
+      "type": "minor"
+    }
+  ],
+  "email": "hross@hross.net"
+}

@@ -9,19 +9,28 @@ import {
   anchorProperties
 } from '../../Utilities';
 import { IButtonProps, IButton } from './Button.Props';
+import styles from './BaseButton.scss';
+
+export interface IBaseButtonClassNames {
+  base: string;
+  variant: string;
+  isDisabled: string;
+  isEnabled: string;
+  description?: string;
+  flexContainer?: string;
+  icon?: string;
+  label?: string;
+  root?: string;
+}
 
 export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButton {
 
-  /**
-   * _baseClassName can be overridden by subclasses to provide a unique class prefix to the class name used for
-   * sub parts of the render template.
-   */
-  protected _baseClassName = 'ms-Button';
-
-  /**
-   * _variantClassName can be overridden by subclasses to add an extra default class name to the root element.
-   */
-  protected _variantClassName = '';
+  protected classNames: IBaseButtonClassNames = {
+    base: 'ms-Button',
+    variant: '',
+    isEnabled: '',
+    isDisabled: ''
+  };
 
   private _buttonElement: HTMLButtonElement;
   private _labelId: string;
@@ -36,12 +45,12 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
   }
 
   public render(): JSX.Element {
-    const { className, description, ariaLabel, ariaDescription, href, disabled } = this.props;
+    const { description, ariaLabel, ariaDescription, href, disabled } = this.props;
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
     const renderAsAnchor: boolean = !!href;
     const tag = renderAsAnchor ? 'a' : 'button';
     const nativeProps = getNativeProps(
-      this.props.rootProps || this.props,
+      assign({}, this.props.rootProps, this.props),
       renderAsAnchor ? anchorProperties : buttonProperties,
       [
         'disabled' // Let disabled buttons be focused and styled as disabled.
@@ -65,15 +74,22 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
       nativeProps,
       {
         className: css(
-          className,
-          this._baseClassName,
-          this._variantClassName,
-          { 'disabled': disabled }
-        ),
+          styles.root,
+          this.props.className,
+          this.classNames.base,
+          this.classNames.variant,
+          this.classNames.root,
+          {
+            'disabled': disabled,
+            [this.classNames.isDisabled]: disabled,
+            [this.classNames.isEnabled]: !disabled
+          }),
         ref: this._resolveRef('_buttonElement'),
+        'disabled': disabled,
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabel ? null : _labelId,
-        'aria-describedby': ariaDescribedBy
+        'aria-describedby': ariaDescribedBy,
+        'aria-disabled': disabled
       }
     );
 
@@ -86,23 +102,24 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     }
   }
 
-  protected onRenderContent(tag, buttonProps): JSX.Element {
+  protected onRenderContent(tag: any, buttonProps: IButtonProps): JSX.Element {
     return React.createElement(
       tag,
       buttonProps,
-      this.onRenderIcon(),
-      this.onRenderLabel(),
-      this.onRenderDescription(),
-      this.onRenderAriaDescription(),
-      this.onRenderChildren()
-    );
+      React.createElement('div', { className: css(this.classNames.base + '-flexContainer', styles.flexContainer, this.classNames.flexContainer) },
+        this.onRenderIcon(),
+        this.onRenderLabel(),
+        this.onRenderDescription(),
+        this.onRenderAriaDescription(),
+        this.onRenderChildren()
+      ));
   }
 
   protected onRenderIcon() {
     let { icon } = this.props;
 
     return icon ? (
-      <span className={ `${this._baseClassName}-icon` }>
+      <span className={ css(`${this.classNames.base}-icon`, this.classNames.icon) }>
         <i className={ `ms-Icon ms-Icon--${icon}` } />
       </span>
     ) : (
@@ -111,27 +128,26 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
   }
 
   protected onRenderLabel() {
-    let { children, label } = this.props;
+    let { children, text } = this.props;
 
-    // For backwards compat, we should continue to take in the label content from children.
-    if (label === undefined && typeof (children) === 'string') {
-      label = children;
+    // For backwards compat, we should continue to take in the text content from children.
+    if (text === undefined && typeof (children) === 'string') {
+      text = children;
     }
 
-    return label ? (
-      <span className={ `${this._baseClassName}-label` } id={ this._labelId } >
-        { label }
+    return text && (
+      <span className={ css(`${this.classNames.base}-label`, this.classNames.label) } id={ this._labelId } >
+        { text }
       </span>
-    ) : (null);
+    );
   }
 
   protected onRenderChildren() {
-    let { children, label } = this.props;
+    let { children } = this.props;
 
-    // There is no label and the label will be rendered, we don't want the label to appear twice.
-    // If there is a label and the children are of type string it was likely intentional and both
-    // should render.
-    if (label === undefined && typeof (children) === 'string') {
+    // If children is just a string, either it or the text will be rendered via onRenderLabel
+    // If children is another component, it will be rendered after text
+    if (typeof (children) === 'string') {
       return null;
     }
 
@@ -144,7 +160,12 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     // ms-Button-description is only shown when the button type is compound.
     // In other cases it will not be displayed.
     return description ? (
-      <span className={ `${this._baseClassName}-description` } id={ this._descriptionId }>{ description }</span>
+      <span
+        className={ css(`${this.classNames.base}-description`, this.classNames.description) }
+        id={ this._descriptionId }
+      >
+        { description }
+      </span>
     ) : (
         null
       );
