@@ -3,25 +3,35 @@ import * as React from 'react';
 import { examplesOf } from './base';
 import { createApp } from './bootstrap';
 
-import { ExampleComponent } from './ExampleComponent';
+import { ExampleComponent, PrimaryButton, ThemeZone } from './ExampleComponent';
 import { ExampleComponentPage } from './documentation/ExampleComponentPage';
 
 createApp([
   examplesOf('ExampleComponent examples')
     .add('Empty state', () => (
-      <ExampleComponent />
+      <ExampleComponent text='I am text' />
     ))
     .add('With children', () => (
-      <ExampleComponent>
-        <div>Hello world!</div>
-        <div>How are you?</div>
-      </ExampleComponent>
+      <PrimaryButton iconName="Close" text='hi'>
+      </PrimaryButton>
     ))
-    .add('With different children', () => (
-      <ExampleComponent>
-        <div>Hello world!</div>
-        <div>How are you?</div>
-      </ExampleComponent>
+    .add('With a red background', () => (
+      <ThemeZone
+        theme={ {
+          componentStyles: {
+            primaryButton: {
+              button: {
+                background: 'red'
+              },
+              buttonHover: {
+                background: 'green'
+              }
+            }
+          }
+        } }
+      >
+        <PrimaryButton iconName='Close' text='red hi' />
+      </ThemeZone>
     ))
     .add('Say blah', () => (
       <ExampleComponent>blah</ExampleComponent>

@@ -41,5 +41,8 @@
     "@microsoft/load-themed-styles": "^1.2.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
+  },
+  "dependencies": {
+    "glamor": "^2.20.24"
   }
 }
