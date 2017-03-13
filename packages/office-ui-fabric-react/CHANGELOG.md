@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 10 Mar 2017 20:41:05 GMT and should not be manually modified.
+This log was last generated on Sat, 11 Mar 2017 04:11:58 GMT and should not be manually modified.
+
+## 2.2.1
+Sat, 11 Mar 2017 04:11:58 GMT
+
+### Patches
+
+- Pivot: selected underline is now visible in high contrast mode.
 
 ## 2.2.0
 Fri, 10 Mar 2017 20:41:04 GMT
