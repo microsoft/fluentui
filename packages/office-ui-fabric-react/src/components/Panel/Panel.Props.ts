@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Panel } from './Panel';
+import { ILayerProps } from '../../Layer';
 
 export interface IPanelProps extends React.Props<Panel> {
   /**
@@ -85,6 +86,11 @@ export interface IPanelProps extends React.Props<Panel> {
   * Indicates the selector for first focusable item
   */
   firstFocusableSelector?: string;
+
+  /**
+   * Optional props to pass to the Layer component hosting the panel.
+   */
+  layerProps?: ILayerProps;
 }
 
 export enum PanelType {

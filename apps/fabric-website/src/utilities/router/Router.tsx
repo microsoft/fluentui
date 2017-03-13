@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { EventGroup } from '../eventGroup/EventGroup';
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IRouterProps {
   replaceState?: boolean;
@@ -11,8 +11,7 @@ export interface IRouterState {
   path: string;
 }
 
-export class Router extends React.Component<IRouterProps, IRouterState> {
-  private _events: EventGroup;
+export class Router extends BaseComponent<IRouterProps, IRouterState> {
 
   constructor() {
     super();
@@ -20,7 +19,6 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
     this.state = {
       path: location.hash
     };
-    this._events = new EventGroup(this);
   }
 
   public componentDidUpdate(prevProps: IRouterProps, prevState: IRouterState) {
@@ -49,16 +47,12 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
       this.props.routerDidMount();
     }
   }
-
-  public componentWillUnmount() {
-    this._events.dispose();
-  }
 }
 
 function _getComponent(matchPath, children) {
   let path = matchPath;
   if (children && children.$$typeof) {
-    children = [ children ];
+    children = [children];
   }
 
   if (_hasAnchorLink(path)) {

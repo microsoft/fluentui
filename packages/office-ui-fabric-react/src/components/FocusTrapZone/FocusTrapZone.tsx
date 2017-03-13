@@ -14,15 +14,16 @@ import { IFocusTrapZone, IFocusTrapZoneProps } from './FocusTrapZone.Props';
 
 export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implements IFocusTrapZone {
 
+  private static _focusStack: FocusTrapZone[] = [];
+  private static _clickStack: FocusTrapZone[] = [];
+
   public refs: {
     [key: string]: React.ReactInstance,
     root: HTMLElement
   };
 
   private _previouslyFocusedElement: HTMLElement;
-  private static _focusStack: FocusTrapZone[] = [];
   private _isInFocusStack: boolean = false;
-  private static _clickStack: FocusTrapZone[] = [];
   private _isInClickStack: boolean = false;
 
   public componentWillMount() {
@@ -41,7 +42,10 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     let { elementToFocusOnDismiss, isClickableOutsideFocusTrap = false, forceFocusInsideTrap = true } = this.props;
 
     this._previouslyFocusedElement = elementToFocusOnDismiss ? elementToFocusOnDismiss : document.activeElement as HTMLElement;
-    this.focus();
+
+    if (!elementContains(this.refs.root, this._previouslyFocusedElement)) {
+      this.focus();
+    }
 
     if (forceFocusInsideTrap) {
       this._events.on(window, 'focus', this._forceFocusInTrap, true);

@@ -9,7 +9,7 @@ import {
   ICheckbox,
   ICheckboxProps
 } from './Checkbox.Props';
-import './Checkbox.scss';
+import styles from './Checkbox.scss';
 
 export interface ICheckboxState {
   /** Is true when the control has focus. */
@@ -32,7 +32,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     this._id = getId('checkbox-');
     this.state = {
       isFocused: false,
-      isChecked: props.defaultChecked || false
+      isChecked: !!(props.checked !== undefined ? props.checked : props.defaultChecked)
     };
   }
 
@@ -52,8 +52,15 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
 
     return (
       <div
-        className={ css('ms-Checkbox', className, { 'is-inFocus': isFocused }) }
-        >
+        className={ css(
+          'ms-Checkbox',
+          styles.root,
+          className,
+          {
+            'is-inFocus': isFocused,
+            [styles.rootIsInFocus]: isFocused
+          }) }
+      >
         <input
           { ...inputProps }
           { ...(checked !== undefined && { checked }) }
@@ -62,22 +69,23 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
           ref={ this._resolveRef('_checkBox') }
           id={ this._id }
           name={ name || this._id }
-          className='ms-Checkbox-input'
+          className={ css('ms-Checkbox-input', styles.input) }
           type='checkbox'
           onChange={ this._onChange }
           onFocus={ this._onFocus }
           onBlur={ this._onBlur }
           aria-checked={ isChecked }
-          />
+        />
         { this.props.children }
         <label htmlFor={ this._id }
-          className={ css('ms-Checkbox-label', {
-            'is-checked': isChecked,
-            'is-disabled': disabled
+          className={ css('ms-Checkbox-label', styles.label, {
+            ['is-checked ' + styles.labelIsChecked]: isChecked,
+            ['is-disabled ' + styles.labelIsDisabled]: disabled,
+            [styles.labelIsInFocus]: isFocused
           })
           }
-          >
-          { label && <span className='ms-Label'>{ label }</span> }
+        >
+          { label && <span className={ styles.textLabel }>{ label }</span> }
         </label>
       </div>
     );

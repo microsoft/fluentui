@@ -14,7 +14,7 @@ export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
             disabled={ disabled }
             icon='Add'
             description='I am a description'
-            label='Create account'
+            text='Create account'
           />
         </div>
       </div>
