@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 10 Mar 2017 16:16:07 GMT and should not be manually modified.
+This log was last generated on Sat, 11 Mar 2017 04:11:58 GMT and should not be manually modified.
+
+## 2.2.1
+Sat, 11 Mar 2017 04:11:58 GMT
+
+### Patches
+
+- Pivot: selected underline is now visible in high contrast mode.
+
+## 2.2.0
+Fri, 10 Mar 2017 20:41:04 GMT
+
+### Minor changes
+
+- Dropdown: Adding a required property which will be passed into the Label.
+- Adjusting React peer dependency to include v16.0.0-0 in the acceptable range for testing with v16.
 
 ## 2.1.1
 Fri, 10 Mar 2017 16:16:07 GMT
