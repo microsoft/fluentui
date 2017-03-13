@@ -74,6 +74,11 @@ export interface IDropdownProps extends React.Props<Dropdown> {
    */
   disabled?: boolean;
 
+  /**
+   * Whether or not the Dropdown is required.
+   */
+  required?: boolean;
+
   // @todo: Update version numbers for depriate and removal
   /**
    * @deprecated
