@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "DetailsList column resize callback",
+      "type": "minor"
+    }
+  ],
+  "email": "notgiorgi@gmail.com"
+}
