@@ -98,6 +98,9 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /** Callback for when the user asks for a contextual menu (usually via right click) from a column header. */
   onColumnHeaderContextMenu?: (column?: IColumn, ev?: Event) => void;
 
+  /** Callback fired on column resize */
+  onColumnResize?: (column?: IColumn, newWidth?: number) => void;
+
   /** Callback for when a given row has been invoked (by pressing enter while it is selected.) */
   onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
 
