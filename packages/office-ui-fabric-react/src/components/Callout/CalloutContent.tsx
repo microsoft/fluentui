@@ -18,6 +18,7 @@ import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight } fro
 import { Popup } from '../../Popup';
 import styles from './Callout.scss';
 
+const BODY_CLASS = 'ms-Callout__Body--open';
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 const OFF_SCREEN_STYLE = { opacity: 0 };
 const BORDER_WIDTH: number = 1;
@@ -81,6 +82,11 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   }
   public componentDidMount() {
     this._onComponentDidMount();
+    document.body.classList.add(BODY_CLASS);
+  }
+
+  public componentWillUnmount() {
+    document.body.classList.remove(BODY_CLASS);
   }
 
   public render() {
