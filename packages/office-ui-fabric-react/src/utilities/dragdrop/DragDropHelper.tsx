@@ -145,10 +145,13 @@ export class DragDropHelper implements IDragDropHelper {
         onDrop = (event: DragEvent) => {
           this._dragEnterCounts[key] = 0;
           updateDropState(false /* isDropping */, event);
+
+          if(dragDropOptions.onDrop) {
+            dragDropOptions.onDrop(dragDropOptions.context.data, event);
+          }
         };
 
         onDragOver = (event: DragEvent) => {
-          console.log('dragover');
           event.preventDefault();
         };
 
@@ -167,8 +170,14 @@ export class DragDropHelper implements IDragDropHelper {
       if (isDraggable) {
         // If the target is draggable, wire up local event listeners for mouse events.
         onMouseDown = this._onMouseDown.bind(this, dragDropTarget);
+        onDragEnd = (event: DragEvent) => {
+          if(dragDropOptions.onDragEnd) {
+            dragDropOptions.onDragEnd(dragDropOptions.context.data, event);
+          }
+        };
 
         events.on(root, 'mousedown', onMouseDown);
+        events.on(root, 'dragend', onDragEnd);
       }
 
       activeTarget = {
@@ -193,6 +202,7 @@ export class DragDropHelper implements IDragDropHelper {
 
             if (isDraggable) {
               events.off(root, 'mousedown', onMouseDown);
+              events.off(root, 'dragend', onDragEnd);
             }
           }
         }

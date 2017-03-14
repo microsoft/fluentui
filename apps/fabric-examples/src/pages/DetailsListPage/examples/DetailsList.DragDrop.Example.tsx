@@ -50,9 +50,10 @@ export class DetailsListDragDropExample extends React.Component<any, any> {
       canDrop: (dropContext?: IDragDropContext, dragContext?: IDragDropContext) => { return true; },
       canDrag: (item?: any) => { return true; },
       onDragEnter: (item?: any, event?: DragEvent) => { return ''; }, // return string is the css classes that will be added to the enterring element.
-      onDragLeave: (item?: any, event?: DragEvent) => { console.log('on drag leave'); },
-      onDrop: (item?: any, event?: DragEvent) => { console.log('ondrop'); },
-      onDragStart: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => { console.log('ondragstart'); }
+      onDragLeave: (item?: any, event?: DragEvent) => { console.log(item, ' on drag leave'); },
+      onDrop: (item?: any, event?: DragEvent) => { console.log(item, ' ondrop'); },
+      onDragStart: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => { console.log('ondragstart'); },
+      onDragEnd: (item?: any, event?: DragEvent) => { console.log(item, ' drag end'); },
     };
   }
 

@@ -197,6 +197,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
         data-selection-index={ itemIndex }
         data-item-index={ itemIndex }
         data-is-draggable={ isDraggable }
+        draggable= { isDraggable }
         data-automationid='DetailsRow'
         style={ { minWidth: viewport ? viewport.width : 0 } }
         aria-selected={ isSelected }
@@ -307,7 +308,9 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
       canDrag: dragDropEvents.canDrag,
       canDrop: dragDropEvents.canDrop,
       onDragStart: dragDropEvents.onDragStart,
-      updateDropState: this._updateDroppingState
+      updateDropState: this._updateDroppingState,
+      onDrop: dragDropEvents.onDrop,
+      onDragEnd: dragDropEvents.onDragEnd,
     };
     return options;
   }
