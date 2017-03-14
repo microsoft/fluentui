@@ -1,6 +1,4 @@
-
-
-export function makeRTLSafe(ltrStyles: any, isRTL: boolean) {
+export function applyRTLFlip(ltrStyles: any, isRTL: boolean) {
   let convertedStyles = {};
 
   for (let name in ltrStyles) {
@@ -12,6 +10,9 @@ export function makeRTLSafe(ltrStyles: any, isRTL: boolean) {
         switch (name) {
           case 'left':
             convertedStyles['right'] = value;
+            break;
+          case 'right':
+            convertedStyles['left'] = value;
             break;
           case 'margin-left':
             convertedStyles['margin-right'] = value;
