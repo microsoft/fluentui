@@ -146,7 +146,7 @@ export class DragDropHelper implements IDragDropHelper {
           this._dragEnterCounts[key] = 0;
           updateDropState(false /* isDropping */, event);
 
-          if(dragDropOptions.onDrop) {
+          if (dragDropOptions.onDrop) {
             dragDropOptions.onDrop(dragDropOptions.context.data, event);
           }
         };
@@ -171,7 +171,7 @@ export class DragDropHelper implements IDragDropHelper {
         // If the target is draggable, wire up local event listeners for mouse events.
         onMouseDown = this._onMouseDown.bind(this, dragDropTarget);
         onDragEnd = (event: DragEvent) => {
-          if(dragDropOptions.onDragEnd) {
+          if (dragDropOptions.onDragEnd) {
             dragDropOptions.onDragEnd(dragDropOptions.context.data, event);
           }
         };
