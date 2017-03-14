@@ -72,6 +72,7 @@ export class DragDropHelper implements IDragDropHelper {
     let onDragEnter: (event: DragEvent) => void;
     let onDragEnd: (event: DragEvent) => void;
     let onDrop: (event: DragEvent) => void;
+    let onDragOver: (event: DragEvent) => void;
     let onMouseDown: (event: MouseEvent) => void;
 
     let isDraggable: boolean;
@@ -146,6 +147,10 @@ export class DragDropHelper implements IDragDropHelper {
           updateDropState(false /* isDropping */, event);
         };
 
+        onDragOver = (event: DragEvent) => {
+          event.preventDefault();
+        };
+
         this._dragEnterCounts[key] = 0;
 
         // dragenter and dragleave will be fired when hover to the child element
@@ -155,6 +160,7 @@ export class DragDropHelper implements IDragDropHelper {
         events.on(root, 'dragleave', onDragLeave);
         events.on(root, 'dragend', onDragEnd);
         events.on(root, 'drop', onDrop);
+        events.on(root, 'dragover', onDragOver);
       }
 
       if (isDraggable) {

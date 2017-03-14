@@ -24,14 +24,10 @@ const DetailsListAdvancedExampleCode = require('./examples/DetailsList.Advanced.
 import { DetailsListGroupedExample } from './examples/DetailsList.Grouped.Example';
 const DetailsListGroupedExampleCode = require('./examples/DetailsList.Grouped.Example.tsx') as string;
 
-export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}> {
-  public render() {
-    return (
-      <ComponentPage
-        title='DetailsList'
-        componentName='DetailsListExample'
-        exampleCards={
-          <div>
+import { DetailsListDragDropExample } from './examples/DetailsList.DragDrop.Example';
+const DetailsListDragDropExampleCode = require('./examples/DetailsList.DragDrop.Example.tsx') as string;
+
+/*
             <ExampleCard title='Simple DetailsList with 500 items, filtering, marquee selection' isOptIn={ true } code={ DetailsListBasicExampleCode }>
               <DetailsListBasicExample />
             </ExampleCard>
@@ -49,6 +45,19 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}
             </ExampleCard>
             <ExampleCard title='Advanced DetailsList of 5000 items, variable row heights' isOptIn={ true } code={ DetailsListAdvancedExampleCode }>
               <DetailsListAdvancedExample />
+            </ExampleCard>
+*/
+
+export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}> {
+  public render() {
+    return (
+      <ComponentPage
+        title='DetailsList'
+        componentName='DetailsListExample'
+        exampleCards={
+          <div>
+            <ExampleCard title='Drag and Drop DetailsList with 10 items' isOptIn={ true } code={ DetailsListDragDropExampleCode }>
+              <DetailsListDragDropExample />
             </ExampleCard>
           </div>
         }
