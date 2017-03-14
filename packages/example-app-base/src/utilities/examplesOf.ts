@@ -1,4 +1,7 @@
+/* tslint:disable:no-unused-variable */
 import * as React from 'react';
+/* tslint:enable:no-unused-variable */
+
 import { getId } from '@uifabric/utilities';
 
 export interface IExample {

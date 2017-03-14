@@ -2,16 +2,16 @@
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import * as ReactDOM from 'react-dom';
-import { App, IAppDefinition } from '@uifabric/example-app-base';
+import { App, IAppDefinition } from '../components/App/App';
 import { Router, Route } from 'office-ui-fabric-react/lib/utilities/router/index';
 import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 
-import { ExampleGroup, IExample } from './base';
+import { ExampleGroup, IExample } from './examplesOf';
 
 export function createApp(examples: ExampleGroup | ExampleGroup[], hideChrome?: boolean) {
   let rootElement: HTMLElement | null;
-  let groups: ExampleGroup[] = !Array.isArray(examples) ? [ examples ]: examples;
+  let groups: ExampleGroup[] = !Array.isArray(examples) ? [examples] : examples;
 
   function _onLoad() {
     rootElement = document.createElement('div');
@@ -20,13 +20,13 @@ export function createApp(examples: ExampleGroup | ExampleGroup[], hideChrome?: 
     setBaseUrl('./dist/');
 
     let routes = groups.map((group, groupIndex) => group.examples.map(
-        (example: IExample, index: number) => (
-          <Route
-            key={ example.key }
-            path={ '#component=' + example.key }
-            component={ example.onRender }
-          />
-        )));
+      (example: IExample, index: number) => (
+        <Route
+          key={ example.key }
+          path={ '#component=' + example.key }
+          component={ example.onRender }
+        />
+      )));
 
     ReactDOM.render(
       <Fabric>
@@ -39,8 +39,8 @@ export function createApp(examples: ExampleGroup | ExampleGroup[], hideChrome?: 
           </Route>
         </Router>
       </Fabric>
-    ,
-    rootElement);
+      ,
+      rootElement);
   }
 
   function _onUnload() {

@@ -7,19 +7,15 @@ import * as ReactTestUtils from 'react-addons-test-utils';
 import { ExampleComponent } from './ExampleComponent';
 
 describe('ExampleComponent', () => {
-  it('Does stuff', () => {
+
+  it('Renders without throwing', () => {
     let component = ReactTestUtils.renderIntoDocument(
       <ExampleComponent />
     );
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
     let labelElement = renderedDOM.querySelector('div');
+
+    expect(labelElement).to.not.be.empty;
   });
 
-  it('Does more things', () => {
-    let component = ReactTestUtils.renderIntoDocument(
-      <ExampleComponent />
-    );
-
-    expect(component).is.null;
-  });
 });

@@ -1,28 +1,53 @@
 import { ExampleComponent } from './ExampleComponent';
 import { IRenderFunction } from '@uifabric/utilities';
 
-export interface IStyleObject {
-  [key: string]: any;
-};
-
-export interface IExampleComponentTheme {
-  width?: string;
-  height?: string;
-  background?: string;
-  font?: IStyleObject;
-}
 
 export interface IExampleComponentProps extends React.HTMLProps<HTMLDivElement | ExampleComponent> {
-  theme?: IExampleComponentTheme,
-
+  /**
+   * Optional icon name using fabric icons.
+   *
+   * @type {string}
+   * @memberOf IExampleComponentProps
+   */
   iconName?: string;
-  text?: string;
-  // menuProps?: IMenuProps;
 
+  /**
+   * Optional text to display.
+   *
+   * @type {string}
+   * @memberOf IExampleComponentProps
+   */
+  text?: string;
+
+  /**
+   * Optional render override for the root element.
+   *
+   * @type {IRenderFunction<IExampleComponentProps>}
+   * @memberOf IExampleComponentProps
+   */
   onRenderRoot?: IRenderFunction<IExampleComponentProps>;
+
+  /**
+   * Optional render override for the icon element.
+   *
+   * @type {IRenderFunction<IExampleComponentProps>}
+   * @memberOf IExampleComponentProps
+   */
   onRenderIcon?: IRenderFunction<IExampleComponentProps>;
+
+  /**
+   * Optional render override for the text element between the icon and chevron.
+   *
+   * @type {IRenderFunction<IExampleComponentProps>}
+   * @memberOf IExampleComponentProps
+   */
   onRenderText?: IRenderFunction<IExampleComponentProps>;
-  onRenderDescription?: IRenderFunction<IExampleComponentProps>;
+
+  /**
+   * Optional render override for the chevron.
+   *
+   * @type {IRenderFunction<IExampleComponentProps>}
+   * @memberOf IExampleComponentProps
+   */
   onRenderChevron?: IRenderFunction<IExampleComponentProps>;
-  onRenderMenu?: IRenderFunction<IExampleComponentProps>;
 }

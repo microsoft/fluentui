@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "node-sass": "4.5.0",
+    "webpack": "2.2.1",
     "rush-example-app-base": "file:./temp_modules/rush-example-app-base",
     "rush-example-component": "file:./temp_modules/rush-example-component",
     "rush-fabric-examples": "file:./temp_modules/rush-fabric-examples",

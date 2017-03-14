@@ -3,7 +3,7 @@ export interface ICssMapping {
   [className: string]: boolean;
 }
 
-export type ICssInput = string | ICssMapping;
+export type ICssInput = string | ICssMapping | undefined | boolean;
 
 export function css(...args: ICssInput[]) {
   let classes = [];
@@ -13,7 +13,7 @@ export function css(...args: ICssInput[]) {
       if (typeof arg === 'string') {
         classes.push(arg);
       } else {
-        for (let key in arg) {
+        for (let key in arg as any) {
           if (arg[key]) {
             classes.push(key);
           }

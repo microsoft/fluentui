@@ -39,11 +39,12 @@
     "typescript": "~2.1.0"
   },
   "peerDependencies": {
-    "office-ui-fabric-react": ">=2.0.2 <3.0.0",
     "react": "^0.14 || ^15.0.1-0 || ^16.0.0-0",
     "react-dom": "^0.14 || ^15.0.1-0 || ^16.0.0-0"
   },
   "dependencies": {
-    "highlight.js": "^9.9.0"
+    "@uifabric/utilities": "*",
+    "highlight.js": "^9.9.0",
+    "office-ui-fabric-react": "*"
   }
 }
