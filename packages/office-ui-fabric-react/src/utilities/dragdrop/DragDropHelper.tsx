@@ -148,6 +148,7 @@ export class DragDropHelper implements IDragDropHelper {
         };
 
         onDragOver = (event: DragEvent) => {
+          console.log('dragover');
           event.preventDefault();
         };
 
@@ -186,6 +187,7 @@ export class DragDropHelper implements IDragDropHelper {
               events.off(root, 'dragenter', onDragEnter);
               events.off(root, 'dragleave', onDragLeave);
               events.off(root, 'dragend', onDragEnd);
+              events.off(root, 'dragover', onDragOver);
               events.off(root, 'drop', onDrop);
             }
 
@@ -235,6 +237,7 @@ export class DragDropHelper implements IDragDropHelper {
       if (this._dragData.dropTarget) {
         // raise dargleave event to let dropTarget know it need to remove dropping style
         EventGroup.raise(this._dragData.dropTarget.root, 'dragleave');
+        EventGroup.raise(this._dragData.dropTarget.root, 'drop');
       }
     }
     this._dragData = null;
