@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "DetailsList: adding `onColumnResize` callback which wil execute when a column is being resized.",
+      "type": "minor"
+    }
+  ],
+  "email": "notgiorgi@gmail.com"
+}
