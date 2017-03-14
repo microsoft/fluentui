@@ -7,27 +7,11 @@
   }
 
   & {
-    // Clear browser specific focus styles and use transparent as placeholder for focus style
-    outline: transparent;
-
-    // It is MUST because the pseudo-element is absolute position.
-    position: relative;
+    @include base-border();
   }
 
   :global(.ms-Fabric.is-focusVisible) &:focus:after {
-    // Wrap the parent element with $padding pixels.
-    content: '';
-    position: absolute;
-    top: $padding;
-    right: $padding;
-    bottom: $padding;
-    left: $padding;
-
-    // Make the content not respond to mouse/touch event. Reference: https://css-tricks.com/almanac/properties/p/pointer-events/
-    pointer-events: none;
-
-    // Add focus border with $color
-    border: 1px solid $color;
+    @include after-border($color);
   }
 }
 
@@ -39,9 +23,22 @@
 }
 
 @mixin pseudo-border($color) {
-  position: relative;
+  @include base-border();
 
   &::after {
+    @include after-border($color);
+  }
+}
+
+@mixin base-border(){
+    // Clear browser specific focus styles and use transparent as placeholder for focus style
+    outline: transparent;
+
+    // It is MUST because the pseudo-element is absolute position.
+    position: relative;
+}
+
+@mixin after-border($color){
     content: '';
     position: absolute;
     top: 0;
@@ -54,5 +51,4 @@
 
     // Add focus border with $color
     border: 1px solid $color;
-  }
 }
