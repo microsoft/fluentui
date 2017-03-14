@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Facepile has an excess margin of 4px below it which needs to be removed. It also uses float's which is pretty retro!",
+      "type": "patch"
+    }
+  ],
+  "email": "rickyp@microsoft.com"
+}
