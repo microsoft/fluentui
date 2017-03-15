@@ -88,7 +88,6 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
 }
 
 @mixin CommandBarItem-text {
-  @include focus-border(2px);
   @include ms-font-m;
   color: $ms-color-neutralPrimary;
 
@@ -117,11 +116,11 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   &:hover,
   &.itemLinkIsExpanded {
     @media screen and (-ms-high-contrast: active) {
-        @include pseudo-border($ms-color-white);
+      @include focus-border(0px, $ms-color-white, 1px, false);
       }
 
     @media screen and (-ms-high-contrast: black-on-white) {
-      @include pseudo-border($ms-color-black);
+      @include focus-border(0px, $ms-color-black, 1px, false);
     }
   }
 
@@ -229,11 +228,11 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
     color: $ms-color-themePrimary;
 
     @media screen and (-ms-high-contrast: active) {
-      @include pseudo-border($ms-color-white);
+      @include focus-border(0px, $ms-color-white, 1px, false);
     }
 
     @media screen and (-ms-high-contrast: black-on-white) {
-      @include pseudo-border($ms-color-black);
+      @include focus-border(0px, $ms-color-black, 1px, false);
     }
   }
 }

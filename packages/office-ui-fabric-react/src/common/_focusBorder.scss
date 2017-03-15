@@ -1,44 +1,33 @@
 @import './semanticColorVariables';
 
-@mixin focus-border($padding: 0, $color: $focusedBorderColor) {
+@mixin focus-border($padding: 0, $color: $focusedBorderColor, $thickness: 1, $onFocus: true) {
   &::-moz-focus-inner {
     // Clear the focus border in Firefox. Reference: http://stackoverflow.com/a/199319/1436671
     border: 0;
   }
 
   & {
-    @include base-border();
-  }
-
-  :global(.ms-Fabric.is-focusVisible) &:focus:after {
-    @include after-border($color);
-  }
-}
-
-// When focus is set using the keyboard, apply an outline.
-@mixin focus-outline {
-  :global(.ms-Fabric.is-focusVisible) &:focus {
-    outline: 1px solid $focusedBorderColor;
-  }
-}
-
-@mixin pseudo-border($color, $padding: 0, $thickness: 1) {
-  @include base-border();
-
-  &::after {
-    @include after-border($color, $padding, $thickness);
-  }
-}
-
-@mixin base-border(){
     // Clear browser specific focus styles and use transparent as placeholder for focus style
     outline: transparent;
 
     // It is MUST because the pseudo-element is absolute position.
     position: relative;
+  }
+
+  @if $onFocus == 'true'{
+    :global(.ms-Fabric.is-focusVisible) &:focus:after {
+      @include after-outline($padding, $color, $thickness);
+      }
+  }
+  @else{
+    &::after {
+      @include after-outline($padding, $color, $thickness);
+      }
+  }
 }
 
-@mixin after-border($color, $padding: 0, $thickness: 1){
+// When focus is set using the keyboard, apply an outline.
+@mixin after-outline ($padding: 0, $color: $focusedBorderColor, $thickness: 1) {
     content: '';
     position: absolute;
     top: $padding;
@@ -51,4 +40,12 @@
 
     // Add focus border with $color
     border: $thickness solid $color;
+}
+
+
+// When focus is set using the keyboard, apply an outline.
+@mixin focus-outline {
+  :global(.ms-Fabric.is-focusVisible) &:focus {
+    outline: 1px solid $focusedBorderColor;
+  }
 }
