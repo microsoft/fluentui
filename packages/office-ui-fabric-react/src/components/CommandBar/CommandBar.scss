@@ -136,6 +136,8 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   &.itemLinkIsExpanded {
     @media screen and (-ms-high-contrast: active) {
         @include highContrastBorder($ms-color-white);
+        margin-left: -1px;
+        margin-right: -1px;
       }
 
     @media screen and (-ms-high-contrast: black-on-white) {
