@@ -9,7 +9,7 @@ import {
   anchorProperties
 } from '../../Utilities';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { ContextualMenu } from '../../contextualMenu';
+import { ContextualMenu } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.Props';
 import styles from './BaseButton.scss';
 
