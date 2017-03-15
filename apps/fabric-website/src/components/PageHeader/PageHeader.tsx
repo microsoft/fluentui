@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { css } from '../../utilities/css';
-import { EventGroup } from '../../utilities/eventGroup/EventGroup';
+import { css, BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import styles from './PageHeader.module.scss';
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { PageHeaderLink } from '../../components/PageHeaderLink/PageHeaderLink';
@@ -48,13 +47,12 @@ export interface IPageHeaderState {
   isAttached: boolean;
 }
 
-export class PageHeader extends React.Component<IPageHeaderProps, IPageHeaderState> {
+export class PageHeader extends BaseComponent<IPageHeaderProps, IPageHeaderState> {
   public static defaultProps: IPageHeaderProps = {
     pageTitle: 'Page title',
     backgroundColor: '#333333'
   };
 
-  private _events: EventGroup;
   private _attachedScrollThreshold: number;
 
   constructor(props: IPageHeaderProps) {
@@ -64,7 +62,6 @@ export class PageHeader extends React.Component<IPageHeaderProps, IPageHeaderSta
       isAttached: false
     };
 
-    this._events = new EventGroup(this);
   }
 
   public componentDidMount() {
@@ -74,10 +71,6 @@ export class PageHeader extends React.Component<IPageHeaderProps, IPageHeaderSta
       this._events.on(window, 'scroll', this._onScroll, true);
       this._calculateAttachedScrollThreshold();
     }
-  }
-
-  public componentWillUnmount() {
-    this._events.dispose();
   }
 
   public render() {

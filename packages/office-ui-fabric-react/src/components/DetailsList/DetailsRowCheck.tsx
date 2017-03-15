@@ -1,8 +1,9 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-
+import { css } from '../../Utilities';
 import { Check } from '../../Check';
+import styles from './DetailsRow.scss';
 
 export interface IDetailsRowCheckProps {
   selected?: boolean;
@@ -21,16 +22,16 @@ export const DetailsRowCheck = (props: IDetailsRowCheckProps) => {
   return (
     <button
       type='button'
-      className='ms-DetailsRow-check'
+      className={ css('ms-DetailsRow-check', styles.check) }
       role='button'
       aria-pressed={ selected }
       data-selection-toggle={ true }
       data-automationid='DetailsRowCheck'
       aria-label={ props.ariaLabel }
-      >
+    >
       { props.canSelect ?
         <Check checked={ selected } /> :
-        <div className='ms-DetailsRow-checkSpacer' />
+        <div className={ css('ms-DetailsRow-checkSpacer', styles.checkSpacer) } />
       }
     </button>
   );
