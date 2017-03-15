@@ -51,14 +51,17 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
 
   /**
    * The button icon shown in command or hero type.
-   * Deprecated at v1.2.3, to be removed at >= v2.0.0. Use IconButton instead.
    */
   icon?: string;
 
   /**
+   * The button icon shown to the right of the text
+   */
+  splitIcon?: string;
+
+  /**
    * Description of the action this button takes.
    * Only used for compound buttons
-   * Deprecated at v1.2.3, to be removed at >= v2.0.0. Use CompoundButton instead
    */
   description?: string;
 

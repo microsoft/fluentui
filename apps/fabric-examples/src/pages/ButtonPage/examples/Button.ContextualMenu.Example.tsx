@@ -28,7 +28,6 @@ export class ButtonConextualMenuExample extends React.Component<IButtonProps, {}
               }
             ] }
           >
-            <i className={ `ms-Icon ms-Icon--ChevronDown` } />
           </DefaultButton>
         </div>
       </div>

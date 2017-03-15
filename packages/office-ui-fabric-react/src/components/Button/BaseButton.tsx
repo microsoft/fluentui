@@ -99,10 +99,15 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabel ? null : _labelId,
         'aria-describedby': ariaDescribedBy,
-        'aria-disabled': disabled,
-        'onClick': this._onButtonClick
+        'aria-disabled': disabled
       }
     );
+
+    // Override onClick if contextualMenuItems passed in. Eventually allow _onShowContextualMenu to
+    // be assigned to split button click if split button is enabled
+    if (this.props.contextualMenuItems) {
+      assign(buttonProps, { 'onClick': this._onShowContextualMenu });
+    }
 
     return this.onRenderContent(tag, buttonProps);
   }
@@ -123,6 +128,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
         this.onRenderDescription(),
         this.onRenderAriaDescription(),
         this.onRenderChildren(),
+        this.onRenderSplitIcon(),
         this.onRenderContextualMenu()
       ));
   }
@@ -130,13 +136,21 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
   protected onRenderIcon() {
     let { icon } = this.props;
 
-    return icon ? (
+    return icon && (
       <span className={ css(`${this.classNames.base}-icon`, this.classNames.icon) }>
         <i className={ `ms-Icon ms-Icon--${icon}` } />
       </span>
-    ) : (
-        null
-      );
+    );
+  }
+
+  protected onRenderSplitIcon() {
+    let { splitIcon = 'ChevronDown' } = this.props;
+
+    return this.props.splitIcon || this.props.contextualMenuItems && (
+      <span className={ css(`${this.classNames.base}-icon`, this.classNames.icon) }>
+        <i className={ `ms-Icon ms-Icon--${splitIcon}` } />
+      </span>
+    );
   }
 
   protected onRenderLabel() {
@@ -207,12 +221,12 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
         items={ contextualMenuItems }
         target={ this._buttonElement }
         labelElementId={ this._labelId }
-        onDismiss={ this._onButtonClick }
+        onDismiss={ this._onShowContextualMenu }
       />
     );
   }
 
-  private _onButtonClick = () => {
+  private _onShowContextualMenu = () => {
     let { contextualMenuItems, disabled } = this.props;
     let { contextualMenuOpen } = this.state;
 
