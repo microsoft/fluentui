@@ -21,6 +21,7 @@ export interface IBaseButtonClassNames {
   description?: string;
   flexContainer?: string;
   icon?: string;
+  splitIcon?: string;
   label?: string;
   root?: string;
 }
@@ -103,7 +104,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
     );
 
     // Override onClick if contextualMenuItems passed in. Eventually allow _onShowContextualMenu to
-    // be assigned to split button click if split button is enabled
+    // be assigned to split button click if onClick already has a value
     if (this.props.contextualMenuItems) {
       assign(buttonProps, { 'onClick': this._onShowContextualMenu });
     }
