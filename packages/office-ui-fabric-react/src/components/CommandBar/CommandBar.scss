@@ -326,7 +326,6 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
 
 .searchInput,
 .searchInput::-webkit-input-placeholder {
-  @include ms-baseFont;
   font-size: $ms-font-size-m;
 }
 

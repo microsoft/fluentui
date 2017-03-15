@@ -8,7 +8,6 @@
 // Pivot and tab styles
 
 .root {
-  @include ms-baseFont;
   @include ms-u-normalize;
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;

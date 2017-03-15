@@ -9,7 +9,6 @@
 @import '../Label/LabelMixins.scss';
 
 .root {
-  @include ms-baseFont;
   @include ms-u-normalize;
   color: $ms-color-neutralPrimary;
   font-size: $ms-font-size-m;
@@ -54,7 +53,6 @@
 
 .field {
   @include ms-u-normalize;
-  @include ms-baseFont;
   border: 1px solid $ms-color-neutralTertiaryAlt;
   border-radius: 0;
   font-weight: $ms-font-weight-regular;
@@ -188,7 +186,6 @@
 //== Modifier: Multiline textfield
 //
 .root.rootIsMultiline .field {
-  @include ms-baseFont;
   color: $ms-color-neutralPrimary;
   font-family: $ms-font-family-base;
   font-size: $ms-font-size-m;
