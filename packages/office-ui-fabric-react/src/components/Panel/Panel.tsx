@@ -155,12 +155,18 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
                 ['ms-Panel--lg ' + styles.rootIsLarge]: type === PanelType.large || type === PanelType.largeFixed,
                 ['ms-Panel--fixed ' + styles.rootIsFixed]: type === PanelType.largeFixed,
                 ['ms-Panel--xl ' + styles.rootIsXLarge]: type === PanelType.extraLarge,
+                ['ms-Panel--custom ' + styles.rootIsCustom]: type === PanelType.custom,
                 ['ms-Panel--hasCloseButton ' + styles.rootHasCloseButton]: hasCloseButton
               })
             }
           >
             { overlay }
             <FocusTrapZone
+              ref={ (item) => {
+                if (type === PanelType.custom && item != null) {
+                  item.refs.root.style.width = this.props.customWidth;
+                }
+              } }
               className={ css(
                 'ms-Panel-main',
                 styles.main,

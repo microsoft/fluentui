@@ -55,6 +55,11 @@ export interface IPanelProps extends React.Props<Panel> {
   type?: PanelType;
 
   /**
+  * Custom panel Width.
+  */
+  customWidth?: string;
+
+  /**
    * Aria label on close button
    */
   closeButtonAriaLabel?: string;
@@ -166,5 +171,15 @@ export enum PanelType {
    * XXLarge: 176px fixed left margin, 40px Left/Right padding
    * XXXLarge: 176px fixed left margin, 40px Left/Right padding
    */
-  extraLarge = 6
+  extraLarge = 6,
+
+  /**
+   * Renders the panel in 'custom' mode using customWidth, anchored to the far side (right in LTR mode).
+   * Small: <adapts to smallFluid>
+   * Medium: <adapts to smallFixedFar>
+   * Large: 48px fixed left margin, 32px Left/Right padding
+   * XLarge: 644px width, 32px Left/Right padding
+   * XXLarge: 643px width, 40px Left/Right padding
+   */
+  custom = 7
 }

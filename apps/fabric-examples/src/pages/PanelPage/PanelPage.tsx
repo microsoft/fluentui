@@ -11,6 +11,7 @@ import { PanelSmallFluidExample } from './examples/Panel.SmallFluid.Example';
 import { PanelMediumExample } from './examples/Panel.Medium.Example';
 import { PanelLargeExample } from './examples/Panel.Large.Example';
 import { PanelLargeFixedExample } from './examples/Panel.LargeFixed.Example';
+import { PanelCustomExample } from './examples/Panel.Custom.Example';
 import { PanelExtraLargeExample } from './examples/Panel.ExtraLarge.Example';
 import { PanelLightDismissExample } from './examples/Panel.LightDismiss.Example';
 import { PanelNonModalExample } from './examples/Panel.NonModal.Example';
@@ -22,6 +23,7 @@ const PanelMediumExampleCode = require('./examples/Panel.Medium.Example.tsx') as
 const PanelLargeExampleCode = require('./examples/Panel.Large.Example.tsx') as string;
 const PanelLargeFixedExampleCode = require('./examples/Panel.LargeFixed.Example.tsx') as string;
 const PanelExtraLargeExampleCode = require('./examples/Panel.ExtraLarge.Example.tsx') as string;
+const PanelCustomExampleCode = require('./examples/Panel.Custom.Example.tsx') as string;
 const PanelLightDismissExampleCode = require('./examples/Panel.LightDismiss.Example.tsx') as string;
 const PanelNonModalExampleCode = require('./examples/Panel.NonModal.Example.tsx') as string;
 
@@ -53,6 +55,9 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
             <ExampleCard title='Panel - Extra Large' code={ PanelExtraLargeExampleCode }>
               <PanelExtraLargeExample />
+            </ExampleCard>
+            <ExampleCard title='Panel - Custom' code={ PanelCustomExampleCode }>
+              <PanelCustomExample />
             </ExampleCard>
             <ExampleCard title='Panel - Light Dismiss' code={ PanelLightDismissExampleCode }>
               <PanelLightDismissExample />
