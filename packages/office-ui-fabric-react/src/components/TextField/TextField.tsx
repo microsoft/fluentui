@@ -48,6 +48,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   private _delayedValidate: (value: string) => void;
   private _isMounted: boolean;
   private _lastValidation: number;
+  private _latestValue;
   private _latestValidateValue;
   private _isDescriptionAvailable: boolean;
   private _textElement: HTMLInputElement | HTMLTextAreaElement;
@@ -97,6 +98,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         onBeforeChange(newProps.value);
       }
 
+      this._latestValue = newProps.value;
       this.setState({
         value: newProps.value,
         errorMessage: ''
@@ -282,9 +284,13 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   private _onInputChange(event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
-    if (value === this.state.value) {
+
+    // HACK: skip validation given both onInput and onChange are attached
+    // https://github.com/OfficeDev/office-ui-fabric-react/issues/824
+    if (value === this._latestValue) {
       return;
     }
+    this._latestValue = value;
 
     this.setState({
       value: value,
