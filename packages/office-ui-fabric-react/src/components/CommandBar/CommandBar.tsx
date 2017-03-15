@@ -174,8 +174,7 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
       { (() => {
         if (item.onRender) {
           return item.onRender(item);
-        }
-        else if (item.onClick || hasSubmenuItems(item)) {
+        } else if (item.onClick || hasSubmenuItems(item)) {
           return <button
             { ...getNativeProps(item, buttonProperties) }
             id={ this._id + item.key }
