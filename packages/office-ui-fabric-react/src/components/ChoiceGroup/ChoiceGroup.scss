@@ -27,7 +27,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
   min-height: 36px;
-  border: 1px solid transparent;
+  border: none;
   position: relative;
   line-height: $ms-choiceField-field-size;
   @include padding-left(8px);
@@ -36,14 +36,6 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
     font-size: $ms-font-size-m;
     @include padding(0, 0, 0, 26px);
     display: inline-block;
-  }
-
-  @media screen and (-ms-high-contrast: active) {
-    margin-bottom: -1px;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    margin-bottom: -1px;
   }
 }
 
@@ -58,7 +50,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 .field::before {
   content: '';
   display: inline-block;
-  border: 2px solid $ms-color-neutralTertiary;
+  border: 1px solid $ms-color-neutralTertiary;
   width: $ms-choiceField-field-size;
   height: $ms-choiceField-field-size;
   font-weight: normal;
@@ -244,6 +236,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   @include margin-right(6px);
   @include padding-left(0px);
   @include ms-bgColor-neutralLighter;
+  border: 1px solid transparent;
 
   .fieldIsImage {
     display: inline-block;
@@ -323,4 +316,8 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
 :global(.ms-Fabric.is-focusVisible) .choiceFieldIsInFocus {
   @include pseudo-border($ms-color-neutralPrimary);
+}
+
+:global(.ms-Fabric.is-focusVisible) .choiceFieldIsInFocus.choiceFieldIsImage {
+  @include pseudo-border($ms-color-neutralPrimary, 2px, 1px);
 }

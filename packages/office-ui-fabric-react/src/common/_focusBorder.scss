@@ -22,11 +22,11 @@
   }
 }
 
-@mixin pseudo-border($color) {
+@mixin pseudo-border($color, $padding: 0, $thickness: 1) {
   @include base-border();
 
   &::after {
-    @include after-border($color);
+    @include after-border($color, $padding, $thickness);
   }
 }
 
@@ -38,17 +38,17 @@
     position: relative;
 }
 
-@mixin after-border($color){
+@mixin after-border($color, $padding: 0, $thickness: 1){
     content: '';
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    top: $padding;
+    right: $padding;
+    bottom: $padding;
+    left: $padding;
 
     // Make the content not respond to mouse/touch event. Reference: https://css-tricks.com/almanac/properties/p/pointer-events/
     pointer-events: none;
 
     // Add focus border with $color
-    border: 1px solid $color;
+    border: $thickness solid $color;
 }
