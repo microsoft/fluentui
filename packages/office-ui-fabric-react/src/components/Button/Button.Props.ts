@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { BaseButton } from './BaseButton';
 import { Button } from './Button';
+import { IContextualMenuItem } from '../../ContextualMenu';
 
 export interface IButton {
   /**
@@ -42,6 +43,11 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
   * Text to render button label. If text is supplied, it will override any string in button children. Other children components will be passed through after the text.
   */
   text?: string;
+
+  /**
+  *
+  */
+  contextualMenuItems?: IContextualMenuItem[];
 
   /**
    * The button icon shown in command or hero type.

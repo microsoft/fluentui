@@ -7,6 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ButtonDefaultExample } from './examples/Button.Default.Example';
+import { ButtonConextualMenuExample } from './examples/Button.ContextualMenu.Example';
 import { ButtonPrimaryExample } from './examples/Button.Primary.Example';
 import { ButtonCompoundExample } from './examples/Button.Compound.Example';
 import { ButtonCommandExample } from './examples/Button.Command.Example';
@@ -16,6 +17,7 @@ import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Exampl
 import { IButtonDemoPageState } from './examples/IButtonDemoPageState';
 import './examples/Button.Basic.Example.scss';
 
+const ButtonContextualMenuExampleCode = require('./examples/Button.ContextualMenu.Example.tsx') as string;
 const ButtonDefaultExampleCode = require('./examples/Button.Default.Example.tsx') as string;
 const ButtonPrimaryExampleCode = require('./examples/Button.Primary.Example.tsx') as string;
 const ButtonCompoundExampleCode = require('./examples/Button.Compound.Example.tsx') as string;
@@ -54,6 +56,9 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
             </ExampleCard>
             <ExampleCard title='Icon Button' code={ ButtonIconExampleCode }>
               <ButtonIconExample disabled={ this.state.areButtonsDisabled } />
+            </ExampleCard>
+            <ExampleCard title='Contextual Menu Button' code={ ButtonContextualMenuExampleCode }>
+              <ButtonConextualMenuExample disabled={ this.state.areButtonsDisabled } />
             </ExampleCard>
             <ExampleCard title='Button Like Anchor' code={ ButtonAnchorExampleCode }>
               <ButtonAnchorExample disabled={ this.state.areButtonsDisabled } />

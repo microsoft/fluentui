@@ -8,6 +8,8 @@ import {
   buttonProperties,
   anchorProperties
 } from '../../Utilities';
+import { DirectionalHint } from '../../common/DirectionalHint';
+import { ContextualMenu } from '../../contextualMenu';
 import { IButtonProps, IButton } from './Button.Props';
 import styles from './BaseButton.scss';
 
@@ -23,7 +25,11 @@ export interface IBaseButtonClassNames {
   root?: string;
 }
 
-export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButton {
+export interface IBaseButtonState {
+  contextualMenuOpen?: boolean;
+}
+
+export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> implements IButton {
 
   protected classNames: IBaseButtonClassNames = {
     base: 'ms-Button',
@@ -31,6 +37,7 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     isEnabled: '',
     isDisabled: ''
   };
+
 
   private _buttonElement: HTMLButtonElement;
   private _labelId: string;
@@ -42,6 +49,9 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     this._labelId = getId();
     this._descriptionId = getId();
     this._ariaDescriptionId = getId();
+    this.state = {
+      contextualMenuOpen: false
+    };
   }
 
   public render(): JSX.Element {
@@ -89,7 +99,8 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
         'aria-label': ariaLabel,
         'aria-labelledby': ariaLabel ? null : _labelId,
         'aria-describedby': ariaDescribedBy,
-        'aria-disabled': disabled
+        'aria-disabled': disabled,
+        'onClick': this._onButtonClick
       }
     );
 
@@ -111,7 +122,8 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
         this.onRenderLabel(),
         this.onRenderDescription(),
         this.onRenderAriaDescription(),
-        this.onRenderChildren()
+        this.onRenderChildren(),
+        this.onRenderContextualMenu()
       ));
   }
 
@@ -181,5 +193,33 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     ) : (
         null
       );
+  }
+
+  protected onRenderContextualMenu(): JSX.Element {
+    let { contextualMenuItems } = this.props;
+    let { contextualMenuOpen } = this.state;
+    return (
+      contextualMenuItems && contextualMenuOpen &&
+      <ContextualMenu
+        className={ css('ms-BaseButton-menuHost') }
+        isBeakVisible={ true }
+        directionalHint={ DirectionalHint.bottomLeftEdge }
+        items={ contextualMenuItems }
+        target={ this._buttonElement }
+        labelElementId={ this._labelId }
+        onDismiss={ this._onButtonClick }
+      />
+    );
+  }
+
+  private _onButtonClick = () => {
+    let { contextualMenuItems, disabled } = this.props;
+    let { contextualMenuOpen } = this.state;
+
+    if (!disabled) {
+      this.setState({
+        contextualMenuOpen: !contextualMenuOpen
+      });
+    }
   }
 }
