@@ -38,7 +38,6 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
     isDisabled: ''
   };
 
-
   private _buttonElement: HTMLButtonElement;
   private _labelId: string;
   private _descriptionId: string;
