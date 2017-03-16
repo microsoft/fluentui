@@ -24,7 +24,14 @@ import {
 } from '../../Persona';
 import styles from './Facepile.scss';
 
-export class Facepile extends BaseComponent<IFacepileProps, any> {
+export interface IFacepileState {
+  renderedItems: IFacepilePersona[];
+}
+
+const OVERFLOW_KEY = 'overflow';
+const MAX_OVERFLOW = 99;
+
+export class Facepile extends BaseComponent<IFacepileProps, IFacepileState> {
   public static defaultProps: IFacepileProps = {
     useOnlyAvailableWidth: false,
     maxDisplayablePersonas: 5,
@@ -34,13 +41,48 @@ export class Facepile extends BaseComponent<IFacepileProps, any> {
 
   private _members: HTMLElement;
 
-  public componentWillMount() {
-    // Re-render when mounting to get a true count based on actual size the mounted persona will take up.
-    this.forceUpdate();
+  private _calculated: boolean;
+  private _elementWidth: number;
+
+  constructor(props: IFacepileProps) {
+    super(props);
+
+    this.state = {
+      renderedItems: null
+    };
+  }
+
+  public componentDidMount() {
+    const { useOnlyAvailableWidth } = this.props;
+    if (useOnlyAvailableWidth) {
+      this._updateMeasurements();
+      this._events.on(window, 'resize', this._updateRenderedItems);
+    }
+    this._updateRenderedItems();
+  }
+
+  public componentWillReceiveProps(nextProps: IFacepileProps) {
+    this.setState((prevState: IFacepileState) => {
+      prevState.renderedItems = nextProps.personas;
+      return prevState;
+    });
+    this._calculated = null;
+  }
+
+  public componentDidUpdate(prevProps: IFacepileProps, prevStates: IFacepileState) {
+    const { useOnlyAvailableWidth } = this.props;
+    if (!this._calculated) {
+      if (useOnlyAvailableWidth) {
+        this._updateMeasurements();
+      }
+      this._updateRenderedItems();
+    }
   }
 
 public render(): JSX.Element {
-    let { chevronButtonProps, overflowButtonProps, overflowButtonType, personas, showAddButton } = this.props;
+    let { chevronButtonProps, overflowButtonProps, overflowButtonType, showAddButton } = this.props;
+    const { renderedItems } = this.state;
+
     let numPersonasToShow: number = this._calculateDisplayablePersonas();
 
     // Added for deprecating chevronButtonProps.  Can remove after v1.0
@@ -55,18 +97,21 @@ public render(): JSX.Element {
           className={ css('ms-Facepile-members') }
           ref={ this._resolveRef('_members') }
           >
-          { showAddButton ? this._getAddNewElement() : null }
-          <FocusZone direction={ FocusZoneDirection.horizontal }>
+          { showAddButton && this._getAddNewElement() }
+          <FocusZone
+            key={ 'FocusZone' }
+            direction={ FocusZoneDirection.horizontal }>
             {
-              numPersonasToShow ? (
-                personas.slice(0, numPersonasToShow).map((persona: IFacepilePersona, index: number) => {
-                  const personaControl: JSX.Element = this._getPersonaControl(persona);
-                  return persona.onClick ?
-                    this._getElementWithOnClickEvent(personaControl, persona, index) :
-                    this._getElementWithoutOnClickEvent(personaControl, persona, index);
-                })) : null
+              !!numPersonasToShow &&
+          renderedItems.map((persona: IFacepilePersona, index: number) => {
+            const personaControl: JSX.Element = this._getPersonaControl(persona);
+            return persona.onClick ?
+              this._getElementWithOnClickEvent(personaControl, persona, index) :
+              this._getElementWithoutOnClickEvent(personaControl, persona, index);
+          })
             }
-            { overflowButtonType !== OverflowButtonType.none ? this._getOverflowElement(numPersonasToShow) : null }
+        { overflowButtonType !== OverflowButtonType.none &&
+          this._getOverflowElement(numPersonasToShow) }
           </FocusZone>
         </div>
         <div className={ css('ms-Facepile-clear', styles.clear) }></div>
@@ -74,73 +119,90 @@ public render(): JSX.Element {
     );
   }
 
+
+
+  private _updateMeasurements(): void {
+    const { useOnlyAvailableWidth } = this.props;
+    if (useOnlyAvailableWidth) {
+      this._elementWidth = this._calculateElementWidth();
+    }
+  }
+
+  private _updateRenderedItems() {
+    const { personas } = this.props;
+    let numPersonasToShow: number = this._calculateDisplayablePersonas();
+
+    this.setState((prevState: IFacepileState) => {
+      prevState.renderedItems = numPersonasToShow ? personas.slice(0, numPersonasToShow) : [];
+      return prevState;
+    });
+
+    this._calculated = true;
+  }
+
   private _calculateDisplayablePersonas(): number {
+    const { personas, useOnlyAvailableWidth } = this.props;
     let maxPersonasToShow: number =
-      this.props.useOnlyAvailableWidth ?
+      useOnlyAvailableWidth ?
         this._calculatePersonasBasedOnWidthAvailable() :
         this._calculatePersonasBasedOnMaxAllowed();
 
-    return Math.max(Math.min(maxPersonasToShow - this._calculateExtraSpaceNeeds(maxPersonasToShow), this.props.personas.length), 0);
+    return Math.max(Math.min(maxPersonasToShow - this._calculateExtraSpaceNeeds(maxPersonasToShow), personas.length), 0);
   }
 
   private _calculateExtraSpaceNeeds(maxPersonasToShow: number): number {
+    const { overflowButtonType, showAddButton} = this.props;
     let extraSpace: number = 0;
-    if (this.props.showAddButton) { extraSpace++; }
-    if (this.props.overflowButtonType === OverflowButtonType.more ||
-      this.props.overflowButtonType === OverflowButtonType.downArrow ||
-      this._willDisplayDescriptiveOverflowButton(this.props.overflowButtonType, maxPersonasToShow)) { extraSpace++; }
+    if (showAddButton) { extraSpace++; }
+    if (overflowButtonType === OverflowButtonType.more ||
+      overflowButtonType === OverflowButtonType.downArrow ||
+      this._willDisplayDescriptiveOverflowButton(overflowButtonType, maxPersonasToShow)) { extraSpace++; }
     return extraSpace;
   }
 
   private _willDisplayDescriptiveOverflowButton(overflowButtonType: OverflowButtonType, numPersonasToShow: number): boolean {
+    const { personas } = this.props;
     if (overflowButtonType !== OverflowButtonType.descriptive) { return false; }
-    let numPersonasNotPictured: number = this.props.personas.length - numPersonasToShow;
+    let numPersonasNotPictured: number = personas.length - numPersonasToShow;
     return numPersonasNotPictured > 0;
   }
 
   private _calculatePersonasBasedOnMaxAllowed(): number {
-    let numPersonasToShow: number = this.props.maxDisplayablePersonas;
+    const { maxDisplayablePersonas } = this.props;
+    let numPersonasToShow: number = maxDisplayablePersonas;
     return Math.max(numPersonasToShow, 1);
   }
 
   private _calculatePersonasBasedOnWidthAvailable(): number {
-    let numPersonasToShow: number = this.props.maxDisplayablePersonas;
+    const { maxDisplayablePersonas, width } = this.props;
 
-    if (this._members) {
-      let calculatedMax: number = 1;
-      let nodes: NodeListOf<Element> = this._members.querySelectorAll('.ms-Facepile-itemButton');
+    let numPersonasToShow: number = 0;
+    let boundingBoxWidth: number = width ? width : this._members ? this._members.getBoundingClientRect().width : 0;
 
-      if (nodes) {
-        let boundingBoxWidth: number = this._members.getBoundingClientRect().width;
-        let tempNode: Node;
-
-        if (nodes.length === 1) {
-          // Add a temp node to find actual node width
-          tempNode = nodes[0].cloneNode();
-          nodes[0].parentNode.appendChild(tempNode);
-          nodes = this._members.querySelectorAll('.ms-Facepile-itemButton');
-        }
-
-        if (nodes && nodes.length > 1) {
-          // Check that the second element doesn't wrap
-          if (nodes[0].getBoundingClientRect().bottom === nodes[1].getBoundingClientRect().bottom) {
-            // Get the distance between left edges
-            let elementWidth: number = Math.abs(nodes[1].getBoundingClientRect().left - nodes[0].getBoundingClientRect().left);
-            calculatedMax = Math.floor(boundingBoxWidth / elementWidth);
-          }
-        }
-
-        // If we used a temp node remove it
-        if (tempNode) {
-          nodes[0].parentNode.removeChild(tempNode);
-        }
-      }
-
-      numPersonasToShow = calculatedMax;
+    if (this._elementWidth && boundingBoxWidth) {
+      numPersonasToShow = Math.floor(boundingBoxWidth / this._elementWidth);
     }
 
-    numPersonasToShow = Math.min(this.props.maxDisplayablePersonas, numPersonasToShow);
+    numPersonasToShow = Math.min(maxDisplayablePersonas, numPersonasToShow);
     return Math.max(numPersonasToShow, 1);
+  }
+
+  private _calculateElementWidth(): number {
+    if (this._elementWidth) {
+      return this._elementWidth;
+    }
+
+    let elementWidth: number = 0;
+
+    if (this._members) {
+      let node: Element = this._members.querySelector(".ms-Facepile-itemButton");
+      if (node) {
+        let style = window.getComputedStyle(node);
+        elementWidth = node.getBoundingClientRect().width + (parseInt(style.marginLeft, 10) || 0) + (parseInt(style.marginRight, 10) || 0);
+      }
+    }
+
+    return elementWidth;
   }
 
   private _getPersonaControl(persona: IFacepilePersona): JSX.Element {
@@ -161,7 +223,7 @@ public render(): JSX.Element {
       { ...getNativeProps(persona, buttonProperties) }
       className={ css('ms-Facepile-itemButton ms-Facepile-person', styles.itemButton) }
       title={ persona.personaName }
-      key={ (!!persona.imageUrl ? 'i' : '') + index }
+            key={ this._getItemKey(persona, index) }
       onClick={ this._onPersonaClick.bind(this, persona) }
       onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
       onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
@@ -175,7 +237,7 @@ public render(): JSX.Element {
       { ...getNativeProps(persona, divProperties) }
       className={ css('ms-Facepile-itemButton ms-Facepile-person', styles.itemButton) }
       title={ persona.personaName }
-      key={ (!!persona.imageUrl ? 'i' : '') + index }
+            key={ this._getItemKey(persona, index) }
       onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
       onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
     >
@@ -197,16 +259,17 @@ public render(): JSX.Element {
   }
 
   private _getDescriptiveOverflowElement(numPersonasToShow: number): JSX.Element {
-    let { personaSize } = this.props;
-    let numPersonasNotPictured: number = this.props.personas.length - numPersonasToShow;
+    const { overflowButtonProps, personas, personaSize } = this.props;
+    let numPersonasNotPictured: number = personas.length - numPersonasToShow;
 
     if (numPersonasNotPictured < 1) { return null; }
 
-    let personaNames: string = this.props.personas.slice(numPersonasToShow).map((p: IFacepilePersona) => p.personaName).join(', ');
+    let personaNames: string = personas.slice(numPersonasToShow).map((p: IFacepilePersona) => p.personaName).join(', ');
 
     return <BaseButton
-      { ...getNativeProps(this.props.overflowButtonProps, buttonProperties) }
-      className={ css('ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton', styles.descriptiveOverflowButton, styles.itemButton) }
+      { ...getNativeProps(overflowButtonProps, buttonProperties) }
+            key={ OVERFLOW_KEY }
+className={ css('ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton', styles.descriptiveOverflowButton, styles.itemButton) }
     >
       <Persona
         title={ personaNames }
@@ -214,7 +277,10 @@ public render(): JSX.Element {
         hidePersonaDetails={ true }
         onRenderInitials={ () => {
           return (
-            <span>{ '+' + numPersonasNotPictured }</span>
+            <span>
+      { numPersonasNotPictured > MAX_OVERFLOW ?
+        numPersonasNotPictured + '+' :
+        '+' + numPersonasNotPictured }</span>
           );
         } }
       >
@@ -225,10 +291,11 @@ public render(): JSX.Element {
   }
 
   private _getIconElement(icon: string): JSX.Element {
-    let { personaSize } = this.props;
+    const { overflowButtonProps, personaSize } = this.props;
 
     return <BaseButton
-      { ...getNativeProps(this.props.overflowButtonProps, buttonProperties) }
+      { ...getNativeProps(overflowButtonProps, buttonProperties) }
+      key={ OVERFLOW_KEY }
       className={ css('ms-Facepile-overflowButton', 'ms-Facepile-itemButton', styles.overflowButton, styles.itemButton) }
     >
       <Persona
@@ -237,16 +304,15 @@ public render(): JSX.Element {
         onRenderInitials={ () => (
           <i className={ css('ms-Icon', 'msIcon', `ms-Icon ms-Icon--${icon}`) } aria-hidden='true' />
         ) }
-      >
-
-      </Persona>
+      />
     </BaseButton>;
   }
 
   private _getAddNewElement(): JSX.Element {
-    let { personaSize } = this.props;
+    const { addButtonProps, personaSize } = this.props;
+
     return <BaseButton
-      { ...getNativeProps(this.props.addButtonProps, buttonProperties) }
+      { ...getNativeProps(addButtonProps, buttonProperties) }
       className={ css('ms-Facepile-addButton', 'ms-Facepile-itemButton', styles.itemButton, styles.addButton) }
     >
       <Persona
@@ -255,11 +321,12 @@ public render(): JSX.Element {
         onRenderInitials={ () => (
           <i className='ms-Icon msIcon ms-Icon--AddFriend' aria-hidden='true' />
         ) }
-      >
-
-      </Persona>
-
+      />
     </BaseButton>;
+  }
+
+  private _getItemKey(persona: IFacepilePersona, index: number): string {
+    return (!!persona.imageUrl ? 'i' : '') + index;
   }
 
   private _onPersonaClick(persona: IFacepilePersona, ev?: React.MouseEvent<HTMLElement>): void {

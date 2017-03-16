@@ -17,6 +17,12 @@ export interface IFacepileProps extends React.Props<Facepile> {
   /** Render control to fit parent element */
   useOnlyAvailableWidth?: boolean;
 
+  /**
+   * Set number of pixel to use for width instead of calculating it internally.
+   * NOTE: This is ignored when useOnlyAvailableWidth is set to false.
+   */
+  width?: number;
+
   /** Maximum number of personas to show */
   maxDisplayablePersonas?: number;
 
