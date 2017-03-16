@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { BaseButton } from './BaseButton';
 import { Button } from './Button';
-import { IContextualMenuItem } from '../../ContextualMenu';
+import { IRenderFunction } from '../../Utilities';
+import { IContextualMenuProps } from '../../ContextualMenu';
 
 export interface IButton {
   /**
@@ -45,9 +46,14 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
   text?: string;
 
   /**
-  *
+  * Props for button menu
   */
-  contextualMenuItems?: IContextualMenuItem[];
+  menuProps?: IContextualMenuProps;
+
+  /**
+  * Custom render function for button menu
+  */
+  onRenderMenu?: IRenderFunction<IContextualMenuProps>;
 
   /**
    * The button icon shown in command or hero type.
@@ -57,7 +63,7 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
   /**
    * The button icon shown to the right of the text
    */
-  splitIcon?: string;
+  menuIcon?: string;
 
   /**
    * Description of the action this button takes.
@@ -80,6 +86,12 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
    * they will be mixed into the button/anchor element rendered by the component.
    */
   rootProps?: React.HTMLProps<HTMLButtonElement> | React.HTMLProps<HTMLAnchorElement>;
+}
+
+export enum MenuType {
+  default = 0,
+  none = 1,
+  chevron = 2
 }
 
 export enum ElementType {

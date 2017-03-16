@@ -14,19 +14,22 @@ export class ButtonConextualMenuExample extends React.Component<IButtonProps, {}
             disabled={ disabled }
             icon='Add'
             text='New'
-            contextualMenuItems={ [
-              {
-                key: 'emailMessage',
-                name: 'Email message',
-                icon: 'Mail',
-                ['data-automation-id']: 'newEmailButton'
-              },
-              {
-                key: 'calendarEvent',
-                name: 'Calendar event',
-                icon: 'Calendar'
-              }
-            ] }
+            menuProps={ {
+              items: [
+                {
+                  key: 'emailMessage',
+                  name: 'Email message',
+                  icon: 'Mail',
+                  ['data-automation-id']: 'newEmailButton'
+                },
+                {
+                  key: 'calendarEvent',
+                  name: 'Calendar event',
+                  icon: 'Calendar'
+                }
+              ]
+            }
+            }
           >
           </DefaultButton>
         </div>
