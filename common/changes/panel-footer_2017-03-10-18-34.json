@@ -1,0 +1,20 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Panel: Added sticky footer section and broke each panel region into seperate onRender fucntion. ",
+      "type": "minor"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/utilities",
+      "type": "none"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/example-app-base",
+      "type": "none"
+    }
+  ],
+  "email": "micahgodbolt@gmail.com"
+}
