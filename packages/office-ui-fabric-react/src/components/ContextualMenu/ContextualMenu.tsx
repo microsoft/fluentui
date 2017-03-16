@@ -433,7 +433,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
-  private _onItemClick(item: any, ev: MouseEvent) {
+  private _onItemClick(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
     let items = getSubmenuItems(item);
 
     if (!items || !items.length) { // This is an item without a menu. Click it.
@@ -450,15 +450,18 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     ev.preventDefault();
   }
 
-  private _onAnchorClick(item: IContextualMenuItem, ev: MouseEvent) {
+  private _onAnchorClick(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
     this._executeItemClick(item, ev);
     ev.stopPropagation();
   }
 
-  private _executeItemClick(item: any, ev: MouseEvent) {
+  private _executeItemClick(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
     if (item.onClick) {
       item.onClick(ev, item);
+    } else {
+      this.props.onItemClick(ev, item);
     }
+
     this.dismiss(ev, true);
   }
 
