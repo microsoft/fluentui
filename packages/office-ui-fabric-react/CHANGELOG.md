@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 15 Mar 2017 03:06:37 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Mar 2017 03:05:54 GMT and should not be manually modified.
+
+## 2.5.0
+Thu, 16 Mar 2017 03:05:54 GMT
+
+### Minor changes
+
+- DocumentCard: Add aria role and keyboard handling
+- Panel: Added sticky footer section and broke each panel region into seperate onRender fucntion. 
+
+### Patches
+
+- FocusZone: Spacebar no longer scrolls page when in focuszone or selectionzone, and acts as selecting action
+- DetailsList: headers now have the correct font applied and use a transparent background to fix the IE11 styling, which doesn't like "inherit".
+- TextField: Fix for multiple onChanged calls
 
 ## 2.4.0
 Wed, 15 Mar 2017 03:06:37 GMT
