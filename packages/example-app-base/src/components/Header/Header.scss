@@ -12,7 +12,7 @@ $Header-fabricWebsiteHeaderColor: #272630;
   user-select: none;
 }
 
-@media (max-width: $ms-screen-lg-max) {
+@media (max-width: $ms-screen-max-lg) {
   .Header {
     padding: 0;
   }
@@ -29,12 +29,12 @@ $Header-fabricWebsiteHeaderColor: #272630;
   line-height: 48px;
 
   .ms-Icon {
-    @include padding-right(8px);
+    @include ms-padding-right(8px);
   }
 }
 
 .Header-buttons {
-  @include float(right);
+  @include ms-float(right);
 }
 
 .Header-button {
@@ -65,7 +65,7 @@ $Header-fabricWebsiteHeaderColor: #272630;
   }
 }
 
-@media (max-width: $ms-screen-lg-max) {
+@media (max-width: $ms-screen-max-lg) {
   .Header-button {
     margin: 0;
 

@@ -508,7 +508,7 @@ Be conscious of RTL support. In scss, do not hardcode left/right alignemnts and 
 
 ```scss
 .ms-Foo {
-  @include float(left);
+  @include ms-float(left);
 }
 ```
 

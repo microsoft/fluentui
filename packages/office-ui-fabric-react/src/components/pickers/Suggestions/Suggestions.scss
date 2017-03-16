@@ -7,8 +7,8 @@
 .suggestionsItem {
   width: 100%;
   height: auto;
-  
-  @include text-align(left);
+
+  @include ms-text-align(left);
   padding: 4px 20px 6px;
 
   display: block;
@@ -28,7 +28,7 @@
 }
 
 .searchMoreButton {
-  @include button-reset();
+  @include ms-button-reset();
   height: auto;
   text-align: center;
   margin: 0;

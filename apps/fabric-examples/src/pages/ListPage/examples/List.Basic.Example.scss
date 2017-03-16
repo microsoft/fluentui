@@ -19,7 +19,7 @@
 }
 
 .ms-ListBasicExample-itemContent {
-  @include margin-left(10px);
+  @include ms-margin-left(10px);
   overflow: hidden;
   flex-grow: 1;
 }
@@ -38,7 +38,7 @@
 
 .ms-ListBasicExample-chevron {
   align-self: center;
-  @include margin-left(10px);
+  @include ms-margin-left(10px);
   color: $ms-color-neutralTertiary;
   font-size: $ms-font-size-l;
   flex-shrink: 0;

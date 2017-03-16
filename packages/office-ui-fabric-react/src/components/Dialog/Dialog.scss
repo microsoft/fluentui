@@ -23,12 +23,12 @@ $Dialog-default-max-width: 340px;
   height: 100%;
   width:  100%;
   top:  0;
-  @include left(0);
+  @include ms-left(0);
   display: none; // Hidden by default
 
   :global(.ms-Button.ms-Button--compound) {
     display: block;
-    @include margin-left(0);
+    @include ms-margin-left(0);
   }
 
   :global(.ms-Overlay) {
@@ -60,14 +60,14 @@ $Dialog-default-max-width: 340px;
 // The actual dialog element
 .main {
   @include dialogPositioningIE9Fallback();
-  @include drop-shadow();
+  @include ms-drop-shadow();
   background-color: $ms-color-white;
   box-sizing: border-box;
   line-height: 1.35;
   margin: auto;
   width: $Dialog-default-min-width;
   position: relative;
-  @include text-align(left);
+  @include ms-text-align(left);
   outline: 3px solid transparent;
   max-height: 100%;
   overflow-y: auto;
@@ -97,7 +97,7 @@ $Dialog-default-max-width: 340px;
   margin: 0;
   @include ms-font-xl;
   color: $ms-color-neutralPrimary;
-  @include padding(20px, 36px, 20px, 28px);
+  @include ms-padding(20px, 36px, 20px, 28px);
 }
 
 .topButton {
@@ -106,8 +106,8 @@ $Dialog-default-max-width: 340px;
   flex-wrap: nowrap;
   position: absolute;
   top: 0;
-  @include right(0);
-  @include padding(12px, 12px, 0, 0);
+  @include ms-right(0);
+  @include ms-padding(12px, 12px, 0, 0);
   > * {
     flex: 0 0 auto;
   }
@@ -152,8 +152,8 @@ $Dialog-default-max-width: 340px;
 // Negative margin to needed to compensate for symmetric
 // padding between action elements.
 .actionsRight {
-  @include text-align(right);
-  @include margin-right(-4px);
+  @include ms-text-align(right);
+  @include ms-margin-right(-4px);
   font-size: 0;
 
   // Reset spacing for first button
@@ -202,7 +202,7 @@ $Dialog-default-max-width: 340px;
   }
 }
 
-@media (min-width: $ms-screen-md-min) {
+@media (min-width: $ms-screen-min-md) {
   // Allow wider dialog on larger screens
   .main {
     width: auto;

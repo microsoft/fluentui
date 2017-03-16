@@ -4,9 +4,9 @@ $nav-group-header-height: 40px;
 
 .nav {
   padding-top: 20px;
-  @include padding-right(12px);
+  @include ms-padding-right(12px);
   padding-bottom: 60px;
-  @include padding-left(36px);
+  @include ms-padding-left(36px);
 }
 
 .link {
@@ -37,7 +37,7 @@ $nav-group-header-height: 40px;
       background: $ms-color-neutralTertiary;
       position: absolute;
       top: 3px;
-      @include left(-16px);
+      @include ms-left(-16px);
     }
 
     &.fabricPage::before {
@@ -47,7 +47,7 @@ $nav-group-header-height: 40px;
     &.getStartedPage::before {
       background-color: $color-getStarted-medium;
     }
-    
+
     &.stylesPage::before {
       background-color: $color-styles-medium;
     }
@@ -95,7 +95,7 @@ $nav-group-header-height: 40px;
 
 // Second-level links
 .isSubMenu {
-  @include margin-left(8px);
+  @include ms-margin-left(8px);
 
   .link {
     a {

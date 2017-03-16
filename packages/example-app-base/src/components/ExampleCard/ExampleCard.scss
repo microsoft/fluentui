@@ -19,10 +19,10 @@
 
 .ExampleCard-toggleButtons {
   display: block;
-  @include float(right);
+  @include ms-float(right);
 
   .ms-Button.ExampleCard-codeButton {
-    @include margin-right(0);
+    @include ms-margin-right(0);
     background: none;
     border: 1px solid $ms-color-neutralTertiary;
     border-bottom: 0;
@@ -31,7 +31,7 @@
     line-height: 1;
     padding: 4px 12px;
     min-width: 100px;
-    transition: border $ms-duration3 $ms-ease1;
+    transition: border $ms-animation-duration-3 $ms-animation-ease-1;
 
     .ms-Button-icon {
       position: relative;
@@ -40,7 +40,7 @@
       .ms-Icon {
         font-size: $ms-font-size-l;
         padding: 0;
-        @include margin-right(8px);
+        @include ms-margin-right(8px);
       }
     }
 
@@ -72,7 +72,7 @@
 }
 
 .ExampleCard-example.is-right-aligned {
-  @include text-align(right);
+  @include ms-text-align(right);
 }
 
 .ExampleCard-code {
@@ -84,7 +84,7 @@
     margin: 0;
     max-height: 0;
     overflow: auto;
-    transition: all $ms-duration3 $ms-ease1;
+    transition: all $ms-animation-duration-3 $ms-animation-ease-1;
   }
 
   code {
@@ -116,7 +116,7 @@
 .ExampleCard-dos {
   width: calc(50% - 50px);
   display: inline-block;
-  @include margin-right(50px);
+  @include ms-margin-right(50px);
 
   h4 {
     @include ms-font-l;

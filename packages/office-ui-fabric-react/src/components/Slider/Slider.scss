@@ -16,7 +16,7 @@
 
 .line span {
   height: 4px;
-  @include float(left);
+  @include ms-float(left);
   border-radius: 4px;
 }
 
@@ -30,12 +30,12 @@
 
 .showTransitions {
   .thumb {
-    transition: left $ms-duration3 $ms-ease1;
+    transition: left $ms-animation-duration-3 $ms-animation-ease-1;
   }
 
   .activeSection,
   .inactiveSection {
-    transition: width $ms-duration3 $ms-ease1;
+    transition: width $ms-animation-duration-3 $ms-animation-ease-1;
   }
 }
 .slideBox {
@@ -55,7 +55,7 @@
   position: absolute;
   top: -6px;
   border-radius: 10px;
-  @include transform-translateX(-50%);
+  @include ms-transform-translateX(-50%);
 }
 
 .container {

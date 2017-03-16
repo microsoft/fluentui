@@ -32,7 +32,7 @@
 // Link implemented as a button.
 button.root {
   @include focus-border;
-  @include text-align(left);
+  @include ms-text-align(left);
   background: none;
   border: none;
   cursor: pointer;

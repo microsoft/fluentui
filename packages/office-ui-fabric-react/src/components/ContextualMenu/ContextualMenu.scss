@@ -39,7 +39,7 @@ $ContextualMenu-iconWidth: 14px;
   display: block;
   cursor: pointer;
   padding: 0px 6px;
-  @include text-align(left);
+  @include ms-text-align(left);
 
   &:hover:not([disabled]) {
     background: $ContextualMenu-itemHover;
@@ -78,7 +78,7 @@ $ContextualMenu-iconWidth: 14px;
   cursor: default;
   padding: 0px 6px;
   user-select: none;
-  @include text-align(left);
+  @include ms-text-align(left);
 }
 
 a.link {

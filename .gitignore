@@ -108,3 +108,6 @@ common/npmx-recycler
 common/rush-link.json
 common/last-install.*
 common/rush-recycler
+
+# Gulp cache
+gulp-cache/

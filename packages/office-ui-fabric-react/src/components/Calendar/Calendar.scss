@@ -10,7 +10,7 @@ $Calendar-day:40px;
 $Calendar-dayPicker-margin: 10px;
 
 .root {
-  @include ms-u-normalize;
+  @include ms-normalize;
   margin-bottom: 17px;
 }
 
@@ -19,13 +19,13 @@ $Calendar-dayPicker-margin: 10px;
   color: $ms-color-black;
   font-size: $ms-font-size-m;
   position: relative;
-  @include text-align(left);
+  @include ms-text-align(left);
 }
 
 // The holder is the only "scrollable" top-level container element.
 .holder {
   -webkit-overflow-scrolling: touch;
-  @include ms-u-borderBox;
+  @include ms-borderBox;
   background: $ms-color-white;
   min-width: 300px;
   display: none;
@@ -34,8 +34,8 @@ $Calendar-dayPicker-margin: 10px;
 
 // When the picker opens, reveal the content.
 .picker.pickerIsOpened .holder {
-  @include ms-u-slideDownIn10;
-  @include ms-u-borderBox;
+  @include ms-slideDownIn10;
+  @include ms-borderBox;
   display: block;
 }
 
@@ -86,11 +86,11 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 .month {
-  @include margin-left(15px);
+  @include ms-margin-left(15px);
 }
 
 .year {
-  @include margin-left(15px);
+  @include ms-margin-left(15px);
 }
 
 
@@ -180,14 +180,14 @@ $Calendar-dayPicker-margin: 10px;
 .monthComponents {
   position: absolute;
   top: 9px;
-  @include right(9px);
-  @include left(9px);
+  @include ms-right(9px);
+  @include ms-left(9px);
 }
 
 .yearComponents,
 .decadeComponents {
   position: absolute;
-  @include right(10px);
+  @include ms-right(10px);
   top: -2px;
 }
 
@@ -200,7 +200,7 @@ $Calendar-dayPicker-margin: 10px;
   width: $Calendar-day;
   height: $Calendar-day;
   display: block;
-  @include margin-left(10px);
+  @include ms-margin-left(10px);
   text-align: center;
   line-height: $Calendar-day;
   text-align: center;
@@ -220,7 +220,7 @@ $Calendar-dayPicker-margin: 10px;
 // button is necessary to toggle the month view.
 .headerToggleView {
   height: $Calendar-day;
-  @include left(0px);
+  @include ms-left(0px);
   position: absolute;
   top: 0px;
   width: 140px;
@@ -236,7 +236,7 @@ $Calendar-dayPicker-margin: 10px;
   color: $ms-color-neutralPrimary;
   height: $Calendar-day;
   line-height: $Calendar-day;
-  @include margin-left(15px);
+  @include ms-margin-left(15px);
 }
 
 // The current year is blue and actionable.
@@ -256,7 +256,7 @@ $Calendar-dayPicker-margin: 10px;
   position: relative;
   height: 210px;
   width: 280px;
-  @include margin(10px, 0, 30px, 5px);
+  @include ms-margin(10px, 0, 30px, 5px);
 }
 
 // Button to select a different month.
@@ -267,8 +267,8 @@ $Calendar-dayPicker-margin: 10px;
   height: 60px;
   line-height: 60px;
   cursor: pointer;
-  @include float(left);
-  @include margin(0, 10px, 10px, 0);
+  @include ms-float(left);
+  @include ms-margin(0, 10px, 10px, 0);
   @include ms-font-s-plus;
   color: $ms-color-neutralPrimary;
   text-align: center;
@@ -296,7 +296,7 @@ $Calendar-dayPicker-margin: 10px;
   line-height: 30px;
   padding: 0 10px;
   position: absolute;
-  @include right(9px);
+  @include ms-right(9px);
 
   &:hover {
     outline: 1px solid transparent;
@@ -393,8 +393,8 @@ $Calendar-dayPicker-margin: 10px;
     }
     // Contains the calendar view for picking a day.
     .dayPicker {
-      @include ms-u-borderBox;
-      @include border-right(1px, solid, $ms-color-neutralLight);
+      @include ms-borderBox;
+      @include ms-border-right(1px, solid, $ms-color-neutralLight);
       width: 220px;
       min-height: ( $Calendar-day * 8 ) - $Calendar-dayPicker-margin;
     }
@@ -411,19 +411,19 @@ $Calendar-dayPicker-margin: 10px;
     .monthPicker,
     .yearPicker {
       top: 9px;
-      @include left(238px);
+      @include ms-left(238px);
       position: absolute;
     }
     // Size and position of the month and year labels.
     .month {
-      @include margin-left(12px);
+      @include ms-margin-left(12px);
     }
 
 
     .optionGrid {
       width: 200px;
       height: auto;
-      @include margin(10px, 0, 0, 0);
+      @include ms-margin(10px, 0, 0, 0);
     }
     // This component is only used on small displays.
     .toggleMonthView {
@@ -446,7 +446,7 @@ $Calendar-dayPicker-margin: 10px;
       height: 40px;
       line-height: 38px;
       font-size: 12px;
-      @include margin(0, 10px, 10px, 0);
+      @include ms-margin(0, 10px, 10px, 0);
 
       &:hover {
         outline: 1px solid transparent;
@@ -454,13 +454,13 @@ $Calendar-dayPicker-margin: 10px;
     }
     // Position the "Go to today" button below the month picker.
     .goToday {
-      @include ms-u-borderBox;
+      @include ms-borderBox;
       font-size: 12px;
       height: $Calendar-day;
       line-height: $Calendar-day;
       padding: 0 10px;
-      @include right(10px);
-      @include text-align(right);
+      @include ms-right(10px);
+      @include ms-text-align(right);
       top: 199px;
       width: 210px;
     }
@@ -526,5 +526,5 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 .navContainer {
-  @include float('right')
+  @include ms-float('right')
 }

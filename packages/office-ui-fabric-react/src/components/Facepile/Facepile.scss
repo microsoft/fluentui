@@ -13,9 +13,9 @@
   @include focus-outline();
   position: relative;
   text-align: center;
-  @include float(left);
+  @include ms-float(left);
   padding: 0;
-  @include margin-right(4px);
+  @include ms-margin-right(4px);
   margin-bottom: 4px;
   border-radius: 50%;
   vertical-align: top;
