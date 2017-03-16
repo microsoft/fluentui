@@ -108,6 +108,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
       isLightDismiss,
       layerProps,
       type,
+      customWidth,
       onRenderNavigation = this._onRenderNavigation,
       onRenderHeader = this._onRenderHeader,
       onRenderBody = this._onRenderBody,
@@ -118,6 +119,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
     let isRTL = getRTL();
     let isOnRightSide = isRTL ? isLeft : !isLeft;
     const headerTextId = id + '-headerText';
+    const customWidthStyles = (type === PanelType.custom) ? { width: customWidth } : {};
 
     if (!isOpen) {
       return null;
@@ -165,9 +167,6 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
           >
             { overlay }
             <FocusTrapZone
-              style={
-                (type === PanelType.custom) && { width: this.props.customWidth }
-              }
               className={ css(
                 'ms-Panel-main',
                 styles.main,
@@ -178,6 +177,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
                   [SLIDE_RIGHT_OUT_40]: isAnimatingClose && isOnRightSide
                 }
               ) }
+              style={ customWidthStyles }
               elementToFocusOnDismiss={ elementToFocusOnDismiss }
               isClickableOutsideFocusTrap={ isLightDismiss }
               ignoreExternalFocusing={ ignoreExternalFocusing }
