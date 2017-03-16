@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "ChoiceGroup: Distinguishes HC border from focus border, removes double stroke artifact",
+      "type": "patch"
+    }
+  ],
+  "email": "v-algemb@microsoft.com"
+}

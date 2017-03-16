@@ -1,4 +1,5 @@
 @import '../../common/common';
+@import '../../common/_focusBorder';
 
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
 
@@ -35,25 +36,6 @@ $SearchBox-widthMdDownCollapsed: 36px;
 $SearchBox-widthXLarge: 208px;
 $SearchBox-iconSize: 16px;
 $SearchBox-sidePadding: 8px; // padding in input on left and right sides without icons
-
-@mixin highContrastBorder($color) {
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-
-    // Make the content not respond to mouse/touch event. Reference: https://css-tricks.com/almanac/properties/p/pointer-events/
-    pointer-events: none;
-
-    // Add focus border with $color
-    border: 1px solid $color;
-  }
-}
 
 .root {
   @include ms-font-m;
@@ -106,7 +88,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
 }
 
 @mixin CommandBarItem-text {
-  @include focus-border(2px);
+  @include pseudo-border(2px);
   @include ms-font-m;
   color: $ms-color-neutralPrimary;
 
@@ -135,11 +117,11 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   &:hover,
   &.itemLinkIsExpanded {
     @media screen and (-ms-high-contrast: active) {
-        @include highContrastBorder($ms-color-white);
+        @include pseudo-border($ms-color-white);
       }
 
     @media screen and (-ms-high-contrast: black-on-white) {
-      @include highContrastBorder($ms-color-black);
+      @include pseudo-border($ms-color-black);
     }
   }
 
@@ -247,11 +229,11 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
     color: $ms-color-themePrimary;
 
     @media screen and (-ms-high-contrast: active) {
-      @include highContrastBorder($ms-color-white);
+      @include pseudo-border($ms-color-white);
     }
 
     @media screen and (-ms-high-contrast: black-on-white) {
-      @include highContrastBorder($ms-color-black);
+      @include pseudo-border($ms-color-black);
     }
   }
 }
