@@ -13,13 +13,13 @@
   @include focus-outline();
   @include float(left);
   @include margin-right(4px);
+  margin-bottom: 4px;
   position: relative;
   text-align: center;
   padding: 0;
   border-radius: 50%;
   vertical-align: top;
   :global(.ms-Persona-details) {
-    @include padding(0, 24px, 0, 4px);
     flex: 1 0 auto;
   }
 }

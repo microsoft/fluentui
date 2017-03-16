@@ -23,6 +23,7 @@ export interface IFacepileOverflowExampleState {
   useOnlyAvailableWidth: boolean;
   displayedPersonas: any;
   overflowButtonType: OverflowButtonType;
+  widthAvailable: number;
 }
 
 export class FacepileOverflowExample extends React.Component<any, IFacepileOverflowExampleState> {
@@ -32,15 +33,17 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
     this.state = {
       useOnlyAvailableWidth: false,
       displayedPersonas: 5,
-      overflowButtonType: OverflowButtonType.none
+      overflowButtonType: OverflowButtonType.none,
+      widthAvailable: 300
     };
   }
 
   public render() {
-    let { useOnlyAvailableWidth, displayedPersonas, overflowButtonType } = this.state;
+    let { useOnlyAvailableWidth, displayedPersonas, overflowButtonType, widthAvailable } = this.state;
     facepileProps.useOnlyAvailableWidth = useOnlyAvailableWidth;
     facepileProps.maxDisplayablePersonas = displayedPersonas;
     facepileProps.overflowButtonType = overflowButtonType;
+    facepileProps.width = widthAvailable; // Switch this to use bounding box instead?
 
     return (
       <div className={ 'ms-FacepileExample' }>
@@ -49,7 +52,7 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
           <Slider
             label='Maximum number of Personas Shown:'
             min={ 0 }
-            max={ 10 }
+            max={ 16 }
             step={ 1 }
             showValue={ true }
             value={ displayedPersonas }
@@ -67,7 +70,20 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
               prevState.useOnlyAvailableWidth = checked;
               return prevState;
             });
-          } } />
+          } }
+        />
+        <Slider
+          label='Width available:'
+          min={ 10 }
+          max={ 300 }
+          step={ 10 }
+          showValue={ true }
+          value={ widthAvailable }
+          onChange={ value => this.setState((prevState: IFacepileOverflowExampleState) => {
+            prevState.widthAvailable = value;
+            return prevState;
+          }) }
+        />
         <Dropdown
           label='Overflow Type:'
           selectedKey={ overflowButtonType }
@@ -76,15 +92,14 @@ export class FacepileOverflowExample extends React.Component<any, IFacepileOverf
               { key: OverflowButtonType.none, text: OverflowButtonType[OverflowButtonType.none] },
               { key: OverflowButtonType.descriptive, text: OverflowButtonType[OverflowButtonType.descriptive] },
               { key: OverflowButtonType.downArrow, text: OverflowButtonType[OverflowButtonType.downArrow] },
-              { key: OverflowButtonType.more, text: OverflowButtonType[OverflowButtonType.more] },
-
+              { key: OverflowButtonType.more, text: OverflowButtonType[OverflowButtonType.more] }
             ]
           }
           onChanged={ value => this.setState((prevState: IFacepileOverflowExampleState) => {
             prevState.overflowButtonType = value.key as OverflowButtonType;
             return prevState;
           }) }
-          />
+        />
       </div>
     );
   }
