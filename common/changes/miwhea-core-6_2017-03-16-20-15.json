@@ -1,0 +1,15 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Update to Fabric Core 6.0.0",
+      "type": "major"
+    },
+    {
+      "packageName": "@uifabric/example-app-base",
+      "comment": "Update to Fabric Core 6.0.0",
+      "type": "minor"
+    }
+  ],
+  "email": "miwhea@microsoft.com"
+}
