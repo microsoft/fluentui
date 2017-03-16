@@ -14,7 +14,7 @@ let packageFolder = buildConfig.packageFolder || '';
 let distFolder = buildConfig.distFolder;
 
 // Configure custom lint overrides.
-build.tslint.setConfig({ lintConfig: require('./tslint.json') });
+build.tslint.setConfig({ lintConfig: require('../../tslint.json') });
 
 // Configure TypeScript 2.0.
 build.typescript.setConfig({ typescript: require('typescript') });

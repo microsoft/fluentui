@@ -9,17 +9,19 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  IRenderFunction,
   getNativeProps,
   buttonProperties,
   anchorProperties,
   css
 } from '@uifabric/utilities';
 import { IExampleComponentProps } from './ExampleComponent.Props';
-let styles = require<any>('./ExampleComponent.scss');
+
+/* tslint:disable:no-any */
+const styles = require<any>('./ExampleComponent.scss');
+/* tslint:enable:no-any */
 
 /**
- * Example component implementation which renders the skeleton of a Button component.
+ * Example component implementation which renders the skeconston of a Button component.
  *
  * @export
  * @class ExampleComponent
@@ -28,7 +30,7 @@ let styles = require<any>('./ExampleComponent.scss');
 export class ExampleComponent extends BaseComponent<IExampleComponentProps, {}> {
 
   public render(): JSX.Element | null {
-    let {
+    const {
       onRenderRoot = this._onRenderRoot
     } = this.props;
 
@@ -36,10 +38,10 @@ export class ExampleComponent extends BaseComponent<IExampleComponentProps, {}> 
   }
 
   private _onRenderRoot = (props: IExampleComponentProps): JSX.Element => {
-    let { className, href } = this.props;
+    const { className, href } = this.props;
 
     if (!!href) {
-      let anchorProps = getNativeProps<React.HTMLProps<HTMLAnchorElement>>(this.props, anchorProperties);
+      const anchorProps = getNativeProps<React.HTMLProps<HTMLAnchorElement>>(this.props, anchorProperties);
 
       return (
         <a
@@ -49,7 +51,7 @@ export class ExampleComponent extends BaseComponent<IExampleComponentProps, {}> 
         />
       );
     } else {
-      let buttonProps = getNativeProps(this.props, anchorProperties);
+      const buttonProps = getNativeProps(this.props, buttonProperties);
 
       return (
         <button
@@ -59,10 +61,10 @@ export class ExampleComponent extends BaseComponent<IExampleComponentProps, {}> 
         />
       );
     }
-  };
+  }
 
   private _onRenderChildren() {
-    let {
+    const {
       children,
       onRenderIcon = this._onRenderIcon,
       onRenderText = this._onRenderText,

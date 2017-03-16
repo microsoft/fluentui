@@ -22,6 +22,6 @@ createApp([
     ))
     .add('With a red background', () => (
       <ExampleComponent style={ { background: 'red' } } />
-    )),
+    ))
 
 ], false);

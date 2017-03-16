@@ -9,13 +9,13 @@ import { ExampleComponent } from './ExampleComponent';
 describe('ExampleComponent', () => {
 
   it('Renders without throwing', () => {
-    let component = ReactTestUtils.renderIntoDocument(
+    const component: ExampleComponent = ReactTestUtils.renderIntoDocument(
       <ExampleComponent />
-    );
-    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-    let labelElement = renderedDOM.querySelector('div');
+    ) as ExampleComponent;
+    const renderedDOM: Element = ReactDOM.findDOMNode(component as React.ReactInstance);
+    const rootElement: HTMLDivElement | null = renderedDOM.querySelector('div');
 
-    expect(labelElement).to.not.be.empty;
+    expect(rootElement).to.not.be.empty;
   });
 
 });
