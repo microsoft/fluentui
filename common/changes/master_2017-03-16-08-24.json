@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "`onItemClick` prop added to ContextualMenu",
+      "type": "minor"
+    }
+  ],
+  "email": "notgiorgi@gmail.com"
+}
