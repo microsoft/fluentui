@@ -11,3 +11,7 @@
     width: 100%;
   }
 }
+
+.screenReaderOnly {
+  @include ms-u-screenReaderOnly;
+}
