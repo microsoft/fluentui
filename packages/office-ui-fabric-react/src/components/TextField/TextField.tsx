@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { LiveRegion } from '../../common/DelayRender';
 import { ITextField, ITextFieldProps } from './TextField.Props';
 import { Label } from '../../Label';
 import {
@@ -138,16 +139,19 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         { label && <Label htmlFor={ this._id }>{ label }</Label> }
         { iconClass && <i className={ iconClass }></i> }
         { multiline ? this._renderTextArea() : this._renderInput() }
-        { errorMessage && <div aria-live='assertive' className='ms-u-screenReaderOnly' data-automation-id='error-message'>{ errorMessage }</div> }
         { this._isDescriptionAvailable &&
           <span id={ this._descriptionId }>
             { description && <span className={ css('ms-TextField-description', styles.description) }>{ description }</span> }
             { errorMessage && (
-              <p
-                className={ css('ms-TextField-errorMessage ms-u-slideDownIn20', styles.errorMessage) }
-              >
-                { errorMessage }
-              </p>) }
+              <LiveRegion announcementPriority={ 'assertive' }>
+                <p
+                  className={ css('ms-TextField-errorMessage ms-u-slideDownIn20', styles.errorMessage) }
+                  data-automation-id='error-message'
+                >
+                  { errorMessage }
+                </p>
+              </LiveRegion>
+            ) }
           </span>
         }
       </div>
