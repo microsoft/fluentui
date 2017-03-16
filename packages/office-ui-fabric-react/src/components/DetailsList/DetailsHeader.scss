@@ -36,10 +36,11 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   position: relative;
 }
 
-.cell {
-  background: inherit;
-  color: $disabledForegroundColor;
+button.cell {
+  @include ms-font-s;
 
+  background: transparent;
+  color: $disabledForegroundColor;
   @include focus-border();
   font-weight: $ms-font-weight-regular;
   position: relative;
