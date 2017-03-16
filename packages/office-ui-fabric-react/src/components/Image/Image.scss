@@ -26,10 +26,10 @@
   @include ms-left(50%);
   top: 50%;
   // transform-translateX mixin is not used here because a transateY is also required.
-  @include LTR {
+  @include ms-LTR {
     transform: translate(-50%,-50%);
   }
-  @include RTL {
+  @include ms-RTL {
     transform: translate(50%,-50%);
   }
 }

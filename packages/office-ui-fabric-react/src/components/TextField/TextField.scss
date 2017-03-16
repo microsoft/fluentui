@@ -22,7 +22,7 @@
 }
 
 .screenReaderOnly {
-  @include ms-u-screenReaderOnly;
+  @include ms-screenReaderOnly;
 }
 
 //= State: A disabled textfield
