@@ -57,7 +57,7 @@ export interface IPanelProps extends React.Props<Panel> {
   type?: PanelType;
 
   /**
-  * Custom panel Width.
+  * Custom panel width, used only when type is set to PanelType.custom.
   */
   customWidth?: string;
 
