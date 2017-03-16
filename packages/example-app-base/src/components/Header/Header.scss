@@ -38,7 +38,7 @@ $Header-fabricWebsiteHeaderColor: #272630;
 }
 
 .Header-button {
-  @include focus-border(2px, $ms-color-themeLight);
+  @include ms-focus-border(2px, $ms-color-themeLight);
 
   position: relative;
   text-decoration: none;

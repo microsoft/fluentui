@@ -10,7 +10,7 @@
 
 .root {
   @include button-core-root-styles;
-  @include focus-border(1px, $ms-color-white);
+  @include ms-focus-border(1px, $ms-color-white);
 
   background-color: $ms-color-themePrimary;
   color: $ms-color-white;

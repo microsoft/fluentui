@@ -1,7 +1,7 @@
 @import '../../../common/common';
 
 .root {
-  @include focus-border();
+  @include ms-focus-border();
 
   flex-shrink: 0;
   vertical-align: top;

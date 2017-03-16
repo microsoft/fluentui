@@ -138,7 +138,7 @@
 }
 
 .dismissal {
-  @include focus-border();
+  @include ms-focus-border();
   min-width: 0;
 }
 .dismissalOneline .dismissal {

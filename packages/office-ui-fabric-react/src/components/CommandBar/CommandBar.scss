@@ -106,7 +106,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
 }
 
 @mixin CommandBarItem-text {
-  @include focus-border(2px);
+  @include ms-focus-border(2px);
   @include ms-font-m;
   color: $ms-color-neutralPrimary;
 

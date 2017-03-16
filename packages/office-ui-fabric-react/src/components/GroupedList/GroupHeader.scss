@@ -7,7 +7,7 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 .root {
   cursor: default;
   user-select: none;
-  @include focus-border();
+  @include ms-focus-border();
 
   &:hover {
     background: $ms-color-themeLighterAlt;
@@ -22,7 +22,7 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 
 .check,
 .expand {
-  @include focus-border();
+  @include ms-focus-border();
   display: inline-block;
   cursor: default;
   padding: 6px;

@@ -31,7 +31,7 @@
 
 // Link implemented as a button.
 button.root {
-  @include focus-border;
+  @include ms-focus-border;
   @include ms-text-align(left);
   background: none;
   border: none;

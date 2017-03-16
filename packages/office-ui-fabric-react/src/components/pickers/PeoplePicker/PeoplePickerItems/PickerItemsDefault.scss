@@ -1,7 +1,7 @@
 @import '../../../../common/common';
 
 .personaContainer {
-  @include focus-border();
+  @include ms-focus-border();
   display: inline-flex;
   align-items: center;
   background: $ms-color-neutralLighter;
@@ -9,11 +9,11 @@
   cursor: default;
   user-select: none;
   max-width: 100%;
-  
+
   &:hover {
     background: $ms-color-neutralLight;
   }
-  
+
   &.personaContainerIsSelected {
     background: $ms-color-neutralQuaternary;
 

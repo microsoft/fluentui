@@ -162,7 +162,7 @@
 //
 .root.rootIsTabs {
   .link {
-    @include focus-border();
+    @include ms-focus-border();
     @include ms-margin-right(0px);
     height: 40px;
     line-height: 40px;

@@ -66,7 +66,7 @@
 
 
 .slideBox {
-  @include focus-border();
+  @include ms-focus-border();
   flex-grow: 1;
   height: 28px;
   line-height: 28px;

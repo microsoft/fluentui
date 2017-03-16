@@ -7,7 +7,7 @@ $selectedHoverColor: $ms-color-neutralQuaternaryAlt;
 $unselectedHoverColor: $ms-color-neutralLighter;
 
 .root {
-  @include focus-border();
+  @include ms-focus-border();
 
   display: inline-block;
   min-width: 100%;
@@ -66,7 +66,7 @@ $unselectedHoverColor: $ms-color-neutralLighter;
 }
 
 .check {
-  @include focus-border();
+  @include ms-focus-border();
 
   display: inline-block;
   cursor: default;

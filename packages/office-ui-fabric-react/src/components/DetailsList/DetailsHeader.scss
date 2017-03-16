@@ -41,7 +41,7 @@ button.cell {
 
   background: transparent;
   color: $disabledForegroundColor;
-  @include focus-border();
+  @include ms-focus-border();
   font-weight: $ms-font-weight-regular;
   position: relative;
   display: inline-block;

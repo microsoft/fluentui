@@ -27,7 +27,7 @@ $ContextualMenu-iconWidth: 14px;
 }
 
 .link {
-  @include focus-border();
+  @include ms-focus-border();
 
   font: inherit;
   color: inherit;
@@ -67,7 +67,7 @@ $ContextualMenu-iconWidth: 14px;
 }
 
 .header {
-  @include focus-border();
+  @include ms-focus-border();
   @include ms-font-s;
   font-weight: $ms-font-weight-semibold;
   color: $ms-color-themePrimary;

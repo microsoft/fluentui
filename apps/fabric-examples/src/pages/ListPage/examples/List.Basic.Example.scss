@@ -1,7 +1,7 @@
 @import '../../../common/common';
 
 .ms-ListBasicExample-itemCell {
-  @include focus-border();
+  @include ms-focus-border();
 
   min-height: 54px;
   padding: 10px;
