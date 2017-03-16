@@ -1,4 +1,5 @@
 @import '../../common/common';
+@import '../../common/_focusBorder';
 
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
 
@@ -24,7 +25,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
   min-height: 36px;
-  border: 1px solid transparent;
+  border: none;
   position: relative;
   line-height: $ms-choiceField-field-size;
   @include ms-padding-left(8px);
@@ -47,7 +48,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 .field::before {
   content: '';
   display: inline-block;
-  border: 2px solid $ms-color-neutralTertiary;
+  border: 1px solid $ms-color-neutralTertiary;
   width: $ms-choiceField-field-size;
   height: $ms-choiceField-field-size;
   font-weight: normal;
@@ -233,6 +234,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   @include ms-margin-right(6px);
   @include ms-padding-left(0px);
   @include ms-bgColor-neutralLighter;
+  border: 1px solid transparent;
 
   .fieldIsImage {
     display: inline-block;
@@ -311,5 +313,9 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 }
 
 :global(.ms-Fabric.is-focusVisible) .choiceFieldIsInFocus {
-  border: 1px solid $ms-color-neutralPrimary;
+  @include focus-border(0px, $ms-color-neutralPrimary);
+}
+
+:global(.ms-Fabric.is-focusVisible) .choiceFieldIsInFocus.choiceFieldIsImage {
+  @include focus-border(2px, $ms-color-neutralPrimary, 1px);
 }

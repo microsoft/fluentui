@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "ChoiceGroup component: Distinguishes HC border from focus border, removes double stroke, refactors to use common mixin",
+      "type": "patch"
+    }
+  ],
+  "email": "v-algemb@microsoft.com"
+}
