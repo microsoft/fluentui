@@ -40,7 +40,7 @@
   },
   "rushDependencies": {
     "@uifabric/example-app-base": ">=1.1.0 <2.0.0",
-    "office-ui-fabric-react": ">=2.4.0 <3.0.0",
+    "office-ui-fabric-react": ">=2.5.0 <3.0.0",
     "@uifabric/utilities": ">=1.2.0 <2.0.0"
   }
 }
