@@ -38,7 +38,7 @@
     "gutil": "1.6.4",
     "highlight.js": "^9.6.0",
     "mocha": "~2.5.3",
-    "office-ui-fabric-core": "6.0.0",
+    "office-ui-fabric-core": "6.0.1",
     "office-ui-fabric-react": ">=2.5.0 <3.0.0",
     "react": ">=15.0.0 <16.0.0",
     "react-addons-test-utils": "^15.1.0",

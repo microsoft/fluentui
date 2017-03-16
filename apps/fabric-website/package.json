@@ -54,7 +54,7 @@
     "color-functions": "1.1.0",
     "json-loader": "^0.5.4",
     "load-themed-styles": "~1.1.0",
-    "office-ui-fabric-core": "6.0.0",
+    "office-ui-fabric-core": "6.0.1",
     "office-ui-fabric-react": "^2.5.0",
     "@uifabric/utilities": ">=1.2.0 <2.0.0"
   }
