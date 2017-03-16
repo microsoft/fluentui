@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { IButtonProps } from './IButtonProps';
 
-export class ButtonConextualMenuExample extends React.Component<IButtonProps, {}> {
+export class ButtonContextualMenuExample extends React.Component<IButtonProps, {}> {
   public render() {
     let { disabled } = this.props;
 
