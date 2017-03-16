@@ -285,8 +285,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
 
-    // HACK: skip validation given both onInput and onChange are attached
-    // https://github.com/OfficeDev/office-ui-fabric-react/issues/824
+    // Avoid doing unnecessary work when the value has not changed.
     if (value === this._latestValue) {
       return;
     }
