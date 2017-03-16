@@ -150,6 +150,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
                   className={ css('ms-TextField-errorMessage ms-u-slideDownIn20', styles.errorMessage) }
                   data-automation-id='error-message'
                 >
+                  <i className={ css('ms-Icon ms-Icon--Error', styles.errorIcon) } aria-hidden="true"></i>
                   { errorMessage }
                 </p>
               </LiveRegion>
@@ -254,7 +255,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         onInput={ this._onInputChange }
         onChange={ this._onInputChange }
         className={ this._getTextElementClassName() }
-        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
+        aria-describedby={ this._isDescriptionAvailable && this._descriptionId }
         aria-invalid={ !!this.state.errorMessage }
         aria-label={ this.props.ariaLabel }
         onFocus={ this._onFocus }
@@ -277,7 +278,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         onChange={ this._onInputChange }
         className={ this._getTextElementClassName() }
         aria-label={ this.props.ariaLabel }
-        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
+        aria-describedby={ this._isDescriptionAvailable && this._descriptionId }
         aria-invalid={ !!this.state.errorMessage }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }
