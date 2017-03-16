@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "TextField: Fix for multiple onChanged calls",
+      "type": "patch"
+    }
+  ],
+  "email": "manishda@microsoft.com"
+}

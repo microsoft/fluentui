@@ -1,6 +1,24 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 11 Mar 2017 04:11:58 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Mar 2017 03:06:37 GMT and should not be manually modified.
+
+## 2.4.0
+Wed, 15 Mar 2017 03:06:37 GMT
+
+### Minor changes
+
+- DetailsList: adding `onColumnResize` callback which wil execute when a column is being resized.
+
+## 2.3.0
+Tue, 14 Mar 2017 03:15:10 GMT
+
+### Minor changes
+
+- PeoplePicker: Add rendering overrides
+
+### Patches
+
+- TextField component: hiding -ms-clear pseudo-element for bug #1216
 
 ## 2.2.1
 Sat, 11 Mar 2017 04:11:58 GMT
