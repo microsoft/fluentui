@@ -458,7 +458,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   private _executeItemClick(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
     if (item.onClick) {
       item.onClick(ev, item);
-    } else {
+    } else if (this.props.onItemClick) {
       this.props.onItemClick(ev, item);
     }
 
