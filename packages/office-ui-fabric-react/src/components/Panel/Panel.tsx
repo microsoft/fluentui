@@ -162,11 +162,9 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
           >
             { overlay }
             <FocusTrapZone
-              ref={ (item) => {
-                if (type === PanelType.custom && item != null) {
-                  item.refs.root.style.width = this.props.customWidth;
-                }
-              } }
+              style={
+                (type === PanelType.custom) && { width: this.props.customWidth }
+              }
               className={ css(
                 'ms-Panel-main',
                 styles.main,
