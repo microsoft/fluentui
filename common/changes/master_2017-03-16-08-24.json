@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "`onItemClick` prop added to ContextualMenu",
+      "comment": "ContextualMenu: onItemClick prop added",
       "type": "minor"
     }
   ],
