@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "List: Add aria list role",
+      "type": "patch"
+    }
+  ],
+  "email": "hross@hross.net"
+}
