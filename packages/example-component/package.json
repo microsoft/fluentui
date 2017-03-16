@@ -3,9 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "build": "gulp",
+    "clean": "gulp clean",
+    "test": "gulp test --production",
+    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --open"
+  },
   "author": "",
   "devDependencies": {
+    "@microsoft/web-library-build": ">=2.0.0 <3.0.0",
     "@microsoft/load-themed-styles": "^1.2.2",
     "@types/chai": "^3.4.35",
     "@types/enzyme": "^2.7.5",
@@ -39,7 +45,7 @@
   },
   "peerDependencies": {
     "@microsoft/load-themed-styles": "^1.2.2",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react": "^0.14 || ^15.4.2-0 || ^16.0.0-0",
+    "react-dom": "^0.14 || ^15.4.2 || ^16.0.0-0"
   }
 }

@@ -12,7 +12,8 @@
   "scripts": {
     "build": "gulp",
     "clean": "gulp clean",
-    "test": "gulp"
+    "test": "gulp",
+    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js"
   },
   "devDependencies": {
     "@microsoft/web-library-build": ">=2.0.0 <3.0.0",

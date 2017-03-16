@@ -27,7 +27,7 @@ let styles = require<any>('./ExampleComponent.scss');
  */
 export class ExampleComponent extends BaseComponent<IExampleComponentProps, {}> {
 
-  public render() {
+  public render(): JSX.Element | null {
     let {
       onRenderRoot = this._onRenderRoot
     } = this.props;
@@ -73,8 +73,8 @@ export class ExampleComponent extends BaseComponent<IExampleComponentProps, {}> 
       <div className={ css(styles.flexContainer).toString() }>
         { onRenderIcon(this.props, this._onRenderIcon) }
         { onRenderText(this.props, this._onRenderText) }
-        { onRenderChevron(this.props, this._onRenderChevron) }
         { children }
+        { onRenderChevron(this.props, this._onRenderChevron) }
       </div>
     );
   }
@@ -84,8 +84,10 @@ export class ExampleComponent extends BaseComponent<IExampleComponentProps, {}> 
     return <i className={ 'ms-Icon ms-Icon--Mail ' + css(styles.icon).toString() } />;
   }
 
-  private _onRenderText = (props: IExampleComponentProps): JSX.Element => {
-    return <div className={ css(styles.text).toString() }>{ props.text }</div>;
+  private _onRenderText = (props: IExampleComponentProps): JSX.Element | null => {
+    return !!props.text ? (
+      <div className={ css(styles.text).toString() }>{ props.text }</div>
+    ) : null;
   }
 
   private _onRenderChevron = (props: IExampleComponentProps): JSX.Element => {
