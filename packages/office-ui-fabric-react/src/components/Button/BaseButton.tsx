@@ -119,7 +119,12 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
   }
 
   protected onRenderContent(tag: any, buttonProps: IButtonProps): JSX.Element {
-    let { onRenderMenu = this._onRenderMenu } = this.props;
+    let {
+      onRenderMenu = this._onRenderMenu,
+      onRenderMenuIcon = this._onRenderMenuIcon,
+      menuProps,
+      menuIconName
+    } = this.props;
     return React.createElement(
       tag,
       buttonProps,
@@ -129,8 +134,8 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
         this.onRenderDescription(),
         this.onRenderAriaDescription(),
         this.onRenderChildren(),
-        this.onRenderMenuIcon(),
-        onRenderMenu(this.props.menuProps, this._onRenderMenu)
+        (menuProps || menuIconName || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon),
+        this.state.menuProps && onRenderMenu(menuProps, this._onRenderMenu)
       ));
   }
 
@@ -140,16 +145,6 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
     return icon && (
       <span className={ css(`${this.classNames.base}-icon`, this.classNames.icon) }>
         <i className={ `ms-Icon ms-Icon--${icon}` } />
-      </span>
-    );
-  }
-
-  protected onRenderMenuIcon() {
-    let { menuIcon = 'ChevronDown' } = this.props;
-
-    return this.props.menuIcon || this.props.menuProps && (
-      <span className={ css(`${this.classNames.base}-icon`, this.classNames.icon) }>
-        <i className={ `ms-Icon ms-Icon--${menuIcon}` } />
       </span>
     );
   }
@@ -210,11 +205,18 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
       );
   }
 
-  protected _onRenderMenu(): JSX.Element {
-    let { menuProps } = this.state;
+  protected _onRenderMenuIcon = (props: IButtonProps): JSX.Element => {
+    let { menuIconName = 'ChevronDown' } = props;
 
     return (
-      menuProps &&
+      <span className={ css(`${this.classNames.base}-icon`, this.classNames.menuIcon) }>
+        <i className={ `ms-Icon ms-Icon--${menuIconName}` } />
+      </span>
+    );
+  }
+
+  protected _onRenderMenu = (menuProps: IContextualMenuProps): JSX.Element => {
+    return (
       <ContextualMenu
         className={ css('ms-BaseButton-menuHost') }
         isBeakVisible={ true }
@@ -229,9 +231,9 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
 
   private _onToggleMenu = () => {
     let { menuProps } = this.props;
-    let { menuProps: currentMenuProps } = this.state;
+    let currentMenuProps = this.state.menuProps;
 
     this.setState({ menuProps: currentMenuProps ? null : menuProps });
-  };
+  }
 
 }

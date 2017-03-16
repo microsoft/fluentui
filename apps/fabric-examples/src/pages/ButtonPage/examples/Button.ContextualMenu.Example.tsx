@@ -19,8 +19,7 @@ export class ButtonConextualMenuExample extends React.Component<IButtonProps, {}
                 {
                   key: 'emailMessage',
                   name: 'Email message',
-                  icon: 'Mail',
-                  ['data-automation-id']: 'newEmailButton'
+                  icon: 'Mail'
                 },
                 {
                   key: 'calendarEvent',

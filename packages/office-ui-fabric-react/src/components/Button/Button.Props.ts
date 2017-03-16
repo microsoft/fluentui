@@ -46,6 +46,21 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
   text?: string;
 
   /**
+   * The button icon shown in command or hero type.
+   */
+  icon?: string;
+
+  /**
+   * The button icon shown to the right of the text
+   */
+  menuIconName?: string | null;
+
+  /**
+  * Custom render function for button menu icon
+  */
+  onRenderMenuIcon?: IRenderFunction<IButtonProps>;
+
+  /**
   * Props for button menu
   */
   menuProps?: IContextualMenuProps;
@@ -54,16 +69,6 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
   * Custom render function for button menu
   */
   onRenderMenu?: IRenderFunction<IContextualMenuProps>;
-
-  /**
-   * The button icon shown in command or hero type.
-   */
-  icon?: string;
-
-  /**
-   * The button icon shown to the right of the text
-   */
-  menuIcon?: string;
 
   /**
    * Description of the action this button takes.
