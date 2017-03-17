@@ -7,10 +7,12 @@ const CHARS_WITHIN_PARENTHESIS_REGEX: RegExp = new RegExp('\\(([^)]*)\\)', 'gi')
  * More info here: http://stackoverflow.com/questions/280712/javascript-unicode-regexes.
  * gi implies global and case-insensitive.
  */
+/* tslint:disable:max-line-length */
 const UNICODE_ALPHANUMERIC_CHARS_REGEX =
   new RegExp(
     '(?:[\0-/:-@\[-\^`\{-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]) ',
     'gi');
+/* tslint:enable:max-line-length */
 
 /** Regex to detect multiple spaces in a string where gi implies global and case-insensitive. */
 const MULTIPLE_WHITESPACES_REGEX_TOKEN: RegExp = new RegExp('\\s+', 'gi');
@@ -22,7 +24,9 @@ const ARABIC_LANGUAGE_REGEX = new RegExp('[\u0621-\u064A\u0660-\u0669]');
 const KOREAN_LANGUAGE_REGEX = new RegExp('[\u1100-\u11FF|\u3130-\u318F|\uA960-\uA97F|\uAC00-\uD7AF|\uD7B0-\uD7FF]');
 
 /** Regex to detect Chinese text. */
+/* tslint:disable:max-line-length */
 const CHINESE_LANGUAGE_REGEX = new RegExp('[\u4E00-\u9FCC\u3400-\u4DB5\uFA0E\uFA0F\uFA11\uFA13\uFA14\uFA1F\uFA21\uFA23\uFA24\uFA27-\uFA29]|[\ud840-\ud868][\udc00-\udfff]|\ud869[\udc00-\uded6\udf00-\udfff]|[\ud86a-\ud86c][\udc00-\udfff]|\ud86d[\udc00-\udf34\udf40-\udfff]|\ud86e[\udc00-\udc1d]');
+/* tslint:enable:max-line-length */
 
 function getInitialsArabic(displayName: string, isRtl: boolean): string {
   const name = displayName.replace(/\s/, '');
