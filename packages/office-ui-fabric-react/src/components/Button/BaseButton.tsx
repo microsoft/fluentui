@@ -9,7 +9,7 @@ import {
   anchorProperties
 } from '../../Utilities';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { ContextualMenu } from '../../ContextualMenu';
+import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.Props';
 import styles from './BaseButton.scss';
 
@@ -21,13 +21,13 @@ export interface IBaseButtonClassNames {
   description?: string;
   flexContainer?: string;
   icon?: string;
-  splitIcon?: string;
+  menuIcon?: string;
   label?: string;
   root?: string;
 }
 
 export interface IBaseButtonState {
-  contextualMenuOpen?: boolean;
+  menuProps?: IContextualMenuProps | null;
 }
 
 export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> implements IButton {
@@ -50,7 +50,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
     this._descriptionId = getId();
     this._ariaDescriptionId = getId();
     this.state = {
-      contextualMenuOpen: false
+      menuProps: null
     };
   }
 
@@ -103,10 +103,10 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
       }
     );
 
-    // Override onClick if contextualMenuItems passed in. Eventually allow _onShowContextualMenu to
+    // Override onClick if contextualMenuItems passed in. Eventually allow _onToggleMenu to
     // be assigned to split button click if onClick already has a value
-    if (this.props.contextualMenuItems) {
-      assign(buttonProps, { 'onClick': this._onShowContextualMenu });
+    if (this.props.menuProps) {
+      assign(buttonProps, { 'onClick': this._onToggleMenu });
     }
 
     return this.onRenderContent(tag, buttonProps);
@@ -119,6 +119,12 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
   }
 
   protected onRenderContent(tag: any, buttonProps: IButtonProps): JSX.Element {
+    let {
+      onRenderMenu = this._onRenderMenu,
+      onRenderMenuIcon = this._onRenderMenuIcon,
+      menuProps,
+      menuIconName
+    } = this.props;
     return React.createElement(
       tag,
       buttonProps,
@@ -128,8 +134,8 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
         this.onRenderDescription(),
         this.onRenderAriaDescription(),
         this.onRenderChildren(),
-        this.onRenderSplitIcon(),
-        this.onRenderContextualMenu()
+        (menuProps || menuIconName || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon),
+        this.state.menuProps && onRenderMenu(menuProps, this._onRenderMenu)
       ));
   }
 
@@ -139,16 +145,6 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
     return icon && (
       <span className={ css(`${this.classNames.base}-icon`, this.classNames.icon) }>
         <i className={ `ms-Icon ms-Icon--${icon}` } />
-      </span>
-    );
-  }
-
-  protected onRenderSplitIcon() {
-    let { splitIcon = 'ChevronDown' } = this.props;
-
-    return this.props.splitIcon || this.props.contextualMenuItems && (
-      <span className={ css(`${this.classNames.base}-icon`, this.classNames.icon) }>
-        <i className={ `ms-Icon ms-Icon--${splitIcon}` } />
       </span>
     );
   }
@@ -209,31 +205,35 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
       );
   }
 
-  protected onRenderContextualMenu(): JSX.Element {
-    let { contextualMenuItems } = this.props;
-    let { contextualMenuOpen } = this.state;
+  protected _onRenderMenuIcon = (props: IButtonProps): JSX.Element => {
+    let { menuIconName = 'ChevronDown' } = props;
+
     return (
-      contextualMenuItems && contextualMenuOpen &&
+      <span className={ css(`${this.classNames.base}-icon`, this.classNames.menuIcon) }>
+        <i className={ `ms-Icon ms-Icon--${menuIconName}` } />
+      </span>
+    );
+  }
+
+  protected _onRenderMenu = (menuProps: IContextualMenuProps): JSX.Element => {
+    return (
       <ContextualMenu
         className={ css('ms-BaseButton-menuHost') }
         isBeakVisible={ true }
         directionalHint={ DirectionalHint.bottomLeftEdge }
-        items={ contextualMenuItems }
+        items={ menuProps.items }
         target={ this._buttonElement }
         labelElementId={ this._labelId }
-        onDismiss={ this._onShowContextualMenu }
+        onDismiss={ this._onToggleMenu }
       />
     );
   }
 
-  private _onShowContextualMenu = () => {
-    let { contextualMenuItems, disabled } = this.props;
-    let { contextualMenuOpen } = this.state;
+  private _onToggleMenu = () => {
+    let { menuProps } = this.props;
+    let currentMenuProps = this.state.menuProps;
 
-    if (!disabled) {
-      this.setState({
-        contextualMenuOpen: !contextualMenuOpen
-      });
-    }
+    this.setState({ menuProps: currentMenuProps ? null : menuProps });
   }
+
 }

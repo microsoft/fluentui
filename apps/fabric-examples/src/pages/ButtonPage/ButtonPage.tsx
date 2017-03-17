@@ -7,7 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ButtonDefaultExample } from './examples/Button.Default.Example';
-import { ButtonConextualMenuExample } from './examples/Button.ContextualMenu.Example';
+import { ButtonContextualMenuExample } from './examples/Button.ContextualMenu.Example';
 import { ButtonPrimaryExample } from './examples/Button.Primary.Example';
 import { ButtonCompoundExample } from './examples/Button.Compound.Example';
 import { ButtonCommandExample } from './examples/Button.Command.Example';
@@ -58,7 +58,7 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
               <ButtonIconExample disabled={ this.state.areButtonsDisabled } />
             </ExampleCard>
             <ExampleCard title='Contextual Menu Button' code={ ButtonContextualMenuExampleCode }>
-              <ButtonConextualMenuExample disabled={ this.state.areButtonsDisabled } />
+              <ButtonContextualMenuExample disabled={ this.state.areButtonsDisabled } />
             </ExampleCard>
             <ExampleCard title='Button Like Anchor' code={ ButtonAnchorExampleCode }>
               <ButtonAnchorExample disabled={ this.state.areButtonsDisabled } />
