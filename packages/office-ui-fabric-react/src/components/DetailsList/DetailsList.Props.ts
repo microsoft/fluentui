@@ -206,7 +206,12 @@ export interface IColumn {
   columnActionsMode?: ColumnActionsMode;
 
   /**
-   * Icon name to show in addition to the text.
+   * Optional iconName to use for the column header.
+   */
+  iconName?: string;
+
+  /**
+   * Class name to add to the Icon component.
    */
   iconClassName?: string;
 

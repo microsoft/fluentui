@@ -185,8 +185,9 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
                   <Icon className={ styles.nearIcon } iconName='GroupedDescending' />
                 ) }
 
+                /* Note: due to backwards compat, we are locking this to the old "" */
                 { column.iconClassName && (
-                  <Icon className={ styles.nearIcon } iconName={ column.iconClassName as any } />
+                  <Icon className={ css(styles.nearIcon, column.iconClassName) } iconName={ column.iconName } />
                 ) }
 
                 { column.name }
