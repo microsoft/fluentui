@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 17 Mar 2017 03:05:52 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Mar 2017 18:01:45 GMT and should not be manually modified.
+
+## 2.5.2
+Fri, 17 Mar 2017 18:01:45 GMT
+
+### Patches
+
+- DetailsList: header sizing fixed (was a css selector tweak that caused the issue.) Also added `iconName` to IColumn to specify an iconName like "Mail". The `iconClassName` property is still preserved, but is piped into the className of the Icon component.
 
 ## 2.5.1
 Fri, 17 Mar 2017 03:05:52 GMT
