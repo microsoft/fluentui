@@ -38,7 +38,6 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
 
 .cell {
   @include ms-font-s;
-
   background: transparent;
   color: $disabledForegroundColor;
   @include focus-border();
