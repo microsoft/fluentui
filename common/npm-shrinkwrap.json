@@ -77,9 +77,9 @@
           "resolved": "https://registry.npmjs.org/tslint/-/tslint-4.0.2.tgz"
         },
         "tslint-microsoft-contrib": {
-          "version": "4.0.0",
+          "version": "4.0.1",
           "from": "tslint-microsoft-contrib@>=4.0.0 <4.1.0",
-          "resolved": "https://registry.npmjs.org/tslint-microsoft-contrib/-/tslint-microsoft-contrib-4.0.0.tgz"
+          "resolved": "https://registry.npmjs.org/tslint-microsoft-contrib/-/tslint-microsoft-contrib-4.0.1.tgz"
         }
       }
     },
