@@ -8,7 +8,7 @@ export interface ILiveRegionProps extends React.HTMLProps<HTMLDivElement> {
    *
    * @default polite
    */
-  announcementPriority?: string,
+  announcementPriority?: string;
 }
 
 export interface ILiveRegionState {
