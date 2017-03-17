@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: headers now have the correct font applied and use a transparent background to fix the IE11 styling, which doesn't like \"inherit\".",
+      "comment": "DetailsList: header sizing fixed (was a css selector tweak that caused the issue.) Also added `iconName` to IColumn to specify an iconName like \"Mail\". The `iconClassName` property is still preserved, but is piped into the className of the Icon component.",
       "type": "patch"
     },
     {
