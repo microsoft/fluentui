@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 16 Mar 2017 03:05:54 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Mar 2017 03:05:52 GMT and should not be manually modified.
+
+## 2.5.1
+Fri, 17 Mar 2017 03:05:52 GMT
+
+### Patches
+
+- ChoiceGroup component: Distinguishes HC border from focus border, removes double stroke, refactors to use common mixin
+- List: Add aria list role
 
 ## 2.5.0
 Thu, 16 Mar 2017 03:05:54 GMT
