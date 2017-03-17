@@ -27,7 +27,7 @@
   justify-content: center;
   align-items: stretch;
 
-  @include text-align(left);
+  @include ms-text-align(left);
 
   min-width: 100%;
   height: auto;

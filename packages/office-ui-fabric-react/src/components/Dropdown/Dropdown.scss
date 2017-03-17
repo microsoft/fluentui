@@ -32,7 +32,7 @@ $DropDown-item-height: 36px;
 }
 
 .root {
-  @include ms-u-normalize;
+  @include ms-normalize;
   @include ms-font-m;
   color: $ms-color-neutralPrimary;
 
@@ -130,21 +130,21 @@ $DropDown-item-height: 36px;
   font-size: $ms-icon-size-s;
   position: absolute;
   top: 0px;
-  @include right(12px);
+  @include ms-right(12px);
   pointer-events: none;
   line-height: $DropDown-height;
 }
 
 // Style the new, replacement component
 .title {
-  @include ms-u-normalize;
+  @include ms-normalize;
   background: $ms-color-white;
   border: 1px solid $ms-color-neutralTertiaryAlt;
   cursor: pointer;
   display: block;
   height: $DropDown-height;
   line-height: $DropDown-height - 2px; // height minus the border
-  @include padding(0, $DropDown-height, 0, 12px);
+  @include ms-padding(0, $DropDown-height, 0, 12px);
   position: relative;
   overflow: hidden;
   white-space: nowrap;
@@ -154,7 +154,7 @@ $DropDown-item-height: 36px;
 .panel {
     // Force drop shadow even under medium breakpoint
     :global(.ms-Panel-main) {
-      @include drop-shadow(-30px, 0px, 30px, -30px, .2);
+      @include ms-drop-shadow(-30px, 0px, 30px, -30px, .2);
     }
     // Remove padding as items have their own padding and bg
     :global(.ms-Panel-contentInner) {

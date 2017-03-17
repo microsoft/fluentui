@@ -16,25 +16,23 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 //
 
 .root {
-  @include ms-baseFont;
   margin-bottom: 4px;
 }
 
 .choiceField {
   box-sizing: border-box;
   color: $ms-color-neutralPrimary;
-  font-family: $ms-font-family-base;
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
   min-height: 36px;
   border: none;
   position: relative;
   line-height: $ms-choiceField-field-size;
-  @include padding-left(8px);
+  @include ms-padding-left(8px);
 
   :global(.ms-Label) {
     font-size: $ms-font-size-m;
-    @include padding(0, 0, 0, 26px);
+    @include ms-padding(0, 0, 0, 26px);
     display: inline-block;
   }
 }
@@ -70,9 +68,9 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   border-radius: 50%;
   position: absolute;
   top: $ms-choiceField-field-size / 2;
-  @include left($ms-choiceField-field-size / 2);
+  @include ms-left($ms-choiceField-field-size / 2);
   bottom: 0;
-  @include right(0);
+  @include ms-right(0);
   transition-property: top, left, right, width, height;
   transition-duration: $ms-choiceField-transition-duration-inner;
   transition-timing-function: $ms-choiceField-transition-timing;
@@ -148,7 +146,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
     &::after {
       background-color: $ms-color-themePrimary;
       top: 5px;
-      @include left(5px);
+      @include ms-left(5px);
       width: 10px;
       height: 10px;
 
@@ -233,8 +231,8 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
   font-size: 0;
 
-  @include margin-right(6px);
-  @include padding-left(0px);
+  @include ms-margin-right(6px);
+  @include ms-padding-left(0px);
   @include ms-bgColor-neutralLighter;
   border: 1px solid transparent;
 
@@ -284,7 +282,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
       .icon {
         display: none;
         position: absolute;
-        @include left(0);
+        @include ms-left(0);
         line-height: $ms-font-size-s;
 
         @include ms-fontSize-l;

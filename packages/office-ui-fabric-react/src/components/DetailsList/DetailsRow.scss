@@ -20,7 +20,7 @@ $unselectedHoverColor: $ms-color-neutralLighter;
 
   background: none;
   border: none;
-  @include text-align(left);
+  @include ms-text-align(left);
   vertical-align: top;
   line-height: $rowHeight - ($rowVerticalPadding * 2);
 

@@ -18,7 +18,7 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   user-select: none;
 
   &.rootIsSelectAllHidden {
-    @include padding-left(36px);
+    @include ms-padding-left(36px);
   }
 }
 
@@ -49,13 +49,13 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   border: none;
   line-height: inherit;
   margin: 0;
-  @include text-align(left);
+  @include ms-text-align(left);
   height: $rowHeight;
   vertical-align: top;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  @include text-align(left);
+  @include ms-text-align(left);
 
   &.cellIsCheck {
     position: relative;
@@ -79,8 +79,7 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   &.cellIsSizer {
     position: absolute;
     width: 16px;
-
-    @include margin-left(-10px);
+    @include ms-margin-left(-10px);
     cursor: ew-resize;
     bottom: 0;
     top: 0;
@@ -126,12 +125,12 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
 .cell .nearIcon {
   color: $iconForegroundColor;
   opacity: 1;
-  @include padding-right(4px);
+  @include ms-padding-right(4px);
 }
 
 .cell .filterChevron {
   color: $dropdownChevronForegroundColor;
-  @include padding-left(4px);
+  @include ms-padding-left(4px);
   vertical-align: middle;
 }
 
@@ -146,5 +145,5 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
 }
 
 .cell .collapseButton {
-  @include padding-right(0);
+  @include ms-padding-right(0);
 }

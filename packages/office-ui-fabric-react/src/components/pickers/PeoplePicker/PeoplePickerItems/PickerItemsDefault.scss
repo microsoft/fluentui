@@ -9,11 +9,11 @@
   cursor: default;
   user-select: none;
   max-width: 100%;
-  
+
   &:hover {
     background: $ms-color-neutralLight;
   }
-  
+
   &.personaContainerIsSelected {
     background: $ms-color-neutralQuaternary;
 

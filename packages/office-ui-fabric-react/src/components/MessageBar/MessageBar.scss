@@ -8,7 +8,6 @@
 // MessageBar Styles
 
 .root {
-  @include ms-baseFont;
   @include ms-bgColor-info;
   color: $ms-color-infoText;
   width: 100%;
@@ -17,7 +16,7 @@
   position: relative;
 
   .icon {
-    @include padding-right(8px);
+    @include ms-padding-right(8px);
     color: $ms-color-info;
   }
 
@@ -26,7 +25,7 @@
   }
 
   :global(.ms-Button) {
-    @include margin-left(6px);
+    @include ms-margin-left(6px);
   }
 }
 
@@ -143,7 +142,7 @@
   min-width: 0;
 }
 .dismissalOneline .dismissal {
-  @include margin-right(-8px);
+  @include ms-margin-right(-8px);
 }
 
 // Add space between adjacent MessageBars.
@@ -152,10 +151,10 @@
 }
 
 .innerTextPadding {
-  @include padding-right(24px); // Add padding if we have a dismiss to prevent button overlapping text.
+  @include ms-padding-right(24px); // Add padding if we have a dismiss to prevent button overlapping text.
 
   span, .innerText > span {
-    @include padding-right(4px); // Add padding between text and hyperlink.
+    @include ms-padding-right(4px); // Add padding between text and hyperlink.
   }
 }
 

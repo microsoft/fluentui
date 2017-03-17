@@ -60,9 +60,9 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
 
 .sideCommands {
   position: absolute;
-  @include right(0px);
-  @include text-align(right);
-  @include padding-right(20px);
+  @include ms-right(0px);
+  @include ms-text-align(right);
+  @include ms-padding-right(20px);
 }
 
 // Command Bar Item
@@ -194,7 +194,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
 
 // CommandBarSearch needs to replaced with SearchBox component, and hence following styles revisited/cleaned.
 .search {
-  @include float(left);
+  @include ms-float(left);
   width: 208px;
   max-width: 208px;
   background-color: $ms-color-white;
@@ -203,15 +203,15 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   position: relative;
   box-sizing: border-box;
   border-color: transparent; // give a base state for animation
-  @include border-right(1px, solid, $ms-color-neutralLight);
+  @include ms-border-right(1px, solid, $ms-color-neutralLight);
 
   @media screen and (-ms-high-contrast: active) {
-    @include border-right(1px, solid, $ms-color-white);
+    @include ms-border-right(1px, solid, $ms-color-white);
     z-index: 10;
   }
 
   @media screen and (-ms-high-contrast: black-on-white) {
-    @include border-right(1px, solid, $ms-color-black);
+    @include ms-border-right(1px, solid, $ms-color-black);
   }
 
   &:before {
@@ -242,7 +242,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   // Due to a bug in IE9, we have to use a transparent left border instead of left padding
   padding: $SearchBox-sidePadding $SearchBox-sidePadding $SearchBox-sidePadding 0;
   border: none;
-  @include border-left($SearchBox-height + 2, solid, transparent);
+  @include ms-border-left($SearchBox-height + 2, solid, transparent);
   background-color: transparent;
   width: 100%;
   box-sizing: border-box;
@@ -251,11 +251,11 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   font-size: $ms-font-size-m;
 
   @media screen and (-ms-high-contrast: active) {
-    @include border-left($SearchBox-height, solid, $ms-color-black);
+    @include ms-border-left($SearchBox-height, solid, $ms-color-black);
   }
 
   @media screen and (-ms-high-contrast: black-on-white) {
-    @include border-left($SearchBox-height, solid, $ms-color-white);
+    @include ms-border-left($SearchBox-height, solid, $ms-color-white);
   }
 
   // remove default iOS styles on input boxes
@@ -280,14 +280,14 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
 .searchIconSearchWrapper,
 .searchIconArrowWrapper {
   top: 0;
-  @include padding-left(17px);
-  @include padding-right(8px);
+  @include ms-padding-left(17px);
+  @include ms-padding-right(8px);
 }
 
 .searchIconClearWrapper {
   display: none;
   top: 1px;
-  @include right(0px);
+  @include ms-right(0px);
   z-index: $ms-zIndex-front;
 }
 
@@ -306,8 +306,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
 }
 
 .searchInput,
-.searchInput::-webkit-input-placeholder {
-  @include ms-baseFont;
+.searchInput::placeholder {
   font-size: $ms-font-size-m;
 }
 

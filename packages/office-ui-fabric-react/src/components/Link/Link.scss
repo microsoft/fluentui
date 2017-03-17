@@ -2,7 +2,6 @@
 
 // Element: ms-Link root component
 .root {
-  @include ms-baseFont;
   color: $ms-color-themePrimary;
   margin: 0;
   overflow: inherit;
@@ -32,8 +31,8 @@
 
 // Link implemented as a button.
 button.root {
-  @include focus-border;
-  @include text-align(left);
+  @include ms-focus-border;
+  @include ms-text-align(left);
   background: none;
   border: none;
   cursor: pointer;
