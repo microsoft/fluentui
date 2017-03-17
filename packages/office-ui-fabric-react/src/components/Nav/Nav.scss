@@ -180,7 +180,7 @@ $linkRightPadding: 20px;
 .chevronButtonGroup,
 .chevronButtonLink,
 .link {
-  @include ms-focus-border();
+  @include focus-border();
 }
 
 .root .link {

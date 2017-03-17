@@ -1,7 +1,7 @@
 @import '../../../../common/common';
 
 .personaContainer {
-  @include ms-focus-border();
+  @include focus-border();
   display: inline-flex;
   align-items: center;
   background: $ms-color-neutralLighter;

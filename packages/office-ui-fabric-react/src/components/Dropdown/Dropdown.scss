@@ -202,7 +202,7 @@ $DropDown-item-height: 36px;
     @include highContrastListItemState;
   }
 
-  @include ms-focus-border();
+  @include focus-border();
 
   &:focus {
     background-color: $ms-color-neutralLighter;
@@ -232,7 +232,7 @@ $DropDown-item-height: 36px;
     background-color: $Dropdown-selectedItem-bg;
   }
 
-  @include ms-focus-border();
+  @include focus-border();
 
   @include highContrastListItemState;
 }

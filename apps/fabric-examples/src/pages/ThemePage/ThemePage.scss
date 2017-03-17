@@ -5,7 +5,7 @@
 }
 
 .ThemePage-colorSwatch {
-  @include ms-focus-border();
+  @include focus-border();
   margin: -10px 0;
   line-height: 36px;
   white-space: nowrap;
