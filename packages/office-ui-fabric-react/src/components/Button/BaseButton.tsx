@@ -203,7 +203,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
     // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
     // otherwise it will be assigned to descriptionSpan.
     return ariaDescription ? (
-      <span className='ms-u-screenReaderOnly' id={ this._ariaDescriptionId }>{ ariaDescription }</span>
+      <span className={ styles.screenReaderOnly } id={ this._ariaDescriptionId }>{ ariaDescription }</span>
     ) : (
         null
       );

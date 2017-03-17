@@ -340,9 +340,11 @@ describe('TextField', () => {
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
 
     ReactTestUtils.Simulate.input(inputDOM, mockEvent('value change'));
+    ReactTestUtils.Simulate.change(inputDOM, mockEvent('value change'));
     expect(callCount).to.equal(1);
 
     ReactTestUtils.Simulate.input(inputDOM, mockEvent(''));
+    ReactTestUtils.Simulate.change(inputDOM, mockEvent(''));
     expect(callCount).to.equal(2);
   });
 });
