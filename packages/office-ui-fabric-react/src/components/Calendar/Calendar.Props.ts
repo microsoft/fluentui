@@ -1,5 +1,8 @@
 import * as React from 'react';
 import { Calendar } from './Calendar';
+import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
+
+export { DayOfWeek, DateRangeType }
 
 export interface ICalendar {
   /** Sets focus to the selected date. */
@@ -9,8 +12,10 @@ export interface ICalendar {
 export interface ICalendarProps extends React.Props<Calendar> {
   /**
   * Callback issued when a date is selected
+  * @param {Date} date - The date the user selected
+  * @param {Date[]} selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set for the component.
   */
-  onSelectDate?: (date: Date) => void;
+  onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
 
   /**
    * Callback issued when calendar is closed
@@ -35,6 +40,22 @@ export interface ICalendarProps extends React.Props<Calendar> {
   firstDayOfWeek?: DayOfWeek;
 
   /**
+   * The date range type indicating how  many days should be selected as the user
+   * selects days
+   * @defaultValue DateRangeType.Day
+   */
+  dateRangeType?: DateRangeType;
+
+  /**
+   * Whether the month view should automatically navigate to the next or previous date range
+   * depending on the selected date. If this property is set to true and the currently displayed
+   * month is March 2017, if the user clicks on a day outside the month, i.e., April 1st, the
+   * picker will automatically navigate to the month of April.
+   * @defaultValue false
+   */
+  autoNavigateOnSelection?: boolean;
+
+  /**
    * @deprecated
    * This property has been removed at 0.80.0 in place of the focus method, to be removed @ 1.0.0.
    *
@@ -45,16 +66,6 @@ export interface ICalendarProps extends React.Props<Calendar> {
    * Localized strings to use in the Calendar
    */
   strings: ICalendarStrings;
-}
-
-export enum DayOfWeek {
-  Sunday = 0,
-  Monday = 1,
-  Tuesday = 2,
-  Wednesday = 3,
-  Thursday = 4,
-  Friday = 5,
-  Saturday = 6
 }
 
 export interface ICalendarStrings {

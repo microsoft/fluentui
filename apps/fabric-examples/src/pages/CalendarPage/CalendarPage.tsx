@@ -5,7 +5,7 @@ import {
   IComponentDemoPageProps,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
-
+import { DateRangeType } from 'office-ui-fabric-react/lib/Calendar';
 import { CalendarButtonExample } from './examples/Calendar.Button.Example';
 import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
 
@@ -21,10 +21,16 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
         exampleCards={
           <div>
             <ExampleCard title='Inline Calendar' code={ CalendarInlineExampleCode }>
-              <CalendarInlineExample isMonthPickerVisible={ false } />
+              <CalendarInlineExample isMonthPickerVisible={ false } dateRangeType={ DateRangeType.Day } autoNavigateOnSelection={ false } />
             </ExampleCard>
             <ExampleCard title='Inline Calendar with month picker' code={ CalendarInlineExampleCode }>
-              <CalendarInlineExample isMonthPickerVisible={ true } />
+              <CalendarInlineExample isMonthPickerVisible={ true } dateRangeType={ DateRangeType.Day } autoNavigateOnSelection={ false } />
+            </ExampleCard>
+            <ExampleCard title='Inline Calendar with week selection' code={ CalendarInlineExampleCode }>
+              <CalendarInlineExample isMonthPickerVisible={ true } dateRangeType={ DateRangeType.Week } autoNavigateOnSelection={ true } />
+            </ExampleCard>
+            <ExampleCard title='Inline Calendar with month selection' code={ CalendarInlineExampleCode }>
+              <CalendarInlineExample isMonthPickerVisible={ true } dateRangeType={ DateRangeType.Month } autoNavigateOnSelection={ true } />
             </ExampleCard>
             <ExampleCard title='Calendar launched from a button' code={ CalendarButtonExampleCode }>
               <CalendarButtonExample />

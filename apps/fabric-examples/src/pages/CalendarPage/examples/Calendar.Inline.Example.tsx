@@ -3,6 +3,7 @@ import {
   Calendar,
   DayOfWeek
 } from 'office-ui-fabric-react/lib/Calendar';
+import { DateRangeType } from 'office-ui-fabric-react/lib/Calendar';
 
 const DayPickerStrings = {
   months: [
@@ -60,10 +61,13 @@ const DayPickerStrings = {
 
 export interface ICalendarInlineExampleState {
   selectedDate: Date;
+  selectedDateRange: Date[];
 }
 
 export interface ICalendarInlineExampleProps {
   isMonthPickerVisible: boolean;
+  dateRangeType: DateRangeType;
+  autoNavigateOnSelection: boolean;
 }
 
 export class CalendarInlineExample extends React.Component<ICalendarInlineExampleProps, ICalendarInlineExampleState> {
@@ -71,7 +75,8 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
     super();
 
     this.state = {
-      selectedDate: null
+      selectedDate: null,
+      selectedDateRange: null
     };
 
     this._onDismiss = this._onDismiss.bind(this);
@@ -84,15 +89,28 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
       width: '400px'
     };
 
+    let dateRangeString: string = null;
+    if (this.state.selectedDateRange != null) {
+      let rangeStart = this.state.selectedDateRange[0];
+      let rangeEnd = this.state.selectedDateRange[this.state.selectedDateRange.length - 1];
+      dateRangeString = rangeStart.toLocaleDateString() + '-' + rangeEnd.toLocaleDateString();
+    }
+
     return (
       <div style={ divStyle }>
+        { <div>
+          Selected date(s): <span>{ this.state.selectedDate == null ? 'Not set' : this.state.selectedDate.toLocaleString() }</span>
+        </div> }
         <div>
-          Selected date: <span>{ this.state.selectedDate == null ? 'Not set' : this.state.selectedDate.toLocaleString() }</span>
+          Selected dates:
+          <span> { dateRangeString == null ? 'Not set' : dateRangeString }</span>
         </div>
         <Calendar
           onSelectDate={ this._onSelectDate }
           onDismiss={ this._onDismiss }
           isMonthPickerVisible={ this.props.isMonthPickerVisible }
+          dateRangeType={ this.props.dateRangeType }
+          autoNavigateOnSelection={ this.props.autoNavigateOnSelection }
           value={ this.state.selectedDate }
           firstDayOfWeek={ DayOfWeek.Sunday }
           strings={ DayPickerStrings }
@@ -108,9 +126,10 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
     });
   }
 
-  private _onSelectDate(date: Date) {
+  private _onSelectDate(date: Date, dateRangeArray: Date[]) {
     this.setState((prevState: ICalendarInlineExampleState) => {
       prevState.selectedDate = date;
+      prevState.selectedDateRange = dateRangeArray;
       return prevState;
     });
   }

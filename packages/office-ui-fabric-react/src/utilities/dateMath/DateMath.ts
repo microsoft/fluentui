@@ -1,3 +1,5 @@
+import { DayOfWeek, DateRangeType } from '../dateValues/DateValues';
+
 const DAYS_IN_WEEK = 7;
 const MONTHS_IN_YEAR = 12;
 
@@ -86,4 +88,78 @@ export function compareDates(date1: Date, date2: Date): boolean {
   return (date1.getFullYear() === date2.getFullYear()
     && date1.getMonth() === date2.getMonth()
     && date1.getDate() === date2.getDate());
+}
+
+/**
+ * Gets the date range array including the specified date. The date range array is calculated as the list
+ * of dates accounting for the specified first day of the week and date range type.
+ * @param {Date} date - The input date
+ * @param {DateRangeType} dateRangeType - The desired date range type, i.e., day, week, month, etc.
+ * @param {DayOfWeek} dayOfWeek - The first day of the week.
+ * @returns {Date[]} An array of dates representing the date range containing the specified date.
+ */
+export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firstDayOfWeek: DayOfWeek): Date[] {
+  let datesArray = new Array<Date>();
+  let startDate = null;
+  let endDate = null;
+
+  switch (dateRangeType) {
+    case DateRangeType.Day:
+      startDate = getDatePart(date);
+      endDate = addDays(startDate, 1);
+      break;
+
+    case DateRangeType.Week:
+      startDate = getStartDateOfWeek(getDatePart(date), firstDayOfWeek);
+      endDate = addDays(startDate, DAYS_IN_WEEK);
+      break;
+
+    case DateRangeType.Month:
+      startDate = new Date(date.getFullYear(), date.getMonth(), 1);
+      endDate = addMonths(startDate, 1);
+      break;
+  }
+
+  // Populate the dates array with the dates in range
+  datesArray.push(startDate);
+  let nextDate = addDays(startDate, 1);
+  while (!compareDates(nextDate, endDate)) {
+    datesArray.push(nextDate);
+    nextDate = addDays(nextDate, 1);
+  }
+
+  return datesArray;
+}
+
+export function isInDateRangeArray(date: Date, dateRange: Date[]) {
+  for (let i = 0, length = dateRange.length; i < length; i++) {
+    if (compareDates(date, dateRange[i])) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * Gets a new date with the time portion zeroed out, i.e., set to midnight
+ * @param {Date} date - The origin date
+ * @returns {Date} A new date with the time set to midnight
+ */
+function getDatePart(date: Date): Date {
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+}
+
+/**
+ * Gets the date for the first day of the week based on the given date assuming
+ * the specified first day of the week.
+ * @param {Date} date - The date to find the beginning of the week date for.
+ * @return {Date} A new date object representing the first day of the week containing the input date.
+ */
+function getStartDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date {
+  let daysOffset = firstDayOfWeek - date.getDay();
+  if (daysOffset > 0) {
+    // If first day of week is > date, go 1 week back, to ensure resulting date is in the past.
+    daysOffset -= DAYS_IN_WEEK;
+  }
+  return addDays(date, daysOffset);
 }
