@@ -23,7 +23,7 @@ build.typescript.setConfig({ typescript: require('typescript') });
 build.sass.setConfig({ useCSSModules: true });
 
 // Use Karma Tests - Disable during develoment if prefered
-build.karma.isEnabled = () => true;
+build.karma.isEnabled = () => false;
 
 // Disable unnecessary subtasks.
 build.preCopy.isEnabled = () => false;
@@ -49,15 +49,16 @@ build.text.setConfig({ textMatch: ['src/**/*.Props.ts'] });
 
 // Produce AMD bits in lib-amd on production builds.
 if (isProduction || isNuke) {
+  console.log("fof");
   build.setConfig({
     libAMDFolder: path.join(packageFolder, 'lib-amd')
   });
 }
 
 // Disable certain subtasks in non production builds to speed up serve.
-build.tslint.isEnabled = () => isProduction;
-build.webpack.isEnabled = () => isProduction;
-build.clean.isEnabled = () => isProduction;
+build.tslint.isEnabled = () => false;//isProduction;
+build.webpack.isEnabled = () => false;//isProduction;
+build.clean.isEnabled = () => false;//isProduction;
 
 // Short aliases for subtasks.
 build.task('webpack', build.webpack);

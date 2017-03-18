@@ -43,9 +43,6 @@ const DetailsListDragDropExampleCode = require('./examples/DetailsList.DragDrop.
             <ExampleCard title='Rendering custom group headers' isOptIn={ true } code={ DetailsListCustomGroupHeadersExampleCode }>
               <DetailsListCustomGroupHeadersExample />
             </ExampleCard>
-            <ExampleCard title='Advanced DetailsList of 5000 items, variable row heights' isOptIn={ true } code={ DetailsListAdvancedExampleCode }>
-              <DetailsListAdvancedExample />
-            </ExampleCard>
 */
 
 export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}> {
@@ -58,6 +55,9 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}
           <div>
             <ExampleCard title='Drag and Drop DetailsList with 10 items' isOptIn={ true } code={ DetailsListDragDropExampleCode }>
               <DetailsListDragDropExample />
+            </ExampleCard>
+            <ExampleCard title='Advanced DetailsList of 5000 items, variable row heights' isOptIn={ true } code={ DetailsListAdvancedExampleCode }>
+              <DetailsListAdvancedExample />
             </ExampleCard>
           </div>
         }

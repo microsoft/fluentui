@@ -118,7 +118,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
       }
 
       if (this.props.dragDropHelper) {
-        this.props.dragDropHelper.subscribe(this.refs.root, this._events, this._getRowDragDropOptions());
+        this._dragDropSubscription = this.props.dragDropHelper.subscribe(this.refs.root, this._events, this._getRowDragDropOptions());
       }
     }
 
@@ -312,6 +312,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
       onDrop: dragDropEvents.onDrop,
       onDragEnd: dragDropEvents.onDragEnd,
     };
+
     return options;
   }
 

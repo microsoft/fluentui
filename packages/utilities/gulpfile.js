@@ -16,6 +16,12 @@ build.typescript.setConfig({ typescript: require('typescript') });
 /** Disable webpack. */
 build.webpack.isEnabled = () => false;
 
+
+
+build.karma.isEnabled = () => false;
+
+
+
 let packageFolder = buildConfig.packageFolder || '';
 let distFolder = buildConfig.distFolder;
 
