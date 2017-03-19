@@ -17,7 +17,7 @@ import {
 import { IExampleComponentProps } from './ExampleComponent.Props';
 
 /* tslint:disable:no-any */
-const styles = require<any>('./ExampleComponent.scss');
+const styles: any = require('./ExampleComponent.scss');
 /* tslint:enable:no-any */
 
 /**
@@ -38,7 +38,7 @@ export class ExampleComponent extends BaseComponent<IExampleComponentProps, {}> 
   }
 
   private _onRenderRoot = (props: IExampleComponentProps): JSX.Element => {
-    const { className, href } = this.props;
+    const { className, href }: IExampleComponentProps = this.props;
 
     if (!!href) {
       const anchorProps = getNativeProps<React.HTMLProps<HTMLAnchorElement>>(this.props, anchorProperties);

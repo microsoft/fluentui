@@ -6,7 +6,6 @@
   "projectFolderMinDepth": 1,
   "projectFolderMaxDepth": 999,
   "pinnedVersions": {
-    "node-sass": "4.5.0",
     "webpack": "2.2.1"
   },
   "projects": [

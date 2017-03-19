@@ -7,6 +7,17 @@
       true,
       140
     ],
+    "typedef": [
+      true,
+      "call-signature",
+      "arrow-call-signature",
+      "parameter",
+      "arrow-parameter",
+      "property-declaration",
+      "variable-declaration",
+      "member-variable-declaration",
+      "array-destructuring"
+    ],
     "no-null-keyword": false,
     "export-name": false,
     "trailing-comma": [
