@@ -31,7 +31,7 @@ class TestComponent extends BaseComponent<{}, {}> {
     this._createNullRef();
   }
 
-  public render(): JSX.Element {
+  public render() {
     this._createNullRef();
     return null;
   }

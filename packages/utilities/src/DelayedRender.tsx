@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { BaseComponent } from './BaseComponent';
 
 export interface IDelayedRenderProps extends React.Props<any> {
   /**
@@ -28,7 +29,8 @@ export interface IDelayedRenderState {
  *  </div>
  * </DelayedRender>
  */
-export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayedRenderState> {
+export class DelayedRender extends BaseComponent<IDelayedRenderProps, IDelayedRenderState> {
+
   public static defaultProps = {
     delay: 0
   };
@@ -37,6 +39,7 @@ export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayed
 
   constructor(props: IDelayedRenderProps) {
     super(props);
+
     this.state = {
       isRendered: false
     };

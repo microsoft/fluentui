@@ -2,13 +2,22 @@ import * as React from 'react';
 import {
   css,
   getNativeProps,
-  divProperties
+  divProperties,
+  setBodyScroll
 } from '../../Utilities';
 import { IOverlayProps } from './Overlay.Props';
 
 import styles from './Overlay.scss';
 
 export class Overlay extends React.Component<IOverlayProps, {}> {
+  public componentDidMount() {
+    setBodyScroll(false);
+  }
+
+  public componentWillUnmount() {
+    setBodyScroll(true);
+  }
+
   public render() {
     let { isDarkThemed, className } = this.props;
     let divProps = getNativeProps(this.props, divProperties);
