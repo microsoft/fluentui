@@ -41,7 +41,8 @@ export class ExampleComponent extends BaseComponent<IExampleComponentProps, {}> 
     const { className, href }: IExampleComponentProps = this.props;
 
     if (!!href) {
-      const anchorProps = getNativeProps<React.HTMLProps<HTMLAnchorElement>>(this.props, anchorProperties);
+      const anchorProps: React.HTMLProps<HTMLAnchorElement> =
+        getNativeProps(this.props, anchorProperties);
 
       return (
         <a
@@ -51,7 +52,8 @@ export class ExampleComponent extends BaseComponent<IExampleComponentProps, {}> 
         />
       );
     } else {
-      const buttonProps = getNativeProps(this.props, buttonProperties);
+      const buttonProps: React.HTMLProps<HTMLButtonElement> =
+        getNativeProps(this.props, buttonProperties);
 
       return (
         <button
@@ -63,7 +65,7 @@ export class ExampleComponent extends BaseComponent<IExampleComponentProps, {}> 
     }
   }
 
-  private _onRenderChildren() {
+  private _onRenderChildren(): JSX.Element {
     const {
       children,
       onRenderIcon = this._onRenderIcon,

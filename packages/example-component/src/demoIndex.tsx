@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { examplesOf, createApp } from '@uifabric/example-app-base';
 import { ExampleComponent } from './ExampleComponent';
-import { ExampleComponentPage } from './documentation/ExampleComponentPage';
+import { ExampleComponentPage } from './ExampleComponentPage';
 
 createApp([
   examplesOf('Documentation')

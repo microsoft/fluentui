@@ -6,7 +6,7 @@ import {
   // PropertiesTableSet
 } from '@uifabric/example-app-base';
 
-import { ExampleComponentBasicExample } from './ExampleComponent.Basic.Example';
+import { ExampleComponentBasicExample } from './examples/ExampleComponent.Basic.Example';
 
 // const LabelBasicExampleCode = require('./examples/Label.Basic.Example.tsx') as string;
 
