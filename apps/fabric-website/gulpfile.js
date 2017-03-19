@@ -16,6 +16,19 @@ build.tslint.setConfig({
   sourceMatch: ['src/**/*.ts', 'src/**/*.tsx', '!src/**/*.scss.tsx']
 });
 
+// Configure custom lint overrides.
+let rules = Object.assign(
+  {},
+  require('./node_modules/@microsoft/gulp-core-build-typescript/lib/defaultTslint.json').rules,
+  require('../../tslint.json').rules,
+  require('./tslint.json').rules
+);
+build.tslint.setConfig({
+  lintConfig: { rules },
+  sourceMatch: ['src/**/*.ts', 'src/**/*.tsx', '!src/**/*.scss.tsx']
+});
+
+
 /* Configure TypeScript 2.0. */
 build.typescript.setConfig({ typescript: require('typescript') });
 

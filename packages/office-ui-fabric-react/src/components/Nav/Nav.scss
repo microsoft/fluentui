@@ -57,7 +57,10 @@ $linkRightPadding: 20px;
   background: none;
   border: none;
 
-  text-transform: uppercase;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
   cursor: pointer;
 
   color: $unselectedForegroundColor;
