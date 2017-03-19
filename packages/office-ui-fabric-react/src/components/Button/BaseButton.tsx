@@ -50,7 +50,7 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     const renderAsAnchor: boolean = !!href;
     const tag = renderAsAnchor ? 'a' : 'button';
     const nativeProps = getNativeProps(
-      this.props.rootProps || this.props,
+      assign({}, this.props.rootProps, this.props),
       renderAsAnchor ? anchorProperties : buttonProperties,
       [
         'disabled' // Let disabled buttons be focused and styled as disabled.
@@ -74,6 +74,7 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
       nativeProps,
       {
         className: css(
+          styles.root,
           this.props.className,
           this.classNames.base,
           this.classNames.variant,
@@ -176,7 +177,7 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
     // otherwise it will be assigned to descriptionSpan.
     return ariaDescription ? (
-      <span className='ms-u-screenReaderOnly' id={ this._ariaDescriptionId }>{ ariaDescription }</span>
+      <span className={ styles.screenReaderOnly } id={ this._ariaDescriptionId }>{ ariaDescription }</span>
     ) : (
         null
       );

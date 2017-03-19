@@ -22,6 +22,10 @@
   }
 }
 
+.screenReaderOnly {
+  @include ms-u-screenReaderOnly;
+}
+
 //= State: A disabled textfield
 .root.rootIsDisabled {
   :global(.field) {
@@ -94,6 +98,10 @@
 
   @include input-placeholder {
     color: $ms-color-neutralSecondary;
+  }
+
+  &::-ms-clear {
+    display: none;
   }
 }
 
@@ -209,20 +217,6 @@
 .invalid:hover {
   @include ms-borderColor-redDark;
 }
-
-// What is this doing here?
-/*
-.ms-u-screenReaderOnly {
-  position: absolute;
-  text-indent: -9999px;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  border: 0;
-}
-*/
 
 .root.rootIsUnderlined {
 

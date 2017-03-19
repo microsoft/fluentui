@@ -1,6 +1,144 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 03 Mar 2017 16:09:20 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Mar 2017 18:01:45 GMT and should not be manually modified.
+
+## 2.5.2
+Fri, 17 Mar 2017 18:01:45 GMT
+
+### Patches
+
+- DetailsList: header sizing fixed (was a css selector tweak that caused the issue.) Also added `iconName` to IColumn to specify an iconName like "Mail". The `iconClassName` property is still preserved, but is piped into the className of the Icon component.
+
+## 2.5.1
+Fri, 17 Mar 2017 03:05:52 GMT
+
+### Patches
+
+- ChoiceGroup component: Distinguishes HC border from focus border, removes double stroke, refactors to use common mixin
+- List: Add aria list role
+
+## 2.5.0
+Thu, 16 Mar 2017 03:05:54 GMT
+
+### Minor changes
+
+- DocumentCard: Add aria role and keyboard handling
+- Panel: Added sticky footer section and broke each panel region into seperate onRender fucntion. 
+
+### Patches
+
+- FocusZone: Spacebar no longer scrolls page when in focuszone or selectionzone, and acts as selecting action
+- DetailsList: headers now have the correct font applied and use a transparent background to fix the IE11 styling, which doesn't like "inherit".
+- TextField: Fix for multiple onChanged calls
+
+## 2.4.0
+Wed, 15 Mar 2017 03:06:37 GMT
+
+### Minor changes
+
+- DetailsList: adding `onColumnResize` callback which wil execute when a column is being resized.
+
+## 2.3.0
+Tue, 14 Mar 2017 03:15:10 GMT
+
+### Minor changes
+
+- PeoplePicker: Add rendering overrides
+
+### Patches
+
+- TextField component: hiding -ms-clear pseudo-element for bug #1216
+
+## 2.2.1
+Sat, 11 Mar 2017 04:11:58 GMT
+
+### Patches
+
+- Pivot: selected underline is now visible in high contrast mode.
+
+## 2.2.0
+Fri, 10 Mar 2017 20:41:04 GMT
+
+### Minor changes
+
+- Dropdown: Adding a required property which will be passed into the Label.
+- Adjusting React peer dependency to include v16.0.0-0 in the acceptable range for testing with v16.
+
+## 2.1.1
+Fri, 10 Mar 2017 16:16:07 GMT
+
+### Patches
+
+- Dropdown: Updates the `aria-disabled` attribute based on disabled state.
+
+## 2.1.0
+Thu, 09 Mar 2017 22:06:44 GMT
+
+### Minor changes
+
+- Breadcrumb: Implement onRenderItem
+
+## 2.0.2
+Thu, 09 Mar 2017 16:17:07 GMT
+
+### Patches
+
+- CommandBar: Set aria-disabled="true" for disabled menu items
+- Dropdown - Remove aria-activedescendant when not dropped
+- MessageBar - Fix timeout issue
+
+## 2.0.1
+Thu, 09 Mar 2017 06:33:00 GMT
+
+### Patches
+
+- No changes, required republish.
+
+## 2.0.0
+Thu, 09 Mar 2017 06:11:07 GMT
+
+### Breaking changes
+
+- IMPORTANT: 
+
+This pull request converts ALL components over to use module css. What does this mean?
+
+* All classnames, such as ms-Button, will now be obfuscated to be unique.
+* Pages that host multiple versions of the same component will not stomp on each other and will be safe.
+* All existing class names are left intact, so current customizations should not break.
+
+Going forward, we will adhere to using local scoped module rules specifically to avoid breaking ourselves when multiple versions. Additionally we are evaluating a much more robust and contractual way of defining our styles.
+
+Problems that still exist:
+
+1. You must rely on class names to customize, and if those class names change, your customizations are broken.
+2. Specificity of our rules is an implicit contract that is easy to break. It is often unclear and partners usually give up early fighting the specificity war and use `!important` to stomp on it, which is not ideal. If a partner does use "more specific" rules today, tomorrow they many not be specific enough.
+3. RTL rules in particular are very specific. When something that was once not RTL specific is changed to RTL, it becomes implicitly more specific, and thus breaks specificity contract.
+4. The bundles themselves have a lot of duplicate css. Because we generate rtl rules and theme tokens at build time rather than at runtime, we must download extra code, which bulks up the download size.
+5. Fabric core rules, which we implicitly rely on, are a hard thing to chase. If your page depends on core 6, and you're also using react components, you will find bugs. We'd like to eliminate this dependency so that it is reliable and contractual to use components. If you use a `ContextualMenu`, it should animate without depending on fabric-core css to be loaded.
+
+We are planning to address these and evaluating library options. Issue being tracked here: #983 
+
+
+### Minor changes
+
+- Button: the `label` property used to be meant to render text within the button, but it overlaps with the html `label` attribute. While `label` will still exist, it will now push content into the button label attribute, and we've added a `text` property  to allow for a formal way of defining the textual content displayed within the button. Passing in a child string to the button will still work, but `text` wil
+- IContextualMenuItemProps: the `styles` property can now be passed through to apply styling to menu items.
+
+## 1.14.3
+Thu, 09 Mar 2017 00:16:39 GMT
+
+### Patches
+
+- BaseButton: `rootProps` is now correctly mixed in with `props`. Please note that `rootProps` is deprecated and should not be used, but this fix simply ensures that the deprecated backwards compatibility works.
+- fix base picker shift + tab resolving the people, should move focus instead.
+
+## 1.14.2
+Wed, 08 Mar 2017 04:07:13 GMT
+
+### Patches
+
+- Updated facepile button to use BaseButton so it inherits all the base button styles
 
 ## 1.14.1
 Fri, 03 Mar 2017 16:09:20 GMT

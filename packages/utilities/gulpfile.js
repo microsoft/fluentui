@@ -13,6 +13,9 @@ build.tslint.setConfig({ lintConfig: require('./tslint.json') });
 /* Configure TypeScript 2.0. */
 build.typescript.setConfig({ typescript: require('typescript') });
 
+// Use css modules.
+build.sass.setConfig({ useCSSModules: true });
+
 /** Disable webpack. */
 build.webpack.isEnabled = () => false;
 

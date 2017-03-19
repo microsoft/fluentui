@@ -29,6 +29,7 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
     [MessageBarType.severeWarning]: 'Warning',
     [MessageBarType.success]: 'Completed'
   };
+  private _mountTimeout: number;
 
   constructor(props: IMessageBarProps) {
     super(props);
@@ -49,9 +50,15 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
     /**
      * Live regions need an update to announce content.
      */
-    setTimeout(() => {
+    this._mountTimeout = setTimeout(() => {
       this.setState({ showContent: true });
     }, 10);
+  }
+
+  public componentWillUnmount() {
+    if (this._mountTimeout) {
+      clearTimeout(this._mountTimeout);
+    }
   }
 
   private _getActionsDiv(): JSX.Element {
