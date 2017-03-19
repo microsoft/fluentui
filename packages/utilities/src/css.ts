@@ -3,7 +3,7 @@ export interface ICssMapping {
   [className: string]: boolean;
 }
 
-export type ICssInput = string | ICssMapping | undefined | boolean;
+export type ICssInput = string | ICssMapping | null | undefined | boolean;
 
 export function css(...args: ICssInput[]) {
   let classes = [];
