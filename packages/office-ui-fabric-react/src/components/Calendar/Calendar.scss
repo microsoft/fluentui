@@ -462,7 +462,6 @@ $Calendar-dayPicker-margin: 10px;
       @include right(10px);
       @include text-align(right);
       top: 199px;
-      width: 210px;
     }
     // State: The picker is showing the year components.
     // On larger screens the calendar will remain and the years
@@ -511,7 +510,7 @@ $Calendar-dayPicker-margin: 10px;
 
 .wrap span:focus,
 .wrap div:focus {
-  outline: 1px solid $ms-color-themePrimary;
+  outline: $ms-color-themePrimary;
 }
 
 .goToday {

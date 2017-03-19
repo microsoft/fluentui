@@ -68,6 +68,7 @@ export interface ICalendarInlineExampleProps {
   isMonthPickerVisible: boolean;
   dateRangeType: DateRangeType;
   autoNavigateOnSelection: boolean;
+  showGoToToday: boolean;
 }
 
 export class CalendarInlineExample extends React.Component<ICalendarInlineExampleProps, ICalendarInlineExampleState> {
@@ -111,6 +112,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           isMonthPickerVisible={ this.props.isMonthPickerVisible }
           dateRangeType={ this.props.dateRangeType }
           autoNavigateOnSelection={ this.props.autoNavigateOnSelection }
+          showGoToToday={ this.props.showGoToToday }
           value={ this.state.selectedDate }
           firstDayOfWeek={ DayOfWeek.Sunday }
           strings={ DayPickerStrings }

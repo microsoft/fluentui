@@ -21,16 +21,20 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
         exampleCards={
           <div>
             <ExampleCard title='Inline Calendar' code={ CalendarInlineExampleCode }>
-              <CalendarInlineExample isMonthPickerVisible={ false } dateRangeType={ DateRangeType.Day } autoNavigateOnSelection={ false } />
+              <CalendarInlineExample isMonthPickerVisible={ false } dateRangeType={ DateRangeType.Day } autoNavigateOnSelection={ false }
+                showGoToToday={ false } />
             </ExampleCard>
             <ExampleCard title='Inline Calendar with month picker' code={ CalendarInlineExampleCode }>
-              <CalendarInlineExample isMonthPickerVisible={ true } dateRangeType={ DateRangeType.Day } autoNavigateOnSelection={ false } />
+              <CalendarInlineExample isMonthPickerVisible={ true } dateRangeType={ DateRangeType.Day } autoNavigateOnSelection={ false }
+                showGoToToday={ true } />
             </ExampleCard>
             <ExampleCard title='Inline Calendar with week selection' code={ CalendarInlineExampleCode }>
-              <CalendarInlineExample isMonthPickerVisible={ true } dateRangeType={ DateRangeType.Week } autoNavigateOnSelection={ true } />
+              <CalendarInlineExample isMonthPickerVisible={ true } dateRangeType={ DateRangeType.Week } autoNavigateOnSelection={ true }
+                showGoToToday={ true } />
             </ExampleCard>
             <ExampleCard title='Inline Calendar with month selection' code={ CalendarInlineExampleCode }>
-              <CalendarInlineExample isMonthPickerVisible={ true } dateRangeType={ DateRangeType.Month } autoNavigateOnSelection={ true } />
+              <CalendarInlineExample isMonthPickerVisible={ true } dateRangeType={ DateRangeType.Month } autoNavigateOnSelection={ true }
+                showGoToToday={ true } />
             </ExampleCard>
             <ExampleCard title='Calendar launched from a button' code={ CalendarButtonExampleCode }>
               <CalendarButtonExample />

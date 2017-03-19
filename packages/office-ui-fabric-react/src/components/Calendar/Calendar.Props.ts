@@ -56,6 +56,11 @@ export interface ICalendarProps extends React.Props<Calendar> {
   autoNavigateOnSelection?: boolean;
 
   /**
+   * Whether the "Go to today" link should be shown or not
+   */
+  showGoToToday?: boolean;
+
+  /**
    * @deprecated
    * This property has been removed at 0.80.0 in place of the focus method, to be removed @ 1.0.0.
    *

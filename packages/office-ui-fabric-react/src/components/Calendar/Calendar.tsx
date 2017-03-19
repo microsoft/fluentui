@@ -29,6 +29,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     firstDayOfWeek: DayOfWeek.Sunday,
     dateRangeType: DateRangeType.Day,
     autoNavigateOnSelection: false,
+    showGoToToday: true,
     strings: null
   };
 
@@ -69,7 +70,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   public render() {
     let rootClass = 'ms-DatePicker';
-    let { firstDayOfWeek, dateRangeType, strings, isMonthPickerVisible, autoNavigateOnSelection } = this.props;
+    let { firstDayOfWeek, dateRangeType, strings, isMonthPickerVisible, autoNavigateOnSelection, showGoToToday } = this.props;
     let { selectedDate, navigatedDate } = this.state;
 
     return (
@@ -94,17 +95,19 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   autoNavigateOnSelection={ autoNavigateOnSelection }
                   strings={ strings }
                   ref='dayPicker' />
-                <CalendarMonth
+
+                { isMonthPickerVisible && <CalendarMonth
                   navigatedDate={ navigatedDate }
                   strings={ strings }
-                  onNavigateDate={ this._onNavigateDate } />
-                <span
+                  onNavigateDate={ this._onNavigateDate } /> }
+
+                { showGoToToday && <span
                   className={ css('ms-DatePicker-goToday js-goToday', styles.goToday) }
                   onClick={ this._onGotoToday }
                   onKeyDown={ this._onGotoTodayKeyDown }
                   tabIndex={ 0 }>
                   { strings.goToToday }
-                </span>
+                </span> }
               </div>
             </div>
           </div>
