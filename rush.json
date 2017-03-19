@@ -31,11 +31,6 @@
       "shouldPublish": false
     },
     {
-      "packageName": "fabric-examples",
-      "projectFolder": "apps/fabric-examples",
-      "shouldPublish": false
-    },
-    {
       "packageName": "ssr-tests",
       "projectFolder": "apps/ssr-tests",
       "shouldPublish": false

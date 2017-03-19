@@ -11,7 +11,10 @@
       "chai",
       "mocha",
       "webpack-env"
-    ]
+    ],
+    "paths": {
+      "office-ui-fabric-react/lib/": "./src/"
+    }
   },
   "exclude": [
     "node_modules",
