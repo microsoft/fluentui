@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { LiveRegion } from '../../common/DelayRender';
 import { ITextField, ITextFieldProps } from './TextField.Props';
 import { Label } from '../../Label';
 import {
+  DelayedRender,
   BaseComponent,
   getId,
   css,
@@ -144,17 +144,18 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         { this._isDescriptionAvailable &&
           <span id={ this._descriptionId }>
             { description && <span className={ css('ms-TextField-description', styles.description) }>{ description }</span> }
-            { errorMessage && (
-              <LiveRegion announcementPriority={ 'assertive' }>
-                <p
-                  className={ css('ms-TextField-errorMessage ms-u-slideDownIn20', styles.errorMessage) }
-                  data-automation-id='error-message'
-                >
-                  <i className={ css('ms-Icon ms-Icon--Error', styles.errorIcon) } aria-hidden='true'></i>
-                  { errorMessage }
-                </p>
-              </LiveRegion>
-            ) }
+            { errorMessage &&
+              <div aria-live='assertive'>
+                <DelayedRender>
+                  <p
+                    className={ css('ms-TextField-errorMessage ms-u-slideDownIn20', styles.errorMessage) }
+                    data-automation-id='error-message'>
+                    <i className={ css('ms-Icon ms-Icon--Error', styles.errorIcon) } aria-hidden='true'></i>
+                    { errorMessage }
+                  </p>
+                </DelayedRender>
+              </div>
+            }
           </span>
         }
       </div>

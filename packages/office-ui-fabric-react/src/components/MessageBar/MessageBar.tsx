@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {
+  DelayedRender,
   css,
   getId
 } from '../../Utilities';
-import { LiveRegion } from '../../common/DelayRender';
 import { Button, ButtonType } from '../../Button';
 import { IMessageBarProps, MessageBarType } from './MessageBar.Props';
 import styles from './MessageBar.scss';
@@ -134,10 +134,10 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
   private _renderInnerText(): JSX.Element {
     return (
       <div className={ css('ms-MessageBar-text', styles.text) } id={ this.state.labelId }>
-        <span className={ this._getInnerTextClassName() }>
-          <LiveRegion role='status' announcementPriority={ this._getAnnouncementPriority() }>
-            { this.props.children }
-          </LiveRegion>
+        <span className={ this._getInnerTextClassName() } role='status' aria-live={ this._getAnnouncementPriority() }>
+          <DelayedRender>
+            <span>{ this.props.children }</span>
+          </DelayedRender>
         </span>
       </div>
     );
