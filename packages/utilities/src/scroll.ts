@@ -1,6 +1,28 @@
+import { getDocument } from './dom';
+import styles from './scroll.scss';
+
 let _scrollbarWidth: number;
 
 export const DATA_IS_SCROLLABLE_ATTRIBUTE = 'data-is-scrollable';
+
+let bodyScrollCount = 0;
+
+export function setBodyScroll(isEnabled: boolean) {
+  let isPreviouslyEnabled = bodyScrollCount !== 0;
+  let doc = getDocument();
+
+  bodyScrollCount = Math.max(0, bodyScrollCount + (isEnabled ? -1 : 1));
+
+  if (doc) {
+    if (bodyScrollCount > 0 && !isPreviouslyEnabled) {
+      doc.body.classList.add(styles.scrollDisabled);
+    }
+
+    if (bodyScrollCount === 0 && isPreviouslyEnabled) {
+      doc.body.classList.remove(styles.scrollDisabled);
+    }
+  }
+}
 
 /** Calculates the width of a scrollbar for the browser/os. */
 export function getScrollbarWidth(): number {
