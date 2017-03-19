@@ -9,6 +9,7 @@ let buildConfig = build.getConfig();
 let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const BUNDLE_NAME = 'office-ui-fabric-react';
+const BUNDLE_TEST = 'fabric-test';
 const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
 
 // Create an array of configs, prepopulated with a debug (non-minified) build.
@@ -28,12 +29,14 @@ function createConfig(isProduction) {
 
     entry: {
       [BUNDLE_NAME]: './index.js',
+      [BUNDLE_TEST]: './VisualTestRoot.js'
     },
 
     output: {
       libraryTarget: 'var',
       library: 'Fabric',
       path: path.join(__dirname, buildConfig.distFolder),
+      publicPath: '/dist/',
       filename: `[name]${isProduction ? '.min' : ''}.js`
     },
 
