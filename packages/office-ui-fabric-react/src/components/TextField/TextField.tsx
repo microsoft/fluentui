@@ -48,6 +48,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   private _delayedValidate: (value: string) => void;
   private _isMounted: boolean;
   private _lastValidation: number;
+  private _latestValue;
   private _latestValidateValue;
   private _isDescriptionAvailable: boolean;
   private _textElement: HTMLInputElement | HTMLTextAreaElement;
@@ -97,6 +98,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         onBeforeChange(newProps.value);
       }
 
+      this._latestValue = newProps.value;
       this.setState({
         value: newProps.value,
         errorMessage: ''
@@ -138,7 +140,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         { label && <Label htmlFor={ this._id }>{ label }</Label> }
         { iconClass && <i className={ iconClass }></i> }
         { multiline ? this._renderTextArea() : this._renderInput() }
-        { errorMessage && <div aria-live='assertive' className='ms-u-screenReaderOnly' data-automation-id='error-message'>{ errorMessage }</div> }
+        { errorMessage && <div aria-live='assertive' className={ styles.screenReaderOnly } data-automation-id='error-message'>{ errorMessage }</div> }
         { this._isDescriptionAvailable &&
           <span id={ this._descriptionId }>
             { description && <span className={ css('ms-TextField-description', styles.description) }>{ description }</span> }
@@ -282,9 +284,12 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   private _onInputChange(event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     const element: HTMLInputElement = event.target as HTMLInputElement;
     const value: string = element.value;
-    if (value === this.state.value) {
+
+    // Avoid doing unnecessary work when the value has not changed.
+    if (value === this._latestValue) {
       return;
     }
+    this._latestValue = value;
 
     this.setState({
       value: value,

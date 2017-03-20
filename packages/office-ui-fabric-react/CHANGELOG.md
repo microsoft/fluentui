@@ -1,6 +1,53 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 11 Mar 2017 04:11:58 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Mar 2017 18:01:45 GMT and should not be manually modified.
+
+## 2.5.2
+Fri, 17 Mar 2017 18:01:45 GMT
+
+### Patches
+
+- DetailsList: header sizing fixed (was a css selector tweak that caused the issue.) Also added `iconName` to IColumn to specify an iconName like "Mail". The `iconClassName` property is still preserved, but is piped into the className of the Icon component.
+
+## 2.5.1
+Fri, 17 Mar 2017 03:05:52 GMT
+
+### Patches
+
+- ChoiceGroup component: Distinguishes HC border from focus border, removes double stroke, refactors to use common mixin
+- List: Add aria list role
+
+## 2.5.0
+Thu, 16 Mar 2017 03:05:54 GMT
+
+### Minor changes
+
+- DocumentCard: Add aria role and keyboard handling
+- Panel: Added sticky footer section and broke each panel region into seperate onRender fucntion. 
+
+### Patches
+
+- FocusZone: Spacebar no longer scrolls page when in focuszone or selectionzone, and acts as selecting action
+- DetailsList: headers now have the correct font applied and use a transparent background to fix the IE11 styling, which doesn't like "inherit".
+- TextField: Fix for multiple onChanged calls
+
+## 2.4.0
+Wed, 15 Mar 2017 03:06:37 GMT
+
+### Minor changes
+
+- DetailsList: adding `onColumnResize` callback which wil execute when a column is being resized.
+
+## 2.3.0
+Tue, 14 Mar 2017 03:15:10 GMT
+
+### Minor changes
+
+- PeoplePicker: Add rendering overrides
+
+### Patches
+
+- TextField component: hiding -ms-clear pseudo-element for bug #1216
 
 ## 2.2.1
 Sat, 11 Mar 2017 04:11:58 GMT
