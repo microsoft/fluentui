@@ -8,14 +8,16 @@ import {
 } from '../../Utilities';
 import { IOverflowGroupProps, GutterWidth } from './OverflowGroup.Props';
 import { IconButton } from '../../Button';
+import { IContextualMenuItem } from '../../ContextualMenu';
 
 import styles from './OverflowGroup.scss';
 
-interface IOverflowGroupState {
-  overflowItems: any[];
+export interface IOverflowGroupState {
+  renderedItems?: IContextualMenuItem[];
+  renderedOverflowItems?: IContextualMenuItem[];
 }
 
-export class OverflowGroup extends React.Component<IOverflowGroupProps, {}> {
+export class OverflowGroup extends React.Component<IOverflowGroupProps, IOverflowGroupState> {
 
   public static defaultProps = {
     gutterWidth: GutterWidth.none
@@ -23,15 +25,18 @@ export class OverflowGroup extends React.Component<IOverflowGroupProps, {}> {
 
   public refs: {
     [key: string]: React.ReactInstance;
+    overflowGroup: HTMLElement;
   };
 
-  private _commandItemWidths: { [key: string]: number };
+  private _itemWidths: { [key: string]: number };
   private _events: EventGroup;
   private _id: string;
 
   constructor(props: IOverflowGroupProps) {
     super(props);
-
+    this.state = {
+      renderedItems: this.props.items
+    }
     this._id = getId('OverflowGroup');
     this._events = new EventGroup(this);
   }
@@ -48,7 +53,7 @@ export class OverflowGroup extends React.Component<IOverflowGroupProps, {}> {
   }
 
   public componentDidUpdate(prevProps: IOverflowGroupProps) {
-    if (!this._commandItemWidths) {
+    if (!this._itemWidths) {
       this._updateItemMeasurements();
       this._updateRenderedItems();
     }
@@ -60,9 +65,10 @@ export class OverflowGroup extends React.Component<IOverflowGroupProps, {}> {
 
     // onRenderOverflow will eventually take all overflow items
     return (
-      <div { ...divProps } className={ css('ms-OverflowGroup', styles.root, className) } >
-        { this._onRenderOverflowButton(items) }
-        { this._onRenderGroup(items) }
+      <div ref='overflowGroup' { ...divProps } className={ css('ms-OverflowGroup', styles.root, className) } >
+        { items && this._onRenderGroupItems(this.state.renderedItems) }
+        { this.state.renderedOverflowItems && this._onRenderOverflowButton(this.state.renderedOverflowItems) }
+        { this.props.children && this._onRenderGroupItems(this.props.children) }
       </div>
     );
   }
@@ -79,29 +85,25 @@ export class OverflowGroup extends React.Component<IOverflowGroupProps, {}> {
     );
   }
 
-
-  private _onRenderGroup(items) {
+  private _onRenderGroupItems(items) {
     let { gutterWidth } = this.props;
     let widths = [null, 2, 4, 8, 12, 16];
     let itemStyle = {
-      'marginRight': widths[gutterWidth]
+      'marginRight': widths[gutterWidth] / 2,
+      'marginLeft': widths[gutterWidth] / 2
     };
 
     return items.map((item, i) => {
 
-      item.key = item.key ? item.key : i;
+      let key = item.key ? item.key : i;
       let onRender = item.onRender ? item.onRender : this.props.onRenderItem;
-
-      if (i === items.length - 1) {
-        itemStyle = null;
-      }
       return (
         <div
           style={ itemStyle }
           className={ css('ms-OverflowGroup-item', styles.item) }
-          key={ item.key }
-          ref={ item.key } >
-          { onRender(item, i) }
+          key={ key }
+          ref={ key } >
+          { onRender ? onRender(item, i) : item }
         </div>
       );
     });
@@ -109,25 +111,51 @@ export class OverflowGroup extends React.Component<IOverflowGroupProps, {}> {
 
   private _updateItemMeasurements() {
 
-    if (!this._commandItemWidths) {
-      this._commandItemWidths = {};
+    if (!this._itemWidths) {
+      this._itemWidths = {};
     }
 
     for (let i = 0; i < this.props.items.length; i++) {
       let item = this.props.items[i];
 
-      if (!this._commandItemWidths[item.key]) {
+      if (!this._itemWidths[item.key]) {
         let el = this.refs[item.key] as HTMLElement;
-        console.log(el);
 
         if (el) {
-          this._commandItemWidths[item.key] = el.getBoundingClientRect().width;
+          let style = window.getComputedStyle(el);
+          this._itemWidths[item.key] = el.getBoundingClientRect().width + parseInt(style.marginRight, 10) + parseInt(style.marginLeft, 10);
         }
       }
     }
   }
 
   private _updateRenderedItems() {
-    console.log(this._commandItemWidths);
+    let { items, overflowItems = []} = this.props;
+    let renderedItems = [].concat(items);
+    let renderedOverflowItems = overflowItems;
+    let overflowGroup = this.refs.overflowGroup;
+    let consumedWidth = 0;
+    let isOverflowVisible = renderedOverflowItems && renderedOverflowItems.length;
+
+    let style = window.getComputedStyle(overflowGroup);
+    // reduce availableWidth by 32 to account for overflowButton. This could be improved to support custom button sizes
+    let availableWidth = overflowGroup.clientWidth - parseInt(style.marginLeft, 10) - parseInt(style.marginRight, 10) - 32;
+    for (let i = 0; i < renderedItems.length; i++) {
+      let item = renderedItems[i];
+      let itemWidth = this._itemWidths[item.key];
+
+      if ((consumedWidth + itemWidth) >= availableWidth) {
+
+        renderedOverflowItems = renderedItems.splice(i).concat(overflowItems);
+        break;
+      } else {
+        consumedWidth += itemWidth;
+      }
+    }
+
+    this.setState({
+      renderedItems: renderedItems,
+      renderedOverflowItems: renderedOverflowItems.length ? renderedOverflowItems : null,
+    });
   }
 }

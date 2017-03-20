@@ -80,7 +80,18 @@ export class OverflowGroupBasicExample extends BaseComponent<any, any> {
           } }
         >
         </OverflowGroup>
-      </div >
+
+        <OverflowGroup
+          gutterWidth={ GutterWidth.medium }
+        >
+          <DefaultButton>
+            Hi There
+          </DefaultButton>
+          <DefaultButton>
+            Hi There
+          </DefaultButton>
+        </OverflowGroup >
+      </div>
     );
   }
 }
