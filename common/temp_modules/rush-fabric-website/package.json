@@ -35,12 +35,11 @@
     "webpack-bundle-analyzer": "^2.2.1",
     "color-functions": "1.1.0",
     "json-loader": "^0.5.4",
-    "load-themed-styles": "~1.1.0",
+    "load-themed-styles": "^1.1.0",
     "office-ui-fabric-core": "5.1.0"
   },
   "rushDependencies": {
-    "fabric-examples": ">=1.0.2 <2.0.0",
-    "office-ui-fabric-react": "^2.5.2",
-    "@uifabric/utilities": ">=1.2.0 <2.0.0"
+    "office-ui-fabric-react": ">=2.5.2-0 <3.0.0-0",
+    "@uifabric/utilities": ">=1.2.0-0 <2.0.0-0"
   }
 }

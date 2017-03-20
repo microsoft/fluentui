@@ -4,7 +4,7 @@ import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import './CalloutExample.scss';
 
-import { items } from '../../CommandBarPage/examples/data';
+import { items } from '../../CommandBar/examples/data';
 
 export interface ICalloutBaiscExampleState {
   isCalloutVisible?: boolean;

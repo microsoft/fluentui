@@ -5,7 +5,7 @@ import {
   IComponentDemoPageProps,
   PropertiesTableSet
 } from '@uifabric/example-app-base';
-import { textOnlyItems } from '../CommandBarPage/examples/data';
+import { textOnlyItems } from '../CommandBar/examples/data';
 
 import { CalloutBasicExample } from './examples/Callout.Basic.Example';
 import { CalloutNestedExample } from './examples/Callout.Nested.Example';

@@ -7,9 +7,9 @@ import {
   Pivot
 } from 'office-ui-fabric-react/lib/Pivot';
 
-import { CalloutBasicExample } from '../../CalloutPage/examples/Callout.Basic.Example';
-import { SpinnerBasicExample } from '../../SpinnerPage/examples/Spinner.Basic.Example';
-import { PersonaBasicExample } from '../../PersonaPage/examples/Persona.Basic.Example';
+import { CalloutBasicExample } from '../../Callout/examples/Callout.Basic.Example';
+import { SpinnerBasicExample } from '../../Spinner/examples/Spinner.Basic.Example';
+import { PersonaBasicExample } from '../../Persona/examples/Persona.Basic.Example';
 
 export class PivotFabricExample extends React.Component<any, any> {
   public render() {

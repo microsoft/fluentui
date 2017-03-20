@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { App, AppDefinition } from './AppDefinition';
 import { Router, Route } from 'office-ui-fabric-react/lib/utilities/router/index';
-import { GettingStartedPage } from './pages/GettingStartedPage/GettingStartedPage';
+import { GettingStartedPage } from './GettingStartedPage';
 import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 
