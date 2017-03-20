@@ -17,199 +17,199 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/BreadcrumbPage/BreadcrumbPage').BreadcrumbPage)),
+          getComponent: cb => cb(require<any>('../components/Breadcrumb/BreadcrumbPage').BreadcrumbPage),
           key: 'Breadcrumb',
           name: 'Breadcrumb',
           url: '#/examples/breadcrumb'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/ButtonPage/ButtonPage').ButtonPage)),
+          getComponent: cb => cb(require<any>('../components/Button/ButtonPage').ButtonPage),
           key: 'Button',
           name: 'Button',
           url: '#/examples/button'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/CalendarPage/CalendarPage').CalendarPage)),
+          getComponent: cb => cb(require<any>('../components/Calendar/CalendarPage').CalendarPage),
           key: 'Calendar',
           name: 'Calendar',
           url: '#/examples/calendar'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/CalloutPage/CalloutPage').CalloutPage)),
+          getComponent: cb => cb(require<any>('../components/Callout/CalloutPage').CalloutPage),
           key: 'Callout',
           name: 'Callout',
           url: '#/examples/callout'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/CheckboxPage/CheckboxPage').CheckboxPage)),
+          getComponent: cb => cb(require<any>('../components/Checkbox/CheckboxPage').CheckboxPage),
           key: 'Checkbox',
           name: 'Checkbox',
           url: '#/examples/checkbox'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/ChoiceGroupPage/ChoiceGroupPage').ChoiceGroupPage)),
+          getComponent: cb => cb(require<any>('../components/ChoiceGroup/ChoiceGroupPage').ChoiceGroupPage),
           key: 'ChoiceGroup',
           name: 'ChoiceGroup',
           url: '#/examples/choicegroup'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/CommandBarPage/CommandBarPage').CommandBarPage)),
+          getComponent: cb => cb(require<any>('../components/CommandBar/CommandBarPage').CommandBarPage),
           key: 'CommandBar',
           name: 'CommandBar',
           url: '#/examples/commandbar'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/ContextualMenuPage/ContextualMenuPage').ContextualMenuPage)),
+          getComponent: cb => cb(require<any>('../components/ContextualMenu/ContextualMenuPage').ContextualMenuPage),
           key: 'ContextualMenu',
           name: 'ContextualMenu',
           url: '#/examples/contextmenu'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/DatePickerPage/DatePickerPage').DatePickerPage)),
+          getComponent: cb => cb(require<any>('../components/DatePicker/DatePickerPage').DatePickerPage),
           key: 'DatePicker',
           name: 'DatePicker',
           url: '#/examples/datepicker'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/DetailsListPage/DetailsListPage').DetailsListPage)),
+          getComponent: cb => cb(require<any>('../components/DetailsList/DetailsListPage').DetailsListPage),
           key: 'DetailsList',
           name: 'DetailsList',
           url: '#/examples/detailslist'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/DialogPage/DialogPage').DialogPage)),
+          getComponent: cb => cb(require<any>('../components/Dialog/DialogPage').DialogPage),
           key: 'Dialog',
           name: 'Dialog',
           url: '#/examples/dialog'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/DocumentCardPage/DocumentCardPage').DocumentCardPage)),
+          getComponent: cb => cb(require<any>('../components/DocumentCard/DocumentCardPage').DocumentCardPage),
           key: 'DocumentCard',
           name: 'DocumentCard',
           url: '#/examples/documentcard'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/DropdownPage/DropdownPage').DropdownPage)),
+          getComponent: cb => cb(require<any>('../components/Dropdown/DropdownPage').DropdownPage),
           key: 'Dropdown',
           name: 'Dropdown',
           url: '#/examples/dropdown'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/FacepilePage/FacepilePage').FacepilePage)),
+          getComponent: cb => cb(require<any>('../components/Facepile/FacepilePage').FacepilePage),
           key: 'Facepile',
           name: 'Facepile',
           url: '#/examples/facepile'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/IconPage/IconPage').IconPage)),
+          getComponent: cb => cb(require<any>('../components/Icon/IconPage').IconPage),
           key: 'Icon',
           name: 'Icon',
           url: '#/examples/icon'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/LabelPage/LabelPage').LabelPage)),
+          getComponent: cb => cb(require<any>('../components/Label/LabelPage').LabelPage),
           key: 'Label',
           name: 'Label',
           url: '#/examples/label'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/LinkPage/LinkPage').LinkPage)),
+          getComponent: cb => cb(require<any>('../components/Link/LinkPage').LinkPage),
           key: 'Link',
           name: 'Link',
           url: '#/examples/link'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/ListPage/ListPage').ListPage)),
+          getComponent: cb => cb(require<any>('../components/List/ListPage').ListPage),
           key: 'List',
           name: 'List',
           url: '#/examples/list'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/MessageBarPage/MessageBarPage').MessageBarPage)),
+          getComponent: cb => cb(require<any>('../components/MessageBar/MessageBarPage').MessageBarPage),
           key: 'MessageBar',
           name: 'MessageBar',
           url: '#/examples/messagebar'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/OverlayPage/OverlayPage').OverlayPage)),
+          getComponent: cb => cb(require<any>('../components/Overlay/OverlayPage').OverlayPage),
           key: 'Overlay',
           name: 'Overlay',
           url: '#/examples/overlay'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/PanelPage/PanelPage').PanelPage)),
+          getComponent: cb => cb(require<any>('../components/Panel/PanelPage').PanelPage),
           key: 'Panel',
           name: 'Panel',
           url: '#/examples/panel'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/PickersPage/PickersPage').PickersPage)),
+          getComponent: cb => cb(require<any>('../components/pickers/PickersPage').PickersPage),
           key: 'Pickers',
           name: 'Pickers',
           url: '#/examples/pickers'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/PeoplePickerPage/PeoplePickerPage').PeoplePickerPage)),
+          getComponent: cb => cb(require<any>('../components/pickers/PeoplePicker/PeoplePickerPage').PeoplePickerPage),
           key: 'PeoplePicker',
           name: 'PeoplePicker',
           url: '#/examples/PeoplePicker'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/PersonaPage/PersonaPage').PersonaPage)),
+          getComponent: cb => cb(require<any>('../components/Persona/PersonaPage').PersonaPage),
           key: 'Persona',
           name: 'Persona',
           url: '#/examples/persona'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/PivotPage/PivotPage').PivotPage)),
+          getComponent: cb => cb(require<any>('../components/Pivot/PivotPage').PivotPage),
           key: 'Pivot',
           name: 'Pivot',
           url: '#/examples/pivot'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/ProgressIndicatorPage/ProgressIndicatorPage').ProgressIndicatorPage)),
+          getComponent: cb => cb(require<any>('../components/ProgressIndicator/ProgressIndicatorPage').ProgressIndicatorPage),
           key: 'ProgressIndicator',
           name: 'ProgressIndicator',
           url: '#/examples/progressindicator'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/RatingPage/RatingPage').RatingPage)),
+          getComponent: cb => cb(require<any>('../components/Rating/RatingPage').RatingPage),
           key: 'Rating',
           name: 'Rating',
           url: '#/examples/rating'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/SearchBoxPage/SearchBoxPage').SearchBoxPage)),
+          getComponent: cb => cb(require<any>('../components/SearchBox/SearchBoxPage').SearchBoxPage),
           key: 'SearchBox',
           name: 'SearchBox',
           url: '#/examples/searchbox'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/SpinnerPage/SpinnerPage').SpinnerPage)),
+          getComponent: cb => cb(require<any>('../components/Spinner/SpinnerPage').SpinnerPage),
           key: 'Spinner',
           name: 'Spinner',
           url: '#/examples/spinner'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/TeachingBubblePage/TeachingBubblePage').TeachingBubblePage)),
+          getComponent: cb => cb(require<any>('../components/TeachingBubble/TeachingBubblePage').TeachingBubblePage),
           key: 'TeachingBubble',
           name: 'TeachingBubble',
           url: '#/examples/teachingbubble'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/TextFieldPage/TextFieldPage').TextFieldPage)),
+          getComponent: cb => cb(require<any>('../components/TextField/TextFieldPage').TextFieldPage),
           key: 'TextField',
           name: 'TextField',
           url: '#/examples/textfield'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/TogglePage/TogglePage').TogglePage)),
+          getComponent: cb => cb(require<any>('../components/Toggle/TogglePage').TogglePage),
           key: 'Toggle',
           name: 'Toggle',
           url: '#/examples/toggle'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/TooltipPage/TooltipPage').TooltipPage)),
+          getComponent: cb => cb(require<any>('../components/Tooltip/TooltipPage').TooltipPage),
           key: 'Tooltip',
           name: 'Tooltip',
           url: '#/examples/Tooltip'
@@ -220,37 +220,37 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/ColorPickerPage/ColorPickerPage').ColorPickerPage)),
+          getComponent: cb => cb(require<any>('../components/ColorPicker/ColorPickerPage').ColorPickerPage),
           key: 'ColorPicker',
           name: 'ColorPicker',
           url: '#/examples/colorpicker'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/GroupedListPage/GroupedListPage').GroupedListPage)),
+          getComponent: cb => cb(require<any>('../components/GroupedList/GroupedListPage').GroupedListPage),
           key: 'GroupedList',
           name: 'GroupedList',
           url: '#examples/groupedlist'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/ImagePage/ImagePage').ImagePage)),
+          getComponent: cb => cb(require<any>('../components/Image/ImagePage').ImagePage),
           key: 'Image',
           name: 'Image',
           url: '#/examples/image'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/LayerPage/LayerPage').LayerPage)),
+          getComponent: cb => cb(require<any>('../components/Layer/LayerPage').LayerPage),
           key: 'Layer',
           name: 'Layer',
           url: '#/examples/layer'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/NavPage/NavPage').NavPage)),
+          getComponent: cb => cb(require<any>('../components/Nav/NavPage').NavPage),
           key: 'Nav',
           name: 'Nav',
           url: '#/examples/nav'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/SliderPage/SliderPage').SliderPage)),
+          getComponent: cb => cb(require<any>('../components/Slider/SliderPage').SliderPage),
           key: 'Slider',
           name: 'Slider',
           url: '#/examples/slider'
@@ -261,31 +261,31 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/FocusTrapZonePage/FocusTrapZonePage').FocusTrapZonePage)),
+          getComponent: cb => cb(require<any>('../components/FocusTrapZone/FocusTrapZonePage').FocusTrapZonePage),
           key: 'FocusTrapZone',
           name: 'FocusTrapZone',
           url: '#examples/focustrapzone'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/FocusZonePage/FocusZonePage').FocusZonePage)),
+          getComponent: cb => cb(require<any>('../components/FocusZone/FocusZonePage').FocusZonePage),
           key: 'FocusZone',
           name: 'FocusZone',
           url: '#examples/focuszone'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/MarqueeSelectionPage/MarqueeSelectionPage').MarqueeSelectionPage)),
+          getComponent: cb => cb(require<any>('../components/MarqueeSelection/MarqueeSelectionPage').MarqueeSelectionPage),
           key: 'MarqueeSelection',
           name: 'MarqueeSelection',
           url: '#examples/marqueeselection'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/SelectionPage/SelectionPage').SelectionPage)),
+          getComponent: cb => cb(require<any>('../utilities/selection/SelectionPage').SelectionPage),
           key: 'Selection',
           name: 'Selection',
           url: '#examples/selection'
         },
         {
-          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/ThemePage/ThemePage').ThemePage)),
+          getComponent: cb => cb(require<any>('../components/Theme/ThemePage').ThemePage),
           key: 'Theme',
           name: 'Themes',
           url: '#examples/themes'
