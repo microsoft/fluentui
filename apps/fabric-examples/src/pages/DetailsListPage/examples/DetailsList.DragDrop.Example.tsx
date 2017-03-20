@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { DetailsList } from 'office-ui-fabric-react/lib/DetailsList';
-import {IDetailsRowProps, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
+import { IDetailsRowProps, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
 import {
   IDragDropHelper,
   IDragDropEvents,
@@ -12,20 +12,19 @@ import {
   IDragDropContext
 } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
 import { createListItems } from '@uifabric/example-app-base';
+import './DetailsList.DragDrop.Example.scss';
 
-let _items: any[];
 let _draggedItem: any = null;
+let _draggedIndex: number = -1;
 
 export class DetailsListDragDropExample extends React.Component<any, any> {
   constructor() {
     super();
 
-    _items = _items || createListItems(10);
-
     this._onRenderItemColumn = this._onRenderItemColumn.bind(this);
 
     this.state = {
-      items: _items,
+      items: createListItems(10)
     };
   }
 
@@ -33,16 +32,16 @@ export class DetailsListDragDropExample extends React.Component<any, any> {
     let { items, selectionDetails } = this.state;
 
     return (
-      <div>
+      <div className='ms-DetailsListDragDropExample'>
         <div>{ selectionDetails }</div>
-          <DetailsList
-            setKey='items'
-            items={ items }
-            selectionPreservedOnEmptyClick={ true }
-            onItemInvoked={ (item) => {this._deleteItem(item);alert(`Item invoked: ${item.name}`);} }
-            onRenderItemColumn={ this._onRenderItemColumn }
-            dragDropEvents = {this._getDragDropEvents() }
-          />
+        <DetailsList
+          setKey='items'
+          items={ items }
+          selectionPreservedOnEmptyClick={ true }
+          onItemInvoked={ (item) => { alert(`Item invoked: ${item.name}`); } }
+          onRenderItemColumn={ this._onRenderItemColumn }
+          dragDropEvents={ this._getDragDropEvents() }
+        />
       </div>
     );
   }
@@ -51,21 +50,20 @@ export class DetailsListDragDropExample extends React.Component<any, any> {
     return {
       canDrop: (dropContext?: IDragDropContext, dragContext?: IDragDropContext) => { return true; },
       canDrag: (item?: any) => { return true; },
-      onDragEnter: (item?: any, event?: DragEvent) => { return ''; }, // return string is the css classes that will be added to the enterring element.
+      onDragEnter: (item?: any, event?: DragEvent) => { return 'drag-enter'; }, // return string is the css classes that will be added to the enterring element.
       onDragLeave: (item?: any, event?: DragEvent) => { return; },
       onDrop: (item?: any, event?: DragEvent) => {
         if (_draggedItem) {
           this._insertBeforeItem(item);
-          console.log(_items);
         }
       },
       onDragStart: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => {
         _draggedItem = item;
-        console.log('ondragstart');
+        _draggedIndex = itemIndex;
       },
       onDragEnd: (item?: any, event?: DragEvent) => {
         _draggedItem = null;
-        console.log(' drag end');
+        _draggedIndex = -1;
       },
     };
   }
@@ -78,16 +76,15 @@ export class DetailsListDragDropExample extends React.Component<any, any> {
     return item[column.key];
   }
 
-  private _deleteItem(item) {
-    let index = _items.indexOf(item);
-    this.setState({items: this.state.items.filter((i)=>i !== item)});
-  }
-
   private _insertBeforeItem(item) {
-    let index = _items.indexOf(item);
+    let index = this.state.items.indexOf(item);
+    let items = this.state.items.filter((i) => i !== _draggedItem);
 
-    let items = this.state.items.filter((i)=>i !== _draggedItem);
-    //let items = this.state.items.slice(0,index).concat([item]).concat(this.state.items.slice(index));
-    this.setState({items: items});
+    if (_draggedIndex < index) {
+      index = index - 1;
+    }
+    items.splice(index, 0, _draggedItem);
+
+    this.setState({ items: items });
   }
 }
