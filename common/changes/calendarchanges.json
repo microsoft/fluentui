@@ -1,0 +1,20 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Calendar: Adding support for date ranges: day, week, month so when a user selects a date, the corresponding range is auto-selected. Adding a new prop to hide the today link. Adding a new prop to auto navigate to to the next/previous month if the user selects a date that falls outside the current month. Also fixing some minor styling issues around focused date so it plays nicely with range selection.",
+      "type": "minor"
+    },
+    {
+      "comment": "Adding some utility functions to handle date range calculations and determining if a date falls within a date range.",
+      "packageName": "@uifabric/utilities",
+      "type": "minor"
+    },
+    {
+      "packageName": "@uifabric/example-app-base",
+      "comment": "Modified existing calendar examples to include examples of the new props for date range selection, auto month navigation and hiding the today link.",
+      "type": "minor"
+    }
+  ],
+  "email": "johannao@microsoft.com"
+}
