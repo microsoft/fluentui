@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Implement Drag Drop support for DetailsList component",
+      "type": "minor"
+    }
+  ],
+  "email": "aazhou@microsoft.com"
+}
