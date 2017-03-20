@@ -134,7 +134,6 @@ export const AppDefinition: IAppDefinition = {
           getComponent: cb => require.ensure([], () => cb(require<any>('./pages/OverflowGroupPage/OverflowGroupPage').OverflowGroupPage)),
           key: 'OverflowGroup',
           name: 'OverflowGroup',
-          status: ExampleStatus.beta,
           url: '#/examples/overflowgroup'
         },
         {

@@ -4,6 +4,7 @@
   position: relative;
   display: flex;
   flex-direction: horizontal;
+  flex-wrap: nowrap;
 }
 
 .item {
