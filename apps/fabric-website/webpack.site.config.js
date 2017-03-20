@@ -21,10 +21,9 @@ if (process.argv.indexOf('--production') > -1) {
 function createConfig(isProduction) {
   let minFileNamePart = isProduction ? '.min' : '';
   let webpackConfig = {
-    context: path.join(__dirname, '/lib'),
 
     entry: {
-      'fabric-site': './root.js'
+      'fabric-site': './lib/root.js'
     },
 
     output: {
@@ -33,8 +32,6 @@ function createConfig(isProduction) {
       filename: `[name]${minFileNamePart}.js`,
       chunkFilename: `fabric-site-[name]${minFileNamePart}.js`
     },
-
-    //devtool: 'source-map',
 
     devServer: {
       stats: 'none'
@@ -52,14 +49,13 @@ function createConfig(isProduction) {
     module: {
       noParse: [/autoit.js/],
 
-      preLoaders: [
+      loaders: [
         {
           test: /\.js$/,
-          loader: "source-map-loader"
+          loader: 'source-map-loader',
+          enforce: 'pre'
         }
       ],
-      loaders: [
-      ]
     },
 
     plugins: [

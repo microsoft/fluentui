@@ -24,10 +24,9 @@ if (IS_PRODUCTION) {
 // Helper to create the config.
 function createConfig(isProduction) {
   let webpackConfig = {
-    context: buildConfig.libFolder,
 
     entry: {
-      [BUNDLE_NAME]: './index.js',
+      [BUNDLE_NAME]: './lib/index.js',
     },
 
     output: {
@@ -38,14 +37,6 @@ function createConfig(isProduction) {
     },
 
     devtool: 'source-map',
-
-    devServer: {
-      stats: 'none'
-    },
-
-    resolve: {
-      root: path.resolve('./node_modules')
-    },
 
     externals: [
       {
