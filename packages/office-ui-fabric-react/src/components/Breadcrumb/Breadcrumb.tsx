@@ -11,7 +11,8 @@ import { ContextualMenu } from '../../ContextualMenu';
 import { Link } from '../../Link';
 import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import styles from './Breadcrumb.scss';
+
+let styles: any = require('./Breadcrumb.scss');
 
 export interface IBreadcrumbState {
   isOverflowOpen: boolean;

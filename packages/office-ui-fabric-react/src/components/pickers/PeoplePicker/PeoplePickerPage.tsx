@@ -8,7 +8,7 @@ import {
 } from '@uifabric/example-app-base';
 import { PeoplePickerTypesExample } from './examples/PeoplePicker.Types.Example';
 
-const PeoplePickerTypesExampleCode = require('./examples/PeoplePicker.Types.Example.tsx') as string;
+const PeoplePickerTypesExampleCode = require('raw-loader!./examples/PeoplePicker.Types.Example.tsx') as string;
 
 export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {

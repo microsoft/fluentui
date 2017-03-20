@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CodeBlock } from '../../components/CodeBlock/CodeBlock';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
-import styles from './GetStartedPage.module.scss';
+let styles: any = require('./GetStartedPage.module.scss');
 import diagramStyles from './GetStartedPage.diagram.module.scss';
 
 export class GetStartedPage extends React.Component<any, any> {

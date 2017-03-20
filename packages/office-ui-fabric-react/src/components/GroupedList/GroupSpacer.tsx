@@ -4,7 +4,7 @@ import * as React from 'react';
 import {
   css
 } from '../../Utilities';
-import styles from './GroupSpacer.scss';
+let styles: any = require('./GroupSpacer.scss');
 
 export interface IGroupSpacerProps {
   count: number;

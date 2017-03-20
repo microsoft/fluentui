@@ -3,7 +3,7 @@ import { CodeBlock } from '../../../components/CodeBlock/CodeBlock';
 import { PageHeader } from '../../../components/PageHeader/PageHeader';
 import { Table } from '../../../components/Table/Table';
 import { IconGrid } from '../../../components/IconGrid/IconGrid';
-import styles from './BrandIconsPage.module.scss';
+let styles: any = require('./BrandIconsPage.module.scss');
 import pageStyles from '../../PageStyles.module.scss';
 
 const svgResolutionData = require('json!../../../data/brand-icons-svg-resolutions.json');

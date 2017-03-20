@@ -8,8 +8,8 @@ import {
 import { SearchBoxSmallExample } from './examples/SearchBox.Small.Example';
 import { SearchBoxFullSizeExample } from './examples/SearchBox.FullSize.Example';
 
-const SearchBoxSmallExampleCode = require('./examples/SearchBox.Small.Example.tsx') as string;
-const SearchBoxFullSizeExampleCode = require('./examples/SearchBox.FullSize.Example.tsx') as string;
+const SearchBoxSmallExampleCode = require('raw-loader!./examples/SearchBox.Small.Example.tsx') as string;
+const SearchBoxFullSizeExampleCode = require('raw-loader!./examples/SearchBox.FullSize.Example.tsx') as string;
 
 export class SearchBoxPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {

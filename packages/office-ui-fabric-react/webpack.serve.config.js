@@ -4,7 +4,7 @@ let WebpackNotifierPlugin = require('webpack-notifier');
 const PACKAGE_NAME = require('./package.json').name;
 
 module.exports = {
-  entry: './src/components/Label/Label.tsx',
+  entry: './src/demo/index.tsx',
 
   output: {
     path: path.resolve(__dirname, 'dist'),

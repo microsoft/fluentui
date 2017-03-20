@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CodeBlock } from '../../../components/CodeBlock/CodeBlock';
 import { PageHeader } from '../../../components/PageHeader/PageHeader';
 import { Table } from '../../../components/Table/Table';
-import styles from './LayoutPage.module.scss';
+let styles: any = require('./LayoutPage.module.scss');
 import pageStyles from '../../PageStyles.module.scss';
 
 const visibilityData = require('json!../../../data/layout-visibility.json');
@@ -142,7 +142,7 @@ export class LayoutPage extends React.Component<any, any> {
         </div>
         <CodeBlock language='html' isLightTheme={ true }>
           {
-`<div class="ms-Grid"> 
+`<div class="ms-Grid">
   <div class="ms-Grid-row">
     <div class="ms-Grid-col ms-u-sm6 ms-u-md4 ms-u-lg2">A</div>
     <div class="ms-Grid-col ms-u-sm6 ms-u-md8 ms-u-lg10">B</div>

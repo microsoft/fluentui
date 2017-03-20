@@ -10,10 +10,10 @@ import { DialogLargeHeaderExample } from './examples/Dialog.LargeHeader.Example'
 import { DialogCloseExample } from './examples/Dialog.Close.Example';
 import { DialogBlockingExample } from './examples/Dialog.Blocking.Example';
 
-const DialogBasicExampleCode = require('./examples/Dialog.Basic.Example.tsx') as string;
-const DialogLargeHeaderExampleCode = require('./examples/Dialog.LargeHeader.Example.tsx') as string;
-const DialogCloseExampleCode = require('./examples/Dialog.Close.Example.tsx') as string;
-const DialogBlockingExampleCode = require('./examples/Dialog.Blocking.Example.tsx') as string;
+const DialogBasicExampleCode = require('raw-loader!./examples/Dialog.Basic.Example.tsx') as string;
+const DialogLargeHeaderExampleCode = require('raw-loader!./examples/Dialog.LargeHeader.Example.tsx') as string;
+const DialogCloseExampleCode = require('raw-loader!./examples/Dialog.Close.Example.tsx') as string;
+const DialogBlockingExampleCode = require('raw-loader!./examples/Dialog.Blocking.Example.tsx') as string;
 
 export class DialogPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {

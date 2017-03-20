@@ -9,9 +9,9 @@ import { PersonaInitialsExample } from './examples/Persona.Initials.Example';
 import { PersonaBasicExample } from './examples/Persona.Basic.Example';
 import { PersonaCustomRenderExample } from './examples/Persona.CustomRender.Example';
 
-const PersonaInitialsExampleCode = require('./examples/Persona.Initials.Example.tsx') as string;
-const PersonaBasicExampleCode = require('./examples/Persona.Basic.Example.tsx') as string;
-const PersonaCustomRenderExampleCode = require('./examples/Persona.CustomRender.Example.tsx') as string;
+const PersonaInitialsExampleCode = require('raw-loader!./examples/Persona.Initials.Example.tsx') as string;
+const PersonaBasicExampleCode = require('raw-loader!./examples/Persona.Basic.Example.tsx') as string;
+const PersonaCustomRenderExampleCode = require('raw-loader!./examples/Persona.CustomRender.Example.tsx') as string;
 
 export class PersonaPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {

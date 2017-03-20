@@ -10,10 +10,10 @@ import { NavFabricDemoAppExample } from './examples/Nav.FabricDemoApp.Example';
 import { NavNestedExample } from './examples/Nav.Nested.Example';
 import { NavByKeysExample } from './examples/Nav.ByKeys.Example';
 
-const NavBasicExampleCode = require('./examples/Nav.Basic.Example.tsx') as string;
-const NavFabricDemoAppExampleCode = require('./examples/Nav.FabricDemoApp.Example.tsx') as string;
-const NavNestedExampleCode = require('./examples/Nav.Nested.Example.tsx') as string;
-const NavByKeysExampleCode = require('./examples/Nav.ByKeys.Example.tsx') as string;
+const NavBasicExampleCode = require('raw-loader!./examples/Nav.Basic.Example.tsx') as string;
+const NavFabricDemoAppExampleCode = require('raw-loader!./examples/Nav.FabricDemoApp.Example.tsx') as string;
+const NavNestedExampleCode = require('raw-loader!./examples/Nav.Nested.Example.tsx') as string;
+const NavByKeysExampleCode = require('raw-loader!./examples/Nav.ByKeys.Example.tsx') as string;
 
 export class NavPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {

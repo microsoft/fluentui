@@ -2,7 +2,7 @@ import * as React from 'react';
 import { css } from '../../Utilities';
 import { IDocumentCardActionsProps } from './DocumentCard.Props';
 import { Button, ButtonType } from '../../Button';
-import styles from './DocumentCard.scss';
+let styles: any = require('./DocumentCard.scss');
 
 export class DocumentCardActions extends React.Component<IDocumentCardActionsProps, any> {
   public render() {

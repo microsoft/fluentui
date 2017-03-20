@@ -11,11 +11,11 @@ import { ContextualMenuDirectionalExample } from './examples/ContextualMenu.Dire
 import { ContextualMenuCustomizationExample } from './examples/ContextualMenu.Customization.Example';
 import { ContextualMenuHeaderExample } from './examples/ContextualMenu.Header.Example';
 
-const ContextualMenuBasicExampleCode = require('./examples/ContextualMenu.Basic.Example.tsx') as string;
-const ContextualMenuCheckmarksExampleCode = require('./examples/ContextualMenu.Checkmarks.Example.tsx') as string;
-const ContextualMenuDirectionalExampleCode = require('./examples/ContextualMenu.Directional.Example.tsx') as string;
-const ContextualMenuCustomizationExampleCode = require('./examples/ContextualMenu.Customization.Example.tsx') as string;
-const ContextualMenuHeaderExampleCode = require('./examples/ContextualMenu.Header.Example.tsx') as string;
+const ContextualMenuBasicExampleCode = require('raw-loader!./examples/ContextualMenu.Basic.Example.tsx') as string;
+const ContextualMenuCheckmarksExampleCode = require('raw-loader!./examples/ContextualMenu.Checkmarks.Example.tsx') as string;
+const ContextualMenuDirectionalExampleCode = require('raw-loader!./examples/ContextualMenu.Directional.Example.tsx') as string;
+const ContextualMenuCustomizationExampleCode = require('raw-loader!./examples/ContextualMenu.Customization.Example.tsx') as string;
+const ContextualMenuHeaderExampleCode = require('raw-loader!./examples/ContextualMenu.Header.Example.tsx') as string;
 
 export class ContextualMenuPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {

@@ -11,7 +11,7 @@
   },
   "author": "",
   "devDependencies": {
-    "@microsoft/web-library-build": ">=2.0.0 <3.0.0",
+    "@microsoft/web-library-build": ">=3.0.0-0 <4.0.0-0",
     "@microsoft/load-themed-styles": "^1.2.2",
     "@types/chai": "^3.4.35",
     "@types/enzyme": "^2.7.5",

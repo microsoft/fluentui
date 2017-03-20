@@ -1,7 +1,9 @@
-.dropdown-div {
-  width: 200px;
-}
+:global {
+  .dropdown-div {
+    width: 200px;
+  }
 
-.ms-PeoplePicker {
-  width: 100%;
+  .ms-PeoplePicker {
+    width: 100%;
+  }
 }

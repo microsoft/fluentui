@@ -30,7 +30,7 @@ import {
   SelectionZone
 } from '../../utilities/selection/index';
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
-import styles from './DetailsList.scss';
+let styles: any = require('./DetailsList.scss');
 
 export interface IDetailsListState {
   lastWidth?: number;

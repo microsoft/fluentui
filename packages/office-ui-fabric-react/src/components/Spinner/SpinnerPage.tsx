@@ -7,7 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { SpinnerBasicExample } from './examples/Spinner.Basic.Example';
 
-const SpinnerBasicExampleCode = require('./examples/Spinner.Basic.Example.tsx') as string;
+const SpinnerBasicExampleCode = require('raw-loader!./examples/Spinner.Basic.Example.tsx') as string;
 
 export class SpinnerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {

@@ -3,7 +3,7 @@ import { CodeBlock } from '../../../components/CodeBlock/CodeBlock';
 import { PageHeader } from '../../../components/PageHeader/PageHeader';
 import { Table } from '../../../components/Table/Table';
 import pageStyles from '../../PageStyles.module.scss';
-import styles from './LocalizationPage.module.scss';
+let styles: any = require('./LocalizationPage.module.scss');
 
 const directionalIconsData = require('json!../../../data/directional-icons.json');
 const localizedFontsData = require('json!../../../data/localized-fonts.json');

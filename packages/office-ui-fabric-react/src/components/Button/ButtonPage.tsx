@@ -16,13 +16,13 @@ import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Exampl
 import { IButtonDemoPageState } from './examples/IButtonDemoPageState';
 import './examples/Button.Basic.Example.scss';
 
-const ButtonDefaultExampleCode = require('./examples/Button.Default.Example.tsx') as string;
-const ButtonPrimaryExampleCode = require('./examples/Button.Primary.Example.tsx') as string;
-const ButtonCompoundExampleCode = require('./examples/Button.Compound.Example.tsx') as string;
-const ButtonCommandExampleCode = require('./examples/Button.Command.Example.tsx') as string;
-const ButtonIconExampleCode = require('./examples/Button.Icon.Example.tsx') as string;
-const ButtonAnchorExampleCode = require('./examples/Button.Anchor.Example.tsx') as string;
-const ButtonScreenReaderExampleCode = require('./examples/Button.ScreenReader.Example.tsx') as string;
+const ButtonDefaultExampleCode = require('raw-loader!./examples/Button.Default.Example.tsx') as string;
+const ButtonPrimaryExampleCode = require('raw-loader!./examples/Button.Primary.Example.tsx') as string;
+const ButtonCompoundExampleCode = require('raw-loader!./examples/Button.Compound.Example.tsx') as string;
+const ButtonCommandExampleCode = require('raw-loader!./examples/Button.Command.Example.tsx') as string;
+const ButtonIconExampleCode = require('raw-loader!./examples/Button.Icon.Example.tsx') as string;
+const ButtonAnchorExampleCode = require('raw-loader!./examples/Button.Anchor.Example.tsx') as string;
+const ButtonScreenReaderExampleCode = require('raw-loader!./examples/Button.ScreenReader.Example.tsx') as string;
 
 export class ButtonPage extends React.Component<IComponentDemoPageProps, IButtonDemoPageState> {
   constructor() {

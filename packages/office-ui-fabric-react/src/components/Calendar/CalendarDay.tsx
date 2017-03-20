@@ -10,7 +10,7 @@ import {
 import { DayOfWeek, ICalendarStrings } from './Calendar.Props';
 import { FocusZone } from '../../FocusZone';
 import { addDays, addWeeks, addMonths, compareDates } from '../../utilities/dateMath/DateMath';
-import styles from './Calendar.scss';
+let styles: any = require('./Calendar.scss');
 
 const DAYS_IN_WEEK = 7;
 

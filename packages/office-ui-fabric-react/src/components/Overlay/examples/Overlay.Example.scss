@@ -1,9 +1,13 @@
-.OverlayExample-content {
-  position: absolute;
-  background: blue;
-  color: white;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+:global {
+
+  .OverlayExample-content {
+    position: absolute;
+    background: blue;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
 }

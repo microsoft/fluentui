@@ -15,15 +15,15 @@ import { PivotOnChangeExample } from './examples/Pivot.OnChange.Example';
 import { PivotRemoveExample } from './examples/Pivot.Remove.Example';
 import { PivotOverrideExample } from './examples/Pivot.Override.Example';
 
-const PivotRemoveExampleCode = require('./examples/Pivot.Remove.Example.tsx') as string;
-const PivotBasicExampleCode = require('./examples/Pivot.Basic.Example.tsx') as string;
-const PivotLargeExampleCode = require('./examples/Pivot.Large.Example.tsx') as string;
-const PivotTabsExampleCode = require('./examples/Pivot.Tabs.Example.tsx') as string;
-const PivotTabsLargesExampleCode = require('./examples/Pivot.TabsLarge.Example.tsx') as string;
-const PivotFabricExampleCode = require('./examples/Pivot.Fabric.Example.tsx') as string;
-const PivotOnChangeExampleCode = require('./examples/Pivot.OnChange.Example.tsx') as string;
-const PivotIconCountExampleCode = require('./examples/Pivot.IconCount.Example.tsx') as string;
-const PivotOverrideExampleCode = require('./examples/Pivot.Override.Example.tsx') as string;
+const PivotRemoveExampleCode = require('raw-loader!./examples/Pivot.Remove.Example.tsx') as string;
+const PivotBasicExampleCode = require('raw-loader!./examples/Pivot.Basic.Example.tsx') as string;
+const PivotLargeExampleCode = require('raw-loader!./examples/Pivot.Large.Example.tsx') as string;
+const PivotTabsExampleCode = require('raw-loader!./examples/Pivot.Tabs.Example.tsx') as string;
+const PivotTabsLargesExampleCode = require('raw-loader!./examples/Pivot.TabsLarge.Example.tsx') as string;
+const PivotFabricExampleCode = require('raw-loader!./examples/Pivot.Fabric.Example.tsx') as string;
+const PivotOnChangeExampleCode = require('raw-loader!./examples/Pivot.OnChange.Example.tsx') as string;
+const PivotIconCountExampleCode = require('raw-loader!./examples/Pivot.IconCount.Example.tsx') as string;
+const PivotOverrideExampleCode = require('raw-loader!./examples/Pivot.Override.Example.tsx') as string;
 
 export class PivotPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {

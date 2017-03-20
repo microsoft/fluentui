@@ -17,7 +17,7 @@ import {
   IDragDropOptions,
 } from './../../utilities/dragdrop/interfaces';
 import { IViewport } from '../../utilities/decorators/withViewport';
-import styles from './DetailsRow.scss';
+let styles: any = require('./DetailsRow.scss');
 import { IDisposable } from '@uifabric/utilities';
 
 export interface IDetailsRowProps extends React.Props<DetailsRow> {

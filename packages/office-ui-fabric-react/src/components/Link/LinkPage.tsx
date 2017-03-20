@@ -7,7 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { LinkBasicExample } from './examples/Link.Basic.Example';
 
-let LinkBasicExampleCode = require('./examples/Link.Basic.Example.tsx') as string;
+let LinkBasicExampleCode = require('raw-loader!./examples/Link.Basic.Example.tsx') as string;
 
 export class LinkPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {

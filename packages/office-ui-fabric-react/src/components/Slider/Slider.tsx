@@ -10,7 +10,7 @@ import {
 } from '../../Utilities';
 import { ISliderProps, ISlider } from './Slider.Props';
 import { Label } from '../../Label';
-import styles from './Slider.scss';
+let styles: any = require('./Slider.scss');
 
 export interface ISliderState {
   value?: number;

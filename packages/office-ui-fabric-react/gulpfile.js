@@ -26,7 +26,10 @@ build.tslint.setConfig({ lintConfig: { rules } });
 build.typescript.setConfig({ typescript: require('typescript') });
 
 // Use css modules.
-build.sass.setConfig({ useCSSModules: true });
+build.sass.setConfig({
+  useCSSModules: true,
+  moduleExportName: ''
+});
 
 // Use Karma Tests - Disable during develoment if prefered
 build.karma.isEnabled = () => true;
@@ -63,7 +66,6 @@ if (isProduction || isNuke) {
 // Disable certain subtasks in non production builds to speed up serve.
 build.tslint.isEnabled = () => isProduction;
 build.webpack.isEnabled = () => isProduction;
-build.clean.isEnabled = () => isProduction;
 
 // Short aliases for subtasks.
 build.task('webpack', build.webpack);

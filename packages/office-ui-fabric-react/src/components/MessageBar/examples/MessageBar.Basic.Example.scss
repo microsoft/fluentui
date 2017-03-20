@@ -1,3 +1,5 @@
-.ms-BasicMessageBarsExample .ms-MessageBar {
-  margin: 10px 0;
+:global {
+  .ms-BasicMessageBarsExample .ms-MessageBar {
+    margin: 10px 0;
+  }
 }

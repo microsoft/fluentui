@@ -9,9 +9,9 @@ import { DocumentCardBasicExample } from './examples/DocumentCard.Basic.Example'
 import { DocumentCardCompleteExample } from './examples/DocumentCard.Complete.Example';
 import { DocumentCardCompactExample } from './examples/DocumentCard.Compact.Example';
 
-const DocumentCardBasicExampleCode = require('./examples/DocumentCard.Basic.Example.tsx') as string;
-const DocumentCardCompleteExampleCode = require('./examples/DocumentCard.Complete.Example.tsx') as string;
-const DocumentCardCompactExampleCode = require('./examples/DocumentCard.Compact.Example.tsx') as string;
+const DocumentCardBasicExampleCode = require('raw-loader!./examples/DocumentCard.Basic.Example.tsx') as string;
+const DocumentCardCompleteExampleCode = require('raw-loader!./examples/DocumentCard.Complete.Example.tsx') as string;
+const DocumentCardCompactExampleCode = require('raw-loader!./examples/DocumentCard.Compact.Example.tsx') as string;
 
 export class DocumentCardPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {

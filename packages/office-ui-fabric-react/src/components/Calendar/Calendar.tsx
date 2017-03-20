@@ -12,7 +12,7 @@ import {
   BaseComponent,
   KeyCodes
 } from '../../Utilities';
-import styles from './Calendar.scss';
+let styles: any = require('./Calendar.scss');
 
 export interface ICalendarState {
   /** The currently focused date in the calendar, but not necessarily selected */

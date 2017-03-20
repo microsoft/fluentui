@@ -15,15 +15,15 @@ import { PanelExtraLargeExample } from './examples/Panel.ExtraLarge.Example';
 import { PanelLightDismissExample } from './examples/Panel.LightDismiss.Example';
 import { PanelNonModalExample } from './examples/Panel.NonModal.Example';
 
-const PanelSmallRightExampleCode = require('./examples/Panel.SmallRight.Example.tsx') as string;
-const PanelSmallLeftExampleCode = require('./examples/Panel.SmallLeft.Example.tsx') as string;
-const PanelSmallFluidExampleCode = require('./examples/Panel.SmallFluid.Example.tsx') as string;
-const PanelMediumExampleCode = require('./examples/Panel.Medium.Example.tsx') as string;
-const PanelLargeExampleCode = require('./examples/Panel.Large.Example.tsx') as string;
-const PanelLargeFixedExampleCode = require('./examples/Panel.LargeFixed.Example.tsx') as string;
-const PanelExtraLargeExampleCode = require('./examples/Panel.ExtraLarge.Example.tsx') as string;
-const PanelLightDismissExampleCode = require('./examples/Panel.LightDismiss.Example.tsx') as string;
-const PanelNonModalExampleCode = require('./examples/Panel.NonModal.Example.tsx') as string;
+const PanelSmallRightExampleCode = require('raw-loader!./examples/Panel.SmallRight.Example.tsx') as string;
+const PanelSmallLeftExampleCode = require('raw-loader!./examples/Panel.SmallLeft.Example.tsx') as string;
+const PanelSmallFluidExampleCode = require('raw-loader!./examples/Panel.SmallFluid.Example.tsx') as string;
+const PanelMediumExampleCode = require('raw-loader!./examples/Panel.Medium.Example.tsx') as string;
+const PanelLargeExampleCode = require('raw-loader!./examples/Panel.Large.Example.tsx') as string;
+const PanelLargeFixedExampleCode = require('raw-loader!./examples/Panel.LargeFixed.Example.tsx') as string;
+const PanelExtraLargeExampleCode = require('raw-loader!./examples/Panel.ExtraLarge.Example.tsx') as string;
+const PanelLightDismissExampleCode = require('raw-loader!./examples/Panel.LightDismiss.Example.tsx') as string;
+const PanelNonModalExampleCode = require('raw-loader!./examples/Panel.NonModal.Example.tsx') as string;
 
 export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {

@@ -4,7 +4,7 @@ import * as React from 'react';
 import { css } from '../../../Utilities';
 import { IPickerItemProps } from '../PickerItem.Props';
 import { ITag } from './TagPicker';
-import styles from './TagItem.scss';
+let styles: any = require('./TagItem.scss');
 
 export const TagItem = (props: IPickerItemProps<ITag>) => (
   <div

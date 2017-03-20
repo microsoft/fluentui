@@ -9,7 +9,7 @@ import {
   anchorProperties
 } from '../../Utilities';
 import { IButtonProps, IButton } from './Button.Props';
-import styles from './BaseButton.scss';
+let styles: any = require('./BaseButton.scss');
 
 export interface IBaseButtonClassNames {
   base: string;

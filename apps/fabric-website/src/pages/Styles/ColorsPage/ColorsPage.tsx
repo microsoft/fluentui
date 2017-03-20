@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ColorTable } from '../../../components/ColorTable/ColorTable';
 import { PageHeader } from '../../../components/PageHeader/PageHeader';
 import { Table } from '../../../components/Table/Table';
-import styles from './ColorsPage.module.scss';
+let styles: any = require('./ColorsPage.module.scss');
 import pageStyles from '../../PageStyles.module.scss';
 import { baseURL } from '../../../appConfig';
 

@@ -5,7 +5,7 @@ import {
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { CommandButton } from '../../Button';
-import styles from './Nav.scss';
+let styles: any = require('./Nav.scss');
 
 import {
   INav,
