@@ -2,6 +2,7 @@
 // 'use strict';
 
 export class Ease {
+  private static CB = 'cubic-bezier';
 
   public static QUAD_EASE_IN: string = Ease.CB + '(0.550, 0.085, 0.680, 0.530)';
   public static CUBIC_EASE_IN: string = Ease.CB + '(0.550, 0.055, 0.675, 0.190)';
@@ -29,6 +30,4 @@ export class Ease {
   public static EXPO_EASE_IN_OUT: string = Ease.CB + '(1, 0, 0, 1)';
   public static CIRC_EASE_IN_OUT: string = Ease.CB + '(0.785, 0.135, 0.150, 0.860)';
   public static BACK_EASE_IN_OUT: string = Ease.CB + '(0.680, -0.550, 0.265, 1.550)';
-
-  private static CB = 'cubic-bezier';
 }
