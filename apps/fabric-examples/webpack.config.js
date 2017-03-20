@@ -21,10 +21,8 @@ let configs = [
 function createConfig(isProduction) {
   let minFileNamePart = isProduction ? '.min' : '';
   let webpackConfig = {
-    context: path.join(__dirname, buildConfig.libFolder),
-
     entry: {
-      [BUNDLE_NAME]: './index.js'
+      [BUNDLE_NAME]: './lib/index.js'
     },
 
     output: {
@@ -51,10 +49,11 @@ function createConfig(isProduction) {
 
     module: {
       noParse: [/autoit.js/],
-      preLoaders: [
+      loaders: [
         {
           test: /\.js$/,
-          loader: "source-map-loader"
+          loader: 'source-map-loader',
+          enforce: 'pre'
         }
       ]
     },
