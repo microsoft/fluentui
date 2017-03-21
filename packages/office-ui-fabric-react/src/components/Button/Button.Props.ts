@@ -93,12 +93,6 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
   rootProps?: React.HTMLProps<HTMLButtonElement> | React.HTMLProps<HTMLAnchorElement>;
 }
 
-export enum MenuType {
-  default = 0,
-  none = 1,
-  chevron = 2
-}
-
 export enum ElementType {
   /** <button> element. */
   button = 0,
