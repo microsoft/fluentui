@@ -198,8 +198,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
 
     // Navigate to next or previous month if needed
-    if (autoNavigateOnSelection && selectedDate.getMonth() != navigatedDate.getMonth()) {
-      var compareResult = compareDatePart(selectedDate, navigatedDate);
+    if (autoNavigateOnSelection && selectedDate.getMonth() !== navigatedDate.getMonth()) {
+      let compareResult = compareDatePart(selectedDate, navigatedDate);
       if (compareResult < 0) {
         this._onSelectPrevMonth();
       } else if (compareResult > 0) {
