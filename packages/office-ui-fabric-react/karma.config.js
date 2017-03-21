@@ -35,14 +35,16 @@ module.exports = function (config) {
         loaders: [
           {
             test: /sinon\.js$/,
-            loader: 'imports?define=>false'
+            loader: 'imports?define=>false',
+            enforce: 'pre'
+          },
+          debugRun ? {} : {
+            test: /\.js/,
+            exclude: /(test|node_modules|bower_components)/,
+            loader: configResources.istanbulInstrumenterLoaderPath,
+            enforce: 'post'
           }
         ],
-        postLoaders: debugRun ? null : [{
-          test: /\.js/,
-          exclude: /(test|node_modules|bower_components)/,
-          loader: configResources.istanbulInstrumenterLoaderPath
-        }]
       },
       externals: {
         'cheerio': 'window',
@@ -51,8 +53,7 @@ module.exports = function (config) {
         'react/lib/ReactContext': true
       },
       resolve: {
-        modulesDirectories: [
-          '',
+        modules: [
           buildConfig.libFolder,
           'node_modules'
         ]

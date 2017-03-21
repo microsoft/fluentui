@@ -30,10 +30,9 @@ function createConfig(isProduction, publicPath) {
   let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
   let minFileNamePart = isProduction ? '.min' : '';
   let webpackConfig = {
-    context: path.join(__dirname, '/lib'),
 
     entry: {
-      'fabric-site': './root.js'
+      'fabric-site': './lib/root.js'
     },
 
     output: {
@@ -42,8 +41,6 @@ function createConfig(isProduction, publicPath) {
       filename: `[name]${minFileNamePart}.js?date=` + date,
       chunkFilename: `fabric-site-[name]${minFileNamePart}.js?date=` + date
     },
-
-    //devtool: 'source-map',
 
     devServer: {
       stats: 'none'
@@ -61,14 +58,13 @@ function createConfig(isProduction, publicPath) {
     module: {
       noParse: [/autoit.js/],
 
-      preLoaders: [
+      loaders: [
         {
           test: /\.js$/,
-          loader: "source-map-loader"
+          loader: 'source-map-loader',
+          enforce: 'pre'
         }
       ],
-      loaders: [
-      ]
     },
 
     plugins: [

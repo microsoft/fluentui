@@ -1,6 +1,6 @@
 {
   "extends": [
-    "./node_modules/@microsoft/gulp-core-build-typescript/lib/defaultTslint.json"
+    "../../tslint.json"
   ],
   "rules": {
     "max-line-length": [
