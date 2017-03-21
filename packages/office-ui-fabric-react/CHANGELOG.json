@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "2.5.3",
+      "tag": "office-ui-fabric-react_v2.5.3",
+      "date": "Tue, 21 Mar 2017 03:20:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "03d8caef8ff28f90b923ea3a1f0722690ddc4748",
+            "comment": "Nav: Fixing an issue where the default expand state for a group was not initialized correctly, resulting in having to click multiple times to collapse a group."
+          },
+          {
+            "author": "Ricky Patel <rickyp@microsoft.com>",
+            "commit": "fa2a1be1f95cc5e570bb5341cab66fed15a554bb",
+            "comment": "Facepile has an excess margin of 4px below it which needs to be removed. It also uses float's which is pretty retro!"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.5.2",
       "tag": "office-ui-fabric-react_v2.5.2",
       "date": "Fri, 17 Mar 2017 18:01:45 GMT",
