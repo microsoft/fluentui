@@ -17,15 +17,14 @@
   "devDependencies": {
     "@microsoft/load-themed-styles": "^1.2.2",
     "@microsoft/web-library-build": ">=2.0.0 <3.0.0",
-    "@types/chai": "^3.4.34",
-    "@types/es6-promise": "0.0.32",
-    "@types/mocha": "^2.2.32",
-    "@types/node": "^6.0.45",
-    "@types/react": "^0.14.57",
-    "@types/react-addons-test-utils": "^0.14.15",
-    "@types/webpack-env": "^1.13.0",
+    "@types/chai": "^3.4.35",
+    "@types/enzyme": "^2.7.5",
+    "@types/es6-promise": "^0.0.32",
+    "@types/mocha": "^2.2.39",
+    "@types/react": "^15.0.16",
+    "@types/react-addons-test-utils": "^0.14.17",
     "@types/react-dom": "^0.14.23",
-    "@types/webpack": "^1.12.35",
+    "@types/webpack-env": "^1.13.0",
     "fabric-examples": ">=1.0.2 <2.0.0",
     "es6-promise": "3.2.1",
     "git-rev": "0.2.1",
@@ -37,7 +36,9 @@
     "highlight.js": "9.6.0",
     "mocha": "~2.5.3",
     "orchestrator": "^0.3.7",
-    "react-addons-test-utils": "^15.1.0",
+    "react": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.4.2",
     "react-highlight": "0.8.0",
     "source-map-loader": "0.1.5",
     "tslint": "^3.15.1",
@@ -46,16 +47,12 @@
     "vinyl-ftp": "0.4.5",
     "webpack-bundle-analyzer": "^2.2.1"
   },
-  "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.1",
-    "react-dom": "^0.14.0 || ^15.0.1"
-  },
   "dependencies": {
     "color-functions": "1.1.0",
     "json-loader": "^0.5.4",
     "load-themed-styles": "~1.1.0",
     "office-ui-fabric-core": "5.1.0",
-    "office-ui-fabric-react": "^2.5.0",
+    "office-ui-fabric-react": "^2.5.3",
     "@uifabric/utilities": ">=1.2.0 <2.0.0"
   }
 }

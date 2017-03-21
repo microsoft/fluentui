@@ -36,9 +36,8 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   position: relative;
 }
 
-button.cell {
+.cell {
   @include ms-font-s;
-
   background: transparent;
   color: $disabledForegroundColor;
   @include focus-border();
@@ -80,6 +79,7 @@ button.cell {
   &.cellIsSizer {
     position: absolute;
     width: 16px;
+
     @include margin-left(-10px);
     cursor: ew-resize;
     bottom: 0;

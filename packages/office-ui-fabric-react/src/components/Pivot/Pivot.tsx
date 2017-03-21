@@ -120,7 +120,7 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
     const { itemKey } = link;
     const tabId = this._keyToTabIds[itemKey];
     const { onRenderItemLink } = link;
-    let linkContent: JSX.Element;
+    let linkContent: JSX.Element | false;
 
     if (onRenderItemLink) {
       linkContent = onRenderItemLink(link, this._renderLinkContent);
