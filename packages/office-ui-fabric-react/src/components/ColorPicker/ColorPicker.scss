@@ -1,24 +1,24 @@
 @import '../../common/common';
 
-.ms-ColorPicker {
+.root {
   position: relative;
   max-width: 300px;
 }
 
-.ms-ColorPicker-panel {
+.panel {
   padding: 16px;
 }
 
-.ms-ColorPicker-colorRect {
+.colorRect {
   position: relative;
   margin-bottom: 10px;
 }
 
-.ms-ColorPicker-rectContainer {
+.rectContainer {
   position: relative;
 }
 
-.ms-ColorPicker-capture {
+.capture {
   position: absolute;
   left: 0;
   top: 0;
@@ -27,11 +27,11 @@
   background: rgba(255,0,0,.1);
 }
 
-.ms-ColorPicker-rectContainer.is-adjusting .ms-ColorPicker-capture {
+.rectContainer.rectContainerIsAdjusting .capture {
   position: fixed;
 }
 
-.ms-ColorPicker-thumb {
+.thumb {
   position: absolute;
   width: 20px;
   height: 20px;
@@ -41,12 +41,12 @@
   box-shadow: 0 0 15px -5px black;
   transform: translate(-50%, -50%);
 
-  &.is-slider {
+  &.thumbIsSlider {
     top: 50%;
   }
 }
 
-.ms-ColorPicker-light {
+.light {
   position: absolute;
   left: 0;
   right: 0;
@@ -55,7 +55,7 @@
   background: linear-gradient(to right, white 0%, transparent 100%);
 }
 
-.ms-ColorPicker-dark {
+.dark {
   position: absolute;
   left: 0;
   right: 0;
@@ -64,23 +64,23 @@
   background: linear-gradient(to bottom, transparent 0, #000 100%);
 }
 
-.ms-ColorPicker-slider {
+.slider {
   position: relative;
   height: 20px;
   margin-bottom: 5px;
   border: 1px solid $ms-color-neutralLight;
   box-sizing: border-box;
 
-  &.is-hue {
+  &.colorSliderIsHue {
     background: linear-gradient(to left,red 0,#f09 10%,#cd00ff 20%,#3200ff 30%,#06f 40%,#00fffd 50%,#0f6 60%,#35ff00 70%,#cdff00 80%,#f90 90%,red 100%);
   }
 
-  &.is-alpha {
+  &.colorSliderIsAlpha {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJUlEQVQYV2N89erVfwY0ICYmxoguxjgUFKI7GsTH5m4M3w1ChQC1/Ca8i2n1WgAAAABJRU5ErkJggg==);
   }
-
 }
-.ms-ColorPicker-sliderOverlay {
+
+.sliderOverlay {
   content: '';
   position: absolute;
   left: 0;
@@ -89,18 +89,19 @@
   bottom: 0;
 }
 
-.ms-ColorPicker-input {
+.input {
   width: 100%;
   border: none;
   box-sizing: border-box;
   height: 30px;
+
+  &:global(.ms-TextField) {
+    padding-right: 2px;
+  }
+
+  .input &:global(.ms-TextField-field) {
+    min-width: auto;
+    padding: 5px;
+  }
 }
 
-.ms-ColorPicker-input.ms-TextField {
-  padding-right: 2px;
-}
-
-.ms-ColorPicker-input .ms-TextField-field {
-  min-width: auto;
-  padding: 5px;
-}

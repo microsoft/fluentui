@@ -11,63 +11,62 @@
 $SearchBox-field-padding-left: 10px;
 $SearchBox-height: 36px;
 
-.ms-SearchBox {
+.root {
   @include ms-font-m;
   @include ms-normalize;
   color: $ms-color-neutralPrimary;
   position: relative;
   margin-bottom: 10px;
   border: 1px solid $ms-color-themeTertiary;
+}
 
-  &.is-active {
+.root:hover {
+  .field {
     border-color: $ms-color-themeDarker;
-
-    .ms-SearchBox-field {
-      @include padding-left(8px);
-    }
-
-    .ms-SearchBox-icon {
-      display: none;
-    }
   }
 
-  // State: Disabled searchbox
-  &.is-disabled {
-    border-color: $ms-color-neutralLighter;
+  .label {
+    color: $ms-color-black;
 
-    .ms-SearchBox-icon {
-      color: $ms-color-neutralTertiaryAlt;
-    }
-
-    .ms-SearchBox-field {
-      background-color: $ms-color-neutralLighter;
-      pointer-events: none;
-      cursor: default;
-    }
-  }
-
-  // State: Active searchbox
-  &.can-clear .ms-SearchBox-clearButton {
-    display: block;
-  }
-
-  &:hover {
-
-    .ms-SearchBox-field {
-      border-color: $ms-color-themeDarker;
-    }
-
-    .ms-SearchBox-label {
-      color: $ms-color-black;
-
-      .ms-SearchBox-icon {
-        color:$ms-color-themeDarker;
-      }
+    .icon {
+      color:$ms-color-themeDarker;
     }
   }
 }
 
-input.ms-SearchBox-field {
+// State: Active searchbox
+.rootIsActive {
+  border-color: $ms-color-themeDarker;
+
+  .field {
+    @include padding-left(8px);
+  }
+
+  .icon {
+    display: none;
+  }
+}
+
+ // State: Disabled searchbox
+.rootIsDisabled {
+  border-color: $ms-color-neutralLighter;
+
+  .icon {
+    color: $ms-color-neutralTertiaryAlt;
+  }
+
+  .field {
+    background-color: $ms-color-neutralLighter;
+    pointer-events: none;
+    cursor: default;
+  }
+}
+
+.rootCanClear .clearButton {
+  display: block;
+}
+
+.field {
   position: relative;
   @include ms-normalize;
   border: none;
@@ -90,7 +89,7 @@ input.ms-SearchBox-field {
   }
 }
 
-.ms-SearchBox-clearButton {
+.clearButton {
   display: none;
   border: none;
   cursor: pointer;
@@ -110,7 +109,7 @@ input.ms-SearchBox-field {
   font-size: 16px;
 }
 
-.ms-SearchBox-icon {
+.icon {
   font-size: $ms-font-size-l;
   color: $ms-color-neutralSecondaryAlt;
   position: absolute;

@@ -17,7 +17,7 @@ export class DropdownBasicExample extends React.Component<any, any> {
       <div className='ms-DropdownBasicExample'>
 
         <Dropdown
-          label='Basic example:'
+          label='Basic uncontrolled example:'
           id='Basicdrop1'
           ariaLabel='Basic dropdown example'
           options={
@@ -34,12 +34,10 @@ export class DropdownBasicExample extends React.Component<any, any> {
               { key: 'J', text: 'Option j' },
             ]
           }
-          onChanged={ (item) => this.setState({ selectedItem: item }) }
         />
-        <div>{ `Item selected: ${selectedItem ? selectedItem.text : '<none>'}` }</div>
 
         <Dropdown
-          label='Disabled example:'
+          label='Disabled uncontrolled example with defaultSelectedKey:'
           defaultSelectedKey='D'
           options={
             [
@@ -54,8 +52,36 @@ export class DropdownBasicExample extends React.Component<any, any> {
           }
           disabled={ true }
         />
+
+        <Dropdown
+          label='Controlled example:'
+          selectedKey={ selectedItem && selectedItem.key }
+          onChanged={ (item) => this.setState({ selectedItem: item }) }
+          options={
+            [
+              { key: 'A', text: 'Option a' },
+              { key: 'B', text: 'Option b' },
+              { key: 'C', text: 'Option c' },
+              { key: 'D', text: 'Option d' },
+              { key: 'E', text: 'Option e' },
+              { key: 'F', text: 'Option f' },
+              { key: 'G', text: 'Option g' },
+            ]
+          }
+        />
+
       </div>
+
     );
+  }
+
+  public makeList(items) {
+    let list = [];
+    for (let i = 0; i < items; i++) {
+      list.push({ key: i, text: 'Option ' + i });
+    }
+
+    return list;
   }
 
 }

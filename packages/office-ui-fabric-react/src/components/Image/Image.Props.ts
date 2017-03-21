@@ -2,9 +2,17 @@ import * as React from 'react';
 
 export interface IImageProps extends React.HTMLProps<HTMLImageElement> {
   /**
-   * If true, adds the css class 'is-fadeIn' to the image.
+   * If true, fades the image in when loaded.
+   * @defaultvalue false;
    */
   shouldFadeIn?: boolean;
+
+  /**
+   * If true, the image starts as visible and is hidden on error. Otherwise, the image is hidden until
+   * it is successfully loaded. This disables shouldFadeIn.
+   * @defaultvalue false;
+   */
+  shouldStartVisible?: boolean;
 
   /**
    * If provided, adds the indicated css class to the image.
@@ -14,14 +22,15 @@ export interface IImageProps extends React.HTMLProps<HTMLImageElement> {
   /**
    * Used to determine how the image is scaled and cropped to fit the frame.
    *
-   * @default If both dimensions are provided, then the image is fit using ImageFit.scale. Otherwise, the image won't be scaled or cropped.
+   * @defaultvalue If both dimensions are provided, then the image is fit using ImageFit.scale. Otherwise, the
+   * image won't be scaled or cropped.
    */
   imageFit?: ImageFit;
 
   /**
    * @deprecated
    * Deprecated at v1.3.6, to be removed at >= v2.0.0.
-   * To replace the src in case of errors, use onLoadingStateChange instead and rerender the Image with a 
+   * To replace the src in case of errors, use onLoadingStateChange instead and rerender the Image with a
    * difference src.
    */
   errorSrc?: string;
@@ -86,7 +95,7 @@ export enum ImageLoadState {
   /**
    * @deprecated
    * Deprecated at v1.3.6, to be removed at >= v2.0.0.
-   * To replace the src in case of errors, use onLoadingStateChange instead and rerender the Image with a 
+   * To replace the src in case of errors, use onLoadingStateChange instead and rerender the Image with a
    * difference src.
    */
   errorLoaded = 3

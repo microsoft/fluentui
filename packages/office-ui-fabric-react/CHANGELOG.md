@@ -1,6 +1,266 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 14 Feb 2017 04:12:27 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Mar 2017 18:01:45 GMT and should not be manually modified.
+
+## 2.5.2
+Fri, 17 Mar 2017 18:01:45 GMT
+
+### Patches
+
+- DetailsList: header sizing fixed (was a css selector tweak that caused the issue.) Also added `iconName` to IColumn to specify an iconName like "Mail". The `iconClassName` property is still preserved, but is piped into the className of the Icon component.
+
+## 2.5.1
+Fri, 17 Mar 2017 03:05:52 GMT
+
+### Patches
+
+- ChoiceGroup component: Distinguishes HC border from focus border, removes double stroke, refactors to use common mixin
+- List: Add aria list role
+
+## 2.5.0
+Thu, 16 Mar 2017 03:05:54 GMT
+
+### Minor changes
+
+- DocumentCard: Add aria role and keyboard handling
+- Panel: Added sticky footer section and broke each panel region into seperate onRender fucntion. 
+
+### Patches
+
+- FocusZone: Spacebar no longer scrolls page when in focuszone or selectionzone, and acts as selecting action
+- DetailsList: headers now have the correct font applied and use a transparent background to fix the IE11 styling, which doesn't like "inherit".
+- TextField: Fix for multiple onChanged calls
+
+## 2.4.0
+Wed, 15 Mar 2017 03:06:37 GMT
+
+### Minor changes
+
+- DetailsList: adding `onColumnResize` callback which wil execute when a column is being resized.
+
+## 2.3.0
+Tue, 14 Mar 2017 03:15:10 GMT
+
+### Minor changes
+
+- PeoplePicker: Add rendering overrides
+
+### Patches
+
+- TextField component: hiding -ms-clear pseudo-element for bug #1216
+
+## 2.2.1
+Sat, 11 Mar 2017 04:11:58 GMT
+
+### Patches
+
+- Pivot: selected underline is now visible in high contrast mode.
+
+## 2.2.0
+Fri, 10 Mar 2017 20:41:04 GMT
+
+### Minor changes
+
+- Dropdown: Adding a required property which will be passed into the Label.
+- Adjusting React peer dependency to include v16.0.0-0 in the acceptable range for testing with v16.
+
+## 2.1.1
+Fri, 10 Mar 2017 16:16:07 GMT
+
+### Patches
+
+- Dropdown: Updates the `aria-disabled` attribute based on disabled state.
+
+## 2.1.0
+Thu, 09 Mar 2017 22:06:44 GMT
+
+### Minor changes
+
+- Breadcrumb: Implement onRenderItem
+
+## 2.0.2
+Thu, 09 Mar 2017 16:17:07 GMT
+
+### Patches
+
+- CommandBar: Set aria-disabled="true" for disabled menu items
+- Dropdown - Remove aria-activedescendant when not dropped
+- MessageBar - Fix timeout issue
+
+## 2.0.1
+Thu, 09 Mar 2017 06:33:00 GMT
+
+### Patches
+
+- No changes, required republish.
+
+## 2.0.0
+Thu, 09 Mar 2017 06:11:07 GMT
+
+### Breaking changes
+
+- IMPORTANT: 
+
+This pull request converts ALL components over to use module css. What does this mean?
+
+* All classnames, such as ms-Button, will now be obfuscated to be unique.
+* Pages that host multiple versions of the same component will not stomp on each other and will be safe.
+* All existing class names are left intact, so current customizations should not break.
+
+Going forward, we will adhere to using local scoped module rules specifically to avoid breaking ourselves when multiple versions. Additionally we are evaluating a much more robust and contractual way of defining our styles.
+
+Problems that still exist:
+
+1. You must rely on class names to customize, and if those class names change, your customizations are broken.
+2. Specificity of our rules is an implicit contract that is easy to break. It is often unclear and partners usually give up early fighting the specificity war and use `!important` to stomp on it, which is not ideal. If a partner does use "more specific" rules today, tomorrow they many not be specific enough.
+3. RTL rules in particular are very specific. When something that was once not RTL specific is changed to RTL, it becomes implicitly more specific, and thus breaks specificity contract.
+4. The bundles themselves have a lot of duplicate css. Because we generate rtl rules and theme tokens at build time rather than at runtime, we must download extra code, which bulks up the download size.
+5. Fabric core rules, which we implicitly rely on, are a hard thing to chase. If your page depends on core 6, and you're also using react components, you will find bugs. We'd like to eliminate this dependency so that it is reliable and contractual to use components. If you use a `ContextualMenu`, it should animate without depending on fabric-core css to be loaded.
+
+We are planning to address these and evaluating library options. Issue being tracked here: #983 
+
+
+### Minor changes
+
+- Button: the `label` property used to be meant to render text within the button, but it overlaps with the html `label` attribute. While `label` will still exist, it will now push content into the button label attribute, and we've added a `text` property  to allow for a formal way of defining the textual content displayed within the button. Passing in a child string to the button will still work, but `text` wil
+- IContextualMenuItemProps: the `styles` property can now be passed through to apply styling to menu items.
+
+## 1.14.3
+Thu, 09 Mar 2017 00:16:39 GMT
+
+### Patches
+
+- BaseButton: `rootProps` is now correctly mixed in with `props`. Please note that `rootProps` is deprecated and should not be used, but this fix simply ensures that the deprecated backwards compatibility works.
+- fix base picker shift + tab resolving the people, should move focus instead.
+
+## 1.14.2
+Wed, 08 Mar 2017 04:07:13 GMT
+
+### Patches
+
+- Updated facepile button to use BaseButton so it inherits all the base button styles
+
+## 1.14.1
+Fri, 03 Mar 2017 16:09:20 GMT
+
+### Patches
+
+- TextField: fix onchanged trigger issue
+- Assume images are portraits until proven otherwise
+
+## 1.14.0
+Thu, 02 Mar 2017 04:10:04 GMT
+
+### Minor changes
+
+- Pivot: support custom rendering for pivot links
+- Persona: adding a flag to avoid the fade in of images persona thumbnails.
+
+### Patches
+
+- Persona: Make it possible to have pink backgrounds.
+- FocusTrapZone: Fixed a scenario where multiple instances would fight over focus.
+- Dialog: empty aria attributes if no subtext is provided
+
+## 1.13.1
+Wed, 01 Mar 2017 20:31:22 GMT
+
+### Patches
+
+- Persona: previous published version was referring to an old utilities library without the getInitials utility function. Updating to this build will pull the correct utilities version which should fix the build error.
+- Toggle - support for aria attributes, fix button type
+
+## 1.13.0
+Tue, 28 Feb 2017 16:10:27 GMT
+
+### Minor changes
+
+- TextField - Option to supress validation on load
+
+## 1.12.2
+Tue, 28 Feb 2017 04:07:31 GMT
+
+### Patches
+
+- Panel: minor css fix for the close button to ensure it receives clicks correctly.
+- TextField: Fixed IE10 documentation input change behavior
+- Updating Link props so that we can use Object spread syntax
+
+## 1.12.1
+Sat, 25 Feb 2017 04:11:32 GMT
+
+### Patches
+
+- move aria-sort attr of detailsList headerColum to the right place
+- Persona: Improve default manner of abbreviating non-Latin names.
+
+## 1.12.0
+Thu, 23 Feb 2017 04:11:45 GMT
+
+### Minor changes
+
+- Dropdown: Updated dropdown component to be composed of several onRender functions, and  for render container to use panel under medium breakpoint
+
+### Patches
+
+- TextField - Allow aria attributes override
+
+## 1.11.0
+Tue, 21 Feb 2017 16:15:42 GMT
+
+### Minor changes
+
+- Deprecation of SpinnerType in favor of more semantic SpinnerSize. Extra small, small and medium variants added.
+
+### Patches
+
+- Dialog: Accessibility fix for confirmation dialogs
+- Return suggested items to original padding values, add display block to fix following space due to inline-block
+- Support to pass id to TextField and Toggle
+- Fix keyboard focus order in MessageBar
+
+## 1.10.0
+Tue, 21 Feb 2017 04:15:21 GMT
+
+### Minor changes
+
+- Fixed issues with drag/drop after item refresh.
+
+## 1.9.2
+Mon, 20 Feb 2017 16:07:02 GMT
+
+### Patches
+
+- Aligning Breadcrumb to design guidance and fix for chevron position at smaller breakpoints
+
+## 1.9.1
+Thu, 16 Feb 2017 16:06:51 GMT
+
+### Patches
+
+- DatePicker: Makes props optional, sets default props for strings
+- MessageBar: now allows dismiss action for single line messages.
+
+## 1.9.0
+Thu, 16 Feb 2017 04:04:41 GMT
+
+### Minor changes
+
+- GroupedList: Added `hasMoreData` flag to `IGroup` for rendering a plus character for groups that have indeterminate counts.
+
+## 1.8.0
+Wed, 15 Feb 2017 18:10:58 GMT
+
+### Minor changes
+
+- In order to protect customers that bundle 2 different versions of the same component on the page, we are moving the rules defined by fabric components to CSS modules. This first change only affects the `Toggle` and `Label` components, which have been updated to scope their rules inside of hash-safe class names. No existing class names (`ms-Toggle` for example) have been removed, so any customer customizations should continue to work as expected. This means if you render an old v1 Toggle with a new v2 Toggle compoennt, their class definitions will not conflict.
+
+## 1.7.2
+Tue, 14 Feb 2017 20:57:58 GMT
+
+### Patches
+
+- Dropdown: uncontrolled dropdowns now correctly set the selected item as expected. Test coverage added.
 
 ## 1.7.1
 Tue, 14 Feb 2017 04:12:27 GMT

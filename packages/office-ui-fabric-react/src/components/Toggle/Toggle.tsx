@@ -2,11 +2,13 @@ import * as React from 'react';
 import {
   autobind,
   css,
-  getId
+  getId,
+  buttonProperties,
+  getNativeProps
 } from '../../Utilities';
 import { IToggleProps } from './Toggle.Props';
 import { Label } from '../../Label';
-import './Toggle.scss';
+import styles from './Toggle.scss';
 
 export interface IToggleState {
   isChecked: boolean;
@@ -29,8 +31,7 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
     this.state = {
       isChecked: !!(props.checked || props.defaultChecked)
     };
-
-    this._id = getId('Toggle');
+    this._id = props.id || getId('Toggle');
   }
 
   /**
@@ -52,40 +53,43 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
     let { label, onText, offText, className, disabled } = this.props;
     let { isChecked } = this.state;
     let stateText = isChecked ? onText : offText;
-
+    const toggleNativeProps = getNativeProps(this.props, buttonProperties);
     return (
       <div className={
-        css('ms-Toggle', className, {
+        css(styles.root, 'ms-Toggle', className, {
           'is-checked': isChecked,
           'is-enabled': !disabled,
-          'is-disabled': disabled
+          'is-disabled': disabled,
+          [styles.isChecked]: isChecked,
+          [styles.isEnabled]: !disabled,
+          [styles.isDisabled]: disabled,
+
         })
       }>
-        <div className='ms-Toggle-innerContainer'>
+        <div className={ css(styles.innerContainer, 'ms-Toggle-innerContainer') }>
           { label && (
             <Label className='ms-Toggle-label' htmlFor={ this._id }>{ label }</Label>
           ) }
-          <div className='ms-Toggle-slider'>
+          <div className={ css(styles.slider, 'ms-Toggle-slider') }>
             <button
               ref={ (c): HTMLButtonElement => this._toggleButton = c }
               type='button'
               id={ this._id }
+              { ...toggleNativeProps }
               name={ this._id }
-              className='ms-Toggle-button'
+              className={ css(styles.button, 'ms-Toggle-button') }
               disabled={ disabled }
-              role='checkbox'
-              aria-checked={ isChecked }
+              aria-pressed={ isChecked }
               onClick={ this._onClick }
-              />
-            <div className='ms-Toggle-background'>
-              <div className='ms-Toggle-focus' />
-              <div className='ms-Toggle-thumb' />
+            />
+            <div className={ css(styles.background, 'ms-Toggle-background') }>
+              <div className={ css(styles.focus, 'ms-Toggle-focus') } />
+              <div className={ css(styles.thumb, 'ms-Toggle-thumb') } />
             </div>
             { stateText && (
-              <Label className='ms-Toggle-stateText'>{ stateText }</Label>
+              <Label className={ css(styles.stateText, 'ms-Toggle-stateText') }>{ stateText }</Label>
             ) }
           </div>
-
         </div>
       </div>
     );

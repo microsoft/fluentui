@@ -7,7 +7,7 @@
 // --------------------------------------------------
 // Modal overlay styles
 
-.ms-Overlay {
+.root {
   background-color: $ms-color-whiteTranslucent40;
   position: absolute;
   bottom: 0;
@@ -15,15 +15,15 @@
   right:  0;
   top:    0;
 
-  //== Modifier: Hidden overlay
+//== Modifier: Hidden overlay
   //
-  &.ms-Overlay--none {
+  &.rootIsNone {
     visibility: hidden;
   }
 
   //== Modifier: Dark overlay
   //
-  &.ms-Overlay--dark {
+  &.rootIsDark {
     background-color: $ms-color-blackTranslucent40;
   }
 }

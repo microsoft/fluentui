@@ -9,13 +9,13 @@
 $Calendar-day:40px;
 $Calendar-dayPicker-margin: 10px;
 
-.ms-DatePicker {
+.root {
   @include ms-normalize;
   margin-bottom: 17px;
 }
 
 // Base wrapper for the date picker.
-.ms-DatePicker-picker {
+.picker {
   color: $ms-color-black;
   font-size: $ms-font-size-m;
   position: relative;
@@ -23,7 +23,7 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 // The holder is the only "scrollable" top-level container element.
-.ms-DatePicker-holder {
+.holder {
   -webkit-overflow-scrolling: touch;
   @include ms-borderBox;
   background: $ms-color-white;
@@ -33,47 +33,47 @@ $Calendar-dayPicker-margin: 10px;
 
 
 // When the picker opens, reveal the content.
-.ms-DatePicker-picker.ms-DatePicker-picker--opened .ms-DatePicker-holder {
+.picker.pickerIsOpened .holder {
   @include ms-slideDownIn10;
   @include ms-borderBox;
   display: block;
 }
 
 // When a picker opens, always open it in front of other closed pickers
-.ms-DatePicker-picker--opened {
+.pickerIsOpened {
   position: relative;
 }
 
 
 // The frame and wrap work together to ensure that
 // clicks within the picker don’t reach the holder.
-.ms-DatePicker-frame {
+.frame {
   padding: 1px;
 }
 
-.ms-DatePicker-wrap {
+.wrap {
   margin: -1px;
   padding: 9px;
 }
 
 
 // Wrapper containing the calendar view to pick a specific date.
-.ms-DatePicker-dayPicker {
+.dayPicker {
   display: block;
   margin-bottom: 30px;
 }
 
 
 // The header containing the month and year.
-.ms-DatePicker-header {
+.header {
   height: $Calendar-day;
   line-height: 44px;
 }
 
 
 // The month and year labels.
-.ms-DatePicker-month,
-.ms-DatePicker-year {
+.month,
+.year {
   display: inline-block;
   @include ms-font-xl;
   color: $ms-color-neutralPrimary;
@@ -85,17 +85,17 @@ $Calendar-dayPicker-margin: 10px;
   }
 }
 
-.ms-DatePicker-month {
+.month {
   @include margin-left(15px);
 }
 
-.ms-DatePicker-year {
+.year {
   @include margin-left(15px);
 }
 
 
 // The calendar table of dates.
-.ms-DatePicker-table {
+.table {
   text-align: center;
   border-collapse: collapse;
   border-spacing: 0;
@@ -114,7 +114,7 @@ $Calendar-dayPicker-margin: 10px;
 
 
 // The days on the calendar.
-.ms-DatePicker-day, .ms-DatePicker-weekday {
+.day, .weekday {
   width: $Calendar-day;
   height: $Calendar-day;
   padding: 0;
@@ -125,28 +125,28 @@ $Calendar-dayPicker-margin: 10px;
 
 
 // Today.
-.ms-DatePicker-day--today {
+.dayIsToday {
   position: relative;
   background-color: $ms-color-themeLight;
 }
 
 
 // Disabled day.
-.ms-DatePicker-day--disabled:before {
+.dayIsDisabled:before {
   border-top-color: $ms-color-neutralTertiary;
 }
 
 
 // Out of focus days.
-.ms-DatePicker-day--outfocus {
+.dayIsUnfocused {
   color: $ms-color-neutralTertiary;
   font-weight: $ms-font-weight-regular;
 }
 
 
 // Hovered date picker items.
-.ms-DatePicker-day--infocus:hover,
-.ms-DatePicker-day--outfocus:hover {
+.dayIsFocused:hover,
+.dayIsUnfocused:hover {
   cursor: pointer;
   color: $ms-color-black;
   background: $ms-color-neutralLight;
@@ -154,8 +154,8 @@ $Calendar-dayPicker-margin: 10px;
 
 
 // Highlighted and hovered/focused dates.
-.ms-DatePicker-day--highlighted:hover,
-.ms-DatePicker-picker--focused .ms-DatePicker-day--highlighted {
+.dayIsHighlighted:hover,
+.pickerIsFocused .dayIsHighlighted {
   cursor: pointer;
   color: $ms-color-white;
   background: $ms-color-themePrimary;
@@ -163,40 +163,40 @@ $Calendar-dayPicker-margin: 10px;
 
 
 // Disabled and highlighted dates.
-.ms-DatePicker-day--highlighted.ms-DatePicker-day--disabled,
-.ms-DatePicker-day--highlighted.ms-DatePicker-day--disabled:hover {
+.dayIsHighlighted.dayDisabled,
+.dayIsHighlighted.dayDisabled:hover {
   background: $ms-color-neutralTertiary;
 }
 
 
 // Month and year pickers, hidden on small screens by default.
-.ms-DatePicker-monthPicker,
-.ms-DatePicker-yearPicker {
+.monthPicker,
+.yearPicker {
   display: none;
 }
 
 
 // Month and year previous/next components.
-.ms-DatePicker-monthComponents {
+.monthComponents {
   position: absolute;
   top: 9px;
   @include right(9px);
   @include left(9px);
 }
 
-.ms-DatePicker-yearComponents,
-.ms-DatePicker-decadeComponents {
+.yearComponents,
+.decadeComponents {
   position: absolute;
   @include right(10px);
   top: -2px;
 }
 
-.ms-DatePicker-prevMonth,
-.ms-DatePicker-nextMonth,
-.ms-DatePicker-prevYear,
-.ms-DatePicker-nextYear,
-.ms-DatePicker-prevDecade,
-.ms-DatePicker-nextDecade {
+.prevMonth,
+.nextMonth,
+.prevYear,
+.nextYear,
+.prevDecade,
+.nextDecade {
   width: $Calendar-day;
   height: $Calendar-day;
   display: block;
@@ -218,7 +218,7 @@ $Calendar-dayPicker-margin: 10px;
 
 // Without modifying the Pickadate JS, this transparent
 // button is necessary to toggle the month view.
-.ms-DatePicker-headerToggleView {
+.headerToggleView {
   height: $Calendar-day;
   @include left(0px);
   position: absolute;
@@ -229,8 +229,8 @@ $Calendar-dayPicker-margin: 10px;
 
 
 // Text showing the currently-selected year.
-.ms-DatePicker-currentYear,
-.ms-DatePicker-currentDecade {
+.currentYear,
+.currentDecade {
   display: block;
   @include ms-font-xl;
   color: $ms-color-neutralPrimary;
@@ -240,7 +240,7 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 // The current year is blue and actionable.
-.ms-DatePicker-currentYear {
+.currentYear {
   color: $ms-color-themePrimary;
 
   &:hover {
@@ -252,7 +252,7 @@ $Calendar-dayPicker-margin: 10px;
 
 // A grid of month or year options, which pushes them over
 // five pixels for horizontal centering and moves them down.
-.ms-DatePicker-optionGrid {
+.optionGrid {
   position: relative;
   height: 210px;
   width: 280px;
@@ -260,8 +260,8 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 // Button to select a different month.
-.ms-DatePicker-monthOption,
-.ms-DatePicker-yearOption {
+.monthOption,
+.yearOption {
   background-color: $ms-color-neutralLighter;
   width: 60px;
   height: 60px;
@@ -278,7 +278,7 @@ $Calendar-dayPicker-margin: 10px;
     outline: 1px solid transparent;
   }
 
-  &.is-highlighted {
+  &.isHighlighted {
     background-color: $ms-color-neutralPrimary;
     color: $ms-color-white;
   }
@@ -286,7 +286,7 @@ $Calendar-dayPicker-margin: 10px;
 
 
 // Button to navigate to the current date.
-.ms-DatePicker-goToday {
+.goToday {
   bottom: 9px;
   color: $ms-color-themePrimary;
   cursor: pointer;
@@ -304,18 +304,18 @@ $Calendar-dayPicker-margin: 10px;
 }
 
 // State: The picker is showing the year components.
-.ms-DatePicker.is-pickingYears {
+.root.isPickingYears {
   // Hide the day picking components.
-  .ms-DatePicker-dayPicker,
-  .ms-DatePicker-monthComponents {
+  .dayPicker,
+  .monthComponents {
     display: none;
   }
   // Hide the month picking components.
-  .ms-DatePicker-monthPicker {
+  .monthPicker {
     display: none;
   }
   // Show the year picking components.
-  .ms-DatePicker-yearPicker {
+  .yearPicker {
     display: block;
   }
 }
@@ -329,14 +329,14 @@ $Calendar-dayPicker-margin: 10px;
 
     // Update the spacing and text for the day and month pickers
 
-    .ms-DatePicker-header {
+    .header {
       height: $Calendar-day;
       line-height: $Calendar-day;
     }
 
   // Calendar day cells are smaller.
-  .ms-DatePicker-day,
-  .ms-DatePicker-weekday {
+  .day,
+  .weekday {
     width: $Calendar-day;
     height: $Calendar-day;
     line-height: 28px;
@@ -345,35 +345,35 @@ $Calendar-dayPicker-margin: 10px;
   }
 
   // Size the month components to the day picker's new width
-  .ms-DatePicker-monthComponents {
+  .monthComponents {
     width: 210px;
   }
 
   // Reduce the size of arrows to change month/year.
-  .ms-DatePicker-prevMonth,
-  .ms-DatePicker-nextMonth,
-  .ms-DatePicker-prevYear,
-  .ms-DatePicker-nextYear,
-  .ms-DatePicker-prevDecade,
-  .ms-DatePicker-nextDecade {
+  .prevMonth,
+  .nextMonth,
+  .prevYear,
+  .nextYear,
+  .prevDecade,
+  .nextDecade {
     font-size: $ms-icon-size-s;
     width: 24px;
     height: 24px;
     line-height: 24px;
   }
 
-  .ms-DatePicker-holder {
+  .holder {
     min-width: 240px;
   }
 
   // Update header text styles.
-  .ms-DatePicker-month,
-  .ms-DatePicker-year {
+  .month,
+  .year {
     font-weight: $ms-font-weight-semilight;
   }
 
-  .ms-DatePicker-month,
-  .ms-DatePicker-year {
+  .month,
+  .year {
     font-size: 17px;
     color: $ms-color-neutralPrimary;
 
@@ -385,53 +385,53 @@ $Calendar-dayPicker-margin: 10px;
 
 
   // Show the month picker, if enabled
-  .is-monthPickerVisible {
+  .pickerIsMonthPickerVisible {
     // Swap margin for padding so that the border extends the full height.
-    .ms-DatePicker-dayPicker {
+    .dayPicker {
       margin: -$Calendar-dayPicker-margin 0;
       padding: $Calendar-dayPicker-margin 0;
     }
     // Contains the calendar view for picking a day.
-    .ms-DatePicker-dayPicker {
+    .dayPicker {
       @include ms-borderBox;
       @include border-right(1px, solid, $ms-color-neutralLight);
       width: 220px;
-      min-height: ( $Calendar-day * 8 ) - $Calendar-dayPicker-margin; 
+      min-height: ( $Calendar-day * 8 ) - $Calendar-dayPicker-margin;
     }
 
 
-    .ms-DatePicker-holder {
+    .holder {
       width: 440px;
     }
     // Show the month picker.
-    .ms-DatePicker-monthPicker {
+    .monthPicker {
       display: block;
     }
     // Style the the month and year pickers.
-    .ms-DatePicker-monthPicker,
-    .ms-DatePicker-yearPicker {
+    .monthPicker,
+    .yearPicker {
       top: 9px;
       @include left(238px);
       position: absolute;
     }
     // Size and position of the month and year labels.
-    .ms-DatePicker-month {
+    .month {
       @include margin-left(12px);
     }
 
 
-    .ms-DatePicker-optionGrid {
+    .optionGrid {
       width: 200px;
       height: auto;
       @include margin(10px, 0, 0, 0);
     }
     // This component is only used on small displays.
-    .ms-DatePicker-toggleMonthView {
+    .toggleMonthView {
       display: none;
     }
     // Position the current year and decade labels.
-    .ms-DatePicker-currentYear,
-    .ms-DatePicker-currentDecade {
+    .currentYear,
+    .currentDecade {
       font-size: 17px;
       margin: 0;
       height: $Calendar-day;
@@ -440,8 +440,8 @@ $Calendar-dayPicker-margin: 10px;
       display: inline-block;
     }
     // Reduce the size of the month buttons.
-    .ms-DatePicker-monthOption,
-    .ms-DatePicker-yearOption {
+    .monthOption,
+    .yearOption {
       width: 40px;
       height: 40px;
       line-height: 38px;
@@ -453,7 +453,7 @@ $Calendar-dayPicker-margin: 10px;
       }
     }
     // Position the "Go to today" button below the month picker.
-    .ms-DatePicker-goToday {
+    .goToday {
       @include ms-borderBox;
       font-size: 12px;
       height: $Calendar-day;
@@ -467,19 +467,19 @@ $Calendar-dayPicker-margin: 10px;
     // State: The picker is showing the year components.
     // On larger screens the calendar will remain and the years
     // will replace the months.
-    .ms-DatePicker.is-pickingYears {
+    .root.isPickingYears {
       // On large screens, we need to keep the day picker
       // and month components in view.
-      .ms-DatePicker-dayPicker,
-      .ms-DatePicker-monthComponents {
+      .dayPicker,
+      .monthComponents {
         display: block;
       }
       // Hide the month picking components.
-      .ms-DatePicker-monthPicker {
+      .monthPicker {
         display: none;
       }
       // Show the year picking components.
-      .ms-DatePicker-yearPicker {
+      .yearPicker {
         display: block;
       }
     }
@@ -490,16 +490,16 @@ $Calendar-dayPicker-margin: 10px;
 @media (max-width: 459px) {
 
   // State: The picker is showing the month components.
-  .ms-DatePicker.is-pickingMonths {
+  .root.isPickingMonths {
 
     // Hide the day picking components.
-    .ms-DatePicker-dayPicker,
-    .ms-DatePicker-monthComponents {
+    .dayPicker,
+    .monthComponents {
       display: none;
     }
 
     // Show the month picking components.
-    .ms-DatePicker-monthPicker {
+    .monthPicker {
       display: block;
     }
   }
@@ -509,22 +509,22 @@ $Calendar-dayPicker-margin: 10px;
 // Custom CSS for fabric-React
 
 
-.ms-DatePicker-wrap span:focus,
-.ms-DatePicker-wrap div:focus {
+.wrap span:focus,
+.wrap div:focus {
   outline: 1px solid $ms-color-themePrimary;
 }
 
-.ms-DatePicker-goToday {
+.goToday {
   width: auto;
 }
 
-.ms-DatePicker-nextMonth,
-.ms-DatePicker-prevMonth,
-.ms-DatePicker-nextYear,
-.ms-DatePicker-prevYear {
+.nextMonth,
+.prevMonth,
+.nextYear,
+.prevYear {
   display: inline-block;
 }
 
-.ms-DatePicker-navContainer {
+.navContainer {
   @include float('right')
 }

@@ -21,7 +21,7 @@ $Callout-smallbeak-slant-width: 16px;
   transform: rotate(45deg);
 }
 
-.ms-Callout {
+.root {
   @include ms-drop-shadow(0,0, 15px, -5px);
   position: absolute;
   border: 1px solid $ms-color-neutralLight;
@@ -35,23 +35,23 @@ $Callout-smallbeak-slant-width: 16px;
   }
 }
 
-.ms-Callout-container {
+.container {
   position: relative;
 }
 
 // The actual callout element
-.ms-Callout-main {
+.main {
   background-color: $ms-color-white;
   overflow-x: hidden;
   overflow-y: auto;
   position: relative;
 }
 
-.ms-Callout-beak {
+.beak {
   @include calloutBeak;
 }
 
-.ms-Callout-beakCurtain {
+.beakCurtain {
   position: absolute;
   top: 0;
   right: 0;
@@ -59,3 +59,4 @@ $Callout-smallbeak-slant-width: 16px;
   left: 0;
   background-color: $ms-color-white;
 }
+

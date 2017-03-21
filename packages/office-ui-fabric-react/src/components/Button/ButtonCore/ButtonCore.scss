@@ -8,11 +8,11 @@
 @import '../../../common/common';
 @import './ButtonCoreVars';
 
-.ms-Button {
+@mixin button-core-root-styles {
   @include focus-border();
   @include ms-font-m;
-  user-select: none;
 
+  user-select: none;
   border-width: 0;
   text-decoration: none;
   text-align: center;
@@ -31,75 +31,27 @@
   }
 }
 
-.ms-Button-icon {
+@mixin button-core-icon-styles {
   margin: 0 4px;
-  width: 16px;
-  vertical-align: top;
-  display: inline-block;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  vertical-align: middle;
 }
 
-.ms-Button-label {
+@mixin button-core-label-styles {
   margin: 0 4px;
-  vertical-align: top;
-  display: inline-block;
+  line-height: 100%;
 }
 
-// TODO: Remove Hero Styles once fully deprecated
-
-//== Modifier: Hero button
-//
-.ms-Button--hero {
-  background-color: transparent;
-  border: 0;
-  height: auto;
-
-  .ms-Button-icon {
-    color: $ms-color-themePrimary;
-    display: inline-block;
-    @include margin-right(8px);
-    padding-top: 5px;
-    font-size: $ms-icon-size-l;
-    line-height: 1; // FireFox vertical offset
-  }
-
-  .ms-Button-label {
-    color: $ms-color-themePrimary;
-    font-size: $ms-font-size-xl;
-    font-weight: $ms-font-weight-light;
-    vertical-align: top;
-  }
+@mixin button-core-disabled {
+  background-color: $ms-color-neutralLighter;
+  color: $ms-color-neutralTertiary;
+  cursor: default;
+  pointer-events: none;
 
   &:hover,
   &:focus {
-    background-color: transparent;
-
-    .ms-Button-icon {
-      color: $ms-color-themeDark;
-    }
-
-    .ms-Button-label {
-      color: $ms-color-themeDarker;
-    }
-  }
-
-  &:active {
-    .ms-Button-icon {
-      color: $ms-color-themePrimary;
-    }
-
-    .ms-Button-label {
-      color: $ms-color-themePrimary;
-    }
-  }
-
-  &:disabled,
-  &.is-disabled {
-    .ms-Button-icon {
-      color: $ms-color-neutralTertiaryAlt;
-    }
-
-    .ms-Button-label {
-      color: $ms-color-neutralTertiary;
-    }
+    outline: 0;
   }
 }

@@ -4,7 +4,7 @@ $groupHeader-ease-out-circ: cubic-bezier(0.075, 0.820, 0.165, 1.000);
 $groupHeader-ease-out-sine: cubic-bezier(0.390, 0.575, 0.565, 1.000);
 $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
 
-.ms-GroupHeader {
+.root {
   cursor: default;
   user-select: none;
   @include focus-border();
@@ -12,16 +12,16 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
   &:hover {
     background: $ms-color-themeLighterAlt;
   }
-  &.is-selected {
+  &.rootIsSelected {
     background: $ms-color-themeLighter;
   }
-  &.is-selected:hover {
+  &.rootIsSelected:hover {
     background: $ms-color-themeLight;
   }
 }
 
-.ms-GroupHeader-check,
-.ms-GroupHeader-expand {
+.check,
+.expand {
   @include focus-border();
   display: inline-block;
   cursor: default;
@@ -36,7 +36,7 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
   top: 4px;
 }
 
-.ms-GroupHeader-check {
+.check {
   opacity: 0;
   margin-top: -10px;
 
@@ -45,35 +45,35 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
   }
 }
 
-.ms-GroupHeader:hover .ms-GroupHeader-check,
-.ms-GroupHeader.is-selected .ms-GroupHeader-check {
+.root:hover .check,
+.root.rootIsSelected .check {
   opacity: 1;
 }
 
-.ms-GroupHeader-title {
+.title {
   padding: 14px 6px;
   display: inline-block;
   cursor: pointer;
   outline: 0;
 }
 
-.ms-GroupHeader-expand {
+.expand {
   width: 36px;
   height: 40px;
   color: $ms-color-neutralSecondary;
 
-  .ms-Icon {
+  :global(.ms-Icon) {
     transform: rotate(-180deg);
     transform-origin: 50% 50%;
     transition: transform .1s linear;
 
-    &.is-collapsed {
+    &.expandIsCollapsed {
       transform: rotate(0deg);
     }
   }
 }
 
-.ms-GroupHeader-loading {
+.loading {
   display: inline-block;
   visibility: hidden;
   opacity: 0;
@@ -81,13 +81,13 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
   vertical-align: middle;
   transition: visibility $ms-animation-duration-3, opacity $ms-animation-duration-3;
 
-  &.is-loading {
+  &.loadingIsVisible {
     visibility: visible;
     opacity: 1;
   }
 }
 
-.ms-GroupHeader-dropIcon {
+.dropIcon {
   display: inline-block;
   position: relative;
   top: -16px;
@@ -99,21 +99,21 @@ $groupHeader-ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
   transform: rotate(0.2deg) scale(0.65); // rotation prevents jittery motion in IE
   transform-origin: 10px 10px;
 
-  .ms-Icon--Tag {
+  :global(.ms-Icon--Tag) {
     position: absolute;
   }
 }
 
-.ms-GroupedList-group.is-dropping {
+:global(.ms-GroupedList-group.is-dropping) {
 
-   > .ms-GroupHeader .ms-GroupHeader-dropIcon {
+  > .root .dropIcon {
       transition: transform $ms-animation-duration-4 $groupHeader-ease-out-circ, opacity $ms-animation-duration-1 $groupHeader-ease-out-sine;
       transition-delay: $ms-animation-duration-3;
       opacity: 1;
       transform: rotate(0.2deg) scale(1); // rotation prevents jittery motion in IE
     }
 
-    .ms-GroupHeader-check {
+    .check {
       opacity: 0;
     }
 }

@@ -1,22 +1,5 @@
 @import '../../common/common';
 
-.ms-Panel {
-  /** bug: panel should not ignore pointer events. */
-  pointer-events: inherit;
-  overflow: hidden;
-}
-
-.ms-Panel .ms-Panel-main {
-  position: absolute;
-
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-// [thomas.oconnor] Instead of using the current Fabric CSS implementation for the Panel,
-// we are recreating it here. The Fabic Panel will be undergoing some redesign work in the
-// near future.
 // This implementation is RTL friendly, and divides the classes so that the panel types
 // and left/right animations are in different classes. It also separates out the design
 // rules/restrictions for Panel usage so that it becomes a generic Panel. It is up to the
@@ -42,12 +25,19 @@ $Panel-margin-lg: 428px;
 $Panel-margin-xl: 176px;
 $CommandBarHeight: 40px;
 
-.ms-Panel {
+.root {
   display: none;
   pointer-events: none;
 
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+
   // Overlay used within panel
-  .ms-Overlay {
+  .overlay {
     display: none;
     pointer-events: none;
     opacity: 1;
@@ -57,14 +47,20 @@ $CommandBarHeight: 40px;
 }
 
 // The panel itself, where the content goes.
-.ms-Panel-main {
+.main {
   background-color: $ms-color-white;
-  bottom: 0;
-  position: fixed;
+
+  position: absolute;
   @include right(0);
-  top: 0;
-  display: none;
   width: 100%;
+  bottom: 0;
+  top: 0;
+
+  display: none;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 
   // Medium screens and up - (anchored right, fixed width)
   @media (min-width: $ms-screen-min-md) {
@@ -79,8 +75,8 @@ $CommandBarHeight: 40px;
 
 //== Modifier: Small panel (anchored right, fixed width)
 //
-.ms-Panel.ms-Panel--sm {
-  .ms-Panel-main {
+.root.rootIsSmall {
+  .main {
     width: $Panel-width-xs;
 
     @media (min-width: $ms-screen-min-md) {
@@ -91,8 +87,8 @@ $CommandBarHeight: 40px;
 
 //== Modifier: Small panel (anchored left, fixed width)
 //
-.ms-Panel.ms-Panel--smLeft {
-  .ms-Panel-main {
+.root.rootIsSmallLeft {
+  .main {
     @include right(auto);
     @include left(0);
     width: $Panel-width-xs;
@@ -102,18 +98,18 @@ $CommandBarHeight: 40px;
 //== Modifier: Small panel, full screen (anchored left, fluid width)
 // Note: This panel should only be used for dropdown menus on small screens.
 //
-.ms-Panel.ms-Panel--smFluid {
-  .ms-Panel-main {
+.root.rootIsSmallFluid {
+  .main {
     width: 100%;
   }
 }
 
-//== Modifier: Medium, Large, Extra Largs panels (anchored right, fluid width)
+//== Modifier: Medium, Large, Extra Large panels (anchored right, fluid width)
 //
-.ms-Panel.ms-Panel--md,
-.ms-Panel.ms-Panel--lg,
-.ms-Panel.ms-Panel--xl {
-  .ms-Panel-main {
+.root.rootIsMedium,
+.root.rootIsLarge,
+.root.rootIsXLarge {
+  .main {
     @media (min-width: $ms-screen-min-lg) {
       @include left($Panel-margin-md);
       width: auto;
@@ -123,8 +119,8 @@ $CommandBarHeight: 40px;
 
 //== Modifier: Medium panel (anchored right, fixed width)
 //
-.ms-Panel.ms-Panel--md {
-  .ms-Panel-main {
+.root.rootIsMedium {
+  .main {
     @media (min-width: $ms-screen-min-xl) {
       @include left(auto);
       width: $Panel-width-md;
@@ -134,8 +130,8 @@ $CommandBarHeight: 40px;
 
 //== Modifier: Large panel (anchored right, fluid width)
 //
-.ms-Panel.ms-Panel--lg {
-  .ms-Panel-main {
+.root.rootIsLarge {
+  .main {
     @media (min-width: $ms-screen-min-xxl) {
       @include left($Panel-margin-lg);
     }
@@ -144,8 +140,8 @@ $CommandBarHeight: 40px;
 
 //== Modifier: Large fixed panel (anchored right, fixed width)
 //
-.ms-Panel.ms-Panel--lg.ms-Panel--fixed {
-  .ms-Panel-main {
+.root.rootIsLarge.rootIsFixed {
+  .main {
     @media (min-width: $ms-screen-min-xxl) {
       @include left(auto);
       width: $Panel-width-lg;
@@ -155,8 +151,8 @@ $CommandBarHeight: 40px;
 
 //== Modifier: XLarge panel (anchored right, fluid width)
 //
-.ms-Panel.ms-Panel--xl {
-  .ms-Panel-main {
+.root.rootIsXLarge {
+  .main {
     @media (min-width: $ms-screen-min-xxl) {
       @include left($Panel-margin-xl);
     }
@@ -165,16 +161,17 @@ $CommandBarHeight: 40px;
 
 //== State: When the panel is open.
 //
-.ms-Panel.is-open {
+.root.rootIsOpen {
   display: block;
 
-  .ms-Panel-main {
+  .main {
     opacity: 1;
     pointer-events: auto;
     display: block;
   }
 
-  .ms-Overlay {
+  .overlay {
+    cursor: pointer;
     display: block;
     pointer-events: auto;
 
@@ -182,86 +179,10 @@ $CommandBarHeight: 40px;
       opacity: 0;
     }
   }
-
-  &.ms-Panel-animateIn {
-    .ms-Panel-main {
-      @include ms-fadeIn100;
-    }
-  }
-
-  &.ms-Panel-animateOut {
-    .ms-Panel-main {
-      @include ms-fadeOut100;
-    }
-
-    .ms-Overlay {
-      display: none;
-    }
-  }
-
-  // Medium screens and up
-  @media (min-width: $ms-screen-min-md) {
-    // Animations -- Default (anchored right)
-    &.ms-Panel--openRight.ms-Panel-animateIn {
-      .ms-Panel-main {
-        @include ms-slideLeftIn40;
-      }
-
-      .ms-Overlay {
-        @include ms-fadeIn200;
-      }
-    }
-
-    &.ms-Panel--openRight.ms-Panel-animateOut {
-      .ms-Panel-main {
-        @include ms-slideRightOut40;
-      }
-      .ms-Overlay {
-        @include ms-fadeOut200;
-      }
-    }
-
-    // Animations - Left panel (anchored left)
-    &.ms-Panel--openLeft.ms-Panel-animateIn {
-      .ms-Panel-main {
-        @include ms-slideRightIn40;
-      }
-
-      .ms-Overlay {
-        @include ms-fadeIn200;
-      }
-    }
-
-    &.ms-Panel--openLeft.ms-Panel-animateOut {
-      .ms-Panel-main {
-        @include ms-slideLeftOut40;
-      }
-      .ms-Overlay {
-        @include ms-fadeOut200;
-      }
-    }
-
-    // Animate overlay to full opacity, activate pointer events
-    .ms-Overlay {
-      cursor: pointer;
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    &.ms-Panel--openRight.ms-Panel-animateIn,
-    &.ms-Panel--openLeft.ms-Panel-animateIn {
-      .ms-Overlay {
-        @media screen and (-ms-high-contrast: active) {
-          opacity: 0;
-          animation-name: none;
-        }
-      }
-    }
-  }
 }
 
-// The close button in the top right (x)
-.ms-Panel-closeButton {
+// The  button in the top right (x)
+.closeButton {
   @include ms-button-reset();
   position: absolute;
   @include right(8px);
@@ -279,40 +200,76 @@ $CommandBarHeight: 40px;
 }
 
 // Scrollable content area
-.ms-Panel-contentInner {
+.contentInner {
   position: absolute;
-  top: $CommandBarHeight;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 0 16px 20px;
-  overflow-y: auto;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  .rootHasCloseButton & {
+    top: $CommandBarHeight;
+  }
 
   -webkit-overflow-scrolling: touch;
 
   /* Force hw accelleration on scrollable region */
   transform: translateZ(0);
+}
+
+.header, .content, .footerInner {
+  padding-left: 16px;
+  padding-right: 16px;
 
   @media (min-width: $ms-screen-min-lg) {
-    padding: 0 32px 20px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
 
   @media (min-width: $ms-screen-min-xxl) {
-    padding: 0 40px 20px;
+    padding-left: 40px;
+    padding-right: 40px;
   }
 }
 
-// Header text at the top of the panel.
-.ms-Panel-headerText {
-  @include ms-font-xl;
-  color: $ms-color-neutralPrimary;
-  margin: 10px 0;
-  padding: 4px 0;
-  line-height: 1;
-  text-overflow: ellipsis;
-  overflow: hidden;
-
+.header {
+  margin: 14px 0;
+  // Ensure that title doesn't shrink if screen is too small
+  flex-grow: 0;
   @media (min-width: $ms-screen-min-xl) {
     margin-top: 30px;
   }
+}
+
+.content {
+  margin-bottom: 0;
+  overflow-y: auto;
+}
+
+.footer {
+  // Ensure that footer doesn't shrink if screen is too small
+  flex-grow: 0;
+  border-top: 1px solid transparent;
+  transition: border $ms-animation-duration-3 $ms-animation-ease-2;
+}
+
+.footerInner {
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+.footerIsSticky {
+  background: $ms-color-white;
+  border-top-color: $ms-color-neutralLight;
+}
+
+// Header text at the top of the panel.
+.headerText {
+  @include ms-font-xl;
+  color: $ms-color-neutralPrimary;
+  line-height: 1;
+  margin: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }

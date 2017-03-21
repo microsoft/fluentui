@@ -1,14 +1,14 @@
 @import '../../../common/common';
 
-.ms-TagItem {
+.root {
   @include focus-border();
 
   flex-shrink: 0;
   vertical-align: top;
   background: $ms-color-neutralLighter;
   margin: 1px;
-  height: 28px;
-  line-height: 28px;
+  height: 32px;
+  line-height: 32px;
   vertical-align: top;
   white-space: nowrap;
   cursor: default;
@@ -18,7 +18,7 @@
     background: $ms-color-neutralLight;
   }
 
-  &.is-selected {
+  &.isSelected {
     background: $ms-color-neutralQuaternary;
     &:hover {
       background: $ms-color-neutralQuaternaryAlt;
@@ -26,7 +26,7 @@
   }
 }
 
-.ms-TagItem-text {
+.tagItemText {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -36,7 +36,7 @@
   margin: 0 8px;
 }
 
-.ms-TagItem-close {
+.tagItemClose {
   cursor: pointer;
 
   color: $ms-color-neutralSecondary;
@@ -48,3 +48,4 @@
   width: 30px;
   height: 100%;
 }
+

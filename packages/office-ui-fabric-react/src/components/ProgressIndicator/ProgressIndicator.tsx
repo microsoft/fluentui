@@ -7,7 +7,7 @@ import {
   css
 } from '../../Utilities';
 import { IProgressIndicatorProps } from './ProgressIndicator.Props';
-import './ProgressIndicator.scss';
+import styles from './ProgressIndicator.scss';
 
 // if the percentComplete is near 0, don't animate it.
 // This prevents animations on reset to 0 scenarios
@@ -38,11 +38,11 @@ export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}
     percentComplete = Math.min(100, Math.max(0, percentComplete * 100));
 
     return (
-      <div className={ css('ms-ProgressIndicator', className) }>
-        <div className='ms-ProgressIndicator-itemName'>{ label }</div>
-        <div className='ms-ProgressIndicator-itemProgress'>
-          <div className='ms-ProgressIndicator-progressTrack'></div>
-          <div className={ css('ms-ProgressIndicator-progressBar', {
+      <div className={ css('ms-ProgressIndicator', styles.root, className) }>
+        <div className={ css('ms-ProgressIndicator-itemName', styles.itemName) }>{ label }</div>
+        <div className={ css('ms-ProgressIndicator-itemProgress', styles.itemProgress) }>
+          <div className={ css('ms-ProgressIndicator-progressTrack', styles.progressTrack) }></div>
+          <div className={ css('ms-ProgressIndicator-progressBar', styles.progressBar, {
             'smoothTransition': percentComplete > ZERO_THRESHOLD
           }) }
             style={ { width: percentComplete + '%' } }
@@ -52,7 +52,7 @@ export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}
             aria-valuenow={ percentComplete.toFixed().toString() }>
           </div>
         </div>
-        <div className='ms-ProgressIndicator-itemDescription'>{ description }</div>
+        <div className={ css('ms-ProgressIndicator-itemDescription', styles.itemDescription) }>{ description }</div>
       </div>
     );
   }

@@ -1,34 +1,36 @@
 @import '../../common/common';
 
-.ms-Link {
+// Element: ms-Link root component
+.root {
   color: $ms-color-themePrimary;
   margin: 0;
   overflow: inherit;
   padding: 0;
   text-overflow: inherit;
+}
 
-  // State: The button is not disabled.
-  &:not(.is-disabled) {
-    &:hover,
-    &:focus {
-      color: $ms-color-themeDarker;
-    }
-
-    &:active {
-      color: $ms-color-themePrimary;
-    }
+// State: The button is not disabled.
+.isEnabled {
+  &:hover,
+  &:focus {
+    color: $ms-color-themeDarker;
   }
 
-  // State: The button is disabled.
-  &.is-disabled {
-    color: $ms-color-neutralTertiary;
-    pointer-events: none;
-    cursor: default;
+  &:active {
+    color: $ms-color-themePrimary;
   }
 }
 
+// State: The button is disabled.
+.isDisabled {
+  color: $ms-color-neutralTertiary;
+  pointer-events: none;
+  cursor: default;
+}
+
+
 // Link implemented as a button.
-button.ms-Link {
+button.root {
   @include focus-border;
   @include text-align(left);
   background: none;
@@ -39,7 +41,7 @@ button.ms-Link {
 }
 
 // Link implemented as an anchor.
-a.ms-Link {
+a.root {
   @include focus-outline;
   text-decoration: none;
 }

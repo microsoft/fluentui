@@ -6,25 +6,28 @@
 // Office UI Fabric
 // --------------------------------------------------
 // Single line (input) and multiline (textarea) form field styles
+@import '../Label/LabelMixins.scss';
 
-@import '../Label/Label.scss';
-
-.ms-TextField {
+.root {
   @include ms-normalize;
   color: $ms-color-neutralPrimary;
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
   margin-bottom: 8px;
 
-  .ms-Label {
+  :global(.ms-Label) {
     font-size: $ms-font-size-m;
     font-weight: $ms-font-weight-regular;
   }
 }
 
+.screenReaderOnly {
+  @include ms-screenReaderOnly;
+}
+
 //= State: A disabled textfield
-.ms-TextField.is-disabled {
-  .ms-TextField-field {
+.root.rootIsDisabled {
+  :global(.field) {
     background-color: $ms-color-neutralLighter;
     border-color: $ms-color-neutralLighter;
     pointer-events: none;
@@ -37,8 +40,8 @@
 }
 
 //= State: A required textfield
-.ms-TextField.is-required {
-  .ms-Label {
+.root.rootIsRequired {
+  :global(.ms-Label) {
     @include ms-Label-is-required
   }
 
@@ -48,11 +51,11 @@
 }
 
 //= State: An active textfield
-.ms-TextField.is-active {
+.root.rootIsActive {
   border-color: $ms-color-themePrimary;
 }
 
-.ms-TextField-field {
+.field {
   @include ms-normalize;
   border: 1px solid $ms-color-neutralTertiaryAlt;
   border-radius: 0;
@@ -94,9 +97,13 @@
   &::placeholder {
     color: $ms-color-neutralSecondary;
   }
+
+  &::-ms-clear {
+    display: none;
+  }
 }
 
-.ms-TextField-description {
+.description {
   color: $ms-color-neutralSecondaryAlt;
   font-size: $ms-font-size-xs;
 }
@@ -104,7 +111,7 @@
 
 //== Modifier: Single line (default), underlined
 //
-.ms-TextField.ms-TextField--underlined {
+.root.rootIsUnderlined {
   border-bottom: 1px solid $ms-color-neutralTertiaryAlt;
   display: table;
   width: 100%;
@@ -126,7 +133,7 @@
     border-color: $ms-color-themePrimary;
   }
 
-  .ms-Label {
+  :global(.ms-Label) {
     font-size: $ms-font-size-m;
     @include margin-right(8px);
     display: table-cell;
@@ -138,7 +145,7 @@
     white-space: nowrap;
   }
 
-  .ms-TextField-field {
+  .field {
     border: 0;
     @include float(left);
     display: table-cell;
@@ -153,20 +160,20 @@
     }
   }
 
-  &.is-disabled {
+  &.rootIsDisabled {
     border-bottom-color: $ms-color-neutralLight;
 
-    .ms-Label {
+    :global(.ms-Label) {
       @include ms-Label-is-disabled;
     }
 
-    .ms-TextField-field {
+    .field {
       background-color: transparent;
       color: $ms-color-neutralTertiary;
     }
   }
 
-  &.is-active {
+  &.rootIsActive {
     border-color: $ms-color-themePrimary;
 
     @media screen and (-ms-high-contrast: active) {
@@ -182,7 +189,7 @@
 
 //== Modifier: Multiline textfield
 //
-.ms-TextField.ms-TextField--multiline .ms-TextField-field {
+.root.rootIsMultiline .field {
   color: $ms-color-neutralPrimary;
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
@@ -194,49 +201,38 @@
 }
 
 // @todo: https://github.com/OfficeDev/Office-UI-Fabric/issues/359
-.ms-TextField-errorMessage {
+.errorMessage {
   @include ms-font-s;
   @include ms-fontColor-redDark;
   @include ms-reset-margins;
   padding-top: 5px;
 }
 
-.ms-TextField-invalid,
-.ms-TextField-invalid:focus,
-.ms-TextField-invalid:hover {
+.invalid,
+.invalid:focus,
+.invalid:hover {
   @include ms-borderColor-redDark;
 }
 
-.ms-screenReaderOnly {
-  position: absolute;
-  text-indent: -9999px;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  border: 0;
-}
+.root.rootIsUnderlined {
 
-.ms-TextField.ms-TextField--underlined {
-
-  .ms-Label {
+  :global(.ms-Label) {
     @include padding-left(12px);
     @include padding-right(0);
   }
 
-  .ms-TextField-field {
+  .field {
     @include text-align(left);
   }
 }
 
-.ms-TextField.ms-TextField--multiline {
+.root.rootIsMultiline {
 
-  .ms-TextField-field.ms-TextField-field--unresizable {
+  .field.fieldIsUnresizable {
     resize: none;
   }
 }
 
-.ms-TextField-hidden {
+.hidden {
   display: none;
 }

@@ -1,0 +1,17 @@
+@import '../../common/common';
+
+.flexContainer {
+  display: flex;
+  height: 100%;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.root {
+  outline: transparent;
+}
+
+.screenReaderOnly {
+  @include ms-screenReaderOnly;
+}

@@ -1,4 +1,5 @@
 @import '../../common/common';
+@import '../../common/_focusBorder';
 
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
 
@@ -36,12 +37,7 @@ $SearchBox-widthXLarge: 208px;
 $SearchBox-iconSize: 16px;
 $SearchBox-sidePadding: 8px; // padding in input on left and right sides without icons
 
-@mixin highContrastBorder($color) {
-    @include border-left(1px, solid, $color);
-    @include border-right(1px, solid, $color);
-}
-
-.ms-CommandBar {
+.root {
   @include ms-font-m;
   color: $ms-color-neutralPrimary;
 
@@ -52,7 +48,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   user-select: none;
 }
 
-.ms-CommandBar-primaryCommands {
+.primaryCommands {
   position: absolute;
   overflow: hidden;
   display: inline;
@@ -62,7 +58,7 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   margin: 0 20px;
 }
 
-.ms-CommandBar-sideCommands {
+.sideCommands {
   position: absolute;
   @include right(0px);
   @include text-align(right);
@@ -70,41 +66,28 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
 }
 
 // Command Bar Item
-.ms-CommandBarItem {
+.item {
   display: inline-block;
   color: $ms-color-themePrimary;
   height: $CommandBarItem-height;
   outline: transparent;
   vertical-align: top;
-  padding: 0 4px;
+  margin: 0 4px;
 
   &:hover {
     background-color: $ms-color-neutralLight;
     color: $ms-color-neutralPrimary;
   }
-
-  @media screen and (-ms-high-contrast: active) {
-    @include highContrastBorder($ms-color-black);
-    height: 38px;
-    outline: none;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    @include highContrastBorder($ms-color-white);
-    height: 38px;
-    outline: none;
-  }
 }
 
-.ms-CommandBarItem-chevronDown,
-.ms-CommandBarItem-commandText {
+.itemChevronDown,
+.itemCommandText {
   display: inline-block;
   padding: 0 4px;
   vertical-align: top;
 }
 
 @mixin CommandBarItem-text {
-  @include focus-border(2px);
   @include ms-font-m;
   color: $ms-color-neutralPrimary;
 
@@ -118,27 +101,26 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
   display: block;
   height: 100%;
 
-  &.ms-CommandBarItem--noName {
+  &.itemLinkIsNoName {
     padding: 0 8px;
   }
 }
 
-.ms-CommandBarItem-text {
+.itemText {
   @include CommandBarItem-text;
 }
 
-.ms-CommandBarItem-link {
+.itemLink {
   @include CommandBarItem-text;
   cursor: pointer;
-
   &:hover,
-  &.is-expanded {
+  &.itemLinkIsExpanded {
     @media screen and (-ms-high-contrast: active) {
-      @include highContrastBorder($ms-color-white);
-    }
+      @include focus-border(0px, $ms-color-white, 1px, false);
+      }
 
     @media screen and (-ms-high-contrast: black-on-white) {
-      @include highContrastBorder($ms-color-black);
+      @include focus-border(0px, $ms-color-black, 1px, false);
     }
   }
 
@@ -146,37 +128,37 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
     color: $ms-color-neutralDark;
     background-color: $ms-color-neutralLight;
 
-    .ms-CommandBarItem-icon {
+    .itemIcon {
       color: $ms-color-themeDark;
     }
 
-    .ms-CommandBarItem-chevronDown {
+    .itemChevronDown {
       color: $ms-color-neutralPrimaryAlt;
     }
 
-    .ms-CommandBarItem-overflow {
+    .itemOverflow {
       color: $ms-color-neutralDark;
     }
   }
 
-  &.is-expanded {
+  &.itemLinkIsExpanded {
     background-color: $ms-color-neutralQuaternaryAlt;
     color: $ms-color-black;
 
-    .ms-CommandBarItem-icon {
+    .itemIcon {
       color: $ms-color-themeDarker;
     }
 
-    .ms-CommandBarItem-chevronDown {
+    .itemChevronDown {
       color: $ms-color-neutralDark;
     }
 
-    .ms-CommandBarItem-overflow {
+    .itemOverflow {
       color: $ms-color-black;
     }
   }
 
-  &.is-expanded:hover {
+  &.itemLinkIsExpanded:hover {
     background-color: $ms-color-neutralQuaternary;
   }
 
@@ -184,34 +166,34 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
     color: $ms-color-neutralTertiaryAlt;
     cursor: default;
     pointer-events: none;
-    .ms-CommandBarItem-icon {
+    .itemIcon {
       color: $ms-color-neutralTertiaryAlt;
     }
   }
 }
 
-.ms-CommandBarItem-icon {
+.itemIcon {
   font-size: $CommandBarItem-fontSize;
   padding: 0 4px;
 }
 
-.ms-CommandBarItem-iconColor {
+.itemIconColor {
   color: $ms-color-themeDarkAlt;
 }
 
-.ms-CommandBarItem-chevronDown  {
+.itemChevronDown  {
   color: $ms-color-neutralSecondary;
   font-size: $CommandBarItem-chevronDown-fontSize;
 }
 
-.ms-CommandBarItem-overflow {
+.itemOverflow {
   font-size: $CommandBarItem-overflow-fontSize;
   color: $ms-color-neutralPrimary;
   padding: 0 7px;
 }
 
 // CommandBarSearch needs to replaced with SearchBox component, and hence following styles revisited/cleaned.
-.ms-CommandBarSearch {
+.search {
   @include float(left);
   width: 208px;
   max-width: 208px;
@@ -246,16 +228,16 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
     color: $ms-color-themePrimary;
 
     @media screen and (-ms-high-contrast: active) {
-      @include highContrastBorder($ms-color-white);
+      @include focus-border(0px, $ms-color-white, 1px, false);
     }
 
     @media screen and (-ms-high-contrast: black-on-white) {
-      @include highContrastBorder($ms-color-black);
+      @include focus-border(0px, $ms-color-black, 1px, false);
     }
   }
 }
 
-.ms-CommandBarSearch-input {
+.searchInput {
   height: $SearchBox-height;
   // Due to a bug in IE9, we have to use a transparent left border instead of left padding
   padding: $SearchBox-sidePadding $SearchBox-sidePadding $SearchBox-sidePadding 0;
@@ -287,68 +269,29 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
 }
 
 // default styles for icons, show the search icon and hide X (and arrow) until focused
-.ms-CommandBarSearch-iconSearchWrapper {
+.searchIconSearchWrapper {
   display: block;
 }
 
-.ms-CommandBarSearch-iconArrowWrapper {
+.searchIconArrowWrapper {
   display: none;
 }
 
-.ms-CommandBarSearch-iconSearchWrapper,
-.ms-CommandBarSearch-iconArrowWrapper {
+.searchIconSearchWrapper,
+.searchIconArrowWrapper {
   top: 0;
   @include padding-left(17px);
   @include padding-right(8px);
 }
 
-.ms-CommandBarSearch-iconClearWrapper {
+.searchIconClearWrapper {
   display: none;
   top: 1px;
   @include right(0px);
   z-index: $ms-zIndex-front;
 }
 
-//== State: Puts search in an active state
-//
-.ms-CommandBarSearch.is-active {
-  background-color: $ms-color-themeLight;
-  color: $ms-color-black;
-
-  &:hover {
-    background-color: $ms-color-themeLight;
-    color: $ms-color-black;
-  }
-
-  .ms-CommandBarSearch-input {
-    cursor: text;
-    @include padding-right($SearchBox-height); // leave room for the X
-    @include border-left-width($SearchBox-sidePadding);
-  }
-
-  &.ms-CommandBarSearch--hasBack .ms-CommandBarSearch-input {
-    @include border-left-width($SearchBox-height); // leave room for arrow
-  }
-
-  // when focused, remove the search icon and possibly show arrow icon
-  & .ms-CommandBarSearch-iconSearchWrapper {
-    display: none;
-  }
-
-  &.ms-CommandBarSearch--hasBack .ms-CommandBarSearch-iconArrowWrapper {
-    display: block;
-  }
-
-  .ms-CommandBarSearch-input {
-    @include padding-right($SearchBox-height);
-  }
-
-  .ms-CommandBarSearch-iconClearWrapper {
-    display: block;
-  }
-}
-
-.ms-CommandBarSearch-iconWrapper {
+.searchIconWrapper {
   height: $SearchBox-height;
   line-height: $SearchBox-height;
   cursor: pointer;
@@ -357,12 +300,13 @@ $SearchBox-sidePadding: 8px; // padding in input on left and right sides without
 }
 
 // New rules
-.ms-CommandBarSearch .ms-Icon:before {
+.search :global(.ms-Icon:before) {
   font-size: $SearchBox-iconSize;
   color: $ms-color-themePrimary;
 }
 
-.ms-CommandBarSearch-input,
-.ms-CommandBarSearch-input::-webkit-input-placeholder {
+.searchInput,
+.searchInput::-webkit-input-placeholder {
   font-size: $ms-font-size-m;
 }
+

@@ -1,6 +1,6 @@
 @import '../../common/common';
 
-.ms-BasePicker-text {
+.pickerText {
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
@@ -17,9 +17,9 @@
   }
 }
 
-.ms-BasePicker-input {
+.pickerInput {
   border: none;
-  min-height: 28px;
+  min-height: 32px;
   flex-grow: 1;
   outline: none;
   padding: 0 6px;

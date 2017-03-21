@@ -12,11 +12,11 @@ $ProgressIndicatorMarginBetweenText: 8px;
 $ProgressIndicatorButtonsWidth: 218px;
 $ProgressIndicatorTextHeight: 18px;
 
-.ms-ProgressIndicator {
+.root {
   font-weight: $ms-font-weight-regular;
 }
 
-.ms-ProgressIndicator-itemName {
+.itemName {
   color: $ms-color-neutralPrimary;
   font-size: $ms-font-size-m;
   text-overflow: ellipsis;
@@ -26,19 +26,19 @@ $ProgressIndicatorTextHeight: 18px;
   line-height: $ProgressIndicatorTextHeight + 2;
 }
 
-.ms-ProgressIndicator-itemDescription {
+.itemDescription {
   color: $ms-color-neutralSecondaryAlt;
   font-size: $ms-font-size-xs;
   line-height: $ProgressIndicatorTextHeight;
 }
 
-.ms-ProgressIndicator-itemProgress {
+.itemProgress {
   position: relative;
   height: 2px;
   padding: $ProgressIndicatorMarginBetweenText 0;
 }
 
-.ms-ProgressIndicator-progressTrack {
+.progressTrack {
   position: absolute;
   width: 100%;
   height: 2px;
@@ -46,7 +46,7 @@ $ProgressIndicatorTextHeight: 18px;
   outline: 1px solid transparent;
 }
 
-.ms-ProgressIndicator-progressBar {
+.progressBar {
   background-color: $ms-color-themePrimary;
   height: 2px;
   position: absolute;
@@ -62,7 +62,7 @@ $ProgressIndicatorTextHeight: 18px;
   }
 }
 
-.ms-ProgressIndicator-progressBar.smoothTransition {
+.smoothTransition {
   transition-property: width;
   transition-timing-function: linear;
   transition-duration: 150ms;

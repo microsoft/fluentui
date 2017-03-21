@@ -1,41 +1,47 @@
-@import '../../../common/common';
-@import '../ButtonCore/ButtonCoreVars';
-
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
 //
 // Office UI Fabric
 // --------------------------------------------------
 // Icon Button styles
 
+@import '../../../common/common';
+@import '../ButtonCore/ButtonCore';
+@import '../ButtonCore/ButtonCoreVars';
 
-.ms-Button.ms-Button--icon {
-  @include focus-border(0px);
+$button-iconButtonSize: $button-core-default-height;
+
+.root {
+  @include button-core-root-styles;
+
   background-color: transparent;
-  color: $ms-color-neutralSecondary;
   padding: 0 4px;
+
+  width: $button-iconButtonSize;
+  height: $button-iconButtonSize;
+
+  color: $ms-color-neutralSecondary;
   font-size: $ms-icon-size-m;
+}
 
-  .ms-Button-label,
-  .ms-Button-icon {
-    height: $button-core-default-height;
-    line-height: $button-core-default-height;
+.icon {
+  @include button-core-icon-styles;
+}
+
+.isEnabled {
+
+  &:hover {
+    color: $ms-color-themeDarker;
   }
 
-  &:hover,
   &:active {
-    background-color: transparent;
-    color: $ms-color-neutralPrimary;
+    color: $ms-color-themePrimary;
   }
+}
 
-  &:focus {
-    background-color: transparent;
-  }
-
-  &.disabled,
-  &:disabled {
-    color: $ms-color-neutralTertiaryAlt;
-    background-color: transparent;
-  }
+.isDisabled {
+  @include button-core-disabled;
+  background-color: transparent;
 
   @media screen and (-ms-high-contrast: active) {
     color: $ms-color-yellowLight;
@@ -45,4 +51,3 @@
     color: $ms-color-blueMid;
   }
 }
-

@@ -32,30 +32,31 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
   }
 }
 
-.ms-Checkbox {
+.root {
   box-sizing: border-box;
   color: $ms-color-neutralPrimary;
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
   min-height: 36px;
   position: relative;
+}
 
-  .ms-Label {
-    font-size: $ms-font-size-m;
-    @include padding(0, 0, 0, 26px);
-    display: inline-block;
-  }
+.textLabel {
+  font-size: $ms-font-size-m;
+  @include padding(0, 0, 0, 26px);
+  display: inline-block;
+  font-size: $ms-font-size-m;
 }
 
 // The hidden input
-.ms-Checkbox-input {
+.input {
   position: absolute;
   opacity: 0;
   top: 8px
 }
 
 // The checkbox square container
-.ms-Checkbox-label::before {
+.label::before {
   content: '';
   display: inline-block;
   border: 1px solid $ms-color-neutralTertiary;
@@ -70,7 +71,7 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
 }
 
 // The check mark icon
-.ms-Checkbox-label::after {
+.label::after {
   @include ms-Icon--CheckMark;
   font-family: 'FabricMDL2Icons';
   display: none;
@@ -86,7 +87,7 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
 }
 
 // The checkbox label
-.ms-Checkbox-label {
+.label {
   display: inline-block;
   cursor: pointer;
   margin-top: 8px;
@@ -102,7 +103,7 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
       border-color: $ms-color-neutralSecondaryAlt;
     }
 
-    .ms-Label {
+    .textLabel {
       color: $ms-color-black;
     }
   }
@@ -112,11 +113,11 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
       border-color: $ms-color-neutralSecondaryAlt;
     }
 
-    &.is-disabled::before {
+    &.labelIsDisabled::before {
       border-color: $ms-color-neutralTertiaryAlt;
     }
 
-    &.is-checked::before {
+    &.labelIsChecked::before {
       border-color: $ms-color-themeDarkAlt;
     }
   }
@@ -126,14 +127,14 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
       border-color: $ms-color-neutralSecondaryAlt;
     }
 
-    .ms-Label {
+    .textLabel {
       color: $ms-color-black;
     }
   }
 
   //== State: A checkbox is checked
   //
-  &.is-checked {
+  &.labelIsChecked {
     &::before {
       border: 10px solid $ms-color-themePrimary;
       background-color: $ms-color-themePrimary;
@@ -165,7 +166,7 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
 
   //== State: A disabled checkbox
   //
-  &.is-disabled {
+  &.labelIsDisabled {
     cursor: default;
 
     &:hover,
@@ -186,7 +187,7 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
       @include highContrast-color($ms-color-contrastBlackDisabled, $ms-color-contrastWhiteDisabled);
     }
 
-    .ms-Label {
+    .textLabel {
       color: $ms-color-neutralTertiary;
 
       @include highContrast-color($ms-color-contrastBlackDisabled, $ms-color-contrastWhiteDisabled);
@@ -195,29 +196,29 @@ $ms-checkbox-highContrast-iconBoxSize: 16px;
 
     //== State: A checkbox in focus
   //
-  &.is-inFocus {
+  &.labelIsInFocus {
     &::before {
       border-color: $ms-color-neutralSecondaryAlt;
     }
 
-    &.is-disabled::before {
+    &.labelIsDisabled::before {
       border-color: $ms-color-neutralTertiaryAlt;
     }
 
-    &.is-checked::before {
+    &.labelIsChecked::before {
       border-color: $ms-color-themeDarkAlt;
     }
   }
 }
 
-.is-focusVisible .ms-Checkbox.is-inFocus {
+:global(.ms-Fabric.is-focusVisible) .rootIsInFocus {
   &::before {
     content: '';
     position: absolute;
     top: 0px;
     bottom: 0px;
-    @include right(0px);
-    @include left(-8px);
+    left: 0;
+    right: 0;
     border: 1px solid $focusedBorderColor;
     @include highContrast-border($ms-color-white, $ms-color-black, 1px);
   }

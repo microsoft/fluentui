@@ -6,19 +6,19 @@ $ContextualMenu-expandedItemBackground: $ms-color-neutralQuaternaryAlt;
 $ContextualMenu-itemHeight: 36px;
 $ContextualMenu-iconWidth: 14px;
 
-.ms-ContextualMenu {
+.root {
   background-color: $ContextualMenu-background;
   min-width: 180px;
 }
 
-.ms-ContextualMenu-list {
+.list {
   list-style-type: none;
   margin: 0;
   padding: 0;
   line-height: 0;
 }
 
-.ms-ContextualMenu-item {
+.item {
   @include ms-font-m;
   color: $ms-color-neutralPrimary;
   height: $ContextualMenu-itemHeight;
@@ -26,7 +26,7 @@ $ContextualMenu-iconWidth: 14px;
   box-sizing: border-box;
 }
 
-.ms-ContextualMenu-link {
+.link {
   @include focus-border();
 
   font: inherit;
@@ -44,29 +44,29 @@ $ContextualMenu-iconWidth: 14px;
   &:hover:not([disabled]) {
     background: $ContextualMenu-itemHover;
   }
-  &.is-disabled,
+  &.isDisabled,
   &[disabled] {
     color: $ms-color-neutralTertiaryAlt;
     cursor: default;
     pointer-events: none;
-    .ms-ContextualMenu-icon {
+    .icon {
       color: $ms-color-neutralTertiaryAlt;
     }
   }
 
-  .is-focusVisible &:focus {
+  :global(.is-focusVisible) &:focus {
     background: $ContextualMenu-itemHover;
   }
 
-  &.is-expanded,
-  &.is-expanded:hover {
+  &.isExpanded,
+  &.isExpanded:hover {
     background: $ContextualMenu-expandedItemBackground;
     color: $ms-color-black;
     font-weight: $ms-font-weight-semibold;
   }
 }
 
-.ms-ContextualMenu-header {
+.header {
   @include focus-border();
   @include ms-font-s;
   font-weight: $ms-font-weight-semibold;
@@ -81,7 +81,7 @@ $ContextualMenu-iconWidth: 14px;
   @include text-align(left);
 }
 
-a.ms-ContextualMenu-link {
+a.link {
   padding: 0px 6px;
   text-rendering: auto;
   color: inherit;
@@ -92,7 +92,7 @@ a.ms-ContextualMenu-link {
   text-shadow: none;
   box-sizing: border-box;
 }
-.ms-ContextualMenu-linkContent {
+.linkContent {
   white-space: nowrap;
   height: inherit;
   display: flex;
@@ -100,14 +100,14 @@ a.ms-ContextualMenu-link {
   max-width: 100%;
 }
 
-.ms-ContextualMenu-divider {
+.divider {
   display: block;
   height: 1px;
   background-color: $dividerColor;
   position: relative;
 }
 
-.ms-ContextualMenu-icon {
+.icon {
   display: inline-block;
   min-height: 1px;
   max-height: $ContextualMenu-itemHeight;
@@ -117,11 +117,11 @@ a.ms-ContextualMenu-link {
   flex-shrink: 0;
 }
 
-.ms-ContextualMenu-iconColor {
+.iconColor {
   color: $ms-color-themePrimary;
 }
 
-.ms-ContextualMenu-itemText {
+.itemText {
   margin: 0 4px;
   vertical-align: middle;
   display: inline-block;
@@ -131,14 +131,14 @@ a.ms-ContextualMenu-link {
   white-space: nowrap;
 }
 
-.ms-ContextualMenu-linkText {
+.linkText {
   margin: 0px 4px;
   display: inline-block;
   vertical-align: top;
   white-space: nowrap;
 }
 
-.ms-ContextualMenu-submenuIcon {
+.submenuIcon {
   height: $ContextualMenu-itemHeight;
   line-height: $ContextualMenu-itemHeight;
   text-align: center;

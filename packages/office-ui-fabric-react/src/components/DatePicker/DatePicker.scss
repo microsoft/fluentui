@@ -15,30 +15,31 @@
   @include right(9px);
 }
 
-.ms-DatePicker {
+.root {
   @include ms-normalize;
   margin-bottom: 17px;
+}
 
-  .ms-TextField {
-    position: relative;
+.textField {
+  position: relative;
 
-    input::-ms-clear {
-      display: none;
-    }
+  input::-ms-clear {
+    display: none;
+  }
 
-    input[readonly] {
-      cursor: pointer;
-    }
+  input[readonly] {
+    cursor: pointer;
   }
 }
 
 // Insert a calendar icon over the date field.
-.ms-DatePicker-event--with-label {
+.eventWithLabel {
   @include ms-DatePicker-event();
   top: 35px;
 }
 
-.ms-DatePicker-event--without-label {
+.eventWithoutLabel {
   @include ms-DatePicker-event();
   top: 7px;
 }
+

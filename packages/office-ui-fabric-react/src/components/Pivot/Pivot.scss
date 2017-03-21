@@ -7,8 +7,7 @@
 // --------------------------------------------------
 // Pivot and tab styles
 
-
-.ms-Pivot {
+.root {
   @include ms-normalize;
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
@@ -17,7 +16,7 @@
   white-space: nowrap;
 }
 
-.ms-Pivot-links {
+.links {
   font-size: 0; // Bring inline-block children together
   height: 40px;
   list-style-type: none;
@@ -25,7 +24,7 @@
   white-space: nowrap;
 }
 
-.ms-Pivot-link {
+.link {
   color: $ms-color-neutralPrimary;
   display: inline-block;
   font-size: $ms-font-size-m;
@@ -69,40 +68,50 @@
     visibility: hidden;
   }
 
-  .ms-Pivot-text,
-  .ms-Pivot-count {
+  .text,
+  .count {
     display: inline-block;
 
     vertical-align: top;
   }
 
   // Spacing between icon and text/count
-  .ms-Pivot-icon + .ms-Pivot-text {
+  .icon + .text {
     @include margin-left(4px);
   }
 
   // Spacing between text and count
-  .ms-Pivot-count {
+  .count {
     @include margin-left(4px);
   }
 
   //== State: Selected
-  &.is-selected {
+  &.linkIsSelected {
     font-weight: $ms-font-weight-semibold;
 
     // Show the underline
     &::before {
       background-color: $ms-color-themePrimary;
+
+      @media screen and (-ms-high-contrast: active) {
+        background-color: transparent;
+        border-bottom: 2px solid $ms-color-white;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        background-color: transparent;
+        border-bottom: 2px solid $ms-color-black;
+      }
     }
   }
 
   //== State: Disabled
-  &.is-disabled {
+  &.linkIsDisabled {
     color: $ms-color-neutralTertiary;
   }
 }
 
-.ms-Fabric.is-focusVisible .ms-Pivot-link {
+:global(.ms-Fabric.is-focusVisible) .link {
   &:focus {
     outline: 1px solid $ms-color-neutralSecondaryAlt;
   }
@@ -111,15 +120,15 @@
 // @TODO: Determine if any of the styles below this are necessary anymore.
 
 // Overflow (ellipsis)
-.ms-Pivot-link.ms-Pivot-link--overflow {
+.link.linkIsOverflow {
   color: $ms-color-neutralSecondary;
 
-  &.is-selected {
+  &.linkIsSelected {
     color: $ms-color-themePrimary;
   }
 
-  &:hover:not(.is-selected),
-  &:focus:not(.is-selected) {
+  &:hover:not(.linkIsSelected),
+  &:focus:not(.linkIsSelected) {
     color: $ms-color-neutralDark;
   }
 
@@ -129,27 +138,20 @@
 }
 
 // Ellipsis icon
-.ms-Pivot-ellipsis {
+.ellipsis {
   font-size: $ms-font-size-m-plus;
   position: relative;
   top: 0;
 }
 
-// Pivot content, hidden by default
-.ms-Pivot-content {
-  display: none;
-  margin-top: 20px;
-}
-
-
 //== Modifier: Large Pivots
 //
-.ms-Pivot.ms-Pivot--large {
-  .ms-Pivot-link {
+.root.rootIsLarge {
+  .link {
     font-size: $ms-font-size-l;
   }
 
-  .ms-Pivot-link.ms-Pivot-link--overflow {
+  .link.linkIsOverflow {
     &::after {
       font-size: $ms-font-size-l;
     }
@@ -158,9 +160,8 @@
 
 //== Modifier: Tabs
 //
-.ms-Pivot.ms-Pivot--tabs {
-
-  .ms-Pivot-link {
+.root.rootIsTabs {
+  .link {
     @include focus-border();
     @include margin-right(0px);
     height: 40px;
@@ -169,8 +170,8 @@
     padding: 0 10px;
     vertical-align: top;
 
-    &:hover:not(.is-selected):not(.ms-Pivot-link--overflow),
-    &:focus:not(.is-selected):not(.ms-Pivot-link--overflow) {
+    &:hover:not(.linkIsSelected):not(.linkIsOverflow),
+    &:focus:not(.linkIsSelected):not(.linkIsOverflow) {
       color: $ms-color-black;
     }
 
@@ -180,7 +181,7 @@
     }
 
     //== State: Selected
-    &.is-selected {
+    &.linkIsSelected {
       background-color: $ms-color-themePrimary;
       color: $ms-color-white;
       font-weight: $ms-font-weight-semilight;
@@ -188,13 +189,27 @@
       &::before {
         background-color: transparent;
         transition: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        content: '';
+        height: auto;
+
+        @media screen and (-ms-high-contrast: active) {
+          border: 1px solid $ms-color-white;
+        }
+        @media screen and (-ms-high-contrast: black-on-white) {
+          border: 1px solid $ms-color-black;
+        }
       }
     }
   }
 
-  .ms-Pivot-link.ms-Pivot-link--overflow {
-    &:hover:not(.is-selected),
-    &:focus:not(.is-selected) {
+  .link.linkIsOverflow {
+    &:hover:not(.linkIsSelected),
+    &:focus:not(.linkIsSelected) {
       background-color: $ms-color-white;
     }
 
@@ -204,7 +219,7 @@
   }
 }
 
-.ms-Fabric.is-focusVisible .ms-Pivot.ms-Pivot--tabs .ms-Pivot-link:focus {
+:global(.ms-Fabric.is-focusVisible) .root.rootIsTabs .link:focus {
   &:before {
     height: auto;
     background: transparent;
@@ -215,11 +230,11 @@
 // @TODO: Confirm that this component is not responsive.
 //
 // @media (min-width: $ms-screen-min-lg) {
-//   .ms-Pivot-link {
+//   .link {
 //     font-size: $ms-font-size-m;
 //   }
 
-//   .ms-Pivot-link.ms-Pivot-link--overflow {
+//   .link.linkIsOverflow {
 //     &:after {
 //       font-size: $ms-font-size-m;
 //     }
@@ -228,9 +243,9 @@
 
 // All high contrast styling rules
 @media screen and (-ms-high-contrast: active) {
-  .ms-Pivot.ms-Pivot--tabs {
-    .ms-Pivot-link {
-      &.is-selected {
+  .root.rootIsTabs {
+    .link {
+      &.linkIsSelected {
         font-weight: $ms-font-weight-semibold;
       }
     }

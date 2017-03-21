@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { IRenderFunction } from '../../Utilities';
 import { Persona } from './Persona';
 
 export interface IPersonaProps extends React.HTMLProps<Persona> {
@@ -6,6 +7,11 @@ export interface IPersonaProps extends React.HTMLProps<Persona> {
    * Primary text to display, usually the name of the person.
    */
   primaryText?: string;
+
+  /**
+   * Optional custom renderer for the primary text.
+   */
+  onRenderPrimaryText?: IRenderFunction<IPersonaProps>;
 
   /**
    * Decides the size of the control.
@@ -19,6 +25,13 @@ export interface IPersonaProps extends React.HTMLProps<Persona> {
   imageShouldFadeIn?: boolean;
 
   /**
+   * If true, the image starts as visible and is hidden on error. Otherwise, the image is hidden until
+   * it is successfully loaded. This disables imageShouldFadeIn.
+   * @defaultvalue false
+   */
+  imageShouldStartVisible?: boolean;
+
+  /**
    * Url to the image to use, should be a square aspect ratio and big enough to fit in the image area.
    */
   imageUrl?: string;
@@ -28,6 +41,11 @@ export interface IPersonaProps extends React.HTMLProps<Persona> {
    * @defaultvalue [Derived from primaryText]
    */
   imageInitials?: string;
+
+  /**
+   * Optional custom renderer for the initials
+   */
+  onRenderInitials?: IRenderFunction<IPersonaProps>;
 
   /**
    * The background color when the user's initials are displayed.
@@ -47,14 +65,29 @@ export interface IPersonaProps extends React.HTMLProps<Persona> {
   secondaryText?: string;
 
   /**
+   * Optional custom renderer for the secondary text.
+   */
+  onRenderSecondaryText?: IRenderFunction<IPersonaProps>;
+
+  /**
    * Tertiary text to display, usually the status of the user.
    */
   tertiaryText?: string;
 
   /**
+   * Optional custom renderer for the tertiary text.
+   */
+  onRenderTertiaryText?: IRenderFunction<IPersonaProps>;
+
+  /**
    * Optional text to display, usually a custom message set.
    */
   optionalText?: string;
+
+  /**
+   * Optional custom renderer for the optional text.
+   */
+  onRenderOptionalText?: IRenderFunction<IPersonaProps>;
 
   /**
    * Whether to not render persona details, and just render the persona image/initials.

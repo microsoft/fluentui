@@ -9,7 +9,7 @@
 
 $checkBoxHeight: 24px;
 
-.ms-Check {
+.root {
   line-height: 1;
   width: $checkBoxHeight;
   height: $checkBoxHeight;
@@ -17,8 +17,8 @@ $checkBoxHeight: 24px;
   position: relative;
   @include ms-user-select(none);
 
-  &.is-checked {
-    .ms-Check-background {
+  &.rootIsChecked {
+    .background {
       &:before {
         color: $ms-color-themePrimary;
       }
@@ -28,7 +28,7 @@ $checkBoxHeight: 24px;
       }
     }
 
-    .ms-Check-check {
+    .check {
       opacity: 1;
       color: $ms-color-white;
       font-weight: 900;
@@ -37,13 +37,13 @@ $checkBoxHeight: 24px;
   }
 
   &:hover {
-    .ms-Check-check {
+    .check {
       opacity: 1;
     }
   }
 }
 
-.ms-Check-check {
+.check {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -52,7 +52,7 @@ $checkBoxHeight: 24px;
   opacity: 0;
 }
 
-.ms-Check-background {
+.background {
   position: relative;
   height: $checkBoxHeight;
   width: $checkBoxHeight;
@@ -78,3 +78,4 @@ $checkBoxHeight: 24px;
     position: absolute;
   }
 }
+

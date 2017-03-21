@@ -17,6 +17,9 @@ let FocusTrapZoneBoxExampleWithFocusableItemCode = require('./examples/FocusTrap
 import FocusTrapZoneBoxClickExample from './examples/FocusTrapZone.Box.Click.Example';
 let FocusTrapZoneBoxClickExampleCode = require('./examples/FocusTrapZone.Box.Click.Example.tsx') as string;
 
+import FocusTrapZoneNestedExample from './examples/FocusTrapZone.Nested.Example';
+let FocusTrapZoneNestedExampleCode = require('./examples/FocusTrapZone.Nested.Example.tsx') as string;
+
 export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
@@ -33,6 +36,9 @@ export class FocusTrapZonePage extends React.Component<IComponentDemoPageProps, 
             </ExampleCard>
             <ExampleCard title='Simple Box with Clicking outside Trap Zone enabled' code={ FocusTrapZoneBoxClickExampleCode }>
               <FocusTrapZoneBoxClickExample />
+            </ExampleCard>
+            <ExampleCard title='Multiple Nest FocusTrapZones' code={ FocusTrapZoneNestedExampleCode }>
+              <FocusTrapZoneNestedExample />
             </ExampleCard>
           </div>
         }

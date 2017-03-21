@@ -10,7 +10,7 @@
 $spin-duration: 1.3s;
 $borderSize: 1.5px;
 
-@keyframes ms-Spinner-spin {
+@keyframes spinAnimation {
   0% {
     transform: rotate(0deg);
   }
@@ -19,8 +19,8 @@ $borderSize: 1.5px;
   }
 }
 
-.ms-Spinner {
-  > .ms-Spinner-circle {
+.root {
+  > .circle {
     margin: auto;
     box-sizing: border-box;
     border-radius: 50%;
@@ -28,17 +28,27 @@ $borderSize: 1.5px;
     height: 100%;
     border: 1.5px solid $ms-color-themeLight;
     border-top-color: $ms-color-themePrimary;
-    animation: ms-Spinner-spin $spin-duration infinite cubic-bezier(.53,.21,.29,.67);
-    &.ms-Spinner--normal {
+    animation: spinAnimation $spin-duration infinite cubic-bezier(.53,.21,.29,.67);
+    &.circleIsXSmall {
+      width: 12px;
+      height: 12px;
+    }
+    &.circleIsSmall {
+      width: 16px;
+      height: 16px;
+    }
+    &.circleIsTypeMedium,
+    &.circleIsMedium {
       width: 20px;
       height: 20px;
     }
-    &.ms-Spinner--large {
+    &.circleIsTypeLarge,
+    &.circleIsLarge {
       width: 28px;
       height: 28px;
     }
   }
-  > .ms-Spinner-label {
+  > .label {
       color: $ms-color-themePrimary;
       margin-top: 10px;
       text-align: center;
@@ -46,8 +56,8 @@ $borderSize: 1.5px;
 }
 
 @media screen and (-ms-high-contrast: active) {
-  .ms-Spinner {
-    > .ms-Spinner-circle {
+  .root {
+    > .circle {
         border-top-style: none;
     }
   }

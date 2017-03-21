@@ -1,11 +1,11 @@
 @import '../../common/common';
 
-.ms-MarqueeSelection {
+.root {
   position: relative;
   cursor: default;
 }
 
-.ms-MarqueeSelection-dragMask {
+.dragMask {
   position: absolute;
   background: rgba(255, 0, 0, 0);
   left: 0;
@@ -14,14 +14,14 @@
   bottom: 0;
 }
 
-.ms-MarqueeSelection-box {
+.box {
   position: absolute;
   box-sizing: border-box;
   border: 1px solid $ms-color-themePrimary;
   pointer-events: none;
 }
 
-.ms-MarqueeSelection-boxFill {
+.boxFill {
   position: absolute;
   box-sizing: border-box;
   background-color: $ms-color-themePrimary;

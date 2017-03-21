@@ -1,10 +1,13 @@
 {
   "npmVersion": "3.10.9",
-  "rushMinimumVersion": "1.5.1",
+  "rushMinimumVersion": "2.3.1",
   "nodeSupportedVersionRange": ">=6.9.0 <8.0.0",
   "commonFolder": "common",
   "projectFolderMinDepth": 1,
   "projectFolderMaxDepth": 999,
+  "pinnedVersions": {
+    "webpack": "2.2.1"
+  },
   "projects": [
     {
       "packageName": "office-ui-fabric-react",
@@ -20,6 +23,11 @@
       "packageName": "@uifabric/example-app-base",
       "projectFolder": "packages/example-app-base",
       "shouldPublish": true
+    },
+    {
+      "packageName": "@uifabric/example-component",
+      "projectFolder": "packages/example-component",
+      "shouldPublish": false
     },
     {
       "packageName": "todo-app",

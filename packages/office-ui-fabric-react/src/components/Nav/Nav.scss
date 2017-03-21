@@ -5,46 +5,46 @@ $hasExpandButtonLinkLeftPadding: 28px;
 $noExpandButtonLinkLeftPadding: 20px;
 $linkRightPadding: 20px;
 
-.ms-Nav {
+.root {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   user-select: none;
 }
 
-.ms-Nav.is-onTop {
+.rootIsOnTop {
   position: absolute;
 }
 
-.ms-Nav ul {
+.navItems {
   list-style-type: none;
 }
 
-.ms-Nav ul,
-.ms-Nav ul > li {
+.navItems,
+.navItems > .navItem {
   padding: 0;
 }
 
-.ms-Nav-groupContent {
+.groupContent {
   display: none;
   margin-bottom: 40px;
 }
 
-.ms-Nav-group.is-expanded .ms-Nav-groupContent {
+.group.groupIsExpanded .groupContent {
   display: block;
 }
 
-.ms-Nav-Icon {
+.icon {
   padding: 0px;
   color: $selectedForegroundColor;
   background: $selectedBackgroundColor;
   transition: transform .1s linear;
 }
 
-.ms-Nav-IconLink {
+.iconLink {
   @include margin-right(4px);
 }
 
-.ms-Nav-chevronButton {
+.chevronButton {
   display: block;
 
   font-weight: $ms-font-weight-regular;
@@ -57,7 +57,10 @@ $linkRightPadding: 20px;
   background: none;
   border: none;
 
-  text-transform: uppercase;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
   cursor: pointer;
 
   color: $unselectedForegroundColor;
@@ -72,14 +75,14 @@ $linkRightPadding: 20px;
     background: $unselectedHoverBackgroundColor;
   }
 
-  &.ms-Nav-chevronButton--group {
+  &.chevronButtonIsGroup {
     width: 100%;
     height: $navnode-height;
     border-bottom: 1px solid $dividerColor;
   }
 }
 
-.ms-Nav-chevron.ms-Icon {
+.chevronIcon {
   position: absolute;
   @include left(8px);
   height: $navnode-height;
@@ -88,58 +91,58 @@ $linkRightPadding: 20px;
   transition: transform .1s linear;
 }
 
-.ms-Nav-group.is-expanded .ms-Nav-chevronButton--group .ms-Nav-chevron  {
+.chevronIsExpanded {
   transform: rotate(-180deg);
 }
 
-.ms-Nav-linkText {
+.linkText {
   vertical-align: middle;
 }
 
-.ms-Nav-compositeLink {
+.compositeLink {
   display: block;
   position: relative;
 
-  .ms-Nav-chevronButton.ms-Nav-chevronButton--link {
+  .chevronButton.chevronButtonLink {
     display: block;
-    width: $hasExpandButtonLinkLeftPadding;
-    height: $navnode-height;
+    width: $hasExpandButtonLinkLeftPadding - 2;
+    height: $navnode-height - 2;
     position: absolute;
-    top: 0;
-    @include left(0);
+    top: 1px;
+    @include left(1px);
     z-index: 1;
     padding: 0;
     margin: 0;
 
-  .ms-Nav-chevron {
+  .chevronIcon {
       position: relative;
     }
   }
 
   & a {
-   color: $unselectedForegroundColor;
+  color: $unselectedForegroundColor;
   }
   color: $unselectedForegroundColor;
   background: $unselectedBackgroundColor;
 
   &:hover {
 
-     & a,
-     & .ms-Nav-chevronButton {
-       background: $unselectedHoverBackgroundColor;
-       color: $unselectedHoverForegroundColor;
-     }
+    & a,
+    & .chevronButton {
+      background: $unselectedHoverBackgroundColor;
+      color: $unselectedHoverForegroundColor;
+    }
   }
 
-  &.is-expanded {
-    .ms-Nav-chevron {
+  &.compositeLinkIsExpanded {
+    .chevronIcon {
       transform: rotate(-180deg);
     }
   }
 
-  &.is-selected {
+  &.compositeLinkIsSelected {
     & a,
-    & .ms-Nav-chevronButton {
+    & .chevronButton {
 
       color: $ms-color-themePrimary;
       background: $selectedBackgroundColor;
@@ -158,7 +161,7 @@ $linkRightPadding: 20px;
   }
 }
 
-.ms-Nav-link {
+.link {
   display: block;
   position: relative;
   height: $navnode-height;
@@ -172,25 +175,25 @@ $linkRightPadding: 20px;
   overflow: hidden;
 }
 
-.ms-Nav-groupHeaderFontSize {
+.groupHeaderFontSize {
   @include ms-font-l;
 }
 
-.ms-Nav-chevronButton,
-.ms-Nav-chevronButton--group,
-.ms-Nav-chevronButton--link,
-.ms-Nav-link {
+.chevronButton,
+.chevronButtonGroup,
+.chevronButtonLink,
+.link {
   @include focus-border();
 }
 
-.ms-Nav-linkButton.ms-Button--command {
+.root .link {
   @include padding-left($noExpandButtonLinkLeftPadding);
-  .ms-Button-label {
+  :global(.ms-Button-label) {
     @include ms-font-m;
     color: $ms-color-themePrimary;
   }
 
-  &.isOnExpanded {
+  &.linkIsOnExpanded {
   @include padding-left($hasExpandButtonLinkLeftPadding);
   }
 }

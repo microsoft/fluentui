@@ -1,27 +1,27 @@
 @import '../../common/common';
 
-.ms-Image {
+.root {
   overflow: hidden;
 }
 
 // Modifier: The image frame should fill its parent element.
-.ms-Image--maximizeFrame {
+.rootIsMaximizeFrame {
   height: 100%;
   width: 100%;
 }
 
-.ms-Image-image {
+.image {
   display: block;
   opacity: 0;
 
-  &.is-loaded {
+  &.imageIsLoaded {
     opacity: 1;
   }
 }
 
-.ms-Image-image--center,
-.ms-Image-image--contain,
-.ms-Image-image--cover {
+.imageIsCenter,
+.imageIsContain,
+.imageIsCover {
   position: relative;
   @include left(50%);
   top: 50%;
@@ -34,47 +34,47 @@
   }
 }
 
-.ms-Image-image--contain {
-  &.ms-Image-image--landscape {
+.imageIsContain {
+  &.imageIsLandscape {
     width: 100%;
     height: auto;
   }
 
-  &.ms-Image-image--portrait {
+  &.imageIsPortrait {
     height: 100%;
     width: auto;
   }
 }
 
-.ms-Image-image--cover {
-  &.ms-Image-image--landscape {
+.imageIsCover {
+  &.imageIsLandscape {
     height: 100%;
     width: auto;
   }
 
-  &.ms-Image-image--portrait {
+  &.imageIsPortrait {
     width: 100%;
     height: auto;
   }
 }
 
-.ms-Image-image--none {
+.imageIsNone {
   height: auto;
   width: auto;
 }
 
 /** This is identical to the default behavior. */
-.ms-Image-image--scaleWidthHeight {
+.imageIsScaleWidthHeight {
   height: 100%;
   width: 100%;
 }
 
-.ms-Image-image--scaleWidth {
+.imageIsScaleWidth {
   height: auto;
   width: 100%;
 }
 
-.ms-Image-image--scaleHeight {
+.imageIsScaleHeight {
   height: 100%;
   width: auto;
 }

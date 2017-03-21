@@ -1,34 +1,26 @@
 @import '../../common/common';
 
-.ms-DetailsList {
+.root {
   position: relative;
   font-size: $ms-font-size-s;
-
-  BUTTON {
-    background-color: transparent;
-  }
-
-  > .ms-FocusZone {
-    display: inline-block;
-    vertical-align: top;
-    min-width: 1px;
-    min-height: 1px;
-  }
-
 }
 
-.ms-DetailsList.is-horizontalConstrained {
+.focusZone {
+  display: inline-block;
+  vertical-align: top;
+  min-width: 1px;
+  min-height: 1px;
+}
+
+.rootIsHorizontalConstrained {
   overflow-x: auto;
   overflow-y: visible;
 
   -webkit-overflow-scrolling: touch;
 }
 
-.ms-DetailsList-cell {
-    word-break: break-word;
-}
-
 /* Set the min height for a row to 38px so even rendering empty cells takes that space. */
-.ms-DetailsList .ms-List-cell {
+.root :global(.ms-List-cell) {
   min-height: 38px;
+  word-break: break-word;
 }

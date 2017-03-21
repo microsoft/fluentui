@@ -1,11 +1,11 @@
 @import '../../common/common';
 
-.ms-groupFooter {
+.root {
   position: relative;
   padding: 10px 84px;
   cursor: pointer;
 
-  .ms-Link {
+  :global(.ms-Link) {
     font-size: $ms-font-size-s;
   }
 }

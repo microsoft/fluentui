@@ -7,7 +7,7 @@
 // --------------------------------------------------
 // MessageBar Styles
 
-.ms-MessageBar {
+.root {
   @include ms-bgColor-info;
   color: $ms-color-infoText;
   width: 100%;
@@ -15,30 +15,34 @@
   display: flex;
   position: relative;
 
-  .ms-MessageBar-icon {
+  .icon {
     @include padding-right(8px);
     color: $ms-color-info;
   }
 
-  .ms-Link {
+  :global(.ms-Link) {
     font-size: $ms-font-size-s;
+  }
+
+  :global(.ms-Button) {
+    @include margin-left(6px);
   }
 }
 
-.ms-MessageBar-icon,
-.ms-MessageBar-text {
+.icon,
+.text {
   display: table-cell;
   vertical-align: top;
 }
 
-.ms-MessageBar-icon {
+.icon {
   font-size: $ms-icon-size-m;
   min-width: 16px;
   min-height: 16px;
   display: flex;
 }
 
-.ms-MessageBar-text {
+.text {
   @include ms-font-s;
   min-width: 0;
   display: flex;
@@ -47,7 +51,7 @@
 
 //== Modifier: Warning message
 //
-.ms-MessageBar.ms-MessageBar--warning {
+.root.rootIsWarning {
   @include ms-bgColor-warning;
   color: $ms-color-warningText;
 }
@@ -55,11 +59,11 @@
 
 //== Modifier: Severe Warning message
 //
-.ms-MessageBar.ms-MessageBar--severeWarning {
+.root.rootIsSevereWarning {
   @include ms-bgColor-severeWarning;
   color: $ms-color-severeWarningText;
 
-  .ms-MessageBar-icon {
+  .icon {
     @include ms-fontColor-severeWarning;
   }
 }
@@ -67,11 +71,11 @@
 
 //== Modifier: Error message
 //
-.ms-MessageBar.ms-MessageBar--error {
+.root.rootIsError {
   @include ms-bgColor-error;
   color: $ms-color-errorText;
 
-  .ms-MessageBar-icon {
+  .icon {
     @include ms-fontColor-error;
   }
 }
@@ -79,11 +83,11 @@
 
 //== Modifier: Blocked message
 //
-.ms-MessageBar.ms-MessageBar--blocked {
+.root.rootIsBlocked {
   @include ms-bgColor-error;
   color: $ms-color-errorText;
 
-  .ms-MessageBar-icon {
+  .icon {
     @include ms-fontColor-error;
   }
 }
@@ -91,87 +95,87 @@
 
 //== Modifier: Success message
 //
-.ms-MessageBar.ms-MessageBar--success {
+.root.rootIsSuccess {
   @include ms-bgColor-success;
   color: $ms-color-successText;
 
-  .ms-MessageBar-icon {
+  .icon {
     @include ms-fontColor-green;
   }
 }
 
 // Shared
 
-.ms-MessageBar-content {
+.content {
   padding: 16px;
   display: flex;
   width: 100%;
   box-sizing: border-box;
 }
 
-.ms-MessageBar-actionables {
+.actionables {
   display: flex;
   flex-direction: column;
   width: 100%;
   min-width: 0;
 }
 
-.ms-MessageBar-actionables > .ms-MessageBar-dismissal {
+.actionables > .dismissal {
   right: 0;
   top: 0;
   position: absolute !important; // Needed because we're using focus-border mixin
 }
 
-.ms-MessageBar-actions, .ms-MessageBar-actionsOneline {
+.actions, .actionsOneline {
   display: flex;
   flex: 0 0 auto;
   flex-direction: row-reverse;
   align-items: center;
 }
 
-.ms-MessageBar-actionsOneline {
+.actionsOneline {
   position: relative;
 }
 
-.ms-MessageBar-dismissal {
+.dismissal {
   @include focus-border();
   min-width: 0;
 }
-.ms-MessageBar-actionsOneline .ms-MessageBar-dismissal {
+.dismissalOneline .dismissal {
   @include margin-right(-8px);
 }
 
 // Add space between adjacent MessageBars.
-.ms-MessageBar + .ms-MessageBar {
+.root + .root {
   margin-bottom: 6px;
 }
 
-.ms-MessageBar-innerTextPadding {
+.innerTextPadding {
   @include padding-right(24px); // Add padding if we have a dismiss to prevent button overlapping text.
 
-  span, .ms-MessageBar-innerText > span {
+  span, .innerText > span {
     @include padding-right(4px); // Add padding between text and hyperlink.
   }
 }
 
 // When we can have multiple lines in the message bar.
-.ms-MessageBar-multiline > .ms-MessageBar-content > .ms-MessageBar-actionables {
+.multiline > .content > .actionables {
   flex-direction: column;
 }
 
 // When we should have only a single line of text in the message bar.
-.ms-MessageBar-singleline {
-  .ms-MessageBar-content {
-    .ms-MessageBar-icon{
+.singleline {
+  .content {
+    .icon{
       align-items: center;
     }
 
-    .ms-MessageBar-actionables > .ms-MessageBar-text {
+    .actionables > .text {
       justify-content: center;
       align-items: center;
 
-      .ms-MessageBar-innerText,
-      .ms-MessageBar-innerTextPadding {
+      .innerText,
+      .innerTextPadding {
         max-height: 1.3em;
         line-height: 1.3em;
         overflow-x: hidden;
@@ -181,12 +185,12 @@
     }
   }
 
-  .ms-MessageBar-content > .ms-MessageBar-actionables {
+  .content > .actionables {
     flex-direction: row;
   }
 }
 
 // Because of an odd behaviour in other CSS, ms-MessageBar--remove causes children's icons to use 8px, and not inherit.
-.ms-MessageBar .ms-Icon--Cancel {
+.root :global(.ms-Icon--Cancel) {
   font-size: 14px;
 }
