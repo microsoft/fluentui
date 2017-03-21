@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "ContextualMenu: Fix an issue where anchor item would not display ellipses properly on overflow.",
+      "type": "patch"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}
