@@ -7,7 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { SliderBasicExample } from './examples/Slider.Basic.Example';
 
-const SliderBasicExampleCode = require('raw-loader!./examples/Slider.Basic.Example.tsx') as string;
+const SliderBasicExampleCode = require('!raw-loader!./examples/Slider.Basic.Example.tsx') as string;
 
 export class SliderPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -23,7 +23,7 @@ export class SliderPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('office-ui-fabric-react/lib/components/Slider/Slider.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/lib/components/Slider/Slider.Props.ts')
             ] }
           />
         }

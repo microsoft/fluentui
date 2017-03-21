@@ -29,7 +29,7 @@ export class ChoiceGroupImageExample extends React.Component<any, IChoiceGroupIm
             {
               key: 'bar',
               checked: this.state.imageKey === 'bar',
-              imageSrc: 'dist/choicegroup-bar-unselected.png',
+              imageSrc: './images/choicegroup-bar-unselected.png',
               selectedImageSrc: 'dist/choicegroup-bar-selected.png',
               imageSize: { width: 50, height: 50 },
               text: 'Bar chart'
@@ -37,7 +37,7 @@ export class ChoiceGroupImageExample extends React.Component<any, IChoiceGroupIm
             {
               key: 'pie',
               checked: this.state.imageKey === 'pie',
-              imageSrc: 'dist/choicegroup-pie-unselected.png',
+              imageSrc: './images/choicegroup-pie-unselected.png',
               selectedImageSrc: 'dist/choicegroup-pie-selected.png',
               imageSize: { width: 50, height: 50 },
               text: 'Pie chart'

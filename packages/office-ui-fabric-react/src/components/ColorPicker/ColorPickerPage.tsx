@@ -7,7 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { ColorPickerBasicExample } from './examples/ColorPicker.Basic.Example';
 
-const ColorPickerBasicExampleCode = require('raw-loader!./examples/ColorPicker.Basic.Example.tsx') as string;
+const ColorPickerBasicExampleCode = require('!raw-loader!./examples/ColorPicker.Basic.Example.tsx') as string;
 
 export class ColorPickerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -25,7 +25,7 @@ export class ColorPickerPage extends React.Component<IComponentDemoPageProps, {}
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('office-ui-fabric-react/lib/components/ColorPicker/ColorPicker.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/lib/components/ColorPicker/ColorPicker.Props.ts')
             ] }
           />
         }

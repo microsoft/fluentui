@@ -6,7 +6,7 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { ProgressIndicatorBasicExample } from './examples/ProgressIndicator.Basic.Example';
-const ProgressIndicatorBasicExampleCode = require('raw-loader!./examples/ProgressIndicator.Basic.Example.tsx') as string;
+const ProgressIndicatorBasicExampleCode = require('!raw-loader!./examples/ProgressIndicator.Basic.Example.tsx') as string;
 
 export class ProgressIndicatorPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -22,7 +22,7 @@ export class ProgressIndicatorPage extends React.Component<IComponentDemoPagePro
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('office-ui-fabric-react/lib/components/ProgressIndicator/ProgressIndicator.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/lib/components/ProgressIndicator/ProgressIndicator.Props.ts')
             ] }
           />
         }

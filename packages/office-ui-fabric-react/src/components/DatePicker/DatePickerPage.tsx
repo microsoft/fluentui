@@ -9,9 +9,9 @@ import { DatePickerBasicExample } from './examples/DatePicker.Basic.Example';
 import { DatePickerRequiredExample } from './examples/DatePicker.Required.Example';
 import { DatePickerInputExample } from './examples/DatePicker.Input.Example';
 
-const DatePickerBasicExampleCode = require('raw-loader!./examples/DatePicker.Basic.Example.tsx') as string;
-const DatePickerRequiredExampleCode = require('raw-loader!./examples/DatePicker.Required.Example.tsx') as string;
-const DatePickerInputExampleCode = require('raw-loader!./examples/DatePicker.Input.Example.tsx') as string;
+const DatePickerBasicExampleCode = require('!raw-loader!./examples/DatePicker.Basic.Example.tsx') as string;
+const DatePickerRequiredExampleCode = require('!raw-loader!./examples/DatePicker.Required.Example.tsx') as string;
+const DatePickerInputExampleCode = require('!raw-loader!./examples/DatePicker.Input.Example.tsx') as string;
 
 export class DatePickerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -35,7 +35,7 @@ export class DatePickerPage extends React.Component<IComponentDemoPageProps, {}>
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('office-ui-fabric-react/lib/components/DatePicker/DatePicker.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/lib/components/DatePicker/DatePicker.Props.ts')
             ] }
           />
         }

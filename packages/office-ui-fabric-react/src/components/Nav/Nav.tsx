@@ -188,7 +188,8 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
             <i
               className={ css(
                 'ms-Nav-chevron ms-Icon ms-Icon--ChevronDown',
-                styles.chevronIcon
+                styles.chevronIcon,
+                isGroupExpanded && styles.chevronIsExpanded
               ) }
             />
             { group.name }

@@ -9,9 +9,9 @@ import { IconBasicExample } from './examples/Icon.Basic.Example';
 import { IconColorExample } from './examples/Icon.Color.Example';
 import { IconImageSheetExample } from './examples/Icon.ImageSheet.Example';
 
-const IconBasicExampleCode = require('raw-loader!./examples/Icon.Basic.Example.tsx') as string;
-const IconColorExampleCode = require('raw-loader!./examples/Icon.Color.Example.tsx') as string;
-const IconImageSheetExampleCode = require('raw-loader!./examples/Icon.ImageSheet.Example.tsx') as string;
+const IconBasicExampleCode = require('!raw-loader!./examples/Icon.Basic.Example.tsx') as string;
+const IconColorExampleCode = require('!raw-loader!./examples/Icon.Color.Example.tsx') as string;
+const IconImageSheetExampleCode = require('!raw-loader!./examples/Icon.ImageSheet.Example.tsx') as string;
 
 export class IconPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -35,7 +35,7 @@ export class IconPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('office-ui-fabric-react/lib/components/Icon/Icon.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/lib/components/Icon/Icon.Props.ts')
             ] }
           />
         }

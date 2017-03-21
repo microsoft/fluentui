@@ -7,7 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { SpinnerBasicExample } from './examples/Spinner.Basic.Example';
 
-const SpinnerBasicExampleCode = require('raw-loader!./examples/Spinner.Basic.Example.tsx') as string;
+const SpinnerBasicExampleCode = require('!raw-loader!./examples/Spinner.Basic.Example.tsx') as string;
 
 export class SpinnerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -25,7 +25,7 @@ export class SpinnerPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('office-ui-fabric-react/lib/components/Spinner/Spinner.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/lib/components/Spinner/Spinner.Props.ts')
             ] }
           />
         }

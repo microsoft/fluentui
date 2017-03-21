@@ -7,7 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { ToggleBasicExample } from './examples/Toggle.Basic.Example';
 
-const ToggleBasicExampleCode = require('raw-loader!./examples/Toggle.Basic.Example.tsx') as string;
+const ToggleBasicExampleCode = require('!raw-loader!./examples/Toggle.Basic.Example.tsx') as string;
 
 export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -23,7 +23,7 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('office-ui-fabric-react/lib/components/Toggle/Toggle.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/lib/components/Toggle/Toggle.Props.ts')
             ] }
           />
         }

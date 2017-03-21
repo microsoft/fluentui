@@ -7,7 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { RatingBasicExample } from './examples/Rating.Basic.Example';
 
-const RatingBasicExampleCode = require('raw-loader!./examples/Rating.Basic.Example.tsx') as string;
+const RatingBasicExampleCode = require('!raw-loader!./examples/Rating.Basic.Example.tsx') as string;
 
 export class RatingPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -23,7 +23,7 @@ export class RatingPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('office-ui-fabric-react/lib/components/Rating/Rating.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/lib/components/Rating/Rating.Props.ts')
             ] }
           />
         }
