@@ -12,6 +12,7 @@ import {
 
 import {
   BaseComponent,
+  IRenderFunction,
   autobind
 } from '../../Utilities';
 
@@ -86,10 +87,10 @@ export interface IGroupedListSectionProps extends React.Props<GroupedListSection
   viewport?: IViewport;
 
   /** Override for rendering the group header. */
-  onRenderGroupHeader?: (props?: IGroupDividerProps, defaultRender?: (props?: IGroupDividerProps) => JSX.Element) => JSX.Element;
+  onRenderGroupHeader?: IRenderFunction<IGroupDividerProps>;
 
   /** Override for rendering the group footer. */
-  onRenderGroupFooter?: (props?: IGroupDividerProps, defaultRender?: (props?: IGroupDividerProps) => JSX.Element) => JSX.Element;
+  onRenderGroupFooter?: IRenderFunction<IGroupDividerProps>;
 }
 
 export interface IGroupedListSectionState {
