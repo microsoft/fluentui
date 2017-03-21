@@ -22,6 +22,15 @@
     "export-name": false,
     "trailing-comma": [
       false
-    ]
+    ],
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-type",
+      "check-preblock"
+    ],
+    "no-trailing-whitespace": false
   }
 }

@@ -12,7 +12,7 @@
   "scripts": {
     "build": "gulp",
     "clean": "gulp clean",
-    "start": "gulp serve",
+    "start": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.serve.config.js --open",
     "test": "gulp"
   },
   "devDependencies": {

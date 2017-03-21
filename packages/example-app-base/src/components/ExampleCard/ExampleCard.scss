@@ -34,21 +34,9 @@
       min-width: 100px;
       transition: border $ms-duration3 $ms-ease1;
 
-      .ms-Button-icon {
-        position: relative;
-        top: 3px;
-
-        .ms-Icon {
-          font-size: $ms-font-size-l;
-          padding: 0;
-          @include margin-right(8px);
-        }
-      }
-
       .ms-Button-label {
         color: $ms-color-neutralDark;
         display: inline-block;
-        padding-bottom: 6px;
       }
 
       &.is-active,

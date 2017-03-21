@@ -1,6 +1,6 @@
 @import './semanticColorVariables';
 
-@mixin focus-border($padding: 0, $color: $focusedBorderColor, $thickness: 1, $onFocus: true) {
+@mixin focus-border($padding: 0, $color: $focusedBorderColor, $thickness: 1px, $onFocus: true) {
   &::-moz-focus-inner {
     // Clear the focus border in Firefox. Reference: http://stackoverflow.com/a/199319/1436671
     border: 0;
@@ -14,12 +14,12 @@
     position: relative;
   }
 
-  @if $onFocus == 'true'{
+  @if $onFocus {
     :global(.ms-Fabric.is-focusVisible) &:focus:after {
       @include after-outline($padding, $color, $thickness);
       }
   }
-  @else{
+  @else {
     &::after {
       @include after-outline($padding, $color, $thickness);
       }
@@ -27,7 +27,7 @@
 }
 
 // When focus is set using the keyboard, apply an outline.
-@mixin after-outline ($padding: 0, $color: $focusedBorderColor, $thickness: 1) {
+@mixin after-outline ($padding: 0, $color: $focusedBorderColor, $thickness: 1px) {
     content: '';
     position: absolute;
     top: $padding;

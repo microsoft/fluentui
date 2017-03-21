@@ -71,6 +71,7 @@ build.webpack.isEnabled = () => isProduction;
 build.task('webpack', build.webpack);
 build.task('tslint', build.tslint);
 build.task('ts', build.typescript);
+build.task('sass', build.sass);
 
 // initialize tasks.
 build.initialize(gulp);

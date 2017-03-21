@@ -7,9 +7,9 @@
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
   },
   "scripts": {
-    "postinstall": "rush install && rush link",
+    "postinstall": "rush install && rush link && rush rebuild",
     "test": "rush build --production",
-    "start": "gulp --gulpfile apps/fabric-examples/gulpfile.js serve",
+    "start": "cd packages && cd office-ui-fabric-react && npm start",
     "build": "rush build --production --clean",
     "change": "rush change"
   },

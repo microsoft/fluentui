@@ -40,9 +40,12 @@ module.exports = {
       },
       {
         test: /\.scss$/,
+        exclude: [
+          /node_modules/
+        ],
         use: [
           {
-            loader: "load-themed-styles-loader" // creates style nodes from JS strings
+            loader: "load-themed-styles-loader", // creates style nodes from JS strings
           }, {
             loader: "css-loader", // translates CSS into CommonJS
             options: {
@@ -63,7 +66,7 @@ module.exports = {
             }
           },
           {
-            loader: "sass-loader"
+            loader: "sass-loader",
           }
         ]
       }
