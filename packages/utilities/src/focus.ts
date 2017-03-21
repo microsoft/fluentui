@@ -56,7 +56,13 @@ export function getPreviousElement(
 
   // Check its children.
   if (traverseChildren && (includeElementsInFocusZones || !isElementFocusZone(currentElement)) && isCurrentElementVisible) {
-    const childMatch = getPreviousElement(rootElement, currentElement.lastElementChild as HTMLElement, true, true, true, includeElementsInFocusZones);
+    const childMatch = getPreviousElement(
+      rootElement,
+      currentElement.lastElementChild as HTMLElement,
+      true,
+      true,
+      true,
+      includeElementsInFocusZones);
 
     if (childMatch) {
       return childMatch;
@@ -69,7 +75,13 @@ export function getPreviousElement(
   }
 
   // Check its previous sibling.
-  const siblingMatch = getPreviousElement(rootElement, currentElement.previousElementSibling as HTMLElement, true, true, true, includeElementsInFocusZones);
+  const siblingMatch = getPreviousElement(
+    rootElement,
+    currentElement.previousElementSibling as HTMLElement,
+    true,
+    true,
+    true,
+    includeElementsInFocusZones);
 
   if (siblingMatch) {
     return siblingMatch;
@@ -107,7 +119,13 @@ export function getNextElement(
 
   // Check its children.
   if (!suppressChildTraversal && isCurrentElementVisible && (includeElementsInFocusZones || !isElementFocusZone(currentElement))) {
-    const childMatch = getNextElement(rootElement, currentElement.firstElementChild as HTMLElement, true, true, false, includeElementsInFocusZones);
+    const childMatch = getNextElement(
+      rootElement,
+      currentElement.firstElementChild as HTMLElement,
+      true,
+      true,
+      false,
+      includeElementsInFocusZones);
 
     if (childMatch) {
       return childMatch;
@@ -119,7 +137,13 @@ export function getNextElement(
   }
 
   // Check its sibling.
-  const siblingMatch = getNextElement(rootElement, currentElement.nextElementSibling as HTMLElement, true, true, false, includeElementsInFocusZones);
+  const siblingMatch = getNextElement(
+    rootElement,
+    currentElement.nextElementSibling as HTMLElement,
+    true,
+    true,
+    false,
+    includeElementsInFocusZones);
 
   if (siblingMatch) {
     return siblingMatch;

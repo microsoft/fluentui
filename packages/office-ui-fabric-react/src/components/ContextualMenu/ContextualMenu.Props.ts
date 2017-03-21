@@ -247,6 +247,12 @@ export interface IContextualMenuItem {
   className?: string;
 
   /**
+   * Additional styles to apply to the menu item
+   * @defaultvalue undefined
+   */
+  style?: React.CSSProperties;
+
+  /**
    * Optional accessibility label (aria-label) attribute that will be stamped on to the element.
    * If none is specified, the arai-label attribute will contain the item name
    */

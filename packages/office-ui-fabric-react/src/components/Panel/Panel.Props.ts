@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { Panel } from './Panel';
+import { IRenderFunction } from '../../Utilities';
+import { ILayerProps } from '../../Layer';
 
 export interface IPanelProps extends React.Props<Panel> {
+
   /**
   * Whether the panel is displayed.
   * @default false
@@ -85,6 +88,36 @@ export interface IPanelProps extends React.Props<Panel> {
   * Indicates the selector for first focusable item
   */
   firstFocusableSelector?: string;
+
+  /**
+   * Optional props to pass to the Layer component hosting the panel.
+   */
+  layerProps?: ILayerProps;
+
+  /**
+   * Optional custom renderer navigation region. Replaces current close button.
+   */
+  onRenderNavigation?: IRenderFunction<IPanelProps>;
+
+  /**
+   * Optional custom renderer for header region. Replaces current title
+   */
+  onRenderHeader?: IRenderFunction<IPanelProps>;
+
+  /**
+   * Optional custom renderer for body region. Replaces any children passed into the component.
+   */
+  onRenderBody?: IRenderFunction<IPanelProps>;
+
+  /**
+   * Optional custom renderer for footer region. Replaces sticky footer.
+   */
+  onRenderFooter?: IRenderFunction<IPanelProps>;
+
+  /**
+   * Custom renderer for content in the sticky footer
+   */
+  onRenderFooterContent?: IRenderFunction<IPanelProps>;
 }
 
 export enum PanelType {

@@ -14,13 +14,22 @@ let packageFolder = buildConfig.packageFolder || '';
 let distFolder = buildConfig.distFolder;
 
 // Configure custom lint overrides.
-build.tslint.setConfig({ lintConfig: require('./tslint.json') });
+let rules = Object.assign(
+  {},
+  require('./node_modules/@microsoft/gulp-core-build-typescript/lib/defaultTslint.json').rules,
+  require('../../tslint.json').rules,
+  require('./tslint.json').rules
+);
+build.tslint.setConfig({ lintConfig: { rules } });
 
 // Configure TypeScript 2.0.
 build.typescript.setConfig({ typescript: require('typescript') });
 
 // Use css modules.
 build.sass.setConfig({ useCSSModules: true });
+
+// Use Karma Tests - Disable during develoment if prefered
+build.karma.isEnabled = () => true;
 
 // Disable unnecessary subtasks.
 build.preCopy.isEnabled = () => false;

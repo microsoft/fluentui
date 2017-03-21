@@ -2,6 +2,292 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "2.5.3",
+      "tag": "office-ui-fabric-react_v2.5.3",
+      "date": "Tue, 21 Mar 2017 03:20:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "03d8caef8ff28f90b923ea3a1f0722690ddc4748",
+            "comment": "Nav: Fixing an issue where the default expand state for a group was not initialized correctly, resulting in having to click multiple times to collapse a group."
+          },
+          {
+            "author": "Ricky Patel <rickyp@microsoft.com>",
+            "commit": "fa2a1be1f95cc5e570bb5341cab66fed15a554bb",
+            "comment": "Facepile has an excess margin of 4px below it which needs to be removed. It also uses float's which is pretty retro!"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.5.2",
+      "tag": "office-ui-fabric-react_v2.5.2",
+      "date": "Fri, 17 Mar 2017 18:01:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "e5082c7ae68eb6ece9ccf91021593b66a86a5a89",
+            "comment": "DetailsList: header sizing fixed (was a css selector tweak that caused the issue.) Also added `iconName` to IColumn to specify an iconName like \"Mail\". The `iconClassName` property is still preserved, but is piped into the className of the Icon component."
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.5.1",
+      "tag": "office-ui-fabric-react_v2.5.1",
+      "date": "Fri, 17 Mar 2017 03:05:52 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Aleksandr Gembinski <v-algemb@microsoft.com>",
+            "commit": "ebb27cf662f98a7d8781229964ddc8eb1aa272d4",
+            "comment": "ChoiceGroup component: Distinguishes HC border from focus border, removes double stroke, refactors to use common mixin"
+          },
+          {
+            "author": "Ross Brodbeck <hross@users.noreply.github.com>",
+            "commit": "c434886d12075a7420bea1538859413ba34410c1",
+            "comment": "List: Add aria list role"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.5.0",
+      "tag": "office-ui-fabric-react_v2.5.0",
+      "date": "Thu, 16 Mar 2017 03:05:54 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Ross Brodbeck <hross@users.noreply.github.com>",
+            "commit": "de7ff67514a42a9baea3754da120176ea22ae5db",
+            "comment": "DocumentCard: Add aria role and keyboard handling"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "5ebbc0f87cca003458cd3029d8a2c09f64326752",
+            "comment": "Panel: Added sticky footer section and broke each panel region into seperate onRender fucntion. "
+          }
+        ],
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "067bea2f02ca01e17de12b1fc810a9ccf77a7da7",
+            "comment": "FocusZone: Spacebar no longer scrolls page when in focuszone or selectionzone, and acts as selecting action"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "fc25dec84003547a08c8ef368a1badfca0b93e93",
+            "comment": "DetailsList: headers now have the correct font applied and use a transparent background to fix the IE11 styling, which doesn't like \"inherit\"."
+          },
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "4932c6ef9ccb48ce052902d77633825f18592c8d",
+            "comment": "TextField: Fix for multiple onChanged calls"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.4.0",
+      "tag": "office-ui-fabric-react_v2.4.0",
+      "date": "Wed, 15 Mar 2017 03:06:37 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "d50be3f2e3cd73474d7f0ad70b422f37e4828ea3",
+            "comment": "DetailsList: adding `onColumnResize` callback which wil execute when a column is being resized."
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.3.0",
+      "tag": "office-ui-fabric-react_v2.3.0",
+      "date": "Tue, 14 Mar 2017 03:15:10 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Ross Brodbeck <hross@users.noreply.github.com>",
+            "commit": "421a06c9a973d49d112f75633d4b098f2e0d63c1",
+            "comment": "PeoplePicker: Add rendering overrides"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Kris Brown <kristoferbrown@users.noreply.github.com>",
+            "commit": "539ae367462f66aae44bbd5087d9e79ea2ad4904",
+            "comment": "TextField component: hiding -ms-clear pseudo-element for bug #1216"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.2.1",
+      "tag": "office-ui-fabric-react_v2.2.1",
+      "date": "Sat, 11 Mar 2017 04:11:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Aleksandr Gembinski <v-algemb@microsoft.com>",
+            "commit": "0c981ab6796834d6f495de690227cc7144afd9fe",
+            "comment": "Pivot: selected underline is now visible in high contrast mode."
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.2.0",
+      "tag": "office-ui-fabric-react_v2.2.0",
+      "date": "Fri, 10 Mar 2017 20:41:04 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Igor Machuzhak <ihor3000@gmail.com>",
+            "commit": "3c1f29c6b86630d5cb83661e423825cab963046b",
+            "comment": "Dropdown: Adding a required property which will be passed into the Label."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "eca0148b5e6e69cae5eea5e121cf0d5be45b3339",
+            "comment": "Adjusting React peer dependency to include v16.0.0-0 in the acceptable range for testing with v16."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=1.1.0 <2.0.0` to `>=1.2.0 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.1.1",
+      "tag": "office-ui-fabric-react_v2.1.1",
+      "date": "Fri, 10 Mar 2017 16:16:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Aleksandr Gembinski <v-algemb@microsoft.com>",
+            "commit": "d2c93b5014d3b8e65952a3a8da0c7bb8170f69d0",
+            "comment": "Dropdown: Updates the `aria-disabled` attribute based on disabled state."
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.1.0",
+      "tag": "office-ui-fabric-react_v2.1.0",
+      "date": "Thu, 09 Mar 2017 22:06:44 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "gitwick <saritwik@microsoft.com>",
+            "commit": "c15dba8df5497ec9dcbcd807f23eb5e277a9e7a9",
+            "comment": "Breadcrumb: Implement onRenderItem"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.0.2",
+      "tag": "office-ui-fabric-react_v2.0.2",
+      "date": "Thu, 09 Mar 2017 16:17:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "5bfd1b7abda09bcffd4d16343bc853a43064bbee",
+            "comment": "CommandBar: Set aria-disabled=\"true\" for disabled menu items"
+          },
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "d9d41052731914af9590e7b74db6246bf07a9488",
+            "comment": "Dropdown - Remove aria-activedescendant when not dropped"
+          },
+          {
+            "author": "Manish Dahamiwal <mdhamiwal@gmail.com>",
+            "commit": "d9d41052731914af9590e7b74db6246bf07a9488",
+            "comment": "MessageBar - Fix timeout issue"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.0.1",
+      "tag": "office-ui-fabric-react_v2.0.1",
+      "date": "Thu, 09 Mar 2017 06:33:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5bb7f59edb4493c766bce23ec4c20aec912f5f59",
+            "comment": "No changes, required republish."
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.0.0",
+      "tag": "office-ui-fabric-react_v2.0.0",
+      "date": "Thu, 09 Mar 2017 06:11:07 GMT",
+      "comments": {
+        "major": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "716bc451fdd0f90a05b8b3de12898312b17b4efe",
+            "comment": "IMPORTANT: \n\nThis pull request converts ALL components over to use module css. What does this mean?\n\n* All classnames, such as ms-Button, will now be obfuscated to be unique.\n* Pages that host multiple versions of the same component will not stomp on each other and will be safe.\n* All existing class names are left intact, so current customizations should not break.\n\nGoing forward, we will adhere to using local scoped module rules specifically to avoid breaking ourselves when multiple versions. Additionally we are evaluating a much more robust and contractual way of defining our styles.\n\nProblems that still exist:\n\n1. You must rely on class names to customize, and if those class names change, your customizations are broken.\n2. Specificity of our rules is an implicit contract that is easy to break. It is often unclear and partners usually give up early fighting the specificity war and use `!important` to stomp on it, which is not ideal. If a partner does use \"more specific\" rules today, tomorrow they many not be specific enough.\n3. RTL rules in particular are very specific. When something that was once not RTL specific is changed to RTL, it becomes implicitly more specific, and thus breaks specificity contract.\n4. The bundles themselves have a lot of duplicate css. Because we generate rtl rules and theme tokens at build time rather than at runtime, we must download extra code, which bulks up the download size.\n5. Fabric core rules, which we implicitly rely on, are a hard thing to chase. If your page depends on core 6, and you're also using react components, you will find bugs. We'd like to eliminate this dependency so that it is reliable and contractual to use components. If you use a `ContextualMenu`, it should animate without depending on fabric-core css to be loaded.\n\nWe are planning to address these and evaluating library options. Issue being tracked here: #983 \n"
+          }
+        ],
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "716bc451fdd0f90a05b8b3de12898312b17b4efe",
+            "comment": "Button: the `label` property used to be meant to render text within the button, but it overlaps with the html `label` attribute. While `label` will still exist, it will now push content into the button label attribute, and we've added a `text` property  to allow for a formal way of defining the textual content displayed within the button. Passing in a child string to the button will still work, but `text` wil"
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "716bc451fdd0f90a05b8b3de12898312b17b4efe",
+            "comment": "IContextualMenuItemProps: the `styles` property can now be passed through to apply styling to menu items."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.14.3",
+      "tag": "office-ui-fabric-react_v1.14.3",
+      "date": "Thu, 09 Mar 2017 00:16:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "3e8bacae1f1bea04ea982c754ca009686ac1e1f5",
+            "comment": "BaseButton: `rootProps` is now correctly mixed in with `props`. Please note that `rootProps` is deprecated and should not be used, but this fix simply ensures that the deprecated backwards compatibility works."
+          },
+          {
+            "author": "Liaoliang Ye <supersingerman@126.com>",
+            "commit": "29a098a149c7220e07d45b569e51569b59f89af9",
+            "comment": "fix base picker shift + tab resolving the people, should move focus instead."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.14.2",
+      "tag": "office-ui-fabric-react_v1.14.2",
+      "date": "Wed, 08 Mar 2017 04:07:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "02dcdaa8ca512738ff79d362e6a47988f53f7ef0",
+            "comment": "Updated facepile button to use BaseButton so it inherits all the base button styles"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.14.1",
       "tag": "office-ui-fabric-react_v1.14.1",
       "date": "Fri, 03 Mar 2017 16:09:20 GMT",
