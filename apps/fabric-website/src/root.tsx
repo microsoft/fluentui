@@ -10,7 +10,13 @@ import { HomePage } from './pages/HomePage/HomePage';
 import WindowWidthUtility from './utilities/WindowWidthUtility';
 import './styles/styles.scss';
 
-setBaseUrl('./dist/');
+let isProduction = process.argv.indexOf('--production') > -1;
+
+if (!isProduction) {
+  setBaseUrl('./dist/');
+} else {
+  setBaseUrl('https://static2.sharepointonline.com/files/fabric/fabric-website/dist/');
+}
 
 let rootElement;
 let currentBreakpoint;
