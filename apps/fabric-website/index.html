@@ -37,6 +37,7 @@
 
   <script type="text/javascript">
     var isProduction = false;
+    var isDogfood = false;
     var isLocal = false;
     var today = new Date();
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -45,7 +46,7 @@
         isProduction = true;
         break;
       case location.hostname === 'officedevcentersite-devx.azurewebsites.net':
-        isProduction = true;
+        isDogfood = true;
         break;
       case location.hostname === 'officedevcentersite-release.azurewebsites.net':
         isProduction = true;
@@ -75,25 +76,44 @@
       return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
 
-    var productionScripts = [
+    var reactProduction = [
       '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.min.js',
       '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.min.js'
     ];
 
-    var developmentScripts = [
+    var reactDevelopment = [
       '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js',
       '//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js'
     ];
 
+    var baseProductionUrl = "https://static2.sharepointonline.com/files/fabric/fabric-website/dist/";
+    var baseDogfoodUrl = "https://static2df.sharepointonline.com/files/fabric/fabric-website/dist/";
+
+    var scripts = [];
+    var noCompress = getParameterByName('noCompress') === 'true';
+
     if (isLocal) {
-      developmentScripts.push('/dist/fabric-site.js');
-    } else if (!isProduction || getParameterByName('noCompress') === 'true') {
-      developmentScripts.push('https://static2.sharepointonline.com/files/fabric/fabric-website/dist/fabric-site.js');
-    } else if (isProduction) {
-      productionScripts.push('https://static2.sharepointonline.com/files/fabric/fabric-website/dist/fabric-site.min.js?date=' + date);
+      scripts.push.apply(scripts, reactDevelopment);
+      scripts.push('/dist/fabric-site.js');
+    } else if (isDogfood) {
+      if (noCompress) {
+        scripts.push.apply(scripts, reactDevelopment);
+        scripts.push(baseDogfoodUrl + 'fabric-site.min.js?date=' + date);
+      } else {
+        scripts.push.apply(scripts, reactProduction);
+        scripts.push(baseDogfoodUrl + 'fabric-site.js?date=' + date);
+      }
+    } else {
+      if (noCompress) {
+        scripts.push.apply(scripts, reactDevelopment);
+        scripts.push(baseProductionUrl + 'fabric-site.js?date=' + date);
+      } else {
+        scripts.push.apply(scripts, reactProduction);
+        scripts.push(baseProductionUrl + 'fabric-site.min.js?date=' + date);
+      }
     }
 
-    loadScript(isProduction ? productionScripts : developmentScripts);
+    loadScript(scripts);
   </script>
   <script>
     // DesignDev Google Analytics
@@ -113,36 +133,36 @@
   </script>
   <noscript><img alt="" width="1" height="1" src="http://c.microsoft.com/trans_pixel.aspx" /></noscript>
   <script>
-    // OfficeDev Google Analytics
-    (function (i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject '] = r; i[r] = i[r] || function () {
-        (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script ', '//www.google-analytics.com/analytics.js ', 'ga ');
+      // OfficeDev Google Analytics
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-    if (window.location.host.indexOf('localhost ') != -1 || window.location.host.indexOf('azurewebsites ') != -1) {
-      ga('create ', 'UA-65962112-1 ', 'auto '); //staging and Dev GA
-    } else {
-      ga('create ', 'UA-54271502-1 ', 'auto '); //prod GA
-    }
-    ga('require ', 'displayfeatures ');
-    ga('require ', 'linkid ', 'linkid.js ');
-    ga('send ', 'pageview ');
+      if (window.location.host.indexOf('localhost') != -1 || window.location.host.indexOf('azurewebsites') != -1) {
+        ga('create', 'UA-65962112-1', 'auto'); //staging and Dev GA
+      } else {
+        ga('create', 'UA-54271502-1', 'auto'); //prod GA
+      }
+      ga('require', 'displayfeatures');
+      ga('require', 'linkid', 'linkid.js');
+      ga('send', 'pageview');
   </script>
   <script>
-    // OfficeDev App Insights Telemetry
-    var appInsightInstrumentationKey = "26fb3bba-0fdf-4493-b54e-e974c37cc5bc"; //prod Key
-    if (window.location.host.toLowerCase().indexOf('localhost ') != -1 || window.location.host.toLowerCase().indexOf('azurewebsites ') != -1) {
-      appInsightInstrumentationKey = "49bc8c7a-c997-4078-819c-f5d51d975aeb"; //staging key
-    }
-    var appInsights = window.appInsights || function (config) {
-      function s(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, r = document, f = window, e = "script", o = r.createElement(e), i, u; for (o.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", r.getElementsByTagName(e)[0].parentNode.appendChild(o), t.cookie = r.cookie, t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace"]; i.length;) s("track" + i.pop()); return config.disableExceptionTracking || (i = "onerror", s("_" + i), u = f[i], f[i] = function (config, r, f, e, o) { var s = u && u(config, r, f, e, o); return s !== !0 && t["_" + i](config, r, f, e, o), s }), t
-    } ({
-      instrumentationKey: appInsightInstrumentationKey
-    });
-    window.appInsights = appInsights;
-    appInsights.trackPageView();
+      // OfficeDev App Insights Telemetry
+      var appInsightInstrumentationKey = "26fb3bba-0fdf-4493-b54e-e974c37cc5bc"; //prod Key
+      if (window.location.host.toLowerCase().indexOf('localhost') != -1 || window.location.host.toLowerCase().indexOf('azurewebsites') != -1) {
+        appInsightInstrumentationKey = "49bc8c7a-c997-4078-819c-f5d51d975aeb"; //staging key
+      }
+      var appInsights = window.appInsights || function (config) {
+        function s(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, r = document, f = window, e = "script", o = r.createElement(e), i, u; for (o.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", r.getElementsByTagName(e)[0].parentNode.appendChild(o), t.cookie = r.cookie, t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace"]; i.length;) s("track" + i.pop()); return config.disableExceptionTracking || (i = "onerror", s("_" + i), u = f[i], f[i] = function (config, r, f, e, o) { var s = u && u(config, r, f, e, o); return s !== !0 && t["_" + i](config, r, f, e, o), s }), t
+      } ({
+        instrumentationKey: appInsightInstrumentationKey
+      });
+      window.appInsights = appInsights;
+      appInsights.trackPageView();
   </script>
 
 </body>
