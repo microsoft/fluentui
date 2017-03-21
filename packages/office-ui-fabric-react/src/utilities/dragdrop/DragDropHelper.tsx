@@ -10,7 +10,7 @@ import {
 } from './interfaces';
 import { ISelection } from '../../utilities/selection/interfaces';
 
-const DISTANCE_FOR_DRAG_SQUARED = 9; // the minimum mouse move distance to treat it as drag event
+const DISTANCE_FOR_DRAG_SQUARED = 25; // the minimum mouse move distance to treat it as drag event
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
 
