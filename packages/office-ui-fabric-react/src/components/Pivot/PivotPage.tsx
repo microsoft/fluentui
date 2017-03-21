@@ -15,15 +15,15 @@ import { PivotOnChangeExample } from './examples/Pivot.OnChange.Example';
 import { PivotRemoveExample } from './examples/Pivot.Remove.Example';
 import { PivotOverrideExample } from './examples/Pivot.Override.Example';
 
-const PivotRemoveExampleCode = require('!raw-loader!./examples/Pivot.Remove.Example.tsx') as string;
-const PivotBasicExampleCode = require('!raw-loader!./examples/Pivot.Basic.Example.tsx') as string;
-const PivotLargeExampleCode = require('!raw-loader!./examples/Pivot.Large.Example.tsx') as string;
-const PivotTabsExampleCode = require('!raw-loader!./examples/Pivot.Tabs.Example.tsx') as string;
-const PivotTabsLargesExampleCode = require('!raw-loader!./examples/Pivot.TabsLarge.Example.tsx') as string;
-const PivotFabricExampleCode = require('!raw-loader!./examples/Pivot.Fabric.Example.tsx') as string;
-const PivotOnChangeExampleCode = require('!raw-loader!./examples/Pivot.OnChange.Example.tsx') as string;
-const PivotIconCountExampleCode = require('!raw-loader!./examples/Pivot.IconCount.Example.tsx') as string;
-const PivotOverrideExampleCode = require('!raw-loader!./examples/Pivot.Override.Example.tsx') as string;
+const PivotRemoveExampleCode = require('!raw-loader!./examples/Pivot.Remove.Example') as string;
+const PivotBasicExampleCode = require('!raw-loader!./examples/Pivot.Basic.Example') as string;
+const PivotLargeExampleCode = require('!raw-loader!./examples/Pivot.Large.Example') as string;
+const PivotTabsExampleCode = require('!raw-loader!./examples/Pivot.Tabs.Example') as string;
+const PivotTabsLargesExampleCode = require('!raw-loader!./examples/Pivot.TabsLarge.Example') as string;
+const PivotFabricExampleCode = require('!raw-loader!./examples/Pivot.Fabric.Example') as string;
+const PivotOnChangeExampleCode = require('!raw-loader!./examples/Pivot.OnChange.Example') as string;
+const PivotIconCountExampleCode = require('!raw-loader!./examples/Pivot.IconCount.Example') as string;
+const PivotOverrideExampleCode = require('!raw-loader!./examples/Pivot.Override.Example') as string;
 
 export class PivotPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {

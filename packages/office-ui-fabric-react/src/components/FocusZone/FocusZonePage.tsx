@@ -9,9 +9,9 @@ import { FocusZonePhotosExample } from './examples/FocusZone.Photos.Example';
 import { FocusZoneListExample } from './examples/FocusZone.List.Example';
 import { FocusZoneDisabledExample } from './examples/FocusZone.Disabled.Example';
 
-const FocusZonePhotosExampleCode = require('!raw-loader!./examples/FocusZone.Photos.Example.tsx') as string;
-const FocusZoneListExampleCode = require('!raw-loader!./examples/FocusZone.List.Example.tsx') as string;
-const FocusZoneDisabledExampleCode = require('!raw-loader!./examples/FocusZone.Disabled.Example.tsx') as string;
+const FocusZonePhotosExampleCode = require('!raw-loader!./examples/FocusZone.Photos.Example') as string;
+const FocusZoneListExampleCode = require('!raw-loader!./examples/FocusZone.List.Example') as string;
+const FocusZoneDisabledExampleCode = require('!raw-loader!./examples/FocusZone.Disabled.Example') as string;
 
 export class FocusZonePage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {

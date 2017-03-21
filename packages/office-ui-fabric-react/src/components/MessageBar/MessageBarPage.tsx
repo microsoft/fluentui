@@ -7,7 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { MessageBarBasicExample } from './examples/MessageBar.Basic.Example';
 
-const MessageBarBasicExampleCode = require('!raw-loader!./examples/MessageBar.Basic.Example.tsx') as string;
+const MessageBarBasicExampleCode = require('!raw-loader!./examples/MessageBar.Basic.Example') as string;
 
 export class MessageBarPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {

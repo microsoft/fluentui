@@ -40,11 +40,6 @@
       "packageName": "fabric-website",
       "projectFolder": "apps/fabric-website",
       "shouldPublish": false
-    },
-    {
-      "packageName": "ssr-tests",
-      "projectFolder": "apps/ssr-tests",
-      "shouldPublish": false
     }
   ]
 }

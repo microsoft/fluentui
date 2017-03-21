@@ -9,9 +9,9 @@ import { FacepileAddFaceExample } from './examples/Facepile.AddFace.Example';
 import { FacepileBasicExample } from './examples/Facepile.Basic.Example';
 import { FacepileOverflowExample } from './examples/Facepile.Overflow.Example';
 
-const FacepileAddFaceExampleCode = require('!raw-loader!./examples/Facepile.AddFace.Example.tsx') as string;
-const FacepileBasicExampleCode = require('!raw-loader!./examples/Facepile.Basic.Example.tsx') as string;
-const FacepileOverflowExampleCode = require('!raw-loader!./examples/Facepile.Overflow.Example.tsx') as string;
+const FacepileAddFaceExampleCode = require('!raw-loader!./examples/Facepile.AddFace.Example') as string;
+const FacepileBasicExampleCode = require('!raw-loader!./examples/Facepile.Basic.Example') as string;
+const FacepileOverflowExampleCode = require('!raw-loader!./examples/Facepile.Overflow.Example') as string;
 
 export class FacepilePage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {

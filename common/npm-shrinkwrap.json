@@ -279,9 +279,9 @@
       "resolved": "https://registry.npmjs.org/@types/cheerio/-/cheerio-0.22.0.tgz"
     },
     "@types/enzyme": {
-      "version": "2.7.5",
+      "version": "2.7.6",
       "from": "@types/enzyme@>=2.7.5 <3.0.0",
-      "resolved": "https://registry.npmjs.org/@types/enzyme/-/enzyme-2.7.5.tgz"
+      "resolved": "https://registry.npmjs.org/@types/enzyme/-/enzyme-2.7.6.tgz"
     },
     "@types/es6-collections": {
       "version": "0.5.29",
@@ -339,9 +339,9 @@
       "resolved": "https://registry.npmjs.org/@types/q/-/q-0.0.32.tgz"
     },
     "@types/react": {
-      "version": "15.0.16",
+      "version": "15.0.17",
       "from": "@types/react@>=15.0.16 <16.0.0",
-      "resolved": "https://registry.npmjs.org/@types/react/-/react-15.0.16.tgz"
+      "resolved": "https://registry.npmjs.org/@types/react/-/react-15.0.17.tgz"
     },
     "@types/react-addons-test-utils": {
       "version": "0.14.17",
@@ -1723,7 +1723,7 @@
     },
     "electron-to-chromium": {
       "version": "1.2.7",
-      "from": "electron-to-chromium@>=1.2.5 <2.0.0",
+      "from": "electron-to-chromium@>=1.2.7 <2.0.0",
       "resolved": "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.2.7.tgz"
     },
     "elliptic": {
@@ -2095,9 +2095,9 @@
       "resolved": "https://registry.npmjs.org/faye-websocket/-/faye-websocket-0.10.0.tgz"
     },
     "fbjs": {
-      "version": "0.8.9",
+      "version": "0.8.11",
       "from": "fbjs@>=0.8.4 <0.9.0",
-      "resolved": "https://registry.npmjs.org/fbjs/-/fbjs-0.8.9.tgz",
+      "resolved": "https://registry.npmjs.org/fbjs/-/fbjs-0.8.11.tgz",
       "dependencies": {
         "core-js": {
           "version": "1.2.7",
@@ -5420,9 +5420,9 @@
       "resolved": "https://registry.npmjs.org/node-notifier/-/node-notifier-5.0.2.tgz"
     },
     "node-sass": {
-      "version": "4.5.0",
+      "version": "4.5.1",
       "from": "node-sass@>=4.2.0 <5.0.0",
-      "resolved": "https://registry.npmjs.org/node-sass/-/node-sass-4.5.0.tgz",
+      "resolved": "https://registry.npmjs.org/node-sass/-/node-sass-4.5.1.tgz",
       "dependencies": {
         "gaze": {
           "version": "1.1.2",
@@ -5564,9 +5564,9 @@
       "resolved": "https://registry.npmjs.org/office-ui-fabric-core/-/office-ui-fabric-core-5.1.0.tgz"
     },
     "office-ui-fabric-react": {
-      "version": "2.5.2",
+      "version": "2.5.3",
       "from": "office-ui-fabric-react@>=2.5.2-0 <3.0.0-0",
-      "resolved": "https://registry.npmjs.org/office-ui-fabric-react/-/office-ui-fabric-react-2.5.2.tgz"
+      "resolved": "https://registry.npmjs.org/office-ui-fabric-react/-/office-ui-fabric-react-2.5.3.tgz"
     },
     "on-finished": {
       "version": "2.3.0",
@@ -6023,9 +6023,9 @@
       "resolved": "https://registry.npmjs.org/postcss-merge-rules/-/postcss-merge-rules-2.1.2.tgz",
       "dependencies": {
         "browserslist": {
-          "version": "1.7.6",
+          "version": "1.7.7",
           "from": "browserslist@>=1.5.2 <2.0.0",
-          "resolved": "https://registry.npmjs.org/browserslist/-/browserslist-1.7.6.tgz"
+          "resolved": "https://registry.npmjs.org/browserslist/-/browserslist-1.7.7.tgz"
         }
       }
     },
@@ -6535,9 +6535,9 @@
           "resolved": "https://registry.npmjs.org/autoprefixer/-/autoprefixer-6.7.7.tgz"
         },
         "browserslist": {
-          "version": "1.7.6",
+          "version": "1.7.7",
           "from": "browserslist@>=1.7.6 <2.0.0",
-          "resolved": "https://registry.npmjs.org/browserslist/-/browserslist-1.7.6.tgz"
+          "resolved": "https://registry.npmjs.org/browserslist/-/browserslist-1.7.7.tgz"
         },
         "debug": {
           "version": "2.2.0",
@@ -6609,9 +6609,9 @@
           "resolved": "https://registry.npmjs.org/autoprefixer/-/autoprefixer-6.7.7.tgz"
         },
         "browserslist": {
-          "version": "1.7.6",
+          "version": "1.7.7",
           "from": "browserslist@>=1.7.6 <2.0.0",
-          "resolved": "https://registry.npmjs.org/browserslist/-/browserslist-1.7.6.tgz"
+          "resolved": "https://registry.npmjs.org/browserslist/-/browserslist-1.7.7.tgz"
         },
         "dateformat": {
           "version": "1.0.12",
@@ -6659,11 +6659,6 @@
           "resolved": "https://registry.npmjs.org/typescript/-/typescript-2.2.1.tgz"
         }
       }
-    },
-    "rush-ssr-tests": {
-      "version": "0.0.0",
-      "from": "temp_modules/rush-ssr-tests",
-      "resolved": "file:temp_modules/rush-ssr-tests"
     },
     "rush-todo-app": {
       "version": "0.0.0",

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ProgressIndicatorPage } from 'fabric-examples/lib/pages/ProgressIndicatorPage/ProgressIndicatorPage';
+import { ProgressIndicatorPage } from 'office-ui-fabric-react/lib/components/ProgressIndicator/ProgressIndicatorPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

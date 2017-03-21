@@ -7,7 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { LabelBasicExample } from './examples/Label.Basic.Example';
 
-const LabelBasicExampleCode = require('!raw-loader!./examples/Label.Basic.Example.tsx') as string;
+const LabelBasicExampleCode = require('!raw-loader!./examples/Label.Basic.Example') as string;
 
 export class LabelPage extends React.Component<IComponentDemoPageProps, any> {
   public render() {

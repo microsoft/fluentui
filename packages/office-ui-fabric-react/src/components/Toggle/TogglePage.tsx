@@ -7,7 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { ToggleBasicExample } from './examples/Toggle.Basic.Example';
 
-const ToggleBasicExampleCode = require('!raw-loader!./examples/Toggle.Basic.Example.tsx') as string;
+const ToggleBasicExampleCode = require('!raw-loader!./examples/Toggle.Basic.Example') as string;
 
 export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
