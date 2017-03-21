@@ -310,10 +310,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           role='menuitem'
           style={ item.style }
           onClick={ this._onAnchorClick.bind(this, item) }>
-          { (hasIcons) ? (
-            this._renderIcon(item)
-          ) : (null) }
-          <span className={ css('ms-ContextualMenu-linkText', styles.linkText) }> { item.name } </span>
+          { this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons) }
         </a>
       </div>);
   }
