@@ -3,7 +3,6 @@ import { ICalendar, ICalendarProps } from './Calendar.Props';
 import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { CalendarDay } from './CalendarDay';
 import { CalendarMonth } from './CalendarMonth';
-import { getDateRangeArray } from '../../utilities/dateMath/DateMath';
 import {
   autobind,
   css,

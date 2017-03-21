@@ -91,6 +91,17 @@ export function compareDates(date1: Date, date2: Date): boolean {
 }
 
 /**
+ * Compare the date parts of two dates
+ * @param {Date} date1 - The first date to compare
+ * @param {Date} date2 - The second date to compare
+ * @returns {Number} A negative value if date1 is earlier than date2, 0 if the dates are equal, or a positive value
+ * if date1 is later than date2.
+ */
+export function compareDatePart(date1: Date, date2: Date): Number {
+  return getDatePartHashValue(date1) - getDatePartHashValue(date2);
+}
+
+/**
  * Gets the date range array including the specified date. The date range array is calculated as the list
  * of dates accounting for the specified first day of the week and date range type.
  * @param {Date} date - The input date
@@ -131,7 +142,13 @@ export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firs
   return datesArray;
 }
 
-export function isInDateRangeArray(date: Date, dateRange: Date[]) {
+/**
+ * Checks whether the specified date is in the given date range.
+ * @param {Date} date - The origin date
+ * @param {Date[]} dateRange - An array of dates to do the lookup on
+ * @returns {bool} True if the date matches one of the dates in the specified array, false otherwise.
+ */
+export function isInDateRangeArray(date: Date, dateRange: Date[]): boolean {
   for (let i = 0, length = dateRange.length; i < length; i++) {
     if (compareDates(date, dateRange[i])) {
       return true;
@@ -162,4 +179,12 @@ function getStartDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date {
     daysOffset -= DAYS_IN_WEEK;
   }
   return addDays(date, daysOffset);
+}
+
+/**
+ * Helper function to assist in date comparisons
+ */
+function getDatePartHashValue(date: Date) {
+  // Generate date hash value created as sum of Date (up to 31 = 5 bits), Month (up to 11 = 4 bits) and Year.
+  return date.getDate() + (date.getMonth() << 5) + (date.getFullYear() << 9);
 }

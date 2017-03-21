@@ -15,6 +15,7 @@ import {
   addWeeks,
   addMonths,
   compareDates,
+  compareDatePart,
   getDateRangeArray,
   isInDateRangeArray
 } from '../../utilities/dateMath/DateMath';
@@ -197,11 +198,11 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
 
     // Navigate to next or previous month if needed
-    if (autoNavigateOnSelection) {
-      if (selectedDate.getMonth() < navigatedDate.getMonth()) {
+    if (autoNavigateOnSelection && selectedDate.getMonth() != navigatedDate.getMonth()) {
+      var compareResult = compareDatePart(selectedDate, navigatedDate);
+      if (compareResult < 0) {
         this._onSelectPrevMonth();
-      }
-      else if (selectedDate.getMonth() > navigatedDate.getMonth()) {
+      } else if (compareResult > 0) {
         this._onSelectNextMonth();
       }
     }
