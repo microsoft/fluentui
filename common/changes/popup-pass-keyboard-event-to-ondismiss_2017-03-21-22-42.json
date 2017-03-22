@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Popup: It now passes triggering KeyboardEvent to onDismiss handler",
+      "type": "patch"
+    }
+  ],
+  "email": "miclo@microsoft.com"
+}
