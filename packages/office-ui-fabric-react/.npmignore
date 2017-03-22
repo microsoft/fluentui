@@ -7,6 +7,10 @@
 .gitignore
 .vscode
 coverage
+temp
+images
+results
+*.build.log
 dist/*.stats.html
 dist/demo*.*
 gulpfile.js

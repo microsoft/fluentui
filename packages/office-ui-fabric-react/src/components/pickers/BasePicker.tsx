@@ -15,7 +15,7 @@ import { SuggestionsController } from './Suggestions/SuggestionsController';
 import { IBasePickerProps } from './BasePicker.Props';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 import { IPickerItemProps } from './PickerItem.Props';
-import './BasePicker.scss';
+import styles from './BasePicker.scss';
 
 export interface IBasePickerState {
   items?: any;
@@ -94,14 +94,18 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     return (
       <div
         ref={ this._resolveRef('root') }
-        className={ css('ms-BasePicker', className ? className : '') }
+        className={ css(
+          'ms-BasePicker',
+          className ? className : '') }
         onKeyDown={ this.onKeyDown }>
         <SelectionZone selection={ this.selection } selectionMode={ SelectionMode.multiple }>
-          <FocusZone ref={ this._resolveRef('focusZone') } className='ms-BasePicker-text'>
+          <FocusZone
+            ref={ this._resolveRef('focusZone') }
+            className={ css('ms-BasePicker-text', styles.pickerText) }>
             { this.renderItems() }
             <BaseAutoFill
               { ...inputProps }
-              className='ms-BasePicker-input'
+              className={ css('ms-BasePicker-input', styles.pickerInput) }
               ref={ this._resolveRef('input') }
               onFocus={ this.onInputFocus }
               onInputValueChange={ this.onInputChange }
@@ -275,7 +279,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       case KeyCodes.tab:
       case KeyCodes.enter:
-        if (value && this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible) {
+        if (!ev.shiftKey && value && this.suggestionStore.hasSelectedSuggestion() && this.state.suggestionsVisible) {
           this.completeSuggestion();
           ev.preventDefault();
           ev.stopPropagation();
@@ -411,10 +415,10 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
           onKeyDown={ this.onKeyDown }>
           <SelectionZone selection={ this.selection }
             selectionMode={ SelectionMode.multiple }>
-            <div className='ms-BasePicker-text'>
+            <div className={ css('ms-BasePicker-text', styles.pickerText) }>
               <BaseAutoFill
                 { ...inputProps }
-                className='ms-BasePicker-input'
+                className={ css('ms-BasePicker-input', styles.pickerInput) }
                 ref={ this._resolveRef('input') }
                 onFocus={ this.onInputFocus }
                 onInputValueChange={ this.onInputChange }

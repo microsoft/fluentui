@@ -22,7 +22,7 @@ export class TooltipPage extends React.Component<any, any> {
         componentName='TooltipExample'
         exampleCards={
           <LayerHost>
-            <ExampleCard title='Tooltip' code={ TooltipBasicExampleCode }>
+            <ExampleCard title='Tooltip with custom gapSpace' code={ TooltipBasicExampleCode }>
               <TooltipBasicExample />
             </ExampleCard>
 

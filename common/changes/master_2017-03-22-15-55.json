@@ -2,8 +2,13 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Updated facepile button to use BaseButton so it inherits all the base button styles",
+      "comment": "TooltipHost: CalloutProps type fixed, and mixed properly in Tooltip",
       "type": "patch"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/utilities",
+      "type": "none"
     },
     {
       "comment": "",

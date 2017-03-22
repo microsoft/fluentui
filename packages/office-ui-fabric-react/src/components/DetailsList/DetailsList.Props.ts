@@ -9,6 +9,7 @@ import {
   IDragDropEvents,
   IDragDropContext,
 } from './../../utilities/dragdrop/index';
+import { IconName } from '../../Icon';
 import {
   IGroup,
   IGroupRenderProps
@@ -97,6 +98,9 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
 
   /** Callback for when the user asks for a contextual menu (usually via right click) from a column header. */
   onColumnHeaderContextMenu?: (column?: IColumn, ev?: Event) => void;
+
+  /** Callback fired on column resize */
+  onColumnResize?: (column?: IColumn, newWidth?: number) => void;
 
   /** Callback for when a given row has been invoked (by pressing enter while it is selected.) */
   onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
@@ -203,7 +207,12 @@ export interface IColumn {
   columnActionsMode?: ColumnActionsMode;
 
   /**
-   * Icon name to show in addition to the text.
+   * Optional iconName to use for the column header.
+   */
+  iconName?: IconName;
+
+  /**
+   * Class name to add to the Icon component.
    */
   iconClassName?: string;
 
