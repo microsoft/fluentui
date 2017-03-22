@@ -17,6 +17,7 @@ export class ButtonPrimaryExample extends React.Component<IButtonProps, {}> {
           data-automation-id='test'
           disabled={ disabled }
           text='Create account'
+          onClick={ () => alert('Clicked') }
         />
       </div>
     );
