@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "2.5.4",
+      "tag": "office-ui-fabric-react_v2.5.4",
+      "date": "Wed, 22 Mar 2017 03:18:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "joschect <joschect@microsoft.com>",
+            "commit": "91be833c81cf747618da74bfeba48327ac9412e6",
+            "comment": "ContextualMenu: Fix an issue where anchor item would not display ellipses properly on overflow."
+          },
+          {
+            "author": "gitjain <alreut@yahoo.com>",
+            "commit": "ff321a620a59bf659fc4ad1e51490d984372813b",
+            "comment": "Dropdown: Added class to dropdown label and dropdown container so that they can be targeted with css"
+          },
+          {
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "36b9c9b550cbb905e98f8b05a8eef6490861126e",
+            "comment": "ContextualMenu: Remove role='menuitem' for child element for LI in ContextualMenu"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.5.3",
       "tag": "office-ui-fabric-react_v2.5.3",
       "date": "Tue, 21 Mar 2017 03:20:12 GMT",
