@@ -57,7 +57,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
             content={ content }
             targetElement={ this._tooltipHost }
             directionalHint={ directionalHint }
-            calloutProps={ assign({ onDismiss: this._onTooltipCallOutDismiss }, calloutProps) }
+            calloutProps={ assign(calloutProps, { onDismiss: this._onTooltipCallOutDismiss }) }
             { ...getNativeProps(this.props, divProperties) }
           >
           </Tooltip>
