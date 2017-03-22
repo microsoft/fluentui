@@ -7,9 +7,11 @@ import {
 } from '@uifabric/example-app-base';
 import { PersonaInitialsExample } from './examples/Persona.Initials.Example';
 import { PersonaBasicExample } from './examples/Persona.Basic.Example';
+import { PersonaCustomRenderExample } from './examples/Persona.CustomRender.Example';
 
 const PersonaInitialsExampleCode = require('./examples/Persona.Initials.Example.tsx') as string;
 const PersonaBasicExampleCode = require('./examples/Persona.Basic.Example.tsx') as string;
+const PersonaCustomRenderExampleCode = require('./examples/Persona.CustomRender.Example.tsx') as string;
 
 export class PersonaPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -24,6 +26,9 @@ export class PersonaPage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
             <ExampleCard title='Persona in initials' code={ PersonaInitialsExampleCode }>
               <PersonaInitialsExample />
+            </ExampleCard>
+            <ExampleCard title='Rendering custom persona text' code={ PersonaCustomRenderExampleCode }>
+              <PersonaCustomRenderExample />
             </ExampleCard>
           </div>
         }

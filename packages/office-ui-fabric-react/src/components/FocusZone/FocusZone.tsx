@@ -263,6 +263,12 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       }
     } else {
       switch (ev.which) {
+        case KeyCodes.space:
+          if (this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {
+            break;
+          }
+          return;
+
         case KeyCodes.left:
           if (direction !== FocusZoneDirection.vertical && this._moveFocusLeft()) {
             break;

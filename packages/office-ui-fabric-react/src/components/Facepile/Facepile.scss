@@ -1,7 +1,8 @@
 @import '../../common/common';
 
+$spacingAroundItemButton: 2px;
+
 .root {
-  position: relative;
   width: auto;
 }
 
@@ -9,14 +10,23 @@
   clear: both;
 }
 
+.members {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: hidden;
+  margin: -1 * $spacingAroundItemButton;
+
+  > * {
+    flex: 0 0 auto;
+    margin: $spacingAroundItemButton;
+  }
+}
+
 .itemButton {
   @include focus-outline();
-  position: relative;
   text-align: center;
-  @include float(left);
   padding: 0;
-  @include margin-right(4px);
-  margin-bottom: 4px;
   border-radius: 50%;
   vertical-align: top;
   :global(.ms-Persona-details) {
