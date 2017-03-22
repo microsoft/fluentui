@@ -149,8 +149,8 @@ export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firs
  * @returns {bool} True if the date matches one of the dates in the specified array, false otherwise.
  */
 export function isInDateRangeArray(date: Date, dateRange: Date[]): boolean {
-  for (let i = 0, length = dateRange.length; i < length; i++) {
-    if (compareDates(date, dateRange[i])) {
+  for (let dateInRange of dateRange) {
+    if (compareDates(date, dateInRange)) {
       return true;
     }
   }
