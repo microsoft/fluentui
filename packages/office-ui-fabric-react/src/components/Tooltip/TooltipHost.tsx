@@ -15,7 +15,7 @@ import { TooltipDelay } from './Tooltip.Props';
 import styles from './Tooltip.scss';
 
 export interface ITooltipHostState {
-  isTooltipVisible?: boolean
+  isTooltipVisible?: boolean;
 }
 
 
