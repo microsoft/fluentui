@@ -129,7 +129,7 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
                 forceFocusInsideTrap={ forceFocusInsideTrap }
                 firstFocusableSelector={ firstFocusableSelector }>
                 <div className={ css('ms-Dialog-header', styles.header) }>
-                  <p className={ css('ms-Dialog-title', styles.title) } id={ id + '-title' }>{ title }</p>
+                  <p className={ css('ms-Dialog-title', styles.title) } id={ id + '-title' } role='heading'>{ title }</p>
                   <div className={ css('ms-Dialog-topButton', styles.topButton) }>
                     { this.props.topButtonsProps.map((props) => (
                       <Button {...props} />
