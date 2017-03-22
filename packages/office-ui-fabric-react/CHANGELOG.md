@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 21 Mar 2017 03:20:12 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Mar 2017 03:18:05 GMT and should not be manually modified.
+
+## 2.5.4
+Wed, 22 Mar 2017 03:18:05 GMT
+
+### Patches
+
+- ContextualMenu: Fix an issue where anchor item would not display ellipses properly on overflow.
+- Dropdown: Added class to dropdown label and dropdown container so that they can be targeted with css
+- ContextualMenu: Remove role='menuitem' for child element for LI in ContextualMenu
 
 ## 2.5.3
 Tue, 21 Mar 2017 03:20:12 GMT
