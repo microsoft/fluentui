@@ -18,7 +18,6 @@ export interface ITooltipHostState {
   isTooltipVisible?: boolean;
 }
 
-
 export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostState> {
 
   public static defaultProps = {
