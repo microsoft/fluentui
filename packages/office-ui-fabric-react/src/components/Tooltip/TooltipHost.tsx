@@ -6,14 +6,20 @@ import {
   autobind,
   css,
   divProperties,
-  getNativeProps
+  getNativeProps,
+  assign
 } from '../../Utilities';
 import { ITooltipHostProps } from './TooltipHost.Props';
 import { Tooltip } from './Tooltip';
 import { TooltipDelay } from './Tooltip.Props';
 import styles from './Tooltip.scss';
 
-export class TooltipHost extends BaseComponent<ITooltipHostProps, any> {
+export interface ITooltipHostState {
+  isTooltipVisible?: boolean
+}
+
+
+export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostState> {
 
   public static defaultProps = {
     delay: TooltipDelay.medium
@@ -33,7 +39,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, any> {
 
   // Render
   public render() {
-    let { content, children, directionalHint, delay } = this.props;
+    let { calloutProps, content, children, directionalHint, delay } = this.props;
     let { isTooltipVisible } = this.state;
     return (
       <div
@@ -45,17 +51,17 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, any> {
         onMouseLeave={ this._onTooltipMouseLeave }
       >
         { children }
-        { isTooltipVisible ? (
+        { isTooltipVisible && (
           <Tooltip
             delay={ delay }
             content={ content }
             targetElement={ this._tooltipHost }
             directionalHint={ directionalHint }
-            calloutProps={ { onDismiss: this._onTooltipCallOutDismiss } }
+            calloutProps={ assign({ onDismiss: this._onTooltipCallOutDismiss }, calloutProps) }
             { ...getNativeProps(this.props, divProperties) }
           >
           </Tooltip>
-        ) : (null) }
+        ) }
       </div>
     );
   }
