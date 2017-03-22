@@ -100,10 +100,7 @@ export class Facepile extends BaseComponent<IFacepileProps, IFacepileState> {
 
     return (
       <div className={ css('ms-Facepile', styles.root) }>
-        <div
-          ref={ this._resolveRef('_members') }
-          className={ css('ms-Facepile-members') }
-        >
+        <div ref={ this._resolveRef('_members') }>
           { showAddButton && this._getAddNewElement() }
           <FocusZone
             key={ 'FocusZone' }

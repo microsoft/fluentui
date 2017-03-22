@@ -1,5 +1,7 @@
 @import '../../common/common';
 
+//$spacingAroundItemButton: 2px;
+
 .root {
   position: relative;
   width: auto;
@@ -8,6 +10,19 @@
 .clear {
   clear: both;
 }
+
+// .members {
+//   display: flex;
+//   flex-direction: row;
+//   flex-wrap: wrap;
+//   overflow: hidden;
+//   margin: -1 * $spacingAroundItemButton;
+
+//   > * {
+//     flex: 0 0 auto;
+//     margin: $spacingAroundItemButton;
+//   }
+// }
 
 .itemButton {
   @include focus-outline();

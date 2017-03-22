@@ -35,6 +35,7 @@ export class AutoScroll {
 
     if (this._scrollableParent) {
       this._events.on(window, 'mousemove', this._onMouseMove, true);
+      this._events.on(window, 'touchmove', this._onTouchMove, true);
     }
   }
 
@@ -44,18 +45,28 @@ export class AutoScroll {
   }
 
   private _onMouseMove(ev: MouseEvent) {
+    this._computeScrollVelocity(ev.clientY);
+  }
+
+  private _onTouchMove(ev: TouchEvent) {
+    if (ev.touches.length > 0) {
+      this._computeScrollVelocity(ev.touches[0].clientY);
+    }
+  }
+
+  private _computeScrollVelocity(clientY: number) {
     let scrollRectTop = this._scrollRect.top;
     let scrollClientBottom = scrollRectTop + this._scrollRect.height - SCROLL_GUTTER_HEIGHT;
 
-    if (ev.clientY < (scrollRectTop + SCROLL_GUTTER_HEIGHT)) {
+    if (clientY < (scrollRectTop + SCROLL_GUTTER_HEIGHT)) {
       this._scrollVelocity = Math.max(
         -MAX_SCROLL_VELOCITY,
-        -MAX_SCROLL_VELOCITY * ((SCROLL_GUTTER_HEIGHT - (ev.clientY - scrollRectTop)) / SCROLL_GUTTER_HEIGHT
+        -MAX_SCROLL_VELOCITY * ((SCROLL_GUTTER_HEIGHT - (clientY - scrollRectTop)) / SCROLL_GUTTER_HEIGHT
         ));
-    } else if (ev.clientY > scrollClientBottom) {
+    } else if (clientY > scrollClientBottom) {
       this._scrollVelocity = Math.min(
         MAX_SCROLL_VELOCITY,
-        MAX_SCROLL_VELOCITY * ((ev.clientY - scrollClientBottom) / SCROLL_GUTTER_HEIGHT
+        MAX_SCROLL_VELOCITY * ((clientY - scrollClientBottom) / SCROLL_GUTTER_HEIGHT
         ));
     } else {
       this._scrollVelocity = 0;

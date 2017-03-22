@@ -152,7 +152,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   }
 
   @autobind
-  public dismiss(ev?: Event | React.MouseEvent<HTMLElement>) {
+  public dismiss(ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) {
     let { onDismiss } = this.props;
 
     if (onDismiss) {
