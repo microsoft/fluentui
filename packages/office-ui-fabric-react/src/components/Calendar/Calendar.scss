@@ -49,6 +49,7 @@ $Calendar-dayPicker-margin: 10px;
 // clicks within the picker don’t reach the holder.
 .frame {
   padding: 1px;
+  position: relative;
 }
 
 .wrap {
@@ -298,8 +299,8 @@ $Calendar-dayPicker-margin: 10px;
   height: 30px;
   line-height: 30px;
   padding: 0 10px;
-  position: absolute;
-  @include right(9px);
+  position: absolute !important;
+  @include right(3px);
 
   &:hover {
     outline: 1px solid transparent;
