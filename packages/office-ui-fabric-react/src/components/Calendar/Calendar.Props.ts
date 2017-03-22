@@ -12,8 +12,8 @@ export interface ICalendar {
 export interface ICalendarProps extends React.Props<Calendar> {
   /**
   * Callback issued when a date is selected
-  * @param {Date} date - The date the user selected
-  * @param {Date[]} selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set for the component.
+  * @param date - The date the user selected
+  * @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set for the component.
   */
   onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
 
