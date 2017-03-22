@@ -90,8 +90,10 @@ a.link {
   text-transform: none;
   text-indent: 0px;
   text-shadow: none;
+  text-decoration: none;
   box-sizing: border-box;
 }
+
 .linkContent {
   white-space: nowrap;
   height: inherit;
@@ -128,13 +130,6 @@ a.link {
   flex-grow: 1;
   text-overflow: ellipsis;
   overflow: hidden;
-  white-space: nowrap;
-}
-
-.linkText {
-  margin: 0px 4px;
-  display: inline-block;
-  vertical-align: top;
   white-space: nowrap;
 }
 
