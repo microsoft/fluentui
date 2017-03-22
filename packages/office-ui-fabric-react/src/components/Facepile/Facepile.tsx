@@ -63,7 +63,14 @@ export class Facepile extends BaseComponent<IFacepileProps, IFacepileState> {
 
   public componentWillReceiveProps(nextProps: IFacepileProps) {
     this.setState((prevState: IFacepileState) => {
-      prevState.renderedItems = nextProps.personas;
+      const { maxDisplayablePersonas, useOnlyAvailableWidth } = this.props;
+      if (useOnlyAvailableWidth || !maxDisplayablePersonas) {
+        prevState.renderedItems = nextProps.personas;
+      } else {
+        // If we don't need to measure and maxDisplayablePersonas
+        // is set then limit this to maxDisplayablePersonas
+        prevState.renderedItems = nextProps.personas.slice(0, maxDisplayablePersonas);
+      }
       return prevState;
     });
     this._calculated = false;
@@ -125,8 +132,6 @@ export class Facepile extends BaseComponent<IFacepileProps, IFacepileState> {
       </div>
     );
   }
-
-
 
   private _updateMeasurements(): void {
     const { useOnlyAvailableWidth } = this.props;
@@ -206,10 +211,10 @@ export class Facepile extends BaseComponent<IFacepileProps, IFacepileState> {
     let elementWidth: number = 0;
 
     if (this._members) {
-      let node: NodeListOf<Element> = this._members.querySelectorAll('.ms-Button');
-      if (node && node.length > 0) {
-        let style = window.getComputedStyle(node[0]);
-        elementWidth = node[0].getBoundingClientRect().width + (parseInt(style.marginLeft, 10) + parseInt(style.marginRight, 10)) || 0;
+      let nodeList: NodeListOf<Element> = this._members.querySelectorAll("[class*='itemButton']");
+      if (nodeList && nodeList.length > 0) {
+        let style = window.getComputedStyle(nodeList[0]);
+        elementWidth = nodeList[0].getBoundingClientRect().width + (parseInt(style.marginLeft, 10) + parseInt(style.marginRight, 10)) || 0;
       }
     }
 
@@ -287,9 +292,7 @@ export class Facepile extends BaseComponent<IFacepileProps, IFacepileState> {
           );
         } }
       >
-
       </Persona>
-
     </BaseButton>;
   }
 

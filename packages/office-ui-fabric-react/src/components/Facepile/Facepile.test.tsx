@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-addons-test-utils';
 /* tslint:enable:no-unused-variable */
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import { setRTL } from '../../Utilities';
 import * as chai from 'chai';
 let { expect } = chai;
@@ -12,7 +12,7 @@ import { Facepile } from './Facepile';
 import { IFacepilePersona, OverflowButtonType } from './Facepile.Props';
 import { Persona, PersonaSize } from '../Persona';
 
-describe('Facepile', () => {
+describe.only('Facepile', () => {
   const facepilePersonas: IFacepilePersona[] = [
     {
       imageUrl: './images/persona-female.png',
@@ -44,77 +44,82 @@ describe('Facepile', () => {
           addButtonProps={ {} }
           showAddButton={ true }
         />);
-      let facepile = ReactDOM.findDOMNode(wrapper as React.ReactInstance);
 
+      let facepile = ReactDOM.findDOMNode(wrapper as React.ReactInstance);
       let addButton = facepile.querySelectorAll('.ms-Icon--AddFriend');
       expect(addButton).to.have.length(1, 'Add button should render');
-      let buttons = facepile.querySelectorAll('.ms-Facepile-itemButton');
+      let buttons = facepile.querySelectorAll("[class*='itemButton']");
       expect(buttons).to.have.length(1, 'Only one button should be rendered');
     });
 
-    it('renders chevron overflow button if overflowButtonProps are not null and OverflowButtonType equals downArrow', () => {
+    it('renders chevron overflow button if overflowButtonType is not none and OverflowButtonType equals downArrow', () => {
       const wrapper = ReactTestUtils.renderIntoDocument(
         <Facepile
           personas={ [] }
-          overflowButtonProps={ {} }
           overflowButtonType={ OverflowButtonType.downArrow }
         />);
+
       let facepile = ReactDOM.findDOMNode(wrapper as React.ReactInstance);
       let overflowButton = facepile.querySelectorAll('.ms-Icon--ChevronDown');
       expect(overflowButton).to.have.length(1, 'Overflow button should render');
-      let buttons = facepile.querySelectorAll('.ms-Facepile-itemButton');
+      let buttons = facepile.querySelectorAll("[class*='itemButton']");
       expect(buttons).to.have.length(1, 'Only one button should be rendered');
     });
 
-    it('renders more overflow button if overflowButtonProps are not null as OverflowButtonType equals more', () => {
+    it('renders more overflow button if overflowButtonType is not none as OverflowButtonType equals more', () => {
       const wrapper = ReactTestUtils.renderIntoDocument(
         <Facepile
           personas={ [] }
-          overflowButtonProps={ {} }
           overflowButtonType={ OverflowButtonType.more }
         />);
+
       let facepile = ReactDOM.findDOMNode(wrapper as React.ReactInstance);
       let overflowButton = facepile.querySelectorAll('.ms-Icon--More');
       expect(overflowButton).to.have.length(1, 'Overflow button should render');
-      let buttons = facepile.querySelectorAll('.ms-Facepile-itemButton');
+      let buttons = facepile.querySelectorAll("[class*='itemButton']");
       expect(buttons).to.have.length(1, 'Only one button should be rendered');
     });
 
-    it('renders without descriptive overflow button if overflowButtonProps are not null and maximum personas are not exceeded', () => {
+    it('renders without descriptive overflow button if overflowButtonType is not none and maximum personas are not exceeded', () => {
+      let personas: IFacepilePersona[] = facepilePersonas.concat(...facepilePersonas, ...facepilePersonas);
       const wrapper = ReactTestUtils.renderIntoDocument(
-        <Facepile personas={ [] }
-          overflowButtonProps={ {} }
+        <Facepile
+          personas={ [] }
           overflowButtonType={ OverflowButtonType.descriptive }
         />);
+
       let facepile = ReactDOM.findDOMNode(wrapper as React.ReactInstance);
       let overflowButton = facepile.querySelectorAll('.ms-Facepile-descriptiveOverflowButton');
       expect(overflowButton).to.have.length(0, 'Overflow button should not render');
-      let buttons = facepile.querySelectorAll('.ms-Facepile-itemButton');
+      let buttons = facepile.querySelectorAll("[class*='itemButton']");
       expect(buttons).to.have.length(0, 'No buttons should be rendered');
     });
 
-    it('renders with descriptive overflow button if overflowButtonProps are not null and maximum personas are exceeded', () => {
+    it('renders with descriptive overflow button if overflowButtonType is not none and maximum personas are exceeded', () => {
       let personas: IFacepilePersona[] = facepilePersonas.concat(...facepilePersonas, ...facepilePersonas);
-      const wrapper = shallow(
+      const wrapper = ReactTestUtils.renderIntoDocument(
         <Facepile
           personas={ personas }
           maxDisplayablePersonas={ 5 }
-          overflowButtonProps={ {} }
           overflowButtonType={ OverflowButtonType.descriptive }
         />);
-      let overflowButton = wrapper.find('.ms-Facepile-descriptiveOverflowButton');
+
+      let facepile = ReactDOM.findDOMNode(wrapper as React.ReactInstance);
+      let overflowButton = facepile.querySelectorAll('.ms-Facepile-descriptiveOverflowButton');
       expect(overflowButton).to.have.length(1, 'Overflow button should render');
-      let buttons = wrapper.find('.ms-Facepile-itemButton');
+      let buttons = facepile.querySelectorAll("[class*='itemButton']");
       expect(buttons).to.have.length(5, 'Four personas and overflow button should be rendered');
     });
 
     it('renders no more than maximum allowed personas', () => {
-      const wrapper = shallow(
+      const wrapper = mount(
         <Facepile
           personas={ facepilePersonas.concat(facepilePersonas, facepilePersonas, facepilePersonas) }
           maxDisplayablePersonas={ 2 }
         />);
-      let buttons = wrapper.find('.ms-Facepile-itemButton');
+
+      let facepile = wrapper.find(Facepile);
+      let buttons = facepile.find(Persona);
       expect(buttons).to.have.length(2, 'Only two buttons should be rendered');
     });
 
@@ -127,111 +132,85 @@ describe('Facepile', () => {
           ev.preventDefault();
         }
       }];
-      const wrapper = mount(
+
+      const wrapper = ReactTestUtils.renderIntoDocument(
         <Facepile
           personas={ personas }
         />);
-      let buttons = wrapper.find('.ms-Facepile-itemButton');
+
+      let facepile = ReactDOM.findDOMNode(wrapper as React.ReactInstance);
+      let buttons = facepile.querySelectorAll("[class*='itemButton']");
       expect(buttons).to.have.length(1, 'Clickable Persona should render');
-      buttons.simulate('click');
+      ReactTestUtils.Simulate.click(buttons[0]);
       expect(clicked).to.be.equal(1, 'Persona should have been clickable');
     });
   });
 
-  describe('Renders personas the correct size', ()=>{
+  describe('Renders personas the correct size', () => {
     it('personas and buttons render default size if not specified', () => {
-      const wrapper = ReactTestUtils.renderIntoDocument(
+      const wrapper = mount(
         <Facepile
           personas={ facepilePersonas }
-          addButtonProps={ {} }
           showAddButton={ true }
-          overflowButtonProps={ {} }
           overflowButtonType={ OverflowButtonType.downArrow }
         />);
-      let facepile = ReactDOM.findDOMNode(wrapper as React.ReactInstance);
-      let addButton = facepile.querySelectorAll('.ms-Facepile-addButton .ms-Persona.ms-Persona--xs');
+
+      let addButton = wrapper.find('.ms-Facepile-addButton .ms-Persona.ms-Persona--xs');
       expect(addButton).to.have.length(1, 'Add button should render');
-      let faces = facepile.querySelectorAll('.ms-Facepile-person');
-      expect(faces).to.have.length(facepilePersonas.length, 'personas should render');
-      for (let i = 0; i < faces.length; ++i) {
-        expect(faces[i].innerHTML).to.have.string('ms-Persona--xs');
-      }
-      let overflowButton = facepile.querySelectorAll('.ms-Facepile-overflowButton .ms-Persona--xs');
+      let faces = wrapper.find(Persona);
+      expect(faces).to.have.length(facepilePersonas.length + 2, 'personas, add button, and overflow should render');
+      faces.forEach(node => {
+        expect(node.html()).to.contain('ms-Persona--xs');
+      });
+      let overflowButton = wrapper.find('.ms-Facepile-overflowButton .ms-Persona--xs');
       expect(overflowButton).to.have.length(1, 'Overflow button should render');
     });
 
     it('personas and buttons render specified size', () => {
       // Test XXS size renders
-      let wrapper = shallow(
+      let wrapper = mount(
         <Facepile
           personas={ facepilePersonas }
           personaSize={ PersonaSize.extraExtraSmall }
         />);
+
       let faces = wrapper.find(Persona);
       expect(faces).to.have.length(facepilePersonas.length, 'XXSmall personas should render');
-      wrapper.find(Persona).forEach((node) => {
+      faces.forEach((node) => {
         expect(node.html()).to.contain('ms-Persona--xxs');
       });
 
       // Test small size renders
-      wrapper = shallow(
+      wrapper = mount(
         <Facepile
           personas={ facepilePersonas }
           personaSize={ PersonaSize.small }
         />);
+
       faces = wrapper.find(Persona);
       expect(faces).to.have.length(facepilePersonas.length, 'Small personas should render');
-      wrapper.find(Persona).forEach((node) => {
+      faces.forEach((node) => {
         expect(node.html()).to.contain('ms-Persona--sm');
       });
     });
   });
 
   describe('Number of personas to render', () => {
+    const testWidth: number = 200;
+
     beforeEach(() => {
       setRTL(false);
     });
 
     it('renders no more than maximum allowed personas', () => {
-      const wrapper = shallow(
+      const wrapper = mount(
         <Facepile
           personas={ facepilePersonas.concat(facepilePersonas, facepilePersonas, facepilePersonas) }
           maxDisplayablePersonas={ 2 }
-          />);
-      let buttons = wrapper.find('.ms-Facepile-itemButton');
-      expect(buttons).to.have.length(2, 'Only two personas should be rendered');
-    });
+        />);
 
-    xit('renders no more than maximum allowed width', () => {
-      const wrapper = mount(
-        <div style={ { 'width': '100px' } }>
-          <Facepile
-            personas={ facepilePersonas.concat(facepilePersonas, facepilePersonas, facepilePersonas) }
-            maxDisplayablePersonas={ 99 }
-            useOnlyAvailableWidth={ true }
-            />
-        </div>
-      );
-
-      let facepile = wrapper.find(Facepile);
-      let buttons = facepile.find('.ms-Facepile-itemButton');
-      let index: number = 0;
-
-      buttons.forEach(node => {
-        node.instance().context.property.getBoundingClientRect = () => ({
-          left: 32 * index,
-          top: 0,
-          right: 32,
-          bottom: 32,
-          width: 32,
-          height: 32
-        });
-        index++;
-      });
-
-      wrapper.update();
-      buttons = facepile.find('.ms-Facepile-itemButton');
-      expect(buttons).to.have.length(3, 'Only three personas should be rendered');
+      let faces = wrapper.find(Persona);
+      expect(faces).to.have.length(2, 'Only two personas should be rendered');
     });
   });
 });
