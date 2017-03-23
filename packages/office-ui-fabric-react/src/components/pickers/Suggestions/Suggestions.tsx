@@ -14,22 +14,30 @@ export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>,
       suggestionModel,
       RenderSuggestion,
       onClick,
-      className
+      className,
+      removeItem
     } = this.props;
     return (
-      <CommandButton
-        onClick={ onClick }
-        className={ css(
-          'ms-Suggestions-item',
-          styles.suggestionsItem,
-          {
-            ['is-suggested ' + styles.suggestionsItemIsSuggested]: suggestionModel.selected
-          },
-          className
-        ) }
-      >
-        <RenderSuggestion { ...suggestionModel.item } />
-      </CommandButton>
+      <div>
+        <CommandButton
+          onClick={ onClick }
+          className={ css(
+            'ms-Suggestions-item',
+            styles.suggestionsItem,
+            {
+              ['is-suggested ' + styles.suggestionsItemIsSuggested]: suggestionModel.selected
+            },
+            className
+          ) }
+        >
+          <RenderSuggestion { ...suggestionModel.item } />
+        </CommandButton>
+        <CommandButton
+          onClick={ removeItem }
+        >
+          X
+        </CommandButton>
+      </div>
     );
   }
 }
@@ -135,6 +143,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
               RenderSuggestion={ onRenderSuggestion }
               onClick={ (ev: React.MouseEvent<HTMLElement>) => this.props.onSuggestionClick(ev, suggestion.item, index) }
               className={ suggestionsItemClassName }
+              removeItem={ (ev: React.MouseEvent<HTMLElement>) => this.props.onSuggestionRemove(ev, suggestion.item, index) }
             />
           </div>) }
       </div>);

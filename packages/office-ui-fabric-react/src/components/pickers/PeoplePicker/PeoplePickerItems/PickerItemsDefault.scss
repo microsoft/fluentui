@@ -2,6 +2,7 @@
 
 .personaContainer {
   @include focus-border();
+  @include border-radius(15px, 15px, 15px, 15px);
   display: inline-flex;
   align-items: center;
   background: $ms-color-neutralLighter;
@@ -9,16 +10,25 @@
   cursor: default;
   user-select: none;
   max-width: 100%;
-  
+
   &:hover {
     background: $ms-color-neutralLight;
-  }
-  
-  &.personaContainerIsSelected {
-    background: $ms-color-neutralQuaternary;
 
-    &:hover {
-      background: $ms-color-neutralQuaternaryAlt;
+    .removeButton {
+      color: $ms-color-neutralPrimary;
+    }
+  }
+
+  &.personaContainerIsSelected {
+    background: $ms-color-blue;
+
+    .removeButton {
+      color: $ms-color-white;
+
+      &:hover {
+        color: $ms-color-white;
+        background: $ms-color-themeDark;
+      }
     }
   }
 
@@ -28,9 +38,15 @@
   }
 
   .removeButton {
+    @include border-radius(15px, 15px, 15px, 15px);
     flex: 0 0 auto;
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
+
+    &:hover {
+      background: $ms-color-neutralTertiaryAlt;
+      color: $ms-color-neutralDark;
+    }
   }
 
   .personaDetails {

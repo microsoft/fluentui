@@ -60,11 +60,14 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
    * The text to display while the results are loading.
    */
   loadingText?: string;
+
+  onSuggestionRemove?: (ev?: React.MouseEvent<HTMLElement>, item?: any, index?: number) => void;
 }
 
 export interface ISuggestionItemProps<T> {
   suggestionModel: ISuggestionModel<T>;
   RenderSuggestion: (item: any) => JSX.Element;
   onClick: (ev: React.MouseEvent<HTMLButtonElement>) => void;
+  removeItem: (ev: React.MouseEvent<HTMLButtonElement>) => void;
   className?: string;
 }

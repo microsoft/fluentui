@@ -49,6 +49,10 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * @default undefined
    */
   inputProps?: React.HTMLProps<HTMLInputElement>;
+
+  onRemove?: (item?: T) => void;
+
+  peopleList?: any;
 }
 
 export interface IBasePickerSuggestionsProps {
