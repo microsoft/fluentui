@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  autobind,
   BaseComponent,
   css,
   assign,
@@ -8,6 +9,8 @@ import {
   buttonProperties,
   anchorProperties
 } from '../../Utilities';
+import { DirectionalHint } from '../../common/DirectionalHint';
+import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.Props';
 let styles: any = require('./BaseButton.scss');
 
@@ -19,11 +22,16 @@ export interface IBaseButtonClassNames {
   description?: string;
   flexContainer?: string;
   icon?: string;
+  menuIcon?: string;
   label?: string;
   root?: string;
 }
 
-export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButton {
+export interface IBaseButtonState {
+  menuProps?: IContextualMenuProps | null;
+}
+
+export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> implements IButton {
 
   protected classNames: IBaseButtonClassNames = {
     base: 'ms-Button',
@@ -42,6 +50,9 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
     this._labelId = getId();
     this._descriptionId = getId();
     this._ariaDescriptionId = getId();
+    this.state = {
+      menuProps: null
+    };
   }
 
   public render(): JSX.Element {
@@ -70,7 +81,7 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
       ariaDescribedBy = null;
     }
 
-    let buttonProps = assign(
+    const buttonProps = assign(
       nativeProps,
       {
         className: css(
@@ -93,6 +104,12 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
       }
     );
 
+    // Override onClick if contextualMenuItems passed in. Eventually allow _onToggleMenu to
+    // be assigned to split button click if onClick already has a value
+    if (this.props.menuProps) {
+      assign(buttonProps, { 'onClick': this._onToggleMenu });
+    }
+
     return this.onRenderContent(tag, buttonProps);
   }
 
@@ -103,6 +120,12 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
   }
 
   protected onRenderContent(tag: any, buttonProps: IButtonProps): JSX.Element {
+    let {
+      onRenderMenu = this._onRenderMenu,
+      onRenderMenuIcon = this._onRenderMenuIcon,
+      menuProps,
+      menuIconName
+    } = this.props;
     return React.createElement(
       tag,
       buttonProps,
@@ -111,20 +134,20 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
         this.onRenderLabel(),
         this.onRenderDescription(),
         this.onRenderAriaDescription(),
-        this.onRenderChildren()
+        this.onRenderChildren(),
+        (menuProps || menuIconName || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon),
+        this.state.menuProps && onRenderMenu(menuProps, this._onRenderMenu)
       ));
   }
 
   protected onRenderIcon() {
-    let { icon } = this.props;
+    const { icon } = this.props;
 
-    return icon ? (
+    return icon && (
       <span className={ css(`${this.classNames.base}-icon`, this.classNames.icon) }>
         <i className={ `ms-Icon ms-Icon--${icon}` } />
       </span>
-    ) : (
-        null
-      );
+    );
   }
 
   protected onRenderLabel() {
@@ -143,7 +166,7 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
   }
 
   protected onRenderChildren() {
-    let { children } = this.props;
+    const { children } = this.props;
 
     // If children is just a string, either it or the text will be rendered via onRenderLabel
     // If children is another component, it will be rendered after text
@@ -155,7 +178,7 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
   }
 
   protected onRenderDescription() {
-    let { description } = this.props;
+    const { description } = this.props;
 
     // ms-Button-description is only shown when the button type is compound.
     // In other cases it will not be displayed.
@@ -172,7 +195,7 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
   }
 
   protected onRenderAriaDescription() {
-    let { ariaDescription } = this.props;
+    const { ariaDescription } = this.props;
 
     // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
     // otherwise it will be assigned to descriptionSpan.
@@ -182,4 +205,39 @@ export class BaseButton extends BaseComponent<IButtonProps, {}> implements IButt
         null
       );
   }
+
+  @autobind
+  protected _onRenderMenuIcon(props: IButtonProps): JSX.Element {
+    const { menuIconName = 'ChevronDown' } = props;
+
+    return (
+      <span className={ css(`${this.classNames.base}-icon`, this.classNames.menuIcon) }>
+        <i className={ `ms-Icon ms-Icon--${menuIconName}` } />
+      </span>
+    );
+  }
+
+  @autobind
+  protected _onRenderMenu(menuProps: IContextualMenuProps): JSX.Element {
+    return (
+      <ContextualMenu
+        className={ css('ms-BaseButton-menuHost') }
+        isBeakVisible={ true }
+        directionalHint={ DirectionalHint.bottomLeftEdge }
+        items={ menuProps.items }
+        target={ this._buttonElement }
+        labelElementId={ this._labelId }
+        onDismiss={ this._onToggleMenu }
+      />
+    );
+  }
+
+  @autobind
+  private _onToggleMenu() {
+    const { menuProps } = this.props;
+    let currentMenuProps = this.state.menuProps;
+
+    this.setState({ menuProps: currentMenuProps ? null : menuProps });
+  }
+
 }

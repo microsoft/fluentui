@@ -6,6 +6,7 @@ export class PrimaryButton extends BaseButton {
     base: 'ms-Button',
     variant: 'ms-Button--primary',
     icon: styles.icon,
+    menuIcon: styles.icon,
     isDisabled: styles.isDisabled,
     isEnabled: styles.isEnabled,
     label: styles.label,

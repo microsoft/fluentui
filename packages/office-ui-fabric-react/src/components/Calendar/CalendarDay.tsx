@@ -7,9 +7,20 @@ import {
   getRTL,
   getRTLSafeKeyCode
 } from '../../Utilities';
-import { DayOfWeek, ICalendarStrings } from './Calendar.Props';
+import { ICalendarStrings } from './Calendar.Props';
+import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { FocusZone } from '../../FocusZone';
-import { addDays, addWeeks, addMonths, compareDates } from '../../utilities/dateMath/DateMath';
+
+import {
+  addDays,
+  addWeeks,
+  addMonths,
+  compareDates,
+  compareDatePart,
+  getDateRangeArray,
+  isInDateRangeArray
+} from '../../utilities/dateMath/DateMath';
+
 let styles: any = require('./Calendar.scss');
 
 const DAYS_IN_WEEK = 7;
@@ -21,15 +32,18 @@ export interface IDayInfo {
   isInMonth: boolean;
   isToday: boolean;
   isSelected: boolean;
+  onSelected: () => void;
 }
 
 export interface ICalendarDayProps {
   strings: ICalendarStrings;
   selectedDate: Date;
   navigatedDate: Date;
-  onSelectDate: (date: Date) => void;
+  onSelectDate: (date: Date, selectedDateRangeArray?: Date[]) => void;
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
   firstDayOfWeek: DayOfWeek;
+  dateRangeType: DateRangeType;
+  autoNavigateOnSelection: boolean;
 }
 
 export interface ICalendarDayState {
@@ -64,9 +78,6 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   public render() {
     let { activeDescendantId, weeks } = this.state;
     let { firstDayOfWeek, strings, navigatedDate, onSelectDate } = this.props;
-
-    let selectDayCallbacks = {};
-    weeks.map((week, index) => week.map(day => selectDayCallbacks[day.key] = onSelectDate.bind(this, day.originalDate)));
 
     return (
       <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) }>
@@ -130,7 +141,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                             ['ms-DatePicker-day--highlighted ' + styles.dayIsHighlighted]: day.isSelected
                           }) }
                         role='gridcell'
-                        onClick={ selectDayCallbacks[day.key] }
+                        onClick={ day.onSelected }
                         onKeyDown={ (ev: React.KeyboardEvent<HTMLElement>) =>
                           this._navigateMonthEdge(ev, day.originalDate, weekIndex, dayIndex) }
                         aria-selected={ day.isSelected }
@@ -180,6 +191,25 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
   }
 
+  private _onSelectDate(selectedDate: Date) {
+    let { onSelectDate, dateRangeType, firstDayOfWeek, navigatedDate, autoNavigateOnSelection } = this.props;
+
+    let dateRange = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek);
+    if (onSelectDate != null) {
+      onSelectDate(selectedDate, dateRange);
+    }
+
+    // Navigate to next or previous month if needed
+    if (autoNavigateOnSelection && selectedDate.getMonth() !== navigatedDate.getMonth()) {
+      let compareResult = compareDatePart(selectedDate, navigatedDate);
+      if (compareResult < 0) {
+        this._onSelectPrevMonth();
+      } else if (compareResult > 0) {
+        this._onSelectNextMonth();
+      }
+    }
+  }
+
   private _onSelectNextMonth() {
     this.props.onNavigateDate(addMonths(this.props.navigatedDate, 1), false);
   }
@@ -189,7 +219,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   private _getWeeks(navigatedDate: Date, selectedDate: Date): IDayInfo[][] {
-    let { firstDayOfWeek } = this.props;
+    let { firstDayOfWeek, dateRangeType } = this.props;
     let date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
     let today = new Date();
     let weeks = [];
@@ -203,19 +233,23 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     // a flag to indicate whether all days of the week are in the month
     let isAllDaysOfWeekOutOfMonth = false;
 
+    let selectedDates = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek);
+
     for (let weekIndex = 0; !isAllDaysOfWeekOutOfMonth; weekIndex++) {
       week = [];
 
       isAllDaysOfWeekOutOfMonth = true;
 
       for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
+        let originalDate = new Date(date.toString());
         let dayInfo = {
           key: date.toString(),
           date: date.getDate(),
-          originalDate: new Date(date.toString()),
+          originalDate: originalDate,
           isInMonth: date.getMonth() === navigatedDate.getMonth(),
           isToday: compareDates(today, date),
-          isSelected: compareDates(selectedDate, date)
+          isSelected: isInDateRangeArray(date, selectedDates),
+          onSelected: this._onSelectDate.bind(this, originalDate)
         };
 
         week.push(dayInfo);

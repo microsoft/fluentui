@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 10 Mar 2017 20:41:05 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Mar 2017 03:13:02 GMT and should not be manually modified.
+
+## 1.3.0
+Thu, 23 Mar 2017 03:13:02 GMT
+
+### Minor changes
+
+- Adding some utility functions to handle date range calculations and determining if a date falls within a date range.
 
 ## 1.2.0
 Fri, 10 Mar 2017 20:41:05 GMT

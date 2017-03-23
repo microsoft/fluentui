@@ -231,7 +231,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
     return (
       headerText &&
       <div className={ css('ms-Panel-header', styles.header) }>
-        <p className={ css('ms-Panel-headerText', styles.headerText, headerClassName) } id={ headerTextId }>
+        <p className={ css('ms-Panel-headerText', styles.headerText, headerClassName) } id={ headerTextId } role='heading'>
           { headerText }
         </p>
       </div>

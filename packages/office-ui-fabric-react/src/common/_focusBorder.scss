@@ -17,12 +17,12 @@
   @if $onFocus {
     :global(.ms-Fabric.is-focusVisible) &:focus:after {
       @include after-outline($padding, $color, $thickness);
-      }
+    }
   }
   @else {
     &::after {
       @include after-outline($padding, $color, $thickness);
-      }
+    }
   }
 }
 
