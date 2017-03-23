@@ -77,6 +77,12 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
   description?: string;
 
   /**
+   * Use only hashed class names.
+   * Drops any class like ms-Button*
+   */
+  useOnlyHashedClassNames?: boolean;
+
+  /**
    * The type of button to render.
    * @defaultvalue ButtonType.default
    * @deprecated
