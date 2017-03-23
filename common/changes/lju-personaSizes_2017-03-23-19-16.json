@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Added a 28px by 28px persona control.",
+      "type": "minor"
+    }
+  ],
+  "email": "lydutk@microsoft.com"
+}
