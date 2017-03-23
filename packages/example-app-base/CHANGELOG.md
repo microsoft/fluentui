@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 22 Mar 2017 03:18:05 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Mar 2017 03:13:02 GMT and should not be manually modified.
+
+## 1.3.0
+Thu, 23 Mar 2017 03:13:02 GMT
+
+### Minor changes
+
+- Modified existing calendar examples to include examples of the new props for date range selection, auto month navigation and hiding the today link.
 
 ## 1.2.1
 Wed, 22 Mar 2017 03:18:05 GMT
