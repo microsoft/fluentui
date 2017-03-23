@@ -208,7 +208,7 @@ export class Facepile extends BaseComponent<IFacepileProps, IFacepileState> {
     let elementWidth: number = 0;
 
     if (this._members) {
-      let nodeList: NodeListOf<Element> = this._members.querySelectorAll("[class*='itemButton']");
+      let nodeList: NodeListOf<Element> = this._members.querySelectorAll(styles.itemButton);
       if (nodeList && nodeList.length > 0) {
         let style = window.getComputedStyle(nodeList[0]);
         elementWidth = nodeList[0].getBoundingClientRect().width + (parseInt(style.marginLeft, 10) + parseInt(style.marginRight, 10)) || 0;
