@@ -1,3 +1,4 @@
+import { DayOfWeek, DateRangeType } from '../dateValues/DateValues';
 import * as DateMath from './DateMath';
 let { expect } = chai;
 
@@ -266,5 +267,29 @@ describe('DateMath', () => {
     date1 = new Date(2016, 4, 1);
     date2 = new Date(2017, 4, 1);
     expect(DateMath.compareDates(date1, date2)).to.be.false;
+  });
+
+  it('can get date range array', () => {
+    let date = new Date(2017, 2, 16);
+
+    // Date range: day
+    let dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Day, DayOfWeek.Sunday);
+    expect(dateRangeArray.length).to.be.equal(1);
+    expect(DateMath.compareDates(dateRangeArray[0], date)).to.be.true;
+
+    // Date range: week
+    let expectedDates = Array(7).map((val, i) => new Date(2017, 2, 12 + i));
+    dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Sunday);
+    Array(7).forEach((val, i) => expect(DateMath.compareDates(dateRangeArray[i], date)).to.be.true);
+
+    // Date range: month
+    expectedDates = Array(31).map((val, i) => new Date(2017, 2, 1 + i));
+    dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Month, DayOfWeek.Sunday);
+    Array(31).forEach((val, i) => expect(DateMath.compareDates(dateRangeArray[i], date)).to.be.true);
+
+    // First day of week: Tuesday
+    expectedDates = Array(7).map((val, i) => new Date(2017, 2, 14 + i));
+    dateRangeArray = DateMath.getDateRangeArray(date, DateRangeType.Week, DayOfWeek.Tuesday);
+    Array(7).forEach((val, i) => expect(DateMath.compareDates(dateRangeArray[i], date)).to.be.true);
   });
 });

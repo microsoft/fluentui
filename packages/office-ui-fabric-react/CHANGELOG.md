@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 22 Mar 2017 03:18:05 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Mar 2017 03:13:02 GMT and should not be manually modified.
+
+## 2.6.0
+Thu, 23 Mar 2017 03:13:02 GMT
+
+### Minor changes
+
+- Button: Updated props to include contextualProps so that contextual menu could be passed to button
+- Calendar: Adding support for date ranges: day, week, month so when a user selects a date, the corresponding range is auto-selected. Adding a new prop to hide the today link. Adding a new prop to auto navigate to to the next/previous month if the user selects a date that falls outside the current month. Also fixing some minor styling issues around focused date so it plays nicely with range selection.
+
+### Patches
+
+- TextField: Accessibility fixes for error message
+- TooltipHost: CalloutProps type fixed, and mixed properly in Tooltip
+- Popup: It now passes triggering KeyboardEvent to onDismiss handler
 
 ## 2.5.4
 Wed, 22 Mar 2017 03:18:05 GMT
