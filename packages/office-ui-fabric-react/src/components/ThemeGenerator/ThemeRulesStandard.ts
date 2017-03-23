@@ -15,6 +15,34 @@ export enum BaseSlots {
   foregroundColor
 }
 
+/* The original Fabric palette, only for back-compat. */
+export enum FabricSlots {
+  themePrimary, // BaseSlots.primaryColor, Shade[Shade.Unshaded]);
+  themeLighterAlt, // BaseSlots.primaryColor, Shade[Shade.Shade1]);
+  themeLighter, // BaseSlots.primaryColor, Shade[Shade.Shade2]);
+  themeLight, // BaseSlots.primaryColor, Shade[Shade.Shade3]);
+  themeTertiary, // BaseSlots.primaryColor, Shade[Shade.Shade4]);
+  themeSecondary, // BaseSlots.primaryColor, Shade[Shade.Shade5]);
+  themeDarkAlt, // BaseSlots.primaryColor, Shade[Shade.Shade6]);
+  themeDark, // BaseSlots.primaryColor, Shade[Shade.Shade7]);
+  themeDarker, // BaseSlots.primaryColor, Shade[Shade.Shade8]);
+
+  neutralLighterAlt, // BaseSlots.backgroundColor, Shade[Shade.Shade1]);
+  neutralLighter, // BaseSlots.backgroundColor, Shade[Shade.Shade2]);
+  neutralLight, // BaseSlots.backgroundColor, Shade[Shade.Shade3]);
+  neutralQuaternaryAlt, // BaseSlots.backgroundColor, Shade[Shade.Shade4]);
+  neutralQuaternary, // BaseSlots.backgroundColor, Shade[Shade.Shade5]);
+  neutralTertiaryAlt, // BaseSlots.backgroundColor, Shade[Shade.Shade6]); // bg6 or fg2
+  neutralTertiary, // BaseSlots.foregroundColor, Shade[Shade.Shade3]);
+  neutralSecondaryAlt, // BaseSlots.foregroundColor, Shade[Shade.Shade4]);
+  neutralSecondary, // BaseSlots.foregroundColor, Shade[Shade.Shade5]);
+  neutralPrimary, // BaseSlots.foregroundColor, Shade[Shade.Unshaded]);
+  neutralDark, // BaseSlots.foregroundColor, Shade[Shade.Shade6]);
+
+  black, // BaseSlots.foregroundColor, Shade[Shade.Shade8]);
+  white, // BaseSlots.backgroundColor, Shade[Shade.Unshaded]);
+}
+
 /* List of all the semantic color slots for this theme.
  * This is not so much an enum as it is a list. The enum is used to insure "type"-safety. */
 export enum SemanticColorSlots {
@@ -179,32 +207,41 @@ export function ThemeRulesStandardCreator() {
       isCustomized: false
     };
   }
-  _makeBtoCConverterSlotRule("themePrimary", BaseSlots.primaryColor, Shade[Shade.Unshaded]);
-  _makeBtoCConverterSlotRule("themeLighterAlt", BaseSlots.primaryColor, Shade[Shade.Shade1]);
-  _makeBtoCConverterSlotRule("themeLighter", BaseSlots.primaryColor, Shade[Shade.Shade2]);
-  _makeBtoCConverterSlotRule("themeLight", BaseSlots.primaryColor, Shade[Shade.Shade3]);
-  _makeBtoCConverterSlotRule("themeTertiary", BaseSlots.primaryColor, Shade[Shade.Shade4]);
-  _makeBtoCConverterSlotRule("themeSecondary", BaseSlots.primaryColor, Shade[Shade.Shade5]);
-  _makeBtoCConverterSlotRule("themeDarkAlt", BaseSlots.primaryColor, Shade[Shade.Shade6]);
-  _makeBtoCConverterSlotRule("themeDark", BaseSlots.primaryColor, Shade[Shade.Shade7]);
-  _makeBtoCConverterSlotRule("themeDarker", BaseSlots.primaryColor, Shade[Shade.Shade8]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themePrimary], BaseSlots.primaryColor, Shade[Shade.Unshaded]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeLighterAlt], BaseSlots.primaryColor, Shade[Shade.Shade1]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeLighter], BaseSlots.primaryColor, Shade[Shade.Shade2]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeLight], BaseSlots.primaryColor, Shade[Shade.Shade3]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeTertiary], BaseSlots.primaryColor, Shade[Shade.Shade4]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeSecondary], BaseSlots.primaryColor, Shade[Shade.Shade5]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeDarkAlt], BaseSlots.primaryColor, Shade[Shade.Shade6]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeDark], BaseSlots.primaryColor, Shade[Shade.Shade7]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeDarker], BaseSlots.primaryColor, Shade[Shade.Shade8]);
 
-  _makeBtoCConverterSlotRule("neutralLighterAlt", BaseSlots.backgroundColor, Shade[Shade.Shade1]);
-  _makeBtoCConverterSlotRule("neutralLighter", BaseSlots.backgroundColor, Shade[Shade.Shade2]);
-  _makeBtoCConverterSlotRule("neutralLight", BaseSlots.backgroundColor, Shade[Shade.Shade3]);
-  _makeBtoCConverterSlotRule("neutralQuaternaryAlt", BaseSlots.backgroundColor, Shade[Shade.Shade4]);
-  _makeBtoCConverterSlotRule("neutralQuaternary", BaseSlots.backgroundColor, Shade[Shade.Shade5]);
-  _makeBtoCConverterSlotRule("neutralTertiaryAlt", BaseSlots.backgroundColor, Shade[Shade.Shade6]); // bg6 or fg2
-  _makeBtoCConverterSlotRule("neutralTertiary", BaseSlots.foregroundColor, Shade[Shade.Shade3]);
-  _makeBtoCConverterSlotRule("neutralSecondaryAlt", BaseSlots.foregroundColor, Shade[Shade.Shade4]);
-  _makeBtoCConverterSlotRule("neutralSecondary", BaseSlots.foregroundColor, Shade[Shade.Shade5]);
-  _makeBtoCConverterSlotRule("neutralPrimary", BaseSlots.foregroundColor, Shade[Shade.Unshaded]);
-  _makeBtoCConverterSlotRule("neutralDark", BaseSlots.foregroundColor, Shade[Shade.Shade6]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralLighterAlt], BaseSlots.backgroundColor, Shade[Shade.Shade1]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralLighter], BaseSlots.backgroundColor, Shade[Shade.Shade2]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralLight], BaseSlots.backgroundColor, Shade[Shade.Shade3]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralQuaternaryAlt], BaseSlots.backgroundColor, Shade[Shade.Shade4]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralQuaternary], BaseSlots.backgroundColor, Shade[Shade.Shade5]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralTertiaryAlt], BaseSlots.backgroundColor, Shade[Shade.Shade6]); // bg6 or fg2
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralTertiary], BaseSlots.foregroundColor, Shade[Shade.Shade3]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralSecondaryAlt], BaseSlots.foregroundColor, Shade[Shade.Shade4]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralSecondary], BaseSlots.foregroundColor, Shade[Shade.Shade5]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralPrimary], BaseSlots.foregroundColor, Shade[Shade.Unshaded]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralDark], BaseSlots.foregroundColor, Shade[Shade.Shade6]);
 
-  _makeBtoCConverterSlotRule("black", BaseSlots.foregroundColor, Shade[Shade.Shade8]);
-  _makeBtoCConverterSlotRule("white", BaseSlots.backgroundColor, Shade[Shade.Unshaded]);
-  _makeBtoCConverterSlotRule("primaryBackground", BaseSlots.backgroundColor, Shade[Shade.Unshaded]); // todo
-  _makeBtoCConverterSlotRule("primaryText", BaseSlots.foregroundColor, Shade[Shade.Unshaded]); // todo
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.black], BaseSlots.foregroundColor, Shade[Shade.Shade8]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.white], BaseSlots.backgroundColor, Shade[Shade.Unshaded]);
+
+  slotRules["primaryBackground"] = {
+    name: "primaryBackground",
+    inherits: slotRules[FabricSlots[FabricSlots.white]],
+    isCustomized: false
+  };
+  slotRules["primaryText"] = {
+    name: "primaryText",
+    inherits: slotRules[FabricSlots[FabricSlots.neutralPrimary]],
+    isCustomized: false
+  };
 
   /*** SEMANTIC SLOTS */
   // create the SlotRule for a semantic slot, it will automatically find the right shade SlotRule to point at,
