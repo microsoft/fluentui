@@ -32,7 +32,7 @@ export interface ICalloutState {
 export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> {
 
   public static defaultProps = {
-    isClosedOnScroll: true,
+    preventDismissOnScroll: false,
     isBeakVisible: true,
     beakWidth: 16,
     gapSpace: 16,
@@ -162,8 +162,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   }
 
   protected _dismissOnScroll(ev: Event) {
-    const { isClosedOnScroll } = this.props;
-    if (this.state.positions && isClosedOnScroll) {
+    const { preventDismissOnScroll } = this.props;
+    if (this.state.positions && !preventDismissOnScroll) {
       this._dismissOnLostFocus(ev);
     }
   }

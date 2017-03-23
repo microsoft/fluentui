@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Callout: isClosedOnScroll prop added and set to default true",
+      "comment": "Callout: preventDismissOnScroll prop added and set to default false",
       "type": "patch"
     },
     {
