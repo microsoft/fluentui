@@ -309,7 +309,8 @@ export class DragDropHelper implements IDragDropHelper {
         if (xDiff * xDiff + yDiff * yDiff >= DISTANCE_FOR_DRAG_SQUARED) {
           if (this._dragData.dragTarget) {
             this._isDragging = true;
-            if (options.onDragStart) {
+            if (options.onDragStart &&
+              this._selection.isIndexSelected(options.selectionIndex)) {
               options.onDragStart(options.context.data, options.context.index, this._selection.getSelection(), event);
             }
           }
