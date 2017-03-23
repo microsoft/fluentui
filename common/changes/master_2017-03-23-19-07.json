@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "TooltipHost: CalloutProps type fixed, and mixed properly in Tooltip",
+      "comment": "Panel: Title text updated with correct lineheight and removed overflow styles",
       "type": "patch"
     },
     {

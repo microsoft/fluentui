@@ -6,6 +6,7 @@ export class IconButton extends BaseButton {
     base: 'ms-Button',
     variant: 'ms-Button--icon',
     icon: styles.icon,
+    menuIcon: styles.icon,
     isDisabled: styles.isDisabled,
     isEnabled: styles.isEnabled,
     root: styles.root
