@@ -368,6 +368,8 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   @include focus-border(0px, $ms-color-neutralPrimary);
 }
 
-:global(.ms-Fabric.is-focusVisible) .choiceFieldIsInFocus.choiceFieldIsImage {
-  @include focus-border(2px, $ms-color-neutralPrimary, 1px);
+:global(.ms-Fabric.is-focusVisible) .choiceFieldIsInFocus{
+  &.choiceFieldIsImage, &.choiceFieldIsIcon {
+    @include focus-border(2px, $ms-color-neutralPrimary, 1px);
+  }
 }
