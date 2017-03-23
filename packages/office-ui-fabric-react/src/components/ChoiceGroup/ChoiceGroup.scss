@@ -29,7 +29,6 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   min-height: 36px;
   border: none;
   position: relative;
-  line-height: $ms-choiceField-field-size;
   @include padding-left(8px);
 
   :global(.ms-Label) {
@@ -78,7 +77,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   transition-timing-function: $ms-choiceField-transition-timing;
   box-sizing: border-box;
 
-@media screen and (-ms-high-contrast: active) {
+  @media screen and (-ms-high-contrast: active) {
     color: $ms-color-contrastBlackDisabled;
   }
 
@@ -226,30 +225,43 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 }
 
 .choiceFieldIsImage, .choiceFieldIsIcon {
-  $fieldMinWidth: 164px;
-  $fieldPadding: 20px;
+  $fieldMinWidth: 96px;
+  $fieldPadding: 4px;
 
-  display: inline-block;
+  display: inline-flex;
 
   font-size: 0;
 
-  @include margin-right(6px);
+  @include margin(0, 2px, 2px, 0);
   @include padding-left(0px);
   @include ms-bgColor-neutralLighter;
   border: 1px solid transparent;
 
-  .fieldIsImage {
-    display: inline-block;
+  .fieldIsImage, .fieldIsIcon {
+    $radioButtonSpacing: 5px;
+    $radioButtonInnerSize: 5px;
 
+    display: inline-block;
     box-sizing: border-box;
     min-width: $fieldMinWidth;
     cursor: pointer;
-    padding: $fieldPadding $fieldPadding 12px $fieldPadding;
+    padding: $fieldPadding;
+    padding-top: 24px;
+    margin: 0;
     text-align: center;
     transition: all $ms-choiceField-transition-duration ease;
 
+    .fieldIsDisabled {
+      cursor: default;
+
+      .innerField {
+        opacity: 0.25;
+      }
+    }
+
     .innerField {
       position: relative;
+      padding: 0 28px;
 
       .imageWrapper {
         transition: opacity $ms-choiceField-transition-duration ease;
@@ -268,45 +280,55 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
           display: inline-block;
         }
       }
-
-      .iconWrapper {
-        font-size: $ms-font-size-su;
-        line-height: $ms-font-size-su;
-      }
     }
 
     .labelWrapper {
+      $lineHeight: 16px;
+
       display: inline-block;
       position: relative;
-      margin: 10px 0 0 0;
+      margin: 4px 0 0 0;
+      height: $lineHeight * 2;
       padding: 0 24px;
+      line-height: $lineHeight;
 
-      .icon {
-        display: none;
-        position: absolute;
-        @include left(0);
-        line-height: $ms-font-size-s;
+      @include ms-font-m;
+    }
 
-        @include ms-fontSize-l;
-        @include ms-fontColor-themeDark;
-      }
+    :global(.ms-Label) {
+      padding: 0;
+    }
 
-      :global(.ms-Label) {
-        display: inline-block;
-        padding: 0;
-        line-height: $ms-font-size-s;
+    &::before {
+      top: $radioButtonSpacing;
+      @include left($radioButtonSpacing);
+    }
 
-        @include ms-fontWeight-semibold;
-        @include ms-fontColor-neutralPrimary;
-      }
+    &::after {
+      top: $radioButtonSpacing + ($radioButtonInnerSize * 2);
+      @include left($radioButtonSpacing + ($radioButtonInnerSize * 2));
     }
 
     &.fieldIsChecked {
-      @include ms-bgColor-themeLighter;
-
-      .labelWrapper .icon {
-        display: inline-block;
+      &::after {
+        top: $radioButtonSpacing + $radioButtonInnerSize;
+        @include left($radioButtonSpacing + $radioButtonInnerSize);
       }
+    }
+  }
+}
+
+.choiceFieldIsIcon {
+  $iconSize: 32px;
+
+  .iconWrapper {
+    font-size: $iconSize;
+    line-height: $iconSize;
+    height: $iconSize;
+  }
+
+  .fieldIsIcon {
+    &.fieldIsChecked {
       .iconWrapper {
         @include ms-fontColor-themeDark;
       }
