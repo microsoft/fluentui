@@ -38,7 +38,6 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
 
 .cell {
   @include ms-font-s;
-
   background: transparent;
   color: $disabledForegroundColor;
   @include focus-border();
@@ -80,6 +79,7 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   &.cellIsSizer {
     position: absolute;
     width: 16px;
+
     @include margin-left(-10px);
     cursor: ew-resize;
     bottom: 0;
