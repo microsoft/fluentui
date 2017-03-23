@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IDropdownProps, IDropdownOption } from './Dropdown.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
+import { Label } from '../../Label';
 import { CommandButton } from '../../Button';
 import { Panel } from '../../Panel';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -82,7 +83,14 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   // Primary Render
   public render() {
     let id = this._id;
-    let { className, label, options, disabled, isDisabled, ariaLabel,
+    let {
+      className,
+      label,
+      options,
+      disabled,
+      isDisabled,
+      ariaLabel,
+      required,
       onRenderTitle = this._onRenderTitle,
       onRenderContainer = this._onRenderContainer
     } = this.props;
@@ -95,9 +103,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     }
 
     return (
-      <div ref='root'>
+      <div ref='root' className={ css('ms-Dropdown-container') }>
         { label && (
-          <label id={ id + '-label' } className='ms-Label' ref={ (dropdownLabel) => this._dropdownLabel = dropdownLabel } >{ label }</label>
+          <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } ref={ this._resolveRef('_dropdownLabel') } required={ required }>{ label }</Label>
         ) }
         <div
           data-is-focusable={ !disabled }

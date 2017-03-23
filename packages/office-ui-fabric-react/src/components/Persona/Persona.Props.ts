@@ -9,6 +9,11 @@ export interface IPersonaProps extends React.HTMLProps<Persona> {
   primaryText?: string;
 
   /**
+   * Optional custom renderer for the primary text.
+   */
+  onRenderPrimaryText?: IRenderFunction<IPersonaProps>;
+
+  /**
    * Decides the size of the control.
    * @defaultvalue PersonaSize.regular
    */
@@ -60,14 +65,29 @@ export interface IPersonaProps extends React.HTMLProps<Persona> {
   secondaryText?: string;
 
   /**
+   * Optional custom renderer for the secondary text.
+   */
+  onRenderSecondaryText?: IRenderFunction<IPersonaProps>;
+
+  /**
    * Tertiary text to display, usually the status of the user.
    */
   tertiaryText?: string;
 
   /**
+   * Optional custom renderer for the tertiary text.
+   */
+  onRenderTertiaryText?: IRenderFunction<IPersonaProps>;
+
+  /**
    * Optional text to display, usually a custom message set.
    */
   optionalText?: string;
+
+  /**
+   * Optional custom renderer for the optional text.
+   */
+  onRenderOptionalText?: IRenderFunction<IPersonaProps>;
 
   /**
    * Whether to not render persona details, and just render the persona image/initials.

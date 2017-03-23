@@ -5,7 +5,8 @@ import {
   divProperties,
   getInitials,
   getNativeProps,
-  getRTL
+  getRTL,
+  IRenderFunction
 } from '../../Utilities';
 import { Image, ImageFit, ImageLoadState } from '../../Image';
 import {
@@ -75,6 +76,10 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
       hidePersonaDetails,
       imageShouldFadeIn,
       onRenderInitials = this._onRenderInitials,
+      onRenderPrimaryText,
+      onRenderSecondaryText,
+      onRenderTertiaryText,
+      onRenderOptionalText,
       imageShouldStartVisible
     } = this.props;
 
@@ -106,12 +111,22 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
 
     let divProps = getNativeProps(this.props, divProperties);
     let personaDetails = <div className={ css('ms-Persona-details', styles.details) }>
-      <div className={ css('ms-Persona-primaryText', styles.primaryText) }>{ primaryText }</div>
-      { secondaryText ? (
-        <div className={ css('ms-Persona-secondaryText', styles.secondaryText) }>{ secondaryText }</div>
-      ) : (null) }
-      <div className={ css('ms-Persona-tertiaryText', styles.tertiaryText) }>{ tertiaryText }</div>
-      <div className={ css('ms-Persona-optionalText', styles.optionalText) }>{ optionalText }</div>
+      { this._renderElement(
+        this.props.primaryText,
+        css('ms-Persona-primaryText', styles.primaryText),
+        onRenderPrimaryText) }
+      { this._renderElement(
+        this.props.secondaryText,
+        css('ms-Persona-secondaryText', styles.secondaryText),
+        onRenderSecondaryText) }
+      { this._renderElement(
+        this.props.tertiaryText,
+        css('ms-Persona-tertiaryText', styles.tertiaryText),
+        onRenderTertiaryText) }
+      { this._renderElement(
+        this.props.optionalText,
+        css('ms-Persona-optionalText', styles.optionalText),
+        onRenderOptionalText) }
       { this.props.children }
     </div>;
 
@@ -148,6 +163,15 @@ export class Persona extends React.Component<IPersonaProps, IPersonaState> {
         ) }
         { presenceElement }
         { (!hidePersonaDetails || (size === PersonaSize.tiny)) && personaDetails }
+      </div>
+    );
+  }
+
+  @autobind
+  private _renderElement(text: string, className: string, render?: IRenderFunction<IPersonaProps>): JSX.Element {
+    return (
+      <div className={ className }>
+        { render ? render(this.props) : text }
       </div>
     );
   }

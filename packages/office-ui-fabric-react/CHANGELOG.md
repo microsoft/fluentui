@@ -1,6 +1,99 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 10 Mar 2017 16:16:07 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Mar 2017 03:13:02 GMT and should not be manually modified.
+
+## 2.6.0
+Thu, 23 Mar 2017 03:13:02 GMT
+
+### Minor changes
+
+- Button: Updated props to include contextualProps so that contextual menu could be passed to button
+- Calendar: Adding support for date ranges: day, week, month so when a user selects a date, the corresponding range is auto-selected. Adding a new prop to hide the today link. Adding a new prop to auto navigate to to the next/previous month if the user selects a date that falls outside the current month. Also fixing some minor styling issues around focused date so it plays nicely with range selection.
+
+### Patches
+
+- TextField: Accessibility fixes for error message
+- TooltipHost: CalloutProps type fixed, and mixed properly in Tooltip
+- Popup: It now passes triggering KeyboardEvent to onDismiss handler
+
+## 2.5.4
+Wed, 22 Mar 2017 03:18:05 GMT
+
+### Patches
+
+- ContextualMenu: Fix an issue where anchor item would not display ellipses properly on overflow.
+- Dropdown: Added class to dropdown label and dropdown container so that they can be targeted with css
+- ContextualMenu: Remove role='menuitem' for child element for LI in ContextualMenu
+
+## 2.5.3
+Tue, 21 Mar 2017 03:20:12 GMT
+
+### Patches
+
+- Nav: Fixing an issue where the default expand state for a group was not initialized correctly, resulting in having to click multiple times to collapse a group.
+- Facepile has an excess margin of 4px below it which needs to be removed. It also uses float's which is pretty retro!
+
+## 2.5.2
+Fri, 17 Mar 2017 18:01:45 GMT
+
+### Patches
+
+- DetailsList: header sizing fixed (was a css selector tweak that caused the issue.) Also added `iconName` to IColumn to specify an iconName like "Mail". The `iconClassName` property is still preserved, but is piped into the className of the Icon component.
+
+## 2.5.1
+Fri, 17 Mar 2017 03:05:52 GMT
+
+### Patches
+
+- ChoiceGroup component: Distinguishes HC border from focus border, removes double stroke, refactors to use common mixin
+- List: Add aria list role
+
+## 2.5.0
+Thu, 16 Mar 2017 03:05:54 GMT
+
+### Minor changes
+
+- DocumentCard: Add aria role and keyboard handling
+- Panel: Added sticky footer section and broke each panel region into seperate onRender fucntion. 
+
+### Patches
+
+- FocusZone: Spacebar no longer scrolls page when in focuszone or selectionzone, and acts as selecting action
+- DetailsList: headers now have the correct font applied and use a transparent background to fix the IE11 styling, which doesn't like "inherit".
+- TextField: Fix for multiple onChanged calls
+
+## 2.4.0
+Wed, 15 Mar 2017 03:06:37 GMT
+
+### Minor changes
+
+- DetailsList: adding `onColumnResize` callback which wil execute when a column is being resized.
+
+## 2.3.0
+Tue, 14 Mar 2017 03:15:10 GMT
+
+### Minor changes
+
+- PeoplePicker: Add rendering overrides
+
+### Patches
+
+- TextField component: hiding -ms-clear pseudo-element for bug #1216
+
+## 2.2.1
+Sat, 11 Mar 2017 04:11:58 GMT
+
+### Patches
+
+- Pivot: selected underline is now visible in high contrast mode.
+
+## 2.2.0
+Fri, 10 Mar 2017 20:41:04 GMT
+
+### Minor changes
+
+- Dropdown: Adding a required property which will be passed into the Label.
+- Adjusting React peer dependency to include v16.0.0-0 in the acceptable range for testing with v16.
 
 ## 2.1.1
 Fri, 10 Mar 2017 16:16:07 GMT

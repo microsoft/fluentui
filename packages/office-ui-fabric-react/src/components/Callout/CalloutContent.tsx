@@ -32,6 +32,7 @@ export interface ICalloutState {
 export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> {
 
   public static defaultProps = {
+    isClosedOnScroll: true,
     isBeakVisible: true,
     beakWidth: 16,
     gapSpace: 16,
@@ -152,7 +153,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   }
 
   @autobind
-  public dismiss(ev?: Event | React.MouseEvent<HTMLElement>) {
+  public dismiss(ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) {
     let { onDismiss } = this.props;
 
     if (onDismiss) {
@@ -161,7 +162,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   }
 
   protected _dismissOnScroll(ev: Event) {
-    if (this.state.positions) {
+    const { isClosedOnScroll } = this.props;
+    if (this.state.positions && isClosedOnScroll) {
       this._dismissOnLostFocus(ev);
     }
   }

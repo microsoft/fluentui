@@ -7,7 +7,8 @@ import * as ReactTestUtils from 'react-addons-test-utils';
 let { expect } = chai;
 
 import { Calendar } from './Calendar';
-import { DayOfWeek } from './Calendar.Props';
+import { DateRangeType, DayOfWeek } from './Calendar.Props';
+import { addDays, compareDates } from '../../utilities/dateMath/DateMath';
 
 describe('Calendar', () => {
   let dayPickerStrings = {
@@ -75,7 +76,7 @@ describe('Calendar', () => {
           strings={ dayPickerStrings }
           isMonthPickerVisible={ true }
           value={ defaultDate }
-          />) as Calendar;
+        />) as Calendar;
 
       let today = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-day--today') as HTMLElement;
 
@@ -93,7 +94,7 @@ describe('Calendar', () => {
         <Calendar
           strings={ dayPickerStrings }
           isMonthPickerVisible={ false }
-          />) as Calendar;
+        />) as Calendar;
     });
 
     it('Verify day picker header', () => {
@@ -145,15 +146,20 @@ describe('Calendar', () => {
   describe('Test rendering most complicated calendar', () => {
     let renderedComponent: Calendar;
     let defaultDate: Date;
+    let lastSelectedDateRange: Date[] = null;
+
     before(() => {
-      defaultDate = new Date(2016, 5, 4);
+      defaultDate = new Date(2017, 2, 16);
       renderedComponent = ReactTestUtils.renderIntoDocument(
         <Calendar
           strings={ dayPickerStrings }
           isMonthPickerVisible={ true }
           value={ defaultDate }
           firstDayOfWeek={ DayOfWeek.Tuesday }
-          />) as Calendar;
+          dateRangeType={ DateRangeType.Week }
+          autoNavigateOnSelection={ true }
+          onSelectDate={ (date: Date, dateRangeArray: Date[]) => lastSelectedDateRange = dateRangeArray }
+        />) as Calendar;
     });
 
     it('Verify day picker header', () => {
@@ -207,6 +213,27 @@ describe('Calendar', () => {
       let goToToday = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-goToday');
       expect(goToToday).to.not.be.undefined;
       expect(goToToday.textContent).to.equal(dayPickerStrings.goToToday);
+    });
+
+    it('Verify navigate to different week in same month', () => {
+      lastSelectedDateRange = null;
+      let days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day');
+      let day = days[8]; // 03/08/2017
+      ReactTestUtils.Simulate.click(day);
+      expect(lastSelectedDateRange).to.not.be.null;
+      expect(lastSelectedDateRange.length).to.equal(7);
+      lastSelectedDateRange.forEach((val, i) => expect(compareDates(val, new Date(2017, 2, 7 + i))).is.true);
+    });
+
+    it('Verify navigate to day in different month', () => {
+      lastSelectedDateRange = null;
+      let days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day');
+      let day = days[34]; // 04/03/2017
+      let firstDate = new Date(2017, 2, 28);
+      ReactTestUtils.Simulate.click(day);
+      expect(lastSelectedDateRange).to.not.be.null;
+      expect(lastSelectedDateRange.length).to.equal(7);
+      lastSelectedDateRange.forEach((val, i) => expect(compareDates(val, addDays(firstDate, i))).is.true);
     });
   });
 });
