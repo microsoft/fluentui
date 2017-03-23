@@ -213,6 +213,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 ariaLabelledBy={ labelElementId }
                 ref={ (focusZone) => this._focusZone = focusZone }
                 role='menu'
+                isCircularNavigation={ true }
               >
                 <ul
                   className={ css('ms-ContextualMenu-list is-open', styles.list) }
