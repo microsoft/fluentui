@@ -14,7 +14,9 @@ export interface IFacepileProps extends React.Props<Facepile> {
    */
   personas: IFacepilePersona[];
 
-  /** Render control to fit parent element */
+  /** Render control to fit parent element 
+  * @defaultvalue false
+  */
   useOnlyAvailableWidth?: boolean;
 
   /**

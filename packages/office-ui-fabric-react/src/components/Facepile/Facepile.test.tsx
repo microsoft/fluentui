@@ -207,7 +207,7 @@ describe.only('Facepile', () => {
         <Facepile
           personas={ facepilePersonas.concat(facepilePersonas, facepilePersonas, facepilePersonas) }
           maxDisplayablePersonas={ 2 }
-        />);
+          />);
 
       let faces = wrapper.find(Persona);
       expect(faces).to.have.length(2, 'Only two personas should be rendered');
