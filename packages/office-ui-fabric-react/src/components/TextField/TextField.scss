@@ -56,6 +56,12 @@
   border-color: $ms-color-themePrimary;
 }
 
+.errorIcon {
+  vertical-align: middle;
+  font-size: $ms-font-size-m;
+  @include margin-right(5px);
+}
+
 .field {
   @include ms-u-normalize;
   @include ms-baseFont;

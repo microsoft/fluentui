@@ -1,6 +1,44 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 17 Mar 2017 03:05:52 GMT and should not be manually modified.
+This log was last generated on Thu, 23 Mar 2017 03:13:02 GMT and should not be manually modified.
+
+## 2.6.0
+Thu, 23 Mar 2017 03:13:02 GMT
+
+### Minor changes
+
+- Button: Updated props to include contextualProps so that contextual menu could be passed to button
+- Calendar: Adding support for date ranges: day, week, month so when a user selects a date, the corresponding range is auto-selected. Adding a new prop to hide the today link. Adding a new prop to auto navigate to to the next/previous month if the user selects a date that falls outside the current month. Also fixing some minor styling issues around focused date so it plays nicely with range selection.
+
+### Patches
+
+- TextField: Accessibility fixes for error message
+- TooltipHost: CalloutProps type fixed, and mixed properly in Tooltip
+- Popup: It now passes triggering KeyboardEvent to onDismiss handler
+
+## 2.5.4
+Wed, 22 Mar 2017 03:18:05 GMT
+
+### Patches
+
+- ContextualMenu: Fix an issue where anchor item would not display ellipses properly on overflow.
+- Dropdown: Added class to dropdown label and dropdown container so that they can be targeted with css
+- ContextualMenu: Remove role='menuitem' for child element for LI in ContextualMenu
+
+## 2.5.3
+Tue, 21 Mar 2017 03:20:12 GMT
+
+### Patches
+
+- Nav: Fixing an issue where the default expand state for a group was not initialized correctly, resulting in having to click multiple times to collapse a group.
+- Facepile has an excess margin of 4px below it which needs to be removed. It also uses float's which is pretty retro!
+
+## 2.5.2
+Fri, 17 Mar 2017 18:01:45 GMT
+
+### Patches
+
+- DetailsList: header sizing fixed (was a css selector tweak that caused the issue.) Also added `iconName` to IColumn to specify an iconName like "Mail". The `iconClassName` property is still preserved, but is piped into the className of the Icon component.
 
 ## 2.5.1
 Fri, 17 Mar 2017 03:05:52 GMT
