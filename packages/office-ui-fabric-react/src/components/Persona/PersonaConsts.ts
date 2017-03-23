@@ -8,6 +8,7 @@ import styles from './Persona.scss';
 export const PERSONA_SIZE = {
   [PersonaSize.tiny]: 'ms-Persona--tiny ' + styles.rootIsTiny,
   [PersonaSize.extraExtraSmall]: 'ms-Persona--xxs ' + styles.rootIsExtraExtraSmall,
+  [PersonaSize.size28]: 'ms-Persona--xxs ' + styles.rootIs28,
   [PersonaSize.extraSmall]: 'ms-Persona--xs ' + styles.rootIsExtraSmall,
   [PersonaSize.small]: 'ms-Persona--sm ' + styles.rootIsSmall,
   [PersonaSize.regular]: '',
