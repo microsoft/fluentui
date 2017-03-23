@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "TooltipHost: CalloutProps type fixed, and mixed properly in Tooltip",
+      "comment": "Callout: isClosedOnScroll prop added and set to default true",
       "type": "patch"
     },
     {

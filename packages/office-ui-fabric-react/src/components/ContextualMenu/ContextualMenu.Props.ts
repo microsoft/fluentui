@@ -103,6 +103,12 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
   onDismiss?: (ev?: any, dismissAll?: boolean) => void;
 
   /**
+   * Click handler which is invoked if onClick is not passed for individual contextual
+   * menu item
+   */
+  onItemClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) => void;
+
+  /**
    * CSS class to apply to the context menu.
    * @default null
    */

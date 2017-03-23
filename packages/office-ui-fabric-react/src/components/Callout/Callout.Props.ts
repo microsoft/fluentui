@@ -57,6 +57,12 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   isBeakVisible?: boolean;
 
   /**
+   * If true then the onClose is called on scroll
+   * @default true
+   */
+  isClosedOnScroll?: boolean;
+
+  /**
    * If true the position returned will have the menu element cover the target.
    * If false then it will position next to the target;
    * @default false
