@@ -8,6 +8,7 @@
 // ChoiceField styles
 
 $ms-choiceField-field-size: 20px;
+$ms-choiceField-iconField-size: 96px;
 $ms-choiceField-transition-duration: 200ms;
 $ms-choiceField-transition-duration-inner: 150ms;
 $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
@@ -55,7 +56,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
   font-weight: normal;
   position: absolute;
   box-sizing: border-box;
-  transition-property: background, border, border-color;
+  transition-property: border-color;
   transition-duration: $ms-choiceField-transition-duration;
   transition-timing-function: $ms-choiceField-transition-timing;
   border-radius: 50%;
@@ -225,33 +226,32 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 }
 
 .choiceFieldIsImage, .choiceFieldIsIcon {
-  $fieldMinWidth: 96px;
   $fieldPadding: 4px;
 
   display: inline-flex;
 
   font-size: 0;
 
-  @include margin(0, 2px, 2px, 0);
+  @include margin(0, 4px, 4px, 0);
   @include padding-left(0px);
   @include ms-bgColor-neutralLighter;
-  border: 1px solid transparent;
 
   .fieldIsImage, .fieldIsIcon {
-    $radioButtonSpacing: 5px;
+    $radioButtonSpacing: 3px;
     $radioButtonInnerSize: 5px;
 
     display: inline-block;
     box-sizing: border-box;
-    min-width: $fieldMinWidth;
+    min-width: $ms-choiceField-iconField-size;
     cursor: pointer;
     padding: $fieldPadding;
     padding-top: 24px;
     margin: 0;
     text-align: center;
     transition: all $ms-choiceField-transition-duration ease;
+    border: 2px solid transparent;
 
-    .fieldIsDisabled {
+    &.fieldIsDisabled {
       cursor: default;
 
       .innerField {
@@ -289,7 +289,6 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
       position: relative;
       margin: 4px 0 0 0;
       height: $lineHeight * 2;
-      padding: 0 24px;
       line-height: $lineHeight;
 
       @include ms-font-m;
@@ -301,18 +300,51 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 
     &::before {
       top: $radioButtonSpacing;
-      @include left($radioButtonSpacing);
+      @include right($radioButtonSpacing);
+      @include left(initial); // To reset the value of 'left' to its default value, so that 'right' works
+      opacity: 0;
     }
 
     &::after {
       top: $radioButtonSpacing + ($radioButtonInnerSize * 2);
-      @include left($radioButtonSpacing + ($radioButtonInnerSize * 2));
+      @include right($radioButtonSpacing + ($radioButtonInnerSize * 2));
+      @include left(initial); // To reset the value of 'left' to its default value, so that 'right' works
     }
 
-    &.fieldIsChecked {
-      &::after {
-        top: $radioButtonSpacing + $radioButtonInnerSize;
-        @include left($radioButtonSpacing + $radioButtonInnerSize);
+    &:not(.fieldIsDisabled) {
+      &:hover,
+      &:focus {
+        border-color: $ms-color-neutralTertiaryAlt;
+
+        &::before {
+          opacity: 1;
+        }
+      }
+
+
+      &.fieldIsChecked {
+        border-color: $ms-color-themePrimary;
+
+        &::before {
+          opacity: 1;
+        }
+
+        &::after {
+          top: $radioButtonSpacing + $radioButtonInnerSize;
+          @include right($radioButtonSpacing + $radioButtonInnerSize);
+        }
+
+        &:hover,
+        &:focus {
+          border-color: $ms-color-themeDark;
+
+          &::before {
+            border-color: $ms-color-themeDark;
+          }
+          &::after {
+            background-color: $ms-color-themeDark;
+          }
+        }
       }
     }
   }
@@ -321,19 +353,15 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 .choiceFieldIsIcon {
   $iconSize: 32px;
 
+  height: $ms-choiceField-iconField-size;
+  width: $ms-choiceField-iconField-size;
+
   .iconWrapper {
     font-size: $iconSize;
     line-height: $iconSize;
     height: $iconSize;
   }
 
-  .fieldIsIcon {
-    &.fieldIsChecked {
-      .iconWrapper {
-        @include ms-fontColor-themeDark;
-      }
-    }
-  }
 }
 
 :global(.ms-Fabric.is-focusVisible) .choiceFieldIsInFocus {
