@@ -24,12 +24,7 @@
       false
     ],
     "whitespace": [
-      true,
-      "check-branch",
-      "check-decl",
-      "check-operator",
-      "check-type",
-      "check-preblock"
+      false
     ],
     "no-trailing-whitespace": false
   }
