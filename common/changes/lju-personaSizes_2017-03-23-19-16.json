@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Added a 28px by 28px persona control.",
+      "comment": "Persona: Added a 28px size",
       "type": "minor"
     }
   ],

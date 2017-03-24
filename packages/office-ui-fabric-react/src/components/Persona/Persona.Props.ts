@@ -83,12 +83,12 @@ export interface IPersonaProps extends React.HTMLProps<Persona> {
 export enum PersonaSize {
   tiny = 0,
   extraExtraSmall = 1,
-  size28 = 2,
-  extraSmall = 3,
-  small = 4,
-  regular = 5,
-  large = 6,
-  extraLarge = 7
+  extraSmall = 2,
+  small = 3,
+  regular = 4,
+  large = 5,
+  extraLarge = 6,
+  size28 = 7
 }
 
 export enum PersonaPresence {

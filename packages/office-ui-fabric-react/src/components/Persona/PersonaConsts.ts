@@ -8,12 +8,12 @@ import styles from './Persona.scss';
 export const PERSONA_SIZE = {
   [PersonaSize.tiny]: 'ms-Persona--tiny ' + styles.rootIsTiny,
   [PersonaSize.extraExtraSmall]: 'ms-Persona--xxs ' + styles.rootIsExtraExtraSmall,
-  [PersonaSize.size28]: 'ms-Persona--xxs ' + styles.rootIs28,
   [PersonaSize.extraSmall]: 'ms-Persona--xs ' + styles.rootIsExtraSmall,
   [PersonaSize.small]: 'ms-Persona--sm ' + styles.rootIsSmall,
   [PersonaSize.regular]: '',
   [PersonaSize.large]: 'ms-Persona--lg ' + styles.rootIsLarge,
-  [PersonaSize.extraLarge]: 'ms-Persona--xl ' + styles.rootIsExtraLarge
+  [PersonaSize.extraLarge]: 'ms-Persona--xl ' + styles.rootIsExtraLarge,
+  [PersonaSize.size28]: 'ms-Persona--28 ' + styles.rootIs28
 };
 
 export const PERSONA_PRESENCE = {
