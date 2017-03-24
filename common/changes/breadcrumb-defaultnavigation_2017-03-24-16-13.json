@@ -1,0 +1,20 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Breadcrumb: Addinng changes to add the default behaviour of browser on Alt key.",
+      "type": "patch"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/utilities",
+      "type": "none"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/example-app-base",
+      "type": "none"
+    }
+  ],
+  "email": "r33najain@gmail.com"
+}
