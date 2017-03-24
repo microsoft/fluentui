@@ -2,6 +2,34 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "1.3.0",
+      "tag": "@uifabric/utilities_v1.3.0",
+      "date": "Thu, 23 Mar 2017 03:13:02 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Johanna Hawkins <jo.hawkins@hotmail.com>",
+            "commit": "7fa3b9649c1b46e136c8781eda79149577699f1d",
+            "comment": "Adding some utility functions to handle date range calculations and determining if a date falls within a date range."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.2.0",
+      "tag": "@uifabric/utilities_v1.2.0",
+      "date": "Fri, 10 Mar 2017 20:41:05 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "eca0148b5e6e69cae5eea5e121cf0d5be45b3339",
+            "comment": "Adjusting React peer dependency to i"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.1.0",
       "tag": "@uifabric/utilities_v1.1.0",
       "date": "Wed, 01 Mar 2017 20:31:22 GMT",

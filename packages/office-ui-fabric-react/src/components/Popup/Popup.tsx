@@ -77,7 +77,7 @@ export class Popup extends BaseComponent<IPopupProps, {}> {
       case KeyCodes.escape:
 
         if (this.props.onDismiss) {
-          this.props.onDismiss();
+          this.props.onDismiss(ev);
 
           ev.preventDefault();
           ev.stopPropagation();

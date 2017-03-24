@@ -144,7 +144,7 @@ describe('TextField', () => {
         />
       );
 
-      assertErrorMessage(renderedDOM, errorMessage);
+      return delay(20).then(() => assertErrorMessage(renderedDOM, errorMessage));
     });
 
     it('should render error message on first render when onGetErrorMessage returns a Promise<string>', () => {
@@ -157,7 +157,7 @@ describe('TextField', () => {
       );
 
       // The Promise based validation need to assert with async pattern.
-      return delay(1).then(() => assertErrorMessage(renderedDOM, errorMessage));
+      return delay(20).then(() => assertErrorMessage(renderedDOM, errorMessage));
     });
 
     it('should not render error message when onGetErrorMessage return an empty string', () => {
@@ -169,7 +169,7 @@ describe('TextField', () => {
         />
       );
 
-      assertErrorMessage(renderedDOM, /* exist */ false);
+      delay(20).then(() => assertErrorMessage(renderedDOM, /* exist */ false));
     });
 
     it('should not render error message when no value is provided', () => {
@@ -182,7 +182,7 @@ describe('TextField', () => {
         />
       );
 
-      assertErrorMessage(renderedDOM, /* exist */ false);
+      delay(20).then(() => assertErrorMessage(renderedDOM,  /* exist */ false));
       expect(actualValue).to.equal('');
     });
 
@@ -198,7 +198,7 @@ describe('TextField', () => {
         />
       );
 
-      assertErrorMessage(renderedDOM, errorMessage);
+      delay(20).then(() => assertErrorMessage(renderedDOM, errorMessage));
 
       ReactDOM.render(
         <TextField
@@ -340,9 +340,11 @@ describe('TextField', () => {
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
 
     ReactTestUtils.Simulate.input(inputDOM, mockEvent('value change'));
+    ReactTestUtils.Simulate.change(inputDOM, mockEvent('value change'));
     expect(callCount).to.equal(1);
 
     ReactTestUtils.Simulate.input(inputDOM, mockEvent(''));
+    ReactTestUtils.Simulate.change(inputDOM, mockEvent(''));
     expect(callCount).to.equal(2);
   });
 });
