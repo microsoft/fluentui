@@ -213,6 +213,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 ariaLabelledBy={ labelElementId }
                 ref={ (focusZone) => this._focusZone = focusZone }
                 role='menu'
+                isCircularNavigation={ true }
               >
                 <ul
                   className={ css('ms-ContextualMenu-list is-open', styles.list) }
@@ -307,7 +308,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
             'ms-ContextualMenu-link',
             styles.link,
             (item.isDisabled || item.disabled) && 'is-disabled') }
-          role='menuitem'
           style={ item.style }
           onClick={ this._onAnchorClick.bind(this, item) }>
           { this._renderMenuItemChildren(item, index, hasCheckmarks, hasIcons) }
@@ -339,7 +339,6 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
       onMouseLeave: this._onMouseLeave,
       onMouseDown: (ev: any) => this._onItemMouseDown(item, ev),
       disabled: item.isDisabled || item.disabled,
-      role: 'menuitem',
       href: item.href,
       title: item.title,
       'aria-label': ariaLabel,
@@ -430,7 +429,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     }
   }
 
-  private _onItemClick(item: any, ev: MouseEvent) {
+  private _onItemClick(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
     let items = getSubmenuItems(item);
 
     if (!items || !items.length) { // This is an item without a menu. Click it.
@@ -447,15 +446,18 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
     ev.preventDefault();
   }
 
-  private _onAnchorClick(item: IContextualMenuItem, ev: MouseEvent) {
+  private _onAnchorClick(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
     this._executeItemClick(item, ev);
     ev.stopPropagation();
   }
 
-  private _executeItemClick(item: any, ev: MouseEvent) {
+  private _executeItemClick(item: IContextualMenuItem, ev: React.MouseEvent<HTMLElement>) {
     if (item.onClick) {
       item.onClick(ev, item);
+    } else if (this.props.onItemClick) {
+      this.props.onItemClick(ev, item);
     }
+
     this.dismiss(ev, true);
   }
 
