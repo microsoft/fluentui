@@ -1,8 +1,9 @@
 @import '../../common/common';
 
-$spacingAroundItemButton: 2px;
+//$spacingAroundItemButton: 2px;
 
 .root {
+  position: relative;
   width: auto;
 }
 
@@ -10,21 +11,25 @@ $spacingAroundItemButton: 2px;
   clear: both;
 }
 
-.members {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  overflow: hidden;
-  margin: -1 * $spacingAroundItemButton;
+// .members {
+//   display: flex;
+//   flex-direction: row;
+//   flex-wrap: wrap;
+//   overflow: hidden;
+//   margin: -1 * $spacingAroundItemButton;
 
-  > * {
-    flex: 0 0 auto;
-    margin: $spacingAroundItemButton;
-  }
-}
+//   > * {
+//     flex: 0 0 auto;
+//     margin: $spacingAroundItemButton;
+//   }
+// }
 
 .itemButton {
   @include focus-outline();
+  @include float(left);
+  @include margin-right(4px);
+  margin-bottom: 4px;
+  position: relative;
   text-align: center;
   padding: 0;
   border-radius: 50%;
@@ -61,12 +66,14 @@ button.addButton {
 }
 
 button.overflowButton {
+  @include margin-right(8px);
   font-size: $ms-font-size-m;
   color: $ms-color-neutralSecondary;
   background-color: $ms-color-neutralLight;
 }
 
 button.descriptiveOverflowButton {
+  @include margin-right(8px);
   font-size: $ms-font-size-s;
   color: $ms-color-neutralSecondary;
   background-color: $ms-color-neutralLight;

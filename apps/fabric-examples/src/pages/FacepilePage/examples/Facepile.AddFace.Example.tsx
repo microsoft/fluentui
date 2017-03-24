@@ -15,7 +15,7 @@ export class FacepileAddFaceExample extends React.Component<any, IFacepileAddFac
     super();
 
     this.state = {
-      numberOfFaces: 0
+      numberOfFaces: 1
     };
   }
 

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  BaseComponent,
   buttonProperties,
   css,
   divProperties,
@@ -23,16 +24,73 @@ import {
 } from '../../Persona';
 import styles from './Facepile.scss';
 
-export class Facepile extends React.Component<IFacepileProps, {}> {
+export interface IFacepileState {
+  renderedItems: IFacepilePersona[];
+}
+
+const OVERFLOW_KEY = 'overflow';
+const MAX_OVERFLOW = 99;
+
+export class Facepile extends BaseComponent<IFacepileProps, IFacepileState> {
   public static defaultProps: IFacepileProps = {
+    useOnlyAvailableWidth: false,
     maxDisplayablePersonas: 5,
     personas: [],
     personaSize: PersonaSize.extraSmall
   };
 
+  private _members: HTMLElement;
+
+  private _calculated: boolean;
+  private _elementWidth: number;
+
+  constructor(props: IFacepileProps) {
+    super(props);
+
+    this.state = {
+      renderedItems: null
+    };
+  }
+
+  public componentDidMount() {
+    const { useOnlyAvailableWidth } = this.props;
+    if (useOnlyAvailableWidth) {
+      this._updateMeasurements();
+      this._events.on(window, 'resize', this._updateRenderedItems);
+    }
+    this._updateRenderedItems();
+  }
+
+  public componentWillReceiveProps(nextProps: IFacepileProps) {
+    this.setState((prevState: IFacepileState) => {
+      const { maxDisplayablePersonas, useOnlyAvailableWidth } = this.props;
+      if (useOnlyAvailableWidth || !maxDisplayablePersonas) {
+        prevState.renderedItems = nextProps.personas;
+      } else {
+        // If we don't need to measure and maxDisplayablePersonas
+        // is set then limit this to maxDisplayablePersonas
+        prevState.renderedItems = nextProps.personas.slice(0, maxDisplayablePersonas);
+      }
+      return prevState;
+    });
+    this._calculated = false;
+  }
+
+  public componentDidUpdate(prevProps: IFacepileProps, prevStates: IFacepileState) {
+    const { useOnlyAvailableWidth } = this.props;
+    if (!this._calculated) {
+      if (useOnlyAvailableWidth) {
+        this._updateMeasurements();
+      }
+      this._updateRenderedItems();
+    }
+  }
+
   public render(): JSX.Element {
-    let { chevronButtonProps, maxDisplayablePersonas, overflowButtonProps, overflowButtonType, personas, showAddButton } = this.props;
-    let numPersonasToShow: number = Math.min(personas.length, maxDisplayablePersonas);
+    let { chevronButtonProps, overflowButtonProps, overflowButtonType, showAddButton } = this.props;
+    const { renderedItems } = this.state;
+
+    let numPersonasToShow: number = renderedItems && renderedItems.length;
 
     // Added for deprecating chevronButtonProps.  Can remove after v1.0
     if (chevronButtonProps && !overflowButtonProps) {
@@ -42,18 +100,29 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
 
     return (
       <div className={ css('ms-Facepile', styles.root) }>
-        <div>
-          { showAddButton ? this._getAddNewElement() : null }
-          <FocusZone direction={ FocusZoneDirection.horizontal } className={ css('ms-Facepile-members', styles.members) }>
+        <div ref={ this._resolveRef('_members') }>
+          { showAddButton && this._getAddNewElement() }
+          <FocusZone
+            key={ 'FocusZone' }
+            direction={ FocusZoneDirection.horizontal }>
             {
-              personas.slice(0, numPersonasToShow).map((persona: IFacepilePersona, index: number) => {
+              !!numPersonasToShow &&
+              renderedItems.map((persona: IFacepilePersona, index: number) => {
                 const personaControl: JSX.Element = this._getPersonaControl(persona);
-                return persona.onClick ?
-                  this._getElementWithOnClickEvent(personaControl, persona, index) :
-                  this._getElementWithoutOnClickEvent(personaControl, persona, index);
+                const personaProps: IFacepilePersona = {
+                  ...persona,
+                  className: styles.itemButton,
+                  title: persona.personaName,
+                  onMouseMove: this._onPersonaMouseMove.bind(this, persona),
+                  onMouseOut: this._onPersonaMouseOut.bind(this, persona)
+                };
+                return personaProps.onClick ?
+                  this._getElementWithOnClickEvent(personaControl, personaProps, index) :
+                  this._getElementWithoutOnClickEvent(personaControl, personaProps, index);
               })
             }
-            { overflowButtonProps ? this._getOverflowElement(numPersonasToShow) : null }
+            { overflowButtonType !== OverflowButtonType.none &&
+              this._getOverflowElement(numPersonasToShow) }
           </FocusZone>
         </div>
         <div className={ css('ms-Facepile-clear', styles.clear) }></div>
@@ -61,8 +130,96 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
     );
   }
 
+  private _updateMeasurements(): void {
+    const { useOnlyAvailableWidth } = this.props;
+    if (useOnlyAvailableWidth) {
+      this._elementWidth = this._calculateElementWidth();
+    }
+  }
+
+  private _updateRenderedItems() {
+    const { personas } = this.props;
+    let numPersonasToShow: number = this._calculateDisplayablePersonas();
+
+    this.setState((prevState: IFacepileState) => {
+      prevState.renderedItems = numPersonasToShow ? personas.slice(0, numPersonasToShow) : [];
+      return prevState;
+    });
+
+    this._calculated = true;
+  }
+
+  private _calculateDisplayablePersonas(): number {
+    const { personas, useOnlyAvailableWidth } = this.props;
+    let maxPersonasToShow: number =
+      useOnlyAvailableWidth ?
+        this._calculatePersonasBasedOnWidthAvailable() :
+        this._calculatePersonasBasedOnMaxAllowed();
+
+    return Math.min(Math.max(maxPersonasToShow - this._calculateExtraSpaceNeeds(maxPersonasToShow), 0), personas.length);
+  }
+
+  private _calculateExtraSpaceNeeds(maxPersonasToShow: number): number {
+    const { overflowButtonType, showAddButton} = this.props;
+    let extraSpace: number = 0;
+    if (showAddButton) { extraSpace++; }
+    if (overflowButtonType === OverflowButtonType.more ||
+      overflowButtonType === OverflowButtonType.downArrow ||
+      (overflowButtonType === OverflowButtonType.descriptive &&
+        this._willDisplayDescriptiveOverflowButton(overflowButtonType, maxPersonasToShow))
+    ) {
+      extraSpace++;
+    }
+    return extraSpace;
+  }
+
+  private _willDisplayDescriptiveOverflowButton(overflowButtonType: OverflowButtonType, numPersonasToShow: number): boolean {
+    const { personas } = this.props;
+    if (overflowButtonType !== OverflowButtonType.descriptive) { return false; }
+    let numPersonasNotPictured: number = personas.length - numPersonasToShow;
+    return numPersonasNotPictured >= 0;
+  }
+
+  private _calculatePersonasBasedOnMaxAllowed(): number {
+    const { maxDisplayablePersonas } = this.props;
+    let numPersonasToShow: number = maxDisplayablePersonas;
+    return Math.max(numPersonasToShow, 1);
+  }
+
+  private _calculatePersonasBasedOnWidthAvailable(): number {
+    const { maxDisplayablePersonas, width } = this.props;
+
+    let numPersonasToShow: number = 0;
+    let boundingBoxWidth: number = width ? width : this._members ? this._members.getBoundingClientRect().width : 0;
+
+    if (this._elementWidth && boundingBoxWidth) {
+      numPersonasToShow = Math.floor(boundingBoxWidth / this._elementWidth);
+    }
+
+    numPersonasToShow = Math.min(maxDisplayablePersonas, numPersonasToShow);
+    return Math.max(numPersonasToShow, 1);
+  }
+
+  private _calculateElementWidth(): number {
+    if (this._elementWidth) {
+      return this._elementWidth;
+    }
+
+    let elementWidth: number = 0;
+
+    if (this._members) {
+      let nodeList: NodeListOf<Element> = this._members.querySelectorAll(styles.itemButton);
+      if (nodeList && nodeList.length > 0) {
+        let style = window.getComputedStyle(nodeList[0]);
+        elementWidth = nodeList[0].getBoundingClientRect().width + (parseInt(style.marginLeft, 10) + parseInt(style.marginRight, 10)) || 0;
+      }
+    }
+
+    return elementWidth;
+  }
+
   private _getPersonaControl(persona: IFacepilePersona): JSX.Element {
-    let { getPersonaProps, personaSize } = this.props;
+    const { getPersonaProps, personaSize } = this.props;
     return <Persona
       imageInitials={ persona.imageInitials }
       imageUrl={ persona.imageUrl }
@@ -77,12 +234,8 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   private _getElementWithOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
     return <BaseButton
       { ...getNativeProps(persona, buttonProperties) }
-      className={ css('ms-Facepile-itemButton ms-Facepile-person', styles.itemButton) }
-      title={ persona.personaName }
-      key={ (!!persona.imageUrl ? 'i' : '') + index }
+      key={ this._getItemKey(persona, index) }
       onClick={ this._onPersonaClick.bind(this, persona) }
-      onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
-      onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
     >
       { personaControl }
     </BaseButton>;
@@ -91,11 +244,7 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   private _getElementWithoutOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
     return <div
       { ...getNativeProps(persona, divProperties) }
-      className={ css('ms-Facepile-itemButton ms-Facepile-person', styles.itemButton) }
-      title={ persona.personaName }
-      key={ (!!persona.imageUrl ? 'i' : '') + index }
-      onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
-      onMouseOut={ this._onPersonaMouseOut.bind(this, persona) }
+      key={ this._getItemKey(persona, index) }
     >
       { personaControl }
     </div>;
@@ -115,15 +264,16 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
   }
 
   private _getDescriptiveOverflowElement(numPersonasToShow: number): JSX.Element {
-    let { personaSize } = this.props;
-    let numPersonasNotPictured: number = this.props.personas.length - numPersonasToShow;
+    const { overflowButtonProps, personas, personaSize } = this.props;
+    let numPersonasNotPictured: number = personas.length - numPersonasToShow;
 
-    if (!this.props.overflowButtonProps || numPersonasNotPictured < 1) { return null; }
+    if (numPersonasNotPictured < 1) { return null; }
 
-    let personaNames: string = this.props.personas.slice(numPersonasToShow).map((p: IFacepilePersona) => p.personaName).join(', ');
+    let personaNames: string = personas.slice(numPersonasToShow).map((p: IFacepilePersona) => p.personaName).join(', ');
 
     return <BaseButton
-      { ...getNativeProps(this.props.overflowButtonProps, buttonProperties) }
+      { ...getNativeProps(overflowButtonProps, buttonProperties) }
+      key={ OVERFLOW_KEY }
       className={ css('ms-Facepile-descriptiveOverflowButton', 'ms-Facepile-itemButton', styles.descriptiveOverflowButton, styles.itemButton) }
     >
       <Persona
@@ -132,21 +282,23 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
         hidePersonaDetails={ true }
         onRenderInitials={ () => {
           return (
-            <span>{ '+' + numPersonasNotPictured }</span>
+            <span>
+              { numPersonasNotPictured > MAX_OVERFLOW ?
+                numPersonasNotPictured + '+' :
+                '+' + numPersonasNotPictured }</span>
           );
         } }
       >
-
       </Persona>
-
     </BaseButton>;
   }
 
   private _getIconElement(icon: string): JSX.Element {
-    let { personaSize } = this.props;
+    const { overflowButtonProps, personaSize } = this.props;
 
     return <BaseButton
-      { ...getNativeProps(this.props.overflowButtonProps, buttonProperties) }
+      { ...getNativeProps(overflowButtonProps, buttonProperties) }
+      key={ OVERFLOW_KEY }
       className={ css('ms-Facepile-overflowButton', 'ms-Facepile-itemButton', styles.overflowButton, styles.itemButton) }
     >
       <Persona
@@ -155,16 +307,16 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
         onRenderInitials={ () => (
           <i className={ css('ms-Icon', 'msIcon', `ms-Icon ms-Icon--${icon}`) } aria-hidden='true' />
         ) }
-      >
-
-      </Persona>
+      />
     </BaseButton>;
   }
 
   private _getAddNewElement(): JSX.Element {
-    let { personaSize } = this.props;
+    const { addButtonProps, personaSize } = this.props;
+
     return <BaseButton
-      { ...getNativeProps(this.props.addButtonProps, buttonProperties) }
+      { ...getNativeProps(addButtonProps, buttonProperties) }
+      key={ OVERFLOW_KEY }
       className={ css('ms-Facepile-addButton', 'ms-Facepile-itemButton', styles.itemButton, styles.addButton) }
     >
       <Persona
@@ -173,11 +325,12 @@ export class Facepile extends React.Component<IFacepileProps, {}> {
         onRenderInitials={ () => (
           <i className='ms-Icon msIcon ms-Icon--AddFriend' aria-hidden='true' />
         ) }
-      >
-
-      </Persona>
-
+      />
     </BaseButton>;
+  }
+
+  private _getItemKey(persona: IFacepilePersona, index: number): string {
+    return (!!persona.imageUrl ? 'i' : '') + index;
   }
 
   private _onPersonaClick(persona: IFacepilePersona, ev?: React.MouseEvent<HTMLElement>): void {
