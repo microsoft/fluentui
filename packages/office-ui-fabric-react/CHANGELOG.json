@@ -2,6 +2,42 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "2.7.0",
+      "tag": "office-ui-fabric-react_v2.7.0",
+      "date": "Fri, 24 Mar 2017 04:26:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Aleksandr Gembinski <v-algemb@microsoft.com>",
+            "commit": "e1591c57be860cb401c23059963c1a1bda5d97ee",
+            "comment": "CommandBar: Fixes ugly focus border when clicked (Chrome/Mac)"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "8e5e1ec389f15c632c83d1e769f1fb7a49df0d16",
+            "comment": "Callout: preventDismissOnScroll prop added and set to default false"
+          },
+          {
+            "author": "gitjain <alreut@yahoo.com>",
+            "commit": "ea6f5ca503031fd70fc421501638eb334f64ad7a",
+            "comment": "Contextual Menu: Made change to allow arrow keys to loop over item"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "177be5d1a4c409d84c2647586bd6b3867c8d3d3e",
+            "comment": "Panel: Title text updated with correct lineheight and removed overflow styles"
+          }
+        ],
+        "minor": [
+          {
+            "author": "Giorgi Bagdavadze <notgiorgi@gmail.com>",
+            "commit": "7d36e7b7b0359b070344462afda95568f9e85599",
+            "comment": "ContextualMenu: onItemClick prop added"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.6.0",
       "tag": "office-ui-fabric-react_v2.6.0",
       "date": "Thu, 23 Mar 2017 03:13:02 GMT",

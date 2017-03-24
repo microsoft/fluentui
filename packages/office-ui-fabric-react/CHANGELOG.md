@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 23 Mar 2017 03:13:02 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Mar 2017 04:26:48 GMT and should not be manually modified.
+
+## 2.7.0
+Fri, 24 Mar 2017 04:26:48 GMT
+
+### Minor changes
+
+- ContextualMenu: onItemClick prop added
+
+### Patches
+
+- CommandBar: Fixes ugly focus border when clicked (Chrome/Mac)
+- Callout: preventDismissOnScroll prop added and set to default false
+- Contextual Menu: Made change to allow arrow keys to loop over item
+- Panel: Title text updated with correct lineheight and removed overflow styles
 
 ## 2.6.0
 Thu, 23 Mar 2017 03:13:02 GMT

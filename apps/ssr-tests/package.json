@@ -23,7 +23,7 @@
     "@types/mocha": "^2.2.39",
     "@types/webpack-env": "^1.13.0",
     "fabric-examples": ">=1.0.2 <2.0.0",
-    "office-ui-fabric-react": ">=2.6.0 <3.0.0",
+    "office-ui-fabric-react": ">=2.7.0 <3.0.0",
     "mocha": "~2.5.3",
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
