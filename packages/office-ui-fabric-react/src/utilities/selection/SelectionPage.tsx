@@ -7,7 +7,7 @@ import {
 
 import { SelectionBasicExample } from './examples/Selection.Basic.Example';
 
-const SelectionBasicExampleCode = require('!raw-loader!./examples/Selection.Basic.Example') as string;
+const SelectionBasicExampleCode = require('!raw-loader!./examples/Selection.Basic.Example.tsx') as string;
 
 export class SelectionPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {

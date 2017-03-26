@@ -19,7 +19,7 @@ import {
 import {
   SelectionMode
 } from '../../utilities/selection/index';
-let styles: any = require('./GroupedList.scss');
+const styles: any = require('./GroupedList.scss');
 
 export interface IGroupedListState {
   lastWidth?: number;

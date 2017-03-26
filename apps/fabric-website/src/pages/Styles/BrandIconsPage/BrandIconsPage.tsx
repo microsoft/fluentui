@@ -3,8 +3,8 @@ import { CodeBlock } from '../../../components/CodeBlock/CodeBlock';
 import { PageHeader } from '../../../components/PageHeader/PageHeader';
 import { Table } from '../../../components/Table/Table';
 import { IconGrid } from '../../../components/IconGrid/IconGrid';
-let styles: any = require('./BrandIconsPage.module.scss');
-import pageStyles from '../../PageStyles.module.scss';
+const styles: any = require('./BrandIconsPage.module.scss');
+const pageStyles: any = require('../../PageStyles.module.scss');
 
 const svgResolutionData = require('json!../../../data/brand-icons-svg-resolutions.json');
 const pngResolutionData = require('json!../../../data/brand-icons-png-resolutions.json');
@@ -62,13 +62,13 @@ export class BrandIconsPage extends React.Component<any, any> {
             <div className='ms-Grid-col ms-u-sm12 ms-u-lg6'>
               <ul className={ styles.exampleIcons }>
                 <li>
-                  <img src='https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/word_48x1.svg' width='100' height='100' alt='Word logo'/>
+                  <img src='https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/word_48x1.svg' width='100' height='100' alt='Word logo' />
                 </li>
                 <li>
-                  <img src='https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/excel_48x1.svg' width='100' height='100'alt='Excel logo' />
+                  <img src='https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/excel_48x1.svg' width='100' height='100' alt='Excel logo' />
                 </li>
                 <li>
-                  <img src='https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/powerpoint_48x1.svg' width='100' height='100' alt='PowerPoint logo'/>
+                  <img src='https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/powerpoint_48x1.svg' width='100' height='100' alt='PowerPoint logo' />
                 </li>
               </ul>
             </div>
@@ -84,13 +84,13 @@ export class BrandIconsPage extends React.Component<any, any> {
             <div className='ms-Grid-col ms-u-sm12 ms-u-lg6'>
               <ul className={ styles.exampleIcons }>
                 <li>
-                  <img src='https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/docx_48x1.svg' width='100' height='100' alt='Docx documents SVG'/>
+                  <img src='https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/docx_48x1.svg' width='100' height='100' alt='Docx documents SVG' />
                 </li>
                 <li>
-                  <img src='https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/xlsx_48x1.svg' width='100' height='100' alt='Xlsx documents logo'/>
+                  <img src='https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/xlsx_48x1.svg' width='100' height='100' alt='Xlsx documents logo' />
                 </li>
                 <li>
-                  <img src='https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/pptx_48x1.svg' width='100' height='100' alt='PPTX documents logo'/>
+                  <img src='https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/pptx_48x1.svg' width='100' height='100' alt='PPTX documents logo' />
                 </li>
               </ul>
             </div>
@@ -121,7 +121,7 @@ export class BrandIconsPage extends React.Component<any, any> {
                   <span>48px (SVG, PNG)</span>
                 </li>
                 <li>
-                  <img src='https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/png/outlook_96x1.png' width='96' height='96' alt='Outlook 96x1 PNG product icon'/>
+                  <img src='https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/png/outlook_96x1.png' width='96' height='96' alt='Outlook 96x1 PNG product icon' />
                   <span>96px (PNG)</span>
                 </li>
               </ul>
@@ -155,14 +155,14 @@ export class BrandIconsPage extends React.Component<any, any> {
         </div>
         <CodeBlock language='html' isLightTheme={ true }>
           {
-`// Sample code for displaying an Excel 96x96px Icon
+            `// Sample code for displaying an Excel 96x96px Icon
 <div class="ms-BrandIcon--Icon96 ms-BrandIcon--Excel"></div>
 `
           }
         </CodeBlock>
         <CodeBlock language='html' isLightTheme={ true }>
           {
-`// URLs for the Excel product icon
+            `// URLs for the Excel product icon
 
 // Excel product SVGs
 https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/excel_16x1.svg
@@ -212,40 +212,40 @@ https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/pn
 https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/png/xlsx_96x2.png
 https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/png/xlsx_96x3.png
 `
-            }
-          </CodeBlock>
+          }
+        </CodeBlock>
 
         <h2 id='branded-icon-library'>Branded icon library</h2>
         <h3>Product icons</h3>
         <ul className={ styles.iconList }>
           { productIcons.map((icon, iconIndex) => (
-              <li key={ iconIndex }>
-                <img src={`https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/${icon.name}_48x1.svg`} alt={icon.name + 'Brand icon'} />
-                <span>{ icon.name }</span>
-              </li>
-            ))
+            <li key={ iconIndex }>
+              <img src={ `https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/${icon.name}_48x1.svg` } alt={ icon.name + 'Brand icon' } />
+              <span>{ icon.name }</span>
+            </li>
+          ))
           }
         </ul>
 
         <h3>Document icons</h3>
         <ul className={ styles.iconList }>
           { documentIcons.map((icon, iconIndex) => (
-              <li key={ iconIndex }>
-                {/* @todo: Change this back to using SVGs once the CDN has been updated to include the "xsn" icons (issue 252058) */}
-                <img src={`https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/${icon.name}_48x1.svg`}
-                alt={icon.name + ' Document Icon'} />
-                <span>{ icon.name }</span>
-              </li>
-            ))
+            <li key={ iconIndex }>
+              {/* @todo: Change this back to using SVGs once the CDN has been updated to include the "xsn" icons (issue 252058) */ }
+              <img src={ `https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/${icon.name}_48x1.svg` }
+                alt={ icon.name + ' Document Icon' } />
+              <span>{ icon.name }</span>
+            </li>
+          ))
           }
         </ul>
 
         <h3>Single-color icons</h3>
         <p>Fabric&rsquo;s <a href='#/styles/icons'>icon set</a> also contains single-color product and document icons. You use these single-color icons like all other icons in Fabric. For more information, see the <a href='#/styles/icons'>icons page</a> or the following example:</p>
         <CodeBlock language='html' isLightTheme={ true }>
-            {
+          {
             `<i class="ms-Icon ms-Icon--AccessLogo" aria-hidden="true"></i>`
-            }
+          }
         </CodeBlock>
         <IconGrid icons={ monochromeIconsData } />
 

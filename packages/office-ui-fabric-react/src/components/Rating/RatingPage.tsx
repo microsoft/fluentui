@@ -7,7 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { RatingBasicExample } from './examples/Rating.Basic.Example';
 
-const RatingBasicExampleCode = require('!raw-loader!./examples/Rating.Basic.Example') as string;
+const RatingBasicExampleCode = require('!raw-loader!./examples/Rating.Basic.Example.tsx') as string;
 
 export class RatingPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {

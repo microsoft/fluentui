@@ -5,7 +5,7 @@ import {
   autobind,
   css
 } from '../../Utilities';
-let styles: any = require('./DocumentCard.scss');
+const styles: any = require('./DocumentCard.scss');
 
 const LIST_ITEM_COUNT = 3;
 

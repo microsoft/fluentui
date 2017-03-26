@@ -7,7 +7,7 @@ import {
   css
 } from '../../Utilities';
 import { IProgressIndicatorProps } from './ProgressIndicator.Props';
-let styles: any = require('./ProgressIndicator.scss');
+const styles: any = require('./ProgressIndicator.scss');
 
 // if the percentComplete is near 0, don't animate it.
 // This prevents animations on reset to 0 scenarios

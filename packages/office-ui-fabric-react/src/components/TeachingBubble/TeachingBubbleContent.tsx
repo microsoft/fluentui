@@ -10,7 +10,7 @@ import { ITeachingBubbleProps } from './TeachingBubble.Props';
 import { ITeachingBubbleState } from './TeachingBubble';
 import { Button, ButtonType } from '../../Button';
 import { Image, ImageFit } from '../../Image';
-let styles: any = require('./TeachingBubble.scss');
+const styles: any = require('./TeachingBubble.scss');
 
 export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState> {
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
-let styles: any = require('./CodeBlock.module.scss');
+const styles: any = require('./CodeBlock.module.scss');
 
 const Highlight = require('react-highlight');
 

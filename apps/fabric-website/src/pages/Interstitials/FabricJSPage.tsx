@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
-let styles: any = require('./Interstitials.module.scss');
+const styles: any = require('./Interstitials.module.scss');
 
 export class FabricJSPage extends React.Component<any, any> {
   public render() {

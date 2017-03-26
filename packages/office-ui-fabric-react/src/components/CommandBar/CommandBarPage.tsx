@@ -9,8 +9,8 @@ import { items, farItems } from './examples/data';
 import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
 import { CommandBarNonFocusableItemsExample } from './examples/CommandBar.NonFocusable.Example';
 
-const CommandBarBasicExampleCode = require('!raw-loader!./examples/CommandBar.Basic.Example') as string;
-const CommandBarNoFocusableItemsExampleCode = require('!raw-loader!./examples/CommandBar.NonFocusable.Example') as string;
+const CommandBarBasicExampleCode = require('!raw-loader!./examples/CommandBar.Basic.Example.tsx') as string;
+const CommandBarNoFocusableItemsExampleCode = require('!raw-loader!./examples/CommandBar.NonFocusable.Example.tsx') as string;
 
 export class CommandBarPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {

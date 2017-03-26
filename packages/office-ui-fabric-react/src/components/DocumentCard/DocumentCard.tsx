@@ -5,7 +5,7 @@ import {
   css,
   KeyCodes
 } from '../../Utilities';
-let styles: any = require('./DocumentCard.scss');
+const styles: any = require('./DocumentCard.scss');
 
 export class DocumentCard extends React.Component<IDocumentCardProps, any> {
   public static defaultProps: IDocumentCardProps = {

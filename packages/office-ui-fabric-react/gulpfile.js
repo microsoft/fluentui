@@ -10,8 +10,11 @@ let path = require('path');
 
 let isProduction = process.argv.indexOf('--production') >= 0;
 let isNuke = process.argv.indexOf('nuke') >= 0;
-let packageFolder = buildConfig.packageFolder || '';
-let distFolder = buildConfig.distFolder;
+let {
+  libFolder,
+  distFolder,
+  packageFolder = ''
+} = buildConfig;
 
 // Configure custom lint overrides.
 let rules = Object.assign(
@@ -36,25 +39,26 @@ build.karma.isEnabled = () => true;
 
 // Disable unnecessary subtasks.
 build.preCopy.isEnabled = () => false;
-build.postCopy.isEnabled = () => isProduction;
 
 // Until typings work.
 //build.apiExtractor.isEnabled = () => false;
 
 // Copy fabric-core to dist to be published with fabric-react.
 build.postCopy.setConfig({
+  shouldFlatten: false,
   copyTo: {
     [path.join(distFolder, 'sass')]: [
       'node_modules/office-ui-fabric-core/dist/sass/*.*'
     ],
     [path.join(distFolder, 'css')]: [
       'node_modules/office-ui-fabric-core/dist/css/*.*'
+    ],
+    [libFolder]: [
+      'src/**/*.Example.tsx',
+      'src/**/*.Props.ts'
     ]
   }
 });
-
-// process *.Props.tsx as text.
-build.text.setConfig({ textMatch: ['src/**/*.Props.ts'] });
 
 // Produce AMD bits in lib-amd on production builds.
 if (isProduction || isNuke) {

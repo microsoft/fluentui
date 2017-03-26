@@ -12,7 +12,7 @@ import { Button, ButtonType } from '../../Button';
 import { DialogFooter } from './DialogFooter';
 import { Popup } from '../Popup/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-let styles: any = require('./Dialog.scss');
+const styles: any = require('./Dialog.scss');
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 

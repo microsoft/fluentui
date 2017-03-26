@@ -10,7 +10,7 @@ import {
   inputProperties,
   textAreaProperties
 } from '../../Utilities';
-let styles: any = require('./TextField.scss');
+const styles: any = require('./TextField.scss');
 
 export interface ITextFieldState {
   value?: string;

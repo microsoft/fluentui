@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PageHeader } from '../../../components/PageHeader/PageHeader';
 import { Table } from '../../../components/Table/Table';
-import pageStyles from '../../PageStyles.module.scss';
+const pageStyles: any = require('../../PageStyles.module.scss');
 
 const utilitiesData = require('json!../../../data/utilities.json');
 

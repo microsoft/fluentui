@@ -7,22 +7,22 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { DetailsListBasicExample } from './examples/DetailsList.Basic.Example';
-const DetailsListBasicExampleCode = require('!raw-loader!./examples/DetailsList.Basic.Example') as string;
+const DetailsListBasicExampleCode = require('!raw-loader!./examples/DetailsList.Basic.Example.tsx') as string;
 
 import { DetailsListCustomColumnsExample } from './examples/DetailsList.CustomColumns.Example';
-const DetailsListCustomColumnsExampleCode = require('!raw-loader!./examples/DetailsList.CustomColumns.Example') as string;
+const DetailsListCustomColumnsExampleCode = require('!raw-loader!./examples/DetailsList.CustomColumns.Example.tsx') as string;
 
 import { DetailsListCustomRowsExample } from './examples/DetailsList.CustomRows.Example';
-const DetailsListCustomRowsExampleCode = require('!raw-loader!./examples/DetailsList.CustomRows.Example') as string;
+const DetailsListCustomRowsExampleCode = require('!raw-loader!./examples/DetailsList.CustomRows.Example.tsx') as string;
 
 import { DetailsListCustomGroupHeadersExample } from './examples/DetailsList.CustomGroupHeaders.Example';
-const DetailsListCustomGroupHeadersExampleCode = require('!raw-loader!./examples/DetailsList.CustomGroupHeaders.Example') as string;
+const DetailsListCustomGroupHeadersExampleCode = require('!raw-loader!./examples/DetailsList.CustomGroupHeaders.Example.tsx') as string;
 
 import { DetailsListAdvancedExample } from './examples/DetailsList.Advanced.Example';
-const DetailsListAdvancedExampleCode = require('!raw-loader!./examples/DetailsList.Advanced.Example') as string;
+const DetailsListAdvancedExampleCode = require('!raw-loader!./examples/DetailsList.Advanced.Example.tsx') as string;
 
 import { DetailsListGroupedExample } from './examples/DetailsList.Grouped.Example';
-const DetailsListGroupedExampleCode = require('!raw-loader!./examples/DetailsList.Grouped.Example') as string;
+const DetailsListGroupedExampleCode = require('!raw-loader!./examples/DetailsList.Grouped.Example.tsx') as string;
 
 export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {

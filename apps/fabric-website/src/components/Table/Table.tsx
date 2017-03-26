@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AnimationCell } from './AnimationCell/AnimationCell';
-let styles: any = require('./Table.module.scss');
+const styles: any = require('./Table.module.scss');
 
 export interface ITableProps {
   content: any;

@@ -6,7 +6,7 @@ import { DocumentCardActivity } from 'office-ui-fabric-react/lib/DocumentCard';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { ITodoItem, ITodoItemProps } from '../types/index';
 
-let styles: any = require('./Todo.module.scss');
+const styles: any = require('./Todo.module.scss');
 import strings from './../strings';
 
 /**

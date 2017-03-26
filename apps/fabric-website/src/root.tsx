@@ -91,7 +91,13 @@ function _getAppRoutes() {
 
     if (page.pages) {
       page.pages.forEach((childPage, childPageIndex) => {
-        routes.push(<Route key={ childPageIndex } path={ childPage.url } getComponent={ childPage.getComponent } />);
+        routes.push(
+          <Route
+            key={ childPageIndex }
+            path={ childPage.url }
+            component={ childPage.component }
+            getComponent={ childPage.getComponent }
+          />);
 
         // Third level of nav
         // @todo: This is the same logic as above, and could be placed in function

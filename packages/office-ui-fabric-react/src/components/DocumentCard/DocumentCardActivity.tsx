@@ -2,7 +2,7 @@ import * as React from 'react';
 import { css } from '../../Utilities';
 import { IDocumentCardActivityProps, IDocumentCardActivityPerson } from './DocumentCard.Props';
 import { Image } from '../../Image';
-let styles: any = require('./DocumentCard.scss');
+const styles: any = require('./DocumentCard.scss');
 
 export class DocumentCardActivity extends React.Component<IDocumentCardActivityProps, any> {
   public render() {

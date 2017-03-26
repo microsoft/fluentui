@@ -12,10 +12,10 @@ import { CalloutNestedExample } from './examples/Callout.Nested.Example';
 import { CalloutDirectionalExample } from './examples/Callout.Directional.Example';
 import { CalloutCoverExample } from './examples/Callout.Cover.Example';
 
-const CalloutBasicExampleCode = require('!raw-loader!./examples/Callout.Basic.Example') as string;
-const CalloutNestedExampleCode = require('!raw-loader!./examples/Callout.Nested.Example') as string;
-const CalloutDirectionalExampleCode = require('!raw-loader!./examples/Callout.Directional.Example') as string;
-const CalloutCoverExampleCode = require('!raw-loader!./examples/Callout.Cover.Example') as string;
+const CalloutBasicExampleCode = require('!raw-loader!./examples/Callout.Basic.Example.tsx') as string;
+const CalloutNestedExampleCode = require('!raw-loader!./examples/Callout.Nested.Example.tsx') as string;
+const CalloutDirectionalExampleCode = require('!raw-loader!./examples/Callout.Directional.Example.tsx') as string;
+const CalloutCoverExampleCode = require('!raw-loader!./examples/Callout.Cover.Example.tsx') as string;
 
 export class CalloutPage extends React.Component<IComponentDemoPageProps, any> {
   public render() {

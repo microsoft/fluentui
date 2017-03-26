@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { css, divProperties, getNativeProps } from '../../Utilities';
 import { ILabelProps } from './Label.Props';
-let styles: any = require('./Label.scss');
+const styles: any = require('./Label.scss');
 
 export class Label extends React.Component<ILabelProps, any> {
   public render() {

@@ -6,7 +6,7 @@ import {
 } from '../../Utilities';
 import { IOverlayProps } from './Overlay.Props';
 
-let styles: any = require('./Overlay.scss');
+const styles: any = require('./Overlay.scss');
 
 export class Overlay extends React.Component<IOverlayProps, {}> {
   public render() {

@@ -1,5 +1,5 @@
 import { BaseButton } from '../BaseButton';
-let styles: any = require('./CompoundButton.scss');
+const styles: any = require('./CompoundButton.scss');
 
 export class CompoundButton extends BaseButton {
   protected classNames = {

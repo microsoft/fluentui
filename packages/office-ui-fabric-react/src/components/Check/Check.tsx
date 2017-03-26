@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css } from '../../Utilities';
-let styles: any = require('./Check.scss');
+const styles: any = require('./Check.scss');
 
 export interface ICheckProps extends React.Props<Check> {
   /**

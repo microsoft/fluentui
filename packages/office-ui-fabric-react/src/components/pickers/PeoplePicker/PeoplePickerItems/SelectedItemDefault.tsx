@@ -5,7 +5,7 @@ import { css } from '../../../../Utilities';
 import { Persona, PersonaSize, PersonaPresence } from '../../../../Persona';
 import { IPeoplePickerItemProps } from './PeoplePickerItem.Props';
 import { IconButton } from '../../../../Button';
-let styles: any = require('./PickerItemsDefault.scss');
+const styles: any = require('./PickerItemsDefault.scss');
 
 export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element = (peoplePickerItemProps: IPeoplePickerItemProps) => {
   let {

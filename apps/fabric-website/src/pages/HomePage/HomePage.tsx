@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
-let styles: any = require('./HomePage.module.scss');
+const styles: any = require('./HomePage.module.scss');
 
 const packageData = require('json!../../../package.json');
 

@@ -3,7 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { css } from '../../Utilities';
 import { Check } from '../../Check';
-let styles: any = require('./DetailsRow.scss');
+const styles: any = require('./DetailsRow.scss');
 
 export interface IDetailsRowCheckProps {
   selected?: boolean;

@@ -12,7 +12,7 @@ import { Link } from '../../Link';
 import { IBreadcrumbProps, IBreadcrumbItem } from './Breadcrumb.Props';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
-let styles: any = require('./Breadcrumb.scss');
+const styles: any = require('./Breadcrumb.scss');
 
 export interface IBreadcrumbState {
   isOverflowOpen: boolean;

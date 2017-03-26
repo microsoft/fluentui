@@ -7,7 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { SliderBasicExample } from './examples/Slider.Basic.Example';
 
-const SliderBasicExampleCode = require('!raw-loader!./examples/Slider.Basic.Example') as string;
+const SliderBasicExampleCode = require('!raw-loader!./examples/Slider.Basic.Example.tsx') as string;
 
 export class SliderPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {

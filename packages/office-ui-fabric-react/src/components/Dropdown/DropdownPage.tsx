@@ -7,7 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { DropdownBasicExample } from './examples/Dropdown.Basic.Example';
 
-const DropdownBasicExampleCode = require('!raw-loader!./examples/Dropdown.Basic.Example') as string;
+const DropdownBasicExampleCode = require('!raw-loader!./examples/Dropdown.Basic.Example.tsx') as string;
 
 export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {

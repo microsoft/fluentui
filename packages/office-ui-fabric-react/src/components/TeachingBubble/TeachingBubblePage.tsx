@@ -10,9 +10,9 @@ import { TeachingBubbleBasicExample } from './examples/TeachingBubble.Basic.Exam
 import { TeachingBubbleCondensedExample } from './examples/TeachingBubble.Condensed.Example';
 import { TeachingBubbleIllustrationExample } from './examples/TeachingBubble.Illustration.Example';
 
-const TeachingBubbleBasicExampleCode = require('!raw-loader!./examples/TeachingBubble.Basic.Example') as string;
-const TeachingBubbleCondensedExampleCode = require('!raw-loader!./examples/TeachingBubble.Condensed.Example') as string;
-const TeachingBubbleIllustrationExampleCode = require('!raw-loader!./examples/TeachingBubble.Basic.Example') as string;
+const TeachingBubbleBasicExampleCode = require('!raw-loader!./examples/TeachingBubble.Basic.Example.tsx') as string;
+const TeachingBubbleCondensedExampleCode = require('!raw-loader!./examples/TeachingBubble.Condensed.Example.tsx') as string;
+const TeachingBubbleIllustrationExampleCode = require('!raw-loader!./examples/TeachingBubble.Basic.Example.tsx') as string;
 
 export class TeachingBubblePage extends React.Component<any, any> {
   public render() {

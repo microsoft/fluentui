@@ -9,8 +9,8 @@ import {
 import { PickerCustomResultExample } from './examples/Picker.CustomResult.Example';
 import { TagPickerBasicExample } from './examples/TagPicker.Basic.Example';
 
-const TagPickerExampleCode = require('!raw-loader!./examples/TagPicker.Basic.Example') as string;
-const PickerCustomResultExampleCode = require('!raw-loader!./examples/Picker.CustomResult.Example') as string;
+const TagPickerExampleCode = require('!raw-loader!./examples/TagPicker.Basic.Example.tsx') as string;
+const PickerCustomResultExampleCode = require('!raw-loader!./examples/Picker.CustomResult.Example.tsx') as string;
 
 export class PickersPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {

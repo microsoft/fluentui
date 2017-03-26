@@ -7,7 +7,7 @@ import {
 
 import { MarqueeSelectionBasicExample } from './examples/MarqueeSelection.Basic.Example';
 
-const MarqueeSelectionBasicExampleCode = require('!raw-loader!./examples/MarqueeSelection.Basic.Example') as string;
+const MarqueeSelectionBasicExampleCode = require('!raw-loader!./examples/MarqueeSelection.Basic.Example.tsx') as string;
 
 export class MarqueeSelectionPage extends React.Component<IComponentDemoPageProps, any> {
   public render() {

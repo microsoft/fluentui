@@ -7,7 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { CheckboxBasicExample } from './examples/Checkbox.Basic.Example';
 
-const CheckboxBasicExampleCode = require('!raw-loader!./examples/Checkbox.Basic.Example') as string;
+const CheckboxBasicExampleCode = require('!raw-loader!./examples/Checkbox.Basic.Example.tsx') as string;
 
 export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> {
   public render() {

@@ -3,7 +3,7 @@ import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { Button, ButtonType } from 'office-ui-fabric-react/lib/Button';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { ITodoFormProps, ITodoFormState } from '../types/index';
-let styles: any = require('./Todo.module.scss');
+const styles: any = require('./Todo.module.scss');
 import strings from './../strings';
 
 /**

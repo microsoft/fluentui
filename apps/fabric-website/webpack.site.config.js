@@ -59,7 +59,7 @@ function createConfig(isProduction, publicPath) {
       alias: {
         'office-ui-fabric-react/lib': path.join(__dirname, 'node_modules/office-ui-fabric-react/lib')
       },
-      extensions: ['', '.ts', '.tsx', '.js']
+      extensions: ['', '.js']
     },
 
     module: {

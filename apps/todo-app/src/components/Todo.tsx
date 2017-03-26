@@ -6,7 +6,7 @@ import { ITodoProps, ITodoState, ITodoItem, ITodoItemProps } from '../types/inde
 import TodoForm from './TodoForm';
 import TodoTabs from './TodoTabs';
 
-let styles: any = require('./Todo.module.scss');
+const styles: any = require('./Todo.module.scss');
 import strings from './../strings';
 
 /**

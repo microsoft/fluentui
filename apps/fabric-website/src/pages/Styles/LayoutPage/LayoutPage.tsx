@@ -2,8 +2,8 @@ import * as React from 'react';
 import { CodeBlock } from '../../../components/CodeBlock/CodeBlock';
 import { PageHeader } from '../../../components/PageHeader/PageHeader';
 import { Table } from '../../../components/Table/Table';
-let styles: any = require('./LayoutPage.module.scss');
-import pageStyles from '../../PageStyles.module.scss';
+const styles: any = require('./LayoutPage.module.scss');
+const pageStyles: any = require('../../PageStyles.module.scss');
 
 const visibilityData = require('json!../../../data/layout-visibility.json');
 const breakpointsData = require('json!../../../data/responsive-breakpoints.json');
@@ -142,7 +142,7 @@ export class LayoutPage extends React.Component<any, any> {
         </div>
         <CodeBlock language='html' isLightTheme={ true }>
           {
-`<div class="ms-Grid">
+            `<div class="ms-Grid">
   <div class="ms-Grid-row">
     <div class="ms-Grid-col ms-u-sm6 ms-u-md4 ms-u-lg2">A</div>
     <div class="ms-Grid-col ms-u-sm6 ms-u-md8 ms-u-lg10">B</div>
@@ -168,7 +168,7 @@ export class LayoutPage extends React.Component<any, any> {
         </div>
         <CodeBlock language='html' isLightTheme={ true }>
           {
-`<div class="ms-Grid-col ms-u-sm12 ms-u-lg4">Example</div>`
+            `<div class="ms-Grid-col ms-u-sm12 ms-u-lg4">Example</div>`
           }
         </CodeBlock>
         <div className='ms-Grid'>
@@ -185,7 +185,7 @@ export class LayoutPage extends React.Component<any, any> {
         </div>
         <CodeBlock language='html' isLightTheme={ true }>
           {
-`<div class="ms-Grid-col ms-u-sm4 ms-u-smPush8">First in code</div>
+            `<div class="ms-Grid-col ms-u-sm4 ms-u-smPush8">First in code</div>
 <div class="ms-Grid-col ms-u-sm8 ms-u-smPull4">Second in code</div>`
           }
         </CodeBlock>
@@ -204,11 +204,11 @@ export class LayoutPage extends React.Component<any, any> {
           <h4>Visibility</h4>
           <p>Some designs call for certain content to be shown or hidden depending on the screen size. You can achieve this using Fabric's responsive visibility classes. These allow you to show or hide content at a specific screen size, or across a whole range of sizes.</p>
         </div>
-        <Table content={ visibilityData } responsive={ true }/>
+        <Table content={ visibilityData } responsive={ true } />
 
         <CodeBlock language='html' isLightTheme={ true }>
           {
-`<div class="ms-Grid-col ms-u-sm12 ms-u-hiddenXxlUp">Visible on smaller screens</div>
+            `<div class="ms-Grid-col ms-u-sm12 ms-u-hiddenXxlUp">Visible on smaller screens</div>
 <div class="ms-Grid-col ms-u-sm12 ms-u-hiddenXlDown">Visible on larger screens</div>`
           }
         </CodeBlock>
