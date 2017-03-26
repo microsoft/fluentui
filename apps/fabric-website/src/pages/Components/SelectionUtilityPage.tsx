@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SelectionPage } from 'fabric-examples/lib/pages/SelectionPage/SelectionPage';
+import { SelectionPage } from 'office-ui-fabric-react/lib/utilities/selection/SelectionPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

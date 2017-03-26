@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { NavPage } from 'fabric-examples/lib/pages/NavPage/NavPage';
+import { NavPage } from 'office-ui-fabric-react/lib/components/Nav/NavPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

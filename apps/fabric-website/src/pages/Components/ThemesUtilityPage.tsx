@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ThemePage } from 'fabric-examples/lib/pages/ThemePage/ThemePage';
+import { ThemePage } from 'office-ui-fabric-react/lib/components/Theme/ThemePage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

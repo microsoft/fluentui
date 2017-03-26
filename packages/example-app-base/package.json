@@ -15,7 +15,7 @@
     "test": "gulp"
   },
   "devDependencies": {
-    "@microsoft/web-library-build": ">=2.0.0 <3.0.0",
+    "@microsoft/web-library-build": ">=3.0.0-0 <4.0.0-0",
     "@types/chai": "^3.4.35",
     "@types/enzyme": "^2.7.5",
     "@types/es6-promise": "^0.0.32",
@@ -28,8 +28,6 @@
     "es6-promise": "3.2.1",
     "gulp": "~3.9.1",
     "mocha": "~2.5.3",
-    "office-ui-fabric-core": ">=5.0.0 <6.0.0",
-    "office-ui-fabric-react": ">=2.7.1 <3.0.0",
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
@@ -45,6 +43,7 @@
   "dependencies": {
     "@uifabric/utilities": "1.3.0",
     "highlight.js": "^9.9.0",
-    "office-ui-fabric-react": "2.7.1"
+    "office-ui-fabric-core": ">=5.0.0 <6.0.0",
+    "office-ui-fabric-react": ">=2.7.1-0 <3.0.0-0"
   }
 }
