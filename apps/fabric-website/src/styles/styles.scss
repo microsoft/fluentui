@@ -2,9 +2,6 @@
 //        that is imported (e.g. _base.scss) it will trigger a reload but doesn't
 //        actually build the .ts file, so the changes aren't visible.
 
-// Bring in Fabric Core from NPM package
-@import '../../node_modules/office-ui-fabric-core/src/sass/Fabric';
-
 // Variables
 @import 'variables';
 

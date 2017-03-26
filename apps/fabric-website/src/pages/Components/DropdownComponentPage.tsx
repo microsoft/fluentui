@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DropdownPage } from 'fabric-examples/lib/pages/DropdownPage/DropdownPage';
+import { DropdownPage } from 'office-ui-fabric-react/lib/components/Dropdown/DropdownPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

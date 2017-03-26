@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "@microsoft/web-library-build": ">=2.0.0 <3.0.0",
+    "@microsoft/web-library-build": ">=3.0.0-0 <4.0.0-0",
     "@microsoft/load-themed-styles": "^1.2.2",
     "@types/chai": "^3.4.35",
     "@types/enzyme": "^2.7.5",
@@ -33,8 +33,8 @@
     "webpack-notifier": "^1.5.0"
   },
   "rushDependencies": {
-    "@uifabric/example-app-base": "^1.0.3",
-    "@uifabric/utilities": "^1.1.0",
-    "office-ui-fabric-react": ">=2.0.0-0 <3.0.0-0"
+    "@uifabric/example-app-base": "^1.3.2",
+    "@uifabric/utilities": "^1.3.0",
+    "office-ui-fabric-react": ">=2.7.1-0 <3.0.0-0"
   }
 }
