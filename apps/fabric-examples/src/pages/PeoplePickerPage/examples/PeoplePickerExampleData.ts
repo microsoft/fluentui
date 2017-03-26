@@ -1,4 +1,4 @@
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { IPersonaProps, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
 
 export const people: IPersonaProps[] = [
   {
@@ -8,7 +8,8 @@ export const people: IPersonaProps[] = [
     primaryText: 'Annie Lindqvist',
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.online
   },
   {
     key: 1,
@@ -17,7 +18,8 @@ export const people: IPersonaProps[] = [
     primaryText: 'Aaron Reid',
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.busy
   },
   {
     key: 2,
@@ -26,7 +28,8 @@ export const people: IPersonaProps[] = [
     primaryText: 'Alex Lundberg',
     secondaryText: 'Software Developer',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.dnd
   },
   {
     key: 3,
@@ -35,7 +38,8 @@ export const people: IPersonaProps[] = [
     primaryText: 'Roko Kolar',
     secondaryText: 'Financial Analyst',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.offline
   },
   {
     key: 4,
@@ -44,7 +48,8 @@ export const people: IPersonaProps[] = [
     primaryText: 'Christian Bergqvist',
     secondaryText: 'Sr. Designer',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.online
   },
   {
     key: 5,
@@ -53,7 +58,8 @@ export const people: IPersonaProps[] = [
     primaryText: 'Valentina Lovric',
     secondaryText: 'Design Developer',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.online
   },
   {
     key: 6,
@@ -62,7 +68,8 @@ export const people: IPersonaProps[] = [
     primaryText: 'Maor Sharett',
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.away
   },
   {
     key: 7,
@@ -71,7 +78,8 @@ export const people: IPersonaProps[] = [
     primaryText: 'Anny Lindqvist',
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.busy
   },
   {
     key: 8,
@@ -80,7 +88,8 @@ export const people: IPersonaProps[] = [
     primaryText: 'Aron Reid',
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.dnd
   },
   {
     key: 9,
@@ -89,7 +98,8 @@ export const people: IPersonaProps[] = [
     primaryText: 'Alix Lundberg',
     secondaryText: 'Software Developer',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.offline
   },
   {
     key: 10,
@@ -98,7 +108,9 @@ export const people: IPersonaProps[] = [
     primaryText: 'Roko Kular',
     secondaryText: 'Financial Analyst',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.none
+
   },
   {
     key: 11,
@@ -107,7 +119,8 @@ export const people: IPersonaProps[] = [
     primaryText: 'Christian Bergqvest',
     secondaryText: 'Sr. Designer',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.busy
   },
   {
     key: 12,
@@ -116,7 +129,8 @@ export const people: IPersonaProps[] = [
     primaryText: 'Valintina Lovric',
     secondaryText: 'Design Developer',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.busy
   },
   {
     key: 13,
@@ -125,7 +139,8 @@ export const people: IPersonaProps[] = [
     primaryText: 'Maor Sharet',
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.blocked
   },
   {
     key: 14,
@@ -134,7 +149,8 @@ export const people: IPersonaProps[] = [
     primaryText: 'Anny Lindqvest',
     secondaryText: 'SDE',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.blocked
   },
   {
     key: 15,
@@ -143,7 +159,8 @@ export const people: IPersonaProps[] = [
     primaryText: 'Alix Lunberg',
     secondaryText: 'SE',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.away
   },
   {
     key: 16,
@@ -152,7 +169,8 @@ export const people: IPersonaProps[] = [
     primaryText: 'Annie Lindqvest',
     secondaryText: 'SDET',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.online
   },
   {
     key: 17,
@@ -161,7 +179,8 @@ export const people: IPersonaProps[] = [
     primaryText: 'Alixander Lundberg',
     secondaryText: 'Senior Manager of SDET',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.offline
   },
   {
     key: 18,
@@ -170,7 +189,8 @@ export const people: IPersonaProps[] = [
     primaryText: 'Anny Lundqvist',
     secondaryText: 'Junior Manager of Software',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.away
   },
   {
     key: 13,
@@ -179,7 +199,8 @@ export const people: IPersonaProps[] = [
     primaryText: 'Maor Shorett',
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.blocked
   },
   {
     key: 12,
@@ -188,7 +209,8 @@ export const people: IPersonaProps[] = [
     primaryText: 'Valentina Lovrics',
     secondaryText: 'Design Developer',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.online
   },
   {
     key: 13,
@@ -197,7 +219,8 @@ export const people: IPersonaProps[] = [
     primaryText: 'Maor Sharet',
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.online
   },
   {
     key: 12,
@@ -206,7 +229,8 @@ export const people: IPersonaProps[] = [
     primaryText: 'Valentina Lovrecs',
     secondaryText: 'Design Developer',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.blocked
   },
   {
     key: 13,
@@ -215,6 +239,7 @@ export const people: IPersonaProps[] = [
     primaryText: 'Maor Sharitt',
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.online
   },
 ];

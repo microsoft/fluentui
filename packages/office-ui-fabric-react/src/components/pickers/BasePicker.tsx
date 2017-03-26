@@ -136,6 +136,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         <TypedSuggestion
           onRenderSuggestion={ this.props.onRenderSuggestionsItem }
           onSuggestionClick={ this.onSuggestionClick }
+          onSuggestionRemove={ this.onSuggestionRemove }
           suggestions={ this.suggestionStore.getSuggestions() }
           ref={ this._resolveRef('suggestionElement') }
           onGetMoreResults={ this.onGetMoreResults }
@@ -235,7 +236,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.setState({
       suggestionsLoading: false,
       suggestedDisplayValue: itemValue,
-      suggestionsVisible: this.input.value !== '' && this.input.inputElement === document.activeElement
+      suggestionsVisible: this.input.value !== ''
     });
   }
 
@@ -257,11 +258,18 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   @autobind
+  protected onSuggestionRemove(ev: React.MouseEvent<HTMLElement>, item: any, index: number) {
+    if (this.props.onRemoveSuggestion) {
+      this.props.onRemoveSuggestion(index);
+    }
+    this.setState({ suggestionsVisible: true });
+    this.updateValue(this.input.value);
+  }
+
+  @autobind
   protected onInputFocus(ev: React.FocusEvent<HTMLInputElement | BaseAutoFill>) {
     this.selection.setAllSelected(false);
-    if (this.input.value) {
-      this.setState({ suggestionsVisible: true });
-    }
+    this.setState({ suggestionsVisible: true });
   }
 
   @autobind

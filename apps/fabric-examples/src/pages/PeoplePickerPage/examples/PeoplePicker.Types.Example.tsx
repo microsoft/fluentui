@@ -23,6 +23,7 @@ import './PeoplePicker.Types.Example.scss';
 export interface IPeoplePickerExampleState {
   currentPicker?: number | string;
   delayResults?: boolean;
+  peopleList: any;
 }
 
 const suggestionProps: IBasePickerSuggestionsProps = {
@@ -32,7 +33,6 @@ const suggestionProps: IBasePickerSuggestionsProps = {
 };
 
 export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerExampleState> {
-  private _peopleList;
   private contextualMenuItems: IContextualMenuItem[] = [
     {
       key: 'newItem',
@@ -65,17 +65,18 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
 
   constructor() {
     super();
-    this._peopleList = [];
+    let peopleList = [];
     people.forEach((persona: IPersonaProps) => {
       let target: IPersonaWithMenu = {};
 
       assign(target, persona, { menuItems: this.contextualMenuItems });
-      this._peopleList.push(target);
+      peopleList.push(target);
     });
 
     this.state = {
       currentPicker: 1,
-      delayResults: false
+      delayResults: false,
+      peopleList: peopleList
     };
   }
 
@@ -144,6 +145,10 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         pickerSuggestionsProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
         key={ 'normal' }
+        onChange={ (item: IPersonaProps) => console.log('onchange', item) }
+        onRemove={ (item: IPersonaProps) => this._removeSuggestion(item) }
+        peopleList={ this.state.peopleList }
+        onRemoveSuggestion={ this._onRemoveSuggestions }
       />
     );
   }
@@ -187,16 +192,35 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   }
 
   @autobind
+  private _removeSuggestion(item: IPersonaProps): void {
+    let { peopleList } = this.state;
+    let index: number = peopleList.indexOf(item);
+
+    if (index >= 0) {
+      let newPeople: any[] = peopleList.slice(0, index).concat(peopleList.slice(index + 1));
+
+      this.setState({ peopleList: newPeople });
+      this.forceUpdate();
+    }
+  }
+
+  @autobind
   private _onFilterChanged(filterText: string, currentPersonas: IPersonaProps[], limitResults?: number) {
     if (filterText) {
       let filteredPersonas: IPersonaProps[] = this._filterPersonasByText(filterText);
 
       filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
       filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
+      console.log('filter promise', this._filterPromise(filteredPersonas));
       return this._filterPromise(filteredPersonas);
     } else {
       return [];
     }
+  }
+
+  @autobind
+  private _onRemoveSuggestions(index: number) {
+    this.state.peopleList.splice(index, 1);
   }
 
   @autobind
@@ -220,7 +244,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   }
 
   private _filterPersonasByText(filterText: string): IPersonaProps[] {
-    return this._peopleList.filter(item => this._doesTextStartWith(item.primaryText, filterText));
+    return this.state.peopleList.filter(item => this._doesTextStartWith(item.primaryText, filterText));
   }
 
   private _doesTextStartWith(text: string, filterText: string): boolean {

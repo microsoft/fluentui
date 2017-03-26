@@ -44,7 +44,7 @@ $ms-color-presence-busy-average:       #D93B3B;
 // Persona Sizes
 $ms-Persona-sizeTiny: 30px;
 $ms-Persona-sizeXxs:  24px;
-$ms-Persona-sizeXs:   32px;
+$ms-Persona-sizeXs:   30px;
 $ms-Persona-sizeSm:   40px;
 $ms-Persona-sizeMd:   48px;
 $ms-Persona-sizeLg:   72px;
@@ -61,6 +61,14 @@ $ms-Persona-presenceSizeMd: 12px;
 $ms-Persona-presenceSizeLg: 20px;
 $ms-Persona-presenceSizeXl: 28px;
 
+:global(.ms-PickerPersona-container.is-selected) {
+  .root {
+    .primaryText {
+      color: $ms-color-white;
+    }
+  }
+}
+
 .root {
   @include ms-baseFont;
   @include ms-u-normalize;
@@ -75,6 +83,12 @@ $ms-Persona-presenceSizeXl: 28px;
 
   .contextualHost {
     display: none;
+  }
+
+  &:hover {
+    .primaryText {
+      color: $ms-color-neutralDark;
+    }
   }
 }
 
