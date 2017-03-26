@@ -8,7 +8,13 @@ let buildConfig = build.getConfig();
 let isProduction = process.argv.indexOf('--production') >= 0;
 let isClean = process.argv.indexOf('clean') >= 0;
 
-build.tslint.setConfig({ lintConfig: require('./tslint.json') });
+let rules = Object.assign(
+  {},
+  require('./node_modules/@microsoft/gulp-core-build-typescript/lib/defaultTslint.json').rules,
+  require('../../tslint.json').rules,
+  require('./tslint.json').rules
+);
+build.tslint.setConfig({ lintConfig: { rules } });
 
 /* Configure TypeScript 2.0. */
 build.typescript.setConfig({ typescript: require('typescript') });
@@ -27,5 +33,12 @@ if (isProduction || isClean) {
     libAMDFolder: path.join(packageFolder, 'lib-amd')
   });
 }
+
+// Use css modules.
+build.sass.setConfig({
+  useCSSModules: true,
+  moduleExportName: ''
+});
+
 // initialize tasks.
 build.initialize(gulp);

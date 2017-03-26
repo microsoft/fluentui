@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 24 Mar 2017 04:26:48 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Mar 2017 20:25:07 GMT and should not be manually modified.
+
+## 2.7.1
+Fri, 24 Mar 2017 20:25:07 GMT
+
+### Patches
+
+- Recreated npm publish. It seems that the current published bits are not reflecting the focus mixin, which is busting some focus css styling. Trying to pinpoint why some machines seems to produce `border: 1px solid color` vs others that leave off the `px` in the unit.
 
 ## 2.7.0
 Fri, 24 Mar 2017 04:26:48 GMT

@@ -13,7 +13,7 @@
     "_rushRebuild": "node node_modules/@microsoft/rush/bin/rush rebuild --production --verbose",
     "postinstall": "npm run _rushInstall && npm run _rushLink && npm run _rushRebuild",
     "test": "npm run _rushBuild",
-    "start": "node node_modules/gulp/bin/gulp --gulpfile apps/fabric-examples/gulpfile.js serve",
+    "start": "cd packages && cd office-ui-fabric-react && npm start",
     "build": "npm run _rushRebuild",
     "change": "node node_modules/@microsoft/rush/bin/rush change"
   },
