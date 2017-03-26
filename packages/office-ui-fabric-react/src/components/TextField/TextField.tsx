@@ -93,6 +93,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
 
   public componentWillReceiveProps(newProps: ITextFieldProps) {
     const { onBeforeChange } = this.props;
+    let shouldValidate = false;
 
     if (newProps.value !== undefined && newProps.value !== this.state.value) {
       if (onBeforeChange) {
@@ -105,6 +106,16 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         errorMessage: ''
       } as ITextFieldState);
 
+      shouldValidate = true;
+    }
+
+    // if the value changed or the validator changed
+    shouldValidate = shouldValidate || newProps.onGetErrorMessage !== this.props.onGetErrorMessage;
+
+    if (shouldValidate) {
+      // reset the latest validation value so we can be sure
+      // validation runs at least once
+      delete this._latestValidateValue;
       this._delayedValidate(newProps.value);
     }
   }
