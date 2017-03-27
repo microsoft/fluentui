@@ -1,16 +1,18 @@
 @import '../../common/common';
 
-.PropertiesTable {
-  margin-bottom: 20px;
-  overflow-x: auto;
-  overflow-y: inherit;
-}
+:global {
+  .PropertiesTable {
+    margin-bottom: 20px;
+    overflow-x: auto;
+    overflow-y: inherit;
+  }
 
-.PropertiesTable-noProperties {
-  background: $ms-color-yellow;
-  padding: 10px;
-}
+  .PropertiesTable-noProperties {
+    background: $ms-color-yellow;
+    padding: 10px;
+  }
 
-.PropertiesTable-nameCell {
-  color: $ms-color-themePrimary;
+  .PropertiesTable-nameCell {
+    color: $ms-color-themePrimary;
+  }
 }

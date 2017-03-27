@@ -8,7 +8,7 @@ import {
   getNativeProps
 } from '../../Utilities';
 import { ILink, ILinkProps } from './Link.Props';
-import styles from './Link.scss';
+const styles: any = require('./Link.scss');
 
 interface IMyScreen extends Screen {
   left: number;

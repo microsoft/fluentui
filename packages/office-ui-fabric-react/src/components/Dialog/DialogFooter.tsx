@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css } from '../../Utilities';
-import styles from './Dialog.scss';
+const styles: any = require('./Dialog.scss');
 
 export class DialogFooter extends React.Component<any, any> {
   public render() {

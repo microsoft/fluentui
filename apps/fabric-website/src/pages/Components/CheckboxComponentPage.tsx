@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CheckboxPage } from 'fabric-examples/lib/pages/CheckboxPage/CheckboxPage';
+import { CheckboxPage } from 'office-ui-fabric-react/lib/components/Checkbox/CheckboxPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

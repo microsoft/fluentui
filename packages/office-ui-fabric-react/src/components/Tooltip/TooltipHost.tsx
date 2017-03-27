@@ -12,7 +12,7 @@ import {
 import { ITooltipHostProps } from './TooltipHost.Props';
 import { Tooltip } from './Tooltip';
 import { TooltipDelay } from './Tooltip.Props';
-import styles from './Tooltip.scss';
+const styles: any = require('./Tooltip.scss');
 
 export interface ITooltipHostState {
   isTooltipVisible?: boolean;
