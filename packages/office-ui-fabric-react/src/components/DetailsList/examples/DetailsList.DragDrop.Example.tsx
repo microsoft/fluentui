@@ -37,7 +37,7 @@ export class DetailsListDragDropExample extends React.Component<any, any> {
     let { items, selectionDetails } = this.state;
 
     return (
-      <div className='ms-DetailsListDragDropExample'>
+      <div className='detailsListDragDropExample'>
         <div>{ selectionDetails }</div>
         <MarqueeSelection selection={ this._selection }>
           <DetailsList
@@ -58,7 +58,7 @@ export class DetailsListDragDropExample extends React.Component<any, any> {
     return {
       canDrop: (dropContext?: IDragDropContext, dragContext?: IDragDropContext) => { return true; },
       canDrag: (item?: any) => { return true; },
-      onDragEnter: (item?: any, event?: DragEvent) => { return 'drag-enter'; }, // return string is the css classes that will be added to the entering element.
+      onDragEnter: (item?: any, event?: DragEvent) => { return 'dragEnter'; }, // return string is the css classes that will be added to the entering element.
       onDragLeave: (item?: any, event?: DragEvent) => { return; },
       onDrop: (item?: any, event?: DragEvent) => {
         if (_draggedItem) {
