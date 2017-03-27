@@ -16,6 +16,12 @@ build.tslint.setConfig({
   sourceMatch: ['src/**/*.ts', 'src/**/*.tsx', '!src/**/*.scss.tsx']
 });
 
+// Use css modules and use export =
+build.sass.setConfig({
+  useCSSModules: true,
+  moduleExportName: ''
+});
+
 // Configure custom lint overrides.
 let rules = Object.assign(
   {},
@@ -44,7 +50,8 @@ build.postCopy.setConfig({
     [distFolder]: [
       'src/**/*.png',
       'node_modules/react/dist/react.js',
-      'node_modules/react-dom/dist/react-dom.js'
+      'node_modules/react-dom/dist/react-dom.js',
+      'node_modules/office-ui-fabric-core/dist/css/**/*'
     ]
   }
 });
