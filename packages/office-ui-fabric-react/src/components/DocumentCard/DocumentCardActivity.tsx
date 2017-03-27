@@ -39,6 +39,7 @@ export class DocumentCardActivity extends React.Component<IDocumentCardActivityP
         <Persona
           imageInitials={ person.initials }
           primaryText={ person.name }
+          hidePersonaDetails={ true }
           imageUrl={ person.profileImageSrc ? person.profileImageSrc : null }
           initialsColor={ person.initialsColor }
           role='persentation'
