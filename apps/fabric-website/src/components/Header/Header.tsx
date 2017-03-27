@@ -1,7 +1,7 @@
 import * as React from 'react';
-import './Header.scss';
 import { DONavigation } from '../DONavigation/DONavigation';
 import { DOSearchBox } from '../DOSearchBox/DOSearchBox';
+import './Header.scss';
 
 export interface IHeaderProps {
 }

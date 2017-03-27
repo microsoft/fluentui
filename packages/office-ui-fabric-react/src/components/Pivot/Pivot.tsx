@@ -12,7 +12,7 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { PivotItem } from './PivotItem';
 import { PivotLinkFormat } from './Pivot.Props';
 import { PivotLinkSize } from './Pivot.Props';
-import styles from './Pivot.scss';
+const styles: any = require('./Pivot.scss');
 
 /**
  *  Usage:
@@ -120,7 +120,7 @@ export class Pivot extends React.Component<IPivotProps, IPivotState> {
     const { itemKey } = link;
     const tabId = this._keyToTabIds[itemKey];
     const { onRenderItemLink } = link;
-    let linkContent: JSX.Element;
+    let linkContent: JSX.Element | false;
 
     if (onRenderItemLink) {
       linkContent = onRenderItemLink(link, this._renderLinkContent);

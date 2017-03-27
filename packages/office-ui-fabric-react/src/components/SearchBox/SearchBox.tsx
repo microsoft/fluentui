@@ -10,7 +10,7 @@ import {
   KeyCodes
 } from '../../Utilities';
 import './SearchBox.scss';
-import styles from './SearchBox.scss';
+const styles: any = require('./SearchBox.scss');
 
 export interface ISearchBoxState {
   value?: string;
@@ -28,11 +28,6 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
 
   public constructor(props: ISearchBoxProps) {
     super(props);
-
-    // Handle deprecated prop
-    if (this.props.onChanged) {
-      this.props.onChange = this.props.onChanged;
-    }
 
     this.state = {
       value: props.value || '',
@@ -135,7 +130,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   }
 
   @autobind
-  private _onInputChange(ev: React.KeyboardEvent<HTMLInputElement>) {
+  private _onInputChange(ev: React.ChangeEvent<HTMLInputElement>) {
     this.setState({
       value: this._inputElement.value
     });
@@ -152,7 +147,12 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   }
 
   private _callOnChange(newValue: string): void {
-    let { onChange } = this.props;
+    let { onChange, onChanged } = this.props;
+
+    // Call @deprecated method.
+    if (onChanged) {
+      onChanged(newValue);
+    }
 
     if (onChange) {
       onChange(newValue);

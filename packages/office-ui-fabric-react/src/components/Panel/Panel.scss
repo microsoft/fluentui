@@ -279,8 +279,6 @@ $CommandBarHeight: 40px;
 .headerText {
   @include ms-font-xl;
   color: $ms-color-neutralPrimary;
-  line-height: 1;
+  line-height: 32px;
   margin: 0;
-  text-overflow: ellipsis;
-  overflow: hidden;
 }

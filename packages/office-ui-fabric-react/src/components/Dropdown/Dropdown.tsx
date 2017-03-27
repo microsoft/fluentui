@@ -16,7 +16,7 @@ import {
   findIndex,
   getId
 } from '../../Utilities';
-import styles from './Dropdown.scss';
+const styles: any = require('./Dropdown.scss');
 
 // Internal only props iterface to support mixing in responsive mode
 export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
@@ -103,9 +103,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
     }
 
     return (
-      <div ref='root'>
+      <div ref='root' className={ css('ms-Dropdown-container') }>
         { label && (
-          <Label id={ id + '-label' } ref={ this._resolveRef('_dropdownLabel') } required={ required }>{ label }</Label>
+          <Label className={ css('ms-Dropdown-label') } id={ id + '-label' } ref={ this._resolveRef('_dropdownLabel') } required={ required }>{ label }</Label>
         ) }
         <div
           data-is-focusable={ !disabled }

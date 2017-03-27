@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DialogPage } from 'fabric-examples/lib/pages/DialogPage/DialogPage';
+import { DialogPage } from 'office-ui-fabric-react/lib/components/Dialog/DialogPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 
