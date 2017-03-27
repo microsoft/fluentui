@@ -8,7 +8,7 @@ import {
 } from '../../Utilities';
 import { IToggleProps } from './Toggle.Props';
 import { Label } from '../../Label';
-import styles from './Toggle.scss';
+const styles: any = require('./Toggle.scss');
 
 export interface IToggleState {
   isChecked: boolean;

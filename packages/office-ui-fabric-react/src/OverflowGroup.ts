@@ -1,1 +1,1 @@
-export * from './components/OverflowGroup/index';
+export * from './components/OverflowSet/index';

@@ -1,0 +1,20 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Router: tweaked some of the logic to render component as a fallback if getComponent doesn't immediately return a value.",
+      "type": "patch"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/utilities",
+      "type": "none"
+    },
+    {
+      "packageName": "@uifabric/example-app-base",
+      "comment": "Tweaked some of the style imports.",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}

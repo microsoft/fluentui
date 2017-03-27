@@ -2,8 +2,8 @@ import * as React from 'react';
 import { ColorTable } from '../../../components/ColorTable/ColorTable';
 import { PageHeader } from '../../../components/PageHeader/PageHeader';
 import { Table } from '../../../components/Table/Table';
-import styles from './ColorsPage.module.scss';
-import pageStyles from '../../PageStyles.module.scss';
+const styles: any = require('./ColorsPage.module.scss');
+const pageStyles: any = require('../../PageStyles.module.scss');
 import { baseURL } from '../../../appConfig';
 
 const accentColorsData = require('json!../../../data/colors-accent.json');
@@ -63,7 +63,7 @@ export class ColorsPage extends React.Component<any, any> {
           <div className='ms-Grid-row'>
             { accentColorsData.map((group, groupIndex) => (
               <div className='ms-Grid-col ms-u-sm12 ms-u-xl4 ms-u-xxl3'
-                    key={ groupIndex }>
+                key={ groupIndex }>
                 <div className={ styles.accentGroup }>
                   <h4>{ group.name }</h4>
                   <ColorTable content={ group.colors } />
