@@ -2,6 +2,7 @@ import * as React from 'react';
 import { css } from '../../Utilities';
 import { IDocumentCardActivityProps, IDocumentCardActivityPerson } from './DocumentCard.Props';
 import { Image } from '../../Image';
+import { Persona, PersonaSize } from '../Persona';
 const styles: any = require('./DocumentCard.scss');
 
 export class DocumentCardActivity extends React.Component<IDocumentCardActivityProps, any> {
@@ -35,14 +36,15 @@ export class DocumentCardActivity extends React.Component<IDocumentCardActivityP
 
     return (
       <div className={ css('ms-DocumentCardActivity-avatar', styles.avatar) }>
-        { person.initials && (
-          <div className={ css('ms-Persona-initials', styles.avatarInitials) } role='presentation'>
-            { person.initials }
-          </div>
-        ) }
-        { person.profileImageSrc && (
-          <Image src={ person.profileImageSrc } role='presentation' alt='' />
-        ) }
+        <Persona
+          imageInitials={ person.initials }
+          primaryText={ person.name }
+          imageUrl={ person.profileImageSrc ? person.profileImageSrc : null }
+          initialsColor={ person.initialsColor }
+          role='persentation'
+          size={ PersonaSize.extraSmall }
+        />
+
       </div>
     );
   }
