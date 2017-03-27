@@ -3,8 +3,9 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { DetailsList } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, Selection } from 'office-ui-fabric-react/lib/DetailsList';
 import { IDetailsRowProps, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
+import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import {
   IDragDropHelper,
   IDragDropEvents,
@@ -18,10 +19,14 @@ let _draggedItem: any = null;
 let _draggedIndex: number = -1;
 
 export class DetailsListDragDropExample extends React.Component<any, any> {
+  private _selection: Selection;
+
   constructor() {
     super();
 
     this._onRenderItemColumn = this._onRenderItemColumn.bind(this);
+
+    this._selection = new Selection();
 
     this.state = {
       items: createListItems(10)
@@ -34,14 +39,17 @@ export class DetailsListDragDropExample extends React.Component<any, any> {
     return (
       <div className='ms-DetailsListDragDropExample'>
         <div>{ selectionDetails }</div>
-        <DetailsList
-          setKey='items'
-          items={ items }
-          selectionPreservedOnEmptyClick={ true }
-          onItemInvoked={ (item) => { alert(`Item invoked: ${item.name}`); } }
-          onRenderItemColumn={ this._onRenderItemColumn }
-          dragDropEvents={ this._getDragDropEvents() }
-        />
+        <MarqueeSelection selection={ this._selection }>
+          <DetailsList
+            setKey='items'
+            items={ items }
+            selection={ this._selection }
+            selectionPreservedOnEmptyClick={ true }
+            onItemInvoked={ (item) => { alert(`Item invoked: ${item.name}`); } }
+            onRenderItemColumn={ this._onRenderItemColumn }
+            dragDropEvents={ this._getDragDropEvents() }
+          />
+        </MarqueeSelection>
       </div>
     );
   }
@@ -77,13 +85,17 @@ export class DetailsListDragDropExample extends React.Component<any, any> {
   }
 
   private _insertBeforeItem(item) {
-    let index = this.state.items.indexOf(item);
-    let items = this.state.items.filter((i) => i !== _draggedItem);
+    let draggedItems = this._selection.isIndexSelected(_draggedIndex) ? this._selection.getSelection() : [_draggedItem];
 
-    if (_draggedIndex < index) {
-      index = index - 1;
+    let items: any[] = this.state.items.filter((i) => draggedItems.indexOf(i) === -1);
+    let insertIndex = items.indexOf(item);
+
+    // if dragging/dropping on itself, index will be 0.
+    if (insertIndex === -1) {
+      insertIndex = 0;
     }
-    items.splice(index, 0, _draggedItem);
+
+    items.splice(insertIndex, 0, ...draggedItems);
 
     this.setState({ items: items });
   }
