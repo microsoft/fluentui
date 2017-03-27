@@ -119,7 +119,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           <Toggle
             label='Delay Suggestion Results'
             defaultChecked={ false }
-            onChanged={ this._toggleChange } />
+            onChanged={ this._toggleDelayResultsChange } />
         </div>
       </div>
     );
@@ -145,9 +145,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         pickerSuggestionsProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
         key={ 'normal' }
-        onChange={ (item: IPersonaProps) => console.log('onchange', item) }
-        onRemove={ (item: IPersonaProps) => this._removeSuggestion(item) }
-        peopleList={ this.state.peopleList }
+        onRemoveSuggestion={ this._onRemoveSuggestion }
       />
     );
   }
@@ -159,6 +157,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
         pickerSuggestionsProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
+        onRemoveSuggestion={ this._onRemoveSuggestion }
       />
     );
   }
@@ -186,12 +185,13 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         className={ 'ms-PeoplePicker' }
         onGetMoreResults={ this._onFilterChanged }
         pickerSuggestionsProps={ limitedSearchSuggestionProps }
+        onRemoveSuggestion={ this._onRemoveSuggestion }
       />
     );
   }
 
   @autobind
-  private _removeSuggestion(item: IPersonaProps): void {
+  private _onRemoveSuggestion(item: IPersonaProps): void {
     let { peopleList } = this.state;
     let index: number = peopleList.indexOf(item);
 
@@ -209,7 +209,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
 
       filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
       filteredPersonas = limitResults ? filteredPersonas.splice(0, limitResults) : filteredPersonas;
-      console.log('filter promise', this._filterPromise(filteredPersonas));
+
       return this._filterPromise(filteredPersonas);
     } else {
       return [];
@@ -253,7 +253,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   }
 
   @autobind
-  private _toggleChange(toggleState: boolean) {
+  private _toggleDelayResultsChange(toggleState: boolean) {
     this.setState({ delayResults: toggleState });
   }
 

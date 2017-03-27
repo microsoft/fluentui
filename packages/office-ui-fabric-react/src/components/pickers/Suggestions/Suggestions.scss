@@ -4,20 +4,32 @@
   min-width: 180px;
 }
 
+.suggestionsItemContainer {
+  position: relative;
+
+  &:hover {
+    .suggestionsItem {
+      background: $ms-color-neutralLight;
+    }
+
+    .suggestionsRemoveButton {
+      display: inline-block;
+    }
+  }
+}
+
 .suggestionsItem {
+  box-sizing: border-box;
   width: 100%;
   height: auto;
-  
+
   @include text-align(left);
-  padding: 4px 20px 6px;
+  @include padding(4px, 50px, 6px, 20px);
 
   display: block;
   border: none;
   background: $ms-color-white;
-
-  &:hover {
-    background: $ms-color-neutralLight;
-  }
+  position: relative;
 
   &.suggestionsItemIsSuggested {
     background: $ms-color-neutralQuaternary;
@@ -81,5 +93,19 @@
     display: inline-block;
     margin: 0px 10px;
     vertical-align: middle;
+  }
+}
+
+.suggestionsRemoveButton {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 50px;
+
+  &:hover {
+    background: $ms-color-neutralTertiaryAlt;
   }
 }

@@ -3,7 +3,7 @@ import {
   BaseComponent,
   css
 } from '../../../Utilities';
-import { CommandButton } from '../../../Button';
+import { CommandButton, IconButton } from '../../../Button';
 import { Spinner } from '../../../Spinner';
 import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.Props';
 import styles from './Suggestions.scss';
@@ -18,7 +18,9 @@ export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>,
       removeItem
     } = this.props;
     return (
-      <div>
+      <div
+        className={ styles.suggestionsItemContainer }
+      >
         <CommandButton
           onClick={ onClick }
           className={ css(
@@ -32,11 +34,12 @@ export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>,
         >
           <RenderSuggestion { ...suggestionModel.item } />
         </CommandButton>
-        <CommandButton
+        <IconButton
+          className={ styles.suggestionsRemoveButton }
           onClick={ removeItem }
-        >
-          X
-        </CommandButton>
+          icon='Cancel'
+          title='Remove'
+          ariaLabel='Remove' />
       </div>
     );
   }
@@ -66,8 +69,10 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       noResultsFoundText,
       suggestions,
       isLoading,
+      isSearching,
       loadingText,
       onRenderNoResultFound,
+      searchingText
     } = this.props;
 
     let noResults: () => JSX.Element = () => {
@@ -103,6 +108,12 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
             ref={ this._resolveRef('_searchForMoreButton') } >
             { searchForMoreText }
           </CommandButton>) : (null)
+        }
+        { isSearching ?
+          (<Spinner
+            className={ css('ms-Suggestions-spinner', styles.suggestionsSpinner) }
+            label={ searchingText }
+          />) : (null)
         }
       </div>
     );

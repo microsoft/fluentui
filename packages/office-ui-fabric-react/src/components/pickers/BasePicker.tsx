@@ -21,6 +21,7 @@ export interface IBasePickerState {
   items?: any;
   suggestedDisplayValue?: string;
   moreSuggestionsAvailable?: boolean;
+  isSearching?: boolean;
   suggestionsVisible?: boolean;
   suggestionsLoading?: boolean;
 }
@@ -50,7 +51,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.state = {
       items: items,
       suggestedDisplayValue: '',
-      moreSuggestionsAvailable: false
+      moreSuggestionsAvailable: false,
+      isSearching: false
     };
   }
 
@@ -109,7 +111,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
               ref={ this._resolveRef('input') }
               onFocus={ this.onInputFocus }
               onInputValueChange={ this.onInputChange }
-              suggestedDisplayValue={ suggestedDisplayValue }
               aria-activedescendant={ 'sug-' + this.suggestionStore.currentIndex }
               aria-owns='suggestion-list'
               aria-expanded='true'
@@ -142,6 +143,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           onGetMoreResults={ this.onGetMoreResults }
           moreSuggestionsAvailable={ this.state.moreSuggestionsAvailable }
           isLoading={ this.state.suggestionsLoading }
+          isSearching={ this.state.isSearching }
+          searchingText={ `Searching for '${this.input.value}'` }
           { ...this.props.pickerSuggestionsProps }
         />
       </Callout>
@@ -259,10 +262,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   @autobind
   protected onSuggestionRemove(ev: React.MouseEvent<HTMLElement>, item: any, index: number) {
-    this.props.onRemove(item);
+    if (this.props.onRemoveSuggestion) {
+      this.props.onRemoveSuggestion(item);
+    }
+    this.suggestionStore.removeSuggestion(index);
     this.setState({ suggestionsVisible: true });
-    // this.updateValue(this.input.value);
-    // this.forceUpdate();
   }
 
   @autobind
@@ -332,19 +336,29 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   @autobind
   protected onGetMoreResults() {
-    if (this.props.onGetMoreResults) {
-      let suggestions: T[] | PromiseLike<T[]> = this.props.onGetMoreResults(this.input.value, this.state.items);
-      let suggestionsArray: T[] = suggestions as T[];
-      let suggestionsPromiseLike: PromiseLike<T[]> = suggestions as PromiseLike<T[]>;
+    this.setState({
+      isSearching: true
+    }, () => {
+      if (this.props.onGetMoreResults) {
+        let suggestions: T[] | PromiseLike<T[]> = this.props.onGetMoreResults(this.input.value, this.state.items);
+        let suggestionsArray: T[] = suggestions as T[];
+        let suggestionsPromiseLike: PromiseLike<T[]> = suggestions as PromiseLike<T[]>;
 
-      if (Array.isArray(suggestionsArray)) {
-        this.updateSuggestions(suggestionsArray);
-      } else if (suggestionsPromiseLike.then) {
-        suggestionsPromiseLike.then((newSuggestions: T[]) => this.updateSuggestions(newSuggestions));
+        if (Array.isArray(suggestionsArray)) {
+          this.updateSuggestions(suggestionsArray);
+          this.setState({ isSearching: false });
+        } else if (suggestionsPromiseLike.then) {
+          suggestionsPromiseLike.then((newSuggestions: T[]) => {
+            this.updateSuggestions(newSuggestions)
+            this.setState({ isSearching: false });
+          });
+        }
       }
-    }
-    this.input.focus();
-    this.setState({ moreSuggestionsAvailable: false });
+      this.input.focus();
+      this.setState({
+        moreSuggestionsAvailable: false
+      });
+    });
   }
 
   @autobind

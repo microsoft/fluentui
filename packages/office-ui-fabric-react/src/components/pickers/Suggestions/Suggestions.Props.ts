@@ -57,9 +57,17 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
    */
   isLoading?: boolean;
   /**
+   * Used to indicate whether or not the component is searching for more results.
+   */
+  isSearching?: boolean;
+  /**
    * The text to display while the results are loading.
    */
   loadingText?: string;
+  /**
+   * The text to display while searching for more results
+   */
+  searchingText?: string;
 
   onSuggestionRemove?: (ev?: React.MouseEvent<HTMLElement>, item?: any, index?: number) => void;
 }
