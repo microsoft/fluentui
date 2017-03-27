@@ -318,13 +318,14 @@ export class List extends BaseComponent<IListProps, IListState> {
 
     for (let i = 0; page.items && i < page.items.length; i++) {
       let item = page.items[i];
-      const defaultKey = page.startIndex + i;
+      const index = page.startIndex + i;
       let itemKey =
-        item &&
-        (this.props.getKey ? this.props.getKey(item, defaultKey) : item.key);
+        this.props.getKey
+          ? this.props.getKey(item, index)
+          : item && item.key;
 
       if (itemKey === null || itemKey === undefined) {
-        itemKey = defaultKey;
+        itemKey = index;
       }
 
       cells.push(

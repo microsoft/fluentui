@@ -196,7 +196,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       ariaLabelForGrid,
       rowElementEventMap,
       shouldApplyApplicationRole = false,
-      getKey,
+      getKey
     } = this.props;
     let {
       adjustedColumns,
