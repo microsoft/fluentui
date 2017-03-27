@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
-import styles from './Overviews.module.scss';
+const styles: any = require('./Overviews.module.scss');
 
 export class ComponentsPage extends React.Component<any, any> {
   public render() {

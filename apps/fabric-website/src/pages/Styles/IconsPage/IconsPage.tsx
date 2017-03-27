@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CodeBlock } from '../../../components/CodeBlock/CodeBlock';
 import { IconGrid } from '../../../components/IconGrid/IconGrid';
 import { PageHeader } from '../../../components/PageHeader/PageHeader';
-import pageStyles from '../../PageStyles.module.scss';
+const pageStyles: any = require('../../PageStyles.module.scss');
 
 const iconData = require('json!../../../../node_modules/office-ui-fabric-core/src/data/icons.json');
 
@@ -32,8 +32,8 @@ export class IconsPage extends React.Component<any, any> {
           <p>Fabric uses a custom font for its iconography. This font contains glyphs that you can scale, color, and style in any way. You can even flip them for right-to-left localization. To use the icons, combine the base ms-Icon class with a modifier class for the specific icon.</p>
         </div>
         <CodeBlock language='html' isLightTheme={ true }>
-            {
-`<i class="ms-Icon ms-Icon--Mail" aria-hidden="true"></i>`
+          {
+            `<i class="ms-Icon ms-Icon--Mail" aria-hidden="true"></i>`
           }
         </CodeBlock>
         <div className={ pageStyles.u_maxTextWidth }>

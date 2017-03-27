@@ -5,7 +5,7 @@ import {
 } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { CommandButton } from '../../Button';
-import styles from './Nav.scss';
+const styles: any = require('./Nav.scss');
 
 import {
   INav,
@@ -188,7 +188,8 @@ export class Nav extends React.Component<INavProps, INavState> implements INav {
             <i
               className={ css(
                 'ms-Nav-chevron ms-Icon ms-Icon--ChevronDown',
-                styles.chevronIcon
+                styles.chevronIcon,
+                isGroupExpanded && styles.chevronIsExpanded
               ) }
             />
             { group.name }
