@@ -51,7 +51,7 @@ $CommandBarHeight: 40px;
   background-color: $ms-color-white;
 
   position: absolute;
-  @include right(0);
+  @include ms-right(0);
   width: 100%;
   bottom: 0;
   top: 0;
@@ -69,7 +69,7 @@ $CommandBarHeight: 40px;
     pointer-events: auto;
     width: $Panel-width-sm;
     @include ms-drop-shadow(-30px, 0px, 30px, -30px, .2);
-    @include left(auto);
+    @include ms-left(auto);
   }
 }
 
@@ -89,8 +89,8 @@ $CommandBarHeight: 40px;
 //
 .root.rootIsSmallLeft {
   .main {
-    @include right(auto);
-    @include left(0);
+    @include ms-right(auto);
+    @include ms-left(0);
     width: $Panel-width-xs;
   }
 }
@@ -111,7 +111,7 @@ $CommandBarHeight: 40px;
 .root.rootIsXLarge {
   .main {
     @media (min-width: $ms-screen-min-lg) {
-      @include left($Panel-margin-md);
+      @include ms-left($Panel-margin-md);
       width: auto;
     }
   }
@@ -122,7 +122,7 @@ $CommandBarHeight: 40px;
 .root.rootIsMedium {
   .main {
     @media (min-width: $ms-screen-min-xl) {
-      @include left(auto);
+      @include ms-left(auto);
       width: $Panel-width-md;
     }
   }
@@ -133,7 +133,7 @@ $CommandBarHeight: 40px;
 .root.rootIsLarge {
   .main {
     @media (min-width: $ms-screen-min-xxl) {
-      @include left($Panel-margin-lg);
+      @include ms-left($Panel-margin-lg);
     }
   }
 }
@@ -143,7 +143,7 @@ $CommandBarHeight: 40px;
 .root.rootIsLarge.rootIsFixed {
   .main {
     @media (min-width: $ms-screen-min-xxl) {
-      @include left(auto);
+      @include ms-left(auto);
       width: $Panel-width-lg;
     }
   }
@@ -154,7 +154,7 @@ $CommandBarHeight: 40px;
 .root.rootIsXLarge {
   .main {
     @media (min-width: $ms-screen-min-xxl) {
-      @include left($Panel-margin-xl);
+      @include ms-left($Panel-margin-xl);
     }
   }
 }
@@ -185,7 +185,7 @@ $CommandBarHeight: 40px;
 .closeButton {
   @include ms-button-reset();
   position: absolute;
-  @include right(8px);
+  @include ms-right(8px);
   top: 0;
   height: $CommandBarHeight;
   width: $CommandBarHeight;
@@ -268,8 +268,6 @@ $CommandBarHeight: 40px;
 .headerText {
   @include ms-font-xl;
   color: $ms-color-neutralPrimary;
-  line-height: 1;
+  line-height: 32px;
   margin: 0;
-  text-overflow: ellipsis;
-  overflow: hidden;
 }

@@ -1,6 +1,50 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 21 Mar 2017 03:20:12 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Mar 2017 20:25:07 GMT and should not be manually modified.
+
+## 2.7.1
+Fri, 24 Mar 2017 20:25:07 GMT
+
+### Patches
+
+- Recreated npm publish. It seems that the current published bits are not reflecting the focus mixin, which is busting some focus css styling. Trying to pinpoint why some machines seems to produce `border: 1px solid color` vs others that leave off the `px` in the unit.
+
+## 2.7.0
+Fri, 24 Mar 2017 04:26:48 GMT
+
+### Minor changes
+
+- ContextualMenu: onItemClick prop added
+
+### Patches
+
+- CommandBar: Fixes ugly focus border when clicked (Chrome/Mac)
+- Callout: preventDismissOnScroll prop added and set to default false
+- Contextual Menu: Made change to allow arrow keys to loop over item
+- Panel: Title text updated with correct lineheight and removed overflow styles
+
+## 2.6.0
+Thu, 23 Mar 2017 03:13:02 GMT
+
+### Minor changes
+
+- Button: Updated props to include contextualProps so that contextual menu could be passed to button
+- Calendar: Adding support for date ranges: day, week, month so when a user selects a date, the corresponding range is auto-selected. Adding a new prop to hide the today link. Adding a new prop to auto navigate to to the next/previous month if the user selects a date that falls outside the current month. Also fixing some minor styling issues around focused date so it plays nicely with range selection.
+
+### Patches
+
+- TextField: Accessibility fixes for error message
+- TooltipHost: CalloutProps type fixed, and mixed properly in Tooltip
+- Popup: It now passes triggering KeyboardEvent to onDismiss handler
+
+## 2.5.4
+Wed, 22 Mar 2017 03:18:05 GMT
+
+### Patches
+
+- ContextualMenu: Fix an issue where anchor item would not display ellipses properly on overflow.
+- Dropdown: Added class to dropdown label and dropdown container so that they can be targeted with css
+- ContextualMenu: Remove role='menuitem' for child element for LI in ContextualMenu
 
 ## 2.5.3
 Tue, 21 Mar 2017 03:20:12 GMT

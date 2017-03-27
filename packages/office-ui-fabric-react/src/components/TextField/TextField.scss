@@ -55,6 +55,12 @@
   border-color: $ms-color-themePrimary;
 }
 
+.errorIcon {
+  vertical-align: middle;
+  font-size: $ms-font-size-m;
+  @include ms-margin-right(5px);
+}
+
 .field {
   @include ms-normalize;
   border: 1px solid $ms-color-neutralTertiaryAlt;
@@ -135,10 +141,10 @@
 
   :global(.ms-Label) {
     font-size: $ms-font-size-m;
-    @include margin-right(8px);
+    @include ms-margin-right(8px);
     display: table-cell;
     vertical-align: top;
-    @include padding-left(12px);
+    @include ms-padding-left(12px);
     padding-top: 9px;
     height: 32px;
     width: 1%;
@@ -217,7 +223,7 @@
 .root.rootIsUnderlined {
 
   :global(.ms-Label) {
-    @include padding-left(12px);
+    @include ms-padding-left(12px);
     @include padding-right(0);
   }
 

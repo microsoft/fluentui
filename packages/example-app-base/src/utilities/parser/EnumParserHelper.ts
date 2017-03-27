@@ -1,3 +1,4 @@
+/* tslint:disable:no-switch-case-fall-through */
 import { BaseParser } from './BaseParser';
 import { IEnumProperty } from './interfaces';
 
@@ -36,6 +37,7 @@ export class EnumParserHelper extends BaseParser {
       switch (this._state) {
         case ParseState.default:
           this.eatSpacesAndNewlines();
+
           if (this.eat('/')) {
             if (this.peek() === '*') {
               this._state = ParseState.comment;
@@ -51,6 +53,7 @@ export class EnumParserHelper extends BaseParser {
           }
 
           break;
+
         case ParseState.comment:
           {
             // the initial * are always the first * of a comment, and will be treated as decorative

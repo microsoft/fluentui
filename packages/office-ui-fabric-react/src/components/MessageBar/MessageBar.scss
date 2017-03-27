@@ -142,7 +142,7 @@
   min-width: 0;
 }
 .dismissalOneline .dismissal {
-  @include margin-right(-8px);
+  @include ms-margin-right(-8px);
 }
 
 // Add space between adjacent MessageBars.

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ITextField, ITextFieldProps } from './TextField.Props';
 import { Label } from '../../Label';
 import {
+  DelayedRender,
   BaseComponent,
   getId,
   css,
@@ -9,7 +10,7 @@ import {
   inputProperties,
   textAreaProperties
 } from '../../Utilities';
-import styles from './TextField.scss';
+const styles: any = require('./TextField.scss');
 
 export interface ITextFieldState {
   value?: string;
@@ -140,16 +141,21 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         { label && <Label htmlFor={ this._id }>{ label }</Label> }
         { iconClass && <i className={ iconClass }></i> }
         { multiline ? this._renderTextArea() : this._renderInput() }
-        { errorMessage && <div aria-live='assertive' className={ styles.screenReaderOnly } data-automation-id='error-message'>{ errorMessage }</div> }
         { this._isDescriptionAvailable &&
           <span id={ this._descriptionId }>
             { description && <span className={ css('ms-TextField-description', styles.description) }>{ description }</span> }
-            { errorMessage && (
-              <p
-                className={ css('ms-TextField-errorMessage ms-slideDownIn20', styles.errorMessage) }
-              >
-                { errorMessage }
-              </p>) }
+            { errorMessage &&
+              <div aria-live='assertive'>
+                <DelayedRender>
+                  <p
+                    className={ css('ms-TextField-errorMessage ms-u-slideDownIn20', styles.errorMessage) }
+                    data-automation-id='error-message'>
+                    <i className={ css('ms-Icon ms-Icon--Error', styles.errorIcon) } aria-hidden='true'></i>
+                    { errorMessage }
+                  </p>
+                </DelayedRender>
+              </div>
+            }
           </span>
         }
       </div>
@@ -250,7 +256,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         onInput={ this._onInputChange }
         onChange={ this._onInputChange }
         className={ this._getTextElementClassName() }
-        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
+        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : null }
         aria-invalid={ !!this.state.errorMessage }
         aria-label={ this.props.ariaLabel }
         onFocus={ this._onFocus }
@@ -273,7 +279,7 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
         onChange={ this._onInputChange }
         className={ this._getTextElementClassName() }
         aria-label={ this.props.ariaLabel }
-        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : undefined }
+        aria-describedby={ this._isDescriptionAvailable ? this._descriptionId : null }
         aria-invalid={ !!this.state.errorMessage }
         onFocus={ this._onFocus }
         onBlur={ this._onBlur }

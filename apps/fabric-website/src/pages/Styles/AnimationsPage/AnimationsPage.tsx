@@ -2,8 +2,8 @@ import * as React from 'react';
 import { CodeBlock } from '../../../components/CodeBlock/CodeBlock';
 import { PageHeader } from '../../../components/PageHeader/PageHeader';
 import { Table } from '../../../components/Table/Table';
-import pageStyles from '../../PageStyles.module.scss';
 
+const pageStyles: any = require('../../PageStyles.module.scss');
 const animationsData = require('json!../../../data/animations.json');
 
 export class AnimationsPage extends React.Component<any, any> {
@@ -38,8 +38,8 @@ export class AnimationsPage extends React.Component<any, any> {
         </div>
         <h2 id='implementation'>Implementation</h2>
         <CodeBlock language='html' isLightTheme={ true }>
-            {
-`<div class="ms-u-slideRightIn10">This content will slide in.</div>`
+          {
+            `<div class="ms-u-slideRightIn10">This content will slide in.</div>`
           }
         </CodeBlock>
 

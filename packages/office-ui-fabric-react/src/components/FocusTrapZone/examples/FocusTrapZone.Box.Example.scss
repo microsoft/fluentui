@@ -1,0 +1,11 @@
+@import '../../../common/common';
+:global {
+  .ms-FocusTrapZoneBoxExample {
+    border: dashed 1px #ababab;
+  }
+
+  .ms-FocusTrapComponent {
+    border: black 2px solid;
+    padding: 5px;
+  }
+}

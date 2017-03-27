@@ -30,7 +30,7 @@
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
   line-height: 40px;
-  @include margin-right(8px);
+  @include ms-margin-right(8px);
   padding: 0 8px;
   text-align: center;
   position: relative;
@@ -163,7 +163,7 @@
 .root.rootIsTabs {
   .link {
     @include focus-border();
-    @include margin-right(0px);
+    @include ms-margin-right(0px);
     height: 40px;
     line-height: 40px;
     background-color: $ms-color-neutralLighter;

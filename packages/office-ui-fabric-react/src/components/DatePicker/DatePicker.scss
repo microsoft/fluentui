@@ -12,7 +12,7 @@
   line-height: 20px;
   pointer-events: none;
   position: absolute;
-  @include right(9px);
+  @include ms-right(9px);
 }
 
 .root {

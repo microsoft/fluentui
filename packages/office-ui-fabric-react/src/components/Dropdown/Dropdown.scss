@@ -130,7 +130,7 @@ $DropDown-item-height: 36px;
   font-size: $ms-icon-size-s;
   position: absolute;
   top: 0px;
-  @include right(12px);
+  @include ms-right(12px);
   pointer-events: none;
   line-height: $DropDown-height;
 }

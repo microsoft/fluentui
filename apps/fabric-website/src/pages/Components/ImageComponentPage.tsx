@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ImagePage } from 'fabric-examples/lib/pages/ImagePage/ImagePage';
+import { ImagePage } from 'office-ui-fabric-react/lib/components/Image/ImagePage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

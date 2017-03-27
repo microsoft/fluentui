@@ -12,7 +12,7 @@
     {
       "packageName": "office-ui-fabric-react",
       "projectFolder": "packages/office-ui-fabric-react",
-      "shouldPublish": true
+      "shouldPublish": true,
     },
     {
       "packageName": "@uifabric/utilities",
@@ -22,7 +22,10 @@
     {
       "packageName": "@uifabric/example-app-base",
       "projectFolder": "packages/example-app-base",
-      "shouldPublish": true
+      "shouldPublish": true,
+      "cyclicDependencyProjects": [
+        "office-ui-fabric-react"
+      ]
     },
     {
       "packageName": "@uifabric/example-component",
@@ -36,21 +39,6 @@
     {
       "packageName": "fabric-website",
       "projectFolder": "apps/fabric-website",
-      "shouldPublish": false
-    },
-    {
-      "packageName": "fabric-examples",
-      "projectFolder": "apps/fabric-examples",
-      "shouldPublish": false
-    },
-    {
-      "packageName": "ssr-tests",
-      "projectFolder": "apps/ssr-tests",
-      "shouldPublish": false
-    },
-    {
-      "packageName": "component-demo",
-      "projectFolder": "apps/component-demo",
       "shouldPublish": false
     }
   ]
