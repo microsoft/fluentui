@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { css } from '../../Utilities';
 import { IDocumentCardActivityProps, IDocumentCardActivityPerson } from './DocumentCard.Props';
-import { Image } from '../../Image';
 import { Persona, PersonaSize } from '../Persona';
 const styles: any = require('./DocumentCard.scss');
 
