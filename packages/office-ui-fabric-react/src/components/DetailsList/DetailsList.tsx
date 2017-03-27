@@ -300,6 +300,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                   />
                 ) : (
                     <List
+                      role={ null }
                       items={ items }
                       onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex) }
                       { ...additionalListProps }
