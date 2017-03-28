@@ -245,7 +245,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
     min-width: $ms-choiceField-iconField-size;
     cursor: pointer;
     padding: $fieldPadding;
-    padding-top: 24px;
+    padding-top: 22px;
     margin: 0;
     text-align: center;
     transition: all $ms-choiceField-transition-duration ease;
@@ -264,6 +264,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
       padding: 0 28px;
 
       .imageWrapper {
+        padding-bottom: 2px;
         transition: opacity $ms-choiceField-transition-duration ease;
 
         &.imageWrapperIsHidden {
@@ -290,6 +291,7 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
       margin: 4px 0 0 0;
       height: $lineHeight * 2;
       line-height: $lineHeight;
+      overflow-y: hidden;
 
       @include ms-font-m;
     }
