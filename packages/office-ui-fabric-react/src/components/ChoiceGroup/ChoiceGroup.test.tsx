@@ -10,9 +10,15 @@ let { expect } = chai;
 import { ChoiceGroup } from './ChoiceGroup';
 import { IChoiceGroupOption } from './ChoiceGroup.Props';
 
+const TEST_OPTIONS: IChoiceGroupOption[] = [
+  { key: '1', text: '1' },
+  { key: '2', text: '2' },
+  { key: '3', text: '3' }
+];
+
 describe('ChoiceGroup', () => {
 
-  it('Can change options.', () => {
+  it('can change options', () => {
     const options: IChoiceGroupOption[] = [
       { key: '1', text: '1' },
       { key: '2', text: '2' },
@@ -27,7 +33,7 @@ describe('ChoiceGroup', () => {
           label='testgroup'
           options={ options }
           required={ true }
-          />
+        />
       );
     } catch (e) {
       exception = e;
@@ -76,7 +82,7 @@ describe('ChoiceGroup', () => {
           label='testgroup'
           options={ options }
           required={ true }
-          />
+        />
       );
     } catch (e) {
       exception = e;
@@ -92,7 +98,7 @@ describe('ChoiceGroup', () => {
     expect((choiceOptions[2] as HTMLInputElement).disabled).to.be.eq(false, 'Not disabled option 2 is disabled');
   });
 
-  it('When choicegroup is disabled all choice options are disabled', () => {
+  it('is renders all choice options as disabled when disabled', () => {
     const options: IChoiceGroupOption[] = [
       { key: '1', text: '1' },
       { key: '2', text: '2' },
@@ -108,7 +114,7 @@ describe('ChoiceGroup', () => {
           options={ options }
           required={ true }
           disabled={ true }
-          />
+        />
       );
     } catch (e) {
       exception = e;
@@ -124,4 +130,42 @@ describe('ChoiceGroup', () => {
     expect((choiceOptions[2] as HTMLInputElement).disabled).to.be.eq(true, 'Disabled option 3 is not disabled');
   });
 
+  it('can act as an uncontrolled component', () => {
+    let choiceGroup = ReactTestUtils.renderIntoDocument<ChoiceGroup>(
+      <ChoiceGroup
+        defaultSelectedKey='1'
+        options={ TEST_OPTIONS }
+      />
+    );
+    let renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
+    let choiceOptions = renderedDOM.querySelectorAll('.ms-ChoiceField-input');
+
+    expect((choiceOptions[0] as HTMLInputElement).checked).to.be.eq(true, 'Choice 1 was not selected');
+
+    ReactTestUtils.Simulate.change(choiceOptions[1]);
+
+    expect((choiceOptions[1] as HTMLInputElement).checked).to.be.eq(true, 'Choice 2 was not selected');
+  });
+
+  it('can render as a controlled component', () => {
+    let _selectedItem;
+    let choiceGroup = ReactTestUtils.renderIntoDocument<ChoiceGroup>(
+      <ChoiceGroup
+        selectedKey='1'
+        options={ TEST_OPTIONS }
+        onChange={ (ev, item) => _selectedItem = item }
+      />
+    );
+    let renderedDOM = ReactDOM.findDOMNode(choiceGroup as React.ReactInstance);
+    let choiceOptions = renderedDOM.querySelectorAll('.ms-ChoiceField-input');
+
+    expect((choiceOptions[0] as HTMLInputElement).checked).to.be.eq(true, 'Choice 1 was not selected');
+
+    ReactTestUtils.Simulate.change(choiceOptions[1]);
+
+    expect((choiceOptions[0] as HTMLInputElement).checked).to.be.eq(true, 'Choice 1 was not selected');
+    expect((choiceOptions[1] as HTMLInputElement).checked).to.be.eq(false, 'Choice 2 was selected prematurely');
+
+    expect(_selectedItem).to.equal(TEST_OPTIONS[1], 'onChange did not return new item');
+  });
 });

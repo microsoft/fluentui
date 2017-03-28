@@ -5,13 +5,18 @@ export interface IChoiceGroupProps extends React.HTMLProps<HTMLElement | HTMLInp
   /**
    * The options for the choice group.
    */
-  options: IChoiceGroupOption[];
+  options?: IChoiceGroupOption[];
 
   /**
-   * @deprecated
-   * Deprecated and will be removed by 07/17/2017 Use 'onChange' instead.
+   * The key of the option that will be initially checked.
    */
-  onChanged?: (option: IChoiceGroupOption, evt?: React.FormEvent<HTMLElement | HTMLInputElement>) => void;
+  defaultSelectedKey?: string | number;
+
+  /**
+   * The key of the selected option. If you provide this, you must maintain selection
+   * state by observing onChange events and passing a new value in when changed.
+   */
+  selectedKey?: string | number;
 
   /**
    * A callback for receiving a notification when the choice has been changed.
@@ -22,6 +27,12 @@ export interface IChoiceGroupProps extends React.HTMLProps<HTMLElement | HTMLInp
    * Descriptive label for the choice group.
    */
   label?: string;
+
+  /**
+   * @deprecated
+   * Deprecated and will be removed by 07/17/2017 Use 'onChange' instead.
+   */
+  onChanged?: (option: IChoiceGroupOption, evt?: React.FormEvent<HTMLElement | HTMLInputElement>) => void;
 }
 
 export interface IChoiceGroupOption {
