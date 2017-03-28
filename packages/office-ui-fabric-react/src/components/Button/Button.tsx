@@ -16,33 +16,29 @@ import { PrimaryButton } from './PrimaryButton/PrimaryButton';
  * @deprecated
  * This class is deprecated. Use the individual *Button components instead.
  */
-export class Button extends BaseComponent<IButtonProps, {}> implements IButton {
-  private _button: BaseButton;
+export class Button extends BaseComponent<IButtonProps, {}> {
+  /**
+   * Set this BaseComponent._resolveComponentRef to false, bypassing resolution of componentRef.
+   */
 
   public render() {
     let props = this.props;
 
     switch (props.buttonType) {
       case ButtonType.command:
-        return <CommandButton { ...props } ref={ this._resolveRef('_button') } />;
+        return <CommandButton { ...props } />;
 
       case ButtonType.compound:
-        return <CompoundButton { ...props } ref={ this._resolveRef('_button') } />;
+        return <CompoundButton { ...props } />;
 
       case ButtonType.icon:
-        return <IconButton { ...props } ref={ this._resolveRef('_button') } />;
+        return <IconButton { ...props } />;
 
       case ButtonType.primary:
-        return <PrimaryButton { ...props } ref={ this._resolveRef('_button') } />;
+        return <PrimaryButton { ...props } />;
 
       default:
-        return <DefaultButton { ...props } ref={ this._resolveRef('_button') } />;
-    }
-  }
-
-  public focus() {
-    if (this._button) {
-      this._button.focus();
+        return <DefaultButton { ...props } />;
     }
   }
 }

@@ -3,12 +3,27 @@ import { Async } from './Async';
 import { EventGroup } from './EventGroup';
 import { IDisposable } from './IDisposable';
 
+export interface IBaseProps<P> extends React.Props<P> {
+  componentRef?: any;
+}
+
 export class BaseComponent<P, S> extends React.Component<P, S> {
   /**
    * External consumers should override BaseComponent.onError to hook into error messages that occur from
    * exceptions thrown from within components.
    */
   public static onError: ((errorMessage?: string, ex?: any) => void);
+
+  /**
+   * Controls whether the componentRef prop will be resolved by this component instance. If you are
+   * implementing a passthrough (higher-order component), you would set this to false and pass through
+   * the props to the inner component, allowing it to resolve the componentRef.
+   *
+   * @protected
+   * @type {boolean}
+   * @memberOf BaseComponent
+   */
+  protected _resolveComponentRef: boolean;
 
   private __async: Async;
   private __events: EventGroup;
@@ -24,6 +39,8 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
   constructor(props?: P, deprecatedProps?: { [propName: string]: string }) {
     super(props);
 
+    this._resolveComponentRef = true;
+
     if (deprecatedProps) {
       for (let propName in deprecatedProps) {
         if (propName in props) {
@@ -31,7 +48,6 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
         }
       }
     }
-
     _makeAllSafe(this, BaseComponent.prototype, [
       'componentWillMount',
       'componentDidMount',
@@ -42,6 +58,13 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
       'componentDidUpdate',
       'componentWillUnmount'
     ]);
+  }
+
+  public componentWillReceiveProps(newProps?: any, newContext?: any) {
+    this._updateComponentRef(this.props, newProps);
+  }
+  public componentDidMount() {
+    this._updateComponentRef(undefined, this.props);
   }
 
   /** If we have disposables, dispose them automatically on unmount. */
@@ -126,7 +149,32 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
         return this[refName] = ref;
       };
     }
+
     return this.__resolves[refName];
+  }
+
+  /**
+   * Updates the componentRef (by calling it with "this" when necessary.)
+   *
+   * @protected
+   * @param {IBaseProps<P>} currentProps
+   * @param {IBaseProps<P>} [newProps={}]
+   *
+   * @memberOf BaseComponent
+   */
+  protected _updateComponentRef(currentProps: IBaseProps<P>, newProps: IBaseProps<P> = {}) {
+    if (this._resolveComponentRef &&
+      ((!currentProps && newProps.componentRef) ||
+        (currentProps && currentProps.componentRef !== newProps.componentRef))) {
+
+      if (currentProps && currentProps.componentRef) {
+        currentProps.componentRef(null);
+      }
+
+      if (newProps.componentRef) {
+        newProps.componentRef(this);
+      }
+    }
   }
 }
 
@@ -153,7 +201,7 @@ function _makeSafe(obj: BaseComponent<any, any>, prototype: Object, methodName: 
         if (prototypeMethod) {
           retVal = prototypeMethod.apply(this, arguments);
         }
-        if (classMethod) {
+        if (classMethod !== prototypeMethod) {
           retVal = classMethod.apply(this, arguments);
         }
       } catch (e) {

@@ -3,7 +3,7 @@ import {
   BaseComponent,
   css
 } from '../../../Utilities';
-import { CommandButton } from '../../../Button';
+import { CommandButton, IButton } from '../../../Button';
 import { Spinner } from '../../../Spinner';
 import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.Props';
 const styles: any = require('./Suggestions.scss');
@@ -36,7 +36,7 @@ export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>,
 
 export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
 
-  protected _searchForMoreButton: CommandButton;
+  protected _searchForMoreButton: IButton;
   protected _selectedElement: HTMLDivElement;
   private SuggestionsItemOfProperType = SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
 
@@ -92,7 +92,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
             onClick={ this._getMoreResults.bind(this) }
             className={ css('ms-SearchMore-button', styles.searchMoreButton) }
             icon={ 'Search' }
-            ref={ this._resolveRef('_searchForMoreButton') } >
+            componentRef={ this._resolveRef('_searchForMoreButton') } >
             { searchForMoreText }
           </CommandButton>) : (null)
         }

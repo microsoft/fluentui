@@ -6,12 +6,32 @@ import { IContextualMenuProps } from '../../ContextualMenu';
 
 export interface IButton {
   /**
-   * Focuses the button.
+   * Sets focus to the button.
    */
-  focus();
+  focus: () => void;
+}
+
+export interface IButtonClassNames {
+  base?: string;
+  variant?: string;
+  isDisabled?: string;
+  isEnabled?: string;
+  description?: string;
+  flexContainer?: string;
+  icon?: string;
+  menuIcon?: string;
+  label?: string;
+  root?: string;
 }
 
 export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAnchorElement | BaseButton | Button> {
+
+  /**
+   * Optional way to fetch the IButton interface. Use this instead of ref, to avoid accessing higher-order component
+   * wrappers rather than the IButton interface.
+   */
+  componentRef?: (component: IButton) => void;
+
   /**
    * If provided, this component will be rendered as an anchor.
    * @default ElementType.anchor
@@ -27,6 +47,11 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
    * If provided, additional class name to provide on the root element.
    */
   className?: string;
+
+  /**
+   *  Custom class names for individual elements within the button DOM.
+   */
+  classNames?: IButtonClassNames;
 
   /**
    * The aria label of the button for the benefit of screen readers.
@@ -56,14 +81,29 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
   menuIconName?: string | null;
 
   /**
-  * Custom render function for button menu icon
-  */
-  onRenderMenuIcon?: IRenderFunction<IButtonProps>;
+   * Props for button menu
+   */
+  menuProps?: IContextualMenuProps;
 
   /**
-  * Props for button menu
-  */
-  menuProps?: IContextualMenuProps;
+   * Custom render function for the icon
+   */
+  onRenderIcon?: IRenderFunction<IButtonProps>;
+
+  /**
+   * Custom render function for the label text.
+   */
+  onRenderLabel?: IRenderFunction<IButtonProps>;
+
+  /**
+   * Custom render function for the desciption text.
+   */
+  onRenderDescription?: IRenderFunction<IButtonProps>;
+
+  /**
+   * Custom render function for button menu icon
+   */
+  onRenderMenuIcon?: IRenderFunction<IButtonProps>;
 
   /**
   * Custom render function for button menu
