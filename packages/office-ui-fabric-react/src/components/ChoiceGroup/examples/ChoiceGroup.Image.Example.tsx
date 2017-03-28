@@ -6,7 +6,7 @@ import { autobind } from 'office-ui-fabric-react/lib/Utilities';
  * Interface for ChoiceGroupImageExample state.
  */
 export interface IChoiceGroupImageExampleState {
-  imageKey: string;
+  selectedKey: string;
 }
 
 export class ChoiceGroupImageExample extends React.Component<any, IChoiceGroupImageExampleState> {
@@ -14,21 +14,23 @@ export class ChoiceGroupImageExample extends React.Component<any, IChoiceGroupIm
     super();
 
     this.state = {
-      imageKey: ''
+      selectedKey: 'bar'
     };
 
     this._onImageChoiceGroupChange = this._onImageChoiceGroupChange.bind(this);
   }
 
   public render() {
+    let { selectedKey } = this.state;
+
     return (
       <div>
         <ChoiceGroup
           label='Pick one image'
+          selectedKey={ selectedKey }
           options={ [
             {
               key: 'bar',
-              checked: this.state.imageKey === 'bar',
               imageSrc: './images/choicegroup-bar-unselected.png',
               selectedImageSrc: 'dist/choicegroup-bar-selected.png',
               imageSize: { width: 50, height: 50 },
@@ -36,7 +38,6 @@ export class ChoiceGroupImageExample extends React.Component<any, IChoiceGroupIm
             },
             {
               key: 'pie',
-              checked: this.state.imageKey === 'pie',
               imageSrc: './images/choicegroup-pie-unselected.png',
               selectedImageSrc: 'dist/choicegroup-pie-selected.png',
               imageSize: { width: 50, height: 50 },
@@ -51,7 +52,7 @@ export class ChoiceGroupImageExample extends React.Component<any, IChoiceGroupIm
 
   private _onImageChoiceGroupChange(ev: React.SyntheticEvent<HTMLElement>, option: IChoiceGroupOption) {
     this.setState({
-      imageKey: option.key
+      selectedKey: option.key
     });
   }
 }
