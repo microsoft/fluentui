@@ -67,7 +67,9 @@ export interface IChoiceGroupOption {
   imageSize?: { width: number, height: number };
 
   /**
-   * Whether or not this menu item is currently checked.
+   * @deprecated
+   * Deprectated at 2.9.0 and will be removed after August 2017. Use 'selectedKey' or
+   * 'defaultSelectedKey' on the ChoiceGroup instead.
    * @defaultvalue false
    */
   checked?: boolean;
