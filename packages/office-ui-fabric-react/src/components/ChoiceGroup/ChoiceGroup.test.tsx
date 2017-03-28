@@ -98,7 +98,7 @@ describe('ChoiceGroup', () => {
     expect((choiceOptions[2] as HTMLInputElement).disabled).to.be.eq(false, 'Not disabled option 2 is disabled');
   });
 
-  it('is renders all choice options as disabled when disabled', () => {
+  it('renders all choice options as disabled when disabled', () => {
     const options: IChoiceGroupOption[] = [
       { key: '1', text: '1' },
       { key: '2', text: '2' },
