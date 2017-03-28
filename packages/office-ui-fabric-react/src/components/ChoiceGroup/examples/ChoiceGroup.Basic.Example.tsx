@@ -21,6 +21,7 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
   public render() {
     return (
       <ChoiceGroup
+        defaultSelectedKey='B'
         options={ [
           {
             key: 'A',
@@ -29,7 +30,6 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
           {
             key: 'B',
             text: 'Option B',
-            checked: true
           },
           {
             key: 'C',
@@ -39,7 +39,6 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
           {
             key: 'D',
             text: 'Option D',
-            checked: true,
             disabled: true
           }
         ] }
