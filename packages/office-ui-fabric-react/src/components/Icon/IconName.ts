@@ -29,7 +29,6 @@ export type IconName =
   'AlarmClock' |
   'Album' |
   'AlbumRemove' |
-  'AlchemyLogo' |
   'AlignCenter' |
   'AlignLeft' |
   'AlignRight' |
@@ -164,11 +163,12 @@ export type IconName =
   'Cocktails' |
   'Code' |
   'Coffee' |
-  'CollabsDBLogo' |
   'CollapseMenu' |
   'CollegeFootball' |
   'CollegeHoops' |
   'Color' |
+  'ColumnLeftTwoThirds' |
+  'ColumnRightTwoThirds' |
   'Combine' |
   'CompassNW' |
   'Completed' |
@@ -226,6 +226,7 @@ export type IconName =
   'DoubleChevronRight12' |
   'DoubleChevronUp' |
   'DoubleChevronUp12' |
+  'DoubleColumn' |
   'Down' |
   'Download' |
   'DRM' |
@@ -583,6 +584,7 @@ export type IconName =
   'ShowResultsMirrored' |
   'SidePanel' |
   'SingleBookmark' |
+  'SingleColumn' |
   'SIPMove' |
   'SkypeCheck' |
   'SkypeCircleCheck' |
@@ -594,6 +596,7 @@ export type IconName =
   'SkypeMinus' |
   'SliderThumb' |
   'Snow' |
+  'Snowflake' |
   'SnowShowerDay' |
   'SnowShowerNight' |
   'Soccer' |
@@ -666,6 +669,7 @@ export type IconName =
   'TriangleSolidRight12' |
   'TriangleSolidUp12' |
   'TriangleUp12' |
+  'TripleColumn' |
   'Trophy' |
   'TurnRight' |
   'TVMonitor' |

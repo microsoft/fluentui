@@ -42,7 +42,7 @@ $CommandBarHeight: 40px;
     pointer-events: none;
     opacity: 1;
     cursor: pointer;
-    transition: opacity $ms-duration3 $ms-ease1;
+    transition: opacity $ms-animation-duration-3 $ms-animation-ease-1;
   }
 }
 
@@ -51,7 +51,7 @@ $CommandBarHeight: 40px;
   background-color: $ms-color-white;
 
   position: absolute;
-  @include right(0);
+  @include ms-right(0);
   width: 100%;
   bottom: 0;
   top: 0;
@@ -63,13 +63,13 @@ $CommandBarHeight: 40px;
   -webkit-overflow-scrolling: touch;
 
   // Medium screens and up - (anchored right, fixed width)
-  @media (min-width: $ms-screen-md-min) {
+  @media (min-width: $ms-screen-min-md) {
     border-left: 1px solid $ms-color-neutralLight;
     border-right: 1px solid $ms-color-neutralLight;
     pointer-events: auto;
     width: $Panel-width-sm;
-    @include drop-shadow(-30px, 0px, 30px, -30px, .2);
-    @include left(auto);
+    @include ms-drop-shadow(-30px, 0px, 30px, -30px, .2);
+    @include ms-left(auto);
   }
 }
 
@@ -79,7 +79,7 @@ $CommandBarHeight: 40px;
   .main {
     width: $Panel-width-xs;
 
-    @media (min-width: $ms-screen-md-min) {
+    @media (min-width: $ms-screen-min-md) {
       width: $Panel-width-sm;
     }
   }
@@ -89,8 +89,8 @@ $CommandBarHeight: 40px;
 //
 .root.rootIsSmallLeft {
   .main {
-    @include right(auto);
-    @include left(0);
+    @include ms-right(auto);
+    @include ms-left(0);
     width: $Panel-width-xs;
   }
 }
@@ -110,8 +110,8 @@ $CommandBarHeight: 40px;
 .root.rootIsLarge,
 .root.rootIsXLarge {
   .main {
-    @media (min-width: $ms-screen-lg-min) {
-      @include left($Panel-margin-md);
+    @media (min-width: $ms-screen-min-lg) {
+      @include ms-left($Panel-margin-md);
       width: auto;
     }
   }
@@ -121,8 +121,8 @@ $CommandBarHeight: 40px;
 //
 .root.rootIsMedium {
   .main {
-    @media (min-width: $ms-screen-xl-min) {
-      @include left(auto);
+    @media (min-width: $ms-screen-min-xl) {
+      @include ms-left(auto);
       width: $Panel-width-md;
     }
   }
@@ -132,8 +132,8 @@ $CommandBarHeight: 40px;
 //
 .root.rootIsLarge {
   .main {
-    @media (min-width: $ms-screen-xxl-min) {
-      @include left($Panel-margin-lg);
+    @media (min-width: $ms-screen-min-xxl) {
+      @include ms-left($Panel-margin-lg);
     }
   }
 }
@@ -142,8 +142,8 @@ $CommandBarHeight: 40px;
 //
 .root.rootIsLarge.rootIsFixed {
   .main {
-    @media (min-width: $ms-screen-xxl-min) {
-      @include left(auto);
+    @media (min-width: $ms-screen-min-xxl) {
+      @include ms-left(auto);
       width: $Panel-width-lg;
     }
   }
@@ -153,8 +153,8 @@ $CommandBarHeight: 40px;
 //
 .root.rootIsXLarge {
   .main {
-    @media (min-width: $ms-screen-xxl-min) {
-      @include left($Panel-margin-xl);
+    @media (min-width: $ms-screen-min-xxl) {
+      @include ms-left($Panel-margin-xl);
     }
   }
 }
@@ -183,9 +183,9 @@ $CommandBarHeight: 40px;
 
 // The  button in the top right (x)
 .closeButton {
-  @include button-reset();
+  @include ms-button-reset();
   position: absolute;
-  @include right(8px);
+  @include ms-right(8px);
   top: 0;
   height: $CommandBarHeight;
   width: $CommandBarHeight;
@@ -223,12 +223,12 @@ $CommandBarHeight: 40px;
   padding-left: 16px;
   padding-right: 16px;
 
-  @media (min-width: $ms-screen-lg-min) {
+  @media (min-width: $ms-screen-min-lg) {
     padding-left: 32px;
     padding-right: 32px;
   }
 
-  @media (min-width: $ms-screen-xxl-min) {
+  @media (min-width: $ms-screen-min-xxl) {
     padding-left: 40px;
     padding-right: 40px;
   }
@@ -238,7 +238,7 @@ $CommandBarHeight: 40px;
   margin: 14px 0;
   // Ensure that title doesn't shrink if screen is too small
   flex-grow: 0;
-  @media (min-width: $ms-screen-xl-min) {
+  @media (min-width: $ms-screen-min-xl) {
     margin-top: 30px;
   }
 }
@@ -252,7 +252,7 @@ $CommandBarHeight: 40px;
   // Ensure that footer doesn't shrink if screen is too small
   flex-grow: 0;
   border-top: 1px solid transparent;
-  transition: border $ms-duration3 $ms-ease2;
+  transition: border $ms-animation-duration-3 $ms-animation-ease-2;
 }
 
 .footerInner {

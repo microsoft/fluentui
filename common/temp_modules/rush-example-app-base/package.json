@@ -24,7 +24,7 @@
     "tslint-microsoft-contrib": "^2.0.9",
     "typescript": "~2.1.0",
     "highlight.js": "^9.9.0",
-    "office-ui-fabric-core": ">=5.0.0 <6.0.0",
+    "office-ui-fabric-core": "6.0.1",
     "office-ui-fabric-react": ">=2.7.1-0 <3.0.0-0"
   },
   "rushDependencies": {

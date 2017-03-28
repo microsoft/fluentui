@@ -9,8 +9,7 @@
 @import '../Label/LabelMixins.scss';
 
 .root {
-  @include ms-baseFont;
-  @include ms-u-normalize;
+  @include ms-normalize;
   color: $ms-color-neutralPrimary;
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
@@ -23,7 +22,7 @@
 }
 
 .screenReaderOnly {
-  @include ms-u-screenReaderOnly;
+  @include ms-screenReaderOnly;
 }
 
 //= State: A disabled textfield
@@ -35,7 +34,7 @@
     cursor: default;
   }
 
-  @include input-placeholder {
+  &::placeholder {
     color: $ms-color-neutralTertiary;
   }
 }
@@ -46,8 +45,8 @@
     @include ms-Label-is-required
   }
 
-  @include input-placeholder {
-    @include ms-Label-is-required
+  &::placeholder {
+    @include ms-Label-is-required();
   }
 }
 
@@ -59,12 +58,11 @@
 .errorIcon {
   vertical-align: middle;
   font-size: $ms-font-size-m;
-  @include margin-right(5px);
+  @include ms-margin-right(5px);
 }
 
 .field {
-  @include ms-u-normalize;
-  @include ms-baseFont;
+  @include ms-normalize;
   border: 1px solid $ms-color-neutralTertiaryAlt;
   border-radius: 0;
   font-weight: $ms-font-weight-regular;
@@ -102,7 +100,7 @@
     cursor: default;
   }
 
-  @include input-placeholder {
+  &::placeholder {
     color: $ms-color-neutralSecondary;
   }
 
@@ -143,10 +141,10 @@
 
   :global(.ms-Label) {
     font-size: $ms-font-size-m;
-    @include margin-right(8px);
+    @include ms-margin-right(8px);
     display: table-cell;
     vertical-align: top;
-    @include padding-left(12px);
+    @include ms-padding-left(12px);
     padding-top: 9px;
     height: 32px;
     width: 1%;
@@ -198,9 +196,7 @@
 //== Modifier: Multiline textfield
 //
 .root.rootIsMultiline .field {
-  @include ms-baseFont;
   color: $ms-color-neutralPrimary;
-  font-family: $ms-font-family-base;
   font-size: $ms-font-size-m;
   font-weight: $ms-font-weight-regular;
   line-height: 17px;
@@ -214,7 +210,7 @@
 .errorMessage {
   @include ms-font-s;
   @include ms-fontColor-redDark;
-  @include resetMargins;
+  @include ms-reset-margins;
   padding-top: 5px;
 }
 
@@ -227,7 +223,7 @@
 .root.rootIsUnderlined {
 
   :global(.ms-Label) {
-    @include padding-left(12px);
+    @include ms-padding-left(12px);
     @include padding-right(0);
   }
 

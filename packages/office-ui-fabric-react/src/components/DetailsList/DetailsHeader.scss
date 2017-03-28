@@ -18,7 +18,7 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
   user-select: none;
 
   &.rootIsSelectAllHidden {
-    @include padding-left(36px);
+    @include ms-padding-left(36px);
   }
 }
 
@@ -131,7 +131,7 @@ $resizerColor: $ms-color-neutralTertiaryAlt;
 
 .cell .filterChevron {
   color: $dropdownChevronForegroundColor;
-  @include padding-left(4px);
+  @include ms-padding-left(4px);
   vertical-align: middle;
 }
 

@@ -5,7 +5,6 @@
   .od-OfficeFooter {
     background: $ms-color-black;
     color: $ms-color-white;
-    font-family: $ms-font-system-base;
     font-weight: $ms-font-weight-regular;
     font-size: $ms-font-size-m;
     padding: 32px 20px;
@@ -13,8 +12,8 @@
 
     ul, li {
       list-style: none;
-      @include margin-left(0);
-      @include padding-left(0);
+      @include ms-margin-left(0);
+      @include ms-padding-left(0);
     }
   }
 
@@ -36,7 +35,6 @@
   }
 
   .od-OfficeFooter-heading {
-    font-family: $ms-font-system-base;
     font-weight: $ms-font-weight-semibold;
     font-size: $ms-font-size-l;
     white-space: nowrap;
@@ -68,15 +66,15 @@
 
   .od-OfficeFooter-microsoft {
     margin-bottom: 8px;
-    @include margin-left(8px);
-    @include text-align(right);
+    @include ms-margin-left(8px);
+    @include ms-text-align(right);
 
     img {
       margin-bottom: 12px;
     }
   }
 
-  @media (min-width: $ms-screen-md-min) {
+  @media (min-width: $ms-screen-min-md) {
 
     .od-OfficeFooter-primary {
       flex-direction: row;
@@ -85,7 +83,7 @@
 
     .od-OfficeFooter-linkList {
       margin-bottom: 0;
-      @include padding-right(40px);
+      @include ms-padding-right(40px);
     }
 
     .od-OfficeFooter-list--secondary {
@@ -96,18 +94,18 @@
       flex-direction: row;
 
       li {
-        @include margin-left(20px);
+        @include ms-margin-left(20px);
       }
     }
   }
 
-  @media (min-width: $ms-screen-lg-min) {
+  @media (min-width: $ms-screen-min-lg) {
     .od-OfficeFooter-primary {
       justify-content: flex-start;
     }
 
     .od-OfficeFooter-linkList {
-      @include margin-right(120px);
+      @include ms-margin-right(120px);
     }
   }
 }

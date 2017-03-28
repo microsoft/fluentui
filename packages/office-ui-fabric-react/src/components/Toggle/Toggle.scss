@@ -19,9 +19,8 @@
 
 // Toggle
 .root {
-  @include ms-baseFont;
   @include ms-font-m;
-  @include ms-u-normalize;
+  @include ms-normalize;
   color: $ms-color-neutralPrimary;
 
   position: relative;
@@ -64,7 +63,7 @@
 
     .thumb {
       background: $ms-color-white;
-      @include left(28px);
+      @include ms-left(28px);
       @include highContrast-bgColor($ms-color-black, $ms-color-white);
     }
 
@@ -109,7 +108,7 @@
 
     .thumb {
       background: $ms-color-neutralLight;
-      @include left(28px);
+      @include ms-left(28px);
       @include highContrast-bgColor($ms-color-black, $ms-color-white);
     }
   }
@@ -159,7 +158,7 @@
   height: 10px;
   border-radius: 10px;
   top: 4px;
-  @include left(4px);
+  @include ms-left(4px);
   background: $ms-color-neutralSecondary;
   transition: all 0.1s ease;
 }

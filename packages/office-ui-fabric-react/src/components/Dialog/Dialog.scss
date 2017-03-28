@@ -18,13 +18,12 @@ $Dialog-default-max-width: 340px;
 }
 
 .root {
-  @include ms-baseFont;
   background-color: transparent;
   position: fixed;
   height: 100%;
   width:  100%;
   top:  0;
-  @include left(0);
+  @include ms-left(0);
   display: none; // Hidden by default
 
   :global(.ms-Button.ms-Button--compound) {
@@ -61,7 +60,7 @@ $Dialog-default-max-width: 340px;
 // The actual dialog element
 .main {
   @include dialogPositioningIE9Fallback();
-  @include drop-shadow();
+  @include ms-drop-shadow();
   background-color: $ms-color-white;
   box-sizing: border-box;
   line-height: 1.35;
@@ -107,7 +106,7 @@ $Dialog-default-max-width: 340px;
   flex-wrap: nowrap;
   position: absolute;
   top: 0;
-  @include right(0);
+  @include ms-right(0);
   @include padding(12px, 12px, 0, 0);
   > * {
     flex: 0 0 auto;
@@ -154,7 +153,7 @@ $Dialog-default-max-width: 340px;
 // padding between action elements.
 .actionsRight {
   @include text-align(right);
-  @include margin-right(-4px);
+  @include ms-margin-right(-4px);
   font-size: 0;
 
   // Reset spacing for first button
@@ -203,7 +202,7 @@ $Dialog-default-max-width: 340px;
   }
 }
 
-@media (min-width: $ms-screen-md-min) {
+@media (min-width: $ms-screen-min-md) {
   // Allow wider dialog on larger screens
   .main {
     width: auto;
