@@ -8,7 +8,7 @@ export class RatingComponentPage extends React.Component<any, any> {
     return (
       <div ref='pageElement'>
         <ComponentPage>
-          <PageHeader pageTitle='Ratings' backgroundColor='#038387'
+          <PageHeader pageTitle='Rating' backgroundColor='#038387'
             links={
               [
                 {
