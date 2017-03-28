@@ -43,6 +43,8 @@ build.postCopy.setConfig({
   }
 });
 
+build.karma.isEnabled = () => false;
+
 // process *.Example.tsx as text.
 build.text.setConfig({ textMatch: ['src/**/*.txt', 'src/**/*.Example.tsx', 'src/**/*.Props.ts'] });
 
