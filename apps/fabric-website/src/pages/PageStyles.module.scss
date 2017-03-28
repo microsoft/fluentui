@@ -1,3 +1,5 @@
-.u_maxTextWidth {
-	max-width: 50em;
+:global {
+  .u_maxTextWidth {
+    max-width: 50em;
+  }
 }

@@ -1,6 +1,46 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 23 Mar 2017 03:13:02 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Mar 2017 16:11:18 GMT and should not be manually modified.
+
+## 2.9.0
+Tue, 28 Mar 2017 16:11:18 GMT
+
+### Minor changes
+
+- DetailsList & List: Use getKey as items render key
+
+## 2.8.0
+Tue, 28 Mar 2017 03:05:36 GMT
+
+### Minor changes
+
+- DetailsList: Implement Drag Drop support
+
+### Patches
+
+- Router: tweaked some of the logic to render component as a fallback if getComponent doesn't immediately return a value.
+- TextField: Fix examples and comments
+
+## 2.7.1
+Fri, 24 Mar 2017 20:25:07 GMT
+
+### Patches
+
+- Recreated npm publish. It seems that the current published bits are not reflecting the focus mixin, which is busting some focus css styling. Trying to pinpoint why some machines seems to produce `border: 1px solid color` vs others that leave off the `px` in the unit.
+
+## 2.7.0
+Fri, 24 Mar 2017 04:26:48 GMT
+
+### Minor changes
+
+- ContextualMenu: onItemClick prop added
+
+### Patches
+
+- CommandBar: Fixes ugly focus border when clicked (Chrome/Mac)
+- Callout: preventDismissOnScroll prop added and set to default false
+- Contextual Menu: Made change to allow arrow keys to loop over item
+- Panel: Title text updated with correct lineheight and removed overflow styles
 
 ## 2.6.0
 Thu, 23 Mar 2017 03:13:02 GMT

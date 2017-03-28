@@ -17,7 +17,7 @@ import {
   IDragDropOptions,
 } from './../../utilities/dragdrop/interfaces';
 import { IViewport } from '../../utilities/decorators/withViewport';
-import styles from './DetailsRow.scss';
+const styles: any = require('./DetailsRow.scss');
 import { IDisposable } from '@uifabric/utilities';
 
 export interface IDetailsRowProps extends React.Props<DetailsRow> {
@@ -118,7 +118,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
       }
 
       if (this.props.dragDropHelper) {
-        this.props.dragDropHelper.subscribe(this.refs.root, this._events, this._getRowDragDropOptions());
+        this._dragDropSubscription = this.props.dragDropHelper.subscribe(this.refs.root, this._events, this._getRowDragDropOptions());
       }
     }
 
@@ -197,6 +197,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
         data-selection-index={ itemIndex }
         data-item-index={ itemIndex }
         data-is-draggable={ isDraggable }
+        draggable= { isDraggable }
         data-automationid='DetailsRow'
         style={ { minWidth: viewport ? viewport.width : 0 } }
         aria-selected={ isSelected }
@@ -307,8 +308,11 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
       canDrag: dragDropEvents.canDrag,
       canDrop: dragDropEvents.canDrop,
       onDragStart: dragDropEvents.onDragStart,
-      updateDropState: this._updateDroppingState
+      updateDropState: this._updateDroppingState,
+      onDrop: dragDropEvents.onDrop,
+      onDragEnd: dragDropEvents.onDragEnd,
     };
+
     return options;
   }
 

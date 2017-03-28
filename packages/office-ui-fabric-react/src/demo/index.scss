@@ -1,0 +1,7 @@
+@import '../common/common';
+
+:global {
+  html, body {
+    -webkit-tap-highlight-color: transparent;
+  }
+}

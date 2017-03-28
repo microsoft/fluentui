@@ -11,7 +11,7 @@ import {
   getRTL
 } from '../../Utilities';
 import { IMarqueeSelectionProps } from './MarqueeSelection.Props';
-import styles from './MarqueeSelection.scss';
+const styles: any = require('./MarqueeSelection.scss');
 
 export interface IMarqueeSelectionState {
   dragOrigin?: IPoint;
@@ -133,7 +133,7 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
       return;
     }
 
-    if (isEnabled && (!onShouldStartSelection || onShouldStartSelection(ev))) {
+    if (isEnabled && !this._isDragStartInSelection(ev) && (!onShouldStartSelection || onShouldStartSelection(ev))) {
       if (this._scrollableSurface && ev.button === 0) {
         this._selectedIndicies = {};
         this._events.on(window, 'mousemove', this._onMouseMove);
@@ -200,7 +200,6 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
   }
 
   private _onMouseUp(ev: MouseEvent) {
-
     this._events.off(window);
     this._events.off(this._scrollableParent, 'scroll');
 
@@ -216,7 +215,38 @@ export class MarqueeSelection extends BaseComponent<IMarqueeSelectionProps, IMar
       ev.preventDefault();
       ev.stopPropagation();
     }
+  }
 
+  private _isPointInRectangle(rectangle: IRectangle, point: IPoint): boolean {
+    return rectangle.top < point.y &&
+      rectangle.bottom > point.y &&
+      rectangle.left < point.x &&
+      rectangle.right > point.x;
+  }
+
+  /**
+   * We do not want to start the marquee if we're trying to marquee
+   * from within an existing marquee selection.
+   */
+  private _isDragStartInSelection(ev: MouseEvent): boolean {
+    const selection = this.props.selection;
+    if (selection && selection.getSelectedCount() === 0) {
+      return false;
+    }
+
+    const allElements = this.refs.root.querySelectorAll('[data-selection-index]');
+    for (let i = 0; i < allElements.length; i++) {
+      const element = allElements[i];
+      const index = Number(element.getAttribute('data-selection-index'));
+      if (selection.isIndexSelected(index)) {
+        const itemRect = element.getBoundingClientRect();
+        if (this._isPointInRectangle(itemRect, { x: ev.x, y: ev.y })) {
+          return true;
+        }
+      }
+    }
+
+    return false;
   }
 
   private _evaluateSelection(dragRect: IRectangle) {
