@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Router: tweaked some of the logic to render component as a fallback if getComponent doesn't immediately return a value.",
-      "type": "patch"
+      "comment": "ChoiceGroup: adding `selectedKey` and `defaultSelectedKey` to provide a way to control selection, other than to micromanage the `checked` boolean in individual options.",
+      "type": "minor"
     },
     {
       "comment": "",
@@ -11,9 +11,9 @@
       "type": "none"
     },
     {
+      "comment": "",
       "packageName": "@uifabric/example-app-base",
-      "comment": "Tweaked some of the style imports.",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "email": "dzearing@microsoft.com"

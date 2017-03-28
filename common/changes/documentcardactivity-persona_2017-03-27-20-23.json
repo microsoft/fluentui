@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "TextField: Fix examples and comments",
+      "comment": "DocumentCardActivity: Changes made to fix the default color to Persona",
       "type": "patch"
     },
     {
@@ -16,5 +16,5 @@
       "type": "none"
     }
   ],
-  "email": "hross@hross.net"
+  "email": "r33najain@gmail.com"
 }

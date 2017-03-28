@@ -48,6 +48,12 @@ export class PersonaBasicExample extends React.Component<React.Props<PersonaBasi
         />
         <Persona
           { ...examplePersona }
+          size={ PersonaSize.size28 }
+          presence={ PersonaPresence.none }
+          hidePersonaDetails={ !renderPersonaDetails }
+        />
+        <Persona
+          { ...examplePersona }
           size={ PersonaSize.extraSmall }
           presence={ PersonaPresence.online }
           hidePersonaDetails={ !renderPersonaDetails }
