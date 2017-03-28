@@ -16,12 +16,13 @@ import {
 } from '../../Utilities';
 import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
-import './Callout.scss';
+import styles from './Callout.scss';
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 const OFF_SCREEN_STYLE = { opacity: 0 };
 const BORDER_WIDTH: number = 1;
 const SPACE_FROM_EDGE: number = 8;
+
 export interface ICalloutState {
   positions?: IPositionInfo;
   slideDirectionalClassName?: string;
@@ -31,6 +32,7 @@ export interface ICalloutState {
 export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> {
 
   public static defaultProps = {
+    isClosedOnScroll: true,
     isBeakVisible: true,
     beakWidth: 16,
     gapSpace: 16,
@@ -116,11 +118,12 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     let contentMaxHeight: number = this._getMaxHeight();
     let beakVisible: boolean = isBeakVisible && (!!targetElement || !!target);
     let content = (
-      <div ref={ this._resolveRef('_hostElement') } className={ 'ms-Callout-container' }>
+      <div ref={ this._resolveRef('_hostElement') } className={ css('ms-Callout-container', styles.container) }>
         <div
           className={
             css(
               'ms-Callout',
+              styles.root,
               className,
               directionalClassName
             ) }
@@ -130,14 +133,14 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
 
           { beakVisible && (
             <div
-              className={ 'ms-Callout-beak' }
+              className={ css('ms-Callout-beak', styles.beak) }
               style={ beakReactStyle }
             />) }
 
           { beakVisible &&
-            (<div className='ms-Callout-beakCurtain' />) }
+            (<div className={ css('ms-Callout-beakCurtain', styles.beakCurtain) } />) }
           <Popup
-            className='ms-Callout-main'
+            className={ css('ms-Callout-main', styles.main) }
             onDismiss={ this.dismiss }
             shouldRestoreFocus={ true }
             style={ { maxHeight: contentMaxHeight } }>
@@ -150,7 +153,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   }
 
   @autobind
-  public dismiss(ev?: Event | React.MouseEvent<HTMLElement>) {
+  public dismiss(ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) {
     let { onDismiss } = this.props;
 
     if (onDismiss) {
@@ -159,7 +162,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   }
 
   protected _dismissOnScroll(ev: Event) {
-    if (this.state.positions) {
+    const { isClosedOnScroll } = this.props;
+    if (this.state.positions && isClosedOnScroll) {
       this._dismissOnLostFocus(ev);
     }
   }

@@ -24,13 +24,6 @@ export class DialogCloseExample extends React.Component<any, any> {
           subText='Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
           isBlocking={ false }
           closeButtonAriaLabel='Close'
-          topButtonsProps={ [{
-            key: 'More',
-            buttonType: ButtonType.icon,
-            icon: 'More',
-            ariaLabel: 'More',
-            onClick: this._onMoreButtonClicked.bind(this)
-          }] }
         >
           <ChoiceGroup
             options={ [

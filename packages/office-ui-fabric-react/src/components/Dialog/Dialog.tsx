@@ -12,7 +12,7 @@ import { Button, ButtonType } from '../../Button';
 import { DialogFooter } from './DialogFooter';
 import { Popup } from '../Popup/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import './Dialog.scss';
+import styles from './Dialog.scss';
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 
@@ -94,17 +94,17 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
     }
 
     let subTextContent;
-    const dialogClassName = css('ms-Dialog', this.props.className, {
-      'ms-Dialog--lgHeader': type === DialogType.largeHeader,
-      'ms-Dialog--close': type === DialogType.close,
-      'is-open': isOpen,
-      'is-animatingOpen': isAnimatingOpen,
-      'is-animatingClose': isAnimatingClose
+    const dialogClassName = css('ms-Dialog', styles.root, this.props.className, {
+      ['ms-Dialog--lgHeader ' + styles.isLargeHeader]: type === DialogType.largeHeader,
+      ['ms-Dialog--close ' + styles.isClose]: type === DialogType.close,
+      ['is-open ' + styles.isOpen]: isOpen,
+      'ms-u-fadeIn200': isAnimatingOpen,
+      'ms-u-fadeOut200': isAnimatingClose
     });
     let groupings = this._groupChildren();
 
     if (subText) {
-      subTextContent = <p className='ms-Dialog-subText' id={ id + '-subText' }>{ subText }</p>;
+      subTextContent = <p className={ css('ms-Dialog-subText', styles.subText) } id={ id + '-subText' }>{ subText }</p>;
     }
 
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints
@@ -122,20 +122,20 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
               ref={ this._onDialogRef }>
               <Overlay isDarkThemed={ isDarkOverlay } onClick={ isBlocking ? null : onDismiss } />
               <FocusTrapZone
-                className={ css('ms-Dialog-main', this.props.containerClassName) }
+                className={ css('ms-Dialog-main', styles.main, this.props.containerClassName) }
                 elementToFocusOnDismiss={ elementToFocusOnDismiss }
                 isClickableOutsideFocusTrap={ isClickableOutsideFocusTrap ? isClickableOutsideFocusTrap : !isBlocking }
                 ignoreExternalFocusing={ ignoreExternalFocusing }
                 forceFocusInsideTrap={ forceFocusInsideTrap }
                 firstFocusableSelector={ firstFocusableSelector }>
-                <div className='ms-Dialog-header'>
-                  <p className='ms-Dialog-title' id={ id + '-title' }>{ title }</p>
-                  <div className='ms-Dialog-topButton'>
+                <div className={ css('ms-Dialog-header', styles.header) }>
+                  <p className={ css('ms-Dialog-title', styles.title) } id={ id + '-title' } role='heading'>{ title }</p>
+                  <div className={ css('ms-Dialog-topButton', styles.topButton) }>
                     { this.props.topButtonsProps.map((props) => (
                       <Button {...props} />
                     )) }
                     <Button
-                      className='ms-Dialog-button ms-Dialog-button--close'
+                      className={ css('ms-Dialog-button ms-Dialog-button--close', styles.button, styles.isClose) }
                       buttonType={ ButtonType.icon }
                       icon='Cancel'
                       ariaLabel={ closeButtonAriaLabel }
@@ -143,8 +143,8 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
                     />
                   </div>
                 </div>
-                <div className='ms-Dialog-inner'>
-                  <div className={ css('ms-Dialog-content', this.props.contentClassName) }>
+                <div className={ css('ms-Dialog-inner', styles.inner) }>
+                  <div className={ css('ms-Dialog-content', styles.content, this.props.contentClassName) }>
                     { subTextContent }
                     { groupings.contents }
                   </div>

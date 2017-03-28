@@ -30,7 +30,7 @@ import {
   SelectionZone
 } from '../../utilities/selection/index';
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
-import './DetailsList.scss';
+import styles from './DetailsList.scss';
 
 export interface IDetailsListState {
   lastWidth?: number;
@@ -236,9 +236,9 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       // with JAWS.
       <div
         ref='root'
-        className={ css('ms-DetailsList', className, {
+        className={ css('ms-DetailsList', styles.root, className, {
           'is-fixed': layoutMode === DetailsListLayoutMode.fixedColumns,
-          'is-horizontalConstrained': constrainMode === ConstrainMode.horizontalConstrained
+          ['is-horizontalConstrained ' + styles.rootIsHorizontalConstrained]: constrainMode === ConstrainMode.horizontalConstrained
         }) }
         data-automationid='DetailsList'
         data-is-scrollable='false'
@@ -270,6 +270,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
           <div ref='contentContainer' onKeyDown={ this._onContentKeyDown } role='presentation'>
             <FocusZone
               ref='focusZone'
+              className={ styles.focusZone }
               direction={ FocusZoneDirection.vertical }
               isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }
               onActiveElementChanged={ this._onActiveRowChanged }
@@ -320,7 +321,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   }
 
   @autobind
-  protected _onRenderRow(props: IDetailsRowProps) {
+  protected _onRenderRow(props: IDetailsRowProps, defaultRender?: any) {
     return <DetailsRow { ...props } />;
   }
 
@@ -591,9 +592,11 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   }
 
   private _onColumnResized(resizingColumn: IColumn, newWidth: number) {
-    this._columnOverrides[resizingColumn.key].calculatedWidth = Math.max(
-      resizingColumn.minWidth || MIN_COLUMN_WIDTH,
-      newWidth);
+    let newCalculatedWidth = Math.max(resizingColumn.minWidth || MIN_COLUMN_WIDTH, newWidth);
+    if (this.props.onColumnResize) {
+      this.props.onColumnResize(resizingColumn, newCalculatedWidth);
+    }
+    this._columnOverrides[resizingColumn.key].calculatedWidth = newCalculatedWidth;
     this._adjustColumns(this.props, true, DetailsListLayoutMode.fixedColumns);
     this._forceListUpdates();
   }

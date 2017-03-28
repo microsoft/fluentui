@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { BaseButton } from './BaseButton';
 import { Button } from './Button';
+import { IRenderFunction } from '../../Utilities';
+import { IContextualMenuProps } from '../../ContextualMenu';
 
 export interface IButton {
   /**
@@ -39,15 +41,38 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
   ariaDescription?: string;
 
   /**
+  * Text to render button label. If text is supplied, it will override any string in button children. Other children components will be passed through after the text.
+  */
+  text?: string;
+
+  /**
    * The button icon shown in command or hero type.
-   * Deprecated at v1.2.3, to be removed at >= v2.0.0. Use IconButton instead.
    */
   icon?: string;
 
   /**
+   * The button icon shown to the right of the text
+   */
+  menuIconName?: string | null;
+
+  /**
+  * Custom render function for button menu icon
+  */
+  onRenderMenuIcon?: IRenderFunction<IButtonProps>;
+
+  /**
+  * Props for button menu
+  */
+  menuProps?: IContextualMenuProps;
+
+  /**
+  * Custom render function for button menu
+  */
+  onRenderMenu?: IRenderFunction<IContextualMenuProps>;
+
+  /**
    * Description of the action this button takes.
    * Only used for compound buttons
-   * Deprecated at v1.2.3, to be removed at >= v2.0.0. Use CompoundButton instead
    */
   description?: string;
 
