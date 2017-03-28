@@ -5,13 +5,15 @@ declare var casper: Casper;
 casper.
   start('http://localhost:8080/#/Button').
   then(function () {
-    phantomcss.screenshot('#HI', 'Button_not_pressed');
+    phantomcss.screenshot('#DefaultButton', 'Button_not_pressed');
   }).then(function () {
-    this.mouse.move('#HI');
-    phantomcss.screenshot('#HI', 'Button_Hovered');
+    this.mouse.move('#DefaultButton');
+    phantomcss.screenshot('#DefaultButton', 'Button_Hovered');
   }).then(function () {
-    this.mouse.down('#HI');
-    phantomcss.screenshot('#HI', 'Button_pressed');
-  });
+    this.mouse.down('#DefaultButton');
+    phantomcss.screenshot('#DefaultButton', 'Button_pressed');
+  }).then(function () {
+    phantomcss.screenshot('#IconButton', 'Icon_Button');
+  })
 casper.run(function () { casper.test.done(); });
 /* tslint:enable:no-function-expression */
