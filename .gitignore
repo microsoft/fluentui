@@ -101,7 +101,7 @@ package
 package-deps.json
 
 # Non Essential Visual testing files.
-**/office-ui-fabric-react/results/*.png
+**/office-ui-fabric-react/visualtests/results/*.png
 **/office-ui-fabric-react/failures/*.png
 
 common/npm-local

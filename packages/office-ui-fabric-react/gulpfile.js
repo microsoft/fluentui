@@ -33,8 +33,8 @@ let visualTest = build.subTask('visualtest', (gulp, options, done) => {
     gulp.src(['lib/**/*.visualtest.js'])
       .pipe(casperJs(
         {
-          screenshots: 'screenshots',
-          comparisonResultRoot: 'results'
+          screenshots: 'visualtests',
+          comparisonResultRoot: 'visualtests/results'
         })).on('end', done);
   }
 });
