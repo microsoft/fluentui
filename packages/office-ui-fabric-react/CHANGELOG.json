@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "2.9.0",
+      "tag": "office-ui-fabric-react_v2.9.0",
+      "date": "Tue, 28 Mar 2017 16:11:18 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "Pablo Núñez <pablonete@gmail.com>",
+            "commit": "7fea23bf115c120a8dacc7cd7f136df0c7eb98e7",
+            "comment": "DetailsList & List: Use getKey as items render key"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.8.0",
       "tag": "office-ui-fabric-react_v2.8.0",
       "date": "Tue, 28 Mar 2017 03:05:36 GMT",
