@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 28 Mar 2017 03:05:36 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Mar 2017 16:11:18 GMT and should not be manually modified.
+
+## 2.9.0
+Tue, 28 Mar 2017 16:11:18 GMT
+
+### Minor changes
+
+- DetailsList & List: Use getKey as items render key
 
 ## 2.8.0
 Tue, 28 Mar 2017 03:05:36 GMT
