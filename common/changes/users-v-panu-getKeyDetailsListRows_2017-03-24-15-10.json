@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "TextField: Fix examples and comments",
-      "type": "patch"
+      "comment": "DetailsList & List: Use getKey as items render key",
+      "type": "minor"
     },
     {
       "comment": "",
@@ -16,5 +16,5 @@
       "type": "none"
     }
   ],
-  "email": "hross@hross.net"
+  "email": "v-panu@microsoft.com"
 }
