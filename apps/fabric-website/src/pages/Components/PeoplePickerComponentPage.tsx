@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PeoplePickerPage } from 'fabric-examples/lib/pages/PeoplePickerPage/PeoplePickerPage';
+import { PeoplePickerPage } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

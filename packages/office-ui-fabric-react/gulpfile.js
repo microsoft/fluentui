@@ -13,8 +13,11 @@ let gulpConnect = require('gulp-connect');
 
 let isProduction = process.argv.indexOf('--production') >= 0;
 let isNuke = process.argv.indexOf('nuke') >= 0;
-let packageFolder = buildConfig.packageFolder || '';
-let distFolder = buildConfig.distFolder;
+let {
+  libFolder,
+  distFolder,
+  packageFolder = ''
+} = buildConfig;
 
 let visualTestClean = build.subTask('visualTestClean', (gulp, options, done) => {
   return del(['failures/*png', 'results/*png']).then(() => done());
@@ -49,32 +52,36 @@ build.tslint.setConfig({ lintConfig: { rules } });
 build.typescript.setConfig({ typescript: require('typescript') });
 
 // Use css modules.
-build.sass.setConfig({ useCSSModules: true });
+build.sass.setConfig({
+  useCSSModules: true,
+  moduleExportName: ''
+});
 
 // Use Karma Tests - Disable during develoment if prefered
 build.karma.isEnabled = () => true;
 
 // Disable unnecessary subtasks.
 build.preCopy.isEnabled = () => false;
-build.postCopy.isEnabled = () => isProduction;
 
 // Until typings work.
 //build.apiExtractor.isEnabled = () => false;
 
 // Copy fabric-core to dist to be published with fabric-react.
 build.postCopy.setConfig({
+  shouldFlatten: false,
   copyTo: {
     [path.join(distFolder, 'sass')]: [
       'node_modules/office-ui-fabric-core/dist/sass/*.*'
     ],
     [path.join(distFolder, 'css')]: [
       'node_modules/office-ui-fabric-core/dist/css/*.*'
+    ],
+    [libFolder]: [
+      'src/**/*.Example.tsx',
+      'src/**/*.Props.ts'
     ]
   }
 });
-
-// process *.Props.tsx as text.
-build.text.setConfig({ textMatch: ['src/**/*.Props.ts'] });
 
 // Produce AMD bits in lib-amd on production builds.
 if (isProduction || isNuke) {
@@ -86,12 +93,12 @@ if (isProduction || isNuke) {
 // Disable certain subtasks in non production builds to speed up serve.
 build.tslint.isEnabled = () => isProduction;
 build.webpack.isEnabled = () => isProduction;
-build.clean.isEnabled = () => isProduction;
 
 // Short aliases for subtasks.
 build.task('webpack', build.webpack);
 build.task('tslint', build.tslint);
 build.task('ts', build.typescript);
+build.task('sass', build.sass);
 
 build.task('visualtest', serial(build.sass, build.typescript, build.webpack, visualTestClean, visualTest));
 

@@ -1,3 +1,5 @@
+/* tslint:disable:no-trailing-whitespace */
+
 import { IProperty, PropertyType } from './interfaces';
 import { InterfaceParserHelper } from './InterfaceParserHelper';
 import { EnumParserHelper } from './EnumParserHelper';

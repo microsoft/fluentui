@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DatePickerPage } from 'fabric-examples/lib/pages/DatePickerPage/DatePickerPage';
+import { DatePickerPage } from 'office-ui-fabric-react/lib/components/DatePicker/DatePickerPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

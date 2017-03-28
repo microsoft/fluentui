@@ -6,7 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" user-scalable="no" />
 
-  <title>testpage</title>
+  <link rel="stylesheet" href="node_modules/office-ui-fabric-core/dist/css/fabric.min.css"></link>
+  <title>Office UI Fabric React Examples</title>
 
 </head>
 
@@ -27,11 +28,16 @@
         document.body.appendChild(s);
       }
     }
-    loadScript([
-      '//cdnjs.cloudflare.com/ajax/libs/react/15.4.0/react.js',
-      '//cdnjs.cloudflare.com/ajax/libs/react/15.4.0/react-dom.js',
-      'dist/fabric-test.js'
-    ]);
+    loadScript(isProduction ? [
+      '//cdnjs.cloudflare.com/ajax/libs/react/15.4.0/react.min.js',
+      '//cdnjs.cloudflare.com/ajax/libs/react/15.4.0/react-dom.min.js',
+      'demo-app.min.js'
+    ] : [
+        '//cdnjs.cloudflare.com/ajax/libs/react/15.4.0/react.js',
+        '//cdnjs.cloudflare.com/ajax/libs/react/15.4.0/react-dom.js',
+        'demo-app.js',
+        'dist/fabric-test.js'
+      ]);
   </script>
 </body>
 

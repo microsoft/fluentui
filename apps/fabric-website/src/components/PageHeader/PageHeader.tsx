@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css, BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import styles from './PageHeader.module.scss';
+const styles: any = require('./PageHeader.module.scss');
 import { getPageRouteFromState } from '../../utilities/pageroute';
 import { PageHeaderLink } from '../../components/PageHeaderLink/PageHeaderLink';
 
