@@ -1,7 +1,9 @@
 @import '../../../common/common';
 
-.detailsListDragDropExample {
-  .dragEnter {
-    background-color: $ms-color-neutralLight;
+:global {
+  .detailsListDragDropExample {
+    .dragEnter {
+      background-color: $ms-color-neutralLight;
+    }
   }
 }

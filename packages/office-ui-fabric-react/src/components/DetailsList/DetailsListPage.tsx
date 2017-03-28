@@ -25,7 +25,7 @@ import { DetailsListGroupedExample } from './examples/DetailsList.Grouped.Exampl
 const DetailsListGroupedExampleCode = require('!raw-loader!./examples/DetailsList.Grouped.Example.tsx') as string;
 
 import { DetailsListDragDropExample } from './examples/DetailsList.DragDrop.Example';
-const DetailsListDragDropExampleCode = require('./examples/DetailsList.DragDrop.Example.tsx') as string;
+const DetailsListDragDropExampleCode = require('!raw-loader!./examples/DetailsList.DragDrop.Example.tsx') as string;
 
 export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
