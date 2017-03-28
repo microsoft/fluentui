@@ -27,7 +27,7 @@ function createConfig(isProduction) {
   let webpackConfig = {
 
     entry: {
-      [BUNDLE_TEST]: './VisualTestRoot.js',
+      [BUNDLE_TEST]: './lib/VisualTestRoot.js',
       [BUNDLE_NAME]: './lib/index.js'
     },
 
