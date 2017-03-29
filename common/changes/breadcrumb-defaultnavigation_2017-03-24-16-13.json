@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Breadcrumb: Addinng changes to add the default behaviour of browser on Alt key.",
+      "comment": "FocusZone: Adding support for default browser behavior when pressing alt + a key.",
       "type": "patch"
     },
     {
