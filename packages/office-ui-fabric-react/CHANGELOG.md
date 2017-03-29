@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 29 Mar 2017 15:10:15 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Mar 2017 18:15:29 GMT and should not be manually modified.
+
+## 2.10.2
+Wed, 29 Mar 2017 18:15:29 GMT
+
+### Patches
+
+- FocusZone: Adding support for default browser behavior when pressing alt + a key.
+- Chaning scss imports to use typescript `import` instead of `require` so that lib-amd build actually imports via AMD require and not commonjs require.
+- PeoplePicker: Adding changes for multiple selection onChange 
 
 ## 2.10.1
 Wed, 29 Mar 2017 15:10:15 GMT
