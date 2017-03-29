@@ -8,7 +8,7 @@ export interface IButton {
   /**
    * Focuses the button.
    */
-  focus();
+  focus: () => void;
 }
 
 export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAnchorElement | BaseButton | Button> {

@@ -11,10 +11,10 @@ import {
 const styles: any = require('./ChoiceGroup.scss');
 
 export interface IChoiceGroupState {
-  keyChecked: string;
+  keyChecked: string | number;
 
   /** Is true when the control has focus. */
-  keyFocused?: string;
+  keyFocused?: string | number;
 }
 
 export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupState> {
@@ -30,7 +30,9 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
     super(props, { ['onChanged']: 'onChange' });
 
     this.state = {
-      keyChecked: this._getKeyChecked(props.options),
+      keyChecked: (props.defaultSelectedKey === undefined) ?
+        this._getKeyChecked(props) :
+        props.defaultSelectedKey,
       keyFocused: undefined
     };
 
@@ -39,8 +41,8 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
   }
 
   public componentWillReceiveProps(newProps: IChoiceGroupProps) {
-    const newKeyChecked: string = this._getKeyChecked(newProps.options);
-    const oldKeyCheched: string = this._getKeyChecked(this.props.options);
+    const newKeyChecked = this._getKeyChecked(newProps);
+    const oldKeyCheched = this._getKeyChecked(this.props);
 
     if (newKeyChecked !== oldKeyCheched) {
       this.setState({
@@ -69,7 +71,8 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
             <div
               key={ option.key }
               className={ css('ms-ChoiceField', styles.choiceField, {
-                ['ms-ChoiceField--image ' + styles.choiceFieldIsImage]: !!option.imageSrc || !!option.iconProps,
+                ['ms-ChoiceField--image ' + styles.choiceFieldIsImage]: !!option.imageSrc,
+                ['ms-ChoiceField--icon ' + styles.choiceFieldIsIcon]: !!option.iconProps,
                 ['is-inFocus ' + styles.choiceFieldIsInFocus]: option.key === keyFocused
               })
               }
@@ -123,9 +126,9 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
     return (
       <label
         htmlFor={ this._id + '-' + option.key }
-        className={ css({
-          ['ms-ChoiceField-field ' + styles.field]: !option.imageSrc && !option.iconProps,
-          ['ms-ChoiceField-field--image ' + styles.fieldIsImage]: !!option.imageSrc || !!option.iconProps,
+        className={ css('ms-ChoiceField-field', styles.field, {
+          ['ms-ChoiceField-field--image ' + styles.fieldIsImage]: !!option.imageSrc,
+          ['ms-ChoiceField--icon ' + styles.fieldIsIcon]: !!option.iconProps,
           ['is-checked ' + styles.fieldIsChecked]: option.key === keyChecked,
           ['is-disabled ' + styles.fieldIsDisabled]: isDisabled
         }) }
@@ -175,7 +178,6 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
           option.imageSrc || option.iconProps
             ? (
               <div className={ css('ms-ChoiceField-labelWrapper', styles.labelWrapper) }>
-                <Icon className={ css('ms-ChoiceField-icon', styles.icon) } iconName='CheckMark' />
                 <span id={ `${this._labelId}-${option.key}` } className='ms-Label'>{ option.text }</span>
               </div>
             ) : (
@@ -187,11 +189,14 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
   }
 
   private _onChange(option: IChoiceGroupOption, evt: React.FormEvent<HTMLInputElement>) {
-    let { onChanged, onChange } = this.props;
+    let { onChanged, onChange, selectedKey } = this.props;
 
-    this.setState({
-      keyChecked: option.key
-    });
+    // Only manage state in uncontrolled scenarios.
+    if (selectedKey === undefined) {
+      this.setState({
+        keyChecked: option.key
+      });
+    }
 
     // TODO: onChanged deprecated, remove else if after 07/17/2017 when onChanged has been removed.
     if (onChange) {
@@ -205,8 +210,12 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
    * If all the isChecked property of options are falsy values, return undefined;
    * Else return the key of the first option with the truthy isChecked property.
    */
-  private _getKeyChecked(options: IChoiceGroupOption[]): string {
-    const optionsChecked = options.filter((option: IChoiceGroupOption) => {
+  private _getKeyChecked(props: IChoiceGroupProps): string | number {
+    if (props.selectedKey !== undefined) {
+      return props.selectedKey;
+    }
+
+    const optionsChecked = props.options.filter((option: IChoiceGroupOption) => {
       return option.isChecked || option.checked;
     });
 
