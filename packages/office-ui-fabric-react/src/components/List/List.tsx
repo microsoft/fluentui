@@ -287,17 +287,20 @@ export class List extends BaseComponent<IListProps, IListState> {
   }
 
   public render() {
-    let { className } = this.props;
+    let { className, role } = this.props;
     let { pages } = this.state;
     let pageElements = [];
     let divProps = getNativeProps(this.props, divProperties);
+
+    // assign list if no role
+    role = role || 'list';
 
     for (let i = 0; i < pages.length; i++) {
       pageElements.push(this._renderPage(pages[i]));
     }
 
     return (
-      <div ref='root' { ...divProps } className={ css('ms-List', className) } >
+      <div ref='root' { ...divProps } role={ role } className={ css('ms-List', className) } >
         <div ref='surface' className='ms-List-surface'>
           { pageElements }
         </div>
@@ -306,20 +309,27 @@ export class List extends BaseComponent<IListProps, IListState> {
   }
 
   private _renderPage(page: IPage): any {
-    let { onRenderCell } = this.props;
+    let { onRenderCell, role } = this.props;
     let cells = [];
     let pageStyle = this._getPageStyle(page);
 
+    // only assign list item role if no role is assigned
+    role = role ? null : 'listitem';
+
     for (let i = 0; page.items && i < page.items.length; i++) {
       let item = page.items[i];
-      let itemKey = (item ? item.key : null);
+      const index = page.startIndex + i;
+      let itemKey =
+        this.props.getKey
+          ? this.props.getKey(item, index)
+          : item && item.key;
 
       if (itemKey === null || itemKey === undefined) {
-        itemKey = page.startIndex + i;
+        itemKey = index;
       }
 
       cells.push(
-        <div className='ms-List-cell' key={ itemKey } data-list-index={ i + page.startIndex } data-automationid='ListCell'>
+        <div role={ role } className='ms-List-cell' key={ itemKey } data-list-index={ i + page.startIndex } data-automationid='ListCell'>
           { onRenderCell(item, page.startIndex + i) }
         </div>
       );

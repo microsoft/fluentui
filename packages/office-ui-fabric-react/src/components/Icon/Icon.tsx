@@ -1,6 +1,6 @@
 /* tslint:disable */
 import * as React from 'react';
-import './Icon.scss'
+const styles: any = require('./Icon.scss')
 /* tslint:enable */
 import { IIconProps } from './Icon.Props';
 import { IconType } from './IconType';
@@ -13,9 +13,10 @@ import {
 
 export const Icon: (props: IIconProps) => JSX.Element = (props: IIconProps) => {
   let customIcon = props.iconName === 'None';
+  let iconClassName = props.iconName ? ('ms-Icon--' + props.iconName) : '';
 
   if (props.iconType === IconType.Image) {
-    let containerClassName = css('ms-Icon', 'ms-Icon-imageContainer', props.className);
+    let containerClassName = css('ms-Icon', 'ms-Icon-imageContainer', styles.imageContainer, props.className);
 
     return (
       <div className={ containerClassName } >
@@ -23,7 +24,7 @@ export const Icon: (props: IIconProps) => JSX.Element = (props: IIconProps) => {
       </div>
     );
   } else {
-    let className = css('ms-Icon', customIcon ? '' : ('ms-Icon--' + props.iconName), props.className);
+    let className = css('ms-Icon', customIcon ? '' : iconClassName, props.className);
 
     return <i { ...getNativeProps(props, htmlElementProperties) } className={ className } />;
   }

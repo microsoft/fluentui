@@ -7,9 +7,21 @@ import {
   getRTL,
   getRTLSafeKeyCode
 } from '../../Utilities';
-import { DayOfWeek, ICalendarStrings } from './Calendar.Props';
+import { ICalendarStrings } from './Calendar.Props';
+import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { FocusZone } from '../../FocusZone';
-import { addDays, addWeeks, addMonths, compareDates } from '../../utilities/dateMath/DateMath';
+
+import {
+  addDays,
+  addWeeks,
+  addMonths,
+  compareDates,
+  compareDatePart,
+  getDateRangeArray,
+  isInDateRangeArray
+} from '../../utilities/dateMath/DateMath';
+
+const styles: any = require('./Calendar.scss');
 
 const DAYS_IN_WEEK = 7;
 
@@ -20,15 +32,18 @@ export interface IDayInfo {
   isInMonth: boolean;
   isToday: boolean;
   isSelected: boolean;
+  onSelected: () => void;
 }
 
 export interface ICalendarDayProps {
   strings: ICalendarStrings;
   selectedDate: Date;
   navigatedDate: Date;
-  onSelectDate: (date: Date) => void;
+  onSelectDate: (date: Date, selectedDateRangeArray?: Date[]) => void;
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
   firstDayOfWeek: DayOfWeek;
+  dateRangeType: DateRangeType;
+  autoNavigateOnSelection: boolean;
 }
 
 export interface ICalendarDayState {
@@ -64,40 +79,48 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     let { activeDescendantId, weeks } = this.state;
     let { firstDayOfWeek, strings, navigatedDate, onSelectDate } = this.props;
 
-    let selectDayCallbacks = {};
-    weeks.map((week, index) => week.map(day => selectDayCallbacks[day.key] = onSelectDate.bind(this, day.originalDate)));
-
     return (
-      <div className='ms-DatePicker-dayPicker'>
-        <div className='ms-DatePicker-header'>
-          <div className='ms-DatePicker-month'>{ strings.months[navigatedDate.getMonth()] }</div>
-          <div className='ms-DatePicker-year'>{ navigatedDate.getFullYear() }</div>
+      <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) }>
+        <div className={ css('ms-DatePicker-header', styles.header) }>
+          <div className={ css('ms-DatePicker-month', styles.month) }>{ strings.months[navigatedDate.getMonth()] }</div>
+          <div className={ css('ms-DatePicker-year', styles.year) }>{ navigatedDate.getFullYear() }</div>
         </div>
-        <div className='ms-DatePicker-monthComponents'>
-          <div className='ms-DatePicker-navContainer'>
+        <div className={ css('ms-DatePicker-monthComponents', styles.monthComponents) }>
+          <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
             <span
-              className='ms-DatePicker-prevMonth js-prevMonth'
+              className={ css('ms-DatePicker-prevMonth js-prevMonth', styles.prevMonth) }
               onClick={ this._onSelectPrevMonth }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectPrevMonth) }
               tabIndex={ 0 }>
               <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': !getRTL(), 'ms-Icon--ChevronRight': getRTL() }) } />
-            </span>
+            </span >
             <span
-              className='ms-DatePicker-nextMonth js-nextMonth'
+              className={ css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth) }
               onClick={ this._onSelectNextMonth }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectNextMonth) }
               tabIndex={ 0 }>
               <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': getRTL(), 'ms-Icon--ChevronRight': !getRTL() }) } />
-            </span>
-          </div>
-          <div className='ms-DatePicker-headerToggleView js-showMonthPicker'></div>
-        </div>
+            </span >
+          </div >
+          <div className={ css('ms-DatePicker-headerToggleView js-showMonthPicker', styles.headerToggleView) } />
+        </div >
         <FocusZone>
-          <table className='ms-DatePicker-table' role='grid' aria-readonly='true' aria-multiselectable='false' aria-activedescendant={ activeDescendantId }>
+          <table
+            className={ css('ms-DatePicker-table', styles.table) }
+            role='grid'
+            aria-readonly='true'
+            aria-multiselectable='false'
+            aria-activedescendant={ activeDescendantId }
+          >
             <thead>
               <tr>
                 { strings.shortDays.map((val, index) =>
-                  <th className='ms-DatePicker-weekday' scope='col' key={ index } title={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }>
+                  <th
+                    className={ css('ms-DatePicker-weekday', styles.weekday) }
+                    scope='col'
+                    key={ index }
+                    title={ strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
+                  >
                     { strings.shortDays[(index + firstDayOfWeek) % DAYS_IN_WEEK] }
                   </th>) }
               </tr>
@@ -108,14 +131,17 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                   { week.map((day, dayIndex) =>
                     <td role='presentation' key={ day.key }>
                       <div
-                        className={ css('ms-DatePicker-day', {
-                          'ms-DatePicker-day--infocus': day.isInMonth,
-                          'ms-DatePicker-day--outfocus': !day.isInMonth,
-                          'ms-DatePicker-day--today': day.isToday,
-                          'ms-DatePicker-day--highlighted': day.isSelected
-                        }) }
+                        className={ css(
+                          'ms-DatePicker-day',
+                          styles.day,
+                          {
+                            ['ms-DatePicker-day--infocus ' + styles.dayIsFocused]: day.isInMonth,
+                            ['ms-DatePicker-day--outfocus ' + styles.dayIsUnfocused]: !day.isInMonth,
+                            ['ms-DatePicker-day--today ' + styles.dayIsToday]: day.isToday,
+                            ['ms-DatePicker-day--highlighted ' + styles.dayIsHighlighted]: day.isSelected
+                          }) }
                         role='gridcell'
-                        onClick={ selectDayCallbacks[day.key] }
+                        onClick={ day.onSelected }
                         onKeyDown={ (ev: React.KeyboardEvent<HTMLElement>) =>
                           this._navigateMonthEdge(ev, day.originalDate, weekIndex, dayIndex) }
                         aria-selected={ day.isSelected }
@@ -132,7 +158,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             </tbody>
           </table>
         </FocusZone>
-      </div>
+      </div >
     );
   }
 
@@ -165,6 +191,25 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
   }
 
+  private _onSelectDate(selectedDate: Date) {
+    let { onSelectDate, dateRangeType, firstDayOfWeek, navigatedDate, autoNavigateOnSelection } = this.props;
+
+    let dateRange = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek);
+    if (onSelectDate != null) {
+      onSelectDate(selectedDate, dateRange);
+    }
+
+    // Navigate to next or previous month if needed
+    if (autoNavigateOnSelection && selectedDate.getMonth() !== navigatedDate.getMonth()) {
+      let compareResult = compareDatePart(selectedDate, navigatedDate);
+      if (compareResult < 0) {
+        this._onSelectPrevMonth();
+      } else if (compareResult > 0) {
+        this._onSelectNextMonth();
+      }
+    }
+  }
+
   private _onSelectNextMonth() {
     this.props.onNavigateDate(addMonths(this.props.navigatedDate, 1), false);
   }
@@ -174,7 +219,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   }
 
   private _getWeeks(navigatedDate: Date, selectedDate: Date): IDayInfo[][] {
-    let { firstDayOfWeek } = this.props;
+    let { firstDayOfWeek, dateRangeType } = this.props;
     let date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
     let today = new Date();
     let weeks = [];
@@ -188,19 +233,23 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     // a flag to indicate whether all days of the week are in the month
     let isAllDaysOfWeekOutOfMonth = false;
 
+    let selectedDates = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek);
+
     for (let weekIndex = 0; !isAllDaysOfWeekOutOfMonth; weekIndex++) {
       week = [];
 
       isAllDaysOfWeekOutOfMonth = true;
 
       for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
+        let originalDate = new Date(date.toString());
         let dayInfo = {
           key: date.toString(),
           date: date.getDate(),
-          originalDate: new Date(date.toString()),
+          originalDate: originalDate,
           isInMonth: date.getMonth() === navigatedDate.getMonth(),
           isToday: compareDates(today, date),
-          isSelected: compareDates(selectedDate, date)
+          isSelected: isInDateRangeArray(date, selectedDates),
+          onSelected: this._onSelectDate.bind(this, originalDate)
         };
 
         week.push(dayInfo);

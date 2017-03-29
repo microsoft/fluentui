@@ -5,11 +5,12 @@ import {
 } from '../../Utilities';
 import { IGroupDividerProps } from './GroupedList.Props';
 import { SelectionMode } from '../../utilities/selection/index';
-import { Check } from '../Check/Check';
+import { Check } from '../../Check';
+import { Icon } from '../../Icon';
 import { GroupSpacer } from './GroupSpacer';
 import { Spinner } from '../../Spinner';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import './GroupHeader.scss';
+const styles: any = require('./GroupHeader.scss');
 
 export interface IGroupHeaderState {
   isCollapsed: boolean;
@@ -60,8 +61,8 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
     let currentlySelected = isSelected || selected;
     return group && (
       <div
-        className={ css('ms-GroupHeader', {
-          'is-selected': currentlySelected
+        className={ css('ms-GroupHeader', styles.root, {
+          ['is-selected ' + styles.rootIsSelected]: currentlySelected
         }) }
         style={ viewport ? { minWidth: viewport.width } : {} }
         onClick={ this._onHeaderClick }
@@ -72,7 +73,8 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
 
           { isSelectionCheckVisible ? (
             <button
-              className='ms-GroupHeader-check'
+              type='button'
+              className={ css('ms-GroupHeader-check', styles.check) }
               data-selection-toggle={ true }
               onClick={ this._onToggleSelectGroupClick } >
               <Check checked={ currentlySelected } />
@@ -82,22 +84,39 @@ export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeade
 
           { GroupSpacer({ count: groupLevel }) }
 
-          <div className='ms-GroupHeader-dropIcon'><i className='ms-Icon ms-Icon--Tag'></i></div>
-          <button className='ms-GroupHeader-expand' onClick={ this._onToggleCollapse }>
-            <i className={ css('ms-Icon ms-Icon--ChevronDown', {
-              'is-collapsed': isCollapsed
-            }) } />
+          <div className={ css('ms-GroupHeader-dropIcon', styles.dropIcon) }>
+            <Icon iconName='Tag' />
+          </div>
+          <button
+            type='button'
+            className={ css('ms-GroupHeader-expand', styles.expand) }
+            onClick={ this._onToggleCollapse }>
+            <Icon
+              className={ css(
+                isCollapsed && ('is-collapsed ' + styles.expandIsCollapsed)
+              ) }
+              iconName='ChevronDown'
+            />
           </button>
 
-          <div className='ms-GroupHeader-title ms-font-xl'>
-            <span>{ group.name } </span>
-            {/* hasMoreData flag is set when grouping is throttle by SPO server which in turn resorts to regular sorting to simulate
-                grouping behaviors, in which case group count is the number of items returned so far. That's the reasons we need to
-                use "+" to show we might have more items than count indicates. */}
-            <span>({ group.count }{ group.hasMoreData && '+' }) </span>
+          <div className={ css('ms-GroupHeader-title ms-font-xl', styles.title) }>
+            <span>{ group.name }</span>
+            {
+              // hasMoreData flag is set when grouping is throttle by SPO server which in turn resorts to regular
+              // sorting to simulate grouping behaviors, in which case group count is the number of items returned
+              // so far. That's the reasons we need to use "+" to show we might have more items than count
+              // indicates.
+            }
+            <span>({ group.count }{ group.hasMoreData && '+' })</span>
           </div>
 
-          <div className={ css('ms-GroupHeader-loading', { 'is-loading': isLoadingVisible }) }>
+          <div
+            className={ css(
+              'ms-GroupHeader-loading',
+              styles.loading,
+              isLoadingVisible && ('is-loading ' + styles.loadingIsVisible)
+            ) }
+          >
             <Spinner label={ loadingText } />
           </div>
 

@@ -19,7 +19,7 @@ import {
 import {
   SelectionMode
 } from '../../utilities/selection/index';
-import './GroupedList.scss';
+const styles: any = require('./GroupedList.scss');
 
 export interface IGroupedListState {
   lastWidth?: number;
@@ -85,11 +85,11 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
     return (
       <div
         ref='root'
-        className={ css('ms-GroupedList', className) }
+        className={ css('ms-GroupedList', styles.root, className) }
         data-automationid='GroupedList'
         data-is-scrollable='false'
         role='grid'
-        >
+      >
         { !groups ?
           this._renderGroup(null, 0) : (
             <List
@@ -97,7 +97,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
               items={ groups }
               onRenderCell={ this._renderGroup }
               getItemCountForPage={ () => 1 }
-              />
+            />
           )
         }
       </div>
@@ -176,7 +176,7 @@ export class GroupedList extends BaseComponent<IGroupedListProps, IGroupedListSt
         selectionMode={ selectionMode }
         selection={ selection }
         viewport={ viewport }
-        />
+      />
     ) : null;
   }
 

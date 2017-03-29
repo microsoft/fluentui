@@ -1,3 +1,5 @@
+/* tslint:disable:no-switch-case-fall-through */
+
 import { BaseParser } from './BaseParser';
 import { IInterfaceProperty, InterfacePropertyType } from './interfaces';
 
@@ -43,6 +45,7 @@ export class InterfaceParserHelper extends BaseParser {
       switch (this._state) {
         case ParseState.default:
           this.eatSpacesAndNewlines();
+
           if (this.eat('/')) {
             if (this.peek() === '*') {
               this._state = ParseState.comment;
@@ -58,6 +61,7 @@ export class InterfaceParserHelper extends BaseParser {
           }
 
           break;
+
         case ParseState.comment:
           {
             // the initial * are always the first * of a comment, and will be treated as decorative
@@ -76,7 +80,8 @@ export class InterfaceParserHelper extends BaseParser {
             bank.push(tmp);
 
             if (this.peek() === '*') {
-              let tmp = this.eatWhile('*');
+              tmp = this.eatWhile('*');
+
               if (this.peek() !== '/') {
                 // encountered a line like '* This is a comment with asterisks in the middle **** like this.'
                 bank.push(tmp);
@@ -90,11 +95,11 @@ export class InterfaceParserHelper extends BaseParser {
             } else if (this.peek() === '@') {
               if (this.eatWord(JSDOC_DEFAULTVALUE) || this.eatWord(JSDOC_DEFAULT)) {
                 // this parser assumes @default values won't have a bunch of asterisks in the middle of it.
-                let tmp = this.eatUntil(/[\*\n]/);
+                tmp = this.eatUntil(/[\*\n]/);
                 defaultValue = tmp;
                 this.eatSpacesAndNewlines();
               } else if (this.eatWord(JSDOC_DEPRECATED)) {
-                let tmp = this.eatUntil(/[\*\n]/);
+                tmp = this.eatUntil(/[\*\n]/);
                 isDeprecated = true;
                 deprecatedMessage = tmp;
               } else {

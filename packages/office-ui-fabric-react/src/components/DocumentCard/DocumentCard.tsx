@@ -2,9 +2,10 @@ import * as React from 'react';
 import { IDocumentCardProps, DocumentCardType } from './DocumentCard.Props';
 import {
   autobind,
-  css
+  css,
+  KeyCodes
 } from '../../Utilities';
-import './DocumentCard.scss';
+const styles: any = require('./DocumentCard.scss');
 
 export class DocumentCard extends React.Component<IDocumentCardProps, any> {
   public static defaultProps: IDocumentCardProps = {
@@ -23,18 +24,26 @@ export class DocumentCard extends React.Component<IDocumentCardProps, any> {
       };
     }
 
+    // if this element is actionable it should have an aria role
+    let role = actionable ? (onClick ? 'button' : 'link') : null;
+    let tabIndex = actionable ? 0 : null;
+
     return (
       <div
+        tabIndex={ tabIndex }
+        role={ role }
         className={
           css(
             'ms-DocumentCard',
+            styles.root,
             {
-              'ms-DocumentCard--actionable': actionable,
-              'ms-DocumentCard--compact': type === DocumentCardType.compact ? true : false
+              ['ms-DocumentCard--actionable ' + styles.rootIsActionable]: actionable,
+              ['ms-DocumentCard--compact ' + styles.rootIsCompact]: type === DocumentCardType.compact ? true : false
             },
             className
           )
         }
+        onKeyDown={ actionable ? this._onKeyDown : null }
         onClick={ actionable ? this._onClick : null }
         style={ style }>
         { children }
@@ -44,6 +53,18 @@ export class DocumentCard extends React.Component<IDocumentCardProps, any> {
 
   @autobind
   private _onClick(ev: React.MouseEvent<HTMLElement>): void {
+    this._onAction(ev);
+  }
+
+  @autobind
+  private _onKeyDown(ev: React.KeyboardEvent<HTMLElement>): void {
+    if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
+      this._onAction(ev);
+    }
+  }
+
+  @autobind
+  private _onAction(ev: React.SyntheticEvent<HTMLElement>): void {
     let { onClick, onClickHref } = this.props;
 
     if (onClick) {

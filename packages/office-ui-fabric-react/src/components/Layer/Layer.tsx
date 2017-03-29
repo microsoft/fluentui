@@ -6,7 +6,7 @@ import * as ReactDOM from 'react-dom';
 import { Fabric } from '../../Fabric';
 import { ILayerProps } from './Layer.Props';
 import { css, BaseComponent, getDocument, setVirtualParent } from '../../Utilities';
-import './Layer.scss';
+const styles: any = require('./Layer.scss');
 
 let _layersByHostId: { [hostId: string]: Layer[] } = {};
 
@@ -76,7 +76,7 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
 
         this._layerElement = doc.createElement('div');
         this._layerElement.className = css('ms-Layer', {
-          'ms-Layer--fixed': !this.props.hostId
+          ['ms-Layer--fixed ' + styles.rootIsFixed]: !this.props.hostId
         });
 
         host.appendChild(this._layerElement);
@@ -86,7 +86,7 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
       // Using this 'unstable' method allows us to retain the React context across the layer projection.
       ReactDOM.unstable_renderSubtreeIntoContainer(
         this,
-        <Fabric className='ms-Layer-content'>
+        <Fabric className={ css('ms-Layer-content', styles.content) }>
           { this.props.children }
         </Fabric>,
         this._layerElement,
@@ -110,7 +110,7 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
       <span
         className='ms-Layer'
         ref={ this._resolveRef('_rootElement') }
-        />
+      />
     );
   }
 

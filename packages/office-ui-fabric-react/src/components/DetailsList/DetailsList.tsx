@@ -31,7 +31,7 @@ import {
   SelectionZone
 } from '../../utilities/selection/index';
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
-import './DetailsList.scss';
+const styles: any = require('./DetailsList.scss');
 
 export interface IDetailsListState {
   lastWidth?: number;
@@ -193,7 +193,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       ariaLabel,
       ariaLabelForGrid,
       rowElementEventMap,
-      shouldApplyApplicationRole = false
+      shouldApplyApplicationRole = false,
+      getKey
     } = this.props;
     let {
       adjustedColumns,
@@ -209,7 +210,8 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
     let groupNestingDepth = this._getGroupNestingDepth();
     let additionalListProps = {
       renderedWindowsAhead: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_AHEAD,
-      renderedWindowsBehind: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_BEHIND
+      renderedWindowsBehind: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_BEHIND,
+      getKey
     };
     let selectAllVisibility = SelectAllVisibility.none; // for SelectionMode.none
     if (selectionMode === SelectionMode.single) {
@@ -234,9 +236,9 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
       // with JAWS.
       <div
         ref='root'
-        className={ css('ms-DetailsList', className, {
+        className={ css('ms-DetailsList', styles.root, className, {
           'is-fixed': layoutMode === DetailsListLayoutMode.fixedColumns,
-          'is-horizontalConstrained': constrainMode === ConstrainMode.horizontalConstrained
+          ['is-horizontalConstrained ' + styles.rootIsHorizontalConstrained]: constrainMode === ConstrainMode.horizontalConstrained
         }) }
         data-automationid='DetailsList'
         data-is-scrollable='false'
@@ -268,6 +270,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
           <div ref='contentContainer' onKeyDown={ this._onContentKeyDown } role='presentation'>
             <FocusZone
               ref='focusZone'
+              className={ styles.focusZone }
               direction={ FocusZoneDirection.vertical }
               isInnerZoneKeystroke={ (ev) => (ev.which === getRTLSafeKeyCode(KeyCodes.right)) }
               onActiveElementChanged={ this._onActiveRowChanged }
@@ -318,7 +321,7 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   @autobind
-  protected _onRenderRow(props: IDetailsRowProps) {
+  protected _onRenderRow(props: IDetailsRowProps, defaultRender?: any) {
     return <DetailsRow { ...props } />;
   }
 
@@ -589,9 +592,11 @@ export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListSt
   }
 
   private _onColumnResized(resizingColumn: IColumn, newWidth: number) {
-    this._columnOverrides[resizingColumn.key].calculatedWidth = Math.max(
-      resizingColumn.minWidth || MIN_COLUMN_WIDTH,
-      newWidth);
+    let newCalculatedWidth = Math.max(resizingColumn.minWidth || MIN_COLUMN_WIDTH, newWidth);
+    if (this.props.onColumnResize) {
+      this.props.onColumnResize(resizingColumn, newCalculatedWidth);
+    }
+    this._columnOverrides[resizingColumn.key].calculatedWidth = newCalculatedWidth;
     this._adjustColumns(this.props, true, DetailsListLayoutMode.fixedColumns);
     this._forceListUpdates();
   }

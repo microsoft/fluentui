@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { css } from '../../utilities/css';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
-import styles from './Overviews.module.scss';
+const styles: any = require('./Overviews.module.scss');
 
 export class StylesPage extends React.Component<any, any> {
   public render() {
@@ -22,7 +22,7 @@ export class StylesPage extends React.Component<any, any> {
           </ul>
           <p>You can get the core styling with <a href='#/get-started#react'>Fabric React</a>, <a href='#/fabric-js'>Fabric JS</a>, or just <a href='#/get-started#core'>Fabric Core</a> on its own.</p>
           <p>Fabric&rsquo;s components use the core styling. To learn more about the fully-styled controls, check out the <a href='#/components'>components</a> page.</p>
-          <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/styles-header.svg' }width='225' height='388' alt='Graphic showing elements of color and type' />
+          <img src={ 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/styles-header.svg' } width='225' height='388' alt='Graphic showing elements of color and type' />
         </div>
       </div>
     );

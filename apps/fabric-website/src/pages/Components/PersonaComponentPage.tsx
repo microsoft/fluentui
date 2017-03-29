@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PersonaPage } from 'fabric-examples/lib/pages/PersonaPage/PersonaPage';
+import { PersonaPage } from 'office-ui-fabric-react/lib/components/Persona/PersonaPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

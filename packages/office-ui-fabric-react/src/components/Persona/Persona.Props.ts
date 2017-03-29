@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { IRenderFunction } from '../../Utilities';
 import { Persona } from './Persona';
 
 export interface IPersonaProps extends React.HTMLProps<Persona> {
@@ -6,6 +7,11 @@ export interface IPersonaProps extends React.HTMLProps<Persona> {
    * Primary text to display, usually the name of the person.
    */
   primaryText?: string;
+
+  /**
+   * Optional custom renderer for the primary text.
+   */
+  onRenderPrimaryText?: IRenderFunction<IPersonaProps>;
 
   /**
    * Decides the size of the control.
@@ -37,6 +43,11 @@ export interface IPersonaProps extends React.HTMLProps<Persona> {
   imageInitials?: string;
 
   /**
+   * Optional custom renderer for the initials
+   */
+  onRenderInitials?: IRenderFunction<IPersonaProps>;
+
+  /**
    * The background color when the user's initials are displayed.
    * @defaultvalue [Derived from primaryText]
    */
@@ -54,14 +65,29 @@ export interface IPersonaProps extends React.HTMLProps<Persona> {
   secondaryText?: string;
 
   /**
+   * Optional custom renderer for the secondary text.
+   */
+  onRenderSecondaryText?: IRenderFunction<IPersonaProps>;
+
+  /**
    * Tertiary text to display, usually the status of the user.
    */
   tertiaryText?: string;
 
   /**
+   * Optional custom renderer for the tertiary text.
+   */
+  onRenderTertiaryText?: IRenderFunction<IPersonaProps>;
+
+  /**
    * Optional text to display, usually a custom message set.
    */
   optionalText?: string;
+
+  /**
+   * Optional custom renderer for the optional text.
+   */
+  onRenderOptionalText?: IRenderFunction<IPersonaProps>;
 
   /**
    * Whether to not render persona details, and just render the persona image/initials.
@@ -81,7 +107,8 @@ export enum PersonaSize {
   small = 3,
   regular = 4,
   large = 5,
-  extraLarge = 6
+  extraLarge = 6,
+  size28 = 7
 }
 
 export enum PersonaPresence {

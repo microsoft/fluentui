@@ -1,4 +1,5 @@
 @import '../../common/common';
+@import '../../common/_focusBorder';
 
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
 
@@ -7,6 +8,7 @@
 // ChoiceField styles
 
 $ms-choiceField-field-size: 20px;
+$ms-choiceField-iconField-size: 96px;
 $ms-choiceField-transition-duration: 200ms;
 $ms-choiceField-transition-duration-inner: 150ms;
 $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
@@ -14,310 +16,362 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
 //== Component: Choicefield group
 //
 
-:global {
-  .ms-ChoiceFieldGroup {
-    @include ms-baseFont;
-    margin-bottom: 4px;
+.root {
+  @include ms-baseFont;
+  margin-bottom: 4px;
+}
 
-    .ms-ChoiceFieldGroup-list {
-      padding: 0;
-      margin: 0;
-    }
-  }
+.choiceField {
+  box-sizing: border-box;
+  color: $ms-color-neutralPrimary;
+  font-family: $ms-font-family-base;
+  font-size: $ms-font-size-m;
+  font-weight: $ms-font-weight-regular;
+  min-height: 36px;
+  border: none;
+  position: relative;
+  @include padding-left(8px);
 
-  .ms-ChoiceField {
-    box-sizing: border-box;
-    color: $ms-color-neutralPrimary;
-    font-family: $ms-font-family-base;
+  :global(.ms-Label) {
     font-size: $ms-font-size-m;
-    font-weight: $ms-font-weight-regular;
-    min-height: 36px;
-    border: 1px solid transparent;
-    position: relative;
-    line-height: $ms-choiceField-field-size;
-    @include padding-left(8px);
-
-    .ms-Label {
-      font-size: $ms-font-size-m;
-      @include padding(0, 0, 0, 26px);
-      display: inline-block;
-    }
-  }
-
-  // The hidden input
-  .ms-ChoiceField-input {
-    position: absolute;
-    opacity: 0;
-    top: 8px
-  }
-
-  // The choiceField container
-  .ms-ChoiceField-field::before {
-    content: '';
+    @include padding(0, 0, 0, 26px);
     display: inline-block;
-    border: 2px solid $ms-color-neutralTertiary;
-    width: $ms-choiceField-field-size;
-    height: $ms-choiceField-field-size;
-    font-weight: normal;
-    position: absolute;
-    box-sizing: border-box;
-    transition-property: background, border, border-color;
-    transition-duration: $ms-choiceField-transition-duration;
-    transition-timing-function: $ms-choiceField-transition-timing;
-    border-radius: 50%;
   }
+}
 
-  // The circle
-  .ms-ChoiceField-field::after {
-    content: '';
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    position: absolute;
-    top: $ms-choiceField-field-size / 2;
-    @include left($ms-choiceField-field-size / 2);
-    bottom: 0;
-    @include right(0);
-    transition-property: top, left, right, width, height;
-    transition-duration: $ms-choiceField-transition-duration-inner;
-    transition-timing-function: $ms-choiceField-transition-timing;
-    box-sizing: border-box;
+// The hidden input
+.input {
+  position: absolute;
+  opacity: 0;
+  top: 8px
+}
+
+// The choiceField container
+.field::before {
+  content: '';
+  display: inline-block;
+  border: 1px solid $ms-color-neutralTertiary;
+  width: $ms-choiceField-field-size;
+  height: $ms-choiceField-field-size;
+  font-weight: normal;
+  position: absolute;
+  box-sizing: border-box;
+  transition-property: border-color;
+  transition-duration: $ms-choiceField-transition-duration;
+  transition-timing-function: $ms-choiceField-transition-timing;
+  border-radius: 50%;
+}
+
+// The circle
+.field::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  position: absolute;
+  top: $ms-choiceField-field-size / 2;
+  @include left($ms-choiceField-field-size / 2);
+  bottom: 0;
+  @include right(0);
+  transition-property: top, left, right, width, height;
+  transition-duration: $ms-choiceField-transition-duration-inner;
+  transition-timing-function: $ms-choiceField-transition-timing;
+  box-sizing: border-box;
 
   @media screen and (-ms-high-contrast: active) {
-      color: $ms-color-contrastBlackDisabled;
+    color: $ms-color-contrastBlackDisabled;
+  }
+
+  @media screen and (-ms-high-contrast: black-on-white) {
+    color: $ms-color-contrastWhiteDisabled;
+  }
+}
+
+// The choiceField field
+.field {
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 8px;
+  position: relative;
+  vertical-align: top;
+  user-select: none;
+
+  &:hover {
+    &::before {
+      border-color: $ms-color-neutralSecondaryAlt;
     }
 
-    @media screen and (-ms-high-contrast: black-on-white) {
-      color: $ms-color-contrastWhiteDisabled;
+    :global(.ms-Label) {
+      color: $ms-color-black;
     }
   }
 
-  // The choiceField field
-  .ms-ChoiceField-field {
-    display: inline-block;
-    cursor: pointer;
-    margin-top: 8px;
-    position: relative;
-    vertical-align: top;
-    user-select: none;
+  &:focus {
+    &::before {
+      border-color: $ms-color-neutralSecondaryAlt;
+    }
 
-    &:hover {
-      &::before {
-        border-color: $ms-color-neutralSecondaryAlt;
+    &.fieldIsDisabled::before {
+      border-color: $ms-color-neutralTertiaryAlt;
+    }
+
+    &.fieldIsChecked::before {
+      border-color: $ms-color-themeDarkAlt;
+    }
+  }
+  &:active {
+    &::before {
+      border-color: $ms-color-neutralSecondaryAlt;
+    }
+
+    :global(.ms-Label) {
+      color: $ms-color-black;
+    }
+  }
+
+  //== State: A choiceField is checked
+  //
+  &.fieldIsChecked {
+    &::before {
+      border: 2px solid $ms-color-themePrimary;
+      background-color: transparent;
+
+      @media screen and (-ms-high-contrast: active) {
+        border-color: $ms-color-contrastBlackSelected;
       }
 
-      .ms-Label {
-        color: $ms-color-black;
+      @media screen and (-ms-high-contrast: black-on-white) {
+        border-color: $ms-color-contrastWhiteSelected;
       }
     }
 
+    &::after {
+      background-color: $ms-color-themePrimary;
+      top: 5px;
+      @include left(5px);
+      width: 10px;
+      height: 10px;
+
+      @media screen and (-ms-high-contrast: active) {
+        background-color: $ms-color-contrastBlackSelected;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        background-color: $ms-color-contrastWhiteSelected;
+      }
+    }
+
+    &:hover,
     &:focus {
       &::before {
-        border-color: $ms-color-neutralSecondaryAlt;
-      }
-
-      &.is-disabled::before {
-        border-color: $ms-color-neutralTertiaryAlt;
-      }
-
-      &.is-checked::before {
-        border-color: $ms-color-themeDarkAlt;
-      }
-    }
-    &:active {
-      &::before {
-        border-color: $ms-color-neutralSecondaryAlt;
-      }
-
-      .ms-Label {
-        color: $ms-color-black;
-      }
-    }
-
-    //== State: A choiceField is checked
-    //
-    &.is-checked {
-      &::before {
-        border: 2px solid $ms-color-themePrimary;
-        background-color: transparent;
-
-        @media screen and (-ms-high-contrast: active) {
-          border-color: $ms-color-contrastBlackSelected;
-        }
-
-        @media screen and (-ms-high-contrast: black-on-white) {
-          border-color: $ms-color-contrastWhiteSelected;
-        }
-      }
-
-      &::after {
-        background-color: $ms-color-themePrimary;
-        top: 5px;
-        @include left(5px);
-        width: 10px;
-        height: 10px;
-
-        @media screen and (-ms-high-contrast: active) {
-          background-color: $ms-color-contrastBlackSelected;
-        }
-
-        @media screen and (-ms-high-contrast: black-on-white) {
-          background-color: $ms-color-contrastWhiteSelected;
-        }
-      }
-
-      &:hover,
-      &:focus {
-        &::before {
-          border-color: $ms-color-themeDarkAlt;
-        }
-      }
-    }
-
-    //== State: A disabled choiceField
-    //
-    &.is-disabled {
-      cursor: default;
-
-      &:hover,
-      &:focus {
-        &::before {
-          border-color: $ms-color-neutralTertiaryAlt;
-        }
-      }
-
-      &::before {
-        background-color: $ms-color-neutralTertiaryAlt;
-        border-color: $ms-color-neutralTertiaryAlt;
-        color: $ms-color-neutralTertiaryAlt;
-
-        @media screen and (-ms-high-contrast: active) {
-          border-color: $ms-color-contrastBlackDisabled;
-        }
-
-        @media screen and (-ms-high-contrast: black-on-white) {
-          border-color: $ms-color-contrastWhiteDisabled;
-        }
-      }
-
-      .ms-Label {
-        color: $ms-color-neutralTertiary;
-
-        @media screen and (-ms-high-contrast: active) {
-          color: $ms-color-contrastBlackDisabled;
-        }
-
-        @media screen and (-ms-high-contrast: black-on-white) {
-          color: $ms-color-contrastWhiteDisabled;
-        }
-      }
-    }
-
-    //== State: A choiceField in focus
-    //
-    &.is-inFocus {
-      &::before {
-        border-color: $ms-color-neutralSecondaryAlt;
-      }
-
-      &.is-disabled::before {
-        border-color: $ms-color-neutralTertiaryAlt;
-      }
-
-      &.is-checked::before {
         border-color: $ms-color-themeDarkAlt;
       }
     }
   }
 
-  .ms-ChoiceField--image {
-    $fieldMinWidth: 164px;
-    $fieldPadding: 20px;
+  //== State: A disabled choiceField
+  //
+  &.fieldIsDisabled {
+    cursor: default;
+
+    &:hover,
+    &:focus {
+      &::before {
+        border-color: $ms-color-neutralTertiaryAlt;
+      }
+    }
+
+    &::before {
+      background-color: $ms-color-neutralTertiaryAlt;
+      border-color: $ms-color-neutralTertiaryAlt;
+      color: $ms-color-neutralTertiaryAlt;
+
+      @media screen and (-ms-high-contrast: active) {
+        border-color: $ms-color-contrastBlackDisabled;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        border-color: $ms-color-contrastWhiteDisabled;
+      }
+    }
+
+    :global(.ms-Label) {
+      color: $ms-color-neutralTertiary;
+
+      @media screen and (-ms-high-contrast: active) {
+        color: $ms-color-contrastBlackDisabled;
+      }
+
+      @media screen and (-ms-high-contrast: black-on-white) {
+        color: $ms-color-contrastWhiteDisabled;
+      }
+    }
+  }
+
+  //== State: A choiceField in focus
+  //
+  &.choiceFieldIsInFocus {
+    &::before {
+      border-color: $ms-color-neutralSecondaryAlt;
+    }
+
+    &.fieldIsDisabled::before {
+      border-color: $ms-color-neutralTertiaryAlt;
+    }
+
+    &.fieldIsChecked::before {
+      border-color: $ms-color-themeDarkAlt;
+    }
+  }
+}
+
+.choiceFieldIsImage, .choiceFieldIsIcon {
+  $fieldPadding: 4px;
+
+  display: inline-flex;
+
+  font-size: 0;
+
+  @include margin(0, 4px, 4px, 0);
+  @include padding-left(0px);
+  @include ms-bgColor-neutralLighter;
+
+  .fieldIsImage, .fieldIsIcon {
+    $radioButtonSpacing: 3px;
+    $radioButtonInnerSize: 5px;
 
     display: inline-block;
+    box-sizing: border-box;
+    min-width: $ms-choiceField-iconField-size;
+    cursor: pointer;
+    padding: $fieldPadding;
+    padding-top: 22px;
+    margin: 0;
+    text-align: center;
+    transition: all $ms-choiceField-transition-duration ease;
+    border: 2px solid transparent;
 
-    font-size: 0;
+    &.fieldIsDisabled {
+      cursor: default;
 
-    @include margin-right(6px);
-    @include padding-left(0px);
-    @include ms-bgColor-neutralLighter;
-
-    .ms-ChoiceField-field--image {
-      display: inline-block;
-
-      box-sizing: border-box;
-      min-width: $fieldMinWidth;
-      cursor: pointer;
-      padding: $fieldPadding $fieldPadding 12px $fieldPadding;
-      text-align: center;
-      transition: all $ms-choiceField-transition-duration ease;
-
-      .ms-ChoiceField-innerField {
-        position: relative;
-
-        .ms-ChoiceField-imageWrapper {
-          transition: opacity $ms-choiceField-transition-duration ease;
-
-          &.is-hidden {
-            position: absolute;
-            @include left(0);
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            opacity: 0;
-          }
-
-          .ms-Image {
-            display: inline-block;
-          }
-        }
-        .ms-ChoiceField-iconWrapper {
-          font-size: $ms-font-size-su;
-          line-height: $ms-font-size-su;
-        }
+      .innerField {
+        opacity: 0.25;
       }
+    }
 
-      .ms-ChoiceField-labelWrapper {
-        display: inline-block;
-        position: relative;
-        margin: 10px 0 0 0;
-        padding: 0 24px;
+    .innerField {
+      position: relative;
+      padding: 0 28px;
 
-        .ms-ChoiceField-icon {
-          display: none;
+      .imageWrapper {
+        padding-bottom: 2px;
+        transition: opacity $ms-choiceField-transition-duration ease;
+
+        &.imageWrapperIsHidden {
           position: absolute;
-          @include left(0);
-          line-height: $ms-font-size-s;
-
-          @include ms-fontSize-l;
-          @include ms-fontColor-themeDark;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          opacity: 0;
         }
 
-        .ms-Label {
+        :global(.ms-Image) {
           display: inline-block;
-          padding: 0;
-          line-height: $ms-font-size-s;
+        }
+      }
+    }
 
-          @include ms-fontWeight-semibold;
-          @include ms-fontColor-neutralPrimary;
+    .labelWrapper {
+      $lineHeight: 16px;
+
+      display: inline-block;
+      position: relative;
+      margin: 4px 0 0 0;
+      height: $lineHeight * 2;
+      line-height: $lineHeight;
+      overflow-y: hidden;
+
+      @include ms-font-m;
+    }
+
+    :global(.ms-Label) {
+      padding: 0;
+    }
+
+    &::before {
+      top: $radioButtonSpacing;
+      @include right($radioButtonSpacing);
+      @include left(initial); // To reset the value of 'left' to its default value, so that 'right' works
+      opacity: 0;
+    }
+
+    &::after {
+      top: $radioButtonSpacing + ($radioButtonInnerSize * 2);
+      @include right($radioButtonSpacing + ($radioButtonInnerSize * 2));
+      @include left(initial); // To reset the value of 'left' to its default value, so that 'right' works
+    }
+
+    &:not(.fieldIsDisabled) {
+      &:hover,
+      &:focus {
+        border-color: $ms-color-neutralTertiaryAlt;
+
+        &::before {
+          opacity: 1;
         }
       }
 
-      &.is-checked {
-        @include ms-bgColor-themeLighter;
 
-        .ms-ChoiceField-labelWrapper .ms-ChoiceField-icon {
-          display: inline-block;
+      &.fieldIsChecked {
+        border-color: $ms-color-themePrimary;
+
+        &::before {
+          opacity: 1;
         }
-        .ms-ChoiceField-iconWrapper {
-          @include ms-fontColor-themeDark;
+
+        &::after {
+          top: $radioButtonSpacing + $radioButtonInnerSize;
+          @include right($radioButtonSpacing + $radioButtonInnerSize);
+        }
+
+        &:hover,
+        &:focus {
+          border-color: $ms-color-themeDark;
+
+          &::before {
+            border-color: $ms-color-themeDark;
+          }
+          &::after {
+            background-color: $ms-color-themeDark;
+          }
         }
       }
     }
   }
+}
 
-  .is-focusVisible .ms-ChoiceField.is-inFocus {
-    border: 1px solid $ms-color-neutralPrimary;
+.choiceFieldIsIcon {
+  $iconSize: 32px;
+
+  height: $ms-choiceField-iconField-size;
+  width: $ms-choiceField-iconField-size;
+
+  .iconWrapper {
+    font-size: $iconSize;
+    line-height: $iconSize;
+    height: $iconSize;
+  }
+
+}
+
+:global(.ms-Fabric.is-focusVisible) .choiceFieldIsInFocus {
+  @include focus-border(0px, $ms-color-neutralPrimary);
+}
+
+:global(.ms-Fabric.is-focusVisible) .choiceFieldIsInFocus{
+  &.choiceFieldIsImage, &.choiceFieldIsIcon {
+    @include focus-border(2px, $ms-color-neutralPrimary, 1px);
   }
 }

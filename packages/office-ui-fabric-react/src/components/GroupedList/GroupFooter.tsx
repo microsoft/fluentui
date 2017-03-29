@@ -1,19 +1,20 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  autobind
+  autobind,
+  css
 } from '../../Utilities';
 import { Link } from '../../Link';
 import { IGroupDividerProps } from './GroupedList.Props';
 import { GroupSpacer } from './GroupSpacer';
-import './GroupFooter.scss';
+const styles: any = require('./GroupFooter.scss');
 
 export class GroupFooter extends BaseComponent<IGroupDividerProps, {}> {
   public render() {
     let { group, groupLevel, showAllLinkText } = this.props;
 
     return group && (
-      <div className='ms-groupFooter'>
+      <div className={ css('ms-groupFooter', styles.root) }>
         { GroupSpacer({ count: groupLevel }) }
         <Link onClick={ this._onSummarizeClick }>{ showAllLinkText }</Link>
       </div>

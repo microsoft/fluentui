@@ -103,6 +103,12 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
   onDismiss?: (ev?: any, dismissAll?: boolean) => void;
 
   /**
+   * Click handler which is invoked if onClick is not passed for individual contextual
+   * menu item
+   */
+  onItemClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) => void;
+
+  /**
    * CSS class to apply to the context menu.
    * @default null
    */
@@ -245,6 +251,12 @@ export interface IContextualMenuItem {
    * @defaultvalue undefined
    */
   className?: string;
+
+  /**
+   * Additional styles to apply to the menu item
+   * @defaultvalue undefined
+   */
+  style?: React.CSSProperties;
 
   /**
    * Optional accessibility label (aria-label) attribute that will be stamped on to the element.

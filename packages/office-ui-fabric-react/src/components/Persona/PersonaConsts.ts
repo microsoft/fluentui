@@ -3,40 +3,42 @@ import {
   PersonaPresence,
   PersonaSize
 } from './Persona.Props';
+let styles: any = require('./Persona.scss');
 
 export const PERSONA_SIZE = {
-  [PersonaSize.tiny]: 'ms-Persona--tiny',
-  [PersonaSize.extraExtraSmall]: 'ms-Persona--xxs',
-  [PersonaSize.extraSmall]: 'ms-Persona--xs',
-  [PersonaSize.small]: 'ms-Persona--sm',
+  [PersonaSize.tiny]: 'ms-Persona--tiny ' + styles.rootIsTiny,
+  [PersonaSize.extraExtraSmall]: 'ms-Persona--xxs ' + styles.rootIsExtraExtraSmall,
+  [PersonaSize.extraSmall]: 'ms-Persona--xs ' + styles.rootIsExtraSmall,
+  [PersonaSize.small]: 'ms-Persona--sm ' + styles.rootIsSmall,
   [PersonaSize.regular]: '',
-  [PersonaSize.large]: 'ms-Persona--lg',
-  [PersonaSize.extraLarge]: 'ms-Persona--xl'
+  [PersonaSize.large]: 'ms-Persona--lg ' + styles.rootIsLarge,
+  [PersonaSize.extraLarge]: 'ms-Persona--xl ' + styles.rootIsExtraLarge,
+  [PersonaSize.size28]: 'ms-Persona--28 ' + styles.rootIs28
 };
 
 export const PERSONA_PRESENCE = {
-  [PersonaPresence.offline]: 'ms-Persona--offline',
-  [PersonaPresence.online]: 'ms-Persona--online',
-  [PersonaPresence.away]: 'ms-Persona--away',
-  [PersonaPresence.dnd]: 'ms-Persona--dnd',
-  [PersonaPresence.blocked]: 'ms-Persona--blocked',
-  [PersonaPresence.busy]: 'ms-Persona--busy'
+  [PersonaPresence.offline]: 'ms-Persona--offline ' + styles.rootIsOffline,
+  [PersonaPresence.online]: 'ms-Persona--online ',
+  [PersonaPresence.away]: 'ms-Persona--away ' + styles.rootIsAway,
+  [PersonaPresence.dnd]: 'ms-Persona--dnd ' + styles.rootIsDoNotDisturb,
+  [PersonaPresence.blocked]: 'ms-Persona--blocked ' + styles.rootIsBlocked,
+  [PersonaPresence.busy]: 'ms-Persona--busy ' + styles.rootIsBusy
 };
 
 export const PERSONA_INITIALS_COLOR = {
-  [PersonaInitialsColor.lightBlue]: 'ms-Persona-initials--lightBlue',
-  [PersonaInitialsColor.blue]: 'ms-Persona-initials--blue',
-  [PersonaInitialsColor.darkBlue]: 'ms-Persona-initials--darkBlue',
-  [PersonaInitialsColor.teal]: 'ms-Persona-initials--teal',
-  [PersonaInitialsColor.lightGreen]: 'ms-Persona-initials--lightGreen',
-  [PersonaInitialsColor.green]: 'ms-Persona-initials--green',
-  [PersonaInitialsColor.darkGreen]: 'ms-Persona-initials--darkGreen',
-  [PersonaInitialsColor.lightPink]: 'ms-Persona-initials--lightPink',
-  [PersonaInitialsColor.pink]: 'ms-Persona-initials--pink',
-  [PersonaInitialsColor.magenta]: 'ms-Persona-initials--magenta',
-  [PersonaInitialsColor.purple]: 'ms-Persona-initials--purple',
-  [PersonaInitialsColor.black]: 'ms-Persona-initials--black',
-  [PersonaInitialsColor.orange]: 'ms-Persona-initials--orange',
-  [PersonaInitialsColor.red]: 'ms-Persona-initials--red',
-  [PersonaInitialsColor.darkRed]: 'ms-Persona-initials--darkRed'
+  [PersonaInitialsColor.lightBlue]: 'ms-Persona-initials--lightBlue ' + styles.initialsIsLightBlue,
+  [PersonaInitialsColor.blue]: 'ms-Persona-initials--blue ' + styles.initialsIsBlue,
+  [PersonaInitialsColor.darkBlue]: 'ms-Persona-initials--darkBlue ' + styles.initialsIsDarkBlue,
+  [PersonaInitialsColor.teal]: 'ms-Persona-initials--teal ' + styles.initialsIsTeal,
+  [PersonaInitialsColor.lightGreen]: 'ms-Persona-initials--lightGreen ' + styles.initialsIsLightGreen,
+  [PersonaInitialsColor.green]: 'ms-Persona-initials--green ' + styles.initialsIsGreen,
+  [PersonaInitialsColor.darkGreen]: 'ms-Persona-initials--darkGreen ' + styles.initialsIsDarkGreen,
+  [PersonaInitialsColor.lightPink]: 'ms-Persona-initials--lightPink ' + styles.initialsIsLightPink,
+  [PersonaInitialsColor.pink]: 'ms-Persona-initials--pink ' + styles.initialsIsPink,
+  [PersonaInitialsColor.magenta]: 'ms-Persona-initials--magenta ' + styles.initialsIsMagenta,
+  [PersonaInitialsColor.purple]: 'ms-Persona-initials--purple ' + styles.initialsIsPurple,
+  [PersonaInitialsColor.black]: 'ms-Persona-initials--black ' + styles.initialsIsBlack,
+  [PersonaInitialsColor.orange]: 'ms-Persona-initials--orange ' + styles.initialsIsGreen,
+  [PersonaInitialsColor.red]: 'ms-Persona-initials--red ' + styles.initialsIsRed,
+  [PersonaInitialsColor.darkRed]: 'ms-Persona-initials--darkRed ' + styles.initialsIsDarkRed
 };

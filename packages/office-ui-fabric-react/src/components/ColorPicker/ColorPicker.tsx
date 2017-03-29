@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { autobind } from '../../Utilities';
+import { autobind, css } from '../../Utilities';
 import { IColorPickerProps } from './ColorPicker.Props';
 import { TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle';
@@ -12,7 +12,7 @@ import {
   updateH,
   updateSV
 } from './colors';
-import './ColorPicker.scss';
+const styles: any = require('./ColorPicker.scss');
 
 export interface IColorPickerState {
   isOpen: boolean;
@@ -50,11 +50,11 @@ export class ColorPicker extends React.Component<IColorPickerProps, IColorPicker
     let { color } = this.state;
 
     return (
-      <div className='ms-ColorPicker'>
-        <div className='ms-ColorPicker-panel'>
+      <div className={ css('ms-ColorPicker', styles.root) }>
+        <div className={ css('ms-ColorPicker-panel', styles.panel) }>
           <ColorRectangle color={ color } onSVChanged={ this._onSVChanged } />
           <ColorSlider
-            className='is-hue'
+            className={ css('is-hue', styles.colorSliderIsHue) }
             minValue={ 0 }
             maxValue={ MAX_COLOR_HUE }
             initialValue={ color.h }
@@ -62,7 +62,7 @@ export class ColorPicker extends React.Component<IColorPickerProps, IColorPicker
           />
           { !this.props.alphaSliderHidden && (
             <ColorSlider
-              className='is-alpha'
+              className={ css('is-alpha', styles.colorSliderIsAlpha) }
               overlayStyle={ { background: `linear-gradient(to right, transparent 0, ${color.str} 100%)` } }
               minValue={ 0 }
               maxValue={ 100 }
@@ -82,12 +82,26 @@ export class ColorPicker extends React.Component<IColorPickerProps, IColorPicker
             </thead>
             <tbody>
               <tr>
-                <td><TextField className='ms-ColorPicker-input' value={ color.hex } /></td>
-                <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ String(color.r) } /></td>
-                <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ String(color.g) } /></td>
-                <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ String(color.b) } /></td>
+                <td>
+                  <TextField className={ css('ms-ColorPicker-input', styles.input) } value={ color.hex } />
+                </td>
+                <td style={ { width: '18%' } }>
+                  <TextField
+                    className={ css('ms-ColorPicker-input', styles.input) }
+                    value={ String(color.r) }
+                  />
+                </td>
+                <td style={ { width: '18%' } }>
+                  <TextField className={ css('ms-ColorPicker-input', styles.input) } value={ String(color.g) } />
+                </td>
+                <td style={ { width: '18%' } }>
+                  <TextField className={ css('ms-ColorPicker-input', styles.input) } value={ String(color.b) } />
+                </td>
                 { !this.props.alphaSliderHidden && (
-                  <td style={ { width: '18%' } }><TextField className='ms-ColorPicker-input' value={ String(color.a) } /></td>) }
+                  <td style={ { width: '18%' } }>
+                    <TextField className={ css('ms-ColorPicker-input', styles.input) } value={ String(color.a) } />
+                  </td>
+                ) }
               </tr>
             </tbody>
           </table>

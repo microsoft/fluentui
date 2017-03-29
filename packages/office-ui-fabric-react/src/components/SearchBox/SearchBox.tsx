@@ -10,6 +10,7 @@ import {
   KeyCodes
 } from '../../Utilities';
 import './SearchBox.scss';
+const styles: any = require('./SearchBox.scss');
 
 export interface ISearchBoxState {
   value?: string;
@@ -27,11 +28,6 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
 
   public constructor(props: ISearchBoxProps) {
     super(props);
-
-    // Handle deprecated prop
-    if (this.props.onChanged) {
-      this.props.onChange = this.props.onChanged;
-    }
 
     this.state = {
       value: props.value || '',
@@ -51,31 +47,30 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   public render() {
     let { labelText, className } = this.props;
     let { value, hasFocus, id } = this.state;
-
     return (
       <div
         ref={ this._resolveRef('_rootElement') }
-        className={ css('ms-SearchBox', className, {
-          'is-active': hasFocus,
-          'can-clear': value.length > 0
+        className={ css('ms-SearchBox', className, styles.root, {
+          ['is-active ' + styles.rootIsActive]: hasFocus,
+          ['can-clear ' + styles.rootCanClear]: value.length > 0,
         }) }
         { ...{ onFocusCapture: this._onFocusCapture } }
-        >
-        <i className='ms-SearchBox-icon ms-Icon ms-Icon--Search'></i>
+      >
+        <i className={ css('ms-SearchBox-icon', 'ms-Icon', 'ms-Icon--Search', styles.icon) }></i>
         <input
           id={ id }
-          className='ms-SearchBox-field'
+          className={ css('ms-SearchBox-field', styles.field) }
           placeholder={ labelText }
           onChange={ this._onInputChange }
           onKeyDown={ this._onKeyDown }
           value={ value }
           ref={ this._resolveRef('_inputElement') }
-          />
+        />
         <div
-          className='ms-SearchBox-clearButton'
+          className={ css('ms-SearchBox-clearButton', styles.clearButton) }
           onClick={ this._onClearClick }
-          >
-          <i className='ms-Icon ms-Icon--Clear' />
+        >
+          <i className={ css('ms-Icon', 'ms-Icon--Clear') } />
         </div>
       </div>
     );
@@ -135,7 +130,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   }
 
   @autobind
-  private _onInputChange(ev: React.KeyboardEvent<HTMLInputElement>) {
+  private _onInputChange(ev: React.ChangeEvent<HTMLInputElement>) {
     this.setState({
       value: this._inputElement.value
     });
@@ -152,7 +147,12 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
   }
 
   private _callOnChange(newValue: string): void {
-    let { onChange } = this.props;
+    let { onChange, onChanged } = this.props;
+
+    // Call @deprecated method.
+    if (onChanged) {
+      onChanged(newValue);
+    }
 
     if (onChange) {
       onChange(newValue);

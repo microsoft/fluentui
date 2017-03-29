@@ -15,7 +15,7 @@ import {
   KeyCodes,
   css
 } from '../../Utilities';
-import './DatePicker.scss';
+const styles: any = require('./DatePicker.scss');
 
 export interface IDatePickerState {
   /** The currently focused date in the drop down, but not necessarily selected */
@@ -142,14 +142,14 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
   }
 
   public render() {
-    let rootClass = 'ms-DatePicker';
     let { firstDayOfWeek, strings, label, isRequired, ariaLabel, placeholder, allowTextInput } = this.props;
     let { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
 
     return (
-      <div className={ rootClass } ref='root'>
+      <div className={ css('ms-DatePicker', styles.root) } ref='root'>
         <div ref={ (c): HTMLElement => this._datepicker = c }>
           <TextField
+            className={ styles.textField }
             ariaLabel={ ariaLabel }
             aria-haspopup='true'
             required={ isRequired }
@@ -163,7 +163,8 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
             placeholder={ placeholder }
             iconClass={ css(
               'ms-Icon ms-Icon--Calendar',
-              label ? 'ms-DatePicker-event--with-label' : 'ms-DatePicker-event--without-label'
+              label ? 'ms-DatePicker-event--with-label' : 'ms-DatePicker-event--without-label',
+              label ? styles.eventWithLabel : styles.eventWithoutLabel
             ) }
             readOnly={ !allowTextInput }
             value={ formattedDate }
@@ -172,14 +173,14 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
         { isDatePickerShown && (
           <Callout
             isBeakVisible={ false }
-            className='ms-DatePicker-callout'
+            className={ css('ms-DatePicker-callout') }
             gapSpace={ 0 }
             doNotLayer={ false }
             targetElement={ this._datepicker }
             directionalHint={ DirectionalHint.bottomLeftEdge }
             onDismiss={ this._calendarDismissed }
             onPositioned={ this._onCalloutPositioned }
-            >
+          >
             <Calendar
               onSelectDate={ this._onSelectDate }
               onDismiss={ this._calendarDismissed }
@@ -188,7 +189,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
               firstDayOfWeek={ firstDayOfWeek }
               strings={ strings }
               ref={ this._resolveRef('_calendar') }
-              >
+            >
             </Calendar>
           </Callout>
         ) }

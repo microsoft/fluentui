@@ -17,8 +17,8 @@ import {
   IDragDropOptions,
 } from './../../utilities/dragdrop/interfaces';
 import { IViewport } from '../../utilities/decorators/withViewport';
+const styles: any = require('./DetailsRow.scss');
 import { IDisposable } from '@uifabric/utilities';
-import './DetailsRow.scss';
 
 export interface IDetailsRowProps extends React.Props<DetailsRow> {
   item: any;
@@ -118,7 +118,7 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
       }
 
       if (this.props.dragDropHelper) {
-        this.props.dragDropHelper.subscribe(this.refs.root, this._events, this._getRowDragDropOptions());
+        this._dragDropSubscription = this.props.dragDropHelper.subscribe(this.refs.root, this._events, this._getRowDragDropOptions());
       }
     }
 
@@ -188,15 +188,16 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
         ref='root'
         role='row'
         aria-label={ ariaLabel }
-        className={ css('ms-DetailsRow ms-u-fadeIn400', droppingClassName, {
-          'is-contentUnselectable': isContentUnselectable,
-          'is-selected': isSelected,
-          'is-check-visible': checkboxVisibility === CheckboxVisibility.always
+        className={ css('ms-DetailsRow ms-u-fadeIn400', styles.root, droppingClassName, {
+          ['is-contentUnselectable ' + styles.rootIsContentUnselectable]: isContentUnselectable,
+          ['is-selected ' + styles.rootIsSelected]: isSelected,
+          ['is-check-visible ' + styles.rootIsCheckVisible]: checkboxVisibility === CheckboxVisibility.always
         }) }
         data-is-focusable={ true }
         data-selection-index={ itemIndex }
         data-item-index={ itemIndex }
         data-is-draggable={ isDraggable }
+        draggable= { isDraggable }
         data-automationid='DetailsRow'
         style={ { minWidth: viewport ? viewport.width : 0 } }
         aria-selected={ isSelected }
@@ -224,7 +225,10 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
           ) }
 
           { columnMeasureInfo && (
-            <span className='ms-DetailsRow-cellMeasurer ms-DetailsRow-cell' ref='cellMeasurer'>
+            <span
+              className={ css('ms-DetailsRow-cellMeasurer ms-DetailsRow-cell', styles.cellMeasurer, styles.cell) }
+              ref='cellMeasurer'
+            >
               <DetailsRowFields
                 columns={ [columnMeasureInfo.column] }
                 item={ item }
@@ -304,8 +308,11 @@ export class DetailsRow extends React.Component<IDetailsRowProps, IDetailsRowSta
       canDrag: dragDropEvents.canDrag,
       canDrop: dragDropEvents.canDrop,
       onDragStart: dragDropEvents.onDragStart,
-      updateDropState: this._updateDroppingState
+      updateDropState: this._updateDroppingState,
+      onDrop: dragDropEvents.onDrop,
+      onDragEnd: dragDropEvents.onDragEnd,
     };
+
     return options;
   }
 

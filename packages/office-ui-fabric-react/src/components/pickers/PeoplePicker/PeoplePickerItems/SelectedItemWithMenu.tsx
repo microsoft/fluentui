@@ -1,11 +1,13 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
+import { css } from '../../../../Utilities';
 import { IPeoplePickerItemWithMenuProps } from './PeoplePickerItem.Props';
 import { Persona, PersonaPresence } from '../../../../Persona';
 import { ContextualMenu, DirectionalHint } from '../../../../ContextualMenu';
-import { Button, ButtonType } from '../../../../Button';
+import { IconButton } from '../../../../Button';
 import { FocusZone } from '../../../../FocusZone';
+const styles: any = require('./PickerItemsDefault.scss');
 
 export interface IPeoplePickerItemState {
   contextualMenuVisible: boolean;
@@ -30,24 +32,23 @@ export class SelectedItemWithMenu extends React.Component<IPeoplePickerItemWithM
       onRemoveItem
     } = this.props;
     return (
-      <div data-is-focusable={ true } className='ms-PickerItem-container'>
-        <FocusZone className='ms-PickerPersona-container' >
-          <div className='ms-PickerItem-content'>
+      <div data-is-focusable={ true } className={ css('ms-PickerItem-container', styles.itemContainer) }>
+        <FocusZone className={ css('ms-PickerPersona-container', styles.personaContainer) } >
+          <div className={ css('ms-PickerItem-content', styles.itemContent) }>
             <Persona
               { ...item }
               presence={ item.presence !== undefined ? item.presence : PersonaPresence.none }
             />
           </div>
-          <div ref='ellipsisRef' className='ms-PickerItem-content'>
-            <Button
+          <div ref='ellipsisRef' className={ css('ms-PickerItem-content', styles.itemContent) }>
+            <IconButton
               icon={ 'More' }
-              buttonType={ ButtonType.icon } onClick={ this.onContextualMenu }
+              onClick={ this.onContextualMenu }
             />
           </div>
-          <div className='ms-PickerItem-content'>
-            <Button
+          <div className={ css('ms-PickerItem-content', styles.itemContent) }>
+            <IconButton
               icon={ 'Cancel' }
-              buttonType={ ButtonType.icon }
               onClick={ onRemoveItem }
             />
           </div>
