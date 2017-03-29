@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BreadcrumbPage } from 'fabric-examples/lib/pages/BreadcrumbPage/BreadcrumbPage';
+import { BreadcrumbPage } from 'office-ui-fabric-react/lib/components/Breadcrumb/BreadcrumbPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

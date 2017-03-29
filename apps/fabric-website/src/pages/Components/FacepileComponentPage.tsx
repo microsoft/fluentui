@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FacepilePage } from 'fabric-examples/lib/pages/FacepilePage/FacepilePage';
+import { FacepilePage } from 'office-ui-fabric-react/lib/components/Facepile/FacepilePage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

@@ -22,6 +22,11 @@
     "export-name": false,
     "trailing-comma": [
       false
-    ]
+    ],
+    "whitespace": [
+      false
+    ],
+    "no-trailing-whitespace": false,
+    "no-switch-case-fall-through": false
   }
 }
