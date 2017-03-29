@@ -7,6 +7,7 @@ let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlug
 let isProduction = process.argv.indexOf('--production') > -1;
 let isDogfood = process.argv.indexOf('--dogfood') > -1;
 let path = require('path');
+const version = require('./package.json').version;
 
 let publicPath = 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/';
 
@@ -41,8 +42,8 @@ function createConfig(isProduction, publicPath) {
     output: {
       path: path.join(__dirname, '/dist'),
       publicPath: publicPath,
-      filename: `[name]${minFileNamePart}.js?date=` + date,
-      chunkFilename: `fabric-site-[name]${minFileNamePart}.js?date=` + date
+      filename: `[name]${minFileNamePart}.js`,
+      chunkFilename: `fabric-site-[name]-${version}${minFileNamePart}.js`
     },
 
     devServer: {
