@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 29 Mar 2017 18:15:29 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Mar 2017 19:43:19 GMT and should not be manually modified.
+
+## 2.10.3
+Wed, 29 Mar 2017 19:43:19 GMT
+
+### Patches
+
+- DocumentCard: Persona import was not AMD friendly.
 
 ## 2.10.2
 Wed, 29 Mar 2017 18:15:29 GMT
