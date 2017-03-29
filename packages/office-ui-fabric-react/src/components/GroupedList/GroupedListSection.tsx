@@ -301,7 +301,9 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       onRenderCell,
       selection,
       selectionMode,
-      viewport
+      viewport,
+      onRenderGroupHeader,
+      onRenderGroupFooter
     } = this.props;
 
     return (!subGroup || subGroup.count > 0) ? (
@@ -323,6 +325,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         selection={ selection }
         selectionMode={ selectionMode }
         viewport={ viewport }
+        onRenderGroupHeader={ onRenderGroupHeader }
+        onRenderGroupFooter={ onRenderGroupFooter }
       />
     ) : null;
   }
