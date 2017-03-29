@@ -3,6 +3,7 @@ import {
   BaseComponent,
   KeyCodes,
   autobind,
+  elementContains,
   findScrollableParent,
   getParent,
   getDocument,
@@ -65,6 +66,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _isShiftPressed: boolean;
   private _isMetaPressed: boolean;
   private _shouldIgnoreFocus: boolean;
+  private _shouldHandleFocus: boolean;
 
   public componentDidMount() {
     let win = getWindow(this.refs.root);
@@ -83,10 +85,11 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         onKeyDown={ this._onKeyDown }
         onMouseDown={ this._onMouseDown }
         onClick={ this._onClick }
+
         onDoubleClick={ this._onDoubleClick }
         onContextMenu={ this._onContextMenu }
         { ...{
-          onMouseDownCapture: this.ignoreNextFocus,
+          onMouseDownCapture: this._onMouseDownCapture,
           onFocusCapture: this._onFocus
         } }
       >
@@ -106,6 +109,13 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     this._shouldIgnoreFocus = true;
   }
 
+  @autobind
+  private _onMouseDownCapture(ev) {
+    if (document.activeElement !== ev.target && !elementContains(document.activeElement as HTMLElement, ev.target)) {
+      this.ignoreNextFocus();
+    }
+  }
+
   /**
    * When we focus an item, for single/multi select scenarios, we should try to select it immediately
    * as long as the focus did not originate from a mouse down/touch event. For those cases, we handle them
@@ -117,8 +127,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     let { selection, selectionMode } = this.props;
     let isToggleModifierPressed = this._isCtrlPressed || this._isMetaPressed;
 
-    if (this._shouldIgnoreFocus || selectionMode === SelectionMode.none) {
-      this._shouldIgnoreFocus = false;
+    if (this._shouldIgnoreFocus || !this._shouldHandleFocus || selectionMode === SelectionMode.none) {
+      this._shouldIgnoreFocus = this._shouldHandleFocus = false;
       return;
     }
 
@@ -312,15 +322,21 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         } else if (target === itemRoot) {
           if (ev.which === KeyCodes.enter) {
             this._onInvokeClick(ev, index);
+            ev.preventDefault();
+            return;
           } else if (ev.which === KeyCodes.space) {
             this._onToggleClick(ev, index);
             ev.preventDefault();
+            return;
           }
           break;
         }
 
         target = getParent(target);
       }
+
+      // A key was pressed while an item in this zone was focused.
+      this._shouldHandleFocus = true;
     }
   }
 
