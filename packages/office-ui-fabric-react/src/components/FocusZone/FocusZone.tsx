@@ -261,6 +261,8 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       if (!innerZone || !innerZone.focus()) {
         return;
       }
+    } else if (ev.altKey) {
+      return;
     } else {
       switch (ev.which) {
         case KeyCodes.space:
