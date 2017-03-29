@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 28 Mar 2017 16:11:18 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Mar 2017 03:18:50 GMT and should not be manually modified.
+
+## 2.10.0
+Wed, 29 Mar 2017 03:18:50 GMT
+
+### Minor changes
+
+- ChoiceGroup: adding `selectedKey` and `defaultSelectedKey` to provide a way to control selection, other than to micromanage the `checked` boolean in individual options.
+- Persona: Added a 28px size
+
+### Patches
+
+- DocumentCardActivity: Changes made to fix the default color to Persona
 
 ## 2.9.0
 Tue, 28 Mar 2017 16:11:18 GMT
