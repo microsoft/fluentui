@@ -10,7 +10,7 @@ import { Icon } from '../../Icon';
 import { GroupSpacer } from './GroupSpacer';
 import { Spinner } from '../../Spinner';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-const styles: any = require('./GroupHeader.scss');
+import styles = require('./GroupHeader.scss');
 
 export interface IGroupHeaderState {
   isCollapsed: boolean;
