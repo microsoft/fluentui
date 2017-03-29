@@ -4,11 +4,6 @@
       "packageName": "office-ui-fabric-react",
       "comment": "Panel: adding `customWidth` property and PanelType.custom value to support custom panel widths.",
       "type": "minor"
-    },
-    {
-      "comment": "",
-      "packageName": "@uifabric/utilities",
-      "type": "none"
     }
   ],
   "email": "gabade@microsoft.com"
