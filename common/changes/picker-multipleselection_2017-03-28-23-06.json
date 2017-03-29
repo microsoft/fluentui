@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "PeoplePicker- Adding changes for multiple selection onChange ",
+      "comment": "PeoplePicker: Adding changes for multiple selection onChange ",
       "type": "patch"
     }
   ],
