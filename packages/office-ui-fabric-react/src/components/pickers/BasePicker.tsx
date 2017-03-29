@@ -376,7 +376,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
     this.selection.setItems(newItems);
 
-    this.setState({ items: newItems }, () => this.resetFocus(index));
+    this.setState({ items: newItems }, () => {
+      this.resetFocus(index);
+      this.onChange();
+    });
   }
 
   // This is protected because we may expect the backspace key to work differently in a different kind of picker.
