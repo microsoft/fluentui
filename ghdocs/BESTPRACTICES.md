@@ -45,8 +45,7 @@ interface IButton {
 
 ### Provide explicit return types for methods declared in .Props.ts
 
-Instead of
-
+Bad:
 ```typescript
 interface IButton {
   /**
@@ -56,8 +55,7 @@ interface IButton {
 }
 ```
 
-explicitly specify the return type of `focus`:
-
+Good: explicitly specify the return type of `focus`:
 ```typescript
 interface IButton {
   /**
