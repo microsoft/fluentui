@@ -140,7 +140,7 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /** Optional callback to get the aria-label string for a given item. */
   getRowAriaLabel?: (item: any) => string;
 
-  /** Optional callback to get the item key that will be used in the selection. */
+  /** Optional callback to get the item key, to be used in the selection and on render. */
   getKey?: (item: any, index?: number) => string;
 
   /** A text summary of the table set via aria-label. */

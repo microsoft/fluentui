@@ -273,6 +273,12 @@ export const AppState: IAppState = {
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/ProgressIndicatorComponentPage').ProgressIndicatorComponentPage))
         },
         {
+          title: 'Rating',
+          url: '#/components/rating',
+          component: () => <LoadingComponent title='Rating' />,
+          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/RatingComponentPage').RatingComponentPage))
+        },
+        {
           title: 'SearchBox',
           url: '#/components/searchbox',
           component: () => <LoadingComponent title='SearchBox' />,
