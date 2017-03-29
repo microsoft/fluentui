@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "GroupedList: Allow header/footer customization of nested groups",
+      "type": "patch"
+    }
+  ],
+  "email": "cschleid@microsoft.com"
+}
