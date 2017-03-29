@@ -5,11 +5,14 @@ let webpackTaskResources = require('@microsoft/web-library-build').webpack.resou
 let webpack = webpackTaskResources.webpack;
 let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 let isProduction = process.argv.indexOf('--production') > -1;
+let isDogfood = process.argv.indexOf('--dogfood') > -1;
 let path = require('path');
 
 let publicPath = 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/';
 
-if (!isProduction) {
+if (isDogfood) {
+  publicPath = 'https://static2df.sharepointonline.com/files/fabric/fabric-website/dist/';
+} else if (!isProduction) {
   publicPath = "/dist/";
 }
 
