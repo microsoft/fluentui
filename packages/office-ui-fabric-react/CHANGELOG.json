@@ -2,6 +2,46 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "2.10.1",
+      "tag": "office-ui-fabric-react_v2.10.1",
+      "date": "Wed, 29 Mar 2017 15:10:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Aniket Handa <atneik@users.noreply.github.com>",
+            "commit": "9948d0be050b5a760c5ead7b8b5d88181182487d",
+            "comment": "ChoiceGroup: Update styles"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.10.0",
+      "tag": "office-ui-fabric-react_v2.10.0",
+      "date": "Wed, 29 Mar 2017 03:18:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "59341f74c11434ded725c28ea25be5dcc4fb0be9",
+            "comment": "ChoiceGroup: adding `selectedKey` and `defaultSelectedKey` to provide a way to control selection, other than to micromanage the `checked` boolean in individual options."
+          },
+          {
+            "author": "lju <lydiautkin@outlook.com>",
+            "commit": "0c124e9838515aec76aeb23bd69afdff99881955",
+            "comment": "Persona: Added a 28px size"
+          }
+        ],
+        "patch": [
+          {
+            "author": "gitjain <alreut@yahoo.com>",
+            "commit": "9faf8799caee921e2b89ad7194ed934bd5f42a0c",
+            "comment": "DocumentCardActivity: Changes made to fix the default color to Persona"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.9.0",
       "tag": "office-ui-fabric-react_v2.9.0",
       "date": "Tue, 28 Mar 2017 16:11:18 GMT",
