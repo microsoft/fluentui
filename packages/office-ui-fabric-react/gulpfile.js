@@ -48,10 +48,10 @@ build.postCopy.setConfig({
   shouldFlatten: false,
   copyTo: {
     [path.join(distFolder, 'sass')]: [
-      'node_modules/office-ui-fabric-core/dist/sass/*.*'
+      'node_modules/office-ui-fabric-core/dist/sass/**/*.*'
     ],
     [path.join(distFolder, 'css')]: [
-      'node_modules/office-ui-fabric-core/dist/css/*.*'
+      'node_modules/office-ui-fabric-core/dist/css/**/*.*'
     ],
     [libFolder]: [
       'src/**/*.Example.tsx',
