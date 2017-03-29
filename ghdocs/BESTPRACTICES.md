@@ -43,6 +43,30 @@ interface IButton {
 }
 ```
 
+### Provide explicit return types for methods declared in .Props.ts
+
+Instead of
+
+```typescript
+interface IButton {
+  /**
+   * Sets focus to the button element.
+   */
+  focus();
+}
+```
+
+explicitly specify the return type of `focus`:
+
+```typescript
+interface IButton {
+  /**
+   * Sets focus to the button element.
+   */
+  focus(): void;
+}
+```
+
 ## Naming guidance
 
 ### Flags
