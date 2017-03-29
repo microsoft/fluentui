@@ -292,15 +292,12 @@ export class List extends BaseComponent<IListProps, IListState> {
     let pageElements = [];
     let divProps = getNativeProps(this.props, divProperties);
 
-    // assign list if no role
-    role = role || 'list';
-
     for (let i = 0; i < pages.length; i++) {
       pageElements.push(this._renderPage(pages[i]));
     }
 
     return (
-      <div ref='root' { ...divProps } role={ role } className={ css('ms-List', className) } >
+      <div ref='root' { ...divProps } role={ role || 'list' } className={ css('ms-List', className) } >
         <div ref='surface' className='ms-List-surface'>
           { pageElements }
         </div>
