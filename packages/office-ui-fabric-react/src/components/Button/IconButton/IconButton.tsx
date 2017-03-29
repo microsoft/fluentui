@@ -17,22 +17,18 @@ export const IconButtonClassNames = {
 
 @withTheme('IconButton')
 export class IconButton extends BaseComponent<IButtonProps, {}> {
+  /**
+   * Tell BaseComponent to bypass resolution of componentRef.
+   */
+  protected _shouldUpdateComponentRef = false;
+
   public render() {
     return (
       <BaseButton
         classNames={ IconButtonClassNames }
-        onRenderLabel={ this._nullRender }
-        onRenderDescription={ this._nullRender }
+        onRenderLabel={ this._onRenderNull }
+        onRenderDescription={ this._onRenderNull }
         { ...this.props } />
     );
   }
-
-  private _nullRender() {
-    return null;
-  }
-
-  /**
-   * We override this to let the BaseButton receive innerRef and resolve it.
-   */
-  protected _updateInnerRef(currentProps: IBaseProps<IButtonProps>, newProps: IBaseProps<IButtonProps> = {}) { }
 }

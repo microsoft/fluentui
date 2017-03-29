@@ -23,7 +23,7 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
    * @type {boolean}
    * @memberOf BaseComponent
    */
-  protected _resolveComponentRef: boolean;
+  protected _shouldUpdateComponentRef: boolean;
 
   private __async: Async;
   private __events: EventGroup;
@@ -39,7 +39,7 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
   constructor(props?: P, deprecatedProps?: { [propName: string]: string }) {
     super(props);
 
-    this._resolveComponentRef = true;
+    this._shouldUpdateComponentRef = true;
 
     if (deprecatedProps) {
       for (let propName in deprecatedProps) {
@@ -163,7 +163,7 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
    * @memberOf BaseComponent
    */
   protected _updateComponentRef(currentProps: IBaseProps<P>, newProps: IBaseProps<P> = {}) {
-    if (this._resolveComponentRef &&
+    if (this._shouldUpdateComponentRef &&
       ((!currentProps && newProps.componentRef) ||
         (currentProps && currentProps.componentRef !== newProps.componentRef))) {
 
@@ -175,6 +175,14 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
         newProps.componentRef(this);
       }
     }
+  }
+
+  /**
+   * Standard method for rendering null. Useful to wire up onRender methods to a function ref that
+   * never changes.
+   */
+  protected _onRenderNull(): JSX.Element | null {
+    return null;
   }
 }
 

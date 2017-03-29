@@ -21,9 +21,9 @@ export const CompoundButtonClassNames = {
 @withTheme('CompoundButton')
 export class CompoundButton extends BaseComponent<IButtonProps, {}> {
   /**
-   * Set this BaseComponent._resolveComponentRef to false, bypassing resolution of componentRef.
+   * Tell BaseComponent to bypass resolution of componentRef.
    */
-  protected _resolveComponentRef = false;
+  protected _shouldUpdateComponentRef = false;
 
   public render() {
     return (

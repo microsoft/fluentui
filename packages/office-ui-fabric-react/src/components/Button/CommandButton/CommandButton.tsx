@@ -22,20 +22,16 @@ export const CommandButtonClassNames: IButtonClassNames = {
 export class CommandButton extends BaseComponent<IButtonProps, {}> {
 
   /**
-   * Set this BaseComponent._resolveComponentRef to false, bypassing resolution of componentRef.
+   * Tell BaseComponent to bypass resolution of componentRef.
    */
-  protected _resolveComponentRef = false;
+  protected _shouldUpdateComponentRef = false;
 
   public render() {
     return (
       <BaseButton
         classNames={ CommandButtonClassNames }
-        onRenderDescription={ this._nullRender }
+        onRenderDescription={ this._onRenderNull }
         { ...this.props } />
     );
-  }
-
-  private _nullRender() {
-    return null;
   }
 }

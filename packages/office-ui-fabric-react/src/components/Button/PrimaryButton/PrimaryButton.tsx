@@ -22,13 +22,13 @@ export class PrimaryButton extends BaseComponent<IButtonProps, {}> {
   /**
    * Set this BaseComponent._resolveComponentRef to false, bypassing resolution of componentRef.
    */
-
-  protected _resolveComponentRef = false;
+  protected _shouldUpdateComponentRef = false;
 
   public render() {
     return (
       <BaseButton
         classNames={ CLASS_NAMES }
+        onRenderDescription={ this._onRenderNull }
         { ...this.props }
       />
     );
