@@ -7,7 +7,7 @@ import TodoForm from './TodoForm';
 import TodoTabs from './TodoTabs';
 
 import styles = require('./Todo.module.scss');
-import strings from './../strings';
+import strings from '../strings';
 
 /**
  * Todo component is the top level react component of this web part.
@@ -42,12 +42,12 @@ export default class Todo extends React.Component<ITodoProps, ITodoState> {
         </div>
         <TodoForm
           onSubmit={ this.props.dataProvider.createItem }
-          />
+        />
         <TodoTabs
           items={ this.state.items }
           onToggleComplete={ this.props.dataProvider.toggleComplete }
           onDeleteItem={ this.props.dataProvider.deleteItem }
-          />
+        />
         { this._renderFetchingTasksSpinner() }
       </div>
     );
