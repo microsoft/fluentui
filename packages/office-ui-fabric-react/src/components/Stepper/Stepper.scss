@@ -1,0 +1,30 @@
+:global {
+
+  .arrowBox {
+    display: block;
+    float: left;
+    height: 20px;
+    border:1px solid #e1e1e1;
+  }
+
+  .textField {
+    display: block;
+    float: left;
+    height: 16px;
+    width: 48px;
+    border:1px solid #e1e1e1;
+    border-right-width: 0px;
+  }
+
+  .upButton, .downButton {
+    display: block;
+    height: 10px;
+    width: 20px;
+    border: 1px solid transparent;
+    padding-top: 2px;
+    background-color: transparent;
+    text-align: center;
+    cursor: default;
+  }
+
+}
