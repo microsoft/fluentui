@@ -45,8 +45,8 @@ const data: IFullDocumentCardProps[] = [
     documentPreviewProps: {
       previewImages: [
         {
-          previewImageSrc: 'dist/document-preview.png',
-          iconSrc: 'dist/icon-ppt.png',
+          previewImageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/document-preview.png',
+          iconSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png',
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
@@ -85,9 +85,9 @@ const data: IFullDocumentCardProps[] = [
       activity: 'Created Feb 23, 2016',
       people:
       [
-        { name: 'Kat Larrson', profileImageSrc: 'dist/avatar-kat.png' },
+        { name: 'Kat Larrson', profileImageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png' },
         { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: 'dist/avatar-kat.png' }
+        { name: 'Tina Dasani', profileImageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png' }
       ]
     },
     documentTitleProps: {
@@ -99,8 +99,8 @@ const data: IFullDocumentCardProps[] = [
     documentPreviewProps: {
       previewImages: [
         {
-          previewImageSrc: 'dist/document-preview.png',
-          iconSrc: 'dist/icon-ppt.png',
+          previewImageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/document-preview.png',
+          iconSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png',
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
@@ -139,9 +139,9 @@ const data: IFullDocumentCardProps[] = [
       activity: 'Created Feb 23, 2016',
       people:
       [
-        { name: 'Kat Larrson', profileImageSrc: 'dist/avatar-kat.png' },
+        { name: 'Kat Larrson', profileImageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png' },
         { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: 'dist/avatar-kat.png' }
+        { name: 'Tina Dasani', profileImageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png' }
       ]
     },
     documentTitleProps: {
@@ -153,8 +153,8 @@ const data: IFullDocumentCardProps[] = [
     documentPreviewProps: {
       previewImages: [
         {
-          previewImageSrc: 'dist/document-preview2.png',
-          iconSrc: 'dist/icon-ppt.png',
+          previewImageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/document-preview2.png',
+          iconSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png',
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
@@ -193,9 +193,9 @@ const data: IFullDocumentCardProps[] = [
       activity: 'Created Feb 23, 2016',
       people:
       [
-        { name: 'Kat Larrson', profileImageSrc: 'dist/avatar-kat.png' },
+        { name: 'Kat Larrson', profileImageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png' },
         { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: 'dist/avatar-kat.png' }
+        { name: 'Tina Dasani', profileImageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png' }
       ]
     },
     documentTitleProps: {
@@ -207,8 +207,8 @@ const data: IFullDocumentCardProps[] = [
     documentPreviewProps: {
       previewImages: [
         {
-          previewImageSrc: 'dist/document-preview3.png',
-          iconSrc: 'dist/icon-ppt.png',
+          previewImageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/document-preview3.png',
+          iconSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png',
           imageFit: ImageFit.cover,
           width: 318,
           height: 196,
@@ -247,9 +247,9 @@ const data: IFullDocumentCardProps[] = [
       activity: 'Created Feb 23, 2016',
       people:
       [
-        { name: 'Kat Larrson', profileImageSrc: 'dist/avatar-kat.png' },
+        { name: 'Kat Larrson', profileImageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png' },
         { name: 'Josh Hancock', profileImageSrc: '', initials: 'JH' },
-        { name: 'Tina Dasani', profileImageSrc: 'dist/avatar-kat.png' }
+        { name: 'Tina Dasani', profileImageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png' }
       ]
     },
     documentTitleProps: {

@@ -16,29 +16,29 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
         {
           name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
           url: 'http://bing.com',
-          previewImageSrc: 'dist/document-preview.png',
-          iconSrc: 'dist/icon-ppt.png',
+          previewImageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/document-preview.png',
+          iconSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png',
           width: 144
         },
         {
           name: 'New Contoso Collaboration for Conference Presentation Draft',
           url: 'http://bing.com',
-          previewImageSrc: 'dist/document-preview2.png',
-          iconSrc: 'dist/icon-ppt.png',
+          previewImageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/document-preview2.png',
+          iconSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png',
           width: 144
         },
         {
           name: 'Spec Sheet for design',
           url: 'http://bing.com',
-          previewImageSrc: 'dist/document-preview3.png',
-          iconSrc: 'dist/icon-ppt.png',
+          previewImageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/document-preview3.png',
+          iconSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png',
           width: 144
         },
         {
           name: 'Contoso Marketing Presentation',
           url: 'http://bing.com',
-          previewImageSrc: 'dist/document-preview.png',
-          iconSrc: 'dist/icon-ppt.png',
+          previewImageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/document-preview.png',
+          iconSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png',
           width: 144
         },
       ],
@@ -56,7 +56,7 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
               activity='Created a few minutes ago'
               people={
                 [
-                  { name: 'Kat Larrson', profileImageSrc: 'images/persona-female.png' }
+                  { name: 'Kat Larrson', profileImageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png' }
                 ]
               }
             />
@@ -73,7 +73,7 @@ export class DocumentCardCompactExample extends React.Component<any, any> {
               activity='Created a few minutes ago'
               people={
                 [
-                  { name: 'Kat Larrson', profileImageSrc: 'images/persona-female.png' }
+                  { name: 'Kat Larrson', profileImageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png' }
                 ]
               }
             />

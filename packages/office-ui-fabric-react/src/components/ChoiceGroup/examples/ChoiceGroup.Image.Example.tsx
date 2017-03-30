@@ -31,15 +31,15 @@ export class ChoiceGroupImageExample extends React.Component<any, IChoiceGroupIm
           options={ [
             {
               key: 'bar',
-              imageSrc: './images/choicegroup-bar-unselected.png',
-              selectedImageSrc: 'dist/choicegroup-bar-selected.png',
+              imageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/choicegroup-bar-unselected.png',
+              selectedImageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/choicegroup-bar-selected.png',
               imageSize: { width: 32, height: 32 },
               text: 'Bar chart'
             },
             {
               key: 'pie',
-              imageSrc: './images/choicegroup-pie-unselected.png',
-              selectedImageSrc: 'dist/choicegroup-pie-selected.png',
+              imageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/choicegroup-pie-unselected.png',
+              selectedImageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/choicegroup-pie-selected.png',
               imageSize: { width: 32, height: 32 },
               text: 'Pie chart'
             }

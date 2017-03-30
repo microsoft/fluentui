@@ -15,12 +15,12 @@ import { Persona, PersonaSize } from '../Persona';
 describe('Facepile', () => {
   const facepilePersonas: IFacepilePersona[] = [
     {
-      imageUrl: './images/persona-female.png',
+      imageUrl: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png',
       personaName: 'Annie Lindqvist',
       data: '50%'
     },
     {
-      imageUrl: './images/persona-male.png',
+      imageUrl: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-male.png',
       personaName: 'Aaron Reid',
       data: '$1,000'
     },

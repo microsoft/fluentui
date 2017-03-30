@@ -13,7 +13,7 @@ export class IconImageSheetExample extends React.Component<any, any> {
           iconType={ IconType.Image }
           className={ 'ms-IconImageSheetExample-one' }
           imageProps={ {
-            src: './images/icon-one.png',
+            src: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-one.png',
             className: 'ms-IconImageSheetExample-one-image'
           } }
         />
@@ -22,7 +22,7 @@ export class IconImageSheetExample extends React.Component<any, any> {
           iconType={ IconType.Image }
           className={ 'ms-IconImageSheetExample-check' }
           imageProps={ {
-            src: './images/icon-one.png',
+            src: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-one.png',
             className: 'ms-IconImageSheetExample-check-image'
           } }
         />
@@ -31,7 +31,7 @@ export class IconImageSheetExample extends React.Component<any, any> {
           iconType={ IconType.Image }
           className={ 'ms-IconImageSheetExample-lock' }
           imageProps={ {
-            src: './images/icon-one.png',
+            src: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-one.png',
             className: 'ms-IconImageSheetExample-lock-image'
           } }
         />
