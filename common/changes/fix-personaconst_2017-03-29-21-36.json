@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Router: tweaked some of the logic to render component as a fallback if getComponent doesn't immediately return a value.",
+      "comment": "Persona: Fixing one more AMD import issue inside of `PersonaConsts.ts`.",
       "type": "patch"
     },
     {
@@ -11,9 +11,9 @@
       "type": "none"
     },
     {
+      "comment": "",
       "packageName": "@uifabric/example-app-base",
-      "comment": "Tweaked some of the style imports.",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "email": "dzearing@microsoft.com"

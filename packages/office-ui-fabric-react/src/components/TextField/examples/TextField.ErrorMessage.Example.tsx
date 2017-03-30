@@ -63,6 +63,11 @@ export class TextFieldErrorMessageExample extends React.Component<{}, {}> {
           onGetErrorMessage={ this._getErrorMessage }
           validateOnFocusOut
         />
+        <TextField
+          label='TextField that uses the errorMessage property to set an error state.'
+          placeholder='This field always has an error.'
+          errorMessage='This is a statically set error message.'
+        />
         <NumberTextField
           label='Number TextField with valid initial value'
           initialValue='100'

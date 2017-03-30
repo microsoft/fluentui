@@ -62,7 +62,7 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement | HTML
   disabled?: boolean;
 
   /**
-   * Default value of the textfield, if any.
+   * If set, this will display an error message for the text field.
    */
   errorMessage?: string;
 
