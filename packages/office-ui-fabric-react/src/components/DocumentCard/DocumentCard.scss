@@ -120,7 +120,7 @@ $ms-DocumentCardActions-verticalPadding: 4px;
 
 /** Activity **/
 $ms-DocumentCardActivity-horizontalPadding: 16px;
-$ms-DocumentCardActivity-imageSize: 25px;
+$ms-DocumentCardActivity-imageSize: 24px;
 $ms-DocumentCardActivity-verticalPadding: 8px;
 $ms-DocumentCardActivity-personaTextGutter: 8px;
 
@@ -141,6 +141,7 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
 
 .avatars {
   @include margin-left(-2px); // Avatars sit outside of the usual padding for visual balance
+  height: 32px;
 }
 
 .avatar {
@@ -148,8 +149,8 @@ $ms-DocumentCardActivity-personaTextGutter: 8px;
   vertical-align: top;
   position: relative;
   text-align: center;
-  width: 24px;
-  height: 24px;
+  width: $ms-DocumentCardActivity-imageSize;
+  height: $ms-DocumentCardActivity-imageSize;
 
   &:after {
     content: '';
