@@ -126,24 +126,23 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     let { selection, selectionMode } = this.props;
     let isToggleModifierPressed = this._isCtrlPressed || this._isMetaPressed;
 
-    if (!this._shouldHandleFocus || selectionMode === SelectionMode.none) {
-      this._shouldHandleFocus = false;
-      return;
-    }
+    if (this._shouldHandleFocus && selectionMode !== SelectionMode.none) {
+      let isToggle = this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);
+      let itemRoot = this._findItemRoot(target);
 
-    let isToggle = this._hasAttribute(target, SELECTION_TOGGLE_ATTRIBUTE_NAME);
-    let itemRoot = this._findItemRoot(target);
+      if (!isToggle && itemRoot) {
+        let index = this._getItemIndex(itemRoot);
 
-    if (!isToggle && itemRoot) {
-      let index = this._getItemIndex(itemRoot);
-
-      if (isToggleModifierPressed) {
-        // set anchor only.
-        selection.setIndexSelected(index, selection.isIndexSelected(index), true);
-      } else {
-        this._onItemSurfaceClick(ev, index);
+        if (isToggleModifierPressed) {
+          // set anchor only.
+          selection.setIndexSelected(index, selection.isIndexSelected(index), true);
+        } else {
+          this._onItemSurfaceClick(ev, index);
+        }
       }
     }
+
+    this._shouldHandleFocus = false;
   }
 
   @autobind
