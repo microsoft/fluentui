@@ -1,0 +1,20 @@
+{
+  "changes": [
+    {
+      "comment": "",
+      "packageName": "office-ui-fabric-react",
+      "type": "Fix RTL bug in ChoiceField"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/utilities",
+      "type": "none"
+    },
+    {
+      "comment": "",
+      "packageName": "@uifabric/example-app-base",
+      "type": "none"
+    }
+  ],
+  "email": "anihan@microsoft.com"
+}
