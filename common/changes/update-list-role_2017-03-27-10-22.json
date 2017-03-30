@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "List: Update role check to undefined",
+      "type": "patch"
+    }
+  ],
+  "email": "hross@hross.net"
+}
