@@ -20,7 +20,7 @@ import {
   PERSONA_PRESENCE,
   PERSONA_SIZE
 } from './PersonaConsts';
-import styles from './Persona.scss';
+import styles = require('./Persona.scss');
 
 // The RGB color swatches
 const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [

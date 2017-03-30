@@ -12,7 +12,7 @@ import {
   updateH,
   updateSV
 } from './colors';
-import styles from './ColorPicker.scss';
+import styles = require('./ColorPicker.scss');
 
 export interface IColorPickerState {
   isOpen: boolean;

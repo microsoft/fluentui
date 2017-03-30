@@ -18,6 +18,9 @@ export interface IListProps extends React.HTMLProps<List | HTMLDivElement> {
   /** Optional callback for monitoring when a page is removed. */
   onPageRemoved?: (page: IPage) => void;
 
+  /** Optional callback to get the item key, to be used on render. */
+  getKey?: (item: any, index?: number) => string;
+
   /** Method called by the list to get how many items to render per page from specified index. */
   getItemCountForPage?: (itemIndex?: number, visibleRect?: IRectangle) => number;
 

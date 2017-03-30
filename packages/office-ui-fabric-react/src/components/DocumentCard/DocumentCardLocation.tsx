@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { css } from '../../Utilities';
 import { IDocumentCardLocationProps } from './DocumentCard.Props';
-import styles from './DocumentCard.scss';
+import styles = require('./DocumentCard.scss');
 
 export class DocumentCardLocation extends React.Component<IDocumentCardLocationProps, any> {
   public render() {

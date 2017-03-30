@@ -9,7 +9,7 @@ import {
   ICheckbox,
   ICheckboxProps
 } from './Checkbox.Props';
-import styles from './Checkbox.scss';
+import styles = require('./Checkbox.scss');
 
 export interface ICheckboxState {
   /** Is true when the control has focus. */

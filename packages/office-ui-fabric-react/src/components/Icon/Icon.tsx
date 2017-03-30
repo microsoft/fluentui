@@ -1,6 +1,6 @@
 /* tslint:disable */
 import * as React from 'react';
-import styles from './Icon.scss'
+import styles = require('./Icon.scss')
 /* tslint:enable */
 import { IIconProps } from './Icon.Props';
 import { IconType } from './IconType';

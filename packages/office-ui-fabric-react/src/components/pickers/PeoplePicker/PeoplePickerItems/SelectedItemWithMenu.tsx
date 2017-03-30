@@ -7,7 +7,7 @@ import { Persona, PersonaPresence } from '../../../../Persona';
 import { ContextualMenu, DirectionalHint } from '../../../../ContextualMenu';
 import { IconButton } from '../../../../Button';
 import { FocusZone } from '../../../../FocusZone';
-import styles from './PickerItemsDefault.scss';
+import styles = require('./PickerItemsDefault.scss');
 
 export interface IPeoplePickerItemState {
   contextualMenuVisible: boolean;

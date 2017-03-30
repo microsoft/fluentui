@@ -55,6 +55,13 @@ function createConfig(isProduction, publicPath) {
       },
     ],
 
+    resolve: {
+      alias: {
+        'office-ui-fabric-react/lib': path.join(__dirname, 'node_modules/office-ui-fabric-react/lib')
+      },
+      extensions: ['', '.js']
+    },
+
     module: {
       noParse: [/autoit.js/],
 

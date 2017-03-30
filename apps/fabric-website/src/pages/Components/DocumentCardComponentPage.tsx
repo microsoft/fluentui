@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DocumentCardPage } from 'fabric-examples/lib/pages/DocumentCardPage/DocumentCardPage';
+import { DocumentCardPage } from 'office-ui-fabric-react/lib/components/DocumentCard/DocumentCardPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

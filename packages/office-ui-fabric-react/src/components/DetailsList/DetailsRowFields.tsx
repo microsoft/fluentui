@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IColumn } from './DetailsList.Props';
 import { css } from '../../Utilities';
-import styles from './DetailsRow.scss';
+import styles = require('./DetailsRow.scss');
 
 export interface IDetailsRowFieldsProps {
   item: any;
