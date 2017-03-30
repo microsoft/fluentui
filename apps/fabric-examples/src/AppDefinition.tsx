@@ -220,6 +220,13 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/spinner'
         },
         {
+          getComponent: cb => require.ensure([], () => cb(require<any>('./pages/StepperPage/StepperPage').StepperPage)),
+          key: 'Stepper',
+          name: 'Stepper',
+          status: ExampleStatus.beta,
+          url: '#/examples/stepper'
+        },
+        {
           getComponent: cb => require.ensure([], () => cb(require<any>('./pages/TeachingBubblePage/TeachingBubblePage').TeachingBubblePage)),
           key: 'TeachingBubble',
           name: 'TeachingBubble',

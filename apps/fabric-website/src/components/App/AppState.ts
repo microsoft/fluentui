@@ -246,6 +246,11 @@ export const AppState: IAppState = {
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/SpinnerComponentPage').SpinnerComponentPage))
         },
         {
+          title: 'Stepper',
+          url: '#/components/stepper',
+          getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/StepperComponentPage').StepperComponentPage))
+        },
+        {
           title: 'TextField',
           url: '#/components/textfield',
           getComponent: cb => require.ensure([], (require) => cb(require<any>('../../pages/Components/TextFieldComponentPage').TextFieldComponentPage))

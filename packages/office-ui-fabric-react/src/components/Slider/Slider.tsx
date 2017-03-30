@@ -116,11 +116,11 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
             disabled={ disabled }
             type='button'
             role='slider'
-            >
+          >
             <div
               ref='sliderLine'
               className='ms-Slider-line'
-              >
+            >
               <span
                 ref='thumb'
                 className='ms-Slider-thumb'
@@ -128,7 +128,7 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
                 style={ getRTL() ?
                   { 'right': thumbOffsetPercent + '%' } :
                   { 'left': thumbOffsetPercent + '%' } }
-                />
+              />
               <span className='ms-Slider-active' style={ { 'width': thumbOffsetPercent + '%' } }></span>
               <span className='ms-Slider-inactive' style={ { 'width': (100 - thumbOffsetPercent) + '%' } }></span>
             </div>
