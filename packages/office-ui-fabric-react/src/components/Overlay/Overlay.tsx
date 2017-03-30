@@ -3,7 +3,8 @@ import {
   css,
   getNativeProps,
   divProperties,
-  setBodyScroll
+  enableBodyScroll,
+  disableBodyScroll
 } from '../../Utilities';
 import { IOverlayProps } from './Overlay.Props';
 
@@ -12,11 +13,11 @@ import styles = require('./Overlay.scss');
 export class Overlay extends React.Component<IOverlayProps, {}> {
 
   public componentDidMount() {
-    setBodyScroll(false);
+    disableBodyScroll();
   }
 
   public componentWillUnmount() {
-    setBodyScroll(true);
+    enableBodyScroll();
   }
 
   public render() {
