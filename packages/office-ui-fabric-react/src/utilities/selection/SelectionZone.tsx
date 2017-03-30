@@ -65,7 +65,6 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   private _isCtrlPressed: boolean;
   private _isShiftPressed: boolean;
   private _isMetaPressed: boolean;
-  private _shouldIgnoreFocus: boolean;
   private _shouldHandleFocus: boolean;
 
   public componentDidMount() {
@@ -106,7 +105,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
    */
   @autobind
   public ignoreNextFocus() {
-    this._shouldIgnoreFocus = true;
+    this._shouldHandleFocus = false;
   }
 
   @autobind
@@ -127,8 +126,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     let { selection, selectionMode } = this.props;
     let isToggleModifierPressed = this._isCtrlPressed || this._isMetaPressed;
 
-    if (this._shouldIgnoreFocus || !this._shouldHandleFocus || selectionMode === SelectionMode.none) {
-      this._shouldIgnoreFocus = this._shouldHandleFocus = false;
+    if (!this._shouldHandleFocus || selectionMode === SelectionMode.none) {
+      this._shouldHandleFocus = false;
       return;
     }
 
