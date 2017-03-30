@@ -9,6 +9,12 @@ build.karma.isEnabled = () => false;
 /* Configure TypeScript 2.0. */
 build.typescript.setConfig({ typescript: require('typescript') });
 
+// Use css modules.
+build.sass.setConfig({
+  useCSSModules: true,
+  moduleExportName: ''
+});
+
 // Set up a "rushBuild" subTask that will spawn rush build
 let fs = require('fs');
 let spawn = require('child_process').spawn;

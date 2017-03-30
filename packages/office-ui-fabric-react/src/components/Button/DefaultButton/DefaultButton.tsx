@@ -4,7 +4,7 @@ import { BaseComponent, IBaseProps } from '@uifabric/utilities';
 import { IButtonProps, IButtonClassNames } from '../Button.Props';
 import { withTheme } from '../../ThemeProvider/withTheme';
 
-const styles: any = require('./DefaultButton.scss');
+import styles = require('./DefaultButton.scss');
 
 export const DefaultButtonClassNames = {
   base: 'ms-Button',

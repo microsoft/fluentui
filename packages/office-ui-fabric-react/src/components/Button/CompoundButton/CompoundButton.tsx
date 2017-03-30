@@ -4,7 +4,7 @@ import { BaseComponent, IBaseProps } from '@uifabric/utilities';
 import { IButtonProps, IButtonClassNames } from '../Button.Props';
 import { withTheme } from '../../ThemeProvider/withTheme';
 
-const styles: any = require('./CompoundButton.scss');
+import styles = require('./CompoundButton.scss');
 
 export const CompoundButtonClassNames = {
   base: 'ms-Button',

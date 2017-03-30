@@ -3,8 +3,7 @@ import { BaseButton } from '../BaseButton';
 import { BaseComponent, IBaseProps } from '@uifabric/utilities';
 import { IButtonProps, IButtonClassNames } from '../Button.Props';
 import { withTheme } from '../../ThemeProvider/withTheme';
-
-const styles: any = require('./CommandButton.scss');
+import styles = require('./CommandButton.scss');
 
 export const CommandButtonClassNames: IButtonClassNames = {
   base: 'ms-Button',

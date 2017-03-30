@@ -4,7 +4,7 @@ import { BaseButton } from '../BaseButton';
 import { IButtonProps, IButtonClassNames } from '../Button.Props';
 import { withTheme } from '../../ThemeProvider/withTheme';
 
-const styles: any = require('./PrimaryButton.scss');
+import styles = require('./PrimaryButton.scss');
 
 const CLASS_NAMES: IButtonClassNames = {
   base: 'ms-Button',

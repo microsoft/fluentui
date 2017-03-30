@@ -14,8 +14,7 @@ import {
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButtonClassNames, IButton } from './Button.Props';
-const styles: any = require('./BaseButton.scss');
-
+import styles = require('./BaseButton.scss');
 
 export interface IBaseButtonState {
   menuProps?: IContextualMenuProps | null;

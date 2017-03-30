@@ -6,7 +6,7 @@ import {
 import { CommandButton, IButton } from '../../../Button';
 import { Spinner } from '../../../Spinner';
 import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.Props';
-const styles: any = require('./Suggestions.scss');
+import styles = require('./Suggestions.scss');
 
 export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>, {}> {
   public render() {

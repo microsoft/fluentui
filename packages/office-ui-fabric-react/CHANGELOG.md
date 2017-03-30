@@ -1,6 +1,60 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 24 Mar 2017 20:25:07 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Mar 2017 19:43:19 GMT and should not be manually modified.
+
+## 2.10.3
+Wed, 29 Mar 2017 19:43:19 GMT
+
+### Patches
+
+- DocumentCard: Persona import was not AMD friendly.
+
+## 2.10.2
+Wed, 29 Mar 2017 18:15:29 GMT
+
+### Patches
+
+- FocusZone: Adding support for default browser behavior when pressing alt + a key.
+- Chaning scss imports to use typescript `import` instead of `require` so that lib-amd build actually imports via AMD require and not commonjs require.
+- PeoplePicker: Adding changes for multiple selection onChange 
+
+## 2.10.1
+Wed, 29 Mar 2017 15:10:15 GMT
+
+### Patches
+
+- ChoiceGroup: Update styles
+
+## 2.10.0
+Wed, 29 Mar 2017 03:18:50 GMT
+
+### Minor changes
+
+- ChoiceGroup: adding `selectedKey` and `defaultSelectedKey` to provide a way to control selection, other than to micromanage the `checked` boolean in individual options.
+- Persona: Added a 28px size
+
+### Patches
+
+- DocumentCardActivity: Changes made to fix the default color to Persona
+
+## 2.9.0
+Tue, 28 Mar 2017 16:11:18 GMT
+
+### Minor changes
+
+- DetailsList & List: Use getKey as items render key
+
+## 2.8.0
+Tue, 28 Mar 2017 03:05:36 GMT
+
+### Minor changes
+
+- DetailsList: Implement Drag Drop support
+
+### Patches
+
+- Router: tweaked some of the logic to render component as a fallback if getComponent doesn't immediately return a value.
+- TextField: Fix examples and comments
 
 ## 2.7.1
 Fri, 24 Mar 2017 20:25:07 GMT

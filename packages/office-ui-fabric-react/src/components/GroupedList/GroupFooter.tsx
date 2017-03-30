@@ -7,7 +7,7 @@ import {
 import { Link } from '../../Link';
 import { IGroupDividerProps } from './GroupedList.Props';
 import { GroupSpacer } from './GroupSpacer';
-const styles: any = require('./GroupFooter.scss');
+import styles = require('./GroupFooter.scss');
 
 export class GroupFooter extends BaseComponent<IGroupDividerProps, {}> {
   public render() {

@@ -15,7 +15,7 @@ import { Layer } from '../Layer/Layer';
 import { Overlay } from '../../Overlay';
 import { Popup } from '../../Popup';
 import { IconButton } from '../../Button';
-const styles: any = require('./Panel.scss');
+import styles = require('./Panel.scss');
 
 export interface IPanelState {
   isFooterSticky?: boolean;

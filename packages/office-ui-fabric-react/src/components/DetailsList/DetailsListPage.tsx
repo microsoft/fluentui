@@ -24,6 +24,9 @@ const DetailsListAdvancedExampleCode = require('!raw-loader!./examples/DetailsLi
 import { DetailsListGroupedExample } from './examples/DetailsList.Grouped.Example';
 const DetailsListGroupedExampleCode = require('!raw-loader!./examples/DetailsList.Grouped.Example.tsx') as string;
 
+import { DetailsListDragDropExample } from './examples/DetailsList.DragDrop.Example';
+const DetailsListDragDropExampleCode = require('!raw-loader!./examples/DetailsList.DragDrop.Example.tsx') as string;
+
 export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
     return (
@@ -49,6 +52,9 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}
             </ExampleCard>
             <ExampleCard title='Advanced DetailsList of 5000 items, variable row heights' isOptIn={ true } code={ DetailsListAdvancedExampleCode }>
               <DetailsListAdvancedExample />
+            </ExampleCard>
+            <ExampleCard title='Drag and Drop DetailsList with 10 items' isOptIn={ true } code={ DetailsListDragDropExampleCode }>
+              <DetailsListDragDropExample />
             </ExampleCard>
           </div>
         }

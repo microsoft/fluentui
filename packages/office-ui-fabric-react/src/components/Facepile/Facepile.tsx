@@ -21,7 +21,7 @@ import {
   Persona,
   PersonaSize
 } from '../../Persona';
-const styles: any = require('./Facepile.scss');
+import styles = require('./Facepile.scss');
 
 export class Facepile extends React.Component<IFacepileProps, {}> {
   public static defaultProps: IFacepileProps = {
