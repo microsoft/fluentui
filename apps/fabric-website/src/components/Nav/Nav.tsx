@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
-const styles: any = require('./Nav.module.scss');
+import styles = require('./Nav.module.scss');
 import {
   INavProps,
   INavPage

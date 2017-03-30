@@ -8,7 +8,7 @@ import {
   css
 } from '../../Utilities';
 import { IDocumentCardTitleProps } from './DocumentCard.Props';
-const styles: any = require('./DocumentCard.scss');
+import styles = require('./DocumentCard.scss');
 
 export interface IDocumentCardTitleState {
   truncatedTitleFirstPiece?: string;

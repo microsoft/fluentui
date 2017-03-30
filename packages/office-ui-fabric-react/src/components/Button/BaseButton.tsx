@@ -12,7 +12,7 @@ import {
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.Props';
-const styles: any = require('./BaseButton.scss');
+import styles = require('./BaseButton.scss');
 
 export interface IBaseButtonClassNames {
   base: string;
