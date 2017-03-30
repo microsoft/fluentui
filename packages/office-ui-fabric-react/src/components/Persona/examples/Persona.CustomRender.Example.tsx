@@ -11,9 +11,10 @@ import {
 } from 'office-ui-fabric-react/lib/Persona';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import './PersonaExample.scss';
+import { TestImages } from '../../../common/TestImages';
 
 const examplePersona = {
-  imageUrl: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png',
+  imageUrl: TestImages.personaFemale,
   imageInitials: 'AL',
   primaryText: 'Annie Lindqvist',
   secondaryText: 'Software Engineer',

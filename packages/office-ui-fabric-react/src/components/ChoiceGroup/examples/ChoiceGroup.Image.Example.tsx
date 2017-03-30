@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
+import { TestImages } from '../../../common/TestImages';
 
 /**
  * Interface for ChoiceGroupImageExample state.
@@ -31,15 +32,15 @@ export class ChoiceGroupImageExample extends React.Component<any, IChoiceGroupIm
           options={ [
             {
               key: 'bar',
-              imageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/choicegroup-bar-unselected.png',
-              selectedImageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/choicegroup-bar-selected.png',
+              imageSrc: TestImages.choiceGroupBarUnselected,
+              selectedImageSrc: TestImages.choiceGroupBarSelected,
               imageSize: { width: 32, height: 32 },
               text: 'Bar chart'
             },
             {
               key: 'pie',
-              imageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/choicegroup-pie-unselected.png',
-              selectedImageSrc: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/choicegroup-pie-selected.png',
+              imageSrc: TestImages.choiceGroupBarUnselected,
+              selectedImageSrc: TestImages.choiceGroupBarSelected,
               imageSize: { width: 32, height: 32 },
               text: 'Pie chart'
             }
