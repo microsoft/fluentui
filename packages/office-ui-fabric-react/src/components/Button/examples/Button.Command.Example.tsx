@@ -1,6 +1,10 @@
 import * as React from 'react';
 import {
   CommandButton,
+  CompoundButton,
+  IconButton,
+  PrimaryButton,
+  DefaultButton,
   IButton,
   IButtonProps
 } from 'office-ui-fabric-react/lib/Button';
@@ -9,7 +13,49 @@ import {
 } from 'office-ui-fabric-react/lib/Label';
 import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
-import { ThemeProvider } from '../../ThemeProvider/ThemeProvider';
+import { Customizer } from '../../ThemeProvider/Customizer';
+
+const BUTTON_PROPS: IButtonProps[] = [
+  {
+    text: 'Text only button'
+  },
+  {
+    iconName: 'Mail',
+    text: 'Text/icon button'
+  },
+  {
+    iconName: 'Mail',
+    text: 'Text/icon/description button',
+    description: 'This is the description.'
+  },
+  {
+    iconName: 'Mail',
+    text: 'Text/icon/description/href button',
+    description: 'This is the description.',
+    href: 'http://www.bing.com',
+    target: '_blank',
+  },
+  {
+    iconName: 'Mail',
+    text: 'Text/icon/description/menu button',
+    description: 'This is the description.',
+    menuProps: {
+      items: [{
+        key: 'item A',
+        name: 'Item A',
+        iconName: 'Mail'
+      }]
+    }
+  }
+];
+
+const BUTTON_VARIANTS = [
+  { name: 'CommandButton', component: CommandButton },
+  { name: 'CompoundButton', component: CompoundButton },
+  { name: 'IconButton', component: IconButton },
+  { name: 'DefaultButton', component: DefaultButton },
+  { name: 'PrimaryButton', component: PrimaryButton }
+];
 
 export class ButtonCommandExample extends React.Component<IButtonProps, { any }> {
   private _button: IButton;
@@ -18,36 +64,29 @@ export class ButtonCommandExample extends React.Component<IButtonProps, { any }>
     let { disabled } = this.props;
 
     return (
-      <ThemeProvider theme={ {
-        defaultProps: {
-          'CommandButton': {
-          }
+      <Customizer settings={ {
+        CompoundButton: {
+          style: { background: 'red' }
         }
       } }>
         <div className='ms-BasicButtonsExample'>
-          <Label>Command button</Label>
-          <CommandButton
-            text='Focus the next button'
-            onClick={ () => this._button.focus() }
-          />
-          <CommandButton
-            componentRef={ b => this._button = b }
-            data-automation-id='test'
-            disabled={ disabled }
-            text='Create account'
-            icon='Mail'
-            description='I am a description'
-            menuProps={ {
-              items: [
-                {
-                  key: 'a',
-                  name: 'MenuItemA'
-                }
-              ]
-            } }
-          />
+          <div>
+            <button>I'm a button</button>
+            <button className='ms-font-xxl'>I'm a button</button>
+            <button>I'm a button</button>
+            <button>I'm a button</button>
+          </div>
+
+          { BUTTON_VARIANTS.map(({ name, component: ButtonComponent }) => (
+            <div key={ name }>
+              <Label>{ name }</Label>
+              { BUTTON_PROPS.map((buttonProps, index) => (
+                <ButtonComponent disabled={ disabled } { ...buttonProps } />
+              )) }
+            </div>
+          )) }
         </div>
-      </ThemeProvider>
+      </Customizer>
     );
   }
 

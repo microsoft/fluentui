@@ -3,6 +3,7 @@ import { BaseButton } from './BaseButton';
 import { Button } from './Button';
 import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
+import { IconName } from '../../Icon';
 
 export interface IButton {
   /**
@@ -73,12 +74,12 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
   /**
    * The button icon shown in command or hero type.
    */
-  icon?: string;
+  iconName?: IconName | string | null;
 
   /**
    * The button icon shown to the right of the text
    */
-  menuIconName?: string | null;
+  menuIconName?: IconName | string | null;
 
   /**
    * Props for button menu
@@ -93,12 +94,22 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
   /**
    * Custom render function for the label text.
    */
-  onRenderLabel?: IRenderFunction<IButtonProps>;
+  onRenderText?: IRenderFunction<IButtonProps>;
 
   /**
    * Custom render function for the desciption text.
    */
   onRenderDescription?: IRenderFunction<IButtonProps>;
+
+  /**
+   * Custom render function for the aria description element.
+   */
+  onRenderAriaDescription?: IRenderFunction<IButtonProps>;
+
+  /**
+   * Custom render function for rendering the button children.
+   */
+  onRenderChildren?: IRenderFunction<IButtonProps>;
 
   /**
    * Custom render function for button menu icon
@@ -109,6 +120,7 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
   * Custom render function for button menu
   */
   onRenderMenu?: IRenderFunction<IContextualMenuProps>;
+
 
   /**
    * Description of the action this button takes.
@@ -131,6 +143,13 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
    * they will be mixed into the button/anchor element rendered by the component.
    */
   rootProps?: React.HTMLProps<HTMLButtonElement> | React.HTMLProps<HTMLAnchorElement>;
+
+  /**
+ * @deprecated
+ * Use iconName.
+ */
+  icon?: string;
+
 }
 
 export enum ElementType {

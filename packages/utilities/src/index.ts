@@ -23,3 +23,4 @@ export * from './resources';
 export * from './rtl';
 export * from './scroll';
 export * from './string';
+export * from './warn';

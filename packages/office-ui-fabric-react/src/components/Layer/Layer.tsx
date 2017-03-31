@@ -32,9 +32,10 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
   }
 
   constructor(props: ILayerProps) {
-    super(props, {
-      // Make sure to deprecate old properties.
-      'onLayerMounted': 'onLayerDidMount'
+    super(props);
+
+    this._warnDeprecations({
+      onLayerMounted: 'onLayerDidMount'
     });
 
     if (this.props.hostId) {

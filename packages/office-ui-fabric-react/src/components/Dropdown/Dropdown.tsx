@@ -49,8 +49,14 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _id: string;
 
   constructor(props?: IDropdownProps) {
-    super(props, {
+    super(props);
+
+    this._warnDeprecations({
       'isDisabled': 'disabled'
+    });
+
+    this._warnMutuallyExclusive({
+      'defaultSelectedKey': 'selectedKey'
     });
 
     this._id = props.id || getId('Dropdown');

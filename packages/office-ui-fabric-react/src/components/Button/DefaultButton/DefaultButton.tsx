@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BaseButton } from '../BaseButton';
 import { BaseComponent, IBaseProps } from '@uifabric/utilities';
 import { IButtonProps, IButtonClassNames } from '../Button.Props';
-import { withTheme } from '../../ThemeProvider/withTheme';
+import { customizable } from '../../ThemeProvider/customizable';
 
 import styles = require('./DefaultButton.scss');
 
@@ -17,7 +17,7 @@ export const DefaultButtonClassNames = {
   root: styles.root
 };
 
-@withTheme('DefaultButton')
+@customizable('DefaultButton')
 export class DefaultButton extends BaseComponent<IButtonProps, {}> {
   /**
    * Tell BaseComponent to bypass resolution of componentRef.

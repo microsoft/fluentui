@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BaseButton } from '../BaseButton';
 import { BaseComponent, IBaseProps } from '@uifabric/utilities';
 import { IButtonProps, IButtonClassNames } from '../Button.Props';
-import { withTheme } from '../../ThemeProvider/withTheme';
+import { customizable } from '../../ThemeProvider/customizable';
 import styles = require('./CommandButton.scss');
 
 export const CommandButtonClassNames: IButtonClassNames = {
@@ -17,7 +17,7 @@ export const CommandButtonClassNames: IButtonClassNames = {
   flexContainer: styles.flexContainer
 };
 
-@withTheme('CommandButton')
+@customizable('CommandButton')
 export class CommandButton extends BaseComponent<IButtonProps, {}> {
 
   /**

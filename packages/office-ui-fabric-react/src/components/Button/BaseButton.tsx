@@ -10,16 +10,18 @@ import {
   getId,
   getNativeProps
 } from '../../Utilities';
-
+import { Icon, IconName } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButtonClassNames, IButton } from './Button.Props';
 import styles = require('./BaseButton.scss');
+import { customizable } from '../ThemeProvider/customizable';
 
 export interface IBaseButtonState {
   menuProps?: IContextualMenuProps | null;
 }
 
+@customizable('BaseButton')
 export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> implements IButton {
 
   public static defaultProps: IButtonProps = {
@@ -37,7 +39,13 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
   private _ariaDescriptionId: string;
 
   constructor(props: IButtonProps, rootClassName: string, deprecationMap: any) {
-    super(props, { 'rootProps': null });
+    super(props);
+
+    this._warnDeprecations({
+      'rootProps': null,
+      'icon': 'iconName'
+    });
+
     this._labelId = getId();
     this._descriptionId = getId();
     this._ariaDescriptionId = getId();
@@ -101,7 +109,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
       assign(buttonProps, { 'onClick': this._onToggleMenu });
     }
 
-    return this.onRenderContent(tag, buttonProps);
+    return this._onRenderContent(tag, buttonProps);
   }
 
   public focus(): void {
@@ -110,17 +118,20 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
     }
   }
 
-  protected onRenderContent(tag: any, buttonProps: IButtonProps): JSX.Element {
+  private _onRenderContent(tag: any, buttonProps: IButtonProps): JSX.Element {
+    let props = this.props;
     let {
       classNames,
       menuIconName,
       menuProps,
       onRenderIcon = this._onRenderIcon,
-      onRenderLabel = this._onRenderLabel,
+      onRenderText = this._onRenderText,
       onRenderDescription = this._onRenderDescription,
+      onRenderAriaDescription = this._onRenderAriaDescription,
+      onRenderChildren = this._onRenderChildren,
       onRenderMenu = this._onRenderMenu,
       onRenderMenuIcon = this._onRenderMenuIcon
-    } = this.props;
+    } = props;
     const className = css(classNames.base + '-flexContainer', styles.flexContainer, classNames.flexContainer);
 
     return React.createElement(
@@ -129,11 +140,11 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
       React.createElement(
         'div',
         { className },
-        onRenderIcon(this.props, this._onRenderIcon),
-        onRenderLabel(this.props, this._onRenderLabel),
-        onRenderDescription(this.props, this._onRenderDescription),
-        this._onRenderAriaDescription(),
-        this._onRenderChildren(),
+        onRenderIcon(props, this._onRenderIcon),
+        onRenderText(props, this._onRenderText),
+        onRenderDescription(props, this._onRenderDescription),
+        onRenderAriaDescription(props, this._onRenderAriaDescription),
+        onRenderChildren(props, this._onRenderChildren),
         (menuProps || menuIconName || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon),
         this.state.menuProps && onRenderMenu(menuProps, this._onRenderMenu)
       ));
@@ -141,17 +152,19 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
 
   @autobind
   private _onRenderIcon(buttonProps?: IButtonProps, defaultRender?: IRenderFunction<IButtonProps>) {
-    const { classNames, icon } = this.props;
+    let { classNames, icon, iconName } = this.props;
 
-    return icon && (
-      <span className={ css(`${classNames.base}-icon`, classNames.icon) }>
-        <i className={ `ms-Icon ms-Icon--${icon}` } />
-      </span>
+    if (icon !== undefined) {
+      iconName = icon as IconName;
+    }
+
+    return iconName && (
+      <Icon iconName={ iconName as IconName } className={ css(`${classNames.base}-icon`, classNames.icon) } />
     );
   }
 
   @autobind
-  private _onRenderLabel() {
+  private _onRenderText() {
     let { classNames, children, text } = this.props;
 
     // For backwards compat, we should continue to take in the text content from children.
@@ -167,7 +180,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
   }
 
   @autobind
-  private _onRenderChildren() {
+  private _onRenderChildren(): JSX.Element | null {
     const { children } = this.props;
 
     // If children is just a string, either it or the text will be rendered via onRenderLabel
@@ -176,7 +189,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
       return null;
     }
 
-    return children;
+    return children as any;
   }
 
   @autobind
@@ -211,18 +224,19 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
   }
 
   @autobind
-  protected _onRenderMenuIcon(props: IButtonProps): JSX.Element {
-    const { classNames, menuIconName = 'ChevronDown' } = props;
+  private _onRenderMenuIcon(props: IButtonProps): JSX.Element {
+    const {
+      classNames,
+      menuIconName = 'ChevronDown'
+    } = props;
 
     return (
-      <span className={ css(`${classNames.base}-icon`, classNames.menuIcon) }>
-        <i className={ `ms-Icon ms-Icon--${menuIconName}` } />
-      </span>
+      <Icon className={ css(`${classNames.base}-icon`, classNames.menuIcon) } iconName={ menuIconName as IconName } />
     );
   }
 
   @autobind
-  protected _onRenderMenu(menuProps: IContextualMenuProps): JSX.Element {
+  private _onRenderMenu(menuProps: IContextualMenuProps): JSX.Element {
     return (
       <ContextualMenu
         className={ css('ms-BaseButton-menuHost') }
