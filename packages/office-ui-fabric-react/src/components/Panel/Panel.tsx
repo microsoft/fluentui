@@ -82,9 +82,6 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
   }
 
   public componentDidUpdate(prevProps, prevState) {
-    if (prevState.isOpen === false) {
-      this._updateFooterPosition();
-    }
     if (
       prevState.isAnimatingClose === false &&
       this.state.isAnimatingClose === true &&
@@ -265,7 +262,6 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
     let _content = this._content;
     let height = _content.clientHeight;
     let innerHeight = _content.scrollHeight;
-
     this.setState({
       isFooterSticky: height < innerHeight ? true : false
     });
@@ -289,6 +285,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
         isOpen: true,
         isAnimatingOpen: false
       });
+      this._updateFooterPosition();
     }
     if (ev.animationName.indexOf('Out') > -1) {
       this.setState({
