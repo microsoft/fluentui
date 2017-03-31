@@ -43,7 +43,7 @@ const BUTTON_PROPS: IButtonProps[] = [
       items: [{
         key: 'item A',
         name: 'Item A',
-        iconName: 'Mail'
+        iconProps: { iconName: 'Mail' }
       }]
     }
   }
@@ -64,12 +64,9 @@ export class ButtonCommandExample extends React.Component<IButtonProps, { any }>
     let { disabled } = this.props;
 
     return (
-      <Customizer settings={ {
-        CompoundButton: {
-          style: { background: 'red' }
-        }
-      } }>
+      <Customizer settings={ { BaseButton: {} } } >
         <div className='ms-BasicButtonsExample'>
+
           <div>
             <button>I'm a button</button>
             <button className='ms-font-xxl'>I'm a button</button>
@@ -81,10 +78,11 @@ export class ButtonCommandExample extends React.Component<IButtonProps, { any }>
             <div key={ name }>
               <Label>{ name }</Label>
               { BUTTON_PROPS.map((buttonProps, index) => (
-                <ButtonComponent disabled={ disabled } { ...buttonProps } />
+                <ButtonComponent key={ name + index } disabled={ disabled } { ...buttonProps } />
               )) }
             </div>
           )) }
+
         </div>
       </Customizer>
     );

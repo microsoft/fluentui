@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BaseComponent } from '@uifabric/utilities';
 import { BaseButton } from '../BaseButton';
 import { IButtonProps, IButtonClassNames } from '../Button.Props';
-import { customizable } from '../../ThemeProvider/customizable';
+import { customizable } from '@uifabric/utilities/lib/customizable';
 
 import styles = require('./PrimaryButton.scss');
 
