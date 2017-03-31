@@ -11,12 +11,6 @@ $Dialog-lgHeader-backgroundColor: $ms-color-themePrimary;
 $Dialog-default-min-width: 288px;
 $Dialog-default-max-width: 340px;
 
-// Mixin for IE9 specific styles
-@mixin dialogPositioningIE9Fallback {
-  vertical-align: middle;
-  display: inline-block;
-}
-
 .root {
   @include ms-baseFont;
   background-color: transparent;
@@ -44,27 +38,12 @@ $Dialog-default-max-width: 340px;
   display: block;
 }
 
-// Fallback for IE9 when dialog is open
-.root.isOpen {
-  display: block;
-  line-height: 100vh;
-  text-align: center;
-
-  &::before {
-    @include dialogPositioningIE9Fallback();
-    content: "";
-    height: 100%;
-    width: 0;
-  }
-}
 
 // The actual dialog element
 .main {
-  @include dialogPositioningIE9Fallback();
   @include drop-shadow();
   background-color: $ms-color-white;
   box-sizing: border-box;
-  line-height: 1.35;
   margin: auto;
   width: $Dialog-default-min-width;
   position: relative;
