@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 29 Mar 2017 19:43:19 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Mar 2017 21:04:29 GMT and should not be manually modified.
+
+## 2.10.4
+Thu, 30 Mar 2017 21:04:29 GMT
+
+### Patches
+
+- Overlay: disabling body scroll on show to prevent scrolling under the overlay.
+- DocumentCard: Personas rendered within look correct.
 
 ## 2.10.3
 Wed, 29 Mar 2017 19:43:19 GMT

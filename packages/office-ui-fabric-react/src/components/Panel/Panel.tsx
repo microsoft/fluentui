@@ -263,12 +263,14 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
 
   private _updateFooterPosition() {
     let _content = this._content;
-    let height = _content.clientHeight;
-    let innerHeight = _content.scrollHeight;
+    if (_content) {
+      let height = _content.clientHeight;
+      let innerHeight = _content.scrollHeight;
 
-    this.setState({
-      isFooterSticky: height < innerHeight ? true : false
-    });
+      this.setState({
+        isFooterSticky: height < innerHeight ? true : false
+      });
+    }
   }
 
   private _onPanelClick() {
