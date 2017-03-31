@@ -284,8 +284,8 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
       this.setState({
         isOpen: true,
         isAnimatingOpen: false
-      });
-      this._updateFooterPosition();
+      }, () => this._updateFooterPosition());
+
     }
     if (ev.animationName.indexOf('Out') > -1) {
       this.setState({
