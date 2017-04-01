@@ -44,6 +44,10 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
   constructor(props?: ISliderProps) {
     super(props);
 
+    this._warnMutuallyExclusive({
+      'value': 'defaultValue'
+    });
+
     this._id = getId('Slider');
 
     let value = props.value || props.defaultValue || props.min;

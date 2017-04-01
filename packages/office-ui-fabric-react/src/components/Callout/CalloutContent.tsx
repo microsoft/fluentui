@@ -49,7 +49,9 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   private _target: HTMLElement | MouseEvent;
 
   constructor(props: ICalloutProps) {
-    super(props, { 'beakStyle': 'beakWidth' });
+    super(props);
+
+    this._warnDeprecations({ 'beakStyle': 'beakWidth' });
 
     this._didSetInitialFocus = false;
     this.state = {

@@ -29,6 +29,10 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
   constructor(props: ICheckboxProps) {
     super(props);
 
+    this._warnMutuallyExclusive({
+      'checked': 'defaultChecked'
+    });
+
     this._id = getId('checkbox-');
     this.state = {
       isFocused: false,
