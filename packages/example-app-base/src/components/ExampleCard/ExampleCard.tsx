@@ -42,7 +42,7 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
           <div className='ExampleCard-toggleButtons ms-font-l'>
             { code ? (
               <CommandButton
-                iconName='Embed'
+                icon='Embed'
                 onClick={ this._onToggleCodeClick }
                 className={ css('ExampleCard-codeButton', { 'is-active': isCodeVisible }) }
               >
