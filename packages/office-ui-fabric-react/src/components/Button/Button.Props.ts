@@ -13,6 +13,12 @@ export interface IButton {
 
 export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAnchorElement | BaseButton | Button> {
   /**
+   * Optional way to fetch the IButton interface. Use this instead of ref, to avoid accessing higher-order component
+   * wrappers rather than the IButton interface.
+   */
+  componentRef?: (component: IButton) => void;
+
+  /**
    * If provided, this component will be rendered as an anchor.
    * @default ElementType.anchor
    */

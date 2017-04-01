@@ -2,6 +2,12 @@ import * as React from 'react';
 
 export interface ISliderProps {
   /**
+   * Optional way to fetch the ISlider interface. Use this instead of ref, to avoid accessing higher-order component
+   * wrappers rather than the ISlider interface.
+   */
+  componentRef?: (component: ISlider) => void;
+
+  /**
    * Description label of the Slider
    */
   label?: string;

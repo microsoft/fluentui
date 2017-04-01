@@ -99,7 +99,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     return this._checkBox ? this._checkBox.checked : false;
   }
 
-  public focus() {
+  public focus(): void {
     if (this._checkBox) {
       this._checkBox.focus();
     }
