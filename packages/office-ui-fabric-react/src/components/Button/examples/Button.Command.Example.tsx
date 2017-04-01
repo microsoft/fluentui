@@ -11,9 +11,7 @@ import {
 import {
   Label
 } from 'office-ui-fabric-react/lib/Label';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
-
-import { Customizer } from '../../ThemeProvider/Customizer';
+import { Customizer, autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 const BUTTON_PROPS: IButtonProps[] = [
   {

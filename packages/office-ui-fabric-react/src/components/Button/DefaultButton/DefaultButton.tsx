@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { BaseButton } from '../BaseButton';
-import { BaseComponent, IBaseProps } from '@uifabric/utilities';
+import { BaseComponent, customizable } from '@uifabric/utilities';
 import { IButtonProps, IButtonClassNames } from '../Button.Props';
-import { customizable } from '@uifabric/utilities/lib/customizable';
 
 import styles = require('./DefaultButton.scss');
 

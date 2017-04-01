@@ -1,6 +1,7 @@
 export * from './Async';
 export * from './AutoScroll';
 export * from './BaseComponent';
+export * from './Customizer';
 export * from './DelayedRender';
 export * from './EventGroup';
 export * from './IDisposable';
@@ -12,6 +13,7 @@ export * from './Rectangle';
 export * from './array';
 export * from './autobind';
 export * from './css';
+export * from './customizable';
 export * from './dom';
 export * from './focus';
 export * from './hoist';

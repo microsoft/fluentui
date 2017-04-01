@@ -1,8 +1,6 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  assign
-} from '../../Utilities';
+import { BaseComponent } from './BaseComponent';
+import { assign } from './object';
 
 export interface ISettings {
   [key: string]: any;

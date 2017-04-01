@@ -15,7 +15,6 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
    */
   public static onError: ((errorMessage?: string, ex?: any) => void);
 
-
   /**
    * Controls whether the componentRef prop will be resolved by this component instance. If you are
    * implementing a passthrough (higher-order component), you would set this to false and pass through

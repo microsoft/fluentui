@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ICustomizerProps } from './Customizer';
 
 export function customizable<P>(componentName?: string) {
   return function customizableFactory<P, S>(
@@ -20,5 +19,5 @@ export function customizable<P>(componentName?: string) {
         );
       }
     };
-  }
+  };
 }
