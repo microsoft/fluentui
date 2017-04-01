@@ -38,11 +38,16 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
    * @param {Object} deprecatedProps The map of deprecated prop names to new names, where the key is the old name and the
    * value is the new name. If a prop is removed rather than renamed, leave the value undefined.
    */
-  constructor(props?: P) {
+  constructor(props?: P, deprecationMap?: IStringMap) {
     super(props);
 
     this.props = props;
     this._shouldUpdateComponentRef = true;
+
+    // We should remove the map parameter in a major bump.
+    if (deprecationMap) {
+      this._warnDeprecations(deprecationMap);
+    }
 
     _makeAllSafe(this, BaseComponent.prototype, [
       'componentWillMount',
