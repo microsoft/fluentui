@@ -3,9 +3,7 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 
 import { BaseComponent } from '../../Utilities';
-import { ButtonType, IButton, IButtonProps } from './Button.Props';
-import { BaseButton } from './BaseButton';
-
+import { ButtonType, IButtonProps } from './Button.Props';
 import { DefaultButton } from './DefaultButton/DefaultButton';
 import { CommandButton } from './CommandButton/CommandButton';
 import { CompoundButton } from './CompoundButton/CompoundButton';
@@ -20,9 +18,10 @@ export class Button extends BaseComponent<IButtonProps, {}> {
   /**
    * Set this BaseComponent._resolveComponentRef to false, bypassing resolution of componentRef.
    */
+  protected _shouldUpdateComponentRef = false;
 
   public render() {
-    let props = this.props;
+    const props = this.props;
 
     switch (props.buttonType) {
       case ButtonType.command:

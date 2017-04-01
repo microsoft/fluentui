@@ -4,7 +4,6 @@ import { assign } from './object';
 
 export interface ISettings {
   [key: string]: any;
-
 }
 
 export interface ICustomizerProps {
@@ -15,6 +14,20 @@ export interface ICustomizerState {
   injectedProps?: ISettings;
 }
 
+/**
+ * The Customizer component allows for default props to be mixed into components which
+ * are decorated with the customizable() decorator. This enables injection scenarios like:
+ *
+ * 1. render svg icons instead of the icon font within all buttons
+ * 2. inject a custom theme object into a component
+ *
+ * Props are provided via the settings prop, which should be a json map where the key is
+ * the name of the customizable component, and the value is are the props to pass in.
+ *
+ * @export
+ * @class Customizer
+ * @extends {BaseComponent<ICustomizerProps, ICustomizerState>}
+ */
 export class Customizer extends BaseComponent<ICustomizerProps, ICustomizerState> {
   public static contextTypes = {
     injectedProps: React.PropTypes.object

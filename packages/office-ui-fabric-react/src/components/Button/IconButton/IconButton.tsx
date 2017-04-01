@@ -4,7 +4,7 @@ import { BaseComponent, customizable } from '@uifabric/utilities';
 import { IButtonProps, IButtonClassNames } from '../Button.Props';
 import styles = require('./IconButton.scss');
 
-export const IconButtonClassNames = {
+export const IconButtonClassNames: IButtonClassNames = {
   base: 'ms-Button',
   variant: 'ms-Button--icon',
   icon: styles.icon,

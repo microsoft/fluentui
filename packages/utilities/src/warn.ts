@@ -19,7 +19,7 @@ export function warnDeprecations(
   deprecationMap: IStringMap): void {
 
   for (const propName in deprecationMap) {
-    if (propName in props) {
+    if (props && propName in props) {
       let deprecationMessage = `${componentName} property '${propName}' was used but has been deprecated.`;
       const replacementPropName = deprecationMap[propName];
 
@@ -37,7 +37,7 @@ export function warnMutuallyExclusive(
   exclusiveMap: IStringMap): void {
 
   for (const propName in exclusiveMap) {
-    if (propName in props && exclusiveMap[propName] in props) {
+    if (props && propName in props && exclusiveMap[propName] in props) {
       _warningCallback(
         `${componentName} property '${propName}' is mutually exclusive with '${exclusiveMap[propName]}'. Use one or the other.`
       );

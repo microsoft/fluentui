@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ContextualMenu, DirectionalHint } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
@@ -82,7 +82,10 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
             onChanged={ this._onDirectionalChanged } />
         </div>
         <div className='ms-ContextualMenuDirectionalExample-buttonArea' ref='menuButton'>
-          <Button onClick={ this._onShowMenuClicked }>{ isContextualMenuVisible ? 'Hide context menu' : 'Show context menu' }</Button>
+          <DefaultButton
+            onClick={ this._onShowMenuClicked }
+            text={ isContextualMenuVisible ? 'Hide context menu' : 'Show context menu' }
+          />
         </div>
         { isContextualMenuVisible ? (
           <ContextualMenu

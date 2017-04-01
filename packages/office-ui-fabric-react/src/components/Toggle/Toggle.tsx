@@ -1,12 +1,13 @@
 import * as React from 'react';
 import {
+  BaseComponent,
   autobind,
   css,
   getId,
   buttonProperties,
   getNativeProps
 } from '../../Utilities';
-import { IToggleProps } from './Toggle.Props';
+import { IToggleProps, IToggle } from './Toggle.Props';
 import { Label } from '../../Label';
 import styles = require('./Toggle.scss');
 
@@ -14,7 +15,7 @@ export interface IToggleState {
   isChecked: boolean;
 }
 
-export class Toggle extends React.Component<IToggleProps, IToggleState> {
+export class Toggle extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
 
   public static initialProps = {
     label: '',
@@ -27,6 +28,10 @@ export class Toggle extends React.Component<IToggleProps, IToggleState> {
 
   constructor(props: IToggleProps) {
     super();
+
+    this._warnMutuallyExclusive({
+      checked: 'defaultChecked'
+    });
 
     this.state = {
       isChecked: !!(props.checked || props.defaultChecked)

@@ -5,7 +5,7 @@ import { IButtonProps, IButtonClassNames } from '../Button.Props';
 
 import styles = require('./DefaultButton.scss');
 
-export const DefaultButtonClassNames = {
+export const DefaultButtonClassNames: IButtonClassNames = {
   base: 'ms-Button',
   variant: 'ms-Button--default',
   icon: styles.icon,

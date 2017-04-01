@@ -11,7 +11,7 @@ export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
           <DefaultButton
             data-automation-id='test'
             disabled={ disabled }
-            icon='Add'
+            iconName='Add'
             description='I am a description'
             text='Create account'
           />

@@ -216,7 +216,8 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
         className={ css('ms-Panel-closeButton ms-PanelAction-close', styles.closeButton) }
         onClick={ this._onPanelClick }
         aria-label={ closeButtonAriaLabel }
-        data-is-visible={ true } icon='Cancel'
+        data-is-visible={ true }
+        iconName='Cancel'
       />
     );
   }

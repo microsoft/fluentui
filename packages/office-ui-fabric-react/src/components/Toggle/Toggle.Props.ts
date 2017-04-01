@@ -1,9 +1,19 @@
 import * as React from 'react';
 import { Toggle } from './Toggle';
+
+export interface IToggle {
+  focus: () => void;
+}
 /**
  * Toggle component props.
  */
 export interface IToggleProps extends React.HTMLProps<HTMLInputElement | Toggle> {
+  /**
+   * Optional way to fetch the IButton interface. Use this instead of ref, to avoid accessing higher-order component
+   * wrappers rather than the IButton interface.
+   */
+  componentRef?: (component: IToggle) => void;
+
   /**
    * A label for the toggle.
    */

@@ -14,7 +14,7 @@ import {
 import { Icon, IconName } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
-import { IButtonProps, IButtonClassNames, IButton } from './Button.Props';
+import { IButtonProps, IButton } from './Button.Props';
 import styles = require('./BaseButton.scss');
 
 export interface IBaseButtonState {

@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { BaseButton } from './BaseButton';
-import { Button } from './Button';
 import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IconName } from '../../Icon';
@@ -25,7 +23,7 @@ export interface IButtonClassNames {
   root?: string;
 }
 
-export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAnchorElement | BaseButton | Button> {
+export interface IButtonProps extends React.HTMLProps<any> {
 
   /**
    * Optional way to fetch the IButton interface. Use this instead of ref, to avoid accessing higher-order component
@@ -121,7 +119,6 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
   */
   onRenderMenu?: IRenderFunction<IContextualMenuProps>;
 
-
   /**
    * Description of the action this button takes.
    * Only used for compound buttons
@@ -149,7 +146,6 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
  * Use iconName.
  */
   icon?: string;
-
 }
 
 export enum ElementType {
