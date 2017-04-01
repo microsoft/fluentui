@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 30 Mar 2017 21:04:29 GMT and should not be manually modified.
+This log was last generated on Sat, 01 Apr 2017 03:12:59 GMT and should not be manually modified.
+
+## 2.10.5
+Sat, 01 Apr 2017 03:12:59 GMT
+
+### Patches
+
+- Dialog: Removed IE9 lineheight hacks so that lineheight wouldn't affect internal components
 
 ## 2.10.4
 Thu, 30 Mar 2017 21:04:29 GMT

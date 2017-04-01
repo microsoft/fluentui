@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "2.10.5",
+      "tag": "office-ui-fabric-react_v2.10.5",
+      "date": "Sat, 01 Apr 2017 03:12:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "26f605dfe92f82b11dec6bf9c46bbd9cb71f0d8c",
+            "comment": "Dialog: Removed IE9 lineheight hacks so that lineheight wouldn't affect internal components"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.10.4",
       "tag": "office-ui-fabric-react_v2.10.4",
       "date": "Thu, 30 Mar 2017 21:04:29 GMT",
