@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { css } from '../../Utilities';
 import { IDocumentCardActionsProps } from './DocumentCard.Props';
-import { IconButton, ButtonType } from '../../Button';
+import { IconButton } from '../../Button';
 import styles = require('./DocumentCard.scss');
 
 export class DocumentCardActions extends React.Component<IDocumentCardActionsProps, any> {
