@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CodeBlock } from '../../../components/CodeBlock/CodeBlock';
 import { PageHeader } from '../../../components/PageHeader/PageHeader';
 import { Table } from '../../../components/Table/Table';
-const styles: any = require('./LayoutPage.module.scss');
+import styles = require('./LayoutPage.module.scss');
 const pageStyles: any = require('../../PageStyles.module.scss');
 
 const visibilityData = require('json!../../../data/layout-visibility.json');

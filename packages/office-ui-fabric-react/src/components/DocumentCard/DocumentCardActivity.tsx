@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { css } from '../../Utilities';
 import { IDocumentCardActivityProps, IDocumentCardActivityPerson } from './DocumentCard.Props';
-import { Persona, PersonaSize } from '../Persona';
-const styles: any = require('./DocumentCard.scss');
+import { Persona, PersonaSize } from '../../Persona';
+import styles = require('./DocumentCard.scss');
 
 export class DocumentCardActivity extends React.Component<IDocumentCardActivityProps, any> {
   public render() {
@@ -42,7 +42,7 @@ export class DocumentCardActivity extends React.Component<IDocumentCardActivityP
           imageUrl={ person.profileImageSrc }
           initialsColor={ person.initialsColor }
           role='persentation'
-          size={ PersonaSize.extraSmall }
+          size={ PersonaSize.extraExtraSmall }
         />
 
       </div>
