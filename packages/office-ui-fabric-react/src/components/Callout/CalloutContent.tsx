@@ -113,7 +113,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       width: beakStyleWidth
     };
 
-    let directionalClassName = positions && positions.directionalClassName ? `ms-u-${positions.directionalClassName}` : '';
+    let directionalClassName = positions && positions.directionalClassName ? `ms-${positions.directionalClassName}` : '';
 
     let contentMaxHeight: number = this._getMaxHeight();
     let beakVisible: boolean = isBeakVisible && (!!targetElement || !!target);

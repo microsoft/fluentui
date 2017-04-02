@@ -32,7 +32,7 @@ export class Tooltip extends BaseComponent<ITooltipProps, any> {
 
     return (
       <Callout
-        className={ css('ms-Tooltip ms-u-fadeIn200', styles.root, {
+        className={ css('ms-Tooltip ms-fadeIn200', styles.root, {
           [styles.hasMediumDelay]: delay === TooltipDelay.medium
         }) }
         targetElement={ targetElement }

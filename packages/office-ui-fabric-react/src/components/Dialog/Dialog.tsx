@@ -98,8 +98,8 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
       ['ms-Dialog--lgHeader ' + styles.isLargeHeader]: type === DialogType.largeHeader,
       ['ms-Dialog--close ' + styles.isClose]: type === DialogType.close,
       ['is-open ' + styles.isOpen]: isOpen,
-      'ms-u-fadeIn200': isAnimatingOpen,
-      'ms-u-fadeOut200': isAnimatingClose
+      'ms-fadeIn200': isAnimatingOpen,
+      'ms-fadeOut200': isAnimatingClose
     });
     let groupings = this._groupChildren();
 
