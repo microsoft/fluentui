@@ -1,6 +1,28 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 29 Mar 2017 18:15:29 GMT and should not be manually modified.
+This log was last generated on Sat, 01 Apr 2017 03:12:59 GMT and should not be manually modified.
+
+## 2.10.5
+Sat, 01 Apr 2017 03:12:59 GMT
+
+### Patches
+
+- Dialog: Removed IE9 lineheight hacks so that lineheight wouldn't affect internal components
+
+## 2.10.4
+Thu, 30 Mar 2017 21:04:29 GMT
+
+### Patches
+
+- Overlay: disabling body scroll on show to prevent scrolling under the overlay.
+- DocumentCard: Personas rendered within look correct.
+
+## 2.10.3
+Wed, 29 Mar 2017 19:43:19 GMT
+
+### Patches
+
+- DocumentCard: Persona import was not AMD friendly.
 
 ## 2.10.2
 Wed, 29 Mar 2017 18:15:29 GMT
