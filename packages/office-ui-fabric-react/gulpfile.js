@@ -34,7 +34,7 @@ let visualTest = build.subTask('visualtest', (gulp, options, done) => {
     gulp.src(['lib/**/*.visualtest.js'])
       .pipe(casperJs(
         {
-          screenshots: 'visualtests',
+          screenshots: 'visualtests/baseline',
           comparisonResultRoot: 'visualtests/results'
         })).on('end', done);
   }

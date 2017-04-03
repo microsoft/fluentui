@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom';
 import { VisualTestState } from './VisualTestState';
 import { Route, Router } from './utilities/router/index';
 import { setBaseUrl } from '@uifabric/utilities/lib/resources';
-import './VisualTestRoot.scss';
+
 setBaseUrl('./dist/');
 
 let rootElement;
