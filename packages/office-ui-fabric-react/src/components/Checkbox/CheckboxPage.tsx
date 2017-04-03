@@ -7,7 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { CheckboxBasicExample } from './examples/Checkbox.Basic.Example';
 
-const CheckboxBasicExampleCode = require('!raw-loader!./examples/Checkbox.Basic.Example.tsx') as string;
+const CheckboxBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Checkbox/examples/Checkbox.Basic.Example.tsx') as string;
 
 export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> {
   public render() {
@@ -23,7 +23,7 @@ export class CheckboxPage extends React.Component<IComponentDemoPageProps, any> 
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/lib/components/Checkbox/Checkbox.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/Checkbox.Props.ts')
             ] }
           />
         }
