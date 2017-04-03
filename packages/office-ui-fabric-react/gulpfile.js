@@ -90,10 +90,6 @@ if (isProduction || isNuke) {
   });
 }
 
-// Disable certain subtasks in non production builds to speed up serve.
-build.tslint.isEnabled = () => isProduction;
-build.webpack.isEnabled = () => isProduction;
-
 // Short aliases for subtasks.
 build.task('webpack', build.webpack);
 build.task('tslint', build.tslint);

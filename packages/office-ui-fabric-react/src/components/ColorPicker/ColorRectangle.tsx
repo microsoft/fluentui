@@ -12,7 +12,7 @@ import {
   getFullColorString,
   hsv2hex
 } from './colors';
-const styles: any = require('./ColorPicker.scss');
+import styles = require('./ColorPicker.scss');
 
 export interface IColorRectangleProps {
   color: IColor;

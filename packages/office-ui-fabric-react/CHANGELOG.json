@@ -2,6 +2,130 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "2.10.5",
+      "tag": "office-ui-fabric-react_v2.10.5",
+      "date": "Sat, 01 Apr 2017 03:12:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "26f605dfe92f82b11dec6bf9c46bbd9cb71f0d8c",
+            "comment": "Dialog: Removed IE9 lineheight hacks so that lineheight wouldn't affect internal components"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.10.4",
+      "tag": "office-ui-fabric-react_v2.10.4",
+      "date": "Thu, 30 Mar 2017 21:04:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "99589edbaff0a68e9c3c6097a3b7be8d058d7c18",
+            "comment": "Overlay: disabling body scroll on show to prevent scrolling under the overlay."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "7db92fad67ae00a7c73932e97334fd4b8aa269c7",
+            "comment": "DocumentCard: Personas rendered within look correct."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=1.2.0-0 <2.0.0-0` to `1.4.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^1.1.0` to `^1.4.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.10.3",
+      "tag": "office-ui-fabric-react_v2.10.3",
+      "date": "Wed, 29 Mar 2017 19:43:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "1d10781f6e6ca9c0962d7ba05349af2719df9bb6",
+            "comment": "DocumentCard: Persona import was not AMD friendly."
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.10.2",
+      "tag": "office-ui-fabric-react_v2.10.2",
+      "date": "Wed, 29 Mar 2017 18:15:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "gitjain <alreut@yahoo.com>",
+            "commit": "1fd89d34202965e71ea107b3d2a3b4fee131fdbb",
+            "comment": "FocusZone: Adding support for default browser behavior when pressing alt + a key."
+          },
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "fc7cd7df4a12ca6a7f6f4f64a984a971b324262d",
+            "comment": "Chaning scss imports to use typescript `import` instead of `require` so that lib-amd build actually imports via AMD require and not commonjs require."
+          },
+          {
+            "author": "gitjain <alreut@yahoo.com>",
+            "commit": "d3ddbf576c4774fe8654b803d63e8f4485a19129",
+            "comment": "PeoplePicker: Adding changes for multiple selection onChange "
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `1.3.3` to `1.3.4`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.10.1",
+      "tag": "office-ui-fabric-react_v2.10.1",
+      "date": "Wed, 29 Mar 2017 15:10:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Aniket Handa <atneik@users.noreply.github.com>",
+            "commit": "9948d0be050b5a760c5ead7b8b5d88181182487d",
+            "comment": "ChoiceGroup: Update styles"
+          }
+        ]
+      }
+    },
+    {
+      "version": "2.10.0",
+      "tag": "office-ui-fabric-react_v2.10.0",
+      "date": "Wed, 29 Mar 2017 03:18:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "59341f74c11434ded725c28ea25be5dcc4fb0be9",
+            "comment": "ChoiceGroup: adding `selectedKey` and `defaultSelectedKey` to provide a way to control selection, other than to micromanage the `checked` boolean in individual options."
+          },
+          {
+            "author": "lju <lydiautkin@outlook.com>",
+            "commit": "0c124e9838515aec76aeb23bd69afdff99881955",
+            "comment": "Persona: Added a 28px size"
+          }
+        ],
+        "patch": [
+          {
+            "author": "gitjain <alreut@yahoo.com>",
+            "commit": "9faf8799caee921e2b89ad7194ed934bd5f42a0c",
+            "comment": "DocumentCardActivity: Changes made to fix the default color to Persona"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.9.0",
       "tag": "office-ui-fabric-react_v2.9.0",
       "date": "Tue, 28 Mar 2017 16:11:18 GMT",

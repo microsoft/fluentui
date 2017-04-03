@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "1.3.4",
+      "tag": "@uifabric/example-app-base_v1.3.4",
+      "date": "Wed, 29 Mar 2017 18:15:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "fc7cd7df4a12ca6a7f6f4f64a984a971b324262d",
+            "comment": "Chaning scss imports to use typescript `import` instead of `require` so that lib-amd build actually imports via AMD require and not commonjs require."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.3.3",
       "tag": "@uifabric/example-app-base_v1.3.3",
       "date": "Tue, 28 Mar 2017 03:05:36 GMT",
