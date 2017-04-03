@@ -16,7 +16,7 @@ describe('warnDeprecations', () => {
   afterEach(() => setWarningCallback(undefined));
 
   it('does not warn when unnecessary', () => {
-    warnDeprecations('Foo', { bar: 1 }, { 'foo': null });
+    warnDeprecations('Foo', { bar: 1 }, { 'foo': null } as any);
     expect(_lastWarning).equals(undefined);
   });
 
@@ -45,7 +45,7 @@ describe('warnMutuallyExclusive', () => {
   });
 
   it('can warn on mutual exlusive props', () => {
-    warnMutuallyExclusive('Foo', { foo: 1, bar: 1 }, { 'foo': 'bar' });
+    warnMutuallyExclusive('Foo', { foo: 1, bar: 1 }, { 'foo': 'bar' } as any);
     expect(_lastWarning).equals(`Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`);
   });
 });
