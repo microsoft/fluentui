@@ -1,9 +1,10 @@
 import { Casper, IPhantomCSS } from '../../visualtest/PhantomCssInterface';
+import { baseUrl } from '../../common/VisualTest'
 declare var phantomcss: IPhantomCSS;
 declare var casper: Casper;
 /* tslint:disable:no-function-expression */
 casper.
-  start('http://localhost:8080/#/Button').
+  start(baseUrl + 'button').
   then(function () {
     phantomcss.screenshot('#DefaultButton', 'Button_not_pressed');
   }).then(function () {

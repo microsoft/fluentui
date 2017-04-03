@@ -25,6 +25,7 @@ let visualTestClean = build.subTask('visualTestClean', (gulp, options, done) => 
 
 let visualTest = build.subTask('visualtest', (gulp, options, done) => {
   gulpConnect.server({
+    port: 43210,
     livereload: false,
     directoryListing: false
   });
