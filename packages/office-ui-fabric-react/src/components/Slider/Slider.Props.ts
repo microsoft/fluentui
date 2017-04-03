@@ -1,9 +1,15 @@
 import * as React from 'react';
 
+export interface ISlider {
+  value: number;
+
+  focus: () => void;
+}
+
 export interface ISliderProps {
   /**
-   * Optional way to fetch the ISlider interface. Use this instead of ref, to avoid accessing higher-order component
-   * wrappers rather than the ISlider interface.
+   * Optional callback to access the ISlider interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
    */
   componentRef?: (component: ISlider) => void;
 
@@ -74,8 +80,3 @@ export interface ISliderProps {
   buttonProps?: React.HTMLProps<HTMLButtonElement>;
 }
 
-export interface ISlider {
-  value: number;
-
-  focus: () => void;
-}

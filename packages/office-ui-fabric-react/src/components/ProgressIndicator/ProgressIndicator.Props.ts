@@ -1,4 +1,15 @@
+import * as React from 'react';
+
+export interface IProgressIndicator {
+
+}
+
 export interface IProgressIndicatorProps {
+  /**
+   * Optional callback to access the IProgressIndicator interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IProgressIndicator) => void;
 
   /**
    * Class name to apply to the root in addition to ms-ProgressIndicator.

@@ -16,8 +16,8 @@ export interface ICheckbox {
  */
 export interface ICheckboxProps extends React.HTMLProps<HTMLElement | HTMLInputElement> {
   /**
-   * Optional way to fetch the IButton interface. Use this instead of ref, to avoid accessing higher-order component
-   * wrappers rather than the IButton interface.
+   * Optional callback to access the ICheckbox interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
    */
   componentRef?: (component: ICheckbox) => void;
 

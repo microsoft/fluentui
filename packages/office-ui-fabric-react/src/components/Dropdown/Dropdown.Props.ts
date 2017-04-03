@@ -2,7 +2,17 @@ import * as React from 'react';
 import { IRenderFunction } from '../../Utilities';
 import { Dropdown } from './Dropdown';
 
+export interface IDropdown {
+
+}
+
 export interface IDropdownProps extends React.Props<Dropdown> {
+  /**
+   * Optional callback to access the IDropdown interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IDropdown) => void;
+
   /**
    * Descriptive label for the Dropdown
    */
