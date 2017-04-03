@@ -5,13 +5,13 @@ import * as ReactDOM from 'react-dom';
 import { VisualTestState } from './VisualTestState';
 import { Route, Router } from './utilities/router/index';
 import { setBaseUrl } from '@uifabric/utilities/lib/resources';
-
+import './VisualTestRoot.scss';
 setBaseUrl('./dist/');
 
 let rootElement;
 let currentBreakpoint;
 let scrollDistance;
-let requireContext = require.context('./components', true, /visualtestpage$/);
+let requireContext = require.context('./components', true, /Page.visualtest$/);
 
 // This is mostly taken from the react-website project.
 
@@ -49,9 +49,11 @@ function _onLoad() {
   rootElement = rootElement || document.getElementById('content');
 
   ReactDOM.render(
-    <Router onNewRouteLoaded={ _routerDidMount }>
-      { _getAppRoutes() }
-    </Router>,
+    <div style={ { display: 'inline-block' } }>
+      <Router onNewRouteLoaded={ _routerDidMount }>
+        { _getAppRoutes() }
+      </Router>
+    </div>,
     rootElement);
 }
 
@@ -62,7 +64,7 @@ function _getAppRoutes() {
   VisualTestState.componentPath.forEach((path, pathIndex) => {
     let componentNameIndex = path.lastIndexOf('/');
     let name = path.substr(componentNameIndex + 1);
-    let url = name.substr(0, name.lastIndexOf('.visualtestpage'));
+    let url = name.substr(0, name.lastIndexOf('Page.visualtest'));
     routes.push(
       <Route
         key={ pathIndex }
@@ -74,7 +76,6 @@ function _getAppRoutes() {
 
 function getPath(path) {
   return (cb => require.ensure([], () => cb((requireContext(path) as any).default)));
-  // return cb => require.ensure([], (require) => cb(require<any>('./components/' + path + '/.visualtestpage').default));
 }
 
 function _onUnload() {

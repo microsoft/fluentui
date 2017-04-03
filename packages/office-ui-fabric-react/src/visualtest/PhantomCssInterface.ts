@@ -1,4 +1,4 @@
-// This whole file is a terrible hack.
+// This is a temporary hack and should be changed as soon as possible.
 // I'm not sure the cause of these errors but they are as follows:
 // PhantomCSS causes the compiler to throw an error because it cannot find resemble.
 // PhantomJS causes an error because it contains a duplicate definition of require which conflicts

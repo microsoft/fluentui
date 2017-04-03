@@ -6,9 +6,11 @@ import * as React from 'react';
 export default class ButtonVPage extends React.Component<any, any> {
   public render() {
     let iconName: IconName = 'Snow';
-    return <div>
+    return <div >
       <DefaultButton id='DefaultButton'> I'm a button! </DefaultButton>
-      <IconButton id={ 'IconButton' } icon={ iconName } />
+      <div style={ { backgroundColor: 'white' } }>
+        <IconButton id={ 'IconButton' } icon={ iconName } />
+      </div>
     </div>;
   }
 }
