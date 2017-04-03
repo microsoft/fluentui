@@ -35,6 +35,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     preventDismissOnScroll: false,
     isBeakVisible: true,
     beakWidth: 16,
+    beakColor: "#ffffff",
     gapSpace: 16,
     directionalHint: DirectionalHint.bottomAutoEdge
   };
@@ -96,7 +97,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       isBeakVisible,
       beakStyle,
       children,
-      beakWidth } = this.props;
+      beakWidth,
+      beakColor } = this.props;
     let { positions } = this.state;
     let beakStyleWidth = beakWidth;
 
@@ -110,7 +112,8 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       top: positions && positions.beakPosition ? positions.beakPosition.top : BEAK_ORIGIN_POSITION.top,
       left: positions && positions.beakPosition ? positions.beakPosition.left : BEAK_ORIGIN_POSITION.left,
       height: beakStyleWidth,
-      width: beakStyleWidth
+      width: beakStyleWidth,
+      backgroundColor: beakColor,
     };
 
     let directionalClassName = positions && positions.directionalClassName ? `ms-u-${positions.directionalClassName}` : '';
