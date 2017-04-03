@@ -11,10 +11,10 @@ import { ListGridExample } from './examples/List.Grid.Example';
 import { ListScrollingExample } from './examples/List.Scrolling.Example';
 import { createListItems } from '@uifabric/example-app-base';
 
-const ListBasicExampleCode = require('!raw-loader!./examples/List.Basic.Example.tsx') as string;
-const ListMailExampleCode = require('!raw-loader!./examples/List.Mail.Example.tsx') as string;
-const ListGridExampleCode = require('!raw-loader!./examples/List.Grid.Example.tsx') as string;
-const ListScrollingExampleCode = require('!raw-loader!./examples/List.Scrolling.Example.tsx') as string;
+const ListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Basic.Example.tsx') as string;
+const ListMailExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Mail.Example.tsx') as string;
+const ListGridExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Grid.Example.tsx') as string;
+const ListScrollingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Scrolling.Example.tsx') as string;
 
 let _cachedItems;
 
@@ -49,7 +49,7 @@ export class ListPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/lib/components/List/List.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/List/List.Props.ts')
             ] }
           />
         }

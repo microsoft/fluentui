@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "TextField: Fix examples and comments",
+      "comment": "Removing TypeScript files from being binplaced within the lib folder.",
       "type": "patch"
     },
     {
@@ -16,5 +16,5 @@
       "type": "none"
     }
   ],
-  "email": "hross@hross.net"
+  "email": "dzearing@microsoft.com"
 }

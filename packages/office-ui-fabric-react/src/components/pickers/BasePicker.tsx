@@ -15,7 +15,7 @@ import { SuggestionsController } from './Suggestions/SuggestionsController';
 import { IBasePickerProps } from './BasePicker.Props';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 import { IPickerItemProps } from './PickerItem.Props';
-const styles: any = require('./BasePicker.scss');
+import styles = require('./BasePicker.scss');
 
 export interface IBasePickerState {
   items?: any;
@@ -436,7 +436,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
     this.selection.setItems(newItems);
 
-    this.setState({ items: newItems }, () => this.resetFocus(index));
+    this.setState({ items: newItems }, () => {
+      this.resetFocus(index);
+      this.onChange();
+    });
   }
 
   // This is protected because we may expect the backspace key to work differently in a different kind of picker.

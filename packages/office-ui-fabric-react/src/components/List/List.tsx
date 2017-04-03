@@ -293,7 +293,7 @@ export class List extends BaseComponent<IListProps, IListState> {
     let divProps = getNativeProps(this.props, divProperties);
 
     // assign list if no role
-    role = role || 'list';
+    role = (role === undefined) ? 'list' : role;
 
     for (let i = 0; i < pages.length; i++) {
       pageElements.push(this._renderPage(pages[i]));
@@ -314,14 +314,18 @@ export class List extends BaseComponent<IListProps, IListState> {
     let pageStyle = this._getPageStyle(page);
 
     // only assign list item role if no role is assigned
-    role = role ? null : 'listitem';
+    role = (role === undefined) ? 'listitem' : null;
 
     for (let i = 0; page.items && i < page.items.length; i++) {
       let item = page.items[i];
-      let itemKey = (item ? item.key : null);
+      const index = page.startIndex + i;
+      let itemKey =
+        this.props.getKey
+          ? this.props.getKey(item, index)
+          : item && item.key;
 
       if (itemKey === null || itemKey === undefined) {
-        itemKey = page.startIndex + i;
+        itemKey = index;
       }
 
       cells.push(

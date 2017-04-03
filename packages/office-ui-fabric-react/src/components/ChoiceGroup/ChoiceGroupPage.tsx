@@ -9,9 +9,9 @@ import { ChoiceGroupBasicExample } from './examples/ChoiceGroup.Basic.Example';
 import { ChoiceGroupImageExample } from './examples/ChoiceGroup.Image.Example';
 import { ChoiceGroupIconExample } from './examples/ChoiceGroup.Icon.Example';
 
-const ChoiceGroupBasicExampleCode = require('!raw-loader!./examples/ChoiceGroup.Basic.Example.tsx') as string;
-const ChoiceGroupImageExampleCode = require('!raw-loader!./examples/ChoiceGroup.Image.Example.tsx') as string;
-const ChoiceGroupIconExampleCode = require('!raw-loader!./examples/ChoiceGroup.Icon.Example.tsx') as string;
+const ChoiceGroupBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Basic.Example.tsx') as string;
+const ChoiceGroupImageExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Image.Example.tsx') as string;
+const ChoiceGroupIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Icon.Example.tsx') as string;
 
 export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -35,7 +35,7 @@ export class ChoiceGroupPage extends React.Component<IComponentDemoPageProps, {}
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/lib/components/ChoiceGroup/ChoiceGroup.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/ChoiceGroup.Props.ts')
             ] }
           />
         }

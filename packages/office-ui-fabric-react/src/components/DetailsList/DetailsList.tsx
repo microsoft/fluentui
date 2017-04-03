@@ -30,7 +30,7 @@ import {
   SelectionZone
 } from '../../utilities/selection/index';
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
-const styles: any = require('./DetailsList.scss');
+import styles = require('./DetailsList.scss');
 
 export interface IDetailsListState {
   lastWidth?: number;
@@ -195,7 +195,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       ariaLabel,
       ariaLabelForGrid,
       rowElementEventMap,
-      shouldApplyApplicationRole = false
+      shouldApplyApplicationRole = false,
+      getKey
     } = this.props;
     let {
       adjustedColumns,
@@ -211,7 +212,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     let groupNestingDepth = this._getGroupNestingDepth();
     let additionalListProps = {
       renderedWindowsAhead: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_AHEAD,
-      renderedWindowsBehind: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_BEHIND
+      renderedWindowsBehind: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_BEHIND,
+      getKey
     };
     let selectAllVisibility = SelectAllVisibility.none; // for SelectionMode.none
     if (selectionMode === SelectionMode.single) {
@@ -300,6 +302,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                   />
                 ) : (
                     <List
+                      role={ null }
                       items={ items }
                       onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex) }
                       { ...additionalListProps }

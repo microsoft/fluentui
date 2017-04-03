@@ -13,6 +13,12 @@ let rules = Object.assign(
 );
 build.tslint.setConfig({ lintConfig: { rules } });
 
+// Use css modules.
+build.sass.setConfig({
+  useCSSModules: true,
+  moduleExportName: ''
+});
+
 // Custom build steps.
 build.task('tslint', build.tslint);
 
