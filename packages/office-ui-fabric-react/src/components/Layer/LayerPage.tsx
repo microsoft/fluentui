@@ -9,8 +9,8 @@ import {
 import { LayerBasicExample } from './examples/Layer.Basic.Example';
 import { LayerHostedExample } from './examples/Layer.Hosted.Example';
 
-const LayerBasicExampleCode = require('!raw-loader!./examples/Layer.Basic.Example.tsx') as string;
-const LayerHostedExampleCode = require('!raw-loader!./examples/Layer.Hosted.Example.tsx') as string;
+const LayerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Layer/examples/Layer.Basic.Example.tsx') as string;
+const LayerHostedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Layer/examples/Layer.Hosted.Example.tsx') as string;
 
 export class LayerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -31,7 +31,7 @@ export class LayerPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/lib/components/Layer/Layer.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/Layer.Props.ts')
             ] }
           />
         }
