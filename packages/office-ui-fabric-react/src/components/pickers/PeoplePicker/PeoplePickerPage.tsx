@@ -8,7 +8,7 @@ import {
 } from '@uifabric/example-app-base';
 import { PeoplePickerTypesExample } from './examples/PeoplePicker.Types.Example';
 
-const PeoplePickerTypesExampleCode = require('!raw-loader!./examples/PeoplePicker.Types.Example.tsx') as string;
+const PeoplePickerTypesExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/examples/PeoplePicker.Types.Example.tsx') as string;
 
 export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -26,7 +26,7 @@ export class PeoplePickerPage extends React.Component<IComponentDemoPageProps, {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/lib/components/pickers/BasePicker.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/BasePicker.Props.ts')
             ] }
           />
         }
