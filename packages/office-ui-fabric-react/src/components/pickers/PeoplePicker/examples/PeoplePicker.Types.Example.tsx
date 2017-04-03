@@ -17,20 +17,32 @@ import {
   NormalPeoplePicker
 } from 'office-ui-fabric-react/lib/Pickers';
 import { IPersonaWithMenu } from 'office-ui-fabric-react/lib/components/pickers/PeoplePicker/PeoplePickerItems/PeoplePickerItem.Props';
-import { people } from './PeoplePickerExampleData';
+import { people, mostRecentlyUsed } from './PeoplePickerExampleData';
 import './PeoplePicker.Types.Example.scss';
 
 export interface IPeoplePickerExampleState {
   currentPicker?: number | string;
   delayResults?: boolean;
-  peopleList: any;
+  peopleList: IPersonaProps[];
+  mostRecentlyUsed: IPersonaProps[];
 }
 
 const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsHeaderText: 'Suggested People',
+  mostRecentlyUsedHeaderText: 'Suggested Contacts',
   noResultsFoundText: 'No results found',
-  loadingText: 'Loading'
+  loadingText: 'Loading',
+  searchingText: 'searching for stuff'
 };
+
+const limitedSearchAdditionalProps: IBasePickerSuggestionsProps = {
+  searchForMoreText: 'Search directory',
+  resultsMaximumNumber: 10,
+  resultsFooterFull: 'Top 10 results',
+  resultsFooter: 'No additional results'
+}
+
+const limitedSearchSuggestionProps: IBasePickerSuggestionsProps = assign(limitedSearchAdditionalProps, suggestionProps);
 
 export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerExampleState> {
   private contextualMenuItems: IContextualMenuItem[] = [
@@ -76,7 +88,8 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     this.state = {
       currentPicker: 1,
       delayResults: false,
-      peopleList: peopleList
+      peopleList: peopleList,
+      mostRecentlyUsed: mostRecentlyUsed
     };
   }
 
@@ -129,10 +142,12 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     return (
       <ListPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
+        onInputFocus={ this._returnMostRecentlyUsed }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
         className={ 'ms-PeoplePicker' }
         pickerSuggestionsProps={ suggestionProps }
         key={ 'list' }
+        onRemoveSuggestion={ this._onRemoveSuggestion }
       />
     );
   }
@@ -141,6 +156,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     return (
       <NormalPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
+        onInputFocus={ this._returnMostRecentlyUsed }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
         pickerSuggestionsProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
@@ -154,6 +170,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     return (
       <CompactPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
+        onInputFocus={ this._returnMostRecentlyUsed }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
         pickerSuggestionsProps={ suggestionProps }
         className={ 'ms-PeoplePicker' }
@@ -166,21 +183,22 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     return (
       <CompactPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
+        onInputFocus={ this._returnMostRecentlyUsed }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
         className={ 'ms-PeoplePicker' }
         defaultSelectedItems={ people.splice(0, 3) }
         key={ 'list' }
         pickerSuggestionsProps={ suggestionProps }
+        onRemoveSuggestion={ this._onRemoveSuggestion }
       />
     );
   }
 
   public _renderLimitedSearch() {
-    let limitedSearchSuggestionProps = suggestionProps;
-    limitedSearchSuggestionProps.searchForMoreText = 'Load all Results';
     return (
       <CompactPeoplePicker
         onResolveSuggestions={ this._onFilterChangedWithLimit }
+        onInputFocus={ this._returnMostRecentlyUsed }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
         className={ 'ms-PeoplePicker' }
         onGetMoreResults={ this._onFilterChanged }
@@ -192,13 +210,20 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
 
   @autobind
   private _onRemoveSuggestion(item: IPersonaProps): void {
-    let { peopleList } = this.state;
-    let index: number = peopleList.indexOf(item);
+    let { peopleList, mostRecentlyUsed } = this.state;
+    let indexPeopleList: number = peopleList.indexOf(item);
+    let indexMostRecentlyUsed: number = mostRecentlyUsed.indexOf(item);
 
-    if (index >= 0) {
-      let newPeople: any[] = peopleList.slice(0, index).concat(peopleList.slice(index + 1));
+    if (indexPeopleList >= 0) {
+      let newPeople: IPersonaProps[] = peopleList.slice(0, indexPeopleList).concat(peopleList.slice(indexPeopleList + 1));
 
       this.setState({ peopleList: newPeople });
+    }
+
+    if (indexMostRecentlyUsed >= 0) {
+      let newPeople: IPersonaProps[] = mostRecentlyUsed.slice(0, indexMostRecentlyUsed).concat(mostRecentlyUsed.slice(indexMostRecentlyUsed + 1));
+
+      this.setState({ mostRecentlyUsed: newPeople });
     }
   }
 
@@ -214,6 +239,11 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     } else {
       return [];
     }
+  }
+
+  @autobind
+  private _returnMostRecentlyUsed(): IPersonaProps[] {
+    return this.state.mostRecentlyUsed;
   }
 
   @autobind

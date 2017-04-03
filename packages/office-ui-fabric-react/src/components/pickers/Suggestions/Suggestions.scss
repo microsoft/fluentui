@@ -9,7 +9,7 @@
 
   &:hover {
     .suggestionsItem {
-      background: $ms-color-neutralLight;
+      background: $ms-color-neutralLighter;
     }
 
     .suggestionsRemoveButton {
@@ -22,6 +22,7 @@
   box-sizing: border-box;
   width: 100%;
   height: auto;
+  @include focus-border();
 
   @include text-align(left);
   @include padding(4px, 50px, 6px, 20px);
@@ -32,7 +33,7 @@
   position: relative;
 
   &.suggestionsItemIsSuggested {
-    background: $ms-color-neutralQuaternary;
+    background: $ms-color-neutralLight;
     &:hover {
       background: $ms-color-neutralQuaternaryAlt;
     }
@@ -41,9 +42,12 @@
 
 .searchMoreButton {
   @include button-reset();
-  height: auto;
-  text-align: center;
   margin: 0;
+  @include padding-left(20px);
+  position: relative;
+  border-top: 1px solid $ms-color-neutralLight;
+  height: 40px;
+  @include text-align(left);
   width: 100%;
   &:hover {
       background-color: $ms-color-neutralLight;
@@ -54,12 +58,22 @@
   &:active {
       background-color: $ms-color-themeLight;
   }
+
+  :global(.ms-Button-icon) {
+    font-size: 16px;
+    width: 25px;
+  }
+
+  :global(.ms-Button-label) {
+    @include margin(0, 4px, 0, 9px);
+  }
 }
 
 .suggestionsTitle {
   color: $ms-color-themePrimary;
   font-size: $ms-font-size-s;
-  text-align: center;
+  @include text-align(left);
+  @include padding-left(24px);
   text-transform: uppercase;
   line-height: 40px;
   border-bottom: 1px solid $ms-color-neutralLight;
@@ -106,6 +120,7 @@
   width: 50px;
 
   &:hover {
-    background: $ms-color-neutralTertiaryAlt;
+    color: $ms-color-neutralDark;
+    background: $ms-color-neutralLight;
   }
 }

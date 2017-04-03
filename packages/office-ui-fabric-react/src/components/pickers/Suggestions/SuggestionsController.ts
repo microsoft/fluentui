@@ -79,7 +79,6 @@ export class SuggestionsController<T> {
     this.suggestions.splice(index, 1);
   }
 
-
   private _convertSuggestionsToSuggestionItems(suggestions: any[]): ISuggestionModel<T>[] {
     let converted: ISuggestionModel<T>[] = [];
     suggestions.forEach((suggestion: any) => converted.push({ item: suggestion, selected: false }));

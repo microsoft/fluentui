@@ -63,6 +63,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
   public render() {
     let {
       suggestionsHeaderText,
+      mostRecentlyUsedHeaderText,
       searchForMoreText,
       className,
       moreSuggestionsAvailable,
@@ -72,7 +73,12 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       isSearching,
       loadingText,
       onRenderNoResultFound,
-      searchingText
+      searchingText,
+      isMostRecentlyUsedVisible,
+      resultsMaximumNumber,
+      resultsFooterFull,
+      resultsFooter,
+      isResultsFooterVisible
     } = this.props;
 
     let noResults: () => JSX.Element = () => {
@@ -82,14 +88,16 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
         </div> : null;
     };
 
+    let headerText = isMostRecentlyUsedVisible && mostRecentlyUsedHeaderText ? mostRecentlyUsedHeaderText : null;
+    let footerTitle = (suggestions.length >= resultsMaximumNumber) ? resultsFooterFull : resultsFooter;
     return (
       <div className={ css(
         'ms-Suggestions',
         className ? className : '',
         styles.root) }>
-        { suggestionsHeaderText ?
+        { headerText ?
           (<div className={ css('ms-Suggestions-title', styles.suggestionsTitle) }>
-            { suggestionsHeaderText }
+            { headerText }
           </div>) : (null) }
         { isLoading && (
           <Spinner
@@ -112,8 +120,14 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
         { isSearching ?
           (<Spinner
             className={ css('ms-Suggestions-spinner', styles.suggestionsSpinner) }
-            label={ searchingText }
+            label={ this.props.searchingText }
           />) : (null)
+        }
+        {
+          !moreSuggestionsAvailable && !isMostRecentlyUsedVisible && !isSearching ?
+            (<div className={ css('ms-Suggestions-title', styles.suggestionsTitle) }>
+              { footerTitle }
+            </div>) : (null)
         }
       </div>
     );
@@ -136,8 +150,13 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
     let {
       suggestions,
       onRenderSuggestion,
-      suggestionsItemClassName } = this.props;
+      suggestionsItemClassName,
+      resultsMaximumNumber } = this.props;
     let TypedSuggestionsItem = this.SuggestionsItemOfProperType;
+
+    if (resultsMaximumNumber) {
+      suggestions = suggestions.slice(0, resultsMaximumNumber);
+    }
 
     return (
       <div

@@ -22,8 +22,10 @@ export interface IBasePickerState {
   suggestedDisplayValue?: string;
   moreSuggestionsAvailable?: boolean;
   isSearching?: boolean;
+  isMostRecentlyUsedVisible?: boolean;
   suggestionsVisible?: boolean;
   suggestionsLoading?: boolean;
+  isResultsFooterVisible?: boolean;
 }
 
 export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> {
@@ -51,6 +53,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.state = {
       items: items,
       suggestedDisplayValue: '',
+      isMostRecentlyUsedVisible: false,
       moreSuggestionsAvailable: false,
       isSearching: false
     };
@@ -144,7 +147,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           moreSuggestionsAvailable={ this.state.moreSuggestionsAvailable }
           isLoading={ this.state.suggestionsLoading }
           isSearching={ this.state.isSearching }
-          searchingText={ `Searching for '${this.input.value}'` }
+          isMostRecentlyUsedVisible={ this.state.isMostRecentlyUsedVisible }
+          isResultsFooterVisible={ this.state.isResultsFooterVisible }
           { ...this.props.pickerSuggestionsProps }
         />
       </Callout>
@@ -195,6 +199,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.forceUpdate();
   }
 
+  protected onEmptyInputFocus() {
+    let suggestions: T[] = this.props.onInputFocus();
+    let suggestionsArray: T[] = suggestions as T[];
+    if (Array.isArray(suggestionsArray)) {
+      this.suggestionStore.updateSuggestions(suggestionsArray);
+    }
+  }
+
   protected updateValue(updatedValue: string) {
     let suggestions: T[] | PromiseLike<T[]> = this.props.onResolveSuggestions(updatedValue, this.state.items);
     let suggestionsArray: T[] = suggestions as T[];
@@ -205,11 +217,16 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     if (Array.isArray(suggestionsArray)) {
       this.resolveNewValue(updatedValue, suggestionsArray);
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
+      this.setState({
+        suggestionsLoading: true
+      });
+      // Why do we set a timer delay here?  Shouldn't we set the suggestionsLoading to true ASAP?
       if (!this.loadingTimer) {
-        this.loadingTimer = this._async.setTimeout(() => this.setState({
-          suggestionsLoading: true
-        }), 500);
+        this.loadingTimer = this._async.setTimeout(() => console.log('test'), 500);
       }
+
+      // Clear suggestions
+      this.suggestionStore.updateSuggestions([]);
 
       this.setState({
         suggestionsVisible: this.input.value !== '' && this.input.inputElement === document.activeElement
@@ -252,7 +269,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected onInputChange(value: string) {
     this.updateValue(value);
-    this.setState({ moreSuggestionsAvailable: true });
+    this.setState({
+      moreSuggestionsAvailable: true,
+      isMostRecentlyUsedVisible: false
+    });
   }
 
   @autobind
@@ -272,7 +292,20 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected onInputFocus(ev: React.FocusEvent<HTMLInputElement | BaseAutoFill>) {
     this.selection.setAllSelected(false);
-    this.setState({ suggestionsVisible: true });
+    if (this.input.value === '') {
+      this.onEmptyInputFocus();
+      this.setState({
+        isMostRecentlyUsedVisible: true,
+        moreSuggestionsAvailable: false
+      });
+    } else {
+      this.setState({
+        isMostRecentlyUsedVisible: false
+      });
+    }
+    this.setState({
+      suggestionsVisible: true
+    })
   }
 
   @autobind
@@ -336,9 +369,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   @autobind
   protected onGetMoreResults() {
+    console.log(this.state.isSearching);
     this.setState({
       isSearching: true
     }, () => {
+      console.log(this.state.isSearching);
       if (this.props.onGetMoreResults) {
         let suggestions: T[] | PromiseLike<T[]> = this.props.onGetMoreResults(this.input.value, this.state.items);
         let suggestionsArray: T[] = suggestions as T[];
@@ -350,13 +385,17 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         } else if (suggestionsPromiseLike.then) {
           suggestionsPromiseLike.then((newSuggestions: T[]) => {
             this.updateSuggestions(newSuggestions)
-            this.setState({ isSearching: false });
+            this.setState({ isSearching: false },
+              () => {
+                console.log(this.state.isSearching);
+              });
           });
         }
       }
       this.input.focus();
       this.setState({
-        moreSuggestionsAvailable: false
+        moreSuggestionsAvailable: false,
+        isResultsFooterVisible: true
       });
     });
   }

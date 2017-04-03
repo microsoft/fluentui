@@ -4,7 +4,6 @@ export const people: IPersonaProps[] = [
   {
     key: 0,
     imageUrl: './images/persona-female.png',
-    imageInitials: 'PV',
     primaryText: 'Annie Lindqvist',
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
@@ -14,7 +13,6 @@ export const people: IPersonaProps[] = [
   {
     key: 1,
     imageUrl: './images/persona-male.png',
-    imageInitials: 'AR',
     primaryText: 'Aaron Reid',
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
@@ -240,6 +238,168 @@ export const people: IPersonaProps[] = [
     secondaryText: 'UX Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.offline
+  },
+  {
+    key: 14,
+    imageUrl: './images/persona-male.png',
+    imageInitials: 'MS',
+    primaryText: 'Maor Shariett',
+    secondaryText: 'Design Developer',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 3:00pm',
     presence: PersonaPresence.online
   },
+  {
+    key: 14,
+    imageUrl: './images/persona-female.png',
+    imageInitials: 'AL',
+    primaryText: 'Alix Lundburg',
+    secondaryText: 'UX Designer',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 3:00pm',
+    presence: PersonaPresence.away
+  },
+  {
+    key: 15,
+    imageUrl: './images/persona-female.png',
+    imageInitials: 'VL',
+    primaryText: 'Valantena Lovric',
+    secondaryText: 'UX Designer',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.busy
+  },
+  {
+    key: 16,
+    imageUrl: './images/persona-female.png',
+    imageInitials: 'VL',
+    primaryText: 'Velatine Lourvric',
+    secondaryText: 'UX Designer',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.online
+  },
+  {
+    key: 16,
+    imageUrl: './images/persona-female.png',
+    imageInitials: 'VL',
+    primaryText: 'Valentyna Lovrique',
+    secondaryText: 'UX Designer',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.busy
+  },
+  {
+    key: 17,
+    imageUrl: './images/persona-female.png',
+    imageInitials: 'AL',
+    primaryText: 'Annie Lindquest',
+    secondaryText: 'UX Designer',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.dnd
+  },
+  {
+    key: 18,
+    imageUrl: './images/persona-female.png',
+    imageInitials: 'AL',
+    primaryText: 'Anne Lindquist',
+    secondaryText: 'UX Designer',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.blocked
+  },
+  {
+    key: 19,
+    imageUrl: './images/persona-female.png',
+    imageInitials: 'AL',
+    primaryText: 'Ann Lindqiest',
+    secondaryText: 'UX Designer',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.online
+  },
+  {
+    key: 20,
+    imageUrl: './images/persona-male.png',
+    imageInitials: 'AR',
+    primaryText: 'Aron Reid',
+    secondaryText: 'UX Designer',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.away
+  },
+  {
+    key: 21,
+    imageUrl: './images/persona-male.png',
+    imageInitials: 'AR',
+    primaryText: 'Aaron Reed',
+    secondaryText: 'UX Designer',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.offline
+  },
+  {
+    key: 21,
+    imageUrl: './images/persona-female.png',
+    imageInitials: 'AL',
+    primaryText: 'Alix Lindberg',
+    secondaryText: 'UX Designer',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.busy
+  },
+  {
+    key: 22,
+    imageUrl: './images/persona-male.png',
+    imageInitials: 'AL',
+    primaryText: 'Alan Lindberg',
+    secondaryText: 'UX Designer',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.busy
+  },
+  {
+    key: 23,
+    imageUrl: './images/persona-male.png',
+    imageInitials: 'MS',
+    primaryText: 'Maor Sharit',
+    secondaryText: 'UX Designer',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.offline
+  },
+  {
+    key: 24,
+    imageUrl: './images/persona-male.png',
+    imageInitials: 'MS',
+    primaryText: 'Maorr Sherit',
+    secondaryText: 'UX Designer',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.online
+  },
+  {
+    key: 25,
+    imageUrl: './images/persona-male.png',
+    imageInitials: 'AL',
+    primaryText: 'Alex Lindbirg',
+    secondaryText: 'Software Developer',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.dnd
+  },
+  {
+    key: 26,
+    imageUrl: './images/persona-male.png',
+    imageInitials: 'AL',
+    primaryText: 'Alex Lindbarg',
+    secondaryText: 'Software Developer',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 4:00pm',
+    presence: PersonaPresence.online
+  }
 ];
+
+export const mostRecentlyUsed: IPersonaProps[] = people.slice(0, 5);

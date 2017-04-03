@@ -24,6 +24,10 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
    */
   suggestionsHeaderText?: string;
   /**
+   * The text that should appear at the top of the most recenty used box.
+   */
+  mostRecentlyUsedHeaderText?: string;
+  /**
    * The text that appears indicating to the user that they can search for more results.
    */
   searchForMoreText?: string;
@@ -69,7 +73,17 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
    */
   searchingText?: string;
 
+  isMostRecentlyUsedVisible?: boolean;
+
   onSuggestionRemove?: (ev?: React.MouseEvent<HTMLElement>, item?: any, index?: number) => void;
+
+  isResultsFooterVisible?: boolean;
+
+  resultsMaximumNumber?: number;
+
+  resultsFooterFull?: string;
+
+  resultsFooter?: string;
 }
 
 export interface ISuggestionItemProps<T> {

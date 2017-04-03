@@ -20,6 +20,10 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    */
   onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
   /**
+   * A callback for what should happen when a user clicks the input.
+   */
+  onInputFocus?: () => T[];
+  /**
    * Initial items that have already been selected and should appear in the people picker.
    */
   defaultSelectedItems?: T[];
@@ -57,7 +61,8 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    */
   onRemoveSuggestion?: (index: number) => void;
 
-  peopleList?: any;
+  searchingText?: string;
+
 }
 
 export interface IBasePickerSuggestionsProps {
@@ -69,6 +74,10 @@ export interface IBasePickerSuggestionsProps {
    * The text that should appear at the top of the suggestion box.
    */
   suggestionsHeaderText?: string;
+  /**
+   * The text that should appear at the top of the most recenty used box.
+   */
+  mostRecentlyUsedHeaderText?: string;
   /**
    * the text that should appear when no results are returned.
    */
@@ -97,4 +106,11 @@ export interface IBasePickerSuggestionsProps {
    * The text to display while the results are loading.
    */
   searchingText?: string;
+
+
+
+  resultsFooterFull?: string;
+  resultsFooter?: string;
+
+  resultsMaximumNumber?: number;
 }
