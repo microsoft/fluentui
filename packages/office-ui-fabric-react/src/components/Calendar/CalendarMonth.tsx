@@ -7,7 +7,7 @@ import {
 import { ICalendarStrings } from './Calendar.Props';
 import { FocusZone } from '../../FocusZone';
 import { addYears, setMonth } from '../../utilities/dateMath/DateMath';
-const styles: any = require('./Calendar.scss');
+import styles = require('./Calendar.scss');
 
 export interface ICalendarMonthProps {
   navigatedDate: Date;

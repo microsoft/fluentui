@@ -7,7 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { MessageBarBasicExample } from './examples/MessageBar.Basic.Example';
 
-const MessageBarBasicExampleCode = require('!raw-loader!./examples/MessageBar.Basic.Example.tsx') as string;
+const MessageBarBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/MessageBar/examples/MessageBar.Basic.Example.tsx') as string;
 
 export class MessageBarPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -25,7 +25,7 @@ export class MessageBarPage extends React.Component<IComponentDemoPageProps, {}>
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/lib/components/MessageBar/MessageBar.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/MessageBar/MessageBar.Props.ts')
             ] }
           />
         }

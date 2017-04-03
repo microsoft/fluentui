@@ -30,7 +30,7 @@ import {
   SelectionZone
 } from '../../utilities/selection/index';
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
-const styles: any = require('./DetailsList.scss');
+import styles = require('./DetailsList.scss');
 
 export interface IDetailsListState {
   lastWidth?: number;
@@ -302,6 +302,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                   />
                 ) : (
                     <List
+                      role={ null }
                       items={ items }
                       onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex) }
                       { ...additionalListProps }
