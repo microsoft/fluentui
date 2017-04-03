@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Callout: Allow Callout to specify beak backgroud color.",
+      "type": "minor"
+    }
+  ],
+  "email": "jechayav@microsoft.com"
+}
