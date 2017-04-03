@@ -72,6 +72,7 @@ export class DragDropHelper implements IDragDropHelper {
     let onDragEnter: (event: DragEvent) => void;
     let onDragEnd: (event: DragEvent) => void;
     let onDrop: (event: DragEvent) => void;
+    let onDragOver: (event: DragEvent) => void;
     let onMouseDown: (event: MouseEvent) => void;
 
     let isDraggable: boolean;
@@ -144,6 +145,14 @@ export class DragDropHelper implements IDragDropHelper {
         onDrop = (event: DragEvent) => {
           this._dragEnterCounts[key] = 0;
           updateDropState(false /* isDropping */, event);
+
+          if (dragDropOptions.onDrop) {
+            dragDropOptions.onDrop(dragDropOptions.context.data, event);
+          }
+        };
+
+        onDragOver = (event: DragEvent) => {
+          event.preventDefault();
         };
 
         this._dragEnterCounts[key] = 0;
@@ -155,13 +164,16 @@ export class DragDropHelper implements IDragDropHelper {
         events.on(root, 'dragleave', onDragLeave);
         events.on(root, 'dragend', onDragEnd);
         events.on(root, 'drop', onDrop);
+        events.on(root, 'dragover', onDragOver);
       }
 
       if (isDraggable) {
         // If the target is draggable, wire up local event listeners for mouse events.
         onMouseDown = this._onMouseDown.bind(this, dragDropTarget);
+        onDragEnd = this._onDragEnd.bind(this, dragDropTarget);
 
         events.on(root, 'mousedown', onMouseDown);
+        events.on(root, 'dragend', onDragEnd);
       }
 
       activeTarget = {
@@ -180,11 +192,13 @@ export class DragDropHelper implements IDragDropHelper {
               events.off(root, 'dragenter', onDragEnter);
               events.off(root, 'dragleave', onDragLeave);
               events.off(root, 'dragend', onDragEnd);
+              events.off(root, 'dragover', onDragOver);
               events.off(root, 'drop', onDrop);
             }
 
             if (isDraggable) {
               events.off(root, 'mousedown', onMouseDown);
+              events.off(root, 'dragend', onDragEnd);
             }
           }
         }
@@ -211,6 +225,13 @@ export class DragDropHelper implements IDragDropHelper {
     }
   }
 
+  private _onDragEnd(target: IDragDropTarget, event: DragEvent) {
+    let { options } = target;
+    if (options.onDragEnd) {
+      options.onDragEnd(options.context.data, event);
+    }
+  }
+
   /**
    * clear drag data when mouse up on body
    */
@@ -227,8 +248,9 @@ export class DragDropHelper implements IDragDropHelper {
       }
 
       if (this._dragData.dropTarget) {
-        // raise dargleave event to let dropTarget know it need to remove dropping style
+        // raise dragleave event to let dropTarget know it need to remove dropping style
         EventGroup.raise(this._dragData.dropTarget.root, 'dragleave');
+        EventGroup.raise(this._dragData.dropTarget.root, 'drop');
       }
     }
     this._dragData = null;
@@ -285,8 +307,7 @@ export class DragDropHelper implements IDragDropHelper {
         let xDiff = this._dragData.clientX - event.clientX;
         let yDiff = this._dragData.clientY - event.clientY;
         if (xDiff * xDiff + yDiff * yDiff >= DISTANCE_FOR_DRAG_SQUARED) {
-          if (this._dragData.dragTarget &&
-            this._selection.isIndexSelected(options.selectionIndex)) {
+          if (this._dragData.dragTarget) {
             this._isDragging = true;
             if (options.onDragStart) {
               options.onDragStart(options.context.data, options.context.index, this._selection.getSelection(), event);

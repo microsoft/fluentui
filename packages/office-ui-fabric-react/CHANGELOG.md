@@ -1,6 +1,25 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 24 Mar 2017 20:25:07 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Mar 2017 16:11:18 GMT and should not be manually modified.
+
+## 2.9.0
+Tue, 28 Mar 2017 16:11:18 GMT
+
+### Minor changes
+
+- DetailsList & List: Use getKey as items render key
+
+## 2.8.0
+Tue, 28 Mar 2017 03:05:36 GMT
+
+### Minor changes
+
+- DetailsList: Implement Drag Drop support
+
+### Patches
+
+- Router: tweaked some of the logic to render component as a fallback if getComponent doesn't immediately return a value.
+- TextField: Fix examples and comments
 
 ## 2.7.1
 Fri, 24 Mar 2017 20:25:07 GMT
