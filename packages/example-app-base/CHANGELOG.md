@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Tue, 28 Mar 2017 03:05:36 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Mar 2017 18:15:29 GMT and should not be manually modified.
+
+## 1.3.4
+Wed, 29 Mar 2017 18:15:29 GMT
+
+### Patches
+
+- Chaning scss imports to use typescript `import` instead of `require` so that lib-amd build actually imports via AMD require and not commonjs require.
 
 ## 1.3.3
 Tue, 28 Mar 2017 03:05:36 GMT

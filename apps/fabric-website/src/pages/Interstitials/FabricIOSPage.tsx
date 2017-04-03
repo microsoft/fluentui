@@ -1,5 +1,5 @@
 import * as React from 'react';
-const styles: any = require('./Interstitials.module.scss');
+import styles = require('./Interstitials.module.scss');
 
 export class FabricIOSPage extends React.Component<any, any> {
   public render() {
