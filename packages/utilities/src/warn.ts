@@ -1,8 +1,8 @@
 let _warningCallback = _warn;
 
-export interface IStringMap {
-  [key: string]: string;
-}
+export type ISettingsMap<T> = {
+  [P in keyof T]: string;
+};
 
 /**
  * Warns when a deprecated props are being used.
@@ -10,13 +10,13 @@ export interface IStringMap {
  * @export
  * @param {string} componentName The name of the component being used.
  * @param {Object} props The props passed into the component.
- * @param {IStringMap} deprecationMap The map of deprecations, where key is the prop name and the value is
+ * @param {ISettingsMap} deprecationMap The map of deprecations, where key is the prop name and the value is
  * either null or a replacement prop name.
  */
-export function warnDeprecations(
+export function warnDeprecations<P>(
   componentName: string,
-  props: Object,
-  deprecationMap: IStringMap): void {
+  props: P,
+  deprecationMap: ISettingsMap<P>): void {
 
   for (const propName in deprecationMap) {
     if (props && propName in props) {
@@ -31,10 +31,10 @@ export function warnDeprecations(
   }
 }
 
-export function warnMutuallyExclusive(
+export function warnMutuallyExclusive<P>(
   componentName: string,
-  props: Object,
-  exclusiveMap: IStringMap): void {
+  props: P,
+  exclusiveMap: ISettingsMap<P>): void {
 
   for (const propName in exclusiveMap) {
     if (props && propName in props && exclusiveMap[propName] in props) {

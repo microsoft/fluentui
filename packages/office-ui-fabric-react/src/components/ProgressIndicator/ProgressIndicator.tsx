@@ -28,9 +28,6 @@ export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}
       'title': 'label'
     });
 
-    this._warnMutuallyExclusive({
-      'selectedKey': 'defaultSelectedKey'
-    });
   }
 
   public render() {

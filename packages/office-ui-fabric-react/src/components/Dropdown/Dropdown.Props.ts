@@ -6,7 +6,7 @@ export interface IDropdownProps extends React.Props<Dropdown> {
   /**
    * Descriptive label for the Dropdown
    */
-  label: string;
+  label?: string;
 
   /**
   * Aria Label for the Dropdown for screen reader users.
