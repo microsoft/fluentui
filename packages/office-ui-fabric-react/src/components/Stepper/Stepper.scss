@@ -1,30 +1,53 @@
 :global {
 
+.arrowBox, .textField,
+.upButton, .downButton, .stepperContainer {
+  outline: none;
+  font-size: 12px;
+}
+
+.stepperContainer {
+  width: 100px;
+  height: 32px;
+}
+
   .arrowBox {
     display: block;
     float: left;
-    height: 20px;
-    border:1px solid #e1e1e1;
+    height: 30px;
+    border: 1px solid #e1e1e1;
+    border-left-width: 0px;
+    cursor: default;
+    padding: 0px;
   }
 
   .textField {
     display: block;
     float: left;
-    height: 16px;
-    width: 48px;
-    border:1px solid #e1e1e1;
+    height: 250px;
+    width: 70px;
     border-right-width: 0px;
+    overflow: hidden;
+    cursor: text;
+    user-select: text;
   }
 
   .upButton, .downButton {
     display: block;
-    height: 10px;
-    width: 20px;
-    border: 1px solid transparent;
-    padding-top: 2px;
+    height: 16px;
+    width: 26px;
+    //border: 1px solid transparent;
+    padding-top: 0px;
     background-color: transparent;
     text-align: center;
     cursor: default;
+  }
+
+    .upButton span, .downButton span {
+    line-height: 6px !important;
+    font-size: 14px;
+    padding-top: 4px;
+    margin: 0px;
   }
 
 }

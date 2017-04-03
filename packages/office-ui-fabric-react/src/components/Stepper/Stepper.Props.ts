@@ -5,6 +5,7 @@ export interface IStepperProps {
   /**
    * The initial value of the Stepper. Use this if you intend for the Stepper to be an uncontrolled component.
    * This value is mutually exclusive to value. Use one or the other.
+   * @default 0
    */
   defaultValue?: number;
 
@@ -43,6 +44,11 @@ export interface IStepperProps {
   ariaLabel?: string;
 
   /**
+   * A list of ids to be used as the label for the Stepper for the benefit of screen readers.
+   */
+  ariaLabelledby?: string;
+
+  /**
    * Whether or not the Stepper is disabled.
    */
   disabled?: boolean;
@@ -51,6 +57,12 @@ export interface IStepperProps {
   * Optional className for Stepper.
   */
   className?: string;
+
+  /**
+   * Acceptable units for spinner (e.g. suffix for the textFeild value), defaults to '' if nothing given here,
+   * otherwise [0] is used by default
+   */
+  validUnitOptions?: string[];
 }
 
 export interface IStepper {

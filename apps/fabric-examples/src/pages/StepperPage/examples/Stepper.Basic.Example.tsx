@@ -9,8 +9,8 @@ export class StepperBasicExample extends React.Component<any, any> {
   public render() {
     return (
       <div className='ms-BasicSteppersExample'>
-        <Label>Stepper</Label>
-        <Stepper defaultValue={ 3 } />
+        <Label htmlFor='stepper' id='stepperLabel'>Stepper</Label>
+        <Stepper ariaLabelledby='stepperLabel' defaultValue={ 3 } />
       </div>
     );
   }
