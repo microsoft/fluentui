@@ -147,3 +147,12 @@ if (isReady) {
 }
 
 window.onunload = _onUnload;
+function addCSSToHeader(fileName) {
+  let headEl = document.head;
+  let linkEl = document.createElement('link');
+  linkEl.type = 'text/css'
+  linkEl.rel = 'stylesheet'
+  linkEl.href = fileName
+  headEl.appendChild(linkEl)
+}
+addCSSToHeader('https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/5.1.0/css/fabric.min.css')
