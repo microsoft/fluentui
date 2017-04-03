@@ -63,9 +63,8 @@ casper.run(function () { casper.test.done(); });
 ```
 3. Add you're test component to VisualTestRootState. You'll just need to add the componentPath.
 
-## Some Common Problems
+## Viewing Tests
+To see your test results navigate to the visualtests folder in packages/office-ui-fabric-react. In the base folder you can see current screenshots. In the Results you can see the results of the tests that were run, including failures and the diff screenshot (screenshot being compared to base).
 
-* Browser methods aren't working.
-  * Using browser methods like getBoundingClientRect won't work when using ReactTestUtils to render a document fragment. It's possible to mock this method out if you need, see the FocusZone unit tests as an example. You can also render the objects inside the actual dom, see [Example Without ReactTestUtils](#basic-example-without-reacttestutils) for more information.
-* My event isn't being triggered.
-  * React uses synthetic events, so you should will need to use the synthetic events. For example ReactTestUtils.Simulate.change(<yourelement>)
+## Updating base screenshot
+To update a base screenshot navigate to visualtest, delete the screenshot you wish to recreate and run gulp visualtest --production again. This will automatically create a new screenshot to be used as base, then check this screenshot into github.
