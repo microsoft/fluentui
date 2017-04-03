@@ -79,4 +79,3 @@ export interface ISliderProps {
    */
   buttonProps?: React.HTMLProps<HTMLButtonElement>;
 }
-
