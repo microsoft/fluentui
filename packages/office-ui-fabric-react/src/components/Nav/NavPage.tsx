@@ -10,10 +10,10 @@ import { NavFabricDemoAppExample } from './examples/Nav.FabricDemoApp.Example';
 import { NavNestedExample } from './examples/Nav.Nested.Example';
 import { NavByKeysExample } from './examples/Nav.ByKeys.Example';
 
-const NavBasicExampleCode = require('!raw-loader!./examples/Nav.Basic.Example.tsx') as string;
-const NavFabricDemoAppExampleCode = require('!raw-loader!./examples/Nav.FabricDemoApp.Example.tsx') as string;
-const NavNestedExampleCode = require('!raw-loader!./examples/Nav.Nested.Example.tsx') as string;
-const NavByKeysExampleCode = require('!raw-loader!./examples/Nav.ByKeys.Example.tsx') as string;
+const NavBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Nav/examples/Nav.Basic.Example.tsx') as string;
+const NavFabricDemoAppExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Nav/examples/Nav.FabricDemoApp.Example.tsx') as string;
+const NavNestedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Nav/examples/Nav.Nested.Example.tsx') as string;
+const NavByKeysExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Nav/examples/Nav.ByKeys.Example.tsx') as string;
 
 export class NavPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -40,7 +40,7 @@ export class NavPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/lib/components/Nav/Nav.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/Nav.Props.ts')
             ] }
           />
         }

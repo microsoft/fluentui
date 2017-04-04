@@ -52,10 +52,6 @@ build.postCopy.setConfig({
     ],
     [path.join(distFolder, 'css')]: [
       'node_modules/office-ui-fabric-core/dist/css/*.*'
-    ],
-    [libFolder]: [
-      'src/**/*.Example.tsx',
-      'src/**/*.Props.ts'
     ]
   }
 });

@@ -4,7 +4,16 @@ import * as React from 'react';
 import { Breadcrumb } from './Breadcrumb';
 import { IRenderFunction } from '../../Utilities';
 
+export interface IBreadcrumb {
+
+}
+
 export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
+  /**
+   * Optional callback to access the IBreadcrumb interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IBreadcrumb) => void;
 
   /**
    * Collection of breadcrumbs to render

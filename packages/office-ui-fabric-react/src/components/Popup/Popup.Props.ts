@@ -3,7 +3,17 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { Popup } from './Popup';
 
+export interface IPopup {
+
+}
+
 export interface IPopupProps extends React.HTMLProps<Popup> {
+  /**
+   * Optional callback to access the IPopup interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IPopup) => void;
+
   /**
    * Aria role for popup
    */

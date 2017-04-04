@@ -6,7 +6,7 @@ import * as ReactDOM from 'react-dom';
 import { Fabric } from '../../Fabric';
 import { ILayerProps } from './Layer.Props';
 import { css, BaseComponent, getDocument, setVirtualParent } from '../../Utilities';
-const styles: any = require('./Layer.scss');
+import styles = require('./Layer.scss');
 
 let _layersByHostId: { [hostId: string]: Layer[] } = {};
 
@@ -32,8 +32,9 @@ export class Layer extends BaseComponent<ILayerProps, {}> {
   }
 
   constructor(props: ILayerProps) {
-    super(props, {
-      // Make sure to deprecate old properties.
+    super(props);
+
+    this._warnDeprecations({
       'onLayerMounted': 'onLayerDidMount'
     });
 

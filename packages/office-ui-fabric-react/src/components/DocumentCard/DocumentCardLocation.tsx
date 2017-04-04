@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { css } from '../../Utilities';
+import { BaseComponent, css } from '../../Utilities';
 import { IDocumentCardLocationProps } from './DocumentCard.Props';
-const styles: any = require('./DocumentCard.scss');
+import styles = require('./DocumentCard.scss');
 
-export class DocumentCardLocation extends React.Component<IDocumentCardLocationProps, any> {
+export class DocumentCardLocation extends BaseComponent<IDocumentCardLocationProps, any> {
   public render() {
     let { location, locationHref, ariaLabel, onClick } = this.props;
 

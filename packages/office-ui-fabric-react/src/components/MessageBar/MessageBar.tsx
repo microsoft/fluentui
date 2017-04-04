@@ -1,19 +1,20 @@
 import * as React from 'react';
 import {
+  BaseComponent,
   DelayedRender,
   css,
   getId
 } from '../../Utilities';
 import { Button, ButtonType } from '../../Button';
 import { IMessageBarProps, MessageBarType } from './MessageBar.Props';
-const styles: any = require('./MessageBar.scss');
+import styles = require('./MessageBar.scss');
 
 export interface IMessageBarState {
   labelId?: string;
   showContent?: boolean;
 }
 
-export class MessageBar extends React.Component<IMessageBarProps, IMessageBarState> {
+export class MessageBar extends BaseComponent<IMessageBarProps, IMessageBarState> {
 
   public static defaultProps: IMessageBarProps = {
     messageBarType: MessageBarType.info,

@@ -1,6 +1,52 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 29 Mar 2017 15:10:15 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Apr 2017 15:18:51 GMT and should not be manually modified.
+
+## 2.11.0
+Tue, 04 Apr 2017 15:18:51 GMT
+
+### Minor changes
+
+- In components which expose a public API such as `Dropdown` which implements `IDropdown`, to access the exact interface we've exposed a `componentRef` property on all components. This property replaces typical `ref={ c => this._component = c }` usage, as componentRef is guaranteed to access the public contract of the component regardless of the higher-order component or decorator wrapping it. If you are accessing the public API of a component, replace your `ref` usage with `componentRef`.
+
+## 2.10.6
+Tue, 04 Apr 2017 03:12:41 GMT
+
+### Patches
+
+- Removing TypeScript files from being binplaced within the lib folder.
+- ToolTip: fix for long tips
+
+## 2.10.5
+Sat, 01 Apr 2017 03:12:59 GMT
+
+### Patches
+
+- Dialog: Removed IE9 lineheight hacks so that lineheight wouldn't affect internal components
+
+## 2.10.4
+Thu, 30 Mar 2017 21:04:29 GMT
+
+### Patches
+
+- Overlay: disabling body scroll on show to prevent scrolling under the overlay.
+- DocumentCard: Personas rendered within look correct.
+
+## 2.10.3
+Wed, 29 Mar 2017 19:43:19 GMT
+
+### Patches
+
+- DocumentCard: Persona import was not AMD friendly.
+
+## 2.10.2
+Wed, 29 Mar 2017 18:15:29 GMT
+
+### Patches
+
+- FocusZone: Adding support for default browser behavior when pressing alt + a key.
+- Chaning scss imports to use typescript `import` instead of `require` so that lib-amd build actually imports via AMD require and not commonjs require.
+- PeoplePicker: Adding changes for multiple selection onChange 
 
 ## 2.10.1
 Wed, 29 Mar 2017 15:10:15 GMT
