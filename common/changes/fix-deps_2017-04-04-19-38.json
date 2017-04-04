@@ -1,0 +1,15 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Updating fabric dependencies to use ranges.",
+      "type": "patch"
+    },
+    {
+      "packageName": "@uifabric/example-app-base",
+      "comment": "Updating fabric dependencies to use ranges.",
+      "type": "patch"
+    }
+  ],
+  "email": "dzearing@microsoft.com"
+}
