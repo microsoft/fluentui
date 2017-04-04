@@ -24,4 +24,3 @@ export class TagPicker extends BasePicker<ITag, ITagPickerProps> {
     onRenderSuggestionsItem: (props: ITag) => <div className={ css('ms-TagItem-TextOveflow', styles.tagItemTextOveflow) }> { props.name } </div>
   };
 }
-
