@@ -13,6 +13,9 @@
   white-space: nowrap;
   cursor: default;
   user-select: none;
+  display:flex;
+  flex-wrap: nowrap;
+  max-width: 100%;
 
   &:hover {
     background: $ms-color-neutralLight;
@@ -30,22 +33,25 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-
-  display: inline-block;
   min-width: 100px;
   margin: 0 8px;
 }
 
 .tagItemClose {
   cursor: pointer;
-
   color: $ms-color-neutralSecondary;
-
   font-size: $ms-font-size-s;
   display: inline-block;
   text-align: center;
   vertical-align: top;
   width: 30px;
   height: 100%;
+  flex-shrink: 0;
 }
 
+.tagItemTextOveflow {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 130px;
+}
