@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css } from '../../Utilities';
+import { BaseComponent, css } from '../../Utilities';
 import styles = require('./Check.scss');
 
 export interface ICheckProps extends React.Props<Check> {
@@ -15,7 +15,7 @@ export interface ICheckProps extends React.Props<Check> {
   isChecked?: boolean;
 }
 
-export class Check extends React.Component<ICheckProps, {}> {
+export class Check extends BaseComponent<ICheckProps, {}> {
   public static defaultProps = {
     isChecked: false
   };

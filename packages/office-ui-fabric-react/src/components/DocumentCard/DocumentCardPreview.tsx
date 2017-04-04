@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IDocumentCardPreviewProps, IDocumentCardPreviewImage } from './DocumentCard.Props';
 import { Image } from '../../Image';
 import {
+  BaseComponent,
   autobind,
   css
 } from '../../Utilities';
@@ -9,7 +10,7 @@ import styles = require('./DocumentCard.scss');
 
 const LIST_ITEM_COUNT = 3;
 
-export class DocumentCardPreview extends React.Component<IDocumentCardPreviewProps, any> {
+export class DocumentCardPreview extends BaseComponent<IDocumentCardPreviewProps, any> {
   public render() {
     let { previewImages } = this.props;
     let style, preview;

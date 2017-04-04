@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  BaseComponent,
   autobind,
   css
 } from '../../Utilities';
@@ -17,7 +18,7 @@ export interface IGroupHeaderState {
   isLoadingVisible: boolean;
 }
 
-export class GroupHeader extends React.Component<IGroupDividerProps, IGroupHeaderState> {
+export class GroupHeader extends BaseComponent<IGroupDividerProps, IGroupHeaderState> {
   constructor(props: IGroupDividerProps) {
     super(props);
 
