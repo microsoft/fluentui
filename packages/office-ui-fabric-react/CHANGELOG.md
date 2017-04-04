@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 04 Apr 2017 03:12:41 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Apr 2017 15:18:51 GMT and should not be manually modified.
+
+## 2.11.0
+Tue, 04 Apr 2017 15:18:51 GMT
+
+### Minor changes
+
+- In components which expose a public API such as `Dropdown` which implements `IDropdown`, to access the exact interface we've exposed a `componentRef` property on all components. This property replaces typical `ref={ c => this._component = c }` usage, as componentRef is guaranteed to access the public contract of the component regardless of the higher-order component or decorator wrapping it. If you are accessing the public API of a component, replace your `ref` usage with `componentRef`.
 
 ## 2.10.6
 Tue, 04 Apr 2017 03:12:41 GMT

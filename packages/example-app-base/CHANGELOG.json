@@ -2,6 +2,18 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "1.3.5",
+      "tag": "@uifabric/example-app-base_v1.3.5",
+      "date": "Tue, 04 Apr 2017 15:18:51 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `1.4.0` to `1.5.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.3.4",
       "tag": "@uifabric/example-app-base_v1.3.4",
       "date": "Wed, 29 Mar 2017 18:15:29 GMT",
