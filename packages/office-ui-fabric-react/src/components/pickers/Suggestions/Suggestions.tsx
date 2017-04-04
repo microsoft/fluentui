@@ -8,7 +8,7 @@ import { Spinner } from '../../../Spinner';
 import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.Props';
 import styles = require('./Suggestions.scss');
 
-export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>, {}> {
+export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {}> {
   public render() {
     let {
       suggestionModel,
