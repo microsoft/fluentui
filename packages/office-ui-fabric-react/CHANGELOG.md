@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 04 Apr 2017 15:18:51 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Apr 2017 20:08:53 GMT and should not be manually modified.
+
+## 2.12.0
+Tue, 04 Apr 2017 20:08:53 GMT
+
+### Minor changes
+
+- Panel: adding `customWidth` property and PanelType.custom value to support custom panel widths.
+
+### Patches
+
+- Updating fabric dependencies to use ranges.
 
 ## 2.11.0
 Tue, 04 Apr 2017 15:18:51 GMT
