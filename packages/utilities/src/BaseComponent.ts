@@ -35,11 +35,11 @@ export class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S
   /**
    * BaseComponent constructor
    * @param {P} props The props for the component.
-   * @param {Object} deprecatedProps The map of deprecated prop names to new names, where the key is the old name and the
+   * @param {Object} context The context for the component.
    * value is the new name. If a prop is removed rather than renamed, leave the value undefined.
    */
-  constructor(props?: P) {
-    super(props);
+  constructor(props?: P, context?: any) {
+    super(props, context);
 
     this.props = props;
     this._shouldUpdateComponentRef = true;
