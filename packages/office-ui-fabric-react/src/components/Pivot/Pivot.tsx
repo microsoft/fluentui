@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  BaseComponent,
   KeyCodes,
   css,
   getId,
@@ -36,7 +37,7 @@ export interface IPivotState {
   selectedTabId: string;
 }
 
-export class Pivot extends React.Component<IPivotProps, IPivotState> {
+export class Pivot extends BaseComponent<IPivotProps, IPivotState> {
   private _keyToIndexMapping: { [key: string]: number };
   private _keyToTabIds: { [key: string]: string };
   private _pivotId: string;

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  BaseComponent,
   KeyCodes,
   css,
   getRTL
@@ -15,7 +16,7 @@ export interface ICalendarMonthProps {
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
 }
 
-export class CalendarMonth extends React.Component<ICalendarMonthProps, {}> {
+export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
   private _selectMonthCallbacks: (() => void)[];
 
   public constructor(props: ICalendarMonthProps) {

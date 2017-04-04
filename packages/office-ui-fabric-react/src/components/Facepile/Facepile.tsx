@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  BaseComponent,
   buttonProperties,
   css,
   divProperties,
@@ -23,7 +24,7 @@ import {
 } from '../../Persona';
 import styles = require('./Facepile.scss');
 
-export class Facepile extends React.Component<IFacepileProps, {}> {
+export class Facepile extends BaseComponent<IFacepileProps, {}> {
   public static defaultProps: IFacepileProps = {
     maxDisplayablePersonas: 5,
     personas: [],
