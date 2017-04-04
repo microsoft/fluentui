@@ -28,7 +28,7 @@ export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}
   }
 
   public render() {
-    let { title, label, description, percentComplete, className } = this.props;
+    let { title, label, description, percentComplete, className, ariaValueText } = this.props;
 
     // Handle deprecated value.
     if (title) {
@@ -49,7 +49,8 @@ export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}
             role='progressbar'
             aria-valuemin='0'
             aria-valuemax='100'
-            aria-valuenow={ percentComplete.toFixed().toString() }>
+            aria-valuenow={ percentComplete.toFixed().toString() }
+            aria-valuetext={ ariaValueText }>
           </div>
         </div>
         <div className={ css('ms-ProgressIndicator-itemDescription', styles.itemDescription) }>{ description }</div>
