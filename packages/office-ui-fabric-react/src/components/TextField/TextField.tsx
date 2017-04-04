@@ -57,6 +57,10 @@ export class TextField extends BaseComponent<ITextFieldProps, ITextFieldState> i
   public constructor(props: ITextFieldProps) {
     super(props);
 
+    this._warnMutuallyExclusive({
+      'value': 'defaultValue'
+    });
+
     this._id = getId('TextField');
     this._descriptionId = getId('TextFieldDescription');
 

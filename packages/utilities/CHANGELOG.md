@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 30 Mar 2017 21:04:29 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Apr 2017 15:18:51 GMT and should not be manually modified.
+
+## 1.5.0
+Tue, 04 Apr 2017 15:18:51 GMT
+
+### Minor changes
+
+- BaseComponent: added support for resolving `componentRef` automatically. Also added `_warnDeprecations` and `_warnMutualExclusion` helpers for warning on misuse.
 
 ## 1.4.0
 Thu, 30 Mar 2017 21:04:29 GMT
