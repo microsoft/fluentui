@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Tue, 04 Apr 2017 15:18:51 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Apr 2017 20:08:53 GMT and should not be manually modified.
+
+## 1.3.6
+Tue, 04 Apr 2017 20:08:53 GMT
+
+### Patches
+
+- Updating fabric dependencies to use ranges.
 
 ## 1.3.5
 Tue, 04 Apr 2017 15:18:51 GMT
