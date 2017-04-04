@@ -9,8 +9,8 @@ import { DateRangeType } from 'office-ui-fabric-react/lib/Calendar';
 import { CalendarButtonExample } from './examples/Calendar.Button.Example';
 import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
 
-const CalendarButtonExampleCode = require('!raw-loader!./examples/Calendar.Button.Example.tsx') as string;
-const CalendarInlineExampleCode = require('!raw-loader!./examples/Calendar.Inline.Example.tsx') as string;
+const CalendarButtonExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
+const CalendarInlineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
 
 export class CalendarPage extends React.Component<IComponentDemoPageProps, any> {
   public render() {
@@ -44,7 +44,7 @@ export class CalendarPage extends React.Component<IComponentDemoPageProps, any> 
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/lib/components/Calendar/Calendar.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/Calendar.Props.ts')
             ] }
           />
         }

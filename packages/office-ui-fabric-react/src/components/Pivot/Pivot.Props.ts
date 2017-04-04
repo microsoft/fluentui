@@ -3,7 +3,17 @@ import * as React from 'react';
 import { Pivot } from './Pivot';
 import { PivotItem } from './PivotItem';
 
+export interface IPivot {
+
+}
+
 export interface IPivotProps extends React.Props<Pivot> {
+  /**
+   * Optional callback to access the IPivot interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IPivot) => void;
+
   /**
    * The index of the pivot item initially selected.
    *

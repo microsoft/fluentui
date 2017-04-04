@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "2.10.6",
+      "tag": "office-ui-fabric-react_v2.10.6",
+      "date": "Tue, 04 Apr 2017 03:12:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "baff99a44318a37b6445e58ec9a7076834997b85",
+            "comment": "Removing TypeScript files from being binplaced within the lib folder."
+          },
+          {
+            "author": "gitjain <alreut@yahoo.com>",
+            "commit": "89133e5f3155285c64ca89808bbdf2a088312e34",
+            "comment": "ToolTip: fix for long tips"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.10.5",
       "tag": "office-ui-fabric-react_v2.10.5",
       "date": "Sat, 01 Apr 2017 03:12:59 GMT",

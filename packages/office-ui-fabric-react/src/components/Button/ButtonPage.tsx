@@ -17,14 +17,14 @@ import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Exampl
 import { IButtonDemoPageState } from './examples/IButtonDemoPageState';
 import './examples/Button.Basic.Example.scss';
 
-const ButtonDefaultExampleCode = require('!raw-loader!./examples/Button.Default.Example.tsx') as string;
-const ButtonPrimaryExampleCode = require('!raw-loader!./examples/Button.Primary.Example.tsx') as string;
-const ButtonCompoundExampleCode = require('!raw-loader!./examples/Button.Compound.Example.tsx') as string;
-const ButtonCommandExampleCode = require('!raw-loader!./examples/Button.Command.Example.tsx') as string;
-const ButtonIconExampleCode = require('!raw-loader!./examples/Button.Icon.Example.tsx') as string;
-const ButtonAnchorExampleCode = require('!raw-loader!./examples/Button.Anchor.Example.tsx') as string;
-const ButtonScreenReaderExampleCode = require('!raw-loader!./examples/Button.ScreenReader.Example.tsx') as string;
-const ButtonContextualMenuExampleCode = require('!raw-loader!./examples/Button.ContextualMenu.Example.tsx') as string;
+const ButtonDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Default.Example.tsx') as string;
+const ButtonPrimaryExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Primary.Example.tsx') as string;
+const ButtonCompoundExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Compound.Example.tsx') as string;
+const ButtonCommandExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Command.Example.tsx') as string;
+const ButtonIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Icon.Example.tsx') as string;
+const ButtonAnchorExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Anchor.Example.tsx') as string;
+const ButtonScreenReaderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ScreenReader.Example.tsx') as string;
+const ButtonContextualMenuExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ContextualMenu.Example.tsx') as string;
 
 export class ButtonPage extends React.Component<IComponentDemoPageProps, IButtonDemoPageState> {
   constructor() {
@@ -72,7 +72,7 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, IButton
           <div>
             <PropertiesTableSet
               sources={ [
-                require<string>('!raw-loader!office-ui-fabric-react/lib/components/Button/Button.Props.ts')
+                require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/Button.Props.ts')
               ] }
             />
             <p>Besides the above properties, the <code>Button</code> component accepts all properties that the React <code>button</code> and <code>a</code> components accept.</p>

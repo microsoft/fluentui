@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 01 Apr 2017 03:12:59 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Apr 2017 03:12:41 GMT and should not be manually modified.
+
+## 2.10.6
+Tue, 04 Apr 2017 03:12:41 GMT
+
+### Patches
+
+- Removing TypeScript files from being binplaced within the lib folder.
+- ToolTip: fix for long tips
 
 ## 2.10.5
 Sat, 01 Apr 2017 03:12:59 GMT

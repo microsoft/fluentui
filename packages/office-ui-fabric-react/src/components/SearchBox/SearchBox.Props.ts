@@ -1,7 +1,16 @@
 import * as React from 'react';
 import { SearchBox } from './SearchBox';
 
+export interface ISearchBox {
+
+}
+
 export interface ISearchBoxProps extends React.Props<SearchBox> {
+  /**
+   * Optional callback to access the ISearchBox interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: ISearchBox) => void;
 
   /**
   * Label text for the SearchBox.
