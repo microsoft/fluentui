@@ -6,7 +6,7 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
 import {
-  OverflowSet, GutterWidth
+  OverflowSet
 } from '../index';
 import { items } from './items';
 
@@ -66,7 +66,6 @@ export class OverflowSetBasicExample extends BaseComponent<any, any> {
             }
           ]
           }
-          gutterWidth={ GutterWidth.medium }
           onRenderItem={ (item, i) => {
             return (
               <DefaultButton
@@ -80,17 +79,6 @@ export class OverflowSetBasicExample extends BaseComponent<any, any> {
           } }
         >
         </OverflowSet>
-
-        <OverflowSet
-          gutterWidth={ GutterWidth.medium }
-        >
-          <DefaultButton>
-            Hi There
-          </DefaultButton>
-          <DefaultButton>
-            Hi There
-          </DefaultButton>
-        </OverflowSet >
       </div>
     );
   }

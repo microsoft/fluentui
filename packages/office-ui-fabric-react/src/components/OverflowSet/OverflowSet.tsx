@@ -6,7 +6,7 @@ import {
   EventGroup,
   getId
 } from '../../Utilities';
-import { IOverflowSetProps, GutterWidth } from './OverflowSet.Props';
+import { IOverflowSetProps } from './OverflowSet.Props';
 import { IconButton } from '../../Button';
 import { IContextualMenuItem } from '../../ContextualMenu';
 
@@ -20,7 +20,6 @@ export interface IOverflowSetState {
 export class OverflowSet extends React.Component<IOverflowSetProps, IOverflowSetState> {
 
   public static defaultProps = {
-    gutterWidth: GutterWidth.none
   };
 
   public refs: {
@@ -36,7 +35,7 @@ export class OverflowSet extends React.Component<IOverflowSetProps, IOverflowSet
     super(props);
     this.state = {
       renderedItems: this.props.items
-    }
+    };
     this._id = getId('OverflowSet');
     this._events = new EventGroup(this);
   }
@@ -86,20 +85,11 @@ export class OverflowSet extends React.Component<IOverflowSetProps, IOverflowSet
   }
 
   private _onRenderSetItems(items) {
-    let { gutterWidth } = this.props;
-    let widths = [null, 2, 4, 8, 12, 16];
-    let itemStyle = {
-      'marginRight': widths[gutterWidth] / 2,
-      'marginLeft': widths[gutterWidth] / 2
-    };
-
     return items.map((item, i) => {
-
       let key = item.key ? item.key : i;
       let onRender = item.onRender ? item.onRender : this.props.onRenderItem;
       return (
         <div
-          style={ itemStyle }
           className={ css('ms-OverflowSet-item', styles.item) }
           key={ key }
           ref={ key } >

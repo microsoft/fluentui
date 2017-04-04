@@ -8,7 +8,7 @@ import {
 } from '@uifabric/example-app-base';
 import { OverflowSetBasicExample } from './examples/OverflowSet.Basic.Example';
 
-const OverflowSetBasicExampleCode = require('!raw-loader!./examples/OverflowSet.Basic.Example.tsx') as string;
+const OverflowSetBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/examples/OverflowSet.Basic.Example.tsx') as string;
 
 export class OverflowSetPage extends React.Component<any, any> {
   public render() {
