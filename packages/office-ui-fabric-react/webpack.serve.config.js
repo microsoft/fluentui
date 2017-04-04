@@ -29,7 +29,8 @@ module.exports = {
   devtool: 'source-map',
 
   devServer: {
-    inline: true
+    inline: true,
+    port: 4321
   },
 
   module: {
@@ -49,7 +50,8 @@ module.exports = {
         use: [
           {
             loader: "load-themed-styles-loader", // creates style nodes from JS strings
-          }, {
+          },
+          {
             loader: "css-loader", // translates CSS into CommonJS
             options: {
               modules: true,

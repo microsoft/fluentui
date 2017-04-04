@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { IButtonProps } from './IButtonProps';
+import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
 export class ButtonContextualMenuExample extends React.Component<IButtonProps, {}> {
   public render() {
@@ -12,7 +11,7 @@ export class ButtonContextualMenuExample extends React.Component<IButtonProps, {
           <DefaultButton
             data-automation-id='test'
             disabled={ disabled }
-            icon='Add'
+            iconName='Add'
             text='New'
             menuProps={ {
               items: [

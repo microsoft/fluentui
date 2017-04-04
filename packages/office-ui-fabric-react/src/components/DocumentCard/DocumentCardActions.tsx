@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { css } from '../../Utilities';
 import { IDocumentCardActionsProps } from './DocumentCard.Props';
-import { Button, ButtonType } from '../../Button';
+import { IconButton } from '../../Button';
 import styles = require('./DocumentCard.scss');
 
 export class DocumentCardActions extends React.Component<IDocumentCardActionsProps, any> {
@@ -12,10 +12,9 @@ export class DocumentCardActions extends React.Component<IDocumentCardActionsPro
       <div className={ css('ms-DocumentCardActions', styles.actions) }>
 
         { actions && actions.map((action, index) => {
-          action.buttonType = ButtonType.icon;
           return (
             <div className={ css('ms-DocumentCardActions-action', styles.action) } key={ index }>
-              <Button { ...action } />
+              <IconButton { ...action } />
             </div>
           );
         }) }

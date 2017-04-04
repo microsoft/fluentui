@@ -1,17 +1,36 @@
 import * as React from 'react';
-import { BaseButton } from './BaseButton';
-import { Button } from './Button';
 import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
+import { IconName } from '../../Icon';
 
 export interface IButton {
   /**
-   * Focuses the button.
+   * Sets focus to the button.
    */
   focus: () => void;
 }
 
-export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAnchorElement | BaseButton | Button> {
+export interface IButtonClassNames {
+  base?: string;
+  variant?: string;
+  isDisabled?: string;
+  isEnabled?: string;
+  description?: string;
+  flexContainer?: string;
+  icon?: string;
+  menuIcon?: string;
+  label?: string;
+  root?: string;
+}
+
+export interface IButtonProps extends React.HTMLProps<any> {
+
+  /**
+   * Optional way to fetch the IButton interface. Use this instead of ref, to avoid accessing higher-order component
+   * wrappers rather than the IButton interface.
+   */
+  componentRef?: (component: IButton) => void;
+
   /**
    * If provided, this component will be rendered as an anchor.
    * @default ElementType.anchor
@@ -27,6 +46,11 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
    * If provided, additional class name to provide on the root element.
    */
   className?: string;
+
+  /**
+   *  Custom class names for individual elements within the button DOM.
+   */
+  classNames?: IButtonClassNames;
 
   /**
    * The aria label of the button for the benefit of screen readers.
@@ -48,22 +72,47 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
   /**
    * The button icon shown in command or hero type.
    */
-  icon?: string;
+  iconName?: IconName | string | null;
 
   /**
    * The button icon shown to the right of the text
    */
-  menuIconName?: string | null;
+  menuIconName?: IconName | string | null;
 
   /**
-  * Custom render function for button menu icon
-  */
-  onRenderMenuIcon?: IRenderFunction<IButtonProps>;
-
-  /**
-  * Props for button menu
-  */
+   * Props for button menu
+   */
   menuProps?: IContextualMenuProps;
+
+  /**
+   * Custom render function for the icon
+   */
+  onRenderIcon?: IRenderFunction<IButtonProps>;
+
+  /**
+   * Custom render function for the label text.
+   */
+  onRenderText?: IRenderFunction<IButtonProps>;
+
+  /**
+   * Custom render function for the desciption text.
+   */
+  onRenderDescription?: IRenderFunction<IButtonProps>;
+
+  /**
+   * Custom render function for the aria description element.
+   */
+  onRenderAriaDescription?: IRenderFunction<IButtonProps>;
+
+  /**
+   * Custom render function for rendering the button children.
+   */
+  onRenderChildren?: IRenderFunction<IButtonProps>;
+
+  /**
+   * Custom render function for button menu icon
+   */
+  onRenderMenuIcon?: IRenderFunction<IButtonProps>;
 
   /**
   * Custom render function for button menu
@@ -91,6 +140,12 @@ export interface IButtonProps extends React.HTMLProps<HTMLButtonElement | HTMLAn
    * they will be mixed into the button/anchor element rendered by the component.
    */
   rootProps?: React.HTMLProps<HTMLButtonElement> | React.HTMLProps<HTMLAnchorElement>;
+
+  /**
+ * @deprecated
+ * Use iconName.
+ */
+  icon?: string;
 }
 
 export enum ElementType {

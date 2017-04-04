@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {
-  CommandButton,
+  CommandButton
 } from 'office-ui-fabric-react/lib/Button';
 import {
   Label
 } from 'office-ui-fabric-react/lib/Label';
-import { IButtonProps } from './IButtonProps';
+import { IButtonProps } from '../Button.Props';
 
 export class ButtonCommandExample extends React.Component<IButtonProps, any> {
   public constructor() {

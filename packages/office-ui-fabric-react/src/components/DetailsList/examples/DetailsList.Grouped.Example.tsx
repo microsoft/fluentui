@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
 /* tslint:enable:no-unused-variable */
-import { Button } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { DetailsList } from 'office-ui-fabric-react/lib/DetailsList';
 
@@ -95,13 +95,13 @@ export class DetailsListGroupedExample extends React.Component<any, any> {
 
     return (
       <Fabric className='foo'>
-        <Button onClick={ () => this._addItem() }>Add an item</Button>
+        <DefaultButton onClick={ () => this._addItem() } text='Add an item' />
         <DetailsList
           items={ items }
           groups={ groupBy(items, 'color') }
           columns={ _columns }
         />
-      </Fabric>
+      </Fabric >
     );
   }
 

@@ -42,13 +42,13 @@ export class SelectedItemWithMenu extends React.Component<IPeoplePickerItemWithM
           </div>
           <div ref='ellipsisRef' className={ css('ms-PickerItem-content', styles.itemContent) }>
             <IconButton
-              icon={ 'More' }
+              iconName={ 'More' }
               onClick={ this.onContextualMenu }
             />
           </div>
           <div className={ css('ms-PickerItem-content', styles.itemContent) }>
             <IconButton
-              icon={ 'Cancel' }
+              iconName={ 'Cancel' }
               onClick={ onRemoveItem }
             />
           </div>

@@ -2,6 +2,11 @@ import * as React from 'react';
 import { Async } from './Async';
 import { EventGroup } from './EventGroup';
 import { IDisposable } from './IDisposable';
+import { warnDeprecations, warnMutuallyExclusive, IStringMap } from './warn';
+
+export interface IBaseProps<P> extends React.Props<P> {
+  componentRef?: any;
+}
 
 export class BaseComponent<P, S> extends React.Component<P, S> {
   /**
@@ -10,10 +15,22 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
    */
   public static onError: ((errorMessage?: string, ex?: any) => void);
 
+  /**
+   * Controls whether the componentRef prop will be resolved by this component instance. If you are
+   * implementing a passthrough (higher-order component), you would set this to false and pass through
+   * the props to the inner component, allowing it to resolve the componentRef.
+   *
+   * @protected
+   * @type {boolean}
+   * @memberOf BaseComponent
+   */
+  protected _shouldUpdateComponentRef: boolean;
+
   private __async: Async;
   private __events: EventGroup;
   private __disposables: IDisposable[];
   private __resolves: { [name: string]: (ref: any) => any };
+  private __className: string;
 
   /**
    * BaseComponent constructor
@@ -21,15 +38,15 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
    * @param {Object} deprecatedProps The map of deprecated prop names to new names, where the key is the old name and the
    * value is the new name. If a prop is removed rather than renamed, leave the value undefined.
    */
-  constructor(props?: P, deprecatedProps?: { [propName: string]: string }) {
+  constructor(props?: P, deprecationMap?: IStringMap) {
     super(props);
 
-    if (deprecatedProps) {
-      for (let propName in deprecatedProps) {
-        if (propName in props) {
-          _warnDeprecation(this, propName, deprecatedProps[propName]);
-        }
-      }
+    this.props = props;
+    this._shouldUpdateComponentRef = true;
+
+    // We should remove the map parameter in a major bump.
+    if (deprecationMap) {
+      this._warnDeprecations(deprecationMap);
     }
 
     _makeAllSafe(this, BaseComponent.prototype, [
@@ -42,6 +59,16 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
       'componentDidUpdate',
       'componentWillUnmount'
     ]);
+  }
+
+  /** When the component will receive props, make sure the componentRef is updated. */
+  public componentWillReceiveProps(newProps?: any, newContext?: any) {
+    this._updateComponentRef(this.props, newProps);
+  }
+
+  /** When the component has mounted, update the componentRef. */
+  public componentDidMount() {
+    this._updateComponentRef(undefined, this.props);
   }
 
   /** If we have disposables, dispose them automatically on unmount. */
@@ -60,10 +87,14 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
 
   /** Gets the object's class name. */
   public get className() {
-    let funcNameRegex = /function (.{1,})\(/;
-    let results = (funcNameRegex).exec((this).constructor.toString());
+    if (!this.__className) {
+      let funcNameRegex = /function (.{1,})\(/;
+      let results = (funcNameRegex).exec((this).constructor.toString());
 
-    return (results && results.length > 1) ? results[1] : '';
+      this.__className = (results && results.length > 1) ? results[1] : '';
+    }
+
+    return this.__className;
   }
 
   /** Allows subclasses to push things to this._disposables to be auto disposed. */
@@ -126,7 +157,58 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
         return this[refName] = ref;
       };
     }
+
     return this.__resolves[refName];
+  }
+
+  /**
+   * Updates the componentRef (by calling it with "this" when necessary.)
+   */
+  protected _updateComponentRef(currentProps: IBaseProps<P>, newProps: IBaseProps<P> = {}) {
+    if (this._shouldUpdateComponentRef &&
+      ((!currentProps && newProps.componentRef) ||
+        (currentProps && currentProps.componentRef !== newProps.componentRef))) {
+
+      if (currentProps && currentProps.componentRef) {
+        currentProps.componentRef(null);
+      }
+
+      if (newProps.componentRef) {
+        newProps.componentRef(this);
+      }
+    }
+  }
+  /**
+   * Warns when a deprecated props are being used.
+   *
+   * @protected
+   * @param {IStringMap} deprecationMap The map of deprecations, where key is the prop name and the value is
+   * either null or a replacement prop name.
+   *
+   * @memberOf BaseComponent
+   */
+  protected _warnDeprecations(deprecationMap: IStringMap) {
+    warnDeprecations(this.className, this.props, deprecationMap);
+  }
+
+  /**
+   * Warns when props which are mutually exclusive with each other are both used.
+   *
+   * @protected
+   * @param {IStringMap} mutuallyExclusiveMap The map of mutually exclusive props.
+   *
+   * @memberOf BaseComponent
+   */
+  protected _warnMutuallyExclusive(mutuallyExclusiveMap: IStringMap) {
+    warnMutuallyExclusive(this.className, this.props, mutuallyExclusiveMap);
+  }
+
+  /**
+   * Standard method for rendering null. Useful to wire up onRender methods to a function ref that
+   * never changes.
+   */
+  protected _onRenderNull(): JSX.Element | null {
+    return null;
   }
 }
 
@@ -153,7 +235,7 @@ function _makeSafe(obj: BaseComponent<any, any>, prototype: Object, methodName: 
         if (prototypeMethod) {
           retVal = prototypeMethod.apply(this, arguments);
         }
-        if (classMethod) {
+        if (classMethod !== prototypeMethod) {
           retVal = classMethod.apply(this, arguments);
         }
       } catch (e) {
@@ -166,18 +248,6 @@ function _makeSafe(obj: BaseComponent<any, any>, prototype: Object, methodName: 
 
       return retVal;
     };
-  }
-}
-
-function _warnDeprecation(obj: BaseComponent<any, any>, propertyName: string, newPropertyName: string) {
-  if (console && console.warn) {
-    let deprecationMessage = `${obj.className} property '${propertyName}' was used but has been deprecated.`;
-
-    if (newPropertyName) {
-      deprecationMessage += ` Use '${newPropertyName}' instead.`;
-    }
-
-    console.warn(deprecationMessage);
   }
 }
 

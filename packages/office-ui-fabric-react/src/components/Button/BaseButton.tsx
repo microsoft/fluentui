@@ -1,43 +1,36 @@
 import * as React from 'react';
 import {
-  autobind,
   BaseComponent,
-  css,
+  IRenderFunction,
+  anchorProperties,
   assign,
-  getId,
-  getNativeProps,
+  autobind,
   buttonProperties,
-  anchorProperties
+  css,
+  customizable,
+  getId,
+  getNativeProps
 } from '../../Utilities';
+import { Icon, IconName } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.Props';
 import styles = require('./BaseButton.scss');
 
-export interface IBaseButtonClassNames {
-  base: string;
-  variant: string;
-  isDisabled: string;
-  isEnabled: string;
-  description?: string;
-  flexContainer?: string;
-  icon?: string;
-  menuIcon?: string;
-  label?: string;
-  root?: string;
-}
-
 export interface IBaseButtonState {
   menuProps?: IContextualMenuProps | null;
 }
 
+@customizable('BaseButton')
 export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> implements IButton {
 
-  protected classNames: IBaseButtonClassNames = {
-    base: 'ms-Button',
-    variant: '',
-    isEnabled: '',
-    isDisabled: ''
+  public static defaultProps: IButtonProps = {
+    classNames: {
+      base: 'ms-Button',
+      variant: '',
+      isEnabled: '',
+      isDisabled: ''
+    }
   };
 
   private _buttonElement: HTMLButtonElement;
@@ -46,7 +39,13 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
   private _ariaDescriptionId: string;
 
   constructor(props: IButtonProps, rootClassName: string, deprecationMap: any) {
-    super(props, { 'rootProps': null });
+    super(props);
+
+    this._warnDeprecations({
+      'rootProps': null,
+      'icon': 'iconName'
+    });
+
     this._labelId = getId();
     this._descriptionId = getId();
     this._ariaDescriptionId = getId();
@@ -56,7 +55,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
   }
 
   public render(): JSX.Element {
-    const { description, ariaLabel, ariaDescription, href, disabled } = this.props;
+    const { description, ariaLabel, ariaDescription, href, disabled, classNames } = this.props;
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
     const renderAsAnchor: boolean = !!href;
     const tag = renderAsAnchor ? 'a' : 'button';
@@ -87,13 +86,13 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
         className: css(
           styles.root,
           this.props.className,
-          this.classNames.base,
-          this.classNames.variant,
-          this.classNames.root,
+          classNames.base,
+          classNames.variant,
+          classNames.root,
           {
             'disabled': disabled,
-            [this.classNames.isDisabled]: disabled,
-            [this.classNames.isEnabled]: !disabled
+            [classNames.isDisabled]: disabled,
+            [classNames.isEnabled]: !disabled
           }),
         ref: this._resolveRef('_buttonElement'),
         'disabled': disabled,
@@ -110,7 +109,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
       assign(buttonProps, { 'onClick': this._onToggleMenu });
     }
 
-    return this.onRenderContent(tag, buttonProps);
+    return this._onRenderContent(tag, buttonProps);
   }
 
   public focus(): void {
@@ -119,39 +118,54 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
     }
   }
 
-  protected onRenderContent(tag: any, buttonProps: IButtonProps): JSX.Element {
+  private _onRenderContent(tag: any, buttonProps: IButtonProps): JSX.Element {
+    let props = this.props;
     let {
-      onRenderMenu = this._onRenderMenu,
-      onRenderMenuIcon = this._onRenderMenuIcon,
+      classNames,
+      menuIconName,
       menuProps,
-      menuIconName
-    } = this.props;
+      onRenderIcon = this._onRenderIcon,
+      onRenderText = this._onRenderText,
+      onRenderDescription = this._onRenderDescription,
+      onRenderAriaDescription = this._onRenderAriaDescription,
+      onRenderChildren = this._onRenderChildren,
+      onRenderMenu = this._onRenderMenu,
+      onRenderMenuIcon = this._onRenderMenuIcon
+    } = props;
+    const className = css(classNames.base + '-flexContainer', styles.flexContainer, classNames.flexContainer);
+
     return React.createElement(
       tag,
       buttonProps,
-      React.createElement('div', { className: css(this.classNames.base + '-flexContainer', styles.flexContainer, this.classNames.flexContainer) },
-        this.onRenderIcon(),
-        this.onRenderLabel(),
-        this.onRenderDescription(),
-        this.onRenderAriaDescription(),
-        this.onRenderChildren(),
+      React.createElement(
+        'div',
+        { className },
+        onRenderIcon(props, this._onRenderIcon),
+        onRenderText(props, this._onRenderText),
+        onRenderDescription(props, this._onRenderDescription),
+        onRenderAriaDescription(props, this._onRenderAriaDescription),
+        onRenderChildren(props, this._onRenderChildren),
         (menuProps || menuIconName || this.props.onRenderMenuIcon) && onRenderMenuIcon(this.props, this._onRenderMenuIcon),
         this.state.menuProps && onRenderMenu(menuProps, this._onRenderMenu)
       ));
   }
 
-  protected onRenderIcon() {
-    const { icon } = this.props;
+  @autobind
+  private _onRenderIcon(buttonProps?: IButtonProps, defaultRender?: IRenderFunction<IButtonProps>) {
+    let { classNames, icon, iconName } = this.props;
 
-    return icon && (
-      <span className={ css(`${this.classNames.base}-icon`, this.classNames.icon) }>
-        <i className={ `ms-Icon ms-Icon--${icon}` } />
-      </span>
+    if (icon !== undefined) {
+      iconName = icon as IconName;
+    }
+
+    return iconName && (
+      <Icon iconName={ iconName as IconName } className={ css(`${classNames.base}-icon`, classNames.icon) } />
     );
   }
 
-  protected onRenderLabel() {
-    let { children, text } = this.props;
+  @autobind
+  private _onRenderText() {
+    let { classNames, children, text } = this.props;
 
     // For backwards compat, we should continue to take in the text content from children.
     if (text === undefined && typeof (children) === 'string') {
@@ -159,13 +173,14 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
     }
 
     return text && (
-      <span className={ css(`${this.classNames.base}-label`, this.classNames.label) } id={ this._labelId } >
+      <span className={ css(`${classNames.base}-label`, classNames.label) } id={ this._labelId } >
         { text }
       </span>
     );
   }
 
-  protected onRenderChildren() {
+  @autobind
+  private _onRenderChildren(): JSX.Element | null {
     const { children } = this.props;
 
     // If children is just a string, either it or the text will be rendered via onRenderLabel
@@ -174,17 +189,18 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
       return null;
     }
 
-    return children;
+    return children as any;
   }
 
-  protected onRenderDescription() {
-    const { description } = this.props;
+  @autobind
+  private _onRenderDescription() {
+    const { classNames, description } = this.props;
 
     // ms-Button-description is only shown when the button type is compound.
     // In other cases it will not be displayed.
     return description ? (
       <span
-        className={ css(`${this.classNames.base}-description`, this.classNames.description) }
+        className={ css(`${classNames.base}-description`, classNames.description) }
         id={ this._descriptionId }
       >
         { description }
@@ -194,7 +210,8 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
       );
   }
 
-  protected onRenderAriaDescription() {
+  @autobind
+  private _onRenderAriaDescription() {
     const { ariaDescription } = this.props;
 
     // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
@@ -207,18 +224,19 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
   }
 
   @autobind
-  protected _onRenderMenuIcon(props: IButtonProps): JSX.Element {
-    const { menuIconName = 'ChevronDown' } = props;
+  private _onRenderMenuIcon(props: IButtonProps): JSX.Element {
+    const {
+      classNames,
+      menuIconName = 'ChevronDown'
+    } = props;
 
     return (
-      <span className={ css(`${this.classNames.base}-icon`, this.classNames.menuIcon) }>
-        <i className={ `ms-Icon ms-Icon--${menuIconName}` } />
-      </span>
+      <Icon className={ css(`${classNames.base}-icon`, classNames.menuIcon) } iconName={ menuIconName as IconName } />
     );
   }
 
   @autobind
-  protected _onRenderMenu(menuProps: IContextualMenuProps): JSX.Element {
+  private _onRenderMenu(menuProps: IContextualMenuProps): JSX.Element {
     return (
       <ContextualMenu
         className={ css('ms-BaseButton-menuHost') }

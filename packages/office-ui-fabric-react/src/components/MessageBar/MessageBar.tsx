@@ -4,7 +4,7 @@ import {
   css,
   getId
 } from '../../Utilities';
-import { Button, ButtonType } from '../../Button';
+import { IconButton } from '../../Button';
 import { IMessageBarProps, MessageBarType } from './MessageBar.Props';
 import styles = require('./MessageBar.scss');
 
@@ -71,14 +71,15 @@ export class MessageBar extends React.Component<IMessageBarProps, IMessageBarSta
 
   private _getDismissDiv(): JSX.Element {
     if (this.props.onDismiss != null) {
-      return <Button
-        disabled={ false }
-        className={ css('ms-MessageBar-dismissal', styles.dismissal) }
-        buttonType={ ButtonType.icon }
-        onClick={ this.props.onDismiss }
-        icon='Cancel'
-        ariaLabel={ this.props.dismissButtonAriaLabel }
-      />;
+      return (
+        <IconButton
+          disabled={ false }
+          className={ css('ms-MessageBar-dismissal', styles.dismissal) }
+          onClick={ this.props.onDismiss }
+          iconName='Cancel'
+          ariaLabel={ this.props.dismissButtonAriaLabel }
+        />
+      );
     }
     return null;
   }
