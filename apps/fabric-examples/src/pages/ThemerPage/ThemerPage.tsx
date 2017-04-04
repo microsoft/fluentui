@@ -11,6 +11,7 @@ import {
   ThemeGenerator,
   ThemeRulesStandardCreator,
   BaseSlots,
+  FabricSlots,
   SemanticColorSlots,
   IThemeSlotRule
 } from 'office-ui-fabric-react/lib/ThemeGenerator';
@@ -50,25 +51,53 @@ export class ThemerPage extends React.Component<any, any> {
       return this._semanticSlotWidget(slot);
     });*/
 
-    let basicSlots = [this._semanticSlotWidget(SemanticColorSlots.bodyBackground),
-    this._semanticSlotWidget(SemanticColorSlots.bodyText),
-    this._semanticSlotWidget(SemanticColorSlots.bodyTextAlt),
-    this._semanticSlotWidget(SemanticColorSlots.bodyTextDisabled),
-    this._semanticSlotWidget(SemanticColorSlots.bodyTextPrimary)]; // todo
+    let basicSlots =
+      [this._semanticSlotWidget(SemanticColorSlots.bodyBackground),
+      this._semanticSlotWidget(SemanticColorSlots.bodyText),
+      this._semanticSlotWidget(SemanticColorSlots.bodyTextAlt),
+      this._semanticSlotWidget(SemanticColorSlots.bodyTextDisabled),
+      this._semanticSlotWidget(SemanticColorSlots.bodyTextPrimary)]; // todo
 
-    let controlSlots = [this._semanticSlotWidget(SemanticColorSlots.controlBackground),
-    this._semanticSlotWidget(SemanticColorSlots.controlBackgroundDisabled),
-    this._semanticSlotWidget(SemanticColorSlots.controlBackgroundHover),
-    this._semanticSlotWidget(SemanticColorSlots.controlBackgroundSelected),
-    this._semanticSlotWidget(SemanticColorSlots.controlBackgroundSelectedHover),
-    this._semanticSlotWidget(SemanticColorSlots.controlForegroundSelected),
-    this._semanticSlotWidget(SemanticColorSlots.controlForegroundDisabled),
-    this._semanticSlotWidget(SemanticColorSlots.controlBorder),
-    this._semanticSlotWidget(SemanticColorSlots.controlBorderDisabled),
-    this._semanticSlotWidget(SemanticColorSlots.controlBorderHover),
-    this._semanticSlotWidget(SemanticColorSlots.controlUnfilled),
-    this._semanticSlotWidget(SemanticColorSlots.controlFilled),
-    this._semanticSlotWidget(SemanticColorSlots.controlFilledHover)];
+    let fabricSlots =
+      [this._fabricSlotWidget(FabricSlots.black),
+      this._fabricSlotWidget(FabricSlots.white),
+
+      this._fabricSlotWidget(FabricSlots.themeDarker),
+      this._fabricSlotWidget(FabricSlots.themeDark),
+      this._fabricSlotWidget(FabricSlots.themeDarkAlt),
+      this._fabricSlotWidget(FabricSlots.themePrimary),
+      this._fabricSlotWidget(FabricSlots.themeSecondary),
+      this._fabricSlotWidget(FabricSlots.themeTertiary),
+      this._fabricSlotWidget(FabricSlots.themeLight),
+      this._fabricSlotWidget(FabricSlots.themeLighter),
+      this._fabricSlotWidget(FabricSlots.themeLighterAlt),
+
+      this._fabricSlotWidget(FabricSlots.neutralDark),
+      this._fabricSlotWidget(FabricSlots.neutralPrimary),
+      this._fabricSlotWidget(FabricSlots.neutralSecondary),
+      this._fabricSlotWidget(FabricSlots.neutralSecondaryAlt),
+      this._fabricSlotWidget(FabricSlots.neutralTertiary),
+      this._fabricSlotWidget(FabricSlots.neutralTertiaryAlt),
+      this._fabricSlotWidget(FabricSlots.neutralQuaternary),
+      this._fabricSlotWidget(FabricSlots.neutralQuaternaryAlt),
+      this._fabricSlotWidget(FabricSlots.neutralLight),
+      this._fabricSlotWidget(FabricSlots.neutralLighter),
+      this._fabricSlotWidget(FabricSlots.neutralLighterAlt)];
+
+    let controlSlots =
+      [this._semanticSlotWidget(SemanticColorSlots.controlBackground),
+      this._semanticSlotWidget(SemanticColorSlots.controlBackgroundDisabled),
+      this._semanticSlotWidget(SemanticColorSlots.controlBackgroundHover),
+      this._semanticSlotWidget(SemanticColorSlots.controlBackgroundSelected),
+      this._semanticSlotWidget(SemanticColorSlots.controlBackgroundSelectedHover),
+      this._semanticSlotWidget(SemanticColorSlots.controlForegroundSelected),
+      this._semanticSlotWidget(SemanticColorSlots.controlForegroundDisabled),
+      this._semanticSlotWidget(SemanticColorSlots.controlBorder),
+      this._semanticSlotWidget(SemanticColorSlots.controlBorderDisabled),
+      this._semanticSlotWidget(SemanticColorSlots.controlBorderHover),
+      this._semanticSlotWidget(SemanticColorSlots.controlUnfilled),
+      this._semanticSlotWidget(SemanticColorSlots.controlFilled),
+      this._semanticSlotWidget(SemanticColorSlots.controlFilledHover)];
 
     return (
       <div className='ms-themer'>
@@ -96,6 +125,9 @@ export class ThemerPage extends React.Component<any, any> {
         { this._exampleSection('Basic Slots',
           'Basic theme slots for page background and default text colors.',
           basicSlots) }
+        { this._exampleSection('Fabric Palette',
+          'The original Fabric palette variables.',
+          fabricSlots) }
         { this._exampleSection('Control Slots',
           'These slots TODO TODO',
           controlSlots,
@@ -237,6 +269,23 @@ export class ThemerPage extends React.Component<any, any> {
       </div>
     );
   }
+  // todo: combine with above
+  private _fabricSlotWidget(fabricSlot: FabricSlots) {
+    let themeRules = this.state.themeRules;
+    let thisSlotRule = themeRules[FabricSlots[fabricSlot]];
+
+    return (
+      <div key={ fabricSlot } className='ms-themer-slot'>
+        { this._colorSquareSwatchWidget(thisSlotRule) }
+        <div>
+          <div>{ FabricSlots[fabricSlot] }</div>
+          { !thisSlotRule.isCustomized ?
+            <div>Inherits from: { thisSlotRule.inherits.name }</div>
+            : <div>Custom value</div> }
+        </div>
+      </div>
+    );
+  }
 
   private _colorSquareSwatchWidget(slotRule: IThemeSlotRule) {
     return (
@@ -308,11 +357,14 @@ export class ThemerPage extends React.Component<any, any> {
           onColorChanged={ _onColorChanged.bind(this) } />
         <div className='ms-themer-swatchBg' style={ { backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].value.str } }>
           <div className='ms-themer-swatch' style={ { backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].value.str } }></div>
-          { [this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Lightest']),
-          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Lighter']),
-          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Medium']),
-          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Darker']),
-          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Darkest'])] }
+          { [this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade1']),
+          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade2']),
+          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade3']),
+          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade4']),
+          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade5']),
+          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade6']),
+          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade7']),
+          this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade8'])] }
         </div>
       </div>
     );

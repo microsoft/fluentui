@@ -10,6 +10,11 @@ body {
   min-height: 100%;
 }
 
+.ms-Fabric.ms-Fabric {
+  // overwrite unthemed Fabric font color with our own themed version
+  color: $ms-color-neutralPrimary;
+}
+
 .ms-App-header {
   position: absolute;
   top: 0;
@@ -24,8 +29,7 @@ body {
   width: 300px;
   top: 50px;
   bottom: 0;
-  @include border-right(1px, solid, #EEE);
-  background: $ms-color-white;
+  @include border-right(1px, solid, $ms-color-white);
   box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: auto;

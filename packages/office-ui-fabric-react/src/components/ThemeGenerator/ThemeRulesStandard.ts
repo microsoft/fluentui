@@ -15,6 +15,34 @@ export enum BaseSlots {
   foregroundColor
 }
 
+/* The original Fabric palette, only for back-compat. */
+export enum FabricSlots {
+  themePrimary, // BaseSlots.primaryColor, Shade[Shade.Unshaded]);
+  themeLighterAlt, // BaseSlots.primaryColor, Shade[Shade.Shade1]);
+  themeLighter, // BaseSlots.primaryColor, Shade[Shade.Shade2]);
+  themeLight, // BaseSlots.primaryColor, Shade[Shade.Shade3]);
+  themeTertiary, // BaseSlots.primaryColor, Shade[Shade.Shade4]);
+  themeSecondary, // BaseSlots.primaryColor, Shade[Shade.Shade5]);
+  themeDarkAlt, // BaseSlots.primaryColor, Shade[Shade.Shade6]);
+  themeDark, // BaseSlots.primaryColor, Shade[Shade.Shade7]);
+  themeDarker, // BaseSlots.primaryColor, Shade[Shade.Shade8]);
+
+  neutralLighterAlt, // BaseSlots.backgroundColor, Shade[Shade.Shade1]);
+  neutralLighter, // BaseSlots.backgroundColor, Shade[Shade.Shade2]);
+  neutralLight, // BaseSlots.backgroundColor, Shade[Shade.Shade3]);
+  neutralQuaternaryAlt, // BaseSlots.backgroundColor, Shade[Shade.Shade4]);
+  neutralQuaternary, // BaseSlots.backgroundColor, Shade[Shade.Shade5]);
+  neutralTertiaryAlt, // BaseSlots.backgroundColor, Shade[Shade.Shade6]); // bg6 or fg2
+  neutralTertiary, // BaseSlots.foregroundColor, Shade[Shade.Shade3]);
+  neutralSecondaryAlt, // BaseSlots.foregroundColor, Shade[Shade.Shade4]);
+  neutralSecondary, // BaseSlots.foregroundColor, Shade[Shade.Shade5]);
+  neutralPrimary, // BaseSlots.foregroundColor, Shade[Shade.Unshaded]);
+  neutralDark, // BaseSlots.foregroundColor, Shade[Shade.Shade6]);
+
+  black, // BaseSlots.foregroundColor, Shade[Shade.Shade8]);
+  white, // BaseSlots.backgroundColor, Shade[Shade.Unshaded]);
+}
+
 /* List of all the semantic color slots for this theme.
  * This is not so much an enum as it is a list. The enum is used to insure "type"-safety. */
 export enum SemanticColorSlots {
@@ -47,8 +75,6 @@ export enum SemanticColorSlots {
   commandBarHover,
   commandBarIcon,
   commandBarIconSelected,
-  commandBarSelected,
-  commandBarSelectedHover,
 
   controlText,
   controlBackground,
@@ -127,10 +153,95 @@ export function ThemeRulesStandardCreator() {
     return void 0;
   });
 
-  // set default colors for the palette
+  // set default colors for the base colors
   slotRules[BaseSlots[BaseSlots.primaryColor]].value = getColorFromString('#0078d7');
-  slotRules[BaseSlots[BaseSlots.backgroundColor]].value = getColorFromString('#fff'); // todo: our current library has divide-by-0 bug with #fff
+  slotRules[BaseSlots[BaseSlots.backgroundColor]].value = getColorFromString('#fff');
   slotRules[BaseSlots[BaseSlots.foregroundColor]].value = getColorFromString('#333');
+
+  // set default colors for shades (the slot rules were already created above and will be used if the base colors ever change)
+  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade1]].value = getColorFromString('#eff6fc');
+  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade2]].value = getColorFromString('#deecf9');
+  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade3]].value = getColorFromString('#c7e0f4');
+  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade4]].value = getColorFromString('#71afe5');
+  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade5]].value = getColorFromString('#2b88d8');
+  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade6]].value = getColorFromString('#106ebe');
+  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade7]].value = getColorFromString('#005a9e');
+  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade8]].value = getColorFromString('#004578');
+  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade1]].isCustomized = true;
+  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade2]].isCustomized = true;
+  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade3]].isCustomized = true;
+  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade4]].isCustomized = true;
+  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade5]].isCustomized = true;
+  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade6]].isCustomized = true;
+  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade7]].isCustomized = true;
+  slotRules[BaseSlots[BaseSlots.primaryColor] + Shade[Shade.Shade8]].isCustomized = true;
+
+  // set default colors for shades (the slot rules were already created above and will be used if the base colors ever change)
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade1]].value = getColorFromString('#eaeaea');
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade2]].value = getColorFromString('#c8c8c8');
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade3]].value = getColorFromString('#a6a6a6');
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade4]].value = getColorFromString('#767676');
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade5]].value = getColorFromString('#666666');
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade6]].value = getColorFromString('#212121');
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade7]].value = getColorFromString('#090909'); // UNUSED and does not exist in Fabric
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade8]].value = getColorFromString('#000000');
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade1]].isCustomized = true;
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade2]].isCustomized = true;
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade3]].isCustomized = true;
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade4]].isCustomized = true;
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade5]].isCustomized = true;
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade6]].isCustomized = true;
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade7]].isCustomized = true;
+  slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade8]].isCustomized = true;
+
+  /*** CONVERTER C->B */
+  // converts modern-style slots to the ms-color-* Fabric palette
+  // undefined error trying to reference Shade in this function for some reason, so need to make inheritedShade a string for now
+  function _makeBtoCConverterSlotRule(slotName: string, inheritedBase: BaseSlots, inheritedShade: string) {
+    if (inheritedShade === Shade[Shade.Unshaded]) {
+      inheritedShade = "";
+    }
+    slotRules[slotName] = {
+      name: slotName,
+      inherits: slotRules[BaseSlots[inheritedBase] + inheritedShade],
+      isCustomized: false
+    };
+  }
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themePrimary], BaseSlots.primaryColor, Shade[Shade.Unshaded]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeLighterAlt], BaseSlots.primaryColor, Shade[Shade.Shade1]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeLighter], BaseSlots.primaryColor, Shade[Shade.Shade2]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeLight], BaseSlots.primaryColor, Shade[Shade.Shade3]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeTertiary], BaseSlots.primaryColor, Shade[Shade.Shade4]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeSecondary], BaseSlots.primaryColor, Shade[Shade.Shade5]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeDarkAlt], BaseSlots.primaryColor, Shade[Shade.Shade6]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeDark], BaseSlots.primaryColor, Shade[Shade.Shade7]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.themeDarker], BaseSlots.primaryColor, Shade[Shade.Shade8]);
+
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralLighterAlt], BaseSlots.backgroundColor, Shade[Shade.Shade1]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralLighter], BaseSlots.backgroundColor, Shade[Shade.Shade2]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralLight], BaseSlots.backgroundColor, Shade[Shade.Shade3]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralQuaternaryAlt], BaseSlots.backgroundColor, Shade[Shade.Shade4]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralQuaternary], BaseSlots.backgroundColor, Shade[Shade.Shade5]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralTertiaryAlt], BaseSlots.backgroundColor, Shade[Shade.Shade6]); // bg6 or fg2
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralTertiary], BaseSlots.foregroundColor, Shade[Shade.Shade3]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralSecondaryAlt], BaseSlots.foregroundColor, Shade[Shade.Shade4]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralSecondary], BaseSlots.foregroundColor, Shade[Shade.Shade5]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralPrimary], BaseSlots.foregroundColor, Shade[Shade.Unshaded]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.neutralDark], BaseSlots.foregroundColor, Shade[Shade.Shade6]);
+
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.black], BaseSlots.foregroundColor, Shade[Shade.Shade8]);
+  _makeBtoCConverterSlotRule(FabricSlots[FabricSlots.white], BaseSlots.backgroundColor, Shade[Shade.Unshaded]);
+
+  slotRules["primaryBackground"] = {
+    name: "primaryBackground",
+    inherits: slotRules[FabricSlots[FabricSlots.white]],
+    isCustomized: false
+  };
+  slotRules["primaryText"] = {
+    name: "primaryText",
+    inherits: slotRules[FabricSlots[FabricSlots.neutralPrimary]],
+    isCustomized: false
+  };
 
   /*** SEMANTIC SLOTS */
   // create the SlotRule for a semantic slot, it will automatically find the right shade SlotRule to point at,
@@ -193,52 +304,37 @@ export function ThemeRulesStandardCreator() {
   // Basics simple content slots
   _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, BaseSlots.backgroundColor, Shade.Unshaded);
   _makeSemanticSlotRule(SemanticColorSlots.bodyText, BaseSlots.foregroundColor, Shade.Unshaded);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyTextAlt, BaseSlots.foregroundColor, Shade.Medium);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyTextDisabled, BaseSlots.foregroundColor, Shade.Lighter);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyTextHover, BaseSlots.foregroundColor, Shade.Darkest);
+  _makeSemanticSlotRule(SemanticColorSlots.bodyTextAlt, BaseSlots.foregroundColor, Shade.Shade1);
+  _makeSemanticSlotRule(SemanticColorSlots.bodyTextDisabled, BaseSlots.foregroundColor, Shade.Shade1);
+  _makeSemanticSlotRule(SemanticColorSlots.bodyTextHover, BaseSlots.foregroundColor, Shade.Shade1);
   _makeSemanticSlotRule(SemanticColorSlots.bodyTextPrimary, BaseSlots.primaryColor, Shade.Unshaded);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyTextPrimaryAlt, BaseSlots.primaryColor, Shade.Medium);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyTextStrong, BaseSlots.foregroundColor, Shade.Darkest);
+  _makeSemanticSlotRule(SemanticColorSlots.bodyTextPrimaryAlt, BaseSlots.primaryColor, Shade.Shade1);
+  _makeSemanticSlotRule(SemanticColorSlots.bodyTextStrong, BaseSlots.foregroundColor, Shade.Shade1);
   //_makeSemanticSlotRule(SemanticColorSlots.bodyLink, BaseSlots.backgroundColor, Shade.Unshaded);
   //_makeSemanticSlotRule(SemanticColorSlots.bodyLinkHover, BaseSlots.backgroundColor, Shade.Unshaded);
 
-  _makeSemanticSlotRule(SemanticColorSlots.focusBorder, BaseSlots.foregroundColor, Shade.Darkest);
+  _makeSemanticSlotRule(SemanticColorSlots.focusBorder, BaseSlots.foregroundColor, Shade.Shade1);
 
   _makeSemanticSlotRule(SemanticColorSlots.controlText, BaseSlots.foregroundColor, Shade.Unshaded);
   _makeSemanticSlotRule(SemanticColorSlots.controlBackground, BaseSlots.backgroundColor, Shade.Unshaded);
-  _makeSemanticSlotRule(SemanticColorSlots.controlBackgroundDisabled, BaseSlots.foregroundColor, Shade.Lightest);
+  _makeSemanticSlotRule(SemanticColorSlots.controlBackgroundDisabled, BaseSlots.foregroundColor, Shade.Shade1);
   _makeSemanticSlotRule(SemanticColorSlots.controlBackgroundHover, BaseSlots.backgroundColor, Shade.Unshaded);
   _makeSemanticSlotRule(SemanticColorSlots.controlBackgroundSelected, BaseSlots.backgroundColor, Shade.Unshaded);
   _makeSemanticSlotRule(SemanticColorSlots.controlBackgroundSelectedHover, BaseSlots.backgroundColor, Shade.Unshaded);
   _makeSemanticSlotRule(SemanticColorSlots.controlForegroundSelected, BaseSlots.primaryColor, Shade.Unshaded);
-  _makeSemanticSlotRule(SemanticColorSlots.controlForegroundDisabled, BaseSlots.foregroundColor, Shade.Lighter);
-  _makeSemanticSlotRule(SemanticColorSlots.controlBorder, BaseSlots.foregroundColor, Shade.Medium);
-  _makeSemanticSlotRule(SemanticColorSlots.controlBorderDisabled, BaseSlots.foregroundColor, Shade.Lightest);
-  _makeSemanticSlotRule(SemanticColorSlots.controlBorderHover, BaseSlots.foregroundColor, Shade.Darkest);
-  _makeSemanticSlotRule(SemanticColorSlots.controlUnfilled, BaseSlots.primaryColor, Shade.Lightest);
+  _makeSemanticSlotRule(SemanticColorSlots.controlForegroundDisabled, BaseSlots.foregroundColor, Shade.Shade1);
+  _makeSemanticSlotRule(SemanticColorSlots.controlBorder, BaseSlots.foregroundColor, Shade.Shade1);
+  _makeSemanticSlotRule(SemanticColorSlots.controlBorderDisabled, BaseSlots.foregroundColor, Shade.Shade1);
+  _makeSemanticSlotRule(SemanticColorSlots.controlBorderHover, BaseSlots.foregroundColor, Shade.Shade1);
+  _makeSemanticSlotRule(SemanticColorSlots.controlUnfilled, BaseSlots.primaryColor, Shade.Shade1);
   //_makeSemanticSlotRule(SemanticColorSlots.controlUnfilledDefault, BaseSlots.backgroundColor, Shade.Unshaded);
   _makeSemanticSlotRule(SemanticColorSlots.controlFilled, BaseSlots.primaryColor, Shade.Unshaded);
-  _makeSemanticSlotRule(SemanticColorSlots.controlFilledHover, BaseSlots.primaryColor, Shade.Darker);
+  _makeSemanticSlotRule(SemanticColorSlots.controlFilledHover, BaseSlots.primaryColor, Shade.Shade1);
 
-  /* OLD STUFF
-    // Inputs
-    _makeSemanticSlotRule(SemanticColorSlots.InputEmphasizedBackground, BaseSlots.Primary, Shade.Unshaded);
-    _makeSemanticSlotRule(SemanticColorSlots.InputEmphasizedBackgroundHover, BaseSlots.Primary, Shade.Medium);
-    _makeSemanticSlotRule(SemanticColorSlots.InputEmphasizedForeground, BaseSlots.Neutral, Shade.Lightest);
-    _makeSemanticSlotRule(SemanticColorSlots.InputEmphasizedForegroundHover, BaseSlots.Neutral, Shade.Lighter);
-    _makeSemanticSlotRule(SemanticColorSlots.InputBackground, BaseSlots.Neutral, Shade.Lighter);
-    _makeSemanticSlotRule(SemanticColorSlots.InputBackgroundHover, BaseSlots.Neutral, Shade.Medium);
-    _makeSemanticSlotRule(SemanticColorSlots.InputForeground, BaseSlots.Neutral, Shade.Darker);
-    _makeSemanticSlotRule(SemanticColorSlots.InputForegroundHover, BaseSlots.Neutral, Shade.Darkest);
-    _makeSemanticSlotRule(SemanticColorSlots.DisabledBackground, BaseSlots.Neutral, Shade.Medium);
-    _makeSemanticSlotRule(SemanticColorSlots.DisabledForeground, BaseSlots.Neutral, Shade.Lightest);
-
-    // Areas? Informational? Presentation?
-    _makeSemanticSlotRule(SemanticColorSlots.EmphasizedBackground, BaseSlots.Primary, Shade.Unshaded);
-    _makeSemanticSlotRule(SemanticColorSlots.EmphasizedForeground, BaseSlots.Neutral, Shade.Lightest);
-    _makeSemanticSlotRule(SemanticColorSlots.NeutralBackground, BaseSlots.Neutral, Shade.Lighter);
-    _makeSemanticSlotRule(SemanticColorSlots.NeutralForeground, BaseSlots.Neutral, Shade.Darker);
-  */
+  _makeSemanticSlotRule(SemanticColorSlots.commandBarBackground, BaseSlots.backgroundColor, Shade.Shade1);
+  _makeSemanticSlotRule(SemanticColorSlots.commandBarHover, BaseSlots.backgroundColor, Shade.Shade1);
+  _makeSemanticSlotRule(SemanticColorSlots.commandBarIcon, BaseSlots.primaryColor, Shade.Shade6);
+  _makeSemanticSlotRule(SemanticColorSlots.commandBarIconSelected, BaseSlots.primaryColor, Shade.Shade8);
 
   return slotRules;
 }
