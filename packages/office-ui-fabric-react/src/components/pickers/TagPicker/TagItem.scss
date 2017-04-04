@@ -16,6 +16,8 @@
   display:flex;
   flex-wrap: nowrap;
   max-width: 100%;
+  position: absolute;
+  right: 2px;
 
   &:hover {
     background: $ms-color-neutralLight;
@@ -50,7 +52,9 @@
 }
 
 .tagItemTextOveflow {
+    word-break: break-all;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    max-width: 60vw;
 }
