@@ -27,7 +27,13 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
   private _inputElement: HTMLInputElement;
 
   constructor(props: IChoiceGroupProps, ) {
-    super(props, { ['onChanged']: 'onChange' });
+    super(props);
+
+    this._warnDeprecations({ 'onChanged': 'onChange' });
+
+    this._warnMutuallyExclusive({
+      'selectedKey': 'defaultSelectedKey'
+    });
 
     this.state = {
       keyChecked: (props.defaultSelectedKey === undefined) ?
