@@ -10,7 +10,7 @@ In order to have PhantomCSS run you must have python version 2.6 or higher insta
 
 To run tests:
 
-1. Navigate to git/office-ui-fabric-react/packages/office-ui-fabric-react in command prompt.
+1. Navigate to packages/office-ui-fabric-react in command prompt.
 2. gulp visualtest --production
 
 To create new tests:
