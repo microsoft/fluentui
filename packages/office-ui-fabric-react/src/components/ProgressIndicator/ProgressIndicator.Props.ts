@@ -30,7 +30,7 @@ export interface IProgressIndicatorProps {
   percentComplete?: number;
 
   /**
-   * Text alternative of progress status
+   * Text alternative of the progress status, used by screen readers for reading the value of the progress.
    */
   ariaValueText?: string;
 
