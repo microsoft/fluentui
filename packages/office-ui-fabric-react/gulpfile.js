@@ -52,10 +52,6 @@ build.postCopy.setConfig({
     ],
     [path.join(distFolder, 'css')]: [
       'node_modules/office-ui-fabric-core/dist/css/*.*'
-    ],
-    [libFolder]: [
-      'src/**/*.Example.tsx',
-      'src/**/*.Props.ts'
     ]
   }
 });
@@ -66,10 +62,6 @@ if (isProduction || isNuke) {
     libAMDFolder: path.join(packageFolder, 'lib-amd')
   });
 }
-
-// Disable certain subtasks in non production builds to speed up serve.
-build.tslint.isEnabled = () => isProduction;
-build.webpack.isEnabled = () => isProduction;
 
 // Short aliases for subtasks.
 build.task('webpack', build.webpack);

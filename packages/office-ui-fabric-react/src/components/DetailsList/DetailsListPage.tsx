@@ -7,22 +7,25 @@ import {
   PropertiesTableSet
 } from '@uifabric/example-app-base';
 import { DetailsListBasicExample } from './examples/DetailsList.Basic.Example';
-const DetailsListBasicExampleCode = require('!raw-loader!./examples/DetailsList.Basic.Example.tsx') as string;
+const DetailsListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Basic.Example.tsx') as string;
 
 import { DetailsListCustomColumnsExample } from './examples/DetailsList.CustomColumns.Example';
-const DetailsListCustomColumnsExampleCode = require('!raw-loader!./examples/DetailsList.CustomColumns.Example.tsx') as string;
+const DetailsListCustomColumnsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.CustomColumns.Example.tsx') as string;
 
 import { DetailsListCustomRowsExample } from './examples/DetailsList.CustomRows.Example';
-const DetailsListCustomRowsExampleCode = require('!raw-loader!./examples/DetailsList.CustomRows.Example.tsx') as string;
+const DetailsListCustomRowsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.CustomRows.Example.tsx') as string;
 
 import { DetailsListCustomGroupHeadersExample } from './examples/DetailsList.CustomGroupHeaders.Example';
-const DetailsListCustomGroupHeadersExampleCode = require('!raw-loader!./examples/DetailsList.CustomGroupHeaders.Example.tsx') as string;
+const DetailsListCustomGroupHeadersExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.CustomGroupHeaders.Example.tsx') as string;
 
 import { DetailsListAdvancedExample } from './examples/DetailsList.Advanced.Example';
-const DetailsListAdvancedExampleCode = require('!raw-loader!./examples/DetailsList.Advanced.Example.tsx') as string;
+const DetailsListAdvancedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Advanced.Example.tsx') as string;
 
 import { DetailsListGroupedExample } from './examples/DetailsList.Grouped.Example';
-const DetailsListGroupedExampleCode = require('!raw-loader!./examples/DetailsList.Grouped.Example.tsx') as string;
+const DetailsListGroupedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Grouped.Example.tsx') as string;
+
+import { DetailsListDragDropExample } from './examples/DetailsList.DragDrop.Example';
+const DetailsListDragDropExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.DragDrop.Example.tsx') as string;
 
 export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -50,12 +53,15 @@ export class DetailsListPage extends React.Component<IComponentDemoPageProps, {}
             <ExampleCard title='Advanced DetailsList of 5000 items, variable row heights' isOptIn={ true } code={ DetailsListAdvancedExampleCode }>
               <DetailsListAdvancedExample />
             </ExampleCard>
+            <ExampleCard title='Drag and Drop DetailsList with 10 items' isOptIn={ true } code={ DetailsListDragDropExampleCode }>
+              <DetailsListDragDropExample />
+            </ExampleCard>
           </div>
         }
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/lib/components/DetailsList/DetailsList.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/DetailsList.Props.ts')
             ] }
           />
         }

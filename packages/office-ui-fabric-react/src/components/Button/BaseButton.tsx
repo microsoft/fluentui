@@ -12,7 +12,7 @@ import {
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.Props';
-const styles: any = require('./BaseButton.scss');
+import styles = require('./BaseButton.scss');
 
 export interface IBaseButtonClassNames {
   base: string;
@@ -46,7 +46,10 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
   private _ariaDescriptionId: string;
 
   constructor(props: IButtonProps, rootClassName: string, deprecationMap: any) {
-    super(props, { 'rootProps': null });
+    super(props);
+
+    this._warnDeprecations({ 'rootProps': null });
+
     this._labelId = getId();
     this._descriptionId = getId();
     this._ariaDescriptionId = getId();

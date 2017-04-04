@@ -17,7 +17,7 @@ import {
 import { IExampleComponentProps } from './ExampleComponent.Props';
 
 /* tslint:disable:no-any */
-const styles: any = require('./ExampleComponent.scss');
+import styles = require('./ExampleComponent.scss');
 /* tslint:enable:no-any */
 
 /**

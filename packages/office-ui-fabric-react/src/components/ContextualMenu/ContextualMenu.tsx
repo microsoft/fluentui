@@ -21,7 +21,7 @@ import {
   Icon,
   IIconProps
 } from '../../Icon';
-const styles: any = require('./ContextualMenu.scss');
+import styles = require('./ContextualMenu.scss');
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;

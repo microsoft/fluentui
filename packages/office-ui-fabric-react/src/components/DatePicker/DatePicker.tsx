@@ -15,7 +15,7 @@ import {
   KeyCodes,
   css
 } from '../../Utilities';
-const styles: any = require('./DatePicker.scss');
+import styles = require('./DatePicker.scss');
 
 export interface IDatePickerState {
   /** The currently focused date in the drop down, but not necessarily selected */

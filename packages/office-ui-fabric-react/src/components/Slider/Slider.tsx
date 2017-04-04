@@ -10,7 +10,7 @@ import {
 } from '../../Utilities';
 import { ISliderProps, ISlider } from './Slider.Props';
 import { Label } from '../../Label';
-const styles: any = require('./Slider.scss');
+import styles = require('./Slider.scss');
 
 export interface ISliderState {
   value?: number;
@@ -43,6 +43,10 @@ export class Slider extends BaseComponent<ISliderProps, ISliderState> implements
 
   constructor(props?: ISliderProps) {
     super(props);
+
+    this._warnMutuallyExclusive({
+      'value': 'defaultValue'
+    });
 
     this._id = getId('Slider');
 

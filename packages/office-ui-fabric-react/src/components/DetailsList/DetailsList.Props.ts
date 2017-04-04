@@ -27,6 +27,12 @@ export interface IDetailsList {
 }
 
 export interface IDetailsListProps extends React.Props<DetailsList> {
+  /**
+   * Optional callback to access the IDetailsList interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IDetailsList) => void;
+
   /** A key that uniquely identifies the given items. If provided, the selection will be reset when the key changes. */
   setKey?: string;
 
@@ -140,7 +146,7 @@ export interface IDetailsListProps extends React.Props<DetailsList> {
   /** Optional callback to get the aria-label string for a given item. */
   getRowAriaLabel?: (item: any) => string;
 
-  /** Optional callback to get the item key that will be used in the selection. */
+  /** Optional callback to get the item key, to be used in the selection and on render. */
   getKey?: (item: any, index?: number) => string;
 
   /** A text summary of the table set via aria-label. */

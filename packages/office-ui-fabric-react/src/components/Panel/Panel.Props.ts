@@ -3,7 +3,15 @@ import { Panel } from './Panel';
 import { IRenderFunction } from '../../Utilities';
 import { ILayerProps } from '../../Layer';
 
+export interface IPanel {
+
+}
 export interface IPanelProps extends React.Props<Panel> {
+  /**
+   * Optional callback to access the IPanel interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IPanel) => void;
 
   /**
   * Whether the panel is displayed.

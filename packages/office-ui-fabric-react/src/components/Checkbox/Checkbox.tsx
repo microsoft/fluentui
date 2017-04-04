@@ -9,7 +9,7 @@ import {
   ICheckbox,
   ICheckboxProps
 } from './Checkbox.Props';
-const styles: any = require('./Checkbox.scss');
+import styles = require('./Checkbox.scss');
 
 export interface ICheckboxState {
   /** Is true when the control has focus. */
@@ -28,6 +28,10 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
 
   constructor(props: ICheckboxProps) {
     super(props);
+
+    this._warnMutuallyExclusive({
+      'checked': 'defaultChecked'
+    });
 
     this._id = getId('checkbox-');
     this.state = {
@@ -95,7 +99,7 @@ export class Checkbox extends BaseComponent<ICheckboxProps, ICheckboxState> impl
     return this._checkBox ? this._checkBox.checked : false;
   }
 
-  public focus() {
+  public focus(): void {
     if (this._checkBox) {
       this._checkBox.focus();
     }

@@ -189,9 +189,9 @@ describe('SelectionZone', () => {
     expect(_selection.getSelectedCount()).equals(0, 'Expecting that none is selected aftr escape');
   });
 
-  it('selects item on focus', () => {
+  it('does not select item on focus', () => {
     ReactTestUtils.Simulate.focus(_surface0);
-    expect(_selection.isIndexSelected(0)).equals(true, 'Item 0 was not selected');
+    expect(_selection.isIndexSelected(0)).equals(false, 'Item 0 was selected');
   });
 
   it('does not select an item on focus if ctrl/meta is pressed', () => {

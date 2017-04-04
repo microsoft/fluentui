@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  EventGroup,
+  BaseComponent,
   KeyCodes,
   assign,
   autobind,
@@ -30,7 +30,7 @@ import {
   SelectionZone
 } from '../../utilities/selection/index';
 import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
-const styles: any = require('./DetailsList.scss');
+import styles = require('./DetailsList.scss');
 
 export interface IDetailsListState {
   lastWidth?: number;
@@ -52,7 +52,7 @@ const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
 const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
 
 @withViewport
-export class DetailsList extends React.Component<IDetailsListProps, IDetailsListState> implements IDetailsList {
+export class DetailsList extends BaseComponent<IDetailsListProps, IDetailsListState> implements IDetailsList {
   public static defaultProps = {
     layoutMode: DetailsListLayoutMode.justified,
     selectionMode: SelectionMode.multiple,
@@ -71,7 +71,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     selectionZone: SelectionZone
   };
 
-  private _events: EventGroup;
   private _selection: ISelection;
   private _activeRows: { [key: string]: DetailsRow };
   private _dragDropHelper: DragDropHelper;
@@ -108,7 +107,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       isSomeGroupExpanded: props.groupProps && !props.groupProps.isAllGroupsCollapsed
     };
 
-    this._events = new EventGroup(this);
     this._selection = props.selection || new Selection({ onSelectionChanged: null, getKey: props.getKey });
     this._selection.setItems(props.items as IObjectWithKey[], false);
     this._dragDropHelper = props.dragDropEvents ? new DragDropHelper({ selection: this._selection }) : null;
@@ -116,7 +114,6 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
   }
 
   public componentWillUnmount() {
-    this._events.dispose();
     if (this._dragDropHelper) {
       this._dragDropHelper.dispose();
     }
@@ -195,7 +192,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
       ariaLabel,
       ariaLabelForGrid,
       rowElementEventMap,
-      shouldApplyApplicationRole = false
+      shouldApplyApplicationRole = false,
+      getKey
     } = this.props;
     let {
       adjustedColumns,
@@ -211,7 +209,8 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
     let groupNestingDepth = this._getGroupNestingDepth();
     let additionalListProps = {
       renderedWindowsAhead: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_AHEAD,
-      renderedWindowsBehind: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_BEHIND
+      renderedWindowsBehind: isSizing ? 0 : DEFAULT_RENDERED_WINDOWS_BEHIND,
+      getKey
     };
     let selectAllVisibility = SelectAllVisibility.none; // for SelectionMode.none
     if (selectionMode === SelectionMode.single) {
@@ -300,6 +299,7 @@ export class DetailsList extends React.Component<IDetailsListProps, IDetailsList
                   />
                 ) : (
                     <List
+                      role={ null }
                       items={ items }
                       onRenderCell={ (item, itemIndex) => this._onRenderCell(0, item, itemIndex) }
                       { ...additionalListProps }

@@ -7,7 +7,7 @@ import {
   css
 } from '../../Utilities';
 import { IProgressIndicatorProps } from './ProgressIndicator.Props';
-const styles: any = require('./ProgressIndicator.scss');
+import styles = require('./ProgressIndicator.scss');
 
 // if the percentComplete is near 0, don't animate it.
 // This prevents animations on reset to 0 scenarios
@@ -22,9 +22,12 @@ export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}
   };
 
   constructor(props: IProgressIndicatorProps) {
-    super(props, {
+    super(props);
+
+    this._warnDeprecations({
       'title': 'label'
     });
+
   }
 
   public render() {

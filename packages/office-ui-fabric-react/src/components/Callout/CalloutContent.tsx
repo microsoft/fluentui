@@ -16,7 +16,7 @@ import {
 } from '../../Utilities';
 import { getRelativePositions, IPositionInfo, IPositionProps, getMaxHeight } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
-const styles: any = require('./Callout.scss');
+import styles = require('./Callout.scss');
 
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 const OFF_SCREEN_STYLE = { opacity: 0 };
@@ -49,7 +49,9 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
   private _target: HTMLElement | MouseEvent;
 
   constructor(props: ICalloutProps) {
-    super(props, { 'beakStyle': 'beakWidth' });
+    super(props);
+
+    this._warnDeprecations({ 'beakStyle': 'beakWidth' });
 
     this._didSetInitialFocus = false;
     this.state = {
