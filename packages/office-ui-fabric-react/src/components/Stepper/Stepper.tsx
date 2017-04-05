@@ -482,6 +482,7 @@ export class Stepper extends BaseComponent<IStepperProps, IStepperState> impleme
 
     else if (event.which === KeyCodes.enter) {
       event.currentTarget.blur();
+      this.focus();
     }
 
   }
