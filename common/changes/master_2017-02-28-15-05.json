@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Pass index, hasCheckMarks, hasIcons to Contextmual menu item onRender",
+      "comment": "ContextualMenu: `onRender` now takes in `index`, `hasCheckMarks`, and `hasIcons`.",
       "type": "patch"
     },
     {
