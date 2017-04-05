@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { IStepperState } from './Stepper';
 
 export interface IStepperProps {
 
@@ -44,11 +45,6 @@ export interface IStepperProps {
   ariaLabel?: string;
 
   /**
-   * A list of ids to be used as the label for the Stepper for the benefit of screen readers.
-   */
-  ariaLabelledby?: string;
-
-  /**
    * Whether or not the Stepper is disabled.
    */
   disabled?: boolean;
@@ -63,6 +59,22 @@ export interface IStepperProps {
    * otherwise [0] is used by default
    */
   validUnitOptions?: string[];
+
+  /**
+   * Label for the spinner
+   */
+  label?: string;
+
+  /**
+   * The method is used to get the validation error message and determine whether the input value is valid or not.
+   *
+   *   When it returns string:
+   *   - If valid, it returns empty string.
+   *   - If invalid, it returns the error message string and the text field will
+   *     show a red border and show an error message below the text field.
+   *
+   */
+  onGetErrorMessage?: (value: string, state: IStepperState, props: IStepperProps) => string;
 }
 
 export interface IStepper {

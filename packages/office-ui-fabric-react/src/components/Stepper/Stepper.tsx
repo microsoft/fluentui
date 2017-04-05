@@ -1,7 +1,8 @@
 import * as React from 'react';
 import {
   TextField,
-  IconButton
+  IconButton,
+  Label
 } from '../../../lib/';
 import {
   BaseComponent,
@@ -37,13 +38,16 @@ export interface IStepperState {
 
 export class Stepper extends BaseComponent<IStepperProps, IStepperState> implements IStepper {
   private _textField: TextField;
+  private _stepperId: string;
+  private _labelId: string;
+
+  private _onGetErrorMessage?: (value: string, state: IStepperState, props: IStepperProps) => string;
   public static defaultProps: IStepperProps = {
     step: 1,
     min: 0,
     max: 100,
     disabled: false,
-    defaultValue: 0,
-    validUnitOptions: ['"', 'in', 'cm', 'pt', 'px']
+    defaultValue: 0
   };
 
   private _currentStepFunctionHandle: number;
@@ -60,6 +64,14 @@ export class Stepper extends BaseComponent<IStepperProps, IStepperState> impleme
       spinning: false,
       currentUnitIndex: -1
     };
+
+    this._labelId = getId('Label');
+    this._stepperId = getId('Stepper');
+
+    if (props.onGetErrorMessage) {
+      this._onGetErrorMessage = props.onGetErrorMessage;
+      this._onGetErrorMessage = this._onGetErrorMessage.bind(this);
+    }
 
     // bind this (for this class) to all the methods
     this._getErrorMessage = this._getErrorMessage.bind(this);
@@ -98,24 +110,25 @@ export class Stepper extends BaseComponent<IStepperProps, IStepperState> impleme
       className,
       disabled,
       min,
-      max
+      max,
+      label
     } = this.props;
 
     const {
-      value,
-      currentUnitIndex,
+      value
     } = this.state;
 
     return (
       <div className='stepperContainer' >
+        { label && <Label id={ this._labelId } htmlFor={ this._stepperId }>{ label }</Label> }
         <TextField
           value={ String(value).concat(this._getCurrentUnit()) }
           resizable={ false }
           validateOnFocusOut={ true }
-          id='stepper'
+          id={ this._stepperId }
           className='textField'
           role='spinbutton'
-          aria-labelledby={ this.props.ariaLabelledby }
+          aria-labelledby={ label && this._labelId }
           aria-valuemin={ String(this.props.min) }
           aria-valuemax={ String(this.props.max) }
           aria-valuenow={ String(value) }
@@ -189,7 +202,6 @@ export class Stepper extends BaseComponent<IStepperProps, IStepperState> impleme
    * @returns the normalized unit
    */
   private _normalizeUnit(unitValue: string): string {
-    let unitIndex: number = this.state.currentUnitIndex;
 
     if (unitValue == null || unitValue.length == 0) {
       return '';
@@ -231,12 +243,23 @@ export class Stepper extends BaseComponent<IStepperProps, IStepperState> impleme
    * @returns an error message to display to the user, empty string if no error
    */
   private _getErrorMessage(newValue: string): string {
+    let errorMessage: string = '';
+
+    if (this._onGetErrorMessage) {
+      errorMessage = this._onGetErrorMessage(newValue, this.state, this.props);
+
+      if (errorMessage == '' && Number(newValue) != this.state.value) {
+        this.setState({ value: Number(newValue) });
+      }
+
+      return errorMessage;
+    }
+
     const {
       value,
       currentUnitIndex,
     } = this.state;
 
-    let errorMessage: string = '';
     let valueToSet: number = null;
     let unitIndexToSet: number = null;
 
@@ -330,6 +353,12 @@ export class Stepper extends BaseComponent<IStepperProps, IStepperState> impleme
     // if so, convert it and return (keeping the current unit)
     if (!isNaN(Number(valToConvert))) {
       return [Number(valToConvert), this.state.currentUnitIndex];
+    }
+
+    // if we got a value that is not a number, we better have
+    // some valid unit options, otherwise we know this is invalid and we are done
+    if (this.props.validUnitOptions == null || this.props.validUnitOptions.length == 0) {
+      return null
     }
 
     let index = -1;
