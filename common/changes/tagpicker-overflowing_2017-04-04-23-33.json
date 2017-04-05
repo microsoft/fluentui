@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Tagpicker: Fix for long tags.",
+      "comment": "TagPicker: Fix for long tags.",
       "type": "patch"
     },
     {
