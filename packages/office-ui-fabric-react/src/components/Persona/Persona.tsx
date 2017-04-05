@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  BaseComponent,
   autobind,
   css,
   divProperties,
@@ -47,7 +48,7 @@ export interface IPersonaState {
   isImageLoaded?: boolean;
 }
 
-export class Persona extends React.Component<IPersonaProps, IPersonaState> {
+export class Persona extends BaseComponent<IPersonaProps, IPersonaState> {
   public static defaultProps: IPersonaProps = {
     primaryText: '',
     size: PersonaSize.regular,

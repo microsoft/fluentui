@@ -294,10 +294,10 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
       overflow-y: hidden;
 
       @include ms-font-m;
-    }
 
-    :global(.ms-Label) {
-      padding: 0;
+      :global(.ms-Label) {
+        padding: 0;
+      }
     }
 
     &::before {

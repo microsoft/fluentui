@@ -13,12 +13,12 @@ import { ImageCoverExample } from './examples/Image.Cover.Example';
 import { ImageNoneExample } from './examples/Image.None.Example';
 import { ImageMaximizeFrameExample } from './examples/Image.MaximizeFrame.Example';
 
-const ImageDefaultExampleCode = require('!raw-loader!./examples/Image.Default.Example.tsx') as string;
-const ImageCenterExampleCode = require('!raw-loader!./examples/Image.Center.Example.tsx') as string;
-const ImageContainExampleCode = require('!raw-loader!./examples/Image.Contain.Example.tsx') as string;
-const ImageCoverExampleCode = require('!raw-loader!./examples/Image.Cover.Example.tsx') as string;
-const ImageNoneExampleCode = require('!raw-loader!./examples/Image.None.Example.tsx') as string;
-const ImageMaximizeFrameExampleCode = require('!raw-loader!./examples/Image.MaximizeFrame.Example.tsx') as string;
+const ImageDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Image/examples/Image.Default.Example.tsx') as string;
+const ImageCenterExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Image/examples/Image.Center.Example.tsx') as string;
+const ImageContainExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Image/examples/Image.Contain.Example.tsx') as string;
+const ImageCoverExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Image/examples/Image.Cover.Example.tsx') as string;
+const ImageNoneExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Image/examples/Image.None.Example.tsx') as string;
+const ImageMaximizeFrameExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Image/examples/Image.MaximizeFrame.Example.tsx') as string;
 
 export class ImagePage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -51,7 +51,7 @@ export class ImagePage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/lib/components/Image/Image.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/Image.Props.ts')
             ] }
           />
         }

@@ -6,10 +6,16 @@ export { DayOfWeek, DateRangeType }
 
 export interface ICalendar {
   /** Sets focus to the selected date. */
-  focus(): void;
+  focus: () => void;
 }
 
 export interface ICalendarProps extends React.Props<Calendar> {
+  /**
+   * Optional callback to access the ICalendar interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: ICalendar) => void;
+
   /**
   * Callback issued when a date is selected
   * @param date - The date the user selected

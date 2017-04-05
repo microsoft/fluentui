@@ -2,6 +2,34 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "1.5.0",
+      "tag": "@uifabric/utilities_v1.5.0",
+      "date": "Tue, 04 Apr 2017 15:18:51 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "086833bf4ae9f8672c83a2d5e85e07eaf22138ed",
+            "comment": "BaseComponent: added support for resolving `componentRef` automatically. Also added `_warnDeprecations` and `_warnMutualExclusion` helpers for warning on misuse."
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.4.0",
+      "tag": "@uifabric/utilities_v1.4.0",
+      "date": "Thu, 30 Mar 2017 21:04:29 GMT",
+      "comments": {
+        "minor": [
+          {
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "99589edbaff0a68e9c3c6097a3b7be8d058d7c18",
+            "comment": "Adding `setBodyScroll` method to enable/disable body scrolling. Useful for Overlay scenarios where you would want to disable the scrolling behind the overlay."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.3.0",
       "tag": "@uifabric/utilities_v1.3.0",
       "date": "Thu, 23 Mar 2017 03:13:02 GMT",
