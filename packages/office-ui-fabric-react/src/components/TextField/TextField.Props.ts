@@ -1,9 +1,32 @@
 import * as React from 'react';
 
+export interface ITextField {
+  /** Gets the current value of the input. */
+  value: string;
+
+  /** Sets focus to the input. */
+  focus: () => void;
+
+  /** Select the value of the text field. */
+  select: () => void;
+
+  /** Sets the selection start of the text field to a specified value */
+  setSelectionStart: (value: number) => void;
+
+  /** Sets the selection end of the text field to a specified value */
+  setSelectionEnd: (value: number) => void;
+}
+
 /**
  * TextField component props.
  */
 export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement | HTMLTextAreaElement> {
+  /**
+   * Optional callback to access the ITextField interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: ITextField) => void;
+
   /**
    * Whether or not the textfield is a multiline textfield.
    * @default false
@@ -134,21 +157,4 @@ export interface ITextFieldProps extends React.HTMLProps<HTMLInputElement | HTML
    * @default true
    */
   validateOnLoad?: boolean;
-}
-
-export interface ITextField {
-  /** Gets the current value of the input. */
-  value: string;
-
-  /** Sets focus to the input. */
-  focus(): void;
-
-  /** Select the value of the text field. */
-  select(): void;
-
-  /** Sets the selection start of the text field to a specified value */
-  setSelectionStart(value: number): void;
-
-  /** Sets the selection end of the text field to a specified value */
-  setSelectionEnd(value: number): void;
 }

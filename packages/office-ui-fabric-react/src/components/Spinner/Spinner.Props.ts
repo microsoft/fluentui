@@ -1,7 +1,16 @@
 import * as React from 'react';
 import { Spinner } from './Spinner';
 
+export interface ISpinner {
+
+}
+
 export interface ISpinnerProps extends React.Props<Spinner> {
+  /**
+   * Optional callback to access the ISpinner interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: ISpinner) => void;
 
   /**
    * @deprecated
