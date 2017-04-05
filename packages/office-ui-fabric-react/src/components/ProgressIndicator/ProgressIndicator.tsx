@@ -22,9 +22,12 @@ export class ProgressIndicator extends BaseComponent<IProgressIndicatorProps, {}
   };
 
   constructor(props: IProgressIndicatorProps) {
-    super(props, {
+    super(props);
+
+    this._warnDeprecations({
       'title': 'label'
     });
+
   }
 
   public render() {

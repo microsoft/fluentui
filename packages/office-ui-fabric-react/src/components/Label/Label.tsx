@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { css, divProperties, getNativeProps } from '../../Utilities';
+import { BaseComponent, css, divProperties, getNativeProps } from '../../Utilities';
 import { ILabelProps } from './Label.Props';
 import styles = require('./Label.scss');
 
-export class Label extends React.Component<ILabelProps, any> {
+export class Label extends BaseComponent<ILabelProps, any> {
   public render() {
     let { disabled, required, children, className } = this.props;
 
