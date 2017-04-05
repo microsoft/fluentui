@@ -2,23 +2,15 @@
 
 .root {
   @include focus-border();
-
   flex-shrink: 0;
-  vertical-align: top;
   background: $ms-color-neutralLighter;
-  margin: 1px;
   height: 32px;
   line-height: 32px;
-  vertical-align: top;
-  white-space: nowrap;
   cursor: default;
   user-select: none;
   display: flex;
   flex-wrap: nowrap;
   max-width: 100%;
-  position: absolute;
-  right: 2px;
-
   &:hover {
     background: $ms-color-neutralLight;
   }
@@ -52,8 +44,6 @@
 }
 
 .tagItemTextOveflow {
-    word-break: break-all;
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 60vw;
