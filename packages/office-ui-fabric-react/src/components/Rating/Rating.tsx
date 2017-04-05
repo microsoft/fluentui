@@ -58,6 +58,8 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
 
   private _renderStar(rating: number): JSX.Element {
     const inputId = `${this._id}-${rating}`;
+    const flooredRating = Math.floor(this.state.rating);
+    const starSize = rating > this.state.rating && rating - 1 < this.state.rating ? this.state.rating - flooredRating : 1;
 
     return <div className={ css('ms-Rating-star', styles.star, {
       ['is-selected ' + styles.starIsSelected]: rating <= this.state.rating,
@@ -72,14 +74,14 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
         value={ rating }
         aria-labelledby={ `${this._labelId}-${rating}` }
         disabled={ this.props.disabled }
-        checked={ rating === this.state.rating }
+        checked={ rating === flooredRating }
         onChange={ this._onChange.bind(this, rating) }
         onFocus={ this._onFocus.bind(this, rating) }
         onBlur={ this._onBlur.bind(this, rating) }
       />
       <label className={ css('ms-Rating-label', styles.label) } htmlFor={ inputId }>
         { this._getLabel(rating) }
-        { this._getIcon() }
+        { this._getIcon(starSize) }
       </label>
     </div>;
   }
@@ -120,8 +122,21 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
     );
   }
 
-  private _getIcon(): JSX.Element {
-    return <i className={ css('ms-Icon', this.props.icon || 'ms-Icon--FavoriteStarFill') } />;
+  private _getIcon(starSize?: number): JSX.Element {
+    if (starSize && starSize < 1) {
+      return (
+        <span className={ css('ms-rating-halfStarContainer', styles.halfStarContainer, 'ms-Icon', this.props.icon || 'ms-Icon--FavoriteStarFill') } >
+          <i className={ css('ms-Rating-star', styles.star,
+            'is-selected ' + styles.starIsSelected,
+            { ['is-disabled ' + styles.starIsDisabled]: this.props.disabled },
+            'ms-rating-halfStar', styles.halfStar, 'ms-Icon',
+            this.props.icon || 'ms-Icon--FavoriteStarFill') }
+            style={ { width: starSize * 100 + '%' } } />
+        </span>);
+    } else {
+      return <i className={ css('ms-Icon', this.props.icon || 'ms-Icon--FavoriteStarFill') } />;
+    }
+
   }
 
   private _getInitialValue(props: IRatingProps) {
@@ -137,8 +152,6 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   private _getClampedRating(rating: number): number {
-    rating = Math.floor(rating);
-
     return Math.min(Math.max(rating, this.props.min), this.props.max);
   }
 }

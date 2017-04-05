@@ -5,7 +5,7 @@ import * as React from 'react';
  */
 export interface IRatingProps extends React.HTMLProps<HTMLElement> {
   /**
-   * Selected rating, has to be an integer between min and max
+   * Selected rating, has to be a number between min and max
    */
   rating?: number;
 

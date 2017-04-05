@@ -18,7 +18,7 @@ describe('Rating', () => {
       rating = ReactTestUtils.renderIntoDocument<Rating>(
         <Rating
           rating={ 2 }
-          />
+        />
       );
     } catch (e) {
       exception = e;
@@ -59,7 +59,7 @@ describe('Rating', () => {
       rating = ReactTestUtils.renderIntoDocument<Rating>(
         <Rating
           rating={ 10 }
-          />
+        />
       );
     } catch (e) {
       exception = e;
@@ -78,6 +78,47 @@ describe('Rating', () => {
     expect((ratingInputs[4] as HTMLInputElement).checked).to.be.eq(true);
   });
 
+  it('Half star rating', () => {
+    let exception;
+    let threwException = false;
+    let rating;
+    try {
+      rating = ReactTestUtils.renderIntoDocument<Rating>(
+        <Rating
+          rating={ 2.7 }
+        />
+      );
+    } catch (e) {
+      exception = e;
+      threwException = true;
+    }
+    expect(threwException).to.be.false;
+
+    let renderedDOM = ReactDOM.findDOMNode(rating as React.ReactInstance);
+
+    let ratingInputs = renderedDOM.querySelectorAll('.ms-Rating-input');
+
+    expect((ratingInputs[0] as HTMLInputElement).checked).to.be.eq(false);
+    expect((ratingInputs[1] as HTMLInputElement).checked).to.be.eq(true);
+    expect((ratingInputs[2] as HTMLInputElement).checked).to.be.eq(false);
+    expect((ratingInputs[3] as HTMLInputElement).checked).to.be.eq(false);
+    expect((ratingInputs[4] as HTMLInputElement).checked).to.be.eq(false);
+
+    const checkHalfState = (ratingToCheck: number, state: boolean, style?: string) => {
+      let halfStarElements = ratingInputs[ratingToCheck - 1].querySelectorAll('ms-rating-halfStar');
+      expect(halfStarElements.length === (state ? 0 : 1), `Rating ${ratingToCheck} should be ${!state && 'selected' || ''} selected`);
+      if (state) {
+        expect((halfStarElements[0] as HTMLElement).getAttribute('style') === style, `Rating ${ratingToCheck} should be ${!state && 'selected' || ''} selected`);
+      }
+    };
+
+    checkHalfState(1, false);
+    checkHalfState(2, false);
+    checkHalfState(3, true, 'width: 70%');
+    checkHalfState(4, false);
+    checkHalfState(5, false);
+  });
+
   it('When rating is disabled cannot change rating', () => {
     let exception;
     let threwException = false;
@@ -86,7 +127,7 @@ describe('Rating', () => {
       choiceGroup = ReactTestUtils.renderIntoDocument<Rating>(
         <Rating
           disabled={ true }
-          />
+        />
       );
     } catch (e) {
       exception = e;

@@ -29,6 +29,10 @@ $Rating-largeIconSize: 20px;
         & ~ .star {
           // Set default color for any star after hovered one
           color: $Rating-defaultColor;
+
+          .halfStar{
+            color: $Rating-defaultColor;
+          }
         }
       }
     }
@@ -41,12 +45,27 @@ $Rating-largeIconSize: 20px;
 
     color: $Rating-defaultColor;
 
+    .halfStarContainer {
+      position:relative;
+    }
+
+    .halfStar{
+      overflow: hidden;
+      position:absolute;
+      left:0px;
+      top: 0px;
+    }
+
     &.starIsSelected {
       color: $Rating-selectedColor;
     }
 
     &.starIsDisabled {
       color: $Rating-disabledColor;
+
+      .halfStarContainer {
+        color: $Rating-disabledColor;
+      }
 
       .label {
         cursor: default;
@@ -62,6 +81,7 @@ $Rating-largeIconSize: 20px;
 
       // Reserve space for focus styling
       border: 1px solid transparent;
+
     }
   }
 

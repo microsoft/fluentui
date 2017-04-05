@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Adding support for displaying partial stars in rating control",
+      "type": "minor"
+    }
+  ],
+  "email": "vikiri@microsoft.com"
+}
