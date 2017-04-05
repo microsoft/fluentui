@@ -44,7 +44,7 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
   beakWidth?: number;
 
   /**
-   * The background color of the beak in hex format ie. #ffffff.
+   * The background color of the Callout in hex format ie. #ffffff.
    * @default $ms-color-white
    */
   backgroundColor?: string;
