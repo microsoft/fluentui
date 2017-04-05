@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "ProgressIndicator: support for aria-valuetext",
+      "type": "minor"
+    }
+  ],
+  "email": "manishda@microsoft.com"
+}
