@@ -108,7 +108,7 @@ $CommandBarHeight: 40px;
 //
 .root.rootIsMedium,
 .root.rootIsLarge,
-.root.rootIsXLarge
+.root.rootIsXLarge,
 .root.rootIsCustom {
   .main {
     @media (min-width: $ms-screen-lg-min) {
