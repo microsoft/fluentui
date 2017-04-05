@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  BaseComponent,
   css,
   getNativeProps,
   divProperties,
@@ -10,7 +11,7 @@ import { IOverlayProps } from './Overlay.Props';
 
 import styles = require('./Overlay.scss');
 
-export class Overlay extends React.Component<IOverlayProps, {}> {
+export class Overlay extends BaseComponent<IOverlayProps, {}> {
 
   public componentDidMount() {
     disableBodyScroll();

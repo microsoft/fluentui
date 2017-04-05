@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  EventGroup,
+  BaseComponent,
   autobind,
   buttonProperties,
   css,
@@ -32,7 +32,7 @@ export interface ICommandBarState {
   renderedFarItems?: IContextualMenuItem[];
 }
 
-export class CommandBar extends React.Component<ICommandBarProps, ICommandBarState> implements ICommandBar {
+export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState> implements ICommandBar {
   public static defaultProps = {
     items: [],
     overflowItems: [],
@@ -51,7 +51,6 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
   private _id: string;
   private _overflowWidth: number;
   private _commandItemWidths: { [key: string]: number };
-  private _events: EventGroup;
 
   constructor(props: ICommandBarProps) {
     super(props);
@@ -59,7 +58,6 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     this.state = this._getStateFromProps(props);
 
     this._id = getId('CommandBar');
-    this._events = new EventGroup(this);
   }
 
   public componentDidMount() {
@@ -67,10 +65,6 @@ export class CommandBar extends React.Component<ICommandBarProps, ICommandBarSta
     this._updateRenderedItems();
 
     this._events.on(window, 'resize', this._updateRenderedItems);
-  }
-
-  public componentWillUnmount() {
-    this._events.dispose();
   }
 
   public componentWillReceiveProps(nextProps: ICommandBarProps) {

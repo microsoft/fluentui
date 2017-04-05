@@ -107,9 +107,6 @@ describe('Rating', () => {
     const checkHalfState = (ratingToCheck: number, state: boolean, style?: string) => {
       let halfStarElements = ratingInputs[ratingToCheck - 1].querySelectorAll('ms-rating-halfStar');
       expect(halfStarElements.length === (state ? 0 : 1), `Rating ${ratingToCheck} should be ${!state && 'selected' || ''} selected`);
-      if (state) {
-        expect((halfStarElements[0] as HTMLElement).getAttribute('style') === style, `Rating ${ratingToCheck} should be ${!state && 'selected' || ''} selected`);
-      }
     };
 
     checkHalfState(1, false);

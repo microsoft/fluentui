@@ -6,7 +6,10 @@ import {
 } from '../../Utilities';
 
 export class BaseDecorator<P, S> extends BaseComponent<P, S> {
+  protected _shouldUpdateComponentRef = false;
+
   protected _composedComponentInstance: React.Component<P, S>;
+
   private _hoisted: string[];
 
   constructor() {
