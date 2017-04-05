@@ -35,7 +35,6 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
     preventDismissOnScroll: false,
     isBeakVisible: true,
     beakWidth: 16,
-    beakColor: "#ffffff",
     gapSpace: 16,
     directionalHint: DirectionalHint.bottomAutoEdge
   };
@@ -98,7 +97,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       beakStyle,
       children,
       beakWidth,
-      beakColor } = this.props;
+      backgroundColor } = this.props;
     let { positions } = this.state;
     let beakStyleWidth = beakWidth;
 
@@ -113,7 +112,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
       left: positions && positions.beakPosition ? positions.beakPosition.left : BEAK_ORIGIN_POSITION.left,
       height: beakStyleWidth,
       width: beakStyleWidth,
-      backgroundColor: beakColor,
+      backgroundColor: backgroundColor,
     };
 
     let directionalClassName = positions && positions.directionalClassName ? `ms-u-${positions.directionalClassName}` : '';
@@ -146,7 +145,7 @@ export class CalloutContent extends BaseComponent<ICalloutProps, ICalloutState> 
             className={ css('ms-Callout-main', styles.main) }
             onDismiss={ this.dismiss }
             shouldRestoreFocus={ true }
-            style={ { maxHeight: contentMaxHeight } }>
+            style={ { maxHeight: contentMaxHeight, backgroundColor: backgroundColor } }>
             { children }
           </Popup>
         </div>
