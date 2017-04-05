@@ -1,75 +1,82 @@
 import * as React from 'react';
 import {
   css,
+  autobind,
   getNativeProps,
   divProperties,
   EventGroup,
-  getId
+  getId,
+  BaseComponent,
+  getRTL
 } from '../../Utilities';
 import { IOverflowSetProps } from './OverflowSet.Props';
 import { IconButton } from '../../Button';
-import { IContextualMenuItem } from '../../ContextualMenu';
+import { IContextualMenuItem, IContextualMenuProps } from '../../ContextualMenu';
 
 const styles: any = require('./OverflowSet.scss');
+const ITEM_CLASS = 'ms-OverflowSet-item';
 
 export interface IOverflowSetState {
-  renderedItems?: IContextualMenuItem[];
-  renderedOverflowItems?: IContextualMenuItem[];
+  renderedItems?: any[];
+  renderedOverflowItems?: any[];
+  shouldMeasure?: boolean;
+  overflowMenuProps?: IContextualMenuProps;
 }
 
-export class OverflowSet extends React.Component<IOverflowSetProps, IOverflowSetState> {
+export class OverflowSet extends BaseComponent<IOverflowSetProps, IOverflowSetState> {
 
   public static defaultProps = {
+    items: []
   };
 
-  public refs: {
-    [key: string]: React.ReactInstance;
-    overflowSet: HTMLElement;
-  };
-
+  private _root: HTMLElement;
+  private _measured: HTMLElement;
+  private _overflow: HTMLElement;
   private _itemWidths: { [key: string]: number };
-  private _events: EventGroup;
   private _id: string;
 
   constructor(props: IOverflowSetProps) {
     super(props);
     this.state = {
-      renderedItems: this.props.items
+      shouldMeasure: true,
+      renderedItems: [],
+      renderedOverflowItems: []
     };
-    this._id = getId('OverflowSet');
-    this._events = new EventGroup(this);
   }
 
   public componentDidMount() {
-    this._updateItemMeasurements();
-    this._updateRenderedItems();
-
-    this._events.on(window, 'resize', this._updateRenderedItems);
-  }
-
-  public componentWillUnmount() {
-    this._events.dispose();
-  }
-
-  public componentDidUpdate(prevProps: IOverflowSetProps) {
-    if (!this._itemWidths) {
-      this._updateItemMeasurements();
-      this._updateRenderedItems();
-    }
+    this._measureItems();
+    this._events.on(window, 'resize', this._onResize);
   }
 
   public render() {
-    let { className, items } = this.props;
-    let divProps = getNativeProps(this.props, divProperties);
-
+    let { className, items, children } = this.props;
+    let { shouldMeasure, renderedItems, renderedOverflowItems } = this.state;
     // onRenderOverflow will eventually take all overflow items
     return (
-      <div ref='overflowSet' { ...divProps } className={ css('ms-OverflowSet', styles.root, className) } >
-        { items && this._onRenderSetItems(this.state.renderedItems) }
-        { this.state.renderedOverflowItems && this._onRenderOverflowButton(this.state.renderedOverflowItems) }
-        { this.props.children && this._onRenderSetItems(this.props.children) }
+      <div ref={ this._resolveRef('_root') } className={ css('ms-OverflowSet', styles.root, className) } >
+        { shouldMeasure && (
+          <div className={ styles.measured } ref={ this._resolveRef('_measured') }>
+            { items && this._onRenderItems(items) }
+            <div ref={ this._resolveRef('_overflow') } >
+              { this._onRenderOverflowButton(null) }
+            </div>
+          </div>
+        ) }
+        { renderedItems.length > 0 && this._onRenderItems(renderedItems) }
+        { renderedOverflowItems.length > 0 && this._onRenderOverflowButton(renderedOverflowItems) }
+        { children && this._onRenderItems(children) }
       </div>
     );
+  }
+
+
+  protected _onResize() {
+    this.setState({ shouldMeasure: true });
+  }
+
+  public componentDidUpdate(prevProps: IOverflowSetProps) {
+    this._measureItems();
   }
 
   private _onRenderOverflowButton(items) {
@@ -84,7 +91,8 @@ export class OverflowSet extends React.Component<IOverflowSetProps, IOverflowSet
     );
   }
 
-  private _onRenderSetItems(items) {
+  @autobind
+  private _onRenderItems(items) {
     return items.map((item, i) => {
       let key = item.key ? item.key : i;
       let onRender = item.onRender ? item.onRender : this.props.onRenderItem;
@@ -99,53 +107,49 @@ export class OverflowSet extends React.Component<IOverflowSetProps, IOverflowSet
     });
   }
 
-  private _updateItemMeasurements() {
+  private _measureItems() {
+    let { items } = this.props;
+    let { shouldMeasure } = this.state;
+    let isRTL = getRTL();
 
-    if (!this._itemWidths) {
-      this._itemWidths = {};
-    }
+    if (shouldMeasure && items && items.length > 0) {
+      let itemElements = this._measured.querySelectorAll('.' + ITEM_CLASS);
+      let overflowButton = this._overflow;
+      let containerSize = this._root.getBoundingClientRect();
+      let renderedItems = [];
+      let renderedOverflowItems = [];
 
-    for (let i = 0; i < this.props.items.length; i++) {
-      let item = this.props.items[i];
+      for (let i = 0; i < items.length; i++) {
+        let item = items[i];
+        let itemSize = itemElements[i].getBoundingClientRect();
+        let isOverflowed = this.state.renderedOverflowItems.length;
+        let isOutOfBounds = isRTL ?
+          itemSize.left < (isOverflowed ? containerSize.left + overflowButton.clientWidth : containerSize.left)
+          :
+          itemSize.right > (isOverflowed ? containerSize.right - overflowButton.clientWidth : containerSize.right);
 
-      if (!this._itemWidths[item.key]) {
-        let el = this.refs[item.key] as HTMLElement;
+        if (isOutOfBounds) {
+          // // get bounding box of last item
+          // let overflowSize = itemElements[items.length].getBoundingClientRect();
+          // // if current item left position + width of last item is greater than right position of container
+          // let isTooLarge = isRTL ? (itemSize.right - overflowSize.width) < containerSize.left : (itemSize.left + overflowSize.width) > containerSize.right;
 
-        if (el) {
-          let style = window.getComputedStyle(el);
-          this._itemWidths[item.key] = el.getBoundingClientRect().width + parseInt(style.marginRight, 10) + parseInt(style.marginLeft, 10);
+          // if (i > 0 && isTooLarge) {
+          //   i--;
+          //   renderedItems.pop();
+          // }
+
+          renderedOverflowItems = items.slice(i);
+
+          break;
         }
+
+        renderedItems.push(item);
       }
+
+      this.setState({ renderedItems, renderedOverflowItems, shouldMeasure: false });
     }
   }
 
-  private _updateRenderedItems() {
-    let { items, overflowItems = []} = this.props;
-    let renderedItems = [].concat(items);
-    let renderedOverflowItems = overflowItems;
-    let overflowSet = this.refs.overflowSet;
-    let consumedWidth = 0;
-    let isOverflowVisible = renderedOverflowItems && renderedOverflowItems.length;
 
-    let style = window.getComputedStyle(overflowSet);
-    // reduce availableWidth by 32 to account for overflowButton. This could be improved to support custom button sizes
-    let availableWidth = overflowSet.clientWidth - parseInt(style.marginLeft, 10) - parseInt(style.marginRight, 10) - 32;
-    for (let i = 0; i < renderedItems.length; i++) {
-      let item = renderedItems[i];
-      let itemWidth = this._itemWidths[item.key];
-
-      if ((consumedWidth + itemWidth) >= availableWidth) {
-
-        renderedOverflowItems = renderedItems.splice(i).concat(overflowItems);
-        break;
-      } else {
-        consumedWidth += itemWidth;
-      }
-    }
-
-    this.setState({
-      renderedItems: renderedItems,
-      renderedOverflowItems: renderedOverflowItems.length ? renderedOverflowItems : null,
-    });
-  }
 }
