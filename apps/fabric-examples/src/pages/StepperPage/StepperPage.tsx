@@ -32,7 +32,7 @@ export class StepperPage extends React.Component<IComponentDemoPageProps, {}> {
         overview={
           <div>
             <p>
-              A Stepper...
+              A Stepper allows the user to incrementaly adjust a value in small steps. It is mainly used for numeric values, but other values are supported too.
             </p>
           </div>
         }
@@ -42,14 +42,18 @@ export class StepperPage extends React.Component<IComponentDemoPageProps, {}> {
         dos={
           <div>
             <ul>
-              <li>Use a Stepper when...</li>
+              <li>Use a Stepper when changing a value with precise control.</li>
+              <li>Use a Stepper when values are tied to a unit.</li>
+              <li>Include a label indicating what value the Stepper changes.</li>
             </ul>
           </div>
         }
         donts={
           <div>
             <ul>
-              <li>Don’t use a Stepper when...</li>
+              <li>Don’t use a Stepper if the range of values is large.</li>
+              <li>Don’t use a Slider for binary settings.</li>
+              <li>Don't use a Stepper for a range of three values or less.</li>
             </ul>
           </div>
         }

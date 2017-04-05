@@ -56,12 +56,12 @@ export interface IStepperProps {
 
   /**
    * Acceptable units for spinner (e.g. suffix for the textFeild value), defaults to '' if nothing given here,
-   * otherwise [0] is used by default
+   * otherwise [0] is used by default.
    */
   validUnitOptions?: string[];
 
   /**
-   * Label for the spinner
+   * Label for the spinner.
    */
   label?: string;
 

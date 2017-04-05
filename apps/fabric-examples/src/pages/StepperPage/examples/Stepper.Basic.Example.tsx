@@ -9,7 +9,20 @@ export class StepperBasicExample extends React.Component<any, any> {
   public render() {
     return (
       <div className='ms-BasicSteppersExample'>
-        <Stepper label='Stepper' defaultValue={ 3 } validUnitOptions={ ['"', 'in', 'cm', 'pt', 'px'] } />
+
+        <Stepper
+          label='Basic Stepper:'
+          defaultValue={ 3 }
+        />
+
+        <Stepper
+          label='Stepper with unit:'
+          defaultValue={ 7 }
+          min={ 5 }
+          max={ 10 }
+          validUnitOptions={ ['"', 'in', 'cm', 'pt', 'px'] }
+        />
+
       </div>
     );
   }
