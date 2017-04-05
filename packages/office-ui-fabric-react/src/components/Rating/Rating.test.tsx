@@ -78,7 +78,7 @@ describe('Rating', () => {
     expect((ratingInputs[4] as HTMLInputElement).checked).to.be.eq(true);
   });
 
-  it('Half star rating', () => {
+  it('Deciamal Rating not aggregate', () => {
     let exception;
     let threwException = false;
     let rating;
@@ -95,7 +95,6 @@ describe('Rating', () => {
     expect(threwException).to.be.false;
 
     let renderedDOM = ReactDOM.findDOMNode(rating as React.ReactInstance);
-
     let ratingInputs = renderedDOM.querySelectorAll('.ms-Rating-input');
 
     expect((ratingInputs[0] as HTMLInputElement).checked).to.be.eq(false);
@@ -104,14 +103,49 @@ describe('Rating', () => {
     expect((ratingInputs[3] as HTMLInputElement).checked).to.be.eq(false);
     expect((ratingInputs[4] as HTMLInputElement).checked).to.be.eq(false);
 
-    const checkHalfState = (ratingToCheck: number, state: boolean, style?: string) => {
-      let halfStarElements = ratingInputs[ratingToCheck - 1].querySelectorAll('ms-rating-halfStar');
-      expect(halfStarElements.length === (state ? 0 : 1), `Rating ${ratingToCheck} should be ${!state && 'selected' || ''} selected`);
+    let ratingStar = renderedDOM.querySelectorAll('div.ms-Rating-star');
+    const checkHalfState = (ratingToCheck: number, state: boolean) => {
+      let halfStarElements = ratingStar[ratingToCheck - 1].querySelectorAll('.ms-Rating-partialStar');
+      expect(halfStarElements.length === (state ? 1 : 0)).to.be.eq(true);
     };
 
     checkHalfState(1, false);
     checkHalfState(2, false);
-    checkHalfState(3, true, 'width: 70%');
+    checkHalfState(3, false);
+    checkHalfState(4, false);
+    checkHalfState(5, false);
+  });
+
+  it('Deciamal Rating - aggregate', () => {
+    let exception;
+    let threwException = false;
+    let rating;
+    try {
+      rating = ReactTestUtils.renderIntoDocument<Rating>(
+        <Rating
+          rating={ 2.7 }
+          aggregate={ true }
+        />
+      );
+    } catch (e) {
+      exception = e;
+      threwException = true;
+    }
+    expect(threwException).to.be.false;
+
+    let renderedDOM = ReactDOM.findDOMNode(rating as React.ReactInstance);
+    let ratingInputs = renderedDOM.querySelectorAll('.ms-Rating-input');
+    expect(ratingInputs.length).to.be.eq(0);
+
+    let ratingStar = renderedDOM.querySelectorAll('div.ms-Rating-star');
+    const checkHalfState = (ratingToCheck: number, state: boolean) => {
+      let halfStarElements = ratingStar[ratingToCheck - 1].querySelectorAll('.ms-Rating-partialStar');
+      expect(halfStarElements.length === (state ? 1 : 0)).to.be.eq(true);
+    };
+
+    checkHalfState(1, false);
+    checkHalfState(2, false);
+    checkHalfState(3, true);
     checkHalfState(4, false);
     checkHalfState(5, false);
   });

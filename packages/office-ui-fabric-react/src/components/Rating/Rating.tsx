@@ -20,6 +20,7 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
 
   private _id: string;
   private _labelId: string;
+  private _ratingIconClassName: string;
 
   constructor(props: IRatingProps) {
     super(props);
@@ -31,6 +32,7 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
 
     this._id = getId('Rating');
     this._labelId = getId('RatingLabel');
+    this._ratingIconClassName = props.icon || 'ms-Icon--FavoriteStarFill';
   }
 
   public componentWillReceiveProps(nextProps: IRatingProps) {
@@ -39,6 +41,8 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
         rating: this._getClampedRating(nextProps.rating)
       } as IRatingState);
     }
+
+    this._ratingIconClassName = nextProps.icon || 'ms-Icon--FavoriteStarFill';
   }
 
   public render() {
@@ -47,40 +51,54 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
       stars.push(this._renderStar(i));
     }
 
+    let ratingContainer: JSX.Element;
+
+    if (this.props.aggregate) {
+      ratingContainer = <div className={ css('ms-Rating-container', styles.container) } role='img' alt={ this.props.rating.toString() } aria-labelledby={ `${this._labelId}-${this.props.rating}` }>
+        { this._getLabel(this.props.rating) }
+        { stars }
+      </div>;
+    } else {
+      ratingContainer = <div className={ css('ms-Rating-container', styles.container) } role='radiogroup' aria-labelledby={ this.props.ariaLabelId }>
+        { stars }
+      </div>;
+    }
+
     return <div className={ css('ms-Rating', this.props.className, {
       ['ms-Rating--large ' + styles.rootIsLarge]: this.props.size === RatingSize.Large
     }) } role='application'>
-      <div className={ css('ms-Rating-container', styles.container) } role='radiogroup' aria-labelledby={ this.props.ariaLabelId }>
-        { stars }
-      </div>
+      { ratingContainer }
     </div>;
   }
 
   private _renderStar(rating: number): JSX.Element {
     const inputId = `${this._id}-${rating}`;
     const flooredRating = Math.floor(this.state.rating);
-    const starSize = rating > this.state.rating && rating - 1 < this.state.rating ? this.state.rating - flooredRating : 1;
+    const starSize = this.props.aggregate && rating > this.state.rating && rating - 1 < this.state.rating ? this.state.rating - flooredRating : 1;
 
     return <div className={ css('ms-Rating-star', styles.star, {
       ['is-selected ' + styles.starIsSelected]: rating <= this.state.rating,
       ['is-inFocus ' + styles.starIsInFocus]: rating === this.state.focusedRating,
-      ['is-disabled ' + styles.starIsDisabled]: this.props.disabled
+      ['is-disabled ' + styles.starIsDisabled]: !this.props.aggregate && this.props.disabled,
+      ['is-aggregate ' + styles.starIsAggregate]: this.props.aggregate
     }) } key={ rating }>
-      <input
-        className={ css('ms-Rating-input', styles.input) }
-        type='radio'
-        name={ this._id }
-        id={ inputId }
-        value={ rating }
-        aria-labelledby={ `${this._labelId}-${rating}` }
-        disabled={ this.props.disabled }
-        checked={ rating === flooredRating }
-        onChange={ this._onChange.bind(this, rating) }
-        onFocus={ this._onFocus.bind(this, rating) }
-        onBlur={ this._onBlur.bind(this, rating) }
-      />
+      { !this.props.aggregate &&
+        <input
+          className={ css('ms-Rating-input', styles.input) }
+          type='radio'
+          name={ this._id }
+          id={ inputId }
+          value={ rating }
+          aria-labelledby={ `${this._labelId}-${rating}` }
+          disabled={ this.props.disabled }
+          checked={ rating === this.state.rating }
+          onChange={ this._onChange.bind(this, rating) }
+          onFocus={ this._onFocus.bind(this, rating) }
+          onBlur={ this._onBlur.bind(this, rating) }
+        />
+      }
       <label className={ css('ms-Rating-label', styles.label) } htmlFor={ inputId }>
-        { this._getLabel(rating) }
+        { !this.props.aggregate && this._getLabel(rating) }
         { this._getIcon(starSize) }
       </label>
     </div>;
@@ -125,18 +143,16 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
   private _getIcon(starSize?: number): JSX.Element {
     if (starSize && starSize < 1) {
       return (
-        <span className={ css('ms-rating-halfStarContainer', styles.halfStarContainer, 'ms-Icon', this.props.icon || 'ms-Icon--FavoriteStarFill') } >
+        <span className={ css('ms-Rating-partialStarContainer', styles.partialStarContainer, 'ms-Icon', this.props.icon || 'ms-Icon--FavoriteStarFill') } >
           <i className={ css('ms-Rating-star', styles.star,
             'is-selected ' + styles.starIsSelected,
-            { ['is-disabled ' + styles.starIsDisabled]: this.props.disabled },
-            'ms-rating-halfStar', styles.halfStar, 'ms-Icon',
-            this.props.icon || 'ms-Icon--FavoriteStarFill') }
+            'ms-Rating-partialStar', styles.partialStar, 'ms-Icon',
+            this._ratingIconClassName) }
             style={ { width: starSize * 100 + '%' } } />
         </span>);
     } else {
-      return <i className={ css('ms-Icon', this.props.icon || 'ms-Icon--FavoriteStarFill') } />;
+      return <i className={ css('ms-Icon', this._ratingIconClassName) } />;
     }
-
   }
 
   private _getInitialValue(props: IRatingProps) {
@@ -152,6 +168,10 @@ export class Rating extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   private _getClampedRating(rating: number): number {
+    if (!this.props.aggregate) {
+      rating = Math.floor(rating);
+    }
+
     return Math.min(Math.max(rating, this.props.min), this.props.max);
   }
 }

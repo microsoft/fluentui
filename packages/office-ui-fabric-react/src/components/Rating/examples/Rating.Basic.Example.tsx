@@ -50,6 +50,15 @@ export class RatingBasicExample extends React.Component<any, any> {
           onChanged={ this._onChanged }
           disabled={ true }
         />
+
+        Aggregate:
+        <Rating
+          min={ 1 }
+          max={ 5 }
+          rating={ 3.6 }
+          size={ RatingSize.Large }
+          aggregate={ true }
+        />
       </div>
     );
   }

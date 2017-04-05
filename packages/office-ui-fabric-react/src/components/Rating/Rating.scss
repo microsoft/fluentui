@@ -20,7 +20,7 @@ $Rating-largeIconSize: 20px;
   display: inline-block;
 
   &:hover {
-    .star:not(.starIsDisabled) {
+    .star:not(.starIsDisabled):not(.starIsAggregate):not(.partialStar) {
       color: $Rating-selectedColor;
 
       &.star:hover {
@@ -29,10 +29,6 @@ $Rating-largeIconSize: 20px;
         & ~ .star {
           // Set default color for any star after hovered one
           color: $Rating-defaultColor;
-
-          .halfStar{
-            color: $Rating-defaultColor;
-          }
         }
       }
     }
@@ -45,17 +41,6 @@ $Rating-largeIconSize: 20px;
 
     color: $Rating-defaultColor;
 
-    .halfStarContainer {
-      position:relative;
-    }
-
-    .halfStar{
-      overflow: hidden;
-      position:absolute;
-      left:0px;
-      top: 0px;
-    }
-
     &.starIsSelected {
       color: $Rating-selectedColor;
     }
@@ -63,12 +48,25 @@ $Rating-largeIconSize: 20px;
     &.starIsDisabled {
       color: $Rating-disabledColor;
 
-      .halfStarContainer {
-        color: $Rating-disabledColor;
-      }
-
       .label {
         cursor: default;
+      }
+    }
+
+    &.starIsAggregate {
+      .label {
+        cursor: default;
+      }
+
+      .partialStarContainer {
+        position:relative;
+      }
+
+      .partialStar {
+        overflow: hidden;
+        position:absolute;
+        left:0px;
+        top: 0px;
       }
     }
 
@@ -81,7 +79,6 @@ $Rating-largeIconSize: 20px;
 
       // Reserve space for focus styling
       border: 1px solid transparent;
-
     }
   }
 

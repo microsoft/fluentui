@@ -16,6 +16,7 @@ export interface IRatingProps extends React.HTMLProps<HTMLElement> {
 
   /**
    * Selected rating, has to be an integer between min and max
+   * If aggregate is not set to true, value is floored
    */
   rating?: number;
 
@@ -53,6 +54,13 @@ export interface IRatingProps extends React.HTMLProps<HTMLElement> {
    * Optional id of label describing this instance of Rating
    */
   ariaLabelId?: string;
+
+  /**
+   * Optional setting to represent rating control as aggregate rating control.
+   * If set, rating control will be readonly rating control with partial star support
+   * Also if set, this overrides the disabled prop
+   */
+  aggregate?: boolean;
 }
 
 export enum RatingSize {
