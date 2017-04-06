@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "VisualTesting: Fixed npm start by moving visual test page from index.html to visualtestindex.html",
+      "type": "patch"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}
