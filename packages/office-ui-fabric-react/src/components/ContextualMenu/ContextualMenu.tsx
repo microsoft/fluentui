@@ -144,6 +144,9 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   // Invoked once, only on the client (not on the server), immediately after the initial rendering occurs.
   public componentDidMount() {
     this._events.on(this._targetWindow, 'resize', this.dismiss);
+    if (this.props.onMenuOpened) {
+      this.props.onMenuOpened({ key: this.props.key });
+    }
   }
 
   // Invoked immediately before a component is unmounted from the DOM.
@@ -200,7 +203,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           gapSpace={ gapSpace }
           coverTarget={ coverTarget }
           doNotLayer={ doNotLayer }
-          className='ms-ContextualMenu-Callout'
+          className={ css(styles.contextualMenuCallout, 'ms-ContextualMenu-Callout') }
           setInitialFocus={ shouldFocusOnMount }
           onDismiss={ this.props.onDismiss }
           bounds={ bounds }
