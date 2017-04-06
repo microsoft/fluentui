@@ -3,7 +3,15 @@ import { Panel } from './Panel';
 import { IRenderFunction } from '../../Utilities';
 import { ILayerProps } from '../../Layer';
 
+export interface IPanel {
+
+}
 export interface IPanelProps extends React.Props<Panel> {
+  /**
+   * Optional callback to access the IPanel interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IPanel) => void;
 
   /**
   * Whether the panel is displayed.
@@ -55,6 +63,11 @@ export interface IPanelProps extends React.Props<Panel> {
   * @default PanelType.smallFixedRight
   */
   type?: PanelType;
+
+  /**
+  * Custom panel width, used only when type is set to PanelType.custom.
+  */
+  customWidth?: string;
 
   /**
    * Aria label on close button
@@ -193,5 +206,15 @@ export enum PanelType {
    * XXLarge: 176px fixed left margin, 40px Left/Right padding
    * XXXLarge: 176px fixed left margin, 40px Left/Right padding
    */
-  extraLarge = 6
+  extraLarge = 6,
+
+  /**
+   * Renders the panel in 'custom' mode using customWidth, anchored to the far side (right in LTR mode).
+   * Small: <adapts to smallFluid>
+   * Medium: <adapts to smallFixedFar>
+   * Large: 48px fixed left margin, 32px Left/Right padding
+   * XLarge: 644px width, 32px Left/Right padding
+   * XXLarge: 643px width, 40px Left/Right padding
+   */
+  custom = 7
 }

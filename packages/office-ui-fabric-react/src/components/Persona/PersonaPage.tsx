@@ -9,9 +9,9 @@ import { PersonaInitialsExample } from './examples/Persona.Initials.Example';
 import { PersonaBasicExample } from './examples/Persona.Basic.Example';
 import { PersonaCustomRenderExample } from './examples/Persona.CustomRender.Example';
 
-const PersonaInitialsExampleCode = require('!raw-loader!./examples/Persona.Initials.Example.tsx') as string;
-const PersonaBasicExampleCode = require('!raw-loader!./examples/Persona.Basic.Example.tsx') as string;
-const PersonaCustomRenderExampleCode = require('!raw-loader!./examples/Persona.CustomRender.Example.tsx') as string;
+const PersonaInitialsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.Initials.Example.tsx') as string;
+const PersonaBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.Basic.Example.tsx') as string;
+const PersonaCustomRenderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.CustomRender.Example.tsx') as string;
 
 export class PersonaPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -35,7 +35,7 @@ export class PersonaPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/lib/components/Persona/Persona.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/Persona.Props.ts')
             ] }
           />
         }

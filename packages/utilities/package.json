@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/utilities",
-  "version": "1.4.0",
+  "version": "1.6.0",
   "description": "Office UI Fabric utilities for building React components.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -35,7 +35,7 @@
     "source-map-loader": "0.1.5",
     "tslint": "^3.15.1",
     "tslint-microsoft-contrib": "^2.0.9",
-    "typescript": "~2.1.0"
+    "typescript": "^2.2.2"
   },
   "dependencies": {},
   "peerDependencies": {

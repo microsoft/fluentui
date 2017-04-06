@@ -19,7 +19,16 @@ export interface IContextualMenuCallBackProps {
   key?: string | number;
 }
 
+export interface IContextualMenu {
+
+}
+
 export interface IContextualMenuProps extends React.Props<ContextualMenu> {
+  /**
+   * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IContextualMenu) => void;
 
   /**
    * The target that the ContextualMenu should try to position itself based on.

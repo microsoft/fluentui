@@ -1,6 +1,57 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 01 Apr 2017 03:12:59 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Apr 2017 03:12:13 GMT and should not be manually modified.
+
+## 2.14.0
+Thu, 06 Apr 2017 03:12:13 GMT
+
+### Minor changes
+
+- Adding in visual regression testing
+
+### Patches
+
+- MessageBar: Multiple message bars will have proper margins to seperate them
+- Panel: Fixed selector bug that broke extraLarge panel
+- TagPicker: Fix for long tags.
+
+## 2.13.0
+Wed, 05 Apr 2017 03:50:41 GMT
+
+### Minor changes
+
+- ProgressIndicator: support for aria-valuetext
+
+### Patches
+
+- BasePicker: `componentWillReceiveProps` method was incorrectly assuming the wrong parameters. Changed method to `componentWillUpdate` as intended. Also addressing some focus issues by moving the `FocusZone` to be hosted outside of the `SelectionZone`.
+- GroupedList: Allow header/footer customization of nested groups
+
+## 2.12.0
+Tue, 04 Apr 2017 20:08:53 GMT
+
+### Minor changes
+
+- Panel: adding `customWidth` property and PanelType.custom value to support custom panel widths.
+
+### Patches
+
+- Updating fabric dependencies to use ranges.
+
+## 2.11.0
+Tue, 04 Apr 2017 15:18:51 GMT
+
+### Minor changes
+
+- In components which expose a public API such as `Dropdown` which implements `IDropdown`, to access the exact interface we've exposed a `componentRef` property on all components. This property replaces typical `ref={ c => this._component = c }` usage, as componentRef is guaranteed to access the public contract of the component regardless of the higher-order component or decorator wrapping it. If you are accessing the public API of a component, replace your `ref` usage with `componentRef`.
+
+## 2.10.6
+Tue, 04 Apr 2017 03:12:41 GMT
+
+### Patches
+
+- Removing TypeScript files from being binplaced within the lib folder.
+- ToolTip: fix for long tips
 
 ## 2.10.5
 Sat, 01 Apr 2017 03:12:59 GMT

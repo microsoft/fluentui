@@ -8,6 +8,7 @@ import * as ReactTestUtils from 'react-addons-test-utils';
 let { expect } = chai;
 
 import { Slider } from './Slider';
+import { ISlider } from './Slider.Props';
 
 describe('Slider', () => {
 
@@ -29,7 +30,7 @@ describe('Slider', () => {
     let component = ReactTestUtils.renderIntoDocument<React.ReactInstance>(
       <Slider
         onChange={ onChange }
-        />
+      />
     );
 
     let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
@@ -79,4 +80,12 @@ describe('Slider', () => {
     }
   });
 
+  it('can read the current value', () => {
+    let slider: ISlider;
+
+    let component = ReactTestUtils.renderIntoDocument(
+      <Slider label='slider' defaultValue={ 12 } min={ 0 } max={ 100 } componentRef={ s => slider = s } />
+    );
+    expect(slider.value).equals(12);
+  });
 });
