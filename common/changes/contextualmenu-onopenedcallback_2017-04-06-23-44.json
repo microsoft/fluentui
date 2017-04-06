@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "ContextualMenu: adding in onMenuOpened callback",
+      "type": "minor"
+    }
+  ],
+  "email": "joschect@microsoft.com"
+}
