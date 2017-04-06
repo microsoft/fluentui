@@ -11,6 +11,8 @@
   display: flex;
   flex-wrap: nowrap;
   max-width: 100%;
+  margin-right: 2px;
+  margin-top: 2px;
   &:hover {
     background: $ms-color-neutralLight;
   }
