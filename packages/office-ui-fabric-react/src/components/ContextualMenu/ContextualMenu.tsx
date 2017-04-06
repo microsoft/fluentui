@@ -203,7 +203,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           gapSpace={ gapSpace }
           coverTarget={ coverTarget }
           doNotLayer={ doNotLayer }
-          className={ css(styles.contextualMenuCallout, 'ms-ContextualMenu-Callout') }
+          className='ms-ContextualMenu-Callout'
           setInitialFocus={ shouldFocusOnMount }
           onDismiss={ this.props.onDismiss }
           bounds={ bounds }
