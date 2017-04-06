@@ -3,12 +3,12 @@ import * as React from 'react';
 /* tslint:enable:no-unused-variable */
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
 import {
   OverflowSet
 } from '../index';
-import { items } from './items';
 
 export class OverflowSetBasicExample extends BaseComponent<any, any> {
 
@@ -34,14 +34,12 @@ export class OverflowSetBasicExample extends BaseComponent<any, any> {
               icon: 'Add',
               ariaLabel: 'New. Use left and right arrow keys to navigate',
               onClick: () => { return; },
-              ['data-automation-id']: 'newItemMenu',
               subMenuProps: {
                 items: [
                   {
                     key: 'emailMessage',
                     name: 'Email message',
                     icon: 'Mail',
-                    ['data-automation-id']: 'newEmailButton'
                   },
                   {
                     key: 'calendarEvent',
@@ -56,12 +54,51 @@ export class OverflowSetBasicExample extends BaseComponent<any, any> {
               name: 'Upload',
               icon: 'Upload',
               onClick: () => { return; },
-              ['data-automation-id']: 'uploadButton'
             },
             {
               key: 'share',
               name: 'Share',
               icon: 'Share',
+              onClick: () => { return; }
+            }
+          ] }
+          overflowItems={ [
+            {
+              key: 'newItem',
+              name: 'New',
+              icon: 'Add',
+              ariaLabel: 'New. Use left and right arrow keys to navigate',
+              onClick: () => { return; },
+              subMenuProps: {
+                items: [
+                  {
+                    key: 'emailMessage',
+                    name: 'Email message',
+                    icon: 'Mail',
+                  },
+                  {
+                    key: 'calendarEvent',
+                    name: 'Calendar event',
+                    icon: 'Calendar'
+                  }
+                ],
+              },
+            },
+            {
+              key: 'upload',
+              name: 'Upload',
+              icon: 'Upload',
+              onClick: () => { return; },
+            },
+            {
+              key: 'share',
+              name: 'Share',
+              icon: 'Share',
+              onRender: (item) => {
+                return (
+                  <PrimaryButton> { item.name } </PrimaryButton>
+                )
+              },
               onClick: () => { return; }
             }
           ]
@@ -76,7 +113,8 @@ export class OverflowSetBasicExample extends BaseComponent<any, any> {
               >
               </DefaultButton>
             );
-          } }
+          }
+          }
         >
         </OverflowSet>
       </div>
