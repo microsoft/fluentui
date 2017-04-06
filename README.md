@@ -27,9 +27,10 @@ Fabric React is a responsive, mobile-first collection of robust components desig
 
 Before you get started, make sure you have [node.js](https://nodejs.org/), [gulp](http://gulpjs.com/), and [git](https://git-scm.com/) installed. To view the documentation including examples, contracts, component status, and to add functionality or fix issues locally, you can:
 
-1. `git clone https://github.com/OfficeDev/office-ui-fabric-react.git`
-2. `npm install`
-3. `npm start`
+1. Fork this repo.
+1. Clone your fork (i.e. `git clone https://github.com/[your-username]/office-ui-fabric-react.git`).
+2. Run `npm install` to install dependencies.
+3. Run `npm start` to compile and start the demo app.
 
 This will run `gulp serve` from the office-ui-fabric-react package folder, which will open a web browser with the example page. You can make changes to the code which will automatically build and refresh the page using live-reload.
 
@@ -69,7 +70,7 @@ If you need to render Fabric components on the server side in a node environment
 
 ```ts
 import { configureLoadStyles } from '@microsoft/load-themed-styles';
- 
+
 // Store registered styles in a variable used later for injection.
 let _allStyles = '';
 
@@ -77,13 +78,13 @@ let _allStyles = '';
 configureLoadStyles((styles: string) => {
   _allStyles += styles;
 });
- 
+
 import * as React from 'react';
 import * as ReactDOMServer from 'react-dom/server';
-import { Button } from 'office-ui-fabric-react/lib/Button'; 
- 
+import { Button } from 'office-ui-fabric-react/lib/Button';
+
 let body = ReactDOMServer.renderToString(<Button>hello</Button>);
- 
+
 console.log(
   `
   <html>
