@@ -2,6 +2,42 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "2.14.0",
+      "tag": "office-ui-fabric-react_v2.14.0",
+      "date": "Thu, 06 Apr 2017 03:12:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "2dfbd10169c9cf6c342a659547ffb3badd6233e9",
+            "comment": "MessageBar: Multiple message bars will have proper margins to seperate them"
+          },
+          {
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "ec9bb2830c98f6c32caf64135d040b9b30d020e3",
+            "comment": "Panel: Fixed selector bug that broke extraLarge panel"
+          },
+          {
+            "author": "gitjain <alreut@yahoo.com>",
+            "commit": "e1ccdfa4a96eac5593d8277b30aec2c10638e021",
+            "comment": "TagPicker: Fix for long tags."
+          }
+        ],
+        "minor": [
+          {
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "8ce7553e53562fd4dbd1e4fb70485b5658d980c3",
+            "comment": "Adding in visual regression testing"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=1.5.0-0 <2.0.0-0` to `1.6.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.13.0",
       "tag": "office-ui-fabric-react_v2.13.0",
       "date": "Wed, 05 Apr 2017 03:50:41 GMT",

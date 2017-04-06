@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 05 Apr 2017 03:50:41 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Apr 2017 03:12:13 GMT and should not be manually modified.
+
+## 2.14.0
+Thu, 06 Apr 2017 03:12:13 GMT
+
+### Minor changes
+
+- Adding in visual regression testing
+
+### Patches
+
+- MessageBar: Multiple message bars will have proper margins to seperate them
+- Panel: Fixed selector bug that broke extraLarge panel
+- TagPicker: Fix for long tags.
 
 ## 2.13.0
 Wed, 05 Apr 2017 03:50:41 GMT
