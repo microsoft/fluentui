@@ -2,7 +2,7 @@
 
 .root {
   @include focus-border();
-  flex-shrink: 0;
+  flex-shrink: 1;
   background: $ms-color-neutralLighter;
   height: 32px;
   line-height: 32px;
@@ -10,9 +10,10 @@
   user-select: none;
   display: flex;
   flex-wrap: nowrap;
+  min-width: 100px;
   max-width: 100%;
-  margin-right: 2px;
-  margin-top: 2px;
+  margin: 2px 2px;
+
   &:hover {
     background: $ms-color-neutralLight;
   }
