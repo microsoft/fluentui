@@ -206,9 +206,12 @@ export const buttonProperties = htmlElementProperties.concat([
 
 export const divProperties = htmlElementProperties.concat(['align', 'noWrap']);
 
-export const inputProperties = buttonProperties;
+export const inputProperties = htmlElementProperties.concat([
+  'disabled',
+  'readonly'
+]);
 
-export const textAreaProperties = buttonProperties;
+export const textAreaProperties = inputProperties;
 
 export const imageProperties = divProperties;
 

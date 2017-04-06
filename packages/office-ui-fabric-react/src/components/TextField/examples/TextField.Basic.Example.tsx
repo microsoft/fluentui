@@ -14,6 +14,8 @@ export class TextFieldBasicExample extends React.Component<any, any> {
         <TextField label='Multiline TextField Unresizable' multiline resizable={ false } />
         <TextField label='Multiline TextField with auto adjust height' multiline autoAdjustHeight />
         <TextField label='Underlined TextField' underlined />
+        <TextField label='Readonly TextField' readOnly value={ `The value of this TextField is readonly.` } />
+        <TextField label='Multiline Readonly TextField' multiline readOnly value={ `The value of this TextField is readonly.` } />
       </div>
     );
   }
