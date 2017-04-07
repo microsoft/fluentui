@@ -7,7 +7,8 @@ import {
   css,
   divProperties,
   getNativeProps,
-  assign
+  assign,
+  isElementOverflowing
 } from '../../Utilities';
 import { ITooltipHostProps } from './TooltipHost.Props';
 import { Tooltip } from './Tooltip';
@@ -16,10 +17,10 @@ import styles = require('./Tooltip.scss');
 
 export interface ITooltipHostState {
   isTooltipVisible?: boolean;
+  isOverflowing?: boolean;
 }
 
 export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostState> {
-
   public static defaultProps = {
     delay: TooltipDelay.medium
   };
@@ -33,16 +34,40 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
 
     this.state = {
       isTooltipVisible: false,
+      isOverflowing: false
     };
+  }
+
+  public componentDidMount() {
+    this._checkForOverflow();
+  }
+
+  public componentDidUpdate() {
+    this._checkForOverflow();
+  }
+
+  public componentWillReceiveProps(props: ITooltipHostProps) {
+    const { onlyShowIfOverflow } = this.props;
+
+    if (onlyShowIfOverflow) {
+      // Reset state, will be updated once component updated
+      this.setState({
+        isOverflowing: false
+      });
+    }
   }
 
   // Render
   public render() {
-    let { calloutProps, content, children, directionalHint, delay } = this.props;
-    let { isTooltipVisible } = this.state;
+    const { calloutProps, hostClassName, content, children, directionalHint, delay, onlyShowIfOverflow } = this.props;
+    const { isTooltipVisible, isOverflowing } = this.state;
+
+    const showTooltip = isTooltipVisible
+      && (!onlyShowIfOverflow || isOverflowing);
+
     return (
       <div
-        className={ css('ms-TooltipHost', styles.host) }
+        className={ css('ms-TooltipHost', styles.host, hostClassName) }
         ref={ this._resolveRef('_tooltipHost') }
         { ...{ onFocusCapture: this._onTooltipMouseEnter } }
         { ...{ onBlurCapture: this._onTooltipMouseLeave } }
@@ -50,7 +75,7 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
         onMouseLeave={ this._onTooltipMouseLeave }
       >
         { children }
-        { isTooltipVisible && (
+        { showTooltip && (
           <Tooltip
             delay={ delay }
             content={ content }
@@ -63,6 +88,22 @@ export class TooltipHost extends BaseComponent<ITooltipHostProps, ITooltipHostSt
         ) }
       </div>
     );
+  }
+
+  /** Check whether the host's content is overflowing */
+  private _checkForOverflow() {
+    const { onlyShowIfOverflow } = this.props;
+
+    if (onlyShowIfOverflow) {
+      const { isOverflowing } = this.state;
+      const isNowOverflowing = isElementOverflowing(this._tooltipHost);
+
+      if (isNowOverflowing !== isOverflowing) {
+        this.setState({
+          isOverflowing: isNowOverflowing
+        });
+      }
+    }
   }
 
   // Show Tooltip

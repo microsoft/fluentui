@@ -1,0 +1,14 @@
+:global {
+  .example-host {
+    border: 1px solid black;
+    display: block;
+  }
+
+  .hide-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    max-width: 200px;
+  }
+}
