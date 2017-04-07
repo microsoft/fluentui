@@ -18,7 +18,7 @@ const c_LuminanceHigh = 0.8;
 // Various constants used for generating shades of a color
 const WhiteShadeTable = [.973, .957, .918, .855, .816, .784, .651, .463]; // white
 const BlackTintTable = [.463, .651, .784, .816, .855, .918, .957, .973]; // black
-const LumTintTable = [.10, .20, .30, .40, .55, .70, .80, .90]; // light shade (strongen all)
+const LumTintTable = [.10, .20, .30, .43, .57, .70, .80, .90]; // light shade (strongen all)
 const LumShadeTable = [.90, .80, .70, .57, .43, .30, .20, .10]; // dark shade (soften all)
 const ColorTintTable = [.050, .100, .200, .42, .90]; // default soften
 const ColorShadeTable = [.90, .70, .550]; // default strongen
@@ -70,7 +70,27 @@ function _lighten(hsl: { h: number, s: number, l: number }, factor) {
   };
 }
 
-/**
+/* Original getShade() logic:
+  let hsl = Colors.hsv2hsl(color.h, color.s, color.v);
+  let tableIndex = shade - 1;
+  if (_isWhite(color)) { // white
+    hsl = _darken(hsl, WhiteShadeTable[tableIndex]);
+  } else if (_isBlack(color)) { // black
+    hsl = _lighten(hsl, BlackTintTable[tableIndex]);
+  } else if (hsl.l / 100 > c_LuminanceHigh) { // light
+    hsl = _darken(hsl, LumShadeTable[tableIndex]);
+  } else if (hsl.l / 100 < c_LuminanceLow) { // dark
+    hsl = _lighten(hsl, LumTintTable[tableIndex]);
+  } else { // default
+    if (tableIndex < ColorTintTable.length) {
+      hsl = _lighten(hsl, ColorTintTable[tableIndex]);
+    } else {
+      hsl = _darken(hsl, ColorShadeTable[tableIndex - ColorTintTable.length]);
+    }
+  }
+*/
+
+/** todo: update
  * Given a color and a shade specification, generates the requested shade of the color.
  * Logic: (todo formatting)
  * if white
@@ -113,6 +133,34 @@ export function getShade(color: IColor, shade: Shade) {
     } else {
       hsl = _darken(hsl, ColorShadeTable[tableIndex - ColorTintTable.length]);
     }
+  }
+
+  return Colors.getColorFromRGBA(assign(Colors.hsl2rgb(hsl.h, hsl.s, hsl.l), { a: color.a }));
+}
+
+// Background shades/tints are generated differently. The provided color will be guaranteed
+//   to be the darkest or lightest one. If it is <50% luminance, it will always be the darkest,
+//   otherwise it will always be the lightest.
+export function getBackgroundShade(color: IColor, shade: Shade) {
+  'use strict';
+  if (!color) {
+    return null;
+  }
+
+  if (shade === Shade.Unshaded || !isValidShade(shade)) {
+    return color;
+  }
+
+  let hsl = Colors.hsv2hsl(color.h, color.s, color.v);
+  let tableIndex = shade - 1;
+  /*if (hsl.l / 100 > c_LuminanceHigh) { // really light
+    hsl = _darken(hsl, WhiteShadeTable[tableIndex]);
+  } else if (hsl.l / 100 < c_LuminanceLow) { // really dark
+    hsl = _lighten(hsl, BlackTintTable[BlackTintTable.length - 1 - tableIndex]);
+  } else*/ if (hsl.l / 100 >= .5) { // lightish
+    hsl = _darken(hsl, LumShadeTable[tableIndex]);
+  } else { // default: if (hsl.l / 100 < .5) { // darkish
+    hsl = _lighten(hsl, LumTintTable[LumTintTable.length - 1 - tableIndex]);
   }
 
   return Colors.getColorFromRGBA(assign(Colors.hsl2rgb(hsl.h, hsl.s, hsl.l), { a: color.a }));
