@@ -15,7 +15,7 @@
   box-sizing: border-box;
   display: flex;
   position: relative;
-  border: 1px solid transparent;
+
 
   .icon {
     @include padding-right(8px);
@@ -113,6 +113,16 @@
   display: flex;
   width: 100%;
   box-sizing: border-box;
+      &:before {
+    position: absolute;
+    content: ' ';
+    right: 0;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    margin: 0;
+    border: 1px solid transparent;
+  }
 }
 
 .actionables {
