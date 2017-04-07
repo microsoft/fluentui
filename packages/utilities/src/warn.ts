@@ -1,4 +1,4 @@
-let _warningCallback = _warn;
+let _warningCallback: (message: string) => void = _warn;
 
 export type ISettingsMap<T> = {
   [P in keyof T]: string;
@@ -52,7 +52,7 @@ export function warnMutuallyExclusive<P>(
  * @export
  * @param {(message) => void} warningCallback
  */
-export function setWarningCallback(warningCallback: (message) => void): void {
+export function setWarningCallback(warningCallback: (message: string) => void): void {
   _warningCallback = warningCallback === undefined ? _warn : warningCallback;
 }
 

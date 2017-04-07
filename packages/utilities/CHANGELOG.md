@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 04 Apr 2017 15:18:51 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Apr 2017 03:12:13 GMT and should not be manually modified.
+
+## 1.6.0
+Thu, 06 Apr 2017 03:12:13 GMT
+
+### Minor changes
+
+- Updating typings in warn.ts.
 
 ## 1.5.0
 Tue, 04 Apr 2017 15:18:51 GMT
