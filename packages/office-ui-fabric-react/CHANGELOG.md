@@ -1,6 +1,49 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 04 Apr 2017 15:18:51 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Apr 2017 03:14:49 GMT and should not be manually modified.
+
+## 2.14.1
+Fri, 07 Apr 2017 03:14:49 GMT
+
+### Patches
+
+- VisualTesting: Fixed npm start by moving visual test page from index.html to visualtestindex.html
+
+## 2.14.0
+Thu, 06 Apr 2017 03:12:13 GMT
+
+### Minor changes
+
+- Adding in visual regression testing
+
+### Patches
+
+- MessageBar: Multiple message bars will have proper margins to seperate them
+- Panel: Fixed selector bug that broke extraLarge panel
+- TagPicker: Fix for long tags.
+
+## 2.13.0
+Wed, 05 Apr 2017 03:50:41 GMT
+
+### Minor changes
+
+- ProgressIndicator: support for aria-valuetext
+
+### Patches
+
+- BasePicker: `componentWillReceiveProps` method was incorrectly assuming the wrong parameters. Changed method to `componentWillUpdate` as intended. Also addressing some focus issues by moving the `FocusZone` to be hosted outside of the `SelectionZone`.
+- GroupedList: Allow header/footer customization of nested groups
+
+## 2.12.0
+Tue, 04 Apr 2017 20:08:53 GMT
+
+### Minor changes
+
+- Panel: adding `customWidth` property and PanelType.custom value to support custom panel widths.
+
+### Patches
+
+- Updating fabric dependencies to use ranges.
 
 ## 2.11.0
 Tue, 04 Apr 2017 15:18:51 GMT
