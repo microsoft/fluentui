@@ -12,7 +12,7 @@
     {
       "packageName": "office-ui-fabric-react",
       "projectFolder": "packages/office-ui-fabric-react",
-      "shouldPublish": true,
+      "shouldPublish": true
     },
     {
       "packageName": "@uifabric/utilities",
@@ -35,6 +35,10 @@
     {
       "packageName": "todo-app",
       "projectFolder": "apps/todo-app"
+    },
+    {
+      "packageName": "image-editor",
+      "projectFolder": "apps/image-editor"
     },
     {
       "packageName": "fabric-website",

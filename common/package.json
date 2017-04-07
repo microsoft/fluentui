@@ -4,6 +4,7 @@
     "rush-example-app-base": "file:./temp_modules/rush-example-app-base",
     "rush-example-component": "file:./temp_modules/rush-example-component",
     "rush-fabric-website": "file:./temp_modules/rush-fabric-website",
+    "rush-image-editor": "file:./temp_modules/rush-image-editor",
     "rush-office-ui-fabric-react": "file:./temp_modules/rush-office-ui-fabric-react",
     "rush-todo-app": "file:./temp_modules/rush-todo-app",
     "rush-utilities": "file:./temp_modules/rush-utilities"
