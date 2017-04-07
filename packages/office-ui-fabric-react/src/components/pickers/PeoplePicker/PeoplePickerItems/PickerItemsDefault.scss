@@ -5,15 +5,15 @@
   display: inline-flex;
   align-items: center;
   background: $ms-color-neutralLighter;
-  margin: 2px;
+  margin: 1px;
   cursor: default;
   user-select: none;
   max-width: 100%;
-  
+
   &:hover {
     background: $ms-color-neutralLight;
   }
-  
+
   &.personaContainerIsSelected {
     background: $ms-color-neutralQuaternary;
 
@@ -29,8 +29,8 @@
 
   .removeButton {
     flex: 0 0 auto;
-    width: 32px;
-    height: 32px;
+    flex-basis: 32px;
+    height: 100%;
   }
 
   .personaDetails {
