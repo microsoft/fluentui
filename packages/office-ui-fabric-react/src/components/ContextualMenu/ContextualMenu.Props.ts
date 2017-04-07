@@ -15,10 +15,6 @@ export enum ContextualMenuItemType {
   Header = 2
 }
 
-export interface IContextualMenuCallBackProps {
-  key?: string | number;
-}
-
 export interface IContextualMenu {
 
 }
@@ -166,7 +162,7 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
   /**
    * Callback for when the contextualmenu has been opened.
    */
-  onMenuOpened?: (contextualMenu?: IContextualMenuCallBackProps) => void;
+  onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;
 
 }
 

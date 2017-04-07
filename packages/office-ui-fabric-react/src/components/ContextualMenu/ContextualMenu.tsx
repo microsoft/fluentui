@@ -145,7 +145,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
   public componentDidMount() {
     this._events.on(this._targetWindow, 'resize', this.dismiss);
     if (this.props.onMenuOpened) {
-      this.props.onMenuOpened({ key: this.props.key });
+      this.props.onMenuOpened(this.props);
     }
   }
 
