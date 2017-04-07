@@ -17,10 +17,12 @@ $SearchBox-height: 32px;
   color: $ms-color-neutralPrimary;
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: nowrap;
+  align-items: center;
   margin-bottom: 10px;
   border: 1px solid $ms-color-themeTertiary;
+  @include padding(6px, 8px, 7px, 8px);
   height: 32px;
 }
 
@@ -33,14 +35,8 @@ $SearchBox-height: 32px;
   font-family: inherit;
   font-size: inherit;
   color: $ms-color-black;
-  @include padding(6px, 0, 7px, 0);
   background-color: transparent;
-  transition: padding-left $ms-duration1;
-
-  &:focus {
-    @include padding-right(32px);
-  }
-
+  flex-grow: 1;
   &::-ms-clear {
     display: none;
   }
@@ -50,16 +46,20 @@ $SearchBox-height: 32px;
   display: none;
   border: none;
   cursor: pointer;
-  flex-basis: 40px;
-  color: $ms-color-themePrimary;
-  text-align: center;
   font-size: 16px;
+  flex-basis: 22px;
+  flex-shrink: 0;
+  height: 100%;
+  text-align: center;
+  color: $ms-color-themePrimary;
 }
 
 .icon {
+  flex-shrink: 0;
   color: $ms-color-neutralSecondaryAlt;
   font-size: 16px;
-  width: 16px;
+  flex-basis: 24px;
+  transition: flex-basis $ms-duration1;
   color: #0078d7;
 }
 
@@ -81,12 +81,12 @@ $SearchBox-height: 32px;
 .rootIsActive {
   border-color: $ms-color-themeDarker;
 
-  .field {
-    @include padding-left(8px);
-  }
-
   .icon {
-    display: none;
+    flex-basis: 0;
+    transition: flex-basis $ms-duration1;
+    &:before {
+      content: '';
+    }
   }
 }
 
