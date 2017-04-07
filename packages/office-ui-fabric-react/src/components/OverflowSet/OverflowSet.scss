@@ -3,20 +3,10 @@
 .root {
   position: relative;
   display: flex;
-  flex-direction: horizontal;
   flex-wrap: nowrap;
 }
 
 
 .item {
-  display: block;
   flex-shrink: 0;
-}
-
-.measured {
-  flex-direction: horizontal;
-  flex-wrap: nowrap;
-  display: flex;
-  position: absolute;
-  visibility: hidden;
 }

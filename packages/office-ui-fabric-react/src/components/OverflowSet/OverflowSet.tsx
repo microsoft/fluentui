@@ -2,26 +2,14 @@ import * as React from 'react';
 import {
   css,
   autobind,
-  getNativeProps,
-  divProperties,
-  EventGroup,
-  getId,
-  BaseComponent,
-  getRTL
+  BaseComponent
 } from '../../Utilities';
 import { IOverflowSetProps } from './OverflowSet.Props';
 import { IconButton } from '../../Button';
-import { IContextualMenuItem, IContextualMenuProps } from '../../ContextualMenu';
 
 const styles: any = require('./OverflowSet.scss');
 
 export class OverflowSet extends BaseComponent<IOverflowSetProps, null> {
-
-  public static defaultProps = {
-    items: []
-  };
-
-  private _root: HTMLElement;
 
   constructor(props: IOverflowSetProps) {
     super(props);
@@ -29,11 +17,11 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, null> {
 
 
   public render() {
-    let { className, items, overflowItems } = this.props;
+    let { items, overflowItems } = this.props;
     return (
-      <div ref={ this._resolveRef('_root') } className={ css('ms-OverflowSet', styles.root, className) } >
-        { items.length > 0 && this._onRenderItems(items) }
-        { overflowItems.length > 0 && this._onRenderOverflowButton(overflowItems) }
+      <div className={ css('ms-OverflowSet', styles.root) } >
+        { items && this._onRenderItems(items) }
+        { overflowItems && this._onRenderOverflowButton(overflowItems) }
       </div>
     );
   }
