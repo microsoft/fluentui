@@ -145,7 +145,8 @@ export function ThemeRulesStandardCreator() {
         name: baseSlot + shadeName,
         inherits: slotRules[baseSlot],
         asShade: shadeValue,
-        isCustomized: false
+        isCustomized: false,
+        isBackgroundShade: baseSlot == BaseSlots[BaseSlots.backgroundColor] ? true : false
       };
       return void 0;
     });

@@ -352,7 +352,7 @@ export class ThemerPage extends React.Component<any, any> {
       <div className='ms-themer-paletteSlot' key={ baseSlot }>
         <h3>{ BaseSlots[baseSlot] }</h3>
         <ColorPicker
-          key={ "baseslotcolorpicker" + baseSlot }
+          key={ 'baseslotcolorpicker' + baseSlot }
           color={ this.state.themeRules[BaseSlots[baseSlot]].value.str }
           onColorChanged={ _onColorChanged.bind(this) } />
         <div className='ms-themer-swatchBg' style={ { backgroundColor: this.state.themeRules[BaseSlots[baseSlot]].value.str } }>
