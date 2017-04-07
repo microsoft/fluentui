@@ -10,6 +10,8 @@ export interface IThemeSlotRule {
   inherits?: IThemeSlotRule;
   /* If set, this slot is the specified shade of the slot it inherits from. */
   asShade?: Shade;
+  /* Whether this slot is a background shade, which uses different logic for generating its inheriting-as-shade value. */
+  isBackgroundShade?: boolean;
   /* Whether this slot has been manually overridden (else, it was automatically generated based on inheritance). */
   isCustomized?: boolean;
 }
