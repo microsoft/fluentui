@@ -16,7 +16,6 @@
   display: flex;
   position: relative;
 
-
   .icon {
     @include padding-right(8px);
     color: $ms-color-info;
@@ -113,7 +112,7 @@
   display: flex;
   width: 100%;
   box-sizing: border-box;
-      &:before {
+  &:before {
     position: absolute;
     content: ' ';
     right: 0;
