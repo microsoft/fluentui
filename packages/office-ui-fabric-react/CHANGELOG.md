@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 06 Apr 2017 03:12:13 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Apr 2017 03:14:49 GMT and should not be manually modified.
+
+## 2.14.1
+Fri, 07 Apr 2017 03:14:49 GMT
+
+### Patches
+
+- VisualTesting: Fixed npm start by moving visual test page from index.html to visualtestindex.html
 
 ## 2.14.0
 Thu, 06 Apr 2017 03:12:13 GMT
