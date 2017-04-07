@@ -463,7 +463,7 @@ $Calendar-dayPicker-margin: 10px;
       height: $Calendar-day;
       line-height: $Calendar-day;
       padding: 0 10px;
-      @include right(10px);
+      @include right(3px);
       @include text-align(right);
       top: 199px;
     }

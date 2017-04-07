@@ -10,7 +10,7 @@ import {
   KeyCodes
 } from '../../Utilities';
 import './SearchBox.scss';
-import styles from './SearchBox.scss';
+import styles = require('./SearchBox.scss');
 
 export interface ISearchBoxState {
   value?: string;

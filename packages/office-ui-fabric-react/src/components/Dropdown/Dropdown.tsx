@@ -16,7 +16,7 @@ import {
   findIndex,
   getId
 } from '../../Utilities';
-import styles from './Dropdown.scss';
+import styles = require('./Dropdown.scss');
 
 // Internal only props iterface to support mixing in responsive mode
 export interface IDropdownInternalProps extends IDropdownProps, IWithResponsiveModeState {
@@ -49,7 +49,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _id: string;
 
   constructor(props?: IDropdownProps) {
-    super(props, {
+    super(props);
+
+    this._warnDeprecations({
       'isDisabled': 'disabled'
     });
 

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  BaseComponent,
   KeyCodes,
   css,
   getRTL
@@ -7,7 +8,7 @@ import {
 import { ICalendarStrings } from './Calendar.Props';
 import { FocusZone } from '../../FocusZone';
 import { addYears, setMonth } from '../../utilities/dateMath/DateMath';
-import styles from './Calendar.scss';
+import styles = require('./Calendar.scss');
 
 export interface ICalendarMonthProps {
   navigatedDate: Date;
@@ -15,7 +16,7 @@ export interface ICalendarMonthProps {
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
 }
 
-export class CalendarMonth extends React.Component<ICalendarMonthProps, {}> {
+export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
   private _selectMonthCallbacks: (() => void)[];
 
   public constructor(props: ICalendarMonthProps) {

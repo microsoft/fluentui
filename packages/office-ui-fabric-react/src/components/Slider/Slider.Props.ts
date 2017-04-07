@@ -1,6 +1,18 @@
 import * as React from 'react';
 
+export interface ISlider {
+  value: number;
+
+  focus: () => void;
+}
+
 export interface ISliderProps {
+  /**
+   * Optional callback to access the ISlider interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: ISlider) => void;
+
   /**
    * Description label of the Slider
    */
@@ -66,10 +78,4 @@ export interface ISliderProps {
    * Optional mixin for additional props on the thumb button within the slider.
    */
   buttonProps?: React.HTMLProps<HTMLButtonElement>;
-}
-
-export interface ISlider {
-  value: number;
-
-  focus: () => void;
 }

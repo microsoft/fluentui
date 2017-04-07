@@ -5,7 +5,7 @@ import {
   getId
 } from '../../Utilities';
 import { IRatingProps, RatingSize } from './Rating.Props';
-import styles from './Rating.scss';
+import styles = require('./Rating.scss');
 
 export interface IRatingState {
   rating: number;

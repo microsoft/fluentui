@@ -15,7 +15,16 @@ export enum ContextualMenuItemType {
   Header = 2
 }
 
+export interface IContextualMenu {
+
+}
+
 export interface IContextualMenuProps extends React.Props<ContextualMenu> {
+  /**
+   * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IContextualMenu) => void;
 
   /**
    * The target that the ContextualMenu should try to position itself based on.
@@ -101,6 +110,12 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
    * submenus will be dismissed.
    */
   onDismiss?: (ev?: any, dismissAll?: boolean) => void;
+
+  /**
+   * Click handler which is invoked if onClick is not passed for individual contextual
+   * menu item
+   */
+  onItemClick?: (ev?: React.MouseEvent<HTMLElement>, item?: IContextualMenuItem) => void;
 
   /**
    * CSS class to apply to the context menu.

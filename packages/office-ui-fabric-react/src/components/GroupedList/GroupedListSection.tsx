@@ -33,7 +33,7 @@ import {
 } from './../../utilities/dragdrop/interfaces';
 import { assign, css } from '../../Utilities';
 import { IViewport } from '../../utilities/decorators/withViewport';
-import styles from './GroupedList.scss';
+import styles = require('./GroupedList.scss');
 import { IDisposable } from '@uifabric/utilities';
 
 export interface IGroupedListSectionProps extends React.Props<GroupedListSection> {
@@ -301,7 +301,9 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       onRenderCell,
       selection,
       selectionMode,
-      viewport
+      viewport,
+      onRenderGroupHeader,
+      onRenderGroupFooter
     } = this.props;
 
     return (!subGroup || subGroup.count > 0) ? (
@@ -323,6 +325,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         selection={ selection }
         selectionMode={ selectionMode }
         viewport={ viewport }
+        onRenderGroupHeader={ onRenderGroupHeader }
+        onRenderGroupFooter={ onRenderGroupFooter }
       />
     ) : null;
   }

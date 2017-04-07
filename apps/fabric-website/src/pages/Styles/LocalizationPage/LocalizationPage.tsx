@@ -2,8 +2,8 @@ import * as React from 'react';
 import { CodeBlock } from '../../../components/CodeBlock/CodeBlock';
 import { PageHeader } from '../../../components/PageHeader/PageHeader';
 import { Table } from '../../../components/Table/Table';
-import pageStyles from '../../PageStyles.module.scss';
-import styles from './LocalizationPage.module.scss';
+const pageStyles: any = require('../../PageStyles.module.scss');
+import styles = require('./LocalizationPage.module.scss');
 
 const directionalIconsData = require('json!../../../data/directional-icons.json');
 const localizedFontsData = require('json!../../../data/localized-fonts.json');
@@ -37,7 +37,7 @@ export class LocalizationPage extends React.Component<any, any> {
         </div>
         <CodeBlock language='html' isLightTheme={ true }>
           {
-`<html dir="rtl">
+            `<html dir="rtl">
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="fabric-[version].rtl.min.css">
@@ -74,7 +74,7 @@ export class LocalizationPage extends React.Component<any, any> {
         </div>
         <CodeBlock language='html' isLightTheme={ true }>
           {
-`<html lang="th-TH">...</html>`
+            `<html lang="th-TH">...</html>`
           }
         </CodeBlock>
 
@@ -83,7 +83,7 @@ export class LocalizationPage extends React.Component<any, any> {
         </div>
         <CodeBlock language='html' isLightTheme={ true }>
           {
-`<html lang="th-TH">
+            `<html lang="th-TH">
 ...
 <section lang="vi-VN">...</section>
 </html>`

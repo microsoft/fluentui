@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { css } from '../../Utilities';
+import { BaseComponent, css } from '../../Utilities';
 import { IDocumentCardActivityProps, IDocumentCardActivityPerson } from './DocumentCard.Props';
-import { Image } from '../../Image';
-import styles from './DocumentCard.scss';
+import { Persona, PersonaSize } from '../../Persona';
+import styles = require('./DocumentCard.scss');
 
-export class DocumentCardActivity extends React.Component<IDocumentCardActivityProps, any> {
+export class DocumentCardActivity extends BaseComponent<IDocumentCardActivityProps, any> {
   public render() {
     let { activity, people } = this.props;
 
@@ -35,14 +35,16 @@ export class DocumentCardActivity extends React.Component<IDocumentCardActivityP
 
     return (
       <div className={ css('ms-DocumentCardActivity-avatar', styles.avatar) }>
-        { person.initials && (
-          <div className={ css('ms-Persona-initials', styles.avatarInitials) } role='presentation'>
-            { person.initials }
-          </div>
-        ) }
-        { person.profileImageSrc && (
-          <Image src={ person.profileImageSrc } role='presentation' alt='' />
-        ) }
+        <Persona
+          imageInitials={ person.initials }
+          primaryText={ person.name }
+          hidePersonaDetails={ true }
+          imageUrl={ person.profileImageSrc }
+          initialsColor={ person.initialsColor }
+          role='persentation'
+          size={ PersonaSize.extraExtraSmall }
+        />
+
       </div>
     );
   }

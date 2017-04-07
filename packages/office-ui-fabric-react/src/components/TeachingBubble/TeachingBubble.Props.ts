@@ -6,11 +6,21 @@ import { IButtonProps } from '../../Button';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { ICalloutProps } from '../../Callout';
 
+export interface ITeachingBubble {
+
+}
+
 /**
  * TeachingBubble component props.
  */
 
 export interface ITeachingBubbleProps extends React.Props<TeachingBubble | TeachingBubbleContent>, IAccessiblePopupProps {
+  /**
+   * Optional callback to access the ISlider interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: ITeachingBubble) => void;
+
   /**
    * Properties to pass through for Callout, reference detail properties in ICalloutProps
    */

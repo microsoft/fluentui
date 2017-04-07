@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { IDocumentCardProps, DocumentCardType } from './DocumentCard.Props';
 import {
+  BaseComponent,
+  KeyCodes,
   autobind,
-  css,
-  KeyCodes
+  css
 } from '../../Utilities';
-import styles from './DocumentCard.scss';
+import styles = require('./DocumentCard.scss');
 
-export class DocumentCard extends React.Component<IDocumentCardProps, any> {
+export class DocumentCard extends BaseComponent<IDocumentCardProps, any> {
   public static defaultProps: IDocumentCardProps = {
     type: DocumentCardType.normal
   };

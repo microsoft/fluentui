@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CommandBarPage } from 'fabric-examples/lib/pages/CommandBarPage/CommandBarPage';
+import { CommandBarPage } from 'office-ui-fabric-react/lib/components/CommandBar/CommandBarPage';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { ComponentPage } from '../../components/ComponentPage/ComponentPage';
 

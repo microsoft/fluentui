@@ -2,7 +2,17 @@ import * as React from 'react';
 import { IRectangle } from '../../Utilities';
 import { List } from './List';
 
+export interface IList {
+
+}
+
 export interface IListProps extends React.HTMLProps<List | HTMLDivElement> {
+  /**
+   * Optional callback to access the IList interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IList) => void;
+
   /** Optional classname to append to root list. */
   className?: string;
 
@@ -17,6 +27,9 @@ export interface IListProps extends React.HTMLProps<List | HTMLDivElement> {
 
   /** Optional callback for monitoring when a page is removed. */
   onPageRemoved?: (page: IPage) => void;
+
+  /** Optional callback to get the item key, to be used on render. */
+  getKey?: (item: any, index?: number) => string;
 
   /** Method called by the list to get how many items to render per page from specified index. */
   getItemCountForPage?: (itemIndex?: number, visibleRect?: IRectangle) => number;

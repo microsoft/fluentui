@@ -3,7 +3,7 @@ import * as React from 'react';
 /* tslint:enable */
 import { css } from '../../../../Utilities';
 import { Persona, PersonaSize, IPersonaProps, PersonaPresence } from '../../../../Persona';
-import styles from '../PeoplePicker.scss';
+import styles = require('../PeoplePicker.scss');
 
 export const SuggestionItemNormal: (persona: IPersonaProps) => JSX.Element = (personaProps: IPersonaProps) => {
   return (

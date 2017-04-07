@@ -32,6 +32,12 @@ export interface IGroupedList {
 }
 
 export interface IGroupedListProps extends React.Props<GroupedList> {
+  /**
+   * Optional callback to access the IGroupedList interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IGroupedList) => void;
+
   /** Optional class name to add to the root element. */
   className?: string;
 

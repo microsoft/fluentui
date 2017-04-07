@@ -7,7 +7,16 @@ import {
   IRectangle
 } from '../../Utilities';
 
+export interface ICallout {
+
+}
+
 export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
+  /**
+   * Optional callback to access the ICallout interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: ICallout) => void;
 
   /**
    * The target that the Callout should try to position itself based on.
@@ -55,6 +64,12 @@ export interface ICalloutProps extends React.Props<Callout | CalloutContent> {
    * @default false
    */
   isBeakVisible?: boolean;
+
+  /**
+   * If true then the onClose will not not dismiss on scroll
+   * @default false
+   */
+  preventDismissOnScroll?: boolean;
 
   /**
    * If true the position returned will have the menu element cover the target.

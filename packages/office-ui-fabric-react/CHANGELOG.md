@@ -1,6 +1,168 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 22 Mar 2017 03:18:05 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Apr 2017 03:14:49 GMT and should not be manually modified.
+
+## 2.14.1
+Fri, 07 Apr 2017 03:14:49 GMT
+
+### Patches
+
+- VisualTesting: Fixed npm start by moving visual test page from index.html to visualtestindex.html
+
+## 2.14.0
+Thu, 06 Apr 2017 03:12:13 GMT
+
+### Minor changes
+
+- Adding in visual regression testing
+
+### Patches
+
+- MessageBar: Multiple message bars will have proper margins to seperate them
+- Panel: Fixed selector bug that broke extraLarge panel
+- TagPicker: Fix for long tags.
+
+## 2.13.0
+Wed, 05 Apr 2017 03:50:41 GMT
+
+### Minor changes
+
+- ProgressIndicator: support for aria-valuetext
+
+### Patches
+
+- BasePicker: `componentWillReceiveProps` method was incorrectly assuming the wrong parameters. Changed method to `componentWillUpdate` as intended. Also addressing some focus issues by moving the `FocusZone` to be hosted outside of the `SelectionZone`.
+- GroupedList: Allow header/footer customization of nested groups
+
+## 2.12.0
+Tue, 04 Apr 2017 20:08:53 GMT
+
+### Minor changes
+
+- Panel: adding `customWidth` property and PanelType.custom value to support custom panel widths.
+
+### Patches
+
+- Updating fabric dependencies to use ranges.
+
+## 2.11.0
+Tue, 04 Apr 2017 15:18:51 GMT
+
+### Minor changes
+
+- In components which expose a public API such as `Dropdown` which implements `IDropdown`, to access the exact interface we've exposed a `componentRef` property on all components. This property replaces typical `ref={ c => this._component = c }` usage, as componentRef is guaranteed to access the public contract of the component regardless of the higher-order component or decorator wrapping it. If you are accessing the public API of a component, replace your `ref` usage with `componentRef`.
+
+## 2.10.6
+Tue, 04 Apr 2017 03:12:41 GMT
+
+### Patches
+
+- Removing TypeScript files from being binplaced within the lib folder.
+- ToolTip: fix for long tips
+
+## 2.10.5
+Sat, 01 Apr 2017 03:12:59 GMT
+
+### Patches
+
+- Dialog: Removed IE9 lineheight hacks so that lineheight wouldn't affect internal components
+
+## 2.10.4
+Thu, 30 Mar 2017 21:04:29 GMT
+
+### Patches
+
+- Overlay: disabling body scroll on show to prevent scrolling under the overlay.
+- DocumentCard: Personas rendered within look correct.
+
+## 2.10.3
+Wed, 29 Mar 2017 19:43:19 GMT
+
+### Patches
+
+- DocumentCard: Persona import was not AMD friendly.
+
+## 2.10.2
+Wed, 29 Mar 2017 18:15:29 GMT
+
+### Patches
+
+- FocusZone: Adding support for default browser behavior when pressing alt + a key.
+- Chaning scss imports to use typescript `import` instead of `require` so that lib-amd build actually imports via AMD require and not commonjs require.
+- PeoplePicker: Adding changes for multiple selection onChange 
+
+## 2.10.1
+Wed, 29 Mar 2017 15:10:15 GMT
+
+### Patches
+
+- ChoiceGroup: Update styles
+
+## 2.10.0
+Wed, 29 Mar 2017 03:18:50 GMT
+
+### Minor changes
+
+- ChoiceGroup: adding `selectedKey` and `defaultSelectedKey` to provide a way to control selection, other than to micromanage the `checked` boolean in individual options.
+- Persona: Added a 28px size
+
+### Patches
+
+- DocumentCardActivity: Changes made to fix the default color to Persona
+
+## 2.9.0
+Tue, 28 Mar 2017 16:11:18 GMT
+
+### Minor changes
+
+- DetailsList & List: Use getKey as items render key
+
+## 2.8.0
+Tue, 28 Mar 2017 03:05:36 GMT
+
+### Minor changes
+
+- DetailsList: Implement Drag Drop support
+
+### Patches
+
+- Router: tweaked some of the logic to render component as a fallback if getComponent doesn't immediately return a value.
+- TextField: Fix examples and comments
+
+## 2.7.1
+Fri, 24 Mar 2017 20:25:07 GMT
+
+### Patches
+
+- Recreated npm publish. It seems that the current published bits are not reflecting the focus mixin, which is busting some focus css styling. Trying to pinpoint why some machines seems to produce `border: 1px solid color` vs others that leave off the `px` in the unit.
+
+## 2.7.0
+Fri, 24 Mar 2017 04:26:48 GMT
+
+### Minor changes
+
+- ContextualMenu: onItemClick prop added
+
+### Patches
+
+- CommandBar: Fixes ugly focus border when clicked (Chrome/Mac)
+- Callout: preventDismissOnScroll prop added and set to default false
+- Contextual Menu: Made change to allow arrow keys to loop over item
+- Panel: Title text updated with correct lineheight and removed overflow styles
+
+## 2.6.0
+Thu, 23 Mar 2017 03:13:02 GMT
+
+### Minor changes
+
+- Button: Updated props to include contextualProps so that contextual menu could be passed to button
+- Calendar: Adding support for date ranges: day, week, month so when a user selects a date, the corresponding range is auto-selected. Adding a new prop to hide the today link. Adding a new prop to auto navigate to to the next/previous month if the user selects a date that falls outside the current month. Also fixing some minor styling issues around focused date so it plays nicely with range selection.
+
+### Patches
+
+- TextField: Accessibility fixes for error message
+- TooltipHost: CalloutProps type fixed, and mixed properly in Tooltip
+- Popup: It now passes triggering KeyboardEvent to onDismiss handler
 
 ## 2.5.4
 Wed, 22 Mar 2017 03:18:05 GMT

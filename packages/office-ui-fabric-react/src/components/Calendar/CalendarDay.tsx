@@ -10,6 +10,7 @@ import {
 import { ICalendarStrings } from './Calendar.Props';
 import { DayOfWeek, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { FocusZone } from '../../FocusZone';
+
 import {
   addDays,
   addWeeks,
@@ -19,7 +20,8 @@ import {
   getDateRangeArray,
   isInDateRangeArray
 } from '../../utilities/dateMath/DateMath';
-import styles from './Calendar.scss';
+
+import styles = require('./Calendar.scss');
 
 const DAYS_IN_WEEK = 7;
 

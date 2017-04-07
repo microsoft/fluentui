@@ -56,7 +56,9 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
   private _isInnerZone: boolean;
 
   constructor(props) {
-    super(props, { 'rootProps': null });
+    super(props);
+
+    this._warnDeprecations({ 'rootProps': null });
 
     this._id = getId('FocusZone');
     _allInstances[this._id] = this;
@@ -261,6 +263,8 @@ export class FocusZone extends BaseComponent<IFocusZoneProps, {}> implements IFo
       if (!innerZone || !innerZone.focus()) {
         return;
       }
+    } else if (ev.altKey) {
+      return;
     } else {
       switch (ev.which) {
         case KeyCodes.space:
