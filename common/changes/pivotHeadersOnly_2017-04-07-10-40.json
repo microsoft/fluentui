@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Pivot: new props headersOnly and getTabId.",
+      "comment": "Pivot: Allow rendering PivotItem headers without content.",
       "type": "minor"
     },
     {
