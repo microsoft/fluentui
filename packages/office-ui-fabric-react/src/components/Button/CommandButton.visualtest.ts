@@ -13,8 +13,7 @@ casper.
   }).then(function () {
     this.mouse.down('#CommandButton');
     phantomcss.screenshot('#CommandButton', 'CommandButton_pressed');
-  }).
-  then(function () {
+  }).then(function () {
     phantomcss.screenshot('#CommandButtonDisabled', 'CommandButtonDisabled_not_pressed');
   }).then(function () {
     this.mouse.move('#CommandButtonDisabled');
