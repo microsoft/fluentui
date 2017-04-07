@@ -7,6 +7,9 @@ export default class CheckboxVPage extends React.Component<any, any> {
     return <div >
       <Checkbox className='Checkbox' label='Check box'
         defaultChecked={ true } />
+      <Checkbox className='CheckboxDisbaled' label='Check box'
+        defaultChecked={ true }
+        disabled={ true } />
     </div>;
   }
 }
