@@ -7,7 +7,7 @@
   border: 1px solid $ms-color-neutralLight;
   min-width: 180px;
   padding: 1px;
-
+  min-height: 32px;
   &:hover {
     border-color: $ms-color-themeLight;
   }
@@ -18,8 +18,8 @@
 }
 
 .pickerInput {
+  height: 26px;
   border: none;
-  min-height: 32px;
   flex-grow: 1;
   outline: none;
   padding: 0 6px;
