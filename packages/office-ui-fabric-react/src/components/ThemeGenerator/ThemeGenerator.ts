@@ -2,7 +2,11 @@ import {
   IColor,
   getColorFromString
 } from '../../utilities/color/Colors';
-import { isValidShade, getShade } from '../../utilities/color/Shades';
+import {
+  isValidShade,
+  getShade,
+  getBackgroundShade
+} from '../../utilities/color/Shades';
 import { format } from '../../Utilities';
 
 import { IThemeSlotRule } from './IThemeSlotRule';
@@ -91,7 +95,7 @@ export class ThemeGenerator {
     return output;
   }
 
-  /* Sets the given slot's value to the given value, shading it if necessary.
+  /* Sets the given slot's value to the appropriate value, shading it if necessary.
      Then, iterates through all other rules (that are this rule's dependents) to update them accordingly. */
   private static _setSlot(
     rule: IThemeSlotRule,
@@ -104,8 +108,12 @@ export class ThemeGenerator {
       if (isCustomized || !isValidShade(rule.asShade)) {
         // if it's customized (or the rule is invalid), just set it to the raw value
         rule.value = value;
-      } else { // not customized, so use the asShade +
-        rule.value = getShade(value, rule.asShade);
+      } else { // not customized, so get the color, by shade if necessary
+        if (rule.isBackgroundShade) {
+          rule.value = getBackgroundShade(value, rule.asShade);
+        } else {
+          rule.value = getShade(value, rule.asShade);
+        }
       }
       rule.isCustomized = isCustomized;
     }
