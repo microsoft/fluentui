@@ -13,6 +13,15 @@ casper.
   }).then(function () {
     this.mouse.down('#CompoundButton');
     phantomcss.screenshot('#CompoundButton', 'CompoundButton_pressed');
+  }).
+  then(function () {
+    phantomcss.screenshot('#CompoundButtonDisabled', 'CompoundButtonDisabled_not_pressed');
+  }).then(function () {
+    this.mouse.move('#CompoundButtonDisabled');
+    phantomcss.screenshot('#CompoundButtonDisabled', 'CompoundButtonDisabled_hovered');
+  }).then(function () {
+    this.mouse.down('#CompoundButtonDisabled');
+    phantomcss.screenshot('#CompoundButtonDisabled', 'CompoundButtonDisabled_pressed');
   });
 casper.run(function () { casper.test.done(); });
 /* tslint:enable:no-function-expression */

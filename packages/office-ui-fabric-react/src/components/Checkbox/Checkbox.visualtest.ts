@@ -13,6 +13,6 @@ casper.
   }).then(function () {
     this.mouse.down('.Checkbox');
     phantomcss.screenshot('.Checkbox', 'Checkbox_pressed');
-  });;
+  });
 casper.run(function () { casper.test.done(); });
 /* tslint:enable:no-function-expression */
