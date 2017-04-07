@@ -1,4 +1,5 @@
 import { CommandButton } from './index';
+import { IconName } from '../../Icon';
 
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
@@ -6,7 +7,8 @@ import * as React from 'react';
 export default class CommandButtonVPage extends React.Component<any, any> {
   public render() {
     return <div style={ { backgroundColor: 'white' } }>
-      <CommandButton id='CommandButton' > Command Button </CommandButton>
+      <CommandButton id='CommandButton' icon='AddFriend'>
+        Command Button </CommandButton>
     </div >;
   }
 }

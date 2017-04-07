@@ -6,7 +6,9 @@ import * as React from 'react';
 export default class CompoundButtonVPage extends React.Component<any, any> {
   public render() {
     return <div >
-      <CompoundButton id='CompoundButton'> Compound Button </CompoundButton>
+      <CompoundButton id='CompoundButton'
+        description='You can create a new account here.'
+      > Compound Button </CompoundButton>
     </div >;
   }
 }
