@@ -35,8 +35,7 @@ export default class ChoiceGroupVPage extends React.Component<any, any> {
               key: 'week',
               iconProps: { iconName: 'CalendarWeek' },
               text: 'Week'
-            }
-            ]
+            }]
           } />
       </div>
       <div style={ { backgroundColor: 'white' } }>
@@ -56,8 +55,6 @@ export default class ChoiceGroupVPage extends React.Component<any, any> {
             ]
           } />
       </div>
-    </div>;
+    </div>
   }
 }
-
-
