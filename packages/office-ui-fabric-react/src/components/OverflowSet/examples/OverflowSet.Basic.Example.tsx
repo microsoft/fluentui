@@ -13,6 +13,19 @@ export class OverflowSetBasicExample extends BaseComponent<any, any> {
   public render() {
     return (
       <OverflowResizer
+        updatedOverflowState={ (prevState, props) => {
+          let { measuredOverflowItems, measuredItems } = prevState;
+
+          for (let item of measuredItems) {
+            if (item.small !== true) {
+              item.small = true;
+              return { measuredItems, measuredOverflowItems };
+            }
+          }
+
+          measuredOverflowItems.push(measuredItems.pop());
+          return { measuredItems, measuredOverflowItems }
+        } }
         items={ [
           {
             key: 'search',
@@ -65,7 +78,7 @@ export class OverflowSetBasicExample extends BaseComponent<any, any> {
               <DefaultButton
                 icon={ item.icon }
                 menuProps={ item.subMenuProps }
-                text={ item.name }
+                text={ item.small ? null : item.name }
               >  </DefaultButton>
             );
           }

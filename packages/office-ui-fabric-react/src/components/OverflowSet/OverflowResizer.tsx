@@ -11,11 +11,11 @@ import { IContextualMenuProps } from '../../ContextualMenu';
 import styles = require('./OverflowResizer.scss');
 
 export interface IOverflowResizerState {
-  renderedItems: any[];
-  renderedOverflowItems: IContextualMenuProps[];
+  renderedItems?: any[];
+  renderedOverflowItems?: IContextualMenuProps[];
   measuredItems: any[];
   measuredOverflowItems: IContextualMenuProps[];
-  shouldMeasure: boolean;
+  shouldMeasure?: boolean;
 }
 
 export class OverflowResizer extends BaseComponent<IOverflowResizerProps, IOverflowResizerState> {
@@ -33,7 +33,7 @@ export class OverflowResizer extends BaseComponent<IOverflowResizerProps, IOverf
       shouldMeasure: true,
       renderedItems: [],
       renderedOverflowItems: [],
-      measuredItems: this.props.items,
+      measuredItems: this.props.items.concat([]),
       measuredOverflowItems: []
     };
   }
@@ -72,27 +72,29 @@ export class OverflowResizer extends BaseComponent<IOverflowResizerProps, IOverf
     this.setState({ shouldMeasure: true });
   }
 
-  private _onOverflowState(prevState, props) {
+  private _updatedOverflowState(prevState, props): IOverflowResizerState {
     let { measuredOverflowItems, measuredItems } = prevState;
 
     measuredOverflowItems.push(measuredItems.pop());
     return { measuredItems, measuredOverflowItems }
   }
 
-  private _onOverflowFitState(prevState, props) {
-    let items = props.items;
+  private _finalOverflowState(prevState, props): IOverflowResizerState {
     let { renderedItems, renderedOverflowItems, measuredItems, measuredOverflowItems } = prevState;
     return {
       renderedItems: measuredItems,
       renderedOverflowItems: measuredOverflowItems,
-      // measuredItems: items,
-      // measuredOverflowItems: [],
+      measuredItems: this.props.items.concat([]),
+      measuredOverflowItems: [],
       shouldMeasure: false
     };
   }
 
   private _measureItems() {
-    let { items, onOverflow } = this.props;
+    let {
+      items,
+      updatedOverflowState = this._updatedOverflowState
+    } = this.props;
     let {
       shouldMeasure,
       renderedItems,
@@ -106,11 +108,11 @@ export class OverflowResizer extends BaseComponent<IOverflowResizerProps, IOverf
       let measured = this._measured.getBoundingClientRect();
       if ((measured.width > container.width) ? true : false) {
         this.setState((prevState, props) => {
-          return this._onOverflowState(prevState, props)
+          return updatedOverflowState(prevState, props)
         });
       } else {
         this.setState((prevState, props) => {
-          return this._onOverflowFitState(prevState, props)
+          return assign({ shouldMeasure: false }, this._finalOverflowState(prevState, props));
         });
       }
     }
