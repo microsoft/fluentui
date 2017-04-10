@@ -13,6 +13,8 @@ import styles = require('./OverflowResizer.scss');
 export interface IOverflowResizerState {
   renderedItems: any[];
   renderedOverflowItems: IContextualMenuProps[];
+  measuredItems: any[];
+  measuredOverflowItems: IContextualMenuProps[];
   shouldMeasure: boolean;
 }
 
@@ -30,7 +32,9 @@ export class OverflowResizer extends BaseComponent<IOverflowResizerProps, IOverf
     this.state = {
       shouldMeasure: true,
       renderedItems: [],
-      renderedOverflowItems: []
+      renderedOverflowItems: [],
+      measuredItems: this.props.items,
+      measuredOverflowItems: []
     };
   }
 
@@ -40,14 +44,14 @@ export class OverflowResizer extends BaseComponent<IOverflowResizerProps, IOverf
   }
 
   public render() {
-    let { items, onOverflow, overflowSetProps } = this.props;
-    let { shouldMeasure, renderedItems, renderedOverflowItems } = this.state;
+    let { overflowSetProps } = this.props;
+    let { shouldMeasure, renderedItems, renderedOverflowItems, measuredItems, measuredOverflowItems } = this.state;
     return (
       <div ref={ this._resolveRef('_root') }>
         { shouldMeasure && (
           <div className={ css(styles.measured) } ref={ this._resolveRef('_measured') }>
             <OverflowSet
-              { ...assign(overflowSetProps, { items: items }) }
+              { ...assign(overflowSetProps, { items: measuredItems, overflowItems: measuredOverflowItems }) }
             />
           </div>
         ) }
@@ -68,27 +72,47 @@ export class OverflowResizer extends BaseComponent<IOverflowResizerProps, IOverf
     this.setState({ shouldMeasure: true });
   }
 
+  private _onOverflowState(prevState, props) {
+    let { measuredOverflowItems, measuredItems } = prevState;
+
+    measuredOverflowItems.push(measuredItems.pop());
+    return { measuredItems, measuredOverflowItems }
+  }
+
+  private _onOverflowFitState(prevState, props) {
+    let items = props.items;
+    let { renderedItems, renderedOverflowItems, measuredItems, measuredOverflowItems } = prevState;
+    return {
+      renderedItems: measuredItems,
+      renderedOverflowItems: measuredOverflowItems,
+      // measuredItems: items,
+      // measuredOverflowItems: [],
+      shouldMeasure: false
+    };
+  }
+
   private _measureItems() {
-    let { items } = this.props;
-    let { shouldMeasure } = this.state;
+    let { items, onOverflow } = this.props;
+    let {
+      shouldMeasure,
+      renderedItems,
+      renderedOverflowItems,
+      measuredItems,
+      measuredOverflowItems
+    } = this.state;
 
     if (shouldMeasure && items && items.length > 0) {
       let container = this._root.getBoundingClientRect();
       let measured = this._measured.getBoundingClientRect();
-      let renderedItems = this.props.items;
-      let renderedOverflowItems = null;
-      if (container.width > measured.width) {
-        this.setState({ renderedItems, renderedOverflowItems, shouldMeasure: false });
+      if ((measured.width > container.width) ? true : false) {
+        this.setState((prevState, props) => {
+          return this._onOverflowState(prevState, props)
+        });
       } else {
-        // while (measured.width > container.width) {
-        //   let foo = this.props.onOverflow(renderedItems) {
-        //     return {items, overflow };
-        // }
-        // this.setState({
-
-        // });
+        this.setState((prevState, props) => {
+          return this._onOverflowFitState(prevState, props)
+        });
       }
     }
   }
 }
-

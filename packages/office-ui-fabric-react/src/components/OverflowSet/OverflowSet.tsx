@@ -21,7 +21,7 @@ export class OverflowSet extends BaseComponent<IOverflowSetProps, null> {
     return (
       <div className={ css('ms-OverflowSet', styles.root) } >
         { items && this._onRenderItems(items) }
-        { overflowItems && this._onRenderOverflowButton(overflowItems) }
+        { overflowItems.length > 0 && this._onRenderOverflowButton(overflowItems) }
       </div>
     );
   }
