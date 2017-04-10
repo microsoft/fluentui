@@ -2,7 +2,17 @@ import * as React from 'react';
 import { DatePicker } from './DatePicker';
 import { DayOfWeek } from '../../Calendar';
 
+export interface IDatePicker {
+
+}
+
 export interface IDatePickerProps extends React.Props<DatePicker> {
+  /**
+   * Optional callback to access the IDatePicker interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IDatePicker) => void;
+
   /**
    * Callback issued when a date is selected
    */

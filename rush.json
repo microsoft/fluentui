@@ -37,10 +37,6 @@
       "projectFolder": "apps/todo-app"
     },
     {
-      "packageName": "image-editor",
-      "projectFolder": "apps/image-editor"
-    },
-    {
       "packageName": "fabric-website",
       "projectFolder": "apps/fabric-website",
       "shouldPublish": false

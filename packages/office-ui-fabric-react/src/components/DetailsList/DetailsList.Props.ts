@@ -27,6 +27,12 @@ export interface IDetailsList {
 }
 
 export interface IDetailsListProps extends React.Props<DetailsList> {
+  /**
+   * Optional callback to access the IDetailsList interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IDetailsList) => void;
+
   /** A key that uniquely identifies the given items. If provided, the selection will be reset when the key changes. */
   setKey?: string;
 

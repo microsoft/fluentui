@@ -1,5 +1,9 @@
 import * as React from 'react';
-import { autobind, css } from '../../Utilities';
+import {
+  BaseComponent,
+  autobind,
+  css
+} from '../../Utilities';
 import { IColorPickerProps } from './ColorPicker.Props';
 import { TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle';
@@ -31,7 +35,7 @@ export interface IColor {
   str: string;
 }
 
-export class ColorPicker extends React.Component<IColorPickerProps, IColorPickerState> {
+export class ColorPicker extends BaseComponent<IColorPickerProps, IColorPickerState> {
   constructor(props: IColorPickerProps) {
     super(props);
 

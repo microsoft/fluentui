@@ -12,18 +12,20 @@ import { PanelMediumExample } from './examples/Panel.Medium.Example';
 import { PanelLargeExample } from './examples/Panel.Large.Example';
 import { PanelLargeFixedExample } from './examples/Panel.LargeFixed.Example';
 import { PanelExtraLargeExample } from './examples/Panel.ExtraLarge.Example';
+import { PanelCustomExample } from './examples/Panel.Custom.Example';
 import { PanelLightDismissExample } from './examples/Panel.LightDismiss.Example';
 import { PanelNonModalExample } from './examples/Panel.NonModal.Example';
 
-const PanelSmallRightExampleCode = require('!raw-loader!./examples/Panel.SmallRight.Example.tsx') as string;
-const PanelSmallLeftExampleCode = require('!raw-loader!./examples/Panel.SmallLeft.Example.tsx') as string;
-const PanelSmallFluidExampleCode = require('!raw-loader!./examples/Panel.SmallFluid.Example.tsx') as string;
-const PanelMediumExampleCode = require('!raw-loader!./examples/Panel.Medium.Example.tsx') as string;
-const PanelLargeExampleCode = require('!raw-loader!./examples/Panel.Large.Example.tsx') as string;
-const PanelLargeFixedExampleCode = require('!raw-loader!./examples/Panel.LargeFixed.Example.tsx') as string;
-const PanelExtraLargeExampleCode = require('!raw-loader!./examples/Panel.ExtraLarge.Example.tsx') as string;
-const PanelLightDismissExampleCode = require('!raw-loader!./examples/Panel.LightDismiss.Example.tsx') as string;
-const PanelNonModalExampleCode = require('!raw-loader!./examples/Panel.NonModal.Example.tsx') as string;
+const PanelSmallRightExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallRight.Example.tsx') as string;
+const PanelSmallLeftExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallLeft.Example.tsx') as string;
+const PanelSmallFluidExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallFluid.Example.tsx') as string;
+const PanelMediumExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Medium.Example.tsx') as string;
+const PanelLargeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Large.Example.tsx') as string;
+const PanelLargeFixedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.LargeFixed.Example.tsx') as string;
+const PanelExtraLargeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.ExtraLarge.Example.tsx') as string;
+const PanelCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Custom.Example.tsx') as string;
+const PanelLightDismissExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.LightDismiss.Example.tsx') as string;
+const PanelNonModalExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.NonModal.Example.tsx') as string;
 
 export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -54,6 +56,9 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title='Panel - Extra Large' code={ PanelExtraLargeExampleCode }>
               <PanelExtraLargeExample />
             </ExampleCard>
+            <ExampleCard title='Panel - Custom' code={ PanelCustomExampleCode }>
+              <PanelCustomExample />
+            </ExampleCard>
             <ExampleCard title='Panel - Light Dismiss' code={ PanelLightDismissExampleCode }>
               <PanelLightDismissExample />
             </ExampleCard>,
@@ -65,7 +70,7 @@ export class PanelPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/lib/components/Panel/Panel.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/Panel.Props.ts')
             ] }
           />
         }

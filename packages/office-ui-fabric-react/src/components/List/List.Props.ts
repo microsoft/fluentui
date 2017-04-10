@@ -2,7 +2,17 @@ import * as React from 'react';
 import { IRectangle } from '../../Utilities';
 import { List } from './List';
 
+export interface IList {
+
+}
+
 export interface IListProps extends React.HTMLProps<List | HTMLDivElement> {
+  /**
+   * Optional callback to access the IList interface. Use this instead of ref for accessing
+   * the public methods and properties of the component.
+   */
+  componentRef?: (component: IList) => void;
+
   /** Optional classname to append to root list. */
   className?: string;
 

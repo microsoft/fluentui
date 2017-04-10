@@ -11,8 +11,8 @@ import { TooltipBasicExample } from './examples/Tooltip.Basic.Example';
 
 import './TooltipPage.scss';
 
-const TooltipBasicExampleCode = require('!raw-loader!./examples/Tooltip.Basic.Example.tsx') as string;
-const TooltipBottomExampleCode = require('!raw-loader!./examples/Tooltip.Bottom.Example.tsx') as string;
+const TooltipBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Basic.Example.tsx') as string;
+const TooltipBottomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Bottom.Example.tsx') as string;
 
 export class TooltipPage extends React.Component<any, any> {
   public render() {
@@ -34,7 +34,7 @@ export class TooltipPage extends React.Component<any, any> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/lib/components/Tooltip/Tooltip.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Tooltip/Tooltip.Props.ts')
             ] }
           />
         }
