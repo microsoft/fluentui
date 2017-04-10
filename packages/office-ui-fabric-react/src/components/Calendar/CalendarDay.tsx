@@ -95,6 +95,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               onClick={ this._onSelectPrevMonth }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectPrevMonth) }
               aria-controls={ monthAndYearId }
+              aria-label={ strings.nextMonthAriaLabel }
               role='button'
               tabIndex={ 0 }>
               <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': !getRTL(), 'ms-Icon--ChevronRight': getRTL() }) } />
@@ -104,6 +105,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               onClick={ this._onSelectNextMonth }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectNextMonth) }
               aria-controls={ monthAndYearId }
+              aria-label={ strings.nextMonthAriaLabel }
               role='button'
               tabIndex={ 0 }>
               <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': getRTL(), 'ms-Icon--ChevronRight': !getRTL() }) } />
