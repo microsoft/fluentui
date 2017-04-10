@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 07 Apr 2017 03:14:49 GMT and should not be manually modified.
+This log was last generated on Sat, 08 Apr 2017 03:18:28 GMT and should not be manually modified.
+
+## 2.15.0
+Sat, 08 Apr 2017 03:18:28 GMT
+
+### Minor changes
+
+- ContextualMenu: adding in onMenuOpened callback
 
 ## 2.14.1
 Fri, 07 Apr 2017 03:14:49 GMT
