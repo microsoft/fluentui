@@ -78,12 +78,15 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   public render() {
     let { activeDescendantId, weeks } = this.state;
     let { firstDayOfWeek, strings, navigatedDate, onSelectDate } = this.props;
+    let monthAndYearId = getId('DatePickerDay-monthAndYear');
 
     return (
       <div className={ css('ms-DatePicker-dayPicker', styles.dayPicker) }>
         <div className={ css('ms-DatePicker-header', styles.header) }>
-          <div className={ css('ms-DatePicker-month', styles.month) }>{ strings.months[navigatedDate.getMonth()] }</div>
-          <div className={ css('ms-DatePicker-year', styles.year) }>{ navigatedDate.getFullYear() }</div>
+          <div role='heading' id={ monthAndYearId } aria-live='assertive' aria-relevant='text' aria-atomic='true'>
+            <div className={ css('ms-DatePicker-month', styles.month) }>{ strings.months[navigatedDate.getMonth()] }</div>
+            <div className={ css('ms-DatePicker-year', styles.year) }>{ navigatedDate.getFullYear() }</div>
+          </div>
         </div>
         <div className={ css('ms-DatePicker-monthComponents', styles.monthComponents) }>
           <div className={ css('ms-DatePicker-navContainer', styles.navContainer) }>
@@ -91,6 +94,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               className={ css('ms-DatePicker-prevMonth js-prevMonth', styles.prevMonth) }
               onClick={ this._onSelectPrevMonth }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectPrevMonth) }
+              aria-controls={ monthAndYearId }
+              role='button'
               tabIndex={ 0 }>
               <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': !getRTL(), 'ms-Icon--ChevronRight': getRTL() }) } />
             </span >
@@ -98,6 +103,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               className={ css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth) }
               onClick={ this._onSelectNextMonth }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectNextMonth) }
+              aria-controls={ monthAndYearId }
+              role='button'
               tabIndex={ 0 }>
               <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': getRTL(), 'ms-Icon--ChevronRight': !getRTL() }) } />
             </span >
@@ -110,6 +117,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             role='grid'
             aria-readonly='true'
             aria-multiselectable='false'
+            aria-labelledby={ monthAndYearId }
             aria-activedescendant={ activeDescendantId }
           >
             <thead>
