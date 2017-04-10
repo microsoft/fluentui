@@ -55,6 +55,6 @@ export default class ChoiceGroupVPage extends React.Component<any, any> {
             ]
           } />
       </div>
-    </div>
+    </div>;
   }
 }
