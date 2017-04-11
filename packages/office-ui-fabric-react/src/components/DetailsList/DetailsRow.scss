@@ -55,7 +55,7 @@ $unselectedHoverColor: $ms-color-neutralLighter;
   text-overflow: ellipsis;
 
   & > button {
-    width: 100%;
+    max-width: 100%;
   }
 }
 
