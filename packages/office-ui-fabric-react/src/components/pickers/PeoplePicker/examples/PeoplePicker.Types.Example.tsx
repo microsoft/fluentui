@@ -8,7 +8,7 @@ import {
 } from 'office-ui-fabric-react/lib/Utilities';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { IPersonaProps, Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import {
   CompactPeoplePicker,
@@ -31,9 +31,11 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   suggestionsHeaderText: 'Suggested People',
   mostRecentlyUsedHeaderText: 'Suggested Contacts',
   noResultsFoundText: 'No results found',
-  loadingText: 'Loading',
-  searchingText: 'searching for stuff'
+  loadingText: 'Loading'
 };
+
+
+// searchingText: (suggestionProps: ISuggestionsProps) => `Searching for ${suggestionProps.i}`
 
 const limitedSearchAdditionalProps: IBasePickerSuggestionsProps = {
   searchForMoreText: 'Search directory',
@@ -181,7 +183,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
 
   public _renderPreselectedItemsPicker() {
     return (
-      <CompactPeoplePicker
+      <NormalPeoplePicker
         onResolveSuggestions={ this._onFilterChanged }
         onInputFocus={ this._returnMostRecentlyUsed }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
@@ -196,7 +198,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
 
   public _renderLimitedSearch() {
     return (
-      <CompactPeoplePicker
+      <NormalPeoplePicker
         onResolveSuggestions={ this._onFilterChangedWithLimit }
         onInputFocus={ this._returnMostRecentlyUsed }
         getTextFromItem={ (persona: IPersonaProps) => persona.primaryText }
@@ -204,12 +206,24 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         onGetMoreResults={ this._onFilterChanged }
         pickerSuggestionsProps={ limitedSearchSuggestionProps }
         onRemoveSuggestion={ this._onRemoveSuggestion }
+        onRenderSuggestionsItem={ (personaProps: IPersonaProps) =>
+          (
+            <div className='ms-PeoplePicker-personaContent'>
+              <Persona
+                { ...personaProps }
+                presence={ personaProps.presence !== undefined ? personaProps.presence : 0 }
+                size={ PersonaSize.size28 }
+              />
+              <button onClick={ (ev) => { ev.preventDefault(); ev.stopPropagation(); console.log(this); this._onRemoveSuggestion(personaProps) } }> click me </button>
+            </div>
+          ) }
       />
     );
   }
 
   @autobind
   private _onRemoveSuggestion(item: IPersonaProps): void {
+    console.log('hello', item);
     let { peopleList, mostRecentlyUsed } = this.state;
     let indexPeopleList: number = peopleList.indexOf(item);
     let indexMostRecentlyUsed: number = mostRecentlyUsed.indexOf(item);
@@ -221,9 +235,9 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
     }
 
     if (indexMostRecentlyUsed >= 0) {
-      let newPeople: IPersonaProps[] = mostRecentlyUsed.slice(0, indexMostRecentlyUsed).concat(mostRecentlyUsed.slice(indexMostRecentlyUsed + 1));
+      let newSuggestedPeople: IPersonaProps[] = mostRecentlyUsed.slice(0, indexMostRecentlyUsed).concat(mostRecentlyUsed.slice(indexMostRecentlyUsed + 1));
 
-      this.setState({ mostRecentlyUsed: newPeople });
+      this.setState({ mostRecentlyUsed: newSuggestedPeople });
     }
   }
 
@@ -242,8 +256,10 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   }
 
   @autobind
-  private _returnMostRecentlyUsed(): IPersonaProps[] {
-    return this.state.mostRecentlyUsed;
+  private _returnMostRecentlyUsed(currentPersonas: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> {
+    let { mostRecentlyUsed } = this.state;
+    mostRecentlyUsed = this._removeDuplicates(mostRecentlyUsed, currentPersonas)
+    return this._filterPromise(mostRecentlyUsed);
   }
 
   @autobind

@@ -1,19 +1,47 @@
 @import '../../../common/common';
 
 .root {
-  min-width: 180px;
+  min-width: 260px;
 }
 
 .suggestionsItemContainer {
   position: relative;
+  @include focus-border();
 
   &:hover {
     .suggestionsItem {
-      background: $ms-color-neutralLighter;
+      &:not(.suggestionsItemIsSuggested) {
+        // border: 1px solid blue;
+        background: $ms-color-neutralLighter;
+      }
     }
 
     .suggestionsRemoveButton {
       display: inline-block;
+
+      &:hover {
+        // border: 2px solid red;
+        background: $ms-color-neutralTertiaryAlt;
+      }
+    }
+  }
+
+  &:focus {
+    border: 1px solid purple;
+    .suggestionsItem {
+      &:not(.suggestionsItemIsSuggested) {
+        // border: 1px solid blue;
+        background: $ms-color-neutralLight;
+      }
+    }
+
+    .suggestionsRemoveButton {
+      display: inline-block;
+
+      &:hover {
+        // border: 2px solid red;
+        background: $ms-color-neutralTertiaryAlt;
+      }
     }
   }
 }
@@ -22,20 +50,22 @@
   box-sizing: border-box;
   width: 100%;
   height: auto;
-  @include focus-border();
 
   @include text-align(left);
   @include padding(4px, 50px, 6px, 20px);
 
   display: block;
-  border: none;
+  // border: none;
   background: $ms-color-white;
   position: relative;
 
   &.suggestionsItemIsSuggested {
+    // border: 1px solid green;
     background: $ms-color-neutralLight;
+
     &:hover {
-      background: $ms-color-neutralQuaternaryAlt;
+      // border: 1px solid springgreen;
+      background: $ms-color-neutralTertiaryAlt;
     }
   }
 }
@@ -94,8 +124,9 @@
 }
 
 .suggestionsSpinner {
-  margin: 5px;
-  text-align: center;
+  margin: 5px 0;
+  @include padding-left(24px);
+  @include text-align(left);
   white-space: nowrap;
   line-height: 20px;
 
@@ -105,7 +136,7 @@
   }
   :global(.ms-Spinner-label) {
     display: inline-block;
-    margin: 0px 10px;
+    @include margin(0px, 10px, 0, 16px);
     vertical-align: middle;
   }
 }
@@ -120,7 +151,8 @@
   width: 50px;
 
   &:hover {
+    // border: 1px solid orange;
     color: $ms-color-neutralDark;
-    background: $ms-color-neutralLight;
+    background: $ms-color-neutralLighter;
   }
 }

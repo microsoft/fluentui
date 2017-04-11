@@ -5,7 +5,7 @@ import { BasePicker, BasePickerListBelow } from '../BasePicker';
 import { IBasePickerProps } from '../BasePicker.Props';
 import { SelectedItemDefault } from './PeoplePickerItems/SelectedItemDefault';
 import { IPersonaProps } from '../../../Persona';
-import { SuggestionItemSmall, SuggestionItemNormal } from './PeoplePickerItems/SuggestionItemDefault';
+import { SuggestionItemSmall, SuggestionItemNormal, SuggestionItemRemove } from './PeoplePickerItems/SuggestionItemDefault';
 import { SelectedItemWithMenu } from './PeoplePickerItems/SelectedItemWithMenu';
 import './PeoplePicker.scss';
 
@@ -24,7 +24,7 @@ export class MemberListPeoplePicker extends BasePickerListBelow<IPersonaProps, I
 export class NormalPeoplePicker extends BasePeoplePicker {
   public static defaultProps = {
     onRenderItem: (props) => <SelectedItemDefault {...props} />,
-    onRenderSuggestionsItem: (props) => <SuggestionItemNormal { ...props } />
+    onRenderSuggestionsItem: (props) => <SuggestionItemRemove { ...props } />
   };
 }
 

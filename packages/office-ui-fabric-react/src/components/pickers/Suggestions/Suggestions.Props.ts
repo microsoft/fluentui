@@ -92,4 +92,5 @@ export interface ISuggestionItemProps<T> {
   onClick: (ev: React.MouseEvent<HTMLButtonElement>) => void;
   removeItem: (ev: React.MouseEvent<HTMLButtonElement>) => void;
   className?: string;
+  id?: string;
 }

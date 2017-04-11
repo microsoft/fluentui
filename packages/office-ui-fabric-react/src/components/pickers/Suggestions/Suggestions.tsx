@@ -1,10 +1,12 @@
 import * as React from 'react';
 import {
   BaseComponent,
-  css
+  css,
+  assign
 } from '../../../Utilities';
-import { CommandButton, IconButton } from '../../../Button';
+import { CommandButton } from '../../../Button';
 import { Spinner } from '../../../Spinner';
+import { FocusZone, FocusZoneDirection } from '../../../FocusZone';
 import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.Props';
 import styles = require('./Suggestions.scss');
 
@@ -15,14 +17,19 @@ export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>,
       RenderSuggestion,
       onClick,
       className,
-      removeItem
+      removeItem,
+      id
     } = this.props;
+
+    let itemProps = assign({}, suggestionModel.item, { onClick: onClick });
     return (
       <div
         className={ styles.suggestionsItemContainer }
       >
-        <CommandButton
-          onClick={ onClick }
+        <div
+          data-is-focusable={ true }
+          id={ id }
+          ref="personaButton"
           className={ css(
             'ms-Suggestions-item',
             styles.suggestionsItem,
@@ -32,18 +39,15 @@ export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>,
             className
           ) }
         >
-          <RenderSuggestion { ...suggestionModel.item } />
-        </CommandButton>
-        <IconButton
-          className={ styles.suggestionsRemoveButton }
-          onClick={ removeItem }
-          icon='Cancel'
-          title='Remove'
-          ariaLabel='Remove' />
+          { RenderSuggestion(itemProps) }
+        </div>
       </div>
     );
   }
 }
+
+
+//<RenderSuggestion { ...suggestionModel.item } />
 
 export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
 
@@ -120,7 +124,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
         { isSearching ?
           (<Spinner
             className={ css('ms-Suggestions-spinner', styles.suggestionsSpinner) }
-            label={ this.props.searchingText }
+            label={ searchingText }
           />) : (null)
         }
         {
@@ -169,6 +173,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
             id={ 'sug-' + index }
             role='menuitem'>
             <TypedSuggestionsItem
+              id={ 'sug-item' + index }
               suggestionModel={ suggestion }
               RenderSuggestion={ onRenderSuggestion }
               onClick={ (ev: React.MouseEvent<HTMLElement>) => this.props.onSuggestionClick(ev, suggestion.item, index) }

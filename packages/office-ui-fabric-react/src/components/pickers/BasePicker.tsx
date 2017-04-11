@@ -4,9 +4,10 @@ import {
   KeyCodes,
   autobind,
   css,
-  getRTL
+  getRTL,
+  getRTLSafeKeyCode
 } from '../../Utilities';
-import { FocusZone } from '../../FocusZone';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
 import { Suggestions } from './Suggestions/Suggestions';
@@ -137,20 +138,26 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         targetElement={ this.root }
         onDismiss={ this.dismissSuggestions }
         directionalHint={ getRTL() ? DirectionalHint.bottomRightEdge : DirectionalHint.bottomLeftEdge }>
-        <TypedSuggestion
-          onRenderSuggestion={ this.props.onRenderSuggestionsItem }
-          onSuggestionClick={ this.onSuggestionClick }
-          onSuggestionRemove={ this.onSuggestionRemove }
-          suggestions={ this.suggestionStore.getSuggestions() }
-          ref={ this._resolveRef('suggestionElement') }
-          onGetMoreResults={ this.onGetMoreResults }
-          moreSuggestionsAvailable={ this.state.moreSuggestionsAvailable }
-          isLoading={ this.state.suggestionsLoading }
-          isSearching={ this.state.isSearching }
-          isMostRecentlyUsedVisible={ this.state.isMostRecentlyUsedVisible }
-          isResultsFooterVisible={ this.state.isResultsFooterVisible }
-          { ...this.props.pickerSuggestionsProps }
-        />
+        <FocusZone
+          defaultActiveElement={ '#sug-item0' }
+          isCircularNavigation={ true }
+          direction={ FocusZoneDirection.vertical }
+        >
+          <TypedSuggestion
+            onRenderSuggestion={ this.props.onRenderSuggestionsItem }
+            onSuggestionClick={ this.onSuggestionClick }
+            onSuggestionRemove={ this.onSuggestionRemove }
+            suggestions={ this.suggestionStore.getSuggestions() }
+            ref={ this._resolveRef('suggestionElement') }
+            onGetMoreResults={ this.onGetMoreResults }
+            moreSuggestionsAvailable={ this.state.moreSuggestionsAvailable }
+            isLoading={ this.state.suggestionsLoading }
+            isSearching={ this.state.isSearching }
+            isMostRecentlyUsedVisible={ this.state.isMostRecentlyUsedVisible }
+            isResultsFooterVisible={ this.state.isResultsFooterVisible }
+            { ...this.props.pickerSuggestionsProps }
+          />
+        </FocusZone>
       </Callout>
     ) : (null);
   }
@@ -195,15 +202,45 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected updateSuggestions(suggestions: any[]) {
-    this.suggestionStore.updateSuggestions(suggestions);
+    this.suggestionStore.updateSuggestions(suggestions, true);
     this.forceUpdate();
   }
 
   protected onEmptyInputFocus() {
-    let suggestions: T[] = this.props.onInputFocus();
+    let suggestions: T[] | PromiseLike<T[]> = this.props.onInputFocus(this.state.items);
     let suggestionsArray: T[] = suggestions as T[];
+    let suggestionsPromiseLike: PromiseLike<T[]> = suggestions as PromiseLike<T[]>;
     if (Array.isArray(suggestionsArray)) {
-      this.suggestionStore.updateSuggestions(suggestionsArray);
+      this.suggestionStore.updateSuggestions(suggestionsArray, false);
+    } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
+      this.setState({
+        suggestionsLoading: true
+      });
+      // Why do we set a timer delay here?  Shouldn't we set the suggestionsLoading to true ASAP?
+      if (!this.loadingTimer) {
+        this.loadingTimer = this._async.setTimeout(() => console.log('test'), 500);
+      }
+
+      // Clear suggestions
+      this.suggestionStore.updateSuggestions([], false);
+
+      this.setState({
+        suggestionsVisible: this.input.inputElement === document.activeElement
+      });
+      // Ensure that the promise will only use the callback if it was the most recent one.
+      let promise: PromiseLike<T[]> = this.currentPromise = suggestionsPromiseLike;
+      promise.then((newSuggestions: T[]) => {
+        if (promise === this.currentPromise) {
+          this.suggestionStore.updateSuggestions(newSuggestions, false);
+          this.setState({
+            suggestionsLoading: false
+          });
+          if (this.loadingTimer) {
+            this._async.clearTimeout(this.loadingTimer);
+            this.loadingTimer = undefined;
+          }
+        }
+      });
     }
   }
 
@@ -217,16 +254,15 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     if (Array.isArray(suggestionsArray)) {
       this.resolveNewValue(updatedValue, suggestionsArray);
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
-      this.setState({
-        suggestionsLoading: true
-      });
       // Why do we set a timer delay here?  Shouldn't we set the suggestionsLoading to true ASAP?
       if (!this.loadingTimer) {
-        this.loadingTimer = this._async.setTimeout(() => console.log('test'), 500);
+        this.loadingTimer = this._async.setTimeout(() => this.setState({
+          suggestionsLoading: true
+        }), 500);
       }
 
       // Clear suggestions
-      this.suggestionStore.updateSuggestions([]);
+      this.suggestionStore.updateSuggestions([], false);
 
       this.setState({
         suggestionsVisible: this.input.value !== '' && this.input.inputElement === document.activeElement
@@ -246,7 +282,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected resolveNewValue(updatedValue: string, suggestions: T[]) {
-    this.suggestionStore.updateSuggestions(suggestions);
+    this.suggestionStore.updateSuggestions(suggestions, true);
     let itemValue: string = undefined;
 
     if (this.suggestionStore.currentSuggestion) {
@@ -311,7 +347,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   @autobind
   protected onKeyDown(ev: React.KeyboardEvent<HTMLElement>) {
     let value = this.input.value;
-
+    console.log(ev.which);
     switch (ev.which) {
       case KeyCodes.escape:
         if (this.state.suggestionsVisible) {
