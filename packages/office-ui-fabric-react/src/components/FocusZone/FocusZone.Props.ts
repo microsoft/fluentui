@@ -72,6 +72,11 @@ export interface IFocusZoneProps extends React.HTMLProps<HTMLElement | FocusZone
   ariaLabelledBy?: string;
 
   /**
+   * Sets the aria-describedby attribute.
+   */
+  ariaDescribedBy?: string;
+
+  /**
    * Callback for when one of immediate children elements gets active by getting focused
    * or by having one of its respective children elements focused.
    */
