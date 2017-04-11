@@ -438,7 +438,8 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
         { this.renderSuggestions() }
         <FocusZone ref={ this._resolveRef('focusZone') }
           className='ms-BasePicker-selectedItems'
-          isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke } >
+          isInnerZoneKeystroke={ this._isFocusZoneInnerKeystroke }
+          direction={ 1 } >
           { this.renderItems() }
         </FocusZone>
 
