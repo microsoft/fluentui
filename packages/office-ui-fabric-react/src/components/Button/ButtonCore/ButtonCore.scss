@@ -13,20 +13,12 @@
   @include ms-font-m;
 
   user-select: none;
-  border: 1px solid transparent;
+  border: 1px solid transparent; // this transparent border converts to the correct colors in HC mode
   text-decoration: none;
   text-align: center;
   cursor: pointer;
   display: inline-block;
   padding: $button-core-default-padding;
-
-  @media screen and (-ms-high-contrast: active) {
-    color: $ms-color-contrastBlackSelected;
-  }
-
-  @media screen and (-ms-high-contrast: black-on-white) {
-    color: $ms-color-contrastWhiteSelected;
-  }
 }
 
 @mixin button-core-icon-styles {
