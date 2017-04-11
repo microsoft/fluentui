@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "people picker suggestions list will render at cursor location",
+      "comment": "PeoplePicker: Have the suggestions list follow the cursor instead of always being aligned left to input box",
       "type": "patch"
     }
   ],
