@@ -121,7 +121,7 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     let { formatDate, value } = props;
 
     this.state = {
-      selectedDate: value || new Date(),
+      selectedDate: value,
       formattedDate: (formatDate && value) ? formatDate(value) : '',
       isDatePickerShown: false,
       errorMessage: null
@@ -134,9 +134,11 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
     let { formatDate, isRequired, strings, value } = nextProps;
     const errorMessage = (isRequired && !value) ? (strings.isRequiredErrorMessage || '*') : null;
 
+    let selectedDate = value || this.state.selectedDate;
+
     this.setState({
-      selectedDate: value || new Date(),
-      formattedDate: (formatDate && value) ? formatDate(value) : '',
+      selectedDate: selectedDate,
+      formattedDate: (formatDate && selectedDate) ? formatDate(selectedDate) : '',
       errorMessage: errorMessage
     });
   }
