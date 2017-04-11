@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "DatePicker: persist the selected date on re-render when no date value is provided in the props",
+      "type": "patch"
+    }
+  ],
+  "email": "miclo@microsoft.com"
+}
