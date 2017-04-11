@@ -9,7 +9,6 @@ import {
   getId,
   getNativeProps
 } from '../../Utilities';
-import { BaseButton } from '../../Button';
 import { ICommandBar, ICommandBarProps } from './CommandBar.Props';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ContextualMenu, IContextualMenuProps, IContextualMenuItem, hasSubmenuItems } from '../../ContextualMenu';
@@ -211,8 +210,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
               </span>
             ) }
           </a>
-        }
-        else {
+        } else {
           return <div
             { ...getNativeProps(item, divProperties) }
             id={ this._id + item.key }
