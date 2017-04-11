@@ -159,6 +159,11 @@ export interface IContextualMenuProps extends React.Props<ContextualMenu> {
    */
   directionalHintFixed?: boolean;
 
+  /**
+   * Callback for when the contextualmenu has been opened.
+   */
+  onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;
+
 }
 
 export interface IContextualMenuItem {

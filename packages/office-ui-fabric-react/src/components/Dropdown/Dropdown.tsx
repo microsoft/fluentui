@@ -138,7 +138,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               onRenderTitle(selectedOption, this._onRenderTitle)
             ) }
           </span>
-          <i className={ css('ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown', styles.caretDown) }></i>
+          <i className={ css('ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown', styles.caretDown) } role='presentation' aria-hidden='true'></i>
         </div>
         { isOpen && (
           onRenderContainer(this.props, this._onRenderContainer)
@@ -260,7 +260,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           }
         ) }
         onClick={ () => this._onItemClick(item.index) }
-        role='option'
+        role='menu'
         aria-selected={ this.state.selectedIndex === item.index ? 'true' : 'false' }
         aria-label={ item.text }
       > { onRenderOption(item, this._onRenderOption) }</CommandButton>
