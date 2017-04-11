@@ -4,7 +4,6 @@ export const items = [
     name: 'New',
     icon: 'Add',
     ariaLabel: 'New. Use left and right arrow keys to navigate',
-    onClick: () => { return; },
     ['data-automation-id']: 'newItemMenu',
     subMenuProps: {
       items: [
