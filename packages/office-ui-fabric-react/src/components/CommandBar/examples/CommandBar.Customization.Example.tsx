@@ -1,0 +1,138 @@
+import * as React from 'react';
+import { Button, ButtonType } from 'office-ui-fabric-react/lib/Button';
+import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
+import { css, autobind, } from 'office-ui-fabric-react/lib/Utilities';
+import styles = require('./CommandBar.Example.scss');
+import { ContextualMenu, IContextualMenuProps, IContextualMenuItem, hasSubmenuItems, DirectionalHint } from '../../ContextualMenu';
+
+export interface SplitDropDownButtonState {
+  isContextMenuShown: boolean
+}
+
+export class CommandBarCustomizationExample extends React.Component<any, SplitDropDownButtonState> {
+  constructor(props) {
+    super(props);
+    this.state = { isContextMenuShown: false }
+  }
+
+  private container: HTMLElement;
+
+  public render() {
+    return (
+      <div>
+        <CommandBar
+          isSearchBoxVisible={ false }
+          items={
+            [
+              {
+                key: 'new',
+                name: 'Add',
+                onRender: this._renderSplitButtonMenuItem,
+                className: 'ms-CommandBarItem',
+                //items: {
+                subMenuProps: {
+                  items: [
+                    {
+                      key: 'emailMessage1',
+                      name: 'Email message',
+                      icon: 'Mail',
+                      ['data-automation-id']: 'newEmailButton'
+                    },
+                    {
+                      key: 'calendarEvent1',
+                      name: 'Calendar event',
+                      icon: 'Calendar',
+                      ['data-automation-id']: 'newCalendarButton'
+                    }
+                  ],
+                },
+              },
+            ]
+          }
+        />
+      </div>
+    );
+  }
+
+  @autobind
+  private _renderSplitButtonMenuItem(item: IContextualMenuItem) {
+    let darkerBG = this.state.isContextMenuShown && styles.darkerBG;
+    let leftIconClassNames = css(
+      styles.icon,
+      styles.themeDarkAltColor,
+      'ms-Icon ms-Icon--Add',
+      darkerBG);
+    let dropDownIconClassNames = css(
+      styles.icon,
+      'ms-Icon ms-Icon--ChevronDown',
+      darkerBG);
+    let leftTextClassNames = css(
+      styles.leftText,
+      'ms-CommandBarItem-commandText',
+      darkerBG);
+
+    let containerClasName = css(
+      styles.customButtonContainer,
+      darkerBG
+    );
+
+    let dropDownButtonClass = css(
+      styles.button,
+      darkerBG
+    );
+    let mainBtnClassName = css(
+      !item.name && ('ms-CommandBarItem--noName ' + styles.itemLinkIsNoName),
+      styles.button,
+      darkerBG
+    );
+
+    return (
+      <div>
+        <div className={ containerClasName } ref={ ref => this.container = ref }>
+          <Button
+            key="mainButton"
+            buttonType={ ButtonType.normal }
+            onClick={ () => { } }
+            className={ mainBtnClassName }
+            data-is-focusable={ true }>
+            <span className={ leftIconClassNames } />
+            <span className={ leftTextClassNames }>{ "New" }</span>
+          </Button>
+          <span className={ styles.splitter }>|</span>
+          <Button
+            key='dropDownButton'
+            buttonType={ ButtonType.normal }
+            onClick={ this.onClickChevron }
+            className={ dropDownButtonClass }>
+            <span
+              className={ dropDownIconClassNames }
+              data-is-focusable={ true } />
+          </Button>
+        </div>
+        {
+          this.state && this.state.isContextMenuShown &&
+          <ContextualMenu
+            isBeakVisible={ true }
+            className={ css('ms-CommandBar-menuHost') }
+            items={ item.subMenuProps.items }
+            targetElement={ this.container }
+            directionalHint={ DirectionalHint.bottomAutoEdge }
+            onDismiss={ this.toggleDropDownMenuShown } />
+        }
+      </div >
+    );
+  }
+
+  @autobind
+  private onClickChevron(ev) {
+    ev.stopPropagation();
+    this.toggleDropDownMenuShown(ev);
+  }
+
+  @autobind
+  private toggleDropDownMenuShown(ev) {
+    this.setState({
+      isContextMenuShown: !this.state.isContextMenuShown
+    });
+  }
+}
