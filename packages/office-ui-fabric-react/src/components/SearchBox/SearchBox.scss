@@ -17,6 +17,7 @@
   flex-wrap: nowrap;
   align-items: stretch;
   margin-bottom: 10px;
+  @include padding(0, 0, 0, 8px);
   border: 1px solid $ms-color-themeTertiary;
   height: 32px;
 }
@@ -29,7 +30,7 @@
   color: $ms-color-neutralSecondaryAlt;
   font-size: 16px;
   flex-basis: 32px;
-  text-align: right;
+  text-align: center;
   transition: flex-basis $ms-duration1;
   color: $ms-color-themePrimary
 }
@@ -37,7 +38,6 @@
 // Input Field
 .field {
   @include ms-u-normalize;
-  @include padding(0px, 0, 1px, 8px);
   border: none;
   outline: transparent 1px solid;
   font-weight: inherit;

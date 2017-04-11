@@ -9,7 +9,8 @@ import {
   getDocument,
   KeyCodes
 } from '../../Utilities';
-import './SearchBox.scss';
+
+import { Icon } from '../../Icon';
 import styles = require('./SearchBox.scss');
 
 export interface ISearchBoxState {
@@ -59,7 +60,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
         <div
           className={ css('ms-SearchBox-icon', styles.icon) }
         >
-          <i className={ css('ms-Icon', 'ms-Icon--Search') }></i>
+          <Icon iconName='Search' />
         </div>
         <input
           id={ id }
@@ -74,7 +75,7 @@ export class SearchBox extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
           className={ css('ms-SearchBox-clearButton', styles.clearButton) }
           onClick={ this._onClearClick }
         >
-          <i className={ css('ms-Icon', 'ms-Icon--Clear') } />
+          <Icon iconName='Clear' />
         </div>
       </div>
     );
