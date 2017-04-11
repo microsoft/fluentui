@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Dropdown: Improve screen-reader accessibility.",
+      "type": "patch"
+    }
+  ],
+  "email": "clewolff@microsoft.com"
+}
