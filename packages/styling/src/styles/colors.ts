@@ -75,13 +75,13 @@ export const defaultPalette = {
 };
 
 export interface ISwatch {
-  color: string;
+  palleteKey: string;
 
   /* If defined, can validate that the resulting color is contrasting enough. */
   backgroundSwatch: string;
 }
 
-export interface IColorScheme {
+export interface ISwatchSet {
 
   // Background color in various states.
 
