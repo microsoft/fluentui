@@ -116,8 +116,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         onMouseMove={ this._onRootMouseMove }
         data-automationid='DetailsHeader'>
         <FocusZone ref='focusZone' direction={ FocusZoneDirection.horizontal }>
-          <div className={ css('ms-DetailsHeader-cellWrapper', styles.cellWrapper) } role='columnheader'>
-            { (selectAllVisibility !== SelectAllVisibility.none) ? (
+          { (selectAllVisibility !== SelectAllVisibility.none) ? (
+            <div className={ css('ms-DetailsHeader-cellWrapper', styles.cellWrapper) } role='columnheader'>
               <button
                 type='button'
                 className={ css('ms-DetailsHeader-cell is-check', styles.cell, styles.cellIsCheck) }
@@ -127,8 +127,8 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
               >
                 <Check checked={ isAllSelected } />
               </button>
-            ) : null }
-          </div>
+            </div>
+          ) : null }
           { groupNestingDepth > 0 ? (
             <button
               type='button'
