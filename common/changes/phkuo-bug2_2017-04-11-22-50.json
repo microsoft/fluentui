@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "people picker suggestions list will render at cursor location",
+      "type": "patch"
+    }
+  ],
+  "email": "phkuo@microsoft.com"
+}
