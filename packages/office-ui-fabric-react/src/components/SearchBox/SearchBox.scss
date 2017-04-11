@@ -29,10 +29,14 @@
   flex-shrink: 0;
   color: $ms-color-neutralSecondaryAlt;
   font-size: 16px;
-  flex-basis: 32px;
+  width: 32px;
   text-align: center;
-  transition: flex-basis $ms-duration1;
-  color: $ms-color-themePrimary
+  transition: width $ms-duration1;
+  color: $ms-color-themePrimary;
+  & > * {
+    visibility: visible;
+    transition: visibility 0s $ms-duration1;
+  }
 }
 
 // Input Field
@@ -86,10 +90,11 @@
   border-color: $ms-color-themeDarker;
 
   .icon {
-    flex-basis: 4px;
-    transition: flex-basis $ms-duration1;
+    width: 4px;
+    transition: width $ms-duration1;
      & > * {
-      display: none;
+      visibility: hidden;
+      transition: visibility 0s 0s;
     }
   }
 }
