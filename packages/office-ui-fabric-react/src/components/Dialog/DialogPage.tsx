@@ -7,12 +7,10 @@ import {
 } from '@uifabric/example-app-base';
 import { DialogBasicExample } from './examples/Dialog.Basic.Example';
 import { DialogLargeHeaderExample } from './examples/Dialog.LargeHeader.Example';
-import { DialogCloseExample } from './examples/Dialog.Close.Example';
 import { DialogBlockingExample } from './examples/Dialog.Blocking.Example';
 
 const DialogBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Basic.Example.tsx') as string;
 const DialogLargeHeaderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.LargeHeader.Example.tsx') as string;
-const DialogCloseExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Close.Example.tsx') as string;
 const DialogBlockingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Blocking.Example.tsx') as string;
 
 export class DialogPage extends React.Component<IComponentDemoPageProps, {}> {
@@ -31,12 +29,6 @@ export class DialogPage extends React.Component<IComponentDemoPageProps, {}> {
                 Use this Dialog sparingly, when calling extra attention to the content. It can be used in situations where you want to teach the user something or notify them of an important change.
               </p>
               <DialogLargeHeaderExample />
-            </ExampleCard>
-            <ExampleCard title='Dialog Close' code={ DialogCloseExampleCode }>
-              <p>
-                Use a Dialog with an explicit close button when the user is able to close the Dialog without providing the necessary information that it asks for. This is the most common type of dialog; it is generally used for user initiated actions that they change their mind about, or other non-critical information.
-              </p>
-              <DialogCloseExample />
             </ExampleCard>
             <ExampleCard title='Dialog Blocking' code={ DialogBlockingExampleCode }>
               <p>
