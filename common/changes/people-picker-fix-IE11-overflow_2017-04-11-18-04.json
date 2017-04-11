@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "People Picker: Fix issue in IE11 where long names were not properly truncated",
+      "type": "patch"
+    }
+  ],
+  "email": "miclo@microsoft.com"
+}
