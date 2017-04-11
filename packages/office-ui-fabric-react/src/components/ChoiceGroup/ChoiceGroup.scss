@@ -303,14 +303,14 @@ $ms-choiceField-transition-timing: cubic-bezier(.4, 0, .23, 1);
     &::before {
       top: $radioButtonSpacing;
       @include right($radioButtonSpacing);
-      @include left(initial); // To reset the value of 'left' to its default value, so that 'right' works
+      @include left(auto); // To reset the value of 'left' to its default value, so that 'right' works
       opacity: 0;
     }
 
     &::after {
       top: $radioButtonSpacing + ($radioButtonInnerSize * 2);
       @include right($radioButtonSpacing + ($radioButtonInnerSize * 2));
-      @include left(initial); // To reset the value of 'left' to its default value, so that 'right' works
+      @include left(auto); // To reset the value of 'left' to its default value, so that 'right' works
     }
 
     &:not(.fieldIsDisabled) {
