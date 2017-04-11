@@ -53,6 +53,10 @@ $unselectedHoverColor: $ms-color-neutralLighter;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  & > button{
+    width: 100%;
+  }
 }
 
 .isMultiline {
