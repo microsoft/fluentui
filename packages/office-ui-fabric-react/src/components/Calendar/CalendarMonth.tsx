@@ -69,6 +69,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
                   className={ css('ms-DatePicker-monthOption', styles.monthOption) }
                   key={ index }
                   onClick={ this._selectMonthCallbacks[index] }
+                  aria-label={ setMonth(navigatedDate, index).toLocaleString([], { month: 'long', year: 'numeric' }) }
                   data-is-focusable={ true }
                 >
                   { month }
