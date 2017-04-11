@@ -34,8 +34,8 @@
   transition: width $ms-duration1;
   color: $ms-color-themePrimary;
   & > * {
-    visibility: visible;
-    transition: visibility 0s $ms-duration1;
+    opacity: 1;
+    transition: opacity $ms-duration1 0s;
   }
 }
 
@@ -93,8 +93,8 @@
     width: 4px;
     transition: width $ms-duration1;
      & > * {
-      visibility: hidden;
-      transition: visibility 0s 0s;
+      opacity: 0;
+      opacity: 0 0s $ms-duration1;
     }
   }
 }
