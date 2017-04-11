@@ -36,9 +36,6 @@ export interface IFacepileProps extends React.Props<Facepile> {
   /** Show add person button */
   showAddButton?: boolean;
 
-  /** ARIA label for add button */
-  addButtonAriaLabel?: string;
-
   /** Button properties for the add face button */
   addButtonProps?: IButtonProps;
 
@@ -54,9 +51,6 @@ export interface IFacepileProps extends React.Props<Facepile> {
 
   /** Type of overflow icon to use */
   overflowButtonType?: OverflowButtonType;
-
-  /** ARIA label for overflow button */
-  overflowAriaLabel?: string;
 
   /** Method to access properties on the underlying Persona control */
   getPersonaProps?: (persona: IFacepilePersona) => IPersonaProps;

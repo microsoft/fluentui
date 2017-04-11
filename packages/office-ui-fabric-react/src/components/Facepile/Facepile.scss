@@ -70,12 +70,12 @@ button.overflowButton {
   font-size: $ms-font-size-m;
   color: $ms-color-neutralSecondary;
   background-color: $ms-color-neutralLight;
-  @include margin-right($spacingAroundItemButton * 2);
+  @include margin-left($spacingAroundItemButton * 2);
 }
 
 button.descriptiveOverflowButton {
   font-size: $ms-font-size-s;
   color: $ms-color-neutralSecondary;
   background-color: $ms-color-neutralLight;
-  @include margin-right($spacingAroundItemButton * 2);
+  @include margin-left($spacingAroundItemButton * 2);
 }

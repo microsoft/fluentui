@@ -14,13 +14,10 @@ const facepileProps: IFacepileProps = {
   maxDisplayablePersonas: 5,
   overflowButtonType: OverflowButtonType.downArrow,
   overflowButtonProps: {
-    ariaLabel: 'More info',
+    ariaLabel: 'More users',
     onClick: (ev: React.MouseEvent<HTMLButtonElement>) =>
       alert('overflow icon clicked')
-  },
-  personaListAriaLabel: 'To move through the items use left and right arrow keys.',
-  addButtonAriaLabel: 'Add user',
-  overflowAriaLabel: 'Overflow'
+  }
 };
 
 export interface IFacepileOverflowExampleState {
