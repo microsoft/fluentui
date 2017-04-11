@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "PeoplePicker: Adding vertical-align styles and horizontal only keyboarding to the member list people picker focus zone.",
+      "type": "patch"
+    }
+  ],
+  "email": "v-krbrow@microsoft.com"
+}
