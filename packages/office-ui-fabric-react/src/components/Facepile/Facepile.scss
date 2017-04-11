@@ -58,6 +58,11 @@ button.addButton {
   &:disabled {
     background-color: $ms-color-neutralTertiaryAlt;
   }
+
+  &::-moz-focus-inner {
+    padding: 0px;
+    border: 0px;
+  }
 }
 
 button.overflowButton {
