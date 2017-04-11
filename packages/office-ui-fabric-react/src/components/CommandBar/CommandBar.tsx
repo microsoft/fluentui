@@ -182,7 +182,6 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
             aria-haspopup={ hasSubmenuItems(item) }
             role='menuitem'
             aria-label={ item.ariaLabel || item.name }
-            aria-disabled={ item.disabled }
           >
             { (hasIcon) ? this._renderIcon(item) : (null) }
             { (!!item.name) && (
