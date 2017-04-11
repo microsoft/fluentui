@@ -117,7 +117,7 @@ export class DetailsHeader extends BaseComponent<IDetailsHeaderProps, IDetailsHe
         data-automationid='DetailsHeader'>
         <FocusZone ref='focusZone' direction={ FocusZoneDirection.horizontal }>
           <div className={ css('ms-DetailsHeader-cellWrapper', styles.cellWrapper) } role='columnheader'>
-            { (selectAllVisibility === SelectAllVisibility.visible) ? (
+            { (selectAllVisibility !== SelectAllVisibility.none) ? (
               <button
                 type='button'
                 className={ css('ms-DetailsHeader-cell is-check', styles.cell, styles.cellIsCheck) }
