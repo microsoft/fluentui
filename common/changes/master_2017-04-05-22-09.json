@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "MessageBar Component: Adds borders in HighContrast mode",
+      "comment": "MessageBar: Adds borders in HighContrast mode",
       "type": "patch"
     }
   ],
