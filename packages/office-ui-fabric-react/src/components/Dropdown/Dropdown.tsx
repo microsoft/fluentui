@@ -119,6 +119,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           }) }
           tabIndex={ disabled ? -1 : 0 }
           onKeyDown={ this._onDropdownKeyDown }
+          onKeyUp={ this._onDropdownKeyUp }
           onClick={ this._onDropdownClick }
           aria-expanded={ isOpen ? 'true' : 'false' }
           role='combobox'
@@ -332,6 +333,27 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
 
       case KeyCodes.end:
         this.setSelectedIndex(this.props.options.length - 1);
+        break;
+
+      case KeyCodes.space:
+        // event handled in _onDropdownKeyUp
+        break;
+
+      default:
+        return;
+    }
+
+    ev.stopPropagation();
+    ev.preventDefault();
+  }
+
+  @autobind
+  private _onDropdownKeyUp(ev: React.KeyboardEvent<HTMLElement>) {
+    switch (ev.which) {
+      case KeyCodes.space:
+        this.setState({
+          isOpen: !this.state.isOpen
+        });
         break;
 
       default:
