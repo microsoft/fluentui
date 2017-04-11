@@ -219,6 +219,10 @@ export class DatePicker extends BaseComponent<IDatePickerProps, IDatePickerState
 
   @autobind
   private _onTextFieldFocus(ev: React.FocusEvent<HTMLElement>) {
+    if (this.props.disableAutoFocus) {
+      return;
+    }
+
     if (!this.props.allowTextInput) {
       if (!this._preventFocusOpeningPicker) {
         this._showDatePickerPopup();
