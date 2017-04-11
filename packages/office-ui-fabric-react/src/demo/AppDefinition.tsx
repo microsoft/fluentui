@@ -289,6 +289,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Theme',
           name: 'Themes',
           url: '#examples/themes'
+        },
+        {
+          getComponent: cb => cb(require<any>('../components/ThemeGenerator/ThemerPage').ThemerPage),
+          key: 'Themer',
+          name: 'Theming',
+          url: '#examples/themer'
         }
       ],
       name: 'Utilities'
