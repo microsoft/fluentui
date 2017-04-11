@@ -28,7 +28,6 @@ const styles = {
     vertikcalAlign: 'middle',
   },
   swatchText: {
-    ...fonts.code
   }
 };
 

@@ -1,4 +1,4 @@
-import { css, fontFace, CSSProperties } from 'glamor';
+import { fontFace, CSSProperties } from 'glamor';
 
 const FONT_BASE_URL: string = 'https://static2.sharepointonline.com/files/fabric/assets/fonts/segoeui-westeuropean';
 const ICON_BASE_URL: string = 'https://static2.sharepointonline.com/files/fabric/assets/icons';
@@ -21,9 +21,24 @@ const largeSize: string = '17px';
 const xLargeSize: string = '21px';
 const xxLargeSize: string = '28px';
 const superSize: string = '42px';
+const megaSize: string = '72px';
 
-export const fonts: any = {
-  mini: _createFont(miniSize, semiboldWeight),
+export interface IFonts {
+  tiny: CSSProperties;
+  xSmall: CSSProperties;
+  small: CSSProperties;
+  smallPlus: CSSProperties;
+  medium: CSSProperties;
+  mediumPlus: CSSProperties;
+  large: CSSProperties;
+  xLarge: CSSProperties;
+  xxLarge: CSSProperties;
+  superLarge: CSSProperties;
+  mega: CSSProperties;
+}
+
+export const fonts: IFonts = {
+  tiny: _createFont(miniSize, semiboldWeight),
   xSmall: _createFont(xSmallSize, regularWeight),
   small: _createFont(smallSize, regularWeight),
   smallPlus: _createFont(smallPlusSize, regularWeight),
@@ -33,10 +48,7 @@ export const fonts: any = {
   xLarge: _createFont(xLargeSize, lightWeight),
   xxLarge: _createFont(xxLargeSize, lightWeight),
   superLarge: _createFont(superSize, lightWeight),
-  code: {
-    fontFamily: '"Courier New", "Consolas"',
-    fontSize: '12px'
-  }
+  mega: _createFont(megaSize, lightWeight)
 };
 
 export const iconFont = {
@@ -90,18 +102,3 @@ function _registerFontFace(
 
 // Icon font
 _registerFontFace('FabricMDL2Icons', 'FabricMDL2Icons', ICON_BASE_URL, 'fabricmdl2icons', regularWeight);
-
-/*
-
-css({
-  fontFace: {
-    fontFamily: "Segoe UI Light",
-    src:
-    `url('${FONT_BASE_URL}/segoeui-light.woff2') format('woff2'),` +
-    `url('${fontBaseUrl}/segoeui-light.woff2') format('woff'),` +
-    `url('${fontBaseUrl}/segoeui-light.woff2') format('truetype'),`,
-    fontWeight: light,
-    fontStyle: 'normal'
-  }
-});
-*/

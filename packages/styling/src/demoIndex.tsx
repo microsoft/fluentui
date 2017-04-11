@@ -1,7 +1,8 @@
 import * as React from 'react';
 
 import * as Glamor from 'glamor';
-Glamor['speedy'](true);
+
+Glamor['speedy'](false);
 
 import { examplesOf, createApp } from '@uifabric/example-app-base';
 import { ColorPage } from './examples/ColorPage';

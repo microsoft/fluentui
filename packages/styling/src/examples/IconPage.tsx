@@ -6,6 +6,7 @@ import { fonts, iconFont } from '../styles/fonts';
 import { defaultPalette } from '../styles/colors';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
+import { animations } from '../styles/animations';
 
 const styles = {
   root: css({
@@ -24,13 +25,14 @@ const styles = {
     borderBottom: '1px solid #aaa',
     userSelect: 'none'
   }),
+
   cell: css(
     fonts.medium,
     { margin: '0 4px' }
   ),
 
   iconTile: css(
-    fonts.xSmall,
+    fonts.small,
     {
       flexShrink: 0,
       display: 'flex',
@@ -54,6 +56,7 @@ const styles = {
         bottom: 0,
         border: '1px solid ' + defaultPalette.themePrimary
       },
+
       ':focus': {
         opacity: 1,
         background: defaultPalette.themeLighterAlt
@@ -86,7 +89,7 @@ export function IconTile(props) {
   let { iconName, ...divProps } = props;
   return (
     <div { ...styles.iconTile } { ...divProps }>
-      <i { ...fonts.icon } { ...styles.icon } dangerouslySetInnerHTML={ { __html: icons[iconName] } } />
+      <i { ...styles.icon }>{ icons[iconName] }</i>
       <div>{ iconName }</div>
     </div>
   );
