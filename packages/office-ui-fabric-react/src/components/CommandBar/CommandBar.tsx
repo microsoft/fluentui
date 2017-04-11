@@ -209,7 +209,7 @@ export class CommandBar extends BaseComponent<ICommandBarProps, ICommandBarState
                 { item.name }
               </span>
             ) }
-          </a>
+          </a>;
         } else {
           return <div
             { ...getNativeProps(item, divProperties) }
