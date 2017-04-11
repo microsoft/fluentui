@@ -48,6 +48,8 @@
   flex-grow: 1;
   overflow: hidden;
   text-overflow: ellipsis;
+  // This padding forces the text placement to round up.
+  padding-bottom: .5px;
   &::-ms-clear {
     display: none;
   }
