@@ -23,11 +23,11 @@ import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
 //import { ButtonType } from '../../../components/Button/Button.Props';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
-import { TeachingBubbleBasicExample } from '../TeachingBubblePage/examples/TeachingBubble.Basic.Example';
-import { TextFieldBasicExample } from '../TextFieldPage/examples/TextField.Basic.Example';
-import { ToggleBasicExample } from '../TogglePage/examples/Toggle.Basic.Example';
-import { ProgressIndicatorBasicExample } from '../ProgressIndicatorPage/examples/ProgressIndicator.Basic.Example';
-const ProgressIndicatorBasicExampleCode = require('../ProgressIndicatorPage/examples/ProgressIndicator.Basic.Example.tsx');
+import { TeachingBubbleBasicExample } from '../../components/TeachingBubble/examples/TeachingBubble.Basic.Example';
+import { TextFieldBasicExample } from '../TextField/examples/TextField.Basic.Example';
+import { ToggleBasicExample } from '../../components/Toggle/examples/Toggle.Basic.Example';
+import { ProgressIndicatorBasicExample } from '../ProgressIndicator/examples/ProgressIndicator.Basic.Example';
+const ProgressIndicatorBasicExampleCode = require('../ProgressIndicator/examples/ProgressIndicator.Basic.Example.tsx');
 
 export class ThemerPage extends React.Component<any, any> {
   constructor() {

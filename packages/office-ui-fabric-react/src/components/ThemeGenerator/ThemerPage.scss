@@ -1,5 +1,5 @@
 @import '../../common/common';
-
+:global {
 /* TEMP CODE FOR THEMING DEMO
 html > body {
   background-color: $bodyBackgroundColor;
@@ -55,4 +55,5 @@ html > body {
   > div {
     padding: 8px;
   }
+}
 }
