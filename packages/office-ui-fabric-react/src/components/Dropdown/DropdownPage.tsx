@@ -7,7 +7,7 @@ import {
 } from '@uifabric/example-app-base';
 import { DropdownBasicExample } from './examples/Dropdown.Basic.Example';
 
-const DropdownBasicExampleCode = require('!raw-loader!./examples/Dropdown.Basic.Example.tsx') as string;
+const DropdownBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Basic.Example.tsx') as string;
 
 export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -23,7 +23,7 @@ export class DropdownPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/lib/components/Dropdown/Dropdown.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/Dropdown.Props.ts')
             ] }
           />
         }

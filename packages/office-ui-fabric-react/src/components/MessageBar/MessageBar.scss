@@ -111,6 +111,22 @@
   display: flex;
   width: 100%;
   box-sizing: border-box;
+  &:before {
+    position: absolute;
+    content: ' ';
+    right: 0;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    margin: 0;
+      @media screen and (-ms-high-contrast: active) {
+        border: 1px solid $ms-color-white;
+    }
+
+    @media screen and (-ms-high-contrast: black-on-white) {
+        border: 1px solid $ms-color-black;
+    }
+  }
 }
 
 .actionables {
@@ -147,7 +163,7 @@
 
 // Add space between adjacent MessageBars.
 .root + .root {
-  margin-bottom: 6px;
+  margin-top: 6px;
 }
 
 .innerTextPadding {

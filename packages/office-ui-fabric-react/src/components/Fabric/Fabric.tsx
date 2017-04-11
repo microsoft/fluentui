@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  EventGroup,
+  BaseComponent,
   KeyCodes,
   css
 } from '../../Utilities';
@@ -30,13 +30,11 @@ if (typeof (document) === 'object' && document.documentElement && !document.docu
   document.documentElement.setAttribute('dir', 'ltr');
 }
 
-export class Fabric extends React.Component<React.HTMLProps<HTMLDivElement>, IFabricState> {
+export class Fabric extends BaseComponent<React.HTMLProps<HTMLDivElement>, IFabricState> {
   public refs: {
     [key: string]: React.ReactInstance;
     root: HTMLElement;
   };
-
-  private _events: EventGroup;
 
   constructor() {
     super();
@@ -44,17 +42,11 @@ export class Fabric extends React.Component<React.HTMLProps<HTMLDivElement>, IFa
     this.state = {
       isFocusVisible: _lastIsFocusVisible
     };
-
-    this._events = new EventGroup(this);
   }
 
   public componentDidMount() {
     this._events.on(document.body, 'mousedown', this._onMouseDown, true);
     this._events.on(document.body, 'keydown', this._onKeyDown, true);
-  }
-
-  public componentWillUnmount() {
-    this._events.dispose();
   }
 
   public render() {

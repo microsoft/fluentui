@@ -2,35 +2,47 @@ import * as React from 'react';
 import { Async } from './Async';
 import { EventGroup } from './EventGroup';
 import { IDisposable } from './IDisposable';
+import { warnDeprecations, warnMutuallyExclusive, ISettingsMap } from './warn';
 
-export class BaseComponent<P, S> extends React.Component<P, S> {
+export interface IBaseProps {
+  componentRef?: any;
+}
+
+export class BaseComponent<P extends IBaseProps, S> extends React.Component<P, S> {
   /**
    * External consumers should override BaseComponent.onError to hook into error messages that occur from
    * exceptions thrown from within components.
    */
   public static onError: ((errorMessage?: string, ex?: any) => void);
 
+  /**
+   * Controls whether the componentRef prop will be resolved by this component instance. If you are
+   * implementing a passthrough (higher-order component), you would set this to false and pass through
+   * the props to the inner component, allowing it to resolve the componentRef.
+   *
+   * @protected
+   * @type {boolean}
+   * @memberOf BaseComponent
+   */
+  protected _shouldUpdateComponentRef: boolean;
+
   private __async: Async;
   private __events: EventGroup;
   private __disposables: IDisposable[];
   private __resolves: { [name: string]: (ref: any) => any };
+  private __className: string;
 
   /**
    * BaseComponent constructor
    * @param {P} props The props for the component.
-   * @param {Object} deprecatedProps The map of deprecated prop names to new names, where the key is the old name and the
+   * @param {Object} context The context for the component.
    * value is the new name. If a prop is removed rather than renamed, leave the value undefined.
    */
-  constructor(props?: P, deprecatedProps?: { [propName: string]: string }) {
-    super(props);
+  constructor(props?: P, context?: any) {
+    super(props, context);
 
-    if (deprecatedProps) {
-      for (let propName in deprecatedProps) {
-        if (propName in props) {
-          _warnDeprecation(this, propName, deprecatedProps[propName]);
-        }
-      }
-    }
+    this.props = props;
+    this._shouldUpdateComponentRef = true;
 
     _makeAllSafe(this, BaseComponent.prototype, [
       'componentWillMount',
@@ -42,6 +54,16 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
       'componentDidUpdate',
       'componentWillUnmount'
     ]);
+  }
+
+  /** When the component will receive props, make sure the componentRef is updated. */
+  public componentWillReceiveProps(newProps?: P, newContext?: any) {
+    this._updateComponentRef(this.props, newProps);
+  }
+
+  /** When the component has mounted, update the componentRef. */
+  public componentDidMount() {
+    this._updateComponentRef(undefined, this.props);
   }
 
   /** If we have disposables, dispose them automatically on unmount. */
@@ -60,10 +82,14 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
 
   /** Gets the object's class name. */
   public get className() {
-    let funcNameRegex = /function (.{1,})\(/;
-    let results = (funcNameRegex).exec((this).constructor.toString());
+    if (!this.__className) {
+      let funcNameRegex = /function (.{1,})\(/;
+      let results = (funcNameRegex).exec((this).constructor.toString());
 
-    return (results && results.length > 1) ? results[1] : '';
+      this.__className = (results && results.length > 1) ? results[1] : '';
+    }
+
+    return this.__className;
   }
 
   /** Allows subclasses to push things to this._disposables to be auto disposed. */
@@ -126,7 +152,50 @@ export class BaseComponent<P, S> extends React.Component<P, S> {
         return this[refName] = ref;
       };
     }
+
     return this.__resolves[refName];
+  }
+
+  /**
+   * Updates the componentRef (by calling it with "this" when necessary.)
+   */
+  protected _updateComponentRef(currentProps: IBaseProps, newProps: IBaseProps = {}) {
+    if (this._shouldUpdateComponentRef &&
+      ((!currentProps && newProps.componentRef) ||
+        (currentProps && currentProps.componentRef !== newProps.componentRef))) {
+
+      if (currentProps && currentProps.componentRef) {
+        currentProps.componentRef(null);
+      }
+
+      if (newProps.componentRef) {
+        newProps.componentRef(this);
+      }
+    }
+  }
+  /**
+   * Warns when a deprecated props are being used.
+   *
+   * @protected
+   * @param {ISettingsMap<P>} deprecationMap The map of deprecations, where key is the prop name and the value is
+   * either null or a replacement prop name.
+   *
+   * @memberOf BaseComponent
+   */
+  protected _warnDeprecations(deprecationMap: ISettingsMap<P>) {
+    warnDeprecations(this.className, this.props, deprecationMap);
+  }
+
+  /**
+   * Warns when props which are mutually exclusive with each other are both used.
+   *
+   * @protected
+   * @param {ISettingsMap<P>} mutuallyExclusiveMap The map of mutually exclusive props.
+   *
+   * @memberOf BaseComponent
+   */
+  protected _warnMutuallyExclusive(mutuallyExclusiveMap: ISettingsMap<P>) {
+    warnMutuallyExclusive(this.className, this.props, mutuallyExclusiveMap);
   }
 }
 
@@ -153,7 +222,7 @@ function _makeSafe(obj: BaseComponent<any, any>, prototype: Object, methodName: 
         if (prototypeMethod) {
           retVal = prototypeMethod.apply(this, arguments);
         }
-        if (classMethod) {
+        if (classMethod !== prototypeMethod) {
           retVal = classMethod.apply(this, arguments);
         }
       } catch (e) {
@@ -169,19 +238,9 @@ function _makeSafe(obj: BaseComponent<any, any>, prototype: Object, methodName: 
   }
 }
 
-function _warnDeprecation(obj: BaseComponent<any, any>, propertyName: string, newPropertyName: string) {
-  if (console && console.warn) {
-    let deprecationMessage = `${obj.className} property '${propertyName}' was used but has been deprecated.`;
-
-    if (newPropertyName) {
-      deprecationMessage += ` Use '${newPropertyName}' instead.`;
-    }
-
-    console.warn(deprecationMessage);
-  }
-}
-
 BaseComponent.onError = (errorMessage) => {
   console.error(errorMessage);
   throw errorMessage;
 };
+
+export function nullRender() { return null; }

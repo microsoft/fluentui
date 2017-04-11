@@ -8,7 +8,9 @@ import {
 
 import { BreadcrumbBasicExample } from './examples/Breadcrumb.Basic.Example';
 
-const BreadcrumbBasicExampleCode = require('!raw-loader!./examples/Breadcrumb.Basic.Example.tsx') as string;
+const BreadcrumbBasicExampleCode = require(
+  '!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Basic.Example.tsx'
+) as string;
 
 export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any> {
   public render() {
@@ -26,7 +28,7 @@ export class BreadcrumbPage extends React.Component<IComponentDemoPageProps, any
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!./Breadcrumb.Props.ts')
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/Breadcrumb.Props.ts')
             ] }
           />
         }

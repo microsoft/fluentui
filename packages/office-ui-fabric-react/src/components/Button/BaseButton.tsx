@@ -46,7 +46,10 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
   private _ariaDescriptionId: string;
 
   constructor(props: IButtonProps, rootClassName: string, deprecationMap: any) {
-    super(props, { 'rootProps': null });
+    super(props);
+
+    this._warnDeprecations({ 'rootProps': null });
+
     this._labelId = getId();
     this._descriptionId = getId();
     this._ariaDescriptionId = getId();

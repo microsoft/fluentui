@@ -100,6 +100,10 @@ package
 # Dependency change files generated from npmx aka rush
 package-deps.json
 
+# Non Essential Visual testing files.
+**/office-ui-fabric-react/visualtests/results/*.png
+**/office-ui-fabric-react/failures/*.png
+
 common/npm-local
 common/npmx-link.json
 common/last-install.*

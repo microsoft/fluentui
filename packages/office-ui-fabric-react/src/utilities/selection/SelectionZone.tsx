@@ -287,6 +287,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 
     // Ignore key downs from input elements.
     if (this._isInputElement(target)) {
+      // A key was pressed while an item in this zone was focused.
+      this._shouldHandleFocus = true;
       return;
     }
 

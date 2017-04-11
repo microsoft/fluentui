@@ -104,11 +104,12 @@ $CommandBarHeight: 40px;
   }
 }
 
-//== Modifier: Medium, Large, Extra Large panels (anchored right, fluid width)
+//== Modifier: Medium, Large, Extra Large and Custom panels (anchored right, fluid width)
 //
 .root.rootIsMedium,
 .root.rootIsLarge,
-.root.rootIsXLarge {
+.root.rootIsXLarge,
+.root.rootIsCustom {
   .main {
     @media (min-width: $ms-screen-min-lg) {
       @include ms-left($Panel-margin-md);
@@ -155,6 +156,16 @@ $CommandBarHeight: 40px;
   .main {
     @media (min-width: $ms-screen-min-xxl) {
       @include ms-left($Panel-margin-xl);
+    }
+  }
+}
+
+//== Modifier: Medium panel (anchored right, fixed width)
+//
+.root.rootIsCustom {
+  .main {
+    @media (min-width: $ms-screen-min-xl) {
+      @include left(auto);
     }
   }
 }

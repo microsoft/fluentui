@@ -11,11 +11,11 @@ import { ContextualMenuDirectionalExample } from './examples/ContextualMenu.Dire
 import { ContextualMenuCustomizationExample } from './examples/ContextualMenu.Customization.Example';
 import { ContextualMenuHeaderExample } from './examples/ContextualMenu.Header.Example';
 
-const ContextualMenuBasicExampleCode = require('!raw-loader!./examples/ContextualMenu.Basic.Example.tsx') as string;
-const ContextualMenuCheckmarksExampleCode = require('!raw-loader!./examples/ContextualMenu.Checkmarks.Example.tsx') as string;
-const ContextualMenuDirectionalExampleCode = require('!raw-loader!./examples/ContextualMenu.Directional.Example.tsx') as string;
-const ContextualMenuCustomizationExampleCode = require('!raw-loader!./examples/ContextualMenu.Customization.Example.tsx') as string;
-const ContextualMenuHeaderExampleCode = require('!raw-loader!./examples/ContextualMenu.Header.Example.tsx') as string;
+const ContextualMenuBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Basic.Example.tsx') as string;
+const ContextualMenuCheckmarksExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Checkmarks.Example.tsx') as string;
+const ContextualMenuDirectionalExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Directional.Example.tsx') as string;
+const ContextualMenuCustomizationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Customization.Example.tsx') as string;
+const ContextualMenuHeaderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Header.Example.tsx') as string;
 
 export class ContextualMenuPage extends React.Component<IComponentDemoPageProps, {}> {
   public render() {
@@ -45,8 +45,8 @@ export class ContextualMenuPage extends React.Component<IComponentDemoPageProps,
         propertiesTables={
           <PropertiesTableSet
             sources={ [
-              require<string>('!raw-loader!office-ui-fabric-react/lib/components/ContextualMenu/ContextualMenu.Props.ts'),
-              require<string>('!raw-loader!office-ui-fabric-react/lib/components/Callout/Callout.Props.ts'),
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/ContextualMenu.Props.ts'),
+              require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/Callout.Props.ts'),
             ] }
           />
         }

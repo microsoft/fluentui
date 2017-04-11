@@ -1,6 +1,6 @@
 {
   "name": "office-ui-fabric-react",
-  "version": "2.10.5",
+  "version": "2.15.0",
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -26,8 +26,7 @@
     "@types/react-addons-test-utils": "^0.14.17",
     "@types/react-dom": "^0.14.23",
     "@types/webpack-env": "^1.13.0",
-    "@uifabric/example-app-base": "1.3.4",
-    "@uifabric/utilities": "^1.4.0",
+    "@uifabric/example-app-base": "1.3.6",
     "autoprefixer": "^6.7.6",
     "chai": "^3.5.0",
     "css-loader": "^0.26.2",
@@ -56,17 +55,20 @@
     "ts-loader": "^2.0.1",
     "tslint": "^3.15.1",
     "tslint-microsoft-contrib": "^2.0.9",
-    "typescript": "^2.2.1",
+    "typescript": "^2.2.2",
     "vinyl-ftp": "0.4.5",
     "webpack": "^2.2.1",
     "webpack-bundle-analyzer": "^2.2.1",
+    "webpack-split-by-path": "0.0.10",
+    "resemblejs": "~2.2.3",
+    "@types/resemblejs": "~1.3.28",
+    "gulp-phantomcss": "~0.3.0",
     "webpack-dev-server": "^2.4.1",
-    "webpack-notifier": "^1.5.0",
-    "webpack-split-by-path": "0.0.10"
+    "webpack-notifier": "^1.5.0"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.2.2",
-    "@uifabric/utilities": "1.4.0"
+    "@uifabric/utilities": "1.6.0"
   },
   "peerDependencies": {
     "react": "^0.14 || ^15.0.1-0 || ^16.0.0-0",

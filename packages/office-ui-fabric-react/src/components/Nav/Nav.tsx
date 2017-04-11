@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  BaseComponent,
   css,
   getRTL
 } from '../../Utilities';
@@ -30,7 +31,7 @@ export interface INavState {
   selectedKey?: string;
 }
 
-export class Nav extends React.Component<INavProps, INavState> implements INav {
+export class Nav extends BaseComponent<INavProps, INavState> implements INav {
 
   public static defaultProps: INavProps = {
     groups: null,

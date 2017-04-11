@@ -156,7 +156,7 @@ export class BrandIconsPage extends React.Component<any, any> {
         <CodeBlock language='html' isLightTheme={ true }>
           {
             `// Sample code for displaying an Excel 96x96px Icon
-<div class="ms-BrandIcon--Icon96 ms-BrandIcon--Excel"></div>
+<div class="ms-BrandIcon--icon96 ms-BrandIcon--excel"></div>
 `
           }
         </CodeBlock>

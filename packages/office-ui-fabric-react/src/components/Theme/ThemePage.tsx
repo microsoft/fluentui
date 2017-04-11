@@ -8,7 +8,7 @@ import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
 import './ThemePage.scss';
 
-const ThemeCodeExample = require('!raw-loader!./examples/ThemeCode.Example');
+const ThemeCodeExample = require('!raw-loader!office-ui-fabric-react/src/components/Theme/examples/ThemeCode.Example.tsx');
 
 export class ThemePage extends React.Component<any, any> {
 

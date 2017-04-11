@@ -49,7 +49,9 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
   private _id: string;
 
   constructor(props?: IDropdownProps) {
-    super(props, {
+    super(props);
+
+    this._warnDeprecations({
       'isDisabled': 'disabled'
     });
 
@@ -136,7 +138,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
               onRenderTitle(selectedOption, this._onRenderTitle)
             ) }
           </span>
-          <i className={ css('ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown', styles.caretDown) }></i>
+          <i className={ css('ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown', styles.caretDown) } role='presentation' aria-hidden='true'></i>
         </div>
         { isOpen && (
           onRenderContainer(this.props, this._onRenderContainer)
