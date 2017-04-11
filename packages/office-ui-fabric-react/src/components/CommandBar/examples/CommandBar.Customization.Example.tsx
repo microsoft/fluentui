@@ -81,7 +81,7 @@ export class CommandBarCustomizationExample extends React.Component<any, SplitDr
       darkerBG
     );
     let mainBtnClassName = css(
-      !item.name && ('ms-CommandBarItem--noName ' + styles.itemLinkIsNoName),
+      !item.name && ('ms-CommandBarItem--noName'),
       styles.button,
       darkerBG
     );
