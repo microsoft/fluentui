@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "MessageBar: Adds borders in HighContrast mode",
+      "type": "patch"
+    }
+  ],
+  "email": "v-algemb@microsoft.com"
+}

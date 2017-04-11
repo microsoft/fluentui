@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Dropdown: Prevent the chevron icon from being read by screen readers.",
+      "type": "patch"
+    }
+  ],
+  "email": "clewolff@microsoft.com"
+}
