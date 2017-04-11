@@ -79,3 +79,7 @@ button.descriptiveOverflowButton {
   background-color: $ms-color-neutralLight;
   @include margin-left($spacingAroundItemButton * 2);
 }
+
+.screenReaderOnly {
+  @include ms-u-screenReaderOnly;
+}

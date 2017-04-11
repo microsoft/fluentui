@@ -17,7 +17,8 @@ const facepileProps: IFacepileProps = {
     ariaLabel: 'More users',
     onClick: (ev: React.MouseEvent<HTMLButtonElement>) =>
       alert('overflow icon clicked')
-  }
+  },
+  ariaDescription: 'To move through the items use left and right arrow keys.'
 };
 
 export interface IFacepileOverflowExampleState {

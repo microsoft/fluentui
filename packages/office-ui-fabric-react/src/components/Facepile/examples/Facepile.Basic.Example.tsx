@@ -50,7 +50,8 @@ export class FacepileBasicExample extends React.Component<any, IFacepileBasicExa
         return {
           imageShouldFadeIn: this.state.imagesFadeIn
         };
-      }
+      },
+      ariaDescription: 'To move through the items use left and right arrow keys.'
     };
 
     return (

@@ -31,7 +31,7 @@ export interface IFacepileProps extends React.Props<Facepile> {
   personaSize?: PersonaSize;
 
   /** ARIA label for persona list */
-  personaListAriaLabel?: string;
+  ariaDescription?: string;
 
   /** Show add person button */
   showAddButton?: boolean;

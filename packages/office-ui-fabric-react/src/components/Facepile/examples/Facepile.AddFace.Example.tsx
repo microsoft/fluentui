@@ -36,7 +36,8 @@ export class FacepileAddFaceExample extends React.Component<any, IFacepileAddFac
         onClick: (ev: React.MouseEvent<HTMLButtonElement>) => this.setState({
           numberOfFaces: this.state.numberOfFaces + 1
         })
-      }
+      },
+      ariaDescription: 'To move through the items use left and right arrow keys.'
     };
 
     return (

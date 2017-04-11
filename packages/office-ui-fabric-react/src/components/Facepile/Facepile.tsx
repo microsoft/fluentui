@@ -4,6 +4,7 @@ import {
   buttonProperties,
   css,
   divProperties,
+  getId,
   getNativeProps
 } from '../../Utilities';
 import {
@@ -31,13 +32,21 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     personaSize: PersonaSize.extraSmall
   };
 
+  private _ariaDescriptionId: string;
+
+  constructor(props: IFacepileProps) {
+    super(props);
+
+    this._ariaDescriptionId = getId();
+
+  }
   public render(): JSX.Element {
     let {
       chevronButtonProps,
       maxDisplayablePersonas,
       overflowButtonProps,
       overflowButtonType,
-      personaListAriaLabel,
+      ariaDescription,
       personas,
       showAddButton
     } = this.props;
@@ -52,12 +61,13 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
     return (
       <div className={ css('ms-Facepile', styles.root) }>
         <div
-          aria-label={ personaListAriaLabel }
-          role='group'
           className={ css('ms-Facepile-itemContainer', styles.itemContainer) }
         >
           { showAddButton ? this._getAddNewElement() : null }
+          { this.onRenderAriaDescription() }
           <FocusZone
+            ariaDescribedBy={ this._ariaDescriptionId }
+            role='listbox'
             className={ css('ms-Facepile-members', styles.members) }
             direction={ FocusZoneDirection.horizontal }
           >
@@ -73,6 +83,16 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
           { overflowButtonProps ? this._getOverflowElement(numPersonasToShow) : null }
         </div>
       </div>
+    );
+  }
+
+  protected onRenderAriaDescription() {
+    const { ariaDescription } = this.props;
+
+    // If ariaDescription is given, descriptionId will be assigned to ariaDescriptionSpan,
+    // otherwise it will be assigned to descriptionSpan.
+    return ariaDescription && (
+      <span className={ styles.screenReaderOnly } id={ this._ariaDescriptionId }>{ ariaDescription }</span>
     );
   }
 
@@ -94,7 +114,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
       { ...getNativeProps(persona, buttonProperties) }
       key={ (!!persona.imageUrl ? 'i' : '') + index }
       data-is-focusable={ true }
-      role="listitem"
+      role='option'
       className={ css('ms-Facepile-itemButton ms-Facepile-person', styles.itemButton) }
       title={ persona.personaName }
       onClick={ this._onPersonaClick.bind(this, persona) }
@@ -110,7 +130,7 @@ export class Facepile extends BaseComponent<IFacepileProps, {}> {
       { ...getNativeProps(persona, divProperties) }
       key={ (!!persona.imageUrl ? 'i' : '') + index }
       data-is-focusable={ true }
-      role="listitem"
+      role='option'
       className={ css('ms-Facepile-itemButton ms-Facepile-person', styles.itemButton) }
       title={ persona.personaName }
       onMouseMove={ this._onPersonaMouseMove.bind(this, persona) }
