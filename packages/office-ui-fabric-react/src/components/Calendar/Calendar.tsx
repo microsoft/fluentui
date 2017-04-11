@@ -89,6 +89,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   navigatedDate={ navigatedDate }
                   onSelectDate={ this._onSelectDate }
                   onNavigateDate={ this._onNavigateDate }
+                  onDismiss={ this.props.onDismiss }
                   firstDayOfWeek={ firstDayOfWeek }
                   dateRangeType={ dateRangeType }
                   autoNavigateOnSelection={ autoNavigateOnSelection }
