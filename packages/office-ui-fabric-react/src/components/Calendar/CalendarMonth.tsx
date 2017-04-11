@@ -48,14 +48,16 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, {}> {
               className={ css('ms-DatePicker-prevYear js-prevYear', styles.prevYear) }
               onClick={ this._onSelectPrevYear }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectPrevYear) }
-              tabIndex={ 0 }>
+              tabIndex={ 0 }
+              aria-label={ 'Previous year' }>
               <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': !getRTL(), 'ms-Icon--ChevronRight': getRTL() }) } />
             </span>
             <span
               className={ css('ms-DatePicker-nextYear js-nextYear', styles.nextYear) }
               onClick={ this._onSelectNextYear }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectNextYear) }
-              tabIndex={ 0 }>
+              tabIndex={ 0 }
+              aria-label={ 'Next year' }>
               <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': getRTL(), 'ms-Icon--ChevronRight': !getRTL() }) } />
             </span>
           </div>

@@ -91,14 +91,16 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               className={ css('ms-DatePicker-prevMonth js-prevMonth', styles.prevMonth) }
               onClick={ this._onSelectPrevMonth }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectPrevMonth) }
-              tabIndex={ 0 }>
+              tabIndex={ 0 }
+              aria-label={ 'Previous month' }>
               <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': !getRTL(), 'ms-Icon--ChevronRight': getRTL() }) } />
             </span >
             <span
               className={ css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth) }
               onClick={ this._onSelectNextMonth }
               onKeyDown={ this._onKeyDown.bind(this, this._onSelectNextMonth) }
-              tabIndex={ 0 }>
+              tabIndex={ 0 }
+              aria-label={ 'Next month' }>
               <i className={ css('ms-Icon', { 'ms-Icon--ChevronLeft': getRTL(), 'ms-Icon--ChevronRight': !getRTL() }) } />
             </span >
           </div >
