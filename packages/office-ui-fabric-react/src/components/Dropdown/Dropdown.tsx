@@ -3,6 +3,7 @@ import { IDropdownProps, IDropdownOption, DropdownMenuItemType } from './Dropdow
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Callout } from '../../Callout';
 import { Label } from '../../Label';
+import { MessageBar, MessageBarType } from '../../MessageBar';
 import { CommandButton } from '../../Button';
 import { Panel } from '../../Panel';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -97,6 +98,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       isDisabled,
       ariaLabel,
       required,
+      errorMessage,
       onRenderTitle = this._onRenderTitle,
       onRenderContainer = this._onRenderContainer
     } = this.props;
@@ -119,7 +121,8 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
           id={ id }
           className={ css('ms-Dropdown', styles.root, className, {
             'is-open': isOpen,
-            ['is-disabled ' + styles.rootIsDisabled]: disabled
+            ['is-disabled ' + styles.rootIsDisabled]: disabled,
+            'is-required ': required,
           }) }
           tabIndex={ disabled ? -1 : 0 }
           onKeyDown={ this._onDropdownKeyDown }
@@ -148,6 +151,14 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
         { isOpen && (
           onRenderContainer(this.props, this._onRenderContainer)
         ) }
+        {
+          errorMessage &&
+          <MessageBar
+            messageBarType={ MessageBarType.error }
+            onDismiss={ () => { console.log('test'); } }>
+            { errorMessage }
+          </MessageBar>
+        }
       </div>
     );
   }
