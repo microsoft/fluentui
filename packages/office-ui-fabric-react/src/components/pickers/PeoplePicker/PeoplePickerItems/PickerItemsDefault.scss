@@ -9,11 +9,11 @@
   cursor: default;
   user-select: none;
   max-width: 100%;
-  
+
   &:hover {
     background: $ms-color-neutralLight;
   }
-  
+
   &.personaContainerIsSelected {
     background: $ms-color-neutralQuaternary;
 
@@ -25,6 +25,10 @@
   .itemContent {
     flex: 0 1 auto;
     min-width: 0px;
+
+    /** CSS below is needed for IE 11 to properly truncate long persona names in the picker **/
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   .removeButton {
