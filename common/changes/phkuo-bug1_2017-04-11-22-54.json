@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "have entire color picker control update when any part of it updates",
+      "comment": "ColorPicker: Update the entire control whenever any part is updated",
       "type": "minor"
     }
   ],
