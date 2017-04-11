@@ -135,7 +135,9 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
                       <Button {...props} />
                     )) }
                     <Button
-                      className={ css('ms-Dialog-button ms-Dialog-button--close', styles.button, isBlocking ? styles.isClose : '') }
+                      className={ css('ms-Dialog-button ms-Dialog-button--close',
+                        styles.button,
+                        { [styles.isClose]: isBlocking || type === DialogType.largeHeader }) }
                       buttonType={ ButtonType.icon }
                       icon='Cancel'
                       ariaLabel={ closeButtonAriaLabel }
