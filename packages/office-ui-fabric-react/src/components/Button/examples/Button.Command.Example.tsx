@@ -20,7 +20,7 @@ export class ButtonCommandExample extends React.Component<IButtonProps, any> {
         <Label>Command button</Label>
         <CommandButton
           data-automation-id='test'
-          icon='AddFriend'
+          iconProps={ { iconName: 'AddFriend' } }
           disabled={ disabled }
         >
           Create account

@@ -9,7 +9,7 @@ export default class ButtonVPage extends React.Component<any, any> {
     return <div >
       <DefaultButton id='DefaultButton'> I'm a button! </DefaultButton>
       <div style={ { backgroundColor: 'white' } }>
-        <IconButton id={ 'IconButton' } icon={ iconName } />
+        <IconButton id={ 'IconButton' } iconProps={ { iconName } } />
       </div>
     </div>;
   }

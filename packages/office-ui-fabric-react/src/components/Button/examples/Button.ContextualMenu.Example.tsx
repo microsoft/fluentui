@@ -11,7 +11,7 @@ export class ButtonContextualMenuExample extends React.Component<IButtonProps, {
           <DefaultButton
             data-automation-id='test'
             disabled={ disabled }
-            iconName='Add'
+            iconProps={ { iconName: 'Add' } }
             text='New'
             menuProps={ {
               items: [

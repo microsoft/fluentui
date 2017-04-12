@@ -101,7 +101,7 @@ export class TeachingBubbleContent extends BaseComponent<ITeachingBubbleProps, I
       closeButton = (
         <IconButton
           className={ css('ms-TeachingBubble-closebutton', styles.closeButton) }
-          iconName='Cancel'
+          iconProps={ { iconName: 'Cancel' } }
           title={ closeButtonAriaLabel }
           ariaLabel={ closeButtonAriaLabel }
           onClick={ onDismiss }

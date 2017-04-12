@@ -11,7 +11,7 @@ import {
   getId,
   getNativeProps
 } from '../../Utilities';
-import { Icon, IconName } from '../../Icon';
+import { Icon, IIconProps, IconName } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.Props';
@@ -43,7 +43,7 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
 
     this._warnDeprecations({
       rootProps: null,
-      icon: 'iconName'
+      icon: 'iconProps'
     });
 
     this._labelId = getId();
@@ -152,14 +152,16 @@ export class BaseButton extends BaseComponent<IButtonProps, IBaseButtonState> im
 
   @autobind
   private _onRenderIcon(buttonProps?: IButtonProps, defaultRender?: IRenderFunction<IButtonProps>) {
-    let { classNames, icon, iconName } = this.props;
+    let { classNames, icon, iconProps } = this.props;
 
-    if (icon !== undefined) {
-      iconName = icon as IconName;
+    if (icon || iconProps) {
+      iconProps = iconProps || {
+        iconName: icon
+      } as IIconProps;
     }
 
-    return iconName && (
-      <Icon iconName={ iconName as IconName } className={ css(`${classNames.base}-icon`, classNames.icon) } />
+    return iconProps && (
+      <Icon { ...iconProps } className={ css(`${classNames.base}-icon`, classNames.icon, iconProps.className) } />
     );
   }
 

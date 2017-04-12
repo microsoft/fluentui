@@ -221,7 +221,7 @@ export class Panel extends BaseComponent<IPanelProps, IPanelState> {
         onClick={ this._onPanelClick }
         aria-label={ closeButtonAriaLabel }
         data-is-visible={ true }
-        iconName='Cancel'
+        iconProps={ { iconName: 'Cancel' } }
       />
     );
   }

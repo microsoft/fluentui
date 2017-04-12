@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IRenderFunction } from '../../Utilities';
 import { IContextualMenuProps } from '../../ContextualMenu';
-import { IconName } from '../../Icon';
+import { IIconProps, IconName } from '../../Icon';
 
 export interface IButton {
   /**
@@ -69,9 +69,9 @@ export interface IButtonProps extends React.HTMLProps<any> {
   text?: string;
 
   /**
-   * The button icon shown in command or hero type.
+   * The props for the icon shown in the button.
    */
-  iconName?: IconName | string | null;
+  iconProps?: IIconProps;
 
   /**
    * The button icon shown to the right of the text

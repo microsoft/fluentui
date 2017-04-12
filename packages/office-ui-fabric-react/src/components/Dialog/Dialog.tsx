@@ -140,7 +140,7 @@ export class Dialog extends BaseComponent<IDialogProps, IDialogState> {
                         styles.button,
                         { [styles.isClose]: isBlocking || type === DialogType.largeHeader }
                       ) }
-                      iconName='Cancel'
+                      iconProps={ { iconName: 'Cancel' } }
                       ariaLabel={ closeButtonAriaLabel }
                       onClick={ onDismiss }
                     />

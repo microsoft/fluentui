@@ -2,8 +2,7 @@
 import * as React from 'react';
 import styles = require('./Icon.scss')
 /* tslint:enable */
-import { IIconProps } from './Icon.Props';
-import { IconType } from './IconType';
+import { IIconProps, IconType } from './Icon.Props';
 import { Image } from '../Image/Image';
 import {
   css,
@@ -15,7 +14,7 @@ export const Icon: (props: IIconProps) => JSX.Element = (props: IIconProps) => {
   let customIcon = props.iconName === 'None';
   let iconClassName = props.iconName ? ('ms-Icon--' + props.iconName) : '';
 
-  if (props.iconType === IconType.Image) {
+  if (props.iconType === IconType.image || props.iconType === IconType.Image) {
     let containerClassName = css('ms-Icon', 'ms-Icon-imageContainer', styles.imageContainer, props.className);
 
     return (
