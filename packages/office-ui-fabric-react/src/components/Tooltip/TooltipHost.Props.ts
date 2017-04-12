@@ -13,6 +13,11 @@ export interface ITooltipHost {
  */
 export interface ITooltipHostProps extends React.HTMLProps<HTMLDivElement | TooltipHost> {
   /**
+   * Optional class name to apply to the root element of the tooltip host.
+   */
+  hostClassName?: string;
+
+  /**
    * Optional callback to access the ITooltipHost interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
@@ -39,4 +44,9 @@ export interface ITooltipHostProps extends React.HTMLProps<HTMLDivElement | Tool
    * @default DirectionalHint.topCenter
    */
   directionalHint?: DirectionalHint;
+
+  /**
+   *
+   */
+  onlyShowIfOverflow?: boolean;
 }
