@@ -13,6 +13,7 @@ export default class CommandButtonVPage extends React.Component<any, any> {
           icon='Add'
           text='New'
           menuProps={ {
+            id: "ContextualButtonMenu",
             items: [
               {
                 key: 'emailMessage',

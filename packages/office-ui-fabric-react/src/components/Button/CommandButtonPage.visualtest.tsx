@@ -6,12 +6,14 @@ export default class CommandButtonVPage extends React.Component<any, any> {
   public render() {
     return <div>
       <div style={ { backgroundColor: 'white' } }>
-        <CommandButton id='CommandButton' icon='AddFriend'>
-          Command Button </CommandButton>
+        <CommandButton id='CommandButton'
+          icon='AddFriend'
+          text='Command Button' />
       </div>
       <div style={ { backgroundColor: 'white' } }>
-        <CommandButton id='CommandButtonDisabled' icon='AddFriend' disabled={ true }>
-          Command Button </CommandButton>
+        <CommandButton id='CommandButtonDisabled' icon='AddFriend'
+          disabled={ true }
+          text='Command Button' />
       </div >
     </div>;
   }
